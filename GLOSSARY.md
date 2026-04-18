@@ -111,6 +111,12 @@ Vietnamese developers actually use, and translating hurts clarity.
 | boolean | the type is `bool` and the adjective is "boolean" |
 | Unicode, ASCII, UTF-8 | encoding names |
 | path, pathname | file system paths (see also "đường dẫn" below) |
+| shell script | Unix shell scripts; do not translate to "tập lệnh shell" |
+| batch file | Windows batch files; do not translate to "tệp bó" |
+| GUI, I/O | interface and I/O acronyms |
+| issue, issue tracker | kept English in prose (e.g. "trên issue tracker") |
+| raw string | Python raw-string literal (e.g. `r"..."`) |
+| stdin, stdout, stderr | standard streams |
 
 ### Translate
 
@@ -168,6 +174,25 @@ settled, widely-understood translation.
 | tutorial | hướng dẫn |
 | reference | tham khảo |
 | deprecated | không dùng nữa (adjective); có thể dùng "đã bỏ" in past tense |
+| built-in | tích hợp sẵn (not "dựng sẵn"; picked for consistency with `introduction.po`) |
+| interpreter | trình thông dịch |
+| interpreted language | ngôn ngữ thông dịch |
+| compile, compilation | biên dịch |
+| link, linking | liên kết (in the compile/link sense) |
+| indentation | thụt lề |
+| prompt | dấu nhắc (the `>>>` and `...` markers in the REPL) |
+| comment | chú thích (never "bình luận" in a code context) |
+| hash character | ký tự băm (the `#` that starts a Python comment) |
+| bug | lỗi |
+| patch | bản vá |
+| test, testing | kiểm thử |
+| test suite | bộ kiểm thử |
+| high-level, low-level | bậc cao, bậc thấp |
+| throw-away program | chương trình dùng một lần |
+| extension language | ngôn ngữ mở rộng |
+| bottom-up, top-down | từ dưới lên, từ trên xuống |
+| indexing | truy cập theo chỉ số (action) / chỉ số (noun) |
+| slicing | cắt lát (when translated); the Python term `slice` stays English |
 
 ### Judgment calls
 
@@ -197,6 +222,21 @@ Where the choice depends on context.
   better than "Ném một ngoại lệ".
 - `with` statement: "câu lệnh `with`" — keep `with` in code style.
 - `__init__`, `__call__`, dunders: never translate; wrap in backticks.
+- `:term:` references: leave the target name (e.g. `:term:`immutable``)
+  untouched. The Sphinx glossary handles the link text. Do not try to
+  pre-translate the anchor.
+- `:ref:` link text: translate the visible link label when it is a
+  Vietnamese word (e.g. `:ref:`đóng góp <contributing-to-python>``),
+  but never alter the anchor inside `<...>`.
+- English emphasis inside Vietnamese prose: when the `msgid` italicizes
+  a term (e.g. `*body*`, `*indented*`, `*existing list*`) and we have a
+  Vietnamese equivalent, italicize the Vietnamese instead of keeping
+  the English word in italic. Keeping both looks like half-translated
+  MT output.
+- Gerund/verbal-noun headings ("Whetting Your Appetite", "Dealing with
+  Bugs", "An Informal Introduction to Python"): rewrite as a Vietnamese
+  noun phrase, not a direct gerund. "Khơi gợi hứng thú", "Xử lý lỗi",
+  "Giới thiệu không chính thức về Python".
 
 ## Common MT artifacts to fix during review
 
@@ -220,6 +260,26 @@ for them and fix during unfuzzy review.
 6. **Code tokens in awkward positions.** Because placeholders kept
    `:func:\`x\`` intact, Vietnamese word order sometimes leaves the
    token dangling. Rewrite for fluency.
+7. **Wrong-register calques.** MT picks the dictionary's first hit
+   regardless of domain. Examples seen in PR #1:
+   - *straightforward* → "thẳng thắn" (applies to people, not syntax).
+     Use "rõ ràng" or "đơn giản".
+   - *whetting your appetite* → "kích thích sự thèm ăn" (literal food
+     sense). Use "khơi gợi hứng thú".
+   - *good practices* → "thực hành tốt" (literal). Use "thông lệ tốt".
+   - *throw-away programs* → "các chương trình cũ" (means *old*
+     programs). Use "chương trình dùng một lần".
+   - *socket* → "ổ cắm" (electrical outlet). Keep English.
+   - *dictionary* (Python dict) → "từ điển". Keep `dict` in English.
+   - *batch file* → "tệp bó". Keep `batch file` in English.
+8. **Passive-voice calques.** "X được Y" is legitimate Vietnamese, but
+   MT overuses it. Prefer active voice when the agent is clear:
+   - *This variable should be treated as read-only by the user* →
+     "Người dùng nên xem biến này là chỉ đọc"
+     (not "Biến này nên được người dùng xem là chỉ đọc").
+9. **"Việc" wrappers.** "Việc X" is correct but frequently unnecessary.
+   "Việc sử dụng X" → "Sử dụng X"; "việc có hay không có Y" →
+   "sự xuất hiện của Y".
 
 ## How to update this file
 
