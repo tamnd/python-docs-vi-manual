@@ -28,15 +28,23 @@ Nhánh `main` hiện đang theo dõi tài liệu Python **3.14**.
 
 ## Cách đóng góp
 
-Xem [CONTRIBUTING.md](CONTRIBUTING.md). Tóm tắt:
+Xem [CONTRIBUTING.md](CONTRIBUTING.md) và [GLOSSARY.md](GLOSSARY.md) trước
+khi chạm vào tập tin `.po` đầu tiên. Tóm tắt:
 
 1. Fork kho này và clone về máy.
 2. Tạo nhánh theo tên tập tin bạn định dịch, ví dụ `library-functions`.
 3. Cài phần phụ thuộc: `python -m pip install -r requirements-dev.txt`.
 4. Mở tập tin `.po` bằng [Poedit](https://poedit.net/) hoặc editor khác.
-5. Dịch các chuỗi `msgstr` còn trống. Đừng chỉnh `msgid`.
+5. Dịch các chuỗi `msgstr` còn trống. Đừng chỉnh `msgid`. Theo quy ước
+   thuật ngữ và văn phong trong [GLOSSARY.md](GLOSSARY.md).
 6. `make verifs` để kiểm tra cú pháp và dòng gãy (wrap).
 7. Tạo pull request và thêm tên bạn vào tập tin `TRANSLATORS`.
+
+## Lộ trình
+
+Xem [ROADMAP.md](ROADMAP.md) để biết trạng thái hiện tại và các giai đoạn
+dịch còn lại. Người đóng góp mới có thể chọn một tập tin ngắn ở giai đoạn
+1 hoặc 4 để bắt đầu.
 
 ## Dựng tài liệu đã dịch cục bộ
 
