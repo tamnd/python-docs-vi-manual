@@ -180,12 +180,35 @@ Upstream CPython keeps moving. Every few months, or when 3.15 branches:
 ## Milestones
 
 - [x] PR #1: MT seed of PEP 545 switcher files.
-- [ ] `GLOSSARY.md` landed.
-- [ ] Pronoun and heading-style policies written down in `GLOSSARY.md`.
-- [ ] `bugs.po` fully unfuzzied (language-switcher dependency).
+- [x] `GLOSSARY.md` landed.
+- [x] Pronoun and heading-style policies written down in `GLOSSARY.md`.
+- [x] `bugs.po` fully unfuzzied (language-switcher dependency).
 - [ ] `tutorial/*.po` fully unfuzzied (language-switcher dependency).
 - [ ] `library/functions.po` fully unfuzzied (language-switcher dependency).
 - [ ] Language-switcher milestone: request inclusion in `docsbuild-scripts`.
+
+### `tutorial/*.po` file-level progress
+
+Tracked per file so reviewers can see what's still fuzzy. Sizes are
+`wc -l` on the `.po`.
+
+- [x] `tutorial/appetite.po` (218 lines)
+- [x] `tutorial/index.po` (115 lines)
+- [x] `tutorial/interactive.po` (109 lines)
+- [x] `tutorial/interpreter.po` (333 lines)
+- [x] `tutorial/introduction.po` (1309 lines)
+- [ ] `tutorial/appendix.po` (325 lines)
+- [ ] `tutorial/classes.po` (2141 lines)
+- [ ] `tutorial/controlflow.po` (2751 lines)
+- [ ] `tutorial/datastructures.po` (1654 lines)
+- [ ] `tutorial/errors.po` (1592 lines)
+- [ ] `tutorial/floatingpoint.po` (852 lines)
+- [ ] `tutorial/inputoutput.po` (1316 lines)
+- [ ] `tutorial/modules.po` (1436 lines)
+- [ ] `tutorial/stdlib.po` (799 lines)
+- [ ] `tutorial/stdlib2.po` (941 lines)
+- [ ] `tutorial/venv.po` (487 lines)
+- [ ] `tutorial/whatnow.po` (201 lines)
 - [ ] Phase 1 complete.
 - [ ] Phase 2 complete.
 - [ ] Phase 3 complete.
