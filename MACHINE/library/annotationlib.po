@@ -1,0 +1,1556 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/annotationlib.rst:2
+#, fuzzy
+msgid ":mod:`!annotationlib` --- Functionality for introspecting annotations"
+msgstr ":mod:`!annotationlib` --- Chức năng xem xét các chú thích"
+
+#: ../../library/annotationlib.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/annotationlib.py`"
+msgstr "**Source code:** :source:`Lib/annotationlib.py`"
+
+#: ../../library/annotationlib.rst:18
+#, fuzzy
+msgid ""
+"The :mod:`!annotationlib` module provides tools for introspecting "
+":term:`annotations <annotation>` on modules, classes, and functions."
+msgstr ""
+"Mô-đun :mod:`!annotationlib` cung cấp các công cụ để tìm hiểu "
+":term:`annotations <annotation>` về các mô-đun, lớp và hàm."
+
+#: ../../library/annotationlib.rst:21
+#, fuzzy
+msgid ""
+"Annotations are :ref:`lazily evaluated <lazy-evaluation>` and often contain "
+"forward references to objects that are not yet defined when the annotation "
+"is created. This module provides a set of low-level tools that can be used "
+"to retrieve annotations in a reliable way, even in the presence of forward "
+"references and other edge cases."
+msgstr ""
+"Chú thích là :ref:`lazily evaluated <lazy-evaluation>` và thường chứa các "
+"tham chiếu chuyển tiếp tới các đối tượng chưa được xác định khi chú thích "
+"được tạo. Mô-đun này cung cấp một bộ công cụ cấp thấp có thể được sử dụng để"
+" truy xuất các chú thích một cách đáng tin cậy, ngay cả khi có các tham "
+"chiếu chuyển tiếp và các trường hợp biên khác."
+
+#: ../../library/annotationlib.rst:26
+#, fuzzy
+msgid ""
+"This module supports retrieving annotations in three main formats (see "
+":class:`Format`), each of which works best for different use cases:"
+msgstr ""
+"Mô-đun này hỗ trợ truy xuất chú thích ở ba định dạng chính (xem "
+":class:`Format`), mỗi định dạng hoạt động tốt nhất cho các trường hợp sử "
+"dụng khác nhau:"
+
+#: ../../library/annotationlib.rst:29
+#, fuzzy
+msgid ""
+":attr:`~Format.VALUE` evaluates the annotations and returns their value. "
+"This is most straightforward to work with, but it may raise errors, for "
+"example if the annotations contain references to undefined names."
+msgstr ""
+":attr:`~Format.VALUE` đánh giá các chú thích và trả về giá trị của chúng. "
+"Cách này dễ thực hiện nhất nhưng có thể gây ra lỗi, ví dụ: nếu chú thích "
+"chứa tham chiếu đến tên không xác định."
+
+#: ../../library/annotationlib.rst:32
+#, fuzzy
+msgid ""
+":attr:`~Format.FORWARDREF` returns :class:`ForwardRef` objects for "
+"annotations that cannot be resolved, allowing you to inspect the annotations"
+" without evaluating them. This is useful when you need to work with "
+"annotations that may contain unresolved forward references."
+msgstr ""
+":attr:`~Format.FORWARDREF` trả về đối tượng :class:`ForwardRef` cho các chú "
+"thích không thể giải quyết được, cho phép bạn kiểm tra các chú thích mà "
+"không cần đánh giá chúng. Điều này hữu ích khi bạn cần làm việc với các chú "
+"thích có thể chứa các tham chiếu chuyển tiếp chưa được giải quyết."
+
+#: ../../library/annotationlib.rst:36
+#, fuzzy
+msgid ""
+":attr:`~Format.STRING` returns the annotations as a string, similar to how "
+"it would appear in the source file. This is useful for documentation "
+"generators that want to display annotations in a readable way."
+msgstr ""
+":attr:`~Format.STRING` trả về các chú thích dưới dạng một chuỗi, tương tự "
+"như cách nó xuất hiện trong tệp nguồn. Điều này hữu ích cho những người tạo "
+"tài liệu muốn hiển thị chú thích theo cách dễ đọc."
+
+#: ../../library/annotationlib.rst:40
+#, fuzzy
+msgid ""
+"The :func:`get_annotations` function is the main entry point for retrieving "
+"annotations. Given a function, class, or module, it returns an annotations "
+"dictionary in the requested format. This module also provides functionality "
+"for working directly with the :term:`annotate function` that is used to "
+"evaluate annotations, such as :func:`get_annotate_from_class_namespace` and "
+":func:`call_annotate_function`, as well as the "
+":func:`call_evaluate_function` function for working with :term:`evaluate "
+"functions <evaluate function>`."
+msgstr ""
+"Hàm :func:`get_annotations` là điểm vào chính để truy xuất chú thích. Với "
+"một hàm, lớp hoặc mô-đun, nó trả về một từ điển chú thích theo định dạng "
+"được yêu cầu. Mô-đun này cũng cung cấp chức năng để làm việc trực tiếp với "
+":term:`annotate function` được sử dụng để đánh giá các chú thích, chẳng hạn "
+"như :func:`get_annotate_from_class_namespace` và "
+":func:`call_annotate_function`, cũng như chức năng "
+":func:`call_evaluate_function` để làm việc với :term:`evaluate functions "
+"<evaluate function>`."
+
+#: ../../library/annotationlib.rst:51
+#, fuzzy
+msgid ""
+"Most functionality in this module can execute arbitrary code; see :ref:`the "
+"security section <annotationlib-security>` for more information."
+msgstr ""
+"Hầu hết chức năng trong mô-đun này có thể thực thi mã tùy ý; xem :ref:`the "
+"security section <annotationlib-security>` để biết thêm thông tin."
+
+#: ../../library/annotationlib.rst:56
+#, fuzzy
+msgid ""
+":pep:`649` proposed the current model for how annotations work in Python."
+msgstr ""
+":pep:`649` đã đề xuất mô hình hiện tại về cách hoạt động của các chú thích "
+"trong Python."
+
+#: ../../library/annotationlib.rst:58
+#, fuzzy
+msgid ""
+":pep:`749` expanded on various aspects of :pep:`649` and introduced the "
+":mod:`!annotationlib` module."
+msgstr ""
+":pep:`749` đã mở rộng trên nhiều khía cạnh khác nhau của :pep:`649` và giới "
+"thiệu mô-đun :mod:`!annotationlib`."
+
+#: ../../library/annotationlib.rst:61
+#, fuzzy
+msgid ""
+":ref:`annotations-howto` provides best practices for working with "
+"annotations."
+msgstr ""
+":ref:`annotations-howto` cung cấp các phương pháp hay nhất để làm việc với "
+"chú thích."
+
+#: ../../library/annotationlib.rst:64
+#, fuzzy
+msgid ""
+":pypi:`typing-extensions` provides a backport of :func:`get_annotations` "
+"that works on earlier versions of Python."
+msgstr ""
+":pypi:`typing-extensions` cung cấp một backport của :func:`get_annotations` "
+"hoạt động trên các phiên bản Python cũ hơn."
+
+#: ../../library/annotationlib.rst:68
+#, fuzzy
+msgid "Annotation semantics"
+msgstr "Ngữ nghĩa chú thích"
+
+#: ../../library/annotationlib.rst:70
+#, fuzzy
+msgid ""
+"The way annotations are evaluated has changed over the history of Python 3, "
+"and currently still depends on a :ref:`future import <future>`. There have "
+"been execution models for annotations:"
+msgstr ""
+"Cách đánh giá các chú thích đã thay đổi trong lịch sử của Python 3 và hiện "
+"vẫn phụ thuộc vào :ref:`future import <future>`. Đã có các mô hình thực thi "
+"cho chú thích:"
+
+#: ../../library/annotationlib.rst:74
+#, fuzzy
+msgid ""
+"*Stock semantics* (default in Python 3.0 through 3.13; see :pep:`3107` and "
+":pep:`526`): Annotations are evaluated eagerly, as they are encountered in "
+"the source code."
+msgstr ""
+"*Stock semantics* (mặc định trong Python 3.0 đến 3.13; xem :pep:`3107` và "
+":pep:`526`): Các chú thích được đánh giá một cách háo hức vì chúng gặp phải "
+"trong mã nguồn."
+
+#: ../../library/annotationlib.rst:77
+#, fuzzy
+msgid ""
+"*Stringified annotations* (used with ``from __future__ import annotations`` "
+"in Python 3.7 and newer; see :pep:`563`): Annotations are stored as strings "
+"only."
+msgstr ""
+"*Stringified annotations* (được sử dụng với ``from __future__ import "
+"annotations`` trong Python 3.7 trở lên; xem :pep:`563`): Chú thích chỉ được "
+"lưu trữ dưới dạng chuỗi."
+
+#: ../../library/annotationlib.rst:80
+#, fuzzy
+msgid ""
+"*Deferred evaluation* (default in Python 3.14 and newer; see :pep:`649` and "
+":pep:`749`): Annotations are evaluated lazily, only when they are accessed."
+msgstr ""
+"*Deferred evaluation* (mặc định trong Python 3.14 trở lên; xem :pep:`649` và"
+" :pep:`749`): Các chú thích chỉ được đánh giá một cách lười biếng, chỉ khi "
+"chúng được truy cập."
+
+#: ../../library/annotationlib.rst:83
+#, fuzzy
+msgid "As an example, consider the following program::"
+msgstr "Ví dụ, hãy xem xét chương trình sau::"
+
+#: ../../library/annotationlib.rst:85
+#, fuzzy
+msgid ""
+"def func(a: Cls) -> None:\n"
+"    print(a)\n"
+"\n"
+"class Cls: pass\n"
+"\n"
+"print(func.__annotations__)"
+msgstr ""
+"def func(a: Cls) -> Không có:\n"
+"    in (a)\n"
+"\n"
+"lớp Cls: đậu\n"
+"\n"
+"print(func.__annotations__)"
+
+#: ../../library/annotationlib.rst:92
+#, fuzzy
+msgid "This will behave as follows:"
+msgstr "Điều này sẽ hành xử như sau:"
+
+#: ../../library/annotationlib.rst:94
+#, fuzzy
+msgid ""
+"Under stock semantics (Python 3.13 and earlier), it will throw a "
+":exc:`NameError` at the line where ``func`` is defined, because ``Cls`` is "
+"an undefined name at that point."
+msgstr ""
+"Theo ngữ nghĩa gốc (Python 3.13 trở về trước), nó sẽ ném :exc:`NameError` "
+"vào dòng nơi ``func`` được xác định, bởi vì ``Cls`` là tên không xác định "
+"tại thời điểm đó."
+
+#: ../../library/annotationlib.rst:97
+#, python-brace-format, fuzzy
+msgid ""
+"Under stringified annotations (if ``from __future__ import annotations`` is "
+"used), it will print ``{'a': 'Cls', 'return': 'None'}``."
+msgstr ""
+"Dưới các chú thích được xâu chuỗi (nếu sử dụng ``from __future__ import "
+"annotations``), nó sẽ in ``{'a': 'Cls', 'return': 'None'}``."
+
+#: ../../library/annotationlib.rst:99
+#, python-brace-format, fuzzy
+msgid ""
+"Under deferred evaluation (Python 3.14 and later), it will print ``{'a': "
+"<class 'Cls'>, 'return': None}``."
+msgstr ""
+"Theo đánh giá trì hoãn (Python 3.14 trở lên), nó sẽ in ``{'a': <class "
+"'Cls'>, 'return': None}``."
+
+#: ../../library/annotationlib.rst:102
+#, fuzzy
+msgid ""
+"Stock semantics were used when function annotations were first introduced in"
+" Python 3.0 (by :pep:`3107`) because this was the simplest, most obvious way"
+" to implement annotations. The same execution model was used when variable "
+"annotations were introduced in Python 3.6 (by :pep:`526`). However, stock "
+"semantics caused problems when using annotations as type hints, such as a "
+"need to refer to names that are not yet defined when the annotation is "
+"encountered. In addition, there were performance problems with executing "
+"annotations at module import time. Therefore, in Python 3.7, :pep:`563` "
+"introduced the ability to store annotations as strings using the ``from "
+"__future__ import annotations`` syntax. The plan at the time was to "
+"eventually make this behavior the default, but a problem appeared: "
+"stringified annotations are more difficult to process for those who "
+"introspect annotations at runtime. An alternative proposal, :pep:`649`, "
+"introduced the third execution model, deferred evaluation, and was "
+"implemented in Python 3.14. Stringified annotations are still used if ``from"
+" __future__ import annotations`` is present, but this behavior will "
+"eventually be removed."
+msgstr ""
+"Ngữ nghĩa gốc được sử dụng khi chú thích hàm lần đầu tiên được giới thiệu "
+"trong Python 3.0 (bởi :pep:`3107`) vì đây là cách đơn giản nhất, rõ ràng "
+"nhất để triển khai chú thích. Mô hình thực thi tương tự đã được sử dụng khi "
+"các chú thích biến được giới thiệu trong Python 3.6 (bởi :pep:`526`). Tuy "
+"nhiên, ngữ nghĩa gốc gây ra vấn đề khi sử dụng chú thích làm gợi ý loại, "
+"chẳng hạn như cần tham chiếu đến các tên chưa được xác định khi gặp chú "
+"thích. Ngoài ra, còn có vấn đề về hiệu suất khi thực thi chú thích tại thời "
+"điểm nhập mô-đun. Do đó, trong Python 3.7, :pep:`563` đã giới thiệu khả năng"
+" lưu trữ chú thích dưới dạng chuỗi bằng cú pháp ``from __future__ import "
+"annotations``. Kế hoạch vào thời điểm đó cuối cùng là đặt hành vi này thành "
+"mặc định, nhưng một vấn đề đã xuất hiện: các chú thích được xâu chuỗi khó xử"
+" lý hơn đối với những người xem xét kỹ các chú thích trong thời gian chạy. "
+"Một đề xuất thay thế, :pep:`649`, đã giới thiệu mô hình thực thi thứ ba, "
+"đánh giá trì hoãn và được triển khai trong Python 3.14. Các chú thích dạng "
+"chuỗi vẫn được sử dụng nếu có ``from __future__ import annotations`` nhưng "
+"hành vi này cuối cùng sẽ bị xóa."
+
+#: ../../library/annotationlib.rst:121
+#, fuzzy
+msgid "Classes"
+msgstr "Lớp học"
+
+#: ../../library/annotationlib.rst:125
+#, fuzzy
+msgid ""
+"An :class:`~enum.IntEnum` describing the formats in which annotations can be"
+" returned. Members of the enum, or their equivalent integer values, can be "
+"passed to :func:`get_annotations` and other functions in this module, as "
+"well as to :attr:`~object.__annotate__` functions."
+msgstr ""
+"Một :class:`~enum.IntEnum` mô tả các định dạng có thể trả về các chú thích. "
+"Các thành viên của enum hoặc các giá trị số nguyên tương đương của chúng có "
+"thể được truyền cho :func:`get_annotations` và các hàm khác trong mô-đun "
+"này, cũng như cho các hàm :attr:`~object.__annotate__`."
+
+#: ../../library/annotationlib.rst:133
+#, fuzzy
+msgid "Values are the result of evaluating the annotation expressions."
+msgstr "Các giá trị là kết quả của việc đánh giá các biểu thức chú thích."
+
+#: ../../library/annotationlib.rst:138
+#, fuzzy
+msgid ""
+"Special value used to signal that an annotate function is being evaluated in"
+" a special environment with fake globals. When passed this value, annotate "
+"functions should either return the same value as for the "
+":attr:`Format.VALUE` format, or raise :exc:`NotImplementedError` to signal "
+"that they do not support execution in this environment. This format is only "
+"used internally and should not be passed to the functions in this module."
+msgstr ""
+"Giá trị đặc biệt được sử dụng để báo hiệu rằng hàm chú thích đang được đánh "
+"giá trong một môi trường đặc biệt có toàn cầu giả. Khi được chuyển giá trị "
+"này, các hàm chú thích sẽ trả về cùng giá trị như đối với định dạng "
+":attr:`Format.VALUE` hoặc tăng :exc:`NotImplementedError` để báo hiệu rằng "
+"chúng không hỗ trợ thực thi trong môi trường này. Định dạng này chỉ được sử "
+"dụng nội bộ và không được chuyển cho các chức năng trong mô-đun này."
+
+#: ../../library/annotationlib.rst:149
+#, fuzzy
+msgid ""
+"Values are real annotation values (as per :attr:`Format.VALUE` format) for "
+"defined values, and :class:`ForwardRef` proxies for undefined values. Real "
+"objects may contain references to :class:`ForwardRef` proxy objects."
+msgstr ""
+"Giá trị là các giá trị chú thích thực (theo định dạng :attr:`Format.VALUE`) "
+"cho các giá trị được xác định và proxy :class:`ForwardRef` cho các giá trị "
+"không xác định. Các đối tượng thực có thể chứa các tham chiếu đến các đối "
+"tượng proxy :class:`ForwardRef`."
+
+#: ../../library/annotationlib.rst:157
+#, fuzzy
+msgid ""
+"Values are the text string of the annotation as it appears in the source "
+"code, up to modifications including, but not restricted to, whitespace "
+"normalizations and constant values optimizations."
+msgstr ""
+"Giá trị là chuỗi văn bản của chú thích như nó xuất hiện trong mã nguồn, có "
+"thể sửa đổi bao gồm nhưng không giới hạn ở việc chuẩn hóa khoảng trắng và "
+"tối ưu hóa giá trị không đổi."
+
+#: ../../library/annotationlib.rst:161
+#, fuzzy
+msgid ""
+"The exact values of these strings may change in future versions of Python."
+msgstr ""
+"Giá trị chính xác của các chuỗi này có thể thay đổi trong các phiên bản "
+"Python trong tương lai."
+
+#: ../../library/annotationlib.rst:167
+#, fuzzy
+msgid "A proxy object for forward references in annotations."
+msgstr "Một đối tượng proxy để tham chiếu chuyển tiếp trong chú thích."
+
+#: ../../library/annotationlib.rst:169
+#, fuzzy
+msgid ""
+"Instances of this class are returned when the :attr:`~Format.FORWARDREF` "
+"format is used and annotations contain a name that cannot be resolved. This "
+"can happen when a forward reference is used in an annotation, such as when a"
+" class is referenced before it is defined."
+msgstr ""
+"Các phiên bản của lớp này được trả về khi định dạng "
+":attr:`~Format.FORWARDREF` được sử dụng và các chú thích chứa tên không thể "
+"giải quyết được. Điều này có thể xảy ra khi tham chiếu chuyển tiếp được sử "
+"dụng trong chú thích, chẳng hạn như khi một lớp được tham chiếu trước khi nó"
+" được xác định."
+
+#: ../../library/annotationlib.rst:176
+#, fuzzy
+msgid ""
+"A string containing the code that was evaluated to produce the "
+":class:`~ForwardRef`. The string may not be exactly equivalent to the "
+"original source."
+msgstr ""
+"Một chuỗi chứa mã được đánh giá để tạo ra :class:`~ForwardRef`. Chuỗi có thể"
+" không tương đương chính xác với nguồn ban đầu."
+
+#: ../../library/annotationlib.rst:182
+#, fuzzy
+msgid "Evaluate the forward reference, returning its value."
+msgstr "Đánh giá tham chiếu chuyển tiếp, trả về giá trị của nó."
+
+#: ../../library/annotationlib.rst:184
+#, fuzzy
+msgid ""
+"If the *format* argument is :attr:`~Format.VALUE` (the default), this method"
+" may throw an exception, such as :exc:`NameError`, if the forward reference "
+"refers to a name that cannot be resolved. The arguments to this method can "
+"be used to provide bindings for names that would otherwise be undefined. If "
+"the *format* argument is :attr:`~Format.FORWARDREF`, the method will never "
+"throw an exception, but may return a :class:`~ForwardRef` instance. For "
+"example, if the forward reference object contains the code "
+"``list[undefined]``, where ``undefined`` is a name that is not defined, "
+"evaluating it with the :attr:`~Format.FORWARDREF` format will return "
+"``list[ForwardRef('undefined')]``. If the *format* argument is "
+":attr:`~Format.STRING`, the method will return "
+":attr:`~ForwardRef.__forward_arg__`."
+msgstr ""
+"Nếu đối số *format* là :attr:`~Format.VALUE` (mặc định), phương thức này có "
+"thể đưa ra một ngoại lệ, chẳng hạn như :exc:`NameError`, nếu tham chiếu "
+"chuyển tiếp đề cập đến một tên không thể giải quyết được. Các đối số của "
+"phương thức này có thể được sử dụng để cung cấp các ràng buộc cho các tên mà"
+" lẽ ra không được xác định. Nếu đối số *format* là "
+":attr:`~Format.FORWARDREF`, phương thức sẽ không bao giờ đưa ra ngoại lệ "
+"nhưng có thể trả về một phiên bản :class:`~ForwardRef`. Ví dụ: nếu đối tượng"
+" tham chiếu chuyển tiếp chứa mã ``list[undefined]``, trong đó ``undefined`` "
+"là tên không được xác định thì việc đánh giá nó bằng định dạng "
+":attr:`~Format.FORWARDREF` sẽ trả về ``list[ForwardRef('undefined')]``. Nếu "
+"đối số *format* là :attr:`~Format.STRING`, phương thức sẽ trả về "
+":attr:`~ForwardRef.__forward_arg__`."
+
+#: ../../library/annotationlib.rst:196
+#, fuzzy
+msgid ""
+"The *owner* parameter provides the preferred mechanism for passing scope "
+"information to this method. The owner of a :class:`~ForwardRef` is the "
+"object that contains the annotation from which the :class:`~ForwardRef` "
+"derives, such as a module object, type object, or function object."
+msgstr ""
+"Tham số *owner* cung cấp cơ chế ưu tiên để truyền thông tin phạm vi cho "
+"phương thức này. Chủ sở hữu của :class:`~ForwardRef` là đối tượng chứa chú "
+"thích mà từ đó :class:`~ForwardRef` xuất phát, chẳng hạn như đối tượng mô-"
+"đun, đối tượng loại hoặc đối tượng hàm."
+
+#: ../../library/annotationlib.rst:201
+#, fuzzy
+msgid ""
+"The *globals*, *locals*, and *type_params* parameters provide a more precise"
+" mechanism for influencing the names that are available when the "
+":class:`~ForwardRef` is evaluated. *globals* and *locals* are passed to "
+":func:`eval`, representing the global and local namespaces in which the name"
+" is evaluated. The *type_params* parameter is relevant for objects created "
+"using the native syntax for :ref:`generic classes <generic-classes>` and "
+":ref:`functions <generic-functions>`. It is a tuple of :ref:`type parameters"
+" <type-params>` that are in scope while the forward reference is being "
+"evaluated. For example, if evaluating a :class:`~ForwardRef` retrieved from "
+"an annotation found in the class namespace of a generic class ``C``, "
+"*type_params* should be set to ``C.__type_params__``."
+msgstr ""
+"Các tham số *globals*, *locals* và *type_params* cung cấp một cơ chế chính "
+"xác hơn để tác động đến các tên có sẵn khi :class:`~ForwardRef` được đánh "
+"giá. *globals* và *locals* được chuyển đến :func:`eval`, đại diện cho các "
+"không gian tên cục bộ và toàn cầu mà tên được đánh giá. Tham số "
+"*type_params* có liên quan đến các đối tượng được tạo bằng cú pháp gốc cho "
+":ref:`generic classes <generic-classes>` và :ref:`functions <generic-"
+"functions>`. Đó là một bộ :ref:`type parameters <type-params>` nằm trong "
+"phạm vi trong khi tham chiếu chuyển tiếp đang được đánh giá. Ví dụ: nếu đánh"
+" giá một :class:`~ForwardRef` được truy xuất từ ​​một chú thích được tìm "
+"thấy trong không gian tên lớp của một lớp chung ``C``, thì *type_params* "
+"phải được đặt thành ``C.__type_params__``."
+
+#: ../../library/annotationlib.rst:212
+#, fuzzy
+msgid ""
+":class:`~ForwardRef` instances returned by :func:`get_annotations` retain "
+"references to information about the scope they originated from, so calling "
+"this method with no further arguments may be sufficient to evaluate such "
+"objects. :class:`~ForwardRef` instances created by other means may not have "
+"any information about their scope, so passing arguments to this method may "
+"be necessary to evaluate them successfully."
+msgstr ""
+"Các phiên bản :class:`~ForwardRef` được :func:`get_annotations` trả về giữ "
+"lại các tham chiếu đến thông tin về phạm vi mà chúng bắt nguồn từ đó, vì "
+"vậy, việc gọi phương thức này mà không có đối số nào khác có thể đủ để đánh "
+"giá các đối tượng đó. Các phiên bản :class:`~ForwardRef` được tạo bằng các "
+"phương tiện khác có thể không có bất kỳ thông tin nào về phạm vi của chúng, "
+"do đó, việc chuyển đối số cho phương thức này có thể cần thiết để đánh giá "
+"chúng thành công."
+
+#: ../../library/annotationlib.rst:219
+#, fuzzy
+msgid ""
+"If no *owner*, *globals*, *locals*, or *type_params* are provided and the "
+":class:`~ForwardRef` does not contain information about its origin, empty "
+"globals and locals dictionaries are used."
+msgstr ""
+"Nếu không cung cấp *owner*, *globals*, *locals* hoặc *type_params* và "
+":class:`~ForwardRef` không chứa thông tin về nguồn gốc của nó, thì từ điển "
+"toàn cầu và địa phương trống sẽ được sử dụng."
+
+#: ../../library/annotationlib.rst:227
+#, fuzzy
+msgid "Functions"
+msgstr "Chức năng"
+
+#: ../../library/annotationlib.rst:231
+#, fuzzy
+msgid ""
+"Convert an annotations dict containing runtime values to a dict containing "
+"only strings. If the values are not already strings, they are converted "
+"using :func:`type_repr`. This is meant as a helper for user-provided "
+"annotate functions that support the :attr:`~Format.STRING` format but do not"
+" have access to the code creating the annotations."
+msgstr ""
+"Chuyển đổi một lệnh chú thích chứa các giá trị thời gian chạy thành một lệnh"
+" chỉ chứa các chuỗi. Nếu các giá trị chưa phải là chuỗi, chúng sẽ được "
+"chuyển đổi bằng :func:`type_repr`. Điều này có nghĩa là một trình trợ giúp "
+"cho các hàm chú thích do người dùng cung cấp hỗ trợ định dạng "
+":attr:`~Format.STRING` nhưng không có quyền truy cập vào mã tạo chú thích."
+
+#: ../../library/annotationlib.rst:238
+#, fuzzy
+msgid ""
+"For example, this is used to implement the :attr:`~Format.STRING` for "
+":class:`typing.TypedDict` classes created through the functional syntax:"
+msgstr ""
+"Ví dụ: điều này được sử dụng để triển khai :attr:`~Format.STRING` cho các "
+"lớp :class:`typing.TypedDict` được tạo thông qua cú pháp hàm:"
+
+#: ../../library/annotationlib.rst:241
+#, python-brace-format, fuzzy
+msgid ""
+">>> from typing import TypedDict\n"
+">>> Movie = TypedDict(\"movie\", {\"name\": str, \"year\": int})\n"
+">>> get_annotations(Movie, format=Format.STRING)\n"
+"{'name': 'str', 'year': 'int'}"
+msgstr ""
+">>> từ cách nhập nhập TypedDict\n"
+">>> Phim = TypedDict(\"phim\", {\"name\": str, \"year\": int})\n"
+">>> get_annotations(Phim, định dạng=Format.STRING)\n"
+"{'name': 'str', 'năm': 'int'}"
+
+#: ../../library/annotationlib.rst:252
+#, fuzzy
+msgid ""
+"Call the :term:`annotate function` *annotate* with the given *format*, a "
+"member of the :class:`Format` enum, and return the annotations dictionary "
+"produced by the function."
+msgstr ""
+"Gọi :term:`annotate function` *annotate* với *format* đã cho, một thành viên"
+" của :class:`Format` enum và trả về từ điển chú thích do hàm tạo ra."
+
+#: ../../library/annotationlib.rst:256
+#, fuzzy
+msgid ""
+"This helper function is required because annotate functions generated by the"
+" compiler for functions, classes, and modules only support the "
+":attr:`~Format.VALUE` format when called directly. To support other formats,"
+" this function calls the annotate function in a special environment that "
+"allows it to produce annotations in the other formats. This is a useful "
+"building block when implementing functionality that needs to partially "
+"evaluate annotations while a class is being constructed."
+msgstr ""
+"Hàm trợ giúp này là bắt buộc vì các hàm chú thích do trình biên dịch tạo ra "
+"cho các hàm, lớp và mô-đun chỉ hỗ trợ định dạng :attr:`~Format.VALUE` khi "
+"được gọi trực tiếp. Để hỗ trợ các định dạng khác, hàm này gọi hàm chú thích "
+"trong một môi trường đặc biệt cho phép nó tạo chú thích ở các định dạng "
+"khác. Đây là một khối xây dựng hữu ích khi triển khai chức năng cần đánh giá"
+" một phần chú thích trong khi một lớp đang được xây dựng."
+
+#: ../../library/annotationlib.rst:265
+#, fuzzy
+msgid ""
+"*owner* is the object that owns the annotation function, usually a function,"
+" class, or module. If provided, it is used in the :attr:`~Format.FORWARDREF`"
+" format to produce a :class:`ForwardRef` object that carries more "
+"information."
+msgstr ""
+"*owner* là đối tượng sở hữu chức năng chú thích, thường là hàm, lớp hoặc mô-"
+"đun. Nếu được cung cấp, nó sẽ được sử dụng ở định dạng "
+":attr:`~Format.FORWARDREF` để tạo ra đối tượng :class:`ForwardRef` mang "
+"nhiều thông tin hơn."
+
+#: ../../library/annotationlib.rst:272
+#, fuzzy
+msgid ""
+":PEP:`PEP 649 <649#the-stringizer-and-the-fake-globals-environment>` "
+"contains an explanation of the implementation technique used by this "
+"function."
+msgstr ""
+":PEP:`PEP 649 <649#the-stringizer-and-the-fake-globals-environment>` chứa "
+"phần giải thích về kỹ thuật triển khai được chức năng này sử dụng."
+
+#: ../../library/annotationlib.rst:280
+#, fuzzy
+msgid ""
+"Call the :term:`evaluate function` *evaluate* with the given *format*, a "
+"member of the :class:`Format` enum, and return the value produced by the "
+"function. This is similar to :func:`call_annotate_function`, but the latter "
+"always returns a dictionary mapping strings to annotations, while this "
+"function returns a single value."
+msgstr ""
+"Gọi :term:`evaluate function` *evaluate* với *format* đã cho, một thành viên"
+" của enum :class:`Format` và trả về giá trị do hàm tạo ra. Điều này tương tự"
+" như :func:`call_annotate_function`, nhưng cái sau luôn trả về một chuỗi ánh"
+" xạ từ điển tới các chú thích, trong khi hàm này trả về một giá trị duy "
+"nhất."
+
+#: ../../library/annotationlib.rst:286
+#, fuzzy
+msgid ""
+"This is intended for use with the evaluate functions generated for lazily "
+"evaluated elements related to type aliases and type parameters:"
+msgstr ""
+"Điều này được thiết kế để sử dụng với các hàm đánh giá được tạo cho các phần"
+" tử được đánh giá lười biếng liên quan đến bí danh loại và tham số loại:"
+
+#: ../../library/annotationlib.rst:289
+#, fuzzy
+msgid ":meth:`typing.TypeAliasType.evaluate_value`, the value of type aliases"
+msgstr ":meth:`typing.TypeAliasType.evaluate_value`, giá trị của bí danh loại"
+
+#: ../../library/annotationlib.rst:290
+#, fuzzy
+msgid ":meth:`typing.TypeVar.evaluate_bound`, the bound of type variables"
+msgstr ":meth:`typing.TypeVar.evaluate_bound`, giới hạn của các biến loại"
+
+#: ../../library/annotationlib.rst:291
+#, fuzzy
+msgid ""
+":meth:`typing.TypeVar.evaluate_constraints`, the constraints of type "
+"variables"
+msgstr ""
+":meth:`typing.TypeVar.evaluate_constraints`, các ràng buộc của biến loại"
+
+#: ../../library/annotationlib.rst:293
+#, fuzzy
+msgid ""
+":meth:`typing.TypeVar.evaluate_default`, the default value of type variables"
+msgstr ""
+":meth:`typing.TypeVar.evaluate_default`, giá trị mặc định của biến loại"
+
+#: ../../library/annotationlib.rst:295
+#, fuzzy
+msgid ""
+":meth:`typing.ParamSpec.evaluate_default`, the default value of parameter "
+"specifications"
+msgstr ""
+":meth:`typing.ParamSpec.evaluate_default`, giá trị mặc định của thông số kỹ "
+"thuật"
+
+#: ../../library/annotationlib.rst:297
+#, fuzzy
+msgid ""
+":meth:`typing.TypeVarTuple.evaluate_default`, the default value of type "
+"variable tuples"
+msgstr ""
+":meth:`typing.TypeVarTuple.evaluate_default`, giá trị mặc định của bộ biến "
+"kiểu"
+
+#: ../../library/annotationlib.rst:300
+#, fuzzy
+msgid ""
+"*owner* is the object that owns the evaluate function, such as the type "
+"alias or type variable object."
+msgstr ""
+"*owner* là đối tượng sở hữu hàm đánh giá, chẳng hạn như bí danh loại hoặc "
+"đối tượng biến loại."
+
+#: ../../library/annotationlib.rst:303
+#, fuzzy
+msgid ""
+"*format* can be used to control the format in which the value is returned:"
+msgstr "*format* có thể được sử dụng để kiểm soát định dạng trả về giá trị:"
+
+#: ../../library/annotationlib.rst:305
+#, fuzzy
+msgid ""
+">>> type Alias = undefined\n"
+">>> call_evaluate_function(Alias.evaluate_value, Format.VALUE)\n"
+"Traceback (most recent call last):\n"
+"...\n"
+"NameError: name 'undefined' is not defined\n"
+">>> call_evaluate_function(Alias.evaluate_value, Format.FORWARDREF)\n"
+"ForwardRef('undefined')\n"
+">>> call_evaluate_function(Alias.evaluate_value, Format.STRING)\n"
+"'undefined'"
+msgstr ""
+">>> gõ Bí danh = không xác định\n"
+">>> call_evaluate_function(Bí danh.evaluate_value, Format.VALUE)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"...\n"
+"NameError: tên 'không xác định' không được xác định\n"
+">>> call_evaluate_function(Bí danh.evaluate_value, Format.FORWARDREF)\n"
+"ForwardRef('không xác định')\n"
+">>> call_evaluate_function(Bí danh.evaluate_value, Format.STRING)\n"
+"'không xác định'"
+
+#: ../../library/annotationlib.rst:321
+#, fuzzy
+msgid ""
+"Retrieve the :term:`annotate function` from a class namespace dictionary "
+"*namespace*. Return :const:`!None` if the namespace does not contain an "
+"annotate function. This is primarily useful before the class has been fully "
+"created (e.g., in a metaclass); after the class exists, the annotate "
+"function can be retrieved with ``cls.__annotate__``. See :ref:`below "
+"<annotationlib-metaclass>` for an example using this function in a "
+"metaclass."
+msgstr ""
+"Truy xuất :term:`annotate function` từ từ điển không gian tên lớp "
+"*namespace*. Trả về :const:`!None` nếu không gian tên không chứa chức năng "
+"chú thích. Điều này chủ yếu hữu ích trước khi lớp được tạo hoàn chỉnh (ví "
+"dụ: trong siêu dữ liệu); sau khi lớp tồn tại, chức năng chú thích có thể "
+"được truy xuất bằng ``cls.__annotate__``. Xem :ref:`below <annotationlib-"
+"metaclass>` để biết ví dụ sử dụng hàm này trong siêu dữ liệu."
+
+#: ../../library/annotationlib.rst:331
+#, fuzzy
+msgid "Compute the annotations dict for an object."
+msgstr "Tính toán các chú thích cho một đối tượng."
+
+#: ../../library/annotationlib.rst:333
+#, fuzzy
+msgid ""
+"*obj* may be a callable, class, module, or other object with "
+":attr:`~object.__annotate__` or :attr:`~object.__annotations__` attributes. "
+"Passing any other object raises :exc:`TypeError`."
+msgstr ""
+"*obj* có thể là một đối tượng có thể gọi, lớp, mô-đun hoặc đối tượng khác có"
+" thuộc tính :attr:`~object.__annotate__` hoặc "
+":attr:`~object.__annotations__`. Vượt qua bất kỳ đối tượng nào khác sẽ tăng "
+":exc:`TypeError`."
+
+#: ../../library/annotationlib.rst:337
+#, fuzzy
+msgid ""
+"The *format* parameter controls the format in which annotations are "
+"returned, and must be a member of the :class:`Format` enum or its integer "
+"equivalent. The different formats work as follows:"
+msgstr ""
+"Tham số *format* kiểm soát định dạng trả về các chú thích và phải là thành "
+"viên của enum :class:`Format` hoặc số nguyên tương đương của nó. Các định "
+"dạng khác nhau hoạt động như sau:"
+
+#: ../../library/annotationlib.rst:341
+#, fuzzy
+msgid ""
+"VALUE: :attr:`!object.__annotations__` is tried first; if that does not "
+"exist, the :attr:`!object.__annotate__` function is called if it exists."
+msgstr ""
+"VALUE: :attr:`!object.__annotations__` được thử trước; nếu điều đó không tồn"
+" tại, hàm :attr:`!object.__annotate__` sẽ được gọi nếu nó tồn tại."
+
+#: ../../library/annotationlib.rst:344
+#, fuzzy
+msgid ""
+"FORWARDREF: If :attr:`!object.__annotations__` exists and can be evaluated "
+"successfully, it is used; otherwise, the :attr:`!object.__annotate__` "
+"function is called. If it does not exist either, "
+":attr:`!object.__annotations__` is tried again and any error from accessing "
+"it is re-raised."
+msgstr ""
+"FORWARDREF: Nếu :attr:`!object.__annotations__` tồn tại và có thể được đánh "
+"giá thành công thì nó sẽ được sử dụng; nếu không, hàm "
+":attr:`!object.__annotate__` sẽ được gọi. Nếu nó cũng không tồn tại, "
+":attr:`!object.__annotations__` sẽ được thử lại và mọi lỗi khi truy cập nó "
+"sẽ được khắc phục lại."
+
+#: ../../library/annotationlib.rst:349
+#, fuzzy
+msgid ""
+"When calling :attr:`!object.__annotate__` it is first called with "
+":attr:`~Format.FORWARDREF`. If this is not implemented, it will then check "
+"if :attr:`~Format.VALUE_WITH_FAKE_GLOBALS` is supported and use that in the "
+"fake globals environment. If neither of these formats are supported, it will"
+" fall back to using :attr:`~Format.VALUE`. If :attr:`~Format.VALUE` fails, "
+"the error from this call will be raised."
+msgstr ""
+"Khi gọi :attr:`!object.__annotate__`, đầu tiên nó được gọi bằng "
+":attr:`~Format.FORWARDREF`. Nếu điều này không được triển khai, thì nó sẽ "
+"kiểm tra xem :attr:`~Format.VALUE_WITH_FAKE_GLOBALS` có được hỗ trợ hay "
+"không và sử dụng nó trong môi trường toàn cầu giả. Nếu cả hai định dạng này "
+"đều không được hỗ trợ, nó sẽ quay lại sử dụng :attr:`~Format.VALUE`. Nếu "
+":attr:`~Format.VALUE` không thành công, lỗi từ lệnh gọi này sẽ xuất hiện."
+
+#: ../../library/annotationlib.rst:355
+#, fuzzy
+msgid ""
+"STRING: If :attr:`!object.__annotate__` exists, it is called first; "
+"otherwise, :attr:`!object.__annotations__` is used and stringified using "
+":func:`annotations_to_string`."
+msgstr ""
+"STRING: Nếu :attr:`!object.__annotate__` tồn tại, nó sẽ được gọi đầu tiên; "
+"mặt khác, :attr:`!object.__annotations__` được sử dụng và xâu chuỗi bằng "
+":func:`annotations_to_string`."
+
+#: ../../library/annotationlib.rst:359
+#, fuzzy
+msgid ""
+"When calling :attr:`!object.__annotate__` it is first called with "
+":attr:`~Format.STRING`. If this is not implemented, it will then check if "
+":attr:`~Format.VALUE_WITH_FAKE_GLOBALS` is supported and use that in the "
+"fake globals environment. If neither of these formats are supported, it will"
+" fall back to using :attr:`~Format.VALUE` with the result converted using "
+":func:`annotations_to_string`. If :attr:`~Format.VALUE` fails, the error "
+"from this call will be raised."
+msgstr ""
+"Khi gọi :attr:`!object.__annotate__`, đầu tiên nó được gọi bằng "
+":attr:`~Format.STRING`. Nếu điều này không được triển khai, thì nó sẽ kiểm "
+"tra xem :attr:`~Format.VALUE_WITH_FAKE_GLOBALS` có được hỗ trợ hay không và "
+"sử dụng nó trong môi trường toàn cầu giả. Nếu cả hai định dạng này đều không"
+" được hỗ trợ, nó sẽ quay lại sử dụng :attr:`~Format.VALUE` với kết quả được "
+"chuyển đổi bằng :func:`annotations_to_string`. Nếu :attr:`~Format.VALUE` "
+"không thành công, lỗi từ lệnh gọi này sẽ xuất hiện."
+
+#: ../../library/annotationlib.rst:366
+#, fuzzy
+msgid ""
+"Returns a dict. :func:`!get_annotations` returns a new dict every time it's "
+"called; calling it twice on the same object will return two different but "
+"equivalent dicts."
+msgstr ""
+"Trả về một lệnh. :func:`!get_annotations` trả về một lệnh mới mỗi khi nó "
+"được gọi; gọi nó hai lần trên cùng một đối tượng sẽ trả về hai ký tự khác "
+"nhau nhưng tương đương."
+
+#: ../../library/annotationlib.rst:370
+#, fuzzy
+msgid "This function handles several details for you:"
+msgstr "Hàm này xử lý một số chi tiết cho bạn:"
+
+#: ../../library/annotationlib.rst:372
+#, fuzzy
+msgid ""
+"If *eval_str* is true, values of type :class:`!str` will be un-stringized "
+"using :func:`eval`. This is intended for use with stringized annotations "
+"(``from __future__ import annotations``). It is an error to set *eval_str* "
+"to true with formats other than :attr:`Format.VALUE`."
+msgstr ""
+"Nếu *eval_str* là đúng, các giá trị thuộc loại :class:`!str` sẽ không được "
+"xâu chuỗi bằng :func:`eval`. Điều này được thiết kế để sử dụng với các chú "
+"thích được xâu chuỗi (``from __future__ import annotations``). Sẽ có lỗi khi"
+" đặt *eval_str* thành true với các định dạng khác :attr:`Format.VALUE`."
+
+#: ../../library/annotationlib.rst:377
+#, fuzzy
+msgid ""
+"If *obj* doesn't have an annotations dict, returns an empty dict. (Functions"
+" and methods always have an annotations dict; classes, modules, and other "
+"types of callables may not.)"
+msgstr ""
+"Nếu *obj* không có lệnh chú thích, sẽ trả về một lệnh trống. (Các hàm và "
+"phương thức luôn có một chú thích; các lớp, mô-đun và các loại lệnh gọi khác"
+" có thể không có.)"
+
+#: ../../library/annotationlib.rst:381
+#, fuzzy
+msgid ""
+"Ignores inherited annotations on classes, as well as annotations on "
+"metaclasses. If a class doesn't have its own annotations dict, returns an "
+"empty dict."
+msgstr ""
+"Bỏ qua các chú thích được kế thừa trên các lớp cũng như các chú thích trên "
+"siêu dữ liệu. Nếu một lớp không có lệnh chú thích riêng, sẽ trả về một lệnh "
+"trống."
+
+#: ../../library/annotationlib.rst:384
+#, fuzzy
+msgid ""
+"All accesses to object members and dict values are done using ``getattr()`` "
+"and ``dict.get()`` for safety."
+msgstr ""
+"Tất cả quyền truy cập vào các thành viên đối tượng và giá trị dict đều được "
+"thực hiện bằng ``getattr()`` và ``dict.get()`` để đảm bảo an toàn."
+
+#: ../../library/annotationlib.rst:387
+#, fuzzy
+msgid ""
+"*eval_str* controls whether or not values of type :class:`!str` are replaced"
+" with the result of calling :func:`eval` on those values:"
+msgstr ""
+"*eval_str* kiểm soát xem các giá trị của loại :class:`!str` có được thay thế"
+" bằng kết quả của việc gọi :func:`eval` trên các giá trị đó hay không:"
+
+#: ../../library/annotationlib.rst:390
+#, fuzzy
+msgid ""
+"If eval_str is true, :func:`eval` is called on values of type :class:`!str`."
+" (Note that :func:`!get_annotations` doesn't catch exceptions; if "
+":func:`eval` raises an exception, it will unwind the stack past the "
+":func:`!get_annotations` call.)"
+msgstr ""
+"Nếu eval_str là đúng, :func:`eval` được gọi trên các giá trị thuộc loại "
+":class:`!str`. (Lưu ý rằng :func:`!get_annotations` không bắt được ngoại lệ;"
+" nếu :func:`eval` đưa ra một ngoại lệ, nó sẽ giải phóng ngăn xếp vượt qua "
+"lệnh gọi :func:`!get_annotations`.)"
+
+#: ../../library/annotationlib.rst:394
+#, fuzzy
+msgid ""
+"If *eval_str* is false (the default), values of type :class:`!str` are "
+"unchanged."
+msgstr ""
+"Nếu *eval_str* là sai (mặc định), các giá trị của loại :class:`!str` sẽ "
+"không thay đổi."
+
+#: ../../library/annotationlib.rst:397
+#, fuzzy
+msgid ""
+"*globals* and *locals* are passed in to :func:`eval`; see the documentation "
+"for :func:`eval` for more information. If *globals* or *locals* is "
+":const:`!None`, this function may replace that value with a context-specific"
+" default, contingent on ``type(obj)``:"
+msgstr ""
+"*globals* và *locals* được chuyển vào :func:`eval`; xem tài liệu về "
+":func:`eval` để biết thêm thông tin. Nếu *globals* hoặc *locals* là "
+":const:`!None`, hàm này có thể thay thế giá trị đó bằng giá trị mặc định "
+"theo ngữ cảnh cụ thể, tùy thuộc vào ``type(obj)``:"
+
+#: ../../library/annotationlib.rst:402
+#, fuzzy
+msgid "If *obj* is a module, *globals* defaults to ``obj.__dict__``."
+msgstr "Nếu *obj* là một mô-đun, *globals* mặc định là ``obj.__dict__``."
+
+#: ../../library/annotationlib.rst:403
+#, fuzzy
+msgid ""
+"If *obj* is a class, *globals* defaults to "
+"``sys.modules[obj.__module__].__dict__`` and *locals* defaults to the *obj* "
+"class namespace."
+msgstr ""
+"Nếu *obj* là một lớp, *globals* mặc định là "
+"``sys.modules[obj.__module__].__dict__`` và *locals* mặc định là không gian "
+"tên lớp *obj*."
+
+#: ../../library/annotationlib.rst:406
+#, fuzzy
+msgid ""
+"If *obj* is a callable, *globals* defaults to :attr:`obj.__globals__ "
+"<function.__globals__>`, although if *obj* is a wrapped function (using "
+":func:`functools.update_wrapper`) or a :class:`functools.partial` object, it"
+" is unwrapped until a non-wrapped function is found."
+msgstr ""
+"Nếu *obj* là một hàm có thể gọi được thì *globals* sẽ mặc định là "
+":attr:`obj.__globals__ <function.__globals__>`, mặc dù nếu *obj* là một hàm "
+"được gói (sử dụng :func:`functools.update_wrapper`) hoặc một đối tượng "
+":class:`functools.partial`, thì nó sẽ được mở gói cho đến khi tìm thấy một "
+"hàm không được gói."
+
+#: ../../library/annotationlib.rst:412
+#, fuzzy
+msgid ""
+"Calling :func:`!get_annotations` is best practice for accessing the "
+"annotations dict of any object. See :ref:`annotations-howto` for more "
+"information on annotations best practices."
+msgstr ""
+"Gọi :func:`!get_annotations` là cách tốt nhất để truy cập vào chú thích của "
+"bất kỳ đối tượng nào. Xem :ref:`annotations-howto` để biết thêm thông tin về"
+" các phương pháp hay nhất về chú thích."
+
+#: ../../library/annotationlib.rst:416
+#, python-brace-format, fuzzy
+msgid ""
+">>> def f(a: int, b: str) -> float:\n"
+"...     pass\n"
+">>> get_annotations(f)\n"
+"{'a': <class 'int'>, 'b': <class 'str'>, 'return': <class 'float'>}"
+msgstr ""
+">>> def f(a: int, b: str) -> float:\n"
+"... vượt qua\n"
+">>> get_annotations(f)\n"
+"{'a': <class 'int'>, 'b': <class 'str'>, 'return': <class 'float'>}"
+
+#: ../../library/annotationlib.rst:427
+#, fuzzy
+msgid ""
+"Convert an arbitrary Python value to a format suitable for use by the "
+":attr:`~Format.STRING` format. This calls :func:`repr` for most objects, but"
+" has special handling for some objects, such as type objects."
+msgstr ""
+"Chuyển đổi giá trị Python tùy ý sang định dạng phù hợp để sử dụng theo định "
+"dạng :attr:`~Format.STRING`. Điều này gọi :func:`repr` cho hầu hết các đối "
+"tượng, nhưng có cách xử lý đặc biệt đối với một số đối tượng, chẳng hạn như "
+"đối tượng loại."
+
+#: ../../library/annotationlib.rst:431
+#, fuzzy
+msgid ""
+"This is meant as a helper for user-provided annotate functions that support "
+"the :attr:`~Format.STRING` format but do not have access to the code "
+"creating the annotations. It can also be used to provide a user-friendly "
+"string representation for other objects that contain values that are "
+"commonly encountered in annotations."
+msgstr ""
+"Điều này có nghĩa là một trình trợ giúp cho các hàm chú thích do người dùng "
+"cung cấp hỗ trợ định dạng :attr:`~Format.STRING` nhưng không có quyền truy "
+"cập vào mã tạo chú thích. Nó cũng có thể được sử dụng để cung cấp cách biểu "
+"diễn chuỗi thân thiện với người dùng cho các đối tượng khác có chứa các giá "
+"trị thường gặp trong chú thích."
+
+#: ../../library/annotationlib.rst:441
+#, fuzzy
+msgid "Recipes"
+msgstr "Công thức nấu ăn"
+
+#: ../../library/annotationlib.rst:446
+#, fuzzy
+msgid "Using annotations in a metaclass"
+msgstr "Sử dụng chú thích trong siêu dữ liệu"
+
+#: ../../library/annotationlib.rst:448
+#, fuzzy
+msgid ""
+"A :ref:`metaclass <metaclasses>` may want to inspect or even modify the "
+"annotations in a class body during class creation. Doing so requires "
+"retrieving annotations from the class namespace dictionary. For classes "
+"created with ``from __future__ import annotations``, the annotations will be"
+" in the ``__annotations__`` key of the dictionary. For other classes with "
+"annotations, :func:`get_annotate_from_class_namespace` can be used to get "
+"the annotate function, and :func:`call_annotate_function` can be used to "
+"call it and retrieve the annotations. Using the :attr:`~Format.FORWARDREF` "
+"format will usually be best, because this allows the annotations to refer to"
+" names that cannot yet be resolved when the class is created."
+msgstr ""
+"Zz000zz có thể muốn kiểm tra hoặc thậm chí sửa đổi các chú thích trong nội "
+"dung lớp trong quá trình tạo lớp. Làm như vậy yêu cầu truy xuất các chú "
+"thích từ từ điển vùng tên lớp. Đối với các lớp được tạo bằng ``from "
+"__future__ import annotations``, các chú thích sẽ nằm trong khóa "
+"``__annotations__`` của từ điển. Đối với các lớp khác có chú thích, "
+":func:`get_annotate_from_class_namespace` có thể được sử dụng để lấy hàm chú"
+" thích và :func:`call_annotate_function` có thể được sử dụng để gọi và truy "
+"xuất chú thích. Sử dụng định dạng :attr:`~Format.FORWARDREF` thường sẽ là "
+"tốt nhất, vì điều này cho phép các chú thích tham chiếu đến những cái tên "
+"chưa thể giải quyết được khi lớp được tạo."
+
+#: ../../library/annotationlib.rst:459
+#, fuzzy
+msgid ""
+"To modify the annotations, it is best to create a wrapper annotate function "
+"that calls the original annotate function, makes any necessary adjustments, "
+"and returns the result."
+msgstr ""
+"Để sửa đổi chú thích, cách tốt nhất là tạo hàm chú thích trình bao bọc gọi "
+"hàm chú thích ban đầu, thực hiện mọi điều chỉnh cần thiết và trả về kết quả."
+
+#: ../../library/annotationlib.rst:463
+#, fuzzy
+msgid ""
+"Below is an example of a metaclass that filters out all "
+":class:`typing.ClassVar` annotations from the class and puts them in a "
+"separate attribute:"
+msgstr ""
+"Dưới đây là ví dụ về siêu dữ liệu lọc tất cả các chú thích "
+":class:`typing.ClassVar` khỏi lớp và đặt chúng vào một thuộc tính riêng "
+"biệt:"
+
+#: ../../library/annotationlib.rst:466
+#, python-brace-format, fuzzy
+msgid ""
+"import annotationlib\n"
+"import typing\n"
+"\n"
+"class ClassVarSeparator(type):\n"
+"   def __new__(mcls, name, bases, ns):\n"
+"      if \"__annotations__\" in ns:  # from __future__ import annotations\n"
+"         annotations = ns[\"__annotations__\"]\n"
+"         classvar_keys = {\n"
+"            key for key, value in annotations.items()\n"
+"            # Use string comparison for simplicity; a more robust solution\n"
+"            # could use annotationlib.ForwardRef.evaluate\n"
+"            if value.startswith(\"ClassVar\")\n"
+"         }\n"
+"         classvars = {key: annotations[key] for key in classvar_keys}\n"
+"         ns[\"__annotations__\"] = {\n"
+"            key: value for key, value in annotations.items()\n"
+"            if key not in classvar_keys\n"
+"         }\n"
+"         wrapped_annotate = None\n"
+"      elif annotate := annotationlib.get_annotate_from_class_namespace(ns):\n"
+"         annotations = annotationlib.call_annotate_function(\n"
+"            annotate, format=annotationlib.Format.FORWARDREF\n"
+"         )\n"
+"         classvar_keys = {\n"
+"            key for key, value in annotations.items()\n"
+"            if typing.get_origin(value) is typing.ClassVar\n"
+"         }\n"
+"         classvars = {key: annotations[key] for key in classvar_keys}\n"
+"\n"
+"         def wrapped_annotate(format):\n"
+"            annos = annotationlib.call_annotate_function(annotate, format, owner=typ)\n"
+"            return {key: value for key, value in annos.items() if key not in classvar_keys}\n"
+"\n"
+"      else:  # no annotations\n"
+"         classvars = {}\n"
+"         wrapped_annotate = None\n"
+"      typ = super().__new__(mcls, name, bases, ns)\n"
+"\n"
+"      if wrapped_annotate is not None:\n"
+"         # Wrap the original __annotate__ with a wrapper that removes ClassVars\n"
+"         typ.__annotate__ = wrapped_annotate\n"
+"      typ.classvars = classvars  # Store the ClassVars in a separate attribute\n"
+"      return typ"
+msgstr ""
+"nhập chú thíchlib\n"
+"nhập gõ\n"
+"\n"
+"lớp ClassVarSeparator(loại):\n"
+"   def __new__(mcls, tên, căn cứ, ns):\n"
+"      nếu \"__annotations__\" trong ns: # from __future__ nhập chú thích\n"
+"         chú thích = ns[\"__annotations__\"]\n"
+"         classvar_keys = {\n"
+"            khóa cho khóa, giá trị trong chú thích.items()\n"
+"            so sánh chuỗi # Use để đơn giản; một giải pháp mạnh mẽ hơn\n"
+"            # could sử dụng chú thíchlib.ForwardRef.evaluate\n"
+"            if value.startswith(\"ClassVar\")\n"
+"         }\n"
+"         classvars = {key: chú thích[key] cho khóa trong classvar_keys}\n"
+"         ns[\"__annotations__\"] = {\n"
+"            key: giá trị cho khóa, giá trị trong chú thích.items()\n"
+"            nếu khóa không có trong classvar_keys\n"
+"         }\n"
+"         bọc_annotate = Không có\n"
+"      elif chú thích := chú thíchlib.get_annotate_from_class_namespace(ns):\n"
+"         chú thích = chú thíchlib.call_annotate_function(\n"
+"            chú thích, định dạng=annotationlib.Format.FORWARDREF\n"
+"         )\n"
+"         classvar_keys = {\n"
+"            khóa cho khóa, giá trị trong chú thích.items()\n"
+"            nếu đang gõ.get_origin(value) đang gõ.ClassVar\n"
+"         }\n"
+"         classvars = {key: chú thích[key] cho khóa trong classvar_keys}\n"
+"\n"
+"         def được bọc_annotate (định dạng):\n"
+"            annos = chú thíchlib.call_annotate_function(chú thích, định dạng, chủ sở hữu=typ)\n"
+"            trả về {key: giá trị cho khóa, giá trị trong annos.items() nếu khóa không có trong classvar_keys}\n"
+"\n"
+"      khác: chú thích # no\n"
+"         lớpvars = {}\n"
+"         bọc_annotate = Không có\n"
+"      typ = super().__new__(mcls, tên, căn cứ, ns)\n"
+"\n"
+"      nếu Wrap_annotate không phải là Không có:\n"
+"         # Wrap __annotate__ ban đầu có trình bao bọc loại bỏ ClassVars\n"
+"         typ.__annotate__ = bọc_annotate\n"
+"      typ.classvars = classvars # Store các ClassVars trong một thuộc tính riêng biệt\n"
+"      kiểu trả về"
+
+#: ../../library/annotationlib.rst:514
+#, fuzzy
+msgid "Limitations of the ``STRING`` format"
+msgstr "Hạn chế của định dạng ``STRING``"
+
+#: ../../library/annotationlib.rst:516
+#, fuzzy
+msgid ""
+"The :attr:`~Format.STRING` format is meant to approximate the source code of"
+" the annotation, but the implementation strategy used means that it is not "
+"always possible to recover the exact source code."
+msgstr ""
+"Định dạng :attr:`~Format.STRING` nhằm mục đích gần đúng mã nguồn của chú "
+"thích, nhưng chiến lược triển khai được sử dụng có nghĩa là không phải lúc "
+"nào cũng có thể khôi phục mã nguồn chính xác."
+
+#: ../../library/annotationlib.rst:520
+#, fuzzy
+msgid ""
+"First, the stringifier of course cannot recover any information that is not "
+"present in the compiled code, including comments, whitespace, "
+"parenthesization, and operations that get simplified by the compiler."
+msgstr ""
+"Đầu tiên, trình xâu chuỗi tất nhiên không thể khôi phục bất kỳ thông tin nào"
+" không có trong mã được biên dịch, bao gồm các nhận xét, khoảng trắng, dấu "
+"ngoặc đơn và các thao tác được trình biên dịch đơn giản hóa."
+
+#: ../../library/annotationlib.rst:524
+#, fuzzy
+msgid ""
+"Second, the stringifier can intercept almost all operations that involve "
+"names looked up in some scope, but it cannot intercept operations that "
+"operate fully on constants. As a corollary, this also means it is not safe "
+"to request the ``STRING`` format on untrusted code: Python is powerful "
+"enough that it is possible to achieve arbitrary code execution even with no "
+"access to any globals or builtins. For example:"
+msgstr ""
+"Thứ hai, trình tạo chuỗi có thể chặn hầu hết tất cả các hoạt động liên quan "
+"đến tên được tra cứu trong một phạm vi nào đó, nhưng nó không thể chặn các "
+"hoạt động hoạt động hoàn toàn trên các hằng số. Hệ quả tất yếu là điều này "
+"cũng có nghĩa là sẽ không an toàn khi yêu cầu định dạng ``STRING`` trên mã "
+"không đáng tin cậy: Python đủ mạnh để có thể thực thi mã tùy ý ngay cả khi "
+"không có quyền truy cập vào bất kỳ toàn cục hoặc nội dung nào. Ví dụ:"
+
+#: ../../library/annotationlib.rst:530
+#, python-brace-format, fuzzy
+msgid ""
+">>> def f(x: (1).__class__.__base__.__subclasses__()[-1].__init__.__builtins__[\"print\"](\"Hello world\")): pass\n"
+"...\n"
+">>> annotationlib.get_annotations(f, format=annotationlib.Format.STRING)\n"
+"Hello world\n"
+"{'x': 'None'}"
+msgstr ""
+">>> def f(x: (1).__class__.__base__.__subclasses__()[-1].__init__.__buildins__[\"print\"](\"Xin chào thế giới\")): vượt qua\n"
+"...\n"
+">>> chú thíchlib.get_annotations(f, format=annotationlib.Format.STRING)\n"
+"Xin chào thế giới\n"
+"{'x': 'Không có'}"
+
+#: ../../library/annotationlib.rst:539
+#, fuzzy
+msgid ""
+"This particular example works as of the time of writing, but it relies on "
+"implementation details and is not guaranteed to work in the future."
+msgstr ""
+"Ví dụ cụ thể này hoạt động tại thời điểm viết bài, nhưng nó phụ thuộc vào "
+"chi tiết triển khai và không được đảm bảo sẽ hoạt động trong tương lai."
+
+#: ../../library/annotationlib.rst:542
+#, fuzzy
+msgid ""
+"Among the different kinds of expressions that exist in Python, as "
+"represented by the :mod:`ast` module, some expressions are supported, "
+"meaning that the ``STRING`` format can generally recover the original source"
+" code; others are unsupported, meaning that they may result in incorrect "
+"output or an error."
+msgstr ""
+"Trong số các loại biểu thức khác nhau tồn tại trong Python, được biểu thị "
+"bằng mô-đun :mod:`ast`, một số biểu thức được hỗ trợ, nghĩa là định dạng "
+"``STRING`` thường có thể khôi phục mã nguồn gốc; những cái khác không được "
+"hỗ trợ, có nghĩa là chúng có thể dẫn đến kết quả đầu ra không chính xác hoặc"
+" bị lỗi."
+
+#: ../../library/annotationlib.rst:547
+#, fuzzy
+msgid "The following are supported (sometimes with caveats):"
+msgstr "Những điều sau đây được hỗ trợ (đôi khi có cảnh báo):"
+
+#: ../../library/annotationlib.rst:549
+#, fuzzy
+msgid ":class:`ast.BinOp`"
+msgstr ":class:`ast.BinOp`"
+
+#: ../../library/annotationlib.rst:550
+#, fuzzy
+msgid ":class:`ast.UnaryOp`"
+msgstr ":class:`ast.UnaryOp`"
+
+#: ../../library/annotationlib.rst:552
+#, fuzzy
+msgid ""
+":class:`ast.Invert` (``~``), :class:`ast.UAdd` (``+``), and "
+":class:`ast.USub` (``-``) are supported"
+msgstr ""
+":class:`ast.Invert` (``~``), :class:`ast.UAdd` (``+``) và :class:`ast.USub` "
+"(``-``) được hỗ trợ"
+
+#: ../../library/annotationlib.rst:553
+#, fuzzy
+msgid ":class:`ast.Not` (``not``) is not supported"
+msgstr ":class:`ast.Not` (``not``) không được hỗ trợ"
+
+#: ../../library/annotationlib.rst:555
+#, fuzzy
+msgid ":class:`ast.Dict` (except when using ``**`` unpacking)"
+msgstr ":class:`ast.Dict` (trừ khi sử dụng ``**`` giải nén)"
+
+#: ../../library/annotationlib.rst:556
+#, fuzzy
+msgid ":class:`ast.Set`"
+msgstr ":class:`ast.Set`"
+
+#: ../../library/annotationlib.rst:557
+#, fuzzy
+msgid ":class:`ast.Compare`"
+msgstr ":class:`ast.Compare`"
+
+#: ../../library/annotationlib.rst:559
+#, fuzzy
+msgid ":class:`ast.Eq` and :class:`ast.NotEq` are supported"
+msgstr ":class:`ast.Eq` và :class:`ast.NotEq` được hỗ trợ"
+
+#: ../../library/annotationlib.rst:560
+#, fuzzy
+msgid ""
+":class:`ast.Lt`, :class:`ast.LtE`, :class:`ast.Gt`, and :class:`ast.GtE` are"
+" supported, but the operand may be flipped"
+msgstr ""
+":class:`ast.Lt`, :class:`ast.LtE`, :class:`ast.Gt` và :class:`ast.GtE` được "
+"hỗ trợ, nhưng toán hạng có thể bị đảo ngược"
+
+#: ../../library/annotationlib.rst:561
+#, fuzzy
+msgid ""
+":class:`ast.Is`, :class:`ast.IsNot`, :class:`ast.In`, and :class:`ast.NotIn`"
+" are not supported"
+msgstr ""
+":class:`ast.Is`, :class:`ast.IsNot`, :class:`ast.In` và :class:`ast.NotIn` "
+"không được hỗ trợ"
+
+#: ../../library/annotationlib.rst:563
+#, fuzzy
+msgid ":class:`ast.Call` (except when using ``**`` unpacking)"
+msgstr ":class:`ast.Call` (trừ khi sử dụng ``**`` giải nén)"
+
+#: ../../library/annotationlib.rst:564
+#, fuzzy
+msgid ""
+":class:`ast.Constant` (though not the exact representation of the constant; "
+"for example, escape sequences in strings are lost; hexadecimal numbers are "
+"converted to decimal)"
+msgstr ""
+":class:`ast.Constant` (mặc dù không phải là biểu diễn chính xác của hằng số;"
+" ví dụ: chuỗi thoát trong chuỗi bị mất; số thập lục phân được chuyển thành "
+"số thập phân)"
+
+#: ../../library/annotationlib.rst:566
+#, fuzzy
+msgid ":class:`ast.Attribute` (assuming the value is not a constant)"
+msgstr ":class:`ast.Attribute` (giả sử giá trị không phải là hằng số)"
+
+#: ../../library/annotationlib.rst:567
+#, fuzzy
+msgid ":class:`ast.Subscript` (assuming the value is not a constant)"
+msgstr ":class:`ast.Subscript` (giả sử giá trị không phải là hằng số)"
+
+#: ../../library/annotationlib.rst:568
+#, fuzzy
+msgid ":class:`ast.Starred` (``*`` unpacking)"
+msgstr ":class:`ast.Starred` (giải nén ``*``)"
+
+#: ../../library/annotationlib.rst:569
+#, fuzzy
+msgid ":class:`ast.Name`"
+msgstr ":class:`ast.Name`"
+
+#: ../../library/annotationlib.rst:570
+#, fuzzy
+msgid ":class:`ast.List`"
+msgstr ":class:`ast.List`"
+
+#: ../../library/annotationlib.rst:571
+#, fuzzy
+msgid ":class:`ast.Tuple`"
+msgstr ":class:`ast.Tuple`"
+
+#: ../../library/annotationlib.rst:572
+#, fuzzy
+msgid ":class:`ast.Slice`"
+msgstr ":class:`ast.Slice`"
+
+#: ../../library/annotationlib.rst:574
+#, fuzzy
+msgid ""
+"The following are unsupported, but throw an informative error when "
+"encountered by the stringifier:"
+msgstr ""
+"Các mục sau đây không được hỗ trợ nhưng sẽ đưa ra lỗi thông tin khi trình "
+"tạo chuỗi gặp phải:"
+
+#: ../../library/annotationlib.rst:577
+#, fuzzy
+msgid ""
+":class:`ast.FormattedValue` (f-strings; error is not detected if conversion "
+"specifiers like ``!r`` are used)"
+msgstr ""
+":class:`ast.FormattedValue` (chuỗi f; không phát hiện được lỗi nếu sử dụng "
+"các công cụ xác định chuyển đổi như ``!r``)"
+
+#: ../../library/annotationlib.rst:579
+#, fuzzy
+msgid ":class:`ast.JoinedStr` (f-strings)"
+msgstr ":class:`ast.JoinedStr` (dây f)"
+
+#: ../../library/annotationlib.rst:581
+#, fuzzy
+msgid "The following are unsupported and result in incorrect output:"
+msgstr ""
+"Các mục sau không được hỗ trợ và dẫn đến kết quả đầu ra không chính xác:"
+
+#: ../../library/annotationlib.rst:583
+#, fuzzy
+msgid ":class:`ast.BoolOp` (``and`` and ``or``)"
+msgstr ":class:`ast.BoolOp` (``and`` và ``or``)"
+
+#: ../../library/annotationlib.rst:584
+#, fuzzy
+msgid ":class:`ast.IfExp`"
+msgstr ":class:`ast.IfExp`"
+
+#: ../../library/annotationlib.rst:585
+#, fuzzy
+msgid ":class:`ast.Lambda`"
+msgstr ":class:`ast.Lambda`"
+
+#: ../../library/annotationlib.rst:586
+#, fuzzy
+msgid ":class:`ast.ListComp`"
+msgstr ":class:`ast.ListComp`"
+
+#: ../../library/annotationlib.rst:587
+#, fuzzy
+msgid ":class:`ast.SetComp`"
+msgstr ":class:`ast.SetComp`"
+
+#: ../../library/annotationlib.rst:588
+#, fuzzy
+msgid ":class:`ast.DictComp`"
+msgstr ":class:`ast.DictComp`"
+
+#: ../../library/annotationlib.rst:589
+#, fuzzy
+msgid ":class:`ast.GeneratorExp`"
+msgstr ":class:`ast.GeneratorExp`"
+
+#: ../../library/annotationlib.rst:591
+#, fuzzy
+msgid ""
+"The following are disallowed in annotation scopes and therefore not "
+"relevant:"
+msgstr ""
+"Những điều sau đây không được phép trong phạm vi chú thích và do đó không "
+"liên quan:"
+
+#: ../../library/annotationlib.rst:593
+#, fuzzy
+msgid ":class:`ast.NamedExpr` (``:=``)"
+msgstr ":class:`ast.NamedExpr` (``:=``)"
+
+#: ../../library/annotationlib.rst:594
+#, fuzzy
+msgid ":class:`ast.Await`"
+msgstr ":class:`ast.Await`"
+
+#: ../../library/annotationlib.rst:595
+#, fuzzy
+msgid ":class:`ast.Yield`"
+msgstr ":class:`ast.Yield`"
+
+#: ../../library/annotationlib.rst:596
+#, fuzzy
+msgid ":class:`ast.YieldFrom`"
+msgstr ":class:`ast.YieldFrom`"
+
+#: ../../library/annotationlib.rst:600
+#, fuzzy
+msgid "Limitations of the ``FORWARDREF`` format"
+msgstr "Hạn chế của định dạng ``FORWARDREF``"
+
+#: ../../library/annotationlib.rst:602
+#, fuzzy
+msgid ""
+"The :attr:`~Format.FORWARDREF` format aims to produce real values as much as"
+" possible, with anything that cannot be resolved replaced with "
+":class:`ForwardRef` objects. It is affected by broadly the same Limitations "
+"as the :attr:`~Format.STRING` format: annotations that perform operations on"
+" literals or that use unsupported expression types may raise exceptions when"
+" evaluated using the :attr:`~Format.FORWARDREF` format."
+msgstr ""
+"Định dạng :attr:`~Format.FORWARDREF` nhằm mục đích tạo ra nhiều giá trị thực"
+" nhất có thể, với mọi thứ không thể giải quyết được sẽ được thay thế bằng "
+"đối tượng :class:`ForwardRef`. Nó bị ảnh hưởng bởi các Hạn chế tương tự như "
+"định dạng :attr:`~Format.STRING`: các chú thích thực hiện các thao tác trên "
+"chữ hoặc sử dụng các loại biểu thức không được hỗ trợ có thể đưa ra các "
+"ngoại lệ khi được đánh giá bằng định dạng :attr:`~Format.FORWARDREF`."
+
+#: ../../library/annotationlib.rst:609
+#, fuzzy
+msgid "Below are a few examples of the behavior with unsupported expressions:"
+msgstr ""
+"Dưới đây là một số ví dụ về hành vi với các biểu thức không được hỗ trợ:"
+
+#: ../../library/annotationlib.rst:611
+#, python-brace-format, fuzzy
+msgid ""
+">>> from annotationlib import get_annotations, Format\n"
+">>> def zerodiv(x: 1 / 0): ...\n"
+">>> get_annotations(zerodiv, format=Format.STRING)\n"
+"Traceback (most recent call last):\n"
+"  ...\n"
+"ZeroDivisionError: division by zero\n"
+">>> get_annotations(zerodiv, format=Format.FORWARDREF)\n"
+"Traceback (most recent call last):\n"
+"  ...\n"
+"ZeroDivisionError: division by zero\n"
+">>> def ifexp(x: 1 if y else 0): ...\n"
+">>> get_annotations(ifexp, format=Format.STRING)\n"
+"{'x': '1'}"
+msgstr ""
+">>> từ nhập chú thíchlib get_annotations, Định dạng\n"
+">>> def zerodiv(x: 1 / 0): ...\n"
+">>> get_annotations(zerodiv, format=Format.STRING)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  ...\n"
+"ZeroDivisionError: chia cho 0\n"
+">>> get_annotations(zerodiv, format=Format.FORWARDREF)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  ...\n"
+"ZeroDivisionError: chia cho 0\n"
+">>> def ifexp(x: 1 if y else 0): ...\n"
+">>> get_annotations(ifexp, format=Format.STRING)\n"
+"{'x': '1'}"
+
+#: ../../library/annotationlib.rst:630
+#, fuzzy
+msgid "Security implications of introspecting annotations"
+msgstr "Ý nghĩa bảo mật của các chú thích nội tâm"
+
+#: ../../library/annotationlib.rst:632
+#, fuzzy
+msgid ""
+"Much of the functionality in this module involves executing code related to "
+"annotations, which can then do arbitrary things. For example, "
+":func:`get_annotations` may call an arbitrary :term:`annotate function`, and"
+" :meth:`ForwardRef.evaluate` may call :func:`eval` on an arbitrary string. "
+"Code contained in an annotation might make arbitrary system calls, enter an "
+"infinite loop, or perform any other operation. This is also true for any "
+"access of the :attr:`~object.__annotations__` attribute, and for various "
+"functions in the :mod:`typing` module that work with annotations, such as "
+":func:`typing.get_type_hints`."
+msgstr ""
+"Phần lớn chức năng trong mô-đun này liên quan đến việc thực thi mã liên quan"
+" đến chú thích, sau đó có thể thực hiện những việc tùy ý. Ví dụ: "
+":func:`get_annotations` có thể gọi :term:`annotate function` tùy ý và "
+":meth:`ForwardRef.evaluate` có thể gọi :func:`eval` trên một chuỗi tùy ý. Mã"
+" chứa trong chú thích có thể thực hiện các lệnh gọi hệ thống tùy ý, nhập "
+"vòng lặp vô hạn hoặc thực hiện bất kỳ thao tác nào khác. Điều này cũng đúng "
+"đối với mọi quyền truy cập vào thuộc tính :attr:`~object.__annotations__` và"
+" đối với các chức năng khác nhau trong mô-đun :mod:`typing` hoạt động với "
+"các chú thích, chẳng hạn như :func:`typing.get_type_hints`."
+
+#: ../../library/annotationlib.rst:641
+#, fuzzy
+msgid ""
+"Any security issue arising from this also applies immediately after "
+"importing code that may contain untrusted annotations: importing code can "
+"always cause arbitrary operations to be performed. However, it is unsafe to "
+"accept strings or other input from an untrusted source and pass them to any "
+"of the APIs for introspecting annotations, for example by editing an "
+"``__annotations__`` dictionary or directly creating a :class:`ForwardRef` "
+"object."
+msgstr ""
+"Bất kỳ vấn đề bảo mật nào phát sinh từ việc này cũng áp dụng ngay sau khi "
+"nhập mã có thể chứa các chú thích không đáng tin cậy: việc nhập mã luôn có "
+"thể khiến các hoạt động tùy ý được thực hiện. Tuy nhiên, sẽ không an toàn "
+"khi chấp nhận chuỗi hoặc dữ liệu đầu vào khác từ nguồn không đáng tin cậy và"
+" chuyển chúng tới bất kỳ API nào để xem xét chú thích, chẳng hạn như bằng "
+"cách chỉnh sửa từ điển ``__annotations__`` hoặc trực tiếp tạo đối tượng "
+":class:`ForwardRef`."

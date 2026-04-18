@@ -1,0 +1,1734 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/structures.rst:6
+#, fuzzy
+msgid "Common Object Structures"
+msgstr "Cấu trúc đối tượng chung"
+
+#: ../../c-api/structures.rst:8
+#, fuzzy
+msgid ""
+"There are a large number of structures which are used in the definition of "
+"object types for Python.  This section describes these structures and how "
+"they are used."
+msgstr ""
+"Có một số lượng lớn các cấu trúc được sử dụng trong định nghĩa các loại đối "
+"tượng cho Python.  Phần này mô tả các cấu trúc này và cách chúng được sử "
+"dụng."
+
+#: ../../c-api/structures.rst:14
+#, fuzzy
+msgid "Base object types and macros"
+msgstr "Các loại đối tượng cơ bản và macro"
+
+#: ../../c-api/structures.rst:16
+#, fuzzy
+msgid ""
+"All Python objects ultimately share a small number of fields at the "
+"beginning of the object's representation in memory.  These are represented "
+"by the :c:type:`PyObject` and :c:type:`PyVarObject` types, which are "
+"defined, in turn, by the expansions of some macros also used, whether "
+"directly or indirectly, in the definition of all other Python objects.  "
+"Additional macros can be found under :ref:`reference counting "
+"<countingrefs>`."
+msgstr ""
+"Cuối cùng, tất cả các đối tượng Python đều chia sẻ một số lượng nhỏ các "
+"trường ở đầu biểu diễn của đối tượng trong bộ nhớ.  Chúng được biểu thị bằng"
+" các loại :c:type:`PyObject` và :c:type:`PyVarObject`, lần lượt được xác "
+"định bằng cách mở rộng một số macro cũng được sử dụng, dù trực tiếp hay gián"
+" tiếp, trong định nghĩa của tất cả các đối tượng Python khác.  Các macro bổ "
+"sung có thể được tìm thấy trong :ref:`reference counting <countingrefs>`."
+
+#: ../../c-api/structures.rst:26
+#, fuzzy
+msgid ""
+"All object types are extensions of this type.  This is a type which contains"
+" the information Python needs to treat a pointer to an object as an object."
+"  In a normal \"release\" build, it contains only the object's reference "
+"count and a pointer to the corresponding type object. Nothing is actually "
+"declared to be a :c:type:`PyObject`, but every pointer to a Python object "
+"can be cast to a :c:expr:`PyObject*`."
+msgstr ""
+"Tất cả các loại đối tượng đều là phần mở rộng của loại này.  Đây là loại "
+"chứa thông tin Python cần để coi con trỏ tới một đối tượng là một đối tượng."
+"  Trong bản dựng \"phát hành\" thông thường, nó chỉ chứa số tham chiếu của "
+"đối tượng và một con trỏ tới đối tượng loại tương ứng. Không có gì thực sự "
+"được khai báo là :c:type:`PyObject`, nhưng mọi con trỏ tới đối tượng Python "
+"đều có thể được chuyển thành :c:expr:`PyObject*`."
+
+#: ../../c-api/structures.rst:33
+#, fuzzy
+msgid ""
+"The members must not be accessed directly; instead use macros such as "
+":c:macro:`Py_REFCNT` and :c:macro:`Py_TYPE`."
+msgstr ""
+"Các thành viên không được truy cập trực tiếp; thay vào đó hãy sử dụng các "
+"macro như :c:macro:`Py_REFCNT` và :c:macro:`Py_TYPE`."
+
+#: ../../c-api/structures.rst:38
+#, fuzzy
+msgid ""
+"The object's reference count, as returned by :c:macro:`Py_REFCNT`. Do not "
+"use this field directly; instead use functions and macros such as "
+":c:macro:`!Py_REFCNT`, :c:func:`Py_INCREF` and :c:func:`Py_DecRef`."
+msgstr ""
+"Số tham chiếu của đối tượng được trả về bởi :c:macro:`Py_REFCNT`. Không sử "
+"dụng trường này trực tiếp; thay vào đó hãy sử dụng các hàm và macro như "
+":c:macro:`!Py_REFCNT`, :c:func:`Py_INCREF` và :c:func:`Py_DecRef`."
+
+#: ../../c-api/structures.rst:42
+#, fuzzy
+msgid ""
+"The field type may be different from ``Py_ssize_t``, depending on build "
+"configuration and platform."
+msgstr ""
+"Loại trường có thể khác với ``Py_ssize_t``, tùy thuộc vào cấu hình và nền "
+"tảng bản dựng."
+
+#: ../../c-api/structures.rst:47
+#, fuzzy
+msgid ""
+"The object's type. Do not use this field directly; use :c:macro:`Py_TYPE` "
+"and :c:func:`Py_SET_TYPE` instead."
+msgstr ""
+"Kiểu của đối tượng. Không sử dụng trường này trực tiếp; thay vào đó hãy sử "
+"dụng :c:macro:`Py_TYPE` và :c:func:`Py_SET_TYPE`."
+
+#: ../../c-api/structures.rst:54
+#, fuzzy
+msgid ""
+"An extension of :c:type:`PyObject` that adds the "
+":c:member:`~PyVarObject.ob_size` field. This is intended for objects that "
+"have some notion of *length*."
+msgstr ""
+"Một phần mở rộng của :c:type:`PyObject` có thêm trường "
+":c:member:`~PyVarObject.ob_size`. Điều này dành cho các đối tượng có một số "
+"khái niệm về *length*."
+
+#: ../../c-api/structures.rst:58
+#, fuzzy
+msgid ""
+"As with :c:type:`!PyObject`, the members must not be accessed directly; "
+"instead use macros such as :c:macro:`Py_SIZE`, :c:macro:`Py_REFCNT` and "
+":c:macro:`Py_TYPE`."
+msgstr ""
+"Như với :c:type:`!PyObject`, các thành viên không được truy cập trực tiếp; "
+"thay vào đó hãy sử dụng các macro như :c:macro:`Py_SIZE`, "
+":c:macro:`Py_REFCNT` và :c:macro:`Py_TYPE`."
+
+#: ../../c-api/structures.rst:64
+#, fuzzy
+msgid ""
+"A size field, whose contents should be considered an object's internal "
+"implementation detail."
+msgstr ""
+"Trường kích thước, nội dung của nó phải được coi là chi tiết triển khai nội "
+"bộ của đối tượng."
+
+#: ../../c-api/structures.rst:67
+#, fuzzy
+msgid "Do not use this field directly; use :c:macro:`Py_SIZE` instead."
+msgstr ""
+"Không sử dụng trường này trực tiếp; thay vào đó hãy sử dụng "
+":c:macro:`Py_SIZE`."
+
+#: ../../c-api/structures.rst:69
+#, fuzzy
+msgid ""
+"Object creation functions such as :c:func:`PyObject_NewVar` will generally "
+"set this field to the requested size (number of items). After creation, "
+"arbitrary values can be stored in :c:member:`!ob_size` using "
+":c:macro:`Py_SET_SIZE`."
+msgstr ""
+"Các hàm tạo đối tượng như :c:func:`PyObject_NewVar` thường sẽ đặt trường này"
+" theo kích thước được yêu cầu (số lượng mục). Sau khi tạo, các giá trị tùy ý"
+" có thể được lưu trữ trong :c:member:`!ob_size` bằng :c:macro:`Py_SET_SIZE`."
+
+#: ../../c-api/structures.rst:74
+#, fuzzy
+msgid ""
+"To get an object's publicly exposed length, as returned by the Python "
+"function :py:func:`len`, use :c:func:`PyObject_Length` instead."
+msgstr ""
+"Để có được độ dài được hiển thị công khai của một đối tượng, được trả về bởi"
+" hàm :py:func:`len` của Python, thay vào đó hãy sử dụng "
+":c:func:`PyObject_Length`."
+
+#: ../../c-api/structures.rst:81
+#, fuzzy
+msgid ""
+"This is a macro used when declaring new types which represent objects "
+"without a varying length.  The PyObject_HEAD macro expands to::"
+msgstr ""
+"Đây là macro được sử dụng khi khai báo các kiểu mới đại diện cho các đối "
+"tượng không có độ dài thay đổi.  Macro PyObject_HEAD mở rộng thành::"
+
+#: ../../c-api/structures.rst:84
+#, fuzzy
+msgid "PyObject ob_base;"
+msgstr "PyObject ob_base;"
+
+#: ../../c-api/structures.rst:86
+#, fuzzy
+msgid "See documentation of :c:type:`PyObject` above."
+msgstr "Xem tài liệu của :c:type:`PyObject` ở trên."
+
+#: ../../c-api/structures.rst:91
+#, fuzzy
+msgid ""
+"This is a macro used when declaring new types which represent objects with a"
+" length that varies from instance to instance. The PyObject_VAR_HEAD macro "
+"expands to::"
+msgstr ""
+"Đây là macro được sử dụng khi khai báo các kiểu mới đại diện cho các đối "
+"tượng có độ dài thay đổi tùy theo từng trường hợp. Macro PyObject_VAR_HEAD "
+"mở rộng thành::"
+
+#: ../../c-api/structures.rst:95
+#, fuzzy
+msgid "PyVarObject ob_base;"
+msgstr "PyVarObject ob_base;"
+
+#: ../../c-api/structures.rst:97
+#, fuzzy
+msgid "See documentation of :c:type:`PyVarObject` above."
+msgstr "Xem tài liệu của :c:type:`PyVarObject` ở trên."
+
+#: ../../c-api/structures.rst:102
+#, fuzzy
+msgid ""
+"The base class of all other objects, the same as :class:`object` in Python."
+msgstr ""
+"Lớp cơ sở của tất cả các đối tượng khác, giống như :class:`object` trong "
+"Python."
+
+#: ../../c-api/structures.rst:107
+#, fuzzy
+msgid ""
+"Test if the *x* object is the *y* object, the same as ``x is y`` in Python."
+msgstr ""
+"Kiểm tra xem đối tượng *x* có phải là đối tượng *y* hay không, giống như ``x"
+" is y`` trong Python."
+
+#: ../../c-api/structures.rst:114
+#, fuzzy
+msgid ""
+"Test if an object is the ``None`` singleton, the same as ``x is None`` in "
+"Python."
+msgstr ""
+"Kiểm tra xem một đối tượng có phải là ``None`` singleton hay không, giống "
+"như ``x is None`` trong Python."
+
+#: ../../c-api/structures.rst:122
+#, fuzzy
+msgid ""
+"Test if an object is the ``True`` singleton, the same as ``x is True`` in "
+"Python."
+msgstr ""
+"Kiểm tra xem một đối tượng có phải là ``True`` singleton hay không, giống "
+"như ``x is True`` trong Python."
+
+#: ../../c-api/structures.rst:130
+#, fuzzy
+msgid ""
+"Test if an object is the ``False`` singleton, the same as ``x is False`` in "
+"Python."
+msgstr ""
+"Kiểm tra xem một đối tượng có phải là ``False`` singleton hay không, giống "
+"như ``x is False`` trong Python."
+
+#: ../../c-api/structures.rst:138
+#, fuzzy
+msgid "Get the type of the Python object *o*."
+msgstr "Lấy loại đối tượng Python *o*."
+
+#: ../../c-api/structures.rst:140
+#, fuzzy
+msgid ""
+"The returned reference is :term:`borrowed <borrowed reference>` from *o*. Do"
+" not release it with :c:func:`Py_DECREF` or similar."
+msgstr ""
+"Tham chiếu trả về là :term:`borrowed <borrowed reference>` từ *o*. Không "
+"phát hành nó với :c:func:`Py_DECREF` hoặc tương tự."
+
+#: ../../c-api/structures.rst:143
+#, fuzzy
+msgid ""
+":c:func:`Py_TYPE()` is changed to an inline static function. The parameter "
+"type is no longer :c:expr:`const PyObject*`."
+msgstr ""
+":c:func:`Py_TYPE()` được thay đổi thành hàm tĩnh nội tuyến. Loại tham số "
+"không còn là :c:expr:`const PyObject*` nữa."
+
+#: ../../c-api/structures.rst:150
+#, fuzzy
+msgid ""
+"Return non-zero if the object *o* type is *type*. Return zero otherwise. "
+"Equivalent to: ``Py_TYPE(o) == type``."
+msgstr ""
+"Trả về khác 0 nếu loại đối tượng *o* là *type*. Trả về 0 nếu không. Tương "
+"đương với: ``Py_TYPE(o) == type``."
+
+#: ../../c-api/structures.rst:158
+#, fuzzy
+msgid ""
+"Set the type of object *o* to *type*, without any checking or reference "
+"counting."
+msgstr ""
+"Đặt loại đối tượng *o* thành *type* mà không cần kiểm tra hoặc đếm tham "
+"chiếu."
+
+#: ../../c-api/structures.rst:161
+#, fuzzy
+msgid ""
+"This is a very low-level operation. Consider instead setting the Python "
+"attribute :attr:`~object.__class__` using :c:func:`PyObject_SetAttrString` "
+"or similar."
+msgstr ""
+"Đây là một hoạt động ở mức độ rất thấp. Thay vào đó, hãy xem xét đặt thuộc "
+"tính Python :attr:`~object.__class__` bằng :c:func:`PyObject_SetAttrString` "
+"hoặc tương tự."
+
+#: ../../c-api/structures.rst:165
+#, fuzzy
+msgid ""
+"Note that assigning an incompatible type can lead to undefined behavior."
+msgstr ""
+"Lưu ý rằng việc chỉ định loại không tương thích có thể dẫn đến hành vi không"
+" xác định."
+
+#: ../../c-api/structures.rst:167
+#, fuzzy
+msgid ""
+"If *type* is a :ref:`heap type <heap-types>`, the caller must create a new "
+"reference to it. Similarly, if the old type of *o* is a heap type, the "
+"caller must release a reference to that type."
+msgstr ""
+"Nếu *type* là :ref:`heap type <heap-types>`, người gọi phải tạo một tham "
+"chiếu mới cho nó. Tương tự, nếu loại *o* cũ là loại heap, thì người gọi phải"
+" giải phóng một tham chiếu đến loại đó."
+
+#: ../../c-api/structures.rst:177
+#, fuzzy
+msgid "Get the :c:member:`~PyVarObject.ob_size` field of *o*."
+msgstr "Lấy trường :c:member:`~PyVarObject.ob_size` của *o*."
+
+#: ../../c-api/structures.rst:179
+#, fuzzy
+msgid ""
+":c:func:`Py_SIZE()` is changed to an inline static function. The parameter "
+"type is no longer :c:expr:`const PyVarObject*`."
+msgstr ""
+":c:func:`Py_SIZE()` được thay đổi thành hàm tĩnh nội tuyến. Loại tham số "
+"không còn là :c:expr:`const PyVarObject*` nữa."
+
+#: ../../c-api/structures.rst:186
+#, fuzzy
+msgid "Set the :c:member:`~PyVarObject.ob_size` field of *o* to *size*."
+msgstr "Đặt trường :c:member:`~PyVarObject.ob_size` của *o* thành *size*."
+
+#: ../../c-api/structures.rst:193
+#, fuzzy
+msgid ""
+"This is a macro which expands to initialization values for a new "
+":c:type:`PyObject` type.  This macro expands to::"
+msgstr ""
+"Đây là macro mở rộng thành các giá trị khởi tạo cho loại :c:type:`PyObject` "
+"mới.  Macro này mở rộng tới::"
+
+#: ../../c-api/structures.rst:196
+#, fuzzy
+msgid ""
+"_PyObject_EXTRA_INIT\n"
+"1, type,"
+msgstr ""
+"_PyObject_EXTRA_INIT\n"
+"1, gõ,"
+
+#: ../../c-api/structures.rst:202
+#, fuzzy
+msgid ""
+"This is a macro which expands to initialization values for a new "
+":c:type:`PyVarObject` type, including the :c:member:`~PyVarObject.ob_size` "
+"field. This macro expands to::"
+msgstr ""
+"Đây là macro mở rộng thành các giá trị khởi tạo cho loại "
+":c:type:`PyVarObject` mới, bao gồm trường :c:member:`~PyVarObject.ob_size`. "
+"Macro này mở rộng tới::"
+
+#: ../../c-api/structures.rst:206
+#, fuzzy
+msgid ""
+"_PyObject_EXTRA_INIT\n"
+"1, type, size,"
+msgstr ""
+"_PyObject_EXTRA_INIT\n"
+"1, loại, kích thước,"
+
+#: ../../c-api/structures.rst:211
+#, fuzzy
+msgid "Implementing functions and methods"
+msgstr "Thực hiện các hàm và phương thức"
+
+#: ../../c-api/structures.rst:215
+#, fuzzy
+msgid ""
+"Type of the functions used to implement most Python callables in C. "
+"Functions of this type take two :c:expr:`PyObject*` parameters and return "
+"one such value.  If the return value is ``NULL``, an exception shall have "
+"been set.  If not ``NULL``, the return value is interpreted as the return "
+"value of the function as exposed in Python.  The function must return a new "
+"reference."
+msgstr ""
+"Loại hàm được sử dụng để triển khai hầu hết các lệnh gọi Python trong C. Các"
+" hàm thuộc loại này nhận hai tham số :c:expr:`PyObject*` và trả về một giá "
+"trị như vậy.  Nếu giá trị trả về là ``NULL``, một ngoại lệ sẽ được đặt.  Nếu"
+" không phải là ``NULL``, giá trị trả về sẽ được hiểu là giá trị trả về của "
+"hàm như được hiển thị trong Python.  Hàm phải trả về một tham chiếu mới."
+
+#: ../../c-api/structures.rst:222
+#, fuzzy
+msgid "The function signature is::"
+msgstr "Chữ ký hàm là::"
+
+#: ../../c-api/structures.rst:224
+#, fuzzy
+msgid ""
+"PyObject *PyCFunction(PyObject *self,\n"
+"                      PyObject *args);"
+msgstr ""
+"PyObject *PyCFunction(PyObject *self,\n"
+"                      PyObject *args);"
+
+#: ../../c-api/structures.rst:229
+#, fuzzy
+msgid ""
+"Type of the functions used to implement Python callables in C with signature"
+" :ref:`METH_VARARGS | METH_KEYWORDS <METH_VARARGS-METH_KEYWORDS>`. The "
+"function signature is::"
+msgstr ""
+"Loại hàm được sử dụng để triển khai các lệnh gọi Python trong C có chữ ký "
+":ref:`METH_VARARGS | METH_KEYWORDS <METH_VARARGS-METH_KEYWORDS>`. Chữ ký hàm"
+" là::"
+
+#: ../../c-api/structures.rst:233
+#, fuzzy
+msgid ""
+"PyObject *PyCFunctionWithKeywords(PyObject *self,\n"
+"                                  PyObject *args,\n"
+"                                  PyObject *kwargs);"
+msgstr ""
+"PyObject *PyCFunctionWithKeywords(PyObject *self,\n"
+"                                  PyObject *args,\n"
+"                                  PyObject *kwargs);"
+
+#: ../../c-api/structures.rst:240
+#, fuzzy
+msgid ""
+"Type of the functions used to implement Python callables in C with signature"
+" :c:macro:`METH_FASTCALL`. The function signature is::"
+msgstr ""
+"Loại hàm được sử dụng để triển khai các lệnh gọi Python trong C có chữ ký "
+":c:macro:`METH_FASTCALL`. Chữ ký hàm là::"
+
+#: ../../c-api/structures.rst:244
+#, fuzzy
+msgid ""
+"PyObject *PyCFunctionFast(PyObject *self,\n"
+"                          PyObject *const *args,\n"
+"                          Py_ssize_t nargs);"
+msgstr ""
+"PyObject *PyCFunctionFast(PyObject *self,\n"
+"                          PyObject *const *args,\n"
+"                          Py_ssize_t lảng vảng);"
+
+#: ../../c-api/structures.rst:250
+#, fuzzy
+msgid ""
+"Type of the functions used to implement Python callables in C with signature"
+" :ref:`METH_FASTCALL | METH_KEYWORDS <METH_FASTCALL-METH_KEYWORDS>`. The "
+"function signature is::"
+msgstr ""
+"Loại hàm được sử dụng để triển khai các lệnh gọi Python trong C có chữ ký "
+":ref:`METH_FASTCALL | METH_KEYWORDS <METH_FASTCALL-METH_KEYWORDS>`. Chữ ký "
+"hàm là::"
+
+#: ../../c-api/structures.rst:254
+#, fuzzy
+msgid ""
+"PyObject *PyCFunctionFastWithKeywords(PyObject *self,\n"
+"                                      PyObject *const *args,\n"
+"                                      Py_ssize_t nargs,\n"
+"                                      PyObject *kwnames);"
+msgstr ""
+"PyObject *PyCFunctionFastWithKeywords(PyObject *self,\n"
+"                                      PyObject *const *args,\n"
+"                                      Py_ssize_t càu nhàu,\n"
+"                                      PyObject *kwname);"
+
+#: ../../c-api/structures.rst:261
+#, fuzzy
+msgid ""
+"Type of the functions used to implement Python callables in C with signature"
+" :ref:`METH_METHOD | METH_FASTCALL | METH_KEYWORDS <METH_METHOD-"
+"METH_FASTCALL-METH_KEYWORDS>`. The function signature is::"
+msgstr ""
+"Loại hàm được sử dụng để triển khai các lệnh gọi Python trong C có chữ ký "
+":ref:`METH_METHOD | METH_FASTCALL | METH_KEYWORDS <METH_METHOD-"
+"METH_FASTCALL-METH_KEYWORDS>`. Chữ ký hàm là::"
+
+#: ../../c-api/structures.rst:265
+#, fuzzy
+msgid ""
+"PyObject *PyCMethod(PyObject *self,\n"
+"                    PyTypeObject *defining_class,\n"
+"                    PyObject *const *args,\n"
+"                    Py_ssize_t nargs,\n"
+"                    PyObject *kwnames)"
+msgstr ""
+"PyObject *PyCMethod(PyObject *self,\n"
+"                    PyTypeObject *định nghĩa_class,\n"
+"                    PyObject *const *args,\n"
+"                    Py_ssize_t càu nhàu,\n"
+"                    PyObject *kwname)"
+
+#: ../../c-api/structures.rst:276
+#, fuzzy
+msgid ""
+"Structure used to describe a method of an extension type.  This structure "
+"has four fields:"
+msgstr ""
+"Cấu trúc được sử dụng để mô tả một phương thức thuộc loại mở rộng.  Cấu trúc"
+" này có bốn trường:"
+
+#: ../../c-api/structures.rst:281
+#, fuzzy
+msgid "Name of the method."
+msgstr "Tên của phương pháp."
+
+#: ../../c-api/structures.rst:285
+#, fuzzy
+msgid "Pointer to the C implementation."
+msgstr "Con trỏ tới việc thực hiện C."
+
+#: ../../c-api/structures.rst:289
+#, fuzzy
+msgid "Flags bits indicating how the call should be constructed."
+msgstr "Cờ bit cho biết cuộc gọi sẽ được xây dựng như thế nào."
+
+#: ../../c-api/structures.rst:293
+#, fuzzy
+msgid "Points to the contents of the docstring."
+msgstr "Trỏ tới nội dung của chuỗi doc."
+
+#: ../../c-api/structures.rst:295
+#, fuzzy
+msgid ""
+"The :c:member:`~PyMethodDef.ml_meth` is a C function pointer. The functions "
+"may be of different types, but they always return :c:expr:`PyObject*`.  If "
+"the function is not of the :c:type:`PyCFunction`, the compiler will require "
+"a cast in the method table. Even though :c:type:`PyCFunction` defines the "
+"first parameter as :c:expr:`PyObject*`, it is common that the method "
+"implementation uses the specific C type of the *self* object."
+msgstr ""
+"Zz000zz là con trỏ hàm C. Các hàm có thể có nhiều loại khác nhau nhưng chúng"
+" luôn trả về :c:expr:`PyObject*`.  Nếu hàm không thuộc "
+":c:type:`PyCFunction`, trình biên dịch sẽ yêu cầu truyền vào bảng phương "
+"thức. Mặc dù :c:type:`PyCFunction` định nghĩa tham số đầu tiên là "
+":c:expr:`PyObject*`, thông thường việc triển khai phương thức sử dụng loại C"
+" cụ thể của đối tượng *self*."
+
+#: ../../c-api/structures.rst:303
+#, fuzzy
+msgid ""
+"The :c:member:`~PyMethodDef.ml_flags` field is a bitfield which can include "
+"the following flags. The individual flags indicate either a calling "
+"convention or a binding convention."
+msgstr ""
+"Trường :c:member:`~PyMethodDef.ml_flags` là một trường bit có thể bao gồm "
+"các cờ sau. Các cờ riêng lẻ biểu thị quy ước gọi hoặc quy ước ràng buộc."
+
+#: ../../c-api/structures.rst:308
+#, fuzzy
+msgid "There are these calling conventions:"
+msgstr "Có những quy ước gọi như sau:"
+
+#: ../../c-api/structures.rst:312
+#, fuzzy
+msgid ""
+"This is the typical calling convention, where the methods have the type "
+":c:type:`PyCFunction`. The function expects two :c:expr:`PyObject*` values. "
+"The first one is the *self* object for methods; for module functions, it is "
+"the module object.  The second parameter (often called *args*) is a tuple "
+"object representing all arguments. This parameter is typically processed "
+"using :c:func:`PyArg_ParseTuple` or :c:func:`PyArg_UnpackTuple`."
+msgstr ""
+"Đây là quy ước gọi điển hình, trong đó các phương thức có kiểu "
+":c:type:`PyCFunction`. Hàm mong đợi hai giá trị :c:expr:`PyObject*`. Đối "
+"tượng đầu tiên là đối tượng *self* dành cho các phương thức; đối với các "
+"chức năng mô-đun, nó là đối tượng mô-đun.  Tham số thứ hai (thường được gọi "
+"là *args*) là một đối tượng tuple đại diện cho tất cả các đối số. Tham số "
+"này thường được xử lý bằng :c:func:`PyArg_ParseTuple` hoặc "
+":c:func:`PyArg_UnpackTuple`."
+
+#: ../../c-api/structures.rst:322
+#, fuzzy
+msgid ""
+"Can only be used in certain combinations with other flags: "
+":ref:`METH_VARARGS | METH_KEYWORDS <METH_VARARGS-METH_KEYWORDS>`, "
+":ref:`METH_FASTCALL | METH_KEYWORDS <METH_FASTCALL-METH_KEYWORDS>` and "
+":ref:`METH_METHOD | METH_FASTCALL | METH_KEYWORDS <METH_METHOD-"
+"METH_FASTCALL-METH_KEYWORDS>`."
+msgstr ""
+"Chỉ có thể được sử dụng trong một số kết hợp nhất định với các cờ khác: "
+":ref:`METH_VARARGS | METH_KEYWORDS <METH_VARARGS-METH_KEYWORDS>`, "
+":ref:`METH_FASTCALL | METH_KEYWORDS <METH_FASTCALL-METH_KEYWORDS>` và "
+":ref:`METH_METHOD | METH_FASTCALL | METH_KEYWORDS <METH_METHOD-"
+"METH_FASTCALL-METH_KEYWORDS>`."
+
+#: ../../c-api/structures.rst:330
+#, fuzzy
+msgid ":c:expr:`METH_VARARGS | METH_KEYWORDS`"
+msgstr ":c:expr:`METH_VARARGS | METH_KEYWORDS`"
+
+#: ../../c-api/structures.rst:331
+#, fuzzy
+msgid ""
+"Methods with these flags must be of type :c:type:`PyCFunctionWithKeywords`. "
+"The function expects three parameters: *self*, *args*, *kwargs* where "
+"*kwargs* is a dictionary of all the keyword arguments or possibly ``NULL`` "
+"if there are no keyword arguments.  The parameters are typically processed "
+"using :c:func:`PyArg_ParseTupleAndKeywords`."
+msgstr ""
+"Các phương thức có cờ này phải thuộc loại :c:type:`PyCFunctionWithKeywords`."
+" Hàm mong đợi ba tham số: *self*, *args*, *kwargs* trong đó *kwargs* là từ "
+"điển của tất cả các đối số từ khóa hoặc có thể là ``NULL`` nếu không có đối "
+"số từ khóa.  Các tham số thường được xử lý bằng "
+":c:func:`PyArg_ParseTupleAndKeywords`."
+
+#: ../../c-api/structures.rst:340
+#, fuzzy
+msgid ""
+"Fast calling convention supporting only positional arguments. The methods "
+"have the type :c:type:`PyCFunctionFast`. The first parameter is *self*, the "
+"second parameter is a C array of :c:expr:`PyObject*` values indicating the "
+"arguments and the third parameter is the number of arguments (the length of "
+"the array)."
+msgstr ""
+"Quy ước gọi nhanh chỉ hỗ trợ các đối số vị trí. Các phương thức có kiểu "
+":c:type:`PyCFunctionFast`. Tham số đầu tiên là *self*, tham số thứ hai là "
+"mảng C gồm các giá trị :c:expr:`PyObject*` biểu thị các đối số và tham số "
+"thứ ba là số lượng đối số (độ dài của mảng)."
+
+#: ../../c-api/structures.rst:350
+#, fuzzy
+msgid "``METH_FASTCALL`` is now part of the :ref:`stable ABI <stable-abi>`."
+msgstr ""
+"``METH_FASTCALL`` hiện là một phần của :ref:`stable ABI <stable-abi>`."
+
+#: ../../c-api/structures.rst:355
+#, fuzzy
+msgid ":c:expr:`METH_FASTCALL | METH_KEYWORDS`"
+msgstr ":c:expr:`METH_FASTCALL | METH_KEYWORDS`"
+
+#: ../../c-api/structures.rst:356
+#, fuzzy
+msgid ""
+"Extension of :c:macro:`METH_FASTCALL` supporting also keyword arguments, "
+"with methods of type :c:type:`PyCFunctionFastWithKeywords`. Keyword "
+"arguments are passed the same way as in the :ref:`vectorcall protocol "
+"<vectorcall>`: there is an additional fourth :c:expr:`PyObject*` parameter "
+"which is a tuple representing the names of the keyword arguments (which are "
+"guaranteed to be strings) or possibly ``NULL`` if there are no keywords.  "
+"The values of the keyword arguments are stored in the *args* array, after "
+"the positional arguments."
+msgstr ""
+"Phần mở rộng của :c:macro:`METH_FASTCALL` cũng hỗ trợ các đối số từ khóa, "
+"với các phương thức kiểu :c:type:`PyCFunctionFastWithKeywords`. Đối số từ "
+"khóa được truyền theo cách tương tự như trong :ref:`vectorcall protocol "
+"<vectorcall>`: có thêm tham số :c:expr:`PyObject*` thứ tư là một bộ dữ liệu "
+"biểu thị tên của đối số từ khóa (được đảm bảo là chuỗi) hoặc có thể là "
+"``NULL`` nếu không có từ khóa.  Các giá trị của đối số từ khóa được lưu trữ "
+"trong mảng *args*, sau các đối số vị trí."
+
+#: ../../c-api/structures.rst:371
+#, fuzzy
+msgid ""
+"Can only be used in the combination with other flags: :ref:`METH_METHOD | "
+"METH_FASTCALL | METH_KEYWORDS <METH_METHOD-METH_FASTCALL-METH_KEYWORDS>`."
+msgstr ""
+"Chỉ có thể sử dụng kết hợp với các cờ khác: :ref:`METH_METHOD | "
+"METH_FASTCALL | METH_KEYWORDS <METH_METHOD-METH_FASTCALL-METH_KEYWORDS>`."
+
+#: ../../c-api/structures.rst:377
+#, fuzzy
+msgid ":c:expr:`METH_METHOD | METH_FASTCALL | METH_KEYWORDS`"
+msgstr ":c:expr:`METH_METHOD | METH_FASTCALL | METH_KEYWORDS`"
+
+#: ../../c-api/structures.rst:378
+#, fuzzy
+msgid ""
+"Extension of :ref:`METH_FASTCALL | METH_KEYWORDS <METH_FASTCALL-"
+"METH_KEYWORDS>` supporting the *defining class*, that is, the class that "
+"contains the method in question. The defining class might be a superclass of"
+" ``Py_TYPE(self)``."
+msgstr ""
+"Phần mở rộng của :ref:`METH_FASTCALL | METH_KEYWORDS <METH_FASTCALL-"
+"METH_KEYWORDS>` hỗ trợ *defining class*, tức là lớp chứa phương thức được đề"
+" cập. Lớp xác định có thể là siêu lớp của ``Py_TYPE(self)``."
+
+#: ../../c-api/structures.rst:383
+#, fuzzy
+msgid ""
+"The method needs to be of type :c:type:`PyCMethod`, the same as for "
+"``METH_FASTCALL | METH_KEYWORDS`` with ``defining_class`` argument added "
+"after ``self``."
+msgstr ""
+"Phương thức này cần phải thuộc loại :c:type:`PyCMethod`, giống như đối với "
+"``METH_FASTCALL | METH_KEYWORDS`` với đối số ``defining_class`` được thêm "
+"sau ``self``."
+
+#: ../../c-api/structures.rst:392
+#, fuzzy
+msgid ""
+"Methods without parameters don't need to check whether arguments are given "
+"if they are listed with the :c:macro:`METH_NOARGS` flag.  They need to be of"
+" type :c:type:`PyCFunction`.  The first parameter is typically named *self* "
+"and will hold a reference to the module or object instance.  In all cases "
+"the second parameter will be ``NULL``."
+msgstr ""
+"Các phương thức không có tham số không cần kiểm tra xem các đối số có được "
+"đưa ra hay không nếu chúng được liệt kê với cờ :c:macro:`METH_NOARGS`.  "
+"Chúng cần phải thuộc loại :c:type:`PyCFunction`.  Tham số đầu tiên thường "
+"được đặt tên là *self* và sẽ giữ một tham chiếu đến phiên bản mô-đun hoặc "
+"đối tượng.  Trong mọi trường hợp, tham số thứ hai sẽ là ``NULL``."
+
+#: ../../c-api/structures.rst:398
+#, fuzzy
+msgid ""
+"The function must have 2 parameters. Since the second parameter is unused, "
+":c:macro:`Py_UNUSED` can be used to prevent a compiler warning."
+msgstr ""
+"Hàm phải có 2 tham số. Vì tham số thứ hai không được sử dụng nên "
+":c:macro:`Py_UNUSED` có thể được sử dụng để ngăn cảnh báo trình biên dịch."
+
+#: ../../c-api/structures.rst:404
+#, fuzzy
+msgid ""
+"Methods with a single object argument can be listed with the "
+":c:macro:`METH_O` flag, instead of invoking :c:func:`PyArg_ParseTuple` with "
+"a ``\"O\"`` argument. They have the type :c:type:`PyCFunction`, with the "
+"*self* parameter, and a :c:expr:`PyObject*` parameter representing the "
+"single argument."
+msgstr ""
+"Các phương thức có một đối số đối tượng duy nhất có thể được liệt kê bằng cờ"
+" :c:macro:`METH_O`, thay vì gọi :c:func:`PyArg_ParseTuple` bằng đối số "
+"``\"O\"``. Chúng có loại :c:type:`PyCFunction`, với tham số *self* và tham "
+"số :c:expr:`PyObject*` đại diện cho một đối số."
+
+#: ../../c-api/structures.rst:410
+#, fuzzy
+msgid ""
+"These two constants are not used to indicate the calling convention but the "
+"binding when used with methods of classes.  These may not be used for "
+"functions defined for modules.  At most one of these flags may be set for "
+"any given method."
+msgstr ""
+"Hai hằng số này không được sử dụng để biểu thị quy ước gọi mà là sự ràng "
+"buộc khi được sử dụng với các phương thức của lớp.  Chúng có thể không được "
+"sử dụng cho các chức năng được xác định cho các mô-đun.  Nhiều nhất một "
+"trong các cờ này có thể được đặt cho bất kỳ phương thức nào."
+
+#: ../../c-api/structures.rst:420
+#, fuzzy
+msgid ""
+"The method will be passed the type object as the first parameter rather than"
+" an instance of the type.  This is used to create *class methods*, similar "
+"to what is created when using the :func:`classmethod` built-in function."
+msgstr ""
+"Phương thức này sẽ được truyền đối tượng kiểu làm tham số đầu tiên chứ không"
+" phải là một thể hiện của kiểu.  Điều này được sử dụng để tạo *class "
+"methods*, tương tự như những gì được tạo khi sử dụng chức năng tích hợp "
+":func:`classmethod`."
+
+#: ../../c-api/structures.rst:430
+#, fuzzy
+msgid ""
+"The method will be passed ``NULL`` as the first parameter rather than an "
+"instance of the type.  This is used to create *static methods*, similar to "
+"what is created when using the :func:`staticmethod` built-in function."
+msgstr ""
+"Phương thức này sẽ được truyền ``NULL`` làm tham số đầu tiên chứ không phải "
+"là một phiên bản của loại.  Điều này được sử dụng để tạo *static methods*, "
+"tương tự như những gì được tạo khi sử dụng chức năng tích hợp "
+":func:`staticmethod`."
+
+#: ../../c-api/structures.rst:434
+#, fuzzy
+msgid ""
+"One other constant controls whether a method is loaded in place of another "
+"definition with the same method name."
+msgstr ""
+"Một hằng số khác kiểm soát xem một phương thức có được tải thay cho định "
+"nghĩa khác có cùng tên phương thức hay không."
+
+#: ../../c-api/structures.rst:440
+#, fuzzy
+msgid ""
+"The method will be loaded in place of existing definitions.  Without "
+"*METH_COEXIST*, the default is to skip repeated definitions.  Since slot "
+"wrappers are loaded before the method table, the existence of a "
+"*sq_contains* slot, for example, would generate a wrapped method named "
+":meth:`~object.__contains__` and preclude the loading of a corresponding "
+"PyCFunction with the same name.  With the flag defined, the PyCFunction will"
+" be loaded in place of the wrapper object and will co-exist with the slot.  "
+"This is helpful because calls to PyCFunctions are optimized more than "
+"wrapper object calls."
+msgstr ""
+"Phương thức này sẽ được tải thay cho các định nghĩa hiện có.  Nếu không có "
+"*METH_COEXIST*, mặc định là bỏ qua các định nghĩa lặp lại.  Vì trình bao bọc"
+" vị trí được tải trước bảng phương thức, nên sự tồn tại của vị trí "
+"*sq_contains* chẳng hạn sẽ tạo ra một phương thức được bao bọc có tên "
+":meth:`~object.__contains__` và ngăn cản việc tải PyCFunction tương ứng có "
+"cùng tên.  Với cờ được xác định, PyCFunction sẽ được tải thay cho đối tượng "
+"trình bao bọc và sẽ cùng tồn tại với vị trí.  Điều này hữu ích vì lệnh gọi "
+"tới PyCFunctions được tối ưu hóa nhiều hơn so với lệnh gọi đối tượng trình "
+"bao bọc."
+
+#: ../../c-api/structures.rst:453
+#, fuzzy
+msgid ""
+"The type object corresponding to Python C method objects. This is available "
+"as :class:`types.BuiltinMethodType` in the Python layer."
+msgstr ""
+"Đối tượng kiểu tương ứng với các đối tượng phương thức Python C. Điều này có"
+" sẵn dưới dạng :class:`types.BuiltinMethodType` trong lớp Python."
+
+#: ../../c-api/structures.rst:459
+#, fuzzy
+msgid ""
+"Return true if *op* is an instance of the :c:type:`PyCMethod_Type` type or a"
+" subtype of it. This function always succeeds."
+msgstr ""
+"Trả về true nếu *op* là một phiên bản của loại :c:type:`PyCMethod_Type` hoặc"
+" một kiểu con của nó. Chức năng này luôn thành công."
+
+#: ../../c-api/structures.rst:465
+#, fuzzy
+msgid ""
+"This is the same as :c:func:`PyCMethod_Check`, but does not account for "
+"subtypes."
+msgstr ""
+"Điều này giống với :c:func:`PyCMethod_Check` nhưng không tính đến các kiểu "
+"con."
+
+#: ../../c-api/structures.rst:471
+#, fuzzy
+msgid ""
+"Turn *ml* into a Python :term:`callable` object. The caller must ensure that"
+" *ml* outlives the :term:`callable`. Typically, *ml* is defined as a static "
+"variable."
+msgstr ""
+"Biến *ml* thành đối tượng :term:`callable` của Python. Người gọi phải đảm "
+"bảo rằng *ml* tồn tại lâu hơn :term:`callable`. Thông thường, *ml* được định"
+" nghĩa là một biến tĩnh."
+
+#: ../../c-api/structures.rst:475
+#, fuzzy
+msgid ""
+"The *self* parameter will be passed as the *self* argument to the C function"
+" in ``ml->ml_meth`` when invoked. *self* can be ``NULL``."
+msgstr ""
+"Tham số *self* sẽ được chuyển dưới dạng đối số *self* cho hàm C trong "
+"``ml->ml_meth`` khi được gọi. *self* có thể là ``NULL``."
+
+#: ../../c-api/structures.rst:479
+#, fuzzy
+msgid ""
+"The :term:`callable` object's ``__module__`` attribute can be set from the "
+"given *module* argument. *module* should be a Python string, which will be "
+"used as name of the module the function is defined in. If unavailable, it "
+"can be set to :const:`None` or ``NULL``."
+msgstr ""
+"Thuộc tính ``__module__`` của đối tượng :term:`callable` có thể được đặt từ "
+"đối số *module* đã cho. *module* phải là một chuỗi Python, chuỗi này sẽ được"
+" dùng làm tên của mô-đun chứa hàm được xác định. Nếu không có, chuỗi này có "
+"thể được đặt thành :const:`None` hoặc ``NULL``."
+
+#: ../../c-api/structures.rst:485
+#, fuzzy
+msgid ":attr:`function.__module__`"
+msgstr ":attr:`function.__module__`"
+
+#: ../../c-api/structures.rst:487
+#, fuzzy
+msgid ""
+"The *cls* parameter will be passed as the *defining_class* argument to the C"
+" function. Must be set if :c:macro:`METH_METHOD` is set on ``ml->ml_flags``."
+msgstr ""
+"Tham số *cls* sẽ được chuyển dưới dạng đối số *defining_class* cho hàm C. "
+"Phải được đặt nếu :c:macro:`METH_METHOD` được đặt trên ``ml->ml_flags``."
+
+#: ../../c-api/structures.rst:496
+#, fuzzy
+msgid ""
+"The type object corresponding to Python C function objects. This is "
+"available as :class:`types.BuiltinFunctionType` in the Python layer."
+msgstr ""
+"Đối tượng loại tương ứng với các đối tượng hàm Python C. Điều này có sẵn "
+"dưới dạng :class:`types.BuiltinFunctionType` trong lớp Python."
+
+#: ../../c-api/structures.rst:502
+#, fuzzy
+msgid ""
+"Return true if *op* is an instance of the :c:type:`PyCFunction_Type` type or"
+" a subtype of it. This function always succeeds."
+msgstr ""
+"Trả về true nếu *op* là một phiên bản của loại :c:type:`PyCFunction_Type` "
+"hoặc một kiểu con của nó. Chức năng này luôn thành công."
+
+#: ../../c-api/structures.rst:508
+#, fuzzy
+msgid ""
+"This is the same as :c:func:`PyCFunction_Check`, but does not account for "
+"subtypes."
+msgstr ""
+"Điều này giống với :c:func:`PyCFunction_Check` nhưng không tính đến các kiểu"
+" con."
+
+#: ../../c-api/structures.rst:514
+#, fuzzy
+msgid "Equivalent to ``PyCMethod_New(ml, self, module, NULL)``."
+msgstr "Tương đương với ``PyCMethod_New(ml, self, module, NULL)``."
+
+#: ../../c-api/structures.rst:519
+#, fuzzy
+msgid "Equivalent to ``PyCMethod_New(ml, self, NULL, NULL)``."
+msgstr "Tương đương với ``PyCMethod_New(ml, self, NULL, NULL)``."
+
+#: ../../c-api/structures.rst:524
+#, fuzzy
+msgid ""
+"Get the function's flags on *func* as they were passed to "
+":c:member:`~PyMethodDef.ml_flags`."
+msgstr ""
+"Nhận cờ của hàm trên *func* khi chúng được chuyển tới "
+":c:member:`~PyMethodDef.ml_flags`."
+
+#: ../../c-api/structures.rst:527 ../../c-api/structures.rst:545
+#: ../../c-api/structures.rst:565
+#, fuzzy
+msgid ""
+"If *func* is not a C function object, this fails with an exception. *func* "
+"must not be ``NULL``."
+msgstr ""
+"Nếu *func* không phải là đối tượng hàm C thì điều này không thành công với "
+"một ngoại lệ. *func* không được là ``NULL``."
+
+#: ../../c-api/structures.rst:530
+#, fuzzy
+msgid ""
+"This function returns the function's flags on success, and ``-1`` with an "
+"exception set on failure."
+msgstr ""
+"Hàm này trả về các cờ của hàm khi thành công và ``-1`` với một ngoại lệ được"
+" đặt thành lỗi."
+
+#: ../../c-api/structures.rst:536
+#, fuzzy
+msgid ""
+"This is the same as :c:func:`PyCFunction_GetFlags`, but without error or "
+"type checking."
+msgstr ""
+"Điều này giống như :c:func:`PyCFunction_GetFlags` nhưng không có lỗi hoặc "
+"kiểm tra loại."
+
+#: ../../c-api/structures.rst:542
+#, fuzzy
+msgid ""
+"Get the function pointer on *func* as it was passed to "
+":c:member:`~PyMethodDef.ml_meth`."
+msgstr ""
+"Lấy con trỏ hàm trên *func* khi nó được truyền tới "
+":c:member:`~PyMethodDef.ml_meth`."
+
+#: ../../c-api/structures.rst:548
+#, fuzzy
+msgid ""
+"This function returns the function pointer on success, and ``NULL`` with an "
+"exception set on failure."
+msgstr ""
+"Hàm này trả về con trỏ hàm khi thành công và ``NULL`` với ngoại lệ được đặt "
+"nếu thất bại."
+
+#: ../../c-api/structures.rst:554
+#, fuzzy
+msgid ""
+"This is the same as :c:func:`PyCFunction_GetFunction`, but without error or "
+"type checking."
+msgstr ""
+"Điều này giống như :c:func:`PyCFunction_GetFunction` nhưng không có lỗi hoặc"
+" kiểm tra loại."
+
+#: ../../c-api/structures.rst:560
+#, fuzzy
+msgid ""
+"Get the \"self\" object on *func*. This is the object that would be passed "
+"to the first argument of a :c:type:`PyCFunction`. For C function objects "
+"created through a :c:type:`PyMethodDef` on a :c:type:`PyModuleDef`, this is "
+"the resulting module object."
+msgstr ""
+"Lấy đối tượng \"tự\" trên *func*. Đây là đối tượng sẽ được chuyển đến đối số"
+" đầu tiên của :c:type:`PyCFunction`. Đối với các đối tượng hàm C được tạo "
+"thông qua :c:type:`PyMethodDef` trên :c:type:`PyModuleDef`, đây là đối tượng"
+" mô-đun kết quả."
+
+#: ../../c-api/structures.rst:568
+#, fuzzy
+msgid ""
+"This function returns a :term:`borrowed reference` to the \"self\" object on"
+" success, and ``NULL`` with an exception set on failure."
+msgstr ""
+"Hàm này trả về :term:`borrowed reference` cho đối tượng \"self\" nếu thành "
+"công và ``NULL`` với ngoại lệ được đặt nếu thất bại."
+
+#: ../../c-api/structures.rst:574
+#, fuzzy
+msgid ""
+"This is the same as :c:func:`PyCFunction_GetSelf`, but without error or type"
+" checking."
+msgstr ""
+"Điều này giống như :c:func:`PyCFunction_GetSelf` nhưng không có lỗi hoặc "
+"kiểm tra loại."
+
+#: ../../c-api/structures.rst:579
+#, fuzzy
+msgid "Accessing attributes of extension types"
+msgstr "Truy cập thuộc tính của các loại tiện ích mở rộng"
+
+#: ../../c-api/structures.rst:583
+#, fuzzy
+msgid ""
+"Structure which describes an attribute of a type which corresponds to a C "
+"struct member. When defining a class, put a NULL-terminated array of these "
+"structures in the :c:member:`~PyTypeObject.tp_members` slot."
+msgstr ""
+"Cấu trúc mô tả một thuộc tính của một kiểu tương ứng với thành viên cấu trúc"
+" C. Khi xác định một lớp, hãy đặt một mảng kết thúc bằng NULL của các cấu "
+"trúc này vào khe :c:member:`~PyTypeObject.tp_members`."
+
+#: ../../c-api/structures.rst:588
+#, fuzzy
+msgid "Its fields are, in order:"
+msgstr "Các trường của nó theo thứ tự:"
+
+#: ../../c-api/structures.rst:592
+#, fuzzy
+msgid ""
+"Name of the member. A NULL value marks the end of a ``PyMemberDef[]`` array."
+msgstr ""
+"Tên của thành viên. Giá trị NULL đánh dấu sự kết thúc của mảng "
+"``PyMemberDef[]``."
+
+#: ../../c-api/structures.rst:595
+#, fuzzy
+msgid "The string should be static, no copy is made of it."
+msgstr "Chuỗi phải ở dạng tĩnh, không có bản sao nào được tạo ra từ nó."
+
+#: ../../c-api/structures.rst:599
+#, fuzzy
+msgid ""
+"The type of the member in the C struct. See :ref:`PyMemberDef-types` for the"
+" possible values."
+msgstr ""
+"Kiểu thành viên trong cấu trúc C. Xem :ref:`PyMemberDef-types` để biết các "
+"giá trị có thể."
+
+#: ../../c-api/structures.rst:604
+#, fuzzy
+msgid ""
+"The offset in bytes that the member is located on the type’s object struct."
+msgstr ""
+"Phần bù tính bằng byte mà thành viên nằm trên cấu trúc đối tượng của loại."
+
+#: ../../c-api/structures.rst:608
+#, fuzzy
+msgid ""
+"Zero or more of the :ref:`PyMemberDef-flags`, combined using bitwise OR."
+msgstr ""
+"Không hoặc nhiều hơn :ref:`PyMemberDef-flags`, được kết hợp bằng cách sử "
+"dụng bitwise OR."
+
+#: ../../c-api/structures.rst:612
+#, fuzzy
+msgid ""
+"The docstring, or NULL. The string should be static, no copy is made of it. "
+"Typically, it is defined using :c:macro:`PyDoc_STR`."
+msgstr ""
+"Chuỗi tài liệu hoặc NULL. Chuỗi phải ở dạng tĩnh, không có bản sao nào được "
+"tạo ra từ nó. Thông thường, nó được xác định bằng :c:macro:`PyDoc_STR`."
+
+#: ../../c-api/structures.rst:616
+#, fuzzy
+msgid ""
+"By default (when :c:member:`~PyMemberDef.flags` is ``0``), members allow "
+"both read and write access. Use the :c:macro:`Py_READONLY` flag for read-"
+"only access. Certain types, like :c:macro:`Py_T_STRING`, imply "
+":c:macro:`Py_READONLY`. Only :c:macro:`Py_T_OBJECT_EX` (and legacy "
+":c:macro:`T_OBJECT`) members can be deleted."
+msgstr ""
+"Theo mặc định (khi :c:member:`~PyMemberDef.flags` là ``0``), các thành viên "
+"cho phép cả quyền truy cập đọc và ghi. Sử dụng cờ :c:macro:`Py_READONLY` để "
+"truy cập chỉ đọc. Một số loại nhất định, như :c:macro:`Py_T_STRING`, ngụ ý "
+":c:macro:`Py_READONLY`. Chỉ có thể xóa thành viên :c:macro:`Py_T_OBJECT_EX` "
+"(và :c:macro:`T_OBJECT` cũ)."
+
+#: ../../c-api/structures.rst:625
+#, fuzzy
+msgid ""
+"For heap-allocated types (created using :c:func:`PyType_FromSpec` or "
+"similar), ``PyMemberDef`` may contain a definition for the special member "
+"``\"__vectorcalloffset__\"``, corresponding to "
+":c:member:`~PyTypeObject.tp_vectorcall_offset` in type objects. This member "
+"must be defined with ``Py_T_PYSSIZET``, and either ``Py_READONLY`` or "
+"``Py_READONLY | Py_RELATIVE_OFFSET``. For example::"
+msgstr ""
+"Đối với các loại được phân bổ heap (được tạo bằng :c:func:`PyType_FromSpec` "
+"hoặc tương tự), ``PyMemberDef`` có thể chứa định nghĩa cho thành viên đặc "
+"biệt ``\"__vectorcalloffset__\"``, tương ứng với "
+":c:member:`~PyTypeObject.tp_vectorcall_offset` trong các đối tượng loại. "
+"Thành viên này phải được xác định bằng ``Py_T_PYSSIZET`` và ``Py_READONLY`` "
+"hoặc ``Py_READONLY | Py_RELATIVE_OFFSET``. Ví dụ::"
+
+#: ../../c-api/structures.rst:632
+#, fuzzy
+msgid ""
+"static PyMemberDef spam_type_members[] = {\n"
+"    {\"__vectorcalloffset__\", Py_T_PYSSIZET,\n"
+"     offsetof(Spam_object, vectorcall), Py_READONLY},\n"
+"    {NULL}  /* Sentinel */\n"
+"};"
+msgstr ""
+"tĩnh PyMemberDef spam_type_members[] = {\n"
+"    {\"__vectorcalloffset__\", Py_T_PYSSIZET,\n"
+"     offsetof(Spam_object, vectorcall), Py_READONLY},\n"
+"    {NULL} /* Lính gác */\n"
+"};"
+
+#: ../../c-api/structures.rst:638
+#, fuzzy
+msgid "(You may need to ``#include <stddef.h>`` for :c:func:`!offsetof`.)"
+msgstr "(Bạn có thể cần ``#include <stddef.h>`` để có :c:func:`!offsetof`.)"
+
+#: ../../c-api/structures.rst:640
+#, fuzzy
+msgid ""
+"The legacy offsets :c:member:`~PyTypeObject.tp_dictoffset` and "
+":c:member:`~PyTypeObject.tp_weaklistoffset` can be defined similarly using "
+"``\"__dictoffset__\"`` and ``\"__weaklistoffset__\"`` members, but "
+"extensions are strongly encouraged to use :c:macro:`Py_TPFLAGS_MANAGED_DICT`"
+" and :c:macro:`Py_TPFLAGS_MANAGED_WEAKREF` instead."
+msgstr ""
+"Các phần bù cũ :c:member:`~PyTypeObject.tp_dictoffset` và "
+":c:member:`~PyTypeObject.tp_weaklistoffset` có thể được xác định tương tự "
+"bằng cách sử dụng các thành viên ``\"__dictoffset__\"`` và "
+"``\"__weaklistoffset__\"``, nhưng thay vào đó, các tiện ích mở rộng được "
+"khuyến khích sử dụng :c:macro:`Py_TPFLAGS_MANAGED_DICT` và "
+":c:macro:`Py_TPFLAGS_MANAGED_WEAKREF`."
+
+#: ../../c-api/structures.rst:648
+#, fuzzy
+msgid ""
+"``PyMemberDef`` is always available. Previously, it required including "
+"``\"structmember.h\"``."
+msgstr ""
+"``PyMemberDef`` luôn có sẵn. Trước đây nó yêu cầu phải có "
+"``\"structmember.h\"``."
+
+#: ../../c-api/structures.rst:653
+#, fuzzy
+msgid ""
+":c:macro:`Py_RELATIVE_OFFSET` is now allowed for "
+"``\"__vectorcalloffset__\"``, ``\"__dictoffset__\"`` and "
+"``\"__weaklistoffset__\"``."
+msgstr ""
+":c:macro:`Py_RELATIVE_OFFSET` hiện được phép cho "
+"``\"__vectorcalloffset__\"``, ``\"__dictoffset__\"`` và "
+"``\"__weaklistoffset__\"``."
+
+#: ../../c-api/structures.rst:659
+#, fuzzy
+msgid ""
+"Get an attribute belonging to the object at address *obj_addr*.  The "
+"attribute is described by ``PyMemberDef`` *m*.  Returns ``NULL`` on error."
+msgstr ""
+"Lấy thuộc tính của đối tượng tại địa chỉ *obj_addr*.  Thuộc tính được mô tả "
+"bởi ``PyMemberDef`` *m*.  Trả về ``NULL`` do lỗi."
+
+#: ../../c-api/structures.rst:665
+#, fuzzy
+msgid ""
+"``PyMember_GetOne`` is always available. Previously, it required including "
+"``\"structmember.h\"``."
+msgstr ""
+"``PyMember_GetOne`` luôn có sẵn. Trước đây nó yêu cầu phải có "
+"``\"structmember.h\"``."
+
+#: ../../c-api/structures.rst:670
+#, fuzzy
+msgid ""
+"Set an attribute belonging to the object at address *obj_addr* to object "
+"*o*. The attribute to set is described by ``PyMemberDef`` *m*.  Returns "
+"``0`` if successful and a negative value on failure."
+msgstr ""
+"Đặt thuộc tính thuộc đối tượng tại địa chỉ *obj_addr* thành đối tượng *o*. "
+"Thuộc tính cần đặt được mô tả bởi ``PyMemberDef`` *m*.  Trả về ``0`` nếu "
+"thành công và giá trị âm nếu thất bại."
+
+#: ../../c-api/structures.rst:676
+#, fuzzy
+msgid ""
+"``PyMember_SetOne`` is always available. Previously, it required including "
+"``\"structmember.h\"``."
+msgstr ""
+"``PyMember_SetOne`` luôn có sẵn. Trước đây nó yêu cầu phải có "
+"``\"structmember.h\"``."
+
+#: ../../c-api/structures.rst:682
+#, fuzzy
+msgid "Member flags"
+msgstr "Cờ thành viên"
+
+#: ../../c-api/structures.rst:684
+#, fuzzy
+msgid "The following flags can be used with :c:member:`PyMemberDef.flags`:"
+msgstr "Các cờ sau có thể được sử dụng với :c:member:`PyMemberDef.flags`:"
+
+#: ../../c-api/structures.rst:688
+#, fuzzy
+msgid "Not writable."
+msgstr "Không thể ghi được."
+
+#: ../../c-api/structures.rst:692
+#, fuzzy
+msgid ""
+"Emit an ``object.__getattr__`` :ref:`audit event <audit-events>` before "
+"reading."
+msgstr ""
+"Phát ra ``object.__getattr__`` :ref:`audit event <audit-events>` trước khi "
+"đọc."
+
+#: ../../c-api/structures.rst:697
+#, fuzzy
+msgid ""
+"Indicates that the :c:member:`~PyMemberDef.offset` of this ``PyMemberDef`` "
+"entry indicates an offset from the subclass-specific data, rather than from "
+"``PyObject``."
+msgstr ""
+"Cho biết rằng :c:member:`~PyMemberDef.offset` của mục nhập ``PyMemberDef`` "
+"này biểu thị phần chênh lệch so với dữ liệu dành riêng cho lớp con, thay vì "
+"từ ``PyObject``."
+
+#: ../../c-api/structures.rst:701
+#, fuzzy
+msgid ""
+"Can only be used as part of the :c:data:`Py_tp_members` :c:type:`slot "
+"<PyType_Slot>` when creating a class using negative "
+":c:member:`~PyType_Spec.basicsize`. It is mandatory in that case. When "
+"setting :c:member:`~PyTypeObject.tp_members` from the slot during class "
+"creation, Python clears the flag and sets :c:member:`PyMemberDef.offset` to "
+"the offset from the ``PyObject`` struct."
+msgstr ""
+"Chỉ có thể được sử dụng như một phần của :c:data:`Py_tp_members` "
+":c:type:`slot <PyType_Slot>` khi tạo lớp bằng "
+":c:member:`~PyType_Spec.basicsize` âm. Đó là bắt buộc trong trường hợp đó. "
+"Khi đặt :c:member:`~PyTypeObject.tp_members` từ vị trí trong quá trình tạo "
+"lớp, Python sẽ xóa cờ và đặt :c:member:`PyMemberDef.offset` thành phần bù từ"
+" cấu trúc ``PyObject``."
+
+#: ../../c-api/structures.rst:716
+#, fuzzy
+msgid ""
+"The :c:macro:`!RESTRICTED`, :c:macro:`!READ_RESTRICTED` and "
+":c:macro:`!WRITE_RESTRICTED` macros available with ``#include "
+"\"structmember.h\"`` are deprecated. :c:macro:`!READ_RESTRICTED` and "
+":c:macro:`!RESTRICTED` are equivalent to :c:macro:`Py_AUDIT_READ`; "
+":c:macro:`!WRITE_RESTRICTED` does nothing."
+msgstr ""
+"Các macro :c:macro:`!RESTRICTED`, :c:macro:`!READ_RESTRICTED` và "
+":c:macro:`!WRITE_RESTRICTED` có sẵn với ``#include \"structmember.h\"`` "
+"không được dùng nữa. :c:macro:`!READ_RESTRICTED` và :c:macro:`!RESTRICTED` "
+"tương đương với :c:macro:`Py_AUDIT_READ`; :c:macro:`!WRITE_RESTRICTED` không"
+" làm gì cả."
+
+#: ../../c-api/structures.rst:727
+#, fuzzy
+msgid ""
+"The :c:macro:`!READONLY` macro was renamed to :c:macro:`Py_READONLY`. The "
+":c:macro:`!PY_AUDIT_READ` macro was renamed with the ``Py_`` prefix. The new"
+" names are now always available. Previously, these required ``#include "
+"\"structmember.h\"``. The header is still available and it provides the old "
+"names."
+msgstr ""
+"Macro :c:macro:`!READONLY` đã được đổi tên thành :c:macro:`Py_READONLY`. "
+"Macro :c:macro:`!PY_AUDIT_READ` đã được đổi tên bằng tiền tố ``Py_``. Những "
+"cái tên mới bây giờ luôn có sẵn. Trước đây, những thứ này yêu cầu ``#include"
+" \"structmember.h\"``. Tiêu đề vẫn có sẵn và nó cung cấp tên cũ."
+
+#: ../../c-api/structures.rst:736
+#, fuzzy
+msgid "Member types"
+msgstr "Các loại thành viên"
+
+#: ../../c-api/structures.rst:738
+#, fuzzy
+msgid ""
+":c:member:`PyMemberDef.type` can be one of the following macros "
+"corresponding to various C types. When the member is accessed in Python, it "
+"will be converted to the equivalent Python type. When it is set from Python,"
+" it will be converted back to the C type. If that is not possible, an "
+"exception such as :exc:`TypeError` or :exc:`ValueError` is raised."
+msgstr ""
+":c:member:`PyMemberDef.type` có thể là một trong các macro sau tương ứng với"
+" các loại C khác nhau. Khi thành viên được truy cập bằng Python, nó sẽ được "
+"chuyển đổi sang loại Python tương đương. Khi được đặt từ Python, nó sẽ được "
+"chuyển đổi về loại C. Nếu điều đó là không thể, một ngoại lệ như "
+":exc:`TypeError` hoặc :exc:`ValueError` sẽ xuất hiện."
+
+#: ../../c-api/structures.rst:746
+#, fuzzy
+msgid ""
+"Unless marked (D), attributes defined this way cannot be deleted using e.g. "
+":keyword:`del` or :py:func:`delattr`."
+msgstr ""
+"Trừ khi được đánh dấu (D), các thuộc tính được xác định theo cách này không "
+"thể bị xóa bằng cách sử dụng ví dụ: :keyword:`del` hoặc :py:func:`delattr`."
+
+#: ../../c-api/structures.rst:750
+#, fuzzy
+msgid "Macro name"
+msgstr "Tên vĩ mô"
+
+#: ../../c-api/structures.rst:750
+#, fuzzy
+msgid "C type"
+msgstr "loại C"
+
+#: ../../c-api/structures.rst:750
+#, fuzzy
+msgid "Python type"
+msgstr "loại Python"
+
+#: ../../c-api/structures.rst:752
+#, fuzzy
+msgid ":c:expr:`char`"
+msgstr ":c:expr:`char`"
+
+#: ../../c-api/structures.rst:752 ../../c-api/structures.rst:753
+#: ../../c-api/structures.rst:754 ../../c-api/structures.rst:755
+#: ../../c-api/structures.rst:756 ../../c-api/structures.rst:757
+#: ../../c-api/structures.rst:758 ../../c-api/structures.rst:759
+#: ../../c-api/structures.rst:760 ../../c-api/structures.rst:761
+#: ../../c-api/structures.rst:762
+#, fuzzy
+msgid ":py:class:`int`"
+msgstr ":py:class:`int`"
+
+#: ../../c-api/structures.rst:753
+#, fuzzy
+msgid ":c:expr:`short`"
+msgstr ":c:expr:`short`"
+
+#: ../../c-api/structures.rst:754
+#, fuzzy
+msgid ":c:expr:`int`"
+msgstr ":c:expr:`int`"
+
+#: ../../c-api/structures.rst:755
+#, fuzzy
+msgid ":c:expr:`long`"
+msgstr ":c:expr:`long`"
+
+#: ../../c-api/structures.rst:756
+#, fuzzy
+msgid ":c:expr:`long long`"
+msgstr ":c:expr:`long long`"
+
+#: ../../c-api/structures.rst:757
+#, fuzzy
+msgid ":c:expr:`unsigned char`"
+msgstr ":c:expr:`unsigned char`"
+
+#: ../../c-api/structures.rst:758
+#, fuzzy
+msgid ":c:expr:`unsigned int`"
+msgstr ":c:expr:`unsigned int`"
+
+#: ../../c-api/structures.rst:759
+#, fuzzy
+msgid ":c:expr:`unsigned short`"
+msgstr ":c:expr:`unsigned short`"
+
+#: ../../c-api/structures.rst:760
+#, fuzzy
+msgid ":c:expr:`unsigned long`"
+msgstr ":c:expr:`unsigned long`"
+
+#: ../../c-api/structures.rst:761
+#, fuzzy
+msgid ":c:expr:`unsigned long long`"
+msgstr ":c:expr:`unsigned long long`"
+
+#: ../../c-api/structures.rst:762
+#, fuzzy
+msgid ":c:expr:`Py_ssize_t`"
+msgstr ":c:expr:`Py_ssize_t`"
+
+#: ../../c-api/structures.rst:763
+#, fuzzy
+msgid ":c:expr:`float`"
+msgstr ":c:expr:`float`"
+
+#: ../../c-api/structures.rst:763 ../../c-api/structures.rst:764
+#, fuzzy
+msgid ":py:class:`float`"
+msgstr ":py:class:`float`"
+
+#: ../../c-api/structures.rst:764
+#, fuzzy
+msgid ":c:expr:`double`"
+msgstr ":c:expr:`double`"
+
+#: ../../c-api/structures.rst:765
+#, fuzzy
+msgid ":c:expr:`char` (written as 0 or 1)"
+msgstr ":c:expr:`char` (viết là 0 hoặc 1)"
+
+#: ../../c-api/structures.rst:765
+#, fuzzy
+msgid ":py:class:`bool`"
+msgstr ":py:class:`bool`"
+
+#: ../../c-api/structures.rst:767
+#, fuzzy
+msgid ":c:expr:`const char *` (*)"
+msgstr ":c:expr:`const char *` (*)"
+
+#: ../../c-api/structures.rst:767 ../../c-api/structures.rst:768
+#, fuzzy
+msgid ":py:class:`str` (RO)"
+msgstr ":py:class:`str` (RO)"
+
+#: ../../c-api/structures.rst:768
+#, fuzzy
+msgid ":c:expr:`const char[]` (*)"
+msgstr ":c:expr:`const char[]` (*)"
+
+#: ../../c-api/structures.rst:769
+#, fuzzy
+msgid ":c:expr:`char` (0-127)"
+msgstr ":c:expr:`char` (0-127)"
+
+#: ../../c-api/structures.rst:769
+#, fuzzy
+msgid ":py:class:`str` (**)"
+msgstr ":py:class:`str`(**)"
+
+#: ../../c-api/structures.rst:770
+#, fuzzy
+msgid ":c:expr:`PyObject *`"
+msgstr ":c:expr:`PyObject *`"
+
+#: ../../c-api/structures.rst:770
+#, fuzzy
+msgid ":py:class:`object` (D)"
+msgstr ":py:class:`object` (D)"
+
+#: ../../c-api/structures.rst:773
+#, fuzzy
+msgid ""
+"(*): Zero-terminated, UTF8-encoded C string. With :c:macro:`!Py_T_STRING` "
+"the C representation is a pointer; with :c:macro:`!Py_T_STRING_INPLACE` the "
+"string is stored directly in the structure."
+msgstr ""
+"(*): Chuỗi C được mã hóa UTF8, kết thúc bằng 0. Với :c:macro:`!Py_T_STRING` "
+"biểu diễn C là một con trỏ; với :c:macro:`!Py_T_STRING_INPLACE` chuỗi được "
+"lưu trữ trực tiếp trong cấu trúc."
+
+#: ../../c-api/structures.rst:778
+#, fuzzy
+msgid "(**): String of length 1. Only ASCII is accepted."
+msgstr "(**): Chuỗi có độ dài 1. Chỉ chấp nhận ASCII."
+
+#: ../../c-api/structures.rst:780
+#, fuzzy
+msgid "(RO): Implies :c:macro:`Py_READONLY`."
+msgstr "(RO): Ngụ ý :c:macro:`Py_READONLY`."
+
+#: ../../c-api/structures.rst:782
+#, fuzzy
+msgid ""
+"(D): Can be deleted, in which case the pointer is set to ``NULL``. Reading a"
+" ``NULL`` pointer raises :py:exc:`AttributeError`."
+msgstr ""
+"(D): Có thể xóa, trong trường hợp đó con trỏ được đặt thành ``NULL``. Đọc "
+"con trỏ ``NULL`` sẽ tăng :py:exc:`AttributeError`."
+
+#: ../../c-api/structures.rst:808
+#, fuzzy
+msgid ""
+"In previous versions, the macros were only available with ``#include "
+"\"structmember.h\"`` and were named without the ``Py_`` prefix (e.g. as "
+"``T_INT``). The header is still available and contains the old names, along "
+"with the following deprecated types:"
+msgstr ""
+"Trong các phiên bản trước, macro chỉ có sẵn với ``#include "
+"\"structmember.h\"`` và được đặt tên mà không có tiền tố ``Py_`` (ví dụ: "
+"``T_INT``). Tiêu đề vẫn có sẵn và chứa các tên cũ, cùng với các loại không "
+"được dùng nữa:"
+
+#: ../../c-api/structures.rst:816
+#, fuzzy
+msgid ""
+"Like ``Py_T_OBJECT_EX``, but ``NULL`` is converted to ``None``. This results"
+" in surprising behavior in Python: deleting the attribute effectively sets "
+"it to ``None``."
+msgstr ""
+"Giống như ``Py_T_OBJECT_EX``, nhưng ``NULL`` được chuyển đổi thành ``None``."
+" Điều này dẫn đến hành vi đáng ngạc nhiên trong Python: việc xóa thuộc tính "
+"sẽ đặt nó thành ``None`` một cách hiệu quả."
+
+#: ../../c-api/structures.rst:822
+#, fuzzy
+msgid "Always ``None``. Must be used with :c:macro:`Py_READONLY`."
+msgstr "Luôn là ``None``. Phải được sử dụng với :c:macro:`Py_READONLY`."
+
+#: ../../c-api/structures.rst:825
+#, fuzzy
+msgid "Defining Getters and Setters"
+msgstr "Xác định Getters và Setters"
+
+#: ../../c-api/structures.rst:829
+#, fuzzy
+msgid ""
+"Structure to define property-like access for a type. See also description of"
+" the :c:member:`PyTypeObject.tp_getset` slot."
+msgstr ""
+"Cấu trúc để xác định quyền truy cập giống như thuộc tính cho một loại. Xem "
+"thêm mô tả về khe :c:member:`PyTypeObject.tp_getset`."
+
+#: ../../c-api/structures.rst:834
+#, fuzzy
+msgid "attribute name"
+msgstr "tên thuộc tính"
+
+#: ../../c-api/structures.rst:838
+#, fuzzy
+msgid "C function to get the attribute."
+msgstr "Hàm C để lấy thuộc tính."
+
+#: ../../c-api/structures.rst:842
+#, fuzzy
+msgid ""
+"Optional C function to set or delete the attribute. If ``NULL``, the "
+"attribute is read-only."
+msgstr ""
+"Hàm C tùy chọn để đặt hoặc xóa thuộc tính. Nếu ``NULL``, thuộc tính chỉ đọc."
+
+#: ../../c-api/structures.rst:847
+#, fuzzy
+msgid "optional docstring"
+msgstr "chuỗi tài liệu tùy chọn"
+
+#: ../../c-api/structures.rst:851
+#, fuzzy
+msgid ""
+"Optional user data pointer, providing additional data for getter and setter."
+msgstr ""
+"Con trỏ dữ liệu người dùng tùy chọn, cung cấp dữ liệu bổ sung cho getter và "
+"setter."
+
+#: ../../c-api/structures.rst:855
+#, fuzzy
+msgid ""
+"The ``get`` function takes one :c:expr:`PyObject*` parameter (the instance) "
+"and a user data pointer (the associated ``closure``):"
+msgstr ""
+"Hàm ``get`` lấy một tham số :c:expr:`PyObject*` (ví dụ) và một con trỏ dữ "
+"liệu người dùng (``closure`` được liên kết):"
+
+#: ../../c-api/structures.rst:858
+#, fuzzy
+msgid ""
+"It should return a new reference on success or ``NULL`` with a set exception"
+" on failure."
+msgstr ""
+"Nó sẽ trả về một tham chiếu mới về thành công hoặc ``NULL`` với một ngoại lệ"
+" được đặt khi thất bại."
+
+#: ../../c-api/structures.rst:863
+#, fuzzy
+msgid ""
+"``set`` functions take two :c:expr:`PyObject*` parameters (the instance and "
+"the value to be set) and a user data pointer (the associated ``closure``):"
+msgstr ""
+"Các hàm ``set`` có hai tham số :c:expr:`PyObject*` (thể hiện và giá trị được"
+" đặt) và một con trỏ dữ liệu người dùng (``closure`` được liên kết):"
+
+#: ../../c-api/structures.rst:866
+#, fuzzy
+msgid ""
+"In case the attribute should be deleted the second parameter is ``NULL``. "
+"Should return ``0`` on success or ``-1`` with a set exception on failure."
+msgstr ""
+"Trong trường hợp thuộc tính cần bị xóa thì tham số thứ hai là ``NULL``. Nên "
+"trả về ``0`` nếu thành công hoặc ``-1`` với ngoại lệ được đặt nếu thất bại."
+
+#: ../../c-api/structures.rst:418 ../../c-api/structures.rst:428
+#, fuzzy
+msgid "built-in function"
+msgstr "chức năng tích hợp"
+
+#: ../../c-api/structures.rst:418
+#, fuzzy
+msgid "classmethod"
+msgstr "phương pháp phân loại"
+
+#: ../../c-api/structures.rst:428
+#, fuzzy
+msgid "staticmethod"
+msgstr "phương pháp tĩnh"
+
+#: ../../c-api/structures.rst:709
+#, fuzzy
+msgid "READ_RESTRICTED (C macro)"
+msgstr "READ_RESTRICTED (macro C)"
+
+#: ../../c-api/structures.rst:709
+#, fuzzy
+msgid "WRITE_RESTRICTED (C macro)"
+msgstr "WRITE_RESTRICTED (macro C)"
+
+#: ../../c-api/structures.rst:709
+#, fuzzy
+msgid "RESTRICTED (C macro)"
+msgstr "RESTRICTED (macro C)"
+
+#: ../../c-api/structures.rst:722
+#, fuzzy
+msgid "READONLY (C macro)"
+msgstr "READONLY (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_BYTE (C macro)"
+msgstr "T_BYTE (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_SHORT (C macro)"
+msgstr "T_SHORT (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_INT (C macro)"
+msgstr "T_INT (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_LONG (C macro)"
+msgstr "T_LONG (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_LONGLONG (C macro)"
+msgstr "T_LONGLONG (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_UBYTE (C macro)"
+msgstr "T_UBYTE (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_USHORT (C macro)"
+msgstr "T_USHORT (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_UINT (C macro)"
+msgstr "T_UINT (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_ULONG (C macro)"
+msgstr "T_ULONG (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_ULONGULONG (C macro)"
+msgstr "T_ULONGULONG (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_PYSSIZET (C macro)"
+msgstr "T_PYSSIZET (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_FLOAT (C macro)"
+msgstr "T_FLOAT (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_DOUBLE (C macro)"
+msgstr "T_DOUBLE (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_BOOL (C macro)"
+msgstr "T_BOOL (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_CHAR (C macro)"
+msgstr "T_CHAR (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_STRING (C macro)"
+msgstr "T_STRING (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_STRING_INPLACE (C macro)"
+msgstr "T_STRING_INPLACE (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "T_OBJECT_EX (C macro)"
+msgstr "T_OBJECT_EX (macro C)"
+
+#: ../../c-api/structures.rst:785
+#, fuzzy
+msgid "structmember.h"
+msgstr "structmember.h"

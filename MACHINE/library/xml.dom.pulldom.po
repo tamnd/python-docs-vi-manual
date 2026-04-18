@@ -1,0 +1,302 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/xml.dom.pulldom.rst:2
+#, fuzzy
+msgid ":mod:`!xml.dom.pulldom` --- Support for building partial DOM trees"
+msgstr ":mod:`!xml.dom.pulldom` --- Hỗ trợ xây dựng cây DOM một phần"
+
+#: ../../library/xml.dom.pulldom.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/xml/dom/pulldom.py`"
+msgstr "**Source code:** :source:`Lib/xml/dom/pulldom.py`"
+
+#: ../../library/xml.dom.pulldom.rst:13
+#, fuzzy
+msgid ""
+"The :mod:`!xml.dom.pulldom` module provides a \"pull parser\" which can also"
+" be asked to produce DOM-accessible fragments of the document where "
+"necessary. The basic concept involves pulling \"events\" from a stream of "
+"incoming XML and processing them. In contrast to SAX which also employs an "
+"event-driven processing model together with callbacks, the user of a pull "
+"parser is responsible for explicitly pulling events from the stream, looping"
+" over those events until either processing is finished or an error condition"
+" occurs."
+msgstr ""
+"Mô-đun :mod:`!xml.dom.pulldom` cung cấp một \"trình phân tích cú pháp kéo\" "
+"cũng có thể được yêu cầu tạo ra các đoạn tài liệu có thể truy cập DOM khi "
+"cần thiết. Khái niệm cơ bản liên quan đến việc lấy \"sự kiện\" từ luồng XML "
+"đến và xử lý chúng. Ngược lại với SAX cũng sử dụng mô hình xử lý theo hướng "
+"sự kiện cùng với các lệnh gọi lại, người dùng trình phân tích cú pháp kéo "
+"chịu trách nhiệm kéo các sự kiện khỏi luồng một cách rõ ràng, lặp lại các sự"
+" kiện đó cho đến khi quá trình xử lý kết thúc hoặc xảy ra tình trạng lỗi."
+
+#: ../../library/xml.dom.pulldom.rst:24
+#, fuzzy
+msgid ""
+"If you need to parse untrusted or unauthenticated data, see :ref:`xml-"
+"security`."
+msgstr ""
+"Nếu bạn cần phân tích dữ liệu không đáng tin cậy hoặc chưa được xác thực, "
+"hãy xem :ref:`xml-security`."
+
+#: ../../library/xml.dom.pulldom.rst:29
+#, fuzzy
+msgid ""
+"The SAX parser no longer processes general external entities by default to "
+"increase security by default. To enable processing of external entities, "
+"pass a custom parser instance in::"
+msgstr ""
+"Trình phân tích cú pháp SAX không còn xử lý các thực thể bên ngoài chung "
+"theo mặc định để tăng tính bảo mật theo mặc định. Để cho phép xử lý các thực"
+" thể bên ngoài, hãy chuyển một phiên bản trình phân tích cú pháp tùy chỉnh "
+"vào::"
+
+#: ../../library/xml.dom.pulldom.rst:33
+#, fuzzy
+msgid ""
+"from xml.dom.pulldom import parse\n"
+"from xml.sax import make_parser\n"
+"from xml.sax.handler import feature_external_ges\n"
+"\n"
+"parser = make_parser()\n"
+"parser.setFeature(feature_external_ges, True)\n"
+"parse(filename, parser=parser)"
+msgstr ""
+"từ phân tích nhập khẩu xml.dom.pulldom\n"
+"từ xml.sax nhập make_parser\n"
+"từ nhập xml.sax.handler feature_external_ges\n"
+"\n"
+"trình phân tích cú pháp = make_parser()\n"
+"parser.setFeature(feature_external_ges, True)\n"
+"phân tích cú pháp (tên tệp, trình phân tích cú pháp = trình phân tích cú pháp)"
+
+#: ../../library/xml.dom.pulldom.rst:42
+#, fuzzy
+msgid "Example::"
+msgstr "Ví dụ::"
+
+#: ../../library/xml.dom.pulldom.rst:44
+#, fuzzy
+msgid ""
+"from xml.dom import pulldom\n"
+"\n"
+"doc = pulldom.parse('sales_items.xml')\n"
+"for event, node in doc:\n"
+"    if event == pulldom.START_ELEMENT and node.tagName == 'item':\n"
+"        if int(node.getAttribute('price')) > 50:\n"
+"            doc.expandNode(node)\n"
+"            print(node.toxml())"
+msgstr ""
+"từ pulldom nhập xml.dom\n"
+"\n"
+"doc = pulldom.parse('sale_items.xml')\n"
+"cho sự kiện, nút trong tài liệu:\n"
+"    nếu sự kiện == pulldom.START_ELEMENT và node.tagName == 'item':\n"
+"        nếu int(node.getAttribution('price')) > 50:\n"
+"            doc.expandNode(nút)\n"
+"            in(node.toxml())"
+
+#: ../../library/xml.dom.pulldom.rst:53
+#, fuzzy
+msgid "``event`` is a constant and can be one of:"
+msgstr "``event`` là một hằng số và có thể là một trong:"
+
+#: ../../library/xml.dom.pulldom.rst:55
+#, fuzzy
+msgid ":data:`START_ELEMENT`"
+msgstr ":data:`START_ELEMENT`"
+
+#: ../../library/xml.dom.pulldom.rst:56
+#, fuzzy
+msgid ":data:`END_ELEMENT`"
+msgstr ":data:`END_ELEMENT`"
+
+#: ../../library/xml.dom.pulldom.rst:57
+#, fuzzy
+msgid ":data:`COMMENT`"
+msgstr ":data:`COMMENT`"
+
+#: ../../library/xml.dom.pulldom.rst:58
+#, fuzzy
+msgid ":data:`START_DOCUMENT`"
+msgstr ":data:`START_DOCUMENT`"
+
+#: ../../library/xml.dom.pulldom.rst:59
+#, fuzzy
+msgid ":data:`END_DOCUMENT`"
+msgstr ":data:`END_DOCUMENT`"
+
+#: ../../library/xml.dom.pulldom.rst:60
+#, fuzzy
+msgid ":data:`CHARACTERS`"
+msgstr ":data:`CHARACTERS`"
+
+#: ../../library/xml.dom.pulldom.rst:61
+#, fuzzy
+msgid ":data:`PROCESSING_INSTRUCTION`"
+msgstr ":data:`PROCESSING_INSTRUCTION`"
+
+#: ../../library/xml.dom.pulldom.rst:62
+#, fuzzy
+msgid ":data:`IGNORABLE_WHITESPACE`"
+msgstr ":data:`IGNORABLE_WHITESPACE`"
+
+#: ../../library/xml.dom.pulldom.rst:64
+#, fuzzy
+msgid ""
+"``node`` is an object of type :class:`xml.dom.minidom.Document`, "
+":class:`xml.dom.minidom.Element` or :class:`xml.dom.minidom.Text`."
+msgstr ""
+"``node`` là đối tượng thuộc loại :class:`xml.dom.minidom.Document`, "
+":class:`xml.dom.minidom.Element` hoặc :class:`xml.dom.minidom.Text`."
+
+#: ../../library/xml.dom.pulldom.rst:67
+#, fuzzy
+msgid ""
+"Since the document is treated as a \"flat\" stream of events, the document "
+"\"tree\" is implicitly traversed and the desired elements are found "
+"regardless of their depth in the tree. In other words, one does not need to "
+"consider hierarchical issues such as recursive searching of the document "
+"nodes, although if the context of elements were important, one would either "
+"need to maintain some context-related state (i.e. remembering where one is "
+"in the document at any given point) or to make use of the "
+":func:`DOMEventStream.expandNode` method and switch to DOM-related "
+"processing."
+msgstr ""
+"Vì tài liệu được coi là một luồng sự kiện \"phẳng\", \"cây\" tài liệu được "
+"duyệt ngầm và các phần tử mong muốn được tìm thấy bất kể độ sâu của chúng "
+"trong cây. Nói cách khác, người ta không cần phải xem xét các vấn đề phân "
+"cấp như tìm kiếm đệ quy các nút tài liệu, mặc dù nếu bối cảnh của các phần "
+"tử là quan trọng thì người ta sẽ cần duy trì một số trạng thái liên quan đến"
+" ngữ cảnh (tức là ghi nhớ vị trí của một phần tử trong tài liệu tại bất kỳ "
+"điểm nào) hoặc sử dụng phương thức :func:`DOMEventStream.expandNode` và "
+"chuyển sang xử lý liên quan đến DOM."
+
+#: ../../library/xml.dom.pulldom.rst:79 ../../library/xml.dom.pulldom.rst:84
+#, fuzzy
+msgid "Subclass of :class:`xml.sax.handler.ContentHandler`."
+msgstr "Lớp con của :class:`xml.sax.handler.ContentHandler`."
+
+#: ../../library/xml.dom.pulldom.rst:89
+#, fuzzy
+msgid ""
+"Return a :class:`DOMEventStream` from the given input. *stream_or_string* "
+"may be either a file name, or a file-like object. *parser*, if given, must "
+"be an :class:`~xml.sax.xmlreader.XMLReader` object. This function will "
+"change the document handler of the parser and activate namespace support; "
+"other parser configuration (like setting an entity resolver) must have been "
+"done in advance."
+msgstr ""
+"Trả về :class:`DOMEventStream` từ đầu vào đã cho. *stream_or_string* có thể "
+"là tên tệp hoặc đối tượng giống như tệp. *parser*, nếu được cung cấp, phải "
+"là đối tượng :class:`~xml.sax.xmlreader.XMLReader`. Hàm này sẽ thay đổi "
+"trình xử lý tài liệu của trình phân tích cú pháp và kích hoạt hỗ trợ không "
+"gian tên; cấu hình trình phân tích cú pháp khác (như đặt trình phân giải "
+"thực thể) phải được thực hiện trước."
+
+#: ../../library/xml.dom.pulldom.rst:96
+#, fuzzy
+msgid ""
+"If you have XML in a string, you can use the :func:`parseString` function "
+"instead:"
+msgstr ""
+"Nếu bạn có XML trong một chuỗi, bạn có thể sử dụng hàm :func:`parseString` "
+"thay thế:"
+
+#: ../../library/xml.dom.pulldom.rst:100
+#, fuzzy
+msgid ""
+"Return a :class:`DOMEventStream` that represents the (Unicode) *string*."
+msgstr "Trả về :class:`DOMEventStream` đại diện cho *string* (Unicode)."
+
+#: ../../library/xml.dom.pulldom.rst:104
+#, fuzzy
+msgid "Default value for the *bufsize* parameter to :func:`parse`."
+msgstr "Giá trị mặc định cho tham số *bufsize* là :func:`parse`."
+
+#: ../../library/xml.dom.pulldom.rst:106
+#, fuzzy
+msgid ""
+"The value of this variable can be changed before calling :func:`parse` and "
+"the new value will take effect."
+msgstr ""
+"Giá trị của biến này có thể được thay đổi trước khi gọi :func:`parse` và giá"
+" trị mới sẽ có hiệu lực."
+
+#: ../../library/xml.dom.pulldom.rst:112
+#, fuzzy
+msgid "DOMEventStream Objects"
+msgstr "Đối tượng DOMEventStream"
+
+#: ../../library/xml.dom.pulldom.rst:116
+#, fuzzy
+msgid "Support for :meth:`~object.__getitem__` method has been removed."
+msgstr "Hỗ trợ cho phương pháp :meth:`~object.__getitem__` đã bị xóa."
+
+#: ../../library/xml.dom.pulldom.rst:121
+#, fuzzy
+msgid ""
+"Return a tuple containing *event* and the current *node* as "
+":class:`xml.dom.minidom.Document` if event equals :data:`START_DOCUMENT`, "
+":class:`xml.dom.minidom.Element` if event equals :data:`START_ELEMENT` or "
+":data:`END_ELEMENT` or :class:`xml.dom.minidom.Text` if event equals "
+":data:`CHARACTERS`. The current node does not contain information about its "
+"children, unless :func:`expandNode` is called."
+msgstr ""
+"Trả về một bộ chứa *event* và *node* hiện tại là "
+":class:`xml.dom.minidom.Document` nếu sự kiện bằng :data:`START_DOCUMENT`, "
+":class:`xml.dom.minidom.Element` nếu sự kiện bằng :data:`START_ELEMENT` hoặc"
+" :data:`END_ELEMENT` hoặc :class:`xml.dom.minidom.Text` nếu sự kiện bằng "
+":data:`CHARACTERS`. Nút hiện tại không chứa thông tin về nút con của nó, trừ"
+" khi :func:`expandNode` được gọi."
+
+#: ../../library/xml.dom.pulldom.rst:131
+#, fuzzy
+msgid "Expands all children of *node* into *node*. Example::"
+msgstr "Mở rộng tất cả các phần tử con của *node* thành *node*. Ví dụ::"
+
+#: ../../library/xml.dom.pulldom.rst:133
+#, fuzzy
+msgid ""
+"from xml.dom import pulldom\n"
+"\n"
+"xml = '<html><title>Foo</title> <p>Some text <div>and more</div></p> </html>'\n"
+"doc = pulldom.parseString(xml)\n"
+"for event, node in doc:\n"
+"    if event == pulldom.START_ELEMENT and node.tagName == 'p':\n"
+"        # Following statement only prints '<p/>'\n"
+"        print(node.toxml())\n"
+"        doc.expandNode(node)\n"
+"        # Following statement prints node with all its children '<p>Some text <div>and more</div></p>'\n"
+"        print(node.toxml())"
+msgstr ""
+"từ pulldom nhập xml.dom\n"
+"\n"
+"xml = '<html><title>Foo</title> <p>Một số văn bản <div>và hơn thế nữa</div></p> </html>'\n"
+"doc = pulldom.parseString(xml)\n"
+"cho sự kiện, nút trong tài liệu:\n"
+"    nếu sự kiện == pulldom.START_ELEMENT và node.tagName == 'p':\n"
+"        Câu lệnh # Following chỉ in '<p/>'\n"
+"        in(node.toxml())\n"
+"        doc.expandNode(nút)\n"
+"        Câu lệnh # Following in nút với tất cả các nút con của nó '<p>Một số văn bản <div>và hơn thế nữa</div></p>'\n"
+"        in(node.toxml())"

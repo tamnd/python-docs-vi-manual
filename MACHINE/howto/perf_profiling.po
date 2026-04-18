@@ -1,0 +1,665 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/perf_profiling.rst:7
+#, fuzzy
+msgid "Python support for the Linux ``perf`` profiler"
+msgstr "Hỗ trợ Python cho trình lược tả Linux ``perf``"
+
+#: ../../howto/perf_profiling.rst
+#, fuzzy
+msgid "author"
+msgstr "tác giả"
+
+#: ../../howto/perf_profiling.rst:9
+#, fuzzy
+msgid "Pablo Galindo"
+msgstr "Pablo Galindo"
+
+#: ../../howto/perf_profiling.rst:11
+#, fuzzy
+msgid ""
+"`The Linux perf profiler <https://perf.wiki.kernel.org>`_ is a very powerful"
+" tool that allows you to profile and obtain information about the "
+"performance of your application. ``perf`` also has a very vibrant ecosystem "
+"of tools that aid with the analysis of the data that it produces."
+msgstr ""
+"`The Linux perf profiler <https://perf.wiki.kernel.org>`_ là một công cụ rất"
+" mạnh mẽ cho phép bạn lập hồ sơ và thu thập thông tin về hiệu suất ứng dụng "
+"của mình. ``perf`` cũng có một hệ sinh thái công cụ rất sôi động hỗ trợ việc"
+" phân tích dữ liệu mà nó tạo ra."
+
+#: ../../howto/perf_profiling.rst:17
+#, fuzzy
+msgid ""
+"The main problem with using the ``perf`` profiler with Python applications "
+"is that ``perf`` only gets information about native symbols, that is, the "
+"names of functions and procedures written in C. This means that the names "
+"and file names of Python functions in your code will not appear in the "
+"output of ``perf``."
+msgstr ""
+"Vấn đề chính khi sử dụng trình lược tả ``perf`` với các ứng dụng Python là "
+"``perf`` chỉ lấy thông tin về các ký hiệu gốc, tức là tên của các hàm và thủ"
+" tục được viết bằng C. Điều này có nghĩa là tên và tên tệp của các hàm "
+"Python trong mã của bạn sẽ không xuất hiện trong đầu ra của ``perf``."
+
+#: ../../howto/perf_profiling.rst:22
+#, fuzzy
+msgid ""
+"Since Python 3.12, the interpreter can run in a special mode that allows "
+"Python functions to appear in the output of the ``perf`` profiler. When this"
+" mode is enabled, the interpreter will interpose a small piece of code "
+"compiled on the fly before the execution of every Python function and it "
+"will teach ``perf`` the relationship between this piece of code and the "
+"associated Python function using :doc:`perf map files <../c-api/perfmaps>`."
+msgstr ""
+"Kể từ Python 3.12, trình thông dịch có thể chạy ở chế độ đặc biệt cho phép "
+"các hàm Python xuất hiện trong đầu ra của trình lược tả ``perf``. Khi chế độ"
+" này được bật, trình thông dịch sẽ chèn một đoạn mã nhỏ được biên dịch nhanh"
+" chóng trước khi thực thi mọi hàm Python và nó sẽ dạy cho ``perf`` mối quan "
+"hệ giữa đoạn mã này và hàm Python liên quan bằng :doc:`perf map files "
+"<../c-api/perfmaps>`."
+
+#: ../../howto/perf_profiling.rst:31
+#, fuzzy
+msgid ""
+"Support for the ``perf`` profiler is currently only available for Linux on "
+"select architectures. Check the output of the ``configure`` build step or "
+"check the output of ``python -m sysconfig | grep HAVE_PERF_TRAMPOLINE`` to "
+"see if your system is supported."
+msgstr ""
+"Hỗ trợ cho trình lược tả ``perf`` hiện chỉ khả dụng cho Linux trên một số "
+"kiến trúc được chọn. Kiểm tra đầu ra của bước xây dựng ``configure`` hoặc "
+"kiểm tra đầu ra của ``python -m sysconfig | grep HAVE_PERF_TRAMPOLINE`` để "
+"xem hệ thống của bạn có được hỗ trợ hay không."
+
+#: ../../howto/perf_profiling.rst:36
+#, fuzzy
+msgid "For example, consider the following script:"
+msgstr "Ví dụ: hãy xem xét tập lệnh sau:"
+
+#: ../../howto/perf_profiling.rst:38
+#, fuzzy
+msgid ""
+"def foo(n):\n"
+"    result = 0\n"
+"    for _ in range(n):\n"
+"        result += 1\n"
+"    return result\n"
+"\n"
+"def bar(n):\n"
+"    foo(n)\n"
+"\n"
+"def baz(n):\n"
+"    bar(n)\n"
+"\n"
+"if __name__ == \"__main__\":\n"
+"    baz(1000000)"
+msgstr ""
+"def foo(n):\n"
+"    kết quả = 0\n"
+"    cho _ trong phạm vi (n):\n"
+"        kết quả += 1\n"
+"    kết quả trả về\n"
+"\n"
+"thanh def (n):\n"
+"    foo(n)\n"
+"\n"
+"def baz(n):\n"
+"    thanh(n)\n"
+"\n"
+"nếu __name__ == \"__main__\":\n"
+"    baz(1000000)"
+
+#: ../../howto/perf_profiling.rst:55
+#, fuzzy
+msgid "We can run ``perf`` to sample CPU stack traces at 9999 hertz::"
+msgstr ""
+"Chúng tôi có thể chạy ``perf`` để lấy mẫu dấu vết ngăn xếp CPU ở 9999 "
+"hertz::"
+
+#: ../../howto/perf_profiling.rst:57
+#, fuzzy
+msgid "$ perf record -F 9999 -g -o perf.data python my_script.py"
+msgstr "$ bản ghi hoàn hảo -F 9999 -g -o perf.data python my_script.py"
+
+#: ../../howto/perf_profiling.rst:59
+#, fuzzy
+msgid "Then we can use ``perf report`` to analyze the data:"
+msgstr "Sau đó chúng ta có thể sử dụng ``perf report`` để phân tích dữ liệu:"
+
+#: ../../howto/perf_profiling.rst:61
+#, fuzzy
+msgid ""
+"$ perf report --stdio -n -g\n"
+"\n"
+"# Children      Self       Samples  Command     Shared Object       Symbol\n"
+"# ........  ........  ............  ..........  ..................  ..........................................\n"
+"#\n"
+"    91.08%     0.00%             0  python.exe  python.exe          [.] _start\n"
+"            |\n"
+"            ---_start\n"
+"            |\n"
+"                --90.71%--__libc_start_main\n"
+"                        Py_BytesMain\n"
+"                        |\n"
+"                        |--56.88%--pymain_run_python.constprop.0\n"
+"                        |          |\n"
+"                        |          |--56.13%--_PyRun_AnyFileObject\n"
+"                        |          |          _PyRun_SimpleFileObject\n"
+"                        |          |          |\n"
+"                        |          |          |--55.02%--run_mod\n"
+"                        |          |          |          |\n"
+"                        |          |          |           --54.65%--PyEval_EvalCode\n"
+"                        |          |          |                     _PyEval_EvalFrameDefault\n"
+"                        |          |          |                     PyObject_Vectorcall\n"
+"                        |          |          |                     _PyEval_Vector\n"
+"                        |          |          |                     _PyEval_EvalFrameDefault\n"
+"                        |          |          |                     PyObject_Vectorcall\n"
+"                        |          |          |                     _PyEval_Vector\n"
+"                        |          |          |                     _PyEval_EvalFrameDefault\n"
+"                        |          |          |                     PyObject_Vectorcall\n"
+"                        |          |          |                     _PyEval_Vector\n"
+"                        |          |          |                     |\n"
+"                        |          |          |                     |--51.67%--_PyEval_EvalFrameDefault\n"
+"                        |          |          |                     |          |\n"
+"                        |          |          |                     |          |--11.52%--_PyLong_Add\n"
+"                        |          |          |                     |          |          |\n"
+"                        |          |          |                     |          |          |--2.97%--_PyObject_Malloc\n"
+"..."
+msgstr ""
+"Báo cáo hoàn hảo $ --stdio -n -g\n"
+"\n"
+"# Children Lệnh Tự Mẫu Biểu tượng Đối tượng Chia sẻ\n"
+"# ......... ............. ............ ....................................................\n"
+"#\n"
+"    91.08% 0,00% 0 python.exe python.exe [.] _start\n"
+"            |\n"
+"            ---_bắt đầu\n"
+"            |\n"
+"                --90,71%--__libc_start_main\n"
+"                        Py_BytesChính\n"
+"                        |\n"
+"                        |--56,88%--pymain_run_python.constprop.0\n"
+"                        |          |\n"
+"                        |          |--56,13%--_PyRun_AnyFileObject\n"
+"                        |          | _PyRun_SimpleFileObject\n"
+"                        |          | |\n"
+"                        |          | |--55.02%--run_mod\n"
+"                        |          | |          |\n"
+"                        |          | |           --54,65%--PyEval_EvalCode\n"
+"                        |          | |                     _PyEval_EvalFrameDefault\n"
+"                        |          | |                     PyObject_Vectorcall\n"
+"                        |          | |                     _PyEval_Vector\n"
+"                        |          | |                     _PyEval_EvalFrameDefault\n"
+"                        |          | |                     PyObject_Vectorcall\n"
+"                        |          | |                     _PyEval_Vector\n"
+"                        |          | |                     _PyEval_EvalFrameDefault\n"
+"                        |          | |                     PyObject_Vectorcall\n"
+"                        |          | |                     _PyEval_Vector\n"
+"                        |          | |                     |\n"
+"                        |          | |                     |--51,67%--_PyEval_EvalFrameDefault\n"
+"                        |          | |                     | |\n"
+"                        |          | |                     | |--11,52%--_PyLong_Add\n"
+"                        |          | |                     | |          |\n"
+"                        |          | |                     | |          |--2,97%--_PyObject_Malloc\n"
+"..."
+
+#: ../../howto/perf_profiling.rst:100
+#, fuzzy
+msgid ""
+"As you can see, the Python functions are not shown in the output, only "
+"``_PyEval_EvalFrameDefault`` (the function that evaluates the Python "
+"bytecode) shows up. Unfortunately that's not very useful because all Python "
+"functions use the same C function to evaluate bytecode so we cannot know "
+"which Python function corresponds to which bytecode-evaluating function."
+msgstr ""
+"Như bạn có thể thấy, các hàm Python không được hiển thị trong đầu ra, chỉ có"
+" ``_PyEval_EvalFrameDefault`` (hàm đánh giá mã byte Python) hiển thị. Thật "
+"không may, điều đó không hữu ích lắm vì tất cả các hàm Python đều sử dụng "
+"cùng một hàm C để đánh giá mã byte nên chúng ta không thể biết hàm Python "
+"nào tương ứng với hàm đánh giá mã byte nào."
+
+#: ../../howto/perf_profiling.rst:105
+#, fuzzy
+msgid ""
+"Instead, if we run the same experiment with ``perf`` support enabled we get:"
+msgstr ""
+"Thay vào đó, nếu chúng tôi chạy thử nghiệm tương tự với hỗ trợ ``perf`` được"
+" bật, chúng tôi sẽ nhận được:"
+
+#: ../../howto/perf_profiling.rst:107
+#, fuzzy
+msgid ""
+"$ perf report --stdio -n -g\n"
+"\n"
+"# Children      Self       Samples  Command     Shared Object       Symbol\n"
+"# ........  ........  ............  ..........  ..................  .....................................................................\n"
+"#\n"
+"    90.58%     0.36%             1  python.exe  python.exe          [.] _start\n"
+"            |\n"
+"            ---_start\n"
+"            |\n"
+"                --89.86%--__libc_start_main\n"
+"                        Py_BytesMain\n"
+"                        |\n"
+"                        |--55.43%--pymain_run_python.constprop.0\n"
+"                        |          |\n"
+"                        |          |--54.71%--_PyRun_AnyFileObject\n"
+"                        |          |          _PyRun_SimpleFileObject\n"
+"                        |          |          |\n"
+"                        |          |          |--53.62%--run_mod\n"
+"                        |          |          |          |\n"
+"                        |          |          |           --53.26%--PyEval_EvalCode\n"
+"                        |          |          |                     py::<module>:/src/script.py\n"
+"                        |          |          |                     _PyEval_EvalFrameDefault\n"
+"                        |          |          |                     PyObject_Vectorcall\n"
+"                        |          |          |                     _PyEval_Vector\n"
+"                        |          |          |                     py::baz:/src/script.py\n"
+"                        |          |          |                     _PyEval_EvalFrameDefault\n"
+"                        |          |          |                     PyObject_Vectorcall\n"
+"                        |          |          |                     _PyEval_Vector\n"
+"                        |          |          |                     py::bar:/src/script.py\n"
+"                        |          |          |                     _PyEval_EvalFrameDefault\n"
+"                        |          |          |                     PyObject_Vectorcall\n"
+"                        |          |          |                     _PyEval_Vector\n"
+"                        |          |          |                     py::foo:/src/script.py\n"
+"                        |          |          |                     |\n"
+"                        |          |          |                     |--51.81%--_PyEval_EvalFrameDefault\n"
+"                        |          |          |                     |          |\n"
+"                        |          |          |                     |          |--13.77%--_PyLong_Add\n"
+"                        |          |          |                     |          |          |\n"
+"                        |          |          |                     |          |          |--3.26%--_PyObject_Malloc"
+msgstr ""
+"Báo cáo hoàn hảo $ --stdio -n -g\n"
+"\n"
+"# Children Lệnh tự mẫu Biểu tượng đối tượng chia sẻ\n"
+"# ......... ............. ............ ....................................................................................\n"
+"#\n"
+"    90.58% 0,36% 1 python.exe python.exe [.] _start\n"
+"            |\n"
+"            ---_bắt đầu\n"
+"            |\n"
+"                --89,86%--__libc_start_main\n"
+"                        Py_BytesChính\n"
+"                        |\n"
+"                        |--55,43%--pymain_run_python.constprop.0\n"
+"                        |          |\n"
+"                        |          |--54,71%--PyRun_AnyFileObject\n"
+"                        |          | _PyRun_SimpleFileObject\n"
+"                        |          | |\n"
+"                        |          | |--53.62%--run_mod\n"
+"                        |          | |          |\n"
+"                        |          | |           --53,26%--PyEval_EvalCode\n"
+"                        |          | |                     py::<module>:/src/script.py\n"
+"                        |          | |                     _PyEval_EvalFrameDefault\n"
+"                        |          | |                     PyObject_Vectorcall\n"
+"                        |          | |                     _PyEval_Vector\n"
+"                        |          | |                     py::baz:/src/script.py\n"
+"                        |          | |                     _PyEval_EvalFrameDefault\n"
+"                        |          | |                     PyObject_Vectorcall\n"
+"                        |          | |                     _PyEval_Vector\n"
+"                        |          | |                     py::bar:/src/script.py\n"
+"                        |          | |                     _PyEval_EvalFrameDefault\n"
+"                        |          | |                     PyObject_Vectorcall\n"
+"                        |          | |                     _PyEval_Vector\n"
+"                        |          | |                     py::foo:/src/script.py\n"
+"                        |          | |                     |\n"
+"                        |          | |                     |--51,81%--_PyEval_EvalFrameDefault\n"
+"                        |          | |                     | |\n"
+"                        |          | |                     | |--13,77%--_PyLong_Add\n"
+"                        |          | |                     | |          |\n"
+"                        |          | |                     | |          |--3,26%--_PyObject_Malloc"
+
+#: ../../howto/perf_profiling.rst:152
+#, fuzzy
+msgid "How to enable ``perf`` profiling support"
+msgstr "Cách bật hỗ trợ hồ sơ ``perf``"
+
+#: ../../howto/perf_profiling.rst:154
+#, fuzzy
+msgid ""
+"``perf`` profiling support can be enabled either from the start using the "
+"environment variable :envvar:`PYTHONPERFSUPPORT` or the :option:`-X perf "
+"<-X>` option, or dynamically using :func:`sys.activate_stack_trampoline` and"
+" :func:`sys.deactivate_stack_trampoline`."
+msgstr ""
+"Hỗ trợ định hình ``perf`` có thể được bật ngay từ đầu bằng cách sử dụng biến"
+" môi trường :envvar:`PYTHONPERFSUPPORT` hoặc tùy chọn :option:`-X perf <-X>`"
+" hoặc sử dụng động :func:`sys.activate_stack_trampoline` và "
+":func:`sys.deactivate_stack_trampoline`."
+
+#: ../../howto/perf_profiling.rst:160
+#, fuzzy
+msgid ""
+"The :mod:`!sys` functions take precedence over the :option:`!-X` option, the"
+" :option:`!-X` option takes precedence over the environment variable."
+msgstr ""
+"Các hàm :mod:`!sys` được ưu tiên hơn tùy chọn :option:`!-X`, tùy chọn "
+":option:`!-X` được ưu tiên hơn biến môi trường."
+
+#: ../../howto/perf_profiling.rst:163
+#, fuzzy
+msgid "Example, using the environment variable::"
+msgstr "Ví dụ, sử dụng biến môi trường ::"
+
+#: ../../howto/perf_profiling.rst:165
+#, fuzzy
+msgid ""
+"$ PYTHONPERFSUPPORT=1 perf record -F 9999 -g -o perf.data python my_script.py\n"
+"$ perf report -g -i perf.data"
+msgstr ""
+"$ PYTHONPERFSUPPORT=1 bản ghi hoàn hảo -F 9999 -g -o perf.data python my_script.py\n"
+"$ báo cáo hoàn hảo -g -i perf.data"
+
+#: ../../howto/perf_profiling.rst:168
+#, fuzzy
+msgid "Example, using the :option:`!-X` option::"
+msgstr "Ví dụ: sử dụng tùy chọn :option:`!-X`::"
+
+#: ../../howto/perf_profiling.rst:170
+#, fuzzy
+msgid ""
+"$ perf record -F 9999 -g -o perf.data python -X perf my_script.py\n"
+"$ perf report -g -i perf.data"
+msgstr ""
+"$ bản ghi hoàn hảo -F 9999 -g -o perf.data python -X hoàn hảo my_script.py\n"
+"$ báo cáo hoàn hảo -g -i perf.data"
+
+#: ../../howto/perf_profiling.rst:173
+#, fuzzy
+msgid "Example, using the :mod:`sys` APIs in file :file:`example.py`:"
+msgstr "Ví dụ: sử dụng API :mod:`sys` trong tệp :file:`example.py`:"
+
+#: ../../howto/perf_profiling.rst:175
+#, fuzzy
+msgid ""
+"import sys\n"
+"\n"
+"sys.activate_stack_trampoline(\"perf\")\n"
+"do_profiled_stuff()\n"
+"sys.deactivate_stack_trampoline()\n"
+"\n"
+"non_profiled_stuff()"
+msgstr ""
+"hệ thống nhập khẩu\n"
+"\n"
+"sys.activate_stack_trampoline(\"perf\")\n"
+"do_profiled_stuff()\n"
+"sys.deactivate_stack_trampoline()\n"
+"\n"
+"non_profiled_stuff()"
+
+#: ../../howto/perf_profiling.rst:185
+#, fuzzy
+msgid "...then::"
+msgstr "...sau đó::"
+
+#: ../../howto/perf_profiling.rst:187
+#, fuzzy
+msgid ""
+"$ perf record -F 9999 -g -o perf.data python ./example.py\n"
+"$ perf report -g -i perf.data"
+msgstr ""
+"$ bản ghi hoàn hảo -F 9999 -g -o perf.data python ./example.py\n"
+"$ báo cáo hoàn hảo -g -i perf.data"
+
+#: ../../howto/perf_profiling.rst:192
+#, fuzzy
+msgid "How to obtain the best results"
+msgstr "Làm thế nào để có được kết quả tốt nhất"
+
+#: ../../howto/perf_profiling.rst:194
+#, fuzzy
+msgid ""
+"For best results, Python should be compiled with ``CFLAGS=\"-fno-omit-frame-"
+"pointer -mno-omit-leaf-frame-pointer\"`` as this allows profilers to unwind "
+"using only the frame pointer and not on DWARF debug information. This is "
+"because as the code that is interposed to allow ``perf`` support is "
+"dynamically generated it doesn't have any DWARF debugging information "
+"available."
+msgstr ""
+"Để có kết quả tốt nhất, Python nên được biên dịch bằng ``CFLAGS=\"-fno-omit-"
+"frame-pointer -mno-omit-leaf-frame-pointer\"`` vì điều này cho phép trình "
+"biên dịch thư giãn chỉ bằng cách sử dụng con trỏ khung chứ không phải trên "
+"thông tin gỡ lỗi DWARF. Điều này là do mã được xen vào để cho phép hỗ trợ "
+"``perf`` được tạo động nên nó không có sẵn bất kỳ thông tin gỡ lỗi DWARF "
+"nào."
+
+#: ../../howto/perf_profiling.rst:201
+#, fuzzy
+msgid ""
+"You can check if your system has been compiled with this flag by running::"
+msgstr ""
+"Bạn có thể kiểm tra xem hệ thống của bạn đã được biên dịch bằng cờ này chưa "
+"bằng cách chạy::"
+
+#: ../../howto/perf_profiling.rst:203
+#, fuzzy
+msgid "$ python -m sysconfig | grep 'no-omit-frame-pointer'"
+msgstr "$ python -m sysconfig | grep 'con trỏ không bỏ qua khung'"
+
+#: ../../howto/perf_profiling.rst:205
+#, fuzzy
+msgid ""
+"If you don't see any output it means that your interpreter has not been "
+"compiled with frame pointers and therefore it may not be able to show Python"
+" functions in the output of ``perf``."
+msgstr ""
+"Nếu bạn không thấy bất kỳ đầu ra nào, điều đó có nghĩa là trình thông dịch "
+"của bạn chưa được biên dịch bằng con trỏ khung và do đó nó có thể không hiển"
+" thị được các hàm Python trong đầu ra của ``perf``."
+
+#: ../../howto/perf_profiling.rst:211
+#, fuzzy
+msgid "How to work without frame pointers"
+msgstr "Cách làm việc mà không cần con trỏ khung"
+
+#: ../../howto/perf_profiling.rst:213
+#, fuzzy
+msgid ""
+"If you are working with a Python interpreter that has been compiled without "
+"frame pointers, you can still use the ``perf`` profiler, but the overhead "
+"will be a bit higher because Python needs to generate unwinding information "
+"for every Python function call on the fly. Additionally, ``perf`` will take "
+"more time to process the data because it will need to use the DWARF "
+"debugging information to unwind the stack and this is a slow process."
+msgstr ""
+"Nếu bạn đang làm việc với trình thông dịch Python đã được biên dịch mà không"
+" có con trỏ khung, bạn vẫn có thể sử dụng trình lược tả ``perf``, nhưng chi "
+"phí sẽ cao hơn một chút vì Python cần tạo thông tin tháo gỡ cho mọi lệnh gọi"
+" hàm Python một cách nhanh chóng. Ngoài ra, ``perf`` sẽ mất nhiều thời gian "
+"hơn để xử lý dữ liệu vì nó sẽ cần sử dụng thông tin gỡ lỗi DWARF để giải "
+"phóng ngăn xếp và đây là một quá trình chậm."
+
+#: ../../howto/perf_profiling.rst:220
+#, fuzzy
+msgid ""
+"To enable this mode, you can use the environment variable "
+":envvar:`PYTHON_PERF_JIT_SUPPORT` or the :option:`-X perf_jit <-X>` option, "
+"which will enable the JIT mode for the ``perf`` profiler."
+msgstr ""
+"Để bật chế độ này, bạn có thể sử dụng biến môi trường "
+":envvar:`PYTHON_PERF_JIT_SUPPORT` hoặc tùy chọn :option:`-X perf_jit <-X>`, "
+"tùy chọn này sẽ bật chế độ JIT cho trình lược tả ``perf``."
+
+#: ../../howto/perf_profiling.rst:226
+#, fuzzy
+msgid ""
+"Due to a bug in the ``perf`` tool, only ``perf`` versions higher than v6.8 "
+"will work with the JIT mode.  The fix was also backported to the v6.7.2 "
+"version of the tool."
+msgstr ""
+"Do công cụ ``perf`` bị lỗi nên chỉ những phiên bản ``perf`` cao hơn v6.8 mới"
+" hoạt động với chế độ JIT.  Bản sửa lỗi cũng đã được chuyển sang phiên bản "
+"v6.7.2 của công cụ."
+
+#: ../../howto/perf_profiling.rst:230
+#, fuzzy
+msgid ""
+"Note that when checking the version of the ``perf`` tool (which can be done "
+"by running ``perf version``) you must take into account that some distros "
+"add some custom version numbers including a ``-`` character.  This means "
+"that ``perf 6.7-3`` is not necessarily ``perf 6.7.3``."
+msgstr ""
+"Lưu ý rằng khi kiểm tra phiên bản của công cụ ``perf`` (có thể thực hiện "
+"bằng cách chạy ``perf version``), bạn phải tính đến việc một số bản phân "
+"phối thêm một số số phiên bản tùy chỉnh bao gồm ký tự ``-``.  Điều này có "
+"nghĩa là ``perf 6.7-3`` không nhất thiết phải là ``perf 6.7.3``."
+
+#: ../../howto/perf_profiling.rst:235
+#, fuzzy
+msgid ""
+"When using the perf JIT mode, you need an extra step before you can run "
+"``perf report``. You need to call the ``perf inject`` command to inject the "
+"JIT information into the ``perf.data`` file.::"
+msgstr ""
+"Khi sử dụng chế độ JIT hoàn hảo, bạn cần thực hiện thêm một bước trước khi "
+"có thể chạy ``perf report``. Bạn cần gọi lệnh ``perf inject`` để đưa thông "
+"tin JIT vào tệp ``perf.data``.::"
+
+#: ../../howto/perf_profiling.rst:239
+#, fuzzy
+msgid ""
+"$ perf record -F 9999 -g -k 1 --call-graph dwarf -o perf.data python -Xperf_jit my_script.py\n"
+"$ perf inject -i perf.data --jit --output perf.jit.data\n"
+"$ perf report -g -i perf.jit.data"
+msgstr ""
+"$ bản ghi hoàn hảo -F 9999 -g -k 1 --call-graph lùn -o perf.data python -Xperf_jit my_script.py\n"
+"$ perf tiêm -i perf.data --jit --output perf.jit.data\n"
+"$ báo cáo hoàn hảo -g -i perf.jit.data"
+
+#: ../../howto/perf_profiling.rst:243
+#, fuzzy
+msgid "or using the environment variable::"
+msgstr "hoặc sử dụng biến môi trường ::"
+
+#: ../../howto/perf_profiling.rst:245
+#, fuzzy
+msgid ""
+"$ PYTHON_PERF_JIT_SUPPORT=1 perf record -F 9999 -g --call-graph dwarf -o perf.data python my_script.py\n"
+"$ perf inject -i perf.data --jit --output perf.jit.data\n"
+"$ perf report -g -i perf.jit.data"
+msgstr ""
+"$ PYTHON_PERF_JIT_SUPPORT=1 bản ghi hoàn hảo -F 9999 -g --call-graph lùn -o perf.data python my_script.py\n"
+"$ perf tiêm -i perf.data --jit --output perf.jit.data\n"
+"$ báo cáo hoàn hảo -g -i perf.jit.data"
+
+#: ../../howto/perf_profiling.rst:249
+#, fuzzy
+msgid ""
+"``perf inject --jit`` command will read ``perf.data``, automatically pick up"
+" the perf dump file that Python creates (in ``/tmp/perf-$PID.dump``), and "
+"then create ``perf.jit.data`` which merges all the JIT information together."
+" It should also create a lot of ``jitted-XXXX-N.so`` files in the current "
+"directory which are ELF images for all the JIT trampolines that were created"
+" by Python."
+msgstr ""
+"Lệnh ``perf inject --jit`` sẽ đọc ``perf.data``, tự động chọn tệp kết xuất "
+"hoàn hảo mà Python tạo (trong ``/tmp/perf-$PID.dump``), sau đó tạo "
+"``perf.jit.data`` để hợp nhất tất cả thông tin JIT lại với nhau. Nó cũng sẽ "
+"tạo ra nhiều tệp ``jitted-XXXX-N.so`` trong thư mục hiện tại là hình ảnh ELF"
+" cho tất cả các tấm bạt lò xo JIT được tạo bởi Python."
+
+#: ../../howto/perf_profiling.rst:257
+#, fuzzy
+msgid ""
+"When using ``--call-graph dwarf``, the ``perf`` tool will take snapshots of "
+"the stack of the process being profiled and save the information in the "
+"``perf.data`` file. By default, the size of the stack dump is 8192 bytes, "
+"but you can change the size by passing it after a comma like ``--call-graph "
+"dwarf,16384``."
+msgstr ""
+"Khi sử dụng ``--call-graph dwarf``, công cụ ``perf`` sẽ chụp ảnh nhanh ngăn "
+"xếp của quá trình đang được lược tả và lưu thông tin vào tệp ``perf.data``. "
+"Theo mặc định, kích thước của kết xuất ngăn xếp là 8192 byte, nhưng bạn có "
+"thể thay đổi kích thước bằng cách chuyển nó sau dấu phẩy như ``--call-graph "
+"dwarf,16384``."
+
+#: ../../howto/perf_profiling.rst:263
+#, fuzzy
+msgid ""
+"The size of the stack dump is important because if the size is too small "
+"``perf`` will not be able to unwind the stack and the output will be "
+"incomplete. On the other hand, if the size is too big, then ``perf`` won't "
+"be able to sample the process as frequently as it would like as the overhead"
+" will be higher."
+msgstr ""
+"Kích thước của kết xuất ngăn xếp rất quan trọng vì nếu kích thước quá nhỏ "
+"``perf`` sẽ không thể giải phóng ngăn xếp và đầu ra sẽ không đầy đủ. Mặt "
+"khác, nếu kích thước quá lớn thì ``perf`` sẽ không thể lấy mẫu quy trình "
+"thường xuyên như mong muốn vì chi phí sẽ cao hơn."
+
+#: ../../howto/perf_profiling.rst:269
+#, fuzzy
+msgid ""
+"The stack size is particularly important when profiling Python code compiled"
+" with low optimization levels (like ``-O0``), as these builds tend to have "
+"larger stack frames. If you are compiling Python with ``-O0`` and not seeing"
+" Python functions in your profiling output, try increasing the stack dump "
+"size to 65528 bytes (the maximum)::"
+msgstr ""
+"Kích thước ngăn xếp đặc biệt quan trọng khi định hình mã Python được biên "
+"dịch ở mức tối ưu hóa thấp (như ``-O0``), vì các bản dựng này có xu hướng có"
+" khung ngăn xếp lớn hơn. Nếu bạn đang biên dịch Python bằng ``-O0`` và không"
+" thấy các hàm Python trong đầu ra lược tả của mình, hãy thử tăng kích thước "
+"kết xuất ngăn xếp lên 65528 byte (tối đa)::"
+
+#: ../../howto/perf_profiling.rst:275
+#, fuzzy
+msgid ""
+"$ perf record -F 9999 -g -k 1 --call-graph dwarf,65528 -o perf.data python "
+"-Xperf_jit my_script.py"
+msgstr ""
+"$ bản ghi hoàn hảo -F 9999 -g -k 1 --call-graph lùn,65528 -o perf.data "
+"python -Xperf_jit my_script.py"
+
+#: ../../howto/perf_profiling.rst:277
+#, fuzzy
+msgid "Different compilation flags can significantly impact stack sizes:"
+msgstr ""
+"Các cờ biên dịch khác nhau có thể tác động đáng kể đến kích thước ngăn xếp:"
+
+#: ../../howto/perf_profiling.rst:279
+#, fuzzy
+msgid ""
+"Builds with ``-O0`` typically have much larger stack frames than those with "
+"``-O1`` or higher"
+msgstr ""
+"Các bản dựng có ``-O0`` thường có khung ngăn xếp lớn hơn nhiều so với các "
+"bản dựng có ``-O1`` trở lên"
+
+#: ../../howto/perf_profiling.rst:280
+#, fuzzy
+msgid ""
+"Adding optimizations (``-O1``, ``-O2``, etc.) typically reduces stack size"
+msgstr ""
+"Việc thêm các tối ưu hóa (``-O1``, ``-O2``, v.v.) thường làm giảm kích thước"
+" ngăn xếp"
+
+#: ../../howto/perf_profiling.rst:281
+#, fuzzy
+msgid ""
+"Frame pointers (``-fno-omit-frame-pointer``) generally provide more reliable"
+" stack unwinding"
+msgstr ""
+"Con trỏ khung (``-fno-omit-frame-pointer``) thường cung cấp khả năng giải "
+"phóng ngăn xếp đáng tin cậy hơn"

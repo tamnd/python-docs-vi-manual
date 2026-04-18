@@ -1,0 +1,3486 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/unicode.rst:6
+#, fuzzy
+msgid "Unicode Objects and Codecs"
+msgstr "Đối tượng và Codec Unicode"
+
+#: ../../c-api/unicode.rst:12
+#, fuzzy
+msgid "Unicode Objects"
+msgstr "Đối tượng Unicode"
+
+#: ../../c-api/unicode.rst:14
+#, fuzzy
+msgid ""
+"Since the implementation of :pep:`393` in Python 3.3, Unicode objects "
+"internally use a variety of representations, in order to allow handling the "
+"complete range of Unicode characters while staying memory efficient.  There "
+"are special cases for strings where all code points are below 128, 256, or "
+"65536; otherwise, code points must be below 1114112 (which is the full "
+"Unicode range)."
+msgstr ""
+"Kể từ khi triển khai :pep:`393` trong Python 3.3, các đối tượng Unicode sử "
+"dụng nội bộ nhiều cách biểu diễn khác nhau để cho phép xử lý toàn bộ phạm vi"
+" ký tự Unicode trong khi vẫn duy trì hiệu quả bộ nhớ.  Có những trường hợp "
+"đặc biệt đối với các chuỗi trong đó tất cả các điểm mã đều dưới 128, 256 "
+"hoặc 65536; nếu không, điểm mã phải dưới 1114112 (là phạm vi Unicode đầy "
+"đủ)."
+
+#: ../../c-api/unicode.rst:20
+#, fuzzy
+msgid ""
+"UTF-8 representation is created on demand and cached in the Unicode object."
+msgstr ""
+"Biểu diễn UTF-8 được tạo theo yêu cầu và được lưu vào bộ đệm trong đối tượng"
+" Unicode."
+
+#: ../../c-api/unicode.rst:23
+#, fuzzy
+msgid ""
+"The :c:type:`Py_UNICODE` representation has been removed since Python 3.12 "
+"with deprecated APIs. See :pep:`623` for more information."
+msgstr ""
+"Bản trình bày :c:type:`Py_UNICODE` đã bị xóa kể từ Python 3.12 với các API "
+"không được dùng nữa. Xem :pep:`623` để biết thêm thông tin."
+
+#: ../../c-api/unicode.rst:29
+#, fuzzy
+msgid "Unicode Type"
+msgstr "Loại Unicode"
+
+#: ../../c-api/unicode.rst:31
+#, fuzzy
+msgid ""
+"These are the basic Unicode object types used for the Unicode implementation"
+" in Python:"
+msgstr ""
+"Đây là các loại đối tượng Unicode cơ bản được sử dụng để triển khai Unicode "
+"trong Python:"
+
+#: ../../c-api/unicode.rst:36
+#, fuzzy
+msgid ""
+"This instance of :c:type:`PyTypeObject` represents the Python Unicode type. "
+"It is exposed to Python code as :py:class:`str`."
+msgstr ""
+"Phiên bản :c:type:`PyTypeObject` này đại diện cho loại Python Unicode. Nó "
+"được hiển thị với mã Python dưới dạng :py:class:`str`."
+
+#: ../../c-api/unicode.rst:42
+#, fuzzy
+msgid ""
+"This instance of :c:type:`PyTypeObject` represents the Python Unicode "
+"iterator type. It is used to iterate over Unicode string objects."
+msgstr ""
+"Phiên bản :c:type:`PyTypeObject` này đại diện cho kiểu trình lặp Python "
+"Unicode. Nó được sử dụng để lặp lại các đối tượng chuỗi Unicode."
+
+#: ../../c-api/unicode.rst:50
+#, fuzzy
+msgid ""
+"These types are typedefs for unsigned integer types wide enough to contain "
+"characters of 32 bits, 16 bits and 8 bits, respectively.  When dealing with "
+"single Unicode characters, use :c:type:`Py_UCS4`."
+msgstr ""
+"Các loại này là typedefs cho các loại số nguyên không dấu đủ rộng để chứa "
+"các ký tự lần lượt là 32 bit, 16 bit và 8 bit.  Khi xử lý các ký tự Unicode "
+"đơn, hãy sử dụng :c:type:`Py_UCS4`."
+
+#: ../../c-api/unicode.rst:61
+#, fuzzy
+msgid ""
+"These subtypes of :c:type:`PyObject` represent a Python Unicode object.  In "
+"almost all cases, they shouldn't be used directly, since all API functions "
+"that deal with Unicode objects take and return :c:type:`PyObject` pointers."
+msgstr ""
+"Các kiểu con này của :c:type:`PyObject` đại diện cho một đối tượng Python "
+"Unicode.  Trong hầu hết các trường hợp, chúng không nên được sử dụng trực "
+"tiếp, vì tất cả các hàm API xử lý các đối tượng Unicode đều nhận và trả về "
+"các con trỏ :c:type:`PyObject`."
+
+#: ../../c-api/unicode.rst:68
+#, fuzzy
+msgid ""
+"The structure of a particular object can be determined using the following "
+"macros. The macros cannot fail; their behavior is undefined if their "
+"argument is not a Python Unicode object."
+msgstr ""
+"Cấu trúc của một đối tượng cụ thể có thể được xác định bằng cách sử dụng các"
+" macro sau. Các macro không thể bị lỗi; hành vi của chúng không được xác "
+"định nếu đối số của chúng không phải là đối tượng Python Unicode."
+
+#: ../../c-api/unicode.rst:77
+#, fuzzy
+msgid "True if *o* uses the :c:struct:`PyCompactUnicodeObject` structure."
+msgstr "Đúng nếu *o* sử dụng cấu trúc :c:struct:`PyCompactUnicodeObject`."
+
+#: ../../c-api/unicode.rst:84
+#, fuzzy
+msgid "True if *o* uses the :c:struct:`PyASCIIObject` structure."
+msgstr "Đúng nếu *o* sử dụng cấu trúc :c:struct:`PyASCIIObject`."
+
+#: ../../c-api/unicode.rst:89
+#, fuzzy
+msgid ""
+"The following APIs are C macros and static inlined functions for fast checks"
+" and access to internal read-only data of Unicode objects:"
+msgstr ""
+"Các API sau là macro C và các hàm nội tuyến tĩnh để kiểm tra nhanh và truy "
+"cập vào dữ liệu chỉ đọc nội bộ của các đối tượng Unicode:"
+
+#: ../../c-api/unicode.rst:94
+#, fuzzy
+msgid ""
+"Return true if the object *obj* is a Unicode object or an instance of a "
+"Unicode subtype.  This function always succeeds."
+msgstr ""
+"Trả về true nếu đối tượng *obj* là đối tượng Unicode hoặc một phiên bản của "
+"kiểu con Unicode.  Chức năng này luôn thành công."
+
+#: ../../c-api/unicode.rst:100
+#, fuzzy
+msgid ""
+"Return true if the object *obj* is a Unicode object, but not an instance of "
+"a subtype.  This function always succeeds."
+msgstr ""
+"Trả về true nếu đối tượng *obj* là đối tượng Unicode nhưng không phải là "
+"phiên bản của kiểu con.  Chức năng này luôn thành công."
+
+#: ../../c-api/unicode.rst:106
+#, fuzzy
+msgid ""
+"Return the length of the Unicode string, in code points.  *unicode* has to "
+"be a Unicode object in the \"canonical\" representation (not checked)."
+msgstr ""
+"Trả về độ dài của chuỗi Unicode, tính bằng điểm mã.  *unicode* phải là một "
+"đối tượng Unicode ở dạng \"chuẩn\" (không được chọn)."
+
+#: ../../c-api/unicode.rst:116
+#, fuzzy
+msgid ""
+"Return a pointer to the canonical representation cast to UCS1, UCS2 or UCS4 "
+"integer types for direct character access.  No checks are performed if the "
+"canonical representation has the correct character size; use "
+":c:func:`PyUnicode_KIND` to select the right function."
+msgstr ""
+"Trả về một con trỏ tới biểu diễn chuẩn được chuyển thành các kiểu số nguyên "
+"UCS1, UCS2 hoặc UCS4 để truy cập ký tự trực tiếp.  Không có kiểm tra nào "
+"được thực hiện nếu biểu diễn chuẩn có kích thước ký tự chính xác; sử dụng "
+":c:func:`PyUnicode_KIND` để chọn chức năng phù hợp."
+
+#: ../../c-api/unicode.rst:128
+#, fuzzy
+msgid "Return values of the :c:func:`PyUnicode_KIND` macro."
+msgstr "Trả về giá trị của macro :c:func:`PyUnicode_KIND`."
+
+#: ../../c-api/unicode.rst:132
+#, fuzzy
+msgid "``PyUnicode_WCHAR_KIND`` has been removed."
+msgstr "``PyUnicode_WCHAR_KIND`` đã bị xóa."
+
+#: ../../c-api/unicode.rst:138
+#, fuzzy
+msgid ""
+"Return one of the PyUnicode kind constants (see above) that indicate how "
+"many bytes per character this Unicode object uses to store its data.  "
+"*unicode* has to be a Unicode object in the \"canonical\" representation "
+"(not checked)."
+msgstr ""
+"Trả về một trong các hằng số loại PyUnicode (xem ở trên) cho biết đối tượng "
+"Unicode này sử dụng bao nhiêu byte cho mỗi ký tự để lưu trữ dữ liệu của nó."
+"  *unicode* phải là một đối tượng Unicode ở dạng \"chuẩn\" (không được "
+"chọn)."
+
+#: ../../c-api/unicode.rst:147
+#, fuzzy
+msgid ""
+"Return a void pointer to the raw Unicode buffer.  *unicode* has to be a "
+"Unicode object in the \"canonical\" representation (not checked)."
+msgstr ""
+"Trả về một con trỏ void cho bộ đệm Unicode thô.  *unicode* phải là một đối "
+"tượng Unicode ở dạng \"chuẩn\" (không được chọn)."
+
+#: ../../c-api/unicode.rst:156
+#, fuzzy
+msgid ""
+"Write the code point *value* to the given zero-based *index* in a string."
+msgstr ""
+"Viết điểm mã *value* vào *index* dựa trên số 0 đã cho trong một chuỗi."
+
+#: ../../c-api/unicode.rst:158
+#, fuzzy
+msgid ""
+"The *kind* value and *data* pointer must have been obtained from a string "
+"using :c:func:`PyUnicode_KIND` and :c:func:`PyUnicode_DATA` respectively. "
+"You must hold a reference to that string while calling "
+":c:func:`!PyUnicode_WRITE`. All requirements of "
+":c:func:`PyUnicode_WriteChar` also apply."
+msgstr ""
+"Giá trị *kind* và con trỏ *data* phải được lấy từ một chuỗi sử dụng "
+":c:func:`PyUnicode_KIND` và :c:func:`PyUnicode_DATA` tương ứng. Bạn phải giữ"
+" một tham chiếu đến chuỗi đó trong khi gọi :c:func:`!PyUnicode_WRITE`. Tất "
+"cả các yêu cầu của :c:func:`PyUnicode_WriteChar` cũng được áp dụng."
+
+#: ../../c-api/unicode.rst:164
+#, fuzzy
+msgid ""
+"The function performs no checks for any of its requirements, and is intended"
+" for usage in loops."
+msgstr ""
+"Hàm này không thực hiện kiểm tra bất kỳ yêu cầu nào của nó và được thiết kế "
+"để sử dụng trong các vòng lặp."
+
+#: ../../c-api/unicode.rst:173
+#, fuzzy
+msgid ""
+"Read a code point from a canonical representation *data* (as obtained with "
+":c:func:`PyUnicode_DATA`).  No checks or ready calls are performed."
+msgstr ""
+"Đọc điểm mã từ biểu diễn chuẩn *data* (như thu được bằng "
+":c:func:`PyUnicode_DATA`).  Không có kiểm tra hoặc cuộc gọi sẵn sàng được "
+"thực hiện."
+
+#: ../../c-api/unicode.rst:181
+#, fuzzy
+msgid ""
+"Read a character from a Unicode object *unicode*, which must be in the "
+"\"canonical\" representation.  This is less efficient than "
+":c:func:`PyUnicode_READ` if you do multiple consecutive reads."
+msgstr ""
+"Đọc một ký tự từ đối tượng Unicode *unicode*, ký tự này phải ở dạng biểu "
+"diễn \"chuẩn\".  Điều này kém hiệu quả hơn :c:func:`PyUnicode_READ` nếu bạn "
+"thực hiện nhiều lần đọc liên tiếp."
+
+#: ../../c-api/unicode.rst:190
+#, fuzzy
+msgid ""
+"Return the maximum code point that is suitable for creating another string "
+"based on *unicode*, which must be in the \"canonical\" representation.  This"
+" is always an approximation but more efficient than iterating over the "
+"string."
+msgstr ""
+"Trả về điểm mã tối đa phù hợp để tạo một chuỗi khác dựa trên *unicode*, "
+"chuỗi này phải ở dạng biểu diễn \"chuẩn\".  Đây luôn là một phép tính gần "
+"đúng nhưng hiệu quả hơn việc lặp qua chuỗi."
+
+#: ../../c-api/unicode.rst:199
+#, fuzzy
+msgid ""
+"Return ``1`` if the string is a valid identifier according to the language "
+"definition, section :ref:`identifiers`. Return ``0`` otherwise."
+msgstr ""
+"Trả về ``1`` nếu chuỗi là mã định danh hợp lệ theo định nghĩa ngôn ngữ, phần"
+" :ref:`identifiers`. Trả về ``0`` nếu không."
+
+#: ../../c-api/unicode.rst:202
+#, fuzzy
+msgid ""
+"The function does not call :c:func:`Py_FatalError` anymore if the string is "
+"not ready."
+msgstr "Hàm không gọi :c:func:`Py_FatalError` nữa nếu chuỗi chưa sẵn sàng."
+
+#: ../../c-api/unicode.rst:209
+#, fuzzy
+msgid ""
+"Return true if the string only contains ASCII characters. Equivalent to "
+":py:meth:`str.isascii`."
+msgstr ""
+"Trả về true nếu chuỗi chỉ chứa các ký tự ASCII. Tương đương với "
+":py:meth:`str.isascii`."
+
+#: ../../c-api/unicode.rst:216
+#, fuzzy
+msgid "Unicode Character Properties"
+msgstr "Thuộc tính ký tự Unicode"
+
+#: ../../c-api/unicode.rst:218
+#, fuzzy
+msgid ""
+"Unicode provides many different character properties. The most often needed "
+"ones are available through these macros which are mapped to C functions "
+"depending on the Python configuration."
+msgstr ""
+"Unicode cung cấp nhiều thuộc tính ký tự khác nhau. Những thứ cần thiết nhất "
+"có sẵn thông qua các macro này được ánh xạ tới các hàm C tùy thuộc vào cấu "
+"hình Python."
+
+#: ../../c-api/unicode.rst:225
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is a whitespace character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự khoảng "
+"trắng hay không."
+
+#: ../../c-api/unicode.rst:230
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is a lowercase character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự viết thường"
+" hay không."
+
+#: ../../c-api/unicode.rst:235
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is an uppercase character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự viết hoa "
+"hay không."
+
+#: ../../c-api/unicode.rst:240
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is a titlecase character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự tiêu đề hay"
+" không."
+
+#: ../../c-api/unicode.rst:245
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is a linebreak character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự ngắt dòng "
+"hay không."
+
+#: ../../c-api/unicode.rst:250
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is a decimal character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự thập phân "
+"hay không."
+
+#: ../../c-api/unicode.rst:255
+#, fuzzy
+msgid "Return ``1`` or ``0`` depending on whether *ch* is a digit character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự chữ số hay "
+"không."
+
+#: ../../c-api/unicode.rst:260
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is a numeric character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự số hay "
+"không."
+
+#: ../../c-api/unicode.rst:265
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is an alphabetic character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự chữ cái hay"
+" không."
+
+#: ../../c-api/unicode.rst:270
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is an alphanumeric "
+"character."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự chữ và số "
+"hay không."
+
+#: ../../c-api/unicode.rst:275
+#, fuzzy
+msgid ""
+"Return ``1`` or ``0`` depending on whether *ch* is a printable character, in"
+" the sense of :meth:`str.isprintable`."
+msgstr ""
+"Trả về ``1`` hoặc ``0`` tùy thuộc vào việc *ch* có phải là ký tự in được hay"
+" không, theo nghĩa :meth:`str.isprintable`."
+
+#: ../../c-api/unicode.rst:279
+#, fuzzy
+msgid "These APIs can be used for fast direct character conversions:"
+msgstr ""
+"Các API này có thể được sử dụng để chuyển đổi ký tự trực tiếp nhanh chóng:"
+
+#: ../../c-api/unicode.rst:284
+#, fuzzy
+msgid "Return the character *ch* converted to lower case."
+msgstr "Trả về ký tự *ch* được chuyển đổi thành chữ thường."
+
+#: ../../c-api/unicode.rst:289
+#, fuzzy
+msgid "Return the character *ch* converted to upper case."
+msgstr "Trả về ký tự *ch* được chuyển đổi thành chữ hoa."
+
+#: ../../c-api/unicode.rst:294
+#, fuzzy
+msgid "Return the character *ch* converted to title case."
+msgstr "Trả về ký tự *ch* được chuyển đổi thành chữ hoa chữ thường."
+
+#: ../../c-api/unicode.rst:299
+#, fuzzy
+msgid ""
+"Return the character *ch* converted to a decimal positive integer.  Return "
+"``-1`` if this is not possible.  This function does not raise exceptions."
+msgstr ""
+"Trả về ký tự *ch* được chuyển đổi thành số nguyên dương thập phân.  Trả về "
+"``-1`` nếu điều này không thể thực hiện được.  Chức năng này không đưa ra "
+"ngoại lệ."
+
+#: ../../c-api/unicode.rst:305
+#, fuzzy
+msgid ""
+"Return the character *ch* converted to a single digit integer. Return ``-1``"
+" if this is not possible.  This function does not raise exceptions."
+msgstr ""
+"Trả về ký tự *ch* được chuyển đổi thành số nguyên có một chữ số. Trả về "
+"``-1`` nếu điều này không thể thực hiện được.  Chức năng này không đưa ra "
+"ngoại lệ."
+
+#: ../../c-api/unicode.rst:311
+#, fuzzy
+msgid ""
+"Return the character *ch* converted to a double. Return ``-1.0`` if this is "
+"not possible.  This function does not raise exceptions."
+msgstr ""
+"Trả về ký tự *ch* được chuyển đổi thành double. Trả về ``-1.0`` nếu điều này"
+" không thể thực hiện được.  Chức năng này không đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:315
+#, fuzzy
+msgid "These APIs can be used to work with surrogates:"
+msgstr "Các API này có thể được sử dụng để hoạt động với các đại diện:"
+
+#: ../../c-api/unicode.rst:319
+#, fuzzy
+msgid "Check if *ch* is a surrogate (``0xD800 <= ch <= 0xDFFF``)."
+msgstr ""
+"Kiểm tra xem *ch* có phải là người thay thế (``0xD800 <= ch <= 0xDFFF``) "
+"không."
+
+#: ../../c-api/unicode.rst:323
+#, fuzzy
+msgid "Check if *ch* is a high surrogate (``0xD800 <= ch <= 0xDBFF``)."
+msgstr ""
+"Kiểm tra xem *ch* có phải là đại diện thay thế cao không (``0xD800 <= ch <= "
+"0xDBFF``)"
+
+#: ../../c-api/unicode.rst:327
+#, fuzzy
+msgid "Check if *ch* is a low surrogate (``0xDC00 <= ch <= 0xDFFF``)."
+msgstr ""
+"Kiểm tra xem *ch* có phải là đại diện thay thế thấp (``0xDC00 <= ch <= "
+"0xDFFF``) hay không."
+
+#: ../../c-api/unicode.rst:331
+#, fuzzy
+msgid ""
+"Return the high UTF-16 surrogate (``0xD800`` to ``0xDBFF``) for a Unicode "
+"code point in the range ``[0x10000; 0x10FFFF]``."
+msgstr ""
+"Trả về giá trị thay thế UTF-16 cao (``0xD800`` đến ``0xDBFF``) cho điểm mã "
+"Unicode trong phạm vi ``[0x10000; 0x10FFFF]``."
+
+#: ../../c-api/unicode.rst:336
+#, fuzzy
+msgid ""
+"Return the low UTF-16 surrogate (``0xDC00`` to ``0xDFFF``) for a Unicode "
+"code point in the range ``[0x10000; 0x10FFFF]``."
+msgstr ""
+"Trả về giá trị thay thế UTF-16 thấp (``0xDC00`` đến ``0xDFFF``) cho điểm mã "
+"Unicode trong phạm vi ``[0x10000; 0x10FFFF]``."
+
+#: ../../c-api/unicode.rst:341
+#, fuzzy
+msgid ""
+"Join two surrogate code points and return a single :c:type:`Py_UCS4` value. "
+"*high* and *low* are respectively the leading and trailing surrogates in a "
+"surrogate pair. *high* must be in the range ``[0xD800; 0xDBFF]`` and *low* "
+"must be in the range ``[0xDC00; 0xDFFF]``."
+msgstr ""
+"Kết hợp hai điểm mã thay thế và trả về một giá trị :c:type:`Py_UCS4` duy "
+"nhất. *high* và *low* lần lượt là các đại diện thay thế hàng đầu và cuối "
+"cùng trong một cặp thay thế. *high* phải nằm trong phạm vi ``[0xD800; "
+"0xDBFF]`` và *low* phải nằm trong phạm vi ``[0xDC00; 0xDFFF]``."
+
+#: ../../c-api/unicode.rst:348
+#, fuzzy
+msgid "Creating and accessing Unicode strings"
+msgstr "Tạo và truy cập chuỗi Unicode"
+
+#: ../../c-api/unicode.rst:350
+#, fuzzy
+msgid ""
+"To create Unicode objects and access their basic sequence properties, use "
+"these APIs:"
+msgstr ""
+"Để tạo các đối tượng Unicode và truy cập các thuộc tính chuỗi cơ bản của "
+"chúng, hãy sử dụng các API sau:"
+
+#: ../../c-api/unicode.rst:355
+#, fuzzy
+msgid ""
+"Create a new Unicode object.  *maxchar* should be the true maximum code "
+"point to be placed in the string.  As an approximation, it can be rounded up"
+" to the nearest value in the sequence 127, 255, 65535, 1114111."
+msgstr ""
+"Tạo một đối tượng Unicode mới.  *maxchar* phải là điểm mã tối đa thực sự "
+"được đặt trong chuỗi.  Dưới dạng gần đúng, nó có thể được làm tròn đến giá "
+"trị gần nhất trong dãy 127, 255, 65535, 1114111."
+
+#: ../../c-api/unicode.rst:359
+#, fuzzy
+msgid "On error, set an exception and return ``NULL``."
+msgstr "Nếu có lỗi, hãy đặt ngoại lệ và trả về ``NULL``."
+
+#: ../../c-api/unicode.rst:361
+#, fuzzy
+msgid ""
+"After creation, the string can be filled by :c:func:`PyUnicode_WriteChar`, "
+":c:func:`PyUnicode_CopyCharacters`, :c:func:`PyUnicode_Fill`, "
+":c:func:`PyUnicode_WRITE` or similar. Since strings are supposed to be "
+"immutable, take care to not “use” the result while it is being modified. In "
+"particular, before it's filled with its final contents, a string:"
+msgstr ""
+"Sau khi tạo, chuỗi có thể được điền bằng :c:func:`PyUnicode_WriteChar`, "
+":c:func:`PyUnicode_CopyCharacters`, :c:func:`PyUnicode_Fill`, "
+":c:func:`PyUnicode_WRITE` hoặc tương tự. Vì các chuỗi được cho là không thể "
+"thay đổi nên hãy cẩn thận để không “sử dụng” kết quả trong khi nó đang được "
+"sửa đổi. Cụ thể, trước khi nó chứa đầy nội dung cuối cùng, một chuỗi:"
+
+#: ../../c-api/unicode.rst:368
+#, fuzzy
+msgid "must not be hashed,"
+msgstr "không được băm,"
+
+#: ../../c-api/unicode.rst:369
+#, fuzzy
+msgid ""
+"must not be :c:func:`converted to UTF-8 <PyUnicode_AsUTF8AndSize>`, or "
+"another non-\"canonical\" representation,"
+msgstr ""
+"không được là :c:func:`converted to UTF-8 <PyUnicode_AsUTF8AndSize>` hoặc "
+"một cách thể hiện không \"chuẩn\" khác,"
+
+#: ../../c-api/unicode.rst:371
+#, fuzzy
+msgid "must not have its reference count changed,"
+msgstr "không được thay đổi số tham chiếu của nó,"
+
+#: ../../c-api/unicode.rst:372
+#, fuzzy
+msgid "must not be shared with code that might do one of the above."
+msgstr "không được chia sẻ với mã có thể thực hiện một trong những điều trên."
+
+#: ../../c-api/unicode.rst:374
+#, fuzzy
+msgid ""
+"This list is not exhaustive. Avoiding these uses is your responsibility; "
+"Python does not always check these requirements."
+msgstr ""
+"Danh sách này không đầy đủ. Trách nhiệm của bạn là tránh những việc sử dụng "
+"này; Python không phải lúc nào cũng kiểm tra các yêu cầu này."
+
+#: ../../c-api/unicode.rst:377
+#, fuzzy
+msgid ""
+"To avoid accidentally exposing a partially-written string object, prefer "
+"using the :c:type:`PyUnicodeWriter` API, or one of the ``PyUnicode_From*`` "
+"functions below."
+msgstr ""
+"Để tránh vô tình làm lộ đối tượng chuỗi được viết một phần, hãy ưu tiên sử "
+"dụng :c:type:`PyUnicodeWriter` API hoặc một trong các hàm "
+"``PyUnicode_From*`` bên dưới."
+
+#: ../../c-api/unicode.rst:388
+#, fuzzy
+msgid ""
+"Create a new Unicode object with the given *kind* (possible values are "
+":c:macro:`PyUnicode_1BYTE_KIND` etc., as returned by "
+":c:func:`PyUnicode_KIND`).  The *buffer* must point to an array of *size* "
+"units of 1, 2 or 4 bytes per character, as given by the kind."
+msgstr ""
+"Tạo một đối tượng Unicode mới với *kind* đã cho (các giá trị có thể là "
+":c:macro:`PyUnicode_1BYTE_KIND`, v.v., được trả về bởi "
+":c:func:`PyUnicode_KIND`).  Zz003zz phải trỏ đến một mảng đơn vị *size* gồm "
+"1, 2 hoặc 4 byte cho mỗi ký tự, tùy theo loại."
+
+#: ../../c-api/unicode.rst:393
+#, fuzzy
+msgid ""
+"If necessary, the input *buffer* is copied and transformed into the "
+"canonical representation.  For example, if the *buffer* is a UCS4 string "
+"(:c:macro:`PyUnicode_4BYTE_KIND`) and it consists only of codepoints in the "
+"UCS1 range, it will be transformed into UCS1 "
+"(:c:macro:`PyUnicode_1BYTE_KIND`)."
+msgstr ""
+"Nếu cần, *buffer* đầu vào sẽ được sao chép và chuyển đổi thành biểu diễn "
+"chuẩn.  Ví dụ: nếu *buffer* là chuỗi UCS4 (:c:macro:`PyUnicode_4BYTE_KIND`) "
+"và nó chỉ bao gồm các điểm mã trong phạm vi UCS1, thì nó sẽ được chuyển "
+"thành UCS1 (:c:macro:`PyUnicode_1BYTE_KIND`)."
+
+#: ../../c-api/unicode.rst:404
+#, fuzzy
+msgid ""
+"Create a Unicode object from the char buffer *str*.  The bytes will be "
+"interpreted as being UTF-8 encoded.  The buffer is copied into the new "
+"object. The return value might be a shared object, i.e. modification of the "
+"data is not allowed."
+msgstr ""
+"Tạo một đối tượng Unicode từ bộ đệm char *str*.  Các byte sẽ được hiểu là "
+"được mã hóa UTF-8.  Bộ đệm được sao chép vào đối tượng mới. Giá trị trả về "
+"có thể là một đối tượng được chia sẻ, tức là không được phép sửa đổi dữ "
+"liệu."
+
+#: ../../c-api/unicode.rst:410
+#, fuzzy
+msgid "This function raises :exc:`SystemError` when:"
+msgstr "Hàm này tăng :exc:`SystemError` khi:"
+
+#: ../../c-api/unicode.rst:412
+#, fuzzy
+msgid "*size* < 0,"
+msgstr "*size* < 0,"
+
+#: ../../c-api/unicode.rst:413
+#, fuzzy
+msgid "*str* is ``NULL`` and *size* > 0"
+msgstr "*str* là ``NULL`` và *size* > 0"
+
+#: ../../c-api/unicode.rst:415
+#, fuzzy
+msgid "*str* == ``NULL`` with *size* > 0 is not allowed anymore."
+msgstr "*str* == ``NULL`` với *size* > 0 không được phép nữa."
+
+#: ../../c-api/unicode.rst:421
+#, fuzzy
+msgid ""
+"Create a Unicode object from a UTF-8 encoded null-terminated char buffer "
+"*str*."
+msgstr ""
+"Tạo một đối tượng Unicode từ bộ đệm char kết thúc null được mã hóa UTF-8 "
+"*str*."
+
+#: ../../c-api/unicode.rst:427
+#, fuzzy
+msgid ""
+"Take a C :c:func:`printf`\\ -style *format* string and a variable number of "
+"arguments, calculate the size of the resulting Python Unicode string and "
+"return a string with the values formatted into it.  The variable arguments "
+"must be C types and must correspond exactly to the format characters in the "
+"*format* ASCII-encoded string."
+msgstr ""
+"Lấy một chuỗi C :c:func:`printf`\\ -style *format* và một số đối số thay "
+"đổi, tính kích thước của chuỗi Unicode Python thu được và trả về một chuỗi "
+"có các giá trị được định dạng trong đó.  Các đối số của biến phải là loại C "
+"và phải tương ứng chính xác với các ký tự định dạng trong chuỗi được mã hóa "
+"*format* ASCII."
+
+#: ../../c-api/unicode.rst:433
+#, fuzzy
+msgid ""
+"A conversion specifier contains two or more characters and has the following"
+" components, which must occur in this order:"
+msgstr ""
+"Công cụ xác định chuyển đổi chứa hai ký tự trở lên và có các thành phần sau,"
+" phải xuất hiện theo thứ tự sau:"
+
+#: ../../c-api/unicode.rst:436
+#, fuzzy
+msgid "The ``'%'`` character, which marks the start of the specifier."
+msgstr "Ký tự ``'%'``, đánh dấu sự bắt đầu của bộ xác định."
+
+#: ../../c-api/unicode.rst:438
+#, fuzzy
+msgid ""
+"Conversion flags (optional), which affect the result of some conversion "
+"types."
+msgstr ""
+"Cờ chuyển đổi (tùy chọn), ảnh hưởng đến kết quả của một số loại chuyển đổi."
+
+#: ../../c-api/unicode.rst:441
+#, fuzzy
+msgid ""
+"Minimum field width (optional). If specified as an ``'*'`` (asterisk), the "
+"actual width is given in the next argument, which must be of type "
+":c:expr:`int`, and the object to convert comes after the minimum field width"
+" and optional precision."
+msgstr ""
+"Độ rộng trường tối thiểu (tùy chọn). Nếu được chỉ định là ``'*'`` (dấu hoa "
+"thị), thì chiều rộng thực tế sẽ được đưa ra trong đối số tiếp theo, phải "
+"thuộc loại :c:expr:`int` và đối tượng cần chuyển đổi sẽ xuất hiện sau độ "
+"rộng trường tối thiểu và độ chính xác tùy chọn."
+
+#: ../../c-api/unicode.rst:446
+#, fuzzy
+msgid ""
+"Precision (optional), given as a ``'.'`` (dot) followed by the precision. If"
+" specified as ``'*'`` (an asterisk), the actual precision is given in the "
+"next argument, which must be of type :c:expr:`int`, and the value to convert"
+" comes after the precision."
+msgstr ""
+"Độ chính xác (tùy chọn), được cung cấp dưới dạng ``'.'`` (dấu chấm) theo sau"
+" là độ chính xác. Nếu được chỉ định là ``'*'`` (dấu hoa thị), độ chính xác "
+"thực tế sẽ được đưa ra trong đối số tiếp theo, đối số này phải thuộc loại "
+":c:expr:`int` và giá trị cần chuyển đổi sẽ xuất hiện sau độ chính xác."
+
+#: ../../c-api/unicode.rst:451
+#, fuzzy
+msgid "Length modifier (optional)."
+msgstr "Công cụ sửa đổi độ dài (tùy chọn)."
+
+#: ../../c-api/unicode.rst:453
+#, fuzzy
+msgid "Conversion type."
+msgstr "Loại chuyển đổi."
+
+#: ../../c-api/unicode.rst:455
+#, fuzzy
+msgid "The conversion flag characters are:"
+msgstr "Các ký tự cờ chuyển đổi là:"
+
+#: ../../c-api/unicode.rst:460
+#, fuzzy
+msgid "Flag"
+msgstr "Lá cờ"
+
+#: ../../c-api/unicode.rst:460
+#, fuzzy
+msgid "Meaning"
+msgstr "Nghĩa"
+
+#: ../../c-api/unicode.rst:462
+#, fuzzy
+msgid "``0``"
+msgstr "``0``"
+
+#: ../../c-api/unicode.rst:462
+#, fuzzy
+msgid "The conversion will be zero padded for numeric values."
+msgstr "Việc chuyển đổi sẽ được đệm bằng 0 đối với các giá trị số."
+
+#: ../../c-api/unicode.rst:464
+#, fuzzy
+msgid "``-``"
+msgstr "``-``"
+
+#: ../../c-api/unicode.rst:464
+#, fuzzy
+msgid ""
+"The converted value is left adjusted (overrides the ``0`` flag if both are "
+"given)."
+msgstr ""
+"Giá trị chuyển đổi được điều chỉnh trái (ghi đè cờ ``0`` nếu cả hai đều được"
+" đưa ra)."
+
+#: ../../c-api/unicode.rst:468
+#, fuzzy
+msgid ""
+"The length modifiers for following integer conversions (``d``, ``i``, ``o``,"
+" ``u``, ``x``, or ``X``) specify the type of the argument (:c:expr:`int` by "
+"default):"
+msgstr ""
+"Công cụ sửa đổi độ dài cho các chuyển đổi số nguyên sau (``d``, ``i``, "
+"``o``, ``u``, ``x`` hoặc ``X``) chỉ định loại đối số (:c:expr:`int` theo mặc"
+" định):"
+
+#: ../../c-api/unicode.rst:475
+#, fuzzy
+msgid "Modifier"
+msgstr "Công cụ sửa đổi"
+
+#: ../../c-api/unicode.rst:475
+#, fuzzy
+msgid "Types"
+msgstr "Các loại"
+
+#: ../../c-api/unicode.rst:477
+#, fuzzy
+msgid "``l``"
+msgstr "``l``"
+
+#: ../../c-api/unicode.rst:477
+#, fuzzy
+msgid ":c:expr:`long` or :c:expr:`unsigned long`"
+msgstr ":c:expr:`long` hoặc :c:expr:`unsigned long`"
+
+#: ../../c-api/unicode.rst:479
+#, fuzzy
+msgid "``ll``"
+msgstr "``ll``"
+
+#: ../../c-api/unicode.rst:479
+#, fuzzy
+msgid ":c:expr:`long long` or :c:expr:`unsigned long long`"
+msgstr ":c:expr:`long long` hoặc :c:expr:`unsigned long long`"
+
+#: ../../c-api/unicode.rst:481
+#, fuzzy
+msgid "``j``"
+msgstr "``j``"
+
+#: ../../c-api/unicode.rst:481
+#, fuzzy
+msgid ":c:type:`intmax_t` or :c:type:`uintmax_t`"
+msgstr ":c:type:`intmax_t` hoặc :c:type:`uintmax_t`"
+
+#: ../../c-api/unicode.rst:483
+#, fuzzy
+msgid "``z``"
+msgstr "``z``"
+
+#: ../../c-api/unicode.rst:483
+#, fuzzy
+msgid ":c:type:`size_t` or :c:type:`ssize_t`"
+msgstr ":c:type:`size_t` hoặc :c:type:`ssize_t`"
+
+#: ../../c-api/unicode.rst:485
+#, fuzzy
+msgid "``t``"
+msgstr "``t``"
+
+#: ../../c-api/unicode.rst:485
+#, fuzzy
+msgid ":c:type:`ptrdiff_t`"
+msgstr ":c:type:`ptrdiff_t`"
+
+#: ../../c-api/unicode.rst:488
+#, fuzzy
+msgid ""
+"The length modifier ``l`` for following conversions ``s`` or ``V`` specify "
+"that the type of the argument is :c:expr:`const wchar_t*`."
+msgstr ""
+"Công cụ sửa đổi độ dài ``l`` cho các chuyển đổi sau ``s`` hoặc ``V`` chỉ "
+"định rằng loại đối số là :c:expr:`const wchar_t*`."
+
+#: ../../c-api/unicode.rst:491
+#, fuzzy
+msgid "The conversion specifiers are:"
+msgstr "Các chỉ định chuyển đổi là:"
+
+#: ../../c-api/unicode.rst:497
+#, fuzzy
+msgid "Conversion Specifier"
+msgstr "Công cụ xác định chuyển đổi"
+
+#: ../../c-api/unicode.rst:498
+#, fuzzy
+msgid "Type"
+msgstr "Kiểu"
+
+#: ../../c-api/unicode.rst:499
+#, fuzzy
+msgid "Comment"
+msgstr "Bình luận"
+
+#: ../../c-api/unicode.rst:501
+#, fuzzy
+msgid "``%``"
+msgstr "``%``"
+
+#: ../../c-api/unicode.rst:502
+#, fuzzy
+msgid "*n/a*"
+msgstr "*n/a*"
+
+#: ../../c-api/unicode.rst:503
+#, fuzzy
+msgid "The literal ``%`` character."
+msgstr "Ký tự ``%`` theo nghĩa đen."
+
+#: ../../c-api/unicode.rst:505
+#, fuzzy
+msgid "``d``, ``i``"
+msgstr "``d``, ``i``"
+
+#: ../../c-api/unicode.rst:506 ../../c-api/unicode.rst:510
+#: ../../c-api/unicode.rst:514 ../../c-api/unicode.rst:518
+#: ../../c-api/unicode.rst:522
+#, fuzzy
+msgid "Specified by the length modifier"
+msgstr "Được chỉ định bởi công cụ sửa đổi độ dài"
+
+#: ../../c-api/unicode.rst:507
+#, fuzzy
+msgid "The decimal representation of a signed C integer."
+msgstr "Biểu diễn thập phân của số nguyên C có dấu."
+
+#: ../../c-api/unicode.rst:509
+#, fuzzy
+msgid "``u``"
+msgstr "``u``"
+
+#: ../../c-api/unicode.rst:511
+#, fuzzy
+msgid "The decimal representation of an unsigned C integer."
+msgstr "Biểu diễn thập phân của số nguyên C không dấu."
+
+#: ../../c-api/unicode.rst:513
+#, fuzzy
+msgid "``o``"
+msgstr "``o``"
+
+#: ../../c-api/unicode.rst:515
+#, fuzzy
+msgid "The octal representation of an unsigned C integer."
+msgstr "Biểu diễn bát phân của số nguyên C không dấu."
+
+#: ../../c-api/unicode.rst:517
+#, fuzzy
+msgid "``x``"
+msgstr "``x``"
+
+#: ../../c-api/unicode.rst:519
+#, fuzzy
+msgid "The hexadecimal representation of an unsigned C integer (lowercase)."
+msgstr "Biểu diễn thập lục phân của số nguyên C không dấu (chữ thường)."
+
+#: ../../c-api/unicode.rst:521
+#, fuzzy
+msgid "``X``"
+msgstr "``X``"
+
+#: ../../c-api/unicode.rst:523
+#, fuzzy
+msgid "The hexadecimal representation of an unsigned C integer (uppercase)."
+msgstr "Biểu diễn thập lục phân của số nguyên C không dấu (chữ hoa)."
+
+#: ../../c-api/unicode.rst:525
+#, fuzzy
+msgid "``c``"
+msgstr "``c``"
+
+#: ../../c-api/unicode.rst:526
+#, fuzzy
+msgid ":c:expr:`int`"
+msgstr ":c:expr:`int`"
+
+#: ../../c-api/unicode.rst:527
+#, fuzzy
+msgid "A single character."
+msgstr "Một nhân vật duy nhất."
+
+#: ../../c-api/unicode.rst:529
+#, fuzzy
+msgid "``s``"
+msgstr "``s``"
+
+#: ../../c-api/unicode.rst:530
+#, fuzzy
+msgid ":c:expr:`const char*` or :c:expr:`const wchar_t*`"
+msgstr ":c:expr:`const char*` hoặc :c:expr:`const wchar_t*`"
+
+#: ../../c-api/unicode.rst:531
+#, fuzzy
+msgid "A null-terminated C character array."
+msgstr "Một mảng ký tự C kết thúc bằng null."
+
+#: ../../c-api/unicode.rst:533
+#, fuzzy
+msgid "``p``"
+msgstr "``p``"
+
+#: ../../c-api/unicode.rst:534
+#, fuzzy
+msgid ":c:expr:`const void*`"
+msgstr ":c:expr:`const void*`"
+
+#: ../../c-api/unicode.rst:535
+#, fuzzy
+msgid ""
+"The hex representation of a C  pointer. Mostly equivalent to "
+"``printf(\"%p\")`` except that it is guaranteed to start with the literal "
+"``0x`` regardless of what the platform's ``printf`` yields."
+msgstr ""
+"Biểu diễn hex của con trỏ C. Hầu hết tương đương với ``printf(\"%p\")`` "
+"ngoại trừ việc nó được đảm bảo bắt đầu bằng ``0x`` theo nghĩa đen bất kể "
+"``printf`` của nền tảng mang lại kết quả gì."
+
+#: ../../c-api/unicode.rst:540
+#, fuzzy
+msgid "``A``"
+msgstr "``A``"
+
+#: ../../c-api/unicode.rst:541 ../../c-api/unicode.rst:545
+#: ../../c-api/unicode.rst:555 ../../c-api/unicode.rst:559
+#: ../../c-api/unicode.rst:563 ../../c-api/unicode.rst:568
+#, fuzzy
+msgid ":c:expr:`PyObject*`"
+msgstr ":c:expr:`PyObject*`"
+
+#: ../../c-api/unicode.rst:542
+#, fuzzy
+msgid "The result of calling :func:`ascii`."
+msgstr "Kết quả gọi :func:`ascii`."
+
+#: ../../c-api/unicode.rst:544
+#, fuzzy
+msgid "``U``"
+msgstr "``U``"
+
+#: ../../c-api/unicode.rst:546
+#, fuzzy
+msgid "A Unicode object."
+msgstr "Một đối tượng Unicode."
+
+#: ../../c-api/unicode.rst:548
+#, fuzzy
+msgid "``V``"
+msgstr "``V``"
+
+#: ../../c-api/unicode.rst:549
+#, fuzzy
+msgid ":c:expr:`PyObject*`, :c:expr:`const char*` or :c:expr:`const wchar_t*`"
+msgstr ""
+":c:expr:`PyObject*`, :c:expr:`const char*` hoặc :c:expr:`const wchar_t*`"
+
+#: ../../c-api/unicode.rst:550
+#, fuzzy
+msgid ""
+"A Unicode object (which may be ``NULL``) and a null-terminated C character "
+"array as a second parameter (which will be used, if the first parameter is "
+"``NULL``)."
+msgstr ""
+"Một đối tượng Unicode (có thể là ``NULL``) và mảng ký tự C kết thúc bằng "
+"null làm tham số thứ hai (sẽ được sử dụng nếu tham số đầu tiên là ``NULL``)."
+
+#: ../../c-api/unicode.rst:554
+#, fuzzy
+msgid "``S``"
+msgstr "``S``"
+
+#: ../../c-api/unicode.rst:556
+#, fuzzy
+msgid "The result of calling :c:func:`PyObject_Str`."
+msgstr "Kết quả gọi :c:func:`PyObject_Str`."
+
+#: ../../c-api/unicode.rst:558
+#, fuzzy
+msgid "``R``"
+msgstr "``R``"
+
+#: ../../c-api/unicode.rst:560
+#, fuzzy
+msgid "The result of calling :c:func:`PyObject_Repr`."
+msgstr "Kết quả gọi :c:func:`PyObject_Repr`."
+
+#: ../../c-api/unicode.rst:562
+#, fuzzy
+msgid "``T``"
+msgstr "``T``"
+
+#: ../../c-api/unicode.rst:564
+#, fuzzy
+msgid ""
+"Get the fully qualified name of an object type; call "
+":c:func:`PyType_GetFullyQualifiedName`."
+msgstr ""
+"Lấy tên đầy đủ của một loại đối tượng; gọi "
+":c:func:`PyType_GetFullyQualifiedName`."
+
+#: ../../c-api/unicode.rst:567
+#, fuzzy
+msgid "``#T``"
+msgstr "``#T``"
+
+#: ../../c-api/unicode.rst:569
+#, fuzzy
+msgid ""
+"Similar to ``T`` format, but use a colon (``:``) as separator between the "
+"module name and the qualified name."
+msgstr ""
+"Tương tự như định dạng ``T``, nhưng sử dụng dấu hai chấm (``:``) làm dấu "
+"phân cách giữa tên mô-đun và tên đủ điều kiện."
+
+#: ../../c-api/unicode.rst:572
+#, fuzzy
+msgid "``N``"
+msgstr "``N``"
+
+#: ../../c-api/unicode.rst:573 ../../c-api/unicode.rst:578
+#, fuzzy
+msgid ":c:expr:`PyTypeObject*`"
+msgstr ":c:expr:`PyTypeObject*`"
+
+#: ../../c-api/unicode.rst:574
+#, fuzzy
+msgid ""
+"Get the fully qualified name of a type; call "
+":c:func:`PyType_GetFullyQualifiedName`."
+msgstr ""
+"Lấy tên đầy đủ của một loại; gọi :c:func:`PyType_GetFullyQualifiedName`."
+
+#: ../../c-api/unicode.rst:577
+#, fuzzy
+msgid "``#N``"
+msgstr "``#N``"
+
+#: ../../c-api/unicode.rst:579
+#, fuzzy
+msgid ""
+"Similar to ``N`` format, but use a colon (``:``) as separator between the "
+"module name and the qualified name."
+msgstr ""
+"Tương tự như định dạng ``N``, nhưng sử dụng dấu hai chấm (``:``) làm dấu "
+"phân cách giữa tên mô-đun và tên đủ điều kiện."
+
+#: ../../c-api/unicode.rst:583
+#, python-format, fuzzy
+msgid ""
+"The width formatter unit is number of characters rather than bytes. The "
+"precision formatter unit is number of bytes or :c:type:`wchar_t` items (if "
+"the length modifier ``l`` is used) for ``\"%s\"`` and ``\"%V\"`` (if the "
+"``PyObject*`` argument is ``NULL``), and a number of characters for "
+"``\"%A\"``, ``\"%U\"``, ``\"%S\"``, ``\"%R\"`` and ``\"%V\"`` (if the "
+"``PyObject*`` argument is not ``NULL``)."
+msgstr ""
+"Đơn vị định dạng chiều rộng là số ký tự chứ không phải byte. Đơn vị định "
+"dạng chính xác là số byte hoặc mục :c:type:`wchar_t` (nếu sử dụng công cụ "
+"sửa đổi độ dài ``l``) cho ``\"%s\"`` và ``\"%V\"`` (nếu đối số ``PyObject*``"
+" là ``NULL``) và một số ký tự cho ``\"%A\"``, ``\"%U\"``, ``\"%S\"``, "
+"``\"%R\"`` và ``\"%V\"`` (nếu đối số ``PyObject*`` không phải là ``NULL``)."
+
+#: ../../c-api/unicode.rst:591
+#, fuzzy
+msgid ""
+"Unlike to C :c:func:`printf` the ``0`` flag has effect even when a precision"
+" is given for integer conversions (``d``, ``i``, ``u``, ``o``, ``x``, or "
+"``X``)."
+msgstr ""
+"Không giống như C :c:func:`printf`, cờ ``0`` có hiệu lực ngay cả khi độ "
+"chính xác được đưa ra cho các chuyển đổi số nguyên (``d``, ``i``, ``u``, "
+"``o``, ``x`` hoặc ``X``)."
+
+#: ../../c-api/unicode.rst:595
+#, fuzzy
+msgid "Support for ``\"%lld\"`` and ``\"%llu\"`` added."
+msgstr "Đã thêm hỗ trợ cho ``\"%lld\"`` và ``\"%llu\"``."
+
+#: ../../c-api/unicode.rst:598
+#, python-format, fuzzy
+msgid "Support for ``\"%li\"``, ``\"%lli\"`` and ``\"%zi\"`` added."
+msgstr "Đã thêm hỗ trợ cho ``\"%li\"``, ``\"%lli\"`` và ``\"%zi\"``."
+
+#: ../../c-api/unicode.rst:601
+#, python-format, fuzzy
+msgid ""
+"Support width and precision formatter for ``\"%s\"``, ``\"%A\"``, "
+"``\"%U\"``, ``\"%V\"``, ``\"%S\"``, ``\"%R\"`` added."
+msgstr ""
+"Hỗ trợ định dạng chiều rộng và độ chính xác cho ``\"%s\"``, ``\"%A\"``, "
+"``\"%U\"``, ``\"%V\"``, ``\"%S\"``, ``\"%R\"``."
+
+#: ../../c-api/unicode.rst:605
+#, fuzzy
+msgid ""
+"Support for conversion specifiers ``o`` and ``X``. Support for length "
+"modifiers ``j`` and ``t``. Length modifiers are now applied to all integer "
+"conversions. Length modifier ``l`` is now applied to conversion specifiers "
+"``s`` and ``V``. Support for variable width and precision ``*``. Support for"
+" flag ``-``."
+msgstr ""
+"Hỗ trợ các chỉ định chuyển đổi ``o`` và ``X``. Hỗ trợ các bộ sửa đổi độ dài "
+"``j`` và ``t``. Công cụ sửa đổi độ dài hiện được áp dụng cho tất cả các "
+"chuyển đổi số nguyên. Công cụ sửa đổi độ dài ``l`` hiện được áp dụng cho các"
+" công cụ xác định chuyển đổi ``s`` và ``V``. Hỗ trợ độ rộng thay đổi và độ "
+"chính xác ``*``. Hỗ trợ cờ ``-``."
+
+#: ../../c-api/unicode.rst:613
+#, fuzzy
+msgid ""
+"An unrecognized format character now sets a :exc:`SystemError`. In previous "
+"versions it caused all the rest of the format string to be copied as-is to "
+"the result string, and any extra arguments discarded."
+msgstr ""
+"Ký tự định dạng không được nhận dạng hiện đặt :exc:`SystemError`. Trong các "
+"phiên bản trước, nó khiến tất cả phần còn lại của chuỗi định dạng được sao "
+"chép nguyên trạng vào chuỗi kết quả và mọi đối số bổ sung sẽ bị loại bỏ."
+
+#: ../../c-api/unicode.rst:617
+#, fuzzy
+msgid "Support for ``%T``, ``%#T``, ``%N`` and ``%#N`` formats added."
+msgstr "Đã thêm hỗ trợ cho các định dạng ``%T``, ``%#T``, ``%N`` và ``%#N``."
+
+#: ../../c-api/unicode.rst:623
+#, fuzzy
+msgid ""
+"Identical to :c:func:`PyUnicode_FromFormat` except that it takes exactly two"
+" arguments."
+msgstr ""
+"Giống hệt :c:func:`PyUnicode_FromFormat` ngoại trừ việc nó nhận chính xác "
+"hai đối số."
+
+#: ../../c-api/unicode.rst:629
+#, fuzzy
+msgid ""
+"Copy an instance of a Unicode subtype to a new true Unicode object if "
+"necessary. If *obj* is already a true Unicode object (not a subtype), return"
+" a new :term:`strong reference` to the object."
+msgstr ""
+"Sao chép một thể hiện của kiểu con Unicode sang một đối tượng Unicode thực "
+"sự mới nếu cần. Nếu *obj* đã là một đối tượng Unicode thực sự (không phải "
+"kiểu con), hãy trả về một :term:`strong reference` mới cho đối tượng."
+
+#: ../../c-api/unicode.rst:633
+#, fuzzy
+msgid ""
+"Objects other than Unicode or its subtypes will cause a :exc:`TypeError`."
+msgstr ""
+"Các đối tượng không phải Unicode hoặc các kiểu con của nó sẽ gây ra "
+":exc:`TypeError`."
+
+#: ../../c-api/unicode.rst:638
+#, fuzzy
+msgid "Create a Unicode Object from the given Unicode code point *ordinal*."
+msgstr "Tạo một đối tượng Unicode từ điểm mã Unicode đã cho *ordinal*."
+
+#: ../../c-api/unicode.rst:640
+#, fuzzy
+msgid ""
+"The ordinal must be in ``range(0x110000)``. A :exc:`ValueError` is raised in"
+" the case it is not."
+msgstr ""
+"Thứ tự phải ở dạng ``range(0x110000)``. Một :exc:`ValueError` được nêu ra "
+"trong trường hợp không phải vậy."
+
+#: ../../c-api/unicode.rst:647
+#, fuzzy
+msgid "Decode an encoded object *obj* to a Unicode object."
+msgstr "Giải mã đối tượng được mã hóa *obj* thành đối tượng Unicode."
+
+#: ../../c-api/unicode.rst:649
+#, fuzzy
+msgid ""
+":class:`bytes`, :class:`bytearray` and other :term:`bytes-like objects "
+"<bytes-like object>` are decoded according to the given *encoding* and using"
+" the error handling defined by *errors*. Both can be ``NULL`` to have the "
+"interface use the default values (see :ref:`builtincodecs` for details)."
+msgstr ""
+":class:`bytes`, :class:`bytearray` và :term:`bytes-like objects <bytes-like "
+"object>` khác được giải mã theo *encoding* đã cho và sử dụng cách xử lý lỗi "
+"được xác định bởi *errors*. Cả hai đều có thể là ``NULL`` để giao diện sử "
+"dụng các giá trị mặc định (xem :ref:`builtincodecs` để biết chi tiết)."
+
+#: ../../c-api/unicode.rst:655
+#, fuzzy
+msgid ""
+"All other objects, including Unicode objects, cause a :exc:`TypeError` to be"
+" set."
+msgstr ""
+"Tất cả các đối tượng khác, bao gồm cả các đối tượng Unicode, đều đặt "
+":exc:`TypeError`."
+
+#: ../../c-api/unicode.rst:658
+#, fuzzy
+msgid ""
+"The API returns ``NULL`` if there was an error.  The caller is responsible "
+"for decref'ing the returned objects."
+msgstr ""
+"API trả về ``NULL`` nếu có lỗi.  Người gọi có trách nhiệm khai báo các đối "
+"tượng được trả về."
+
+#: ../../c-api/unicode.rst:664
+#, fuzzy
+msgid ""
+"Append the string *right* to the end of *p_left*. *p_left* must point to a "
+":term:`strong reference` to a Unicode object; :c:func:`!PyUnicode_Append` "
+"releases (\"steals\") this reference."
+msgstr ""
+"Nối chuỗi *right* vào cuối *p_left*. *p_left* phải trỏ tới :term:`strong "
+"reference` tới một đối tượng Unicode; :c:func:`!PyUnicode_Append` phát hành "
+"(\"đánh cắp\") tài liệu tham khảo này."
+
+#: ../../c-api/unicode.rst:668
+#, fuzzy
+msgid "On error, set *\\*p_left* to ``NULL`` and set an exception."
+msgstr "Nếu có lỗi, hãy đặt *\\*p_left* thành ``NULL`` và đặt một ngoại lệ."
+
+#: ../../c-api/unicode.rst:670
+#, fuzzy
+msgid "On success, set *\\*p_left* to a new strong reference to the result."
+msgstr ""
+"Nếu thành công, hãy đặt *\\*p_left* thành một tham chiếu mạnh mới cho kết "
+"quả."
+
+#: ../../c-api/unicode.rst:675
+#, fuzzy
+msgid ""
+"The function is similar to :c:func:`PyUnicode_Append`, with the only "
+"difference being that it decrements the reference count of *right* by one."
+msgstr ""
+"Chức năng này tương tự như :c:func:`PyUnicode_Append`, với điểm khác biệt "
+"duy nhất là nó giảm số lượng tham chiếu của *right* đi một."
+
+#: ../../c-api/unicode.rst:681
+#, fuzzy
+msgid ""
+"Return a mapping suitable for decoding a custom single-byte encoding. Given "
+"a Unicode string *string* of up to 256 characters representing an encoding "
+"table, returns either a compact internal mapping object or a dictionary "
+"mapping character ordinals to byte values. Raises a :exc:`TypeError` and "
+"return ``NULL`` on invalid input."
+msgstr ""
+"Trả về ánh xạ phù hợp để giải mã mã hóa một byte tùy chỉnh. Cho một chuỗi "
+"Unicode *string* có tối đa 256 ký tự biểu thị một bảng mã hóa, trả về một "
+"đối tượng ánh xạ bên trong nhỏ gọn hoặc một thứ tự ký tự ánh xạ từ điển "
+"thành các giá trị byte. Tăng :exc:`TypeError` và trả về ``NULL`` khi đầu vào"
+" không hợp lệ."
+
+#: ../../c-api/unicode.rst:692
+#, fuzzy
+msgid ""
+"Return the name of the default string encoding, ``\"utf-8\"``. See "
+":func:`sys.getdefaultencoding`."
+msgstr ""
+"Trả về tên của mã hóa chuỗi mặc định, ``\"utf-8\"``. Xem "
+":func:`sys.getdefaultencoding`."
+
+#: ../../c-api/unicode.rst:695
+#, fuzzy
+msgid ""
+"The returned string does not need to be freed, and is valid until "
+"interpreter shutdown."
+msgstr ""
+"Chuỗi trả về không cần phải giải phóng và có hiệu lực cho đến khi trình "
+"thông dịch tắt."
+
+#: ../../c-api/unicode.rst:701
+#, fuzzy
+msgid "Return the length of the Unicode object, in code points."
+msgstr "Trả về độ dài của đối tượng Unicode, tính bằng điểm mã."
+
+#: ../../c-api/unicode.rst:703
+#, fuzzy
+msgid "On error, set an exception and return ``-1``."
+msgstr "Nếu có lỗi, hãy đặt ngoại lệ và trả về ``-1``."
+
+#: ../../c-api/unicode.rst:714
+#, fuzzy
+msgid ""
+"Copy characters from one Unicode object into another.  This function "
+"performs character conversion when necessary and falls back to "
+":c:func:`!memcpy` if possible.  Returns ``-1`` and sets an exception on "
+"error, otherwise returns the number of copied characters."
+msgstr ""
+"Sao chép các ký tự từ một đối tượng Unicode sang một đối tượng khác.  Hàm "
+"này thực hiện chuyển đổi ký tự khi cần thiết và quay trở lại "
+":c:func:`!memcpy` nếu có thể.  Trả về ``-1`` và đặt một ngoại lệ nếu có lỗi,"
+" nếu không thì trả về số lượng ký tự được sao chép."
+
+#: ../../c-api/unicode.rst:719 ../../c-api/unicode.rst:749
+#: ../../c-api/unicode.rst:769
+#, fuzzy
+msgid ""
+"The string must not have been “used” yet. See :c:func:`PyUnicode_New` for "
+"details."
+msgstr ""
+"Chuỗi này phải chưa được “sử dụng”. Xem :c:func:`PyUnicode_New` để biết chi "
+"tiết."
+
+#: ../../c-api/unicode.rst:727
+#, fuzzy
+msgid "Resize a Unicode object *\\*unicode* to the new *length* in code points."
+msgstr ""
+"Thay đổi kích thước đối tượng Unicode *\\*unicode* thành *length* mới trong "
+"điểm mã."
+
+#: ../../c-api/unicode.rst:729
+#, fuzzy
+msgid ""
+"Try to resize the string in place (which is usually faster than allocating a"
+" new string and copying characters), or create a new string."
+msgstr ""
+"Cố gắng thay đổi kích thước chuỗi tại chỗ (thường nhanh hơn việc cấp phát "
+"một chuỗi mới và sao chép các ký tự) hoặc tạo một chuỗi mới."
+
+#: ../../c-api/unicode.rst:732
+#, fuzzy
+msgid ""
+"*\\*unicode* is modified to point to the new (resized) object and ``0`` is "
+"returned on success. Otherwise, ``-1`` is returned and an exception is set, "
+"and *\\*unicode* is left untouched."
+msgstr ""
+"*\\*unicode* được sửa đổi để trỏ đến đối tượng mới (đã thay đổi kích thước) "
+"và ``0`` được trả về thành công. Nếu không, ``-1`` sẽ được trả về và một "
+"ngoại lệ được đặt và *\\*unicode* sẽ không bị ảnh hưởng."
+
+#: ../../c-api/unicode.rst:736
+#, fuzzy
+msgid ""
+"The function doesn't check string content, the result may not be a string in"
+" canonical representation."
+msgstr ""
+"Hàm không kiểm tra nội dung chuỗi, kết quả có thể không phải là một chuỗi "
+"trong biểu diễn chuẩn."
+
+#: ../../c-api/unicode.rst:743
+#, fuzzy
+msgid ""
+"Fill a string with a character: write *fill_char* into "
+"``unicode[start:start+length]``."
+msgstr ""
+"Điền một ký tự vào chuỗi: viết *fill_char* vào "
+"``unicode[start:start+length]``."
+
+#: ../../c-api/unicode.rst:746
+#, fuzzy
+msgid ""
+"Fail if *fill_char* is bigger than the string maximum character, or if the "
+"string has more than 1 reference."
+msgstr ""
+"Không thành công nếu *fill_char* lớn hơn ký tự tối đa của chuỗi hoặc nếu "
+"chuỗi có nhiều hơn 1 tham chiếu."
+
+#: ../../c-api/unicode.rst:752
+#, fuzzy
+msgid ""
+"Return the number of written character, or return ``-1`` and raise an "
+"exception on error."
+msgstr ""
+"Trả về số lượng ký tự được viết hoặc trả về ``-1`` và đưa ra một ngoại lệ "
+"khi có lỗi."
+
+#: ../../c-api/unicode.rst:761
+#, fuzzy
+msgid ""
+"Write a *character* to the string *unicode* at the zero-based *index*. "
+"Return ``0`` on success, ``-1`` on error with an exception set."
+msgstr ""
+"Viết *character* vào chuỗi *unicode* tại *index* dựa trên số 0. Trả về ``0``"
+" nếu thành công, ``-1`` nếu có lỗi với một bộ ngoại lệ."
+
+#: ../../c-api/unicode.rst:764
+#, fuzzy
+msgid ""
+"This function checks that *unicode* is a Unicode object, that the index is "
+"not out of bounds, and that the object's reference count is one. See "
+":c:func:`PyUnicode_WRITE` for a version that skips these checks, making them"
+" your responsibility."
+msgstr ""
+"Hàm này kiểm tra xem *unicode* có phải là đối tượng Unicode hay không, chỉ "
+"mục không nằm ngoài giới hạn và số tham chiếu của đối tượng là một. Xem "
+":c:func:`PyUnicode_WRITE` để biết phiên bản bỏ qua các bước kiểm tra này và "
+"bạn phải chịu trách nhiệm về chúng."
+
+#: ../../c-api/unicode.rst:777
+#, fuzzy
+msgid ""
+"Read a character from a string.  This function checks that *unicode* is a "
+"Unicode object and the index is not out of bounds, in contrast to "
+":c:func:`PyUnicode_READ_CHAR`, which performs no error checking."
+msgstr ""
+"Đọc một ký tự từ một chuỗi.  Hàm này kiểm tra xem *unicode* có phải là đối "
+"tượng Unicode và chỉ mục không nằm ngoài giới hạn, trái ngược với "
+":c:func:`PyUnicode_READ_CHAR`, hàm này không thực hiện kiểm tra lỗi."
+
+#: ../../c-api/unicode.rst:781
+#, fuzzy
+msgid "Return character on success, ``-1`` on error with an exception set."
+msgstr "Trả về ký tự khi thành công, ``-1`` bị lỗi với một bộ ngoại lệ."
+
+#: ../../c-api/unicode.rst:789
+#, fuzzy
+msgid ""
+"Return a substring of *unicode*, from character index *start* (included) to "
+"character index *end* (excluded).  Negative indices are not supported. On "
+"error, set an exception and return ``NULL``."
+msgstr ""
+"Trả về chuỗi con của *unicode*, từ chỉ mục ký tự *start* (được bao gồm) đến "
+"chỉ mục ký tự *end* (bị loại trừ).  Các chỉ số tiêu cực không được hỗ trợ. "
+"Nếu có lỗi, hãy đặt ngoại lệ và trả về ``NULL``."
+
+#: ../../c-api/unicode.rst:799
+#, fuzzy
+msgid ""
+"Copy the string *unicode* into a UCS4 buffer, including a null character, if"
+" *copy_null* is set.  Returns ``NULL`` and sets an exception on error (in "
+"particular, a :exc:`SystemError` if *buflen* is smaller than the length of "
+"*unicode*).  *buffer* is returned on success."
+msgstr ""
+"Sao chép chuỗi *unicode* vào bộ đệm UCS4, bao gồm ký tự null, nếu "
+"*copy_null* được đặt.  Trả về ``NULL`` và đặt một ngoại lệ khi có lỗi (cụ "
+"thể là :exc:`SystemError` nếu *buflen* nhỏ hơn độ dài của *unicode*).  "
+"*buffer* được trả về thành công."
+
+#: ../../c-api/unicode.rst:809
+#, fuzzy
+msgid ""
+"Copy the string *unicode* into a new UCS4 buffer that is allocated using "
+":c:func:`PyMem_Malloc`.  If this fails, ``NULL`` is returned with a "
+":exc:`MemoryError` set.  The returned buffer always has an extra null code "
+"point appended."
+msgstr ""
+"Sao chép chuỗi *unicode* vào bộ đệm UCS4 mới được phân bổ bằng "
+":c:func:`PyMem_Malloc`.  Nếu điều này không thành công, ``NULL`` sẽ được trả"
+" về cùng với bộ :exc:`MemoryError`.  Bộ đệm được trả về luôn có thêm một "
+"điểm mã null."
+
+#: ../../c-api/unicode.rst:818
+#, fuzzy
+msgid "Locale Encoding"
+msgstr "Mã hóa miền địa phương"
+
+#: ../../c-api/unicode.rst:820
+#, fuzzy
+msgid ""
+"The current locale encoding can be used to decode text from the operating "
+"system."
+msgstr ""
+"Mã hóa miền địa phương hiện tại có thể được sử dụng để giải mã văn bản từ hệ"
+" điều hành."
+
+#: ../../c-api/unicode.rst:827
+#, fuzzy
+msgid ""
+"Decode a string from UTF-8 on Android and VxWorks, or from the current "
+"locale encoding on other platforms. The supported error handlers are "
+"``\"strict\"`` and ``\"surrogateescape\"`` (:pep:`383`). The decoder uses "
+"``\"strict\"`` error handler if *errors* is ``NULL``.  *str* must end with a"
+" null character but cannot contain embedded null characters."
+msgstr ""
+"Giải mã chuỗi từ UTF-8 trên Android và VxWorks hoặc từ mã hóa ngôn ngữ hiện "
+"tại trên các nền tảng khác. Trình xử lý lỗi được hỗ trợ là ``\"strict\"`` và"
+" ``\"surrogateescape\"`` (:pep:`383`). Bộ giải mã sử dụng trình xử lý lỗi "
+"``\"strict\"`` nếu *errors* là ``NULL``.  *str* phải kết thúc bằng ký tự "
+"null nhưng không được chứa ký tự null được nhúng."
+
+#: ../../c-api/unicode.rst:834
+#, fuzzy
+msgid ""
+"Use :c:func:`PyUnicode_DecodeFSDefaultAndSize` to decode a string from the "
+":term:`filesystem encoding and error handler`."
+msgstr ""
+"Sử dụng :c:func:`PyUnicode_DecodeFSDefaultAndSize` để giải mã một chuỗi từ "
+":term:`filesystem encoding and error handler`."
+
+#: ../../c-api/unicode.rst:837 ../../c-api/unicode.rst:872
+#, fuzzy
+msgid "This function ignores the :ref:`Python UTF-8 Mode <utf8-mode>`."
+msgstr "Hàm này bỏ qua :ref:`Python UTF-8 Mode <utf8-mode>`."
+
+#: ../../c-api/unicode.rst:841 ../../c-api/unicode.rst:957
+#, fuzzy
+msgid "The :c:func:`Py_DecodeLocale` function."
+msgstr "Chức năng :c:func:`Py_DecodeLocale`."
+
+#: ../../c-api/unicode.rst:845
+#, fuzzy
+msgid ""
+"The function now also uses the current locale encoding for the "
+"``surrogateescape`` error handler, except on Android. Previously, "
+":c:func:`Py_DecodeLocale` was used for the ``surrogateescape``, and the "
+"current locale encoding was used for ``strict``."
+msgstr ""
+"Hàm hiện cũng sử dụng mã hóa ngôn ngữ hiện tại cho trình xử lý lỗi "
+"``surrogateescape``, ngoại trừ trên Android. Trước đây, "
+":c:func:`Py_DecodeLocale` được sử dụng cho ``surrogateescape`` và mã hóa "
+"ngôn ngữ hiện tại được sử dụng cho ``strict``."
+
+#: ../../c-api/unicode.rst:854
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyUnicode_DecodeLocaleAndSize`, but compute the string "
+"length using :c:func:`!strlen`."
+msgstr ""
+"Tương tự như :c:func:`PyUnicode_DecodeLocaleAndSize`, nhưng tính độ dài "
+"chuỗi bằng :c:func:`!strlen`."
+
+#: ../../c-api/unicode.rst:862
+#, fuzzy
+msgid ""
+"Encode a Unicode object to UTF-8 on Android and VxWorks, or to the current "
+"locale encoding on other platforms. The supported error handlers are "
+"``\"strict\"`` and ``\"surrogateescape\"`` (:pep:`383`). The encoder uses "
+"``\"strict\"`` error handler if *errors* is ``NULL``. Return a "
+":class:`bytes` object. *unicode* cannot contain embedded null characters."
+msgstr ""
+"Mã hóa đối tượng Unicode thành UTF-8 trên Android và VxWorks hoặc mã hóa "
+"ngôn ngữ hiện tại trên các nền tảng khác. Trình xử lý lỗi được hỗ trợ là "
+"``\"strict\"`` và ``\"surrogateescape\"`` (:pep:`383`). Bộ mã hóa sử dụng "
+"trình xử lý lỗi ``\"strict\"`` nếu *errors* là ``NULL``. Trả về một đối "
+"tượng :class:`bytes`. *unicode* không thể chứa các ký tự null được nhúng."
+
+#: ../../c-api/unicode.rst:869
+#, fuzzy
+msgid ""
+"Use :c:func:`PyUnicode_EncodeFSDefault` to encode a string to the "
+":term:`filesystem encoding and error handler`."
+msgstr ""
+"Sử dụng :c:func:`PyUnicode_EncodeFSDefault` để mã hóa một chuỗi thành "
+":term:`filesystem encoding and error handler`."
+
+#: ../../c-api/unicode.rst:876 ../../c-api/unicode.rst:988
+#, fuzzy
+msgid "The :c:func:`Py_EncodeLocale` function."
+msgstr "Chức năng :c:func:`Py_EncodeLocale`."
+
+#: ../../c-api/unicode.rst:880
+#, fuzzy
+msgid ""
+"The function now also uses the current locale encoding for the "
+"``surrogateescape`` error handler, except on Android. Previously, "
+":c:func:`Py_EncodeLocale` was used for the ``surrogateescape``, and the "
+"current locale encoding was used for ``strict``."
+msgstr ""
+"Hàm hiện cũng sử dụng mã hóa ngôn ngữ hiện tại cho trình xử lý lỗi "
+"``surrogateescape``, ngoại trừ trên Android. Trước đây, "
+":c:func:`Py_EncodeLocale` được sử dụng cho ``surrogateescape`` và mã hóa "
+"ngôn ngữ hiện tại được sử dụng cho ``strict``."
+
+#: ../../c-api/unicode.rst:889
+#, fuzzy
+msgid "File System Encoding"
+msgstr "Mã hóa hệ thống tập tin"
+
+#: ../../c-api/unicode.rst:891
+#, fuzzy
+msgid ""
+"Functions encoding to and decoding from the :term:`filesystem encoding and "
+"error handler` (:pep:`383` and :pep:`529`)."
+msgstr ""
+"Chức năng mã hóa và giải mã từ :term:`filesystem encoding and error handler`"
+" (:pep:`383` và :pep:`529`)."
+
+#: ../../c-api/unicode.rst:894
+#, fuzzy
+msgid ""
+"To encode file names to :class:`bytes` during argument parsing, the "
+"``\"O&\"`` converter should be used, passing "
+":c:func:`!PyUnicode_FSConverter` as the conversion function:"
+msgstr ""
+"Để mã hóa tên tệp thành :class:`bytes` trong quá trình phân tích cú pháp đối"
+" số, nên sử dụng trình chuyển đổi ``\"O&\"``, chuyển "
+":c:func:`!PyUnicode_FSConverter` làm hàm chuyển đổi:"
+
+#: ../../c-api/unicode.rst:900
+#, fuzzy
+msgid ""
+":ref:`PyArg_Parse\\* converter <arg-parsing>`: encode :class:`str` objects "
+"-- obtained directly or through the :class:`os.PathLike` interface -- to "
+":class:`bytes` using :c:func:`PyUnicode_EncodeFSDefault`; :class:`bytes` "
+"objects are output as-is. *result* must be an address of a C variable of "
+"type :c:expr:`PyObject*` (or :c:expr:`PyBytesObject*`). On success, set the "
+"variable to a new :term:`strong reference` to a :ref:`bytes object "
+"<bytesobjects>` which must be released when it is no longer used and return "
+"a non-zero value (:c:macro:`Py_CLEANUP_SUPPORTED`). Embedded null bytes are "
+"not allowed in the result. On failure, return ``0`` with an exception set."
+msgstr ""
+":ref:`PyArg_Parse\\* converter <arg-parsing>`: mã hóa các đối tượng "
+":class:`str` -- thu được trực tiếp hoặc thông qua giao diện "
+":class:`os.PathLike` -- sang :class:`bytes` bằng "
+":c:func:`PyUnicode_EncodeFSDefault`; Các đối tượng :class:`bytes` được xuất "
+"ra nguyên trạng. *result* phải là địa chỉ của biến C thuộc loại "
+":c:expr:`PyObject*` (hoặc :c:expr:`PyBytesObject*`). Nếu thành công, hãy đặt"
+" biến thành :term:`strong reference` mới thành :ref:`bytes object "
+"<bytesobjects>`, biến này phải được giải phóng khi không còn được sử dụng và"
+" trả về giá trị khác 0 (:c:macro:`Py_CLEANUP_SUPPORTED`). Các byte rỗng được"
+" nhúng không được phép đưa vào kết quả. Nếu thất bại, hãy trả lại ``0`` với "
+"một bộ ngoại lệ."
+
+#: ../../c-api/unicode.rst:912
+#, fuzzy
+msgid ""
+"If *obj* is ``NULL``, the function releases a strong reference stored in the"
+" variable referred by *result* and returns ``1``."
+msgstr ""
+"Nếu *obj* là ``NULL``, hàm sẽ giải phóng một tham chiếu mạnh được lưu trữ "
+"trong biến được tham chiếu bởi *result* và trả về ``1``."
+
+#: ../../c-api/unicode.rst:917 ../../c-api/unicode.rst:944
+#, fuzzy
+msgid "Accepts a :term:`path-like object`."
+msgstr "Chấp nhận :term:`path-like object`."
+
+#: ../../c-api/unicode.rst:920
+#, fuzzy
+msgid ""
+"To decode file names to :class:`str` during argument parsing, the ``\"O&\"``"
+" converter should be used, passing :c:func:`!PyUnicode_FSDecoder` as the "
+"conversion function:"
+msgstr ""
+"Để giải mã tên tệp thành :class:`str` trong quá trình phân tích cú pháp đối "
+"số, nên sử dụng bộ chuyển đổi ``\"O&\"``, chuyển "
+":c:func:`!PyUnicode_FSDecoder` làm hàm chuyển đổi:"
+
+#: ../../c-api/unicode.rst:926
+#, fuzzy
+msgid ""
+":ref:`PyArg_Parse\\* converter <arg-parsing>`: decode :class:`bytes` objects"
+" -- obtained either directly or indirectly through the :class:`os.PathLike` "
+"interface -- to :class:`str` using "
+":c:func:`PyUnicode_DecodeFSDefaultAndSize`; :class:`str` objects are output "
+"as-is. *result* must be an address of a C variable of type "
+":c:expr:`PyObject*` (or :c:expr:`PyUnicodeObject*`). On success, set the "
+"variable to a new :term:`strong reference` to a :ref:`Unicode object "
+"<unicodeobjects>` which must be released when it is no longer used and "
+"return a non-zero value (:c:macro:`Py_CLEANUP_SUPPORTED`). Embedded null "
+"characters are not allowed in the result. On failure, return ``0`` with an "
+"exception set."
+msgstr ""
+":ref:`PyArg_Parse\\* converter <arg-parsing>`: giải mã các đối tượng "
+":class:`bytes` -- thu được trực tiếp hoặc gián tiếp thông qua giao diện "
+":class:`os.PathLike` -- sang :class:`str` bằng "
+":c:func:`PyUnicode_DecodeFSDefaultAndSize`; Các đối tượng :class:`str` được "
+"xuất ra nguyên trạng. *result* phải là địa chỉ của biến C thuộc loại "
+":c:expr:`PyObject*` (hoặc :c:expr:`PyUnicodeObject*`). Nếu thành công, hãy "
+"đặt biến thành :term:`strong reference` mới thành :ref:`Unicode object "
+"<unicodeobjects>`, biến này phải được giải phóng khi không còn được sử dụng "
+"và trả về giá trị khác 0 (:c:macro:`Py_CLEANUP_SUPPORTED`). Các ký tự null "
+"được nhúng không được phép trong kết quả. Nếu thất bại, hãy trả lại ``0`` "
+"với một bộ ngoại lệ."
+
+#: ../../c-api/unicode.rst:939
+#, fuzzy
+msgid ""
+"If *obj* is ``NULL``, release the strong reference to the object referred to"
+" by *result* and return ``1``."
+msgstr ""
+"Nếu *obj* là ``NULL``, hãy giải phóng tham chiếu mạnh tới đối tượng được "
+"tham chiếu bởi *result* và trả về ``1``."
+
+#: ../../c-api/unicode.rst:950
+#, fuzzy
+msgid ""
+"Decode a string from the :term:`filesystem encoding and error handler`."
+msgstr "Giải mã một chuỗi từ :term:`filesystem encoding and error handler`."
+
+#: ../../c-api/unicode.rst:952
+#, fuzzy
+msgid ""
+"If you need to decode a string from the current locale encoding, use "
+":c:func:`PyUnicode_DecodeLocaleAndSize`."
+msgstr ""
+"Nếu bạn cần giải mã một chuỗi từ mã hóa miền địa phương hiện tại, hãy sử "
+"dụng :c:func:`PyUnicode_DecodeLocaleAndSize`."
+
+#: ../../c-api/unicode.rst:959 ../../c-api/unicode.rst:972
+#: ../../c-api/unicode.rst:992
+#, fuzzy
+msgid ""
+"The :term:`filesystem error handler <filesystem encoding and error handler>`"
+" is now used."
+msgstr "Zz000zz hiện đã được sử dụng."
+
+#: ../../c-api/unicode.rst:966
+#, fuzzy
+msgid ""
+"Decode a null-terminated string from the :term:`filesystem encoding and "
+"error handler`."
+msgstr ""
+"Giải mã chuỗi kết thúc null từ :term:`filesystem encoding and error "
+"handler`."
+
+#: ../../c-api/unicode.rst:969
+#, fuzzy
+msgid ""
+"If the string length is known, use "
+":c:func:`PyUnicode_DecodeFSDefaultAndSize`."
+msgstr ""
+"Nếu biết độ dài chuỗi, hãy sử dụng "
+":c:func:`PyUnicode_DecodeFSDefaultAndSize`."
+
+#: ../../c-api/unicode.rst:979
+#, fuzzy
+msgid ""
+"Encode a Unicode object to the :term:`filesystem encoding and error "
+"handler`, and return :class:`bytes`. Note that the resulting :class:`bytes` "
+"object can contain null bytes."
+msgstr ""
+"Mã hóa một đối tượng Unicode thành :term:`filesystem encoding and error "
+"handler` và trả về :class:`bytes`. Lưu ý rằng đối tượng :class:`bytes` thu "
+"được có thể chứa byte rỗng."
+
+#: ../../c-api/unicode.rst:983
+#, fuzzy
+msgid ""
+"If you need to encode a string to the current locale encoding, use "
+":c:func:`PyUnicode_EncodeLocale`."
+msgstr ""
+"Nếu bạn cần mã hóa một chuỗi thành mã hóa miền địa phương hiện tại, hãy sử "
+"dụng :c:func:`PyUnicode_EncodeLocale`."
+
+#: ../../c-api/unicode.rst:997
+#, fuzzy
+msgid "wchar_t Support"
+msgstr "Hỗ trợ wchar_t"
+
+#: ../../c-api/unicode.rst:999
+#, fuzzy
+msgid ":c:type:`wchar_t` support for platforms which support it:"
+msgstr ":c:type:`wchar_t` hỗ trợ cho các nền tảng hỗ trợ nó:"
+
+#: ../../c-api/unicode.rst:1003
+#, fuzzy
+msgid ""
+"Create a Unicode object from the :c:type:`wchar_t` buffer *wstr* of the "
+"given *size*. Passing ``-1`` as the *size* indicates that the function must "
+"itself compute the length, using :c:func:`!wcslen`. Return ``NULL`` on "
+"failure."
+msgstr ""
+"Tạo một đối tượng Unicode từ bộ đệm :c:type:`wchar_t` *wstr* của *size* đã "
+"cho. Truyền ``-1`` làm *size* chỉ ra rằng hàm phải tự tính toán độ dài bằng "
+"cách sử dụng :c:func:`!wcslen`. Trả về ``NULL`` khi thất bại."
+
+#: ../../c-api/unicode.rst:1011
+#, fuzzy
+msgid ""
+"Copy the Unicode object contents into the :c:type:`wchar_t` buffer *wstr*.  "
+"At most *size* :c:type:`wchar_t` characters are copied (excluding a possibly"
+" trailing null termination character).  Return the number of "
+":c:type:`wchar_t` characters copied or ``-1`` in case of an error."
+msgstr ""
+"Sao chép nội dung đối tượng Unicode vào bộ đệm :c:type:`wchar_t` *wstr*.  "
+"Tối đa *size* :c:type:`wchar_t` ký tự được sao chép (không bao gồm ký tự kết"
+" thúc null có thể ở cuối).  Trả về số ký tự :c:type:`wchar_t` đã sao chép "
+"hoặc ``-1`` trong trường hợp có lỗi."
+
+#: ../../c-api/unicode.rst:1016
+#, fuzzy
+msgid ""
+"When *wstr* is ``NULL``, instead return the *size* that would be required to"
+" store all of *unicode* including a terminating null."
+msgstr ""
+"Khi *wstr* là ``NULL``, thay vào đó hãy trả về *size* cần thiết để lưu trữ "
+"tất cả *unicode* bao gồm cả giá trị rỗng kết thúc."
+
+#: ../../c-api/unicode.rst:1019
+#, fuzzy
+msgid ""
+"Note that the resulting :c:expr:`wchar_t*` string may or may not be null-"
+"terminated.  It is the responsibility of the caller to make sure that the "
+":c:expr:`wchar_t*` string is null-terminated in case this is required by the"
+" application. Also, note that the :c:expr:`wchar_t*` string might contain "
+"null characters, which would cause the string to be truncated when used with"
+" most C functions."
+msgstr ""
+"Lưu ý rằng chuỗi :c:expr:`wchar_t*` kết quả có thể bị kết thúc bằng null "
+"hoặc không.  Người gọi có trách nhiệm đảm bảo rằng chuỗi :c:expr:`wchar_t*` "
+"được kết thúc bằng null trong trường hợp ứng dụng yêu cầu điều này. Ngoài "
+"ra, hãy lưu ý rằng chuỗi :c:expr:`wchar_t*` có thể chứa các ký tự null, điều"
+" này sẽ khiến chuỗi bị cắt bớt khi sử dụng với hầu hết các hàm C."
+
+#: ../../c-api/unicode.rst:1029
+#, fuzzy
+msgid ""
+"Convert the Unicode object to a wide character string. The output string "
+"always ends with a null character. If *size* is not ``NULL``, write the "
+"number of wide characters (excluding the trailing null termination "
+"character) into *\\*size*. Note that the resulting :c:type:`wchar_t` string "
+"might contain null characters, which would cause the string to be truncated "
+"when used with most C functions. If *size* is ``NULL`` and the "
+":c:expr:`wchar_t*` string contains null characters a :exc:`ValueError` is "
+"raised."
+msgstr ""
+"Chuyển đổi đối tượng Unicode thành chuỗi ký tự rộng. Chuỗi đầu ra luôn kết "
+"thúc bằng ký tự null. Nếu *size* không phải là ``NULL``, hãy ghi số ký tự "
+"rộng (không bao gồm ký tự kết thúc null ở cuối) vào *\\*size*. Note that the"
+" resulting zz000zz string might contain null characters, which would cause "
+"the string to be truncated when used with most C functions. If *size* là "
+"``NULL`` và chuỗi :c:expr:`wchar_t*` chứa các ký tự null mà "
+":exc:`ValueError` được nâng lên."
+
+#: ../../c-api/unicode.rst:1037
+#, fuzzy
+msgid ""
+"Returns a buffer allocated by :c:macro:`PyMem_New` (use :c:func:`PyMem_Free`"
+" to free it) on success. On error, returns ``NULL`` and *\\*size* is "
+"undefined. Raises a :exc:`MemoryError` if memory allocation is failed."
+msgstr ""
+"Trả về bộ đệm được phân bổ bởi :c:macro:`PyMem_New` (sử dụng "
+":c:func:`PyMem_Free` để giải phóng nó) nếu thành công. Nếu có lỗi, trả về "
+"``NULL`` và *\\*size* không được xác định. Tăng :exc:`MemoryError` nếu cấp "
+"phát bộ nhớ không thành công."
+
+#: ../../c-api/unicode.rst:1044
+#, fuzzy
+msgid ""
+"Raises a :exc:`ValueError` if *size* is ``NULL`` and the :c:expr:`wchar_t*` "
+"string contains null characters."
+msgstr ""
+"Tăng :exc:`ValueError` nếu *size* là ``NULL`` và chuỗi :c:expr:`wchar_t*` "
+"chứa các ký tự null."
+
+#: ../../c-api/unicode.rst:1052
+#, fuzzy
+msgid "Built-in Codecs"
+msgstr "Codec tích hợp"
+
+#: ../../c-api/unicode.rst:1054
+#, fuzzy
+msgid ""
+"Python provides a set of built-in codecs which are written in C for speed. "
+"All of these codecs are directly usable via the following functions."
+msgstr ""
+"Python cung cấp một bộ codec tích hợp được viết bằng C để tăng tốc độ. Tất "
+"cả các codec này đều có thể sử dụng trực tiếp thông qua các chức năng sau."
+
+#: ../../c-api/unicode.rst:1057
+#, fuzzy
+msgid ""
+"Many of the following APIs take two arguments encoding and errors, and they "
+"have the same semantics as the ones of the built-in :func:`str` string "
+"object constructor."
+msgstr ""
+"Nhiều API sau đây có hai đối số mã hóa và lỗi, đồng thời chúng có cùng ngữ "
+"nghĩa với ngữ nghĩa của hàm tạo đối tượng chuỗi :func:`str` tích hợp sẵn."
+
+#: ../../c-api/unicode.rst:1061
+#, fuzzy
+msgid ""
+"Setting encoding to ``NULL`` causes the default encoding to be used which is"
+" UTF-8.  The file system calls should use :c:func:`PyUnicode_FSConverter` "
+"for encoding file names. This uses the :term:`filesystem encoding and error "
+"handler` internally."
+msgstr ""
+"Việc đặt mã hóa thành ``NULL`` sẽ khiến mã hóa mặc định được sử dụng là "
+"UTF-8.  Cuộc gọi hệ thống tệp nên sử dụng :c:func:`PyUnicode_FSConverter` để"
+" mã hóa tên tệp. Điều này sử dụng :term:`filesystem encoding and error "
+"handler` nội bộ."
+
+#: ../../c-api/unicode.rst:1066
+#, fuzzy
+msgid ""
+"Error handling is set by errors which may also be set to ``NULL`` meaning to"
+" use the default handling defined for the codec.  Default error handling for"
+" all built-in codecs is \"strict\" (:exc:`ValueError` is raised)."
+msgstr ""
+"Xử lý lỗi được đặt theo lỗi cũng có thể được đặt thành ``NULL`` nghĩa là sử "
+"dụng cách xử lý mặc định được xác định cho codec.  Xử lý lỗi mặc định cho "
+"tất cả các codec tích hợp là \"nghiêm ngặt\" (:exc:`ValueError` được nâng "
+"lên)."
+
+#: ../../c-api/unicode.rst:1070
+#, fuzzy
+msgid ""
+"The codecs all use a similar interface.  Only deviations from the following "
+"generic ones are documented for simplicity."
+msgstr ""
+"Các codec đều sử dụng một giao diện tương tự.  Chỉ những sai lệch so với "
+"những điểm chung sau đây mới được ghi lại để đơn giản."
+
+#: ../../c-api/unicode.rst:1075
+#, fuzzy
+msgid "Generic Codecs"
+msgstr "Codec chung"
+
+#: ../../c-api/unicode.rst:1077
+#, fuzzy
+msgid "The following macro is provided:"
+msgstr "Macro sau được cung cấp:"
+
+#: ../../c-api/unicode.rst:1082
+#, fuzzy
+msgid "The Unicode code point ``U+FFFD`` (replacement character)."
+msgstr "Điểm mã Unicode ``U+FFFD`` (ký tự thay thế)."
+
+#: ../../c-api/unicode.rst:1084
+#, fuzzy
+msgid ""
+"This Unicode character is used as the replacement character during decoding "
+"if the *errors* argument is set to \"replace\"."
+msgstr ""
+"Ký tự Unicode này được sử dụng làm ký tự thay thế trong quá trình giải mã "
+"nếu đối số *errors* được đặt thành \"thay thế\"."
+
+#: ../../c-api/unicode.rst:1088
+#, fuzzy
+msgid "These are the generic codec APIs:"
+msgstr "Đây là các API codec chung:"
+
+#: ../../c-api/unicode.rst:1094
+#, fuzzy
+msgid ""
+"Create a Unicode object by decoding *size* bytes of the encoded string "
+"*str*. *encoding* and *errors* have the same meaning as the parameters of "
+"the same name in the :func:`str` built-in function.  The codec to be used is"
+" looked up using the Python codec registry.  Return ``NULL`` if an exception"
+" was raised by the codec."
+msgstr ""
+"Tạo một đối tượng Unicode bằng cách giải mã byte *size* của chuỗi được mã "
+"hóa *str*. *encoding* và *errors* có ý nghĩa tương tự như các tham số cùng "
+"tên trong hàm tích hợp :func:`str`.  Codec được sử dụng sẽ được tra cứu bằng"
+" cách sử dụng sổ đăng ký codec Python.  Trả về ``NULL`` nếu codec đưa ra "
+"ngoại lệ."
+
+#: ../../c-api/unicode.rst:1104
+#, fuzzy
+msgid ""
+"Encode a Unicode object and return the result as Python bytes object. "
+"*encoding* and *errors* have the same meaning as the parameters of the same "
+"name in the Unicode :meth:`~str.encode` method. The codec to be used is "
+"looked up using the Python codec registry. Return ``NULL`` if an exception "
+"was raised by the codec."
+msgstr ""
+"Mã hóa một đối tượng Unicode và trả về kết quả dưới dạng đối tượng byte "
+"Python. *encoding* và *errors* có ý nghĩa tương tự như các tham số cùng tên "
+"trong phương thức Unicode :meth:`~str.encode`. Codec được sử dụng sẽ được "
+"tra cứu bằng cách sử dụng sổ đăng ký codec Python. Trả về ``NULL`` nếu codec"
+" đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1112
+#, fuzzy
+msgid "UTF-8 Codecs"
+msgstr "Codec UTF-8"
+
+#: ../../c-api/unicode.rst:1114
+#, fuzzy
+msgid "These are the UTF-8 codec APIs:"
+msgstr "Đây là các API codec UTF-8:"
+
+#: ../../c-api/unicode.rst:1119
+#, fuzzy
+msgid ""
+"Create a Unicode object by decoding *size* bytes of the UTF-8 encoded string"
+" *str*. Return ``NULL`` if an exception was raised by the codec."
+msgstr ""
+"Tạo một đối tượng Unicode bằng cách giải mã các byte *size* của chuỗi được "
+"mã hóa UTF-8 *str*. Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1126
+#, fuzzy
+msgid ""
+"If *consumed* is ``NULL``, behave like :c:func:`PyUnicode_DecodeUTF8`. If "
+"*consumed* is not ``NULL``, trailing incomplete UTF-8 byte sequences will "
+"not be treated as an error. Those bytes will not be decoded and the number "
+"of bytes that have been decoded will be stored in *consumed*."
+msgstr ""
+"Nếu *consumed* là ``NULL``, hãy cư xử như :c:func:`PyUnicode_DecodeUTF8`. "
+"Nếu *consumed* không phải là ``NULL``, các chuỗi byte UTF-8 không hoàn chỉnh"
+" ở cuối sẽ không được coi là lỗi. Những byte đó sẽ không được giải mã và số "
+"byte đã được giải mã sẽ được lưu trữ trong *consumed*."
+
+#: ../../c-api/unicode.rst:1134
+#, fuzzy
+msgid ""
+"Encode a Unicode object using UTF-8 and return the result as Python bytes "
+"object.  Error handling is \"strict\".  Return ``NULL`` if an exception was "
+"raised by the codec."
+msgstr ""
+"Mã hóa một đối tượng Unicode bằng UTF-8 và trả về kết quả dưới dạng đối "
+"tượng byte Python.  Xử lý lỗi là \"nghiêm ngặt\".  Trả về ``NULL`` nếu codec"
+" đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1138 ../../c-api/unicode.rst:1153
+#, fuzzy
+msgid ""
+"The function fails if the string contains surrogate code points (``U+D800`` "
+"- ``U+DFFF``)."
+msgstr ""
+"Hàm không thành công nếu chuỗi chứa các điểm mã thay thế (``U+D800`` - "
+"``U+DFFF``)."
+
+#: ../../c-api/unicode.rst:1144
+#, fuzzy
+msgid ""
+"Return a pointer to the UTF-8 encoding of the Unicode object, and store the "
+"size of the encoded representation (in bytes) in *size*.  The *size* "
+"argument can be ``NULL``; in this case no size will be stored.  The returned"
+" buffer always has an extra null byte appended (not included in *size*), "
+"regardless of whether there are any other null code points."
+msgstr ""
+"Trả về con trỏ tới mã hóa UTF-8 của đối tượng Unicode và lưu trữ kích thước "
+"của biểu diễn được mã hóa (tính bằng byte) trong *size*.  Đối số *size* có "
+"thể là ``NULL``; trong trường hợp này sẽ không có kích thước nào được lưu "
+"trữ.  Bộ đệm được trả về luôn có thêm một byte rỗng được thêm vào (không có "
+"trong *size*), bất kể có bất kỳ điểm mã null nào khác hay không."
+
+#: ../../c-api/unicode.rst:1150
+#, fuzzy
+msgid ""
+"On error, set an exception, set *size* to ``-1`` (if it's not NULL) and "
+"return ``NULL``."
+msgstr ""
+"Nếu có lỗi, hãy đặt một ngoại lệ, đặt *size* thành ``-1`` (nếu không phải là"
+" NULL) và trả về ``NULL``."
+
+#: ../../c-api/unicode.rst:1156
+#, fuzzy
+msgid ""
+"This caches the UTF-8 representation of the string in the Unicode object, "
+"and subsequent calls will return a pointer to the same buffer.  The caller "
+"is not responsible for deallocating the buffer. The buffer is deallocated "
+"and pointers to it become invalid when the Unicode object is garbage "
+"collected."
+msgstr ""
+"Điều này lưu trữ biểu diễn UTF-8 của chuỗi trong đối tượng Unicode và các "
+"cuộc gọi tiếp theo sẽ trả về một con trỏ tới cùng một bộ đệm.  Người gọi "
+"không chịu trách nhiệm giải phóng bộ đệm. Bộ đệm được giải phóng và các con "
+"trỏ tới nó trở nên không hợp lệ khi đối tượng Unicode bị thu gom rác."
+
+#: ../../c-api/unicode.rst:1163 ../../c-api/unicode.rst:1185
+#, fuzzy
+msgid "The return type is now ``const char *`` rather of ``char *``."
+msgstr "Kiểu trả về bây giờ là ``const char *`` thay vì ``char *``."
+
+#: ../../c-api/unicode.rst:1166
+#, fuzzy
+msgid "This function is a part of the :ref:`limited API <limited-c-api>`."
+msgstr "Chức năng này là một phần của :ref:`limited API <limited-c-api>`."
+
+#: ../../c-api/unicode.rst:1172
+#, fuzzy
+msgid "As :c:func:`PyUnicode_AsUTF8AndSize`, but does not store the size."
+msgstr "Là :c:func:`PyUnicode_AsUTF8AndSize` nhưng không lưu trữ kích thước."
+
+#: ../../c-api/unicode.rst:1176
+#, fuzzy
+msgid ""
+"This function does not have any special behavior for `null characters "
+"<https://en.wikipedia.org/wiki/Null_character>`_ embedded within *unicode*. "
+"As a result, strings containing null characters will remain in the returned "
+"string, which some C functions might interpret as the end of the string, "
+"leading to truncation. If truncation is an issue, it is recommended to use "
+":c:func:`PyUnicode_AsUTF8AndSize` instead."
+msgstr ""
+"Hàm này không có bất kỳ hành vi đặc biệt nào đối với `null characters "
+"<https://en.wikipedia.org/wiki/Null_character>`_ được nhúng trong *unicode*."
+" Kết quả là, các chuỗi chứa ký tự null sẽ vẫn còn trong chuỗi được trả về, "
+"mà một số hàm C có thể hiểu là phần cuối của chuỗi, dẫn đến bị cắt bớt. Nếu "
+"vấn đề bị cắt bớt thì bạn nên sử dụng :c:func:`PyUnicode_AsUTF8AndSize` để "
+"thay thế."
+
+#: ../../c-api/unicode.rst:1190
+#, fuzzy
+msgid "UTF-32 Codecs"
+msgstr "Codec UTF-32"
+
+#: ../../c-api/unicode.rst:1192
+#, fuzzy
+msgid "These are the UTF-32 codec APIs:"
+msgstr "Đây là các API codec UTF-32:"
+
+#: ../../c-api/unicode.rst:1198
+#, fuzzy
+msgid ""
+"Decode *size* bytes from a UTF-32 encoded buffer string and return the "
+"corresponding Unicode object.  *errors* (if non-``NULL``) defines the error "
+"handling. It defaults to \"strict\"."
+msgstr ""
+"Giải mã byte *size* từ chuỗi đệm được mã hóa UTF-32 và trả về đối tượng "
+"Unicode tương ứng.  *errors* (nếu không phải ``NULL``) xác định cách xử lý "
+"lỗi. Nó mặc định là \"nghiêm ngặt\"."
+
+#: ../../c-api/unicode.rst:1202 ../../c-api/unicode.rst:1252
+#, fuzzy
+msgid ""
+"If *byteorder* is non-``NULL``, the decoder starts decoding using the given "
+"byte order::"
+msgstr ""
+"Nếu *byteorder* không phải là ``NULL``, bộ giải mã sẽ bắt đầu giải mã theo "
+"thứ tự byte đã cho::"
+
+#: ../../c-api/unicode.rst:1205 ../../c-api/unicode.rst:1255
+#, fuzzy
+msgid ""
+"*byteorder == -1: little endian\n"
+"*byteorder == 0:  native order\n"
+"*byteorder == 1:  big endian"
+msgstr ""
+"*byteorder == -1: endian nhỏ\n"
+"*byteorder == 0: thứ tự gốc\n"
+"*byteorder == 1: endian lớn"
+
+#: ../../c-api/unicode.rst:1209
+#, fuzzy
+msgid ""
+"If ``*byteorder`` is zero, and the first four bytes of the input data are a "
+"byte order mark (BOM), the decoder switches to this byte order and the BOM "
+"is not copied into the resulting Unicode string.  If ``*byteorder`` is "
+"``-1`` or ``1``, any byte order mark is copied to the output."
+msgstr ""
+"Nếu ``*byteorder`` bằng 0 và bốn byte đầu tiên của dữ liệu đầu vào là dấu "
+"thứ tự byte (BOM), bộ giải mã sẽ chuyển sang thứ tự byte này và BOM không "
+"được sao chép vào chuỗi Unicode kết quả.  Nếu ``*byteorder`` là ``-1`` hoặc "
+"``1``, mọi dấu thứ tự byte đều được sao chép vào đầu ra."
+
+#: ../../c-api/unicode.rst:1214
+#, fuzzy
+msgid ""
+"After completion, *\\*byteorder* is set to the current byte order at the end"
+" of input data."
+msgstr ""
+"Sau khi hoàn thành, *\\*byteorder* được đặt thành thứ tự byte hiện tại ở "
+"cuối dữ liệu đầu vào."
+
+#: ../../c-api/unicode.rst:1217 ../../c-api/unicode.rst:1268
+#, fuzzy
+msgid "If *byteorder* is ``NULL``, the codec starts in native order mode."
+msgstr "Nếu *byteorder* là ``NULL``, codec sẽ bắt đầu ở chế độ thứ tự gốc."
+
+#: ../../c-api/unicode.rst:1219 ../../c-api/unicode.rst:1270
+#, fuzzy
+msgid "Return ``NULL`` if an exception was raised by the codec."
+msgstr "Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1225
+#, fuzzy
+msgid ""
+"If *consumed* is ``NULL``, behave like :c:func:`PyUnicode_DecodeUTF32`. If "
+"*consumed* is not ``NULL``, :c:func:`PyUnicode_DecodeUTF32Stateful` will not"
+" treat trailing incomplete UTF-32 byte sequences (such as a number of bytes "
+"not divisible by four) as an error. Those bytes will not be decoded and the "
+"number of bytes that have been decoded will be stored in *consumed*."
+msgstr ""
+"Nếu *consumed* là ``NULL``, hãy cư xử như :c:func:`PyUnicode_DecodeUTF32`. "
+"Nếu *consumed* không phải là ``NULL``, "
+":c:func:`PyUnicode_DecodeUTF32Stateful` sẽ không coi các chuỗi UTF-32 byte "
+"không hoàn chỉnh ở cuối (chẳng hạn như số byte không chia hết cho 4) là lỗi."
+" Những byte đó sẽ không được giải mã và số byte đã được giải mã sẽ được lưu "
+"trữ trong *consumed*."
+
+#: ../../c-api/unicode.rst:1234
+#, fuzzy
+msgid ""
+"Return a Python byte string using the UTF-32 encoding in native byte order. "
+"The string always starts with a BOM mark.  Error handling is \"strict\". "
+"Return ``NULL`` if an exception was raised by the codec."
+msgstr ""
+"Trả về chuỗi byte Python bằng cách sử dụng mã hóa UTF-32 theo thứ tự byte "
+"gốc. Chuỗi luôn bắt đầu bằng dấu BOM.  Xử lý lỗi là \"nghiêm ngặt\". Trả về "
+"``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1240
+#, fuzzy
+msgid "UTF-16 Codecs"
+msgstr "Codec UTF-16"
+
+#: ../../c-api/unicode.rst:1242
+#, fuzzy
+msgid "These are the UTF-16 codec APIs:"
+msgstr "Đây là các API codec UTF-16:"
+
+#: ../../c-api/unicode.rst:1248
+#, fuzzy
+msgid ""
+"Decode *size* bytes from a UTF-16 encoded buffer string and return the "
+"corresponding Unicode object.  *errors* (if non-``NULL``) defines the error "
+"handling. It defaults to \"strict\"."
+msgstr ""
+"Giải mã byte *size* từ chuỗi đệm được mã hóa UTF-16 và trả về đối tượng "
+"Unicode tương ứng.  *errors* (nếu không phải ``NULL``) xác định cách xử lý "
+"lỗi. Nó mặc định là \"nghiêm ngặt\"."
+
+#: ../../c-api/unicode.rst:1259
+#, fuzzy
+msgid ""
+"If ``*byteorder`` is zero, and the first two bytes of the input data are a "
+"byte order mark (BOM), the decoder switches to this byte order and the BOM "
+"is not copied into the resulting Unicode string.  If ``*byteorder`` is "
+"``-1`` or ``1``, any byte order mark is copied to the output (where it will "
+"result in either a ``\\ufeff`` or a ``\\ufffe`` character)."
+msgstr ""
+"Nếu ``*byteorder`` bằng 0 và hai byte đầu tiên của dữ liệu đầu vào là dấu "
+"thứ tự byte (BOM), bộ giải mã sẽ chuyển sang thứ tự byte này và BOM không "
+"được sao chép vào chuỗi Unicode kết quả.  Nếu ``*byteorder`` là ``-1`` hoặc "
+"``1``, thì bất kỳ dấu thứ tự byte nào cũng được sao chép vào đầu ra (trong "
+"đó nó sẽ tạo ra ký tự ``\\ufeff`` hoặc ``\\ufffe``)."
+
+#: ../../c-api/unicode.rst:1265
+#, fuzzy
+msgid ""
+"After completion, ``*byteorder`` is set to the current byte order at the end"
+" of input data."
+msgstr ""
+"Sau khi hoàn thành, ``*byteorder`` được đặt theo thứ tự byte hiện tại ở cuối"
+" dữ liệu đầu vào."
+
+#: ../../c-api/unicode.rst:1276
+#, fuzzy
+msgid ""
+"If *consumed* is ``NULL``, behave like :c:func:`PyUnicode_DecodeUTF16`. If "
+"*consumed* is not ``NULL``, :c:func:`PyUnicode_DecodeUTF16Stateful` will not"
+" treat trailing incomplete UTF-16 byte sequences (such as an odd number of "
+"bytes or a split surrogate pair) as an error. Those bytes will not be "
+"decoded and the number of bytes that have been decoded will be stored in "
+"*consumed*."
+msgstr ""
+"Nếu *consumed* là ``NULL``, hãy cư xử như :c:func:`PyUnicode_DecodeUTF16`. "
+"Nếu *consumed* không phải là ``NULL``, thì "
+":c:func:`PyUnicode_DecodeUTF16Stateful` sẽ không coi các chuỗi UTF-16 byte "
+"không hoàn chỉnh ở cuối (chẳng hạn như số byte lẻ hoặc cặp thay thế bị phân "
+"tách) là lỗi. Những byte đó sẽ không được giải mã và số byte đã được giải mã"
+" sẽ được lưu trữ trong *consumed*."
+
+#: ../../c-api/unicode.rst:1285
+#, fuzzy
+msgid ""
+"Return a Python byte string using the UTF-16 encoding in native byte order. "
+"The string always starts with a BOM mark.  Error handling is \"strict\". "
+"Return ``NULL`` if an exception was raised by the codec."
+msgstr ""
+"Trả về chuỗi byte Python bằng cách sử dụng mã hóa UTF-16 theo thứ tự byte "
+"gốc. Chuỗi luôn bắt đầu bằng dấu BOM.  Xử lý lỗi là \"nghiêm ngặt\". Trả về "
+"``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1291
+#, fuzzy
+msgid "UTF-7 Codecs"
+msgstr "Codec UTF-7"
+
+#: ../../c-api/unicode.rst:1293
+#, fuzzy
+msgid "These are the UTF-7 codec APIs:"
+msgstr "Đây là các API codec UTF-7:"
+
+#: ../../c-api/unicode.rst:1298
+#, fuzzy
+msgid ""
+"Create a Unicode object by decoding *size* bytes of the UTF-7 encoded string"
+" *str*.  Return ``NULL`` if an exception was raised by the codec."
+msgstr ""
+"Tạo một đối tượng Unicode bằng cách giải mã các byte *size* của chuỗi được "
+"mã hóa UTF-7 *str*.  Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1305
+#, fuzzy
+msgid ""
+"If *consumed* is ``NULL``, behave like :c:func:`PyUnicode_DecodeUTF7`.  If "
+"*consumed* is not ``NULL``, trailing incomplete UTF-7 base-64 sections will "
+"not be treated as an error.  Those bytes will not be decoded and the number "
+"of bytes that have been decoded will be stored in *consumed*."
+msgstr ""
+"Nếu *consumed* là ``NULL``, hãy cư xử như :c:func:`PyUnicode_DecodeUTF7`.  "
+"Nếu *consumed* không phải là ``NULL``, các phần UTF-7 base-64 không hoàn "
+"chỉnh sẽ không bị coi là lỗi.  Những byte đó sẽ không được giải mã và số "
+"byte đã được giải mã sẽ được lưu trữ trong *consumed*."
+
+#: ../../c-api/unicode.rst:1312
+#, fuzzy
+msgid "Unicode-Escape Codecs"
+msgstr "Bộ giải mã Unicode-Escape"
+
+#: ../../c-api/unicode.rst:1314
+#, fuzzy
+msgid "These are the \"Unicode Escape\" codec APIs:"
+msgstr "Đây là các API codec \"Unicode Escape\":"
+
+#: ../../c-api/unicode.rst:1320
+#, fuzzy
+msgid ""
+"Create a Unicode object by decoding *size* bytes of the Unicode-Escape "
+"encoded string *str*.  Return ``NULL`` if an exception was raised by the "
+"codec."
+msgstr ""
+"Tạo một đối tượng Unicode bằng cách giải mã các byte *size* của chuỗi mã hóa"
+" Unicode-Escape *str*.  Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1326
+#, fuzzy
+msgid ""
+"Encode a Unicode object using Unicode-Escape and return the result as a "
+"bytes object.  Error handling is \"strict\".  Return ``NULL`` if an "
+"exception was raised by the codec."
+msgstr ""
+"Mã hóa đối tượng Unicode bằng Unicode-Escape và trả về kết quả dưới dạng đối"
+" tượng byte.  Xử lý lỗi là \"nghiêm ngặt\".  Trả về ``NULL`` nếu codec đưa "
+"ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1332
+#, fuzzy
+msgid "Raw-Unicode-Escape Codecs"
+msgstr "Codec Raw-Unicode-Escape"
+
+#: ../../c-api/unicode.rst:1334
+#, fuzzy
+msgid "These are the \"Raw Unicode Escape\" codec APIs:"
+msgstr "Đây là các API codec \"Raw Unicode Escape\":"
+
+#: ../../c-api/unicode.rst:1340
+#, fuzzy
+msgid ""
+"Create a Unicode object by decoding *size* bytes of the Raw-Unicode-Escape "
+"encoded string *str*.  Return ``NULL`` if an exception was raised by the "
+"codec."
+msgstr ""
+"Tạo một đối tượng Unicode bằng cách giải mã các byte *size* của chuỗi được "
+"mã hóa Raw-Unicode-Escape *str*.  Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1346
+#, fuzzy
+msgid ""
+"Encode a Unicode object using Raw-Unicode-Escape and return the result as a "
+"bytes object.  Error handling is \"strict\".  Return ``NULL`` if an "
+"exception was raised by the codec."
+msgstr ""
+"Mã hóa một đối tượng Unicode bằng Raw-Unicode-Escape và trả về kết quả dưới "
+"dạng đối tượng byte.  Xử lý lỗi là \"nghiêm ngặt\".  Trả về ``NULL`` nếu "
+"codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1352
+#, fuzzy
+msgid "Latin-1 Codecs"
+msgstr "Codec Latin-1"
+
+#: ../../c-api/unicode.rst:1354
+#, fuzzy
+msgid ""
+"These are the Latin-1 codec APIs: Latin-1 corresponds to the first 256 "
+"Unicode ordinals and only these are accepted by the codecs during encoding."
+msgstr ""
+"Đây là các API codec Latin-1: Latin-1 tương ứng với 256 thứ tự Unicode đầu "
+"tiên và chỉ những thứ tự này mới được codec chấp nhận trong quá trình mã "
+"hóa."
+
+#: ../../c-api/unicode.rst:1360
+#, fuzzy
+msgid ""
+"Create a Unicode object by decoding *size* bytes of the Latin-1 encoded "
+"string *str*.  Return ``NULL`` if an exception was raised by the codec."
+msgstr ""
+"Tạo một đối tượng Unicode bằng cách giải mã các byte *size* của chuỗi được "
+"mã hóa Latin-1 *str*.  Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1366
+#, fuzzy
+msgid ""
+"Encode a Unicode object using Latin-1 and return the result as Python bytes "
+"object.  Error handling is \"strict\".  Return ``NULL`` if an exception was "
+"raised by the codec."
+msgstr ""
+"Mã hóa một đối tượng Unicode bằng Latin-1 và trả về kết quả dưới dạng đối "
+"tượng byte Python.  Xử lý lỗi là \"nghiêm ngặt\".  Trả về ``NULL`` nếu codec"
+" đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1372
+#, fuzzy
+msgid "ASCII Codecs"
+msgstr "Codec ASCII"
+
+#: ../../c-api/unicode.rst:1374
+#, fuzzy
+msgid ""
+"These are the ASCII codec APIs.  Only 7-bit ASCII data is accepted. All "
+"other codes generate errors."
+msgstr ""
+"Đây là các API codec ASCII.  Chỉ chấp nhận dữ liệu ASCII 7 bit. Tất cả các "
+"mã khác đều tạo ra lỗi."
+
+#: ../../c-api/unicode.rst:1380
+#, fuzzy
+msgid ""
+"Create a Unicode object by decoding *size* bytes of the ASCII encoded string"
+" *str*.  Return ``NULL`` if an exception was raised by the codec."
+msgstr ""
+"Tạo một đối tượng Unicode bằng cách giải mã các byte *size* của chuỗi được "
+"mã hóa ASCII *str*.  Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1386
+#, fuzzy
+msgid ""
+"Encode a Unicode object using ASCII and return the result as Python bytes "
+"object.  Error handling is \"strict\".  Return ``NULL`` if an exception was "
+"raised by the codec."
+msgstr ""
+"Mã hóa một đối tượng Unicode bằng ASCII và trả về kết quả dưới dạng đối "
+"tượng byte Python.  Xử lý lỗi là \"nghiêm ngặt\".  Trả về ``NULL`` nếu codec"
+" đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1392
+#, fuzzy
+msgid "Character Map Codecs"
+msgstr "Codec bản đồ ký tự"
+
+#: ../../c-api/unicode.rst:1394
+#, fuzzy
+msgid ""
+"This codec is special in that it can be used to implement many different "
+"codecs (and this is in fact what was done to obtain most of the standard "
+"codecs included in the :mod:`!encodings` package). The codec uses mappings "
+"to encode and decode characters.  The mapping objects provided must support "
+"the :meth:`~object.__getitem__` mapping interface; dictionaries and "
+"sequences work well."
+msgstr ""
+"Codec này đặc biệt ở chỗ nó có thể được sử dụng để triển khai nhiều codec "
+"khác nhau (và thực tế đây là điều đã được thực hiện để có được hầu hết các "
+"codec tiêu chuẩn có trong gói :mod:`!encodings`). Codec sử dụng ánh xạ để mã"
+" hóa và giải mã các ký tự.  Các đối tượng ánh xạ được cung cấp phải hỗ trợ "
+"giao diện ánh xạ :meth:`~object.__getitem__`; từ điển và trình tự hoạt động "
+"tốt."
+
+#: ../../c-api/unicode.rst:1400
+#, fuzzy
+msgid "These are the mapping codec APIs:"
+msgstr "Đây là các API codec ánh xạ:"
+
+#: ../../c-api/unicode.rst:1405
+#, fuzzy
+msgid ""
+"Create a Unicode object by decoding *size* bytes of the encoded string *str*"
+" using the given *mapping* object.  Return ``NULL`` if an exception was "
+"raised by the codec."
+msgstr ""
+"Tạo một đối tượng Unicode bằng cách giải mã các byte *size* của chuỗi được "
+"mã hóa *str* bằng cách sử dụng đối tượng *mapping* đã cho.  Trả về ``NULL`` "
+"nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1409
+#, fuzzy
+msgid ""
+"If *mapping* is ``NULL``, Latin-1 decoding will be applied.  Else *mapping* "
+"must map bytes ordinals (integers in the range from 0 to 255) to Unicode "
+"strings, integers (which are then interpreted as Unicode ordinals) or "
+"``None``.  Unmapped data bytes -- ones which cause a :exc:`LookupError`, as "
+"well as ones which get mapped to ``None``, ``0xFFFE`` or ``'\\ufffe'``, are "
+"treated as undefined mappings and cause an error."
+msgstr ""
+"Nếu *mapping* là ``NULL``, giải mã Latin-1 sẽ được áp dụng.  Ngược lại, "
+"*mapping* phải ánh xạ các thứ tự byte (số nguyên trong phạm vi từ 0 đến 255)"
+" thành chuỗi Unicode, số nguyên (sau đó được hiểu là thứ tự Unicode) hoặc "
+"``None``.  Các byte dữ liệu chưa được ánh xạ -- những byte gây ra "
+":exc:`LookupError`, cũng như những byte được ánh xạ tới ``None``, ``0xFFFE``"
+" hoặc ``'\\ufffe'``, đều được coi là ánh xạ không xác định và gây ra lỗi."
+
+#: ../../c-api/unicode.rst:1420
+#, fuzzy
+msgid ""
+"Encode a Unicode object using the given *mapping* object and return the "
+"result as a bytes object.  Error handling is \"strict\".  Return ``NULL`` if"
+" an exception was raised by the codec."
+msgstr ""
+"Mã hóa một đối tượng Unicode bằng cách sử dụng đối tượng *mapping* đã cho và"
+" trả về kết quả dưới dạng đối tượng byte.  Xử lý lỗi là \"nghiêm ngặt\".  "
+"Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1424
+#, fuzzy
+msgid ""
+"The *mapping* object must map Unicode ordinal integers to bytes objects, "
+"integers in the range from 0 to 255 or ``None``.  Unmapped character "
+"ordinals (ones which cause a :exc:`LookupError`) as well as mapped to "
+"``None`` are treated as \"undefined mapping\" and cause an error."
+msgstr ""
+"Đối tượng *mapping* phải ánh xạ các số nguyên thứ tự Unicode thành các đối "
+"tượng byte, các số nguyên trong phạm vi từ 0 đến 255 hoặc ``None``.  Thứ tự "
+"ký tự chưa được ánh xạ (những thứ gây ra :exc:`LookupError`) cũng như được "
+"ánh xạ tới ``None`` được coi là \"ánh xạ không xác định\" và gây ra lỗi."
+
+#: ../../c-api/unicode.rst:1430
+#, fuzzy
+msgid "The following codec API is special in that maps Unicode to Unicode."
+msgstr "Codec API sau đây đặc biệt trong việc ánh xạ Unicode sang Unicode."
+
+#: ../../c-api/unicode.rst:1434
+#, fuzzy
+msgid ""
+"Translate a string by applying a character mapping table to it and return "
+"the resulting Unicode object. Return ``NULL`` if an exception was raised by "
+"the codec."
+msgstr ""
+"Dịch một chuỗi bằng cách áp dụng bảng ánh xạ ký tự cho chuỗi đó và trả về "
+"đối tượng Unicode thu được. Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1438
+#, fuzzy
+msgid ""
+"The mapping table must map Unicode ordinal integers to Unicode ordinal "
+"integers or ``None`` (causing deletion of the character)."
+msgstr ""
+"Bảng ánh xạ phải ánh xạ các số nguyên thứ tự Unicode thành các số nguyên thứ"
+" tự Unicode hoặc ``None`` (gây ra việc xóa ký tự)."
+
+#: ../../c-api/unicode.rst:1441
+#, fuzzy
+msgid ""
+"Mapping tables need only provide the :meth:`~object.__getitem__` interface; "
+"dictionaries and sequences work well.  Unmapped character ordinals (ones "
+"which cause a :exc:`LookupError`) are left untouched and are copied as-is."
+msgstr ""
+"Các bảng ánh xạ chỉ cần cung cấp giao diện :meth:`~object.__getitem__`; từ "
+"điển và trình tự hoạt động tốt.  Thứ tự ký tự chưa được ánh xạ (những thứ "
+"gây ra :exc:`LookupError`) sẽ được giữ nguyên và được sao chép nguyên trạng."
+
+#: ../../c-api/unicode.rst:1445
+#, fuzzy
+msgid ""
+"*errors* has the usual meaning for codecs. It may be ``NULL`` which "
+"indicates to use the default error handling."
+msgstr ""
+"*errors* có ý nghĩa thông thường đối với codec. Nó có thể là ``NULL`` cho "
+"biết sử dụng cách xử lý lỗi mặc định."
+
+#: ../../c-api/unicode.rst:1450
+#, fuzzy
+msgid "MBCS codecs for Windows"
+msgstr "codec MBCS cho Windows"
+
+#: ../../c-api/unicode.rst:1452
+#, fuzzy
+msgid ""
+"These are the MBCS codec APIs. They are currently only available on Windows "
+"and use the Win32 MBCS converters to implement the conversions.  Note that "
+"MBCS (or DBCS) is a class of encodings, not just one.  The target encoding "
+"is defined by the user settings on the machine running the codec."
+msgstr ""
+"Đây là các API codec MBCS. Chúng hiện chỉ có sẵn trên Windows và sử dụng bộ "
+"chuyển đổi Win32 MBCS để thực hiện chuyển đổi.  Lưu ý rằng MBCS (hoặc DBCS) "
+"là một loại mã hóa, không chỉ một.  Mã hóa mục tiêu được xác định bởi cài "
+"đặt người dùng trên máy chạy codec."
+
+#: ../../c-api/unicode.rst:1459
+#, fuzzy
+msgid ""
+"Create a Unicode object by decoding *size* bytes of the MBCS encoded string "
+"*str*. Return ``NULL`` if an exception was raised by the codec."
+msgstr ""
+"Tạo một đối tượng Unicode bằng cách giải mã các byte *size* của chuỗi được "
+"mã hóa MBCS *str*. Trả về ``NULL`` nếu codec đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1466
+#, fuzzy
+msgid ""
+"If *consumed* is ``NULL``, behave like :c:func:`PyUnicode_DecodeMBCS`. If "
+"*consumed* is not ``NULL``, :c:func:`PyUnicode_DecodeMBCSStateful` will not "
+"decode trailing lead byte and the number of bytes that have been decoded "
+"will be stored in *consumed*."
+msgstr ""
+"Nếu *consumed* là ``NULL``, hãy cư xử như :c:func:`PyUnicode_DecodeMBCS`. "
+"Nếu *consumed* không phải là ``NULL`` thì "
+":c:func:`PyUnicode_DecodeMBCSStateful` sẽ không giải mã byte dẫn đầu và số "
+"byte đã được giải mã sẽ được lưu trong *consumed*."
+
+#: ../../c-api/unicode.rst:1475
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyUnicode_DecodeMBCSStateful`, except uses the code page"
+" specified by *code_page*."
+msgstr ""
+"Tương tự như :c:func:`PyUnicode_DecodeMBCSStateful`, ngoại trừ việc sử dụng "
+"trang mã do *code_page* chỉ định."
+
+#: ../../c-api/unicode.rst:1481
+#, fuzzy
+msgid ""
+"Encode a Unicode object using MBCS and return the result as Python bytes "
+"object.  Error handling is \"strict\".  Return ``NULL`` if an exception was "
+"raised by the codec."
+msgstr ""
+"Mã hóa một đối tượng Unicode bằng MBCS và trả về kết quả dưới dạng đối tượng"
+" byte Python.  Xử lý lỗi là \"nghiêm ngặt\".  Trả về ``NULL`` nếu codec đưa "
+"ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1488
+#, fuzzy
+msgid ""
+"Encode the Unicode object using the specified code page and return a Python "
+"bytes object.  Return ``NULL`` if an exception was raised by the codec. Use "
+":c:macro:`!CP_ACP` code page to get the MBCS encoder."
+msgstr ""
+"Mã hóa đối tượng Unicode bằng cách sử dụng trang mã được chỉ định và trả về "
+"đối tượng byte Python.  Trả về ``NULL`` nếu codec đưa ra ngoại lệ. Sử dụng "
+"trang mã :c:macro:`!CP_ACP` để lấy bộ mã hóa MBCS."
+
+#: ../../c-api/unicode.rst:1498
+#, fuzzy
+msgid "Methods and Slot Functions"
+msgstr "Phương thức và hàm Slot"
+
+#: ../../c-api/unicode.rst:1500
+#, fuzzy
+msgid ""
+"The following APIs are capable of handling Unicode objects and strings on "
+"input (we refer to them as strings in the descriptions) and return Unicode "
+"objects or integers as appropriate."
+msgstr ""
+"Các API sau có khả năng xử lý các đối tượng và chuỗi Unicode ở đầu vào "
+"(chúng tôi gọi chúng là chuỗi trong phần mô tả) và trả về các đối tượng hoặc"
+" số nguyên Unicode nếu thích hợp."
+
+#: ../../c-api/unicode.rst:1504
+#, fuzzy
+msgid "They all return ``NULL`` or ``-1`` if an exception occurs."
+msgstr "Tất cả đều trả về ``NULL`` hoặc ``-1`` nếu xảy ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1509
+#, fuzzy
+msgid "Concat two strings giving a new Unicode string."
+msgstr "Nối hai chuỗi tạo thành một chuỗi Unicode mới."
+
+#: ../../c-api/unicode.rst:1514
+#, fuzzy
+msgid ""
+"Split a string giving a list of Unicode strings.  If *sep* is ``NULL``, "
+"splitting will be done at all whitespace substrings.  Otherwise, splits "
+"occur at the given separator.  At most *maxsplit* splits will be done.  If "
+"negative, no limit is set.  Separators are not included in the resulting "
+"list."
+msgstr ""
+"Tách một chuỗi đưa ra danh sách các chuỗi Unicode.  Nếu *sep* là ``NULL``, "
+"việc phân tách sẽ được thực hiện ở tất cả các chuỗi con khoảng trắng.  Nếu "
+"không, sự phân chia sẽ xảy ra tại dấu phân cách đã cho.  Nhiều nhất việc "
+"chia tách *maxsplit* sẽ được thực hiện.  Nếu âm, không có giới hạn nào được "
+"đặt.  Dấu phân cách không được bao gồm trong danh sách kết quả."
+
+#: ../../c-api/unicode.rst:1519 ../../c-api/unicode.rst:1529
+#: ../../c-api/unicode.rst:1550 ../../c-api/unicode.rst:1563
+#, fuzzy
+msgid "On error, return ``NULL`` with an exception set."
+msgstr "Nếu có lỗi, hãy trả về ``NULL`` với một bộ ngoại lệ."
+
+#: ../../c-api/unicode.rst:1521
+#, fuzzy
+msgid "Equivalent to :py:meth:`str.split`."
+msgstr "Tương đương với :py:meth:`str.split`."
+
+#: ../../c-api/unicode.rst:1526
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyUnicode_Split`, but splitting will be done beginning "
+"at the end of the string."
+msgstr ""
+"Tương tự như :c:func:`PyUnicode_Split`, nhưng việc phân tách sẽ được thực "
+"hiện bắt đầu từ cuối chuỗi."
+
+#: ../../c-api/unicode.rst:1531
+#, fuzzy
+msgid "Equivalent to :py:meth:`str.rsplit`."
+msgstr "Tương đương với :py:meth:`str.rsplit`."
+
+#: ../../c-api/unicode.rst:1536
+#, fuzzy
+msgid ""
+"Split a Unicode string at line breaks, returning a list of Unicode strings. "
+"CRLF is considered to be one line break.  If *keepends* is ``0``, the Line "
+"break characters are not included in the resulting strings."
+msgstr ""
+"Tách chuỗi Unicode khi ngắt dòng, trả về danh sách các chuỗi Unicode. CRLF "
+"được coi là ngắt một dòng.  Nếu *keepends* là ``0``, các ký tự ngắt dòng sẽ "
+"không được đưa vào chuỗi kết quả."
+
+#: ../../c-api/unicode.rst:1543
+#, fuzzy
+msgid ""
+"Split a Unicode string at the first occurrence of *sep*, and return a "
+"3-tuple containing the part before the separator, the separator itself, and "
+"the part after the separator. If the separator is not found, return a "
+"3-tuple containing the string itself, followed by two empty strings."
+msgstr ""
+"Tách một chuỗi Unicode ở lần xuất hiện đầu tiên của *sep* và trả về một bộ 3"
+" chứa phần trước dấu phân cách, chính dấu phân cách và phần sau dấu phân "
+"cách. Nếu không tìm thấy dấu phân cách, hãy trả về bộ 3 chứa chính chuỗi đó,"
+" theo sau là hai chuỗi trống."
+
+#: ../../c-api/unicode.rst:1548 ../../c-api/unicode.rst:1561
+#, fuzzy
+msgid "*sep* must not be empty."
+msgstr "*sep* không được để trống."
+
+#: ../../c-api/unicode.rst:1552
+#, fuzzy
+msgid "Equivalent to :py:meth:`str.partition`."
+msgstr "Tương đương với :py:meth:`str.partition`."
+
+#: ../../c-api/unicode.rst:1557
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyUnicode_Partition`, but split a Unicode string at the "
+"last occurrence of *sep*. If the separator is not found, return a 3-tuple "
+"containing two empty strings, followed by the string itself."
+msgstr ""
+"Tương tự như :c:func:`PyUnicode_Partition`, nhưng phân tách chuỗi Unicode ở "
+"lần xuất hiện cuối cùng của *sep*. Nếu không tìm thấy dấu phân cách, hãy trả"
+" về bộ 3 chứa hai chuỗi trống, theo sau là chính chuỗi đó."
+
+#: ../../c-api/unicode.rst:1565
+#, fuzzy
+msgid "Equivalent to :py:meth:`str.rpartition`."
+msgstr "Tương đương với :py:meth:`str.rpartition`."
+
+#: ../../c-api/unicode.rst:1570
+#, fuzzy
+msgid ""
+"Join a sequence of strings using the given *separator* and return the "
+"resulting Unicode string."
+msgstr ""
+"Nối một chuỗi các chuỗi bằng cách sử dụng *separator* đã cho và trả về chuỗi"
+" Unicode kết quả."
+
+#: ../../c-api/unicode.rst:1577
+#, fuzzy
+msgid ""
+"Return ``1`` if *substr* matches ``unicode[start:end]`` at the given tail "
+"end (*direction* == ``-1`` means to do a prefix match, *direction* == ``1`` "
+"a suffix match), ``0`` otherwise. Return ``-1`` if an error occurred."
+msgstr ""
+"Trả về ``1`` nếu *substr* khớp với ``unicode[start:end]`` ở đầu đuôi đã cho "
+"(*direction* == ``-1`` có nghĩa là thực hiện khớp tiền tố, *direction* == "
+"``1`` khớp hậu tố), nếu không thì ``0``. Trả về ``-1`` nếu xảy ra lỗi."
+
+#: ../../c-api/unicode.rst:1585
+#, fuzzy
+msgid ""
+"Return the first position of *substr* in ``unicode[start:end]`` using the "
+"given *direction* (*direction* == ``1`` means to do a forward search, "
+"*direction* == ``-1`` a backward search).  The return value is the index of "
+"the first match; a value of ``-1`` indicates that no match was found, and "
+"``-2`` indicates that an error occurred and an exception has been set."
+msgstr ""
+"Trả về vị trí đầu tiên của *substr* trong ``unicode[start:end]`` bằng cách "
+"sử dụng *direction* đã cho (*direction* == ``1`` có nghĩa là thực hiện tìm "
+"kiếm tiến lên, *direction* == ``-1`` là tìm kiếm lùi).  Giá trị trả về là "
+"chỉ số của kết quả khớp đầu tiên; giá trị ``-1`` cho biết không tìm thấy kết"
+" quả khớp nào và ``-2`` cho biết đã xảy ra lỗi và một ngoại lệ đã được đặt."
+
+#: ../../c-api/unicode.rst:1595
+#, fuzzy
+msgid ""
+"Return the first position of the character *ch* in ``unicode[start:end]`` "
+"using the given *direction* (*direction* == ``1`` means to do a forward "
+"search, *direction* == ``-1`` a backward search).  The return value is the "
+"index of the first match; a value of ``-1`` indicates that no match was "
+"found, and ``-2`` indicates that an error occurred and an exception has been"
+" set."
+msgstr ""
+"Trả về vị trí đầu tiên của ký tự *ch* trong ``unicode[start:end]`` bằng cách"
+" sử dụng *direction* đã cho (*direction* == ``1`` có nghĩa là thực hiện tìm "
+"kiếm tiến lên, *direction* == ``-1`` là tìm kiếm lùi).  Giá trị trả về là "
+"chỉ số của kết quả khớp đầu tiên; giá trị ``-1`` cho biết không tìm thấy kết"
+" quả khớp nào và ``-2`` cho biết đã xảy ra lỗi và một ngoại lệ đã được đặt."
+
+#: ../../c-api/unicode.rst:1603
+#, fuzzy
+msgid ""
+"*start* and *end* are now adjusted to behave like ``unicode[start:end]``."
+msgstr ""
+"*start* và *end* hiện được điều chỉnh để hoạt động giống "
+"``unicode[start:end]``."
+
+#: ../../c-api/unicode.rst:1610
+#, fuzzy
+msgid ""
+"Return the number of non-overlapping occurrences of *substr* in "
+"``unicode[start:end]``.  Return ``-1`` if an error occurred."
+msgstr ""
+"Trả về số lần xuất hiện không chồng chéo của *substr* trong "
+"``unicode[start:end]``.  Trả về ``-1`` nếu xảy ra lỗi."
+
+#: ../../c-api/unicode.rst:1617
+#, fuzzy
+msgid ""
+"Replace at most *maxcount* occurrences of *substr* in *unicode* with "
+"*replstr* and return the resulting Unicode object. *maxcount* == ``-1`` "
+"means replace all occurrences."
+msgstr ""
+"Thay thế tối đa các lần xuất hiện *maxcount* của *substr* trong *unicode* "
+"bằng *replstr* và trả về đối tượng Unicode kết quả. *maxcount* == ``-1`` có "
+"nghĩa là thay thế tất cả các lần xuất hiện."
+
+#: ../../c-api/unicode.rst:1624
+#, fuzzy
+msgid ""
+"Compare two strings and return ``-1``, ``0``, ``1`` for less than, equal, "
+"and greater than, respectively."
+msgstr ""
+"So sánh hai chuỗi và trả về ``-1``, ``0``, ``1`` tương ứng nhỏ hơn, bằng và "
+"lớn hơn."
+
+#: ../../c-api/unicode.rst:1627
+#, fuzzy
+msgid ""
+"This function returns ``-1`` upon failure, so one should call "
+":c:func:`PyErr_Occurred` to check for errors."
+msgstr ""
+"Hàm này trả về ``-1`` khi bị lỗi, vì vậy ta nên gọi :c:func:`PyErr_Occurred`"
+" để kiểm tra lỗi."
+
+#: ../../c-api/unicode.rst:1632
+#, fuzzy
+msgid "The :c:func:`PyUnicode_Equal` function."
+msgstr "Chức năng :c:func:`PyUnicode_Equal`."
+
+#: ../../c-api/unicode.rst:1637
+#, fuzzy
+msgid "Test if two strings are equal:"
+msgstr "Kiểm tra xem hai chuỗi có bằng nhau không:"
+
+#: ../../c-api/unicode.rst:1639
+#, fuzzy
+msgid "Return ``1`` if *a* is equal to *b*."
+msgstr "Trả về ``1`` nếu *a* bằng *b*."
+
+#: ../../c-api/unicode.rst:1640
+#, fuzzy
+msgid "Return ``0`` if *a* is not equal to *b*."
+msgstr "Trả về ``0`` nếu *a* không bằng *b*."
+
+#: ../../c-api/unicode.rst:1641
+#, fuzzy
+msgid ""
+"Set a :exc:`TypeError` exception and return ``-1`` if *a* or *b* is not a "
+":class:`str` object."
+msgstr ""
+"Đặt ngoại lệ :exc:`TypeError` và trả về ``-1`` nếu *a* hoặc *b* không phải "
+"là đối tượng :class:`str`."
+
+#: ../../c-api/unicode.rst:1644
+#, fuzzy
+msgid "The function always succeeds if *a* and *b* are :class:`str` objects."
+msgstr "Hàm luôn thành công nếu *a* và *b* là đối tượng :class:`str`."
+
+#: ../../c-api/unicode.rst:1646
+#, fuzzy
+msgid ""
+"The function works for :class:`str` subclasses, but does not honor custom "
+"``__eq__()`` method."
+msgstr ""
+"Hàm này hoạt động với các lớp con :class:`str` nhưng không hỗ trợ phương "
+"thức ``__eq__()`` tùy chỉnh."
+
+#: ../../c-api/unicode.rst:1651
+#, fuzzy
+msgid "The :c:func:`PyUnicode_Compare` function."
+msgstr "Chức năng :c:func:`PyUnicode_Compare`."
+
+#: ../../c-api/unicode.rst:1658
+#, fuzzy
+msgid ""
+"Compare a Unicode object with a char buffer which is interpreted as being "
+"UTF-8 or ASCII encoded and return true (``1``) if they are equal, or false "
+"(``0``) otherwise. If the Unicode object contains surrogate code points "
+"(``U+D800`` - ``U+DFFF``) or the C string is not valid UTF-8, false (``0``) "
+"is returned."
+msgstr ""
+"So sánh một đối tượng Unicode với bộ đệm char được hiểu là được mã hóa UTF-8"
+" hoặc ASCII và trả về true (``1``) nếu chúng bằng nhau hoặc trả về false "
+"(``0``) nếu ngược lại. Nếu đối tượng Unicode chứa các điểm mã thay thế "
+"(``U+D800`` - ``U+DFFF``) hoặc chuỗi C không hợp lệ UTF-8, thì trả về sai "
+"(``0``)."
+
+#: ../../c-api/unicode.rst:1665 ../../c-api/unicode.rst:1686
+#, fuzzy
+msgid "This function does not raise exceptions."
+msgstr "Chức năng này không đưa ra ngoại lệ."
+
+#: ../../c-api/unicode.rst:1672
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyUnicode_EqualToUTF8AndSize`, but compute *string* "
+"length using :c:func:`!strlen`. If the Unicode object contains null "
+"characters, false (``0``) is returned."
+msgstr ""
+"Tương tự như :c:func:`PyUnicode_EqualToUTF8AndSize`, nhưng tính toán độ dài "
+"*string* bằng :c:func:`!strlen`. Nếu đối tượng Unicode chứa ký tự null, kết "
+"quả trả về là sai (``0``)."
+
+#: ../../c-api/unicode.rst:1681
+#, fuzzy
+msgid ""
+"Compare a Unicode object, *unicode*, with *string* and return ``-1``, ``0``,"
+" ``1`` for less than, equal, and greater than, respectively. It is best to "
+"pass only ASCII-encoded strings, but the function interprets the input "
+"string as ISO-8859-1 if it contains non-ASCII characters."
+msgstr ""
+"So sánh một đối tượng Unicode, *unicode*, với *string* và trả về ``-1``, "
+"``0``, ``1`` tương ứng nhỏ hơn, bằng và lớn hơn. Tốt nhất là chỉ truyền các "
+"chuỗi được mã hóa ASCII, nhưng hàm sẽ diễn giải chuỗi đầu vào là ISO-8859-1 "
+"nếu nó chứa các ký tự không phải ASCII."
+
+#: ../../c-api/unicode.rst:1691
+#, fuzzy
+msgid "Rich compare two Unicode strings and return one of the following:"
+msgstr "Rich so sánh hai chuỗi Unicode và trả về một trong các chuỗi sau:"
+
+#: ../../c-api/unicode.rst:1693
+#, fuzzy
+msgid "``NULL`` in case an exception was raised"
+msgstr "``NULL`` trong trường hợp ngoại lệ được nêu ra"
+
+#: ../../c-api/unicode.rst:1694
+#, fuzzy
+msgid ":c:data:`Py_True` or :c:data:`Py_False` for successful comparisons"
+msgstr ":c:data:`Py_True` hoặc :c:data:`Py_False` để so sánh thành công"
+
+#: ../../c-api/unicode.rst:1695
+#, fuzzy
+msgid ":c:data:`Py_NotImplemented` in case the type combination is unknown"
+msgstr ""
+":c:data:`Py_NotImplemented` trong trường hợp không xác định được tổ hợp loại"
+
+#: ../../c-api/unicode.rst:1697
+#, fuzzy
+msgid ""
+"Possible values for *op* are :c:macro:`Py_GT`, :c:macro:`Py_GE`, "
+":c:macro:`Py_EQ`, :c:macro:`Py_NE`, :c:macro:`Py_LT`, and :c:macro:`Py_LE`."
+msgstr ""
+"Các giá trị có thể có của *op* là :c:macro:`Py_GT`, :c:macro:`Py_GE`, "
+":c:macro:`Py_EQ`, :c:macro:`Py_NE`, :c:macro:`Py_LT` và :c:macro:`Py_LE`."
+
+#: ../../c-api/unicode.rst:1703
+#, fuzzy
+msgid ""
+"Return a new string object from *format* and *args*; this is analogous to "
+"``format % args``."
+msgstr ""
+"Trả về một đối tượng chuỗi mới từ *format* và *args*; điều này tương tự với "
+"``format % args``."
+
+#: ../../c-api/unicode.rst:1709
+#, fuzzy
+msgid ""
+"Check whether *substr* is contained in *unicode* and return true or false "
+"accordingly."
+msgstr ""
+"Kiểm tra xem *substr* có nằm trong *unicode* hay không và trả về true hoặc "
+"false tương ứng."
+
+#: ../../c-api/unicode.rst:1712
+#, fuzzy
+msgid ""
+"*substr* has to coerce to a one element Unicode string. ``-1`` is returned "
+"if there was an error."
+msgstr ""
+"*substr* phải ép buộc thành chuỗi Unicode một phần tử. ``-1`` được trả về "
+"nếu có lỗi."
+
+#: ../../c-api/unicode.rst:1718
+#, fuzzy
+msgid ""
+"Intern the argument :c:expr:`*p_unicode` in place.  The argument must be the"
+" address of a pointer variable pointing to a Python Unicode string object.  "
+"If there is an existing interned string that is the same as "
+":c:expr:`*p_unicode`, it sets :c:expr:`*p_unicode` to it (releasing the "
+"reference to the old string object and creating a new :term:`strong "
+"reference` to the interned string object), otherwise it leaves "
+":c:expr:`*p_unicode` alone and interns it."
+msgstr ""
+"Thực hiện đối số :c:expr:`*p_unicode` tại chỗ.  Đối số phải là địa chỉ của "
+"biến con trỏ trỏ tới đối tượng chuỗi Unicode Python.  Nếu có một chuỗi nội "
+"bộ hiện có giống với :c:expr:`*p_unicode`, thì nó sẽ đặt "
+":c:expr:`*p_unicode` cho chuỗi đó (giải phóng tham chiếu đến đối tượng chuỗi"
+" cũ và tạo một :term:`strong reference` mới cho đối tượng chuỗi nội bộ), nếu"
+" không, nó sẽ để nguyên :c:expr:`*p_unicode` và thực hiện nó."
+
+#: ../../c-api/unicode.rst:1725
+#, fuzzy
+msgid ""
+"(Clarification: even though there is a lot of talk about references, think "
+"of this function as reference-neutral. You must own the object you pass in; "
+"after the call you no longer own the passed-in reference, but you newly own "
+"the result.)"
+msgstr ""
+"(Làm rõ: mặc dù có rất nhiều cuộc thảo luận về tài liệu tham khảo, hãy coi "
+"chức năng này là trung lập về tham chiếu. Bạn phải sở hữu đối tượng bạn "
+"truyền vào; sau lệnh gọi, bạn không còn sở hữu tham chiếu được truyền vào "
+"nữa, nhưng bạn mới sở hữu kết quả.)"
+
+#: ../../c-api/unicode.rst:1730
+#, fuzzy
+msgid ""
+"This function never raises an exception. On error, it leaves its argument "
+"unchanged without interning it."
+msgstr ""
+"Hàm này không bao giờ đưa ra một ngoại lệ. Nếu có lỗi, nó sẽ giữ nguyên đối "
+"số của mình mà không thực hiện nó."
+
+#: ../../c-api/unicode.rst:1733
+#, fuzzy
+msgid ""
+"Instances of subclasses of :py:class:`str` may not be interned, that is, "
+":c:expr:`PyUnicode_CheckExact(*p_unicode)` must be true. If it is not, then "
+"-- as with any other error -- the argument is left unchanged."
+msgstr ""
+"Các phiên bản của lớp con của :py:class:`str` có thể không được thực hiện, "
+"nghĩa là :c:expr:`PyUnicode_CheckExact(*p_unicode)` phải đúng. Nếu không, "
+"thì -- như với bất kỳ lỗi nào khác -- đối số sẽ không thay đổi."
+
+#: ../../c-api/unicode.rst:1737
+#, fuzzy
+msgid ""
+"Note that interned strings are not “immortal”. You must keep a reference to "
+"the result to benefit from interning."
+msgstr ""
+"Lưu ý rằng các chuỗi nội bộ không phải là \"bất tử\". Bạn phải tham khảo kết"
+" quả để được hưởng lợi từ việc thực tập."
+
+#: ../../c-api/unicode.rst:1743
+#, fuzzy
+msgid ""
+"A combination of :c:func:`PyUnicode_FromString` and "
+":c:func:`PyUnicode_InternInPlace`, meant for statically allocated strings."
+msgstr ""
+"Sự kết hợp của :c:func:`PyUnicode_FromString` và "
+":c:func:`PyUnicode_InternInPlace`, dành cho các chuỗi được phân bổ tĩnh."
+
+#: ../../c-api/unicode.rst:1746
+#, fuzzy
+msgid ""
+"Return a new (\"owned\") reference to either a new Unicode string object "
+"that has been interned, or an earlier interned string object with the same "
+"value."
+msgstr ""
+"Trả về một tham chiếu mới (\"được sở hữu\") cho một đối tượng chuỗi Unicode "
+"mới đã được thực hiện nội bộ hoặc một đối tượng chuỗi được thực hiện trước "
+"đó có cùng giá trị."
+
+#: ../../c-api/unicode.rst:1750
+#, fuzzy
+msgid ""
+"Python may keep a reference to the result, or make it :term:`immortal`, "
+"preventing it from being garbage-collected promptly. For interning an "
+"unbounded number of different strings, such as ones coming from user input, "
+"prefer calling :c:func:`PyUnicode_FromString` and "
+":c:func:`PyUnicode_InternInPlace` directly."
+msgstr ""
+"Python có thể giữ một tham chiếu đến kết quả hoặc đặt nó thành "
+":term:`immortal`, ngăn không cho nó bị thu gom rác kịp thời. Để thực hiện số"
+" lượng chuỗi khác nhau không giới hạn, chẳng hạn như các chuỗi đến từ đầu "
+"vào của người dùng, hãy gọi trực tiếp :c:func:`PyUnicode_FromString` và "
+":c:func:`PyUnicode_InternInPlace`."
+
+#: ../../c-api/unicode.rst:1759
+#, fuzzy
+msgid ""
+"Return a non-zero value if *str* is interned, zero if not. The *str* "
+"argument must be a string; this is not checked. This function always "
+"succeeds."
+msgstr ""
+"Trả về giá trị khác 0 nếu *str* được thực hiện, 0 nếu không. Đối số *str* "
+"phải là một chuỗi; điều này không được kiểm tra. Chức năng này luôn thành "
+"công."
+
+#: ../../c-api/unicode.rst:1765
+#, fuzzy
+msgid ""
+"A non-zero return value may carry additional information about *how* the "
+"string is interned. The meaning of such non-zero values, as well as each "
+"specific string's intern-related details, may change between CPython "
+"versions."
+msgstr ""
+"Giá trị trả về khác 0 có thể mang thông tin bổ sung về *how* chuỗi được thực"
+" hiện. Ý nghĩa của các giá trị khác 0 như vậy, cũng như các chi tiết liên "
+"quan đến nội bộ của từng chuỗi cụ thể, có thể thay đổi giữa các phiên bản "
+"CPython."
+
+#: ../../c-api/unicode.rst:1772
+#, fuzzy
+msgid "PyUnicodeWriter"
+msgstr "PyUnicodeNhà văn"
+
+#: ../../c-api/unicode.rst:1774
+#, fuzzy
+msgid ""
+"The :c:type:`PyUnicodeWriter` API can be used to create a Python "
+":class:`str` object."
+msgstr ""
+":c:type:`PyUnicodeWriter` API có thể được sử dụng để tạo đối tượng "
+":class:`str` Python."
+
+#: ../../c-api/unicode.rst:1781
+#, fuzzy
+msgid "A Unicode writer instance."
+msgstr "Một ví dụ về trình soạn thảo Unicode."
+
+#: ../../c-api/unicode.rst:1783
+#, fuzzy
+msgid ""
+"The instance must be destroyed by :c:func:`PyUnicodeWriter_Finish` on "
+"success, or :c:func:`PyUnicodeWriter_Discard` on error."
+msgstr ""
+"Phiên bản phải bị hủy bởi :c:func:`PyUnicodeWriter_Finish` nếu thành công "
+"hoặc :c:func:`PyUnicodeWriter_Discard` do lỗi."
+
+#: ../../c-api/unicode.rst:1788
+#, fuzzy
+msgid "Create a Unicode writer instance."
+msgstr "Tạo một phiên bản trình soạn thảo Unicode."
+
+#: ../../c-api/unicode.rst:1790
+#, fuzzy
+msgid "*length* must be greater than or equal to ``0``."
+msgstr "*length* phải lớn hơn hoặc bằng ``0``."
+
+#: ../../c-api/unicode.rst:1792
+#, fuzzy
+msgid ""
+"If *length* is greater than ``0``, preallocate an internal buffer of "
+"*length* characters."
+msgstr ""
+"Nếu *length* lớn hơn ``0``, hãy phân bổ trước bộ đệm bên trong gồm các ký tự"
+" *length*."
+
+#: ../../c-api/unicode.rst:1795 ../../c-api/unicode.rst:1801
+#, fuzzy
+msgid "Set an exception and return ``NULL`` on error."
+msgstr "Đặt một ngoại lệ và trả về ``NULL`` khi có lỗi."
+
+#: ../../c-api/unicode.rst:1799
+#, fuzzy
+msgid ""
+"Return the final Python :class:`str` object and destroy the writer instance."
+msgstr ""
+"Trả về đối tượng :class:`str` Python cuối cùng và hủy phiên bản trình ghi."
+
+#: ../../c-api/unicode.rst:1803 ../../c-api/unicode.rst:1811
+#, fuzzy
+msgid "The writer instance is invalid after this call."
+msgstr "Phiên bản người viết không hợp lệ sau lệnh gọi này."
+
+#: ../../c-api/unicode.rst:1807
+#, fuzzy
+msgid "Discard the internal Unicode buffer and destroy the writer instance."
+msgstr "Loại bỏ bộ đệm Unicode bên trong và hủy phiên bản trình ghi."
+
+#: ../../c-api/unicode.rst:1809
+#, fuzzy
+msgid "If *writer* is ``NULL``, no operation is performed."
+msgstr "Nếu *writer* là ``NULL`` thì không có thao tác nào được thực hiện."
+
+#: ../../c-api/unicode.rst:1815
+#, fuzzy
+msgid "Write the single Unicode character *ch* into *writer*."
+msgstr "Viết ký tự Unicode đơn *ch* vào *writer*."
+
+#: ../../c-api/unicode.rst:1817 ../../c-api/unicode.rst:1827
+#: ../../c-api/unicode.rst:1842 ../../c-api/unicode.rst:1852
+#: ../../c-api/unicode.rst:1861 ../../c-api/unicode.rst:1868
+#: ../../c-api/unicode.rst:1881 ../../c-api/unicode.rst:1896
+#: ../../c-api/unicode.rst:1903 ../../c-api/unicode.rst:1922
+#, fuzzy
+msgid ""
+"On success, return ``0``. On error, set an exception, leave the writer "
+"unchanged, and return ``-1``."
+msgstr ""
+"Nếu thành công, hãy trả về ``0``. Nếu có lỗi, hãy đặt một ngoại lệ, giữ "
+"nguyên trình ghi và trả về ``-1``."
+
+#: ../../c-api/unicode.rst:1822
+#, fuzzy
+msgid ""
+"Decode the string *str* from UTF-8 in strict mode and write the output into "
+"*writer*."
+msgstr ""
+"Giải mã chuỗi *str* từ UTF-8 ở chế độ nghiêm ngặt và ghi đầu ra vào "
+"*writer*."
+
+#: ../../c-api/unicode.rst:1824 ../../c-api/unicode.rst:1836
+#: ../../c-api/unicode.rst:1911
+#, fuzzy
+msgid ""
+"*size* is the string length in bytes. If *size* is equal to ``-1``, call "
+"``strlen(str)`` to get the string length."
+msgstr ""
+"*size* là độ dài chuỗi tính bằng byte. Nếu *size* bằng ``-1``, hãy gọi "
+"``strlen(str)`` để lấy độ dài chuỗi."
+
+#: ../../c-api/unicode.rst:1830
+#, fuzzy
+msgid "See also :c:func:`PyUnicodeWriter_DecodeUTF8Stateful`."
+msgstr "Xem thêm :c:func:`PyUnicodeWriter_DecodeUTF8Stateful`."
+
+#: ../../c-api/unicode.rst:1834
+#, fuzzy
+msgid "Write the ASCII string *str* into *writer*."
+msgstr "Viết chuỗi ASCII *str* vào *writer*."
+
+#: ../../c-api/unicode.rst:1839
+#, fuzzy
+msgid ""
+"*str* must only contain ASCII characters. The behavior is undefined if *str*"
+" contains non-ASCII characters."
+msgstr ""
+"*str* chỉ được chứa các ký tự ASCII. Hành vi này không được xác định nếu "
+"*str* chứa các ký tự không phải ASCII."
+
+#: ../../c-api/unicode.rst:1847
+#, fuzzy
+msgid "Write the wide string *str* into *writer*."
+msgstr "Viết chuỗi rộng *str* vào *writer*."
+
+#: ../../c-api/unicode.rst:1849
+#, fuzzy
+msgid ""
+"*size* is a number of wide characters. If *size* is equal to ``-1``, call "
+"``wcslen(str)`` to get the string length."
+msgstr ""
+"*size* là một số ký tự rộng. Nếu *size* bằng ``-1``, hãy gọi ``wcslen(str)``"
+" để lấy độ dài chuỗi."
+
+#: ../../c-api/unicode.rst:1857
+#, fuzzy
+msgid "Writer the UCS4 string *str* into *writer*."
+msgstr "Viết chuỗi UCS4 *str* vào *writer*."
+
+#: ../../c-api/unicode.rst:1859
+#, fuzzy
+msgid "*size* is a number of UCS4 characters."
+msgstr "*size* là một số ký tự UCS4."
+
+#: ../../c-api/unicode.rst:1866
+#, fuzzy
+msgid ""
+"Call :c:func:`PyObject_Str` on *obj* and write the output into *writer*."
+msgstr ""
+"Gọi :c:func:`PyObject_Str` trên *obj* và ghi kết quả đầu ra vào *writer*."
+
+#: ../../c-api/unicode.rst:1871
+#, fuzzy
+msgid ""
+"To write a :class:`str` subclass which overrides the :meth:`~object.__str__`"
+" method, :c:func:`PyUnicode_FromObject` can be used to get the original "
+"string."
+msgstr ""
+"Để viết một lớp con :class:`str` ghi đè phương thức :meth:`~object.__str__`,"
+" :c:func:`PyUnicode_FromObject` có thể được sử dụng để lấy chuỗi gốc."
+
+#: ../../c-api/unicode.rst:1877
+#, fuzzy
+msgid ""
+"Call :c:func:`PyObject_Repr` on *obj* and write the output into *writer*."
+msgstr ""
+"Gọi :c:func:`PyObject_Repr` trên *obj* và ghi kết quả đầu ra vào *writer*."
+
+#: ../../c-api/unicode.rst:1879
+#, fuzzy
+msgid "If *obj* is ``NULL``, write the string ``\"<NULL>\"`` into *writer*."
+msgstr "Nếu *obj* là ``NULL`` thì viết chuỗi ``\"<NULL>\"`` vào *writer*."
+
+#: ../../c-api/unicode.rst:1886
+#, fuzzy
+msgid "Added support for ``NULL``."
+msgstr "Đã thêm hỗ trợ cho ``NULL``."
+
+#: ../../c-api/unicode.rst:1890
+#, fuzzy
+msgid "Write the substring ``str[start:end]`` into *writer*."
+msgstr "Viết chuỗi con ``str[start:end]`` vào *writer*."
+
+#: ../../c-api/unicode.rst:1892
+#, fuzzy
+msgid ""
+"*str* must be Python :class:`str` object. *start* must be greater than or "
+"equal to 0, and less than or equal to *end*. *end* must be less than or "
+"equal to *str* length."
+msgstr ""
+"*str* phải là đối tượng :class:`str` của Python. *start* phải lớn hơn hoặc "
+"bằng 0 và nhỏ hơn hoặc bằng *end*. *end* phải nhỏ hơn hoặc bằng độ dài "
+"*str*."
+
+#: ../../c-api/unicode.rst:1901
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyUnicode_FromFormat`, but write the output directly "
+"into *writer*."
+msgstr ""
+"Tương tự như :c:func:`PyUnicode_FromFormat`, nhưng ghi kết quả trực tiếp vào"
+" *writer*."
+
+#: ../../c-api/unicode.rst:1908
+#, fuzzy
+msgid ""
+"Decode the string *str* from UTF-8 with *errors* error handler and write the"
+" output into *writer*."
+msgstr ""
+"Giải mã chuỗi *str* từ UTF-8 bằng trình xử lý lỗi *errors* và ghi đầu ra vào"
+" *writer*."
+
+#: ../../c-api/unicode.rst:1914
+#, fuzzy
+msgid ""
+"*errors* is an :ref:`error handler <error-handlers>` name, such as "
+"``\"replace\"``. If *errors* is ``NULL``, use the strict error handler."
+msgstr ""
+"*errors* là tên :ref:`error handler <error-handlers>`, chẳng hạn như "
+"``\"replace\"``. Nếu *errors* là ``NULL``, hãy sử dụng trình xử lý lỗi "
+"nghiêm ngặt."
+
+#: ../../c-api/unicode.rst:1917
+#, fuzzy
+msgid ""
+"If *consumed* is not ``NULL``, set *\\*consumed* to the number of decoded "
+"bytes on success. If *consumed* is ``NULL``, treat trailing incomplete UTF-8"
+" byte sequences as an error."
+msgstr ""
+"Nếu *consumed* không phải là ``NULL``, hãy đặt *\\*consumed* thành số byte "
+"được giải mã thành công. Nếu *consumed* là ``NULL``, hãy coi các chuỗi byte "
+"UTF-8 không hoàn chỉnh ở cuối là một lỗi."
+
+#: ../../c-api/unicode.rst:1925
+#, fuzzy
+msgid "See also :c:func:`PyUnicodeWriter_WriteUTF8`."
+msgstr "Xem thêm :c:func:`PyUnicodeWriter_WriteUTF8`."
+
+#: ../../c-api/unicode.rst:1928
+#, fuzzy
+msgid "Deprecated API"
+msgstr "API không được dùng nữa"
+
+#: ../../c-api/unicode.rst:1930
+#, fuzzy
+msgid "The following API is deprecated."
+msgstr "API sau đây không được dùng nữa."
+
+#: ../../c-api/unicode.rst:1934
+#, fuzzy
+msgid ""
+"This is a typedef of :c:type:`wchar_t`, which is a 16-bit type or 32-bit "
+"type depending on the platform. Please use :c:type:`wchar_t` directly "
+"instead."
+msgstr ""
+"Đây là typedef của :c:type:`wchar_t`, là loại 16 bit hoặc loại 32 bit tùy "
+"thuộc vào nền tảng. Vui lòng sử dụng :c:type:`wchar_t` trực tiếp để thay "
+"thế."
+
+#: ../../c-api/unicode.rst:1938
+#, fuzzy
+msgid ""
+"In previous versions, this was a 16-bit type or a 32-bit type depending on "
+"whether you selected a \"narrow\" or \"wide\" Unicode version of Python at "
+"build time."
+msgstr ""
+"Trong các phiên bản trước, đây là loại 16 bit hay loại 32 bit tùy thuộc vào "
+"việc bạn chọn phiên bản Unicode \"hẹp\" hay \"rộng\" của Python tại thời "
+"điểm xây dựng."
+
+#: ../../c-api/unicode.rst:1948
+#, fuzzy
+msgid ""
+"Do nothing and return ``0``. This API is kept only for backward "
+"compatibility, but there are no plans to remove it."
+msgstr ""
+"Không làm gì cả và trả lại ``0``. Zz001zz này chỉ được giữ lại để tương "
+"thích ngược nhưng không có kế hoạch loại bỏ nó."
+
+#: ../../c-api/unicode.rst:1954
+#, fuzzy
+msgid ""
+"This API does nothing since Python 3.12. Previously, this needed to be "
+"called for each string created using the old API "
+"(:c:func:`!PyUnicode_FromUnicode` or similar)."
+msgstr ""
+"Zz001zz này không làm gì kể từ Python 3.12. Trước đây, điều này cần được gọi"
+" cho mỗi chuỗi được tạo bằng API cũ (:c:func:`!PyUnicode_FromUnicode` hoặc "
+"tương tự)."
+
+#: ../../c-api/unicode.rst:1962
+#, fuzzy
+msgid ""
+"Do nothing and return ``1``. This API is kept only for backward "
+"compatibility, but there are no plans to remove it."
+msgstr ""
+"Không làm gì cả và trả lại ``1``. Zz001zz này chỉ được giữ lại để tương "
+"thích ngược nhưng không có kế hoạch loại bỏ nó."
+
+#: ../../c-api/unicode.rst:1968
+#, fuzzy
+msgid ""
+"This API does nothing since Python 3.12. Previously, this could be called to"
+" check if :c:func:`PyUnicode_READY` is necessary."
+msgstr ""
+"Zz001zz này không làm gì kể từ Python 3.12. Trước đây, điều này có thể được "
+"gọi để kiểm tra xem :c:func:`PyUnicode_READY` có cần thiết hay không."

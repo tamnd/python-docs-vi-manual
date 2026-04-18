@@ -1,0 +1,449 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/refcounting.rst:8
+#, fuzzy
+msgid "Reference Counting"
+msgstr "Đếm tham chiếu"
+
+#: ../../c-api/refcounting.rst:10
+#, fuzzy
+msgid ""
+"The functions and macros in this section are used for managing reference "
+"counts of Python objects."
+msgstr ""
+"Các hàm và macro trong phần này được sử dụng để quản lý số lượng tham chiếu "
+"của các đối tượng Python."
+
+#: ../../c-api/refcounting.rst:16
+#, fuzzy
+msgid "Get the reference count of the Python object *o*."
+msgstr "Lấy số tham chiếu của đối tượng Python *o*."
+
+#: ../../c-api/refcounting.rst:18
+#, fuzzy
+msgid ""
+"Note that the returned value may not actually reflect how many references to"
+" the object are actually held.  For example, some objects are "
+":term:`immortal` and have a very high refcount that does not reflect the "
+"actual number of references.  Consequently, do not rely on the returned "
+"value to be accurate, other than a value of 0 or 1."
+msgstr ""
+"Lưu ý rằng giá trị trả về có thể không thực sự phản ánh số lượng tham chiếu "
+"đến đối tượng thực sự được giữ.  Ví dụ: một số đối tượng là :term:`immortal`"
+" và có số lần truy cập rất cao không phản ánh số lượng tham chiếu thực tế.  "
+"Do đó, không dựa vào giá trị trả về là chính xác, ngoại trừ giá trị 0 hoặc "
+"1."
+
+#: ../../c-api/refcounting.rst:24
+#, fuzzy
+msgid ""
+"Use the :c:func:`Py_SET_REFCNT()` function to set an object reference count."
+msgstr ""
+"Sử dụng hàm :c:func:`Py_SET_REFCNT()` để đặt số lượng tham chiếu đối tượng."
+
+#: ../../c-api/refcounting.rst:28
+#, fuzzy
+msgid ""
+"On :term:`free-threaded builds <free-threaded build>` of Python, returning 1"
+" isn't sufficient to determine if it's safe to treat *o* as having no access"
+" by other threads. Use :c:func:`PyUnstable_Object_IsUniquelyReferenced` for "
+"that instead."
+msgstr ""
+"Trên :term:`free-threaded builds <free-threaded build>` của Python, việc trả"
+" về 1 là không đủ để xác định xem liệu có an toàn khi coi *o* là không có "
+"quyền truy cập bởi các luồng khác hay không. Thay vào đó hãy sử dụng "
+":c:func:`PyUnstable_Object_IsUniquelyReferenced`."
+
+#: ../../c-api/refcounting.rst:33
+#, fuzzy
+msgid ""
+"See also the function "
+":c:func:`PyUnstable_Object_IsUniqueReferencedTemporary()`."
+msgstr ""
+"Xem thêm chức năng "
+":c:func:`PyUnstable_Object_IsUniqueReferencedTemporary()`."
+
+#: ../../c-api/refcounting.rst:35
+#, fuzzy
+msgid ":c:func:`Py_REFCNT()` is changed to the inline static function."
+msgstr ":c:func:`Py_REFCNT()` được thay đổi thành hàm tĩnh nội tuyến."
+
+#: ../../c-api/refcounting.rst:38
+#, fuzzy
+msgid "The parameter type is no longer :c:expr:`const PyObject*`."
+msgstr "Loại tham số không còn là :c:expr:`const PyObject*` nữa."
+
+#: ../../c-api/refcounting.rst:44
+#, fuzzy
+msgid "Set the object *o* reference counter to *refcnt*."
+msgstr "Đặt bộ đếm tham chiếu đối tượng *o* thành *refcnt*."
+
+#: ../../c-api/refcounting.rst:46
+#, fuzzy
+msgid ""
+"On :ref:`Python build with Free Threading <free-threading-build>`, if "
+"*refcnt* is larger than ``UINT32_MAX``, the object is made :term:`immortal`."
+msgstr ""
+"Trên :ref:`Python build with Free Threading <free-threading-build>`, nếu "
+"*refcnt* lớn hơn ``UINT32_MAX``, đối tượng sẽ được tạo thành "
+":term:`immortal`."
+
+#: ../../c-api/refcounting.rst:49 ../../c-api/refcounting.rst:62
+#: ../../c-api/refcounting.rst:128
+#, fuzzy
+msgid "This function has no effect on :term:`immortal` objects."
+msgstr ""
+"Chức năng này không có tác dụng đối với các đối tượng :term:`immortal`."
+
+#: ../../c-api/refcounting.rst:53 ../../c-api/refcounting.rst:77
+#: ../../c-api/refcounting.rst:156
+#, fuzzy
+msgid "Immortal objects are not modified."
+msgstr "Các vật thể bất tử không bị sửa đổi."
+
+#: ../../c-api/refcounting.rst:59
+#, fuzzy
+msgid ""
+"Indicate taking a new :term:`strong reference` to object *o*, indicating it "
+"is in use and should not be destroyed."
+msgstr ""
+"Cho biết việc lấy một :term:`strong reference` mới để đối tượng *o*, cho "
+"biết nó đang được sử dụng và không nên phá hủy."
+
+#: ../../c-api/refcounting.rst:64
+#, fuzzy
+msgid ""
+"This function is usually used to convert a :term:`borrowed reference` to a "
+":term:`strong reference` in-place. The :c:func:`Py_NewRef` function can be "
+"used to create a new :term:`strong reference`."
+msgstr ""
+"Hàm này thường được sử dụng để chuyển đổi :term:`borrowed reference` thành "
+":term:`strong reference` tại chỗ. Chức năng :c:func:`Py_NewRef` có thể được "
+"sử dụng để tạo :term:`strong reference` mới."
+
+#: ../../c-api/refcounting.rst:68
+#, fuzzy
+msgid "When done using the object, release is by calling :c:func:`Py_DECREF`."
+msgstr ""
+"Khi sử dụng xong đối tượng, hãy giải phóng bằng cách gọi "
+":c:func:`Py_DECREF`."
+
+#: ../../c-api/refcounting.rst:70
+#, fuzzy
+msgid ""
+"The object must not be ``NULL``; if you aren't sure that it isn't ``NULL``, "
+"use :c:func:`Py_XINCREF`."
+msgstr ""
+"Đối tượng không được là ``NULL``; nếu bạn không chắc chắn đó không phải là "
+"``NULL``, hãy sử dụng :c:func:`Py_XINCREF`."
+
+#: ../../c-api/refcounting.rst:73
+#, fuzzy
+msgid ""
+"Do not expect this function to actually modify *o* in any way. For at least "
+":pep:`some objects <0683>`, this function has no effect."
+msgstr ""
+"Đừng mong đợi chức năng này thực sự sửa đổi *o* theo bất kỳ cách nào. Đối "
+"với ít nhất :pep:`some objects <0683>`, chức năng này không có hiệu lực."
+
+#: ../../c-api/refcounting.rst:83
+#, fuzzy
+msgid ""
+"Similar to :c:func:`Py_INCREF`, but the object *o* can be ``NULL``, in which"
+" case this has no effect."
+msgstr ""
+"Tương tự như :c:func:`Py_INCREF`, nhưng đối tượng *o* có thể là ``NULL``, "
+"trong trường hợp này điều này không có hiệu lực."
+
+#: ../../c-api/refcounting.rst:86
+#, fuzzy
+msgid "See also :c:func:`Py_XNewRef`."
+msgstr "Xem thêm :c:func:`Py_XNewRef`."
+
+#: ../../c-api/refcounting.rst:91
+#, fuzzy
+msgid ""
+"Create a new :term:`strong reference` to an object: call :c:func:`Py_INCREF`"
+" on *o* and return the object *o*."
+msgstr ""
+"Tạo một :term:`strong reference` mới cho một đối tượng: gọi "
+":c:func:`Py_INCREF` trên *o* và trả về đối tượng *o*."
+
+#: ../../c-api/refcounting.rst:94
+#, fuzzy
+msgid ""
+"When the :term:`strong reference` is no longer needed, :c:func:`Py_DECREF` "
+"should be called on it to release the reference."
+msgstr ""
+"Khi :term:`strong reference` không còn cần thiết nữa, :c:func:`Py_DECREF` sẽ"
+" được gọi để giải phóng tham chiếu."
+
+#: ../../c-api/refcounting.rst:97
+#, fuzzy
+msgid ""
+"The object *o* must not be ``NULL``; use :c:func:`Py_XNewRef` if *o* can be "
+"``NULL``."
+msgstr ""
+"Đối tượng *o* không được là ``NULL``; sử dụng :c:func:`Py_XNewRef` nếu *o* "
+"có thể là ``NULL``."
+
+#: ../../c-api/refcounting.rst:100
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../c-api/refcounting.rst:102
+#, fuzzy
+msgid ""
+"Py_INCREF(obj);\n"
+"self->attr = obj;"
+msgstr ""
+"Py_INCREF(obj);\n"
+"self->attr = obj;"
+
+#: ../../c-api/refcounting.rst:105
+#, fuzzy
+msgid "can be written as::"
+msgstr "có thể được viết là::"
+
+#: ../../c-api/refcounting.rst:107
+#, fuzzy
+msgid "self->attr = Py_NewRef(obj);"
+msgstr "self->attr = Py_NewRef(obj);"
+
+#: ../../c-api/refcounting.rst:109
+#, fuzzy
+msgid "See also :c:func:`Py_INCREF`."
+msgstr "Xem thêm :c:func:`Py_INCREF`."
+
+#: ../../c-api/refcounting.rst:116
+#, fuzzy
+msgid "Similar to :c:func:`Py_NewRef`, but the object *o* can be NULL."
+msgstr "Tương tự như :c:func:`Py_NewRef` nhưng đối tượng *o* có thể là NULL."
+
+#: ../../c-api/refcounting.rst:118
+#, fuzzy
+msgid "If the object *o* is ``NULL``, the function just returns ``NULL``."
+msgstr "Nếu đối tượng *o* là ``NULL`` thì hàm chỉ trả về ``NULL``."
+
+#: ../../c-api/refcounting.rst:125
+#, fuzzy
+msgid ""
+"Release a :term:`strong reference` to object *o*, indicating the reference "
+"is no longer used."
+msgstr ""
+"Giải phóng :term:`strong reference` cho đối tượng *o*, cho biết tham chiếu "
+"không còn được sử dụng."
+
+#: ../../c-api/refcounting.rst:130
+#, fuzzy
+msgid ""
+"Once the last :term:`strong reference` is released (i.e. the object's "
+"reference count reaches 0), the object's type's deallocation function (which"
+" must not be ``NULL``) is invoked."
+msgstr ""
+"Khi :term:`strong reference` cuối cùng được giải phóng (tức là số tham chiếu"
+" của đối tượng đạt đến 0), hàm phân bổ loại của đối tượng (không được là "
+"``NULL``) sẽ được gọi."
+
+#: ../../c-api/refcounting.rst:135
+#, fuzzy
+msgid ""
+"This function is usually used to delete a :term:`strong reference` before "
+"exiting its scope."
+msgstr ""
+"Chức năng này thường được sử dụng để xóa :term:`strong reference` trước khi "
+"thoát khỏi phạm vi của nó."
+
+#: ../../c-api/refcounting.rst:138
+#, fuzzy
+msgid ""
+"The object must not be ``NULL``; if you aren't sure that it isn't ``NULL``, "
+"use :c:func:`Py_XDECREF`."
+msgstr ""
+"Đối tượng không được là ``NULL``; nếu bạn không chắc chắn đó không phải là "
+"``NULL``, hãy sử dụng :c:func:`Py_XDECREF`."
+
+#: ../../c-api/refcounting.rst:141
+#, fuzzy
+msgid ""
+"Do not expect this function to actually modify *o* in any way. For at least "
+":pep:`some objects <683>`, this function has no effect."
+msgstr ""
+"Đừng mong đợi chức năng này thực sự sửa đổi *o* theo bất kỳ cách nào. Đối "
+"với ít nhất :pep:`some objects <683>`, chức năng này không có hiệu lực."
+
+#: ../../c-api/refcounting.rst:147
+#, fuzzy
+msgid ""
+"The deallocation function can cause arbitrary Python code to be invoked "
+"(e.g. when a class instance with a :meth:`~object.__del__` method is "
+"deallocated).  While exceptions in such code are not propagated, the "
+"executed code has free access to all Python global variables.  This means "
+"that any object that is reachable from a global variable should be in a "
+"consistent state before :c:func:`Py_DECREF` is invoked.  For example, code "
+"to delete an object from a list should copy a reference to the deleted "
+"object in a temporary variable, update the list data structure, and then "
+"call :c:func:`Py_DECREF` for the temporary variable."
+msgstr ""
+"Hàm giải phóng có thể khiến mã Python tùy ý được gọi (ví dụ: khi một thể "
+"hiện của lớp có phương thức :meth:`~object.__del__` bị hủy phân bổ).  Mặc dù"
+" các ngoại lệ trong mã như vậy không được truyền bá, nhưng mã được thực thi "
+"có quyền truy cập miễn phí vào tất cả các biến toàn cục của Python.  Điều "
+"này có nghĩa là bất kỳ đối tượng nào có thể truy cập được từ biến toàn cục "
+"đều phải ở trạng thái nhất quán trước khi :c:func:`Py_DECREF` được gọi.  Ví "
+"dụ: mã để xóa một đối tượng khỏi danh sách phải sao chép tham chiếu đến đối "
+"tượng đã xóa trong một biến tạm thời, cập nhật cấu trúc dữ liệu danh sách, "
+"sau đó gọi :c:func:`Py_DECREF` cho biến tạm thời."
+
+#: ../../c-api/refcounting.rst:162
+#, fuzzy
+msgid ""
+"Similar to :c:func:`Py_DECREF`, but the object *o* can be ``NULL``, in which"
+" case this has no effect. The same warning from :c:func:`Py_DECREF` applies "
+"here as well."
+msgstr ""
+"Tương tự như :c:func:`Py_DECREF`, nhưng đối tượng *o* có thể là ``NULL``, "
+"trong trường hợp này điều này không có hiệu lực. Cảnh báo tương tự từ "
+":c:func:`Py_DECREF` cũng được áp dụng ở đây."
+
+#: ../../c-api/refcounting.rst:169
+#, fuzzy
+msgid ""
+"Release a :term:`strong reference` for object *o*. The object may be "
+"``NULL``, in which case the macro has no effect; otherwise the effect is the"
+" same as for :c:func:`Py_DECREF`, except that the argument is also set to "
+"``NULL``.  The warning for :c:func:`Py_DECREF` does not apply with respect "
+"to the object passed because the macro carefully uses a temporary variable "
+"and sets the argument to ``NULL`` before releasing the reference."
+msgstr ""
+"Phát hành :term:`strong reference` cho đối tượng *o*. Đối tượng có thể là "
+"``NULL``, trong trường hợp đó macro không có hiệu lực; mặt khác, hiệu ứng "
+"tương tự như đối với :c:func:`Py_DECREF`, ngoại trừ đối số cũng được đặt "
+"thành ``NULL``.  Cảnh báo cho :c:func:`Py_DECREF` không áp dụng đối với đối "
+"tượng được truyền vì macro sử dụng cẩn thận một biến tạm thời và đặt đối số "
+"thành ``NULL`` trước khi giải phóng tham chiếu."
+
+#: ../../c-api/refcounting.rst:177
+#, fuzzy
+msgid ""
+"It is a good idea to use this macro whenever releasing a reference to an "
+"object that might be traversed during garbage collection."
+msgstr ""
+"Bạn nên sử dụng macro này bất cứ khi nào giải phóng một tham chiếu đến một "
+"đối tượng có thể được duyệt qua trong quá trình thu gom rác."
+
+#: ../../c-api/refcounting.rst:180
+#, fuzzy
+msgid ""
+"The macro argument is now only evaluated once. If the argument has side "
+"effects, these are no longer duplicated."
+msgstr ""
+"Đối số macro hiện chỉ được đánh giá một lần. Nếu đối số có tác dụng phụ thì "
+"những đối số này sẽ không còn bị trùng lặp nữa."
+
+#: ../../c-api/refcounting.rst:187
+#, fuzzy
+msgid ""
+"Indicate taking a new :term:`strong reference` to object *o*. A function "
+"version of :c:func:`Py_XINCREF`. It can be used for runtime dynamic "
+"embedding of Python."
+msgstr ""
+"Cho biết việc lấy một :term:`strong reference` mới để đối tượng *o*. Một "
+"phiên bản chức năng của :c:func:`Py_XINCREF`. Nó có thể được sử dụng để "
+"nhúng động trong thời gian chạy của Python."
+
+#: ../../c-api/refcounting.rst:194
+#, fuzzy
+msgid ""
+"Release a :term:`strong reference` to object *o*. A function version of "
+":c:func:`Py_XDECREF`. It can be used for runtime dynamic embedding of "
+"Python."
+msgstr ""
+"Phát hành :term:`strong reference` để đối tượng *o*. Một phiên bản chức năng"
+" của :c:func:`Py_XDECREF`. Nó có thể được sử dụng để nhúng động trong thời "
+"gian chạy của Python."
+
+#: ../../c-api/refcounting.rst:201
+#, fuzzy
+msgid ""
+"Macro safely releasing a :term:`strong reference` to object *dst* and "
+"setting *dst* to *src*."
+msgstr ""
+"Macro giải phóng :term:`strong reference` một cách an toàn để phản đối *dst*"
+" và đặt *dst* thành *src*."
+
+#: ../../c-api/refcounting.rst:204
+#, fuzzy
+msgid "As in case of :c:func:`Py_CLEAR`, \"the obvious\" code can be deadly::"
+msgstr ""
+"Như trong trường hợp của :c:func:`Py_CLEAR`, mã \"rõ ràng\" có thể gây chết "
+"người::"
+
+#: ../../c-api/refcounting.rst:206
+#, fuzzy
+msgid ""
+"Py_DECREF(dst);\n"
+"dst = src;"
+msgstr ""
+"Py_DECREF(dst);\n"
+"dst = src;"
+
+#: ../../c-api/refcounting.rst:209
+#, fuzzy
+msgid "The safe way is::"
+msgstr "Cách an toàn là::"
+
+#: ../../c-api/refcounting.rst:211
+#, fuzzy
+msgid "Py_SETREF(dst, src);"
+msgstr "Py_SETREF(dst, src);"
+
+#: ../../c-api/refcounting.rst:213
+#, fuzzy
+msgid ""
+"That arranges to set *dst* to *src* *before* releasing the reference to the "
+"old value of *dst*, so that any code triggered as a side-effect of *dst* "
+"getting torn down no longer believes *dst* points to a valid object."
+msgstr ""
+"Điều đó sắp xếp để đặt *dst* thành *src* *before* giải phóng tham chiếu đến "
+"giá trị cũ của *dst*, để bất kỳ mã nào được kích hoạt dưới dạng tác dụng phụ"
+" của việc *dst* bị phá bỏ sẽ không còn tin rằng *dst* trỏ đến một đối tượng "
+"hợp lệ."
+
+#: ../../c-api/refcounting.rst:220 ../../c-api/refcounting.rst:232
+#, fuzzy
+msgid ""
+"The macro arguments are now only evaluated once. If an argument has side "
+"effects, these are no longer duplicated."
+msgstr ""
+"Các đối số macro hiện chỉ được đánh giá một lần. Nếu một đối số có tác dụng "
+"phụ thì chúng sẽ không còn bị trùng lặp nữa."
+
+#: ../../c-api/refcounting.rst:227
+#, fuzzy
+msgid ""
+"Variant of :c:macro:`Py_SETREF` macro that uses :c:func:`Py_XDECREF` instead"
+" of :c:func:`Py_DECREF`."
+msgstr ""
+"Biến thể của macro :c:macro:`Py_SETREF` sử dụng :c:func:`Py_XDECREF` thay vì"
+" :c:func:`Py_DECREF`."

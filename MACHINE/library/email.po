@@ -1,0 +1,293 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/email.rst:2
+#, fuzzy
+msgid ":mod:`!email` --- An email and MIME handling package"
+msgstr ":mod:`!email` --- Gói xử lý email và MIME"
+
+#: ../../library/email.rst:11
+#, fuzzy
+msgid "**Source code:** :source:`Lib/email/__init__.py`"
+msgstr "**Source code:** :source:`Lib/email/__init__.py`"
+
+#: ../../library/email.rst:15
+#, fuzzy
+msgid ""
+"The :mod:`!email` package is a library for managing email messages.  It is "
+"specifically *not* designed to do any sending of email messages to SMTP "
+"(:rfc:`2821`), NNTP, or other servers; those are functions of modules such "
+"as :mod:`smtplib`.  The :mod:`!email` package attempts to be as RFC-"
+"compliant as possible, supporting :rfc:`5322` and :rfc:`6532`, as well as "
+"such MIME-related RFCs as :rfc:`2045`, :rfc:`2046`, :rfc:`2047`, "
+":rfc:`2183`, and :rfc:`2231`."
+msgstr ""
+"Gói :mod:`!email` là một thư viện để quản lý email.  Nó được thiết kế đặc "
+"biệt *not* để thực hiện bất kỳ việc gửi email nào đến SMTP (:rfc:`2821`), "
+"NNTP hoặc các máy chủ khác; đó là các chức năng của các mô-đun như "
+":mod:`smtplib`.  Gói :mod:`!email` cố gắng tuân thủ RFC nhất có thể, hỗ trợ "
+":rfc:`5322` và :rfc:`6532`, cũng như các RFC liên quan đến MIME như "
+":rfc:`2045`, :rfc:`2046`, :rfc:`2047`, :rfc:`2183` và :rfc:`2231`."
+
+#: ../../library/email.rst:23
+#, fuzzy
+msgid ""
+"The overall structure of the email package can be divided into three major "
+"components, plus a fourth component that controls the behavior of the other "
+"components."
+msgstr ""
+"Cấu trúc tổng thể của gói email có thể được chia thành ba thành phần chính, "
+"cộng với thành phần thứ tư kiểm soát hoạt động của các thành phần khác."
+
+#: ../../library/email.rst:27
+#, fuzzy
+msgid ""
+"The central component of the package is an \"object model\" that represents "
+"email messages.  An application interacts with the package primarily through"
+" the object model interface defined in the :mod:`~email.message` sub-module."
+"  The application can use this API to ask questions about an existing email,"
+" to construct a new email, or to add or remove email subcomponents that "
+"themselves use the same object model interface.  That is, following the "
+"nature of email messages and their MIME subcomponents, the email object "
+"model is a tree structure of objects that all provide the "
+":class:`~email.message.EmailMessage` API."
+msgstr ""
+"Thành phần trung tâm của gói là một \"mô hình đối tượng\" đại diện cho các "
+"email.  Một ứng dụng tương tác với gói chủ yếu thông qua giao diện mô hình "
+"đối tượng được xác định trong mô-đun phụ :mod:`~email.message`.  Ứng dụng có"
+" thể sử dụng API này để đặt câu hỏi về email hiện có, tạo email mới hoặc "
+"thêm hoặc xóa các thành phần phụ email sử dụng cùng một giao diện mô hình "
+"đối tượng.  Nghĩa là, theo bản chất của thông báo email và các thành phần "
+"phụ MIME của chúng, mô hình đối tượng email là cấu trúc cây của các đối "
+"tượng đều cung cấp :class:`~email.message.EmailMessage` API."
+
+#: ../../library/email.rst:37
+#, fuzzy
+msgid ""
+"The other two major components of the package are the :mod:`~email.parser` "
+"and the :mod:`~email.generator`.  The parser takes the serialized version of"
+" an email message (a stream of bytes) and converts it into a tree of "
+":class:`~email.message.EmailMessage` objects.  The generator takes an "
+":class:`~email.message.EmailMessage` and turns it back into a serialized "
+"byte stream.  (The parser and generator also handle streams of text "
+"characters, but this usage is discouraged as it is too easy to end up with "
+"messages that are not valid in one way or another.)"
+msgstr ""
+"Hai thành phần chính khác của gói là :mod:`~email.parser` và "
+":mod:`~email.generator`.  Trình phân tích cú pháp lấy phiên bản được tuần tự"
+" hóa của một email (một luồng byte) và chuyển đổi nó thành một cây gồm các "
+"đối tượng :class:`~email.message.EmailMessage`.  Trình tạo lấy một "
+":class:`~email.message.EmailMessage` và biến nó trở lại thành luồng byte "
+"được tuần tự hóa.  (Trình phân tích cú pháp và trình tạo cũng xử lý các "
+"luồng ký tự văn bản, nhưng cách sử dụng này không được khuyến khích vì rất "
+"dễ dẫn đến các thông báo không hợp lệ theo cách này hay cách khác.)"
+
+#: ../../library/email.rst:46
+#, fuzzy
+msgid ""
+"The control component is the :mod:`~email.policy` module.  Every "
+":class:`~email.message.EmailMessage`, every :mod:`~email.generator`, and "
+"every :mod:`~email.parser` has an associated :mod:`~email.policy` object "
+"that controls its behavior.  Usually an application only needs to specify "
+"the policy when an :class:`~email.message.EmailMessage` is created, either "
+"by directly instantiating an :class:`~email.message.EmailMessage`  to create"
+" a new email, or by parsing an input stream using a :mod:`~email.parser`.  "
+"But the policy can be changed when the message is serialized using a "
+":mod:`~email.generator`. This allows, for example, a generic email message "
+"to be parsed from disk, but to serialize it using standard SMTP settings "
+"when sending it to an email server."
+msgstr ""
+"Thành phần điều khiển là mô-đun :mod:`~email.policy`.  Mọi "
+":class:`~email.message.EmailMessage`, mọi :mod:`~email.generator` và mọi "
+":mod:`~email.parser` đều có một đối tượng :mod:`~email.policy` liên quan để "
+"điều khiển hành vi của nó.  Thông thường, ứng dụng chỉ cần chỉ định chính "
+"sách khi tạo :class:`~email.message.EmailMessage`, bằng cách khởi tạo trực "
+"tiếp :class:`~email.message.EmailMessage` để tạo email mới hoặc bằng cách "
+"phân tích luồng đầu vào bằng :mod:`~email.parser`.  Tuy nhiên, chính sách có"
+" thể được thay đổi khi tin nhắn được tuần tự hóa bằng "
+":mod:`~email.generator`. Ví dụ: điều này cho phép phân tích cú pháp một thư "
+"email chung từ đĩa nhưng tuần tự hóa nó bằng cách sử dụng cài đặt SMTP tiêu "
+"chuẩn khi gửi nó đến máy chủ email."
+
+#: ../../library/email.rst:58
+#, fuzzy
+msgid ""
+"The email package does its best to hide the details of the various governing"
+" RFCs from the application.  Conceptually the application should be able to "
+"treat the email message as a structured tree of unicode text and binary "
+"attachments, without having to worry about how these are represented when "
+"serialized.  In practice, however, it is often necessary to be aware of at "
+"least some of the rules governing MIME messages and their structure, "
+"specifically the names and nature of the MIME \"content types\" and how they"
+" identify multipart documents.  For the most part this knowledge should only"
+" be required for more complex applications, and even then it should only be "
+"the high level structure in question, and not the details of how those "
+"structures are represented.  Since MIME content types are used widely in "
+"modern internet software (not just email), this will be a familiar concept "
+"to many programmers."
+msgstr ""
+"Gói email cố gắng hết sức để ẩn thông tin chi tiết về các RFC quản lý khác "
+"nhau khỏi ứng dụng.  Về mặt khái niệm, ứng dụng sẽ có thể xử lý thư email "
+"như một cây có cấu trúc gồm văn bản unicode và tệp đính kèm nhị phân mà "
+"không phải lo lắng về cách chúng được thể hiện khi được tuần tự hóa.  Tuy "
+"nhiên, trong thực tế, thường cần phải biết ít nhất một số quy tắc chi phối "
+"các thông báo MIME và cấu trúc của chúng, cụ thể là tên và bản chất của "
+"\"các loại nội dung\" MIME và cách chúng xác định các tài liệu nhiều phần.  "
+"Đối với hầu hết các phần, kiến ​​thức này chỉ nên được yêu cầu cho các ứng "
+"dụng phức tạp hơn và thậm chí khi đó nó chỉ nên là cấu trúc cấp cao được đề "
+"cập chứ không phải chi tiết về cách các cấu trúc đó được biểu diễn.  Vì các "
+"loại nội dung MIME được sử dụng rộng rãi trong các phần mềm internet hiện "
+"đại (không chỉ email) nên đây sẽ là khái niệm quen thuộc với nhiều lập trình"
+" viên."
+
+#: ../../library/email.rst:71
+#, fuzzy
+msgid ""
+"The following sections describe the functionality of the :mod:`!email` "
+"package. We start with the :mod:`~email.message` object model, which is the "
+"primary interface an application will use, and follow that with the "
+":mod:`~email.parser` and :mod:`~email.generator` components.  Then we cover "
+"the :mod:`~email.policy` controls, which completes the treatment of the main"
+" components of the library."
+msgstr ""
+"Các phần sau đây mô tả chức năng của gói :mod:`!email`. Chúng ta bắt đầu với"
+" mô hình đối tượng :mod:`~email.message`, đây là giao diện chính mà ứng dụng"
+" sẽ sử dụng và tiếp theo là các thành phần :mod:`~email.parser` và "
+":mod:`~email.generator`.  Sau đó, chúng tôi đề cập đến các điều khiển "
+":mod:`~email.policy`, công cụ này hoàn tất việc xử lý các thành phần chính "
+"của thư viện."
+
+#: ../../library/email.rst:78
+#, fuzzy
+msgid ""
+"The next three sections cover the exceptions the package may raise and the "
+"defects (non-compliance with the RFCs) that the :mod:`~email.parser` may "
+"detect.  Then we cover the :mod:`~email.headerregistry` and the "
+":mod:`~email.contentmanager` sub-components, which provide tools for doing "
+"more detailed manipulation of headers and payloads, respectively.  Both of "
+"these components contain features relevant to consuming and producing non-"
+"trivial messages, but also document their extensibility APIs, which will be "
+"of interest to advanced applications."
+msgstr ""
+"Ba phần tiếp theo đề cập đến các trường hợp ngoại lệ mà gói có thể nêu ra và"
+" các khiếm khuyết (không tuân thủ RFC) mà :mod:`~email.parser` có thể phát "
+"hiện.  Sau đó, chúng tôi đề cập đến các thành phần phụ "
+":mod:`~email.headerregistry` và :mod:`~email.contentmanager`, cung cấp các "
+"công cụ để thực hiện thao tác chi tiết hơn về tiêu đề và tải trọng tương "
+"ứng.  Cả hai thành phần này đều chứa các tính năng liên quan đến việc tiêu "
+"thụ và tạo ra các thông báo không tầm thường, nhưng cũng ghi lại các API có "
+"khả năng mở rộng của chúng, điều này sẽ được các ứng dụng nâng cao quan tâm."
+
+#: ../../library/email.rst:87
+#, fuzzy
+msgid ""
+"Following those is a set of examples of using the fundamental parts of the "
+"APIs covered in the preceding sections."
+msgstr ""
+"Sau đây là tập hợp các ví dụ về cách sử dụng các phần cơ bản của API được đề"
+" cập trong các phần trước."
+
+#: ../../library/email.rst:90
+#, fuzzy
+msgid ""
+"The foregoing represent the modern (unicode friendly) API of the email "
+"package. The remaining sections, starting with the "
+":class:`~email.message.Message` class, cover the legacy "
+":data:`~email.policy.compat32` API that deals much more directly with the "
+"details of how email messages are represented.  The "
+":data:`~email.policy.compat32` API does *not* hide the details of the RFCs "
+"from the application, but for applications that need to operate at that "
+"level, they can be useful tools.  This documentation is also relevant for "
+"applications that are still using the :mod:`~email.policy.compat32` API for "
+"backward compatibility reasons."
+msgstr ""
+"Những điều trên thể hiện API hiện đại (thân thiện với unicode) của gói "
+"email. Các phần còn lại, bắt đầu với lớp :class:`~email.message.Message`, "
+"bao gồm :data:`~email.policy.compat32` API cũ đề cập trực tiếp hơn nhiều đến"
+" các chi tiết về cách thể hiện các thông điệp email.  "
+":data:`~email.policy.compat32` API *not* ẩn các chi tiết của RFC khỏi ứng "
+"dụng, nhưng đối với các ứng dụng cần hoạt động ở cấp độ đó, chúng có thể là "
+"công cụ hữu ích.  Tài liệu này cũng phù hợp với các ứng dụng vẫn đang sử "
+"dụng :mod:`~email.policy.compat32` API vì lý do tương thích ngược."
+
+#: ../../library/email.rst:100
+#, fuzzy
+msgid ""
+"Docs reorganized and rewritten to promote the new "
+":class:`~email.message.EmailMessage`/:class:`~email.policy.EmailPolicy` API."
+msgstr ""
+"Tài liệu được sắp xếp lại và viết lại để quảng cáo "
+":class:`~email.message.EmailMessage`/:class:`~email.policy.EmailPolicy` API "
+"mới."
+
+#: ../../library/email.rst:105
+#, fuzzy
+msgid "Contents of the :mod:`!email` package documentation:"
+msgstr "Nội dung của tài liệu gói :mod:`!email`:"
+
+#: ../../library/email.rst:120
+#, fuzzy
+msgid "Legacy API:"
+msgstr "API kế thừa:"
+
+#: ../../library/email.rst:135
+#, fuzzy
+msgid "Module :mod:`smtplib`"
+msgstr "Mô-đun :mod:`smtplib`"
+
+#: ../../library/email.rst:136
+#, fuzzy
+msgid "SMTP (Simple Mail Transport Protocol) client"
+msgstr "Máy khách SMTP (Giao thức truyền tải thư đơn giản)"
+
+#: ../../library/email.rst:138
+#, fuzzy
+msgid "Module :mod:`poplib`"
+msgstr "Mô-đun :mod:`poplib`"
+
+#: ../../library/email.rst:139
+#, fuzzy
+msgid "POP (Post Office Protocol) client"
+msgstr "ứng dụng khách POP (Giao thức Bưu điện)"
+
+#: ../../library/email.rst:141
+#, fuzzy
+msgid "Module :mod:`imaplib`"
+msgstr "Mô-đun :mod:`imaplib`"
+
+#: ../../library/email.rst:142
+#, fuzzy
+msgid "IMAP (Internet Message Access Protocol) client"
+msgstr "Máy khách IMAP (Giao thức truy cập tin nhắn Internet)"
+
+#: ../../library/email.rst:144
+#, fuzzy
+msgid "Module :mod:`mailbox`"
+msgstr "Mô-đun :mod:`mailbox`"
+
+#: ../../library/email.rst:145
+#, fuzzy
+msgid ""
+"Tools for creating, reading, and managing collections of messages on disk "
+"using a variety standard formats."
+msgstr ""
+"Công cụ tạo, đọc và quản lý bộ sưu tập thư trên đĩa bằng nhiều định dạng "
+"tiêu chuẩn khác nhau."

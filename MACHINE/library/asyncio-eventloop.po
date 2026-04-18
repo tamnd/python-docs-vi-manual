@@ -1,0 +1,3907 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/asyncio-eventloop.rst:8
+#, fuzzy
+msgid "Event loop"
+msgstr "Vòng lặp sự kiện"
+
+#: ../../library/asyncio-eventloop.rst:10
+#, fuzzy
+msgid ""
+"**Source code:** :source:`Lib/asyncio/events.py`, "
+":source:`Lib/asyncio/base_events.py`"
+msgstr ""
+"**Source code:** :source:`Lib/asyncio/events.py`, "
+":source:`Lib/asyncio/base_events.py`"
+
+#: ../../library/asyncio-eventloop.rst:16
+#, fuzzy
+msgid "Preface"
+msgstr "Lời nói đầu"
+
+#: ../../library/asyncio-eventloop.rst:17
+#, fuzzy
+msgid ""
+"The event loop is the core of every asyncio application. Event loops run "
+"asynchronous tasks and callbacks, perform network IO operations, and run "
+"subprocesses."
+msgstr ""
+"Vòng lặp sự kiện là cốt lõi của mọi ứng dụng asyncio. Vòng lặp sự kiện chạy "
+"các tác vụ và lệnh gọi lại không đồng bộ, thực hiện các hoạt động IO mạng và"
+" chạy các quy trình con."
+
+#: ../../library/asyncio-eventloop.rst:21
+#, fuzzy
+msgid ""
+"Application developers should typically use the high-level asyncio "
+"functions, such as :func:`asyncio.run`, and should rarely need to reference "
+"the loop object or call its methods.  This section is intended mostly for "
+"authors of lower-level code, libraries, and frameworks, who need finer "
+"control over the event loop behavior."
+msgstr ""
+"Các nhà phát triển ứng dụng thường nên sử dụng các hàm asyncio cấp cao, "
+"chẳng hạn như :func:`asyncio.run` và hiếm khi cần tham chiếu đối tượng vòng "
+"lặp hoặc gọi các phương thức của nó.  Phần này chủ yếu dành cho các tác giả "
+"viết mã, thư viện và khung công tác cấp thấp hơn, những người cần kiểm soát "
+"tốt hơn hành vi của vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:28
+#, fuzzy
+msgid "Obtaining the Event Loop"
+msgstr "Lấy vòng lặp sự kiện"
+
+#: ../../library/asyncio-eventloop.rst:29
+#, fuzzy
+msgid ""
+"The following low-level functions can be used to get, set, or create an "
+"event loop:"
+msgstr ""
+"Các hàm cấp thấp sau đây có thể được sử dụng để lấy, đặt hoặc tạo vòng lặp "
+"sự kiện:"
+
+#: ../../library/asyncio-eventloop.rst:34
+#, fuzzy
+msgid "Return the running event loop in the current OS thread."
+msgstr "Trả về vòng lặp sự kiện đang chạy trong chuỗi hệ điều hành hiện tại."
+
+#: ../../library/asyncio-eventloop.rst:36
+#, fuzzy
+msgid "Raise a :exc:`RuntimeError` if there is no running event loop."
+msgstr "Tăng :exc:`RuntimeError` nếu không có vòng lặp sự kiện đang chạy."
+
+#: ../../library/asyncio-eventloop.rst:38
+#, fuzzy
+msgid "This function can only be called from a coroutine or a callback."
+msgstr "Hàm này chỉ có thể được gọi từ một coroutine hoặc một lệnh gọi lại."
+
+#: ../../library/asyncio-eventloop.rst:44
+#, fuzzy
+msgid "Get the current event loop."
+msgstr "Nhận vòng lặp sự kiện hiện tại."
+
+#: ../../library/asyncio-eventloop.rst:46
+#, fuzzy
+msgid ""
+"When called from a coroutine or a callback (e.g. scheduled with call_soon or"
+" similar API), this function will always return the running event loop."
+msgstr ""
+"Khi được gọi từ một coroutine hoặc một lệnh gọi lại (ví dụ: được lên lịch "
+"bằng call_soon hoặc API tương tự), hàm này sẽ luôn trả về vòng lặp sự kiện "
+"đang chạy."
+
+#: ../../library/asyncio-eventloop.rst:50
+#, fuzzy
+msgid ""
+"If there is no running event loop set, the function will return the result "
+"of the ``get_event_loop_policy().get_event_loop()`` call."
+msgstr ""
+"Nếu không có bộ vòng lặp sự kiện đang chạy, hàm sẽ trả về kết quả của lệnh "
+"gọi ``get_event_loop_policy().get_event_loop()``."
+
+#: ../../library/asyncio-eventloop.rst:53
+#, fuzzy
+msgid ""
+"Because this function has rather complex behavior (especially when custom "
+"event loop policies are in use), using the :func:`get_running_loop` function"
+" is preferred to :func:`get_event_loop` in coroutines and callbacks."
+msgstr ""
+"Vì hàm này có hành vi khá phức tạp (đặc biệt là khi sử dụng chính sách vòng "
+"lặp sự kiện tùy chỉnh), nên việc sử dụng hàm :func:`get_running_loop` được "
+"ưu tiên hơn :func:`get_event_loop` trong coroutine và lệnh gọi lại."
+
+#: ../../library/asyncio-eventloop.rst:58
+#, fuzzy
+msgid ""
+"As noted above, consider using the higher-level :func:`asyncio.run` "
+"function, instead of using these lower level functions to manually create "
+"and close an event loop."
+msgstr ""
+"Như đã lưu ý ở trên, hãy cân nhắc sử dụng hàm :func:`asyncio.run` cấp cao "
+"hơn, thay vì sử dụng các hàm cấp thấp hơn này để tạo và đóng vòng lặp sự "
+"kiện theo cách thủ công."
+
+#: ../../library/asyncio-eventloop.rst:62
+#, fuzzy
+msgid "Raises a :exc:`RuntimeError` if there is no current event loop."
+msgstr "Tăng :exc:`RuntimeError` nếu không có vòng lặp sự kiện hiện tại."
+
+#: ../../library/asyncio-eventloop.rst:67
+#, fuzzy
+msgid ""
+"The :mod:`!asyncio` policy system is deprecated and will be removed in "
+"Python 3.16; from there on, this function will return the current running "
+"event loop if present else it will return the loop set by "
+":func:`set_event_loop`."
+msgstr ""
+"Hệ thống chính sách :mod:`!asyncio` không được dùng nữa và sẽ bị xóa trong "
+"Python 3.16; từ đó trở đi, hàm này sẽ trả về vòng lặp sự kiện đang chạy hiện"
+" tại nếu có, nếu không nó sẽ trả về vòng lặp do :func:`set_event_loop` thiết"
+" lập."
+
+#: ../../library/asyncio-eventloop.rst:74
+#, fuzzy
+msgid "Set *loop* as the current event loop for the current OS thread."
+msgstr ""
+"Đặt *loop* làm vòng lặp sự kiện hiện tại cho chuỗi hệ điều hành hiện tại."
+
+#: ../../library/asyncio-eventloop.rst:78
+#, fuzzy
+msgid "Create and return a new event loop object."
+msgstr "Tạo và trả về một đối tượng vòng lặp sự kiện mới."
+
+#: ../../library/asyncio-eventloop.rst:80
+#, fuzzy
+msgid ""
+"Note that the behaviour of :func:`get_event_loop`, :func:`set_event_loop`, "
+"and :func:`new_event_loop` functions can be altered by :ref:`setting a "
+"custom event loop policy <asyncio-policies>`."
+msgstr ""
+"Lưu ý rằng hoạt động của các hàm :func:`get_event_loop`, "
+":func:`set_event_loop` và :func:`new_event_loop` có thể được thay đổi bởi "
+":ref:`setting a custom event loop policy <asyncio-policies>`."
+
+#: ../../library/asyncio-eventloop.rst:86
+#, fuzzy
+msgid "Contents"
+msgstr "Nội dung"
+
+#: ../../library/asyncio-eventloop.rst:87
+#, fuzzy
+msgid "This documentation page contains the following sections:"
+msgstr "Trang tài liệu này chứa các phần sau:"
+
+#: ../../library/asyncio-eventloop.rst:89
+#, fuzzy
+msgid ""
+"The `Event Loop Methods`_ section is the reference documentation of the "
+"event loop APIs;"
+msgstr ""
+"Phần `Event Loop Methods`_ là tài liệu tham khảo về API vòng lặp sự kiện;"
+
+#: ../../library/asyncio-eventloop.rst:92
+#, fuzzy
+msgid ""
+"The `Callback Handles`_ section documents the :class:`Handle` and "
+":class:`TimerHandle` instances which are returned from scheduling methods "
+"such as :meth:`loop.call_soon` and :meth:`loop.call_later`;"
+msgstr ""
+"Phần `Callback Handles`_ ghi lại các phiên bản :class:`Handle` và "
+":class:`TimerHandle` được trả về từ các phương pháp lập lịch như "
+":meth:`loop.call_soon` và :meth:`loop.call_later`;"
+
+#: ../../library/asyncio-eventloop.rst:96
+#, fuzzy
+msgid ""
+"The `Server Objects`_ section documents types returned from event loop "
+"methods like :meth:`loop.create_server`;"
+msgstr ""
+"Các loại tài liệu của phần `Server Objects`_ được trả về từ các phương thức "
+"vòng lặp sự kiện như :meth:`loop.create_server`;"
+
+#: ../../library/asyncio-eventloop.rst:99
+#, fuzzy
+msgid ""
+"The `Event Loop Implementations`_ section documents the "
+":class:`SelectorEventLoop` and :class:`ProactorEventLoop` classes;"
+msgstr ""
+"Phần `Event Loop Implementations`_ ghi lại các lớp "
+":class:`SelectorEventLoop` và :class:`ProactorEventLoop`;"
+
+#: ../../library/asyncio-eventloop.rst:102
+#, fuzzy
+msgid ""
+"The `Examples`_ section showcases how to work with some event loop APIs."
+msgstr ""
+"Phần `Examples`_ giới thiệu cách làm việc với một số API vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:109
+#, fuzzy
+msgid "Event loop methods"
+msgstr "Phương pháp vòng lặp sự kiện"
+
+#: ../../library/asyncio-eventloop.rst:111
+#, fuzzy
+msgid "Event loops have **low-level** APIs for the following:"
+msgstr "Vòng lặp sự kiện có API **low-level** cho các mục sau:"
+
+#: ../../library/asyncio-eventloop.rst:119
+#, fuzzy
+msgid "Running and stopping the loop"
+msgstr "Chạy và dừng vòng lặp"
+
+#: ../../library/asyncio-eventloop.rst:123
+#, fuzzy
+msgid "Run until the *future* (an instance of :class:`Future`) has completed."
+msgstr ""
+"Chạy cho đến khi *future* (một phiên bản của :class:`Future`) hoàn tất."
+
+#: ../../library/asyncio-eventloop.rst:126
+#, fuzzy
+msgid ""
+"If the argument is a :ref:`coroutine object <coroutine>` it is implicitly "
+"scheduled to run as a :class:`asyncio.Task`."
+msgstr ""
+"Nếu đối số là :ref:`coroutine object <coroutine>` thì nó được lên lịch ngầm "
+"để chạy dưới dạng :class:`asyncio.Task`."
+
+#: ../../library/asyncio-eventloop.rst:129
+#, fuzzy
+msgid "Return the Future's result or raise its exception."
+msgstr "Trả về kết quả của Tương lai hoặc đưa ra ngoại lệ của nó."
+
+#: ../../library/asyncio-eventloop.rst:133
+#, fuzzy
+msgid "Run the event loop until :meth:`stop` is called."
+msgstr "Chạy vòng lặp sự kiện cho đến khi :meth:`stop` được gọi."
+
+#: ../../library/asyncio-eventloop.rst:135
+#, fuzzy
+msgid ""
+"If :meth:`stop` is called before :meth:`run_forever` is called, the loop "
+"will poll the I/O selector once with a timeout of zero, run all callbacks "
+"scheduled in response to I/O events (and those that were already scheduled),"
+" and then exit."
+msgstr ""
+"Nếu :meth:`stop` được gọi trước khi :meth:`run_forever` được gọi, vòng lặp "
+"sẽ thăm dò bộ chọn I/O một lần với thời gian chờ bằng 0, chạy tất cả lệnh "
+"gọi lại đã lên lịch để phản hồi các sự kiện I/O (và những sự kiện đã được "
+"lên lịch), rồi thoát."
+
+#: ../../library/asyncio-eventloop.rst:140
+#, fuzzy
+msgid ""
+"If :meth:`stop` is called while :meth:`run_forever` is running, the loop "
+"will run the current batch of callbacks and then exit. Note that new "
+"callbacks scheduled by callbacks will not run in this case; instead, they "
+"will run the next time :meth:`run_forever` or :meth:`run_until_complete` is "
+"called."
+msgstr ""
+"Nếu :meth:`stop` được gọi trong khi :meth:`run_forever` đang chạy, vòng lặp "
+"sẽ chạy loạt lệnh gọi lại hiện tại rồi thoát ra. Lưu ý rằng lệnh gọi lại mới"
+" được lên lịch bởi lệnh gọi lại sẽ không chạy trong trường hợp này; thay vào"
+" đó, chúng sẽ chạy vào lần tiếp theo :meth:`run_forever` hoặc "
+":meth:`run_until_complete` được gọi."
+
+#: ../../library/asyncio-eventloop.rst:148
+#, fuzzy
+msgid "Stop the event loop."
+msgstr "Dừng vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:152
+#, fuzzy
+msgid "Return ``True`` if the event loop is currently running."
+msgstr "Trả về ``True`` nếu vòng lặp sự kiện hiện đang chạy."
+
+#: ../../library/asyncio-eventloop.rst:156
+#, fuzzy
+msgid "Return ``True`` if the event loop was closed."
+msgstr "Trả về ``True`` nếu vòng lặp sự kiện đã bị đóng."
+
+#: ../../library/asyncio-eventloop.rst:160
+#, fuzzy
+msgid "Close the event loop."
+msgstr "Đóng vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:162
+#, fuzzy
+msgid ""
+"The loop must not be running when this function is called. Any pending "
+"callbacks will be discarded."
+msgstr ""
+"Vòng lặp không được chạy khi hàm này được gọi. Mọi lệnh gọi lại đang chờ xử "
+"lý sẽ bị loại bỏ."
+
+#: ../../library/asyncio-eventloop.rst:165
+#, fuzzy
+msgid ""
+"This method clears all queues and shuts down the executor, but does not wait"
+" for the executor to finish."
+msgstr ""
+"Phương thức này xóa tất cả các hàng đợi và tắt bộ thực thi, nhưng không đợi "
+"người thực thi kết thúc."
+
+#: ../../library/asyncio-eventloop.rst:168
+#, fuzzy
+msgid ""
+"This method is idempotent and irreversible.  No other methods should be "
+"called after the event loop is closed."
+msgstr ""
+"Phương pháp này là bình thường và không thể đảo ngược.  Không có phương thức"
+" nào khác được gọi sau khi vòng lặp sự kiện được đóng lại."
+
+#: ../../library/asyncio-eventloop.rst:174
+#, fuzzy
+msgid ""
+"Schedule all currently open :term:`asynchronous generator` objects to close "
+"with an :meth:`~agen.aclose` call.  After calling this method, the event "
+"loop will issue a warning if a new asynchronous generator is iterated. This "
+"should be used to reliably finalize all scheduled asynchronous generators."
+msgstr ""
+"Lên lịch đóng tất cả các đối tượng :term:`asynchronous generator` hiện đang "
+"mở bằng lệnh gọi :meth:`~agen.aclose`.  Sau khi gọi phương thức này, vòng "
+"lặp sự kiện sẽ đưa ra cảnh báo nếu một trình tạo không đồng bộ mới được lặp "
+"lại. Điều này nên được sử dụng để hoàn thiện một cách đáng tin cậy tất cả "
+"các trình tạo không đồng bộ theo lịch trình."
+
+#: ../../library/asyncio-eventloop.rst:180
+#, fuzzy
+msgid ""
+"Note that there is no need to call this function when :func:`asyncio.run` is"
+" used."
+msgstr "Lưu ý rằng không cần gọi hàm này khi sử dụng :func:`asyncio.run`."
+
+#: ../../library/asyncio-eventloop.rst:183
+#: ../../library/asyncio-eventloop.rst:1357
+#: ../../library/asyncio-eventloop.rst:1819
+#, fuzzy
+msgid "Example::"
+msgstr "Ví dụ::"
+
+#: ../../library/asyncio-eventloop.rst:185
+#, fuzzy
+msgid ""
+"try:\n"
+"    loop.run_forever()\n"
+"finally:\n"
+"    loop.run_until_complete(loop.shutdown_asyncgens())\n"
+"    loop.close()"
+msgstr ""
+"thử:\n"
+"    loop.run_forever()\n"
+"cuối cùng:\n"
+"    loop.run_until_complete(loop.shutdown_asyncgens())\n"
+"    loop.close()"
+
+#: ../../library/asyncio-eventloop.rst:196
+#, fuzzy
+msgid ""
+"Schedule the closure of the default executor and wait for it to join all of "
+"the threads in the :class:`~concurrent.futures.ThreadPoolExecutor`. Once "
+"this method has been called, using the default executor with "
+":meth:`loop.run_in_executor` will raise a :exc:`RuntimeError`."
+msgstr ""
+"Lên lịch đóng trình thực thi mặc định và đợi nó tham gia tất cả các luồng "
+"trong :class:`~concurrent.futures.ThreadPoolExecutor`. Khi phương thức này "
+"đã được gọi, việc sử dụng trình thực thi mặc định với "
+":meth:`loop.run_in_executor` sẽ tạo ra :exc:`RuntimeError`."
+
+#: ../../library/asyncio-eventloop.rst:202
+#, fuzzy
+msgid ""
+"The *timeout* parameter specifies the amount of time (in :class:`float` "
+"seconds) the executor will be given to finish joining. With the default, "
+"``None``, the executor is allowed an unlimited amount of time."
+msgstr ""
+"Tham số *timeout* chỉ định lượng thời gian (tính bằng :class:`float` giây) "
+"mà người thực thi sẽ được cung cấp để hoàn tất việc tham gia. Với mặc định, "
+"``None``, người thực thi được phép có thời gian không giới hạn."
+
+#: ../../library/asyncio-eventloop.rst:207
+#, fuzzy
+msgid ""
+"If the *timeout* is reached, a :exc:`RuntimeWarning` is emitted and the "
+"default executor is terminated without waiting for its threads to finish "
+"joining."
+msgstr ""
+"Nếu đạt đến *timeout*, :exc:`RuntimeWarning` sẽ được phát ra và trình thực "
+"thi mặc định sẽ bị chấm dứt mà không cần đợi các luồng của nó kết thúc việc "
+"nối."
+
+#: ../../library/asyncio-eventloop.rst:213
+#, fuzzy
+msgid ""
+"Do not call this method when using :func:`asyncio.run`, as the latter "
+"handles default executor shutdown automatically."
+msgstr ""
+"Không gọi phương thức này khi sử dụng :func:`asyncio.run`, vì "
+":func:`asyncio.run` sẽ tự động xử lý việc tắt trình thực thi mặc định."
+
+#: ../../library/asyncio-eventloop.rst:218
+#, fuzzy
+msgid "Added the *timeout* parameter."
+msgstr "Đã thêm tham số *timeout*."
+
+#: ../../library/asyncio-eventloop.rst:222
+#, fuzzy
+msgid "Scheduling callbacks"
+msgstr "Lên lịch gọi lại"
+
+#: ../../library/asyncio-eventloop.rst:226
+#, fuzzy
+msgid ""
+"Schedule the *callback* :term:`callback` to be called with *args* arguments "
+"at the next iteration of the event loop."
+msgstr ""
+"Lên lịch gọi *callback* :term:`callback` với các đối số *args* ở lần lặp "
+"tiếp theo của vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:229
+#, fuzzy
+msgid ""
+"Return an instance of :class:`asyncio.Handle`, which can be used later to "
+"cancel the callback."
+msgstr ""
+"Trả về một phiên bản của :class:`asyncio.Handle`, phiên bản này sau này có "
+"thể được sử dụng để hủy lệnh gọi lại."
+
+#: ../../library/asyncio-eventloop.rst:232
+#, fuzzy
+msgid ""
+"Callbacks are called in the order in which they are registered. Each "
+"callback will be called exactly once."
+msgstr ""
+"Cuộc gọi lại được gọi theo thứ tự chúng được đăng ký. Mỗi cuộc gọi lại sẽ "
+"được gọi chính xác một lần."
+
+#: ../../library/asyncio-eventloop.rst:235
+#, fuzzy
+msgid ""
+"The optional keyword-only *context* argument specifies a custom "
+":class:`contextvars.Context` for the *callback* to run in. Callbacks use the"
+" current context when no *context* is provided."
+msgstr ""
+"Đối số *context* chỉ có từ khóa tùy chọn chỉ định một "
+":class:`contextvars.Context` tùy chỉnh để *callback* chạy vào. Lệnh gọi lại "
+"sử dụng ngữ cảnh hiện tại khi không cung cấp *context*."
+
+#: ../../library/asyncio-eventloop.rst:239
+#, fuzzy
+msgid "Unlike :meth:`call_soon_threadsafe`, this method is not thread-safe."
+msgstr ""
+"Không giống như :meth:`call_soon_threadsafe`, phương pháp này không an toàn "
+"cho luồng."
+
+#: ../../library/asyncio-eventloop.rst:243
+#, fuzzy
+msgid ""
+"A thread-safe variant of :meth:`call_soon`. When scheduling callbacks from "
+"another thread, this function *must* be used, since :meth:`call_soon` is not"
+" thread-safe."
+msgstr ""
+"Một biến thể an toàn theo luồng của :meth:`call_soon`. Khi lên lịch gọi lại "
+"từ một luồng khác, hàm *must* này sẽ được sử dụng vì :meth:`call_soon` không"
+" an toàn cho luồng."
+
+#: ../../library/asyncio-eventloop.rst:247
+#, fuzzy
+msgid ""
+"This function is safe to be called from a reentrant context or signal "
+"handler, however, it is not safe or fruitful to use the returned handle in "
+"such contexts."
+msgstr ""
+"Hàm này an toàn khi được gọi từ ngữ cảnh gửi lại hoặc trình xử lý tín hiệu, "
+"tuy nhiên, sẽ không an toàn hoặc hiệu quả khi sử dụng thẻ điều khiển được "
+"trả về trong các ngữ cảnh như vậy."
+
+#: ../../library/asyncio-eventloop.rst:250
+#, fuzzy
+msgid ""
+"Raises :exc:`RuntimeError` if called on a loop that's been closed. This can "
+"happen on a secondary thread when the main application is shutting down."
+msgstr ""
+"Tăng :exc:`RuntimeError` nếu được gọi trên một vòng lặp đã bị đóng. Điều này"
+" có thể xảy ra trên luồng phụ khi ứng dụng chính đang tắt."
+
+#: ../../library/asyncio-eventloop.rst:254
+#, fuzzy
+msgid ""
+"See the :ref:`concurrency and multithreading <asyncio-multithreading>` "
+"section of the documentation."
+msgstr ""
+"Xem phần :ref:`concurrency and multithreading <asyncio-multithreading>` của "
+"tài liệu."
+
+#: ../../library/asyncio-eventloop.rst:257
+#: ../../library/asyncio-eventloop.rst:314
+#: ../../library/asyncio-eventloop.rst:340
+#, fuzzy
+msgid ""
+"The *context* keyword-only parameter was added. See :pep:`567` for more "
+"details."
+msgstr ""
+"Tham số chỉ từ khóa *context* đã được thêm vào. Xem :pep:`567` để biết thêm "
+"chi tiết."
+
+#: ../../library/asyncio-eventloop.rst:265
+#, fuzzy
+msgid ""
+"Most :mod:`asyncio` scheduling functions don't allow passing keyword "
+"arguments.  To do that, use :func:`functools.partial`::"
+msgstr ""
+"Hầu hết các chức năng lập lịch :mod:`asyncio` không cho phép truyền đối số "
+"từ khóa.  Để làm điều đó, hãy sử dụng :func:`functools.partial`::"
+
+#: ../../library/asyncio-eventloop.rst:268
+#, fuzzy
+msgid ""
+"# will schedule \"print(\"Hello\", flush=True)\"\n"
+"loop.call_soon(\n"
+"    functools.partial(print, \"Hello\", flush=True))"
+msgstr ""
+"lịch trình # will \"in (\"Xin chào\", tuôn ra = Đúng)\"\n"
+"loop.call_soon(\n"
+"    functools.partial(in, \"Xin chào\", tuôn ra=True))"
+
+#: ../../library/asyncio-eventloop.rst:272
+#, fuzzy
+msgid ""
+"Using partial objects is usually more convenient than using lambdas, as "
+"asyncio can render partial objects better in debug and error messages."
+msgstr ""
+"Sử dụng các đối tượng một phần thường thuận tiện hơn so với sử dụng lambdas,"
+" vì asyncio có thể hiển thị các đối tượng một phần tốt hơn trong các thông "
+"báo gỡ lỗi và lỗi."
+
+#: ../../library/asyncio-eventloop.rst:280
+#, fuzzy
+msgid "Scheduling delayed callbacks"
+msgstr "Lên lịch gọi lại bị trì hoãn"
+
+#: ../../library/asyncio-eventloop.rst:282
+#, fuzzy
+msgid ""
+"Event loop provides mechanisms to schedule callback functions to be called "
+"at some point in the future.  Event loop uses monotonic clocks to track "
+"time."
+msgstr ""
+"Vòng lặp sự kiện cung cấp cơ chế lên lịch cho các hàm gọi lại sẽ được gọi "
+"vào một thời điểm nào đó trong tương lai.  Vòng lặp sự kiện sử dụng đồng hồ "
+"đơn điệu để theo dõi thời gian."
+
+#: ../../library/asyncio-eventloop.rst:289
+#, fuzzy
+msgid ""
+"Schedule *callback* to be called after the given *delay* number of seconds "
+"(can be either an int or a float)."
+msgstr ""
+"Lên lịch gọi *callback* sau số giây *delay* đã cho (có thể là int hoặc "
+"float)."
+
+#: ../../library/asyncio-eventloop.rst:292
+#: ../../library/asyncio-eventloop.rst:331
+#, fuzzy
+msgid ""
+"An instance of :class:`asyncio.TimerHandle` is returned which can be used to"
+" cancel the callback."
+msgstr ""
+"Một phiên bản :class:`asyncio.TimerHandle` được trả về có thể được sử dụng "
+"để hủy cuộc gọi lại."
+
+#: ../../library/asyncio-eventloop.rst:295
+#, fuzzy
+msgid ""
+"*callback* will be called exactly once.  If two callbacks are scheduled for "
+"exactly the same time, the order in which they are called is undefined."
+msgstr ""
+"*callback* sẽ được gọi đúng một lần.  Nếu hai lệnh gọi lại được lên lịch vào"
+" cùng một thời điểm thì thứ tự chúng được gọi sẽ không được xác định."
+
+#: ../../library/asyncio-eventloop.rst:299
+#, fuzzy
+msgid ""
+"The optional positional *args* will be passed to the callback when it is "
+"called. Use :func:`functools.partial` :ref:`to pass keyword arguments "
+"<asyncio-pass-keywords>` to *callback*."
+msgstr ""
+"*args* vị trí tùy chọn sẽ được chuyển đến lệnh gọi lại khi nó được gọi. Sử "
+"dụng :func:`functools.partial` :ref:`to pass keyword arguments <asyncio-"
+"pass-keywords>` đến *callback*."
+
+#: ../../library/asyncio-eventloop.rst:304
+#, fuzzy
+msgid ""
+"An optional keyword-only *context* argument allows specifying a custom "
+":class:`contextvars.Context` for the *callback* to run in. The current "
+"context is used when no *context* is provided."
+msgstr ""
+"Đối số *context* chỉ có từ khóa tùy chọn cho phép chỉ định một "
+":class:`contextvars.Context` tùy chỉnh để *callback* chạy vào. Ngữ cảnh hiện"
+" tại được sử dụng khi không cung cấp *context*."
+
+#: ../../library/asyncio-eventloop.rst:310
+#, fuzzy
+msgid ""
+"For performance, callbacks scheduled with :meth:`loop.call_later` may run up"
+" to one clock-resolution early (see "
+"``time.get_clock_info('monotonic').resolution``)."
+msgstr ""
+"Để đảm bảo hiệu suất, các lệnh gọi lại được lên lịch bằng "
+":meth:`loop.call_later` có thể chạy sớm tới một độ phân giải đồng hồ (xem "
+"``time.get_clock_info('monotonic').resolution``)."
+
+#: ../../library/asyncio-eventloop.rst:318
+#, fuzzy
+msgid ""
+"In Python 3.7 and earlier with the default event loop implementation, the "
+"*delay* could not exceed one day. This has been fixed in Python 3.8."
+msgstr ""
+"Trong Python 3.7 trở về trước với cách triển khai vòng lặp sự kiện mặc định,"
+" *delay* không thể vượt quá một ngày. Điều này đã được sửa trong Python 3.8."
+
+#: ../../library/asyncio-eventloop.rst:325
+#, fuzzy
+msgid ""
+"Schedule *callback* to be called at the given absolute timestamp *when* (an "
+"int or a float), using the same time reference as :meth:`loop.time`."
+msgstr ""
+"Lên lịch gọi *callback* tại dấu thời gian tuyệt đối nhất định *when* (int "
+"hoặc float), sử dụng cùng tham chiếu thời gian như :meth:`loop.time`."
+
+#: ../../library/asyncio-eventloop.rst:329
+#, fuzzy
+msgid "This method's behavior is the same as :meth:`call_later`."
+msgstr "Hành vi của phương pháp này giống như :meth:`call_later`."
+
+#: ../../library/asyncio-eventloop.rst:336
+#, fuzzy
+msgid ""
+"For performance, callbacks scheduled with :meth:`loop.call_at` may run up to"
+" one clock-resolution early (see "
+"``time.get_clock_info('monotonic').resolution``)."
+msgstr ""
+"Để đảm bảo hiệu suất, các lệnh gọi lại được lên lịch bằng "
+":meth:`loop.call_at` có thể chạy sớm tới một độ phân giải đồng hồ (xem "
+"``time.get_clock_info('monotonic').resolution``)."
+
+#: ../../library/asyncio-eventloop.rst:344
+#, fuzzy
+msgid ""
+"In Python 3.7 and earlier with the default event loop implementation, the "
+"difference between *when* and the current time could not exceed one day.  "
+"This has been fixed in Python 3.8."
+msgstr ""
+"Trong Python 3.7 trở về trước với cách triển khai vòng lặp sự kiện mặc định,"
+" sự khác biệt giữa *when* và thời gian hiện tại không được vượt quá một "
+"ngày.  Điều này đã được sửa trong Python 3.8."
+
+#: ../../library/asyncio-eventloop.rst:351
+#, fuzzy
+msgid ""
+"Return the current time, as a :class:`float` value, according to the event "
+"loop's internal monotonic clock."
+msgstr ""
+"Trả về thời gian hiện tại, dưới dạng giá trị :class:`float`, theo đồng hồ "
+"đơn điệu bên trong của vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:355
+#, fuzzy
+msgid ""
+"In Python 3.7 and earlier timeouts (relative *delay* or absolute *when*) "
+"should not exceed one day.  This has been fixed in Python 3.8."
+msgstr ""
+"Trong Python 3.7 trở về trước, thời gian chờ (*delay* tương đối hoặc *when* "
+"tuyệt đối) không được vượt quá một ngày.  Điều này đã được sửa trong Python "
+"3.8."
+
+#: ../../library/asyncio-eventloop.rst:361
+#, fuzzy
+msgid "The :func:`asyncio.sleep` function."
+msgstr "Chức năng :func:`asyncio.sleep`."
+
+#: ../../library/asyncio-eventloop.rst:365
+#, fuzzy
+msgid "Creating futures and tasks"
+msgstr "Tạo ra tương lai và nhiệm vụ"
+
+#: ../../library/asyncio-eventloop.rst:369
+#, fuzzy
+msgid "Create an :class:`asyncio.Future` object attached to the event loop."
+msgstr "Tạo một đối tượng :class:`asyncio.Future` gắn vào vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:371
+#, fuzzy
+msgid ""
+"This is the preferred way to create Futures in asyncio. This lets third-"
+"party event loops provide alternative implementations of the Future object "
+"(with better performance or instrumentation)."
+msgstr ""
+"Đây là cách ưa thích để tạo Hợp đồng tương lai trong asyncio. Điều này cho "
+"phép các vòng lặp sự kiện của bên thứ ba cung cấp các cách triển khai thay "
+"thế cho đối tượng Tương lai (với hiệu suất hoặc công cụ tốt hơn)."
+
+#: ../../library/asyncio-eventloop.rst:379
+#, fuzzy
+msgid ""
+"Schedule the execution of :ref:`coroutine <coroutine>` *coro*. Return a "
+":class:`Task` object."
+msgstr ""
+"Lên lịch thực hiện :ref:`coroutine <coroutine>` *coro*. Trả về một đối tượng"
+" :class:`Task`."
+
+#: ../../library/asyncio-eventloop.rst:382
+#, fuzzy
+msgid ""
+"Third-party event loops can use their own subclass of :class:`Task` for "
+"interoperability. In this case, the result type is a subclass of "
+":class:`Task`."
+msgstr ""
+"Vòng lặp sự kiện của bên thứ ba có thể sử dụng lớp con :class:`Task` của "
+"riêng họ để có khả năng tương tác. Trong trường hợp này, loại kết quả là lớp"
+" con của :class:`Task`."
+
+#: ../../library/asyncio-eventloop.rst:386
+#, fuzzy
+msgid ""
+"The full function signature is largely the same as that of the :class:`Task`"
+" constructor (or factory) - all of the keyword arguments to this function "
+"are passed through to that interface."
+msgstr ""
+"Chữ ký hàm đầy đủ phần lớn giống với chữ ký của hàm tạo :class:`Task` (hoặc "
+"nhà máy) - tất cả các đối số từ khóa cho hàm này đều được chuyển qua giao "
+"diện đó."
+
+#: ../../library/asyncio-eventloop.rst:390
+#, fuzzy
+msgid ""
+"If the *name* argument is provided and not ``None``, it is set as the name "
+"of the task using :meth:`Task.set_name`."
+msgstr ""
+"Nếu đối số *name* được cung cấp chứ không phải ``None``, thì đối số đó sẽ "
+"được đặt làm tên của tác vụ bằng :meth:`Task.set_name`."
+
+#: ../../library/asyncio-eventloop.rst:393
+#, fuzzy
+msgid ""
+"An optional keyword-only *context* argument allows specifying a custom "
+":class:`contextvars.Context` for the *coro* to run in. The current context "
+"copy is created when no *context* is provided."
+msgstr ""
+"Đối số *context* chỉ có từ khóa tùy chọn cho phép chỉ định một "
+":class:`contextvars.Context` tùy chỉnh để *coro* chạy vào. Bản sao ngữ cảnh "
+"hiện tại được tạo khi không cung cấp *context*."
+
+#: ../../library/asyncio-eventloop.rst:397
+#, fuzzy
+msgid ""
+"An optional keyword-only *eager_start* argument allows specifying if the "
+"task should execute eagerly during the call to create_task, or be scheduled "
+"later. If *eager_start* is not passed the mode set by "
+":meth:`loop.set_task_factory` will be used."
+msgstr ""
+"Đối số *eager_start* chỉ có từ khóa tùy chọn cho phép chỉ định xem tác vụ sẽ"
+" được thực thi một cách háo hức trong khi gọi tới create_task hay được lên "
+"lịch sau. Nếu *eager_start* không được thông qua, chế độ do "
+":meth:`loop.set_task_factory` đặt sẽ được sử dụng."
+
+#: ../../library/asyncio-eventloop.rst:402
+#, fuzzy
+msgid "Added the *name* parameter."
+msgstr "Đã thêm tham số *name*."
+
+#: ../../library/asyncio-eventloop.rst:405
+#, fuzzy
+msgid "Added the *context* parameter."
+msgstr "Đã thêm tham số *context*."
+
+#: ../../library/asyncio-eventloop.rst:408
+#, fuzzy
+msgid ""
+"Added ``kwargs`` which passes on arbitrary extra parameters, including  "
+"``name`` and ``context``."
+msgstr ""
+"Đã thêm ``kwargs`` để chuyển các tham số bổ sung tùy ý, bao gồm ``name`` và "
+"``context``."
+
+#: ../../library/asyncio-eventloop.rst:411
+#, fuzzy
+msgid ""
+"Rolled back the change that passes on *name* and *context* (if it is None), "
+"while still passing on other arbitrary keyword arguments (to avoid breaking "
+"backwards compatibility with 3.13.3)."
+msgstr ""
+"Đã khôi phục thay đổi chuyển sang *name* và *context* (nếu là Không), trong "
+"khi vẫn chuyển các đối số từ khóa tùy ý khác (để tránh phá vỡ khả năng tương"
+" thích ngược với 3.13.3)."
+
+#: ../../library/asyncio-eventloop.rst:415
+#, fuzzy
+msgid ""
+"All *kwargs* are now passed on. The *eager_start* parameter works with eager"
+" task factories."
+msgstr ""
+"Tất cả *kwargs* hiện đã được chuyển tiếp. Tham số *eager_start* hoạt động "
+"với các nhà máy nhiệm vụ háo hức."
+
+#: ../../library/asyncio-eventloop.rst:420
+#, fuzzy
+msgid "Set a task factory that will be used by :meth:`loop.create_task`."
+msgstr "Đặt nhà máy tác vụ sẽ được :meth:`loop.create_task` sử dụng."
+
+#: ../../library/asyncio-eventloop.rst:423
+#, fuzzy
+msgid ""
+"If *factory* is ``None`` the default task factory will be set. Otherwise, "
+"*factory* must be a *callable* with the signature matching ``(loop, coro, "
+"**kwargs)``, where *loop* is a reference to the active event loop, and "
+"*coro* is a coroutine object.  The callable must pass on all *kwargs*, and "
+"return a :class:`asyncio.Task`-compatible object."
+msgstr ""
+"Nếu *factory* là ``None`` thì nhà máy tác vụ mặc định sẽ được đặt. Nếu "
+"không, *factory* phải là *callable* có chữ ký khớp với ``(loop, coro, "
+"**kwargs)``, trong đó *loop* là tham chiếu đến vòng lặp sự kiện đang hoạt "
+"động và *coro* là đối tượng coroutine.  Đối tượng có thể gọi phải chuyển tất"
+" cả *kwargs* và trả về một đối tượng tương thích với :class:`asyncio.Task`."
+
+#: ../../library/asyncio-eventloop.rst:429
+#, fuzzy
+msgid "Required that all *kwargs* are passed on to :class:`asyncio.Task`."
+msgstr "Yêu cầu tất cả *kwargs* được chuyển cho :class:`asyncio.Task`."
+
+#: ../../library/asyncio-eventloop.rst:432
+#, fuzzy
+msgid ""
+"*name* is no longer passed to task factories. *context* is no longer passed "
+"to task factories if it is ``None``."
+msgstr ""
+"*name* không còn được chuyển đến các nhà máy nhiệm vụ nữa. *context* không "
+"còn được chuyển đến các nhà máy nhiệm vụ nếu đó là ``None``."
+
+#: ../../library/asyncio-eventloop.rst:436
+#, fuzzy
+msgid ""
+"*name* and *context* are now unconditionally passed on to task factories "
+"again."
+msgstr ""
+"*name* và *context* hiện lại được chuyển giao vô điều kiện cho các nhà máy "
+"nhiệm vụ."
+
+#: ../../library/asyncio-eventloop.rst:441
+#, fuzzy
+msgid "Return a task factory or ``None`` if the default one is in use."
+msgstr ""
+"Trả về nhà máy tác vụ hoặc ``None`` nếu nhà máy mặc định đang được sử dụng."
+
+#: ../../library/asyncio-eventloop.rst:445
+#, fuzzy
+msgid "Opening network connections"
+msgstr "Mở kết nối mạng"
+
+#: ../../library/asyncio-eventloop.rst:457
+#, fuzzy
+msgid ""
+"Open a streaming transport connection to a given address specified by *host*"
+" and *port*."
+msgstr ""
+"Mở kết nối truyền tải trực tuyến đến một địa chỉ nhất định được chỉ định bởi"
+" *host* và *port*."
+
+#: ../../library/asyncio-eventloop.rst:460
+#, fuzzy
+msgid ""
+"The socket family can be either :py:const:`~socket.AF_INET` or "
+":py:const:`~socket.AF_INET6` depending on *host* (or the *family* argument, "
+"if provided)."
+msgstr ""
+"Họ socket có thể là :py:const:`~socket.AF_INET` hoặc "
+":py:const:`~socket.AF_INET6` tùy thuộc vào *host* (hoặc đối số *family*, nếu"
+" được cung cấp)."
+
+#: ../../library/asyncio-eventloop.rst:464
+#, fuzzy
+msgid "The socket type will be :py:const:`~socket.SOCK_STREAM`."
+msgstr "Loại ổ cắm sẽ là :py:const:`~socket.SOCK_STREAM`."
+
+#: ../../library/asyncio-eventloop.rst:466
+#: ../../library/asyncio-eventloop.rst:1265
+#: ../../library/asyncio-eventloop.rst:1282
+#, fuzzy
+msgid ""
+"*protocol_factory* must be a callable returning an :ref:`asyncio protocol "
+"<asyncio-protocol>` implementation."
+msgstr ""
+"*protocol_factory* phải là một phương thức có thể gọi được và trả về việc "
+"triển khai :ref:`asyncio protocol <asyncio-protocol>`."
+
+#: ../../library/asyncio-eventloop.rst:469
+#, fuzzy
+msgid ""
+"This method will try to establish the connection in the background. When "
+"successful, it returns a ``(transport, protocol)`` pair."
+msgstr ""
+"Phương pháp này sẽ cố gắng thiết lập kết nối ở chế độ nền. Khi thành công, "
+"nó trả về một cặp ``(transport, protocol)``."
+
+#: ../../library/asyncio-eventloop.rst:472
+#, fuzzy
+msgid "The chronological synopsis of the underlying operation is as follows:"
+msgstr "Bản tóm tắt theo trình tự thời gian của hoạt động cơ bản như sau:"
+
+#: ../../library/asyncio-eventloop.rst:474
+#, fuzzy
+msgid ""
+"The connection is established and a :ref:`transport <asyncio-transport>` is "
+"created for it."
+msgstr ""
+"Kết nối được thiết lập và :ref:`transport <asyncio-transport>` được tạo cho "
+"nó."
+
+#: ../../library/asyncio-eventloop.rst:477
+#, fuzzy
+msgid ""
+"*protocol_factory* is called without arguments and is expected to return a "
+":ref:`protocol <asyncio-protocol>` instance."
+msgstr ""
+"*protocol_factory* được gọi mà không có đối số và dự kiến sẽ trả về một "
+"phiên bản :ref:`protocol <asyncio-protocol>`."
+
+#: ../../library/asyncio-eventloop.rst:480
+#, fuzzy
+msgid ""
+"The protocol instance is coupled with the transport by calling its "
+":meth:`~BaseProtocol.connection_made` method."
+msgstr ""
+"Phiên bản giao thức được kết hợp với việc vận chuyển bằng cách gọi phương "
+"thức :meth:`~BaseProtocol.connection_made` của nó."
+
+#: ../../library/asyncio-eventloop.rst:483
+#, fuzzy
+msgid "A ``(transport, protocol)`` tuple is returned on success."
+msgstr "Một bộ dữ liệu ``(transport, protocol)`` được trả về thành công."
+
+#: ../../library/asyncio-eventloop.rst:485
+#, fuzzy
+msgid ""
+"The created transport is an implementation-dependent bidirectional stream."
+msgstr "Vận chuyển được tạo là luồng hai chiều phụ thuộc vào việc triển khai."
+
+#: ../../library/asyncio-eventloop.rst:488
+#: ../../library/asyncio-eventloop.rst:621
+#, fuzzy
+msgid "Other arguments:"
+msgstr "Các lập luận khác:"
+
+#: ../../library/asyncio-eventloop.rst:490
+#, fuzzy
+msgid ""
+"*ssl*: if given and not false, a SSL/TLS transport is created (by default a "
+"plain TCP transport is created).  If *ssl* is a :class:`ssl.SSLContext` "
+"object, this context is used to create the transport; if *ssl* is "
+":const:`True`, a default context returned from "
+":func:`ssl.create_default_context` is used."
+msgstr ""
+"*ssl*: nếu được cung cấp và không sai, quá trình vận chuyển SSL/TLS sẽ được "
+"tạo (theo mặc định, quá trình vận chuyển TCP đơn giản sẽ được tạo).  Nếu "
+"*ssl* là một đối tượng :class:`ssl.SSLContext`, ngữ cảnh này được sử dụng để"
+" tạo phương tiện vận chuyển; nếu *ssl* là :const:`True`, ngữ cảnh mặc định "
+"được trả về từ :func:`ssl.create_default_context` sẽ được sử dụng."
+
+#: ../../library/asyncio-eventloop.rst:496
+#, fuzzy
+msgid ":ref:`SSL/TLS security considerations <ssl-security>`"
+msgstr ":ref:`SSL/TLS security considerations <ssl-security>`"
+
+#: ../../library/asyncio-eventloop.rst:498
+#, fuzzy
+msgid ""
+"*server_hostname* sets or overrides the hostname that the target server's "
+"certificate will be matched against.  Should only be passed if *ssl* is not "
+"``None``.  By default the value of the *host* argument is used.  If *host* "
+"is empty, there is no default and you must pass a value for "
+"*server_hostname*.  If *server_hostname* is an empty string, hostname "
+"matching is disabled (which is a serious security risk, allowing for "
+"potential man-in-the-middle attacks)."
+msgstr ""
+"*server_hostname* đặt hoặc ghi đè tên máy chủ mà chứng chỉ của máy chủ mục "
+"tiêu sẽ được so khớp.  Chỉ nên được thông qua nếu *ssl* không phải là "
+"``None``.  Theo mặc định, giá trị của đối số *host* được sử dụng.  Nếu "
+"*host* trống thì không có giá trị mặc định và bạn phải chuyển giá trị cho "
+"*server_hostname*.  Nếu *server_hostname* là một chuỗi trống, việc khớp tên "
+"máy chủ sẽ bị vô hiệu hóa (đây là một rủi ro bảo mật nghiêm trọng, tạo điều "
+"kiện cho các cuộc tấn công trung gian tiềm ẩn)."
+
+#: ../../library/asyncio-eventloop.rst:506
+#, fuzzy
+msgid ""
+"*family*, *proto*, *flags* are the optional address family, protocol and "
+"flags to be passed through to getaddrinfo() for *host* resolution. If given,"
+" these should all be integers from the corresponding :mod:`socket` module "
+"constants."
+msgstr ""
+"*family*, *proto*, *flags* là họ địa chỉ, giao thức và cờ tùy chọn được "
+"chuyển qua getaddrinfo() để phân giải *host*. Nếu được cung cấp, tất cả các "
+"giá trị này phải là số nguyên từ hằng số mô-đun :mod:`socket` tương ứng."
+
+#: ../../library/asyncio-eventloop.rst:511
+#, fuzzy
+msgid ""
+"*happy_eyeballs_delay*, if given, enables Happy Eyeballs for this "
+"connection. It should be a floating-point number representing the amount of "
+"time in seconds to wait for a connection attempt to complete, before "
+"starting the next attempt in parallel. This is the \"Connection Attempt "
+"Delay\" as defined in :rfc:`8305`. A sensible default value recommended by "
+"the RFC is ``0.25`` (250 milliseconds)."
+msgstr ""
+"*happy_eyeballs_delay*, nếu được cung cấp, sẽ bật Happy Eyeballs cho kết nối"
+" này. Nó phải là một số dấu phẩy động biểu thị khoảng thời gian tính bằng "
+"giây để chờ một lần thử kết nối hoàn tất, trước khi bắt đầu lần thử tiếp "
+"theo một cách song song. Đây là \"Độ trễ cố gắng kết nối\" như được định "
+"nghĩa trong :rfc:`8305`. Giá trị mặc định hợp lý được RFC đề xuất là "
+"``0.25`` (250 mili giây)."
+
+#: ../../library/asyncio-eventloop.rst:519
+#, fuzzy
+msgid ""
+"*interleave* controls address reordering when a host name resolves to "
+"multiple IP addresses. If ``0`` or unspecified, no reordering is done, and "
+"addresses are tried in the order returned by :meth:`getaddrinfo`. If a "
+"positive integer is specified, the addresses are interleaved by address "
+"family, and the given integer is interpreted as \"First Address Family "
+"Count\" as defined in :rfc:`8305`. The default is ``0`` if "
+"*happy_eyeballs_delay* is not specified, and ``1`` if it is."
+msgstr ""
+"*interleave* kiểm soát việc sắp xếp lại địa chỉ khi tên máy chủ phân giải "
+"thành nhiều địa chỉ IP. Nếu ``0`` hoặc không được chỉ định, việc sắp xếp lại"
+" sẽ không được thực hiện và các địa chỉ sẽ được thử theo thứ tự được trả về "
+"bởi :meth:`getaddrinfo`. Nếu một số nguyên dương được chỉ định, các địa chỉ "
+"sẽ được xen kẽ theo họ địa chỉ và số nguyên đã cho được hiểu là \"Số họ địa "
+"chỉ đầu tiên\" như được xác định trong :rfc:`8305`. Mặc định là ``0`` nếu "
+"*happy_eyeballs_delay* không được chỉ định và ``1`` nếu có."
+
+#: ../../library/asyncio-eventloop.rst:528
+#, fuzzy
+msgid ""
+"*sock*, if given, should be an existing, already connected "
+":class:`socket.socket` object to be used by the transport. If *sock* is "
+"given, none of *host*, *port*, *family*, *proto*, *flags*, "
+"*happy_eyeballs_delay*, *interleave* and *local_addr* should be specified."
+msgstr ""
+"*sock*, nếu được cung cấp, phải là một đối tượng :class:`socket.socket` hiện"
+" có, đã được kết nối để phương tiện vận chuyển sử dụng. Nếu *sock* được cung"
+" cấp thì không nên chỉ định *host*, *port*, *family*, *proto*, *flags*, "
+"*happy_eyeballs_delay*, *interleave* và *local_addr*."
+
+#: ../../library/asyncio-eventloop.rst:536
+#: ../../library/asyncio-eventloop.rst:658
+#: ../../library/asyncio-eventloop.rst:906
+#, fuzzy
+msgid ""
+"The *sock* argument transfers ownership of the socket to the transport "
+"created. To close the socket, call the transport's "
+":meth:`~asyncio.BaseTransport.close` method."
+msgstr ""
+"Đối số *sock* chuyển quyền sở hữu ổ cắm sang phương tiện truyền tải được "
+"tạo. Để đóng socket, hãy gọi phương thức "
+":meth:`~asyncio.BaseTransport.close` của phương tiện vận chuyển."
+
+#: ../../library/asyncio-eventloop.rst:540
+#, fuzzy
+msgid ""
+"*local_addr*, if given, is a ``(local_host, local_port)`` tuple used to bind"
+" the socket locally.  The *local_host* and *local_port* are looked up using "
+"``getaddrinfo()``, similarly to *host* and *port*."
+msgstr ""
+"*local_addr*, nếu được cung cấp, là một bộ ``(local_host, local_port)`` được"
+" sử dụng để liên kết ổ cắm cục bộ.  *local_host* và *local_port* được tra "
+"cứu bằng ``getaddrinfo()``, tương tự như *host* và *port*."
+
+#: ../../library/asyncio-eventloop.rst:544
+#: ../../library/asyncio-eventloop.rst:1002
+#, fuzzy
+msgid ""
+"*ssl_handshake_timeout* is (for a TLS connection) the time in seconds to "
+"wait for the TLS handshake to complete before aborting the connection. "
+"``60.0`` seconds if ``None`` (default)."
+msgstr ""
+"*ssl_handshake_timeout* là (đối với kết nối TLS) thời gian tính bằng giây để"
+" chờ quá trình bắt tay TLS hoàn tất trước khi hủy kết nối. ``60.0`` giây nếu"
+" ``None`` (mặc định)."
+
+#: ../../library/asyncio-eventloop.rst:548
+#: ../../library/asyncio-eventloop.rst:813
+#: ../../library/asyncio-eventloop.rst:917
+#: ../../library/asyncio-eventloop.rst:1006
+#, fuzzy
+msgid ""
+"*ssl_shutdown_timeout* is the time in seconds to wait for the SSL shutdown "
+"to complete before aborting the connection. ``30.0`` seconds if ``None`` "
+"(default)."
+msgstr ""
+"*ssl_shutdown_timeout* là thời gian tính bằng giây để chờ quá trình tắt SSL "
+"hoàn tất trước khi hủy kết nối. ``30.0`` giây nếu ``None`` (mặc định)."
+
+#: ../../library/asyncio-eventloop.rst:552
+#, fuzzy
+msgid ""
+"*all_errors* determines what exceptions are raised when a connection cannot "
+"be created. By default, only a single ``Exception`` is raised: the first "
+"exception if there is only one or all errors have same message, or a single "
+"``OSError`` with the error messages combined. When ``all_errors`` is "
+"``True``, an ``ExceptionGroup`` will be raised containing all exceptions "
+"(even if there is only one)."
+msgstr ""
+"*all_errors* xác định ngoại lệ nào được đưa ra khi không thể tạo kết nối. "
+"Theo mặc định, chỉ một ``Exception`` duy nhất được nêu ra: ngoại lệ đầu tiên"
+" nếu chỉ có một hoặc tất cả các lỗi có cùng một thông báo hoặc một "
+"``OSError`` duy nhất có các thông báo lỗi được kết hợp. Khi ``all_errors`` "
+"là ``True``, một ``ExceptionGroup`` sẽ được đưa ra chứa tất cả các ngoại lệ "
+"(ngay cả khi chỉ có một ngoại lệ)."
+
+#: ../../library/asyncio-eventloop.rst:562
+#: ../../library/asyncio-eventloop.rst:825
+#, fuzzy
+msgid "Added support for SSL/TLS in :class:`ProactorEventLoop`."
+msgstr "Đã thêm hỗ trợ cho SSL/TLS trong :class:`ProactorEventLoop`."
+
+#: ../../library/asyncio-eventloop.rst:566
+#, fuzzy
+msgid ""
+"The socket option :ref:`socket.TCP_NODELAY <socket-unix-constants>` is set "
+"by default for all TCP connections."
+msgstr ""
+"Tùy chọn ổ cắm :ref:`socket.TCP_NODELAY <socket-unix-constants>` được đặt "
+"theo mặc định cho tất cả các kết nối TCP."
+
+#: ../../library/asyncio-eventloop.rst:571
+#: ../../library/asyncio-eventloop.rst:927
+#, fuzzy
+msgid "Added the *ssl_handshake_timeout* parameter."
+msgstr "Đã thêm tham số *ssl_handshake_timeout*."
+
+#: ../../library/asyncio-eventloop.rst:575
+#, fuzzy
+msgid "Added the *happy_eyeballs_delay* and *interleave* parameters."
+msgstr "Đã thêm thông số *happy_eyeballs_delay* và *interleave*."
+
+#: ../../library/asyncio-eventloop.rst:577
+#, fuzzy
+msgid ""
+"Happy Eyeballs Algorithm: Success with Dual-Stack Hosts. When a server's "
+"IPv4 path and protocol are working, but the server's IPv6 path and protocol "
+"are not working, a dual-stack client application experiences significant "
+"connection delay compared to an IPv4-only client.  This is undesirable "
+"because it causes the dual-stack client to have a worse user experience.  "
+"This document specifies requirements for algorithms that reduce this user-"
+"visible delay and provides an algorithm."
+msgstr ""
+"Thuật toán Happy Eyeballs: Thành công với máy chủ ngăn xếp kép. Khi đường "
+"dẫn và giao thức IPv4 của máy chủ đang hoạt động nhưng đường dẫn và giao "
+"thức IPv6 của máy chủ không hoạt động, ứng dụng máy khách xếp chồng kép sẽ "
+"gặp phải độ trễ kết nối đáng kể so với máy khách chỉ có IPv4.  Điều này là "
+"không mong muốn vì nó khiến máy khách xếp chồng kép có trải nghiệm người "
+"dùng kém hơn.  Tài liệu này chỉ định các yêu cầu đối với các thuật toán giúp"
+" giảm độ trễ mà người dùng có thể nhìn thấy này và cung cấp thuật toán."
+
+#: ../../library/asyncio-eventloop.rst:586
+#, fuzzy
+msgid "For more information: https://datatracker.ietf.org/doc/html/rfc6555"
+msgstr "Để biết thêm thông tin: https://datatracker.ietf.org/doc/html/rfc6555"
+
+#: ../../library/asyncio-eventloop.rst:590
+#: ../../library/asyncio-eventloop.rst:722
+#: ../../library/asyncio-eventloop.rst:839
+#: ../../library/asyncio-eventloop.rst:879
+#: ../../library/asyncio-eventloop.rst:931
+#: ../../library/asyncio-eventloop.rst:1014
+#, fuzzy
+msgid "Added the *ssl_shutdown_timeout* parameter."
+msgstr "Đã thêm tham số *ssl_shutdown_timeout*."
+
+#: ../../library/asyncio-eventloop.rst:592
+#, fuzzy
+msgid "*all_errors* was added."
+msgstr "*all_errors* đã được thêm vào."
+
+#: ../../library/asyncio-eventloop.rst:597
+#, fuzzy
+msgid ""
+"The :func:`open_connection` function is a high-level alternative API.  It "
+"returns a pair of (:class:`StreamReader`, :class:`StreamWriter`) that can be"
+" used directly in async/await code."
+msgstr ""
+"Hàm :func:`open_connection` là một hàm API thay thế cấp cao.  Nó trả về một "
+"cặp (:class:`StreamReader`, :class:`StreamWriter`) có thể được sử dụng trực "
+"tiếp trong mã async/await."
+
+#: ../../library/asyncio-eventloop.rst:608
+#, fuzzy
+msgid "Create a datagram connection."
+msgstr "Tạo kết nối datagram."
+
+#: ../../library/asyncio-eventloop.rst:610
+#, fuzzy
+msgid ""
+"The socket family can be either :py:const:`~socket.AF_INET`, "
+":py:const:`~socket.AF_INET6`, or :py:const:`~socket.AF_UNIX`, depending on "
+"*host* (or the *family* argument, if provided)."
+msgstr ""
+"Họ socket có thể là :py:const:`~socket.AF_INET`, "
+":py:const:`~socket.AF_INET6` hoặc :py:const:`~socket.AF_UNIX`, tùy thuộc vào"
+" *host* (hoặc đối số *family*, nếu được cung cấp)."
+
+#: ../../library/asyncio-eventloop.rst:614
+#, fuzzy
+msgid "The socket type will be :py:const:`~socket.SOCK_DGRAM`."
+msgstr "Loại ổ cắm sẽ là :py:const:`~socket.SOCK_DGRAM`."
+
+#: ../../library/asyncio-eventloop.rst:616
+#: ../../library/asyncio-eventloop.rst:749
+#: ../../library/asyncio-eventloop.rst:898
+#, fuzzy
+msgid ""
+"*protocol_factory* must be a callable returning a :ref:`protocol <asyncio-"
+"protocol>` implementation."
+msgstr ""
+"*protocol_factory* phải là một phương thức có thể gọi được và trả về việc "
+"triển khai :ref:`protocol <asyncio-protocol>`."
+
+#: ../../library/asyncio-eventloop.rst:619
+#: ../../library/asyncio-eventloop.rst:704
+#, fuzzy
+msgid "A tuple of ``(transport, protocol)`` is returned on success."
+msgstr "Một bộ ``(transport, protocol)`` được trả về thành công."
+
+#: ../../library/asyncio-eventloop.rst:623
+#, fuzzy
+msgid ""
+"*local_addr*, if given, is a ``(local_host, local_port)`` tuple used to bind"
+" the socket locally.  The *local_host* and *local_port* are looked up using "
+":meth:`getaddrinfo`."
+msgstr ""
+"*local_addr*, nếu được cung cấp, là một bộ ``(local_host, local_port)`` được"
+" sử dụng để liên kết ổ cắm cục bộ.  *local_host* và *local_port* được tra "
+"cứu bằng :meth:`getaddrinfo`."
+
+#: ../../library/asyncio-eventloop.rst:629
+#, fuzzy
+msgid ""
+"On Windows, when using the proactor event loop with ``local_addr=None``, an "
+":exc:`OSError` with :attr:`!errno.WSAEINVAL` will be raised when running it."
+msgstr ""
+"Trên Windows, khi sử dụng vòng lặp sự kiện thước đo với ``local_addr=None``,"
+" :exc:`OSError` với :attr:`!errno.WSAEINVAL` sẽ được nâng lên khi chạy nó."
+
+#: ../../library/asyncio-eventloop.rst:633
+#, fuzzy
+msgid ""
+"*remote_addr*, if given, is a ``(remote_host, remote_port)`` tuple used to "
+"connect the socket to a remote address.  The *remote_host* and *remote_port*"
+" are looked up using :meth:`getaddrinfo`."
+msgstr ""
+"*remote_addr*, nếu được cung cấp, là một bộ ``(remote_host, remote_port)`` "
+"được sử dụng để kết nối ổ cắm với một địa chỉ từ xa.  *remote_host* và "
+"*remote_port* được tra cứu bằng :meth:`getaddrinfo`."
+
+#: ../../library/asyncio-eventloop.rst:637
+#, fuzzy
+msgid ""
+"*family*, *proto*, *flags* are the optional address family, protocol and "
+"flags to be passed through to :meth:`getaddrinfo` for *host* resolution. If "
+"given, these should all be integers from the corresponding :mod:`socket` "
+"module constants."
+msgstr ""
+"*family*, *proto*, *flags* là họ địa chỉ, giao thức và cờ tùy chọn được "
+"chuyển tới :meth:`getaddrinfo` để phân giải *host*. Nếu được cung cấp, tất "
+"cả các giá trị này phải là số nguyên từ hằng số mô-đun :mod:`socket` tương "
+"ứng."
+
+#: ../../library/asyncio-eventloop.rst:642
+#, fuzzy
+msgid ""
+"*reuse_port* tells the kernel to allow this endpoint to be bound to the same"
+" port as other existing endpoints are bound to, so long as they all set this"
+" flag when being created. This option is not supported on Windows and some "
+"Unixes. If the :ref:`socket.SO_REUSEPORT <socket-unix-constants>` constant "
+"is not defined then this capability is unsupported."
+msgstr ""
+"*reuse_port* yêu cầu kernel cho phép điểm cuối này được liên kết với cùng "
+"một cổng mà các điểm cuối hiện có khác được liên kết, miễn là tất cả chúng "
+"đều đặt cờ này khi được tạo. Tùy chọn này không được hỗ trợ trên Windows và "
+"một số Unix. Nếu hằng số :ref:`socket.SO_REUSEPORT <socket-unix-constants>` "
+"không được xác định thì khả năng này không được hỗ trợ."
+
+#: ../../library/asyncio-eventloop.rst:648
+#, fuzzy
+msgid ""
+"*allow_broadcast* tells the kernel to allow this endpoint to send messages "
+"to the broadcast address."
+msgstr ""
+"*allow_broadcast* yêu cầu kernel cho phép điểm cuối này gửi tin nhắn đến địa"
+" chỉ quảng bá."
+
+#: ../../library/asyncio-eventloop.rst:651
+#, fuzzy
+msgid ""
+"*sock* can optionally be specified in order to use a preexisting, already "
+"connected, :class:`socket.socket` object to be used by the transport. If "
+"specified, *local_addr* and *remote_addr* should be omitted (must be "
+":const:`None`)."
+msgstr ""
+"*sock* có thể được chỉ định tùy ý để sử dụng một đối tượng "
+":class:`socket.socket` có sẵn, đã được kết nối để vận chuyển sử dụng. Nếu "
+"được chỉ định, nên bỏ qua *local_addr* và *remote_addr* (phải là "
+":const:`None`)."
+
+#: ../../library/asyncio-eventloop.rst:662
+#, fuzzy
+msgid ""
+"See :ref:`UDP echo client protocol <asyncio-udp-echo-client-protocol>` and "
+":ref:`UDP echo server protocol <asyncio-udp-echo-server-protocol>` examples."
+msgstr ""
+"Xem ví dụ về :ref:`UDP echo client protocol <asyncio-udp-echo-client-"
+"protocol>` và :ref:`UDP echo server protocol <asyncio-udp-echo-server-"
+"protocol>`."
+
+#: ../../library/asyncio-eventloop.rst:665
+#, fuzzy
+msgid ""
+"The *family*, *proto*, *flags*, *reuse_address*, *reuse_port*, "
+"*allow_broadcast*, and *sock* parameters were added."
+msgstr ""
+"Các thông số *family*, *proto*, *flags*, *reuse_address*, *reuse_port*, "
+"*allow_broadcast* và *sock* đã được thêm vào."
+
+#: ../../library/asyncio-eventloop.rst:669
+#, fuzzy
+msgid "Added support for Windows."
+msgstr "Đã thêm hỗ trợ cho Windows."
+
+#: ../../library/asyncio-eventloop.rst:672
+#, fuzzy
+msgid ""
+"The *reuse_address* parameter is no longer supported, as using "
+":ref:`socket.SO_REUSEADDR <socket-unix-constants>` poses a significant "
+"security concern for UDP. Explicitly passing ``reuse_address=True`` will "
+"raise an exception."
+msgstr ""
+"Tham số *reuse_address* không còn được hỗ trợ vì việc sử dụng "
+":ref:`socket.SO_REUSEADDR <socket-unix-constants>` gây ra mối lo ngại đáng "
+"kể về bảo mật cho UDP. Việc chuyển ``reuse_address=True`` một cách rõ ràng "
+"sẽ tạo ra một ngoại lệ."
+
+#: ../../library/asyncio-eventloop.rst:678
+#, fuzzy
+msgid ""
+"When multiple processes with differing UIDs assign sockets to an identical "
+"UDP socket address with ``SO_REUSEADDR``, incoming packets can become "
+"randomly distributed among the sockets."
+msgstr ""
+"Khi nhiều quy trình có UID khác nhau gán các ổ cắm cho một địa chỉ ổ cắm UDP"
+" giống hệt nhau với ``SO_REUSEADDR``, các gói đến có thể được phân phối ngẫu"
+" nhiên giữa các ổ cắm."
+
+#: ../../library/asyncio-eventloop.rst:682
+#, fuzzy
+msgid ""
+"For supported platforms, *reuse_port* can be used as a replacement for "
+"similar functionality. With *reuse_port*, :ref:`socket.SO_REUSEPORT <socket-"
+"unix-constants>` is used instead, which specifically prevents processes with"
+" differing UIDs from assigning sockets to the same socket address."
+msgstr ""
+"Đối với các nền tảng được hỗ trợ, *reuse_port* có thể được sử dụng để thay "
+"thế cho chức năng tương tự. Với *reuse_port*, :ref:`socket.SO_REUSEPORT "
+"<socket-unix-constants>` được sử dụng thay thế, điều này đặc biệt ngăn chặn "
+"các quá trình có UID khác nhau gán các ổ cắm cho cùng một địa chỉ ổ cắm."
+
+#: ../../library/asyncio-eventloop.rst:689
+#, fuzzy
+msgid ""
+"The *reuse_address* parameter, disabled since Python 3.8.1, 3.7.6 and "
+"3.6.10, has been entirely removed."
+msgstr ""
+"Tham số *reuse_address*, bị tắt kể từ Python 3.8.1, 3.7.6 và 3.6.10, đã bị "
+"xóa hoàn toàn."
+
+#: ../../library/asyncio-eventloop.rst:699
+#, fuzzy
+msgid "Create a Unix connection."
+msgstr "Tạo kết nối Unix."
+
+#: ../../library/asyncio-eventloop.rst:701
+#, fuzzy
+msgid ""
+"The socket family will be :py:const:`~socket.AF_UNIX`; socket type will be "
+":py:const:`~socket.SOCK_STREAM`."
+msgstr ""
+"Họ socket sẽ là :py:const:`~socket.AF_UNIX`; loại ổ cắm sẽ là "
+":py:const:`~socket.SOCK_STREAM`."
+
+#: ../../library/asyncio-eventloop.rst:706
+#, fuzzy
+msgid ""
+"*path* is the name of a Unix domain socket and is required, unless a *sock* "
+"parameter is specified.  Abstract Unix sockets, :class:`str`, "
+":class:`bytes`, and :class:`~pathlib.Path` paths are supported."
+msgstr ""
+"*path* là tên của ổ cắm tên miền Unix và được yêu cầu, trừ khi tham số "
+"*sock* được chỉ định.  Hỗ trợ các ổ cắm Unix trừu tượng, đường dẫn "
+":class:`str`, :class:`bytes` và :class:`~pathlib.Path`."
+
+#: ../../library/asyncio-eventloop.rst:711
+#, fuzzy
+msgid ""
+"See the documentation of the :meth:`loop.create_connection` method for "
+"information about arguments to this method."
+msgstr ""
+"Xem tài liệu về phương pháp :meth:`loop.create_connection` để biết thông tin"
+" về các đối số của phương pháp này."
+
+#: ../../library/asyncio-eventloop.rst:714
+#: ../../library/asyncio-eventloop.rst:870
+#: ../../library/asyncio-eventloop.rst:1336
+#: ../../library/asyncio-eventloop.rst:1889
+#: ../../library/asyncio-eventloop.rst:1896
+#, fuzzy
+msgid "Availability"
+msgstr "sẵn có"
+
+#: ../../library/asyncio-eventloop.rst:716
+#, fuzzy
+msgid ""
+"Added the *ssl_handshake_timeout* parameter. The *path* parameter can now be"
+" a :term:`path-like object`."
+msgstr ""
+"Đã thêm tham số *ssl_handshake_timeout*. Tham số *path* bây giờ có thể là "
+":term:`path-like object`."
+
+#: ../../library/asyncio-eventloop.rst:726
+#, fuzzy
+msgid "Creating network servers"
+msgstr "Tạo máy chủ mạng"
+
+#: ../../library/asyncio-eventloop.rst:742
+#, fuzzy
+msgid ""
+"Create a TCP server (socket type :const:`~socket.SOCK_STREAM`) listening on "
+"*port* of the *host* address."
+msgstr ""
+"Tạo một máy chủ TCP (loại ổ cắm :const:`~socket.SOCK_STREAM`) nghe trên "
+"*port* của địa chỉ *host*."
+
+#: ../../library/asyncio-eventloop.rst:745
+#, fuzzy
+msgid "Returns a :class:`Server` object."
+msgstr "Trả về một đối tượng :class:`Server`."
+
+#: ../../library/asyncio-eventloop.rst:747
+#, fuzzy
+msgid "Arguments:"
+msgstr "Lập luận:"
+
+#: ../../library/asyncio-eventloop.rst:752
+#, fuzzy
+msgid ""
+"The *host* parameter can be set to several types which determine where the "
+"server would be listening:"
+msgstr ""
+"Tham số *host* có thể được đặt thành một số loại xác định nơi máy chủ sẽ "
+"lắng nghe:"
+
+#: ../../library/asyncio-eventloop.rst:755
+#, fuzzy
+msgid ""
+"If *host* is a string, the TCP server is bound to a single network interface"
+" specified by *host*."
+msgstr ""
+"Nếu *host* là một chuỗi, máy chủ TCP được liên kết với một giao diện mạng "
+"duy nhất được chỉ định bởi *host*."
+
+#: ../../library/asyncio-eventloop.rst:758
+#, fuzzy
+msgid ""
+"If *host* is a sequence of strings, the TCP server is bound to all network "
+"interfaces specified by the sequence."
+msgstr ""
+"Nếu *host* là một chuỗi các chuỗi, máy chủ TCP sẽ bị ràng buộc với tất cả "
+"các giao diện mạng được chỉ định bởi chuỗi đó."
+
+#: ../../library/asyncio-eventloop.rst:761
+#, fuzzy
+msgid ""
+"If *host* is an empty string or ``None``, all interfaces are assumed and a "
+"list of multiple sockets will be returned (most likely one for IPv4 and "
+"another one for IPv6)."
+msgstr ""
+"Nếu *host* là một chuỗi trống hoặc ``None``, tất cả các giao diện đều được "
+"giả định và một danh sách nhiều ổ cắm sẽ được trả về (rất có thể một ổ cắm "
+"cho IPv4 và một ổ cắm khác cho IPv6)."
+
+#: ../../library/asyncio-eventloop.rst:765
+#, fuzzy
+msgid ""
+"The *port* parameter can be set to specify which port the server should "
+"listen on. If ``0`` or ``None`` (the default), a random unused port will be "
+"selected (note that if *host* resolves to multiple network interfaces, a "
+"different random port will be selected for each interface)."
+msgstr ""
+"Tham số *port* có thể được đặt để chỉ định cổng nào máy chủ sẽ nghe. Nếu "
+"``0`` hoặc ``None`` (mặc định), một cổng ngẫu nhiên không được sử dụng sẽ "
+"được chọn (lưu ý rằng nếu *host* phân giải thành nhiều giao diện mạng thì "
+"một cổng ngẫu nhiên khác sẽ được chọn cho mỗi giao diện)."
+
+#: ../../library/asyncio-eventloop.rst:770
+#, fuzzy
+msgid ""
+"*family* can be set to either :const:`socket.AF_INET` or "
+":const:`~socket.AF_INET6` to force the socket to use IPv4 or IPv6. If not "
+"set, the *family* will be determined from host name (defaults to "
+":const:`~socket.AF_UNSPEC`)."
+msgstr ""
+"*family* có thể được đặt thành :const:`socket.AF_INET` hoặc "
+":const:`~socket.AF_INET6` để buộc ổ cắm sử dụng IPv4 hoặc IPv6. Nếu không "
+"được đặt, *family* sẽ được xác định từ tên máy chủ (mặc định là "
+":const:`~socket.AF_UNSPEC`)."
+
+#: ../../library/asyncio-eventloop.rst:775
+#, fuzzy
+msgid "*flags* is a bitmask for :meth:`getaddrinfo`."
+msgstr "*flags* là mặt nạ bit cho :meth:`getaddrinfo`."
+
+#: ../../library/asyncio-eventloop.rst:777
+#, fuzzy
+msgid ""
+"*sock* can optionally be specified in order to use a preexisting socket "
+"object. If specified, *host* and *port* must not be specified."
+msgstr ""
+"*sock* có thể được chỉ định tùy ý để sử dụng đối tượng ổ cắm có sẵn. Nếu "
+"được chỉ định thì không được chỉ định *host* và *port*."
+
+#: ../../library/asyncio-eventloop.rst:782
+#, fuzzy
+msgid ""
+"The *sock* argument transfers ownership of the socket to the server created."
+" To close the socket, call the server's :meth:`~asyncio.Server.close` "
+"method."
+msgstr ""
+"Đối số *sock* chuyển quyền sở hữu socket sang máy chủ đã tạo. Để đóng "
+"socket, hãy gọi phương thức :meth:`~asyncio.Server.close` của máy chủ."
+
+#: ../../library/asyncio-eventloop.rst:786
+#, fuzzy
+msgid ""
+"*backlog* is the maximum number of queued connections passed to "
+":meth:`~socket.socket.listen` (defaults to 100)."
+msgstr ""
+"*backlog* là số lượng kết nối được xếp hàng tối đa được chuyển tới "
+":meth:`~socket.socket.listen` (mặc định là 100)."
+
+#: ../../library/asyncio-eventloop.rst:789
+#, fuzzy
+msgid ""
+"*ssl* can be set to an :class:`~ssl.SSLContext` instance to enable TLS over "
+"the accepted connections."
+msgstr ""
+"*ssl* có thể được đặt thành phiên bản :class:`~ssl.SSLContext` để bật TLS "
+"qua các kết nối được chấp nhận."
+
+#: ../../library/asyncio-eventloop.rst:792
+#, fuzzy
+msgid ""
+"*reuse_address* tells the kernel to reuse a local socket in ``TIME_WAIT`` "
+"state, without waiting for its natural timeout to expire. If not specified "
+"will automatically be set to ``True`` on Unix."
+msgstr ""
+"*reuse_address* yêu cầu kernel sử dụng lại ổ cắm cục bộ ở trạng thái "
+"``TIME_WAIT`` mà không cần đợi hết thời gian chờ tự nhiên. Nếu không được "
+"chỉ định sẽ tự động được đặt thành ``True`` trên Unix."
+
+#: ../../library/asyncio-eventloop.rst:797
+#, fuzzy
+msgid ""
+"*reuse_port* tells the kernel to allow this endpoint to be bound to the same"
+" port as other existing endpoints are bound to, so long as they all set this"
+" flag when being created. This option is not supported on Windows."
+msgstr ""
+"*reuse_port* yêu cầu kernel cho phép điểm cuối này được liên kết với cùng "
+"một cổng mà các điểm cuối hiện có khác được liên kết, miễn là tất cả chúng "
+"đều đặt cờ này khi được tạo. Tùy chọn này không được hỗ trợ trên Windows."
+
+#: ../../library/asyncio-eventloop.rst:802
+#, fuzzy
+msgid ""
+"*keep_alive* set to ``True`` keeps connections active by enabling the "
+"periodic transmission of messages."
+msgstr ""
+"*keep_alive* được đặt thành ``True`` sẽ duy trì kết nối hoạt động bằng cách "
+"cho phép truyền tin nhắn định kỳ."
+
+#: ../../library/asyncio-eventloop.rst:807
+#, fuzzy
+msgid "Added the *keep_alive* parameter."
+msgstr "Đã thêm tham số *keep_alive*."
+
+#: ../../library/asyncio-eventloop.rst:809
+#, fuzzy
+msgid ""
+"*ssl_handshake_timeout* is (for a TLS server) the time in seconds to wait "
+"for the TLS handshake to complete before aborting the connection. ``60.0`` "
+"seconds if ``None`` (default)."
+msgstr ""
+"*ssl_handshake_timeout* là (đối với máy chủ TLS) thời gian tính bằng giây để"
+" chờ quá trình bắt tay TLS hoàn tất trước khi hủy kết nối. ``60.0`` giây nếu"
+" ``None`` (mặc định)."
+
+#: ../../library/asyncio-eventloop.rst:817
+#, fuzzy
+msgid ""
+"*start_serving* set to ``True`` (the default) causes the created server to "
+"start accepting connections immediately.  When set to ``False``, the user "
+"should await on :meth:`Server.start_serving` or :meth:`Server.serve_forever`"
+" to make the server to start accepting connections."
+msgstr ""
+"*start_serving* được đặt thành ``True`` (mặc định) khiến máy chủ đã tạo bắt "
+"đầu chấp nhận kết nối ngay lập tức.  Khi được đặt thành ``False``, người "
+"dùng nên đợi trên :meth:`Server.start_serving` hoặc "
+":meth:`Server.serve_forever` để yêu cầu máy chủ bắt đầu chấp nhận kết nối."
+
+#: ../../library/asyncio-eventloop.rst:829
+#, fuzzy
+msgid "The *host* parameter can be a sequence of strings."
+msgstr "Tham số *host* có thể là một chuỗi các chuỗi."
+
+#: ../../library/asyncio-eventloop.rst:833
+#, fuzzy
+msgid ""
+"Added *ssl_handshake_timeout* and *start_serving* parameters. The socket "
+"option :ref:`socket.TCP_NODELAY <socket-unix-constants>` is set by default "
+"for all TCP connections."
+msgstr ""
+"Đã thêm thông số *ssl_handshake_timeout* và *start_serving*. Tùy chọn ổ cắm "
+":ref:`socket.TCP_NODELAY <socket-unix-constants>` được đặt theo mặc định cho"
+" tất cả các kết nối TCP."
+
+#: ../../library/asyncio-eventloop.rst:843
+#, fuzzy
+msgid ""
+"The :func:`start_server` function is a higher-level alternative API that "
+"returns a pair of :class:`StreamReader` and :class:`StreamWriter` that can "
+"be used in an async/await code."
+msgstr ""
+"Hàm :func:`start_server` là một hàm API thay thế cấp cao hơn trả về một cặp "
+":class:`StreamReader` và :class:`StreamWriter` có thể được sử dụng trong mã "
+"async/await."
+
+#: ../../library/asyncio-eventloop.rst:855
+#, fuzzy
+msgid ""
+"Similar to :meth:`loop.create_server` but works with the "
+":py:const:`~socket.AF_UNIX` socket family."
+msgstr ""
+"Tương tự như :meth:`loop.create_server` nhưng hoạt động với dòng ổ cắm "
+":py:const:`~socket.AF_UNIX`."
+
+#: ../../library/asyncio-eventloop.rst:858
+#, fuzzy
+msgid ""
+"*path* is the name of a Unix domain socket, and is required, unless a *sock*"
+" argument is provided.  Abstract Unix sockets, :class:`str`, :class:`bytes`,"
+" and :class:`~pathlib.Path` paths are supported."
+msgstr ""
+"*path* là tên của ổ cắm tên miền Unix và được yêu cầu, trừ khi đối số *sock*"
+" được cung cấp.  Hỗ trợ các ổ cắm Unix trừu tượng, đường dẫn :class:`str`, "
+":class:`bytes` và :class:`~pathlib.Path`."
+
+#: ../../library/asyncio-eventloop.rst:863
+#, fuzzy
+msgid ""
+"If *cleanup_socket* is true then the Unix socket will automatically be "
+"removed from the filesystem when the server is closed, unless the socket has"
+" been replaced after the server has been created."
+msgstr ""
+"Nếu *cleanup_socket* là đúng thì ổ cắm Unix sẽ tự động bị xóa khỏi hệ thống "
+"tập tin khi máy chủ đóng, trừ khi ổ cắm đó đã được thay thế sau khi máy chủ "
+"được tạo."
+
+#: ../../library/asyncio-eventloop.rst:867
+#, fuzzy
+msgid ""
+"See the documentation of the :meth:`loop.create_server` method for "
+"information about arguments to this method."
+msgstr ""
+"Xem tài liệu về phương pháp :meth:`loop.create_server` để biết thông tin về "
+"các đối số của phương pháp này."
+
+#: ../../library/asyncio-eventloop.rst:874
+#, fuzzy
+msgid ""
+"Added the *ssl_handshake_timeout* and *start_serving* parameters. The *path*"
+" parameter can now be a :class:`~pathlib.Path` object."
+msgstr ""
+"Đã thêm thông số *ssl_handshake_timeout* và *start_serving*. Tham số *path* "
+"hiện có thể là đối tượng :class:`~pathlib.Path`."
+
+#: ../../library/asyncio-eventloop.rst:883
+#, fuzzy
+msgid "Added the *cleanup_socket* parameter."
+msgstr "Đã thêm tham số *cleanup_socket*."
+
+#: ../../library/asyncio-eventloop.rst:891
+#, fuzzy
+msgid "Wrap an already accepted connection into a transport/protocol pair."
+msgstr "Gói một kết nối đã được chấp nhận vào một cặp truyền tải/giao thức."
+
+#: ../../library/asyncio-eventloop.rst:893
+#, fuzzy
+msgid ""
+"This method can be used by servers that accept connections outside of "
+"asyncio but that use asyncio to handle them."
+msgstr ""
+"Phương pháp này có thể được sử dụng bởi các máy chủ chấp nhận kết nối bên "
+"ngoài asyncio nhưng sử dụng asyncio để xử lý chúng."
+
+#: ../../library/asyncio-eventloop.rst:896
+#: ../../library/asyncio-eventloop.rst:988
+#, fuzzy
+msgid "Parameters:"
+msgstr "Thông số:"
+
+#: ../../library/asyncio-eventloop.rst:901
+#, fuzzy
+msgid ""
+"*sock* is a preexisting socket object returned from :meth:`socket.accept "
+"<socket.socket.accept>`."
+msgstr ""
+"*sock* là một đối tượng socket có sẵn được trả về từ :meth:`socket.accept "
+"<socket.socket.accept>`."
+
+#: ../../library/asyncio-eventloop.rst:910
+#, fuzzy
+msgid ""
+"*ssl* can be set to an :class:`~ssl.SSLContext` to enable SSL over the "
+"accepted connections."
+msgstr ""
+"*ssl* có thể được đặt thành :class:`~ssl.SSLContext` để bật SSL qua các kết "
+"nối được chấp nhận."
+
+#: ../../library/asyncio-eventloop.rst:913
+#, fuzzy
+msgid ""
+"*ssl_handshake_timeout* is (for an SSL connection) the time in seconds to "
+"wait for the SSL handshake to complete before aborting the connection. "
+"``60.0`` seconds if ``None`` (default)."
+msgstr ""
+"*ssl_handshake_timeout* là (đối với kết nối SSL) thời gian tính bằng giây để"
+" chờ quá trình bắt tay SSL hoàn tất trước khi hủy kết nối. ``60.0`` giây nếu"
+" ``None`` (mặc định)."
+
+#: ../../library/asyncio-eventloop.rst:921
+#, fuzzy
+msgid "Returns a ``(transport, protocol)`` pair."
+msgstr "Trả về một cặp ``(transport, protocol)``."
+
+#: ../../library/asyncio-eventloop.rst:935
+#, fuzzy
+msgid "Transferring files"
+msgstr "Truyền tập tin"
+
+#: ../../library/asyncio-eventloop.rst:941
+#, fuzzy
+msgid ""
+"Send a *file* over a *transport*.  Return the total number of bytes sent."
+msgstr "Gửi *file* qua *transport*.  Trả về tổng số byte đã gửi."
+
+#: ../../library/asyncio-eventloop.rst:944
+#, fuzzy
+msgid "The method uses high-performance :meth:`os.sendfile` if available."
+msgstr "Phương pháp sử dụng :meth:`os.sendfile` hiệu suất cao nếu có."
+
+#: ../../library/asyncio-eventloop.rst:946
+#, fuzzy
+msgid "*file* must be a regular file object opened in binary mode."
+msgstr "*file* phải là đối tượng tệp thông thường được mở ở chế độ nhị phân."
+
+#: ../../library/asyncio-eventloop.rst:948
+#: ../../library/asyncio-eventloop.rst:1209
+#, fuzzy
+msgid ""
+"*offset* tells from where to start reading the file. If specified, *count* "
+"is the total number of bytes to transmit as opposed to sending the file "
+"until EOF is reached. File position is always updated, even when this method"
+" raises an error, and :meth:`file.tell() <io.IOBase.tell>` can be used to "
+"obtain the actual number of bytes sent."
+msgstr ""
+"*offset* cho biết bắt đầu đọc tệp từ đâu. Nếu được chỉ định, *count* là tổng"
+" số byte cần truyền thay vì gửi tệp cho đến khi đạt được EOF. Vị trí tệp "
+"luôn được cập nhật, ngay cả khi phương pháp này phát sinh lỗi và "
+":meth:`file.tell() <io.IOBase.tell>` có thể được sử dụng để lấy số byte thực"
+" tế được gửi."
+
+#: ../../library/asyncio-eventloop.rst:955
+#, fuzzy
+msgid ""
+"*fallback* set to ``True`` makes asyncio to manually read and send the file "
+"when the platform does not support the sendfile system call (e.g. Windows or"
+" SSL socket on Unix)."
+msgstr ""
+"*fallback* được đặt thành ``True`` khiến asyncio đọc và gửi tệp theo cách "
+"thủ công khi nền tảng không hỗ trợ lệnh gọi hệ thống sendfile (ví dụ: ổ cắm "
+"Windows hoặc SSL trên Unix)."
+
+#: ../../library/asyncio-eventloop.rst:959
+#, fuzzy
+msgid ""
+"Raise :exc:`SendfileNotAvailableError` if the system does not support the "
+"*sendfile* syscall and *fallback* is ``False``."
+msgstr ""
+"Tăng :exc:`SendfileNotAvailableError` nếu hệ thống không hỗ trợ tòa nhà "
+"*sendfile* và *fallback* là ``False``."
+
+#: ../../library/asyncio-eventloop.rst:966
+#, fuzzy
+msgid "TLS upgrade"
+msgstr "nâng cấp TLS"
+
+#: ../../library/asyncio-eventloop.rst:974
+#, fuzzy
+msgid "Upgrade an existing transport-based connection to TLS."
+msgstr "Nâng cấp kết nối dựa trên truyền tải hiện có lên TLS."
+
+#: ../../library/asyncio-eventloop.rst:976
+#, fuzzy
+msgid ""
+"Create a TLS coder/decoder instance and insert it between the *transport* "
+"and the *protocol*. The coder/decoder implements both *transport*-facing "
+"protocol and *protocol*-facing transport."
+msgstr ""
+"Tạo một phiên bản bộ mã hóa/giải mã TLS và chèn nó vào giữa *transport* và "
+"*protocol*. Bộ mã hóa/bộ giải mã thực hiện cả giao thức hướng tới "
+"*transport* và truyền tải hướng tới *protocol*."
+
+#: ../../library/asyncio-eventloop.rst:980
+#, fuzzy
+msgid ""
+"Return the created two-interface instance. After *await*, the *protocol* "
+"must stop using the original *transport* and communicate with the returned "
+"object only because the coder caches *protocol*-side data and sporadically "
+"exchanges extra TLS session packets with *transport*."
+msgstr ""
+"Trả về phiên bản hai giao diện đã tạo. Sau *await*, *protocol* phải ngừng sử"
+" dụng *transport* ban đầu và chỉ liên lạc với đối tượng được trả về vì bộ mã"
+" hóa lưu trữ dữ liệu phía *protocol* và thỉnh thoảng trao đổi các gói phiên "
+"TLS bổ sung với *transport*."
+
+#: ../../library/asyncio-eventloop.rst:985
+#, fuzzy
+msgid ""
+"In some situations (e.g. when the passed transport is already closing) this "
+"may return ``None``."
+msgstr ""
+"Trong một số trường hợp (ví dụ: khi quá trình vận chuyển đã qua đã đóng), "
+"điều này có thể trả về ``None``."
+
+#: ../../library/asyncio-eventloop.rst:990
+#, fuzzy
+msgid ""
+"*transport* and *protocol* instances that methods like "
+":meth:`~loop.create_server` and :meth:`~loop.create_connection` return."
+msgstr ""
+"*transport* và *protocol* các trường hợp mà các phương thức như "
+":meth:`~loop.create_server` và :meth:`~loop.create_connection` trả về."
+
+#: ../../library/asyncio-eventloop.rst:994
+#, fuzzy
+msgid "*sslcontext*: a configured instance of :class:`~ssl.SSLContext`."
+msgstr ""
+"*sslcontext*: phiên bản được định cấu hình của :class:`~ssl.SSLContext`."
+
+#: ../../library/asyncio-eventloop.rst:996
+#, fuzzy
+msgid ""
+"*server_side* pass ``True`` when a server-side connection is being upgraded "
+"(like the one created by :meth:`~loop.create_server`)."
+msgstr ""
+"*server_side* vượt qua ``True`` khi kết nối phía máy chủ đang được nâng cấp "
+"(giống như kết nối được tạo bởi :meth:`~loop.create_server`)."
+
+#: ../../library/asyncio-eventloop.rst:999
+#, fuzzy
+msgid ""
+"*server_hostname*: sets or overrides the host name that the target server's "
+"certificate will be matched against."
+msgstr ""
+"*server_hostname*: đặt hoặc ghi đè tên máy chủ mà chứng chỉ của máy chủ mục "
+"tiêu sẽ được so khớp."
+
+#: ../../library/asyncio-eventloop.rst:1019
+#, fuzzy
+msgid "Watching file descriptors"
+msgstr "Xem mô tả tập tin"
+
+#: ../../library/asyncio-eventloop.rst:1023
+#, fuzzy
+msgid ""
+"Start monitoring the *fd* file descriptor for read availability and invoke "
+"*callback* with the specified arguments once *fd* is available for reading."
+msgstr ""
+"Bắt đầu theo dõi bộ mô tả tệp *fd* để biết khả năng đọc và gọi *callback* "
+"với các đối số được chỉ định khi *fd* có sẵn để đọc."
+
+#: ../../library/asyncio-eventloop.rst:1027
+#: ../../library/asyncio-eventloop.rst:1041
+#, fuzzy
+msgid ""
+"Any preexisting callback registered for *fd* is cancelled and replaced by "
+"*callback*."
+msgstr ""
+"Mọi lệnh gọi lại hiện có đã đăng ký cho *fd* đều bị hủy và được thay thế "
+"bằng *callback*."
+
+#: ../../library/asyncio-eventloop.rst:1032
+#, fuzzy
+msgid ""
+"Stop monitoring the *fd* file descriptor for read availability. Returns "
+"``True`` if *fd* was previously being monitored for reads."
+msgstr ""
+"Dừng theo dõi bộ mô tả tệp *fd* để biết khả năng đọc. Trả về ``True`` nếu "
+"*fd* trước đó đã được theo dõi để đọc."
+
+#: ../../library/asyncio-eventloop.rst:1037
+#, fuzzy
+msgid ""
+"Start monitoring the *fd* file descriptor for write availability and invoke "
+"*callback* with the specified arguments *args* once *fd* is available for "
+"writing."
+msgstr ""
+"Bắt đầu theo dõi bộ mô tả tệp *fd* để biết khả năng ghi và gọi *callback* "
+"với các đối số được chỉ định *args* khi *fd* có sẵn để ghi."
+
+#: ../../library/asyncio-eventloop.rst:1044
+#: ../../library/asyncio-eventloop.rst:1323
+#, fuzzy
+msgid ""
+"Use :func:`functools.partial` :ref:`to pass keyword arguments <asyncio-pass-"
+"keywords>` to *callback*."
+msgstr ""
+"Sử dụng :func:`functools.partial` :ref:`to pass keyword arguments <asyncio-"
+"pass-keywords>` đến *callback*."
+
+#: ../../library/asyncio-eventloop.rst:1049
+#, fuzzy
+msgid ""
+"Stop monitoring the *fd* file descriptor for write availability. Returns "
+"``True`` if *fd* was previously being monitored for writes."
+msgstr ""
+"Dừng theo dõi bộ mô tả tệp *fd* để biết khả năng ghi. Trả về ``True`` nếu "
+"*fd* trước đó đã được theo dõi để ghi."
+
+#: ../../library/asyncio-eventloop.rst:1052
+#, fuzzy
+msgid ""
+"See also :ref:`Platform Support <asyncio-platform-support>` section for some"
+" limitations of these methods."
+msgstr ""
+"Xem thêm phần :ref:`Platform Support <asyncio-platform-support>` để biết một"
+" số hạn chế của các phương pháp này."
+
+#: ../../library/asyncio-eventloop.rst:1057
+#, fuzzy
+msgid "Working with socket objects directly"
+msgstr "Làm việc trực tiếp với các đối tượng socket"
+
+#: ../../library/asyncio-eventloop.rst:1059
+#, fuzzy
+msgid ""
+"In general, protocol implementations that use transport-based APIs such as "
+":meth:`loop.create_connection` and :meth:`loop.create_server` are faster "
+"than implementations that work with sockets directly. However, there are "
+"some use cases when performance is not critical, and working with "
+":class:`~socket.socket` objects directly is more convenient."
+msgstr ""
+"Nhìn chung, việc triển khai giao thức sử dụng các API dựa trên truyền tải "
+"như :meth:`loop.create_connection` và :meth:`loop.create_server` sẽ nhanh "
+"hơn so với các triển khai hoạt động trực tiếp với ổ cắm. Tuy nhiên, có một "
+"số trường hợp sử dụng khi hiệu suất không quan trọng và làm việc trực tiếp "
+"với các đối tượng :class:`~socket.socket` sẽ thuận tiện hơn."
+
+#: ../../library/asyncio-eventloop.rst:1069
+#, fuzzy
+msgid ""
+"Receive up to *nbytes* from *sock*.  Asynchronous version of "
+":meth:`socket.recv() <socket.socket.recv>`."
+msgstr ""
+"Nhận tới *nbytes* từ *sock*.  Phiên bản không đồng bộ của "
+":meth:`socket.recv() <socket.socket.recv>`."
+
+#: ../../library/asyncio-eventloop.rst:1072
+#, fuzzy
+msgid "Return the received data as a bytes object."
+msgstr "Trả về dữ liệu đã nhận dưới dạng đối tượng byte."
+
+#: ../../library/asyncio-eventloop.rst:1074
+#: ../../library/asyncio-eventloop.rst:1089
+#: ../../library/asyncio-eventloop.rst:1101
+#: ../../library/asyncio-eventloop.rst:1114
+#: ../../library/asyncio-eventloop.rst:1130
+#: ../../library/asyncio-eventloop.rst:1146
+#: ../../library/asyncio-eventloop.rst:1157
+#: ../../library/asyncio-eventloop.rst:1184
+#: ../../library/asyncio-eventloop.rst:1223
+#, fuzzy
+msgid "*sock* must be a non-blocking socket."
+msgstr "*sock* phải là ổ cắm không chặn."
+
+#: ../../library/asyncio-eventloop.rst:1076
+#, fuzzy
+msgid ""
+"Even though this method was always documented as a coroutine method, "
+"releases before Python 3.7 returned a :class:`Future`. Since Python 3.7 this"
+" is an ``async def`` method."
+msgstr ""
+"Mặc dù phương thức này luôn được ghi lại dưới dạng phương thức coroutine, "
+"các bản phát hành trước Python 3.7 đều trả về :class:`Future`. Vì Python 3.7"
+" nên đây là phương thức ``async def``."
+
+#: ../../library/asyncio-eventloop.rst:1084
+#, fuzzy
+msgid ""
+"Receive data from *sock* into the *buf* buffer.  Modeled after the blocking "
+":meth:`socket.recv_into() <socket.socket.recv_into>` method."
+msgstr ""
+"Nhận dữ liệu từ *sock* vào bộ đệm *buf*.  Được mô hình hóa theo phương pháp "
+"chặn :meth:`socket.recv_into() <socket.socket.recv_into>`."
+
+#: ../../library/asyncio-eventloop.rst:1087
+#, fuzzy
+msgid "Return the number of bytes written to the buffer."
+msgstr "Trả về số byte được ghi vào bộ đệm."
+
+#: ../../library/asyncio-eventloop.rst:1096
+#, fuzzy
+msgid ""
+"Receive a datagram of up to *bufsize* from *sock*.  Asynchronous version of "
+":meth:`socket.recvfrom() <socket.socket.recvfrom>`."
+msgstr ""
+"Nhận datagram lên tới *bufsize* từ *sock*.  Phiên bản không đồng bộ của "
+":meth:`socket.recvfrom() <socket.socket.recvfrom>`."
+
+#: ../../library/asyncio-eventloop.rst:1099
+#, fuzzy
+msgid "Return a tuple of (received data, remote address)."
+msgstr "Trả về một bộ dữ liệu (dữ liệu đã nhận, địa chỉ từ xa)."
+
+#: ../../library/asyncio-eventloop.rst:1108
+#, fuzzy
+msgid ""
+"Receive a datagram of up to *nbytes* from *sock* into *buf*. Asynchronous "
+"version of :meth:`socket.recvfrom_into() <socket.socket.recvfrom_into>`."
+msgstr ""
+"Nhận datagram lên tới *nbytes* từ *sock* vào *buf*. Phiên bản không đồng bộ "
+"của :meth:`socket.recvfrom_into() <socket.socket.recvfrom_into>`."
+
+#: ../../library/asyncio-eventloop.rst:1112
+#, fuzzy
+msgid "Return a tuple of (number of bytes received, remote address)."
+msgstr "Trả về một bộ dữ liệu (số byte nhận được, địa chỉ từ xa)."
+
+#: ../../library/asyncio-eventloop.rst:1121
+#, fuzzy
+msgid ""
+"Send *data* to the *sock* socket. Asynchronous version of "
+":meth:`socket.sendall() <socket.socket.sendall>`."
+msgstr ""
+"Gửi *data* đến ổ cắm *sock*. Phiên bản không đồng bộ của "
+":meth:`socket.sendall() <socket.socket.sendall>`."
+
+#: ../../library/asyncio-eventloop.rst:1124
+#, fuzzy
+msgid ""
+"This method continues to send to the socket until either all data in *data* "
+"has been sent or an error occurs.  ``None`` is returned on success.  On "
+"error, an exception is raised. Additionally, there is no way to determine "
+"how much data, if any, was successfully processed by the receiving end of "
+"the connection."
+msgstr ""
+"Phương thức này tiếp tục gửi đến ổ cắm cho đến khi tất cả dữ liệu trong "
+"*data* đã được gửi hoặc xảy ra lỗi.  ``None`` được trả về thành công.  Khi "
+"có lỗi, một ngoại lệ được đưa ra. Ngoài ra, không có cách nào để xác định "
+"lượng dữ liệu, nếu có, đã được xử lý thành công ở đầu nhận của kết nối."
+
+#: ../../library/asyncio-eventloop.rst:1132
+#: ../../library/asyncio-eventloop.rst:1186
+#, fuzzy
+msgid ""
+"Even though the method was always documented as a coroutine method, before "
+"Python 3.7 it returned a :class:`Future`. Since Python 3.7, this is an "
+"``async def`` method."
+msgstr ""
+"Mặc dù phương thức này luôn được ghi lại dưới dạng phương thức coroutine, "
+"nhưng trước Python 3.7, nó trả về :class:`Future`. Kể từ Python 3.7, đây là "
+"phương thức ``async def``."
+
+#: ../../library/asyncio-eventloop.rst:1140
+#, fuzzy
+msgid ""
+"Send a datagram from *sock* to *address*. Asynchronous version of "
+":meth:`socket.sendto() <socket.socket.sendto>`."
+msgstr ""
+"Gửi một datagram từ *sock* đến *address*. Phiên bản không đồng bộ của "
+":meth:`socket.sendto() <socket.socket.sendto>`."
+
+#: ../../library/asyncio-eventloop.rst:1144
+#, fuzzy
+msgid "Return the number of bytes sent."
+msgstr "Trả về số byte đã gửi."
+
+#: ../../library/asyncio-eventloop.rst:1153
+#, fuzzy
+msgid "Connect *sock* to a remote socket at *address*."
+msgstr "Kết nối *sock* với ổ cắm từ xa tại *address*."
+
+#: ../../library/asyncio-eventloop.rst:1155
+#, fuzzy
+msgid ""
+"Asynchronous version of :meth:`socket.connect() <socket.socket.connect>`."
+msgstr ""
+"Phiên bản không đồng bộ của :meth:`socket.connect() "
+"<socket.socket.connect>`."
+
+#: ../../library/asyncio-eventloop.rst:1159
+#, fuzzy
+msgid ""
+"``address`` no longer needs to be resolved.  ``sock_connect`` will try to "
+"check if the *address* is already resolved by calling "
+":func:`socket.inet_pton`.  If not, :meth:`loop.getaddrinfo` will be used to "
+"resolve the *address*."
+msgstr ""
+"``address`` không cần phải giải quyết nữa.  ``sock_connect`` sẽ thử kiểm tra"
+" xem *address* đã được giải quyết chưa bằng cách gọi "
+":func:`socket.inet_pton`.  Nếu không, :meth:`loop.getaddrinfo` sẽ được sử "
+"dụng để giải quyết *address*."
+
+#: ../../library/asyncio-eventloop.rst:1168
+#, fuzzy
+msgid ""
+":meth:`loop.create_connection` and  :func:`asyncio.open_connection() "
+"<open_connection>`."
+msgstr ""
+":meth:`loop.create_connection` và :func:`asyncio.open_connection() "
+"<open_connection>`."
+
+#: ../../library/asyncio-eventloop.rst:1175
+#, fuzzy
+msgid ""
+"Accept a connection.  Modeled after the blocking :meth:`socket.accept() "
+"<socket.socket.accept>` method."
+msgstr ""
+"Chấp nhận một kết nối.  Được mô hình hóa theo phương pháp chặn "
+":meth:`socket.accept() <socket.socket.accept>`."
+
+#: ../../library/asyncio-eventloop.rst:1178
+#, fuzzy
+msgid ""
+"The socket must be bound to an address and listening for connections. The "
+"return value is a pair ``(conn, address)`` where *conn* is a *new* socket "
+"object usable to send and receive data on the connection, and *address* is "
+"the address bound to the socket on the other end of the connection."
+msgstr ""
+"Ổ cắm phải được liên kết với một địa chỉ và lắng nghe các kết nối. Giá trị "
+"trả về là một cặp ``(conn, address)`` trong đó *conn* là đối tượng ổ cắm "
+"*new* có thể sử dụng để gửi và nhận dữ liệu trên kết nối và *address* là địa"
+" chỉ được liên kết với ổ cắm ở đầu bên kia của kết nối."
+
+#: ../../library/asyncio-eventloop.rst:1193
+#, fuzzy
+msgid ":meth:`loop.create_server` and :func:`start_server`."
+msgstr ":meth:`loop.create_server` và :func:`start_server`."
+
+#: ../../library/asyncio-eventloop.rst:1199
+#, fuzzy
+msgid ""
+"Send a file using high-performance :mod:`os.sendfile` if possible. Return "
+"the total number of bytes sent."
+msgstr ""
+"Gửi tệp bằng :mod:`os.sendfile` hiệu suất cao nếu có thể. Trả về tổng số "
+"byte đã gửi."
+
+#: ../../library/asyncio-eventloop.rst:1202
+#, fuzzy
+msgid ""
+"Asynchronous version of :meth:`socket.sendfile() <socket.socket.sendfile>`."
+msgstr ""
+"Phiên bản không đồng bộ của :meth:`socket.sendfile() "
+"<socket.socket.sendfile>`."
+
+#: ../../library/asyncio-eventloop.rst:1204
+#, fuzzy
+msgid ""
+"*sock* must be a non-blocking :const:`socket.SOCK_STREAM` "
+":class:`~socket.socket`."
+msgstr ""
+"*sock* phải là :const:`socket.SOCK_STREAM` :class:`~socket.socket` không "
+"chặn."
+
+#: ../../library/asyncio-eventloop.rst:1207
+#, fuzzy
+msgid "*file* must be a regular file object open in binary mode."
+msgstr "*file* phải là đối tượng tệp thông thường mở ở chế độ nhị phân."
+
+#: ../../library/asyncio-eventloop.rst:1216
+#, fuzzy
+msgid ""
+"*fallback*, when set to ``True``, makes asyncio manually read and send the "
+"file when the platform does not support the sendfile syscall (e.g. Windows "
+"or SSL socket on Unix)."
+msgstr ""
+"*fallback*, khi được đặt thành ``True``, sẽ khiến asyncio đọc và gửi tệp "
+"theo cách thủ công khi nền tảng không hỗ trợ tòa nhà sendfile (ví dụ: ổ cắm "
+"Windows hoặc SSL trên Unix)."
+
+#: ../../library/asyncio-eventloop.rst:1220
+#, fuzzy
+msgid ""
+"Raise :exc:`SendfileNotAvailableError` if the system does not support "
+"*sendfile* syscall and *fallback* is ``False``."
+msgstr ""
+"Tăng :exc:`SendfileNotAvailableError` nếu hệ thống không hỗ trợ *sendfile* "
+"syscall và *fallback* là ``False``."
+
+#: ../../library/asyncio-eventloop.rst:1229
+#, fuzzy
+msgid "DNS"
+msgstr "DNS"
+
+#: ../../library/asyncio-eventloop.rst:1235
+#, fuzzy
+msgid "Asynchronous version of :meth:`socket.getaddrinfo`."
+msgstr "Phiên bản không đồng bộ của :meth:`socket.getaddrinfo`."
+
+#: ../../library/asyncio-eventloop.rst:1240
+#, fuzzy
+msgid "Asynchronous version of :meth:`socket.getnameinfo`."
+msgstr "Phiên bản không đồng bộ của :meth:`socket.getnameinfo`."
+
+#: ../../library/asyncio-eventloop.rst:1243
+#, fuzzy
+msgid ""
+"Both *getaddrinfo* and *getnameinfo* internally utilize their synchronous "
+"versions through the loop's default thread pool executor. When this executor"
+" is saturated, these methods may experience delays, which higher-level "
+"networking libraries may report as increased timeouts. To mitigate this, "
+"consider using a custom executor for other user tasks, or setting a default "
+"executor with a larger number of workers."
+msgstr ""
+"Cả *getaddrinfo* và *getnameinfo* đều sử dụng nội bộ các phiên bản đồng bộ "
+"của chúng thông qua trình thực thi nhóm luồng mặc định của vòng lặp. Khi "
+"trình thực thi này bão hòa, các phương pháp này có thể gặp phải sự chậm trễ "
+"mà các thư viện mạng cấp cao hơn có thể báo cáo là thời gian chờ tăng lên. "
+"Để giảm thiểu điều này, hãy cân nhắc sử dụng trình thực thi tùy chỉnh cho "
+"các tác vụ khác của người dùng hoặc đặt trình thực thi mặc định với số lượng"
+" nhân viên lớn hơn."
+
+#: ../../library/asyncio-eventloop.rst:1250
+#, fuzzy
+msgid ""
+"Both *getaddrinfo* and *getnameinfo* methods were always documented to "
+"return a coroutine, but prior to Python 3.7 they were, in fact, returning "
+":class:`asyncio.Future` objects.  Starting with Python 3.7 both methods are "
+"coroutines."
+msgstr ""
+"Cả hai phương thức *getaddrinfo* và *getnameinfo* đều luôn được ghi lại để "
+"trả về một coroutine, nhưng trước Python 3.7, trên thực tế, chúng đã trả về "
+"các đối tượng :class:`asyncio.Future`.  Bắt đầu với Python 3.7, cả hai "
+"phương thức đều là coroutine."
+
+#: ../../library/asyncio-eventloop.rst:1258
+#, fuzzy
+msgid "Working with pipes"
+msgstr "Làm việc với đường ống"
+
+#: ../../library/asyncio-eventloop.rst:1263
+#, fuzzy
+msgid "Register the read end of *pipe* in the event loop."
+msgstr "Đăng ký phần cuối đọc của *pipe* trong vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:1268
+#, fuzzy
+msgid "*pipe* is a :term:`file-like object <file object>`."
+msgstr "*pipe* là :term:`file-like object <file object>`."
+
+#: ../../library/asyncio-eventloop.rst:1270
+#, fuzzy
+msgid ""
+"Return pair ``(transport, protocol)``, where *transport* supports the "
+":class:`ReadTransport` interface and *protocol* is an object instantiated by"
+" the *protocol_factory*."
+msgstr ""
+"Trả về cặp ``(transport, protocol)``, trong đó *transport* hỗ trợ giao diện "
+":class:`ReadTransport` và *protocol* là một đối tượng được "
+"*protocol_factory* khởi tạo."
+
+#: ../../library/asyncio-eventloop.rst:1274
+#: ../../library/asyncio-eventloop.rst:1291
+#, fuzzy
+msgid ""
+"With :class:`SelectorEventLoop` event loop, the *pipe* is set to non-"
+"blocking mode."
+msgstr ""
+"Với vòng lặp sự kiện :class:`SelectorEventLoop`, *pipe* được đặt ở chế độ "
+"không chặn."
+
+#: ../../library/asyncio-eventloop.rst:1280
+#, fuzzy
+msgid "Register the write end of *pipe* in the event loop."
+msgstr "Đăng ký phần cuối ghi của *pipe* trong vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:1285
+#, fuzzy
+msgid "*pipe* is :term:`file-like object <file object>`."
+msgstr "*pipe* là :term:`file-like object <file object>`."
+
+#: ../../library/asyncio-eventloop.rst:1287
+#, fuzzy
+msgid ""
+"Return pair ``(transport, protocol)``, where *transport* supports "
+":class:`WriteTransport` interface and *protocol* is an object instantiated "
+"by the *protocol_factory*."
+msgstr ""
+"Trả về cặp ``(transport, protocol)``, trong đó *transport* hỗ trợ giao diện "
+":class:`WriteTransport` và *protocol* là một đối tượng được "
+"*protocol_factory* khởi tạo."
+
+#: ../../library/asyncio-eventloop.rst:1296
+#, fuzzy
+msgid ""
+":class:`SelectorEventLoop` does not support the above methods on Windows.  "
+"Use :class:`ProactorEventLoop` instead for Windows."
+msgstr ""
+":class:`SelectorEventLoop` không hỗ trợ các phương pháp trên trên Windows.  "
+"Sử dụng :class:`ProactorEventLoop` thay thế cho Windows."
+
+#: ../../library/asyncio-eventloop.rst:1301
+#, fuzzy
+msgid ""
+"The :meth:`loop.subprocess_exec` and :meth:`loop.subprocess_shell` methods."
+msgstr ""
+"Phương pháp :meth:`loop.subprocess_exec` và :meth:`loop.subprocess_shell`."
+
+#: ../../library/asyncio-eventloop.rst:1306
+#, fuzzy
+msgid "Unix signals"
+msgstr "Tín hiệu Unix"
+
+#: ../../library/asyncio-eventloop.rst:1312
+#, fuzzy
+msgid ""
+"Set *callback* as the handler for the *signum* signal, passing *args* as "
+"positional arguments."
+msgstr ""
+"Đặt *callback* làm trình xử lý tín hiệu *signum*, chuyển *args* làm đối số "
+"vị trí."
+
+#: ../../library/asyncio-eventloop.rst:1315
+#, fuzzy
+msgid ""
+"The callback will be invoked by *loop*, along with other queued callbacks "
+"and runnable coroutines of that event loop. Unlike signal handlers "
+"registered using :func:`signal.signal`, a callback registered with this "
+"function is allowed to interact with the event loop."
+msgstr ""
+"Lệnh gọi lại sẽ được *loop* gọi ra, cùng với các lệnh gọi lại được xếp hàng "
+"khác và các coroutine có thể chạy của vòng lặp sự kiện đó. Không giống như "
+"các trình xử lý tín hiệu được đăng ký bằng :func:`signal.signal`, lệnh gọi "
+"lại được đăng ký với chức năng này được phép tương tác với vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:1320
+#, fuzzy
+msgid ""
+"Raise :exc:`ValueError` if the signal number is invalid or uncatchable. "
+"Raise :exc:`RuntimeError` if there is a problem setting up the handler."
+msgstr ""
+"Tăng :exc:`ValueError` nếu số tín hiệu không hợp lệ hoặc không thể bắt được."
+" Tăng :exc:`RuntimeError` nếu có vấn đề khi thiết lập trình xử lý."
+
+#: ../../library/asyncio-eventloop.rst:1326
+#, fuzzy
+msgid ""
+"Like :func:`signal.signal`, this function must be invoked in the main "
+"thread."
+msgstr ""
+"Giống như :func:`signal.signal`, hàm này phải được gọi trong luồng chính."
+
+#: ../../library/asyncio-eventloop.rst:1331
+#, fuzzy
+msgid "Remove the handler for the *sig* signal."
+msgstr "Loại bỏ trình xử lý tín hiệu *sig*."
+
+#: ../../library/asyncio-eventloop.rst:1333
+#, fuzzy
+msgid ""
+"Return ``True`` if the signal handler was removed, or ``False`` if no "
+"handler was set for the given signal."
+msgstr ""
+"Trả về ``True`` nếu bộ xử lý tín hiệu đã bị xóa hoặc ``False`` nếu không có "
+"bộ xử lý nào được đặt cho tín hiệu đã cho."
+
+#: ../../library/asyncio-eventloop.rst:1340
+#, fuzzy
+msgid "The :mod:`signal` module."
+msgstr "Mô-đun :mod:`signal`."
+
+#: ../../library/asyncio-eventloop.rst:1344
+#, fuzzy
+msgid "Executing code in thread or process pools"
+msgstr "Thực thi mã trong nhóm luồng hoặc nhóm quy trình"
+
+#: ../../library/asyncio-eventloop.rst:1348
+#, fuzzy
+msgid ""
+"Arrange for *func* to be called in the specified executor passing *args* as "
+"positional arguments."
+msgstr ""
+"Sắp xếp để *func* được gọi trong trình thực thi đã chỉ định chuyển *args* "
+"làm đối số vị trí."
+
+#: ../../library/asyncio-eventloop.rst:1351
+#, fuzzy
+msgid ""
+"The *executor* argument should be an :class:`concurrent.futures.Executor` "
+"instance. The default executor is used if *executor* is ``None``. The "
+"default executor can be set by :meth:`loop.set_default_executor`, otherwise,"
+" a :class:`concurrent.futures.ThreadPoolExecutor` will be lazy-initialized "
+"and used by :func:`run_in_executor` if needed."
+msgstr ""
+"Đối số *executor* phải là một phiên bản "
+":class:`concurrent.futures.Executor`. Trình thực thi mặc định được sử dụng "
+"nếu *executor* là ``None``. Trình thực thi mặc định có thể được đặt bởi "
+":meth:`loop.set_default_executor`, nếu không, "
+":class:`concurrent.futures.ThreadPoolExecutor` sẽ được khởi tạo lười biếng "
+"và được :func:`run_in_executor` sử dụng nếu cần."
+
+#: ../../library/asyncio-eventloop.rst:1359
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"import concurrent.futures\n"
+"\n"
+"def blocking_io():\n"
+"    # File operations (such as logging) can block the\n"
+"    # event loop: run them in a thread pool.\n"
+"    with open('/dev/urandom', 'rb') as f:\n"
+"        return f.read(100)\n"
+"\n"
+"def cpu_bound():\n"
+"    # CPU-bound operations will block the event loop:\n"
+"    # in general it is preferable to run them in a\n"
+"    # process pool.\n"
+"    return sum(i * i for i in range(10 ** 7))\n"
+"\n"
+"async def main():\n"
+"    loop = asyncio.get_running_loop()\n"
+"\n"
+"    ## Options:\n"
+"\n"
+"    # 1. Run in the default loop's executor:\n"
+"    result = await loop.run_in_executor(\n"
+"        None, blocking_io)\n"
+"    print('default thread pool', result)\n"
+"\n"
+"    # 2. Run in a custom thread pool:\n"
+"    with concurrent.futures.ThreadPoolExecutor() as pool:\n"
+"        result = await loop.run_in_executor(\n"
+"            pool, blocking_io)\n"
+"        print('custom thread pool', result)\n"
+"\n"
+"    # 3. Run in a custom process pool:\n"
+"    with concurrent.futures.ProcessPoolExecutor() as pool:\n"
+"        result = await loop.run_in_executor(\n"
+"            pool, cpu_bound)\n"
+"        print('custom process pool', result)\n"
+"\n"
+"    # 4. Run in a custom interpreter pool:\n"
+"    with concurrent.futures.InterpreterPoolExecutor() as pool:\n"
+"        result = await loop.run_in_executor(\n"
+"            pool, cpu_bound)\n"
+"        print('custom interpreter pool', result)\n"
+"\n"
+"if __name__ == '__main__':\n"
+"    asyncio.run(main())"
+msgstr ""
+"nhập asyncio\n"
+"nhập đồng thời.futures\n"
+"\n"
+"chặn chắc chắn_io():\n"
+"    Các hoạt động # File (chẳng hạn như ghi nhật ký) có thể chặn\n"
+"    Vòng lặp # event: chạy chúng trong nhóm luồng.\n"
+"    với open('/dev/urandom', 'rb') là f:\n"
+"        trả về f.read(100)\n"
+"\n"
+"def cpu_bound():\n"
+"    Hoạt động # CPU-bound sẽ chặn vòng lặp sự kiện:\n"
+"    # in nói chung thì nên chạy chúng trong một\n"
+"    hồ bơi # process.\n"
+"    trả về tổng(i * i cho i trong phạm vi (10 ** 7))\n"
+"\n"
+"async def main():\n"
+"    vòng lặp = asyncio.get_running_loop()\n"
+"\n"
+"    ## Options:\n"
+"\n"
+"    # 1. Chạy trong trình thực thi của vòng lặp mặc định:\n"
+"    kết quả = đang chờ loop.run_in_executor(\n"
+"        Không, chặn_io)\n"
+"    print('nhóm luồng mặc định', kết quả)\n"
+"\n"
+"    # 2. Chạy trong nhóm chủ đề tùy chỉnh:\n"
+"    với concurrent.futures.ThreadPoolExecutor() dưới dạng nhóm:\n"
+"        kết quả = đang chờ loop.run_in_executor(\n"
+"            nhóm, chặn_io)\n"
+"        print('nhóm chủ đề tùy chỉnh', kết quả)\n"
+"\n"
+"    # 3. Chạy trong nhóm quy trình tùy chỉnh:\n"
+"    với concurrent.futures.ProcessPoolExecutor() dưới dạng nhóm:\n"
+"        kết quả = đang chờ loop.run_in_executor(\n"
+"            nhóm, cpu_bound)\n"
+"        print('nhóm quy trình tùy chỉnh', kết quả)\n"
+"\n"
+"    # 4. Chạy trong nhóm trình thông dịch tùy chỉnh:\n"
+"    với concurrent.futures.InterpreterPoolExecutor() dưới dạng nhóm:\n"
+"        kết quả = đang chờ loop.run_in_executor(\n"
+"            nhóm, cpu_bound)\n"
+"        print('nhóm thông dịch viên tùy chỉnh', kết quả)\n"
+"\n"
+"nếu __name__ == '__main__':\n"
+"    asyncio.run(chính())"
+
+#: ../../library/asyncio-eventloop.rst:1405
+#, fuzzy
+msgid ""
+"Note that the entry point guard (``if __name__ == '__main__'``) is required "
+"for option 3 due to the peculiarities of :mod:`multiprocessing`, which is "
+"used by :class:`~concurrent.futures.ProcessPoolExecutor`. See :ref:`Safe "
+"importing of main module <multiprocessing-safe-main-import>`."
+msgstr ""
+"Lưu ý rằng cần phải có bộ bảo vệ điểm vào (``if __name__ == '__main__'``) "
+"cho tùy chọn 3 do đặc thù của :mod:`multiprocessing`, được "
+":class:`~concurrent.futures.ProcessPoolExecutor` sử dụng. Xem :ref:`Safe "
+"importing of main module <multiprocessing-safe-main-import>`."
+
+#: ../../library/asyncio-eventloop.rst:1410
+#, fuzzy
+msgid "This method returns a :class:`asyncio.Future` object."
+msgstr "Phương thức này trả về một đối tượng :class:`asyncio.Future`."
+
+#: ../../library/asyncio-eventloop.rst:1412
+#, fuzzy
+msgid ""
+"Use :func:`functools.partial` :ref:`to pass keyword arguments <asyncio-pass-"
+"keywords>` to *func*."
+msgstr ""
+"Sử dụng :func:`functools.partial` :ref:`to pass keyword arguments <asyncio-"
+"pass-keywords>` đến *func*."
+
+#: ../../library/asyncio-eventloop.rst:1415
+#, fuzzy
+msgid ""
+":meth:`loop.run_in_executor` no longer configures the ``max_workers`` of the"
+" thread pool executor it creates, instead leaving it up to the thread pool "
+"executor (:class:`~concurrent.futures.ThreadPoolExecutor`) to set the "
+"default."
+msgstr ""
+":meth:`loop.run_in_executor` không còn định cấu hình ``max_workers`` của "
+"trình thực thi nhóm luồng mà nó tạo ra nữa, thay vào đó, hãy để trình thực "
+"thi nhóm luồng (:class:`~concurrent.futures.ThreadPoolExecutor`) thiết lập "
+"mặc định."
+
+#: ../../library/asyncio-eventloop.rst:1424
+#, fuzzy
+msgid ""
+"Set *executor* as the default executor used by :meth:`run_in_executor`. "
+"*executor* must be an instance of "
+":class:`~concurrent.futures.ThreadPoolExecutor`, which includes "
+":class:`~concurrent.futures.InterpreterPoolExecutor`."
+msgstr ""
+"Đặt *executor* làm trình thực thi mặc định được :meth:`run_in_executor` sử "
+"dụng. *executor* phải là một phiên bản của "
+":class:`~concurrent.futures.ThreadPoolExecutor`, bao gồm "
+":class:`~concurrent.futures.InterpreterPoolExecutor`."
+
+#: ../../library/asyncio-eventloop.rst:1429
+#, fuzzy
+msgid ""
+"*executor* must be an instance of "
+":class:`~concurrent.futures.ThreadPoolExecutor`."
+msgstr ""
+"*executor* phải là một phiên bản của "
+":class:`~concurrent.futures.ThreadPoolExecutor`."
+
+#: ../../library/asyncio-eventloop.rst:1435
+#, fuzzy
+msgid "Error handling API"
+msgstr "Lỗi xử lý API"
+
+#: ../../library/asyncio-eventloop.rst:1437
+#, fuzzy
+msgid "Allows customizing how exceptions are handled in the event loop."
+msgstr "Cho phép tùy chỉnh cách xử lý các ngoại lệ trong vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:1441
+#, fuzzy
+msgid "Set *handler* as the new event loop exception handler."
+msgstr "Đặt *handler* làm trình xử lý ngoại lệ vòng lặp sự kiện mới."
+
+#: ../../library/asyncio-eventloop.rst:1443
+#, fuzzy
+msgid ""
+"If *handler* is ``None``, the default exception handler will be set.  "
+"Otherwise, *handler* must be a callable with the signature matching ``(loop,"
+" context)``, where ``loop`` is a reference to the active event loop, and "
+"``context`` is a ``dict`` object containing the details of the exception "
+"(see :meth:`call_exception_handler` documentation for details about "
+"context)."
+msgstr ""
+"Nếu *handler* là ``None``, trình xử lý ngoại lệ mặc định sẽ được đặt.  Mặt "
+"khác, *handler* phải là một đối tượng có thể gọi được với chữ ký khớp với "
+"``(loop, context)``, trong đó ``loop`` là một tham chiếu đến vòng lặp sự "
+"kiện đang hoạt động và ``context`` là một đối tượng ``dict`` chứa các chi "
+"tiết về ngoại lệ (xem tài liệu về :meth:`call_exception_handler` để biết chi"
+" tiết về ngữ cảnh)."
+
+#: ../../library/asyncio-eventloop.rst:1451
+#, fuzzy
+msgid ""
+"If the handler is called on behalf of a :class:`~asyncio.Task` or "
+":class:`~asyncio.Handle`, it is run in the :class:`contextvars.Context` of "
+"that task or callback handle."
+msgstr ""
+"Nếu trình xử lý được gọi thay mặt cho :class:`~asyncio.Task` hoặc "
+":class:`~asyncio.Handle`, thì nó sẽ chạy trong :class:`contextvars.Context` "
+"của tác vụ hoặc bộ xử lý gọi lại đó."
+
+#: ../../library/asyncio-eventloop.rst:1457
+#, fuzzy
+msgid ""
+"The handler may be called in the :class:`~contextvars.Context` of the task "
+"or handle where the exception originated."
+msgstr ""
+"Trình xử lý có thể được gọi trong :class:`~contextvars.Context` của tác vụ "
+"hoặc xử lý nơi bắt nguồn ngoại lệ."
+
+#: ../../library/asyncio-eventloop.rst:1462
+#, fuzzy
+msgid ""
+"Return the current exception handler, or ``None`` if no custom exception "
+"handler was set."
+msgstr ""
+"Trả về trình xử lý ngoại lệ hiện tại hoặc ``None`` nếu không có trình xử lý "
+"ngoại lệ tùy chỉnh nào được đặt."
+
+#: ../../library/asyncio-eventloop.rst:1469
+#, fuzzy
+msgid "Default exception handler."
+msgstr "Trình xử lý ngoại lệ mặc định."
+
+#: ../../library/asyncio-eventloop.rst:1471
+#, fuzzy
+msgid ""
+"This is called when an exception occurs and no exception handler is set. "
+"This can be called by a custom exception handler that wants to defer to the "
+"default handler behavior."
+msgstr ""
+"Điều này được gọi khi xảy ra ngoại lệ và không có trình xử lý ngoại lệ nào "
+"được đặt. Điều này có thể được gọi bởi một trình xử lý ngoại lệ tùy chỉnh "
+"muốn trì hoãn hành vi xử lý mặc định."
+
+#: ../../library/asyncio-eventloop.rst:1475
+#, fuzzy
+msgid ""
+"*context* parameter has the same meaning as in "
+":meth:`call_exception_handler`."
+msgstr ""
+"Tham số *context* có ý nghĩa tương tự như trong "
+":meth:`call_exception_handler`."
+
+#: ../../library/asyncio-eventloop.rst:1480
+#, fuzzy
+msgid "Call the current event loop exception handler."
+msgstr "Gọi trình xử lý ngoại lệ của vòng lặp sự kiện hiện tại."
+
+#: ../../library/asyncio-eventloop.rst:1482
+#, fuzzy
+msgid ""
+"*context* is a ``dict`` object containing the following keys (new keys may "
+"be introduced in future Python versions):"
+msgstr ""
+"*context* là một đối tượng ``dict`` chứa các khóa sau (các khóa mới có thể "
+"được giới thiệu trong các phiên bản Python trong tương lai):"
+
+#: ../../library/asyncio-eventloop.rst:1485
+#, fuzzy
+msgid "'message': Error message;"
+msgstr "'tin nhắn': Thông báo lỗi;"
+
+#: ../../library/asyncio-eventloop.rst:1486
+#, fuzzy
+msgid "'exception' (optional): Exception object;"
+msgstr "'ngoại lệ' (tùy chọn): Đối tượng ngoại lệ;"
+
+#: ../../library/asyncio-eventloop.rst:1487
+#, fuzzy
+msgid "'future' (optional): :class:`asyncio.Future` instance;"
+msgstr "'tương lai' (tùy chọn): phiên bản :class:`asyncio.Future`;"
+
+#: ../../library/asyncio-eventloop.rst:1488
+#, fuzzy
+msgid "'task' (optional): :class:`asyncio.Task` instance;"
+msgstr "'nhiệm vụ' (tùy chọn): phiên bản :class:`asyncio.Task`;"
+
+#: ../../library/asyncio-eventloop.rst:1489
+#, fuzzy
+msgid "'handle' (optional): :class:`asyncio.Handle` instance;"
+msgstr "'xử lý' (tùy chọn): phiên bản :class:`asyncio.Handle`;"
+
+#: ../../library/asyncio-eventloop.rst:1490
+#, fuzzy
+msgid "'protocol' (optional): :ref:`Protocol <asyncio-protocol>` instance;"
+msgstr "'giao thức' (tùy chọn): phiên bản :ref:`Protocol <asyncio-protocol>`;"
+
+#: ../../library/asyncio-eventloop.rst:1491
+#, fuzzy
+msgid "'transport' (optional): :ref:`Transport <asyncio-transport>` instance;"
+msgstr ""
+"'vận chuyển' (tùy chọn): phiên bản :ref:`Transport <asyncio-transport>`;"
+
+#: ../../library/asyncio-eventloop.rst:1492
+#, fuzzy
+msgid "'socket' (optional): :class:`socket.socket` instance;"
+msgstr "'socket' (tùy chọn): phiên bản :class:`socket.socket`;"
+
+#: ../../library/asyncio-eventloop.rst:1493
+#, fuzzy
+msgid "'source_traceback' (optional): Traceback of the source;"
+msgstr "'source_traceback' (tùy chọn): Truy nguyên nguồn;"
+
+#: ../../library/asyncio-eventloop.rst:1494
+#, fuzzy
+msgid "'handle_traceback' (optional): Traceback of the handle;"
+msgstr "'handle_traceback' (tùy chọn): Truy nguyên dấu vết của bộ điều khiển;"
+
+#: ../../library/asyncio-eventloop.rst:1495
+#, fuzzy
+msgid "'asyncgen' (optional): Asynchronous generator that caused"
+msgstr "'asyncgen' (tùy chọn): Trình tạo không đồng bộ gây ra"
+
+#: ../../library/asyncio-eventloop.rst:1496
+#, fuzzy
+msgid "the exception."
+msgstr "ngoại lệ."
+
+#: ../../library/asyncio-eventloop.rst:1500
+#, fuzzy
+msgid ""
+"This method should not be overloaded in subclassed event loops.  For custom "
+"exception handling, use the :meth:`set_exception_handler` method."
+msgstr ""
+"Phương thức này không nên bị quá tải trong các vòng lặp sự kiện được phân "
+"lớp.  Để xử lý ngoại lệ tùy chỉnh, hãy sử dụng phương pháp "
+":meth:`set_exception_handler`."
+
+#: ../../library/asyncio-eventloop.rst:1505
+#, fuzzy
+msgid "Enabling debug mode"
+msgstr "Bật chế độ gỡ lỗi"
+
+#: ../../library/asyncio-eventloop.rst:1509
+#, fuzzy
+msgid "Get the debug mode (:class:`bool`) of the event loop."
+msgstr "Nhận chế độ gỡ lỗi (:class:`bool`) của vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:1511
+#, fuzzy
+msgid ""
+"The default value is ``True`` if the environment variable "
+":envvar:`PYTHONASYNCIODEBUG` is set to a non-empty string, ``False`` "
+"otherwise."
+msgstr ""
+"Giá trị mặc định là ``True`` nếu biến môi trường "
+":envvar:`PYTHONASYNCIODEBUG` được đặt thành một chuỗi không trống, nếu không"
+" thì ``False``."
+
+#: ../../library/asyncio-eventloop.rst:1517
+#, fuzzy
+msgid "Set the debug mode of the event loop."
+msgstr "Đặt chế độ gỡ lỗi của vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:1521
+#, fuzzy
+msgid ""
+"The new :ref:`Python Development Mode <devmode>` can now also be used to "
+"enable the debug mode."
+msgstr "Zz000zz mới hiện cũng có thể được sử dụng để kích hoạt chế độ gỡ lỗi."
+
+#: ../../library/asyncio-eventloop.rst:1526
+#, fuzzy
+msgid ""
+"This attribute can be used to set the minimum execution duration in seconds "
+"that is considered \"slow\". When debug mode is enabled, \"slow\" callbacks "
+"are logged."
+msgstr ""
+"Thuộc tính này có thể được sử dụng để đặt thời lượng thực hiện tối thiểu "
+"tính bằng giây được coi là \"chậm\". Khi chế độ gỡ lỗi được bật, lệnh gọi "
+"lại \"chậm\" sẽ được ghi lại."
+
+#: ../../library/asyncio-eventloop.rst:1530
+#, fuzzy
+msgid "Default value is 100 milliseconds."
+msgstr "Giá trị mặc định là 100 mili giây."
+
+#: ../../library/asyncio-eventloop.rst:1534
+#, fuzzy
+msgid "The :ref:`debug mode of asyncio <asyncio-debug-mode>`."
+msgstr "Z000zz."
+
+#: ../../library/asyncio-eventloop.rst:1538
+#, fuzzy
+msgid "Running subprocesses"
+msgstr "Chạy các tiến trình con"
+
+#: ../../library/asyncio-eventloop.rst:1540
+#, fuzzy
+msgid ""
+"Methods described in this subsections are low-level.  In regular async/await"
+" code consider using the high-level :func:`asyncio.create_subprocess_shell` "
+"and :func:`asyncio.create_subprocess_exec` convenience functions instead."
+msgstr ""
+"Các phương pháp được mô tả trong tiểu mục này là ở mức độ thấp.  Trong mã "
+"async/await thông thường, hãy cân nhắc sử dụng các hàm tiện lợi "
+":func:`asyncio.create_subprocess_shell` và "
+":func:`asyncio.create_subprocess_exec` cấp cao để thay thế."
+
+#: ../../library/asyncio-eventloop.rst:1547
+#, fuzzy
+msgid ""
+"On Windows, the default event loop :class:`ProactorEventLoop` supports "
+"subprocesses, whereas :class:`SelectorEventLoop` does not. See "
+":ref:`Subprocess Support on Windows <asyncio-windows-subprocess>` for "
+"details."
+msgstr ""
+"Trên Windows, vòng lặp sự kiện mặc định :class:`ProactorEventLoop` hỗ trợ "
+"các quy trình con, trong khi :class:`SelectorEventLoop` thì không. Xem "
+":ref:`Subprocess Support on Windows <asyncio-windows-subprocess>` để biết "
+"chi tiết."
+
+#: ../../library/asyncio-eventloop.rst:1559
+#, fuzzy
+msgid ""
+"Create a subprocess from one or more string arguments specified by *args*."
+msgstr ""
+"Tạo một quy trình con từ một hoặc nhiều đối số chuỗi được chỉ định bởi "
+"*args*."
+
+#: ../../library/asyncio-eventloop.rst:1562
+#, fuzzy
+msgid "*args* must be a list of strings represented by:"
+msgstr "*args* phải là danh sách các chuỗi được đại diện bởi:"
+
+#: ../../library/asyncio-eventloop.rst:1564
+#, fuzzy
+msgid ":class:`str`;"
+msgstr ":class:`str`;"
+
+#: ../../library/asyncio-eventloop.rst:1565
+#, fuzzy
+msgid ""
+"or :class:`bytes`, encoded to the :ref:`filesystem encoding <filesystem-"
+"encoding>`."
+msgstr ""
+"hoặc :class:`bytes`, được mã hóa thành :ref:`filesystem encoding "
+"<filesystem-encoding>`."
+
+#: ../../library/asyncio-eventloop.rst:1568
+#, fuzzy
+msgid ""
+"The first string specifies the program executable, and the remaining strings"
+" specify the arguments.  Together, string arguments form the ``argv`` of the"
+" program."
+msgstr ""
+"Chuỗi đầu tiên chỉ định chương trình có thể thực thi được và các chuỗi còn "
+"lại chỉ định các đối số.  Cùng với nhau, các đối số chuỗi tạo thành ``argv``"
+" của chương trình."
+
+#: ../../library/asyncio-eventloop.rst:1572
+#, fuzzy
+msgid ""
+"This is similar to the standard library :class:`subprocess.Popen` class "
+"called with ``shell=False`` and the list of strings passed as the first "
+"argument; however, where :class:`~subprocess.Popen` takes a single argument "
+"which is list of strings, *subprocess_exec* takes multiple string arguments."
+msgstr ""
+"Điều này tương tự như lớp :class:`subprocess.Popen` của thư viện chuẩn được "
+"gọi bằng ``shell=False`` và danh sách các chuỗi được truyền làm đối số đầu "
+"tiên; tuy nhiên, trong đó :class:`~subprocess.Popen` nhận một đối số duy "
+"nhất là danh sách các chuỗi, thì *subprocess_exec* nhận nhiều đối số chuỗi."
+
+#: ../../library/asyncio-eventloop.rst:1578
+#, fuzzy
+msgid ""
+"The *protocol_factory* must be a callable returning a subclass of the "
+":class:`asyncio.SubprocessProtocol` class."
+msgstr ""
+"Zz001zz phải là một lớp có thể gọi được và trả về một lớp con của lớp "
+":class:`asyncio.SubprocessProtocol`."
+
+#: ../../library/asyncio-eventloop.rst:1581
+#, fuzzy
+msgid "Other parameters:"
+msgstr "Các thông số khác:"
+
+#: ../../library/asyncio-eventloop.rst:1583
+#, fuzzy
+msgid "*stdin* can be any of these:"
+msgstr "*stdin* có thể là một trong số này:"
+
+#: ../../library/asyncio-eventloop.rst:1585
+#: ../../library/asyncio-eventloop.rst:1596
+#: ../../library/asyncio-eventloop.rst:1606
+#, fuzzy
+msgid "a file-like object"
+msgstr "một đối tượng giống như tập tin"
+
+#: ../../library/asyncio-eventloop.rst:1586
+#, fuzzy
+msgid ""
+"an existing file descriptor (a positive integer), for example those created "
+"with :meth:`os.pipe`"
+msgstr ""
+"một bộ mô tả tệp hiện có (một số nguyên dương), ví dụ như những bộ mô tả "
+"được tạo bằng :meth:`os.pipe`"
+
+#: ../../library/asyncio-eventloop.rst:1587
+#: ../../library/asyncio-eventloop.rst:1597
+#: ../../library/asyncio-eventloop.rst:1607
+#, fuzzy
+msgid ""
+"the :const:`subprocess.PIPE` constant (default) which will create a new pipe"
+" and connect it,"
+msgstr ""
+"hằng số :const:`subprocess.PIPE` (mặc định) sẽ tạo một đường ống mới và kết "
+"nối nó,"
+
+#: ../../library/asyncio-eventloop.rst:1589
+#: ../../library/asyncio-eventloop.rst:1599
+#: ../../library/asyncio-eventloop.rst:1609
+#, fuzzy
+msgid ""
+"the value ``None`` which will make the subprocess inherit the file "
+"descriptor from this process"
+msgstr ""
+"giá trị ``None`` sẽ làm cho quy trình con kế thừa bộ mô tả tệp từ quy trình "
+"này"
+
+#: ../../library/asyncio-eventloop.rst:1591
+#: ../../library/asyncio-eventloop.rst:1601
+#: ../../library/asyncio-eventloop.rst:1611
+#, fuzzy
+msgid ""
+"the :const:`subprocess.DEVNULL` constant which indicates that the special "
+":data:`os.devnull` file will be used"
+msgstr ""
+"hằng số :const:`subprocess.DEVNULL` cho biết tệp :data:`os.devnull` đặc biệt"
+" sẽ được sử dụng"
+
+#: ../../library/asyncio-eventloop.rst:1594
+#, fuzzy
+msgid "*stdout* can be any of these:"
+msgstr "*stdout* có thể là một trong số này:"
+
+#: ../../library/asyncio-eventloop.rst:1604
+#, fuzzy
+msgid "*stderr* can be any of these:"
+msgstr "*stderr* có thể là một trong số này:"
+
+#: ../../library/asyncio-eventloop.rst:1613
+#, fuzzy
+msgid ""
+"the :const:`subprocess.STDOUT` constant which will connect the standard "
+"error stream to the process' standard output stream"
+msgstr ""
+"hằng số :const:`subprocess.STDOUT` sẽ kết nối luồng lỗi tiêu chuẩn với luồng"
+" đầu ra tiêu chuẩn của quy trình"
+
+#: ../../library/asyncio-eventloop.rst:1616
+#, fuzzy
+msgid ""
+"All other keyword arguments are passed to :class:`subprocess.Popen` without "
+"interpretation, except for *bufsize*, *universal_newlines*, *shell*, *text*,"
+" *encoding* and *errors*, which should not be specified at all."
+msgstr ""
+"Tất cả các đối số từ khóa khác được chuyển đến :class:`subprocess.Popen` mà "
+"không cần giải thích, ngoại trừ *bufsize*, *universal_newlines*, *shell*, "
+"*text*, *encoding* và *errors*, những đối số này hoàn toàn không được chỉ "
+"định."
+
+#: ../../library/asyncio-eventloop.rst:1621
+#, fuzzy
+msgid ""
+"The ``asyncio`` subprocess API does not support decoding the streams as "
+"text. :func:`bytes.decode` can be used to convert the bytes returned from "
+"the stream to text."
+msgstr ""
+"Quy trình con ``asyncio`` API không hỗ trợ giải mã các luồng dưới dạng văn "
+"bản. :func:`bytes.decode` có thể được sử dụng để chuyển đổi các byte được "
+"trả về từ luồng thành văn bản."
+
+#: ../../library/asyncio-eventloop.rst:1625
+#, fuzzy
+msgid ""
+"If a file-like object passed as *stdin*, *stdout* or *stderr* represents a "
+"pipe, then the other side of this pipe should be registered with "
+":meth:`~loop.connect_write_pipe` or :meth:`~loop.connect_read_pipe` for use "
+"with the event loop."
+msgstr ""
+"Nếu một đối tượng giống như tệp được truyền dưới dạng *stdin*, *stdout* hoặc"
+" *stderr* đại diện cho một đường ống thì phía bên kia của đường ống này phải"
+" được đăng ký bằng :meth:`~loop.connect_write_pipe` hoặc "
+":meth:`~loop.connect_read_pipe` để sử dụng với vòng lặp sự kiện."
+
+#: ../../library/asyncio-eventloop.rst:1630
+#, fuzzy
+msgid ""
+"See the constructor of the :class:`subprocess.Popen` class for documentation"
+" on other arguments."
+msgstr ""
+"Xem hàm tạo của lớp :class:`subprocess.Popen` để biết tài liệu về các đối số"
+" khác."
+
+#: ../../library/asyncio-eventloop.rst:1633
+#, fuzzy
+msgid ""
+"Returns a pair of ``(transport, protocol)``, where *transport* conforms to "
+"the :class:`asyncio.SubprocessTransport` base class and *protocol* is an "
+"object instantiated by the *protocol_factory*."
+msgstr ""
+"Trả về một cặp ``(transport, protocol)``, trong đó *transport* tuân theo lớp"
+" cơ sở :class:`asyncio.SubprocessTransport` và *protocol* là một đối tượng "
+"được khởi tạo bởi *protocol_factory*."
+
+#: ../../library/asyncio-eventloop.rst:1637
+#: ../../library/asyncio-eventloop.rst:1663
+#, fuzzy
+msgid ""
+"If the transport is closed or is garbage collected, the child process is "
+"killed if it is still running."
+msgstr ""
+"Nếu quá trình vận chuyển bị đóng hoặc bị thu gom rác, tiến trình con sẽ bị "
+"hủy nếu nó vẫn đang chạy."
+
+#: ../../library/asyncio-eventloop.rst:1645
+#, fuzzy
+msgid ""
+"Create a subprocess from *cmd*, which can be a :class:`str` or a "
+":class:`bytes` string encoded to the :ref:`filesystem encoding <filesystem-"
+"encoding>`, using the platform's \"shell\" syntax."
+msgstr ""
+"Tạo một quy trình con từ *cmd*, có thể là chuỗi :class:`str` hoặc "
+":class:`bytes` được mã hóa thành :ref:`filesystem encoding <filesystem-"
+"encoding>`, sử dụng cú pháp \"shell\" của nền tảng."
+
+#: ../../library/asyncio-eventloop.rst:1650
+#, fuzzy
+msgid ""
+"This is similar to the standard library :class:`subprocess.Popen` class "
+"called with ``shell=True``."
+msgstr ""
+"Điều này tương tự như lớp :class:`subprocess.Popen` trong thư viện chuẩn "
+"được gọi bằng ``shell=True``."
+
+#: ../../library/asyncio-eventloop.rst:1653
+#, fuzzy
+msgid ""
+"The *protocol_factory* must be a callable returning a subclass of the "
+":class:`SubprocessProtocol` class."
+msgstr ""
+"Zz001zz phải là một lớp có thể gọi được và trả về một lớp con của lớp "
+":class:`SubprocessProtocol`."
+
+#: ../../library/asyncio-eventloop.rst:1656
+#, fuzzy
+msgid ""
+"See :meth:`~loop.subprocess_exec` for more details about the remaining "
+"arguments."
+msgstr ""
+"Xem :meth:`~loop.subprocess_exec` để biết thêm chi tiết về các đối số còn "
+"lại."
+
+#: ../../library/asyncio-eventloop.rst:1659
+#, fuzzy
+msgid ""
+"Returns a pair of ``(transport, protocol)``, where *transport* conforms to "
+"the :class:`SubprocessTransport` base class and *protocol* is an object "
+"instantiated by the *protocol_factory*."
+msgstr ""
+"Trả về một cặp ``(transport, protocol)``, trong đó *transport* tuân theo lớp"
+" cơ sở :class:`SubprocessTransport` và *protocol* là một đối tượng được khởi"
+" tạo bởi *protocol_factory*."
+
+#: ../../library/asyncio-eventloop.rst:1667
+#, fuzzy
+msgid ""
+"It is the application's responsibility to ensure that all whitespace and "
+"special characters are quoted appropriately to avoid `shell injection "
+"<https://en.wikipedia.org/wiki/Shell_injection#Shell_injection>`_ "
+"vulnerabilities. The :func:`shlex.quote` function can be used to properly "
+"escape whitespace and special characters in strings that are going to be "
+"used to construct shell commands."
+msgstr ""
+"Trách nhiệm của ứng dụng là đảm bảo rằng tất cả khoảng trắng và ký tự đặc "
+"biệt đều được trích dẫn một cách thích hợp để tránh các lỗ hổng `shell "
+"injection <https://en.wikipedia.org/wiki/Shell_injection#Shell_injection>`_."
+" Hàm :func:`shlex.quote` có thể được sử dụng để thoát khoảng trắng và các ký"
+" tự đặc biệt trong chuỗi sẽ được sử dụng để xây dựng các lệnh shell một cách"
+" chính xác."
+
+#: ../../library/asyncio-eventloop.rst:1676
+#, fuzzy
+msgid "Callback handles"
+msgstr "Điều khiển gọi lại"
+
+#: ../../library/asyncio-eventloop.rst:1680
+#, fuzzy
+msgid ""
+"A callback wrapper object returned by :meth:`loop.call_soon`, "
+":meth:`loop.call_soon_threadsafe`."
+msgstr ""
+"Đối tượng trình bao bọc gọi lại được trả về bởi :meth:`loop.call_soon`, "
+":meth:`loop.call_soon_threadsafe`."
+
+#: ../../library/asyncio-eventloop.rst:1685
+#, fuzzy
+msgid ""
+"Return the :class:`contextvars.Context` object associated with the handle."
+msgstr ""
+"Trả về đối tượng :class:`contextvars.Context` được liên kết với tay cầm."
+
+#: ../../library/asyncio-eventloop.rst:1692
+#, fuzzy
+msgid ""
+"Cancel the callback.  If the callback has already been canceled or executed,"
+" this method has no effect."
+msgstr ""
+"Hủy cuộc gọi lại.  Nếu lệnh gọi lại đã bị hủy hoặc được thực thi thì phương "
+"thức này không có hiệu lực."
+
+#: ../../library/asyncio-eventloop.rst:1697
+#, fuzzy
+msgid "Return ``True`` if the callback was cancelled."
+msgstr "Trả về ``True`` nếu cuộc gọi lại bị hủy."
+
+#: ../../library/asyncio-eventloop.rst:1703
+#, fuzzy
+msgid ""
+"A callback wrapper object returned by :meth:`loop.call_later`, and "
+":meth:`loop.call_at`."
+msgstr ""
+"Đối tượng trình bao bọc gọi lại được trả về bởi :meth:`loop.call_later` và "
+":meth:`loop.call_at`."
+
+#: ../../library/asyncio-eventloop.rst:1706
+#, fuzzy
+msgid "This class is a subclass of :class:`Handle`."
+msgstr "Lớp này là một lớp con của :class:`Handle`."
+
+#: ../../library/asyncio-eventloop.rst:1710
+#, fuzzy
+msgid "Return a scheduled callback time as :class:`float` seconds."
+msgstr "Trả về thời gian gọi lại theo lịch trình là :class:`float` giây."
+
+#: ../../library/asyncio-eventloop.rst:1712
+#, fuzzy
+msgid ""
+"The time is an absolute timestamp, using the same time reference as "
+":meth:`loop.time`."
+msgstr ""
+"Thời gian là dấu thời gian tuyệt đối, sử dụng cùng tham chiếu thời gian như "
+":meth:`loop.time`."
+
+#: ../../library/asyncio-eventloop.rst:1719
+#, fuzzy
+msgid "Server objects"
+msgstr "Đối tượng máy chủ"
+
+#: ../../library/asyncio-eventloop.rst:1721
+#, fuzzy
+msgid ""
+"Server objects are created by :meth:`loop.create_server`, "
+":meth:`loop.create_unix_server`, :func:`start_server`, and "
+":func:`start_unix_server` functions."
+msgstr ""
+"Các đối tượng máy chủ được tạo bởi các hàm :meth:`loop.create_server`, "
+":meth:`loop.create_unix_server`, :func:`start_server` và "
+":func:`start_unix_server`."
+
+#: ../../library/asyncio-eventloop.rst:1725
+#, fuzzy
+msgid "Do not instantiate the :class:`Server` class directly."
+msgstr "Không khởi tạo trực tiếp lớp :class:`Server`."
+
+#: ../../library/asyncio-eventloop.rst:1729
+#, fuzzy
+msgid ""
+"*Server* objects are asynchronous context managers.  When used in an ``async"
+" with`` statement, it's guaranteed that the Server object is closed and not "
+"accepting new connections when the ``async with`` statement is completed::"
+msgstr ""
+"Đối tượng *Server* là trình quản lý bối cảnh không đồng bộ.  Khi được sử "
+"dụng trong câu lệnh ``async with``, nó đảm bảo rằng đối tượng Máy chủ bị "
+"đóng và không chấp nhận các kết nối mới khi câu lệnh ``async with`` được "
+"hoàn thành::"
+
+#: ../../library/asyncio-eventloop.rst:1734
+#, fuzzy
+msgid ""
+"srv = await loop.create_server(...)\n"
+"\n"
+"async with srv:\n"
+"    # some code\n"
+"\n"
+"# At this point, srv is closed and no longer accepts new connections."
+msgstr ""
+"srv = đang chờ loop.create_server(...)\n"
+"\n"
+"không đồng bộ với srv:\n"
+"    mã # some\n"
+"\n"
+"# At thời điểm này, srv đã bị đóng và không còn chấp nhận kết nối mới."
+
+#: ../../library/asyncio-eventloop.rst:1742
+#, fuzzy
+msgid "Server object is an asynchronous context manager since Python 3.7."
+msgstr ""
+"Đối tượng máy chủ là trình quản lý bối cảnh không đồng bộ kể từ Python 3.7."
+
+#: ../../library/asyncio-eventloop.rst:1745
+#, fuzzy
+msgid ""
+"This class was exposed publicly as ``asyncio.Server`` in Python 3.9.11, "
+"3.10.3 and 3.11."
+msgstr ""
+"Lớp này được hiển thị công khai dưới dạng ``asyncio.Server`` trong Python "
+"3.9.11, 3.10.3 và 3.11."
+
+#: ../../library/asyncio-eventloop.rst:1750
+#, fuzzy
+msgid ""
+"Stop serving: close listening sockets and set the :attr:`sockets` attribute "
+"to ``None``."
+msgstr ""
+"Dừng cung cấp: đóng ổ cắm nghe và đặt thuộc tính :attr:`sockets` thành "
+"``None``."
+
+#: ../../library/asyncio-eventloop.rst:1753
+#, fuzzy
+msgid ""
+"The sockets that represent existing incoming client connections are left "
+"open."
+msgstr "Các ổ cắm đại diện cho các kết nối máy khách đến hiện có vẫn còn mở."
+
+#: ../../library/asyncio-eventloop.rst:1756
+#, fuzzy
+msgid ""
+"The server is closed asynchronously; use the :meth:`wait_closed` coroutine "
+"to wait until the server is closed (and no more connections are active)."
+msgstr ""
+"Máy chủ bị đóng không đồng bộ; sử dụng coroutine :meth:`wait_closed` để đợi "
+"cho đến khi máy chủ đóng (và không còn kết nối nào hoạt động nữa)."
+
+#: ../../library/asyncio-eventloop.rst:1762
+#, fuzzy
+msgid "Close all existing incoming client connections."
+msgstr "Đóng tất cả các kết nối máy khách đến hiện có."
+
+#: ../../library/asyncio-eventloop.rst:1764
+#, fuzzy
+msgid ""
+"Calls :meth:`~asyncio.BaseTransport.close` on all associated transports."
+msgstr ""
+"Gọi :meth:`~asyncio.BaseTransport.close` trên tất cả các phương tiện giao "
+"thông liên quan."
+
+#: ../../library/asyncio-eventloop.rst:1767
+#, fuzzy
+msgid ""
+":meth:`close` should be called before :meth:`close_clients` when closing the"
+" server to avoid races with new clients connecting."
+msgstr ""
+":meth:`close` nên được gọi trước :meth:`close_clients` khi đóng máy chủ để "
+"tránh chạy đua với các máy khách mới kết nối."
+
+#: ../../library/asyncio-eventloop.rst:1774
+#, fuzzy
+msgid ""
+"Close all existing incoming client connections immediately, without waiting "
+"for pending operations to complete."
+msgstr ""
+"Đóng tất cả các kết nối máy khách đang đến hiện có ngay lập tức mà không cần"
+" đợi các hoạt động đang chờ xử lý hoàn tất."
+
+#: ../../library/asyncio-eventloop.rst:1777
+#, fuzzy
+msgid ""
+"Calls :meth:`~asyncio.WriteTransport.abort` on all associated transports."
+msgstr ""
+"Gọi :meth:`~asyncio.WriteTransport.abort` trên tất cả các phương tiện giao "
+"thông liên quan."
+
+#: ../../library/asyncio-eventloop.rst:1780
+#, fuzzy
+msgid ""
+":meth:`close` should be called before :meth:`abort_clients` when closing the"
+" server to avoid races with new clients connecting."
+msgstr ""
+":meth:`close` nên được gọi trước :meth:`abort_clients` khi đóng máy chủ để "
+"tránh chạy đua với các máy khách mới kết nối."
+
+#: ../../library/asyncio-eventloop.rst:1787
+#, fuzzy
+msgid "Return the event loop associated with the server object."
+msgstr "Trả về vòng lặp sự kiện được liên kết với đối tượng máy chủ."
+
+#: ../../library/asyncio-eventloop.rst:1794
+#, fuzzy
+msgid "Start accepting connections."
+msgstr "Bắt đầu chấp nhận kết nối."
+
+#: ../../library/asyncio-eventloop.rst:1796
+#, fuzzy
+msgid ""
+"This method is idempotent, so it can be called when the server is already "
+"serving."
+msgstr ""
+"Phương thức này là bình thường nên nó có thể được gọi khi máy chủ đang phục "
+"vụ."
+
+#: ../../library/asyncio-eventloop.rst:1799
+#, fuzzy
+msgid ""
+"The *start_serving* keyword-only parameter to :meth:`loop.create_server` and"
+" :meth:`asyncio.start_server` allows creating a Server object that is not "
+"accepting connections initially.  In this case ``Server.start_serving()``, "
+"or :meth:`Server.serve_forever` can be used to make the Server start "
+"accepting connections."
+msgstr ""
+"Tham số chỉ từ khóa *start_serving* cho :meth:`loop.create_server` và "
+":meth:`asyncio.start_server` cho phép tạo một đối tượng Máy chủ không chấp "
+"nhận kết nối ban đầu.  Trong trường hợp này, ``Server.start_serving()`` hoặc"
+" :meth:`Server.serve_forever` có thể được sử dụng để khiến Máy chủ bắt đầu "
+"chấp nhận kết nối."
+
+#: ../../library/asyncio-eventloop.rst:1811
+#, fuzzy
+msgid ""
+"Start accepting connections until the coroutine is cancelled. Cancellation "
+"of ``serve_forever`` task causes the server to be closed."
+msgstr ""
+"Bắt đầu chấp nhận kết nối cho đến khi coroutine bị hủy. Việc hủy tác vụ "
+"``serve_forever`` khiến máy chủ bị đóng."
+
+#: ../../library/asyncio-eventloop.rst:1815
+#, fuzzy
+msgid ""
+"This method can be called if the server is already accepting connections.  "
+"Only one ``serve_forever`` task can exist per one *Server* object."
+msgstr ""
+"Phương thức này có thể được gọi nếu máy chủ đã chấp nhận kết nối.  Chỉ có "
+"thể tồn tại một tác vụ ``serve_forever`` trên một đối tượng *Server*."
+
+#: ../../library/asyncio-eventloop.rst:1821
+#, fuzzy
+msgid ""
+"async def client_connected(reader, writer):\n"
+"    # Communicate with the client with\n"
+"    # reader/writer streams.  For example:\n"
+"    await reader.readline()\n"
+"\n"
+"async def main(host, port):\n"
+"    srv = await asyncio.start_server(\n"
+"        client_connected, host, port)\n"
+"    await srv.serve_forever()\n"
+"\n"
+"asyncio.run(main('127.0.0.1', 0))"
+msgstr ""
+"async def client_connected(reader, writer):\n"
+"    # Communicate với khách hàng với\n"
+"    luồng # reader/nhà văn.  Ví dụ:\n"
+"    đang chờ reader.readline()\n"
+"\n"
+"async def main (máy chủ, cổng):\n"
+"    srv = đang chờ asyncio.start_server(\n"
+"        client_connected, máy chủ, cổng)\n"
+"    đang chờ srv.serve_forever()\n"
+"\n"
+"asyncio.run(chính('127.0.0.1', 0))"
+
+#: ../../library/asyncio-eventloop.rst:1837
+#, fuzzy
+msgid "Return ``True`` if the server is accepting new connections."
+msgstr "Trả về ``True`` nếu máy chủ chấp nhận kết nối mới."
+
+#: ../../library/asyncio-eventloop.rst:1844
+#, fuzzy
+msgid ""
+"Wait until the :meth:`close` method completes and all active connections "
+"have finished."
+msgstr ""
+"Đợi cho đến khi phương thức :meth:`close` hoàn tất và tất cả các kết nối "
+"đang hoạt động đã kết thúc."
+
+#: ../../library/asyncio-eventloop.rst:1849
+#, fuzzy
+msgid ""
+"List of socket-like objects, ``asyncio.trsock.TransportSocket``, which the "
+"server is listening on."
+msgstr ""
+"Danh sách các đối tượng giống ổ cắm, ``asyncio.trsock.TransportSocket`` mà "
+"máy chủ đang lắng nghe."
+
+#: ../../library/asyncio-eventloop.rst:1852
+#, fuzzy
+msgid ""
+"Prior to Python 3.7 ``Server.sockets`` used to return an internal list of "
+"server sockets directly.  In 3.7 a copy of that list is returned."
+msgstr ""
+"Trước Python 3.7 ``Server.sockets`` được sử dụng để trả về trực tiếp danh "
+"sách nội bộ của ổ cắm máy chủ.  Trong 3.7 một bản sao của danh sách đó được "
+"trả về."
+
+#: ../../library/asyncio-eventloop.rst:1862
+#, fuzzy
+msgid "Event loop implementations"
+msgstr "Triển khai vòng lặp sự kiện"
+
+#: ../../library/asyncio-eventloop.rst:1864
+#, fuzzy
+msgid ""
+"asyncio ships with two different event loop implementations: "
+":class:`SelectorEventLoop` and :class:`ProactorEventLoop`."
+msgstr ""
+"asyncio có hai cách triển khai vòng lặp sự kiện khác nhau: "
+":class:`SelectorEventLoop` và :class:`ProactorEventLoop`."
+
+#: ../../library/asyncio-eventloop.rst:1867
+#, fuzzy
+msgid "By default asyncio is configured to use :class:`EventLoop`."
+msgstr ""
+"Theo mặc định, asyncio được định cấu hình để sử dụng :class:`EventLoop`."
+
+#: ../../library/asyncio-eventloop.rst:1872
+#, fuzzy
+msgid ""
+"A subclass of :class:`AbstractEventLoop` based on the :mod:`selectors` "
+"module."
+msgstr ""
+"Một lớp con của :class:`AbstractEventLoop` dựa trên mô-đun :mod:`selectors`."
+
+#: ../../library/asyncio-eventloop.rst:1875
+#, fuzzy
+msgid ""
+"Uses the most efficient *selector* available for the given platform.  It is "
+"also possible to manually configure the exact selector implementation to be "
+"used::"
+msgstr ""
+"Sử dụng *selector* hiệu quả nhất hiện có cho nền tảng nhất định.  Cũng có "
+"thể định cấu hình thủ công việc triển khai bộ chọn chính xác sẽ được sử dụng"
+" ::"
+
+#: ../../library/asyncio-eventloop.rst:1879
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"import selectors\n"
+"\n"
+"async def main():\n"
+"   ...\n"
+"\n"
+"loop_factory = lambda: asyncio.SelectorEventLoop(selectors.SelectSelector())\n"
+"asyncio.run(main(), loop_factory=loop_factory)"
+msgstr ""
+"nhập asyncio\n"
+"bộ chọn nhập\n"
+"\n"
+"async def main():\n"
+"   ...\n"
+"\n"
+"loop_factory = lambda: asyncio.SelectorEventLoop(selectors.SelectSelector())\n"
+"asyncio.run(main(), loop_factory=loop_factory)"
+
+#: ../../library/asyncio-eventloop.rst:1894
+#, fuzzy
+msgid ""
+"A subclass of :class:`AbstractEventLoop` for Windows that uses \"I/O "
+"Completion Ports\" (IOCP)."
+msgstr ""
+"Một lớp con của :class:`AbstractEventLoop` dành cho Windows sử dụng \"Cổng "
+"hoàn thành I/O\" (IOCP)."
+
+#: ../../library/asyncio-eventloop.rst:1900
+#, fuzzy
+msgid ""
+"`MSDN documentation on I/O Completion Ports "
+"<https://learn.microsoft.com/windows/win32/fileio/i-o-completion-ports>`_."
+msgstr ""
+"`MSDN documentation on I/O Completion Ports "
+"<https://learn.microsoft.com/windows/win32/fileio/i-o-completion-ports>`_."
+
+#: ../../library/asyncio-eventloop.rst:1905
+#, fuzzy
+msgid ""
+"An alias to the most efficient available subclass of "
+":class:`AbstractEventLoop` for the given platform."
+msgstr ""
+"Bí danh của lớp con :class:`AbstractEventLoop` hiệu quả nhất hiện có cho nền"
+" tảng nhất định."
+
+#: ../../library/asyncio-eventloop.rst:1908
+#, fuzzy
+msgid ""
+"It is an alias to :class:`SelectorEventLoop` on Unix and "
+":class:`ProactorEventLoop` on Windows."
+msgstr ""
+"Nó là bí danh của :class:`SelectorEventLoop` trên Unix và "
+":class:`ProactorEventLoop` trên Windows."
+
+#: ../../library/asyncio-eventloop.rst:1914
+#, fuzzy
+msgid "Abstract base class for asyncio-compliant event loops."
+msgstr "Lớp cơ sở trừu tượng cho các vòng lặp sự kiện tuân thủ asyncio."
+
+#: ../../library/asyncio-eventloop.rst:1916
+#, fuzzy
+msgid ""
+"The :ref:`asyncio-event-loop-methods` section lists all methods that an "
+"alternative implementation of ``AbstractEventLoop`` should have defined."
+msgstr ""
+"Phần :ref:`asyncio-event-loop-methods` liệt kê tất cả các phương thức mà "
+"việc triển khai ``AbstractEventLoop`` thay thế nên được xác định."
+
+#: ../../library/asyncio-eventloop.rst:1922
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/asyncio-eventloop.rst:1924
+#, fuzzy
+msgid ""
+"Note that all examples in this section **purposefully** show how to use the "
+"low-level event loop APIs, such as :meth:`loop.run_forever` and "
+":meth:`loop.call_soon`.  Modern asyncio applications rarely need to be "
+"written this way; consider using the high-level functions like "
+":func:`asyncio.run`."
+msgstr ""
+"Lưu ý rằng tất cả các ví dụ trong phần này **purposefully** đều hiển thị "
+"cách sử dụng API vòng lặp sự kiện cấp thấp, chẳng hạn như "
+":meth:`loop.run_forever` và :meth:`loop.call_soon`.  Các ứng dụng asyncio "
+"hiện đại hiếm khi cần phải viết theo cách này; hãy cân nhắc sử dụng các hàm "
+"cấp cao như :func:`asyncio.run`."
+
+#: ../../library/asyncio-eventloop.rst:1934
+#, fuzzy
+msgid "Hello World with call_soon()"
+msgstr "Xin chào thế giới với call_soon()"
+
+#: ../../library/asyncio-eventloop.rst:1936
+#, fuzzy
+msgid ""
+"An example using the :meth:`loop.call_soon` method to schedule a callback. "
+"The callback displays ``\"Hello World\"`` and then stops the event loop::"
+msgstr ""
+"Một ví dụ sử dụng phương thức :meth:`loop.call_soon` để lên lịch gọi lại. "
+"Lệnh gọi lại hiển thị ``\"Hello World\"`` và sau đó dừng vòng lặp sự kiện::"
+
+#: ../../library/asyncio-eventloop.rst:1940
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"def hello_world(loop):\n"
+"    \"\"\"A callback to print 'Hello World' and stop the event loop\"\"\"\n"
+"    print('Hello World')\n"
+"    loop.stop()\n"
+"\n"
+"loop = asyncio.new_event_loop()\n"
+"\n"
+"# Schedule a call to hello_world()\n"
+"loop.call_soon(hello_world, loop)\n"
+"\n"
+"# Blocking call interrupted by loop.stop()\n"
+"try:\n"
+"    loop.run_forever()\n"
+"finally:\n"
+"    loop.close()"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"def hello_world(vòng lặp):\n"
+"    \"\"\"Lệnh gọi lại để in 'Xin chào thế giới' và dừng vòng lặp sự kiện\"\"\"\n"
+"    print('Xin chào thế giới')\n"
+"    loop.stop()\n"
+"\n"
+"vòng lặp = asyncio.new_event_loop()\n"
+"\n"
+"# Schedule một cuộc gọi tới hello_world()\n"
+"loop.call_soon(hello_world, vòng lặp)\n"
+"\n"
+"cuộc gọi # Blocking bị gián đoạn bởi loop.stop()\n"
+"thử:\n"
+"    loop.run_forever()\n"
+"cuối cùng:\n"
+"    loop.close()"
+
+#: ../../library/asyncio-eventloop.rst:1960
+#, fuzzy
+msgid ""
+"A similar :ref:`Hello World <coroutine>` example created with a coroutine "
+"and the :func:`run` function."
+msgstr ""
+"Một ví dụ :ref:`Hello World <coroutine>` tương tự được tạo bằng coroutine và"
+" hàm :func:`run`."
+
+#: ../../library/asyncio-eventloop.rst:1967
+#, fuzzy
+msgid "Display the current date with call_later()"
+msgstr "Hiển thị ngày hiện tại với call_later()"
+
+#: ../../library/asyncio-eventloop.rst:1969
+#, fuzzy
+msgid ""
+"An example of a callback displaying the current date every second. The "
+"callback uses the :meth:`loop.call_later` method to reschedule itself after "
+"5 seconds, and then stops the event loop::"
+msgstr ""
+"Một ví dụ về lệnh gọi lại hiển thị ngày hiện tại mỗi giây. Lệnh gọi lại sử "
+"dụng phương thức :meth:`loop.call_later` để tự lên lịch lại sau 5 giây, sau "
+"đó dừng vòng lặp sự kiện::"
+
+#: ../../library/asyncio-eventloop.rst:1973
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"import datetime as dt\n"
+"\n"
+"def display_date(end_time, loop):\n"
+"    print(dt.datetime.now())\n"
+"    if (loop.time() + 1.0) < end_time:\n"
+"        loop.call_later(1, display_date, end_time, loop)\n"
+"    else:\n"
+"        loop.stop()\n"
+"\n"
+"loop = asyncio.new_event_loop()\n"
+"\n"
+"# Schedule the first call to display_date()\n"
+"end_time = loop.time() + 5.0\n"
+"loop.call_soon(display_date, end_time, loop)\n"
+"\n"
+"# Blocking call interrupted by loop.stop()\n"
+"try:\n"
+"    loop.run_forever()\n"
+"finally:\n"
+"    loop.close()"
+msgstr ""
+"nhập asyncio\n"
+"nhập ngày giờ dưới dạng dt\n"
+"\n"
+"def display_date(end_time, loop):\n"
+"    in(dt.datetime.now())\n"
+"    if (loop.time() + 1.0) < end_time:\n"
+"        loop.call_later(1, display_date, end_time, loop)\n"
+"    khác:\n"
+"        loop.stop()\n"
+"\n"
+"vòng lặp = asyncio.new_event_loop()\n"
+"\n"
+"# Schedule cuộc gọi đầu tiên tới display_date()\n"
+"end_time = loop.time() + 5.0\n"
+"loop.call_soon(display_date, end_time, loop)\n"
+"\n"
+"cuộc gọi # Blocking bị gián đoạn bởi loop.stop()\n"
+"thử:\n"
+"    loop.run_forever()\n"
+"cuối cùng:\n"
+"    loop.close()"
+
+#: ../../library/asyncio-eventloop.rst:1997
+#, fuzzy
+msgid ""
+"A similar :ref:`current date <asyncio_example_sleep>` example created with a"
+" coroutine and the :func:`run` function."
+msgstr ""
+"Một ví dụ :ref:`current date <asyncio_example_sleep>` tương tự được tạo bằng"
+" coroutine và hàm :func:`run`."
+
+#: ../../library/asyncio-eventloop.rst:2004
+#, fuzzy
+msgid "Watch a file descriptor for read events"
+msgstr "Xem bộ mô tả tệp cho các sự kiện đã đọc"
+
+#: ../../library/asyncio-eventloop.rst:2006
+#, fuzzy
+msgid ""
+"Wait until a file descriptor received some data using the "
+":meth:`loop.add_reader` method and then close the event loop::"
+msgstr ""
+"Đợi cho đến khi bộ mô tả tệp nhận được một số dữ liệu bằng phương thức "
+":meth:`loop.add_reader` rồi đóng vòng lặp sự kiện ::"
+
+#: ../../library/asyncio-eventloop.rst:2009
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"from socket import socketpair\n"
+"\n"
+"# Create a pair of connected file descriptors\n"
+"rsock, wsock = socketpair()\n"
+"\n"
+"loop = asyncio.new_event_loop()\n"
+"\n"
+"def reader():\n"
+"    data = rsock.recv(100)\n"
+"    print(\"Received:\", data.decode())\n"
+"\n"
+"    # We are done: unregister the file descriptor\n"
+"    loop.remove_reader(rsock)\n"
+"\n"
+"    # Stop the event loop\n"
+"    loop.stop()\n"
+"\n"
+"# Register the file descriptor for read event\n"
+"loop.add_reader(rsock, reader)\n"
+"\n"
+"# Simulate the reception of data from the network\n"
+"loop.call_soon(wsock.send, 'abc'.encode())\n"
+"\n"
+"try:\n"
+"    # Run the event loop\n"
+"    loop.run_forever()\n"
+"finally:\n"
+"    # We are done. Close sockets and the event loop.\n"
+"    rsock.close()\n"
+"    wsock.close()\n"
+"    loop.close()"
+msgstr ""
+"nhập asyncio\n"
+"từ cặp ổ cắm nhập khẩu\n"
+"\n"
+"# Create một cặp mô tả tập tin được kết nối\n"
+"rsock, wsock = socketpair()\n"
+"\n"
+"vòng lặp = asyncio.new_event_loop()\n"
+"\n"
+"trình đọc def():\n"
+"    dữ liệu = rsock.recv(100)\n"
+"    print(\"Đã nhận:\", data.decode())\n"
+"\n"
+"    # We đã xong: hủy đăng ký bộ mô tả tập tin\n"
+"    loop.remove_reader(rsock)\n"
+"\n"
+"    # Stop vòng lặp sự kiện\n"
+"    loop.stop()\n"
+"\n"
+"# Register mô tả tập tin cho sự kiện đọc\n"
+"loop.add_reader(rsock, reader)\n"
+"\n"
+"# Simulate việc tiếp nhận dữ liệu từ mạng\n"
+"loop.call_soon(wsock.send, 'abc'.encode())\n"
+"\n"
+"thử:\n"
+"    # Run vòng lặp sự kiện\n"
+"    loop.run_forever()\n"
+"cuối cùng:\n"
+"    # We đã xong. Đóng socket và vòng lặp sự kiện.\n"
+"    rsock.close()\n"
+"    wsock.close()\n"
+"    loop.close()"
+
+#: ../../library/asyncio-eventloop.rst:2044
+#, fuzzy
+msgid ""
+"A similar :ref:`example <asyncio_example_create_connection>` using "
+"transports, protocols, and the :meth:`loop.create_connection` method."
+msgstr ""
+"Một :ref:`example <asyncio_example_create_connection>` tương tự sử dụng "
+"phương thức vận chuyển, giao thức và phương thức "
+":meth:`loop.create_connection`."
+
+#: ../../library/asyncio-eventloop.rst:2048
+#, fuzzy
+msgid ""
+"Another similar :ref:`example <asyncio_example_create_connection-streams>` "
+"using the high-level :func:`asyncio.open_connection` function and streams."
+msgstr ""
+"Một :ref:`example <asyncio_example_create_connection-streams>` tương tự khác"
+" sử dụng chức năng và luồng :func:`asyncio.open_connection` cấp cao."
+
+#: ../../library/asyncio-eventloop.rst:2056
+#, fuzzy
+msgid "Set signal handlers for SIGINT and SIGTERM"
+msgstr "Đặt bộ xử lý tín hiệu cho SIGINT và SIGTERM"
+
+#: ../../library/asyncio-eventloop.rst:2058
+#, fuzzy
+msgid "(This ``signal`` example only works on Unix.)"
+msgstr "(Ví dụ ``signal`` này chỉ hoạt động trên Unix.)"
+
+#: ../../library/asyncio-eventloop.rst:2060
+#, fuzzy
+msgid ""
+"Register handlers for signals :const:`~signal.SIGINT` and "
+":const:`~signal.SIGTERM` using the :meth:`loop.add_signal_handler` method::"
+msgstr ""
+"Đăng ký trình xử lý tín hiệu :const:`~signal.SIGINT` và "
+":const:`~signal.SIGTERM` bằng phương thức :meth:`loop.add_signal_handler` ::"
+
+#: ../../library/asyncio-eventloop.rst:2063
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"import asyncio\n"
+"import functools\n"
+"import os\n"
+"import signal\n"
+"\n"
+"def ask_exit(signame, loop):\n"
+"    print(\"got signal %s: exit\" % signame)\n"
+"    loop.stop()\n"
+"\n"
+"async def main():\n"
+"    loop = asyncio.get_running_loop()\n"
+"\n"
+"    for signame in {'SIGINT', 'SIGTERM'}:\n"
+"        loop.add_signal_handler(\n"
+"            getattr(signal, signame),\n"
+"            functools.partial(ask_exit, signame, loop))\n"
+"\n"
+"    await asyncio.sleep(3600)\n"
+"\n"
+"print(\"Event loop running for 1 hour, press Ctrl+C to interrupt.\")\n"
+"print(f\"pid {os.getpid()}: send SIGINT or SIGTERM to exit.\")\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"nhập asyncio\n"
+"nhập khẩu funtools\n"
+"hệ điều hành nhập khẩu\n"
+"tín hiệu nhập khẩu\n"
+"\n"
+"def Ask_exit(signname, loop):\n"
+"    print(\"đã nhận được tín hiệu %s: exit\" % signame)\n"
+"    loop.stop()\n"
+"\n"
+"async def main():\n"
+"    vòng lặp = asyncio.get_running_loop()\n"
+"\n"
+"    cho tên đăng nhập trong {'SIGINT', 'SIGTERM'}:\n"
+"        loop.add_signal_handler(\n"
+"            getattr(tín hiệu, tín hiệu),\n"
+"            functools.partial(ask_exit, signame, loop))\n"
+"\n"
+"    đang chờ asyncio.sleep(3600)\n"
+"\n"
+"print(\"Vòng lặp sự kiện chạy trong 1 giờ, nhấn Ctrl+C để ngắt.\")\n"
+"print(f\"pid {os.getpid()}: gửi SIGINT hoặc SIGTERM để thoát.\")\n"
+"\n"
+"asyncio.run(chính())"

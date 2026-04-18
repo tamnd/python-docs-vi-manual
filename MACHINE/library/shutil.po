@@ -1,0 +1,1921 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/shutil.rst:2
+#, fuzzy
+msgid ":mod:`!shutil` --- High-level file operations"
+msgstr ":mod:`!shutil` --- Thao tác tệp cấp cao"
+
+#: ../../library/shutil.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/shutil.py`"
+msgstr "**Source code:** :source:`Lib/shutil.py`"
+
+#: ../../library/shutil.rst:18
+#, fuzzy
+msgid ""
+"The :mod:`!shutil` module offers a number of high-level operations on files "
+"and collections of files.  In particular, functions are provided  which "
+"support file copying and removal. For operations on individual files, see "
+"also the :mod:`os` module."
+msgstr ""
+"Mô-đun :mod:`!shutil` cung cấp một số thao tác cấp cao trên tệp và bộ sưu "
+"tập tệp.  Đặc biệt, các chức năng được cung cấp hỗ trợ sao chép và xóa tập "
+"tin. Để biết các thao tác trên từng tệp riêng lẻ, hãy xem thêm mô-đun "
+":mod:`os`."
+
+#: ../../library/shutil.rst:25
+#, fuzzy
+msgid ""
+"Even the higher-level file copying functions (:func:`shutil.copy`, "
+":func:`shutil.copy2`) cannot copy all file metadata."
+msgstr ""
+"Ngay cả các chức năng sao chép tệp cấp cao hơn (:func:`shutil.copy`, "
+":func:`shutil.copy2`) cũng không thể sao chép tất cả siêu dữ liệu tệp."
+
+#: ../../library/shutil.rst:28
+#, fuzzy
+msgid ""
+"On POSIX platforms, this means that file owner and group are lost as well as"
+" ACLs.  On Mac OS, the resource fork and other metadata are not used. This "
+"means that resources will be lost and file type and creator codes will not "
+"be correct. On Windows, file owners, ACLs and alternate data streams are not"
+" copied."
+msgstr ""
+"Trên nền tảng POSIX, điều này có nghĩa là chủ sở hữu tệp và nhóm cũng như "
+"ACL sẽ bị mất.  Trên Mac OS, nhánh tài nguyên và siêu dữ liệu khác không "
+"được sử dụng. Điều này có nghĩa là tài nguyên sẽ bị mất và loại tệp cũng như"
+" mã người tạo sẽ không chính xác. Trên Windows, chủ sở hữu tệp, ACL và luồng"
+" dữ liệu thay thế không được sao chép."
+
+#: ../../library/shutil.rst:38
+#, fuzzy
+msgid "Directory and files operations"
+msgstr "Thao tác thư mục và tập tin"
+
+#: ../../library/shutil.rst:42
+#, fuzzy
+msgid ""
+"Copy the contents of the :term:`file-like object <file object>` *fsrc* to "
+"the file-like object *fdst*. The integer *length*, if given, is the buffer "
+"size. In particular, a negative *length* value means to copy the data "
+"without looping over the source data in chunks; by default the data is read "
+"in chunks to avoid uncontrolled memory consumption. Note that if the current"
+" file position of the *fsrc* object is not 0, only the contents from the "
+"current file position to the end of the file will be copied."
+msgstr ""
+"Sao chép nội dung của :term:`file-like object <file object>` *fsrc* vào đối "
+"tượng giống như tệp *fdst*. Số nguyên *length*, nếu có, là kích thước bộ "
+"đệm. Cụ thể, giá trị *length* âm có nghĩa là sao chép dữ liệu mà không lặp "
+"lại dữ liệu nguồn theo từng đoạn; theo mặc định, dữ liệu được đọc theo từng "
+"khối để tránh việc tiêu thụ bộ nhớ không kiểm soát được. Lưu ý rằng nếu vị "
+"trí tệp hiện tại của đối tượng *fsrc* không bằng 0 thì chỉ nội dung từ vị "
+"trí tệp hiện tại đến cuối tệp mới được sao chép."
+
+#: ../../library/shutil.rst:50
+#, fuzzy
+msgid ""
+":func:`copyfileobj` will *not* guarantee that the destination stream has "
+"been flushed on completion of the copy. If you want to read from the "
+"destination at the completion of the copy operation (for example, reading "
+"the contents of a temporary file that has been copied from a HTTP stream), "
+"you must ensure that you have called :func:`~io.IOBase.flush` or "
+":func:`~io.IOBase.close` on the file-like object before attempting to read "
+"the destination file."
+msgstr ""
+":func:`copyfileobj` sẽ *not* đảm bảo rằng luồng đích đã được xóa khi hoàn "
+"thành bản sao. Nếu bạn muốn đọc từ đích khi hoàn tất thao tác sao chép (ví "
+"dụ: đọc nội dung của tệp tạm thời đã được sao chép từ luồng HTTP), bạn phải "
+"đảm bảo rằng bạn đã gọi :func:`~io.IOBase.flush` hoặc "
+":func:`~io.IOBase.close` trên đối tượng giống như tệp trước khi thử đọc tệp "
+"đích."
+
+#: ../../library/shutil.rst:60
+#, fuzzy
+msgid ""
+"Copy the contents (no metadata) of the file named *src* to a file named "
+"*dst* and return *dst* in the most efficient way possible. *src* and *dst* "
+"are :term:`path-like objects <path-like object>` or path names given as "
+"strings."
+msgstr ""
+"Sao chép nội dung (không có siêu dữ liệu) của tệp có tên *src* sang tệp có "
+"tên *dst* và trả về *dst* theo cách hiệu quả nhất có thể. *src* và *dst* là "
+":term:`path-like objects <path-like object>` hoặc tên đường dẫn được đưa ra "
+"dưới dạng chuỗi."
+
+#: ../../library/shutil.rst:64
+#, fuzzy
+msgid ""
+"*dst* must be the complete target file name; look at :func:`~shutil.copy` "
+"for a copy that accepts a target directory path.  If *src* and *dst* specify"
+" the same file, :exc:`SameFileError` is raised."
+msgstr ""
+"*dst* phải là tên tệp đích đầy đủ; hãy xem :func:`~shutil.copy` để biết bản "
+"sao chấp nhận đường dẫn thư mục đích.  Nếu *src* và *dst* chỉ định cùng một "
+"tệp, :exc:`SameFileError` sẽ được nâng lên."
+
+#: ../../library/shutil.rst:68
+#, fuzzy
+msgid ""
+"The destination location must be writable; otherwise, an :exc:`OSError` "
+"exception will be raised. If *dst* already exists, it will be replaced. "
+"Special files such as character or block devices and pipes cannot be copied "
+"with this function."
+msgstr ""
+"Vị trí đích phải có thể ghi được; nếu không, ngoại lệ :exc:`OSError` sẽ xuất"
+" hiện. Nếu *dst* đã tồn tại, nó sẽ được thay thế. Không thể sao chép các tập"
+" tin đặc biệt như ký tự hoặc thiết bị khối và đường ống bằng chức năng này."
+
+#: ../../library/shutil.rst:73
+#, fuzzy
+msgid ""
+"If *follow_symlinks* is false and *src* is a symbolic link, a new symbolic "
+"link will be created instead of copying the file *src* points to."
+msgstr ""
+"Nếu *follow_symlinks* sai và *src* là một liên kết tượng trưng, ​​một liên "
+"kết tượng trưng mới sẽ được tạo thay vì sao chép tệp *src* trỏ tới."
+
+#: ../../library/shutil.rst:77 ../../library/shutil.rst:191
+#: ../../library/shutil.rst:222
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``shutil.copyfile`` with "
+"arguments ``src``, ``dst``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``shutil.copyfile`` với các đối số"
+" ``src``, ``dst``."
+
+#: ../../library/shutil.rst:79
+#, fuzzy
+msgid ""
+":exc:`IOError` used to be raised instead of :exc:`OSError`. Added "
+"*follow_symlinks* argument. Now returns *dst*."
+msgstr ""
+":exc:`IOError` từng được nâng lên thay vì :exc:`OSError`. Đã thêm đối số "
+"*follow_symlinks*. Bây giờ trả về *dst*."
+
+#: ../../library/shutil.rst:84
+#, fuzzy
+msgid ""
+"Raise :exc:`SameFileError` instead of :exc:`Error`.  Since the former is a "
+"subclass of the latter, this change is backward compatible."
+msgstr ""
+"Tăng :exc:`SameFileError` thay vì :exc:`Error`.  Vì lớp trước là lớp con của"
+" lớp sau nên thay đổi này có khả năng tương thích ngược."
+
+#: ../../library/shutil.rst:88 ../../library/shutil.rst:199
+#: ../../library/shutil.rst:231 ../../library/shutil.rst:301
+#: ../../library/shutil.rst:414
+#, fuzzy
+msgid ""
+"Platform-specific fast-copy syscalls may be used internally in order to copy"
+" the file more efficiently. See :ref:`shutil-platform-dependent-efficient-"
+"copy-operations` section."
+msgstr ""
+"Các cuộc gọi tổng hợp sao chép nhanh dành riêng cho nền tảng có thể được sử "
+"dụng nội bộ để sao chép tệp hiệu quả hơn. Xem phần :ref:`shutil-platform-"
+"dependent-efficient-copy-operations`."
+
+#: ../../library/shutil.rst:95
+#, fuzzy
+msgid ""
+"This exception is raised when :func:`copyfile` or :func:`copytree` attempt "
+"to copy a named pipe."
+msgstr ""
+"Ngoại lệ này được đưa ra khi :func:`copyfile` hoặc :func:`copytree` cố gắng "
+"sao chép một đường dẫn có tên."
+
+#: ../../library/shutil.rst:102
+#, fuzzy
+msgid ""
+"This exception is raised if source and destination in :func:`copyfile` are "
+"the same file."
+msgstr ""
+"Ngoại lệ này được đưa ra nếu nguồn và đích trong :func:`copyfile` là cùng "
+"một tệp."
+
+#: ../../library/shutil.rst:110
+#, fuzzy
+msgid ""
+"Copy the permission bits from *src* to *dst*.  The file contents, owner, and"
+" group are unaffected.  *src* and *dst* are :term:`path-like objects <path-"
+"like object>` or path names given as strings. If *follow_symlinks* is false,"
+" and both *src* and *dst* are symbolic links, :func:`copymode` will attempt "
+"to modify the mode of *dst* itself (rather than the file it points to).  "
+"This functionality is not available on every platform; please see "
+":func:`copystat` for more information.  If :func:`copymode` cannot modify "
+"symbolic links on the local platform, and it is asked to do so, it will do "
+"nothing and return."
+msgstr ""
+"Sao chép các bit quyền từ *src* sang *dst*.  Nội dung tệp, chủ sở hữu và "
+"nhóm không bị ảnh hưởng.  *src* và *dst* là :term:`path-like objects <path-"
+"like object>` hoặc tên đường dẫn được cung cấp dưới dạng chuỗi. Nếu "
+"*follow_symlinks* sai và cả *src* và *dst* đều là các liên kết tượng trưng, "
+"​​:func:`copymode` sẽ cố gắng sửa đổi chế độ của chính *dst* (chứ không phải"
+" tệp mà nó trỏ tới).  Chức năng này không có sẵn trên mọi nền tảng; vui lòng"
+" xem :func:`copystat` để biết thêm thông tin.  Nếu :func:`copymode` không "
+"thể sửa đổi các liên kết tượng trưng trên nền tảng cục bộ và được yêu cầu "
+"làm như vậy, nó sẽ không làm gì và quay trở lại."
+
+#: ../../library/shutil.rst:120 ../../library/shutil.rst:193
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``shutil.copymode`` with "
+"arguments ``src``, ``dst``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``shutil.copymode`` với các đối số"
+" ``src``, ``dst``."
+
+#: ../../library/shutil.rst:122
+#, fuzzy
+msgid "Added *follow_symlinks* argument."
+msgstr "Đã thêm đối số *follow_symlinks*."
+
+#: ../../library/shutil.rst:127
+#, fuzzy
+msgid ""
+"Copy the permission bits, last access time, last modification time, and "
+"flags from *src* to *dst*.  On Linux, :func:`copystat` also copies the "
+"\"extended attributes\" where possible.  The file contents, owner, and group"
+" are unaffected.  *src* and *dst* are :term:`path-like objects <path-like "
+"object>` or path names given as strings."
+msgstr ""
+"Sao chép các bit quyền, thời gian truy cập lần cuối, thời gian sửa đổi lần "
+"cuối và các cờ từ *src* sang *dst*.  Trên Linux, :func:`copystat` cũng sao "
+"chép \"thuộc tính mở rộng\" nếu có thể.  Nội dung tệp, chủ sở hữu và nhóm "
+"không bị ảnh hưởng.  *src* và *dst* là :term:`path-like objects <path-like "
+"object>` hoặc tên đường dẫn được cung cấp dưới dạng chuỗi."
+
+#: ../../library/shutil.rst:133
+#, fuzzy
+msgid ""
+"If *follow_symlinks* is false, and *src* and *dst* both refer to symbolic "
+"links, :func:`copystat` will operate on the symbolic links themselves rather"
+" than the files the symbolic links refer to—reading the information from the"
+" *src* symbolic link, and writing the information to the *dst* symbolic "
+"link."
+msgstr ""
+"Nếu *follow_symlinks* sai và *src* và *dst* đều đề cập đến các liên kết "
+"tượng trưng, thì :func:`copystat` sẽ hoạt động trên chính các liên kết tượng"
+" trưng thay vì các tệp mà các liên kết tượng trưng đề cập đến—đọc thông tin "
+"từ liên kết tượng trưng *src* và ghi thông tin vào liên kết tượng trưng "
+"*dst*."
+
+#: ../../library/shutil.rst:142
+#, fuzzy
+msgid ""
+"Not all platforms provide the ability to examine and modify symbolic links."
+"  Python itself can tell you what functionality is locally available."
+msgstr ""
+"Không phải tất cả các nền tảng đều cung cấp khả năng kiểm tra và sửa đổi các"
+" liên kết tượng trưng.  Bản thân Python có thể cho bạn biết chức năng nào có"
+" sẵn tại địa phương."
+
+#: ../../library/shutil.rst:146
+#, fuzzy
+msgid ""
+"If ``os.chmod in os.supports_follow_symlinks`` is ``True``, :func:`copystat`"
+" can modify the permission bits of a symbolic link."
+msgstr ""
+"Nếu ``os.chmod in os.supports_follow_symlinks`` là ``True``, "
+":func:`copystat` có thể sửa đổi các bit quyền của một liên kết tượng trưng."
+
+#: ../../library/shutil.rst:150
+#, fuzzy
+msgid ""
+"If ``os.utime in os.supports_follow_symlinks`` is ``True``, :func:`copystat`"
+" can modify the last access and modification times of a symbolic link."
+msgstr ""
+"Nếu ``os.utime in os.supports_follow_symlinks`` là ``True``, "
+":func:`copystat` có thể sửa đổi lần truy cập và sửa đổi cuối cùng của một "
+"liên kết tượng trưng."
+
+#: ../../library/shutil.rst:154
+#, fuzzy
+msgid ""
+"If ``os.chflags in os.supports_follow_symlinks`` is ``True``, "
+":func:`copystat` can modify the flags of a symbolic link.  (``os.chflags`` "
+"is not available on all platforms.)"
+msgstr ""
+"Nếu ``os.chflags in os.supports_follow_symlinks`` là ``True``, "
+":func:`copystat` có thể sửa đổi cờ của một liên kết tượng trưng.  "
+"(``os.chflags`` không khả dụng trên tất cả các nền tảng.)"
+
+#: ../../library/shutil.rst:159
+#, fuzzy
+msgid ""
+"On platforms where some or all of this functionality is unavailable, when "
+"asked to modify a symbolic link, :func:`copystat` will copy everything it "
+"can. :func:`copystat` never returns failure."
+msgstr ""
+"Trên các nền tảng không có một số hoặc tất cả chức năng này, khi được yêu "
+"cầu sửa đổi liên kết tượng trưng, :func:`copystat` sẽ sao chép mọi thứ có "
+"thể. :func:`copystat` không bao giờ trả về lỗi."
+
+#: ../../library/shutil.rst:164
+#, fuzzy
+msgid "Please see :data:`os.supports_follow_symlinks` for more information."
+msgstr ""
+"Vui lòng xem :data:`os.supports_follow_symlinks` để biết thêm thông tin."
+
+#: ../../library/shutil.rst:167 ../../library/shutil.rst:224
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``shutil.copystat`` with "
+"arguments ``src``, ``dst``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``shutil.copystat`` với các đối số"
+" ``src``, ``dst``."
+
+#: ../../library/shutil.rst:169
+#, fuzzy
+msgid ""
+"Added *follow_symlinks* argument and support for Linux extended attributes."
+msgstr ""
+"Đã thêm đối số *follow_symlinks* và hỗ trợ cho các thuộc tính mở rộng của "
+"Linux."
+
+#: ../../library/shutil.rst:174
+#, fuzzy
+msgid ""
+"Copies the file *src* to the file or directory *dst*.  *src* and *dst* "
+"should be :term:`path-like objects <path-like object>` or strings.  If *dst*"
+" specifies a directory, the file will be copied into *dst* using the base "
+"filename from *src*. If *dst* specifies a file that already exists, it will "
+"be replaced. Returns the path to the newly created file."
+msgstr ""
+"Sao chép tệp *src* vào tệp hoặc thư mục *dst*.  *src* và *dst* phải là "
+":term:`path-like objects <path-like object>` hoặc chuỗi.  Nếu *dst* chỉ định"
+" một thư mục, tệp sẽ được sao chép vào *dst* bằng tên tệp cơ sở từ *src*. "
+"Nếu *dst* chỉ định một tệp đã tồn tại, nó sẽ được thay thế. Trả về đường dẫn"
+" tới file vừa tạo."
+
+#: ../../library/shutil.rst:180
+#, fuzzy
+msgid ""
+"If *follow_symlinks* is false, and *src* is a symbolic link, *dst* will be "
+"created as a symbolic link.  If *follow_symlinks* is true and *src* is a "
+"symbolic link, *dst* will be a copy of the file *src* refers to."
+msgstr ""
+"Nếu *follow_symlinks* sai và *src* là liên kết tượng trưng, ​​*dst* sẽ được "
+"tạo dưới dạng liên kết tượng trưng.  Nếu *follow_symlinks* là đúng và *src* "
+"là một liên kết tượng trưng thì *dst* sẽ là bản sao của tệp mà *src* đề cập "
+"đến."
+
+#: ../../library/shutil.rst:185
+#, fuzzy
+msgid ""
+":func:`~shutil.copy` copies the file data and the file's permission mode "
+"(see :func:`os.chmod`).  Other metadata, like the file's creation and "
+"modification times, is not preserved. To preserve all file metadata from the"
+" original, use :func:`~shutil.copy2` instead."
+msgstr ""
+":func:`~shutil.copy` sao chép dữ liệu tệp và chế độ cấp phép của tệp (xem "
+":func:`os.chmod`).  Siêu dữ liệu khác, như thời gian tạo và sửa đổi tệp, "
+"không được giữ nguyên. Để bảo toàn tất cả siêu dữ liệu tệp từ bản gốc, thay "
+"vào đó hãy sử dụng :func:`~shutil.copy2`."
+
+#: ../../library/shutil.rst:195
+#, fuzzy
+msgid ""
+"Added *follow_symlinks* argument. Now returns path to the newly created "
+"file."
+msgstr ""
+"Đã thêm đối số *follow_symlinks*. Bây giờ trả về đường dẫn đến tệp mới tạo."
+
+#: ../../library/shutil.rst:206
+#, fuzzy
+msgid ""
+"Identical to :func:`~shutil.copy` except that :func:`copy2` also attempts to"
+" preserve file metadata."
+msgstr ""
+"Giống hệt :func:`~shutil.copy` ngoại trừ :func:`copy2` cũng cố gắng bảo toàn"
+" siêu dữ liệu của tệp."
+
+#: ../../library/shutil.rst:209
+#, fuzzy
+msgid ""
+"When *follow_symlinks* is false, and *src* is a symbolic link, :func:`copy2`"
+" attempts to copy all metadata from the *src* symbolic link to the newly "
+"created *dst* symbolic link. However, this functionality is not available on"
+" all platforms. On platforms where some or all of this functionality is "
+"unavailable, :func:`copy2` will preserve all the metadata it can; "
+":func:`copy2` never raises an exception because it cannot preserve file "
+"metadata."
+msgstr ""
+"Khi *follow_symlinks* sai và *src* là một liên kết tượng trưng, "
+"​​:func:`copy2` sẽ cố gắng sao chép tất cả siêu dữ liệu từ liên kết tượng "
+"trưng *src* sang liên kết tượng trưng *dst* mới được tạo. Tuy nhiên, chức "
+"năng này không có sẵn trên tất cả các nền tảng. Trên các nền tảng không có "
+"một số hoặc tất cả chức năng này, :func:`copy2` sẽ bảo toàn tất cả siêu dữ "
+"liệu có thể; :func:`copy2` không bao giờ đưa ra ngoại lệ vì nó không thể bảo"
+" toàn siêu dữ liệu của tệp."
+
+#: ../../library/shutil.rst:218
+#, fuzzy
+msgid ""
+":func:`copy2` uses :func:`copystat` to copy the file metadata. Please see "
+":func:`copystat` for more information about platform support for modifying "
+"symbolic link metadata."
+msgstr ""
+":func:`copy2` sử dụng :func:`copystat` để sao chép siêu dữ liệu của tệp. Vui"
+" lòng xem :func:`copystat` để biết thêm thông tin về hỗ trợ nền tảng để sửa "
+"đổi siêu dữ liệu liên kết tượng trưng."
+
+#: ../../library/shutil.rst:226
+#, fuzzy
+msgid ""
+"Added *follow_symlinks* argument, try to copy extended file system "
+"attributes too (currently Linux only). Now returns path to the newly created"
+" file."
+msgstr ""
+"Đã thêm đối số *follow_symlinks*, cố gắng sao chép cả các thuộc tính hệ "
+"thống tệp mở rộng (hiện chỉ có trên Linux). Bây giờ trả về đường dẫn đến tệp"
+" mới tạo."
+
+#: ../../library/shutil.rst:238
+#, fuzzy
+msgid ""
+"This factory function creates a function that can be used as a callable for "
+":func:`copytree`\\'s *ignore* argument, ignoring files and directories that "
+"match one of the glob-style *patterns* provided.  See the example below."
+msgstr ""
+"Hàm xuất xưởng này tạo ra một hàm có thể được sử dụng làm hàm có thể gọi cho"
+" đối số *ignore* của :func:`copytree`, bỏ qua các tệp và thư mục khớp với "
+"một trong các *patterns* kiểu toàn cầu được cung cấp.  Xem ví dụ dưới đây."
+
+#: ../../library/shutil.rst:247
+#, fuzzy
+msgid ""
+"Recursively copy an entire directory tree rooted at *src* to a directory "
+"named *dst* and return the destination directory.  All intermediate "
+"directories needed to contain *dst* will also be created by default."
+msgstr ""
+"Sao chép đệ quy toàn bộ cây thư mục có gốc tại *src* vào thư mục có tên "
+"*dst* và trả về thư mục đích.  Tất cả các thư mục trung gian cần thiết để "
+"chứa *dst* cũng sẽ được tạo theo mặc định."
+
+#: ../../library/shutil.rst:251
+#, fuzzy
+msgid ""
+"Permissions and times of directories are copied with :func:`copystat`, "
+"individual files are copied using :func:`~shutil.copy2`."
+msgstr ""
+"Quyền và thời gian của các thư mục được sao chép bằng :func:`copystat`, các "
+"tệp riêng lẻ được sao chép bằng :func:`~shutil.copy2`."
+
+#: ../../library/shutil.rst:254
+#, fuzzy
+msgid ""
+"If *symlinks* is true, symbolic links in the source tree are represented as "
+"symbolic links in the new tree and the metadata of the original links will "
+"be copied as far as the platform allows; if false or omitted, the contents "
+"and metadata of the linked files are copied to the new tree."
+msgstr ""
+"Nếu *symlinks* là đúng, các liên kết tượng trưng trong cây nguồn sẽ được "
+"biểu diễn dưới dạng liên kết tượng trưng trong cây mới và siêu dữ liệu của "
+"các liên kết ban đầu sẽ được sao chép trong phạm vi nền tảng cho phép; nếu "
+"sai hoặc bị bỏ qua, nội dung và siêu dữ liệu của các tệp được liên kết sẽ "
+"được sao chép sang cây mới."
+
+#: ../../library/shutil.rst:259
+#, fuzzy
+msgid ""
+"When *symlinks* is false, if the file pointed to by the symlink doesn't "
+"exist, an exception will be added in the list of errors raised in an "
+":exc:`Error` exception at the end of the copy process. You can set the "
+"optional *ignore_dangling_symlinks* flag to true if you want to silence this"
+" exception. Notice that this option has no effect on platforms that don't "
+"support :func:`os.symlink`."
+msgstr ""
+"Khi *symlinks* sai, nếu tệp được trỏ đến bởi liên kết tượng trưng không tồn "
+"tại, một ngoại lệ sẽ được thêm vào danh sách các lỗi nêu ra trong ngoại lệ "
+":exc:`Error` ở cuối quá trình sao chép. Bạn có thể đặt cờ "
+"*ignore_dangling_symlinks* tùy chọn thành true nếu bạn muốn tắt tiếng ngoại "
+"lệ này. Lưu ý rằng tùy chọn này không có tác dụng trên nền tảng không hỗ trợ"
+" :func:`os.symlink`."
+
+#: ../../library/shutil.rst:266
+#, fuzzy
+msgid ""
+"If *ignore* is given, it must be a callable that will receive as its "
+"arguments the directory being visited by :func:`copytree`, and a list of its"
+" contents, as returned by :func:`os.listdir`.  Since :func:`copytree` is "
+"called recursively, the *ignore* callable will be called once for each "
+"directory that is copied.  The callable must return a sequence of directory "
+"and file names relative to the current directory (i.e. a subset of the items"
+" in its second argument); these names will then be ignored in the copy "
+"process.  :func:`ignore_patterns` can be used to create such a callable that"
+" ignores names based on glob-style patterns."
+msgstr ""
+"Nếu *ignore* được cung cấp, nó phải là một lệnh gọi được sẽ nhận làm đối số "
+"của thư mục đang được :func:`copytree` truy cập và danh sách nội dung của "
+"nó, được trả về bởi :func:`os.listdir`.  Vì :func:`copytree` được gọi đệ quy"
+" nên *ignore* có thể gọi được sẽ được gọi một lần cho mỗi thư mục được sao "
+"chép.  Hàm có thể gọi phải trả về một chuỗi tên thư mục và tệp liên quan đến"
+" thư mục hiện tại (tức là một tập hợp con của các mục trong đối số thứ hai "
+"của nó); những tên này sau đó sẽ bị bỏ qua trong quá trình sao chép.  "
+":func:`ignore_patterns` có thể được sử dụng để tạo ra một lệnh gọi có thể bỏ"
+" qua các tên dựa trên các mẫu kiểu toàn cầu."
+
+#: ../../library/shutil.rst:276
+#, fuzzy
+msgid ""
+"If exception(s) occur, an :exc:`Error` is raised with a list of reasons."
+msgstr ""
+"Nếu (các) ngoại lệ xảy ra, :exc:`Error` sẽ xuất hiện cùng với danh sách các "
+"lý do."
+
+#: ../../library/shutil.rst:278
+#, fuzzy
+msgid ""
+"If *copy_function* is given, it must be a callable that will be used to copy"
+" each file. It will be called with the source path and the destination path "
+"as arguments. By default, :func:`~shutil.copy2` is used, but any function "
+"that supports the same signature (like :func:`~shutil.copy`) can be used."
+msgstr ""
+"Nếu *copy_function* được cung cấp, nó phải là một lệnh gọi được sẽ được sử "
+"dụng để sao chép từng tệp. Nó sẽ được gọi với đường dẫn nguồn và đường dẫn "
+"đích làm đối số. Theo mặc định, :func:`~shutil.copy2` được sử dụng, nhưng "
+"bất kỳ chức năng nào hỗ trợ cùng chữ ký (như :func:`~shutil.copy`) đều có "
+"thể được sử dụng."
+
+#: ../../library/shutil.rst:283
+#, fuzzy
+msgid ""
+"If *dirs_exist_ok* is false (the default) and *dst* already exists, a "
+":exc:`FileExistsError` is raised. If *dirs_exist_ok* is true, the copying "
+"operation will continue if it encounters existing directories, and files "
+"within the *dst* tree will be overwritten by corresponding files from the "
+"*src* tree."
+msgstr ""
+"Nếu *dirs_exist_ok* sai (mặc định) và *dst* đã tồn tại, "
+":exc:`FileExistsError` sẽ được nâng lên. Nếu *dirs_exist_ok* là đúng, thao "
+"tác sao chép sẽ tiếp tục nếu nó gặp các thư mục hiện có và các tệp trong cây"
+" *dst* sẽ bị ghi đè bởi các tệp tương ứng từ cây *src*."
+
+#: ../../library/shutil.rst:289
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``shutil.copytree`` with "
+"arguments ``src``, ``dst``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``shutil.copytree`` với các đối số"
+" ``src``, ``dst``."
+
+#: ../../library/shutil.rst:291
+#, fuzzy
+msgid ""
+"Added the *copy_function* argument to be able to provide a custom copy "
+"function. Added the *ignore_dangling_symlinks* argument to silence dangling "
+"symlinks errors when *symlinks* is false."
+msgstr ""
+"Đã thêm đối số *copy_function* để có thể cung cấp chức năng sao chép tùy "
+"chỉnh. Đã thêm đối số *ignore_dangling_symlinks* để tắt các lỗi liên kết "
+"tượng trưng lơ lửng khi *symlinks* sai."
+
+#: ../../library/shutil.rst:297
+#, fuzzy
+msgid "Copy metadata when *symlinks* is false. Now returns *dst*."
+msgstr "Sao chép siêu dữ liệu khi *symlinks* sai. Bây giờ trả về *dst*."
+
+#: ../../library/shutil.rst:306
+#, fuzzy
+msgid "Added the *dirs_exist_ok* parameter."
+msgstr "Đã thêm tham số *dirs_exist_ok*."
+
+#: ../../library/shutil.rst:313
+#, fuzzy
+msgid ""
+"Delete an entire directory tree; *path* must point to a directory (but not a"
+" symbolic link to a directory).  If *ignore_errors* is true, errors "
+"resulting from failed removals will be ignored; if false or omitted, such "
+"errors are handled by calling a handler specified by *onexc* or *onerror* "
+"or, if both are omitted, exceptions are propagated to the caller."
+msgstr ""
+"Xóa toàn bộ cây thư mục; *path* phải trỏ đến một thư mục (nhưng không phải "
+"là liên kết tượng trưng đến một thư mục).  Nếu *ignore_errors* đúng, các lỗi"
+" do xóa không thành công sẽ bị bỏ qua; nếu sai hoặc bị bỏ qua, các lỗi đó sẽ"
+" được xử lý bằng cách gọi một trình xử lý được chỉ định bởi *onexc* hoặc "
+"*onerror* hoặc, nếu cả hai bị bỏ qua, các ngoại lệ sẽ được truyền tới người "
+"gọi."
+
+#: ../../library/shutil.rst:319
+#, fuzzy
+msgid ""
+"This function can support :ref:`paths relative to directory descriptors "
+"<dir_fd>`."
+msgstr ""
+"Chức năng này có thể hỗ trợ :ref:`paths relative to directory descriptors "
+"<dir_fd>`."
+
+#: ../../library/shutil.rst:324
+#, fuzzy
+msgid ""
+"On platforms that support the necessary fd-based functions a symlink attack "
+"resistant version of :func:`rmtree` is used by default.  On other platforms,"
+" the :func:`rmtree` implementation is susceptible to a symlink attack: given"
+" proper timing and circumstances, attackers can manipulate symlinks on the "
+"filesystem to delete files they wouldn't be able to access otherwise.  "
+"Applications can use the :data:`rmtree.avoids_symlink_attacks` function "
+"attribute to determine which case applies."
+msgstr ""
+"Trên các nền tảng hỗ trợ các chức năng dựa trên fd cần thiết, phiên bản "
+":func:`rmtree` chống tấn công liên kết tượng trưng được sử dụng theo mặc "
+"định.  Trên các nền tảng khác, việc triển khai :func:`rmtree` dễ bị tấn công"
+" bằng liên kết tượng trưng: với thời điểm và hoàn cảnh thích hợp, kẻ tấn "
+"công có thể thao túng các liên kết tượng trưng trên hệ thống tệp để xóa các "
+"tệp mà chúng không thể truy cập được.  Các ứng dụng có thể sử dụng thuộc "
+"tính hàm :data:`rmtree.avoids_symlink_attacks` để xác định trường hợp nào "
+"được áp dụng."
+
+#: ../../library/shutil.rst:332
+#, fuzzy
+msgid ""
+"If *onexc* is provided, it must be a callable that accepts three parameters:"
+" *function*, *path*, and *excinfo*."
+msgstr ""
+"Nếu *onexc* được cung cấp, nó phải là một lệnh gọi được chấp nhận ba tham "
+"số: *function*, *path* và *excinfo*."
+
+#: ../../library/shutil.rst:335
+#, fuzzy
+msgid ""
+"The first parameter, *function*, is the function which raised the exception;"
+" it depends on the platform and implementation.  The second parameter, "
+"*path*, will be the path name passed to *function*.  The third parameter, "
+"*excinfo*, is the exception that was raised. Exceptions raised by *onexc* "
+"will not be caught."
+msgstr ""
+"Tham số đầu tiên, *function*, là hàm đưa ra ngoại lệ; nó phụ thuộc vào nền "
+"tảng và việc triển khai.  Tham số thứ hai, *path*, sẽ là tên đường dẫn được "
+"truyền tới *function*.  Tham số thứ ba, *excinfo*, là ngoại lệ được đưa ra. "
+"Các ngoại lệ do *onexc* đưa ra sẽ không bị bắt."
+
+#: ../../library/shutil.rst:341
+#, fuzzy
+msgid ""
+"The deprecated *onerror* is similar to *onexc*, except that the third "
+"parameter it receives is the tuple returned from :func:`sys.exc_info`."
+msgstr ""
+"*onerror* không được dùng nữa tương tự như *onexc*, ngoại trừ tham số thứ ba"
+" mà nó nhận được là bộ dữ liệu được trả về từ :func:`sys.exc_info`."
+
+#: ../../library/shutil.rst:345
+#, fuzzy
+msgid ""
+":ref:`shutil-rmtree-example` for an example of handling the removal of a "
+"directory tree that contains read-only files."
+msgstr ""
+":ref:`shutil-rmtree-example` để biết ví dụ về cách xử lý việc xóa cây thư "
+"mục chứa các tệp chỉ đọc."
+
+#: ../../library/shutil.rst:348
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``shutil.rmtree`` with arguments "
+"``path``, ``dir_fd``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``shutil.rmtree`` với các đối số "
+"``path``, ``dir_fd``."
+
+#: ../../library/shutil.rst:350
+#, fuzzy
+msgid ""
+"Added a symlink attack resistant version that is used automatically if "
+"platform supports fd-based functions."
+msgstr ""
+"Đã thêm phiên bản chống tấn công liên kết tượng trưng được sử dụng tự động "
+"nếu nền tảng hỗ trợ các chức năng dựa trên fd."
+
+#: ../../library/shutil.rst:354
+#, fuzzy
+msgid ""
+"On Windows, will no longer delete the contents of a directory junction "
+"before removing the junction."
+msgstr ""
+"Trên Windows, sẽ không xóa nội dung của một đường nối thư mục trước khi xóa "
+"đường nối đó nữa."
+
+#: ../../library/shutil.rst:358
+#, fuzzy
+msgid "Added the *dir_fd* parameter."
+msgstr "Đã thêm tham số *dir_fd*."
+
+#: ../../library/shutil.rst:361
+#, fuzzy
+msgid "Added the *onexc* parameter, deprecated *onerror*."
+msgstr "Đã thêm tham số *onexc*, *onerror* không được dùng nữa."
+
+#: ../../library/shutil.rst:364
+#, fuzzy
+msgid ""
+":func:`!rmtree` now ignores :exc:`FileNotFoundError` exceptions for all but "
+"the top-level path. Exceptions other than :exc:`OSError` and subclasses of "
+":exc:`!OSError` are now always propagated to the caller."
+msgstr ""
+":func:`!rmtree` hiện bỏ qua các ngoại lệ :exc:`FileNotFoundError` cho tất cả"
+" ngoại trừ đường dẫn cấp cao nhất. Các ngoại lệ khác ngoài :exc:`OSError` và"
+" các lớp con của :exc:`!OSError` hiện luôn được truyền tới người gọi."
+
+#: ../../library/shutil.rst:372
+#, fuzzy
+msgid ""
+"Indicates whether the current platform and implementation provides a symlink"
+" attack resistant version of :func:`rmtree`.  Currently this is only true "
+"for platforms supporting fd-based directory access functions."
+msgstr ""
+"Cho biết liệu nền tảng và cách triển khai hiện tại có cung cấp phiên bản "
+":func:`rmtree` chống tấn công bằng liên kết tượng trưng hay không.  Hiện tại"
+" điều này chỉ đúng với các nền tảng hỗ trợ chức năng truy cập thư mục dựa "
+"trên fd."
+
+#: ../../library/shutil.rst:381
+#, fuzzy
+msgid ""
+"Recursively move a file or directory (*src*) to another location and return "
+"the destination."
+msgstr ""
+"Di chuyển đệ quy một tệp hoặc thư mục (*src*) sang vị trí khác và trả về "
+"đích."
+
+#: ../../library/shutil.rst:384
+#, fuzzy
+msgid ""
+"If *dst* is an existing directory or a symlink to a directory, then *src* is"
+" moved inside that directory. The destination path in that directory must "
+"not already exist."
+msgstr ""
+"Nếu *dst* là một thư mục hiện có hoặc một liên kết tượng trưng đến một thư "
+"mục thì *src* sẽ được di chuyển vào bên trong thư mục đó. Đường dẫn đích "
+"trong thư mục đó không được tồn tại."
+
+#: ../../library/shutil.rst:388
+#, fuzzy
+msgid ""
+"If *dst* already exists but is not a directory, it may be overwritten "
+"depending on :func:`os.rename` semantics."
+msgstr ""
+"Nếu *dst* đã tồn tại nhưng không phải là một thư mục, nó có thể bị ghi đè "
+"tùy thuộc vào ngữ nghĩa của :func:`os.rename`."
+
+#: ../../library/shutil.rst:391
+#, fuzzy
+msgid ""
+"If the destination is on the current filesystem, then :func:`os.rename` is "
+"used. Otherwise, *src* is copied to the destination using *copy_function* "
+"and then removed.  In case of symlinks, a new symlink pointing to the target"
+" of *src* will be created as the destination and *src* will be removed."
+msgstr ""
+"Nếu đích nằm trên hệ thống tệp hiện tại thì :func:`os.rename` sẽ được sử "
+"dụng. Nếu không, *src* sẽ được sao chép đến đích bằng *copy_function* rồi bị"
+" xóa.  Trong trường hợp liên kết tượng trưng, ​​​​một liên kết tượng trưng "
+"mới trỏ đến mục tiêu của *src* sẽ được tạo làm đích và *src* sẽ bị xóa."
+
+#: ../../library/shutil.rst:396
+#, fuzzy
+msgid ""
+"If *copy_function* is given, it must be a callable that takes two arguments,"
+" *src* and the destination, and will be used to copy *src* to the "
+"destination if :func:`os.rename` cannot be used.  If the source is a "
+"directory, :func:`copytree` is called, passing it the *copy_function*. The "
+"default *copy_function* is :func:`copy2`.  Using :func:`~shutil.copy` as the"
+" *copy_function* allows the move to succeed when it is not possible to also "
+"copy the metadata, at the expense of not copying any of the metadata."
+msgstr ""
+"Nếu *copy_function* được cung cấp, nó phải là một lệnh gọi có hai đối số, "
+"*src* và đích, đồng thời sẽ được sử dụng để sao chép *src* đến đích nếu "
+"không thể sử dụng :func:`os.rename`.  Nếu nguồn là một thư mục, "
+":func:`copytree` sẽ được gọi, chuyển cho nó *copy_function*. Zz008zz mặc "
+"định là :func:`copy2`.  Việc sử dụng :func:`~shutil.copy` làm "
+"*copy_function* cho phép di chuyển thành công khi không thể sao chép siêu dữ"
+" liệu, với chi phí là không sao chép bất kỳ siêu dữ liệu nào."
+
+#: ../../library/shutil.rst:404
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``shutil.move`` with arguments "
+"``src``, ``dst``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``shutil.move`` với các đối số "
+"``src``, ``dst``."
+
+#: ../../library/shutil.rst:406
+#, fuzzy
+msgid ""
+"Added explicit symlink handling for foreign filesystems, thus adapting it to"
+" the behavior of GNU's :program:`mv`. Now returns *dst*."
+msgstr ""
+"Đã thêm xử lý liên kết tượng trưng rõ ràng cho các hệ thống tệp nước ngoài, "
+"do đó điều chỉnh nó cho phù hợp với hoạt động của :program:`mv` của GNU. Bây"
+" giờ trả về *dst*."
+
+#: ../../library/shutil.rst:411
+#, fuzzy
+msgid "Added the *copy_function* keyword argument."
+msgstr "Đã thêm đối số từ khóa *copy_function*."
+
+#: ../../library/shutil.rst:419
+#, fuzzy
+msgid "Accepts a :term:`path-like object` for both *src* and *dst*."
+msgstr "Chấp nhận :term:`path-like object` cho cả *src* và *dst*."
+
+#: ../../library/shutil.rst:424
+#, fuzzy
+msgid ""
+"Return disk usage statistics about the given path as a :term:`named tuple` "
+"with the attributes *total*, *used* and *free*, which are the amount of "
+"total, used and free space, in bytes. *path* may be a file or a directory."
+msgstr ""
+"Trả về số liệu thống kê mức sử dụng đĩa về đường dẫn đã cho dưới dạng "
+":term:`named tuple` với các thuộc tính *total*, *used* và *free*, là tổng "
+"dung lượng đã sử dụng và dung lượng trống tính bằng byte. *path* có thể là "
+"một tập tin hoặc một thư mục."
+
+#: ../../library/shutil.rst:431
+#, fuzzy
+msgid ""
+"On Unix filesystems, *path* must point to a path within a **mounted** "
+"filesystem partition. On those platforms, CPython doesn't attempt to "
+"retrieve disk usage information from non-mounted filesystems."
+msgstr ""
+"Trên hệ thống tệp Unix, *path* phải trỏ đến một đường dẫn trong phân vùng hệ"
+" thống tệp **mounted**. Trên các nền tảng đó, CPython không cố truy xuất "
+"thông tin sử dụng ổ đĩa từ các hệ thống tệp không được gắn kết."
+
+#: ../../library/shutil.rst:437
+#, fuzzy
+msgid "On Windows, *path* can now be a file or directory."
+msgstr "Trên Windows, *path* hiện có thể là một tệp hoặc thư mục."
+
+#: ../../library/shutil.rst:440 ../../library/shutil.rst:454
+#, fuzzy
+msgid "Availability"
+msgstr "sẵn có"
+
+#: ../../library/shutil.rst:445
+#, fuzzy
+msgid "Change owner *user* and/or *group* of the given *path*."
+msgstr "Thay đổi chủ sở hữu *user* và/hoặc *group* của *path* đã cho."
+
+#: ../../library/shutil.rst:447
+#, fuzzy
+msgid ""
+"*user* can be a system user name or a uid; the same applies to *group*. At "
+"least one argument is required."
+msgstr ""
+"*user* có thể là tên người dùng hệ thống hoặc uid; điều tương tự cũng áp "
+"dụng cho *group*. Cần có ít nhất một đối số."
+
+#: ../../library/shutil.rst:450
+#, fuzzy
+msgid "See also :func:`os.chown`, the underlying function."
+msgstr "Xem thêm :func:`os.chown`, hàm cơ bản."
+
+#: ../../library/shutil.rst:452
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``shutil.chown`` with arguments "
+"``path``, ``user``, ``group``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``shutil.chown`` với các đối số "
+"``path``, ``user``, ``group``."
+
+#: ../../library/shutil.rst:458
+#, fuzzy
+msgid "Added *dir_fd* and *follow_symlinks* parameters."
+msgstr "Đã thêm thông số *dir_fd* và *follow_symlinks*."
+
+#: ../../library/shutil.rst:464
+#, fuzzy
+msgid ""
+"Return the path to an executable which would be run if the given *cmd* was "
+"called.  If no *cmd* would be called, return ``None``."
+msgstr ""
+"Trả lại đường dẫn đến tệp thực thi sẽ được chạy nếu *cmd* đã cho được gọi.  "
+"Nếu không có *cmd* nào được gọi, hãy trả về ``None``."
+
+#: ../../library/shutil.rst:467
+#, fuzzy
+msgid ""
+"*mode* is a permission mask passed to :func:`os.access`, by default "
+"determining if the file exists and is executable."
+msgstr ""
+"*mode* là mặt nạ cấp phép được chuyển tới :func:`os.access`, theo mặc định "
+"xác định xem tệp có tồn tại và có thể thực thi được hay không."
+
+#: ../../library/shutil.rst:470
+#, fuzzy
+msgid ""
+"*path* is a \"``PATH`` string\" specifying the directories to look in, "
+"delimited by :data:`os.pathsep`. When no *path* is specified, the "
+":envvar:`PATH` environment variable is read from :data:`os.environ`, falling"
+" back to :data:`os.defpath` if it is not set."
+msgstr ""
+"*path* là một \"chuỗi ``PATH``\" chỉ định các thư mục cần tìm, được phân "
+"cách bằng :data:`os.pathsep`. Khi không chỉ định *path*, biến môi trường "
+":envvar:`PATH` được đọc từ :data:`os.environ`, quay trở lại "
+":data:`os.defpath` nếu nó không được đặt."
+
+#: ../../library/shutil.rst:475
+#, fuzzy
+msgid ""
+"If *cmd* contains a directory component, :func:`!which` only checks the "
+"specified path directly and does not search the directories listed in *path*"
+" or in the system's :envvar:`PATH` environment variable."
+msgstr ""
+"Nếu *cmd* chứa thành phần thư mục, :func:`!which` chỉ kiểm tra trực tiếp "
+"đường dẫn được chỉ định và không tìm kiếm các thư mục được liệt kê trong "
+"*path* hoặc trong biến môi trường :envvar:`PATH` của hệ thống."
+
+#: ../../library/shutil.rst:479
+#, fuzzy
+msgid ""
+"On Windows, the current directory is prepended to the *path* if *mode* does "
+"not include ``os.X_OK``. When the *mode* does include ``os.X_OK``, the "
+"Windows API ``NeedCurrentDirectoryForExePathW`` will be consulted to "
+"determine if the current directory should be prepended to *path*. To avoid "
+"consulting the current working directory for executables: set the "
+"environment variable ``NoDefaultCurrentDirectoryInExePath``."
+msgstr ""
+"Trên Windows, thư mục hiện tại được thêm vào trước *path* nếu *mode* không "
+"bao gồm ``os.X_OK``. Khi *mode* bao gồm ``os.X_OK``, Windows API "
+"``NeedCurrentDirectoryForExePathW`` sẽ được tham khảo để xác định xem thư "
+"mục hiện tại có nên được thêm vào trước *path* hay không. Để tránh phải tham"
+" khảo thư mục làm việc hiện tại để tìm các tệp thực thi: hãy đặt biến môi "
+"trường ``NoDefaultCurrentDirectoryInExePath``."
+
+#: ../../library/shutil.rst:486
+#, fuzzy
+msgid ""
+"Also on Windows, the :envvar:`PATHEXT` environment variable is used to "
+"resolve commands that may not already include an extension. For example, if "
+"you call ``shutil.which(\"python\")``, :func:`which` will search ``PATHEXT``"
+" to know that it should look for ``python.exe`` within the *path* "
+"directories. For example, on Windows::"
+msgstr ""
+"Ngoài ra trên Windows, biến môi trường :envvar:`PATHEXT` được sử dụng để "
+"giải quyết các lệnh có thể chưa bao gồm phần mở rộng. Ví dụ: nếu bạn gọi "
+"``shutil.which(\"python\")``, :func:`which` sẽ tìm kiếm ``PATHEXT`` để biết "
+"rằng nó sẽ tìm ``python.exe`` trong thư mục *path*. Ví dụ: trên Windows::"
+
+#: ../../library/shutil.rst:492
+#, fuzzy
+msgid ""
+">>> shutil.which(\"python\")\n"
+"'C:\\\\Python33\\\\python.EXE'"
+msgstr ""
+">>> Shutil.which(\"python\")\n"
+"'C:\\\\Python33\\\\python.EXE'"
+
+#: ../../library/shutil.rst:495
+#, fuzzy
+msgid ""
+"This is also applied when *cmd* is a path that contains a directory "
+"component::"
+msgstr ""
+"Điều này cũng được áp dụng khi *cmd* là đường dẫn chứa thành phần thư mục ::"
+
+#: ../../library/shutil.rst:498
+#, fuzzy
+msgid ""
+">>> shutil.which(\"C:\\\\Python33\\\\python\")\n"
+"'C:\\\\Python33\\\\python.EXE'"
+msgstr ""
+">>> Shutil.which(\"C:\\\\Python33\\\\python\")\n"
+"'C:\\\\Python33\\\\python.EXE'"
+
+#: ../../library/shutil.rst:503
+#, fuzzy
+msgid ""
+"The :class:`bytes` type is now accepted.  If *cmd* type is :class:`bytes`, "
+"the result type is also :class:`bytes`."
+msgstr ""
+"Loại :class:`bytes` hiện được chấp nhận.  Nếu loại *cmd* là :class:`bytes` "
+"thì loại kết quả cũng là :class:`bytes`."
+
+#: ../../library/shutil.rst:507
+#, fuzzy
+msgid ""
+"On Windows, the current directory is no longer prepended to the search path "
+"if *mode* includes ``os.X_OK`` and WinAPI "
+"``NeedCurrentDirectoryForExePathW(cmd)`` is false, else the current "
+"directory is prepended even if it is already in the search path; ``PATHEXT``"
+" is used now even when *cmd* includes a directory component or ends with an "
+"extension that is in ``PATHEXT``; and filenames that have no extension can "
+"now be found."
+msgstr ""
+"Trên Windows, thư mục hiện tại không còn được thêm vào trước đường dẫn tìm "
+"kiếm nếu *mode* bao gồm ``os.X_OK`` và WinAPI "
+"``NeedCurrentDirectoryForExePathW(cmd)`` là sai, nếu không thì thư mục hiện "
+"tại sẽ được thêm vào trước ngay cả khi nó đã có trong đường dẫn tìm kiếm; "
+"``PATHEXT`` hiện được sử dụng ngay cả khi *cmd* bao gồm một thành phần thư "
+"mục hoặc kết thúc bằng phần mở rộng trong ``PATHEXT``; và bây giờ có thể tìm"
+" thấy tên tệp không có phần mở rộng."
+
+#: ../../library/shutil.rst:518
+#, fuzzy
+msgid ""
+"This exception collects exceptions that are raised during a multi-file "
+"operation. For :func:`copytree`, the exception argument is a list of "
+"3-tuples (*srcname*, *dstname*, *exception*)."
+msgstr ""
+"Ngoại lệ này thu thập các ngoại lệ được nêu ra trong quá trình thực hiện "
+"nhiều tệp. Đối với :func:`copytree`, đối số ngoại lệ là danh sách 3 bộ dữ "
+"liệu (*srcname*, *dstname*, *exception*)."
+
+#: ../../library/shutil.rst:525
+#, fuzzy
+msgid "Platform-dependent efficient copy operations"
+msgstr "Hoạt động sao chép hiệu quả phụ thuộc vào nền tảng"
+
+#: ../../library/shutil.rst:527
+#, fuzzy
+msgid ""
+"Starting from Python 3.8, all functions involving a file copy "
+"(:func:`copyfile`, :func:`~shutil.copy`, :func:`copy2`, :func:`copytree`, "
+"and :func:`move`) may use platform-specific \"fast-copy\" syscalls in order "
+"to copy the file more efficiently (see :issue:`33671`). \"fast-copy\" means "
+"that the copying operation occurs within the kernel, avoiding the use of "
+"userspace buffers in Python as in \"``outfd.write(infd.read())``\"."
+msgstr ""
+"Bắt đầu từ Python 3.8, tất cả các hàm liên quan đến sao chép tệp "
+"(:func:`copyfile`, :func:`~shutil.copy`, :func:`copy2`, :func:`copytree` và "
+":func:`move`) có thể sử dụng các lệnh gọi tổng hợp \"sao chép nhanh\" dành "
+"riêng cho nền tảng để sao chép tệp hiệu quả hơn (xem :issue:`33671`). \"sao "
+"chép nhanh\" có nghĩa là hoạt động sao chép xảy ra trong kernel, tránh việc "
+"sử dụng vùng đệm vùng người dùng trong Python như trong "
+"\"``outfd.write(infd.read())``\"."
+
+#: ../../library/shutil.rst:535
+#, fuzzy
+msgid "On macOS `fcopyfile`_ is used to copy the file content (not metadata)."
+msgstr ""
+"Trên macOS `fcopyfile`_ được dùng để sao chép nội dung file (không phải siêu"
+" dữ liệu)."
+
+#: ../../library/shutil.rst:537
+#, fuzzy
+msgid "On Linux :func:`os.copy_file_range` or :func:`os.sendfile` is used."
+msgstr ""
+"Trên Linux :func:`os.copy_file_range` hoặc :func:`os.sendfile` được sử dụng."
+
+#: ../../library/shutil.rst:539
+#, fuzzy
+msgid "On Solaris :func:`os.sendfile` is used."
+msgstr "Trên Solaris :func:`os.sendfile` được sử dụng."
+
+#: ../../library/shutil.rst:541
+#, fuzzy
+msgid ""
+"On Windows :func:`shutil.copyfile` uses a bigger default buffer size (1 MiB "
+"instead of 64 KiB) and a :func:`memoryview`-based variant of "
+":func:`shutil.copyfileobj` is used."
+msgstr ""
+"Trên Windows :func:`shutil.copyfile` sử dụng kích thước bộ đệm mặc định lớn "
+"hơn (1 MiB thay vì 64 KiB) và sử dụng biến thể :func:`shutil.copyfileobj` "
+"dựa trên :func:`memoryview`."
+
+#: ../../library/shutil.rst:545
+#, fuzzy
+msgid ""
+"If the fast-copy operation fails and no data was written in the destination "
+"file then shutil will silently fall back to less efficient "
+":func:`copyfileobj` function internally."
+msgstr ""
+"Nếu thao tác sao chép nhanh không thành công và không có dữ liệu nào được "
+"ghi vào tệp đích thì Shutil sẽ âm thầm quay trở lại chức năng "
+":func:`copyfileobj` kém hiệu quả hơn trong nội bộ."
+
+#: ../../library/shutil.rst:551
+#, fuzzy
+msgid "Solaris now uses :func:`os.sendfile`."
+msgstr "Solaris hiện sử dụng :func:`os.sendfile`."
+
+#: ../../library/shutil.rst:554
+#, fuzzy
+msgid ""
+"Copy-on-write or server-side copy may be used internally via "
+":func:`os.copy_file_range` on supported Linux filesystems."
+msgstr ""
+"Sao chép khi ghi hoặc sao chép phía máy chủ có thể được sử dụng nội bộ thông"
+" qua :func:`os.copy_file_range` trên các hệ thống tệp Linux được hỗ trợ."
+
+#: ../../library/shutil.rst:561
+#, fuzzy
+msgid "copytree example"
+msgstr "ví dụ về cây sao chép"
+
+#: ../../library/shutil.rst:563
+#, fuzzy
+msgid "An example that uses the :func:`ignore_patterns` helper::"
+msgstr "Một ví dụ sử dụng trình trợ giúp :func:`ignore_patterns` ::"
+
+#: ../../library/shutil.rst:565
+#, fuzzy
+msgid ""
+"from shutil import copytree, ignore_patterns\n"
+"\n"
+"copytree(source, destination, ignore=ignore_patterns('*.pyc', 'tmp*'))"
+msgstr ""
+"từ bản sao nhập khẩu của Shutil, ign_patterns\n"
+"\n"
+"copytree(nguồn, đích, bỏ qua=ignore_patterns('*.pyc', 'tmp*'))"
+
+#: ../../library/shutil.rst:569
+#, fuzzy
+msgid ""
+"This will copy everything except ``.pyc`` files and files or directories "
+"whose name starts with ``tmp``."
+msgstr ""
+"Thao tác này sẽ sao chép mọi thứ ngoại trừ tệp ``.pyc`` và tệp hoặc thư mục "
+"có tên bắt đầu bằng ``tmp``."
+
+#: ../../library/shutil.rst:572
+#, fuzzy
+msgid ""
+"Another example that uses the *ignore* argument to add a logging call::"
+msgstr "Một ví dụ khác sử dụng đối số *ignore* để thêm lệnh gọi ghi nhật ký::"
+
+#: ../../library/shutil.rst:574
+#, python-format, fuzzy
+msgid ""
+"from shutil import copytree\n"
+"import logging\n"
+"\n"
+"def _logpath(path, names):\n"
+"    logging.info('Working in %s', path)\n"
+"    return []   # nothing will be ignored\n"
+"\n"
+"copytree(source, destination, ignore=_logpath)"
+msgstr ""
+"từ bản sao nhập khẩu của Shutil\n"
+"nhập nhật ký\n"
+"\n"
+"def _logpath(đường dẫn, tên):\n"
+"    logging.info('Đang làm việc ở %s', path)\n"
+"    return [] # nothing sẽ bị bỏ qua\n"
+"\n"
+"copytree(nguồn, đích, bỏ qua=_logpath)"
+
+#: ../../library/shutil.rst:587
+#, fuzzy
+msgid "rmtree example"
+msgstr "ví dụ về rmtree"
+
+#: ../../library/shutil.rst:589
+#, fuzzy
+msgid ""
+"This example shows how to remove a directory tree on Windows where some of "
+"the files have their read-only bit set. It uses the onexc callback to clear "
+"the readonly bit and reattempt the remove. Any subsequent failure will "
+"propagate. ::"
+msgstr ""
+"Ví dụ này cho thấy cách xóa cây thư mục trên Windows trong đó một số tệp có "
+"tập bit chỉ đọc. Nó sử dụng lệnh gọi lại onexc để xóa bit chỉ đọc và thử xóa"
+" lại. Bất kỳ thất bại tiếp theo sẽ lan truyền. ::"
+
+#: ../../library/shutil.rst:594
+#, fuzzy
+msgid ""
+"import os, stat\n"
+"import shutil\n"
+"\n"
+"def remove_readonly(func, path, _):\n"
+"    \"Clear the readonly bit and reattempt the removal\"\n"
+"    os.chmod(path, stat.S_IWRITE)\n"
+"    func(path)\n"
+"\n"
+"shutil.rmtree(directory, onexc=remove_readonly)"
+msgstr ""
+"nhập hệ điều hành, thống kê\n"
+"nhập khẩu\n"
+"\n"
+"def Remove_readonly(func, đường dẫn, _):\n"
+"    \"Xóa bit chỉ đọc và thử xóa lại\"\n"
+"    os.chmod(đường dẫn, stat.S_IWRITE)\n"
+"    func(đường dẫn)\n"
+"\n"
+"Shutil.rmtree(thư mục, onexc=remove_readonly)"
+
+#: ../../library/shutil.rst:607
+#, fuzzy
+msgid "Archiving operations"
+msgstr "Hoạt động lưu trữ"
+
+#: ../../library/shutil.rst:611
+#, fuzzy
+msgid "Added support for the *xztar* format."
+msgstr "Đã thêm hỗ trợ cho định dạng *xztar*."
+
+#: ../../library/shutil.rst:615
+#, fuzzy
+msgid ""
+"High-level utilities to create and read compressed and archived files are "
+"also provided.  They rely on the :mod:`zipfile` and :mod:`tarfile` modules."
+msgstr ""
+"Các tiện ích cấp cao để tạo và đọc các tệp nén và lưu trữ cũng được cung "
+"cấp.  Họ dựa vào các mô-đun :mod:`zipfile` và :mod:`tarfile`."
+
+#: ../../library/shutil.rst:620
+#, fuzzy
+msgid "Create an archive file (such as zip or tar) and return its name."
+msgstr ""
+"Tạo một tệp lưu trữ (chẳng hạn như zip hoặc tar) và trả về tên của nó."
+
+#: ../../library/shutil.rst:622
+#, fuzzy
+msgid ""
+"*base_name* is the name of the file to create, including the path, minus any"
+" format-specific extension."
+msgstr ""
+"*base_name* là tên của tệp cần tạo, bao gồm đường dẫn, trừ mọi phần mở rộng "
+"dành riêng cho định dạng."
+
+#: ../../library/shutil.rst:625
+#, fuzzy
+msgid ""
+"*format* is the archive format: one of \"zip\" (if the :mod:`zlib` module is"
+" available), \"tar\", \"gztar\" (if the :mod:`zlib` module is available), "
+"\"bztar\" (if the :mod:`bz2` module is available), \"xztar\" (if the "
+":mod:`lzma` module is available), or \"zstdtar\" (if the "
+":mod:`compression.zstd` module is available)."
+msgstr ""
+"*format* là định dạng lưu trữ: một trong các \"zip\" (nếu có mô-đun "
+":mod:`zlib`), \"tar\", \"gztar\" (nếu có mô-đun :mod:`zlib`), \"bztar\" (nếu"
+" có mô-đun :mod:`bz2`), \"xztar\" (nếu có mô-đun :mod:`lzma`) hoặc "
+"\"zstdtar\" (nếu có mô-đun :mod:`compression.zstd`)."
+
+#: ../../library/shutil.rst:631
+#, fuzzy
+msgid ""
+"*root_dir* is a directory that will be the root directory of the archive, "
+"all paths in the archive will be relative to it; for example, we typically "
+"chdir into *root_dir* before creating the archive."
+msgstr ""
+"*root_dir* là thư mục sẽ là thư mục gốc của kho lưu trữ, tất cả các đường "
+"dẫn trong kho lưu trữ sẽ liên quan đến nó; ví dụ: chúng tôi thường chdir vào"
+" *root_dir* trước khi tạo kho lưu trữ."
+
+#: ../../library/shutil.rst:635
+#, fuzzy
+msgid ""
+"*base_dir* is the directory where we start archiving from; i.e. *base_dir* "
+"will be the common prefix of all files and directories in the archive.  "
+"*base_dir* must be given relative to *root_dir*.  See :ref:`shutil-"
+"archiving-example-with-basedir` for how to use *base_dir* and *root_dir* "
+"together."
+msgstr ""
+"*base_dir* là thư mục nơi chúng tôi bắt đầu lưu trữ; tức là *base_dir* sẽ là"
+" tiền tố chung của tất cả các tệp và thư mục trong kho lưu trữ.  *base_dir* "
+"phải được đưa ra tương ứng với *root_dir*.  Xem :ref:`shutil-archiving-"
+"example-with-basedir` để biết cách sử dụng *base_dir* và *root_dir* cùng "
+"nhau."
+
+#: ../../library/shutil.rst:641
+#, fuzzy
+msgid "*root_dir* and *base_dir* both default to the current directory."
+msgstr "*root_dir* và *base_dir* đều mặc định là thư mục hiện tại."
+
+#: ../../library/shutil.rst:643
+#, fuzzy
+msgid ""
+"If *dry_run* is true, no archive is created, but the operations that would "
+"be executed are logged to *logger*."
+msgstr ""
+"Nếu *dry_run* là đúng thì không có kho lưu trữ nào được tạo nhưng các thao "
+"tác sẽ được thực thi sẽ được ghi vào *logger*."
+
+#: ../../library/shutil.rst:646
+#, fuzzy
+msgid ""
+"*owner* and *group* are used when creating a tar archive. By default, uses "
+"the current owner and group."
+msgstr ""
+"*owner* và *group* được sử dụng khi tạo kho lưu trữ tar. Theo mặc định, sử "
+"dụng chủ sở hữu và nhóm hiện tại."
+
+#: ../../library/shutil.rst:649
+#, fuzzy
+msgid ""
+"*logger* must be an object compatible with :pep:`282`, usually an instance "
+"of :class:`logging.Logger`."
+msgstr ""
+"*logger* phải là một đối tượng tương thích với :pep:`282`, thường là một "
+"phiên bản của :class:`logging.Logger`."
+
+#: ../../library/shutil.rst:652
+#, fuzzy
+msgid "The *verbose* argument is unused and deprecated."
+msgstr "Đối số *verbose* không được sử dụng và không được dùng nữa."
+
+#: ../../library/shutil.rst:654
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``shutil.make_archive`` with "
+"arguments ``base_name``, ``format``, ``root_dir``, ``base_dir``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``shutil.make_archive`` với các "
+"đối số ``base_name``, ``format``, ``root_dir``, ``base_dir``."
+
+#: ../../library/shutil.rst:658
+#, fuzzy
+msgid ""
+"This function is not thread-safe when custom archivers registered with "
+":func:`register_archive_format` do not support the *root_dir* argument.  In "
+"this case it temporarily changes the current working directory of the "
+"process to *root_dir* to perform archiving."
+msgstr ""
+"Chức năng này không an toàn cho luồng khi các trình lưu trữ tùy chỉnh được "
+"đăng ký với :func:`register_archive_format` không hỗ trợ đối số *root_dir*."
+"  Trong trường hợp này, nó tạm thời thay đổi thư mục làm việc hiện tại của "
+"tiến trình thành *root_dir* để thực hiện lưu trữ."
+
+#: ../../library/shutil.rst:664
+#, fuzzy
+msgid ""
+"The modern pax (POSIX.1-2001) format is now used instead of the legacy GNU "
+"format for archives created with ``format=\"tar\"``."
+msgstr ""
+"Định dạng pax hiện đại (POSIX.1-2001) hiện được sử dụng thay cho định dạng "
+"GNU cũ cho các kho lưu trữ được tạo bằng ``format=\"tar\"``."
+
+#: ../../library/shutil.rst:668
+#, fuzzy
+msgid ""
+"This function is now made thread-safe during creation of standard ``.zip`` "
+"and tar archives."
+msgstr ""
+"Chức năng này hiện được đảm bảo an toàn cho luồng trong quá trình tạo kho "
+"lưu trữ ``.zip`` và tar tiêu chuẩn."
+
+#: ../../library/shutil.rst:674
+#, fuzzy
+msgid ""
+"Return a list of supported formats for archiving. Each element of the "
+"returned sequence is a tuple ``(name, description)``."
+msgstr ""
+"Trả về danh sách các định dạng được hỗ trợ để lưu trữ. Mỗi phần tử của chuỗi"
+" trả về là một bộ ``(name, description)``."
+
+#: ../../library/shutil.rst:677 ../../library/shutil.rst:794
+#, fuzzy
+msgid "By default :mod:`!shutil` provides these formats:"
+msgstr "Theo mặc định :mod:`!shutil` cung cấp các định dạng sau:"
+
+#: ../../library/shutil.rst:679
+#, fuzzy
+msgid "*zip*: ZIP file (if the :mod:`zlib` module is available)."
+msgstr "*zip*: tệp ZIP (nếu có mô-đun :mod:`zlib`)."
+
+#: ../../library/shutil.rst:680
+#, fuzzy
+msgid ""
+"*tar*: Uncompressed tar file. Uses POSIX.1-2001 pax format for new archives."
+msgstr ""
+"*tar*: Tệp tar không nén. Sử dụng định dạng POSIX.1-2001 pax cho các kho lưu"
+" trữ mới."
+
+#: ../../library/shutil.rst:681 ../../library/shutil.rst:799
+#, fuzzy
+msgid "*gztar*: gzip'ed tar-file (if the :mod:`zlib` module is available)."
+msgstr "*gztar*: gzip'ed tar-file (nếu có mô-đun :mod:`zlib`)."
+
+#: ../../library/shutil.rst:682 ../../library/shutil.rst:800
+#, fuzzy
+msgid "*bztar*: bzip2'ed tar-file (if the :mod:`bz2` module is available)."
+msgstr "*bztar*: bzip2'ed tar-file (nếu có mô-đun :mod:`bz2`)."
+
+#: ../../library/shutil.rst:683 ../../library/shutil.rst:801
+#, fuzzy
+msgid "*xztar*: xz'ed tar-file (if the :mod:`lzma` module is available)."
+msgstr "*xztar*: xz'ed tar-file (nếu có mô-đun :mod:`lzma`)."
+
+#: ../../library/shutil.rst:684 ../../library/shutil.rst:802
+#, fuzzy
+msgid ""
+"*zstdtar*: Zstandard compressed tar-file (if the :mod:`compression.zstd` "
+"module is available)."
+msgstr ""
+"*zstdtar*: Tệp tar nén tiêu chuẩn Z (nếu có mô-đun :mod:`compression.zstd`)."
+
+#: ../../library/shutil.rst:687
+#, fuzzy
+msgid ""
+"You can register new formats or provide your own archiver for any existing "
+"formats, by using :func:`register_archive_format`."
+msgstr ""
+"Bạn có thể đăng ký các định dạng mới hoặc cung cấp trình lưu trữ của riêng "
+"mình cho mọi định dạng hiện có bằng cách sử dụng "
+":func:`register_archive_format`."
+
+#: ../../library/shutil.rst:693
+#, fuzzy
+msgid "Register an archiver for the format *name*."
+msgstr "Đăng ký một kho lưu trữ cho định dạng *name*."
+
+#: ../../library/shutil.rst:695
+#, fuzzy
+msgid ""
+"*function* is the callable that will be used to unpack archives. The "
+"callable will receive the *base_name* of the file to create, followed by the"
+" *base_dir* (which defaults to :data:`os.curdir`) to start archiving from. "
+"Further arguments are passed as keyword arguments: *owner*, *group*, "
+"*dry_run* and *logger* (as passed in :func:`make_archive`)."
+msgstr ""
+"*function* là lệnh gọi sẽ được sử dụng để giải nén các kho lưu trữ. Người có"
+" thể gọi sẽ nhận được *base_name* của tệp cần tạo, theo sau là *base_dir* "
+"(mặc định là :data:`os.curdir`) để bắt đầu lưu trữ từ đó. Các đối số tiếp "
+"theo được chuyển dưới dạng đối số từ khóa: *owner*, *group*, *dry_run* và "
+"*logger* (như được truyền trong :func:`make_archive`)."
+
+#: ../../library/shutil.rst:701
+#, fuzzy
+msgid ""
+"If *function* has the custom attribute ``function.supports_root_dir`` set to"
+" ``True``, the *root_dir* argument is passed as a keyword argument. "
+"Otherwise the current working directory of the process is temporarily "
+"changed to *root_dir* before calling *function*. In this case "
+":func:`make_archive` is not thread-safe."
+msgstr ""
+"Nếu *function* có thuộc tính tùy chỉnh ``function.supports_root_dir`` được "
+"đặt thành ``True`` thì đối số *root_dir* sẽ được chuyển dưới dạng đối số từ "
+"khóa. Nếu không, thư mục làm việc hiện tại của tiến trình sẽ tạm thời được "
+"thay đổi thành *root_dir* trước khi gọi *function*. Trong trường hợp này, "
+":func:`make_archive` không an toàn cho luồng."
+
+#: ../../library/shutil.rst:707
+#, fuzzy
+msgid ""
+"If given, *extra_args* is a sequence of ``(name, value)`` pairs that will be"
+" used as extra keywords arguments when the archiver callable is used."
+msgstr ""
+"Nếu được cung cấp, *extra_args* là một chuỗi các cặp ``(name, value)`` sẽ "
+"được sử dụng làm đối số từ khóa bổ sung khi sử dụng trình lưu trữ có thể gọi"
+" được."
+
+#: ../../library/shutil.rst:710
+#, fuzzy
+msgid ""
+"*description* is used by :func:`get_archive_formats` which returns the list "
+"of archivers.  Defaults to an empty string."
+msgstr ""
+"*description* được :func:`get_archive_formats` sử dụng để trả về danh sách "
+"người lưu trữ.  Mặc định là một chuỗi trống."
+
+#: ../../library/shutil.rst:713
+#, fuzzy
+msgid "Added support for functions supporting the *root_dir* argument."
+msgstr "Đã thêm hỗ trợ cho các hàm hỗ trợ đối số *root_dir*."
+
+#: ../../library/shutil.rst:719
+#, fuzzy
+msgid "Remove the archive format *name* from the list of supported formats."
+msgstr ""
+"Xóa định dạng lưu trữ *name* khỏi danh sách các định dạng được hỗ trợ."
+
+#: ../../library/shutil.rst:724
+#, fuzzy
+msgid "Unpack an archive. *filename* is the full path of the archive."
+msgstr ""
+"Giải nén một kho lưu trữ. *filename* là đường dẫn đầy đủ của kho lưu trữ."
+
+#: ../../library/shutil.rst:726
+#, fuzzy
+msgid ""
+"*extract_dir* is the name of the target directory where the archive is "
+"unpacked. If not provided, the current working directory is used."
+msgstr ""
+"*extract_dir* là tên của thư mục đích nơi kho lưu trữ được giải nén. Nếu "
+"không được cung cấp, thư mục làm việc hiện tại sẽ được sử dụng."
+
+#: ../../library/shutil.rst:729
+#, fuzzy
+msgid ""
+"*format* is the archive format: one of \"zip\", \"tar\", \"gztar\", "
+"\"bztar\", \"xztar\", or \"zstdtar\".  Or any other format registered with "
+":func:`register_unpack_format`.  If not provided, :func:`unpack_archive` "
+"will use the archive file name extension and see if an unpacker was "
+"registered for that extension.  In case none is found, a :exc:`ValueError` "
+"is raised."
+msgstr ""
+"*format* là định dạng lưu trữ: một trong các \"zip\", \"tar\", \"gztar\", "
+"\"bztar\", \"xztar\" hoặc \"zstdtar\".  Hoặc bất kỳ định dạng nào khác được "
+"đăng ký với :func:`register_unpack_format`.  Nếu không được cung cấp, "
+":func:`unpack_archive` sẽ sử dụng phần mở rộng tên tệp lưu trữ và xem liệu "
+"trình giải nén đã được đăng ký cho phần mở rộng đó hay chưa.  Trong trường "
+"hợp không tìm thấy, :exc:`ValueError` sẽ được nâng lên."
+
+#: ../../library/shutil.rst:736
+#, fuzzy
+msgid ""
+"The keyword-only *filter* argument is passed to the underlying unpacking "
+"function. For zip files, *filter* is not accepted. For tar files, it is "
+"recommended to use ``'data'`` (default since Python 3.14), unless using "
+"features specific to tar and UNIX-like filesystems. (See :ref:`tarfile-"
+"extraction-filter` for details.)"
+msgstr ""
+"Đối số *filter* chỉ có từ khóa được chuyển đến hàm giải nén cơ bản. Đối với "
+"file zip, *filter* không được chấp nhận. Đối với các tệp tar, bạn nên sử "
+"dụng ``'data'`` (mặc định kể từ Python 3.14), trừ khi sử dụng các tính năng "
+"dành riêng cho hệ thống tệp giống tar và UNIX. (Xem :ref:`tarfile-"
+"extraction-filter` để biết chi tiết.)"
+
+#: ../../library/shutil.rst:742
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``shutil.unpack_archive`` with "
+"arguments ``filename``, ``extract_dir``, ``format``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``shutil.unpack_archive`` với các "
+"đối số ``filename``, ``extract_dir``, ``format``."
+
+#: ../../library/shutil.rst:746
+#, fuzzy
+msgid ""
+"Never extract archives from untrusted sources without prior inspection. It "
+"is possible that files are created outside of the path specified in the "
+"*extract_dir* argument, e.g. members that have absolute filenames starting "
+"with \"/\" or filenames with two dots \"..\"."
+msgstr ""
+"Không bao giờ trích xuất tài liệu lưu trữ từ các nguồn không đáng tin cậy mà"
+" không kiểm tra trước. Có thể các tệp được tạo bên ngoài đường dẫn được chỉ "
+"định trong đối số *extract_dir*, ví dụ: thành viên có tên tệp tuyệt đối bắt "
+"đầu bằng \"/\" hoặc tên tệp có hai dấu chấm \"..\"."
+
+#: ../../library/shutil.rst:751
+#, fuzzy
+msgid ""
+"Since Python 3.14, the defaults for both built-in formats (zip and tar "
+"files) will prevent the most dangerous of such security issues, but will not"
+" prevent *all* unintended behavior. Read the :ref:`tarfile-further-"
+"verification` section for tar-specific details."
+msgstr ""
+"Kể từ Python 3.14, mặc định cho cả hai định dạng tích hợp (tệp zip và tar) "
+"sẽ ngăn chặn những vấn đề bảo mật nguy hiểm nhất như vậy, nhưng sẽ không "
+"ngăn được hành vi ngoài ý muốn của *all*. Đọc phần :ref:`tarfile-further-"
+"verification` để biết chi tiết cụ thể về tar."
+
+#: ../../library/shutil.rst:757
+#, fuzzy
+msgid "Accepts a :term:`path-like object` for *filename* and *extract_dir*."
+msgstr "Chấp nhận :term:`path-like object` cho *filename* và *extract_dir*."
+
+#: ../../library/shutil.rst:760
+#, fuzzy
+msgid "Added the *filter* argument."
+msgstr "Đã thêm đối số *filter*."
+
+#: ../../library/shutil.rst:765
+#, fuzzy
+msgid ""
+"Registers an unpack format. *name* is the name of the format and "
+"*extensions* is a list of extensions corresponding to the format, like "
+"``.zip`` for Zip files."
+msgstr ""
+"Đăng ký một định dạng giải nén. *name* là tên của định dạng và *extensions* "
+"là danh sách các phần mở rộng tương ứng với định dạng, như ``.zip`` cho file"
+" Zip."
+
+#: ../../library/shutil.rst:769
+#, fuzzy
+msgid ""
+"*function* is the callable that will be used to unpack archives. The "
+"callable will receive:"
+msgstr ""
+"*function* là lệnh gọi sẽ được sử dụng để giải nén các kho lưu trữ. Người có"
+" thể gọi sẽ nhận được:"
+
+#: ../../library/shutil.rst:772
+#, fuzzy
+msgid "the path of the archive, as a positional argument;"
+msgstr "đường dẫn của kho lưu trữ, như một đối số vị trí;"
+
+#: ../../library/shutil.rst:773
+#, fuzzy
+msgid ""
+"the directory the archive must be extracted to, as a positional argument;"
+msgstr "thư mục mà kho lưu trữ phải được trích xuất vào, làm đối số vị trí;"
+
+#: ../../library/shutil.rst:774
+#, fuzzy
+msgid ""
+"possibly a *filter* keyword argument, if it was given to "
+":func:`unpack_archive`;"
+msgstr ""
+"có thể là một đối số từ khóa *filter*, nếu nó được trao cho "
+":func:`unpack_archive`;"
+
+#: ../../library/shutil.rst:776
+#, fuzzy
+msgid ""
+"additional keyword arguments, specified by *extra_args* as a sequence of "
+"``(name, value)`` tuples."
+msgstr ""
+"đối số từ khóa bổ sung, được chỉ định bởi *extra_args* dưới dạng một chuỗi "
+"các bộ dữ liệu ``(name, value)``."
+
+#: ../../library/shutil.rst:779
+#, fuzzy
+msgid ""
+"*description* can be provided to describe the format, and will be returned "
+"by the :func:`get_unpack_formats` function."
+msgstr ""
+"*description* có thể được cung cấp để mô tả định dạng và sẽ được hàm "
+":func:`get_unpack_formats` trả về."
+
+#: ../../library/shutil.rst:785
+#, fuzzy
+msgid "Unregister an unpack format. *name* is the name of the format."
+msgstr "Hủy đăng ký một định dạng giải nén. *name* là tên của định dạng."
+
+#: ../../library/shutil.rst:790
+#, fuzzy
+msgid ""
+"Return a list of all registered formats for unpacking. Each element of the "
+"returned sequence is a tuple ``(name, extensions, description)``."
+msgstr ""
+"Trả về danh sách tất cả các định dạng đã đăng ký để giải nén. Mỗi phần tử "
+"của chuỗi trả về là một bộ ``(name, extensions, description)``."
+
+#: ../../library/shutil.rst:796
+#, fuzzy
+msgid ""
+"*zip*: ZIP file (unpacking compressed files works only if the corresponding "
+"module is available)."
+msgstr ""
+"*zip*: file ZIP (giải nén file nén chỉ hoạt động nếu có sẵn mô-đun tương "
+"ứng)."
+
+#: ../../library/shutil.rst:798
+#, fuzzy
+msgid "*tar*: uncompressed tar file."
+msgstr "*tar*: tập tin tar không nén."
+
+#: ../../library/shutil.rst:805
+#, fuzzy
+msgid ""
+"You can register new formats or provide your own unpacker for any existing "
+"formats, by using :func:`register_unpack_format`."
+msgstr ""
+"Bạn có thể đăng ký các định dạng mới hoặc cung cấp trình giải nén của riêng "
+"mình cho mọi định dạng hiện có bằng cách sử dụng "
+":func:`register_unpack_format`."
+
+#: ../../library/shutil.rst:812
+#, fuzzy
+msgid "Archiving example"
+msgstr "Ví dụ lưu trữ"
+
+#: ../../library/shutil.rst:814
+#, fuzzy
+msgid ""
+"In this example, we create a gzip'ed tar-file archive containing all files "
+"found in the :file:`.ssh` directory of the user::"
+msgstr ""
+"Trong ví dụ này, chúng tôi tạo một kho lưu trữ tệp tar được gzip chứa tất cả"
+" các tệp được tìm thấy trong thư mục :file:`.ssh` của người dùng::"
+
+#: ../../library/shutil.rst:817
+#, fuzzy
+msgid ""
+">>> from shutil import make_archive\n"
+">>> import os\n"
+">>> archive_name = os.path.expanduser(os.path.join('~', 'myarchive'))\n"
+">>> root_dir = os.path.expanduser(os.path.join('~', '.ssh'))\n"
+">>> make_archive(archive_name, 'gztar', root_dir)\n"
+"'/Users/tarek/myarchive.tar.gz'"
+msgstr ""
+">>> từ lệnh nhập khẩu im lặng make_archive\n"
+">>> nhập hệ điều hành\n"
+">>> archive_name = os.path.expanduser(os.path.join('~', 'myarchive'))\n"
+">>> root_dir = os.path.expanduser(os.path.join('~', '.ssh'))\n"
+">>> make_archive(tên_lưu trữ, 'gztar', root_dir)\n"
+"'/Users/tarek/myarchive.tar.gz'"
+
+#: ../../library/shutil.rst:824
+#, fuzzy
+msgid "The resulting archive contains:"
+msgstr "Kho lưu trữ kết quả chứa:"
+
+#: ../../library/shutil.rst:826
+#, fuzzy
+msgid ""
+"$ tar -tzvf /Users/tarek/myarchive.tar.gz\n"
+"drwx------ tarek/staff       0 2010-02-01 16:23:40 ./\n"
+"-rw-r--r-- tarek/staff     609 2008-06-09 13:26:54 ./authorized_keys\n"
+"-rwxr-xr-x tarek/staff      65 2008-06-09 13:26:54 ./config\n"
+"-rwx------ tarek/staff     668 2008-06-09 13:26:54 ./id_dsa\n"
+"-rwxr-xr-x tarek/staff     609 2008-06-09 13:26:54 ./id_dsa.pub\n"
+"-rw------- tarek/staff    1675 2008-06-09 13:26:54 ./id_rsa\n"
+"-rw-r--r-- tarek/staff     397 2008-06-09 13:26:54 ./id_rsa.pub\n"
+"-rw-r--r-- tarek/staff   37192 2010-02-06 18:23:10 ./known_hosts"
+msgstr ""
+"$ tar -tzvf /Users/tarek/myarchive.tar.gz\n"
+"drwx------ tarek/nhân viên 0 2010-02-01 16:23:40 ./\n"
+"-rw-r--r-- tarek/staff 609 2008-06-09 13:26:54 ./authorized_keys\n"
+"-rwxr-xr-x tarek/nhân viên 65 2008-06-09 13:26:54 ./config\n"
+"-rwx------ tarek/nhân viên 668 2008-06-09 13:26:54 ./id_dsa\n"
+"-rwxr-xr-x tarek/nhân viên 609 2008-06-09 13:26:54 ./id_dsa.pub\n"
+"-rw------- tarek/nhân viên 1675 2008-06-09 13:26:54 ./id_rsa\n"
+"-rw-r--r-- tarek/staff 397 2008-06-09 13:26:54 ./id_rsa.pub\n"
+"-rw-r--r-- tarek/staff 37192 2010-02-06 18:23:10 ./known_hosts"
+
+#: ../../library/shutil.rst:842
+#, fuzzy
+msgid "Archiving example with *base_dir*"
+msgstr "Lưu trữ ví dụ với *base_dir*"
+
+#: ../../library/shutil.rst:844
+#, fuzzy
+msgid ""
+"In this example, similar to the `one above <shutil-archiving-example_>`_, we"
+" show how to use :func:`make_archive`, but this time with the usage of "
+"*base_dir*.  We now have the following directory structure:"
+msgstr ""
+"Trong ví dụ này, tương tự như `one above <shutil-archiving-example_>`_, "
+"chúng tôi trình bày cách sử dụng :func:`make_archive`, nhưng lần này sử dụng"
+" *base_dir*.  Bây giờ chúng ta có cấu trúc thư mục sau:"
+
+#: ../../library/shutil.rst:848
+#, fuzzy
+msgid ""
+"$ tree tmp\n"
+"tmp\n"
+"└── root\n"
+"    └── structure\n"
+"        ├── content\n"
+"            └── please_add.txt\n"
+"        └── do_not_add.txt"
+msgstr ""
+"$ cây tmp\n"
+"tmp\n"
+"└── gốc\n"
+"    └── cấu trúc\n"
+"        ├── nội dung\n"
+"            └── xin vui lòng_add.txt\n"
+"        └── do_not_add.txt"
+
+#: ../../library/shutil.rst:858
+#, fuzzy
+msgid ""
+"In the final archive, :file:`please_add.txt` should be included, but "
+":file:`do_not_add.txt` should not.  Therefore we use the following::"
+msgstr ""
+"Trong kho lưu trữ cuối cùng, :file:`please_add.txt` nên được đưa vào, nhưng "
+":file:`do_not_add.txt` thì không.  Vì vậy chúng tôi sử dụng như sau::"
+
+#: ../../library/shutil.rst:861
+#, fuzzy
+msgid ""
+">>> from shutil import make_archive\n"
+">>> import os\n"
+">>> archive_name = os.path.expanduser(os.path.join('~', 'myarchive'))\n"
+">>> make_archive(\n"
+"...     archive_name,\n"
+"...     'tar',\n"
+"...     root_dir='tmp/root',\n"
+"...     base_dir='structure/content',\n"
+"... )\n"
+"'/Users/tarek/myarchive.tar'"
+msgstr ""
+">>> từ lệnh nhập khẩu im lặng make_archive\n"
+">>> nhập hệ điều hành\n"
+">>> archive_name = os.path.expanduser(os.path.join('~', 'myarchive'))\n"
+">>> make_archive(\n"
+"... archive_name,\n"
+"... 'tar',\n"
+"... root_dir='tmp/root',\n"
+"... base_dir='cấu trúc/nội dung',\n"
+"... )\n"
+"'/Users/tarek/myarchive.tar'"
+
+#: ../../library/shutil.rst:872
+#, fuzzy
+msgid "Listing the files in the resulting archive gives us:"
+msgstr "Việc liệt kê các tệp trong kho lưu trữ kết quả cho chúng ta:"
+
+#: ../../library/shutil.rst:874
+#, fuzzy
+msgid ""
+"$ python -m tarfile -l /Users/tarek/myarchive.tar\n"
+"structure/content/\n"
+"structure/content/please_add.txt"
+msgstr ""
+"$ python -m tarfile -l /Users/tarek/myarchive.tar\n"
+"cấu trúc/nội dung/\n"
+"cấu trúc/nội dung/please_add.txt"
+
+#: ../../library/shutil.rst:882
+#, fuzzy
+msgid "Querying the size of the output terminal"
+msgstr "Truy vấn kích thước của thiết bị đầu cuối đầu ra"
+
+#: ../../library/shutil.rst:886
+#, fuzzy
+msgid "Get the size of the terminal window."
+msgstr "Lấy kích thước của cửa sổ terminal."
+
+#: ../../library/shutil.rst:888
+#, fuzzy
+msgid ""
+"For each of the two dimensions, the environment variable, ``COLUMNS`` and "
+"``LINES`` respectively, is checked. If the variable is defined and the value"
+" is a positive integer, it is used."
+msgstr ""
+"Đối với mỗi chiều trong số hai chiều, biến môi trường lần lượt là "
+"``COLUMNS`` và ``LINES`` được chọn. Nếu biến được xác định và giá trị là số "
+"nguyên dương thì nó sẽ được sử dụng."
+
+#: ../../library/shutil.rst:892
+#, fuzzy
+msgid ""
+"When ``COLUMNS`` or ``LINES`` is not defined, which is the common case, the "
+"terminal connected to :data:`sys.__stdout__` is queried by invoking "
+":func:`os.get_terminal_size`."
+msgstr ""
+"Khi ``COLUMNS`` hoặc ``LINES`` không được xác định, đây là trường hợp phổ "
+"biến, thiết bị đầu cuối được kết nối với :data:`sys.__stdout__` sẽ được truy"
+" vấn bằng cách gọi :func:`os.get_terminal_size`."
+
+#: ../../library/shutil.rst:896
+#, fuzzy
+msgid ""
+"If the terminal size cannot be successfully queried, either because the "
+"system doesn't support querying, or because we are not connected to a "
+"terminal, the value given in ``fallback`` parameter is used. ``fallback`` "
+"defaults to ``(80, 24)`` which is the default size used by many terminal "
+"emulators."
+msgstr ""
+"Nếu kích thước thiết bị đầu cuối không thể được truy vấn thành công, do hệ "
+"thống không hỗ trợ truy vấn hoặc do chúng tôi không kết nối với thiết bị đầu"
+" cuối, thì giá trị được cung cấp trong tham số ``fallback`` sẽ được sử dụng."
+" ``fallback`` mặc định là ``(80, 24)``, đây là kích thước mặc định được "
+"nhiều trình mô phỏng thiết bị đầu cuối sử dụng."
+
+#: ../../library/shutil.rst:902
+#, fuzzy
+msgid "The value returned is a named tuple of type :class:`os.terminal_size`."
+msgstr ""
+"Giá trị được trả về là một bộ có tên thuộc loại :class:`os.terminal_size`."
+
+#: ../../library/shutil.rst:904
+#, fuzzy
+msgid ""
+"See also: The Single UNIX Specification, Version 2, `Other Environment "
+"Variables`_."
+msgstr ""
+"Xem thêm: Thông số kỹ thuật UNIX đơn, Phiên bản 2, `Other Environment "
+"Variables`_."
+
+#: ../../library/shutil.rst:909
+#, fuzzy
+msgid ""
+"The ``fallback`` values are also used if :func:`os.get_terminal_size` "
+"returns zeroes."
+msgstr ""
+"Các giá trị ``fallback`` cũng được sử dụng nếu :func:`os.get_terminal_size` "
+"trả về số 0."
+
+#: ../../library/shutil.rst:12
+#, fuzzy
+msgid "file"
+msgstr "tập tin"
+
+#: ../../library/shutil.rst:12
+#, fuzzy
+msgid "copying"
+msgstr "sao chép"
+
+#: ../../library/shutil.rst:12
+#, fuzzy
+msgid "copying files"
+msgstr "sao chép tập tin"
+
+#: ../../library/shutil.rst:311
+#, fuzzy
+msgid "directory"
+msgstr "thư mục"
+
+#: ../../library/shutil.rst:311
+#, fuzzy
+msgid "deleting"
+msgstr "xóa"

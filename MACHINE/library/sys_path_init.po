@@ -1,0 +1,340 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/sys_path_init.rst:4
+#, fuzzy
+msgid "The initialization of the :data:`sys.path` module search path"
+msgstr "Việc khởi tạo đường dẫn tìm kiếm mô-đun :data:`sys.path`"
+
+#: ../../library/sys_path_init.rst:6
+#, fuzzy
+msgid ""
+"A module search path is initialized when Python starts. This module search "
+"path may be accessed at :data:`sys.path`."
+msgstr ""
+"Đường dẫn tìm kiếm mô-đun được khởi tạo khi Python khởi động. Đường dẫn tìm "
+"kiếm mô-đun này có thể được truy cập tại :data:`sys.path`."
+
+#: ../../library/sys_path_init.rst:9
+#, fuzzy
+msgid ""
+"The first entry in the module search path is the directory that contains the"
+" input script, if there is one. Otherwise, the first entry is the current "
+"directory, which is the case when executing the interactive shell, a "
+":option:`-c` command, or :option:`-m` module."
+msgstr ""
+"Mục đầu tiên trong đường dẫn tìm kiếm mô-đun là thư mục chứa tập lệnh đầu "
+"vào, nếu có. Mặt khác, mục nhập đầu tiên là thư mục hiện tại, trường hợp này"
+" xảy ra khi thực thi shell tương tác, lệnh :option:`-c` hoặc mô-đun "
+":option:`-m`."
+
+#: ../../library/sys_path_init.rst:14
+#, fuzzy
+msgid ""
+"The :envvar:`PYTHONPATH` environment variable is often used to add "
+"directories to the search path. If this environment variable is found then "
+"the contents are added to the module search path."
+msgstr ""
+"Biến môi trường :envvar:`PYTHONPATH` thường được sử dụng để thêm thư mục vào"
+" đường dẫn tìm kiếm. Nếu tìm thấy biến môi trường này thì nội dung sẽ được "
+"thêm vào đường dẫn tìm kiếm mô-đun."
+
+#: ../../library/sys_path_init.rst:20
+#, fuzzy
+msgid ""
+":envvar:`PYTHONPATH` will affect all installed Python versions/environments."
+" Be wary of setting this in your shell profile or global environment "
+"variables. The :mod:`site` module offers more nuanced techniques as "
+"mentioned below."
+msgstr ""
+":envvar:`PYTHONPATH` sẽ ảnh hưởng đến tất cả các phiên bản/môi trường Python"
+" đã cài đặt. Hãy cảnh giác khi thiết lập điều này trong hồ sơ shell hoặc các"
+" biến môi trường toàn cầu của bạn. Mô-đun :mod:`site` cung cấp nhiều kỹ "
+"thuật đa sắc thái hơn như được đề cập bên dưới."
+
+#: ../../library/sys_path_init.rst:24
+#, fuzzy
+msgid ""
+"The next items added are the directories containing standard Python modules "
+"as well as any :term:`extension module`\\s that these modules depend on. "
+"Extension modules are ``.pyd`` files on Windows and ``.so`` files on other "
+"platforms. The directory with the platform-independent Python modules is "
+"called ``prefix``. The directory with the extension modules is called "
+"``exec_prefix``."
+msgstr ""
+"Các mục tiếp theo được thêm vào là các thư mục chứa các mô-đun Python tiêu "
+"chuẩn cũng như bất kỳ :term:`extension module`\\s nào mà các mô-đun này phụ "
+"thuộc vào. Mô-đun mở rộng là các tệp ``.pyd`` trên Windows và các tệp "
+"``.so`` trên các nền tảng khác. Thư mục chứa các mô-đun Python độc lập với "
+"nền tảng được gọi là ``prefix``. Thư mục chứa các mô-đun mở rộng được gọi là"
+" ``exec_prefix``."
+
+#: ../../library/sys_path_init.rst:30
+#, fuzzy
+msgid ""
+"The :envvar:`PYTHONHOME` environment variable may be used to set the "
+"``prefix`` and ``exec_prefix`` locations. Otherwise these directories are "
+"found by using the Python executable as a starting point and then looking "
+"for various 'landmark' files and directories. Note that any symbolic links "
+"are followed so the real Python executable location is used as the search "
+"starting point. The Python executable location is called ``home``."
+msgstr ""
+"Biến môi trường :envvar:`PYTHONHOME` có thể được sử dụng để đặt vị trí "
+"``prefix`` và ``exec_prefix``. Mặt khác, những thư mục này được tìm thấy "
+"bằng cách sử dụng tệp thực thi Python làm điểm bắt đầu, sau đó tìm kiếm các "
+"tệp và thư mục 'mốc' khác nhau. Lưu ý rằng mọi liên kết tượng trưng đều được"
+" theo sau để vị trí thực thi Python thực sự được sử dụng làm điểm bắt đầu "
+"tìm kiếm. Vị trí thực thi của Python được gọi là ``home``."
+
+#: ../../library/sys_path_init.rst:37
+#, python-brace-format, fuzzy
+msgid ""
+"Once ``home`` is determined, the ``prefix`` directory is found by first "
+"looking for :file:`python{majorversion}{minorversion}.zip` "
+"(``python311.zip``). On Windows the zip archive is searched for in ``home`` "
+"and on Unix the archive is expected to be in :file:`lib`. Note that the "
+"expected zip archive location is added to the module search path even if the"
+" archive does not exist. If no archive was found, Python on Windows will "
+"continue the search for ``prefix`` by looking for :file:`Lib\\\\os.py`. "
+"Python on Unix will look for "
+":file:`lib/python{majorversion}.{minorversion}/os.py` "
+"(``lib/python3.11/os.py``). On Windows ``prefix`` and ``exec_prefix`` are "
+"the same, however on other platforms "
+":file:`lib/python{majorversion}.{minorversion}/lib-dynload` "
+"(``lib/python3.11/lib-dynload``) is searched for and used as an anchor for "
+"``exec_prefix``. On some platforms :file:`lib` may be :file:`lib64` or "
+"another value, see :data:`sys.platlibdir` and :envvar:`PYTHONPLATLIBDIR`."
+msgstr ""
+"Sau khi xác định được ``home``, thư mục ``prefix`` sẽ được tìm thấy bằng "
+"cách tìm kiếm :file:`python{majorversion}{minorversion}.zip` "
+"(``python311.zip``) trước tiên. Trên Windows, kho lưu trữ zip được tìm kiếm "
+"trong ``home`` và trên Unix, kho lưu trữ dự kiến ​​sẽ ở :file:`lib`. Lưu ý "
+"rằng vị trí lưu trữ zip dự kiến ​​sẽ được thêm vào đường dẫn tìm kiếm mô-đun"
+" ngay cả khi kho lưu trữ không tồn tại. Nếu không tìm thấy kho lưu trữ nào, "
+"Python trên Windows sẽ tiếp tục tìm kiếm ``prefix`` bằng cách tìm kiếm "
+":file:`Lib\\\\os.py`. Python trên Unix sẽ tìm kiếm "
+":file:`lib/python{majorversion}.{minorversion}/os.py` "
+"(``lib/python3.11/os.py``). Trên Windows ``prefix`` và ``exec_prefix`` giống"
+" nhau, tuy nhiên trên các nền tảng khác "
+":file:`lib/python{majorversion}.{minorversion}/lib-dynload` "
+"(``lib/python3.11/lib-dynload``) được tìm kiếm và sử dụng làm điểm neo cho "
+"``exec_prefix``. Trên một số nền tảng, :file:`lib` có thể là :file:`lib64` "
+"hoặc giá trị khác, xem :data:`sys.platlibdir` và :envvar:`PYTHONPLATLIBDIR`."
+
+#: ../../library/sys_path_init.rst:50
+#, fuzzy
+msgid ""
+"Once found, ``prefix`` and ``exec_prefix`` are available at "
+":data:`sys.base_prefix` and :data:`sys.base_exec_prefix` respectively."
+msgstr ""
+"Sau khi được tìm thấy, ``prefix`` và ``exec_prefix`` sẽ có sẵn tại "
+":data:`sys.base_prefix` và :data:`sys.base_exec_prefix` tương ứng."
+
+#: ../../library/sys_path_init.rst:53
+#, fuzzy
+msgid ""
+"If :envvar:`PYTHONHOME` is not set, and a ``pyvenv.cfg`` file is found "
+"alongside the main executable, or in its parent directory, "
+":data:`sys.prefix` and :data:`sys.exec_prefix` get set to the directory "
+"containing ``pyvenv.cfg``, otherwise they are set to the same value as "
+":data:`sys.base_prefix` and :data:`sys.base_exec_prefix`, respectively. This"
+" is used by :ref:`sys-path-init-virtual-environments`."
+msgstr ""
+"Nếu :envvar:`PYTHONHOME` không được đặt và tệp ``pyvenv.cfg`` được tìm thấy "
+"cùng với tệp thực thi chính hoặc trong thư mục mẹ của nó, :data:`sys.prefix`"
+" và :data:`sys.exec_prefix` sẽ được đặt thành thư mục chứa ``pyvenv.cfg``, "
+"nếu không, chúng sẽ được đặt thành cùng giá trị tương ứng với "
+":data:`sys.base_prefix` và :data:`sys.base_exec_prefix`. Điều này được sử "
+"dụng bởi :ref:`sys-path-init-virtual-environments`."
+
+#: ../../library/sys_path_init.rst:60
+#, fuzzy
+msgid ""
+"Finally, the :mod:`site` module is processed and :file:`site-packages` "
+"directories are added to the module search path. A common way to customize "
+"the search path is to create :mod:`sitecustomize` or :mod:`usercustomize` "
+"modules as described in the :mod:`site` module documentation."
+msgstr ""
+"Cuối cùng, mô-đun :mod:`site` được xử lý và các thư mục :file:`site-"
+"packages` được thêm vào đường dẫn tìm kiếm mô-đun. Một cách phổ biến để tùy "
+"chỉnh đường dẫn tìm kiếm là tạo các mô-đun :mod:`sitecustomize` hoặc "
+":mod:`usercustomize` như được mô tả trong tài liệu mô-đun :mod:`site`."
+
+#: ../../library/sys_path_init.rst:67
+#, fuzzy
+msgid ""
+"Certain command line options may further affect path calculations. See "
+":option:`-E`, :option:`-I`, :option:`-s` and :option:`-S` for further "
+"details."
+msgstr ""
+"Một số tùy chọn dòng lệnh nhất định có thể ảnh hưởng hơn nữa đến việc tính "
+"toán đường dẫn. Xem :option:`-E`, :option:`-I`, :option:`-s` và :option:`-S`"
+" để biết thêm chi tiết."
+
+#: ../../library/sys_path_init.rst:72
+#, fuzzy
+msgid ""
+":data:`sys.prefix` and :data:`sys.exec_prefix` are now set to the "
+"``pyvenv.cfg`` directory during the path initialization. This was previously"
+" done by :mod:`site`, therefore affected by :option:`-S`."
+msgstr ""
+":data:`sys.prefix` và :data:`sys.exec_prefix` hiện được đặt vào thư mục "
+"``pyvenv.cfg`` trong quá trình khởi tạo đường dẫn. Điều này trước đây đã "
+"được thực hiện bởi :mod:`site`, do đó bị ảnh hưởng bởi :option:`-S`."
+
+#: ../../library/sys_path_init.rst:79
+#, fuzzy
+msgid "Virtual Environments"
+msgstr "Môi trường ảo"
+
+#: ../../library/sys_path_init.rst:81
+#, fuzzy
+msgid ""
+"Virtual environments place a ``pyvenv.cfg`` file in their prefix, which "
+"causes :data:`sys.prefix` and :data:`sys.exec_prefix` to point to them, "
+"instead of the base installation."
+msgstr ""
+"Môi trường ảo đặt tệp ``pyvenv.cfg`` trong tiền tố của chúng, điều này khiến"
+" :data:`sys.prefix` và :data:`sys.exec_prefix` trỏ đến chúng thay vì cài đặt"
+" cơ sở."
+
+#: ../../library/sys_path_init.rst:85
+#, fuzzy
+msgid ""
+"The ``prefix`` and ``exec_prefix`` values of the base installation are "
+"available at :data:`sys.base_prefix` and :data:`sys.base_exec_prefix`."
+msgstr ""
+"Các giá trị ``prefix`` và ``exec_prefix`` của cài đặt cơ bản có sẵn tại "
+":data:`sys.base_prefix` và :data:`sys.base_exec_prefix`."
+
+#: ../../library/sys_path_init.rst:88
+#, fuzzy
+msgid ""
+"As well as being used as a marker to identify virtual environments, "
+"``pyvenv.cfg`` may also be used to configure the :mod:`site` initialization."
+" Please refer to :mod:`site`'s :ref:`virtual environments documentation "
+"<site-virtual-environments-configuration>`."
+msgstr ""
+"Ngoài việc được sử dụng làm điểm đánh dấu để xác định môi trường ảo, "
+"``pyvenv.cfg`` cũng có thể được sử dụng để định cấu hình khởi tạo "
+":mod:`site`. Hãy tham khảo :ref:`virtual environments documentation <site-"
+"virtual-environments-configuration>` của :mod:`site`."
+
+#: ../../library/sys_path_init.rst:95
+#, fuzzy
+msgid ":envvar:`PYTHONHOME` overrides the ``pyvenv.cfg`` detection."
+msgstr ":envvar:`PYTHONHOME` ghi đè phát hiện ``pyvenv.cfg``."
+
+#: ../../library/sys_path_init.rst:99
+#, fuzzy
+msgid ""
+"There are other ways how \"virtual environments\" could be implemented, this"
+" documentation refers implementations based on the ``pyvenv.cfg`` mechanism,"
+" such as :mod:`venv`. Most virtual environment implementations follow the "
+"model set by :mod:`venv`, but there may be exotic implementations that "
+"diverge from it."
+msgstr ""
+"Có nhiều cách khác để triển khai \"môi trường ảo\", tài liệu này đề cập đến "
+"các cách triển khai dựa trên cơ chế ``pyvenv.cfg``, chẳng hạn như "
+":mod:`venv`. Hầu hết việc triển khai môi trường ảo đều tuân theo mô hình do "
+":mod:`venv` đặt ra, nhưng có thể có những cách triển khai kỳ lạ khác với mô "
+"hình đó."
+
+#: ../../library/sys_path_init.rst:106
+#, fuzzy
+msgid "_pth files"
+msgstr "tập tin _pth"
+
+#: ../../library/sys_path_init.rst:108
+#, fuzzy
+msgid ""
+"To completely override :data:`sys.path` create a ``._pth`` file with the "
+"same name as the shared library or executable (``python._pth`` or "
+"``python311._pth``). The shared library path is always known on Windows, "
+"however it may not be available on other platforms. In the ``._pth`` file "
+"specify one line for each path to add to :data:`sys.path`. The file based on"
+" the shared library name overrides the one based on the executable, which "
+"allows paths to be restricted for any program loading the runtime if "
+"desired."
+msgstr ""
+"Để ghi đè hoàn toàn :data:`sys.path`, hãy tạo một tệp ``._pth`` có cùng tên "
+"với thư viện dùng chung hoặc tệp thực thi (``python._pth`` hoặc "
+"``python311._pth``). Đường dẫn thư viện dùng chung luôn được biết đến trên "
+"Windows, tuy nhiên nó có thể không có trên các nền tảng khác. Trong tệp "
+"``._pth`` chỉ định một dòng cho mỗi đường dẫn để thêm vào :data:`sys.path`. "
+"Tệp dựa trên tên thư viện dùng chung sẽ ghi đè tệp dựa trên tệp thực thi, "
+"cho phép hạn chế đường dẫn đối với bất kỳ chương trình nào đang tải thời "
+"gian chạy nếu muốn."
+
+#: ../../library/sys_path_init.rst:116
+#, fuzzy
+msgid ""
+"When the file exists, all registry and environment variables are ignored, "
+"isolated mode is enabled, and :mod:`site` is not imported unless one line in"
+" the file specifies ``import site``. Blank paths and lines starting with "
+"``#`` are ignored. Each path may be absolute or relative to the location of "
+"the file. Import statements other than to ``site`` are not permitted, and "
+"arbitrary code cannot be specified."
+msgstr ""
+"Khi tệp tồn tại, tất cả các biến đăng ký và môi trường đều bị bỏ qua, chế độ"
+" cách ly được bật và :mod:`site` không được nhập trừ khi một dòng trong tệp "
+"chỉ định ``import site``. Các đường dẫn và dòng trống bắt đầu bằng ``#`` sẽ "
+"bị bỏ qua. Mỗi đường dẫn có thể là tuyệt đối hoặc tương đối với vị trí của "
+"tệp. Không được phép nhập các câu lệnh khác ngoài ``site`` và không thể chỉ "
+"định mã tùy ý."
+
+#: ../../library/sys_path_init.rst:123
+#, fuzzy
+msgid ""
+"Note that ``.pth`` files (without leading underscore) will be processed "
+"normally by the :mod:`site` module when ``import site`` has been specified."
+msgstr ""
+"Lưu ý rằng các tệp ``.pth`` (không có dấu gạch dưới ở đầu) sẽ được mô-đun "
+":mod:`site` xử lý bình thường khi ``import site`` được chỉ định."
+
+#: ../../library/sys_path_init.rst:127
+#, fuzzy
+msgid "Embedded Python"
+msgstr "Python nhúng"
+
+#: ../../library/sys_path_init.rst:129
+#, fuzzy
+msgid ""
+"If Python is embedded within another application "
+":c:func:`Py_InitializeFromConfig` and the :c:type:`PyConfig` structure can "
+"be used to initialize Python. The path specific details are described at "
+":ref:`init-path-config`."
+msgstr ""
+"Nếu Python được nhúng trong một ứng dụng khác "
+":c:func:`Py_InitializeFromConfig` và cấu trúc :c:type:`PyConfig` có thể được"
+" sử dụng để khởi tạo Python. Chi tiết cụ thể về đường dẫn được mô tả tại "
+":ref:`init-path-config`."
+
+#: ../../library/sys_path_init.rst:135
+#, fuzzy
+msgid ":ref:`windows_finding_modules` for detailed Windows notes."
+msgstr ""
+":ref:`windows_finding_modules` để biết các ghi chú chi tiết về Windows."
+
+#: ../../library/sys_path_init.rst:136
+#, fuzzy
+msgid ":ref:`using-on-unix` for Unix details."
+msgstr ":ref:`using-on-unix` để biết chi tiết về Unix."

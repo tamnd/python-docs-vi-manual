@@ -1,0 +1,1383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/curses.rst:5
+#, fuzzy
+msgid "Curses Programming with Python"
+msgstr "Lời nguyền lập trình với Python"
+
+#: ../../howto/curses.rst
+#, fuzzy
+msgid "Author"
+msgstr "tác giả"
+
+#: ../../howto/curses.rst:9
+#, fuzzy
+msgid "A.M. Kuchling, Eric S. Raymond"
+msgstr "A.M. Kuchling, Eric S. Raymond"
+
+#: ../../howto/curses.rst
+#, fuzzy
+msgid "Release"
+msgstr "Phát hành"
+
+#: ../../howto/curses.rst:10
+#, fuzzy
+msgid "2.04"
+msgstr "2.04"
+
+#: ../../howto/curses.rst:-1
+#, fuzzy
+msgid "Abstract"
+msgstr "Tóm tắt"
+
+#: ../../howto/curses.rst:15
+#, fuzzy
+msgid ""
+"This document describes how to use the :mod:`curses` extension module to "
+"control text-mode displays."
+msgstr ""
+"Tài liệu này mô tả cách sử dụng mô-đun mở rộng :mod:`curses` để điều khiển "
+"màn hình ở chế độ văn bản."
+
+#: ../../howto/curses.rst:20
+#, fuzzy
+msgid "What is curses?"
+msgstr "lời nguyền là gì?"
+
+#: ../../howto/curses.rst:22
+#, fuzzy
+msgid ""
+"The curses library supplies a terminal-independent screen-painting and "
+"keyboard-handling facility for text-based terminals; such terminals include "
+"VT100s, the Linux console, and the simulated terminal provided by various "
+"programs.  Display terminals support various control codes to perform common"
+" operations such as moving the cursor, scrolling the screen, and erasing "
+"areas.  Different terminals use widely differing codes, and often have their"
+" own minor quirks."
+msgstr ""
+"Thư viện lời nguyền cung cấp cơ sở xử lý bàn phím và vẽ màn hình độc lập với"
+" thiết bị đầu cuối cho các thiết bị đầu cuối dựa trên văn bản; các thiết bị "
+"đầu cuối như vậy bao gồm VT100, bảng điều khiển Linux và thiết bị đầu cuối "
+"mô phỏng được cung cấp bởi các chương trình khác nhau.  Thiết bị đầu cuối "
+"hiển thị hỗ trợ nhiều mã điều khiển khác nhau để thực hiện các thao tác "
+"thông thường như di chuyển con trỏ, cuộn màn hình và xóa các vùng.  Các "
+"thiết bị đầu cuối khác nhau sử dụng các mã rất khác nhau và thường có những "
+"điểm kỳ quặc riêng."
+
+#: ../../howto/curses.rst:30
+#, fuzzy
+msgid ""
+"In a world of graphical displays, one might ask \"why bother\"?  It's true "
+"that character-cell display terminals are an obsolete technology, but there "
+"are niches in which being able to do fancy things with them are still "
+"valuable.  One niche is on small-footprint or embedded Unixes that don't run"
+" an X server.  Another is tools such as OS installers and kernel "
+"configurators that may have to run before any graphical support is "
+"available."
+msgstr ""
+"Trong thế giới hiển thị đồ họa, người ta có thể hỏi \"tại sao phải bận "
+"tâm\"?  Đúng là thiết bị đầu cuối hiển thị ô ký tự là một công nghệ lỗi "
+"thời, nhưng có những lĩnh vực mà việc có thể làm những điều lạ mắt với chúng"
+" vẫn có giá trị.  Một vị trí thích hợp dành cho các Unix có dung lượng nhỏ "
+"hoặc được nhúng không chạy máy chủ X.  Một cách khác là các công cụ như "
+"trình cài đặt hệ điều hành và bộ cấu hình hạt nhân có thể phải chạy trước "
+"khi có bất kỳ hỗ trợ đồ họa nào."
+
+#: ../../howto/curses.rst:38
+#, fuzzy
+msgid ""
+"The curses library provides fairly basic functionality, providing the "
+"programmer with an abstraction of a display containing multiple non-"
+"overlapping windows of text.  The contents of a window can be changed in "
+"various ways---adding text, erasing it, changing its appearance---and the "
+"curses library will figure out what control codes need to be sent to the "
+"terminal to produce the right output.  curses doesn't provide many user-"
+"interface concepts such as buttons, checkboxes, or dialogs; if you need such"
+" features, consider a user interface library such as :pypi:`Urwid`."
+msgstr ""
+"Thư viện lời nguyền cung cấp chức năng khá cơ bản, cung cấp cho người lập "
+"trình sự trừu tượng của một màn hình chứa nhiều cửa sổ văn bản không chồng "
+"chéo.  Nội dung của một cửa sổ có thể được thay đổi theo nhiều cách khác "
+"nhau --- thêm văn bản, xóa văn bản, thay đổi giao diện --- và thư viện lời "
+"nguyền sẽ tìm ra những mã kiểm soát nào cần được gửi đến thiết bị đầu cuối "
+"để tạo ra kết quả đầu ra phù hợp.  lời nguyền không cung cấp nhiều khái niệm"
+" giao diện người dùng như nút, hộp kiểm hoặc hộp thoại; nếu bạn cần những "
+"tính năng như vậy, hãy xem xét thư viện giao diện người dùng như "
+":pypi:`Urwid`."
+
+#: ../../howto/curses.rst:48
+#, fuzzy
+msgid ""
+"The curses library was originally written for BSD Unix; the later System V "
+"versions of Unix from AT&T added many enhancements and new functions. BSD "
+"curses is no longer maintained, having been replaced by ncurses, which is an"
+" open-source implementation of the AT&T interface.  If you're using an open-"
+"source Unix such as Linux or FreeBSD, your system almost certainly uses "
+"ncurses.  Since most current commercial Unix versions are based on System V "
+"code, all the functions described here will probably be available.  The "
+"older versions of curses carried by some proprietary Unixes may not support "
+"everything, though."
+msgstr ""
+"Thư viện lời nguyền ban đầu được viết cho BSD Unix; các phiên bản System V "
+"sau này của Unix của AT&T đã bổ sung thêm nhiều cải tiến và chức năng mới. "
+"Lời nguyền BSD không còn được duy trì nữa mà được thay thế bằng ncurses, đây"
+" là một triển khai mã nguồn mở của giao diện AT&T.  Nếu bạn đang sử dụng "
+"Unix nguồn mở như Linux hoặc FreeBSD, hệ thống của bạn gần như chắc chắn sử "
+"dụng ncurses.  Vì hầu hết các phiên bản Unix thương mại hiện tại đều dựa "
+"trên mã System V nên tất cả các chức năng được mô tả ở đây có thể sẽ khả "
+"dụng.  Tuy nhiên, các phiên bản cũ hơn của lời nguyền do một số Unix độc "
+"quyền mang theo có thể không hỗ trợ mọi thứ."
+
+#: ../../howto/curses.rst:58
+#, fuzzy
+msgid ""
+"The Windows version of Python doesn't include the :mod:`curses` module.  A "
+"ported version called :pypi:`UniCurses` is available."
+msgstr ""
+"Phiên bản Windows của Python không bao gồm mô-đun :mod:`curses`.  Đã có sẵn "
+"phiên bản port có tên :pypi:`UniCurses`."
+
+#: ../../howto/curses.rst:63
+#, fuzzy
+msgid "The Python curses module"
+msgstr "Mô-đun nguyền rủa Python"
+
+#: ../../howto/curses.rst:65
+#, fuzzy
+msgid ""
+"The Python module is a fairly simple wrapper over the C functions provided "
+"by curses; if you're already familiar with curses programming in C, it's "
+"really easy to transfer that knowledge to Python.  The biggest difference is"
+" that the Python interface makes things simpler by merging different C "
+"functions such as :c:func:`!addstr`, :c:func:`!mvaddstr`, and "
+":c:func:`!mvwaddstr` into a single :meth:`~curses.window.addstr` method.  "
+"You'll see this covered in more detail later."
+msgstr ""
+"Mô-đun Python là một trình bao bọc khá đơn giản đối với các hàm C do lời "
+"nguyền cung cấp; Nếu bạn đã quen với việc lập trình Curs trong C thì việc "
+"chuyển kiến ​​thức đó sang Python thực sự rất dễ dàng.  Sự khác biệt lớn "
+"nhất là giao diện Python làm cho mọi thứ đơn giản hơn bằng cách hợp nhất các"
+" hàm C khác nhau như :c:func:`!addstr`, :c:func:`!mvaddstr` và "
+":c:func:`!mvwaddstr` thành một phương thức :meth:`~curses.window.addstr` duy"
+" nhất.  Bạn sẽ thấy điều này được đề cập chi tiết hơn sau này."
+
+#: ../../howto/curses.rst:73
+#, fuzzy
+msgid ""
+"This HOWTO is an introduction to writing text-mode programs with curses and "
+"Python. It doesn't attempt to be a complete guide to the curses API; for "
+"that, see the Python library guide's section on ncurses, and the C manual "
+"pages for ncurses.  It will, however, give you the basic ideas."
+msgstr ""
+"Zz000zz này là phần giới thiệu về cách viết chương trình ở chế độ văn bản "
+"bằng lời nguyền và Python. Nó không cố gắng trở thành một hướng dẫn đầy đủ "
+"về những lời nguyền API; để biết điều đó, hãy xem phần hướng dẫn thư viện "
+"Python về ncurses và các trang hướng dẫn sử dụng C cho ncurses.  Tuy nhiên, "
+"nó sẽ cung cấp cho bạn những ý tưởng cơ bản."
+
+#: ../../howto/curses.rst:80
+#, fuzzy
+msgid "Starting and ending a curses application"
+msgstr "Bắt đầu và kết thúc một ứng dụng nguyền rủa"
+
+#: ../../howto/curses.rst:82
+#, fuzzy
+msgid ""
+"Before doing anything, curses must be initialized.  This is done by calling "
+"the :func:`~curses.initscr` function, which will determine the terminal "
+"type, send any required setup codes to the terminal, and create various "
+"internal data structures.  If successful, :func:`!initscr` returns a window "
+"object representing the entire screen; this is usually called ``stdscr`` "
+"after the name of the corresponding C variable. ::"
+msgstr ""
+"Trước khi làm bất cứ điều gì, lời nguyền phải được khởi tạo.  Điều này được "
+"thực hiện bằng cách gọi hàm :func:`~curses.initscr`, hàm này sẽ xác định "
+"loại thiết bị đầu cuối, gửi mọi mã thiết lập cần thiết đến thiết bị đầu cuối"
+" và tạo các cấu trúc dữ liệu nội bộ khác nhau.  Nếu thành công, "
+":func:`!initscr` trả về một đối tượng cửa sổ đại diện cho toàn bộ màn hình; "
+"cái này thường được gọi là ``stdscr`` theo tên của biến C tương ứng. ::"
+
+#: ../../howto/curses.rst:90
+#, fuzzy
+msgid ""
+"import curses\n"
+"stdscr = curses.initscr()"
+msgstr ""
+"lời nguyền nhập khẩu\n"
+"stdscr = lời nguyền.initscr()"
+
+#: ../../howto/curses.rst:93
+#, fuzzy
+msgid ""
+"Usually curses applications turn off automatic echoing of keys to the "
+"screen, in order to be able to read keys and only display them under certain"
+" circumstances.  This requires calling the :func:`~curses.noecho` function. "
+"::"
+msgstr ""
+"Thông thường, các ứng dụng chửi bới sẽ tắt tính năng tự động lặp lại các "
+"phím trên màn hình để có thể đọc các phím và chỉ hiển thị chúng trong một số"
+" trường hợp nhất định.  Điều này yêu cầu gọi hàm :func:`~curses.noecho`. ::"
+
+#: ../../howto/curses.rst:98
+#, fuzzy
+msgid "curses.noecho()"
+msgstr "lời nguyền.noecho()"
+
+#: ../../howto/curses.rst:100
+#, fuzzy
+msgid ""
+"Applications will also commonly need to react to keys instantly, without "
+"requiring the Enter key to be pressed; this is called cbreak mode, as "
+"opposed to the usual buffered input mode. ::"
+msgstr ""
+"Các ứng dụng cũng thường cần phản ứng với các phím ngay lập tức mà không cần"
+" nhấn phím Enter; đây được gọi là chế độ cbreak, trái ngược với chế độ đầu "
+"vào được đệm thông thường. ::"
+
+#: ../../howto/curses.rst:104
+#, fuzzy
+msgid "curses.cbreak()"
+msgstr "lời nguyền.cbreak()"
+
+#: ../../howto/curses.rst:106
+#, fuzzy
+msgid ""
+"Terminals usually return special keys, such as the cursor keys or navigation"
+" keys such as Page Up and Home, as a multibyte escape sequence.  While you "
+"could write your application to expect such sequences and process them "
+"accordingly, curses can do it for you, returning a special value such as "
+":const:`curses.KEY_LEFT`.  To get curses to do the job, you'll have to "
+"enable keypad mode. ::"
+msgstr ""
+"Thiết bị đầu cuối thường trả về các phím đặc biệt, chẳng hạn như phím con "
+"trỏ hoặc phím điều hướng như Page Up và Home, dưới dạng chuỗi thoát nhiều "
+"byte.  Mặc dù bạn có thể viết ứng dụng của mình để mong đợi các chuỗi như "
+"vậy và xử lý chúng cho phù hợp, nhưng lời nguyền có thể làm điều đó cho bạn,"
+" trả về một giá trị đặc biệt, chẳng hạn như :const:`curses.KEY_LEFT`.  Để "
+"nhận được những lời nguyền thực hiện công việc, bạn sẽ phải bật chế độ bàn "
+"phím. ::"
+
+#: ../../howto/curses.rst:113
+#, fuzzy
+msgid "stdscr.keypad(True)"
+msgstr "stdscr.keypad(Đúng)"
+
+#: ../../howto/curses.rst:115
+#, fuzzy
+msgid ""
+"Terminating a curses application is much easier than starting one. You'll "
+"need to call::"
+msgstr ""
+"Việc chấm dứt một ứng dụng nguyền rủa dễ dàng hơn nhiều so với việc bắt đầu "
+"một ứng dụng. Bạn sẽ cần gọi::"
+
+#: ../../howto/curses.rst:118
+#, fuzzy
+msgid ""
+"curses.nocbreak()\n"
+"stdscr.keypad(False)\n"
+"curses.echo()"
+msgstr ""
+"lời nguyền.nocbreak()\n"
+"stdscr.keypad(Sai)\n"
+"lời nguyền.echo()"
+
+#: ../../howto/curses.rst:122
+#, fuzzy
+msgid ""
+"to reverse the curses-friendly terminal settings. Then call the "
+":func:`~curses.endwin` function to restore the terminal to its original "
+"operating mode. ::"
+msgstr ""
+"để đảo ngược cài đặt thiết bị đầu cuối thân thiện với lời nguyền. Sau đó gọi"
+" hàm :func:`~curses.endwin` để khôi phục thiết bị đầu cuối về chế độ hoạt "
+"động ban đầu. ::"
+
+#: ../../howto/curses.rst:126
+#, fuzzy
+msgid "curses.endwin()"
+msgstr "lời nguyền.endwin()"
+
+#: ../../howto/curses.rst:128
+#, fuzzy
+msgid ""
+"A common problem when debugging a curses application is to get your terminal"
+" messed up when the application dies without restoring the terminal to its "
+"previous state.  In Python this commonly happens when your code is buggy and"
+" raises an uncaught exception.  Keys are no longer echoed to the screen when"
+" you type them, for example, which makes using the shell difficult."
+msgstr ""
+"Một vấn đề phổ biến khi gỡ lỗi ứng dụng bị nguyền rủa là khiến thiết bị đầu "
+"cuối của bạn bị lỗi khi ứng dụng chết mà không khôi phục thiết bị đầu cuối "
+"về trạng thái trước đó.  Trong Python, điều này thường xảy ra khi mã của bạn"
+" bị lỗi và gây ra một ngoại lệ chưa được phát hiện.  Chẳng hạn, các phím "
+"không còn bị lặp lại trên màn hình khi bạn gõ chúng, điều này khiến việc sử "
+"dụng shell trở nên khó khăn."
+
+#: ../../howto/curses.rst:134
+#, fuzzy
+msgid ""
+"In Python you can avoid these complications and make debugging much easier "
+"by importing the :func:`curses.wrapper` function and using it like this::"
+msgstr ""
+"Trong Python, bạn có thể tránh những rắc rối này và giúp việc gỡ lỗi dễ dàng"
+" hơn nhiều bằng cách nhập hàm :func:`curses.wrapper` và sử dụng nó như sau::"
+
+#: ../../howto/curses.rst:137
+#, python-brace-format, fuzzy
+msgid ""
+"from curses import wrapper\n"
+"\n"
+"def main(stdscr):\n"
+"    # Clear screen\n"
+"    stdscr.clear()\n"
+"\n"
+"    # This raises ZeroDivisionError when i == 10.\n"
+"    for i in range(0, 11):\n"
+"        v = i-10\n"
+"        stdscr.addstr(i, 0, '10 divided by {} is {}'.format(v, 10/v))\n"
+"\n"
+"        stdscr.refresh()\n"
+"        stdscr.getkey()\n"
+"\n"
+"wrapper(main)"
+msgstr ""
+"từ trình bao bọc nhập khẩu lời nguyền\n"
+"\n"
+"def chính (stdscr):\n"
+"    màn hình # Clear\n"
+"    stdscr.clear()\n"
+"\n"
+"    # This tăng ZeroDivisionError khi i == 10.\n"
+"    cho tôi trong phạm vi (0, 11):\n"
+"        v = i-10\n"
+"        stdscr.addstr(i, 0, '10 chia cho {} là {}'.format(v, 10/v))\n"
+"\n"
+"        stdscr.refresh()\n"
+"        stdscr.getkey()\n"
+"\n"
+"trình bao bọc (chính)"
+
+#: ../../howto/curses.rst:153
+#, fuzzy
+msgid ""
+"The :func:`~curses.wrapper` function takes a callable object and does the "
+"initializations described above, also initializing colors if color support "
+"is present.  :func:`!wrapper` then runs your provided callable. Once the "
+"callable returns, :func:`!wrapper` will restore the original state of the "
+"terminal.  The callable is called inside a :keyword:`try`...\\ "
+":keyword:`except` that catches exceptions, restores the state of the "
+"terminal, and then re-raises the exception.  Therefore your terminal won't "
+"be left in a funny state on exception and you'll be able to read the "
+"exception's message and traceback."
+msgstr ""
+"Hàm :func:`~curses.wrapper` nhận một đối tượng có thể gọi được và thực hiện "
+"các khởi tạo được mô tả ở trên, đồng thời khởi tạo các màu nếu có hỗ trợ "
+"màu.  :func:`!wrapper` sau đó chạy lệnh gọi được cung cấp của bạn. Sau khi "
+"có thể gọi trở lại, :func:`!wrapper` sẽ khôi phục trạng thái ban đầu của "
+"thiết bị đầu cuối.  Hàm có thể gọi được gọi bên trong :keyword:`try`...\\ "
+":keyword:`except` để bắt ngoại lệ, khôi phục trạng thái của thiết bị đầu "
+"cuối và sau đó tăng lại ngoại lệ.  Do đó, thiết bị đầu cuối của bạn sẽ không"
+" ở trạng thái buồn cười về ngoại lệ và bạn sẽ có thể đọc thông báo và truy "
+"nguyên của ngoại lệ."
+
+#: ../../howto/curses.rst:165
+#, fuzzy
+msgid "Windows and Pads"
+msgstr "Windows và miếng đệm"
+
+#: ../../howto/curses.rst:167
+#, fuzzy
+msgid ""
+"Windows are the basic abstraction in curses.  A window object represents a "
+"rectangular area of the screen, and supports methods to display text, erase "
+"it, allow the user to input strings, and so forth."
+msgstr ""
+"Windows là sự trừu tượng cơ bản trong những lời nguyền.  Đối tượng cửa sổ "
+"đại diện cho một vùng hình chữ nhật của màn hình và hỗ trợ các phương thức "
+"hiển thị văn bản, xóa văn bản, cho phép người dùng nhập chuỗi, v.v."
+
+#: ../../howto/curses.rst:171
+#, fuzzy
+msgid ""
+"The ``stdscr`` object returned by the :func:`~curses.initscr` function is a "
+"window object that covers the entire screen.  Many programs may need only "
+"this single window, but you might wish to divide the screen into smaller "
+"windows, in order to redraw or clear them separately. The "
+":func:`~curses.newwin` function creates a new window of a given size, "
+"returning the new window object. ::"
+msgstr ""
+"Đối tượng ``stdscr`` được hàm :func:`~curses.initscr` trả về là đối tượng "
+"cửa sổ bao phủ toàn bộ màn hình.  Nhiều chương trình có thể chỉ cần một cửa "
+"sổ duy nhất này, nhưng bạn có thể muốn chia màn hình thành các cửa sổ nhỏ "
+"hơn để vẽ lại hoặc xóa chúng một cách riêng biệt. Hàm :func:`~curses.newwin`"
+" tạo một cửa sổ mới có kích thước nhất định, trả về đối tượng cửa sổ mới. ::"
+
+#: ../../howto/curses.rst:178
+#, fuzzy
+msgid ""
+"begin_x = 20; begin_y = 7\n"
+"height = 5; width = 40\n"
+"win = curses.newwin(height, width, begin_y, begin_x)"
+msgstr ""
+"bắt đầu_x = 20; bắt đầu_y = 7\n"
+"chiều cao = 5; chiều rộng = 40\n"
+"win =curs.newwin(chiều cao, chiều rộng,bắt đầu_y,bắt đầu_x)"
+
+#: ../../howto/curses.rst:182
+#, fuzzy
+msgid ""
+"Note that the coordinate system used in curses is unusual. Coordinates are "
+"always passed in the order *y,x*, and the top-left corner of a window is "
+"coordinate (0,0).  This breaks the normal convention for handling "
+"coordinates where the *x* coordinate comes first.  This is an unfortunate "
+"difference from most other computer applications, but it's been part of "
+"curses since it was first written, and it's too late to change things now."
+msgstr ""
+"Lưu ý rằng hệ tọa độ được sử dụng trong lời nguyền là không bình thường. Tọa"
+" độ luôn được chuyển theo thứ tự *y,x* và góc trên cùng bên trái của cửa sổ "
+"là tọa độ (0,0).  Điều này phá vỡ quy ước thông thường để xử lý tọa độ trong"
+" đó tọa độ *x* xuất hiện trước.  Đây là một sự khác biệt đáng tiếc so với "
+"hầu hết các ứng dụng máy tính khác, nhưng nó đã là một phần của những lời "
+"nguyền kể từ khi nó được viết lần đầu tiên và bây giờ đã quá muộn để thay "
+"đổi mọi thứ."
+
+#: ../../howto/curses.rst:190
+#, fuzzy
+msgid ""
+"Your application can determine the size of the screen by using the "
+":data:`curses.LINES` and :data:`curses.COLS` variables to obtain the *y* and"
+" *x* sizes.  Legal coordinates will then extend from ``(0,0)`` to "
+"``(curses.LINES - 1, curses.COLS - 1)``."
+msgstr ""
+"Ứng dụng của bạn có thể xác định kích thước của màn hình bằng cách sử dụng "
+"các biến :data:`curses.LINES` và :data:`curses.COLS` để thu được kích thước "
+"*y* và *x*.  Tọa độ pháp lý sau đó sẽ mở rộng từ ``(0,0)`` đến "
+"``(curses.LINES - 1, curses.COLS - 1)``."
+
+#: ../../howto/curses.rst:195
+#, fuzzy
+msgid ""
+"When you call a method to display or erase text, the effect doesn't "
+"immediately show up on the display.  Instead you must call the "
+":meth:`~curses.window.refresh` method of window objects to update the "
+"screen."
+msgstr ""
+"Khi bạn gọi một phương thức để hiển thị hoặc xóa văn bản, hiệu ứng sẽ không "
+"hiển thị ngay trên màn hình.  Thay vào đó bạn phải gọi phương thức "
+":meth:`~curses.window.refresh` của đối tượng cửa sổ để cập nhật màn hình."
+
+#: ../../howto/curses.rst:200
+#, fuzzy
+msgid ""
+"This is because curses was originally written with slow 300-baud terminal "
+"connections in mind; with these terminals, minimizing the time required to "
+"redraw the screen was very important.  Instead curses accumulates changes to"
+" the screen and displays them in the most efficient manner when you call "
+":meth:`!refresh`.  For example, if your program displays some text in a "
+"window and then clears the window, there's no need to send the original text"
+" because they're never visible."
+msgstr ""
+"Điều này là do những lời nguyền ban đầu được viết với mục đích kết nối thiết"
+" bị đầu cuối chậm 300 baud; với các thiết bị đầu cuối này, việc giảm thiểu "
+"thời gian cần thiết để vẽ lại màn hình là rất quan trọng.  Thay vào đó, "
+"những lời nguyền sẽ tích lũy những thay đổi trên màn hình và hiển thị chúng "
+"theo cách hiệu quả nhất khi bạn gọi :meth:`!refresh`.  Ví dụ: nếu chương "
+"trình của bạn hiển thị một số văn bản trong một cửa sổ và sau đó xóa cửa sổ "
+"đó thì không cần phải gửi văn bản gốc vì chúng không bao giờ hiển thị."
+
+#: ../../howto/curses.rst:209
+#, fuzzy
+msgid ""
+"In practice, explicitly telling curses to redraw a window doesn't really "
+"complicate programming with curses much. Most programs go into a flurry of "
+"activity, and then pause waiting for a keypress or some other action on the "
+"part of the user.  All you have to do is to be sure that the screen has been"
+" redrawn before pausing to wait for user input, by first calling "
+":meth:`!stdscr.refresh` or the :meth:`!refresh` method of some other "
+"relevant window."
+msgstr ""
+"Trong thực tế, việc yêu cầu rõ ràng các lời nguyền để vẽ lại một cửa sổ "
+"không thực sự làm phức tạp nhiều việc lập trình với các lời nguyền. Hầu hết "
+"các chương trình bắt đầu thực hiện một loạt hoạt động và sau đó tạm dừng chờ"
+" người dùng nhấn phím hoặc một số hành động khác.  Tất cả những gì bạn phải "
+"làm là đảm bảo rằng màn hình đã được vẽ lại trước khi tạm dừng để chờ người "
+"dùng nhập liệu bằng cách gọi :meth:`!stdscr.refresh` hoặc phương thức "
+":meth:`!refresh` của một số cửa sổ liên quan khác trước tiên."
+
+#: ../../howto/curses.rst:217
+#, fuzzy
+msgid ""
+"A pad is a special case of a window; it can be larger than the actual "
+"display screen, and only a portion of the pad displayed at a time. Creating "
+"a pad requires the pad's height and width, while refreshing a pad requires "
+"giving the coordinates of the on-screen area where a subsection of the pad "
+"will be displayed.  ::"
+msgstr ""
+"Một miếng đệm là một trường hợp đặc biệt của một cửa sổ; nó có thể lớn hơn "
+"màn hình hiển thị thực tế và mỗi lần chỉ hiển thị một phần của bảng. Việc "
+"tạo một bảng cần có chiều cao và chiều rộng của bảng, trong khi làm mới một "
+"bảng yêu cầu cung cấp tọa độ của khu vực trên màn hình nơi phần phụ của bảng"
+" sẽ được hiển thị.  ::"
+
+#: ../../howto/curses.rst:223
+#, fuzzy
+msgid ""
+"pad = curses.newpad(100, 100)\n"
+"# These loops fill the pad with letters; addch() is\n"
+"# explained in the next section\n"
+"for y in range(0, 99):\n"
+"    for x in range(0, 99):\n"
+"        pad.addch(y,x, ord('a') + (x*x+y*y) % 26)\n"
+"\n"
+"# Displays a section of the pad in the middle of the screen.\n"
+"# (0,0) : coordinate of upper-left corner of pad area to display.\n"
+"# (5,5) : coordinate of upper-left corner of window area to be filled\n"
+"#         with pad content.\n"
+"# (20, 75) : coordinate of lower-right corner of window area to be\n"
+"#          : filled with pad content.\n"
+"pad.refresh( 0,0, 5,5, 20,75)"
+msgstr ""
+"pad = lời nguyền.newpad(100, 100)\n"
+"Các vòng lặp # These điền vào bảng các chữ cái; addch() là\n"
+"# explained ở phần tiếp theo\n"
+"cho y trong phạm vi (0, 99):\n"
+"    cho x trong phạm vi (0, 99):\n"
+"        pad.addch(y,x, ord('a') + (x*x+y*y) % 26)\n"
+"\n"
+"# Displays một phần của pad ở giữa màn hình.\n"
+"# (0,0): tọa độ góc trên bên trái của vùng pad cần hiển thị.\n"
+"# (5,5): tọa độ góc trên bên trái của vùng cửa sổ cần điền\n"
+"nội dung bảng #         with.\n"
+"# (20, 75) : tọa độ góc dưới bên phải của vùng cửa sổ cần làm\n"
+"# : chứa đầy nội dung pad.\n"
+"pad.refresh( 0,0, 5,5, 20,75)"
+
+#: ../../howto/curses.rst:238
+#, fuzzy
+msgid ""
+"The :meth:`!refresh` call displays a section of the pad in the rectangle "
+"extending from coordinate (5,5) to coordinate (20,75) on the screen; the "
+"upper left corner of the displayed section is coordinate (0,0) on the pad.  "
+"Beyond that difference, pads are exactly like ordinary windows and support "
+"the same methods."
+msgstr ""
+"Lệnh gọi :meth:`!refresh` hiển thị một phần của phần đệm trong hình chữ nhật"
+" kéo dài từ tọa độ (5,5) đến tọa độ (20,75) trên màn hình; góc trên bên trái"
+" của phần hiển thị là tọa độ (0,0) trên pad.  Ngoài sự khác biệt đó, các "
+"miếng đệm giống hệt như các cửa sổ thông thường và hỗ trợ các phương pháp "
+"tương tự."
+
+#: ../../howto/curses.rst:244
+#, fuzzy
+msgid ""
+"If you have multiple windows and pads on screen there is a more efficient "
+"way to update the screen and prevent annoying screen flicker as each part of"
+" the screen gets updated.  :meth:`!refresh` actually does two things:"
+msgstr ""
+"Nếu bạn có nhiều cửa sổ và miếng đệm trên màn hình, có một cách hiệu quả hơn"
+" để cập nhật màn hình và ngăn chặn hiện tượng nhấp nháy màn hình khó chịu "
+"khi mỗi phần của màn hình được cập nhật.  :meth:`!refresh` thực sự làm hai "
+"việc:"
+
+#: ../../howto/curses.rst:249
+#, fuzzy
+msgid ""
+"Calls the :meth:`~curses.window.noutrefresh` method of each window to update"
+" an underlying data structure representing the desired state of the screen."
+msgstr ""
+"Gọi phương thức :meth:`~curses.window.noutrefresh` của mỗi cửa sổ để cập "
+"nhật cấu trúc dữ liệu cơ bản thể hiện trạng thái mong muốn của màn hình."
+
+#: ../../howto/curses.rst:252
+#, fuzzy
+msgid ""
+"Calls the function :func:`~curses.doupdate` function to change the physical "
+"screen to match the desired state recorded in the data structure."
+msgstr ""
+"Gọi hàm :func:`~curses.doupdate` để thay đổi màn hình vật lý phù hợp với "
+"trạng thái mong muốn được ghi trong cấu trúc dữ liệu."
+
+#: ../../howto/curses.rst:255
+#, fuzzy
+msgid ""
+"Instead you can call :meth:`!noutrefresh` on a number of windows to update "
+"the data structure, and then call :func:`!doupdate` to update the screen."
+msgstr ""
+"Thay vào đó, bạn có thể gọi :meth:`!noutrefresh` trên một số cửa sổ để cập "
+"nhật cấu trúc dữ liệu, sau đó gọi :func:`!doupdate` để cập nhật màn hình."
+
+#: ../../howto/curses.rst:261
+#, fuzzy
+msgid "Displaying Text"
+msgstr "Hiển thị văn bản"
+
+#: ../../howto/curses.rst:263
+#, fuzzy
+msgid ""
+"From a C programmer's point of view, curses may sometimes look like a twisty"
+" maze of functions, all subtly different.  For example, :c:func:`!addstr` "
+"displays a string at the current cursor location in the ``stdscr`` window, "
+"while :c:func:`!mvaddstr` moves to a given y,x coordinate first before "
+"displaying the string. :c:func:`!waddstr` is just like :c:func:`!addstr`, "
+"but allows specifying a window to use instead of using ``stdscr`` by "
+"default. :c:func:`!mvwaddstr` allows specifying both a window and a "
+"coordinate."
+msgstr ""
+"Theo quan điểm của một lập trình viên C, những lời nguyền đôi khi có thể "
+"trông giống như một mê cung ngoằn ngoèo của các hàm, tất cả đều khác nhau "
+"một cách tinh tế.  Ví dụ: :c:func:`!addstr` hiển thị một chuỗi tại vị trí "
+"con trỏ hiện tại trong cửa sổ ``stdscr``, trong khi :c:func:`!mvaddstr` di "
+"chuyển đến tọa độ y, x nhất định trước khi hiển thị chuỗi. "
+":c:func:`!waddstr` cũng giống như :c:func:`!addstr` nhưng cho phép chỉ định "
+"một cửa sổ để sử dụng thay vì sử dụng ``stdscr`` theo mặc định. "
+":c:func:`!mvwaddstr` cho phép chỉ định cả cửa sổ và tọa độ."
+
+#: ../../howto/curses.rst:272
+#, fuzzy
+msgid ""
+"Fortunately the Python interface hides all these details.  ``stdscr`` is a "
+"window object like any other, and methods such as "
+":meth:`~curses.window.addstr` accept multiple argument forms.  Usually there"
+" are four different forms."
+msgstr ""
+"May mắn thay giao diện Python ẩn tất cả những chi tiết này.  ``stdscr`` là "
+"một đối tượng cửa sổ giống như bất kỳ đối tượng nào khác và các phương thức "
+"như :meth:`~curses.window.addstr` chấp nhận nhiều dạng đối số.  Thông thường"
+" có bốn hình thức khác nhau."
+
+#: ../../howto/curses.rst:278
+#, fuzzy
+msgid "Form"
+msgstr "biểu mẫu"
+
+#: ../../howto/curses.rst:278 ../../howto/curses.rst:346
+#, fuzzy
+msgid "Description"
+msgstr "Mô tả"
+
+#: ../../howto/curses.rst:280
+#, fuzzy
+msgid "*str* or *ch*"
+msgstr "*str* hoặc *ch*"
+
+#: ../../howto/curses.rst:280
+#, fuzzy
+msgid "Display the string *str* or character *ch* at the current position"
+msgstr "Hiển thị chuỗi *str* hoặc ký tự *ch* tại vị trí hiện tại"
+
+#: ../../howto/curses.rst:283
+#, fuzzy
+msgid "*str* or *ch*, *attr*"
+msgstr "*str* hoặc *ch*, *attr*"
+
+#: ../../howto/curses.rst:283
+#, fuzzy
+msgid ""
+"Display the string *str* or character *ch*, using attribute *attr* at the "
+"current position"
+msgstr ""
+"Hiển thị chuỗi *str* hoặc ký tự *ch*, sử dụng thuộc tính *attr* tại vị trí "
+"hiện tại"
+
+#: ../../howto/curses.rst:287
+#, fuzzy
+msgid "*y*, *x*, *str* or *ch*"
+msgstr "*y*, *x*, *str* hoặc *ch*"
+
+#: ../../howto/curses.rst:287
+#, fuzzy
+msgid "Move to position *y,x* within the window, and display *str* or *ch*"
+msgstr "Di chuyển đến vị trí *y,x* trong cửa sổ và hiển thị *str* hoặc *ch*"
+
+#: ../../howto/curses.rst:290
+#, fuzzy
+msgid "*y*, *x*, *str* or *ch*, *attr*"
+msgstr "*y*, *x*, *str* hoặc *ch*, *attr*"
+
+#: ../../howto/curses.rst:290
+#, fuzzy
+msgid ""
+"Move to position *y,x* within the window, and display *str* or *ch*, using "
+"attribute *attr*"
+msgstr ""
+"Di chuyển đến vị trí *y,x* trong cửa sổ và hiển thị *str* hoặc *ch*, sử dụng"
+" thuộc tính *attr*"
+
+#: ../../howto/curses.rst:294
+#, fuzzy
+msgid ""
+"Attributes allow displaying text in highlighted forms such as boldface, "
+"underline, reverse code, or in color.  They'll be explained in more detail "
+"in the next subsection."
+msgstr ""
+"Thuộc tính cho phép hiển thị văn bản ở dạng nổi bật như in đậm, gạch chân, "
+"đảo mã hoặc màu.  Chúng sẽ được giải thích chi tiết hơn trong tiểu mục tiếp "
+"theo."
+
+#: ../../howto/curses.rst:299
+#, fuzzy
+msgid ""
+"The :meth:`~curses.window.addstr` method takes a Python string or bytestring"
+" as the value to be displayed.  The contents of bytestrings are sent to the "
+"terminal as-is.  Strings are encoded to bytes using the value of the "
+"window's :attr:`~window.encoding` attribute; this defaults to the default "
+"system encoding as returned by :func:`locale.getencoding`."
+msgstr ""
+"Phương thức :meth:`~curses.window.addstr` lấy chuỗi Python hoặc chuỗi byte "
+"làm giá trị được hiển thị.  Nội dung của chuỗi byte được gửi đến thiết bị "
+"đầu cuối nguyên trạng.  Các chuỗi được mã hóa thành byte bằng cách sử dụng "
+"giá trị thuộc tính :attr:`~window.encoding` của cửa sổ; điều này mặc định là"
+" mã hóa hệ thống mặc định được trả về bởi :func:`locale.getencoding`."
+
+#: ../../howto/curses.rst:305
+#, fuzzy
+msgid ""
+"The :meth:`~curses.window.addch` methods take a character, which can be "
+"either a string of length 1, a bytestring of length 1, or an integer."
+msgstr ""
+"Các phương thức :meth:`~curses.window.addch` lấy một ký tự, có thể là một "
+"chuỗi có độ dài 1, một chuỗi byte có độ dài 1 hoặc một số nguyên."
+
+#: ../../howto/curses.rst:308
+#, fuzzy
+msgid ""
+"Constants are provided for extension characters; these constants are "
+"integers greater than 255.  For example, :const:`ACS_PLMINUS` is a +/- "
+"symbol, and :const:`ACS_ULCORNER` is the upper left corner of a box (handy "
+"for drawing borders).  You can also use the appropriate Unicode character."
+msgstr ""
+"Các hằng số được cung cấp cho các ký tự mở rộng; các hằng số này là số "
+"nguyên lớn hơn 255. Ví dụ: :const:`ACS_PLMINUS` là ký hiệu +/- và "
+":const:`ACS_ULCORNER` là góc trên bên trái của hộp (tiện dụng để vẽ đường "
+"viền).  Bạn cũng có thể sử dụng ký tự Unicode thích hợp."
+
+#: ../../howto/curses.rst:314
+#, fuzzy
+msgid ""
+"Windows remember where the cursor was left after the last operation, so if "
+"you leave out the *y,x* coordinates, the string or character will be "
+"displayed wherever the last operation left off.  You can also move the "
+"cursor with the ``move(y,x)`` method.  Because some terminals always display"
+" a flashing cursor, you may want to ensure that the cursor is positioned in "
+"some location where it won't be distracting; it can be confusing to have the"
+" cursor blinking at some apparently random location."
+msgstr ""
+"Windows ghi nhớ vị trí con trỏ được để lại sau thao tác cuối cùng, vì vậy "
+"nếu bạn bỏ tọa độ *y,x*, chuỗi hoặc ký tự sẽ được hiển thị ở bất kỳ vị trí "
+"nào mà thao tác cuối cùng đã dừng lại.  Bạn cũng có thể di chuyển con trỏ "
+"bằng phương pháp ``move(y,x)``.  Vì một số thiết bị đầu cuối luôn hiển thị "
+"con trỏ nhấp nháy nên bạn có thể muốn đảm bảo rằng con trỏ được đặt ở vị trí"
+" nào đó mà nó không gây mất tập trung; có thể gây nhầm lẫn khi con trỏ nhấp "
+"nháy ở một vị trí có vẻ ngẫu nhiên nào đó."
+
+#: ../../howto/curses.rst:322
+#, fuzzy
+msgid ""
+"If your application doesn't need a blinking cursor at all, you can call "
+"``curs_set(False)`` to make it invisible.  For compatibility with older "
+"curses versions, there's a ``leaveok(bool)`` function that's a synonym for "
+":func:`~curses.curs_set`.  When *bool* is true, the curses library will "
+"attempt to suppress the flashing cursor, and you won't need to worry about "
+"leaving it in odd locations."
+msgstr ""
+"Nếu ứng dụng của bạn hoàn toàn không cần con trỏ nhấp nháy, bạn có thể gọi "
+"``curs_set(False)`` để ẩn nó.  Để tương thích với các phiên bản lời nguyền "
+"cũ hơn, có chức năng ``leaveok(bool)`` đồng nghĩa với "
+":func:`~curses.curs_set`.  Khi *bool* là đúng, thư viện lời nguyền sẽ cố "
+"gắng chặn con trỏ nhấp nháy và bạn sẽ không cần phải lo lắng về việc để nó ở"
+" những vị trí kỳ lạ."
+
+#: ../../howto/curses.rst:331
+#, fuzzy
+msgid "Attributes and Color"
+msgstr "Thuộc tính và màu sắc"
+
+#: ../../howto/curses.rst:333
+#, fuzzy
+msgid ""
+"Characters can be displayed in different ways.  Status lines in a text-based"
+" application are commonly shown in reverse video, or a text viewer may need "
+"to highlight certain words.  curses supports this by allowing you to specify"
+" an attribute for each cell on the screen."
+msgstr ""
+"Các ký tự có thể được hiển thị theo nhiều cách khác nhau.  Các dòng trạng "
+"thái trong ứng dụng dựa trên văn bản thường được hiển thị trong video đảo "
+"ngược hoặc người xem văn bản có thể cần đánh dấu một số từ nhất định.  lời "
+"nguyền hỗ trợ điều này bằng cách cho phép bạn chỉ định một thuộc tính cho "
+"từng ô trên màn hình."
+
+#: ../../howto/curses.rst:338
+#, fuzzy
+msgid ""
+"An attribute is an integer, each bit representing a different attribute.  "
+"You can try to display text with multiple attribute bits set, but curses "
+"doesn't guarantee that all the possible combinations are available, or that "
+"they're all visually distinct.  That depends on the ability of the terminal "
+"being used, so it's safest to stick to the most commonly available "
+"attributes, listed here."
+msgstr ""
+"Thuộc tính là một số nguyên, mỗi bit đại diện cho một thuộc tính khác nhau."
+"  Bạn có thể cố gắng hiển thị văn bản với nhiều bit thuộc tính được đặt, "
+"nhưng lời nguyền không đảm bảo rằng tất cả các kết hợp có thể đều có sẵn "
+"hoặc tất cả chúng đều khác biệt về mặt trực quan.  Điều đó phụ thuộc vào khả"
+" năng sử dụng của thiết bị đầu cuối, vì vậy, cách an toàn nhất là tuân theo "
+"các thuộc tính sẵn có phổ biến nhất được liệt kê ở đây."
+
+#: ../../howto/curses.rst:346
+#, fuzzy
+msgid "Attribute"
+msgstr "Thuộc tính"
+
+#: ../../howto/curses.rst:348
+#, fuzzy
+msgid ":const:`A_BLINK`"
+msgstr ":const:`A_BLINK`"
+
+#: ../../howto/curses.rst:348
+#, fuzzy
+msgid "Blinking text"
+msgstr "Văn bản nhấp nháy"
+
+#: ../../howto/curses.rst:350
+#, fuzzy
+msgid ":const:`A_BOLD`"
+msgstr ":const:`A_BOLD`"
+
+#: ../../howto/curses.rst:350
+#, fuzzy
+msgid "Extra bright or bold text"
+msgstr "Văn bản cực sáng hoặc đậm"
+
+#: ../../howto/curses.rst:352
+#, fuzzy
+msgid ":const:`A_DIM`"
+msgstr ":const:`A_DIM`"
+
+#: ../../howto/curses.rst:352
+#, fuzzy
+msgid "Half bright text"
+msgstr "Văn bản nửa sáng"
+
+#: ../../howto/curses.rst:354
+#, fuzzy
+msgid ":const:`A_REVERSE`"
+msgstr ":const:`A_REVERSE`"
+
+#: ../../howto/curses.rst:354
+#, fuzzy
+msgid "Reverse-video text"
+msgstr "Văn bản đảo ngược video"
+
+#: ../../howto/curses.rst:356
+#, fuzzy
+msgid ":const:`A_STANDOUT`"
+msgstr ":const:`A_STANDOUT`"
+
+#: ../../howto/curses.rst:356
+#, fuzzy
+msgid "The best highlighting mode available"
+msgstr "Chế độ đánh dấu tốt nhất hiện có"
+
+#: ../../howto/curses.rst:358
+#, fuzzy
+msgid ":const:`A_UNDERLINE`"
+msgstr ":const:`A_UNDERLINE`"
+
+#: ../../howto/curses.rst:358
+#, fuzzy
+msgid "Underlined text"
+msgstr "văn bản được gạch chân"
+
+#: ../../howto/curses.rst:361
+#, fuzzy
+msgid ""
+"So, to display a reverse-video status line on the top line of the screen, "
+"you could code::"
+msgstr ""
+"Vì vậy, để hiển thị dòng trạng thái video đảo ngược ở dòng trên cùng của màn"
+" hình, bạn có thể mã ::"
+
+#: ../../howto/curses.rst:364
+#, fuzzy
+msgid ""
+"stdscr.addstr(0, 0, \"Current mode: Typing mode\",\n"
+"              curses.A_REVERSE)\n"
+"stdscr.refresh()"
+msgstr ""
+"stdscr.addstr(0, 0, \"Chế độ hiện tại: Chế độ gõ\",\n"
+"              lời nguyền.A_REVERSE)\n"
+"stdscr.refresh()"
+
+#: ../../howto/curses.rst:368
+#, fuzzy
+msgid ""
+"The curses library also supports color on those terminals that provide it. "
+"The most common such terminal is probably the Linux console, followed by "
+"color xterms."
+msgstr ""
+"Thư viện lời nguyền cũng hỗ trợ màu sắc trên các thiết bị đầu cuối cung cấp "
+"nó. Thiết bị đầu cuối phổ biến nhất có lẽ là bảng điều khiển Linux, tiếp "
+"theo là xterm màu."
+
+#: ../../howto/curses.rst:372
+#, fuzzy
+msgid ""
+"To use color, you must call the :func:`~curses.start_color` function soon "
+"after calling :func:`~curses.initscr`, to initialize the default color set "
+"(the :func:`curses.wrapper` function does this automatically).  Once that's "
+"done, the :func:`~curses.has_colors` function returns TRUE if the terminal "
+"in use can actually display color.  (Note: curses uses the American spelling"
+" 'color', instead of the Canadian/British spelling 'colour'.  If you're used"
+" to the British spelling, you'll have to resign yourself to misspelling it "
+"for the sake of these functions.)"
+msgstr ""
+"Để sử dụng màu, bạn phải gọi hàm :func:`~curses.start_color` ngay sau khi "
+"gọi :func:`~curses.initscr`, để khởi tạo bộ màu mặc định (hàm "
+":func:`curses.wrapper` thực hiện việc này một cách tự động).  Khi đã xong, "
+"hàm :func:`~curses.has_colors` trả về TRUE nếu thiết bị đầu cuối đang sử "
+"dụng thực sự có thể hiển thị màu.  (Lưu ý: những lời nguyền sử dụng cách "
+"đánh vần 'màu' của người Mỹ, thay vì cách đánh vần 'màu' của người "
+"Canada/Anh. Nếu bạn đã quen với cách đánh vần của người Anh, bạn sẽ phải "
+"chấp nhận viết sai chính tả vì lợi ích của các chức năng này.)"
+
+#: ../../howto/curses.rst:382
+#, fuzzy
+msgid ""
+"The curses library maintains a finite number of color pairs, containing a "
+"foreground (or text) color and a background color.  You can get the "
+"attribute value corresponding to a color pair with the "
+":func:`~curses.color_pair` function; this can be bitwise-OR'ed with other "
+"attributes such as :const:`A_REVERSE`, but again, such combinations are not "
+"guaranteed to work on all terminals."
+msgstr ""
+"Thư viện lời nguyền duy trì một số cặp màu hữu hạn, chứa màu nền trước (hoặc"
+" văn bản) và màu nền.  Bạn có thể lấy giá trị thuộc tính tương ứng với một "
+"cặp màu bằng hàm :func:`~curses.color_pair`; điều này có thể được HOẶC "
+"bitwise với các thuộc tính khác như :const:`A_REVERSE`, nhưng một lần nữa, "
+"những kết hợp như vậy không được đảm bảo hoạt động trên tất cả các thiết bị "
+"đầu cuối."
+
+#: ../../howto/curses.rst:389
+#, fuzzy
+msgid "An example, which displays a line of text using color pair 1::"
+msgstr "Ví dụ hiển thị dòng văn bản sử dụng cặp màu 1::"
+
+#: ../../howto/curses.rst:391
+#, fuzzy
+msgid ""
+"stdscr.addstr(\"Pretty text\", curses.color_pair(1))\n"
+"stdscr.refresh()"
+msgstr ""
+"stdscr.addstr(\"Văn bản đẹp\", lời nguyền.color_pair(1))\n"
+"stdscr.refresh()"
+
+#: ../../howto/curses.rst:394
+#, fuzzy
+msgid ""
+"As I said before, a color pair consists of a foreground and background "
+"color. The ``init_pair(n, f, b)`` function changes the definition of color "
+"pair *n*, to foreground color f and background color b.  Color pair 0 is "
+"hard-wired to white on black, and cannot be changed."
+msgstr ""
+"Như tôi đã nói trước đây, một cặp màu bao gồm màu nền trước và màu nền. Hàm "
+"``init_pair(n, f, b)`` thay đổi định nghĩa của cặp màu *n*, thành màu nền "
+"trước f và màu nền b.  Cặp màu 0 được cố định thành màu trắng trên nền đen "
+"và không thể thay đổi."
+
+#: ../../howto/curses.rst:399
+#, fuzzy
+msgid ""
+"Colors are numbered, and :func:`start_color` initializes 8 basic colors when"
+" it activates color mode.  They are: 0:black, 1:red, 2:green, 3:yellow, "
+"4:blue, 5:magenta, 6:cyan, and 7:white.  The :mod:`curses` module defines "
+"named constants for each of these colors: :const:`curses.COLOR_BLACK`, "
+":const:`curses.COLOR_RED`, and so forth."
+msgstr ""
+"Màu sắc được đánh số và :func:`start_color` khởi tạo 8 màu cơ bản khi kích "
+"hoạt chế độ màu.  Đó là: 0:đen, 1:đỏ, 2:xanh lục, 3:vàng, 4:xanh lam, 5:đỏ "
+"tươi, 6:lục lam và 7:trắng.  Mô-đun :mod:`curses` xác định các hằng số được "
+"đặt tên cho từng màu sau: :const:`curses.COLOR_BLACK`, "
+":const:`curses.COLOR_RED`, v.v."
+
+#: ../../howto/curses.rst:405
+#, fuzzy
+msgid ""
+"Let's put all this together. To change color 1 to red text on a white "
+"background, you would call::"
+msgstr ""
+"Hãy đặt tất cả những điều này lại với nhau. Để thay đổi màu 1 thành văn bản "
+"màu đỏ trên nền trắng, bạn sẽ gọi::"
+
+#: ../../howto/curses.rst:408
+#, fuzzy
+msgid "curses.init_pair(1, curses.COLOR_RED, curses.COLOR_WHITE)"
+msgstr "lời nguyền.init_pair(1, lời nguyền.COLOR_RED, lời nguyền.COLOR_WHITE)"
+
+#: ../../howto/curses.rst:410
+#, fuzzy
+msgid ""
+"When you change a color pair, any text already displayed using that color "
+"pair will change to the new colors.  You can also display new text in this "
+"color with::"
+msgstr ""
+"Khi bạn thay đổi một cặp màu, mọi văn bản đã được hiển thị bằng cặp màu đó "
+"sẽ chuyển sang màu mới.  Bạn cũng có thể hiển thị văn bản mới bằng màu này "
+"với::"
+
+#: ../../howto/curses.rst:414
+#, fuzzy
+msgid "stdscr.addstr(0,0, \"RED ALERT!\", curses.color_pair(1))"
+msgstr "stdscr.addstr(0,0, \"RED ALERT!\", Curs.color_pair(1))"
+
+#: ../../howto/curses.rst:416
+#, fuzzy
+msgid ""
+"Very fancy terminals can change the definitions of the actual colors to a "
+"given RGB value.  This lets you change color 1, which is usually red, to "
+"purple or blue or any other color you like.  Unfortunately, the Linux "
+"console doesn't support this, so I'm unable to try it out, and can't provide"
+" any examples.  You can check if your terminal can do this by calling "
+":func:`~curses.can_change_color`, which returns ``True`` if the capability "
+"is there.  If you're lucky enough to have such a talented terminal, consult "
+"your system's man pages for more information."
+msgstr ""
+"Các thiết bị đầu cuối rất lạ mắt có thể thay đổi định nghĩa của màu thực tế "
+"thành giá trị RGB nhất định.  Điều này cho phép bạn thay đổi màu 1, thường "
+"là màu đỏ, sang màu tím hoặc xanh hoặc bất kỳ màu nào khác mà bạn thích.  "
+"Thật không may, bảng điều khiển Linux không hỗ trợ điều này, vì vậy tôi "
+"không thể dùng thử và không thể cung cấp bất kỳ ví dụ nào.  Bạn có thể kiểm "
+"tra xem thiết bị đầu cuối của mình có thể thực hiện việc này hay không bằng "
+"cách gọi :func:`~curses.can_change_color`, trả về ``True`` nếu có khả năng."
+"  Nếu bạn đủ may mắn để có một thiết bị đầu cuối tài năng như vậy, hãy tham "
+"khảo trang hướng dẫn sử dụng hệ thống của bạn để biết thêm thông tin."
+
+#: ../../howto/curses.rst:427
+#, fuzzy
+msgid "User Input"
+msgstr "Đầu vào của người dùng"
+
+#: ../../howto/curses.rst:429
+#, fuzzy
+msgid ""
+"The C curses library offers only very simple input mechanisms. Python's "
+":mod:`curses` module adds a basic text-input widget.  (Other libraries such "
+"as :pypi:`Urwid` have more extensive collections of widgets.)"
+msgstr ""
+"Thư viện Ccurs chỉ cung cấp các cơ chế nhập liệu rất đơn giản. Mô-đun "
+":mod:`curses` của Python thêm tiện ích nhập văn bản cơ bản.  (Các thư viện "
+"khác như :pypi:`Urwid` có bộ sưu tập tiện ích phong phú hơn.)"
+
+#: ../../howto/curses.rst:433
+#, fuzzy
+msgid "There are two methods for getting input from a window:"
+msgstr "Có hai phương pháp để nhận dữ liệu đầu vào từ cửa sổ:"
+
+#: ../../howto/curses.rst:435
+#, fuzzy
+msgid ""
+":meth:`~curses.window.getch` refreshes the screen and then waits for the "
+"user to hit a key, displaying the key if :func:`~curses.echo` has been "
+"called earlier.  You can optionally specify a coordinate to which the cursor"
+" should be moved before pausing."
+msgstr ""
+":meth:`~curses.window.getch` làm mới màn hình rồi đợi người dùng nhấn một "
+"phím, hiển thị phím nếu :func:`~curses.echo` đã được gọi trước đó.  Bạn có "
+"thể tùy ý chỉ định tọa độ mà con trỏ sẽ được di chuyển tới trước khi tạm "
+"dừng."
+
+#: ../../howto/curses.rst:440
+#, fuzzy
+msgid ""
+":meth:`~curses.window.getkey` does the same thing but converts the integer "
+"to a string.  Individual characters are returned as 1-character strings, and"
+" special keys such as function keys return longer strings containing a key "
+"name such as ``KEY_UP`` or ``^G``."
+msgstr ""
+":meth:`~curses.window.getkey` thực hiện tương tự nhưng chuyển đổi số nguyên "
+"thành chuỗi.  Các ký tự riêng lẻ được trả về dưới dạng chuỗi 1 ký tự và các "
+"phím đặc biệt như phím chức năng trả về các chuỗi dài hơn chứa tên khóa như "
+"``KEY_UP`` hoặc ``^G``."
+
+#: ../../howto/curses.rst:445
+#, fuzzy
+msgid ""
+"It's possible to not wait for the user using the "
+":meth:`~curses.window.nodelay` window method. After ``nodelay(True)``, "
+":meth:`!getch` and :meth:`!getkey` for the window become non-blocking. To "
+"signal that no input is ready, :meth:`!getch` returns ``curses.ERR`` (a "
+"value of -1) and :meth:`!getkey` raises an exception. There's also a "
+":func:`~curses.halfdelay` function, which can be used to (in effect) set a "
+"timer on each :meth:`!getch`; if no input becomes available within a "
+"specified delay (measured in tenths of a second), curses raises an "
+"exception."
+msgstr ""
+"Có thể không đợi người dùng sử dụng phương pháp cửa sổ "
+":meth:`~curses.window.nodelay`. Sau ``nodelay(True)``, :meth:`!getch` và "
+":meth:`!getkey` cho cửa sổ trở thành không chặn. Để báo hiệu rằng chưa có "
+"đầu vào nào sẵn sàng, :meth:`!getch` trả về ``curses.ERR`` (giá trị -1) và "
+":meth:`!getkey` đưa ra một ngoại lệ. Ngoài ra còn có chức năng "
+":func:`~curses.halfdelay`, có thể được sử dụng để (trên thực tế) đặt bộ hẹn "
+"giờ trên mỗi :meth:`!getch`; nếu không có đầu vào nào khả dụng trong một độ "
+"trễ xác định (được đo bằng phần mười giây), những lời nguyền sẽ đưa ra một "
+"ngoại lệ."
+
+#: ../../howto/curses.rst:455
+#, fuzzy
+msgid ""
+"The :meth:`!getch` method returns an integer; if it's between 0 and 255, it "
+"represents the ASCII code of the key pressed.  Values greater than 255 are "
+"special keys such as Page Up, Home, or the cursor keys. You can compare the "
+"value returned to constants such as :const:`curses.KEY_PPAGE`, "
+":const:`curses.KEY_HOME`, or :const:`curses.KEY_LEFT`.  The main loop of "
+"your program may look something like this::"
+msgstr ""
+"Phương thức :meth:`!getch` trả về một số nguyên; nếu nằm trong khoảng từ 0 "
+"đến 255, nó đại diện cho mã ASCII của phím được nhấn.  Giá trị lớn hơn 255 "
+"là các phím đặc biệt như Page Up, Home hoặc các phím con trỏ. Bạn có thể so "
+"sánh giá trị được trả về cho các hằng số như :const:`curses.KEY_PPAGE`, "
+":const:`curses.KEY_HOME` hoặc :const:`curses.KEY_LEFT`.  Vòng lặp chính của "
+"chương trình của bạn có thể trông giống như thế này::"
+
+#: ../../howto/curses.rst:462
+#, fuzzy
+msgid ""
+"while True:\n"
+"    c = stdscr.getch()\n"
+"    if c == ord('p'):\n"
+"        PrintDocument()\n"
+"    elif c == ord('q'):\n"
+"        break  # Exit the while loop\n"
+"    elif c == curses.KEY_HOME:\n"
+"        x = y = 0"
+msgstr ""
+"trong khi Đúng:\n"
+"    c = stdscr.getch()\n"
+"    nếu c == ord('p'):\n"
+"        Tài liệu in()\n"
+"    Elif c == ord('q'):\n"
+"        phá vỡ # Exit vòng lặp while\n"
+"    Elif c == lời nguyền.KEY_HOME:\n"
+"        x = y = 0"
+
+#: ../../howto/curses.rst:471
+#, fuzzy
+msgid ""
+"The :mod:`curses.ascii` module supplies ASCII class membership functions "
+"that take either integer or 1-character string arguments; these may be "
+"useful in writing more readable tests for such loops.  It also supplies "
+"conversion functions  that take either integer or 1-character-string "
+"arguments and return the same type.  For example, :func:`curses.ascii.ctrl` "
+"returns the control character corresponding to its argument."
+msgstr ""
+"Mô-đun :mod:`curses.ascii` cung cấp các hàm thành viên của lớp ASCII nhận "
+"đối số chuỗi số nguyên hoặc chuỗi 1 ký tự; những điều này có thể hữu ích "
+"trong việc viết các bài kiểm tra dễ đọc hơn cho các vòng lặp như vậy.  Nó "
+"cũng cung cấp các hàm chuyển đổi lấy đối số là số nguyên hoặc chuỗi 1 ký tự "
+"và trả về cùng loại.  Ví dụ: :func:`curses.ascii.ctrl` trả về ký tự điều "
+"khiển tương ứng với đối số của nó."
+
+#: ../../howto/curses.rst:478
+#, fuzzy
+msgid ""
+"There's also a method to retrieve an entire string, "
+":meth:`~curses.window.getstr`.  It isn't used very often, because its "
+"functionality is quite limited; the only editing keys available are the "
+"backspace key and the Enter key, which terminates the string.  It can "
+"optionally be limited to a fixed number of characters. ::"
+msgstr ""
+"Ngoài ra còn có một phương pháp để truy xuất toàn bộ chuỗi, "
+":meth:`~curses.window.getstr`.  Nó không được sử dụng thường xuyên vì chức "
+"năng của nó khá hạn chế; các phím chỉnh sửa duy nhất có sẵn là phím xóa lùi "
+"và phím Enter để kết thúc chuỗi.  Nó có thể tùy ý được giới hạn ở một số ký "
+"tự cố định. ::"
+
+#: ../../howto/curses.rst:484
+#, fuzzy
+msgid ""
+"curses.echo()            # Enable echoing of characters\n"
+"\n"
+"# Get a 15-character string, with the cursor on the top line\n"
+"s = stdscr.getstr(0,0, 15)"
+msgstr ""
+"lời nguyền.echo() # Enable tiếng vang của các ký tự\n"
+"\n"
+"# Get một chuỗi 15 ký tự, với con trỏ ở dòng trên cùng\n"
+"s = stdscr.getstr(0,0, 15)"
+
+#: ../../howto/curses.rst:489
+#, fuzzy
+msgid ""
+"The :mod:`curses.textpad` module supplies a text box that supports an Emacs-"
+"like set of keybindings.  Various methods of the "
+":class:`~curses.textpad.Textbox` class support editing with input validation"
+" and gathering the edit results either with or without trailing spaces.  "
+"Here's an example::"
+msgstr ""
+"Mô-đun :mod:`curses.textpad` cung cấp một hộp văn bản hỗ trợ bộ tổ hợp phím "
+"giống như Emacs.  Các phương pháp khác nhau của lớp "
+":class:`~curses.textpad.Textbox` hỗ trợ chỉnh sửa bằng xác thực đầu vào và "
+"thu thập kết quả chỉnh sửa có hoặc không có dấu cách.  Đây là một ví dụ::"
+
+#: ../../howto/curses.rst:495
+#, fuzzy
+msgid ""
+"import curses\n"
+"from curses.textpad import Textbox, rectangle\n"
+"\n"
+"def main(stdscr):\n"
+"    stdscr.addstr(0, 0, \"Enter IM message: (hit Ctrl-G to send)\")\n"
+"\n"
+"    editwin = curses.newwin(5,30, 2,1)\n"
+"    rectangle(stdscr, 1,0, 1+5+1, 1+30+1)\n"
+"    stdscr.refresh()\n"
+"\n"
+"    box = Textbox(editwin)\n"
+"\n"
+"    # Let the user edit until Ctrl-G is struck.\n"
+"    box.edit()\n"
+"\n"
+"    # Get resulting contents\n"
+"    message = box.gather()"
+msgstr ""
+"lời nguyền nhập khẩu\n"
+"từ lời nguyền.textpad nhập Hộp văn bản, hình chữ nhật\n"
+"\n"
+"def chính (stdscr):\n"
+"    stdscr.addstr(0, 0, \"Nhập tin nhắn IM: (nhấn Ctrl-G để gửi)\")\n"
+"\n"
+"    editwin =curs.newwin(5,30, 2,1)\n"
+"    hình chữ nhật(stdscr, 1,0, 1+5+1, 1+30+1)\n"
+"    stdscr.refresh()\n"
+"\n"
+"    box = Hộp văn bản(editwin)\n"
+"\n"
+"    # Let người dùng chỉnh sửa cho đến khi nhấn Ctrl-G.\n"
+"    box.edit()\n"
+"\n"
+"    nội dung kết quả # Get\n"
+"    tin nhắn = box.gather()"
+
+#: ../../howto/curses.rst:513
+#, fuzzy
+msgid ""
+"See the library documentation on :mod:`curses.textpad` for more details."
+msgstr ""
+"Xem tài liệu thư viện trên :mod:`curses.textpad` để biết thêm chi tiết."
+
+#: ../../howto/curses.rst:517
+#, fuzzy
+msgid "For More Information"
+msgstr "Để biết thêm thông tin"
+
+#: ../../howto/curses.rst:519
+#, fuzzy
+msgid ""
+"This HOWTO doesn't cover some advanced topics, such as reading the contents "
+"of the screen or capturing mouse events from an xterm instance, but the "
+"Python library page for the :mod:`curses` module is now reasonably complete."
+"  You should browse it next."
+msgstr ""
+"Zz001zz này không đề cập đến một số chủ đề nâng cao, chẳng hạn như đọc nội "
+"dung của màn hình hoặc ghi lại các sự kiện chuột từ một phiên bản xterm, "
+"nhưng trang thư viện Python cho mô-đun :mod:`curses` hiện đã hoàn thiện một "
+"cách hợp lý.  Bạn nên duyệt nó tiếp theo."
+
+#: ../../howto/curses.rst:524
+#, fuzzy
+msgid ""
+"If you're in doubt about the detailed behavior of the curses functions, "
+"consult the manual pages for your curses implementation, whether it's "
+"ncurses or a proprietary Unix vendor's.  The manual pages will document any "
+"quirks, and provide complete lists of all the functions, attributes, and "
+":ref:`ACS_\\* <curses-acs-codes>` characters available to you."
+msgstr ""
+"Nếu bạn nghi ngờ về cách hoạt động chi tiết của các chức năng của lời "
+"nguyền, hãy tham khảo các trang hướng dẫn để triển khai lời nguyền của bạn, "
+"cho dù đó là ncurses hay của nhà cung cấp Unix độc quyền.  Các trang hướng "
+"dẫn sẽ ghi lại mọi điểm kỳ quặc và cung cấp danh sách đầy đủ tất cả các chức"
+" năng, thuộc tính và ký tự :ref:`ACS_\\* <curses-acs-codes>` có sẵn cho bạn."
+
+#: ../../howto/curses.rst:531
+#, fuzzy
+msgid ""
+"Because the curses API is so large, some functions aren't supported in the "
+"Python interface.  Often this isn't because they're difficult to implement, "
+"but because no one has needed them yet.  Also, Python doesn't yet support "
+"the menu library associated with ncurses. Patches adding support for these "
+"would be welcome; see `the Python Developer's Guide "
+"<https://devguide.python.org/>`_ to learn more about submitting patches to "
+"Python."
+msgstr ""
+"Vì lời nguyền API quá lớn nên một số chức năng không được hỗ trợ trong giao "
+"diện Python.  Thường thì điều này không phải vì chúng khó thực hiện mà vì "
+"chưa có ai cần đến chúng.  Ngoài ra, Python chưa hỗ trợ thư viện menu liên "
+"quan đến ncurses. Các bản vá bổ sung hỗ trợ cho những điều này sẽ được hoan "
+"nghênh; xem `the Python Developer's Guide <https://devguide.python.org/>`_ "
+"để tìm hiểu thêm về cách gửi bản vá tới Python."
+
+#: ../../howto/curses.rst:539
+#, fuzzy
+msgid ""
+"`Writing Programs with NCURSES <https://invisible-"
+"island.net/ncurses/ncurses-intro.html>`_: a lengthy tutorial for C "
+"programmers."
+msgstr ""
+"`Writing Programs with NCURSES <https://invisible-"
+"island.net/ncurses/ncurses-intro.html>`_: hướng dẫn dài dành cho lập trình "
+"viên C."
+
+#: ../../howto/curses.rst:541
+#, fuzzy
+msgid "`The ncurses man page <https://linux.die.net/man/3/ncurses>`_"
+msgstr "`The ncurses man page <https://linux.die.net/man/3/ncurses>`_"
+
+#: ../../howto/curses.rst:542
+#, fuzzy
+msgid ""
+"`The ncurses FAQ <https://invisible-island.net/ncurses/ncurses.faq.html>`_"
+msgstr ""
+"`The ncurses FAQ <https://invisible-island.net/ncurses/ncurses.faq.html>`_"
+
+#: ../../howto/curses.rst:543
+#, fuzzy
+msgid ""
+"`\"Use curses... don't swear\" "
+"<https://www.youtube.com/watch?v=eN1eZtjLEnU>`_: video of a PyCon 2013 talk "
+"on controlling terminals using curses or Urwid."
+msgstr ""
+"`\"Use curses... don't swear\" "
+"<https://www.youtube.com/watch?v=eN1eZtjLEnU>`_: video buổi nói chuyện PyCon"
+" 2013 về việc điều khiển thiết bị đầu cuối bằng cách sử dụng lời nguyền hoặc"
+" Urwid."
+
+#: ../../howto/curses.rst:545
+#, fuzzy
+msgid ""
+"`\"Console Applications with Urwid\" "
+"<https://pyvideo.org/video/1568/console-applications-with-urwid>`_: video of"
+" a PyCon CA 2012 talk demonstrating some applications written using Urwid."
+msgstr ""
+"`\"Console Applications with Urwid\" "
+"<https://pyvideo.org/video/1568/console-applications-with-urwid>`_: video "
+"buổi nói chuyện PyCon CA 2012 trình diễn một số ứng dụng được viết bằng "
+"Urwid."

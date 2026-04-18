@@ -1,0 +1,2299 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../reference/import.rst:6
+#, fuzzy
+msgid "The import system"
+msgstr "Hệ thống nhập khẩu"
+
+#: ../../reference/import.rst:10
+#, fuzzy
+msgid ""
+"Python code in one :term:`module` gains access to the code in another module"
+" by the process of :term:`importing` it.  The :keyword:`import` statement is"
+" the most common way of invoking the import machinery, but it is not the "
+"only way.  Functions such as :func:`importlib.import_module` and built-in "
+":func:`__import__` can also be used to invoke the import machinery."
+msgstr ""
+"Mã Python trong một :term:`module` có quyền truy cập vào mã trong một mô-đun"
+" khác bằng quá trình của :term:`importing`.  Câu lệnh :keyword:`import` là "
+"cách phổ biến nhất để gọi máy móc nhập khẩu, nhưng nó không phải là cách duy"
+" nhất.  Các chức năng như :func:`importlib.import_module` và "
+":func:`__import__` tích hợp cũng có thể được sử dụng để gọi máy nhập."
+
+#: ../../reference/import.rst:16
+#, fuzzy
+msgid ""
+"The :keyword:`import` statement combines two operations; it searches for the"
+" named module, then it binds the results of that search to a name in the "
+"local scope.  The search operation of the :keyword:`!import` statement is "
+"defined as a call to the :func:`__import__` function, with the appropriate "
+"arguments. The return value of :func:`__import__` is used to perform the "
+"name binding operation of the :keyword:`!import` statement.  See the "
+":keyword:`!import` statement for the exact details of that name binding "
+"operation."
+msgstr ""
+"Câu lệnh :keyword:`import` kết hợp hai thao tác; nó tìm kiếm mô-đun được đặt"
+" tên, sau đó liên kết các kết quả tìm kiếm đó với một tên trong phạm vi cục "
+"bộ.  Hoạt động tìm kiếm của câu lệnh :keyword:`!import` được định nghĩa là "
+"lệnh gọi hàm :func:`__import__`, với các đối số thích hợp. Giá trị trả về "
+"của :func:`__import__` được sử dụng để thực hiện thao tác liên kết tên của "
+"câu lệnh :keyword:`!import`.  Xem câu lệnh :keyword:`!import` để biết chi "
+"tiết chính xác về thao tác liên kết tên đó."
+
+#: ../../reference/import.rst:25
+#, fuzzy
+msgid ""
+"A direct call to :func:`__import__` performs only the module search and, if "
+"found, the module creation operation.  While certain side-effects may occur,"
+" such as the importing of parent packages, and the updating of various "
+"caches (including :data:`sys.modules`), only the :keyword:`import` statement"
+" performs a name binding operation."
+msgstr ""
+"Cuộc gọi trực tiếp tới :func:`__import__` chỉ thực hiện tìm kiếm mô-đun và "
+"nếu tìm thấy thì hoạt động tạo mô-đun.  Mặc dù một số tác dụng phụ nhất định"
+" có thể xảy ra, chẳng hạn như nhập gói gốc và cập nhật các bộ đệm khác nhau "
+"(bao gồm :data:`sys.modules`), nhưng chỉ có câu lệnh :keyword:`import` thực "
+"hiện thao tác liên kết tên."
+
+#: ../../reference/import.rst:31
+#, fuzzy
+msgid ""
+"When an :keyword:`import` statement is executed, the standard builtin "
+":func:`__import__` function is called. Other mechanisms for invoking the "
+"import system (such as :func:`importlib.import_module`) may choose to bypass"
+" :func:`__import__` and use their own solutions to implement import "
+"semantics."
+msgstr ""
+"Khi một câu lệnh :keyword:`import` được thực thi, hàm :func:`__import__` "
+"dựng sẵn tiêu chuẩn sẽ được gọi. Các cơ chế khác để gọi hệ thống nhập (chẳng"
+" hạn như :func:`importlib.import_module`) có thể chọn bỏ qua "
+":func:`__import__` và sử dụng các giải pháp của riêng chúng để triển khai "
+"ngữ nghĩa nhập."
+
+#: ../../reference/import.rst:36
+#, fuzzy
+msgid ""
+"When a module is first imported, Python searches for the module and if "
+"found, it creates a module object [#fnmo]_, initializing it.  If the named "
+"module cannot be found, a :exc:`ModuleNotFoundError` is raised.  Python "
+"implements various strategies to search for the named module when the import"
+" machinery is invoked.  These strategies can be modified and extended by "
+"using various hooks described in the sections below."
+msgstr ""
+"Khi một mô-đun được nhập lần đầu tiên, Python sẽ tìm kiếm mô-đun đó và nếu "
+"tìm thấy, nó sẽ tạo một đối tượng mô-đun [#fnmo]_, khởi tạo nó.  Nếu không "
+"tìm thấy mô-đun được đặt tên, :exc:`ModuleNotFoundError` sẽ xuất hiện.  "
+"Python thực hiện nhiều chiến lược khác nhau để tìm kiếm mô-đun được đặt tên "
+"khi máy nhập được gọi.  Những chiến lược này có thể được sửa đổi và mở rộng "
+"bằng cách sử dụng nhiều hook khác nhau được mô tả trong các phần bên dưới."
+
+#: ../../reference/import.rst:43
+#, fuzzy
+msgid ""
+"The import system has been updated to fully implement the second phase of "
+":pep:`302`. There is no longer any implicit import machinery - the full "
+"import system is exposed through :data:`sys.meta_path`. In addition, native "
+"namespace package support has been implemented (see :pep:`420`)."
+msgstr ""
+"Hệ thống nhập đã được cập nhật để triển khai đầy đủ giai đoạn thứ hai của "
+":pep:`302`. Không còn bất kỳ máy móc nhập khẩu ngầm nào nữa - toàn bộ hệ "
+"thống nhập khẩu được hiển thị thông qua :data:`sys.meta_path`. Ngoài ra, hỗ "
+"trợ gói không gian tên gốc đã được triển khai (xem :pep:`420`)."
+
+#: ../../reference/import.rst:51
+#, fuzzy
+msgid ":mod:`importlib`"
+msgstr ":mod:`importlib`"
+
+#: ../../reference/import.rst:53
+#, fuzzy
+msgid ""
+"The :mod:`importlib` module provides a rich API for interacting with the "
+"import system.  For example :func:`importlib.import_module` provides a "
+"recommended, simpler API than built-in :func:`__import__` for invoking the "
+"import machinery.  Refer to the :mod:`importlib` library documentation for "
+"additional detail."
+msgstr ""
+"Mô-đun :mod:`importlib` cung cấp API phong phú để tương tác với hệ thống "
+"nhập.  Ví dụ: :func:`importlib.import_module` cung cấp API được đề xuất, đơn"
+" giản hơn :func:`__import__` tích hợp để gọi máy móc nhập khẩu.  Tham khảo "
+"tài liệu thư viện :mod:`importlib` để biết thêm chi tiết."
+
+#: ../../reference/import.rst:62
+#, fuzzy
+msgid "Packages"
+msgstr "Gói"
+
+#: ../../reference/import.rst:67
+#, fuzzy
+msgid ""
+"Python has only one type of module object, and all modules are of this type,"
+" regardless of whether the module is implemented in Python, C, or something "
+"else.  To help organize modules and provide a naming hierarchy, Python has a"
+" concept of :term:`packages <package>`."
+msgstr ""
+"Python chỉ có một loại đối tượng mô-đun và tất cả các mô-đun đều thuộc loại "
+"này, bất kể mô-đun đó được triển khai bằng Python, C hay thứ gì khác.  Để "
+"giúp tổ chức các mô-đun và cung cấp hệ thống phân cấp đặt tên, Python có "
+"khái niệm :term:`packages <package>`."
+
+#: ../../reference/import.rst:72
+#, fuzzy
+msgid ""
+"You can think of packages as the directories on a file system and modules as"
+" files within directories, but don't take this analogy too literally since "
+"packages and modules need not originate from the file system.  For the "
+"purposes of this documentation, we'll use this convenient analogy of "
+"directories and files.  Like file system directories, packages are organized"
+" hierarchically, and packages may themselves contain subpackages, as well as"
+" regular modules."
+msgstr ""
+"Bạn có thể coi các gói là các thư mục trên một hệ thống tệp và các mô-đun là"
+" các tệp trong các thư mục, nhưng đừng hiểu sự tương tự này theo nghĩa đen "
+"vì các gói và mô-đun không cần phải bắt nguồn từ hệ thống tệp.  Với mục đích"
+" của tài liệu này, chúng tôi sẽ sử dụng sự tương tự thuận tiện này của các "
+"thư mục và tệp.  Giống như các thư mục hệ thống tệp, các gói được sắp xếp "
+"theo thứ bậc và bản thân các gói có thể chứa các gói con cũng như các mô-đun"
+" thông thường."
+
+#: ../../reference/import.rst:80
+#, fuzzy
+msgid ""
+"It's important to keep in mind that all packages are modules, but not all "
+"modules are packages.  Or put another way, packages are just a special kind "
+"of module.  Specifically, any module that contains a ``__path__`` attribute "
+"is considered a package."
+msgstr ""
+"Điều quan trọng cần ghi nhớ là tất cả các gói đều là mô-đun, nhưng không "
+"phải tất cả các mô-đun đều là gói.  Hay nói cách khác, các gói chỉ là một "
+"loại mô-đun đặc biệt.  Cụ thể, bất kỳ mô-đun nào chứa thuộc tính "
+"``__path__`` đều được coi là một gói."
+
+#: ../../reference/import.rst:85
+#, fuzzy
+msgid ""
+"All modules have a name.  Subpackage names are separated from their parent "
+"package name by a dot, akin to Python's standard attribute access syntax.  "
+"Thus you might have a package called :mod:`email`, which in turn has a "
+"subpackage called :mod:`email.mime` and a module within that subpackage "
+"called :mod:`email.mime.text`."
+msgstr ""
+"Tất cả các mô-đun đều có tên.  Tên gói con được phân tách khỏi tên gói mẹ "
+"bằng dấu chấm, gần giống với cú pháp truy cập thuộc tính tiêu chuẩn của "
+"Python.  Vì vậy, bạn có thể có một gói tên là :mod:`email`, gói này lần lượt"
+" có một gói con tên là :mod:`email.mime` và một mô-đun trong gói con đó có "
+"tên là :mod:`email.mime.text`."
+
+#: ../../reference/import.rst:93
+#, fuzzy
+msgid "Regular packages"
+msgstr "Gói thông thường"
+
+#: ../../reference/import.rst:98
+#, fuzzy
+msgid ""
+"Python defines two types of packages, :term:`regular packages <regular "
+"package>` and :term:`namespace packages <namespace package>`.  Regular "
+"packages are traditional packages as they existed in Python 3.2 and earlier."
+" A regular package is typically implemented as a directory containing an "
+"``__init__.py`` file.  When a regular package is imported, this "
+"``__init__.py`` file is implicitly executed, and the objects it defines are "
+"bound to names in the package's namespace.  The ``__init__.py`` file can "
+"contain the same Python code that any other module can contain, and Python "
+"will add some additional attributes to the module when it is imported."
+msgstr ""
+"Python định nghĩa hai loại gói, :term:`regular packages <regular package>` "
+"và :term:`namespace packages <namespace package>`.  Các gói thông thường là "
+"các gói truyền thống vì chúng đã tồn tại trong Python 3.2 trở về trước. Gói "
+"thông thường thường được triển khai dưới dạng thư mục chứa tệp "
+"``__init__.py``.  Khi một gói thông thường được nhập, tệp ``__init__.py`` "
+"này được thực thi ngầm và các đối tượng mà nó xác định được liên kết với các"
+" tên trong không gian tên của gói.  Tệp ``__init__.py`` có thể chứa cùng một"
+" mã Python mà bất kỳ mô-đun nào khác có thể chứa và Python sẽ thêm một số "
+"thuộc tính bổ sung vào mô-đun khi nó được nhập."
+
+#: ../../reference/import.rst:108
+#, fuzzy
+msgid ""
+"For example, the following file system layout defines a top level ``parent``"
+" package with three subpackages::"
+msgstr ""
+"Ví dụ: bố cục hệ thống tệp sau đây xác định gói ``parent`` cấp cao nhất với "
+"ba gói con ::"
+
+#: ../../reference/import.rst:111
+#, fuzzy
+msgid ""
+"parent/\n"
+"    __init__.py\n"
+"    one/\n"
+"        __init__.py\n"
+"    two/\n"
+"        __init__.py\n"
+"    three/\n"
+"        __init__.py"
+msgstr ""
+"cha mẹ/\n"
+"    __init__.py\n"
+"    một/\n"
+"        __init__.py\n"
+"    hai/\n"
+"        __init__.py\n"
+"    ba/\n"
+"        __init__.py"
+
+#: ../../reference/import.rst:120
+#, fuzzy
+msgid ""
+"Importing ``parent.one`` will implicitly execute ``parent/__init__.py`` and "
+"``parent/one/__init__.py``.  Subsequent imports of ``parent.two`` or "
+"``parent.three`` will execute ``parent/two/__init__.py`` and "
+"``parent/three/__init__.py`` respectively."
+msgstr ""
+"Nhập ``parent.one`` sẽ ngầm thực thi ``parent/__init__.py`` và "
+"``parent/one/__init__.py``.  Các lần nhập ``parent.two`` hoặc "
+"``parent.three`` tiếp theo sẽ thực thi ``parent/two/__init__.py`` và "
+"``parent/three/__init__.py`` tương ứng."
+
+#: ../../reference/import.rst:129
+#, fuzzy
+msgid "Namespace packages"
+msgstr "Gói không gian tên"
+
+#: ../../reference/import.rst:135
+#, fuzzy
+msgid ""
+"A namespace package is a composite of various :term:`portions <portion>`, "
+"where each portion contributes a subpackage to the parent package.  Portions"
+" may reside in different locations on the file system.  Portions may also be"
+" found in zip files, on the network, or anywhere else that Python searches "
+"during import.  Namespace packages may or may not correspond directly to "
+"objects on the file system; they may be virtual modules that have no "
+"concrete representation."
+msgstr ""
+"Gói không gian tên là sự kết hợp của nhiều :term:`portions <portion>` khác "
+"nhau, trong đó mỗi phần đóng góp một gói con cho gói chính.  Các phần có thể"
+" nằm ở các vị trí khác nhau trên hệ thống tệp.  Các phần cũng có thể được "
+"tìm thấy trong tệp zip, trên mạng hoặc bất kỳ nơi nào khác mà Python tìm "
+"kiếm trong quá trình nhập.  Các gói không gian tên có thể tương ứng hoặc "
+"không tương ứng trực tiếp với các đối tượng trên hệ thống tệp; chúng có thể "
+"là các mô-đun ảo không có biểu diễn cụ thể."
+
+#: ../../reference/import.rst:143
+#, fuzzy
+msgid ""
+"Namespace packages do not use an ordinary list for their ``__path__`` "
+"attribute. They instead use a custom iterable type which will automatically "
+"perform a new search for package portions on the next import attempt within "
+"that package if the path of their parent package (or :data:`sys.path` for a "
+"top level package) changes."
+msgstr ""
+"Các gói không gian tên không sử dụng danh sách thông thường cho thuộc tính "
+"``__path__`` của chúng. Thay vào đó, họ sử dụng loại có thể lặp tùy chỉnh sẽ"
+" tự động thực hiện tìm kiếm mới cho các phần gói trong lần thử nhập tiếp "
+"theo trong gói đó nếu đường dẫn của gói mẹ (hoặc :data:`sys.path` cho gói "
+"cấp cao nhất) thay đổi."
+
+#: ../../reference/import.rst:149
+#, fuzzy
+msgid ""
+"With namespace packages, there is no ``parent/__init__.py`` file.  In fact, "
+"there may be multiple ``parent`` directories found during import search, "
+"where each one is provided by a different portion.  Thus ``parent/one`` may "
+"not be physically located next to ``parent/two``.  In this case, Python will"
+" create a namespace package for the top-level ``parent`` package whenever it"
+" or one of its subpackages is imported."
+msgstr ""
+"Với các gói không gian tên, không có tệp ``parent/__init__.py``.  Trên thực "
+"tế, có thể có nhiều thư mục ``parent`` được tìm thấy trong quá trình tìm "
+"kiếm nhập, trong đó mỗi thư mục được cung cấp bởi một phần khác nhau.  Do "
+"đó, ``parent/one`` có thể không được đặt bên cạnh ``parent/two``.  Trong "
+"trường hợp này, Python sẽ tạo gói không gian tên cho gói ``parent`` cấp cao "
+"nhất bất cứ khi nào gói đó hoặc một trong các gói con của nó được nhập."
+
+#: ../../reference/import.rst:156
+#, fuzzy
+msgid "See also :pep:`420` for the namespace package specification."
+msgstr "Xem thêm :pep:`420` để biết thông số kỹ thuật của gói không gian tên."
+
+#: ../../reference/import.rst:160
+#, fuzzy
+msgid "Searching"
+msgstr "Tìm kiếm"
+
+#: ../../reference/import.rst:162
+#, fuzzy
+msgid ""
+"To begin the search, Python needs the :term:`fully qualified <qualified "
+"name>` name of the module (or package, but for the purposes of this "
+"discussion, the difference is immaterial) being imported.  This name may "
+"come from various arguments to the :keyword:`import` statement, or from the "
+"parameters to the :func:`importlib.import_module` or :func:`__import__` "
+"functions."
+msgstr ""
+"Để bắt đầu tìm kiếm, Python cần tên :term:`fully qualified <qualified name>`"
+" của mô-đun (hoặc gói, nhưng với mục đích của cuộc thảo luận này, sự khác "
+"biệt là không quan trọng) đang được nhập.  Tên này có thể đến từ nhiều đối "
+"số khác nhau cho câu lệnh :keyword:`import` hoặc từ các tham số cho các hàm "
+":func:`importlib.import_module` hoặc :func:`__import__`."
+
+#: ../../reference/import.rst:168
+#, fuzzy
+msgid ""
+"This name will be used in various phases of the import search, and it may be"
+" the dotted path to a submodule, e.g. ``foo.bar.baz``.  In this case, Python"
+" first tries to import ``foo``, then ``foo.bar``, and finally "
+"``foo.bar.baz``. If any of the intermediate imports fail, a "
+":exc:`ModuleNotFoundError` is raised."
+msgstr ""
+"Tên này sẽ được sử dụng trong các giai đoạn khác nhau của tìm kiếm nhập và "
+"nó có thể là đường dẫn chấm tới mô-đun con, ví dụ: ``foo.bar.baz``.  Trong "
+"trường hợp này, trước tiên Python cố gắng nhập ``foo``, sau đó là "
+"``foo.bar`` và cuối cùng là ``foo.bar.baz``. Nếu bất kỳ quá trình nhập trung"
+" gian nào không thành công, :exc:`ModuleNotFoundError` sẽ được nâng lên."
+
+#: ../../reference/import.rst:175
+#, fuzzy
+msgid "The module cache"
+msgstr "Bộ đệm mô-đun"
+
+#: ../../reference/import.rst:180
+#, fuzzy
+msgid ""
+"The first place checked during import search is :data:`sys.modules`.  This "
+"mapping serves as a cache of all modules that have been previously imported,"
+" including the intermediate paths.  So if ``foo.bar.baz`` was previously "
+"imported, :data:`sys.modules` will contain entries for ``foo``, ``foo.bar``,"
+" and ``foo.bar.baz``.  Each key will have as its value the corresponding "
+"module object."
+msgstr ""
+"Vị trí đầu tiên được kiểm tra trong quá trình tìm kiếm nhập là "
+":data:`sys.modules`.  Ánh xạ này đóng vai trò là bộ nhớ đệm của tất cả các "
+"mô-đun đã được nhập trước đó, bao gồm cả các đường dẫn trung gian.  Vì vậy, "
+"nếu ``foo.bar.baz`` đã được nhập trước đó, :data:`sys.modules` sẽ chứa các "
+"mục nhập cho ``foo``, ``foo.bar`` và ``foo.bar.baz``.  Mỗi khóa sẽ có giá "
+"trị của đối tượng mô-đun tương ứng."
+
+#: ../../reference/import.rst:187
+#, fuzzy
+msgid ""
+"During import, the module name is looked up in :data:`sys.modules` and if "
+"present, the associated value is the module satisfying the import, and the "
+"process completes.  However, if the value is ``None``, then a "
+":exc:`ModuleNotFoundError` is raised.  If the module name is missing, Python"
+" will continue searching for the module."
+msgstr ""
+"Trong quá trình nhập, tên mô-đun được tra cứu trong :data:`sys.modules` và "
+"nếu có, giá trị liên quan là mô-đun đáp ứng quá trình nhập và quá trình hoàn"
+" tất.  Tuy nhiên, nếu giá trị là ``None`` thì :exc:`ModuleNotFoundError` sẽ "
+"được nâng lên.  Nếu tên mô-đun bị thiếu, Python sẽ tiếp tục tìm kiếm mô-đun."
+
+#: ../../reference/import.rst:193
+#, fuzzy
+msgid ""
+":data:`sys.modules` is writable.  Deleting a key may not destroy the "
+"associated module (as other modules may hold references to it), but it will "
+"invalidate the cache entry for the named module, causing Python to search "
+"anew for the named module upon its next import. The key can also be assigned"
+" to ``None``, forcing the next import of the module to result in a "
+":exc:`ModuleNotFoundError`."
+msgstr ""
+":data:`sys.modules` có thể ghi được.  Việc xóa khóa có thể không hủy mô-đun "
+"được liên kết (vì các mô-đun khác có thể chứa các tham chiếu đến nó), nhưng "
+"nó sẽ làm mất hiệu lực mục nhập bộ đệm cho mô-đun được đặt tên, khiến Python"
+" phải tìm kiếm lại mô-đun được đặt tên trong lần nhập tiếp theo. Khóa cũng "
+"có thể được gán cho ``None``, buộc lần nhập mô-đun tiếp theo sẽ tạo ra "
+":exc:`ModuleNotFoundError`."
+
+#: ../../reference/import.rst:200
+#, fuzzy
+msgid ""
+"Beware though, as if you keep a reference to the module object, invalidate "
+"its cache entry in :data:`sys.modules`, and then re-import the named module,"
+" the two module objects will *not* be the same. By contrast, "
+":func:`importlib.reload` will reuse the *same* module object, and simply "
+"reinitialise the module contents by rerunning the module's code."
+msgstr ""
+"Tuy nhiên, hãy cẩn thận, vì nếu bạn giữ một tham chiếu đến đối tượng mô-đun,"
+" vô hiệu hóa mục nhập bộ đệm của nó trong :data:`sys.modules`, sau đó nhập "
+"lại mô-đun đã đặt tên thì hai đối tượng mô-đun sẽ *not* giống nhau. Ngược "
+"lại, :func:`importlib.reload` sẽ sử dụng lại đối tượng mô-đun *same* và chỉ "
+"cần khởi tạo lại nội dung mô-đun bằng cách chạy lại mã của mô-đun."
+
+#: ../../reference/import.rst:210
+#, fuzzy
+msgid "Finders and loaders"
+msgstr "Trình tìm kiếm và tải"
+
+#: ../../reference/import.rst:217
+#, fuzzy
+msgid ""
+"If the named module is not found in :data:`sys.modules`, then Python's "
+"import protocol is invoked to find and load the module.  This protocol "
+"consists of two conceptual objects, :term:`finders <finder>` and "
+":term:`loaders <loader>`. A finder's job is to determine whether it can find"
+" the named module using whatever strategy it knows about. Objects that "
+"implement both of these interfaces are referred to as :term:`importers "
+"<importer>` - they return themselves when they find that they can load the "
+"requested module."
+msgstr ""
+"Nếu không tìm thấy mô-đun được đặt tên trong :data:`sys.modules` thì giao "
+"thức nhập của Python sẽ được gọi để tìm và tải mô-đun.  Giao thức này bao "
+"gồm hai đối tượng khái niệm, :term:`finders <finder>` và :term:`loaders "
+"<loader>`. Công việc của người tìm kiếm là xác định xem liệu nó có thể tìm "
+"thấy mô-đun được đặt tên bằng cách sử dụng bất kỳ chiến lược nào mà nó biết "
+"hay không. Các đối tượng triển khai cả hai giao diện này được gọi là "
+":term:`importers <importer>` - chúng tự trả về khi nhận thấy rằng chúng có "
+"thể tải mô-đun được yêu cầu."
+
+#: ../../reference/import.rst:225
+#, fuzzy
+msgid ""
+"Python includes a number of default finders and importers.  The first one "
+"knows how to locate built-in modules, and the second knows how to locate "
+"frozen modules.  A third default finder searches an :term:`import path` for "
+"modules.  The :term:`import path` is a list of locations that may name file "
+"system paths or zip files.  It can also be extended to search for any "
+"locatable resource, such as those identified by URLs."
+msgstr ""
+"Python bao gồm một số công cụ tìm kiếm và nhập khẩu mặc định.  Cái đầu tiên "
+"biết cách xác định vị trí các mô-đun tích hợp và cái thứ hai biết cách xác "
+"định vị trí các mô-đun bị đóng băng.  Công cụ tìm kiếm mặc định thứ ba tìm "
+"kiếm mô-đun trong :term:`import path`.  Zz001zz là danh sách các vị trí có "
+"thể đặt tên cho đường dẫn hệ thống tệp hoặc tệp zip.  Nó cũng có thể được mở"
+" rộng để tìm kiếm bất kỳ tài nguyên nào có thể định vị được, chẳng hạn như "
+"những tài nguyên được xác định bằng URL."
+
+#: ../../reference/import.rst:232
+#, fuzzy
+msgid ""
+"The import machinery is extensible, so new finders can be added to extend "
+"the range and scope of module searching."
+msgstr ""
+"Bộ máy nhập khẩu có thể mở rộng nên có thể thêm các công cụ tìm kiếm mới để "
+"mở rộng phạm vi và phạm vi tìm kiếm mô-đun."
+
+#: ../../reference/import.rst:235
+#, fuzzy
+msgid ""
+"Finders do not actually load modules.  If they can find the named module, "
+"they return a :dfn:`module spec`, an encapsulation of the module's import-"
+"related information, which the import machinery then uses when loading the "
+"module."
+msgstr ""
+"Trình tìm kiếm không thực sự tải các mô-đun.  Nếu họ có thể tìm thấy mô-đun "
+"được đặt tên, họ sẽ trả về :dfn:`module spec`, một gói thông tin liên quan "
+"đến nhập của mô-đun mà sau đó máy nhập sẽ sử dụng khi tải mô-đun."
+
+#: ../../reference/import.rst:239
+#, fuzzy
+msgid ""
+"The following sections describe the protocol for finders and loaders in more"
+" detail, including how you can create and register new ones to extend the "
+"import machinery."
+msgstr ""
+"Các phần sau đây mô tả chi tiết hơn về giao thức dành cho trình tìm kiếm và "
+"trình tải, bao gồm cách bạn có thể tạo và đăng ký các giao thức mới để mở "
+"rộng cơ chế nhập."
+
+#: ../../reference/import.rst:243
+#, fuzzy
+msgid ""
+"In previous versions of Python, finders returned :term:`loaders <loader>` "
+"directly, whereas now they return module specs which *contain* loaders. "
+"Loaders are still used during import but have fewer responsibilities."
+msgstr ""
+"Trong các phiên bản trước của Python, trình tìm kiếm trả về trực tiếp "
+":term:`loaders <loader>`, trong khi bây giờ chúng trả về thông số mô-đun mà "
+"trình tải *contain*. Trình tải vẫn được sử dụng trong quá trình nhập nhưng "
+"có ít trách nhiệm hơn."
+
+#: ../../reference/import.rst:249
+#, fuzzy
+msgid "Import hooks"
+msgstr "Nhập móc"
+
+#: ../../reference/import.rst:259
+#, fuzzy
+msgid ""
+"The import machinery is designed to be extensible; the primary mechanism for"
+" this are the *import hooks*.  There are two types of import hooks: *meta "
+"hooks* and *import path hooks*."
+msgstr ""
+"Máy móc nhập khẩu được thiết kế để có thể mở rộng; cơ chế chính cho việc này"
+" là *import hooks*.  Có hai loại móc nhập: *meta hooks* và *import path "
+"hooks*."
+
+#: ../../reference/import.rst:263
+#, fuzzy
+msgid ""
+"Meta hooks are called at the start of import processing, before any other "
+"import processing has occurred, other than :data:`sys.modules` cache look "
+"up. This allows meta hooks to override :data:`sys.path` processing, frozen "
+"modules, or even built-in modules.  Meta hooks are registered by adding new "
+"finder objects to :data:`sys.meta_path`, as described below."
+msgstr ""
+"Móc meta được gọi khi bắt đầu quá trình nhập, trước khi bất kỳ quá trình "
+"nhập nào khác xảy ra, ngoại trừ việc tra cứu bộ nhớ đệm :data:`sys.modules`."
+" Điều này cho phép các móc meta ghi đè quá trình xử lý :data:`sys.path`, các"
+" mô-đun bị đóng băng hoặc thậm chí các mô-đun tích hợp.  Các móc meta được "
+"đăng ký bằng cách thêm các đối tượng tìm kiếm mới vào :data:`sys.meta_path`,"
+" như được mô tả bên dưới."
+
+#: ../../reference/import.rst:269
+#, fuzzy
+msgid ""
+"Import path hooks are called as part of :data:`sys.path` (or "
+"``package.__path__``) processing, at the point where their associated path "
+"item is encountered.  Import path hooks are registered by adding new "
+"callables to :data:`sys.path_hooks` as described below."
+msgstr ""
+"Các móc đường dẫn nhập được gọi là một phần của quá trình xử lý "
+":data:`sys.path` (hoặc ``package.__path__``), tại thời điểm gặp mục đường "
+"dẫn liên quan của chúng.  Các móc đường dẫn nhập được đăng ký bằng cách thêm"
+" các lệnh gọi mới vào :data:`sys.path_hooks` như được mô tả bên dưới."
+
+#: ../../reference/import.rst:276
+#, fuzzy
+msgid "The meta path"
+msgstr "Đường dẫn meta"
+
+#: ../../reference/import.rst:282
+#, fuzzy
+msgid ""
+"When the named module is not found in :data:`sys.modules`, Python next "
+"searches :data:`sys.meta_path`, which contains a list of meta path finder "
+"objects.  These finders are queried in order to see if they know how to "
+"handle the named module.  Meta path finders must implement a method called "
+":meth:`~importlib.abc.MetaPathFinder.find_spec` which takes three arguments:"
+" a name, an import path, and (optionally) a target module.  The meta path "
+"finder can use any strategy it wants to determine whether it can handle the "
+"named module or not."
+msgstr ""
+"Khi không tìm thấy mô-đun được đặt tên trong :data:`sys.modules`, Python sẽ "
+"tìm kiếm tiếp theo :data:`sys.meta_path`, nơi chứa danh sách các đối tượng "
+"tìm đường dẫn meta.  Những công cụ tìm kiếm này được truy vấn để xem liệu họ"
+" có biết cách xử lý mô-đun được đặt tên hay không.  Công cụ tìm đường dẫn "
+"meta phải triển khai một phương thức có tên "
+":meth:`~importlib.abc.MetaPathFinder.find_spec`, phương thức này nhận ba đối"
+" số: tên, đường dẫn nhập và (tùy chọn) mô-đun đích.  Công cụ tìm đường dẫn "
+"meta có thể sử dụng bất kỳ chiến lược nào mà nó muốn để xác định xem liệu nó"
+" có thể xử lý được mô-đun được đặt tên hay không."
+
+#: ../../reference/import.rst:291
+#, fuzzy
+msgid ""
+"If the meta path finder knows how to handle the named module, it returns a "
+"spec object.  If it cannot handle the named module, it returns ``None``.  If"
+" :data:`sys.meta_path` processing reaches the end of its list without "
+"returning a spec, then a :exc:`ModuleNotFoundError` is raised.  Any other "
+"exceptions raised are simply propagated up, aborting the import process."
+msgstr ""
+"Nếu trình tìm đường dẫn meta biết cách xử lý mô-đun được đặt tên, nó sẽ trả "
+"về một đối tượng đặc tả.  Nếu nó không thể xử lý mô-đun được đặt tên, nó sẽ "
+"trả về ``None``.  Nếu quá trình xử lý :data:`sys.meta_path` đến cuối danh "
+"sách mà không trả về thông số kỹ thuật thì :exc:`ModuleNotFoundError` sẽ "
+"được nâng lên.  Bất kỳ trường hợp ngoại lệ nào khác được nêu ra đều được phổ"
+" biến đơn giản, hủy bỏ quá trình nhập."
+
+#: ../../reference/import.rst:297
+#, fuzzy
+msgid ""
+"The :meth:`~importlib.abc.MetaPathFinder.find_spec` method of meta path "
+"finders is called with two or three arguments.  The first is the fully "
+"qualified name of the module being imported, for example ``foo.bar.baz``. "
+"The second argument is the path entries to use for the module search.  For "
+"top-level modules, the second argument is ``None``, but for submodules or "
+"subpackages, the second argument is the value of the parent package's "
+"``__path__`` attribute. If the appropriate ``__path__`` attribute cannot be "
+"accessed, a :exc:`ModuleNotFoundError` is raised.  The third argument is an "
+"existing module object that will be the target of loading later. The import "
+"system passes in a target module only during reload."
+msgstr ""
+"Phương thức :meth:`~importlib.abc.MetaPathFinder.find_spec` của trình tìm "
+"đường dẫn meta được gọi với hai hoặc ba đối số.  Đầu tiên là tên đầy đủ của "
+"mô-đun đang được nhập, ví dụ ``foo.bar.baz``. Đối số thứ hai là các mục "
+"đường dẫn được sử dụng cho tìm kiếm mô-đun.  Đối với các mô-đun cấp cao "
+"nhất, đối số thứ hai là ``None``, nhưng đối với các mô-đun con hoặc gói con,"
+" đối số thứ hai là giá trị của thuộc tính ``__path__`` của gói cha. Nếu "
+"không thể truy cập thuộc tính ``__path__`` thích hợp, "
+":exc:`ModuleNotFoundError` sẽ được nâng lên.  Đối số thứ ba là một đối tượng"
+" mô-đun hiện có sẽ là mục tiêu tải sau này. Hệ thống nhập chỉ chuyển mô-đun "
+"đích trong quá trình tải lại."
+
+#: ../../reference/import.rst:308
+#, fuzzy
+msgid ""
+"The meta path may be traversed multiple times for a single import request. "
+"For example, assuming none of the modules involved has already been cached, "
+"importing ``foo.bar.baz`` will first perform a top level import, calling "
+"``mpf.find_spec(\"foo\", None, None)`` on each meta path finder (``mpf``). "
+"After ``foo`` has been imported, ``foo.bar`` will be imported by traversing "
+"the meta path a second time, calling ``mpf.find_spec(\"foo.bar\", "
+"foo.__path__, None)``. Once ``foo.bar`` has been imported, the final "
+"traversal will call ``mpf.find_spec(\"foo.bar.baz\", foo.bar.__path__, "
+"None)``."
+msgstr ""
+"Đường dẫn meta có thể được duyệt nhiều lần cho một yêu cầu nhập. Ví dụ: giả "
+"sử không có mô-đun nào liên quan đã được lưu vào bộ nhớ đệm, việc nhập "
+"``foo.bar.baz`` trước tiên sẽ thực hiện nhập cấp cao nhất, gọi "
+"``mpf.find_spec(\"foo\", None, None)`` trên mỗi công cụ tìm đường dẫn meta "
+"(``mpf``). Sau khi ``foo`` được nhập, ``foo.bar`` sẽ được nhập bằng cách "
+"duyệt qua đường dẫn meta lần thứ hai, gọi ``mpf.find_spec(\"foo.bar\", "
+"foo.__path__, None)``. Khi ``foo.bar`` đã được nhập, quá trình truyền tải "
+"cuối cùng sẽ gọi ``mpf.find_spec(\"foo.bar.baz\", foo.bar.__path__, None)``."
+
+#: ../../reference/import.rst:318
+#, fuzzy
+msgid ""
+"Some meta path finders only support top level imports. These importers will "
+"always return ``None`` when anything other than ``None`` is passed as the "
+"second argument."
+msgstr ""
+"Một số công cụ tìm đường dẫn meta chỉ hỗ trợ nhập cấp cao nhất. Những nhà "
+"nhập khẩu này sẽ luôn trả về ``None`` khi bất kỳ thứ gì khác ngoài ``None`` "
+"được chuyển làm đối số thứ hai."
+
+#: ../../reference/import.rst:322
+#, fuzzy
+msgid ""
+"Python's default :data:`sys.meta_path` has three meta path finders, one that"
+" knows how to import built-in modules, one that knows how to import frozen "
+"modules, and one that knows how to import modules from an :term:`import "
+"path` (i.e. the :term:`path based finder`)."
+msgstr ""
+"Zz000zz mặc định của Python có ba công cụ tìm đường dẫn meta, một công cụ "
+"biết cách nhập mô-đun tích hợp, một công cụ biết cách nhập mô-đun cố định và"
+" một công cụ biết cách nhập mô-đun từ :term:`import path` (tức là "
+":term:`path based finder`)."
+
+#: ../../reference/import.rst:327
+#, fuzzy
+msgid ""
+"The :meth:`~importlib.abc.MetaPathFinder.find_spec` method of meta path "
+"finders replaced :meth:`!find_module`, which is now deprecated.  While it "
+"will continue to work without change, the import machinery will try it only "
+"if the finder does not implement "
+":meth:`~importlib.abc.MetaPathFinder.find_spec`."
+msgstr ""
+"Phương pháp :meth:`~importlib.abc.MetaPathFinder.find_spec` của công cụ tìm "
+"đường dẫn meta đã thay thế :meth:`!find_module`, hiện không được dùng nữa.  "
+"Mặc dù nó sẽ tiếp tục hoạt động mà không có thay đổi, nhưng máy nhập sẽ chỉ "
+"thử nếu công cụ tìm không triển khai "
+":meth:`~importlib.abc.MetaPathFinder.find_spec`."
+
+#: ../../reference/import.rst:334
+#, fuzzy
+msgid ""
+"Use of :meth:`!find_module` by the import system now raises "
+":exc:`ImportWarning`."
+msgstr ""
+"Việc sử dụng :meth:`!find_module` bởi hệ thống nhập hiện làm tăng "
+":exc:`ImportWarning`."
+
+#: ../../reference/import.rst:338
+#, fuzzy
+msgid ""
+":meth:`!find_module` has been removed. Use "
+":meth:`~importlib.abc.MetaPathFinder.find_spec` instead."
+msgstr ""
+":meth:`!find_module` đã bị xóa. Thay vào đó hãy sử dụng "
+":meth:`~importlib.abc.MetaPathFinder.find_spec`."
+
+#: ../../reference/import.rst:344
+#, fuzzy
+msgid "Loading"
+msgstr "Đang tải"
+
+#: ../../reference/import.rst:346
+#, fuzzy
+msgid ""
+"If and when a module spec is found, the import machinery will use it (and "
+"the loader it contains) when loading the module.  Here is an approximation "
+"of what happens during the loading portion of import::"
+msgstr ""
+"Nếu và khi tìm thấy thông số mô-đun, máy nhập sẽ sử dụng thông số đó (và bộ "
+"tải chứa trong đó) khi tải mô-đun.  Đây là kết quả gần đúng về những gì xảy "
+"ra trong phần tải của quá trình nhập::"
+
+#: ../../reference/import.rst:350
+#, fuzzy
+msgid ""
+"module = None\n"
+"if spec.loader is not None and hasattr(spec.loader, 'create_module'):\n"
+"    # It is assumed 'exec_module' will also be defined on the loader.\n"
+"    module = spec.loader.create_module(spec)\n"
+"if module is None:\n"
+"    module = ModuleType(spec.name)\n"
+"# The import-related module attributes get set here:\n"
+"_init_module_attrs(spec, module)\n"
+"\n"
+"if spec.loader is None:\n"
+"    # unsupported\n"
+"    raise ImportError\n"
+"if spec.origin is None and spec.submodule_search_locations is not None:\n"
+"    # namespace package\n"
+"    sys.modules[spec.name] = module\n"
+"elif not hasattr(spec.loader, 'exec_module'):\n"
+"    module = spec.loader.load_module(spec.name)\n"
+"else:\n"
+"    sys.modules[spec.name] = module\n"
+"    try:\n"
+"        spec.loader.exec_module(module)\n"
+"    except BaseException:\n"
+"        try:\n"
+"            del sys.modules[spec.name]\n"
+"        except KeyError:\n"
+"            pass\n"
+"        raise\n"
+"return sys.modules[spec.name]"
+msgstr ""
+"mô-đun = Không có\n"
+"nếu spec.loader không phải là None và hasattr(spec.loader, 'create_module'):\n"
+"    # It được giả định 'exec_module' cũng sẽ được xác định trên trình tải.\n"
+"    module = spec.loader.create_module(spec)\n"
+"nếu mô-đun là Không có:\n"
+"    mô-đun = Loại mô-đun (spec.name)\n"
+"Các thuộc tính mô-đun liên quan đến nhập khẩu # The được đặt ở đây:\n"
+"_init_module_attrs(thông số kỹ thuật, mô-đun)\n"
+"\n"
+"nếu spec.loader là Không có:\n"
+"    # unsupported\n"
+"    tăng lỗi nhập khẩu\n"
+"nếu spec.origin là Không và spec.submodule_search_locations không phải là Không:\n"
+"    gói # namespace\n"
+"    sys.modules[spec.name] = mô-đun\n"
+"Elif không phải hasattr(spec.loader, 'exec_module'):\n"
+"    module = spec.loader.load_module(spec.name)\n"
+"khác:\n"
+"    sys.modules[spec.name] = mô-đun\n"
+"    thử:\n"
+"        spec.loader.exec_module(mô-đun)\n"
+"    ngoại trừ BaseException:\n"
+"        thử:\n"
+"            del sys.modules[spec.name]\n"
+"        ngoại trừ KeyError:\n"
+"            vượt qua\n"
+"        nâng cao\n"
+"trả về sys.modules[spec.name]"
+
+#: ../../reference/import.rst:379
+#, fuzzy
+msgid "Note the following details:"
+msgstr "Lưu ý các chi tiết sau:"
+
+#: ../../reference/import.rst:381
+#, fuzzy
+msgid ""
+"If there is an existing module object with the given name in "
+":data:`sys.modules`, import will have already returned it."
+msgstr ""
+"Nếu có một đối tượng mô-đun hiện có có tên đã cho trong :data:`sys.modules`,"
+" quá trình nhập sẽ trả về nó."
+
+#: ../../reference/import.rst:384
+#, fuzzy
+msgid ""
+"The module will exist in :data:`sys.modules` before the loader executes the "
+"module code.  This is crucial because the module code may (directly or "
+"indirectly) import itself; adding it to :data:`sys.modules` beforehand "
+"prevents unbounded recursion in the worst case and multiple loading in the "
+"best."
+msgstr ""
+"Mô-đun sẽ tồn tại trong :data:`sys.modules` trước khi trình tải thực thi mã "
+"mô-đun.  Điều này rất quan trọng vì mã mô-đun có thể tự nhập (trực tiếp hoặc"
+" gián tiếp); việc thêm nó vào :data:`sys.modules` trước sẽ ngăn chặn đệ quy "
+"không giới hạn trong trường hợp xấu nhất và tải nhiều lần trong trường hợp "
+"tốt nhất."
+
+#: ../../reference/import.rst:390
+#, fuzzy
+msgid ""
+"If loading fails, the failing module -- and only the failing module -- gets "
+"removed from :data:`sys.modules`.  Any module already in the "
+":data:`sys.modules` cache, and any module that was successfully loaded as a "
+"side-effect, must remain in the cache.  This contrasts with reloading where "
+"even the failing module is left in :data:`sys.modules`."
+msgstr ""
+"Nếu tải không thành công, mô-đun bị lỗi -- và chỉ mô-đun bị lỗi -- sẽ bị xóa"
+" khỏi :data:`sys.modules`.  Bất kỳ mô-đun nào đã có trong bộ đệm "
+":data:`sys.modules` và bất kỳ mô-đun nào được tải thành công dưới dạng tác "
+"dụng phụ đều phải nằm trong bộ đệm.  Điều này trái ngược với việc tải lại "
+"trong đó ngay cả mô-đun bị lỗi vẫn còn trong :data:`sys.modules`."
+
+#: ../../reference/import.rst:396
+#, fuzzy
+msgid ""
+"After the module is created but before execution, the import machinery sets "
+"the import-related module attributes (\"_init_module_attrs\" in the pseudo-"
+"code example above), as summarized in a :ref:`later section <import-mod-"
+"attrs>`."
+msgstr ""
+"Sau khi mô-đun được tạo nhưng trước khi thực thi, máy nhập sẽ đặt các thuộc "
+"tính mô-đun liên quan đến nhập (\"_init_module_attrs\" trong ví dụ mã giả ở "
+"trên), như được tóm tắt trong :ref:`later section <import-mod-attrs>`."
+
+#: ../../reference/import.rst:401
+#, fuzzy
+msgid ""
+"Module execution is the key moment of loading in which the module's "
+"namespace gets populated.  Execution is entirely delegated to the loader, "
+"which gets to decide what gets populated and how."
+msgstr ""
+"Việc thực thi mô-đun là thời điểm tải quan trọng trong đó không gian tên của"
+" mô-đun được điền vào.  Việc thực thi được ủy quyền hoàn toàn cho trình tải,"
+" trình tải này sẽ quyết định nội dung nào được điền và cách thực hiện."
+
+#: ../../reference/import.rst:405
+#, fuzzy
+msgid ""
+"The module created during loading and passed to exec_module() may not be the"
+" one returned at the end of import [#fnlo]_."
+msgstr ""
+"Mô-đun được tạo trong khi tải và chuyển tới exec_module() có thể không phải "
+"là mô-đun được trả về khi kết thúc quá trình nhập [#fnlo]_."
+
+#: ../../reference/import.rst:408
+#, fuzzy
+msgid ""
+"The import system has taken over the boilerplate responsibilities of "
+"loaders.  These were previously performed by the "
+":meth:`importlib.abc.Loader.load_module` method."
+msgstr ""
+"Hệ thống nhập khẩu đã đảm nhận trách nhiệm soạn sẵn của người tải.  Những "
+"điều này trước đây được thực hiện bằng phương pháp "
+":meth:`importlib.abc.Loader.load_module`."
+
+#: ../../reference/import.rst:414
+#, fuzzy
+msgid "Loaders"
+msgstr "Máy xúc"
+
+#: ../../reference/import.rst:416
+#, fuzzy
+msgid ""
+"Module loaders provide the critical function of loading: module execution. "
+"The import machinery calls the :meth:`importlib.abc.Loader.exec_module` "
+"method with a single argument, the module object to execute.  Any value "
+"returned from :meth:`~importlib.abc.Loader.exec_module` is ignored."
+msgstr ""
+"Trình tải mô-đun cung cấp chức năng quan trọng của việc tải: thực thi mô-"
+"đun. Bộ máy nhập gọi phương thức :meth:`importlib.abc.Loader.exec_module` "
+"với một đối số duy nhất, đối tượng mô-đun để thực thi.  Mọi giá trị được trả"
+" về từ :meth:`~importlib.abc.Loader.exec_module` đều bị bỏ qua."
+
+#: ../../reference/import.rst:421
+#, fuzzy
+msgid "Loaders must satisfy the following requirements:"
+msgstr "Máy xúc phải đáp ứng các yêu cầu sau:"
+
+#: ../../reference/import.rst:423
+#, fuzzy
+msgid ""
+"If the module is a Python module (as opposed to a built-in module or a "
+"dynamically loaded extension), the loader should execute the module's code "
+"in the module's global name space (``module.__dict__``)."
+msgstr ""
+"Nếu mô-đun là mô-đun Python (trái ngược với mô-đun tích hợp hoặc tiện ích mở"
+" rộng được tải động), thì trình tải sẽ thực thi mã của mô-đun trong không "
+"gian tên chung của mô-đun (``module.__dict__``)."
+
+#: ../../reference/import.rst:427
+#, fuzzy
+msgid ""
+"If the loader cannot execute the module, it should raise an "
+":exc:`ImportError`, although any other exception raised during "
+":meth:`~importlib.abc.Loader.exec_module` will be propagated."
+msgstr ""
+"Nếu trình tải không thể thực thi mô-đun, nó sẽ đưa ra một "
+":exc:`ImportError`, mặc dù bất kỳ ngoại lệ nào khác được đưa ra trong "
+":meth:`~importlib.abc.Loader.exec_module` sẽ được truyền bá."
+
+#: ../../reference/import.rst:431
+#, fuzzy
+msgid ""
+"In many cases, the finder and loader can be the same object; in such cases "
+"the :meth:`~importlib.abc.MetaPathFinder.find_spec` method would just return"
+" a spec with the loader set to ``self``."
+msgstr ""
+"Trong nhiều trường hợp, Finder và Loader có thể là cùng một đối tượng; trong"
+" những trường hợp như vậy, phương thức "
+":meth:`~importlib.abc.MetaPathFinder.find_spec` sẽ chỉ trả về một thông số "
+"kỹ thuật với bộ tải được đặt thành ``self``."
+
+#: ../../reference/import.rst:435
+#, fuzzy
+msgid ""
+"Module loaders may opt in to creating the module object during loading by "
+"implementing a :meth:`~importlib.abc.Loader.create_module` method. It takes "
+"one argument, the module spec, and returns the new module object to use "
+"during loading.  ``create_module()`` does not need to set any attributes on "
+"the module object.  If the method returns ``None``, the import machinery "
+"will create the new module itself."
+msgstr ""
+"Trình tải mô-đun có thể chọn tham gia tạo đối tượng mô-đun trong khi tải "
+"bằng cách triển khai phương thức "
+":meth:`~importlib.abc.Loader.create_module`. Nó nhận một đối số, thông số "
+"mô-đun và trả về đối tượng mô-đun mới để sử dụng trong quá trình tải.  "
+"``create_module()`` không cần đặt bất kỳ thuộc tính nào trên đối tượng mô-"
+"đun.  Nếu phương thức trả về ``None``, máy nhập sẽ tự tạo mô-đun mới."
+
+#: ../../reference/import.rst:442
+#, fuzzy
+msgid "The :meth:`~importlib.abc.Loader.create_module` method of loaders."
+msgstr "Phương pháp :meth:`~importlib.abc.Loader.create_module` của bộ tải."
+
+#: ../../reference/import.rst:445
+#, fuzzy
+msgid ""
+"The :meth:`~importlib.abc.Loader.load_module` method was replaced by "
+":meth:`~importlib.abc.Loader.exec_module` and the import machinery assumed "
+"all the boilerplate responsibilities of loading."
+msgstr ""
+"Phương pháp :meth:`~importlib.abc.Loader.load_module` đã được thay thế bằng "
+":meth:`~importlib.abc.Loader.exec_module` và máy móc nhập khẩu đảm nhận tất "
+"cả trách nhiệm tải mẫu."
+
+#: ../../reference/import.rst:450
+#, fuzzy
+msgid ""
+"For compatibility with existing loaders, the import machinery will use the "
+"``load_module()`` method of loaders if it exists and the loader does not "
+"also implement ``exec_module()``.  However, ``load_module()`` has been "
+"deprecated and loaders should implement ``exec_module()`` instead."
+msgstr ""
+"Để tương thích với các trình tải hiện có, máy nhập sẽ sử dụng phương thức "
+"``load_module()`` của các trình tải nếu nó tồn tại và trình tải cũng không "
+"triển khai ``exec_module()``.  Tuy nhiên, ``load_module()`` không được dùng "
+"nữa và thay vào đó, trình tải nên triển khai ``exec_module()``."
+
+#: ../../reference/import.rst:455
+#, fuzzy
+msgid ""
+"The ``load_module()`` method must implement all the boilerplate loading "
+"functionality described above in addition to executing the module.  All the "
+"same constraints apply, with some additional clarification:"
+msgstr ""
+"Phương thức ``load_module()`` phải triển khai tất cả chức năng tải bản soạn "
+"sẵn được mô tả ở trên ngoài việc thực thi mô-đun.  Tất cả các ràng buộc "
+"tương tự đều được áp dụng, với một số giải thích rõ ràng hơn:"
+
+#: ../../reference/import.rst:459
+#, fuzzy
+msgid ""
+"If there is an existing module object with the given name in "
+":data:`sys.modules`, the loader must use that existing module. (Otherwise, "
+":func:`importlib.reload` will not work correctly.)  If the named module does"
+" not exist in :data:`sys.modules`, the loader must create a new module "
+"object and add it to :data:`sys.modules`."
+msgstr ""
+"Nếu có một đối tượng mô-đun hiện có với tên đã cho trong :data:`sys.modules`"
+" thì trình tải phải sử dụng mô-đun hiện có đó. (Nếu không, "
+":func:`importlib.reload` sẽ không hoạt động chính xác.) Nếu mô-đun được đặt "
+"tên không tồn tại trong :data:`sys.modules`, trình tải phải tạo một đối "
+"tượng mô-đun mới và thêm nó vào :data:`sys.modules`."
+
+#: ../../reference/import.rst:465
+#, fuzzy
+msgid ""
+"The module *must* exist in :data:`sys.modules` before the loader executes "
+"the module code, to prevent unbounded recursion or multiple loading."
+msgstr ""
+"Mô-đun *must* tồn tại trong :data:`sys.modules` trước khi trình tải thực thi"
+" mã mô-đun, để ngăn chặn đệ quy không giới hạn hoặc tải nhiều lần."
+
+#: ../../reference/import.rst:469
+#, fuzzy
+msgid ""
+"If loading fails, the loader must remove any modules it has inserted into "
+":data:`sys.modules`, but it must remove **only** the failing module(s), and "
+"only if the loader itself has loaded the module(s) explicitly."
+msgstr ""
+"Nếu tải không thành công, trình tải phải xóa mọi mô-đun mà nó đã chèn vào "
+":data:`sys.modules`, nhưng nó phải xóa **only** (các) mô-đun bị lỗi và chỉ "
+"khi chính trình tải đã tải (các) mô-đun đó một cách rõ ràng."
+
+#: ../../reference/import.rst:474
+#, fuzzy
+msgid ""
+"A :exc:`DeprecationWarning` is raised when ``exec_module()`` is defined but "
+"``create_module()`` is not."
+msgstr ""
+"Một :exc:`DeprecationWarning` được nâng lên khi ``exec_module()`` được xác "
+"định nhưng ``create_module()`` thì không."
+
+#: ../../reference/import.rst:478
+#, fuzzy
+msgid ""
+"An :exc:`ImportError` is raised when ``exec_module()`` is defined but "
+"``create_module()`` is not."
+msgstr ""
+"Một :exc:`ImportError` được nâng lên khi ``exec_module()`` được xác định "
+"nhưng ``create_module()`` thì không."
+
+#: ../../reference/import.rst:482
+#, fuzzy
+msgid "Use of ``load_module()`` will raise :exc:`ImportWarning`."
+msgstr "Sử dụng ``load_module()`` sẽ tăng :exc:`ImportWarning`."
+
+#: ../../reference/import.rst:486
+#, fuzzy
+msgid "Submodules"
+msgstr "mô-đun con"
+
+#: ../../reference/import.rst:488
+#, fuzzy
+msgid ""
+"When a submodule is loaded using any mechanism (e.g. ``importlib`` APIs, the"
+" ``import`` or ``import-from`` statements, or built-in ``__import__()``) a "
+"binding is placed in the parent module's namespace to the submodule object. "
+"For example, if package ``spam`` has a submodule ``foo``, after importing "
+"``spam.foo``, ``spam`` will have an attribute ``foo`` which is bound to the "
+"submodule.  Let's say you have the following directory structure::"
+msgstr ""
+"Khi một mô-đun con được tải bằng bất kỳ cơ chế nào (ví dụ: API "
+"``importlib``, câu lệnh ``import`` hoặc ``import-from`` hoặc "
+"``__import__()`` tích hợp), một liên kết được đặt trong không gian tên của "
+"mô-đun mẹ với đối tượng mô-đun con. Ví dụ: nếu gói ``spam`` có mô-đun con "
+"``foo``, sau khi nhập ``spam.foo``, ``spam`` sẽ có thuộc tính ``foo`` được "
+"liên kết với mô-đun con.  Giả sử bạn có cấu trúc thư mục sau ::"
+
+#: ../../reference/import.rst:495
+#, fuzzy
+msgid ""
+"spam/\n"
+"    __init__.py\n"
+"    foo.py"
+msgstr ""
+"thư rác/\n"
+"    __init__.py\n"
+"    foo.py"
+
+#: ../../reference/import.rst:499
+#, fuzzy
+msgid "and ``spam/__init__.py`` has the following line in it::"
+msgstr "và ``spam/__init__.py`` có dòng sau trong đó ::"
+
+#: ../../reference/import.rst:501
+#, fuzzy
+msgid "from .foo import Foo"
+msgstr "từ .foo nhập Foo"
+
+#: ../../reference/import.rst:503
+#, fuzzy
+msgid ""
+"then executing the following puts name bindings for ``foo`` and ``Foo`` in "
+"the ``spam`` module::"
+msgstr ""
+"sau đó thực hiện các ràng buộc đặt tên sau đây cho ``foo`` và ``Foo`` trong "
+"mô-đun ``spam``::"
+
+#: ../../reference/import.rst:506
+#, fuzzy
+msgid ""
+">>> import spam\n"
+">>> spam.foo\n"
+"<module 'spam.foo' from '/tmp/imports/spam/foo.py'>\n"
+">>> spam.Foo\n"
+"<class 'spam.foo.Foo'>"
+msgstr ""
+">>> nhập thư rác\n"
+">>> thư rác.foo\n"
+"<mô-đun 'spam.foo' từ '/tmp/imports/spam/foo.py'>\n"
+">>> thư rác.Foo\n"
+"<lớp 'spam.foo.Foo'>"
+
+#: ../../reference/import.rst:512
+#, fuzzy
+msgid ""
+"Given Python's familiar name binding rules this might seem surprising, but "
+"it's actually a fundamental feature of the import system.  The invariant "
+"holding is that if you have ``sys.modules['spam']`` and "
+"``sys.modules['spam.foo']`` (as you would after the above import), the "
+"latter must appear as the ``foo`` attribute of the former."
+msgstr ""
+"Với các quy tắc ràng buộc tên quen thuộc của Python, điều này có vẻ đáng "
+"ngạc nhiên, nhưng thực ra đây là một tính năng cơ bản của hệ thống nhập.  "
+"Điều bất biến là nếu bạn có ``sys.modules['spam']`` và "
+"``sys.modules['spam.foo']`` (như bạn làm sau lần nhập ở trên), cái sau phải "
+"xuất hiện dưới dạng thuộc tính ``foo`` của cái trước."
+
+#: ../../reference/import.rst:521
+#, fuzzy
+msgid "Module specs"
+msgstr "Thông số mô-đun"
+
+#: ../../reference/import.rst:523
+#, fuzzy
+msgid ""
+"The import machinery uses a variety of information about each module during "
+"import, especially before loading.  Most of the information is common to all"
+" modules.  The purpose of a module's spec is to encapsulate this import-"
+"related information on a per-module basis."
+msgstr ""
+"Bộ máy nhập khẩu sử dụng nhiều thông tin khác nhau về từng mô-đun trong quá "
+"trình nhập, đặc biệt là trước khi tải.  Hầu hết các thông tin là chung cho "
+"tất cả các mô-đun.  Mục đích của thông số kỹ thuật của mô-đun là gói gọn "
+"thông tin liên quan đến nhập này trên cơ sở từng mô-đun."
+
+#: ../../reference/import.rst:528
+#, fuzzy
+msgid ""
+"Using a spec during import allows state to be transferred between import "
+"system components, e.g. between the finder that creates the module spec and "
+"the loader that executes it.  Most importantly, it allows the import "
+"machinery to perform the boilerplate operations of loading, whereas without "
+"a module spec the loader had that responsibility."
+msgstr ""
+"Việc sử dụng thông số kỹ thuật trong quá trình nhập cho phép chuyển trạng "
+"thái giữa các thành phần hệ thống nhập, ví dụ: giữa công cụ tìm tạo thông số"
+" mô-đun và trình tải thực thi nó.  Quan trọng nhất, nó cho phép máy móc nhập"
+" khẩu thực hiện các hoạt động tải mẫu sẵn, trong khi không có thông số kỹ "
+"thuật mô-đun thì bộ tải có trách nhiệm đó."
+
+#: ../../reference/import.rst:534
+#, fuzzy
+msgid ""
+"The module's spec is exposed as :attr:`module.__spec__`. Setting "
+":attr:`!__spec__` appropriately applies equally to :ref:`modules initialized"
+" during interpreter startup <programs>`. The one exception is ``__main__``, "
+"where :attr:`!__spec__` is :ref:`set to None in some cases <main_spec>`."
+msgstr ""
+"Thông số kỹ thuật của mô-đun được hiển thị dưới dạng "
+":attr:`module.__spec__`. Việc đặt :attr:`!__spec__` một cách thích hợp cũng "
+"áp dụng như nhau cho :ref:`modules initialized during interpreter startup "
+"<programs>`. Một ngoại lệ là ``__main__``, trong đó :attr:`!__spec__` là "
+":ref:`set to None in some cases <main_spec>`."
+
+#: ../../reference/import.rst:540
+#, fuzzy
+msgid ""
+"See :class:`~importlib.machinery.ModuleSpec` for details on the contents of "
+"the module spec."
+msgstr ""
+"Xem :class:`~importlib.machinery.ModuleSpec` để biết chi tiết về nội dung "
+"của thông số mô-đun."
+
+#: ../../reference/import.rst:548
+#, fuzzy
+msgid "__path__ attributes on modules"
+msgstr "__path__ thuộc tính trên mô-đun"
+
+#: ../../reference/import.rst:550
+#, fuzzy
+msgid ""
+"The :attr:`~module.__path__` attribute should be a (possibly empty) "
+":term:`sequence` of strings enumerating the locations where the package's "
+"submodules will be found. By definition, if a module has a :attr:`!__path__`"
+" attribute, it is a :term:`package`."
+msgstr ""
+"Thuộc tính :attr:`~module.__path__` phải là một chuỗi :term:`sequence` (có "
+"thể trống) liệt kê các vị trí sẽ tìm thấy các mô-đun con của gói. Theo định "
+"nghĩa, nếu một mô-đun có thuộc tính :attr:`!__path__` thì đó là "
+":term:`package`."
+
+#: ../../reference/import.rst:555
+#, fuzzy
+msgid ""
+"A package's :attr:`~module.__path__` attribute is used during imports of its"
+" subpackages. Within the import machinery, it functions much the same as "
+":data:`sys.path`, i.e. providing a list of locations to search for modules "
+"during import. However, :attr:`!__path__` is typically much more constrained"
+" than :data:`!sys.path`."
+msgstr ""
+"Thuộc tính :attr:`~module.__path__` của gói được sử dụng trong quá trình "
+"nhập các gói con của nó. Trong cơ chế nhập, nó hoạt động giống như "
+":data:`sys.path`, tức là cung cấp danh sách các vị trí để tìm kiếm mô-đun "
+"trong quá trình nhập. Tuy nhiên, :attr:`!__path__` thường bị hạn chế hơn "
+"nhiều so với :data:`!sys.path`."
+
+#: ../../reference/import.rst:562
+#, fuzzy
+msgid ""
+"The same rules used for :data:`sys.path` also apply to a package's "
+":attr:`!__path__`. :data:`sys.path_hooks` (described below) are consulted "
+"when traversing a package's :attr:`!__path__`."
+msgstr ""
+"Các quy tắc tương tự được sử dụng cho :data:`sys.path` cũng áp dụng cho "
+":attr:`!__path__` của gói. :data:`sys.path_hooks` (được mô tả bên dưới) được"
+" tham khảo khi duyệt qua :attr:`!__path__` của gói."
+
+#: ../../reference/import.rst:566
+#, fuzzy
+msgid ""
+"A package's ``__init__.py`` file may set or alter the package's "
+":attr:`~module.__path__` attribute, and this was typically the way namespace"
+" packages were implemented prior to :pep:`420`.  With the adoption of "
+":pep:`420`, namespace packages no longer need to supply ``__init__.py`` "
+"files containing only :attr:`!__path__` manipulation code; the import "
+"machinery automatically sets :attr:`!__path__` correctly for the namespace "
+"package."
+msgstr ""
+"Tệp ``__init__.py`` của gói có thể đặt hoặc thay đổi thuộc tính "
+":attr:`~module.__path__` của gói và đây thường là cách các gói không gian "
+"tên được triển khai trước :pep:`420`.  Với việc áp dụng :pep:`420`, các gói "
+"không gian tên không còn cần phải cung cấp các tệp ``__init__.py`` chỉ chứa "
+"mã thao tác :attr:`!__path__` nữa; máy nhập sẽ tự động đặt :attr:`!__path__`"
+" một cách chính xác cho gói không gian tên."
+
+#: ../../reference/import.rst:575
+#, fuzzy
+msgid "Module reprs"
+msgstr "đại diện mô-đun"
+
+#: ../../reference/import.rst:577
+#, fuzzy
+msgid ""
+"By default, all modules have a usable repr, however depending on the "
+"attributes set above, and in the module's spec, you can more explicitly "
+"control the repr of module objects."
+msgstr ""
+"Theo mặc định, tất cả các mô-đun đều có một repr có thể sử dụng được, tuy "
+"nhiên tùy thuộc vào các thuộc tính được đặt ở trên và trong thông số kỹ "
+"thuật của mô-đun, bạn có thể kiểm soát rõ ràng hơn repr của các đối tượng "
+"mô-đun."
+
+#: ../../reference/import.rst:581
+#, fuzzy
+msgid ""
+"If the module has a spec (``__spec__``), the import machinery will try to "
+"generate a repr from it.  If that fails or there is no spec, the import "
+"system will craft a default repr using whatever information is available on "
+"the module.  It will try to use the ``module.__name__``, "
+"``module.__file__``, and ``module.__loader__`` as input into the repr, with "
+"defaults for whatever information is missing."
+msgstr ""
+"Nếu mô-đun có thông số kỹ thuật (``__spec__``), máy nhập sẽ cố gắng tạo ra "
+"một thông số kỹ thuật từ nó.  Nếu điều đó không thành công hoặc không có "
+"thông số kỹ thuật, hệ thống nhập sẽ tạo một bản đại diện mặc định bằng cách "
+"sử dụng bất kỳ thông tin nào có sẵn trên mô-đun.  Nó sẽ cố gắng sử dụng "
+"``module.__name__``, ``module.__file__`` và ``module.__loader__`` làm đầu "
+"vào cho repr, với các giá trị mặc định cho bất kỳ thông tin nào bị thiếu."
+
+#: ../../reference/import.rst:588
+#, fuzzy
+msgid "Here are the exact rules used:"
+msgstr "Dưới đây là các quy tắc chính xác được sử dụng:"
+
+#: ../../reference/import.rst:590
+#, fuzzy
+msgid ""
+"If the module has a ``__spec__`` attribute, the information in the spec is "
+"used to generate the repr.  The \"name\", \"loader\", \"origin\", and "
+"\"has_location\" attributes are consulted."
+msgstr ""
+"Nếu mô-đun có thuộc tính ``__spec__`` thì thông tin trong thông số kỹ thuật "
+"sẽ được sử dụng để tạo ra Repr.  Các thuộc tính \"name\", \"loader\", "
+"\"origin\" và \"has_location\" được tham khảo."
+
+#: ../../reference/import.rst:594
+#, fuzzy
+msgid ""
+"If the module has a ``__file__`` attribute, this is used as part of the "
+"module's repr."
+msgstr ""
+"Nếu mô-đun có thuộc tính ``__file__`` thì thuộc tính này được sử dụng như "
+"một phần của mô-đun."
+
+#: ../../reference/import.rst:597
+#, fuzzy
+msgid ""
+"If the module has no ``__file__`` but does have a ``__loader__`` that is not"
+" ``None``, then the loader's repr is used as part of the module's repr."
+msgstr ""
+"Nếu mô-đun không có ``__file__`` nhưng có ``__loader__`` không phải là "
+"``None`` thì Repr của trình tải sẽ được sử dụng như một phần của Repr của "
+"mô-đun."
+
+#: ../../reference/import.rst:600
+#, fuzzy
+msgid "Otherwise, just use the module's ``__name__`` in the repr."
+msgstr ""
+"Nếu không, chỉ cần sử dụng ``__name__`` của mô-đun trong tập tin repr."
+
+#: ../../reference/import.rst:602
+#, fuzzy
+msgid ""
+"Use of :meth:`!module_repr`, having been deprecated since Python 3.4, was "
+"removed in Python 3.12 and is no longer called during the resolution of a "
+"module's repr."
+msgstr ""
+"Việc sử dụng :meth:`!module_repr`, không còn được dùng nữa kể từ Python 3.4,"
+" đã bị xóa trong Python 3.12 và không còn được gọi trong quá trình phân giải"
+" đại diện của mô-đun."
+
+#: ../../reference/import.rst:610
+#, fuzzy
+msgid "Cached bytecode invalidation"
+msgstr "Vô hiệu hóa mã byte được lưu trong bộ nhớ đệm"
+
+#: ../../reference/import.rst:612
+#, fuzzy
+msgid ""
+"Before Python loads cached bytecode from a ``.pyc`` file, it checks whether "
+"the cache is up-to-date with the source ``.py`` file. By default, Python "
+"does this by storing the source's last-modified timestamp and size in the "
+"cache file when writing it. At runtime, the import system then validates the"
+" cache file by checking the stored metadata in the cache file against the "
+"source's metadata."
+msgstr ""
+"Trước khi Python tải mã byte được lưu trong bộ nhớ đệm từ tệp ``.pyc``, nó "
+"sẽ kiểm tra xem bộ đệm có được cập nhật với tệp ``.py`` nguồn hay không. "
+"Theo mặc định, Python thực hiện điều này bằng cách lưu trữ dấu thời gian và "
+"kích thước được sửa đổi lần cuối của nguồn trong tệp bộ đệm khi ghi nó. Khi "
+"chạy, hệ thống nhập sẽ xác thực tệp bộ đệm bằng cách kiểm tra siêu dữ liệu "
+"được lưu trữ trong tệp bộ đệm so với siêu dữ liệu của nguồn."
+
+#: ../../reference/import.rst:619
+#, fuzzy
+msgid ""
+"Python also supports \"hash-based\" cache files, which store a hash of the "
+"source file's contents rather than its metadata. There are two variants of "
+"hash-based ``.pyc`` files: checked and unchecked. For checked hash-based "
+"``.pyc`` files, Python validates the cache file by hashing the source file "
+"and comparing the resulting hash with the hash in the cache file. If a "
+"checked hash-based cache file is found to be invalid, Python regenerates it "
+"and writes a new checked hash-based cache file. For unchecked hash-based "
+"``.pyc`` files, Python simply assumes the cache file is valid if it exists. "
+"Hash-based ``.pyc`` files validation behavior may be overridden with the "
+":option:`--check-hash-based-pycs` flag."
+msgstr ""
+"Python cũng hỗ trợ các tệp bộ đệm \"dựa trên hàm băm\", lưu trữ hàm băm của "
+"nội dung tệp nguồn thay vì siêu dữ liệu của nó. Có hai biến thể của tệp "
+"``.pyc`` dựa trên hàm băm: đã chọn và không được chọn. Đối với các tệp "
+"``.pyc`` dựa trên hàm băm đã được kiểm tra, Python xác thực tệp bộ đệm bằng "
+"cách băm tệp nguồn và so sánh hàm băm kết quả với hàm băm trong tệp bộ đệm. "
+"Nếu tệp bộ đệm dựa trên hàm băm đã kiểm tra được phát hiện là không hợp lệ, "
+"Python sẽ tạo lại nó và ghi một tệp bộ đệm dựa trên hàm băm đã kiểm tra mới."
+" Đối với các tệp ``.pyc`` dựa trên hàm băm không được kiểm tra, Python chỉ "
+"cần giả sử tệp bộ đệm là hợp lệ nếu nó tồn tại. Hành vi xác thực tệp "
+"``.pyc`` dựa trên hàm băm có thể bị ghi đè bằng cờ :option:`--check-hash-"
+"based-pycs`."
+
+#: ../../reference/import.rst:630
+#, fuzzy
+msgid ""
+"Added hash-based ``.pyc`` files. Previously, Python only supported "
+"timestamp-based invalidation of bytecode caches."
+msgstr ""
+"Đã thêm tệp ``.pyc`` dựa trên hàm băm. Trước đây, Python chỉ hỗ trợ việc vô "
+"hiệu hóa bộ đệm mã byte dựa trên dấu thời gian."
+
+#: ../../reference/import.rst:636
+#, fuzzy
+msgid "The Path Based Finder"
+msgstr "Trình tìm kiếm dựa trên đường dẫn"
+
+#: ../../reference/import.rst:641
+#, fuzzy
+msgid ""
+"As mentioned previously, Python comes with several default meta path "
+"finders. One of these, called the :term:`path based finder` "
+"(:class:`~importlib.machinery.PathFinder`), searches an :term:`import path`,"
+" which contains a list of :term:`path entries <path entry>`.  Each path "
+"entry names a location to search for modules."
+msgstr ""
+"Như đã đề cập trước đây, Python đi kèm với một số công cụ tìm đường dẫn meta"
+" mặc định. Một trong số đó, được gọi là :term:`path based finder` "
+"(:class:`~importlib.machinery.PathFinder`), tìm kiếm :term:`import path`, "
+"chứa danh sách :term:`path entries <path entry>`.  Mỗi mục nhập đường dẫn "
+"đặt tên cho một vị trí để tìm kiếm mô-đun."
+
+#: ../../reference/import.rst:647
+#, fuzzy
+msgid ""
+"The path based finder itself doesn't know how to import anything. Instead, "
+"it traverses the individual path entries, associating each of them with a "
+"path entry finder that knows how to handle that particular kind of path."
+msgstr ""
+"Bản thân công cụ tìm kiếm dựa trên đường dẫn không biết cách nhập bất cứ thứ"
+" gì. Thay vào đó, nó đi qua các mục nhập đường dẫn riêng lẻ, liên kết từng "
+"mục trong số chúng với một công cụ tìm mục nhập đường dẫn biết cách xử lý "
+"loại đường dẫn cụ thể đó."
+
+#: ../../reference/import.rst:651
+#, fuzzy
+msgid ""
+"The default set of path entry finders implement all the semantics for "
+"finding modules on the file system, handling special file types such as "
+"Python source code (``.py`` files), Python byte code (``.pyc`` files) and "
+"shared libraries (e.g. ``.so`` files). When supported by the "
+":mod:`zipimport` module in the standard library, the default path entry "
+"finders also handle loading all of these file types (other than shared "
+"libraries) from zipfiles."
+msgstr ""
+"Bộ công cụ tìm mục nhập đường dẫn mặc định triển khai tất cả ngữ nghĩa để "
+"tìm mô-đun trên hệ thống tệp, xử lý các loại tệp đặc biệt như mã nguồn "
+"Python (tệp ``.py``), mã byte Python (tệp ``.pyc``) và thư viện dùng chung "
+"(ví dụ: tệp ``.so``). Khi được mô-đun :mod:`zipimport` hỗ trợ trong thư viện"
+" tiêu chuẩn, trình tìm mục nhập đường dẫn mặc định cũng xử lý việc tải tất "
+"cả các loại tệp này (trừ thư viện dùng chung) từ tệp zip."
+
+#: ../../reference/import.rst:658
+#, fuzzy
+msgid ""
+"Path entries need not be limited to file system locations.  They can refer "
+"to URLs, database queries, or any other location that can be specified as a "
+"string."
+msgstr ""
+"Các mục nhập đường dẫn không cần phải giới hạn ở các vị trí hệ thống tệp.  "
+"Họ có thể tham chiếu đến URL, truy vấn cơ sở dữ liệu hoặc bất kỳ vị trí nào "
+"khác có thể được chỉ định dưới dạng chuỗi."
+
+#: ../../reference/import.rst:662
+#, fuzzy
+msgid ""
+"The path based finder provides additional hooks and protocols so that you "
+"can extend and customize the types of searchable path entries.  For example,"
+" if you wanted to support path entries as network URLs, you could write a "
+"hook that implements HTTP semantics to find modules on the web.  This hook "
+"(a callable) would return a :term:`path entry finder` supporting the "
+"protocol described below, which was then used to get a loader for the module"
+" from the web."
+msgstr ""
+"Công cụ tìm kiếm dựa trên đường dẫn cung cấp các móc nối và giao thức bổ "
+"sung để bạn có thể mở rộng và tùy chỉnh các loại mục nhập đường dẫn có thể "
+"tìm kiếm.  Ví dụ: nếu bạn muốn hỗ trợ các mục nhập đường dẫn dưới dạng URL "
+"mạng, bạn có thể viết một hook triển khai ngữ nghĩa HTTP để tìm các mô-đun "
+"trên web.  Hook này (có thể gọi được) sẽ trả về một :term:`path entry "
+"finder` hỗ trợ giao thức được mô tả bên dưới, sau đó được sử dụng để tải "
+"trình tải cho mô-đun từ web."
+
+#: ../../reference/import.rst:670
+#, fuzzy
+msgid ""
+"A word of warning: this section and the previous both use the term *finder*,"
+" distinguishing between them by using the terms :term:`meta path finder` and"
+" :term:`path entry finder`.  These two types of finders are very similar, "
+"support similar protocols, and function in similar ways during the import "
+"process, but it's important to keep in mind that they are subtly different. "
+"In particular, meta path finders operate at the beginning of the import "
+"process, as keyed off the :data:`sys.meta_path` traversal."
+msgstr ""
+"Lời cảnh báo: phần này và phần trước đều sử dụng thuật ngữ *finder*, phân "
+"biệt giữa chúng bằng cách sử dụng thuật ngữ :term:`meta path finder` và "
+":term:`path entry finder`.  Hai loại công cụ tìm này rất giống nhau, hỗ trợ "
+"các giao thức tương tự và hoạt động theo cách tương tự trong quá trình nhập,"
+" nhưng điều quan trọng cần lưu ý là chúng có sự khác biệt nhỏ. Cụ thể, các "
+"công cụ tìm đường dẫn meta hoạt động ở đầu quá trình nhập, như được khóa khi"
+" truyền tải :data:`sys.meta_path`."
+
+#: ../../reference/import.rst:678
+#, fuzzy
+msgid ""
+"By contrast, path entry finders are in a sense an implementation detail of "
+"the path based finder, and in fact, if the path based finder were to be "
+"removed from :data:`sys.meta_path`, none of the path entry finder semantics "
+"would be invoked."
+msgstr ""
+"Ngược lại, các công cụ tìm mục nhập đường dẫn theo một nghĩa nào đó là một "
+"chi tiết triển khai của công cụ tìm kiếm dựa trên đường dẫn và trên thực tế,"
+" nếu công cụ tìm kiếm dựa trên đường dẫn bị xóa khỏi :data:`sys.meta_path` "
+"thì sẽ không có ngữ nghĩa nào của công cụ tìm mục nhập đường dẫn được gọi."
+
+#: ../../reference/import.rst:685
+#, fuzzy
+msgid "Path entry finders"
+msgstr "Công cụ tìm mục nhập đường dẫn"
+
+#: ../../reference/import.rst:693
+#, fuzzy
+msgid ""
+"The :term:`path based finder` is responsible for finding and loading Python "
+"modules and packages whose location is specified with a string :term:`path "
+"entry`.  Most path entries name locations in the file system, but they need "
+"not be limited to this."
+msgstr ""
+"Zz000zz chịu trách nhiệm tìm và tải các mô-đun và gói Python có vị trí được "
+"chỉ định bằng chuỗi :term:`path entry`.  Hầu hết các mục nhập đường dẫn đều "
+"đặt tên cho các vị trí trong hệ thống tệp, nhưng chúng không cần giới hạn ở "
+"điều này."
+
+#: ../../reference/import.rst:698
+#, fuzzy
+msgid ""
+"As a meta path finder, the :term:`path based finder` implements the "
+":meth:`~importlib.abc.MetaPathFinder.find_spec` protocol previously "
+"described, however it exposes additional hooks that can be used to customize"
+" how modules are found and loaded from the :term:`import path`."
+msgstr ""
+"Là một công cụ tìm đường dẫn meta, :term:`path based finder` triển khai giao"
+" thức :meth:`~importlib.abc.MetaPathFinder.find_spec` được mô tả trước đây, "
+"tuy nhiên, nó hiển thị các móc bổ sung có thể được sử dụng để tùy chỉnh cách"
+" tìm thấy và tải các mô-đun từ :term:`import path`."
+
+#: ../../reference/import.rst:703
+#, fuzzy
+msgid ""
+"Three variables are used by the :term:`path based finder`, :data:`sys.path`,"
+" :data:`sys.path_hooks` and :data:`sys.path_importer_cache`.  The "
+"``__path__`` attributes on package objects are also used.  These provide "
+"additional ways that the import machinery can be customized."
+msgstr ""
+"Ba biến được sử dụng bởi :term:`path based finder`, :data:`sys.path`, "
+":data:`sys.path_hooks` và :data:`sys.path_importer_cache`.  Thuộc tính "
+"``__path__`` trên các đối tượng gói cũng được sử dụng.  Những điều này cung "
+"cấp những cách bổ sung mà máy móc nhập khẩu có thể được tùy chỉnh."
+
+#: ../../reference/import.rst:708
+#, fuzzy
+msgid ""
+":data:`sys.path` contains a list of strings providing search locations for "
+"modules and packages.  It is initialized from the :envvar:`PYTHONPATH` "
+"environment variable and various other installation- and implementation-"
+"specific defaults.  Entries in :data:`sys.path` can name directories on the "
+"file system, zip files, and potentially other \"locations\" (see the "
+":mod:`site` module) that should be searched for modules, such as URLs, or "
+"database queries.  Only strings should be present on :data:`sys.path`; all "
+"other data types are ignored."
+msgstr ""
+":data:`sys.path` chứa danh sách các chuỗi cung cấp vị trí tìm kiếm cho các "
+"mô-đun và gói.  Nó được khởi tạo từ biến môi trường :envvar:`PYTHONPATH` và "
+"nhiều giá trị mặc định dành riêng cho cài đặt và triển khai khác.  Các mục "
+"trong :data:`sys.path` có thể đặt tên cho các thư mục trên hệ thống tệp, tệp"
+" zip và các \"vị trí\" tiềm năng khác (xem mô-đun :mod:`site`) cần được tìm "
+"kiếm cho các mô-đun, chẳng hạn như URL hoặc truy vấn cơ sở dữ liệu.  Chỉ có "
+"các chuỗi trên :data:`sys.path`; tất cả các loại dữ liệu khác đều bị bỏ qua."
+
+#: ../../reference/import.rst:717
+#, fuzzy
+msgid ""
+"The :term:`path based finder` is a :term:`meta path finder`, so the import "
+"machinery begins the :term:`import path` search by calling the path based "
+"finder's :meth:`~importlib.machinery.PathFinder.find_spec` method as "
+"described previously.  When the ``path`` argument to "
+":meth:`~importlib.machinery.PathFinder.find_spec` is given, it will be a "
+"list of string paths to traverse - typically a package's ``__path__`` "
+"attribute for an import within that package.  If the ``path`` argument is "
+"``None``, this indicates a top level import and :data:`sys.path` is used."
+msgstr ""
+":term:`path based finder` là :term:`meta path finder`, do đó, máy nhập bắt "
+"đầu tìm kiếm :term:`import path` bằng cách gọi phương thức "
+":meth:`~importlib.machinery.PathFinder.find_spec` của công cụ tìm kiếm dựa "
+"trên đường dẫn như được mô tả trước đây.  Khi đối số ``path`` cho "
+":meth:`~importlib.machinery.PathFinder.find_spec` được đưa ra, nó sẽ là danh"
+" sách các đường dẫn chuỗi để duyệt qua - thường là thuộc tính ``__path__`` "
+"của gói để nhập trong gói đó.  Nếu đối số ``path`` là ``None``, điều này cho"
+" biết quá trình nhập cấp cao nhất và :data:`sys.path` được sử dụng."
+
+#: ../../reference/import.rst:726
+#, fuzzy
+msgid ""
+"The path based finder iterates over every entry in the search path, and for "
+"each of these, looks for an appropriate :term:`path entry finder` "
+"(:class:`~importlib.abc.PathEntryFinder`) for the path entry.  Because this "
+"can be an expensive operation (e.g. there may be ``stat()`` call overheads "
+"for this search), the path based finder maintains a cache mapping path "
+"entries to path entry finders.  This cache is maintained in "
+":data:`sys.path_importer_cache` (despite the name, this cache actually "
+"stores finder objects rather than being limited to :term:`importer` "
+"objects). In this way, the expensive search for a particular :term:`path "
+"entry` location's :term:`path entry finder` need only be done once.  User "
+"code is free to remove cache entries from :data:`sys.path_importer_cache` "
+"forcing the path based finder to perform the path entry search again."
+msgstr ""
+"Trình tìm kiếm dựa trên đường dẫn lặp lại mọi mục nhập trong đường dẫn tìm "
+"kiếm và đối với mỗi mục nhập này, hãy tìm một :term:`path entry finder` "
+"(:class:`~importlib.abc.PathEntryFinder`) thích hợp cho mục nhập đường dẫn."
+"  Bởi vì đây có thể là một hoạt động tốn kém (ví dụ: có thể có chi phí cuộc "
+"gọi ``stat()`` cho tìm kiếm này), công cụ tìm kiếm dựa trên đường dẫn sẽ duy"
+" trì các mục nhập đường dẫn ánh xạ bộ đệm tới các công cụ tìm mục nhập đường"
+" dẫn.  Bộ đệm này được duy trì trong :data:`sys.path_importer_cache` (mặc dù"
+" tên như vậy, bộ đệm này thực sự lưu trữ các đối tượng tìm kiếm thay vì bị "
+"giới hạn ở các đối tượng :term:`importer`). Bằng cách này, việc tìm kiếm tốn"
+" kém cho :term:`path entry finder` của một vị trí :term:`path entry` cụ thể "
+"chỉ cần được thực hiện một lần.  Mã người dùng có thể tự do xóa các mục nhập"
+" trong bộ đệm khỏi :data:`sys.path_importer_cache`, buộc công cụ tìm kiếm "
+"dựa trên đường dẫn phải thực hiện lại tìm kiếm mục nhập đường dẫn."
+
+#: ../../reference/import.rst:739
+#, fuzzy
+msgid ""
+"If the path entry is not present in the cache, the path based finder "
+"iterates over every callable in :data:`sys.path_hooks`.  Each of the "
+":term:`path entry hooks <path entry hook>` in this list is called with a "
+"single argument, the path entry to be searched.  This callable may either "
+"return a :term:`path entry finder` that can handle the path entry, or it may"
+" raise :exc:`ImportError`.  An :exc:`ImportError` is used by the path based "
+"finder to signal that the hook cannot find a :term:`path entry finder` for "
+"that :term:`path entry`.  The exception is ignored and :term:`import path` "
+"iteration continues.  The hook should expect either a string or bytes "
+"object; the encoding of bytes objects is up to the hook (e.g. it may be a "
+"file system encoding, UTF-8, or something else), and if the hook cannot "
+"decode the argument, it should raise :exc:`ImportError`."
+msgstr ""
+"Nếu mục nhập đường dẫn không có trong bộ đệm, trình tìm kiếm dựa trên đường "
+"dẫn sẽ lặp lại mọi lệnh gọi trong :data:`sys.path_hooks`.  Mỗi :term:`path "
+"entry hooks <path entry hook>` trong danh sách này được gọi bằng một đối số "
+"duy nhất, mục nhập đường dẫn cần tìm kiếm.  Lệnh gọi này có thể trả về một "
+":term:`path entry finder` có thể xử lý mục nhập đường dẫn hoặc nó có thể "
+"tăng :exc:`ImportError`.  Một :exc:`ImportError` được công cụ tìm kiếm dựa "
+"trên đường dẫn sử dụng để báo hiệu rằng hook không thể tìm thấy :term:`path "
+"entry finder` cho :term:`path entry` đó.  Ngoại lệ bị bỏ qua và quá trình "
+"lặp :term:`import path` tiếp tục.  Móc phải mong đợi một đối tượng chuỗi "
+"hoặc byte; việc mã hóa các đối tượng byte tùy thuộc vào hook (ví dụ: nó có "
+"thể là mã hóa hệ thống tệp, UTF-8 hoặc thứ gì khác) và nếu hook không thể "
+"giải mã đối số, thì nó sẽ tăng :exc:`ImportError`."
+
+#: ../../reference/import.rst:753
+#, fuzzy
+msgid ""
+"If :data:`sys.path_hooks` iteration ends with no :term:`path entry finder` "
+"being returned, then the path based finder's "
+":meth:`~importlib.machinery.PathFinder.find_spec` method will store ``None``"
+" in :data:`sys.path_importer_cache` (to indicate that there is no finder for"
+" this path entry) and return ``None``, indicating that this :term:`meta path"
+" finder` could not find the module."
+msgstr ""
+"Nếu quá trình lặp :data:`sys.path_hooks` kết thúc mà không có :term:`path "
+"entry finder` nào được trả về thì phương thức "
+":meth:`~importlib.machinery.PathFinder.find_spec` của công cụ tìm kiếm dựa "
+"trên đường dẫn sẽ lưu trữ ``None`` trong :data:`sys.path_importer_cache` (để"
+" cho biết rằng không có công cụ tìm kiếm nào cho mục nhập đường dẫn này) và "
+"trả về ``None``, cho biết rằng :term:`meta path finder` này không thể tìm "
+"thấy mô-đun."
+
+#: ../../reference/import.rst:760
+#, fuzzy
+msgid ""
+"If a :term:`path entry finder` *is* returned by one of the :term:`path entry"
+" hook` callables on :data:`sys.path_hooks`, then the following protocol is "
+"used to ask the finder for a module spec, which is then used when loading "
+"the module."
+msgstr ""
+"Nếu :term:`path entry finder` *is* được trả về bởi một trong các lệnh gọi "
+":term:`path entry hook` trên :data:`sys.path_hooks` thì giao thức sau sẽ "
+"được sử dụng để yêu cầu công cụ tìm kiếm thông số mô-đun, sau đó được sử "
+"dụng khi tải mô-đun."
+
+#: ../../reference/import.rst:765
+#, fuzzy
+msgid ""
+"The current working directory -- denoted by an empty string -- is handled "
+"slightly differently from other entries on :data:`sys.path`. First, if the "
+"current working directory cannot be determined or is found not to exist, no "
+"value is stored in :data:`sys.path_importer_cache`. Second, the value for "
+"the current working directory is looked up fresh for each module lookup. "
+"Third, the path used for :data:`sys.path_importer_cache` and returned by "
+":meth:`importlib.machinery.PathFinder.find_spec` will be the actual current "
+"working directory and not the empty string."
+msgstr ""
+"Thư mục làm việc hiện tại -- được biểu thị bằng một chuỗi trống -- được xử "
+"lý hơi khác so với các mục nhập khác trên :data:`sys.path`. Đầu tiên, nếu "
+"không thể xác định được thư mục làm việc hiện tại hoặc không tồn tại thì "
+"không có giá trị nào được lưu trong :data:`sys.path_importer_cache`. Thứ "
+"hai, giá trị cho thư mục làm việc hiện tại được tra cứu mới cho mỗi lần tra "
+"cứu mô-đun. Thứ ba, đường dẫn được sử dụng cho "
+":data:`sys.path_importer_cache` và được "
+":meth:`importlib.machinery.PathFinder.find_spec` trả về sẽ là thư mục làm "
+"việc hiện tại thực tế chứ không phải chuỗi trống."
+
+#: ../../reference/import.rst:775
+#, fuzzy
+msgid "Path entry finder protocol"
+msgstr "Giao thức tìm đường dẫn"
+
+#: ../../reference/import.rst:777
+#, fuzzy
+msgid ""
+"In order to support imports of modules and initialized packages and also to "
+"contribute portions to namespace packages, path entry finders must implement"
+" the :meth:`~importlib.abc.PathEntryFinder.find_spec` method."
+msgstr ""
+"Để hỗ trợ nhập mô-đun và gói khởi tạo cũng như đóng góp các phần cho gói "
+"không gian tên, trình tìm mục nhập đường dẫn phải triển khai phương thức "
+":meth:`~importlib.abc.PathEntryFinder.find_spec`."
+
+#: ../../reference/import.rst:781
+#, fuzzy
+msgid ""
+":meth:`~importlib.abc.PathEntryFinder.find_spec` takes two arguments: the "
+"fully qualified name of the module being imported, and the (optional) target"
+" module.  ``find_spec()`` returns a fully populated spec for the module. "
+"This spec will always have \"loader\" set (with one exception)."
+msgstr ""
+":meth:`~importlib.abc.PathEntryFinder.find_spec` nhận hai đối số: tên đủ "
+"điều kiện của mô-đun đang được nhập và mô-đun đích (tùy chọn).  "
+"``find_spec()`` trả về thông số kỹ thuật được điền đầy đủ cho mô-đun. Thông "
+"số kỹ thuật này sẽ luôn được đặt \"trình tải\" (với một ngoại lệ)."
+
+#: ../../reference/import.rst:786
+#, fuzzy
+msgid ""
+"To indicate to the import machinery that the spec represents a namespace "
+":term:`portion`, the path entry finder sets ``submodule_search_locations`` "
+"to a list containing the portion."
+msgstr ""
+"Để cho bộ máy nhập biết rằng thông số kỹ thuật đại diện cho vùng tên "
+":term:`portion`, trình tìm mục nhập đường dẫn sẽ đặt "
+"``submodule_search_locations`` vào danh sách chứa phần đó."
+
+#: ../../reference/import.rst:790
+#, fuzzy
+msgid ""
+":meth:`~importlib.abc.PathEntryFinder.find_spec` replaced "
+":meth:`!find_loader` and :meth:`!find_module`, both of which are now "
+"deprecated, but will be used if ``find_spec()`` is not defined."
+msgstr ""
+":meth:`~importlib.abc.PathEntryFinder.find_spec` đã thay thế "
+":meth:`!find_loader` và :meth:`!find_module`, cả hai đều hiện không được "
+"dùng nữa nhưng sẽ được sử dụng nếu ``find_spec()`` không được xác định."
+
+#: ../../reference/import.rst:796
+#, fuzzy
+msgid ""
+"Older path entry finders may implement one of these two deprecated methods "
+"instead of ``find_spec()``.  The methods are still respected for the sake of"
+" backward compatibility.  However, if ``find_spec()`` is implemented on the "
+"path entry finder, the legacy methods are ignored."
+msgstr ""
+"Các công cụ tìm mục nhập đường dẫn cũ hơn có thể triển khai một trong hai "
+"phương pháp không được dùng nữa này thay vì ``find_spec()``.  Các phương "
+"pháp vẫn được tôn trọng vì tính tương thích ngược.  Tuy nhiên, nếu "
+"``find_spec()`` được triển khai trên công cụ tìm mục nhập đường dẫn thì các "
+"phương thức cũ sẽ bị bỏ qua."
+
+#: ../../reference/import.rst:801
+#, fuzzy
+msgid ""
+":meth:`!find_loader` takes one argument, the fully qualified name of the "
+"module being imported.  ``find_loader()`` returns a 2-tuple where the first "
+"item is the loader and the second item is a namespace :term:`portion`."
+msgstr ""
+":meth:`!find_loader` nhận một đối số, tên đầy đủ của mô-đun đang được nhập."
+"  ``find_loader()`` trả về 2 bộ dữ liệu trong đó mục đầu tiên là trình tải "
+"và mục thứ hai là không gian tên :term:`portion`."
+
+#: ../../reference/import.rst:806
+#, fuzzy
+msgid ""
+"For backwards compatibility with other implementations of the import "
+"protocol, many path entry finders also support the same, traditional "
+"``find_module()`` method that meta path finders support. However path entry "
+"finder ``find_module()`` methods are never called with a ``path`` argument "
+"(they are expected to record the appropriate path information from the "
+"initial call to the path hook)."
+msgstr ""
+"Để có khả năng tương thích ngược với các triển khai khác của giao thức nhập,"
+" nhiều công cụ tìm mục nhập đường dẫn cũng hỗ trợ phương thức "
+"``find_module()`` truyền thống tương tự mà các công cụ tìm đường dẫn meta hỗ"
+" trợ. Tuy nhiên, các phương thức ``find_module()`` của công cụ tìm mục nhập "
+"đường dẫn không bao giờ được gọi với đối số ``path`` (chúng phải ghi lại "
+"thông tin đường dẫn thích hợp từ lệnh gọi ban đầu đến hook hook)."
+
+#: ../../reference/import.rst:813
+#, fuzzy
+msgid ""
+"The ``find_module()`` method on path entry finders is deprecated, as it does"
+" not allow the path entry finder to contribute portions to namespace "
+"packages.  If both ``find_loader()`` and ``find_module()`` exist on a path "
+"entry finder, the import system will always call ``find_loader()`` in "
+"preference to ``find_module()``."
+msgstr ""
+"Phương thức ``find_module()`` trên các công cụ tìm mục nhập đường dẫn không "
+"được dùng nữa vì nó không cho phép công cụ tìm mục nhập đường dẫn đóng góp "
+"các phần cho các gói không gian tên.  Nếu cả ``find_loader()`` và "
+"``find_module()`` đều tồn tại trên công cụ tìm mục nhập đường dẫn, hệ thống "
+"nhập sẽ luôn gọi ``find_loader()`` ưu tiên hơn ``find_module()``."
+
+#: ../../reference/import.rst:819
+#, fuzzy
+msgid ""
+"Calls to :meth:`!find_module` and :meth:`!find_loader` by the import system "
+"will raise :exc:`ImportWarning`."
+msgstr ""
+"Các lệnh gọi tới :meth:`!find_module` và :meth:`!find_loader` bằng hệ thống "
+"nhập sẽ tăng :exc:`ImportWarning`."
+
+#: ../../reference/import.rst:824
+#, fuzzy
+msgid "``find_module()`` and ``find_loader()`` have been removed."
+msgstr "``find_module()`` và ``find_loader()`` đã bị xóa."
+
+#: ../../reference/import.rst:829
+#, fuzzy
+msgid "Replacing the standard import system"
+msgstr "Thay thế hệ thống nhập khẩu tiêu chuẩn"
+
+#: ../../reference/import.rst:831
+#, fuzzy
+msgid ""
+"The most reliable mechanism for replacing the entire import system is to "
+"delete the default contents of :data:`sys.meta_path`, replacing them "
+"entirely with a custom meta path hook."
+msgstr ""
+"Cơ chế đáng tin cậy nhất để thay thế toàn bộ hệ thống nhập là xóa nội dung "
+"mặc định của :data:`sys.meta_path`, thay thế chúng hoàn toàn bằng móc đường "
+"dẫn meta tùy chỉnh."
+
+#: ../../reference/import.rst:835
+#, fuzzy
+msgid ""
+"If it is acceptable to only alter the behaviour of import statements without"
+" affecting other APIs that access the import system, then replacing the "
+"builtin :func:`__import__` function may be sufficient."
+msgstr ""
+"Nếu có thể chấp nhận chỉ thay đổi hành vi của câu lệnh nhập mà không ảnh "
+"hưởng đến các API khác truy cập vào hệ thống nhập thì việc thay thế hàm "
+":func:`__import__` dựng sẵn có thể là đủ."
+
+#: ../../reference/import.rst:839
+#, fuzzy
+msgid ""
+"To selectively prevent the import of some modules from a hook early on the "
+"meta path (rather than disabling the standard import system entirely), it is"
+" sufficient to raise :exc:`ModuleNotFoundError` directly from "
+":meth:`~importlib.abc.MetaPathFinder.find_spec` instead of returning "
+"``None``. The latter indicates that the meta path search should continue, "
+"while raising an exception terminates it immediately."
+msgstr ""
+"Để ngăn chặn có chọn lọc việc nhập sớm một số mô-đun từ một hook trên đường "
+"dẫn meta (thay vì vô hiệu hóa hoàn toàn hệ thống nhập tiêu chuẩn), việc tăng"
+" :exc:`ModuleNotFoundError` trực tiếp từ "
+":meth:`~importlib.abc.MetaPathFinder.find_spec` thay vì trả về ``None`` là "
+"đủ. Cái sau chỉ ra rằng việc tìm kiếm đường dẫn meta sẽ tiếp tục, trong khi "
+"việc đưa ra một ngoại lệ sẽ chấm dứt nó ngay lập tức."
+
+#: ../../reference/import.rst:849
+#, fuzzy
+msgid "Package Relative Imports"
+msgstr "Nhập khẩu tương đối gói"
+
+#: ../../reference/import.rst:851
+#, fuzzy
+msgid ""
+"Relative imports use leading dots. A single leading dot indicates a relative"
+" import, starting with the current package. Two or more leading dots "
+"indicate a relative import to the parent(s) of the current package, one "
+"level per dot after the first. For example, given the following package "
+"layout::"
+msgstr ""
+"Nhập khẩu tương đối sử dụng dấu chấm ở đầu. Một dấu chấm ở đầu biểu thị quá "
+"trình nhập tương đối, bắt đầu từ gói hiện tại. Hai hoặc nhiều dấu chấm ở đầu"
+" biểu thị mức nhập tương đối đối với (các) gói gốc của gói hiện tại, một cấp"
+" trên mỗi dấu chấm sau gói đầu tiên. Ví dụ: đưa ra cách bố trí gói sau ::"
+
+#: ../../reference/import.rst:856
+#, fuzzy
+msgid ""
+"package/\n"
+"    __init__.py\n"
+"    subpackage1/\n"
+"        __init__.py\n"
+"        moduleX.py\n"
+"        moduleY.py\n"
+"    subpackage2/\n"
+"        __init__.py\n"
+"        moduleZ.py\n"
+"    moduleA.py"
+msgstr ""
+"gói/\n"
+"    __init__.py\n"
+"    gói con1/\n"
+"        __init__.py\n"
+"        mô-đunX.py\n"
+"        mô-đunY.py\n"
+"    gói con2/\n"
+"        __init__.py\n"
+"        moduleZ.py\n"
+"    moduleA.py"
+
+#: ../../reference/import.rst:867
+#, fuzzy
+msgid ""
+"In either ``subpackage1/moduleX.py`` or ``subpackage1/__init__.py``, the "
+"following are valid relative imports::"
+msgstr ""
+"Trong ``subpackage1/moduleX.py`` hoặc ``subpackage1/__init__.py``, các mục "
+"sau đây là các mục nhập tương đối hợp lệ::"
+
+#: ../../reference/import.rst:870
+#, fuzzy
+msgid ""
+"from .moduleY import spam\n"
+"from .moduleY import spam as ham\n"
+"from . import moduleY\n"
+"from ..subpackage1 import moduleY\n"
+"from ..subpackage2.moduleZ import eggs\n"
+"from ..moduleA import foo"
+msgstr ""
+"từ .moduleY nhập thư rác\n"
+"từ .moduleY nhập thư rác dưới dạng ham\n"
+"từ . nhập mô-đun Y\n"
+"từ mô-đun nhập ..subpackage1Y\n"
+"từ ..subpackage2.moduleZ nhập trứng\n"
+"từ ..moduleA nhập foo"
+
+#: ../../reference/import.rst:877
+#, fuzzy
+msgid ""
+"Absolute imports may use either the ``import <>`` or ``from <> import <>`` "
+"syntax, but relative imports may only use the second form; the reason for "
+"this is that::"
+msgstr ""
+"Nhập tuyệt đối có thể sử dụng cú pháp ``import <>`` hoặc ``from <> import "
+"<>``, nhưng nhập tương đối chỉ có thể sử dụng dạng thứ hai; lý do cho điều "
+"này là::"
+
+#: ../../reference/import.rst:881
+#, fuzzy
+msgid "import XXX.YYY.ZZZ"
+msgstr "nhập XXX.YYY.ZZZ"
+
+#: ../../reference/import.rst:883
+#, fuzzy
+msgid ""
+"should expose ``XXX.YYY.ZZZ`` as a usable expression, but .moduleY is not a "
+"valid expression."
+msgstr ""
+"sẽ hiển thị ``XXX.YYY.ZZZ`` dưới dạng biểu thức có thể sử dụng được, nhưng "
+".moduleY không phải là biểu thức hợp lệ."
+
+#: ../../reference/import.rst:890
+#, fuzzy
+msgid "Special considerations for __main__"
+msgstr "Những cân nhắc đặc biệt cho __main__"
+
+#: ../../reference/import.rst:892
+#, fuzzy
+msgid ""
+"The :mod:`__main__` module is a special case relative to Python's import "
+"system.  As noted :ref:`elsewhere <programs>`, the ``__main__`` module is "
+"directly initialized at interpreter startup, much like :mod:`sys` and "
+":mod:`builtins`.  However, unlike those two, it doesn't strictly qualify as "
+"a built-in module.  This is because the manner in which ``__main__`` is "
+"initialized depends on the flags and other options with which the "
+"interpreter is invoked."
+msgstr ""
+"Mô-đun :mod:`__main__` là trường hợp đặc biệt liên quan đến hệ thống nhập "
+"của Python.  Như :ref:`elsewhere <programs>` đã lưu ý, mô-đun ``__main__`` "
+"được khởi tạo trực tiếp khi khởi động trình thông dịch, giống như :mod:`sys`"
+" và :mod:`builtins`.  Tuy nhiên, không giống như hai cái đó, nó không đủ "
+"tiêu chuẩn để trở thành một mô-đun tích hợp.  Điều này là do cách khởi tạo "
+"``__main__`` phụ thuộc vào cờ và các tùy chọn khác mà trình thông dịch được "
+"gọi."
+
+#: ../../reference/import.rst:903
+#, fuzzy
+msgid "__main__.__spec__"
+msgstr "__chính__.__spec__"
+
+#: ../../reference/import.rst:905
+#, fuzzy
+msgid ""
+"Depending on how :mod:`__main__` is initialized, ``__main__.__spec__`` gets "
+"set appropriately or to ``None``."
+msgstr ""
+"Tùy thuộc vào cách :mod:`__main__` được khởi tạo, ``__main__.__spec__`` được"
+" đặt phù hợp hoặc thành ``None``."
+
+#: ../../reference/import.rst:908
+#, fuzzy
+msgid ""
+"When Python is started with the :option:`-m` option, ``__spec__`` is set to "
+"the module spec of the corresponding module or package. ``__spec__`` is also"
+" populated when the ``__main__`` module is loaded as part of executing a "
+"directory, zipfile or other :data:`sys.path` entry."
+msgstr ""
+"Khi Python được khởi động với tùy chọn :option:`-m`, ``__spec__`` được đặt "
+"thành thông số mô-đun của mô-đun hoặc gói tương ứng. ``__spec__`` cũng được "
+"điền khi mô-đun ``__main__`` được tải như một phần của việc thực thi một thư"
+" mục, tệp zip hoặc mục nhập :data:`sys.path` khác."
+
+#: ../../reference/import.rst:913
+#, fuzzy
+msgid ""
+"In :ref:`the remaining cases <using-on-interface-options>` "
+"``__main__.__spec__`` is set to ``None``, as the code used to populate the "
+":mod:`__main__` does not correspond directly with an importable module:"
+msgstr ""
+"Trong :ref:`the remaining cases <using-on-interface-options>` "
+"``__main__.__spec__`` được đặt thành ``None``, vì mã được sử dụng để điền "
+":mod:`__main__` không tương ứng trực tiếp với mô-đun có thể nhập:"
+
+#: ../../reference/import.rst:917
+#, fuzzy
+msgid "interactive prompt"
+msgstr "lời nhắc tương tác"
+
+#: ../../reference/import.rst:918
+#, fuzzy
+msgid ":option:`-c` option"
+msgstr "tùy chọn :option:`-c`"
+
+#: ../../reference/import.rst:919
+#, fuzzy
+msgid "running from stdin"
+msgstr "chạy từ stdin"
+
+#: ../../reference/import.rst:920
+#, fuzzy
+msgid "running directly from a source or bytecode file"
+msgstr "chạy trực tiếp từ tệp nguồn hoặc mã byte"
+
+#: ../../reference/import.rst:922
+#, fuzzy
+msgid ""
+"Note that ``__main__.__spec__`` is always ``None`` in the last case, *even "
+"if* the file could technically be imported directly as a module instead. Use"
+" the :option:`-m` switch if valid module metadata is desired in "
+":mod:`__main__`."
+msgstr ""
+"Lưu ý rằng ``__main__.__spec__`` luôn là ``None`` trong trường hợp cuối "
+"cùng, thay vào đó, *even if* tệp có thể được nhập trực tiếp dưới dạng mô-"
+"đun. Sử dụng khóa chuyển :option:`-m` nếu muốn có siêu dữ liệu mô-đun hợp lệ"
+" trong :mod:`__main__`."
+
+#: ../../reference/import.rst:927
+#, fuzzy
+msgid ""
+"Note also that even when ``__main__`` corresponds with an importable module "
+"and ``__main__.__spec__`` is set accordingly, they're still considered "
+"*distinct* modules. This is due to the fact that blocks guarded by ``if "
+"__name__ == \"__main__\":`` checks only execute when the module is used to "
+"populate the ``__main__`` namespace, and not during normal import."
+msgstr ""
+"Cũng lưu ý rằng ngay cả khi ``__main__`` tương ứng với một mô-đun có thể "
+"nhập và ``__main__.__spec__`` được đặt tương ứng, chúng vẫn được coi là mô-"
+"đun *distinct*. Điều này là do thực tế là các khối được bảo vệ bởi kiểm tra "
+"``if __name__ == \"__main__\":`` chỉ thực thi khi mô-đun được sử dụng để "
+"điền vào không gian tên ``__main__`` chứ không phải trong quá trình nhập "
+"thông thường."
+
+#: ../../reference/import.rst:935
+#, fuzzy
+msgid "References"
+msgstr "Tài liệu tham khảo"
+
+#: ../../reference/import.rst:937
+#, fuzzy
+msgid ""
+"The import machinery has evolved considerably since Python's early days.  "
+"The original `specification for packages "
+"<https://www.python.org/doc/essays/packages/>`_ is still available to read, "
+"although some details have changed since the writing of that document."
+msgstr ""
+"Cơ chế nhập khẩu đã phát triển đáng kể kể từ những ngày đầu của Python.  "
+"Zz000zz ban đầu vẫn có sẵn để đọc, mặc dù một số chi tiết đã thay đổi kể từ "
+"khi viết tài liệu đó."
+
+#: ../../reference/import.rst:942
+#, fuzzy
+msgid ""
+"The original specification for :data:`sys.meta_path` was :pep:`302`, with "
+"subsequent extension in :pep:`420`."
+msgstr ""
+"Thông số kỹ thuật ban đầu cho :data:`sys.meta_path` là :pep:`302`, với phần "
+"mở rộng tiếp theo là :pep:`420`."
+
+#: ../../reference/import.rst:945
+#, fuzzy
+msgid ""
+":pep:`420` introduced :term:`namespace packages <namespace package>` for "
+"Python 3.3.  :pep:`420` also introduced the :meth:`!find_loader` protocol as"
+" an alternative to :meth:`!find_module`."
+msgstr ""
+":pep:`420` đã giới thiệu :term:`namespace packages <namespace package>` cho "
+"Python 3.3.  :pep:`420` cũng giới thiệu giao thức :meth:`!find_loader` thay "
+"thế cho :meth:`!find_module`."
+
+#: ../../reference/import.rst:949
+#, fuzzy
+msgid ""
+":pep:`366` describes the addition of the ``__package__`` attribute for "
+"explicit relative imports in main modules."
+msgstr ""
+":pep:`366` mô tả việc bổ sung thuộc tính ``__package__`` để nhập tương đối "
+"rõ ràng trong các mô-đun chính."
+
+#: ../../reference/import.rst:952
+#, fuzzy
+msgid ""
+":pep:`328` introduced absolute and explicit relative imports and initially "
+"proposed ``__name__`` for semantics :pep:`366` would eventually specify for "
+"``__package__``."
+msgstr ""
+":pep:`328` đã giới thiệu tính năng nhập tương đối tuyệt đối và rõ ràng, đồng"
+" thời ban đầu đề xuất ``__name__`` cho ngữ nghĩa, :pep:`366` cuối cùng sẽ "
+"chỉ định cho ``__package__``."
+
+#: ../../reference/import.rst:956
+#, fuzzy
+msgid ":pep:`338` defines executing modules as scripts."
+msgstr ":pep:`338` định nghĩa các mô-đun thực thi dưới dạng tập lệnh."
+
+#: ../../reference/import.rst:958
+#, fuzzy
+msgid ""
+":pep:`451` adds the encapsulation of per-module import state in spec "
+"objects.  It also off-loads most of the boilerplate responsibilities of "
+"loaders back onto the import machinery.  These changes allow the deprecation"
+" of several APIs in the import system and also addition of new methods to "
+"finders and loaders."
+msgstr ""
+":pep:`451` bổ sung tính năng đóng gói trạng thái nhập trên mỗi mô-đun trong "
+"các đối tượng thông số kỹ thuật.  Nó cũng chuyển hầu hết các trách nhiệm "
+"soạn sẵn của người bốc hàng trở lại máy móc nhập khẩu.  Những thay đổi này "
+"cho phép ngừng sử dụng một số API trong hệ thống nhập, đồng thời bổ sung các"
+" phương thức mới cho trình tìm kiếm và trình tải."
+
+#: ../../reference/import.rst:965
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../reference/import.rst:966
+#, fuzzy
+msgid "See :class:`types.ModuleType`."
+msgstr "Xem :class:`types.ModuleType`."
+
+#: ../../reference/import.rst:968
+#, fuzzy
+msgid ""
+"The importlib implementation avoids using the return value directly. "
+"Instead, it gets the module object by looking the module name up in "
+":data:`sys.modules`.  The indirect effect of this is that an imported module"
+" may replace itself in :data:`sys.modules`.  This is implementation-specific"
+" behavior that is not guaranteed to work in other Python implementations."
+msgstr ""
+"Việc triển khai importlib tránh sử dụng trực tiếp giá trị trả về. Thay vào "
+"đó, nó lấy đối tượng mô-đun bằng cách tra cứu tên mô-đun trong "
+":data:`sys.modules`.  Tác động gián tiếp của việc này là một mô-đun đã nhập "
+"có thể tự thay thế trong :data:`sys.modules`.  Đây là hành vi dành riêng cho"
+" việc triển khai và không được đảm bảo sẽ hoạt động trong các triển khai "
+"Python khác."
+
+#: ../../reference/import.rst:8
+#, fuzzy
+msgid "import machinery"
+msgstr "nhập khẩu máy móc"
+
+#: ../../reference/import.rst:64 ../../reference/import.rst:95
+#: ../../reference/import.rst:131
+#, fuzzy
+msgid "package"
+msgstr "gói"
+
+#: ../../reference/import.rst:95
+#, fuzzy
+msgid "regular"
+msgstr "đều đặn"
+
+#: ../../reference/import.rst:131
+#, fuzzy
+msgid "namespace"
+msgstr "không gian tên"
+
+#: ../../reference/import.rst:131
+#, fuzzy
+msgid "portion"
+msgstr "phần"
+
+#: ../../reference/import.rst:177
+#, fuzzy
+msgid "sys.modules"
+msgstr "sys.modules"
+
+#: ../../reference/import.rst:212 ../../reference/import.rst:278
+#, fuzzy
+msgid "finder"
+msgstr "người tìm kiếm"
+
+#: ../../reference/import.rst:212
+#, fuzzy
+msgid "loader"
+msgstr "người nạp đạn"
+
+#: ../../reference/import.rst:212
+#, fuzzy
+msgid "module spec"
+msgstr "thông số mô-đun"
+
+#: ../../reference/import.rst:251
+#, fuzzy
+msgid "import hooks"
+msgstr "móc nhập khẩu"
+
+#: ../../reference/import.rst:251
+#, fuzzy
+msgid "meta hooks"
+msgstr "móc meta"
+
+#: ../../reference/import.rst:251
+#, fuzzy
+msgid "path hooks"
+msgstr "móc đường dẫn"
+
+#: ../../reference/import.rst:251
+#, fuzzy
+msgid "hooks"
+msgstr "móc"
+
+#: ../../reference/import.rst:251
+#, fuzzy
+msgid "import"
+msgstr "nhập khẩu"
+
+#: ../../reference/import.rst:251
+#, fuzzy
+msgid "meta"
+msgstr "meta"
+
+#: ../../reference/import.rst:251
+#, fuzzy
+msgid "path"
+msgstr "con đường"
+
+#: ../../reference/import.rst:278
+#, fuzzy
+msgid "sys.meta_path"
+msgstr "sys.meta_path"
+
+#: ../../reference/import.rst:278
+#, fuzzy
+msgid "find_spec"
+msgstr "tìm_spec"
+
+#: ../../reference/import.rst:638
+#, fuzzy
+msgid "path based finder"
+msgstr "công cụ tìm kiếm dựa trên đường dẫn"
+
+#: ../../reference/import.rst:687
+#, fuzzy
+msgid "sys.path"
+msgstr "sys.path"
+
+#: ../../reference/import.rst:687
+#, fuzzy
+msgid "sys.path_hooks"
+msgstr "sys.path_hooks"
+
+#: ../../reference/import.rst:687
+#, fuzzy
+msgid "sys.path_importer_cache"
+msgstr "sys.path_importer_cache"
+
+#: ../../reference/import.rst:687
+#, fuzzy
+msgid "PYTHONPATH"
+msgstr "PYTHONPATH"

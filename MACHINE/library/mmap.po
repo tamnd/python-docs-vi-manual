@@ -1,0 +1,746 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/mmap.rst:2
+#, fuzzy
+msgid ":mod:`!mmap` --- Memory-mapped file support"
+msgstr ":mod:`!mmap` --- Hỗ trợ tập tin ánh xạ bộ nhớ"
+
+#: ../../includes/wasm-notavail.rst:3
+#, fuzzy
+msgid "Availability"
+msgstr "sẵn có"
+
+#: ../../includes/wasm-notavail.rst:5
+#, fuzzy
+msgid ""
+"This module does not work or is not available on WebAssembly. See "
+":ref:`wasm-availability` for more information."
+msgstr ""
+"Mô-đun này không hoạt động hoặc không có trên WebAssembly. Xem :ref:`wasm-"
+"availability` để biết thêm thông tin."
+
+#: ../../library/mmap.rst:11
+#, fuzzy
+msgid ""
+"Memory-mapped file objects behave like both :class:`bytearray` and like "
+":term:`file objects <file object>`.  You can use mmap objects in most places"
+" where :class:`bytearray` are expected; for example, you can use the "
+":mod:`re` module to search through a memory-mapped file.  You can also "
+"change a single byte by doing ``obj[index] = 97``, or change a subsequence "
+"by assigning to a slice: ``obj[i1:i2] = b'...'``.  You can also read and "
+"write data starting at the current file position, and :meth:`seek` through "
+"the file to different positions."
+msgstr ""
+"Các đối tượng tệp được ánh xạ bộ nhớ hoạt động giống như cả "
+":class:`bytearray` và :term:`file objects <file object>`.  Bạn có thể sử "
+"dụng các đối tượng mmap ở hầu hết các nơi mong đợi :class:`bytearray`; ví "
+"dụ: bạn có thể sử dụng mô-đun :mod:`re` để tìm kiếm thông qua tệp được ánh "
+"xạ bộ nhớ.  Bạn cũng có thể thay đổi một byte đơn bằng cách thực hiện "
+"``obj[index] = 97`` hoặc thay đổi chuỗi con bằng cách gán cho một lát: "
+"``obj[i1:i2] = b'...'``.  Bạn cũng có thể đọc và ghi dữ liệu bắt đầu từ vị "
+"trí tệp hiện tại và :meth:`seek` thông qua tệp đến các vị trí khác nhau."
+
+#: ../../library/mmap.rst:19
+#, fuzzy
+msgid ""
+"A memory-mapped file is created by the :class:`~mmap.mmap` constructor, "
+"which is different on Unix and on Windows.  In either case you must provide "
+"a file descriptor for a file opened for update. If you wish to map an "
+"existing Python file object, use its :meth:`~io.IOBase.fileno` method to "
+"obtain the correct value for the *fileno* parameter.  Otherwise, you can "
+"open the file using the :func:`os.open` function, which returns a file "
+"descriptor directly (the file still needs to be closed when done)."
+msgstr ""
+"Tệp ánh xạ bộ nhớ được tạo bởi hàm tạo :class:`~mmap.mmap`, khác với trên "
+"Unix và trên Windows.  Trong cả hai trường hợp, bạn phải cung cấp bộ mô tả "
+"tệp cho tệp được mở để cập nhật. Nếu bạn muốn ánh xạ một đối tượng tệp "
+"Python hiện có, hãy sử dụng phương thức :meth:`~io.IOBase.fileno` của nó để "
+"lấy giá trị chính xác cho tham số *fileno*.  Nếu không, bạn có thể mở tệp "
+"bằng hàm :func:`os.open`, hàm này trả về trực tiếp bộ mô tả tệp (tệp vẫn cần"
+" được đóng khi hoàn tất)."
+
+#: ../../library/mmap.rst:28
+#, fuzzy
+msgid ""
+"If you want to create a memory-mapping for a writable, buffered file, you "
+"should :func:`~io.IOBase.flush` the file first.  This is necessary to ensure"
+" that local modifications to the buffers are actually available to the "
+"mapping."
+msgstr ""
+"Nếu bạn muốn tạo ánh xạ bộ nhớ cho một tệp đệm có thể ghi, trước tiên bạn "
+"nên :func:`~io.IOBase.flush` tệp đó.  Điều này là cần thiết để đảm bảo rằng "
+"các sửa đổi cục bộ đối với bộ đệm thực sự có sẵn cho ánh xạ."
+
+#: ../../library/mmap.rst:33
+#, fuzzy
+msgid ""
+"For both the Unix and Windows versions of the constructor, *access* may be "
+"specified as an optional keyword parameter. *access* accepts one of four "
+"values: :const:`ACCESS_READ`, :const:`ACCESS_WRITE`, or :const:`ACCESS_COPY`"
+" to specify read-only, write-through or copy-on-write memory respectively, "
+"or :const:`ACCESS_DEFAULT` to defer to *prot*.  *access* can be used on both"
+" Unix and Windows.  If *access* is not specified, Windows mmap returns a "
+"write-through mapping.  The initial memory values for all three access types"
+" are taken from the specified file.  Assignment to an :const:`ACCESS_READ` "
+"memory map raises a :exc:`TypeError` exception.  Assignment to an "
+":const:`ACCESS_WRITE` memory map affects both memory and the underlying "
+"file. Assignment to an :const:`ACCESS_COPY` memory map affects memory but "
+"does not update the underlying file."
+msgstr ""
+"Đối với cả phiên bản Unix và Windows của hàm tạo, *access* có thể được chỉ "
+"định làm tham số từ khóa tùy chọn. *access* chấp nhận một trong bốn giá trị:"
+" :const:`ACCESS_READ`, :const:`ACCESS_WRITE` hoặc :const:`ACCESS_COPY` để "
+"chỉ định bộ nhớ chỉ đọc, ghi qua hoặc sao chép khi ghi tương ứng hoặc "
+":const:`ACCESS_DEFAULT` để trì hoãn thành *prot*.  *access* có thể được sử "
+"dụng trên cả Unix và Windows.  Nếu *access* không được chỉ định, Windows "
+"mmap sẽ trả về ánh xạ ghi qua.  Các giá trị bộ nhớ ban đầu cho cả ba loại "
+"truy cập được lấy từ tệp được chỉ định.  Việc gán cho bản đồ bộ nhớ "
+":const:`ACCESS_READ` sẽ tạo ra ngoại lệ :exc:`TypeError`.  Việc gán cho bản "
+"đồ bộ nhớ :const:`ACCESS_WRITE` ảnh hưởng đến cả bộ nhớ và tệp cơ bản. Việc "
+"gán cho bản đồ bộ nhớ :const:`ACCESS_COPY` ảnh hưởng đến bộ nhớ nhưng không "
+"cập nhật tệp cơ bản."
+
+#: ../../library/mmap.rst:46
+#, fuzzy
+msgid "Added :const:`ACCESS_DEFAULT` constant."
+msgstr "Đã thêm hằng số :const:`ACCESS_DEFAULT`."
+
+#: ../../library/mmap.rst:49
+#, fuzzy
+msgid ""
+"To map anonymous memory, -1 should be passed as the fileno along with the "
+"length."
+msgstr ""
+"Để ánh xạ bộ nhớ ẩn danh, -1 phải được chuyển dưới dạng fileno cùng với độ "
+"dài."
+
+#: ../../library/mmap.rst:53
+#, fuzzy
+msgid ""
+"**(Windows version)** Maps *length* bytes from the file specified by the "
+"file handle *fileno*, and creates a mmap object.  If *length* is larger than"
+" the current size of the file, the file is extended to contain *length* "
+"bytes.  If *length* is ``0``, the maximum length of the map is the current "
+"size of the file, except that if the file is empty Windows raises an "
+"exception (you cannot create an empty mapping on Windows)."
+msgstr ""
+"**(Windows version)** Bản đồ các byte *length* từ tệp được chỉ định bởi tệp "
+"xử lý *fileno* và tạo đối tượng mmap.  Nếu *length* lớn hơn kích thước hiện "
+"tại của tệp, tệp sẽ được mở rộng để chứa byte *length*.  Nếu *length* là "
+"``0``, độ dài tối đa của bản đồ là kích thước hiện tại của tệp, ngoại trừ "
+"nếu tệp trống thì Windows sẽ đưa ra một ngoại lệ (bạn không thể tạo ánh xạ "
+"trống trên Windows)."
+
+#: ../../library/mmap.rst:60
+#, fuzzy
+msgid ""
+"*tagname*, if specified and not ``None``, is a string giving a tag name for "
+"the mapping.  Windows allows you to have many different mappings against the"
+" same file.  If you specify the name of an existing tag, that tag is opened,"
+" otherwise a new tag of this name is created.  If this parameter is omitted "
+"or ``None``, the mapping is created without a name.  Avoiding the use of the"
+" *tagname* parameter will assist in keeping your code portable between Unix "
+"and Windows."
+msgstr ""
+"*tagname*, nếu được chỉ định chứ không phải ``None``, là một chuỗi cung cấp "
+"tên thẻ cho ánh xạ.  Windows cho phép bạn có nhiều ánh xạ khác nhau trên "
+"cùng một tệp.  Nếu bạn chỉ định tên của thẻ hiện có, thẻ đó sẽ được mở, nếu "
+"không, thẻ mới có tên này sẽ được tạo.  Nếu tham số này bị bỏ qua hoặc "
+"``None``, ánh xạ sẽ được tạo mà không có tên.  Việc tránh sử dụng tham số "
+"*tagname* sẽ giúp giữ cho mã của bạn có thể di chuyển giữa Unix và Windows."
+
+#: ../../library/mmap.rst:68
+#, fuzzy
+msgid ""
+"*offset* may be specified as a non-negative integer offset. mmap references "
+"will be relative to the offset from the beginning of the file. *offset* "
+"defaults to 0.  *offset* must be a multiple of the "
+":const:`ALLOCATIONGRANULARITY`."
+msgstr ""
+"*offset* có thể được chỉ định làm phần bù số nguyên không âm. tham chiếu "
+"mmap sẽ liên quan đến phần bù từ đầu tệp. *offset* mặc định là 0. *offset* "
+"phải là bội số của :const:`ALLOCATIONGRANULARITY`."
+
+#: ../../library/mmap.rst:72 ../../library/mmap.rst:174
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``mmap.__new__`` with arguments "
+"``fileno``, ``length``, ``access``, ``offset``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``mmap.__new__`` với các đối số "
+"``fileno``, ``length``, ``access``, ``offset``."
+
+#: ../../library/mmap.rst:78
+#, fuzzy
+msgid ""
+"**(Unix version)** Maps *length* bytes from the file specified by the file "
+"descriptor *fileno*, and returns a mmap object.  If *length* is ``0``, the "
+"maximum length of the map will be the current size of the file when "
+":class:`~mmap.mmap` is called."
+msgstr ""
+"**(Unix version)** Ánh xạ các byte *length* từ tệp được chỉ định bởi bộ mô "
+"tả tệp *fileno* và trả về một đối tượng mmap.  Nếu *length* là ``0``, độ dài"
+" tối đa của bản đồ sẽ là kích thước hiện tại của tệp khi :class:`~mmap.mmap`"
+" được gọi."
+
+#: ../../library/mmap.rst:83
+#, fuzzy
+msgid ""
+"*flags* specifies the nature of the mapping. :const:`MAP_PRIVATE` creates a "
+"private copy-on-write mapping, so changes to the contents of the mmap object"
+" will be private to this process, and :const:`MAP_SHARED` creates a mapping "
+"that's shared with all other processes mapping the same areas of the file.  "
+"The default value is :const:`MAP_SHARED`. Some systems have additional "
+"possible flags with the full list specified in :ref:`MAP_* constants <map-"
+"constants>`."
+msgstr ""
+"*flags* chỉ định bản chất của ánh xạ. :const:`MAP_PRIVATE` tạo một ánh xạ "
+"sao chép khi ghi riêng tư, do đó các thay đổi đối với nội dung của đối tượng"
+" mmap sẽ ở chế độ riêng tư đối với quy trình này và :const:`MAP_SHARED` tạo "
+"một ánh xạ được chia sẻ với tất cả các quy trình khác ánh xạ các khu vực "
+"giống nhau của tệp.  Giá trị mặc định là :const:`MAP_SHARED`. Một số hệ "
+"thống có thêm các cờ có thể có với danh sách đầy đủ được chỉ định trong "
+":ref:`MAP_* constants <map-constants>`."
+
+#: ../../library/mmap.rst:91
+#, fuzzy
+msgid ""
+"*prot*, if specified, gives the desired memory protection; the two most "
+"useful values are :const:`PROT_READ` and :const:`PROT_WRITE`, to specify "
+"that the pages may be read or written.  *prot* defaults to :const:`PROT_READ"
+" \\| PROT_WRITE`."
+msgstr ""
+"*prot*, nếu được chỉ định, sẽ cung cấp khả năng bảo vệ bộ nhớ mong muốn; hai"
+" giá trị hữu ích nhất là :const:`PROT_READ` và :const:`PROT_WRITE`, để chỉ "
+"định rằng các trang có thể được đọc hoặc ghi.  *prot* mặc định là "
+":const:`PROT_READ \\| PROT_WRITE`."
+
+#: ../../library/mmap.rst:96
+#, fuzzy
+msgid ""
+"*access* may be specified in lieu of *flags* and *prot* as an optional "
+"keyword parameter.  It is an error to specify both *flags*, *prot* and "
+"*access*.  See the description of *access* above for information on how to "
+"use this parameter."
+msgstr ""
+"*access* có thể được chỉ định thay cho *flags* và *prot* làm tham số từ khóa"
+" tùy chọn.  Sẽ có lỗi khi chỉ định cả *flags*, *prot* và *access*.  Xem mô "
+"tả của *access* ở trên để biết thông tin về cách sử dụng tham số này."
+
+#: ../../library/mmap.rst:101
+#, fuzzy
+msgid ""
+"*offset* may be specified as a non-negative integer offset. mmap references "
+"will be relative to the offset from the beginning of the file. *offset* "
+"defaults to 0. *offset* must be a multiple of :const:`ALLOCATIONGRANULARITY`"
+" which is equal to :const:`PAGESIZE` on Unix systems."
+msgstr ""
+"*offset* có thể được chỉ định làm phần bù số nguyên không âm. tham chiếu "
+"mmap sẽ liên quan đến phần bù từ đầu tệp. *offset* mặc định là 0. *offset* "
+"phải là bội số của :const:`ALLOCATIONGRANULARITY`, bằng :const:`PAGESIZE` "
+"trên hệ thống Unix."
+
+#: ../../library/mmap.rst:106
+#, fuzzy
+msgid ""
+"If *trackfd* is ``False``, the file descriptor specified by *fileno* will "
+"not be duplicated, and the resulting :class:`!mmap` object will not be "
+"associated with the map's underlying file. This means that the "
+":meth:`~mmap.mmap.size` and :meth:`~mmap.mmap.resize` methods will fail. "
+"This mode is useful to limit the number of open file descriptors."
+msgstr ""
+"Nếu *trackfd* là ``False``, bộ mô tả tệp được chỉ định bởi *fileno* sẽ không"
+" bị trùng lặp và đối tượng :class:`!mmap` thu được sẽ không được liên kết "
+"với tệp cơ bản của bản đồ. Điều này có nghĩa là phương thức "
+":meth:`~mmap.mmap.size` và :meth:`~mmap.mmap.resize` sẽ thất bại. Chế độ này"
+" hữu ích để giới hạn số lượng bộ mô tả tệp đang mở."
+
+#: ../../library/mmap.rst:113
+#, fuzzy
+msgid ""
+"To ensure validity of the created memory mapping the file specified by the "
+"descriptor *fileno* is internally automatically synchronized with the "
+"physical backing store on macOS."
+msgstr ""
+"Để đảm bảo tính hợp lệ của ánh xạ bộ nhớ đã tạo, tệp được chỉ định bởi bộ mô"
+" tả *fileno* sẽ được tự động đồng bộ hóa nội bộ với kho lưu trữ sao lưu vật "
+"lý trên macOS."
+
+#: ../../library/mmap.rst:117
+#, fuzzy
+msgid "The *trackfd* parameter was added."
+msgstr "Tham số *trackfd* đã được thêm vào."
+
+#: ../../library/mmap.rst:120
+#, fuzzy
+msgid "This example shows a simple way of using :class:`~mmap.mmap`::"
+msgstr "Ví dụ này cho thấy cách sử dụng :class:`~mmap.mmap` đơn giản::"
+
+#: ../../library/mmap.rst:122
+#, fuzzy
+msgid ""
+"import mmap\n"
+"\n"
+"# write a simple example file\n"
+"with open(\"hello.txt\", \"wb\") as f:\n"
+"    f.write(b\"Hello Python!\\n\")\n"
+"\n"
+"with open(\"hello.txt\", \"r+b\") as f:\n"
+"    # memory-map the file, size 0 means whole file\n"
+"    mm = mmap.mmap(f.fileno(), 0)\n"
+"    # read content via standard file methods\n"
+"    print(mm.readline())  # prints b\"Hello Python!\\n\"\n"
+"    # read content via slice notation\n"
+"    print(mm[:5])  # prints b\"Hello\"\n"
+"    # update content using slice notation;\n"
+"    # note that new content must have same size\n"
+"    mm[6:] = b\" world!\\n\"\n"
+"    # ... and read again using standard file methods\n"
+"    mm.seek(0)\n"
+"    print(mm.readline())  # prints b\"Hello  world!\\n\"\n"
+"    # close the map\n"
+"    mm.close()"
+msgstr ""
+"nhập mmap\n"
+"\n"
+"# write một tệp ví dụ đơn giản\n"
+"với open(\"hello.txt\", \"wb\") là f:\n"
+"    f.write(b\"Xin chào Python!\\n\")\n"
+"\n"
+"với open(\"hello.txt\", \"r+b\") là f:\n"
+"    # memory-map tệp, kích thước 0 có nghĩa là toàn bộ tệp\n"
+"    mm = mmap.mmap(f.fileno(), 0)\n"
+"    nội dung # read thông qua các phương thức tệp tiêu chuẩn\n"
+"    print(mm.readline()) # prints b\"Xin chào Python!\\n\"\n"
+"    nội dung # read thông qua ký hiệu lát cắt\n"
+"    print(mm[:5]) # prints b\"Xin chào\"\n"
+"    nội dung # update sử dụng ký hiệu lát cắt;\n"
+"    # note rằng nội dung mới phải có cùng kích thước\n"
+"    mm[6:] = b\" thế giới!\\n\"\n"
+"    # ... và đọc lại bằng các phương thức tệp tiêu chuẩn\n"
+"    mm.seek(0)\n"
+"    print(mm.readline()) # prints b\"Xin chào thế giới!\\n\"\n"
+"    # close bản đồ\n"
+"    mm.close()"
+
+#: ../../library/mmap.rst:145
+#, fuzzy
+msgid ""
+":class:`~mmap.mmap` can also be used as a context manager in a "
+":keyword:`with` statement::"
+msgstr ""
+":class:`~mmap.mmap` cũng có thể được sử dụng làm trình quản lý bối cảnh "
+"trong câu lệnh :keyword:`with` ::"
+
+#: ../../library/mmap.rst:148
+#, fuzzy
+msgid ""
+"import mmap\n"
+"\n"
+"with mmap.mmap(-1, 13) as mm:\n"
+"    mm.write(b\"Hello world!\")"
+msgstr ""
+"nhập mmap\n"
+"\n"
+"với mmap.mmap(-1, 13) là mm:\n"
+"    mm.write(b\"Xin chào thế giới!\")"
+
+#: ../../library/mmap.rst:153
+#, fuzzy
+msgid "Context manager support."
+msgstr "Hỗ trợ quản lý bối cảnh."
+
+#: ../../library/mmap.rst:157
+#, fuzzy
+msgid ""
+"The next example demonstrates how to create an anonymous map and exchange "
+"data between the parent and child processes::"
+msgstr ""
+"Ví dụ tiếp theo trình bày cách tạo bản đồ ẩn danh và trao đổi dữ liệu giữa "
+"tiến trình cha và con::"
+
+#: ../../library/mmap.rst:160
+#, fuzzy
+msgid ""
+"import mmap\n"
+"import os\n"
+"\n"
+"mm = mmap.mmap(-1, 13)\n"
+"mm.write(b\"Hello world!\")\n"
+"\n"
+"pid = os.fork()\n"
+"\n"
+"if pid == 0:  # In a child process\n"
+"    mm.seek(0)\n"
+"    print(mm.readline())\n"
+"\n"
+"    mm.close()"
+msgstr ""
+"nhập mmap\n"
+"hệ điều hành nhập khẩu\n"
+"\n"
+"mm = mmap.mmap(-1, 13)\n"
+"mm.write(b\"Xin chào thế giới!\")\n"
+"\n"
+"pid = os.fork()\n"
+"\n"
+"if pid == 0: # In một tiến trình con\n"
+"    mm.seek(0)\n"
+"    in(mm.readline())\n"
+"\n"
+"    mm.close()"
+
+#: ../../library/mmap.rst:176
+#, fuzzy
+msgid "Memory-mapped file objects support the following methods:"
+msgstr "Các đối tượng tệp được ánh xạ bộ nhớ hỗ trợ các phương thức sau:"
+
+#: ../../library/mmap.rst:180
+#, fuzzy
+msgid ""
+"Closes the mmap. Subsequent calls to other methods of the object will result"
+" in a ValueError exception being raised. This will not close the open file."
+msgstr ""
+"Đóng mmap. Các cuộc gọi tiếp theo đến các phương thức khác của đối tượng sẽ "
+"dẫn đến ngoại lệ ValueError được đưa ra. Điều này sẽ không đóng tập tin đang"
+" mở."
+
+#: ../../library/mmap.rst:187
+#, fuzzy
+msgid "``True`` if the file is closed."
+msgstr "``True`` nếu tập tin bị đóng."
+
+#: ../../library/mmap.rst:194
+#, fuzzy
+msgid ""
+"Returns the lowest index in the object where the subsequence *sub* is found,"
+" such that *sub* is contained in the range [*start*, *end*]. Optional "
+"arguments *start* and *end* are interpreted as in slice notation. Returns "
+"``-1`` on failure."
+msgstr ""
+"Trả về chỉ mục thấp nhất trong đối tượng nơi tìm thấy dãy con *sub*, sao cho"
+" *sub* được chứa trong phạm vi [*start*, *end*]. Các đối số tùy chọn *start*"
+" và *end* được hiểu là trong ký hiệu lát cắt. Trả về ``-1`` khi thất bại."
+
+#: ../../library/mmap.rst:199 ../../library/mmap.rst:292
+#: ../../library/mmap.rst:332
+#, fuzzy
+msgid "Writable :term:`bytes-like object` is now accepted."
+msgstr ":term:`bytes-like object` có thể ghi hiện đã được chấp nhận."
+
+#: ../../library/mmap.rst:206
+#, fuzzy
+msgid ""
+"Flushes changes made to the in-memory copy of a file back to disk. Without "
+"use of this call there is no guarantee that changes are written back before "
+"the object is destroyed.  If *offset* and *size* are specified, only changes"
+" to the given range of bytes will be flushed to disk; otherwise, the whole "
+"extent of the mapping is flushed.  *offset* must be a multiple of the "
+":const:`PAGESIZE` or :const:`ALLOCATIONGRANULARITY`."
+msgstr ""
+"Xóa các thay đổi được thực hiện đối với bản sao trong bộ nhớ của tệp trở lại"
+" đĩa. Nếu không sử dụng lệnh gọi này thì không có gì đảm bảo rằng các thay "
+"đổi sẽ được ghi lại trước khi đối tượng bị hủy.  Nếu *offset* và *size* được"
+" chỉ định, chỉ những thay đổi đối với phạm vi byte nhất định mới được xóa "
+"vào đĩa; mặt khác, toàn bộ phạm vi ánh xạ sẽ bị xóa.  *offset* phải là bội "
+"số của :const:`PAGESIZE` hoặc :const:`ALLOCATIONGRANULARITY`."
+
+#: ../../library/mmap.rst:213
+#, fuzzy
+msgid ""
+"``None`` is returned to indicate success.  An exception is raised when the "
+"call failed."
+msgstr ""
+"``None`` được trả về để biểu thị thành công.  Một ngoại lệ được đưa ra khi "
+"cuộc gọi không thành công."
+
+#: ../../library/mmap.rst:216
+#, fuzzy
+msgid ""
+"Previously, a nonzero value was returned on success; zero was returned on "
+"error under Windows.  A zero value was returned on success; an exception was"
+" raised on error under Unix."
+msgstr ""
+"Trước đây, giá trị khác 0 được trả về nếu thành công; số 0 được trả về do "
+"lỗi trong Windows.  Giá trị 0 được trả về khi thành công; một ngoại lệ đã "
+"được đưa ra do lỗi trong Unix."
+
+#: ../../library/mmap.rst:224
+#, fuzzy
+msgid ""
+"Send advice *option* to the kernel about the memory region beginning at "
+"*start* and extending *length* bytes.  *option* must be one of the "
+":ref:`MADV_* constants <madvise-constants>` available on the system.  If "
+"*start* and *length* are omitted, the entire mapping is spanned.  On some "
+"systems (including Linux), *start* must be a multiple of the "
+":const:`PAGESIZE`."
+msgstr ""
+"Gửi lời khuyên *option* tới kernel về vùng bộ nhớ bắt đầu từ *start* và mở "
+"rộng byte *length*.  *option* phải là một trong những :ref:`MADV_* constants"
+" <madvise-constants>` có sẵn trên hệ thống.  Nếu *start* và *length* bị bỏ "
+"qua, toàn bộ ánh xạ sẽ được kéo dài.  Trên một số hệ thống (bao gồm cả "
+"Linux), *start* phải là bội số của :const:`PAGESIZE`."
+
+#: ../../library/mmap.rst:231
+#, fuzzy
+msgid "Availability: Systems with the ``madvise()`` system call."
+msgstr "Tính khả dụng: Các hệ thống có lệnh gọi hệ thống ``madvise()``."
+
+#: ../../library/mmap.rst:238
+#, fuzzy
+msgid ""
+"Copy the *count* bytes starting at offset *src* to the destination index "
+"*dest*.  If the mmap was created with :const:`ACCESS_READ`, then calls to "
+"move will raise a :exc:`TypeError` exception."
+msgstr ""
+"Sao chép các byte *count* bắt đầu từ offset *src* tới chỉ mục đích *dest*.  "
+"Nếu mmap được tạo bằng :const:`ACCESS_READ` thì lệnh gọi di chuyển sẽ đưa ra"
+" ngoại lệ :exc:`TypeError`."
+
+#: ../../library/mmap.rst:245
+#, fuzzy
+msgid ""
+"Return a :class:`bytes` containing up to *n* bytes starting from the current"
+" file position. If the argument is omitted, ``None`` or negative, return all"
+" bytes from the current file position to the end of the mapping. The file "
+"position is updated to point after the bytes that were returned."
+msgstr ""
+"Trả về :class:`bytes` chứa tối đa *n* byte bắt đầu từ vị trí tệp hiện tại. "
+"Nếu đối số bị bỏ qua, ``None`` hoặc âm, hãy trả về tất cả byte từ vị trí tệp"
+" hiện tại đến cuối ánh xạ. Vị trí tệp được cập nhật để trỏ sau byte được trả"
+" về."
+
+#: ../../library/mmap.rst:251
+#, fuzzy
+msgid "Argument can be omitted or ``None``."
+msgstr "Đối số có thể được bỏ qua hoặc ``None``."
+
+#: ../../library/mmap.rst:256
+#, fuzzy
+msgid ""
+"Returns a byte at the current file position as an integer, and advances the "
+"file position by 1."
+msgstr ""
+"Trả về một byte ở vị trí tệp hiện tại dưới dạng số nguyên và tăng vị trí tệp"
+" lên 1."
+
+#: ../../library/mmap.rst:262
+#, fuzzy
+msgid ""
+"Returns a single line, starting at the current file position and up to the "
+"next newline. The file position is updated to point after the bytes that "
+"were returned."
+msgstr ""
+"Trả về một dòng duy nhất, bắt đầu từ vị trí tệp hiện tại cho đến dòng mới "
+"tiếp theo. Vị trí tệp được cập nhật để trỏ sau byte được trả về."
+
+#: ../../library/mmap.rst:269
+#, fuzzy
+msgid "Resizes the map and the underlying file, if any."
+msgstr "Thay đổi kích thước bản đồ và tệp cơ bản, nếu có."
+
+#: ../../library/mmap.rst:271
+#, fuzzy
+msgid ""
+"Resizing a map created with *access* of :const:`ACCESS_READ` or "
+":const:`ACCESS_COPY`, will raise a :exc:`TypeError` exception. Resizing a "
+"map created with *trackfd* set to ``False``, will raise a :exc:`ValueError` "
+"exception."
+msgstr ""
+"Thay đổi kích thước bản đồ được tạo bằng *access* của :const:`ACCESS_READ` "
+"hoặc :const:`ACCESS_COPY`, sẽ tạo ra ngoại lệ :exc:`TypeError`. Việc thay "
+"đổi kích thước bản đồ được tạo bằng *trackfd* được đặt thành ``False`` sẽ "
+"tạo ra ngoại lệ :exc:`ValueError`."
+
+#: ../../library/mmap.rst:276
+#, fuzzy
+msgid ""
+"**On Windows**: Resizing the map will raise an :exc:`OSError` if there are "
+"other maps against the same named file. Resizing an anonymous map (ie "
+"against the pagefile) will silently create a new map with the original data "
+"copied over up to the length of the new size."
+msgstr ""
+"**On Windows**: Thay đổi kích thước bản đồ sẽ tăng :exc:`OSError` nếu có các"
+" bản đồ khác đối với cùng một tệp có tên. Thay đổi kích thước bản đồ ẩn danh"
+" (tức là so với tệp trang) sẽ âm thầm tạo một bản đồ mới với dữ liệu gốc "
+"được sao chép theo chiều dài của kích thước mới."
+
+#: ../../library/mmap.rst:281
+#, fuzzy
+msgid ""
+"Correctly fails if attempting to resize when another map is held Allows "
+"resize against an anonymous map on Windows"
+msgstr ""
+"Không thành công nếu cố gắng thay đổi kích thước khi bản đồ khác được giữ "
+"Cho phép thay đổi kích thước đối với bản đồ ẩn danh trên Windows"
+
+#: ../../library/mmap.rst:287
+#, fuzzy
+msgid ""
+"Returns the highest index in the object where the subsequence *sub* is "
+"found, such that *sub* is contained in the range [*start*, *end*]. Optional "
+"arguments *start* and *end* are interpreted as in slice notation. Returns "
+"``-1`` on failure."
+msgstr ""
+"Trả về chỉ số cao nhất trong đối tượng nơi tìm thấy dãy con *sub*, sao cho "
+"*sub* được chứa trong phạm vi [*start*, *end*]. Các đối số tùy chọn *start* "
+"và *end* được hiểu là trong ký hiệu lát cắt. Trả về ``-1`` khi thất bại."
+
+#: ../../library/mmap.rst:298
+#, fuzzy
+msgid ""
+"Set the file's current position.  *whence* argument is optional and defaults"
+" to ``os.SEEK_SET`` or ``0`` (absolute file positioning); other values are "
+"``os.SEEK_CUR`` or ``1`` (seek relative to the current position) and "
+"``os.SEEK_END`` or ``2`` (seek relative to the file's end)."
+msgstr ""
+"Đặt vị trí hiện tại của tập tin.  đối số *whence* là tùy chọn và mặc định là"
+" ``os.SEEK_SET`` hoặc ``0`` (định vị tệp tuyệt đối); các giá trị khác là "
+"``os.SEEK_CUR`` hoặc ``1`` (tìm kiếm liên quan đến vị trí hiện tại) và "
+"``os.SEEK_END`` hoặc ``2`` (tìm kiếm liên quan đến phần cuối của tệp)."
+
+#: ../../library/mmap.rst:303
+#, fuzzy
+msgid "Return the new absolute position instead of ``None``."
+msgstr "Trả về vị trí tuyệt đối mới thay vì ``None``."
+
+#: ../../library/mmap.rst:308
+#, fuzzy
+msgid ""
+"Return whether the file supports seeking, and the return value is always "
+"``True``."
+msgstr ""
+"Trả về xem tệp có hỗ trợ tìm kiếm hay không và giá trị trả về luôn là "
+"``True``."
+
+#: ../../library/mmap.rst:314
+#, fuzzy
+msgid ""
+"Return the length of the file, which can be larger than the size of the "
+"memory-mapped area."
+msgstr ""
+"Trả về độ dài của tệp, có thể lớn hơn kích thước của vùng ánh xạ bộ nhớ."
+
+#: ../../library/mmap.rst:320
+#, fuzzy
+msgid "Returns the current position of the file pointer."
+msgstr "Trả về vị trí hiện tại của con trỏ tập tin."
+
+#: ../../library/mmap.rst:325
+#, fuzzy
+msgid ""
+"Write the bytes in *bytes* into memory at the current position of the file "
+"pointer and return the number of bytes written (never less than "
+"``len(bytes)``, since if the write fails, a :exc:`ValueError` will be "
+"raised).  The file position is updated to point after the bytes that were "
+"written.  If the mmap was created with :const:`ACCESS_READ`, then writing to"
+" it will raise a :exc:`TypeError` exception."
+msgstr ""
+"Ghi các byte trong *bytes* vào bộ nhớ tại vị trí hiện tại của con trỏ tệp và"
+" trả về số byte đã ghi (không bao giờ nhỏ hơn ``len(bytes)``, vì nếu ghi "
+"thất bại, :exc:`ValueError` sẽ được nâng lên).  Vị trí tệp được cập nhật để "
+"trỏ sau byte được ghi.  Nếu mmap được tạo bằng :const:`ACCESS_READ` thì việc"
+" ghi vào nó sẽ tạo ra ngoại lệ :exc:`TypeError`."
+
+#: ../../library/mmap.rst:335
+#, fuzzy
+msgid "The number of bytes written is now returned."
+msgstr "Số byte được ghi bây giờ được trả về."
+
+#: ../../library/mmap.rst:341
+#, fuzzy
+msgid ""
+"Write the integer *byte* into memory at the current position of the file "
+"pointer; the file position is advanced by ``1``. If the mmap was created "
+"with :const:`ACCESS_READ`, then writing to it will raise a :exc:`TypeError` "
+"exception."
+msgstr ""
+"Ghi số nguyên *byte* vào bộ nhớ tại vị trí hiện tại của con trỏ tệp; vị trí "
+"tập tin được nâng cao bởi ``1``. Nếu mmap được tạo bằng :const:`ACCESS_READ`"
+" thì việc ghi vào nó sẽ tạo ra ngoại lệ :exc:`TypeError`."
+
+#: ../../library/mmap.rst:349
+#, fuzzy
+msgid "MADV_* Constants"
+msgstr "MADV_* Hằng số"
+
+#: ../../library/mmap.rst:376
+#, fuzzy
+msgid ""
+"These options can be passed to :meth:`mmap.madvise`.  Not every option will "
+"be present on every system."
+msgstr ""
+"Các tùy chọn này có thể được chuyển tới :meth:`mmap.madvise`.  Không phải "
+"mọi tùy chọn sẽ có mặt trên mọi hệ thống."
+
+#: ../../library/mmap.rst:379
+#, fuzzy
+msgid "Availability: Systems with the madvise() system call."
+msgstr "Tính khả dụng: Các hệ thống có lệnh gọi hệ thống madvise()."
+
+#: ../../library/mmap.rst:386
+#, fuzzy
+msgid "MAP_* Constants"
+msgstr "MAP_* Hằng số"
+
+#: ../../library/mmap.rst:410
+#, fuzzy
+msgid ""
+"These are the various flags that can be passed to :meth:`mmap.mmap`.  "
+":data:`MAP_ALIGNED_SUPER` is only available at FreeBSD and "
+":data:`MAP_CONCEAL` is only available at OpenBSD.  Note that some options "
+"might not be present on some systems."
+msgstr ""
+"Đây là những cờ khác nhau có thể được chuyển tới :meth:`mmap.mmap`.  "
+":data:`MAP_ALIGNED_SUPER` chỉ có tại FreeBSD và :data:`MAP_CONCEAL` chỉ có "
+"tại OpenBSD.  Lưu ý rằng một số tùy chọn có thể không có trên một số hệ "
+"thống."
+
+#: ../../library/mmap.rst:414
+#, fuzzy
+msgid "Added :data:`MAP_POPULATE` constant."
+msgstr "Đã thêm hằng số :data:`MAP_POPULATE`."
+
+#: ../../library/mmap.rst:417
+#, fuzzy
+msgid "Added :data:`MAP_STACK` constant."
+msgstr "Đã thêm hằng số :data:`MAP_STACK`."
+
+#: ../../library/mmap.rst:420
+#, fuzzy
+msgid "Added :data:`MAP_ALIGNED_SUPER` and :data:`MAP_CONCEAL` constants."
+msgstr "Đã thêm hằng số :data:`MAP_ALIGNED_SUPER` và :data:`MAP_CONCEAL`."
+
+#: ../../library/mmap.rst:423
+#, fuzzy
+msgid ""
+"Added :data:`MAP_32BIT`, :data:`MAP_HASSEMAPHORE`, :data:`MAP_JIT`, "
+":data:`MAP_NOCACHE`, :data:`MAP_NOEXTEND`, :data:`MAP_NORESERVE`, "
+":data:`MAP_RESILIENT_CODESIGN`, :data:`MAP_RESILIENT_MEDIA`, "
+":data:`MAP_TPRO`, :data:`MAP_TRANSLATED_ALLOW_EXECUTE`, and "
+":data:`MAP_UNIX03` constants."
+msgstr ""
+"Đã thêm các hằng số :data:`MAP_32BIT`, :data:`MAP_HASSEMAPHORE`, "
+":data:`MAP_JIT`, :data:`MAP_NOCACHE`, :data:`MAP_NOEXTEND`, "
+":data:`MAP_NORESERVE`, :data:`MAP_RESILIENT_CODESIGN`, "
+":data:`MAP_RESILIENT_MEDIA`, :data:`MAP_TPRO`, "
+":data:`MAP_TRANSLATED_ALLOW_EXECUTE` và :data:`MAP_UNIX03`."

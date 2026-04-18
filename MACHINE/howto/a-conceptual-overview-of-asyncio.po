@@ -1,0 +1,1334 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:5
+#, fuzzy
+msgid "A Conceptual Overview of :mod:`!asyncio`"
+msgstr "Tổng quan về khái niệm của :mod:`!asyncio`"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:7
+#, fuzzy
+msgid ""
+"This :ref:`HOWTO <how-tos>` article seeks to help you build a sturdy mental "
+"model of how :mod:`asyncio` fundamentally works, helping you understand the "
+"how and why behind the recommended patterns."
+msgstr ""
+"Bài viết :ref:`HOWTO <how-tos>` này nhằm giúp bạn xây dựng một mô hình tinh "
+"thần chắc chắn về cách hoạt động cơ bản của :mod:`asyncio`, giúp bạn hiểu "
+"cách thức và lý do đằng sau các mẫu được đề xuất."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:11
+#, fuzzy
+msgid ""
+"You might be curious about some key :mod:`!asyncio` concepts. By the end of "
+"this article, you'll be able to comfortably answer these questions:"
+msgstr ""
+"Bạn có thể tò mò về một số khái niệm chính của :mod:`!asyncio`. Đến cuối bài"
+" viết này, bạn sẽ có thể thoải mái trả lời những câu hỏi sau:"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:14
+#, fuzzy
+msgid "What's happening behind the scenes when an object is awaited?"
+msgstr "Điều gì đang xảy ra đằng sau khi một đối tượng được chờ đợi?"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:15
+#, fuzzy
+msgid ""
+"How does :mod:`!asyncio` differentiate between a task which doesn't need CPU"
+" time (such as a network request or file read) as opposed to a task that "
+"does (such as computing n-factorial)?"
+msgstr ""
+":mod:`!asyncio` phân biệt như thế nào giữa một tác vụ không cần thời gian "
+"CPU (chẳng hạn như yêu cầu mạng hoặc đọc tệp) với một tác vụ thực hiện "
+"(chẳng hạn như tính toán n-giai thừa)?"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:18
+#, fuzzy
+msgid ""
+"How to write an asynchronous variant of an operation, such as an async sleep"
+" or database request."
+msgstr ""
+"Cách viết một biến thể không đồng bộ của một thao tác, chẳng hạn như chế độ "
+"ngủ không đồng bộ hoặc yêu cầu cơ sở dữ liệu."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:23
+#, fuzzy
+msgid ""
+"The `guide <https://github.com/anordin95/a-conceptual-overview-of-asyncio/ "
+"tree/main>`_ that inspired this HOWTO article, by Alexander Nordin."
+msgstr ""
+"Zz000zz đã truyền cảm hứng cho bài viết HOWTO này của Alexander Nordin."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:25
+#, fuzzy
+msgid ""
+"This in-depth `YouTube tutorial series <https://www.youtube.com/ "
+"watch?v=Xbl7XjFYsN4&list=PLhNSoGM2ik6SIkVGXWBwerucXjgP1rHmB>`_ on "
+"``asyncio`` created by Python core team member, Łukasz Langa."
+msgstr ""
+"`YouTube tutorial series <https://www.youtube.com/ "
+"watch?v=Xbl7XjFYsN4&list=PLhNSoGM2ik6SIkVGXWBwerucXjgP1rHmB>`_ chuyên sâu về"
+" ``asyncio`` này được tạo bởi thành viên nhóm nòng cốt Python, Łukasz Langa."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:28
+#, fuzzy
+msgid ""
+"`500 Lines or Less: A Web Crawler With asyncio Coroutines <https:// "
+"aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html>`_ by A. "
+"Jesse Jiryu Davis and Guido van Rossum."
+msgstr ""
+"`500 Lines or Less: A Web Crawler With asyncio Coroutines <https:// "
+"aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html>`_ của A. "
+"Jesse Jiryu Davis và Guido van Rossum."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:34
+#, fuzzy
+msgid "A conceptual overview part 1: the high-level"
+msgstr "Tổng quan về khái niệm phần 1: cấp độ cao"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:36
+#, fuzzy
+msgid ""
+"In part 1, we'll cover the main, high-level building blocks of "
+":mod:`!asyncio`: the event loop, coroutine functions, coroutine objects, "
+"tasks, and ``await``."
+msgstr ""
+"Trong phần 1, chúng ta sẽ đề cập đến các khối xây dựng chính, cấp cao của "
+":mod:`!asyncio`: vòng lặp sự kiện, hàm coroutine, đối tượng coroutine, tác "
+"vụ và ``await``."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:41
+#, fuzzy
+msgid "Event Loop"
+msgstr "Vòng lặp sự kiện"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:43
+#, fuzzy
+msgid ""
+"Everything in :mod:`!asyncio` happens relative to the event loop. It's the "
+"star of the show. It's like an orchestra conductor. It's behind the scenes "
+"managing resources. Some power is explicitly granted to it, but a lot of its"
+" ability to get things done comes from the respect and cooperation of its "
+"worker bees."
+msgstr ""
+"Mọi thứ trong :mod:`!asyncio` xảy ra liên quan đến vòng lặp sự kiện. Đó là "
+"ngôi sao của chương trình. Nó giống như một người chỉ huy dàn nhạc. Đó là "
+"việc quản lý tài nguyên ở hậu trường. Một số quyền lực được trao rõ ràng cho"
+" nó, nhưng phần lớn khả năng hoàn thành công việc của nó đến từ sự tôn trọng"
+" và hợp tác của những con ong thợ."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:50
+#, fuzzy
+msgid ""
+"In more technical terms, the event loop contains a collection of jobs to be "
+"run. Some jobs are added directly by you, and some indirectly by "
+":mod:`!asyncio`. The event loop takes a job from its backlog of work and "
+"invokes it (or \"gives it control\"), similar to calling a function, and "
+"then that job runs. Once it pauses or completes, it returns control to the "
+"event loop. The event loop will then select another job from its pool and "
+"invoke it. You can *roughly* think of the collection of jobs as a queue: "
+"jobs are added and then processed one at a time, generally (but not always) "
+"in order. This process repeats indefinitely, with the event loop cycling "
+"endlessly onwards. If there are no more jobs pending execution, the event "
+"loop is smart enough to rest and avoid needlessly wasting CPU cycles, and "
+"will come back when there's more work to be done."
+msgstr ""
+"Nói một cách kỹ thuật hơn, vòng lặp sự kiện chứa một tập hợp các công việc "
+"sẽ được thực hiện. Một số công việc được bạn trực tiếp thêm vào và một số "
+"công việc được thêm gián tiếp bởi :mod:`!asyncio`. Vòng lặp sự kiện nhận một"
+" công việc từ công việc tồn đọng của nó và gọi nó (hoặc \"trao quyền kiểm "
+"soát cho nó\"), tương tự như gọi một hàm và sau đó công việc đó sẽ chạy. Khi"
+" nó tạm dừng hoặc hoàn thành, nó sẽ trả lại quyền điều khiển cho vòng lặp sự"
+" kiện. Vòng lặp sự kiện sau đó sẽ chọn một công việc khác từ nhóm của nó và "
+"gọi nó. Bạn có thể *roughly* coi tập hợp các công việc như một hàng đợi: các"
+" công việc được thêm vào và sau đó xử lý từng công việc một, nói chung "
+"(nhưng không phải luôn luôn) theo thứ tự. Quá trình này lặp lại vô thời hạn,"
+" với vòng lặp sự kiện quay trở đi vô tận. Nếu không còn công việc nào đang "
+"chờ thực thi, vòng lặp sự kiện sẽ đủ thông minh để nghỉ ngơi và tránh lãng "
+"phí chu kỳ CPU một cách không cần thiết, đồng thời sẽ quay trở lại khi có "
+"nhiều việc phải làm hơn."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:64
+#, fuzzy
+msgid ""
+"Effective execution relies on jobs sharing well and cooperating; a greedy "
+"job could hog control and leave the other jobs to starve, rendering the "
+"overall event loop approach rather useless."
+msgstr ""
+"Việc thực hiện hiệu quả phụ thuộc vào việc chia sẻ công việc tốt và hợp tác;"
+" một công việc tham lam có thể kiểm soát chặt chẽ và khiến các công việc "
+"khác chết đói, khiến cách tiếp cận vòng lặp sự kiện tổng thể trở nên vô "
+"dụng."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:70
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"# This creates an event loop and indefinitely cycles through\n"
+"# its collection of jobs.\n"
+"event_loop = asyncio.new_event_loop()\n"
+"event_loop.run_forever()"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"# This tạo một vòng lặp sự kiện và quay vòng vô thời hạn\n"
+"# its tuyển tập việc làm.\n"
+"sự kiện_loop = asyncio.new_event_loop()\n"
+"sự kiện_loop.run_forever()"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:79
+#, fuzzy
+msgid "Asynchronous functions and coroutines"
+msgstr "Các hàm và coroutine không đồng bộ"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:81
+#, fuzzy
+msgid "This is a basic, boring Python function::"
+msgstr "Đây là một hàm Python cơ bản, nhàm chán::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:83
+#, fuzzy
+msgid ""
+"def hello_printer():\n"
+"    print(\n"
+"        \"Hi, I am a lowly, simple printer, though I have all I \"\n"
+"        \"need in life -- \\nfresh paper and my dearly beloved octopus \"\n"
+"        \"partner in crime.\"\n"
+"    )"
+msgstr ""
+"def hello_printer():\n"
+"    in(\n"
+"        \"Xin chào, tôi là một thợ in tầm thường, đơn giản, mặc dù tôi có tất cả những gì tôi có\"\n"
+"        \"điều cần thiết trong cuộc sống -- \\ngiấy tươi và con bạch tuộc thân yêu của tôi \"\n"
+"        \"đối tác của tội phạm.\"\n"
+"    )"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:90
+#, fuzzy
+msgid "Calling a regular function invokes its logic or body::"
+msgstr "Việc gọi một hàm thông thường sẽ gọi logic hoặc phần thân của nó::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:92
+#, fuzzy
+msgid ""
+">>> hello_printer()\n"
+"Hi, I am a lowly, simple printer, though I have all I need in life --\n"
+"fresh paper and my dearly beloved octopus partner in crime."
+msgstr ""
+">>> xin chào_printer()\n"
+"Xin chào, tôi là một thợ in tầm thường, đơn giản, mặc dù tôi có tất cả những gì tôi cần trong cuộc sống --\n"
+"tờ báo mới và con bạch tuộc thân yêu của tôi đồng hành cùng tội phạm."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:96
+#, fuzzy
+msgid ""
+"The :ref:`async def <async def>`, as opposed to just a plain ``def``, makes "
+"this an asynchronous function (or \"coroutine function\"). Calling it "
+"creates and returns a :ref:`coroutine <coroutine>` object."
+msgstr ""
+":ref:`async def <async def>`, trái ngược với ``def`` đơn giản, làm cho hàm "
+"này trở thành một hàm không đồng bộ (hoặc \"hàm coroutine\"). Việc gọi nó sẽ"
+" tạo và trả về một đối tượng :ref:`coroutine <coroutine>`."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:102
+#, python-brace-format, fuzzy
+msgid ""
+"async def loudmouth_penguin(magic_number: int):\n"
+"    print(\n"
+"     \"I am a super special talking penguin. Far cooler than that printer. \"\n"
+"     f\"By the way, my lucky number is: {magic_number}.\"\n"
+"    )"
+msgstr ""
+"async def Loudmouth_penguin(magic_number: int):\n"
+"    in(\n"
+"     \"Tôi là một chú chim cánh cụt biết nói siêu đặc biệt. Tuyệt vời hơn nhiều so với chiếc máy in đó.\"\n"
+"     f\"Nhân tiện, con số may mắn của tôi là: {magic_number}.\"\n"
+"    )"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:108
+#, fuzzy
+msgid ""
+"Calling the async function, ``loudmouth_penguin``, does not execute the "
+"print statement; instead, it creates a coroutine object::"
+msgstr ""
+"Gọi hàm async, ``loudmouth_penguin``, không thực thi câu lệnh in; thay vào "
+"đó, nó tạo ra một đối tượng coroutine::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:111
+#, fuzzy
+msgid ""
+">>> loudmouth_penguin(magic_number=3)\n"
+"<coroutine object loudmouth_penguin at 0x104ed2740>"
+msgstr ""
+">>> Loumouth_penguin(magic_number=3)\n"
+"<đối tượng coroutine Loumouth_penguin tại 0x104ed2740>"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:114
+#, fuzzy
+msgid ""
+"The terms \"coroutine function\" and \"coroutine object\" are often "
+"conflated as coroutine. That can be confusing! In this article, coroutine "
+"specifically refers to a coroutine object, or more precisely, an instance of"
+" :data:`types.CoroutineType` (native coroutine). Note that coroutines can "
+"also exist as instances of :class:`collections.abc.Coroutine` -- a "
+"distinction that matters for type checking."
+msgstr ""
+"Các thuật ngữ \"hàm coroutine\" và \"đối tượng coroutine\" thường được gọi "
+"là coroutine. Điều đó có thể gây nhầm lẫn! Trong bài viết này, coroutine đề "
+"cập cụ thể đến một đối tượng coroutine, hay chính xác hơn là một phiên bản "
+"của :data:`types.CoroutineType` (coroutine gốc). Lưu ý rằng coroutine cũng "
+"có thể tồn tại dưới dạng phiên bản của :class:`collections.abc.Coroutine` --"
+" một điểm khác biệt quan trọng đối với việc kiểm tra loại."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:123
+#, fuzzy
+msgid ""
+"A coroutine represents the function's body or logic. A coroutine has to be "
+"explicitly started; again, merely creating the coroutine does not start it. "
+"Notably, the coroutine can be paused and resumed at various points within "
+"the function's body. That pausing and resuming ability is what allows for "
+"asynchronous behavior!"
+msgstr ""
+"Một coroutine đại diện cho phần thân hoặc logic của hàm. Một coroutine phải "
+"được bắt đầu một cách rõ ràng; một lần nữa, việc chỉ tạo coroutine sẽ không "
+"khởi động nó. Đáng chú ý, coroutine có thể bị tạm dừng và tiếp tục ở nhiều "
+"điểm khác nhau trong nội dung hàm. Khả năng tạm dừng và tiếp tục đó là yếu "
+"tố cho phép hành vi không đồng bộ!"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:130
+#, fuzzy
+msgid ""
+"Coroutines and coroutine functions were built by leveraging the "
+"functionality of :term:`generators <generator iterator>` and "
+":term:`generator functions <generator>`. Recall, a generator function is a "
+"function that :keyword:`yield`\\s, like this one::"
+msgstr ""
+"Coroutine và các hàm coroutine được xây dựng bằng cách tận dụng chức năng "
+"của :term:`generators <generator iterator>` và :term:`generator functions "
+"<generator>`. Hãy nhớ lại, hàm tạo là một hàm :keyword:`yield`\\s, như hàm "
+"này::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:136
+#, fuzzy
+msgid ""
+"def get_random_number():\n"
+"    # This would be a bad random number generator!\n"
+"    print(\"Hi\")\n"
+"    yield 1\n"
+"    print(\"Hello\")\n"
+"    yield 7\n"
+"    print(\"Howdy\")\n"
+"    yield 4\n"
+"    ..."
+msgstr ""
+"chắc chắn get_random_number():\n"
+"    # This sẽ là một trình tạo số ngẫu nhiên tồi!\n"
+"    in (\"Xin chào\")\n"
+"    năng suất 1\n"
+"    in (\"Xin chào\")\n"
+"    năng suất 7\n"
+"    in (\"Xin chào\")\n"
+"    năng suất 4\n"
+"    ..."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:146
+#, fuzzy
+msgid ""
+"Similar to a coroutine function, calling a generator function does not run "
+"it. Instead, it creates a generator object::"
+msgstr ""
+"Tương tự như hàm coroutine, việc gọi hàm tạo sẽ không chạy hàm đó. Thay vào "
+"đó, nó tạo một đối tượng trình tạo::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:149
+#, fuzzy
+msgid ""
+">>> get_random_number()\n"
+"<generator object get_random_number at 0x1048671c0>"
+msgstr ""
+">>> get_random_number()\n"
+"<đối tượng máy phát điện get_random_number tại 0x1048671c0>"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:152
+#, fuzzy
+msgid ""
+"You can proceed to the next ``yield`` of a generator by using the built-in "
+"function :func:`next`. In other words, the generator runs, then pauses. For "
+"example::"
+msgstr ""
+"Bạn có thể tiến hành ``yield`` tiếp theo của trình tạo bằng cách sử dụng "
+"chức năng :func:`next` tích hợp sẵn. Nói cách khác, máy phát điện chạy rồi "
+"tạm dừng. Ví dụ::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:157
+#, fuzzy
+msgid ""
+">>> generator = get_random_number()\n"
+">>> next(generator)\n"
+"Hi\n"
+"1\n"
+">>> next(generator)\n"
+"Hello\n"
+"7"
+msgstr ""
+">>> trình tạo = get_random_number()\n"
+">>> tiếp theo(máy phát điện)\n"
+"Xin chào\n"
+"1\n"
+">>> tiếp theo(máy phát điện)\n"
+"xin chào\n"
+"7"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:167
+#, fuzzy
+msgid "Tasks"
+msgstr "Nhiệm vụ"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:169
+#, fuzzy
+msgid ""
+"Roughly speaking, :ref:`tasks <asyncio-task-obj>` are coroutines (not "
+"coroutine functions) tied to an event loop. A task also maintains a list of "
+"callback functions whose importance will become clear in a moment when we "
+"discuss :keyword:`await`. The recommended way to create tasks is via "
+":func:`asyncio.create_task`."
+msgstr ""
+"Nói một cách đại khái, :ref:`tasks <asyncio-task-obj>` là các coroutine "
+"(không phải các hàm coroutine) được gắn với một vòng lặp sự kiện. Một tác vụ"
+" cũng duy trì một danh sách các hàm gọi lại mà tầm quan trọng của chúng sẽ "
+"trở nên rõ ràng sau khi chúng ta thảo luận về :keyword:`await`. Cách được đề"
+" xuất để tạo tác vụ là thông qua :func:`asyncio.create_task`."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:175
+#, fuzzy
+msgid ""
+"Creating a task automatically schedules it for execution (by adding a "
+"callback to run it in the event loop's to-do list, that is, collection of "
+"jobs)."
+msgstr ""
+"Việc tạo một tác vụ sẽ tự động lên lịch thực hiện tác vụ đó (bằng cách thêm "
+"lệnh gọi lại để chạy tác vụ đó trong danh sách việc cần làm của vòng lặp sự "
+"kiện, tức là tập hợp các công việc)."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:178
+#, fuzzy
+msgid ""
+":mod:`!asyncio` automatically associates tasks with the event loop for you. "
+"This automatic association was purposely designed into :mod:`!asyncio` for "
+"the sake of simplicity. Without it, you'd have to keep track of the event "
+"loop object and pass it to any coroutine function that wants to create "
+"tasks, adding redundant clutter to your code."
+msgstr ""
+":mod:`!asyncio` tự động liên kết các nhiệm vụ với vòng lặp sự kiện cho bạn. "
+"Liên kết tự động này được thiết kế có chủ đích vào :mod:`!asyncio` vì mục "
+"đích đơn giản. Nếu không có nó, bạn sẽ phải theo dõi đối tượng vòng lặp sự "
+"kiện và chuyển nó đến bất kỳ hàm coroutine nào muốn tạo tác vụ, thêm sự lộn "
+"xộn dư thừa vào mã của bạn."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:187
+#, fuzzy
+msgid ""
+"coroutine = loudmouth_penguin(magic_number=5)\n"
+"# This creates a Task object and schedules its execution via the event loop.\n"
+"task = asyncio.create_task(coroutine)"
+msgstr ""
+"coroutine = Loumouth_penguin(magic_number=5)\n"
+"# This tạo một đối tượng Task và lên lịch thực hiện nó thông qua vòng lặp sự kiện.\n"
+"nhiệm vụ = asyncio.create_task(coroutine)"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:191
+#, fuzzy
+msgid ""
+"Earlier, we manually created the event loop and set it to run forever. In "
+"practice, it's recommended to use (and common to see) :func:`asyncio.run`, "
+"which takes care of managing the event loop and ensuring the provided "
+"coroutine finishes before advancing. For example, many async programs follow"
+" this setup::"
+msgstr ""
+"Trước đó, chúng tôi đã tạo vòng lặp sự kiện theo cách thủ công và đặt nó "
+"chạy vĩnh viễn. Trong thực tế, bạn nên sử dụng (và thường thấy) "
+":func:`asyncio.run` để quản lý vòng lặp sự kiện và đảm bảo coroutine được "
+"cung cấp kết thúc trước khi tiếp tục. Ví dụ: nhiều chương trình không đồng "
+"bộ tuân theo thiết lập này ::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:197
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"async def main():\n"
+"    # Perform all sorts of wacky, wild asynchronous things...\n"
+"    ...\n"
+"\n"
+"if __name__ == \"__main__\":\n"
+"    asyncio.run(main())\n"
+"    # The program will not reach the following print statement until the\n"
+"    # coroutine main() finishes.\n"
+"    print(\"coroutine main() is done!\")"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"async def main():\n"
+"    # Perform tất cả những thứ không đồng bộ kỳ quặc, hoang dã...\n"
+"    ...\n"
+"\n"
+"nếu __name__ == \"__main__\":\n"
+"    asyncio.run(chính())\n"
+"    chương trình # The sẽ không đạt được câu lệnh in sau cho đến khi\n"
+"    # coroutine main() kết thúc.\n"
+"    print(\"coroutine main() đã xong!\")"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:209
+#, fuzzy
+msgid ""
+"It's important to be aware that the task itself is not added to the event "
+"loop, only a callback to the task is. This matters if the task object you "
+"created is garbage collected before it's called by the event loop. For "
+"example, consider this program:"
+msgstr ""
+"Điều quan trọng cần lưu ý là bản thân tác vụ không được thêm vào vòng lặp sự"
+" kiện mà chỉ có lệnh gọi lại tác vụ. Điều này quan trọng nếu đối tượng tác "
+"vụ bạn tạo là rác được thu thập trước khi nó được vòng lặp sự kiện gọi. Ví "
+"dụ, hãy xem xét chương trình này:"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:215
+#, fuzzy
+msgid ""
+"async def hello():\n"
+"    print(\"hello!\")\n"
+"\n"
+"async def main():\n"
+"    asyncio.create_task(hello())\n"
+"    # Other asynchronous instructions which run for a while\n"
+"    # and cede control to the event loop...\n"
+"    ...\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"async def xin chào():\n"
+"    in (\"xin chào!\")\n"
+"\n"
+"async def main():\n"
+"    asyncio.create_task(xin chào())\n"
+"    Hướng dẫn không đồng bộ # Other chạy trong một thời gian\n"
+"    # and nhường quyền kiểm soát cho vòng lặp sự kiện...\n"
+"    ...\n"
+"\n"
+"asyncio.run(chính())"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:229
+#, fuzzy
+msgid ""
+"Because there's no reference to the task object created on line 5, it "
+"*might* be garbage collected before the event loop invokes it. Later "
+"instructions in the coroutine ``main()`` hand control back to the event loop"
+" so it can invoke other jobs. When the event loop eventually tries to run "
+"the task, it might fail and discover the task object does not exist! This "
+"can also happen even if a coroutine keeps a reference to a task but "
+"completes before that task finishes. When the coroutine exits, local "
+"variables go out of scope and may be subject to garbage collection. In "
+"practice, ``asyncio`` and Python's garbage collector work pretty hard to "
+"ensure this sort of thing doesn't happen. But that's no reason to be "
+"reckless!"
+msgstr ""
+"Bởi vì không có tham chiếu đến đối tượng tác vụ được tạo trên dòng 5, nên nó"
+" sẽ được thu thập trước khi vòng lặp sự kiện gọi nó. Các hướng dẫn sau này "
+"trong điều khiển tay coroutine ``main()`` sẽ quay lại vòng lặp sự kiện để có"
+" thể gọi các công việc khác. Cuối cùng, khi vòng lặp sự kiện cố gắng chạy "
+"tác vụ, nó có thể thất bại và phát hiện ra đối tượng tác vụ không tồn tại! "
+"Điều này cũng có thể xảy ra ngay cả khi một coroutine giữ tham chiếu đến một"
+" tác vụ nhưng hoàn thành trước khi tác vụ đó kết thúc. Khi coroutine thoát, "
+"các biến cục bộ sẽ nằm ngoài phạm vi và có thể bị thu gom rác. Trong thực "
+"tế, ``asyncio`` và trình thu gom rác của Python làm việc khá chăm chỉ để đảm"
+" bảo điều này không xảy ra. Nhưng đó không phải là lý do để liều lĩnh!"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:245
+#, fuzzy
+msgid "await"
+msgstr "chờ đợi"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:247
+#, fuzzy
+msgid ""
+":keyword:`await` is a Python keyword that's commonly used in one of two "
+"different ways::"
+msgstr ""
+":keyword:`await` là một từ khóa Python thường được sử dụng theo một trong "
+"hai cách khác nhau::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:250
+#, fuzzy
+msgid ""
+"await task\n"
+"await coroutine"
+msgstr ""
+"chờ đợi nhiệm vụ\n"
+"đang chờ coroutine"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:253
+#, fuzzy
+msgid ""
+"In a crucial way, the behavior of ``await`` depends on the type of object "
+"being awaited."
+msgstr ""
+"Theo một cách quan trọng, hành vi của ``await`` phụ thuộc vào loại đối tượng"
+" đang được chờ đợi."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:256
+#, fuzzy
+msgid ""
+"Awaiting a task will cede control from the current task or coroutine to the "
+"event loop. In the process of relinquishing control, a few important things "
+"happen. We'll use the following code example to illustrate::"
+msgstr ""
+"Việc chờ một tác vụ sẽ nhường quyền kiểm soát từ tác vụ hoặc coroutine hiện "
+"tại cho vòng lặp sự kiện. Trong quá trình từ bỏ quyền kiểm soát, một số điều"
+" quan trọng sẽ xảy ra. Chúng tôi sẽ sử dụng ví dụ mã sau để minh họa::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:261
+#, fuzzy
+msgid ""
+"async def plant_a_tree():\n"
+"    dig_the_hole_task = asyncio.create_task(dig_the_hole())\n"
+"    await dig_the_hole_task\n"
+"\n"
+"    # Other instructions associated with planting a tree.\n"
+"    ..."
+msgstr ""
+"async def plant_a_tree():\n"
+"    dig_the_hole_task = asyncio.create_task(dig_the_hole())\n"
+"    đang chờ đào_the_hole_task\n"
+"\n"
+"    # Other hướng dẫn liên quan đến việc trồng cây.\n"
+"    ..."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:268
+#, fuzzy
+msgid ""
+"In this example, imagine the event loop has passed control to the start of "
+"the coroutine ``plant_a_tree()``. As seen above, the coroutine creates a "
+"task and then awaits it. The ``await dig_the_hole_task`` instruction adds a "
+"callback (which will resume ``plant_a_tree()``) to the ``dig_the_hole_task``"
+" object's list of callbacks. And then, the instruction cedes control to the "
+"event loop. Some time later, the event loop will pass control to "
+"``dig_the_hole_task`` and the task will finish whatever it needs to do. Once"
+" the task finishes, it will add its various callbacks to the event loop, in "
+"this case, a call to resume ``plant_a_tree()``."
+msgstr ""
+"Trong ví dụ này, hãy tưởng tượng vòng lặp sự kiện đã chuyển quyền điều khiển"
+" đến điểm bắt đầu của coroutine ``plant_a_tree()``. Như đã thấy ở trên, "
+"coroutine tạo một tác vụ và sau đó chờ tác vụ đó. Lệnh ``await "
+"dig_the_hole_task`` thêm một lệnh gọi lại (sẽ tiếp tục ``plant_a_tree()``) "
+"vào danh sách các lệnh gọi lại của đối tượng ``dig_the_hole_task``. Và sau "
+"đó, lệnh nhường quyền điều khiển cho vòng lặp sự kiện. Một thời gian sau, "
+"vòng lặp sự kiện sẽ chuyển quyền điều khiển cho ``dig_the_hole_task`` và tác"
+" vụ sẽ hoàn thành bất cứ điều gì nó cần làm. Sau khi tác vụ kết thúc, tác vụ"
+" sẽ thêm các lệnh gọi lại khác nhau vào vòng lặp sự kiện, trong trường hợp "
+"này là lệnh gọi tiếp tục ``plant_a_tree()``."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:279
+#, fuzzy
+msgid ""
+"Generally speaking, when the awaited task finishes (``dig_the_hole_task``), "
+"the original task or coroutine (``plant_a_tree()``) is added back to the "
+"event loop's to-do list to be resumed."
+msgstr ""
+"Nói chung, khi tác vụ được chờ kết thúc (``dig_the_hole_task``), tác vụ ban "
+"đầu hoặc coroutine (``plant_a_tree()``) sẽ được thêm trở lại danh sách việc "
+"cần làm của vòng lặp sự kiện để tiếp tục."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:283
+#, fuzzy
+msgid ""
+"This is a basic, yet reliable mental model. In practice, the control "
+"handoffs are slightly more complex, but not by much. In part 2, we'll walk "
+"through the details that make this possible."
+msgstr ""
+"Đây là một mô hình tinh thần cơ bản nhưng đáng tin cậy. Trong thực tế, việc "
+"chuyển giao điều khiển phức tạp hơn một chút nhưng không nhiều. Trong phần "
+"2, chúng ta sẽ tìm hiểu chi tiết để thực hiện điều này."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:287
+#, fuzzy
+msgid ""
+"**Unlike tasks, awaiting a coroutine does not hand control back to the event"
+" loop!** Wrapping a coroutine in a task first, then awaiting that would cede"
+" control. The behavior of ``await coroutine`` is effectively the same as "
+"invoking a regular, synchronous Python function. Consider this program::"
+msgstr ""
+"**Unlike tasks, awaiting a coroutine does not hand control back to the event"
+" loop!** Gói coroutine vào một nhiệm vụ trước, sau đó chờ đợi điều đó sẽ "
+"nhường lại quyền kiểm soát. Hoạt động của ``await coroutine`` thực sự giống "
+"như việc gọi hàm Python đồng bộ, thông thường. Hãy xem xét chương trình "
+"này::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:295
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"async def coro_a():\n"
+"   print(\"I am coro_a(). Hi!\")\n"
+"\n"
+"async def coro_b():\n"
+"   print(\"I am coro_b(). I sure hope no one hogs the event loop...\")\n"
+"\n"
+"async def main():\n"
+"   task_b = asyncio.create_task(coro_b())\n"
+"   num_repeats = 3\n"
+"   for _ in range(num_repeats):\n"
+"      await coro_a()\n"
+"   await task_b\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"async def coro_a():\n"
+"   print(\"Tôi là coro_a(). Xin chào!\")\n"
+"\n"
+"async def coro_b():\n"
+"   print(\"Tôi là coro_b(). Tôi chắc chắn hy vọng không ai chiếm giữ vòng lặp sự kiện...\")\n"
+"\n"
+"async def main():\n"
+"   task_b = asyncio.create_task(coro_b())\n"
+"   num_repeat = 3\n"
+"   cho _ trong phạm vi(num_repeat):\n"
+"      đang chờ coro_a()\n"
+"   đang chờ task_b\n"
+"\n"
+"asyncio.run(chính())"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:312
+#, fuzzy
+msgid ""
+"The first statement in the coroutine ``main()`` creates ``task_b`` and "
+"schedules it for execution via the event loop. Then, ``coro_a()`` is "
+"repeatedly awaited. Control never cedes to the event loop, which is why we "
+"see the output of all three ``coro_a()`` invocations before ``coro_b()``'s "
+"output:"
+msgstr ""
+"Câu lệnh đầu tiên trong coroutine ``main()`` tạo ``task_b`` và lên lịch thực"
+" thi nó thông qua vòng lặp sự kiện. Sau đó, ``coro_a()`` được chờ đợi nhiều "
+"lần. Kiểm soát không bao giờ chuyển sang vòng lặp sự kiện, đó là lý do tại "
+"sao chúng ta thấy đầu ra của cả ba lệnh gọi ``coro_a()`` trước đầu ra của "
+"``coro_b()``:"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:318
+#, fuzzy
+msgid ""
+"I am coro_a(). Hi!\n"
+"I am coro_a(). Hi!\n"
+"I am coro_a(). Hi!\n"
+"I am coro_b(). I sure hope no one hogs the event loop..."
+msgstr ""
+"Tôi là coro_a(). CHÀO!\n"
+"Tôi là coro_a(). CHÀO!\n"
+"Tôi là coro_a(). CHÀO!\n"
+"Tôi là coro_b(). Tôi chắc chắn hy vọng không ai nắm bắt được vòng lặp sự kiện..."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:325
+#, fuzzy
+msgid ""
+"If we change ``await coro_a()`` to ``await asyncio.create_task(coro_a())``, "
+"the behavior changes. The coroutine ``main()`` cedes control to the event "
+"loop with that statement. The event loop then proceeds through its backlog "
+"of work, calling ``task_b`` and then the task which wraps ``coro_a()`` "
+"before resuming the coroutine ``main()``."
+msgstr ""
+"Nếu chúng ta thay đổi ``await coro_a()`` thành ``await "
+"asyncio.create_task(coro_a())``, hành vi sẽ thay đổi. Coroutine ``main()`` "
+"nhường quyền kiểm soát cho vòng lặp sự kiện bằng câu lệnh đó. Sau đó, vòng "
+"lặp sự kiện sẽ xử lý các công việc tồn đọng của nó, gọi ``task_b`` và sau đó"
+" là tác vụ kết thúc ``coro_a()`` trước khi tiếp tục coroutine ``main()``."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:332
+#, fuzzy
+msgid ""
+"I am coro_b(). I sure hope no one hogs the event loop...\n"
+"I am coro_a(). Hi!\n"
+"I am coro_a(). Hi!\n"
+"I am coro_a(). Hi!"
+msgstr ""
+"Tôi là coro_b(). Tôi chắc chắn hy vọng không ai nắm bắt được vòng lặp sự kiện...\n"
+"Tôi là coro_a(). CHÀO!\n"
+"Tôi là coro_a(). CHÀO!\n"
+"Tôi là coro_a(). CHÀO!"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:339
+#, fuzzy
+msgid ""
+"This behavior of ``await coroutine`` can trip a lot of people up! That "
+"example highlights how using only ``await coroutine`` could unintentionally "
+"hog control from other tasks and effectively stall the event loop. "
+":func:`asyncio.run` can help you detect such occurrences via the "
+"``debug=True`` flag, which enables :ref:`debug mode <asyncio-debug-mode>`. "
+"Among other things, it will log any coroutines that monopolize execution for"
+" 100ms or longer."
+msgstr ""
+"Hành vi này của ``await coroutine`` có thể khiến rất nhiều người cảm thấy "
+"khó chịu! Ví dụ đó nêu bật việc chỉ sử dụng ``await coroutine`` có thể vô "
+"tình chiếm quyền kiểm soát của các tác vụ khác và trì hoãn vòng lặp sự kiện "
+"một cách hiệu quả. :func:`asyncio.run` có thể giúp bạn phát hiện những "
+"trường hợp như vậy thông qua cờ ``debug=True``, cờ này kích hoạt :ref:`debug"
+" mode <asyncio-debug-mode>`. Trong số những thứ khác, nó sẽ ghi lại bất kỳ "
+"coroutine nào độc quyền thực thi trong 100 mili giây trở lên."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:349
+#, fuzzy
+msgid ""
+"The design intentionally trades off some conceptual clarity around usage of "
+"``await`` for improved performance. Each time a task is awaited, control "
+"needs to be passed all the way up the call stack to the event loop. That "
+"might sound minor, but in a large program with many ``await`` statements and"
+" a deep call stack, that overhead can add up to a meaningful performance "
+"drag."
+msgstr ""
+"Thiết kế này cố tình đánh đổi một số khái niệm rõ ràng xung quanh việc sử "
+"dụng ``await`` để cải thiện hiệu suất. Mỗi khi một nhiệm vụ được chờ đợi, "
+"quyền điều khiển cần được chuyển từ ngăn xếp cuộc gọi đến vòng lặp sự kiện. "
+"Điều đó nghe có vẻ nhỏ nhặt, nhưng trong một chương trình lớn có nhiều câu "
+"lệnh ``await`` và một ngăn xếp cuộc gọi sâu, chi phí đó có thể tăng thêm lực"
+" cản hiệu suất đáng kể."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:358
+#, fuzzy
+msgid "A conceptual overview part 2: the nuts and bolts"
+msgstr "Tổng quan về khái niệm phần 2: đai ốc và bu lông"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:360
+#, fuzzy
+msgid ""
+"Part 2 goes into detail on the mechanisms :mod:`!asyncio` uses to manage "
+"control flow. This is where the magic happens. You'll come away from this "
+"section knowing what ``await`` does behind the scenes and how to make your "
+"own asynchronous operators."
+msgstr ""
+"Phần 2 đi sâu vào chi tiết về các cơ chế mà :mod:`!asyncio` sử dụng để quản "
+"lý luồng điều khiển. Đây là nơi phép thuật xảy ra. Sau phần này, bạn sẽ biết"
+" ``await`` thực hiện những gì ở hậu trường và cách tạo các toán tử không "
+"đồng bộ của riêng mình."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:368
+#, fuzzy
+msgid "The inner workings of coroutines"
+msgstr "Hoạt động bên trong của coroutine"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:370
+#, fuzzy
+msgid ":mod:`!asyncio` leverages four components to pass around control."
+msgstr ":mod:`!asyncio` tận dụng bốn thành phần để vượt qua quyền kiểm soát."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:372
+#, fuzzy
+msgid ""
+":meth:`coroutine.send(arg) <generator.send>` is the method used to start or "
+"resume a coroutine. If the coroutine was paused and is now being resumed, "
+"the argument ``arg`` will be sent in as the return value of the ``yield`` "
+"statement which originally paused it. If the coroutine is being used for the"
+" first time (as opposed to being resumed), ``arg`` must be ``None``."
+msgstr ""
+":meth:`coroutine.send(arg) <generator.send>` là phương thức được sử dụng để "
+"bắt đầu hoặc tiếp tục một coroutine. Nếu coroutine bị tạm dừng và hiện đang "
+"được tiếp tục lại, đối số ``arg`` sẽ được gửi dưới dạng giá trị trả về của "
+"câu lệnh ``yield`` ban đầu đã tạm dừng nó. Nếu coroutine được sử dụng lần "
+"đầu tiên (trái ngược với việc tiếp tục sử dụng), ``arg`` phải là ``None``."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:380
+#, python-brace-format, fuzzy
+msgid ""
+"class Rock:\n"
+"    def __await__(self):\n"
+"        value_sent_in = yield 7\n"
+"        print(f\"Rock.__await__ resuming with value: {value_sent_in}.\")\n"
+"        return value_sent_in\n"
+"\n"
+"async def main():\n"
+"    print(\"Beginning coroutine main().\")\n"
+"    rock = Rock()\n"
+"    print(\"Awaiting rock...\")\n"
+"    value_from_rock = await rock\n"
+"    print(f\"Coroutine received value: {value_from_rock} from rock.\")\n"
+"    return 23\n"
+"\n"
+"coroutine = main()\n"
+"intermediate_result = coroutine.send(None)\n"
+"print(f\"Coroutine paused and returned intermediate value: {intermediate_result}.\")\n"
+"\n"
+"print(f\"Resuming coroutine and sending in value: 42.\")\n"
+"try:\n"
+"    coroutine.send(42)\n"
+"except StopIteration as e:\n"
+"    returned_value = e.value\n"
+"print(f\"Coroutine main() finished and provided value: {returned_value}.\")"
+msgstr ""
+"lớp đá:\n"
+"    chắc chắn __await__(tự):\n"
+"        value_sent_in = năng suất 7\n"
+"        print(f\"Rock.__await__ đang tiếp tục với giá trị: {value_sent_in}.\")\n"
+"        trả về value_sent_in\n"
+"\n"
+"async def main():\n"
+"    print(\"Bắt đầu coroutine main().\")\n"
+"    đá = Đá()\n"
+"    print(\"Đang chờ đá...\")\n"
+"    value_from_rock = chờ đá\n"
+"    print(f\"Coroutine đã nhận được giá trị: {value_from_rock} từ rock.\")\n"
+"    trở lại 23\n"
+"\n"
+"coroutine = chính()\n"
+"trung gian_result = coroutine.send(Không có)\n"
+"print(f\"Coroutine đã tạm dừng và trả về giá trị trung gian: {intermediate_result}.\")\n"
+"\n"
+"print(f\"Tiếp tục coroutine và gửi giá trị: 42.\")\n"
+"thử:\n"
+"    coroutine.send(42)\n"
+"ngoại trừ StopIteration là e:\n"
+"    return_value = e.value\n"
+"print(f\"Coroutine main() đã hoàn thành và cung cấp giá trị: {returned_value}.\")"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:408
+#, fuzzy
+msgid ""
+":ref:`yield <yieldexpr>`, as usual, pauses execution and returns control to "
+"the caller. In the example above, the ``yield``, on line 3, is called by "
+"``... = await rock`` on line 11. More broadly speaking, ``await`` calls the "
+":meth:`~object.__await__` method of the given object. ``await`` also does "
+"one more very special thing: it propagates (or \"passes along\") any "
+"``yield``\\ s it receives up the call chain. In this case, that's back to "
+"``... = coroutine.send(None)`` on line 16."
+msgstr ""
+":ref:`yield <yieldexpr>`, như thường lệ, tạm dừng thực thi và trả lại quyền "
+"điều khiển cho người gọi. Trong ví dụ trên, ``yield``, trên dòng 3, được gọi"
+" bởi ``... = await rock`` trên dòng 11. Nói rộng hơn, ``await`` gọi phương "
+"thức :meth:`~object.__await__` của đối tượng đã cho. ``await`` còn thực hiện"
+" một điều rất đặc biệt nữa: nó truyền bá (hoặc \"chuyển tiếp\") bất kỳ "
+"``yield`` nào nó nhận được trong chuỗi cuộc gọi. Trong trường hợp này, nó "
+"quay lại ``... = coroutine.send(None)`` ở dòng 16."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:418
+#, fuzzy
+msgid ""
+"The coroutine is resumed via the ``coroutine.send(42)`` call on line 21. The"
+" coroutine picks back up from where it ``yield``\\ ed (or paused) on line 3 "
+"and executes the remaining statements in its body. When a coroutine "
+"finishes, it raises a :exc:`StopIteration` exception with the return value "
+"attached in the :attr:`~StopIteration.value` attribute."
+msgstr ""
+"Coroutine được tiếp tục thông qua lệnh gọi ``coroutine.send(42)`` trên dòng "
+"21. Coroutine quay trở lại từ nơi nó ``yield``\\ ed (hoặc tạm dừng) trên "
+"dòng 3 và thực thi các câu lệnh còn lại trong phần nội dung của nó. Khi một "
+"coroutine kết thúc, nó sẽ đưa ra một ngoại lệ :exc:`StopIteration` với giá "
+"trị trả về được đính kèm trong thuộc tính :attr:`~StopIteration.value`."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:424
+#, fuzzy
+msgid "That snippet produces this output:"
+msgstr "Đoạn mã đó tạo ra kết quả này:"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:426
+#, fuzzy
+msgid ""
+"Beginning coroutine main().\n"
+"Awaiting rock...\n"
+"Coroutine paused and returned intermediate value: 7.\n"
+"Resuming coroutine and sending in value: 42.\n"
+"Rock.__await__ resuming with value: 42.\n"
+"Coroutine received value: 42 from rock.\n"
+"Coroutine main() finished and provided value: 23."
+msgstr ""
+"Bắt đầu coroutine main().\n"
+"Đang chờ đá...\n"
+"Coroutine tạm dừng và trả về giá trị trung gian: 7.\n"
+"Tiếp tục coroutine và gửi giá trị: 42.\n"
+"Rock.__await__ đang tiếp tục với giá trị: 42.\n"
+"Coroutine nhận được giá trị: 42 từ rock.\n"
+"Coroutine main() đã hoàn thành và cung cấp giá trị: 23."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:436
+#, fuzzy
+msgid ""
+"It's worth pausing for a moment here and making sure you followed the "
+"various ways that control flow and values were passed. A lot of important "
+"ideas were covered and it's worth ensuring your understanding is firm."
+msgstr ""
+"Bạn nên dừng lại một chút ở đây và đảm bảo rằng bạn đã làm theo nhiều cách "
+"khác nhau để kiểm soát luồng và các giá trị được thông qua. Rất nhiều ý "
+"tưởng quan trọng đã được đề cập và cần đảm bảo sự hiểu biết của bạn một cách"
+" vững chắc."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:440
+#, fuzzy
+msgid ""
+"The only way to yield (or effectively cede control) from a coroutine is to "
+"``await`` an object that ``yield``\\ s in its ``__await__`` method. That "
+"might sound odd to you. You might be thinking:"
+msgstr ""
+"Cách duy nhất để nhường (hoặc nhượng lại quyền kiểm soát một cách hiệu quả) "
+"từ một coroutine là cho ``await`` một đối tượng ``yield``\\s trong phương "
+"thức ``__await__`` của nó. Điều đó nghe có vẻ kỳ lạ đối với bạn. Có thể bạn "
+"đang nghĩ:"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:444
+#, fuzzy
+msgid ""
+"1. What about a ``yield`` directly within the coroutine function? The "
+"coroutine function becomes an :ref:`async generator function <asynchronous-"
+"generator-functions>`, a different beast entirely."
+msgstr ""
+"1. Còn ``yield`` trực tiếp trong hàm coroutine thì sao? Hàm coroutine trở "
+"thành :ref:`async generator function <asynchronous-generator-functions>`, "
+"một con thú hoàn toàn khác."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:449
+#, fuzzy
+msgid ""
+"2. What about a :ref:`yield from <yieldexpr>` within the coroutine function "
+"to a (plain) generator? That causes the error: ``SyntaxError: yield from not"
+" allowed in a coroutine.`` This was intentionally designed for the sake of "
+"simplicity -- mandating only one way of using coroutines. Initially "
+"``yield`` was barred as well, but was re-accepted to allow for async "
+"generators. Despite that, ``yield from`` and ``await`` effectively do the "
+"same thing."
+msgstr ""
+"2. Còn :ref:`yield from <yieldexpr>` trong hàm coroutine đối với trình tạo "
+"(đơn giản) thì sao? Điều đó gây ra lỗi: ``SyntaxError: yield from not "
+"allowed in a coroutine.`` Điều này được thiết kế có chủ đích vì mục đích đơn"
+" giản -- chỉ yêu cầu một cách sử dụng coroutine. Ban đầu ``yield`` cũng bị "
+"cấm, nhưng đã được chấp nhận lại để cho phép các trình tạo không đồng bộ. "
+"Mặc dù vậy, ``yield from`` và ``await`` đều thực hiện được điều tương tự."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:460
+#, fuzzy
+msgid "Futures"
+msgstr "Hợp đồng tương lai"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:462
+#, fuzzy
+msgid ""
+"A :ref:`future <asyncio-future-obj>` is an object meant to represent a "
+"computation's status and result. The term is a nod to the idea of something "
+"still to come or not yet happened, and the object is a way to keep an eye on"
+" that something."
+msgstr ""
+"Zz000zz là một đối tượng dùng để biểu thị trạng thái và kết quả của một phép"
+" tính. Thuật ngữ này thể hiện ý tưởng về một điều gì đó vẫn sắp xảy ra hoặc "
+"chưa xảy ra, và đối tượng là một cách để theo dõi điều gì đó."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:467
+#, fuzzy
+msgid ""
+"A future has a few important attributes. One is its state, which can be "
+"either \"pending\", \"cancelled\", or \"done\". Another is its result, which"
+" is set when the state transitions to done. Unlike a coroutine, a future "
+"does not represent the actual computation to be done; instead, it represents"
+" the status and result of that computation, kind of like a status light "
+"(red, yellow, or green) or indicator."
+msgstr ""
+"Tương lai có một vài thuộc tính quan trọng. Một là trạng thái của nó, có thể"
+" là \"đang chờ xử lý\", \"đã hủy\" hoặc \"đã hoàn tất\". Một kết quả khác là"
+" kết quả của nó, được đặt khi trạng thái chuyển sang hoàn thành. Không giống"
+" như coroutine, tương lai không đại diện cho việc tính toán thực tế sẽ được "
+"thực hiện; thay vào đó, nó thể hiện trạng thái và kết quả của phép tính đó, "
+"giống như đèn trạng thái (đỏ, vàng hoặc xanh lục) hoặc chỉ báo."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:474
+#, fuzzy
+msgid ""
+":class:`asyncio.Task` subclasses :class:`asyncio.Future` in order to gain "
+"these various capabilities. The prior section said tasks store a list of "
+"callbacks, which wasn't entirely accurate. It's actually the ``Future`` "
+"class that implements this logic, which ``Task`` inherits."
+msgstr ""
+":class:`asyncio.Task` phân lớp :class:`asyncio.Future` để có được những khả "
+"năng khác nhau này. Phần trước cho biết các tác vụ lưu trữ danh sách các "
+"lệnh gọi lại, danh sách này không hoàn toàn chính xác. Trên thực tế, lớp "
+"``Future`` thực hiện logic này, lớp ``Task`` kế thừa."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:481
+#, fuzzy
+msgid ""
+"Futures may also be used directly (not via tasks). Tasks mark themselves as "
+"done when their coroutine is complete. Futures are much more versatile and "
+"will be marked as done when you say so. In this way, they're the flexible "
+"interface for you to make your own conditions for waiting and resuming."
+msgstr ""
+"Hợp đồng tương lai cũng có thể được sử dụng trực tiếp (không thông qua nhiệm"
+" vụ). Nhiệm vụ tự đánh dấu là đã hoàn thành khi coroutine của chúng hoàn "
+"tất. Hợp đồng tương lai linh hoạt hơn nhiều và sẽ được đánh dấu là hoàn tất "
+"khi bạn nói như vậy. Bằng cách này, chúng là giao diện linh hoạt để bạn tự "
+"tạo điều kiện chờ đợi và tiếp tục."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:489
+#, fuzzy
+msgid "A homemade asyncio.sleep"
+msgstr "Một asyncio.sleep tự chế"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:491
+#, fuzzy
+msgid ""
+"We'll go through an example of how you could leverage a future to create "
+"your own variant of asynchronous sleep (``async_sleep``) which mimics "
+":func:`asyncio.sleep`."
+msgstr ""
+"Chúng ta sẽ xem qua một ví dụ về cách bạn có thể tận dụng tương lai để tạo "
+"ra biến thể giấc ngủ không đồng bộ (``async_sleep``) của riêng bạn bắt chước"
+" :func:`asyncio.sleep`."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:495
+#, fuzzy
+msgid ""
+"This snippet registers a few tasks with the event loop and then awaits the "
+"task created by ``asyncio.create_task``, which wraps the ``async_sleep(3)`` "
+"coroutine. We want that task to finish only after three seconds have "
+"elapsed, but without preventing other tasks from running."
+msgstr ""
+"Đoạn mã này đăng ký một số tác vụ với vòng lặp sự kiện, sau đó chờ tác vụ "
+"được tạo bởi ``asyncio.create_task``, tác vụ này bao bọc coroutine "
+"``async_sleep(3)``. Chúng tôi muốn tác vụ đó chỉ hoàn thành sau ba giây trôi"
+" qua nhưng không ngăn các tác vụ khác chạy."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:502
+#, python-brace-format, fuzzy
+msgid ""
+"async def other_work():\n"
+"    print(\"I like work. Work work.\")\n"
+"\n"
+"async def main():\n"
+"    # Add a few other tasks to the event loop, so there's something\n"
+"    # to do while asynchronously sleeping.\n"
+"    work_tasks = [\n"
+"        asyncio.create_task(other_work()),\n"
+"        asyncio.create_task(other_work()),\n"
+"        asyncio.create_task(other_work())\n"
+"    ]\n"
+"    print(\n"
+"        \"Beginning asynchronous sleep at time: \"\n"
+"        f\"{datetime.datetime.now().strftime(\"%H:%M:%S\")}.\"\n"
+"    )\n"
+"    await asyncio.create_task(async_sleep(3))\n"
+"    print(\n"
+"        \"Done asynchronous sleep at time: \"\n"
+"        f\"{datetime.datetime.now().strftime(\"%H:%M:%S\")}.\"\n"
+"    )\n"
+"    # asyncio.gather effectively awaits each task in the collection.\n"
+"    await asyncio.gather(*work_tasks)"
+msgstr ""
+"async def other_work():\n"
+"    print(\"Tôi thích công việc. Công việc làm việc.\")\n"
+"\n"
+"async def main():\n"
+"    # Add một vài nhiệm vụ khác cho vòng lặp sự kiện, vậy nên có điều gì đó\n"
+"    # to làm gì khi ngủ không đồng bộ.\n"
+"    công việc_tác vụ = [\n"
+"        asyncio.create_task(other_work()),\n"
+"        asyncio.create_task(other_work()),\n"
+"        asyncio.create_task(other_work())\n"
+"    ]\n"
+"    in(\n"
+"        \"Bắt đầu ngủ không đồng bộ vào thời điểm: \"\n"
+"        f\"{datetime.datetime.now().strftime(\"%H:%M:%S\")}.\"\n"
+"    )\n"
+"    đang chờ asyncio.create_task(async_sleep(3))\n"
+"    in(\n"
+"        \"Đã thực hiện chế độ ngủ không đồng bộ vào thời điểm đó: \"\n"
+"        f\"{datetime.datetime.now().strftime(\"%H:%M:%S\")}.\"\n"
+"    )\n"
+"    # asyncio.gather chờ đợi từng tác vụ trong bộ sưu tập một cách hiệu quả.\n"
+"    đang chờ asyncio.gather(*work_tasks)"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:526
+#, fuzzy
+msgid ""
+"Below, we use a future to enable custom control over when that task will be "
+"marked as done. If :meth:`future.set_result() <asyncio.Future.set_result>` "
+"(the method responsible for marking that future as done) is never called, "
+"then this task will never finish. We've also enlisted the help of another "
+"task, which we'll see in a moment, that will monitor how much time has "
+"elapsed and, accordingly, call ``future.set_result()``."
+msgstr ""
+"Dưới đây, chúng tôi sử dụng tương lai để bật quyền kiểm soát tùy chỉnh về "
+"thời điểm tác vụ đó sẽ được đánh dấu là hoàn thành. Nếu "
+":meth:`future.set_result() <asyncio.Future.set_result>` (phương thức chịu "
+"trách nhiệm đánh dấu tương lai đó là đã hoàn thành) không bao giờ được gọi "
+"thì tác vụ này sẽ không bao giờ kết thúc. Chúng tôi cũng đã tranh thủ sự trợ"
+" giúp của một nhiệm vụ khác mà chúng tôi sẽ xem ngay sau đây, nhiệm vụ này "
+"sẽ theo dõi lượng thời gian đã trôi qua và theo đó, hãy gọi "
+"``future.set_result()``."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:537
+#, fuzzy
+msgid ""
+"async def async_sleep(seconds: float):\n"
+"    future = asyncio.Future()\n"
+"    time_to_wake = time.time() + seconds\n"
+"    # Add the watcher-task to the event loop.\n"
+"    watcher_task = asyncio.create_task(_sleep_watcher(future, time_to_wake))\n"
+"    # Block until the future is marked as done.\n"
+"    await future"
+msgstr ""
+"async def async_sleep(giây: float):\n"
+"    tương lai = asyncio.Future()\n"
+"    time_to_wake = time.time() + giây\n"
+"    # Add nhiệm vụ của người theo dõi vào vòng lặp sự kiện.\n"
+"    watcher_task = asyncio.create_task(_sleep_watcher(tương lai, time_to_wake))\n"
+"    # Block cho đến khi tương lai được đánh dấu là hoàn tất.\n"
+"    chờ đợi tương lai"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:545
+#, fuzzy
+msgid ""
+"Below, we use a rather bare ``YieldToEventLoop()`` object to ``yield`` from "
+"its ``__await__`` method, ceding control to the event loop. This is "
+"effectively the same as calling ``asyncio.sleep(0)``, but this approach "
+"offers more clarity, not to mention it's somewhat cheating to use "
+"``asyncio.sleep`` when showcasing how to implement it!"
+msgstr ""
+"Dưới đây, chúng tôi sử dụng một đối tượng ``YieldToEventLoop()`` khá đơn "
+"giản cho ``yield`` từ phương thức ``__await__`` của nó, nhường quyền kiểm "
+"soát cho vòng lặp sự kiện. Điều này thực sự giống như cách gọi "
+"``asyncio.sleep(0)``, nhưng cách tiếp cận này mang lại sự rõ ràng hơn, chưa "
+"kể việc sử dụng ``asyncio.sleep`` có phần gian lận khi trình bày cách triển "
+"khai nó!"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:551
+#, fuzzy
+msgid ""
+"As usual, the event loop cycles through its tasks, giving them control and "
+"receiving control back when they pause or finish. The ``watcher_task``, "
+"which runs the coroutine ``_sleep_watcher(...)``, will be invoked once per "
+"full cycle of the event loop. On each resumption, it'll check the time and "
+"if not enough has elapsed, then it'll pause once again and hand control back"
+" to the event loop. Once enough time has elapsed, ``_sleep_watcher(...)`` "
+"marks the future as done and completes by exiting its infinite ``while`` "
+"loop. Given this helper task is only invoked once per cycle of the event "
+"loop, you'd be correct to note that this asynchronous sleep will sleep *at "
+"least* three seconds, rather than exactly three seconds. Note this is also "
+"true of ``asyncio.sleep``."
+msgstr ""
+"Như thường lệ, vòng lặp sự kiện sẽ xoay vòng qua các nhiệm vụ của nó, trao "
+"cho chúng quyền kiểm soát và nhận lại quyền kiểm soát khi chúng tạm dừng "
+"hoặc kết thúc. Zz000zz chạy coroutine ``_sleep_watcher(...)`` sẽ được gọi "
+"một lần trong toàn bộ chu kỳ của vòng lặp sự kiện. Mỗi lần tiếp tục, nó sẽ "
+"kiểm tra thời gian và nếu chưa đủ thì nó sẽ tạm dừng một lần nữa và quay lại"
+" vòng lặp sự kiện bằng tay. Khi đã đủ thời gian trôi qua, "
+"``_sleep_watcher(...)`` đánh dấu tương lai là hoàn thành và hoàn thành bằng "
+"cách thoát khỏi vòng lặp ``while`` vô hạn của nó. Do tác vụ trợ giúp này chỉ"
+" được gọi một lần trong mỗi chu kỳ của vòng lặp sự kiện, bạn nên lưu ý rằng "
+"chế độ ngủ không đồng bộ này sẽ ngủ *at least* ba giây, thay vì chính xác là"
+" ba giây. Lưu ý điều này cũng đúng với ``asyncio.sleep``."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:567
+#, fuzzy
+msgid ""
+"class YieldToEventLoop:\n"
+"    def __await__(self):\n"
+"        yield\n"
+"\n"
+"async def _sleep_watcher(future, time_to_wake):\n"
+"    while True:\n"
+"        if time.time() >= time_to_wake:\n"
+"            # This marks the future as done.\n"
+"            future.set_result(None)\n"
+"            break\n"
+"        else:\n"
+"            await YieldToEventLoop()"
+msgstr ""
+"lớp YieldToEventLoop:\n"
+"    chắc chắn __await__(tự):\n"
+"        năng suất\n"
+"\n"
+"async def _sleep_watcher(tương lai, time_to_wake):\n"
+"    trong khi Đúng:\n"
+"        nếu time.time() >= time_to_wake:\n"
+"            # This đánh dấu tương lai là hoàn tất.\n"
+"            tương lai.set_result(Không có)\n"
+"            phá vỡ\n"
+"        khác:\n"
+"            đang chờ YieldToEventLoop()"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:580
+#, fuzzy
+msgid "Here is the full program's output:"
+msgstr "Đây là đầu ra của chương trình đầy đủ:"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:582
+#, fuzzy
+msgid ""
+"$ python custom-async-sleep.py\n"
+"Beginning asynchronous sleep at time: 14:52:22.\n"
+"I like work. Work work.\n"
+"I like work. Work work.\n"
+"I like work. Work work.\n"
+"Done asynchronous sleep at time: 14:52:25."
+msgstr ""
+"$ python custom-async-sleep.py\n"
+"Bắt đầu ngủ không đồng bộ vào thời điểm: 14:52:22.\n"
+"Tôi thích công việc. Công việc làm việc.\n"
+"Tôi thích công việc. Công việc làm việc.\n"
+"Tôi thích công việc. Công việc làm việc.\n"
+"Đã hoàn thành chế độ ngủ không đồng bộ vào lúc: 14:52:25."
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:591
+#, fuzzy
+msgid ""
+"You might feel this implementation of asynchronous sleep was unnecessarily "
+"convoluted. And, well, it was. The example was meant to showcase the "
+"versatility of futures with a simple example that could be mimicked for more"
+" complex needs. For reference, you could implement it without futures, like "
+"so::"
+msgstr ""
+"Bạn có thể cảm thấy việc triển khai chế độ ngủ không đồng bộ này phức tạp "
+"một cách không cần thiết. Và đúng là như vậy. Ví dụ này nhằm thể hiện tính "
+"linh hoạt của hợp đồng tương lai bằng một ví dụ đơn giản có thể bắt chước "
+"cho các nhu cầu phức tạp hơn. Để tham khảo, bạn có thể triển khai nó mà "
+"không cần tương lai, như vậy ::"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:598
+#, fuzzy
+msgid ""
+"async def simpler_async_sleep(seconds):\n"
+"    time_to_wake = time.time() + seconds\n"
+"    while True:\n"
+"        if time.time() >= time_to_wake:\n"
+"            return\n"
+"        else:\n"
+"            await YieldToEventLoop()"
+msgstr ""
+"async def đơn giản_async_sleep(giây):\n"
+"    time_to_wake = time.time() + giây\n"
+"    trong khi Đúng:\n"
+"        nếu time.time() >= time_to_wake:\n"
+"            trở về\n"
+"        khác:\n"
+"            đang chờ YieldToEventLoop()"
+
+#: ../../howto/a-conceptual-overview-of-asyncio.rst:606
+#, fuzzy
+msgid ""
+"But that's all for now. Hopefully you're ready to more confidently dive into"
+" some async programming or check out advanced topics in the :mod:`rest of "
+"the documentation <asyncio>`."
+msgstr ""
+"Nhưng đó là tất cả bây giờ. Hy vọng rằng bạn đã sẵn sàng tự tin hơn khi tìm "
+"hiểu một số chương trình không đồng bộ hoặc xem các chủ đề nâng cao trong "
+":mod:`rest of the documentation <asyncio>`."

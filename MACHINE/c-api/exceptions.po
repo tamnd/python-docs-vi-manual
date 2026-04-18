@@ -1,0 +1,2333 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/exceptions.rst:8
+#, fuzzy
+msgid "Exception Handling"
+msgstr "Xử lý ngoại lệ"
+
+#: ../../c-api/exceptions.rst:10
+#, fuzzy
+msgid ""
+"The functions described in this chapter will let you handle and raise Python"
+" exceptions.  It is important to understand some of the basics of Python "
+"exception handling.  It works somewhat like the POSIX :c:data:`errno` "
+"variable: there is a global indicator (per thread) of the last error that "
+"occurred.  Most C API functions don't clear this on success, but will set it"
+" to indicate the cause of the error on failure.  Most C API functions also "
+"return an error indicator, usually ``NULL`` if they are supposed to return a"
+" pointer, or ``-1`` if they return an integer (exception: the ``PyArg_*`` "
+"functions return ``1`` for success and ``0`` for failure)."
+msgstr ""
+"Các hàm được mô tả trong chương này sẽ cho phép bạn xử lý và đưa ra các "
+"ngoại lệ trong Python.  Điều quan trọng là phải hiểu một số điều cơ bản về "
+"xử lý ngoại lệ trong Python.  Nó hoạt động hơi giống biến POSIX "
+":c:data:`errno`: có một chỉ báo chung (mỗi luồng) về lỗi xảy ra gần đây "
+"nhất.  Hầu hết các hàm C API không xóa điều này khi thành công nhưng sẽ đặt "
+"nó để chỉ ra nguyên nhân gây ra lỗi khi thất bại.  Hầu hết các hàm C API "
+"cũng trả về một chỉ báo lỗi, thường là ``NULL`` nếu chúng phải trả về một "
+"con trỏ hoặc ``-1`` nếu chúng trả về một số nguyên (ngoại trừ: các hàm "
+"``PyArg_*`` trả về ``1`` nếu thành công và ``0`` nếu thất bại)."
+
+#: ../../c-api/exceptions.rst:20
+#, fuzzy
+msgid ""
+"Concretely, the error indicator consists of three object pointers: the "
+"exception's type, the exception's value, and the traceback object.  Any of "
+"those pointers can be ``NULL`` if non-set (although some combinations are "
+"forbidden, for example you can't have a non-``NULL`` traceback if the "
+"exception type is ``NULL``)."
+msgstr ""
+"Cụ thể, chỉ báo lỗi bao gồm ba con trỏ đối tượng: loại ngoại lệ, giá trị "
+"ngoại lệ và đối tượng truy nguyên.  Bất kỳ con trỏ nào trong số đó đều có "
+"thể là ``NULL`` nếu không được đặt (mặc dù một số kết hợp bị cấm, ví dụ: bạn"
+" không thể có truy nguyên không phải ``NULL`` nếu loại ngoại lệ là "
+"``NULL``)."
+
+#: ../../c-api/exceptions.rst:26
+#, fuzzy
+msgid ""
+"When a function must fail because some function it called failed, it "
+"generally doesn't set the error indicator; the function it called already "
+"set it.  It is responsible for either handling the error and clearing the "
+"exception or returning after cleaning up any resources it holds (such as "
+"object references or memory allocations); it should *not* continue normally "
+"if it is not prepared to handle the error.  If returning due to an error, it"
+" is important to indicate to the caller that an error has been set.  If the "
+"error is not handled or carefully propagated, additional calls into the "
+"Python/C API may not behave as intended and may fail in mysterious ways."
+msgstr ""
+"Khi một chức năng phải bị lỗi do một số chức năng mà nó gọi là bị lỗi, thông"
+" thường nó không đặt chỉ báo lỗi; chức năng mà nó gọi đã được thiết lập rồi."
+"  Nó chịu trách nhiệm xử lý lỗi và xóa ngoại lệ hoặc quay lại sau khi dọn "
+"sạch mọi tài nguyên mà nó giữ (chẳng hạn như tham chiếu đối tượng hoặc phân "
+"bổ bộ nhớ); *not* sẽ tiếp tục hoạt động bình thường nếu nó chưa được chuẩn "
+"bị để xử lý lỗi.  Nếu quay lại do lỗi, điều quan trọng là phải cho người gọi"
+" biết rằng lỗi đã được đặt.  Nếu lỗi không được xử lý hoặc thông báo cẩn "
+"thận, các lệnh gọi bổ sung vào Python/C API có thể không hoạt động như dự "
+"định và có thể thất bại theo những cách bí ẩn."
+
+#: ../../c-api/exceptions.rst:37
+#, fuzzy
+msgid ""
+"The error indicator is **not** the result of :func:`sys.exc_info`. The "
+"former corresponds to an exception that is not yet caught (and is therefore "
+"still propagating), while the latter returns an exception after it is caught"
+" (and has therefore stopped propagating)."
+msgstr ""
+"Chỉ báo lỗi là **not** là kết quả của :func:`sys.exc_info`. Cái trước tương "
+"ứng với một ngoại lệ chưa bị bắt (và do đó vẫn đang lan truyền), trong khi "
+"cái sau trả về một ngoại lệ sau khi nó bị bắt (và do đó đã ngừng lan "
+"truyền)."
+
+#: ../../c-api/exceptions.rst:44
+#, fuzzy
+msgid "Printing and clearing"
+msgstr "In và xóa"
+
+#: ../../c-api/exceptions.rst:49
+#, fuzzy
+msgid ""
+"Clear the error indicator.  If the error indicator is not set, there is no "
+"effect."
+msgstr ""
+"Xóa chỉ báo lỗi.  Nếu chỉ báo lỗi không được đặt thì sẽ không có hiệu lực."
+
+#: ../../c-api/exceptions.rst:55
+#, fuzzy
+msgid ""
+"Print a standard traceback to ``sys.stderr`` and clear the error indicator. "
+"**Unless** the error is a ``SystemExit``, in that case no traceback is "
+"printed and the Python process will exit with the error code specified by "
+"the ``SystemExit`` instance."
+msgstr ""
+"In truy nguyên tiêu chuẩn tới ``sys.stderr`` và xóa chỉ báo lỗi. **Unless** "
+"lỗi là ``SystemExit``, trong trường hợp đó không có dấu vết nào được in và "
+"quy trình Python sẽ thoát với mã lỗi được chỉ định bởi phiên bản "
+"``SystemExit``."
+
+#: ../../c-api/exceptions.rst:60
+#, fuzzy
+msgid ""
+"Call this function **only** when the error indicator is set.  Otherwise it "
+"will cause a fatal error!"
+msgstr ""
+"Gọi hàm này **only** khi chỉ báo lỗi được đặt.  Nếu không nó sẽ gây ra lỗi "
+"nghiêm trọng!"
+
+#: ../../c-api/exceptions.rst:63
+#, fuzzy
+msgid ""
+"If *set_sys_last_vars* is nonzero, the variable :data:`sys.last_exc` is set "
+"to the printed exception. For backwards compatibility, the deprecated "
+"variables :data:`sys.last_type`, :data:`sys.last_value` and "
+":data:`sys.last_traceback` are also set to the type, value and traceback of "
+"this exception, respectively."
+msgstr ""
+"Nếu *set_sys_last_vars* khác 0, biến :data:`sys.last_exc` được đặt thành "
+"ngoại lệ được in. Để tương thích ngược, các biến không dùng nữa "
+":data:`sys.last_type`, :data:`sys.last_value` và :data:`sys.last_traceback` "
+"cũng được đặt tương ứng thành loại, giá trị và truy nguyên của ngoại lệ này."
+
+#: ../../c-api/exceptions.rst:69
+#, fuzzy
+msgid "The setting of :data:`sys.last_exc` was added."
+msgstr "Cài đặt :data:`sys.last_exc` đã được thêm vào."
+
+#: ../../c-api/exceptions.rst:75
+#, fuzzy
+msgid "Alias for ``PyErr_PrintEx(1)``."
+msgstr "Bí danh cho ``PyErr_PrintEx(1)``."
+
+#: ../../c-api/exceptions.rst:80
+#, fuzzy
+msgid ""
+"Call :func:`sys.unraisablehook` using the current exception and *obj* "
+"argument."
+msgstr ""
+"Gọi :func:`sys.unraisablehook` bằng ngoại lệ hiện tại và đối số *obj*."
+
+#: ../../c-api/exceptions.rst:83
+#, fuzzy
+msgid ""
+"This utility function prints a warning message to ``sys.stderr`` when an "
+"exception has been set but it is impossible for the interpreter to actually "
+"raise the exception.  It is used, for example, when an exception occurs in "
+"an :meth:`~object.__del__` method."
+msgstr ""
+"Hàm tiện ích này in một thông báo cảnh báo tới ``sys.stderr`` khi một ngoại "
+"lệ đã được đặt nhưng trình thông dịch không thể thực sự đưa ra ngoại lệ đó."
+"  Ví dụ, nó được sử dụng khi một ngoại lệ xảy ra trong phương thức "
+":meth:`~object.__del__`."
+
+#: ../../c-api/exceptions.rst:88
+#, fuzzy
+msgid ""
+"The function is called with a single argument *obj* that identifies the "
+"context in which the unraisable exception occurred. If possible, the repr of"
+" *obj* will be printed in the warning message. If *obj* is ``NULL``, only "
+"the traceback is printed."
+msgstr ""
+"Hàm được gọi với một đối số duy nhất *obj* xác định bối cảnh xảy ra ngoại lệ"
+" không thể xử lý được. Nếu có thể, bản repr của *obj* sẽ được in trong thông"
+" báo cảnh báo. Nếu *obj* là ``NULL`` thì chỉ có dấu vết được in."
+
+#: ../../c-api/exceptions.rst:93
+#, fuzzy
+msgid "An exception must be set when calling this function."
+msgstr "Một ngoại lệ phải được đặt khi gọi hàm này."
+
+#: ../../c-api/exceptions.rst:95
+#, fuzzy
+msgid "Print a traceback. Print only traceback if *obj* is ``NULL``."
+msgstr "In một dấu vết. Chỉ in truy nguyên nếu *obj* là ``NULL``."
+
+#: ../../c-api/exceptions.rst:98
+#, fuzzy
+msgid "Use :func:`sys.unraisablehook`."
+msgstr "Sử dụng :func:`sys.unraisablehook`."
+
+#: ../../c-api/exceptions.rst:104
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_WriteUnraisable`, but the *format* and subsequent "
+"parameters help format the warning message; they have the same meaning and "
+"values as in :c:func:`PyUnicode_FromFormat`. ``PyErr_WriteUnraisable(obj)`` "
+"is roughly equivalent to ``PyErr_FormatUnraisable(\"Exception ignored in: "
+"%R\", obj)``. If *format* is ``NULL``, only the traceback is printed."
+msgstr ""
+"Tương tự như :c:func:`PyErr_WriteUnraisable`, nhưng *format* và các tham số "
+"tiếp theo giúp định dạng thông báo cảnh báo; chúng có cùng ý nghĩa và giá "
+"trị như trong :c:func:`PyUnicode_FromFormat`. ``PyErr_WriteUnraisable(obj)``"
+" gần tương đương với ``PyErr_FormatUnraisable(\"Exception ignored in: %R\", "
+"obj)``. Nếu *format* là ``NULL`` thì chỉ có dấu vết được in."
+
+#: ../../c-api/exceptions.rst:116
+#, fuzzy
+msgid ""
+"Print the standard traceback display of ``exc`` to ``sys.stderr``, including"
+" chained exceptions and notes."
+msgstr ""
+"In màn hình truy nguyên tiêu chuẩn của ``exc`` đến ``sys.stderr``, bao gồm "
+"các ngoại lệ và ghi chú theo chuỗi."
+
+#: ../../c-api/exceptions.rst:123
+#, fuzzy
+msgid "Raising exceptions"
+msgstr "Đưa ra ngoại lệ"
+
+#: ../../c-api/exceptions.rst:125
+#, fuzzy
+msgid ""
+"These functions help you set the current thread's error indicator. For "
+"convenience, some of these functions will always return a ``NULL`` pointer "
+"for use in a ``return`` statement."
+msgstr ""
+"Các chức năng này giúp bạn đặt chỉ báo lỗi của luồng hiện tại. Để thuận "
+"tiện, một số hàm này sẽ luôn trả về một con trỏ ``NULL`` để sử dụng trong "
+"câu lệnh ``return``."
+
+#: ../../c-api/exceptions.rst:132
+#, fuzzy
+msgid ""
+"This is the most common way to set the error indicator.  The first argument "
+"specifies the exception type; it is normally one of the standard exceptions,"
+" e.g. :c:data:`PyExc_RuntimeError`.  You need not create a new :term:`strong"
+" reference` to it (e.g. with :c:func:`Py_INCREF`). The second argument is an"
+" error message; it is decoded from ``'utf-8'``."
+msgstr ""
+"Đây là cách phổ biến nhất để đặt chỉ báo lỗi.  Đối số đầu tiên chỉ định loại"
+" ngoại lệ; nó thường là một trong những trường hợp ngoại lệ tiêu chuẩn, ví "
+"dụ: :c:data:`PyExc_RuntimeError`.  Bạn không cần phải tạo :term:`strong "
+"reference` mới cho nó (ví dụ: với :c:func:`Py_INCREF`). Đối số thứ hai là "
+"một thông báo lỗi; nó được giải mã từ ``'utf-8'``."
+
+#: ../../c-api/exceptions.rst:141
+#, fuzzy
+msgid ""
+"This function is similar to :c:func:`PyErr_SetString` but lets you specify "
+"an arbitrary Python object for the \"value\" of the exception."
+msgstr ""
+"Hàm này tương tự như :c:func:`PyErr_SetString` nhưng cho phép bạn chỉ định "
+"một đối tượng Python tùy ý cho \"giá trị\" của ngoại lệ."
+
+#: ../../c-api/exceptions.rst:147
+#, fuzzy
+msgid ""
+"This function sets the error indicator and returns ``NULL``.  *exception* "
+"should be a Python exception class.  The *format* and subsequent parameters "
+"help format the error message; they have the same meaning and values as in "
+":c:func:`PyUnicode_FromFormat`. *format* is an ASCII-encoded string."
+msgstr ""
+"Hàm này đặt chỉ báo lỗi và trả về ``NULL``.  *exception* phải là một lớp "
+"ngoại lệ Python.  *format* và các tham số tiếp theo giúp định dạng thông báo"
+" lỗi; chúng có cùng ý nghĩa và giá trị như trong "
+":c:func:`PyUnicode_FromFormat`. *format* là chuỗi được mã hóa ASCII."
+
+#: ../../c-api/exceptions.rst:156
+#, fuzzy
+msgid ""
+"Same as :c:func:`PyErr_Format`, but taking a :c:type:`va_list` argument "
+"rather than a variable number of arguments."
+msgstr ""
+"Tương tự như :c:func:`PyErr_Format`, nhưng lấy đối số :c:type:`va_list` thay"
+" vì số lượng đối số thay đổi."
+
+#: ../../c-api/exceptions.rst:164
+#, fuzzy
+msgid "This is a shorthand for ``PyErr_SetObject(type, Py_None)``."
+msgstr "Đây là cách viết tắt của ``PyErr_SetObject(type, Py_None)``."
+
+#: ../../c-api/exceptions.rst:169
+#, fuzzy
+msgid ""
+"This is a shorthand for ``PyErr_SetString(PyExc_TypeError, message)``, where"
+" *message* indicates that a built-in operation was invoked with an illegal "
+"argument.  It is mostly for internal use."
+msgstr ""
+"Đây là cách viết tắt của ``PyErr_SetString(PyExc_TypeError, message)``, "
+"trong đó *message* chỉ ra rằng một thao tác tích hợp đã được gọi với một đối"
+" số bất hợp pháp.  Nó chủ yếu được sử dụng nội bộ."
+
+#: ../../c-api/exceptions.rst:176
+#, fuzzy
+msgid ""
+"This is a shorthand for ``PyErr_SetNone(PyExc_MemoryError)``; it returns "
+"``NULL`` so an object allocation function can write ``return "
+"PyErr_NoMemory();`` when it runs out of memory."
+msgstr ""
+"Đây là cách viết tắt của ``PyErr_SetNone(PyExc_MemoryError)``; nó trả về "
+"``NULL`` để hàm cấp phát đối tượng có thể ghi ``return PyErr_NoMemory();`` "
+"khi hết bộ nhớ."
+
+#: ../../c-api/exceptions.rst:185
+#, fuzzy
+msgid ""
+"This is a convenience function to raise an exception when a C library "
+"function has returned an error and set the C variable :c:data:`errno`.  It "
+"constructs a tuple object whose first item is the integer :c:data:`errno` "
+"value and whose second item is the corresponding error message (gotten from "
+":c:func:`!strerror`), and then calls ``PyErr_SetObject(type, object)``.  On "
+"Unix, when the :c:data:`errno` value is :c:macro:`!EINTR`, indicating an "
+"interrupted system call, this calls :c:func:`PyErr_CheckSignals`, and if "
+"that set the error indicator, leaves it set to that.  The function always "
+"returns ``NULL``, so a wrapper function around a system call can write "
+"``return PyErr_SetFromErrno(type);`` when the system call returns an error."
+msgstr ""
+"Đây là một hàm tiện lợi để đưa ra một ngoại lệ khi hàm thư viện C trả về lỗi"
+" và đặt biến C :c:data:`errno`.  Nó xây dựng một đối tượng tuple có mục đầu "
+"tiên là giá trị số nguyên :c:data:`errno` và mục thứ hai là thông báo lỗi "
+"tương ứng (nhận được từ :c:func:`!strerror`), sau đó gọi "
+"``PyErr_SetObject(type, object)``.  Trên Unix, khi giá trị :c:data:`errno` "
+"là :c:macro:`!EINTR`, biểu thị lệnh gọi hệ thống bị gián đoạn, lệnh gọi này "
+"sẽ gọi :c:func:`PyErr_CheckSignals` và nếu điều đó đặt chỉ báo lỗi, nó sẽ "
+"được đặt thành giá trị đó.  Hàm này luôn trả về ``NULL``, do đó, hàm bao bọc"
+" xung quanh lệnh gọi hệ thống có thể ghi ``return "
+"PyErr_SetFromErrno(type);`` khi lệnh gọi hệ thống trả về lỗi."
+
+#: ../../c-api/exceptions.rst:199
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_SetFromErrno`, with the additional behavior that "
+"if *filenameObject* is not ``NULL``, it is passed to the constructor of "
+"*type* as a third parameter.  In the case of :exc:`OSError` exception, this "
+"is used to define the :attr:`!filename` attribute of the exception instance."
+msgstr ""
+"Tương tự như :c:func:`PyErr_SetFromErrno`, với hành vi bổ sung là nếu "
+"*filenameObject* không phải là ``NULL`` thì nó sẽ được chuyển đến hàm tạo "
+"của *type* làm tham số thứ ba.  Trong trường hợp ngoại lệ :exc:`OSError`, "
+"thuộc tính này được sử dụng để xác định thuộc tính :attr:`!filename` của "
+"phiên bản ngoại lệ."
+
+#: ../../c-api/exceptions.rst:208
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_SetFromErrnoWithFilenameObject`, but takes a "
+"second filename object, for raising errors when a function that takes two "
+"filenames fails."
+msgstr ""
+"Tương tự như :c:func:`PyErr_SetFromErrnoWithFilenameObject`, nhưng lấy đối "
+"tượng tên tệp thứ hai, để phát sinh lỗi khi một hàm lấy hai tên tệp bị lỗi."
+
+#: ../../c-api/exceptions.rst:217
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_SetFromErrnoWithFilenameObject`, but the filename "
+"is given as a C string.  *filename* is decoded from the :term:`filesystem "
+"encoding and error handler`."
+msgstr ""
+"Tương tự như :c:func:`PyErr_SetFromErrnoWithFilenameObject`, nhưng tên tệp "
+"được đặt dưới dạng chuỗi C.  *filename* được giải mã từ :term:`filesystem "
+"encoding and error handler`."
+
+#: ../../c-api/exceptions.rst:224
+#, fuzzy
+msgid ""
+"This is a convenience function to raise :exc:`OSError`. If called with "
+"*ierr* of ``0``, the error code returned by a call to "
+":c:func:`!GetLastError` is used instead.  It calls the Win32 function "
+":c:func:`!FormatMessage` to retrieve the Windows description of error code "
+"given by *ierr* or :c:func:`!GetLastError`, then it constructs a "
+":exc:`OSError` object with the :attr:`~OSError.winerror` attribute set to "
+"the error code, the :attr:`~OSError.strerror` attribute set to the "
+"corresponding error message (gotten from :c:func:`!FormatMessage`), and then"
+" calls ``PyErr_SetObject(PyExc_OSError, object)``. This function always "
+"returns ``NULL``."
+msgstr ""
+"Đây là một chức năng tiện lợi để nâng cao :exc:`OSError`. Nếu được gọi bằng "
+"*ierr* của ``0``, mã lỗi được trả về bởi lệnh gọi tới "
+":c:func:`!GetLastError` sẽ được sử dụng thay thế.  Nó gọi hàm Win32 "
+":c:func:`!FormatMessage` để truy xuất mô tả mã lỗi của Windows do *ierr* "
+"hoặc :c:func:`!GetLastError` cung cấp, sau đó nó xây dựng một đối tượng "
+":exc:`OSError` với thuộc tính :attr:`~OSError.winerror` được đặt thành mã "
+"lỗi, thuộc tính :attr:`~OSError.strerror` được đặt thành thông báo lỗi tương"
+" ứng (lấy từ :c:func:`!FormatMessage`), rồi gọi "
+"``PyErr_SetObject(PyExc_OSError, object)``. Hàm này luôn trả về ``NULL``."
+
+#: ../../c-api/exceptions.rst:234 ../../c-api/exceptions.rst:242
+#: ../../c-api/exceptions.rst:253 ../../c-api/exceptions.rst:263
+#: ../../c-api/exceptions.rst:271 ../../c-api/exceptions.rst:281
+#, fuzzy
+msgid "Availability"
+msgstr "sẵn có"
+
+#: ../../c-api/exceptions.rst:239
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_SetFromWindowsErr`, with an additional parameter "
+"specifying the exception type to be raised."
+msgstr ""
+"Tương tự như :c:func:`PyErr_SetFromWindowsErr`, với một tham số bổ sung chỉ "
+"định loại ngoại lệ sẽ được đưa ra."
+
+#: ../../c-api/exceptions.rst:247
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_SetFromWindowsErr`, with the additional behavior "
+"that if *filename* is not ``NULL``, it is decoded from the filesystem "
+"encoding (:func:`os.fsdecode`) and passed to the constructor of "
+":exc:`OSError` as a third parameter to be used to define the "
+":attr:`!filename` attribute of the exception instance."
+msgstr ""
+"Tương tự như :c:func:`PyErr_SetFromWindowsErr`, với hành vi bổ sung là nếu "
+"*filename* không phải là ``NULL`` thì nó sẽ được giải mã từ mã hóa hệ thống "
+"tệp (:func:`os.fsdecode`) và được chuyển đến hàm tạo của :exc:`OSError` làm "
+"tham số thứ ba được sử dụng để xác định thuộc tính :attr:`!filename` của "
+"phiên bản ngoại lệ."
+
+#: ../../c-api/exceptions.rst:258
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_SetExcFromWindowsErr`, with the additional "
+"behavior that if *filename* is not ``NULL``, it is passed to the constructor"
+" of :exc:`OSError` as a third parameter to be used to define the "
+":attr:`!filename` attribute of the exception instance."
+msgstr ""
+"Tương tự như :c:func:`PyErr_SetExcFromWindowsErr`, với hành vi bổ sung là "
+"nếu *filename* không phải là ``NULL`` thì nó sẽ được chuyển đến hàm tạo của "
+":exc:`OSError` dưới dạng tham số thứ ba được sử dụng để xác định thuộc tính "
+":attr:`!filename` của phiên bản ngoại lệ."
+
+#: ../../c-api/exceptions.rst:268
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_SetExcFromWindowsErrWithFilenameObject`, but "
+"accepts a second filename object."
+msgstr ""
+"Tương tự như :c:func:`PyErr_SetExcFromWindowsErrWithFilenameObject`, nhưng "
+"chấp nhận đối tượng tên tệp thứ hai."
+
+#: ../../c-api/exceptions.rst:278
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_SetFromWindowsErrWithFilename`, with an additional"
+" parameter specifying the exception type to be raised."
+msgstr ""
+"Tương tự như :c:func:`PyErr_SetFromWindowsErrWithFilename`, với một tham số "
+"bổ sung chỉ định loại ngoại lệ sẽ được đưa ra."
+
+#: ../../c-api/exceptions.rst:286
+#, fuzzy
+msgid ""
+"This is a convenience function to raise :exc:`ImportError`. *msg* will be "
+"set as the exception's message string. *name* and *path*, both of which can "
+"be ``NULL``, will be set as the :exc:`ImportError`'s respective ``name`` and"
+" ``path`` attributes."
+msgstr ""
+"Đây là một chức năng tiện lợi để nâng cao :exc:`ImportError`. *msg* sẽ được "
+"đặt làm chuỗi thông báo của ngoại lệ. *name* và *path*, cả hai đều có thể là"
+" ``NULL``, sẽ được đặt làm thuộc tính ``name`` và ``path`` tương ứng của "
+":exc:`ImportError`."
+
+#: ../../c-api/exceptions.rst:296
+#, fuzzy
+msgid ""
+"Much like :c:func:`PyErr_SetImportError` but this function allows for "
+"specifying a subclass of :exc:`ImportError` to raise."
+msgstr ""
+"Giống như :c:func:`PyErr_SetImportError` nhưng chức năng này cho phép chỉ "
+"định một lớp con của :exc:`ImportError` để nâng cao."
+
+#: ../../c-api/exceptions.rst:304
+#, fuzzy
+msgid ""
+"Set file, line, and offset information for the current exception.  If the "
+"current exception is not a :exc:`SyntaxError`, then it sets additional "
+"attributes, which make the exception printing subsystem think the exception "
+"is a :exc:`SyntaxError`."
+msgstr ""
+"Đặt thông tin tệp, dòng và offset cho ngoại lệ hiện tại.  Nếu ngoại lệ hiện "
+"tại không phải là :exc:`SyntaxError` thì nó sẽ đặt các thuộc tính bổ sung, "
+"khiến hệ thống con in ngoại lệ cho rằng ngoại lệ đó là :exc:`SyntaxError`."
+
+#: ../../c-api/exceptions.rst:314
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_SyntaxLocationObject`, but also sets the "
+"*end_lineno* and *end_col_offset* information for the current exception."
+msgstr ""
+"Tương tự như :c:func:`PyErr_SyntaxLocationObject`, nhưng cũng đặt thông tin "
+"*end_lineno* và *end_col_offset* cho ngoại lệ hiện tại."
+
+#: ../../c-api/exceptions.rst:322
+#, fuzzy
+msgid ""
+"Like :c:func:`PyErr_SyntaxLocationObject`, but *filename* is a byte string "
+"decoded from the :term:`filesystem encoding and error handler`."
+msgstr ""
+"Giống như :c:func:`PyErr_SyntaxLocationObject`, nhưng *filename* là một "
+"chuỗi byte được giải mã từ :term:`filesystem encoding and error handler`."
+
+#: ../../c-api/exceptions.rst:330
+#, fuzzy
+msgid ""
+"Like :c:func:`PyErr_SyntaxLocationEx`, but the *col_offset* parameter is "
+"omitted."
+msgstr ""
+"Giống như :c:func:`PyErr_SyntaxLocationEx` nhưng tham số *col_offset* bị bỏ "
+"qua."
+
+#: ../../c-api/exceptions.rst:336
+#, fuzzy
+msgid ""
+"This is a shorthand for ``PyErr_SetString(PyExc_SystemError, message)``, "
+"where *message* indicates that an internal operation (e.g. a Python/C API "
+"function) was invoked with an illegal argument.  It is mostly for internal "
+"use."
+msgstr ""
+"Đây là cách viết tắt của ``PyErr_SetString(PyExc_SystemError, message)``, "
+"trong đó *message* chỉ ra rằng một hoạt động nội bộ (ví dụ: hàm API của "
+"Python/C) đã được gọi với một đối số không hợp lệ.  Nó chủ yếu được sử dụng "
+"nội bộ."
+
+#: ../../c-api/exceptions.rst:344
+#, fuzzy
+msgid ""
+"Get the source line in *filename* at line *lineno*. *filename* should be a "
+"Python :class:`str` object."
+msgstr ""
+"Lấy dòng nguồn trong *filename* tại dòng *lineno*. *filename* phải là đối "
+"tượng :class:`str` của Python."
+
+#: ../../c-api/exceptions.rst:347
+#, fuzzy
+msgid ""
+"On success, this function returns a Python string object with the found "
+"line. On failure, this function returns ``NULL`` without an exception set."
+msgstr ""
+"Nếu thành công, hàm này trả về một đối tượng chuỗi Python có dòng tìm thấy. "
+"Nếu thất bại, hàm này trả về ``NULL`` mà không đặt ngoại lệ."
+
+#: ../../c-api/exceptions.rst:353
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_ProgramTextObject`, but *filename* is a "
+":c:expr:`const char *`, which is decoded with the :term:`filesystem encoding"
+" and error handler`, instead of a Python object reference."
+msgstr ""
+"Tương tự như :c:func:`PyErr_ProgramTextObject`, nhưng *filename* là "
+":c:expr:`const char *`, được giải mã bằng :term:`filesystem encoding and "
+"error handler`, thay vì tham chiếu đối tượng Python."
+
+#: ../../c-api/exceptions.rst:360
+#, fuzzy
+msgid "Issuing warnings"
+msgstr "Đưa ra cảnh báo"
+
+#: ../../c-api/exceptions.rst:362
+#, fuzzy
+msgid ""
+"Use these functions to issue warnings from C code.  They mirror similar "
+"functions exported by the Python :mod:`warnings` module.  They normally "
+"print a warning message to *sys.stderr*; however, it is also possible that "
+"the user has specified that warnings are to be turned into errors, and in "
+"that case they will raise an exception.  It is also possible that the "
+"functions raise an exception because of a problem with the warning "
+"machinery. The return value is ``0`` if no exception is raised, or ``-1`` if"
+" an exception is raised.  (It is not possible to determine whether a warning"
+" message is actually printed, nor what the reason is for the exception; this"
+" is intentional.)  If an exception is raised, the caller should do its "
+"normal exception handling (for example, :c:func:`Py_DECREF` owned references"
+" and return an error value)."
+msgstr ""
+"Sử dụng các hàm này để đưa ra cảnh báo từ mã C.  Chúng phản chiếu các hàm "
+"tương tự được xuất bởi mô-đun :mod:`warnings` của Python.  Họ thường in một "
+"thông báo cảnh báo tới *sys.stderr*; tuy nhiên, cũng có thể người dùng đã "
+"chỉ định rằng các cảnh báo sẽ bị biến thành lỗi và trong trường hợp đó họ sẽ"
+" đưa ra một ngoại lệ.  Cũng có thể các chức năng đưa ra một ngoại lệ do có "
+"vấn đề với bộ máy cảnh báo. Giá trị trả về là ``0`` nếu không có ngoại lệ "
+"nào được đưa ra hoặc ``-1`` nếu có ngoại lệ được nêu ra.  (Không thể xác "
+"định xem thông báo cảnh báo có thực sự được in hay không cũng như lý do "
+"ngoại lệ là gì; đây là cố ý.) Nếu một ngoại lệ được đưa ra, thì lệnh gọi sẽ "
+"thực hiện xử lý ngoại lệ thông thường (ví dụ: các tham chiếu thuộc sở hữu "
+"của :c:func:`Py_DECREF` và trả về một giá trị lỗi)."
+
+#: ../../c-api/exceptions.rst:377
+#, fuzzy
+msgid ""
+"Issue a warning message.  The *category* argument is a warning category (see"
+" below) or ``NULL``; the *message* argument is a UTF-8 encoded string.  "
+"*stack_level* is a positive number giving a number of stack frames; the "
+"warning will be issued from the  currently executing line of code in that "
+"stack frame.  A *stack_level* of 1 is the function calling "
+":c:func:`PyErr_WarnEx`, 2 is  the function above that, and so forth."
+msgstr ""
+"Đưa ra thông báo cảnh báo.  Đối số *category* là một danh mục cảnh báo (xem "
+"bên dưới) hoặc ``NULL``; đối số *message* là chuỗi được mã hóa UTF-8.  "
+"*stack_level* là số dương biểu thị số lượng khung xếp chồng; cảnh báo sẽ "
+"được đưa ra từ dòng mã hiện đang thực thi trong khung ngăn xếp đó.  "
+"*stack_level* bằng 1 là hàm gọi :c:func:`PyErr_WarnEx`, 2 là hàm ở trên đó, "
+"v.v."
+
+#: ../../c-api/exceptions.rst:384
+#, fuzzy
+msgid ""
+"Warning categories must be subclasses of :c:data:`PyExc_Warning`; "
+":c:data:`PyExc_Warning` is a subclass of :c:data:`PyExc_Exception`; the "
+"default warning category is :c:data:`PyExc_RuntimeWarning`. The standard "
+"Python warning categories are available as global variables whose names are "
+"enumerated at :ref:`standardwarningcategories`."
+msgstr ""
+"Các danh mục cảnh báo phải là lớp con của :c:data:`PyExc_Warning`; "
+":c:data:`PyExc_Warning` là lớp con của :c:data:`PyExc_Exception`; danh mục "
+"cảnh báo mặc định là :c:data:`PyExc_RuntimeWarning`. Các danh mục cảnh báo "
+"Python tiêu chuẩn có sẵn dưới dạng các biến toàn cục có tên được liệt kê tại"
+" :ref:`standardwarningcategories`."
+
+#: ../../c-api/exceptions.rst:390
+#, fuzzy
+msgid ""
+"For information about warning control, see the documentation for the "
+":mod:`warnings` module and the :option:`-W` option in the command line "
+"documentation.  There is no C API for warning control."
+msgstr ""
+"Để biết thông tin về kiểm soát cảnh báo, hãy xem tài liệu dành cho mô-đun "
+":mod:`warnings` và tùy chọn :option:`-W` trong tài liệu dòng lệnh.  Không có"
+" C API để kiểm soát cảnh báo."
+
+#: ../../c-api/exceptions.rst:397
+#, fuzzy
+msgid ""
+"Issue a warning message with explicit control over all warning attributes.  "
+"This is a straightforward wrapper around the Python function "
+":func:`warnings.warn_explicit`; see there for more information.  The "
+"*module* and *registry* arguments may be set to ``NULL`` to get the default "
+"effect described there."
+msgstr ""
+"Đưa ra thông báo cảnh báo với sự kiểm soát rõ ràng đối với tất cả các thuộc "
+"tính cảnh báo.  Đây là một trình bao bọc đơn giản xung quanh hàm Python "
+":func:`warnings.warn_explicit`; xem ở đó để biết thêm thông tin.  Các đối số"
+" *module* và *registry* có thể được đặt thành ``NULL`` để có được hiệu ứng "
+"mặc định được mô tả ở đó."
+
+#: ../../c-api/exceptions.rst:408
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_WarnExplicitObject` except that *message* and "
+"*module* are UTF-8 encoded strings, and *filename* is decoded from the "
+":term:`filesystem encoding and error handler`."
+msgstr ""
+"Tương tự như :c:func:`PyErr_WarnExplicitObject` ngoại trừ *message* và "
+"*module* là các chuỗi được mã hóa UTF-8 và *filename* được giải mã từ "
+":term:`filesystem encoding and error handler`."
+
+#: ../../c-api/exceptions.rst:415
+#, fuzzy
+msgid ""
+"Function similar to :c:func:`PyErr_WarnEx`, but use "
+":c:func:`PyUnicode_FromFormat` to format the warning message.  *format* is "
+"an ASCII-encoded string."
+msgstr ""
+"Chức năng tương tự như :c:func:`PyErr_WarnEx` nhưng sử dụng "
+":c:func:`PyUnicode_FromFormat` để định dạng thông báo cảnh báo.  *format* là"
+" chuỗi được mã hóa ASCII."
+
+#: ../../c-api/exceptions.rst:424
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyErr_WarnExplicit`, but uses "
+":c:func:`PyUnicode_FromFormat` to format the warning message. *format* is an"
+" ASCII-encoded string."
+msgstr ""
+"Tương tự như :c:func:`PyErr_WarnExplicit` nhưng sử dụng "
+":c:func:`PyUnicode_FromFormat` để định dạng thông báo cảnh báo. *format* là "
+"chuỗi được mã hóa ASCII."
+
+#: ../../c-api/exceptions.rst:433
+#, fuzzy
+msgid ""
+"Function similar to :c:func:`PyErr_WarnFormat`, but *category* is "
+":exc:`ResourceWarning` and it passes *source* to "
+":class:`!warnings.WarningMessage`."
+msgstr ""
+"Chức năng tương tự như :c:func:`PyErr_WarnFormat`, nhưng *category* là "
+":exc:`ResourceWarning` và nó chuyển *source* sang "
+":class:`!warnings.WarningMessage`."
+
+#: ../../c-api/exceptions.rst:440
+#, fuzzy
+msgid "Querying the error indicator"
+msgstr "Truy vấn chỉ báo lỗi"
+
+#: ../../c-api/exceptions.rst:444
+#, fuzzy
+msgid ""
+"Test whether the error indicator is set.  If set, return the exception "
+"*type* (the first argument to the last call to one of the ``PyErr_Set*`` "
+"functions or to :c:func:`PyErr_Restore`).  If not set, return ``NULL``.  You"
+" do not own a reference to the return value, so you do not need to "
+":c:func:`Py_DECREF` it."
+msgstr ""
+"Kiểm tra xem chỉ báo lỗi có được đặt hay không.  Nếu được đặt, hãy trả về "
+"ngoại lệ *type* (đối số đầu tiên cho lệnh gọi cuối cùng tới một trong các "
+"hàm ``PyErr_Set*`` hoặc tới :c:func:`PyErr_Restore`).  Nếu không được đặt, "
+"hãy trả về ``NULL``.  Bạn không sở hữu một tham chiếu đến giá trị trả về nên"
+" bạn không cần phải :c:func:`Py_DECREF` nó."
+
+#: ../../c-api/exceptions.rst:450
+#, fuzzy
+msgid "The caller must have an :term:`attached thread state`."
+msgstr "Người gọi phải có :term:`attached thread state`."
+
+#: ../../c-api/exceptions.rst:454
+#, fuzzy
+msgid ""
+"Do not compare the return value to a specific exception; use "
+":c:func:`PyErr_ExceptionMatches` instead, shown below.  (The comparison "
+"could easily fail since the exception may be an instance instead of a class,"
+" in the case of a class exception, or it may be a subclass of the expected "
+"exception.)"
+msgstr ""
+"Không so sánh giá trị trả về với một ngoại lệ cụ thể; thay vào đó hãy sử "
+"dụng :c:func:`PyErr_ExceptionMatches`, được hiển thị bên dưới.  (Việc so "
+"sánh có thể dễ dàng thất bại vì ngoại lệ có thể là một thể hiện thay vì một "
+"lớp, trong trường hợp ngoại lệ lớp hoặc nó có thể là một lớp con của ngoại "
+"lệ dự kiến.)"
+
+#: ../../c-api/exceptions.rst:462
+#, fuzzy
+msgid ""
+"Equivalent to ``PyErr_GivenExceptionMatches(PyErr_Occurred(), exc)``.  This "
+"should only be called when an exception is actually set; a memory access "
+"violation will occur if no exception has been raised."
+msgstr ""
+"Tương đương với ``PyErr_GivenExceptionMatches(PyErr_Occurred(), exc)``.  "
+"Điều này chỉ nên được gọi khi một ngoại lệ thực sự được đặt; vi phạm quyền "
+"truy cập bộ nhớ sẽ xảy ra nếu không có ngoại lệ nào được đưa ra."
+
+#: ../../c-api/exceptions.rst:469
+#, fuzzy
+msgid ""
+"Return true if the *given* exception matches the exception type in *exc*.  "
+"If *exc* is a class object, this also returns true when *given* is an "
+"instance of a subclass.  If *exc* is a tuple, all exception types in the "
+"tuple (and recursively in subtuples) are searched for a match."
+msgstr ""
+"Trả về true nếu ngoại lệ *given* khớp với loại ngoại lệ trong *exc*.  Nếu "
+"*exc* là một đối tượng lớp, điều này cũng trả về true khi *given* là một thể"
+" hiện của lớp con.  Nếu *exc* là một bộ dữ liệu, tất cả các loại ngoại lệ "
+"trong bộ dữ liệu (và đệ quy trong các bộ dữ liệu phụ) sẽ được tìm kiếm để "
+"tìm kết quả khớp."
+
+#: ../../c-api/exceptions.rst:477
+#, fuzzy
+msgid ""
+"Return the exception currently being raised, clearing the error indicator at"
+" the same time. Return ``NULL`` if the error indicator is not set."
+msgstr ""
+"Trả về ngoại lệ hiện đang được nêu ra, đồng thời xóa chỉ báo lỗi. Trả về "
+"``NULL`` nếu chỉ báo lỗi không được đặt."
+
+#: ../../c-api/exceptions.rst:480
+#, fuzzy
+msgid ""
+"This function is used by code that needs to catch exceptions, or code that "
+"needs to save and restore the error indicator temporarily."
+msgstr ""
+"Chức năng này được sử dụng bởi mã cần bắt ngoại lệ hoặc mã cần lưu và khôi "
+"phục tạm thời chỉ báo lỗi."
+
+#: ../../c-api/exceptions.rst:483 ../../c-api/exceptions.rst:527
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../c-api/exceptions.rst:485
+#, python-brace-format, fuzzy
+msgid ""
+"{\n"
+"   PyObject *exc = PyErr_GetRaisedException();\n"
+"\n"
+"   /* ... code that might produce other errors ... */\n"
+"\n"
+"   PyErr_SetRaisedException(exc);\n"
+"}"
+msgstr ""
+"{\n"
+"   PyObject *exc = PyErr_GetRaisedException();\n"
+"\n"
+"   /* ... đoạn mã có thể tạo ra các lỗi khác ... */\n"
+"\n"
+"   PyErr_SetRaisedException(exc);\n"
+"}"
+
+#: ../../c-api/exceptions.rst:493
+#, fuzzy
+msgid ""
+":c:func:`PyErr_GetHandledException`, to save the exception currently being "
+"handled."
+msgstr ""
+":c:func:`PyErr_GetHandledException`, để lưu ngoại lệ hiện đang được xử lý."
+
+#: ../../c-api/exceptions.rst:501
+#, fuzzy
+msgid ""
+"Set *exc* as the exception currently being raised, clearing the existing "
+"exception if one is set."
+msgstr ""
+"Đặt *exc* làm ngoại lệ hiện đang được nêu ra, xóa ngoại lệ hiện có nếu ngoại"
+" lệ được đặt."
+
+#: ../../c-api/exceptions.rst:506
+#, fuzzy
+msgid ""
+"This call steals a reference to *exc*, which must be a valid exception."
+msgstr ""
+"Cuộc gọi này đánh cắp một tham chiếu đến *exc*, đây phải là một ngoại lệ hợp"
+" lệ."
+
+#: ../../c-api/exceptions.rst:515
+#, fuzzy
+msgid "Use :c:func:`PyErr_GetRaisedException` instead."
+msgstr "Thay vào đó hãy sử dụng :c:func:`PyErr_GetRaisedException`."
+
+#: ../../c-api/exceptions.rst:517
+#, fuzzy
+msgid ""
+"Retrieve the error indicator into three variables whose addresses are "
+"passed. If the error indicator is not set, set all three variables to "
+"``NULL``.  If it is set, it will be cleared and you own a reference to each "
+"object retrieved.  The value and traceback object may be ``NULL`` even when "
+"the type object is not."
+msgstr ""
+"Truy xuất chỉ báo lỗi thành ba biến có địa chỉ được truyền. Nếu chỉ báo lỗi "
+"không được đặt, hãy đặt cả ba biến thành ``NULL``.  Nếu được đặt, nó sẽ bị "
+"xóa và bạn sở hữu một tham chiếu đến từng đối tượng được truy xuất.  Đối "
+"tượng giá trị và truy nguyên có thể là ``NULL`` ngay cả khi đối tượng loại "
+"không phải như vậy."
+
+#: ../../c-api/exceptions.rst:524
+#, fuzzy
+msgid ""
+"This function is normally only used by legacy code that needs to catch "
+"exceptions or save and restore the error indicator temporarily."
+msgstr ""
+"Chức năng này thường chỉ được sử dụng bởi mã kế thừa cần bắt ngoại lệ hoặc "
+"lưu và khôi phục tạm thời chỉ báo lỗi."
+
+#: ../../c-api/exceptions.rst:529
+#, python-brace-format, fuzzy
+msgid ""
+"{\n"
+"   PyObject *type, *value, *traceback;\n"
+"   PyErr_Fetch(&type, &value, &traceback);\n"
+"\n"
+"   /* ... code that might produce other errors ... */\n"
+"\n"
+"   PyErr_Restore(type, value, traceback);\n"
+"}"
+msgstr ""
+"{\n"
+"   PyObject *type, *value, *truy ngược lại;\n"
+"   PyErr_Fetch(&type, &value, &traceback);\n"
+"\n"
+"   /* ... đoạn mã có thể tạo ra các lỗi khác ... */\n"
+"\n"
+"   PyErr_Restore(loại, giá trị, truy nguyên);\n"
+"}"
+
+#: ../../c-api/exceptions.rst:543
+#, fuzzy
+msgid "Use :c:func:`PyErr_SetRaisedException` instead."
+msgstr "Thay vào đó hãy sử dụng :c:func:`PyErr_SetRaisedException`."
+
+#: ../../c-api/exceptions.rst:545
+#, fuzzy
+msgid ""
+"Set the error indicator from the three objects, *type*, *value*, and "
+"*traceback*, clearing the existing exception if one is set. If the objects "
+"are ``NULL``, the error indicator is cleared.  Do not pass a ``NULL`` type "
+"and non-``NULL`` value or traceback.  The exception type should be a class."
+"  Do not pass an invalid exception type or value. (Violating these rules "
+"will cause subtle problems later.)  This call takes away a reference to each"
+" object: you must own a reference to each object before the call and after "
+"the call you no longer own these references.  (If you don't understand this,"
+" don't use this function.  I warned you.)"
+msgstr ""
+"Đặt chỉ báo lỗi từ ba đối tượng, *type*, *value* và *traceback*, xóa ngoại "
+"lệ hiện có nếu một đối tượng được đặt. Nếu các đối tượng là ``NULL``, chỉ "
+"báo lỗi sẽ bị xóa.  Không chuyển loại ``NULL`` và giá trị không phải "
+"``NULL`` hoặc truy nguyên.  Loại ngoại lệ phải là một lớp.  Không chuyển "
+"loại hoặc giá trị ngoại lệ không hợp lệ. (Vi phạm các quy tắc này sẽ gây ra "
+"các vấn đề nhỏ sau này.) Lệnh gọi này sẽ lấy đi một tham chiếu đến từng đối "
+"tượng: bạn phải sở hữu một tham chiếu đến từng đối tượng trước cuộc gọi và "
+"sau cuộc gọi, bạn không còn sở hữu các tham chiếu này nữa.  (Nếu bạn không "
+"hiểu điều này thì đừng sử dụng chức năng này. Tôi đã cảnh báo bạn.)"
+
+#: ../../c-api/exceptions.rst:559
+#, fuzzy
+msgid ""
+"This function is normally only used by legacy code that needs to save and "
+"restore the error indicator temporarily. Use :c:func:`PyErr_Fetch` to save "
+"the current error indicator."
+msgstr ""
+"Chức năng này thường chỉ được sử dụng bởi mã kế thừa cần lưu và khôi phục "
+"tạm thời chỉ báo lỗi. Sử dụng :c:func:`PyErr_Fetch` để lưu chỉ báo lỗi hiện "
+"tại."
+
+#: ../../c-api/exceptions.rst:568
+#, fuzzy
+msgid ""
+"Use :c:func:`PyErr_GetRaisedException` instead, to avoid any possible de-"
+"normalization."
+msgstr ""
+"Thay vào đó, hãy sử dụng :c:func:`PyErr_GetRaisedException` để tránh mọi "
+"hiện tượng mất chuẩn hóa có thể xảy ra."
+
+#: ../../c-api/exceptions.rst:571
+#, fuzzy
+msgid ""
+"Under certain circumstances, the values returned by :c:func:`PyErr_Fetch` "
+"below can be \"unnormalized\", meaning that ``*exc`` is a class object but "
+"``*val`` is not an instance of the  same class.  This function can be used "
+"to instantiate the class in that case.  If the values are already "
+"normalized, nothing happens. The delayed normalization is implemented to "
+"improve performance."
+msgstr ""
+"Trong một số trường hợp nhất định, các giá trị được :c:func:`PyErr_Fetch` "
+"trả về bên dưới có thể \"không chuẩn hóa\", nghĩa là ``*exc`` là một đối "
+"tượng lớp nhưng ``*val`` không phải là một phiên bản của cùng một lớp.  Hàm "
+"này có thể được sử dụng để khởi tạo lớp trong trường hợp đó.  Nếu các giá "
+"trị đã được chuẩn hóa thì không có gì xảy ra. Việc chuẩn hóa chậm trễ được "
+"thực hiện để cải thiện hiệu suất."
+
+#: ../../c-api/exceptions.rst:579
+#, fuzzy
+msgid ""
+"This function *does not* implicitly set the "
+":attr:`~BaseException.__traceback__` attribute on the exception value. If "
+"setting the traceback appropriately is desired, the following additional "
+"snippet is needed::"
+msgstr ""
+"Hàm *does not* này ngầm đặt thuộc tính :attr:`~BaseException.__traceback__` "
+"trên giá trị ngoại lệ. Nếu muốn thiết lập truy nguyên một cách thích hợp, "
+"cần có đoạn mã bổ sung sau::"
+
+#: ../../c-api/exceptions.rst:584
+#, python-brace-format, fuzzy
+msgid ""
+"if (tb != NULL) {\n"
+"  PyException_SetTraceback(val, tb);\n"
+"}"
+msgstr ""
+"nếu (tb != NULL) {\n"
+"  PyException_SetTraceback(val, tb);\n"
+"}"
+
+#: ../../c-api/exceptions.rst:591
+#, fuzzy
+msgid ""
+"Retrieve the active exception instance, as would be returned by "
+":func:`sys.exception`. This refers to an exception that was *already "
+"caught*, not to an exception that was freshly raised. Returns a new "
+"reference to the exception or ``NULL``. Does not modify the interpreter's "
+"exception state."
+msgstr ""
+"Truy xuất phiên bản ngoại lệ đang hoạt động, như sẽ được trả về bởi "
+":func:`sys.exception`. Điều này đề cập đến một ngoại lệ là *already caught*,"
+" không phải một ngoại lệ mới được nêu ra. Trả về một tham chiếu mới cho "
+"ngoại lệ hoặc ``NULL``. Không sửa đổi trạng thái ngoại lệ của trình thông "
+"dịch."
+
+#: ../../c-api/exceptions.rst:598
+#, fuzzy
+msgid ""
+"This function is not normally used by code that wants to handle exceptions. "
+"Rather, it can be used when code needs to save and restore the exception "
+"state temporarily.  Use :c:func:`PyErr_SetHandledException` to restore or "
+"clear the exception state."
+msgstr ""
+"Hàm này thường không được sử dụng bởi mã muốn xử lý các ngoại lệ. Đúng hơn, "
+"nó có thể được sử dụng khi mã cần lưu và khôi phục tạm thời trạng thái ngoại"
+" lệ.  Sử dụng :c:func:`PyErr_SetHandledException` để khôi phục hoặc xóa "
+"trạng thái ngoại lệ."
+
+#: ../../c-api/exceptions.rst:607
+#, fuzzy
+msgid ""
+"Set the active exception, as known from ``sys.exception()``.  This refers to"
+" an exception that was *already caught*, not to an exception that was "
+"freshly raised. To clear the exception state, pass ``NULL``."
+msgstr ""
+"Đặt ngoại lệ hoạt động, như đã biết từ ``sys.exception()``.  Điều này đề cập"
+" đến một ngoại lệ là *already caught*, không phải một ngoại lệ mới được nêu "
+"ra. Để xóa trạng thái ngoại lệ, hãy chuyển ``NULL``."
+
+#: ../../c-api/exceptions.rst:614
+#, fuzzy
+msgid ""
+"This function is not normally used by code that wants to handle exceptions. "
+"Rather, it can be used when code needs to save and restore the exception "
+"state temporarily.  Use :c:func:`PyErr_GetHandledException` to get the "
+"exception state."
+msgstr ""
+"Hàm này thường không được sử dụng bởi mã muốn xử lý các ngoại lệ. Đúng hơn, "
+"nó có thể được sử dụng khi mã cần lưu và khôi phục tạm thời trạng thái ngoại"
+" lệ.  Sử dụng :c:func:`PyErr_GetHandledException` để nhận trạng thái ngoại "
+"lệ."
+
+#: ../../c-api/exceptions.rst:623
+#, fuzzy
+msgid ""
+"Retrieve the old-style representation of the exception info, as known from "
+":func:`sys.exc_info`.  This refers to an exception that was *already "
+"caught*, not to an exception that was freshly raised.  Returns new "
+"references for the three objects, any of which may be ``NULL``.  Does not "
+"modify the exception info state.  This function is kept for backwards "
+"compatibility. Prefer using :c:func:`PyErr_GetHandledException`."
+msgstr ""
+"Truy xuất cách trình bày kiểu cũ của thông tin ngoại lệ, như đã biết từ "
+":func:`sys.exc_info`.  Điều này đề cập đến một ngoại lệ là *already caught*,"
+" không phải một ngoại lệ mới được nêu ra.  Trả về các tham chiếu mới cho ba "
+"đối tượng, bất kỳ đối tượng nào trong số đó có thể là ``NULL``.  Không sửa "
+"đổi trạng thái thông tin ngoại lệ.  Chức năng này được giữ lại để tương "
+"thích ngược. Thích sử dụng :c:func:`PyErr_GetHandledException`."
+
+#: ../../c-api/exceptions.rst:632
+#, fuzzy
+msgid ""
+"This function is not normally used by code that wants to handle exceptions. "
+"Rather, it can be used when code needs to save and restore the exception "
+"state temporarily.  Use :c:func:`PyErr_SetExcInfo` to restore or clear the "
+"exception state."
+msgstr ""
+"Hàm này thường không được sử dụng bởi mã muốn xử lý các ngoại lệ. Đúng hơn, "
+"nó có thể được sử dụng khi mã cần lưu và khôi phục tạm thời trạng thái ngoại"
+" lệ.  Sử dụng :c:func:`PyErr_SetExcInfo` để khôi phục hoặc xóa trạng thái "
+"ngoại lệ."
+
+#: ../../c-api/exceptions.rst:642
+#, fuzzy
+msgid ""
+"Set the exception info, as known from ``sys.exc_info()``.  This refers to an"
+" exception that was *already caught*, not to an exception that was freshly "
+"raised.  This function steals the references of the arguments. To clear the "
+"exception state, pass ``NULL`` for all three arguments. This function is "
+"kept for backwards compatibility. Prefer using "
+":c:func:`PyErr_SetHandledException`."
+msgstr ""
+"Đặt thông tin ngoại lệ, như đã biết từ ``sys.exc_info()``.  Điều này đề cập "
+"đến một ngoại lệ là *already caught*, không phải một ngoại lệ mới được nêu "
+"ra.  Hàm này đánh cắp các tham chiếu của các đối số. Để xóa trạng thái ngoại"
+" lệ, chuyển ``NULL`` cho cả ba đối số. Chức năng này được giữ lại để tương "
+"thích ngược. Thích sử dụng :c:func:`PyErr_SetHandledException` hơn."
+
+#: ../../c-api/exceptions.rst:651
+#, fuzzy
+msgid ""
+"This function is not normally used by code that wants to handle exceptions. "
+"Rather, it can be used when code needs to save and restore the exception "
+"state temporarily.  Use :c:func:`PyErr_GetExcInfo` to read the exception "
+"state."
+msgstr ""
+"Hàm này thường không được sử dụng bởi mã muốn xử lý các ngoại lệ. Đúng hơn, "
+"nó có thể được sử dụng khi mã cần lưu và khôi phục tạm thời trạng thái ngoại"
+" lệ.  Sử dụng :c:func:`PyErr_GetExcInfo` để đọc trạng thái ngoại lệ."
+
+#: ../../c-api/exceptions.rst:658
+#, fuzzy
+msgid ""
+"The ``type`` and ``traceback`` arguments are no longer used and can be NULL."
+" The interpreter now derives them from the exception instance (the ``value``"
+" argument). The function still steals references of all three arguments."
+msgstr ""
+"Các đối số ``type`` và ``traceback`` không còn được sử dụng nữa và có thể là"
+" NULL. Trình thông dịch bây giờ lấy chúng từ trường hợp ngoại lệ (đối số "
+"``value``). Hàm vẫn lấy tham chiếu của cả ba đối số."
+
+#: ../../c-api/exceptions.rst:666
+#, fuzzy
+msgid "Signal Handling"
+msgstr "Xử lý tín hiệu"
+
+#: ../../c-api/exceptions.rst:676
+#, fuzzy
+msgid ""
+"Handle external interruptions, such as signals or activating a debugger, "
+"whose processing has been delayed until it is safe to run Python code and/or"
+" raise exceptions."
+msgstr ""
+"Xử lý các gián đoạn bên ngoài, chẳng hạn như tín hiệu hoặc kích hoạt trình "
+"gỡ lỗi mà quá trình xử lý của nó bị trì hoãn cho đến khi an toàn để chạy mã "
+"Python và/hoặc đưa ra các ngoại lệ."
+
+#: ../../c-api/exceptions.rst:680
+#, fuzzy
+msgid ""
+"For example, pressing :kbd:`Ctrl-C` causes a terminal to send the "
+":py:data:`signal.SIGINT` signal. This function executes the corresponding "
+"Python signal handler, which, by default, raises the "
+":exc:`KeyboardInterrupt` exception."
+msgstr ""
+"Ví dụ: nhấn :kbd:`Ctrl-C` sẽ khiến thiết bị đầu cuối gửi tín hiệu "
+":py:data:`signal.SIGINT`. Hàm này thực thi trình xử lý tín hiệu Python tương"
+" ứng, theo mặc định, sẽ đưa ra ngoại lệ :exc:`KeyboardInterrupt`."
+
+#: ../../c-api/exceptions.rst:685
+#, fuzzy
+msgid ""
+":c:func:`!PyErr_CheckSignals` should be called by long-running C code "
+"frequently enough so that the response appears immediate to humans."
+msgstr ""
+":c:func:`!PyErr_CheckSignals` phải được gọi bằng mã C chạy đủ thường xuyên "
+"để phản hồi xuất hiện ngay lập tức đối với con người."
+
+#: ../../c-api/exceptions.rst:688
+#, fuzzy
+msgid "Handlers invoked by this function currently include:"
+msgstr "Các trình xử lý được gọi bởi hàm này hiện bao gồm:"
+
+#: ../../c-api/exceptions.rst:690
+#, fuzzy
+msgid ""
+"Signal handlers, including Python functions registered using the "
+":mod:`signal` module."
+msgstr ""
+"Trình xử lý tín hiệu, bao gồm các hàm Python được đăng ký bằng mô-đun "
+":mod:`signal`."
+
+#: ../../c-api/exceptions.rst:693
+#, fuzzy
+msgid ""
+"Signal handlers are only run in the main thread of the main interpreter."
+msgstr ""
+"Trình xử lý tín hiệu chỉ được chạy trong luồng chính của trình thông dịch "
+"chính."
+
+#: ../../c-api/exceptions.rst:695
+#, fuzzy
+msgid ""
+"(This is where the function got the name: originally, signals were the only "
+"way to interrupt the interpreter.)"
+msgstr ""
+"(Đây là nơi hàm có tên: ban đầu, tín hiệu là cách duy nhất để làm gián đoạn "
+"trình thông dịch.)"
+
+#: ../../c-api/exceptions.rst:698
+#, fuzzy
+msgid "Running the garbage collector, if necessary."
+msgstr "Chạy trình thu gom rác, nếu cần."
+
+#: ../../c-api/exceptions.rst:700
+#, fuzzy
+msgid "Executing a pending :ref:`remote debugger <remote-debugging>` script."
+msgstr ""
+"Thực thi tập lệnh :ref:`remote debugger <remote-debugging>` đang chờ xử lý."
+
+#: ../../c-api/exceptions.rst:702
+#, fuzzy
+msgid ""
+"If any handler raises an exception, immediately return ``-1`` with that "
+"exception set. Any remaining interruptions are left to be processed on the "
+"next :c:func:`PyErr_CheckSignals()` invocation, if appropriate."
+msgstr ""
+"Nếu bất kỳ trình xử lý nào đưa ra một ngoại lệ, hãy trả về ngay ``-1`` với "
+"bộ ngoại lệ đó. Mọi gián đoạn còn lại sẽ được xử lý trong lệnh gọi "
+":c:func:`PyErr_CheckSignals()` tiếp theo, nếu thích hợp."
+
+#: ../../c-api/exceptions.rst:707
+#, fuzzy
+msgid ""
+"If all handlers finish successfully, or there are no handlers to run, return"
+" ``0``."
+msgstr ""
+"Nếu tất cả các trình xử lý đều kết thúc thành công hoặc không có trình xử lý"
+" nào để chạy, hãy trả về ``0``."
+
+#: ../../c-api/exceptions.rst:710
+#, fuzzy
+msgid "This function may now invoke the garbage collector."
+msgstr "Chức năng này bây giờ có thể gọi trình thu gom rác."
+
+#: ../../c-api/exceptions.rst:713
+#, fuzzy
+msgid ""
+"This function may now execute a remote debugger script, if remote debugging "
+"is enabled."
+msgstr ""
+"Chức năng này hiện có thể thực thi tập lệnh gỡ lỗi từ xa nếu tính năng gỡ "
+"lỗi từ xa được bật."
+
+#: ../../c-api/exceptions.rst:725
+#, fuzzy
+msgid ""
+"Simulate the effect of a :c:macro:`!SIGINT` signal arriving. This is "
+"equivalent to ``PyErr_SetInterruptEx(SIGINT)``."
+msgstr ""
+"Mô phỏng hiệu ứng của tín hiệu :c:macro:`!SIGINT` đến. Điều này tương đương "
+"với ``PyErr_SetInterruptEx(SIGINT)``."
+
+#: ../../c-api/exceptions.rst:729 ../../c-api/exceptions.rst:756
+#, fuzzy
+msgid ""
+"This function is async-signal-safe.  It can be called without an "
+":term:`attached thread state` and from a C signal handler."
+msgstr ""
+"Chức năng này không đồng bộ-tín hiệu-an toàn.  Nó có thể được gọi mà không "
+"cần :term:`attached thread state` và từ bộ xử lý tín hiệu C."
+
+#: ../../c-api/exceptions.rst:739
+#, fuzzy
+msgid ""
+"Simulate the effect of a signal arriving. The next time "
+":c:func:`PyErr_CheckSignals` is called,  the Python signal handler for the "
+"given signal number will be called."
+msgstr ""
+"Mô phỏng tác dụng của tín hiệu đến. Lần tiếp theo "
+":c:func:`PyErr_CheckSignals` được gọi, trình xử lý tín hiệu Python cho số "
+"tín hiệu đã cho sẽ được gọi."
+
+#: ../../c-api/exceptions.rst:743
+#, fuzzy
+msgid ""
+"This function can be called by C code that sets up its own signal handling "
+"and wants Python signal handlers to be invoked as expected when an "
+"interruption is requested (for example when the user presses Ctrl-C to "
+"interrupt an operation)."
+msgstr ""
+"Hàm này có thể được gọi bằng mã C để thiết lập khả năng xử lý tín hiệu của "
+"riêng nó và muốn trình xử lý tín hiệu Python được gọi như mong đợi khi có "
+"yêu cầu gián đoạn (ví dụ: khi người dùng nhấn Ctrl-C để làm gián đoạn một "
+"thao tác)."
+
+#: ../../c-api/exceptions.rst:748
+#, fuzzy
+msgid ""
+"If the given signal isn't handled by Python (it was set to "
+":py:const:`signal.SIG_DFL` or :py:const:`signal.SIG_IGN`), it will be "
+"ignored."
+msgstr ""
+"Nếu tín hiệu đã cho không được Python xử lý (nó được đặt thành "
+":py:const:`signal.SIG_DFL` hoặc :py:const:`signal.SIG_IGN`), thì tín hiệu đó"
+" sẽ bị bỏ qua."
+
+#: ../../c-api/exceptions.rst:751
+#, fuzzy
+msgid ""
+"If *signum* is outside of the allowed range of signal numbers, ``-1`` is "
+"returned.  Otherwise, ``0`` is returned.  The error indicator is never "
+"changed by this function."
+msgstr ""
+"Nếu *signum* nằm ngoài phạm vi số tín hiệu cho phép, ``-1`` sẽ được trả về."
+"  Nếu không, ``0`` sẽ được trả về.  Chỉ báo lỗi không bao giờ được thay đổi "
+"bởi chức năng này."
+
+#: ../../c-api/exceptions.rst:764
+#, fuzzy
+msgid ""
+"This utility function specifies a file descriptor to which the signal number"
+" is written as a single byte whenever a signal is received. *fd* must be "
+"non-blocking. It returns the previous such file descriptor."
+msgstr ""
+"Hàm tiện ích này chỉ định một bộ mô tả tệp mà số tín hiệu được ghi dưới dạng"
+" một byte bất cứ khi nào nhận được tín hiệu. *fd* phải không bị chặn. Nó trả"
+" về bộ mô tả tập tin trước đó."
+
+#: ../../c-api/exceptions.rst:768
+#, fuzzy
+msgid ""
+"The value ``-1`` disables the feature; this is the initial state. This is "
+"equivalent to :func:`signal.set_wakeup_fd` in Python, but without any error "
+"checking.  *fd* should be a valid file descriptor.  The function should only"
+" be called from the main thread."
+msgstr ""
+"Giá trị ``-1`` vô hiệu hóa tính năng này; đây là trạng thái ban đầu Điều này"
+" tương đương với :func:`signal.set_wakeup_fd` trong Python nhưng không có "
+"bất kỳ kiểm tra lỗi nào.  *fd* phải là bộ mô tả tệp hợp lệ.  Hàm chỉ nên "
+"được gọi từ luồng chính."
+
+#: ../../c-api/exceptions.rst:773
+#, fuzzy
+msgid "On Windows, the function now also supports socket handles."
+msgstr "Trên Windows, chức năng này hiện cũng hỗ trợ các tay cầm ổ cắm."
+
+#: ../../c-api/exceptions.rst:778
+#, fuzzy
+msgid "Exception Classes"
+msgstr "Các lớp ngoại lệ"
+
+#: ../../c-api/exceptions.rst:782
+#, fuzzy
+msgid ""
+"This utility function creates and returns a new exception class. The *name* "
+"argument must be the name of the new exception, a C string of the form "
+"``module.classname``.  The *base* and *dict* arguments are normally "
+"``NULL``. This creates a class object derived from :exc:`Exception` "
+"(accessible in C as :c:data:`PyExc_Exception`)."
+msgstr ""
+"Hàm tiện ích này tạo và trả về một lớp ngoại lệ mới. Đối số *name* phải là "
+"tên của ngoại lệ mới, một chuỗi C có dạng ``module.classname``.  Các đối số "
+"*base* và *dict* thường là ``NULL``. Điều này tạo ra một đối tượng lớp có "
+"nguồn gốc từ :exc:`Exception` (có thể truy cập bằng C dưới dạng "
+":c:data:`PyExc_Exception`)."
+
+#: ../../c-api/exceptions.rst:788
+#, fuzzy
+msgid ""
+"The :attr:`~type.__module__` attribute of the new class is set to the first "
+"part (up to the last dot) of the *name* argument, and the class name is set "
+"to the last part (after the last dot).  The *base* argument can be used to "
+"specify alternate base classes; it can either be only one class or a tuple "
+"of classes. The *dict* argument can be used to specify a dictionary of class"
+" variables and methods."
+msgstr ""
+"Thuộc tính :attr:`~type.__module__` của lớp mới được đặt thành phần đầu tiên"
+" (đến dấu chấm cuối cùng) của đối số *name* và tên lớp được đặt thành phần "
+"cuối cùng (sau dấu chấm cuối cùng).  Đối số *base* có thể được sử dụng để "
+"chỉ định các lớp cơ sở thay thế; nó có thể chỉ là một lớp hoặc một bộ lớp. "
+"Đối số *dict* có thể được sử dụng để chỉ định từ điển các biến và phương "
+"thức của lớp."
+
+#: ../../c-api/exceptions.rst:797
+#, fuzzy
+msgid ""
+"Same as :c:func:`PyErr_NewException`, except that the new exception class "
+"can easily be given a docstring: If *doc* is non-``NULL``, it will be used "
+"as the docstring for the exception class."
+msgstr ""
+"Tương tự như :c:func:`PyErr_NewException`, ngoại trừ lớp ngoại lệ mới có thể"
+" dễ dàng được cấp một chuỗi tài liệu: Nếu *doc* không phải là ``NULL``, thì "
+"nó sẽ được sử dụng làm chuỗi tài liệu cho lớp ngoại lệ."
+
+#: ../../c-api/exceptions.rst:806
+#, fuzzy
+msgid ""
+"Return non-zero if *ob* is an exception class, zero otherwise. This function"
+" always succeeds."
+msgstr ""
+"Trả về khác 0 nếu *ob* là một lớp ngoại lệ, nếu không thì trả về 0. Chức "
+"năng này luôn thành công."
+
+#: ../../c-api/exceptions.rst:811
+#, fuzzy
+msgid "Return :c:member:`~PyTypeObject.tp_name` of the exception class *ob*."
+msgstr "Trả về :c:member:`~PyTypeObject.tp_name` của lớp ngoại lệ *ob*."
+
+#: ../../c-api/exceptions.rst:815
+#, fuzzy
+msgid "Exception Objects"
+msgstr "Đối tượng ngoại lệ"
+
+#: ../../c-api/exceptions.rst:819
+#, fuzzy
+msgid ""
+"Return true if *op* is an instance of :class:`BaseException`, false "
+"otherwise. This function always succeeds."
+msgstr ""
+"Trả về true nếu *op* là một phiên bản của :class:`BaseException`, nếu không "
+"thì trả về false. Chức năng này luôn thành công."
+
+#: ../../c-api/exceptions.rst:825
+#, fuzzy
+msgid "Equivalent to :c:func:`Py_TYPE(op) <Py_TYPE>`."
+msgstr "Tương đương với :c:func:`Py_TYPE(op) <Py_TYPE>`."
+
+#: ../../c-api/exceptions.rst:830
+#, fuzzy
+msgid ""
+"Return the traceback associated with the exception as a new reference, as "
+"accessible from Python through the :attr:`~BaseException.__traceback__` "
+"attribute. If there is no traceback associated, this returns ``NULL``."
+msgstr ""
+"Trả về dấu vết được liên kết với ngoại lệ dưới dạng tham chiếu mới, có thể "
+"truy cập được từ Python thông qua thuộc tính "
+":attr:`~BaseException.__traceback__`. Nếu không có truy nguyên nào được liên"
+" kết, kết quả này sẽ trả về ``NULL``."
+
+#: ../../c-api/exceptions.rst:838
+#, fuzzy
+msgid ""
+"Set the traceback associated with the exception to *tb*.  Use ``Py_None`` to"
+" clear it."
+msgstr ""
+"Đặt truy nguyên được liên kết với ngoại lệ thành *tb*.  Sử dụng ``Py_None`` "
+"để xóa nó."
+
+#: ../../c-api/exceptions.rst:844
+#, fuzzy
+msgid ""
+"Return the context (another exception instance during whose handling *ex* "
+"was raised) associated with the exception as a new reference, as accessible "
+"from Python through the :attr:`~BaseException.__context__` attribute. If "
+"there is no context associated, this returns ``NULL``."
+msgstr ""
+"Trả về ngữ cảnh (một trường hợp ngoại lệ khác trong quá trình xử lý *ex* đã "
+"được nâng lên) được liên kết với ngoại lệ dưới dạng tham chiếu mới, có thể "
+"truy cập được từ Python thông qua thuộc tính "
+":attr:`~BaseException.__context__`. Nếu không có ngữ cảnh liên quan, kết quả"
+" này sẽ trả về ``NULL``."
+
+#: ../../c-api/exceptions.rst:852
+#, fuzzy
+msgid ""
+"Set the context associated with the exception to *ctx*.  Use ``NULL`` to "
+"clear it.  There is no type check to make sure that *ctx* is an exception "
+"instance. This steals a reference to *ctx*."
+msgstr ""
+"Đặt bối cảnh liên quan đến ngoại lệ thành *ctx*.  Sử dụng ``NULL`` để xóa "
+"nó.  Không có kiểm tra loại nào để đảm bảo rằng *ctx* là một trường hợp "
+"ngoại lệ. Điều này đánh cắp một tham chiếu đến *ctx*."
+
+#: ../../c-api/exceptions.rst:859
+#, fuzzy
+msgid ""
+"Return the cause (either an exception instance, or ``None``, set by ``raise "
+"... from ...``) associated with the exception as a new reference, as "
+"accessible from Python through the :attr:`~BaseException.__cause__` "
+"attribute."
+msgstr ""
+"Trả về nguyên nhân (có thể là một trường hợp ngoại lệ hoặc ``None``, do "
+"``raise ... from ...`` đặt) được liên kết với ngoại lệ dưới dạng tham chiếu "
+"mới, có thể truy cập được từ Python thông qua thuộc tính "
+":attr:`~BaseException.__cause__`."
+
+#: ../../c-api/exceptions.rst:867
+#, fuzzy
+msgid ""
+"Set the cause associated with the exception to *cause*.  Use ``NULL`` to "
+"clear it.  There is no type check to make sure that *cause* is either an "
+"exception instance or ``None``.  This steals a reference to *cause*."
+msgstr ""
+"Đặt nguyên nhân liên quan đến ngoại lệ thành *cause*.  Sử dụng ``NULL`` để "
+"xóa nó.  Không có kiểm tra loại nào để đảm bảo rằng *cause* là phiên bản "
+"ngoại lệ hoặc ``None``.  Điều này đánh cắp một tham chiếu đến *cause*."
+
+#: ../../c-api/exceptions.rst:871
+#, fuzzy
+msgid ""
+"The :attr:`~BaseException.__suppress_context__` attribute is implicitly set "
+"to ``True`` by this function."
+msgstr ""
+"Thuộc tính :attr:`~BaseException.__suppress_context__` được đặt ngầm thành "
+"``True`` bởi hàm này."
+
+#: ../../c-api/exceptions.rst:877
+#, fuzzy
+msgid "Return :attr:`~BaseException.args` of exception *ex*."
+msgstr "Trả về :attr:`~BaseException.args` của ngoại lệ *ex*."
+
+#: ../../c-api/exceptions.rst:882
+#, fuzzy
+msgid "Set :attr:`~BaseException.args` of exception *ex* to *args*."
+msgstr "Đặt :attr:`~BaseException.args` của ngoại lệ *ex* thành *args*."
+
+#: ../../c-api/exceptions.rst:886
+#, fuzzy
+msgid ""
+"Implement part of the interpreter's implementation of :keyword:`!except*`. "
+"*orig* is the original exception that was caught, and *excs* is the list of "
+"the exceptions that need to be raised. This list contains the unhandled part"
+" of *orig*, if any, as well as the exceptions that were raised from the "
+":keyword:`!except*` clauses (so they have a different traceback from *orig*)"
+" and those that were reraised (and have the same traceback as *orig*). "
+"Return the :exc:`ExceptionGroup` that needs to be reraised in the end, or "
+"``None`` if there is nothing to reraise."
+msgstr ""
+"Triển khai một phần quá trình triển khai :keyword:`!except*` của trình thông"
+" dịch. *orig* là ngoại lệ ban đầu đã bị bắt và *excs* là danh sách các ngoại"
+" lệ cần được nêu ra. Danh sách này chứa phần chưa được xử lý của *orig*, nếu"
+" có, cũng như các ngoại lệ được nêu ra từ các mệnh đề :keyword:`!except*` "
+"(vì vậy chúng có một truy nguyên khác với *orig*) và những phần đã được nâng"
+" cấp lại (và có cùng truy nguyên như *orig*). Trả về :exc:`ExceptionGroup` "
+"cuối cùng cần reraise, hoặc ``None`` nếu không còn gì để reraise."
+
+#: ../../c-api/exceptions.rst:900
+#, fuzzy
+msgid "Unicode Exception Objects"
+msgstr "Đối tượng ngoại lệ Unicode"
+
+#: ../../c-api/exceptions.rst:902
+#, fuzzy
+msgid ""
+"The following functions are used to create and modify Unicode exceptions "
+"from C."
+msgstr "Các hàm sau được sử dụng để tạo và sửa đổi các ngoại lệ Unicode từ C."
+
+#: ../../c-api/exceptions.rst:906
+#, fuzzy
+msgid ""
+"Create a :class:`UnicodeDecodeError` object with the attributes *encoding*, "
+"*object*, *length*, *start*, *end* and *reason*. *encoding* and *reason* are"
+" UTF-8 encoded strings."
+msgstr ""
+"Tạo một đối tượng :class:`UnicodeDecodeError` với các thuộc tính *encoding*,"
+" *object*, *length*, *start*, *end* và *reason*. *encoding* và *reason* là "
+"các chuỗi được mã hóa UTF-8."
+
+#: ../../c-api/exceptions.rst:913
+#, fuzzy
+msgid "Return the *encoding* attribute of the given exception object."
+msgstr "Trả về thuộc tính *encoding* của đối tượng ngoại lệ đã cho."
+
+#: ../../c-api/exceptions.rst:919
+#, fuzzy
+msgid "Return the *object* attribute of the given exception object."
+msgstr "Trả về thuộc tính *object* của đối tượng ngoại lệ đã cho."
+
+#: ../../c-api/exceptions.rst:925
+#, fuzzy
+msgid ""
+"Get the *start* attribute of the given exception object and place it into "
+"*\\*start*.  *start* must not be ``NULL``.  Return ``0`` on success, ``-1`` "
+"on failure."
+msgstr ""
+"Lấy thuộc tính *start* của đối tượng ngoại lệ đã cho và đặt nó vào "
+"*\\*start*.  *start* không được là ``NULL``.  Trả về ``0`` nếu thành công, "
+"``-1`` nếu thất bại."
+
+#: ../../c-api/exceptions.rst:929
+#, fuzzy
+msgid ""
+"If the :attr:`UnicodeError.object` is an empty sequence, the resulting "
+"*start* is ``0``. Otherwise, it is clipped to ``[0, len(object) - 1]``."
+msgstr ""
+"Nếu :attr:`UnicodeError.object` là một chuỗi trống thì kết quả *start* là "
+"``0``. Nếu không, nó sẽ bị cắt thành ``[0, len(object) - 1]``."
+
+#: ../../c-api/exceptions.rst:932
+#, fuzzy
+msgid ":attr:`UnicodeError.start`"
+msgstr ":attr:`UnicodeError.start`"
+
+#: ../../c-api/exceptions.rst:938
+#, fuzzy
+msgid ""
+"Set the *start* attribute of the given exception object to *start*. Return "
+"``0`` on success, ``-1`` on failure."
+msgstr ""
+"Đặt thuộc tính *start* của đối tượng ngoại lệ đã cho thành *start*. Trả về "
+"``0`` nếu thành công, ``-1`` nếu thất bại."
+
+#: ../../c-api/exceptions.rst:943
+#, fuzzy
+msgid ""
+"While passing a negative *start* does not raise an exception, the "
+"corresponding getters will not consider it as a relative offset."
+msgstr ""
+"Mặc dù việc chuyển *start* âm không tạo ra ngoại lệ, nhưng getters tương ứng"
+" sẽ không coi đó là phần bù tương đối."
+
+#: ../../c-api/exceptions.rst:951
+#, fuzzy
+msgid ""
+"Get the *end* attribute of the given exception object and place it into "
+"*\\*end*.  *end* must not be ``NULL``.  Return ``0`` on success, ``-1`` on "
+"failure."
+msgstr ""
+"Lấy thuộc tính *end* của đối tượng ngoại lệ đã cho và đặt nó vào *\\*end*.  "
+"*end* không được là ``NULL``.  Trả về ``0`` nếu thành công, ``-1`` nếu thất "
+"bại."
+
+#: ../../c-api/exceptions.rst:955
+#, fuzzy
+msgid ""
+"If the :attr:`UnicodeError.object` is an empty sequence, the resulting *end*"
+" is ``0``. Otherwise, it is clipped to ``[1, len(object)]``."
+msgstr ""
+"Nếu :attr:`UnicodeError.object` là một chuỗi trống thì kết quả *end* là "
+"``0``. Nếu không, nó sẽ bị cắt thành ``[1, len(object)]``."
+
+#: ../../c-api/exceptions.rst:962
+#, fuzzy
+msgid ""
+"Set the *end* attribute of the given exception object to *end*.  Return "
+"``0`` on success, ``-1`` on failure."
+msgstr ""
+"Đặt thuộc tính *end* của đối tượng ngoại lệ đã cho thành *end*.  Trả về "
+"``0`` nếu thành công, ``-1`` nếu thất bại."
+
+#: ../../c-api/exceptions.rst:965
+#, fuzzy
+msgid ":attr:`UnicodeError.end`"
+msgstr ":attr:`UnicodeError.end`"
+
+#: ../../c-api/exceptions.rst:971
+#, fuzzy
+msgid "Return the *reason* attribute of the given exception object."
+msgstr "Trả về thuộc tính *reason* của đối tượng ngoại lệ đã cho."
+
+#: ../../c-api/exceptions.rst:977
+#, fuzzy
+msgid ""
+"Set the *reason* attribute of the given exception object to *reason*.  "
+"Return ``0`` on success, ``-1`` on failure."
+msgstr ""
+"Đặt thuộc tính *reason* của đối tượng ngoại lệ đã cho thành *reason*.  Trả "
+"về ``0`` nếu thành công, ``-1`` nếu thất bại."
+
+#: ../../c-api/exceptions.rst:984
+#, fuzzy
+msgid "Recursion Control"
+msgstr "Kiểm soát đệ quy"
+
+#: ../../c-api/exceptions.rst:986
+#, fuzzy
+msgid ""
+"These two functions provide a way to perform safe recursive calls at the C "
+"level, both in the core and in extension modules.  They are needed if the "
+"recursive code does not necessarily invoke Python code (which tracks its "
+"recursion depth automatically). They are also not needed for *tp_call* "
+"implementations because the :ref:`call protocol <call>` takes care of "
+"recursion handling."
+msgstr ""
+"Hai chức năng này cung cấp một cách để thực hiện các lệnh gọi đệ quy an toàn"
+" ở cấp độ C, cả trong lõi và trong các mô-đun mở rộng.  Chúng cần thiết nếu "
+"mã đệ quy không nhất thiết phải gọi mã Python (tự động theo dõi độ sâu đệ "
+"quy của nó). Chúng cũng không cần thiết cho việc triển khai *tp_call* vì "
+":ref:`call protocol <call>` đảm nhiệm việc xử lý đệ quy."
+
+#: ../../c-api/exceptions.rst:995
+#, fuzzy
+msgid "Marks a point where a recursive C-level call is about to be performed."
+msgstr "Đánh dấu điểm mà cuộc gọi cấp C đệ quy sắp được thực hiện."
+
+#: ../../c-api/exceptions.rst:997
+#, fuzzy
+msgid ""
+"The function then checks if the stack limit is reached.  If this is the "
+"case, a :exc:`RecursionError` is set and a nonzero value is returned. "
+"Otherwise, zero is returned."
+msgstr ""
+"Sau đó, hàm này sẽ kiểm tra xem đã đạt đến giới hạn ngăn xếp hay chưa.  "
+"Trong trường hợp này, :exc:`RecursionError` được đặt và trả về giá trị khác "
+"0. Nếu không, số 0 sẽ được trả về."
+
+#: ../../c-api/exceptions.rst:1001
+#, fuzzy
+msgid ""
+"*where* should be a UTF-8 encoded string such as ``\" in instance check\"`` "
+"to be concatenated to the :exc:`RecursionError` message caused by the "
+"recursion depth limit."
+msgstr ""
+"*where* phải là chuỗi được mã hóa UTF-8, chẳng hạn như ``\" in instance "
+"check\"`` để được nối với thông báo :exc:`RecursionError` do giới hạn độ sâu"
+" đệ quy gây ra."
+
+#: ../../c-api/exceptions.rst:1006
+#, fuzzy
+msgid "The :c:func:`PyUnstable_ThreadState_SetStackProtection` function."
+msgstr "Chức năng :c:func:`PyUnstable_ThreadState_SetStackProtection`."
+
+#: ../../c-api/exceptions.rst:1008 ../../c-api/exceptions.rst:1016
+#, fuzzy
+msgid ""
+"This function is now also available in the :ref:`limited API <limited-c-"
+"api>`."
+msgstr ""
+"Chức năng này hiện cũng có sẵn trong :ref:`limited API <limited-c-api>`."
+
+#: ../../c-api/exceptions.rst:1013
+#, fuzzy
+msgid ""
+"Ends a :c:func:`Py_EnterRecursiveCall`.  Must be called once for each "
+"*successful* invocation of :c:func:`Py_EnterRecursiveCall`."
+msgstr ""
+"Kết thúc một :c:func:`Py_EnterRecursiveCall`.  Phải được gọi một lần cho mỗi"
+" lệnh gọi *successful* của :c:func:`Py_EnterRecursiveCall`."
+
+#: ../../c-api/exceptions.rst:1019
+#, fuzzy
+msgid ""
+"Properly implementing :c:member:`~PyTypeObject.tp_repr` for container types "
+"requires special recursion handling.  In addition to protecting the stack, "
+":c:member:`~PyTypeObject.tp_repr` also needs to track objects to prevent "
+"cycles.  The following two functions facilitate this functionality.  "
+"Effectively, these are the C equivalent to :func:`reprlib.recursive_repr`."
+msgstr ""
+"Việc triển khai :c:member:`~PyTypeObject.tp_repr` đúng cách cho các loại "
+"vùng chứa yêu cầu xử lý đệ quy đặc biệt.  Ngoài việc bảo vệ ngăn xếp, "
+":c:member:`~PyTypeObject.tp_repr` còn cần theo dõi các đối tượng để ngăn "
+"chặn chu kỳ.  Hai chức năng sau đây hỗ trợ chức năng này.  Thực tế, đây là C"
+" tương đương với :func:`reprlib.recursive_repr`."
+
+#: ../../c-api/exceptions.rst:1027
+#, fuzzy
+msgid ""
+"Called at the beginning of the :c:member:`~PyTypeObject.tp_repr` "
+"implementation to detect cycles."
+msgstr ""
+"Được gọi khi bắt đầu triển khai :c:member:`~PyTypeObject.tp_repr` để phát "
+"hiện chu kỳ."
+
+#: ../../c-api/exceptions.rst:1030
+#, python-brace-format, fuzzy
+msgid ""
+"If the object has already been processed, the function returns a positive "
+"integer.  In that case the :c:member:`~PyTypeObject.tp_repr` implementation "
+"should return a string object indicating a cycle.  As examples, "
+":class:`dict` objects return ``{...}`` and :class:`list` objects return "
+"``[...]``."
+msgstr ""
+"Nếu đối tượng đã được xử lý, hàm trả về một số nguyên dương.  Trong trường "
+"hợp đó, việc triển khai :c:member:`~PyTypeObject.tp_repr` sẽ trả về một đối "
+"tượng chuỗi biểu thị một chu kỳ.  Ví dụ: đối tượng :class:`dict` trả về "
+"``{...}`` và đối tượng :class:`list` trả về ``[...]``."
+
+#: ../../c-api/exceptions.rst:1036
+#, fuzzy
+msgid ""
+"The function will return a negative integer if the recursion limit is "
+"reached.  In that case the :c:member:`~PyTypeObject.tp_repr` implementation "
+"should typically return ``NULL``."
+msgstr ""
+"Hàm sẽ trả về số nguyên âm nếu đạt đến giới hạn đệ quy.  Trong trường hợp "
+"đó, việc triển khai :c:member:`~PyTypeObject.tp_repr` thường sẽ trả về "
+"``NULL``."
+
+#: ../../c-api/exceptions.rst:1040
+#, fuzzy
+msgid ""
+"Otherwise, the function returns zero and the "
+":c:member:`~PyTypeObject.tp_repr` implementation can continue normally."
+msgstr ""
+"Nếu không, hàm trả về 0 và quá trình triển khai "
+":c:member:`~PyTypeObject.tp_repr` có thể tiếp tục bình thường."
+
+#: ../../c-api/exceptions.rst:1045
+#, fuzzy
+msgid ""
+"Ends a :c:func:`Py_ReprEnter`.  Must be called once for each invocation of "
+":c:func:`Py_ReprEnter` that returns zero."
+msgstr ""
+"Kết thúc một :c:func:`Py_ReprEnter`.  Phải được gọi một lần cho mỗi lệnh gọi"
+" :c:func:`Py_ReprEnter` trả về 0."
+
+#: ../../c-api/exceptions.rst:1050
+#, fuzzy
+msgid ""
+"Get the recursion limit for the current interpreter. It can be set with "
+":c:func:`Py_SetRecursionLimit`. The recursion limit prevents the Python "
+"interpreter stack from growing infinitely."
+msgstr ""
+"Nhận giới hạn đệ quy cho trình thông dịch hiện tại. Nó có thể được thiết lập"
+" với :c:func:`Py_SetRecursionLimit`. Giới hạn đệ quy ngăn ngăn xếp trình "
+"thông dịch Python phát triển vô hạn."
+
+#: ../../c-api/exceptions.rst:1054 ../../c-api/exceptions.rst:1064
+#, fuzzy
+msgid ""
+"This function cannot fail, and the caller must hold an :term:`attached "
+"thread state`."
+msgstr ""
+"Chức năng này không thể thất bại và người gọi phải giữ :term:`attached "
+"thread state`."
+
+#: ../../c-api/exceptions.rst:1058
+#, fuzzy
+msgid ":py:func:`sys.getrecursionlimit`"
+msgstr ":py:func:`sys.getrecursionlimit`"
+
+#: ../../c-api/exceptions.rst:1062
+#, fuzzy
+msgid "Set the recursion limit for the current interpreter."
+msgstr "Đặt giới hạn đệ quy cho trình thông dịch hiện tại."
+
+#: ../../c-api/exceptions.rst:1068
+#, fuzzy
+msgid ":py:func:`sys.setrecursionlimit`"
+msgstr ":py:func:`sys.setrecursionlimit`"
+
+#: ../../c-api/exceptions.rst:1073
+#, fuzzy
+msgid "Exception and warning types"
+msgstr "Các loại ngoại lệ và cảnh báo"
+
+#: ../../c-api/exceptions.rst:1075
+#, fuzzy
+msgid ""
+"All standard Python exceptions and warning categories are available as "
+"global variables whose names are ``PyExc_`` followed by the Python exception"
+" name. These have the type :c:expr:`PyObject*`; they are all class objects."
+msgstr ""
+"Tất cả các danh mục cảnh báo và ngoại lệ tiêu chuẩn của Python đều có sẵn "
+"dưới dạng các biến toàn cục có tên là ``PyExc_``, theo sau là tên ngoại lệ "
+"Python. Chúng có loại :c:expr:`PyObject*`; chúng đều là các đối tượng của "
+"lớp."
+
+#: ../../c-api/exceptions.rst:1079
+#, fuzzy
+msgid "For completeness, here are all the variables:"
+msgstr "Để đầy đủ, đây là tất cả các biến:"
+
+#: ../../c-api/exceptions.rst:1082
+#, fuzzy
+msgid "Exception types"
+msgstr "Các loại ngoại lệ"
+
+#: ../../c-api/exceptions.rst:1089 ../../c-api/exceptions.rst:1235
+#: ../../c-api/exceptions.rst:1265
+#, fuzzy
+msgid "C name"
+msgstr "Tên C"
+
+#: ../../c-api/exceptions.rst:1090 ../../c-api/exceptions.rst:1236
+#: ../../c-api/exceptions.rst:1266
+#, fuzzy
+msgid "Python name"
+msgstr "Tên Python"
+
+#: ../../c-api/exceptions.rst:1092
+#, fuzzy
+msgid ":exc:`BaseException`"
+msgstr ":exc:`BaseException`"
+
+#: ../../c-api/exceptions.rst:1094
+#, fuzzy
+msgid ":exc:`BaseExceptionGroup`"
+msgstr ":exc:`BaseExceptionGroup`"
+
+#: ../../c-api/exceptions.rst:1096
+#, fuzzy
+msgid ":exc:`Exception`"
+msgstr ":exc:`Exception`"
+
+#: ../../c-api/exceptions.rst:1098
+#, fuzzy
+msgid ":exc:`ArithmeticError`"
+msgstr ":exc:`ArithmeticError`"
+
+#: ../../c-api/exceptions.rst:1100
+#, fuzzy
+msgid ":exc:`AssertionError`"
+msgstr ":exc:`AssertionError`"
+
+#: ../../c-api/exceptions.rst:1102
+#, fuzzy
+msgid ":exc:`AttributeError`"
+msgstr ":exc:`AttributeError`"
+
+#: ../../c-api/exceptions.rst:1104
+#, fuzzy
+msgid ":exc:`BlockingIOError`"
+msgstr ":exc:`BlockingIOError`"
+
+#: ../../c-api/exceptions.rst:1106
+#, fuzzy
+msgid ":exc:`BrokenPipeError`"
+msgstr ":exc:`BrokenPipeError`"
+
+#: ../../c-api/exceptions.rst:1108
+#, fuzzy
+msgid ":exc:`BufferError`"
+msgstr ":exc:`BufferError`"
+
+#: ../../c-api/exceptions.rst:1110
+#, fuzzy
+msgid ":exc:`ChildProcessError`"
+msgstr ":exc:`ChildProcessError`"
+
+#: ../../c-api/exceptions.rst:1112
+#, fuzzy
+msgid ":exc:`ConnectionAbortedError`"
+msgstr ":exc:`ConnectionAbortedError`"
+
+#: ../../c-api/exceptions.rst:1114
+#, fuzzy
+msgid ":exc:`ConnectionError`"
+msgstr ":exc:`ConnectionError`"
+
+#: ../../c-api/exceptions.rst:1116
+#, fuzzy
+msgid ":exc:`ConnectionRefusedError`"
+msgstr ":exc:`ConnectionRefusedError`"
+
+#: ../../c-api/exceptions.rst:1118
+#, fuzzy
+msgid ":exc:`ConnectionResetError`"
+msgstr ":exc:`ConnectionResetError`"
+
+#: ../../c-api/exceptions.rst:1120
+#, fuzzy
+msgid ":exc:`EOFError`"
+msgstr ":exc:`EOFError`"
+
+#: ../../c-api/exceptions.rst:1122
+#, fuzzy
+msgid ":exc:`FileExistsError`"
+msgstr ":exc:`FileExistsError`"
+
+#: ../../c-api/exceptions.rst:1124
+#, fuzzy
+msgid ":exc:`FileNotFoundError`"
+msgstr ":exc:`FileNotFoundError`"
+
+#: ../../c-api/exceptions.rst:1126
+#, fuzzy
+msgid ":exc:`FloatingPointError`"
+msgstr ":exc:`FloatingPointError`"
+
+#: ../../c-api/exceptions.rst:1128
+#, fuzzy
+msgid ":exc:`GeneratorExit`"
+msgstr ":exc:`GeneratorExit`"
+
+#: ../../c-api/exceptions.rst:1130
+#, fuzzy
+msgid ":exc:`ImportError`"
+msgstr ":exc:`ImportError`"
+
+#: ../../c-api/exceptions.rst:1132
+#, fuzzy
+msgid ":exc:`IndentationError`"
+msgstr ":exc:`IndentationError`"
+
+#: ../../c-api/exceptions.rst:1134
+#, fuzzy
+msgid ":exc:`IndexError`"
+msgstr ":exc:`IndexError`"
+
+#: ../../c-api/exceptions.rst:1136
+#, fuzzy
+msgid ":exc:`InterruptedError`"
+msgstr ":exc:`InterruptedError`"
+
+#: ../../c-api/exceptions.rst:1138
+#, fuzzy
+msgid ":exc:`IsADirectoryError`"
+msgstr ":exc:`IsADirectoryError`"
+
+#: ../../c-api/exceptions.rst:1140
+#, fuzzy
+msgid ":exc:`KeyError`"
+msgstr ":exc:`KeyError`"
+
+#: ../../c-api/exceptions.rst:1142
+#, fuzzy
+msgid ":exc:`KeyboardInterrupt`"
+msgstr ":exc:`KeyboardInterrupt`"
+
+#: ../../c-api/exceptions.rst:1144
+#, fuzzy
+msgid ":exc:`LookupError`"
+msgstr ":exc:`LookupError`"
+
+#: ../../c-api/exceptions.rst:1146
+#, fuzzy
+msgid ":exc:`MemoryError`"
+msgstr ":exc:`MemoryError`"
+
+#: ../../c-api/exceptions.rst:1148
+#, fuzzy
+msgid ":exc:`ModuleNotFoundError`"
+msgstr ":exc:`ModuleNotFoundError`"
+
+#: ../../c-api/exceptions.rst:1150
+#, fuzzy
+msgid ":exc:`NameError`"
+msgstr ":exc:`NameError`"
+
+#: ../../c-api/exceptions.rst:1152
+#, fuzzy
+msgid ":exc:`NotADirectoryError`"
+msgstr ":exc:`NotADirectoryError`"
+
+#: ../../c-api/exceptions.rst:1154
+#, fuzzy
+msgid ":exc:`NotImplementedError`"
+msgstr ":exc:`NotImplementedError`"
+
+#: ../../c-api/exceptions.rst:1156 ../../c-api/exceptions.rst:1239
+#: ../../c-api/exceptions.rst:1242 ../../c-api/exceptions.rst:1245
+#, fuzzy
+msgid ":exc:`OSError`"
+msgstr ":exc:`OSError`"
+
+#: ../../c-api/exceptions.rst:1158
+#, fuzzy
+msgid ":exc:`OverflowError`"
+msgstr ":exc:`OverflowError`"
+
+#: ../../c-api/exceptions.rst:1160
+#, fuzzy
+msgid ":exc:`PermissionError`"
+msgstr ":exc:`PermissionError`"
+
+#: ../../c-api/exceptions.rst:1162
+#, fuzzy
+msgid ":exc:`ProcessLookupError`"
+msgstr ":exc:`ProcessLookupError`"
+
+#: ../../c-api/exceptions.rst:1164
+#, fuzzy
+msgid ":exc:`PythonFinalizationError`"
+msgstr ":exc:`PythonFinalizationError`"
+
+#: ../../c-api/exceptions.rst:1166
+#, fuzzy
+msgid ":exc:`RecursionError`"
+msgstr ":exc:`RecursionError`"
+
+#: ../../c-api/exceptions.rst:1168
+#, fuzzy
+msgid ":exc:`ReferenceError`"
+msgstr ":exc:`ReferenceError`"
+
+#: ../../c-api/exceptions.rst:1170
+#, fuzzy
+msgid ":exc:`RuntimeError`"
+msgstr ":exc:`RuntimeError`"
+
+#: ../../c-api/exceptions.rst:1172
+#, fuzzy
+msgid ":exc:`StopAsyncIteration`"
+msgstr ":exc:`StopAsyncIteration`"
+
+#: ../../c-api/exceptions.rst:1174
+#, fuzzy
+msgid ":exc:`StopIteration`"
+msgstr ":exc:`StopIteration`"
+
+#: ../../c-api/exceptions.rst:1176
+#, fuzzy
+msgid ":exc:`SyntaxError`"
+msgstr ":exc:`SyntaxError`"
+
+#: ../../c-api/exceptions.rst:1178
+#, fuzzy
+msgid ":exc:`SystemError`"
+msgstr ":exc:`SystemError`"
+
+#: ../../c-api/exceptions.rst:1180
+#, fuzzy
+msgid ":exc:`SystemExit`"
+msgstr ":exc:`SystemExit`"
+
+#: ../../c-api/exceptions.rst:1182
+#, fuzzy
+msgid ":exc:`TabError`"
+msgstr ":exc:`TabError`"
+
+#: ../../c-api/exceptions.rst:1184
+#, fuzzy
+msgid ":exc:`TimeoutError`"
+msgstr ":exc:`TimeoutError`"
+
+#: ../../c-api/exceptions.rst:1186
+#, fuzzy
+msgid ":exc:`TypeError`"
+msgstr ":exc:`TypeError`"
+
+#: ../../c-api/exceptions.rst:1188
+#, fuzzy
+msgid ":exc:`UnboundLocalError`"
+msgstr ":exc:`UnboundLocalError`"
+
+#: ../../c-api/exceptions.rst:1190
+#, fuzzy
+msgid ":exc:`UnicodeDecodeError`"
+msgstr ":exc:`UnicodeDecodeError`"
+
+#: ../../c-api/exceptions.rst:1192
+#, fuzzy
+msgid ":exc:`UnicodeEncodeError`"
+msgstr ":exc:`UnicodeEncodeError`"
+
+#: ../../c-api/exceptions.rst:1194
+#, fuzzy
+msgid ":exc:`UnicodeError`"
+msgstr ":exc:`UnicodeError`"
+
+#: ../../c-api/exceptions.rst:1196
+#, fuzzy
+msgid ":exc:`UnicodeTranslateError`"
+msgstr ":exc:`UnicodeTranslateError`"
+
+#: ../../c-api/exceptions.rst:1198
+#, fuzzy
+msgid ":exc:`ValueError`"
+msgstr ":exc:`ValueError`"
+
+#: ../../c-api/exceptions.rst:1200
+#, fuzzy
+msgid ":exc:`ZeroDivisionError`"
+msgstr ":exc:`ZeroDivisionError`"
+
+#: ../../c-api/exceptions.rst:1202
+#, fuzzy
+msgid ""
+":c:data:`PyExc_BlockingIOError`, :c:data:`PyExc_BrokenPipeError`, "
+":c:data:`PyExc_ChildProcessError`, :c:data:`PyExc_ConnectionError`, "
+":c:data:`PyExc_ConnectionAbortedError`, "
+":c:data:`PyExc_ConnectionRefusedError`, "
+":c:data:`PyExc_ConnectionResetError`, :c:data:`PyExc_FileExistsError`, "
+":c:data:`PyExc_FileNotFoundError`, :c:data:`PyExc_InterruptedError`, "
+":c:data:`PyExc_IsADirectoryError`, :c:data:`PyExc_NotADirectoryError`, "
+":c:data:`PyExc_PermissionError`, :c:data:`PyExc_ProcessLookupError` and "
+":c:data:`PyExc_TimeoutError` were introduced following :pep:`3151`."
+msgstr ""
+":c:data:`PyExc_BlockingIOError`, :c:data:`PyExc_BrokenPipeError`, "
+":c:data:`PyExc_ChildProcessError`, :c:data:`PyExc_ConnectionError`, "
+":c:data:`PyExc_ConnectionAbortedError`, "
+":c:data:`PyExc_ConnectionRefusedError`, "
+":c:data:`PyExc_ConnectionResetError`, :c:data:`PyExc_FileExistsError`, "
+":c:data:`PyExc_FileNotFoundError`, :c:data:`PyExc_InterruptedError`, "
+":c:data:`PyExc_IsADirectoryError`, :c:data:`PyExc_NotADirectoryError`, "
+":c:data:`PyExc_PermissionError`, :c:data:`PyExc_ProcessLookupError` và "
+":c:data:`PyExc_TimeoutError` được giới thiệu sau :pep:`3151`."
+
+#: ../../c-api/exceptions.rst:1212
+#, fuzzy
+msgid ":c:data:`PyExc_StopAsyncIteration` and :c:data:`PyExc_RecursionError`."
+msgstr ":c:data:`PyExc_StopAsyncIteration` và :c:data:`PyExc_RecursionError`."
+
+#: ../../c-api/exceptions.rst:1215
+#, fuzzy
+msgid ":c:data:`PyExc_ModuleNotFoundError`."
+msgstr ":c:data:`PyExc_ModuleNotFoundError`."
+
+#: ../../c-api/exceptions.rst:1218
+#, fuzzy
+msgid ":c:data:`PyExc_BaseExceptionGroup`."
+msgstr ":c:data:`PyExc_BaseExceptionGroup`."
+
+#: ../../c-api/exceptions.rst:1223
+#, fuzzy
+msgid "OSError aliases"
+msgstr "Bí danh OSError"
+
+#: ../../c-api/exceptions.rst:1225
+#, fuzzy
+msgid "The following are a compatibility aliases to :c:data:`PyExc_OSError`."
+msgstr "Sau đây là các bí danh tương thích với :c:data:`PyExc_OSError`."
+
+#: ../../c-api/exceptions.rst:1227
+#, fuzzy
+msgid "These aliases used to be separate exception types."
+msgstr "Những bí danh này từng là loại ngoại lệ riêng biệt."
+
+#: ../../c-api/exceptions.rst:1237
+#, fuzzy
+msgid "Notes"
+msgstr "Ghi chú"
+
+#: ../../c-api/exceptions.rst:1246
+#, fuzzy
+msgid "[win]_"
+msgstr "[thắng]_"
+
+#: ../../c-api/exceptions.rst:1248
+#, fuzzy
+msgid "Notes:"
+msgstr "Ghi chú:"
+
+#: ../../c-api/exceptions.rst:1251
+#, fuzzy
+msgid ""
+":c:var:`!PyExc_WindowsError` is only defined on Windows; protect code that "
+"uses this by testing that the preprocessor macro ``MS_WINDOWS`` is defined."
+msgstr ""
+":c:var:`!PyExc_WindowsError` chỉ được xác định trên Windows; bảo vệ mã sử "
+"dụng điều này bằng cách kiểm tra xem macro tiền xử lý ``MS_WINDOWS`` đã được"
+" xác định chưa."
+
+#: ../../c-api/exceptions.rst:1258
+#, fuzzy
+msgid "Warning types"
+msgstr "Các loại cảnh báo"
+
+#: ../../c-api/exceptions.rst:1268
+#, fuzzy
+msgid ":exc:`Warning`"
+msgstr ":exc:`Warning`"
+
+#: ../../c-api/exceptions.rst:1270
+#, fuzzy
+msgid ":exc:`BytesWarning`"
+msgstr ":exc:`BytesWarning`"
+
+#: ../../c-api/exceptions.rst:1272
+#, fuzzy
+msgid ":exc:`DeprecationWarning`"
+msgstr ":exc:`DeprecationWarning`"
+
+#: ../../c-api/exceptions.rst:1274
+#, fuzzy
+msgid ":exc:`EncodingWarning`"
+msgstr ":exc:`EncodingWarning`"
+
+#: ../../c-api/exceptions.rst:1276
+#, fuzzy
+msgid ":exc:`FutureWarning`"
+msgstr ":exc:`FutureWarning`"
+
+#: ../../c-api/exceptions.rst:1278
+#, fuzzy
+msgid ":exc:`ImportWarning`"
+msgstr ":exc:`ImportWarning`"
+
+#: ../../c-api/exceptions.rst:1280
+#, fuzzy
+msgid ":exc:`PendingDeprecationWarning`"
+msgstr ":exc:`PendingDeprecationWarning`"
+
+#: ../../c-api/exceptions.rst:1282
+#, fuzzy
+msgid ":exc:`ResourceWarning`"
+msgstr ":exc:`ResourceWarning`"
+
+#: ../../c-api/exceptions.rst:1284
+#, fuzzy
+msgid ":exc:`RuntimeWarning`"
+msgstr ":exc:`RuntimeWarning`"
+
+#: ../../c-api/exceptions.rst:1286
+#, fuzzy
+msgid ":exc:`SyntaxWarning`"
+msgstr ":exc:`SyntaxWarning`"
+
+#: ../../c-api/exceptions.rst:1288
+#, fuzzy
+msgid ":exc:`UnicodeWarning`"
+msgstr ":exc:`UnicodeWarning`"
+
+#: ../../c-api/exceptions.rst:1290
+#, fuzzy
+msgid ":exc:`UserWarning`"
+msgstr ":exc:`UserWarning`"
+
+#: ../../c-api/exceptions.rst:1292
+#, fuzzy
+msgid ":c:data:`PyExc_ResourceWarning`."
+msgstr ":c:data:`PyExc_ResourceWarning`."
+
+#: ../../c-api/exceptions.rst:1295
+#, fuzzy
+msgid ":c:data:`PyExc_EncodingWarning`."
+msgstr ":c:data:`PyExc_EncodingWarning`."
+
+#: ../../c-api/exceptions.rst:1300
+#, fuzzy
+msgid "Tracebacks"
+msgstr "Truy nguyên"
+
+#: ../../c-api/exceptions.rst:1304
+#, fuzzy
+msgid ""
+"Type object for traceback objects. This is available as "
+":class:`types.TracebackType` in the Python layer."
+msgstr ""
+"Nhập đối tượng cho các đối tượng truy nguyên. Điều này có sẵn dưới dạng "
+":class:`types.TracebackType` trong lớp Python."
+
+#: ../../c-api/exceptions.rst:1310
+#, fuzzy
+msgid ""
+"Return true if *op* is a traceback object, false otherwise. This function "
+"does not account for subtypes."
+msgstr ""
+"Trả về true nếu *op* là đối tượng truy nguyên, ngược lại là sai. Chức năng "
+"này không tính đến các kiểu con."
+
+#: ../../c-api/exceptions.rst:1316
+#, fuzzy
+msgid ""
+"Replace the :attr:`~BaseException.__traceback__` attribute on the current "
+"exception with a new traceback prepending *f* to the existing chain."
+msgstr ""
+"Thay thế thuộc tính :attr:`~BaseException.__traceback__` trên ngoại lệ hiện "
+"tại bằng một truy nguyên mới thêm *f* vào chuỗi hiện có."
+
+#: ../../c-api/exceptions.rst:1319
+#, fuzzy
+msgid "Calling this function without an exception set is undefined behavior."
+msgstr "Gọi hàm này mà không đặt ngoại lệ là hành vi không xác định."
+
+#: ../../c-api/exceptions.rst:1321 ../../c-api/exceptions.rst:1329
+#, fuzzy
+msgid ""
+"This function returns ``0`` on success, and returns ``-1`` with an exception"
+" set on failure."
+msgstr ""
+"Hàm này trả về ``0`` nếu thành công và trả về ``-1`` với ngoại lệ được đặt "
+"nếu thất bại."
+
+#: ../../c-api/exceptions.rst:1327
+#, fuzzy
+msgid "Write the traceback *tb* into the file *f*."
+msgstr "Viết traceback *tb* vào file *f*."
+
+#: ../../c-api/exceptions.rst:183
+#, fuzzy
+msgid "strerror (C function)"
+msgstr "lỗi strerror (hàm C)"
+
+#: ../../c-api/exceptions.rst:671 ../../c-api/exceptions.rst:720
+#: ../../c-api/exceptions.rst:735
+#, fuzzy
+msgid "module"
+msgstr "mô-đun"
+
+#: ../../c-api/exceptions.rst:671 ../../c-api/exceptions.rst:720
+#: ../../c-api/exceptions.rst:735
+#, fuzzy
+msgid "signal"
+msgstr "tín hiệu"
+
+#: ../../c-api/exceptions.rst:671 ../../c-api/exceptions.rst:720
+#, fuzzy
+msgid "SIGINT (C macro)"
+msgstr "SIGINT (macro C)"
+
+#: ../../c-api/exceptions.rst:671 ../../c-api/exceptions.rst:720
+#: ../../c-api/exceptions.rst:735
+#, fuzzy
+msgid "KeyboardInterrupt (built-in exception)"
+msgstr "Bàn phímInterrupt (ngoại lệ tích hợp)"

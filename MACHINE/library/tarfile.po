@@ -1,0 +1,3034 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/tarfile.rst:2
+#, fuzzy
+msgid ":mod:`!tarfile` --- Read and write tar archive files"
+msgstr ":mod:`!tarfile` --- Đọc và ghi tập tin lưu trữ tar"
+
+#: ../../library/tarfile.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/tarfile.py`"
+msgstr "**Source code:** :source:`Lib/tarfile.py`"
+
+#: ../../library/tarfile.rst:14
+#, fuzzy
+msgid ""
+"The :mod:`!tarfile` module makes it possible to read and write tar archives,"
+" including those using gzip, bz2 and lzma compression. Use the "
+":mod:`zipfile` module to read or write :file:`.zip` files, or the higher-"
+"level functions in :ref:`shutil <archiving-operations>`."
+msgstr ""
+"Mô-đun :mod:`!tarfile` cho phép đọc và ghi các kho lưu trữ tar, bao gồm cả "
+"những kho sử dụng nén gzip, bz2 và lzma. Sử dụng mô-đun :mod:`zipfile` để "
+"đọc hoặc ghi các tệp :file:`.zip` hoặc các hàm cấp cao hơn trong "
+":ref:`shutil <archiving-operations>`."
+
+#: ../../library/tarfile.rst:19
+#, fuzzy
+msgid "Some facts and figures:"
+msgstr "Một số sự kiện và số liệu:"
+
+#: ../../library/tarfile.rst:21
+#, fuzzy
+msgid ""
+"reads and writes :mod:`gzip`, :mod:`bz2`, :mod:`compression.zstd`, and "
+":mod:`lzma` compressed archives if the respective modules are available."
+msgstr ""
+"đọc và ghi các kho lưu trữ nén :mod:`gzip`, :mod:`bz2`, "
+":mod:`compression.zstd` và :mod:`lzma` nếu có sẵn các mô-đun tương ứng."
+
+#: ../../library/tarfile.rst:27
+#, fuzzy
+msgid ""
+"If any of these :term:`optional modules <optional module>` are missing from "
+"your copy of CPython, look for documentation from your distributor (that is,"
+" whoever provided Python to you). If you are the distributor, see "
+":ref:`optional-module-requirements`."
+msgstr ""
+"Nếu bất kỳ :term:`optional modules <optional module>` nào bị thiếu trong bản"
+" sao CPython của bạn, hãy tìm tài liệu từ nhà phân phối của bạn (nghĩa là "
+"bất kỳ ai đã cung cấp Python cho bạn). Nếu bạn là nhà phân phối, hãy xem "
+":ref:`optional-module-requirements`."
+
+#: ../../library/tarfile.rst:32
+#, fuzzy
+msgid "read/write support for the POSIX.1-1988 (ustar) format."
+msgstr "hỗ trợ đọc/ghi cho định dạng POSIX.1-1988 (ustar)."
+
+#: ../../library/tarfile.rst:34
+#, fuzzy
+msgid ""
+"read/write support for the GNU tar format including *longname* and "
+"*longlink* extensions, read-only support for all variants of the *sparse* "
+"extension including restoration of sparse files."
+msgstr ""
+"hỗ trợ đọc/ghi cho định dạng tar GNU bao gồm các phần mở rộng *longname* và "
+"*longlink*, hỗ trợ chỉ đọc cho tất cả các biến thể của phần mở rộng *sparse*"
+" bao gồm cả việc khôi phục các tệp thưa thớt."
+
+#: ../../library/tarfile.rst:38
+#, fuzzy
+msgid "read/write support for the POSIX.1-2001 (pax) format."
+msgstr "hỗ trợ đọc/ghi cho định dạng POSIX.1-2001 (pax)."
+
+#: ../../library/tarfile.rst:40
+#, fuzzy
+msgid ""
+"handles directories, regular files, hardlinks, symbolic links, fifos, "
+"character devices and block devices and is able to acquire and restore file "
+"information like timestamp, access permissions and owner."
+msgstr ""
+"xử lý các thư mục, tệp thông thường, liên kết cứng, liên kết tượng trưng, "
+"​​fifos, thiết bị ký tự và thiết bị khối, đồng thời có thể thu thập và khôi "
+"phục thông tin tệp như dấu thời gian, quyền truy cập và chủ sở hữu."
+
+#: ../../library/tarfile.rst:44
+#, fuzzy
+msgid "Added support for :mod:`lzma` compression."
+msgstr "Đã thêm hỗ trợ nén :mod:`lzma`."
+
+#: ../../library/tarfile.rst:47
+#, fuzzy
+msgid ""
+"Archives are extracted using a :ref:`filter <tarfile-extraction-filter>`, "
+"which makes it possible to either limit surprising/dangerous features, or to"
+" acknowledge that they are expected and the archive is fully trusted."
+msgstr ""
+"Các kho lưu trữ được trích xuất bằng :ref:`filter <tarfile-extraction-"
+"filter>`, giúp hạn chế các tính năng đáng ngạc nhiên/nguy hiểm hoặc thừa "
+"nhận rằng chúng được mong đợi và kho lưu trữ hoàn toàn đáng tin cậy."
+
+#: ../../library/tarfile.rst:52
+#, fuzzy
+msgid ""
+"Set the default extraction filter to :func:`data <data_filter>`, which "
+"disallows some dangerous features such as links to absolute paths or paths "
+"outside of the destination. Previously, the filter strategy was equivalent "
+"to :func:`fully_trusted <fully_trusted_filter>`."
+msgstr ""
+"Đặt bộ lọc trích xuất mặc định thành :func:`data <data_filter>`, bộ lọc này "
+"không cho phép một số tính năng nguy hiểm như liên kết đến đường dẫn tuyệt "
+"đối hoặc đường dẫn bên ngoài đích. Trước đây, chiến lược lọc tương đương với"
+" :func:`fully_trusted <fully_trusted_filter>`."
+
+#: ../../library/tarfile.rst:60
+#, fuzzy
+msgid "Added support for Zstandard compression using :mod:`compression.zstd`."
+msgstr "Đã thêm hỗ trợ nén Zstandard bằng :mod:`compression.zstd`."
+
+#: ../../library/tarfile.rst:64
+#, fuzzy
+msgid ""
+"Return a :class:`TarFile` object for the pathname *name*. For detailed "
+"information on :class:`TarFile` objects and the keyword arguments that are "
+"allowed, see :ref:`tarfile-objects`."
+msgstr ""
+"Trả về đối tượng :class:`TarFile` cho tên đường dẫn *name*. Để biết thông "
+"tin chi tiết về các đối tượng :class:`TarFile` và các đối số từ khóa được "
+"phép, hãy xem :ref:`tarfile-objects`."
+
+#: ../../library/tarfile.rst:68
+#, fuzzy
+msgid ""
+"*mode* has to be a string of the form ``'filemode[:compression]'``, it "
+"defaults to ``'r'``. Here is a full list of mode combinations:"
+msgstr ""
+"*mode* phải là một chuỗi có dạng ``'filemode[:compression]'``, mặc định là "
+"``'r'``. Dưới đây là danh sách đầy đủ các kết hợp chế độ:"
+
+#: ../../library/tarfile.rst:72
+#, fuzzy
+msgid "mode"
+msgstr "chế độ"
+
+#: ../../library/tarfile.rst:72
+#, fuzzy
+msgid "action"
+msgstr "hành động"
+
+#: ../../library/tarfile.rst:74
+#, fuzzy
+msgid "``'r'`` or ``'r:*'``"
+msgstr "``'r'`` hoặc ``'r:*'``"
+
+#: ../../library/tarfile.rst:74
+#, fuzzy
+msgid "Open for reading with transparent compression (recommended)."
+msgstr "Mở để đọc với tính năng nén trong suốt (được khuyến nghị)."
+
+#: ../../library/tarfile.rst:77
+#, fuzzy
+msgid "``'r:'``"
+msgstr "``'r:'``"
+
+#: ../../library/tarfile.rst:77
+#, fuzzy
+msgid "Open for reading exclusively without compression."
+msgstr "Mở để đọc độc quyền mà không cần nén."
+
+#: ../../library/tarfile.rst:80
+#, fuzzy
+msgid "``'r:gz'``"
+msgstr "``'r:gz'``"
+
+#: ../../library/tarfile.rst:80
+#, fuzzy
+msgid "Open for reading with gzip compression."
+msgstr "Mở để đọc bằng nén gzip."
+
+#: ../../library/tarfile.rst:82
+#, fuzzy
+msgid "``'r:bz2'``"
+msgstr "``'r:bz2'``"
+
+#: ../../library/tarfile.rst:82
+#, fuzzy
+msgid "Open for reading with bzip2 compression."
+msgstr "Mở để đọc với nén bzip2."
+
+#: ../../library/tarfile.rst:84
+#, fuzzy
+msgid "``'r:xz'``"
+msgstr "``'r:xz'``"
+
+#: ../../library/tarfile.rst:84
+#, fuzzy
+msgid "Open for reading with lzma compression."
+msgstr "Mở để đọc với nén lzma."
+
+#: ../../library/tarfile.rst:86
+#, fuzzy
+msgid "``'r:zst'``"
+msgstr "``'r:zst'``"
+
+#: ../../library/tarfile.rst:86
+#, fuzzy
+msgid "Open for reading with Zstandard compression."
+msgstr "Mở để đọc với nén Zstandard."
+
+#: ../../library/tarfile.rst:88
+#, fuzzy
+msgid "``'x'`` or ``'x:'``"
+msgstr "``'x'`` hoặc ``'x:'``"
+
+#: ../../library/tarfile.rst:88
+#, fuzzy
+msgid ""
+"Create a tarfile exclusively without compression. Raise a "
+":exc:`FileExistsError` exception if it already exists."
+msgstr ""
+"Tạo một tarfile độc quyền mà không cần nén. Đưa ra ngoại lệ "
+":exc:`FileExistsError` nếu nó đã tồn tại."
+
+#: ../../library/tarfile.rst:93
+#, fuzzy
+msgid "``'x:gz'``"
+msgstr "``'x:gz'``"
+
+#: ../../library/tarfile.rst:93
+#, fuzzy
+msgid ""
+"Create a tarfile with gzip compression. Raise a :exc:`FileExistsError` "
+"exception if it already exists."
+msgstr ""
+"Tạo một tarfile với nén gzip. Đưa ra ngoại lệ :exc:`FileExistsError` nếu nó "
+"đã tồn tại."
+
+#: ../../library/tarfile.rst:97
+#, fuzzy
+msgid "``'x:bz2'``"
+msgstr "``'x:bz2'``"
+
+#: ../../library/tarfile.rst:97
+#, fuzzy
+msgid ""
+"Create a tarfile with bzip2 compression. Raise a :exc:`FileExistsError` "
+"exception if it already exists."
+msgstr ""
+"Tạo một tarfile với nén bzip2. Đưa ra ngoại lệ :exc:`FileExistsError` nếu nó"
+" đã tồn tại."
+
+#: ../../library/tarfile.rst:101
+#, fuzzy
+msgid "``'x:xz'``"
+msgstr "``'x:xz'``"
+
+#: ../../library/tarfile.rst:101
+#, fuzzy
+msgid ""
+"Create a tarfile with lzma compression. Raise a :exc:`FileExistsError` "
+"exception if it already exists."
+msgstr ""
+"Tạo một tarfile với nén lzma. Đưa ra ngoại lệ :exc:`FileExistsError` nếu nó "
+"đã tồn tại."
+
+#: ../../library/tarfile.rst:105
+#, fuzzy
+msgid "``'x:zst'``"
+msgstr "``'x:zst'``"
+
+#: ../../library/tarfile.rst:105
+#, fuzzy
+msgid ""
+"Create a tarfile with Zstandard compression. Raise a :exc:`FileExistsError` "
+"exception if it already exists."
+msgstr ""
+"Tạo một tarfile với nén Zstandard. Đưa ra ngoại lệ :exc:`FileExistsError` "
+"nếu nó đã tồn tại."
+
+#: ../../library/tarfile.rst:109
+#, fuzzy
+msgid "``'a'`` or ``'a:'``"
+msgstr "``'a'`` hoặc ``'a:'``"
+
+#: ../../library/tarfile.rst:109
+#, fuzzy
+msgid ""
+"Open for appending with no compression. The file is created if it does not "
+"exist."
+msgstr "Mở để nối thêm mà không cần nén. Tệp được tạo nếu nó không tồn tại."
+
+#: ../../library/tarfile.rst:112
+#, fuzzy
+msgid "``'w'`` or ``'w:'``"
+msgstr "``'w'`` hoặc ``'w:'``"
+
+#: ../../library/tarfile.rst:112
+#, fuzzy
+msgid "Open for uncompressed writing."
+msgstr "Mở để viết không nén."
+
+#: ../../library/tarfile.rst:115
+#, fuzzy
+msgid "``'w:gz'``"
+msgstr "``'w:gz'``"
+
+#: ../../library/tarfile.rst:115
+#, fuzzy
+msgid "Open for gzip compressed writing."
+msgstr "Mở để viết nén gzip."
+
+#: ../../library/tarfile.rst:117
+#, fuzzy
+msgid "``'w:bz2'``"
+msgstr "``'w:bz2'``"
+
+#: ../../library/tarfile.rst:117
+#, fuzzy
+msgid "Open for bzip2 compressed writing."
+msgstr "Mở để viết nén bzip2."
+
+#: ../../library/tarfile.rst:119
+#, fuzzy
+msgid "``'w:xz'``"
+msgstr "``'w:xz'``"
+
+#: ../../library/tarfile.rst:119
+#, fuzzy
+msgid "Open for lzma compressed writing."
+msgstr "Mở cho văn bản nén lzma."
+
+#: ../../library/tarfile.rst:121
+#, fuzzy
+msgid "``'w:zst'``"
+msgstr "``'w:zst'``"
+
+#: ../../library/tarfile.rst:121
+#, fuzzy
+msgid "Open for Zstandard compressed writing."
+msgstr "Mở cho văn bản nén Zstandard."
+
+#: ../../library/tarfile.rst:124
+#, fuzzy
+msgid ""
+"Note that ``'a:gz'``, ``'a:bz2'`` or ``'a:xz'`` is not possible. If *mode* "
+"is not suitable to open a certain (compressed) file for reading, "
+":exc:`ReadError` is raised. Use *mode* ``'r'`` to avoid this.  If a "
+"compression method is not supported, :exc:`CompressionError` is raised."
+msgstr ""
+"Lưu ý rằng ``'a:gz'``, ``'a:bz2'`` hoặc ``'a:xz'`` là không thể. Nếu *mode* "
+"không phù hợp để mở một tệp (nén) nhất định để đọc, :exc:`ReadError` sẽ được"
+" nâng lên. Sử dụng *mode* ``'r'`` để tránh điều này.  Nếu phương pháp nén "
+"không được hỗ trợ, :exc:`CompressionError` sẽ được nâng lên."
+
+#: ../../library/tarfile.rst:129
+#, fuzzy
+msgid ""
+"If *fileobj* is specified, it is used as an alternative to a :term:`file "
+"object` opened in binary mode for *name*. It is supposed to be at position "
+"0."
+msgstr ""
+"Nếu *fileobj* được chỉ định, nó sẽ được sử dụng thay thế cho :term:`file "
+"object` được mở ở chế độ nhị phân cho *name*. Nó được cho là ở vị trí 0."
+
+#: ../../library/tarfile.rst:132
+#, fuzzy
+msgid ""
+"For modes ``'w:gz'``, ``'x:gz'``, ``'w|gz'``, ``'w:bz2'``, ``'x:bz2'``, "
+"``'w|bz2'``, :func:`tarfile.open` accepts the keyword argument "
+"*compresslevel* (default ``9``) to specify the compression level of the "
+"file."
+msgstr ""
+"Đối với các chế độ ``'w:gz'``, ``'x:gz'``, ``'w|gz'``, ``'w:bz2'``, "
+"``'x:bz2'``, ``'w|bz2'``, :func:`tarfile.open` chấp nhận đối số từ khóa "
+"*compresslevel* (``9`` mặc định) để chỉ định mức độ nén của tệp."
+
+#: ../../library/tarfile.rst:136
+#, fuzzy
+msgid ""
+"For modes ``'w:xz'``, ``'x:xz'`` and ``'w|xz'``, :func:`tarfile.open` "
+"accepts the keyword argument *preset* to specify the compression level of "
+"the file."
+msgstr ""
+"Đối với các chế độ ``'w:xz'``, ``'x:xz'`` và ``'w|xz'``, "
+":func:`tarfile.open` chấp nhận đối số từ khóa *preset* để chỉ định mức độ "
+"nén của tệp."
+
+#: ../../library/tarfile.rst:139
+#, fuzzy
+msgid ""
+"For modes ``'w:zst'``, ``'x:zst'`` and ``'w|zst'``, :func:`tarfile.open` "
+"accepts the keyword argument *level* to specify the compression level of the"
+" file. The keyword argument *options* may also be passed, providing advanced"
+" Zstandard compression parameters described by "
+":class:`~compression.zstd.CompressionParameter`. The keyword argument "
+"*zstd_dict* can be passed to provide a :class:`~compression.zstd.ZstdDict`, "
+"a Zstandard dictionary used to improve compression of smaller amounts of "
+"data."
+msgstr ""
+"Đối với các chế độ ``'w:zst'``, ``'x:zst'`` và ``'w|zst'``, "
+":func:`tarfile.open` chấp nhận đối số từ khóa *level* để chỉ định mức độ nén"
+" của tệp. Đối số từ khóa *options* cũng có thể được thông qua, cung cấp các "
+"tham số nén Zstandard nâng cao được mô tả bởi "
+":class:`~compression.zstd.CompressionParameter`. Đối số từ khóa *zstd_dict* "
+"có thể được chuyển để cung cấp :class:`~compression.zstd.ZstdDict`, một từ "
+"điển Zstandard được sử dụng để cải thiện việc nén lượng dữ liệu nhỏ hơn."
+
+#: ../../library/tarfile.rst:148
+#, fuzzy
+msgid ""
+"For special purposes, there is a second format for *mode*: "
+"``'filemode|[compression]'``.  :func:`tarfile.open` will return a "
+":class:`TarFile` object that processes its data as a stream of blocks.  No "
+"random seeking will be done on the file. If given, *fileobj* may be any "
+"object that has a :meth:`~io.RawIOBase.read` or :meth:`~io.RawIOBase.write` "
+"method (depending on the *mode*) that works with bytes. *bufsize* specifies "
+"the blocksize and defaults to ``20 * 512`` bytes. Use this variant in "
+"combination with e.g. ``sys.stdin.buffer``, a socket :term:`file object` or "
+"a tape device. However, such a :class:`TarFile` object is limited in that it"
+" does not allow random access, see :ref:`tar-examples`.  The currently "
+"possible modes:"
+msgstr ""
+"Đối với các mục đích đặc biệt, có định dạng thứ hai cho *mode*: "
+"``'filemode|[compression]'``.  :func:`tarfile.open` sẽ trả về một đối tượng "
+":class:`TarFile` xử lý dữ liệu của nó dưới dạng luồng khối.  Không có tìm "
+"kiếm ngẫu nhiên sẽ được thực hiện trên tập tin. Nếu được cung cấp, *fileobj*"
+" có thể là bất kỳ đối tượng nào có phương thức :meth:`~io.RawIOBase.read` "
+"hoặc :meth:`~io.RawIOBase.write` (tùy thuộc vào *mode*) hoạt động với byte. "
+"*bufsize* chỉ định kích thước khối và mặc định là byte ``20 * 512``. Sử dụng"
+" biến thể này kết hợp với ví dụ: ``sys.stdin.buffer``, ổ cắm :term:`file "
+"object` hoặc thiết bị băng. Tuy nhiên, đối tượng :class:`TarFile` như vậy bị"
+" hạn chế ở chỗ nó không cho phép truy cập ngẫu nhiên, xem :ref:`tar-"
+"examples`.  Các chế độ hiện có thể có:"
+
+#: ../../library/tarfile.rst:162
+#, fuzzy
+msgid "Mode"
+msgstr "Chế độ"
+
+#: ../../library/tarfile.rst:162
+#, fuzzy
+msgid "Action"
+msgstr "hành động"
+
+#: ../../library/tarfile.rst:164
+#, fuzzy
+msgid "``'r|*'``"
+msgstr "``'r|*'``"
+
+#: ../../library/tarfile.rst:164
+#, fuzzy
+msgid ""
+"Open a *stream* of tar blocks for reading with transparent compression."
+msgstr "Mở một khối tar *stream* để đọc với tính năng nén trong suốt."
+
+#: ../../library/tarfile.rst:167
+#, fuzzy
+msgid "``'r|'``"
+msgstr "``'r|'``"
+
+#: ../../library/tarfile.rst:167
+#, fuzzy
+msgid "Open a *stream* of uncompressed tar blocks for reading."
+msgstr "Mở *stream* khối tar không nén để đọc."
+
+#: ../../library/tarfile.rst:170
+#, fuzzy
+msgid "``'r|gz'``"
+msgstr "``'r|gz'``"
+
+#: ../../library/tarfile.rst:170
+#, fuzzy
+msgid "Open a gzip compressed *stream* for reading."
+msgstr "Mở *stream* được nén bằng gzip để đọc."
+
+#: ../../library/tarfile.rst:173
+#, fuzzy
+msgid "``'r|bz2'``"
+msgstr "``'r|bz2'``"
+
+#: ../../library/tarfile.rst:173
+#, fuzzy
+msgid "Open a bzip2 compressed *stream* for reading."
+msgstr "Mở *stream* nén bzip2 để đọc."
+
+#: ../../library/tarfile.rst:176
+#, fuzzy
+msgid "``'r|xz'``"
+msgstr "``'r|xz'``"
+
+#: ../../library/tarfile.rst:176
+#, fuzzy
+msgid "Open an lzma compressed *stream* for reading."
+msgstr "Mở *stream* nén lzma để đọc."
+
+#: ../../library/tarfile.rst:179
+#, fuzzy
+msgid "``'r|zst'``"
+msgstr "``'r|zst'``"
+
+#: ../../library/tarfile.rst:179
+#, fuzzy
+msgid "Open a Zstandard compressed *stream* for reading."
+msgstr "Mở *stream* nén Zstandard để đọc."
+
+#: ../../library/tarfile.rst:182
+#, fuzzy
+msgid "``'w|'``"
+msgstr "``'w|'``"
+
+#: ../../library/tarfile.rst:182
+#, fuzzy
+msgid "Open an uncompressed *stream* for writing."
+msgstr "Mở *stream* không nén để viết."
+
+#: ../../library/tarfile.rst:184
+#, fuzzy
+msgid "``'w|gz'``"
+msgstr "``'w|gz'``"
+
+#: ../../library/tarfile.rst:184
+#, fuzzy
+msgid "Open a gzip compressed *stream* for writing."
+msgstr "Mở *stream* được nén bằng gzip để viết."
+
+#: ../../library/tarfile.rst:187
+#, fuzzy
+msgid "``'w|bz2'``"
+msgstr "``'w|bz2'``"
+
+#: ../../library/tarfile.rst:187
+#, fuzzy
+msgid "Open a bzip2 compressed *stream* for writing."
+msgstr "Mở *stream* nén bzip2 để viết."
+
+#: ../../library/tarfile.rst:190
+#, fuzzy
+msgid "``'w|xz'``"
+msgstr "``'w|xz'``"
+
+#: ../../library/tarfile.rst:190
+#, fuzzy
+msgid "Open an lzma compressed *stream* for writing."
+msgstr "Mở *stream* nén lzma để viết."
+
+#: ../../library/tarfile.rst:193
+#, fuzzy
+msgid "``'w|zst'``"
+msgstr "``'w|zst'``"
+
+#: ../../library/tarfile.rst:193
+#, fuzzy
+msgid "Open a Zstandard compressed *stream* for writing."
+msgstr "Mở *stream* nén Zstandard để viết."
+
+#: ../../library/tarfile.rst:197 ../../library/tarfile.rst:476
+#, fuzzy
+msgid "The ``'x'`` (exclusive creation) mode was added."
+msgstr "Chế độ ``'x'`` (tạo độc quyền) đã được thêm vào."
+
+#: ../../library/tarfile.rst:200 ../../library/tarfile.rst:479
+#: ../../library/tarfile.rst:727
+#, fuzzy
+msgid "The *name* parameter accepts a :term:`path-like object`."
+msgstr "Tham số *name* chấp nhận :term:`path-like object`."
+
+#: ../../library/tarfile.rst:203
+#, fuzzy
+msgid "The *compresslevel* keyword argument also works for streams."
+msgstr "Đối số từ khóa *compresslevel* cũng hoạt động cho các luồng."
+
+#: ../../library/tarfile.rst:206
+#, fuzzy
+msgid "The *preset* keyword argument also works for streams."
+msgstr "Đối số từ khóa *preset* cũng hoạt động cho các luồng."
+
+#: ../../library/tarfile.rst:213
+#, fuzzy
+msgid ""
+"Class for reading and writing tar archives. Do not use this class directly: "
+"use :func:`tarfile.open` instead. See :ref:`tarfile-objects`."
+msgstr ""
+"Lớp đọc và ghi lưu trữ tar. Không sử dụng trực tiếp lớp này: thay vào đó hãy"
+" sử dụng :func:`tarfile.open`. Xem :ref:`tarfile-objects`."
+
+#: ../../library/tarfile.rst:219
+#, fuzzy
+msgid ""
+"Return :const:`True` if *name* is a tar archive file, that the "
+":mod:`!tarfile` module can read. *name* may be a :class:`str`, file, or "
+"file-like object."
+msgstr ""
+"Trả về :const:`True` nếu *name* là tệp lưu trữ tar mà mô-đun :mod:`!tarfile`"
+" có thể đọc được. *name* có thể là một đối tượng :class:`str`, tệp hoặc "
+"giống như tệp."
+
+#: ../../library/tarfile.rst:222
+#, fuzzy
+msgid "Support for file and file-like objects."
+msgstr "Hỗ trợ tập tin và các đối tượng giống như tập tin."
+
+#: ../../library/tarfile.rst:226
+#, fuzzy
+msgid "The :mod:`!tarfile` module defines the following exceptions:"
+msgstr "Mô-đun :mod:`!tarfile` xác định các ngoại lệ sau:"
+
+#: ../../library/tarfile.rst:231
+#, fuzzy
+msgid "Base class for all :mod:`!tarfile` exceptions."
+msgstr "Lớp cơ sở cho tất cả các ngoại lệ :mod:`!tarfile`."
+
+#: ../../library/tarfile.rst:236
+#, fuzzy
+msgid ""
+"Is raised when a tar archive is opened, that either cannot be handled by the"
+" :mod:`!tarfile` module or is somehow invalid."
+msgstr ""
+"Được nâng lên khi một kho lưu trữ tar được mở, mô-đun :mod:`!tarfile` không "
+"thể xử lý được hoặc bằng cách nào đó không hợp lệ."
+
+#: ../../library/tarfile.rst:242
+#, fuzzy
+msgid ""
+"Is raised when a compression method is not supported or when the data cannot"
+" be decoded properly."
+msgstr ""
+"Được nâng lên khi phương pháp nén không được hỗ trợ hoặc khi dữ liệu không "
+"thể được giải mã chính xác."
+
+#: ../../library/tarfile.rst:248
+#, fuzzy
+msgid ""
+"Is raised for the limitations that are typical for stream-like "
+":class:`TarFile` objects."
+msgstr ""
+"Được nêu ra đối với những hạn chế điển hình đối với các đối tượng "
+":class:`TarFile` giống như luồng."
+
+#: ../../library/tarfile.rst:254
+#, fuzzy
+msgid ""
+"Is raised for *non-fatal* errors when using :meth:`TarFile.extract`, but "
+"only if :attr:`TarFile.errorlevel`\\ ``== 2``."
+msgstr ""
+"Được đưa ra đối với lỗi *non-fatal* khi sử dụng :meth:`TarFile.extract`, "
+"nhưng chỉ khi :attr:`TarFile.errorlevel`\\ ``== 2``."
+
+#: ../../library/tarfile.rst:260
+#, fuzzy
+msgid "Is raised by :meth:`TarInfo.frombuf` if the buffer it gets is invalid."
+msgstr ""
+"Được tăng lên bởi :meth:`TarInfo.frombuf` nếu bộ đệm nhận được không hợp lệ."
+
+#: ../../library/tarfile.rst:265
+#, fuzzy
+msgid ""
+"Base class for members :ref:`refused <tarfile-extraction-refuse>` by "
+"filters."
+msgstr ""
+"Lớp cơ sở dành cho thành viên :ref:`refused <tarfile-extraction-refuse>` "
+"theo bộ lọc."
+
+#: ../../library/tarfile.rst:270
+#, fuzzy
+msgid ""
+"Information about the member that the filter refused to extract, as "
+":ref:`TarInfo <tarinfo-objects>`."
+msgstr ""
+"Thông tin về thành viên mà bộ lọc từ chối trích xuất, dưới dạng "
+":ref:`TarInfo <tarinfo-objects>`."
+
+#: ../../library/tarfile.rst:275
+#, fuzzy
+msgid "Raised to refuse extracting a member with an absolute path."
+msgstr ""
+"Được nêu ra để từ chối trích xuất một thành viên có đường dẫn tuyệt đối."
+
+#: ../../library/tarfile.rst:279
+#, fuzzy
+msgid ""
+"Raised to refuse extracting a member outside the destination directory."
+msgstr ""
+"Được nêu ra để từ chối trích xuất một thành viên bên ngoài thư mục đích."
+
+#: ../../library/tarfile.rst:283
+#, fuzzy
+msgid "Raised to refuse extracting a special file (e.g. a device or pipe)."
+msgstr ""
+"Được nêu ra để từ chối trích xuất một tệp đặc biệt (ví dụ: một thiết bị hoặc"
+" đường ống)."
+
+#: ../../library/tarfile.rst:287
+#, fuzzy
+msgid "Raised to refuse extracting a symbolic link with an absolute path."
+msgstr ""
+"Được nêu ra để từ chối trích xuất một liên kết tượng trưng với một đường dẫn"
+" tuyệt đối."
+
+#: ../../library/tarfile.rst:291
+#, fuzzy
+msgid ""
+"Raised to refuse extracting a symbolic link pointing outside the destination"
+" directory."
+msgstr ""
+"Được nêu ra để từ chối trích xuất một liên kết tượng trưng trỏ ra ngoài thư "
+"mục đích."
+
+#: ../../library/tarfile.rst:296
+#, fuzzy
+msgid ""
+"Raised to refuse emulating a link (hard or symbolic) by extracting another "
+"archive member, when that member would be rejected by the filter location. "
+"The exception that was raised to reject the replacement member is available "
+"as :attr:`!BaseException.__context__`."
+msgstr ""
+"Được đưa ra để từ chối mô phỏng một liên kết (cứng hoặc tượng trưng) bằng "
+"cách trích xuất một thành viên lưu trữ khác, khi thành viên đó sẽ bị vị trí "
+"bộ lọc từ chối. Ngoại lệ được đưa ra để từ chối thành viên thay thế có sẵn "
+"là :attr:`!BaseException.__context__`."
+
+#: ../../library/tarfile.rst:304
+#, fuzzy
+msgid "The following constants are available at the module level:"
+msgstr "Các hằng số sau đây có sẵn ở cấp mô-đun:"
+
+#: ../../library/tarfile.rst:308
+#, fuzzy
+msgid ""
+"The default character encoding: ``'utf-8'`` on Windows, the value returned "
+"by :func:`sys.getfilesystemencoding` otherwise."
+msgstr ""
+"Mã hóa ký tự mặc định: ``'utf-8'`` trên Windows, giá trị được trả về bởi "
+":func:`sys.getfilesystemencoding` nếu không."
+
+#: ../../library/tarfile.rst:314
+#, fuzzy
+msgid "A regular file :attr:`~TarInfo.type`."
+msgstr "Một tập tin thông thường :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:318
+#, fuzzy
+msgid "A link (inside tarfile) :attr:`~TarInfo.type`."
+msgstr "Một liên kết (bên trong tarfile) :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:322
+#, fuzzy
+msgid "A symbolic link :attr:`~TarInfo.type`."
+msgstr "Một liên kết tượng trưng :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:326
+#, fuzzy
+msgid "A character special device :attr:`~TarInfo.type`."
+msgstr "Một thiết bị đặc biệt dành cho nhân vật :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:330
+#, fuzzy
+msgid "A block special device :attr:`~TarInfo.type`."
+msgstr "Một khối thiết bị đặc biệt :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:334
+#, fuzzy
+msgid "A directory :attr:`~TarInfo.type`."
+msgstr "Một thư mục :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:338
+#, fuzzy
+msgid "A FIFO special device :attr:`~TarInfo.type`."
+msgstr "Một thiết bị đặc biệt FIFO :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:342
+#, fuzzy
+msgid "A contiguous file :attr:`~TarInfo.type`."
+msgstr "Một tập tin liền kề :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:346
+#, fuzzy
+msgid "A GNU tar longname :attr:`~TarInfo.type`."
+msgstr "Một tên dài GNU tar :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:350
+#, fuzzy
+msgid "A GNU tar longlink :attr:`~TarInfo.type`."
+msgstr "Một liên kết dài GNU tar :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:354
+#, fuzzy
+msgid "A GNU tar sparse file :attr:`~TarInfo.type`."
+msgstr "Một tập tin thưa thớt tar GNU :attr:`~TarInfo.type`."
+
+#: ../../library/tarfile.rst:357
+#, fuzzy
+msgid ""
+"Each of the following constants defines a tar archive format that the "
+":mod:`!tarfile` module is able to create. See section :ref:`tar-formats` for"
+" details."
+msgstr ""
+"Mỗi hằng số sau đây xác định định dạng lưu trữ tar mà mô-đun :mod:`!tarfile`"
+" có thể tạo. Xem phần :ref:`tar-formats` để biết chi tiết."
+
+#: ../../library/tarfile.rst:364
+#, fuzzy
+msgid "POSIX.1-1988 (ustar) format."
+msgstr "định dạng POSIX.1-1988 (ustar)."
+
+#: ../../library/tarfile.rst:369
+#, fuzzy
+msgid "GNU tar format."
+msgstr "định dạng tar GNU."
+
+#: ../../library/tarfile.rst:374
+#, fuzzy
+msgid "POSIX.1-2001 (pax) format."
+msgstr "định dạng POSIX.1-2001 (khách hàng)."
+
+#: ../../library/tarfile.rst:379
+#, fuzzy
+msgid ""
+"The default format for creating archives. This is currently "
+":const:`PAX_FORMAT`."
+msgstr ""
+"Định dạng mặc định để tạo lưu trữ. Đây hiện tại là :const:`PAX_FORMAT`."
+
+#: ../../library/tarfile.rst:381
+#, fuzzy
+msgid ""
+"The default format for new archives was changed to :const:`PAX_FORMAT` from "
+":const:`GNU_FORMAT`."
+msgstr ""
+"Định dạng mặc định cho các kho lưu trữ mới đã được thay đổi thành "
+":const:`PAX_FORMAT` từ :const:`GNU_FORMAT`."
+
+#: ../../library/tarfile.rst:388
+#, fuzzy
+msgid "Module :mod:`zipfile`"
+msgstr "Mô-đun :mod:`zipfile`"
+
+#: ../../library/tarfile.rst:389
+#, fuzzy
+msgid "Documentation of the :mod:`zipfile` standard module."
+msgstr "Tài liệu của mô-đun tiêu chuẩn :mod:`zipfile`."
+
+#: ../../library/tarfile.rst:391
+#, fuzzy
+msgid ":ref:`archiving-operations`"
+msgstr ":ref:`archiving-operations`"
+
+#: ../../library/tarfile.rst:392
+#, fuzzy
+msgid ""
+"Documentation of the higher-level archiving facilities provided by the "
+"standard :mod:`shutil` module."
+msgstr ""
+"Tài liệu về các phương tiện lưu trữ cấp cao hơn được cung cấp bởi mô-đun "
+":mod:`shutil` tiêu chuẩn."
+
+#: ../../library/tarfile.rst:395
+#, fuzzy
+msgid ""
+"`GNU tar manual, Basic Tar Format "
+"<https://www.gnu.org/software/tar/manual/html_node/Standard.html>`_"
+msgstr ""
+"`GNU tar manual, Basic Tar Format "
+"<https://www.gnu.org/software/tar/manual/html_node/Standard.html>`_"
+
+#: ../../library/tarfile.rst:396
+#, fuzzy
+msgid "Documentation for tar archive files, including GNU tar extensions."
+msgstr "Tài liệu về các tệp lưu trữ tar, bao gồm phần mở rộng tar GNU."
+
+#: ../../library/tarfile.rst:402
+#, fuzzy
+msgid "TarFile Objects"
+msgstr "Đối tượng TarFile"
+
+#: ../../library/tarfile.rst:404
+#, fuzzy
+msgid ""
+"The :class:`TarFile` object provides an interface to a tar archive. A tar "
+"archive is a sequence of blocks. An archive member (a stored file) is made "
+"up of a header block followed by data blocks. It is possible to store a file"
+" in a tar archive several times. Each archive member is represented by a "
+":class:`TarInfo` object, see :ref:`tarinfo-objects` for details."
+msgstr ""
+"Đối tượng :class:`TarFile` cung cấp giao diện cho kho lưu trữ tar. Kho lưu "
+"trữ tar là một chuỗi các khối. Thành viên lưu trữ (tệp được lưu trữ) được "
+"tạo thành từ khối tiêu đề, theo sau là khối dữ liệu. Có thể lưu trữ một tập "
+"tin trong kho lưu trữ tar nhiều lần. Mỗi thành viên lưu trữ được đại diện "
+"bởi một đối tượng :class:`TarInfo`, xem :ref:`tarinfo-objects` để biết chi "
+"tiết."
+
+#: ../../library/tarfile.rst:410
+#, fuzzy
+msgid ""
+"A :class:`TarFile` object can be used as a context manager in a "
+":keyword:`with` statement. It will automatically be closed when the block is"
+" completed. Please note that in the event of an exception an archive opened "
+"for writing will not be finalized; only the internally used file object will"
+" be closed. See the :ref:`tar-examples` section for a use case."
+msgstr ""
+"Đối tượng :class:`TarFile` có thể được sử dụng làm trình quản lý bối cảnh "
+"trong câu lệnh :keyword:`with`. Nó sẽ tự động đóng lại khi khối được hoàn "
+"thành. Xin lưu ý rằng trong trường hợp có ngoại lệ, kho lưu trữ được mở để "
+"viết sẽ không được hoàn thiện; chỉ đối tượng tệp được sử dụng nội bộ sẽ bị "
+"đóng. Xem phần :ref:`tar-examples` để biết trường hợp sử dụng."
+
+#: ../../library/tarfile.rst:416
+#, fuzzy
+msgid "Added support for the context management protocol."
+msgstr "Đã thêm hỗ trợ cho giao thức quản lý bối cảnh."
+
+#: ../../library/tarfile.rst:421
+#, fuzzy
+msgid ""
+"All following arguments are optional and can be accessed as instance "
+"attributes as well."
+msgstr ""
+"Tất cả các đối số sau đây là tùy chọn và cũng có thể được truy cập dưới dạng"
+" thuộc tính phiên bản."
+
+#: ../../library/tarfile.rst:424
+#, fuzzy
+msgid ""
+"*name* is the pathname of the archive. *name* may be a :term:`path-like "
+"object`. It can be omitted if *fileobj* is given. In this case, the file "
+"object's :attr:`!name` attribute is used if it exists."
+msgstr ""
+"*name* là tên đường dẫn của kho lưu trữ. *name* có thể là :term:`path-like "
+"object`. Nó có thể được bỏ qua nếu *fileobj* được đưa ra. Trong trường hợp "
+"này, thuộc tính :attr:`!name` của đối tượng tệp sẽ được sử dụng nếu nó tồn "
+"tại."
+
+#: ../../library/tarfile.rst:428
+#, fuzzy
+msgid ""
+"*mode* is either ``'r'`` to read from an existing archive, ``'a'`` to append"
+" data to an existing file, ``'w'`` to create a new file overwriting an "
+"existing one, or ``'x'`` to create a new file only if it does not already "
+"exist."
+msgstr ""
+"*mode* là ``'r'`` để đọc từ kho lưu trữ hiện có, ``'a'`` để nối dữ liệu vào "
+"tệp hiện có, ``'w'`` để tạo tệp mới ghi đè tệp hiện có hoặc ``'x'`` để chỉ "
+"tạo tệp mới nếu nó chưa tồn tại."
+
+#: ../../library/tarfile.rst:432
+#, fuzzy
+msgid ""
+"If *fileobj* is given, it is used for reading or writing data. If it can be "
+"determined, *mode* is overridden by *fileobj*'s mode. *fileobj* will be used"
+" from position 0."
+msgstr ""
+"Nếu *fileobj* được cung cấp, nó được sử dụng để đọc hoặc ghi dữ liệu. Nếu có"
+" thể xác định được, *mode* sẽ bị ghi đè bởi chế độ của *fileobj*. *fileobj* "
+"sẽ được sử dụng từ vị trí 0."
+
+#: ../../library/tarfile.rst:438
+#, fuzzy
+msgid "*fileobj* is not closed, when :class:`TarFile` is closed."
+msgstr "*fileobj* không bị đóng khi :class:`TarFile` bị đóng."
+
+#: ../../library/tarfile.rst:440
+#, fuzzy
+msgid ""
+"*format* controls the archive format for writing. It must be one of the "
+"constants :const:`USTAR_FORMAT`, :const:`GNU_FORMAT` or :const:`PAX_FORMAT` "
+"that are defined at module level. When reading, format will be automatically"
+" detected, even if different formats are present in a single archive."
+msgstr ""
+"*format* kiểm soát định dạng lưu trữ để ghi. Nó phải là một trong các hằng "
+"số :const:`USTAR_FORMAT`, :const:`GNU_FORMAT` hoặc :const:`PAX_FORMAT` được "
+"xác định ở cấp mô-đun. Khi đọc, định dạng sẽ được tự động phát hiện, ngay cả"
+" khi có các định dạng khác nhau trong một kho lưu trữ."
+
+#: ../../library/tarfile.rst:445
+#, fuzzy
+msgid ""
+"The *tarinfo* argument can be used to replace the default :class:`TarInfo` "
+"class with a different one."
+msgstr ""
+"Đối số *tarinfo* có thể được sử dụng để thay thế lớp :class:`TarInfo` mặc "
+"định bằng một lớp khác."
+
+#: ../../library/tarfile.rst:448
+#, fuzzy
+msgid ""
+"If *dereference* is :const:`False`, add symbolic and hard links to the "
+"archive. If it is :const:`True`, add the content of the target files to the "
+"archive. This has no effect on systems that do not support symbolic links."
+msgstr ""
+"Nếu *dereference* là :const:`False`, hãy thêm các liên kết tượng trưng và "
+"cứng vào kho lưu trữ. Nếu là :const:`True`, hãy thêm nội dung của tệp đích "
+"vào kho lưu trữ. Điều này không có tác dụng đối với các hệ thống không hỗ "
+"trợ liên kết tượng trưng."
+
+#: ../../library/tarfile.rst:452
+#, fuzzy
+msgid ""
+"If *ignore_zeros* is :const:`False`, treat an empty block as the end of the "
+"archive. If it is :const:`True`, skip empty (and invalid) blocks and try to "
+"get as many members as possible. This is only useful for reading "
+"concatenated or damaged archives."
+msgstr ""
+"Nếu *ignore_zeros* là :const:`False`, hãy coi khối trống là phần cuối của "
+"kho lưu trữ. Nếu là :const:`True`, hãy bỏ qua các khối trống (và không hợp "
+"lệ) và cố gắng thu hút càng nhiều thành viên càng tốt. Điều này chỉ hữu ích "
+"khi đọc các tài liệu lưu trữ bị nối hoặc bị hỏng."
+
+#: ../../library/tarfile.rst:456
+#, fuzzy
+msgid ""
+"*debug* can be set from ``0`` (no debug messages) up to ``3`` (all debug "
+"messages). The messages are written to ``sys.stderr``."
+msgstr ""
+"*debug* có thể được đặt từ ``0`` (không có thông báo gỡ lỗi) cho đến ``3`` "
+"(tất cả các thông báo gỡ lỗi). Các tin nhắn được ghi vào ``sys.stderr``."
+
+#: ../../library/tarfile.rst:459
+#, fuzzy
+msgid ""
+"*errorlevel* controls how extraction errors are handled, see :attr:`the "
+"corresponding attribute <TarFile.errorlevel>`."
+msgstr ""
+"*errorlevel* kiểm soát cách xử lý lỗi trích xuất, xem :attr:`the "
+"corresponding attribute <TarFile.errorlevel>`."
+
+#: ../../library/tarfile.rst:462
+#, fuzzy
+msgid ""
+"The *encoding* and *errors* arguments define the character encoding to be "
+"used for reading or writing the archive and how conversion errors are going "
+"to be handled. The default settings will work for most users. See section "
+":ref:`tar-unicode` for in-depth information."
+msgstr ""
+"Các đối số *encoding* và *errors* xác định mã hóa ký tự được sử dụng để đọc "
+"hoặc ghi kho lưu trữ và cách xử lý các lỗi chuyển đổi. Cài đặt mặc định sẽ "
+"hoạt động với hầu hết người dùng. Xem phần :ref:`tar-unicode` để biết thông "
+"tin chuyên sâu."
+
+#: ../../library/tarfile.rst:467
+#, fuzzy
+msgid ""
+"The *pax_headers* argument is an optional dictionary of strings which will "
+"be added as a pax global header if *format* is :const:`PAX_FORMAT`."
+msgstr ""
+"Đối số *pax_headers* là một từ điển tùy chọn gồm các chuỗi sẽ được thêm dưới"
+" dạng tiêu đề toàn cục pax nếu *format* là :const:`PAX_FORMAT`."
+
+#: ../../library/tarfile.rst:470
+#, fuzzy
+msgid ""
+"If *stream* is set to :const:`True` then while reading the archive info "
+"about files in the archive are not cached, saving memory."
+msgstr ""
+"Nếu *stream* được đặt thành :const:`True` thì khi đọc thông tin lưu trữ về "
+"các tệp trong kho lưu trữ sẽ không được lưu vào bộ nhớ đệm, giúp tiết kiệm "
+"bộ nhớ."
+
+#: ../../library/tarfile.rst:473 ../../library/tarfile.rst:796
+#, fuzzy
+msgid "Use ``'surrogateescape'`` as the default for the *errors* argument."
+msgstr "Sử dụng ``'surrogateescape'`` làm mặc định cho đối số *errors*."
+
+#: ../../library/tarfile.rst:482
+#, fuzzy
+msgid "Add the *stream* parameter."
+msgstr "Thêm tham số *stream*."
+
+#: ../../library/tarfile.rst:487
+#, fuzzy
+msgid ""
+"Alternative constructor. The :func:`tarfile.open` function is actually a "
+"shortcut to this classmethod."
+msgstr ""
+"Nhà xây dựng thay thế. Hàm :func:`tarfile.open` thực chất là một lối tắt cho"
+" phương thức lớp này."
+
+#: ../../library/tarfile.rst:493
+#, fuzzy
+msgid ""
+"Return a :class:`TarInfo` object for member *name*. If *name* can not be "
+"found in the archive, :exc:`KeyError` is raised."
+msgstr ""
+"Trả về đối tượng :class:`TarInfo` cho thành viên *name*. Nếu không tìm thấy "
+"*name* trong kho lưu trữ, :exc:`KeyError` sẽ được nâng lên."
+
+#: ../../library/tarfile.rst:498
+#, fuzzy
+msgid ""
+"If a member occurs more than once in the archive, its last occurrence is "
+"assumed to be the most up-to-date version."
+msgstr ""
+"Nếu một thành viên xuất hiện nhiều lần trong kho lưu trữ, lần xuất hiện cuối"
+" cùng của nó được coi là phiên bản cập nhật nhất."
+
+#: ../../library/tarfile.rst:504
+#, fuzzy
+msgid ""
+"Return the members of the archive as a list of :class:`TarInfo` objects. The"
+" list has the same order as the members in the archive."
+msgstr ""
+"Trả về các thành viên của kho lưu trữ dưới dạng danh sách các đối tượng "
+":class:`TarInfo`. Danh sách có thứ tự giống như các thành viên trong kho lưu"
+" trữ."
+
+#: ../../library/tarfile.rst:510
+#, fuzzy
+msgid ""
+"Return the members as a list of their names. It has the same order as the "
+"list returned by :meth:`getmembers`."
+msgstr ""
+"Trả về các thành viên dưới dạng danh sách tên của họ. Nó có cùng thứ tự với "
+"danh sách được trả về bởi :meth:`getmembers`."
+
+#: ../../library/tarfile.rst:516
+#, fuzzy
+msgid ""
+"Print a table of contents to ``sys.stdout``. If *verbose* is :const:`False`,"
+" only the names of the members are printed. If it is :const:`True`, output "
+"similar to that of :program:`ls -l` is produced. If optional *members* is "
+"given, it must be a subset of the list returned by :meth:`getmembers`."
+msgstr ""
+"In mục lục ra ``sys.stdout``. Nếu *verbose* là :const:`False` thì chỉ in tên"
+" của các thành viên. Nếu là :const:`True`, đầu ra tương tự như :program:`ls "
+"-l` sẽ được tạo ra. Nếu *members* tùy chọn được cung cấp, nó phải là tập hợp"
+" con của danh sách được trả về bởi :meth:`getmembers`."
+
+#: ../../library/tarfile.rst:521
+#, fuzzy
+msgid "Added the *members* parameter."
+msgstr "Đã thêm tham số *members*."
+
+#: ../../library/tarfile.rst:527
+#, fuzzy
+msgid ""
+"Return the next member of the archive as a :class:`TarInfo` object, when "
+":class:`TarFile` is opened for reading. Return :const:`None` if there is no "
+"more available."
+msgstr ""
+"Trả lại thành viên tiếp theo của kho lưu trữ dưới dạng đối tượng "
+":class:`TarInfo`, khi :class:`TarFile` được mở để đọc. Trả lại :const:`None`"
+" nếu không còn nữa."
+
+#: ../../library/tarfile.rst:534
+#, fuzzy
+msgid ""
+"Extract all members from the archive to the current working directory or "
+"directory *path*. If optional *members* is given, it must be a subset of the"
+" list returned by :meth:`getmembers`. Directory information like owner, "
+"modification time and permissions are set after all members have been "
+"extracted. This is done to work around two problems: A directory's "
+"modification time is reset each time a file is created in it. And, if a "
+"directory's permissions do not allow writing, extracting files to it will "
+"fail."
+msgstr ""
+"Trích xuất tất cả các thành viên từ kho lưu trữ vào thư mục làm việc hiện "
+"tại hoặc thư mục *path*. Nếu *members* tùy chọn được cung cấp, nó phải là "
+"tập hợp con của danh sách được trả về bởi :meth:`getmembers`. Thông tin thư "
+"mục như chủ sở hữu, thời gian sửa đổi và quyền được đặt sau khi tất cả thành"
+" viên đã được trích xuất. Điều này được thực hiện để giải quyết hai vấn đề: "
+"Thời gian sửa đổi của thư mục được đặt lại mỗi khi tệp được tạo trong đó. Và"
+" nếu quyền của thư mục không cho phép ghi thì việc giải nén tệp vào thư mục "
+"đó sẽ không thành công."
+
+#: ../../library/tarfile.rst:542
+#, fuzzy
+msgid ""
+"If *numeric_owner* is :const:`True`, the uid and gid numbers from the "
+"tarfile are used to set the owner/group for the extracted files. Otherwise, "
+"the named values from the tarfile are used."
+msgstr ""
+"Nếu *numeric_owner* là :const:`True`, số uid và gid từ tarfile sẽ được sử "
+"dụng để đặt chủ sở hữu/nhóm cho các tệp được trích xuất. Mặt khác, các giá "
+"trị được đặt tên từ tarfile sẽ được sử dụng."
+
+#: ../../library/tarfile.rst:546
+#, fuzzy
+msgid ""
+"The *filter* argument specifies how ``members`` are modified or rejected "
+"before extraction. See :ref:`tarfile-extraction-filter` for details. It is "
+"recommended to set this explicitly only if specific *tar* features are "
+"required, or as ``filter='data'`` to support Python versions with a less "
+"secure default (3.13 and lower)."
+msgstr ""
+"Đối số *filter* chỉ định cách ``members`` được sửa đổi hoặc từ chối trước "
+"khi trích xuất. Xem :ref:`tarfile-extraction-filter` để biết chi tiết. Bạn "
+"chỉ nên đặt cài đặt này một cách rõ ràng nếu yêu cầu các tính năng *tar* cụ "
+"thể hoặc ``filter='data'`` để hỗ trợ các phiên bản Python có mặc định kém an"
+" toàn hơn (3.13 trở xuống)."
+
+#: ../../library/tarfile.rst:555
+#, fuzzy
+msgid ""
+"Never extract archives from untrusted sources without prior inspection."
+msgstr ""
+"Không bao giờ trích xuất tài liệu lưu trữ từ các nguồn không đáng tin cậy mà"
+" không kiểm tra trước."
+
+#: ../../library/tarfile.rst:557
+#, fuzzy
+msgid ""
+"Since Python 3.14, the default (:func:`data <data_filter>`) will prevent the"
+" most dangerous security issues. However, it will not prevent *all* "
+"unintended or insecure behavior. Read the :ref:`tarfile-extraction-filter` "
+"section for details."
+msgstr ""
+"Kể từ Python 3.14, mặc định (:func:`data <data_filter>`) sẽ ngăn chặn các "
+"vấn đề bảo mật nguy hiểm nhất. Tuy nhiên, nó sẽ không ngăn chặn được hành vi"
+" ngoài ý muốn hoặc không an toàn của *all*. Đọc phần :ref:`tarfile-"
+"extraction-filter` để biết chi tiết."
+
+#: ../../library/tarfile.rst:562 ../../library/tarfile.rst:599
+#, fuzzy
+msgid "Added the *numeric_owner* parameter."
+msgstr "Đã thêm tham số *numeric_owner*."
+
+#: ../../library/tarfile.rst:565 ../../library/tarfile.rst:602
+#, fuzzy
+msgid "The *path* parameter accepts a :term:`path-like object`."
+msgstr "Tham số *path* chấp nhận :term:`path-like object`."
+
+#: ../../library/tarfile.rst:568 ../../library/tarfile.rst:605
+#: ../../library/tarfile.rst:689
+#, fuzzy
+msgid "Added the *filter* parameter."
+msgstr "Đã thêm tham số *filter*."
+
+#: ../../library/tarfile.rst:571
+#, fuzzy
+msgid "The *filter* parameter now defaults to ``'data'``."
+msgstr "Tham số *filter* hiện được mặc định là ``'data'``."
+
+#: ../../library/tarfile.rst:577
+#, fuzzy
+msgid ""
+"Extract a member from the archive to the current working directory, using "
+"its full name. Its file information is extracted as accurately as possible. "
+"*member* may be a filename or a :class:`TarInfo` object. You can specify a "
+"different directory using *path*. *path* may be a :term:`path-like object`. "
+"File attributes (owner, mtime, mode) are set unless *set_attrs* is false."
+msgstr ""
+"Trích xuất một thành viên từ kho lưu trữ vào thư mục làm việc hiện tại, sử "
+"dụng tên đầy đủ của nó. Thông tin tập tin của nó được trích xuất chính xác "
+"nhất có thể. *member* có thể là tên tệp hoặc đối tượng :class:`TarInfo`. Bạn"
+" có thể chỉ định một thư mục khác bằng *path*. *path* có thể là :term:`path-"
+"like object`. Thuộc tính tệp (chủ sở hữu, mtime, chế độ) được đặt trừ khi "
+"*set_attrs* sai."
+
+#: ../../library/tarfile.rst:583
+#, fuzzy
+msgid ""
+"The *numeric_owner* and *filter* arguments are the same as for "
+":meth:`extractall`."
+msgstr ""
+"Các đối số *numeric_owner* và *filter* giống như đối với :meth:`extractall`."
+
+#: ../../library/tarfile.rst:588
+#, fuzzy
+msgid ""
+"The :meth:`extract` method does not take care of several extraction issues. "
+"In most cases you should consider using the :meth:`extractall` method."
+msgstr ""
+"Phương pháp :meth:`extract` không giải quyết được một số vấn đề trích xuất. "
+"Trong hầu hết các trường hợp, bạn nên cân nhắc sử dụng phương pháp "
+":meth:`extractall`."
+
+#: ../../library/tarfile.rst:593
+#, fuzzy
+msgid ""
+"Never extract archives from untrusted sources without prior inspection. See "
+"the warning for :meth:`extractall` for details."
+msgstr ""
+"Không bao giờ trích xuất tài liệu lưu trữ từ các nguồn không đáng tin cậy mà"
+" không kiểm tra trước. Xem cảnh báo dành cho :meth:`extractall` để biết chi "
+"tiết."
+
+#: ../../library/tarfile.rst:596
+#, fuzzy
+msgid "Added the *set_attrs* parameter."
+msgstr "Đã thêm tham số *set_attrs*."
+
+#: ../../library/tarfile.rst:611
+#, fuzzy
+msgid ""
+"Extract a member from the archive as a file object. *member* may be a "
+"filename or a :class:`TarInfo` object. If *member* is a regular file or a "
+"link, an :class:`io.BufferedReader` object is returned. For all other "
+"existing members, :const:`None` is returned. If *member* does not appear in "
+"the archive, :exc:`KeyError` is raised."
+msgstr ""
+"Trích xuất một thành viên từ kho lưu trữ dưới dạng đối tượng tệp. *member* "
+"có thể là tên tệp hoặc đối tượng :class:`TarInfo`. Nếu *member* là một tệp "
+"thông thường hoặc một liên kết, một đối tượng :class:`io.BufferedReader` sẽ "
+"được trả về. Đối với tất cả các thành viên hiện có khác, :const:`None` được "
+"trả lại. Nếu *member* không xuất hiện trong kho lưu trữ, :exc:`KeyError` sẽ "
+"được nâng lên."
+
+#: ../../library/tarfile.rst:617
+#, fuzzy
+msgid "Return an :class:`io.BufferedReader` object."
+msgstr "Trả về một đối tượng :class:`io.BufferedReader`."
+
+#: ../../library/tarfile.rst:620
+#, fuzzy
+msgid ""
+"The returned :class:`io.BufferedReader` object has the :attr:`!mode` "
+"attribute which is always equal to ``'rb'``."
+msgstr ""
+"Đối tượng :class:`io.BufferedReader` được trả về có thuộc tính :attr:`!mode`"
+" luôn bằng ``'rb'``."
+
+#: ../../library/tarfile.rst:627
+#, fuzzy
+msgid ""
+"If *errorlevel* is ``0``, errors are ignored when using "
+":meth:`TarFile.extract` and :meth:`TarFile.extractall`. Nevertheless, they "
+"appear as error messages in the debug output when *debug* is greater than 0."
+" If ``1`` (the default), all *fatal* errors are raised as :exc:`OSError` or "
+":exc:`FilterError` exceptions. If ``2``, all *non-fatal* errors are raised "
+"as :exc:`TarError` exceptions as well."
+msgstr ""
+"Nếu *errorlevel* là ``0`` thì lỗi sẽ được bỏ qua khi sử dụng "
+":meth:`TarFile.extract` và :meth:`TarFile.extractall`. Tuy nhiên, chúng xuất"
+" hiện dưới dạng thông báo lỗi trong đầu ra gỡ lỗi khi *debug* lớn hơn 0. Nếu"
+" ``1`` (mặc định), tất cả các lỗi *fatal* đều được đưa ra dưới dạng ngoại lệ"
+" :exc:`OSError` hoặc :exc:`FilterError`. Nếu ``2``, tất cả các lỗi *non-"
+"fatal* cũng được đưa ra dưới dạng ngoại lệ :exc:`TarError`."
+
+#: ../../library/tarfile.rst:635
+#, fuzzy
+msgid ""
+"Some exceptions, e.g. ones caused by wrong argument types or data "
+"corruption, are always raised."
+msgstr ""
+"Một số trường hợp ngoại lệ, ví dụ: những nguyên nhân gây ra bởi các loại đối"
+" số sai hoặc hỏng dữ liệu, luôn được nêu ra."
+
+#: ../../library/tarfile.rst:638
+#, fuzzy
+msgid ""
+"Custom :ref:`extraction filters <tarfile-extraction-filter>` should raise "
+":exc:`FilterError` for *fatal* errors and :exc:`ExtractError` for *non-"
+"fatal* ones."
+msgstr ""
+":ref:`extraction filters <tarfile-extraction-filter>` tùy chỉnh sẽ tăng "
+":exc:`FilterError` đối với lỗi *fatal* và :exc:`ExtractError` đối với lỗi "
+"*non-fatal*."
+
+#: ../../library/tarfile.rst:642
+#, fuzzy
+msgid ""
+"Note that when an exception is raised, the archive may be partially "
+"extracted. It is the user’s responsibility to clean up."
+msgstr ""
+"Lưu ý rằng khi có ngoại lệ xảy ra, kho lưu trữ có thể được trích xuất một "
+"phần. Trách nhiệm của người dùng là phải dọn dẹp."
+
+#: ../../library/tarfile.rst:649
+#, fuzzy
+msgid ""
+"The :ref:`extraction filter <tarfile-extraction-filter>` used as a default "
+"for the *filter* argument of :meth:`~TarFile.extract` and "
+":meth:`~TarFile.extractall`."
+msgstr ""
+":ref:`extraction filter <tarfile-extraction-filter>` được sử dụng làm mặc "
+"định cho đối số *filter* của :meth:`~TarFile.extract` và "
+":meth:`~TarFile.extractall`."
+
+#: ../../library/tarfile.rst:653
+#, fuzzy
+msgid ""
+"The attribute may be ``None`` or a callable. String names are not allowed "
+"for this attribute, unlike the *filter* argument to "
+":meth:`~TarFile.extract`."
+msgstr ""
+"Thuộc tính có thể là ``None`` hoặc có thể gọi được. Tên chuỗi không được "
+"phép cho thuộc tính này, không giống như đối số *filter* cho "
+":meth:`~TarFile.extract`."
+
+#: ../../library/tarfile.rst:657
+#, fuzzy
+msgid ""
+"If ``extraction_filter`` is ``None`` (the default), extraction methods will "
+"use the :func:`data <data_filter>` filter by default."
+msgstr ""
+"Nếu ``extraction_filter`` là ``None`` (mặc định), các phương pháp trích xuất"
+" sẽ sử dụng bộ lọc :func:`data <data_filter>` theo mặc định."
+
+#: ../../library/tarfile.rst:660
+#, fuzzy
+msgid ""
+"The attribute may be set on instances or overridden in subclasses. It also "
+"is possible to set it on the ``TarFile`` class itself to set a global "
+"default, although, since it affects all uses of *tarfile*, it is best "
+"practice to only do so in top-level applications or :mod:`site configuration"
+" <site>`. To set a global default this way, a filter function needs to be "
+"wrapped in :func:`staticmethod` to prevent injection of a ``self`` argument."
+msgstr ""
+"Thuộc tính có thể được đặt trên các phiên bản hoặc được ghi đè trong các lớp"
+" con. Cũng có thể đặt nó trên chính lớp ``TarFile`` để đặt mặc định chung, "
+"tuy nhiên, vì nó ảnh hưởng đến tất cả việc sử dụng *tarfile*, nên cách tốt "
+"nhất là chỉ nên làm như vậy trong các ứng dụng cấp cao nhất hoặc :mod:`site "
+"configuration <site>`. Để đặt mặc định chung theo cách này, một hàm lọc cần "
+"được gói trong :func:`staticmethod` để ngăn chặn việc đưa đối số ``self`` "
+"vào."
+
+#: ../../library/tarfile.rst:670
+#, fuzzy
+msgid ""
+"The default filter is set to :func:`data <data_filter>`, which disallows "
+"some dangerous features such as links to absolute paths or paths outside of "
+"the destination. Previously, the default was equivalent to "
+":func:`fully_trusted <fully_trusted_filter>`."
+msgstr ""
+"Bộ lọc mặc định được đặt thành :func:`data <data_filter>`, không cho phép "
+"một số tính năng nguy hiểm như liên kết đến đường dẫn tuyệt đối hoặc đường "
+"dẫn bên ngoài đích đến. Trước đây, mặc định tương đương với "
+":func:`fully_trusted <fully_trusted_filter>`."
+
+#: ../../library/tarfile.rst:678
+#, fuzzy
+msgid ""
+"Add the file *name* to the archive. *name* may be any type of file "
+"(directory, fifo, symbolic link, etc.). If given, *arcname* specifies an "
+"alternative name for the file in the archive. Directories are added "
+"recursively by default. This can be avoided by setting *recursive* to "
+":const:`False`. Recursion adds entries in sorted order. If *filter* is "
+"given, it should be a function that takes a :class:`TarInfo` object argument"
+" and returns the changed :class:`TarInfo` object. If it instead returns "
+":const:`None` the :class:`TarInfo` object will be excluded from the archive."
+" See :ref:`tar-examples` for an example."
+msgstr ""
+"Thêm tệp *name* vào kho lưu trữ. *name* có thể là bất kỳ loại tệp nào (thư "
+"mục, fifo, liên kết tượng trưng, ​​​​v.v.). Nếu được cung cấp, *arcname* chỉ"
+" định tên thay thế cho tệp trong kho lưu trữ. Các thư mục được thêm đệ quy "
+"theo mặc định. Điều này có thể tránh được bằng cách đặt *recursive* thành "
+":const:`False`. Đệ quy thêm các mục theo thứ tự được sắp xếp. Nếu *filter* "
+"được cung cấp, thì đó phải là một hàm nhận đối số đối tượng :class:`TarInfo`"
+" và trả về đối tượng :class:`TarInfo` đã thay đổi. Thay vào đó, nếu nó trả "
+"về :const:`None` thì đối tượng :class:`TarInfo` sẽ bị loại khỏi kho lưu trữ."
+" Xem :ref:`tar-examples` để biết ví dụ."
+
+#: ../../library/tarfile.rst:692
+#, fuzzy
+msgid "Recursion adds entries in sorted order."
+msgstr "Đệ quy thêm các mục theo thứ tự được sắp xếp."
+
+#: ../../library/tarfile.rst:698
+#, fuzzy
+msgid ""
+"Add the :class:`TarInfo` object *tarinfo* to the archive. If *tarinfo* "
+"represents a non zero-size regular file, the *fileobj* argument should be a "
+":term:`binary file`, and ``tarinfo.size`` bytes are read from it and added "
+"to the archive.  You can create :class:`TarInfo` objects directly, or by "
+"using :meth:`gettarinfo`."
+msgstr ""
+"Thêm đối tượng :class:`TarInfo` *tarinfo* vào kho lưu trữ. Nếu *tarinfo* đại"
+" diện cho một tệp thông thường có kích thước khác 0 thì đối số *fileobj* "
+"phải là :term:`binary file` và các byte ``tarinfo.size`` được đọc từ tệp đó "
+"và thêm vào kho lưu trữ.  Bạn có thể tạo các đối tượng :class:`TarInfo` trực"
+" tiếp hoặc bằng cách sử dụng :meth:`gettarinfo`."
+
+#: ../../library/tarfile.rst:705
+#, fuzzy
+msgid "*fileobj* must be given for non-zero-sized regular files."
+msgstr ""
+"*fileobj* phải được cung cấp cho các tệp thông thường có kích thước khác 0."
+
+#: ../../library/tarfile.rst:710
+#, fuzzy
+msgid ""
+"Create a :class:`TarInfo` object from the result of :func:`os.stat` or "
+"equivalent on an existing file.  The file is either named by *name*, or "
+"specified as a :term:`file object` *fileobj* with a file descriptor. *name* "
+"may be a :term:`path-like object`.  If given, *arcname* specifies an "
+"alternative name for the file in the archive, otherwise, the name is taken "
+"from *fileobj*’s :attr:`~io.FileIO.name` attribute, or the *name* argument."
+"  The name should be a text string."
+msgstr ""
+"Tạo đối tượng :class:`TarInfo` từ kết quả của :func:`os.stat` hoặc tương "
+"đương trên tệp hiện có.  Tệp được đặt tên theo *name* hoặc được chỉ định là "
+":term:`file object` *fileobj* với bộ mô tả tệp. *name* có thể là "
+":term:`path-like object`.  Nếu được cung cấp, *arcname* chỉ định tên thay "
+"thế cho tệp trong kho lưu trữ, nếu không, tên được lấy từ thuộc tính "
+":attr:`~io.FileIO.name` của *fileobj* hoặc đối số *name*.  Tên phải là một "
+"chuỗi văn bản."
+
+#: ../../library/tarfile.rst:719
+#, fuzzy
+msgid ""
+"You can modify some of the :class:`TarInfo`’s attributes before you add it "
+"using :meth:`addfile`. If the file object is not an ordinary file object "
+"positioned at the beginning of the file, attributes such as "
+":attr:`~TarInfo.size` may need modifying.  This is the case for objects such"
+" as :class:`~gzip.GzipFile`. The :attr:`~TarInfo.name` may also be modified,"
+" in which case *arcname* could be a dummy string."
+msgstr ""
+"Bạn có thể sửa đổi một số thuộc tính của :class:`TarInfo` trước khi thêm nó "
+"bằng :meth:`addfile`. Nếu đối tượng tệp không phải là đối tượng tệp thông "
+"thường được đặt ở đầu tệp, các thuộc tính như :attr:`~TarInfo.size` có thể "
+"cần sửa đổi.  Đây là trường hợp của các đối tượng như "
+":class:`~gzip.GzipFile`. Zz004zz cũng có thể được sửa đổi, trong trường hợp "
+"đó *arcname* có thể là một chuỗi giả."
+
+#: ../../library/tarfile.rst:733
+#, fuzzy
+msgid ""
+"Close the :class:`TarFile`. In write mode, two finishing zero blocks are "
+"appended to the archive."
+msgstr ""
+"Đóng :class:`TarFile`. Trong chế độ ghi, hai khối 0 hoàn thiện sẽ được thêm "
+"vào kho lưu trữ."
+
+#: ../../library/tarfile.rst:740
+#, fuzzy
+msgid "A dictionary containing key-value pairs of pax global headers."
+msgstr "Một từ điển chứa các cặp khóa-giá trị của tiêu đề toàn cục pax."
+
+#: ../../library/tarfile.rst:747
+#, fuzzy
+msgid "TarInfo Objects"
+msgstr "Đối tượng TarInfo"
+
+#: ../../library/tarfile.rst:749
+#, fuzzy
+msgid ""
+"A :class:`TarInfo` object represents one member in a :class:`TarFile`. Aside"
+" from storing all required attributes of a file (like file type, size, time,"
+" permissions, owner etc.), it provides some useful methods to determine its "
+"type. It does *not* contain the file's data itself."
+msgstr ""
+"Đối tượng :class:`TarInfo` đại diện cho một thành viên trong "
+":class:`TarFile`. Ngoài việc lưu trữ tất cả các thuộc tính bắt buộc của một "
+"tệp (như loại tệp, kích thước, thời gian, quyền, chủ sở hữu, v.v.), nó còn "
+"cung cấp một số phương pháp hữu ích để xác định loại của tệp. Nó *not* chứa "
+"chính dữ liệu của tập tin."
+
+#: ../../library/tarfile.rst:754
+#, fuzzy
+msgid ""
+":class:`TarInfo` objects are returned by :class:`TarFile`'s methods "
+":meth:`~TarFile.getmember`, :meth:`~TarFile.getmembers` and "
+":meth:`~TarFile.gettarinfo`."
+msgstr ""
+"Các đối tượng :class:`TarInfo` được trả về bằng các phương thức của "
+":class:`TarFile` :meth:`~TarFile.getmember`, :meth:`~TarFile.getmembers` và "
+":meth:`~TarFile.gettarinfo`."
+
+#: ../../library/tarfile.rst:758
+#, fuzzy
+msgid ""
+"Modifying the objects returned by :meth:`~TarFile.getmember` or "
+":meth:`~TarFile.getmembers` will affect all subsequent operations on the "
+"archive. For cases where this is unwanted, you can use :mod:`copy.copy() "
+"<copy>` or call the :meth:`~TarInfo.replace` method to create a modified "
+"copy in one step."
+msgstr ""
+"Việc sửa đổi các đối tượng được trả về bởi :meth:`~TarFile.getmember` hoặc "
+":meth:`~TarFile.getmembers` sẽ ảnh hưởng đến tất cả các hoạt động tiếp theo "
+"trên kho lưu trữ. Đối với những trường hợp không mong muốn, bạn có thể sử "
+"dụng :mod:`copy.copy() <copy>` hoặc gọi phương thức :meth:`~TarInfo.replace`"
+" để tạo bản sao sửa đổi trong một bước."
+
+#: ../../library/tarfile.rst:764
+#, fuzzy
+msgid ""
+"Several attributes can be set to ``None`` to indicate that a piece of "
+"metadata is unused or unknown. Different :class:`TarInfo` methods handle "
+"``None`` differently:"
+msgstr ""
+"Một số thuộc tính có thể được đặt thành ``None`` để cho biết rằng một phần "
+"siêu dữ liệu không được sử dụng hoặc không xác định. Các phương thức "
+":class:`TarInfo` khác nhau xử lý ``None`` khác nhau:"
+
+#: ../../library/tarfile.rst:768
+#, fuzzy
+msgid ""
+"The :meth:`~TarFile.extract` or :meth:`~TarFile.extractall` methods will "
+"ignore the corresponding metadata, leaving it set to a default."
+msgstr ""
+"Các phương thức :meth:`~TarFile.extract` hoặc :meth:`~TarFile.extractall` sẽ"
+" bỏ qua siêu dữ liệu tương ứng, để siêu dữ liệu này được đặt thành mặc định."
+
+#: ../../library/tarfile.rst:770
+#, fuzzy
+msgid ":meth:`~TarFile.addfile` will fail."
+msgstr ":meth:`~TarFile.addfile` sẽ thất bại."
+
+#: ../../library/tarfile.rst:771
+#, fuzzy
+msgid ":meth:`~TarFile.list` will print a placeholder string."
+msgstr ":meth:`~TarFile.list` sẽ in một chuỗi giữ chỗ."
+
+#: ../../library/tarfile.rst:775
+#, fuzzy
+msgid "Create a :class:`TarInfo` object."
+msgstr "Tạo một đối tượng :class:`TarInfo`."
+
+#: ../../library/tarfile.rst:780
+#, fuzzy
+msgid "Create and return a :class:`TarInfo` object from string buffer *buf*."
+msgstr "Tạo và trả về đối tượng :class:`TarInfo` từ bộ đệm chuỗi *buf*."
+
+#: ../../library/tarfile.rst:782
+#, fuzzy
+msgid "Raises :exc:`HeaderError` if the buffer is invalid."
+msgstr "Tăng :exc:`HeaderError` nếu bộ đệm không hợp lệ."
+
+#: ../../library/tarfile.rst:787
+#, fuzzy
+msgid ""
+"Read the next member from the :class:`TarFile` object *tarfile* and return "
+"it as a :class:`TarInfo` object."
+msgstr ""
+"Đọc thành viên tiếp theo từ đối tượng :class:`TarFile` *tarfile* và trả về "
+"nó dưới dạng đối tượng :class:`TarInfo`."
+
+#: ../../library/tarfile.rst:793
+#, fuzzy
+msgid ""
+"Create a string buffer from a :class:`TarInfo` object. For information on "
+"the arguments see the constructor of the :class:`TarFile` class."
+msgstr ""
+"Tạo bộ đệm chuỗi từ đối tượng :class:`TarInfo`. Để biết thông tin về các đối"
+" số, hãy xem hàm tạo của lớp :class:`TarFile`."
+
+#: ../../library/tarfile.rst:800
+#, fuzzy
+msgid "A ``TarInfo`` object has the following public data attributes:"
+msgstr "Đối tượng ``TarInfo`` có các thuộc tính dữ liệu công khai sau:"
+
+#: ../../library/tarfile.rst:806
+#, fuzzy
+msgid "Name of the archive member."
+msgstr "Tên của thành viên lưu trữ."
+
+#: ../../library/tarfile.rst:812
+#, fuzzy
+msgid "Size in bytes."
+msgstr "Kích thước tính bằng byte."
+
+#: ../../library/tarfile.rst:818
+#, fuzzy
+msgid ""
+"Time of last modification in seconds since the :ref:`epoch <epoch>`, as in "
+":attr:`os.stat_result.st_mtime`."
+msgstr ""
+"Thời gian sửa đổi lần cuối tính bằng giây kể từ :ref:`epoch <epoch>`, như "
+"trong :attr:`os.stat_result.st_mtime`."
+
+#: ../../library/tarfile.rst:823 ../../library/tarfile.rst:834
+#: ../../library/tarfile.rst:866 ../../library/tarfile.rst:877
+#: ../../library/tarfile.rst:888 ../../library/tarfile.rst:899
+#, fuzzy
+msgid ""
+"Can be set to ``None`` for :meth:`~TarFile.extract` and "
+":meth:`~TarFile.extractall`, causing extraction to skip applying this "
+"attribute."
+msgstr ""
+"Có thể được đặt thành ``None`` cho :meth:`~TarFile.extract` và "
+":meth:`~TarFile.extractall`, khiến quá trình trích xuất bị bỏ qua khi áp "
+"dụng thuộc tính này."
+
+#: ../../library/tarfile.rst:830
+#, fuzzy
+msgid "Permission bits, as for :func:`os.chmod`."
+msgstr "Các bit cấp phép, như đối với :func:`os.chmod`."
+
+#: ../../library/tarfile.rst:840
+#, fuzzy
+msgid ""
+"File type.  *type* is usually one of these constants: :const:`REGTYPE`, "
+":const:`AREGTYPE`, :const:`LNKTYPE`, :const:`SYMTYPE`, :const:`DIRTYPE`, "
+":const:`FIFOTYPE`, :const:`CONTTYPE`, :const:`CHRTYPE`, :const:`BLKTYPE`, "
+":const:`GNUTYPE_SPARSE`.  To determine the type of a :class:`TarInfo` object"
+" more conveniently, use the ``is*()`` methods below."
+msgstr ""
+"Loại tập tin.  *type* thường là một trong những hằng số sau: "
+":const:`REGTYPE`, :const:`AREGTYPE`, :const:`LNKTYPE`, :const:`SYMTYPE`, "
+":const:`DIRTYPE`, :const:`FIFOTYPE`, :const:`CONTTYPE`, :const:`CHRTYPE`, "
+":const:`BLKTYPE`, :const:`GNUTYPE_SPARSE`.  Để xác định loại đối tượng "
+":class:`TarInfo` thuận tiện hơn, hãy sử dụng các phương pháp ``is*()`` bên "
+"dưới."
+
+#: ../../library/tarfile.rst:850
+#, fuzzy
+msgid ""
+"Name of the target file name, which is only present in :class:`TarInfo` "
+"objects of type :const:`LNKTYPE` and :const:`SYMTYPE`."
+msgstr ""
+"Tên của tên tệp đích, chỉ xuất hiện trong các đối tượng :class:`TarInfo` "
+"thuộc loại :const:`LNKTYPE` và :const:`SYMTYPE`."
+
+#: ../../library/tarfile.rst:853
+#, fuzzy
+msgid ""
+"For symbolic links (``SYMTYPE``), the *linkname* is relative to the "
+"directory that contains the link. For hard links (``LNKTYPE``), the "
+"*linkname* is relative to the root of the archive."
+msgstr ""
+"Đối với các liên kết tượng trưng (``SYMTYPE``), *linkname* có liên quan đến "
+"thư mục chứa liên kết. Đối với các liên kết cứng (``LNKTYPE``), *linkname* "
+"có liên quan đến thư mục gốc của kho lưu trữ."
+
+#: ../../library/tarfile.rst:862
+#, fuzzy
+msgid "User ID of the user who originally stored this member."
+msgstr "ID người dùng của người dùng ban đầu đã lưu trữ thành viên này."
+
+#: ../../library/tarfile.rst:873
+#, fuzzy
+msgid "Group ID of the user who originally stored this member."
+msgstr "ID nhóm của người dùng ban đầu đã lưu trữ thành viên này."
+
+#: ../../library/tarfile.rst:884
+#, fuzzy
+msgid "User name."
+msgstr "Tên người dùng."
+
+#: ../../library/tarfile.rst:895
+#, fuzzy
+msgid "Group name."
+msgstr "Tên nhóm."
+
+#: ../../library/tarfile.rst:906
+#, fuzzy
+msgid "Header checksum."
+msgstr "Tổng kiểm tra tiêu đề."
+
+#: ../../library/tarfile.rst:912
+#, fuzzy
+msgid "Device major number."
+msgstr "Số chính của thiết bị."
+
+#: ../../library/tarfile.rst:918
+#, fuzzy
+msgid "Device minor number."
+msgstr "Số nhỏ của thiết bị."
+
+#: ../../library/tarfile.rst:924
+#, fuzzy
+msgid "The tar header starts here."
+msgstr "Tiêu đề tar bắt đầu ở đây."
+
+#: ../../library/tarfile.rst:930
+#, fuzzy
+msgid "The file's data starts here."
+msgstr "Dữ liệu của tập tin bắt đầu ở đây."
+
+#: ../../library/tarfile.rst:935
+#, fuzzy
+msgid "Sparse member information."
+msgstr "Thông tin thành viên thưa thớt."
+
+#: ../../library/tarfile.rst:941
+#, fuzzy
+msgid ""
+"A dictionary containing key-value pairs of an associated pax extended "
+"header."
+msgstr ""
+"Một từ điển chứa các cặp khóa-giá trị của tiêu đề mở rộng pax được liên kết."
+
+#: ../../library/tarfile.rst:949
+#, fuzzy
+msgid ""
+"Return a *new* copy of the :class:`!TarInfo` object with the given "
+"attributes changed. For example, to return a ``TarInfo`` with the group name"
+" set to ``'staff'``, use::"
+msgstr ""
+"Trả về bản sao *new* của đối tượng :class:`!TarInfo` với các thuộc tính đã "
+"cho đã thay đổi. Ví dụ: để trả về ``TarInfo`` với tên nhóm được đặt thành "
+"``'staff'``, hãy sử dụng::"
+
+#: ../../library/tarfile.rst:953
+#, fuzzy
+msgid "new_tarinfo = old_tarinfo.replace(gname='staff')"
+msgstr "new_tarinfo = old_tarinfo.replace(gname='staff')"
+
+#: ../../library/tarfile.rst:955
+#, fuzzy
+msgid ""
+"By default, a deep copy is made. If *deep* is false, the copy is shallow, "
+"i.e. ``pax_headers`` and any custom attributes are shared with the original "
+"``TarInfo`` object."
+msgstr ""
+"Theo mặc định, một bản sao sâu sẽ được tạo. Nếu *deep* sai thì bản sao sẽ "
+"nông, tức là ``pax_headers`` và mọi thuộc tính tùy chỉnh đều được chia sẻ "
+"với đối tượng ``TarInfo`` ban đầu."
+
+#: ../../library/tarfile.rst:959
+#, fuzzy
+msgid "A :class:`TarInfo` object also provides some convenient query methods:"
+msgstr ""
+"Đối tượng :class:`TarInfo` cũng cung cấp một số phương thức truy vấn thuận "
+"tiện:"
+
+#: ../../library/tarfile.rst:964
+#, fuzzy
+msgid "Return :const:`True` if the :class:`TarInfo` object is a regular file."
+msgstr ""
+"Trả về :const:`True` nếu đối tượng :class:`TarInfo` là một tệp thông thường."
+
+#: ../../library/tarfile.rst:969
+#, fuzzy
+msgid "Same as :meth:`isfile`."
+msgstr "Tương tự với :meth:`isfile`"
+
+#: ../../library/tarfile.rst:974
+#, fuzzy
+msgid "Return :const:`True` if it is a directory."
+msgstr "Trả về :const:`True` nếu đó là một thư mục."
+
+#: ../../library/tarfile.rst:979
+#, fuzzy
+msgid "Return :const:`True` if it is a symbolic link."
+msgstr "Trả về :const:`True` nếu đó là liên kết tượng trưng."
+
+#: ../../library/tarfile.rst:984
+#, fuzzy
+msgid "Return :const:`True` if it is a hard link."
+msgstr "Trả về :const:`True` nếu là link cứng."
+
+#: ../../library/tarfile.rst:989
+#, fuzzy
+msgid "Return :const:`True` if it is a character device."
+msgstr "Trả về :const:`True` nếu nó là thiết bị ký tự."
+
+#: ../../library/tarfile.rst:994
+#, fuzzy
+msgid "Return :const:`True` if it is a block device."
+msgstr "Trả về :const:`True` nếu là thiết bị khối."
+
+#: ../../library/tarfile.rst:999
+#, fuzzy
+msgid "Return :const:`True` if it is a FIFO."
+msgstr "Trả về :const:`True` nếu đó là FIFO."
+
+#: ../../library/tarfile.rst:1004
+#, fuzzy
+msgid ""
+"Return :const:`True` if it is one of character device, block device or FIFO."
+msgstr ""
+"Trả về :const:`True` nếu nó là một trong các thiết bị ký tự, thiết bị khối "
+"hoặc FIFO."
+
+#: ../../library/tarfile.rst:1010
+#, fuzzy
+msgid "Extraction filters"
+msgstr "Bộ lọc trích xuất"
+
+#: ../../library/tarfile.rst:1014
+#, fuzzy
+msgid ""
+"The *tar* format is designed to capture all details of a UNIX-like "
+"filesystem, which makes it very powerful. Unfortunately, the features make "
+"it easy to create tar files that have unintended -- and possibly malicious "
+"-- effects when extracted. For example, extracting a tar file can overwrite "
+"arbitrary files in various ways (e.g.  by using absolute paths, ``..`` path "
+"components, or symlinks that affect later members)."
+msgstr ""
+"Định dạng *tar* được thiết kế để ghi lại tất cả các chi tiết của hệ thống "
+"tệp giống UNIX, điều này khiến nó trở nên rất mạnh mẽ. Thật không may, các "
+"tính năng này giúp dễ dàng tạo các tệp tar có tác dụng không mong muốn - và "
+"có thể độc hại - khi được giải nén. Ví dụ: giải nén tệp tar có thể ghi đè "
+"lên các tệp tùy ý theo nhiều cách khác nhau (ví dụ: bằng cách sử dụng đường "
+"dẫn tuyệt đối, thành phần đường dẫn ``..`` hoặc liên kết tượng trưng ảnh "
+"hưởng đến các thành viên sau này)."
+
+#: ../../library/tarfile.rst:1022
+#, fuzzy
+msgid ""
+"In most cases, the full functionality is not needed. Therefore, *tarfile* "
+"supports extraction filters: a mechanism to limit functionality, and thus "
+"mitigate some of the security issues."
+msgstr ""
+"Trong hầu hết các trường hợp, chức năng đầy đủ là không cần thiết. Do đó, "
+"*tarfile* hỗ trợ các bộ lọc trích xuất: một cơ chế nhằm hạn chế chức năng và"
+" do đó giảm thiểu một số vấn đề bảo mật."
+
+#: ../../library/tarfile.rst:1028
+#, fuzzy
+msgid ""
+"None of the available filters blocks *all* dangerous archive features. Never"
+" extract archives from untrusted sources without prior inspection. See also "
+":ref:`tarfile-further-verification`."
+msgstr ""
+"Không có bộ lọc nào có sẵn chặn các tính năng lưu trữ nguy hiểm của *all*. "
+"Không bao giờ trích xuất tài liệu lưu trữ từ các nguồn không đáng tin cậy mà"
+" không kiểm tra trước. Xem thêm :ref:`tarfile-further-verification`."
+
+#: ../../library/tarfile.rst:1034
+#, fuzzy
+msgid ":pep:`706`"
+msgstr ":pep:`706`"
+
+#: ../../library/tarfile.rst:1035
+#, fuzzy
+msgid "Contains further motivation and rationale behind the design."
+msgstr "Chứa thêm động lực và lý do đằng sau thiết kế."
+
+#: ../../library/tarfile.rst:1037
+#, fuzzy
+msgid ""
+"The *filter* argument to :meth:`TarFile.extract` or "
+":meth:`~TarFile.extractall` can be:"
+msgstr ""
+"Đối số *filter* cho :meth:`TarFile.extract` hoặc :meth:`~TarFile.extractall`"
+" có thể là:"
+
+#: ../../library/tarfile.rst:1040
+#, fuzzy
+msgid ""
+"the string ``'fully_trusted'``: Honor all metadata as specified in the "
+"archive. Should be used if the user trusts the archive completely, or "
+"implements their own complex verification."
+msgstr ""
+"chuỗi ``'fully_trusted'``: Tôn trọng tất cả siêu dữ liệu như được chỉ định "
+"trong kho lưu trữ. Nên sử dụng nếu người dùng hoàn toàn tin tưởng vào kho "
+"lưu trữ hoặc thực hiện xác minh phức tạp của riêng họ."
+
+#: ../../library/tarfile.rst:1045
+#, fuzzy
+msgid ""
+"the string ``'tar'``: Honor most *tar*-specific features (i.e. features of "
+"UNIX-like filesystems), but block features that are very likely to be "
+"surprising or malicious. See :func:`tar_filter` for details."
+msgstr ""
+"chuỗi ``'tar'``: Tôn vinh hầu hết các tính năng dành riêng cho *tar* (tức là"
+" các tính năng của hệ thống tệp giống UNIX), nhưng chặn các tính năng rất có"
+" thể gây ngạc nhiên hoặc độc hại. Xem :func:`tar_filter` để biết chi tiết."
+
+#: ../../library/tarfile.rst:1049
+#, fuzzy
+msgid ""
+"the string ``'data'``: Ignore or block most features specific to UNIX-like "
+"filesystems. Intended for extracting cross-platform data archives. See "
+":func:`data_filter` for details."
+msgstr ""
+"chuỗi ``'data'``: Bỏ qua hoặc chặn hầu hết các tính năng dành riêng cho hệ "
+"thống tệp giống UNIX. Dành cho việc trích xuất kho lưu trữ dữ liệu đa nền "
+"tảng. Xem :func:`data_filter` để biết chi tiết."
+
+#: ../../library/tarfile.rst:1053
+#, fuzzy
+msgid "``None`` (default): Use :attr:`TarFile.extraction_filter`."
+msgstr "``None`` (mặc định): Sử dụng :attr:`TarFile.extraction_filter`."
+
+#: ../../library/tarfile.rst:1055
+#, fuzzy
+msgid ""
+"If that is also ``None`` (the default), the ``'data'`` filter will be used."
+msgstr ""
+"Nếu đó cũng là ``None`` (mặc định), bộ lọc ``'data'`` sẽ được sử dụng."
+
+#: ../../library/tarfile.rst:1059
+#, fuzzy
+msgid ""
+"The default filter is set to :func:`data <data_filter>`. Previously, the "
+"default was equivalent to :func:`fully_trusted <fully_trusted_filter>`."
+msgstr ""
+"Bộ lọc mặc định được đặt thành :func:`data <data_filter>`. Trước đây, mặc "
+"định tương đương với :func:`fully_trusted <fully_trusted_filter>`."
+
+#: ../../library/tarfile.rst:1063
+#, fuzzy
+msgid ""
+"A callable which will be called for each extracted member with a "
+":ref:`TarInfo <tarinfo-objects>` describing the member and the destination "
+"path to where the archive is extracted (i.e. the same path is used for all "
+"members)::"
+msgstr ""
+"Một lệnh gọi sẽ được gọi cho mỗi thành viên được trích xuất với "
+":ref:`TarInfo <tarinfo-objects>` mô tả thành viên và đường dẫn đích đến nơi "
+"giải nén kho lưu trữ (tức là sử dụng cùng một đường dẫn cho tất cả các thành"
+" viên)::"
+
+#: ../../library/tarfile.rst:1068
+#, fuzzy
+msgid "filter(member: TarInfo, path: str, /) -> TarInfo | None"
+msgstr "filter(member: TarInfo, path: str, /) -> TarInfo | không có"
+
+#: ../../library/tarfile.rst:1070
+#, fuzzy
+msgid ""
+"The callable is called just before each member is extracted, so it can take "
+"the current state of the disk into account. It can:"
+msgstr ""
+"Có thể gọi được ngay trước khi mỗi thành viên được trích xuất, do đó, nó có "
+"thể tính đến trạng thái hiện tại của đĩa. Nó có thể:"
+
+#: ../../library/tarfile.rst:1074
+#, fuzzy
+msgid ""
+"return a :class:`TarInfo` object which will be used instead of the metadata "
+"in the archive, or"
+msgstr ""
+"trả về một đối tượng :class:`TarInfo` sẽ được sử dụng thay vì siêu dữ liệu "
+"trong kho lưu trữ hoặc"
+
+#: ../../library/tarfile.rst:1076
+#, fuzzy
+msgid "return ``None``, in which case the member will be skipped, or"
+msgstr "trả về ``None``, trong trường hợp đó thành viên sẽ bị bỏ qua, hoặc"
+
+#: ../../library/tarfile.rst:1077
+#, fuzzy
+msgid ""
+"raise an exception to abort the operation or skip the member, depending on "
+":attr:`~TarFile.errorlevel`. Note that when extraction is aborted, "
+":meth:`~TarFile.extractall` may leave the archive partially extracted. It "
+"does not attempt to clean up."
+msgstr ""
+"đưa ra một ngoại lệ để hủy bỏ thao tác hoặc bỏ qua thành viên, tùy thuộc vào"
+" :attr:`~TarFile.errorlevel`. Lưu ý rằng khi quá trình trích xuất bị hủy bỏ,"
+" :meth:`~TarFile.extractall` có thể khiến kho lưu trữ được giải nén một "
+"phần. Nó không cố gắng dọn dẹp."
+
+#: ../../library/tarfile.rst:1083
+#, fuzzy
+msgid "Default named filters"
+msgstr "Bộ lọc được đặt tên mặc định"
+
+#: ../../library/tarfile.rst:1085
+#, fuzzy
+msgid ""
+"The pre-defined, named filters are available as functions, so they can be "
+"reused in custom filters:"
+msgstr ""
+"Các bộ lọc được đặt tên và xác định trước có sẵn dưới dạng hàm nên chúng có "
+"thể được sử dụng lại trong các bộ lọc tùy chỉnh:"
+
+#: ../../library/tarfile.rst:1090
+#, fuzzy
+msgid "Return *member* unchanged."
+msgstr "Trả về *member* không thay đổi."
+
+#: ../../library/tarfile.rst:1092
+#, fuzzy
+msgid "This implements the ``'fully_trusted'`` filter."
+msgstr "Điều này thực hiện bộ lọc ``'fully_trusted'``."
+
+#: ../../library/tarfile.rst:1096
+#, fuzzy
+msgid "Implements the ``'tar'`` filter."
+msgstr "Triển khai bộ lọc ``'tar'``."
+
+#: ../../library/tarfile.rst:1098
+#, fuzzy
+msgid "Strip leading slashes (``/`` and :data:`os.sep`) from filenames."
+msgstr ""
+"Loại bỏ các dấu gạch chéo ở đầu (``/`` và :data:`os.sep`) khỏi tên tệp."
+
+#: ../../library/tarfile.rst:1099
+#, fuzzy
+msgid ""
+":ref:`Refuse <tarfile-extraction-refuse>` to extract files with absolute "
+"paths (in case the name is absolute even after stripping slashes, e.g. "
+"``C:/foo`` on Windows). This raises :class:`~tarfile.AbsolutePathError`."
+msgstr ""
+":ref:`Refuse <tarfile-extraction-refuse>` để trích xuất các tệp có đường dẫn"
+" tuyệt đối (trong trường hợp tên là tuyệt đối ngay cả sau khi loại bỏ dấu "
+"gạch chéo, ví dụ: ``C:/foo`` trên Windows). Điều này làm tăng "
+":class:`~tarfile.AbsolutePathError`."
+
+#: ../../library/tarfile.rst:1103
+#, fuzzy
+msgid ""
+":ref:`Refuse <tarfile-extraction-refuse>` to extract files whose absolute "
+"path (after following symlinks) would end up outside the destination. This "
+"raises :class:`~tarfile.OutsideDestinationError`."
+msgstr ""
+":ref:`Refuse <tarfile-extraction-refuse>` để giải nén các tệp có đường dẫn "
+"tuyệt đối (sau khi đi theo các liên kết tượng trưng) sẽ nằm ngoài đích. Điều"
+" này làm tăng :class:`~tarfile.OutsideDestinationError`."
+
+#: ../../library/tarfile.rst:1106
+#, fuzzy
+msgid ""
+"Clear high mode bits (setuid, setgid, sticky) and group/other write bits "
+"(:const:`~stat.S_IWGRP` | :const:`~stat.S_IWOTH`)."
+msgstr ""
+"Xóa các bit chế độ cao (setuid, setgid, Sticky) và nhóm/các bit ghi khác "
+"(:const:`~stat.S_IWGRP` | :const:`~stat.S_IWOTH`)."
+
+#: ../../library/tarfile.rst:1109 ../../library/tarfile.rst:1148
+#, fuzzy
+msgid "Return the modified ``TarInfo`` member."
+msgstr "Trả về thành viên ``TarInfo`` đã sửa đổi."
+
+#: ../../library/tarfile.rst:1113
+#, fuzzy
+msgid ""
+"Implements the ``'data'`` filter. In addition to what ``tar_filter`` does:"
+msgstr "Triển khai bộ lọc ``'data'``. Ngoài những gì ``tar_filter`` làm:"
+
+#: ../../library/tarfile.rst:1116
+#, fuzzy
+msgid ""
+"Normalize link targets (:attr:`TarInfo.linkname`) using "
+":func:`os.path.normpath`. Note that this removes internal ``..`` components,"
+" which may change the meaning of the link if the path in "
+":attr:`!TarInfo.linkname` traverses symbolic links."
+msgstr ""
+"Chuẩn hóa mục tiêu liên kết (:attr:`TarInfo.linkname`) bằng "
+":func:`os.path.normpath`. Lưu ý rằng điều này sẽ loại bỏ các thành phần "
+"``..`` bên trong, điều này có thể thay đổi ý nghĩa của liên kết nếu đường "
+"dẫn trong :attr:`!TarInfo.linkname` đi qua các liên kết tượng trưng."
+
+#: ../../library/tarfile.rst:1122
+#, fuzzy
+msgid ""
+":ref:`Refuse <tarfile-extraction-refuse>` to extract links (hard or soft) "
+"that link to absolute paths, or ones that link outside the destination."
+msgstr ""
+":ref:`Refuse <tarfile-extraction-refuse>` để trích xuất các liên kết (cứng "
+"hoặc mềm) liên kết đến các đường dẫn tuyệt đối hoặc các liên kết bên ngoài "
+"đích."
+
+#: ../../library/tarfile.rst:1125
+#, fuzzy
+msgid ""
+"This raises :class:`~tarfile.AbsoluteLinkError` or "
+":class:`~tarfile.LinkOutsideDestinationError`."
+msgstr ""
+"Điều này làm tăng :class:`~tarfile.AbsoluteLinkError` hoặc "
+":class:`~tarfile.LinkOutsideDestinationError`."
+
+#: ../../library/tarfile.rst:1128
+#, fuzzy
+msgid ""
+"Note that such files are refused even on platforms that do not support "
+"symbolic links."
+msgstr ""
+"Lưu ý rằng những tệp như vậy bị từ chối ngay cả trên nền tảng không hỗ trợ "
+"liên kết tượng trưng."
+
+#: ../../library/tarfile.rst:1131
+#, fuzzy
+msgid ""
+":ref:`Refuse <tarfile-extraction-refuse>` to extract device files (including"
+" pipes). This raises :class:`~tarfile.SpecialFileError`."
+msgstr ""
+":ref:`Refuse <tarfile-extraction-refuse>` để giải nén các tập tin thiết bị "
+"(bao gồm cả đường ống). Điều này làm tăng "
+":class:`~tarfile.SpecialFileError`."
+
+#: ../../library/tarfile.rst:1135
+#, fuzzy
+msgid "For regular files, including hard links:"
+msgstr "Đối với các tệp thông thường, bao gồm các liên kết cứng:"
+
+#: ../../library/tarfile.rst:1137
+#, fuzzy
+msgid ""
+"Set the owner read and write permissions (:const:`~stat.S_IRUSR` | "
+":const:`~stat.S_IWUSR`)."
+msgstr ""
+"Đặt quyền đọc và ghi của chủ sở hữu (:const:`~stat.S_IRUSR` | "
+":const:`~stat.S_IWUSR`)."
+
+#: ../../library/tarfile.rst:1139
+#, fuzzy
+msgid ""
+"Remove the group & other executable permission (:const:`~stat.S_IXGRP` | "
+":const:`~stat.S_IXOTH`) if the owner doesn’t have it "
+"(:const:`~stat.S_IXUSR`)."
+msgstr ""
+"Xóa nhóm và quyền thực thi khác (:const:`~stat.S_IXGRP` | "
+":const:`~stat.S_IXOTH`) nếu chủ sở hữu không có nó (:const:`~stat.S_IXUSR`)."
+
+#: ../../library/tarfile.rst:1143
+#, fuzzy
+msgid ""
+"For other files (directories), set ``mode`` to ``None``, so that extraction "
+"methods skip applying permission bits."
+msgstr ""
+"Đối với các tệp (thư mục) khác, hãy đặt ``mode`` thành ``None`` để các "
+"phương pháp trích xuất bỏ qua việc áp dụng các bit cấp phép."
+
+#: ../../library/tarfile.rst:1145
+#, fuzzy
+msgid ""
+"Set user and group info (``uid``, ``gid``, ``uname``, ``gname``) to "
+"``None``, so that extraction methods skip setting it."
+msgstr ""
+"Đặt thông tin người dùng và nhóm (``uid``, ``gid``, ``uname``, ``gname``) "
+"thành ``None``, để các phương pháp trích xuất bỏ qua việc thiết lập thông "
+"tin đó."
+
+#: ../../library/tarfile.rst:1150
+#, fuzzy
+msgid ""
+"Note that this filter does not block *all* dangerous archive features. See "
+":ref:`tarfile-further-verification`  for details."
+msgstr ""
+"Lưu ý rằng bộ lọc này không chặn các tính năng lưu trữ nguy hiểm của *all*. "
+"Xem :ref:`tarfile-further-verification` để biết chi tiết."
+
+#: ../../library/tarfile.rst:1155
+#, fuzzy
+msgid "Link targets are now normalized."
+msgstr "Mục tiêu liên kết hiện đã được chuẩn hóa."
+
+#: ../../library/tarfile.rst:1161
+#, fuzzy
+msgid "Filter errors"
+msgstr "Lọc lỗi"
+
+#: ../../library/tarfile.rst:1163
+#, fuzzy
+msgid ""
+"When a filter refuses to extract a file, it will raise an appropriate "
+"exception, a subclass of :class:`~tarfile.FilterError`. This will abort the "
+"extraction if :attr:`TarFile.errorlevel` is 1 or more. With ``errorlevel=0``"
+" the error will be logged and the member will be skipped, but extraction "
+"will continue."
+msgstr ""
+"Khi một bộ lọc từ chối giải nén một tập tin, nó sẽ đưa ra một ngoại lệ thích"
+" hợp, một lớp con của :class:`~tarfile.FilterError`. Điều này sẽ hủy bỏ việc"
+" trích xuất nếu :attr:`TarFile.errorlevel` là 1 hoặc nhiều hơn. Với "
+"``errorlevel=0``, lỗi sẽ được ghi lại và thành viên sẽ bị bỏ qua nhưng quá "
+"trình trích xuất sẽ tiếp tục."
+
+#: ../../library/tarfile.rst:1173
+#, fuzzy
+msgid "Hints for further verification"
+msgstr "Gợi ý xác minh thêm"
+
+#: ../../library/tarfile.rst:1175
+#, fuzzy
+msgid ""
+"Even with ``filter='data'``, *tarfile* is not suited for extracting "
+"untrusted files without prior inspection. Among other issues, the pre-"
+"defined filters do not prevent denial-of-service attacks. Users should do "
+"additional checks."
+msgstr ""
+"Ngay cả với ``filter='data'``, *tarfile* không phù hợp để giải nén các tệp "
+"không đáng tin cậy mà không kiểm tra trước. Trong số các vấn đề khác, các bộ"
+" lọc được xác định trước không ngăn chặn các cuộc tấn công từ chối dịch vụ. "
+"Người dùng nên thực hiện kiểm tra bổ sung."
+
+#: ../../library/tarfile.rst:1180
+#, fuzzy
+msgid "Here is an incomplete list of things to consider:"
+msgstr "Dưới đây là danh sách không đầy đủ những điều cần xem xét:"
+
+#: ../../library/tarfile.rst:1182
+#, fuzzy
+msgid ""
+"Extract to a :func:`new temporary directory <tempfile.mkdtemp>` to prevent "
+"e.g. exploiting pre-existing links, and to make it easier to clean up after "
+"a failed extraction."
+msgstr ""
+"Giải nén vào :func:`new temporary directory <tempfile.mkdtemp>` để ngăn chặn"
+" ví dụ: khai thác các liên kết có sẵn và để dễ dàng dọn dẹp hơn sau khi "
+"trích xuất không thành công."
+
+#: ../../library/tarfile.rst:1185
+#, fuzzy
+msgid "Disallow symbolic links if you do not need the functionality."
+msgstr ""
+"Không cho phép các liên kết tượng trưng nếu bạn không cần chức năng này."
+
+#: ../../library/tarfile.rst:1186
+#, fuzzy
+msgid ""
+"When working with untrusted data, use external (e.g. OS-level) limits on "
+"disk, memory and CPU usage."
+msgstr ""
+"Khi làm việc với dữ liệu không đáng tin cậy, hãy sử dụng các giới hạn bên "
+"ngoài (ví dụ: cấp hệ điều hành) đối với mức sử dụng ổ đĩa, bộ nhớ và CPU."
+
+#: ../../library/tarfile.rst:1188
+#, fuzzy
+msgid ""
+"Check filenames against an allow-list of characters (to filter out control "
+"characters, confusables, foreign path separators, and so on)."
+msgstr ""
+"Kiểm tra tên tệp dựa trên danh sách các ký tự được phép (để lọc các ký tự "
+"điều khiển, ký tự dễ nhầm lẫn, dấu phân cách đường dẫn ngoại, v.v.)."
+
+#: ../../library/tarfile.rst:1191
+#, fuzzy
+msgid ""
+"Check that filenames have expected extensions (discouraging files that "
+"execute when you “click on them”, or extension-less files like Windows "
+"special device names)."
+msgstr ""
+"Kiểm tra xem tên tệp có phần mở rộng dự kiến hay không (không khuyến khích "
+"các tệp thực thi khi bạn “nhấp vào chúng” hoặc các tệp không có phần mở rộng"
+" như tên thiết bị đặc biệt của Windows)."
+
+#: ../../library/tarfile.rst:1194
+#, fuzzy
+msgid ""
+"Limit the number of extracted files, total size of extracted data, filename "
+"length (including symlink length), and size of individual files."
+msgstr ""
+"Giới hạn số lượng tệp được trích xuất, tổng kích thước của dữ liệu được "
+"trích xuất, độ dài tên tệp (bao gồm cả độ dài liên kết tượng trưng) và kích "
+"thước của từng tệp riêng lẻ."
+
+#: ../../library/tarfile.rst:1196
+#, fuzzy
+msgid ""
+"Check for files that would be shadowed on case-insensitive filesystems."
+msgstr ""
+"Kiểm tra các tệp sẽ bị ẩn trên hệ thống tệp không phân biệt chữ hoa chữ "
+"thường."
+
+#: ../../library/tarfile.rst:1198
+#, fuzzy
+msgid "Also note that:"
+msgstr "Cũng lưu ý rằng:"
+
+#: ../../library/tarfile.rst:1200
+#, fuzzy
+msgid ""
+"Tar files may contain multiple versions of the same file. Later ones are "
+"expected to overwrite any earlier ones. This feature is crucial to allow "
+"updating tape archives, but can be abused maliciously."
+msgstr ""
+"Tệp Tar có thể chứa nhiều phiên bản của cùng một tệp. Những cái sau dự kiến "
+"​​​​sẽ ghi đè lên bất kỳ cái nào trước đó. Tính năng này rất quan trọng để "
+"cho phép cập nhật kho lưu trữ băng từ, nhưng có thể bị lạm dụng có mục đích "
+"xấu."
+
+#: ../../library/tarfile.rst:1204
+#, fuzzy
+msgid ""
+"*tarfile* does not protect against issues with “live” data, e.g. an attacker"
+" tinkering with the destination (or source) directory while extraction (or "
+"archiving) is in progress."
+msgstr ""
+"*tarfile* không bảo vệ khỏi các sự cố với dữ liệu “trực tiếp”, ví dụ: kẻ tấn"
+" công sửa đổi thư mục đích (hoặc nguồn) trong khi đang tiến hành trích xuất "
+"(hoặc lưu trữ)."
+
+#: ../../library/tarfile.rst:1210
+#, fuzzy
+msgid "Supporting older Python versions"
+msgstr "Hỗ trợ các phiên bản Python cũ hơn"
+
+#: ../../library/tarfile.rst:1212
+#, fuzzy
+msgid ""
+"Extraction filters were added to Python 3.12, but may be backported to older"
+" versions as security updates. To check whether the feature is available, "
+"use e.g. ``hasattr(tarfile, 'data_filter')`` rather than checking the Python"
+" version."
+msgstr ""
+"Bộ lọc trích xuất đã được thêm vào Python 3.12, nhưng có thể được chuyển trở"
+" lại các phiên bản cũ hơn dưới dạng bản cập nhật bảo mật. Để kiểm tra xem "
+"tính năng này có khả dụng hay không, hãy sử dụng ví dụ: ``hasattr(tarfile, "
+"'data_filter')`` thay vì kiểm tra phiên bản Python."
+
+#: ../../library/tarfile.rst:1217
+#, fuzzy
+msgid ""
+"The following examples show how to support Python versions with and without "
+"the feature. Note that setting ``extraction_filter`` will affect any "
+"subsequent operations."
+msgstr ""
+"Các ví dụ sau đây cho thấy cách hỗ trợ các phiên bản Python có và không có "
+"tính năng này. Lưu ý rằng việc cài đặt ``extraction_filter`` sẽ ảnh hưởng "
+"đến mọi hoạt động tiếp theo."
+
+#: ../../library/tarfile.rst:1221
+#, fuzzy
+msgid "Fully trusted archive::"
+msgstr "Kho lưu trữ hoàn toàn đáng tin cậy::"
+
+#: ../../library/tarfile.rst:1223
+#, fuzzy
+msgid ""
+"my_tarfile.extraction_filter = (lambda member, path: member)\n"
+"my_tarfile.extractall()"
+msgstr ""
+"my_tarfile.extraction_filter = (thành viên lambda, đường dẫn: thành viên)\n"
+"my_tarfile.extractall()"
+
+#: ../../library/tarfile.rst:1226
+#, fuzzy
+msgid ""
+"Use the ``'data'`` filter if available, but revert to Python 3.11 behavior "
+"(``'fully_trusted'``) if this feature is not available::"
+msgstr ""
+"Sử dụng bộ lọc ``'data'`` nếu có, nhưng hoàn nguyên về hành vi Python 3.11 "
+"(``'fully_trusted'``) nếu tính năng này không khả dụng::"
+
+#: ../../library/tarfile.rst:1229
+#, fuzzy
+msgid ""
+"my_tarfile.extraction_filter = getattr(tarfile, 'data_filter',\n"
+"                                       (lambda member, path: member))\n"
+"my_tarfile.extractall()"
+msgstr ""
+"my_tarfile.extraction_filter = getattr(tarfile, 'data_filter',\n"
+"                                       (thành viên lambda, đường dẫn: thành viên))\n"
+"my_tarfile.extractall()"
+
+#: ../../library/tarfile.rst:1233
+#, fuzzy
+msgid "Use the ``'data'`` filter; *fail* if it is not available::"
+msgstr "Sử dụng bộ lọc ``'data'``; *fail* nếu không có::"
+
+#: ../../library/tarfile.rst:1235
+#, fuzzy
+msgid "my_tarfile.extractall(filter=tarfile.data_filter)"
+msgstr "my_tarfile.extractall(filter=tarfile.data_filter)"
+
+#: ../../library/tarfile.rst:1237
+#, fuzzy
+msgid "or::"
+msgstr "hoặc::"
+
+#: ../../library/tarfile.rst:1239
+#, fuzzy
+msgid ""
+"my_tarfile.extraction_filter = tarfile.data_filter\n"
+"my_tarfile.extractall()"
+msgstr ""
+"my_tarfile.extraction_filter = tarfile.data_filter\n"
+"my_tarfile.extractall()"
+
+#: ../../library/tarfile.rst:1242
+#, fuzzy
+msgid "Use the ``'data'`` filter; *warn* if it is not available::"
+msgstr "Sử dụng bộ lọc ``'data'``; *warn* nếu không có::"
+
+#: ../../library/tarfile.rst:1244
+#, fuzzy
+msgid ""
+"if hasattr(tarfile, 'data_filter'):\n"
+"    my_tarfile.extractall(filter='data')\n"
+"else:\n"
+"    # remove this when no longer needed\n"
+"    warn_the_user('Extracting may be unsafe; consider updating Python')\n"
+"    my_tarfile.extractall()"
+msgstr ""
+"nếu hasattr(tarfile, 'data_filter'):\n"
+"    my_tarfile.extractall(filter='data')\n"
+"khác:\n"
+"    # remove cái này khi không còn cần thiết nữa\n"
+"    Warn_the_user('Giải nén có thể không an toàn; hãy cân nhắc việc cập nhật Python')\n"
+"    my_tarfile.extractall()"
+
+#: ../../library/tarfile.rst:1253
+#, fuzzy
+msgid "Stateful extraction filter example"
+msgstr "Ví dụ về bộ lọc trích xuất trạng thái"
+
+#: ../../library/tarfile.rst:1255
+#, fuzzy
+msgid ""
+"While *tarfile*'s extraction methods take a simple *filter* callable, custom"
+" filters may be more complex objects with an internal state. It may be "
+"useful to write these as context managers, to be used like this::"
+msgstr ""
+"Mặc dù các phương pháp trích xuất của *tarfile* có thể gọi *filter* đơn "
+"giản, các bộ lọc tùy chỉnh có thể là các đối tượng phức tạp hơn với trạng "
+"thái bên trong. Có thể hữu ích khi viết chúng như trình quản lý bối cảnh, "
+"được sử dụng như thế này ::"
+
+#: ../../library/tarfile.rst:1259
+#, fuzzy
+msgid ""
+"with StatefulFilter() as filter_func:\n"
+"    tar.extractall(path, filter=filter_func)"
+msgstr ""
+"với StatefulFilter() là filter_func:\n"
+"    tar.extractall(path, filter=filter_func)"
+
+#: ../../library/tarfile.rst:1262
+#, fuzzy
+msgid "Such a filter can be written as, for example::"
+msgstr "Bộ lọc như vậy có thể được viết là, ví dụ::"
+
+#: ../../library/tarfile.rst:1264
+#, python-brace-format, fuzzy
+msgid ""
+"class StatefulFilter:\n"
+"    def __init__(self):\n"
+"        self.file_count = 0\n"
+"\n"
+"    def __enter__(self):\n"
+"        return self\n"
+"\n"
+"    def __call__(self, member, path):\n"
+"        self.file_count += 1\n"
+"        return member\n"
+"\n"
+"    def __exit__(self, *exc_info):\n"
+"        print(f'{self.file_count} files extracted')"
+msgstr ""
+"lớp StatefulFilter:\n"
+"    định nghĩa __init__(tự):\n"
+"        self.file_count = 0\n"
+"\n"
+"    chắc chắn __enter__(tự):\n"
+"        tự trở về\n"
+"\n"
+"    def __call__(bản thân, thành viên, đường dẫn):\n"
+"        self.file_count += 1\n"
+"        thành viên trở lại\n"
+"\n"
+"    def __exit__(self, *exc_info):\n"
+"        print(f'{self.file_count} tệp được trích xuất')"
+
+#: ../../library/tarfile.rst:1284
+#, fuzzy
+msgid "Command-Line Interface"
+msgstr "Giao diện dòng lệnh"
+
+#: ../../library/tarfile.rst:1288
+#, fuzzy
+msgid ""
+"The :mod:`!tarfile` module provides a simple command-line interface to "
+"interact with tar archives."
+msgstr ""
+"Mô-đun :mod:`!tarfile` cung cấp giao diện dòng lệnh đơn giản để tương tác "
+"với kho lưu trữ tar."
+
+#: ../../library/tarfile.rst:1291
+#, fuzzy
+msgid ""
+"If you want to create a new tar archive, specify its name after the "
+":option:`-c` option and then list the filename(s) that should be included:"
+msgstr ""
+"Nếu bạn muốn tạo một kho lưu trữ tar mới, hãy chỉ định tên của nó sau tùy "
+"chọn :option:`-c` và sau đó liệt kê (các) tên tệp sẽ được đưa vào:"
+
+#: ../../library/tarfile.rst:1294
+#, fuzzy
+msgid "$ python -m tarfile -c monty.tar  spam.txt eggs.txt"
+msgstr "$ python -m tarfile -c monty.tar spam.txt trứng.txt"
+
+#: ../../library/tarfile.rst:1298
+#, fuzzy
+msgid "Passing a directory is also acceptable:"
+msgstr "Việc chuyển một thư mục cũng được chấp nhận:"
+
+#: ../../library/tarfile.rst:1300
+#, fuzzy
+msgid "$ python -m tarfile -c monty.tar life-of-brian_1979/"
+msgstr "$ python -m tarfile -c monty.tar life-of-brian_1979/"
+
+#: ../../library/tarfile.rst:1304
+#, fuzzy
+msgid ""
+"If you want to extract a tar archive into the current directory, use the "
+":option:`-e` option:"
+msgstr ""
+"Nếu bạn muốn trích xuất kho lưu trữ tar vào thư mục hiện tại, hãy sử dụng "
+"tùy chọn :option:`-e`:"
+
+#: ../../library/tarfile.rst:1307
+#, fuzzy
+msgid "$ python -m tarfile -e monty.tar"
+msgstr "$ python -m tarfile -e monty.tar"
+
+#: ../../library/tarfile.rst:1311
+#, fuzzy
+msgid ""
+"You can also extract a tar archive into a different directory by passing the"
+" directory's name:"
+msgstr ""
+"Bạn cũng có thể trích xuất kho lưu trữ tar vào một thư mục khác bằng cách "
+"chuyển tên thư mục:"
+
+#: ../../library/tarfile.rst:1314
+#, fuzzy
+msgid "$ python -m tarfile -e monty.tar  other-dir/"
+msgstr "$ python -m tarfile -e monty.tar other-dir/"
+
+#: ../../library/tarfile.rst:1318
+#, fuzzy
+msgid "For a list of the files in a tar archive, use the :option:`-l` option:"
+msgstr ""
+"Để biết danh sách các tệp trong kho lưu trữ tar, hãy sử dụng tùy chọn "
+":option:`-l`:"
+
+#: ../../library/tarfile.rst:1320
+#, fuzzy
+msgid "$ python -m tarfile -l monty.tar"
+msgstr "$ python -m tarfile -l monty.tar"
+
+#: ../../library/tarfile.rst:1326
+#, fuzzy
+msgid "Command-line options"
+msgstr "Tùy chọn dòng lệnh"
+
+#: ../../library/tarfile.rst:1331
+#, fuzzy
+msgid "List files in a tarfile."
+msgstr "Liệt kê các tập tin trong một tarfile."
+
+#: ../../library/tarfile.rst:1336
+#, fuzzy
+msgid "Create tarfile from source files."
+msgstr "Tạo tarfile từ các tập tin nguồn."
+
+#: ../../library/tarfile.rst:1341
+#, fuzzy
+msgid ""
+"Extract tarfile into the current directory if *output_dir* is not specified."
+msgstr ""
+"Trích xuất tarfile vào thư mục hiện tại nếu *output_dir* không được chỉ "
+"định."
+
+#: ../../library/tarfile.rst:1346
+#, fuzzy
+msgid "Test whether the tarfile is valid or not."
+msgstr "Kiểm tra xem tarfile có hợp lệ hay không."
+
+#: ../../library/tarfile.rst:1350
+#, fuzzy
+msgid "Verbose output."
+msgstr "Đầu ra dài dòng."
+
+#: ../../library/tarfile.rst:1354
+#, fuzzy
+msgid ""
+"Specifies the *filter* for ``--extract``. See :ref:`tarfile-extraction-"
+"filter` for details. Only string names are accepted (that is, "
+"``fully_trusted``, ``tar``, and ``data``)."
+msgstr ""
+"Chỉ định *filter* cho ``--extract``. Xem :ref:`tarfile-extraction-filter` để"
+" biết chi tiết. Chỉ tên chuỗi mới được chấp nhận (nghĩa là "
+"``fully_trusted``, ``tar`` và ``data``)."
+
+#: ../../library/tarfile.rst:1362
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/tarfile.rst:1365
+#, fuzzy
+msgid "Reading examples"
+msgstr "Đọc ví dụ"
+
+#: ../../library/tarfile.rst:1367
+#, fuzzy
+msgid ""
+"How to extract an entire tar archive to the current working directory::"
+msgstr ""
+"Cách trích xuất toàn bộ kho lưu trữ tar vào thư mục làm việc hiện tại ::"
+
+#: ../../library/tarfile.rst:1369
+#, fuzzy
+msgid ""
+"import tarfile\n"
+"tar = tarfile.open(\"sample.tar.gz\")\n"
+"tar.extractall(filter='data')\n"
+"tar.close()"
+msgstr ""
+"tập tin nhập khẩu\n"
+"tar = tarfile.open(\"sample.tar.gz\")\n"
+"tar.extractall(filter='data')\n"
+"tar.close()"
+
+#: ../../library/tarfile.rst:1374
+#, fuzzy
+msgid ""
+"How to extract a subset of a tar archive with :meth:`TarFile.extractall` "
+"using a generator function instead of a list::"
+msgstr ""
+"Cách trích xuất một tập hợp con của kho lưu trữ tar bằng "
+":meth:`TarFile.extractall` bằng cách sử dụng chức năng tạo thay vì danh sách"
+" ::"
+
+#: ../../library/tarfile.rst:1377
+#, fuzzy
+msgid ""
+"import os\n"
+"import tarfile\n"
+"\n"
+"def py_files(members):\n"
+"    for tarinfo in members:\n"
+"        if os.path.splitext(tarinfo.name)[1] == \".py\":\n"
+"            yield tarinfo\n"
+"\n"
+"tar = tarfile.open(\"sample.tar.gz\")\n"
+"tar.extractall(members=py_files(tar))\n"
+"tar.close()"
+msgstr ""
+"hệ điều hành nhập khẩu\n"
+"tập tin nhập khẩu\n"
+"\n"
+"def py_files(thành viên):\n"
+"    cho tarinfo trong các thành viên:\n"
+"        nếu os.path.splitext(tarinfo.name)[1] == \".py\":\n"
+"            thông tin năng suất\n"
+"\n"
+"tar = tarfile.open(\"sample.tar.gz\")\n"
+"tar.extractall(thành viên=py_files(tar))\n"
+"tar.close()"
+
+#: ../../library/tarfile.rst:1389
+#, fuzzy
+msgid ""
+"How to read a gzip compressed tar archive and display some member "
+"information::"
+msgstr ""
+"Cách đọc kho lưu trữ tar nén gzip và hiển thị một số thông tin thành viên ::"
+
+#: ../../library/tarfile.rst:1391
+#, fuzzy
+msgid ""
+"import tarfile\n"
+"tar = tarfile.open(\"sample.tar.gz\", \"r:gz\")\n"
+"for tarinfo in tar:\n"
+"    print(tarinfo.name, \"is\", tarinfo.size, \"bytes in size and is \", end=\"\")\n"
+"    if tarinfo.isreg():\n"
+"        print(\"a regular file.\")\n"
+"    elif tarinfo.isdir():\n"
+"        print(\"a directory.\")\n"
+"    else:\n"
+"        print(\"something else.\")\n"
+"tar.close()"
+msgstr ""
+"tập tin nhập khẩu\n"
+"tar = tarfile.open(\"sample.tar.gz\", \"r:gz\")\n"
+"cho tarinfo trong tar:\n"
+"    print(tarinfo.name, \"is\", tarinfo.size, \"kích thước byte và là \", end=\"\")\n"
+"    nếu tarinfo.isreg():\n"
+"        print(\"một tập tin thông thường.\")\n"
+"    Elif tarinfo.isdir():\n"
+"        in (\"một thư mục.\")\n"
+"    khác:\n"
+"        print(\"cái gì đó khác.\")\n"
+"tar.close()"
+
+#: ../../library/tarfile.rst:1404
+#, fuzzy
+msgid "Writing examples"
+msgstr "Viết ví dụ"
+
+#: ../../library/tarfile.rst:1406
+#, fuzzy
+msgid "How to create an uncompressed tar archive from a list of filenames::"
+msgstr "Cách tạo kho lưu trữ tar không nén từ danh sách tên tệp ::"
+
+#: ../../library/tarfile.rst:1408
+#, fuzzy
+msgid ""
+"import tarfile\n"
+"tar = tarfile.open(\"sample.tar\", \"w\")\n"
+"for name in [\"foo\", \"bar\", \"quux\"]:\n"
+"    tar.add(name)\n"
+"tar.close()"
+msgstr ""
+"tập tin nhập khẩu\n"
+"tar = tarfile.open(\"sample.tar\", \"w\")\n"
+"cho tên trong [\"foo\", \"bar\", \"quux\"]:\n"
+"    tar.add(tên)\n"
+"tar.close()"
+
+#: ../../library/tarfile.rst:1414
+#, fuzzy
+msgid "The same example using the :keyword:`with` statement::"
+msgstr "Ví dụ tương tự sử dụng câu lệnh :keyword:`with`::"
+
+#: ../../library/tarfile.rst:1416
+#, fuzzy
+msgid ""
+"import tarfile\n"
+"with tarfile.open(\"sample.tar\", \"w\") as tar:\n"
+"    for name in [\"foo\", \"bar\", \"quux\"]:\n"
+"        tar.add(name)"
+msgstr ""
+"tập tin nhập khẩu\n"
+"với tarfile.open(\"sample.tar\", \"w\") là tar:\n"
+"    cho tên trong [\"foo\", \"bar\", \"quux\"]:\n"
+"        tar.add(tên)"
+
+#: ../../library/tarfile.rst:1421
+#, fuzzy
+msgid ""
+"How to create and write an archive to stdout using :data:`sys.stdout.buffer "
+"<sys.stdout>` in the *fileobj* parameter in :meth:`TarFile.add`::"
+msgstr ""
+"Cách tạo và ghi kho lưu trữ vào thiết bị xuất chuẩn bằng "
+":data:`sys.stdout.buffer <sys.stdout>` trong tham số *fileobj* trong "
+":meth:`TarFile.add` ::"
+
+#: ../../library/tarfile.rst:1425
+#, fuzzy
+msgid ""
+"import sys\n"
+"import tarfile\n"
+"with tarfile.open(\"sample.tar.gz\", \"w|gz\", fileobj=sys.stdout.buffer) as tar:\n"
+"    for name in [\"foo\", \"bar\", \"quux\"]:\n"
+"        tar.add(name)"
+msgstr ""
+"hệ thống nhập khẩu\n"
+"tập tin nhập khẩu\n"
+"với tarfile.open(\"sample.tar.gz\", \"w|gz\", fileobj=sys.stdout.buffer) là tar:\n"
+"    cho tên trong [\"foo\", \"bar\", \"quux\"]:\n"
+"        tar.add(tên)"
+
+#: ../../library/tarfile.rst:1431
+#, fuzzy
+msgid ""
+"How to create an archive and reset the user information using the *filter* "
+"parameter in :meth:`TarFile.add`::"
+msgstr ""
+"Cách tạo kho lưu trữ và đặt lại thông tin người dùng bằng tham số *filter* "
+"trong :meth:`TarFile.add` ::"
+
+#: ../../library/tarfile.rst:1434
+#, fuzzy
+msgid ""
+"import tarfile\n"
+"def reset(tarinfo):\n"
+"    tarinfo.uid = tarinfo.gid = 0\n"
+"    tarinfo.uname = tarinfo.gname = \"root\"\n"
+"    return tarinfo\n"
+"tar = tarfile.open(\"sample.tar.gz\", \"w:gz\")\n"
+"tar.add(\"foo\", filter=reset)\n"
+"tar.close()"
+msgstr ""
+"tập tin nhập khẩu\n"
+"thiết lập lại def (tarinfo):\n"
+"    tarinfo.uid = tarinfo.gid = 0\n"
+"    tarinfo.uname = tarinfo.gname = \"root\"\n"
+"    trả lại tarinfo\n"
+"tar = tarfile.open(\"sample.tar.gz\", \"w:gz\")\n"
+"tar.add(\"foo\", filter=reset)\n"
+"tar.close()"
+
+#: ../../library/tarfile.rst:1447
+#, fuzzy
+msgid "Supported tar formats"
+msgstr "Các định dạng tar được hỗ trợ"
+
+#: ../../library/tarfile.rst:1449
+#, fuzzy
+msgid ""
+"There are three tar formats that can be created with the :mod:`!tarfile` "
+"module:"
+msgstr "Có ba định dạng tar có thể được tạo bằng mô-đun :mod:`!tarfile`:"
+
+#: ../../library/tarfile.rst:1451
+#, fuzzy
+msgid ""
+"The POSIX.1-1988 ustar format (:const:`USTAR_FORMAT`). It supports filenames"
+" up to a length of at best 256 characters and linknames up to 100 "
+"characters. The maximum file size is 8 GiB. This is an old and limited but "
+"widely supported format."
+msgstr ""
+"Định dạng ustar POSIX.1-1988 (:const:`USTAR_FORMAT`). Nó hỗ trợ tên tệp có "
+"độ dài tối đa 256 ký tự và tên liên kết lên tới 100 ký tự. Kích thước tệp "
+"tối đa là 8 GiB. Đây là một định dạng cũ và hạn chế nhưng được hỗ trợ rộng "
+"rãi."
+
+#: ../../library/tarfile.rst:1456
+#, fuzzy
+msgid ""
+"The GNU tar format (:const:`GNU_FORMAT`). It supports long filenames and "
+"linknames, files bigger than 8 GiB and sparse files. It is the de facto "
+"standard on GNU/Linux systems. :mod:`!tarfile` fully supports the GNU tar "
+"extensions for long names, sparse file support is read-only."
+msgstr ""
+"Định dạng tar GNU (:const:`GNU_FORMAT`). Nó hỗ trợ tên tệp và tên liên kết "
+"dài, tệp lớn hơn 8 GiB và tệp thưa thớt. Đây là tiêu chuẩn thực tế trên các "
+"hệ thống GNU/Linux. :mod:`!tarfile` hỗ trợ đầy đủ các phần mở rộng tar GNU "
+"cho các tên dài, hỗ trợ tệp thưa thớt ở chế độ chỉ đọc."
+
+#: ../../library/tarfile.rst:1461
+#, fuzzy
+msgid ""
+"The POSIX.1-2001 pax format (:const:`PAX_FORMAT`). It is the most flexible "
+"format with virtually no limits. It supports long filenames and linknames, "
+"large files and stores pathnames in a portable way. Modern tar "
+"implementations, including GNU tar, bsdtar/libarchive and star, fully "
+"support extended *pax* features; some old or unmaintained libraries may not,"
+" but should treat *pax* archives as if they were in the universally "
+"supported *ustar* format. It is the current default format for new archives."
+msgstr ""
+"Định dạng pax POSIX.1-2001 (:const:`PAX_FORMAT`). Đây là định dạng linh hoạt"
+" nhất và hầu như không có giới hạn. Nó hỗ trợ tên tệp và tên liên kết dài, "
+"tệp lớn và lưu trữ tên đường dẫn theo cách di động. Việc triển khai tar hiện"
+" đại, bao gồm GNU tar, bsdtar/libarchive và star, hỗ trợ đầy đủ các tính "
+"năng *pax* mở rộng; một số thư viện cũ hoặc không được bảo trì có thể không,"
+" nhưng nên xử lý các kho lưu trữ *pax* như thể chúng ở định dạng *ustar* "
+"được hỗ trợ phổ biến. Đây là định dạng mặc định hiện tại cho các kho lưu trữ"
+" mới."
+
+#: ../../library/tarfile.rst:1469
+#, fuzzy
+msgid ""
+"It extends the existing *ustar* format with extra headers for information "
+"that cannot be stored otherwise. There are two flavours of pax headers: "
+"Extended headers only affect the subsequent file header, global headers are "
+"valid for the complete archive and affect all following files. All the data "
+"in a pax header is encoded in *UTF-8* for portability reasons."
+msgstr ""
+"Nó mở rộng định dạng *ustar* hiện có với các tiêu đề bổ sung cho thông tin "
+"không thể được lưu trữ bằng cách khác. Có hai loại tiêu đề pax: Tiêu đề mở "
+"rộng chỉ ảnh hưởng đến tiêu đề tệp tiếp theo, tiêu đề chung có giá trị cho "
+"toàn bộ kho lưu trữ và ảnh hưởng đến tất cả các tệp sau. Tất cả dữ liệu "
+"trong tiêu đề pax được mã hóa bằng *UTF-8* vì lý do tính di động."
+
+#: ../../library/tarfile.rst:1475
+#, fuzzy
+msgid ""
+"There are some more variants of the tar format which can be read, but not "
+"created:"
+msgstr ""
+"Có một số biến thể khác của định dạng tar có thể đọc được nhưng không thể "
+"tạo:"
+
+#: ../../library/tarfile.rst:1478
+#, fuzzy
+msgid ""
+"The ancient V7 format. This is the first tar format from Unix Seventh "
+"Edition, storing only regular files and directories. Names must not be "
+"longer than 100 characters, there is no user/group name information. Some "
+"archives have miscalculated header checksums in case of fields with non-"
+"ASCII characters."
+msgstr ""
+"Định dạng V7 cổ xưa. Đây là định dạng tar đầu tiên từ Unix Seventh Edition, "
+"chỉ lưu trữ các tệp và thư mục thông thường. Tên không được dài quá 100 ký "
+"tự, không có thông tin tên người dùng/nhóm. Một số kho lưu trữ đã tính toán "
+"sai tổng kiểm tra tiêu đề trong trường hợp các trường có ký tự không phải "
+"ASCII."
+
+#: ../../library/tarfile.rst:1483
+#, fuzzy
+msgid ""
+"The SunOS tar extended format. This format is a variant of the POSIX.1-2001 "
+"pax format, but is not compatible."
+msgstr ""
+"Định dạng mở rộng tar của SunOS. Định dạng này là một biến thể của định dạng"
+" pax POSIX.1-2001 nhưng không tương thích."
+
+#: ../../library/tarfile.rst:1489
+#, fuzzy
+msgid "Unicode issues"
+msgstr "vấn đề về Unicode"
+
+#: ../../library/tarfile.rst:1491
+#, fuzzy
+msgid ""
+"The tar format was originally conceived to make backups on tape drives with "
+"the main focus on preserving file system information. Nowadays tar archives "
+"are commonly used for file distribution and exchanging archives over "
+"networks. One problem of the original format (which is the basis of all "
+"other formats) is that there is no concept of supporting different character"
+" encodings. For example, an ordinary tar archive created on a *UTF-8* system"
+" cannot be read correctly on a *Latin-1* system if it contains non-*ASCII* "
+"characters. Textual metadata (like filenames, linknames, user/group names) "
+"will appear damaged. Unfortunately, there is no way to autodetect the "
+"encoding of an archive. The pax format was designed to solve this problem. "
+"It stores non-ASCII metadata using the universal character encoding *UTF-8*."
+msgstr ""
+"Định dạng tar ban đầu được hình thành để tạo bản sao lưu trên ổ băng từ với "
+"mục tiêu chính là lưu giữ thông tin hệ thống tệp. Ngày nay, kho lưu trữ tar "
+"thường được sử dụng để phân phối tệp và trao đổi tệp lưu trữ qua mạng. Một "
+"vấn đề của định dạng ban đầu (là cơ sở của tất cả các định dạng khác) là "
+"không có khái niệm hỗ trợ các mã hóa ký tự khác nhau. Ví dụ: kho lưu trữ tar"
+" thông thường được tạo trên hệ thống *UTF-8* không thể đọc chính xác trên hệ"
+" thống *Latin-1* nếu nó chứa các ký tự không phải *ASCII*. Siêu dữ liệu văn "
+"bản (như tên tệp, tên liên kết, tên người dùng/nhóm) sẽ bị hỏng. Thật không "
+"may, không có cách nào để tự động phát hiện mã hóa của kho lưu trữ. Định "
+"dạng pax được thiết kế để giải quyết vấn đề này. Nó lưu trữ siêu dữ liệu "
+"không phải ASCII bằng cách sử dụng mã hóa ký tự phổ quát *UTF-8*."
+
+#: ../../library/tarfile.rst:1503
+#, fuzzy
+msgid ""
+"The details of character conversion in :mod:`!tarfile` are controlled by the"
+" *encoding* and *errors* keyword arguments of the :class:`TarFile` class."
+msgstr ""
+"Chi tiết chuyển đổi ký tự trong :mod:`!tarfile` được kiểm soát bởi các đối "
+"số từ khóa *encoding* và *errors* của lớp :class:`TarFile`."
+
+#: ../../library/tarfile.rst:1506
+#, fuzzy
+msgid ""
+"*encoding* defines the character encoding to use for the metadata in the "
+"archive. The default value is :func:`sys.getfilesystemencoding` or "
+"``'ascii'`` as a fallback. Depending on whether the archive is read or "
+"written, the metadata must be either decoded or encoded. If *encoding* is "
+"not set appropriately, this conversion may fail."
+msgstr ""
+"*encoding* xác định mã hóa ký tự để sử dụng cho siêu dữ liệu trong kho lưu "
+"trữ. Giá trị mặc định là :func:`sys.getfilesystemencoding` hoặc ``'ascii'`` "
+"làm giá trị dự phòng. Tùy thuộc vào việc kho lưu trữ được đọc hay ghi, siêu "
+"dữ liệu phải được giải mã hoặc mã hóa. Nếu *encoding* không được đặt phù "
+"hợp, quá trình chuyển đổi này có thể không thành công."
+
+#: ../../library/tarfile.rst:1512
+#, fuzzy
+msgid ""
+"The *errors* argument defines how characters are treated that cannot be "
+"converted. Possible values are listed in section :ref:`error-handlers`. The "
+"default scheme is ``'surrogateescape'`` which Python also uses for its file "
+"system calls, see :ref:`os-filenames`."
+msgstr ""
+"Đối số *errors* xác định cách xử lý các ký tự không thể chuyển đổi. Các giá "
+"trị có thể được liệt kê trong phần :ref:`error-handlers`. Lược đồ mặc định "
+"là ``'surrogateescape'`` mà Python cũng sử dụng cho các lệnh gọi hệ thống "
+"tệp của nó, xem :ref:`os-filenames`."
+
+#: ../../library/tarfile.rst:1517
+#, fuzzy
+msgid ""
+"For :const:`PAX_FORMAT` archives (the default), *encoding* is generally not "
+"needed because all the metadata is stored using *UTF-8*. *encoding* is only "
+"used in the rare cases when binary pax headers are decoded or when strings "
+"with surrogate characters are stored."
+msgstr ""
+"Đối với kho lưu trữ :const:`PAX_FORMAT` (mặc định), *encoding* thường không "
+"cần thiết vì tất cả siêu dữ liệu được lưu trữ bằng *UTF-8*. *encoding* chỉ "
+"được sử dụng trong một số trường hợp hiếm hoi khi các tiêu đề pax nhị phân "
+"được giải mã hoặc khi các chuỗi có ký tự thay thế được lưu trữ."

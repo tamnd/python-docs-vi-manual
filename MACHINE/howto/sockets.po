@@ -1,0 +1,927 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/sockets.rst:5
+#, fuzzy
+msgid "Socket Programming HOWTO"
+msgstr "Lập trình socket HOWTO"
+
+#: ../../howto/sockets.rst
+#, fuzzy
+msgid "Author"
+msgstr "tác giả"
+
+#: ../../howto/sockets.rst:7
+#, fuzzy
+msgid "Gordon McMillan"
+msgstr "Gordon McMillan"
+
+#: ../../howto/sockets.rst:-1
+#, fuzzy
+msgid "Abstract"
+msgstr "Tóm tắt"
+
+#: ../../howto/sockets.rst:12
+#, fuzzy
+msgid ""
+"Sockets are used nearly everywhere, but are one of the most severely "
+"misunderstood technologies around. This is a 10,000 foot overview of "
+"sockets. It's not really a tutorial - you'll still have work to do in "
+"getting things operational. It doesn't cover the fine points (and there are "
+"a lot of them), but I hope it will give you enough background to begin using"
+" them decently."
+msgstr ""
+"Ổ cắm được sử dụng gần như ở khắp mọi nơi, nhưng là một trong những công "
+"nghệ bị hiểu lầm nghiêm trọng nhất. Đây là tổng quan về ổ cắm dài 10.000 "
+"foot. Đây thực sự không phải là một hướng dẫn - bạn vẫn sẽ có việc phải làm "
+"để vận hành mọi thứ. Nó không đề cập đến những điểm quan trọng (và có rất "
+"nhiều điểm), nhưng tôi hy vọng nó sẽ cung cấp cho bạn đủ nền tảng để bắt đầu"
+" sử dụng chúng một cách thành thạo."
+
+#: ../../howto/sockets.rst:20
+#, fuzzy
+msgid "Sockets"
+msgstr "Ổ cắm"
+
+#: ../../howto/sockets.rst:22
+#, python-format, fuzzy
+msgid ""
+"I'm only going to talk about INET (i.e. IPv4) sockets, but they account for "
+"at least 99% of the sockets in use. And I'll only talk about STREAM (i.e. "
+"TCP) sockets - unless you really know what you're doing (in which case this "
+"HOWTO isn't for you!), you'll get better behavior and performance from a "
+"STREAM socket than anything else. I will try to clear up the mystery of what"
+" a socket is, as well as some hints on how to work with blocking and non-"
+"blocking sockets. But I'll start by talking about blocking sockets. You'll "
+"need to know how they work before dealing with non-blocking sockets."
+msgstr ""
+"Tôi sẽ chỉ nói về ổ cắm INET (tức là IPv4), nhưng chúng chiếm ít nhất 99% số"
+" ổ cắm đang được sử dụng. Và tôi sẽ chỉ nói về ổ cắm STREAM (tức là TCP) - "
+"trừ khi bạn thực sự biết mình đang làm gì (trong trường hợp đó, HOWTO này "
+"không dành cho bạn!), bạn sẽ có được hoạt động và hiệu suất tốt hơn từ ổ cắm"
+" STREAM hơn bất kỳ thứ gì khác. Tôi sẽ cố gắng làm sáng tỏ bí ẩn về ổ cắm là"
+" gì, cũng như một số gợi ý về cách làm việc với ổ cắm chặn và không chặn. "
+"Nhưng tôi sẽ bắt đầu bằng việc nói về việc chặn ổ cắm. Bạn sẽ cần biết chúng"
+" hoạt động như thế nào trước khi xử lý các ổ cắm không chặn."
+
+#: ../../howto/sockets.rst:31
+#, fuzzy
+msgid ""
+"Part of the trouble with understanding these things is that \"socket\" can "
+"mean a number of subtly different things, depending on context. So first, "
+"let's make a distinction between a \"client\" socket - an endpoint of a "
+"conversation, and a \"server\" socket, which is more like a switchboard "
+"operator. The client application (your browser, for example) uses \"client\""
+" sockets exclusively; the web server it's talking to uses both \"server\" "
+"sockets and \"client\" sockets."
+msgstr ""
+"Một phần khó khăn khi hiểu những điều này là \"ổ cắm\" có thể mang nhiều "
+"nghĩa khác nhau một cách tinh tế, tùy thuộc vào ngữ cảnh. Vì vậy, trước "
+"tiên, hãy phân biệt giữa ổ cắm \"máy khách\" - điểm cuối của cuộc trò chuyện"
+" và ổ cắm \"máy chủ\", giống như một nhà điều hành tổng đài hơn. Ứng dụng "
+"khách (ví dụ: trình duyệt của bạn) chỉ sử dụng ổ cắm \"máy khách\"; máy chủ "
+"web mà nó đang nói đến sử dụng cả ổ cắm \"máy chủ\" và ổ cắm \"máy khách\"."
+
+#: ../../howto/sockets.rst:40
+#, fuzzy
+msgid "History"
+msgstr "Lịch sử"
+
+#: ../../howto/sockets.rst:42
+#, fuzzy
+msgid ""
+"Of the various forms of :abbr:`IPC (Inter Process Communication)`, sockets "
+"are by far the most popular.  On any given platform, there are likely to be "
+"other forms of IPC that are faster, but for cross-platform communication, "
+"sockets are about the only game in town."
+msgstr ""
+"Trong số các dạng :abbr:`IPC (Inter Process Communication)` khác nhau, cho "
+"đến nay, ổ cắm là loại phổ biến nhất.  Trên bất kỳ nền tảng nào, có thể sẽ "
+"có các dạng IPC khác nhanh hơn, nhưng đối với giao tiếp đa nền tảng, socket "
+"là trò chơi duy nhất trong thị trấn."
+
+#: ../../howto/sockets.rst:47
+#, fuzzy
+msgid ""
+"They were invented in Berkeley as part of the BSD flavor of Unix. They "
+"spread like wildfire with the internet. With good reason --- the combination"
+" of sockets with INET makes talking to arbitrary machines around the world "
+"unbelievably easy (at least compared to other schemes)."
+msgstr ""
+"Chúng được phát minh ở Berkeley như một phần của phiên bản BSD của Unix. "
+"Chúng lan truyền như cháy rừng nhờ internet. Có lý do chính đáng --- sự kết "
+"hợp của các ổ cắm với INET khiến việc nói chuyện với các máy tùy ý trên khắp"
+" thế giới trở nên dễ dàng đến mức không thể tin được (ít nhất là so với các "
+"chương trình khác)."
+
+#: ../../howto/sockets.rst:54
+#, fuzzy
+msgid "Creating a Socket"
+msgstr "Tạo một ổ cắm"
+
+#: ../../howto/sockets.rst:56
+#, fuzzy
+msgid ""
+"Roughly speaking, when you clicked on the link that brought you to this "
+"page, your browser did something like the following::"
+msgstr ""
+"Nói một cách đại khái, khi bạn nhấp vào liên kết đưa bạn đến trang này, "
+"trình duyệt của bạn đã thực hiện một số thao tác như sau::"
+
+#: ../../howto/sockets.rst:59
+#, fuzzy
+msgid ""
+"# create an INET, STREAMing socket\n"
+"s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n"
+"# now connect to the web server on port 80 - the normal http port\n"
+"s.connect((\"www.python.org\", 80))"
+msgstr ""
+"# create và INET, ổ cắm STREAM\n"
+"s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n"
+"# now kết nối với máy chủ web trên cổng 80 - cổng http thông thường\n"
+"s.connect((\"www.python.org\", 80))"
+
+#: ../../howto/sockets.rst:64
+#, fuzzy
+msgid ""
+"When the ``connect`` completes, the socket ``s`` can be used to send in a "
+"request for the text of the page. The same socket will read the reply, and "
+"then be destroyed. That's right, destroyed. Client sockets are normally only"
+" used for one exchange (or a small set of sequential exchanges)."
+msgstr ""
+"Khi ``connect`` hoàn thành, socket ``s`` có thể được sử dụng để gửi yêu cầu "
+"về văn bản của trang. Ổ cắm tương tự sẽ đọc câu trả lời và sau đó bị hủy. "
+"Đúng vậy, bị phá hủy. Ổ cắm máy khách thường chỉ được sử dụng cho một lần "
+"trao đổi (hoặc một tập hợp nhỏ các trao đổi tuần tự)."
+
+#: ../../howto/sockets.rst:70
+#, fuzzy
+msgid ""
+"What happens in the web server is a bit more complex. First, the web server "
+"creates a \"server socket\"::"
+msgstr ""
+"Những gì xảy ra trong máy chủ web phức tạp hơn một chút. Đầu tiên, máy chủ "
+"web tạo một \"ổ cắm máy chủ\"::"
+
+#: ../../howto/sockets.rst:73
+#, fuzzy
+msgid ""
+"# create an INET, STREAMing socket\n"
+"serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n"
+"# bind the socket to a public host, and a well-known port\n"
+"serversocket.bind((socket.gethostname(), 80))\n"
+"# become a server socket\n"
+"serversocket.listen(5)"
+msgstr ""
+"# create và INET, ổ cắm STREAM\n"
+"serverocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n"
+"# bind ổ cắm cho máy chủ công cộng và cổng nổi tiếng\n"
+"serversocket.bind((socket.gethostname(), 80))\n"
+"# become ổ cắm máy chủ\n"
+"serverocket.listen(5)"
+
+#: ../../howto/sockets.rst:80
+#, fuzzy
+msgid ""
+"A couple things to notice: we used ``socket.gethostname()`` so that the "
+"socket would be visible to the outside world.  If we had used "
+"``s.bind(('localhost', 80))`` or ``s.bind(('127.0.0.1', 80))`` we would "
+"still have a \"server\" socket, but one that was only visible within the "
+"same machine.  ``s.bind(('', 80))`` specifies that the socket is reachable "
+"by any address the machine happens to have."
+msgstr ""
+"Một số điều cần lưu ý: chúng tôi đã sử dụng ``socket.gethostname()`` để ổ "
+"cắm có thể hiển thị với thế giới bên ngoài.  Nếu chúng tôi đã sử dụng "
+"``s.bind(('localhost', 80))`` hoặc ``s.bind(('127.0.0.1', 80))`` thì chúng "
+"tôi vẫn có ổ cắm \"máy chủ\", nhưng ổ cắm chỉ hiển thị trong cùng một máy.  "
+"``s.bind(('', 80))`` chỉ định rằng ổ cắm có thể truy cập được bằng bất kỳ "
+"địa chỉ nào mà máy có."
+
+#: ../../howto/sockets.rst:87
+#, fuzzy
+msgid ""
+"A second thing to note: low number ports are usually reserved for \"well "
+"known\" services (HTTP, SNMP etc). If you're playing around, use a nice high"
+" number (4 digits)."
+msgstr ""
+"Điều thứ hai cần lưu ý: số cổng thấp thường được dành riêng cho các dịch vụ "
+"\"nổi tiếng\" (HTTP, SNMP, v.v.). Nếu bạn đang chơi đùa, hãy sử dụng số cao "
+"đẹp (4 chữ số)."
+
+#: ../../howto/sockets.rst:91
+#, fuzzy
+msgid ""
+"Finally, the argument to ``listen`` tells the socket library that we want it"
+" to queue up as many as 5 connect requests (the normal max) before refusing "
+"outside connections. If the rest of the code is written properly, that "
+"should be plenty."
+msgstr ""
+"Cuối cùng, đối số của ``listen`` cho thư viện socket biết rằng chúng ta muốn"
+" nó xếp hàng tối đa 5 yêu cầu kết nối (mức tối đa bình thường) trước khi từ "
+"chối các kết nối bên ngoài. Nếu phần còn lại của mã được viết đúng, thì sẽ "
+"rất nhiều."
+
+#: ../../howto/sockets.rst:95
+#, fuzzy
+msgid ""
+"Now that we have a \"server\" socket, listening on port 80, we can enter the"
+" mainloop of the web server::"
+msgstr ""
+"Bây giờ chúng ta có ổ cắm \"máy chủ\", nghe trên cổng 80, chúng ta có thể "
+"vào vòng lặp chính của máy chủ web ::"
+
+#: ../../howto/sockets.rst:98
+#, fuzzy
+msgid ""
+"while True:\n"
+"    # accept connections from outside\n"
+"    (clientsocket, address) = serversocket.accept()\n"
+"    # now do something with the clientsocket\n"
+"    # in this case, we'll pretend this is a threaded server\n"
+"    ct = make_client_thread(clientsocket)\n"
+"    ct.start()"
+msgstr ""
+"trong khi Đúng:\n"
+"    kết nối # accept từ bên ngoài\n"
+"    (clientsocket, địa chỉ) = serversocket.accept()\n"
+"    # now làm gì đó với clientocket\n"
+"    # in trong trường hợp này, chúng ta sẽ giả vờ đây là một máy chủ theo luồng\n"
+"    ct = make_client_thread(clientsocket)\n"
+"    ct.start()"
+
+#: ../../howto/sockets.rst:106
+#, fuzzy
+msgid ""
+"There's actually 3 general ways in which this loop could work - dispatching "
+"a thread to handle ``clientsocket``, create a new process to handle "
+"``clientsocket``, or restructure this app to use non-blocking sockets, and "
+"multiplex between our \"server\" socket and any active ``clientsocket``\\ s "
+"using ``select``. More about that later. The important thing to understand "
+"now is this: this is *all* a \"server\" socket does. It doesn't send any "
+"data. It doesn't receive any data. It just produces \"client\" sockets. Each"
+" ``clientsocket`` is created in response to some *other* \"client\" socket "
+"doing a ``connect()`` to the host and port we're bound to. As soon as we've "
+"created that ``clientsocket``, we go back to listening for more connections."
+" The two \"clients\" are free to chat it up - they are using some "
+"dynamically allocated port which will be recycled when the conversation "
+"ends."
+msgstr ""
+"Thực tế, có 3 cách chung để vòng lặp này có thể hoạt động - gửi một luồng để"
+" xử lý ``clientsocket``, tạo một quy trình mới để xử lý ``clientsocket`` "
+"hoặc cơ cấu lại ứng dụng này để sử dụng các ổ cắm không chặn và ghép kênh "
+"giữa ổ cắm \"máy chủ\" của chúng tôi và bất kỳ ``clientsocket`` nào đang "
+"hoạt động bằng ``select``. Thông tin thêm về điều đó sau. Điều quan trọng "
+"cần hiểu bây giờ là: đây là *all*, một ổ cắm \"máy chủ\". Nó không gửi bất "
+"kỳ dữ liệu nào. Nó không nhận được bất kỳ dữ liệu nào. Nó chỉ tạo ra ổ cắm "
+"\"khách hàng\". Mỗi ``clientsocket`` được tạo để phản hồi với một số ổ cắm "
+"\"máy khách\" *other* đang thực hiện ``connect()`` với máy chủ và cổng mà "
+"chúng tôi liên kết. Ngay sau khi tạo xong ``clientsocket`` đó, chúng tôi sẽ "
+"quay lại lắng nghe để có thêm kết nối. Hai \"khách hàng\" có thể thoải mái "
+"trò chuyện - họ đang sử dụng một số cổng được phân bổ động sẽ được tái sử "
+"dụng khi cuộc trò chuyện kết thúc."
+
+#: ../../howto/sockets.rst:121
+#, fuzzy
+msgid "IPC"
+msgstr "IPC"
+
+#: ../../howto/sockets.rst:123
+#, fuzzy
+msgid ""
+"If you need fast IPC between two processes on one machine, you should look "
+"into pipes or shared memory.  If you do decide to use AF_INET sockets, bind "
+"the \"server\" socket to ``'localhost'``. On most platforms, this will take "
+"a shortcut around a couple of layers of network code and be quite a bit "
+"faster."
+msgstr ""
+"Nếu bạn cần IPC nhanh giữa hai tiến trình trên một máy, bạn nên xem xét các "
+"đường dẫn hoặc bộ nhớ dùng chung.  Nếu bạn quyết định sử dụng ổ cắm AF_INET,"
+" hãy liên kết ổ cắm \"máy chủ\" với ``'localhost'``. Trên hầu hết các nền "
+"tảng, việc này sẽ có một phím tắt xung quanh một vài lớp mã mạng và nhanh "
+"hơn một chút."
+
+#: ../../howto/sockets.rst:129
+#, fuzzy
+msgid ""
+"The :mod:`multiprocessing` integrates cross-platform IPC into a higher-level"
+" API."
+msgstr "Zz000zz tích hợp IPC đa nền tảng vào API cấp cao hơn."
+
+#: ../../howto/sockets.rst:134
+#, fuzzy
+msgid "Using a Socket"
+msgstr "Sử dụng ổ cắm"
+
+#: ../../howto/sockets.rst:136
+#, fuzzy
+msgid ""
+"The first thing to note, is that the web browser's \"client\" socket and the"
+" web server's \"client\" socket are identical beasts. That is, this is a "
+"\"peer to peer\" conversation. Or to put it another way, *as the designer, "
+"you will have to decide what the rules of etiquette are for a conversation*."
+" Normally, the ``connect``\\ ing socket starts the conversation, by sending "
+"in a request, or perhaps a signon. But that's a design decision - it's not a"
+" rule of sockets."
+msgstr ""
+"Điều đầu tiên cần lưu ý là ổ cắm \"máy khách\" của trình duyệt web và ổ cắm "
+"\"máy khách\" của máy chủ web là những con thú giống hệt nhau. Tức là đây là"
+" cuộc trò chuyện \"ngang hàng\". Hay nói cách khác là *as the designer, you "
+"will have to decide what the rules of etiquette are for a conversation*. "
+"Thông thường, ổ cắm ``connect``\\ ing bắt đầu cuộc trò chuyện bằng cách gửi "
+"yêu cầu hoặc có thể là đăng nhập. Nhưng đó là quyết định thiết kế - không "
+"phải là quy tắc về ổ cắm."
+
+#: ../../howto/sockets.rst:143
+#, fuzzy
+msgid ""
+"Now there are two sets of verbs to use for communication. You can use "
+"``send`` and ``recv``, or you can transform your client socket into a file-"
+"like beast and use ``read`` and ``write``. The latter is the way Java "
+"presents its sockets. I'm not going to talk about it here, except to warn "
+"you that you need to use ``flush`` on sockets. These are buffered \"files\","
+" and a common mistake is to ``write`` something, and then ``read`` for a "
+"reply. Without a ``flush`` in there, you may wait forever for the reply, "
+"because the request may still be in your output buffer."
+msgstr ""
+"Bây giờ có hai nhóm động từ được sử dụng để giao tiếp. Bạn có thể sử dụng "
+"``send`` và ``recv`` hoặc bạn có thể chuyển đổi ổ cắm máy khách của mình "
+"thành một con thú giống như tệp và sử dụng ``read`` và ``write``. Cái sau là"
+" cách Java trình bày các socket của nó. Tôi sẽ không nói về nó ở đây, ngoại "
+"trừ việc cảnh báo bạn rằng bạn cần sử dụng ``flush`` trên socket. Đây là "
+"những \"tệp\" được lưu vào bộ đệm và một lỗi phổ biến là ``write`` một cái "
+"gì đó và sau đó ``read`` để trả lời. Nếu không có ``flush`` trong đó, bạn có"
+" thể đợi câu trả lời mãi mãi vì yêu cầu có thể vẫn còn trong bộ đệm đầu ra "
+"của bạn."
+
+#: ../../howto/sockets.rst:152
+#, fuzzy
+msgid ""
+"Now we come to the major stumbling block of sockets - ``send`` and ``recv`` "
+"operate on the network buffers. They do not necessarily handle all the bytes"
+" you hand them (or expect from them), because their major focus is handling "
+"the network buffers. In general, they return when the associated network "
+"buffers have been filled (``send``) or emptied (``recv``). They then tell "
+"you how many bytes they handled. It is *your* responsibility to call them "
+"again until your message has been completely dealt with."
+msgstr ""
+"Bây giờ chúng ta đến với vấn đề chính của ổ cắm - ``send`` và ``recv`` hoạt "
+"động trên bộ đệm mạng. Chúng không nhất thiết phải xử lý tất cả byte bạn "
+"giao cho chúng (hoặc mong đợi từ chúng), vì trọng tâm chính của chúng là xử "
+"lý bộ đệm mạng. Nói chung, chúng quay trở lại khi bộ đệm mạng liên quan đã "
+"được lấp đầy (``send``) hoặc bị xóa (``recv``). Sau đó, họ cho bạn biết họ "
+"đã xử lý bao nhiêu byte. *your* có trách nhiệm gọi lại cho họ cho đến khi "
+"tin nhắn của bạn được xử lý hoàn toàn."
+
+#: ../../howto/sockets.rst:160
+#, fuzzy
+msgid ""
+"When a ``recv`` returns 0 bytes, it means the other side has closed (or is "
+"in the process of closing) the connection.  You will not receive any more "
+"data on this connection. Ever.  You may be able to send data successfully; "
+"I'll talk more about this later."
+msgstr ""
+"Khi ``recv`` trả về 0 byte, điều đó có nghĩa là phía bên kia đã đóng (hoặc "
+"đang trong quá trình đóng) kết nối.  Bạn sẽ không nhận được thêm bất kỳ dữ "
+"liệu nào về kết nối này. Bao giờ.  Bạn có thể gửi dữ liệu thành công; Tôi sẽ"
+" nói thêm về điều này sau."
+
+#: ../../howto/sockets.rst:165
+#, fuzzy
+msgid ""
+"A protocol like HTTP uses a socket for only one transfer. The client sends a"
+" request, then reads a reply.  That's it. The socket is discarded. This "
+"means that a client can detect the end of the reply by receiving 0 bytes."
+msgstr ""
+"Giao thức như HTTP chỉ sử dụng ổ cắm cho một lần truyền. Client gửi yêu cầu,"
+" sau đó đọc phản hồi.  Thế thôi. Ổ cắm bị loại bỏ. Điều này có nghĩa là "
+"khách hàng có thể phát hiện phần cuối của phản hồi bằng cách nhận 0 byte."
+
+#: ../../howto/sockets.rst:169
+#, fuzzy
+msgid ""
+"But if you plan to reuse your socket for further transfers, you need to "
+"realize that *there is no* :abbr:`EOT (End of Transfer)` *on a socket.* I "
+"repeat: if a socket ``send`` or ``recv`` returns after handling 0 bytes, the"
+" connection has been broken.  If the connection has *not* been broken, you "
+"may wait on a ``recv`` forever, because the socket will *not* tell you that "
+"there's nothing more to read (for now).  Now if you think about that a bit, "
+"you'll come to realize a fundamental truth of sockets: *messages must either"
+" be fixed length* (yuck), *or be delimited* (shrug), *or indicate how long "
+"they are* (much better), *or end by shutting down the connection*. The "
+"choice is entirely yours, (but some ways are righter than others)."
+msgstr ""
+"Nhưng nếu bạn dự định sử dụng lại ổ cắm của mình để chuyển tiếp, bạn cần "
+"nhận ra rằng *there is no* :abbr:`EOT (End of Transfer)` *on a socket.* tôi "
+"nhắc lại: nếu ổ cắm ``send`` hoặc ``recv`` trả về sau khi xử lý 0 byte, kết "
+"nối đã bị hỏng.  Nếu kết nối *not* bị hỏng, bạn có thể đợi ``recv`` mãi mãi,"
+" vì ổ cắm *not* sẽ cho bạn biết rằng không còn gì để đọc (hiện tại).  Bây "
+"giờ nếu bạn nghĩ về điều đó một chút, bạn sẽ nhận ra sự thật cơ bản về "
+"socket: *messages must either be fixed length* (yuck), *or be delimited* "
+"(nhún vai), *or indicate how long they are* (tốt hơn nhiều), *or end by "
+"shutting down the connection*. Sự lựa chọn hoàn toàn thuộc về bạn, (nhưng có"
+" một số cách đúng đắn hơn những cách khác)."
+
+#: ../../howto/sockets.rst:180
+#, fuzzy
+msgid ""
+"Assuming you don't want to end the connection, the simplest solution is a "
+"fixed length message::"
+msgstr ""
+"Giả sử bạn không muốn kết thúc kết nối, giải pháp đơn giản nhất là một tin "
+"nhắn có độ dài cố định ::"
+
+#: ../../howto/sockets.rst:183
+#, fuzzy
+msgid ""
+"class MySocket:\n"
+"    \"\"\"demonstration class only\n"
+"      - coded for clarity, not efficiency\n"
+"    \"\"\"\n"
+"\n"
+"    def __init__(self, sock=None):\n"
+"        if sock is None:\n"
+"            self.sock = socket.socket(\n"
+"                            socket.AF_INET, socket.SOCK_STREAM)\n"
+"        else:\n"
+"            self.sock = sock\n"
+"\n"
+"    def connect(self, host, port):\n"
+"        self.sock.connect((host, port))\n"
+"\n"
+"    def mysend(self, msg):\n"
+"        totalsent = 0\n"
+"        while totalsent < MSGLEN:\n"
+"            sent = self.sock.send(msg[totalsent:])\n"
+"            if sent == 0:\n"
+"                raise RuntimeError(\"socket connection broken\")\n"
+"            totalsent = totalsent + sent\n"
+"\n"
+"    def myreceive(self):\n"
+"        chunks = []\n"
+"        bytes_recd = 0\n"
+"        while bytes_recd < MSGLEN:\n"
+"            chunk = self.sock.recv(min(MSGLEN - bytes_recd, 2048))\n"
+"            if chunk == b'':\n"
+"                raise RuntimeError(\"socket connection broken\")\n"
+"            chunks.append(chunk)\n"
+"            bytes_recd = bytes_recd + len(chunk)\n"
+"        return b''.join(chunks)"
+msgstr ""
+"lớp MySocket:\n"
+"    \"\"\"Chỉ lớp trình diễn\n"
+"      - được mã hóa cho rõ ràng, không hiệu quả\n"
+"    \"\"\"\n"
+"\n"
+"    def __init__(self, sock=None):\n"
+"        nếu tất là Không có:\n"
+"            self.sock = socket.socket(\n"
+"                            socket.AF_INET, socket.SOCK_STREAM)\n"
+"        khác:\n"
+"            self.sock = tất\n"
+"\n"
+"    kết nối chắc chắn (tự, máy chủ, cổng):\n"
+"        self.sock.connect((máy chủ, cổng))\n"
+"\n"
+"    def mysend(self, msg):\n"
+"        tổng số đã gửi = 0\n"
+"        trong khi tổng số đã gửi < MSGLEN:\n"
+"            đã gửi = self.sock.send(msg[totalsent:])\n"
+"            nếu được gửi == 0:\n"
+"                raise RuntimeError(\"kết nối ổ cắm bị hỏng\")\n"
+"            tổng số đã gửi = tổng số đã gửi + đã gửi\n"
+"\n"
+"    def myreceive(self):\n"
+"        khối = []\n"
+"        byte_recd = 0\n"
+"        trong khi byte_recd < MSGLEN:\n"
+"            chunk = self.sock.recv(min(MSGLEN - bytes_recd, 2048))\n"
+"            nếu đoạn == b'':\n"
+"                raise RuntimeError(\"kết nối ổ cắm bị hỏng\")\n"
+"            chunk.append(chunk)\n"
+"            byte_recd = byte_recd + len(chunk)\n"
+"        trả về b''.join(chunks)"
+
+#: ../../howto/sockets.rst:217
+#, fuzzy
+msgid ""
+"The sending code here is usable for almost any messaging scheme - in Python "
+"you send strings, and you can use ``len()`` to determine its length (even if"
+" it has embedded ``\\0`` characters). It's mostly the receiving code that "
+"gets more complex. (And in C, it's not much worse, except you can't use "
+"``strlen`` if the message has embedded ``\\0``\\ s.)"
+msgstr ""
+"Mã gửi ở đây có thể sử dụng được cho hầu hết mọi sơ đồ nhắn tin - trong "
+"Python bạn gửi chuỗi và bạn có thể sử dụng ``len()`` để xác định độ dài của "
+"nó (ngay cả khi nó có nhúng các ký tự ``\\0``). Chủ yếu là mã nhận được phức"
+" tạp hơn. (Và trong C, điều đó không tệ hơn nhiều, ngoại trừ việc bạn không "
+"thể sử dụng ``strlen`` nếu thông báo đã nhúng ``\\0``\\s.)"
+
+#: ../../howto/sockets.rst:223
+#, fuzzy
+msgid ""
+"The easiest enhancement is to make the first character of the message an "
+"indicator of message type, and have the type determine the length. Now you "
+"have two ``recv``\\ s - the first to get (at least) that first character so "
+"you can look up the length, and the second in a loop to get the rest. If you"
+" decide to go the delimited route, you'll be receiving in some arbitrary "
+"chunk size, (4096 or 8192 is frequently a good match for network buffer "
+"sizes), and scanning what you've received for a delimiter."
+msgstr ""
+"Cải tiến dễ dàng nhất là biến ký tự đầu tiên của tin nhắn thành chỉ báo về "
+"loại tin nhắn và để loại xác định độ dài. Bây giờ bạn có hai ``recv``\\ s - "
+"ký tự đầu tiên lấy (ít nhất) ký tự đầu tiên đó để bạn có thể tra cứu độ dài "
+"và ký tự thứ hai trong vòng lặp để lấy phần còn lại. Nếu bạn quyết định đi "
+"theo lộ trình được phân tách, bạn sẽ nhận được một số kích thước khối tùy ý "
+"(4096 hoặc 8192 thường phù hợp với kích thước bộ đệm mạng) và quét những gì "
+"bạn đã nhận được để tìm dấu phân cách."
+
+#: ../../howto/sockets.rst:231
+#, fuzzy
+msgid ""
+"One complication to be aware of: if your conversational protocol allows "
+"multiple messages to be sent back to back (without some kind of reply), and "
+"you pass ``recv`` an arbitrary chunk size, you may end up reading the start "
+"of a following message. You'll need to put that aside and hold onto it, "
+"until it's needed."
+msgstr ""
+"Một điều phức tạp cần lưu ý: nếu giao thức đàm thoại của bạn cho phép nhiều "
+"tin nhắn được gửi liên tiếp (không có dạng trả lời nào đó) và bạn chuyển cho"
+" ``recv`` một kích thước đoạn tùy ý, cuối cùng bạn có thể đọc phần đầu của "
+"tin nhắn sau. Bạn sẽ cần phải đặt nó sang một bên và giữ nó cho đến khi cần "
+"thiết."
+
+#: ../../howto/sockets.rst:237
+#, fuzzy
+msgid ""
+"Prefixing the message with its length (say, as 5 numeric characters) gets "
+"more complex, because (believe it or not), you may not get all 5 characters "
+"in one ``recv``. In playing around, you'll get away with it; but in high "
+"network loads, your code will very quickly break unless you use two ``recv``"
+" loops - the first to determine the length, the second to get the data part "
+"of the message. Nasty. This is also when you'll discover that ``send`` does "
+"not always manage to get rid of everything in one pass. And despite having "
+"read this, you will eventually get bit by it!"
+msgstr ""
+"Việc thêm tiền tố vào tin nhắn với độ dài của nó (giả sử là 5 ký tự số) trở "
+"nên phức tạp hơn, bởi vì (tin hay không tùy bạn), bạn có thể không nhận được"
+" tất cả 5 ký tự trong một ``recv``. Khi chơi đùa, bạn sẽ thoát khỏi nó; "
+"nhưng khi tải mạng cao, mã của bạn sẽ rất nhanh bị hỏng trừ khi bạn sử dụng "
+"hai vòng lặp ``recv`` - vòng lặp đầu tiên để xác định độ dài, vòng lặp thứ "
+"hai để lấy phần dữ liệu của tin nhắn. Bẩn thỉu. Đây cũng là lúc bạn phát "
+"hiện ra rằng ``send`` không phải lúc nào cũng có thể loại bỏ mọi thứ chỉ "
+"trong một lần. Và mặc dù đã đọc điều này, nhưng cuối cùng bạn cũng sẽ hiểu "
+"được nó!"
+
+#: ../../howto/sockets.rst:246
+#, fuzzy
+msgid ""
+"In the interests of space, building your character, (and preserving my "
+"competitive position), these enhancements are left as an exercise for the "
+"reader. Lets move on to cleaning up."
+msgstr ""
+"Vì lợi ích của không gian, xây dựng tính cách của bạn, (và duy trì vị thế "
+"cạnh tranh của tôi), những cải tiến này được coi là bài tập dành cho người "
+"đọc. Hãy chuyển sang dọn dẹp."
+
+#: ../../howto/sockets.rst:252
+#, fuzzy
+msgid "Binary Data"
+msgstr "Dữ liệu nhị phân"
+
+#: ../../howto/sockets.rst:254
+#, fuzzy
+msgid ""
+"It is perfectly possible to send binary data over a socket. The major "
+"problem is that not all machines use the same formats for binary data. For "
+"example, `network byte order "
+"<https://en.wikipedia.org/wiki/Endianness#Networking>`_ is big-endian, with "
+"the most significant byte first, so a 16 bit integer with the value ``1`` "
+"would be the two hex bytes ``00 01``. However, most common processors "
+"(x86/AMD64, ARM, RISC-V), are little-endian, with the least significant byte"
+" first - that same ``1`` would be ``01 00``."
+msgstr ""
+"Hoàn toàn có thể gửi dữ liệu nhị phân qua ổ cắm. Vấn đề chính là không phải "
+"tất cả các máy đều sử dụng cùng một định dạng cho dữ liệu nhị phân. Ví dụ: "
+"`network byte order <https://en.wikipedia.org/wiki/Endianness#Networking>`_ "
+"là big-endian, với byte quan trọng nhất đứng đầu, do đó, số nguyên 16 bit có"
+" giá trị ``1`` sẽ là hai byte hex ``00 01``. Tuy nhiên, hầu hết các bộ xử lý"
+" phổ biến (x86/AMD64, ARM, RISC-V), đều là endian nhỏ, với byte ít quan "
+"trọng nhất đầu tiên - ``1`` đó sẽ là ``01 00``."
+
+#: ../../howto/sockets.rst:262
+#, fuzzy
+msgid ""
+"Socket libraries have calls for converting 16 and 32 bit integers - ``ntohl,"
+" htonl, ntohs, htons`` where \"n\" means *network* and \"h\" means *host*, "
+"\"s\" means *short* and \"l\" means *long*. Where network order is host "
+"order, these do nothing, but where the machine is byte-reversed, these swap "
+"the bytes around appropriately."
+msgstr ""
+"Các thư viện socket yêu cầu chuyển đổi số nguyên 16 và 32 bit - ``ntohl, "
+"htonl, ntohs, htons`` trong đó \"n\" nghĩa là *network* và \"h\" nghĩa là "
+"*host*, \"s\" nghĩa là *short* và \"l\" nghĩa là *long*. Trong trường hợp "
+"thứ tự mạng là thứ tự máy chủ, chúng không làm gì cả, nhưng khi máy bị đảo "
+"ngược byte, chúng sẽ hoán đổi các byte xung quanh một cách thích hợp."
+
+#: ../../howto/sockets.rst:268
+#, fuzzy
+msgid ""
+"In these days of 64-bit machines, the ASCII representation of binary data is"
+" frequently smaller than the binary representation. That's because a "
+"surprising amount of the time, most integers have the value 0, or maybe 1. "
+"The string ``\"0\"`` would be two bytes, while a full 64-bit integer would "
+"be 8. Of course, this doesn't fit well with fixed-length messages. "
+"Decisions, decisions."
+msgstr ""
+"Trong các máy 64-bit ngày nay, biểu diễn ASCII của dữ liệu nhị phân thường "
+"nhỏ hơn biểu diễn nhị phân. Đó là bởi vì trong một khoảng thời gian đáng "
+"ngạc nhiên, hầu hết các số nguyên đều có giá trị 0 hoặc có thể là 1. Chuỗi "
+"``\"0\"`` sẽ có hai byte, trong khi số nguyên 64 bit đầy đủ sẽ là 8. Tất "
+"nhiên, điều này không phù hợp lắm với các tin nhắn có độ dài cố định. Quyết "
+"định, quyết định."
+
+#: ../../howto/sockets.rst:277
+#, fuzzy
+msgid "Disconnecting"
+msgstr "Ngắt kết nối"
+
+#: ../../howto/sockets.rst:279
+#, fuzzy
+msgid ""
+"Strictly speaking, you're supposed to use ``shutdown`` on a socket before "
+"you ``close`` it.  The ``shutdown`` is an advisory to the socket at the "
+"other end. Depending on the argument you pass it, it can mean \"I'm not "
+"going to send anymore, but I'll still listen\", or \"I'm not listening, good"
+" riddance!\".  Most socket libraries, however, are so used to programmers "
+"neglecting to use this piece of etiquette that normally a ``close`` is the "
+"same as ``shutdown(); close()``.  So in most situations, an explicit "
+"``shutdown`` is not needed."
+msgstr ""
+"Nói đúng ra, bạn phải sử dụng ``shutdown`` trên ổ cắm trước khi ``close`` "
+"nó.  Zz002zz là lời khuyên cho ổ cắm ở đầu bên kia. Tùy thuộc vào lập luận "
+"mà bạn đưa ra, nó có thể có nghĩa là \"Tôi sẽ không gửi nữa, nhưng tôi vẫn "
+"sẽ nghe\" hoặc \"Tôi không nghe, chết tiệt!\".  Tuy nhiên, hầu hết các thư "
+"viện socket đã quá quen với việc các lập trình viên bỏ qua việc sử dụng phần"
+" nghi thức này mà thông thường ``close`` cũng giống như ``shutdown(); "
+"close()``.  Vì vậy, trong hầu hết các trường hợp, không cần phải có "
+"``shutdown`` rõ ràng."
+
+#: ../../howto/sockets.rst:287
+#, fuzzy
+msgid ""
+"One way to use ``shutdown`` effectively is in an HTTP-like exchange. The "
+"client sends a request and then does a ``shutdown(1)``. This tells the "
+"server \"This client is done sending, but can still receive.\"  The server "
+"can detect \"EOF\" by a receive of 0 bytes. It can assume it has the "
+"complete request.  The server sends a reply. If the ``send`` completes "
+"successfully then, indeed, the client was still receiving."
+msgstr ""
+"Một cách để sử dụng ``shutdown`` một cách hiệu quả là trao đổi giống như "
+"HTTP. Máy khách gửi yêu cầu và sau đó thực hiện ``shutdown(1)``. Điều này "
+"báo cho máy chủ biết \"Máy khách này đã gửi xong nhưng vẫn có thể nhận "
+"được.\"  Máy chủ có thể phát hiện \"EOF\" bằng cách nhận 0 byte. Nó có thể "
+"cho rằng nó có yêu cầu đầy đủ.  Máy chủ gửi trả lời. Nếu ``send`` hoàn thành"
+" thành công thì quả thực, khách hàng vẫn nhận được."
+
+#: ../../howto/sockets.rst:294
+#, fuzzy
+msgid ""
+"Python takes the automatic shutdown a step further, and says that when a "
+"socket is garbage collected, it will automatically do a ``close`` if it's "
+"needed. But relying on this is a very bad habit. If your socket just "
+"disappears without doing a ``close``, the socket at the other end may hang "
+"indefinitely, thinking you're just being slow. *Please* ``close`` your "
+"sockets when you're done."
+msgstr ""
+"Python tiến thêm một bước nữa về tính năng tự động tắt và nói rằng khi ổ cắm"
+" được thu gom rác, nó sẽ tự động thực hiện ``close`` nếu cần. Nhưng dựa vào "
+"điều này là một thói quen rất xấu. Nếu ổ cắm của bạn biến mất mà không thực "
+"hiện ``close`` thì ổ cắm ở đầu bên kia có thể bị treo vô thời hạn vì cho "
+"rằng bạn đang làm chậm. *Please* ``close`` ổ cắm của bạn khi bạn hoàn tất."
+
+#: ../../howto/sockets.rst:302
+#, fuzzy
+msgid "When Sockets Die"
+msgstr "Khi ổ cắm chết"
+
+#: ../../howto/sockets.rst:304
+#, fuzzy
+msgid ""
+"Probably the worst thing about using blocking sockets is what happens when "
+"the other side comes down hard (without doing a ``close``). Your socket is "
+"likely to hang. TCP is a reliable protocol, and it will wait a long, long "
+"time before giving up on a connection. If you're using threads, the entire "
+"thread is essentially dead. There's not much you can do about it. As long as"
+" you aren't doing something dumb, like holding a lock while doing a blocking"
+" read, the thread isn't really consuming much in the way of resources. Do "
+"*not* try to kill the thread - part of the reason that threads are more "
+"efficient than processes is that they avoid the overhead associated with the"
+" automatic recycling of resources. In other words, if you do manage to kill "
+"the thread, your whole process is likely to be screwed up."
+msgstr ""
+"Có lẽ điều tồi tệ nhất khi sử dụng ổ cắm chặn là điều xảy ra khi đầu bên kia"
+" chạm mạnh (không thực hiện ``close``). Ổ cắm của bạn có thể bị treo. TCP là"
+" một giao thức đáng tin cậy và nó sẽ phải đợi rất rất lâu trước khi từ bỏ "
+"kết nối. Nếu bạn đang sử dụng chủ đề, toàn bộ chủ đề về cơ bản đã chết. Bạn "
+"không thể làm gì nhiều về nó. Miễn là bạn không làm điều gì đó ngu ngốc, "
+"chẳng hạn như giữ khóa trong khi thực hiện đọc chặn, thì luồng không thực sự"
+" tiêu tốn nhiều tài nguyên. *not* có cố gắng tiêu diệt luồng không - một "
+"phần lý do khiến luồng hiệu quả hơn các tiến trình là vì chúng tránh được "
+"chi phí chung liên quan đến việc tự động tái chế tài nguyên. Nói cách khác, "
+"nếu bạn cố gắng giết chết luồng, toàn bộ quá trình của bạn có thể sẽ gặp "
+"trục trặc."
+
+#: ../../howto/sockets.rst:318
+#, fuzzy
+msgid "Non-blocking Sockets"
+msgstr "Ổ cắm không chặn"
+
+#: ../../howto/sockets.rst:320
+#, fuzzy
+msgid ""
+"If you've understood the preceding, you already know most of what you need "
+"to know about the mechanics of using sockets. You'll still use the same "
+"calls, in much the same ways. It's just that, if you do it right, your app "
+"will be almost inside-out."
+msgstr ""
+"Nếu bạn đã hiểu phần trước thì bạn đã biết hầu hết những điều bạn cần biết "
+"về cơ chế sử dụng ổ cắm. Bạn sẽ vẫn sử dụng các cuộc gọi giống nhau, theo "
+"những cách giống nhau. Chỉ là, nếu bạn làm đúng, ứng dụng của bạn sẽ gần như"
+" từ trong ra ngoài."
+
+#: ../../howto/sockets.rst:325
+#, fuzzy
+msgid ""
+"In Python, you use ``socket.setblocking(False)`` to make it non-blocking. In"
+" C, it's more complex, (for one thing, you'll need to choose between the BSD"
+" flavor ``O_NONBLOCK`` and the almost indistinguishable POSIX flavor "
+"``O_NDELAY``, which is completely different from ``TCP_NODELAY``), but it's "
+"the exact same idea. You do this after creating the socket, but before using"
+" it. (Actually, if you're nuts, you can switch back and forth.)"
+msgstr ""
+"Trong Python, bạn sử dụng ``socket.setblocking(False)`` để làm cho nó không "
+"bị chặn. Trong C, nó phức tạp hơn, (có một điều, bạn sẽ cần phải chọn giữa "
+"hương vị BSD ``O_NONBLOCK`` và hương vị POSIX gần như không thể phân biệt "
+"được ``O_NDELAY``, hoàn toàn khác với ``TCP_NODELAY``), nhưng đó chính xác "
+"là cùng một ý tưởng. Bạn thực hiện việc này sau khi tạo ổ cắm nhưng trước "
+"khi sử dụng nó. (Thực ra, nếu bạn điên, bạn có thể chuyển đổi qua lại.)"
+
+#: ../../howto/sockets.rst:332
+#, fuzzy
+msgid ""
+"The major mechanical difference is that ``send``, ``recv``, ``connect`` and "
+"``accept`` can return without having done anything. You have (of course) a "
+"number of choices. You can check return code and error codes and generally "
+"drive yourself crazy. If you don't believe me, try it sometime. Your app "
+"will grow large, buggy and suck CPU. So let's skip the brain-dead solutions "
+"and do it right."
+msgstr ""
+"Sự khác biệt cơ học chính là ``send``, ``recv``, ``connect`` và ``accept`` "
+"có thể quay lại mà không cần làm gì cả. Bạn có (tất nhiên) một số lựa chọn. "
+"Bạn có thể kiểm tra mã trả lại và mã lỗi và thường khiến bản thân phát điên."
+" Nếu bạn không tin tôi, hãy thử nó một lần. Ứng dụng của bạn sẽ phát triển "
+"lớn hơn, nhiều lỗi và tệ hơn CPU. Vì vậy, hãy bỏ qua những giải pháp không "
+"cần thiết và làm đúng."
+
+#: ../../howto/sockets.rst:339
+#, fuzzy
+msgid "Use ``select``."
+msgstr "Sử dụng ``select``."
+
+#: ../../howto/sockets.rst:341
+#, fuzzy
+msgid ""
+"In C, coding ``select`` is fairly complex. In Python, it's a piece of cake, "
+"but it's close enough to the C version that if you understand ``select`` in "
+"Python, you'll have little trouble with it in C::"
+msgstr ""
+"Trong C, mã hóa ``select`` khá phức tạp. Trong Python, đó là một điều dễ "
+"dàng, nhưng nó đủ gần với phiên bản C nên nếu bạn hiểu ``select`` trong "
+"Python, bạn sẽ gặp một chút rắc rối với nó trong C::"
+
+#: ../../howto/sockets.rst:345
+#, fuzzy
+msgid ""
+"ready_to_read, ready_to_write, in_error = \\\n"
+"               select.select(\n"
+"                  potential_readers,\n"
+"                  potential_writers,\n"
+"                  potential_errs,\n"
+"                  timeout)"
+msgstr ""
+"Ready_to_read, Ready_to_write, in_error = \\\n"
+"               chọn.select(\n"
+"                  tiềm năng_readers,\n"
+"                  nhà văn tiềm năng,\n"
+"                  tiềm năng_errs,\n"
+"                  hết thời gian chờ)"
+
+#: ../../howto/sockets.rst:352
+#, fuzzy
+msgid ""
+"You pass ``select`` three lists: the first contains all sockets that you "
+"might want to try reading; the second all the sockets you might want to try "
+"writing to, and the last (normally left empty) those that you want to check "
+"for errors. You should note that a socket can go into more than one list. "
+"The ``select`` call is blocking, but you can give it a timeout. This is "
+"generally a sensible thing to do - give it a nice long timeout (say a "
+"minute) unless you have good reason to do otherwise."
+msgstr ""
+"Bạn chuyển cho ``select`` ba danh sách: danh sách đầu tiên chứa tất cả các ổ"
+" cắm mà bạn có thể muốn thử đọc; ổ cắm thứ hai là tất cả các ổ cắm mà bạn có"
+" thể muốn thử ghi vào và ổ cắm cuối cùng (thường để trống) mà bạn muốn kiểm "
+"tra lỗi. Bạn nên lưu ý rằng một socket có thể có nhiều hơn một danh sách. "
+"Cuộc gọi ``select`` đang bị chặn nhưng bạn có thể tạm dừng cuộc gọi đó. Nói "
+"chung đây là một việc hợp lý nên làm - hãy chờ một thời gian dài (ví dụ một "
+"phút) trừ khi bạn có lý do chính đáng để làm khác."
+
+#: ../../howto/sockets.rst:360
+#, fuzzy
+msgid ""
+"In return, you will get three lists. They contain the sockets that are "
+"actually readable, writable and in error. Each of these lists is a subset "
+"(possibly empty) of the corresponding list you passed in."
+msgstr ""
+"Đổi lại, bạn sẽ nhận được ba danh sách. Chúng chứa các socket thực sự có thể"
+" đọc, ghi được và có thể xảy ra lỗi. Mỗi danh sách này là một tập hợp con "
+"(có thể trống) của danh sách tương ứng mà bạn đã chuyển vào."
+
+#: ../../howto/sockets.rst:364
+#, fuzzy
+msgid ""
+"If a socket is in the output readable list, you can be as-close-to-certain-"
+"as-we-ever-get-in-this-business that a ``recv`` on that socket will return "
+"*something*. Same idea for the writable list. You'll be able to send "
+"*something*. Maybe not all you want to, but *something* is better than "
+"nothing.  (Actually, any reasonably healthy socket will return as writable -"
+" it just means outbound network buffer space is available.)"
+msgstr ""
+"Nếu một ổ cắm nằm trong danh sách có thể đọc được đầu ra, bạn có thể gần như"
+" chắc chắn rằng ``recv`` trên ổ cắm đó sẽ trả về *something*. Ý tưởng tương "
+"tự cho danh sách có thể ghi. Bạn sẽ có thể gửi *something*. Có thể không "
+"phải tất cả những gì bạn muốn, nhưng *something* còn hơn không.  (Trên thực "
+"tế, bất kỳ ổ cắm nào hoạt động bình thường sẽ trở lại dưới dạng có thể ghi -"
+" điều đó chỉ có nghĩa là không gian bộ đệm mạng bên ngoài có sẵn.)"
+
+#: ../../howto/sockets.rst:371
+#, fuzzy
+msgid ""
+"If you have a \"server\" socket, put it in the potential_readers list. If it"
+" comes out in the readable list, your ``accept`` will (almost certainly) "
+"work. If you have created a new socket to ``connect`` to someone else, put "
+"it in the potential_writers list. If it shows up in the writable list, you "
+"have a decent chance that it has connected."
+msgstr ""
+"Nếu bạn có ổ cắm \"máy chủ\", hãy đặt nó vào danh sách tiềm năng. Nếu nó "
+"xuất hiện trong danh sách có thể đọc được, ``accept`` của bạn (gần như chắc "
+"chắn) sẽ hoạt động. Nếu bạn đã tạo một ổ cắm mới tới ``connect`` cho người "
+"khác, hãy đặt nó vào danh sách tiềm năng. Nếu nó xuất hiện trong danh sách "
+"có thể ghi, rất có thể nó đã được kết nối."
+
+#: ../../howto/sockets.rst:377
+#, fuzzy
+msgid ""
+"Actually, ``select`` can be handy even with blocking sockets. It's one way "
+"of determining whether you will block - the socket returns as readable when "
+"there's something in the buffers.  However, this still doesn't help with the"
+" problem of determining whether the other end is done, or just busy with "
+"something else."
+msgstr ""
+"Trên thực tế, ``select`` có thể hữu ích ngay cả khi chặn ổ cắm. Đó là một "
+"cách để xác định xem bạn có chặn hay không - ổ cắm trả về ở dạng có thể đọc "
+"được khi có thứ gì đó trong bộ đệm.  Tuy nhiên, điều này vẫn không giúp ích "
+"được gì cho vấn đề xác định xem đầu bên kia đã xong chưa, hay chỉ đang bận "
+"việc khác mà thôi."
+
+#: ../../howto/sockets.rst:382
+#, fuzzy
+msgid ""
+"**Portability alert**: On Unix, ``select`` works both with the sockets and "
+"files. Don't try this on Windows. On Windows, ``select`` works with sockets "
+"only. Also note that in C, many of the more advanced socket options are done"
+" differently on Windows. In fact, on Windows I usually use threads (which "
+"work very, very well) with my sockets."
+msgstr ""
+"**Portability alert**: Trên Unix, ``select`` hoạt động cả với ổ cắm và tệp. "
+"Đừng thử điều này trên Windows. Trên Windows, ``select`` chỉ hoạt động với ổ"
+" cắm. Cũng lưu ý rằng trong C, nhiều tùy chọn ổ cắm nâng cao hơn được thực "
+"hiện khác trên Windows. Trên thực tế, trên Windows, tôi thường sử dụng các "
+"luồng (hoạt động rất tốt) với các ổ cắm của mình."

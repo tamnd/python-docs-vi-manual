@@ -1,0 +1,613 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/annotations.rst:5
+#, fuzzy
+msgid "Annotations Best Practices"
+msgstr "Các phương pháp hay nhất về chú thích"
+
+#: ../../howto/annotations.rst
+#, fuzzy
+msgid "author"
+msgstr "tác giả"
+
+#: ../../howto/annotations.rst:7
+#, fuzzy
+msgid "Larry Hastings"
+msgstr "Larry Hastings"
+
+#: ../../howto/annotations.rst:-1
+#, fuzzy
+msgid "Abstract"
+msgstr "Tóm tắt"
+
+#: ../../howto/annotations.rst:11
+#, fuzzy
+msgid ""
+"This document is designed to encapsulate the best practices for working with"
+" annotations dicts.  If you write Python code that examines "
+"``__annotations__`` on Python objects, we encourage you to follow the "
+"guidelines described below."
+msgstr ""
+"Tài liệu này được thiết kế để gói gọn các phương pháp hay nhất để làm việc "
+"với các chú thích.  Nếu bạn viết mã Python kiểm tra ``__annotations__`` trên"
+" các đối tượng Python, chúng tôi khuyến khích bạn làm theo các nguyên tắc "
+"được mô tả bên dưới."
+
+#: ../../howto/annotations.rst:16
+#, fuzzy
+msgid ""
+"The document is organized into four sections: best practices for accessing "
+"the annotations of an object in Python versions 3.10 and newer, best "
+"practices for accessing the annotations of an object in Python versions 3.9 "
+"and older, other best practices for ``__annotations__`` that apply to any "
+"Python version, and quirks of ``__annotations__``."
+msgstr ""
+"Tài liệu này được tổ chức thành bốn phần: các phương pháp hay nhất để truy "
+"cập chú thích của một đối tượng trong phiên bản Python 3.10 trở lên, các "
+"phương pháp hay nhất để truy cập chú thích của một đối tượng trong Python "
+"phiên bản 3.9 trở lên, các phương pháp hay nhất khác cho ``__annotations__``"
+" áp dụng cho mọi phiên bản Python và các điểm kỳ quặc của "
+"``__annotations__``."
+
+#: ../../howto/annotations.rst:26
+#, fuzzy
+msgid ""
+"Note that this document is specifically about working with "
+"``__annotations__``, not uses *for* annotations. If you're looking for "
+"information on how to use \"type hints\" in your code, please see the "
+":mod:`typing` module."
+msgstr ""
+"Lưu ý rằng tài liệu này nói riêng về cách làm việc với ``__annotations__``, "
+"không sử dụng chú thích *for*. Nếu bạn đang tìm kiếm thông tin về cách sử "
+"dụng \"gợi ý gõ\" trong mã của mình, vui lòng xem mô-đun :mod:`typing`."
+
+#: ../../howto/annotations.rst:33
+#, fuzzy
+msgid "Accessing The Annotations Dict Of An Object In Python 3.10 And Newer"
+msgstr "Truy cập chú thích của một đối tượng trong Python 3.10 trở lên"
+
+#: ../../howto/annotations.rst:35
+#, fuzzy
+msgid ""
+"Python 3.10 adds a new function to the standard library: "
+":func:`inspect.get_annotations`.  In Python versions 3.10 through 3.13, "
+"calling this function is the best practice for accessing the annotations "
+"dict of any object that supports annotations.  This function can also \"un-"
+"stringize\" stringized annotations for you."
+msgstr ""
+"Python 3.10 thêm một chức năng mới vào thư viện chuẩn: "
+":func:`inspect.get_annotations`.  Trong các phiên bản Python 3.10 đến 3.13, "
+"việc gọi hàm này là cách tốt nhất để truy cập vào lệnh chú thích của bất kỳ "
+"đối tượng nào hỗ trợ chú thích.  Chức năng này cũng có thể \"hủy xâu chuỗi\""
+" các chú thích dạng chuỗi cho bạn."
+
+#: ../../howto/annotations.rst:42
+#, fuzzy
+msgid ""
+"In Python 3.14, there is a new :mod:`annotationlib` module with "
+"functionality for working with annotations. This includes a "
+":func:`annotationlib.get_annotations` function, which supersedes "
+":func:`inspect.get_annotations`."
+msgstr ""
+"Trong Python 3.14, có một mô-đun :mod:`annotationlib` mới có chức năng làm "
+"việc với các chú thích. Điều này bao gồm chức năng "
+":func:`annotationlib.get_annotations`, thay thế "
+":func:`inspect.get_annotations`."
+
+#: ../../howto/annotations.rst:47
+#, fuzzy
+msgid ""
+"If for some reason :func:`inspect.get_annotations` isn't viable for your use"
+" case, you may access the ``__annotations__`` data member manually.  Best "
+"practice for this changed in Python 3.10 as well: as of Python 3.10, "
+"``o.__annotations__`` is guaranteed to *always* work on Python functions, "
+"classes, and modules.  If you're certain the object you're examining is one "
+"of these three *specific* objects, you may simply use ``o.__annotations__`` "
+"to get at the object's annotations dict."
+msgstr ""
+"Nếu vì lý do nào đó, :func:`inspect.get_annotations` không phù hợp với "
+"trường hợp sử dụng của bạn, bạn có thể truy cập thành viên dữ liệu "
+"``__annotations__`` theo cách thủ công.  Cách thực hành tốt nhất cho điều "
+"này cũng đã thay đổi trong Python 3.10: kể từ Python 3.10, "
+"``o.__annotations__`` được đảm bảo *always* hoạt động trên các hàm, lớp và "
+"mô-đun Python.  Nếu bạn chắc chắn đối tượng bạn đang kiểm tra là một trong "
+"ba đối tượng *specific* này, bạn có thể chỉ cần sử dụng "
+"``o.__annotations__`` để lấy lệnh chú thích của đối tượng."
+
+#: ../../howto/annotations.rst:57
+#, fuzzy
+msgid ""
+"However, other types of callables--for example, callables created by "
+":func:`functools.partial`--may not have an ``__annotations__`` attribute "
+"defined.  When accessing the ``__annotations__`` of a possibly unknown "
+"object,  best practice in Python versions 3.10 and newer is to call "
+":func:`getattr` with three arguments, for example ``getattr(o, "
+"'__annotations__', None)``."
+msgstr ""
+"Tuy nhiên, các loại lệnh gọi khác--ví dụ: các lệnh gọi được tạo bởi "
+":func:`functools.partial`--có thể không được xác định thuộc tính "
+"``__annotations__``.  Khi truy cập ``__annotations__`` của một đối tượng có "
+"thể không xác định, cách tốt nhất trong phiên bản Python 3.10 trở lên là gọi"
+" :func:`getattr` với ba đối số, ví dụ: ``getattr(o, '__annotations__', "
+"None)``."
+
+#: ../../howto/annotations.rst:65
+#, fuzzy
+msgid ""
+"Before Python 3.10, accessing ``__annotations__`` on a class that defines no"
+" annotations but that has a parent class with annotations would return the "
+"parent's ``__annotations__``. In Python 3.10 and newer, the child class's "
+"annotations will be an empty dict instead."
+msgstr ""
+"Trước Python 3.10, việc truy cập ``__annotations__`` trên một lớp không xác "
+"định chú thích nhưng có lớp cha có chú thích sẽ trả về ``__annotations__`` "
+"của cha. Trong Python 3.10 trở lên, các chú thích của lớp con sẽ là một lệnh"
+" trống."
+
+#: ../../howto/annotations.rst:73
+#, fuzzy
+msgid "Accessing The Annotations Dict Of An Object In Python 3.9 And Older"
+msgstr "Truy cập chú thích của một đối tượng trong Python 3.9 trở lên"
+
+#: ../../howto/annotations.rst:75
+#, fuzzy
+msgid ""
+"In Python 3.9 and older, accessing the annotations dict of an object is much"
+" more complicated than in newer versions. The problem is a design flaw in "
+"these older versions of Python, specifically to do with class annotations."
+msgstr ""
+"Trong Python 3.9 trở lên, việc truy cập vào chú thích dict của một đối tượng"
+" phức tạp hơn nhiều so với các phiên bản mới hơn. Vấn đề là một lỗi thiết kế"
+" trong các phiên bản Python cũ hơn này, đặc biệt liên quan đến các chú thích"
+" lớp."
+
+#: ../../howto/annotations.rst:80
+#, fuzzy
+msgid ""
+"Best practice for accessing the annotations dict of other objects--"
+"functions, other callables, and modules--is the same as best practice for "
+"3.10, assuming you aren't calling :func:`inspect.get_annotations`: you "
+"should use three-argument :func:`getattr` to access the object's "
+"``__annotations__`` attribute."
+msgstr ""
+"Cách tốt nhất để truy cập vào chú thích chính tả của các đối tượng khác--"
+"hàm, các lệnh gọi khác và mô-đun--cũng giống như cách thực hành tốt nhất cho"
+" 3.10, giả sử bạn không gọi :func:`inspect.get_annotations`: bạn nên sử dụng"
+" :func:`getattr` ba đối số để truy cập thuộc tính ``__annotations__`` của "
+"đối tượng."
+
+#: ../../howto/annotations.rst:87
+#, fuzzy
+msgid ""
+"Unfortunately, this isn't best practice for classes.  The problem is that, "
+"since ``__annotations__`` is optional on classes, and because classes can "
+"inherit attributes from their base classes, accessing the "
+"``__annotations__`` attribute of a class may inadvertently return the "
+"annotations dict of a *base class.* As an example::"
+msgstr ""
+"Thật không may, đây không phải là cách thực hành tốt nhất cho lớp học.  Vấn "
+"đề là ở chỗ, vì ``__annotations__`` là tùy chọn trên các lớp và vì các lớp "
+"có thể kế thừa các thuộc tính từ các lớp cơ sở của chúng, nên việc truy cập "
+"thuộc tính ``__annotations__`` của một lớp có thể vô tình trả về lệnh chú "
+"thích của *base class.*. Ví dụ::"
+
+#: ../../howto/annotations.rst:94
+#, fuzzy
+msgid ""
+"class Base:\n"
+"    a: int = 3\n"
+"    b: str = 'abc'\n"
+"\n"
+"class Derived(Base):\n"
+"    pass\n"
+"\n"
+"print(Derived.__annotations__)"
+msgstr ""
+"lớp cơ sở:\n"
+"    một: int = 3\n"
+"    b: str = 'abc'\n"
+"\n"
+"lớp phái sinh (Cơ sở):\n"
+"    vượt qua\n"
+"\n"
+"print(Derived.__annotations__)"
+
+#: ../../howto/annotations.rst:103
+#, fuzzy
+msgid "This will print the annotations dict from ``Base``, not ``Derived``."
+msgstr "Điều này sẽ in các chú thích từ ``Base``, không phải ``Derived``."
+
+#: ../../howto/annotations.rst:106
+#, fuzzy
+msgid ""
+"Your code will have to have a separate code path if the object you're "
+"examining is a class (``isinstance(o, type)``). In that case, best practice "
+"relies on an implementation detail of Python 3.9 and before: if a class has "
+"annotations defined, they are stored in the class's :attr:`~type.__dict__` "
+"dictionary.  Since the class may or may not have annotations defined, best "
+"practice is to call the :meth:`~dict.get` method on the class dict."
+msgstr ""
+"Mã của bạn sẽ phải có đường dẫn mã riêng nếu đối tượng bạn đang kiểm tra là "
+"một lớp (``isinstance(o, type)``). Trong trường hợp đó, cách thực hành tốt "
+"nhất sẽ dựa vào chi tiết triển khai của Python 3.9 trở về trước: nếu một lớp"
+" có các chú thích được xác định thì chúng sẽ được lưu trữ trong từ điển "
+":attr:`~type.__dict__` của lớp.  Vì lớp có thể có hoặc không có chú thích "
+"được xác định, cách tốt nhất là gọi phương thức :meth:`~dict.get` trên lệnh "
+"lớp."
+
+#: ../../howto/annotations.rst:114
+#, fuzzy
+msgid ""
+"To put it all together, here is some sample code that safely accesses the "
+"``__annotations__`` attribute on an arbitrary object in Python 3.9 and "
+"before::"
+msgstr ""
+"Tóm lại, đây là một số mã mẫu truy cập an toàn thuộc tính "
+"``__annotations__`` trên một đối tượng tùy ý trong Python 3.9 trở về trước "
+"::"
+
+#: ../../howto/annotations.rst:118
+#, fuzzy
+msgid ""
+"if isinstance(o, type):\n"
+"    ann = o.__dict__.get('__annotations__', None)\n"
+"else:\n"
+"    ann = getattr(o, '__annotations__', None)"
+msgstr ""
+"nếu isinstance(o, type):\n"
+"    ann = o.__dict__.get('__annotations__', None)\n"
+"khác:\n"
+"    ann = getattr(o, '__annotations__', None)"
+
+#: ../../howto/annotations.rst:123
+#, fuzzy
+msgid ""
+"After running this code, ``ann`` should be either a dictionary or ``None``."
+"  You're encouraged to double-check the type of ``ann`` using "
+":func:`isinstance` before further examination."
+msgstr ""
+"Sau khi chạy mã này, ``ann`` phải là từ điển hoặc ``None``.  Bạn nên kiểm "
+"tra kỹ loại ``ann`` bằng :func:`isinstance` trước khi kiểm tra thêm."
+
+#: ../../howto/annotations.rst:128
+#, fuzzy
+msgid ""
+"Note that some exotic or malformed type objects may not have a "
+":attr:`~type.__dict__` attribute, so for extra safety you may also wish to "
+"use :func:`getattr` to access :attr:`!__dict__`."
+msgstr ""
+"Lưu ý rằng một số đối tượng loại kỳ lạ hoặc không đúng định dạng có thể "
+"không có thuộc tính :attr:`~type.__dict__`, vì vậy để an toàn hơn, bạn cũng "
+"có thể muốn sử dụng :func:`getattr` để truy cập :attr:`!__dict__`."
+
+#: ../../howto/annotations.rst:134
+#, fuzzy
+msgid "Manually Un-Stringizing Stringized Annotations"
+msgstr "Chú thích được xâu chuỗi theo cách thủ công"
+
+#: ../../howto/annotations.rst:136
+#, fuzzy
+msgid ""
+"In situations where some annotations may be \"stringized\", and you wish to "
+"evaluate those strings to produce the Python values they represent, it "
+"really is best to call :func:`inspect.get_annotations` to do this work for "
+"you."
+msgstr ""
+"Trong trường hợp một số chú thích có thể được \"xâu chuỗi\" và bạn muốn đánh"
+" giá các chuỗi đó để tạo ra các giá trị Python mà chúng đại diện, thì tốt "
+"nhất bạn nên gọi :func:`inspect.get_annotations` để thực hiện công việc này "
+"cho bạn."
+
+#: ../../howto/annotations.rst:142
+#, fuzzy
+msgid ""
+"If you're using Python 3.9 or older, or if for some reason you can't use "
+":func:`inspect.get_annotations`, you'll need to duplicate its logic.  You're"
+" encouraged to examine the implementation of :func:`inspect.get_annotations`"
+" in the current Python version and follow a similar approach."
+msgstr ""
+"Nếu bạn đang sử dụng Python 3.9 trở lên hoặc nếu vì lý do nào đó bạn không "
+"thể sử dụng :func:`inspect.get_annotations`, bạn sẽ cần sao chép logic của "
+"nó.  Bạn nên kiểm tra việc triển khai :func:`inspect.get_annotations` trong "
+"phiên bản Python hiện tại và làm theo cách tiếp cận tương tự."
+
+#: ../../howto/annotations.rst:148
+#, fuzzy
+msgid ""
+"In a nutshell, if you wish to evaluate a stringized annotation on an "
+"arbitrary object ``o``:"
+msgstr ""
+"Tóm lại, nếu bạn muốn đánh giá một chú thích được xâu chuỗi trên một đối "
+"tượng tùy ý ``o``:"
+
+#: ../../howto/annotations.rst:151
+#, fuzzy
+msgid ""
+"If ``o`` is a module, use ``o.__dict__`` as the ``globals`` when calling "
+":func:`eval`."
+msgstr ""
+"Nếu ``o`` là một mô-đun, hãy sử dụng ``o.__dict__`` làm ``globals`` khi gọi "
+":func:`eval`."
+
+#: ../../howto/annotations.rst:153
+#, fuzzy
+msgid ""
+"If ``o`` is a class, use ``sys.modules[o.__module__].__dict__`` as the "
+"``globals``, and ``dict(vars(o))`` as the ``locals``, when calling "
+":func:`eval`."
+msgstr ""
+"Nếu ``o`` là một lớp, hãy sử dụng ``sys.modules[o.__module__].__dict__`` làm"
+" ``globals`` và ``dict(vars(o))`` làm ``locals`` khi gọi :func:`eval`."
+
+#: ../../howto/annotations.rst:156
+#, fuzzy
+msgid ""
+"If ``o`` is a wrapped callable using :func:`functools.update_wrapper`, "
+":func:`functools.wraps`, or :func:`functools.partial`, iteratively unwrap it"
+" by accessing either ``o.__wrapped__`` or ``o.func`` as appropriate, until "
+"you have found the root unwrapped function."
+msgstr ""
+"Nếu ``o`` là một hàm có thể gọi được gói bằng cách sử dụng "
+":func:`functools.update_wrapper`, :func:`functools.wraps` hoặc "
+":func:`functools.partial`, hãy mở gói lặp đi lặp lại bằng cách truy cập "
+"``o.__wrapped__`` hoặc ``o.func`` nếu thích hợp, cho đến khi bạn tìm thấy "
+"hàm được mở gói gốc."
+
+#: ../../howto/annotations.rst:160
+#, fuzzy
+msgid ""
+"If ``o`` is a callable (but not a class), use :attr:`o.__globals__ "
+"<function.__globals__>` as the globals when calling :func:`eval`."
+msgstr ""
+"Nếu ``o`` có thể gọi được (nhưng không phải là một lớp), hãy sử dụng "
+":attr:`o.__globals__ <function.__globals__>` làm toàn cục khi gọi "
+":func:`eval`."
+
+#: ../../howto/annotations.rst:164
+#, fuzzy
+msgid ""
+"However, not all string values used as annotations can be successfully "
+"turned into Python values by :func:`eval`. String values could theoretically"
+" contain any valid string, and in practice there are valid use cases for "
+"type hints that require annotating with string values that specifically "
+"*can't* be evaluated.  For example:"
+msgstr ""
+"Tuy nhiên, không phải tất cả các giá trị chuỗi được sử dụng làm chú thích "
+"đều có thể được :func:`eval` chuyển thành công thành giá trị Python. Về mặt "
+"lý thuyết, các giá trị chuỗi có thể chứa bất kỳ chuỗi hợp lệ nào và trong "
+"thực tế, có những trường hợp sử dụng hợp lệ cho các gợi ý loại yêu cầu chú "
+"thích bằng các giá trị chuỗi được đánh giá cụ thể là *can't*.  Ví dụ:"
+
+#: ../../howto/annotations.rst:171
+#, fuzzy
+msgid ""
+":pep:`604` union types using ``|``, before support for this was added to "
+"Python 3.10."
+msgstr ""
+"Các loại kết hợp :pep:`604` sử dụng ``|``, trước khi hỗ trợ cho việc này "
+"được thêm vào Python 3.10."
+
+#: ../../howto/annotations.rst:173
+#, fuzzy
+msgid ""
+"Definitions that aren't needed at runtime, only imported when "
+":const:`typing.TYPE_CHECKING` is true."
+msgstr ""
+"Các định nghĩa không cần thiết trong thời gian chạy, chỉ được nhập khi "
+":const:`typing.TYPE_CHECKING` là đúng."
+
+#: ../../howto/annotations.rst:176
+#, fuzzy
+msgid ""
+"If :func:`eval` attempts to evaluate such values, it will fail and raise an "
+"exception.  So, when designing a library API that works with annotations, "
+"it's recommended to only attempt to evaluate string values when explicitly "
+"requested to by the caller."
+msgstr ""
+"Nếu :func:`eval` cố gắng đánh giá các giá trị như vậy, nó sẽ thất bại và đưa"
+" ra một ngoại lệ.  Vì vậy, khi thiết kế thư viện API hoạt động với chú "
+"thích, bạn chỉ nên cố gắng đánh giá các giá trị chuỗi khi được người gọi yêu"
+" cầu rõ ràng."
+
+#: ../../howto/annotations.rst:184
+#, fuzzy
+msgid "Best Practices For ``__annotations__`` In Any Python Version"
+msgstr ""
+"Các phương pháp hay nhất cho ``__annotations__`` trong mọi phiên bản Python"
+
+#: ../../howto/annotations.rst:186
+#, fuzzy
+msgid ""
+"You should avoid assigning to the ``__annotations__`` member of objects "
+"directly.  Let Python manage setting ``__annotations__``."
+msgstr ""
+"Bạn nên tránh gán trực tiếp cho thành viên ``__annotations__`` của đối "
+"tượng.  Hãy để Python quản lý cài đặt ``__annotations__``."
+
+#: ../../howto/annotations.rst:189
+#, fuzzy
+msgid ""
+"If you do assign directly to the ``__annotations__`` member of an object, "
+"you should always set it to a ``dict`` object."
+msgstr ""
+"Nếu bạn gán trực tiếp cho thành viên ``__annotations__`` của một đối tượng, "
+"bạn phải luôn đặt nó thành đối tượng ``dict``."
+
+#: ../../howto/annotations.rst:192
+#, fuzzy
+msgid ""
+"You should avoid accessing ``__annotations__`` directly on any object. "
+"Instead, use :func:`annotationlib.get_annotations` (Python 3.14+) or "
+":func:`inspect.get_annotations` (Python 3.10+)."
+msgstr ""
+"Bạn nên tránh truy cập trực tiếp ``__annotations__`` trên bất kỳ đối tượng "
+"nào. Thay vào đó, hãy sử dụng :func:`annotationlib.get_annotations` (Python "
+"3.14+) hoặc :func:`inspect.get_annotations` (Python 3.10+)."
+
+#: ../../howto/annotations.rst:196
+#, fuzzy
+msgid ""
+"If you do directly access the ``__annotations__`` member of an object, you "
+"should ensure that it's a dictionary before attempting to examine its "
+"contents."
+msgstr ""
+"Nếu bạn truy cập trực tiếp vào thành viên ``__annotations__`` của một đối "
+"tượng, bạn nên đảm bảo rằng đó là một từ điển trước khi thử kiểm tra nội "
+"dung của nó."
+
+#: ../../howto/annotations.rst:200
+#, fuzzy
+msgid "You should avoid modifying ``__annotations__`` dicts."
+msgstr "Bạn nên tránh sửa đổi các lệnh ``__annotations__``."
+
+#: ../../howto/annotations.rst:202
+#, fuzzy
+msgid ""
+"You should avoid deleting the ``__annotations__`` attribute of an object."
+msgstr "Bạn nên tránh xóa thuộc tính ``__annotations__`` của một đối tượng."
+
+#: ../../howto/annotations.rst:207
+#, fuzzy
+msgid "``__annotations__`` Quirks"
+msgstr "``__annotations__`` Quirks"
+
+#: ../../howto/annotations.rst:209
+#, fuzzy
+msgid ""
+"In all versions of Python 3, function objects lazy-create an annotations "
+"dict if no annotations are defined on that object.  You can delete the "
+"``__annotations__`` attribute using ``del fn.__annotations__``, but if you "
+"then access ``fn.__annotations__`` the object will create a new empty dict "
+"that it will store and return as its annotations.  Deleting the annotations "
+"on a function before it has lazily created its annotations dict will throw "
+"an ``AttributeError``; using ``del fn.__annotations__`` twice in a row is "
+"guaranteed to always throw an ``AttributeError``."
+msgstr ""
+"Trong tất cả các phiên bản của Python 3, các đối tượng hàm tạo lười biếng "
+"một lệnh chú thích nếu không có chú thích nào được xác định trên đối tượng "
+"đó.  Bạn có thể xóa thuộc tính ``__annotations__`` bằng cách sử dụng ``del "
+"fn.__annotations__``, nhưng nếu sau đó bạn truy cập ``fn.__annotations__``, "
+"đối tượng sẽ tạo một lệnh trống mới mà nó sẽ lưu trữ và trả về dưới dạng chú"
+" thích.  Việc xóa các chú thích trên một hàm trước khi nó được tạo ra một "
+"cách lười biếng lệnh chú thích của nó sẽ tạo ra một ``AttributeError``; sử "
+"dụng ``del fn.__annotations__`` hai lần liên tiếp đảm bảo sẽ luôn tạo ra "
+"``AttributeError``."
+
+#: ../../howto/annotations.rst:219
+#, fuzzy
+msgid ""
+"Everything in the above paragraph also applies to class and module objects "
+"in Python 3.10 and newer."
+msgstr ""
+"Mọi thứ trong đoạn trên cũng áp dụng cho các đối tượng lớp và mô-đun trong "
+"Python 3.10 trở lên."
+
+#: ../../howto/annotations.rst:222
+#, fuzzy
+msgid ""
+"In all versions of Python 3, you can set ``__annotations__`` on a function "
+"object to ``None``.  However, subsequently accessing the annotations on that"
+" object using ``fn.__annotations__`` will lazy-create an empty dictionary as"
+" per the first paragraph of this section.  This is *not* true of modules and"
+" classes, in any Python version; those objects permit setting "
+"``__annotations__`` to any Python value, and will retain whatever value is "
+"set."
+msgstr ""
+"Trong tất cả các phiên bản Python 3, bạn có thể đặt ``__annotations__`` trên"
+" đối tượng hàm thành ``None``.  Tuy nhiên, sau đó việc truy cập các chú "
+"thích trên đối tượng đó bằng ``fn.__annotations__`` sẽ tạo ra một từ điển "
+"trống theo đoạn đầu tiên của phần này.  Điều này đúng với *not* đối với các "
+"mô-đun và lớp, trong bất kỳ phiên bản Python nào; những đối tượng đó cho "
+"phép đặt ``__annotations__`` thành bất kỳ giá trị Python nào và sẽ giữ lại "
+"bất kỳ giá trị nào được đặt."
+
+#: ../../howto/annotations.rst:230
+#, fuzzy
+msgid ""
+"If Python stringizes your annotations for you (using ``from __future__ "
+"import annotations``), and you specify a string as an annotation, the string"
+" will itself be quoted.  In effect the annotation is quoted *twice.*  For "
+"example::"
+msgstr ""
+"Nếu Python xâu chuỗi các chú thích cho bạn (sử dụng ``from __future__ import"
+" annotations``) và bạn chỉ định một chuỗi làm chú thích thì chính chuỗi đó "
+"sẽ được trích dẫn.  Trong thực tế, chú thích được trích dẫn *twice.* Ví dụ::"
+
+#: ../../howto/annotations.rst:236
+#, fuzzy
+msgid ""
+"from __future__ import annotations\n"
+"def foo(a: \"str\"): pass\n"
+"\n"
+"print(foo.__annotations__)"
+msgstr ""
+"từ __future__ nhập chú thích\n"
+"def foo(a: \"str\"): vượt qua\n"
+"\n"
+"print(foo.__annotations__)"
+
+#: ../../howto/annotations.rst:241
+#, python-brace-format, fuzzy
+msgid ""
+"This prints ``{'a': \"'str'\"}``.  This shouldn't really be considered a "
+"\"quirk\"; it's mentioned here simply because it might be surprising."
+msgstr ""
+"Điều này in ``{'a': \"'str'\"}``.  Điều này thực sự không nên được coi là "
+"một \"điều kỳ quặc\"; nó được đề cập ở đây đơn giản chỉ vì nó có thể gây "
+"ngạc nhiên."
+
+#: ../../howto/annotations.rst:244
+#, fuzzy
+msgid ""
+"If you use a class with a custom metaclass and access ``__annotations__`` on"
+" the class, you may observe unexpected behavior; see :pep:`749 "
+"<749#pep749-metaclasses>` for some examples. You can avoid these quirks by "
+"using :func:`annotationlib.get_annotations` on Python 3.14+ or "
+":func:`inspect.get_annotations` on Python 3.10+. On earlier versions of "
+"Python, you can avoid these bugs by accessing the annotations from the "
+"class's :attr:`~type.__dict__` (for example, "
+"``cls.__dict__.get('__annotations__', None)``)."
+msgstr ""
+"Nếu bạn sử dụng một lớp có siêu dữ liệu tùy chỉnh và truy cập "
+"``__annotations__`` trên lớp đó, bạn có thể quan sát thấy hành vi không mong"
+" muốn; xem :pep:`749 <749#pep749-metaclasses>` để biết một số ví dụ. Bạn có "
+"thể tránh những điều kỳ quặc này bằng cách sử dụng "
+":func:`annotationlib.get_annotations` trên Python 3.14+ hoặc "
+":func:`inspect.get_annotations` trên Python 3.10+. Trên các phiên bản Python"
+" cũ hơn, bạn có thể tránh những lỗi này bằng cách truy cập các chú thích từ "
+":attr:`~type.__dict__` của lớp (ví dụ: ``cls.__dict__.get('__annotations__',"
+" None)``)."
+
+#: ../../howto/annotations.rst:253
+#, fuzzy
+msgid ""
+"In some versions of Python, instances of classes may have an "
+"``__annotations__`` attribute. However, this is not supported functionality."
+" If you need the annotations of an instance, you can use :func:`type` to "
+"access its class (for example, "
+"``annotationlib.get_annotations(type(myinstance))`` on Python 3.14+)."
+msgstr ""
+"Trong một số phiên bản Python, phiên bản của các lớp có thể có thuộc tính "
+"``__annotations__``. Tuy nhiên, đây không phải là chức năng được hỗ trợ. Nếu"
+" cần chú thích của một phiên bản, bạn có thể sử dụng :func:`type` để truy "
+"cập lớp của nó (ví dụ: ``annotationlib.get_annotations(type(myinstance))`` "
+"trên Python 3.14+)."

@@ -1,0 +1,1706 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/remote_debugging.rst:4
+#, fuzzy
+msgid "Remote debugging attachment protocol"
+msgstr "Giao thức đính kèm gỡ lỗi từ xa"
+
+#: ../../howto/remote_debugging.rst:6
+#, fuzzy
+msgid ""
+"This protocol enables external tools to attach to a running CPython process "
+"and execute Python code remotely."
+msgstr ""
+"Giao thức này cho phép các công cụ bên ngoài gắn vào quy trình CPython đang "
+"chạy và thực thi mã Python từ xa."
+
+#: ../../howto/remote_debugging.rst:9
+#, fuzzy
+msgid ""
+"Most platforms require elevated privileges to attach to another Python "
+"process."
+msgstr ""
+"Hầu hết các nền tảng đều yêu cầu đặc quyền nâng cao để đính kèm vào một quy "
+"trình Python khác."
+
+#: ../../howto/remote_debugging.rst:12
+#, fuzzy
+msgid "Disabling remote debugging"
+msgstr "Vô hiệu hóa gỡ lỗi từ xa"
+
+#: ../../howto/remote_debugging.rst:14
+#, fuzzy
+msgid "To disable remote debugging support, use any of the following:"
+msgstr "Để tắt hỗ trợ gỡ lỗi từ xa, hãy sử dụng bất kỳ thao tác nào sau đây:"
+
+#: ../../howto/remote_debugging.rst:16
+#, fuzzy
+msgid ""
+"Set the :envvar:`PYTHON_DISABLE_REMOTE_DEBUG` environment variable to ``1`` "
+"before starting the interpreter."
+msgstr ""
+"Đặt biến môi trường :envvar:`PYTHON_DISABLE_REMOTE_DEBUG` thành ``1`` trước "
+"khi khởi động trình thông dịch."
+
+#: ../../howto/remote_debugging.rst:18
+#, fuzzy
+msgid "Use the :option:`-X disable_remote_debug` command-line option."
+msgstr "Sử dụng tùy chọn dòng lệnh :option:`-X disable_remote_debug`."
+
+#: ../../howto/remote_debugging.rst:19
+#, fuzzy
+msgid "Compile Python with the :option:`--without-remote-debug` build flag."
+msgstr "Biên dịch Python với cờ xây dựng :option:`--without-remote-debug`."
+
+#: ../../howto/remote_debugging.rst:24
+#, fuzzy
+msgid "Permission requirements"
+msgstr "Yêu cầu về quyền"
+
+#: ../../howto/remote_debugging.rst:26
+#, fuzzy
+msgid ""
+"Attaching to a running Python process for remote debugging requires elevated"
+" privileges on most platforms. The specific requirements and troubleshooting"
+" steps depend on your operating system:"
+msgstr ""
+"Việc đính kèm vào quy trình Python đang chạy để gỡ lỗi từ xa yêu cầu đặc "
+"quyền nâng cao trên hầu hết các nền tảng. Các yêu cầu cụ thể và các bước "
+"khắc phục sự cố tùy thuộc vào hệ điều hành của bạn:"
+
+#: ../../howto/remote_debugging.rst:31
+#, fuzzy
+msgid "Linux"
+msgstr "Linux"
+
+#: ../../howto/remote_debugging.rst:32
+#, fuzzy
+msgid ""
+"The tracer process must have the ``CAP_SYS_PTRACE`` capability or equivalent"
+" privileges. You can only trace processes you own and can signal. Tracing "
+"may fail if the process is already being traced, or if it is running with "
+"set-user-ID or set-group-ID. Security modules like Yama may further restrict"
+" tracing."
+msgstr ""
+"Quá trình theo dõi phải có khả năng ``CAP_SYS_PTRACE`` hoặc các đặc quyền "
+"tương đương. Bạn chỉ có thể theo dõi các quy trình bạn sở hữu và có thể báo "
+"hiệu. Việc theo dõi có thể không thành công nếu quá trình này đã được theo "
+"dõi hoặc nếu nó đang chạy với set-user-ID hoặc set-group-ID. Các mô-đun bảo "
+"mật như Yama có thể hạn chế hơn nữa việc truy tìm."
+
+#: ../../howto/remote_debugging.rst:38
+#, fuzzy
+msgid "To temporarily relax ptrace restrictions (until reboot), run:"
+msgstr ""
+"Để tạm thời nới lỏng các hạn chế về ptrace (cho đến khi khởi động lại), hãy "
+"chạy:"
+
+#: ../../howto/remote_debugging.rst:40
+#, fuzzy
+msgid "``echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope``"
+msgstr "``echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope``"
+
+#: ../../howto/remote_debugging.rst:44
+#, fuzzy
+msgid ""
+"Disabling ``ptrace_scope`` reduces system hardening and should only be done "
+"in trusted environments."
+msgstr ""
+"Việc tắt ``ptrace_scope`` giúp giảm độ cứng của hệ thống và chỉ nên thực "
+"hiện trong môi trường đáng tin cậy."
+
+#: ../../howto/remote_debugging.rst:47
+#, fuzzy
+msgid ""
+"If running inside a container, use ``--cap-add=SYS_PTRACE`` or "
+"``--privileged``, and run as root if needed."
+msgstr ""
+"Nếu chạy bên trong vùng chứa, hãy sử dụng ``--cap-add=SYS_PTRACE`` hoặc "
+"``--privileged`` và chạy bằng root nếu cần."
+
+#: ../../howto/remote_debugging.rst:50
+#, fuzzy
+msgid "Try re-running the command with elevated privileges:"
+msgstr "Hãy thử chạy lại lệnh với các đặc quyền nâng cao:"
+
+#: ../../howto/remote_debugging.rst:52
+#, fuzzy
+msgid "``sudo -E !!``"
+msgstr "``sudo -E !!``"
+
+#: ../../howto/remote_debugging.rst:56
+#, fuzzy
+msgid "macOS"
+msgstr "macOS"
+
+#: ../../howto/remote_debugging.rst:57
+#, fuzzy
+msgid ""
+"To attach to another process, you typically need to run your debugging tool "
+"with elevated privileges. This can be done by using ``sudo`` or running as "
+"root."
+msgstr ""
+"Để đính kèm vào một quy trình khác, bạn thường cần chạy công cụ gỡ lỗi của "
+"mình với các đặc quyền nâng cao. Điều này có thể được thực hiện bằng cách sử"
+" dụng ``sudo`` hoặc chạy bằng root."
+
+#: ../../howto/remote_debugging.rst:61
+#, fuzzy
+msgid ""
+"Even when attaching to processes you own, macOS may block debugging unless "
+"the debugger is run with root privileges due to system security "
+"restrictions."
+msgstr ""
+"Ngay cả khi đính kèm vào các quy trình mà bạn sở hữu, macOS có thể chặn việc"
+" gỡ lỗi trừ khi trình gỡ lỗi được chạy với quyền root do các hạn chế về bảo "
+"mật hệ thống."
+
+#: ../../howto/remote_debugging.rst:66
+#, fuzzy
+msgid "Windows"
+msgstr "cửa sổ"
+
+#: ../../howto/remote_debugging.rst:67
+#, fuzzy
+msgid ""
+"To attach to another process, you usually need to run your debugging tool "
+"with administrative privileges. Start the command prompt or terminal as "
+"Administrator."
+msgstr ""
+"Để đính kèm vào một quy trình khác, bạn thường cần chạy công cụ gỡ lỗi của "
+"mình với các đặc quyền quản trị. Bắt đầu dấu nhắc lệnh hoặc thiết bị đầu "
+"cuối với tư cách Quản trị viên."
+
+#: ../../howto/remote_debugging.rst:71
+#, fuzzy
+msgid ""
+"Some processes may still be inaccessible even with Administrator rights, "
+"unless you have the ``SeDebugPrivilege`` privilege enabled."
+msgstr ""
+"Một số quy trình có thể vẫn không truy cập được ngay cả với quyền Quản trị "
+"viên, trừ khi bạn bật đặc quyền ``SeDebugPrivilege``."
+
+#: ../../howto/remote_debugging.rst:74
+#, fuzzy
+msgid ""
+"To resolve file or folder access issues, adjust the security permissions:"
+msgstr ""
+"Để giải quyết sự cố truy cập tệp hoặc thư mục, hãy điều chỉnh quyền bảo mật:"
+
+#: ../../howto/remote_debugging.rst:76
+#, fuzzy
+msgid "Right-click the file or folder and select **Properties**."
+msgstr "Nhấp chuột phải vào tệp hoặc thư mục và chọn **Properties**."
+
+#: ../../howto/remote_debugging.rst:77
+#, fuzzy
+msgid "Go to the **Security** tab to view users and groups with access."
+msgstr ""
+"Chuyển đến tab **Security** để xem người dùng và nhóm có quyền truy cập."
+
+#: ../../howto/remote_debugging.rst:78
+#, fuzzy
+msgid "Click **Edit** to modify permissions."
+msgstr "Nhấp vào **Edit** để sửa đổi quyền."
+
+#: ../../howto/remote_debugging.rst:79
+#, fuzzy
+msgid "Select your user account."
+msgstr "Chọn tài khoản người dùng của bạn."
+
+#: ../../howto/remote_debugging.rst:80
+#, fuzzy
+msgid "In **Permissions**, check **Read** or **Full control** as needed."
+msgstr ""
+"Trong **Permissions**, hãy kiểm tra **Read** hoặc **Full control** nếu cần."
+
+#: ../../howto/remote_debugging.rst:81
+#, fuzzy
+msgid "Click **Apply**, then **OK** to confirm."
+msgstr "Nhấp vào **Apply**, sau đó nhấp vào **OK** để xác nhận."
+
+#: ../../howto/remote_debugging.rst:86
+#, fuzzy
+msgid ""
+"Ensure you've satisfied all :ref:`permission-requirements` before "
+"proceeding."
+msgstr ""
+"Đảm bảo bạn đã hài lòng với tất cả :ref:`permission-requirements` trước khi "
+"tiếp tục."
+
+#: ../../howto/remote_debugging.rst:88
+#, fuzzy
+msgid ""
+"This section describes the low-level protocol that enables external tools to"
+" inject and execute a Python script within a running CPython process."
+msgstr ""
+"Phần này mô tả giao thức cấp thấp cho phép các công cụ bên ngoài chèn và "
+"thực thi tập lệnh Python trong quy trình CPython đang chạy."
+
+#: ../../howto/remote_debugging.rst:91
+#, fuzzy
+msgid ""
+"This mechanism forms the basis of the :func:`sys.remote_exec` function, "
+"which instructs a remote Python process to execute a ``.py`` file. However, "
+"this section does not document the usage of that function. Instead, it "
+"provides a detailed explanation of the underlying protocol, which takes as "
+"input the ``pid`` of a target Python process and the path to a Python source"
+" file to be executed. This information supports independent reimplementation"
+" of the protocol, regardless of programming language."
+msgstr ""
+"Cơ chế này tạo thành nền tảng của hàm :func:`sys.remote_exec`, hướng dẫn quy"
+" trình Python từ xa thực thi tệp ``.py``. Tuy nhiên, phần này không ghi lại "
+"cách sử dụng chức năng đó. Thay vào đó, nó cung cấp giải thích chi tiết về "
+"giao thức cơ bản, lấy đầu vào là ``pid`` của quy trình Python đích và đường "
+"dẫn đến tệp nguồn Python sẽ được thực thi. Thông tin này hỗ trợ việc triển "
+"khai lại giao thức một cách độc lập, bất kể ngôn ngữ lập trình."
+
+#: ../../howto/remote_debugging.rst:101
+#, fuzzy
+msgid ""
+"The execution of the injected script depends on the interpreter reaching a "
+"safe evaluation point. As a result, execution may be delayed depending on "
+"the runtime state of the target process."
+msgstr ""
+"Việc thực thi tập lệnh được chèn phụ thuộc vào việc trình thông dịch đạt đến"
+" điểm đánh giá an toàn. Kết quả là việc thực thi có thể bị trì hoãn tùy "
+"thuộc vào trạng thái thời gian chạy của quy trình đích."
+
+#: ../../howto/remote_debugging.rst:105
+#, fuzzy
+msgid ""
+"Once injected, the script is executed by the interpreter within the target "
+"process the next time a safe evaluation point is reached. This approach "
+"enables remote execution capabilities without modifying the behavior or "
+"structure of the running Python application."
+msgstr ""
+"Sau khi được chèn, tập lệnh sẽ được trình thông dịch thực thi trong quy "
+"trình đích vào lần tiếp theo đạt đến điểm đánh giá an toàn. Cách tiếp cận "
+"này cho phép khả năng thực thi từ xa mà không cần sửa đổi hành vi hoặc cấu "
+"trúc của ứng dụng Python đang chạy."
+
+#: ../../howto/remote_debugging.rst:110
+#, fuzzy
+msgid ""
+"Subsequent sections provide a step-by-step description of the protocol, "
+"including techniques for locating interpreter structures in memory, safely "
+"accessing internal fields, and triggering code execution. Platform-specific "
+"variations are noted where applicable, and example implementations are "
+"included to clarify each operation."
+msgstr ""
+"Các phần tiếp theo cung cấp mô tả từng bước về giao thức, bao gồm các kỹ "
+"thuật định vị cấu trúc trình thông dịch trong bộ nhớ, truy cập các trường "
+"nội bộ một cách an toàn và kích hoạt thực thi mã. Các biến thể dành riêng "
+"cho nền tảng được ghi chú khi có thể áp dụng và đưa vào các ví dụ triển khai"
+" để làm rõ từng hoạt động."
+
+#: ../../howto/remote_debugging.rst:117
+#, fuzzy
+msgid "Locating the PyRuntime structure"
+msgstr "Định vị cấu trúc PyRuntime"
+
+#: ../../howto/remote_debugging.rst:119
+#, fuzzy
+msgid ""
+"CPython places the ``PyRuntime`` structure in a dedicated binary section to "
+"help external tools find it at runtime. The name and format of this section "
+"vary by platform. For example, ``.PyRuntime`` is used on ELF systems, and "
+"``__DATA,__PyRuntime`` is used on macOS. Tools can find the offset of this "
+"structure by examining the binary on disk."
+msgstr ""
+"CPython đặt cấu trúc ``PyRuntime`` trong phần nhị phân chuyên dụng để giúp "
+"các công cụ bên ngoài tìm thấy cấu trúc đó trong thời gian chạy. Tên và định"
+" dạng của phần này khác nhau tùy theo nền tảng. Ví dụ: ``.PyRuntime`` được "
+"sử dụng trên hệ thống ELF và ``__DATA,__PyRuntime`` được sử dụng trên macOS."
+" Các công cụ có thể tìm thấy phần bù của cấu trúc này bằng cách kiểm tra tệp"
+" nhị phân trên đĩa."
+
+#: ../../howto/remote_debugging.rst:125
+#, fuzzy
+msgid ""
+"The ``PyRuntime`` structure contains CPython’s global interpreter state and "
+"provides access to other internal data, including the list of interpreters, "
+"thread states, and debugger support fields."
+msgstr ""
+"Cấu trúc ``PyRuntime`` chứa trạng thái trình thông dịch toàn cầu của CPython"
+" và cung cấp quyền truy cập vào dữ liệu nội bộ khác, bao gồm danh sách trình"
+" thông dịch, trạng thái luồng và các trường hỗ trợ trình gỡ lỗi."
+
+#: ../../howto/remote_debugging.rst:129
+#, fuzzy
+msgid ""
+"To work with a remote Python process, a debugger must first find the memory "
+"address of the ``PyRuntime`` structure in the target process. This address "
+"can’t be hardcoded or calculated from a symbol name, because it depends on "
+"where the operating system loaded the binary."
+msgstr ""
+"Để làm việc với quy trình Python từ xa, trước tiên trình gỡ lỗi phải tìm địa"
+" chỉ bộ nhớ của cấu trúc ``PyRuntime`` trong quy trình đích. Địa chỉ này "
+"không thể được mã hóa cứng hoặc được tính toán từ tên ký hiệu vì nó phụ "
+"thuộc vào vị trí hệ điều hành tải tệp nhị phân."
+
+#: ../../howto/remote_debugging.rst:134
+#, fuzzy
+msgid ""
+"The method for finding ``PyRuntime`` depends on the platform, but the steps "
+"are the same in general:"
+msgstr ""
+"Phương pháp tìm ``PyRuntime`` tùy thuộc vào nền tảng, nhưng nhìn chung các "
+"bước đều giống nhau:"
+
+#: ../../howto/remote_debugging.rst:137
+#, fuzzy
+msgid ""
+"Find the base address where the Python binary or shared library was loaded "
+"in the target process."
+msgstr ""
+"Tìm địa chỉ cơ sở nơi thư viện chia sẻ hoặc nhị phân Python được tải trong "
+"quy trình đích."
+
+#: ../../howto/remote_debugging.rst:139
+#, fuzzy
+msgid ""
+"Use the on-disk binary to locate the offset of the ``.PyRuntime`` section."
+msgstr ""
+"Sử dụng mã nhị phân trên đĩa để xác định phần bù của phần ``.PyRuntime``."
+
+#: ../../howto/remote_debugging.rst:140
+#, fuzzy
+msgid ""
+"Add the section offset to the base address to compute the address in memory."
+msgstr "Thêm phần bù vào địa chỉ cơ sở để tính địa chỉ trong bộ nhớ."
+
+#: ../../howto/remote_debugging.rst:142
+#, fuzzy
+msgid ""
+"The sections below explain how to do this on each supported platform and "
+"include example code."
+msgstr ""
+"Các phần bên dưới giải thích cách thực hiện việc này trên từng nền tảng được"
+" hỗ trợ và bao gồm mã ví dụ."
+
+#: ../../howto/remote_debugging.rst:146
+#, fuzzy
+msgid "Linux (ELF)"
+msgstr "Linux (ELF)"
+
+#: ../../howto/remote_debugging.rst:147
+#, fuzzy
+msgid "To find the ``PyRuntime`` structure on Linux:"
+msgstr "Để tìm cấu trúc ``PyRuntime`` trên Linux:"
+
+#: ../../howto/remote_debugging.rst:149
+#, fuzzy
+msgid ""
+"Read the process’s memory map (for example, ``/proc/<pid>/maps``) to find "
+"the address where the Python executable or ``libpython`` was loaded."
+msgstr ""
+"Đọc bản đồ bộ nhớ của quy trình (ví dụ: ``/proc/<pid>/maps``) để tìm địa chỉ"
+" nơi tệp thực thi Python hoặc ``libpython`` được tải."
+
+#: ../../howto/remote_debugging.rst:151
+#, fuzzy
+msgid ""
+"Parse the ELF section headers in the binary to get the offset of the "
+"``.PyRuntime`` section."
+msgstr ""
+"Phân tích các tiêu đề phần ELF ở dạng nhị phân để lấy phần bù của phần "
+"``.PyRuntime``."
+
+#: ../../howto/remote_debugging.rst:153
+#, fuzzy
+msgid ""
+"Add that offset to the base address from step 1 to get the memory address of"
+" ``PyRuntime``."
+msgstr ""
+"Thêm phần bù đó vào địa chỉ cơ sở từ bước 1 để lấy địa chỉ bộ nhớ của "
+"``PyRuntime``."
+
+#: ../../howto/remote_debugging.rst:156 ../../howto/remote_debugging.rst:218
+#: ../../howto/remote_debugging.rst:288 ../../howto/remote_debugging.rst:557
+#, fuzzy
+msgid "The following is an example implementation::"
+msgstr "Sau đây là một ví dụ triển khai::"
+
+#: ../../howto/remote_debugging.rst:158
+#, fuzzy
+msgid ""
+"def find_py_runtime_linux(pid: int) -> int:\n"
+"    # Step 1: Try to find the Python executable in memory\n"
+"    binary_path, base_address = find_mapped_binary(\n"
+"        pid, name_contains=\"python\"\n"
+"    )\n"
+"\n"
+"    # Step 2: Fallback to shared library if executable is not found\n"
+"    if binary_path is None:\n"
+"        binary_path, base_address = find_mapped_binary(\n"
+"            pid, name_contains=\"libpython\"\n"
+"        )\n"
+"\n"
+"    # Step 3: Parse ELF headers to get .PyRuntime section offset\n"
+"    section_offset = parse_elf_section_offset(\n"
+"        binary_path, \".PyRuntime\"\n"
+"    )\n"
+"\n"
+"    # Step 4: Compute PyRuntime address in memory\n"
+"    return base_address + section_offset"
+msgstr ""
+"def find_py_runtime_linux(pid: int) -> int:\n"
+"    # Step 1: Cố gắng tìm tệp thực thi Python trong bộ nhớ\n"
+"    đường dẫn nhị phân, base_address = find_mapped_binary(\n"
+"        pid, name_contains=\"python\"\n"
+"    )\n"
+"\n"
+"    # Step 2: Dự phòng vào thư viện dùng chung nếu không tìm thấy tệp thực thi\n"
+"    nếu nhị phân_path là Không có:\n"
+"        đường dẫn nhị phân, base_address = find_mapped_binary(\n"
+"            pid, name_contains=\"libpython\"\n"
+"        )\n"
+"\n"
+"    # Step 3: Phân tích các tiêu đề ELF để lấy phần bù .PyRuntime\n"
+"    phần_offset = phân tích cú pháp_elf_section_offset(\n"
+"        nhị phân_path, \".PyRuntime\"\n"
+"    )\n"
+"\n"
+"    # Step 4: Tính địa chỉ PyRuntime trong bộ nhớ\n"
+"    trả về địa chỉ cơ sở + phần_offset"
+
+#: ../../howto/remote_debugging.rst:179
+#, fuzzy
+msgid ""
+"On Linux systems, there are two main approaches to read memory from another "
+"process. The first is through the ``/proc`` filesystem, specifically by "
+"reading from ``/proc/[pid]/mem`` which provides direct access to the "
+"process's memory. This requires appropriate permissions - either being the "
+"same user as the target process or having root access. The second approach "
+"is using the ``process_vm_readv()`` system call which provides a more "
+"efficient way to copy memory between processes. While ptrace's "
+"``PTRACE_PEEKTEXT`` operation can also be used to read memory, it is "
+"significantly slower as it only reads one word at a time and requires "
+"multiple context switches between the tracer and tracee processes."
+msgstr ""
+"Trên hệ thống Linux, có hai cách tiếp cận chính để đọc bộ nhớ từ một tiến "
+"trình khác. Đầu tiên là thông qua hệ thống tập tin ``/proc``, cụ thể là bằng"
+" cách đọc từ ``/proc/[pid]/mem``, cung cấp quyền truy cập trực tiếp vào bộ "
+"nhớ của tiến trình. Điều này yêu cầu các quyền thích hợp - có cùng người "
+"dùng với quy trình đích hoặc có quyền truy cập root. Cách tiếp cận thứ hai "
+"là sử dụng lệnh gọi hệ thống ``process_vm_readv()``, cung cấp cách hiệu quả "
+"hơn để sao chép bộ nhớ giữa các tiến trình. Mặc dù hoạt động "
+"``PTRACE_PEEKTEXT`` của ptrace cũng có thể được sử dụng để đọc bộ nhớ, nhưng"
+" nó chậm hơn đáng kể vì nó chỉ đọc một từ mỗi lần và yêu cầu nhiều chuyển "
+"đổi ngữ cảnh giữa quá trình theo dõi và theo dõi."
+
+#: ../../howto/remote_debugging.rst:190
+#, fuzzy
+msgid ""
+"For parsing ELF sections, the process involves reading and interpreting the "
+"ELF file format structures from the binary file on disk. The ELF header "
+"contains a pointer to the section header table. Each section header contains"
+" metadata about a section including its name (stored in a separate string "
+"table), offset, and size. To find a specific section like .PyRuntime, you "
+"need to walk through these headers and match the section name. The section "
+"header then provides the offset where that section exists in the file, which"
+" can be used to calculate its runtime address when the binary is loaded into"
+" memory."
+msgstr ""
+"Để phân tích các phần ELF, quy trình này bao gồm việc đọc và giải thích cấu "
+"trúc định dạng tệp ELF từ tệp nhị phân trên đĩa. Tiêu đề ELF chứa một con "
+"trỏ tới bảng tiêu đề phần. Mỗi tiêu đề phần chứa siêu dữ liệu về một phần "
+"bao gồm tên của nó (được lưu trữ trong một bảng chuỗi riêng), độ lệch và "
+"kích thước. Để tìm một phần cụ thể như .PyRuntime, bạn cần xem qua các tiêu "
+"đề này và khớp với tên phần. Sau đó, tiêu đề phần cung cấp phần bù trong đó "
+"phần đó tồn tại trong tệp, phần này có thể được sử dụng để tính địa chỉ thời"
+" gian chạy của nó khi tệp nhị phân được tải vào bộ nhớ."
+
+#: ../../howto/remote_debugging.rst:199
+#, fuzzy
+msgid ""
+"You can read more about the ELF file format in the `ELF specification "
+"<https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_."
+msgstr ""
+"Bạn có thể đọc thêm về định dạng tệp ELF trong `ELF specification "
+"<https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_."
+
+#: ../../howto/remote_debugging.rst:204
+#, fuzzy
+msgid "macOS (Mach-O)"
+msgstr "macOS (Mach-O)"
+
+#: ../../howto/remote_debugging.rst:205
+#, fuzzy
+msgid "To find the ``PyRuntime`` structure on macOS:"
+msgstr "Để tìm cấu trúc ``PyRuntime`` trên macOS:"
+
+#: ../../howto/remote_debugging.rst:207
+#, fuzzy
+msgid ""
+"Call ``task_for_pid()`` to get the ``mach_port_t`` task port for the target "
+"process. This handle is needed to read memory using APIs like "
+"``mach_vm_read_overwrite`` and ``mach_vm_region``."
+msgstr ""
+"Gọi ``task_for_pid()`` để nhận cổng tác vụ ``mach_port_t`` cho quy trình "
+"đích. Tay cầm này cần thiết để đọc bộ nhớ bằng các API như "
+"``mach_vm_read_overwrite`` và ``mach_vm_region``."
+
+#: ../../howto/remote_debugging.rst:210
+#, fuzzy
+msgid ""
+"Scan the memory regions to find the one containing the Python executable or "
+"``libpython``."
+msgstr ""
+"Quét các vùng bộ nhớ để tìm vùng chứa tệp thực thi Python hoặc "
+"``libpython``."
+
+#: ../../howto/remote_debugging.rst:212
+#, fuzzy
+msgid ""
+"Load the binary file from disk and parse the Mach-O headers to find the "
+"section named ``PyRuntime`` in the ``__DATA`` segment.  On macOS, symbol "
+"names are automatically prefixed with an underscore, so the ``PyRuntime`` "
+"symbol appears as ``_PyRuntime`` in the symbol table, but the section name "
+"is not affected."
+msgstr ""
+"Tải tệp nhị phân từ đĩa và phân tích các tiêu đề Mach-O để tìm phần có tên "
+"``PyRuntime`` trong phân đoạn ``__DATA``.  Trên macOS, tên biểu tượng được "
+"tự động thêm dấu gạch dưới vào đầu nên biểu tượng ``PyRuntime`` xuất hiện "
+"dưới dạng ``_PyRuntime`` trong bảng ký hiệu nhưng tên phần không bị ảnh "
+"hưởng."
+
+#: ../../howto/remote_debugging.rst:220
+#, fuzzy
+msgid ""
+"def find_py_runtime_macos(pid: int) -> int:\n"
+"    # Step 1: Get access to the process's memory\n"
+"    handle = get_memory_access_handle(pid)\n"
+"\n"
+"    # Step 2: Try to find the Python executable in memory\n"
+"    binary_path, base_address = find_mapped_binary(\n"
+"        handle, name_contains=\"python\"\n"
+"    )\n"
+"\n"
+"    # Step 3: Fallback to libpython if the executable is not found\n"
+"    if binary_path is None:\n"
+"        binary_path, base_address = find_mapped_binary(\n"
+"            handle, name_contains=\"libpython\"\n"
+"        )\n"
+"\n"
+"    # Step 4: Parse Mach-O headers to get __DATA,__PyRuntime section offset\n"
+"    section_offset = parse_macho_section_offset(\n"
+"        binary_path, \"__DATA\", \"__PyRuntime\"\n"
+"    )\n"
+"\n"
+"    # Step 5: Compute the PyRuntime address in memory\n"
+"    return base_address + section_offset"
+msgstr ""
+"def find_py_runtime_macos(pid: int) -> int:\n"
+"    # Step 1: Truy cập vào bộ nhớ của tiến trình\n"
+"    xử lý = get_memory_access_handle(pid)\n"
+"\n"
+"    # Step 2: Cố gắng tìm tệp thực thi Python trong bộ nhớ\n"
+"    đường dẫn nhị phân, base_address = find_mapped_binary(\n"
+"        xử lý, name_contains=\"python\"\n"
+"    )\n"
+"\n"
+"    # Step 3: Dự phòng về libpython nếu không tìm thấy tệp thực thi\n"
+"    nếu nhị phân_path là Không có:\n"
+"        đường dẫn nhị phân, base_address = find_mapped_binary(\n"
+"            xử lý, name_contains=\"libpython\"\n"
+"        )\n"
+"\n"
+"    # Step 4: Phân tích cú pháp các tiêu đề Mach-O để lấy phần bù phần __DATA,__PyRuntime\n"
+"    phần_offset = phân tích cú pháp_macho_section_offset(\n"
+"        nhị phân_path, \"__DATA\", \"__PyRuntime\"\n"
+"    )\n"
+"\n"
+"    # Step 5: Tính địa chỉ PyRuntime trong bộ nhớ\n"
+"    trả về địa chỉ cơ sở + phần_offset"
+
+#: ../../howto/remote_debugging.rst:243
+#, fuzzy
+msgid ""
+"On macOS, accessing another process's memory requires using Mach-O specific "
+"APIs and file formats. The first step is obtaining a ``task_port`` handle "
+"via ``task_for_pid()``, which provides access to the target process's memory"
+" space. This handle enables memory operations through APIs like "
+"``mach_vm_read_overwrite()``."
+msgstr ""
+"Trên macOS, việc truy cập bộ nhớ của tiến trình khác yêu cầu sử dụng các "
+"định dạng tệp và API cụ thể của Mach-O. Bước đầu tiên là lấy bộ điều khiển "
+"``task_port`` thông qua ``task_for_pid()``, cung cấp quyền truy cập vào "
+"không gian bộ nhớ của tiến trình đích. Tay cầm này cho phép hoạt động bộ nhớ"
+" thông qua các API như ``mach_vm_read_overwrite()``."
+
+#: ../../howto/remote_debugging.rst:249
+#, fuzzy
+msgid ""
+"The process memory can be examined using ``mach_vm_region()`` to scan "
+"through the virtual memory space, while ``proc_regionfilename()`` helps "
+"identify which binary files are loaded at each memory region. When the "
+"Python binary or library is found, its Mach-O headers need to be parsed to "
+"locate the ``PyRuntime`` structure."
+msgstr ""
+"Bộ nhớ xử lý có thể được kiểm tra bằng ``mach_vm_region()`` để quét qua "
+"không gian bộ nhớ ảo, trong khi ``proc_regionfilename()`` giúp xác định tệp "
+"nhị phân nào được tải ở mỗi vùng bộ nhớ. Khi tìm thấy thư viện hoặc nhị phân"
+" Python, các tiêu đề Mach-O của nó cần được phân tích cú pháp để xác định "
+"cấu trúc ``PyRuntime``."
+
+#: ../../howto/remote_debugging.rst:254
+#, fuzzy
+msgid ""
+"The Mach-O format organizes code and data into segments and sections. The "
+"``PyRuntime`` structure lives in a section named ``__PyRuntime`` within the "
+"``__DATA`` segment. The actual runtime address calculation involves finding "
+"the ``__TEXT`` segment which serves as the binary's base address, then "
+"locating the ``__DATA`` segment containing our target section. The final "
+"address is computed by combining the base address with the appropriate "
+"section offsets from the Mach-O headers."
+msgstr ""
+"Định dạng Mach-O tổ chức mã và dữ liệu thành các phân đoạn và phần. Cấu trúc"
+" ``PyRuntime`` nằm trong một phần có tên ``__PyRuntime`` trong phân đoạn "
+"``__DATA``. Việc tính toán địa chỉ thời gian chạy thực tế bao gồm việc tìm "
+"phân đoạn ``__TEXT`` đóng vai trò là địa chỉ cơ sở của tệp nhị phân, sau đó "
+"định vị phân đoạn ``__DATA`` chứa phần mục tiêu của chúng tôi. Địa chỉ cuối "
+"cùng được tính bằng cách kết hợp địa chỉ cơ sở với phần bù phần thích hợp từ"
+" các tiêu đề Mach-O."
+
+#: ../../howto/remote_debugging.rst:262
+#, fuzzy
+msgid ""
+"Note that accessing another process's memory on macOS typically requires "
+"elevated privileges - either root access or special security entitlements "
+"granted to the debugging process."
+msgstr ""
+"Lưu ý rằng việc truy cập vào bộ nhớ của tiến trình khác trên macOS thường "
+"yêu cầu đặc quyền nâng cao - quyền truy cập root hoặc quyền bảo mật đặc biệt"
+" được cấp cho quá trình gỡ lỗi."
+
+#: ../../howto/remote_debugging.rst:268
+#, fuzzy
+msgid "Windows (PE)"
+msgstr "Cửa sổ (PE)"
+
+#: ../../howto/remote_debugging.rst:269
+#, fuzzy
+msgid "To find the ``PyRuntime`` structure on Windows:"
+msgstr "Để tìm cấu trúc ``PyRuntime`` trên Windows:"
+
+#: ../../howto/remote_debugging.rst:271
+#, fuzzy
+msgid ""
+"Use the ToolHelp API to enumerate all modules loaded in the target process. "
+"This is done using functions such as `CreateToolhelp32Snapshot "
+"<https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-"
+"tlhelp32-createtoolhelp32snapshot>`_, `Module32First "
+"<https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-"
+"tlhelp32-module32first>`_, and `Module32Next "
+"<https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-"
+"tlhelp32-module32next>`_."
+msgstr ""
+"Sử dụng ToolHelp API để liệt kê tất cả các mô-đun được tải trong quy trình "
+"đích. Điều này được thực hiện bằng cách sử dụng các hàm như "
+"`CreateToolhelp32Snapshot <https://learn.microsoft.com/en-"
+"us/windows/win32/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot>`_, "
+"`Module32First <https://learn.microsoft.com/en-"
+"us/windows/win32/api/tlhelp32/nf-tlhelp32-module32first>`_ và `Module32Next "
+"<https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-"
+"tlhelp32-module32next>`_."
+
+#: ../../howto/remote_debugging.rst:278
+#, python-brace-format, fuzzy
+msgid ""
+"Identify the module corresponding to :file:`python.exe` or "
+":file:`python{XY}.dll`, where ``X`` and ``Y`` are the major and minor "
+"version numbers of the Python version, and record its base address."
+msgstr ""
+"Xác định mô-đun tương ứng với :file:`python.exe` hoặc "
+":file:`python{XY}.dll`, trong đó ``X`` và ``Y`` là số phiên bản chính và phụ"
+" của phiên bản Python và ghi lại địa chỉ cơ sở của nó."
+
+#: ../../howto/remote_debugging.rst:281
+#, fuzzy
+msgid ""
+"Locate the ``PyRuntim`` section. Due to the PE format's 8-character limit on"
+" section names (defined as ``IMAGE_SIZEOF_SHORT_NAME``), the original name "
+"``PyRuntime`` is truncated. This section contains the ``PyRuntime`` "
+"structure."
+msgstr ""
+"Xác định vị trí phần ``PyRuntim``. Do giới hạn 8 ký tự của định dạng PE đối "
+"với tên phần (được xác định là ``IMAGE_SIZEOF_SHORT_NAME``), tên ban đầu "
+"``PyRuntime`` bị cắt bớt. Phần này chứa cấu trúc ``PyRuntime``."
+
+#: ../../howto/remote_debugging.rst:285
+#, fuzzy
+msgid ""
+"Retrieve the section’s relative virtual address (RVA) and add it to the base"
+" address of the module."
+msgstr ""
+"Truy xuất địa chỉ ảo tương đối của phần (RVA) và thêm nó vào địa chỉ cơ sở "
+"của mô-đun."
+
+#: ../../howto/remote_debugging.rst:290
+#, fuzzy
+msgid ""
+"def find_py_runtime_windows(pid: int) -> int:\n"
+"    # Step 1: Try to find the Python executable in memory\n"
+"    binary_path, base_address = find_loaded_module(\n"
+"        pid, name_contains=\"python\"\n"
+"    )\n"
+"\n"
+"    # Step 2: Fallback to shared pythonXY.dll if the executable is not\n"
+"    # found\n"
+"    if binary_path is None:\n"
+"        binary_path, base_address = find_loaded_module(\n"
+"            pid, name_contains=\"python3\"\n"
+"        )\n"
+"\n"
+"    # Step 3: Parse PE section headers to get the RVA of the PyRuntime\n"
+"    # section. The section name appears as \"PyRuntim\" due to the\n"
+"    # 8-character limit defined by the PE format (IMAGE_SIZEOF_SHORT_NAME).\n"
+"    section_rva = parse_pe_section_offset(binary_path, \"PyRuntim\")\n"
+"\n"
+"    # Step 4: Compute PyRuntime address in memory\n"
+"    return base_address + section_rva"
+msgstr ""
+"def find_py_runtime_windows(pid: int) -> int:\n"
+"    # Step 1: Cố gắng tìm tệp thực thi Python trong bộ nhớ\n"
+"    đường dẫn nhị phân, base_address = find_loaded_module(\n"
+"        pid, name_contains=\"python\"\n"
+"    )\n"
+"\n"
+"    # Step 2: Dự phòng cho pythonXY.dll được chia sẻ nếu không có tệp thực thi\n"
+"    # found\n"
+"    nếu nhị phân_path là Không có:\n"
+"        đường dẫn nhị phân, base_address = find_loaded_module(\n"
+"            pid, name_contains=\"python3\"\n"
+"        )\n"
+"\n"
+"    # Step 3: Phân tích tiêu đề phần PE để lấy RVA của PyRuntime\n"
+"    # section. Tên phần xuất hiện dưới dạng \"PyRuntim\" do\n"
+"    giới hạn # 8-character được xác định bởi định dạng PE (IMAGE_SIZEOF_SHORT_NAME).\n"
+"    phần_rva = phân tích cú pháp_pe_section_offset(binary_path, \"PyRuntim\")\n"
+"\n"
+"    # Step 4: Tính địa chỉ PyRuntime trong bộ nhớ\n"
+"    trả về địa chỉ cơ sở + phần_rva"
+
+#: ../../howto/remote_debugging.rst:312
+#, fuzzy
+msgid ""
+"On Windows, accessing another process's memory requires using the Windows "
+"API functions like ``CreateToolhelp32Snapshot()`` and "
+"``Module32First()/Module32Next()`` to enumerate loaded modules. The "
+"``OpenProcess()`` function provides a handle to access the target process's "
+"memory space, enabling memory operations through ``ReadProcessMemory()``."
+msgstr ""
+"Trên Windows, việc truy cập bộ nhớ của tiến trình khác yêu cầu sử dụng các "
+"hàm API của Windows như ``CreateToolhelp32Snapshot()`` và "
+"``Module32First()/Module32Next()`` để liệt kê các mô-đun đã tải. Hàm "
+"``OpenProcess()`` cung cấp một điều khiển để truy cập vào không gian bộ nhớ "
+"của tiến trình đích, cho phép các hoạt động bộ nhớ thông qua "
+"``ReadProcessMemory()``."
+
+#: ../../howto/remote_debugging.rst:318
+#, fuzzy
+msgid ""
+"The process memory can be examined by enumerating loaded modules to find the"
+" Python binary or DLL. When found, its PE headers need to be parsed to "
+"locate the ``PyRuntime`` structure."
+msgstr ""
+"Bộ nhớ tiến trình có thể được kiểm tra bằng cách liệt kê các mô-đun đã tải "
+"để tìm mã nhị phân Python hoặc DLL. Khi được tìm thấy, các tiêu đề PE của nó"
+" cần được phân tích cú pháp để xác định cấu trúc ``PyRuntime``."
+
+#: ../../howto/remote_debugging.rst:322
+#, fuzzy
+msgid ""
+"The PE format organizes code and data into sections. The ``PyRuntime`` "
+"structure lives in a section named \"PyRuntim\" (truncated from "
+"\"PyRuntime\" due to PE's 8-character name limit). The actual runtime "
+"address calculation involves finding the module's base address from the "
+"module entry, then locating our target section in the PE headers. The final "
+"address is computed by combining the base address with the section's virtual"
+" address from the PE section headers."
+msgstr ""
+"Định dạng PE tổ chức mã và dữ liệu thành các phần. Cấu trúc ``PyRuntime`` "
+"nằm trong một phần có tên \"PyRuntim\" (bị cắt bớt từ \"PyRuntime\" do giới "
+"hạn tên 8 ký tự của PE). Việc tính toán địa chỉ thời gian chạy thực tế bao "
+"gồm việc tìm địa chỉ cơ sở của mô-đun từ mục nhập mô-đun, sau đó định vị "
+"phần mục tiêu của chúng ta trong các tiêu đề PE. Địa chỉ cuối cùng được tính"
+" bằng cách kết hợp địa chỉ cơ sở với địa chỉ ảo của phần từ tiêu đề phần PE."
+
+#: ../../howto/remote_debugging.rst:329
+#, fuzzy
+msgid ""
+"Note that accessing another process's memory on Windows typically requires "
+"appropriate privileges - either administrative access or the "
+"``SeDebugPrivilege`` privilege granted to the debugging process."
+msgstr ""
+"Lưu ý rằng việc truy cập bộ nhớ của tiến trình khác trên Windows thường yêu "
+"cầu các đặc quyền thích hợp - quyền truy cập quản trị hoặc đặc quyền "
+"``SeDebugPrivilege`` được cấp cho quá trình gỡ lỗi."
+
+#: ../../howto/remote_debugging.rst:335
+#, fuzzy
+msgid "Reading _Py_DebugOffsets"
+msgstr "Đọc _Py_DebugOffsets"
+
+#: ../../howto/remote_debugging.rst:337
+#, fuzzy
+msgid ""
+"Once the address of the ``PyRuntime`` structure has been determined, the "
+"next step is to read the ``_Py_DebugOffsets`` structure located at the "
+"beginning of the ``PyRuntime`` block."
+msgstr ""
+"Khi địa chỉ của cấu trúc ``PyRuntime`` đã được xác định, bước tiếp theo là "
+"đọc cấu trúc ``_Py_DebugOffsets`` nằm ở đầu khối ``PyRuntime``."
+
+#: ../../howto/remote_debugging.rst:341
+#, fuzzy
+msgid ""
+"This structure provides version-specific field offsets that are needed to "
+"safely read interpreter and thread state memory. These offsets vary between "
+"CPython versions and must be checked before use to ensure they are "
+"compatible."
+msgstr ""
+"Cấu trúc này cung cấp độ lệch trường theo phiên bản cụ thể cần thiết để đọc "
+"bộ nhớ trạng thái luồng và trình thông dịch một cách an toàn. Các chênh lệch"
+" này khác nhau giữa các phiên bản CPython và phải được kiểm tra trước khi sử"
+" dụng để đảm bảo chúng tương thích."
+
+#: ../../howto/remote_debugging.rst:345
+#, fuzzy
+msgid "To read and check the debug offsets, follow these steps:"
+msgstr "Để đọc và kiểm tra bù trừ gỡ lỗi, hãy làm theo các bước sau:"
+
+#: ../../howto/remote_debugging.rst:347
+#, fuzzy
+msgid ""
+"Read memory from the target process starting at the ``PyRuntime`` address, "
+"covering the same number of bytes as the ``_Py_DebugOffsets`` structure. "
+"This structure is located at the very start of the ``PyRuntime`` memory "
+"block. Its layout is defined in CPython’s internal headers and stays the "
+"same within a given minor version, but may change in major versions."
+msgstr ""
+"Đọc bộ nhớ từ tiến trình đích bắt đầu từ địa chỉ ``PyRuntime``, bao gồm cùng"
+" số byte như cấu trúc ``_Py_DebugOffsets``. Cấu trúc này nằm ở đầu khối bộ "
+"nhớ ``PyRuntime``. Bố cục của nó được xác định trong các tiêu đề nội bộ của "
+"CPython và giữ nguyên trong một phiên bản nhỏ nhất định nhưng có thể thay "
+"đổi trong các phiên bản chính."
+
+#: ../../howto/remote_debugging.rst:353
+#, fuzzy
+msgid "Check that the structure contains valid data:"
+msgstr "Kiểm tra xem cấu trúc có chứa dữ liệu hợp lệ không:"
+
+#: ../../howto/remote_debugging.rst:355
+#, fuzzy
+msgid "The ``cookie`` field must match the expected debug marker."
+msgstr "Trường ``cookie`` phải khớp với điểm đánh dấu gỡ lỗi dự kiến."
+
+#: ../../howto/remote_debugging.rst:356
+#, fuzzy
+msgid ""
+"The ``version`` field must match the version of the Python interpreter used "
+"by the debugger."
+msgstr ""
+"Trường ``version`` phải khớp với phiên bản của trình thông dịch Python được "
+"trình gỡ lỗi sử dụng."
+
+#: ../../howto/remote_debugging.rst:358
+#, fuzzy
+msgid ""
+"If either the debugger or the target process is using a pre-release version "
+"(for example, an alpha, beta, or release candidate), the versions must match"
+" exactly."
+msgstr ""
+"Nếu trình gỡ lỗi hoặc quy trình đích đang sử dụng phiên bản tiền phát hành "
+"(ví dụ: phiên bản alpha, beta hoặc bản phát hành), thì các phiên bản phải "
+"khớp chính xác."
+
+#: ../../howto/remote_debugging.rst:361
+#, fuzzy
+msgid ""
+"The ``free_threaded`` field must have the same value in both the debugger "
+"and the target process."
+msgstr ""
+"Trường ``free_threaded`` phải có cùng giá trị trong cả trình gỡ lỗi và quy "
+"trình đích."
+
+#: ../../howto/remote_debugging.rst:364
+#, fuzzy
+msgid ""
+"If the structure is valid, the offsets it contains can be used to locate "
+"fields in memory. If any check fails, the debugger should stop the operation"
+" to avoid reading memory in the wrong format."
+msgstr ""
+"Nếu cấu trúc hợp lệ, các offset mà nó chứa có thể được sử dụng để định vị "
+"các trường trong bộ nhớ. Nếu bất kỳ kiểm tra nào không thành công, trình gỡ "
+"lỗi sẽ dừng hoạt động để tránh đọc bộ nhớ ở định dạng sai."
+
+#: ../../howto/remote_debugging.rst:368
+#, fuzzy
+msgid ""
+"The following is an example implementation that reads and checks "
+"``_Py_DebugOffsets``::"
+msgstr "Sau đây là ví dụ triển khai đọc và kiểm tra ``_Py_DebugOffsets``::"
+
+#: ../../howto/remote_debugging.rst:371
+#, fuzzy
+msgid ""
+"def read_debug_offsets(pid: int, py_runtime_addr: int) -> DebugOffsets:\n"
+"    # Step 1: Read memory from the target process at the PyRuntime address\n"
+"    data = read_process_memory(\n"
+"        pid, address=py_runtime_addr, size=DEBUG_OFFSETS_SIZE\n"
+"    )\n"
+"\n"
+"    # Step 2: Deserialize the raw bytes into a _Py_DebugOffsets structure\n"
+"    debug_offsets = parse_debug_offsets(data)\n"
+"\n"
+"    # Step 3: Validate the contents of the structure\n"
+"    if debug_offsets.cookie != EXPECTED_COOKIE:\n"
+"        raise RuntimeError(\"Invalid or missing debug cookie\")\n"
+"    if debug_offsets.version != LOCAL_PYTHON_VERSION:\n"
+"        raise RuntimeError(\n"
+"            \"Mismatch between caller and target Python versions\"\n"
+"        )\n"
+"    if debug_offsets.free_threaded != LOCAL_FREE_THREADED:\n"
+"        raise RuntimeError(\"Mismatch in free-threaded configuration\")\n"
+"\n"
+"    return debug_offsets"
+msgstr ""
+"def read_debug_offsets(pid: int, py_runtime_addr: int) -> DebugOffsets:\n"
+"    # Step 1: Đọc bộ nhớ từ tiến trình đích tại địa chỉ PyRuntime\n"
+"    dữ liệu = read_process_memory(\n"
+"        pid, địa chỉ=py_runtime_addr, size=DEBUG_OFFSETS_SIZE\n"
+"    )\n"
+"\n"
+"    # Step 2: Giải tuần tự hóa các byte thô thành cấu trúc _Py_DebugOffsets\n"
+"    debug_offsets=parse_debug_offsets(dữ liệu)\n"
+"\n"
+"    # Step 3: Xác thực nội dung của cấu trúc\n"
+"    nếu debug_offsets.cookie != EXPECTED_COOKIE:\n"
+"        raise RuntimeError(\"Cookie gỡ lỗi không hợp lệ hoặc bị thiếu\")\n"
+"    nếu debug_offsets.version != LOCAL_PYTHON_VERSION:\n"
+"        tăng RuntimeError(\n"
+"            \"Không khớp giữa phiên bản Python của người gọi và đích\"\n"
+"        )\n"
+"    nếu debug_offsets.free_threaded != LOCAL_FREE_THREADED:\n"
+"        raise RuntimeError(\"Không khớp trong cấu hình luồng tự do\")\n"
+"\n"
+"    trả về debug_offsets"
+
+#: ../../howto/remote_debugging.rst:396
+#, fuzzy
+msgid "**Process suspension recommended**"
+msgstr "**Process suspension recommended**"
+
+#: ../../howto/remote_debugging.rst:398
+#, fuzzy
+msgid ""
+"To avoid race conditions and ensure memory consistency, it is strongly "
+"recommended that the target process be suspended before performing any "
+"operations that read or write internal interpreter state. The Python runtime"
+" may concurrently mutate interpreter data structures—such as creating or "
+"destroying threads—during normal execution. This can result in invalid "
+"memory reads or writes."
+msgstr ""
+"Để tránh tình trạng dồn đuổi và đảm bảo tính nhất quán của bộ nhớ, chúng tôi"
+" đặc biệt khuyên bạn nên tạm dừng quy trình đích trước khi thực hiện bất kỳ "
+"thao tác nào đọc hoặc ghi trạng thái trình thông dịch nội bộ. Thời gian chạy"
+" Python có thể đồng thời thay đổi cấu trúc dữ liệu của trình thông "
+"dịch—chẳng hạn như tạo hoặc hủy các luồng—trong quá trình thực thi thông "
+"thường. Điều này có thể dẫn đến việc đọc hoặc ghi bộ nhớ không hợp lệ."
+
+#: ../../howto/remote_debugging.rst:405
+#, fuzzy
+msgid ""
+"A debugger may suspend execution by attaching to the process with ``ptrace``"
+" or by sending a ``SIGSTOP`` signal. Execution should only be resumed after "
+"debugger-side memory operations are complete."
+msgstr ""
+"Trình gỡ lỗi có thể tạm dừng thực thi bằng cách gắn vào quy trình với "
+"``ptrace`` hoặc bằng cách gửi tín hiệu ``SIGSTOP``. Việc thực thi chỉ nên "
+"được tiếp tục sau khi các thao tác bộ nhớ phía trình gỡ lỗi hoàn tất."
+
+#: ../../howto/remote_debugging.rst:411
+#, fuzzy
+msgid ""
+"Some tools, such as profilers or sampling-based debuggers, may operate on a "
+"running process without suspension. In such cases, tools must be explicitly "
+"designed to handle partially updated or inconsistent memory. For most "
+"debugger implementations, suspending the process remains the safest and most"
+" robust approach."
+msgstr ""
+"Một số công cụ, chẳng hạn như trình lược tả hoặc trình gỡ lỗi dựa trên lấy "
+"mẫu, có thể hoạt động trên một quy trình đang chạy mà không bị tạm dừng. "
+"Trong những trường hợp như vậy, các công cụ phải được thiết kế rõ ràng để xử"
+" lý bộ nhớ được cập nhật một phần hoặc không nhất quán. Đối với hầu hết việc"
+" triển khai trình gỡ lỗi, việc tạm dừng quy trình vẫn là cách tiếp cận an "
+"toàn và mạnh mẽ nhất."
+
+#: ../../howto/remote_debugging.rst:419
+#, fuzzy
+msgid "Locating the interpreter and thread state"
+msgstr "Định vị trình thông dịch và trạng thái luồng"
+
+#: ../../howto/remote_debugging.rst:421
+#, fuzzy
+msgid ""
+"Before code can be injected and executed in a remote Python process, the "
+"debugger must choose a thread in which to schedule execution. This is "
+"necessary because the control fields used to perform remote code injection "
+"are located in the ``_PyRemoteDebuggerSupport`` structure, which is embedded"
+" in a ``PyThreadState`` object. These fields are modified by the debugger to"
+" request execution of injected scripts."
+msgstr ""
+"Trước khi mã có thể được chèn và thực thi trong quy trình Python từ xa, "
+"trình gỡ lỗi phải chọn một luồng để lên lịch thực thi. Điều này là cần thiết"
+" vì các trường điều khiển được sử dụng để thực hiện việc chèn mã từ xa nằm "
+"trong cấu trúc ``_PyRemoteDebuggerSupport``, được nhúng trong đối tượng "
+"``PyThreadState``. Các trường này được trình gỡ lỗi sửa đổi để yêu cầu thực "
+"thi các tập lệnh được chèn."
+
+#: ../../howto/remote_debugging.rst:428
+#, fuzzy
+msgid ""
+"The ``PyThreadState`` structure represents a thread running inside a Python "
+"interpreter.  It maintains the thread’s evaluation context and contains the "
+"fields required for debugger coordination.  Locating a valid "
+"``PyThreadState`` is therefore a key prerequisite for triggering execution "
+"remotely."
+msgstr ""
+"Cấu trúc ``PyThreadState`` đại diện cho một luồng chạy bên trong trình thông"
+" dịch Python.  Nó duy trì bối cảnh đánh giá của luồng và chứa các trường cần"
+" thiết để phối hợp trình gỡ lỗi.  Do đó, việc xác định vị trí "
+"``PyThreadState`` hợp lệ là điều kiện tiên quyết quan trọng để kích hoạt "
+"thực thi từ xa."
+
+#: ../../howto/remote_debugging.rst:433
+#, fuzzy
+msgid ""
+"A thread is typically selected based on its role or ID. In most cases, the "
+"main thread is used, but some tools may target a specific thread by its "
+"native thread ID. Once the target thread is chosen, the debugger must locate"
+" both the interpreter and the associated thread state structures in memory."
+msgstr ""
+"Một luồng thường được chọn dựa trên vai trò hoặc ID của nó. Trong hầu hết "
+"các trường hợp, luồng chính được sử dụng, nhưng một số công cụ có thể nhắm "
+"mục tiêu một luồng cụ thể theo ID luồng gốc của nó. Khi luồng đích được "
+"chọn, trình gỡ lỗi phải định vị cả trình thông dịch và cấu trúc trạng thái "
+"luồng liên quan trong bộ nhớ."
+
+#: ../../howto/remote_debugging.rst:438
+#, fuzzy
+msgid "The relevant internal structures are defined as follows:"
+msgstr "Các cấu trúc bên trong có liên quan được xác định như sau:"
+
+#: ../../howto/remote_debugging.rst:440
+#, fuzzy
+msgid ""
+"``PyInterpreterState`` represents an isolated Python interpreter instance. "
+"Each interpreter maintains its own set of imported modules, built-in state, "
+"and thread state list. Although most Python applications use a single "
+"interpreter, CPython supports multiple interpreters in the same process."
+msgstr ""
+"``PyInterpreterState`` đại diện cho một phiên bản trình thông dịch Python bị"
+" cô lập. Mỗi trình thông dịch duy trì tập hợp các mô-đun đã nhập, trạng thái"
+" tích hợp và danh sách trạng thái luồng của riêng mình. Mặc dù hầu hết các "
+"ứng dụng Python sử dụng một trình thông dịch duy nhất nhưng CPython hỗ trợ "
+"nhiều trình thông dịch trong cùng một quy trình."
+
+#: ../../howto/remote_debugging.rst:445
+#, fuzzy
+msgid ""
+"``PyThreadState`` represents a thread running within an interpreter. It "
+"contains execution state and the control fields used by the debugger."
+msgstr ""
+"``PyThreadState`` đại diện cho một luồng chạy trong trình thông dịch. Nó "
+"chứa trạng thái thực thi và các trường điều khiển được trình gỡ lỗi sử dụng."
+
+#: ../../howto/remote_debugging.rst:448
+#, fuzzy
+msgid "To locate a thread:"
+msgstr "Để xác định vị trí một chủ đề:"
+
+#: ../../howto/remote_debugging.rst:450
+#, fuzzy
+msgid ""
+"Use the offset ``runtime_state.interpreters_head`` to obtain the address of "
+"the first interpreter in the ``PyRuntime`` structure. This is the entry "
+"point to the linked list of active interpreters."
+msgstr ""
+"Sử dụng offset ``runtime_state.interpreters_head`` để lấy địa chỉ của trình "
+"thông dịch đầu tiên trong cấu trúc ``PyRuntime``. Đây là điểm vào danh sách "
+"liên kết của các thông dịch viên đang hoạt động."
+
+#: ../../howto/remote_debugging.rst:454
+#, fuzzy
+msgid ""
+"Use the offset ``interpreter_state.threads_main`` to access the main thread "
+"state associated with the selected interpreter. This is typically the most "
+"reliable thread to target."
+msgstr ""
+"Sử dụng offset ``interpreter_state.threads_main`` để truy cập trạng thái "
+"luồng chính được liên kết với trình thông dịch đã chọn. Đây thường là chủ đề"
+" đáng tin cậy nhất để nhắm mục tiêu."
+
+#: ../../howto/remote_debugging.rst:458
+#, fuzzy
+msgid ""
+"Optionally, use the offset ``interpreter_state.threads_head`` to iterate "
+"through the linked list of all thread states. Each ``PyThreadState`` "
+"structure contains a ``native_thread_id`` field, which may be compared to a "
+"target thread ID to find a specific thread."
+msgstr ""
+"Theo tùy chọn, hãy sử dụng offset ``interpreter_state.threads_head`` để lặp "
+"qua danh sách được liên kết của tất cả các trạng thái luồng. Mỗi cấu trúc "
+"``PyThreadState`` chứa trường ``native_thread_id``, trường này có thể được "
+"so sánh với ID luồng đích để tìm một luồng cụ thể."
+
+#: ../../howto/remote_debugging.rst:463
+#, fuzzy
+msgid ""
+"Once a valid ``PyThreadState`` has been found, its address can be used in "
+"later steps of the protocol, such as writing debugger control fields and "
+"scheduling execution."
+msgstr ""
+"Sau khi tìm thấy ``PyThreadState`` hợp lệ, địa chỉ của nó có thể được sử "
+"dụng trong các bước sau của giao thức, chẳng hạn như ghi các trường điều "
+"khiển trình gỡ lỗi và lập lịch thực thi."
+
+#: ../../howto/remote_debugging.rst:467
+#, fuzzy
+msgid ""
+"The following is an example implementation that locates the main thread "
+"state::"
+msgstr "Sau đây là ví dụ triển khai để xác định trạng thái của luồng chính::"
+
+#: ../../howto/remote_debugging.rst:469
+#, fuzzy
+msgid ""
+"def find_main_thread_state(\n"
+"    pid: int, py_runtime_addr: int, debug_offsets: DebugOffsets,\n"
+") -> int:\n"
+"    # Step 1: Read interpreters_head from PyRuntime\n"
+"    interp_head_ptr = (\n"
+"        py_runtime_addr + debug_offsets.runtime_state.interpreters_head\n"
+"    )\n"
+"    interp_addr = read_pointer(pid, interp_head_ptr)\n"
+"    if interp_addr == 0:\n"
+"        raise RuntimeError(\"No interpreter found in the target process\")\n"
+"\n"
+"    # Step 2: Read the threads_main pointer from the interpreter\n"
+"    threads_main_ptr = (\n"
+"        interp_addr + debug_offsets.interpreter_state.threads_main\n"
+"    )\n"
+"    thread_state_addr = read_pointer(pid, threads_main_ptr)\n"
+"    if thread_state_addr == 0:\n"
+"        raise RuntimeError(\"Main thread state is not available\")\n"
+"\n"
+"    return thread_state_addr"
+msgstr ""
+"chắc chắn find_main_thread_state(\n"
+"    pid: int, py_runtime_addr: int, debug_offsets: DebugOffsets,\n"
+") -> int:\n"
+"    # Step 1: Đọc thông dịch viên_head từ PyRuntime\n"
+"    interp_head_ptr = (\n"
+"        py_runtime_addr + debug_offsets.runtime_state.interpreters_head\n"
+"    )\n"
+"    interp_addr = read_pointer(pid, interp_head_ptr)\n"
+"    nếu interp_addr == 0:\n"
+"        raise RuntimeError(\"Không tìm thấy trình thông dịch nào trong tiến trình đích\")\n"
+"\n"
+"    # Step 2: Đọc con trỏ thread_main từ trình thông dịch\n"
+"    chủ đề_main_ptr = (\n"
+"        interp_addr + debug_offsets.interpreter_state.threads_main\n"
+"    )\n"
+"    thread_state_addr = read_pointer(pid, thread_main_ptr)\n"
+"    nếu thread_state_addr == 0:\n"
+"        raise RuntimeError(\"Trạng thái luồng chính không khả dụng\")\n"
+"\n"
+"    trả về thread_state_addr"
+
+#: ../../howto/remote_debugging.rst:490
+#, fuzzy
+msgid ""
+"The following example demonstrates how to locate a thread by its native "
+"thread ID::"
+msgstr ""
+"Ví dụ sau đây minh họa cách định vị một luồng bằng ID luồng gốc của nó::"
+
+#: ../../howto/remote_debugging.rst:493
+#, fuzzy
+msgid ""
+"def find_thread_by_id(\n"
+"    pid: int,\n"
+"    interp_addr: int,\n"
+"    debug_offsets: DebugOffsets,\n"
+"    target_tid: int,\n"
+") -> int:\n"
+"    # Start at threads_head and walk the linked list\n"
+"    thread_ptr = read_pointer(\n"
+"        pid,\n"
+"        interp_addr + debug_offsets.interpreter_state.threads_head\n"
+"    )\n"
+"\n"
+"    while thread_ptr:\n"
+"        native_tid_ptr = (\n"
+"            thread_ptr + debug_offsets.thread_state.native_thread_id\n"
+"        )\n"
+"        native_tid = read_int(pid, native_tid_ptr)\n"
+"        if native_tid == target_tid:\n"
+"            return thread_ptr\n"
+"        thread_ptr = read_pointer(\n"
+"            pid,\n"
+"            thread_ptr + debug_offsets.thread_state.next\n"
+"        )\n"
+"\n"
+"    raise RuntimeError(\"Thread with the given ID was not found\")"
+msgstr ""
+"chắc chắn find_thread_by_id(\n"
+"    pid: int,\n"
+"    interp_addr: int,\n"
+"    debug_offsets: DebugOffsets,\n"
+"    target_tid: int,\n"
+") -> int:\n"
+"    # Start tại thread_head và xem danh sách liên kết\n"
+"    thread_ptr = read_pointer(\n"
+"        pid,\n"
+"        interp_addr + debug_offsets.interpreter_state.threads_head\n"
+"    )\n"
+"\n"
+"    trong khi thread_ptr:\n"
+"        bản địa_tid_ptr = (\n"
+"            thread_ptr + debug_offsets.thread_state.native_thread_id\n"
+"        )\n"
+"        bản địa_tid = read_int(pid, bản địa_tid_ptr)\n"
+"        nếu Native_tid == target_tid:\n"
+"            trả về thread_ptr\n"
+"        thread_ptr = read_pointer(\n"
+"            pid,\n"
+"            thread_ptr + debug_offsets.thread_state.next\n"
+"        )\n"
+"\n"
+"    raise RuntimeError(\"Không tìm thấy chủ đề có ID đã cho\")"
+
+#: ../../howto/remote_debugging.rst:520
+#, fuzzy
+msgid ""
+"Once a valid thread state has been located, the debugger can proceed with "
+"modifying its control fields and scheduling execution, as described in the "
+"next section."
+msgstr ""
+"Khi trạng thái luồng hợp lệ đã được xác định, trình gỡ lỗi có thể tiến hành "
+"sửa đổi các trường điều khiển của nó và lập lịch thực thi, như được mô tả "
+"trong phần tiếp theo."
+
+#: ../../howto/remote_debugging.rst:525
+#, fuzzy
+msgid "Writing control information"
+msgstr "Viết thông tin điều khiển"
+
+#: ../../howto/remote_debugging.rst:527
+#, fuzzy
+msgid ""
+"Once a valid ``PyThreadState`` structure has been identified, the debugger "
+"may modify control fields within it to schedule the execution of a specified"
+" Python script. These control fields are checked periodically by the "
+"interpreter, and when set correctly, they trigger the execution of remote "
+"code at a safe point in the evaluation loop."
+msgstr ""
+"Sau khi xác định được cấu trúc ``PyThreadState`` hợp lệ, trình gỡ lỗi có thể"
+" sửa đổi các trường điều khiển bên trong cấu trúc đó để lên lịch thực thi "
+"tập lệnh Python được chỉ định. Các trường điều khiển này được trình thông "
+"dịch kiểm tra định kỳ và khi được đặt chính xác, chúng sẽ kích hoạt việc "
+"thực thi mã từ xa tại một điểm an toàn trong vòng đánh giá."
+
+#: ../../howto/remote_debugging.rst:533
+#, fuzzy
+msgid ""
+"Each ``PyThreadState`` contains a ``_PyRemoteDebuggerSupport`` structure "
+"used for communication between the debugger and the interpreter. The "
+"locations of its fields are defined by the ``_Py_DebugOffsets`` structure "
+"and include the following:"
+msgstr ""
+"Mỗi ``PyThreadState`` chứa cấu trúc ``_PyRemoteDebuggerSupport`` được sử "
+"dụng để liên lạc giữa trình gỡ lỗi và trình thông dịch. Vị trí của các "
+"trường của nó được xác định bởi cấu trúc ``_Py_DebugOffsets`` và bao gồm:"
+
+#: ../../howto/remote_debugging.rst:538
+#, fuzzy
+msgid ""
+"``debugger_script_path``: A fixed-size buffer that holds the full path to a "
+"Python source file (``.py``).  This file must be accessible and readable by "
+"the target process when execution is triggered."
+msgstr ""
+"``debugger_script_path``: Bộ đệm có kích thước cố định chứa đường dẫn đầy đủ"
+" đến tệp nguồn Python (``.py``).  Tệp này phải có thể truy cập và đọc được "
+"bởi tiến trình đích khi quá trình thực thi được kích hoạt."
+
+#: ../../howto/remote_debugging.rst:542
+#, fuzzy
+msgid ""
+"``debugger_pending_call``: An integer flag. Setting this to ``1`` tells the "
+"interpreter that a script is ready to be executed."
+msgstr ""
+"``debugger_pending_call``: Cờ số nguyên. Đặt giá trị này thành ``1`` sẽ cho "
+"trình thông dịch biết rằng tập lệnh đã sẵn sàng để thực thi."
+
+#: ../../howto/remote_debugging.rst:545
+#, fuzzy
+msgid ""
+"``eval_breaker``: A field checked by the interpreter during execution. "
+"Setting bit 5 (``_PY_EVAL_PLEASE_STOP_BIT``, value ``1U << 5``) in this "
+"field causes the interpreter to pause and check for debugger activity."
+msgstr ""
+"``eval_breaker``: Trường được trình thông dịch kiểm tra trong khi thực thi. "
+"Đặt bit 5 (``_PY_EVAL_PLEASE_STOP_BIT``, giá trị ``1U << 5``) trong trường "
+"này sẽ khiến trình thông dịch tạm dừng và kiểm tra hoạt động của trình gỡ "
+"lỗi."
+
+#: ../../howto/remote_debugging.rst:549
+#, fuzzy
+msgid ""
+"To complete the injection, the debugger must perform the following steps:"
+msgstr "Để hoàn tất quá trình chèn, trình gỡ lỗi phải thực hiện các bước sau:"
+
+#: ../../howto/remote_debugging.rst:551
+#, fuzzy
+msgid "Write the full script path into the ``debugger_script_path`` buffer."
+msgstr "Viết đường dẫn tập lệnh đầy đủ vào bộ đệm ``debugger_script_path``."
+
+#: ../../howto/remote_debugging.rst:552
+#, fuzzy
+msgid "Set ``debugger_pending_call`` to ``1``."
+msgstr "Đặt ``debugger_pending_call`` thành ``1``."
+
+#: ../../howto/remote_debugging.rst:553
+#, fuzzy
+msgid ""
+"Read the current value of ``eval_breaker``, set bit 5 "
+"(``_PY_EVAL_PLEASE_STOP_BIT``), and write the updated value back. This "
+"signals the interpreter to check for debugger activity."
+msgstr ""
+"Đọc giá trị hiện tại của ``eval_breaker``, đặt bit 5 "
+"(``_PY_EVAL_PLEASE_STOP_BIT``) và ghi lại giá trị đã cập nhật. Điều này báo "
+"hiệu cho trình thông dịch kiểm tra hoạt động của trình gỡ lỗi."
+
+#: ../../howto/remote_debugging.rst:559
+#, fuzzy
+msgid ""
+"def inject_script(\n"
+"    pid: int,\n"
+"    thread_state_addr: int,\n"
+"    debug_offsets: DebugOffsets,\n"
+"    script_path: str\n"
+") -> None:\n"
+"    # Compute the base offset of _PyRemoteDebuggerSupport\n"
+"    support_base = (\n"
+"        thread_state_addr +\n"
+"        debug_offsets.debugger_support.remote_debugger_support\n"
+"    )\n"
+"\n"
+"    # Step 1: Write the script path into debugger_script_path\n"
+"    script_path_ptr = (\n"
+"        support_base +\n"
+"        debug_offsets.debugger_support.debugger_script_path\n"
+"    )\n"
+"    write_string(pid, script_path_ptr, script_path)\n"
+"\n"
+"    # Step 2: Set debugger_pending_call to 1\n"
+"    pending_ptr = (\n"
+"        support_base +\n"
+"        debug_offsets.debugger_support.debugger_pending_call\n"
+"    )\n"
+"    write_int(pid, pending_ptr, 1)\n"
+"\n"
+"    # Step 3: Set _PY_EVAL_PLEASE_STOP_BIT (bit 5, value 1 << 5) in\n"
+"    # eval_breaker\n"
+"    eval_breaker_ptr = (\n"
+"        thread_state_addr +\n"
+"        debug_offsets.debugger_support.eval_breaker\n"
+"    )\n"
+"    breaker = read_int(pid, eval_breaker_ptr)\n"
+"    breaker |= (1 << 5)\n"
+"    write_int(pid, eval_breaker_ptr, breaker)"
+msgstr ""
+"def tiêm_script(\n"
+"    pid: int,\n"
+"    thread_state_addr: int,\n"
+"    debug_offsets: DebugOffsets,\n"
+"    script_path: str\n"
+") -> Không có:\n"
+"    # Compute phần bù cơ sở của _PyRemoteDebuggerSupport\n"
+"    hỗ trợ_base = (\n"
+"        thread_state_addr +\n"
+"        debug_offsets.debugger_support.remote_debugger_support\n"
+"    )\n"
+"\n"
+"    # Step 1: Ghi đường dẫn script vào debugger_script_path\n"
+"    script_path_ptr = (\n"
+"        hỗ trợ_base +\n"
+"        debug_offsets.debugger_support.debugger_script_path\n"
+"    )\n"
+"    write_string(pid, script_path_ptr, script_path)\n"
+"\n"
+"    # Step 2: Đặt debugger_pending_call thành 1\n"
+"    đang chờ xử lý_ptr = (\n"
+"        hỗ trợ_base +\n"
+"        debug_offsets.debugger_support.debugger_pending_call\n"
+"    )\n"
+"    write_int(pid, đang chờ xử lý_ptr, 1)\n"
+"\n"
+"    # Step 3: Đặt _PY_EVAL_PLEASE_STOP_BIT (bit 5, giá trị 1 << 5) trong\n"
+"    # eval_breaker\n"
+"    eval_breaker_ptr = (\n"
+"        thread_state_addr +\n"
+"        debug_offsets.debugger_support.eval_breaker\n"
+"    )\n"
+"    bộ ngắt = read_int(pid, eval_breaker_ptr)\n"
+"    bộ ngắt |= (1 << 5)\n"
+"    write_int(pid, eval_breaker_ptr, bộ ngắt)"
+
+#: ../../howto/remote_debugging.rst:596
+#, fuzzy
+msgid ""
+"Once these fields are set, the debugger may resume the process (if it was "
+"suspended).  The interpreter will process the request at the next safe "
+"evaluation point, load the script from disk, and execute it."
+msgstr ""
+"Khi các trường này được đặt, trình gỡ lỗi có thể tiếp tục quá trình (nếu nó "
+"bị tạm dừng).  Trình thông dịch sẽ xử lý yêu cầu tại điểm đánh giá an toàn "
+"tiếp theo, tải tập lệnh từ đĩa và thực thi nó."
+
+#: ../../howto/remote_debugging.rst:600
+#, fuzzy
+msgid ""
+"It is the responsibility of the debugger to ensure that the script file "
+"remains present and accessible to the target process during execution."
+msgstr ""
+"Trách nhiệm của trình gỡ lỗi là đảm bảo rằng tệp tập lệnh vẫn hiện diện và "
+"có thể truy cập được đối với quy trình đích trong khi thực thi."
+
+#: ../../howto/remote_debugging.rst:605
+#, fuzzy
+msgid ""
+"Script execution is asynchronous. The script file cannot be deleted "
+"immediately after injection. The debugger should wait until the injected "
+"script has produced an observable effect before removing the file. This "
+"effect depends on what the script is designed to do. For example, a debugger"
+" might wait until the remote process connects back to a socket before "
+"removing the script. Once such an effect is observed, it is safe to assume "
+"the file is no longer needed."
+msgstr ""
+"Việc thực thi tập lệnh không đồng bộ. Không thể xóa tập lệnh ngay sau khi "
+"tiêm. Trình gỡ lỗi phải đợi cho đến khi tập lệnh được chèn tạo ra hiệu ứng "
+"có thể quan sát được trước khi xóa tệp. Hiệu ứng này phụ thuộc vào mục đích "
+"của kịch bản. Ví dụ: trình gỡ lỗi có thể đợi cho đến khi quy trình từ xa kết"
+" nối trở lại ổ cắm trước khi xóa tập lệnh. Khi quan sát thấy hiệu ứng như "
+"vậy, có thể an toàn khi cho rằng tệp không còn cần thiết nữa."
+
+#: ../../howto/remote_debugging.rst:614
+#, fuzzy
+msgid "Summary"
+msgstr "Tóm tắt"
+
+#: ../../howto/remote_debugging.rst:616
+#, fuzzy
+msgid "To inject and execute a Python script in a remote process:"
+msgstr "Để chèn và thực thi tập lệnh Python trong một quy trình từ xa:"
+
+#: ../../howto/remote_debugging.rst:618
+#, fuzzy
+msgid "Locate the ``PyRuntime`` structure in the target process’s memory."
+msgstr "Xác định cấu trúc ``PyRuntime`` trong bộ nhớ của tiến trình đích."
+
+#: ../../howto/remote_debugging.rst:619
+#, fuzzy
+msgid ""
+"Read and validate the ``_Py_DebugOffsets`` structure at the beginning of "
+"``PyRuntime``."
+msgstr "Đọc và xác thực cấu trúc ``_Py_DebugOffsets`` ở đầu ``PyRuntime``."
+
+#: ../../howto/remote_debugging.rst:621
+#, fuzzy
+msgid "Use the offsets to locate a valid ``PyThreadState``."
+msgstr "Sử dụng độ lệch để xác định vị trí ``PyThreadState`` hợp lệ."
+
+#: ../../howto/remote_debugging.rst:622
+#, fuzzy
+msgid "Write the path to a Python script into ``debugger_script_path``."
+msgstr "Viết đường dẫn đến tập lệnh Python vào ``debugger_script_path``."
+
+#: ../../howto/remote_debugging.rst:623
+#, fuzzy
+msgid "Set the ``debugger_pending_call`` flag to ``1``."
+msgstr "Đặt cờ ``debugger_pending_call`` thành ``1``."
+
+#: ../../howto/remote_debugging.rst:624
+#, fuzzy
+msgid "Set ``_PY_EVAL_PLEASE_STOP_BIT`` in the ``eval_breaker`` field."
+msgstr "Đặt ``_PY_EVAL_PLEASE_STOP_BIT`` trong trường ``eval_breaker``."
+
+#: ../../howto/remote_debugging.rst:625
+#, fuzzy
+msgid ""
+"Resume the process (if suspended). The script will execute at the next safe "
+"evaluation point."
+msgstr ""
+"Tiếp tục quá trình (nếu bị đình chỉ). Tập lệnh sẽ thực thi tại điểm đánh giá"
+" an toàn tiếp theo."
+
+#: ../../howto/remote_debugging.rst:631
+#, fuzzy
+msgid "Security and threat model"
+msgstr "Mô hình an ninh và mối đe dọa"
+
+#: ../../howto/remote_debugging.rst:633
+#, fuzzy
+msgid ""
+"The remote debugging protocol relies on the same operating system primitives"
+" used by native debuggers such as GDB and LLDB.  Attaching to a process "
+"requires the **same privileges** that those debuggers require, for example "
+"``ptrace`` / Yama LSM on Linux, ``task_for_pid`` on macOS, and "
+"``SeDebugPrivilege`` on Windows.  Python does not introduce any new "
+"privilege escalation path; if an attacker already possesses the permissions "
+"needed to attach to a process, they could equally use GDB to read memory or "
+"inject code."
+msgstr ""
+"Giao thức gỡ lỗi từ xa dựa trên cùng các nguyên tắc cơ bản của hệ điều hành "
+"được sử dụng bởi các trình gỡ lỗi gốc như GDB và LLDB.  Việc đính kèm vào "
+"một quy trình yêu cầu **same privileges** mà các trình gỡ lỗi đó yêu cầu, ví"
+" dụ: ``ptrace`` / Yama LSM trên Linux, ``task_for_pid`` trên macOS và "
+"``SeDebugPrivilege`` trên Windows.  Python không giới thiệu bất kỳ đường dẫn"
+" leo thang đặc quyền mới nào; nếu kẻ tấn công đã có các quyền cần thiết để "
+"đính kèm vào một quy trình, chúng cũng có thể sử dụng GDB để đọc bộ nhớ hoặc"
+" tiêm mã."
+
+#: ../../howto/remote_debugging.rst:642
+#, fuzzy
+msgid ""
+"The following principles define what is, and is not, considered a security "
+"vulnerability in this feature:"
+msgstr ""
+"Các nguyên tắc sau đây xác định điều gì được và không được coi là lỗ hổng "
+"bảo mật trong tính năng này:"
+
+#: ../../howto/remote_debugging.rst:645
+#, fuzzy
+msgid "Attaching requires OS-level privileges"
+msgstr "Việc đính kèm yêu cầu đặc quyền cấp hệ điều hành"
+
+#: ../../howto/remote_debugging.rst:646
+#, fuzzy
+msgid ""
+"On every supported platform the operating system gates cross-process memory "
+"access behind privilege checks (``CAP_SYS_PTRACE``, root, or administrator "
+"rights).  A report that demonstrates an issue only after these privileges "
+"have already been obtained is **not** a vulnerability in CPython, since the "
+"OS security boundary was already crossed."
+msgstr ""
+"Trên mọi nền tảng được hỗ trợ, cổng hệ điều hành truy cập bộ nhớ xử lý chéo "
+"đằng sau các kiểm tra đặc quyền (quyền ``CAP_SYS_PTRACE``, root hoặc quản "
+"trị viên).  Một báo cáo chỉ cho thấy sự cố xảy ra sau khi đã có được các đặc"
+" quyền này là **not** là một lỗ hổng trong CPython do ranh giới bảo mật của "
+"hệ điều hành đã bị vượt qua."
+
+#: ../../howto/remote_debugging.rst:652
+#, fuzzy
+msgid ""
+"Crashes or memory errors when reading a compromised process are not "
+"vulnerabilities"
+msgstr ""
+"Sự cố hoặc lỗi bộ nhớ khi đọc quy trình bị xâm nhập không phải là lỗ hổng"
+
+#: ../../howto/remote_debugging.rst:653
+#, fuzzy
+msgid ""
+"A tool that reads internal interpreter state from a target process must "
+"trust that memory to be well-formed.  If the target process has been "
+"corrupted or is controlled by an attacker, the debugger or profiler may "
+"crash, produce garbage output, or behave unpredictably.  This is the same "
+"risk accepted by every ``ptrace``-based debugger.  Bugs in this category "
+"(buffer overflows, segmentation faults, or undefined behaviour triggered by "
+"reading corrupted state) are **not** treated as security issues, though "
+"fixes that improve robustness are welcome."
+msgstr ""
+"Một công cụ đọc trạng thái trình thông dịch nội bộ từ một quy trình đích "
+"phải tin tưởng rằng bộ nhớ đó được định dạng đúng.  Nếu quy trình đích bị "
+"hỏng hoặc bị kẻ tấn công kiểm soát, trình gỡ lỗi hoặc trình lược tả có thể "
+"gặp sự cố, tạo ra kết quả rác hoặc hoạt động không thể đoán trước.  Đây là "
+"rủi ro tương tự được chấp nhận bởi mọi trình gỡ lỗi dựa trên ``ptrace``.  "
+"Các lỗi trong danh mục này (tràn bộ đệm, lỗi phân đoạn hoặc hành vi không "
+"xác định được kích hoạt bằng cách đọc trạng thái bị hỏng) được **not** coi "
+"là sự cố bảo mật, mặc dù các bản sửa lỗi giúp cải thiện độ mạnh mẽ vẫn được "
+"hoan nghênh."
+
+#: ../../howto/remote_debugging.rst:662
+#, fuzzy
+msgid "Vulnerabilities in the target process are not in scope"
+msgstr "Các lỗ hổng trong quy trình mục tiêu không nằm trong phạm vi"
+
+#: ../../howto/remote_debugging.rst:663
+#, fuzzy
+msgid ""
+"If the Python process being debugged has already been compromised, the "
+"attacker already controls execution in that process.  Demonstrating further "
+"impact from that starting point does not constitute a vulnerability in the "
+"remote debugging protocol."
+msgstr ""
+"Nếu quy trình Python đang được gỡ lỗi đã bị xâm phạm thì kẻ tấn công đã kiểm"
+" soát việc thực thi trong quy trình đó.  Việc thể hiện tác động sâu hơn từ "
+"điểm xuất phát đó không tạo thành lỗ hổng trong giao thức gỡ lỗi từ xa."
+
+#: ../../howto/remote_debugging.rst:669
+#, fuzzy
+msgid "When to use ``PYTHON_DISABLE_REMOTE_DEBUG``"
+msgstr "Khi nào nên sử dụng ``PYTHON_DISABLE_REMOTE_DEBUG``"
+
+#: ../../howto/remote_debugging.rst:671
+#, fuzzy
+msgid ""
+"The environment variable :envvar:`PYTHON_DISABLE_REMOTE_DEBUG` (and the "
+"equivalent :option:`-X disable_remote_debug` flag) allows operators to "
+"disable the in-process side of the protocol as a **defence-in-depth** "
+"measure.  This may be useful in hardened or sandboxed deployment "
+"environments where no debugging or profiling of the process is expected and "
+"reducing attack surface is a priority, even though the OS-level privilege "
+"checks already prevent unprivileged access."
+msgstr ""
+"Biến môi trường :envvar:`PYTHON_DISABLE_REMOTE_DEBUG` (và cờ :option:`-X "
+"disable_remote_debug` tương đương) cho phép người vận hành vô hiệu hóa phần "
+"đang xử lý của giao thức dưới dạng thước đo **defence-in-depth**.  Điều này "
+"có thể hữu ích trong các môi trường triển khai cứng hoặc hộp cát, nơi không "
+"cần gỡ lỗi hoặc lập hồ sơ quy trình và việc giảm bề mặt tấn công là ưu tiên "
+"hàng đầu, mặc dù việc kiểm tra đặc quyền cấp hệ điều hành đã ngăn chặn quyền"
+" truy cập không có đặc quyền."
+
+#: ../../howto/remote_debugging.rst:679
+#, fuzzy
+msgid ""
+"Setting this variable does **not** affect other OS-level debugging "
+"interfaces (``ptrace``, ``/proc``, ``task_for_pid``, etc.), which remain "
+"available according to their own permission models."
+msgstr ""
+"Việc đặt biến này sẽ khiến **not** ảnh hưởng đến các giao diện gỡ lỗi cấp hệ"
+" điều hành khác (``ptrace``, ``/proc``, ``task_for_pid``, v.v.), những giao "
+"diện này vẫn khả dụng theo mô hình cấp phép riêng của chúng."

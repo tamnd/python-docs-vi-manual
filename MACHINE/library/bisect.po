@@ -1,0 +1,530 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/bisect.rst:2
+#, fuzzy
+msgid ":mod:`!bisect` --- Array bisection algorithm"
+msgstr ":mod:`!bisect` --- Thuật toán chia đôi mảng"
+
+#: ../../library/bisect.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/bisect.py`"
+msgstr "**Source code:** :source:`Lib/bisect.py`"
+
+#: ../../library/bisect.rst:14
+#, fuzzy
+msgid ""
+"This module provides support for maintaining a list in sorted order without "
+"having to sort the list after each insertion.  For long lists of items with "
+"expensive comparison operations, this can be an improvement over linear "
+"searches or frequent resorting."
+msgstr ""
+"Mô-đun này cung cấp hỗ trợ để duy trì danh sách theo thứ tự được sắp xếp mà "
+"không cần phải sắp xếp danh sách sau mỗi lần chèn.  Đối với danh sách dài "
+"các mục có thao tác so sánh tốn kém, đây có thể là một cải tiến so với tìm "
+"kiếm tuyến tính hoặc sử dụng thường xuyên."
+
+#: ../../library/bisect.rst:19
+#, fuzzy
+msgid ""
+"The module is called :mod:`!bisect` because it uses a basic bisection "
+"algorithm to do its work.  Unlike other bisection tools that search for a "
+"specific value, the functions in this module are designed to locate an "
+"insertion point. Accordingly, the functions never call an "
+":meth:`~object.__eq__` method to determine whether a value has been found.  "
+"Instead, the functions only call the :meth:`~object.__lt__` method and will "
+"return an insertion point between values in an array."
+msgstr ""
+"Mô-đun này được gọi là :mod:`!bisect` vì nó sử dụng thuật toán chia đôi cơ "
+"bản để thực hiện công việc của mình.  Không giống như các công cụ chia đôi "
+"khác tìm kiếm một giá trị cụ thể, các hàm trong mô-đun này được thiết kế để "
+"xác định vị trí điểm chèn. Theo đó, các hàm không bao giờ gọi phương thức "
+":meth:`~object.__eq__` để xác định xem một giá trị có được tìm thấy hay "
+"không.  Thay vào đó, các hàm chỉ gọi phương thức :meth:`~object.__lt__` và "
+"sẽ trả về điểm chèn giữa các giá trị trong một mảng."
+
+#: ../../library/bisect.rst:29
+#, fuzzy
+msgid ""
+"The functions in this module are not thread-safe. If multiple threads "
+"concurrently use :mod:`!bisect` functions on the same sequence, this may "
+"result in undefined behaviour. Likewise, if the provided sequence is mutated"
+" by a different thread while a :mod:`!bisect` function is operating on it, "
+"the result is undefined. For example, using :py:func:`~bisect.insort_left` "
+"on the same list from multiple threads may result in the list becoming "
+"unsorted."
+msgstr ""
+"Các chức năng trong mô-đun này không an toàn theo luồng. Nếu nhiều luồng "
+"đồng thời sử dụng các hàm :mod:`!bisect` trên cùng một chuỗi, điều này có "
+"thể dẫn đến hành vi không xác định. Tương tự, nếu chuỗi được cung cấp bị "
+"thay đổi bởi một luồng khác trong khi hàm :mod:`!bisect` đang hoạt động trên"
+" chuỗi đó thì kết quả sẽ không được xác định. Ví dụ: sử dụng "
+":py:func:`~bisect.insort_left` trên cùng một danh sách từ nhiều luồng có thể"
+" khiến danh sách không được sắp xếp."
+
+#: ../../library/bisect.rst:39
+#, fuzzy
+msgid "The following functions are provided:"
+msgstr "Các chức năng sau đây được cung cấp:"
+
+#: ../../library/bisect.rst:44
+#, fuzzy
+msgid ""
+"Locate the insertion point for *x* in *a* to maintain sorted order. The "
+"parameters *lo* and *hi* may be used to specify a subset of the list which "
+"should be considered; by default the entire list is used.  If *x* is already"
+" present in *a*, the insertion point will be before (to the left of) any "
+"existing entries.  The return value is suitable for use as the first "
+"parameter to ``list.insert()`` assuming that *a* is already sorted."
+msgstr ""
+"Xác định vị trí điểm chèn cho *x* trong *a* để duy trì thứ tự được sắp xếp. "
+"Các tham số *lo* và *hi* có thể được sử dụng để chỉ định một tập hợp con của"
+" danh sách cần được xem xét; theo mặc định toàn bộ danh sách được sử dụng.  "
+"Nếu *x* đã có trong *a*, điểm chèn sẽ ở trước (ở bên trái) bất kỳ mục nhập "
+"hiện có nào.  Giá trị trả về phù hợp để sử dụng làm tham số đầu tiên cho "
+"``list.insert()`` giả sử rằng *a* đã được sắp xếp."
+
+#: ../../library/bisect.rst:51
+#, fuzzy
+msgid ""
+"The returned insertion point *ip* partitions the array *a* into two slices "
+"such that ``all(elem < x for elem in a[lo : ip])`` is true for the left "
+"slice and ``all(elem >= x for elem in a[ip : hi])`` is true for the right "
+"slice."
+msgstr ""
+"Điểm chèn *ip* được trả về sẽ phân chia mảng *a* thành hai lát sao cho "
+"``all(elem < x for elem in a[lo : ip])`` đúng với lát cắt bên trái và "
+"``all(elem >= x for elem in a[ip : hi])`` đúng với lát cắt bên phải."
+
+#: ../../library/bisect.rst:56
+#, fuzzy
+msgid ""
+"*key* specifies a :term:`key function` of one argument that is used to "
+"extract a comparison key from each element in the array.  To support "
+"searching complex records, the key function is not applied to the *x* value."
+msgstr ""
+"*key* chỉ định :term:`key function` của một đối số được sử dụng để trích "
+"xuất khóa so sánh từ mỗi phần tử trong mảng.  Để hỗ trợ tìm kiếm các bản ghi"
+" phức tạp, hàm key không được áp dụng cho giá trị *x*."
+
+#: ../../library/bisect.rst:60
+#, fuzzy
+msgid ""
+"If *key* is ``None``, the elements are compared directly and no key function"
+" is called."
+msgstr ""
+"Nếu *key* là ``None``, các phần tử sẽ được so sánh trực tiếp và không có hàm"
+" chính nào được gọi."
+
+#: ../../library/bisect.rst:63 ../../library/bisect.rst:77
+#: ../../library/bisect.rst:95 ../../library/bisect.rst:115
+#, fuzzy
+msgid "Added the *key* parameter."
+msgstr "Đã thêm tham số *key*."
+
+#: ../../library/bisect.rst:70
+#, fuzzy
+msgid ""
+"Similar to :py:func:`~bisect.bisect_left`, but returns an insertion point "
+"which comes after (to the right of) any existing entries of *x* in *a*."
+msgstr ""
+"Tương tự như :py:func:`~bisect.bisect_left`, nhưng trả về một điểm chèn nằm "
+"sau (ở bên phải) bất kỳ mục nhập hiện có nào của *x* trong *a*."
+
+#: ../../library/bisect.rst:73
+#, fuzzy
+msgid ""
+"The returned insertion point *ip* partitions the array *a* into two slices "
+"such that ``all(elem <= x for elem in a[lo : ip])`` is true for the left "
+"slice and ``all(elem > x for elem in a[ip : hi])`` is true for the right "
+"slice."
+msgstr ""
+"Điểm chèn *ip* được trả về sẽ phân chia mảng *a* thành hai lát sao cho "
+"``all(elem <= x for elem in a[lo : ip])`` đúng với lát cắt bên trái và "
+"``all(elem > x for elem in a[ip : hi])`` đúng với lát cắt bên phải."
+
+#: ../../library/bisect.rst:83
+#, fuzzy
+msgid "Insert *x* in *a* in sorted order."
+msgstr "Chèn *x* vào *a* theo thứ tự được sắp xếp."
+
+#: ../../library/bisect.rst:85
+#, fuzzy
+msgid ""
+"This function first runs :py:func:`~bisect.bisect_left` to locate an "
+"insertion point. Next, it runs the :meth:`~sequence.insert` method on *a* to"
+" insert *x* at the appropriate position to maintain sort order."
+msgstr ""
+"Hàm này trước tiên chạy :py:func:`~bisect.bisect_left` để xác định vị trí "
+"điểm chèn. Tiếp theo, nó chạy phương thức :meth:`~sequence.insert` trên *a* "
+"để chèn *x* vào vị trí thích hợp nhằm duy trì thứ tự sắp xếp."
+
+#: ../../library/bisect.rst:89 ../../library/bisect.rst:109
+#, fuzzy
+msgid ""
+"To support inserting records in a table, the *key* function (if any) is "
+"applied to *x* for the search step but not for the insertion step."
+msgstr ""
+"Để hỗ trợ chèn bản ghi vào bảng, hàm *key* (nếu có) được áp dụng cho *x* cho"
+" bước tìm kiếm nhưng không áp dụng cho bước chèn."
+
+#: ../../library/bisect.rst:92 ../../library/bisect.rst:112
+#, fuzzy
+msgid ""
+"Keep in mind that the *O*\\ (log *n*) search is dominated by the slow *O*\\ "
+"(*n*) insertion step."
+msgstr ""
+"Hãy nhớ rằng tìm kiếm *O*\\ (log *n*) bị chi phối bởi bước chèn *O*\\ (*n*) "
+"chậm."
+
+#: ../../library/bisect.rst:102
+#, fuzzy
+msgid ""
+"Similar to :py:func:`~bisect.insort_left`, but inserting *x* in *a* after "
+"any existing entries of *x*."
+msgstr ""
+"Tương tự như :py:func:`~bisect.insort_left`, nhưng chèn *x* vào *a* sau bất "
+"kỳ mục nhập hiện có nào của *x*."
+
+#: ../../library/bisect.rst:105
+#, fuzzy
+msgid ""
+"This function first runs :py:func:`~bisect.bisect_right` to locate an "
+"insertion point. Next, it runs the :meth:`~sequence.insert` method on *a* to"
+" insert *x* at the appropriate position to maintain sort order."
+msgstr ""
+"Hàm này trước tiên chạy :py:func:`~bisect.bisect_right` để xác định vị trí "
+"điểm chèn. Tiếp theo, nó chạy phương thức :meth:`~sequence.insert` trên *a* "
+"để chèn *x* vào vị trí thích hợp nhằm duy trì thứ tự sắp xếp."
+
+#: ../../library/bisect.rst:120
+#, fuzzy
+msgid "Performance Notes"
+msgstr "Ghi chú hiệu suất"
+
+#: ../../library/bisect.rst:122
+#, fuzzy
+msgid ""
+"When writing time sensitive code using *bisect()* and *insort()*, keep these"
+" thoughts in mind:"
+msgstr ""
+"Khi viết mã nhạy cảm với thời gian bằng *bisect()* và *insort()*, hãy ghi "
+"nhớ những suy nghĩ sau:"
+
+#: ../../library/bisect.rst:125
+#, fuzzy
+msgid ""
+"Bisection is effective for searching ranges of values. For locating specific"
+" values, dictionaries are more performant."
+msgstr ""
+"Chia đôi có hiệu quả để tìm kiếm phạm vi giá trị. Để định vị các giá trị cụ "
+"thể, từ điển có hiệu suất cao hơn."
+
+#: ../../library/bisect.rst:128
+#, fuzzy
+msgid ""
+"The *insort()* functions are *O*\\ (*n*) because the logarithmic search step"
+" is dominated by the linear time insertion step."
+msgstr ""
+"Các hàm *insort()* là *O*\\ (*n*) vì bước tìm kiếm logarit bị chi phối bởi "
+"bước chèn thời gian tuyến tính."
+
+#: ../../library/bisect.rst:131
+#, fuzzy
+msgid ""
+"The search functions are stateless and discard key function results after "
+"they are used.  Consequently, if the search functions are used in a loop, "
+"the key function may be called again and again on the same array elements. "
+"If the key function isn't fast, consider wrapping it with "
+":py:func:`functools.cache` to avoid duplicate computations.  Alternatively, "
+"consider searching an array of precomputed keys to locate the insertion "
+"point (as shown in the examples section below)."
+msgstr ""
+"Các hàm tìm kiếm không có trạng thái và loại bỏ các kết quả chính của hàm "
+"sau khi chúng được sử dụng.  Do đó, nếu các hàm tìm kiếm được sử dụng trong "
+"một vòng lặp thì hàm khóa có thể được gọi đi gọi lại trên cùng các phần tử "
+"mảng. Nếu hàm phím không nhanh, hãy cân nhắc gói nó bằng "
+":py:func:`functools.cache` để tránh tính toán trùng lặp.  Ngoài ra, hãy xem "
+"xét việc tìm kiếm một mảng các khóa được tính toán trước để xác định vị trí "
+"điểm chèn (như được hiển thị trong phần ví dụ bên dưới)."
+
+#: ../../library/bisect.rst:141
+#, fuzzy
+msgid ""
+"`Sorted Collections <https://grantjenks.com/docs/sortedcollections/>`_ is a "
+"high performance module that uses *bisect* to managed sorted collections of "
+"data."
+msgstr ""
+"`Sorted Collections <https://grantjenks.com/docs/sortedcollections/>`_ là "
+"mô-đun hiệu suất cao sử dụng *bisect* để quản lý các bộ sưu tập dữ liệu được"
+" sắp xếp."
+
+#: ../../library/bisect.rst:145
+#, fuzzy
+msgid ""
+"The `SortedCollection recipe "
+"<https://code.activestate.com/recipes/577197-sortedcollection/>`_ uses "
+"bisect to build a full-featured collection class with straight-forward "
+"search methods and support for a key-function.  The keys are precomputed to "
+"save unnecessary calls to the key function during searches."
+msgstr ""
+"Zz000zz sử dụng bisect để xây dựng một lớp bộ sưu tập đầy đủ tính năng với "
+"các phương pháp tìm kiếm đơn giản và hỗ trợ chức năng chính.  Các phím được "
+"tính toán trước để lưu các cuộc gọi không cần thiết đến chức năng phím trong"
+" quá trình tìm kiếm."
+
+#: ../../library/bisect.rst:153
+#, fuzzy
+msgid "Searching Sorted Lists"
+msgstr "Tìm kiếm danh sách đã sắp xếp"
+
+#: ../../library/bisect.rst:155
+#, fuzzy
+msgid ""
+"The above `bisect functions`_ are useful for finding insertion points but "
+"can be tricky or awkward to use for common searching tasks. The following "
+"five functions show how to transform them into the standard lookups for "
+"sorted lists::"
+msgstr ""
+"`bisect functions`_ ở trên rất hữu ích cho việc tìm kiếm các điểm chèn nhưng"
+" có thể phức tạp hoặc khó sử dụng cho các tác vụ tìm kiếm thông thường. Năm "
+"hàm sau đây hiển thị cách chuyển đổi chúng thành tra cứu tiêu chuẩn cho danh"
+" sách được sắp xếp::"
+
+#: ../../library/bisect.rst:160
+#, fuzzy
+msgid ""
+"def index(a, x):\n"
+"    'Locate the leftmost value exactly equal to x'\n"
+"    i = bisect_left(a, x)\n"
+"    if i != len(a) and a[i] == x:\n"
+"        return i\n"
+"    raise ValueError\n"
+"\n"
+"def find_lt(a, x):\n"
+"    'Find rightmost value less than x'\n"
+"    i = bisect_left(a, x)\n"
+"    if i:\n"
+"        return a[i-1]\n"
+"    raise ValueError\n"
+"\n"
+"def find_le(a, x):\n"
+"    'Find rightmost value less than or equal to x'\n"
+"    i = bisect_right(a, x)\n"
+"    if i:\n"
+"        return a[i-1]\n"
+"    raise ValueError\n"
+"\n"
+"def find_gt(a, x):\n"
+"    'Find leftmost value greater than x'\n"
+"    i = bisect_right(a, x)\n"
+"    if i != len(a):\n"
+"        return a[i]\n"
+"    raise ValueError\n"
+"\n"
+"def find_ge(a, x):\n"
+"    'Find leftmost item greater than or equal to x'\n"
+"    i = bisect_left(a, x)\n"
+"    if i != len(a):\n"
+"        return a[i]\n"
+"    raise ValueError"
+msgstr ""
+"chỉ số def (a, x):\n"
+"    'Tìm giá trị ngoài cùng bên trái chính xác bằng x'\n"
+"    i = bisect_left(a, x)\n"
+"    nếu i != len(a) và a[i] == x:\n"
+"        trả lại tôi\n"
+"    tăng giá trịError\n"
+"\n"
+"chắc chắn find_lt(a, x):\n"
+"    'Tìm giá trị ngoài cùng bên phải nhỏ hơn x'\n"
+"    i = bisect_left(a, x)\n"
+"    nếu tôi:\n"
+"        trả về a[i-1]\n"
+"    tăng giá trịError\n"
+"\n"
+"def find_le(a, x):\n"
+"    'Tìm giá trị ngoài cùng bên phải nhỏ hơn hoặc bằng x'\n"
+"    i = bisect_right(a, x)\n"
+"    nếu tôi:\n"
+"        trả về a[i-1]\n"
+"    tăng giá trịError\n"
+"\n"
+"def find_gt(a, x):\n"
+"    'Tìm giá trị ngoài cùng bên trái lớn hơn x'\n"
+"    i = bisect_right(a, x)\n"
+"    nếu tôi != len(a):\n"
+"        trả lại một [i]\n"
+"    tăng giá trịError\n"
+"\n"
+"def find_ge(a, x):\n"
+"    'Tìm mục ngoài cùng bên trái lớn hơn hoặc bằng x'\n"
+"    i = bisect_left(a, x)\n"
+"    nếu tôi != len(a):\n"
+"        trả lại một [i]\n"
+"    tăng giá trịError"
+
+#: ../../library/bisect.rst:197
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/bisect.rst:201
+#, fuzzy
+msgid ""
+"The :py:func:`~bisect.bisect` function can be useful for numeric table "
+"lookups. This example uses :py:func:`~bisect.bisect` to look up a letter "
+"grade for an exam score (say) based on a set of ordered numeric breakpoints:"
+" 90 and up is an 'A', 80 to 89 is a 'B', and so on::"
+msgstr ""
+"Hàm :py:func:`~bisect.bisect` có thể hữu ích cho việc tra cứu bảng số. Ví dụ"
+" này sử dụng :py:func:`~bisect.bisect` để tra cứu điểm chữ cái cho điểm bài "
+"kiểm tra (giả sử) dựa trên một tập hợp các điểm dừng số theo thứ tự: 90 trở "
+"lên là 'A', 80 đến 89 là 'B', v.v.::"
+
+#: ../../library/bisect.rst:206
+#, fuzzy
+msgid ""
+">>> def grade(score)\n"
+"...     i = bisect([60, 70, 80, 90], score)\n"
+"...     return \"FDCBA\"[i]\n"
+"...\n"
+">>> [grade(score) for score in [33, 99, 77, 70, 89, 90, 100]]\n"
+"['F', 'A', 'C', 'C', 'B', 'A', 'A']"
+msgstr ""
+">>> điểm def (điểm)\n"
+"... i = chia đôi([60, 70, 80, 90], điểm)\n"
+"... trả về \"FDCBA\"[i]\n"
+"...\n"
+">>> [điểm(điểm) cho điểm trong [33, 99, 77, 70, 89, 90, 100]]\n"
+"['F', 'A', 'C', 'C', 'B', 'A', 'A']"
+
+#: ../../library/bisect.rst:213
+#, fuzzy
+msgid ""
+"The :py:func:`~bisect.bisect` and :py:func:`~bisect.insort` functions also "
+"work with lists of tuples.  The *key* argument can serve to extract the "
+"field used for ordering records in a table::"
+msgstr ""
+"Các hàm :py:func:`~bisect.bisect` và :py:func:`~bisect.insort` cũng hoạt "
+"động với danh sách các bộ dữ liệu.  Đối số *key* có thể dùng để trích xuất "
+"trường được sử dụng để sắp xếp các bản ghi trong bảng ::"
+
+#: ../../library/bisect.rst:217
+#, fuzzy
+msgid ""
+">>> from collections import namedtuple\n"
+">>> from operator import attrgetter\n"
+">>> from bisect import bisect, insort\n"
+">>> from pprint import pprint\n"
+"\n"
+">>> Movie = namedtuple('Movie', ('name', 'released', 'director'))\n"
+"\n"
+">>> movies = [\n"
+"...     Movie('Jaws', 1975, 'Spielberg'),\n"
+"...     Movie('Titanic', 1997, 'Cameron'),\n"
+"...     Movie('The Birds', 1963, 'Hitchcock'),\n"
+"...     Movie('Aliens', 1986, 'Cameron')\n"
+"... ]\n"
+"\n"
+">>> # Find the first movie released after 1960\n"
+">>> by_year = attrgetter('released')\n"
+">>> movies.sort(key=by_year)\n"
+">>> movies[bisect(movies, 1960, key=by_year)]\n"
+"Movie(name='The Birds', released=1963, director='Hitchcock')\n"
+"\n"
+">>> # Insert a movie while maintaining sort order\n"
+">>> romance = Movie('Love Story', 1970, 'Hiller')\n"
+">>> insort(movies, romance, key=by_year)\n"
+">>> pprint(movies)\n"
+"[Movie(name='The Birds', released=1963, director='Hitchcock'),\n"
+" Movie(name='Love Story', released=1970, director='Hiller'),\n"
+" Movie(name='Jaws', released=1975, director='Spielberg'),\n"
+" Movie(name='Aliens', released=1986, director='Cameron'),\n"
+" Movie(name='Titanic', released=1997, director='Cameron')]"
+msgstr ""
+">>> từ bộ sưu tập nhập têntuple\n"
+">>> từ trình điều khiển nhập khẩu của nhà điều hành\n"
+">>> từ nhập bisect bisect, insort\n"
+">>> từ pprint nhập pprint\n"
+"\n"
+">>> Phim = têntuple('Phim', ('tên', 'đã phát hành', 'đạo diễn'))\n"
+"\n"
+">>> phim = [\n"
+"... Phim('Jaws', 1975, 'Spielberg'),\n"
+"... Phim('Titanic', 1997, 'Cameron'),\n"
+"... Phim('The Birds', 1963, 'Hitchcock'),\n"
+"... Phim('Người ngoài hành tinh', 1986, 'Cameron')\n"
+"...]\n"
+"\n"
+">>> # Find bộ phim đầu tiên ra mắt sau năm 1960\n"
+">>> by_year = attrgetter('đã phát hành')\n"
+">>> movies.sort(key=by_year)\n"
+">>> phim[bisect(phim, 1960, key=by_year)]\n"
+"Phim(name='The Birds', phát hành=1963, đạo diễn='Hitchcock')\n"
+"\n"
+">>> # Insert một bộ phim trong khi vẫn duy trì thứ tự sắp xếp\n"
+">>> lãng mạn = Phim('Chuyện tình', 1970, 'Hiller')\n"
+">>> insort(phim, lãng mạn, key=by_year)\n"
+">>> pprint(phim)\n"
+"[Phim(name='The Birds', phát hành=1963, đạo diễn='Hitchcock'),\n"
+" Phim(name='Love Story', phát hành=1970, đạo diễn='Hiller'),\n"
+" Phim(name='Jaws', phát hành=1975, đạo diễn='Spielberg'),\n"
+" Phim(name='Người ngoài hành tinh', phát hành=1986, đạo diễn='Cameron'),\n"
+" Phim(name='Titanic', phát hành=1997, đạo diễn='Cameron')]"
+
+#: ../../library/bisect.rst:247
+#, fuzzy
+msgid ""
+"If the key function is expensive, it is possible to avoid repeated function "
+"calls by searching a list of precomputed keys to find the index of a "
+"record::"
+msgstr ""
+"Nếu chức năng khóa đắt tiền, có thể tránh các lệnh gọi hàm lặp lại bằng cách"
+" tìm kiếm danh sách các khóa được tính toán trước để tìm chỉ mục của bản "
+"ghi::"
+
+#: ../../library/bisect.rst:250
+#, fuzzy
+msgid ""
+">>> data = [('red', 5), ('blue', 1), ('yellow', 8), ('black', 0)]\n"
+">>> data.sort(key=lambda r: r[1])       # Or use operator.itemgetter(1).\n"
+">>> keys = [r[1] for r in data]         # Precompute a list of keys.\n"
+">>> data[bisect_left(keys, 0)]\n"
+"('black', 0)\n"
+">>> data[bisect_left(keys, 1)]\n"
+"('blue', 1)\n"
+">>> data[bisect_left(keys, 5)]\n"
+"('red', 5)\n"
+">>> data[bisect_left(keys, 8)]\n"
+"('yellow', 8)"
+msgstr ""
+">>> data = [('đỏ', 5), ('xanh', 1), ('vàng', 8), ('đen', 0)]\n"
+">>> data.sort(key=lambda r: r[1]) # Or sử dụng operator.itemgetter(1).\n"
+">>> phím = [r[1] cho r trong dữ liệu] # Precompute danh sách các phím.\n"
+">>> dữ liệu[bisect_left(keys, 0)]\n"
+"('đen', 0)\n"
+">>> dữ liệu[bisect_left(keys, 1)]\n"
+"('màu xanh', 1)\n"
+">>> dữ liệu[bisect_left(phím, 5)]\n"
+"('đỏ', 5)\n"
+">>> dữ liệu[bisect_left(phím, 8)]\n"
+"('màu vàng', 8)"

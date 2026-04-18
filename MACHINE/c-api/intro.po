@@ -1,0 +1,2437 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/intro.rst:8
+#, fuzzy
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../c-api/intro.rst:10
+#, fuzzy
+msgid ""
+"The Application Programmer's Interface to Python gives C and C++ programmers"
+" access to the Python interpreter at a variety of levels.  The API is "
+"equally usable from C++, but for brevity it is generally referred to as the "
+"Python/C API.  There are two fundamentally different reasons for using the "
+"Python/C API. The first reason is to write *extension modules* for specific "
+"purposes; these are C modules that extend the Python interpreter.  This is "
+"probably the most common use.  The second reason is to use Python as a "
+"component in a larger application; this technique is generally referred to "
+"as :dfn:`embedding` Python in an application."
+msgstr ""
+"Giao diện của Lập trình viên Ứng dụng với Python cung cấp cho các lập trình "
+"viên C và C++ quyền truy cập vào trình thông dịch Python ở nhiều cấp độ khác"
+" nhau.  API đều có thể sử dụng được từ C++, nhưng để cho ngắn gọn, nó thường"
+" được gọi là Python/C API.  Có hai lý do cơ bản khác nhau để sử dụng "
+"Python/C API. Lý do đầu tiên là viết *extension modules* cho mục đích cụ "
+"thể; đây là các mô-đun C mở rộng trình thông dịch Python.  Đây có lẽ là cách"
+" sử dụng phổ biến nhất.  Lý do thứ hai là sử dụng Python làm thành phần "
+"trong một ứng dụng lớn hơn; kỹ thuật này thường được gọi là :dfn:`embedding`"
+" Python trong một ứng dụng."
+
+#: ../../c-api/intro.rst:20
+#, fuzzy
+msgid ""
+"Writing an extension module is a relatively well-understood process, where a"
+" \"cookbook\" approach works well.  There are several tools that automate "
+"the process to some extent.  While people have embedded Python in other "
+"applications since its early existence, the process of embedding Python is "
+"less straightforward than writing an extension."
+msgstr ""
+"Viết một mô-đun mở rộng là một quá trình được hiểu tương đối rõ ràng, trong "
+"đó cách tiếp cận \"sách dạy nấu ăn\" hoạt động hiệu quả.  Có một số công cụ "
+"tự động hóa quá trình ở một mức độ nào đó.  Mặc dù mọi người đã nhúng Python"
+" vào các ứng dụng khác kể từ khi nó tồn tại nhưng quá trình nhúng Python "
+"không đơn giản bằng việc viết một phần mở rộng."
+
+#: ../../c-api/intro.rst:26
+#, fuzzy
+msgid ""
+"Many API functions are useful independent of whether you're embedding  or "
+"extending Python; moreover, most applications that embed Python  will need "
+"to provide a custom extension as well, so it's probably a  good idea to "
+"become familiar with writing an extension before  attempting to embed Python"
+" in a real application."
+msgstr ""
+"Nhiều hàm API hữu ích bất kể bạn đang nhúng hay mở rộng Python; hơn nữa, hầu"
+" hết các ứng dụng nhúng Python cũng sẽ cần cung cấp tiện ích mở rộng tùy "
+"chỉnh, vì vậy có lẽ bạn nên làm quen với việc viết tiện ích mở rộng trước "
+"khi thử nhúng Python vào một ứng dụng thực."
+
+#: ../../c-api/intro.rst:34
+#, fuzzy
+msgid "Language version compatibility"
+msgstr "Khả năng tương thích phiên bản ngôn ngữ"
+
+#: ../../c-api/intro.rst:36
+#, fuzzy
+msgid "Python's C API is compatible with C11 and C++11 versions of C and C++."
+msgstr ""
+"C API của Python tương thích với các phiên bản C11 và C++11 của C và C++."
+
+#: ../../c-api/intro.rst:38
+#, fuzzy
+msgid ""
+"This is a lower limit: the C API does not require features from later C/C++ "
+"versions. You do *not* need to enable your compiler's \"c11 mode\"."
+msgstr ""
+"Đây là giới hạn thấp hơn: C API không yêu cầu các tính năng từ các phiên bản"
+" C/C++ mới hơn. Bạn *not* cần bật \"chế độ c11\" của trình biên dịch."
+
+#: ../../c-api/intro.rst:44
+#, fuzzy
+msgid "Coding standards"
+msgstr "Tiêu chuẩn mã hóa"
+
+#: ../../c-api/intro.rst:46
+#, fuzzy
+msgid ""
+"If you're writing C code for inclusion in CPython, you **must** follow the "
+"guidelines and standards defined in :PEP:`7`.  These guidelines apply "
+"regardless of the version of Python you are contributing to.  Following "
+"these conventions is not necessary for your own third party extension "
+"modules, unless you eventually expect to contribute them to Python."
+msgstr ""
+"Nếu bạn đang viết mã C để đưa vào CPython, **must** hãy tuân theo các nguyên"
+" tắc và tiêu chuẩn được xác định trong :PEP:`7`.  Những nguyên tắc này áp "
+"dụng bất kể phiên bản Python mà bạn đang đóng góp.  Việc tuân theo các quy "
+"ước này là không cần thiết đối với các mô-đun mở rộng của bên thứ ba của "
+"riêng bạn, trừ khi cuối cùng bạn muốn đóng góp chúng cho Python."
+
+#: ../../c-api/intro.rst:56
+#, fuzzy
+msgid "Include Files"
+msgstr "Bao gồm các tệp"
+
+#: ../../c-api/intro.rst:58
+#, fuzzy
+msgid ""
+"All function, type and macro definitions needed to use the Python/C API are "
+"included in your code by the following line::"
+msgstr ""
+"Tất cả các định nghĩa về hàm, loại và macro cần thiết để sử dụng API "
+"Python/C đều được bao gồm trong mã của bạn theo dòng sau::"
+
+#: ../../c-api/intro.rst:61
+#, fuzzy
+msgid ""
+"#define PY_SSIZE_T_CLEAN\n"
+"#include <Python.h>"
+msgstr ""
+"#define PY_SSIZE_T_CLEAN\n"
+"#include <Python.h>"
+
+#: ../../c-api/intro.rst:64
+#, fuzzy
+msgid ""
+"This implies inclusion of the following standard headers: ``<stdio.h>``, "
+"``<string.h>``, ``<errno.h>``, ``<limits.h>``, ``<assert.h>`` and "
+"``<stdlib.h>`` (if available)."
+msgstr ""
+"Điều này ngụ ý bao gồm các tiêu đề tiêu chuẩn sau: ``<stdio.h>``, "
+"``<string.h>``, ``<errno.h>``, ``<limits.h>``, ``<assert.h>`` và "
+"``<stdlib.h>`` (nếu có)."
+
+#: ../../c-api/intro.rst:70
+#, fuzzy
+msgid ""
+"Since Python may define some pre-processor definitions which affect the "
+"standard headers on some systems, you *must* include :file:`Python.h` before"
+" any standard headers are included."
+msgstr ""
+"Vì Python có thể xác định một số định nghĩa tiền xử lý ảnh hưởng đến các "
+"tiêu đề tiêu chuẩn trên một số hệ thống, nên bạn *must* bao gồm "
+":file:`Python.h` trước bất kỳ tiêu đề tiêu chuẩn nào được đưa vào."
+
+#: ../../c-api/intro.rst:74
+#, fuzzy
+msgid ""
+"It is recommended to always define ``PY_SSIZE_T_CLEAN`` before including "
+"``Python.h``.  See :ref:`arg-parsing` for a description of this macro."
+msgstr ""
+"Bạn nên luôn xác định ``PY_SSIZE_T_CLEAN`` trước khi thêm ``Python.h``.  Xem"
+" :ref:`arg-parsing` để biết mô tả về macro này."
+
+#: ../../c-api/intro.rst:77
+#, fuzzy
+msgid ""
+"All user visible names defined by Python.h (except those defined by the "
+"included standard headers) have one of the prefixes ``Py`` or ``_Py``.  "
+"Names beginning with ``_Py`` are for internal use by the Python "
+"implementation and should not be used by extension writers. Structure member"
+" names do not have a reserved prefix."
+msgstr ""
+"Tất cả tên hiển thị của người dùng được xác định bởi Python.h (ngoại trừ "
+"những tên được xác định bởi tiêu đề tiêu chuẩn đi kèm) đều có một trong các "
+"tiền tố ``Py`` hoặc ``_Py``.  Các tên bắt đầu bằng ``_Py`` được sử dụng nội "
+"bộ khi triển khai Python và người viết tiện ích mở rộng không nên sử dụng. "
+"Tên thành viên cấu trúc không có tiền tố dành riêng."
+
+#: ../../c-api/intro.rst:84
+#, fuzzy
+msgid ""
+"User code should never define names that begin with ``Py`` or ``_Py``. This "
+"confuses the reader, and jeopardizes the portability of the user code to "
+"future Python versions, which may define additional names beginning with one"
+" of these prefixes."
+msgstr ""
+"Mã người dùng không bao giờ được xác định tên bắt đầu bằng ``Py`` hoặc "
+"``_Py``. Điều này gây nhầm lẫn cho người đọc và gây nguy hiểm cho tính khả "
+"chuyển của mã người dùng sang các phiên bản Python trong tương lai, phiên "
+"bản này có thể xác định các tên bổ sung bắt đầu bằng một trong các tiền tố "
+"này."
+
+#: ../../c-api/intro.rst:89
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"The header files are typically installed with Python.  On Unix, these  are "
+"located in the directories :file:`{prefix}/include/pythonversion/` and "
+":file:`{exec_prefix}/include/pythonversion/`, where :option:`prefix "
+"<--prefix>` and :option:`exec_prefix <--exec-prefix>` are defined by the "
+"corresponding parameters to Python's :program:`configure` script and "
+"*version* is ``'%d.%d' % sys.version_info[:2]``.  On Windows, the headers "
+"are installed in :file:`{prefix}/include`, where ``prefix`` is the "
+"installation directory specified to the installer."
+msgstr ""
+"Các tệp tiêu đề thường được cài đặt bằng Python.  Trên Unix, chúng nằm trong"
+" thư mục :file:`{prefix}/include/pythonversion/` và "
+":file:`{exec_prefix}/include/pythonversion/`, trong đó :option:`prefix "
+"<--prefix>` và :option:`exec_prefix <--exec-prefix>` được xác định bởi các "
+"tham số tương ứng với tập lệnh :program:`configure` của Python và *version* "
+"là ``'%d.%d' % sys.version_info[:2]``.  Trên Windows, các tiêu đề được cài "
+"đặt trong :file:`{prefix}/include`, trong đó ``prefix`` là thư mục cài đặt "
+"được chỉ định cho trình cài đặt."
+
+#: ../../c-api/intro.rst:98
+#, fuzzy
+msgid ""
+"To include the headers, place both directories (if different) on your "
+"compiler's search path for includes.  Do *not* place the parent directories "
+"on the search path and then use ``#include <pythonX.Y/Python.h>``; this will"
+" break on multi-platform builds since the platform independent headers under"
+" :option:`prefix <--prefix>` include the platform specific headers from "
+":option:`exec_prefix <--exec-prefix>`."
+msgstr ""
+"Để bao gồm các tiêu đề, hãy đặt cả hai thư mục (nếu khác) trên đường dẫn tìm"
+" kiếm của trình biên dịch để bao gồm.  *not* có đặt các thư mục mẹ trên "
+"đường dẫn tìm kiếm rồi sử dụng ``#include <pythonX.Y/Python.h>``; điều này "
+"sẽ phá vỡ các bản dựng đa nền tảng vì các tiêu đề độc lập với nền tảng trong"
+" :option:`prefix <--prefix>` bao gồm các tiêu đề dành riêng cho nền tảng từ "
+":option:`exec_prefix <--exec-prefix>`."
+
+#: ../../c-api/intro.rst:105
+#, fuzzy
+msgid ""
+"C++ users should note that although the API is defined entirely using C, the"
+" header files properly declare the entry points to be ``extern \"C\"``. As a"
+" result, there is no need to do anything special to use the API from C++."
+msgstr ""
+"Người dùng C++ nên lưu ý rằng mặc dù API được xác định hoàn toàn bằng C, các"
+" tệp tiêu đề khai báo chính xác các điểm vào là ``extern \"C\"``. Do đó, "
+"không cần phải làm gì đặc biệt để sử dụng API từ C++."
+
+#: ../../c-api/intro.rst:111
+#, fuzzy
+msgid "Useful macros"
+msgstr "Các macro hữu ích"
+
+#: ../../c-api/intro.rst:113
+#, fuzzy
+msgid ""
+"Several useful macros are defined in the Python header files.  Many are "
+"defined closer to where they are useful (for example, "
+":c:macro:`Py_RETURN_NONE`, :c:macro:`PyMODINIT_FUNC`). Others of a more "
+"general utility are defined here.  This is not necessarily a complete "
+"listing."
+msgstr ""
+"Một số macro hữu ích được xác định trong tệp tiêu đề Python.  Nhiều thứ được"
+" xác định gần hơn với mức độ hữu ích của chúng (ví dụ: "
+":c:macro:`Py_RETURN_NONE`, :c:macro:`PyMODINIT_FUNC`). Những tiện ích khác "
+"có tính tổng quát hơn được định nghĩa ở đây.  Đây không nhất thiết phải là "
+"một danh sách đầy đủ."
+
+#: ../../c-api/intro.rst:121
+#, fuzzy
+msgid ""
+"If this macro is defined, then the current system is able to start threads."
+msgstr ""
+"Nếu macro này được xác định thì hệ thống hiện tại có thể bắt đầu các luồng."
+
+#: ../../c-api/intro.rst:123
+#, fuzzy
+msgid ""
+"Currently, all systems supported by CPython (per :pep:`11`), with the "
+"exception of some WebAssembly platforms, support starting threads."
+msgstr ""
+"Hiện tại, tất cả các hệ thống được CPython hỗ trợ (theo :pep:`11`), ngoại "
+"trừ một số nền tảng WebAssugging, đều hỗ trợ các luồng bắt đầu."
+
+#: ../../c-api/intro.rst:130
+#, python-brace-format, fuzzy
+msgid ""
+"Like :samp:`getenv({s})`, but returns ``NULL`` if :option:`-E` was passed on"
+" the command line (see :c:member:`PyConfig.use_environment`)."
+msgstr ""
+"Giống như :samp:`getenv({s})`, nhưng trả về ``NULL`` nếu :option:`-E` được "
+"truyền trên dòng lệnh (xem :c:member:`PyConfig.use_environment`)."
+
+#: ../../c-api/intro.rst:135
+#, fuzzy
+msgid "Docstring macros"
+msgstr "Macro chuỗi tài liệu"
+
+#: ../../c-api/intro.rst:139
+#, fuzzy
+msgid ""
+"Creates a variable with name *name* that can be used in docstrings. If "
+"Python is built without docstrings (:option:`--without-doc-strings`), the "
+"value will be an empty string."
+msgstr ""
+"Tạo một biến có tên *name* có thể được sử dụng trong chuỗi tài liệu. Nếu "
+"Python được xây dựng mà không có chuỗi tài liệu (:option:`--without-doc-"
+"strings`), giá trị sẽ là một chuỗi trống."
+
+#: ../../c-api/intro.rst:143 ../../c-api/intro.rst:160
+#: ../../c-api/intro.rst:428
+#, fuzzy
+msgid "Example::"
+msgstr "Ví dụ::"
+
+#: ../../c-api/intro.rst:145
+#, fuzzy
+msgid ""
+"PyDoc_STRVAR(pop_doc, \"Remove and return the rightmost element.\");\n"
+"\n"
+"static PyMethodDef deque_methods[] = {\n"
+"    // ...\n"
+"    {\"pop\", (PyCFunction)deque_pop, METH_NOARGS, pop_doc},\n"
+"    // ...\n"
+"}"
+msgstr ""
+"PyDoc_STRVAR(pop_doc, \"Xóa và trả về phần tử ngoài cùng bên phải.\");\n"
+"\n"
+"tĩnh PyMethodDef deque_methods[] = {\n"
+"    // ...\n"
+"    {\"pop\", (PyCFunction)deque_pop, METH_NOARGS, pop_doc},\n"
+"    // ...\n"
+"}"
+
+#: ../../c-api/intro.rst:153
+#, python-brace-format, fuzzy
+msgid "Expands to :samp:`PyDoc_VAR({name}) = PyDoc_STR({str})`."
+msgstr "Mở rộng tới :samp:`PyDoc_VAR({name}) = PyDoc_STR({str})`."
+
+#: ../../c-api/intro.rst:157
+#, fuzzy
+msgid ""
+"Expands to the given input string, or an empty string if docstrings are "
+"disabled (:option:`--without-doc-strings`)."
+msgstr ""
+"Mở rộng thành chuỗi đầu vào đã cho hoặc một chuỗi trống nếu chuỗi tài liệu "
+"bị tắt (:option:`--without-doc-strings`)."
+
+#: ../../c-api/intro.rst:162
+#, fuzzy
+msgid ""
+"static PyMethodDef pysqlite_row_methods[] = {\n"
+"    {\"keys\", (PyCFunction)pysqlite_row_keys, METH_NOARGS,\n"
+"        PyDoc_STR(\"Returns the keys of the row.\")},\n"
+"    {NULL, NULL}\n"
+"};"
+msgstr ""
+"PyMethodDef tĩnh pysqlite_row_methods[] = {\n"
+"    {\"phím\", (PyCFunction)pysqlite_row_keys, METH_NOARGS,\n"
+"        PyDoc_STR(\"Trả về khóa của hàng.\")},\n"
+"    {NULL, NULL}\n"
+"};"
+
+#: ../../c-api/intro.rst:170
+#, python-brace-format, fuzzy
+msgid ""
+"Declares a static character array variable with the given *name*. Expands to"
+" :samp:`static const char {name}[]`"
+msgstr ""
+"Khai báo một biến mảng ký tự tĩnh với *name* đã cho. Mở rộng tới "
+":samp:`static const char {name}[]`"
+
+#: ../../c-api/intro.rst:173 ../../c-api/intro.rst:314
+#: ../../c-api/intro.rst:325
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../c-api/intro.rst:175
+#, fuzzy
+msgid ""
+"PyDoc_VAR(python_doc) = PyDoc_STR(\n"
+"   \"A genus of constricting snakes in the Pythonidae family native \"\n"
+"   \"to the tropics and subtropics of the Eastern Hemisphere.\");"
+msgstr ""
+"PyDoc_VAR(python_doc) = PyDoc_STR(\n"
+"   \"Một loài rắn thắt lưng thuộc họ Pythonidae bản địa\"\n"
+"   \"đến vùng nhiệt đới và cận nhiệt đới của Đông bán cầu.\");"
+
+#: ../../c-api/intro.rst:181
+#, fuzzy
+msgid "General utility macros"
+msgstr "Macro tiện ích chung"
+
+#: ../../c-api/intro.rst:183
+#, fuzzy
+msgid "The following macros are for common tasks not specific to Python."
+msgstr ""
+"Các macro sau đây dành cho các tác vụ phổ biến không dành riêng cho Python."
+
+#: ../../c-api/intro.rst:187
+#, python-brace-format, fuzzy
+msgid ""
+"Use this for unused arguments in a function definition to silence compiler "
+"warnings. Example: ``int func(int a, int Py_UNUSED(b)) { return a; }``."
+msgstr ""
+"Sử dụng điều này cho các đối số không được sử dụng trong định nghĩa hàm để "
+"tắt các cảnh báo của trình biên dịch. Ví dụ: ``int func(int a, int "
+"Py_UNUSED(b)) { return a; }``."
+
+#: ../../c-api/intro.rst:194
+#, fuzzy
+msgid ""
+"Use a GCC attribute *name*, hiding it from compilers that don't support GCC "
+"attributes (such as MSVC)."
+msgstr ""
+"Sử dụng thuộc tính GCC *name*, ẩn nó khỏi các trình biên dịch không hỗ trợ "
+"thuộc tính GCC (chẳng hạn như MSVC)."
+
+#: ../../c-api/intro.rst:197
+#, python-brace-format, fuzzy
+msgid ""
+"This expands to :samp:`__attribute__(({name)})` on a GCC compiler, and "
+"expands to nothing on compilers that don't support GCC attributes."
+msgstr ""
+"Điều này mở rộng thành :samp:`__attribute__(({name)})` trên trình biên dịch "
+"GCC và mở rộng thành không có gì trên các trình biên dịch không hỗ trợ thuộc"
+" tính GCC."
+
+#: ../../c-api/intro.rst:202
+#, fuzzy
+msgid "Numeric utilities"
+msgstr "Tiện ích số"
+
+#: ../../c-api/intro.rst:206
+#, fuzzy
+msgid "Return the absolute value of ``x``."
+msgstr "Trả về giá trị tuyệt đối của ``x``."
+
+#: ../../c-api/intro.rst:208
+#, fuzzy
+msgid ""
+"The argument may be evaluated more than once. Consequently, do not pass an "
+"expression with side-effects directly to this macro."
+msgstr ""
+"Đối số có thể được đánh giá nhiều lần. Do đó, không chuyển trực tiếp biểu "
+"thức có tác dụng phụ tới macro này."
+
+#: ../../c-api/intro.rst:212
+#, fuzzy
+msgid ""
+"If the result cannot be represented (for example, if ``x`` has "
+":c:macro:`!INT_MIN` value for :c:expr:`int` type), the behavior is "
+"undefined."
+msgstr ""
+"Nếu kết quả không thể được biểu thị (ví dụ: nếu ``x`` có giá trị "
+":c:macro:`!INT_MIN` cho loại :c:expr:`int`), thì hành vi đó không được xác "
+"định."
+
+#: ../../c-api/intro.rst:216
+#, python-brace-format, fuzzy
+msgid "Corresponds roughly to :samp:`(({x}) < 0 ? -({x}) : ({x}))`"
+msgstr "Tương ứng với :samp:`(({x}) < 0 ? -({x}) : ({x}))`"
+
+#: ../../c-api/intro.rst:223
+#, fuzzy
+msgid "Return the larger or smaller of the arguments, respectively."
+msgstr "Trả về giá trị lớn hơn hoặc nhỏ hơn của các đối số tương ứng."
+
+#: ../../c-api/intro.rst:225
+#, fuzzy
+msgid ""
+"Any arguments may be evaluated more than once. Consequently, do not pass an "
+"expression with side-effects directly to this macro."
+msgstr ""
+"Bất kỳ đối số nào cũng có thể được đánh giá nhiều lần. Do đó, không chuyển "
+"trực tiếp biểu thức có tác dụng phụ tới macro này."
+
+#: ../../c-api/intro.rst:229
+#, python-brace-format, fuzzy
+msgid ""
+":c:macro:`!Py_MAX` corresponds roughly to :samp:`((({x}) > ({y})) ? ({x}) : "
+"({y}))`."
+msgstr ""
+":c:macro:`!Py_MAX` tương ứng với :samp:`((({x}) > ({y})) ? ({x}) : ({y}))`."
+
+#: ../../c-api/intro.rst:236
+#, python-brace-format, fuzzy
+msgid ""
+"Similar to :samp:`{integer} >> {positions}`, but forces sign extension, as "
+"the C standard does not define whether a right-shift of a signed integer "
+"will perform sign extension or a zero-fill."
+msgstr ""
+"Tương tự như :samp:`{integer} >> {positions}`, nhưng buộc phải mở rộng dấu, "
+"vì tiêu chuẩn C không xác định liệu dịch chuyển sang phải của số nguyên có "
+"dấu sẽ thực hiện mở rộng dấu hay điền số 0."
+
+#: ../../c-api/intro.rst:240
+#, fuzzy
+msgid ""
+"*integer* should be any signed integer type. *positions* is the number of "
+"positions to shift to the right."
+msgstr ""
+"*integer* phải là loại số nguyên có dấu bất kỳ. *positions* là số vị trí cần"
+" dịch chuyển sang phải."
+
+#: ../../c-api/intro.rst:243
+#, fuzzy
+msgid ""
+"Both *integer* and *positions* can be evaluated more than once; "
+"consequently, avoid directly passing a function call or some other operation"
+" with side-effects to this macro. Instead, store the result as a variable "
+"and then pass it."
+msgstr ""
+"Cả *integer* và *positions* đều có thể được đánh giá nhiều lần; do đó, hãy "
+"tránh chuyển trực tiếp lệnh gọi hàm hoặc một số thao tác khác có tác dụng "
+"phụ tới macro này. Thay vào đó, hãy lưu kết quả dưới dạng một biến rồi "
+"chuyển nó."
+
+#: ../../c-api/intro.rst:248
+#, fuzzy
+msgid ""
+"*type* is unused and only kept for backwards compatibility. Historically, "
+"*type* was used to cast *integer*."
+msgstr ""
+"*type* không được sử dụng và chỉ được giữ lại để tương thích ngược. Trong "
+"lịch sử, *type* được sử dụng để tạo *integer*."
+
+#: ../../c-api/intro.rst:253
+#, fuzzy
+msgid ""
+"This macro is now valid for all signed integer types, not just those for "
+"which ``unsigned type`` is legal. As a result, *type* is no longer used."
+msgstr ""
+"Macro này hiện hợp lệ cho tất cả các loại số nguyên có dấu, không chỉ những "
+"loại mà ``unsigned type`` là hợp lệ. Kết quả là *type* không còn được sử "
+"dụng nữa."
+
+#: ../../c-api/intro.rst:259
+#, fuzzy
+msgid ""
+"Argument must be a character or an integer in the range [-128, 127] or [0, "
+"255].  This macro returns ``c`` cast to an ``unsigned char``."
+msgstr ""
+"Đối số phải là một ký tự hoặc số nguyên trong phạm vi [-128, 127] hoặc [0, "
+"255].  Macro này trả về ``c`` truyền thành ``unsigned char``."
+
+#: ../../c-api/intro.rst:264
+#, fuzzy
+msgid "Assertion utilities"
+msgstr "Tiện ích khẳng định"
+
+#: ../../c-api/intro.rst:268
+#, fuzzy
+msgid ""
+"Use this when you have a code path that cannot be reached by design. For "
+"example, in the ``default:`` clause in a ``switch`` statement for which all "
+"possible values are covered in ``case`` statements.  Use this in places "
+"where you might be tempted to put an ``assert(0)`` or ``abort()`` call."
+msgstr ""
+"Sử dụng tính năng này khi bạn có đường dẫn mã mà thiết kế không thể tiếp cận"
+" được. Ví dụ: trong mệnh đề ``default:`` trong câu lệnh ``switch`` mà tất cả"
+" các giá trị có thể có đều nằm trong câu lệnh ``case``.  Hãy sử dụng tính "
+"năng này ở những nơi mà bạn có thể muốn thực hiện cuộc gọi ``assert(0)`` "
+"hoặc ``abort()``."
+
+#: ../../c-api/intro.rst:273
+#, fuzzy
+msgid ""
+"In release mode, the macro helps the compiler to optimize the code, and "
+"avoids a warning about unreachable code.  For example, the macro is "
+"implemented with ``__builtin_unreachable()`` on GCC in release mode."
+msgstr ""
+"Ở chế độ phát hành, macro giúp trình biên dịch tối ưu hóa mã và tránh cảnh "
+"báo về mã không thể truy cập được.  Ví dụ: macro được triển khai với "
+"``__builtin_unreachable()`` trên GCC ở chế độ phát hành."
+
+#: ../../c-api/intro.rst:277
+#, fuzzy
+msgid ""
+"In debug mode, and on unsupported compilers, the macro expands to a call to "
+":c:func:`Py_FatalError`."
+msgstr ""
+"Trong chế độ gỡ lỗi và trên các trình biên dịch không được hỗ trợ, macro sẽ "
+"mở rộng thành lệnh gọi tới :c:func:`Py_FatalError`."
+
+#: ../../c-api/intro.rst:280
+#, fuzzy
+msgid ""
+"A use for ``Py_UNREACHABLE()`` is following a call to a function that never "
+"returns but that is not declared ``_Noreturn``."
+msgstr ""
+"Việc sử dụng ``Py_UNREACHABLE()`` là thực hiện lệnh gọi đến một hàm không "
+"bao giờ trả về nhưng hàm đó không được khai báo ``_Noreturn``."
+
+#: ../../c-api/intro.rst:283
+#, fuzzy
+msgid ""
+"If a code path is very unlikely code but can be reached under exceptional "
+"case, this macro must not be used.  For example, under low memory condition "
+"or if a system call returns a value out of the expected range.  In this "
+"case, it's better to report the error to the caller.  If the error cannot be"
+" reported to caller, :c:func:`Py_FatalError` can be used."
+msgstr ""
+"Nếu đường dẫn mã rất khó xảy ra nhưng có thể truy cập được trong trường hợp "
+"đặc biệt thì không được sử dụng macro này.  Ví dụ: trong điều kiện bộ nhớ "
+"thấp hoặc nếu lệnh gọi hệ thống trả về giá trị ngoài phạm vi dự kiến.  Trong"
+" trường hợp này, tốt hơn hết bạn nên báo lỗi cho người gọi.  Nếu không thể "
+"báo lỗi cho người gọi thì có thể sử dụng :c:func:`Py_FatalError`."
+
+#: ../../c-api/intro.rst:293
+#, fuzzy
+msgid ""
+"Cast *value* to type *smaller* from type *larger*, validating that no "
+"information was lost."
+msgstr ""
+"Truyền *value* để nhập *smaller* từ loại *larger*, xác thực rằng không có "
+"thông tin nào bị mất."
+
+#: ../../c-api/intro.rst:296
+#, python-brace-format, fuzzy
+msgid ""
+"On release builds of Python, this is roughly equivalent to "
+":samp:`(({smaller}) {value})` (in C++, "
+":samp:`static_cast<{smaller}>({value})` will be used instead)."
+msgstr ""
+"Trên các bản phát hành của Python, điều này gần tương đương với "
+":samp:`(({smaller}) {value})` (trong C++, "
+":samp:`static_cast<{smaller}>({value})` sẽ được sử dụng thay thế)."
+
+#: ../../c-api/intro.rst:300
+#, fuzzy
+msgid ""
+"On debug builds (implying that :c:macro:`Py_DEBUG` is defined), this asserts"
+" that no information was lost with the cast from *larger* to *smaller*."
+msgstr ""
+"Trên các bản dựng gỡ lỗi (ngụ ý rằng :c:macro:`Py_DEBUG` đã được xác định), "
+"điều này khẳng định rằng không có thông tin nào bị mất với dàn diễn viên từ "
+"*larger* đến *smaller*."
+
+#: ../../c-api/intro.rst:303
+#, fuzzy
+msgid ""
+"*value*, *larger*, and *smaller* may all be evaluated more than once in the "
+"expression; consequently, do not pass an expression with side-effects "
+"directly to this macro."
+msgstr ""
+"*value*, *larger* và *smaller* đều có thể được đánh giá nhiều lần trong biểu"
+" thức; do đó, không chuyển trực tiếp biểu thức có tác dụng phụ tới macro "
+"này."
+
+#: ../../c-api/intro.rst:309
+#, fuzzy
+msgid ""
+"Asserts a compile-time condition *cond*, as a statement. The build will fail"
+" if the condition is false or cannot be evaluated at compile time."
+msgstr ""
+"Khẳng định điều kiện thời gian biên dịch *cond* dưới dạng một câu lệnh. Quá "
+"trình xây dựng sẽ thất bại nếu điều kiện sai hoặc không thể đánh giá được "
+"tại thời điểm biên dịch."
+
+#: ../../c-api/intro.rst:312
+#, python-brace-format, fuzzy
+msgid "Corresponds roughly to :samp:`static_assert({cond})` on C23 and above."
+msgstr "Tương ứng với :samp:`static_assert({cond})` trên C23 trở lên."
+
+#: ../../c-api/intro.rst:316
+#, fuzzy
+msgid "Py_BUILD_ASSERT(sizeof(PyTime_t) == sizeof(int64_t));"
+msgstr "Py_BUILD_ASSERT(sizeof(PyTime_t) == sizeof(int64_t));"
+
+#: ../../c-api/intro.rst:322
+#, fuzzy
+msgid ""
+"Asserts a compile-time condition *cond*, as an expression that evaluates to "
+"``0``. The build will fail if the condition is false or cannot be evaluated "
+"at compile time."
+msgstr ""
+"Khẳng định điều kiện thời gian biên dịch *cond*, dưới dạng biểu thức đánh "
+"giá thành ``0``. Quá trình xây dựng sẽ thất bại nếu điều kiện sai hoặc không"
+" thể đánh giá được tại thời điểm biên dịch."
+
+#: ../../c-api/intro.rst:327
+#, fuzzy
+msgid ""
+"#define foo_to_char(foo) \\\n"
+"    ((char *)(foo) + Py_BUILD_ASSERT_EXPR(offsetof(struct foo, string) == 0))"
+msgstr ""
+"#define foo_to_char(foo) \\\n"
+"    ((char *)(foo) + Py_BUILD_ASSERT_EXPR(offsetof(struct foo, string) == 0))"
+
+#: ../../c-api/intro.rst:334
+#, fuzzy
+msgid "Type size utilities"
+msgstr "Tiện ích kích thước loại"
+
+#: ../../c-api/intro.rst:338
+#, fuzzy
+msgid "Compute the length of a statically allocated C array at compile time."
+msgstr ""
+"Tính toán độ dài của mảng C được phân bổ tĩnh tại thời điểm biên dịch."
+
+#: ../../c-api/intro.rst:340
+#, fuzzy
+msgid ""
+"The *array* argument must be a C array with a size known at compile time. "
+"Passing an array with an unknown size, such as a heap-allocated array, will "
+"result in a compilation error on some compilers, or otherwise produce "
+"incorrect results."
+msgstr ""
+"Đối số *array* phải là mảng C có kích thước được xác định tại thời điểm biên"
+" dịch. Việc truyền một mảng có kích thước không xác định, chẳng hạn như mảng"
+" được phân bổ vùng heap, sẽ dẫn đến lỗi biên dịch trên một số trình biên "
+"dịch hoặc tạo ra kết quả không chính xác."
+
+#: ../../c-api/intro.rst:345
+#, fuzzy
+msgid "This is roughly equivalent to::"
+msgstr "Điều này gần tương đương với::"
+
+#: ../../c-api/intro.rst:347
+#, fuzzy
+msgid "sizeof(array) / sizeof((array)[0])"
+msgstr "sizeof(mảng) / sizeof((mảng)[0])"
+
+#: ../../c-api/intro.rst:351
+#, fuzzy
+msgid "Return the size of a structure (*type*) *member* in bytes."
+msgstr "Trả về kích thước của cấu trúc (*type*) *member* tính bằng byte."
+
+#: ../../c-api/intro.rst:353
+#, python-brace-format, fuzzy
+msgid "Corresponds roughly to :samp:`sizeof((({type} *)NULL)->{member})`."
+msgstr "Tương ứng với :samp:`sizeof((({type} *)NULL)->{member})`."
+
+#: ../../c-api/intro.rst:359
+#, fuzzy
+msgid "Macro definition utilities"
+msgstr "Tiện ích định nghĩa macro"
+
+#: ../../c-api/intro.rst:363
+#, python-brace-format, fuzzy
+msgid ""
+"This is equivalent to :samp:`{X}`, which is useful for token-pasting in "
+"macros, as macro expansions in *X* are forcefully evaluated by the "
+"preprocessor."
+msgstr ""
+"Điều này tương đương với :samp:`{X}`, rất hữu ích cho việc dán mã thông báo "
+"trong macro, vì việc mở rộng macro trong *X* được bộ tiền xử lý đánh giá một"
+" cách bắt buộc."
+
+#: ../../c-api/intro.rst:369
+#, fuzzy
+msgid ""
+"Convert ``x`` to a C string.  For example, ``Py_STRINGIFY(123)`` returns "
+"``\"123\"``."
+msgstr ""
+"Chuyển đổi ``x`` thành chuỗi C.  Ví dụ: ``Py_STRINGIFY(123)`` trả về "
+"``\"123\"``."
+
+#: ../../c-api/intro.rst:376
+#, fuzzy
+msgid "Declaration utilities"
+msgstr "Tiện ích khai báo"
+
+#: ../../c-api/intro.rst:378
+#, fuzzy
+msgid ""
+"The following macros can be used in declarations. They are most useful for "
+"defining the C API itself, and have limited use for extension authors. Most "
+"of them expand to compiler-specific spellings of common extensions to the C "
+"language."
+msgstr ""
+"Các macro sau có thể được sử dụng trong khai báo. Chúng hữu ích nhất để xác "
+"định chính C API và được sử dụng hạn chế đối với các tác giả mở rộng. Hầu "
+"hết chúng mở rộng sang cách viết dành riêng cho trình biên dịch của các phần"
+" mở rộng phổ biến cho ngôn ngữ C."
+
+#: ../../c-api/intro.rst:386
+#, fuzzy
+msgid ""
+"Ask the compiler to always inline a static inline function. The compiler can"
+" ignore it and decide to not inline the function."
+msgstr ""
+"Yêu cầu trình biên dịch luôn nội tuyến một hàm nội tuyến tĩnh. Trình biên "
+"dịch có thể bỏ qua nó và quyết định không nội tuyến hàm."
+
+#: ../../c-api/intro.rst:389
+#, fuzzy
+msgid ""
+"Corresponds to ``always_inline`` attribute in GCC and ``__forceinline`` in "
+"MSVC."
+msgstr ""
+"Tương ứng với thuộc tính ``always_inline`` trong GCC và ``__forceinline`` "
+"trong MSVC."
+
+#: ../../c-api/intro.rst:392
+#, fuzzy
+msgid ""
+"It can be used to inline performance critical static inline functions when "
+"building Python in debug mode with function inlining disabled. For example, "
+"MSC disables function inlining when building in debug mode."
+msgstr ""
+"Nó có thể được sử dụng để thực hiện nội tuyến các hàm nội tuyến tĩnh quan "
+"trọng khi xây dựng Python ở chế độ gỡ lỗi với chức năng nội tuyến bị vô hiệu"
+" hóa. Ví dụ: MSC vô hiệu hóa chức năng nội tuyến khi xây dựng ở chế độ gỡ "
+"lỗi."
+
+#: ../../c-api/intro.rst:396
+#, fuzzy
+msgid ""
+"Marking blindly a static inline function with Py_ALWAYS_INLINE can result in"
+" worse performances (due to increased code size for example). The compiler "
+"is usually smarter than the developer for the cost/benefit analysis."
+msgstr ""
+"Đánh dấu một cách mù quáng một hàm nội tuyến tĩnh bằng Py_ALWAYS_INLINE có "
+"thể dẫn đến hiệu suất kém hơn (ví dụ do kích thước mã tăng lên). Trình biên "
+"dịch thường thông minh hơn nhà phát triển trong việc phân tích chi phí/lợi "
+"ích."
+
+#: ../../c-api/intro.rst:400
+#, fuzzy
+msgid ""
+"If Python is :ref:`built in debug mode <debug-build>` (if the "
+":c:macro:`Py_DEBUG` macro is defined), the :c:macro:`Py_ALWAYS_INLINE` macro"
+" does nothing."
+msgstr ""
+"Nếu Python là :ref:`built in debug mode <debug-build>` (nếu macro "
+":c:macro:`Py_DEBUG` được xác định), macro :c:macro:`Py_ALWAYS_INLINE` sẽ "
+"không làm gì cả."
+
+#: ../../c-api/intro.rst:403
+#, fuzzy
+msgid "It must be specified before the function return type. Usage::"
+msgstr "Nó phải được chỉ định trước kiểu trả về của hàm. Cách sử dụng::"
+
+#: ../../c-api/intro.rst:405
+#, python-brace-format, fuzzy
+msgid "static inline Py_ALWAYS_INLINE int random(void) { return 4; }"
+msgstr "nội tuyến tĩnh Py_ALWAYS_INLINE int ngẫu nhiên(void) { return 4; }"
+
+#: ../../c-api/intro.rst:411
+#, fuzzy
+msgid ""
+"Disable inlining on a function. For example, it reduces the C stack "
+"consumption: useful on LTO+PGO builds which heavily inline code (see "
+":issue:`33720`)."
+msgstr ""
+"Vô hiệu hóa nội tuyến trên một chức năng. Ví dụ: nó làm giảm mức tiêu thụ "
+"ngăn xếp C: hữu ích trên các bản dựng LTO+PGO có nhiều mã nội tuyến (xem "
+":issue:`33720`)."
+
+#: ../../c-api/intro.rst:415
+#, fuzzy
+msgid ""
+"Corresponds to the ``noinline`` attribute/specification on GCC and MSVC."
+msgstr ""
+"Tương ứng với thuộc tính/thông số kỹ thuật ``noinline`` trên GCC và MSVC."
+
+#: ../../c-api/intro.rst:417
+#, fuzzy
+msgid "Usage::"
+msgstr "Cách sử dụng::"
+
+#: ../../c-api/intro.rst:419
+#, python-brace-format, fuzzy
+msgid "Py_NO_INLINE static int random(void) { return 4; }"
+msgstr "Py_NO_INLINE static int ngẫu nhiên(void) { return 4; }"
+
+#: ../../c-api/intro.rst:425
+#, fuzzy
+msgid ""
+"Use this to declare APIs that were deprecated in a specific CPython version."
+" The macro must be placed before the symbol name."
+msgstr ""
+"Sử dụng quyền này để khai báo các API không được dùng nữa trong phiên bản "
+"CPython cụ thể. Macro phải được đặt trước tên biểu tượng."
+
+#: ../../c-api/intro.rst:430
+#, fuzzy
+msgid "Py_DEPRECATED(3.8) PyAPI_FUNC(int) Py_OldFunction(void);"
+msgstr "Py_DEPRECATED(3.8) PyAPI_FUNC(int) Py_OldFunction(void);"
+
+#: ../../c-api/intro.rst:432
+#, fuzzy
+msgid "MSVC support was added."
+msgstr "hỗ trợ MSVC đã được thêm vào."
+
+#: ../../c-api/intro.rst:437
+#, python-brace-format, fuzzy
+msgid ""
+"Declare a function returning the specified *type* using a fast-calling "
+"qualifier for functions that are local to the current file. Semantically, "
+"this is equivalent to :samp:`static {type}`."
+msgstr ""
+"Khai báo một hàm trả về *type* đã chỉ định bằng cách sử dụng vòng loại gọi "
+"nhanh cho các hàm cục bộ trong tệp hiện tại. Về mặt ngữ nghĩa, điều này "
+"tương đương với :samp:`static {type}`."
+
+#: ../../c-api/intro.rst:443
+#, fuzzy
+msgid ""
+"Equivalent to :c:macro:`Py_LOCAL` but additionally requests the function be "
+"inlined."
+msgstr ""
+"Tương đương với :c:macro:`Py_LOCAL` nhưng còn yêu cầu nội tuyến hàm này."
+
+#: ../../c-api/intro.rst:448
+#, fuzzy
+msgid ""
+"Macro used to declare a symbol as local to the shared library (hidden). On "
+"supported platforms, it ensures the symbol is not exported."
+msgstr ""
+"Macro dùng để khai báo một ký hiệu là cục bộ của thư viện dùng chung (ẩn). "
+"Trên các nền tảng được hỗ trợ, nó đảm bảo biểu tượng không bị xuất."
+
+#: ../../c-api/intro.rst:451
+#, fuzzy
+msgid ""
+"On compatible versions of GCC/Clang, it expands to "
+"``__attribute__((visibility(\"hidden\")))``."
+msgstr ""
+"Trên các phiên bản tương thích của GCC/Clang, nó sẽ mở rộng thành "
+"``__attribute__((visibility(\"hidden\")))``."
+
+#: ../../c-api/intro.rst:456
+#, fuzzy
+msgid ""
+"Macro used to declare a symbol (function or data) as exported. On Windows, "
+"this expands to ``__declspec(dllexport)``. On compatible versions of "
+"GCC/Clang, it expands to ``__attribute__((visibility(\"default\")))``. This "
+"macro is for defining the C API itself; extension modules should not use it."
+msgstr ""
+"Macro dùng để khai báo một ký hiệu (hàm hoặc dữ liệu) khi được xuất. Trên "
+"Windows, điều này mở rộng tới ``__declspec(dllexport)``. Trên các phiên bản "
+"tương thích của GCC/Clang, nó sẽ mở rộng thành "
+"``__attribute__((visibility(\"default\")))``. Macro này dùng để xác định "
+"chính C API; mô-đun mở rộng không nên sử dụng nó."
+
+#: ../../c-api/intro.rst:465
+#, fuzzy
+msgid ""
+"Macro used to declare a symbol as imported. On Windows, this expands to "
+"``__declspec(dllimport)``. This macro is for defining the C API itself; "
+"extension modules should not use it."
+msgstr ""
+"Macro dùng để khai báo ký hiệu là đã được nhập. Trên Windows, điều này mở "
+"rộng tới ``__declspec(dllimport)``. Macro này dùng để xác định chính C API; "
+"mô-đun mở rộng không nên sử dụng nó."
+
+#: ../../c-api/intro.rst:472
+#, fuzzy
+msgid ""
+"Macro used by CPython to declare a function as part of the C API. Its "
+"expansion depends on the platform and build configuration. This macro is "
+"intended for defining CPython's C API itself; extension modules should not "
+"use it for their own symbols."
+msgstr ""
+"Macro được CPython sử dụng để khai báo hàm như một phần của C API. Việc mở "
+"rộng của nó phụ thuộc vào nền tảng và cấu hình bản dựng. Macro này nhằm mục "
+"đích xác định chính C API của CPython; các mô-đun mở rộng không nên sử dụng "
+"nó cho các ký hiệu riêng của chúng."
+
+#: ../../c-api/intro.rst:480
+#, fuzzy
+msgid ""
+"Macro used by CPython to declare a public global variable as part of the C "
+"API. Its expansion depends on the platform and build configuration. This "
+"macro is intended for defining CPython's C API itself; extension modules "
+"should not use it for their own symbols."
+msgstr ""
+"Macro được CPython sử dụng để khai báo biến toàn cục công khai như một phần "
+"của C API. Việc mở rộng của nó phụ thuộc vào nền tảng và cấu hình bản dựng. "
+"Macro này nhằm mục đích xác định chính C API của CPython; các mô-đun mở rộng"
+" không nên sử dụng nó cho các ký hiệu riêng của chúng."
+
+#: ../../c-api/intro.rst:487
+#, fuzzy
+msgid "Outdated macros"
+msgstr "Macro lỗi thời"
+
+#: ../../c-api/intro.rst:489
+#, fuzzy
+msgid ""
+"The following macros have been used to features that have been standardized "
+"in C11."
+msgstr ""
+"Các macro sau đã được sử dụng cho các tính năng đã được chuẩn hóa trong C11."
+
+#: ../../c-api/intro.rst:494
+#, fuzzy
+msgid "Specify alignment to *num* bytes on compilers that support it."
+msgstr ""
+"Chỉ định căn chỉnh theo byte *num* trên các trình biên dịch hỗ trợ nó."
+
+#: ../../c-api/intro.rst:496
+#, fuzzy
+msgid ""
+"Consider using the C11 standard ``_Alignas`` specifier over this macro."
+msgstr ""
+"Hãy cân nhắc sử dụng công cụ xác định ``_Alignas`` tiêu chuẩn C11 trên macro"
+" này."
+
+#: ../../c-api/intro.rst:501
+#, fuzzy
+msgid ""
+"Use *number* as a ``long long`` or ``unsigned long long`` integer literal, "
+"respectively."
+msgstr ""
+"Sử dụng *number* làm số nguyên ``long long`` hoặc ``unsigned long long`` "
+"tương ứng."
+
+#: ../../c-api/intro.rst:504
+#, fuzzy
+msgid ""
+"Expands to *number* followed by ``LL`` or ``LLU``, respectively, but will "
+"expand to some compiler-specific suffixes on some older compilers."
+msgstr ""
+"Mở rộng thành *number*, theo sau là ``LL`` hoặc ``LLU``, nhưng sẽ mở rộng "
+"sang một số hậu tố dành riêng cho trình biên dịch trên một số trình biên "
+"dịch cũ hơn."
+
+#: ../../c-api/intro.rst:507
+#, fuzzy
+msgid "Consider using the C99 standard suffixes ``LL`` and ``LLU`` directly."
+msgstr ""
+"Hãy cân nhắc việc sử dụng trực tiếp các hậu tố tiêu chuẩn C99 là ``LL`` và "
+"``LLU``."
+
+#: ../../c-api/intro.rst:511
+#, fuzzy
+msgid ""
+"This is a :term:`soft deprecated` alias to :c:func:`!memcpy`. Use "
+":c:func:`!memcpy` directly instead."
+msgstr ""
+"Đây là bí danh :term:`soft deprecated` của :c:func:`!memcpy`. Thay vào đó "
+"hãy sử dụng :c:func:`!memcpy` trực tiếp."
+
+#: ../../c-api/intro.rst:514
+#, fuzzy
+msgid "The macro is :term:`soft deprecated`."
+msgstr "Macro là :term:`soft deprecated`."
+
+#: ../../c-api/intro.rst:519
+#, fuzzy
+msgid ""
+"This is a :term:`soft deprecated` alias to the C99-standard ``va_copy`` "
+"function."
+msgstr ""
+"Đây là bí danh :term:`soft deprecated` cho hàm ``va_copy`` tiêu chuẩn C99."
+
+#: ../../c-api/intro.rst:522
+#, fuzzy
+msgid ""
+"Historically, this would use a compiler-specific method to copy a "
+"``va_list``."
+msgstr ""
+"Về mặt lịch sử, điều này sẽ sử dụng một phương pháp dành riêng cho trình "
+"biên dịch để sao chép ``va_list``."
+
+#: ../../c-api/intro.rst:524
+#, fuzzy
+msgid "This is now an alias to ``va_copy``."
+msgstr "Đây hiện là bí danh của ``va_copy``."
+
+#: ../../c-api/intro.rst:531
+#, fuzzy
+msgid "Objects, Types and Reference Counts"
+msgstr "Đối tượng, loại và số lượng tham chiếu"
+
+#: ../../c-api/intro.rst:535
+#, fuzzy
+msgid ""
+"Most Python/C API functions have one or more arguments as well as a return "
+"value of type :c:expr:`PyObject*`.  This type is a pointer to an opaque data"
+" type representing an arbitrary Python object.  Since all Python object "
+"types are treated the same way by the Python language in most situations "
+"(e.g., assignments, scope rules, and argument passing), it is only fitting "
+"that they should be represented by a single C type.  Almost all Python "
+"objects live on the heap: you never declare an automatic or static variable "
+"of type :c:type:`PyObject`, only pointer variables of type "
+":c:expr:`PyObject*` can  be declared.  The sole exception are the type "
+"objects; since these must never be deallocated, they are typically static "
+":c:type:`PyTypeObject` objects."
+msgstr ""
+"Hầu hết các hàm API của Python/C đều có một hoặc nhiều đối số cũng như giá "
+"trị trả về thuộc loại :c:expr:`PyObject*`.  Kiểu này là một con trỏ tới một "
+"kiểu dữ liệu mờ biểu thị một đối tượng Python tùy ý.  Vì tất cả các loại đối"
+" tượng Python đều được ngôn ngữ Python xử lý theo cùng một cách trong hầu "
+"hết các tình huống (ví dụ: bài tập, quy tắc phạm vi và truyền đối số), nên "
+"điều phù hợp là chúng phải được biểu thị bằng một loại C duy nhất.  Hầu hết "
+"tất cả các đối tượng Python đều tồn tại trên heap: bạn không bao giờ khai "
+"báo biến tự động hoặc biến tĩnh thuộc loại :c:type:`PyObject`, chỉ có thể "
+"khai báo các biến con trỏ thuộc loại :c:expr:`PyObject*`.  Ngoại lệ duy nhất"
+" là các đối tượng kiểu; vì chúng không bao giờ được hủy phân bổ nên chúng "
+"thường là các đối tượng :c:type:`PyTypeObject` tĩnh."
+
+#: ../../c-api/intro.rst:546
+#, fuzzy
+msgid ""
+"All Python objects (even Python integers) have a :dfn:`type` and a "
+":dfn:`reference count`.  An object's type determines what kind of object it "
+"is (e.g., an integer, a list, or a user-defined function; there are many "
+"more as explained in :ref:`types`).  For each of the well-known types there "
+"is a macro to check whether an object is of that type; for instance, "
+"``PyList_Check(a)`` is true if (and only if) the object pointed to by *a* is"
+" a Python list."
+msgstr ""
+"Tất cả các đối tượng Python (kể cả số nguyên Python) đều có :dfn:`type` và "
+":dfn:`reference count`.  Kiểu của một đối tượng xác định loại đối tượng đó "
+"là gì (ví dụ: số nguyên, danh sách hoặc hàm do người dùng xác định; còn "
+"nhiều đối tượng khác như được giải thích trong :ref:`types`).  Đối với mỗi "
+"loại phổ biến, có một macro để kiểm tra xem một đối tượng có thuộc loại đó "
+"hay không; ví dụ: ``PyList_Check(a)`` đúng nếu (và chỉ khi) đối tượng được "
+"trỏ tới bởi *a* là một danh sách Python."
+
+#: ../../c-api/intro.rst:557
+#, fuzzy
+msgid "Reference Counts"
+msgstr "Số lượng tham chiếu"
+
+#: ../../c-api/intro.rst:559
+#, fuzzy
+msgid ""
+"The reference count is important because today's computers have a  finite "
+"(and often severely limited) memory size; it counts how many different "
+"places there are that have a :term:`strong reference` to an object. Such a "
+"place could be another object, or a global (or static) C variable, or a "
+"local variable in some C function. When the last :term:`strong reference` to"
+" an object is released (i.e. its reference count becomes zero), the object "
+"is deallocated. If it contains references to other objects, those references"
+" are released. Those other objects may be deallocated in turn, if there are "
+"no more references to them, and so on.  (There's an obvious problem  with "
+"objects that reference each other here; for now, the solution is \"don't do "
+"that.\")"
+msgstr ""
+"Số lượng tham chiếu rất quan trọng vì máy tính ngày nay có kích thước bộ nhớ"
+" hữu hạn (và thường bị giới hạn nghiêm trọng); nó đếm xem có bao nhiêu địa "
+"điểm khác nhau có :term:`strong reference` cho một đối tượng. Một địa điểm "
+"như vậy có thể là một đối tượng khác hoặc một biến C toàn cục (hoặc tĩnh) "
+"hoặc một biến cục bộ trong một số hàm C. Khi :term:`strong reference` cuối "
+"cùng tới một đối tượng được giải phóng (tức là số tham chiếu của nó trở "
+"thành 0), đối tượng đó sẽ bị hủy phân bổ. Nếu nó chứa các tham chiếu đến các"
+" đối tượng khác, các tham chiếu đó sẽ được giải phóng. Những đối tượng khác "
+"đó có thể lần lượt bị hủy phân bổ nếu không còn tham chiếu nào đến chúng "
+"nữa, v.v.  (Có một vấn đề rõ ràng với các đối tượng tham chiếu lẫn nhau ở "
+"đây; hiện tại, giải pháp là \"đừng làm điều đó.\")"
+
+#: ../../c-api/intro.rst:576
+#, fuzzy
+msgid ""
+"Reference counts are always manipulated explicitly.  The normal way is to "
+"use the macro :c:func:`Py_INCREF` to take a new reference to an object (i.e."
+" increment its reference count by one), and :c:func:`Py_DECREF` to release "
+"that reference (i.e. decrement the reference count by one).  The "
+":c:func:`Py_DECREF` macro is considerably more complex than the incref one, "
+"since it must check whether the reference count becomes zero and then cause "
+"the object's deallocator to be called.  The deallocator is a function "
+"pointer contained in the object's type structure.  The type-specific "
+"deallocator takes care of releasing references for other objects contained "
+"in the object if this is a compound object type, such as a list, as well as "
+"performing any additional finalization that's needed.  There's no chance "
+"that the reference count can overflow; at least as many bits are used to "
+"hold the reference count as there are distinct memory locations in virtual "
+"memory (assuming ``sizeof(Py_ssize_t) >= sizeof(void*)``). Thus, the "
+"reference count increment is a simple operation."
+msgstr ""
+"Số lượng tham chiếu luôn được thao tác rõ ràng.  Cách thông thường là sử "
+"dụng macro :c:func:`Py_INCREF` để lấy một tham chiếu mới đến một đối tượng "
+"(tức là tăng số lượng tham chiếu của nó lên một) và :c:func:`Py_DECREF` để "
+"giải phóng tham chiếu đó (tức là giảm số lượng tham chiếu đi một).  Macro "
+":c:func:`Py_DECREF` phức tạp hơn đáng kể so với macro incref, vì nó phải "
+"kiểm tra xem số tham chiếu có bằng 0 hay không và sau đó khiến bộ giải phóng"
+" của đối tượng được gọi.  Bộ giải phóng là một con trỏ hàm có trong cấu trúc"
+" kiểu của đối tượng.  Trình giải phóng dành riêng cho loại sẽ đảm nhiệm việc"
+" giải phóng các tham chiếu cho các đối tượng khác có trong đối tượng nếu đây"
+" là loại đối tượng phức hợp, chẳng hạn như danh sách, cũng như thực hiện bất"
+" kỳ quyết toán bổ sung nào cần thiết.  Không có khả năng số lượng tham chiếu"
+" có thể tràn; ít nhất có bao nhiêu bit được sử dụng để giữ số tham chiếu vì "
+"có các vị trí bộ nhớ riêng biệt trong bộ nhớ ảo (giả sử ``sizeof(Py_ssize_t)"
+" >= sizeof(void*)``). Vì vậy, việc tăng số lượng tham chiếu là một thao tác "
+"đơn giản."
+
+#: ../../c-api/intro.rst:592
+#, fuzzy
+msgid ""
+"It is not necessary to hold a :term:`strong reference` (i.e. increment the "
+"reference count) for every local variable that contains a pointer to an "
+"object.  In theory, the  object's reference count goes up by one when the "
+"variable is made to  point to it and it goes down by one when the variable "
+"goes out of  scope.  However, these two cancel each other out, so at the end"
+" the  reference count hasn't changed.  The only real reason to use the  "
+"reference count is to prevent the object from being deallocated as  long as "
+"our variable is pointing to it.  If we know that there is at  least one "
+"other reference to the object that lives at least as long as our variable, "
+"there is no need to take a new :term:`strong reference` (i.e. increment the "
+"reference count) temporarily. An important situation where this arises is in"
+" objects  that are passed as arguments to C functions in an extension module"
+"  that are called from Python; the call mechanism guarantees to hold a  "
+"reference to every argument for the duration of the call."
+msgstr ""
+"Không cần thiết phải giữ :term:`strong reference` (tức là tăng số lượng tham"
+" chiếu) cho mọi biến cục bộ có chứa con trỏ tới một đối tượng.  Về lý "
+"thuyết, số tham chiếu của đối tượng tăng lên một khi biến được tạo để trỏ "
+"tới nó và giảm đi một khi biến nằm ngoài phạm vi.  Tuy nhiên, hai cái này "
+"triệt tiêu lẫn nhau nên cuối cùng số lượng tham chiếu không thay đổi.  Lý do"
+" thực sự duy nhất để sử dụng số tham chiếu là để ngăn đối tượng bị hủy phân "
+"bổ miễn là biến của chúng ta đang trỏ đến nó.  Nếu chúng ta biết rằng có ít "
+"nhất một tham chiếu khác đến đối tượng tồn tại ít nhất bằng biến của chúng "
+"ta thì tạm thời không cần phải lấy một :term:`strong reference` mới (tức là "
+"tăng số lượng tham chiếu). Một tình huống quan trọng mà điều này phát sinh "
+"là trong các đối tượng được truyền dưới dạng đối số cho các hàm C trong mô-"
+"đun mở rộng được gọi từ Python; cơ chế cuộc gọi đảm bảo giữ tham chiếu đến "
+"mọi đối số trong suốt thời gian của cuộc gọi."
+
+#: ../../c-api/intro.rst:608
+#, fuzzy
+msgid ""
+"However, a common pitfall is to extract an object from a list and hold on to"
+" it for a while without taking a new reference.  Some other operation might "
+"conceivably remove the object from the list, releasing that reference, and "
+"possibly deallocating it. The real danger is that innocent-looking "
+"operations may invoke arbitrary Python code which could do this; there is a "
+"code path which allows control to flow back to the user from a "
+":c:func:`Py_DECREF`, so almost any operation is potentially dangerous."
+msgstr ""
+"Tuy nhiên, một cạm bẫy phổ biến là trích xuất một đối tượng từ danh sách và "
+"giữ nó trong một thời gian mà không lấy tham chiếu mới.  Một số thao tác "
+"khác có thể loại bỏ đối tượng khỏi danh sách, giải phóng tham chiếu đó và có"
+" thể giải phóng nó. Mối nguy hiểm thực sự là các hoạt động trông có vẻ vô "
+"hại có thể gọi mã Python tùy ý có thể thực hiện điều này; có một đường dẫn "
+"mã cho phép quyền kiểm soát được chuyển trở lại người dùng từ "
+":c:func:`Py_DECREF`, vì vậy hầu hết mọi thao tác đều tiềm ẩn nguy hiểm."
+
+#: ../../c-api/intro.rst:616
+#, fuzzy
+msgid ""
+"A safe approach is to always use the generic operations (functions  whose "
+"name begins with ``PyObject_``, ``PyNumber_``, ``PySequence_`` or "
+"``PyMapping_``). These operations always create a new :term:`strong "
+"reference` (i.e. increment the reference count) of the object they return. "
+"This leaves the caller with the responsibility to call :c:func:`Py_DECREF` "
+"when they are done with the result; this soon becomes second nature."
+msgstr ""
+"Một cách tiếp cận an toàn là luôn sử dụng các thao tác chung (các hàm có tên"
+" bắt đầu bằng ``PyObject_``, ``PyNumber_``, ``PySequence_`` hoặc "
+"``PyMapping_``). Các thao tác này luôn tạo một :term:`strong reference` mới "
+"(tức là tăng số lượng tham chiếu) của đối tượng mà chúng trả về. Điều này "
+"khiến người gọi có trách nhiệm gọi :c:func:`Py_DECREF` khi họ hoàn thành kết"
+" quả; điều này sẽ sớm trở thành bản chất thứ hai."
+
+#: ../../c-api/intro.rst:627
+#, fuzzy
+msgid "Reference Count Details"
+msgstr "Chi tiết số lượng tham chiếu"
+
+#: ../../c-api/intro.rst:629
+#, fuzzy
+msgid ""
+"The reference count behavior of functions in the Python/C API is best  "
+"explained in terms of *ownership of references*.  Ownership pertains to "
+"references, never to objects (objects are not owned: they are always "
+"shared).  \"Owning a reference\" means being responsible for calling "
+"Py_DECREF on it when the reference is no longer needed.  Ownership can also "
+"be transferred, meaning that the code that receives ownership of the "
+"reference then becomes responsible for eventually releasing it by calling "
+":c:func:`Py_DECREF` or :c:func:`Py_XDECREF` when it's no longer needed---or "
+"passing on this responsibility (usually to its caller). When a function "
+"passes ownership of a reference on to its caller, the caller is said to "
+"receive a *new* reference.  When no ownership is transferred, the caller is "
+"said to *borrow* the reference. Nothing needs to be done for a "
+":term:`borrowed reference`."
+msgstr ""
+"Hành vi đếm tham chiếu của các hàm trong Python/C API được giải thích rõ "
+"nhất dưới dạng *ownership of references*.  Quyền sở hữu liên quan đến các "
+"tài liệu tham khảo, không bao giờ liên quan đến các đối tượng (các đối tượng"
+" không được sở hữu: chúng luôn được chia sẻ).  \"Sở hữu một tài liệu tham "
+"khảo\" có nghĩa là chịu trách nhiệm gọi Py_DECREF trên đó khi tài liệu tham "
+"khảo không còn cần thiết nữa.  Quyền sở hữu cũng có thể được chuyển giao, "
+"nghĩa là mã nhận được quyền sở hữu tham chiếu sau đó sẽ chịu trách nhiệm "
+"giải phóng nó bằng cách gọi :c:func:`Py_DECREF` hoặc :c:func:`Py_XDECREF` "
+"khi không còn cần thiết---hoặc chuyển giao trách nhiệm này (thường là cho "
+"người gọi nó). Khi một hàm chuyển quyền sở hữu tham chiếu cho người gọi nó, "
+"người gọi đó được cho là đã nhận được tham chiếu *new*.  Khi không có quyền "
+"sở hữu nào được chuyển giao, người gọi sẽ được gọi tới *borrow* tham chiếu. "
+"Không cần phải làm gì đối với :term:`borrowed reference`."
+
+#: ../../c-api/intro.rst:642
+#, fuzzy
+msgid ""
+"Conversely, when a calling function passes in a reference to an  object, "
+"there are two possibilities: the function *steals* a  reference to the "
+"object, or it does not.  *Stealing a reference* means that when you pass a "
+"reference to a function, that function assumes that it now owns that "
+"reference, and you are not responsible for it any longer."
+msgstr ""
+"Ngược lại, khi hàm gọi chuyển tham chiếu đến một đối tượng, có hai khả năng:"
+" hàm *steals* tham chiếu đến đối tượng hoặc không.  *Stealing a reference* "
+"có nghĩa là khi bạn chuyển một tham chiếu đến một hàm, hàm đó sẽ giả định "
+"rằng nó hiện sở hữu tham chiếu đó và bạn không chịu trách nhiệm về nó nữa."
+
+#: ../../c-api/intro.rst:652
+#, fuzzy
+msgid ""
+"Few functions steal references; the two notable exceptions are "
+":c:func:`PyList_SetItem` and :c:func:`PyTuple_SetItem`, which  steal a "
+"reference to the item (but not to the tuple or list into which the item is "
+"put!).  These functions were designed to steal a reference because of a "
+"common idiom for populating a tuple or list with newly created objects; for "
+"example, the code to create the tuple ``(1, 2, \"three\")`` could look like "
+"this (forgetting about error handling for the moment; a better way to code "
+"this is shown below)::"
+msgstr ""
+"Rất ít chức năng lấy cắp tài liệu tham khảo; hai trường hợp ngoại lệ đáng "
+"chú ý là :c:func:`PyList_SetItem` và :c:func:`PyTuple_SetItem`, lấy cắp tham"
+" chiếu đến mục (nhưng không lấy cắp tham chiếu đến bộ dữ liệu hoặc danh sách"
+" mà mục đó được đặt vào đó!).  Các hàm này được thiết kế để đánh cắp một "
+"tham chiếu vì một thành ngữ phổ biến để điền một bộ dữ liệu hoặc danh sách "
+"với các đối tượng mới được tạo; ví dụ: mã để tạo bộ dữ liệu ``(1, 2, "
+"\"three\")`` có thể trông như thế này (tạm thời quên việc xử lý lỗi; cách "
+"tốt hơn để viết mã này được hiển thị bên dưới)::"
+
+#: ../../c-api/intro.rst:660
+#, fuzzy
+msgid ""
+"PyObject *t;\n"
+"\n"
+"t = PyTuple_New(3);\n"
+"PyTuple_SetItem(t, 0, PyLong_FromLong(1L));\n"
+"PyTuple_SetItem(t, 1, PyLong_FromLong(2L));\n"
+"PyTuple_SetItem(t, 2, PyUnicode_FromString(\"three\"));"
+msgstr ""
+"PyObject *t;\n"
+"\n"
+"t = PyTuple_New(3);\n"
+"PyTuple_SetItem(t, 0, PyLong_FromLong(1L));\n"
+"PyTuple_SetItem(t, 1, PyLong_FromLong(2L));\n"
+"PyTuple_SetItem(t, 2, PyUnicode_FromString(\"ba\"));"
+
+#: ../../c-api/intro.rst:667
+#, fuzzy
+msgid ""
+"Here, :c:func:`PyLong_FromLong` returns a new reference which is immediately"
+" stolen by :c:func:`PyTuple_SetItem`.  When you want to keep using an object"
+" although the reference to it will be stolen, use :c:func:`Py_INCREF` to "
+"grab another reference before calling the reference-stealing function."
+msgstr ""
+"Ở đây, :c:func:`PyLong_FromLong` trả về một tham chiếu mới ngay lập tức bị "
+":c:func:`PyTuple_SetItem` đánh cắp.  Khi bạn muốn tiếp tục sử dụng một đối "
+"tượng mặc dù tham chiếu đến nó sẽ bị đánh cắp, hãy sử dụng "
+":c:func:`Py_INCREF` để lấy một tham chiếu khác trước khi gọi hàm đánh cắp "
+"tham chiếu."
+
+#: ../../c-api/intro.rst:672
+#, fuzzy
+msgid ""
+"Incidentally, :c:func:`PyTuple_SetItem` is the *only* way to set tuple "
+"items; :c:func:`PySequence_SetItem` and :c:func:`PyObject_SetItem` refuse to"
+" do this since tuples are an immutable data type.  You should only use "
+":c:func:`PyTuple_SetItem` for tuples that you are creating yourself."
+msgstr ""
+"Ngẫu nhiên, :c:func:`PyTuple_SetItem` là cách *only* để đặt các mục tuple; "
+":c:func:`PySequence_SetItem` và :c:func:`PyObject_SetItem` từ chối thực hiện"
+" việc này vì bộ dữ liệu là loại dữ liệu bất biến.  Bạn chỉ nên sử dụng "
+":c:func:`PyTuple_SetItem` cho các bộ dữ liệu mà bạn tự tạo."
+
+#: ../../c-api/intro.rst:677
+#, fuzzy
+msgid ""
+"Equivalent code for populating a list can be written using "
+":c:func:`PyList_New` and :c:func:`PyList_SetItem`."
+msgstr ""
+"Mã tương đương để điền danh sách có thể được viết bằng :c:func:`PyList_New` "
+"và :c:func:`PyList_SetItem`."
+
+#: ../../c-api/intro.rst:680
+#, fuzzy
+msgid ""
+"However, in practice, you will rarely use these ways of creating and "
+"populating a tuple or list.  There's a generic function, "
+":c:func:`Py_BuildValue`, that can create most common objects from C values, "
+"directed by a :dfn:`format string`. For example, the above two blocks of "
+"code could be replaced by the following (which also takes care of the error "
+"checking)::"
+msgstr ""
+"Tuy nhiên, trong thực tế, bạn sẽ hiếm khi sử dụng những cách tạo và điền một"
+" bộ hoặc danh sách này.  Có một hàm chung, :c:func:`Py_BuildValue`, có thể "
+"tạo hầu hết các đối tượng phổ biến từ các giá trị C, được điều khiển bởi "
+":dfn:`format string`. Ví dụ: hai khối mã trên có thể được thay thế bằng khối"
+" mã sau (cũng đảm nhiệm việc kiểm tra lỗi)::"
+
+#: ../../c-api/intro.rst:686
+#, fuzzy
+msgid ""
+"PyObject *tuple, *list;\n"
+"\n"
+"tuple = Py_BuildValue(\"(iis)\", 1, 2, \"three\");\n"
+"list = Py_BuildValue(\"[iis]\", 1, 2, \"three\");"
+msgstr ""
+"Danh sách PyObject *tuple, *;\n"
+"\n"
+"tuple = Py_BuildValue(\"(iis)\", 1, 2, \"ba\");\n"
+"list = Py_BuildValue(\"[iis]\", 1, 2, \"ba\");"
+
+#: ../../c-api/intro.rst:691
+#, fuzzy
+msgid ""
+"It is much more common to use :c:func:`PyObject_SetItem` and friends with "
+"items whose references you are only borrowing, like arguments that were "
+"passed in to the function you are writing.  In that case, their behaviour "
+"regarding references is much saner, since you don't have to take a new "
+"reference just so you can give that reference away (\"have it be stolen\")."
+"  For example, this function sets all items of a list (actually, any mutable"
+" sequence) to a given item::"
+msgstr ""
+"Việc sử dụng :c:func:`PyObject_SetItem` và bạn bè với các mục có tài liệu "
+"tham khảo mà bạn chỉ mượn là phổ biến hơn nhiều, chẳng hạn như các đối số "
+"được chuyển vào hàm bạn đang viết.  Trong trường hợp đó, hành vi của họ đối "
+"với tài liệu tham khảo sẽ sáng suốt hơn nhiều, vì bạn không cần phải lấy một"
+" tài liệu tham khảo mới chỉ để có thể đưa tài liệu tham khảo đó đi (\"nếu nó"
+" bị đánh cắp\").  Ví dụ: hàm này đặt tất cả các mục của danh sách (thực tế "
+"là bất kỳ chuỗi có thể thay đổi nào) thành một mục nhất định ::"
+
+#: ../../c-api/intro.rst:698
+#, fuzzy
+msgid ""
+"int\n"
+"set_all(PyObject *target, PyObject *item)\n"
+"{\n"
+"    Py_ssize_t i, n;\n"
+"\n"
+"    n = PyObject_Length(target);\n"
+"    if (n < 0)\n"
+"        return -1;\n"
+"    for (i = 0; i < n; i++) {\n"
+"        PyObject *index = PyLong_FromSsize_t(i);\n"
+"        if (!index)\n"
+"            return -1;\n"
+"        if (PyObject_SetItem(target, index, item) < 0) {\n"
+"            Py_DECREF(index);\n"
+"            return -1;\n"
+"        }\n"
+"        Py_DECREF(index);\n"
+"    }\n"
+"    return 0;\n"
+"}"
+msgstr ""
+"int\n"
+"set_all(PyObject *target, PyObject *item)\n"
+"{\n"
+"    Py_ssize_t i, n;\n"
+"\n"
+"    n = PyObject_Length(đích);\n"
+"    nếu (n < 0)\n"
+"        trả về -1;\n"
+"    vì (i = 0; i < n; i++) {\n"
+"        PyObject *index = PyLong_FromSsize_t(i);\n"
+"        nếu (!chỉ mục)\n"
+"            trả về -1;\n"
+"        if (PyObject_SetItem(đích, chỉ mục, mục) < 0) {\n"
+"            Py_DECREF(chỉ mục);\n"
+"            trả về -1;\n"
+"        }\n"
+"        Py_DECREF(chỉ mục);\n"
+"    }\n"
+"    trả về 0;\n"
+"}"
+
+#: ../../c-api/intro.rst:721
+#, fuzzy
+msgid ""
+"The situation is slightly different for function return values.   While "
+"passing a reference to most functions does not change your  ownership "
+"responsibilities for that reference, many functions that  return a reference"
+" to an object give you ownership of the reference. The reason is simple: in "
+"many cases, the returned object is created  on the fly, and the reference "
+"you get is the only reference to the  object.  Therefore, the generic "
+"functions that return object references, like :c:func:`PyObject_GetItem` and"
+"  :c:func:`PySequence_GetItem`, always return a new reference (the caller "
+"becomes the owner of the reference)."
+msgstr ""
+"Tình huống hơi khác đối với các giá trị trả về của hàm.   Mặc dù việc chuyển"
+" tham chiếu đến hầu hết các hàm không làm thay đổi trách nhiệm sở hữu của "
+"bạn đối với tham chiếu đó nhưng nhiều hàm trả về tham chiếu đến một đối "
+"tượng sẽ cung cấp cho bạn quyền sở hữu tham chiếu đó. Lý do rất đơn giản: "
+"trong nhiều trường hợp, đối tượng trả về được tạo nhanh chóng và tham chiếu "
+"bạn nhận được là tham chiếu duy nhất đến đối tượng.  Do đó, các hàm chung "
+"trả về tham chiếu đối tượng, như :c:func:`PyObject_GetItem` và "
+":c:func:`PySequence_GetItem`, luôn trả về tham chiếu mới (người gọi trở "
+"thành chủ sở hữu của tham chiếu)."
+
+#: ../../c-api/intro.rst:730
+#, fuzzy
+msgid ""
+"It is important to realize that whether you own a reference returned  by a "
+"function depends on which function you call only --- *the plumage* (the type"
+" of the object passed as an argument to the function) *doesn't enter into "
+"it!* Thus, if you  extract an item from a list using "
+":c:func:`PyList_GetItem`, you don't own the reference --- but if you obtain "
+"the same item from the same list using :c:func:`PySequence_GetItem` (which "
+"happens to take exactly the same arguments), you do own a reference to the "
+"returned object."
+msgstr ""
+"Điều quan trọng là phải nhận ra rằng việc bạn có sở hữu một tham chiếu được "
+"hàm trả về hay không phụ thuộc vào hàm bạn gọi chỉ --- *the plumage* (loại "
+"đối tượng được truyền dưới dạng đối số cho hàm) *doesn't enter into it!* Do "
+"đó, nếu bạn trích xuất một mục từ danh sách bằng :c:func:`PyList_GetItem`, "
+"thì bạn không sở hữu tham chiếu đó --- nhưng nếu bạn lấy cùng một mục từ "
+"cùng một danh sách bằng cách sử dụng :c:func:`PySequence_GetItem` (điều này "
+"nhận chính xác các đối số giống nhau), thì bạn sở hữu một tham chiếu đến đối"
+" tượng được trả về."
+
+#: ../../c-api/intro.rst:742
+#, fuzzy
+msgid ""
+"Here is an example of how you could write a function that computes the sum "
+"of the items in a list of integers; once using  :c:func:`PyList_GetItem`, "
+"and once using :c:func:`PySequence_GetItem`. ::"
+msgstr ""
+"Đây là một ví dụ về cách bạn có thể viết một hàm tính tổng các phần tử trong"
+" một danh sách các số nguyên; một lần sử dụng :c:func:`PyList_GetItem` và "
+"một lần sử dụng :c:func:`PySequence_GetItem`. ::"
+
+#: ../../c-api/intro.rst:746
+#, fuzzy
+msgid ""
+"long\n"
+"sum_list(PyObject *list)\n"
+"{\n"
+"    Py_ssize_t i, n;\n"
+"    long total = 0, value;\n"
+"    PyObject *item;\n"
+"\n"
+"    n = PyList_Size(list);\n"
+"    if (n < 0)\n"
+"        return -1; /* Not a list */\n"
+"    for (i = 0; i < n; i++) {\n"
+"        item = PyList_GetItem(list, i); /* Can't fail */\n"
+"        if (!PyLong_Check(item)) continue; /* Skip non-integers */\n"
+"        value = PyLong_AsLong(item);\n"
+"        if (value == -1 && PyErr_Occurred())\n"
+"            /* Integer too big to fit in a C long, bail out */\n"
+"            return -1;\n"
+"        total += value;\n"
+"    }\n"
+"    return total;\n"
+"}"
+msgstr ""
+"dài\n"
+"sum_list(danh sách PyObject *)\n"
+"{\n"
+"    Py_ssize_t i, n;\n"
+"    tổng dài = 0, giá trị;\n"
+"    mục PyObject *;\n"
+"\n"
+"    n = PyList_Size(danh sách);\n"
+"    nếu (n < 0)\n"
+"        trả về -1; /* Không phải danh sách */\n"
+"    vì (i = 0; i < n; i++) {\n"
+"        item = PyList_GetItem(list, i); /*Không thể thất bại*/\n"
+"        if (!PyLong_Check(item)) tiếp tục; /* Bỏ qua các số không nguyên */\n"
+"        giá trị = PyLong_AsLong(item);\n"
+"        if (giá trị == -1 && PyErr_Occurred())\n"
+"            /* Số nguyên quá lớn không thể nhét vừa một chữ C dài, giải cứu */\n"
+"            trả về -1;\n"
+"        tổng giá trị +=;\n"
+"    }\n"
+"    tổng số tiền trả lại;\n"
+"}"
+
+#: ../../c-api/intro.rst:772
+#, fuzzy
+msgid ""
+"long\n"
+"sum_sequence(PyObject *sequence)\n"
+"{\n"
+"    Py_ssize_t i, n;\n"
+"    long total = 0, value;\n"
+"    PyObject *item;\n"
+"    n = PySequence_Length(sequence);\n"
+"    if (n < 0)\n"
+"        return -1; /* Has no length */\n"
+"    for (i = 0; i < n; i++) {\n"
+"        item = PySequence_GetItem(sequence, i);\n"
+"        if (item == NULL)\n"
+"            return -1; /* Not a sequence, or other failure */\n"
+"        if (PyLong_Check(item)) {\n"
+"            value = PyLong_AsLong(item);\n"
+"            Py_DECREF(item);\n"
+"            if (value == -1 && PyErr_Occurred())\n"
+"                /* Integer too big to fit in a C long, bail out */\n"
+"                return -1;\n"
+"            total += value;\n"
+"        }\n"
+"        else {\n"
+"            Py_DECREF(item); /* Discard reference ownership */\n"
+"        }\n"
+"    }\n"
+"    return total;\n"
+"}"
+msgstr ""
+"dài\n"
+"sum_sequence(PyObject *sequence)\n"
+"{\n"
+"    Py_ssize_t i, n;\n"
+"    tổng dài = 0, giá trị;\n"
+"    mục PyObject *;\n"
+"    n = PySequence_Length(chuỗi);\n"
+"    nếu (n < 0)\n"
+"        trả về -1; /* Không có độ dài */\n"
+"    vì (i = 0; i < n; i++) {\n"
+"        item = PySequence_GetItem(sequence, i);\n"
+"        nếu (mục == NULL)\n"
+"            trả về -1; /* Không phải trình tự hoặc lỗi khác */\n"
+"        if (PyLong_Check(item)) {\n"
+"            giá trị = PyLong_AsLong(item);\n"
+"            Py_DECREF(vật phẩm);\n"
+"            if (giá trị == -1 && PyErr_Occurred())\n"
+"                /* Số nguyên quá lớn không thể nhét vừa một chữ C dài, giải cứu */\n"
+"                trả về -1;\n"
+"            tổng giá trị +=;\n"
+"        }\n"
+"        khác {\n"
+"            Py_DECREF(vật phẩm); /* Loại bỏ quyền sở hữu tài liệu tham khảo */\n"
+"        }\n"
+"    }\n"
+"    tổng số tiền trả lại;\n"
+"}"
+
+#: ../../c-api/intro.rst:806
+#, fuzzy
+msgid "Types"
+msgstr "Các loại"
+
+#: ../../c-api/intro.rst:808
+#, fuzzy
+msgid ""
+"There are few other data types that play a significant role in  the Python/C"
+" API; most are simple C types such as :c:expr:`int`,  :c:expr:`long`, "
+":c:expr:`double` and :c:expr:`char*`.  A few structure types  are used to "
+"describe static tables used to list the functions exported  by a module or "
+"the data attributes of a new object type, and another is used to describe "
+"the value of a complex number.  These will  be discussed together with the "
+"functions that use them."
+msgstr ""
+"Có một số loại dữ liệu khác đóng vai trò quan trọng trong Python/C API; hầu "
+"hết là các loại C đơn giản như :c:expr:`int`, :c:expr:`long`, "
+":c:expr:`double` và :c:expr:`char*`.  Một số loại cấu trúc được sử dụng để "
+"mô tả các bảng tĩnh dùng để liệt kê các hàm được mô-đun xuất hoặc thuộc tính"
+" dữ liệu của một loại đối tượng mới và một loại khác được sử dụng để mô tả "
+"giá trị của số phức.  Những điều này sẽ được thảo luận cùng với các chức "
+"năng sử dụng chúng."
+
+#: ../../c-api/intro.rst:818
+#, fuzzy
+msgid ""
+"A signed integral type such that ``sizeof(Py_ssize_t) == sizeof(size_t)``. "
+"C99 doesn't define such a thing directly (size_t is an unsigned integral "
+"type). See :pep:`353` for details. ``PY_SSIZE_T_MAX`` is the largest "
+"positive value of type :c:type:`Py_ssize_t`."
+msgstr ""
+"Loại tích phân có dấu sao cho ``sizeof(Py_ssize_t) == sizeof(size_t)``. C99 "
+"không định nghĩa trực tiếp điều đó (size_t là loại tích phân không dấu). Xem"
+" :pep:`353` để biết chi tiết. ``PY_SSIZE_T_MAX`` là giá trị dương lớn nhất "
+"của loại :c:type:`Py_ssize_t`."
+
+#: ../../c-api/intro.rst:827
+#, fuzzy
+msgid "Exceptions"
+msgstr "Ngoại lệ"
+
+#: ../../c-api/intro.rst:829
+#, fuzzy
+msgid ""
+"The Python programmer only needs to deal with exceptions if specific  error "
+"handling is required; unhandled exceptions are automatically  propagated to "
+"the caller, then to the caller's caller, and so on, until they reach the "
+"top-level interpreter, where they are reported to the  user accompanied by a"
+" stack traceback."
+msgstr ""
+"Lập trình viên Python chỉ cần xử lý các trường hợp ngoại lệ nếu cần xử lý "
+"lỗi cụ thể; các trường hợp ngoại lệ chưa được xử lý sẽ tự động được truyền "
+"tới người gọi, sau đó đến người gọi của người gọi, v.v., cho đến khi chúng "
+"đến được trình thông dịch cấp cao nhất, nơi chúng được báo cáo cho người "
+"dùng kèm theo dấu vết ngăn xếp."
+
+#: ../../c-api/intro.rst:837
+#, fuzzy
+msgid ""
+"For C programmers, however, error checking always has to be explicit.  All "
+"functions in the Python/C API can raise exceptions, unless an explicit claim"
+" is made otherwise in a function's documentation.  In general, when a "
+"function encounters an error, it sets an exception, discards any object "
+"references that it owns, and returns an error indicator.  If not documented "
+"otherwise, this indicator is either ``NULL`` or ``-1``, depending on the "
+"function's return type. A few functions return a Boolean true/false result, "
+"with false indicating an error.  Very few functions return no explicit error"
+" indicator or have an ambiguous return value, and require explicit testing "
+"for errors with :c:func:`PyErr_Occurred`.  These exceptions are always "
+"explicitly documented."
+msgstr ""
+"Tuy nhiên, đối với các lập trình viên C, việc kiểm tra lỗi luôn phải rõ "
+"ràng.  Tất cả các hàm trong Python/C API đều có thể đưa ra các ngoại lệ, trừ"
+" khi có yêu cầu rõ ràng được đưa ra khác đi trong tài liệu của hàm.  Nói "
+"chung, khi một hàm gặp lỗi, nó sẽ đặt một ngoại lệ, loại bỏ mọi tham chiếu "
+"đối tượng mà nó sở hữu và trả về một chỉ báo lỗi.  Nếu không được ghi lại, "
+"chỉ báo này là ``NULL`` hoặc ``-1``, tùy thuộc vào kiểu trả về của hàm. Một "
+"số hàm trả về kết quả Boolean đúng/sai, với kết quả sai biểu thị lỗi.  Rất "
+"ít hàm không trả về chỉ báo lỗi rõ ràng hoặc có giá trị trả về không rõ ràng"
+" và yêu cầu kiểm tra rõ ràng các lỗi với :c:func:`PyErr_Occurred`.  Những "
+"ngoại lệ này luôn được ghi lại rõ ràng."
+
+#: ../../c-api/intro.rst:852
+#, fuzzy
+msgid ""
+"Exception state is maintained in per-thread storage (this is  equivalent to "
+"using global storage in an unthreaded application).  A  thread can be in one"
+" of two states: an exception has occurred, or not. The function "
+":c:func:`PyErr_Occurred` can be used to check for this: it returns a "
+"borrowed reference to the exception type object when an exception has "
+"occurred, and ``NULL`` otherwise.  There are a number of functions to set "
+"the exception state: :c:func:`PyErr_SetString` is the most common (though "
+"not the most general) function to set the exception state, and "
+":c:func:`PyErr_Clear` clears the exception state."
+msgstr ""
+"Trạng thái ngoại lệ được duy trì trong bộ lưu trữ trên mỗi luồng (điều này "
+"tương đương với việc sử dụng bộ nhớ chung trong một ứng dụng không theo "
+"chuỗi).  Một thread có thể ở một trong hai trạng thái: có ngoại lệ xảy ra "
+"hoặc không. Hàm :c:func:`PyErr_Occurred` có thể được sử dụng để kiểm tra "
+"điều này: nó trả về một tham chiếu mượn đến đối tượng loại ngoại lệ khi một "
+"ngoại lệ xảy ra, và ``NULL`` nếu không.  Có một số hàm để đặt trạng thái "
+"ngoại lệ: :c:func:`PyErr_SetString` là hàm phổ biến nhất (mặc dù không phải "
+"là chung nhất) để đặt trạng thái ngoại lệ và :c:func:`PyErr_Clear` xóa trạng"
+" thái ngoại lệ."
+
+#: ../../c-api/intro.rst:862
+#, fuzzy
+msgid ""
+"The full exception state consists of three objects (all of which can  be "
+"``NULL``): the exception type, the corresponding exception  value, and the "
+"traceback.  These have the same meanings as the Python result of "
+"``sys.exc_info()``; however, they are not the same: the Python objects "
+"represent the last exception being handled by a Python  :keyword:`try` ... "
+":keyword:`except` statement, while the C level exception state only exists "
+"while an exception is being passed on between C functions until it reaches "
+"the Python bytecode interpreter's  main loop, which takes care of "
+"transferring it to ``sys.exc_info()`` and friends."
+msgstr ""
+"Trạng thái ngoại lệ đầy đủ bao gồm ba đối tượng (tất cả đều có thể là "
+"``NULL``): loại ngoại lệ, giá trị ngoại lệ tương ứng và truy nguyên.  Chúng "
+"có cùng ý nghĩa với kết quả Python của ``sys.exc_info()``; tuy nhiên, chúng "
+"không giống nhau: các đối tượng Python biểu thị ngoại lệ cuối cùng được xử "
+"lý bởi câu lệnh Python :keyword:`try` ... :keyword:`except`, trong khi trạng"
+" thái ngoại lệ cấp C chỉ tồn tại trong khi một ngoại lệ đang được truyền "
+"giữa các hàm C cho đến khi nó đến vòng lặp chính của trình thông dịch mã "
+"byte Python, vòng lặp này sẽ đảm nhiệm việc chuyển nó sang "
+"``sys.exc_info()`` và những người bạn."
+
+#: ../../c-api/intro.rst:874
+#, fuzzy
+msgid ""
+"Note that starting with Python 1.5, the preferred, thread-safe way to access"
+" the exception state from Python code is to call the function "
+":func:`sys.exc_info`, which returns the per-thread exception state for "
+"Python code.  Also, the semantics of both ways to access the exception state"
+" have changed so that a function which catches an exception will save and "
+"restore its thread's exception state so as to preserve the exception state "
+"of its caller.  This prevents common bugs in exception handling code caused "
+"by an innocent-looking function overwriting the exception being handled; it "
+"also reduces the often unwanted lifetime extension for objects that are "
+"referenced by the stack frames in the traceback."
+msgstr ""
+"Lưu ý rằng bắt đầu với Python 1.5, cách ưu tiên, an toàn theo luồng để truy "
+"cập trạng thái ngoại lệ từ mã Python là gọi hàm :func:`sys.exc_info`, hàm "
+"này trả về trạng thái ngoại lệ trên mỗi luồng cho mã Python.  Ngoài ra, ngữ "
+"nghĩa của cả hai cách truy cập trạng thái ngoại lệ đã thay đổi để hàm bắt "
+"ngoại lệ sẽ lưu và khôi phục trạng thái ngoại lệ của luồng của nó để duy trì"
+" trạng thái ngoại lệ của người gọi nó.  Điều này ngăn ngừa các lỗi phổ biến "
+"trong mã xử lý ngoại lệ do một hàm trông có vẻ vô hại ghi đè lên ngoại lệ "
+"đang được xử lý; nó cũng làm giảm thời gian kéo dài thời gian không mong "
+"muốn thường xuyên đối với các đối tượng được tham chiếu bởi các khung ngăn "
+"xếp trong truy nguyên."
+
+#: ../../c-api/intro.rst:885
+#, fuzzy
+msgid ""
+"As a general principle, a function that calls another function to  perform "
+"some task should check whether the called function raised an  exception, and"
+" if so, pass the exception state on to its caller.  It  should discard any "
+"object references that it owns, and return an  error indicator, but it "
+"should *not* set another exception --- that would overwrite the exception "
+"that was just raised, and lose important information about the exact cause "
+"of the error."
+msgstr ""
+"Theo nguyên tắc chung, một hàm gọi hàm khác để thực hiện một số tác vụ phải "
+"kiểm tra xem hàm được gọi có đưa ra ngoại lệ hay không và nếu có thì chuyển "
+"trạng thái ngoại lệ đó cho hàm gọi nó.  Nó sẽ loại bỏ mọi tham chiếu đối "
+"tượng mà nó sở hữu và trả về một chỉ báo lỗi, nhưng *not* sẽ đặt một ngoại "
+"lệ khác --- điều đó sẽ ghi đè lên ngoại lệ vừa được nêu ra và làm mất thông "
+"tin quan trọng về nguyên nhân chính xác của lỗi."
+
+#: ../../c-api/intro.rst:894
+#, fuzzy
+msgid ""
+"A simple example of detecting exceptions and passing them on is shown in the"
+" :c:func:`!sum_sequence` example above.  It so happens that this example "
+"doesn't need to clean up any owned references when it detects an error.  The"
+" following example function shows some error cleanup.  First, to remind you "
+"why you like Python, we show the equivalent Python code::"
+msgstr ""
+"Một ví dụ đơn giản về việc phát hiện các ngoại lệ và chuyển chúng đi được "
+"hiển thị trong ví dụ :c:func:`!sum_sequence` ở trên.  Điều đó xảy ra là ví "
+"dụ này không cần phải xóa bất kỳ tham chiếu nào được sở hữu khi phát hiện ra"
+" lỗi.  Hàm ví dụ sau đây hiển thị một số thao tác dọn dẹp lỗi.  Đầu tiên, để"
+" nhắc bạn tại sao bạn thích Python, chúng tôi hiển thị mã Python tương "
+"đương::"
+
+#: ../../c-api/intro.rst:900
+#, fuzzy
+msgid ""
+"def incr_item(dict, key):\n"
+"    try:\n"
+"        item = dict[key]\n"
+"    except KeyError:\n"
+"        item = 0\n"
+"    dict[key] = item + 1"
+msgstr ""
+"def incr_item(dict, key):\n"
+"    thử:\n"
+"        mục = dict[key]\n"
+"    ngoại trừ KeyError:\n"
+"        mục = 0\n"
+"    dict[key] = mục + 1"
+
+#: ../../c-api/intro.rst:909
+#, fuzzy
+msgid "Here is the corresponding C code, in all its glory::"
+msgstr "Đây là mã C tương ứng, với tất cả sự vinh quang của nó::"
+
+#: ../../c-api/intro.rst:911
+#, fuzzy
+msgid ""
+"int\n"
+"incr_item(PyObject *dict, PyObject *key)\n"
+"{\n"
+"    /* Objects all initialized to NULL for Py_XDECREF */\n"
+"    PyObject *item = NULL, *const_one = NULL, *incremented_item = NULL;\n"
+"    int rv = -1; /* Return value initialized to -1 (failure) */\n"
+"\n"
+"    item = PyObject_GetItem(dict, key);\n"
+"    if (item == NULL) {\n"
+"        /* Handle KeyError only: */\n"
+"        if (!PyErr_ExceptionMatches(PyExc_KeyError))\n"
+"            goto error;\n"
+"\n"
+"        /* Clear the error and use zero: */\n"
+"        PyErr_Clear();\n"
+"        item = PyLong_FromLong(0L);\n"
+"        if (item == NULL)\n"
+"            goto error;\n"
+"    }\n"
+"    const_one = PyLong_FromLong(1L);\n"
+"    if (const_one == NULL)\n"
+"        goto error;\n"
+"\n"
+"    incremented_item = PyNumber_Add(item, const_one);\n"
+"    if (incremented_item == NULL)\n"
+"        goto error;\n"
+"\n"
+"    if (PyObject_SetItem(dict, key, incremented_item) < 0)\n"
+"        goto error;\n"
+"    rv = 0; /* Success */\n"
+"    /* Continue with cleanup code */\n"
+"\n"
+" error:\n"
+"    /* Cleanup code, shared by success and failure path */\n"
+"\n"
+"    /* Use Py_XDECREF() to ignore NULL references */\n"
+"    Py_XDECREF(item);\n"
+"    Py_XDECREF(const_one);\n"
+"    Py_XDECREF(incremented_item);\n"
+"\n"
+"    return rv; /* -1 for error, 0 for success */\n"
+"}"
+msgstr ""
+"int\n"
+"incr_item(PyObject *dict, PyObject *key)\n"
+"{\n"
+"    /* Tất cả các đối tượng được khởi tạo thành NULL cho Py_XDECREF */\n"
+"    PyObject *item = NULL, *const_one = NULL, *incremented_item = NULL;\n"
+"    int rv = -1; /* Trả về giá trị khởi tạo là -1 (lỗi) */\n"
+"\n"
+"    item = PyObject_GetItem(dict, key);\n"
+"    nếu (mục == NULL) {\n"
+"        /* Chỉ xử lý KeyError: */\n"
+"        if (!PyErr_ExceptionMatches(PyExc_KeyError))\n"
+"            lỗi đi đến;\n"
+"\n"
+"        /* Xóa lỗi và sử dụng số 0: */\n"
+"        PyErr_Clear();\n"
+"        mục = PyLong_FromLong(0L);\n"
+"        nếu (mục == NULL)\n"
+"            lỗi đi đến;\n"
+"    }\n"
+"    const_one = PyLong_FromLong(1L);\n"
+"    nếu (const_one == NULL)\n"
+"        lỗi đi đến;\n"
+"\n"
+"    tăng_item = PyNumber_Add(item, const_one);\n"
+"    if (incremented_item == NULL)\n"
+"        lỗi đi đến;\n"
+"\n"
+"    if (PyObject_SetItem(dict, key, tăng_item) < 0)\n"
+"        lỗi đi đến;\n"
+"    rv = 0; /*Thành công*/\n"
+"    /* Tiếp tục với mã dọn dẹp */\n"
+"\n"
+" lỗi:\n"
+"    /* Mã dọn dẹp, được chia sẻ theo đường dẫn thành công và thất bại */\n"
+"\n"
+"    /* Sử dụng Py_XDECREF() để bỏ qua các tham chiếu NULL */\n"
+"    Py_XDECREF(vật phẩm);\n"
+"    Py_XDECREF(const_one);\n"
+"    Py_XDECREF(tăng_item);\n"
+"\n"
+"    trở lại rv; /* -1 là lỗi, 0 là thành công */\n"
+"}"
+
+#: ../../c-api/intro.rst:961
+#, fuzzy
+msgid ""
+"This example represents an endorsed use of the ``goto`` statement  in C! It "
+"illustrates the use of :c:func:`PyErr_ExceptionMatches` and "
+":c:func:`PyErr_Clear` to handle specific exceptions, and the use of "
+":c:func:`Py_XDECREF` to dispose of owned references that may be ``NULL`` "
+"(note the ``'X'`` in the name; :c:func:`Py_DECREF` would crash when "
+"confronted with a ``NULL`` reference).  It is important that the variables "
+"used to hold owned references are initialized to ``NULL`` for this to work; "
+"likewise, the proposed return value is initialized to ``-1`` (failure) and "
+"only set to success after the final call made is successful."
+msgstr ""
+"Ví dụ này thể hiện việc sử dụng câu lệnh ``goto`` được xác nhận trong C! Nó "
+"minh họa việc sử dụng :c:func:`PyErr_ExceptionMatches` và "
+":c:func:`PyErr_Clear` để xử lý các trường hợp ngoại lệ cụ thể và việc sử "
+"dụng :c:func:`Py_XDECREF` để loại bỏ các tham chiếu sở hữu có thể là "
+"``NULL`` (lưu ý ``'X'`` trong tên; :c:func:`Py_DECREF` sẽ gặp sự cố khi gặp "
+"một tham chiếu ``NULL``).  Điều quan trọng là các biến được sử dụng để chứa "
+"các tham chiếu thuộc sở hữu phải được khởi tạo thành ``NULL`` để nó hoạt "
+"động; tương tự như vậy, giá trị trả về được đề xuất được khởi tạo thành "
+"``-1`` (lỗi) và chỉ được đặt thành thành công sau khi lệnh gọi cuối cùng "
+"được thực hiện thành công."
+
+#: ../../c-api/intro.rst:975
+#, fuzzy
+msgid "Embedding Python"
+msgstr "Nhúng Python"
+
+#: ../../c-api/intro.rst:977
+#, fuzzy
+msgid ""
+"The one important task that only embedders (as opposed to extension writers)"
+" of the Python interpreter have to worry about is the initialization, and "
+"possibly the finalization, of the Python interpreter.  Most functionality of"
+" the interpreter can only be used after the interpreter has been "
+"initialized."
+msgstr ""
+"Một nhiệm vụ quan trọng mà chỉ những người nhúng (trái ngược với những người"
+" viết phần mở rộng) của trình thông dịch Python mới phải lo lắng là việc "
+"khởi tạo và có thể là sự hoàn thiện của trình thông dịch Python.  Hầu hết "
+"các chức năng của trình thông dịch chỉ có thể được sử dụng sau khi trình "
+"thông dịch đã được khởi tạo."
+
+#: ../../c-api/intro.rst:990
+#, fuzzy
+msgid ""
+"The basic initialization function is :c:func:`Py_Initialize`. This "
+"initializes the table of loaded modules, and creates the fundamental modules"
+" :mod:`builtins`, :mod:`__main__`, and :mod:`sys`.  It also initializes the "
+"module search path (``sys.path``)."
+msgstr ""
+"Hàm khởi tạo cơ bản là :c:func:`Py_Initialize`. Thao tác này sẽ khởi tạo "
+"bảng các mô-đun đã tải và tạo các mô-đun cơ bản :mod:`builtins`, "
+":mod:`__main__` và :mod:`sys`.  Nó cũng khởi tạo đường dẫn tìm kiếm mô-đun "
+"(``sys.path``)."
+
+#: ../../c-api/intro.rst:995
+#, fuzzy
+msgid ""
+":c:func:`Py_Initialize` does not set the \"script argument list\"  "
+"(``sys.argv``). If this variable is needed by Python code that will be "
+"executed later, setting :c:member:`PyConfig.argv` and "
+":c:member:`PyConfig.parse_argv` must be set: see :ref:`Python Initialization"
+" Configuration <init-config>`."
+msgstr ""
+":c:func:`Py_Initialize` không đặt \"danh sách đối số tập lệnh\" "
+"(``sys.argv``). Nếu mã Python cần biến này để thực thi sau này, thì phải đặt"
+" cài đặt :c:member:`PyConfig.argv` và :c:member:`PyConfig.parse_argv`: xem "
+":ref:`Python Initialization Configuration <init-config>`."
+
+#: ../../c-api/intro.rst:1000
+#, python-brace-format, fuzzy
+msgid ""
+"On most systems (in particular, on Unix and Windows, although the details "
+"are slightly different), :c:func:`Py_Initialize` calculates the module "
+"search path based upon its best guess for the location of the standard "
+"Python interpreter executable, assuming that the Python library is found in "
+"a fixed location relative to the Python interpreter executable.  In "
+"particular, it looks for a directory named :file:`lib/python{X.Y}` relative "
+"to the parent directory where the executable named :file:`python` is found "
+"on the shell command search path (the environment variable :envvar:`PATH`)."
+msgstr ""
+"Trên hầu hết các hệ thống (đặc biệt là trên Unix và Windows, mặc dù các chi "
+"tiết hơi khác nhau), :c:func:`Py_Initialize` tính toán đường dẫn tìm kiếm "
+"mô-đun dựa trên dự đoán tốt nhất về vị trí của trình thông dịch Python tiêu "
+"chuẩn có thể thực thi được, giả sử rằng thư viện Python được tìm thấy ở một "
+"vị trí cố định so với tệp thực thi của trình thông dịch Python.  Cụ thể, nó "
+"tìm kiếm thư mục có tên :file:`lib/python{X.Y}` liên quan đến thư mục mẹ nơi"
+" tìm thấy tệp thực thi có tên :file:`python` trên đường dẫn tìm kiếm lệnh "
+"shell (biến môi trường :envvar:`PATH`)."
+
+#: ../../c-api/intro.rst:1009
+#, python-brace-format, fuzzy
+msgid ""
+"For instance, if the Python executable is found in "
+":file:`/usr/local/bin/python`, it will assume that the libraries are in "
+":file:`/usr/local/lib/python{X.Y}`.  (In fact, this particular path is also "
+"the \"fallback\" location, used when no executable file named :file:`python`"
+" is found along :envvar:`PATH`.)  The user can override this behavior by "
+"setting the environment variable :envvar:`PYTHONHOME`, or insert additional "
+"directories in front of the standard path by setting :envvar:`PYTHONPATH`."
+msgstr ""
+"Ví dụ: nếu tìm thấy tệp thực thi Python trong :file:`/usr/local/bin/python`,"
+" nó sẽ cho rằng các thư viện nằm trong :file:`/usr/local/lib/python{X.Y}`.  "
+"(Trên thực tế, đường dẫn cụ thể này cũng là vị trí \"dự phòng\", được sử "
+"dụng khi không tìm thấy tệp thực thi có tên :file:`python` dọc theo "
+":envvar:`PATH`.) Người dùng có thể ghi đè hành vi này bằng cách đặt biến môi"
+" trường :envvar:`PYTHONHOME` hoặc chèn các thư mục bổ sung trước đường dẫn "
+"tiêu chuẩn bằng cách đặt :envvar:`PYTHONPATH`."
+
+#: ../../c-api/intro.rst:1023
+#, fuzzy
+msgid ""
+"The embedding application can steer the search by setting "
+":c:member:`PyConfig.program_name` *before* calling "
+":c:func:`Py_InitializeFromConfig`. Note that :envvar:`PYTHONHOME` still "
+"overrides this and :envvar:`PYTHONPATH` is still inserted in front of the "
+"standard path.  An application that requires total control has to provide "
+"its own implementation of :c:func:`Py_GetPath`, :c:func:`Py_GetPrefix`, "
+":c:func:`Py_GetExecPrefix`, and :c:func:`Py_GetProgramFullPath` (all defined"
+" in :file:`Modules/getpath.c`)."
+msgstr ""
+"Ứng dụng nhúng có thể điều khiển việc tìm kiếm bằng cách cài đặt "
+":c:member:`PyConfig.program_name` *before* gọi "
+":c:func:`Py_InitializeFromConfig`. Lưu ý rằng :envvar:`PYTHONHOME` vẫn ghi "
+"đè lên điều này và :envvar:`PYTHONPATH` vẫn được chèn ở phía trước đường dẫn"
+" chuẩn.  Một ứng dụng yêu cầu toàn quyền kiểm soát phải cung cấp cách triển "
+"khai :c:func:`Py_GetPath`, :c:func:`Py_GetPrefix`, "
+":c:func:`Py_GetExecPrefix` và :c:func:`Py_GetProgramFullPath` của riêng nó "
+"(tất cả đều được xác định trong :file:`Modules/getpath.c`)."
+
+#: ../../c-api/intro.rst:1034
+#, fuzzy
+msgid ""
+"Sometimes, it is desirable to \"uninitialize\" Python.  For instance,  the "
+"application may want to start over (make another call to "
+":c:func:`Py_Initialize`) or the application is simply done with its  use of "
+"Python and wants to free memory allocated by Python.  This can be "
+"accomplished by calling :c:func:`Py_FinalizeEx`.  The function "
+":c:func:`Py_IsInitialized` returns true if Python is currently in the "
+"initialized state.  More information about these functions is given in a "
+"later chapter. Notice that :c:func:`Py_FinalizeEx` does *not* free all "
+"memory allocated by the Python interpreter, e.g. memory allocated by "
+"extension modules currently cannot be released."
+msgstr ""
+"Đôi khi, bạn nên \"không khởi tạo\" Python.  Ví dụ: ứng dụng có thể muốn bắt"
+" đầu lại (thực hiện một lệnh gọi khác tới :c:func:`Py_Initialize`) hoặc ứng "
+"dụng chỉ được thực hiện bằng cách sử dụng Python và muốn giải phóng bộ nhớ "
+"do Python phân bổ.  Điều này có thể được thực hiện bằng cách gọi "
+":c:func:`Py_FinalizeEx`.  Hàm :c:func:`Py_IsInitialized` trả về true nếu "
+"Python hiện ở trạng thái khởi tạo.  Thông tin thêm về các chức năng này sẽ "
+"được đưa ra trong chương sau. Lưu ý rằng :c:func:`Py_FinalizeEx` thực hiện "
+"*not* giải phóng tất cả bộ nhớ do trình thông dịch Python cấp phát, ví dụ: "
+"bộ nhớ được phân bổ bởi các mô-đun mở rộng hiện không thể giải phóng được."
+
+#: ../../c-api/intro.rst:1048
+#, fuzzy
+msgid "Debugging Builds"
+msgstr "Gỡ lỗi bản dựng"
+
+#: ../../c-api/intro.rst:1050
+#, fuzzy
+msgid ""
+"Python can be built with several macros to enable extra checks of the "
+"interpreter and extension modules.  These checks tend to add a large amount "
+"of overhead to the runtime so they are not enabled by default."
+msgstr ""
+"Python có thể được xây dựng bằng một số macro để cho phép kiểm tra thêm "
+"trình thông dịch và mô-đun mở rộng.  Những hoạt động kiểm tra này có xu "
+"hướng bổ sung một lượng lớn chi phí vào thời gian chạy nên chúng không được "
+"bật theo mặc định."
+
+#: ../../c-api/intro.rst:1054
+#, fuzzy
+msgid ""
+"A full list of the various types of debugging builds is in the file "
+":file:`Misc/SpecialBuilds.txt` in the Python source distribution. Builds are"
+" available that support tracing of reference counts, debugging the memory "
+"allocator, or low-level profiling of the main interpreter loop.  Only the "
+"most frequently used builds will be described in the remainder of this "
+"section."
+msgstr ""
+"Danh sách đầy đủ các loại bản dựng gỡ lỗi khác nhau có trong tệp "
+":file:`Misc/SpecialBuilds.txt` trong bản phân phối nguồn Python. Các bản "
+"dựng sẵn có hỗ trợ theo dõi số lượng tham chiếu, gỡ lỗi bộ cấp phát bộ nhớ "
+"hoặc lập hồ sơ cấp thấp của vòng lặp trình thông dịch chính.  Chỉ những bản "
+"dựng được sử dụng thường xuyên nhất mới được mô tả trong phần còn lại của "
+"phần này."
+
+#: ../../c-api/intro.rst:1062
+#, fuzzy
+msgid ""
+"Compiling the interpreter with the :c:macro:`!Py_DEBUG` macro defined "
+"produces what is generally meant by :ref:`a debug build of Python <debug-"
+"build>`. :c:macro:`!Py_DEBUG` is enabled in the Unix build by adding "
+":option:`--with-pydebug` to the :file:`./configure` command. It is also "
+"implied by the presence of the not-Python-specific :c:macro:`!_DEBUG` macro."
+"  When :c:macro:`!Py_DEBUG` is enabled in the Unix build, compiler "
+"optimization is disabled."
+msgstr ""
+"Biên dịch trình thông dịch với macro :c:macro:`!Py_DEBUG` được xác định sẽ "
+"tạo ra ý nghĩa chung của :ref:`a debug build of Python <debug-build>`. "
+":c:macro:`!Py_DEBUG` được kích hoạt trong bản dựng Unix bằng cách thêm "
+":option:`--with-pydebug` vào lệnh :file:`./configure`. Nó cũng được ngụ ý "
+"bởi sự hiện diện của macro :c:macro:`!_DEBUG` không dành riêng cho Python.  "
+"Khi :c:macro:`!Py_DEBUG` được bật trong bản dựng Unix, tối ưu hóa trình biên"
+" dịch sẽ bị tắt."
+
+#: ../../c-api/intro.rst:1070
+#, fuzzy
+msgid ""
+"In addition to the reference count debugging described below, extra checks "
+"are performed, see :ref:`Python Debug Build <debug-build>`."
+msgstr ""
+"Ngoài việc gỡ lỗi số tham chiếu được mô tả bên dưới, các kiểm tra bổ sung "
+"cũng được thực hiện, xem :ref:`Python Debug Build <debug-build>`."
+
+#: ../../c-api/intro.rst:1073
+#, fuzzy
+msgid ""
+"Defining :c:macro:`Py_TRACE_REFS` enables reference tracing (see the "
+":option:`configure --with-trace-refs option <--with-trace-refs>`). When "
+"defined, a circular doubly linked list of active objects is maintained by "
+"adding two extra fields to every :c:type:`PyObject`.  Total allocations are "
+"tracked as well.  Upon exit, all existing references are printed.  (In "
+"interactive mode this happens after every statement run by the interpreter.)"
+msgstr ""
+"Việc xác định :c:macro:`Py_TRACE_REFS` cho phép theo dõi tham chiếu (xem "
+":option:`configure --with-trace-refs option <--with-trace-refs>`). Khi được "
+"xác định, một danh sách các đối tượng hoạt động được liên kết đôi theo vòng "
+"tròn sẽ được duy trì bằng cách thêm hai trường bổ sung vào mỗi "
+":c:type:`PyObject`.  Tổng phân bổ cũng được theo dõi.  Khi thoát, tất cả các"
+" tài liệu tham khảo hiện có sẽ được in.  (Trong chế độ tương tác, điều này "
+"xảy ra sau mỗi câu lệnh do trình thông dịch chạy.)"
+
+#: ../../c-api/intro.rst:1080
+#, fuzzy
+msgid ""
+"Please refer to :file:`Misc/SpecialBuilds.txt` in the Python source "
+"distribution for more detailed information."
+msgstr ""
+"Vui lòng tham khảo :file:`Misc/SpecialBuilds.txt` trong bản phân phối nguồn "
+"Python để biết thêm thông tin chi tiết."
+
+#: ../../c-api/intro.rst:1087
+#, fuzzy
+msgid "Recommended third party tools"
+msgstr "Công cụ của bên thứ ba được đề xuất"
+
+#: ../../c-api/intro.rst:1089
+#, fuzzy
+msgid ""
+"The following third party tools offer both simpler and more sophisticated "
+"approaches to creating C, C++ and Rust extensions for Python:"
+msgstr ""
+"Các công cụ của bên thứ ba sau đây cung cấp cả cách tiếp cận đơn giản hơn và"
+" phức tạp hơn để tạo tiện ích mở rộng C, C++ và Rust cho Python:"
+
+#: ../../c-api/intro.rst:1092
+#, fuzzy
+msgid "`Cython <https://cython.org/>`_"
+msgstr "`Cython <https://cython.org/>`_"
+
+#: ../../c-api/intro.rst:1093
+#, fuzzy
+msgid "`cffi <https://cffi.readthedocs.io>`_"
+msgstr "`cffi <https://cffi.readthedocs.io>`_"
+
+#: ../../c-api/intro.rst:1094
+#, fuzzy
+msgid "`HPy <https://hpyproject.org/>`_"
+msgstr "`HPy <https://hpyproject.org/>`_"
+
+#: ../../c-api/intro.rst:1095
+#, fuzzy
+msgid "`nanobind <https://github.com/wjakob/nanobind>`_ (C++)"
+msgstr "`nanobind <https://github.com/wjakob/nanobind>`_ (C++)"
+
+#: ../../c-api/intro.rst:1096
+#, fuzzy
+msgid "`Numba <https://numba.pydata.org/>`_"
+msgstr "`Numba <https://numba.pydata.org/>`_"
+
+#: ../../c-api/intro.rst:1097
+#, fuzzy
+msgid "`pybind11 <https://pybind11.readthedocs.io/>`_ (C++)"
+msgstr "`pybind11 <https://pybind11.readthedocs.io/>`_ (C++)"
+
+#: ../../c-api/intro.rst:1098
+#, fuzzy
+msgid "`PyO3 <https://pyo3.rs/>`_ (Rust)"
+msgstr "`PyO3 <https://pyo3.rs/>`_ (Rỉ sét)"
+
+#: ../../c-api/intro.rst:1099
+#, fuzzy
+msgid "`SWIG <https://www.swig.org>`_"
+msgstr "`SWIG <https://www.swig.org>`_"
+
+#: ../../c-api/intro.rst:1101
+#, fuzzy
+msgid ""
+"Using tools such as these can help avoid writing code that is tightly bound "
+"to a particular version of CPython, avoid reference counting errors, and "
+"focus more on your own code than on using the CPython API. In general, new "
+"versions of Python can be supported by updating the tool, and your code will"
+" often use newer and more efficient APIs automatically. Some tools also "
+"support compiling for other implementations of Python from a single set of "
+"sources."
+msgstr ""
+"Việc sử dụng các công cụ như thế này có thể giúp tránh viết mã bị ràng buộc "
+"chặt chẽ với một phiên bản CPython cụ thể, tránh lỗi đếm tham chiếu và tập "
+"trung nhiều hơn vào mã của riêng bạn hơn là sử dụng CPython API. Nhìn chung,"
+" các phiên bản Python mới có thể được hỗ trợ bằng cách cập nhật công cụ và "
+"mã của bạn thường sẽ tự động sử dụng các API mới hơn và hiệu quả hơn. Một số"
+" công cụ cũng hỗ trợ biên dịch cho các triển khai Python khác từ một bộ "
+"nguồn duy nhất."
+
+#: ../../c-api/intro.rst:1108
+#, fuzzy
+msgid ""
+"These projects are not supported by the same people who maintain Python, and"
+" issues need to be raised with the projects directly. Remember to check that"
+" the project is still maintained and supported, as the list above may become"
+" outdated."
+msgstr ""
+"Các dự án này không được hỗ trợ bởi cùng những người duy trì Python và các "
+"vấn đề cần được nêu trực tiếp với các dự án. Hãy nhớ kiểm tra xem dự án có "
+"còn được duy trì và hỗ trợ hay không vì danh sách trên có thể trở nên lỗi "
+"thời."
+
+#: ../../c-api/intro.rst:1115
+#, fuzzy
+msgid ""
+"`Python Packaging User Guide: Binary Extensions "
+"<https://packaging.python.org/guides/packaging-binary-extensions/>`_"
+msgstr ""
+"`Python Packaging User Guide: Binary Extensions "
+"<https://packaging.python.org/guides/packaging-binary-extensions/>`_"
+
+#: ../../c-api/intro.rst:1116
+#, fuzzy
+msgid ""
+"The Python Packaging User Guide not only covers several available tools that"
+" simplify the creation of binary extensions, but also discusses the various "
+"reasons why creating an extension module may be desirable in the first "
+"place."
+msgstr ""
+"Hướng dẫn sử dụng Bao bì Python không chỉ đề cập đến một số công cụ có sẵn "
+"giúp đơn giản hóa việc tạo phần mở rộng nhị phân mà còn thảo luận về các lý "
+"do khác nhau khiến việc tạo mô-đun mở rộng có thể được mong muốn ngay từ "
+"đầu."
+
+#: ../../c-api/intro.rst:533
+#, fuzzy
+msgid "object"
+msgstr "sự vật"
+
+#: ../../c-api/intro.rst:533
+#, fuzzy
+msgid "type"
+msgstr "kiểu"
+
+#: ../../c-api/intro.rst:572
+#, fuzzy
+msgid "Py_INCREF (C function)"
+msgstr "Py_INCREF (hàm C)"
+
+#: ../../c-api/intro.rst:572
+#, fuzzy
+msgid "Py_DECREF (C function)"
+msgstr "Py_DECREF (hàm C)"
+
+#: ../../c-api/intro.rst:648
+#, fuzzy
+msgid "PyList_SetItem (C function)"
+msgstr "PyList_SetItem (hàm C)"
+
+#: ../../c-api/intro.rst:648
+#, fuzzy
+msgid "PyTuple_SetItem (C function)"
+msgstr "PyTuple_SetItem (hàm C)"
+
+#: ../../c-api/intro.rst:719
+#, fuzzy
+msgid "set_all()"
+msgstr "set_all()"
+
+#: ../../c-api/intro.rst:738
+#, fuzzy
+msgid "PyList_GetItem (C function)"
+msgstr "PyList_GetItem (hàm C)"
+
+#: ../../c-api/intro.rst:738
+#, fuzzy
+msgid "PySequence_GetItem (C function)"
+msgstr "PySequence_GetItem (hàm C)"
+
+#: ../../c-api/intro.rst:768
+#, fuzzy
+msgid "sum_list()"
+msgstr "sum_list()"
+
+#: ../../c-api/intro.rst:800 ../../c-api/intro.rst:892
+#, fuzzy
+msgid "sum_sequence()"
+msgstr "sum_sequence()"
+
+#: ../../c-api/intro.rst:835
+#, fuzzy
+msgid "PyErr_Occurred (C function)"
+msgstr "PyErr_Occurred (hàm C)"
+
+#: ../../c-api/intro.rst:848
+#, fuzzy
+msgid "PyErr_SetString (C function)"
+msgstr "PyErr_SetString (hàm C)"
+
+#: ../../c-api/intro.rst:848 ../../c-api/intro.rst:956
+#, fuzzy
+msgid "PyErr_Clear (C function)"
+msgstr "PyErr_Clear (chức năng C)"
+
+#: ../../c-api/intro.rst:872
+#, fuzzy
+msgid "exc_info (in module sys)"
+msgstr "exc_info (trong mô-đun sys)"
+
+#: ../../c-api/intro.rst:907 ../../c-api/intro.rst:954
+#, fuzzy
+msgid "incr_item()"
+msgstr "incr_item()"
+
+#: ../../c-api/intro.rst:956
+#, fuzzy
+msgid "PyErr_ExceptionMatches (C function)"
+msgstr "PyErr_ExceptionMatches (hàm C)"
+
+#: ../../c-api/intro.rst:956
+#, fuzzy
+msgid "Py_XDECREF (C function)"
+msgstr "Py_XDECREF (hàm C)"
+
+#: ../../c-api/intro.rst:982
+#, fuzzy
+msgid "Py_Initialize (C function)"
+msgstr "Py_Initialize (hàm C)"
+
+#: ../../c-api/intro.rst:982
+#, fuzzy
+msgid "module"
+msgstr "mô-đun"
+
+#: ../../c-api/intro.rst:982
+#, fuzzy
+msgid "builtins"
+msgstr "nội dung"
+
+#: ../../c-api/intro.rst:982
+#, fuzzy
+msgid "__main__"
+msgstr "__chủ yếu__"
+
+#: ../../c-api/intro.rst:982
+#, fuzzy
+msgid "sys"
+msgstr "hệ thống"
+
+#: ../../c-api/intro.rst:982
+#, fuzzy
+msgid "search"
+msgstr "tìm kiếm"
+
+#: ../../c-api/intro.rst:982
+#, fuzzy
+msgid "path"
+msgstr "con đường"
+
+#: ../../c-api/intro.rst:982
+#, fuzzy
+msgid "path (in module sys)"
+msgstr "đường dẫn (trong mô-đun sys)"
+
+#: ../../c-api/intro.rst:1017
+#, fuzzy
+msgid "Py_GetPath (C function)"
+msgstr "Py_GetPath (hàm C)"
+
+#: ../../c-api/intro.rst:1017
+#, fuzzy
+msgid "Py_GetPrefix (C function)"
+msgstr "Py_GetPrefix (hàm C)"
+
+#: ../../c-api/intro.rst:1017
+#, fuzzy
+msgid "Py_GetExecPrefix (C function)"
+msgstr "Py_GetExecPrefix (hàm C)"
+
+#: ../../c-api/intro.rst:1017
+#, fuzzy
+msgid "Py_GetProgramFullPath (C function)"
+msgstr "Py_GetProgramFullPath (hàm C)"
+
+#: ../../c-api/intro.rst:1032
+#, fuzzy
+msgid "Py_IsInitialized (C function)"
+msgstr "Py_IsInitialized (hàm C)"

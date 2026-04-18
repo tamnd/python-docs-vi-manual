@@ -1,0 +1,775 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/zipapp.rst:2
+#, fuzzy
+msgid ":mod:`!zipapp` --- Manage executable Python zip archives"
+msgstr ""
+":mod:`!zipapp` --- Quản lý kho lưu trữ zip Python có thể thực thi được"
+
+#: ../../library/zipapp.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/zipapp.py`"
+msgstr "**Source code:** :source:`Lib/zipapp.py`"
+
+#: ../../library/zipapp.rst:16
+#, fuzzy
+msgid ""
+"This module provides tools to manage the creation of zip files containing "
+"Python code, which can be  :ref:`executed directly by the Python interpreter"
+" <using-on-interface-options>`.  The module provides both a :ref:`zipapp-"
+"command-line-interface` and a :ref:`zipapp-python-api`."
+msgstr ""
+"Mô-đun này cung cấp các công cụ để quản lý việc tạo tệp zip chứa mã Python, "
+"có thể là :ref:`executed directly by the Python interpreter <using-on-"
+"interface-options>`.  Mô-đun này cung cấp cả :ref:`zipapp-command-line-"
+"interface` và :ref:`zipapp-python-api`."
+
+#: ../../library/zipapp.rst:23
+#, fuzzy
+msgid "Basic Example"
+msgstr "Ví dụ cơ bản"
+
+#: ../../library/zipapp.rst:25
+#, fuzzy
+msgid ""
+"The following example shows how the :ref:`zipapp-command-line-interface` can"
+" be used to create an executable archive from a directory containing Python "
+"code.  When run, the archive will execute the ``main`` function from the "
+"module ``myapp`` in the archive."
+msgstr ""
+"Ví dụ sau đây cho thấy cách :ref:`zipapp-command-line-interface` có thể được"
+" sử dụng để tạo một kho lưu trữ thực thi từ một thư mục chứa mã Python.  Khi"
+" chạy, kho lưu trữ sẽ thực thi chức năng ``main`` từ mô-đun ``myapp`` trong "
+"kho lưu trữ."
+
+#: ../../library/zipapp.rst:30
+#, fuzzy
+msgid ""
+"$ python -m zipapp myapp -m \"myapp:main\"\n"
+"$ python myapp.pyz\n"
+"<output from myapp>"
+msgstr ""
+"$ python -m zipapp myapp -m \"myapp:main\"\n"
+"$ trăn myapp.pyz\n"
+"<đầu ra từ ứng dụng của tôi>"
+
+#: ../../library/zipapp.rst:40
+#, fuzzy
+msgid "Command-Line Interface"
+msgstr "Giao diện dòng lệnh"
+
+#: ../../library/zipapp.rst:42
+#, fuzzy
+msgid ""
+"When called as a program from the command line, the following form is used:"
+msgstr ""
+"Khi được gọi là một chương trình từ dòng lệnh, biểu mẫu sau được sử dụng:"
+
+#: ../../library/zipapp.rst:44
+#, fuzzy
+msgid "$ python -m zipapp source [options]"
+msgstr "$ python -m nguồn zipapp [tùy chọn]"
+
+#: ../../library/zipapp.rst:48
+#, fuzzy
+msgid ""
+"If *source* is a directory, this will create an archive from the contents of"
+" *source*.  If *source* is a file, it should be an archive, and it will be "
+"copied to the target archive (or the contents of its shebang line will be "
+"displayed if the --info option is specified)."
+msgstr ""
+"Nếu *source* là một thư mục, thao tác này sẽ tạo một kho lưu trữ từ nội dung"
+" của *source*.  Nếu *source* là một tệp thì nó phải là một tệp lưu trữ và nó"
+" sẽ được sao chép vào kho lưu trữ đích (hoặc nội dung của dòng shebang của "
+"nó sẽ được hiển thị nếu tùy chọn --info được chỉ định)."
+
+#: ../../library/zipapp.rst:53
+#, fuzzy
+msgid "The following options are understood:"
+msgstr "Các tùy chọn sau đây được hiểu:"
+
+#: ../../library/zipapp.rst:59
+#, fuzzy
+msgid ""
+"Write the output to a file named *output*.  If this option is not specified,"
+" the output filename will be the same as the input *source*, with the "
+"extension ``.pyz`` added.  If an explicit filename is given, it is used as "
+"is (so a ``.pyz`` extension should be included if required)."
+msgstr ""
+"Ghi đầu ra vào một tệp có tên *output*.  Nếu tùy chọn này không được chỉ "
+"định, tên tệp đầu ra sẽ giống với *source* đầu vào, với phần mở rộng "
+"``.pyz`` được thêm vào.  Nếu tên tệp rõ ràng được cung cấp, nó sẽ được sử "
+"dụng nguyên trạng (vì vậy nên bao gồm phần mở rộng ``.pyz`` nếu được yêu "
+"cầu)."
+
+#: ../../library/zipapp.rst:64
+#, fuzzy
+msgid ""
+"An output filename must be specified if the *source* is an archive (and in "
+"that case, *output* must not be the same as *source*)."
+msgstr ""
+"Tên tệp đầu ra phải được chỉ định nếu *source* là một kho lưu trữ (và trong "
+"trường hợp đó, *output* không được giống với *source*)."
+
+#: ../../library/zipapp.rst:69
+#, fuzzy
+msgid ""
+"Add a ``#!`` line to the archive specifying *interpreter* as the command to "
+"run.  Also, on POSIX, make the archive executable.  The default is to write "
+"no ``#!`` line, and not make the file executable."
+msgstr ""
+"Thêm dòng ``#!`` vào kho lưu trữ chỉ định *interpreter* làm lệnh để chạy.  "
+"Ngoài ra, trên POSIX, hãy làm cho tệp lưu trữ có thể thực thi được.  Mặc "
+"định là không ghi dòng ``#!`` và không làm cho tệp có thể thực thi được."
+
+#: ../../library/zipapp.rst:75
+#, fuzzy
+msgid ""
+"Write a ``__main__.py`` file to the archive that executes *mainfn*.  The "
+"*mainfn* argument should have the form \"pkg.mod:fn\", where \"pkg.mod\" is "
+"a package/module in the archive, and \"fn\" is a callable in the given "
+"module. The ``__main__.py`` file will execute that callable."
+msgstr ""
+"Viết tệp ``__main__.py`` vào kho lưu trữ thực thi *mainfn*.  Đối số *mainfn*"
+" phải có dạng \"pkg.mod:fn\", trong đó \"pkg.mod\" là gói/mô-đun trong kho "
+"lưu trữ và \"fn\" là thành phần có thể gọi được trong mô-đun đã cho. Tệp "
+"``__main__.py`` sẽ thực thi lệnh gọi đó."
+
+#: ../../library/zipapp.rst:80
+#, fuzzy
+msgid ":option:`--main` cannot be specified when copying an archive."
+msgstr "Không thể chỉ định :option:`--main` khi sao chép kho lưu trữ."
+
+#: ../../library/zipapp.rst:84
+#, fuzzy
+msgid ""
+"Compress files with the deflate method, reducing the size of the output "
+"file. By default, files are stored uncompressed in the archive."
+msgstr ""
+"Nén file bằng phương pháp giảm phát, giảm kích thước file đầu ra. Theo mặc "
+"định, các tập tin được lưu trữ không nén trong kho lưu trữ."
+
+#: ../../library/zipapp.rst:87
+#, fuzzy
+msgid ":option:`--compress` has no effect when copying an archive."
+msgstr ":option:`--compress` không có tác dụng khi sao chép kho lưu trữ."
+
+#: ../../library/zipapp.rst:93
+#, fuzzy
+msgid ""
+"Display the interpreter embedded in the archive, for diagnostic purposes.  "
+"In this case, any other options are ignored and SOURCE must be an archive, "
+"not a directory."
+msgstr ""
+"Hiển thị trình thông dịch được nhúng trong kho lưu trữ nhằm mục đích chẩn "
+"đoán.  Trong trường hợp này, mọi tùy chọn khác đều bị bỏ qua và SOURCE phải "
+"là một kho lưu trữ chứ không phải một thư mục."
+
+#: ../../library/zipapp.rst:99
+#, fuzzy
+msgid "Print a short usage message and exit."
+msgstr "In một thông báo sử dụng ngắn và thoát."
+
+#: ../../library/zipapp.rst:105
+#, fuzzy
+msgid "Python API"
+msgstr "Python API"
+
+#: ../../library/zipapp.rst:107
+#, fuzzy
+msgid "The module defines two convenience functions:"
+msgstr "Mô-đun xác định hai chức năng tiện lợi:"
+
+#: ../../library/zipapp.rst:112
+#, fuzzy
+msgid ""
+"Create an application archive from *source*.  The source can be any of the "
+"following:"
+msgstr ""
+"Tạo kho lưu trữ ứng dụng từ *source*.  Nguồn có thể là một trong những nguồn"
+" sau:"
+
+#: ../../library/zipapp.rst:115
+#, fuzzy
+msgid ""
+"The name of a directory, or a :term:`path-like object` referring to a "
+"directory, in which case a new application archive will be created from the "
+"content of that directory."
+msgstr ""
+"Tên của một thư mục hoặc :term:`path-like object` đề cập đến một thư mục, "
+"trong trường hợp đó một kho lưu trữ ứng dụng mới sẽ được tạo từ nội dung của"
+" thư mục đó."
+
+#: ../../library/zipapp.rst:118
+#, fuzzy
+msgid ""
+"The name of an existing application archive file, or a :term:`path-like "
+"object` referring to such a file, in which case the file is copied to the "
+"target (modifying it to reflect the value given for the *interpreter* "
+"argument).  The file name should include the ``.pyz`` extension, if "
+"required."
+msgstr ""
+"Tên của tệp lưu trữ ứng dụng hiện có hoặc :term:`path-like object` đề cập "
+"đến một tệp như vậy, trong trường hợp đó tệp được sao chép vào đích (sửa đổi"
+" nó để phản ánh giá trị được cung cấp cho đối số *interpreter*).  Tên tệp "
+"phải bao gồm phần mở rộng ``.pyz``, nếu được yêu cầu."
+
+#: ../../library/zipapp.rst:122
+#, fuzzy
+msgid ""
+"A file object open for reading in bytes mode.  The content of the file "
+"should be an application archive, and the file object is assumed to be "
+"positioned at the start of the archive."
+msgstr ""
+"Một đối tượng tệp mở để đọc ở chế độ byte.  Nội dung của tệp phải là kho lưu"
+" trữ ứng dụng và đối tượng tệp được coi là được đặt ở đầu kho lưu trữ."
+
+#: ../../library/zipapp.rst:126
+#, fuzzy
+msgid ""
+"The *target* argument determines where the resulting archive will be "
+"written:"
+msgstr "Đối số *target* xác định nơi lưu trữ kết quả sẽ được ghi:"
+
+#: ../../library/zipapp.rst:129
+#, fuzzy
+msgid ""
+"If it is the name of a file, or a :term:`path-like object`, the archive will"
+" be written to that file."
+msgstr ""
+"Nếu đó là tên của một tệp hoặc :term:`path-like object`, kho lưu trữ sẽ được"
+" ghi vào tệp đó."
+
+#: ../../library/zipapp.rst:131
+#, fuzzy
+msgid ""
+"If it is an open file object, the archive will be written to that file "
+"object, which must be open for writing in bytes mode."
+msgstr ""
+"Nếu đó là một đối tượng tệp đang mở, kho lưu trữ sẽ được ghi vào đối tượng "
+"tệp đó, đối tượng này phải được mở để ghi ở chế độ byte."
+
+#: ../../library/zipapp.rst:133
+#, fuzzy
+msgid ""
+"If the target is omitted (or ``None``), the source must be a directory and "
+"the target will be a file with the same name as the source, with a ``.pyz`` "
+"extension added."
+msgstr ""
+"Nếu mục tiêu bị bỏ qua (hoặc ``None``), nguồn phải là một thư mục và mục "
+"tiêu sẽ là một tệp có cùng tên với nguồn, có thêm phần mở rộng ``.pyz``."
+
+#: ../../library/zipapp.rst:137
+#, fuzzy
+msgid ""
+"The *interpreter* argument specifies the name of the Python interpreter with"
+" which the archive will be executed.  It is written as a \"shebang\" line at"
+" the start of the archive.  On POSIX, this will be interpreted by the OS, "
+"and on Windows it will be handled by the Python launcher.  Omitting the "
+"*interpreter* results in no shebang line being written.  If an interpreter "
+"is specified, and the target is a filename, the executable bit of the target"
+" file will be set."
+msgstr ""
+"Đối số *interpreter* chỉ định tên của trình thông dịch Python mà kho lưu trữ"
+" sẽ được thực thi.  Nó được viết dưới dạng dòng \"shebang\" ở đầu kho lưu "
+"trữ.  Trên POSIX, điều này sẽ được HĐH giải thích và trên Windows, nó sẽ "
+"được trình khởi chạy Python xử lý.  Việc bỏ qua *interpreter* sẽ không có "
+"dòng shebang nào được viết.  Nếu một trình thông dịch được chỉ định và mục "
+"tiêu là tên tệp thì bit thực thi của tệp đích sẽ được đặt."
+
+#: ../../library/zipapp.rst:145
+#, fuzzy
+msgid ""
+"The *main* argument specifies the name of a callable which will be used as "
+"the main program for the archive.  It can only be specified if the source is"
+" a directory, and the source does not already contain a ``__main__.py`` "
+"file.  The *main* argument should take the form \"pkg.module:callable\" and "
+"the archive will be run by importing \"pkg.module\" and executing the given "
+"callable with no arguments.  It is an error to omit *main* if the source is "
+"a directory and does not contain a ``__main__.py`` file, as otherwise the "
+"resulting archive would not be executable."
+msgstr ""
+"Đối số *main* chỉ định tên của một chương trình có thể gọi được sẽ được sử "
+"dụng làm chương trình chính cho kho lưu trữ.  Nó chỉ có thể được chỉ định "
+"nếu nguồn là một thư mục và nguồn chưa chứa tệp ``__main__.py``.  Đối số "
+"*main* phải có dạng \"pkg.module:callable\" và kho lưu trữ sẽ được chạy bằng"
+" cách nhập \"pkg.module\" và thực thi lệnh gọi đã cho mà không có đối số.  "
+"Sẽ là lỗi nếu bỏ qua *main* nếu nguồn là một thư mục và không chứa tệp "
+"``__main__.py``, nếu không thì kho lưu trữ kết quả sẽ không thể thực thi "
+"được."
+
+#: ../../library/zipapp.rst:155
+#, fuzzy
+msgid ""
+"The optional *filter* argument specifies a callback function that is passed "
+"a Path object representing the path to the file being added (relative to the"
+" source directory).  It should return ``True`` if the file is to be added."
+msgstr ""
+"Đối số *filter* tùy chọn chỉ định hàm gọi lại được truyền đối tượng Đường "
+"dẫn biểu thị đường dẫn đến tệp đang được thêm vào (liên quan đến thư mục "
+"nguồn).  Nó sẽ trả về ``True`` nếu tệp được thêm vào."
+
+#: ../../library/zipapp.rst:160
+#, fuzzy
+msgid ""
+"The optional *compressed* argument determines whether files are compressed."
+"  If set to ``True``, files in the archive are compressed with the deflate "
+"method; otherwise, files are stored uncompressed. This argument has no "
+"effect when copying an existing archive."
+msgstr ""
+"Đối số *compressed* tùy chọn xác định xem tệp có được nén hay không.  Nếu "
+"được đặt thành ``True``, các tệp trong kho lưu trữ sẽ được nén bằng phương "
+"pháp giảm phát; nếu không, các tập tin sẽ được lưu trữ không nén. Đối số này"
+" không có hiệu lực khi sao chép một kho lưu trữ hiện có."
+
+#: ../../library/zipapp.rst:165
+#, fuzzy
+msgid ""
+"If a file object is specified for *source* or *target*, it is the caller's "
+"responsibility to close it after calling create_archive."
+msgstr ""
+"Nếu một đối tượng tệp được chỉ định cho *source* hoặc *target*, thì người "
+"gọi có trách nhiệm đóng nó sau khi gọi create_archive."
+
+#: ../../library/zipapp.rst:168
+#, fuzzy
+msgid ""
+"When copying an existing archive, file objects supplied only need ``read`` "
+"and ``readline``, or ``write`` methods.  When creating an archive from a "
+"directory, if the target is a file object it will be passed to the "
+"``zipfile.ZipFile`` class, and must supply the methods needed by that class."
+msgstr ""
+"Khi sao chép một kho lưu trữ hiện có, các đối tượng tệp được cung cấp chỉ "
+"cần các phương thức ``read`` và ``readline`` hoặc ``write``.  Khi tạo một "
+"kho lưu trữ từ một thư mục, nếu mục tiêu là một đối tượng tệp thì nó sẽ được"
+" chuyển đến lớp ``zipfile.ZipFile`` và phải cung cấp các phương thức mà lớp "
+"đó cần."
+
+#: ../../library/zipapp.rst:174
+#, fuzzy
+msgid "Added the *filter* and *compressed* parameters."
+msgstr "Đã thêm thông số *filter* và *compressed*."
+
+#: ../../library/zipapp.rst:179
+#, fuzzy
+msgid ""
+"Return the interpreter specified in the ``#!`` line at the start of the "
+"archive.  If there is no ``#!`` line, return :const:`None`. The *archive* "
+"argument can be a filename or a file-like object open for reading in bytes "
+"mode.  It is assumed to be at the start of the archive."
+msgstr ""
+"Trả về trình thông dịch được chỉ định trong dòng ``#!`` khi bắt đầu kho lưu "
+"trữ.  Nếu không có dòng ``#!`` thì trả về :const:`None`. Đối số *archive* có"
+" thể là tên tệp hoặc đối tượng giống như tệp mở để đọc ở chế độ byte.  Nó "
+"được cho là ở đầu kho lưu trữ."
+
+#: ../../library/zipapp.rst:188
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/zipapp.rst:190
+#, fuzzy
+msgid "Pack up a directory into an archive, and run it."
+msgstr "Đóng gói một thư mục vào kho lưu trữ và chạy nó."
+
+#: ../../library/zipapp.rst:192
+#, fuzzy
+msgid ""
+"$ python -m zipapp myapp\n"
+"$ python myapp.pyz\n"
+"<output from myapp>"
+msgstr ""
+"$ python -m zipapp myapp\n"
+"$ trăn myapp.pyz\n"
+"<đầu ra từ ứng dụng của tôi>"
+
+#: ../../library/zipapp.rst:198
+#, fuzzy
+msgid "The same can be done using the :func:`create_archive` function::"
+msgstr ""
+"Điều tương tự có thể được thực hiện bằng cách sử dụng hàm "
+":func:`create_archive`::"
+
+#: ../../library/zipapp.rst:200
+#, fuzzy
+msgid ""
+">>> import zipapp\n"
+">>> zipapp.create_archive('myapp', 'myapp.pyz')"
+msgstr ""
+">>> nhập zipapp\n"
+">>> zipapp.create_archive('myapp', 'myapp.pyz')"
+
+#: ../../library/zipapp.rst:203
+#, fuzzy
+msgid ""
+"To make the application directly executable on POSIX, specify an interpreter"
+" to use."
+msgstr ""
+"Để làm cho ứng dụng có thể thực thi trực tiếp trên POSIX, hãy chỉ định trình"
+" thông dịch sẽ sử dụng."
+
+#: ../../library/zipapp.rst:206
+#, fuzzy
+msgid ""
+"$ python -m zipapp myapp -p \"/usr/bin/env python\"\n"
+"$ ./myapp.pyz\n"
+"<output from myapp>"
+msgstr ""
+"$ python -m zipapp myapp -p \"/usr/bin/env python\"\n"
+"$ ./myapp.pyz\n"
+"<đầu ra từ ứng dụng của tôi>"
+
+#: ../../library/zipapp.rst:212
+#, fuzzy
+msgid ""
+"To replace the shebang line on an existing archive, create a modified "
+"archive using the :func:`create_archive` function::"
+msgstr ""
+"Để thay thế dòng Shebang trên kho lưu trữ hiện có, hãy tạo một kho lưu trữ "
+"đã sửa đổi bằng hàm :func:`create_archive` ::"
+
+#: ../../library/zipapp.rst:215
+#, fuzzy
+msgid ""
+">>> import zipapp\n"
+">>> zipapp.create_archive('old_archive.pyz', 'new_archive.pyz', '/usr/bin/python3')"
+msgstr ""
+">>> nhập zipapp\n"
+">>> zipapp.create_archive('old_archive.pyz', 'new_archive.pyz', '/usr/bin/python3')"
+
+#: ../../library/zipapp.rst:218
+#, fuzzy
+msgid ""
+"To update the file in place, do the replacement in memory using a "
+":class:`~io.BytesIO` object, and then overwrite the source afterwards.  Note"
+" that there is a risk when overwriting a file in place that an error will "
+"result in the loss of the original file.  This code does not protect against"
+" such errors, but production code should do so.  Also, this method will only"
+" work if the archive fits in memory::"
+msgstr ""
+"Để cập nhật tệp tại chỗ, hãy thực hiện thay thế trong bộ nhớ bằng cách sử "
+"dụng đối tượng :class:`~io.BytesIO`, sau đó ghi đè lên nguồn.  Lưu ý rằng "
+"khi ghi đè một tập tin tại chỗ có nguy cơ xảy ra lỗi dẫn đến mất tập tin "
+"gốc.  Mã này không bảo vệ khỏi những lỗi như vậy nhưng mã sản xuất sẽ làm "
+"như vậy.  Ngoài ra, phương pháp này sẽ chỉ hoạt động nếu kho lưu trữ vừa với"
+" bộ nhớ ::"
+
+#: ../../library/zipapp.rst:225
+#, fuzzy
+msgid ""
+">>> import zipapp\n"
+">>> import io\n"
+">>> temp = io.BytesIO()\n"
+">>> zipapp.create_archive('myapp.pyz', temp, '/usr/bin/python2')\n"
+">>> with open('myapp.pyz', 'wb') as f:\n"
+">>>     f.write(temp.getvalue())"
+msgstr ""
+">>> nhập zipapp\n"
+">>> nhập io\n"
+">>> temp = io.BytesIO()\n"
+">>> zipapp.create_archive('myapp.pyz', temp, '/usr/bin/python2')\n"
+">>> với open('myapp.pyz', 'wb') là f:\n"
+">>> f.write(temp.getvalue())"
+
+#: ../../library/zipapp.rst:236
+#, fuzzy
+msgid "Specifying the Interpreter"
+msgstr "Chỉ định thông dịch viên"
+
+#: ../../library/zipapp.rst:238
+#, fuzzy
+msgid ""
+"Note that if you specify an interpreter and then distribute your application"
+" archive, you need to ensure that the interpreter used is portable.  The "
+"Python launcher for Windows supports most common forms of POSIX ``#!`` line,"
+" but there are other issues to consider:"
+msgstr ""
+"Lưu ý rằng nếu bạn chỉ định một trình thông dịch và sau đó phân phối kho lưu"
+" trữ ứng dụng của mình, bạn cần đảm bảo rằng trình thông dịch được sử dụng "
+"có thể mang theo được.  Trình khởi chạy Python dành cho Windows hỗ trợ hầu "
+"hết các dạng dòng POSIX ``#!`` phổ biến, nhưng có những vấn đề khác cần xem "
+"xét:"
+
+#: ../../library/zipapp.rst:243
+#, fuzzy
+msgid ""
+"If you use \"/usr/bin/env python\" (or other forms of the \"python\" "
+"command, such as \"/usr/bin/python\"), you need to consider that your users "
+"may have either Python 2 or Python 3 as their default, and write your code "
+"to work under both versions."
+msgstr ""
+"Nếu bạn sử dụng \"/usr/bin/env python\" (hoặc các dạng khác của lệnh "
+"\"python\", chẳng hạn như \"/usr/bin/python\"), bạn cần cân nhắc rằng người "
+"dùng của bạn có thể có Python 2 hoặc Python 3 làm mặc định và viết mã của "
+"bạn để hoạt động trong cả hai phiên bản."
+
+#: ../../library/zipapp.rst:247
+#, fuzzy
+msgid ""
+"If you use an explicit version, for example \"/usr/bin/env python3\" your "
+"application will not work for users who do not have that version.  (This may"
+" be what you want if you have not made your code Python 2 compatible)."
+msgstr ""
+"Nếu bạn sử dụng một phiên bản rõ ràng, chẳng hạn như \"/usr/bin/env "
+"python3\", ứng dụng của bạn sẽ không hoạt động đối với những người dùng "
+"không có phiên bản đó.  (Đây có thể là điều bạn muốn nếu bạn chưa làm cho mã"
+" của mình tương thích với Python 2)."
+
+#: ../../library/zipapp.rst:250
+#, fuzzy
+msgid ""
+"There is no way to say \"python X.Y or later\", so be careful of using an "
+"exact version like \"/usr/bin/env python3.4\" as you will need to change "
+"your shebang line for users of Python 3.5, for example."
+msgstr ""
+"Không có cách nào để nói \"python X.Y trở lên\", vì vậy hãy cẩn thận khi sử "
+"dụng phiên bản chính xác như \"/usr/bin/env python3.4\" vì bạn sẽ cần thay "
+"đổi dòng Shebang của mình cho người dùng Python 3.5 chẳng hạn."
+
+#: ../../library/zipapp.rst:254
+#, fuzzy
+msgid ""
+"Typically, you should use an \"/usr/bin/env python2\" or \"/usr/bin/env "
+"python3\", depending on whether your code is written for Python 2 or 3."
+msgstr ""
+"Thông thường, bạn nên sử dụng \"/usr/bin/env python2\" hoặc \"/usr/bin/env "
+"python3\", tùy thuộc vào việc mã của bạn được viết cho Python 2 hay 3."
+
+#: ../../library/zipapp.rst:259
+#, fuzzy
+msgid "Creating Standalone Applications with zipapp"
+msgstr "Tạo ứng dụng độc lập với zipapp"
+
+#: ../../library/zipapp.rst:261
+#, fuzzy
+msgid ""
+"Using the :mod:`!zipapp` module, it is possible to create self-contained "
+"Python programs, which can be distributed to end users who only need to have"
+" a suitable version of Python installed on their system.  The key to doing "
+"this is to bundle all of the application's dependencies into the archive, "
+"along with the application code."
+msgstr ""
+"Sử dụng mô-đun :mod:`!zipapp`, có thể tạo các chương trình Python độc lập, "
+"có thể được phân phối cho người dùng cuối, những người chỉ cần cài đặt phiên"
+" bản Python phù hợp trên hệ thống của họ.  Chìa khóa để thực hiện việc này "
+"là gộp tất cả các phần phụ thuộc của ứng dụng vào kho lưu trữ, cùng với mã "
+"ứng dụng."
+
+#: ../../library/zipapp.rst:267
+#, fuzzy
+msgid "The steps to create a standalone archive are as follows:"
+msgstr "Các bước để tạo một kho lưu trữ độc lập như sau:"
+
+#: ../../library/zipapp.rst:269
+#, fuzzy
+msgid ""
+"Create your application in a directory as normal, so you have a ``myapp`` "
+"directory containing a ``__main__.py`` file, and any supporting application "
+"code."
+msgstr ""
+"Tạo ứng dụng của bạn trong một thư mục như bình thường, do đó bạn có một thư"
+" mục ``myapp`` chứa tệp ``__main__.py`` và bất kỳ mã ứng dụng hỗ trợ nào."
+
+#: ../../library/zipapp.rst:273
+#, fuzzy
+msgid ""
+"Install all of your application's dependencies into the ``myapp`` directory,"
+" using pip:"
+msgstr ""
+"Cài đặt tất cả các phần phụ thuộc của ứng dụng của bạn vào thư mục "
+"``myapp``, sử dụng pip:"
+
+#: ../../library/zipapp.rst:276
+#, fuzzy
+msgid "$ python -m pip install -r requirements.txt --target myapp"
+msgstr "$ python -m pip cài đặt -r require.txt --target myapp"
+
+#: ../../library/zipapp.rst:280
+#, fuzzy
+msgid ""
+"(this assumes you have your project requirements in a ``requirements.txt`` "
+"file - if not, you can just list the dependencies manually on the pip "
+"command line)."
+msgstr ""
+"(điều này giả định rằng bạn có các yêu cầu dự án của mình trong tệp "
+"``requirements.txt`` - nếu không, bạn chỉ có thể liệt kê các phần phụ thuộc "
+"theo cách thủ công trên dòng lệnh pip)."
+
+#: ../../library/zipapp.rst:284
+#, fuzzy
+msgid "Package the application using:"
+msgstr "Đóng gói ứng dụng bằng cách sử dụng:"
+
+#: ../../library/zipapp.rst:286
+#, fuzzy
+msgid "$ python -m zipapp -p \"interpreter\" myapp"
+msgstr "$ python -m zipapp -p \"thông dịch viên\" myapp"
+
+#: ../../library/zipapp.rst:290
+#, fuzzy
+msgid ""
+"This will produce a standalone executable, which can be run on any machine "
+"with the appropriate interpreter available. See :ref:`zipapp-specifying-the-"
+"interpreter` for details. It can be shipped to users as a single file."
+msgstr ""
+"Điều này sẽ tạo ra một tệp thực thi độc lập, có thể chạy trên bất kỳ máy nào"
+" có sẵn trình thông dịch thích hợp. Xem :ref:`zipapp-specifying-the-"
+"interpreter` để biết chi tiết. Nó có thể được chuyển đến người dùng dưới "
+"dạng một tệp duy nhất."
+
+#: ../../library/zipapp.rst:294
+#, fuzzy
+msgid ""
+"On Unix, the ``myapp.pyz`` file is executable as it stands.  You can rename "
+"the file to remove the ``.pyz`` extension if you prefer a \"plain\" command "
+"name.  On Windows, the ``myapp.pyz[w]`` file is executable by virtue of the "
+"fact that the Python interpreter registers the ``.pyz`` and ``.pyzw`` file "
+"extensions when installed."
+msgstr ""
+"Trên Unix, tệp ``myapp.pyz`` có thể thực thi được.  Bạn có thể đổi tên tệp "
+"để xóa phần mở rộng ``.pyz`` nếu bạn thích tên lệnh \"đơn giản\".  Trên "
+"Windows, tệp ``myapp.pyz[w]`` có thể thực thi được nhờ trình thông dịch "
+"Python đăng ký phần mở rộng tệp ``.pyz`` và ``.pyzw`` khi cài đặt."
+
+#: ../../library/zipapp.rst:302
+#, fuzzy
+msgid "Caveats"
+msgstr "Hãy cẩn thận"
+
+#: ../../library/zipapp.rst:304
+#, fuzzy
+msgid ""
+"If your application depends on a package that includes a C extension, that "
+"package cannot be run from a zip file (this is an OS limitation, as "
+"executable code must be present in the filesystem for the OS loader to load "
+"it). In this case, you can exclude that dependency from the zipfile, and "
+"either require your users to have it installed, or ship it alongside your "
+"zipfile and add code to your ``__main__.py`` to include the directory "
+"containing the unzipped module in ``sys.path``. In this case, you will need "
+"to make sure to ship appropriate binaries for your target architecture(s) "
+"(and potentially pick the correct version to add to ``sys.path`` at runtime,"
+" based on the user's machine)."
+msgstr ""
+"Nếu ứng dụng của bạn phụ thuộc vào gói có phần mở rộng C, thì gói đó không "
+"thể chạy từ tệp zip (đây là giới hạn của hệ điều hành, vì mã thực thi phải "
+"có trong hệ thống tệp để trình tải hệ điều hành tải nó). Trong trường hợp "
+"này, bạn có thể loại trừ phần phụ thuộc đó khỏi tệp zip và yêu cầu người "
+"dùng cài đặt nó hoặc gửi nó cùng với tệp zip và thêm mã vào ``__main__.py`` "
+"để bao gồm thư mục chứa mô-đun đã giải nén trong ``sys.path``. Trong trường "
+"hợp này, bạn cần đảm bảo gửi các tệp nhị phân thích hợp cho (các) kiến "
+"​​trúc đích của mình (và có thể chọn đúng phiên bản để thêm vào ``sys.path``"
+" khi chạy, dựa trên máy của người dùng)."
+
+#: ../../library/zipapp.rst:316
+#, fuzzy
+msgid "The Python Zip Application Archive Format"
+msgstr "Định dạng lưu trữ ứng dụng Python Zip"
+
+#: ../../library/zipapp.rst:318
+#, fuzzy
+msgid ""
+"Python has been able to execute zip files which contain a ``__main__.py`` "
+"file since version 2.6.  In order to be executed by Python, an application "
+"archive simply has to be a standard zip file containing a ``__main__.py`` "
+"file which will be run as the entry point for the application.  As usual for"
+" any Python script, the parent of the script (in this case the zip file) "
+"will be placed on :data:`sys.path` and thus further modules can be imported "
+"from the zip file."
+msgstr ""
+"Python đã có thể thực thi các tệp zip chứa tệp ``__main__.py`` kể từ phiên "
+"bản 2.6.  Để được Python thực thi, kho lưu trữ ứng dụng chỉ cần là một tệp "
+"zip tiêu chuẩn chứa tệp ``__main__.py`` sẽ được chạy làm điểm vào cho ứng "
+"dụng.  Như thường lệ đối với bất kỳ tập lệnh Python nào, phần gốc của tập "
+"lệnh (trong trường hợp này là tệp zip) sẽ được đặt trên :data:`sys.path` và "
+"do đó có thể nhập thêm các mô-đun từ tệp zip."
+
+#: ../../library/zipapp.rst:325
+#, fuzzy
+msgid ""
+"The zip file format allows arbitrary data to be prepended to a zip file.  "
+"The zip application format uses this ability to prepend a standard POSIX "
+"\"shebang\" line to the file (``#!/path/to/interpreter``)."
+msgstr ""
+"Định dạng tệp zip cho phép dữ liệu tùy ý được thêm vào trước tệp zip.  Định "
+"dạng ứng dụng zip sử dụng khả năng này để thêm dòng \"shebang\" POSIX tiêu "
+"chuẩn vào tệp (``#!/path/to/interpreter``)."
+
+#: ../../library/zipapp.rst:329
+#, fuzzy
+msgid "Formally, the Python zip application format is therefore:"
+msgstr "Do đó, về mặt hình thức, định dạng ứng dụng zip Python là:"
+
+#: ../../library/zipapp.rst:331
+#, fuzzy
+msgid ""
+"An optional shebang line, containing the characters ``b'#!'`` followed by an"
+" interpreter name, and then a newline (``b'\\n'``) character.  The "
+"interpreter name can be anything acceptable to the OS \"shebang\" "
+"processing, or the Python launcher on Windows.  The interpreter should be "
+"encoded in UTF-8 on Windows, and in :func:`sys.getfilesystemencoding` on "
+"POSIX."
+msgstr ""
+"Một dòng Shebang tùy chọn, chứa các ký tự ``b'#!'``, theo sau là tên trình "
+"thông dịch và sau đó là ký tự dòng mới (``b'\\n'``).  Tên trình thông dịch "
+"có thể là bất cứ thứ gì được chấp nhận đối với quá trình xử lý \"shebang\" "
+"của hệ điều hành hoặc trình khởi chạy Python trên Windows.  Trình thông dịch"
+" phải được mã hóa bằng UTF-8 trên Windows và "
+":func:`sys.getfilesystemencoding` trên POSIX."
+
+#: ../../library/zipapp.rst:336
+#, fuzzy
+msgid ""
+"Standard zipfile data, as generated by the :mod:`zipfile` module.  The "
+"zipfile content *must* include a file called ``__main__.py`` (which must be "
+"in the \"root\" of the zipfile - i.e., it cannot be in a subdirectory).  The"
+" zipfile data can be compressed or uncompressed."
+msgstr ""
+"Dữ liệu zipfile tiêu chuẩn, do mô-đun :mod:`zipfile` tạo ra.  Nội dung tệp "
+"zip *must* bao gồm một tệp có tên ``__main__.py`` (phải nằm trong \"gốc\" "
+"của tệp zip - tức là nó không thể nằm trong thư mục con).  Dữ liệu zipfile "
+"có thể được nén hoặc không nén."
+
+#: ../../library/zipapp.rst:341
+#, fuzzy
+msgid ""
+"If an application archive has a shebang line, it may have the executable bit"
+" set on POSIX systems, to allow it to be executed directly."
+msgstr ""
+"Nếu kho lưu trữ ứng dụng có dòng Shebang, nó có thể có bit thực thi được đặt"
+" trên hệ thống POSIX để cho phép nó được thực thi trực tiếp."
+
+#: ../../library/zipapp.rst:344
+#, fuzzy
+msgid ""
+"There is no requirement that the tools in this module are used to create "
+"application archives - the module is a convenience, but archives in the "
+"above format created by any means are acceptable to Python."
+msgstr ""
+"Không có yêu cầu nào về việc sử dụng các công cụ trong mô-đun này để tạo kho"
+" lưu trữ ứng dụng - mô-đun này rất tiện lợi, nhưng các kho lưu trữ ở định "
+"dạng trên được tạo bằng bất kỳ phương tiện nào đều được Python chấp nhận."
+
+#: ../../library/zipapp.rst:11
+#, fuzzy
+msgid "Executable Zip Files"
+msgstr "Tệp Zip có thể thực thi"

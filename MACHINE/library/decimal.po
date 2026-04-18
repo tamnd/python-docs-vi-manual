@@ -1,0 +1,4337 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/decimal.rst:2
+#, fuzzy
+msgid ":mod:`!decimal` --- Decimal fixed-point and floating-point arithmetic"
+msgstr ""
+":mod:`!decimal` --- Số học dấu phẩy động và dấu phẩy cố định thập phân"
+
+#: ../../library/decimal.rst:15
+#, fuzzy
+msgid "**Source code:** :source:`Lib/decimal.py`"
+msgstr "**Source code:** :source:`Lib/decimal.py`"
+
+#: ../../library/decimal.rst:33
+#, fuzzy
+msgid ""
+"The :mod:`!decimal` module provides support for fast correctly rounded "
+"decimal floating-point arithmetic. It offers several advantages over the "
+":class:`float` datatype:"
+msgstr ""
+"Mô-đun :mod:`!decimal` cung cấp hỗ trợ cho số học dấu phẩy động thập phân "
+"được làm tròn chính xác nhanh chóng. Nó cung cấp một số lợi thế so với kiểu "
+"dữ liệu :class:`float`:"
+
+#: ../../library/decimal.rst:37
+#, fuzzy
+msgid ""
+"Decimal \"is based on a `floating-point model "
+"<https://speleotrove.com/decimal/damodel.html#refnumber>`__ which was "
+"designed with people in mind, and necessarily has a paramount guiding "
+"principle -- computers must provide an arithmetic that works in the same way"
+" as the arithmetic that people learn at school.\" -- excerpt from the "
+"decimal arithmetic specification."
+msgstr ""
+"Thập phân \"dựa trên `floating-point model "
+"<https://speleotrove.com/decimal/damodel.html#refnumber>`__ được thiết kế "
+"dành cho mọi người và nhất thiết phải có nguyên tắc hướng dẫn tối cao -- máy"
+" tính phải cung cấp số học hoạt động giống như số học mà mọi người học ở "
+"trường.\" -- đoạn trích từ đặc tả số học thập phân."
+
+#: ../../library/decimal.rst:44
+#, fuzzy
+msgid ""
+"Decimal numbers can be represented exactly.  In contrast, numbers like "
+"``1.1`` and ``2.2`` do not have exact representations in binary floating "
+"point. End users typically would not expect ``1.1 + 2.2`` to display as "
+"``3.3000000000000003`` as it does with binary floating point."
+msgstr ""
+"Số thập phân có thể được biểu diễn chính xác.  Ngược lại, các số như ``1.1``"
+" và ``2.2`` không có biểu diễn chính xác dưới dạng dấu phẩy động nhị phân. "
+"Người dùng cuối thường không mong đợi ``1.1 + 2.2`` hiển thị dưới dạng "
+"``3.3000000000000003`` như với dấu phẩy động nhị phân."
+
+#: ../../library/decimal.rst:49
+#, fuzzy
+msgid ""
+"The exactness carries over into arithmetic.  In decimal floating point, "
+"``0.1 + 0.1 + 0.1 - 0.3`` is exactly equal to zero.  In binary floating "
+"point, the result is ``5.5511151231257827e-017``.  While near to zero, the "
+"differences prevent reliable equality testing and differences can "
+"accumulate. For this reason, decimal is preferred in accounting applications"
+" which have strict equality invariants."
+msgstr ""
+"Sự chính xác được chuyển sang số học.  Trong dấu phẩy động thập phân, ``0.1 "
+"+ 0.1 + 0.1 - 0.3`` chính xác bằng 0.  Trong dấu phẩy động nhị phân, kết quả"
+" là ``5.5511151231257827e-017``.  Mặc dù gần bằng 0, nhưng sự khác biệt ngăn"
+" cản việc kiểm tra tính bằng nhau đáng tin cậy và sự khác biệt có thể tích "
+"lũy. Vì lý do này, số thập phân được ưa thích hơn trong các ứng dụng kế toán"
+" có tính bất biến đẳng thức nghiêm ngặt."
+
+#: ../../library/decimal.rst:56
+#, fuzzy
+msgid ""
+"The decimal module incorporates a notion of significant places so that "
+"``1.30 + 1.20`` is ``2.50``.  The trailing zero is kept to indicate "
+"significance. This is the customary presentation for monetary applications. "
+"For multiplication, the \"schoolbook\" approach uses all the figures in the "
+"multiplicands.  For instance, ``1.3 * 1.2`` gives ``1.56`` while ``1.30 * "
+"1.20`` gives ``1.5600``."
+msgstr ""
+"Mô-đun thập phân kết hợp khái niệm về các vị trí quan trọng để ``1.30 + "
+"1.20`` là ``2.50``.  Số 0 ở cuối được giữ để biểu thị ý nghĩa. Đây là cách "
+"trình bày thông thường cho các ứng dụng tiền tệ. Đối với phép nhân, phương "
+"pháp \"sách giáo khoa\" sử dụng tất cả các số liệu trong phép nhân.  Ví dụ: "
+"``1.3 * 1.2`` cho ``1.56`` trong khi ``1.30 * 1.20`` cho ``1.5600``."
+
+#: ../../library/decimal.rst:63
+#, fuzzy
+msgid ""
+"Unlike hardware based binary floating point, the decimal module has a user "
+"alterable precision (defaulting to 28 places) which can be as large as "
+"needed for a given problem:"
+msgstr ""
+"Không giống như dấu phẩy động nhị phân dựa trên phần cứng, mô-đun thập phân "
+"có độ chính xác mà người dùng có thể thay đổi (mặc định là 28 vị trí) có thể"
+" lớn đến mức cần thiết cho một vấn đề nhất định:"
+
+#: ../../library/decimal.rst:75
+#, fuzzy
+msgid ""
+"Both binary and decimal floating point are implemented in terms of published"
+" standards.  While the built-in float type exposes only a modest portion of "
+"its capabilities, the decimal module exposes all required parts of the "
+"standard. When needed, the programmer has full control over rounding and "
+"signal handling. This includes an option to enforce exact arithmetic by "
+"using exceptions to block any inexact operations."
+msgstr ""
+"Cả dấu phẩy động nhị phân và thập phân đều được thực hiện theo các tiêu "
+"chuẩn đã được công bố.  Trong khi kiểu float tích hợp chỉ thể hiện một phần "
+"khả năng khiêm tốn của nó thì mô-đun thập phân thể hiện tất cả các phần bắt "
+"buộc của tiêu chuẩn. Khi cần, lập trình viên có toàn quyền kiểm soát việc "
+"làm tròn và xử lý tín hiệu. Điều này bao gồm một tùy chọn để thực thi số học"
+" chính xác bằng cách sử dụng các ngoại lệ để chặn mọi hoạt động không chính "
+"xác."
+
+#: ../../library/decimal.rst:82
+#, fuzzy
+msgid ""
+"The decimal module was designed to support \"without prejudice, both exact "
+"unrounded decimal arithmetic (sometimes called fixed-point arithmetic) and "
+"rounded floating-point arithmetic.\"  -- excerpt from the decimal arithmetic"
+" specification."
+msgstr ""
+"Mô-đun thập phân được thiết kế để hỗ trợ \"không có thành kiến, cả số học "
+"thập phân không làm tròn chính xác (đôi khi được gọi là số học dấu phẩy cố "
+"định) và số học dấu phẩy động làm tròn.\"  -- đoạn trích từ đặc tả số học "
+"thập phân."
+
+#: ../../library/decimal.rst:87
+#, fuzzy
+msgid ""
+"The module design is centered around three concepts:  the decimal number, "
+"the context for arithmetic, and signals."
+msgstr ""
+"Thiết kế mô-đun tập trung vào ba khái niệm: số thập phân, bối cảnh số học và"
+" tín hiệu."
+
+#: ../../library/decimal.rst:90
+#, fuzzy
+msgid ""
+"A decimal number is immutable.  It has a sign, coefficient digits, and an "
+"exponent.  To preserve significance, the coefficient digits do not truncate "
+"trailing zeros.  Decimals also include special values such as ``Infinity``, "
+"``-Infinity``, and ``NaN``.  The standard also differentiates ``-0`` from "
+"``+0``."
+msgstr ""
+"Một số thập phân là bất biến.  Nó có dấu, chữ số hệ số và số mũ.  Để duy trì"
+" ý nghĩa, các chữ số hệ số không cắt bớt các số 0 ở cuối.  Số thập phân cũng"
+" bao gồm các giá trị đặc biệt như ``Infinity``, ``-Infinity`` và ``NaN``.  "
+"Tiêu chuẩn cũng phân biệt ``-0`` với ``+0``."
+
+#: ../../library/decimal.rst:96
+#, fuzzy
+msgid ""
+"The context for arithmetic is an environment specifying precision, rounding "
+"rules, limits on exponents, flags indicating the results of operations, and "
+"trap enablers which determine whether signals are treated as exceptions.  "
+"Rounding options include :const:`ROUND_CEILING`, :const:`ROUND_DOWN`, "
+":const:`ROUND_FLOOR`, :const:`ROUND_HALF_DOWN`, :const:`ROUND_HALF_EVEN`, "
+":const:`ROUND_HALF_UP`, :const:`ROUND_UP`, and :const:`ROUND_05UP`."
+msgstr ""
+"Ngữ cảnh của số học là môi trường xác định độ chính xác, quy tắc làm tròn, "
+"giới hạn số mũ, cờ biểu thị kết quả của các phép toán và trình hỗ trợ bẫy "
+"xác định xem tín hiệu có được coi là ngoại lệ hay không.  Các tùy chọn làm "
+"tròn bao gồm :const:`ROUND_CEILING`, :const:`ROUND_DOWN`, "
+":const:`ROUND_FLOOR`, :const:`ROUND_HALF_DOWN`, :const:`ROUND_HALF_EVEN`, "
+":const:`ROUND_HALF_UP`, :const:`ROUND_UP` và :const:`ROUND_05UP`."
+
+#: ../../library/decimal.rst:103
+#, fuzzy
+msgid ""
+"Signals are groups of exceptional conditions arising during the course of "
+"computation.  Depending on the needs of the application, signals may be "
+"ignored, considered as informational, or treated as exceptions. The signals "
+"in the decimal module are: :const:`Clamped`, :const:`InvalidOperation`, "
+":const:`DivisionByZero`, :const:`Inexact`, :const:`Rounded`, "
+":const:`Subnormal`, :const:`Overflow`, :const:`Underflow` and "
+":const:`FloatOperation`."
+msgstr ""
+"Tín hiệu là nhóm các điều kiện đặc biệt phát sinh trong quá trình tính toán."
+"  Tùy thuộc vào nhu cầu của ứng dụng, các tín hiệu có thể bị bỏ qua, được "
+"coi là thông tin hoặc được coi là ngoại lệ. Các tín hiệu trong mô-đun thập "
+"phân là: :const:`Clamped`, :const:`InvalidOperation`, "
+":const:`DivisionByZero`, :const:`Inexact`, :const:`Rounded`, "
+":const:`Subnormal`, :const:`Overflow`, :const:`Underflow` và "
+":const:`FloatOperation`."
+
+#: ../../library/decimal.rst:110
+#, fuzzy
+msgid ""
+"For each signal there is a flag and a trap enabler.  When a signal is "
+"encountered, its flag is set to one, then, if the trap enabler is set to "
+"one, an exception is raised.  Flags are sticky, so the user needs to reset "
+"them before monitoring a calculation."
+msgstr ""
+"Đối với mỗi tín hiệu có một cờ và một bộ kích hoạt bẫy.  Khi gặp một tín "
+"hiệu, cờ của nó được đặt thành một, sau đó, nếu trình kích hoạt bẫy được đặt"
+" thành một, một ngoại lệ sẽ được đưa ra.  Cờ có tính dính nên người dùng cần"
+" đặt lại chúng trước khi theo dõi phép tính."
+
+#: ../../library/decimal.rst:118
+#, fuzzy
+msgid ""
+"IBM's General Decimal Arithmetic Specification, `The General Decimal "
+"Arithmetic Specification <https://speleotrove.com/decimal/decarith.html>`_."
+msgstr ""
+"Đặc tả số học thập phân tổng quát của IBM, `The General Decimal Arithmetic "
+"Specification <https://speleotrove.com/decimal/decarith.html>`_."
+
+#: ../../library/decimal.rst:127
+#, fuzzy
+msgid "Quick-start tutorial"
+msgstr "Hướng dẫn bắt đầu nhanh"
+
+#: ../../library/decimal.rst:129
+#, fuzzy
+msgid ""
+"The usual start to using decimals is importing the module, viewing the "
+"current context with :func:`getcontext` and, if necessary, setting new "
+"values for precision, rounding, or enabled traps::"
+msgstr ""
+"Cách bắt đầu thông thường khi sử dụng số thập phân là nhập mô-đun, xem ngữ "
+"cảnh hiện tại bằng :func:`getcontext` và, nếu cần, đặt các giá trị mới cho "
+"bẫy chính xác, làm tròn hoặc bật::"
+
+#: ../../library/decimal.rst:133
+#, fuzzy
+msgid ""
+">>> from decimal import *\n"
+">>> getcontext()\n"
+"Context(prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,\n"
+"        capitals=1, clamp=0, flags=[], traps=[Overflow, DivisionByZero,\n"
+"        InvalidOperation])\n"
+"\n"
+">>> getcontext().prec = 7       # Set a new precision"
+msgstr ""
+">>> từ nhập thập phân *\n"
+">>> getcontext()\n"
+"Bối cảnh(prec=28, làm tròn=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,\n"
+"        chữ hoa=1, kẹp=0, cờ=[], bẫy=[Tràn, DivisionByZero,\n"
+"        Thao tác không hợp lệ])\n"
+"\n"
+">>> getcontext().prec = 7 # Set độ chính xác mới"
+
+#: ../../library/decimal.rst:141
+#, fuzzy
+msgid ""
+"Decimal instances can be constructed from integers, strings, floats, or "
+"tuples. Construction from an integer or a float performs an exact conversion"
+" of the value of that integer or float.  Decimal numbers include special "
+"values such as ``NaN`` which stands for \"Not a number\", positive and "
+"negative ``Infinity``, and ``-0``::"
+msgstr ""
+"Các phiên bản thập phân có thể được xây dựng từ số nguyên, chuỗi, số float "
+"hoặc bộ dữ liệu. Việc xây dựng từ một số nguyên hoặc số float thực hiện "
+"chuyển đổi chính xác giá trị của số nguyên hoặc số float đó.  Số thập phân "
+"bao gồm các giá trị đặc biệt như ``NaN`` viết tắt của \"Không phải số\", "
+"``Infinity`` dương và âm và ``-0``::"
+
+#: ../../library/decimal.rst:147
+#, fuzzy
+msgid ""
+">>> getcontext().prec = 28\n"
+">>> Decimal(10)\n"
+"Decimal('10')\n"
+">>> Decimal('3.14')\n"
+"Decimal('3.14')\n"
+">>> Decimal(3.14)\n"
+"Decimal('3.140000000000000124344978758017532527446746826171875')\n"
+">>> Decimal((0, (3, 1, 4), -2))\n"
+"Decimal('3.14')\n"
+">>> Decimal(str(2.0 ** 0.5))\n"
+"Decimal('1.4142135623730951')\n"
+">>> Decimal(2) ** Decimal('0.5')\n"
+"Decimal('1.414213562373095048801688724')\n"
+">>> Decimal('NaN')\n"
+"Decimal('NaN')\n"
+">>> Decimal('-Infinity')\n"
+"Decimal('-Infinity')"
+msgstr ""
+">>> getcontext().prec = 28\n"
+">>> Số thập phân(10)\n"
+"Thập phân('10')\n"
+">>> Số thập phân('3.14')\n"
+"Thập phân('3.14')\n"
+">>> Số thập phân(3.14)\n"
+"Thập phân('3.140000000000000124344978758017532527446746826171875')\n"
+">>> Thập phân((0, (3, 1, 4), -2))\n"
+"Thập phân('3.14')\n"
+">>> Thập phân(str(2.0 ** 0.5))\n"
+"Thập phân('1.4142135623730951')\n"
+">>> Thập phân(2) ** Thập phân('0.5')\n"
+"Thập phân('1.414213562373095048801688724')\n"
+">>> Số thập phân('NaN')\n"
+"Thập phân('NaN')\n"
+">>> Số thập phân('-Infinity')\n"
+"Thập phân('-Infinity')"
+
+#: ../../library/decimal.rst:165
+#, fuzzy
+msgid ""
+"If the :exc:`FloatOperation` signal is trapped, accidental mixing of "
+"decimals and floats in constructors or ordering comparisons raises an "
+"exception::"
+msgstr ""
+"Nếu tín hiệu :exc:`FloatOperation` bị kẹt, việc vô tình trộn lẫn số thập "
+"phân và số float trong hàm tạo hoặc so sánh thứ tự sẽ tạo ra một ngoại lệ::"
+
+#: ../../library/decimal.rst:169
+#, fuzzy
+msgid ""
+">>> c = getcontext()\n"
+">>> c.traps[FloatOperation] = True\n"
+">>> Decimal(3.14)\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"decimal.FloatOperation: [<class 'decimal.FloatOperation'>]\n"
+">>> Decimal('3.5') < 3.7\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"decimal.FloatOperation: [<class 'decimal.FloatOperation'>]\n"
+">>> Decimal('3.5') == 3.5\n"
+"True"
+msgstr ""
+">>> c = getcontext()\n"
+">>> c.traps[FloatOperation] = Đúng\n"
+">>> Số thập phân(3.14)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"thập phân.FloatOperation: [<class 'decimal.FloatOperation'>]\n"
+">>> Số thập phân('3.5') < 3.7\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"thập phân.FloatOperation: [<class 'decimal.FloatOperation'>]\n"
+">>> Số thập phân('3.5') == 3.5\n"
+"đúng"
+
+#: ../../library/decimal.rst:184
+#, fuzzy
+msgid ""
+"The significance of a new Decimal is determined solely by the number of "
+"digits input.  Context precision and rounding only come into play during "
+"arithmetic operations."
+msgstr ""
+"Tầm quan trọng của Số thập phân mới chỉ được xác định bởi số chữ số được "
+"nhập vào.  Độ chính xác của ngữ cảnh và làm tròn chỉ phát huy tác dụng trong"
+" các phép tính số học."
+
+#: ../../library/decimal.rst:188
+#, fuzzy
+msgid ""
+">>> getcontext().prec = 6\n"
+">>> Decimal('3.0')\n"
+"Decimal('3.0')\n"
+">>> Decimal('3.1415926535')\n"
+"Decimal('3.1415926535')\n"
+">>> Decimal('3.1415926535') + Decimal('2.7182818285')\n"
+"Decimal('5.85987')\n"
+">>> getcontext().rounding = ROUND_UP\n"
+">>> Decimal('3.1415926535') + Decimal('2.7182818285')\n"
+"Decimal('5.85988')"
+msgstr ""
+">>> getcontext().prec = 6\n"
+">>> Số thập phân('3.0')\n"
+"Thập phân('3.0')\n"
+">>> Số thập phân('3.1415926535')\n"
+"Thập phân('3.1415926535')\n"
+">>> Số thập phân('3.1415926535') + Số thập phân('2.7182818285')\n"
+"Thập phân('5.85987')\n"
+">>> getcontext().rounding = ROUND_UP\n"
+">>> Số thập phân('3.1415926535') + Số thập phân('2.7182818285')\n"
+"Thập phân('5.85988')"
+
+#: ../../library/decimal.rst:201
+#, fuzzy
+msgid ""
+"If the internal limits of the C version are exceeded, constructing a decimal"
+" raises :class:`InvalidOperation`::"
+msgstr ""
+"Nếu vượt quá giới hạn bên trong của phiên bản C, việc xây dựng số thập phân "
+"sẽ tăng :class:`InvalidOperation`::"
+
+#: ../../library/decimal.rst:204
+#, fuzzy
+msgid ""
+">>> Decimal(\"1e9999999999999999999\")\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]"
+msgstr ""
+">>> Thập phân(\"1e99999999999999999999\")\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"thập phân.InvalidOperation: [<class 'decimal.InvalidOperation'>]"
+
+#: ../../library/decimal.rst:211
+#, fuzzy
+msgid ""
+"Decimals interact well with much of the rest of Python.  Here is a small "
+"decimal floating-point flying circus:"
+msgstr ""
+"Số thập phân tương tác tốt với phần lớn phần còn lại của Python.  Đây là một"
+" rạp xiếc bay dấu phẩy động thập phân nhỏ:"
+
+#: ../../library/decimal.rst:214
+#, fuzzy
+msgid ""
+">>> data = list(map(Decimal, '1.34 1.87 3.45 2.35 1.00 0.03 9.25'.split()))\n"
+">>> max(data)\n"
+"Decimal('9.25')\n"
+">>> min(data)\n"
+"Decimal('0.03')\n"
+">>> sorted(data)\n"
+"[Decimal('0.03'), Decimal('1.00'), Decimal('1.34'), Decimal('1.87'),\n"
+" Decimal('2.35'), Decimal('3.45'), Decimal('9.25')]\n"
+">>> sum(data)\n"
+"Decimal('19.29')\n"
+">>> a,b,c = data[:3]\n"
+">>> str(a)\n"
+"'1.34'\n"
+">>> float(a)\n"
+"1.34\n"
+">>> round(a, 1)\n"
+"Decimal('1.3')\n"
+">>> int(a)\n"
+"1\n"
+">>> a * 5\n"
+"Decimal('6.70')\n"
+">>> a * b\n"
+"Decimal('2.5058')\n"
+">>> c % a\n"
+"Decimal('0.77')"
+msgstr ""
+">>> data = list(map(Thập phân, '1,34 1,87 3,45 2,35 1,00 0,03 9,25'.split()))\n"
+">>> tối đa(dữ liệu)\n"
+"Thập phân('9.25')\n"
+">>> phút(dữ liệu)\n"
+"Thập phân('0.03')\n"
+">>> sắp xếp(dữ liệu)\n"
+"[Thập phân('0.03'), Thập phân('1.00'), Thập phân('1.34'), Thập phân('1.87'),\n"
+" Thập phân('2.35'), Thập phân('3.45'), Thập phân('9.25')]\n"
+">>> tổng (dữ liệu)\n"
+"Thập phân('19.29')\n"
+">>> a,b,c = dữ liệu[:3]\n"
+">>> str(a)\n"
+"'1,34'\n"
+">>> thả nổi(a)\n"
+"1,34\n"
+">>> vòng(a, 1)\n"
+"Thập phân('1.3')\n"
+">>> int(a)\n"
+"1\n"
+">>> một * 5\n"
+"Thập phân('6.70')\n"
+">>> a * b\n"
+"Thập phân('2.5058')\n"
+">>> c % một\n"
+"Thập phân('0.77')"
+
+#: ../../library/decimal.rst:243
+#, fuzzy
+msgid ""
+"Decimals can be formatted (with :func:`format` built-in or :ref:`f-strings`)"
+" in fixed-point or scientific notation, using the same formatting syntax "
+"(see :ref:`formatspec`) as builtin :class:`float` type:"
+msgstr ""
+"Số thập phân có thể được định dạng (có :func:`format` tích hợp hoặc "
+":ref:`f-strings`) theo dấu phẩy cố định hoặc ký hiệu khoa học, sử dụng cú "
+"pháp định dạng tương tự (xem :ref:`formatspec`) như loại :class:`float` dựng"
+" sẵn:"
+
+#: ../../library/decimal.rst:247
+#, python-brace-format, fuzzy
+msgid ""
+">>> format(Decimal('2.675'), \"f\")\n"
+"'2.675'\n"
+">>> format(Decimal('2.675'), \".2f\")\n"
+"'2.68'\n"
+">>> f\"{Decimal('2.675'):.2f}\"\n"
+"'2.68'\n"
+">>> format(Decimal('2.675'), \".2e\")\n"
+"'2.68e+0'\n"
+">>> with localcontext() as ctx:\n"
+"...     ctx.rounding = ROUND_DOWN\n"
+"...     print(format(Decimal('2.675'), \".2f\"))\n"
+"...\n"
+"2.67"
+msgstr ""
+">>> định dạng(Thập phân('2.675'), \"f\")\n"
+"'2.675'\n"
+">>> định dạng(Thập phân('2.675'), \".2f\")\n"
+"'2,68'\n"
+">>> f\"{Thập phân('2.675'):.2f}\"\n"
+"'2,68'\n"
+">>> định dạng(Thập phân('2.675'), \".2e\")\n"
+"'2,68e+0'\n"
+">>> với localcontext() là ctx:\n"
+"... ctx.rounding = ROUND_DOWN\n"
+"... print(format(Decimal('2.675'), \".2f\"))\n"
+"...\n"
+"2,67"
+
+#: ../../library/decimal.rst:263
+#, fuzzy
+msgid "And some mathematical functions are also available to Decimal:"
+msgstr "Và một số hàm toán học cũng có sẵn cho Decimal:"
+
+#: ../../library/decimal.rst:275
+#, fuzzy
+msgid ""
+"The :meth:`~Decimal.quantize` method rounds a number to a fixed exponent.  "
+"This method is useful for monetary applications that often round results to "
+"a fixed number of places:"
+msgstr ""
+"Phương thức :meth:`~Decimal.quantize` làm tròn số thành số mũ cố định.  "
+"Phương pháp này hữu ích cho các ứng dụng tiền tệ thường làm tròn kết quả đến"
+" một số vị trí cố định:"
+
+#: ../../library/decimal.rst:284
+#, fuzzy
+msgid ""
+"As shown above, the :func:`getcontext` function accesses the current context"
+" and allows the settings to be changed.  This approach meets the needs of "
+"most applications."
+msgstr ""
+"Như được hiển thị ở trên, hàm :func:`getcontext` truy cập vào ngữ cảnh hiện "
+"tại và cho phép thay đổi cài đặt.  Cách tiếp cận này đáp ứng nhu cầu của hầu"
+" hết các ứng dụng."
+
+#: ../../library/decimal.rst:288
+#, fuzzy
+msgid ""
+"For more advanced work, it may be useful to create alternate contexts using "
+"the :meth:`Context` constructor.  To make an alternate active, use the "
+":func:`setcontext` function."
+msgstr ""
+"Đối với công việc nâng cao hơn, có thể hữu ích khi tạo các ngữ cảnh thay thế"
+" bằng cách sử dụng hàm tạo :meth:`Context`.  Để kích hoạt thay thế, hãy sử "
+"dụng chức năng :func:`setcontext`."
+
+#: ../../library/decimal.rst:292
+#, fuzzy
+msgid ""
+"In accordance with the standard, the :mod:`!decimal` module provides two "
+"ready to use standard contexts, :const:`BasicContext` and "
+":const:`ExtendedContext`. The former is especially useful for debugging "
+"because many of the traps are enabled:"
+msgstr ""
+"Theo tiêu chuẩn, mô-đun :mod:`!decimal` cung cấp hai ngữ cảnh tiêu chuẩn sẵn"
+" sàng để sử dụng, :const:`BasicContext` và :const:`ExtendedContext`. Cái "
+"trước đặc biệt hữu ích cho việc gỡ lỗi vì nhiều bẫy được kích hoạt:"
+
+#: ../../library/decimal.rst:297
+#, fuzzy
+msgid ""
+">>> myothercontext = Context(prec=60, rounding=ROUND_HALF_DOWN)\n"
+">>> setcontext(myothercontext)\n"
+">>> Decimal(1) / Decimal(7)\n"
+"Decimal('0.142857142857142857142857142857142857142857142857142857142857')\n"
+"\n"
+">>> ExtendedContext\n"
+"Context(prec=9, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,\n"
+"        capitals=1, clamp=0, flags=[], traps=[])\n"
+">>> setcontext(ExtendedContext)\n"
+">>> Decimal(1) / Decimal(7)\n"
+"Decimal('0.142857143')\n"
+">>> Decimal(42) / Decimal(0)\n"
+"Decimal('Infinity')\n"
+"\n"
+">>> setcontext(BasicContext)\n"
+">>> Decimal(42) / Decimal(0)\n"
+"Traceback (most recent call last):\n"
+"  File \"<pyshell#143>\", line 1, in -toplevel-\n"
+"    Decimal(42) / Decimal(0)\n"
+"DivisionByZero: x / 0"
+msgstr ""
+">>> myothercontext = Ngữ cảnh(prec=60, rounding=ROUND_HALF_DOWN)\n"
+">>> setcontext(myothercontext)\n"
+">>> Thập phân(1) / Thập phân(7)\n"
+"Thập phân('0.142857142857142857142857142857142857142857142857142857142857')\n"
+"\n"
+">>> Bối cảnh mở rộng\n"
+"Bối cảnh(prec=9, làm tròn=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,\n"
+"        chữ hoa=1, kẹp=0, cờ=[], bẫy=[])\n"
+">>> setcontext(ExtendsContext)\n"
+">>> Thập phân(1) / Thập phân(7)\n"
+"Thập phân('0.142857143')\n"
+">>> Thập phân(42) / Thập phân(0)\n"
+"Thập phân('Vô cực')\n"
+"\n"
+">>> setcontext(BasicContext)\n"
+">>> Thập phân(42) / Thập phân(0)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<pyshell#143>\", dòng 1, trong -toplevel-\n"
+"    Thập phân(42) / Thập phân(0)\n"
+"DivisionByZero: x/0"
+
+#: ../../library/decimal.rst:321
+#, fuzzy
+msgid ""
+"Contexts also have signal flags for monitoring exceptional conditions "
+"encountered during computations.  The flags remain set until explicitly "
+"cleared, so it is best to clear the flags before each set of monitored "
+"computations by using the :meth:`~Context.clear_flags` method. ::"
+msgstr ""
+"Các bối cảnh cũng có các cờ tín hiệu để theo dõi các điều kiện đặc biệt gặp "
+"phải trong quá trình tính toán.  Các cờ vẫn được đặt cho đến khi bị xóa rõ "
+"ràng, vì vậy tốt nhất nên xóa cờ trước mỗi bộ tính toán được giám sát bằng "
+"cách sử dụng phương pháp :meth:`~Context.clear_flags`. ::"
+
+#: ../../library/decimal.rst:326
+#, fuzzy
+msgid ""
+">>> setcontext(ExtendedContext)\n"
+">>> getcontext().clear_flags()\n"
+">>> Decimal(355) / Decimal(113)\n"
+"Decimal('3.14159292')\n"
+">>> getcontext()\n"
+"Context(prec=9, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,\n"
+"        capitals=1, clamp=0, flags=[Inexact, Rounded], traps=[])"
+msgstr ""
+">>> setcontext(ExtendsContext)\n"
+">>> getcontext().clear_flags()\n"
+">>> Thập phân(355) / Thập phân(113)\n"
+"Thập phân('3.14159292')\n"
+">>> getcontext()\n"
+"Bối cảnh(prec=9, làm tròn=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,\n"
+"        chữ hoa=1, kẹp=0, cờ=[Không chính xác, Làm tròn], bẫy=[])"
+
+#: ../../library/decimal.rst:334
+#, fuzzy
+msgid ""
+"The *flags* entry shows that the rational approximation to pi was rounded "
+"(digits beyond the context precision were thrown away) and that the result "
+"is inexact (some of the discarded digits were non-zero)."
+msgstr ""
+"Mục nhập *flags* cho thấy phép tính gần đúng hợp lý của pi đã được làm tròn "
+"(các chữ số nằm ngoài độ chính xác của ngữ cảnh đã bị loại bỏ) và kết quả là"
+" không chính xác (một số chữ số bị loại bỏ khác 0)."
+
+#: ../../library/decimal.rst:338
+#, fuzzy
+msgid ""
+"Individual traps are set using the dictionary in the :attr:`~Context.traps` "
+"attribute of a context:"
+msgstr ""
+"Các bẫy riêng lẻ được đặt bằng từ điển trong thuộc tính "
+":attr:`~Context.traps` của ngữ cảnh:"
+
+#: ../../library/decimal.rst:341
+#, fuzzy
+msgid ""
+">>> setcontext(ExtendedContext)\n"
+">>> Decimal(1) / Decimal(0)\n"
+"Decimal('Infinity')\n"
+">>> getcontext().traps[DivisionByZero] = 1\n"
+">>> Decimal(1) / Decimal(0)\n"
+"Traceback (most recent call last):\n"
+"  File \"<pyshell#112>\", line 1, in -toplevel-\n"
+"    Decimal(1) / Decimal(0)\n"
+"DivisionByZero: x / 0"
+msgstr ""
+">>> setcontext(ExtendsContext)\n"
+">>> Thập phân(1) / Thập phân(0)\n"
+"Thập phân('Vô cực')\n"
+">>> getcontext().traps[DivisionByZero] = 1\n"
+">>> Thập phân(1) / Thập phân(0)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<pyshell#112>\", dòng 1, trong -toplevel-\n"
+"    Thập phân(1) / Thập phân(0)\n"
+"DivisionByZero: x/0"
+
+#: ../../library/decimal.rst:353
+#, fuzzy
+msgid ""
+"Most programs adjust the current context only once, at the beginning of the "
+"program.  And, in many applications, data is converted to :class:`Decimal` "
+"with a single cast inside a loop.  With context set and decimals created, "
+"the bulk of the program manipulates the data no differently than with other "
+"Python numeric types."
+msgstr ""
+"Hầu hết các chương trình chỉ điều chỉnh bối cảnh hiện tại một lần, vào lúc "
+"bắt đầu chương trình.  Và trong nhiều ứng dụng, dữ liệu được chuyển đổi "
+"thành :class:`Decimal` chỉ bằng một lần chuyển đổi bên trong một vòng lặp.  "
+"Với tập ngữ cảnh và số thập phân được tạo, phần lớn chương trình xử lý dữ "
+"liệu không khác gì so với các loại số Python khác."
+
+#: ../../library/decimal.rst:365
+#, fuzzy
+msgid "Decimal objects"
+msgstr "Đối tượng thập phân"
+
+#: ../../library/decimal.rst:370
+#, fuzzy
+msgid "Construct a new :class:`Decimal` object based from *value*."
+msgstr "Xây dựng một đối tượng :class:`Decimal` mới dựa trên *value*."
+
+#: ../../library/decimal.rst:372
+#, fuzzy
+msgid ""
+"*value* can be an integer, string, tuple, :class:`float`, or another "
+":class:`Decimal` object. If no *value* is given, returns ``Decimal('0')``.  "
+"If *value* is a string, it should conform to the decimal numeric string "
+"syntax after leading and trailing whitespace characters, as well as "
+"underscores throughout, are removed::"
+msgstr ""
+"*value* có thể là một số nguyên, chuỗi, bộ dữ liệu, :class:`float` hoặc một "
+"đối tượng :class:`Decimal` khác. Nếu không có *value*, trả về "
+"``Decimal('0')``.  Nếu *value* là một chuỗi, thì nó phải tuân theo cú pháp "
+"chuỗi số thập phân sau khi các ký tự khoảng trắng ở đầu và cuối cũng như dấu"
+" gạch dưới xuyên suốt đều bị xóa::"
+
+#: ../../library/decimal.rst:377
+#, fuzzy
+msgid ""
+"sign           ::=  '+' | '-'\n"
+"digit          ::=  '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'\n"
+"indicator      ::=  'e' | 'E'\n"
+"digits         ::=  digit [digit]...\n"
+"decimal-part   ::=  digits '.' [digits] | ['.'] digits\n"
+"exponent-part  ::=  indicator [sign] digits\n"
+"infinity       ::=  'Infinity' | 'Inf'\n"
+"nan            ::=  'NaN' [digits] | 'sNaN' [digits]\n"
+"numeric-value  ::=  decimal-part [exponent-part] | infinity\n"
+"numeric-string ::=  [sign] numeric-value | [sign] nan"
+msgstr ""
+"dấu ::= '+' | '-'\n"
+"chữ số ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'\n"
+"chỉ báo ::= 'e' | 'E'\n"
+"chữ số ::= chữ số [chữ số]...\n"
+"phần thập phân ::= chữ số '.' [chữ số] | ['.'] chữ số\n"
+"phần số mũ ::= chỉ báo [dấu] chữ số\n"
+"vô cực ::= 'Vô cực' | 'Thông tin'\n"
+"nan ::= 'NaN' [chữ số] | 'sNaN' [chữ số]\n"
+"giá trị số ::= phần thập phân [phần mũ] | vô cực\n"
+"chuỗi số ::= [dấu] giá trị số | [ký] nan"
+
+#: ../../library/decimal.rst:388
+#, fuzzy
+msgid ""
+"Other Unicode decimal digits are also permitted where ``digit`` appears "
+"above.  These include decimal digits from various other alphabets (for "
+"example, Arabic-Indic and Devanāgarī digits) along with the fullwidth digits"
+" ``'\\uff10'`` through ``'\\uff19'``. Case is not significant, so, for "
+"example, ``inf``, ``Inf``, ``INFINITY``, and ``iNfINity`` are all acceptable"
+" spellings for positive infinity."
+msgstr ""
+"Các chữ số thập phân Unicode khác cũng được phép khi ``digit`` xuất hiện ở "
+"trên.  Chúng bao gồm các chữ số thập phân từ nhiều bảng chữ cái khác (ví dụ:"
+" chữ số Ả Rập-Ấn Độ và Devanāgarī) cùng với các chữ số có chiều rộng đầy đủ "
+"từ ``'\\uff10'`` đến ``'\\uff19'``. Chữ hoa chữ thường không đáng kể, vì "
+"vậy, ví dụ: ``inf``, ``Inf``, ``INFINITY`` và ``iNfINity`` đều là cách viết "
+"được chấp nhận cho số dương vô cùng."
+
+#: ../../library/decimal.rst:395
+#, fuzzy
+msgid ""
+"If *value* is a :class:`tuple`, it should have three components, a sign "
+"(``0`` for positive or ``1`` for negative), a :class:`tuple` of digits, and "
+"an integer exponent. For example, ``Decimal((0, (1, 4, 1, 4), -3))`` returns"
+" ``Decimal('1.414')``."
+msgstr ""
+"Nếu *value* là :class:`tuple` thì nó phải có ba thành phần, một dấu (``0`` "
+"cho số dương hoặc ``1`` cho số âm), một :class:`tuple` gồm các chữ số và số "
+"mũ nguyên. Ví dụ: ``Decimal((0, (1, 4, 1, 4), -3))`` trả về "
+"``Decimal('1.414')``."
+
+#: ../../library/decimal.rst:400
+#, fuzzy
+msgid ""
+"If *value* is a :class:`float`, the binary floating-point value is "
+"losslessly converted to its exact decimal equivalent.  This conversion can "
+"often require 53 or more digits of precision.  For example, "
+"``Decimal(float('1.1'))`` converts to "
+"``Decimal('1.100000000000000088817841970012523233890533447265625')``."
+msgstr ""
+"Nếu *value* là :class:`float`, giá trị dấu phẩy động nhị phân sẽ được chuyển"
+" đổi dễ dàng thành số thập phân tương đương chính xác của nó.  Việc chuyển "
+"đổi này thường có thể yêu cầu độ chính xác từ 53 chữ số trở lên.  Ví dụ: "
+"``Decimal(float('1.1'))`` chuyển đổi thành "
+"``Decimal('1.100000000000000088817841970012523233890533447265625')``."
+
+#: ../../library/decimal.rst:406
+#, fuzzy
+msgid ""
+"The *context* precision does not affect how many digits are stored. That is "
+"determined exclusively by the number of digits in *value*. For example, "
+"``Decimal('3.00000')`` records all five zeros even if the context precision "
+"is only three."
+msgstr ""
+"Độ chính xác của *context* không ảnh hưởng đến số lượng chữ số được lưu trữ."
+" Điều đó được xác định hoàn toàn bằng số chữ số trong *value*. Ví dụ: "
+"``Decimal('3.00000')`` ghi lại tất cả năm số không ngay cả khi độ chính xác "
+"của ngữ cảnh chỉ là ba."
+
+#: ../../library/decimal.rst:411
+#, fuzzy
+msgid ""
+"The purpose of the *context* argument is determining what to do if *value* "
+"is a malformed string.  If the context traps :const:`InvalidOperation`, an "
+"exception is raised; otherwise, the constructor returns a new Decimal with "
+"the value of ``NaN``."
+msgstr ""
+"Mục đích của đối số *context* là xác định phải làm gì nếu *value* là một "
+"chuỗi không đúng định dạng.  Nếu ngữ cảnh bẫy :const:`InvalidOperation`, một"
+" ngoại lệ sẽ xuất hiện; mặt khác, hàm tạo trả về một Số thập phân mới với "
+"giá trị ``NaN``."
+
+#: ../../library/decimal.rst:416
+#, fuzzy
+msgid "Once constructed, :class:`Decimal` objects are immutable."
+msgstr "Sau khi được xây dựng, các đối tượng :class:`Decimal` là bất biến."
+
+#: ../../library/decimal.rst:418
+#, fuzzy
+msgid ""
+"The argument to the constructor is now permitted to be a :class:`float` "
+"instance."
+msgstr "Đối số cho hàm tạo hiện được phép là phiên bản :class:`float`."
+
+#: ../../library/decimal.rst:422
+#, fuzzy
+msgid ""
+":class:`float` arguments raise an exception if the :exc:`FloatOperation` "
+"trap is set. By default the trap is off."
+msgstr ""
+"Các đối số :class:`float` đưa ra một ngoại lệ nếu bẫy :exc:`FloatOperation` "
+"được đặt. Theo mặc định, bẫy bị tắt."
+
+#: ../../library/decimal.rst:426
+#, fuzzy
+msgid ""
+"Underscores are allowed for grouping, as with integral and floating-point "
+"literals in code."
+msgstr ""
+"Dấu gạch dưới được cho phép để nhóm, như với các chữ số nguyên và dấu phẩy "
+"động trong mã."
+
+#: ../../library/decimal.rst:430
+#, fuzzy
+msgid ""
+"Decimal floating-point objects share many properties with the other built-in"
+" numeric types such as :class:`float` and :class:`int`.  All of the usual "
+"math operations and special methods apply.  Likewise, decimal objects can be"
+" copied, pickled, printed, used as dictionary keys, used as set elements, "
+"compared, sorted, and coerced to another type (such as :class:`float` or "
+":class:`int`)."
+msgstr ""
+"Các đối tượng dấu phẩy động thập phân chia sẻ nhiều thuộc tính với các kiểu "
+"số tích hợp khác như :class:`float` và :class:`int`.  Tất cả các phép toán "
+"thông thường và các phương pháp đặc biệt đều được áp dụng.  Tương tự như "
+"vậy, các đối tượng thập phân có thể được sao chép, chọn lọc, in, dùng làm "
+"khóa từ điển, dùng làm phần tử tập hợp, so sánh, sắp xếp và ép buộc sang "
+"loại khác (chẳng hạn như :class:`float` hoặc :class:`int`)."
+
+#: ../../library/decimal.rst:437
+#, fuzzy
+msgid ""
+"There are some small differences between arithmetic on Decimal objects and "
+"arithmetic on integers and floats.  When the remainder operator ``%`` is "
+"applied to Decimal objects, the sign of the result is the sign of the "
+"*dividend* rather than the sign of the divisor::"
+msgstr ""
+"Có một số khác biệt nhỏ giữa số học trên các đối tượng thập phân và số học "
+"trên số nguyên và số float.  Khi toán tử số dư ``%`` được áp dụng cho các "
+"đối tượng Thập phân, dấu của kết quả là dấu của *dividend* chứ không phải là"
+" dấu của số chia::"
+
+#: ../../library/decimal.rst:442
+#, fuzzy
+msgid ""
+">>> (-7) % 4\n"
+"1\n"
+">>> Decimal(-7) % Decimal(4)\n"
+"Decimal('-3')"
+msgstr ""
+">>> (-7) % 4\n"
+"1\n"
+">>> Số thập phân(-7) % Số thập phân(4)\n"
+"Thập phân('-3')"
+
+#: ../../library/decimal.rst:447
+#, fuzzy
+msgid ""
+"The integer division operator ``//`` behaves analogously, returning the "
+"integer part of the true quotient (truncating towards zero) rather than its "
+"floor, so as to preserve the usual identity ``x == (x // y) * y + x % y``::"
+msgstr ""
+"Toán tử chia số nguyên ``//`` hoạt động tương tự, trả về phần nguyên của "
+"thương số thực (cắt ngắn về 0) thay vì giá trị sàn của nó, để duy trì nhận "
+"dạng thông thường ``x == (x // y) * y + x % y``::"
+
+#: ../../library/decimal.rst:451
+#, fuzzy
+msgid ""
+">>> -7 // 4\n"
+"-2\n"
+">>> Decimal(-7) // Decimal(4)\n"
+"Decimal('-1')"
+msgstr ""
+">>> -7 // 4\n"
+"-2\n"
+">>> Số thập phân(-7) // Số thập phân(4)\n"
+"Thập phân('-1')"
+
+#: ../../library/decimal.rst:456
+#, fuzzy
+msgid ""
+"The ``%`` and ``//`` operators implement the ``remainder`` and ``divide-"
+"integer`` operations (respectively) as described in the specification."
+msgstr ""
+"Các toán tử ``%`` và ``//`` triển khai các hoạt động ``remainder`` và "
+"``divide-integer`` (tương ứng) như được mô tả trong thông số kỹ thuật."
+
+#: ../../library/decimal.rst:460
+#, fuzzy
+msgid ""
+"Decimal objects cannot generally be combined with floats or instances of "
+":class:`fractions.Fraction` in arithmetic operations: an attempt to add a "
+":class:`Decimal` to a :class:`float`, for example, will raise a "
+":exc:`TypeError`.  However, it is possible to use Python's comparison "
+"operators to compare a :class:`Decimal` instance ``x`` with another number "
+"``y``.  This avoids confusing results when doing equality comparisons "
+"between numbers of different types."
+msgstr ""
+"Các đối tượng thập phân thường không thể được kết hợp với số float hoặc "
+"phiên bản của :class:`fractions.Fraction` trong các phép toán số học: ví dụ:"
+" nỗ lực thêm :class:`Decimal` vào :class:`float` sẽ tạo ra :exc:`TypeError`."
+"  Tuy nhiên, có thể sử dụng toán tử so sánh của Python để so sánh một phiên "
+"bản :class:`Decimal` ``x`` với một số ``y`` khác.  Điều này tránh các kết "
+"quả khó hiểu khi thực hiện so sánh đẳng thức giữa các số thuộc các loại khác"
+" nhau."
+
+#: ../../library/decimal.rst:468
+#, fuzzy
+msgid ""
+"Mixed-type comparisons between :class:`Decimal` instances and other numeric "
+"types are now fully supported."
+msgstr ""
+"So sánh kiểu hỗn hợp giữa các phiên bản :class:`Decimal` và các loại số khác"
+" hiện được hỗ trợ đầy đủ."
+
+#: ../../library/decimal.rst:472
+#, fuzzy
+msgid ""
+"In addition to the standard numeric properties, decimal floating-point "
+"objects also have a number of specialized methods:"
+msgstr ""
+"Ngoài các thuộc tính số tiêu chuẩn, các đối tượng dấu phẩy động thập phân "
+"còn có một số phương thức chuyên biệt:"
+
+#: ../../library/decimal.rst:478
+#, fuzzy
+msgid ""
+"Return the adjusted exponent after shifting out the coefficient's rightmost "
+"digits until only the lead digit remains: ``Decimal('321e+5').adjusted()`` "
+"returns seven.  Used for determining the position of the most significant "
+"digit with respect to the decimal point."
+msgstr ""
+"Trả về số mũ đã điều chỉnh sau khi dịch chuyển các chữ số ngoài cùng bên "
+"phải của hệ số cho đến khi chỉ còn lại chữ số dẫn đầu: "
+"``Decimal('321e+5').adjusted()`` trả về bảy.  Được sử dụng để xác định vị "
+"trí của chữ số có nghĩa nhất đối với dấu thập phân."
+
+#: ../../library/decimal.rst:485
+#, fuzzy
+msgid ""
+"Return a pair ``(n, d)`` of integers that represent the given "
+":class:`Decimal` instance as a fraction, in lowest terms and with a positive"
+" denominator::"
+msgstr ""
+"Trả về một cặp số nguyên ``(n, d)`` biểu thị phiên bản :class:`Decimal` đã "
+"cho dưới dạng phân số, ở dạng thấp nhất và có mẫu số dương::"
+
+#: ../../library/decimal.rst:489
+#, fuzzy
+msgid ""
+">>> Decimal('-3.14').as_integer_ratio()\n"
+"(-157, 50)"
+msgstr ""
+">>> Số thập phân('-3.14').as_integer_ratio()\n"
+"(-157, 50)"
+
+#: ../../library/decimal.rst:492
+#, fuzzy
+msgid ""
+"The conversion is exact.  Raise OverflowError on infinities and ValueError "
+"on NaNs."
+msgstr ""
+"Việc chuyển đổi là chính xác.  Tăng OverflowError trên vô số và ValueError "
+"trên NaN."
+
+#: ../../library/decimal.rst:499
+#, fuzzy
+msgid ""
+"Return a :term:`named tuple` representation of the number: "
+"``DecimalTuple(sign, digits, exponent)``."
+msgstr ""
+"Trả về biểu diễn :term:`named tuple` của số: ``DecimalTuple(sign, digits, "
+"exponent)``."
+
+#: ../../library/decimal.rst:505
+#, fuzzy
+msgid ""
+"Return the canonical encoding of the argument.  Currently, the encoding of a"
+" :class:`Decimal` instance is always canonical, so this operation returns "
+"its argument unchanged."
+msgstr ""
+"Trả về mã hóa chuẩn của đối số.  Hiện tại, mã hóa của phiên bản "
+":class:`Decimal` luôn là chuẩn, vì vậy thao tác này trả về đối số của nó "
+"không thay đổi."
+
+#: ../../library/decimal.rst:511
+#, fuzzy
+msgid ""
+"Compare the values of two Decimal instances.  :meth:`compare` returns a "
+"Decimal instance, and if either operand is a NaN then the result is a NaN::"
+msgstr ""
+"So sánh giá trị của hai trường hợp thập phân.  :meth:`compare` trả về một "
+"phiên bản thập phân và nếu một trong hai toán hạng là NaN thì kết quả là "
+"NaN::"
+
+#: ../../library/decimal.rst:515
+#, fuzzy
+msgid ""
+"a or b is a NaN  ==> Decimal('NaN')\n"
+"a < b            ==> Decimal('-1')\n"
+"a == b           ==> Decimal('0')\n"
+"a > b            ==> Decimal('1')"
+msgstr ""
+"a hoặc b là NaN ==> Thập phân('NaN')\n"
+"a < b ==> Thập phân('-1')\n"
+"a == b ==> Thập phân('0')\n"
+"a > b ==> Thập phân('1')"
+
+#: ../../library/decimal.rst:522
+#, fuzzy
+msgid ""
+"This operation is identical to the :meth:`compare` method, except that all "
+"NaNs signal.  That is, if neither operand is a signaling NaN then any quiet "
+"NaN operand is treated as though it were a signaling NaN."
+msgstr ""
+"Hoạt động này giống hệt với phương pháp :meth:`compare`, ngoại trừ tất cả "
+"tín hiệu NaN.  Nghĩa là, nếu cả hai toán hạng đều không phải là NaN báo hiệu"
+" thì mọi toán hạng NaN yên tĩnh đều được xử lý như thể nó là NaN báo hiệu."
+
+#: ../../library/decimal.rst:528
+#, fuzzy
+msgid ""
+"Compare two operands using their abstract representation rather than their "
+"numerical value.  Similar to the :meth:`compare` method, but the result "
+"gives a total ordering on :class:`Decimal` instances.  Two :class:`Decimal` "
+"instances with the same numeric value but different representations compare "
+"unequal in this ordering:"
+msgstr ""
+"So sánh hai toán hạng bằng cách sử dụng biểu diễn trừu tượng thay vì giá trị"
+" số của chúng.  Tương tự như phương pháp :meth:`compare`, nhưng kết quả đưa "
+"ra tổng thứ tự trên các phiên bản :class:`Decimal`.  Hai phiên bản "
+":class:`Decimal` có cùng giá trị số nhưng cách biểu diễn khác nhau so sánh "
+"không bằng nhau theo thứ tự này:"
+
+#: ../../library/decimal.rst:537
+#, fuzzy
+msgid ""
+"Quiet and signaling NaNs are also included in the total ordering.  The "
+"result of this function is ``Decimal('0')`` if both operands have the same "
+"representation, ``Decimal('-1')`` if the first operand is lower in the total"
+" order than the second, and ``Decimal('1')`` if the first operand is higher "
+"in the total order than the second operand.  See the specification for "
+"details of the total order."
+msgstr ""
+"Các NaN yên tĩnh và báo hiệu cũng được bao gồm trong tổng thứ tự.  Kết quả "
+"của hàm này là ``Decimal('0')`` nếu cả hai toán hạng có cùng cách biểu diễn,"
+" ``Decimal('-1')`` nếu toán hạng đầu tiên có tổng thứ tự thấp hơn toán hạng "
+"thứ hai và ``Decimal('1')`` nếu toán hạng đầu tiên có tổng thứ tự cao hơn "
+"toán hạng thứ hai.  Xem thông số kỹ thuật để biết chi tiết về tổng đơn hàng."
+
+#: ../../library/decimal.rst:544 ../../library/decimal.rst:555
+#: ../../library/decimal.rst:583 ../../library/decimal.rst:887
+#, fuzzy
+msgid ""
+"This operation is unaffected by context and is quiet: no flags are changed "
+"and no rounding is performed.  As an exception, the C version may raise "
+"InvalidOperation if the second operand cannot be converted exactly."
+msgstr ""
+"Hoạt động này không bị ảnh hưởng bởi bối cảnh và yên tĩnh: không có cờ nào "
+"được thay đổi và không thực hiện làm tròn.  Là một ngoại lệ, phiên bản C có "
+"thể tăng InvalidOperation nếu toán hạng thứ hai không thể được chuyển đổi "
+"chính xác."
+
+#: ../../library/decimal.rst:550
+#, fuzzy
+msgid ""
+"Compare two operands using their abstract representation rather than their "
+"value as in :meth:`compare_total`, but ignoring the sign of each operand. "
+"``x.compare_total_mag(y)`` is equivalent to "
+"``x.copy_abs().compare_total(y.copy_abs())``."
+msgstr ""
+"So sánh hai toán hạng bằng cách sử dụng cách biểu diễn trừu tượng thay vì "
+"giá trị của chúng như trong :meth:`compare_total` nhưng bỏ qua dấu của mỗi "
+"toán hạng. ``x.compare_total_mag(y)`` tương đương với "
+"``x.copy_abs().compare_total(y.copy_abs())``."
+
+#: ../../library/decimal.rst:561
+#, fuzzy
+msgid ""
+"Just returns self, this method is only to comply with the Decimal "
+"Specification."
+msgstr ""
+"Chỉ trả về bản thân, phương thức này chỉ tuân theo Thông số thập phân."
+
+#: ../../library/decimal.rst:566
+#, fuzzy
+msgid ""
+"Return the absolute value of the argument.  This operation is unaffected by "
+"the context and is quiet: no flags are changed and no rounding is performed."
+msgstr ""
+"Trả về giá trị tuyệt đối của đối số.  Hoạt động này không bị ảnh hưởng bởi "
+"bối cảnh và yên tĩnh: không có cờ nào được thay đổi và không thực hiện làm "
+"tròn."
+
+#: ../../library/decimal.rst:572
+#, fuzzy
+msgid ""
+"Return the negation of the argument.  This operation is unaffected by the "
+"context and is quiet: no flags are changed and no rounding is performed."
+msgstr ""
+"Trả về sự phủ định của đối số.  Hoạt động này không bị ảnh hưởng bởi bối "
+"cảnh và yên tĩnh: không có cờ nào được thay đổi và không thực hiện làm tròn."
+
+#: ../../library/decimal.rst:577
+#, fuzzy
+msgid ""
+"Return a copy of the first operand with the sign set to be the same as the "
+"sign of the second operand.  For example:"
+msgstr ""
+"Trả về một bản sao của toán hạng đầu tiên với dấu được đặt giống với dấu của"
+" toán hạng thứ hai.  Ví dụ:"
+
+#: ../../library/decimal.rst:589
+#, fuzzy
+msgid ""
+"Return the value of the (natural) exponential function ``e**x`` at the given"
+" number.  The result is correctly rounded using the :const:`ROUND_HALF_EVEN`"
+" rounding mode."
+msgstr ""
+"Trả về giá trị của hàm mũ (tự nhiên) ``e**x`` tại số đã cho.  Kết quả được "
+"làm tròn chính xác bằng chế độ làm tròn :const:`ROUND_HALF_EVEN`."
+
+#: ../../library/decimal.rst:600
+#, fuzzy
+msgid ""
+"Alternative constructor that only accepts instances of :class:`float` or "
+":class:`int`."
+msgstr ""
+"Hàm tạo thay thế chỉ chấp nhận các phiên bản của :class:`float` hoặc "
+":class:`int`."
+
+#: ../../library/decimal.rst:603
+#, fuzzy
+msgid ""
+"Note ``Decimal.from_float(0.1)`` is not the same as ``Decimal('0.1')``. "
+"Since 0.1 is not exactly representable in binary floating point, the value "
+"is stored as the nearest representable value which is "
+"``0x1.999999999999ap-4``.  That equivalent value in decimal is "
+"``0.1000000000000000055511151231257827021181583404541015625``."
+msgstr ""
+"Lưu ý ``Decimal.from_float(0.1)`` không giống ``Decimal('0.1')``. Vì 0,1 "
+"không thể biểu thị chính xác trong dấu phẩy động nhị phân nên giá trị được "
+"lưu trữ dưới dạng giá trị biểu thị gần nhất là ``0x1.999999999999ap-4``.  "
+"Giá trị tương đương đó ở dạng thập phân là "
+"``0.1000000000000000055511151231257827021181583404541015625``."
+
+#: ../../library/decimal.rst:609
+#, fuzzy
+msgid ""
+"From Python 3.2 onwards, a :class:`Decimal` instance can also be constructed"
+" directly from a :class:`float`."
+msgstr ""
+"Từ Python 3.2 trở đi, phiên bản :class:`Decimal` cũng có thể được tạo trực "
+"tiếp từ :class:`float`."
+
+#: ../../library/decimal.rst:612
+#, fuzzy
+msgid ""
+">>> Decimal.from_float(0.1)\n"
+"Decimal('0.1000000000000000055511151231257827021181583404541015625')\n"
+">>> Decimal.from_float(float('nan'))\n"
+"Decimal('NaN')\n"
+">>> Decimal.from_float(float('inf'))\n"
+"Decimal('Infinity')\n"
+">>> Decimal.from_float(float('-inf'))\n"
+"Decimal('-Infinity')"
+msgstr ""
+">>> Thập phân.from_float(0.1)\n"
+"Thập phân('0.10000000000000000055511151231257827021181583404541015625')\n"
+">>> Decimal.from_float(float('nan'))\n"
+"Thập phân('NaN')\n"
+">>> Decimal.from_float(float('inf'))\n"
+"Thập phân('Vô cực')\n"
+">>> Decimal.from_float(float('-inf'))\n"
+"Thập phân('-Infinity')"
+
+#: ../../library/decimal.rst:627
+#, fuzzy
+msgid ""
+"Alternative constructor that only accepts instances of :class:`float`, "
+":class:`int` or :class:`Decimal`, but not strings or tuples."
+msgstr ""
+"Hàm tạo thay thế chỉ chấp nhận các phiên bản của :class:`float`, "
+":class:`int` hoặc :class:`Decimal` chứ không chấp nhận chuỗi hoặc bộ dữ "
+"liệu."
+
+#: ../../library/decimal.rst:631
+#, fuzzy
+msgid ""
+">>> Decimal.from_number(314)\n"
+"Decimal('314')\n"
+">>> Decimal.from_number(0.1)\n"
+"Decimal('0.1000000000000000055511151231257827021181583404541015625')\n"
+">>> Decimal.from_number(Decimal('3.14'))\n"
+"Decimal('3.14')"
+msgstr ""
+">>> Số thập phân.from_number(314)\n"
+"Thập phân('314')\n"
+">>> Số thập phân.from_number(0.1)\n"
+"Thập phân('0.10000000000000000055511151231257827021181583404541015625')\n"
+">>> Số thập phân.from_number(Số thập phân('3.14'))\n"
+"Thập phân('3.14')"
+
+#: ../../library/decimal.rst:644
+#, fuzzy
+msgid ""
+"Fused multiply-add.  Return self*other+third with no rounding of the "
+"intermediate product self*other."
+msgstr ""
+"Hợp nhất nhân-cộng.  Trở về self*other+third with no rounding of the "
+"intermediate product self*other."
+
+#: ../../library/decimal.rst:652
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument is canonical and :const:`False` "
+"otherwise.  Currently, a :class:`Decimal` instance is always canonical, so "
+"this operation always returns :const:`True`."
+msgstr ""
+"Trả về :const:`True` nếu đối số là chuẩn và :const:`False` nếu ngược lại.  "
+"Hiện tại, phiên bản :class:`Decimal` luôn là phiên bản chuẩn, vì vậy thao "
+"tác này luôn trả về :const:`True`."
+
+#: ../../library/decimal.rst:658
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument is a finite number, and :const:`False` "
+"if the argument is an infinity or a NaN."
+msgstr ""
+"Trả về :const:`True` nếu đối số là số hữu hạn và :const:`False` nếu đối số "
+"là vô cùng hoặc NaN."
+
+#: ../../library/decimal.rst:663
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument is either positive or negative infinity"
+" and :const:`False` otherwise."
+msgstr ""
+"Trả về :const:`True` nếu đối số là vô cực dương hoặc âm và :const:`False` "
+"nếu ngược lại."
+
+#: ../../library/decimal.rst:668
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument is a (quiet or signaling) NaN and "
+":const:`False` otherwise."
+msgstr ""
+"Trả về :const:`True` nếu đối số là NaN (im lặng hoặc báo hiệu) và "
+":const:`False` nếu ngược lại."
+
+#: ../../library/decimal.rst:673
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument is a *normal* finite number.  Return "
+":const:`False` if the argument is zero, subnormal, infinite or a NaN."
+msgstr ""
+"Trả về :const:`True` nếu đối số là số hữu hạn *normal*.  Trả về "
+":const:`False` nếu đối số bằng 0, dưới chuẩn, vô hạn hoặc NaN."
+
+#: ../../library/decimal.rst:678
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument is a quiet NaN, and :const:`False` "
+"otherwise."
+msgstr ""
+"Trả về :const:`True` nếu đối số là NaN yên tĩnh và :const:`False` nếu ngược "
+"lại."
+
+#: ../../library/decimal.rst:683
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument has a negative sign and :const:`False` "
+"otherwise.  Note that zeros and NaNs can both carry signs."
+msgstr ""
+"Trả về :const:`True` nếu đối số có dấu âm và :const:`False` nếu ngược lại.  "
+"Lưu ý rằng số không và NaN đều có thể mang dấu."
+
+#: ../../library/decimal.rst:688
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument is a signaling NaN and :const:`False` "
+"otherwise."
+msgstr ""
+"Trả về :const:`True` nếu đối số là NaN báo hiệu và :const:`False` nếu ngược "
+"lại."
+
+#: ../../library/decimal.rst:693
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument is subnormal, and :const:`False` "
+"otherwise."
+msgstr ""
+"Trả về :const:`True` nếu đối số không bình thường và :const:`False` nếu "
+"ngược lại."
+
+#: ../../library/decimal.rst:698
+#, fuzzy
+msgid ""
+"Return :const:`True` if the argument is a (positive or negative) zero and "
+":const:`False` otherwise."
+msgstr ""
+"Trả về :const:`True` nếu đối số là 0 (dương hoặc âm) và :const:`False` nếu "
+"ngược lại."
+
+#: ../../library/decimal.rst:703
+#, fuzzy
+msgid ""
+"Return the natural (base e) logarithm of the operand.  The result is "
+"correctly rounded using the :const:`ROUND_HALF_EVEN` rounding mode."
+msgstr ""
+"Trả về logarit tự nhiên (cơ số e) của toán hạng.  Kết quả được làm tròn "
+"chính xác bằng chế độ làm tròn :const:`ROUND_HALF_EVEN`."
+
+#: ../../library/decimal.rst:708
+#, fuzzy
+msgid ""
+"Return the base ten logarithm of the operand.  The result is correctly "
+"rounded using the :const:`ROUND_HALF_EVEN` rounding mode."
+msgstr ""
+"Trả về logarit cơ số mười của toán hạng.  Kết quả được làm tròn chính xác "
+"bằng chế độ làm tròn :const:`ROUND_HALF_EVEN`."
+
+#: ../../library/decimal.rst:713
+#, fuzzy
+msgid ""
+"For a nonzero number, return the adjusted exponent of its operand as a "
+":class:`Decimal` instance.  If the operand is a zero then "
+"``Decimal('-Infinity')`` is returned and the :const:`DivisionByZero` flag is"
+" raised.  If the operand is an infinity then ``Decimal('Infinity')`` is "
+"returned."
+msgstr ""
+"Đối với số khác 0, trả về số mũ đã điều chỉnh của toán hạng của nó dưới dạng"
+" phiên bản :class:`Decimal`.  Nếu toán hạng bằng 0 thì "
+"``Decimal('-Infinity')`` được trả về và cờ :const:`DivisionByZero` được nâng"
+" lên.  Nếu toán hạng là vô cùng thì trả về ``Decimal('Infinity')``."
+
+#: ../../library/decimal.rst:721
+#, fuzzy
+msgid ""
+":meth:`logical_and` is a logical operation which takes two *logical "
+"operands* (see :ref:`logical_operands_label`).  The result is the digit-wise"
+" ``and`` of the two operands."
+msgstr ""
+":meth:`logical_and` là một phép toán logic cần hai *logical operands* (xem "
+":ref:`logical_operands_label`).  Kết quả là ``and`` theo chữ số của hai toán"
+" hạng."
+
+#: ../../library/decimal.rst:727
+#, fuzzy
+msgid ""
+":meth:`logical_invert` is a logical operation.  The result is the digit-wise"
+" inversion of the operand."
+msgstr ""
+":meth:`logical_invert` là một hoạt động hợp lý.  Kết quả là sự đảo ngược chữ"
+" số của toán hạng."
+
+#: ../../library/decimal.rst:732
+#, fuzzy
+msgid ""
+":meth:`logical_or` is a logical operation which takes two *logical operands*"
+" (see :ref:`logical_operands_label`).  The result is the digit-wise ``or`` "
+"of the two operands."
+msgstr ""
+":meth:`logical_or` là một phép toán logic cần hai *logical operands* (xem "
+":ref:`logical_operands_label`).  Kết quả là ``or`` theo chữ số của hai toán "
+"hạng."
+
+#: ../../library/decimal.rst:738
+#, fuzzy
+msgid ""
+":meth:`logical_xor` is a logical operation which takes two *logical "
+"operands* (see :ref:`logical_operands_label`).  The result is the digit-wise"
+" exclusive or of the two operands."
+msgstr ""
+":meth:`logical_xor` là một phép toán logic cần hai *logical operands* (xem "
+":ref:`logical_operands_label`).  Kết quả là loại trừ chữ số hoặc của hai "
+"toán hạng."
+
+#: ../../library/decimal.rst:744
+#, fuzzy
+msgid ""
+"Like ``max(self, other)`` except that the context rounding rule is applied "
+"before returning and that ``NaN`` values are either signaled or ignored "
+"(depending on the context and whether they are signaling or quiet)."
+msgstr ""
+"Giống như ``max(self, other)`` ngoại trừ quy tắc làm tròn ngữ cảnh được áp "
+"dụng trước khi trả về và các giá trị ``NaN`` được báo hiệu hoặc bị bỏ qua "
+"(tùy thuộc vào ngữ cảnh và chúng đang báo hiệu hay im lặng)."
+
+#: ../../library/decimal.rst:751
+#, fuzzy
+msgid ""
+"Similar to the :meth:`.max` method, but the comparison is done using the "
+"absolute values of the operands."
+msgstr ""
+"Tương tự như phương pháp :meth:`.max`, nhưng việc so sánh được thực hiện "
+"bằng cách sử dụng các giá trị tuyệt đối của toán hạng."
+
+#: ../../library/decimal.rst:756
+#, fuzzy
+msgid ""
+"Like ``min(self, other)`` except that the context rounding rule is applied "
+"before returning and that ``NaN`` values are either signaled or ignored "
+"(depending on the context and whether they are signaling or quiet)."
+msgstr ""
+"Giống như ``min(self, other)`` ngoại trừ quy tắc làm tròn ngữ cảnh được áp "
+"dụng trước khi trả về và các giá trị ``NaN`` được báo hiệu hoặc bị bỏ qua "
+"(tùy thuộc vào ngữ cảnh và chúng đang báo hiệu hay im lặng)."
+
+#: ../../library/decimal.rst:763
+#, fuzzy
+msgid ""
+"Similar to the :meth:`.min` method, but the comparison is done using the "
+"absolute values of the operands."
+msgstr ""
+"Tương tự như phương pháp :meth:`.min`, nhưng việc so sánh được thực hiện "
+"bằng cách sử dụng các giá trị tuyệt đối của toán hạng."
+
+#: ../../library/decimal.rst:768
+#, fuzzy
+msgid ""
+"Return the largest number representable in the given context (or in the "
+"current thread's context if no context is given) that is smaller than the "
+"given operand."
+msgstr ""
+"Trả về số lớn nhất có thể biểu thị trong ngữ cảnh đã cho (hoặc trong ngữ "
+"cảnh của luồng hiện tại nếu không có ngữ cảnh nào được đưa ra) nhỏ hơn toán "
+"hạng đã cho."
+
+#: ../../library/decimal.rst:774
+#, fuzzy
+msgid ""
+"Return the smallest number representable in the given context (or in the "
+"current thread's context if no context is given) that is larger than the "
+"given operand."
+msgstr ""
+"Trả về số nhỏ nhất có thể biểu thị trong ngữ cảnh đã cho (hoặc trong ngữ "
+"cảnh của luồng hiện tại nếu không có ngữ cảnh nào được đưa ra) lớn hơn toán "
+"hạng đã cho."
+
+#: ../../library/decimal.rst:780
+#, fuzzy
+msgid ""
+"If the two operands are unequal, return the number closest to the first "
+"operand in the direction of the second operand.  If both operands are "
+"numerically equal, return a copy of the first operand with the sign set to "
+"be the same as the sign of the second operand."
+msgstr ""
+"Nếu hai toán hạng không bằng nhau, hãy trả về số gần nhất với toán hạng thứ "
+"nhất theo hướng của toán hạng thứ hai.  Nếu cả hai toán hạng đều bằng nhau "
+"về số lượng, hãy trả về một bản sao của toán hạng đầu tiên với dấu được đặt "
+"giống với dấu của toán hạng thứ hai."
+
+#: ../../library/decimal.rst:787
+#, fuzzy
+msgid ""
+"Used for producing canonical values of an equivalence class within either "
+"the current context or the specified context."
+msgstr ""
+"Được sử dụng để tạo ra các giá trị chuẩn của lớp tương đương trong ngữ cảnh "
+"hiện tại hoặc ngữ cảnh được chỉ định."
+
+#: ../../library/decimal.rst:790
+#, fuzzy
+msgid ""
+"This has the same semantics as the unary plus operation, except that if the "
+"final result is finite it is reduced to its simplest form, with all trailing"
+" zeros removed and its sign preserved. That is, while the coefficient is "
+"non-zero and a multiple of ten the coefficient is divided by ten and the "
+"exponent is incremented by 1. Otherwise (the coefficient is zero) the "
+"exponent is set to 0. In all cases the sign is unchanged."
+msgstr ""
+"Điều này có cùng ngữ nghĩa với phép toán cộng một ngôi, ngoại trừ việc nếu "
+"kết quả cuối cùng là hữu hạn thì nó được rút gọn về dạng đơn giản nhất, với "
+"tất cả các số 0 ở cuối bị loại bỏ và dấu của nó được giữ nguyên. Nghĩa là, "
+"trong khi hệ số khác 0 và bội số của 10 thì hệ số được chia cho 10 và số mũ "
+"được tăng thêm 1. Ngược lại (hệ số bằng 0) thì số mũ được đặt thành 0. Trong"
+" mọi trường hợp, dấu không thay đổi."
+
+#: ../../library/decimal.rst:797
+#, fuzzy
+msgid ""
+"For example, ``Decimal('32.100')`` and ``Decimal('0.321000e+2')`` both "
+"normalize to the equivalent value ``Decimal('32.1')``."
+msgstr ""
+"Ví dụ: ``Decimal('32.100')`` và ``Decimal('0.321000e+2')`` đều chuẩn hóa "
+"thành giá trị tương đương ``Decimal('32.1')``."
+
+#: ../../library/decimal.rst:800
+#, fuzzy
+msgid "Note that rounding is applied *before* reducing to simplest form."
+msgstr ""
+"Lưu ý rằng làm tròn được áp dụng *before* giảm xuống dạng đơn giản nhất."
+
+#: ../../library/decimal.rst:802
+#, fuzzy
+msgid ""
+"In the latest versions of the specification, this operation is also known as"
+" ``reduce``."
+msgstr ""
+"Trong các phiên bản mới nhất của thông số kỹ thuật, thao tác này còn được "
+"gọi là ``reduce``."
+
+#: ../../library/decimal.rst:807
+#, fuzzy
+msgid ""
+"Return a string describing the *class* of the operand.  The returned value "
+"is one of the following ten strings."
+msgstr ""
+"Trả về một chuỗi mô tả *class* của toán hạng.  Giá trị trả về là một trong "
+"mười chuỗi sau."
+
+#: ../../library/decimal.rst:810
+#, fuzzy
+msgid "``\"-Infinity\"``, indicating that the operand is negative infinity."
+msgstr "``\"-Infinity\"``, chỉ ra rằng toán hạng là âm vô cùng."
+
+#: ../../library/decimal.rst:811
+#, fuzzy
+msgid "``\"-Normal\"``, indicating that the operand is a negative normal number."
+msgstr "``\"-Normal\"``, cho biết toán hạng là số bình thường âm."
+
+#: ../../library/decimal.rst:812
+#, fuzzy
+msgid "``\"-Subnormal\"``, indicating that the operand is negative and subnormal."
+msgstr "``\"-Subnormal\"``, chỉ ra rằng toán hạng là âm và không bình thường."
+
+#: ../../library/decimal.rst:813
+#, fuzzy
+msgid "``\"-Zero\"``, indicating that the operand is a negative zero."
+msgstr "``\"-Zero\"``, cho biết toán hạng là số 0 âm."
+
+#: ../../library/decimal.rst:814
+#, fuzzy
+msgid "``\"+Zero\"``, indicating that the operand is a positive zero."
+msgstr "``\"+Zero\"``, cho biết toán hạng là số 0 dương."
+
+#: ../../library/decimal.rst:815
+#, fuzzy
+msgid "``\"+Subnormal\"``, indicating that the operand is positive and subnormal."
+msgstr "``\"+Subnormal\"``, cho biết toán hạng là dương và không bình thường."
+
+#: ../../library/decimal.rst:816
+#, fuzzy
+msgid "``\"+Normal\"``, indicating that the operand is a positive normal number."
+msgstr "``\"+Normal\"``, cho biết toán hạng là số bình thường dương."
+
+#: ../../library/decimal.rst:817
+#, fuzzy
+msgid "``\"+Infinity\"``, indicating that the operand is positive infinity."
+msgstr "``\"+Infinity\"``, biểu thị rằng toán hạng là dương vô cùng."
+
+#: ../../library/decimal.rst:818
+#, fuzzy
+msgid "``\"NaN\"``, indicating that the operand is a quiet NaN (Not a Number)."
+msgstr "``\"NaN\"``, cho biết toán hạng là NaN yên tĩnh (Không phải số)."
+
+#: ../../library/decimal.rst:819
+#, fuzzy
+msgid "``\"sNaN\"``, indicating that the operand is a signaling NaN."
+msgstr "``\"sNaN\"``, chỉ ra rằng toán hạng là NaN báo hiệu."
+
+#: ../../library/decimal.rst:823
+#, fuzzy
+msgid ""
+"Return a value equal to the first operand after rounding and having the "
+"exponent of the second operand."
+msgstr ""
+"Trả về giá trị bằng toán hạng thứ nhất sau khi làm tròn và có số mũ của toán"
+" hạng thứ hai."
+
+#: ../../library/decimal.rst:829
+#, fuzzy
+msgid ""
+"Unlike other operations, if the length of the coefficient after the quantize"
+" operation would be greater than precision, then an "
+":const:`InvalidOperation` is signaled. This guarantees that, unless there is"
+" an error condition, the quantized exponent is always equal to that of the "
+"right-hand operand."
+msgstr ""
+"Không giống như các phép toán khác, nếu độ dài của hệ số sau phép toán lượng"
+" tử hóa lớn hơn độ chính xác thì :const:`InvalidOperation` sẽ được báo hiệu."
+" Điều này đảm bảo rằng, trừ khi có điều kiện lỗi, số mũ lượng tử hóa luôn "
+"bằng toán hạng bên phải."
+
+#: ../../library/decimal.rst:835
+#, fuzzy
+msgid ""
+"Also unlike other operations, quantize never signals Underflow, even if the "
+"result is subnormal and inexact."
+msgstr ""
+"Ngoài ra, không giống như các hoạt động khác, lượng tử hóa không bao giờ báo"
+" hiệu Underflow, ngay cả khi kết quả dưới mức bình thường và không chính "
+"xác."
+
+#: ../../library/decimal.rst:838
+#, fuzzy
+msgid ""
+"If the exponent of the second operand is larger than that of the first then "
+"rounding may be necessary.  In this case, the rounding mode is determined by"
+" the ``rounding`` argument if given, else by the given ``context`` argument;"
+" if neither argument is given the rounding mode of the current thread's "
+"context is used."
+msgstr ""
+"Nếu số mũ của toán hạng thứ hai lớn hơn số mũ của toán hạng thứ nhất thì có "
+"thể cần phải làm tròn.  Trong trường hợp này, chế độ làm tròn được xác định "
+"bởi đối số ``rounding`` nếu được đưa ra, nếu không thì bằng đối số "
+"``context`` đã cho; nếu không có đối số nào được đưa ra thì chế độ làm tròn "
+"của ngữ cảnh của luồng hiện tại sẽ được sử dụng."
+
+#: ../../library/decimal.rst:844
+#, fuzzy
+msgid ""
+"An error is returned whenever the resulting exponent is greater than "
+":attr:`~Context.Emax` or less than :meth:`~Context.Etiny`."
+msgstr ""
+"Một lỗi được trả về bất cứ khi nào số mũ kết quả lớn hơn "
+":attr:`~Context.Emax` hoặc nhỏ hơn :meth:`~Context.Etiny`."
+
+#: ../../library/decimal.rst:849
+#, fuzzy
+msgid ""
+"Return ``Decimal(10)``, the radix (base) in which the :class:`Decimal` class"
+" does all its arithmetic.  Included for compatibility with the "
+"specification."
+msgstr ""
+"Trả về ``Decimal(10)``, cơ số (cơ số) trong đó lớp :class:`Decimal` thực "
+"hiện tất cả số học của nó.  Bao gồm để tương thích với đặc điểm kỹ thuật."
+
+#: ../../library/decimal.rst:855
+#, python-format, fuzzy
+msgid ""
+"Return the remainder from dividing *self* by *other*.  This differs from "
+"``self % other`` in that the sign of the remainder is chosen so as to "
+"minimize its absolute value.  More precisely, the return value is ``self - n"
+" * other`` where ``n`` is the integer nearest to the exact value of ``self /"
+" other``, and if two integers are equally near then the even one is chosen."
+msgstr ""
+"Trả về số dư khi chia *self* cho *other*.  Điều này khác với ``self % "
+"other`` ở chỗ dấu của phần dư được chọn để cực tiểu hóa giá trị tuyệt đối "
+"của nó.  Chính xác hơn, giá trị trả về là ``self - n * other`` trong đó "
+"``n`` là số nguyên gần nhất với giá trị chính xác của ``self / other`` và "
+"nếu hai số nguyên gần bằng nhau thì số chẵn sẽ được chọn."
+
+#: ../../library/decimal.rst:862
+#, fuzzy
+msgid "If the result is zero then its sign will be the sign of *self*."
+msgstr "Nếu kết quả bằng 0 thì dấu của nó sẽ là dấu của *self*."
+
+#: ../../library/decimal.rst:873
+#, fuzzy
+msgid ""
+"Return the result of rotating the digits of the first operand by an amount "
+"specified by the second operand.  The second operand must be an integer in "
+"the range -precision through precision.  The absolute value of the second "
+"operand gives the number of places to rotate.  If the second operand is "
+"positive then rotation is to the left; otherwise rotation is to the right. "
+"The coefficient of the first operand is padded on the left with zeros to "
+"length precision if necessary.  The sign and exponent of the first operand "
+"are unchanged."
+msgstr ""
+"Trả về kết quả của việc xoay các chữ số của toán hạng thứ nhất theo số lượng"
+" được chỉ định bởi toán hạng thứ hai.  Toán hạng thứ hai phải là số nguyên "
+"trong phạm vi - độ chính xác đến độ chính xác.  Giá trị tuyệt đối của toán "
+"hạng thứ hai cho biết số vị trí cần xoay.  Nếu toán hạng thứ hai là dương "
+"thì phép quay sang trái; nếu không thì xoay sang phải. Hệ số của toán hạng "
+"đầu tiên được đệm ở bên trái với độ chính xác từ 0 đến độ dài nếu cần.  Dấu "
+"và số mũ của toán hạng đầu tiên không thay đổi."
+
+#: ../../library/decimal.rst:884
+#, fuzzy
+msgid ""
+"Test whether self and other have the same exponent or whether both are "
+"``NaN``."
+msgstr ""
+"Kiểm tra xem bản thân và người khác có cùng số mũ hay cả hai đều là ``NaN``."
+
+#: ../../library/decimal.rst:893
+#, fuzzy
+msgid ""
+"Return the first operand with exponent adjusted by the second. Equivalently,"
+" return the first operand multiplied by ``10**other``.  The second operand "
+"must be an integer."
+msgstr ""
+"Trả về toán hạng đầu tiên với số mũ được điều chỉnh theo số thứ hai. Tương "
+"tự, trả về toán hạng đầu tiên nhân với ``10**other``.  Toán hạng thứ hai "
+"phải là số nguyên."
+
+#: ../../library/decimal.rst:899
+#, fuzzy
+msgid ""
+"Return the result of shifting the digits of the first operand by an amount "
+"specified by the second operand.  The second operand must be an integer in "
+"the range -precision through precision.  The absolute value of the second "
+"operand gives the number of places to shift.  If the second operand is "
+"positive then the shift is to the left; otherwise the shift is to the right."
+"  Digits shifted into the coefficient are zeros.  The sign and exponent of "
+"the first operand are unchanged."
+msgstr ""
+"Trả về kết quả của việc dịch chuyển các chữ số của toán hạng thứ nhất theo "
+"số lượng được chỉ định bởi toán hạng thứ hai.  Toán hạng thứ hai phải là số "
+"nguyên trong phạm vi - độ chính xác đến độ chính xác.  Giá trị tuyệt đối của"
+" toán hạng thứ hai cho biết số vị trí cần dịch chuyển.  Nếu toán hạng thứ "
+"hai dương thì phép dịch sang trái; nếu không thì sự dịch chuyển sang phải.  "
+"Các chữ số được chuyển vào hệ số là số không.  Dấu và số mũ của toán hạng "
+"đầu tiên không thay đổi."
+
+#: ../../library/decimal.rst:909
+#, fuzzy
+msgid "Return the square root of the argument to full precision."
+msgstr "Trả lại căn bậc hai của đối số về độ chính xác hoàn toàn."
+
+#: ../../library/decimal.rst:914 ../../library/decimal.rst:1571
+#, fuzzy
+msgid ""
+"Convert to a string, using engineering notation if an exponent is needed."
+msgstr "Chuyển đổi thành chuỗi, sử dụng ký hiệu kỹ thuật nếu cần số mũ."
+
+#: ../../library/decimal.rst:916 ../../library/decimal.rst:1573
+#, fuzzy
+msgid ""
+"Engineering notation has an exponent which is a multiple of 3.  This can "
+"leave up to 3 digits to the left of the decimal place and may require the "
+"addition of either one or two trailing zeros."
+msgstr ""
+"Ký hiệu kỹ thuật có số mũ là bội số của 3. Ký hiệu này có thể để lại tối đa "
+"3 chữ số ở bên trái vị trí thập phân và có thể yêu cầu thêm một hoặc hai số "
+"0 ở cuối."
+
+#: ../../library/decimal.rst:920
+#, fuzzy
+msgid ""
+"For example, this converts ``Decimal('123E+1')`` to ``Decimal('1.23E+3')``."
+msgstr ""
+"Ví dụ: điều này chuyển đổi ``Decimal('123E+1')`` thành "
+"``Decimal('1.23E+3')``."
+
+#: ../../library/decimal.rst:924
+#, fuzzy
+msgid ""
+"Identical to the :meth:`to_integral_value` method.  The ``to_integral`` name"
+" has been kept for compatibility with older versions."
+msgstr ""
+"Giống hệt với phương pháp :meth:`to_integral_value`.  Tên ``to_integral`` đã"
+" được giữ lại để tương thích với các phiên bản cũ hơn."
+
+#: ../../library/decimal.rst:929
+#, fuzzy
+msgid ""
+"Round to the nearest integer, signaling :const:`Inexact` or :const:`Rounded`"
+" as appropriate if rounding occurs.  The rounding mode is determined by the "
+"``rounding`` parameter if given, else by the given ``context``.  If neither "
+"parameter is given then the rounding mode of the current context is used."
+msgstr ""
+"Làm tròn đến số nguyên gần nhất, báo hiệu :const:`Inexact` hoặc "
+":const:`Rounded` nếu thích hợp nếu làm tròn.  Chế độ làm tròn được xác định "
+"bởi tham số ``rounding`` nếu được cung cấp, nếu không thì được xác định bởi "
+"``context`` đã cho.  Nếu không có tham số nào được đưa ra thì chế độ làm "
+"tròn của ngữ cảnh hiện tại sẽ được sử dụng."
+
+#: ../../library/decimal.rst:937
+#, fuzzy
+msgid ""
+"Round to the nearest integer without signaling :const:`Inexact` or "
+":const:`Rounded`.  If given, applies *rounding*; otherwise, uses the "
+"rounding method in either the supplied *context* or the current context."
+msgstr ""
+"Làm tròn đến số nguyên gần nhất mà không báo hiệu :const:`Inexact` hoặc "
+":const:`Rounded`.  Nếu được, áp dụng *rounding*; mặt khác, sử dụng phương "
+"pháp làm tròn trong *context* được cung cấp hoặc ngữ cảnh hiện tại."
+
+#: ../../library/decimal.rst:941
+#, fuzzy
+msgid "Decimal numbers can be rounded using the :func:`.round` function:"
+msgstr "Số thập phân có thể được làm tròn bằng hàm :func:`.round`:"
+
+#: ../../library/decimal.rst:946
+#, fuzzy
+msgid ""
+"If *ndigits* is not given or ``None``, returns the nearest :class:`int` to "
+"*number*, rounding ties to even, and ignoring the rounding mode of the "
+":class:`Decimal` context.  Raises :exc:`OverflowError` if *number* is an "
+"infinity or :exc:`ValueError` if it is a (quiet or signaling) NaN."
+msgstr ""
+"Nếu *ndigits* không được cung cấp hoặc ``None``, trả về :class:`int` gần "
+"nhất cho *number*, làm tròn các mối quan hệ thành chẵn và bỏ qua chế độ làm "
+"tròn của ngữ cảnh :class:`Decimal`.  Tăng :exc:`OverflowError` nếu *number* "
+"là vô cực hoặc :exc:`ValueError` nếu nó là NaN (im lặng hoặc báo hiệu)."
+
+#: ../../library/decimal.rst:952
+#, fuzzy
+msgid ""
+"If *ndigits* is an :class:`int`, the context's rounding mode is respected "
+"and a :class:`Decimal` representing *number* rounded to the nearest multiple"
+" of ``Decimal('1E-ndigits')`` is returned; in this case, ``round(number, "
+"ndigits)`` is equivalent to ``self.quantize(Decimal('1E-ndigits'))``.  "
+"Returns ``Decimal('NaN')`` if *number* is a quiet NaN.  Raises "
+":class:`InvalidOperation` if *number* is an infinity, a signaling NaN, or if"
+" the length of the coefficient after the quantize operation would be greater"
+" than the current context's precision.  In other words, for the non-corner "
+"cases:"
+msgstr ""
+"Nếu *ndigits* là :class:`int`, chế độ làm tròn ngữ cảnh sẽ được tôn trọng và"
+" trả về :class:`Decimal` đại diện cho *number* được làm tròn đến bội số gần "
+"nhất của ``Decimal('1E-ndigits')``; trong trường hợp này, ``round(number, "
+"ndigits)`` tương đương với ``self.quantize(Decimal('1E-ndigits'))``.  Trả về"
+" ``Decimal('NaN')`` nếu *number* là NaN yên tĩnh.  Tăng "
+":class:`InvalidOperation` nếu *number* là vô cực, NaN báo hiệu hoặc nếu độ "
+"dài của hệ số sau thao tác lượng tử hóa sẽ lớn hơn độ chính xác của ngữ cảnh"
+" hiện tại.  Nói cách khác, đối với các trường hợp không góc:"
+
+#: ../../library/decimal.rst:962
+#, fuzzy
+msgid ""
+"if *ndigits* is positive, return *number* rounded to *ndigits* decimal "
+"places;"
+msgstr ""
+"nếu *ndigits* là dương, trả về *number* được làm tròn đến số thập phân "
+"*ndigits*;"
+
+#: ../../library/decimal.rst:964
+#, fuzzy
+msgid "if *ndigits* is zero, return *number* rounded to the nearest integer;"
+msgstr ""
+"nếu *ndigits* bằng 0, trả về *number* được làm tròn đến số nguyên gần nhất;"
+
+#: ../../library/decimal.rst:965
+#, fuzzy
+msgid ""
+"if *ndigits* is negative, return *number* rounded to the nearest multiple of"
+" ``10**abs(ndigits)``."
+msgstr ""
+"nếu *ndigits* âm, trả về *number* được làm tròn đến bội số gần nhất của "
+"``10**abs(ndigits)``."
+
+#: ../../library/decimal.rst:968
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../library/decimal.rst:970
+#, fuzzy
+msgid ""
+">>> from decimal import Decimal, getcontext, ROUND_DOWN\n"
+">>> getcontext().rounding = ROUND_DOWN\n"
+">>> round(Decimal('3.75'))     # context rounding ignored\n"
+"4\n"
+">>> round(Decimal('3.5'))      # round-ties-to-even\n"
+"4\n"
+">>> round(Decimal('3.75'), 0)  # uses the context rounding\n"
+"Decimal('3')\n"
+">>> round(Decimal('3.75'), 1)\n"
+"Decimal('3.7')\n"
+">>> round(Decimal('3.75'), -1)\n"
+"Decimal('0E+1')"
+msgstr ""
+">>> từ nhập thập phân Thập phân, getcontext, ROUND_DOWN\n"
+">>> getcontext().rounding = ROUND_DOWN\n"
+">>> round(Decimal('3.75')) làm tròn # context bị bỏ qua\n"
+"4\n"
+">>> tròn(Thập phân('3.5')) # round-ties-to-even\n"
+"4\n"
+">>> round(Decimal('3.75'), 0) # uses làm tròn bối cảnh\n"
+"Thập phân('3')\n"
+">>> vòng(Thập phân('3.75'), 1)\n"
+"Thập phân('3.7')\n"
+">>> vòng(Thập phân('3.75'), -1)\n"
+"Thập phân('0E+1')"
+
+#: ../../library/decimal.rst:987
+#, fuzzy
+msgid "Logical operands"
+msgstr "Toán hạng logic"
+
+#: ../../library/decimal.rst:989
+#, fuzzy
+msgid ""
+"The :meth:`~Decimal.logical_and`, :meth:`~Decimal.logical_invert`, "
+":meth:`~Decimal.logical_or`, and :meth:`~Decimal.logical_xor` methods expect"
+" their arguments to be *logical operands*.  A *logical operand* is a "
+":class:`Decimal` instance whose exponent and sign are both zero, and whose "
+"digits are all either ``0`` or ``1``."
+msgstr ""
+"Các phương thức :meth:`~Decimal.logical_and`, "
+":meth:`~Decimal.logical_invert`, :meth:`~Decimal.logical_or` và "
+":meth:`~Decimal.logical_xor` dự kiến đối số của chúng là *logical operands*."
+"  *logical operand* là một phiên bản :class:`Decimal` có số mũ và dấu đều "
+"bằng 0 và các chữ số của nó đều là ``0`` hoặc ``1``."
+
+#: ../../library/decimal.rst:1001
+#, fuzzy
+msgid "Context objects"
+msgstr "Đối tượng bối cảnh"
+
+#: ../../library/decimal.rst:1003
+#, fuzzy
+msgid ""
+"Contexts are environments for arithmetic operations.  They govern precision,"
+" set rules for rounding, determine which signals are treated as exceptions, "
+"and limit the range for exponents."
+msgstr ""
+"Bối cảnh là môi trường cho các phép tính số học.  Chúng chi phối độ chính "
+"xác, đặt ra các quy tắc làm tròn, xác định tín hiệu nào được coi là ngoại lệ"
+" và giới hạn phạm vi cho số mũ."
+
+#: ../../library/decimal.rst:1007
+#, fuzzy
+msgid ""
+"Each thread has its own current context which is accessed or changed using "
+"the :func:`getcontext` and :func:`setcontext` functions:"
+msgstr ""
+"Mỗi luồng có bối cảnh hiện tại riêng được truy cập hoặc thay đổi bằng cách "
+"sử dụng các hàm :func:`getcontext` và :func:`setcontext`:"
+
+#: ../../library/decimal.rst:1013
+#, fuzzy
+msgid "Return the current context for the active thread."
+msgstr "Trả về bối cảnh hiện tại cho chuỗi hoạt động."
+
+#: ../../library/decimal.rst:1018
+#, fuzzy
+msgid "Set the current context for the active thread to *c*."
+msgstr "Đặt bối cảnh hiện tại cho chuỗi hoạt động thành *c*."
+
+#: ../../library/decimal.rst:1020
+#, fuzzy
+msgid ""
+"You can also use the :keyword:`with` statement and the :func:`localcontext` "
+"function to temporarily change the active context."
+msgstr ""
+"Bạn cũng có thể sử dụng câu lệnh :keyword:`with` và hàm :func:`localcontext`"
+" để tạm thời thay đổi ngữ cảnh hoạt động."
+
+#: ../../library/decimal.rst:1025
+#, fuzzy
+msgid ""
+"Return a context manager that will set the current context for the active "
+"thread to a copy of *ctx* on entry to the with-statement and restore the "
+"previous context when exiting the with-statement. If no context is "
+"specified, a copy of the current context is used.  The *kwargs* argument is "
+"used to set the attributes of the new context."
+msgstr ""
+"Trả về trình quản lý bối cảnh sẽ đặt bối cảnh hiện tại cho luồng đang hoạt "
+"động thành bản sao của *ctx* khi nhập câu lệnh with và khôi phục ngữ cảnh "
+"trước đó khi thoát câu lệnh with. Nếu không có ngữ cảnh nào được chỉ định "
+"thì bản sao của ngữ cảnh hiện tại sẽ được sử dụng.  Đối số *kwargs* được sử "
+"dụng để đặt thuộc tính của bối cảnh mới."
+
+#: ../../library/decimal.rst:1031
+#, fuzzy
+msgid ""
+"For example, the following code sets the current decimal precision to 42 "
+"places, performs a calculation, and then automatically restores the previous"
+" context::"
+msgstr ""
+"Ví dụ: đoạn mã sau đặt độ chính xác thập phân hiện tại thành 42 vị trí, thực"
+" hiện phép tính rồi tự động khôi phục ngữ cảnh trước đó::"
+
+#: ../../library/decimal.rst:1034
+#, fuzzy
+msgid ""
+"from decimal import localcontext\n"
+"\n"
+"with localcontext() as ctx:\n"
+"    ctx.prec = 42   # Perform a high precision calculation\n"
+"    s = calculate_something()\n"
+"s = +s  # Round the final result back to the default precision"
+msgstr ""
+"từ bối cảnh cục bộ nhập thập phân\n"
+"\n"
+"với localcontext() là ctx:\n"
+"    ctx.prec = 42 # Perform một phép tính có độ chính xác cao\n"
+"    s = tính_thứ gì đó()\n"
+"s = +s # Round kết quả cuối cùng trở về độ chính xác mặc định"
+
+#: ../../library/decimal.rst:1041
+#, fuzzy
+msgid "Using keyword arguments, the code would be the following::"
+msgstr "Sử dụng đối số từ khóa, mã sẽ như sau::"
+
+#: ../../library/decimal.rst:1043
+#, fuzzy
+msgid ""
+"from decimal import localcontext\n"
+"\n"
+"with localcontext(prec=42) as ctx:\n"
+"    s = calculate_something()\n"
+"s = +s"
+msgstr ""
+"từ bối cảnh cục bộ nhập thập phân\n"
+"\n"
+"với localcontext(prec=42) là ctx:\n"
+"    s = tính_thứ gì đó()\n"
+"s = +s"
+
+#: ../../library/decimal.rst:1049
+#, fuzzy
+msgid ""
+"Raises :exc:`TypeError` if *kwargs* supplies an attribute that "
+":class:`Context` doesn't support.  Raises either :exc:`TypeError` or "
+":exc:`ValueError` if *kwargs* supplies an invalid value for an attribute."
+msgstr ""
+"Tăng :exc:`TypeError` nếu *kwargs* cung cấp thuộc tính mà :class:`Context` "
+"không hỗ trợ.  Tăng :exc:`TypeError` hoặc :exc:`ValueError` nếu *kwargs* "
+"cung cấp giá trị không hợp lệ cho một thuộc tính."
+
+#: ../../library/decimal.rst:1053
+#, fuzzy
+msgid ""
+":meth:`localcontext` now supports setting context attributes through the use"
+" of keyword arguments."
+msgstr ""
+":meth:`localcontext` hiện hỗ trợ cài đặt thuộc tính ngữ cảnh thông qua việc "
+"sử dụng đối số từ khóa."
+
+#: ../../library/decimal.rst:1058
+#, fuzzy
+msgid ""
+"Return a context object initialized to the proper values for one of the IEEE"
+" interchange formats.  The argument must be a multiple of 32 and less than "
+":const:`IEEE_CONTEXT_MAX_BITS`."
+msgstr ""
+"Trả về một đối tượng bối cảnh được khởi tạo về các giá trị thích hợp cho một"
+" trong các định dạng trao đổi IEEE.  Đối số phải là bội số của 32 và nhỏ hơn"
+" :const:`IEEE_CONTEXT_MAX_BITS`."
+
+#: ../../library/decimal.rst:1064
+#, fuzzy
+msgid ""
+"New contexts can also be created using the :class:`Context` constructor "
+"described below. In addition, the module provides three pre-made contexts:"
+msgstr ""
+"Các bối cảnh mới cũng có thể được tạo bằng cách sử dụng hàm tạo "
+":class:`Context` được mô tả bên dưới. Ngoài ra, mô-đun này còn cung cấp ba "
+"bối cảnh được tạo sẵn:"
+
+#: ../../library/decimal.rst:1070
+#, fuzzy
+msgid ""
+"This is a standard context defined by the General Decimal Arithmetic "
+"Specification.  Precision is set to nine.  Rounding is set to "
+":const:`ROUND_HALF_UP`.  All flags are cleared.  All traps are enabled "
+"(treated as exceptions) except :const:`Inexact`, :const:`Rounded`, and "
+":const:`Subnormal`."
+msgstr ""
+"Đây là bối cảnh tiêu chuẩn được xác định bởi Đặc tả số học thập phân chung."
+"  Độ chính xác được đặt thành chín.  Làm tròn được đặt thành "
+":const:`ROUND_HALF_UP`.  Tất cả các cờ đều bị xóa.  Tất cả các bẫy đều được "
+"bật (được coi là ngoại lệ) ngoại trừ :const:`Inexact`, :const:`Rounded` và "
+":const:`Subnormal`."
+
+#: ../../library/decimal.rst:1076
+#, fuzzy
+msgid ""
+"Because many of the traps are enabled, this context is useful for debugging."
+msgstr ""
+"Bởi vì nhiều bẫy được kích hoạt nên bối cảnh này rất hữu ích cho việc gỡ "
+"lỗi."
+
+#: ../../library/decimal.rst:1081
+#, fuzzy
+msgid ""
+"This is a standard context defined by the General Decimal Arithmetic "
+"Specification.  Precision is set to nine.  Rounding is set to "
+":const:`ROUND_HALF_EVEN`.  All flags are cleared.  No traps are enabled (so "
+"that exceptions are not raised during computations)."
+msgstr ""
+"Đây là bối cảnh tiêu chuẩn được xác định bởi Đặc tả số học thập phân chung."
+"  Độ chính xác được đặt thành chín.  Làm tròn được đặt thành "
+":const:`ROUND_HALF_EVEN`.  Tất cả các cờ đều bị xóa.  Không có bẫy nào được "
+"kích hoạt (để các ngoại lệ không xuất hiện trong quá trình tính toán)."
+
+#: ../../library/decimal.rst:1086
+#, fuzzy
+msgid ""
+"Because the traps are disabled, this context is useful for applications that"
+" prefer to have result value of ``NaN`` or ``Infinity`` instead of raising "
+"exceptions.  This allows an application to complete a run in the presence of"
+" conditions that would otherwise halt the program."
+msgstr ""
+"Vì bẫy bị vô hiệu hóa nên ngữ cảnh này hữu ích cho các ứng dụng muốn có giá "
+"trị kết quả là ``NaN`` hoặc ``Infinity`` thay vì đưa ra các ngoại lệ.  Điều "
+"này cho phép ứng dụng hoàn tất quá trình chạy khi có các điều kiện có thể "
+"khiến chương trình bị dừng."
+
+#: ../../library/decimal.rst:1094
+#, fuzzy
+msgid ""
+"This context is used by the :class:`Context` constructor as a prototype for "
+"new contexts.  Changing a field (such a precision) has the effect of "
+"changing the default for new contexts created by the :class:`Context` "
+"constructor."
+msgstr ""
+"Ngữ cảnh này được hàm tạo :class:`Context` sử dụng làm nguyên mẫu cho các "
+"ngữ cảnh mới.  Việc thay đổi một trường (độ chính xác như vậy) có tác dụng "
+"thay đổi mặc định cho các ngữ cảnh mới được tạo bởi hàm tạo "
+":class:`Context`."
+
+#: ../../library/decimal.rst:1098
+#, fuzzy
+msgid ""
+"This context is most useful in multi-threaded environments.  Changing one of"
+" the fields before threads are started has the effect of setting system-wide"
+" defaults.  Changing the fields after threads have started is not "
+"recommended as it would require thread synchronization to prevent race "
+"conditions."
+msgstr ""
+"Ngữ cảnh này hữu ích nhất trong môi trường đa luồng.  Việc thay đổi một "
+"trong các trường trước khi bắt đầu luồng có tác dụng đặt mặc định trên toàn "
+"hệ thống.  Không nên thay đổi các trường sau khi các luồng đã bắt đầu vì nó "
+"sẽ yêu cầu đồng bộ hóa luồng để ngăn chặn tình trạng chạy đua."
+
+#: ../../library/decimal.rst:1103
+#, fuzzy
+msgid ""
+"In single threaded environments, it is preferable to not use this context at"
+" all.  Instead, simply create contexts explicitly as described below."
+msgstr ""
+"Trong môi trường đơn luồng, tốt nhất là không sử dụng ngữ cảnh này.  Thay "
+"vào đó, chỉ cần tạo ngữ cảnh một cách rõ ràng như được mô tả bên dưới."
+
+#: ../../library/decimal.rst:1106
+#, fuzzy
+msgid ""
+"The default values are :attr:`Context.prec`\\ =\\ ``28``, "
+":attr:`Context.rounding`\\ =\\ :const:`ROUND_HALF_EVEN`, and enabled traps "
+"for :class:`Overflow`, :class:`InvalidOperation`, and "
+":class:`DivisionByZero`."
+msgstr ""
+"Các giá trị mặc định là :attr:`Context.prec`\\ =\\ ``28``, "
+":attr:`Context.rounding`\\ =\\ :const:`ROUND_HALF_EVEN` và bật bẫy cho "
+":class:`Overflow`, :class:`InvalidOperation` và :class:`DivisionByZero`."
+
+#: ../../library/decimal.rst:1111
+#, fuzzy
+msgid ""
+"In addition to the three supplied contexts, new contexts can be created with"
+" the :class:`Context` constructor."
+msgstr ""
+"Ngoài ba ngữ cảnh được cung cấp, các ngữ cảnh mới có thể được tạo bằng hàm "
+"tạo :class:`Context`."
+
+#: ../../library/decimal.rst:1117
+#, fuzzy
+msgid ""
+"Creates a new context.  If a field is not specified or is :const:`None`, the"
+" default values are copied from the :const:`DefaultContext`.  If the *flags*"
+" field is not specified or is :const:`None`, all flags are cleared."
+msgstr ""
+"Tạo ra một bối cảnh mới.  Nếu một trường không được chỉ định hoặc là "
+":const:`None`, thì các giá trị mặc định sẽ được sao chép từ "
+":const:`DefaultContext`.  Nếu trường *flags* không được chỉ định hoặc là "
+":const:`None`, tất cả các cờ sẽ bị xóa."
+
+#: ../../library/decimal.rst:1123
+#, fuzzy
+msgid ""
+"An integer in the range [``1``, :const:`MAX_PREC`] that sets the precision "
+"for arithmetic operations in the context."
+msgstr ""
+"Một số nguyên trong phạm vi [``1``, :const:`MAX_PREC`] đặt độ chính xác cho "
+"các phép tính số học trong ngữ cảnh."
+
+#: ../../library/decimal.rst:1128
+#, fuzzy
+msgid "One of the constants listed in the section `Rounding Modes`_."
+msgstr "Một trong các hằng số được liệt kê trong phần `Rounding Modes`_."
+
+#: ../../library/decimal.rst:1133
+#, fuzzy
+msgid ""
+"Lists of any signals to be set. Generally, new contexts should only set "
+"traps and leave the flags clear."
+msgstr ""
+"Danh sách bất kỳ tín hiệu nào sẽ được thiết lập. Nói chung, bối cảnh mới chỉ"
+" nên đặt bẫy và bỏ cờ rõ ràng."
+
+#: ../../library/decimal.rst:1139
+#, fuzzy
+msgid ""
+"Integers specifying the outer limits allowable for exponents. *Emin* must be"
+" in the range [:const:`MIN_EMIN`, ``0``], *Emax* in the range [``0``, "
+":const:`MAX_EMAX`]."
+msgstr ""
+"Số nguyên xác định giới hạn bên ngoài cho phép đối với số mũ. *Emin* phải "
+"nằm trong phạm vi [:const:`MIN_EMIN`, ``0``], *Emax* trong phạm vi [``0``, "
+":const:`MAX_EMAX`]."
+
+#: ../../library/decimal.rst:1145
+#, fuzzy
+msgid ""
+"Either ``0`` or ``1`` (the default). If set to ``1``, exponents are printed "
+"with a capital ``E``; otherwise, a lowercase ``e`` is used: "
+"``Decimal('6.02e+23')``."
+msgstr ""
+"``0`` hoặc ``1`` (mặc định). Nếu được đặt thành ``1``, số mũ được in bằng "
+"chữ hoa ``E``; nếu không, ``e`` viết thường sẽ được sử dụng: "
+"``Decimal('6.02e+23')``."
+
+#: ../../library/decimal.rst:1151
+#, fuzzy
+msgid ""
+"Either ``0`` (the default) or ``1``.  If set to ``1``, the exponent ``e`` of"
+" a :class:`Decimal` instance representable in this context is strictly "
+"limited to the range ``Emin - prec + 1 <= e <= Emax - prec + 1``. If *clamp*"
+" is ``0`` then a weaker condition holds: the adjusted exponent of the "
+":class:`Decimal` instance is at most :attr:`~Context.Emax`.  When *clamp* is"
+" ``1``, a large normal number will, where possible, have its exponent "
+"reduced and a corresponding number of zeros added to its coefficient, in "
+"order to fit the exponent constraints; this preserves the value of the "
+"number but loses information about significant trailing zeros.  For "
+"example::"
+msgstr ""
+"``0`` (mặc định) hoặc ``1``.  Nếu được đặt thành ``1``, số mũ ``e`` của "
+"phiên bản :class:`Decimal` có thể biểu thị trong ngữ cảnh này bị giới hạn "
+"nghiêm ngặt trong phạm vi ``Emin - prec + 1 <= e <= Emax - prec + 1``. Nếu "
+"*clamp* là ``0`` thì điều kiện yếu hơn được giữ nguyên: số mũ được điều "
+"chỉnh của phiên bản :class:`Decimal` nhiều nhất là :attr:`~Context.Emax`.  "
+"Khi *clamp* là ``1``, một số bình thường lớn, nếu có thể, sẽ có số mũ giảm "
+"đi và một số số 0 tương ứng được thêm vào hệ số của nó, để phù hợp với các "
+"ràng buộc số mũ; điều này bảo toàn giá trị của số nhưng làm mất thông tin về"
+" các số 0 ở cuối có ý nghĩa.  Ví dụ::"
+
+#: ../../library/decimal.rst:1162
+#, fuzzy
+msgid ""
+">>> Context(prec=6, Emax=999, clamp=1).create_decimal('1.23e999')\n"
+"Decimal('1.23000E+999')"
+msgstr ""
+">>> Ngữ cảnh(prec=6, Emax=999, kẹp=1).create_decimal('1.23e999')\n"
+"Thập phân('1.23000E+999')"
+
+#: ../../library/decimal.rst:1165
+#, fuzzy
+msgid ""
+"A *clamp* value of ``1`` allows compatibility with the fixed-width decimal "
+"interchange formats specified in IEEE 754."
+msgstr ""
+"Giá trị *clamp* của ``1`` cho phép tương thích với các định dạng trao đổi "
+"thập phân có chiều rộng cố định được chỉ định trong IEEE 754."
+
+#: ../../library/decimal.rst:1168
+#, fuzzy
+msgid ""
+"The :class:`Context` class defines several general purpose methods as well "
+"as a large number of methods for doing arithmetic directly in a given "
+"context. In addition, for each of the :class:`Decimal` methods described "
+"above (with the exception of the :meth:`~Decimal.adjusted` and "
+":meth:`~Decimal.as_tuple` methods) there is a corresponding :class:`Context`"
+" method.  For example, for a :class:`Context` instance ``C`` and "
+":class:`Decimal` instance ``x``, ``C.exp(x)`` is equivalent to "
+"``x.exp(context=C)``.  Each :class:`Context` method accepts a Python integer"
+" (an instance of :class:`int`) anywhere that a Decimal instance is accepted."
+msgstr ""
+"Lớp :class:`Context` định nghĩa một số phương thức có mục đích chung cũng "
+"như một số lượng lớn các phương thức để thực hiện số học trực tiếp trong một"
+" ngữ cảnh nhất định. Ngoài ra, đối với mỗi phương thức :class:`Decimal` được"
+" mô tả ở trên (ngoại trừ phương thức :meth:`~Decimal.adjusted` và "
+":meth:`~Decimal.as_tuple`) đều có một phương thức :class:`Context` tương "
+"ứng.  Ví dụ: đối với phiên bản :class:`Context` ``C`` và :class:`Decimal` "
+"``x``, ``C.exp(x)`` tương đương với ``x.exp(context=C)``.  Mỗi phương thức "
+":class:`Context` chấp nhận một số nguyên Python (một phiên bản của "
+":class:`int`) ở bất kỳ nơi nào mà phiên bản thập phân được chấp nhận."
+
+#: ../../library/decimal.rst:1181
+#, fuzzy
+msgid "Resets all of the flags to ``0``."
+msgstr "Đặt lại tất cả các cờ thành ``0``."
+
+#: ../../library/decimal.rst:1185
+#, fuzzy
+msgid "Resets all of the traps to ``0``."
+msgstr "Đặt lại tất cả các bẫy về ``0``."
+
+#: ../../library/decimal.rst:1191
+#, fuzzy
+msgid "Return a duplicate of the context."
+msgstr "Trả về một bản sao của bối cảnh."
+
+#: ../../library/decimal.rst:1195
+#, fuzzy
+msgid "Return a copy of the Decimal instance num."
+msgstr "Trả về một bản sao của số thập phân."
+
+#: ../../library/decimal.rst:1199
+#, fuzzy
+msgid ""
+"Creates a new Decimal instance from *num* but using *self* as context. "
+"Unlike the :class:`Decimal` constructor, the context precision, rounding "
+"method, flags, and traps are applied to the conversion."
+msgstr ""
+"Tạo một phiên bản thập phân mới từ *num* nhưng sử dụng *self* làm ngữ cảnh. "
+"Không giống như hàm tạo :class:`Decimal`, độ chính xác của ngữ cảnh, phương "
+"pháp làm tròn, cờ và bẫy được áp dụng cho chuyển đổi."
+
+#: ../../library/decimal.rst:1203
+#, fuzzy
+msgid ""
+"This is useful because constants are often given to a greater precision than"
+" is needed by the application.  Another benefit is that rounding immediately"
+" eliminates unintended effects from digits beyond the current precision. In "
+"the following example, using unrounded inputs means that adding zero to a "
+"sum can change the result:"
+msgstr ""
+"Điều này rất hữu ích vì các hằng số thường được cung cấp với độ chính xác "
+"cao hơn mức cần thiết của ứng dụng.  Một lợi ích khác là việc làm tròn ngay "
+"lập tức loại bỏ các tác động không mong muốn từ các chữ số vượt quá độ chính"
+" xác hiện tại. Trong ví dụ sau, việc sử dụng đầu vào không làm tròn có nghĩa"
+" là việc thêm 0 vào tổng có thể thay đổi kết quả:"
+
+#: ../../library/decimal.rst:1209
+#, fuzzy
+msgid ""
+">>> getcontext().prec = 3\n"
+">>> Decimal('3.4445') + Decimal('1.0023')\n"
+"Decimal('4.45')\n"
+">>> Decimal('3.4445') + Decimal(0) + Decimal('1.0023')\n"
+"Decimal('4.44')"
+msgstr ""
+">>> getcontext().prec = 3\n"
+">>> Số thập phân('3.4445') + Số thập phân('1.0023')\n"
+"Thập phân('4.45')\n"
+">>> Số thập phân('3.4445') + Số thập phân(0) + Số thập phân('1.0023')\n"
+"Thập phân('4.44')"
+
+#: ../../library/decimal.rst:1217
+#, fuzzy
+msgid ""
+"This method implements the to-number operation of the IBM specification. If "
+"the argument is a string, no leading or trailing whitespace or underscores "
+"are permitted."
+msgstr ""
+"Phương thức này triển khai hoạt động theo số của đặc tả IBM. Nếu đối số là "
+"một chuỗi thì không được phép có khoảng trắng ở đầu hoặc cuối hoặc dấu gạch "
+"dưới."
+
+#: ../../library/decimal.rst:1223
+#, fuzzy
+msgid ""
+"Creates a new Decimal instance from a float *f* but rounding using *self* as"
+" the context.  Unlike the :meth:`Decimal.from_float` class method, the "
+"context precision, rounding method, flags, and traps are applied to the "
+"conversion."
+msgstr ""
+"Tạo một phiên bản thập phân mới từ float *f* nhưng làm tròn bằng cách sử "
+"dụng *self* làm ngữ cảnh.  Không giống như phương thức lớp "
+":meth:`Decimal.from_float`, độ chính xác của ngữ cảnh, phương thức làm tròn,"
+" cờ và bẫy được áp dụng cho chuyển đổi."
+
+#: ../../library/decimal.rst:1228
+#, fuzzy
+msgid ""
+">>> context = Context(prec=5, rounding=ROUND_DOWN)\n"
+">>> context.create_decimal_from_float(math.pi)\n"
+"Decimal('3.1415')\n"
+">>> context = Context(prec=5, traps=[Inexact])\n"
+">>> context.create_decimal_from_float(math.pi)\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"decimal.Inexact: None"
+msgstr ""
+">>> bối cảnh = Bối cảnh(prec=5, làm tròn=ROUND_DOWN)\n"
+">>> context.create_decimal_from_float(math.pi)\n"
+"Thập phân('3.1415')\n"
+">>> bối cảnh = Bối cảnh(prec=5, bẫy=[Không chính xác])\n"
+">>> context.create_decimal_from_float(math.pi)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"    ...\n"
+"thập phân.Không chính xác: Không có"
+
+#: ../../library/decimal.rst:1243
+#, fuzzy
+msgid ""
+"Returns a value equal to ``Emin - prec + 1`` which is the minimum exponent "
+"value for subnormal results.  When underflow occurs, the exponent is set to "
+":const:`Etiny`."
+msgstr ""
+"Trả về giá trị bằng ``Emin - prec + 1``, giá trị số mũ tối thiểu cho các kết"
+" quả không bình thường.  Khi xảy ra hiện tượng tràn, số mũ được đặt thành "
+":const:`Etiny`."
+
+#: ../../library/decimal.rst:1249
+#, fuzzy
+msgid "Returns a value equal to ``Emax - prec + 1``."
+msgstr "Trả về giá trị bằng ``Emax - prec + 1``."
+
+#: ../../library/decimal.rst:1251
+#, fuzzy
+msgid ""
+"The usual approach to working with decimals is to create :class:`Decimal` "
+"instances and then apply arithmetic operations which take place within the "
+"current context for the active thread.  An alternative approach is to use "
+"context methods for calculating within a specific context.  The methods are "
+"similar to those for the :class:`Decimal` class and are only briefly "
+"recounted here."
+msgstr ""
+"Cách tiếp cận thông thường để làm việc với số thập phân là tạo các phiên bản"
+" :class:`Decimal` và sau đó áp dụng các phép toán số học diễn ra trong ngữ "
+"cảnh hiện tại cho luồng đang hoạt động.  Một cách tiếp cận khác là sử dụng "
+"các phương pháp ngữ cảnh để tính toán trong một ngữ cảnh cụ thể.  Các phương"
+" thức này tương tự như các phương thức của lớp :class:`Decimal` và chỉ được "
+"kể lại ngắn gọn ở đây."
+
+#: ../../library/decimal.rst:1261
+#, fuzzy
+msgid "Returns the absolute value of *x*."
+msgstr "Trả về giá trị tuyệt đối của *x*."
+
+#: ../../library/decimal.rst:1266
+#, fuzzy
+msgid "Return the sum of *x* and *y*."
+msgstr "Trả về tổng của *x* và *y*."
+
+#: ../../library/decimal.rst:1271
+#, fuzzy
+msgid "Returns the same Decimal object *x*."
+msgstr "Trả về cùng một đối tượng thập phân *x*."
+
+#: ../../library/decimal.rst:1276
+#, fuzzy
+msgid "Compares *x* and *y* numerically."
+msgstr "So sánh *x* và *y* bằng số."
+
+#: ../../library/decimal.rst:1281
+#, fuzzy
+msgid "Compares the values of the two operands numerically."
+msgstr "So sánh các giá trị của hai toán hạng bằng số."
+
+#: ../../library/decimal.rst:1286
+#, fuzzy
+msgid "Compares two operands using their abstract representation."
+msgstr ""
+"So sánh hai toán hạng bằng cách sử dụng biểu diễn trừu tượng của chúng."
+
+#: ../../library/decimal.rst:1291
+#, fuzzy
+msgid ""
+"Compares two operands using their abstract representation, ignoring sign."
+msgstr ""
+"So sánh hai toán hạng bằng cách sử dụng biểu diễn trừu tượng của chúng, bỏ "
+"qua dấu."
+
+#: ../../library/decimal.rst:1296
+#, fuzzy
+msgid "Returns a copy of *x* with the sign set to 0."
+msgstr "Trả về bản sao của *x* với dấu được đặt thành 0."
+
+#: ../../library/decimal.rst:1301
+#, fuzzy
+msgid "Returns a copy of *x* with the sign inverted."
+msgstr "Trả về một bản sao của *x* với dấu bị đảo ngược."
+
+#: ../../library/decimal.rst:1306
+#, fuzzy
+msgid "Copies the sign from *y* to *x*."
+msgstr "Sao chép dấu hiệu từ *y* sang *x*."
+
+#: ../../library/decimal.rst:1311
+#, fuzzy
+msgid "Return *x* divided by *y*."
+msgstr "Trả về *x* chia cho *y*."
+
+#: ../../library/decimal.rst:1316
+#, fuzzy
+msgid "Return *x* divided by *y*, truncated to an integer."
+msgstr "Trả về *x* chia cho *y*, cắt ngắn thành số nguyên."
+
+#: ../../library/decimal.rst:1321
+#, fuzzy
+msgid "Divides two numbers and returns the integer part of the result."
+msgstr "Chia hai số và trả về phần nguyên của kết quả."
+
+#: ../../library/decimal.rst:1326
+#, fuzzy
+msgid "Returns ``e ** x``."
+msgstr "Trả về ``e ** x``."
+
+#: ../../library/decimal.rst:1331
+#, fuzzy
+msgid "Returns *x* multiplied by *y*, plus *z*."
+msgstr "Trả về *x* nhân với *y*, cộng với *z*."
+
+#: ../../library/decimal.rst:1336
+#, fuzzy
+msgid "Returns ``True`` if *x* is canonical; otherwise returns ``False``."
+msgstr "Trả về ``True`` nếu *x* là chuẩn; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1341
+#, fuzzy
+msgid "Returns ``True`` if *x* is finite; otherwise returns ``False``."
+msgstr "Trả về ``True`` nếu *x* hữu hạn; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1346
+#, fuzzy
+msgid "Returns ``True`` if *x* is infinite; otherwise returns ``False``."
+msgstr "Trả về ``True`` nếu *x* là vô hạn; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1351
+#, fuzzy
+msgid ""
+"Returns ``True`` if *x* is a qNaN or sNaN; otherwise returns ``False``."
+msgstr ""
+"Trả về ``True`` nếu *x* là qNaN hoặc sNaN; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1356
+#, fuzzy
+msgid ""
+"Returns ``True`` if *x* is a normal number; otherwise returns ``False``."
+msgstr ""
+"Trả về ``True`` nếu *x* là số bình thường; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1361
+#, fuzzy
+msgid "Returns ``True`` if *x* is a quiet NaN; otherwise returns ``False``."
+msgstr ""
+"Trả về ``True`` nếu *x* là NaN yên tĩnh; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1366
+#, fuzzy
+msgid "Returns ``True`` if *x* is negative; otherwise returns ``False``."
+msgstr "Trả về ``True`` nếu *x* âm; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1371
+#, fuzzy
+msgid ""
+"Returns ``True`` if *x* is a signaling NaN; otherwise returns ``False``."
+msgstr ""
+"Trả về ``True`` nếu *x* là NaN báo hiệu; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1376
+#, fuzzy
+msgid "Returns ``True`` if *x* is subnormal; otherwise returns ``False``."
+msgstr ""
+"Trả về ``True`` nếu *x* không bình thường; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1381
+#, fuzzy
+msgid "Returns ``True`` if *x* is a zero; otherwise returns ``False``."
+msgstr "Trả về ``True`` nếu *x* bằng 0; nếu không thì trả về ``False``."
+
+#: ../../library/decimal.rst:1386
+#, fuzzy
+msgid "Returns the natural (base e) logarithm of *x*."
+msgstr "Trả về logarit tự nhiên (cơ số e) của *x*."
+
+#: ../../library/decimal.rst:1391
+#, fuzzy
+msgid "Returns the base 10 logarithm of *x*."
+msgstr "Trả về logarit cơ số 10 của *x*."
+
+#: ../../library/decimal.rst:1396
+#, fuzzy
+msgid "Returns the exponent of the magnitude of the operand's MSD."
+msgstr "Trả về số mũ của độ lớn MSD của toán hạng."
+
+#: ../../library/decimal.rst:1401
+#, fuzzy
+msgid "Applies the logical operation *and* between each operand's digits."
+msgstr "Áp dụng phép toán logic *and* giữa các chữ số của mỗi toán hạng."
+
+#: ../../library/decimal.rst:1406
+#, fuzzy
+msgid "Invert all the digits in *x*."
+msgstr "Đảo ngược tất cả các chữ số trong *x*."
+
+#: ../../library/decimal.rst:1411
+#, fuzzy
+msgid "Applies the logical operation *or* between each operand's digits."
+msgstr "Áp dụng phép toán logic *or* giữa các chữ số của mỗi toán hạng."
+
+#: ../../library/decimal.rst:1416
+#, fuzzy
+msgid "Applies the logical operation *xor* between each operand's digits."
+msgstr "Áp dụng phép toán logic *xor* giữa các chữ số của mỗi toán hạng."
+
+#: ../../library/decimal.rst:1421
+#, fuzzy
+msgid "Compares two values numerically and returns the maximum."
+msgstr "So sánh hai giá trị bằng số và trả về giá trị lớn nhất."
+
+#: ../../library/decimal.rst:1426 ../../library/decimal.rst:1436
+#, fuzzy
+msgid "Compares the values numerically with their sign ignored."
+msgstr "So sánh các giá trị bằng số với dấu của chúng bị bỏ qua."
+
+#: ../../library/decimal.rst:1431
+#, fuzzy
+msgid "Compares two values numerically and returns the minimum."
+msgstr "So sánh hai giá trị bằng số và trả về giá trị tối thiểu."
+
+#: ../../library/decimal.rst:1441
+#, fuzzy
+msgid "Minus corresponds to the unary prefix minus operator in Python."
+msgstr "Dấu trừ tương ứng với toán tử trừ tiền tố đơn nhất trong Python."
+
+#: ../../library/decimal.rst:1446
+#, fuzzy
+msgid "Return the product of *x* and *y*."
+msgstr "Trả lại sản phẩm của *x* và *y*."
+
+#: ../../library/decimal.rst:1451
+#, fuzzy
+msgid "Returns the largest representable number smaller than *x*."
+msgstr "Trả về số đại diện lớn nhất nhỏ hơn *x*."
+
+#: ../../library/decimal.rst:1456
+#, fuzzy
+msgid "Returns the smallest representable number larger than *x*."
+msgstr "Trả về số có thể biểu thị nhỏ nhất lớn hơn *x*."
+
+#: ../../library/decimal.rst:1461
+#, fuzzy
+msgid "Returns the number closest to *x*, in direction towards *y*."
+msgstr "Trả về số gần nhất với *x*, hướng về *y*."
+
+#: ../../library/decimal.rst:1466
+#, fuzzy
+msgid "Reduces *x* to its simplest form."
+msgstr "Giảm *x* về dạng đơn giản nhất."
+
+#: ../../library/decimal.rst:1471
+#, fuzzy
+msgid "Returns an indication of the class of *x*."
+msgstr "Trả về một dấu hiệu của lớp *x*."
+
+#: ../../library/decimal.rst:1476
+#, fuzzy
+msgid ""
+"Plus corresponds to the unary prefix plus operator in Python.  This "
+"operation applies the context precision and rounding, so it is *not* an "
+"identity operation."
+msgstr ""
+"Plus tương ứng với toán tử cộng tiền tố đơn nhất trong Python.  Thao tác này"
+" áp dụng độ chính xác của ngữ cảnh và làm tròn, do đó, đây là thao tác nhận "
+"dạng *not*."
+
+#: ../../library/decimal.rst:1483
+#, fuzzy
+msgid ""
+"Return ``x`` to the power of ``y``, reduced modulo ``modulo`` if given."
+msgstr "Trả ``x`` về sức mạnh của ``y``, giảm modulo ``modulo`` nếu được."
+
+#: ../../library/decimal.rst:1485
+#, fuzzy
+msgid ""
+"With two arguments, compute ``x**y``.  If ``x`` is negative then ``y`` must "
+"be integral.  The result will be inexact unless ``y`` is integral and the "
+"result is finite and can be expressed exactly in 'precision' digits. The "
+"rounding mode of the context is used. Results are always correctly rounded "
+"in the Python version."
+msgstr ""
+"Với hai đối số, hãy tính ``x**y``.  Nếu ``x`` âm thì ``y`` phải là tích "
+"phân.  Kết quả sẽ không chính xác trừ khi ``y`` là tích phân và kết quả là "
+"hữu hạn và có thể được biểu thị chính xác bằng các chữ số 'chính xác'. Chế "
+"độ làm tròn ngữ cảnh được sử dụng. Kết quả luôn được làm tròn chính xác "
+"trong phiên bản Python."
+
+#: ../../library/decimal.rst:1491
+#, fuzzy
+msgid ""
+"``Decimal(0) ** Decimal(0)`` results in ``InvalidOperation``, and if "
+"``InvalidOperation`` is not trapped, then results in ``Decimal('NaN')``."
+msgstr ""
+"``Decimal(0) ** Decimal(0)`` dẫn đến ``InvalidOperation`` và nếu "
+"``InvalidOperation`` không bị mắc kẹt thì sẽ tạo ra ``Decimal('NaN')``."
+
+#: ../../library/decimal.rst:1494
+#, fuzzy
+msgid ""
+"The C module computes :meth:`power` in terms of the correctly rounded "
+":meth:`exp` and :meth:`ln` functions. The result is well-defined but only "
+"\"almost always correctly rounded\"."
+msgstr ""
+"Mô-đun C tính toán :meth:`power` theo các hàm :meth:`exp` và :meth:`ln` được"
+" làm tròn chính xác. Kết quả được xác định rõ ràng nhưng chỉ \"hầu như luôn "
+"được làm tròn chính xác\"."
+
+#: ../../library/decimal.rst:1499
+#, fuzzy
+msgid ""
+"With three arguments, compute ``(x**y) % modulo``.  For the three argument "
+"form, the following restrictions on the arguments hold:"
+msgstr ""
+"Với ba đối số, hãy tính ``(x**y) % modulo``.  Đối với dạng ba đối số, các "
+"hạn chế sau đây đối với các đối số được giữ nguyên:"
+
+#: ../../library/decimal.rst:1502
+#, fuzzy
+msgid "all three arguments must be integral"
+msgstr "cả ba đối số phải tích phân"
+
+#: ../../library/decimal.rst:1503
+#, fuzzy
+msgid "``y`` must be nonnegative"
+msgstr "``y`` phải không âm"
+
+#: ../../library/decimal.rst:1504
+#, fuzzy
+msgid "at least one of ``x`` or ``y`` must be nonzero"
+msgstr "ít nhất một trong số ``x`` hoặc ``y`` phải khác 0"
+
+#: ../../library/decimal.rst:1505
+#, fuzzy
+msgid "``modulo`` must be nonzero and have at most 'precision' digits"
+msgstr "``modulo`` phải khác 0 và có tối đa các chữ số 'chính xác'"
+
+#: ../../library/decimal.rst:1507
+#, fuzzy
+msgid ""
+"The value resulting from ``Context.power(x, y, modulo)`` is equal to the "
+"value that would be obtained by computing ``(x**y) % modulo`` with unbounded"
+" precision, but is computed more efficiently.  The exponent of the result is"
+" zero, regardless of the exponents of ``x``, ``y`` and ``modulo``.  The "
+"result is always exact."
+msgstr ""
+"Giá trị thu được từ ``Context.power(x, y, modulo)`` bằng với giá trị thu "
+"được bằng cách tính toán ``(x**y) % modulo`` với độ chính xác không giới "
+"hạn, nhưng được tính toán hiệu quả hơn.  Số mũ của kết quả bằng 0, bất kể số"
+" mũ của ``x``, ``y`` và ``modulo``.  Kết quả luôn chính xác."
+
+#: ../../library/decimal.rst:1517
+#, fuzzy
+msgid "Returns a value equal to *x* (rounded), having the exponent of *y*."
+msgstr "Trả về giá trị bằng *x* (làm tròn), có số mũ là *y*."
+
+#: ../../library/decimal.rst:1522
+#, fuzzy
+msgid "Just returns 10, as this is Decimal, :)"
+msgstr "Chỉ trả về 10, vì đây là Số thập phân, :)"
+
+#: ../../library/decimal.rst:1527
+#, fuzzy
+msgid "Returns the remainder from integer division."
+msgstr "Trả về phần còn lại từ phép chia số nguyên."
+
+#: ../../library/decimal.rst:1529
+#, fuzzy
+msgid ""
+"The sign of the result, if non-zero, is the same as that of the original "
+"dividend."
+msgstr "Dấu của kết quả, nếu khác 0, giống với dấu của số bị chia ban đầu."
+
+#: ../../library/decimal.rst:1535
+#, fuzzy
+msgid ""
+"Returns ``x - y * n``, where *n* is the integer nearest the exact value of "
+"``x / y`` (if the result is 0 then its sign will be the sign of *x*)."
+msgstr ""
+"Trả về ``x - y * n``, trong đó *n* là số nguyên gần nhất với giá trị chính "
+"xác của ``x / y`` (nếu kết quả là 0 thì dấu của nó sẽ là dấu của *x*)."
+
+#: ../../library/decimal.rst:1541
+#, fuzzy
+msgid "Returns a rotated copy of *x*, *y* times."
+msgstr "Trả về bản sao được xoay của *x*, *y* lần."
+
+#: ../../library/decimal.rst:1546
+#, fuzzy
+msgid "Returns ``True`` if the two operands have the same exponent."
+msgstr "Trả về ``True`` nếu hai toán hạng có cùng số mũ."
+
+#: ../../library/decimal.rst:1551
+#, fuzzy
+msgid "Returns the first operand after adding the second value its exp."
+msgstr "Trả về toán hạng đầu tiên sau khi cộng giá trị thứ hai exp của nó."
+
+#: ../../library/decimal.rst:1556
+#, fuzzy
+msgid "Returns a shifted copy of *x*, *y* times."
+msgstr "Trả về bản sao đã dịch chuyển của *x*, *y* lần."
+
+#: ../../library/decimal.rst:1561
+#, fuzzy
+msgid "Square root of a non-negative number to context precision."
+msgstr "Căn bậc hai của số không âm theo độ chính xác của ngữ cảnh."
+
+#: ../../library/decimal.rst:1566
+#, fuzzy
+msgid "Return the difference between *x* and *y*."
+msgstr "Trả về sự khác biệt giữa *x* và *y*."
+
+#: ../../library/decimal.rst:1580
+#, fuzzy
+msgid "Rounds to an integer."
+msgstr "Làm tròn thành một số nguyên."
+
+#: ../../library/decimal.rst:1585
+#, fuzzy
+msgid "Converts a number to a string using scientific notation."
+msgstr "Chuyển đổi một số thành một chuỗi bằng ký hiệu khoa học."
+
+#: ../../library/decimal.rst:1592
+#, fuzzy
+msgid "Constants"
+msgstr "Hằng số"
+
+#: ../../library/decimal.rst:1594
+#, fuzzy
+msgid ""
+"The constants in this section are only relevant for the C module. They are "
+"also included in the pure Python version for compatibility."
+msgstr ""
+"Các hằng số trong phần này chỉ liên quan đến mô-đun C. Chúng cũng được bao "
+"gồm trong phiên bản Python thuần túy để tương thích."
+
+#: ../../library/decimal.rst:1598
+#, fuzzy
+msgid "32-bit"
+msgstr "32-bit"
+
+#: ../../library/decimal.rst:1598
+#, fuzzy
+msgid "64-bit"
+msgstr "64-bit"
+
+#: ../../library/decimal.rst:1600 ../../library/decimal.rst:1602
+#, fuzzy
+msgid "``425000000``"
+msgstr "``425000000``"
+
+#: ../../library/decimal.rst:1600 ../../library/decimal.rst:1602
+#, fuzzy
+msgid "``999999999999999999``"
+msgstr "``999999999999999999``"
+
+#: ../../library/decimal.rst:1604
+#, fuzzy
+msgid "``-425000000``"
+msgstr "``-425000000``"
+
+#: ../../library/decimal.rst:1604
+#, fuzzy
+msgid "``-999999999999999999``"
+msgstr "``-999999999999999999``"
+
+#: ../../library/decimal.rst:1606
+#, fuzzy
+msgid "``-849999999``"
+msgstr "``-849999999``"
+
+#: ../../library/decimal.rst:1606
+#, fuzzy
+msgid "``-1999999999999999997``"
+msgstr "``-1999999999999999997``"
+
+#: ../../library/decimal.rst:1608
+#, fuzzy
+msgid "``256``"
+msgstr "``256``"
+
+#: ../../library/decimal.rst:1608
+#, fuzzy
+msgid "``512``"
+msgstr "``512``"
+
+#: ../../library/decimal.rst:1613
+#, fuzzy
+msgid ""
+"The value is ``True``.  Deprecated, because Python now always has threads."
+msgstr ""
+"Giá trị là ``True``.  Không được dùng nữa vì Python hiện luôn có các luồng."
+
+#: ../../library/decimal.rst:1619
+#, fuzzy
+msgid ""
+"The default value is ``True``. If Python is :option:`configured using the "
+"--without-decimal-contextvar option <--without-decimal-contextvar>`, the C "
+"version uses a thread-local rather than a coroutine-local context and the "
+"value is ``False``.  This is slightly faster in some nested context "
+"scenarios."
+msgstr ""
+"Giá trị mặc định là ``True``. Nếu Python là :option:`configured using the "
+"--without-decimal-contextvar option <--without-decimal-contextvar>` thì "
+"phiên bản C sử dụng ngữ cảnh luồng cục bộ thay vì ngữ cảnh coroutine cục bộ "
+"và giá trị là ``False``.  Điều này nhanh hơn một chút trong một số trường "
+"hợp ngữ cảnh lồng nhau."
+
+#: ../../library/decimal.rst:1628
+#, fuzzy
+msgid "Rounding modes"
+msgstr "Chế độ làm tròn"
+
+#: ../../library/decimal.rst:1632
+#, fuzzy
+msgid "Round towards ``Infinity``."
+msgstr "Vòng về phía ``Infinity``."
+
+#: ../../library/decimal.rst:1636
+#, fuzzy
+msgid "Round towards zero."
+msgstr "Làm tròn về số không."
+
+#: ../../library/decimal.rst:1640
+#, fuzzy
+msgid "Round towards ``-Infinity``."
+msgstr "Vòng về phía ``-Infinity``."
+
+#: ../../library/decimal.rst:1644
+#, fuzzy
+msgid "Round to nearest with ties going towards zero."
+msgstr "Làm tròn đến gần nhất với các mối quan hệ tiến về 0."
+
+#: ../../library/decimal.rst:1648
+#, fuzzy
+msgid "Round to nearest with ties going to nearest even integer."
+msgstr ""
+"Làm tròn đến gần nhất với các mối quan hệ sẽ tiến đến số nguyên chẵn gần "
+"nhất."
+
+#: ../../library/decimal.rst:1652
+#, fuzzy
+msgid "Round to nearest with ties going away from zero."
+msgstr "Làm tròn đến gần nhất với các mối quan hệ cách xa số 0."
+
+#: ../../library/decimal.rst:1656
+#, fuzzy
+msgid "Round away from zero."
+msgstr "Làm tròn từ số 0."
+
+#: ../../library/decimal.rst:1660
+#, fuzzy
+msgid ""
+"Round away from zero if last digit after rounding towards zero would have "
+"been 0 or 5; otherwise round towards zero."
+msgstr ""
+"Làm tròn từ 0 nếu chữ số cuối cùng sau khi làm tròn về 0 sẽ là 0 hoặc 5; nếu"
+" không thì làm tròn về 0."
+
+#: ../../library/decimal.rst:1667
+#, fuzzy
+msgid "Signals"
+msgstr "Tín hiệu"
+
+#: ../../library/decimal.rst:1669
+#, fuzzy
+msgid ""
+"Signals represent conditions that arise during computation. Each corresponds"
+" to one context flag and one context trap enabler."
+msgstr ""
+"Tín hiệu đại diện cho các điều kiện phát sinh trong quá trình tính toán. Mỗi"
+" cái tương ứng với một cờ ngữ cảnh và một trình kích hoạt bẫy ngữ cảnh."
+
+#: ../../library/decimal.rst:1672
+#, fuzzy
+msgid ""
+"The context flag is set whenever the condition is encountered. After the "
+"computation, flags may be checked for informational purposes (for instance, "
+"to determine whether a computation was exact). After checking the flags, be "
+"sure to clear all flags before starting the next computation."
+msgstr ""
+"Cờ ngữ cảnh được đặt bất cứ khi nào gặp phải điều kiện. Sau khi tính toán, "
+"các cờ có thể được kiểm tra nhằm mục đích cung cấp thông tin (ví dụ: để xác "
+"định xem tính toán có chính xác hay không). Sau khi kiểm tra các cờ, hãy nhớ"
+" xóa tất cả các cờ trước khi bắt đầu tính toán tiếp theo."
+
+#: ../../library/decimal.rst:1677
+#, fuzzy
+msgid ""
+"If the context's trap enabler is set for the signal, then the condition "
+"causes a Python exception to be raised.  For example, if the "
+":class:`DivisionByZero` trap is set, then a :exc:`DivisionByZero` exception "
+"is raised upon encountering the condition."
+msgstr ""
+"Nếu trình kích hoạt bẫy của ngữ cảnh được đặt cho tín hiệu thì điều kiện sẽ "
+"khiến ngoại lệ Python được nâng lên.  Ví dụ: nếu bẫy :class:`DivisionByZero`"
+" được đặt thì ngoại lệ :exc:`DivisionByZero` sẽ xuất hiện khi gặp phải điều "
+"kiện này."
+
+#: ../../library/decimal.rst:1685
+#, fuzzy
+msgid "Altered an exponent to fit representation constraints."
+msgstr "Đã thay đổi số mũ để phù hợp với các ràng buộc về biểu diễn."
+
+#: ../../library/decimal.rst:1687
+#, fuzzy
+msgid ""
+"Typically, clamping occurs when an exponent falls outside the context's "
+":attr:`~Context.Emin` and :attr:`~Context.Emax` limits.  If possible, the "
+"exponent is reduced to fit by adding zeros to the coefficient."
+msgstr ""
+"Thông thường, việc kẹp xảy ra khi số mũ nằm ngoài giới hạn "
+":attr:`~Context.Emin` và :attr:`~Context.Emax` của ngữ cảnh.  Nếu có thể, số"
+" mũ được giảm cho phù hợp bằng cách thêm các số 0 vào hệ số."
+
+#: ../../library/decimal.rst:1694
+#, fuzzy
+msgid "Base class for other signals and a subclass of :exc:`ArithmeticError`."
+msgstr ""
+"Lớp cơ sở cho các tín hiệu khác và lớp con của :exc:`ArithmeticError`."
+
+#: ../../library/decimal.rst:1699
+#, fuzzy
+msgid "Signals the division of a non-infinite number by zero."
+msgstr "Báo hiệu sự chia một số không vô hạn cho 0."
+
+#: ../../library/decimal.rst:1701
+#, fuzzy
+msgid ""
+"Can occur with division, modulo division, or when raising a number to a "
+"negative power.  If this signal is not trapped, returns ``Infinity`` or "
+"``-Infinity`` with the sign determined by the inputs to the calculation."
+msgstr ""
+"Có thể xảy ra với phép chia, phép chia modulo hoặc khi nâng một số lên lũy "
+"thừa âm.  Nếu tín hiệu này không bị giữ lại, trả về ``Infinity`` hoặc "
+"``-Infinity`` với dấu được xác định bởi đầu vào của phép tính."
+
+#: ../../library/decimal.rst:1708
+#, fuzzy
+msgid "Indicates that rounding occurred and the result is not exact."
+msgstr "Cho biết rằng việc làm tròn đã xảy ra và kết quả không chính xác."
+
+#: ../../library/decimal.rst:1710
+#, fuzzy
+msgid ""
+"Signals when non-zero digits were discarded during rounding. The rounded "
+"result is returned.  The signal flag or trap is used to detect when results "
+"are inexact."
+msgstr ""
+"Tín hiệu khi các chữ số khác 0 bị loại bỏ trong quá trình làm tròn. Kết quả "
+"làm tròn được trả về.  Cờ tín hiệu hoặc bẫy được sử dụng để phát hiện khi "
+"kết quả không chính xác."
+
+#: ../../library/decimal.rst:1717
+#, fuzzy
+msgid "An invalid operation was performed."
+msgstr "Một thao tác không hợp lệ đã được thực hiện."
+
+#: ../../library/decimal.rst:1719
+#, fuzzy
+msgid ""
+"Indicates that an operation was requested that does not make sense. If not "
+"trapped, returns ``NaN``.  Possible causes include::"
+msgstr ""
+"Cho biết rằng một thao tác được yêu cầu không có ý nghĩa. Nếu không bị mắc "
+"kẹt, trả về ``NaN``.  Các nguyên nhân có thể bao gồm::"
+
+#: ../../library/decimal.rst:1722
+#, python-format, fuzzy
+msgid ""
+"Infinity - Infinity\n"
+"0 * Infinity\n"
+"Infinity / Infinity\n"
+"x % 0\n"
+"Infinity % x\n"
+"sqrt(-x) and x > 0\n"
+"0 ** 0\n"
+"x ** (non-integer)\n"
+"x ** Infinity"
+msgstr ""
+"Vô Cực - Vô Cực\n"
+"0 * vô cực\n"
+"Vô cực / Vô cực\n"
+"x % 0\n"
+"Vô cực % x\n"
+"sqrt(-x) và x > 0\n"
+"0 ** 0\n"
+"x ** (không nguyên)\n"
+"x ** Vô cực"
+
+#: ../../library/decimal.rst:1735
+#, fuzzy
+msgid "Numerical overflow."
+msgstr "Tràn số."
+
+#: ../../library/decimal.rst:1737
+#, fuzzy
+msgid ""
+"Indicates the exponent is larger than :attr:`Context.Emax` after rounding "
+"has occurred.  If not trapped, the result depends on the rounding mode, "
+"either pulling inward to the largest representable finite number or rounding"
+" outward to ``Infinity``.  In either case, :class:`Inexact` and "
+":class:`Rounded` are also signaled."
+msgstr ""
+"Cho biết số mũ lớn hơn :attr:`Context.Emax` sau khi làm tròn số.  Nếu không "
+"bị mắc kẹt, kết quả sẽ phụ thuộc vào chế độ làm tròn, hoặc kéo vào trong số "
+"hữu hạn có thể biểu thị lớn nhất hoặc làm tròn ra ngoài thành ``Infinity``."
+"  Trong cả hai trường hợp, :class:`Inexact` và :class:`Rounded` cũng được "
+"báo hiệu."
+
+#: ../../library/decimal.rst:1746
+#, fuzzy
+msgid "Rounding occurred though possibly no information was lost."
+msgstr "Việc làm tròn đã xảy ra mặc dù có thể không có thông tin nào bị mất."
+
+#: ../../library/decimal.rst:1748
+#, fuzzy
+msgid ""
+"Signaled whenever rounding discards digits; even if those digits are zero "
+"(such as rounding ``5.00`` to ``5.0``).  If not trapped, returns the result "
+"unchanged.  This signal is used to detect loss of significant digits."
+msgstr ""
+"Được báo hiệu bất cứ khi nào làm tròn loại bỏ các chữ số; ngay cả khi các "
+"chữ số đó bằng 0 (chẳng hạn như làm tròn ``5.00`` thành ``5.0``).  Nếu không"
+" bị mắc kẹt, trả về kết quả không thay đổi.  Tín hiệu này được sử dụng để "
+"phát hiện sự mất chữ số có nghĩa."
+
+#: ../../library/decimal.rst:1756
+#, fuzzy
+msgid "Exponent was lower than :attr:`~Context.Emin` prior to rounding."
+msgstr "Số mũ thấp hơn :attr:`~Context.Emin` trước khi làm tròn."
+
+#: ../../library/decimal.rst:1758
+#, fuzzy
+msgid ""
+"Occurs when an operation result is subnormal (the exponent is too small). If"
+" not trapped, returns the result unchanged."
+msgstr ""
+"Xảy ra khi kết quả phép toán không bình thường (số mũ quá nhỏ). Nếu không bị"
+" mắc kẹt, trả về kết quả không thay đổi."
+
+#: ../../library/decimal.rst:1764
+#, fuzzy
+msgid "Numerical underflow with result rounded to zero."
+msgstr "Tràn dưới dạng số với kết quả được làm tròn về 0."
+
+#: ../../library/decimal.rst:1766
+#, fuzzy
+msgid ""
+"Occurs when a subnormal result is pushed to zero by rounding. "
+":class:`Inexact` and :class:`Subnormal` are also signaled."
+msgstr ""
+"Xảy ra khi một kết quả không bình thường bị đẩy về 0 bằng cách làm tròn. "
+":class:`Inexact` và :class:`Subnormal` cũng được báo hiệu."
+
+#: ../../library/decimal.rst:1772
+#, fuzzy
+msgid "Enable stricter semantics for mixing floats and Decimals."
+msgstr "Cho phép ngữ nghĩa chặt chẽ hơn để trộn số float và số thập phân."
+
+#: ../../library/decimal.rst:1774
+#, fuzzy
+msgid ""
+"If the signal is not trapped (default), mixing floats and Decimals is "
+"permitted in the :class:`~decimal.Decimal` constructor, "
+":meth:`~decimal.Context.create_decimal` and all comparison operators. Both "
+"conversion and comparisons are exact. Any occurrence of a mixed operation is"
+" silently recorded by setting :exc:`FloatOperation` in the context flags. "
+"Explicit conversions with :meth:`~decimal.Decimal.from_float` or "
+":meth:`~decimal.Context.create_decimal_from_float` do not set the flag."
+msgstr ""
+"Nếu tín hiệu không bị kẹt (mặc định), việc trộn các số float và Số thập phân"
+" được cho phép trong hàm tạo :class:`~decimal.Decimal`, "
+":meth:`~decimal.Context.create_decimal` và tất cả các toán tử so sánh. Cả "
+"chuyển đổi và so sánh đều chính xác. Bất kỳ sự xuất hiện nào của một hoạt "
+"động hỗn hợp đều được ghi âm thầm bằng cách đặt :exc:`FloatOperation` trong "
+"cờ ngữ cảnh. Chuyển đổi rõ ràng bằng :meth:`~decimal.Decimal.from_float` "
+"hoặc :meth:`~decimal.Context.create_decimal_from_float` không đặt cờ."
+
+#: ../../library/decimal.rst:1782
+#, fuzzy
+msgid ""
+"Otherwise (the signal is trapped), only equality comparisons and explicit "
+"conversions are silent. All other mixed operations raise "
+":exc:`FloatOperation`."
+msgstr ""
+"Mặt khác (tín hiệu bị kẹt), chỉ so sánh đẳng thức và chuyển đổi rõ ràng là "
+"im lặng. Tất cả các hoạt động hỗn hợp khác đều tăng :exc:`FloatOperation`."
+
+#: ../../library/decimal.rst:1786
+#, fuzzy
+msgid "The following table summarizes the hierarchy of signals::"
+msgstr "Bảng sau đây tóm tắt thứ bậc của tín hiệu::"
+
+#: ../../library/decimal.rst:1788
+#, fuzzy
+msgid ""
+"exceptions.ArithmeticError(exceptions.Exception)\n"
+"    DecimalException\n"
+"        Clamped\n"
+"        DivisionByZero(DecimalException, exceptions.ZeroDivisionError)\n"
+"        Inexact\n"
+"            Overflow(Inexact, Rounded)\n"
+"            Underflow(Inexact, Rounded, Subnormal)\n"
+"        InvalidOperation\n"
+"        Rounded\n"
+"        Subnormal\n"
+"        FloatOperation(DecimalException, exceptions.TypeError)"
+msgstr ""
+"ngoại lệ.ArithmeticError (ngoại lệ.Exception)\n"
+"    Ngoại lệ thập phân\n"
+"        bị kẹp\n"
+"        DivisionByZero(DecimalException, ngoại lệ.ZeroDivisionError)\n"
+"        Không chính xác\n"
+"            Tràn (Không chính xác, Làm tròn)\n"
+"            Dòng chảy dưới (Không chính xác, Làm tròn, Không bình thường)\n"
+"        Thao tác không hợp lệ\n"
+"        làm tròn\n"
+"        Không bình thường\n"
+"        FloatOperation(DecimalException, ngoại lệ.TypeError)"
+
+#: ../../library/decimal.rst:1807
+#, fuzzy
+msgid "Floating-point notes"
+msgstr "Ghi chú dấu phẩy động"
+
+#: ../../library/decimal.rst:1811
+#, fuzzy
+msgid "Mitigating round-off error with increased precision"
+msgstr "Giảm thiểu lỗi làm tròn với độ chính xác cao hơn"
+
+#: ../../library/decimal.rst:1813
+#, fuzzy
+msgid ""
+"The use of decimal floating point eliminates decimal representation error "
+"(making it possible to represent ``0.1`` exactly); however, some operations "
+"can still incur round-off error when non-zero digits exceed the fixed "
+"precision."
+msgstr ""
+"Việc sử dụng dấu phẩy động thập phân giúp loại bỏ lỗi biểu diễn thập phân "
+"(giúp có thể biểu diễn chính xác ``0.1``); tuy nhiên, một số thao tác vẫn có"
+" thể xảy ra lỗi làm tròn khi các chữ số khác 0 vượt quá độ chính xác cố "
+"định."
+
+#: ../../library/decimal.rst:1817
+#, fuzzy
+msgid ""
+"The effects of round-off error can be amplified by the addition or "
+"subtraction of nearly offsetting quantities resulting in loss of "
+"significance.  Knuth provides two instructive examples where rounded "
+"floating-point arithmetic with insufficient precision causes the breakdown "
+"of the associative and distributive properties of addition:"
+msgstr ""
+"Tác động của sai số làm tròn có thể được khuếch đại bằng cách cộng hoặc trừ "
+"các đại lượng gần bù đắp dẫn đến mất ý nghĩa.  Knuth cung cấp hai ví dụ mang"
+" tính hướng dẫn trong đó số học dấu phẩy động được làm tròn với độ chính xác"
+" không đủ gây ra sự phá vỡ các thuộc tính kết hợp và phân phối của phép "
+"cộng:"
+
+#: ../../library/decimal.rst:1823
+#, fuzzy
+msgid ""
+"# Examples from Seminumerical Algorithms, Section 4.2.2.\n"
+">>> from decimal import Decimal, getcontext\n"
+">>> getcontext().prec = 8\n"
+"\n"
+">>> u, v, w = Decimal(11111113), Decimal(-11111111), Decimal('7.51111111')\n"
+">>> (u + v) + w\n"
+"Decimal('9.5111111')\n"
+">>> u + (v + w)\n"
+"Decimal('10')\n"
+"\n"
+">>> u, v, w = Decimal(20000), Decimal(-6), Decimal('6.0000003')\n"
+">>> (u*v) + (u*w)\n"
+"Decimal('0.01')\n"
+">>> u * (v+w)\n"
+"Decimal('0.0060000')"
+msgstr ""
+"# Examples từ Thuật toán Seminumerical, Phần 4.2.2.\n"
+">>> từ nhập thập phân Thập phân, getcontext\n"
+">>> getcontext().prec = 8\n"
+"\n"
+">>> u, v, w = Số thập phân(11111113), Số thập phân(-11111111), Số thập phân('7.51111111')\n"
+">>> (u + v) + w\n"
+"Thập phân('9.5111111')\n"
+">>> u + (v + w)\n"
+"Thập phân('10')\n"
+"\n"
+">>> u, v, w = Số thập phân(20000), Số thập phân(-6), Số thập phân('6.0000003')\n"
+">>> (u*v) + (u*w)\n"
+"Thập phân('0.01')\n"
+">>> u * (v+w)\n"
+"Thập phân('0.0060000')"
+
+#: ../../library/decimal.rst:1841
+#, fuzzy
+msgid ""
+"The :mod:`!decimal` module makes it possible to restore the identities by "
+"expanding the precision sufficiently to avoid loss of significance:"
+msgstr ""
+"Mô-đun :mod:`!decimal` cho phép khôi phục danh tính bằng cách mở rộng độ "
+"chính xác đủ để tránh mất ý nghĩa:"
+
+#: ../../library/decimal.rst:1844
+#, fuzzy
+msgid ""
+">>> getcontext().prec = 20\n"
+">>> u, v, w = Decimal(11111113), Decimal(-11111111), Decimal('7.51111111')\n"
+">>> (u + v) + w\n"
+"Decimal('9.51111111')\n"
+">>> u + (v + w)\n"
+"Decimal('9.51111111')\n"
+">>>\n"
+">>> u, v, w = Decimal(20000), Decimal(-6), Decimal('6.0000003')\n"
+">>> (u*v) + (u*w)\n"
+"Decimal('0.0060000')\n"
+">>> u * (v+w)\n"
+"Decimal('0.0060000')"
+msgstr ""
+">>> getcontext().prec = 20\n"
+">>> u, v, w = Số thập phân(11111113), Số thập phân(-11111111), Số thập phân('7.51111111')\n"
+">>> (u + v) + w\n"
+"Thập phân('9.51111111')\n"
+">>> u + (v + w)\n"
+"Thập phân('9.51111111')\n"
+">>>\n"
+">>> u, v, w = Số thập phân(20000), Số thập phân(-6), Số thập phân('6.0000003')\n"
+">>> (u*v) + (u*w)\n"
+"Thập phân('0.0060000')\n"
+">>> u * (v+w)\n"
+"Thập phân('0.0060000')"
+
+#: ../../library/decimal.rst:1861
+#, fuzzy
+msgid "Special values"
+msgstr "Giá trị đặc biệt"
+
+#: ../../library/decimal.rst:1863
+#, fuzzy
+msgid ""
+"The number system for the :mod:`!decimal` module provides special values "
+"including ``NaN``, ``sNaN``, ``-Infinity``, ``Infinity``, and two zeros, "
+"``+0`` and ``-0``."
+msgstr ""
+"Hệ thống số cho mô-đun :mod:`!decimal` cung cấp các giá trị đặc biệt bao gồm"
+" ``NaN``, ``sNaN``, ``-Infinity``, ``Infinity`` và hai số 0, ``+0`` và "
+"``-0``."
+
+#: ../../library/decimal.rst:1867
+#, fuzzy
+msgid ""
+"Infinities can be constructed directly with:  ``Decimal('Infinity')``. Also,"
+" they can arise from dividing by zero when the :exc:`DivisionByZero` signal "
+"is not trapped.  Likewise, when the :exc:`Overflow` signal is not trapped, "
+"infinity can result from rounding beyond the limits of the largest "
+"representable number."
+msgstr ""
+"Vô cực có thể được xây dựng trực tiếp với: ``Decimal('Infinity')``. Ngoài "
+"ra, chúng có thể phát sinh từ việc chia cho 0 khi tín hiệu "
+":exc:`DivisionByZero` không bị kẹt.  Tương tự, khi tín hiệu :exc:`Overflow` "
+"không bị kẹt, giá trị vô cùng có thể là kết quả của việc làm tròn vượt quá "
+"giới hạn của số biểu diễn lớn nhất."
+
+#: ../../library/decimal.rst:1872
+#, fuzzy
+msgid ""
+"The infinities are signed (affine) and can be used in arithmetic operations "
+"where they get treated as very large, indeterminate numbers.  For instance, "
+"adding a constant to infinity gives another infinite result."
+msgstr ""
+"Các số vô hạn được ký (affine) và có thể được sử dụng trong các phép tính số"
+" học trong đó chúng được coi là số rất lớn, không xác định.  Chẳng hạn, việc"
+" thêm một hằng số vào vô cùng sẽ cho một kết quả vô hạn khác."
+
+#: ../../library/decimal.rst:1876
+#, fuzzy
+msgid ""
+"Some operations are indeterminate and return ``NaN``, or if the "
+":exc:`InvalidOperation` signal is trapped, raise an exception.  For example,"
+" ``0/0`` returns ``NaN`` which means \"not a number\".  This variety of "
+"``NaN`` is quiet and, once created, will flow through other computations "
+"always resulting in another ``NaN``.  This behavior can be useful for a "
+"series of computations that occasionally have missing inputs --- it allows "
+"the calculation to proceed while flagging specific results as invalid."
+msgstr ""
+"Một số thao tác không xác định và trả về ``NaN`` hoặc nếu tín hiệu "
+":exc:`InvalidOperation` bị kẹt, hãy đưa ra một ngoại lệ.  Ví dụ: ``0/0`` trả"
+" về ``NaN`` có nghĩa là \"không phải số\".  Loại ``NaN`` này hoạt động yên "
+"tĩnh và sau khi được tạo, sẽ chuyển qua các tính toán khác và luôn dẫn đến "
+"một ``NaN`` khác.  Hành vi này có thể hữu ích cho một loạt các tính toán đôi"
+" khi thiếu đầu vào --- nó cho phép quá trình tính toán tiếp tục trong khi "
+"gắn cờ các kết quả cụ thể là không hợp lệ."
+
+#: ../../library/decimal.rst:1884
+#, fuzzy
+msgid ""
+"A variant is ``sNaN`` which signals rather than remaining quiet after every "
+"operation.  This is a useful return value when an invalid result needs to "
+"interrupt a calculation for special handling."
+msgstr ""
+"Một biến thể là ``sNaN`` phát tín hiệu thay vì giữ im lặng sau mỗi hoạt "
+"động.  Đây là giá trị trả về hữu ích khi một kết quả không hợp lệ cần làm "
+"gián đoạn phép tính để xử lý đặc biệt."
+
+#: ../../library/decimal.rst:1888
+#, fuzzy
+msgid ""
+"The behavior of Python's comparison operators can be a little surprising "
+"where a ``NaN`` is involved.  A test for equality where one of the operands "
+"is a quiet or signaling ``NaN`` always returns :const:`False` (even when "
+"doing ``Decimal('NaN')==Decimal('NaN')``), while a test for inequality "
+"always returns :const:`True`.  An attempt to compare two Decimals using any "
+"of the ``<``, ``<=``, ``>`` or ``>=`` operators will raise the "
+":exc:`InvalidOperation` signal if either operand is a ``NaN``, and return "
+":const:`False` if this signal is not trapped.  Note that the General Decimal"
+" Arithmetic specification does not specify the behavior of direct "
+"comparisons; these rules for comparisons involving a ``NaN`` were taken from"
+" the IEEE 854 standard (see Table 3 in section 5.7).  To ensure strict "
+"standards-compliance, use the :meth:`~Decimal.compare` and "
+":meth:`~Decimal.compare_signal` methods instead."
+msgstr ""
+"Hành vi của các toán tử so sánh của Python có thể hơi ngạc nhiên khi có liên"
+" quan đến ``NaN``.  Kiểm tra sự bằng nhau trong đó một trong các toán hạng "
+"là ``NaN`` im lặng hoặc báo hiệu luôn trả về :const:`False` (ngay cả khi "
+"thực hiện ``Decimal('NaN')==Decimal('NaN')``), trong khi kiểm tra bất đẳng "
+"thức luôn trả về :const:`True`.  Nỗ lực so sánh hai Số thập phân bằng cách "
+"sử dụng bất kỳ toán tử ``<``, ``<=``, ``>`` hoặc ``>=`` nào sẽ tăng tín hiệu"
+" :exc:`InvalidOperation` nếu một trong hai toán hạng là ``NaN`` và trả về "
+":const:`False` nếu tín hiệu này không bị kẹt.  Lưu ý rằng đặc tả Số học thập"
+" phân tổng quát không chỉ định hành vi so sánh trực tiếp; các quy tắc so "
+"sánh liên quan đến ``NaN`` này được lấy từ tiêu chuẩn IEEE 854 (xem Bảng 3 "
+"trong phần 5.7).  Để đảm bảo tuân thủ các tiêu chuẩn nghiêm ngặt, thay vào "
+"đó hãy sử dụng các phương pháp :meth:`~Decimal.compare` và "
+":meth:`~Decimal.compare_signal`."
+
+#: ../../library/decimal.rst:1901
+#, fuzzy
+msgid ""
+"The signed zeros can result from calculations that underflow. They keep the "
+"sign that would have resulted if the calculation had been carried out to "
+"greater precision.  Since their magnitude is zero, both positive and "
+"negative zeros are treated as equal and their sign is informational."
+msgstr ""
+"Các số 0 đã ký có thể là kết quả của các phép tính tràn ngập. Họ giữ lại dấu"
+" hiệu sẽ có kết quả nếu phép tính được thực hiện với độ chính xác cao hơn.  "
+"Vì cường độ của chúng bằng 0 nên cả số 0 dương và âm đều được coi là bằng "
+"nhau và dấu của chúng mang tính thông tin."
+
+#: ../../library/decimal.rst:1906
+#, fuzzy
+msgid ""
+"In addition to the two signed zeros which are distinct yet equal, there are "
+"various representations of zero with differing precisions yet equivalent in "
+"value.  This takes a bit of getting used to.  For an eye accustomed to "
+"normalized floating-point representations, it is not immediately obvious "
+"that the following calculation returns a value equal to zero:"
+msgstr ""
+"Ngoài hai số 0 có dấu phân biệt nhưng bằng nhau, còn có nhiều cách biểu thị "
+"số 0 khác nhau với độ chính xác khác nhau nhưng có giá trị tương đương.  "
+"Điều này cần một chút để làm quen.  Đối với mắt đã quen với các biểu diễn "
+"dấu phẩy động được chuẩn hóa, không thể thấy ngay rằng phép tính sau đây trả"
+" về giá trị bằng 0:"
+
+#: ../../library/decimal.rst:1921
+#, fuzzy
+msgid "Working with threads"
+msgstr "Làm việc với chủ đề"
+
+#: ../../library/decimal.rst:1923
+#, fuzzy
+msgid ""
+"The :func:`getcontext` function accesses a different :class:`Context` object"
+" for each thread.  Having separate thread contexts means that threads may "
+"make changes (such as ``getcontext().prec=10``) without interfering with "
+"other threads."
+msgstr ""
+"Hàm :func:`getcontext` truy cập một đối tượng :class:`Context` khác nhau cho"
+" mỗi luồng.  Có bối cảnh luồng riêng biệt có nghĩa là các luồng có thể thực "
+"hiện thay đổi (chẳng hạn như ``getcontext().prec=10``) mà không can thiệp "
+"vào các luồng khác."
+
+#: ../../library/decimal.rst:1927
+#, fuzzy
+msgid ""
+"Likewise, the :func:`setcontext` function automatically assigns its target "
+"to the current thread."
+msgstr ""
+"Tương tự, hàm :func:`setcontext` tự động gán mục tiêu của nó cho luồng hiện "
+"tại."
+
+#: ../../library/decimal.rst:1930
+#, fuzzy
+msgid ""
+"If :func:`setcontext` has not been called before :func:`getcontext`, then "
+":func:`getcontext` will automatically create a new context for use in the "
+"current thread.  New context objects have default values set from the "
+":data:`decimal.DefaultContext` object."
+msgstr ""
+"Nếu :func:`setcontext` chưa được gọi trước :func:`getcontext` thì "
+":func:`getcontext` sẽ tự động tạo ngữ cảnh mới để sử dụng trong luồng hiện "
+"tại.  Các đối tượng bối cảnh mới có các giá trị mặc định được đặt từ đối "
+"tượng :data:`decimal.DefaultContext`."
+
+#: ../../library/decimal.rst:1935
+#, fuzzy
+msgid ""
+"The :data:`sys.flags.thread_inherit_context` flag affects the context for "
+"new threads.  If the flag is false, new threads will start with an empty "
+"context.  In this case, :func:`getcontext` will create a new context object "
+"when called and use the default values from *DefaultContext*.  If the flag "
+"is true, new threads will start with a copy of context from the caller of "
+":meth:`threading.Thread.start`."
+msgstr ""
+"Cờ :data:`sys.flags.thread_inherit_context` ảnh hưởng đến ngữ cảnh của các "
+"chủ đề mới.  Nếu cờ sai, các chủ đề mới sẽ bắt đầu với ngữ cảnh trống.  "
+"Trong trường hợp này, :func:`getcontext` sẽ tạo một đối tượng ngữ cảnh mới "
+"khi được gọi và sử dụng các giá trị mặc định từ *DefaultContext*.  Nếu cờ "
+"đúng, các chủ đề mới sẽ bắt đầu bằng bản sao ngữ cảnh từ người gọi "
+":meth:`threading.Thread.start`."
+
+#: ../../library/decimal.rst:1942
+#, fuzzy
+msgid ""
+"To control the defaults so that each thread will use the same values "
+"throughout the application, directly modify the *DefaultContext* object. "
+"This should be done *before* any threads are started so that there won't be "
+"a race condition between threads calling :func:`getcontext`. For example::"
+msgstr ""
+"Để kiểm soát các giá trị mặc định sao cho mỗi luồng sẽ sử dụng cùng một giá "
+"trị trong toàn bộ ứng dụng, hãy sửa đổi trực tiếp đối tượng "
+"*DefaultContext*. Điều này nên được thực hiện *before* bất kỳ chủ đề nào "
+"được bắt đầu để không có tình trạng xung đột giữa các chủ đề gọi "
+":func:`getcontext`. Ví dụ::"
+
+#: ../../library/decimal.rst:1947
+#, fuzzy
+msgid ""
+"# Set applicationwide defaults for all threads about to be launched\n"
+"DefaultContext.prec = 12\n"
+"DefaultContext.rounding = ROUND_DOWN\n"
+"DefaultContext.traps = ExtendedContext.traps.copy()\n"
+"DefaultContext.traps[InvalidOperation] = 1\n"
+"setcontext(DefaultContext)\n"
+"\n"
+"# Afterwards, the threads can be started\n"
+"t1.start()\n"
+"t2.start()\n"
+"t3.start()\n"
+" . . ."
+msgstr ""
+"# Set mặc định trên toàn ứng dụng cho tất cả các chủ đề sắp được khởi chạy\n"
+"DefaultContext.prec = 12\n"
+"DefaultContext.rounding = ROUND_DOWN\n"
+"DefaultContext.traps = ExtendedContext.traps.copy()\n"
+"DefaultContext.traps[InvalidOperation] = 1\n"
+"setcontext(DefaultContext)\n"
+"\n"
+"# Afterwards, các chủ đề có thể được bắt đầu\n"
+"t1.start()\n"
+"t2.start()\n"
+"t3.start()\n"
+" . . ."
+
+#: ../../library/decimal.rst:1966
+#, fuzzy
+msgid "Recipes"
+msgstr "Công thức nấu ăn"
+
+#: ../../library/decimal.rst:1968
+#, fuzzy
+msgid ""
+"Here are a few recipes that serve as utility functions and that demonstrate "
+"ways to work with the :class:`Decimal` class::"
+msgstr ""
+"Dưới đây là một số công thức đóng vai trò là chức năng tiện ích và minh họa "
+"cách làm việc với lớp :class:`Decimal`::"
+
+#: ../../library/decimal.rst:1971
+#, fuzzy
+msgid ""
+"def moneyfmt(value, places=2, curr='', sep=',', dp='.',\n"
+"             pos='', neg='-', trailneg=''):\n"
+"    \"\"\"Convert Decimal to a money formatted string.\n"
+"\n"
+"    places:  required number of places after the decimal point\n"
+"    curr:    optional currency symbol before the sign (may be blank)\n"
+"    sep:     optional grouping separator (comma, period, space, or blank)\n"
+"    dp:      decimal point indicator (comma or period)\n"
+"             only specify as blank when places is zero\n"
+"    pos:     optional sign for positive numbers: '+', space or blank\n"
+"    neg:     optional sign for negative numbers: '-', '(', space or blank\n"
+"    trailneg:optional trailing minus indicator:  '-', ')', space or blank\n"
+"\n"
+"    >>> d = Decimal('-1234567.8901')\n"
+"    >>> moneyfmt(d, curr='$')\n"
+"    '-$1,234,567.89'\n"
+"    >>> moneyfmt(d, places=0, sep='.', dp='', neg='', trailneg='-')\n"
+"    '1.234.568-'\n"
+"    >>> moneyfmt(d, curr='$', neg='(', trailneg=')')\n"
+"    '($1,234,567.89)'\n"
+"    >>> moneyfmt(Decimal(123456789), sep=' ')\n"
+"    '123 456 789.00'\n"
+"    >>> moneyfmt(Decimal('-0.02'), neg='<', trailneg='>')\n"
+"    '<0.02>'\n"
+"\n"
+"    \"\"\"\n"
+"    q = Decimal(10) ** -places      # 2 places --> '0.01'\n"
+"    sign, digits, exp = value.quantize(q).as_tuple()\n"
+"    result = []\n"
+"    digits = list(map(str, digits))\n"
+"    build, next = result.append, digits.pop\n"
+"    if sign:\n"
+"        build(trailneg)\n"
+"    for i in range(places):\n"
+"        build(next() if digits else '0')\n"
+"    if places:\n"
+"        build(dp)\n"
+"    if not digits:\n"
+"        build('0')\n"
+"    i = 0\n"
+"    while digits:\n"
+"        build(next())\n"
+"        i += 1\n"
+"        if i == 3 and digits:\n"
+"            i = 0\n"
+"            build(sep)\n"
+"    build(curr)\n"
+"    build(neg if sign else pos)\n"
+"    return ''.join(reversed(result))\n"
+"\n"
+"def pi():\n"
+"    \"\"\"Compute Pi to the current precision.\n"
+"\n"
+"    >>> print(pi())\n"
+"    3.141592653589793238462643383\n"
+"\n"
+"    \"\"\"\n"
+"    getcontext().prec += 2  # extra digits for intermediate steps\n"
+"    three = Decimal(3)      # substitute \"three=3.0\" for regular floats\n"
+"    lasts, t, s, n, na, d, da = 0, three, 3, 1, 0, 0, 24\n"
+"    while s != lasts:\n"
+"        lasts = s\n"
+"        n, na = n+na, na+8\n"
+"        d, da = d+da, da+32\n"
+"        t = (t * n) / d\n"
+"        s += t\n"
+"    getcontext().prec -= 2\n"
+"    return +s               # unary plus applies the new precision\n"
+"\n"
+"def exp(x):\n"
+"    \"\"\"Return e raised to the power of x.  Result type matches input type.\n"
+"\n"
+"    >>> print(exp(Decimal(1)))\n"
+"    2.718281828459045235360287471\n"
+"    >>> print(exp(Decimal(2)))\n"
+"    7.389056098930650227230427461\n"
+"    >>> print(exp(2.0))\n"
+"    7.38905609893\n"
+"    >>> print(exp(2+0j))\n"
+"    (7.38905609893+0j)\n"
+"\n"
+"    \"\"\"\n"
+"    getcontext().prec += 2\n"
+"    i, lasts, s, fact, num = 0, 0, 1, 1, 1\n"
+"    while s != lasts:\n"
+"        lasts = s\n"
+"        i += 1\n"
+"        fact *= i\n"
+"        num *= x\n"
+"        s += num / fact\n"
+"    getcontext().prec -= 2\n"
+"    return +s\n"
+"\n"
+"def cos(x):\n"
+"    \"\"\"Return the cosine of x as measured in radians.\n"
+"\n"
+"    The Taylor series approximation works best for a small value of x.\n"
+"    For larger values, first compute x = x % (2 * pi).\n"
+"\n"
+"    >>> print(cos(Decimal('0.5')))\n"
+"    0.8775825618903727161162815826\n"
+"    >>> print(cos(0.5))\n"
+"    0.87758256189\n"
+"    >>> print(cos(0.5+0j))\n"
+"    (0.87758256189+0j)\n"
+"\n"
+"    \"\"\"\n"
+"    getcontext().prec += 2\n"
+"    i, lasts, s, fact, num, sign = 0, 0, 1, 1, 1, 1\n"
+"    while s != lasts:\n"
+"        lasts = s\n"
+"        i += 2\n"
+"        fact *= i * (i-1)\n"
+"        num *= x * x\n"
+"        sign *= -1\n"
+"        s += num / fact * sign\n"
+"    getcontext().prec -= 2\n"
+"    return +s\n"
+"\n"
+"def sin(x):\n"
+"    \"\"\"Return the sine of x as measured in radians.\n"
+"\n"
+"    The Taylor series approximation works best for a small value of x.\n"
+"    For larger values, first compute x = x % (2 * pi).\n"
+"\n"
+"    >>> print(sin(Decimal('0.5')))\n"
+"    0.4794255386042030002732879352\n"
+"    >>> print(sin(0.5))\n"
+"    0.479425538604\n"
+"    >>> print(sin(0.5+0j))\n"
+"    (0.479425538604+0j)\n"
+"\n"
+"    \"\"\"\n"
+"    getcontext().prec += 2\n"
+"    i, lasts, s, fact, num, sign = 1, 0, x, 1, x, 1\n"
+"    while s != lasts:\n"
+"        lasts = s\n"
+"        i += 2\n"
+"        fact *= i * (i-1)\n"
+"        num *= x * x\n"
+"        sign *= -1\n"
+"        s += num / fact * sign\n"
+"    getcontext().prec -= 2\n"
+"    return +s"
+msgstr ""
+"def moneyfmt(giá trị, địa điểm=2, curr='', sep=',', dp='.',\n"
+"             pos='', neg='-', Trailneg=''):\n"
+"    \"\"\"Chuyển đổi số thập phân thành chuỗi có định dạng tiền.\n"
+"\n"
+"    vị trí: số vị trí bắt buộc sau dấu thập phân\n"
+"    Curr: ký hiệu tiền tệ tùy chọn trước dấu (có thể để trống)\n"
+"    sep: dấu phân cách nhóm tùy chọn (dấu phẩy, dấu chấm, dấu cách hoặc khoảng trống)\n"
+"    dp: chỉ báo dấu thập phân (dấu phẩy hoặc dấu chấm)\n"
+"             chỉ chỉ định là trống khi địa điểm bằng 0\n"
+"    pos: dấu tùy chọn cho số dương: '+', dấu cách hoặc trống\n"
+"    neg: dấu tùy chọn cho số âm: '-', '(', dấu cách hoặc trống\n"
+"    dấu vết: chỉ báo dấu trừ ở cuối tùy chọn: '-', ')', dấu cách hoặc để trống\n"
+"\n"
+"    >>> d = Số thập phân('-1234567.8901')\n"
+"    >>> moneyfmt(d,curr='$')\n"
+"    '-$1.234.567,89'\n"
+"    >>> moneyfmt(d, Places=0, sep='.', dp='', neg='', Trailneg='-')\n"
+"    '1.234.568-'\n"
+"    >>> moneyfmt(d,curr='$', neg='(', Trailneg=')')\n"
+"    '($1.234.567,89)'\n"
+"    >>> moneyfmt(Thập phân(123456789), sep=' ')\n"
+"    '123 456 789.00'\n"
+"    >>> moneyfmt(Thập phân('-0.02'), neg='<', Trailneg='>')\n"
+"    '<0,02>'\n"
+"\n"
+"    \"\"\"\n"
+"    q = Số thập phân(10) ** -địa điểm # 2 địa điểm --> '0,01'\n"
+"    dấu, chữ số, exp = value.quantize(q).as_tuple()\n"
+"    kết quả = []\n"
+"    chữ số = danh sách (bản đồ (str, chữ số))\n"
+"    xây dựng, tiếp theo = result.append, chữ số.pop\n"
+"    dấu nếu:\n"
+"        xây dựng(trailneg)\n"
+"    cho tôi trong phạm vi (địa điểm):\n"
+"        build(next() nếu các chữ số khác '0')\n"
+"    nếu địa điểm:\n"
+"        xây dựng (dp)\n"
+"    nếu không phải là chữ số:\n"
+"        xây dựng('0')\n"
+"    tôi = 0\n"
+"    trong khi chữ số:\n"
+"        xây dựng(tiếp theo())\n"
+"        tôi += 1\n"
+"        nếu i == 3 và chữ số:\n"
+"            tôi = 0\n"
+"            xây dựng(tháng 9)\n"
+"    xây dựng (curr)\n"
+"    build(neg if sign else pos)\n"
+"    return ''.join(đảo ngược(kết quả))\n"
+"\n"
+"chắc chắn pi():\n"
+"    \"\"\"Tính Pi theo độ chính xác hiện tại.\n"
+"\n"
+"    >>> in(pi())\n"
+"    3.141592653589793238462643383\n"
+"\n"
+"    \"\"\"\n"
+"    getcontext().prec += 2 chữ số # extra cho các bước trung gian\n"
+"    ba = Thập phân(3) # substitute \"ba=3.0\" cho số float thông thường\n"
+"    kéo dài, t, s, n, na, d, da = 0, ba, 3, 1, 0, 0, 24\n"
+"    trong khi s != kéo dài:\n"
+"        kéo dài = s\n"
+"        n, na = n+na, na+8\n"
+"        d, da = d+da, da+32\n"
+"        t = (t*n)/d\n"
+"        s += t\n"
+"    getcontext().prec -= 2\n"
+"    return +s # unary plus áp dụng độ chính xác mới\n"
+"\n"
+"def exp(x):\n"
+"    \"\"\"Trả về e lũy thừa của x. Loại kết quả khớp với loại đầu vào.\n"
+"\n"
+"    >>> in(exp(Thập phân(1)))\n"
+"    2.718281828459045235360287471\n"
+"    >>> in(exp(Thập phân(2)))\n"
+"    7.389056098930650227230427461\n"
+"    >>> in(exp(2.0))\n"
+"    7.38905609893\n"
+"    >>> in(exp(2+0j))\n"
+"    (7.38905609893+0j)\n"
+"\n"
+"    \"\"\"\n"
+"    getcontext().prec += 2\n"
+"    i, kéo dài, s, thực tế, num = 0, 0, 1, 1, 1\n"
+"    trong khi s != kéo dài:\n"
+"        kéo dài = s\n"
+"        tôi += 1\n"
+"        sự thật *= tôi\n"
+"        số *= x\n"
+"        s += num/sự thật\n"
+"    getcontext().prec -= 2\n"
+"    trả lại +s\n"
+"\n"
+"định nghĩa cos(x):\n"
+"    \"\"\"Trả về cosin của x được đo bằng radian.\n"
+"\n"
+"    Xấp xỉ chuỗi Taylor hoạt động tốt nhất với giá trị x nhỏ.\n"
+"    Đối với các giá trị lớn hơn, trước tiên hãy tính x = x % (2 * pi).\n"
+"\n"
+"    >>> in(cos(Thập phân('0.5')))\n"
+"    0.8775825618903727161162815826\n"
+"    >>> in(cos(0.5))\n"
+"    0.87758256189\n"
+"    >>> in(cos(0.5+0j))\n"
+"    (0.87758256189+0j)\n"
+"\n"
+"    \"\"\"\n"
+"    getcontext().prec += 2\n"
+"    i, kéo dài, s, thực tế, num, dấu = 0, 0, 1, 1, 1, 1\n"
+"    trong khi s != kéo dài:\n"
+"        kéo dài = s\n"
+"        tôi += 2\n"
+"        thực tế *= i * (i-1)\n"
+"        số *= x * x\n"
+"        ký *= -1\n"
+"        s += num / ký hiệu * thực tế\n"
+"    getcontext().prec -= 2\n"
+"    trả lại +s\n"
+"\n"
+"định nghĩa tội lỗi (x):\n"
+"    \"\"\"Trả về sin của x được đo bằng radian.\n"
+"\n"
+"    Xấp xỉ chuỗi Taylor hoạt động tốt nhất với giá trị x nhỏ.\n"
+"    Đối với các giá trị lớn hơn, trước tiên hãy tính x = x % (2 * pi).\n"
+"\n"
+"    >>> print(sin(Decimal('0.5')))\n"
+"    0,4794255386042030002732879352\n"
+"    >>> in(sin(0.5))\n"
+"    0.479425538604\n"
+"    >>> in(sin(0.5+0j))\n"
+"    (0,479425538604+0j)\n"
+"\n"
+"    \"\"\"\n"
+"    getcontext().prec += 2\n"
+"    i, kéo dài, s, thực tế, num, dấu = 1, 0, x, 1, x, 1\n"
+"    trong khi s != kéo dài:\n"
+"        kéo dài = s\n"
+"        tôi += 2\n"
+"        thực tế *= i * (i-1)\n"
+"        số *= x * x\n"
+"        ký *= -1\n"
+"        s += num / ký hiệu * thực tế\n"
+"    getcontext().prec -= 2\n"
+"    trả lại +s"
+
+#: ../../library/decimal.rst:2123
+#, fuzzy
+msgid "Decimal FAQ"
+msgstr "FAQ thập phân"
+
+#: ../../library/decimal.rst:2125
+#, fuzzy
+msgid ""
+"Q: It is cumbersome to type ``decimal.Decimal('1234.5')``.  Is there a way "
+"to minimize typing when using the interactive interpreter?"
+msgstr ""
+"Hỏi: Việc gõ ``decimal.Decimal('1234.5')`` rất khó khăn.  Có cách nào để "
+"giảm thiểu việc gõ khi sử dụng trình thông dịch tương tác không?"
+
+#: ../../library/decimal.rst:2128
+#, fuzzy
+msgid "A: Some users abbreviate the constructor to just a single letter:"
+msgstr "Đáp: Một số người dùng viết tắt hàm tạo thành chỉ một chữ cái:"
+
+#: ../../library/decimal.rst:2134
+#, fuzzy
+msgid ""
+"Q: In a fixed-point application with two decimal places, some inputs have "
+"many places and need to be rounded.  Others are not supposed to have excess "
+"digits and need to be validated.  What methods should be used?"
+msgstr ""
+"Câu hỏi: Trong ứng dụng điểm cố định có hai chữ số thập phân, một số đầu vào"
+" có nhiều vị trí và cần được làm tròn.  Những số khác không được phép có chữ"
+" số dư thừa và cần được xác thực.  Nên sử dụng những phương pháp nào?"
+
+#: ../../library/decimal.rst:2138
+#, fuzzy
+msgid ""
+"A: The :meth:`~Decimal.quantize` method rounds to a fixed number of decimal "
+"places. If the :const:`Inexact` trap is set, it is also useful for "
+"validation:"
+msgstr ""
+"Đáp: Phương thức :meth:`~Decimal.quantize` làm tròn đến một số chữ số thập "
+"phân cố định. Nếu bẫy :const:`Inexact` được đặt, nó cũng hữu ích cho việc "
+"xác thực:"
+
+#: ../../library/decimal.rst:2156
+#, fuzzy
+msgid ""
+"Q: Once I have valid two place inputs, how do I maintain that invariant "
+"throughout an application?"
+msgstr ""
+"Câu hỏi: Sau khi tôi có hai đầu vào vị trí hợp lệ, làm cách nào để duy trì "
+"tính bất biến đó trong suốt ứng dụng?"
+
+#: ../../library/decimal.rst:2159
+#, fuzzy
+msgid ""
+"A: Some operations like addition, subtraction, and multiplication by an "
+"integer will automatically preserve fixed point.  Others operations, like "
+"division and non-integer multiplication, will change the number of decimal "
+"places and need to be followed-up with a :meth:`~Decimal.quantize` step:"
+msgstr ""
+"Đáp: Một số phép tính như cộng, trừ và nhân với một số nguyên sẽ tự động giữ"
+" nguyên điểm cố định.  Các phép toán khác, như phép chia và phép nhân không "
+"nguyên, sẽ thay đổi số vị trí thập phân và cần được thực hiện tiếp bằng bước"
+" :meth:`~Decimal.quantize`:"
+
+#: ../../library/decimal.rst:2177
+#, fuzzy
+msgid ""
+"In developing fixed-point applications, it is convenient to define functions"
+" to handle the :meth:`~Decimal.quantize` step:"
+msgstr ""
+"Khi phát triển các ứng dụng điểm cố định, sẽ thuận tiện hơn khi xác định các"
+" hàm để xử lý bước :meth:`~Decimal.quantize`:"
+
+#: ../../library/decimal.rst:2191
+#, fuzzy
+msgid ""
+"Q: There are many ways to express the same value.  The numbers ``200``, "
+"``200.000``, ``2E2``, and ``.02E+4`` all have the same value at various "
+"precisions. Is there a way to transform them to a single recognizable "
+"canonical value?"
+msgstr ""
+"H: Có nhiều cách diễn đạt cùng một giá trị.  Các số ``200``, ``200.000``, "
+"``2E2`` và ``.02E+4`` đều có cùng giá trị ở các độ chính xác khác nhau. Có "
+"cách nào để chuyển đổi chúng thành một giá trị chuẩn có thể nhận biết được "
+"không?"
+
+#: ../../library/decimal.rst:2196
+#, fuzzy
+msgid ""
+"A: The :meth:`~Decimal.normalize` method maps all equivalent values to a "
+"single representative:"
+msgstr ""
+"Trả lời: Phương pháp :meth:`~Decimal.normalize` ánh xạ tất cả các giá trị "
+"tương đương vào một đại diện duy nhất:"
+
+#: ../../library/decimal.rst:2203
+#, fuzzy
+msgid "Q: When does rounding occur in a computation?"
+msgstr "Câu hỏi: Khi nào việc làm tròn xảy ra trong tính toán?"
+
+#: ../../library/decimal.rst:2205
+#, fuzzy
+msgid ""
+"A: It occurs *after* the computation.  The philosophy of the decimal "
+"specification is that numbers are considered exact and are created "
+"independent of the current context.  They can even have greater precision "
+"than current context.  Computations process with those exact inputs and then"
+" rounding (or other context operations) is applied to the *result* of the "
+"computation::"
+msgstr ""
+"A: Nó xảy ra *after* tính toán.  Triết lý của đặc tả thập phân là các con số"
+" được coi là chính xác và được tạo ra độc lập với bối cảnh hiện tại.  Chúng "
+"thậm chí có thể có độ chính xác cao hơn bối cảnh hiện tại.  Quá trình tính "
+"toán với các đầu vào chính xác đó và sau đó làm tròn (hoặc các thao tác ngữ "
+"cảnh khác) được áp dụng cho *result* của phép tính::"
+
+#: ../../library/decimal.rst:2212
+#, fuzzy
+msgid ""
+">>> getcontext().prec = 5\n"
+">>> pi = Decimal('3.1415926535')   # More than 5 digits\n"
+">>> pi                             # All digits are retained\n"
+"Decimal('3.1415926535')\n"
+">>> pi + 0                         # Rounded after an addition\n"
+"Decimal('3.1416')\n"
+">>> pi - Decimal('0.00005')        # Subtract unrounded numbers, then round\n"
+"Decimal('3.1415')\n"
+">>> pi + 0 - Decimal('0.00005').   # Intermediate values are rounded\n"
+"Decimal('3.1416')"
+msgstr ""
+">>> getcontext().prec = 5\n"
+">>> pi = Decimal('3.1415926535') # More hơn 5 chữ số\n"
+">>> chữ số pi # All được giữ lại\n"
+"Thập phân('3.1415926535')\n"
+">>> pi + 0 # Rounded sau khi cộng\n"
+"Thập phân('3.1416')\n"
+">>> pi - Số thập phân('0.00005') # Subtract không làm tròn số, sau đó làm tròn\n"
+"Thập phân('3.1415')\n"
+">>> pi + 0 - Số thập phân('0.00005').   giá trị # Intermediate được làm tròn\n"
+"Thập phân('3.1416')"
+
+#: ../../library/decimal.rst:2223
+#, fuzzy
+msgid ""
+"Q: Some decimal values always print with exponential notation.  Is there a "
+"way to get a non-exponential representation?"
+msgstr ""
+"Hỏi: Một số giá trị thập phân luôn được in bằng ký hiệu số mũ.  Có cách nào "
+"để có được một đại diện không theo cấp số nhân?"
+
+#: ../../library/decimal.rst:2226
+#, fuzzy
+msgid ""
+"A: For some values, exponential notation is the only way to express the "
+"number of significant places in the coefficient.  For example, expressing "
+"``5.0E+3`` as ``5000`` keeps the value constant but cannot show the "
+"original's two-place significance."
+msgstr ""
+"Trả lời: Đối với một số giá trị, ký hiệu hàm mũ là cách duy nhất để biểu thị"
+" số vị trí quan trọng trong hệ số.  Ví dụ: biểu thị ``5.0E+3`` dưới dạng "
+"``5000`` giữ giá trị không đổi nhưng không thể hiển thị ý nghĩa hai vị trí "
+"của bản gốc."
+
+#: ../../library/decimal.rst:2231
+#, fuzzy
+msgid ""
+"If an application does not care about tracking significance, it is easy to "
+"remove the exponent and trailing zeroes, losing significance, but keeping "
+"the value unchanged:"
+msgstr ""
+"Nếu một ứng dụng không quan tâm đến việc theo dõi ý nghĩa, có thể dễ dàng "
+"loại bỏ số mũ và số 0 ở cuối, làm mất ý nghĩa nhưng vẫn giữ nguyên giá trị:"
+
+#: ../../library/decimal.rst:2241
+#, fuzzy
+msgid "Q: Is there a way to convert a regular float to a :class:`Decimal`?"
+msgstr ""
+"Câu hỏi: Có cách nào để chuyển đổi float thông thường thành :class:`Decimal`"
+" không?"
+
+#: ../../library/decimal.rst:2243
+#, fuzzy
+msgid ""
+"A: Yes, any binary floating-point number can be exactly expressed as a "
+"Decimal though an exact conversion may take more precision than intuition "
+"would suggest:"
+msgstr ""
+"Trả lời: Có, bất kỳ số dấu phẩy động nhị phân nào cũng có thể được biểu thị "
+"chính xác dưới dạng Số thập phân mặc dù việc chuyển đổi chính xác có thể có "
+"độ chính xác cao hơn mức trực giác gợi ý:"
+
+#: ../../library/decimal.rst:2247
+#, fuzzy
+msgid ""
+">>> Decimal(math.pi)\n"
+"Decimal('3.141592653589793115997963468544185161590576171875')"
+msgstr ""
+">>> Số thập phân(math.pi)\n"
+"Thập phân('3.141592653589793115997963468544185161590576171875')"
+
+#: ../../library/decimal.rst:2252
+#, fuzzy
+msgid ""
+"Q: Within a complex calculation, how can I make sure that I haven't gotten a"
+" spurious result because of insufficient precision or rounding anomalies."
+msgstr ""
+"Câu hỏi: Trong một phép tính phức tạp, làm cách nào để đảm bảo rằng tôi "
+"không nhận được kết quả giả do độ chính xác không đủ hoặc do làm tròn bất "
+"thường."
+
+#: ../../library/decimal.rst:2255
+#, fuzzy
+msgid ""
+"A: The decimal module makes it easy to test results.  A best practice is to "
+"re-run calculations using greater precision and with various rounding modes."
+" Widely differing results indicate insufficient precision, rounding mode "
+"issues, ill-conditioned inputs, or a numerically unstable algorithm."
+msgstr ""
+"Đáp: Mô-đun thập phân giúp dễ dàng kiểm tra kết quả.  Cách tốt nhất là chạy "
+"lại các phép tính với độ chính xác cao hơn và với nhiều chế độ làm tròn khác"
+" nhau. Các kết quả rất khác nhau cho thấy độ chính xác không đủ, các vấn đề "
+"về chế độ làm tròn, đầu vào không được điều chỉnh hoặc thuật toán không ổn "
+"định về mặt số."
+
+#: ../../library/decimal.rst:2260
+#, fuzzy
+msgid ""
+"Q: I noticed that context precision is applied to the results of operations "
+"but not to the inputs.  Is there anything to watch out for when mixing "
+"values of different precisions?"
+msgstr ""
+"Câu hỏi: Tôi nhận thấy rằng độ chính xác của ngữ cảnh được áp dụng cho kết "
+"quả của các thao tác chứ không phải cho đầu vào.  Có điều gì cần chú ý khi "
+"trộn các giá trị có độ chính xác khác nhau không?"
+
+#: ../../library/decimal.rst:2264
+#, fuzzy
+msgid ""
+"A: Yes.  The principle is that all values are considered to be exact and so "
+"is the arithmetic on those values.  Only the results are rounded.  The "
+"advantage for inputs is that \"what you type is what you get\".  A "
+"disadvantage is that the results can look odd if you forget that the inputs "
+"haven't been rounded:"
+msgstr ""
+"Đ: Vâng.  Nguyên tắc là tất cả các giá trị được coi là chính xác và số học "
+"trên các giá trị đó cũng vậy.  Chỉ có kết quả được làm tròn.  Ưu điểm của "
+"đầu vào là \"những gì bạn gõ là những gì bạn nhận được\".  Một điểm bất lợi "
+"là kết quả có thể trông kỳ lạ nếu bạn quên rằng dữ liệu đầu vào chưa được "
+"làm tròn:"
+
+#: ../../library/decimal.rst:2269
+#, fuzzy
+msgid ""
+">>> getcontext().prec = 3\n"
+">>> Decimal('3.104') + Decimal('2.104')\n"
+"Decimal('5.21')\n"
+">>> Decimal('3.104') + Decimal('0.000') + Decimal('2.104')\n"
+"Decimal('5.20')"
+msgstr ""
+">>> getcontext().prec = 3\n"
+">>> Số thập phân('3.104') + Số thập phân('2.104')\n"
+"Thập phân('5.21')\n"
+">>> Số thập phân('3.104') + Số thập phân('0.000') + Số thập phân('2.104')\n"
+"Thập phân('5.20')"
+
+#: ../../library/decimal.rst:2277
+#, fuzzy
+msgid ""
+"The solution is either to increase precision or to force rounding of inputs "
+"using the unary plus operation:"
+msgstr ""
+"Giải pháp là tăng độ chính xác hoặc buộc làm tròn đầu vào bằng phép toán "
+"cộng đơn:"
+
+#: ../../library/decimal.rst:2280
+#, fuzzy
+msgid ""
+">>> getcontext().prec = 3\n"
+">>> +Decimal('1.23456789')      # unary plus triggers rounding\n"
+"Decimal('1.23')"
+msgstr ""
+">>> getcontext().prec = 3\n"
+">>> +Số thập phân('1.23456789') # unary cộng với việc kích hoạt làm tròn\n"
+"Thập phân('1.23')"
+
+#: ../../library/decimal.rst:2286
+#, fuzzy
+msgid ""
+"Alternatively, inputs can be rounded upon creation using the "
+":meth:`Context.create_decimal` method:"
+msgstr ""
+"Ngoài ra, đầu vào có thể được làm tròn khi tạo bằng phương pháp "
+":meth:`Context.create_decimal`:"
+
+#: ../../library/decimal.rst:2292
+#, fuzzy
+msgid "Q: Is the CPython implementation fast for large numbers?"
+msgstr "Câu hỏi: Việc triển khai CPython với số lượng lớn có nhanh không?"
+
+#: ../../library/decimal.rst:2294
+#, fuzzy
+msgid ""
+"A: Yes.  In the CPython and PyPy3 implementations, the C/CFFI versions of "
+"the decimal module integrate the high speed `libmpdec "
+"<https://www.bytereef.org/mpdecimal/doc/libmpdec/index.html>`_ library for "
+"arbitrary precision correctly rounded decimal floating-point arithmetic "
+"[#]_. ``libmpdec`` uses `Karatsuba multiplication "
+"<https://en.wikipedia.org/wiki/Karatsuba_algorithm>`_ for medium-sized "
+"numbers and the `Number Theoretic Transform "
+"<https://en.wikipedia.org/wiki/Discrete_Fourier_transform_(general)#Number-"
+"theoretic_transform>`_ for very large numbers."
+msgstr ""
+"Đ: Vâng.  Trong quá trình triển khai CPython và PyPy3, các phiên bản C/CFFI "
+"của mô-đun thập phân tích hợp thư viện `libmpdec "
+"<https://www.bytereef.org/mpdecimal/doc/libmpdec/index.html>`_ tốc độ cao để"
+" có được số học dấu phẩy động thập phân được làm tròn chính xác một cách "
+"chính xác tùy ý [#]_. ``libmpdec`` sử dụng `Karatsuba multiplication "
+"<https://en.wikipedia.org/wiki/Karatsuba_algorithm>`_ cho các số có kích "
+"thước trung bình và `Number Theoretic Transform "
+"<https://en.wikipedia.org/wiki/Discrete_Fourier_transform_(general)#Number-"
+"theoretic_transform>`_ cho các số rất lớn."
+
+#: ../../library/decimal.rst:2304
+#, fuzzy
+msgid ""
+"The context must be adapted for exact arbitrary precision arithmetic. "
+":attr:`~Context.Emin` and :attr:`~Context.Emax` should always be set to the "
+"maximum values, :attr:`~Context.clamp` should always be 0 (the default).  "
+"Setting :attr:`~Context.prec` requires some care."
+msgstr ""
+"Bối cảnh phải được điều chỉnh cho số học chính xác tùy ý. "
+":attr:`~Context.Emin` và :attr:`~Context.Emax` phải luôn được đặt ở giá trị "
+"tối đa, :attr:`~Context.clamp` phải luôn là 0 (mặc định).  Việc cài đặt "
+":attr:`~Context.prec` cần được chú ý một chút."
+
+#: ../../library/decimal.rst:2308
+#, fuzzy
+msgid ""
+"The easiest approach for trying out bignum arithmetic is to use the maximum "
+"value for :attr:`~Context.prec` as well [#]_::"
+msgstr ""
+"Cách tiếp cận dễ dàng nhất để thử số học bignum là sử dụng giá trị tối đa "
+"cho :attr:`~Context.prec` [#]_::"
+
+#: ../../library/decimal.rst:2311
+#, fuzzy
+msgid ""
+">>> setcontext(Context(prec=MAX_PREC, Emax=MAX_EMAX, Emin=MIN_EMIN))\n"
+">>> x = Decimal(2) ** 256\n"
+">>> x / 128\n"
+"Decimal('904625697166532776746648320380374280103671755200316906558262375061821325312')"
+msgstr ""
+">>> setcontext(Ngữ cảnh(prec=MAX_PREC, Emax=MAX_EMAX, Emin=MIN_EMIN))\n"
+">>> x = Số thập phân(2) ** 256\n"
+">>>x/128\n"
+"Thập phân('904625697166532776746648320380374280103671755200316906558262375061821325312')"
+
+#: ../../library/decimal.rst:2317
+#, fuzzy
+msgid ""
+"For inexact results, :const:`MAX_PREC` is far too large on 64-bit platforms "
+"and the available memory will be insufficient::"
+msgstr ""
+"Để có kết quả không chính xác, :const:`MAX_PREC` quá lớn trên nền tảng "
+"64-bit và bộ nhớ khả dụng sẽ không đủ::"
+
+#: ../../library/decimal.rst:2320
+#, fuzzy
+msgid ""
+">>> Decimal(1) / 3\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"MemoryError"
+msgstr ""
+">>> Thập phân(1) / 3\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"Lỗi bộ nhớ"
+
+#: ../../library/decimal.rst:2325
+#, fuzzy
+msgid ""
+"On systems with overallocation (e.g. Linux), a more sophisticated approach "
+"is to adjust :attr:`~Context.prec` to the amount of available RAM.  Suppose "
+"that you have 8GB of RAM and expect 10 simultaneous operands using a maximum"
+" of 500MB each::"
+msgstr ""
+"Trên các hệ thống có phân bổ quá mức (ví dụ: Linux), một cách tiếp cận phức "
+"tạp hơn là điều chỉnh :attr:`~Context.prec` theo số lượng RAM có sẵn.  Giả "
+"sử bạn có 8GB RAM và dự kiến có 10 toán hạng đồng thời sử dụng tối đa 500MB "
+"mỗi toán hạng::"
+
+#: ../../library/decimal.rst:2329
+#, fuzzy
+msgid ""
+">>> import sys\n"
+">>>\n"
+">>> # Maximum number of digits for a single operand using 500MB in 8-byte words\n"
+">>> # with 19 digits per word (4-byte and 9 digits for the 32-bit build):\n"
+">>> maxdigits = 19 * ((500 * 1024**2) // 8)\n"
+">>>\n"
+">>> # Check that this works:\n"
+">>> c = Context(prec=maxdigits, Emax=MAX_EMAX, Emin=MIN_EMIN)\n"
+">>> c.traps[Inexact] = True\n"
+">>> setcontext(c)\n"
+">>>\n"
+">>> # Fill the available precision with nines:\n"
+">>> x = Decimal(0).logical_invert() * 9\n"
+">>> sys.getsizeof(x)\n"
+"524288112\n"
+">>> x + 2\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"  decimal.Inexact: [<class 'decimal.Inexact'>]"
+msgstr ""
+">>> nhập hệ thống\n"
+">>>\n"
+">>> # Maximum số chữ số cho một toán hạng sử dụng 500MB trong các từ 8 byte\n"
+">>> # with 19 chữ số mỗi từ (4 byte và 9 chữ số cho bản dựng 32 bit):\n"
+">>> maxdigits = 19 * ((500 * 1024**2) // 8)\n"
+">>>\n"
+">>> # Check cái này hoạt động được:\n"
+">>> c = Ngữ cảnh(prec=maxdigits, Emax=MAX_EMAX, Emin=MIN_EMIN)\n"
+">>> c.traps[Không chính xác] = Đúng\n"
+">>> setcontext(c)\n"
+">>>\n"
+">>> # Fill độ chính xác sẵn có với số chín:\n"
+">>> x = Thập phân(0).logic_invert() * 9\n"
+">>> sys.getsizeof(x)\n"
+"524288112\n"
+">>> x + 2\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"  thập phân.Không chính xác: [<class 'thập phân.Không chính xác'>]"
+
+#: ../../library/decimal.rst:2349
+#, fuzzy
+msgid ""
+"In general (and especially on systems without overallocation), it is "
+"recommended to estimate even tighter bounds and set the :attr:`Inexact` trap"
+" if all calculations are expected to be exact."
+msgstr ""
+"Nói chung (và đặc biệt là trên các hệ thống không có phân bổ tổng thể), bạn "
+"nên ước tính các giới hạn chặt chẽ hơn nữa và đặt bẫy :attr:`Inexact` nếu "
+"tất cả các phép tính được mong đợi là chính xác."
+
+#: ../../library/decimal.rst:2358
+#, fuzzy
+msgid ""
+"This approach now works for all exact results except for non-integer powers."
+msgstr ""
+"Cách tiếp cận này hiện có hiệu quả với tất cả các kết quả chính xác ngoại "
+"trừ các lũy thừa không nguyên."

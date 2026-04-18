@@ -1,0 +1,1471 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/signal.rst:2
+#, fuzzy
+msgid ":mod:`!signal` --- Set handlers for asynchronous events"
+msgstr ":mod:`!signal` --- Đặt trình xử lý cho các sự kiện không đồng bộ"
+
+#: ../../library/signal.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/signal.py`"
+msgstr "**Source code:** :source:`Lib/signal.py`"
+
+#: ../../library/signal.rst:11
+#, fuzzy
+msgid "This module provides mechanisms to use signal handlers in Python."
+msgstr "Mô-đun này cung cấp cơ chế sử dụng trình xử lý tín hiệu trong Python."
+
+#: ../../library/signal.rst:15
+#, fuzzy
+msgid "General rules"
+msgstr "Quy tắc chung"
+
+#: ../../library/signal.rst:17
+#, fuzzy
+msgid ""
+"The :func:`signal.signal` function allows defining custom handlers to be "
+"executed when a signal is received.  A small number of default handlers are "
+"installed: :const:`SIGPIPE` is ignored (so write errors on pipes and sockets"
+" can be reported as ordinary Python exceptions) and :const:`SIGINT` is "
+"translated into a :exc:`KeyboardInterrupt` exception if the parent process "
+"has not changed it."
+msgstr ""
+"Hàm :func:`signal.signal` cho phép xác định các trình xử lý tùy chỉnh sẽ "
+"được thực thi khi nhận được tín hiệu.  Một số lượng nhỏ trình xử lý mặc định"
+" được cài đặt: :const:`SIGPIPE` bị bỏ qua (vì vậy lỗi ghi trên đường ống và "
+"ổ cắm có thể được báo cáo là ngoại lệ Python thông thường) và "
+":const:`SIGINT` được dịch thành ngoại lệ :exc:`KeyboardInterrupt` nếu quy "
+"trình gốc không thay đổi."
+
+#: ../../library/signal.rst:24
+#, fuzzy
+msgid ""
+"A handler for a particular signal, once set, remains installed until it is "
+"explicitly reset (Python emulates the BSD style interface regardless of the "
+"underlying implementation), with the exception of the handler for "
+":const:`SIGCHLD`, which follows the underlying implementation."
+msgstr ""
+"Trình xử lý cho một tín hiệu cụ thể, sau khi được đặt, vẫn được cài đặt cho "
+"đến khi được đặt lại rõ ràng (Python mô phỏng giao diện kiểu BSD bất kể cách"
+" triển khai cơ bản), ngoại trừ trình xử lý dành cho :const:`SIGCHLD`, tuân "
+"theo cách triển khai cơ bản."
+
+#: ../../library/signal.rst:29
+#, fuzzy
+msgid ""
+"On WebAssembly platforms, signals are emulated and therefore behave "
+"differently. Several functions and signals are not available on these "
+"platforms."
+msgstr ""
+"Trên nền tảng WebAssembly, các tín hiệu được mô phỏng và do đó hoạt động "
+"khác nhau. Một số chức năng và tín hiệu không có sẵn trên các nền tảng này."
+
+#: ../../library/signal.rst:34
+#, fuzzy
+msgid "Execution of Python signal handlers"
+msgstr "Thực thi các trình xử lý tín hiệu Python"
+
+#: ../../library/signal.rst:36
+#, fuzzy
+msgid ""
+"A Python signal handler does not get executed inside the low-level (C) "
+"signal handler.  Instead, the low-level signal handler sets a flag which "
+"tells the :term:`virtual machine` to execute the corresponding Python signal"
+" handler at a later point (for example, at the next :term:`bytecode` "
+"instruction). This has consequences:"
+msgstr ""
+"Trình xử lý tín hiệu Python không được thực thi bên trong trình xử lý tín "
+"hiệu cấp thấp (C).  Thay vào đó, trình xử lý tín hiệu cấp thấp sẽ đặt một cờ"
+" báo cho :term:`virtual machine` thực thi trình xử lý tín hiệu Python tương "
+"ứng vào thời điểm sau đó (ví dụ: ở lệnh :term:`bytecode` tiếp theo). Điều "
+"này có hậu quả:"
+
+#: ../../library/signal.rst:42
+#, fuzzy
+msgid ""
+"It makes little sense to catch synchronous errors like :const:`SIGFPE` or "
+":const:`SIGSEGV` that are caused by an invalid operation in C code.  Python "
+"will return from the signal handler to the C code, which is likely to raise "
+"the same signal again, causing Python to apparently hang.  From Python 3.3 "
+"onwards, you can use the :mod:`faulthandler` module to report on synchronous"
+" errors."
+msgstr ""
+"Sẽ chẳng có ý nghĩa gì khi phát hiện các lỗi đồng bộ như :const:`SIGFPE` "
+"hoặc :const:`SIGSEGV` do thao tác không hợp lệ trong mã C gây ra.  Python sẽ"
+" quay trở lại từ trình xử lý tín hiệu về mã C, điều này có khả năng lại tăng"
+" tín hiệu tương tự, khiến Python dường như bị treo.  Từ Python 3.3 trở đi, "
+"bạn có thể sử dụng mô-đun :mod:`faulthandler` để báo cáo lỗi đồng bộ."
+
+#: ../../library/signal.rst:49
+#, fuzzy
+msgid ""
+"A long-running calculation implemented purely in C (such as regular "
+"expression matching on a large body of text) may run uninterrupted for an "
+"arbitrary amount of time, regardless of any signals received.  The Python "
+"signal handlers will be called when the calculation finishes."
+msgstr ""
+"Một phép tính dài hạn được triển khai hoàn toàn bằng C (chẳng hạn như khớp "
+"biểu thức chính quy trên một lượng lớn văn bản) có thể chạy không bị gián "
+"đoạn trong một khoảng thời gian tùy ý, bất kể bất kỳ tín hiệu nào nhận được."
+"  Trình xử lý tín hiệu Python sẽ được gọi khi quá trình tính toán kết thúc."
+
+#: ../../library/signal.rst:54
+#, fuzzy
+msgid ""
+"If the handler raises an exception, it will be raised \"out of thin air\" in"
+" the main thread. See the :ref:`note below <handlers-and-exceptions>` for a "
+"discussion."
+msgstr ""
+"Nếu trình xử lý đưa ra một ngoại lệ, nó sẽ được đưa ra \"bất ngờ\" trong "
+"luồng chính. Xem :ref:`note below <handlers-and-exceptions>` để thảo luận."
+
+#: ../../library/signal.rst:62
+#, fuzzy
+msgid "Signals and threads"
+msgstr "Tín hiệu và chủ đề"
+
+#: ../../library/signal.rst:64
+#, fuzzy
+msgid ""
+"Python signal handlers are always executed in the main Python thread of the "
+"main interpreter, even if the signal was received in another thread.  This "
+"means that signals can't be used as a means of inter-thread communication.  "
+"You can use the synchronization primitives from the :mod:`threading` module "
+"instead."
+msgstr ""
+"Trình xử lý tín hiệu Python luôn được thực thi trong luồng Python chính của "
+"trình thông dịch chính, ngay cả khi tín hiệu được nhận trong luồng khác.  "
+"Điều này có nghĩa là tín hiệu không thể được sử dụng làm phương tiện liên "
+"lạc giữa các luồng.  Thay vào đó, bạn có thể sử dụng các nguyên hàm đồng bộ "
+"hóa từ mô-đun :mod:`threading`."
+
+#: ../../library/signal.rst:69
+#, fuzzy
+msgid ""
+"Besides, only the main thread of the main interpreter is allowed to set a "
+"new signal handler."
+msgstr ""
+"Ngoài ra, chỉ luồng chính của trình thông dịch chính mới được phép đặt bộ xử"
+" lý tín hiệu mới."
+
+#: ../../library/signal.rst:73
+#, fuzzy
+msgid ""
+"Synchronization primitives such as :class:`threading.Lock` should not be "
+"used within signal handlers.  Doing so can lead to unexpected deadlocks."
+msgstr ""
+"Không nên sử dụng các nguyên hàm đồng bộ hóa như :class:`threading.Lock` "
+"trong trình xử lý tín hiệu.  Làm như vậy có thể dẫn đến những bế tắc không "
+"mong muốn."
+
+#: ../../library/signal.rst:78
+#, fuzzy
+msgid "Module contents"
+msgstr "Nội dung mô-đun"
+
+#: ../../library/signal.rst:80
+#, fuzzy
+msgid ""
+"signal (SIG*), handler (:const:`SIG_DFL`, :const:`SIG_IGN`) and sigmask "
+"(:const:`SIG_BLOCK`, :const:`SIG_UNBLOCK`, :const:`SIG_SETMASK`) related "
+"constants listed below were turned into :class:`enums <enum.IntEnum>` "
+"(:class:`Signals`, :class:`Handlers` and :class:`Sigmasks` respectively). "
+":func:`getsignal`, :func:`pthread_sigmask`, :func:`sigpending` and "
+":func:`sigwait` functions return human-readable :class:`enums "
+"<enum.IntEnum>` as :class:`Signals` objects."
+msgstr ""
+"Các hằng số liên quan đến tín hiệu (SIG*), bộ xử lý (:const:`SIG_DFL`, "
+":const:`SIG_IGN`) và sigmask (:const:`SIG_BLOCK`, :const:`SIG_UNBLOCK`, "
+":const:`SIG_SETMASK`) được liệt kê bên dưới đã được chuyển thành "
+":class:`enums <enum.IntEnum>` (:class:`Signals`, :class:`Handlers` và "
+":class:`Sigmasks` tương ứng). Các hàm :func:`getsignal`, "
+":func:`pthread_sigmask`, :func:`sigpending` và :func:`sigwait` trả về "
+":class:`enums <enum.IntEnum>` mà con người có thể đọc được dưới dạng đối "
+"tượng :class:`Signals`."
+
+#: ../../library/signal.rst:90
+#, fuzzy
+msgid "The signal module defines three enums:"
+msgstr "Mô-đun tín hiệu xác định ba enum:"
+
+#: ../../library/signal.rst:94
+#, fuzzy
+msgid ""
+":class:`enum.IntEnum` collection of SIG* constants and the CTRL_* constants."
+msgstr ":class:`enum.IntEnum` tập hợp các hằng số SIG* và các hằng số CTRL_*."
+
+#: ../../library/signal.rst:100
+#, fuzzy
+msgid ""
+":class:`enum.IntEnum` collection of the constants :const:`SIG_DFL` and "
+":const:`SIG_IGN`."
+msgstr ""
+":class:`enum.IntEnum` tập hợp các hằng số :const:`SIG_DFL` và "
+":const:`SIG_IGN`."
+
+#: ../../library/signal.rst:106
+#, fuzzy
+msgid ""
+":class:`enum.IntEnum` collection of the constants :const:`SIG_BLOCK`, "
+":const:`SIG_UNBLOCK` and :const:`SIG_SETMASK`."
+msgstr ""
+":class:`enum.IntEnum` tập hợp các hằng số :const:`SIG_BLOCK`, "
+":const:`SIG_UNBLOCK` và :const:`SIG_SETMASK`."
+
+#: ../../library/signal.rst:108 ../../library/signal.rst:141
+#: ../../library/signal.rst:147 ../../library/signal.rst:153
+#: ../../library/signal.rst:159 ../../library/signal.rst:165
+#: ../../library/signal.rst:171 ../../library/signal.rst:185
+#: ../../library/signal.rst:203 ../../library/signal.rst:211
+#: ../../library/signal.rst:217 ../../library/signal.rst:223
+#: ../../library/signal.rst:233 ../../library/signal.rst:240
+#: ../../library/signal.rst:255 ../../library/signal.rst:261
+#: ../../library/signal.rst:267 ../../library/signal.rst:273
+#: ../../library/signal.rst:279 ../../library/signal.rst:297
+#: ../../library/signal.rst:307 ../../library/signal.rst:386
+#: ../../library/signal.rst:425 ../../library/signal.rst:449
+#: ../../library/signal.rst:472 ../../library/signal.rst:506
+#: ../../library/signal.rst:536 ../../library/signal.rst:543
+#: ../../library/signal.rst:598 ../../library/signal.rst:640
+#: ../../library/signal.rst:655 ../../library/signal.rst:680
+#: ../../library/signal.rst:700
+#, fuzzy
+msgid "Availability"
+msgstr "sẵn có"
+
+#: ../../library/signal.rst:110 ../../library/signal.rst:508
+#, fuzzy
+msgid ""
+"See the man page :manpage:`sigprocmask(2)` and :manpage:`pthread_sigmask(3)`"
+" for further information."
+msgstr ""
+"Xem trang hướng dẫn :manpage:`sigprocmask(2)` và "
+":manpage:`pthread_sigmask(3)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:116
+#, fuzzy
+msgid "The variables defined in the :mod:`!signal` module are:"
+msgstr "Các biến được xác định trong mô-đun :mod:`!signal` là:"
+
+#: ../../library/signal.rst:121
+#, fuzzy
+msgid ""
+"This is one of two standard signal handling options; it will simply perform "
+"the default function for the signal.  For example, on most systems the "
+"default action for :const:`SIGQUIT` is to dump core and exit, while the "
+"default action for :const:`SIGCHLD` is to simply ignore it."
+msgstr ""
+"Đây là một trong hai tùy chọn xử lý tín hiệu tiêu chuẩn; nó sẽ chỉ thực hiện"
+" chức năng mặc định cho tín hiệu.  Ví dụ: trên hầu hết các hệ thống, hành "
+"động mặc định cho :const:`SIGQUIT` là kết xuất lõi và thoát, trong khi hành "
+"động mặc định cho :const:`SIGCHLD` chỉ đơn giản là bỏ qua nó."
+
+#: ../../library/signal.rst:129
+#, fuzzy
+msgid ""
+"This is another standard signal handler, which will simply ignore the given "
+"signal."
+msgstr ""
+"Đây là một trình xử lý tín hiệu tiêu chuẩn khác, sẽ đơn giản bỏ qua tín hiệu"
+" đã cho."
+
+#: ../../library/signal.rst:135
+#, fuzzy
+msgid "Abort signal from :manpage:`abort(3)`."
+msgstr "Hủy bỏ tín hiệu từ :manpage:`abort(3)`."
+
+#: ../../library/signal.rst:139
+#, fuzzy
+msgid "Timer signal from :manpage:`alarm(2)`."
+msgstr "Tín hiệu hẹn giờ từ :manpage:`alarm(2)`."
+
+#: ../../library/signal.rst:145
+#, fuzzy
+msgid "Interrupt from keyboard (CTRL + BREAK)."
+msgstr "Ngắt từ bàn phím (CTRL + BREAK)."
+
+#: ../../library/signal.rst:151
+#, fuzzy
+msgid "Bus error (bad memory access)."
+msgstr "Lỗi xe buýt (truy cập bộ nhớ kém)."
+
+#: ../../library/signal.rst:157
+#, fuzzy
+msgid "Child process stopped or terminated."
+msgstr "Quá trình con dừng lại hoặc chấm dứt."
+
+#: ../../library/signal.rst:163
+#, fuzzy
+msgid "Alias to :data:`SIGCHLD`."
+msgstr "Bí danh cho :data:`SIGCHLD`."
+
+#: ../../library/signal.rst:169
+#, fuzzy
+msgid "Continue the process if it is currently stopped"
+msgstr "Tiếp tục quá trình nếu nó hiện đang dừng"
+
+#: ../../library/signal.rst:175
+#, fuzzy
+msgid "Floating-point exception. For example, division by zero."
+msgstr "Ngoại lệ dấu phẩy động. Ví dụ: chia cho số 0."
+
+#: ../../library/signal.rst:178
+#, fuzzy
+msgid ""
+":exc:`ZeroDivisionError` is raised when the second argument of a division or"
+" modulo operation is zero."
+msgstr ""
+":exc:`ZeroDivisionError` được nâng lên khi đối số thứ hai của phép chia hoặc"
+" phép toán modulo bằng 0."
+
+#: ../../library/signal.rst:183
+#, fuzzy
+msgid ""
+"Hangup detected on controlling terminal or death of controlling process."
+msgstr ""
+"Phát hiện treo máy trên thiết bị đầu cuối điều khiển hoặc quá trình điều "
+"khiển bị chết."
+
+#: ../../library/signal.rst:189
+#, fuzzy
+msgid "Illegal instruction."
+msgstr "Hướng dẫn bất hợp pháp."
+
+#: ../../library/signal.rst:193
+#, fuzzy
+msgid "Interrupt from keyboard (CTRL + C)."
+msgstr "Ngắt từ bàn phím (CTRL + C)."
+
+#: ../../library/signal.rst:195
+#, fuzzy
+msgid "Default action is to raise :exc:`KeyboardInterrupt`."
+msgstr "Hành động mặc định là tăng :exc:`KeyboardInterrupt`."
+
+#: ../../library/signal.rst:199
+#, fuzzy
+msgid "Kill signal."
+msgstr "Tín hiệu tiêu diệt."
+
+#: ../../library/signal.rst:201
+#, fuzzy
+msgid "It cannot be caught, blocked, or ignored."
+msgstr "Nó không thể bị bắt, bị chặn hoặc bỏ qua."
+
+#: ../../library/signal.rst:207
+#, fuzzy
+msgid "Broken pipe: write to pipe with no readers."
+msgstr "Ống bị hỏng: ghi vào ống không có đầu đọc."
+
+#: ../../library/signal.rst:209
+#, fuzzy
+msgid "Default action is to ignore the signal."
+msgstr "Hành động mặc định là bỏ qua tín hiệu."
+
+#: ../../library/signal.rst:215
+#, fuzzy
+msgid "Profiling timer expired."
+msgstr "Hồ sơ hẹn giờ đã hết hạn."
+
+#: ../../library/signal.rst:221
+#, fuzzy
+msgid "Terminal quit signal."
+msgstr "Tín hiệu thoát khỏi thiết bị đầu cuối."
+
+#: ../../library/signal.rst:227
+#, fuzzy
+msgid "Segmentation fault: invalid memory reference."
+msgstr "Lỗi phân đoạn: tham chiếu bộ nhớ không hợp lệ."
+
+#: ../../library/signal.rst:231
+#, fuzzy
+msgid "Stop executing (cannot be caught or ignored)."
+msgstr "Dừng thực thi (không thể bắt hoặc bỏ qua)."
+
+#: ../../library/signal.rst:237
+#, fuzzy
+msgid ""
+"Stack fault on coprocessor. The Linux kernel does not raise this signal: it "
+"can only be raised in user space."
+msgstr ""
+"Lỗi ngăn xếp trên bộ đồng xử lý. Nhân Linux không đưa ra tín hiệu này: nó "
+"chỉ có thể được nâng lên trong không gian người dùng."
+
+#: ../../library/signal.rst:242
+#, fuzzy
+msgid ""
+"On architectures where the signal is available. See the man page "
+":manpage:`signal(7)` for further information."
+msgstr ""
+"Trên các kiến trúc có tín hiệu sẵn có. Xem trang man :manpage:`signal(7)` để"
+" biết thêm thông tin."
+
+#: ../../library/signal.rst:249
+#, fuzzy
+msgid "Termination signal."
+msgstr "Tín hiệu kết thúc."
+
+#: ../../library/signal.rst:253
+#, fuzzy
+msgid "User-defined signal 1."
+msgstr "Tín hiệu do người dùng xác định 1."
+
+#: ../../library/signal.rst:259
+#, fuzzy
+msgid "User-defined signal 2."
+msgstr "Tín hiệu do người dùng xác định 2."
+
+#: ../../library/signal.rst:265
+#, fuzzy
+msgid "Virtual timer expired."
+msgstr "Hẹn giờ ảo đã hết hạn."
+
+#: ../../library/signal.rst:271
+#, fuzzy
+msgid "Window resize signal."
+msgstr "Tín hiệu thay đổi kích thước cửa sổ"
+
+#: ../../library/signal.rst:277
+#, fuzzy
+msgid "CPU time limit exceeded."
+msgstr "CPU đã vượt quá giới hạn thời gian."
+
+#: ../../library/signal.rst:283
+#, fuzzy
+msgid ""
+"All the signal numbers are defined symbolically.  For example, the hangup "
+"signal is defined as :const:`signal.SIGHUP`; the variable names are "
+"identical to the names used in C programs, as found in ``<signal.h>``.  The "
+"Unix man page for '``signal``' lists the existing signals (on some systems "
+"this is :manpage:`signal(2)`, on others the list is in "
+":manpage:`signal(7)`). Note that not all systems define the same set of "
+"signal names; only those names defined by the system are defined by this "
+"module."
+msgstr ""
+"Tất cả các số tín hiệu được xác định một cách tượng trưng.  Ví dụ: tín hiệu "
+"cúp máy được xác định là :const:`signal.SIGHUP`; tên biến giống hệt với tên "
+"được sử dụng trong chương trình C, như được tìm thấy trong ``<signal.h>``.  "
+"Trang man Unix cho '``signal``' liệt kê các tín hiệu hiện có (trên một số hệ"
+" thống, đây là :manpage:`signal(2)`, trên các hệ thống khác, danh sách này "
+"là :manpage:`signal(7)`). Lưu ý rằng không phải tất cả các hệ thống đều xác "
+"định cùng một bộ tên tín hiệu; chỉ những tên do hệ thống xác định mới được "
+"xác định bởi mô-đun này."
+
+#: ../../library/signal.rst:294
+#, fuzzy
+msgid ""
+"The signal corresponding to the :kbd:`Ctrl+C` keystroke event. This signal "
+"can only be used with :func:`os.kill`."
+msgstr ""
+"Tín hiệu tương ứng với sự kiện gõ phím :kbd:`Ctrl+C`. Tín hiệu này chỉ có "
+"thể được sử dụng với :func:`os.kill`."
+
+#: ../../library/signal.rst:304
+#, fuzzy
+msgid ""
+"The signal corresponding to the :kbd:`Ctrl+Break` keystroke event. This "
+"signal can only be used with :func:`os.kill`."
+msgstr ""
+"Tín hiệu tương ứng với sự kiện gõ phím :kbd:`Ctrl+Break`. Tín hiệu này chỉ "
+"có thể được sử dụng với :func:`os.kill`."
+
+#: ../../library/signal.rst:314
+#, fuzzy
+msgid ""
+"One more than the number of the highest signal number. Use "
+":func:`valid_signals` to get valid signal numbers."
+msgstr ""
+"Nhiều hơn số lượng tín hiệu cao nhất. Sử dụng :func:`valid_signals` để nhận "
+"số tín hiệu hợp lệ."
+
+#: ../../library/signal.rst:320
+#, fuzzy
+msgid ""
+"Decrements interval timer in real time, and delivers :const:`SIGALRM` upon "
+"expiration."
+msgstr ""
+"Giảm bộ đếm thời gian theo thời gian thực và cung cấp :const:`SIGALRM` khi "
+"hết hạn."
+
+#: ../../library/signal.rst:326
+#, fuzzy
+msgid ""
+"Decrements interval timer only when the process is executing, and delivers "
+"SIGVTALRM upon expiration."
+msgstr ""
+"Chỉ giảm bộ đếm thời gian khi quá trình đang thực thi và cung cấp SIGVTALRM "
+"khi hết hạn."
+
+#: ../../library/signal.rst:332
+#, fuzzy
+msgid ""
+"Decrements interval timer both when the process executes and when the system"
+" is executing on behalf of the process. Coupled with ITIMER_VIRTUAL, this "
+"timer is usually used to profile the time spent by the application in user "
+"and kernel space. SIGPROF is delivered upon expiration."
+msgstr ""
+"Giảm khoảng thời gian định giờ cả khi quá trình thực thi và khi hệ thống "
+"thực thi thay mặt cho quá trình đó. Cùng với ITIMER_VIRTUAL, bộ hẹn giờ này "
+"thường được sử dụng để lập hồ sơ thời gian mà ứng dụng dành cho không gian "
+"người dùng và kernel. SIGPROF được giao khi hết hạn."
+
+#: ../../library/signal.rst:340
+#, fuzzy
+msgid ""
+"A possible value for the *how* parameter to :func:`pthread_sigmask` "
+"indicating that signals are to be blocked."
+msgstr ""
+"Một giá trị có thể có của tham số *how* thành :func:`pthread_sigmask` cho "
+"biết các tín hiệu sẽ bị chặn."
+
+#: ../../library/signal.rst:347
+#, fuzzy
+msgid ""
+"A possible value for the *how* parameter to :func:`pthread_sigmask` "
+"indicating that signals are to be unblocked."
+msgstr ""
+"Một giá trị có thể có của tham số *how* thành :func:`pthread_sigmask` cho "
+"biết rằng các tín hiệu sẽ được bỏ chặn."
+
+#: ../../library/signal.rst:354
+#, fuzzy
+msgid ""
+"A possible value for the *how* parameter to :func:`pthread_sigmask` "
+"indicating that the signal mask is to be replaced."
+msgstr ""
+"Một giá trị có thể có của tham số *how* thành :func:`pthread_sigmask` cho "
+"biết mặt nạ tín hiệu sẽ được thay thế."
+
+#: ../../library/signal.rst:360
+#, fuzzy
+msgid "The :mod:`!signal` module defines one exception:"
+msgstr "Mô-đun :mod:`!signal` xác định một ngoại lệ:"
+
+#: ../../library/signal.rst:364
+#, fuzzy
+msgid ""
+"Raised to signal an error from the underlying :func:`setitimer` or "
+":func:`getitimer` implementation. Expect this error if an invalid interval "
+"timer or a negative time is passed to :func:`setitimer`. This error is a "
+"subtype of :exc:`OSError`."
+msgstr ""
+"Được đưa ra để báo hiệu lỗi từ quá trình triển khai :func:`setitimer` hoặc "
+":func:`getitimer` cơ bản. Có thể xảy ra lỗi này nếu bộ hẹn giờ ngắt quãng "
+"không hợp lệ hoặc thời gian âm được chuyển tới :func:`setitimer`. Lỗi này là"
+" một kiểu con của :exc:`OSError`."
+
+#: ../../library/signal.rst:369
+#, fuzzy
+msgid ""
+"This error used to be a subtype of :exc:`IOError`, which is now an alias of "
+":exc:`OSError`."
+msgstr ""
+"Lỗi này từng là một kiểu con của :exc:`IOError`, hiện là bí danh của "
+":exc:`OSError`."
+
+#: ../../library/signal.rst:374
+#, fuzzy
+msgid "The :mod:`!signal` module defines the following functions:"
+msgstr "Mô-đun :mod:`!signal` xác định các chức năng sau:"
+
+#: ../../library/signal.rst:379
+#, fuzzy
+msgid ""
+"If *time* is non-zero, this function requests that a :const:`SIGALRM` signal"
+" be sent to the process in *time* seconds. Any previously scheduled alarm is"
+" canceled (only one alarm can be scheduled at any time).  The returned value"
+" is then the number of seconds before any previously set alarm was to have "
+"been delivered. If *time* is zero, no alarm is scheduled, and any scheduled "
+"alarm is canceled.  If the return value is zero, no alarm is currently "
+"scheduled."
+msgstr ""
+"Nếu *time* khác 0, hàm này yêu cầu tín hiệu :const:`SIGALRM` được gửi đến "
+"quy trình sau *time* giây. Mọi báo thức đã lên lịch trước đó đều bị hủy (chỉ"
+" có thể lập lịch một báo thức bất cứ lúc nào).  Giá trị được trả về sau đó "
+"là số giây trước khi bất kỳ cảnh báo nào được đặt trước đó được gửi đi. Nếu "
+"*time* bằng 0, không có cảnh báo nào được lên lịch và mọi cảnh báo đã lên "
+"lịch sẽ bị hủy.  Nếu giá trị trả về bằng 0 thì hiện tại không có cảnh báo "
+"nào được lên lịch."
+
+#: ../../library/signal.rst:388
+#, fuzzy
+msgid "See the man page :manpage:`alarm(2)` for further information."
+msgstr "Xem trang man :manpage:`alarm(2)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:393
+#, fuzzy
+msgid ""
+"Return the current signal handler for the signal *signalnum*. The returned "
+"value may be a callable Python object, or one of the special values "
+":const:`signal.SIG_IGN`, :const:`signal.SIG_DFL` or :const:`None`.  Here, "
+":const:`signal.SIG_IGN` means that the signal was previously ignored, "
+":const:`signal.SIG_DFL` means that the default way of handling the signal "
+"was previously in use, and ``None`` means that the previous signal handler "
+"was not installed from Python."
+msgstr ""
+"Trả về bộ xử lý tín hiệu hiện tại cho tín hiệu *signalnum*. Giá trị trả về "
+"có thể là một đối tượng Python có thể gọi được hoặc một trong các giá trị "
+"đặc biệt :const:`signal.SIG_IGN`, :const:`signal.SIG_DFL` hoặc "
+":const:`None`.  Ở đây, :const:`signal.SIG_IGN` có nghĩa là tín hiệu đã bị bỏ"
+" qua trước đó, :const:`signal.SIG_DFL` có nghĩa là cách xử lý tín hiệu mặc "
+"định đã được sử dụng trước đó và ``None`` có nghĩa là trình xử lý tín hiệu "
+"trước đó chưa được cài đặt từ Python."
+
+#: ../../library/signal.rst:404
+#, fuzzy
+msgid ""
+"Returns the description of signal *signalnum*, such as \"Interrupt\" for "
+":const:`SIGINT`. Returns :const:`None` if *signalnum* has no description. "
+"Raises :exc:`ValueError` if *signalnum* is invalid."
+msgstr ""
+"Trả về mô tả của tín hiệu *signalnum*, chẳng hạn như \"Ngắt\" cho "
+":const:`SIGINT`. Trả về :const:`None` nếu *signalnum* không có mô tả. Tăng "
+":exc:`ValueError` nếu *signalnum* không hợp lệ."
+
+#: ../../library/signal.rst:413
+#, fuzzy
+msgid ""
+"Return the set of valid signal numbers on this platform.  This can be less "
+"than ``range(1, NSIG)`` if some signals are reserved by the system for "
+"internal use."
+msgstr ""
+"Trả về bộ số tín hiệu hợp lệ trên nền tảng này.  Giá trị này có thể nhỏ hơn "
+"``range(1, NSIG)`` nếu một số tín hiệu được hệ thống dành riêng để sử dụng "
+"nội bộ."
+
+#: ../../library/signal.rst:422
+#, fuzzy
+msgid ""
+"Cause the process to sleep until a signal is received; the appropriate "
+"handler will then be called.  Returns nothing."
+msgstr ""
+"Làm cho quá trình ngủ cho đến khi nhận được tín hiệu; trình xử lý thích hợp "
+"sau đó sẽ được gọi.  Không trả lại gì cả."
+
+#: ../../library/signal.rst:427
+#, fuzzy
+msgid "See the man page :manpage:`signal(2)` for further information."
+msgstr "Xem trang man :manpage:`signal(2)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:429
+#, fuzzy
+msgid ""
+"See also :func:`sigwait`, :func:`sigwaitinfo`, :func:`sigtimedwait` and "
+":func:`sigpending`."
+msgstr ""
+"Xem thêm :func:`sigwait`, :func:`sigwaitinfo`, :func:`sigtimedwait` và "
+":func:`sigpending`."
+
+#: ../../library/signal.rst:435
+#, fuzzy
+msgid "Sends a signal to the calling process. Returns nothing."
+msgstr "Gửi tín hiệu đến quá trình gọi. Không trả lại gì cả."
+
+#: ../../library/signal.rst:442
+#, fuzzy
+msgid ""
+"Send signal *sig* to the process referred to by file descriptor *pidfd*. "
+"Python does not currently support the *siginfo* parameter; it must be "
+"``None``.  The *flags* argument is provided for future extensions; no flag "
+"values are currently defined."
+msgstr ""
+"Gửi tín hiệu *sig* đến quy trình được tham chiếu bởi bộ mô tả tệp *pidfd*. "
+"Python hiện không hỗ trợ tham số *siginfo*; nó phải là ``None``.  Đối số "
+"*flags* được cung cấp cho các tiện ích mở rộng trong tương lai; hiện tại "
+"không có giá trị cờ nào được xác định."
+
+#: ../../library/signal.rst:447
+#, fuzzy
+msgid "See the :manpage:`pidfd_send_signal(2)` man page for more information."
+msgstr "Xem trang man :manpage:`pidfd_send_signal(2)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:455
+#, fuzzy
+msgid ""
+"Send the signal *signalnum* to the thread *thread_id*, another thread in the"
+" same process as the caller.  The target thread can be executing any code "
+"(Python or not).  However, if the target thread is executing the Python "
+"interpreter, the Python signal handlers will be :ref:`executed by the main "
+"thread of the main interpreter <signals-and-threads>`.  Therefore, the only "
+"point of sending a signal to a particular Python thread would be to force a "
+"running system call to fail with :exc:`InterruptedError`."
+msgstr ""
+"Gửi tín hiệu *signalnum* đến thread *thread_id*, một thread khác trong cùng "
+"tiến trình với người gọi.  Chuỗi đích có thể thực thi bất kỳ mã nào (Python "
+"hoặc không).  Tuy nhiên, nếu luồng đích đang thực thi trình thông dịch "
+"Python thì trình xử lý tín hiệu Python sẽ là :ref:`executed by the main "
+"thread of the main interpreter <signals-and-threads>`.  Do đó, điểm duy nhất"
+" để gửi tín hiệu đến một luồng Python cụ thể là buộc lệnh gọi hệ thống đang "
+"chạy không thành công với :exc:`InterruptedError`."
+
+#: ../../library/signal.rst:463
+#, fuzzy
+msgid ""
+"Use :func:`threading.get_ident` or the :attr:`~threading.Thread.ident` "
+"attribute of :class:`threading.Thread` objects to get a suitable value for "
+"*thread_id*."
+msgstr ""
+"Sử dụng thuộc tính :func:`threading.get_ident` hoặc "
+":attr:`~threading.Thread.ident` của đối tượng :class:`threading.Thread` để "
+"nhận giá trị phù hợp cho *thread_id*."
+
+#: ../../library/signal.rst:467
+#, fuzzy
+msgid ""
+"If *signalnum* is 0, then no signal is sent, but error checking is still "
+"performed; this can be used to check if the target thread is still running."
+msgstr ""
+"Nếu *signalnum* bằng 0 thì không có tín hiệu nào được gửi nhưng việc kiểm "
+"tra lỗi vẫn được thực hiện; điều này có thể được sử dụng để kiểm tra xem "
+"luồng mục tiêu có còn chạy hay không."
+
+#: ../../library/signal.rst:470
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``signal.pthread_kill`` with "
+"arguments ``thread_id``, ``signalnum``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``signal.pthread_kill`` với các "
+"đối số ``thread_id``, ``signalnum``."
+
+#: ../../library/signal.rst:474
+#, fuzzy
+msgid "See the man page :manpage:`pthread_kill(3)` for further  information."
+msgstr "Xem trang man :manpage:`pthread_kill(3)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:476
+#, fuzzy
+msgid "See also :func:`os.kill`."
+msgstr "Xem thêm :func:`os.kill`."
+
+#: ../../library/signal.rst:483
+#, fuzzy
+msgid ""
+"Fetch and/or change the signal mask of the calling thread.  The signal mask "
+"is the set of signals whose delivery is currently blocked for the caller. "
+"Return the old signal mask as a set of signals."
+msgstr ""
+"Tìm nạp và/hoặc thay đổi mặt nạ tín hiệu của chuỗi cuộc gọi.  Mặt nạ tín "
+"hiệu là tập hợp các tín hiệu mà việc gửi tín hiệu hiện đang bị chặn đối với "
+"người gọi. Trả lại mặt nạ tín hiệu cũ dưới dạng một tập hợp tín hiệu."
+
+#: ../../library/signal.rst:487
+#, fuzzy
+msgid ""
+"The behavior of the call is dependent on the value of *how*, as follows."
+msgstr "Hoạt động của cuộc gọi phụ thuộc vào giá trị của *how*, như sau."
+
+#: ../../library/signal.rst:489
+#, fuzzy
+msgid ""
+":data:`SIG_BLOCK`: The set of blocked signals is the union of the current "
+"set and the *mask* argument."
+msgstr ""
+":data:`SIG_BLOCK`: Tập hợp các tín hiệu bị chặn là sự kết hợp của tập hợp "
+"hiện tại và đối số *mask*."
+
+#: ../../library/signal.rst:491
+#, fuzzy
+msgid ""
+":data:`SIG_UNBLOCK`: The signals in *mask* are removed from the current set "
+"of blocked signals.  It is permissible to attempt to unblock a signal which "
+"is not blocked."
+msgstr ""
+":data:`SIG_UNBLOCK`: Các tín hiệu trong *mask* bị xóa khỏi nhóm tín hiệu bị "
+"chặn hiện tại.  Được phép cố gắng bỏ chặn tín hiệu không bị chặn."
+
+#: ../../library/signal.rst:494
+#, fuzzy
+msgid ""
+":data:`SIG_SETMASK`: The set of blocked signals is set to the *mask* "
+"argument."
+msgstr ""
+":data:`SIG_SETMASK`: Tập hợp các tín hiệu bị chặn được đặt thành đối số "
+"*mask*."
+
+#: ../../library/signal.rst:497
+#, python-brace-format, fuzzy
+msgid ""
+"*mask* is a set of signal numbers (e.g. {:const:`signal.SIGINT`, "
+":const:`signal.SIGTERM`}). Use :func:`~signal.valid_signals` for a full mask"
+" including all signals."
+msgstr ""
+"*mask* là tập hợp các số tín hiệu (ví dụ: {:const:`signal.SIGINT`, "
+":const:`signal.SIGTERM`}). Sử dụng :func:`~signal.valid_signals` cho mặt nạ "
+"đầy đủ bao gồm tất cả các tín hiệu."
+
+#: ../../library/signal.rst:501
+#, fuzzy
+msgid ""
+"For example, ``signal.pthread_sigmask(signal.SIG_BLOCK, [])`` reads the "
+"signal mask of the calling thread."
+msgstr ""
+"Ví dụ: ``signal.pthread_sigmask(signal.SIG_BLOCK, [])`` đọc mặt nạ tín hiệu "
+"của chuỗi cuộc gọi."
+
+#: ../../library/signal.rst:504
+#, fuzzy
+msgid ":data:`SIGKILL` and :data:`SIGSTOP` cannot be blocked."
+msgstr ":data:`SIGKILL` và :data:`SIGSTOP` không thể bị chặn."
+
+#: ../../library/signal.rst:511
+#, fuzzy
+msgid "See also :func:`pause`, :func:`sigpending` and :func:`sigwait`."
+msgstr "Xem thêm :func:`pause`, :func:`sigpending` và :func:`sigwait`."
+
+#: ../../library/signal.rst:518
+#, fuzzy
+msgid ""
+"Sets given interval timer (one of :const:`signal.ITIMER_REAL`, "
+":const:`signal.ITIMER_VIRTUAL` or :const:`signal.ITIMER_PROF`) specified by "
+"*which* to fire after *seconds* (float is accepted, different from "
+":func:`alarm`) and after that every *interval* seconds (if *interval* is "
+"non-zero). The interval timer specified by *which* can be cleared by setting"
+" *seconds* to zero."
+msgstr ""
+"Đặt bộ hẹn giờ khoảng thời gian nhất định (một trong các "
+":const:`signal.ITIMER_REAL`, :const:`signal.ITIMER_VIRTUAL` hoặc "
+":const:`signal.ITIMER_PROF`) do *which* chỉ định để kích hoạt sau *seconds* "
+"(float được chấp nhận, khác với :func:`alarm`) và sau đó cứ mỗi *interval* "
+"giây (nếu *interval* khác 0). Có thể xóa bộ định thời khoảng thời gian do "
+"*which* chỉ định bằng cách đặt *seconds* về 0."
+
+#: ../../library/signal.rst:525
+#, fuzzy
+msgid ""
+"When an interval timer fires, a signal is sent to the process. The signal "
+"sent is dependent on the timer being used; :const:`signal.ITIMER_REAL` will "
+"deliver :const:`SIGALRM`, :const:`signal.ITIMER_VIRTUAL` sends "
+":const:`SIGVTALRM`, and :const:`signal.ITIMER_PROF` will deliver "
+":const:`SIGPROF`."
+msgstr ""
+"Khi bộ hẹn giờ ngắt quãng kích hoạt, tín hiệu sẽ được gửi đến quy trình. Tín"
+" hiệu được gửi phụ thuộc vào bộ hẹn giờ được sử dụng; "
+":const:`signal.ITIMER_REAL` sẽ gửi :const:`SIGALRM`, "
+":const:`signal.ITIMER_VIRTUAL` gửi :const:`SIGVTALRM` và "
+":const:`signal.ITIMER_PROF` sẽ gửi :const:`SIGPROF`."
+
+#: ../../library/signal.rst:531
+#, fuzzy
+msgid "The old values are returned as a tuple: (delay, interval)."
+msgstr ""
+"Các giá trị cũ được trả về dưới dạng một bộ: (độ trễ, khoảng thời gian)."
+
+#: ../../library/signal.rst:533
+#, fuzzy
+msgid ""
+"Attempting to pass an invalid interval timer will cause an "
+":exc:`ItimerError`."
+msgstr ""
+"Cố gắng vượt qua bộ hẹn giờ khoảng thời gian không hợp lệ sẽ gây ra "
+":exc:`ItimerError`."
+
+#: ../../library/signal.rst:541
+#, fuzzy
+msgid "Returns current value of a given interval timer specified by *which*."
+msgstr ""
+"Trả về giá trị hiện tại của bộ định thời khoảng thời gian nhất định được chỉ"
+" định bởi *which*."
+
+#: ../../library/signal.rst:548
+#, fuzzy
+msgid ""
+"Set the wakeup file descriptor to *fd*.  When a signal your program has "
+"registered a signal handler for is received, the signal number is written as"
+" a single byte into the fd.  If you haven't registered a signal handler for "
+"the signals you care about, then nothing will be written to the wakeup fd. "
+"This can be used by a library to wakeup a poll or select call, allowing the "
+"signal to be fully processed."
+msgstr ""
+"Đặt bộ mô tả tệp đánh thức thành *fd*.  Khi nhận được tín hiệu mà chương "
+"trình của bạn đã đăng ký bộ xử lý tín hiệu, số tín hiệu sẽ được ghi dưới "
+"dạng một byte vào fd.  Nếu bạn chưa đăng ký trình xử lý tín hiệu cho các tín"
+" hiệu mà bạn quan tâm thì sẽ không có gì được ghi vào fd đánh thức. Thư viện"
+" có thể sử dụng tính năng này để đánh thức cuộc thăm dò ý kiến ​​hoặc cuộc "
+"gọi chọn lọc, cho phép tín hiệu được xử lý hoàn toàn."
+
+#: ../../library/signal.rst:555
+#, fuzzy
+msgid ""
+"The old wakeup fd is returned (or -1 if file descriptor wakeup was not "
+"enabled).  If *fd* is -1, file descriptor wakeup is disabled. If not -1, "
+"*fd* must be non-blocking.  It is up to the library to remove any bytes from"
+" *fd* before calling poll or select again."
+msgstr ""
+"Fd đánh thức cũ được trả về (hoặc -1 nếu đánh thức bộ mô tả tệp không được "
+"bật).  Nếu *fd* là -1, việc đánh thức bộ mô tả tập tin bị tắt. Nếu không "
+"phải -1, *fd* phải không bị chặn.  Tùy thuộc vào thư viện để xóa bất kỳ byte"
+" nào khỏi *fd* trước khi gọi cuộc thăm dò ý kiến ​​hoặc chọn lại."
+
+#: ../../library/signal.rst:560 ../../library/signal.rst:615
+#, fuzzy
+msgid ""
+"When threads are enabled, this function can only be called from :ref:`the "
+"main thread of the main interpreter <signals-and-threads>`; attempting to "
+"call it from other threads will cause a :exc:`ValueError` exception to be "
+"raised."
+msgstr ""
+"Khi chủ đề được bật, chức năng này chỉ có thể được gọi từ :ref:`the main "
+"thread of the main interpreter <signals-and-threads>`; cố gắng gọi nó từ các"
+" luồng khác sẽ gây ra ngoại lệ :exc:`ValueError`."
+
+#: ../../library/signal.rst:565
+#, fuzzy
+msgid ""
+"There are two common ways to use this function. In both approaches, you use "
+"the fd to wake up when a signal arrives, but then they differ in how they "
+"determine *which* signal or signals have arrived."
+msgstr ""
+"Có hai cách phổ biến để sử dụng chức năng này. Trong cả hai phương pháp, bạn"
+" sử dụng fd để đánh thức khi có tín hiệu đến, nhưng sau đó chúng khác nhau ở"
+" cách xác định tín hiệu *which* hoặc các tín hiệu đã đến."
+
+#: ../../library/signal.rst:570
+#, fuzzy
+msgid ""
+"In the first approach, we read the data out of the fd's buffer, and the byte"
+" values give you the signal numbers. This is simple, but in rare cases it "
+"can run into a problem: generally the fd will have a limited amount of "
+"buffer space, and if too many signals arrive too quickly, then the buffer "
+"may become full, and some signals may be lost. If you use this approach, "
+"then you should set ``warn_on_full_buffer=True``, which will at least cause "
+"a warning to be printed to stderr when signals are lost."
+msgstr ""
+"Trong cách tiếp cận đầu tiên, chúng tôi đọc dữ liệu từ bộ đệm của fd và các "
+"giá trị byte cung cấp cho bạn các số tín hiệu. Điều này rất đơn giản, nhưng "
+"trong một số ít trường hợp, nó có thể gặp sự cố: nhìn chung fd sẽ có một "
+"lượng không gian bộ đệm hạn chế và nếu có quá nhiều tín hiệu đến quá nhanh "
+"thì bộ đệm có thể đầy và một số tín hiệu có thể bị mất. Nếu bạn sử dụng "
+"phương pháp này thì bạn nên đặt ``warn_on_full_buffer=True``, điều này ít "
+"nhất sẽ khiến cảnh báo được in ra stderr khi mất tín hiệu."
+
+#: ../../library/signal.rst:579
+#, fuzzy
+msgid ""
+"In the second approach, we use the wakeup fd *only* for wakeups, and ignore "
+"the actual byte values. In this case, all we care about is whether the fd's "
+"buffer is empty or non-empty; a full buffer doesn't indicate a problem at "
+"all. If you use this approach, then you should set "
+"``warn_on_full_buffer=False``, so that your users are not confused by "
+"spurious warning messages."
+msgstr ""
+"Trong cách tiếp cận thứ hai, chúng tôi sử dụng Wakeup fd *only* để đánh thức"
+" và bỏ qua các giá trị byte thực tế. Trong trường hợp này, tất cả những gì "
+"chúng ta quan tâm là liệu bộ đệm của fd trống hay không trống; bộ đệm đầy "
+"hoàn toàn không cho thấy có vấn đề gì. Nếu sử dụng phương pháp này thì bạn "
+"nên đặt ``warn_on_full_buffer=False`` để người dùng không bị nhầm lẫn bởi "
+"các thông báo cảnh báo giả mạo."
+
+#: ../../library/signal.rst:586
+#, fuzzy
+msgid "On Windows, the function now also supports socket handles."
+msgstr "Trên Windows, chức năng này hiện cũng hỗ trợ các tay cầm ổ cắm."
+
+#: ../../library/signal.rst:589
+#, fuzzy
+msgid "Added ``warn_on_full_buffer`` parameter."
+msgstr "Đã thêm tham số ``warn_on_full_buffer``."
+
+#: ../../library/signal.rst:594
+#, fuzzy
+msgid ""
+"Change system call restart behaviour: if *flag* is :const:`False`, system "
+"calls will be restarted when interrupted by signal *signalnum*, otherwise "
+"system calls will be interrupted.  Returns nothing."
+msgstr ""
+"Thay đổi hành vi khởi động lại cuộc gọi hệ thống: nếu *flag* là "
+":const:`False`, các cuộc gọi hệ thống sẽ được khởi động lại khi bị gián đoạn"
+" bởi tín hiệu *signalnum*, nếu không các cuộc gọi hệ thống sẽ bị gián đoạn."
+"  Không trả lại gì cả."
+
+#: ../../library/signal.rst:600
+#, fuzzy
+msgid "See the man page :manpage:`siginterrupt(3)` for further information."
+msgstr "Xem trang man :manpage:`siginterrupt(3)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:602
+#, fuzzy
+msgid ""
+"Note that installing a signal handler with :func:`signal` will reset the "
+"restart behaviour to interruptible by implicitly calling "
+":c:func:`!siginterrupt` with a true *flag* value for the given signal."
+msgstr ""
+"Lưu ý rằng việc cài đặt trình xử lý tín hiệu với :func:`signal` sẽ đặt lại "
+"hành vi khởi động lại thành có thể gián đoạn bằng cách gọi ngầm "
+":c:func:`!siginterrupt` với giá trị *flag* thực cho tín hiệu đã cho."
+
+#: ../../library/signal.rst:609
+#, fuzzy
+msgid ""
+"Set the handler for signal *signalnum* to the function *handler*.  *handler*"
+" can be a callable Python object taking two arguments (see below), or one of"
+" the special values :const:`signal.SIG_IGN` or :const:`signal.SIG_DFL`.  The"
+" previous signal handler will be returned (see the description of "
+":func:`getsignal` above).  (See the Unix man page :manpage:`signal(2)` for "
+"further information.)"
+msgstr ""
+"Đặt bộ xử lý tín hiệu *signalnum* thành hàm *handler*.  *handler* có thể là "
+"một đối tượng Python có thể gọi được với hai đối số (xem bên dưới) hoặc một "
+"trong các giá trị đặc biệt :const:`signal.SIG_IGN` hoặc "
+":const:`signal.SIG_DFL`.  Trình xử lý tín hiệu trước đó sẽ được trả về (xem "
+"mô tả về :func:`getsignal` ở trên).  (Xem trang Unix :manpage:`signal(2)` để"
+" biết thêm thông tin.)"
+
+#: ../../library/signal.rst:620
+#, fuzzy
+msgid ""
+"The *handler* is called with two arguments: the signal number and the "
+"current stack frame (``None`` or a frame object; for a description of frame "
+"objects, see the :ref:`description in the type hierarchy <frame-objects>` or"
+" see the attribute descriptions in the :mod:`inspect` module)."
+msgstr ""
+"*handler* được gọi với hai đối số: số tín hiệu và khung ngăn xếp hiện tại "
+"(``None`` hoặc đối tượng khung; để biết mô tả về đối tượng khung, hãy xem "
+":ref:`description in the type hierarchy <frame-objects>` hoặc xem mô tả "
+"thuộc tính trong mô-đun :mod:`inspect`)."
+
+#: ../../library/signal.rst:625
+#, fuzzy
+msgid ""
+"On Windows, :func:`signal` can only be called with :const:`SIGABRT`, "
+":const:`SIGFPE`, :const:`SIGILL`, :const:`SIGINT`, :const:`SIGSEGV`, "
+":const:`SIGTERM`, or :const:`SIGBREAK`. A :exc:`ValueError` will be raised "
+"in any other case. Note that not all systems define the same set of signal "
+"names; an :exc:`AttributeError` will be raised if a signal name is not "
+"defined as ``SIG*`` module level constant."
+msgstr ""
+"Trên Windows, :func:`signal` chỉ có thể được gọi bằng :const:`SIGABRT`, "
+":const:`SIGFPE`, :const:`SIGILL`, :const:`SIGINT`, :const:`SIGSEGV`, "
+":const:`SIGTERM` hoặc :const:`SIGBREAK`. Một :exc:`ValueError` sẽ được nâng "
+"lên trong mọi trường hợp khác. Lưu ý rằng không phải tất cả các hệ thống đều"
+" xác định cùng một bộ tên tín hiệu; một :exc:`AttributeError` sẽ được nâng "
+"lên nếu tên tín hiệu không được xác định là hằng số mức mô-đun ``SIG*``."
+
+#: ../../library/signal.rst:636
+#, fuzzy
+msgid ""
+"Examine the set of signals that are pending for delivery to the calling "
+"thread (i.e., the signals which have been raised while blocked).  Return the"
+" set of the pending signals."
+msgstr ""
+"Kiểm tra tập hợp các tín hiệu đang chờ gửi đến luồng đang gọi (tức là các "
+"tín hiệu đã được đưa ra trong khi bị chặn).  Trả về tập hợp các tín hiệu "
+"đang chờ xử lý."
+
+#: ../../library/signal.rst:642
+#, fuzzy
+msgid "See the man page :manpage:`sigpending(2)` for further information."
+msgstr "Xem trang man :manpage:`sigpending(2)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:644
+#, fuzzy
+msgid "See also :func:`pause`, :func:`pthread_sigmask` and :func:`sigwait`."
+msgstr "Xem thêm :func:`pause`, :func:`pthread_sigmask` và :func:`sigwait`."
+
+#: ../../library/signal.rst:651
+#, fuzzy
+msgid ""
+"Suspend execution of the calling thread until the delivery of one of the "
+"signals specified in the signal set *sigset*.  The function accepts the "
+"signal (removes it from the pending list of signals), and returns the signal"
+" number."
+msgstr ""
+"Tạm dừng thực thi luồng đang gọi cho đến khi phân phối một trong các tín "
+"hiệu được chỉ định trong bộ tín hiệu *sigset*.  Hàm chấp nhận tín hiệu (xóa "
+"nó khỏi danh sách tín hiệu đang chờ xử lý) và trả về số tín hiệu."
+
+#: ../../library/signal.rst:657
+#, fuzzy
+msgid "See the man page :manpage:`sigwait(3)` for further information."
+msgstr "Xem trang man :manpage:`sigwait(3)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:659
+#, fuzzy
+msgid ""
+"See also :func:`pause`, :func:`pthread_sigmask`, :func:`sigpending`, "
+":func:`sigwaitinfo` and :func:`sigtimedwait`."
+msgstr ""
+"Xem thêm :func:`pause`, :func:`pthread_sigmask`, :func:`sigpending`, "
+":func:`sigwaitinfo` và :func:`sigtimedwait`."
+
+#: ../../library/signal.rst:667
+#, fuzzy
+msgid ""
+"Suspend execution of the calling thread until the delivery of one of the "
+"signals specified in the signal set *sigset*.  The function accepts the "
+"signal and removes it from the pending list of signals. If one of the "
+"signals in *sigset* is already pending for the calling thread, the function "
+"will return immediately with information about that signal. The signal "
+"handler is not called for the delivered signal. The function raises an "
+":exc:`InterruptedError` if it is interrupted by a signal that is not in "
+"*sigset*."
+msgstr ""
+"Tạm dừng thực thi luồng đang gọi cho đến khi phân phối một trong các tín "
+"hiệu được chỉ định trong bộ tín hiệu *sigset*.  Hàm chấp nhận tín hiệu và "
+"xóa nó khỏi danh sách tín hiệu đang chờ xử lý. Nếu một trong các tín hiệu "
+"trong *sigset* đang chờ xử lý cho luồng gọi, hàm sẽ trả về ngay lập tức với "
+"thông tin về tín hiệu đó. Bộ xử lý tín hiệu không được gọi cho tín hiệu được"
+" gửi. Hàm này sẽ tăng :exc:`InterruptedError` nếu nó bị gián đoạn bởi tín "
+"hiệu không thuộc *sigset*."
+
+#: ../../library/signal.rst:676
+#, fuzzy
+msgid ""
+"The return value is an object representing the data contained in the "
+"``siginfo_t`` structure, namely: ``si_signo``, ``si_code``, ``si_errno``, "
+"``si_pid``, ``si_uid``, ``si_status``, ``si_band``."
+msgstr ""
+"Giá trị trả về là một đối tượng biểu thị dữ liệu chứa trong cấu trúc "
+"``siginfo_t``, cụ thể là: ``si_signo``, ``si_code``, ``si_errno``, "
+"``si_pid``, ``si_uid``, ``si_status``, ``si_band``."
+
+#: ../../library/signal.rst:682
+#, fuzzy
+msgid "See the man page :manpage:`sigwaitinfo(2)` for further information."
+msgstr "Xem trang man :manpage:`sigwaitinfo(2)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:684
+#, fuzzy
+msgid "See also :func:`pause`, :func:`sigwait` and :func:`sigtimedwait`."
+msgstr "Xem thêm :func:`pause`, :func:`sigwait` và :func:`sigtimedwait`."
+
+#: ../../library/signal.rst:688
+#, fuzzy
+msgid ""
+"The function is now retried if interrupted by a signal not in *sigset* and "
+"the signal handler does not raise an exception (see :pep:`475` for the "
+"rationale)."
+msgstr ""
+"Chức năng này hiện được thử lại nếu bị gián đoạn bởi tín hiệu không thuộc "
+"*sigset* và trình xử lý tín hiệu không đưa ra ngoại lệ (xem :pep:`475` để "
+"biết lý do)."
+
+#: ../../library/signal.rst:696
+#, fuzzy
+msgid ""
+"Like :func:`sigwaitinfo`, but takes an additional *timeout* argument "
+"specifying a timeout. If *timeout* is specified as ``0``, a poll is "
+"performed. Returns :const:`None` if a timeout occurs."
+msgstr ""
+"Giống như :func:`sigwaitinfo`, nhưng có thêm một đối số *timeout* chỉ định "
+"thời gian chờ. Nếu *timeout* được chỉ định là ``0``, một cuộc thăm dò sẽ "
+"được thực hiện. Trả về :const:`None` nếu hết thời gian chờ."
+
+#: ../../library/signal.rst:702
+#, fuzzy
+msgid "See the man page :manpage:`sigtimedwait(2)` for further information."
+msgstr "Xem trang man :manpage:`sigtimedwait(2)` để biết thêm thông tin."
+
+#: ../../library/signal.rst:704
+#, fuzzy
+msgid "See also :func:`pause`, :func:`sigwait` and :func:`sigwaitinfo`."
+msgstr "Xem thêm :func:`pause`, :func:`sigwait` và :func:`sigwaitinfo`."
+
+#: ../../library/signal.rst:708
+#, fuzzy
+msgid ""
+"The function is now retried with the recomputed *timeout* if interrupted by "
+"a signal not in *sigset* and the signal handler does not raise an exception "
+"(see :pep:`475` for the rationale)."
+msgstr ""
+"Hàm này hiện được thử lại với *timeout* được tính toán lại nếu bị gián đoạn "
+"bởi tín hiệu không thuộc *sigset* và trình xử lý tín hiệu không đưa ra ngoại"
+" lệ (xem :pep:`475` để biết lý do)."
+
+#: ../../library/signal.rst:717
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/signal.rst:719
+#, fuzzy
+msgid ""
+"Here is a minimal example program. It uses the :func:`alarm` function to "
+"limit the time spent waiting to open a file; this is useful if the file is "
+"for a serial device that may not be turned on, which would normally cause "
+"the :func:`os.open` to hang indefinitely.  The solution is to set a 5-second"
+" alarm before opening the file; if the operation takes too long, the alarm "
+"signal will be sent, and the handler raises an exception. ::"
+msgstr ""
+"Đây là một chương trình ví dụ tối thiểu. Nó sử dụng chức năng :func:`alarm` "
+"để giới hạn thời gian chờ mở tệp; điều này hữu ích nếu tệp dành cho một "
+"thiết bị nối tiếp có thể không được bật, điều này thường khiến "
+":func:`os.open` bị treo vô thời hạn.  Giải pháp là đặt báo thức 5 giây trước"
+" khi mở tệp; nếu thao tác mất quá nhiều thời gian, tín hiệu cảnh báo sẽ được"
+" gửi và trình xử lý sẽ đưa ra một ngoại lệ. ::"
+
+#: ../../library/signal.rst:726
+#, python-brace-format, fuzzy
+msgid ""
+"import signal, os\n"
+"\n"
+"def handler(signum, frame):\n"
+"    signame = signal.Signals(signum).name\n"
+"    print(f'Signal handler called with signal {signame} ({signum})')\n"
+"    raise OSError(\"Couldn't open device!\")\n"
+"\n"
+"# Set the signal handler and a 5-second alarm\n"
+"signal.signal(signal.SIGALRM, handler)\n"
+"signal.alarm(5)\n"
+"\n"
+"# This open() may hang indefinitely\n"
+"fd = os.open('/dev/ttyS0', os.O_RDWR)\n"
+"\n"
+"signal.alarm(0)          # Disable the alarm"
+msgstr ""
+"tín hiệu nhập khẩu, hệ điều hành\n"
+"\n"
+"trình xử lý def (dấu hiệu, khung):\n"
+"    signame = signal.Signals(signum).name\n"
+"    print(f'Trình xử lý tín hiệu được gọi với tín hiệu {signame} ({signum})')\n"
+"    raise OSError(\"Không thể mở thiết bị!\")\n"
+"\n"
+"# Set bộ xử lý tín hiệu và cảnh báo 5 giây\n"
+"signal.signal(signal.SIGALRM, trình xử lý)\n"
+"tín hiệu.alarm(5)\n"
+"\n"
+"# This open() có thể bị treo vô thời hạn\n"
+"fd = os.open('/dev/ttyS0', os.O_RDWR)\n"
+"\n"
+"signal.alarm(0) # Disable báo động"
+
+#: ../../library/signal.rst:743
+#, fuzzy
+msgid "Note on SIGPIPE"
+msgstr "Lưu ý về SIGPIPE"
+
+#: ../../library/signal.rst:745
+#, fuzzy
+msgid ""
+"Piping output of your program to tools like :manpage:`head(1)` will cause a "
+":const:`SIGPIPE` signal to be sent to your process when the receiver of its "
+"standard output closes early.  This results in an exception like "
+":code:`BrokenPipeError: [Errno 32] Broken pipe`.  To handle this case, wrap "
+"your entry point to catch this exception as follows::"
+msgstr ""
+"Việc chuyển đầu ra chương trình của bạn tới các công cụ như "
+":manpage:`head(1)` sẽ khiến tín hiệu :const:`SIGPIPE` được gửi đến quy trình"
+" của bạn khi bộ thu đầu ra tiêu chuẩn của nó đóng sớm.  Điều này dẫn đến một"
+" ngoại lệ như :code:`BrokenPipeError: [Errno 32] Broken pipe`.  Để xử lý "
+"trường hợp này, hãy bọc điểm vào của bạn để bắt ngoại lệ này như sau ::"
+
+#: ../../library/signal.rst:751
+#, fuzzy
+msgid ""
+"import os\n"
+"import sys\n"
+"\n"
+"def main():\n"
+"    try:\n"
+"        # simulate large output (your code replaces this loop)\n"
+"        for x in range(10000):\n"
+"            print(\"y\")\n"
+"        # flush output here to force SIGPIPE to be triggered\n"
+"        # while inside this try block.\n"
+"        sys.stdout.flush()\n"
+"    except BrokenPipeError:\n"
+"        # Python flushes standard streams on exit; redirect remaining output\n"
+"        # to devnull to avoid another BrokenPipeError at shutdown\n"
+"        devnull = os.open(os.devnull, os.O_WRONLY)\n"
+"        os.dup2(devnull, sys.stdout.fileno())\n"
+"        sys.exit(1)  # Python exits with error code 1 on EPIPE\n"
+"\n"
+"if __name__ == '__main__':\n"
+"    main()"
+msgstr ""
+"hệ điều hành nhập khẩu\n"
+"hệ thống nhập khẩu\n"
+"\n"
+"chắc chắn chính():\n"
+"    thử:\n"
+"        đầu ra lớn # simulate (mã của bạn thay thế vòng lặp này)\n"
+"        cho x trong phạm vi (10000):\n"
+"            in (\"y\")\n"
+"        # flush xuất ra ở đây để buộc SIGPIPE được kích hoạt\n"
+"        # while bên trong khối thử này.\n"
+"        sys.stdout.flush()\n"
+"    ngoại trừ BrokenPipeError:\n"
+"        # Python xóa các luồng tiêu chuẩn khi thoát; chuyển hướng đầu ra còn lại\n"
+"        # to devnull để tránh BrokenPipeError khác khi tắt máy\n"
+"        devnull = os.open(os.devnull, os.O_WRONLY)\n"
+"        os.dup2(devnull, sys.stdout.fileno())\n"
+"        sys.exit(1) # Python thoát với mã lỗi 1 trên EPIPE\n"
+"\n"
+"nếu __name__ == '__main__':\n"
+"    chính()"
+
+#: ../../library/signal.rst:772
+#, fuzzy
+msgid ""
+"Do not set :const:`SIGPIPE`'s disposition to :const:`SIG_DFL` in order to "
+"avoid :exc:`BrokenPipeError`.  Doing that would cause your program to exit "
+"unexpectedly whenever any socket connection is interrupted while your "
+"program is still writing to it."
+msgstr ""
+"Không đặt vị trí của :const:`SIGPIPE` thành :const:`SIG_DFL` để tránh "
+":exc:`BrokenPipeError`.  Làm như vậy sẽ khiến chương trình của bạn thoát ra "
+"bất ngờ bất cứ khi nào bất kỳ kết nối ổ cắm nào bị gián đoạn trong khi "
+"chương trình của bạn vẫn đang ghi vào đó."
+
+#: ../../library/signal.rst:781
+#, fuzzy
+msgid "Note on Signal Handlers and Exceptions"
+msgstr "Lưu ý về Trình xử lý tín hiệu và ngoại lệ"
+
+#: ../../library/signal.rst:783
+#, fuzzy
+msgid ""
+"If a signal handler raises an exception, the exception will be propagated to"
+" the main thread and may be raised after any :term:`bytecode` instruction. "
+"Most notably, a :exc:`KeyboardInterrupt` may appear at any point during "
+"execution. Most Python code, including the standard library, cannot be made "
+"robust against this, and so a :exc:`KeyboardInterrupt` (or any other "
+"exception resulting from a signal handler) may on rare occasions put the "
+"program in an unexpected state."
+msgstr ""
+"Nếu trình xử lý tín hiệu đưa ra một ngoại lệ, ngoại lệ đó sẽ được truyền đến"
+" luồng chính và có thể được đưa ra sau bất kỳ lệnh :term:`bytecode` nào. "
+"Đáng chú ý nhất là :exc:`KeyboardInterrupt` có thể xuất hiện bất kỳ lúc nào "
+"trong quá trình thực thi. Hầu hết mã Python, bao gồm cả thư viện tiêu chuẩn,"
+" không thể chống lại điều này một cách mạnh mẽ và do đó, "
+":exc:`KeyboardInterrupt` (hoặc bất kỳ ngoại lệ nào khác do trình xử lý tín "
+"hiệu) có thể trong một số trường hợp hiếm hoi khiến chương trình ở trạng "
+"thái không mong muốn."
+
+#: ../../library/signal.rst:790
+#, fuzzy
+msgid "To illustrate this issue, consider the following code::"
+msgstr "Để minh họa vấn đề này, hãy xem xét đoạn mã sau::"
+
+#: ../../library/signal.rst:792
+#, fuzzy
+msgid ""
+"class SpamContext:\n"
+"    def __init__(self):\n"
+"        self.lock = threading.Lock()\n"
+"\n"
+"    def __enter__(self):\n"
+"        # If KeyboardInterrupt occurs here, everything is fine\n"
+"        self.lock.acquire()\n"
+"        # If KeyboardInterrupt occurs here, __exit__ will not be called\n"
+"        ...\n"
+"        # KeyboardInterrupt could occur just before the function returns\n"
+"\n"
+"    def __exit__(self, exc_type, exc_val, exc_tb):\n"
+"        ...\n"
+"        self.lock.release()"
+msgstr ""
+"lớp SpamContext:\n"
+"    định nghĩa __init__(tự):\n"
+"        self.lock = threading.Lock()\n"
+"\n"
+"    chắc chắn __enter__(tự):\n"
+"        # If Bàn phím bị gián đoạn xảy ra ở đây, mọi thứ đều ổn\n"
+"        self.lock.acquire()\n"
+"        # If Bàn phím bị gián đoạn xảy ra ở đây, __exit__ sẽ không được gọi\n"
+"        ...\n"
+"        # KeyboardInterrupt có thể xảy ra ngay trước khi hàm trả về\n"
+"\n"
+"    def __exit__(self, exc_type, exc_val, exc_tb):\n"
+"        ...\n"
+"        self.lock.release()"
+
+#: ../../library/signal.rst:807
+#, fuzzy
+msgid ""
+"For many programs, especially those that merely want to exit on "
+":exc:`KeyboardInterrupt`, this is not a problem, but applications that are "
+"complex or require high reliability should avoid raising exceptions from "
+"signal handlers. They should also avoid catching :exc:`KeyboardInterrupt` as"
+" a means of gracefully shutting down.  Instead, they should install their "
+"own :const:`SIGINT` handler. Below is an example of an HTTP server that "
+"avoids :exc:`KeyboardInterrupt`::"
+msgstr ""
+"Đối với nhiều chương trình, đặc biệt là những chương trình chỉ muốn thoát "
+"trên :exc:`KeyboardInterrupt`, đây không phải là vấn đề, nhưng các ứng dụng "
+"phức tạp hoặc yêu cầu độ tin cậy cao nên tránh đưa ra ngoại lệ từ bộ xử lý "
+"tín hiệu. Họ cũng nên tránh bắt gặp :exc:`KeyboardInterrupt` như một cách "
+"tắt máy một cách nhẹ nhàng.  Thay vào đó, họ nên cài đặt trình xử lý "
+":const:`SIGINT` của riêng mình. Dưới đây là ví dụ về máy chủ HTTP tránh "
+":exc:`KeyboardInterrupt`::"
+
+#: ../../library/signal.rst:815
+#, fuzzy
+msgid ""
+"import signal\n"
+"import socket\n"
+"from selectors import DefaultSelector, EVENT_READ\n"
+"from http.server import HTTPServer, SimpleHTTPRequestHandler\n"
+"\n"
+"interrupt_read, interrupt_write = socket.socketpair()\n"
+"\n"
+"def handler(signum, frame):\n"
+"    print('Signal handler called with signal', signum)\n"
+"    interrupt_write.send(b'\\0')\n"
+"signal.signal(signal.SIGINT, handler)\n"
+"\n"
+"def serve_forever(httpd):\n"
+"    sel = DefaultSelector()\n"
+"    sel.register(interrupt_read, EVENT_READ)\n"
+"    sel.register(httpd, EVENT_READ)\n"
+"\n"
+"    while True:\n"
+"        for key, _ in sel.select():\n"
+"            if key.fileobj == interrupt_read:\n"
+"                interrupt_read.recv(1)\n"
+"                return\n"
+"            if key.fileobj == httpd:\n"
+"                httpd.handle_request()\n"
+"\n"
+"print(\"Serving on port 8000\")\n"
+"httpd = HTTPServer(('', 8000), SimpleHTTPRequestHandler)\n"
+"serve_forever(httpd)\n"
+"print(\"Shutdown...\")"
+msgstr ""
+"tín hiệu nhập khẩu\n"
+"ổ cắm nhập khẩu\n"
+"từ bộ chọn nhập DefaultSelector, EVENT_READ\n"
+"từ http.server nhập HTTPServer, SimpleHTTPRequestHandler\n"
+"\n"
+"ngắt_đọc, ngắt_write = socket.socketpair()\n"
+"\n"
+"trình xử lý def (dấu hiệu, khung):\n"
+"    print('Trình xử lý tín hiệu được gọi bằng tín hiệu', signum)\n"
+"    ngắt_write.send(b'\\0')\n"
+"signal.signal(signal.SIGINT, trình xử lý)\n"
+"\n"
+"def phục vụ_forver(httpd):\n"
+"    sel = Bộ chọn mặc định()\n"
+"    sel.register(interrupt_read, EVENT_READ)\n"
+"    sel.register(httpd, EVENT_READ)\n"
+"\n"
+"    trong khi Đúng:\n"
+"        cho khóa, _ trong sel.select():\n"
+"            nếu key.fileobj == ngắt_read:\n"
+"                ngắt_read.recv(1)\n"
+"                trở về\n"
+"            nếu key.fileobj == httpd:\n"
+"                httpd.handle_request()\n"
+"\n"
+"print(\"Phục vụ trên cổng 8000\")\n"
+"httpd = HTTPServer(('', 8000), SimpleHTTPRequestHandler)\n"
+"phục vụ_forever(httpd)\n"
+"print(\"Tắt máy...\")"

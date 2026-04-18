@@ -1,0 +1,4234 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/doctest.rst:2
+#, fuzzy
+msgid ":mod:`!doctest` --- Test interactive Python examples"
+msgstr ":mod:`!doctest` --- Kiểm tra các ví dụ Python tương tác"
+
+#: ../../library/doctest.rst:12
+#, fuzzy
+msgid "**Source code:** :source:`Lib/doctest.py`"
+msgstr "**Source code:** :source:`Lib/doctest.py`"
+
+#: ../../library/doctest.rst:16
+#, fuzzy
+msgid ""
+"The :mod:`!doctest` module searches for pieces of text that look like "
+"interactive Python sessions, and then executes those sessions to verify that"
+" they work exactly as shown.  There are several common ways to use doctest:"
+msgstr ""
+"Mô-đun :mod:`!doctest` tìm kiếm các đoạn văn bản trông giống như các phiên "
+"Python tương tác, sau đó thực thi các phiên đó để xác minh rằng chúng hoạt "
+"động chính xác như được hiển thị.  Có một số cách phổ biến để sử dụng "
+"doctest:"
+
+#: ../../library/doctest.rst:20
+#, fuzzy
+msgid ""
+"To check that a module's docstrings are up-to-date by verifying that all "
+"interactive examples still work as documented."
+msgstr ""
+"Để kiểm tra xem chuỗi tài liệu của mô-đun có được cập nhật hay không bằng "
+"cách xác minh rằng tất cả các ví dụ tương tác vẫn hoạt động như tài liệu."
+
+#: ../../library/doctest.rst:23
+#, fuzzy
+msgid ""
+"To perform regression testing by verifying that interactive examples from a "
+"test file or a test object work as expected."
+msgstr ""
+"Để thực hiện kiểm tra hồi quy bằng cách xác minh rằng các ví dụ tương tác từ"
+" tệp kiểm tra hoặc đối tượng kiểm tra hoạt động như mong đợi."
+
+#: ../../library/doctest.rst:26
+#, fuzzy
+msgid ""
+"To write tutorial documentation for a package, liberally illustrated with "
+"input-output examples.  Depending on whether the examples or the expository "
+"text are emphasized, this has the flavor of \"literate testing\" or "
+"\"executable documentation\"."
+msgstr ""
+"Để viết tài liệu hướng dẫn cho một gói, được minh họa một cách phóng khoáng "
+"bằng các ví dụ đầu vào-đầu ra.  Tùy thuộc vào việc các ví dụ hoặc văn bản "
+"giải thích có được nhấn mạnh hay không, điều này có tính chất \"kiểm tra khả"
+" năng đọc viết\" hoặc \"tài liệu có thể thực thi\"."
+
+#: ../../library/doctest.rst:31
+#, fuzzy
+msgid "Here's a complete but small example module::"
+msgstr "Đây là một mô-đun ví dụ hoàn chỉnh nhưng nhỏ::"
+
+#: ../../library/doctest.rst:33
+#, fuzzy
+msgid ""
+"\"\"\"\n"
+"This is the \"example\" module.\n"
+"\n"
+"The example module supplies one function, factorial().  For example,\n"
+"\n"
+">>> factorial(5)\n"
+"120\n"
+"\"\"\"\n"
+"\n"
+"def factorial(n):\n"
+"    \"\"\"Return the factorial of n, an exact integer >= 0.\n"
+"\n"
+"    >>> [factorial(n) for n in range(6)]\n"
+"    [1, 1, 2, 6, 24, 120]\n"
+"    >>> factorial(30)\n"
+"    265252859812191058636308480000000\n"
+"    >>> factorial(-1)\n"
+"    Traceback (most recent call last):\n"
+"        ...\n"
+"    ValueError: n must be >= 0\n"
+"\n"
+"    Factorials of floats are OK, but the float must be an exact integer:\n"
+"    >>> factorial(30.1)\n"
+"    Traceback (most recent call last):\n"
+"        ...\n"
+"    ValueError: n must be exact integer\n"
+"    >>> factorial(30.0)\n"
+"    265252859812191058636308480000000\n"
+"\n"
+"    It must also not be ridiculously large:\n"
+"    >>> factorial(1e100)\n"
+"    Traceback (most recent call last):\n"
+"        ...\n"
+"    OverflowError: n too large\n"
+"    \"\"\"\n"
+"\n"
+"    import math\n"
+"    if not n >= 0:\n"
+"        raise ValueError(\"n must be >= 0\")\n"
+"    if math.floor(n) != n:\n"
+"        raise ValueError(\"n must be exact integer\")\n"
+"    if n+1 == n:  # catch a value like 1e300\n"
+"        raise OverflowError(\"n too large\")\n"
+"    result = 1\n"
+"    factor = 2\n"
+"    while factor <= n:\n"
+"        result *= factor\n"
+"        factor += 1\n"
+"    return result\n"
+"\n"
+"\n"
+"if __name__ == \"__main__\":\n"
+"    import doctest\n"
+"    doctest.testmod()"
+msgstr ""
+"\"\"\"\n"
+"Đây là mô-đun \"ví dụ\".\n"
+"\n"
+"Mô-đun ví dụ cung cấp một hàm, giai thừa().  Ví dụ,\n"
+"\n"
+">>> giai thừa(5)\n"
+"120\n"
+"\"\"\"\n"
+"\n"
+"giai thừa def (n):\n"
+"    \"\"\"Trả về giai thừa của n, một số nguyên chính xác >= 0.\n"
+"\n"
+"    >>> [giai thừa(n) cho n trong phạm vi(6)]\n"
+"    [1, 1, 2, 6, 24, 120]\n"
+"    >>> giai thừa(30)\n"
+"    265252859812191058636308480000000\n"
+"    >>> giai thừa(-1)\n"
+"    Traceback (cuộc gọi gần đây nhất):\n"
+"        ...\n"
+"    Giá trịLỗi: n phải >= 0\n"
+"\n"
+"    Giai thừa của số float là được, nhưng số float phải là số nguyên chính xác:\n"
+"    >>> giai thừa(30.1)\n"
+"    Traceback (cuộc gọi gần đây nhất):\n"
+"        ...\n"
+"    ValueError: n phải là số nguyên chính xác\n"
+"    >>> giai thừa(30.0)\n"
+"    265252859812191058636308480000000\n"
+"\n"
+"    Nó cũng không được lớn một cách lố bịch:\n"
+"    >>> giai thừa(1e100)\n"
+"    Traceback (cuộc gọi gần đây nhất):\n"
+"        ...\n"
+"    TrànLỗi: n quá lớn\n"
+"    \"\"\"\n"
+"\n"
+"    nhập toán\n"
+"    nếu không n >= 0:\n"
+"        tăng ValueError(\"n phải >= 0\")\n"
+"    nếu math.floor(n) != n:\n"
+"        raise ValueError(\"n phải là số nguyên chính xác\")\n"
+"    nếu n+1 == n: # catch một giá trị như 1e300\n"
+"        tăng OverflowError (\"n quá lớn\")\n"
+"    kết quả = 1\n"
+"    hệ số = 2\n"
+"    trong khi hệ số <= n:\n"
+"        kết quả *= hệ số\n"
+"        hệ số += 1\n"
+"    kết quả trả về\n"
+"\n"
+"\n"
+"nếu __name__ == \"__main__\":\n"
+"    nhập doctest\n"
+"    doctest.testmod()"
+
+#: ../../library/doctest.rst:88
+#, fuzzy
+msgid ""
+"If you run :file:`example.py` directly from the command line, "
+":mod:`!doctest` works its magic:"
+msgstr ""
+"Nếu bạn chạy :file:`example.py` trực tiếp từ dòng lệnh, :mod:`!doctest` sẽ "
+"hoạt động kỳ diệu:"
+
+#: ../../library/doctest.rst:91
+#, fuzzy
+msgid ""
+"$ python example.py\n"
+"$"
+msgstr ""
+"$ python example.py\n"
+"$"
+
+#: ../../library/doctest.rst:96
+#, fuzzy
+msgid ""
+"There's no output!  That's normal, and it means all the examples worked.  "
+"Pass ``-v`` to the script, and :mod:`!doctest` prints a detailed log of what"
+" it's trying, and prints a summary at the end:"
+msgstr ""
+"Không có đầu ra!  Điều đó là bình thường và có nghĩa là tất cả các ví dụ đều"
+" hoạt động.  Chuyển ``-v`` vào tập lệnh và :mod:`!doctest` in nhật ký chi "
+"tiết về những gì nó đang cố gắng và in bản tóm tắt ở cuối:"
+
+#: ../../library/doctest.rst:100
+#, fuzzy
+msgid ""
+"$ python example.py -v\n"
+"Trying:\n"
+"    factorial(5)\n"
+"Expecting:\n"
+"    120\n"
+"ok\n"
+"Trying:\n"
+"    [factorial(n) for n in range(6)]\n"
+"Expecting:\n"
+"    [1, 1, 2, 6, 24, 120]\n"
+"ok"
+msgstr ""
+"$ python example.py -v\n"
+"Đang cố gắng:\n"
+"    giai thừa(5)\n"
+"Đang mong đợi:\n"
+"    120\n"
+"được\n"
+"Đang cố gắng:\n"
+"    [giai thừa(n) cho n trong phạm vi(6)]\n"
+"Đang mong đợi:\n"
+"    [1, 1, 2, 6, 24, 120]\n"
+"được"
+
+#: ../../library/doctest.rst:114
+#, fuzzy
+msgid "And so on, eventually ending with:"
+msgstr "Và cứ thế, cuối cùng kết thúc bằng:"
+
+#: ../../library/doctest.rst:116
+#, fuzzy
+msgid ""
+"Trying:\n"
+"    factorial(1e100)\n"
+"Expecting:\n"
+"    Traceback (most recent call last):\n"
+"        ...\n"
+"    OverflowError: n too large\n"
+"ok\n"
+"2 items passed all tests:\n"
+"   1 test in __main__\n"
+"   6 tests in __main__.factorial\n"
+"7 tests in 2 items.\n"
+"7 passed.\n"
+"Test passed.\n"
+"$"
+msgstr ""
+"Đang cố gắng:\n"
+"    giai thừa(1e100)\n"
+"Đang mong đợi:\n"
+"    Traceback (cuộc gọi gần đây nhất):\n"
+"        ...\n"
+"    TrànLỗi: n quá lớn\n"
+"được\n"
+"2 mục đã vượt qua tất cả các bài kiểm tra:\n"
+"   1 bài kiểm tra trong __main__\n"
+"   6 bài kiểm tra trong __main__.factorial\n"
+"7 bài kiểm tra trong 2 mục.\n"
+"7 đã trôi qua.\n"
+"Thử nghiệm đã trôi qua.\n"
+"$"
+
+#: ../../library/doctest.rst:133
+#, fuzzy
+msgid ""
+"That's all you need to know to start making productive use of "
+":mod:`!doctest`! Jump in.  The following sections provide full details.  "
+"Note that there are many examples of doctests in the standard Python test "
+"suite and libraries. Especially useful examples can be found in the standard"
+" test file :file:`Lib/test/test_doctest/test_doctest.py`."
+msgstr ""
+"Đó là tất cả những gì bạn cần biết để bắt đầu sử dụng :mod:`!doctest` một "
+"cách hiệu quả! Hãy tham gia. Các phần sau đây cung cấp đầy đủ thông tin chi "
+"tiết.  Lưu ý rằng có nhiều ví dụ về doctest trong bộ thư viện và bộ thử "
+"nghiệm Python tiêu chuẩn. Các ví dụ đặc biệt hữu ích có thể được tìm thấy "
+"trong tệp thử nghiệm tiêu chuẩn "
+":file:`Lib/test/test_doctest/test_doctest.py`."
+
+#: ../../library/doctest.rst:139
+#, fuzzy
+msgid ""
+"Output is colorized by default and can be :ref:`controlled using environment"
+" variables <using-on-controlling-color>`."
+msgstr ""
+"Đầu ra được tô màu theo mặc định và có thể là :ref:`controlled using "
+"environment variables <using-on-controlling-color>`."
+
+#: ../../library/doctest.rst:147
+#, fuzzy
+msgid "Simple Usage: Checking Examples in Docstrings"
+msgstr "Cách sử dụng đơn giản: Kiểm tra các ví dụ trong Docstrings"
+
+#: ../../library/doctest.rst:149
+#, fuzzy
+msgid ""
+"The simplest way to start using doctest (but not necessarily the way you'll "
+"continue to do it) is to end each module :mod:`!M` with::"
+msgstr ""
+"Cách đơn giản nhất để bắt đầu sử dụng doctest (nhưng không nhất thiết phải "
+"theo cách bạn sẽ tiếp tục làm) là kết thúc mỗi mô-đun :mod:`!M` bằng::"
+
+#: ../../library/doctest.rst:152
+#, fuzzy
+msgid ""
+"if __name__ == \"__main__\":\n"
+"    import doctest\n"
+"    doctest.testmod()"
+msgstr ""
+"nếu __name__ == \"__main__\":\n"
+"    nhập doctest\n"
+"    doctest.testmod()"
+
+#: ../../library/doctest.rst:156
+#, fuzzy
+msgid ":mod:`!doctest` then examines docstrings in module :mod:`!M`."
+msgstr ""
+":mod:`!doctest` sau đó kiểm tra các chuỗi tài liệu trong mô-đun :mod:`!M`."
+
+#: ../../library/doctest.rst:158
+#, fuzzy
+msgid ""
+"Running the module as a script causes the examples in the docstrings to get "
+"executed and verified::"
+msgstr ""
+"Việc chạy mô-đun dưới dạng tập lệnh sẽ khiến các ví dụ trong chuỗi tài liệu "
+"được thực thi và xác minh::"
+
+#: ../../library/doctest.rst:161
+#, fuzzy
+msgid "python M.py"
+msgstr "trăn M.py"
+
+#: ../../library/doctest.rst:163
+#, fuzzy
+msgid ""
+"This won't display anything unless an example fails, in which case the "
+"failing example(s) and the cause(s) of the failure(s) are printed to stdout,"
+" and the final line of output is ``***Test Failed*** N failures.``, where "
+"*N* is the number of examples that failed."
+msgstr ""
+"Điều này sẽ không hiển thị bất cứ điều gì trừ khi một ví dụ bị lỗi, trong "
+"trường hợp đó (các) ví dụ bị lỗi và (các) nguyên nhân của (các) lỗi được in "
+"ra thiết bị xuất chuẩn và dòng đầu ra cuối cùng là ``***Test Failed*** N "
+"failures.``, trong đó *N* là số lượng các ví dụ bị lỗi."
+
+#: ../../library/doctest.rst:168
+#, fuzzy
+msgid "Run it with the ``-v`` switch instead::"
+msgstr "Thay vào đó hãy chạy nó bằng công tắc ``-v`` ::"
+
+#: ../../library/doctest.rst:170
+#, fuzzy
+msgid "python M.py -v"
+msgstr "trăn M.py -v"
+
+#: ../../library/doctest.rst:172
+#, fuzzy
+msgid ""
+"and a detailed report of all examples tried is printed to standard output, "
+"along with assorted summaries at the end."
+msgstr ""
+"và một báo cáo chi tiết về tất cả các ví dụ đã thử sẽ được in ra đầu ra tiêu"
+" chuẩn, cùng với các loại tóm tắt ở cuối."
+
+#: ../../library/doctest.rst:175
+#, fuzzy
+msgid ""
+"You can force verbose mode by passing ``verbose=True`` to :func:`testmod`, "
+"or prohibit it by passing ``verbose=False``.  In either of those cases, "
+":data:`sys.argv` is not examined by :func:`testmod` (so passing ``-v`` or "
+"not has no effect)."
+msgstr ""
+"Bạn có thể buộc chế độ dài dòng bằng cách chuyển ``verbose=True`` sang "
+":func:`testmod` hoặc cấm chế độ này bằng cách chuyển ``verbose=False``.  "
+"Trong cả hai trường hợp đó, :data:`sys.argv` không được :func:`testmod` kiểm"
+" tra (vì vậy việc vượt qua ``-v`` hay không đều không có hiệu lực)."
+
+#: ../../library/doctest.rst:180
+#, fuzzy
+msgid ""
+"There is also a command line shortcut for running :func:`testmod`, see "
+"section :ref:`doctest-cli`."
+msgstr ""
+"Ngoài ra còn có một phím tắt dòng lệnh để chạy :func:`testmod`, xem phần "
+":ref:`doctest-cli`."
+
+#: ../../library/doctest.rst:183
+#, fuzzy
+msgid ""
+"For more information on :func:`testmod`, see section :ref:`doctest-basic-"
+"api`."
+msgstr ""
+"Để biết thêm thông tin về :func:`testmod`, hãy xem phần :ref:`doctest-basic-"
+"api`."
+
+#: ../../library/doctest.rst:189
+#, fuzzy
+msgid "Simple Usage: Checking Examples in a Text File"
+msgstr "Cách sử dụng đơn giản: Kiểm tra các ví dụ trong tệp văn bản"
+
+#: ../../library/doctest.rst:191
+#, fuzzy
+msgid ""
+"Another simple application of doctest is testing interactive examples in a "
+"text file.  This can be done with the :func:`testfile` function::"
+msgstr ""
+"Một ứng dụng đơn giản khác của doctest là kiểm tra các ví dụ tương tác trong"
+" một tệp văn bản.  Điều này có thể được thực hiện với chức năng "
+":func:`testfile`::"
+
+#: ../../library/doctest.rst:194
+#, fuzzy
+msgid ""
+"import doctest\n"
+"doctest.testfile(\"example.txt\")"
+msgstr ""
+"nhập doctest\n"
+"doctest.testfile(\"example.txt\")"
+
+#: ../../library/doctest.rst:197
+#, fuzzy
+msgid ""
+"That short script executes and verifies any interactive Python examples "
+"contained in the file :file:`example.txt`.  The file content is treated as "
+"if it were a single giant docstring; the file doesn't need to contain a "
+"Python program!   For example, perhaps :file:`example.txt` contains this:"
+msgstr ""
+"Tập lệnh ngắn đó thực thi và xác minh mọi ví dụ Python tương tác có trong "
+"tệp :file:`example.txt`.  Nội dung tệp được xử lý như thể nó là một chuỗi "
+"tài liệu khổng lồ; tệp không cần chứa chương trình Python!   Ví dụ: có lẽ "
+":file:`example.txt` chứa cái này:"
+
+#: ../../library/doctest.rst:202
+#, fuzzy
+msgid ""
+"The ``example`` module\n"
+"======================\n"
+"\n"
+"Using ``factorial``\n"
+"-------------------\n"
+"\n"
+"This is an example text file in reStructuredText format.  First import\n"
+"``factorial`` from the ``example`` module:\n"
+"\n"
+"    >>> from example import factorial\n"
+"\n"
+"Now use it:\n"
+"\n"
+"    >>> factorial(6)\n"
+"    120"
+msgstr ""
+"Mô-đun ``example``\n"
+"========================\n"
+"\n"
+"Sử dụng ``factorial``\n"
+"-------------------\n"
+"\n"
+"Đây là một tệp văn bản mẫu ở định dạng reStructuredText.  Lần nhập đầu tiên\n"
+"``factorial`` từ mô-đun ``example``:\n"
+"\n"
+"    >>> từ ví dụ nhập giai thừa\n"
+"\n"
+"Bây giờ sử dụng nó:\n"
+"\n"
+"    >>> giai thừa(6)\n"
+"    120"
+
+#: ../../library/doctest.rst:220
+#, fuzzy
+msgid ""
+"Running ``doctest.testfile(\"example.txt\")`` then finds the error in this "
+"documentation::"
+msgstr ""
+"Chạy ``doctest.testfile(\"example.txt\")`` thì thấy lỗi trong tài liệu này "
+"::"
+
+#: ../../library/doctest.rst:223
+#, fuzzy
+msgid ""
+"File \"./example.txt\", line 14, in example.txt\n"
+"Failed example:\n"
+"    factorial(6)\n"
+"Expected:\n"
+"    120\n"
+"Got:\n"
+"    720"
+msgstr ""
+"Tệp \"./example.txt\", dòng 14, trong example.txt\n"
+"Ví dụ không thành công:\n"
+"    giai thừa(6)\n"
+"Dự kiến:\n"
+"    120\n"
+"Có:\n"
+"    720"
+
+#: ../../library/doctest.rst:231
+#, fuzzy
+msgid ""
+"As with :func:`testmod`, :func:`testfile` won't display anything unless an "
+"example fails.  If an example does fail, then the failing example(s) and the"
+" cause(s) of the failure(s) are printed to stdout, using the same format as "
+":func:`!testmod`."
+msgstr ""
+"Như với :func:`testmod`, :func:`testfile` sẽ không hiển thị bất cứ thứ gì "
+"trừ khi một ví dụ bị lỗi.  Nếu một ví dụ không thành công thì (các) ví dụ bị"
+" lỗi và (các) nguyên nhân của (các) lỗi đó sẽ được in ra thiết bị xuất "
+"chuẩn, sử dụng cùng định dạng như :func:`!testmod`."
+
+#: ../../library/doctest.rst:236
+#, fuzzy
+msgid ""
+"By default, :func:`testfile` looks for files in the calling module's "
+"directory. See section :ref:`doctest-basic-api` for a description of the "
+"optional arguments that can be used to tell it to look for files in other "
+"locations."
+msgstr ""
+"Theo mặc định, :func:`testfile` tìm kiếm các tập tin trong thư mục của mô-"
+"đun gọi điện. Xem phần :ref:`doctest-basic-api` để biết mô tả về các đối số "
+"tùy chọn có thể được sử dụng để yêu cầu nó tìm kiếm tệp ở các vị trí khác."
+
+#: ../../library/doctest.rst:240
+#, fuzzy
+msgid ""
+"Like :func:`testmod`, :func:`testfile`'s verbosity can be set with the "
+"``-v`` command-line switch or with the optional keyword argument *verbose*."
+msgstr ""
+"Giống như :func:`testmod`, mức độ chi tiết của :func:`testfile` có thể được "
+"đặt bằng khóa chuyển dòng lệnh ``-v`` hoặc bằng đối số từ khóa tùy chọn "
+"*verbose*."
+
+#: ../../library/doctest.rst:244
+#, fuzzy
+msgid ""
+"There is also a command line shortcut for running :func:`testfile`, see "
+"section :ref:`doctest-cli`."
+msgstr ""
+"Ngoài ra còn có một phím tắt dòng lệnh để chạy :func:`testfile`, xem phần "
+":ref:`doctest-cli`."
+
+#: ../../library/doctest.rst:247
+#, fuzzy
+msgid ""
+"For more information on :func:`testfile`, see section :ref:`doctest-basic-"
+"api`."
+msgstr ""
+"Để biết thêm thông tin về :func:`testfile`, hãy xem phần :ref:`doctest-"
+"basic-api`."
+
+#: ../../library/doctest.rst:253
+#, fuzzy
+msgid "Command-line Usage"
+msgstr "Sử dụng dòng lệnh"
+
+#: ../../library/doctest.rst:255
+#, fuzzy
+msgid ""
+"The :mod:`!doctest` module can be invoked as a script from the command line:"
+msgstr ""
+"Mô-đun :mod:`!doctest` có thể được gọi dưới dạng tập lệnh từ dòng lệnh:"
+
+#: ../../library/doctest.rst:257
+#, fuzzy
+msgid "python -m doctest [-v] [-o OPTION] [-f] file [file ...]"
+msgstr "python -m doctest [-v] [-o OPTION] [-f] tệp [tệp ...]"
+
+#: ../../library/doctest.rst:265
+#, fuzzy
+msgid ""
+"Detailed report of all examples tried is printed to standard output, along "
+"with assorted summaries at the end::"
+msgstr ""
+"Báo cáo chi tiết của tất cả các ví dụ đã thử được in ra đầu ra tiêu chuẩn, "
+"cùng với các loại tóm tắt ở cuối::"
+
+#: ../../library/doctest.rst:268
+#, fuzzy
+msgid "python -m doctest -v example.py"
+msgstr "python -m doctest -v example.py"
+
+#: ../../library/doctest.rst:270
+#, fuzzy
+msgid ""
+"This will import :file:`example.py` as a standalone module and run "
+":func:`testmod` on it. Note that this may not work correctly if the file is "
+"part of a package and imports other submodules from that package."
+msgstr ""
+"Điều này sẽ nhập :file:`example.py` dưới dạng mô-đun độc lập và chạy "
+":func:`testmod` trên đó. Lưu ý rằng điều này có thể không hoạt động chính "
+"xác nếu tệp là một phần của gói và nhập các mô-đun con khác từ gói đó."
+
+#: ../../library/doctest.rst:274
+#, fuzzy
+msgid ""
+"If the file name does not end with :file:`.py`, :mod:`!doctest` infers that "
+"it must be run with :func:`testfile` instead::"
+msgstr ""
+"Nếu tên tệp không kết thúc bằng :file:`.py`, thì :mod:`!doctest` sẽ suy ra "
+"rằng nó phải được chạy bằng :func:`testfile`::"
+
+#: ../../library/doctest.rst:277
+#, fuzzy
+msgid "python -m doctest -v example.txt"
+msgstr "python -m doctest -v example.txt"
+
+#: ../../library/doctest.rst:281
+#, fuzzy
+msgid ""
+"Option flags control various aspects of doctest's behavior, see section "
+":ref:`doctest-options`."
+msgstr ""
+"Cờ tùy chọn kiểm soát các khía cạnh khác nhau trong hành vi của doctest, xem"
+" phần :ref:`doctest-options`."
+
+#: ../../library/doctest.rst:288
+#, fuzzy
+msgid "This is shorthand for ``-o FAIL_FAST``."
+msgstr "Đây là cách viết tắt của ``-o FAIL_FAST``."
+
+#: ../../library/doctest.rst:296
+#, fuzzy
+msgid "How It Works"
+msgstr "Nó hoạt động như thế nào"
+
+#: ../../library/doctest.rst:298
+#, fuzzy
+msgid ""
+"This section examines in detail how doctest works: which docstrings it looks"
+" at, how it finds interactive examples, what execution context it uses, how "
+"it handles exceptions, and how option flags can be used to control its "
+"behavior. This is the information that you need to know to write doctest "
+"examples; for information about actually running doctest on these examples, "
+"see the following sections."
+msgstr ""
+"Phần này xem xét chi tiết cách thức hoạt động của doctest: nó xem xét chuỗi "
+"tài liệu nào, cách nó tìm thấy các ví dụ tương tác, bối cảnh thực thi mà nó "
+"sử dụng, cách nó xử lý các ngoại lệ và cách các cờ tùy chọn có thể được sử "
+"dụng để kiểm soát hành vi của nó. Đây là thông tin bạn cần biết để viết "
+"những ví dụ hay nhất; để biết thông tin về việc thực sự chạy doctest trên "
+"các ví dụ này, hãy xem các phần sau."
+
+#: ../../library/doctest.rst:309
+#, fuzzy
+msgid "Which Docstrings Are Examined?"
+msgstr "Những tài liệu nào được kiểm tra?"
+
+#: ../../library/doctest.rst:311
+#, fuzzy
+msgid ""
+"The module docstring, and all function, class and method docstrings are "
+"searched.  Objects imported into the module are not searched."
+msgstr ""
+"Chuỗi tài liệu mô-đun và tất cả các chuỗi tài liệu hàm, lớp và phương thức "
+"đều được tìm kiếm.  Các đối tượng được nhập vào mô-đun không được tìm kiếm."
+
+#: ../../library/doctest.rst:321
+#, fuzzy
+msgid ""
+"In addition, there are cases when you want tests to be part of a module but "
+"not part of the help text, which requires that the tests not be included in "
+"the docstring. Doctest looks for a module-level variable called ``__test__``"
+" and uses it to locate other tests. If ``M.__test__`` exists, it must be a "
+"dict, and each entry maps a (string) name to a function object, class "
+"object, or string. Function and class object docstrings found from "
+"``M.__test__`` are searched, and strings are treated as if they were "
+"docstrings.  In output, a key ``K`` in ``M.__test__`` appears with name "
+"``M.__test__.K``."
+msgstr ""
+"Ngoài ra, có những trường hợp bạn muốn các bài kiểm tra là một phần của mô-"
+"đun nhưng không phải là một phần của văn bản trợ giúp, điều này yêu cầu các "
+"bài kiểm tra không được đưa vào chuỗi tài liệu. Doctest tìm kiếm một biến "
+"cấp mô-đun có tên là ``__test__`` và sử dụng nó để xác định các thử nghiệm "
+"khác. Nếu ``M.__test__`` tồn tại, nó phải là một lệnh chính tả và mỗi mục "
+"nhập ánh xạ một tên (chuỗi) tới một đối tượng hàm, đối tượng lớp hoặc chuỗi."
+" Các chuỗi tài liệu đối tượng hàm và lớp được tìm thấy từ ``M.__test__`` sẽ "
+"được tìm kiếm và các chuỗi được xử lý như thể chúng là các chuỗi tài liệu.  "
+"Trong đầu ra, khóa ``K`` trong ``M.__test__`` xuất hiện với tên "
+"``M.__test__.K``."
+
+#: ../../library/doctest.rst:330
+#, fuzzy
+msgid ""
+"For example, place this block of code at the top of :file:`example.py`:"
+msgstr "Ví dụ: đặt khối mã này ở đầu :file:`example.py`:"
+
+#: ../../library/doctest.rst:332
+#, python-brace-format, fuzzy
+msgid ""
+"__test__ = {\n"
+"    'numbers': \"\"\"\n"
+">>> factorial(6)\n"
+"720\n"
+"\n"
+">>> [factorial(n) for n in range(6)]\n"
+"[1, 1, 2, 6, 24, 120]\n"
+"\"\"\"\n"
+"}"
+msgstr ""
+"__kiểm tra__ = {\n"
+"    'số': \"\"\"\n"
+">>> giai thừa(6)\n"
+"720\n"
+"\n"
+">>> [giai thừa(n) cho n trong phạm vi(6)]\n"
+"[1, 1, 2, 6, 24, 120]\n"
+"\"\"\"\n"
+"}"
+
+#: ../../library/doctest.rst:344
+#, fuzzy
+msgid ""
+"The value of ``example.__test__[\"numbers\"]`` will be treated as a "
+"docstring and all the tests inside it will be run. It is important to note "
+"that the value can be mapped to a function, class object, or module; if so, "
+":mod:`!doctest` searches them recursively for docstrings, which are then "
+"scanned for tests."
+msgstr ""
+"Giá trị của ``example.__test__[\"numbers\"]`` sẽ được coi là một chuỗi tài "
+"liệu và tất cả các thử nghiệm bên trong nó sẽ được chạy. Điều quan trọng cần"
+" lưu ý là giá trị có thể được ánh xạ tới một hàm, đối tượng lớp hoặc mô-đun;"
+" nếu vậy, :mod:`!doctest` sẽ tìm kiếm các chuỗi tài liệu một cách đệ quy, "
+"sau đó sẽ được quét để kiểm tra."
+
+#: ../../library/doctest.rst:350
+#, fuzzy
+msgid ""
+"Any classes found are recursively searched similarly, to test docstrings in "
+"their contained methods and nested classes."
+msgstr ""
+"Bất kỳ lớp nào được tìm thấy đều được tìm kiếm đệ quy theo cách tương tự, để"
+" kiểm tra các chuỗi tài liệu trong các phương thức được chứa và các lớp lồng"
+" nhau của chúng."
+
+#: ../../library/doctest.rst:355
+#, fuzzy
+msgid ""
+"``doctest`` can only automatically discover classes and functions that are "
+"defined at the module level or inside other classes."
+msgstr ""
+"``doctest`` chỉ có thể tự động khám phá các lớp và hàm được xác định ở cấp "
+"mô-đun hoặc bên trong các lớp khác."
+
+#: ../../library/doctest.rst:358
+#, fuzzy
+msgid ""
+"Since nested classes and functions only exist when an outer function is "
+"called, they cannot be discovered. Define them outside to make them visible."
+msgstr ""
+"Vì các lớp và hàm lồng nhau chỉ tồn tại khi hàm bên ngoài được gọi nên chúng"
+" không thể được phát hiện. Xác định chúng bên ngoài để làm cho chúng hiển "
+"thị."
+
+#: ../../library/doctest.rst:364
+#, fuzzy
+msgid "How are Docstring Examples Recognized?"
+msgstr "Các ví dụ về chuỗi tài liệu được công nhận như thế nào?"
+
+#: ../../library/doctest.rst:366
+#, fuzzy
+msgid ""
+"In most cases a copy-and-paste of an interactive console session works fine,"
+" but doctest isn't trying to do an exact emulation of any specific Python "
+"shell."
+msgstr ""
+"Trong hầu hết các trường hợp, việc sao chép và dán phiên bảng điều khiển "
+"tương tác đều hoạt động tốt, nhưng doctest không cố gắng thực hiện mô phỏng "
+"chính xác bất kỳ trình bao Python cụ thể nào."
+
+#: ../../library/doctest.rst:371
+#, fuzzy
+msgid ""
+">>> # comments are ignored\n"
+">>> x = 12\n"
+">>> x\n"
+"12\n"
+">>> if x == 13:\n"
+"...     print(\"yes\")\n"
+"... else:\n"
+"...     print(\"no\")\n"
+"...     print(\"NO\")\n"
+"...     print(\"NO!!!\")\n"
+"...\n"
+"no\n"
+"NO\n"
+"NO!!!\n"
+">>>"
+msgstr ""
+">>> # comments bị bỏ qua\n"
+">>> x = 12\n"
+">>>x\n"
+"12\n"
+">>> nếu x == 13:\n"
+"... in(\"có\")\n"
+"... khác:\n"
+"... in(\"không\")\n"
+"... in(\"KHÔNG\")\n"
+"... in(\"KHÔNG!!!\")\n"
+"...\n"
+"không\n"
+"KHÔNG\n"
+"KHÔNG!!!\n"
+">>>"
+
+#: ../../library/doctest.rst:391
+#, fuzzy
+msgid ""
+"Any expected output must immediately follow the final ``'>>> '`` or ``'... "
+"'`` line containing the code, and the expected output (if any) extends to "
+"the next ``'>>> '`` or all-whitespace line."
+msgstr ""
+"Mọi đầu ra dự kiến phải ngay sau dòng ``'>>> '`` hoặc ``'... '`` cuối cùng "
+"chứa mã và đầu ra dự kiến (nếu có) sẽ mở rộng đến dòng ``'>>> '`` hoặc toàn "
+"khoảng trắng tiếp theo."
+
+#: ../../library/doctest.rst:395
+#, fuzzy
+msgid "The fine print:"
+msgstr "Bản in đẹp:"
+
+#: ../../library/doctest.rst:397
+#, fuzzy
+msgid ""
+"Expected output cannot contain an all-whitespace line, since such a line is "
+"taken to signal the end of expected output.  If expected output does contain"
+" a blank line, put ``<BLANKLINE>`` in your doctest example each place a "
+"blank line is expected."
+msgstr ""
+"Đầu ra dự kiến không thể chứa một dòng toàn khoảng trắng, vì dòng như vậy "
+"được dùng để báo hiệu sự kết thúc của đầu ra dự kiến.  Nếu đầu ra dự kiến "
+"​​chứa một dòng trống, hãy đặt ``<BLANKLINE>`` vào ví dụ tài liệu tốt nhất "
+"của bạn mỗi nơi dự kiến ​​sẽ có một dòng trống."
+
+#: ../../library/doctest.rst:402
+#, fuzzy
+msgid ""
+"All hard tab characters are expanded to spaces, using 8-column tab stops. "
+"Tabs in output generated by the tested code are not modified.  Because any "
+"hard tabs in the sample output *are* expanded, this means that if the code "
+"output includes hard tabs, the only way the doctest can pass is if the "
+":const:`NORMALIZE_WHITESPACE` option or :ref:`directive <doctest-"
+"directives>` is in effect. Alternatively, the test can be rewritten to "
+"capture the output and compare it to an expected value as part of the test."
+"  This handling of tabs in the source was arrived at through trial and "
+"error, and has proven to be the least error prone way of handling them.  It "
+"is possible to use a different algorithm for handling tabs by writing a "
+"custom :class:`DocTestParser` class."
+msgstr ""
+"Tất cả các ký tự tab cứng đều được mở rộng thành khoảng trắng, sử dụng các "
+"điểm dừng tab 8 cột. Các tab trong đầu ra do mã kiểm tra tạo ra không được "
+"sửa đổi.  Bởi vì bất kỳ tab cứng nào trong đầu ra mẫu *are* đều được mở "
+"rộng, điều này có nghĩa là nếu đầu ra mã bao gồm các tab cứng, cách duy nhất"
+" doctest có thể vượt qua là nếu tùy chọn :const:`NORMALIZE_WHITESPACE` hoặc "
+":ref:`directive <doctest-directives>` có hiệu lực. Ngoài ra, bài kiểm tra có"
+" thể được viết lại để nắm bắt kết quả đầu ra và so sánh nó với giá trị mong "
+"đợi như một phần của bài kiểm tra.  Việc xử lý các tab trong nguồn này được "
+"thực hiện thông qua quá trình thử và sai và đã được chứng minh là cách xử lý"
+" chúng ít xảy ra lỗi nhất.  Có thể sử dụng một thuật toán khác để xử lý các "
+"tab bằng cách viết một lớp :class:`DocTestParser` tùy chỉnh."
+
+#: ../../library/doctest.rst:414
+#, fuzzy
+msgid ""
+"Output to stdout is captured, but not output to stderr (exception tracebacks"
+" are captured via a different means)."
+msgstr ""
+"Đầu ra cho thiết bị xuất chuẩn được ghi lại, nhưng không xuất ra thiết bị "
+"xuất chuẩn (các dấu vết ngoại lệ được ghi lại thông qua một phương tiện "
+"khác)."
+
+#: ../../library/doctest.rst:417
+#, fuzzy
+msgid ""
+"If you continue a line via backslashing in an interactive session, or for "
+"any other reason use a backslash, you should use a raw docstring, which will"
+" preserve your backslashes exactly as you type them::"
+msgstr ""
+"Nếu bạn tiếp tục một dòng thông qua dấu gạch chéo ngược trong phiên tương "
+"tác hoặc vì bất kỳ lý do nào khác mà sử dụng dấu gạch chéo ngược, bạn nên sử"
+" dụng chuỗi tài liệu thô, chuỗi này sẽ giữ nguyên dấu gạch chéo ngược chính "
+"xác khi bạn nhập chúng::"
+
+#: ../../library/doctest.rst:421
+#, fuzzy
+msgid ""
+">>> def f(x):\n"
+"...     r'''Backslashes in a raw docstring: m\\n'''\n"
+"...\n"
+">>> print(f.__doc__)\n"
+"Backslashes in a raw docstring: m\\n"
+msgstr ""
+">>> định nghĩa f(x):\n"
+"... r'''Dấu gạch chéo ngược trong chuỗi tài liệu thô: m\\n'''\n"
+"...\n"
+">>> in(f.__doc__)\n"
+"Dấu gạch chéo ngược trong chuỗi tài liệu thô: m\\n"
+
+#: ../../library/doctest.rst:427
+#, fuzzy
+msgid ""
+"Otherwise, the backslash will be interpreted as part of the string. For "
+"example, the ``\\n`` above would be interpreted as a newline character.  "
+"Alternatively, you can double each backslash in the doctest version (and not"
+" use a raw string)::"
+msgstr ""
+"Nếu không, dấu gạch chéo ngược sẽ được hiểu là một phần của chuỗi. Ví dụ: "
+"``\\n`` ở trên sẽ được hiểu là ký tự dòng mới.  Ngoài ra, bạn có thể nhân "
+"đôi mỗi dấu gạch chéo ngược trong phiên bản doctest (và không sử dụng chuỗi "
+"thô)::"
+
+#: ../../library/doctest.rst:431
+#, fuzzy
+msgid ""
+">>> def f(x):\n"
+"...     '''Backslashes in a raw docstring: m\\\\n'''\n"
+"...\n"
+">>> print(f.__doc__)\n"
+"Backslashes in a raw docstring: m\\n"
+msgstr ""
+">>> định nghĩa f(x):\n"
+"... '''Dấu gạch chéo ngược trong chuỗi tài liệu thô: m\\\\n'''\n"
+"...\n"
+">>> in(f.__doc__)\n"
+"Dấu gạch chéo ngược trong chuỗi tài liệu thô: m\\n"
+
+#: ../../library/doctest.rst:437
+#, fuzzy
+msgid "The starting column doesn't matter::"
+msgstr "Cột bắt đầu không quan trọng::"
+
+#: ../../library/doctest.rst:439
+#, fuzzy
+msgid ""
+">>> assert \"Easy!\"\n"
+"      >>> import math\n"
+"          >>> math.floor(1.9)\n"
+"          1"
+msgstr ""
+">>> khẳng định \"Dễ dàng!\"\n"
+"      >>> nhập toán\n"
+"          >>> math.floor(1.9)\n"
+"          1"
+
+#: ../../library/doctest.rst:444
+#, fuzzy
+msgid ""
+"and as many leading whitespace characters are stripped from the expected "
+"output as appeared in the initial ``'>>> '`` line that started the example."
+msgstr ""
+"và nhiều ký tự khoảng trắng ở đầu bị loại bỏ khỏi kết quả mong đợi như đã "
+"xuất hiện trong dòng ``'>>> '`` ban đầu bắt đầu ví dụ."
+
+#: ../../library/doctest.rst:451
+#, fuzzy
+msgid "What's the Execution Context?"
+msgstr "Bối cảnh thực thi là gì?"
+
+#: ../../library/doctest.rst:453
+#, fuzzy
+msgid ""
+"By default, each time :mod:`!doctest` finds a docstring to test, it uses a "
+"*shallow copy* of :mod:`!M`'s globals, so that running tests doesn't change "
+"the module's real globals, and so that one test in :mod:`!M` can't leave "
+"behind crumbs that accidentally allow another test to work.  This means "
+"examples can freely use any names defined at top-level in :mod:`!M`, and "
+"names defined earlier in the docstring being run. Examples cannot see names "
+"defined in other docstrings."
+msgstr ""
+"Theo mặc định, mỗi lần :mod:`!doctest` tìm thấy một chuỗi tài liệu để kiểm "
+"tra, nó sẽ sử dụng một chuỗi tài liệu *shallow copy* trong số các toàn cục "
+"của :mod:`!M` để việc chạy thử nghiệm không làm thay đổi các chuỗi toàn cục "
+"thực của mô-đun và do đó một thử nghiệm trong :mod:`!M` không thể để lại các"
+" mẩu vụn vô tình cho phép một thử nghiệm khác hoạt động.  Điều này có nghĩa "
+"là các ví dụ có thể tự do sử dụng bất kỳ tên nào được xác định ở cấp cao "
+"nhất trong :mod:`!M` và các tên được xác định trước đó trong chuỗi tài liệu "
+"đang được chạy. Ví dụ không thể thấy tên được xác định trong các chuỗi tài "
+"liệu khác."
+
+#: ../../library/doctest.rst:461
+#, fuzzy
+msgid ""
+"You can force use of your own dict as the execution context by passing "
+"``globs=your_dict`` to :func:`testmod` or :func:`testfile` instead."
+msgstr ""
+"Thay vào đó, bạn có thể buộc sử dụng lệnh của riêng mình làm bối cảnh thực "
+"thi bằng cách chuyển ``globs=your_dict`` sang :func:`testmod` hoặc "
+":func:`testfile`."
+
+#: ../../library/doctest.rst:468
+#, fuzzy
+msgid "What About Exceptions?"
+msgstr "Điều gì về ngoại lệ?"
+
+#: ../../library/doctest.rst:470
+#, fuzzy
+msgid ""
+"No problem, provided that the traceback is the only output produced by the "
+"example:  just paste in the traceback. [#]_ Since tracebacks contain details"
+" that are likely to change rapidly (for example, exact file paths and line "
+"numbers), this is one case where doctest works hard to be flexible in what "
+"it accepts."
+msgstr ""
+"Không vấn đề gì, miễn là truy nguyên là đầu ra duy nhất được tạo ra bởi ví "
+"dụ: chỉ cần dán vào truy nguyên. [#]_ Vì các dấu vết chứa các chi tiết có "
+"khả năng thay đổi nhanh chóng (ví dụ: đường dẫn tệp và số dòng chính xác), "
+"đây là một trường hợp mà doctest cố gắng hết sức để linh hoạt trong những gì"
+" nó chấp nhận."
+
+#: ../../library/doctest.rst:476
+#, fuzzy
+msgid "Simple example::"
+msgstr "Ví dụ đơn giản::"
+
+#: ../../library/doctest.rst:478
+#, fuzzy
+msgid ""
+">>> [1, 2, 3].remove(42)\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"ValueError: list.remove(x): x not in list"
+msgstr ""
+">>> [1, 2, 3].remove(42)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"ValueError: list.remove(x): x không có trong danh sách"
+
+#: ../../library/doctest.rst:483
+#, fuzzy
+msgid ""
+"That doctest succeeds if :exc:`ValueError` is raised, with the "
+"``list.remove(x): x not in list`` detail as shown."
+msgstr ""
+"Doctest đó thành công nếu :exc:`ValueError` được nâng lên, với chi tiết "
+"``list.remove(x): x not in list`` như được hiển thị."
+
+#: ../../library/doctest.rst:486
+#, fuzzy
+msgid ""
+"The expected output for an exception must start with a traceback header, "
+"which may be either of the following two lines, indented the same as the "
+"first line of the example::"
+msgstr ""
+"Đầu ra dự kiến cho một ngoại lệ phải bắt đầu bằng tiêu đề truy nguyên, có "
+"thể là một trong hai dòng sau, được thụt lề giống như dòng đầu tiên của ví "
+"dụ::"
+
+#: ../../library/doctest.rst:490
+#, fuzzy
+msgid ""
+"Traceback (most recent call last):\n"
+"Traceback (innermost last):"
+msgstr ""
+"Traceback (cuộc gọi gần đây nhất):\n"
+"Traceback (trong cùng cuối cùng):"
+
+#: ../../library/doctest.rst:493
+#, fuzzy
+msgid ""
+"The traceback header is followed by an optional traceback stack, whose "
+"contents are ignored by doctest.  The traceback stack is typically omitted, "
+"or copied verbatim from an interactive session."
+msgstr ""
+"Tiêu đề truy nguyên được theo sau bởi một ngăn xếp truy nguyên tùy chọn, nội"
+" dung của nó bị doctest bỏ qua.  Ngăn xếp truy nguyên thường bị bỏ qua hoặc "
+"được sao chép nguyên văn từ một phiên tương tác."
+
+#: ../../library/doctest.rst:497
+#, fuzzy
+msgid ""
+"The traceback stack is followed by the most interesting part: the line(s) "
+"containing the exception type and detail.  This is usually the last line of "
+"a traceback, but can extend across multiple lines if the exception has a "
+"multi-line detail::"
+msgstr ""
+"Tiếp theo ngăn xếp truy nguyên là phần thú vị nhất: (các) dòng chứa loại "
+"ngoại lệ và chi tiết.  Đây thường là dòng cuối cùng của truy nguyên, nhưng "
+"có thể mở rộng trên nhiều dòng nếu ngoại lệ có chi tiết nhiều dòng::"
+
+#: ../../library/doctest.rst:502
+#, fuzzy
+msgid ""
+">>> raise ValueError('multi\\n    line\\ndetail')\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"ValueError: multi\n"
+"    line\n"
+"detail"
+msgstr ""
+">>> tăng ValueError('multi\\n line\\ndetail')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"Giá trịLỗi: đa\n"
+"    dòng\n"
+"chi tiết"
+
+#: ../../library/doctest.rst:509
+#, fuzzy
+msgid ""
+"The last three lines (starting with :exc:`ValueError`) are compared against "
+"the exception's type and detail, and the rest are ignored."
+msgstr ""
+"Ba dòng cuối cùng (bắt đầu bằng :exc:`ValueError`) được so sánh với loại và "
+"chi tiết của ngoại lệ, phần còn lại bị bỏ qua."
+
+#: ../../library/doctest.rst:512
+#, fuzzy
+msgid ""
+"Best practice is to omit the traceback stack, unless it adds significant "
+"documentation value to the example.  So the last example is probably better "
+"as::"
+msgstr ""
+"Cách thực hành tốt nhất là bỏ qua ngăn xếp truy nguyên, trừ khi nó bổ sung "
+"thêm giá trị tài liệu quan trọng vào ví dụ.  Vì vậy, ví dụ cuối cùng có lẽ "
+"tốt hơn là::"
+
+#: ../../library/doctest.rst:515
+#, fuzzy
+msgid ""
+">>> raise ValueError('multi\\n    line\\ndetail')\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"ValueError: multi\n"
+"    line\n"
+"detail"
+msgstr ""
+">>> tăng ValueError('multi\\n line\\ndetail')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"    ...\n"
+"Giá trịLỗi: đa\n"
+"    dòng\n"
+"chi tiết"
+
+#: ../../library/doctest.rst:522
+#, fuzzy
+msgid ""
+"Note that tracebacks are treated very specially.  In particular, in the "
+"rewritten example, the use of ``...`` is independent of doctest's "
+":const:`ELLIPSIS` option.  The ellipsis in that example could be left out, "
+"or could just as well be three (or three hundred) commas or digits, or an "
+"indented transcript of a Monty Python skit."
+msgstr ""
+"Lưu ý rằng việc truy nguyên được xử lý rất đặc biệt.  Đặc biệt, trong ví dụ "
+"viết lại, việc sử dụng ``...`` độc lập với tùy chọn :const:`ELLIPSIS` của "
+"doctest.  Dấu chấm lửng trong ví dụ đó có thể bị bỏ đi hoặc cũng có thể là "
+"ba (hoặc ba trăm) dấu phẩy hoặc chữ số hoặc bản ghi thụt lề của một tiểu "
+"phẩm Monty Python."
+
+#: ../../library/doctest.rst:528
+#, fuzzy
+msgid "Some details you should read once, but won't need to remember:"
+msgstr "Một số chi tiết bạn nên đọc một lần nhưng sẽ không cần phải nhớ:"
+
+#: ../../library/doctest.rst:530
+#, fuzzy
+msgid ""
+"Doctest can't guess whether your expected output came from an exception "
+"traceback or from ordinary printing.  So, e.g., an example that expects "
+"``ValueError: 42 is prime`` will pass whether :exc:`ValueError` is actually "
+"raised or if the example merely prints that traceback text.  In practice, "
+"ordinary output rarely begins with a traceback header line, so this doesn't "
+"create real problems."
+msgstr ""
+"Doctest không thể đoán liệu kết quả mong đợi của bạn đến từ việc truy nguyên"
+" ngoại lệ hay từ quá trình in thông thường.  Vì vậy, ví dụ: một ví dụ mong "
+"đợi ``ValueError: 42 is prime`` sẽ vượt qua dù :exc:`ValueError` có thực sự "
+"được nâng lên hay nếu ví dụ đó chỉ in văn bản truy nguyên đó.  Trong thực "
+"tế, đầu ra thông thường hiếm khi bắt đầu bằng dòng tiêu đề truy ngược, do đó"
+" điều này không tạo ra vấn đề thực sự."
+
+#: ../../library/doctest.rst:537
+#, fuzzy
+msgid ""
+"Each line of the traceback stack (if present) must be indented further than "
+"the first line of the example, *or* start with a non-alphanumeric character."
+" The first line following the traceback header indented the same and "
+"starting with an alphanumeric is taken to be the start of the exception "
+"detail.  Of course this does the right thing for genuine tracebacks."
+msgstr ""
+"Mỗi dòng của ngăn xếp truy ngược (nếu có) phải được thụt lề xa hơn dòng đầu "
+"tiên của ví dụ, *or* bắt đầu bằng ký tự không phải chữ và số. Dòng đầu tiên "
+"sau tiêu đề truy nguyên được thụt lề giống nhau và bắt đầu bằng chữ và số "
+"được coi là phần bắt đầu của chi tiết ngoại lệ.  Tất nhiên điều này là đúng "
+"đối với các hoạt động truy nguyên chính hãng."
+
+#: ../../library/doctest.rst:543
+#, fuzzy
+msgid ""
+"When the :const:`IGNORE_EXCEPTION_DETAIL` doctest option is specified, "
+"everything following the leftmost colon and any module information in the "
+"exception name is ignored."
+msgstr ""
+"Khi tùy chọn doctest :const:`IGNORE_EXCEPTION_DETAIL` được chỉ định, mọi thứ"
+" sau dấu hai chấm ngoài cùng bên trái và mọi thông tin mô-đun trong tên "
+"ngoại lệ đều bị bỏ qua."
+
+#: ../../library/doctest.rst:547
+#, fuzzy
+msgid ""
+"The interactive shell omits the traceback header line for some "
+":exc:`SyntaxError`\\ s.  But doctest uses the traceback header line to "
+"distinguish exceptions from non-exceptions.  So in the rare case where you "
+"need to test a :exc:`!SyntaxError` that omits the traceback header, you will"
+" need to manually add the traceback header line to your test example."
+msgstr ""
+"Shell tương tác bỏ qua dòng tiêu đề truy nguyên đối với một số "
+":exc:`SyntaxError`\\ s.  Nhưng doctest sử dụng dòng tiêu đề truy nguyên để "
+"phân biệt các trường hợp ngoại lệ với không phải ngoại lệ.  Vì vậy, trong "
+"trường hợp hiếm hoi khi bạn cần kiểm tra một :exc:`!SyntaxError` bỏ qua tiêu"
+" đề traceback, bạn sẽ cần thêm dòng tiêu đề traceback vào ví dụ kiểm tra của"
+" mình theo cách thủ công."
+
+#: ../../library/doctest.rst:555
+#, fuzzy
+msgid ""
+"For some exceptions, Python displays the position of the error using ``^`` "
+"markers and tildes::"
+msgstr ""
+"Đối với một số trường hợp ngoại lệ, Python hiển thị vị trí lỗi bằng cách sử "
+"dụng dấu ``^`` và dấu ngã::"
+
+#: ../../library/doctest.rst:558
+#, fuzzy
+msgid ""
+">>> 1 + None\n"
+"  File \"<stdin>\", line 1\n"
+"    1 + None\n"
+"    ~~^~~~~~\n"
+"TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'"
+msgstr ""
+">>> 1 + Không\n"
+"  Tệp \"<stdin>\", dòng 1\n"
+"    1 + Không\n"
+"    ~~^~~~~~~\n"
+"TypeError: (các) loại toán hạng không được hỗ trợ cho +: 'int' và 'NoneType'"
+
+#: ../../library/doctest.rst:564
+#, fuzzy
+msgid ""
+"Since the lines showing the position of the error come before the exception "
+"type and detail, they are not checked by doctest.  For example, the "
+"following test would pass, even though it puts the ``^`` marker in the wrong"
+" location::"
+msgstr ""
+"Vì các dòng hiển thị vị trí lỗi xuất hiện trước loại và chi tiết ngoại lệ "
+"nên chúng không được doctest kiểm tra.  Ví dụ: bài kiểm tra sau sẽ đạt, mặc "
+"dù nó đặt điểm đánh dấu ``^`` ở sai vị trí::"
+
+#: ../../library/doctest.rst:568
+#, fuzzy
+msgid ""
+">>> 1 + None\n"
+"  File \"<stdin>\", line 1\n"
+"    1 + None\n"
+"    ^~~~~~~~\n"
+"TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'"
+msgstr ""
+">>> 1 + Không\n"
+"  Tệp \"<stdin>\", dòng 1\n"
+"    1 + Không\n"
+"    ^~~~~~~~~\n"
+"TypeError: (các) loại toán hạng không được hỗ trợ cho +: 'int' và 'NoneType'"
+
+#: ../../library/doctest.rst:579
+#, fuzzy
+msgid "Option Flags"
+msgstr "Cờ tùy chọn"
+
+#: ../../library/doctest.rst:581
+#, fuzzy
+msgid ""
+"A number of option flags control various aspects of doctest's behavior. "
+"Symbolic names for the flags are supplied as module constants, which can be "
+":ref:`bitwise ORed <bitwise>` together and passed to various functions. The "
+"names can also be used in :ref:`doctest directives <doctest-directives>`, "
+"and may be passed to the doctest command line interface via the ``-o`` "
+"option."
+msgstr ""
+"Một số cờ tùy chọn kiểm soát các khía cạnh khác nhau trong hành vi của "
+"doctest. Tên tượng trưng cho các cờ được cung cấp dưới dạng hằng số mô-đun, "
+"có thể là :ref:`bitwise ORed <bitwise>` cùng nhau và được chuyển đến các hàm"
+" khác nhau. Tên cũng có thể được sử dụng trong :ref:`doctest directives "
+"<doctest-directives>` và có thể được chuyển đến giao diện dòng lệnh doctest "
+"thông qua tùy chọn ``-o``."
+
+#: ../../library/doctest.rst:587
+#, fuzzy
+msgid ""
+"The first group of options define test semantics, controlling aspects of how"
+" doctest decides whether actual output matches an example's expected output:"
+msgstr ""
+"Nhóm tùy chọn đầu tiên xác định ngữ nghĩa kiểm tra, kiểm soát các khía cạnh "
+"về cách doctest quyết định xem đầu ra thực tế có khớp với đầu ra dự kiến "
+"​​của một ví dụ hay không:"
+
+#: ../../library/doctest.rst:593
+#, fuzzy
+msgid ""
+"By default, if an expected output block contains just ``1``, an actual "
+"output block containing just ``1`` or just ``True`` is considered to be a "
+"match, and similarly for ``0`` versus ``False``.  When "
+":const:`DONT_ACCEPT_TRUE_FOR_1` is specified, neither substitution is "
+"allowed.  The default behavior caters to that Python changed the return type"
+" of many functions from integer to boolean; doctests expecting \"little "
+"integer\" output still work in these cases.  This option will probably go "
+"away, but not for several years."
+msgstr ""
+"Theo mặc định, nếu khối đầu ra dự kiến chỉ chứa ``1`` thì khối đầu ra thực "
+"tế chỉ chứa ``1`` hoặc chỉ ``True`` được coi là phù hợp và tương tự đối với "
+"``0`` so với ``False``.  Khi :const:`DONT_ACCEPT_TRUE_FOR_1` được chỉ định, "
+"không được phép thay thế.  Hành vi mặc định phục vụ cho việc Python đã thay "
+"đổi kiểu trả về của nhiều hàm từ số nguyên sang boolean; doctests mong đợi "
+"đầu ra \"số nguyên nhỏ\" vẫn hoạt động trong những trường hợp này.  Tùy chọn"
+" này có thể sẽ biến mất, nhưng không phải trong vài năm nữa."
+
+#: ../../library/doctest.rst:605
+#, fuzzy
+msgid ""
+"By default, if an expected output block contains a line containing only the "
+"string ``<BLANKLINE>``, then that line will match a blank line in the actual"
+" output.  Because a genuinely blank line delimits the expected output, this "
+"is the only way to communicate that a blank line is expected.  When "
+":const:`DONT_ACCEPT_BLANKLINE` is specified, this substitution is not "
+"allowed."
+msgstr ""
+"Theo mặc định, nếu khối đầu ra dự kiến chứa một dòng chỉ chứa chuỗi "
+"``<BLANKLINE>`` thì dòng đó sẽ khớp với một dòng trống trong đầu ra thực tế."
+"  Bởi vì một dòng trống thực sự sẽ phân định kết quả đầu ra dự kiến, đây là "
+"cách duy nhất để thông báo rằng một dòng trống được mong đợi.  Khi "
+":const:`DONT_ACCEPT_BLANKLINE` được chỉ định, sự thay thế này không được "
+"phép."
+
+#: ../../library/doctest.rst:614
+#, fuzzy
+msgid ""
+"When specified, all sequences of whitespace (blanks and newlines) are "
+"treated as equal.  Any sequence of whitespace within the expected output "
+"will match any sequence of whitespace within the actual output. By default, "
+"whitespace must match exactly. :const:`NORMALIZE_WHITESPACE` is especially "
+"useful when a line of expected output is very long, and you want to wrap it "
+"across multiple lines in your source."
+msgstr ""
+"Khi được chỉ định, tất cả các chuỗi khoảng trắng (khoảng trống và dòng mới) "
+"đều được coi là bằng nhau.  Bất kỳ chuỗi khoảng trắng nào trong kết quả đầu "
+"ra dự kiến ​​sẽ khớp với bất kỳ chuỗi khoảng trắng nào trong kết quả đầu ra "
+"thực tế. Theo mặc định, khoảng trắng phải khớp chính xác. "
+":const:`NORMALIZE_WHITESPACE` đặc biệt hữu ích khi một dòng đầu ra dự kiến "
+"​​rất dài và bạn muốn gói nó thành nhiều dòng trong nguồn của mình."
+
+#: ../../library/doctest.rst:625
+#, fuzzy
+msgid ""
+"When specified, an ellipsis marker (``...``) in the expected output can "
+"match any substring in the actual output.  This includes substrings that "
+"span line boundaries, and empty substrings, so it's best to keep usage of "
+"this simple. Complicated uses can lead to the same kinds of \"oops, it "
+"matched too much!\" surprises that ``.*`` is prone to in regular "
+"expressions."
+msgstr ""
+"Khi được chỉ định, dấu chấm lửng (``...``) trong đầu ra dự kiến có thể khớp "
+"với bất kỳ chuỗi con nào trong đầu ra thực tế.  Điều này bao gồm các chuỗi "
+"con mở rộng ranh giới dòng và các chuỗi con trống, vì vậy tốt nhất bạn nên "
+"sử dụng chuỗi này một cách đơn giản. Việc sử dụng phức tạp có thể dẫn đến "
+"cùng một kiểu \"ôi, nó khớp quá nhiều!\" những điều ngạc nhiên mà ``.*`` "
+"thường gặp phải trong các biểu thức thông thường."
+
+#: ../../library/doctest.rst:634
+#, fuzzy
+msgid ""
+"When specified, doctests expecting exceptions pass so long as an exception "
+"of the expected type is raised, even if the details (message and fully "
+"qualified exception name) don't match."
+msgstr ""
+"Khi được chỉ định, các doctest mong đợi ngoại lệ sẽ vượt qua miễn là ngoại "
+"lệ của loại dự kiến ​​được nêu ra, ngay cả khi các chi tiết (thông báo và "
+"tên ngoại lệ đủ điều kiện) không khớp."
+
+#: ../../library/doctest.rst:638
+#, fuzzy
+msgid ""
+"For example, an example expecting ``ValueError: 42`` will pass if the actual"
+" exception raised is ``ValueError: 3*14``, but will fail if, say, a "
+":exc:`TypeError` is raised instead. It will also ignore any fully qualified "
+"name included before the exception class, which can vary between "
+"implementations and versions of Python and the code/libraries in use. Hence,"
+" all three of these variations will work with the flag specified:"
+msgstr ""
+"Ví dụ: một ví dụ mong đợi ``ValueError: 42`` sẽ vượt qua nếu ngoại lệ thực "
+"tế được đưa ra là ``ValueError: 3*14``, nhưng sẽ thất bại nếu thay vào đó, "
+"một :exc:`TypeError` được đưa ra. Nó cũng sẽ bỏ qua mọi tên đủ điều kiện "
+"được đưa vào trước lớp ngoại lệ, tên này có thể khác nhau giữa các cách "
+"triển khai và phiên bản Python cũng như mã/thư viện đang sử dụng. Do đó, cả "
+"ba biến thể này sẽ hoạt động với cờ được chỉ định:"
+
+#: ../../library/doctest.rst:646
+#, fuzzy
+msgid ""
+">>> raise Exception('message')\n"
+"Traceback (most recent call last):\n"
+"Exception: message\n"
+"\n"
+">>> raise Exception('message')\n"
+"Traceback (most recent call last):\n"
+"builtins.Exception: message\n"
+"\n"
+">>> raise Exception('message')\n"
+"Traceback (most recent call last):\n"
+"__main__.Exception: message"
+msgstr ""
+">>> tăng Ngoại lệ ('tin nhắn')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"Ngoại lệ: tin nhắn\n"
+"\n"
+">>> tăng Ngoại lệ ('tin nhắn')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"nội dung.Exception: tin nhắn\n"
+"\n"
+">>> tăng Ngoại lệ ('tin nhắn')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"__main__.Ngoại lệ: tin nhắn"
+
+#: ../../library/doctest.rst:660
+#, fuzzy
+msgid ""
+"Note that :const:`ELLIPSIS` can also be used to ignore the details of the "
+"exception message, but such a test may still fail based on whether the "
+"module name is present or matches exactly."
+msgstr ""
+"Lưu ý rằng :const:`ELLIPSIS` cũng có thể được sử dụng để bỏ qua các chi tiết"
+" của thông báo ngoại lệ, nhưng việc kiểm tra như vậy vẫn có thể thất bại dựa"
+" trên việc tên mô-đun có xuất hiện hay khớp chính xác hay không."
+
+#: ../../library/doctest.rst:664
+#, fuzzy
+msgid ""
+":const:`IGNORE_EXCEPTION_DETAIL` now also ignores any information relating "
+"to the module containing the exception under test."
+msgstr ""
+":const:`IGNORE_EXCEPTION_DETAIL` hiện cũng bỏ qua mọi thông tin liên quan "
+"đến mô-đun chứa ngoại lệ đang được thử nghiệm."
+
+#: ../../library/doctest.rst:671
+#, fuzzy
+msgid ""
+"When specified, do not run the example at all.  This can be useful in "
+"contexts where doctest examples serve as both documentation and test cases, "
+"and an example should be included for documentation purposes, but should not"
+" be checked.  E.g., the example's output might be random; or the example "
+"might depend on resources which would be unavailable to the test driver."
+msgstr ""
+"Khi được chỉ định, không chạy ví dụ nào cả.  Điều này có thể hữu ích trong "
+"các bối cảnh trong đó các ví dụ doctest đóng vai trò vừa là tài liệu vừa là "
+"trường hợp kiểm thử, đồng thời nên đưa vào một ví dụ cho mục đích ghi lại "
+"tài liệu nhưng không nên kiểm tra.  Ví dụ: đầu ra của ví dụ có thể là ngẫu "
+"nhiên; hoặc ví dụ có thể phụ thuộc vào các tài nguyên không có sẵn cho trình"
+" điều khiển thử nghiệm."
+
+#: ../../library/doctest.rst:677
+#, fuzzy
+msgid ""
+"The SKIP flag can also be used for temporarily \"commenting out\" examples."
+msgstr "Cờ SKIP cũng có thể được sử dụng cho các ví dụ \"bình luận\" tạm thời."
+
+#: ../../library/doctest.rst:682
+#, fuzzy
+msgid "A bitmask or'ing together all the comparison flags above."
+msgstr "Một bitmask hoặc kết hợp tất cả các cờ so sánh ở trên."
+
+#: ../../library/doctest.rst:684
+#, fuzzy
+msgid "The second group of options controls how test failures are reported:"
+msgstr "Nhóm tùy chọn thứ hai kiểm soát cách báo cáo lỗi kiểm tra:"
+
+#: ../../library/doctest.rst:689
+#, fuzzy
+msgid ""
+"When specified, failures that involve multi-line expected and actual outputs"
+" are displayed using a unified diff."
+msgstr ""
+"Khi được chỉ định, các lỗi liên quan đến đầu ra thực tế và dự kiến nhiều "
+"dòng sẽ được hiển thị bằng cách sử dụng khác biệt thống nhất."
+
+#: ../../library/doctest.rst:695
+#, fuzzy
+msgid ""
+"When specified, failures that involve multi-line expected and actual outputs"
+" will be displayed using a context diff."
+msgstr ""
+"Khi được chỉ định, các lỗi liên quan đến đầu ra thực tế và dự kiến nhiều "
+"dòng sẽ được hiển thị bằng cách sử dụng ngữ cảnh khác nhau."
+
+#: ../../library/doctest.rst:701
+#, fuzzy
+msgid ""
+"When specified, differences are computed by ``difflib.Differ``, using the "
+"same algorithm as the popular :file:`ndiff.py` utility. This is the only "
+"method that marks differences within lines as well as across lines.  For "
+"example, if a line of expected output contains digit ``1`` where actual "
+"output contains letter ``l``, a line is inserted with a caret marking the "
+"mismatching column positions."
+msgstr ""
+"Khi được chỉ định, sự khác biệt sẽ được ``difflib.Differ`` tính toán, sử "
+"dụng thuật toán tương tự như tiện ích :file:`ndiff.py` phổ biến. Đây là "
+"phương pháp duy nhất đánh dấu sự khác biệt giữa các dòng cũng như giữa các "
+"dòng.  Ví dụ: nếu một dòng đầu ra dự kiến ​​chứa chữ số ``1`` trong đó đầu "
+"ra thực tế chứa chữ cái ``l``, thì một dòng sẽ được chèn bằng dấu mũ đánh "
+"dấu các vị trí cột không khớp."
+
+#: ../../library/doctest.rst:710
+#, fuzzy
+msgid ""
+"When specified, display the first failing example in each doctest, but "
+"suppress output for all remaining examples.  This will prevent doctest from "
+"reporting correct examples that break because of earlier failures; but it "
+"might also hide incorrect examples that fail independently of the first "
+"failure.  When :const:`REPORT_ONLY_FIRST_FAILURE` is specified, the "
+"remaining examples are still run, and still count towards the total number "
+"of failures reported; only the output is suppressed."
+msgstr ""
+"Khi được chỉ định, hãy hiển thị ví dụ bị lỗi đầu tiên trong mỗi doctest, "
+"nhưng chặn đầu ra đối với tất cả các ví dụ còn lại.  Điều này sẽ ngăn "
+"doctest báo cáo các ví dụ chính xác bị hỏng do lỗi trước đó; nhưng nó cũng "
+"có thể che giấu các ví dụ không chính xác bị lỗi độc lập với lỗi đầu tiên.  "
+"Khi :const:`REPORT_ONLY_FIRST_FAILURE` được chỉ định, các mẫu còn lại vẫn "
+"chạy và vẫn được tính vào tổng số lỗi được báo cáo; chỉ có đầu ra bị triệt "
+"tiêu."
+
+#: ../../library/doctest.rst:721
+#, fuzzy
+msgid ""
+"When specified, exit after the first failing example and don't attempt to "
+"run the remaining examples. Thus, the number of failures reported will be at"
+" most 1.  This flag may be useful during debugging, since examples after the"
+" first failure won't even produce debugging output."
+msgstr ""
+"Khi được chỉ định, hãy thoát sau ví dụ lỗi đầu tiên và không cố chạy các ví "
+"dụ còn lại. Do đó, số lỗi được báo cáo sẽ nhiều nhất là 1. Cờ này có thể hữu"
+" ích trong quá trình gỡ lỗi, vì các ví dụ sau lỗi đầu tiên thậm chí sẽ không"
+" tạo ra kết quả gỡ lỗi."
+
+#: ../../library/doctest.rst:729
+#, fuzzy
+msgid "A bitmask or'ing together all the reporting flags above."
+msgstr "Một bitmask hoặc kết hợp tất cả các cờ báo cáo ở trên."
+
+#: ../../library/doctest.rst:732
+#, fuzzy
+msgid ""
+"There is also a way to register new option flag names, though this isn't "
+"useful unless you intend to extend :mod:`!doctest` internals via "
+"subclassing:"
+msgstr ""
+"Ngoài ra còn có một cách để đăng ký tên cờ tùy chọn mới, mặc dù điều này "
+"không hữu ích trừ khi bạn có ý định mở rộng nội bộ :mod:`!doctest` thông qua"
+" phân lớp:"
+
+#: ../../library/doctest.rst:738
+#, fuzzy
+msgid ""
+"Create a new option flag with a given name, and return the new flag's "
+"integer value.  :func:`register_optionflag` can be used when subclassing "
+":class:`OutputChecker` or :class:`DocTestRunner` to create new options that "
+"are supported by your subclasses.  :func:`register_optionflag` should always"
+" be called using the following idiom::"
+msgstr ""
+"Tạo cờ tùy chọn mới với tên đã cho và trả về giá trị số nguyên của cờ mới.  "
+":func:`register_optionflag` có thể được sử dụng khi phân lớp "
+":class:`OutputChecker` hoặc :class:`DocTestRunner` để tạo các tùy chọn mới "
+"được các lớp con của bạn hỗ trợ.  :func:`register_optionflag` phải luôn được"
+" gọi bằng cách sử dụng thành ngữ sau ::"
+
+#: ../../library/doctest.rst:744
+#, fuzzy
+msgid "MY_FLAG = register_optionflag('MY_FLAG')"
+msgstr "MY_FLAG = register_optionflag('MY_FLAG')"
+
+#: ../../library/doctest.rst:754
+#, fuzzy
+msgid "Directives"
+msgstr "Chỉ thị"
+
+#: ../../library/doctest.rst:756
+#, fuzzy
+msgid ""
+"Doctest directives may be used to modify the :ref:`option flags <doctest-"
+"options>` for an individual example.  Doctest directives are special Python "
+"comments following an example's source code:"
+msgstr ""
+"Các chỉ thị Doctest có thể được sử dụng để sửa đổi :ref:`option flags "
+"<doctest-options>` cho một ví dụ riêng lẻ.  Các lệnh Doctest là các nhận xét"
+" Python đặc biệt theo mã nguồn của một ví dụ:"
+
+#: ../../library/doctest.rst:767
+#, fuzzy
+msgid ""
+"Whitespace is not allowed between the ``+`` or ``-`` and the directive "
+"option name.  The directive option name can be any of the option flag names "
+"explained above."
+msgstr ""
+"Không được phép có khoảng trắng giữa ``+`` hoặc ``-`` và tên tùy chọn chỉ "
+"thị.  Tên tùy chọn chỉ thị có thể là bất kỳ tên cờ tùy chọn nào được giải "
+"thích ở trên."
+
+#: ../../library/doctest.rst:771
+#, fuzzy
+msgid ""
+"An example's doctest directives modify doctest's behavior for that single "
+"example.  Use ``+`` to enable the named behavior, or ``-`` to disable it."
+msgstr ""
+"Các chỉ thị doctest của một ví dụ sửa đổi hành vi của doctest cho ví dụ đó."
+"  Sử dụng ``+`` để kích hoạt hành vi được đặt tên hoặc ``-`` để tắt nó."
+
+#: ../../library/doctest.rst:774
+#, fuzzy
+msgid "For example, this test passes:"
+msgstr "Ví dụ: bài kiểm tra này đạt:"
+
+#: ../../library/doctest.rst:776
+#, fuzzy
+msgid ""
+">>> print(list(range(20)))  # doctest: +NORMALIZE_WHITESPACE\n"
+"[0,   1,  2,  3,  4,  5,  6,  7,  8,  9,\n"
+"10,  11, 12, 13, 14, 15, 16, 17, 18, 19]"
+msgstr ""
+">>> print(list(range(20))) # doctest: +NORMALIZE_WHITESPACE\n"
+"[0, 1, 2, 3, 4, 5, 6, 7, 8, 9,\n"
+"10, 11, 12, 13, 14, 15, 16, 17, 18, 19]"
+
+#: ../../library/doctest.rst:783
+#, fuzzy
+msgid ""
+"Without the directive it would fail, both because the actual output doesn't "
+"have two blanks before the single-digit list elements, and because the "
+"actual output is on a single line.  This test also passes, and also requires"
+" a directive to do so:"
+msgstr ""
+"Nếu không có lệnh này thì nó sẽ thất bại, cả vì đầu ra thực tế không có hai "
+"khoảng trống trước các phần tử danh sách một chữ số và vì đầu ra thực tế nằm"
+" trên một dòng.  Bài kiểm tra này cũng vượt qua và cũng yêu cầu chỉ thị để "
+"thực hiện:"
+
+#: ../../library/doctest.rst:788
+#, fuzzy
+msgid ""
+">>> print(list(range(20)))  # doctest: +ELLIPSIS\n"
+"[0, 1, ..., 18, 19]"
+msgstr ""
+">>> print(list(range(20))) # doctest: +ELLIPSIS\n"
+"[0, 1, ..., 18, 19]"
+
+#: ../../library/doctest.rst:794
+#, fuzzy
+msgid ""
+"Multiple directives can be used on a single physical line, separated by "
+"commas:"
+msgstr ""
+"Nhiều lệnh có thể được sử dụng trên một dòng vật lý, được phân tách bằng dấu"
+" phẩy:"
+
+#: ../../library/doctest.rst:797
+#, fuzzy
+msgid ""
+">>> print(list(range(20)))  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE\n"
+"[0,    1, ...,   18,    19]"
+msgstr ""
+">>> print(list(range(20))) # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE\n"
+"[0, 1, ..., 18, 19]"
+
+#: ../../library/doctest.rst:803
+#, fuzzy
+msgid ""
+"If multiple directive comments are used for a single example, then they are "
+"combined:"
+msgstr ""
+"Nếu nhiều nhận xét chỉ thị được sử dụng cho một ví dụ thì chúng sẽ được kết "
+"hợp:"
+
+#: ../../library/doctest.rst:806
+#, fuzzy
+msgid ""
+">>> print(list(range(20)))  # doctest: +ELLIPSIS\n"
+"...                         # doctest: +NORMALIZE_WHITESPACE\n"
+"[0,    1, ...,   18,    19]"
+msgstr ""
+">>> print(list(range(20))) # doctest: +ELLIPSIS\n"
+"... # doctest: +NORMALIZE_WHITESPACE\n"
+"[0, 1, ..., 18, 19]"
+
+#: ../../library/doctest.rst:813
+#, fuzzy
+msgid ""
+"As the previous example shows, you can add ``...`` lines to your example "
+"containing only directives.  This can be useful when an example is too long "
+"for a directive to comfortably fit on the same line:"
+msgstr ""
+"Như ví dụ trước cho thấy, bạn có thể thêm các dòng ``...`` vào ví dụ chỉ "
+"chứa các lệnh.  Điều này có thể hữu ích khi một ví dụ quá dài để một lệnh có"
+" thể vừa vặn trên cùng một dòng:"
+
+#: ../../library/doctest.rst:817
+#, fuzzy
+msgid ""
+">>> print(list(range(5)) + list(range(10, 20)) + list(range(30, 40)))\n"
+"... # doctest: +ELLIPSIS\n"
+"[0, ..., 4, 10, ..., 19, 30, ..., 39]"
+msgstr ""
+">>> print(list(range(5)) + list(range(10, 20)) + list(range(30, 40)))\n"
+"... # doctest: +ELLIPSIS\n"
+"[0, ..., 4, 10, ..., 19, 30, ..., 39]"
+
+#: ../../library/doctest.rst:824
+#, fuzzy
+msgid ""
+"Note that since all options are disabled by default, and directives apply "
+"only to the example they appear in, enabling options (via ``+`` in a "
+"directive) is usually the only meaningful choice.  However, option flags can"
+" also be passed to functions that run doctests, establishing different "
+"defaults.  In such cases, disabling an option via ``-`` in a directive can "
+"be useful."
+msgstr ""
+"Lưu ý rằng vì tất cả các tùy chọn đều bị tắt theo mặc định và các lệnh chỉ "
+"áp dụng cho ví dụ mà chúng xuất hiện, nên việc bật các tùy chọn (thông qua "
+"``+`` trong một lệnh) thường là lựa chọn có ý nghĩa duy nhất.  Tuy nhiên, cờ"
+" tùy chọn cũng có thể được chuyển đến các hàm chạy doctest, thiết lập các "
+"giá trị mặc định khác nhau.  Trong những trường hợp như vậy, việc tắt tùy "
+"chọn qua ``-`` trong một lệnh có thể hữu ích."
+
+#: ../../library/doctest.rst:834
+#, fuzzy
+msgid "Warnings"
+msgstr "Cảnh báo"
+
+#: ../../library/doctest.rst:836
+#, fuzzy
+msgid ""
+":mod:`!doctest` is serious about requiring exact matches in expected output."
+"  If even a single character doesn't match, the test fails.  This will "
+"probably surprise you a few times, as you learn exactly what Python does and"
+" doesn't guarantee about output.  For example, when printing a set, Python "
+"doesn't guarantee that the element is printed in any particular order, so a "
+"test like ::"
+msgstr ""
+":mod:`!doctest` rất nghiêm túc trong việc yêu cầu kết quả đầu ra phải khớp "
+"chính xác.  Nếu thậm chí một ký tự không khớp, thử nghiệm sẽ thất bại.  Điều"
+" này có thể sẽ làm bạn ngạc nhiên đôi khi vì bạn tìm hiểu chính xác những gì"
+" Python làm và không đảm bảo về đầu ra.  Ví dụ: khi in một tập hợp, Python "
+"không đảm bảo rằng phần tử đó được in theo bất kỳ thứ tự cụ thể nào, do đó, "
+"hãy thử nghiệm như ::"
+
+#: ../../library/doctest.rst:842
+#, python-brace-format, fuzzy
+msgid ""
+">>> foo()\n"
+"{\"spam\", \"eggs\"}"
+msgstr ""
+">>> foo()\n"
+"{\"thư rác\", \"trứng\"}"
+
+#: ../../library/doctest.rst:845
+#, fuzzy
+msgid "is vulnerable!  One workaround is to do ::"
+msgstr "dễ bị tổn thương!  Một cách giải quyết khác là làm ::"
+
+#: ../../library/doctest.rst:847
+#, python-brace-format, fuzzy
+msgid ""
+">>> foo() == {\"spam\", \"eggs\"}\n"
+"True"
+msgstr ""
+">>> foo() == {\"spam\", \"trứng\"}\n"
+"đúng"
+
+#: ../../library/doctest.rst:850
+#, fuzzy
+msgid "instead.  Another is to do ::"
+msgstr "thay vào đó.  Một cách khác là làm ::"
+
+#: ../../library/doctest.rst:852
+#, fuzzy
+msgid ""
+">>> d = sorted(foo())\n"
+">>> d\n"
+"['eggs', 'spam']"
+msgstr ""
+">>> d = đã sắp xếp(foo())\n"
+">>> d\n"
+"['trứng', 'thư rác']"
+
+#: ../../library/doctest.rst:856
+#, fuzzy
+msgid "There are others, but you get the idea."
+msgstr "Có những người khác, nhưng bạn có được ý tưởng."
+
+#: ../../library/doctest.rst:858
+#, fuzzy
+msgid "Another bad idea is to print things that embed an object address, like"
+msgstr "Một ý tưởng tồi khác là in những thứ nhúng địa chỉ đối tượng, như"
+
+#: ../../library/doctest.rst:860
+#, fuzzy
+msgid ""
+">>> id(1.0)  # certain to fail some of the time\n"
+"7948648\n"
+">>> class C: pass\n"
+">>> C()  # the default repr() for instances embeds an address\n"
+"<C object at 0x00AC18F0>"
+msgstr ""
+">>> id(1.0) # certain đôi khi bị lỗi\n"
+"7948648\n"
+">>> lớp C: đậu\n"
+">>> C() # the Repr mặc định() cho các trường hợp nhúng địa chỉ\n"
+"<Đối tượng C tại 0x00AC18F0>"
+
+#: ../../library/doctest.rst:868
+#, fuzzy
+msgid ""
+"The :const:`ELLIPSIS` directive gives a nice approach for the last example:"
+msgstr ""
+"Lệnh :const:`ELLIPSIS` đưa ra một cách tiếp cận hay cho ví dụ cuối cùng:"
+
+#: ../../library/doctest.rst:870
+#, fuzzy
+msgid ""
+">>> C()  # doctest: +ELLIPSIS\n"
+"<C object at 0x...>"
+msgstr ""
+">>> C() # doctest: +ELLIPSIS\n"
+"<Đối tượng C ở 0x...>"
+
+#: ../../library/doctest.rst:876
+#, fuzzy
+msgid ""
+"Floating-point numbers are also subject to small output variations across "
+"platforms, because Python defers to the platform C library for some "
+"floating-point calculations, and C libraries vary widely in quality here. ::"
+msgstr ""
+"Các số có dấu phẩy động cũng có thể có sự thay đổi đầu ra nhỏ trên các nền "
+"tảng, vì Python sử dụng thư viện nền tảng C để thực hiện một số phép tính "
+"dấu phẩy động và các thư viện C ở đây có chất lượng rất khác nhau. ::"
+
+#: ../../library/doctest.rst:880
+#, python-brace-format, fuzzy
+msgid ""
+">>> 1000**0.1  # risky\n"
+"1.9952623149688797\n"
+">>> round(1000**0.1, 9) # safer\n"
+"1.995262315\n"
+">>> print(f'{1000**0.1:.4f}') # much safer\n"
+"1.9953"
+msgstr ""
+">>> 1000**0,1 # risky\n"
+"1.9952623149688797\n"
+">>> vòng(1000**0.1, 9) # safer\n"
+"1.995262315\n"
+">>> print(f'{1000**0.1:.4f}') # much an toàn hơn\n"
+"1.9953"
+
+#: ../../library/doctest.rst:887
+#, fuzzy
+msgid ""
+"Numbers of the form ``I/2.**J`` are safe across all platforms, and I often "
+"contrive doctest examples to produce numbers of that form::"
+msgstr ""
+"Các số có dạng ``I/2.**J`` an toàn trên tất cả các nền tảng và tôi thường "
+"tạo ra các ví dụ tốt nhất để tạo ra các số có dạng đó::"
+
+#: ../../library/doctest.rst:890
+#, fuzzy
+msgid ""
+">>> 3./4  # utterly safe\n"
+"0.75"
+msgstr ""
+">>> 3./4 # utterly an toàn\n"
+"0,75"
+
+#: ../../library/doctest.rst:893
+#, fuzzy
+msgid ""
+"Simple fractions are also easier for people to understand, and that makes "
+"for better documentation."
+msgstr ""
+"Các phân số đơn giản cũng dễ hiểu hơn đối với mọi người và điều đó tạo nên "
+"tài liệu tốt hơn."
+
+#: ../../library/doctest.rst:900
+#, fuzzy
+msgid "Basic API"
+msgstr "API cơ bản"
+
+#: ../../library/doctest.rst:902
+#, fuzzy
+msgid ""
+"The functions :func:`testmod` and :func:`testfile` provide a simple "
+"interface to doctest that should be sufficient for most basic uses.  For a "
+"less formal introduction to these two functions, see sections :ref:`doctest-"
+"simple-testmod` and :ref:`doctest-simple-testfile`."
+msgstr ""
+"Các hàm :func:`testmod` và :func:`testfile` cung cấp một giao diện đơn giản "
+"cho doctest, đủ cho hầu hết các mục đích sử dụng cơ bản.  Để có phần giới "
+"thiệu ít trang trọng hơn về hai hàm này, hãy xem phần :ref:`doctest-simple-"
+"testmod` và :ref:`doctest-simple-testfile`."
+
+#: ../../library/doctest.rst:910
+#, fuzzy
+msgid ""
+"All arguments except *filename* are optional, and should be specified in "
+"keyword form."
+msgstr ""
+"Tất cả các đối số ngoại trừ *filename* đều là tùy chọn và phải được chỉ định"
+" ở dạng từ khóa."
+
+#: ../../library/doctest.rst:913
+#, fuzzy
+msgid ""
+"Test examples in the file named *filename*.  Return ``(failure_count, "
+"test_count)``."
+msgstr ""
+"Ví dụ thử nghiệm trong tệp có tên *filename*.  Trả về ``(failure_count, "
+"test_count)``."
+
+#: ../../library/doctest.rst:916
+#, fuzzy
+msgid ""
+"Optional argument *module_relative* specifies how the filename should be "
+"interpreted:"
+msgstr "Đối số tùy chọn *module_relative* chỉ định cách diễn giải tên tệp:"
+
+#: ../../library/doctest.rst:919
+#, fuzzy
+msgid ""
+"If *module_relative* is ``True`` (the default), then *filename* specifies an"
+" OS-independent module-relative path.  By default, this path is relative to "
+"the calling module's directory; but if the *package* argument is specified, "
+"then it is relative to that package.  To ensure OS-independence, *filename* "
+"should use ``/`` characters to separate path segments, and may not be an "
+"absolute path (i.e., it may not begin with ``/``)."
+msgstr ""
+"Nếu *module_relative* là ``True`` (mặc định), thì *filename* chỉ định đường "
+"dẫn tương đối mô-đun độc lập với hệ điều hành.  Theo mặc định, đường dẫn này"
+" liên quan đến thư mục của mô-đun gọi điện; nhưng nếu đối số *package* được "
+"chỉ định thì nó có liên quan đến gói đó.  Để đảm bảo tính độc lập của hệ "
+"điều hành, *filename* nên sử dụng các ký tự ``/`` để phân tách các đoạn "
+"đường dẫn và có thể không phải là đường dẫn tuyệt đối (tức là nó không được "
+"bắt đầu bằng ``/``)."
+
+#: ../../library/doctest.rst:926
+#, fuzzy
+msgid ""
+"If *module_relative* is ``False``, then *filename* specifies an OS-specific "
+"path.  The path may be absolute or relative; relative paths are resolved "
+"with respect to the current working directory."
+msgstr ""
+"Nếu *module_relative* là ``False`` thì *filename* chỉ định đường dẫn dành "
+"riêng cho hệ điều hành.  Đường dẫn có thể tuyệt đối hoặc tương đối; đường "
+"dẫn tương đối được giải quyết đối với thư mục làm việc hiện tại."
+
+#: ../../library/doctest.rst:930
+#, fuzzy
+msgid ""
+"Optional argument *name* gives the name of the test; by default, or if "
+"``None``, ``os.path.basename(filename)`` is used."
+msgstr ""
+"Đối số tùy chọn *name* đưa ra tên của bài kiểm tra; theo mặc định hoặc nếu "
+"``None``, ``os.path.basename(filename)`` được sử dụng."
+
+#: ../../library/doctest.rst:933
+#, fuzzy
+msgid ""
+"Optional argument *package* is a Python package or the name of a Python "
+"package whose directory should be used as the base directory for a module-"
+"relative filename.  If no package is specified, then the calling module's "
+"directory is used as the base directory for module-relative filenames.  It "
+"is an error to specify *package* if *module_relative* is ``False``."
+msgstr ""
+"Đối số tùy chọn *package* là gói Python hoặc tên của gói Python có thư mục "
+"nên được sử dụng làm thư mục cơ sở cho tên tệp liên quan đến mô-đun.  Nếu "
+"không có gói nào được chỉ định thì thư mục của mô-đun gọi sẽ được sử dụng "
+"làm thư mục cơ sở cho tên tệp liên quan đến mô-đun.  Sẽ có lỗi khi chỉ định "
+"*package* nếu *module_relative* là ``False``."
+
+#: ../../library/doctest.rst:939
+#, fuzzy
+msgid ""
+"Optional argument *globs* gives a dict to be used as the globals when "
+"executing examples.  A new shallow copy of this dict is created for the "
+"doctest, so its examples start with a clean slate. By default, or if "
+"``None``, a new empty dict is used."
+msgstr ""
+"Đối số tùy chọn *globs* đưa ra một lệnh được sử dụng làm toàn cục khi thực "
+"thi các ví dụ.  Một bản sao nông mới của lệnh này được tạo cho doctest, vì "
+"vậy các ví dụ của nó bắt đầu bằng một bản rõ ràng. Theo mặc định hoặc nếu "
+"``None``, một lệnh trống mới sẽ được sử dụng."
+
+#: ../../library/doctest.rst:944
+#, fuzzy
+msgid ""
+"Optional argument *extraglobs* gives a dict merged into the globals used to "
+"execute examples.  This works like :meth:`dict.update`:  if *globs* and "
+"*extraglobs* have a common key, the associated value in *extraglobs* appears"
+" in the combined dict.  By default, or if ``None``, no extra globals are "
+"used.  This is an advanced feature that allows parameterization of doctests."
+"  For example, a doctest can be written for a base class, using a generic "
+"name for the class, then reused to test any number of subclasses by passing "
+"an *extraglobs* dict mapping the generic name to the subclass to be tested."
+msgstr ""
+"Đối số tùy chọn *extraglobs* đưa ra một lệnh được hợp nhất vào các phần tổng"
+" thể được sử dụng để thực thi các ví dụ.  Điều này hoạt động giống như "
+":meth:`dict.update`: nếu *globs* và *extraglobs* có một khóa chung, giá trị "
+"liên quan trong *extraglobs* sẽ xuất hiện trong lệnh kết hợp.  Theo mặc định"
+" hoặc nếu ``None``, không có tổng thể bổ sung nào được sử dụng.  Đây là một "
+"tính năng nâng cao cho phép tham số hóa các doctest.  Ví dụ: một doctest có "
+"thể được viết cho một lớp cơ sở, sử dụng tên chung cho lớp đó, sau đó được "
+"sử dụng lại để kiểm tra bất kỳ số lượng lớp con nào bằng cách chuyển một "
+"lệnh *extraglobs* ánh xạ tên chung cho lớp con cần kiểm tra."
+
+#: ../../library/doctest.rst:953
+#, fuzzy
+msgid ""
+"Optional argument *verbose* prints lots of stuff if true, and prints only "
+"failures if false; by default, or if ``None``, it's true if and only if "
+"``'-v'`` is in :data:`sys.argv`."
+msgstr ""
+"Đối số tùy chọn *verbose* in nhiều nội dung nếu đúng và chỉ in lỗi nếu sai; "
+"theo mặc định hoặc nếu ``None``, điều đó đúng khi và chỉ khi ``'-v'`` nằm "
+"trong :data:`sys.argv`."
+
+#: ../../library/doctest.rst:957
+#, fuzzy
+msgid ""
+"Optional argument *report* prints a summary at the end when true, else "
+"prints nothing at the end.  In verbose mode, the summary is detailed, else "
+"the summary is very brief (in fact, empty if all tests passed)."
+msgstr ""
+"Đối số tùy chọn *report* in bản tóm tắt ở cuối khi đúng, nếu không thì không"
+" in gì ở cuối.  Ở chế độ dài dòng, bản tóm tắt rất chi tiết, nếu không thì "
+"bản tóm tắt rất ngắn gọn (trên thực tế, sẽ trống nếu tất cả các bài kiểm tra"
+" đều vượt qua)."
+
+#: ../../library/doctest.rst:961
+#, fuzzy
+msgid ""
+"Optional argument *optionflags* (default value ``0``) takes the "
+":ref:`bitwise OR <bitwise>` of option flags. See section :ref:`doctest-"
+"options`."
+msgstr ""
+"Đối số tùy chọn *optionflags* (giá trị mặc định ``0``) lấy :ref:`bitwise OR "
+"<bitwise>` của các cờ tùy chọn. Xem phần :ref:`doctest-options`."
+
+#: ../../library/doctest.rst:965
+#, fuzzy
+msgid ""
+"Optional argument *raise_on_error* defaults to false.  If true, an exception"
+" is raised upon the first failure or unexpected exception in an example.  "
+"This allows failures to be post-mortem debugged. Default behavior is to "
+"continue running examples."
+msgstr ""
+"Đối số tùy chọn *raise_on_error* mặc định là sai.  Nếu đúng, một ngoại lệ sẽ"
+" được đưa ra khi xảy ra lỗi đầu tiên hoặc ngoại lệ không mong muốn trong một"
+" ví dụ.  Điều này cho phép các lỗi được gỡ lỗi sau khi chết. Hành vi mặc "
+"định là tiếp tục chạy các ví dụ."
+
+#: ../../library/doctest.rst:970 ../../library/doctest.rst:1113
+#, fuzzy
+msgid ""
+"Optional argument *parser* specifies a :class:`DocTestParser` (or subclass) "
+"that should be used to extract tests from the files.  It defaults to a "
+"normal parser (i.e., ``DocTestParser()``)."
+msgstr ""
+"Đối số tùy chọn *parser* chỉ định một :class:`DocTestParser` (hoặc lớp con) "
+"sẽ được sử dụng để trích xuất các bài kiểm tra từ các tệp.  Nó mặc định là "
+"một trình phân tích cú pháp bình thường (tức là ``DocTestParser()``)."
+
+#: ../../library/doctest.rst:974 ../../library/doctest.rst:1117
+#, fuzzy
+msgid ""
+"Optional argument *encoding* specifies an encoding that should be used to "
+"convert the file to unicode."
+msgstr ""
+"Đối số tùy chọn *encoding* chỉ định mã hóa sẽ được sử dụng để chuyển đổi tệp"
+" sang unicode."
+
+#: ../../library/doctest.rst:980
+#, fuzzy
+msgid ""
+"All arguments are optional, and all except for *m* should be specified in "
+"keyword form."
+msgstr ""
+"Tất cả các đối số đều là tùy chọn và tất cả ngoại trừ *m* phải được chỉ định"
+" ở dạng từ khóa."
+
+#: ../../library/doctest.rst:983
+#, fuzzy
+msgid ""
+"Test examples in docstrings in functions and classes reachable from module "
+"*m* (or module :mod:`__main__` if *m* is not supplied or is ``None``), "
+"starting with ``m.__doc__``."
+msgstr ""
+"Ví dụ kiểm tra trong chuỗi tài liệu trong các hàm và lớp có thể truy cập "
+"được từ mô-đun *m* (hoặc mô-đun :mod:`__main__` nếu *m* không được cung cấp "
+"hoặc là ``None``), bắt đầu bằng ``m.__doc__``."
+
+#: ../../library/doctest.rst:987
+#, fuzzy
+msgid ""
+"Also test examples reachable from dict ``m.__test__``, if it exists. "
+"``m.__test__`` maps names (strings) to functions, classes and strings; "
+"function and class docstrings are searched for examples; strings are "
+"searched directly, as if they were docstrings."
+msgstr ""
+"Đồng thời kiểm tra các ví dụ có thể truy cập được từ dict ``m.__test__``, "
+"nếu nó tồn tại. ``m.__test__`` ánh xạ tên (chuỗi) thành các hàm, lớp và "
+"chuỗi; các chuỗi tài liệu về hàm và lớp được tìm kiếm để lấy ví dụ; các "
+"chuỗi được tìm kiếm trực tiếp, như thể chúng là các chuỗi tài liệu."
+
+#: ../../library/doctest.rst:992
+#, fuzzy
+msgid ""
+"Only docstrings attached to objects belonging to module *m* are searched."
+msgstr ""
+"Chỉ các chuỗi tài liệu gắn liền với các đối tượng thuộc mô-đun *m* mới được "
+"tìm kiếm."
+
+#: ../../library/doctest.rst:994
+#, fuzzy
+msgid "Return ``(failure_count, test_count)``."
+msgstr "Trả về ``(failure_count, test_count)``."
+
+#: ../../library/doctest.rst:996
+#, fuzzy
+msgid ""
+"Optional argument *name* gives the name of the module; by default, or if "
+"``None``, ``m.__name__`` is used."
+msgstr ""
+"Đối số tùy chọn *name* cung cấp tên của mô-đun; theo mặc định hoặc nếu "
+"``None``, ``m.__name__`` được sử dụng."
+
+#: ../../library/doctest.rst:999
+#, fuzzy
+msgid ""
+"Optional argument *exclude_empty* defaults to false.  If true, objects for "
+"which no doctests are found are excluded from consideration. The default is "
+"a backward compatibility hack, so that code still using "
+":meth:`doctest.master.summarize <DocTestRunner.summarize>` in conjunction "
+"with :func:`testmod` continues to get output for objects with no tests. The "
+"*exclude_empty* argument to the newer :class:`DocTestFinder` constructor "
+"defaults to true."
+msgstr ""
+"Đối số tùy chọn *exclude_empty* mặc định là sai.  Nếu đúng, các đối tượng "
+"không tìm thấy doctest sẽ bị loại khỏi việc xem xét. Mặc định là hack tương "
+"thích ngược, do đó mã vẫn sử dụng :meth:`doctest.master.summarize "
+"<DocTestRunner.summarize>` kết hợp với :func:`testmod` tiếp tục nhận đầu ra "
+"cho các đối tượng không có kiểm tra. Đối số *exclude_empty* cho hàm tạo "
+":class:`DocTestFinder` mới hơn được mặc định là true."
+
+#: ../../library/doctest.rst:1007
+#, fuzzy
+msgid ""
+"Optional arguments *extraglobs*, *verbose*, *report*, *optionflags*, "
+"*raise_on_error*, and *globs* are the same as for function :func:`testfile` "
+"above, except that *globs* defaults to ``m.__dict__``."
+msgstr ""
+"Các đối số tùy chọn *extraglobs*, *verbose*, *report*, *optionflags*, "
+"*raise_on_error* và *globs* giống như đối với hàm :func:`testfile` ở trên, "
+"ngoại trừ việc *globs* mặc định là ``m.__dict__``."
+
+#: ../../library/doctest.rst:1014
+#, fuzzy
+msgid ""
+"Test examples associated with object *f*; for example, *f* may be a string, "
+"a module, a function, or a class object."
+msgstr ""
+"Các ví dụ thử nghiệm liên quan đến đối tượng *f*; ví dụ: *f* có thể là một "
+"chuỗi, một mô-đun, một hàm hoặc một đối tượng lớp."
+
+#: ../../library/doctest.rst:1017
+#, fuzzy
+msgid ""
+"A shallow copy of dictionary argument *globs* is used for the execution "
+"context."
+msgstr ""
+"Một bản sao nông của đối số từ điển *globs* được sử dụng cho ngữ cảnh thực "
+"thi."
+
+#: ../../library/doctest.rst:1019
+#, fuzzy
+msgid ""
+"Optional argument *name* is used in failure messages, and defaults to "
+"``\"NoName\"``."
+msgstr ""
+"Đối số tùy chọn *name* được sử dụng trong các thông báo lỗi và mặc định là "
+"``\"NoName\"``."
+
+#: ../../library/doctest.rst:1022
+#, fuzzy
+msgid ""
+"If optional argument *verbose* is true, output is generated even if there "
+"are no failures.  By default, output is generated only in case of an example"
+" failure."
+msgstr ""
+"Nếu đối số tùy chọn *verbose* là đúng, đầu ra sẽ được tạo ngay cả khi không "
+"có lỗi nào.  Theo mặc định, đầu ra chỉ được tạo trong trường hợp mẫu bị lỗi."
+
+#: ../../library/doctest.rst:1025
+#, fuzzy
+msgid ""
+"Optional argument *compileflags* gives the set of flags that should be used "
+"by the Python compiler when running the examples.  By default, or if "
+"``None``, flags are deduced corresponding to the set of future features "
+"found in *globs*."
+msgstr ""
+"Đối số tùy chọn *compileflags* cung cấp tập hợp các cờ sẽ được trình biên "
+"dịch Python sử dụng khi chạy các ví dụ.  Theo mặc định, hoặc nếu ``None``, "
+"các cờ được suy ra tương ứng với tập hợp các tính năng trong tương lai được "
+"tìm thấy trong *globs*."
+
+#: ../../library/doctest.rst:1029
+#, fuzzy
+msgid ""
+"Optional argument *optionflags* works as for function :func:`testfile` "
+"above."
+msgstr ""
+"Đối số tùy chọn *optionflags* hoạt động như đối với hàm :func:`testfile` ở "
+"trên."
+
+#: ../../library/doctest.rst:1035
+#, fuzzy
+msgid "Unittest API"
+msgstr "API đơn giản nhất"
+
+#: ../../library/doctest.rst:1037
+#, fuzzy
+msgid ""
+"As your collection of doctest'ed modules grows, you'll want a way to run all"
+" their doctests systematically.  :mod:`!doctest` provides two functions that"
+" can be used to create :mod:`unittest` test suites from modules and text "
+"files containing doctests.  To integrate with :mod:`unittest` test "
+"discovery, include a :ref:`load_tests <load_tests-protocol>` function in "
+"your test module::"
+msgstr ""
+"Khi bộ sưu tập các mô-đun doctest của bạn tăng lên, bạn sẽ muốn có một cách "
+"để chạy tất cả các doctest của chúng một cách có hệ thống.  :mod:`!doctest` "
+"cung cấp hai chức năng có thể được sử dụng để tạo bộ thử nghiệm "
+":mod:`unittest` từ các mô-đun và tệp văn bản chứa doctest.  Để tích hợp với "
+"khám phá thử nghiệm :mod:`unittest`, hãy bao gồm chức năng :ref:`load_tests "
+"<load_tests-protocol>` trong mô-đun thử nghiệm của bạn::"
+
+#: ../../library/doctest.rst:1043
+#, fuzzy
+msgid ""
+"import unittest\n"
+"import doctest\n"
+"import my_module_with_doctests\n"
+"\n"
+"def load_tests(loader, tests, ignore):\n"
+"    tests.addTests(doctest.DocTestSuite(my_module_with_doctests))\n"
+"    return tests"
+msgstr ""
+"nhập khẩu đơn vị nhất\n"
+"nhập doctest\n"
+"nhập my_module_with_doctests\n"
+"\n"
+"def Load_tests(loader, kiểm tra, bỏ qua):\n"
+"    test.addTests(doctest.DocTestSuite(my_module_with_doctests))\n"
+"    trả lại bài kiểm tra"
+
+#: ../../library/doctest.rst:1051
+#, fuzzy
+msgid ""
+"There are two main functions for creating :class:`unittest.TestSuite` "
+"instances from text files and modules with doctests:"
+msgstr ""
+"Có hai chức năng chính để tạo phiên bản :class:`unittest.TestSuite` từ tệp "
+"văn bản và mô-đun bằng doctest:"
+
+#: ../../library/doctest.rst:1057
+#, fuzzy
+msgid ""
+"Convert doctest tests from one or more text files to a "
+":class:`unittest.TestSuite`."
+msgstr ""
+"Chuyển đổi các bài kiểm tra doctest từ một hoặc nhiều tệp văn bản sang "
+":class:`unittest.TestSuite`."
+
+#: ../../library/doctest.rst:1060
+#, fuzzy
+msgid ""
+"The returned :class:`unittest.TestSuite` is to be run by the unittest "
+"framework and runs the interactive examples in each file.  If an example in "
+"any file fails, then the synthesized unit test fails, and a "
+":exc:`~unittest.TestCase.failureException` exception is raised showing the "
+"name of the file containing the test and a (sometimes approximate) line "
+"number.  If all the examples in a file are skipped, then the synthesized "
+"unit test is also marked as skipped."
+msgstr ""
+"Zz000zz được trả về sẽ được chạy bởi khung nhỏ nhất và chạy các ví dụ tương "
+"tác trong mỗi tệp.  Nếu một ví dụ trong bất kỳ tệp nào không thành công thì "
+"thử nghiệm đơn vị tổng hợp sẽ không thành công và ngoại lệ "
+":exc:`~unittest.TestCase.failureException` sẽ xuất hiện hiển thị tên của tệp"
+" chứa thử nghiệm và số dòng (đôi khi gần đúng).  Nếu tất cả các ví dụ trong "
+"một tệp bị bỏ qua thì bài kiểm tra đơn vị tổng hợp cũng được đánh dấu là bị "
+"bỏ qua."
+
+#: ../../library/doctest.rst:1067
+#, fuzzy
+msgid "Pass one or more paths (as strings) to text files to be examined."
+msgstr ""
+"Truyền một hoặc nhiều đường dẫn (dưới dạng chuỗi) tới tệp văn bản cần kiểm "
+"tra."
+
+#: ../../library/doctest.rst:1069
+#, fuzzy
+msgid "Options may be provided as keyword arguments:"
+msgstr "Các tùy chọn có thể được cung cấp dưới dạng đối số từ khóa:"
+
+#: ../../library/doctest.rst:1071
+#, fuzzy
+msgid ""
+"Optional argument *module_relative* specifies how the filenames in *paths* "
+"should be interpreted:"
+msgstr ""
+"Đối số tùy chọn *module_relative* chỉ định cách diễn giải tên tệp trong "
+"*paths*:"
+
+#: ../../library/doctest.rst:1074
+#, fuzzy
+msgid ""
+"If *module_relative* is ``True`` (the default), then each filename in "
+"*paths* specifies an OS-independent module-relative path.  By default, this "
+"path is relative to the calling module's directory; but if the *package* "
+"argument is specified, then it is relative to that package.  To ensure OS-"
+"independence, each filename should use ``/`` characters to separate path "
+"segments, and may not be an absolute path (i.e., it may not begin with "
+"``/``)."
+msgstr ""
+"Nếu *module_relative* là ``True`` (mặc định), thì mỗi tên tệp trong *paths* "
+"chỉ định một đường dẫn tương đối mô-đun độc lập với hệ điều hành.  Theo mặc "
+"định, đường dẫn này liên quan đến thư mục của mô-đun gọi điện; nhưng nếu đối"
+" số *package* được chỉ định thì nó có liên quan đến gói đó.  Để đảm bảo tính"
+" độc lập với hệ điều hành, mỗi tên tệp phải sử dụng các ký tự ``/`` để phân "
+"tách các đoạn đường dẫn và không được là đường dẫn tuyệt đối (tức là tên tệp"
+" không được bắt đầu bằng ``/``)."
+
+#: ../../library/doctest.rst:1082
+#, fuzzy
+msgid ""
+"If *module_relative* is ``False``, then each filename in *paths* specifies "
+"an OS-specific path.  The path may be absolute or relative; relative paths "
+"are resolved with respect to the current working directory."
+msgstr ""
+"Nếu *module_relative* là ``False`` thì mỗi tên tệp trong *paths* chỉ định "
+"một đường dẫn dành riêng cho hệ điều hành.  Đường dẫn có thể tuyệt đối hoặc "
+"tương đối; đường dẫn tương đối được giải quyết đối với thư mục làm việc hiện"
+" tại."
+
+#: ../../library/doctest.rst:1086
+#, fuzzy
+msgid ""
+"Optional argument *package* is a Python package or the name of a Python "
+"package whose directory should be used as the base directory for module-"
+"relative filenames in *paths*.  If no package is specified, then the calling"
+" module's directory is used as the base directory for module-relative "
+"filenames.  It is an error to specify *package* if *module_relative* is "
+"``False``."
+msgstr ""
+"Đối số tùy chọn *package* là gói Python hoặc tên của gói Python có thư mục "
+"nên được sử dụng làm thư mục cơ sở cho tên tệp liên quan đến mô-đun trong "
+"*paths*.  Nếu không có gói nào được chỉ định thì thư mục của mô-đun gọi sẽ "
+"được sử dụng làm thư mục cơ sở cho tên tệp liên quan đến mô-đun.  Sẽ có lỗi "
+"khi chỉ định *package* nếu *module_relative* là ``False``."
+
+#: ../../library/doctest.rst:1093
+#, fuzzy
+msgid ""
+"Optional argument *setUp* specifies a set-up function for the test suite. "
+"This is called before running the tests in each file.  The *setUp* function "
+"will be passed a :class:`DocTest` object.  The *setUp* function can access "
+"the test globals as the :attr:`~DocTest.globs` attribute of the test passed."
+msgstr ""
+"Đối số tùy chọn *setUp* chỉ định chức năng thiết lập cho bộ thử nghiệm. Điều"
+" này được gọi trước khi chạy thử nghiệm trong mỗi tệp.  Hàm *setUp* sẽ được "
+"truyền vào đối tượng :class:`DocTest`.  Hàm *setUp* có thể truy cập vào tổng"
+" thể thử nghiệm khi thuộc tính :attr:`~DocTest.globs` của thử nghiệm đã vượt"
+" qua."
+
+#: ../../library/doctest.rst:1098
+#, fuzzy
+msgid ""
+"Optional argument *tearDown* specifies a tear-down function for the test "
+"suite.  This is called after running the tests in each file.  The *tearDown*"
+" function will be passed a :class:`DocTest` object.  The *tearDown* function"
+" can access the test globals as the :attr:`~DocTest.globs` attribute of the "
+"test passed."
+msgstr ""
+"Đối số tùy chọn *tearDown* chỉ định chức năng phân tích cho bộ thử nghiệm.  "
+"Điều này được gọi sau khi chạy thử nghiệm trong mỗi tệp.  Hàm *tearDown* sẽ "
+"được truyền vào đối tượng :class:`DocTest`.  Hàm *tearDown* có thể truy cập "
+"vào tổng thể thử nghiệm khi thuộc tính :attr:`~DocTest.globs` của thử nghiệm"
+" đã vượt qua."
+
+#: ../../library/doctest.rst:1104
+#, fuzzy
+msgid ""
+"Optional argument *globs* is a dictionary containing the initial global "
+"variables for the tests.  A new copy of this dictionary is created for each "
+"test.  By default, *globs* is a new empty dictionary."
+msgstr ""
+"Đối số tùy chọn *globs* là một từ điển chứa các biến toàn cục ban đầu cho "
+"các bài kiểm tra.  Một bản sao mới của từ điển này được tạo cho mỗi bài kiểm"
+" tra.  Theo mặc định, *globs* là một từ điển trống mới."
+
+#: ../../library/doctest.rst:1108
+#, fuzzy
+msgid ""
+"Optional argument *optionflags* specifies the default doctest options for "
+"the tests, created by or-ing together individual option flags.  See section "
+":ref:`doctest-options`. See function :func:`set_unittest_reportflags` below "
+"for a better way to set reporting options."
+msgstr ""
+"Đối số tùy chọn *optionflags* chỉ định các tùy chọn doctest mặc định cho các"
+" bài kiểm tra, được tạo bằng cách kết hợp các cờ tùy chọn riêng lẻ với nhau."
+"  Xem phần :ref:`doctest-options`. Xem chức năng "
+":func:`set_unittest_reportflags` bên dưới để biết cách đặt tùy chọn báo cáo "
+"tốt hơn."
+
+#: ../../library/doctest.rst:1120
+#, fuzzy
+msgid ""
+"The global ``__file__`` is added to the globals provided to doctests loaded "
+"from a text file using :func:`DocFileSuite`."
+msgstr ""
+"``__file__`` toàn cục được thêm vào các tổng thể được cung cấp cho các tài "
+"liệu được tải từ tệp văn bản bằng :func:`DocFileSuite`."
+
+#: ../../library/doctest.rst:1126
+#, fuzzy
+msgid "Convert doctest tests for a module to a :class:`unittest.TestSuite`."
+msgstr ""
+"Chuyển đổi các bài kiểm tra doctest cho một mô-đun thành "
+":class:`unittest.TestSuite`."
+
+#: ../../library/doctest.rst:1128
+#, fuzzy
+msgid ""
+"The returned :class:`unittest.TestSuite` is to be run by the unittest "
+"framework and runs each doctest in the module. Each docstring is run as a "
+"separate unit test. If any of the doctests fail, then the synthesized unit "
+"test fails, and a :exc:`unittest.TestCase.failureException` exception is "
+"raised showing the name of the file containing the test and a (sometimes "
+"approximate) line number.  If all the examples in a docstring are skipped, "
+"then the"
+msgstr ""
+"Zz000zz được trả về sẽ được chạy bởi khung nhỏ nhất và chạy từng doctest "
+"trong mô-đun. Mỗi chuỗi tài liệu được chạy dưới dạng thử nghiệm đơn vị riêng"
+" biệt. Nếu bất kỳ tài liệu nào không thành công thì bài kiểm tra đơn vị tổng"
+" hợp sẽ không thành công và một ngoại lệ "
+":exc:`unittest.TestCase.failureException` sẽ xuất hiện hiển thị tên của tệp "
+"chứa bài kiểm tra và số dòng (đôi khi gần đúng).  Nếu tất cả các ví dụ trong"
+" chuỗi tài liệu bị bỏ qua thì"
+
+#: ../../library/doctest.rst:1136
+#, fuzzy
+msgid ""
+"Optional argument *module* provides the module to be tested.  It can be a "
+"module object or a (possibly dotted) module name.  If not specified, the "
+"module calling this function is used."
+msgstr ""
+"Đối số tùy chọn *module* cung cấp mô-đun cần kiểm tra.  Nó có thể là một đối"
+" tượng mô-đun hoặc tên mô-đun (có thể có dấu chấm).  Nếu không được chỉ "
+"định, mô-đun gọi hàm này sẽ được sử dụng."
+
+#: ../../library/doctest.rst:1140
+#, fuzzy
+msgid ""
+"Optional argument *globs* is a dictionary containing the initial global "
+"variables for the tests.  A new copy of this dictionary is created for each "
+"test.  By default, *globs* is the module's :attr:`~module.__dict__`."
+msgstr ""
+"Đối số tùy chọn *globs* là một từ điển chứa các biến toàn cục ban đầu cho "
+"các bài kiểm tra.  Một bản sao mới của từ điển này được tạo cho mỗi bài kiểm"
+" tra.  Theo mặc định, *globs* là :attr:`~module.__dict__` của mô-đun."
+
+#: ../../library/doctest.rst:1144
+#, fuzzy
+msgid ""
+"Optional argument *extraglobs* specifies an extra set of global variables, "
+"which is merged into *globs*.  By default, no extra globals are used."
+msgstr ""
+"Đối số tùy chọn *extraglobs* chỉ định một tập hợp các biến toàn cục bổ sung,"
+" được hợp nhất thành *globs*.  Theo mặc định, không có hình cầu bổ sung nào "
+"được sử dụng."
+
+#: ../../library/doctest.rst:1147
+#, fuzzy
+msgid ""
+"Optional argument *test_finder* is the :class:`DocTestFinder` object (or a "
+"drop-in replacement) that is used to extract doctests from the module."
+msgstr ""
+"Đối số tùy chọn *test_finder* là đối tượng :class:`DocTestFinder` (hoặc một "
+"đối tượng thay thế thả vào) được sử dụng để trích xuất các tài liệu từ mô-"
+"đun."
+
+#: ../../library/doctest.rst:1150
+#, fuzzy
+msgid ""
+"Optional arguments *setUp*, *tearDown*, and *optionflags* are the same as "
+"for function :func:`DocFileSuite` above, but they are called for each "
+"docstring."
+msgstr ""
+"Các đối số tùy chọn *setUp*, *tearDown* và *optionflags* giống như đối với "
+"hàm :func:`DocFileSuite` ở trên, nhưng chúng được gọi cho mỗi chuỗi tài "
+"liệu."
+
+#: ../../library/doctest.rst:1153
+#, fuzzy
+msgid "This function uses the same search technique as :func:`testmod`."
+msgstr "Chức năng này sử dụng kỹ thuật tìm kiếm tương tự như :func:`testmod`."
+
+#: ../../library/doctest.rst:1155
+#, fuzzy
+msgid ""
+":func:`DocTestSuite` returns an empty :class:`unittest.TestSuite` if "
+"*module* contains no docstrings instead of raising :exc:`ValueError`."
+msgstr ""
+":func:`DocTestSuite` trả về một :class:`unittest.TestSuite` trống nếu "
+"*module* không chứa chuỗi tài liệu thay vì tăng :exc:`ValueError`."
+
+#: ../../library/doctest.rst:1159
+#, fuzzy
+msgid ""
+"Under the covers, :func:`DocTestSuite` creates a :class:`unittest.TestSuite`"
+" out of :class:`!doctest.DocTestCase` instances, and :class:`!DocTestCase` "
+"is a subclass of :class:`unittest.TestCase`. :class:`!DocTestCase` isn't "
+"documented here (it's an internal detail), but studying its code can answer "
+"questions about the exact details of :mod:`unittest` integration."
+msgstr ""
+"Dưới vỏ bọc, :func:`DocTestSuite` tạo ra một :class:`unittest.TestSuite` từ "
+"các phiên bản :class:`!doctest.DocTestCase` và :class:`!DocTestCase` là một "
+"lớp con của :class:`unittest.TestCase`. :class:`!DocTestCase` không được ghi"
+" lại ở đây (đây là chi tiết nội bộ), nhưng việc nghiên cứu mã của nó có thể "
+"trả lời các câu hỏi về chi tiết chính xác của việc tích hợp :mod:`unittest`."
+
+#: ../../library/doctest.rst:1165
+#, fuzzy
+msgid ""
+"Similarly, :func:`DocFileSuite` creates a :class:`unittest.TestSuite` out of"
+" :class:`!doctest.DocFileCase` instances, and :class:`!DocFileCase` is a "
+"subclass of :class:`!DocTestCase`."
+msgstr ""
+"Tương tự, :func:`DocFileSuite` tạo ra một :class:`unittest.TestSuite` từ các"
+" phiên bản :class:`!doctest.DocFileCase` và :class:`!DocFileCase` là một lớp"
+" con của :class:`!DocTestCase`."
+
+#: ../../library/doctest.rst:1169
+#, fuzzy
+msgid ""
+"So both ways of creating a :class:`unittest.TestSuite` run instances of "
+":class:`!DocTestCase`.  This is important for a subtle reason: when you run "
+":mod:`!doctest` functions yourself, you can control the :mod:`!doctest` "
+"options in use directly, by passing option flags to :mod:`!doctest` "
+"functions.  However, if you're writing a :mod:`unittest` framework, "
+":mod:`!unittest` ultimately controls when and how tests get run.  The "
+"framework author typically wants to control :mod:`!doctest` reporting "
+"options (perhaps, e.g., specified by command line options), but there's no "
+"way to pass options through :mod:`!unittest` to :mod:`!doctest` test "
+"runners."
+msgstr ""
+"Vì vậy, cả hai cách tạo :class:`unittest.TestSuite` đều chạy phiên bản "
+":class:`!DocTestCase`.  Điều này quan trọng vì một lý do tế nhị: khi bạn tự "
+"chạy các hàm :mod:`!doctest`, bạn có thể kiểm soát trực tiếp các tùy chọn "
+":mod:`!doctest` đang được sử dụng bằng cách chuyển cờ tùy chọn cho các hàm "
+":mod:`!doctest`.  Tuy nhiên, nếu bạn đang viết khung :mod:`unittest`, "
+":mod:`!unittest` sẽ kiểm soát thời điểm và cách thức chạy thử nghiệm.  Tác "
+"giả khung thường muốn kiểm soát các tùy chọn báo cáo :mod:`!doctest` (có "
+"thể, ví dụ: được chỉ định bởi các tùy chọn dòng lệnh), nhưng không có cách "
+"nào để chuyển các tùy chọn thông qua :mod:`!unittest` sang các trình chạy "
+"thử nghiệm :mod:`!doctest`."
+
+#: ../../library/doctest.rst:1179
+#, fuzzy
+msgid ""
+"For this reason, :mod:`!doctest` also supports a notion of :mod:`!doctest` "
+"reporting flags specific to :mod:`unittest` support, via this function:"
+msgstr ""
+"Vì lý do này, :mod:`!doctest` cũng hỗ trợ khái niệm cờ báo cáo "
+":mod:`!doctest` dành riêng cho hỗ trợ :mod:`unittest`, thông qua chức năng "
+"này:"
+
+#: ../../library/doctest.rst:1185
+#, fuzzy
+msgid "Set the :mod:`!doctest` reporting flags to use."
+msgstr "Đặt cờ báo cáo :mod:`!doctest` để sử dụng."
+
+#: ../../library/doctest.rst:1187
+#, fuzzy
+msgid ""
+"Argument *flags* takes the :ref:`bitwise OR <bitwise>` of option flags.  See"
+" section :ref:`doctest-options`.  Only \"reporting flags\" can be used."
+msgstr ""
+"Đối số *flags* lấy :ref:`bitwise OR <bitwise>` của các cờ tùy chọn.  Xem "
+"phần :ref:`doctest-options`.  Chỉ có thể sử dụng \"cờ báo cáo\"."
+
+#: ../../library/doctest.rst:1190
+#, fuzzy
+msgid ""
+"This is a module-global setting, and affects all future doctests run by "
+"module :mod:`unittest`:  the :meth:`!runTest` method of "
+":class:`!DocTestCase` looks at the option flags specified for the test case "
+"when the :class:`!DocTestCase` instance was constructed.  If no reporting "
+"flags were specified (which is the typical and expected case), "
+":mod:`!doctest`'s :mod:`!unittest` reporting flags are :ref:`bitwise ORed "
+"<bitwise>` into the option flags, and the option flags so augmented are "
+"passed to the :class:`DocTestRunner` instance created to run the doctest.  "
+"If any reporting flags were specified when the :class:`!DocTestCase` "
+"instance was constructed, :mod:`!doctest`'s :mod:`!unittest` reporting flags"
+" are ignored."
+msgstr ""
+"Đây là cài đặt toàn mô-đun và ảnh hưởng đến tất cả các tài liệu trong tương "
+"lai do mô-đun :mod:`unittest` chạy: phương thức :meth:`!runTest` của "
+":class:`!DocTestCase` xem xét các cờ tùy chọn được chỉ định cho trường hợp "
+"thử nghiệm khi phiên bản :class:`!DocTestCase` được tạo.  Nếu không có cờ "
+"báo cáo nào được chỉ định (đó là trường hợp điển hình và được mong đợi), các"
+" cờ báo cáo :mod:`!unittest` của :mod:`!doctest` sẽ được :ref:`bitwise ORed "
+"<bitwise>` đưa vào các cờ tùy chọn và các cờ tùy chọn được tăng cường như "
+"vậy sẽ được chuyển đến phiên bản :class:`DocTestRunner` được tạo để chạy "
+"doctest.  Nếu bất kỳ cờ báo cáo nào được chỉ định khi phiên bản "
+":class:`!DocTestCase` được tạo, thì cờ báo cáo :mod:`!unittest` của "
+":mod:`!doctest` sẽ bị bỏ qua."
+
+#: ../../library/doctest.rst:1201
+#, fuzzy
+msgid ""
+"The value of the :mod:`unittest` reporting flags in effect before the "
+"function was called is returned by the function."
+msgstr ""
+"Giá trị của cờ báo cáo :mod:`unittest` có hiệu lực trước khi hàm được gọi sẽ"
+" được hàm trả về."
+
+#: ../../library/doctest.rst:1208
+#, fuzzy
+msgid "Advanced API"
+msgstr "API nâng cao"
+
+#: ../../library/doctest.rst:1210
+#, fuzzy
+msgid ""
+"The basic API is a simple wrapper that's intended to make doctest easy to "
+"use. It is fairly flexible, and should meet most users' needs; however, if "
+"you require more fine-grained control over testing, or wish to extend "
+"doctest's capabilities, then you should use the advanced API."
+msgstr ""
+"Zz000zz cơ bản là một trình bao bọc đơn giản nhằm mục đích giúp doctest dễ "
+"sử dụng. Nó khá linh hoạt và đáp ứng hầu hết nhu cầu của người dùng; tuy "
+"nhiên, nếu bạn yêu cầu kiểm soát chi tiết hơn đối với việc kiểm tra hoặc "
+"muốn mở rộng khả năng của doctest thì bạn nên sử dụng API nâng cao."
+
+#: ../../library/doctest.rst:1215
+#, fuzzy
+msgid ""
+"The advanced API revolves around two container classes, which are used to "
+"store the interactive examples extracted from doctest cases:"
+msgstr ""
+"Zz000zz nâng cao xoay quanh hai lớp vùng chứa, được sử dụng để lưu trữ các "
+"ví dụ tương tác được trích xuất từ ​​các trường hợp doctest:"
+
+#: ../../library/doctest.rst:1218
+#, fuzzy
+msgid ""
+":class:`Example`: A single Python :term:`statement`, paired with its "
+"expected output."
+msgstr ""
+":class:`Example`: Một :term:`statement` Python duy nhất, được ghép nối với "
+"đầu ra dự kiến của nó."
+
+#: ../../library/doctest.rst:1221
+#, fuzzy
+msgid ""
+":class:`DocTest`: A collection of :class:`Example`\\ s, typically extracted "
+"from a single docstring or text file."
+msgstr ""
+":class:`DocTest`: Một tập hợp các :class:`Example`\\ s, thường được trích "
+"xuất từ một chuỗi tài liệu hoặc tệp văn bản."
+
+#: ../../library/doctest.rst:1224
+#, fuzzy
+msgid ""
+"Additional processing classes are defined to find, parse, and run, and check"
+" doctest examples:"
+msgstr ""
+"Các lớp xử lý bổ sung được xác định để tìm, phân tích cú pháp và chạy cũng "
+"như kiểm tra các ví dụ tốt nhất:"
+
+#: ../../library/doctest.rst:1227
+#, fuzzy
+msgid ""
+":class:`DocTestFinder`: Finds all docstrings in a given module, and uses a "
+":class:`DocTestParser` to create a :class:`DocTest` from every docstring "
+"that contains interactive examples."
+msgstr ""
+":class:`DocTestFinder`: Tìm tất cả các chuỗi tài liệu trong một mô-đun nhất "
+"định và sử dụng :class:`DocTestParser` để tạo :class:`DocTest` từ mọi chuỗi "
+"tài liệu có chứa các ví dụ tương tác."
+
+#: ../../library/doctest.rst:1231
+#, fuzzy
+msgid ""
+":class:`DocTestParser`: Creates a :class:`DocTest` object from a string "
+"(such as an object's docstring)."
+msgstr ""
+":class:`DocTestParser`: Tạo đối tượng :class:`DocTest` từ một chuỗi (chẳng "
+"hạn như chuỗi tài liệu của đối tượng)."
+
+#: ../../library/doctest.rst:1234
+#, fuzzy
+msgid ""
+":class:`DocTestRunner`: Executes the examples in a :class:`DocTest`, and "
+"uses an :class:`OutputChecker` to verify their output."
+msgstr ""
+":class:`DocTestRunner`: Thực thi các ví dụ trong :class:`DocTest` và sử dụng"
+" :class:`OutputChecker` để xác minh đầu ra của chúng."
+
+#: ../../library/doctest.rst:1237
+#, fuzzy
+msgid ""
+":class:`OutputChecker`: Compares the actual output from a doctest example "
+"with the expected output, and decides whether they match."
+msgstr ""
+":class:`OutputChecker`: So sánh kết quả thực tế từ một ví dụ doctest với kết"
+" quả dự kiến và quyết định xem chúng có khớp hay không."
+
+#: ../../library/doctest.rst:1240
+#, fuzzy
+msgid ""
+"The relationships among these processing classes are summarized in the "
+"following diagram::"
+msgstr "Mối quan hệ giữa các lớp xử lý này được tóm tắt trong sơ đồ sau::"
+
+#: ../../library/doctest.rst:1243
+#, fuzzy
+msgid ""
+"                            list of:\n"
+"+------+                   +---------+\n"
+"|module| --DocTestFinder-> | DocTest | --DocTestRunner-> results\n"
+"+------+    |        ^     +---------+     |       ^    (printed)\n"
+"            |        |     | Example |     |       |\n"
+"            v        |     |   ...   |     v       |\n"
+"           DocTestParser   | Example |   OutputChecker\n"
+"                           +---------+"
+msgstr ""
+"danh sách:\n"
+"+------+ +----------+\n"
+"|module| --DocTestFinder-> | DocTest | --DocTestRunner-> kết quả\n"
+"+------+ |        ^     +---------+     | ^ (đã in)\n"
+"            |        | | Example | |       |\n"
+"            v |     | ... |     v       |\n"
+"           Trình kiểm tra đầu ra DocTestParser | Example |\n"
+"                           +----------+"
+
+#: ../../library/doctest.rst:1256
+#, fuzzy
+msgid "DocTest Objects"
+msgstr "Đối tượng DocTest"
+
+#: ../../library/doctest.rst:1261
+#, fuzzy
+msgid ""
+"A collection of doctest examples that should be run in a single namespace.  "
+"The constructor arguments are used to initialize the attributes of the same "
+"names."
+msgstr ""
+"Một tập hợp các ví dụ tốt nhất nên được chạy trong một không gian tên duy "
+"nhất.  Các đối số của hàm tạo được sử dụng để khởi tạo các thuộc tính có "
+"cùng tên."
+
+#: ../../library/doctest.rst:1265
+#, fuzzy
+msgid ""
+":class:`DocTest` defines the following attributes.  They are initialized by "
+"the constructor, and should not be modified directly."
+msgstr ""
+":class:`DocTest` xác định các thuộc tính sau.  Chúng được khởi tạo bởi hàm "
+"tạo và không được sửa đổi trực tiếp."
+
+#: ../../library/doctest.rst:1271
+#, fuzzy
+msgid ""
+"A list of :class:`Example` objects encoding the individual interactive "
+"Python examples that should be run by this test."
+msgstr ""
+"Danh sách các đối tượng :class:`Example` mã hóa các ví dụ Python tương tác "
+"riêng lẻ sẽ được chạy trong thử nghiệm này."
+
+#: ../../library/doctest.rst:1277
+#, fuzzy
+msgid ""
+"The namespace (aka globals) that the examples should be run in. This is a "
+"dictionary mapping names to values.  Any changes to the namespace made by "
+"the examples (such as binding new variables) will be reflected in "
+":attr:`globs` after the test is run."
+msgstr ""
+"Không gian tên (còn gọi là toàn cầu) mà các ví dụ sẽ được chạy trong đó. Đây"
+" là từ điển ánh xạ tên tới các giá trị.  Mọi thay đổi đối với không gian tên"
+" do các ví dụ thực hiện (chẳng hạn như liên kết các biến mới) sẽ được phản "
+"ánh trong :attr:`globs` sau khi chạy thử nghiệm."
+
+#: ../../library/doctest.rst:1285
+#, fuzzy
+msgid ""
+"A string name identifying the :class:`DocTest`.  Typically, this is the name"
+" of the object or file that the test was extracted from."
+msgstr ""
+"Tên chuỗi xác định :class:`DocTest`.  Thông thường, đây là tên của đối tượng"
+" hoặc tệp mà thử nghiệm được trích xuất từ ​​đó."
+
+#: ../../library/doctest.rst:1291
+#, fuzzy
+msgid ""
+"The name of the file that this :class:`DocTest` was extracted from; or "
+"``None`` if the filename is unknown, or if the :class:`!DocTest` was not "
+"extracted from a file."
+msgstr ""
+"Tên của tệp mà :class:`DocTest` này được trích xuất từ ​​đó; hoặc ``None`` "
+"nếu không xác định được tên tệp hoặc nếu :class:`!DocTest` không được trích "
+"xuất từ ​​tệp."
+
+#: ../../library/doctest.rst:1298
+#, fuzzy
+msgid ""
+"The line number within :attr:`filename` where this :class:`DocTest` begins, "
+"or ``None`` if the line number is unavailable.  This line number is zero-"
+"based with respect to the beginning of the file."
+msgstr ""
+"Số dòng trong :attr:`filename` nơi :class:`DocTest` này bắt đầu hoặc "
+"``None`` nếu không có số dòng.  Số dòng này dựa trên số 0 so với phần đầu "
+"của tệp."
+
+#: ../../library/doctest.rst:1305
+#, fuzzy
+msgid ""
+"The string that the test was extracted from, or ``None`` if the string is "
+"unavailable, or if the test was not extracted from a string."
+msgstr ""
+"Chuỗi mà bài kiểm tra được trích xuất từ đó hoặc ``None`` nếu chuỗi đó không"
+" có sẵn hoặc nếu bài kiểm tra không được trích xuất từ một chuỗi."
+
+#: ../../library/doctest.rst:1312
+#, fuzzy
+msgid "Example Objects"
+msgstr "Đối tượng mẫu"
+
+#: ../../library/doctest.rst:1317
+#, fuzzy
+msgid ""
+"A single interactive example, consisting of a Python statement and its "
+"expected output.  The constructor arguments are used to initialize the "
+"attributes of the same names."
+msgstr ""
+"Một ví dụ tương tác duy nhất, bao gồm một câu lệnh Python và kết quả mong "
+"đợi của nó.  Các đối số của hàm tạo được sử dụng để khởi tạo các thuộc tính "
+"có cùng tên."
+
+#: ../../library/doctest.rst:1322
+#, fuzzy
+msgid ""
+":class:`Example` defines the following attributes.  They are initialized by "
+"the constructor, and should not be modified directly."
+msgstr ""
+":class:`Example` xác định các thuộc tính sau.  Chúng được khởi tạo bởi hàm "
+"tạo và không được sửa đổi trực tiếp."
+
+#: ../../library/doctest.rst:1328
+#, fuzzy
+msgid ""
+"A string containing the example's source code.  This source code consists of"
+" a single Python statement, and always ends with a newline; the constructor "
+"adds a newline when necessary."
+msgstr ""
+"Một chuỗi chứa mã nguồn của ví dụ.  Mã nguồn này bao gồm một câu lệnh Python"
+" duy nhất và luôn kết thúc bằng một dòng mới; hàm tạo thêm một dòng mới khi "
+"cần thiết."
+
+#: ../../library/doctest.rst:1335
+#, fuzzy
+msgid ""
+"The expected output from running the example's source code (either from "
+"stdout, or a traceback in case of exception).  :attr:`want` ends with a "
+"newline unless no output is expected, in which case it's an empty string.  "
+"The constructor adds a newline when necessary."
+msgstr ""
+"Kết quả mong đợi từ việc chạy mã nguồn của ví dụ (từ thiết bị xuất chuẩn "
+"hoặc truy nguyên trong trường hợp ngoại lệ).  :attr:`want` kết thúc bằng một"
+" dòng mới trừ khi không có đầu ra nào được mong đợi, trong trường hợp đó đó "
+"là một chuỗi trống.  Hàm tạo thêm một dòng mới khi cần thiết."
+
+#: ../../library/doctest.rst:1343
+#, fuzzy
+msgid ""
+"The exception message generated by the example, if the example is expected "
+"to generate an exception; or ``None`` if it is not expected to generate an "
+"exception.  This exception message is compared against the return value of "
+":func:`traceback.format_exception_only`.  :attr:`exc_msg` ends with a "
+"newline unless it's ``None``.  The constructor adds a newline if needed."
+msgstr ""
+"Thông báo ngoại lệ do ví dụ tạo ra, nếu ví dụ đó dự kiến sẽ tạo ra ngoại lệ;"
+" hoặc ``None`` nếu dự kiến ​​nó không tạo ra ngoại lệ.  Thông báo ngoại lệ "
+"này được so sánh với giá trị trả về của "
+":func:`traceback.format_exception_only`.  :attr:`exc_msg` kết thúc bằng một "
+"dòng mới trừ khi đó là ``None``.  Hàm tạo thêm một dòng mới nếu cần."
+
+#: ../../library/doctest.rst:1352
+#, fuzzy
+msgid ""
+"The line number within the string containing this example where the example "
+"begins.  This line number is zero-based with respect to the beginning of the"
+" containing string."
+msgstr ""
+"Số dòng trong chuỗi chứa ví dụ này nơi ví dụ bắt đầu.  Số dòng này dựa trên "
+"số 0 so với phần đầu của chuỗi chứa."
+
+#: ../../library/doctest.rst:1359
+#, fuzzy
+msgid ""
+"The example's indentation in the containing string, i.e., the number of "
+"space characters that precede the example's first prompt."
+msgstr ""
+"Thụt lề của ví dụ trong chuỗi chứa, tức là số ký tự khoảng trắng đứng trước "
+"dấu nhắc đầu tiên của ví dụ."
+
+#: ../../library/doctest.rst:1365
+#, fuzzy
+msgid ""
+"A dictionary mapping from option flags to ``True`` or ``False``, which is "
+"used to override default options for this example.  Any option flags not "
+"contained in this dictionary are left at their default value (as specified "
+"by the :class:`DocTestRunner`'s :ref:`optionflags <doctest-options>`). By "
+"default, no options are set."
+msgstr ""
+"Ánh xạ từ điển từ cờ tùy chọn sang ``True`` hoặc ``False``, được sử dụng để "
+"ghi đè các tùy chọn mặc định cho ví dụ này.  Bất kỳ cờ tùy chọn nào không có"
+" trong từ điển này đều được giữ ở giá trị mặc định (như được chỉ định bởi "
+":ref:`optionflags <doctest-options>` của :class:`DocTestRunner`). Theo mặc "
+"định, không có tùy chọn nào được đặt."
+
+#: ../../library/doctest.rst:1375
+#, fuzzy
+msgid "DocTestFinder objects"
+msgstr "Đối tượng DocTestFinder"
+
+#: ../../library/doctest.rst:1380
+#, fuzzy
+msgid ""
+"A processing class used to extract the :class:`DocTest`\\ s that are "
+"relevant to a given object, from its docstring and the docstrings of its "
+"contained objects. :class:`DocTest`\\ s can be extracted from modules, "
+"classes, functions, methods, staticmethods, classmethods, and properties."
+msgstr ""
+"Một lớp xử lý được sử dụng để trích xuất các :class:`DocTest`\\ s có liên "
+"quan đến một đối tượng nhất định, từ chuỗi tài liệu của nó và các chuỗi tài "
+"liệu của các đối tượng được chứa trong đó. :class:`DocTest`\\s có thể được "
+"trích xuất từ ​​các mô-đun, lớp, hàm, phương thức, phương thức tĩnh, phương "
+"thức lớp và thuộc tính."
+
+#: ../../library/doctest.rst:1385
+#, fuzzy
+msgid ""
+"The optional argument *verbose* can be used to display the objects searched "
+"by the finder.  It defaults to ``False`` (no output)."
+msgstr ""
+"Đối số tùy chọn *verbose* có thể được sử dụng để hiển thị các đối tượng được"
+" tìm kiếm bởi công cụ tìm kiếm.  Nó mặc định là ``False`` (không có đầu ra)."
+
+#: ../../library/doctest.rst:1388
+#, fuzzy
+msgid ""
+"The optional argument *parser* specifies the :class:`DocTestParser` object "
+"(or a drop-in replacement) that is used to extract doctests from docstrings."
+msgstr ""
+"Đối số tùy chọn *parser* chỉ định đối tượng :class:`DocTestParser` (hoặc một"
+" đối tượng thay thế thả vào) được sử dụng để trích xuất các tài liệu từ "
+"chuỗi tài liệu."
+
+#: ../../library/doctest.rst:1391
+#, fuzzy
+msgid ""
+"If the optional argument *recurse* is false, then :meth:`DocTestFinder.find`"
+" will only examine the given object, and not any contained objects."
+msgstr ""
+"Nếu đối số tùy chọn *recurse* là sai thì :meth:`DocTestFinder.find` sẽ chỉ "
+"kiểm tra đối tượng đã cho chứ không kiểm tra bất kỳ đối tượng nào được chứa."
+
+#: ../../library/doctest.rst:1394
+#, fuzzy
+msgid ""
+"If the optional argument *exclude_empty* is false, then "
+":meth:`DocTestFinder.find` will include tests for objects with empty "
+"docstrings."
+msgstr ""
+"Nếu đối số tùy chọn *exclude_empty* là sai thì :meth:`DocTestFinder.find` sẽ"
+" bao gồm các kiểm tra đối với các đối tượng có chuỗi tài liệu trống."
+
+#: ../../library/doctest.rst:1398
+#, fuzzy
+msgid ":class:`DocTestFinder` defines the following method:"
+msgstr ":class:`DocTestFinder` định nghĩa phương thức sau:"
+
+#: ../../library/doctest.rst:1403
+#, fuzzy
+msgid ""
+"Return a list of the :class:`DocTest`\\ s that are defined by *obj*'s "
+"docstring, or by any of its contained objects' docstrings."
+msgstr ""
+"Trả về danh sách :class:`DocTest`\\ s được xác định bởi chuỗi tài liệu của "
+"*obj* hoặc bởi bất kỳ chuỗi tài liệu nào của đối tượng chứa nó."
+
+#: ../../library/doctest.rst:1406
+#, fuzzy
+msgid ""
+"The optional argument *name* specifies the object's name; this name will be "
+"used to construct names for the returned :class:`DocTest`\\ s.  If *name* is"
+" not specified, then ``obj.__name__`` is used."
+msgstr ""
+"Đối số tùy chọn *name* chỉ định tên của đối tượng; tên này sẽ được sử dụng "
+"để tạo tên cho :class:`DocTest`\\ s được trả về.  Nếu *name* không được chỉ "
+"định thì ``obj.__name__`` sẽ được sử dụng."
+
+#: ../../library/doctest.rst:1410
+#, fuzzy
+msgid ""
+"The optional parameter *module* is the module that contains the given "
+"object. If the module is not specified or is ``None``, then the test finder "
+"will attempt to automatically determine the correct module.  The object's "
+"module is used:"
+msgstr ""
+"Tham số tùy chọn *module* là mô-đun chứa đối tượng đã cho. Nếu mô-đun không "
+"được chỉ định hoặc là ``None`` thì công cụ tìm kiếm sẽ cố gắng tự động xác "
+"định đúng mô-đun.  Mô-đun của đối tượng được sử dụng:"
+
+#: ../../library/doctest.rst:1414
+#, fuzzy
+msgid "As a default namespace, if *globs* is not specified."
+msgstr "Là không gian tên mặc định, nếu *globs* không được chỉ định."
+
+#: ../../library/doctest.rst:1416
+#, fuzzy
+msgid ""
+"To prevent the DocTestFinder from extracting DocTests from objects that are "
+"imported from other modules.  (Contained objects with modules other than "
+"*module* are ignored.)"
+msgstr ""
+"Để ngăn DocTestFinder trích xuất DocTest từ các đối tượng được nhập từ các "
+"mô-đun khác.  (Các đối tượng chứa mô-đun không phải là *module* sẽ bị bỏ "
+"qua.)"
+
+#: ../../library/doctest.rst:1420
+#, fuzzy
+msgid "To find the name of the file containing the object."
+msgstr "Để tìm tên của tập tin chứa đối tượng."
+
+#: ../../library/doctest.rst:1422
+#, fuzzy
+msgid "To help find the line number of the object within its file."
+msgstr "Để giúp tìm số dòng của đối tượng trong tệp của nó."
+
+#: ../../library/doctest.rst:1424
+#, fuzzy
+msgid ""
+"If *module* is ``False``, no attempt to find the module will be made.  This "
+"is obscure, of use mostly in testing doctest itself: if *module* is "
+"``False``, or is ``None`` but cannot be found automatically, then all "
+"objects are considered to belong to the (non-existent) module, so all "
+"contained objects will (recursively) be searched for doctests."
+msgstr ""
+"Nếu *module* là ``False`` thì sẽ không có nỗ lực tìm kiếm mô-đun nào được "
+"thực hiện.  Điều này không rõ ràng, chủ yếu được sử dụng trong việc kiểm tra"
+" doctest: nếu *module* là ``False`` hoặc là ``None`` nhưng không thể được "
+"tìm thấy tự động, thì tất cả các đối tượng được coi là thuộc về mô-đun "
+"(không tồn tại), vì vậy tất cả các đối tượng được chứa sẽ được tìm kiếm (đệ "
+"quy) để tìm doctest."
+
+#: ../../library/doctest.rst:1430
+#, python-brace-format, fuzzy
+msgid ""
+"The globals for each :class:`DocTest` is formed by combining *globs* and "
+"*extraglobs* (bindings in *extraglobs* override bindings in *globs*).  A new"
+" shallow copy of the globals dictionary is created for each "
+":class:`!DocTest`. If *globs* is not specified, then it defaults to the "
+"module's :attr:`~module.__dict__`, if specified, or ``{}`` otherwise. If "
+"*extraglobs* is not specified, then it defaults to ``{}``."
+msgstr ""
+"Các giá trị chung cho mỗi :class:`DocTest` được hình thành bằng cách kết hợp"
+" *globs* và *extraglobs* (các liên kết trong *extraglobs* ghi đè các liên "
+"kết trong *globs*).  Một bản sao nông mới của từ điển toàn cầu được tạo cho "
+"mỗi :class:`!DocTest`. Nếu *globs* không được chỉ định thì nó sẽ mặc định là"
+" :attr:`~module.__dict__` của mô-đun nếu được chỉ định hoặc ``{}`` nếu "
+"không. Nếu *extraglobs* không được chỉ định thì mặc định là ``{}``."
+
+#: ../../library/doctest.rst:1441
+#, fuzzy
+msgid "DocTestParser objects"
+msgstr "Đối tượng DocTestParser"
+
+#: ../../library/doctest.rst:1446
+#, fuzzy
+msgid ""
+"A processing class used to extract interactive examples from a string, and "
+"use them to create a :class:`DocTest` object."
+msgstr ""
+"Một lớp xử lý được sử dụng để trích xuất các ví dụ tương tác từ một chuỗi và"
+" sử dụng chúng để tạo đối tượng :class:`DocTest`."
+
+#: ../../library/doctest.rst:1450
+#, fuzzy
+msgid ":class:`DocTestParser` defines the following methods:"
+msgstr ":class:`DocTestParser` định nghĩa các phương thức sau:"
+
+#: ../../library/doctest.rst:1455
+#, fuzzy
+msgid ""
+"Extract all doctest examples from the given string, and collect them into a "
+":class:`DocTest` object."
+msgstr ""
+"Trích xuất tất cả các ví dụ doctest từ chuỗi đã cho và thu thập chúng vào "
+"đối tượng :class:`DocTest`."
+
+#: ../../library/doctest.rst:1458
+#, fuzzy
+msgid ""
+"*globs*, *name*, *filename*, and *lineno* are attributes for the new "
+":class:`!DocTest` object.  See the documentation for :class:`DocTest` for "
+"more information."
+msgstr ""
+"*globs*, *name*, *filename* và *lineno* là các thuộc tính cho đối tượng "
+":class:`!DocTest` mới.  Xem tài liệu về :class:`DocTest` để biết thêm thông "
+"tin."
+
+#: ../../library/doctest.rst:1465
+#, fuzzy
+msgid ""
+"Extract all doctest examples from the given string, and return them as a "
+"list of :class:`Example` objects.  Line numbers are 0-based.  The optional "
+"argument *name* is a name identifying this string, and is only used for "
+"error messages."
+msgstr ""
+"Trích xuất tất cả các ví dụ doctest từ chuỗi đã cho và trả về chúng dưới "
+"dạng danh sách các đối tượng :class:`Example`.  Số dòng dựa trên 0.  Đối số "
+"tùy chọn *name* là tên xác định chuỗi này và chỉ được sử dụng cho các thông "
+"báo lỗi."
+
+#: ../../library/doctest.rst:1472
+#, fuzzy
+msgid ""
+"Divide the given string into examples and intervening text, and return them "
+"as a list of alternating :class:`Example`\\ s and strings. Line numbers for "
+"the :class:`!Example`\\ s are 0-based.  The optional argument *name* is a "
+"name identifying this string, and is only used for error messages."
+msgstr ""
+"Chia chuỗi đã cho thành các ví dụ và văn bản xen vào, rồi trả về chúng dưới "
+"dạng danh sách các chuỗi và :class:`Example`\\ s xen kẽ. Số dòng cho "
+":class:`!Example`\\ s dựa trên 0.  Đối số tùy chọn *name* là tên xác định "
+"chuỗi này và chỉ được sử dụng cho các thông báo lỗi."
+
+#: ../../library/doctest.rst:1479
+#, fuzzy
+msgid "TestResults objects"
+msgstr "Đối tượng TestResults"
+
+#: ../../library/doctest.rst:1486
+#, fuzzy
+msgid "Number of failed tests."
+msgstr "Số lần thử nghiệm thất bại."
+
+#: ../../library/doctest.rst:1490
+#, fuzzy
+msgid "Number of attempted tests."
+msgstr "Số lượng thử nghiệm đã thử."
+
+#: ../../library/doctest.rst:1494
+#, fuzzy
+msgid "Number of skipped tests."
+msgstr "Số bài kiểm tra bị bỏ qua"
+
+#: ../../library/doctest.rst:1502
+#, fuzzy
+msgid "DocTestRunner objects"
+msgstr "Đối tượng DocTestRunner"
+
+#: ../../library/doctest.rst:1507
+#, fuzzy
+msgid ""
+"A processing class used to execute and verify the interactive examples in a "
+":class:`DocTest`."
+msgstr ""
+"Lớp xử lý được sử dụng để thực thi và xác minh các ví dụ tương tác trong "
+":class:`DocTest`."
+
+#: ../../library/doctest.rst:1510
+#, fuzzy
+msgid ""
+"The comparison between expected outputs and actual outputs is done by an "
+":class:`OutputChecker`.  This comparison may be customized with a number of "
+"option flags; see section :ref:`doctest-options` for more information.  If "
+"the option flags are insufficient, then the comparison may also be "
+"customized by passing a subclass of :class:`!OutputChecker` to the "
+"constructor."
+msgstr ""
+"Việc so sánh giữa kết quả đầu ra dự kiến và kết quả đầu ra thực tế được thực"
+" hiện bởi :class:`OutputChecker`.  Sự so sánh này có thể được tùy chỉnh bằng"
+" một số cờ tùy chọn; xem phần :ref:`doctest-options` để biết thêm thông tin."
+"  Nếu cờ tùy chọn không đủ thì việc so sánh cũng có thể được tùy chỉnh bằng "
+"cách chuyển một lớp con của :class:`!OutputChecker` cho hàm tạo."
+
+#: ../../library/doctest.rst:1516
+#, fuzzy
+msgid ""
+"The test runner's display output can be controlled in two ways. First, an "
+"output function can be passed to :meth:`run`; this function will be called "
+"with strings that should be displayed.  It defaults to ``sys.stdout.write``."
+"  If capturing the output is not sufficient, then the display output can be "
+"also customized by subclassing DocTestRunner, and overriding the methods "
+":meth:`report_start`, :meth:`report_success`, "
+":meth:`report_unexpected_exception`, and :meth:`report_failure`."
+msgstr ""
+"Đầu ra màn hình của người chạy thử có thể được điều khiển theo hai cách. Đầu"
+" tiên, một hàm đầu ra có thể được chuyển tới :meth:`run`; hàm này sẽ được "
+"gọi với các chuỗi sẽ được hiển thị.  Nó mặc định là ``sys.stdout.write``.  "
+"Nếu việc thu thập đầu ra là không đủ thì đầu ra màn hình cũng có thể được "
+"tùy chỉnh bằng cách phân lớp con DocTestRunner và ghi đè các phương thức "
+":meth:`report_start`, :meth:`report_success`, "
+":meth:`report_unexpected_exception` và :meth:`report_failure`."
+
+#: ../../library/doctest.rst:1524
+#, fuzzy
+msgid ""
+"The optional keyword argument *checker* specifies the :class:`OutputChecker`"
+" object (or drop-in replacement) that should be used to compare the expected"
+" outputs to the actual outputs of doctest examples."
+msgstr ""
+"Đối số từ khóa tùy chọn *checker* chỉ định đối tượng :class:`OutputChecker` "
+"(hoặc thay thế thả vào) sẽ được sử dụng để so sánh kết quả đầu ra dự kiến "
+"với kết quả đầu ra thực tế của các ví dụ doctest."
+
+#: ../../library/doctest.rst:1528
+#, fuzzy
+msgid ""
+"The optional keyword argument *verbose* controls the "
+":class:`DocTestRunner`'s verbosity.  If *verbose* is ``True``, then "
+"information is printed about each example, as it is run.  If *verbose* is "
+"``False``, then only failures are printed.  If *verbose* is unspecified, or "
+"``None``, then verbose output is used iff the command-line switch ``-v`` is "
+"used."
+msgstr ""
+"Đối số từ khóa tùy chọn *verbose* kiểm soát mức độ chi tiết của "
+":class:`DocTestRunner`.  Nếu *verbose* là ``True`` thì thông tin sẽ được in "
+"về từng ví dụ khi nó được chạy.  Nếu *verbose* là ``False`` thì chỉ in lỗi."
+"  Nếu *verbose* không được chỉ định hoặc ``None`` thì đầu ra chi tiết sẽ "
+"được sử dụng nếu sử dụng khóa chuyển dòng lệnh ``-v``."
+
+#: ../../library/doctest.rst:1534
+#, fuzzy
+msgid ""
+"The optional keyword argument *optionflags* can be used to control how the "
+"test runner compares expected output to actual output, and how it displays "
+"failures. For more information, see section :ref:`doctest-options`."
+msgstr ""
+"Đối số từ khóa tùy chọn *optionflags* có thể được sử dụng để kiểm soát cách "
+"người chạy thử so sánh đầu ra dự kiến với đầu ra thực tế và cách nó hiển thị"
+" các lỗi. Để biết thêm thông tin, xem phần :ref:`doctest-options`."
+
+#: ../../library/doctest.rst:1538
+#, fuzzy
+msgid ""
+"The test runner accumulates statistics. The aggregated number of attempted, "
+"failed and skipped examples is also available via the :attr:`tries`, "
+":attr:`failures` and :attr:`skips` attributes. The :meth:`run` and "
+":meth:`summarize` methods return a :class:`TestResults` instance."
+msgstr ""
+"Người chạy thử tích lũy số liệu thống kê. Số lượng tổng hợp các ví dụ đã "
+"thử, không thành công và bị bỏ qua cũng có sẵn thông qua các thuộc tính "
+":attr:`tries`, :attr:`failures` và :attr:`skips`. Các phương thức "
+":meth:`run` và :meth:`summarize` trả về một phiên bản :class:`TestResults`."
+
+#: ../../library/doctest.rst:1543
+#, fuzzy
+msgid ":class:`DocTestRunner` defines the following methods:"
+msgstr ":class:`DocTestRunner` định nghĩa các phương thức sau:"
+
+#: ../../library/doctest.rst:1548
+#, fuzzy
+msgid ""
+"Report that the test runner is about to process the given example. This "
+"method is provided to allow subclasses of :class:`DocTestRunner` to "
+"customize their output; it should not be called directly."
+msgstr ""
+"Báo cáo rằng người chạy thử sắp xử lý ví dụ đã cho. Phương thức này được "
+"cung cấp để cho phép các lớp con của :class:`DocTestRunner` tùy chỉnh đầu ra"
+" của chúng; nó không nên được gọi trực tiếp."
+
+#: ../../library/doctest.rst:1552
+#, fuzzy
+msgid ""
+"*example* is the example about to be processed.  *test* is the test "
+"containing *example*.  *out* is the output function that was passed to "
+":meth:`DocTestRunner.run`."
+msgstr ""
+"*example* là ví dụ sắp được xử lý.  *test* là bài kiểm tra có chứa "
+"*example*.  *out* là hàm đầu ra được truyền cho :meth:`DocTestRunner.run`."
+
+#: ../../library/doctest.rst:1559
+#, fuzzy
+msgid ""
+"Report that the given example ran successfully.  This method is provided to "
+"allow subclasses of :class:`DocTestRunner` to customize their output; it "
+"should not be called directly."
+msgstr ""
+"Báo cáo rằng ví dụ đã cho đã chạy thành công.  Phương thức này được cung cấp"
+" để cho phép các lớp con của :class:`DocTestRunner` tùy chỉnh đầu ra của "
+"chúng; nó không nên được gọi trực tiếp."
+
+#: ../../library/doctest.rst:1563 ../../library/doctest.rst:1574
+#, fuzzy
+msgid ""
+"*example* is the example about to be processed.  *got* is the actual output "
+"from the example.  *test* is the test containing *example*.  *out* is the "
+"output function that was passed to :meth:`DocTestRunner.run`."
+msgstr ""
+"*example* là ví dụ sắp được xử lý.  *got* là đầu ra thực tế từ ví dụ.  "
+"*test* là bài kiểm tra có chứa *example*.  *out* là hàm đầu ra được truyền "
+"cho :meth:`DocTestRunner.run`."
+
+#: ../../library/doctest.rst:1570
+#, fuzzy
+msgid ""
+"Report that the given example failed.  This method is provided to allow "
+"subclasses of :class:`DocTestRunner` to customize their output; it should "
+"not be called directly."
+msgstr ""
+"Báo cáo rằng ví dụ đã cho không thành công.  Phương thức này được cung cấp "
+"để cho phép các lớp con của :class:`DocTestRunner` tùy chỉnh đầu ra của "
+"chúng; nó không nên được gọi trực tiếp."
+
+#: ../../library/doctest.rst:1581
+#, fuzzy
+msgid ""
+"Report that the given example raised an unexpected exception. This method is"
+" provided to allow subclasses of :class:`DocTestRunner` to customize their "
+"output; it should not be called directly."
+msgstr ""
+"Báo cáo rằng ví dụ đã cho đưa ra một ngoại lệ không mong muốn. Phương thức "
+"này được cung cấp để cho phép các lớp con của :class:`DocTestRunner` tùy "
+"chỉnh đầu ra của chúng; nó không nên được gọi trực tiếp."
+
+#: ../../library/doctest.rst:1585
+#, fuzzy
+msgid ""
+"*example* is the example about to be processed. *exc_info* is a tuple "
+"containing information about the unexpected exception (as returned by "
+":func:`sys.exc_info`). *test* is the test containing *example*.  *out* is "
+"the output function that was passed to :meth:`DocTestRunner.run`."
+msgstr ""
+"*example* là ví dụ sắp được xử lý. *exc_info* là một bộ chứa thông tin về "
+"ngoại lệ không mong muốn (được trả về bởi :func:`sys.exc_info`). *test* là "
+"bài kiểm tra có chứa *example*.  *out* là hàm đầu ra được truyền cho "
+":meth:`DocTestRunner.run`."
+
+#: ../../library/doctest.rst:1593
+#, fuzzy
+msgid ""
+"Run the examples in *test* (a :class:`DocTest` object), and display the "
+"results using the writer function *out*. Return a :class:`TestResults` "
+"instance."
+msgstr ""
+"Chạy các ví dụ trong *test* (đối tượng :class:`DocTest`) và hiển thị kết quả"
+" bằng hàm ghi *out*. Trả về một phiên bản :class:`TestResults`."
+
+#: ../../library/doctest.rst:1597
+#, fuzzy
+msgid ""
+"The examples are run in the namespace ``test.globs``.  If *clear_globs* is "
+"true (the default), then this namespace will be cleared after the test runs,"
+" to help with garbage collection. If you would like to examine the namespace"
+" after the test completes, then use *clear_globs=False*."
+msgstr ""
+"Các ví dụ được chạy trong không gian tên ``test.globs``.  Nếu *clear_globs* "
+"là true (mặc định), thì vùng tên này sẽ bị xóa sau khi chạy thử để hỗ trợ "
+"việc thu gom rác. Nếu bạn muốn kiểm tra không gian tên sau khi quá trình "
+"kiểm tra hoàn tất, hãy sử dụng *clear_globs=False*."
+
+#: ../../library/doctest.rst:1602
+#, fuzzy
+msgid ""
+"*compileflags* gives the set of flags that should be used by the Python "
+"compiler when running the examples.  If not specified, then it will default "
+"to the set of future-import flags that apply to *globs*."
+msgstr ""
+"*compileflags* cung cấp bộ cờ mà trình biên dịch Python sẽ sử dụng khi chạy "
+"các ví dụ.  Nếu không được chỉ định thì nó sẽ mặc định tập hợp các cờ nhập "
+"trong tương lai áp dụng cho *globs*."
+
+#: ../../library/doctest.rst:1606
+#, fuzzy
+msgid ""
+"The output of each example is checked using the :class:`DocTestRunner`'s "
+"output checker, and the results are formatted by the "
+":meth:`!DocTestRunner.report_\\*` methods."
+msgstr ""
+"Đầu ra của mỗi ví dụ được kiểm tra bằng trình kiểm tra đầu ra của "
+":class:`DocTestRunner` và kết quả được định dạng bằng phương thức "
+":meth:`!DocTestRunner.report_\\*`."
+
+#: ../../library/doctest.rst:1613
+#, fuzzy
+msgid ""
+"Print a summary of all the test cases that have been run by this "
+"DocTestRunner, and return a :class:`TestResults` instance."
+msgstr ""
+"In bản tóm tắt tất cả các trường hợp thử nghiệm đã được DocTestRunner này "
+"chạy và trả về một phiên bản :class:`TestResults`."
+
+#: ../../library/doctest.rst:1616
+#, fuzzy
+msgid ""
+"The optional *verbose* argument controls how detailed the summary is.  If "
+"the verbosity is not specified, then the :class:`DocTestRunner`'s verbosity "
+"is used."
+msgstr ""
+"Đối số *verbose* tùy chọn kiểm soát mức độ chi tiết của bản tóm tắt.  Nếu "
+"mức độ chi tiết không được chỉ định thì mức độ chi tiết của "
+":class:`DocTestRunner` sẽ được sử dụng."
+
+#: ../../library/doctest.rst:1620
+#, fuzzy
+msgid ":class:`DocTestParser` has the following attributes:"
+msgstr ":class:`DocTestParser` có các thuộc tính sau:"
+
+#: ../../library/doctest.rst:1624
+#, fuzzy
+msgid "Number of attempted examples."
+msgstr "Số lượng ví dụ đã thử."
+
+#: ../../library/doctest.rst:1628
+#, fuzzy
+msgid "Number of failed examples."
+msgstr "Số lượng ví dụ thất bại"
+
+#: ../../library/doctest.rst:1632
+#, fuzzy
+msgid "Number of skipped examples."
+msgstr "Số lượng ví dụ bị bỏ qua"
+
+#: ../../library/doctest.rst:1640
+#, fuzzy
+msgid "OutputChecker objects"
+msgstr "Đối tượng OutputChecker"
+
+#: ../../library/doctest.rst:1645
+#, fuzzy
+msgid ""
+"A class used to check the whether the actual output from a doctest example "
+"matches the expected output.  :class:`OutputChecker` defines two methods: "
+":meth:`check_output`, which compares a given pair of outputs, and returns "
+"``True`` if they match; and :meth:`output_difference`, which returns a "
+"string describing the differences between two outputs."
+msgstr ""
+"Một lớp được sử dụng để kiểm tra xem đầu ra thực tế từ một ví dụ doctest có "
+"khớp với đầu ra dự kiến hay không.  :class:`OutputChecker` xác định hai "
+"phương thức: :meth:`check_output`, so sánh một cặp đầu ra nhất định và trả "
+"về ``True`` nếu chúng khớp; và :meth:`output_difference`, trả về một chuỗi "
+"mô tả sự khác biệt giữa hai kết quả đầu ra."
+
+#: ../../library/doctest.rst:1652
+#, fuzzy
+msgid ":class:`OutputChecker` defines the following methods:"
+msgstr ":class:`OutputChecker` định nghĩa các phương thức sau:"
+
+#: ../../library/doctest.rst:1656
+#, fuzzy
+msgid ""
+"Return ``True`` iff the actual output from an example (*got*) matches the "
+"expected output (*want*).  These strings are always considered to match if "
+"they are identical; but depending on what option flags the test runner is "
+"using, several non-exact match types are also possible.  See section "
+":ref:`doctest-options` for more information about option flags."
+msgstr ""
+"Trả về ``True`` nếu đầu ra thực tế từ một ví dụ (*got*) khớp với đầu ra dự "
+"kiến (*want*).  Các chuỗi này luôn được coi là khớp nếu chúng giống hệt "
+"nhau; nhưng tùy thuộc vào cờ tùy chọn mà người chạy thử nghiệm đang sử dụng,"
+" cũng có thể có một số loại kết quả không chính xác.  Xem phần "
+":ref:`doctest-options` để biết thêm thông tin về cờ tùy chọn."
+
+#: ../../library/doctest.rst:1665
+#, fuzzy
+msgid ""
+"Return a string describing the differences between the expected output for a"
+" given example (*example*) and the actual output (*got*).  *optionflags* is "
+"the set of option flags used to compare *want* and *got*."
+msgstr ""
+"Trả về một chuỗi mô tả sự khác biệt giữa kết quả đầu ra dự kiến của một ví "
+"dụ nhất định (*example*) và kết quả đầu ra thực tế (*got*).  *optionflags* "
+"là tập hợp các cờ tùy chọn được sử dụng để so sánh *want* và *got*."
+
+#: ../../library/doctest.rst:1673
+#, fuzzy
+msgid "Debugging"
+msgstr "Gỡ lỗi"
+
+#: ../../library/doctest.rst:1675
+#, fuzzy
+msgid "Doctest provides several mechanisms for debugging doctest examples:"
+msgstr "Doctest cung cấp một số cơ chế để gỡ lỗi các ví dụ doctest:"
+
+#: ../../library/doctest.rst:1677
+#, fuzzy
+msgid ""
+"Several functions convert doctests to executable Python programs, which can "
+"be run under the Python debugger, :mod:`pdb`."
+msgstr ""
+"Một số hàm chuyển đổi doctest thành các chương trình Python có thể thực thi "
+"được, có thể chạy trong trình gỡ lỗi Python, :mod:`pdb`."
+
+#: ../../library/doctest.rst:1680
+#, fuzzy
+msgid ""
+"The :class:`DebugRunner` class is a subclass of :class:`DocTestRunner` that "
+"raises an exception for the first failing example, containing information "
+"about that example. This information can be used to perform post-mortem "
+"debugging on the example."
+msgstr ""
+"Lớp :class:`DebugRunner` là lớp con của :class:`DocTestRunner` đưa ra một "
+"ngoại lệ cho ví dụ bị lỗi đầu tiên, chứa thông tin về ví dụ đó. Thông tin "
+"này có thể được sử dụng để thực hiện gỡ lỗi sau khi thử nghiệm trên ví dụ."
+
+#: ../../library/doctest.rst:1685
+#, fuzzy
+msgid ""
+"The :mod:`unittest` cases generated by :func:`DocTestSuite` support the "
+":meth:`debug` method defined by :class:`unittest.TestCase`."
+msgstr ""
+"Các trường hợp :mod:`unittest` được tạo bởi :func:`DocTestSuite` hỗ trợ "
+"phương thức :meth:`debug` được xác định bởi :class:`unittest.TestCase`."
+
+#: ../../library/doctest.rst:1688
+#, fuzzy
+msgid ""
+"You can add a call to :func:`pdb.set_trace` in a doctest example, and you'll"
+" drop into the Python debugger when that line is executed.  Then you can "
+"inspect current values of variables, and so on.  For example, suppose "
+":file:`a.py` contains just this module docstring::"
+msgstr ""
+"Bạn có thể thêm lệnh gọi tới :func:`pdb.set_trace` trong một ví dụ tốt nhất "
+"và bạn sẽ truy cập trình gỡ lỗi Python khi dòng đó được thực thi.  Sau đó, "
+"bạn có thể kiểm tra giá trị hiện tại của các biến, v.v.  Ví dụ: giả sử "
+":file:`a.py` chỉ chứa chuỗi tài liệu mô-đun này ::"
+
+#: ../../library/doctest.rst:1693
+#, fuzzy
+msgid ""
+"\"\"\"\n"
+">>> def f(x):\n"
+"...     g(x*2)\n"
+">>> def g(x):\n"
+"...     print(x+3)\n"
+"...     import pdb; pdb.set_trace()\n"
+">>> f(3)\n"
+"9\n"
+"\"\"\""
+msgstr ""
+"\"\"\"\n"
+">>> định nghĩa f(x):\n"
+"...g(x*2)\n"
+">>> định nghĩa g(x):\n"
+"... in(x+3)\n"
+"... nhập pdb; pdb.set_trace()\n"
+">>>f(3)\n"
+"9\n"
+"\"\"\""
+
+#: ../../library/doctest.rst:1703
+#, fuzzy
+msgid "Then an interactive Python session may look like this::"
+msgstr "Sau đó, phiên Python tương tác có thể trông như thế này::"
+
+#: ../../library/doctest.rst:1705
+#, fuzzy
+msgid ""
+">>> import a, doctest\n"
+">>> doctest.testmod(a)\n"
+"--Return--\n"
+"> <doctest a[1]>(3)g()->None\n"
+"-> import pdb; pdb.set_trace()\n"
+"(Pdb) list\n"
+"  1     def g(x):\n"
+"  2         print(x+3)\n"
+"  3  ->     import pdb; pdb.set_trace()\n"
+"[EOF]\n"
+"(Pdb) p x\n"
+"6\n"
+"(Pdb) step\n"
+"--Return--\n"
+"> <doctest a[0]>(2)f()->None\n"
+"-> g(x*2)\n"
+"(Pdb) list\n"
+"  1     def f(x):\n"
+"  2  ->     g(x*2)\n"
+"[EOF]\n"
+"(Pdb) p x\n"
+"3\n"
+"(Pdb) step\n"
+"--Return--\n"
+"> <doctest a[2]>(1)?()->None\n"
+"-> f(3)\n"
+"(Pdb) cont\n"
+"(0, 3)\n"
+">>>"
+msgstr ""
+">>> nhập a, doctest\n"
+">>> doctest.testmod(a)\n"
+"--Trở về--\n"
+"> <doctest a[1]>(3)g()->Không có\n"
+"-> nhập pdb; pdb.set_trace()\n"
+"(Pdb) danh sách\n"
+"  1 độ phân giải g(x):\n"
+"  2 bản in(x+3)\n"
+"  3 -> nhập pdb; pdb.set_trace()\n"
+"[EOF]\n"
+"(Pdb) p x\n"
+"6\n"
+"(Pdb) bước\n"
+"--Trở về--\n"
+"> <doctest a[0]>(2)f()->Không có\n"
+"->g(x*2)\n"
+"(Pdb) danh sách\n"
+"  1 xác định f(x):\n"
+"  2 -> g(x*2)\n"
+"[EOF]\n"
+"(Pdb) p x\n"
+"3\n"
+"(Pdb) bước\n"
+"--Trở về--\n"
+"> <doctest a[2]>(1)?()->Không có\n"
+"-> f(3)\n"
+"(Pdb) tiếp\n"
+"(0, 3)\n"
+">>>"
+
+#: ../../library/doctest.rst:1736
+#, fuzzy
+msgid ""
+"Functions that convert doctests to Python code, and possibly run the "
+"synthesized code under the debugger:"
+msgstr ""
+"Các hàm chuyển đổi doctest thành mã Python và có thể chạy mã tổng hợp trong "
+"trình gỡ lỗi:"
+
+#: ../../library/doctest.rst:1742
+#, fuzzy
+msgid "Convert text with examples to a script."
+msgstr "Chuyển đổi văn bản có ví dụ thành tập lệnh."
+
+#: ../../library/doctest.rst:1744
+#, fuzzy
+msgid ""
+"Argument *s* is a string containing doctest examples.  The string is "
+"converted to a Python script, where doctest examples in *s* are converted to"
+" regular code, and everything else is converted to Python comments.  The "
+"generated script is returned as a string. For example, ::"
+msgstr ""
+"Đối số *s* là một chuỗi chứa các ví dụ tốt nhất.  Chuỗi được chuyển đổi "
+"thành tập lệnh Python, trong đó các ví dụ doctest trong *s* được chuyển đổi "
+"thành mã thông thường và mọi thứ khác được chuyển đổi thành nhận xét Python."
+"  Tập lệnh được tạo sẽ được trả về dưới dạng chuỗi. Ví dụ:::"
+
+#: ../../library/doctest.rst:1749
+#, fuzzy
+msgid ""
+"import doctest\n"
+"print(doctest.script_from_examples(r\"\"\"\n"
+"    Set x and y to 1 and 2.\n"
+"    >>> x, y = 1, 2\n"
+"\n"
+"    Print their sum:\n"
+"    >>> print(x+y)\n"
+"    3\n"
+"\"\"\"))"
+msgstr ""
+"nhập doctest\n"
+"print(doctest.script_from_examples(r\"\"\"\n"
+"    Đặt x và y thành 1 và 2.\n"
+"    >>> x, y = 1, 2\n"
+"\n"
+"    In tổng của chúng:\n"
+"    >>> in(x+y)\n"
+"    3\n"
+"\"\"\"))"
+
+#: ../../library/doctest.rst:1759
+#, fuzzy
+msgid "displays::"
+msgstr "hiển thị::"
+
+#: ../../library/doctest.rst:1761
+#, fuzzy
+msgid ""
+"# Set x and y to 1 and 2.\n"
+"x, y = 1, 2\n"
+"#\n"
+"# Print their sum:\n"
+"print(x+y)\n"
+"# Expected:\n"
+"## 3"
+msgstr ""
+"# Set x và y thành 1 và 2.\n"
+"x, y = 1, 2\n"
+"#\n"
+"# Print tổng của họ:\n"
+"in(x+y)\n"
+"# Expected:\n"
+"## 3"
+
+#: ../../library/doctest.rst:1769
+#, fuzzy
+msgid ""
+"This function is used internally by other functions (see below), but can "
+"also be useful when you want to transform an interactive Python session into"
+" a Python script."
+msgstr ""
+"Hàm này được các hàm khác sử dụng nội bộ (xem bên dưới), nhưng cũng có thể "
+"hữu ích khi bạn muốn chuyển đổi phiên Python tương tác thành tập lệnh "
+"Python."
+
+#: ../../library/doctest.rst:1776
+#, fuzzy
+msgid "Convert the doctest for an object to a script."
+msgstr "Chuyển đổi doctest của một đối tượng thành một tập lệnh."
+
+#: ../../library/doctest.rst:1778
+#, fuzzy
+msgid ""
+"Argument *module* is a module object, or dotted name of a module, containing"
+" the object whose doctests are of interest.  Argument *name* is the name "
+"(within the module) of the object with the doctests of interest.  The result"
+" is a string, containing the object's docstring converted to a Python "
+"script, as described for :func:`script_from_examples` above.  For example, "
+"if module :file:`a.py` contains a top-level function :func:`!f`, then ::"
+msgstr ""
+"Đối số *module* là một đối tượng mô-đun hoặc tên có dấu chấm của một mô-đun,"
+" chứa đối tượng mà các doctest được quan tâm.  Đối số *name* là tên (trong "
+"mô-đun) của đối tượng có tài liệu quan tâm.  Kết quả là một chuỗi chứa chuỗi"
+" tài liệu của đối tượng được chuyển đổi thành tập lệnh Python, như được mô "
+"tả cho :func:`script_from_examples` ở trên.  Ví dụ: nếu mô-đun :file:`a.py` "
+"chứa hàm cấp cao nhất :func:`!f`, thì ::"
+
+#: ../../library/doctest.rst:1785
+#, fuzzy
+msgid ""
+"import a, doctest\n"
+"print(doctest.testsource(a, \"a.f\"))"
+msgstr ""
+"nhập một, doctest\n"
+"print(doctest.testsource(a, \"a.f\"))"
+
+#: ../../library/doctest.rst:1788
+#, fuzzy
+msgid ""
+"prints a script version of function :func:`!f`'s docstring, with doctests "
+"converted to code, and the rest placed in comments."
+msgstr ""
+"in một phiên bản tập lệnh của chuỗi tài liệu của hàm :func:`!f`, với các "
+"doctest được chuyển đổi thành mã và phần còn lại được đặt trong các nhận "
+"xét."
+
+#: ../../library/doctest.rst:1794
+#, fuzzy
+msgid "Debug the doctests for an object."
+msgstr "Gỡ lỗi các tài liệu cho một đối tượng."
+
+#: ../../library/doctest.rst:1796
+#, fuzzy
+msgid ""
+"The *module* and *name* arguments are the same as for function "
+":func:`testsource` above.  The synthesized Python script for the named "
+"object's docstring is written to a temporary file, and then that file is run"
+" under the control of the Python debugger, :mod:`pdb`."
+msgstr ""
+"Các đối số *module* và *name* giống như đối với hàm :func:`testsource` ở "
+"trên.  Tập lệnh Python tổng hợp cho chuỗi tài liệu của đối tượng được đặt "
+"tên được ghi vào một tệp tạm thời và sau đó tệp đó được chạy dưới sự kiểm "
+"soát của trình gỡ lỗi Python, :mod:`pdb`."
+
+#: ../../library/doctest.rst:1801
+#, fuzzy
+msgid ""
+"A shallow copy of ``module.__dict__`` is used for both local and global "
+"execution context."
+msgstr ""
+"Một bản sao nông của ``module.__dict__`` được sử dụng cho cả bối cảnh thực "
+"thi cục bộ và toàn cục."
+
+#: ../../library/doctest.rst:1804
+#, fuzzy
+msgid ""
+"Optional argument *pm* controls whether post-mortem debugging is used.  If "
+"*pm* has a true value, the script file is run directly, and the debugger "
+"gets involved only if the script terminates via raising an unhandled "
+"exception.  If it does, then post-mortem debugging is invoked, via "
+":func:`pdb.post_mortem`, passing the traceback object from the unhandled "
+"exception.  If *pm* is not specified, or is false, the script is run under "
+"the debugger from the start, via passing an appropriate :func:`exec` call to"
+" :func:`pdb.run`."
+msgstr ""
+"Đối số tùy chọn *pm* kiểm soát xem có sử dụng tính năng gỡ lỗi sau khi chết "
+"hay không.  Nếu *pm* có giá trị thực, tệp tập lệnh sẽ được chạy trực tiếp và"
+" trình gỡ lỗi chỉ được tham gia nếu tập lệnh kết thúc bằng cách đưa ra một "
+"ngoại lệ chưa được xử lý.  Nếu đúng như vậy thì việc gỡ lỗi sau khi xử lý sẽ"
+" được thực hiện, thông qua :func:`pdb.post_mortem`, chuyển đối tượng truy "
+"nguyên từ ngoại lệ chưa được xử lý.  Nếu *pm* không được chỉ định hoặc sai, "
+"tập lệnh sẽ được chạy trong trình gỡ lỗi ngay từ đầu, thông qua việc chuyển "
+"lệnh gọi :func:`exec` thích hợp tới :func:`pdb.run`."
+
+#: ../../library/doctest.rst:1815
+#, fuzzy
+msgid "Debug the doctests in a string."
+msgstr "Gỡ lỗi các tài liệu trong một chuỗi."
+
+#: ../../library/doctest.rst:1817
+#, fuzzy
+msgid ""
+"This is like function :func:`debug` above, except that a string containing "
+"doctest examples is specified directly, via the *src* argument."
+msgstr ""
+"Điều này giống như hàm :func:`debug` ở trên, ngoại trừ một chuỗi chứa các ví"
+" dụ doctest được chỉ định trực tiếp, thông qua đối số *src*."
+
+#: ../../library/doctest.rst:1820
+#, fuzzy
+msgid ""
+"Optional argument *pm* has the same meaning as in function :func:`debug` "
+"above."
+msgstr ""
+"Đối số tùy chọn *pm* có ý nghĩa tương tự như trong hàm :func:`debug` ở trên."
+
+#: ../../library/doctest.rst:1822
+#, fuzzy
+msgid ""
+"Optional argument *globs* gives a dictionary to use as both local and global"
+" execution context.  If not specified, or ``None``, an empty dictionary is "
+"used. If specified, a shallow copy of the dictionary is used."
+msgstr ""
+"Đối số tùy chọn *globs* cung cấp một từ điển để sử dụng làm bối cảnh thực "
+"thi cục bộ và toàn cục.  Nếu không được chỉ định hoặc ``None``, một từ điển "
+"trống sẽ được sử dụng. Nếu được chỉ định, một bản sao nông của từ điển sẽ "
+"được sử dụng."
+
+#: ../../library/doctest.rst:1827
+#, fuzzy
+msgid ""
+"The :class:`DebugRunner` class, and the special exceptions it may raise, are"
+" of most interest to testing framework authors, and will only be sketched "
+"here.  See the source code, and especially :class:`DebugRunner`'s docstring "
+"(which is a doctest!) for more details:"
+msgstr ""
+"Lớp :class:`DebugRunner` và các ngoại lệ đặc biệt mà nó có thể nêu ra, được "
+"các tác giả khung thử nghiệm quan tâm nhất và sẽ chỉ được phác thảo ở đây.  "
+"Xem mã nguồn và đặc biệt là chuỗi doc của :class:`DebugRunner` (là doctest!)"
+" để biết thêm chi tiết:"
+
+#: ../../library/doctest.rst:1835
+#, fuzzy
+msgid ""
+"A subclass of :class:`DocTestRunner` that raises an exception as soon as a "
+"failure is encountered.  If an unexpected exception occurs, an "
+":exc:`UnexpectedException` exception is raised, containing the test, the "
+"example, and the original exception.  If the output doesn't match, then a "
+":exc:`DocTestFailure` exception is raised, containing the test, the example,"
+" and the actual output."
+msgstr ""
+"Một lớp con của :class:`DocTestRunner` đưa ra một ngoại lệ ngay khi gặp lỗi."
+"  Nếu một ngoại lệ không mong muốn xảy ra, một ngoại lệ "
+":exc:`UnexpectedException` sẽ được đưa ra, chứa bài kiểm tra, ví dụ và ngoại"
+" lệ ban đầu.  Nếu đầu ra không khớp thì ngoại lệ :exc:`DocTestFailure` sẽ "
+"được đưa ra, chứa thử nghiệm, ví dụ và đầu ra thực tế."
+
+#: ../../library/doctest.rst:1842
+#, fuzzy
+msgid ""
+"For information about the constructor parameters and methods, see the "
+"documentation for :class:`DocTestRunner` in section :ref:`doctest-advanced-"
+"api`."
+msgstr ""
+"Để biết thông tin về các tham số và phương thức của hàm tạo, hãy xem tài "
+"liệu về :class:`DocTestRunner` trong phần :ref:`doctest-advanced-api`."
+
+#: ../../library/doctest.rst:1845
+#, fuzzy
+msgid ""
+"There are two exceptions that may be raised by :class:`DebugRunner` "
+"instances:"
+msgstr ""
+"Có hai trường hợp ngoại lệ có thể được đưa ra bởi các phiên bản "
+":class:`DebugRunner`:"
+
+#: ../../library/doctest.rst:1850
+#, fuzzy
+msgid ""
+"An exception raised by :class:`DocTestRunner` to signal that a doctest "
+"example's actual output did not match its expected output. The constructor "
+"arguments are used to initialize the attributes of the same names."
+msgstr ""
+"Một ngoại lệ do :class:`DocTestRunner` đưa ra để báo hiệu rằng kết quả thực "
+"tế của một ví dụ doctest không khớp với kết quả mong đợi của nó. Các đối số "
+"của hàm tạo được sử dụng để khởi tạo các thuộc tính có cùng tên."
+
+#: ../../library/doctest.rst:1854
+#, fuzzy
+msgid ":exc:`DocTestFailure` defines the following attributes:"
+msgstr ":exc:`DocTestFailure` xác định các thuộc tính sau:"
+
+#: ../../library/doctest.rst:1859 ../../library/doctest.rst:1883
+#, fuzzy
+msgid ""
+"The :class:`DocTest` object that was being run when the example failed."
+msgstr ""
+"Đối tượng :class:`DocTest` đang được chạy khi ví dụ này không thành công."
+
+#: ../../library/doctest.rst:1864 ../../library/doctest.rst:1888
+#, fuzzy
+msgid "The :class:`Example` that failed."
+msgstr "Zz000zz bị lỗi."
+
+#: ../../library/doctest.rst:1869
+#, fuzzy
+msgid "The example's actual output."
+msgstr "Đầu ra thực tế của ví dụ."
+
+#: ../../library/doctest.rst:1874
+#, fuzzy
+msgid ""
+"An exception raised by :class:`DocTestRunner` to signal that a doctest "
+"example raised an unexpected exception.  The constructor arguments are used "
+"to initialize the attributes of the same names."
+msgstr ""
+"Một ngoại lệ do :class:`DocTestRunner` đưa ra để báo hiệu rằng một ví dụ tốt"
+" nhất đã đưa ra một ngoại lệ không mong muốn.  Các đối số của hàm tạo được "
+"sử dụng để khởi tạo các thuộc tính có cùng tên."
+
+#: ../../library/doctest.rst:1878
+#, fuzzy
+msgid ":exc:`UnexpectedException` defines the following attributes:"
+msgstr ":exc:`UnexpectedException` xác định các thuộc tính sau:"
+
+#: ../../library/doctest.rst:1893
+#, fuzzy
+msgid ""
+"A tuple containing information about the unexpected exception, as returned "
+"by :func:`sys.exc_info`."
+msgstr ""
+"Một bộ chứa thông tin về ngoại lệ không mong muốn được trả về bởi "
+":func:`sys.exc_info`."
+
+#: ../../library/doctest.rst:1900
+#, fuzzy
+msgid "Soapbox"
+msgstr "hộp xà phòng"
+
+#: ../../library/doctest.rst:1902
+#, fuzzy
+msgid ""
+"As mentioned in the introduction, :mod:`!doctest` has grown to have three "
+"primary uses:"
+msgstr ""
+"Như đã đề cập trong phần giới thiệu, :mod:`!doctest` đã phát triển với ba "
+"mục đích sử dụng chính:"
+
+#: ../../library/doctest.rst:1905
+#, fuzzy
+msgid "Checking examples in docstrings."
+msgstr "Kiểm tra các ví dụ trong tài liệu."
+
+#: ../../library/doctest.rst:1907
+#, fuzzy
+msgid "Regression testing."
+msgstr "Kiểm tra hồi quy."
+
+#: ../../library/doctest.rst:1909
+#, fuzzy
+msgid "Executable documentation / literate testing."
+msgstr "Tài liệu có thể thực thi/kiểm tra khả năng đọc viết."
+
+#: ../../library/doctest.rst:1911
+#, fuzzy
+msgid ""
+"These uses have different requirements, and it is important to distinguish "
+"them. In particular, filling your docstrings with obscure test cases makes "
+"for bad documentation."
+msgstr ""
+"Những mục đích sử dụng này có những yêu cầu khác nhau và điều quan trọng là "
+"phải phân biệt chúng. Đặc biệt, việc lấp đầy chuỗi tài liệu của bạn bằng các"
+" trường hợp kiểm thử khó hiểu sẽ tạo ra tài liệu tồi."
+
+#: ../../library/doctest.rst:1915
+#, fuzzy
+msgid ""
+"When writing a docstring, choose docstring examples with care. There's an "
+"art to this that needs to be learned---it may not be natural at first.  "
+"Examples should add genuine value to the documentation.  A good example can "
+"often be worth many words. If done with care, the examples will be "
+"invaluable for your users, and will pay back the time it takes to collect "
+"them many times over as the years go by and things change.  I'm still amazed"
+" at how often one of my :mod:`!doctest` examples stops working after a "
+"\"harmless\" change."
+msgstr ""
+"Khi viết một chuỗi tài liệu, hãy cẩn thận khi chọn các ví dụ về chuỗi tài "
+"liệu. Có một nghệ thuật trong việc này cần phải học --- ban đầu nó có thể "
+"không tự nhiên.  Các ví dụ nên thêm giá trị đích thực vào tài liệu.  Một ví "
+"dụ điển hình thường có giá trị bằng nhiều lời nói. Nếu được thực hiện cẩn "
+"thận, các ví dụ sẽ là vô giá đối với người dùng của bạn và sẽ mang lại lợi "
+"ích gấp nhiều lần cho thời gian cần thiết để thu thập chúng khi năm tháng "
+"trôi qua và mọi thứ thay đổi.  Tôi vẫn ngạc nhiên về tần suất một trong các "
+"ví dụ :mod:`!doctest` của tôi ngừng hoạt động sau một thay đổi \"vô hại\"."
+
+#: ../../library/doctest.rst:1923
+#, fuzzy
+msgid ""
+"Doctest also makes an excellent tool for regression testing, especially if "
+"you don't skimp on explanatory text.  By interleaving prose and examples, it"
+" becomes much easier to keep track of what's actually being tested, and why."
+"  When a test fails, good prose can make it much easier to figure out what "
+"the problem is, and how it should be fixed.  It's true that you could write "
+"extensive comments in code-based testing, but few programmers do. Many have "
+"found that using doctest approaches instead leads to much clearer tests.  "
+"Perhaps this is simply because doctest makes writing prose a little easier "
+"than writing code, while writing comments in code is a little harder.  I "
+"think it goes deeper than just that: the natural attitude when writing a "
+"doctest-based test is that you want to explain the fine points of your "
+"software, and illustrate them with examples. This in turn naturally leads to"
+" test files that start with the simplest features, and logically progress to"
+" complications and edge cases.  A coherent narrative is the result, instead "
+"of a collection of isolated functions that test isolated bits of "
+"functionality seemingly at random.  It's a different attitude, and produces "
+"different results, blurring the distinction between testing and explaining."
+msgstr ""
+"Doctest cũng tạo ra một công cụ tuyệt vời để kiểm tra hồi quy, đặc biệt nếu "
+"bạn không tiết kiệm văn bản giải thích.  Bằng cách xen kẽ văn xuôi và ví dụ,"
+" việc theo dõi những gì thực sự đang được thử nghiệm và tại sao sẽ trở nên "
+"dễ dàng hơn nhiều.  Khi thử nghiệm thất bại, văn xuôi tốt có thể giúp bạn dễ"
+" dàng tìm ra vấn đề là gì và cách khắc phục.  Đúng là bạn có thể viết những "
+"bình luận sâu rộng trong thử nghiệm dựa trên mã, nhưng rất ít lập trình viên"
+" làm được điều đó. Nhiều người đã phát hiện ra rằng việc sử dụng các phương "
+"pháp doctest sẽ dẫn đến các bài kiểm tra rõ ràng hơn nhiều.  Có lẽ điều này "
+"đơn giản là do doctest làm cho việc viết văn xuôi dễ hơn viết mã một chút, "
+"trong khi viết nhận xét bằng mã khó hơn một chút.  Tôi nghĩ nó còn sâu xa "
+"hơn thế: thái độ tự nhiên khi viết một bài kiểm tra dựa trên doctest là bạn "
+"muốn giải thích những điểm hay của phần mềm và minh họa chúng bằng các ví "
+"dụ. Điều này tự nhiên dẫn đến các tệp thử nghiệm bắt đầu với các tính năng "
+"đơn giản nhất và tiến triển một cách hợp lý đến các trường hợp phức tạp và "
+"khó khăn.  Kết quả là một câu chuyện mạch lạc, thay vì một tập hợp các chức "
+"năng riêng biệt kiểm tra các phần chức năng riêng biệt dường như ngẫu nhiên."
+"  Đó là một thái độ khác và tạo ra những kết quả khác, làm mờ đi sự khác "
+"biệt giữa kiểm tra và giải thích."
+
+#: ../../library/doctest.rst:1941
+#, fuzzy
+msgid ""
+"Regression testing is best confined to dedicated objects or files.  There "
+"are several options for organizing tests:"
+msgstr ""
+"Kiểm tra hồi quy tốt nhất nên giới hạn ở các đối tượng hoặc tệp chuyên dụng."
+"  Có một số lựa chọn để tổ chức kiểm tra:"
+
+#: ../../library/doctest.rst:1944
+#, fuzzy
+msgid ""
+"Write text files containing test cases as interactive examples, and test the"
+" files using :func:`testfile` or :func:`DocFileSuite`.  This is recommended,"
+" although is easiest to do for new projects, designed from the start to use "
+"doctest."
+msgstr ""
+"Viết các tệp văn bản chứa các trường hợp kiểm thử làm ví dụ tương tác và "
+"kiểm tra các tệp bằng :func:`testfile` hoặc :func:`DocFileSuite`.  Điều này "
+"được khuyến khích, mặc dù đây là cách dễ thực hiện nhất đối với các dự án "
+"mới, được thiết kế ngay từ đầu để sử dụng doctest."
+
+#: ../../library/doctest.rst:1949
+#, fuzzy
+msgid ""
+"Define functions named ``_regrtest_topic`` that consist of single "
+"docstrings, containing test cases for the named topics.  These functions can"
+" be included in the same file as the module, or separated out into a "
+"separate test file."
+msgstr ""
+"Xác định các hàm có tên ``_regrtest_topic`` bao gồm các chuỗi tài liệu đơn "
+"lẻ, chứa các trường hợp thử nghiệm cho các chủ đề được đặt tên.  Các chức "
+"năng này có thể được bao gồm trong cùng một tệp với mô-đun hoặc được tách "
+"thành một tệp thử nghiệm riêng."
+
+#: ../../library/doctest.rst:1953
+#, fuzzy
+msgid ""
+"Define a :attr:`~module.__test__` dictionary mapping from regression test "
+"topics to docstrings containing test cases."
+msgstr ""
+"Xác định ánh xạ từ điển :attr:`~module.__test__` từ các chủ đề kiểm tra hồi "
+"quy đến các chuỗi tài liệu chứa các trường hợp kiểm tra."
+
+#: ../../library/doctest.rst:1956
+#, fuzzy
+msgid ""
+"When you have placed your tests in a module, the module can itself be the "
+"test runner.  When a test fails, you can arrange for your test runner to re-"
+"run only the failing doctest while you debug the problem.  Here is a minimal"
+" example of such a test runner::"
+msgstr ""
+"Khi bạn đã đặt các bài kiểm thử của mình vào một mô-đun, chính mô-đun đó có "
+"thể là trình chạy thử nghiệm.  Khi kiểm thử thất bại, bạn có thể sắp xếp để "
+"người chạy thử chỉ chạy lại doctest bị lỗi trong khi bạn gỡ lỗi.  Đây là một"
+" ví dụ tối thiểu về một người chạy thử nghiệm như vậy::"
+
+#: ../../library/doctest.rst:1961
+#, python-brace-format, fuzzy
+msgid ""
+"if __name__ == '__main__':\n"
+"    import doctest\n"
+"    flags = doctest.REPORT_NDIFF|doctest.FAIL_FAST\n"
+"    if len(sys.argv) > 1:\n"
+"        name = sys.argv[1]\n"
+"        if name in globals():\n"
+"            obj = globals()[name]\n"
+"        else:\n"
+"            obj = __test__[name]\n"
+"        doctest.run_docstring_examples(obj, globals(), name=name,\n"
+"                                       optionflags=flags)\n"
+"    else:\n"
+"        fail, total = doctest.testmod(optionflags=flags)\n"
+"        print(f\"{fail} failures out of {total} tests\")"
+msgstr ""
+"nếu __name__ == '__main__':\n"
+"    nhập doctest\n"
+"    cờ = doctest.REPORT_NDIFF|doctest.FAIL_FAST\n"
+"    nếu len(sys.argv) > 1:\n"
+"        tên = sys.argv[1]\n"
+"        nếu tên trong toàn cầu():\n"
+"            obj = toàn cầu() [tên]\n"
+"        khác:\n"
+"            obj = __test__[tên]\n"
+"        doctest.run_docstring_examples(obj, Globals(), name=name,\n"
+"                                       optionflags=cờ)\n"
+"    khác:\n"
+"        thất bại, tổng cộng = doctest.testmod(optionflags=flags)\n"
+"        print(f\"{fail} lỗi trong tổng số {total} lần kiểm tra\")"
+
+#: ../../library/doctest.rst:1978
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/doctest.rst:1979
+#, fuzzy
+msgid ""
+"Examples containing both expected output and an exception are not supported."
+" Trying to guess where one ends and the other begins is too error-prone, and"
+" that also makes for a confusing test."
+msgstr ""
+"Các ví dụ chứa cả kết quả dự kiến và ngoại lệ đều không được hỗ trợ. Cố gắng"
+" đoán xem cái này kết thúc ở đâu và cái kia bắt đầu ở đâu thì rất dễ xảy ra "
+"lỗi và điều đó cũng tạo ra một bài kiểm tra khó hiểu."
+
+#: ../../library/doctest.rst:387
+#, fuzzy
+msgid ">>>"
+msgstr ">>>"
+
+#: ../../library/doctest.rst:387
+#, fuzzy
+msgid "interpreter prompt"
+msgstr "lời nhắc của thông dịch viên"
+
+#: ../../library/doctest.rst:387 ../../library/doctest.rst:622
+#, fuzzy
+msgid "..."
+msgstr "..."
+
+#: ../../library/doctest.rst:553
+#, fuzzy
+msgid "^ (caret)"
+msgstr "^ (dấu mũ)"
+
+#: ../../library/doctest.rst:553
+#, fuzzy
+msgid "marker"
+msgstr "điểm đánh dấu"
+
+#: ../../library/doctest.rst:602
+#, fuzzy
+msgid "<BLANKLINE>"
+msgstr "<BLANKLINE>"
+
+#: ../../library/doctest.rst:622 ../../library/doctest.rst:747
+#, fuzzy
+msgid "in doctests"
+msgstr "trong tài liệu"
+
+#: ../../library/doctest.rst:747
+#, fuzzy
+msgid "# (hash)"
+msgstr "# (băm)"
+
+#: ../../library/doctest.rst:747
+#, fuzzy
+msgid "+ (plus)"
+msgstr "+ (cộng)"
+
+#: ../../library/doctest.rst:747
+#, fuzzy
+msgid "- (minus)"
+msgstr "- (trừ)"

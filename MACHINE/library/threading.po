@@ -1,0 +1,2962 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/threading.rst:2
+#, fuzzy
+msgid ":mod:`!threading` --- Thread-based parallelism"
+msgstr ":mod:`!threading` --- Song song dựa trên luồng"
+
+#: ../../library/threading.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/threading.py`"
+msgstr "**Source code:** :source:`Lib/threading.py`"
+
+#: ../../library/threading.rst:11
+#, fuzzy
+msgid ""
+"This module constructs higher-level threading interfaces on top of the lower"
+" level :mod:`_thread` module."
+msgstr ""
+"Mô-đun này xây dựng các giao diện phân luồng cấp cao hơn trên mô-đun "
+":mod:`_thread` cấp thấp hơn."
+
+#: ../../includes/wasm-notavail.rst:3 ../../library/threading.rst:194
+#: ../../library/threading.rst:293 ../../library/threading.rst:678
+#, fuzzy
+msgid "Availability"
+msgstr "sẵn có"
+
+#: ../../includes/wasm-notavail.rst:5
+#, fuzzy
+msgid ""
+"This module does not work or is not available on WebAssembly. See "
+":ref:`wasm-availability` for more information."
+msgstr ""
+"Mô-đun này không hoạt động hoặc không có trên WebAssembly. Xem :ref:`wasm-"
+"availability` để biết thêm thông tin."
+
+#: ../../library/threading.rst:17
+#, fuzzy
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../library/threading.rst:19
+#, fuzzy
+msgid ""
+"The :mod:`!threading` module provides a way to run multiple `threads "
+"<https://en.wikipedia.org/wiki/Thread_(computing)>`_ (smaller units of a "
+"process) concurrently within a single process. It allows for the creation "
+"and management of threads, making it possible to execute tasks in parallel, "
+"sharing memory space. Threads are particularly useful when tasks are I/O "
+"bound, such as file operations or making network requests, where much of the"
+" time is spent waiting for external resources."
+msgstr ""
+"Mô-đun :mod:`!threading` cung cấp cách chạy đồng thời nhiều `threads "
+"<https://en.wikipedia.org/wiki/Thread_(computing)>`_ (đơn vị nhỏ hơn của một"
+" quy trình) trong một quy trình. Nó cho phép tạo và quản lý các luồng, giúp "
+"thực hiện các tác vụ song song, chia sẻ không gian bộ nhớ. Các luồng đặc "
+"biệt hữu ích khi các tác vụ bị ràng buộc I/O, chẳng hạn như thao tác tệp "
+"hoặc thực hiện các yêu cầu mạng, trong đó phần lớn thời gian được dành để "
+"chờ đợi các tài nguyên bên ngoài."
+
+#: ../../library/threading.rst:27
+#, fuzzy
+msgid ""
+"A typical use case for :mod:`!threading` includes managing a pool of worker "
+"threads that can process multiple tasks concurrently.  Here's a basic "
+"example of creating and starting threads using :class:`~threading.Thread`::"
+msgstr ""
+"Trường hợp sử dụng điển hình của :mod:`!threading` bao gồm việc quản lý nhóm"
+" luồng công việc có thể xử lý đồng thời nhiều tác vụ.  Đây là ví dụ cơ bản "
+"về cách tạo và bắt đầu chuỗi bằng :class:`~threading.Thread`::"
+
+#: ../../library/threading.rst:31
+#, python-brace-format, fuzzy
+msgid ""
+"import threading\n"
+"import time\n"
+"\n"
+"def crawl(link, delay=3):\n"
+"    print(f\"crawl started for {link}\")\n"
+"    time.sleep(delay)  # Blocking I/O (simulating a network request)\n"
+"    print(f\"crawl ended for {link}\")\n"
+"\n"
+"links = [\n"
+"    \"https://python.org\",\n"
+"    \"https://docs.python.org\",\n"
+"    \"https://peps.python.org\",\n"
+"]\n"
+"\n"
+"# Start threads for each link\n"
+"threads = []\n"
+"for link in links:\n"
+"    # Using `args` to pass positional arguments and `kwargs` for keyword arguments\n"
+"    t = threading.Thread(target=crawl, args=(link,), kwargs={\"delay\": 2})\n"
+"    threads.append(t)\n"
+"\n"
+"# Start each thread\n"
+"for t in threads:\n"
+"    t.start()\n"
+"\n"
+"# Wait for all threads to finish\n"
+"for t in threads:\n"
+"    t.join()"
+msgstr ""
+"nhập luồng\n"
+"thời gian nhập khẩu\n"
+"\n"
+"thu thập dữ liệu def (liên kết, độ trễ = 3):\n"
+"    print(f\"đã bắt đầu thu thập thông tin cho {link}\")\n"
+"    time.sleep(delay) # Blocking I/O (mô phỏng yêu cầu mạng)\n"
+"    print(f\"quá trình thu thập thông tin đã kết thúc đối với {link}\")\n"
+"\n"
+"liên kết = [\n"
+"    \"https://python.org\",\n"
+"    \"https://docs.python.org\",\n"
+"    \"https://peps.python.org\",\n"
+"]\n"
+"\n"
+"chủ đề # Start cho mỗi liên kết\n"
+"chủ đề = []\n"
+"cho liên kết trong liên kết:\n"
+"    # Using `args` để truyền đối số vị trí và `kwargs` cho đối số từ khóa\n"
+"    t = threading.Thread(target=crawl, args=(link,), kwargs={\"delay\": 2})\n"
+"    chủ đề.append(t)\n"
+"\n"
+"# Start mỗi chủ đề\n"
+"cho t trong chủ đề:\n"
+"    t.start()\n"
+"\n"
+"# Wait để tất cả các chủ đề kết thúc\n"
+"cho t trong chủ đề:\n"
+"    t.join()"
+
+#: ../../library/threading.rst:60
+#, fuzzy
+msgid "This module used to be optional, it is now always available."
+msgstr "Mô-đun này trước đây là tùy chọn, bây giờ nó luôn có sẵn."
+
+#: ../../library/threading.rst:65
+#, fuzzy
+msgid ""
+":class:`concurrent.futures.ThreadPoolExecutor` offers a higher level "
+"interface to push tasks to a background thread without blocking execution of"
+" the calling thread, while still being able to retrieve their results when "
+"needed."
+msgstr ""
+":class:`concurrent.futures.ThreadPoolExecutor` cung cấp giao diện cấp cao "
+"hơn để đẩy các tác vụ xuống luồng nền mà không chặn việc thực thi luồng gọi,"
+" trong khi vẫn có thể truy xuất kết quả của chúng khi cần."
+
+#: ../../library/threading.rst:69
+#, fuzzy
+msgid ""
+":mod:`queue` provides a thread-safe interface for exchanging data between "
+"running threads."
+msgstr ""
+":mod:`queue` cung cấp giao diện thread-safe để trao đổi dữ liệu giữa các "
+"luồng đang chạy."
+
+#: ../../library/threading.rst:72
+#, fuzzy
+msgid ""
+":mod:`asyncio` offers an alternative approach to achieving task level "
+"concurrency without requiring the use of multiple operating system threads."
+msgstr ""
+":mod:`asyncio` cung cấp một cách tiếp cận khác để đạt được tính đồng thời ở "
+"cấp độ nhiệm vụ mà không yêu cầu sử dụng nhiều luồng hệ điều hành."
+
+#: ../../library/threading.rst:77
+#, fuzzy
+msgid ""
+"In the Python 2.x series, this module contained ``camelCase`` names for some"
+" methods and functions. These are deprecated as of Python 3.10, but they are"
+" still supported for compatibility with Python 2.5 and lower."
+msgstr ""
+"Trong loạt Python 2.x, mô-đun này chứa tên ``camelCase`` cho một số phương "
+"thức và hàm. Chúng không được dùng nữa kể từ Python 3.10, nhưng chúng vẫn "
+"được hỗ trợ để tương thích với Python 2.5 trở xuống."
+
+#: ../../library/threading.rst:84
+#, fuzzy
+msgid ""
+"In CPython, due to the :term:`Global Interpreter Lock <global interpreter "
+"lock>`, only one thread can execute Python code at once (even though certain"
+" performance-oriented libraries might overcome this limitation). If you want"
+" your application to make better use of the computational resources of "
+"multi-core machines, you are advised to use :mod:`multiprocessing` or "
+":class:`concurrent.futures.ProcessPoolExecutor`. However, threading is still"
+" an appropriate model if you want to run multiple I/O-bound tasks "
+"simultaneously."
+msgstr ""
+"Trong CPython, do :term:`Global Interpreter Lock <global interpreter lock>`,"
+" chỉ một luồng có thể thực thi mã Python cùng một lúc (mặc dù một số thư "
+"viện hướng đến hiệu suất nhất định có thể khắc phục hạn chế này). Nếu bạn "
+"muốn ứng dụng của mình sử dụng tốt hơn tài nguyên tính toán của máy đa lõi, "
+"bạn nên sử dụng :mod:`multiprocessing` hoặc "
+":class:`concurrent.futures.ProcessPoolExecutor`. Tuy nhiên, phân luồng vẫn "
+"là một mô hình thích hợp nếu bạn muốn chạy đồng thời nhiều tác vụ liên quan "
+"đến I/O."
+
+#: ../../library/threading.rst:95
+#, fuzzy
+msgid "GIL and performance considerations"
+msgstr "GIL và những cân nhắc về hiệu suất"
+
+#: ../../library/threading.rst:97
+#, fuzzy
+msgid ""
+"Unlike the :mod:`multiprocessing` module, which uses separate processes to "
+"bypass the :term:`global interpreter lock` (GIL), the threading module "
+"operates within a single process, meaning that all threads share the same "
+"memory space. However, the GIL limits the performance gains of threading "
+"when it comes to CPU-bound tasks, as only one thread can execute Python "
+"bytecode at a time. Despite this, threads remain a useful tool for achieving"
+" concurrency in many scenarios."
+msgstr ""
+"Không giống như mô-đun :mod:`multiprocessing`, sử dụng các quy trình riêng "
+"biệt để bỏ qua :term:`global interpreter lock` (GIL), mô-đun phân luồng hoạt"
+" động trong một quy trình duy nhất, nghĩa là tất cả các luồng đều chia sẻ "
+"cùng một không gian bộ nhớ. Tuy nhiên, GIL hạn chế mức tăng hiệu suất của "
+"luồng khi nói đến các tác vụ bị ràng buộc bởi CPU, vì mỗi lần chỉ có một "
+"luồng có thể thực thi mã byte Python. Mặc dù vậy, các luồng vẫn là một công "
+"cụ hữu ích để đạt được sự đồng thời trong nhiều tình huống."
+
+#: ../../library/threading.rst:105
+#, fuzzy
+msgid ""
+"As of Python 3.13, :term:`free-threaded <free threading>` builds can disable"
+" the GIL, enabling true parallel execution of threads, but this feature is "
+"not available by default (see :pep:`703`)."
+msgstr ""
+"Kể từ Python 3.13, các bản dựng :term:`free-threaded <free threading>` có "
+"thể vô hiệu hóa GIL, cho phép thực thi các luồng song song thực sự, nhưng "
+"tính năng này không có sẵn theo mặc định (xem :pep:`703`)."
+
+#: ../../library/threading.rst:112
+#, fuzzy
+msgid "Reference"
+msgstr "Tài liệu tham khảo"
+
+#: ../../library/threading.rst:114
+#, fuzzy
+msgid "This module defines the following functions:"
+msgstr "Mô-đun này xác định các chức năng sau:"
+
+#: ../../library/threading.rst:119
+#, fuzzy
+msgid ""
+"Return the number of :class:`Thread` objects currently alive.  The returned "
+"count is equal to the length of the list returned by :func:`.enumerate`."
+msgstr ""
+"Trả về số lượng đối tượng :class:`Thread` hiện đang hoạt động.  Số lượng trả"
+" về bằng độ dài của danh sách được trả về bởi :func:`.enumerate`."
+
+#: ../../library/threading.rst:122
+#, fuzzy
+msgid "The function ``activeCount`` is a deprecated alias for this function."
+msgstr "Hàm ``activeCount`` là bí danh không được dùng nữa cho hàm này."
+
+#: ../../library/threading.rst:127
+#, fuzzy
+msgid ""
+"Return the current :class:`Thread` object, corresponding to the caller's "
+"thread of control.  If the caller's thread of control was not created "
+"through the :mod:`!threading` module, a dummy thread object with limited "
+"functionality is returned."
+msgstr ""
+"Trả về đối tượng :class:`Thread` hiện tại, tương ứng với luồng điều khiển "
+"của người gọi.  Nếu luồng điều khiển của người gọi không được tạo thông qua "
+"mô-đun :mod:`!threading`, một đối tượng luồng giả có chức năng hạn chế sẽ "
+"được trả về."
+
+#: ../../library/threading.rst:132
+#, fuzzy
+msgid ""
+"The function ``currentThread`` is a deprecated alias for this function."
+msgstr "Hàm ``currentThread`` là bí danh không được dùng nữa cho hàm này."
+
+#: ../../library/threading.rst:137
+#, fuzzy
+msgid "Handle uncaught exception raised by :func:`Thread.run`."
+msgstr "Xử lý ngoại lệ chưa được phát hiện bởi :func:`Thread.run`."
+
+#: ../../library/threading.rst:139
+#, fuzzy
+msgid "The *args* argument has the following attributes:"
+msgstr "Đối số *args* có các thuộc tính sau:"
+
+#: ../../library/threading.rst:141
+#, fuzzy
+msgid "*exc_type*: Exception type."
+msgstr "*exc_type*: Loại ngoại lệ."
+
+#: ../../library/threading.rst:142
+#, fuzzy
+msgid "*exc_value*: Exception value, can be ``None``."
+msgstr "*exc_value*: Giá trị ngoại lệ, có thể là ``None``."
+
+#: ../../library/threading.rst:143
+#, fuzzy
+msgid "*exc_traceback*: Exception traceback, can be ``None``."
+msgstr "*exc_traceback*: Truy nguyên ngoại lệ, có thể là ``None``."
+
+#: ../../library/threading.rst:144
+#, fuzzy
+msgid "*thread*: Thread which raised the exception, can be ``None``."
+msgstr "*thread*: Chủ đề đưa ra ngoại lệ, có thể là ``None``."
+
+#: ../../library/threading.rst:146
+#, fuzzy
+msgid ""
+"If *exc_type* is :exc:`SystemExit`, the exception is silently ignored. "
+"Otherwise, the exception is printed out on :data:`sys.stderr`."
+msgstr ""
+"Nếu *exc_type* là :exc:`SystemExit`, ngoại lệ sẽ được âm thầm bỏ qua. Nếu "
+"không, ngoại lệ sẽ được in ra trên :data:`sys.stderr`."
+
+#: ../../library/threading.rst:149
+#, fuzzy
+msgid ""
+"If  this function raises an exception, :func:`sys.excepthook` is called to "
+"handle it."
+msgstr ""
+"Nếu hàm này đưa ra một ngoại lệ, :func:`sys.excepthook` sẽ được gọi để xử lý"
+" nó."
+
+#: ../../library/threading.rst:152
+#, fuzzy
+msgid ""
+":func:`threading.excepthook` can be overridden to control how uncaught "
+"exceptions raised by :func:`Thread.run` are handled."
+msgstr ""
+":func:`threading.excepthook` có thể được ghi đè để kiểm soát cách xử lý các "
+"ngoại lệ chưa được phát hiện do :func:`Thread.run` đưa ra."
+
+#: ../../library/threading.rst:155
+#, fuzzy
+msgid ""
+"Storing *exc_value* using a custom hook can create a reference cycle. It "
+"should be cleared explicitly to break the reference cycle when the exception"
+" is no longer needed."
+msgstr ""
+"Việc lưu trữ *exc_value* bằng móc tùy chỉnh có thể tạo chu trình tham chiếu."
+" Cần xóa rõ ràng để phá vỡ chu trình tham chiếu khi ngoại lệ không còn cần "
+"thiết nữa."
+
+#: ../../library/threading.rst:159
+#, fuzzy
+msgid ""
+"Storing *thread* using a custom hook can resurrect it if it is set to an "
+"object which is being finalized. Avoid storing *thread* after the custom "
+"hook completes to avoid resurrecting objects."
+msgstr ""
+"Việc lưu trữ *thread* bằng móc tùy chỉnh có thể phục hồi nó nếu nó được đặt "
+"thành một đối tượng đang được hoàn thiện. Tránh lưu trữ *thread* sau khi móc"
+" tùy chỉnh hoàn tất để tránh phục hồi các đối tượng."
+
+#: ../../library/threading.rst:164
+#, fuzzy
+msgid ":func:`sys.excepthook` handles uncaught exceptions."
+msgstr ":func:`sys.excepthook` xử lý các ngoại lệ chưa được phát hiện."
+
+#: ../../library/threading.rst:170
+#, fuzzy
+msgid ""
+"Holds the original value of :func:`threading.excepthook`. It is saved so "
+"that the original value can be restored in case they happen to get replaced "
+"with broken or alternative objects."
+msgstr ""
+"Giữ giá trị ban đầu của :func:`threading.excepthook`. Nó được lưu để có thể "
+"khôi phục giá trị ban đầu trong trường hợp chúng bị thay thế bằng các vật "
+"thể bị hỏng hoặc thay thế."
+
+#: ../../library/threading.rst:178
+#, fuzzy
+msgid ""
+"Return the 'thread identifier' of the current thread.  This is a nonzero "
+"integer.  Its value has no direct meaning; it is intended as a magic cookie "
+"to be used e.g. to index a dictionary of thread-specific data.  Thread "
+"identifiers may be recycled when a thread exits and another thread is "
+"created."
+msgstr ""
+"Trả về 'mã định danh luồng' của luồng hiện tại.  Đây là một số nguyên khác "
+"0.  Giá trị của nó không có ý nghĩa trực tiếp; nó được dự định như một "
+"cookie ma thuật được sử dụng, ví dụ: để lập chỉ mục một từ điển dữ liệu theo"
+" chủ đề cụ thể.  Mã nhận dạng luồng có thể được tái sử dụng khi một luồng "
+"thoát ra và một luồng khác được tạo."
+
+#: ../../library/threading.rst:189
+#, fuzzy
+msgid ""
+"Return the native integral Thread ID of the current thread assigned by the "
+"kernel. This is a non-negative integer. Its value may be used to uniquely "
+"identify this particular thread system-wide (until the thread terminates, "
+"after which the value may be recycled by the OS)."
+msgstr ""
+"Trả về ID luồng tích phân gốc của luồng hiện tại được hạt nhân gán. Đây là "
+"một số nguyên không âm. Giá trị của nó có thể được sử dụng để nhận dạng duy "
+"nhất toàn hệ thống luồng cụ thể này (cho đến khi luồng kết thúc, sau đó giá "
+"trị có thể được HĐH tái chế)."
+
+#: ../../library/threading.rst:198
+#, fuzzy
+msgid "Added support for GNU/kFreeBSD."
+msgstr "Đã thêm hỗ trợ cho GNU/kFreeBSD."
+
+#: ../../library/threading.rst:204
+#, fuzzy
+msgid ""
+"Return a list of all :class:`Thread` objects currently active.  The list "
+"includes daemonic threads and dummy thread objects created by "
+":func:`current_thread`.  It excludes terminated threads and threads that "
+"have not yet been started.  However, the main thread is always part of the "
+"result, even when terminated."
+msgstr ""
+"Trả về danh sách tất cả các đối tượng :class:`Thread` hiện đang hoạt động.  "
+"Danh sách này bao gồm các luồng daemon và các đối tượng luồng giả được tạo "
+"bởi :func:`current_thread`.  Nó loại trừ các chủ đề đã kết thúc và các chủ "
+"đề chưa được bắt đầu.  Tuy nhiên, luồng chính luôn là một phần của kết quả, "
+"ngay cả khi bị chấm dứt."
+
+#: ../../library/threading.rst:213
+#, fuzzy
+msgid ""
+"Return the main :class:`Thread` object.  In normal conditions, the main "
+"thread is the thread from which the Python interpreter was started."
+msgstr ""
+"Trả về đối tượng :class:`Thread` chính.  Trong điều kiện bình thường, luồng "
+"chính là luồng mà trình thông dịch Python được khởi động."
+
+#: ../../library/threading.rst:224
+#, fuzzy
+msgid ""
+"Set a trace function for all threads started from the :mod:`!threading` "
+"module. The *func* will be passed to  :func:`sys.settrace` for each thread, "
+"before its :meth:`~Thread.run` method is called."
+msgstr ""
+"Đặt chức năng theo dõi cho tất cả các luồng bắt đầu từ mô-đun "
+":mod:`!threading`. *func* sẽ được chuyển tới :func:`sys.settrace` cho mỗi "
+"luồng, trước khi phương thức :meth:`~Thread.run` của nó được gọi."
+
+#: ../../library/threading.rst:230
+#, fuzzy
+msgid ""
+"Set a trace function for all threads started from the :mod:`!threading` "
+"module and all Python threads that are currently executing."
+msgstr ""
+"Đặt chức năng theo dõi cho tất cả các luồng bắt đầu từ mô-đun "
+":mod:`!threading` và tất cả các luồng Python hiện đang thực thi."
+
+#: ../../library/threading.rst:233
+#, fuzzy
+msgid ""
+"The *func* will be passed to  :func:`sys.settrace` for each thread, before "
+"its :meth:`~Thread.run` method is called."
+msgstr ""
+"*func* sẽ được chuyển tới :func:`sys.settrace` cho mỗi luồng, trước khi "
+"phương thức :meth:`~Thread.run` của nó được gọi."
+
+#: ../../library/threading.rst:244
+#, fuzzy
+msgid "Get the trace function as set by :func:`settrace`."
+msgstr "Nhận chức năng theo dõi do :func:`settrace` thiết lập."
+
+#: ../../library/threading.rst:253
+#, fuzzy
+msgid ""
+"Set a profile function for all threads started from the :mod:`!threading` "
+"module. The *func* will be passed to  :func:`sys.setprofile` for each "
+"thread, before its :meth:`~Thread.run` method is called."
+msgstr ""
+"Đặt chức năng cấu hình cho tất cả các luồng bắt đầu từ mô-đun "
+":mod:`!threading`. *func* sẽ được chuyển tới :func:`sys.setprofile` cho mỗi "
+"luồng, trước khi phương thức :meth:`~Thread.run` của nó được gọi."
+
+#: ../../library/threading.rst:259
+#, fuzzy
+msgid ""
+"Set a profile function for all threads started from the :mod:`!threading` "
+"module and all Python threads that are currently executing."
+msgstr ""
+"Đặt chức năng cấu hình cho tất cả các luồng bắt đầu từ mô-đun "
+":mod:`!threading` và tất cả các luồng Python hiện đang thực thi."
+
+#: ../../library/threading.rst:262
+#, fuzzy
+msgid ""
+"The *func* will be passed to  :func:`sys.setprofile` for each thread, before"
+" its :meth:`~Thread.run` method is called."
+msgstr ""
+"*func* sẽ được chuyển tới :func:`sys.setprofile` cho mỗi luồng, trước khi "
+"phương thức :meth:`~Thread.run` của nó được gọi."
+
+#: ../../library/threading.rst:271
+#, fuzzy
+msgid "Get the profiler function as set by :func:`setprofile`."
+msgstr "Nhận chức năng hồ sơ do :func:`setprofile` thiết lập."
+
+#: ../../library/threading.rst:278
+#, fuzzy
+msgid ""
+"Return the thread stack size used when creating new threads.  The optional "
+"*size* argument specifies the stack size to be used for subsequently created"
+" threads, and must be 0 (use platform or configured default) or a positive "
+"integer value of at least 32,768 (32 KiB). If *size* is not specified, 0 is "
+"used.  If changing the thread stack size is unsupported, a "
+":exc:`RuntimeError` is raised.  If the specified stack size is invalid, a "
+":exc:`ValueError` is raised and the stack size is unmodified.  32 KiB is "
+"currently the minimum supported stack size value to guarantee sufficient "
+"stack space for the interpreter itself.  Note that some platforms may have "
+"particular restrictions on values for the stack size, such as requiring a "
+"minimum stack size > 32 KiB or requiring allocation in multiples of the "
+"system memory page size - platform documentation should be referred to for "
+"more information (4 KiB pages are common; using multiples of 4096 for the "
+"stack size is the suggested approach in the absence of more specific "
+"information)."
+msgstr ""
+"Trả về kích thước ngăn xếp luồng được sử dụng khi tạo chủ đề mới.  Đối số "
+"*size* tùy chọn chỉ định kích thước ngăn xếp sẽ được sử dụng cho các luồng "
+"được tạo sau đó và phải bằng 0 (sử dụng nền tảng hoặc mặc định được định cấu"
+" hình) hoặc giá trị nguyên dương ít nhất là 32.768 (32 KiB). Nếu *size* "
+"không được chỉ định thì 0 sẽ được sử dụng.  Nếu việc thay đổi kích thước "
+"ngăn xếp luồng không được hỗ trợ thì :exc:`RuntimeError` sẽ được nâng lên.  "
+"Nếu kích thước ngăn xếp được chỉ định không hợp lệ, :exc:`ValueError` sẽ "
+"được nâng lên và kích thước ngăn xếp không được sửa đổi.  32 KiB hiện là giá"
+" trị kích thước ngăn xếp được hỗ trợ tối thiểu để đảm bảo có đủ không gian "
+"ngăn xếp cho chính trình thông dịch.  Lưu ý rằng một số nền tảng có thể có "
+"các hạn chế cụ thể về giá trị cho kích thước ngăn xếp, chẳng hạn như yêu cầu"
+" kích thước ngăn xếp tối thiểu > 32 KiB hoặc yêu cầu phân bổ theo bội số của"
+" kích thước trang bộ nhớ hệ thống - nên tham khảo tài liệu nền tảng để biết "
+"thêm thông tin (trang 4 KiB là phổ biến; sử dụng bội số của 4096 cho kích "
+"thước ngăn xếp là phương pháp được đề xuất trong trường hợp không có thông "
+"tin cụ thể hơn)."
+
+#: ../../library/threading.rst:295
+#, fuzzy
+msgid "Unix platforms with POSIX threads support."
+msgstr "Nền tảng Unix có hỗ trợ chủ đề POSIX."
+
+#: ../../library/threading.rst:298
+#, fuzzy
+msgid "This module also defines the following constant:"
+msgstr "Mô-đun này cũng định nghĩa hằng số sau:"
+
+#: ../../library/threading.rst:302
+#, fuzzy
+msgid ""
+"The maximum value allowed for the *timeout* parameter of blocking functions "
+"(:meth:`Lock.acquire`, :meth:`RLock.acquire`, :meth:`Condition.wait`, etc.)."
+" Specifying a timeout greater than this value will raise an "
+":exc:`OverflowError`."
+msgstr ""
+"Giá trị tối đa được phép cho tham số *timeout* của các chức năng chặn "
+"(:meth:`Lock.acquire`, :meth:`RLock.acquire`, :meth:`Condition.wait`, v.v.)."
+" Chỉ định thời gian chờ lớn hơn giá trị này sẽ tăng :exc:`OverflowError`."
+
+#: ../../library/threading.rst:310
+#, fuzzy
+msgid ""
+"This module defines a number of classes, which are detailed in the sections "
+"below."
+msgstr ""
+"Mô-đun này định nghĩa một số lớp, được trình bày chi tiết trong các phần bên"
+" dưới."
+
+#: ../../library/threading.rst:313
+#, fuzzy
+msgid ""
+"The design of this module is loosely based on Java's threading model. "
+"However, where Java makes locks and condition variables basic behavior of "
+"every object, they are separate objects in Python.  Python's :class:`Thread`"
+" class supports a subset of the behavior of Java's Thread class; currently, "
+"there are no priorities, no thread groups, and threads cannot be destroyed, "
+"stopped, suspended, resumed, or interrupted.  The static methods of Java's "
+"Thread class, when implemented, are mapped to module-level functions."
+msgstr ""
+"Thiết kế của mô-đun này dựa trên mô hình phân luồng của Java. Tuy nhiên, "
+"trong đó Java tạo ra các khóa và biến điều kiện hoạt động cơ bản của mọi đối"
+" tượng thì chúng là các đối tượng riêng biệt trong Python.  Lớp "
+":class:`Thread` của Python hỗ trợ một tập hợp con hành vi của lớp Thread của"
+" Java; hiện tại, không có mức độ ưu tiên, không có nhóm luồng và các luồng "
+"không thể bị hủy, dừng, tạm dừng, tiếp tục hoặc bị gián đoạn.  Các phương "
+"thức tĩnh của lớp Thread của Java, khi được triển khai, sẽ được ánh xạ tới "
+"các hàm cấp mô-đun."
+
+#: ../../library/threading.rst:321
+#, fuzzy
+msgid "All of the methods described below are executed atomically."
+msgstr ""
+"Tất cả các phương pháp được mô tả dưới đây đều được thực hiện nguyên tử."
+
+#: ../../library/threading.rst:325
+#, fuzzy
+msgid "Thread-local data"
+msgstr "Dữ liệu cục bộ"
+
+#: ../../library/threading.rst:327
+#, fuzzy
+msgid ""
+"Thread-local data is data whose values are thread specific. If you have data"
+" that you want to be local to a thread, create a :class:`local` object and "
+"use its attributes::"
+msgstr ""
+"Dữ liệu cục bộ theo luồng là dữ liệu có giá trị cụ thể theo luồng. Nếu bạn "
+"có dữ liệu muốn đặt cục bộ trong một luồng, hãy tạo một đối tượng "
+":class:`local` và sử dụng các thuộc tính của nó ::"
+
+#: ../../library/threading.rst:331
+#, fuzzy
+msgid ""
+">>> mydata = local()\n"
+">>> mydata.number = 42\n"
+">>> mydata.number\n"
+"42"
+msgstr ""
+">>> mydata = địa phương()\n"
+">>> mydata.number = 42\n"
+">>> mydata.number\n"
+"42"
+
+#: ../../library/threading.rst:336
+#, fuzzy
+msgid "You can also access the :class:`local`-object's dictionary::"
+msgstr "Bạn cũng có thể truy cập từ điển của đối tượng :class:`local`::"
+
+#: ../../library/threading.rst:338
+#, python-brace-format, fuzzy
+msgid ""
+">>> mydata.__dict__\n"
+"{'number': 42}\n"
+">>> mydata.__dict__.setdefault('widgets', [])\n"
+"[]\n"
+">>> mydata.widgets\n"
+"[]"
+msgstr ""
+">>> mydata.__dict__\n"
+"{'số': 42}\n"
+">>> mydata.__dict__.setdefault('widget', [])\n"
+"[]\n"
+">>> mydata.widgets\n"
+"[]"
+
+#: ../../library/threading.rst:345
+#, fuzzy
+msgid "If we access the data in a different thread::"
+msgstr "Nếu chúng tôi truy cập dữ liệu trong một luồng khác ::"
+
+#: ../../library/threading.rst:347
+#, fuzzy
+msgid ""
+">>> log = []\n"
+">>> def f():\n"
+"...     items = sorted(mydata.__dict__.items())\n"
+"...     log.append(items)\n"
+"...     mydata.number = 11\n"
+"...     log.append(mydata.number)\n"
+"\n"
+">>> import threading\n"
+">>> thread = threading.Thread(target=f)\n"
+">>> thread.start()\n"
+">>> thread.join()\n"
+">>> log\n"
+"[[], 11]"
+msgstr ""
+">>> nhật ký = []\n"
+">>> giải quyết f():\n"
+"... mục = đã sắp xếp(mydata.__dict__.items())\n"
+"... log.append(item)\n"
+"... mydata.number = 11\n"
+"... log.append(mydata.number)\n"
+"\n"
+">>> nhập luồng\n"
+">>> thread = threading.Thread(target=f)\n"
+">>> thread.start()\n"
+">>> thread.join()\n"
+">>> nhật ký\n"
+"[[], 11]"
+
+#: ../../library/threading.rst:361
+#, fuzzy
+msgid ""
+"we get different data.  Furthermore, changes made in the other thread don't "
+"affect data seen in this thread::"
+msgstr ""
+"chúng tôi nhận được dữ liệu khác nhau.  Hơn nữa, những thay đổi được thực "
+"hiện trong luồng khác không ảnh hưởng đến dữ liệu nhìn thấy trong luồng "
+"này::"
+
+#: ../../library/threading.rst:364
+#, fuzzy
+msgid ""
+">>> mydata.number\n"
+"42"
+msgstr ""
+">>> mydata.number\n"
+"42"
+
+#: ../../library/threading.rst:367
+#, fuzzy
+msgid ""
+"Of course, values you get from a :class:`local` object, including their "
+":attr:`~object.__dict__` attribute, are for whatever thread was current at "
+"the time the attribute was read.  For that reason, you generally don't want "
+"to save these values across threads, as they apply only to the thread they "
+"came from."
+msgstr ""
+"Tất nhiên, các giá trị bạn nhận được từ đối tượng :class:`local`, bao gồm "
+"thuộc tính :attr:`~object.__dict__` của chúng, dành cho bất kỳ luồng nào "
+"hiện tại tại thời điểm thuộc tính được đọc.  Vì lý do đó, bạn thường không "
+"muốn lưu các giá trị này trên các luồng vì chúng chỉ áp dụng cho luồng mà "
+"chúng xuất phát từ đó."
+
+#: ../../library/threading.rst:373
+#, fuzzy
+msgid ""
+"You can create custom :class:`local` objects by subclassing the "
+":class:`local` class::"
+msgstr ""
+"Bạn có thể tạo các đối tượng :class:`local` tùy chỉnh bằng cách phân lớp con"
+" :class:`local` ::"
+
+#: ../../library/threading.rst:376
+#, fuzzy
+msgid ""
+">>> class MyLocal(local):\n"
+"...     number = 2\n"
+"...     def __init__(self, /, **kw):\n"
+"...         self.__dict__.update(kw)\n"
+"...     def squared(self):\n"
+"...         return self.number ** 2"
+msgstr ""
+">>> lớp MyLocal(local):\n"
+"... số = 2\n"
+"... def __init__(self, /, **kw):\n"
+"... self.__dict__.update(kw)\n"
+"... def bình phương(tự):\n"
+"... trả về self.number ** 2"
+
+#: ../../library/threading.rst:383
+#, fuzzy
+msgid ""
+"This can be useful to support default values, methods and initialization.  "
+"Note that if you define an :py:meth:`~object.__init__` method, it will be "
+"called each time the :class:`local` object is used in a separate thread.  "
+"This is necessary to initialize each thread's dictionary."
+msgstr ""
+"Điều này có thể hữu ích để hỗ trợ các giá trị, phương thức và khởi tạo mặc "
+"định.  Lưu ý rằng nếu bạn xác định một phương thức "
+":py:meth:`~object.__init__`, nó sẽ được gọi mỗi khi đối tượng :class:`local`"
+" được sử dụng trong một luồng riêng biệt.  Điều này là cần thiết để khởi tạo"
+" từ điển của mỗi luồng."
+
+#: ../../library/threading.rst:389
+#, fuzzy
+msgid "Now if we create a :class:`local` object::"
+msgstr "Bây giờ nếu chúng ta tạo một đối tượng :class:`local` ::"
+
+#: ../../library/threading.rst:391
+#, fuzzy
+msgid ">>> mydata = MyLocal(color='red')"
+msgstr ">>> mydata = MyLocal(color='red')"
+
+#: ../../library/threading.rst:393
+#, fuzzy
+msgid "we have a default number::"
+msgstr "chúng tôi có một số mặc định::"
+
+#: ../../library/threading.rst:395
+#, fuzzy
+msgid ""
+">>> mydata.number\n"
+"2"
+msgstr ""
+">>> mydata.number\n"
+"2"
+
+#: ../../library/threading.rst:398
+#, fuzzy
+msgid "an initial color::"
+msgstr "màu ban đầu::"
+
+#: ../../library/threading.rst:400
+#, fuzzy
+msgid ""
+">>> mydata.color\n"
+"'red'\n"
+">>> del mydata.color"
+msgstr ""
+">>> mydata.color\n"
+"'đỏ'\n"
+">>> del mydata.color"
+
+#: ../../library/threading.rst:404
+#, fuzzy
+msgid "And a method that operates on the data::"
+msgstr "Và một phương thức hoạt động trên dữ liệu ::"
+
+#: ../../library/threading.rst:406
+#, fuzzy
+msgid ""
+">>> mydata.squared()\n"
+"4"
+msgstr ""
+">>> mydata.squared()\n"
+"4"
+
+#: ../../library/threading.rst:409
+#, fuzzy
+msgid "As before, we can access the data in a separate thread::"
+msgstr ""
+"Như trước đây, chúng ta có thể truy cập dữ liệu trong một luồng riêng biệt::"
+
+#: ../../library/threading.rst:411
+#, fuzzy
+msgid ""
+">>> log = []\n"
+">>> thread = threading.Thread(target=f)\n"
+">>> thread.start()\n"
+">>> thread.join()\n"
+">>> log\n"
+"[[('color', 'red')], 11]"
+msgstr ""
+">>> nhật ký = []\n"
+">>> thread = threading.Thread(target=f)\n"
+">>> thread.start()\n"
+">>> thread.join()\n"
+">>> nhật ký\n"
+"[[('màu', 'đỏ')], 11]"
+
+#: ../../library/threading.rst:418
+#, fuzzy
+msgid "without affecting this thread's data::"
+msgstr "mà không ảnh hưởng đến dữ liệu của chủ đề này::"
+
+#: ../../library/threading.rst:420
+#, fuzzy
+msgid ""
+">>> mydata.number\n"
+"2\n"
+">>> mydata.color\n"
+"Traceback (most recent call last):\n"
+"...\n"
+"AttributeError: 'MyLocal' object has no attribute 'color'"
+msgstr ""
+">>> mydata.number\n"
+"2\n"
+">>> mydata.color\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"...\n"
+"AttributionError: Đối tượng 'MyLocal' không có thuộc tính 'color'"
+
+#: ../../library/threading.rst:427
+#, fuzzy
+msgid ""
+"Note that subclasses can define :term:`__slots__`, but they are not thread "
+"local. They are shared across threads::"
+msgstr ""
+"Lưu ý rằng các lớp con có thể định nghĩa :term:`__slots__`, nhưng chúng "
+"không phải là luồng cục bộ. Chúng được chia sẻ trên các chủ đề::"
+
+#: ../../library/threading.rst:430
+#, fuzzy
+msgid ""
+">>> class MyLocal(local):\n"
+"...     __slots__ = 'number'\n"
+"\n"
+">>> mydata = MyLocal()\n"
+">>> mydata.number = 42\n"
+">>> mydata.color = 'red'"
+msgstr ""
+">>> lớp MyLocal(local):\n"
+"... __slots__ = 'số'\n"
+"\n"
+">>> mydata = MyLocal()\n"
+">>> mydata.number = 42\n"
+">>> mydata.color = 'đỏ'"
+
+#: ../../library/threading.rst:437
+#, fuzzy
+msgid "So, the separate thread::"
+msgstr "Vì vậy, chủ đề riêng biệt::"
+
+#: ../../library/threading.rst:439
+#, fuzzy
+msgid ""
+">>> thread = threading.Thread(target=f)\n"
+">>> thread.start()\n"
+">>> thread.join()"
+msgstr ""
+">>> thread = threading.Thread(target=f)\n"
+">>> thread.start()\n"
+">>> thread.join()"
+
+#: ../../library/threading.rst:443
+#, fuzzy
+msgid "affects what we see::"
+msgstr "ảnh hưởng đến những gì chúng ta thấy::"
+
+#: ../../library/threading.rst:445
+#, fuzzy
+msgid ""
+">>> mydata.number\n"
+"11"
+msgstr ""
+">>> mydata.number\n"
+"11"
+
+#: ../../library/threading.rst:451
+#, fuzzy
+msgid "A class that represents thread-local data."
+msgstr "Một lớp đại diện cho dữ liệu luồng cục bộ."
+
+#: ../../library/threading.rst:457
+#, fuzzy
+msgid "Thread objects"
+msgstr "Đối tượng chủ đề"
+
+#: ../../library/threading.rst:459
+#, fuzzy
+msgid ""
+"The :class:`Thread` class represents an activity that is run in a separate "
+"thread of control.  There are two ways to specify the activity: by passing a"
+" callable object to the constructor, or by overriding the "
+":meth:`~Thread.run` method in a subclass.  No other methods (except for the "
+"constructor) should be overridden in a subclass.  In other words, *only*  "
+"override the ``__init__()`` and :meth:`~Thread.run` methods of this class."
+msgstr ""
+"Lớp :class:`Thread` đại diện cho một hoạt động được chạy trong một luồng "
+"điều khiển riêng biệt.  Có hai cách để chỉ định hoạt động: bằng cách chuyển "
+"một đối tượng có thể gọi đến hàm tạo hoặc bằng cách ghi đè phương thức "
+":meth:`~Thread.run` trong một lớp con.  Không có phương thức nào khác (ngoại"
+" trừ hàm tạo) được ghi đè trong lớp con.  Nói cách khác, *only* ghi đè các "
+"phương thức ``__init__()`` và :meth:`~Thread.run` của lớp này."
+
+#: ../../library/threading.rst:466
+#, fuzzy
+msgid ""
+"Once a thread object is created, its activity must be started by calling the"
+" thread's :meth:`~Thread.start` method.  This invokes the "
+":meth:`~Thread.run` method in a separate thread of control."
+msgstr ""
+"Khi một đối tượng luồng được tạo, hoạt động của nó phải được bắt đầu bằng "
+"cách gọi phương thức :meth:`~Thread.start` của luồng.  Điều này gọi phương "
+"thức :meth:`~Thread.run` trong một luồng điều khiển riêng biệt."
+
+#: ../../library/threading.rst:470
+#, fuzzy
+msgid ""
+"Once the thread's activity is started, the thread is considered 'alive'. It "
+"stops being alive when its :meth:`~Thread.run` method terminates -- either "
+"normally, or by raising an unhandled exception.  The "
+":meth:`~Thread.is_alive` method tests whether the thread is alive."
+msgstr ""
+"Khi hoạt động của luồng được bắt đầu, luồng được coi là 'còn sống'. Nó ngừng"
+" tồn tại khi phương thức :meth:`~Thread.run` của nó kết thúc -- theo cách "
+"thông thường hoặc bằng cách đưa ra một ngoại lệ chưa được xử lý.  Phương "
+"thức :meth:`~Thread.is_alive` kiểm tra xem luồng có còn hoạt động hay không."
+
+#: ../../library/threading.rst:475
+#, fuzzy
+msgid ""
+"Other threads can call a thread's :meth:`~Thread.join` method.  This blocks "
+"the calling thread until the thread whose :meth:`~Thread.join` method is "
+"called is terminated."
+msgstr ""
+"Các luồng khác có thể gọi phương thức :meth:`~Thread.join` của một luồng.  "
+"Điều này chặn luồng đang gọi cho đến khi luồng có phương thức "
+":meth:`~Thread.join` được gọi bị chấm dứt."
+
+#: ../../library/threading.rst:479
+#, fuzzy
+msgid ""
+"A thread has a name.  The name can be passed to the constructor, and read or"
+" changed through the :attr:`~Thread.name` attribute."
+msgstr ""
+"Một chủ đề có một tên.  Tên có thể được chuyển tới hàm tạo và đọc hoặc thay "
+"đổi thông qua thuộc tính :attr:`~Thread.name`."
+
+#: ../../library/threading.rst:482
+#, fuzzy
+msgid ""
+"If the :meth:`~Thread.run` method raises an exception, "
+":func:`threading.excepthook` is called to handle it. By default, "
+":func:`threading.excepthook` ignores silently :exc:`SystemExit`."
+msgstr ""
+"Nếu phương thức :meth:`~Thread.run` đưa ra một ngoại lệ, "
+":func:`threading.excepthook` sẽ được gọi để xử lý nó. Theo mặc định, "
+":func:`threading.excepthook` âm thầm bỏ qua :exc:`SystemExit`."
+
+#: ../../library/threading.rst:486
+#, fuzzy
+msgid ""
+"A thread can be flagged as a \"daemon thread\".  The significance of this "
+"flag is that the entire Python program exits when only daemon threads are "
+"left.  The initial value is inherited from the creating thread.  The flag "
+"can be set through the :attr:`~Thread.daemon` property or the *daemon* "
+"constructor argument."
+msgstr ""
+"Một chủ đề có thể được gắn cờ là \"luồng daemon\".  Ý nghĩa của cờ này là "
+"toàn bộ chương trình Python sẽ thoát khi chỉ còn lại các luồng daemon.  Giá "
+"trị ban đầu được kế thừa từ luồng tạo.  Cờ có thể được đặt thông qua thuộc "
+"tính :attr:`~Thread.daemon` hoặc đối số hàm tạo *daemon*."
+
+#: ../../library/threading.rst:493
+#, fuzzy
+msgid ""
+"Daemon threads are abruptly stopped at shutdown.  Their resources (such as "
+"open files, database transactions, etc.) may not be released properly. If "
+"you want your threads to stop gracefully, make them non-daemonic and use a "
+"suitable signalling mechanism such as an :class:`Event`."
+msgstr ""
+"Các luồng Daemon bị dừng đột ngột khi tắt máy.  Tài nguyên của họ (chẳng hạn"
+" như tệp đang mở, giao dịch cơ sở dữ liệu, v.v.) có thể không được giải "
+"phóng đúng cách. Nếu bạn muốn các luồng của mình dừng lại một cách duyên "
+"dáng, hãy đặt chúng ở chế độ không daemon và sử dụng cơ chế báo hiệu phù "
+"hợp, chẳng hạn như :class:`Event`."
+
+#: ../../library/threading.rst:498
+#, fuzzy
+msgid ""
+"There is a \"main thread\" object; this corresponds to the initial thread of"
+" control in the Python program.  It is not a daemon thread."
+msgstr ""
+"Có một đối tượng \"luồng chính\"; điều này tương ứng với luồng điều khiển "
+"ban đầu trong chương trình Python.  Nó không phải là một chủ đề daemon."
+
+#: ../../library/threading.rst:501
+#, fuzzy
+msgid ""
+"There is the possibility that \"dummy thread objects\" are created. These "
+"are thread objects corresponding to \"alien threads\", which are threads of "
+"control started outside the threading module, such as directly from C code."
+"  Dummy thread objects have limited functionality; they are always "
+"considered alive and daemonic, and cannot be :ref:`joined <meth-thread-"
+"join>`.  They are never deleted, since it is impossible to detect the "
+"termination of alien threads."
+msgstr ""
+"Có khả năng \"đối tượng chuỗi giả\" được tạo. Đây là các đối tượng luồng "
+"tương ứng với \"luồng ngoài hành tinh\", là các luồng điều khiển được bắt "
+"đầu bên ngoài mô-đun luồng, chẳng hạn như trực tiếp từ mã C.  Các đối tượng "
+"luồng giả có chức năng hạn chế; chúng luôn được coi là còn sống và daemon và"
+" không thể là :ref:`joined <meth-thread-join>`.  Chúng không bao giờ bị xóa "
+"vì không thể phát hiện điểm cuối của các sợi ngoài hành tinh."
+
+#: ../../library/threading.rst:512
+#, fuzzy
+msgid ""
+"This constructor should always be called with keyword arguments.  Arguments "
+"are:"
+msgstr "Hàm tạo này phải luôn được gọi với các đối số từ khóa.  Đối số là:"
+
+#: ../../library/threading.rst:515
+#, fuzzy
+msgid ""
+"*group* should be ``None``; reserved for future extension when a "
+":class:`!ThreadGroup` class is implemented."
+msgstr ""
+"*group* phải là ``None``; dành riêng cho phần mở rộng trong tương lai khi "
+"lớp :class:`!ThreadGroup` được triển khai."
+
+#: ../../library/threading.rst:518
+#, fuzzy
+msgid ""
+"*target* is the callable object to be invoked by the :meth:`run` method. "
+"Defaults to ``None``, meaning nothing is called."
+msgstr ""
+"*target* là đối tượng có thể gọi được bằng phương thức :meth:`run`. Mặc định"
+" là ``None``, nghĩa là không có gì được gọi."
+
+#: ../../library/threading.rst:521
+#, fuzzy
+msgid ""
+"*name* is the thread name. By default, a unique name is constructed of the "
+"form \"Thread-*N*\" where *N* is a small decimal number, or \"Thread-*N* "
+"(target)\" where \"target\" is ``target.__name__`` if the *target* argument "
+"is specified."
+msgstr ""
+"*name* là tên chủ đề. Theo mặc định, một tên duy nhất được tạo theo dạng "
+"\"Thread-*N*\" trong đó *N* là số thập phân nhỏ hoặc \"Thread-*N* (đích)\" "
+"trong đó \"đích\" là ``target.__name__`` nếu đối số *target* được chỉ định."
+
+#: ../../library/threading.rst:526
+#, fuzzy
+msgid ""
+"*args* is a list or tuple of arguments for the target invocation.  Defaults "
+"to ``()``."
+msgstr ""
+"*args* là danh sách hoặc bộ đối số cho lệnh gọi mục tiêu.  Mặc định là "
+"``()``."
+
+#: ../../library/threading.rst:528
+#, python-brace-format, fuzzy
+msgid ""
+"*kwargs* is a dictionary of keyword arguments for the target invocation. "
+"Defaults to ``{}``."
+msgstr ""
+"*kwargs* là từ điển các đối số từ khóa cho lệnh gọi mục tiêu. Mặc định là "
+"``{}``."
+
+#: ../../library/threading.rst:531
+#, fuzzy
+msgid ""
+"If not ``None``, *daemon* explicitly sets whether the thread is daemonic. If"
+" ``None`` (the default), the daemonic property is inherited from the current"
+" thread."
+msgstr ""
+"Nếu không phải là ``None``, *daemon* sẽ đặt rõ ràng liệu luồng có phải là "
+"daemon hay không. Nếu ``None`` (mặc định), thuộc tính daemon được kế thừa từ"
+" luồng hiện tại."
+
+#: ../../library/threading.rst:535
+#, fuzzy
+msgid ""
+"*context* is the :class:`~contextvars.Context` value to use when starting "
+"the thread.  The default value is ``None`` which indicates that the "
+":data:`sys.flags.thread_inherit_context` flag controls the behaviour.  If "
+"the flag is true, threads will start with a copy of the context of the "
+"caller of :meth:`~Thread.start`.  If false, they will start with an empty "
+"context.  To explicitly start with an empty context, pass a new instance of "
+":class:`~contextvars.Context()`.  To explicitly start with a copy of the "
+"current context, pass the value from :func:`~contextvars.copy_context`. The "
+"flag defaults true on free-threaded builds and false otherwise."
+msgstr ""
+"*context* là giá trị :class:`~contextvars.Context` để sử dụng khi bắt đầu "
+"chuỗi.  Giá trị mặc định là ``None`` cho biết cờ "
+":data:`sys.flags.thread_inherit_context` kiểm soát hành vi.  Nếu cờ đúng, "
+"các chuỗi sẽ bắt đầu bằng bản sao ngữ cảnh của người gọi "
+":meth:`~Thread.start`.  Nếu sai, chúng sẽ bắt đầu với một ngữ cảnh trống.  "
+"Để bắt đầu rõ ràng với một ngữ cảnh trống, hãy chuyển một phiên bản mới của "
+":class:`~contextvars.Context()`.  Để bắt đầu rõ ràng bằng bản sao của ngữ "
+"cảnh hiện tại, hãy chuyển giá trị từ :func:`~contextvars.copy_context`. Cờ "
+"mặc định là true trên các bản dựng có luồng tự do và ngược lại là sai."
+
+#: ../../library/threading.rst:545
+#, fuzzy
+msgid ""
+"If the subclass overrides the constructor, it must make sure to invoke the "
+"base class constructor (``Thread.__init__()``) before doing anything else to"
+" the thread."
+msgstr ""
+"Nếu lớp con ghi đè hàm tạo, nó phải đảm bảo gọi hàm tạo của lớp cơ sở "
+"(``Thread.__init__()``) trước khi thực hiện bất kỳ điều gì khác với luồng."
+
+#: ../../library/threading.rst:549
+#, fuzzy
+msgid "Added the *daemon* parameter."
+msgstr "Đã thêm tham số *daemon*."
+
+#: ../../library/threading.rst:552
+#, fuzzy
+msgid "Use the *target* name if *name* argument is omitted."
+msgstr "Sử dụng tên *target* nếu đối số *name* bị bỏ qua."
+
+#: ../../library/threading.rst:555
+#, fuzzy
+msgid "Added the *context* parameter."
+msgstr "Đã thêm tham số *context*."
+
+#: ../../library/threading.rst:560
+#, fuzzy
+msgid "Start the thread's activity."
+msgstr "Bắt đầu hoạt động của chủ đề."
+
+#: ../../library/threading.rst:562
+#, fuzzy
+msgid ""
+"It must be called at most once per thread object.  It arranges for the "
+"object's :meth:`~Thread.run` method to be invoked in a separate thread of "
+"control."
+msgstr ""
+"Nó phải được gọi nhiều nhất một lần cho mỗi đối tượng luồng.  Nó sắp xếp để "
+"phương thức :meth:`~Thread.run` của đối tượng được gọi trong một luồng điều "
+"khiển riêng biệt."
+
+#: ../../library/threading.rst:566
+#, fuzzy
+msgid ""
+"This method will raise a :exc:`RuntimeError` if called more than once on the"
+" same thread object."
+msgstr ""
+"Phương thức này sẽ tăng :exc:`RuntimeError` nếu được gọi nhiều lần trên cùng"
+" một đối tượng luồng."
+
+#: ../../library/threading.rst:569
+#, fuzzy
+msgid ""
+"If supported, set the operating system thread name to "
+":attr:`threading.Thread.name`. The name can be truncated depending on the "
+"operating system thread name limits."
+msgstr ""
+"Nếu được hỗ trợ, hãy đặt tên luồng của hệ điều hành thành "
+":attr:`threading.Thread.name`. Tên có thể bị cắt bớt tùy thuộc vào giới hạn "
+"tên luồng của hệ điều hành."
+
+#: ../../library/threading.rst:573
+#, fuzzy
+msgid "Set the operating system thread name."
+msgstr "Đặt tên luồng của hệ điều hành."
+
+#: ../../library/threading.rst:578
+#, fuzzy
+msgid "Method representing the thread's activity."
+msgstr "Phương thức biểu diễn hoạt động của thread."
+
+#: ../../library/threading.rst:580
+#, fuzzy
+msgid ""
+"You may override this method in a subclass.  The standard :meth:`run` method"
+" invokes the callable object passed to the object's constructor as the "
+"*target* argument, if any, with positional and keyword arguments taken from "
+"the *args* and *kwargs* arguments, respectively."
+msgstr ""
+"Bạn có thể ghi đè phương thức này trong một lớp con.  Phương thức "
+":meth:`run` tiêu chuẩn gọi đối tượng có thể gọi được truyền cho hàm tạo của "
+"đối tượng dưới dạng đối số *target*, nếu có, với các đối số vị trí và từ "
+"khóa được lấy tương ứng từ các đối số *args* và *kwargs*."
+
+#: ../../library/threading.rst:585
+#, fuzzy
+msgid ""
+"Using list or tuple as the *args* argument which passed to the "
+":class:`Thread` could achieve the same effect."
+msgstr ""
+"Sử dụng danh sách hoặc bộ dữ liệu làm đối số *args* được truyền cho "
+":class:`Thread` có thể đạt được hiệu quả tương tự."
+
+#: ../../library/threading.rst:588
+#, fuzzy
+msgid "Example::"
+msgstr "Ví dụ::"
+
+#: ../../library/threading.rst:590
+#, fuzzy
+msgid ""
+">>> from threading import Thread\n"
+">>> t = Thread(target=print, args=[1])\n"
+">>> t.run()\n"
+"1\n"
+">>> t = Thread(target=print, args=(1,))\n"
+">>> t.run()\n"
+"1"
+msgstr ""
+">>> từ nhập luồng Chủ đề\n"
+">>> t = Chủ đề(target=print, args=[1])\n"
+">>> t.run()\n"
+"1\n"
+">>> t = Chủ đề(target=print, args=(1,))\n"
+">>> t.run()\n"
+"1"
+
+#: ../../library/threading.rst:602
+#, fuzzy
+msgid ""
+"Wait until the thread terminates. This blocks the calling thread until the "
+"thread whose :meth:`~Thread.join` method is called terminates -- either "
+"normally or through an unhandled exception -- or until the optional timeout "
+"occurs."
+msgstr ""
+"Chờ cho đến khi thread kết thúc. Điều này sẽ chặn luồng đang gọi cho đến khi"
+" luồng có phương thức :meth:`~Thread.join` được gọi kết thúc -- theo cách "
+"thông thường hoặc thông qua một ngoại lệ chưa được xử lý -- hoặc cho đến khi"
+" xảy ra thời gian chờ tùy chọn."
+
+#: ../../library/threading.rst:607
+#, fuzzy
+msgid ""
+"When the *timeout* argument is present and not ``None``, it should be a "
+"floating-point number specifying a timeout for the operation in seconds (or "
+"fractions thereof). As :meth:`~Thread.join` always returns ``None``, you "
+"must call :meth:`~Thread.is_alive` after :meth:`~Thread.join` to decide "
+"whether a timeout happened -- if the thread is still alive, the "
+":meth:`~Thread.join` call timed out."
+msgstr ""
+"Khi đối số *timeout* xuất hiện chứ không phải ``None``, nó phải là số dấu "
+"phẩy động chỉ định thời gian chờ cho thao tác tính bằng giây (hoặc phân số "
+"của nó). Vì :meth:`~Thread.join` luôn trả về ``None``, bạn phải gọi "
+":meth:`~Thread.is_alive` sau :meth:`~Thread.join` để quyết định xem có xảy "
+"ra thời gian chờ hay không -- nếu chuỗi vẫn còn hoạt động thì lệnh gọi "
+":meth:`~Thread.join` đã hết thời gian chờ."
+
+#: ../../library/threading.rst:614
+#, fuzzy
+msgid ""
+"When the *timeout* argument is not present or ``None``, the operation will "
+"block until the thread terminates."
+msgstr ""
+"Khi không có đối số *timeout* hoặc ``None``, thao tác sẽ chặn cho đến khi "
+"luồng kết thúc."
+
+#: ../../library/threading.rst:617
+#, fuzzy
+msgid "A thread can be joined many times."
+msgstr "Một thread có thể được nối nhiều lần."
+
+#: ../../library/threading.rst:619
+#, fuzzy
+msgid ""
+":meth:`~Thread.join` raises a :exc:`RuntimeError` if an attempt is made to "
+"join the current thread as that would cause a deadlock. It is also an error "
+"to :meth:`~Thread.join` a thread before it has been started and attempts to "
+"do so raise the same exception."
+msgstr ""
+":meth:`~Thread.join` sẽ tăng :exc:`RuntimeError` nếu cố gắng tham gia chuỗi "
+"hiện tại vì điều đó có thể gây ra bế tắc. Đó cũng là một lỗi đối với "
+":meth:`~Thread.join` một luồng trước khi nó được bắt đầu và cố gắng làm như "
+"vậy sẽ gây ra ngoại lệ tương tự."
+
+#: ../../library/threading.rst:624
+#, fuzzy
+msgid ""
+"If an attempt is made to join a running daemonic thread in late stages of "
+":term:`Python finalization <interpreter shutdown>` :meth:`!join` raises a "
+":exc:`PythonFinalizationError`."
+msgstr ""
+"Nếu một nỗ lực được thực hiện để tham gia một chuỗi daemon đang chạy ở giai "
+"đoạn cuối của :term:`Python finalization <interpreter shutdown>` "
+":meth:`!join` sẽ tăng :exc:`PythonFinalizationError`."
+
+#: ../../library/threading.rst:630
+#, fuzzy
+msgid "May raise :exc:`PythonFinalizationError`."
+msgstr "Có thể tăng :exc:`PythonFinalizationError`."
+
+#: ../../library/threading.rst:634
+#, fuzzy
+msgid ""
+"A string used for identification purposes only. It has no semantics. "
+"Multiple threads may be given the same name.  The initial name is set by the"
+" constructor."
+msgstr ""
+"Một chuỗi chỉ được sử dụng cho mục đích nhận dạng. Nó không có ngữ nghĩa. "
+"Nhiều chủ đề có thể được đặt cùng tên.  Tên ban đầu được đặt bởi hàm tạo."
+
+#: ../../library/threading.rst:638
+#, fuzzy
+msgid ""
+"On some platforms, the thread name is set at the operating system level when"
+" the thread starts, so that it is visible in task managers. This name may be"
+" truncated to fit in a system-specific limit (for example, 15 bytes on Linux"
+" or 63 bytes on macOS)."
+msgstr ""
+"Trên một số nền tảng, tên luồng được đặt ở cấp hệ điều hành khi luồng khởi "
+"động để nó hiển thị trong trình quản lý tác vụ. Tên này có thể bị cắt bớt để"
+" phù hợp với giới hạn dành riêng cho hệ thống (ví dụ: 15 byte trên Linux "
+"hoặc 63 byte trên macOS)."
+
+#: ../../library/threading.rst:643
+#, fuzzy
+msgid ""
+"Changes to *name* are only reflected at the OS level when the currently "
+"running thread is renamed. (Setting the *name* attribute of a different "
+"thread only updates the Python Thread object.)"
+msgstr ""
+"Các thay đổi đối với *name* chỉ được phản ánh ở cấp độ hệ điều hành khi "
+"chuỗi hiện đang chạy được đổi tên. (Việc đặt thuộc tính *name* của một luồng"
+" khác chỉ cập nhật đối tượng Python Thread.)"
+
+#: ../../library/threading.rst:650
+#, fuzzy
+msgid ""
+"Deprecated getter/setter API for :attr:`~Thread.name`; use it directly as a "
+"property instead."
+msgstr ""
+"getter/setter API không được dùng nữa cho :attr:`~Thread.name`; thay vào đó "
+"hãy sử dụng nó trực tiếp như một tài sản."
+
+#: ../../library/threading.rst:657
+#, fuzzy
+msgid ""
+"The 'thread identifier' of this thread or ``None`` if the thread has not "
+"been started.  This is a nonzero integer.  See the :func:`get_ident` "
+"function.  Thread identifiers may be recycled when a thread exits and "
+"another thread is created.  The identifier is available even after the "
+"thread has exited."
+msgstr ""
+"'Mã định danh luồng' của luồng này hoặc ``None`` nếu luồng chưa được bắt "
+"đầu.  Đây là một số nguyên khác 0.  Xem chức năng :func:`get_ident`.  Mã "
+"nhận dạng luồng có thể được tái sử dụng khi một luồng thoát ra và một luồng "
+"khác được tạo.  Mã định danh khả dụng ngay cả sau khi chuỗi đã thoát."
+
+#: ../../library/threading.rst:665
+#, fuzzy
+msgid ""
+"The Thread ID (``TID``) of this thread, as assigned by the OS (kernel). This"
+" is a non-negative integer, or ``None`` if the thread has not been started. "
+"See the :func:`get_native_id` function. This value may be used to uniquely "
+"identify this particular thread system-wide (until the thread terminates, "
+"after which the value may be recycled by the OS)."
+msgstr ""
+"ID luồng (``TID``) của luồng này, do hệ điều hành (kernel) chỉ định. Đây là "
+"số nguyên không âm hoặc ``None`` nếu luồng chưa được bắt đầu. Xem chức năng "
+":func:`get_native_id`. Giá trị này có thể được sử dụng để nhận dạng duy nhất"
+" toàn hệ thống luồng cụ thể này (cho đến khi luồng kết thúc, sau đó giá trị "
+"có thể được HĐH tái chế)."
+
+#: ../../library/threading.rst:674
+#, fuzzy
+msgid ""
+"Similar to Process IDs, Thread IDs are only valid (guaranteed unique system-"
+"wide) from the time the thread is created until the thread has been "
+"terminated."
+msgstr ""
+"Tương tự như ID tiến trình, ID luồng chỉ hợp lệ (được đảm bảo là duy nhất "
+"trên toàn hệ thống) kể từ khi luồng được tạo cho đến khi luồng bị chấm dứt."
+
+#: ../../library/threading.rst:684
+#, fuzzy
+msgid "Return whether the thread is alive."
+msgstr "Trả về xem thread còn sống hay không."
+
+#: ../../library/threading.rst:686
+#, fuzzy
+msgid ""
+"This method returns ``True`` just before the :meth:`~Thread.run` method "
+"starts until just after the :meth:`~Thread.run` method terminates.  The "
+"module function :func:`.enumerate` returns a list of all alive threads."
+msgstr ""
+"Phương thức này trả về ``True`` ngay trước khi phương thức "
+":meth:`~Thread.run` bắt đầu cho đến ngay sau khi phương thức "
+":meth:`~Thread.run` kết thúc.  Hàm mô-đun :func:`.enumerate` trả về danh "
+"sách tất cả các luồng còn hoạt động."
+
+#: ../../library/threading.rst:692
+#, fuzzy
+msgid ""
+"A boolean value indicating whether this thread is a daemon thread (``True``)"
+" or not (``False``).  This must be set before :meth:`~Thread.start` is "
+"called, otherwise :exc:`RuntimeError` is raised.  Its initial value is "
+"inherited from the creating thread; the main thread is not a daemon thread "
+"and therefore all threads created in the main thread default to "
+":attr:`~Thread.daemon` = ``False``."
+msgstr ""
+"Một giá trị boolean cho biết luồng này có phải là luồng daemon (``True``) "
+"hay không (``False``).  Điều này phải được đặt trước khi "
+":meth:`~Thread.start` được gọi, nếu không :exc:`RuntimeError` sẽ được nâng "
+"lên.  Giá trị ban đầu của nó được kế thừa từ luồng tạo; luồng chính không "
+"phải là luồng daemon và do đó tất cả các luồng được tạo trong luồng chính "
+"đều mặc định là :attr:`~Thread.daemon` = ``False``."
+
+#: ../../library/threading.rst:699
+#, fuzzy
+msgid ""
+"The entire Python program exits when no alive non-daemon threads are left."
+msgstr ""
+"Toàn bộ chương trình Python thoát khi không còn luồng không phải daemon nào "
+"còn sống."
+
+#: ../../library/threading.rst:704
+#, fuzzy
+msgid ""
+"Deprecated getter/setter API for :attr:`~Thread.daemon`; use it directly as "
+"a property instead."
+msgstr ""
+"getter/setter API không được dùng nữa cho :attr:`~Thread.daemon`; thay vào "
+"đó hãy sử dụng nó trực tiếp như một tài sản."
+
+#: ../../library/threading.rst:713
+#, fuzzy
+msgid "Lock objects"
+msgstr "Khóa đối tượng"
+
+#: ../../library/threading.rst:715
+#, fuzzy
+msgid ""
+"A primitive lock is a synchronization primitive that is not owned by a "
+"particular thread when locked.  In Python, it is currently the lowest level "
+"synchronization primitive available, implemented directly by the "
+":mod:`_thread` extension module."
+msgstr ""
+"Khóa nguyên thủy là nguyên thủy đồng bộ hóa không thuộc sở hữu của một luồng"
+" cụ thể khi bị khóa.  Trong Python, nó hiện là nguyên thủy đồng bộ hóa cấp "
+"thấp nhất hiện có, được triển khai trực tiếp bởi mô-đun mở rộng "
+":mod:`_thread`."
+
+#: ../../library/threading.rst:720
+#, fuzzy
+msgid ""
+"A primitive lock is in one of two states, \"locked\" or \"unlocked\". It is "
+"created in the unlocked state.  It has two basic methods, "
+":meth:`~Lock.acquire` and :meth:`~Lock.release`.  When the state is "
+"unlocked, :meth:`~Lock.acquire` changes the state to locked and returns "
+"immediately.  When the state is locked, :meth:`~Lock.acquire` blocks until a"
+" call to :meth:`~Lock.release` in another thread changes it to unlocked, "
+"then the :meth:`~Lock.acquire` call resets it to locked and returns.  The "
+":meth:`~Lock.release` method should only be called in the locked state; it "
+"changes the state to unlocked and returns immediately. If an attempt is made"
+" to release an unlocked lock, a :exc:`RuntimeError` will be raised."
+msgstr ""
+"Khóa nguyên thủy ở một trong hai trạng thái, \"đã khóa\" hoặc \"đã mở "
+"khóa\". Nó được tạo ở trạng thái mở khóa.  Nó có hai phương thức cơ bản, "
+":meth:`~Lock.acquire` và :meth:`~Lock.release`.  Khi trạng thái được mở "
+"khóa, :meth:`~Lock.acquire` sẽ chuyển trạng thái thành bị khóa và quay trở "
+"lại ngay lập tức.  Khi trạng thái bị khóa, :meth:`~Lock.acquire` sẽ chặn cho"
+" đến khi một lệnh gọi đến :meth:`~Lock.release` trong một luồng khác chuyển "
+"nó thành đã mở khóa, sau đó lệnh gọi :meth:`~Lock.acquire` sẽ đặt lại thành "
+"bị khóa và quay trở lại.  Phương thức :meth:`~Lock.release` chỉ nên được gọi"
+" ở trạng thái khóa; nó thay đổi trạng thái thành mở khóa và quay trở lại "
+"ngay lập tức. Nếu cố gắng mở khóa đã mở khóa, :exc:`RuntimeError` sẽ được "
+"nâng lên."
+
+#: ../../library/threading.rst:731
+#, fuzzy
+msgid ""
+"Locks also support the :ref:`context management protocol <with-locks>`."
+msgstr "Khóa cũng hỗ trợ :ref:`context management protocol <with-locks>`."
+
+#: ../../library/threading.rst:733
+#, fuzzy
+msgid ""
+"When more than one thread is blocked in :meth:`~Lock.acquire` waiting for "
+"the state to turn to unlocked, only one thread proceeds when a "
+":meth:`~Lock.release` call resets the state to unlocked; which one of the "
+"waiting threads proceeds is not defined, and may vary across "
+"implementations."
+msgstr ""
+"Khi có nhiều hơn một luồng bị chặn trong :meth:`~Lock.acquire` đang chờ "
+"trạng thái chuyển sang mở khóa, chỉ một luồng tiếp tục khi lệnh gọi "
+":meth:`~Lock.release` đặt lại trạng thái thành mở khóa; một trong các luồng "
+"chờ xử lý không được xác định và có thể khác nhau tùy theo quá trình triển "
+"khai."
+
+#: ../../library/threading.rst:738
+#, fuzzy
+msgid "All methods are executed atomically."
+msgstr "Tất cả các phương pháp được thực hiện nguyên tử."
+
+#: ../../library/threading.rst:743
+#, fuzzy
+msgid ""
+"The class implementing primitive lock objects.  Once a thread has acquired a"
+" lock, subsequent attempts to acquire it block, until it is released; any "
+"thread may release it."
+msgstr ""
+"Lớp thực hiện các đối tượng khóa nguyên thủy.  Sau khi một luồng đã có được "
+"khóa, các lần thử tiếp theo để lấy được nó sẽ bị chặn cho đến khi nó được "
+"giải phóng; bất kỳ chủ đề có thể phát hành nó."
+
+#: ../../library/threading.rst:747
+#, fuzzy
+msgid ""
+"``Lock`` is now a class. In earlier Pythons, ``Lock`` was a factory function"
+" which returned an instance of the underlying private lock type."
+msgstr ""
+"``Lock`` hiện là một lớp. Trong các Python trước đó, ``Lock`` là một hàm "
+"xuất xưởng trả về một phiên bản của loại khóa riêng tư cơ bản."
+
+#: ../../library/threading.rst:755 ../../library/threading.rst:849
+#, fuzzy
+msgid "Acquire a lock, blocking or non-blocking."
+msgstr "Có được một khóa, chặn hoặc không chặn."
+
+#: ../../library/threading.rst:757
+#, fuzzy
+msgid ""
+"When invoked with the *blocking* argument set to ``True`` (the default), "
+"block until the lock is unlocked, then set it to locked and return ``True``."
+msgstr ""
+"Khi được gọi với đối số *blocking* được đặt thành ``True`` (mặc định), hãy "
+"chặn cho đến khi khóa được mở khóa, sau đó đặt thành khóa và trả về "
+"``True``."
+
+#: ../../library/threading.rst:760
+#, fuzzy
+msgid ""
+"When invoked with the *blocking* argument set to ``False``, do not block. If"
+" a call with *blocking* set to ``True`` would block, return ``False`` "
+"immediately; otherwise, set the lock to locked and return ``True``."
+msgstr ""
+"Khi được gọi với đối số *blocking* được đặt thành ``False``, đừng chặn. Nếu "
+"một cuộc gọi có *blocking* được đặt thành ``True`` sẽ bị chặn, hãy trả lại "
+"``False`` ngay lập tức; nếu không, hãy đặt khóa thành khóa và trả về "
+"``True``."
+
+#: ../../library/threading.rst:764
+#, fuzzy
+msgid ""
+"When invoked with the floating-point *timeout* argument set to a positive "
+"value, block for at most the number of seconds specified by *timeout* and as"
+" long as the lock cannot be acquired.  A *timeout* argument of ``-1`` "
+"specifies an unbounded wait.  It is forbidden to specify a *timeout* when "
+"*blocking* is ``False``."
+msgstr ""
+"Khi được gọi với đối số *timeout* dấu phẩy động được đặt thành giá trị "
+"dương, hãy chặn tối đa số giây được chỉ định bởi *timeout* và miễn là không "
+"thể lấy được khóa.  Đối số *timeout* của ``-1`` chỉ định thời gian chờ không"
+" giới hạn.  Cấm chỉ định *timeout* khi *blocking* là ``False``."
+
+#: ../../library/threading.rst:770
+#, fuzzy
+msgid ""
+"The return value is ``True`` if the lock is acquired successfully, ``False``"
+" if not (for example if the *timeout* expired)."
+msgstr ""
+"Giá trị trả về là ``True`` nếu khóa được lấy thành công, ``False`` nếu không"
+" (ví dụ: nếu *timeout* hết hạn)."
+
+#: ../../library/threading.rst:773 ../../library/threading.rst:887
+#: ../../library/threading.rst:1147
+#, fuzzy
+msgid "The *timeout* parameter is new."
+msgstr "Thông số *timeout* là mới."
+
+#: ../../library/threading.rst:776
+#, fuzzy
+msgid ""
+"Lock acquisition can now be interrupted by signals on POSIX if the "
+"underlying threading implementation supports it."
+msgstr ""
+"Việc thu thập khóa hiện có thể bị gián đoạn bởi các tín hiệu trên POSIX nếu "
+"việc triển khai luồng cơ bản hỗ trợ nó."
+
+#: ../../library/threading.rst:780
+#, fuzzy
+msgid "Lock acquisition can now be interrupted by signals on Windows."
+msgstr ""
+"Việc thu thập khóa bây giờ có thể bị gián đoạn bởi các tín hiệu trên "
+"Windows."
+
+#: ../../library/threading.rst:786
+#, fuzzy
+msgid ""
+"Release a lock.  This can be called from any thread, not only the thread "
+"which has acquired the lock."
+msgstr ""
+"Mở khóa.  Điều này có thể được gọi từ bất kỳ luồng nào, không chỉ luồng đã "
+"có khóa."
+
+#: ../../library/threading.rst:789
+#, fuzzy
+msgid ""
+"When the lock is locked, reset it to unlocked, and return.  If any other "
+"threads are blocked waiting for the lock to become unlocked, allow exactly "
+"one of them to proceed."
+msgstr ""
+"Khi khóa bị khóa, hãy đặt lại thành mở khóa và quay lại.  Nếu bất kỳ luồng "
+"nào khác bị chặn khi chờ khóa được mở khóa, hãy cho phép chính xác một trong"
+" số chúng tiếp tục."
+
+#: ../../library/threading.rst:793
+#, fuzzy
+msgid "When invoked on an unlocked lock, a :exc:`RuntimeError` is raised."
+msgstr ""
+"Khi được gọi trên ổ khóa đã mở khóa, :exc:`RuntimeError` sẽ xuất hiện."
+
+#: ../../library/threading.rst:795 ../../library/threading.rst:903
+#, fuzzy
+msgid "There is no return value."
+msgstr "Không có giá trị trả lại."
+
+#: ../../library/threading.rst:799
+#, fuzzy
+msgid "Return ``True`` if the lock is acquired."
+msgstr "Trả về ``True`` nếu có được khóa."
+
+#: ../../library/threading.rst:806
+#, fuzzy
+msgid "RLock objects"
+msgstr "Đối tượng RLock"
+
+#: ../../library/threading.rst:808
+#, fuzzy
+msgid ""
+"A reentrant lock is a synchronization primitive that may be acquired "
+"multiple times by the same thread.  Internally, it uses the concepts of "
+"\"owning thread\" and \"recursion level\" in addition to the locked/unlocked"
+" state used by primitive locks.  In the locked state, some thread owns the "
+"lock; in the unlocked state, no thread owns it."
+msgstr ""
+"Khóa reentrant là một nguyên tắc đồng bộ hóa có thể được thu thập nhiều lần "
+"bởi cùng một luồng.  Trong nội bộ, nó sử dụng các khái niệm \"sở hữu luồng\""
+" và \"mức đệ quy\" bên cạnh trạng thái khóa/mở khóa được sử dụng bởi các "
+"khóa nguyên thủy.  Ở trạng thái bị khóa, một số luồng sở hữu khóa; ở trạng "
+"thái mở khóa, không có chủ đề nào sở hữu nó."
+
+#: ../../library/threading.rst:814
+#, fuzzy
+msgid ""
+"Threads call a lock's :meth:`~RLock.acquire` method to lock it, and its "
+":meth:`~Lock.release` method to unlock it."
+msgstr ""
+"Các luồng gọi phương thức :meth:`~RLock.acquire` của khóa để khóa và phương "
+"thức :meth:`~Lock.release` để mở khóa."
+
+#: ../../library/threading.rst:819
+#, fuzzy
+msgid ""
+"Reentrant locks support the :ref:`context management protocol <with-locks>`,"
+" so it is recommended to use :keyword:`with` instead of manually calling "
+":meth:`~RLock.acquire` and :meth:`~RLock.release` to handle acquiring and "
+"releasing the lock for a block of code."
+msgstr ""
+"Khóa Reentrant hỗ trợ :ref:`context management protocol <with-locks>`, vì "
+"vậy bạn nên sử dụng :keyword:`with` thay vì gọi :meth:`~RLock.acquire` và "
+":meth:`~RLock.release` theo cách thủ công để xử lý việc lấy và giải phóng "
+"khóa cho một khối mã."
+
+#: ../../library/threading.rst:824
+#, fuzzy
+msgid ""
+"RLock's :meth:`~RLock.acquire`/:meth:`~RLock.release` call pairs may be "
+"nested, unlike Lock's :meth:`~Lock.acquire`/:meth:`~Lock.release`. Only the "
+"final :meth:`~RLock.release` (the :meth:`~Lock.release` of the outermost "
+"pair) resets the lock to an unlocked state and allows another thread blocked"
+" in :meth:`~RLock.acquire` to proceed."
+msgstr ""
+"Các cặp lệnh gọi :meth:`~RLock.acquire`/:meth:`~RLock.release` của RLock có "
+"thể được lồng nhau, không giống như "
+":meth:`~Lock.acquire`/:meth:`~Lock.release` của Lock. Chỉ "
+":meth:`~RLock.release` cuối cùng (:meth:`~Lock.release` của cặp ngoài cùng) "
+"mới đặt lại khóa về trạng thái mở khóa và cho phép một luồng khác bị chặn "
+"trong :meth:`~RLock.acquire` tiếp tục."
+
+#: ../../library/threading.rst:830
+#, fuzzy
+msgid ""
+":meth:`~RLock.acquire`/:meth:`~RLock.release` must be used in pairs: each "
+"acquire must have a release in the thread that has acquired the lock. "
+"Failing to call release as many times the lock has been acquired can lead to"
+" deadlock."
+msgstr ""
+":meth:`~RLock.acquire`/:meth:`~RLock.release` phải được sử dụng theo cặp: "
+"mỗi lần thu được phải có một bản phát hành trong luồng đã thu được khóa. "
+"Việc không gọi giải phóng sau nhiều lần khóa đã được lấy có thể dẫn đến bế "
+"tắc."
+
+#: ../../library/threading.rst:837
+#, fuzzy
+msgid ""
+"This class implements reentrant lock objects.  A reentrant lock must be "
+"released by the thread that acquired it.  Once a thread has acquired a "
+"reentrant lock, the same thread may acquire it again without blocking; the "
+"thread must release it once for each time it has acquired it."
+msgstr ""
+"Lớp này thực hiện các đối tượng khóa reentrant.  Khóa đăng nhập lại phải "
+"được giải phóng bởi luồng đã mua nó.  Sau khi một luồng đã có được khóa đăng"
+" nhập lại, thì luồng tương tự có thể lấy lại khóa đó mà không bị chặn; luồng"
+" phải giải phóng nó một lần cho mỗi lần nó có được nó."
+
+#: ../../library/threading.rst:842
+#, fuzzy
+msgid ""
+"Note that ``RLock`` is actually a factory function which returns an instance"
+" of the most efficient version of the concrete RLock class that is supported"
+" by the platform."
+msgstr ""
+"Lưu ý rằng ``RLock`` thực sự là một hàm xuất xưởng trả về phiên bản hiệu quả"
+" nhất của lớp RLock cụ thể được nền tảng hỗ trợ."
+
+#: ../../library/threading.rst:853
+#, fuzzy
+msgid ":ref:`Using RLock as a context manager <with-locks>`"
+msgstr ":ref:`Using RLock as a context manager <with-locks>`"
+
+#: ../../library/threading.rst:854
+#, fuzzy
+msgid ""
+"Recommended over manual :meth:`!acquire` and :meth:`release` calls whenever "
+"practical."
+msgstr ""
+"Được đề xuất qua các lệnh gọi :meth:`!acquire` và :meth:`release` thủ công "
+"bất cứ khi nào thực tế."
+
+#: ../../library/threading.rst:858
+#, fuzzy
+msgid ""
+"When invoked with the *blocking* argument set to ``True`` (the default):"
+msgstr ""
+"Khi được gọi với đối số *blocking* được đặt thành ``True`` (mặc định):"
+
+#: ../../library/threading.rst:860 ../../library/threading.rst:872
+#, fuzzy
+msgid "If no thread owns the lock, acquire the lock and return immediately."
+msgstr ""
+"Nếu không có luồng nào sở hữu khóa, hãy lấy khóa và trả lại ngay lập tức."
+
+#: ../../library/threading.rst:862
+#, fuzzy
+msgid ""
+"If another thread owns the lock, block until we are able to acquire lock, or"
+" *timeout*, if set to a positive float value."
+msgstr ""
+"Nếu một luồng khác sở hữu khóa, hãy chặn cho đến khi chúng tôi có thể lấy "
+"được khóa hoặc *timeout*, nếu được đặt thành giá trị float dương."
+
+#: ../../library/threading.rst:865
+#, fuzzy
+msgid ""
+"If the same thread owns the lock, acquire the lock again, and return "
+"immediately. This is the difference between :class:`Lock` and "
+":class:`!RLock`; :class:`Lock` handles this case the same as the previous, "
+"blocking until the lock can be acquired."
+msgstr ""
+"Nếu cùng một luồng sở hữu khóa, hãy lấy lại khóa và quay lại ngay lập tức. "
+"Đây là sự khác biệt giữa :class:`Lock` và :class:`!RLock`; :class:`Lock` xử "
+"lý trường hợp này giống như trường hợp trước, chặn cho đến khi lấy được "
+"khóa."
+
+#: ../../library/threading.rst:870
+#, fuzzy
+msgid "When invoked with the *blocking* argument set to ``False``:"
+msgstr "Khi được gọi với đối số *blocking* được đặt thành ``False``:"
+
+#: ../../library/threading.rst:874
+#, fuzzy
+msgid "If another thread owns the lock, return immediately."
+msgstr "Nếu một chủ đề khác sở hữu khóa, hãy quay lại ngay lập tức."
+
+#: ../../library/threading.rst:876
+#, fuzzy
+msgid ""
+"If the same thread owns the lock, acquire the lock again and return "
+"immediately."
+msgstr ""
+"Nếu cùng một luồng sở hữu khóa, hãy lấy lại khóa và quay lại ngay lập tức."
+
+#: ../../library/threading.rst:879
+#, fuzzy
+msgid ""
+"In all cases, if the thread was able to acquire the lock, return ``True``. "
+"If the thread was unable to acquire the lock (i.e. if not blocking or the "
+"timeout was reached) return ``False``."
+msgstr ""
+"Trong mọi trường hợp, nếu luồng có thể lấy được khóa, hãy trả về ``True``. "
+"Nếu luồng không thể lấy được khóa (tức là nếu không chặn hoặc đã hết thời "
+"gian chờ), hãy trả về ``False``."
+
+#: ../../library/threading.rst:883
+#, fuzzy
+msgid ""
+"If called multiple times, failing to call :meth:`~RLock.release` as many "
+"times may lead to deadlock. Consider using :class:`!RLock` as a context "
+"manager rather than calling acquire/release directly."
+msgstr ""
+"Nếu gọi nhiều lần, không gọi được :meth:`~RLock.release` nhiều lần có thể "
+"dẫn đến bế tắc. Hãy cân nhắc sử dụng :class:`!RLock` làm trình quản lý bối "
+"cảnh thay vì gọi trực tiếp việc thu thập/phát hành."
+
+#: ../../library/threading.rst:893
+#, fuzzy
+msgid ""
+"Release a lock, decrementing the recursion level.  If after the decrement it"
+" is zero, reset the lock to unlocked (not owned by any thread), and if any "
+"other threads are blocked waiting for the lock to become unlocked, allow "
+"exactly one of them to proceed.  If after the decrement the recursion level "
+"is still nonzero, the lock remains locked and owned by the calling thread."
+msgstr ""
+"Nhả khóa, giảm mức đệ quy.  Nếu sau khi giảm nó bằng 0, hãy đặt lại khóa "
+"thành đã mở khóa (không thuộc sở hữu của bất kỳ luồng nào) và nếu bất kỳ "
+"luồng nào khác bị chặn khi chờ khóa được mở khóa, hãy cho phép chính xác một"
+" trong số chúng tiếp tục.  Nếu sau khi giảm, mức đệ quy vẫn khác 0, khóa vẫn"
+" bị khóa và thuộc sở hữu của luồng gọi."
+
+#: ../../library/threading.rst:899
+#, fuzzy
+msgid ""
+"Only call this method when the calling thread owns the lock. A "
+":exc:`RuntimeError` is raised if this method is called when the lock is not "
+"acquired."
+msgstr ""
+"Chỉ gọi phương thức này khi luồng gọi sở hữu khóa. Một :exc:`RuntimeError` "
+"được nâng lên nếu phương thức này được gọi khi không lấy được khóa."
+
+#: ../../library/threading.rst:908 ../../library/threading.rst:1007
+#, fuzzy
+msgid "Return a boolean indicating whether this object is locked right now."
+msgstr ""
+"Trả về một boolean cho biết hiện tại đối tượng này có bị khóa hay không."
+
+#: ../../library/threading.rst:916
+#, fuzzy
+msgid "Condition objects"
+msgstr "Đối tượng điều kiện"
+
+#: ../../library/threading.rst:918
+#, fuzzy
+msgid ""
+"A condition variable is always associated with some kind of lock; this can "
+"be passed in or one will be created by default.  Passing one in is useful "
+"when several condition variables must share the same lock.  The lock is part"
+" of the condition object: you don't have to track it separately."
+msgstr ""
+"Một biến điều kiện luôn được liên kết với một loại khóa nào đó; cái này có "
+"thể được chuyển vào hoặc một cái sẽ được tạo theo mặc định.  Việc chuyển một"
+" biến vào rất hữu ích khi một số biến điều kiện phải chia sẻ cùng một khóa."
+"  Khóa là một phần của đối tượng điều kiện: bạn không cần phải theo dõi nó "
+"một cách riêng biệt."
+
+#: ../../library/threading.rst:923
+#, fuzzy
+msgid ""
+"A condition variable obeys the :ref:`context management protocol <with-"
+"locks>`: using the ``with`` statement acquires the associated lock for the "
+"duration of the enclosed block.  The :meth:`~Condition.acquire` and "
+":meth:`~Condition.release` methods also call the corresponding methods of "
+"the associated lock."
+msgstr ""
+"Một biến điều kiện tuân theo :ref:`context management protocol <with-"
+"locks>`: sử dụng câu lệnh ``with`` sẽ lấy được khóa liên quan trong suốt "
+"thời gian của khối kèm theo.  Các phương thức :meth:`~Condition.acquire` và "
+":meth:`~Condition.release` cũng gọi các phương thức tương ứng của khóa liên "
+"quan."
+
+#: ../../library/threading.rst:929
+#, fuzzy
+msgid ""
+"Other methods must be called with the associated lock held.  The "
+":meth:`~Condition.wait` method releases the lock, and then blocks until "
+"another thread awakens it by calling :meth:`~Condition.notify` or "
+":meth:`~Condition.notify_all`.  Once awakened, :meth:`~Condition.wait` re-"
+"acquires the lock and returns.  It is also possible to specify a timeout."
+msgstr ""
+"Các phương thức khác phải được gọi với khóa liên quan được giữ.  Phương thức"
+" :meth:`~Condition.wait` giải phóng khóa và sau đó chặn cho đến khi một "
+"luồng khác đánh thức nó bằng cách gọi :meth:`~Condition.notify` hoặc "
+":meth:`~Condition.notify_all`.  Sau khi được đánh thức, "
+":meth:`~Condition.wait` lấy lại được khóa và quay trở lại.  Cũng có thể chỉ "
+"định thời gian chờ."
+
+#: ../../library/threading.rst:935
+#, fuzzy
+msgid ""
+"The :meth:`~Condition.notify` method wakes up one of the threads waiting for"
+" the condition variable, if any are waiting.  The "
+":meth:`~Condition.notify_all` method wakes up all threads waiting for the "
+"condition variable."
+msgstr ""
+"Phương thức :meth:`~Condition.notify` đánh thức một trong các luồng đang chờ"
+" biến điều kiện, nếu có.  Phương thức :meth:`~Condition.notify_all` đánh "
+"thức tất cả các luồng đang chờ biến điều kiện."
+
+#: ../../library/threading.rst:939
+#, fuzzy
+msgid ""
+"Note: the :meth:`~Condition.notify` and :meth:`~Condition.notify_all` "
+"methods don't release the lock; this means that the thread or threads "
+"awakened will not return from their :meth:`~Condition.wait` call "
+"immediately, but only when the thread that called :meth:`~Condition.notify` "
+"or :meth:`~Condition.notify_all` finally relinquishes ownership of the lock."
+msgstr ""
+"Lưu ý: phương thức :meth:`~Condition.notify` và "
+":meth:`~Condition.notify_all` không nhả khóa; điều này có nghĩa là chuỗi "
+"được đánh thức sẽ không quay trở lại từ lệnh gọi :meth:`~Condition.wait` của"
+" chúng ngay lập tức mà chỉ khi chuỗi được gọi là :meth:`~Condition.notify` "
+"hoặc :meth:`~Condition.notify_all` cuối cùng từ bỏ quyền sở hữu khóa."
+
+#: ../../library/threading.rst:945
+#, fuzzy
+msgid ""
+"The typical programming style using condition variables uses the lock to "
+"synchronize access to some shared state; threads that are interested in a "
+"particular change of state call :meth:`~Condition.wait` repeatedly until "
+"they see the desired state, while threads that modify the state call "
+":meth:`~Condition.notify` or :meth:`~Condition.notify_all` when they change "
+"the state in such a way that it could possibly be a desired state for one of"
+" the waiters.  For example, the following code is a generic producer-"
+"consumer situation with unlimited buffer capacity::"
+msgstr ""
+"Kiểu lập trình điển hình sử dụng các biến điều kiện sử dụng khóa để đồng bộ "
+"hóa quyền truy cập vào một số trạng thái chia sẻ; các luồng quan tâm đến một"
+" thay đổi trạng thái cụ thể sẽ gọi :meth:`~Condition.wait` liên tục cho đến "
+"khi chúng thấy trạng thái mong muốn, trong khi các luồng sửa đổi trạng thái "
+"gọi :meth:`~Condition.notify` hoặc :meth:`~Condition.notify_all` khi chúng "
+"thay đổi trạng thái theo cách mà nó có thể là trạng thái mong muốn đối với "
+"một trong những người phục vụ.  Ví dụ: đoạn mã sau đây là tình huống chung "
+"của nhà sản xuất-người tiêu dùng với dung lượng bộ đệm không giới hạn::"
+
+#: ../../library/threading.rst:954
+#, fuzzy
+msgid ""
+"# Consume one item\n"
+"with cv:\n"
+"    while not an_item_is_available():\n"
+"        cv.wait()\n"
+"    get_an_available_item()\n"
+"\n"
+"# Produce one item\n"
+"with cv:\n"
+"    make_an_item_available()\n"
+"    cv.notify()"
+msgstr ""
+"# Consume một mặt hàng\n"
+"với cv:\n"
+"    trong khi không an_item_is_available():\n"
+"        cv.wait()\n"
+"    get_an_available_item()\n"
+"\n"
+"# Produce một mặt hàng\n"
+"với cv:\n"
+"    make_an_item_available()\n"
+"    cv.notify()"
+
+#: ../../library/threading.rst:965
+#, fuzzy
+msgid ""
+"The ``while`` loop checking for the application's condition is necessary "
+"because :meth:`~Condition.wait` can return after an arbitrary long time, and"
+" the condition which prompted the :meth:`~Condition.notify` call may no "
+"longer hold true.  This is inherent to multi-threaded programming.  The "
+":meth:`~Condition.wait_for` method can be used to automate the condition "
+"checking, and eases the computation of timeouts::"
+msgstr ""
+"Việc kiểm tra vòng lặp ``while`` để tìm điều kiện của ứng dụng là cần thiết "
+"vì :meth:`~Condition.wait` có thể quay trở lại sau một thời gian dài tùy ý "
+"và điều kiện nhắc lệnh gọi :meth:`~Condition.notify` có thể không còn đúng "
+"nữa.  Điều này vốn có của lập trình đa luồng.  Phương pháp "
+":meth:`~Condition.wait_for` có thể được sử dụng để tự động hóa việc kiểm tra"
+" điều kiện và giảm bớt việc tính toán thời gian chờ::"
+
+#: ../../library/threading.rst:972
+#, fuzzy
+msgid ""
+"# Consume an item\n"
+"with cv:\n"
+"    cv.wait_for(an_item_is_available)\n"
+"    get_an_available_item()"
+msgstr ""
+"# Consume một món đồ\n"
+"với cv:\n"
+"    cv.wait_for(an_item_is_available)\n"
+"    get_an_available_item()"
+
+#: ../../library/threading.rst:977
+#, fuzzy
+msgid ""
+"To choose between :meth:`~Condition.notify` and "
+":meth:`~Condition.notify_all`, consider whether one state change can be "
+"interesting for only one or several waiting threads.  E.g. in a typical "
+"producer-consumer situation, adding one item to the buffer only needs to "
+"wake up one consumer thread."
+msgstr ""
+"Để chọn giữa :meth:`~Condition.notify` và :meth:`~Condition.notify_all`, hãy"
+" xem xét liệu một thay đổi trạng thái có thể chỉ thú vị đối với một hoặc một"
+" số luồng đang chờ hay không.  Ví dụ. trong tình huống nhà sản xuất-người "
+"tiêu dùng điển hình, việc thêm một mục vào bộ đệm chỉ cần đánh thức một "
+"chuỗi tiêu dùng."
+
+#: ../../library/threading.rst:985
+#, fuzzy
+msgid ""
+"This class implements condition variable objects.  A condition variable "
+"allows one or more threads to wait until they are notified by another "
+"thread."
+msgstr ""
+"Lớp này thực hiện các đối tượng biến điều kiện.  Biến điều kiện cho phép một"
+" hoặc nhiều luồng chờ cho đến khi chúng được một luồng khác thông báo."
+
+#: ../../library/threading.rst:988
+#, fuzzy
+msgid ""
+"If the *lock* argument is given and not ``None``, it must be a :class:`Lock`"
+" or :class:`RLock` object, and it is used as the underlying lock.  "
+"Otherwise, a new :class:`RLock` object is created and used as the underlying"
+" lock."
+msgstr ""
+"Nếu đối số *lock* được đưa ra chứ không phải ``None``, thì đối số đó phải là"
+" đối tượng :class:`Lock` hoặc :class:`RLock` và được sử dụng làm khóa cơ "
+"bản.  Nếu không, một đối tượng :class:`RLock` mới sẽ được tạo và sử dụng làm"
+" khóa cơ bản."
+
+#: ../../library/threading.rst:992 ../../library/threading.rst:1122
+#: ../../library/threading.rst:1168 ../../library/threading.rst:1220
+#: ../../library/threading.rst:1288
+#, fuzzy
+msgid "changed from a factory function to a class."
+msgstr "đã thay đổi từ một chức năng của nhà máy thành một lớp."
+
+#: ../../library/threading.rst:997
+#, fuzzy
+msgid ""
+"Acquire the underlying lock. This method calls the corresponding method on "
+"the underlying lock; the return value is whatever that method returns."
+msgstr ""
+"Có được khóa cơ bản. Phương thức này gọi phương thức tương ứng trên khóa cơ "
+"bản; giá trị trả về là bất cứ giá trị nào mà phương thức đó trả về."
+
+#: ../../library/threading.rst:1002
+#, fuzzy
+msgid ""
+"Release the underlying lock. This method calls the corresponding method on "
+"the underlying lock; there is no return value."
+msgstr ""
+"Nhả khóa bên dưới. Phương thức này gọi phương thức tương ứng trên khóa cơ "
+"bản; không có giá trị trả về."
+
+#: ../../library/threading.rst:1013
+#, fuzzy
+msgid ""
+"Wait until notified or until a timeout occurs. If the calling thread has not"
+" acquired the lock when this method is called, a :exc:`RuntimeError` is "
+"raised."
+msgstr ""
+"Đợi cho đến khi được thông báo hoặc cho đến khi hết thời gian chờ. Nếu luồng"
+" gọi không nhận được khóa khi phương thức này được gọi, thì "
+":exc:`RuntimeError` sẽ được nâng lên."
+
+#: ../../library/threading.rst:1017
+#, fuzzy
+msgid ""
+"This method releases the underlying lock, and then blocks until it is "
+"awakened by a :meth:`notify` or :meth:`notify_all` call for the same "
+"condition variable in another thread, or until the optional timeout occurs."
+"  Once awakened or timed out, it re-acquires the lock and returns."
+msgstr ""
+"Phương thức này giải phóng khóa cơ bản, sau đó chặn cho đến khi nó được đánh"
+" thức bởi lệnh gọi :meth:`notify` hoặc :meth:`notify_all` cho cùng một biến "
+"điều kiện trong một luồng khác hoặc cho đến khi hết thời gian chờ tùy chọn."
+"  Sau khi được đánh thức hoặc hết thời gian chờ, nó sẽ lấy lại khóa và quay "
+"trở lại."
+
+#: ../../library/threading.rst:1022
+#, fuzzy
+msgid ""
+"When the *timeout* argument is present and not ``None``, it should be a "
+"floating-point number specifying a timeout for the operation in seconds (or "
+"fractions thereof)."
+msgstr ""
+"Khi đối số *timeout* xuất hiện chứ không phải ``None``, nó phải là số dấu "
+"phẩy động chỉ định thời gian chờ cho thao tác tính bằng giây (hoặc phân số "
+"của nó)."
+
+#: ../../library/threading.rst:1026
+#, fuzzy
+msgid ""
+"When the underlying lock is an :class:`RLock`, it is not released using its "
+":meth:`release` method, since this may not actually unlock the lock when it "
+"was acquired multiple times recursively.  Instead, an internal interface of "
+"the :class:`RLock` class is used, which really unlocks it even when it has "
+"been recursively acquired several times. Another internal interface is then "
+"used to restore the recursion level when the lock is reacquired."
+msgstr ""
+"Khi khóa cơ bản là :class:`RLock`, nó không được giải phóng bằng phương pháp"
+" :meth:`release`, vì điều này có thể không thực sự mở khóa khi nó được lấy "
+"đệ quy nhiều lần.  Thay vào đó, một giao diện bên trong của lớp "
+":class:`RLock` được sử dụng, giao diện này thực sự mở khóa nó ngay cả khi nó"
+" được mua lại một cách đệ quy nhiều lần. Sau đó, một giao diện nội bộ khác "
+"được sử dụng để khôi phục mức đệ quy khi khóa được lấy lại."
+
+#: ../../library/threading.rst:1034
+#, fuzzy
+msgid ""
+"The return value is ``True`` unless a given *timeout* expired, in which case"
+" it is ``False``."
+msgstr ""
+"Giá trị trả về là ``True`` trừ khi *timeout* đã cho hết hạn, trong trường "
+"hợp đó là ``False``."
+
+#: ../../library/threading.rst:1037 ../../library/threading.rst:1253
+#, fuzzy
+msgid "Previously, the method always returned ``None``."
+msgstr "Trước đây, phương thức này luôn trả về ``None``."
+
+#: ../../library/threading.rst:1042
+#, fuzzy
+msgid ""
+"Wait until a condition evaluates to true.  *predicate* should be a callable "
+"which result will be interpreted as a boolean value. A *timeout* may be "
+"provided giving the maximum time to wait."
+msgstr ""
+"Đợi cho đến khi một điều kiện được đánh giá là đúng.  *predicate* phải là "
+"một giá trị có thể gọi được và kết quả sẽ được hiểu là giá trị boolean. Một "
+"*timeout* có thể được cung cấp để có thời gian chờ đợi tối đa."
+
+#: ../../library/threading.rst:1046
+#, fuzzy
+msgid ""
+"This utility method may call :meth:`wait` repeatedly until the predicate is "
+"satisfied, or until a timeout occurs. The return value is the last return "
+"value of the predicate and will evaluate to ``False`` if the method timed "
+"out."
+msgstr ""
+"Phương thức tiện ích này có thể gọi :meth:`wait` liên tục cho đến khi vị từ "
+"được thỏa mãn hoặc cho đến khi hết thời gian chờ. Giá trị trả về là giá trị "
+"trả về cuối cùng của vị từ và sẽ đánh giá thành ``False`` nếu phương thức "
+"hết thời gian chờ."
+
+#: ../../library/threading.rst:1051
+#, fuzzy
+msgid ""
+"Ignoring the timeout feature, calling this method is roughly equivalent to "
+"writing::"
+msgstr ""
+"Bỏ qua tính năng hết thời gian chờ, việc gọi phương thức này gần tương đương"
+" với việc viết::"
+
+#: ../../library/threading.rst:1054
+#, fuzzy
+msgid ""
+"while not predicate():\n"
+"    cv.wait()"
+msgstr ""
+"trong khi không phải là vị ngữ():\n"
+"    cv.wait()"
+
+#: ../../library/threading.rst:1057
+#, fuzzy
+msgid ""
+"Therefore, the same rules apply as with :meth:`wait`: The lock must be held "
+"when called and is re-acquired on return.  The predicate is evaluated with "
+"the lock held."
+msgstr ""
+"Do đó, các quy tắc tương tự được áp dụng như với :meth:`wait`: Khóa phải "
+"được giữ khi được gọi và được lấy lại khi quay lại.  Vị từ được đánh giá với"
+" khóa được giữ."
+
+#: ../../library/threading.rst:1065
+#, fuzzy
+msgid ""
+"By default, wake up one thread waiting on this condition, if any.  If the "
+"calling thread has not acquired the lock when this method is called, a "
+":exc:`RuntimeError` is raised."
+msgstr ""
+"Theo mặc định, đánh thức một luồng đang chờ điều kiện này, nếu có.  Nếu "
+"luồng gọi không nhận được khóa khi phương thức này được gọi, thì "
+":exc:`RuntimeError` sẽ được nâng lên."
+
+#: ../../library/threading.rst:1069
+#, fuzzy
+msgid ""
+"This method wakes up at most *n* of the threads waiting for the condition "
+"variable; it is a no-op if no threads are waiting."
+msgstr ""
+"Phương thức này đánh thức tối đa *n* các luồng đang chờ biến điều kiện; nó "
+"sẽ không hoạt động nếu không có chủ đề nào đang chờ."
+
+#: ../../library/threading.rst:1072
+#, fuzzy
+msgid ""
+"The current implementation wakes up exactly *n* threads, if at least *n* "
+"threads are waiting.  However, it's not safe to rely on this behavior. A "
+"future, optimized implementation may occasionally wake up more than *n* "
+"threads."
+msgstr ""
+"Việc triển khai hiện tại đánh thức chính xác các luồng *n*, nếu ít nhất các "
+"luồng *n* đang chờ.  Tuy nhiên, không an toàn khi dựa vào hành vi này. Việc "
+"triển khai được tối ưu hóa trong tương lai đôi khi có thể đánh thức nhiều "
+"hơn các luồng *n*."
+
+#: ../../library/threading.rst:1077
+#, fuzzy
+msgid ""
+"Note: an awakened thread does not actually return from its :meth:`wait` call"
+" until it can reacquire the lock.  Since :meth:`notify` does not release the"
+" lock, its caller should."
+msgstr ""
+"Lưu ý: một chuỗi đã đánh thức không thực sự quay trở lại từ lệnh gọi "
+":meth:`wait` của nó cho đến khi nó có thể lấy lại khóa.  Vì :meth:`notify` "
+"không mở khóa nên người gọi nó sẽ mở khóa."
+
+#: ../../library/threading.rst:1083
+#, fuzzy
+msgid ""
+"Wake up all threads waiting on this condition.  This method acts like "
+":meth:`notify`, but wakes up all waiting threads instead of one. If the "
+"calling thread has not acquired the lock when this method is called, a "
+":exc:`RuntimeError` is raised."
+msgstr ""
+"Đánh thức tất cả các chủ đề đang chờ ở điều kiện này.  Phương thức này hoạt "
+"động giống như :meth:`notify`, nhưng đánh thức tất cả các luồng đang chờ "
+"thay vì một. Nếu luồng gọi không nhận được khóa khi phương thức này được "
+"gọi, thì :exc:`RuntimeError` sẽ được nâng lên."
+
+#: ../../library/threading.rst:1088
+#, fuzzy
+msgid "The method ``notifyAll`` is a deprecated alias for this method."
+msgstr ""
+"Phương thức ``notifyAll`` là bí danh không được dùng nữa cho phương thức "
+"này."
+
+#: ../../library/threading.rst:1094
+#, fuzzy
+msgid "Semaphore objects"
+msgstr "Đối tượng ngữ nghĩa"
+
+#: ../../library/threading.rst:1096
+#, fuzzy
+msgid ""
+"This is one of the oldest synchronization primitives in the history of "
+"computer science, invented by the early Dutch computer scientist Edsger W. "
+"Dijkstra (he used the names ``P()`` and ``V()`` instead of "
+":meth:`~Semaphore.acquire` and :meth:`~Semaphore.release`)."
+msgstr ""
+"Đây là một trong những nguyên tắc đồng bộ hóa lâu đời nhất trong lịch sử "
+"khoa học máy tính, được phát minh bởi nhà khoa học máy tính đầu tiên người "
+"Hà Lan Edsger W. Dijkstra (ông sử dụng tên ``P()`` và ``V()`` thay vì "
+":meth:`~Semaphore.acquire` và :meth:`~Semaphore.release`)."
+
+#: ../../library/threading.rst:1101
+#, fuzzy
+msgid ""
+"A semaphore manages an internal counter which is decremented by each "
+":meth:`~Semaphore.acquire` call and incremented by each "
+":meth:`~Semaphore.release` call.  The counter can never go below zero; when "
+":meth:`~Semaphore.acquire` finds that it is zero, it blocks, waiting until "
+"some other thread calls :meth:`~Semaphore.release`."
+msgstr ""
+"Một semaphore quản lý một bộ đếm nội bộ được giảm dần theo mỗi lệnh gọi "
+":meth:`~Semaphore.acquire` và tăng lên theo mỗi lệnh gọi "
+":meth:`~Semaphore.release`.  Bộ đếm không bao giờ có thể xuống dưới 0; khi "
+":meth:`~Semaphore.acquire` thấy nó bằng 0, nó sẽ chặn, đợi cho đến khi một "
+"số luồng khác gọi :meth:`~Semaphore.release`."
+
+#: ../../library/threading.rst:1107
+#, fuzzy
+msgid ""
+"Semaphores also support the :ref:`context management protocol <with-locks>`."
+msgstr ""
+"Semaphores cũng hỗ trợ :ref:`context management protocol <with-locks>`."
+
+#: ../../library/threading.rst:1112
+#, fuzzy
+msgid ""
+"This class implements semaphore objects.  A semaphore manages an atomic "
+"counter representing the number of :meth:`release` calls minus the number of"
+" :meth:`acquire` calls, plus an initial value.  The :meth:`acquire` method "
+"blocks if necessary until it can return without making the counter negative."
+" If not given, *value* defaults to 1."
+msgstr ""
+"Lớp này thực hiện các đối tượng semaphore.  Một semaphore quản lý một bộ đếm"
+" nguyên tử biểu thị số lượng lệnh gọi :meth:`release` trừ đi số lượng lệnh "
+"gọi :meth:`acquire`, cộng với giá trị ban đầu.  Phương thức :meth:`acquire` "
+"sẽ chặn nếu cần thiết cho đến khi nó có thể quay trở lại mà không làm cho bộ"
+" đếm âm. Nếu không được cung cấp, *value* mặc định là 1."
+
+#: ../../library/threading.rst:1118
+#, fuzzy
+msgid ""
+"The optional argument gives the initial *value* for the internal counter; it"
+" defaults to ``1``. If the *value* given is less than 0, :exc:`ValueError` "
+"is raised."
+msgstr ""
+"Đối số tùy chọn cung cấp *value* ban đầu cho bộ đếm bên trong; nó mặc định "
+"là ``1``. Nếu *value* đã cho nhỏ hơn 0, :exc:`ValueError` sẽ được nâng lên."
+
+#: ../../library/threading.rst:1127
+#, fuzzy
+msgid "Acquire a semaphore."
+msgstr "Có được một semaphore."
+
+#: ../../library/threading.rst:1129
+#, fuzzy
+msgid "When invoked without arguments:"
+msgstr "Khi được gọi mà không có đối số:"
+
+#: ../../library/threading.rst:1131
+#, fuzzy
+msgid ""
+"If the internal counter is larger than zero on entry, decrement it by one "
+"and return ``True`` immediately."
+msgstr ""
+"Nếu bộ đếm bên trong lớn hơn 0 khi nhập, hãy giảm nó đi một và trả về "
+"``True`` ngay lập tức."
+
+#: ../../library/threading.rst:1133
+#, fuzzy
+msgid ""
+"If the internal counter is zero on entry, block until awoken by a call to "
+":meth:`~Semaphore.release`.  Once awoken (and the counter is greater than "
+"0), decrement the counter by 1 and return ``True``.  Exactly one thread will"
+" be awoken by each call to :meth:`~Semaphore.release`.  The order in which "
+"threads are awoken should not be relied on."
+msgstr ""
+"Nếu bộ đếm bên trong bằng 0 khi nhập, hãy chặn cho đến khi được đánh thức "
+"bởi lệnh gọi tới :meth:`~Semaphore.release`.  Sau khi được đánh thức (và bộ "
+"đếm lớn hơn 0), hãy giảm bộ đếm đi 1 và trả về ``True``.  Chính xác một "
+"luồng sẽ được đánh thức sau mỗi lệnh gọi tới :meth:`~Semaphore.release`.  "
+"Không nên dựa vào thứ tự đánh thức các chủ đề."
+
+#: ../../library/threading.rst:1139
+#, fuzzy
+msgid ""
+"When invoked with *blocking* set to ``False``, do not block.  If a call "
+"without an argument would block, return ``False`` immediately; otherwise, do"
+" the same thing as when called without arguments, and return ``True``."
+msgstr ""
+"Khi được gọi với *blocking* được đặt thành ``False``, đừng chặn.  Nếu cuộc "
+"gọi không có đối số bị chặn, hãy trả về ``False`` ngay lập tức; nếu không, "
+"hãy thực hiện tương tự như khi được gọi không có đối số và trả về ``True``."
+
+#: ../../library/threading.rst:1143
+#, fuzzy
+msgid ""
+"When invoked with a *timeout* other than ``None``, it will block for at most"
+" *timeout* seconds.  If acquire does not complete successfully in that "
+"interval, return ``False``.  Return ``True`` otherwise."
+msgstr ""
+"Khi được gọi bằng *timeout* không phải ``None``, nó sẽ chặn tối đa *timeout*"
+" giây.  Nếu quá trình thu thập không hoàn tất thành công trong khoảng thời "
+"gian đó, hãy trả về ``False``.  Trả về ``True`` nếu không."
+
+#: ../../library/threading.rst:1152
+#, fuzzy
+msgid ""
+"Release a semaphore, incrementing the internal counter by *n*.  When it was "
+"zero on entry and other threads are waiting for it to become larger than "
+"zero again, wake up *n* of those threads."
+msgstr ""
+"Giải phóng một đèn hiệu, tăng bộ đếm bên trong lên *n*.  Khi nó bằng 0 khi "
+"nhập và các luồng khác đang chờ nó lớn hơn 0 lần nữa, hãy đánh thức *n* của "
+"các luồng đó."
+
+#: ../../library/threading.rst:1156
+#, fuzzy
+msgid "Added the *n* parameter to release multiple waiting threads at once."
+msgstr "Đã thêm tham số *n* để giải phóng nhiều luồng đang chờ cùng một lúc."
+
+#: ../../library/threading.rst:1162
+#, fuzzy
+msgid ""
+"Class implementing bounded semaphore objects.  A bounded semaphore checks to"
+" make sure its current value doesn't exceed its initial value.  If it does, "
+":exc:`ValueError` is raised. In most situations semaphores are used to guard"
+" resources with limited capacity.  If the semaphore is released too many "
+"times it's a sign of a bug.  If not given, *value* defaults to 1."
+msgstr ""
+"Lớp thực hiện các đối tượng semaphore giới hạn.  Một semaphore giới hạn sẽ "
+"kiểm tra để đảm bảo giá trị hiện tại của nó không vượt quá giá trị ban đầu."
+"  Nếu có, :exc:`ValueError` sẽ được nâng lên. Trong hầu hết các trường hợp, "
+"ngữ nghĩa được sử dụng để bảo vệ các tài nguyên có dung lượng hạn chế.  Nếu "
+"semaphore được phát hành quá nhiều lần thì đó là dấu hiệu của lỗi.  Nếu "
+"không được cung cấp, *value* mặc định là 1."
+
+#: ../../library/threading.rst:1175
+#, fuzzy
+msgid ":class:`Semaphore` example"
+msgstr "ví dụ về :class:`Semaphore`"
+
+#: ../../library/threading.rst:1177
+#, fuzzy
+msgid ""
+"Semaphores are often used to guard resources with limited capacity, for "
+"example, a database server.  In any situation where the size of the resource"
+" is fixed, you should use a bounded semaphore.  Before spawning any worker "
+"threads, your main thread would initialize the semaphore::"
+msgstr ""
+"Semaphores thường được sử dụng để bảo vệ các tài nguyên có dung lượng hạn "
+"chế, ví dụ như máy chủ cơ sở dữ liệu.  Trong mọi tình huống mà kích thước "
+"của tài nguyên được cố định, bạn nên sử dụng một đèn hiệu giới hạn.  Trước "
+"khi sinh ra bất kỳ luồng công việc nào, luồng chính của bạn sẽ khởi tạo "
+"semaphore::"
+
+#: ../../library/threading.rst:1182
+#, fuzzy
+msgid ""
+"maxconnections = 5\n"
+"# ...\n"
+"pool_sema = BoundedSemaphore(value=maxconnections)"
+msgstr ""
+"kết nối tối đa = 5\n"
+"# ...\n"
+"pool_sema = BoundedSemaphore(value=maxconnections)"
+
+#: ../../library/threading.rst:1186
+#, fuzzy
+msgid ""
+"Once spawned, worker threads call the semaphore's acquire and release "
+"methods when they need to connect to the server::"
+msgstr ""
+"Sau khi được sinh ra, các luồng công việc gọi các phương thức thu thập và "
+"giải phóng của semaphore khi chúng cần kết nối với máy chủ::"
+
+#: ../../library/threading.rst:1189
+#, fuzzy
+msgid ""
+"with pool_sema:\n"
+"    conn = connectdb()\n"
+"    try:\n"
+"        # ... use connection ...\n"
+"    finally:\n"
+"        conn.close()"
+msgstr ""
+"với pool_sema:\n"
+"    conn = connectdb()\n"
+"    thử:\n"
+"        # ... sử dụng kết nối ...\n"
+"    cuối cùng:\n"
+"        conn.close()"
+
+#: ../../library/threading.rst:1196
+#, fuzzy
+msgid ""
+"The use of a bounded semaphore reduces the chance that a programming error "
+"which causes the semaphore to be released more than it's acquired will go "
+"undetected."
+msgstr ""
+"Việc sử dụng một semaphore giới hạn sẽ làm giảm khả năng xảy ra lỗi lập "
+"trình khiến semaphore được giải phóng nhiều hơn mức thu được sẽ không bị "
+"phát hiện."
+
+#: ../../library/threading.rst:1203
+#, fuzzy
+msgid "Event objects"
+msgstr "Đối tượng sự kiện"
+
+#: ../../library/threading.rst:1205
+#, fuzzy
+msgid ""
+"This is one of the simplest mechanisms for communication between threads: "
+"one thread signals an event and other threads wait for it."
+msgstr ""
+"Đây là một trong những cơ chế đơn giản nhất để giao tiếp giữa các luồng: một"
+" luồng báo hiệu một sự kiện và các luồng khác chờ đợi sự kiện đó."
+
+#: ../../library/threading.rst:1208
+#, fuzzy
+msgid ""
+"An event object manages an internal flag that can be set to true with the "
+":meth:`~Event.set` method and reset to false with the :meth:`~Event.clear` "
+"method.  The :meth:`~Event.wait` method blocks until the flag is true."
+msgstr ""
+"Một đối tượng sự kiện quản lý một cờ nội bộ có thể được đặt thành true bằng "
+"phương thức :meth:`~Event.set` và đặt lại thành false bằng phương thức "
+":meth:`~Event.clear`.  Phương thức :meth:`~Event.wait` chặn cho đến khi cờ "
+"đúng."
+
+#: ../../library/threading.rst:1215
+#, fuzzy
+msgid ""
+"Class implementing event objects.  An event manages a flag that can be set "
+"to true with the :meth:`~Event.set` method and reset to false with the "
+":meth:`clear` method.  The :meth:`wait` method blocks until the flag is "
+"true. The flag is initially false."
+msgstr ""
+"Lớp thực hiện các đối tượng sự kiện.  Một sự kiện quản lý một cờ có thể được"
+" đặt thành true bằng phương thức :meth:`~Event.set` và đặt lại thành false "
+"bằng phương thức :meth:`clear`.  Phương thức :meth:`wait` chặn cho đến khi "
+"cờ đúng. Cờ ban đầu là sai."
+
+#: ../../library/threading.rst:1225
+#, fuzzy
+msgid "Return ``True`` if and only if the internal flag is true."
+msgstr "Trả về ``True`` khi và chỉ khi cờ nội bộ là đúng."
+
+#: ../../library/threading.rst:1227
+#, fuzzy
+msgid "The method ``isSet`` is a deprecated alias for this method."
+msgstr ""
+"Phương thức ``isSet`` là bí danh không được dùng nữa cho phương thức này."
+
+#: ../../library/threading.rst:1231
+#, fuzzy
+msgid ""
+"Set the internal flag to true. All threads waiting for it to become true are"
+" awakened. Threads that call :meth:`wait` once the flag is true will not "
+"block at all."
+msgstr ""
+"Đặt cờ nội bộ thành true. Tất cả các chủ đề đang chờ nó trở thành sự thật "
+"đều được đánh thức. Các chủ đề gọi :meth:`wait` khi cờ đúng sẽ không bị chặn"
+" chút nào."
+
+#: ../../library/threading.rst:1237
+#, fuzzy
+msgid ""
+"Reset the internal flag to false. Subsequently, threads calling :meth:`wait`"
+" will block until :meth:`.set` is called to set the internal flag to true "
+"again."
+msgstr ""
+"Đặt lại cờ nội bộ thành sai. Sau đó, các luồng gọi :meth:`wait` sẽ chặn cho "
+"đến khi :meth:`.set` được gọi để đặt cờ nội bộ thành true một lần nữa."
+
+#: ../../library/threading.rst:1243
+#, fuzzy
+msgid ""
+"Block as long as the internal flag is false and the timeout, if given, has "
+"not expired. The return value represents the reason that this blocking "
+"method returned; ``True`` if returning because the internal flag is set to "
+"true, or ``False`` if a timeout is given and the internal flag did not "
+"become true within the given wait time."
+msgstr ""
+"Chặn miễn là cờ nội bộ là sai và thời gian chờ, nếu có, chưa hết hạn. Giá "
+"trị trả về thể hiện lý do mà phương thức chặn này trả về; ``True`` nếu quay "
+"lại vì cờ nội bộ được đặt thành đúng hoặc ``False`` nếu hết thời gian chờ và"
+" cờ nội bộ không trở thành đúng trong thời gian chờ nhất định."
+
+#: ../../library/threading.rst:1249
+#, fuzzy
+msgid ""
+"When the timeout argument is present and not ``None``, it should be a "
+"floating-point number specifying a timeout for the operation in seconds, or "
+"fractions thereof."
+msgstr ""
+"Khi đối số hết thời gian chờ xuất hiện chứ không phải ``None``, thì đó phải "
+"là số dấu phẩy động chỉ định thời gian chờ cho thao tác tính bằng giây hoặc "
+"phân số của nó."
+
+#: ../../library/threading.rst:1260
+#, fuzzy
+msgid "Timer objects"
+msgstr "Đối tượng hẹn giờ"
+
+#: ../../library/threading.rst:1262
+#, fuzzy
+msgid ""
+"This class represents an action that should be run only after a certain "
+"amount of time has passed --- a timer.  :class:`Timer` is a subclass of "
+":class:`Thread` and as such also functions as an example of creating custom "
+"threads."
+msgstr ""
+"Lớp này đại diện cho một hành động chỉ được chạy sau một khoảng thời gian "
+"nhất định --- bộ đếm thời gian.  :class:`Timer` là một lớp con của "
+":class:`Thread` và do đó cũng có chức năng như một ví dụ về việc tạo các chủ"
+" đề tùy chỉnh."
+
+#: ../../library/threading.rst:1266
+#, fuzzy
+msgid ""
+"Timers are started, as with threads, by calling their :meth:`Timer.start "
+"<Thread.start>` method.  The timer can be stopped (before its action has "
+"begun) by calling the :meth:`~Timer.cancel` method.  The interval the timer "
+"will wait before executing its action may not be exactly the same as the "
+"interval specified by the user."
+msgstr ""
+"Bộ hẹn giờ được khởi động, giống như các luồng, bằng cách gọi phương thức "
+":meth:`Timer.start <Thread.start>` của chúng.  Bộ hẹn giờ có thể được dừng "
+"(trước khi hành động của nó bắt đầu) bằng cách gọi phương thức "
+":meth:`~Timer.cancel`.  Khoảng thời gian mà bộ hẹn giờ sẽ đợi trước khi thực"
+" hiện hành động của nó có thể không hoàn toàn giống với khoảng thời gian do "
+"người dùng chỉ định."
+
+#: ../../library/threading.rst:1272
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../library/threading.rst:1274
+#, fuzzy
+msgid ""
+"def hello():\n"
+"    print(\"hello, world\")\n"
+"\n"
+"t = Timer(30.0, hello)\n"
+"t.start()  # after 30 seconds, \"hello, world\" will be printed"
+msgstr ""
+"chắc chắn xin chào():\n"
+"    print(\"xin chào thế giới\")\n"
+"\n"
+"t = Hẹn giờ (30.0, xin chào)\n"
+"t.start() # after 30 giây, \"hello, world\" sẽ được in"
+
+#: ../../library/threading.rst:1283
+#, fuzzy
+msgid ""
+"Create a timer that will run *function* with arguments *args* and  keyword "
+"arguments *kwargs*, after *interval* seconds have passed. If *args* is "
+"``None`` (the default) then an empty list will be used. If *kwargs* is "
+"``None`` (the default) then an empty dict will be used."
+msgstr ""
+"Tạo bộ đếm thời gian sẽ chạy *function* với các đối số *args* và đối số từ "
+"khóa *kwargs*, sau khi *interval* giây trôi qua. Nếu *args* là ``None`` (mặc"
+" định) thì danh sách trống sẽ được sử dụng. Nếu *kwargs* là ``None`` (mặc "
+"định) thì một lệnh trống sẽ được sử dụng."
+
+#: ../../library/threading.rst:1293
+#, fuzzy
+msgid ""
+"Stop the timer, and cancel the execution of the timer's action.  This will "
+"only work if the timer is still in its waiting stage."
+msgstr ""
+"Dừng bộ hẹn giờ và hủy việc thực hiện hành động của bộ hẹn giờ.  Điều này sẽ"
+" chỉ hoạt động nếu bộ đếm thời gian vẫn ở trạng thái chờ."
+
+#: ../../library/threading.rst:1298
+#, fuzzy
+msgid "Barrier objects"
+msgstr "Vật cản"
+
+#: ../../library/threading.rst:1302
+#, fuzzy
+msgid ""
+"This class provides a simple synchronization primitive for use by a fixed "
+"number of threads that need to wait for each other.  Each of the threads "
+"tries to pass the barrier by calling the :meth:`~Barrier.wait` method and "
+"will block until all of the threads have made their :meth:`~Barrier.wait` "
+"calls. At this point, the threads are released simultaneously."
+msgstr ""
+"Lớp này cung cấp một nguyên hàm đồng bộ hóa đơn giản để sử dụng bởi một số "
+"luồng cố định cần chờ lẫn nhau.  Mỗi luồng cố gắng vượt qua rào cản bằng "
+"cách gọi phương thức :meth:`~Barrier.wait` và sẽ chặn cho đến khi tất cả các"
+" luồng thực hiện lệnh gọi :meth:`~Barrier.wait` của chúng. Tại thời điểm "
+"này, các chủ đề được phát hành đồng thời."
+
+#: ../../library/threading.rst:1308
+#, fuzzy
+msgid ""
+"The barrier can be reused any number of times for the same number of "
+"threads."
+msgstr "Rào chắn có thể được sử dụng lại nhiều lần cho cùng một số luồng."
+
+#: ../../library/threading.rst:1310
+#, fuzzy
+msgid ""
+"As an example, here is a simple way to synchronize a client and server "
+"thread::"
+msgstr ""
+"Ví dụ: đây là một cách đơn giản để đồng bộ hóa luồng máy khách và máy chủ ::"
+
+#: ../../library/threading.rst:1312
+#, fuzzy
+msgid ""
+"b = Barrier(2, timeout=5)\n"
+"\n"
+"def server():\n"
+"    start_server()\n"
+"    b.wait()\n"
+"    while True:\n"
+"        connection = accept_connection()\n"
+"        process_server_connection(connection)\n"
+"\n"
+"def client():\n"
+"    b.wait()\n"
+"    while True:\n"
+"        connection = make_connection()\n"
+"        process_client_connection(connection)"
+msgstr ""
+"b = Rào cản(2, thời gian chờ=5)\n"
+"\n"
+"máy chủ chắc chắn():\n"
+"    start_server()\n"
+"    b.đợi()\n"
+"    trong khi Đúng:\n"
+"        kết nối = chấp nhận_connection()\n"
+"        process_server_connection(kết nối)\n"
+"\n"
+"khách hàng chắc chắn():\n"
+"    b.đợi()\n"
+"    trong khi Đúng:\n"
+"        kết nối = make_connection()\n"
+"        process_client_connection(kết nối)"
+
+#: ../../library/threading.rst:1330
+#, fuzzy
+msgid ""
+"Create a barrier object for *parties* number of threads.  An *action*, when "
+"provided, is a callable to be called by one of the threads when they are "
+"released.  *timeout* is the default timeout value if none is specified for "
+"the :meth:`wait` method."
+msgstr ""
+"Tạo một đối tượng rào cản cho số lượng chủ đề *parties*.  Một *action*, khi "
+"được cung cấp, có thể được gọi bởi một trong các luồng khi chúng được phát "
+"hành.  *timeout* là giá trị thời gian chờ mặc định nếu không có giá trị nào "
+"được chỉ định cho phương thức :meth:`wait`."
+
+#: ../../library/threading.rst:1337
+#, fuzzy
+msgid ""
+"Pass the barrier.  When all the threads party to the barrier have called "
+"this function, they are all released simultaneously.  If a *timeout* is "
+"provided, it is used in preference to any that was supplied to the class "
+"constructor."
+msgstr ""
+"Vượt qua rào cản.  Khi tất cả các chủ đề của rào cản đã gọi chức năng này, "
+"tất cả chúng đều được giải phóng đồng thời.  Nếu *timeout* được cung cấp, nó"
+" sẽ được ưu tiên sử dụng hơn bất kỳ thứ gì được cung cấp cho hàm tạo của "
+"lớp."
+
+#: ../../library/threading.rst:1342
+#, fuzzy
+msgid ""
+"The return value is an integer in the range 0 to *parties* -- 1, different "
+"for each thread.  This can be used to select a thread to do some special "
+"housekeeping, e.g.::"
+msgstr ""
+"Giá trị trả về là một số nguyên trong phạm vi từ 0 đến *parties* -- 1, khác "
+"nhau đối với mỗi luồng.  Điều này có thể được sử dụng để chọn một chủ đề "
+"nhằm thực hiện một số công việc dọn phòng đặc biệt, ví dụ::"
+
+#: ../../library/threading.rst:1346
+#, fuzzy
+msgid ""
+"i = barrier.wait()\n"
+"if i == 0:\n"
+"    # Only one thread needs to print this\n"
+"    print(\"passed the barrier\")"
+msgstr ""
+"i = rào cản.wait()\n"
+"nếu tôi == 0:\n"
+"    # Only một chủ đề cần in cái này\n"
+"    print(\"vượt qua rào cản\")"
+
+#: ../../library/threading.rst:1351
+#, fuzzy
+msgid ""
+"If an *action* was provided to the constructor, one of the threads will have"
+" called it prior to being released.  Should this call raise an error, the "
+"barrier is put into the broken state."
+msgstr ""
+"Nếu một *action* được cung cấp cho hàm tạo, một trong các luồng sẽ gọi nó "
+"trước khi được phát hành.  Nếu lệnh gọi này gây ra lỗi, rào cản sẽ được đưa "
+"vào trạng thái bị hỏng."
+
+#: ../../library/threading.rst:1355
+#, fuzzy
+msgid "If the call times out, the barrier is put into the broken state."
+msgstr ""
+"Nếu cuộc gọi hết thời gian, rào cản sẽ chuyển sang trạng thái bị hỏng."
+
+#: ../../library/threading.rst:1357
+#, fuzzy
+msgid ""
+"This method may raise a :class:`BrokenBarrierError` exception if the barrier"
+" is broken or reset while a thread is waiting."
+msgstr ""
+"Phương pháp này có thể đưa ra ngoại lệ :class:`BrokenBarrierError` nếu rào "
+"cản bị hỏng hoặc được đặt lại trong khi một luồng đang chờ."
+
+#: ../../library/threading.rst:1362
+#, fuzzy
+msgid ""
+"Return the barrier to the default, empty state.  Any threads waiting on it "
+"will receive the :class:`BrokenBarrierError` exception."
+msgstr ""
+"Đưa rào cản về trạng thái trống, mặc định.  Bất kỳ chủ đề nào đang chờ trên "
+"đó sẽ nhận được ngoại lệ :class:`BrokenBarrierError`."
+
+#: ../../library/threading.rst:1365
+#, fuzzy
+msgid ""
+"Note that using this function may require some external synchronization if "
+"there are other threads whose state is unknown.  If a barrier is broken it "
+"may be better to just leave it and create a new one."
+msgstr ""
+"Lưu ý rằng việc sử dụng chức năng này có thể yêu cầu một số đồng bộ hóa bên "
+"ngoài nếu có các luồng khác có trạng thái không xác định.  Nếu một rào cản "
+"bị phá vỡ, tốt hơn hết là bạn nên bỏ nó đi và tạo một rào cản mới."
+
+#: ../../library/threading.rst:1371
+#, fuzzy
+msgid ""
+"Put the barrier into a broken state.  This causes any active or future calls"
+" to :meth:`wait` to fail with the :class:`BrokenBarrierError`.  Use this for"
+" example if one of the threads needs to abort, to avoid deadlocking the "
+"application."
+msgstr ""
+"Đặt rào cản vào trạng thái bị phá vỡ.  Điều này khiến mọi lệnh gọi đang hoạt"
+" động hoặc trong tương lai tới :meth:`wait` đều không thành công với "
+":class:`BrokenBarrierError`.  Ví dụ, hãy sử dụng tính năng này nếu một trong"
+" các luồng cần hủy bỏ để tránh làm ứng dụng bị bế tắc."
+
+#: ../../library/threading.rst:1376
+#, fuzzy
+msgid ""
+"It may be preferable to simply create the barrier with a sensible *timeout* "
+"value to automatically guard against one of the threads going awry."
+msgstr ""
+"Có thể tốt hơn là chỉ cần tạo rào cản với giá trị *timeout* hợp lý để tự "
+"động bảo vệ khỏi một trong các luồng bị trục trặc."
+
+#: ../../library/threading.rst:1382
+#, fuzzy
+msgid "The number of threads required to pass the barrier."
+msgstr "Số lượng chủ đề cần thiết để vượt qua rào cản."
+
+#: ../../library/threading.rst:1386
+#, fuzzy
+msgid "The number of threads currently waiting in the barrier."
+msgstr "Số lượng chủ đề hiện đang chờ trong hàng rào."
+
+#: ../../library/threading.rst:1390
+#, fuzzy
+msgid "A boolean that is ``True`` if the barrier is in the broken state."
+msgstr "Một boolean có giá trị ``True`` nếu rào cản ở trạng thái bị hỏng."
+
+#: ../../library/threading.rst:1395
+#, fuzzy
+msgid ""
+"This exception, a subclass of :exc:`RuntimeError`, is raised when the "
+":class:`Barrier` object is reset or broken."
+msgstr ""
+"Ngoại lệ này, một lớp con của :exc:`RuntimeError`, được đưa ra khi đối tượng"
+" :class:`Barrier` bị đặt lại hoặc bị hỏng."
+
+#: ../../library/threading.rst:1402
+#, fuzzy
+msgid ""
+"Using locks, conditions, and semaphores in the :keyword:`!with` statement"
+msgstr "Sử dụng khóa, điều kiện và ngữ nghĩa trong câu lệnh :keyword:`!with`"
+
+#: ../../library/threading.rst:1404
+#, fuzzy
+msgid ""
+"All of the objects provided by this module that have ``acquire`` and "
+"``release`` methods can be used as context managers for a :keyword:`with` "
+"statement.  The ``acquire`` method will be called when the block is entered,"
+" and ``release`` will be called when the block is exited.  Hence, the "
+"following snippet::"
+msgstr ""
+"Tất cả các đối tượng được mô-đun này cung cấp có phương thức ``acquire`` và "
+"``release`` đều có thể được sử dụng làm trình quản lý bối cảnh cho câu lệnh "
+":keyword:`with`.  Phương thức ``acquire`` sẽ được gọi khi khối được nhập và "
+"``release`` sẽ được gọi khi khối được thoát.  Do đó, đoạn mã sau::"
+
+#: ../../library/threading.rst:1410
+#, fuzzy
+msgid ""
+"with some_lock:\n"
+"    # do something..."
+msgstr ""
+"với some_lock:\n"
+"    # do gì đó..."
+
+#: ../../library/threading.rst:1413
+#, fuzzy
+msgid "is equivalent to::"
+msgstr "tương đương với::"
+
+#: ../../library/threading.rst:1415
+#, fuzzy
+msgid ""
+"some_lock.acquire()\n"
+"try:\n"
+"    # do something...\n"
+"finally:\n"
+"    some_lock.release()"
+msgstr ""
+"some_lock.acquire()\n"
+"thử:\n"
+"    # do gì đó...\n"
+"cuối cùng:\n"
+"    some_lock.release()"
+
+#: ../../library/threading.rst:1421
+#, fuzzy
+msgid ""
+"Currently, :class:`Lock`, :class:`RLock`, :class:`Condition`, "
+":class:`Semaphore`, and :class:`BoundedSemaphore` objects may be used as "
+":keyword:`with` statement context managers."
+msgstr ""
+"Hiện tại, các đối tượng :class:`Lock`, :class:`RLock`, :class:`Condition`, "
+":class:`Semaphore` và :class:`BoundedSemaphore` có thể được sử dụng làm "
+"trình quản lý bối cảnh câu lệnh :keyword:`with`."
+
+#: ../../library/threading.rst:222 ../../library/threading.rst:240
+#, fuzzy
+msgid "trace function"
+msgstr "chức năng theo dõi"
+
+#: ../../library/threading.rst:240
+#, fuzzy
+msgid "debugger"
+msgstr "trình gỡ lỗi"
+
+#: ../../library/threading.rst:251 ../../library/threading.rst:269
+#, fuzzy
+msgid "profile function"
+msgstr "chức năng hồ sơ"

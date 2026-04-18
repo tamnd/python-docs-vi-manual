@@ -1,0 +1,1010 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/email.headerregistry.rst:2
+#, fuzzy
+msgid ":mod:`!email.headerregistry`: Custom Header Objects"
+msgstr ":mod:`!email.headerregistry`: Đối tượng tiêu đề tùy chỉnh"
+
+#: ../../library/email.headerregistry.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/email/headerregistry.py`"
+msgstr "**Source code:** :source:`Lib/email/headerregistry.py`"
+
+#: ../../library/email.headerregistry.rst:14
+#, fuzzy
+msgid "[1]_"
+msgstr "[1]_"
+
+#: ../../library/email.headerregistry.rst:16
+#, fuzzy
+msgid ""
+"Headers are represented by customized subclasses of :class:`str`.  The "
+"particular class used to represent a given header is determined by the "
+":attr:`~email.policy.EmailPolicy.header_factory` of the :mod:`~email.policy`"
+" in effect when the headers are created.  This section documents the "
+"particular ``header_factory`` implemented by the email package for handling "
+":RFC:`5322` compliant email messages, which not only provides customized "
+"header objects for various header types, but also provides an extension "
+"mechanism for applications to add their own custom header types."
+msgstr ""
+"Tiêu đề được thể hiện bằng các lớp con tùy chỉnh của :class:`str`.  Lớp cụ "
+"thể được sử dụng để thể hiện một tiêu đề nhất định được xác định bởi "
+":attr:`~email.policy.EmailPolicy.header_factory` của :mod:`~email.policy` có"
+" hiệu lực khi các tiêu đề được tạo.  Phần này ghi lại ``header_factory`` cụ "
+"thể được gói email triển khai để xử lý các email tuân thủ :RFC:`5322`, không"
+" chỉ cung cấp các đối tượng tiêu đề tùy chỉnh cho các loại tiêu đề khác nhau"
+" mà còn cung cấp cơ chế mở rộng để các ứng dụng thêm các loại tiêu đề tùy "
+"chỉnh của riêng chúng."
+
+#: ../../library/email.headerregistry.rst:25
+#, fuzzy
+msgid ""
+"When using any of the policy objects derived from "
+":data:`~email.policy.EmailPolicy`, all headers are produced by "
+":class:`.HeaderRegistry` and have :class:`.BaseHeader` as their last base "
+"class.  Each header class has an additional base class that is determined by"
+" the type of the header.  For example, many headers have the class "
+":class:`.UnstructuredHeader` as their other base class.  The specialized "
+"second class for a header is determined by the name of the header, using a "
+"lookup table stored in the :class:`.HeaderRegistry`.  All of this is managed"
+" transparently for the typical application program, but interfaces are "
+"provided for modifying the default behavior for use by more complex "
+"applications."
+msgstr ""
+"Khi sử dụng bất kỳ đối tượng chính sách nào bắt nguồn từ "
+":data:`~email.policy.EmailPolicy`, tất cả các tiêu đề đều được tạo bởi "
+":class:`.HeaderRegistry` và có :class:`.BaseHeader` là lớp cơ sở cuối cùng "
+"của chúng.  Mỗi lớp tiêu đề có một lớp cơ sở bổ sung được xác định theo loại"
+" tiêu đề.  Ví dụ: nhiều tiêu đề có lớp :class:`.UnstructuredHeader` làm lớp "
+"cơ sở khác.  Lớp thứ hai chuyên biệt cho tiêu đề được xác định theo tên của "
+"tiêu đề, sử dụng bảng tra cứu được lưu trữ trong :class:`.HeaderRegistry`.  "
+"Tất cả điều này được quản lý một cách minh bạch cho chương trình ứng dụng "
+"thông thường, nhưng các giao diện được cung cấp để sửa đổi hành vi mặc định "
+"để các ứng dụng phức tạp hơn sử dụng."
+
+#: ../../library/email.headerregistry.rst:36
+#, fuzzy
+msgid ""
+"The sections below first document the header base classes and their "
+"attributes, followed by the API for modifying the behavior of "
+":class:`.HeaderRegistry`, and finally the support classes used to represent "
+"the data parsed from structured headers."
+msgstr ""
+"Các phần bên dưới trước tiên ghi lại các lớp cơ sở tiêu đề và các thuộc tính"
+" của chúng, tiếp theo là API để sửa đổi hành vi của :class:`.HeaderRegistry`"
+" và cuối cùng là các lớp hỗ trợ được sử dụng để thể hiện dữ liệu được phân "
+"tích cú pháp từ các tiêu đề có cấu trúc."
+
+#: ../../library/email.headerregistry.rst:44
+#, fuzzy
+msgid ""
+"*name* and *value* are passed to ``BaseHeader`` from the "
+":attr:`~email.policy.EmailPolicy.header_factory` call.  The string value of "
+"any header object is the *value* fully decoded to unicode."
+msgstr ""
+"*name* và *value* được chuyển tới ``BaseHeader`` từ lệnh gọi "
+":attr:`~email.policy.EmailPolicy.header_factory`.  Giá trị chuỗi của bất kỳ "
+"đối tượng tiêu đề nào là *value* được giải mã hoàn toàn thành unicode."
+
+#: ../../library/email.headerregistry.rst:48
+#, fuzzy
+msgid "This base class defines the following read-only properties:"
+msgstr "Lớp cơ sở này định nghĩa các thuộc tính chỉ đọc sau:"
+
+#: ../../library/email.headerregistry.rst:53
+#, fuzzy
+msgid ""
+"The name of the header (the portion of the field before the ':').  This is "
+"exactly the value passed in the "
+":attr:`~email.policy.EmailPolicy.header_factory` call for *name*; that is, "
+"case is preserved."
+msgstr ""
+"Tên của tiêu đề (phần trường trước ':').  Đây chính xác là giá trị được "
+"chuyển trong lệnh gọi :attr:`~email.policy.EmailPolicy.header_factory` cho "
+"*name*; nghĩa là trường hợp được bảo tồn."
+
+#: ../../library/email.headerregistry.rst:61
+#, fuzzy
+msgid ""
+"A tuple of :exc:`~email.errors.HeaderDefect` instances reporting any RFC "
+"compliance problems found during parsing.  The email package tries to be "
+"complete about detecting compliance issues.  See the :mod:`~email.errors` "
+"module for a discussion of the types of defects that may be reported."
+msgstr ""
+"Một bộ phiên bản :exc:`~email.errors.HeaderDefect` báo cáo bất kỳ vấn đề "
+"tuân thủ RFC nào được tìm thấy trong quá trình phân tích cú pháp.  Gói email"
+" cố gắng hoàn thiện việc phát hiện các vấn đề về tuân thủ.  Xem mô-đun "
+":mod:`~email.errors` để biết thảo luận về các loại lỗi có thể được báo cáo."
+
+#: ../../library/email.headerregistry.rst:69
+#, fuzzy
+msgid ""
+"The maximum number of headers of this type that can have the same ``name``."
+"  A value of ``None`` means unlimited.  The ``BaseHeader`` value for this "
+"attribute is ``None``; it is expected that specialized header classes will "
+"override this value as needed."
+msgstr ""
+"Số lượng tiêu đề tối đa của loại này có thể có cùng ``name``.  Giá trị "
+"``None`` có nghĩa là không giới hạn.  Giá trị ``BaseHeader`` cho thuộc tính "
+"này là ``None``; dự kiến ​​các lớp tiêu đề chuyên dụng sẽ ghi đè giá trị này"
+" nếu cần."
+
+#: ../../library/email.headerregistry.rst:74
+#, fuzzy
+msgid ""
+"``BaseHeader`` also provides the following method, which is called by the "
+"email library code and should not in general be called by application "
+"programs:"
+msgstr ""
+"``BaseHeader`` cũng cung cấp phương thức sau, được gọi bằng mã thư viện "
+"email và nói chung không nên được gọi bởi các chương trình ứng dụng:"
+
+#: ../../library/email.headerregistry.rst:80
+#, fuzzy
+msgid ""
+"Return a string containing :attr:`~email.policy.Policy.linesep` characters "
+"as required to correctly fold the header according to *policy*.  A "
+":attr:`~email.policy.Policy.cte_type` of ``8bit`` will be treated as if it "
+"were ``7bit``, since headers may not contain arbitrary binary data.  If "
+":attr:`~email.policy.EmailPolicy.utf8` is ``False``, non-ASCII data will be "
+":rfc:`2047` encoded."
+msgstr ""
+"Trả về một chuỗi chứa các ký tự :attr:`~email.policy.Policy.linesep` theo "
+"yêu cầu để gấp tiêu đề một cách chính xác theo *policy*.  Một "
+":attr:`~email.policy.Policy.cte_type` của ``8bit`` sẽ được xử lý như thể nó "
+"là ``7bit``, vì các tiêu đề không được chứa dữ liệu nhị phân tùy ý.  Nếu "
+":attr:`~email.policy.EmailPolicy.utf8` là ``False``, dữ liệu không phải "
+"ASCII sẽ được mã hóa :rfc:`2047`."
+
+#: ../../library/email.headerregistry.rst:88
+#, fuzzy
+msgid ""
+"``BaseHeader`` by itself cannot be used to create a header object.  It "
+"defines a protocol that each specialized header cooperates with in order to "
+"produce the header object.  Specifically, ``BaseHeader`` requires that the "
+"specialized class provide a :func:`classmethod` named ``parse``.  This "
+"method is called as follows::"
+msgstr ""
+"Bản thân ``BaseHeader`` không thể được sử dụng để tạo đối tượng tiêu đề.  Nó"
+" xác định một giao thức mà mỗi tiêu đề chuyên biệt hợp tác để tạo ra đối "
+"tượng tiêu đề.  Cụ thể, ``BaseHeader`` yêu cầu lớp chuyên biệt cung cấp "
+":func:`classmethod` có tên ``parse``.  Phương pháp này được gọi như sau::"
+
+#: ../../library/email.headerregistry.rst:94
+#, fuzzy
+msgid "parse(string, kwds)"
+msgstr "phân tích cú pháp (chuỗi, kwds)"
+
+#: ../../library/email.headerregistry.rst:96
+#, fuzzy
+msgid ""
+"``kwds`` is a dictionary containing one pre-initialized key, ``defects``. "
+"``defects`` is an empty list.  The parse method should append any detected "
+"defects to this list.  On return, the ``kwds`` dictionary *must* contain "
+"values for at least the keys ``decoded`` and ``defects``.  ``decoded`` "
+"should be the string value for the header (that is, the header value fully "
+"decoded to unicode).  The parse method should assume that *string* may "
+"contain content-transfer-encoded parts, but should correctly handle all "
+"valid unicode characters as well so that it can parse un-encoded header "
+"values."
+msgstr ""
+"``kwds`` là một từ điển chứa một khóa được khởi tạo trước, ``defects``. "
+"``defects`` là một danh sách trống.  Phương pháp phân tích cú pháp sẽ thêm "
+"bất kỳ lỗi nào được phát hiện vào danh sách này.  Đổi lại, từ điển ``kwds`` "
+"*must* chứa các giá trị cho ít nhất các khóa ``decoded`` và ``defects``.  "
+"``decoded`` phải là giá trị chuỗi cho tiêu đề (nghĩa là giá trị tiêu đề được"
+" giải mã hoàn toàn thành unicode).  Phương pháp phân tích cú pháp phải giả "
+"định rằng *string* có thể chứa các phần được mã hóa truyền nội dung, nhưng "
+"cũng phải xử lý chính xác tất cả các ký tự unicode hợp lệ để có thể phân "
+"tích các giá trị tiêu đề chưa được mã hóa."
+
+#: ../../library/email.headerregistry.rst:105
+#, fuzzy
+msgid ""
+"``BaseHeader``'s ``__new__`` then creates the header instance, and calls its"
+" ``init`` method.  The specialized class only needs to provide an ``init`` "
+"method if it wishes to set additional attributes beyond those provided by "
+"``BaseHeader`` itself.  Such an ``init`` method should look like this::"
+msgstr ""
+"Sau đó, ``__new__`` của ``BaseHeader`` sẽ tạo phiên bản tiêu đề và gọi "
+"phương thức ``init`` của nó.  Lớp chuyên biệt chỉ cần cung cấp phương thức "
+"``init`` nếu nó muốn đặt các thuộc tính bổ sung ngoài các thuộc tính do "
+"chính ``BaseHeader`` cung cấp.  Phương thức ``init`` như vậy sẽ trông như "
+"thế này::"
+
+#: ../../library/email.headerregistry.rst:110
+#, fuzzy
+msgid ""
+"def init(self, /, *args, **kw):\n"
+"    self._myattr = kw.pop('myattr')\n"
+"    super().init(*args, **kw)"
+msgstr ""
+"def init(self, /, *args, **kw):\n"
+"    self._myattr = kw.pop('myattr')\n"
+"    super().init(*args, **kw)"
+
+#: ../../library/email.headerregistry.rst:114
+#, fuzzy
+msgid ""
+"That is, anything extra that the specialized class puts in to the ``kwds`` "
+"dictionary should be removed and handled, and the remaining contents of "
+"``kw`` (and ``args``) passed to the ``BaseHeader`` ``init`` method."
+msgstr ""
+"Nghĩa là, bất kỳ nội dung bổ sung nào mà lớp chuyên biệt đưa vào từ điển "
+"``kwds`` đều phải bị xóa và xử lý, đồng thời nội dung còn lại của ``kw`` (và"
+" ``args``) được chuyển sang phương thức ``BaseHeader`` ``init``."
+
+#: ../../library/email.headerregistry.rst:121
+#, fuzzy
+msgid ""
+"An \"unstructured\" header is the default type of header in :rfc:`5322`. Any"
+" header that does not have a specified syntax is treated as unstructured.  "
+"The classic example of an unstructured header is the :mailheader:`Subject` "
+"header."
+msgstr ""
+"Tiêu đề \"không có cấu trúc\" là loại tiêu đề mặc định trong :rfc:`5322`. "
+"Bất kỳ tiêu đề nào không có cú pháp cụ thể đều được coi là không có cấu "
+"trúc.  Ví dụ cổ điển về tiêu đề không có cấu trúc là tiêu đề "
+":mailheader:`Subject`."
+
+#: ../../library/email.headerregistry.rst:126
+#, fuzzy
+msgid ""
+"In :rfc:`5322`, an unstructured header is a run of arbitrary text in the "
+"ASCII character set.  :rfc:`2047`, however, has an :rfc:`5322` compatible "
+"mechanism for encoding non-ASCII text as ASCII characters within a header "
+"value.  When a *value* containing encoded words is passed to the "
+"constructor, the ``UnstructuredHeader`` parser converts such encoded words "
+"into unicode, following the :rfc:`2047` rules for unstructured text.  The "
+"parser uses heuristics to attempt to decode certain non-compliant encoded "
+"words.  Defects are registered in such cases, as well as defects for issues "
+"such as invalid characters within the encoded words or the non-encoded text."
+msgstr ""
+"Trong :rfc:`5322`, tiêu đề không có cấu trúc là một chuỗi văn bản tùy ý "
+"trong bộ ký tự ASCII.  Tuy nhiên, :rfc:`2047` có cơ chế tương thích với "
+":rfc:`5322` để mã hóa văn bản không phải ASCII thành các ký tự ASCII trong "
+"giá trị tiêu đề.  Khi một *value* chứa các từ được mã hóa được chuyển đến "
+"hàm tạo, trình phân tích cú pháp ``UnstructuredHeader`` sẽ chuyển đổi các từ"
+" được mã hóa đó thành unicode, tuân theo các quy tắc :rfc:`2047` cho văn bản"
+" phi cấu trúc.  Trình phân tích cú pháp sử dụng phương pháp phỏng đoán để cố"
+" gắng giải mã một số từ được mã hóa không tuân thủ.  Các lỗi được ghi lại "
+"trong những trường hợp như vậy cũng như các lỗi liên quan đến các vấn đề như"
+" ký tự không hợp lệ trong các từ được mã hóa hoặc văn bản không được mã hóa."
+
+#: ../../library/email.headerregistry.rst:136
+#, fuzzy
+msgid "This header type provides no additional attributes."
+msgstr "Loại tiêu đề này không cung cấp thuộc tính bổ sung."
+
+#: ../../library/email.headerregistry.rst:141
+#, fuzzy
+msgid ""
+":rfc:`5322` specifies a very specific format for dates within email headers."
+" The ``DateHeader`` parser recognizes that date format, as well as "
+"recognizing a number of variant forms that are sometimes found \"in the "
+"wild\"."
+msgstr ""
+":rfc:`5322` chỉ định một định dạng rất cụ thể cho ngày tháng trong tiêu đề "
+"email. Trình phân tích cú pháp ``DateHeader`` nhận dạng định dạng ngày tháng"
+" đó, cũng như nhận dạng một số dạng biến thể đôi khi được tìm thấy \"trong "
+"tự nhiên\"."
+
+#: ../../library/email.headerregistry.rst:146
+#: ../../library/email.headerregistry.rst:188
+#, fuzzy
+msgid "This header type provides the following additional attributes:"
+msgstr "Loại tiêu đề này cung cấp các thuộc tính bổ sung sau:"
+
+#: ../../library/email.headerregistry.rst:150
+#, fuzzy
+msgid ""
+"If the header value can be recognized as a valid date of one form or "
+"another, this attribute will contain a :class:`~datetime.datetime` instance "
+"representing that date.  If the timezone of the input date is specified as "
+"``-0000`` (indicating it is in UTC but contains no information about the "
+"source timezone), then :attr:`.datetime` will be a naive "
+":class:`~datetime.datetime`.  If a specific timezone offset is found "
+"(including ``+0000``), then :attr:`.datetime` will contain an aware "
+"``datetime`` that uses :class:`datetime.timezone` to record the timezone "
+"offset."
+msgstr ""
+"Nếu giá trị tiêu đề có thể được nhận dạng là ngày hợp lệ ở dạng này hay dạng"
+" khác thì thuộc tính này sẽ chứa phiên bản :class:`~datetime.datetime` đại "
+"diện cho ngày đó.  Nếu múi giờ của ngày đầu vào được chỉ định là ``-0000`` "
+"(cho biết nó nằm trong UTC nhưng không chứa thông tin về múi giờ nguồn), thì"
+" :attr:`.datetime` sẽ là :class:`~datetime.datetime` ngây thơ.  Nếu tìm thấy"
+" chênh lệch múi giờ cụ thể (bao gồm ``+0000``), thì :attr:`.datetime` sẽ "
+"chứa ``datetime`` nhận biết sử dụng :class:`datetime.timezone` để ghi lại "
+"chênh lệch múi giờ."
+
+#: ../../library/email.headerregistry.rst:160
+#, fuzzy
+msgid ""
+"The ``decoded`` value of the header is determined by formatting the "
+"``datetime`` according to the :rfc:`5322` rules; that is, it is set to::"
+msgstr ""
+"Giá trị ``decoded`` của tiêu đề được xác định bằng cách định dạng "
+"``datetime`` theo quy tắc :rfc:`5322`; nghĩa là, nó được đặt thành::"
+
+#: ../../library/email.headerregistry.rst:163
+#, fuzzy
+msgid "email.utils.format_datetime(self.datetime)"
+msgstr "email.utils.format_datetime(self.datetime)"
+
+#: ../../library/email.headerregistry.rst:165
+#, fuzzy
+msgid ""
+"When creating a ``DateHeader``, *value* may be :class:`~datetime.datetime` "
+"instance.  This means, for example, that the following code is valid and "
+"does what one would expect::"
+msgstr ""
+"Khi tạo một ``DateHeader``, *value* có thể là phiên bản "
+":class:`~datetime.datetime`.  Ví dụ: điều này có nghĩa là đoạn mã sau hợp lệ"
+" và thực hiện những gì người ta mong đợi ::"
+
+#: ../../library/email.headerregistry.rst:169
+#, fuzzy
+msgid "msg['Date'] = datetime(2011, 7, 15, 21)"
+msgstr "msg['Date'] = datetime(2011, 7, 15, 21)"
+
+#: ../../library/email.headerregistry.rst:171
+#, fuzzy
+msgid ""
+"Because this is a naive ``datetime`` it will be interpreted as a UTC "
+"timestamp, and the resulting value will have a timezone of ``-0000``.  Much "
+"more useful is to use the :func:`~email.utils.localtime` function from the "
+":mod:`~email.utils` module::"
+msgstr ""
+"Bởi vì đây là một ``datetime`` ngây thơ nên nó sẽ được hiểu là dấu thời gian"
+" UTC và giá trị kết quả sẽ có múi giờ là ``-0000``.  Hữu ích hơn nhiều là sử"
+" dụng chức năng :func:`~email.utils.localtime` từ mô-đun :mod:`~email.utils`"
+" ::"
+
+#: ../../library/email.headerregistry.rst:176
+#, fuzzy
+msgid "msg['Date'] = utils.localtime()"
+msgstr "msg['Date'] = utils.localtime()"
+
+#: ../../library/email.headerregistry.rst:178
+#, fuzzy
+msgid ""
+"This example sets the date header to the current time and date using the "
+"current timezone offset."
+msgstr ""
+"Ví dụ này đặt tiêu đề ngày thành ngày và giờ hiện tại bằng cách sử dụng phần"
+" bù múi giờ hiện tại."
+
+#: ../../library/email.headerregistry.rst:184
+#, fuzzy
+msgid ""
+"Address headers are one of the most complex structured header types. The "
+"``AddressHeader`` class provides a generic interface to any address header."
+msgstr ""
+"Tiêu đề địa chỉ là một trong những loại tiêu đề có cấu trúc phức tạp nhất. "
+"Lớp ``AddressHeader`` cung cấp giao diện chung cho bất kỳ tiêu đề địa chỉ "
+"nào."
+
+#: ../../library/email.headerregistry.rst:193
+#, fuzzy
+msgid ""
+"A tuple of :class:`.Group` objects encoding the addresses and groups found "
+"in the header value.  Addresses that are not part of a group are represented"
+" in this list as single-address ``Groups`` whose "
+":attr:`~.Group.display_name` is ``None``."
+msgstr ""
+"Một bộ đối tượng :class:`.Group` mã hóa các địa chỉ và nhóm được tìm thấy "
+"trong giá trị tiêu đề.  Các địa chỉ không thuộc nhóm được thể hiện trong "
+"danh sách này dưới dạng một địa chỉ ``Groups`` có "
+":attr:`~.Group.display_name` là ``None``."
+
+#: ../../library/email.headerregistry.rst:201
+#, fuzzy
+msgid ""
+"A tuple of :class:`.Address` objects encoding all of the individual "
+"addresses from the header value.  If the header value contains any groups, "
+"the individual addresses from the group are included in the list at the "
+"point where the group occurs in the value (that is, the list of addresses is"
+" \"flattened\" into a one dimensional list)."
+msgstr ""
+"Một bộ đối tượng :class:`.Address` mã hóa tất cả các địa chỉ riêng lẻ từ giá"
+" trị tiêu đề.  Nếu giá trị tiêu đề chứa bất kỳ nhóm nào, thì các địa chỉ "
+"riêng lẻ trong nhóm sẽ được đưa vào danh sách tại điểm mà nhóm xuất hiện "
+"trong giá trị (nghĩa là danh sách địa chỉ được \"làm phẳng\" thành danh sách"
+" một chiều)."
+
+#: ../../library/email.headerregistry.rst:207
+#, fuzzy
+msgid ""
+"The ``decoded`` value of the header will have all encoded words decoded to "
+"unicode.  :class:`~encodings.idna` encoded domain names are also decoded to "
+"unicode.  The ``decoded`` value is set by :ref:`joining <meth-str-join>` the"
+" :class:`str` value of the elements of the ``groups`` attribute with ``', "
+"'``."
+msgstr ""
+"Giá trị ``decoded`` của tiêu đề sẽ có tất cả các từ được mã hóa được giải mã"
+" thành unicode.  Tên miền được mã hóa :class:`~encodings.idna` cũng được "
+"giải mã thành unicode.  Giá trị ``decoded`` được đặt bởi :ref:`joining "
+"<meth-str-join>` giá trị :class:`str` của các phần tử thuộc thuộc tính "
+"``groups`` có ``', '``."
+
+#: ../../library/email.headerregistry.rst:213
+#, fuzzy
+msgid ""
+"A list of :class:`.Address` and :class:`.Group` objects in any combination "
+"may be used to set the value of an address header.  ``Group`` objects whose "
+"``display_name`` is ``None`` will be interpreted as single addresses, which "
+"allows an address list to be copied with groups intact by using the list "
+"obtained from the ``groups`` attribute of the source header."
+msgstr ""
+"Danh sách các đối tượng :class:`.Address` và :class:`.Group` trong bất kỳ sự"
+" kết hợp nào có thể được sử dụng để đặt giá trị của tiêu đề địa chỉ.  Các "
+"đối tượng ``Group`` có ``display_name`` là ``None`` sẽ được hiểu là các địa "
+"chỉ đơn lẻ, cho phép sao chép danh sách địa chỉ với các nhóm nguyên vẹn bằng"
+" cách sử dụng danh sách thu được từ thuộc tính ``groups`` của tiêu đề nguồn."
+
+#: ../../library/email.headerregistry.rst:222
+#, fuzzy
+msgid ""
+"A subclass of :class:`.AddressHeader` that adds one additional attribute:"
+msgstr ""
+"Một lớp con của :class:`.AddressHeader` có thêm một thuộc tính bổ sung:"
+
+#: ../../library/email.headerregistry.rst:228
+#, fuzzy
+msgid ""
+"The single address encoded by the header value.  If the header value "
+"actually contains more than one address (which would be a violation of the "
+"RFC under the default :mod:`~email.policy`), accessing this attribute will "
+"result in a :exc:`ValueError`."
+msgstr ""
+"Địa chỉ duy nhất được mã hóa bởi giá trị tiêu đề.  Nếu giá trị tiêu đề thực "
+"sự chứa nhiều hơn một địa chỉ (điều này sẽ vi phạm RFC theo "
+":mod:`~email.policy` mặc định), việc truy cập thuộc tính này sẽ dẫn đến "
+":exc:`ValueError`."
+
+#: ../../library/email.headerregistry.rst:234
+#, fuzzy
+msgid ""
+"Many of the above classes also have a ``Unique`` variant (for example, "
+"``UniqueUnstructuredHeader``).  The only difference is that in the "
+"``Unique`` variant, :attr:`~.BaseHeader.max_count` is set to 1."
+msgstr ""
+"Nhiều lớp trên cũng có biến thể ``Unique`` (ví dụ: "
+"``UniqueUnstructuredHeader``).  Điểm khác biệt duy nhất là ở biến thể "
+"``Unique``, :attr:`~.BaseHeader.max_count` được đặt thành 1."
+
+#: ../../library/email.headerregistry.rst:241
+#, fuzzy
+msgid ""
+"There is really only one valid value for the :mailheader:`MIME-Version` "
+"header, and that is ``1.0``.  For future proofing, this header class "
+"supports other valid version numbers.  If a version number has a valid value"
+" per :rfc:`2045`, then the header object will have non-``None`` values for "
+"the following attributes:"
+msgstr ""
+"Thực sự chỉ có một giá trị hợp lệ cho tiêu đề :mailheader:`MIME-Version` và "
+"đó là ``1.0``.  Để kiểm chứng trong tương lai, lớp tiêu đề này hỗ trợ các số"
+" phiên bản hợp lệ khác.  Nếu số phiên bản có giá trị hợp lệ cho mỗi "
+":rfc:`2045` thì đối tượng tiêu đề sẽ có các giá trị không phải ``None`` cho "
+"các thuộc tính sau:"
+
+#: ../../library/email.headerregistry.rst:249
+#, fuzzy
+msgid ""
+"The version number as a string, with any whitespace and/or comments removed."
+msgstr "Số phiên bản ở dạng chuỗi, đã xóa mọi khoảng trắng và/hoặc nhận xét."
+
+#: ../../library/email.headerregistry.rst:254
+#, fuzzy
+msgid "The major version number as an integer"
+msgstr "Số phiên bản chính dưới dạng số nguyên"
+
+#: ../../library/email.headerregistry.rst:258
+#, fuzzy
+msgid "The minor version number as an integer"
+msgstr "Số phiên bản phụ dưới dạng số nguyên"
+
+#: ../../library/email.headerregistry.rst:263
+#, fuzzy
+msgid ""
+"MIME headers all start with the prefix 'Content-'.  Each specific header has"
+" a certain value, described under the class for that header.  Some can also "
+"take a list of supplemental parameters, which have a common format. This "
+"class serves as a base for all the MIME headers that take parameters."
+msgstr ""
+"Tất cả các tiêu đề MIME đều bắt đầu bằng tiền tố 'Content-'.  Mỗi tiêu đề cụ"
+" thể có một giá trị nhất định, được mô tả trong lớp dành cho tiêu đề đó.  "
+"Một số cũng có thể lấy danh sách các tham số bổ sung có định dạng chung. Lớp"
+" này đóng vai trò là cơ sở cho tất cả các tiêu đề MIME lấy tham số."
+
+#: ../../library/email.headerregistry.rst:270
+#, fuzzy
+msgid "A dictionary mapping parameter names to parameter values."
+msgstr "Một từ điển ánh xạ tên tham số tới các giá trị tham số."
+
+#: ../../library/email.headerregistry.rst:275
+#, fuzzy
+msgid ""
+"A :class:`ParameterizedMIMEHeader` class that handles the "
+":mailheader:`Content-Type` header."
+msgstr ""
+"Lớp :class:`ParameterizedMIMEHeader` xử lý tiêu đề :mailheader:`Content-"
+"Type`."
+
+#: ../../library/email.headerregistry.rst:280
+#, fuzzy
+msgid "The content type string, in the form ``maintype/subtype``."
+msgstr "Chuỗi loại nội dung, có dạng ``maintype/subtype``."
+
+#: ../../library/email.headerregistry.rst:289
+#, fuzzy
+msgid ""
+"A :class:`ParameterizedMIMEHeader` class that handles the "
+":mailheader:`Content-Disposition` header."
+msgstr ""
+"Lớp :class:`ParameterizedMIMEHeader` xử lý tiêu đề :mailheader:`Content-"
+"Disposition`."
+
+#: ../../library/email.headerregistry.rst:294
+#, fuzzy
+msgid "``inline`` and ``attachment`` are the only valid values in common use."
+msgstr ""
+"``inline`` và ``attachment`` là những giá trị hợp lệ duy nhất được sử dụng "
+"phổ biến."
+
+#: ../../library/email.headerregistry.rst:299
+#, fuzzy
+msgid "Handles the :mailheader:`Content-Transfer-Encoding` header."
+msgstr "Xử lý tiêu đề :mailheader:`Content-Transfer-Encoding`."
+
+#: ../../library/email.headerregistry.rst:303
+#, fuzzy
+msgid ""
+"Valid values are ``7bit``, ``8bit``, ``base64``, and ``quoted-printable``.  "
+"See :rfc:`2045` for more information."
+msgstr ""
+"Các giá trị hợp lệ là ``7bit``, ``8bit``, ``base64`` và ``quoted-"
+"printable``.  Xem :rfc:`2045` để biết thêm thông tin."
+
+#: ../../library/email.headerregistry.rst:312
+#, fuzzy
+msgid ""
+"This is the factory used by :class:`~email.policy.EmailPolicy` by default. "
+"``HeaderRegistry`` builds the class used to create a header instance "
+"dynamically, using *base_class* and a specialized class retrieved from a "
+"registry that it holds.  When a given header name does not appear in the "
+"registry, the class specified by *default_class* is used as the specialized "
+"class.  When *use_default_map* is ``True`` (the default), the standard "
+"mapping of header names to classes is copied in to the registry during "
+"initialization.  *base_class* is always the last class in the generated "
+"class's :class:`~type.__bases__` list."
+msgstr ""
+"Đây là nhà máy được :class:`~email.policy.EmailPolicy` sử dụng theo mặc "
+"định. ``HeaderRegistry`` xây dựng lớp được sử dụng để tạo phiên bản tiêu đề "
+"một cách linh hoạt, sử dụng *base_class* và một lớp chuyên biệt được truy "
+"xuất từ ​​sổ đăng ký mà nó lưu giữ.  Khi tên tiêu đề nhất định không xuất "
+"hiện trong sổ đăng ký, lớp do *default_class* chỉ định sẽ được sử dụng làm "
+"lớp chuyên biệt.  Khi *use_default_map* là ``True`` (mặc định), ánh xạ tiêu "
+"chuẩn của tên tiêu đề tới các lớp sẽ được sao chép vào sổ đăng ký trong quá "
+"trình khởi tạo.  *base_class* luôn là lớp cuối cùng trong danh sách "
+":class:`~type.__bases__` của lớp được tạo."
+
+#: ../../library/email.headerregistry.rst:322
+#, fuzzy
+msgid "The default mappings are:"
+msgstr "Các ánh xạ mặc định là:"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "subject"
+msgstr "chủ đề"
+
+#: ../../library/email.headerregistry.rst:324
+#, fuzzy
+msgid "UniqueUnstructuredHeader"
+msgstr "Tiêu đề không có cấu trúc duy nhất"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "date"
+msgstr "ngày"
+
+#: ../../library/email.headerregistry.rst:325
+#: ../../library/email.headerregistry.rst:327
+#, fuzzy
+msgid "UniqueDateHeader"
+msgstr "Tiêu đề ngày duy nhất"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "resent-date"
+msgstr "ngày gửi lại"
+
+#: ../../library/email.headerregistry.rst:326
+#, fuzzy
+msgid "DateHeader"
+msgstr "Tiêu đề ngày"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "orig-date"
+msgstr "ngày xuất xứ"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "sender"
+msgstr "người gửi"
+
+#: ../../library/email.headerregistry.rst:328
+#, fuzzy
+msgid "UniqueSingleAddressHeader"
+msgstr "Tiêu đề địa chỉ duy nhất"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "resent-sender"
+msgstr "người gửi gửi lại"
+
+#: ../../library/email.headerregistry.rst:329
+#, fuzzy
+msgid "SingleAddressHeader"
+msgstr "Tiêu đề địa chỉ đơn"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "to"
+msgstr "để"
+
+#: ../../library/email.headerregistry.rst:330
+#: ../../library/email.headerregistry.rst:332
+#: ../../library/email.headerregistry.rst:334
+#: ../../library/email.headerregistry.rst:336
+#: ../../library/email.headerregistry.rst:338
+#, fuzzy
+msgid "UniqueAddressHeader"
+msgstr "Tiêu đề địa chỉ duy nhất"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "resent-to"
+msgstr "bực bội với"
+
+#: ../../library/email.headerregistry.rst:331
+#: ../../library/email.headerregistry.rst:333
+#: ../../library/email.headerregistry.rst:335
+#: ../../library/email.headerregistry.rst:337
+#, fuzzy
+msgid "AddressHeader"
+msgstr "Tiêu đề địa chỉ"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "cc"
+msgstr "cc"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "resent-cc"
+msgstr "bực bội-cc"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "bcc"
+msgstr "bcc"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "resent-bcc"
+msgstr "bực bội-bcc"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "from"
+msgstr "từ"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "resent-from"
+msgstr "bực bội từ"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "reply-to"
+msgstr "trả lời"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "mime-version"
+msgstr "phiên bản mime"
+
+#: ../../library/email.headerregistry.rst:339
+#, fuzzy
+msgid "MIMEVersionHeader"
+msgstr "Tiêu đề phiên bản MIME"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "content-type"
+msgstr "loại nội dung"
+
+#: ../../library/email.headerregistry.rst:340
+#, fuzzy
+msgid "ContentTypeHeader"
+msgstr "Tiêu đề loại nội dung"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "content-disposition"
+msgstr "bố trí nội dung"
+
+#: ../../library/email.headerregistry.rst:341
+#, fuzzy
+msgid "ContentDispositionHeader"
+msgstr "Nội dungBố tríTiêu đề"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "content-transfer-encoding"
+msgstr "mã hóa chuyển nội dung"
+
+#: ../../library/email.headerregistry.rst:342
+#, fuzzy
+msgid "ContentTransferEncodingHeader"
+msgstr "Tiêu đề mã hóa chuyển giao nội dung"
+
+#: ../../library/email.headerregistry.rst
+#, fuzzy
+msgid "message-id"
+msgstr "id tin nhắn"
+
+#: ../../library/email.headerregistry.rst:343
+#, fuzzy
+msgid "MessageIDHeader"
+msgstr "Tiêu đề tin nhắnID"
+
+#: ../../library/email.headerregistry.rst:345
+#, fuzzy
+msgid "``HeaderRegistry`` has the following methods:"
+msgstr "``HeaderRegistry`` có các phương pháp sau:"
+
+#: ../../library/email.headerregistry.rst:350
+#, fuzzy
+msgid ""
+"*name* is the name of the header to be mapped.  It will be converted to "
+"lower case in the registry.  *cls* is the specialized class to be used, "
+"along with *base_class*, to create the class used to instantiate headers "
+"that match *name*."
+msgstr ""
+"*name* là tên của tiêu đề được ánh xạ.  Nó sẽ được chuyển đổi thành chữ "
+"thường trong sổ đăng ký.  *cls* là lớp chuyên dụng được sử dụng cùng với "
+"*base_class* để tạo lớp dùng để khởi tạo các tiêu đề khớp với *name*."
+
+#: ../../library/email.headerregistry.rst:358
+#, fuzzy
+msgid "Construct and return a class to handle creating a *name* header."
+msgstr "Xây dựng và trả về một lớp để xử lý việc tạo tiêu đề *name*."
+
+#: ../../library/email.headerregistry.rst:363
+#, fuzzy
+msgid ""
+"Retrieves the specialized header associated with *name* from the registry "
+"(using *default_class* if *name* does not appear in the registry) and "
+"composes it with *base_class* to produce a class, calls the constructed "
+"class's constructor, passing it the same argument list, and finally returns "
+"the class instance created thereby."
+msgstr ""
+"Truy xuất tiêu đề chuyên dụng được liên kết với *name* từ sổ đăng ký (sử "
+"dụng *default_class* nếu *name* không xuất hiện trong sổ đăng ký) và kết hợp"
+" nó với *base_class* để tạo một lớp, gọi hàm tạo của lớp được xây dựng, "
+"chuyển cho nó cùng một danh sách đối số và cuối cùng trả về thể hiện của lớp"
+" được tạo từ đó."
+
+#: ../../library/email.headerregistry.rst:370
+#, fuzzy
+msgid ""
+"The following classes are the classes used to represent data parsed from "
+"structured headers and can, in general, be used by an application program to"
+" construct structured values to assign to specific headers."
+msgstr ""
+"Các lớp sau đây là các lớp được sử dụng để biểu diễn dữ liệu được phân tích "
+"cú pháp từ các tiêu đề có cấu trúc và nói chung có thể được chương trình ứng"
+" dụng sử dụng để xây dựng các giá trị có cấu trúc nhằm gán cho các tiêu đề "
+"cụ thể."
+
+#: ../../library/email.headerregistry.rst:377
+#, fuzzy
+msgid ""
+"The class used to represent an email address.  The general form of an "
+"address is::"
+msgstr ""
+"Lớp được sử dụng để đại diện cho một địa chỉ email.  Dạng chung của một địa "
+"chỉ là::"
+
+#: ../../library/email.headerregistry.rst:380
+#, fuzzy
+msgid "[display_name] <username@domain>"
+msgstr "[display_name] <tên người dùng@domain>"
+
+#: ../../library/email.headerregistry.rst:382
+#, fuzzy
+msgid "or::"
+msgstr "hoặc::"
+
+#: ../../library/email.headerregistry.rst:384
+#, fuzzy
+msgid "username@domain"
+msgstr "tên người dùng @ tên miền"
+
+#: ../../library/email.headerregistry.rst:386
+#, fuzzy
+msgid ""
+"where each part must conform to specific syntax rules spelled out in "
+":rfc:`5322`."
+msgstr ""
+"trong đó mỗi phần phải tuân theo các quy tắc cú pháp cụ thể được nêu trong "
+":rfc:`5322`."
+
+#: ../../library/email.headerregistry.rst:389
+#, fuzzy
+msgid ""
+"As a convenience *addr_spec* can be specified instead of *username* and "
+"*domain*, in which case *username* and *domain* will be parsed from the "
+"*addr_spec*.  An *addr_spec* must be a properly RFC quoted string; if it is "
+"not ``Address`` will raise an error.  Unicode characters are allowed and "
+"will be property encoded when serialized.  However, per the RFCs, unicode is"
+" *not* allowed in the username portion of the address."
+msgstr ""
+"Để thuận tiện, *addr_spec* có thể được chỉ định thay vì *username* và "
+"*domain*, trong trường hợp đó *username* và *domain* sẽ được phân tích cú "
+"pháp từ *addr_spec*.  Một *addr_spec* phải là một chuỗi trích dẫn RFC chính "
+"xác; nếu không phải là ``Address`` sẽ báo lỗi.  Các ký tự Unicode được cho "
+"phép và sẽ được mã hóa thuộc tính khi được tuần tự hóa.  Tuy nhiên, theo "
+"RFC, unicode được phép *not* trong phần tên người dùng của địa chỉ."
+
+#: ../../library/email.headerregistry.rst:398
+#, fuzzy
+msgid ""
+"The display name portion of the address, if any, with all quoting removed.  "
+"If the address does not have a display name, this attribute will be an empty"
+" string."
+msgstr ""
+"Phần tên hiển thị của địa chỉ, nếu có, đã loại bỏ tất cả trích dẫn.  Nếu địa"
+" chỉ không có tên hiển thị thì thuộc tính này sẽ là một chuỗi trống."
+
+#: ../../library/email.headerregistry.rst:404
+#, fuzzy
+msgid "The ``username`` portion of the address, with all quoting removed."
+msgstr "Phần ``username`` của địa chỉ, với tất cả trích dẫn đã bị xóa."
+
+#: ../../library/email.headerregistry.rst:408
+#, fuzzy
+msgid "The ``domain`` portion of the address."
+msgstr "Phần ``domain`` của địa chỉ."
+
+#: ../../library/email.headerregistry.rst:412
+#, fuzzy
+msgid ""
+"The ``username@domain`` portion of the address, correctly quoted for use as "
+"a bare address (the second form shown above).  This attribute is not "
+"mutable."
+msgstr ""
+"Phần ``username@domain`` của địa chỉ, được trích dẫn chính xác để sử dụng "
+"làm địa chỉ trần (dạng thứ hai được hiển thị ở trên).  Thuộc tính này không "
+"thể thay đổi được."
+
+#: ../../library/email.headerregistry.rst:418
+#, fuzzy
+msgid ""
+"The ``str`` value of the object is the address quoted according to "
+":rfc:`5322` rules, but with no Content Transfer Encoding of any non-ASCII "
+"characters."
+msgstr ""
+"Giá trị ``str`` của đối tượng là địa chỉ được trích dẫn theo quy tắc "
+":rfc:`5322`, nhưng không có Mã hóa chuyển nội dung của bất kỳ ký tự không "
+"phải ASCII nào."
+
+#: ../../library/email.headerregistry.rst:422
+#, fuzzy
+msgid ""
+"To support SMTP (:rfc:`5321`), ``Address`` handles one special case: if "
+"``username`` and ``domain`` are both the empty string (or ``None``), then "
+"the string value of the ``Address`` is ``<>``."
+msgstr ""
+"Để hỗ trợ SMTP (:rfc:`5321`), ``Address`` xử lý một trường hợp đặc biệt: nếu"
+" ``username`` và ``domain`` đều là chuỗi trống (hoặc ``None``), thì giá trị "
+"chuỗi của ``Address`` là ``<>``."
+
+#: ../../library/email.headerregistry.rst:429
+#, fuzzy
+msgid ""
+"The class used to represent an address group.  The general form of an "
+"address group is::"
+msgstr ""
+"Lớp được sử dụng để đại diện cho một nhóm địa chỉ.  Dạng chung của một nhóm "
+"địa chỉ là::"
+
+#: ../../library/email.headerregistry.rst:432
+#, fuzzy
+msgid "display_name: [address-list];"
+msgstr "display_name: [danh sách địa chỉ];"
+
+#: ../../library/email.headerregistry.rst:434
+#, fuzzy
+msgid ""
+"As a convenience for processing lists of addresses that consist of a mixture"
+" of groups and single addresses, a ``Group`` may also be used to represent "
+"single addresses that are not part of a group by setting *display_name* to "
+"``None`` and providing a list of the single address as *addresses*."
+msgstr ""
+"Để thuận tiện cho việc xử lý danh sách địa chỉ bao gồm hỗn hợp các nhóm và "
+"địa chỉ đơn lẻ, ``Group`` cũng có thể được sử dụng để thể hiện các địa chỉ "
+"đơn lẻ không thuộc nhóm bằng cách đặt *display_name* thành ``None`` và cung "
+"cấp danh sách địa chỉ duy nhất là *addresses*."
+
+#: ../../library/email.headerregistry.rst:441
+#, fuzzy
+msgid ""
+"The ``display_name`` of the group.  If it is ``None`` and there is exactly "
+"one ``Address`` in ``addresses``, then the ``Group`` represents a single "
+"address that is not in a group."
+msgstr ""
+"Zz000zz của nhóm.  Nếu đó là ``None`` và có chính xác một ``Address`` trong "
+"``addresses`` thì ``Group`` đại diện cho một địa chỉ duy nhất không nằm "
+"trong một nhóm."
+
+#: ../../library/email.headerregistry.rst:447
+#, fuzzy
+msgid ""
+"A possibly empty tuple of :class:`.Address` objects representing the "
+"addresses in the group."
+msgstr ""
+"Một bộ đối tượng :class:`.Address` có thể trống đại diện cho các địa chỉ "
+"trong nhóm."
+
+#: ../../library/email.headerregistry.rst:452
+#, fuzzy
+msgid ""
+"The ``str`` value of a ``Group`` is formatted according to :rfc:`5322`, but "
+"with no Content Transfer Encoding of any non-ASCII characters.  If "
+"``display_name`` is none and there is a single ``Address`` in the "
+"``addresses`` list, the ``str`` value will be the same as the ``str`` of "
+"that single ``Address``."
+msgstr ""
+"Giá trị ``str`` của ``Group`` được định dạng theo :rfc:`5322` nhưng không có"
+" Mã hóa chuyển nội dung của bất kỳ ký tự không phải ASCII nào.  Nếu "
+"``display_name`` không có và có một ``Address`` duy nhất trong danh sách "
+"``addresses``, thì giá trị ``str`` sẽ giống với ``str`` của ``Address`` duy "
+"nhất đó."
+
+#: ../../library/email.headerregistry.rst:460
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/email.headerregistry.rst:461
+#, fuzzy
+msgid ""
+"Originally added in 3.3 as a :term:`provisional module <provisional "
+"package>`"
+msgstr ""
+"Ban đầu được thêm vào 3.3 dưới dạng :term:`provisional module <provisional "
+"package>`"

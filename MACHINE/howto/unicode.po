@@ -1,0 +1,1817 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/unicode.rst:5
+#, fuzzy
+msgid "Unicode HOWTO"
+msgstr "Unicode HOWTO"
+
+#: ../../howto/unicode.rst
+#, fuzzy
+msgid "Release"
+msgstr "Phát hành"
+
+#: ../../howto/unicode.rst:7
+#, fuzzy
+msgid "1.12"
+msgstr "1.12"
+
+#: ../../howto/unicode.rst:9
+#, fuzzy
+msgid ""
+"This HOWTO discusses Python's support for the Unicode specification for "
+"representing textual data, and explains various problems that people "
+"commonly encounter when trying to work with Unicode."
+msgstr ""
+"Zz000zz này thảo luận về sự hỗ trợ của Python đối với đặc tả Unicode để biểu"
+" diễn dữ liệu văn bản và giải thích nhiều vấn đề khác nhau mà mọi người "
+"thường gặp phải khi cố gắng làm việc với Unicode."
+
+#: ../../howto/unicode.rst:15
+#, fuzzy
+msgid "Introduction to Unicode"
+msgstr "Giới thiệu về Unicode"
+
+#: ../../howto/unicode.rst:18
+#, fuzzy
+msgid "Definitions"
+msgstr "định nghĩa"
+
+#: ../../howto/unicode.rst:20
+#, fuzzy
+msgid ""
+"Today's programs need to be able to handle a wide variety of characters.  "
+"Applications are often internationalized to display messages and output in a"
+" variety of user-selectable languages; the same program might need to output"
+" an error message in English, French, Japanese, Hebrew, or Russian.  Web "
+"content can be written in any of these languages and can also include a "
+"variety of emoji symbols. Python's string type uses the Unicode Standard for"
+" representing characters, which lets Python programs work with all these "
+"different possible characters."
+msgstr ""
+"Các chương trình ngày nay cần có khả năng xử lý nhiều loại ký tự khác nhau."
+"  Các ứng dụng thường được quốc tế hóa để hiển thị thông báo và đầu ra bằng "
+"nhiều ngôn ngữ mà người dùng có thể lựa chọn; cùng một chương trình có thể "
+"cần xuất ra thông báo lỗi bằng tiếng Anh, tiếng Pháp, tiếng Nhật, tiếng Do "
+"Thái hoặc tiếng Nga.  Nội dung web có thể được viết bằng bất kỳ ngôn ngữ nào"
+" trong số này và cũng có thể bao gồm nhiều biểu tượng cảm xúc khác nhau. "
+"Kiểu chuỗi của Python sử dụng Tiêu chuẩn Unicode để biểu diễn các ký tự, cho"
+" phép các chương trình Python hoạt động với tất cả các ký tự có thể khác "
+"nhau này."
+
+#: ../../howto/unicode.rst:30
+#, fuzzy
+msgid ""
+"Unicode (https://www.unicode.org/) is a specification that aims to list "
+"every character used by human languages and give each character its own "
+"unique code.  The Unicode specifications are continually revised and updated"
+" to add new languages and symbols."
+msgstr ""
+"Unicode (https://www.unicode.org/) là một thông số kỹ thuật nhằm liệt kê mọi"
+" ký tự được sử dụng trong ngôn ngữ của con người và cung cấp cho mỗi ký tự "
+"một mã riêng. Các thông số kỹ thuật Unicode liên tục được sửa đổi và cập "
+"nhật để bổ sung thêm các ngôn ngữ và ký hiệu mới."
+
+#: ../../howto/unicode.rst:35
+#, fuzzy
+msgid ""
+"A **character** is the smallest possible component of a text.  'A', 'B', "
+"'C', etc., are all different characters.  So are 'È' and 'Í'.  Characters "
+"vary depending on the language or context you're talking about.  For "
+"example, there's a character for \"Roman Numeral One\", 'Ⅰ', that's separate"
+" from the uppercase letter 'I'.  They'll usually look the same, but these "
+"are two different characters that have different meanings."
+msgstr ""
+"Zz000zz là thành phần nhỏ nhất có thể có của văn bản.  'A', 'B', 'C', v.v., "
+"đều là những ký tự khác nhau.  'È' và 'Í' cũng vậy.  Các ký tự khác nhau tùy"
+" thuộc vào ngôn ngữ hoặc ngữ cảnh bạn đang nói đến.  Ví dụ: có một ký tự cho"
+" \"Số Một La Mã\", 'Ⅰ', ký tự này tách biệt với chữ in hoa 'I'.  Chúng "
+"thường trông giống nhau, nhưng đây là hai ký tự khác nhau có ý nghĩa khác "
+"nhau."
+
+#: ../../howto/unicode.rst:42
+#, fuzzy
+msgid ""
+"The Unicode standard describes how characters are represented by **code "
+"points**.  A code point value is an integer in the range 0 to 0x10FFFF "
+"(about 1.1 million values, the `actual number assigned "
+"<https://www.unicode.org/versions/latest/#Summary>`_ is less than that). In "
+"the standard and in this document, a code point is written using the "
+"notation ``U+265E`` to mean the character with value ``0x265e`` (9,822 in "
+"decimal)."
+msgstr ""
+"Tiêu chuẩn Unicode mô tả cách các ký tự được biểu thị bằng **code points**."
+"  Giá trị điểm mã là một số nguyên trong phạm vi từ 0 đến 0x10FFFF (khoảng "
+"1,1 triệu giá trị, `actual number assigned "
+"<https://www.unicode.org/versions/latest/#Summary>`_ nhỏ hơn thế). Trong "
+"tiêu chuẩn và trong tài liệu này, một điểm mã được viết bằng ký hiệu "
+"``U+265E`` để biểu thị ký tự có giá trị ``0x265e`` (9,822 ở dạng thập phân)."
+
+#: ../../howto/unicode.rst:50
+#, fuzzy
+msgid ""
+"The Unicode standard contains a lot of tables listing characters and their "
+"corresponding code points:"
+msgstr ""
+"Tiêu chuẩn Unicode chứa rất nhiều bảng liệt kê các ký tự và các điểm mã "
+"tương ứng của chúng:"
+
+#: ../../howto/unicode.rst:53
+#, fuzzy
+msgid ""
+"0061    'a'; LATIN SMALL LETTER A\n"
+"0062    'b'; LATIN SMALL LETTER B\n"
+"0063    'c'; LATIN SMALL LETTER C\n"
+"...\n"
+"007B    '{'; LEFT CURLY BRACKET\n"
+"...\n"
+"2167    'Ⅷ'; ROMAN NUMERAL EIGHT\n"
+"2168    'Ⅸ'; ROMAN NUMERAL NINE\n"
+"...\n"
+"265E    '♞'; BLACK CHESS KNIGHT\n"
+"265F    '♟'; BLACK CHESS PAWN\n"
+"...\n"
+"1F600   '😀'; GRINNING FACE\n"
+"1F609   '😉'; WINKING FACE\n"
+"..."
+msgstr ""
+"0061 'a'; LATIN SMALL LETTER A\n"
+"0062 'b'; LATIN SMALL LETTER B\n"
+"0063 'c'; LATIN SMALL LETTER C\n"
+"...\n"
+"007B '{'; LEFT CURLY BRACKET\n"
+"...\n"
+"2167 'Ⅷ'; ROMAN NUMERAL EIGHT\n"
+"2168 'Ⅸ'; ROMAN NUMERAL NINE\n"
+"...\n"
+"265E '♞'; BLACK CHESS KNIGHT\n"
+"265F '♟'; BLACK CHESS PAWN\n"
+"...\n"
+"1F600 '😀'; GRINNING FACE\n"
+"1F609 '😉'; WINKING FACE\n"
+"..."
+
+#: ../../howto/unicode.rst:71
+#, fuzzy
+msgid ""
+"Strictly, these definitions imply that it's meaningless to say 'this is "
+"character ``U+265E``'.  ``U+265E`` is a code point, which represents some "
+"particular character; in this case, it represents the character 'BLACK CHESS"
+" KNIGHT', '♞'.  In informal contexts, this distinction between code points "
+"and characters will sometimes be forgotten."
+msgstr ""
+"Nghiêm túc mà nói, những định nghĩa này ngụ ý rằng việc nói 'đây là nhân vật"
+" ``U+265E``' là vô nghĩa.  ``U+265E`` là một điểm mã, đại diện cho một số ký"
+" tự cụ thể; trong trường hợp này, nó đại diện cho ký tự 'BLACK CHESS "
+"KNIGHT', '♞'.  Trong bối cảnh không chính thức, sự phân biệt giữa điểm mã và"
+" ký tự này đôi khi sẽ bị lãng quên."
+
+#: ../../howto/unicode.rst:78
+#, fuzzy
+msgid ""
+"A character is represented on a screen or on paper by a set of graphical "
+"elements that's called a **glyph**.  The glyph for an uppercase A, for "
+"example, is two diagonal strokes and a horizontal stroke, though the exact "
+"details will depend on the font being used.  Most Python code doesn't need "
+"to worry about glyphs; figuring out the correct glyph to display is "
+"generally the job of a GUI toolkit or a terminal's font renderer."
+msgstr ""
+"Một ký tự được thể hiện trên màn hình hoặc trên giấy bằng một tập hợp các "
+"phần tử đồ họa được gọi là **glyph**.  Ví dụ: glyph cho chữ hoa A là hai nét"
+" chéo và một nét ngang, mặc dù chi tiết chính xác sẽ phụ thuộc vào phông chữ"
+" được sử dụng.  Hầu hết mã Python không cần phải lo lắng về glyphs; việc tìm"
+" ra glyph chính xác để hiển thị nói chung là công việc của bộ công cụ GUI "
+"hoặc trình kết xuất phông chữ của thiết bị đầu cuối."
+
+#: ../../howto/unicode.rst:87
+#, fuzzy
+msgid "Encodings"
+msgstr "Mã hóa"
+
+#: ../../howto/unicode.rst:89
+#, fuzzy
+msgid ""
+"To summarize the previous section: a Unicode string is a sequence of code "
+"points, which are numbers from 0 through ``0x10FFFF`` (1,114,111 decimal).  "
+"This sequence of code points needs to be represented in memory as a set of "
+"**code units**, and **code units** are then mapped to 8-bit bytes.  The "
+"rules for translating a Unicode string into a sequence of bytes are called a"
+" **character encoding**, or just an **encoding**."
+msgstr ""
+"Tóm tắt phần trước: chuỗi Unicode là một chuỗi các điểm mã, là các số từ 0 "
+"đến ``0x10FFFF`` (1.114.111 thập phân).  Chuỗi điểm mã này cần được biểu "
+"diễn trong bộ nhớ dưới dạng tập hợp **code units** và sau đó **code units** "
+"được ánh xạ tới byte 8 bit.  Các quy tắc dịch chuỗi Unicode thành một chuỗi "
+"byte được gọi là **character encoding** hoặc chỉ là **encoding**."
+
+#: ../../howto/unicode.rst:97
+#, fuzzy
+msgid ""
+"The first encoding you might think of is using 32-bit integers as the code "
+"unit, and then using the CPU's representation of 32-bit integers. In this "
+"representation, the string \"Python\" might look like this:"
+msgstr ""
+"Mã hóa đầu tiên bạn có thể nghĩ đến là sử dụng số nguyên 32 bit làm đơn vị "
+"mã, sau đó sử dụng biểu diễn số nguyên 32 bit của CPU. Trong cách biểu diễn "
+"này, chuỗi \"Python\" có thể trông như thế này:"
+
+#: ../../howto/unicode.rst:101
+#, fuzzy
+msgid ""
+"   P           y           t           h           o           n\n"
+"0x50 00 00 00 79 00 00 00 74 00 00 00 68 00 00 00 6f 00 00 00 6e 00 00 00\n"
+"   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23"
+msgstr ""
+"P y th h o n\n"
+"0x50 00 00 00 79 00 00 00 74 00 00 00 68 00 00 00 6f 00 00 00 6e 00 00 00\n"
+"   0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23"
+
+#: ../../howto/unicode.rst:107
+#, fuzzy
+msgid ""
+"This representation is straightforward but using it presents a number of "
+"problems."
+msgstr ""
+"Cách biểu diễn này đơn giản nhưng việc sử dụng nó lại bộc lộ một số vấn đề."
+
+#: ../../howto/unicode.rst:110
+#, fuzzy
+msgid "It's not portable; different processors order the bytes differently."
+msgstr ""
+"Nó không di động được; các bộ xử lý khác nhau sắp xếp các byte khác nhau."
+
+#: ../../howto/unicode.rst:112
+#, fuzzy
+msgid ""
+"It's very wasteful of space.  In most texts, the majority of the code points"
+" are less than 127, or less than 255, so a lot of space is occupied by "
+"``0x00`` bytes.  The above string takes 24 bytes compared to the 6 bytes "
+"needed for an ASCII representation.  Increased RAM usage doesn't matter too "
+"much (desktop computers have gigabytes of RAM, and strings aren't usually "
+"that large), but expanding our usage of disk and network bandwidth by a "
+"factor of 4 is intolerable."
+msgstr ""
+"Nó rất lãng phí không gian.  Trong hầu hết các văn bản, phần lớn các điểm mã"
+" nhỏ hơn 127 hoặc nhỏ hơn 255, do đó, rất nhiều không gian bị chiếm bởi các "
+"byte ``0x00``.  Chuỗi trên chiếm 24 byte so với 6 byte cần thiết cho biểu "
+"diễn ASCII.  Việc tăng mức sử dụng RAM không quá quan trọng (máy tính để bàn"
+" có hàng gigabyte RAM và các chuỗi thường không lớn đến thế), nhưng việc mở "
+"rộng mức sử dụng băng thông ổ đĩa và mạng của chúng ta lên gấp 4 lần là "
+"không thể chấp nhận được."
+
+#: ../../howto/unicode.rst:120
+#, fuzzy
+msgid ""
+"It's not compatible with existing C functions such as ``strlen()``, so a new"
+" family of wide string functions would need to be used."
+msgstr ""
+"Nó không tương thích với các hàm C hiện có như ``strlen()``, vì vậy cần phải"
+" sử dụng một họ hàm chuỗi rộng mới."
+
+#: ../../howto/unicode.rst:123
+#, fuzzy
+msgid ""
+"Therefore this encoding isn't used very much, and people instead choose "
+"other encodings that are more efficient and convenient, such as UTF-8."
+msgstr ""
+"Do đó, mã hóa này không được sử dụng nhiều và thay vào đó mọi người chọn các"
+" mã hóa khác hiệu quả và tiện lợi hơn, chẳng hạn như UTF-8."
+
+#: ../../howto/unicode.rst:126
+#, fuzzy
+msgid ""
+"UTF-8 is one of the most commonly used encodings, and Python often defaults "
+"to using it.  UTF stands for \"Unicode Transformation Format\", and the '8' "
+"means that 8-bit values are used in the encoding.  (There are also UTF-16 "
+"and UTF-32 encodings, but they are less frequently used than UTF-8.)  UTF-8 "
+"uses the following rules:"
+msgstr ""
+"UTF-8 là một trong những mã hóa được sử dụng phổ biến nhất và Python thường "
+"mặc định sử dụng nó.  UTF là viết tắt của \"Định dạng chuyển đổi Unicode\" "
+"và '8' có nghĩa là các giá trị 8 bit được sử dụng trong mã hóa.  (Ngoài ra "
+"còn có các mã hóa UTF-16 và UTF-32, nhưng chúng ít được sử dụng hơn UTF-8.) "
+"UTF-8 sử dụng các quy tắc sau:"
+
+#: ../../howto/unicode.rst:132
+#, fuzzy
+msgid ""
+"If the code point is < 128, it's represented by the corresponding byte "
+"value."
+msgstr "Nếu điểm mã < 128 thì nó được biểu thị bằng giá trị byte tương ứng."
+
+#: ../../howto/unicode.rst:133
+#, fuzzy
+msgid ""
+"If the code point is >= 128, it's turned into a sequence of two, three, or "
+"four bytes, where each byte of the sequence is between 128 and 255."
+msgstr ""
+"Nếu điểm mã >= 128 thì nó sẽ chuyển thành một chuỗi gồm hai, ba hoặc bốn "
+"byte, trong đó mỗi byte của chuỗi nằm trong khoảng từ 128 đến 255."
+
+#: ../../howto/unicode.rst:136
+#, fuzzy
+msgid "UTF-8 has several convenient properties:"
+msgstr "UTF-8 có một số thuộc tính tiện lợi:"
+
+#: ../../howto/unicode.rst:138
+#, fuzzy
+msgid "It can handle any Unicode code point."
+msgstr "Nó có thể xử lý bất kỳ điểm mã Unicode nào."
+
+#: ../../howto/unicode.rst:139
+#, fuzzy
+msgid ""
+"A Unicode string is turned into a sequence of bytes that contains embedded "
+"zero bytes only where they represent the null character (U+0000). This means"
+" that UTF-8 strings can be processed by C functions such as ``strcpy()`` and"
+" sent through protocols that can't handle zero bytes for anything other than"
+" end-of-string markers."
+msgstr ""
+"Chuỗi Unicode được chuyển thành một chuỗi byte chỉ chứa các byte 0 được "
+"nhúng trong đó chúng đại diện cho ký tự null (U+0000). Điều này có nghĩa là "
+"các chuỗi UTF-8 có thể được xử lý bằng các hàm C như ``strcpy()`` và được "
+"gửi qua các giao thức không thể xử lý byte 0 cho bất kỳ thứ gì ngoài điểm "
+"đánh dấu cuối chuỗi."
+
+#: ../../howto/unicode.rst:144
+#, fuzzy
+msgid "A string of ASCII text is also valid UTF-8 text."
+msgstr "Một chuỗi văn bản ASCII cũng là văn bản UTF-8 hợp lệ."
+
+#: ../../howto/unicode.rst:145
+#, fuzzy
+msgid ""
+"UTF-8 is fairly compact; the majority of commonly used characters can be "
+"represented with one or two bytes."
+msgstr ""
+"UTF-8 khá nhỏ gọn; phần lớn các ký tự thường được sử dụng có thể được biểu "
+"diễn bằng một hoặc hai byte."
+
+#: ../../howto/unicode.rst:147
+#, fuzzy
+msgid ""
+"If bytes are corrupted or lost, it's possible to determine the start of the "
+"next UTF-8-encoded code point and resynchronize.  It's also unlikely that "
+"random 8-bit data will look like valid UTF-8."
+msgstr ""
+"Nếu byte bị hỏng hoặc bị mất, có thể xác định điểm bắt đầu của điểm mã hóa "
+"UTF-8 tiếp theo và đồng bộ hóa lại.  Dữ liệu 8 bit ngẫu nhiên cũng khó có "
+"thể trông giống như UTF-8 hợp lệ."
+
+#: ../../howto/unicode.rst:150
+#, fuzzy
+msgid ""
+"UTF-8 is a byte oriented encoding. The encoding specifies that each "
+"character is represented by a specific sequence of one or more bytes. This "
+"avoids the byte-ordering issues that can occur with integer and word "
+"oriented encodings, like UTF-16 and UTF-32, where the sequence of bytes "
+"varies depending on the hardware on which the string was encoded."
+msgstr ""
+"UTF-8 là mã hóa theo định hướng byte. Mã hóa chỉ định rằng mỗi ký tự được "
+"biểu thị bằng một chuỗi cụ thể gồm một hoặc nhiều byte. Điều này tránh các "
+"vấn đề về thứ tự byte có thể xảy ra với mã hóa theo hướng số nguyên và từ, "
+"như UTF-16 và UTF-32, trong đó chuỗi byte thay đổi tùy thuộc vào phần cứng "
+"mà chuỗi được mã hóa."
+
+#: ../../howto/unicode.rst:158 ../../howto/unicode.rst:516
+#: ../../howto/unicode.rst:737
+#, fuzzy
+msgid "References"
+msgstr "Tài liệu tham khảo"
+
+#: ../../howto/unicode.rst:160
+#, fuzzy
+msgid ""
+"The `Unicode Consortium site <https://www.unicode.org>`_ has character "
+"charts, a glossary, and PDF versions of the Unicode specification.  Be "
+"prepared for some difficult reading.  `A chronology "
+"<https://www.unicode.org/history/>`_ of the origin and development of "
+"Unicode is also available on the site."
+msgstr ""
+"Zz000zz có biểu đồ ký tự, bảng chú giải thuật ngữ và phiên bản PDF của đặc "
+"tả Unicode.  Hãy chuẩn bị cho một số bài đọc khó.  `A chronology "
+"<https://www.unicode.org/history/>`_ về nguồn gốc và sự phát triển của "
+"Unicode cũng có sẵn trên trang web."
+
+#: ../../howto/unicode.rst:165
+#, fuzzy
+msgid ""
+"On the Computerphile Youtube channel, Tom Scott briefly `discusses the "
+"history of Unicode and UTF-8 <https://www.youtube.com/watch?v=MijmeoH9LT4>`_"
+" (9 minutes 36 seconds)."
+msgstr ""
+"Trên kênh Youtube Computerphile, Tom Scott giới thiệu ngắn gọn `discusses "
+"the history of Unicode and UTF-8 "
+"<https://www.youtube.com/watch?v=MijmeoH9LT4>`_ (9 phút 36 giây)."
+
+#: ../../howto/unicode.rst:169
+#, fuzzy
+msgid ""
+"To help understand the standard, Jukka Korpela has written `an introductory "
+"guide <https://jkorpela.fi/unicode/guide.html>`_ to reading the Unicode "
+"character tables."
+msgstr ""
+"Để giúp hiểu tiêu chuẩn, Jukka Korpela đã viết `an introductory guide "
+"<https://jkorpela.fi/unicode/guide.html>`_ để đọc các bảng ký tự Unicode."
+
+#: ../../howto/unicode.rst:173
+#, fuzzy
+msgid ""
+"Another `good introductory article "
+"<https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-"
+"software-developer-absolutely-positively-must-know-about-unicode-and-"
+"character-sets-no-excuses/>`_ was written by Joel Spolsky. If this "
+"introduction didn't make things clear to you, you should try reading this "
+"alternate article before continuing."
+msgstr ""
+"Một `good introductory article "
+"<https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-"
+"software-developer-absolutely-positively-must-know-about-unicode-and-"
+"character-sets-no-excuses/>`_ khác được viết bởi Joel Spolsky. Nếu phần giới"
+" thiệu này không làm bạn hiểu rõ, bạn nên thử đọc bài viết thay thế này "
+"trước khi tiếp tục."
+
+#: ../../howto/unicode.rst:178
+#, fuzzy
+msgid ""
+"Wikipedia entries are often helpful; see the entries for \"`character "
+"encoding <https://en.wikipedia.org/wiki/Character_encoding>`_\" and `UTF-8 "
+"<https://en.wikipedia.org/wiki/UTF-8>`_, for example."
+msgstr ""
+"Các mục Wikipedia thường hữu ích; ví dụ: xem các mục dành cho \"`character "
+"encoding <https://en.wikipedia.org/wiki/Character_encoding>`_\" và `UTF-8 "
+"<https://en.wikipedia.org/wiki/UTF-8>`_."
+
+#: ../../howto/unicode.rst:184
+#, fuzzy
+msgid "Python's Unicode Support"
+msgstr "Hỗ trợ Unicode của Python"
+
+#: ../../howto/unicode.rst:186
+#, fuzzy
+msgid ""
+"Now that you've learned the rudiments of Unicode, we can look at Python's "
+"Unicode features."
+msgstr ""
+"Bây giờ bạn đã học được kiến thức cơ bản về Unicode, chúng ta có thể xem xét"
+" các tính năng Unicode của Python."
+
+#: ../../howto/unicode.rst:190
+#, fuzzy
+msgid "The String Type"
+msgstr "Kiểu chuỗi"
+
+#: ../../howto/unicode.rst:192
+#, fuzzy
+msgid ""
+"Since Python 3.0, the language's :class:`str` type contains Unicode "
+"characters, meaning any string created using ``\"unicode rocks!\"``, "
+"``'unicode rocks!'``, or the triple-quoted string syntax is stored as "
+"Unicode."
+msgstr ""
+"Kể từ Python 3.0, loại :class:`str` của ngôn ngữ này chứa các ký tự Unicode,"
+" nghĩa là bất kỳ chuỗi nào được tạo bằng ``\"unicode rocks!\"``, ``'unicode "
+"rocks!'`` hoặc cú pháp chuỗi ba dấu ngoặc kép đều được lưu trữ dưới dạng "
+"Unicode."
+
+#: ../../howto/unicode.rst:196
+#, fuzzy
+msgid ""
+"The default encoding for Python source code is UTF-8, so you can simply "
+"include a Unicode character in a string literal::"
+msgstr ""
+"Mã hóa mặc định cho mã nguồn Python là UTF-8, vì vậy bạn chỉ cần đưa ký tự "
+"Unicode vào một chuỗi ký tự::"
+
+#: ../../howto/unicode.rst:199
+#, fuzzy
+msgid ""
+"try:\n"
+"    with open('/tmp/input.txt', 'r') as f:\n"
+"        ...\n"
+"except OSError:\n"
+"    # 'File not found' error message.\n"
+"    print(\"Fichier non trouvé\")"
+msgstr ""
+"thử:\n"
+"    với open('/tmp/input.txt', 'r') là f:\n"
+"        ...\n"
+"ngoại trừ OSError:\n"
+"    # Thông báo lỗi 'Không tìm thấy tệp'.\n"
+"    print(\"Fichier non trouvé\")"
+
+#: ../../howto/unicode.rst:206
+#, fuzzy
+msgid ""
+"Side note: Python 3 also supports using Unicode characters in identifiers::"
+msgstr ""
+"Lưu ý phụ: Python 3 cũng hỗ trợ sử dụng các ký tự Unicode trong mã định danh"
+" ::"
+
+#: ../../howto/unicode.rst:208
+#, fuzzy
+msgid ""
+"répertoire = \"/tmp/records.log\"\n"
+"with open(répertoire, \"w\") as f:\n"
+"    f.write(\"test\\n\")"
+msgstr ""
+"répertoire = \"/tmp/records.log\"\n"
+"với open(répertoire, \"w\") là f:\n"
+"    f.write(\"kiểm tra\\n\")"
+
+#: ../../howto/unicode.rst:212
+#, fuzzy
+msgid ""
+"If you can't enter a particular character in your editor or want to keep the"
+" source code ASCII-only for some reason, you can also use escape sequences "
+"in string literals. (Depending on your system, you may see the actual "
+"capital-delta glyph instead of a \\u escape.) ::"
+msgstr ""
+"Nếu bạn không thể nhập một ký tự cụ thể trong trình soạn thảo của mình hoặc "
+"muốn giữ mã nguồn chỉ ASCII vì lý do nào đó, bạn cũng có thể sử dụng chuỗi "
+"thoát trong chuỗi ký tự. (Tùy thuộc vào hệ thống của bạn, bạn có thể thấy ký"
+" tự chữ hoa thực tế thay vì lối thoát \\u.) ::"
+
+#: ../../howto/unicode.rst:217
+#, python-brace-format, fuzzy
+msgid ""
+">>> \"\\N{GREEK CAPITAL LETTER DELTA}\"  # Using the character name\n"
+"'\\u0394'\n"
+">>> \"\\u0394\"                          # Using a 16-bit hex value\n"
+"'\\u0394'\n"
+">>> \"\\U00000394\"                      # Using a 32-bit hex value\n"
+"'\\u0394'"
+msgstr ""
+">>> \"\\N{GREEK CAPITAL LETTER DELTA}\" # Using tên nhân vật\n"
+"'\\u0394'\n"
+">>> \"\\u0394\" # Using giá trị hex 16 bit\n"
+"'\\u0394'\n"
+">>> \"\\U00000394\" # Using giá trị hex 32-bit\n"
+"'\\u0394'"
+
+#: ../../howto/unicode.rst:224
+#, fuzzy
+msgid ""
+"In addition, one can create a string using the :func:`~bytes.decode` method "
+"of :class:`bytes`.  This method takes an *encoding* argument, such as "
+"``UTF-8``, and optionally an *errors* argument."
+msgstr ""
+"Ngoài ra, người ta có thể tạo một chuỗi bằng phương thức "
+":func:`~bytes.decode` của :class:`bytes`.  Phương thức này nhận đối số "
+"*encoding*, chẳng hạn như ``UTF-8`` và tùy chọn một đối số *errors*."
+
+#: ../../howto/unicode.rst:228
+#, fuzzy
+msgid ""
+"The *errors* argument specifies the response when the input string can't be "
+"converted according to the encoding's rules.  Legal values for this argument"
+" are ``'strict'`` (raise a :exc:`UnicodeDecodeError` exception), "
+"``'replace'`` (use ``U+FFFD``, ``REPLACEMENT CHARACTER``), ``'ignore'`` "
+"(just leave the character out of the Unicode result), or "
+"``'backslashreplace'`` (inserts a ``\\xNN`` escape sequence). The following "
+"examples show the differences::"
+msgstr ""
+"Đối số *errors* chỉ định phản hồi khi chuỗi đầu vào không thể chuyển đổi "
+"theo quy tắc mã hóa.  Các giá trị pháp lý cho đối số này là ``'strict'`` "
+"(tăng ngoại lệ :exc:`UnicodeDecodeError`), ``'replace'`` (sử dụng "
+"``U+FFFD``, ``REPLACEMENT CHARACTER``), ``'ignore'`` (chỉ loại bỏ ký tự ra "
+"khỏi kết quả Unicode) hoặc ``'backslashreplace'`` (chèn chuỗi thoát "
+"``\\xNN``). Các ví dụ sau đây cho thấy sự khác biệt::"
+
+#: ../../howto/unicode.rst:236
+#, fuzzy
+msgid ""
+">>> b'\\x80abc'.decode(\"utf-8\", \"strict\")\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 0:\n"
+"  invalid start byte\n"
+">>> b'\\x80abc'.decode(\"utf-8\", \"replace\")\n"
+"'\\ufffdabc'\n"
+">>> b'\\x80abc'.decode(\"utf-8\", \"backslashreplace\")\n"
+"'\\\\x80abc'\n"
+">>> b'\\x80abc'.decode(\"utf-8\", \"ignore\")\n"
+"'abc'"
+msgstr ""
+">>> b'\\x80abc'.decode(\"utf-8\", \"strict\")\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"    ...\n"
+"UnicodeDecodeError: codec 'utf-8' không thể giải mã byte 0x80 ở vị trí 0:\n"
+"  byte bắt đầu không hợp lệ\n"
+">>> b'\\x80abc'.decode(\"utf-8\", \"thay thế\")\n"
+"'\\ufffdabc'\n"
+">>> b'\\x80abc'.decode(\"utf-8\", \"backslashreplace\")\n"
+"'\\\\x80abc'\n"
+">>> b'\\x80abc'.decode(\"utf-8\", \"bỏ qua\")\n"
+"'abc'"
+
+#: ../../howto/unicode.rst:248
+#, fuzzy
+msgid ""
+"Encodings are specified as strings containing the encoding's name.  Python "
+"comes with roughly 100 different encodings; see the Python Library Reference"
+" at :ref:`standard-encodings` for a list.  Some encodings have multiple "
+"names; for example, ``'latin-1'``, ``'iso_8859_1'`` and ``'8859``' are all "
+"synonyms for the same encoding."
+msgstr ""
+"Mã hóa được chỉ định dưới dạng chuỗi chứa tên mã hóa.  Python có khoảng 100 "
+"cách mã hóa khác nhau; xem Tham khảo Thư viện Python tại :ref:`standard-"
+"encodings` để biết danh sách.  Một số bảng mã có nhiều tên; ví dụ: "
+"``'latin-1'``, ``'iso_8859_1'`` và ``'8859``' đều là từ đồng nghĩa với cùng "
+"một mã hóa."
+
+#: ../../howto/unicode.rst:254
+#, fuzzy
+msgid ""
+"One-character Unicode strings can also be created with the :func:`chr` "
+"built-in function, which takes integers and returns a Unicode string of "
+"length 1 that contains the corresponding code point.  The reverse operation "
+"is the built-in :func:`ord` function that takes a one-character Unicode "
+"string and returns the code point value::"
+msgstr ""
+"Chuỗi Unicode một ký tự cũng có thể được tạo bằng hàm tích hợp :func:`chr`, "
+"hàm này nhận số nguyên và trả về chuỗi Unicode có độ dài 1 chứa điểm mã "
+"tương ứng.  Hoạt động ngược lại là hàm :func:`ord` tích hợp lấy chuỗi "
+"Unicode một ký tự và trả về giá trị điểm mã ::"
+
+#: ../../howto/unicode.rst:260
+#, fuzzy
+msgid ""
+">>> chr(57344)\n"
+"'\\ue000'\n"
+">>> ord('\\ue000')\n"
+"57344"
+msgstr ""
+">>> chr(57344)\n"
+"'\\ue000'\n"
+">>> ord('\\ue000')\n"
+"57344"
+
+#: ../../howto/unicode.rst:266
+#, fuzzy
+msgid "Converting to Bytes"
+msgstr "Chuyển đổi sang byte"
+
+#: ../../howto/unicode.rst:268
+#, fuzzy
+msgid ""
+"The opposite method of :meth:`bytes.decode` is :meth:`str.encode`, which "
+"returns a :class:`bytes` representation of the Unicode string, encoded in "
+"the requested *encoding*."
+msgstr ""
+"Phương thức ngược lại của :meth:`bytes.decode` là :meth:`str.encode`, trả về"
+" biểu diễn :class:`bytes` của chuỗi Unicode, được mã hóa trong *encoding* "
+"được yêu cầu."
+
+#: ../../howto/unicode.rst:272
+#, python-brace-format, fuzzy
+msgid ""
+"The *errors* parameter is the same as the parameter of the "
+":meth:`~bytes.decode` method but supports a few more possible handlers. As "
+"well as ``'strict'``, ``'ignore'``, and ``'replace'`` (which in this case "
+"inserts a question mark instead of the unencodable character), there is also"
+" ``'xmlcharrefreplace'`` (inserts an XML character reference), "
+"``backslashreplace`` (inserts a ``\\uNNNN`` escape sequence) and "
+"``namereplace`` (inserts a ``\\N{...}`` escape sequence)."
+msgstr ""
+"Tham số *errors* giống với tham số của phương thức :meth:`~bytes.decode` "
+"nhưng hỗ trợ thêm một số trình xử lý khả thi. Ngoài ``'strict'``, "
+"``'ignore'`` và ``'replace'`` (trong trường hợp này chèn dấu chấm hỏi thay "
+"vì ký tự không thể mã hóa), còn có ``'xmlcharrefreplace'`` (chèn tham chiếu "
+"ký tự XML), ``backslashreplace`` (chèn chuỗi thoát ``\\uNNNN``) và "
+"``namereplace`` (chèn chuỗi thoát ``\\N{...}``)."
+
+#: ../../howto/unicode.rst:280
+#, fuzzy
+msgid "The following example shows the different results::"
+msgstr "Ví dụ sau đây cho thấy các kết quả khác nhau::"
+
+#: ../../howto/unicode.rst:282
+#, python-brace-format, fuzzy
+msgid ""
+">>> u = chr(40960) + 'abcd' + chr(1972)\n"
+">>> u.encode('utf-8')\n"
+"b'\\xea\\x80\\x80abcd\\xde\\xb4'\n"
+">>> u.encode('ascii')\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"UnicodeEncodeError: 'ascii' codec can't encode character '\\ua000' in\n"
+"  position 0: ordinal not in range(128)\n"
+">>> u.encode('ascii', 'ignore')\n"
+"b'abcd'\n"
+">>> u.encode('ascii', 'replace')\n"
+"b'?abcd?'\n"
+">>> u.encode('ascii', 'xmlcharrefreplace')\n"
+"b'&#40960;abcd&#1972;'\n"
+">>> u.encode('ascii', 'backslashreplace')\n"
+"b'\\\\ua000abcd\\\\u07b4'\n"
+">>> u.encode('ascii', 'namereplace')\n"
+"b'\\\\N{YI SYLLABLE IT}abcd\\\\u07b4'"
+msgstr ""
+">>> u = chr(40960) + 'abcd' + chr(1972)\n"
+">>> u.encode('utf-8')\n"
+"b'\\xea\\x80\\x80abcd\\xde\\xb4'\n"
+">>> u.encode('ascii')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"    ...\n"
+"UnicodeEncodeError: codec 'ascii' không thể mã hóa ký tự '\\ ua000' trong\n"
+"  vị trí 0: thứ tự không nằm trong phạm vi (128)\n"
+">>> u.encode('ascii', 'bỏ qua')\n"
+"b'abcd'\n"
+">>> u.encode('ascii', 'thay thế')\n"
+"b'?abcd?'\n"
+">>> u.encode('ascii', 'xmlcharrefreplace')\n"
+"b'&#40960;abcd&#1972;'\n"
+">>> u.encode('ascii', 'backslashreplace')\n"
+"b'\\\\ua000abcd\\\\u07b4'\n"
+">>> u.encode('ascii', 'namereplace')\n"
+"b'\\\\N{YI SYLLABLE IT}abcd\\\\u07b4'"
+
+#: ../../howto/unicode.rst:301
+#, fuzzy
+msgid ""
+"The low-level routines for registering and accessing the available encodings"
+" are found in the :mod:`codecs` module.  Implementing new encodings also "
+"requires understanding the :mod:`codecs` module. However, the encoding and "
+"decoding functions returned by this module are usually more low-level than "
+"is comfortable, and writing new encodings is a specialized task, so the "
+"module won't be covered in this HOWTO."
+msgstr ""
+"Các quy trình cấp thấp để đăng ký và truy cập các mã hóa có sẵn được tìm "
+"thấy trong mô-đun :mod:`codecs`.  Việc triển khai các mã hóa mới cũng đòi "
+"hỏi phải hiểu mô-đun :mod:`codecs`. Tuy nhiên, các chức năng mã hóa và giải "
+"mã được mô-đun này trả về thường ở mức độ thấp hơn mức bạn thấy thoải mái và"
+" việc viết các mã hóa mới là một nhiệm vụ chuyên biệt nên mô-đun sẽ không "
+"được đề cập trong HOWTO này."
+
+#: ../../howto/unicode.rst:310
+#, fuzzy
+msgid "Unicode Literals in Python Source Code"
+msgstr "Chữ Unicode trong mã nguồn Python"
+
+#: ../../howto/unicode.rst:312
+#, fuzzy
+msgid ""
+"In Python source code, specific Unicode code points can be written using the"
+" ``\\u`` escape sequence, which is followed by four hex digits giving the "
+"code point.  The ``\\U`` escape sequence is similar, but expects eight hex "
+"digits, not four::"
+msgstr ""
+"Trong mã nguồn Python, các điểm mã Unicode cụ thể có thể được viết bằng "
+"chuỗi thoát ``\\u``, theo sau là bốn chữ số hex cho điểm mã.  Trình tự thoát"
+" ``\\U`` tương tự, nhưng cần có tám chữ số hex chứ không phải bốn::"
+
+#: ../../howto/unicode.rst:317
+#, fuzzy
+msgid ""
+">>> s = \"a\\xac\\u1234\\u20ac\\U00008000\"\n"
+"... #     ^^^^ two-digit hex escape\n"
+"... #         ^^^^^^ four-digit Unicode escape\n"
+"... #                     ^^^^^^^^^^ eight-digit Unicode escape\n"
+">>> [ord(c) for c in s]\n"
+"[97, 172, 4660, 8364, 32768]"
+msgstr ""
+">>> s = \"a\\xac\\u1234\\u20ac\\U00008000\"\n"
+"... # ^^^ thoát hex hai chữ số\n"
+"... # ^^^^ Thoát Unicode bốn chữ số\n"
+"... # ^^ ^^ ^^ ^^ ^^ Thoát Unicode tám chữ số\n"
+">>> [thứ tự(c) cho c trong s]\n"
+"[97, 172, 4660, 8364, 32768]"
+
+#: ../../howto/unicode.rst:324
+#, fuzzy
+msgid ""
+"Using escape sequences for code points greater than 127 is fine in small "
+"doses, but becomes an annoyance if you're using many accented characters, as"
+" you would in a program with messages in French or some other accent-using "
+"language.  You can also assemble strings using the :func:`chr` built-in "
+"function, but this is even more tedious."
+msgstr ""
+"Sử dụng chuỗi thoát cho các điểm mã lớn hơn 127 là phù hợp với liều lượng "
+"nhỏ nhưng sẽ gây khó chịu nếu bạn sử dụng nhiều ký tự có dấu, như khi bạn "
+"làm trong một chương trình có thông báo bằng tiếng Pháp hoặc một số ngôn ngữ"
+" sử dụng giọng khác.  Bạn cũng có thể tập hợp các chuỗi bằng chức năng tích "
+"hợp sẵn :func:`chr`, nhưng điều này thậm chí còn tẻ nhạt hơn."
+
+#: ../../howto/unicode.rst:330
+#, fuzzy
+msgid ""
+"Ideally, you'd want to be able to write literals in your language's natural "
+"encoding.  You could then edit Python source code with your favorite editor "
+"which would display the accented characters naturally, and have the right "
+"characters used at runtime."
+msgstr ""
+"Lý tưởng nhất là bạn muốn có thể viết chữ bằng mã hóa tự nhiên của ngôn ngữ "
+"của mình.  Sau đó, bạn có thể chỉnh sửa mã nguồn Python bằng trình soạn thảo"
+" yêu thích của mình. Trình soạn thảo này sẽ hiển thị các ký tự có dấu một "
+"cách tự nhiên và có các ký tự phù hợp được sử dụng trong thời gian chạy."
+
+#: ../../howto/unicode.rst:335
+#, fuzzy
+msgid ""
+"Python supports writing source code in UTF-8 by default, but you can use "
+"almost any encoding if you declare the encoding being used.  This is done by"
+" including a special comment as either the first or second line of the "
+"source file::"
+msgstr ""
+"Python hỗ trợ viết mã nguồn bằng UTF-8 theo mặc định, nhưng bạn có thể sử "
+"dụng hầu hết mọi mã hóa nếu bạn khai báo mã hóa đang được sử dụng.  Điều này"
+" được thực hiện bằng cách đưa vào một nhận xét đặc biệt ở dòng đầu tiên hoặc"
+" dòng thứ hai của tệp nguồn::"
+
+#: ../../howto/unicode.rst:339
+#, fuzzy
+msgid ""
+"#!/usr/bin/env python\n"
+"# -*- coding: latin-1 -*-\n"
+"\n"
+"u = 'abcdé'\n"
+"print(ord(u[-1]))"
+msgstr ""
+"#!/usr/bin/env trăn\n"
+"# -zz000zz-\n"
+"\n"
+"u = 'abcdé'\n"
+"print(ord(u[-1]))"
+
+#: ../../howto/unicode.rst:345
+#, fuzzy
+msgid ""
+"The syntax is inspired by Emacs's notation for specifying variables local to"
+" a file.  Emacs supports many different variables, but Python only supports "
+"'coding'.  The ``-*-`` symbols indicate to Emacs that the comment is "
+"special; they have no significance to Python but are a convention.  Python "
+"looks for ``coding: name`` or ``coding=name`` in the comment."
+msgstr ""
+"Cú pháp được lấy cảm hứng từ ký hiệu của Emacs để chỉ định các biến cục bộ "
+"cho một tệp.  Emacs hỗ trợ nhiều biến khác nhau nhưng Python chỉ hỗ trợ "
+"“coding”.  Các ký hiệu ``-*-`` cho Emacs biết rằng nhận xét này rất đặc "
+"biệt; chúng không có ý nghĩa gì đối với Python nhưng chỉ là một quy ước.  "
+"Python tìm kiếm ``coding: name`` hoặc ``coding=name`` trong bình luận."
+
+#: ../../howto/unicode.rst:351
+#, fuzzy
+msgid ""
+"If you don't include such a comment, the default encoding used will be UTF-8"
+" as already mentioned.  See also :pep:`263` for more information."
+msgstr ""
+"Nếu bạn không bao gồm nhận xét như vậy, mã hóa mặc định được sử dụng sẽ là "
+"UTF-8 như đã đề cập.  Xem thêm :pep:`263` để biết thêm thông tin."
+
+#: ../../howto/unicode.rst:358
+#, fuzzy
+msgid "Unicode Properties"
+msgstr "Thuộc tính Unicode"
+
+#: ../../howto/unicode.rst:360
+#, fuzzy
+msgid ""
+"The Unicode specification includes a database of information about code "
+"points.  For each defined code point, the information includes the "
+"character's name, its category, the numeric value if applicable (for "
+"characters representing numeric concepts such as the Roman numerals, "
+"fractions such as one-third and four-fifths, etc.).  There are also display-"
+"related properties, such as how to use the code point in bidirectional text."
+msgstr ""
+"Đặc tả Unicode bao gồm cơ sở dữ liệu thông tin về các điểm mã.  Đối với mỗi "
+"điểm mã được xác định, thông tin bao gồm tên ký tự, danh mục của nó, giá trị"
+" số nếu có (đối với các ký tự biểu thị khái niệm số như chữ số La Mã, phân "
+"số như một phần ba và bốn phần năm, v.v.).  Ngoài ra còn có các thuộc tính "
+"liên quan đến hiển thị, chẳng hạn như cách sử dụng điểm mã trong văn bản hai"
+" chiều."
+
+#: ../../howto/unicode.rst:368
+#, fuzzy
+msgid ""
+"The following program displays some information about several characters, "
+"and prints the numeric value of one particular character::"
+msgstr ""
+"Chương trình sau hiển thị một số thông tin về một số ký tự và in giá trị số "
+"của một ký tự cụ thể::"
+
+#: ../../howto/unicode.rst:371
+#, python-format, fuzzy
+msgid ""
+"import unicodedata\n"
+"\n"
+"u = chr(233) + chr(0x0bf2) + chr(3972) + chr(6000) + chr(13231)\n"
+"\n"
+"for i, c in enumerate(u):\n"
+"    print(i, '%04x' % ord(c), unicodedata.category(c), end=\" \")\n"
+"    print(unicodedata.name(c))\n"
+"\n"
+"# Get numeric value of second character\n"
+"print(unicodedata.numeric(u[1]))"
+msgstr ""
+"nhập dữ liệu unicode\n"
+"\n"
+"u = chr(233) + chr(0x0bf2) + chr(3972) + chr(6000) + chr(13231)\n"
+"\n"
+"cho i, c trong liệt kê(u):\n"
+"    print(i, '%04x' % ord(c), unicodedata.category(c), end=\" \")\n"
+"    in(unicodedata.name(c))\n"
+"\n"
+"giá trị số # Get của ký tự thứ hai\n"
+"print(unicodedata.numeric(u[1]))"
+
+#: ../../howto/unicode.rst:382
+#, fuzzy
+msgid "When run, this prints:"
+msgstr "Khi chạy, bản in này:"
+
+#: ../../howto/unicode.rst:384
+#, fuzzy
+msgid ""
+"0 00e9 Ll LATIN SMALL LETTER E WITH ACUTE\n"
+"1 0bf2 No TAMIL NUMBER ONE THOUSAND\n"
+"2 0f84 Mn TIBETAN MARK HALANTA\n"
+"3 1770 Lo TAGBANWA LETTER SA\n"
+"4 33af So SQUARE RAD OVER S SQUARED\n"
+"1000.0"
+msgstr ""
+"0 00e9 Ll LATIN SMALL LETTER E WITH ACUTE\n"
+"1 0bf2 Không TAMIL NUMBER ONE THOUSAND\n"
+"2 0f84 Mn TIBETAN MARK HALANTA\n"
+"3 1770 Lô TAGBANWA LETTER SA\n"
+"4 33af Vậy SQUARE RAD OVER S SQUARED\n"
+"1000,0"
+
+#: ../../howto/unicode.rst:393
+#, fuzzy
+msgid ""
+"The category codes are abbreviations describing the nature of the character."
+" These are grouped into categories such as \"Letter\", \"Number\", "
+"\"Punctuation\", or \"Symbol\", which in turn are broken up into "
+"subcategories.  To take the codes from the above output, ``'Ll'`` means "
+"'Letter, lowercase', ``'No'`` means \"Number, other\", ``'Mn'`` is \"Mark, "
+"nonspacing\", and ``'So'`` is \"Symbol, other\".  See `the General Category "
+"Values section of the Unicode Character Database documentation "
+"<https://www.unicode.org/reports/tr44/#General_Category_Values>`_ for a list"
+" of category codes."
+msgstr ""
+"Mã danh mục là chữ viết tắt mô tả bản chất của ký tự. Chúng được nhóm thành "
+"các danh mục như \"Chữ cái\", \"Số\", \"Dấu câu\" hoặc \"Ký hiệu\", lần lượt"
+" được chia thành các danh mục phụ.  Để lấy mã từ kết quả đầu ra ở trên, "
+"``'Ll'`` có nghĩa là 'Chữ cái, chữ thường', ``'No'`` có nghĩa là \"Số, "
+"khác\", ``'Mn'`` là \"Đánh dấu, không khoảng cách\" và ``'So'`` là \"Ký "
+"hiệu, khác\".  Xem `the General Category Values section of the Unicode "
+"Character Database documentation "
+"<https://www.unicode.org/reports/tr44/#General_Category_Values>`_ để biết "
+"danh sách mã danh mục."
+
+#: ../../howto/unicode.rst:404
+#, fuzzy
+msgid "Comparing Strings"
+msgstr "So sánh chuỗi"
+
+#: ../../howto/unicode.rst:406
+#, fuzzy
+msgid ""
+"Unicode adds some complication to comparing strings, because the same set of"
+" characters can be represented by different sequences of code points.  For "
+"example, a letter like 'ê' can be represented as a single code point U+00EA,"
+" or as U+0065 U+0302, which is the code point for 'e' followed by a code "
+"point for 'COMBINING CIRCUMFLEX ACCENT'.  These will produce the same output"
+" when printed, but one is a string of length 1 and the other is of length 2."
+msgstr ""
+"Unicode gây thêm một số phức tạp khi so sánh các chuỗi, vì cùng một bộ ký tự"
+" có thể được biểu diễn bằng các chuỗi điểm mã khác nhau.  Ví dụ: một chữ cái"
+" như 'ê' có thể được biểu thị dưới dạng một điểm mã U+00EA hoặc dưới dạng "
+"U+0065 U+0302, là điểm mã cho 'e', ​​theo sau là một điểm mã cho 'COMBINING "
+"CIRCUMFLEX ACCENT'.  Chúng sẽ tạo ra cùng một đầu ra khi được in, nhưng một "
+"chuỗi là chuỗi có độ dài 1 và chuỗi kia có độ dài 2."
+
+#: ../../howto/unicode.rst:414
+#, fuzzy
+msgid ""
+"One tool for a case-insensitive comparison is the :meth:`~str.casefold` "
+"string method that converts a string to a case-insensitive form following an"
+" algorithm described by the Unicode Standard.  This algorithm has special "
+"handling for characters such as the German letter 'ß' (code point U+00DF), "
+"which becomes the pair of lowercase letters 'ss'."
+msgstr ""
+"Một công cụ để so sánh không phân biệt chữ hoa chữ thường là phương thức "
+"chuỗi :meth:`~str.casefold` chuyển đổi một chuỗi thành dạng không phân biệt "
+"chữ hoa chữ thường theo thuật toán được mô tả bởi Tiêu chuẩn Unicode.  Thuật"
+" toán này có cách xử lý đặc biệt đối với các ký tự như chữ cái tiếng Đức 'ß'"
+" (điểm mã U+00DF), trở thành cặp chữ cái viết thường 'ss'."
+
+#: ../../howto/unicode.rst:423
+#, fuzzy
+msgid ""
+">>> street = 'Gürzenichstraße'\n"
+">>> street.casefold()\n"
+"'gürzenichstrasse'"
+msgstr ""
+">>> đường phố = 'Gürzenichstraße'\n"
+">>> street.casefold()\n"
+"'gürzenichstrasse'"
+
+#: ../../howto/unicode.rst:427
+#, fuzzy
+msgid ""
+"A second tool is the :mod:`unicodedata` module's "
+":func:`~unicodedata.normalize` function that converts strings to one of "
+"several normal forms, where letters followed by a combining character are "
+"replaced with single characters.  :func:`~unicodedata.normalize` can be used"
+" to perform string comparisons that won't falsely report inequality if two "
+"strings use combining characters differently:"
+msgstr ""
+"Công cụ thứ hai là chức năng :func:`~unicodedata.normalize` của mô-đun "
+":mod:`unicodedata` để chuyển đổi chuỗi thành một trong một số dạng thông "
+"thường, trong đó các chữ cái theo sau là ký tự kết hợp được thay thế bằng "
+"các ký tự đơn.  :func:`~unicodedata.normalize` có thể được sử dụng để thực "
+"hiện so sánh chuỗi mà không báo cáo sai sự bất bình đẳng nếu hai chuỗi sử "
+"dụng các ký tự kết hợp khác nhau:"
+
+#: ../../howto/unicode.rst:436
+#, python-brace-format, fuzzy
+msgid ""
+"import unicodedata\n"
+"\n"
+"def compare_strs(s1, s2):\n"
+"    def NFD(s):\n"
+"        return unicodedata.normalize('NFD', s)\n"
+"\n"
+"    return NFD(s1) == NFD(s2)\n"
+"\n"
+"single_char = 'ê'\n"
+"multiple_chars = '\\N{LATIN SMALL LETTER E}\\N{COMBINING CIRCUMFLEX ACCENT}'\n"
+"print('length of first string=', len(single_char))\n"
+"print('length of second string=', len(multiple_chars))\n"
+"print(compare_strs(single_char, multiple_chars))"
+msgstr ""
+"nhập dữ liệu unicode\n"
+"\n"
+"def so sánh_str(s1, s2):\n"
+"    chắc chắn NFD(s):\n"
+"        trả về unicodedata.n normalize('NFD', s)\n"
+"\n"
+"    trả về NFD(s1) == NFD(s2)\n"
+"\n"
+"single_char = 'ê'\n"
+"multiple_chars = '\\N{LATIN SMALL LETTER E}\\N{COMBINING CIRCUMFLEX ACCENT}'\n"
+"print('độ dài của chuỗi đầu tiên=', len(single_char))\n"
+"print('độ dài của chuỗi thứ hai=', len(multiple_chars))\n"
+"print(so sánh_strs(single_char, multiple_chars))"
+
+#: ../../howto/unicode.rst:450
+#, fuzzy
+msgid "When run, this outputs:"
+msgstr "Khi chạy, kết quả này xuất hiện:"
+
+#: ../../howto/unicode.rst:452
+#, fuzzy
+msgid ""
+"$ python compare-strs.py\n"
+"length of first string= 1\n"
+"length of second string= 2\n"
+"True"
+msgstr ""
+"$ python so sánh-str.py\n"
+"độ dài của chuỗi đầu tiên = 1\n"
+"độ dài của chuỗi thứ hai = 2\n"
+"đúng"
+
+#: ../../howto/unicode.rst:459
+#, fuzzy
+msgid ""
+"The first argument to the :func:`~unicodedata.normalize` function is a "
+"string giving the desired normalization form, which can be one of 'NFC', "
+"'NFKC', 'NFD', and 'NFKD'."
+msgstr ""
+"Đối số đầu tiên của hàm :func:`~unicodedata.normalize` là một chuỗi đưa ra "
+"dạng chuẩn hóa mong muốn, có thể là một trong các 'NFC', 'NFKC', 'NFD' và "
+"'NFKD'."
+
+#: ../../howto/unicode.rst:463
+#, fuzzy
+msgid "The Unicode Standard also specifies how to do caseless comparisons::"
+msgstr ""
+"Tiêu chuẩn Unicode cũng chỉ định cách thực hiện so sánh không phân biệt chữ "
+"hoa chữ thường ::"
+
+#: ../../howto/unicode.rst:465
+#, python-brace-format, fuzzy
+msgid ""
+"import unicodedata\n"
+"\n"
+"def compare_caseless(s1, s2):\n"
+"    def NFD(s):\n"
+"        return unicodedata.normalize('NFD', s)\n"
+"\n"
+"    return NFD(NFD(s1).casefold()) == NFD(NFD(s2).casefold())\n"
+"\n"
+"# Example usage\n"
+"single_char = 'ê'\n"
+"multiple_chars = '\\N{LATIN CAPITAL LETTER E}\\N{COMBINING CIRCUMFLEX ACCENT}'\n"
+"\n"
+"print(compare_caseless(single_char, multiple_chars))"
+msgstr ""
+"nhập dữ liệu unicode\n"
+"\n"
+"def so sánh_caseless(s1, s2):\n"
+"    def NFD(s):\n"
+"        trả về unicodedata.n normalize('NFD', s)\n"
+"\n"
+"    trả về NFD(NFD(s1).casefold()) == NFD(NFD(s2).casefold())\n"
+"\n"
+"cách sử dụng # Example\n"
+"single_char = 'ê'\n"
+"multiple_chars = '\\N{LATIN CAPITAL LETTER E}\\N{COMBINING CIRCUMFLEX ACCENT}'\n"
+"\n"
+"print(compare_caseless(single_char, multiple_chars))"
+
+#: ../../howto/unicode.rst:479
+#, fuzzy
+msgid ""
+"This will print ``True``.  (Why is :func:`!NFD` invoked twice?  Because "
+"there are a few characters that make :meth:`~str.casefold` return a non-"
+"normalized string, so the result needs to be normalized again. See section "
+"3.13 of the Unicode Standard for a discussion and an example.)"
+msgstr ""
+"Điều này sẽ in ``True``.  (Tại sao :func:`!NFD` được gọi hai lần? Bởi vì có "
+"một vài ký tự khiến :meth:`~str.casefold` trả về một chuỗi không chuẩn hóa, "
+"do đó kết quả cần được chuẩn hóa lại. Xem phần 3.13 của Tiêu chuẩn Unicode "
+"để biết phần thảo luận và ví dụ.)"
+
+#: ../../howto/unicode.rst:486
+#, fuzzy
+msgid "Unicode Regular Expressions"
+msgstr "Biểu thức chính quy Unicode"
+
+#: ../../howto/unicode.rst:488
+#, fuzzy
+msgid ""
+"The regular expressions supported by the :mod:`re` module can be provided "
+"either as bytes or strings.  Some of the special character sequences such as"
+" ``\\d`` and ``\\w`` have different meanings depending on whether the "
+"pattern is supplied as bytes or a string.  For example, ``\\d`` will match "
+"the characters ``[0-9]`` in bytes but in strings will match any character "
+"that's in the ``'Nd'`` category."
+msgstr ""
+"Các biểu thức chính quy được mô-đun :mod:`re` hỗ trợ có thể được cung cấp "
+"dưới dạng byte hoặc chuỗi.  Một số chuỗi ký tự đặc biệt như ``\\d`` và "
+"``\\w`` có ý nghĩa khác nhau tùy thuộc vào việc mẫu được cung cấp dưới dạng "
+"byte hay chuỗi.  Ví dụ: ``\\d`` sẽ khớp với các ký tự ``[0-9]`` theo byte "
+"nhưng trong chuỗi sẽ khớp với bất kỳ ký tự nào trong danh mục ``'Nd'``."
+
+#: ../../howto/unicode.rst:495
+#, fuzzy
+msgid ""
+"The string in this example has the number 57 written in both Thai and Arabic"
+" numerals::"
+msgstr ""
+"Chuỗi trong ví dụ này có số 57 được viết bằng cả chữ số Thái và chữ số Ả "
+"Rập::"
+
+#: ../../howto/unicode.rst:498
+#, fuzzy
+msgid ""
+"import re\n"
+"p = re.compile(r'\\d+')\n"
+"\n"
+"s = \"Over \\u0e55\\u0e57 57 flavours\"\n"
+"m = p.search(s)\n"
+"print(repr(m.group()))"
+msgstr ""
+"nhập lại\n"
+"p = re.compile(r'\\d+')\n"
+"\n"
+"s = \"Hơn \\u0e55\\u0e57 57 hương vị\"\n"
+"m = p.search(s)\n"
+"print(repr(m.group()))"
+
+#: ../../howto/unicode.rst:505
+#, fuzzy
+msgid ""
+"When executed, ``\\d+`` will match the Thai numerals and print them out.  If"
+" you supply the :const:`re.ASCII` flag to :func:`~re.compile`, ``\\d+`` will"
+" match the substring \"57\" instead."
+msgstr ""
+"Khi được thực thi, ``\\d+`` sẽ khớp với các chữ số Thái Lan và in chúng ra."
+"  Nếu bạn cung cấp cờ :const:`re.ASCII` cho :func:`~re.compile` thì thay vào"
+" đó, ``\\d+`` sẽ khớp với chuỗi con \"57\"."
+
+#: ../../howto/unicode.rst:509
+#, fuzzy
+msgid ""
+"Similarly, ``\\w`` matches a wide variety of Unicode characters but only "
+"``[a-zA-Z0-9_]`` in bytes or if :const:`re.ASCII` is supplied, and ``\\s`` "
+"will match either Unicode whitespace characters or ``[ \\t\\n\\r\\f\\v]``."
+msgstr ""
+"Tương tự, ``\\w`` khớp với nhiều loại ký tự Unicode nhưng chỉ "
+"``[a-zA-Z0-9_]`` tính bằng byte hoặc nếu :const:`re.ASCII` được cung cấp và "
+"``\\s`` sẽ khớp với các ký tự khoảng trắng Unicode hoặc ``[ "
+"\\t\\n\\r\\f\\v]``."
+
+#: ../../howto/unicode.rst:520
+#, fuzzy
+msgid "Some good alternative discussions of Python's Unicode support are:"
+msgstr "Một số cuộc thảo luận thay thế hay về hỗ trợ Unicode của Python là:"
+
+#: ../../howto/unicode.rst:522
+#, fuzzy
+msgid ""
+"`Processing Text Files in Python 3 <https://python-"
+"notes.curiousefficiency.org/en/latest/python3/text_file_processing.html>`_, "
+"by Nick Coghlan."
+msgstr ""
+"`Processing Text Files in Python 3 <https://python-"
+"notes.curiousefficiency.org/en/latest/python3/text_file_processing.html>`_, "
+"của Nick Coghlan."
+
+#: ../../howto/unicode.rst:523
+#, fuzzy
+msgid ""
+"`Pragmatic Unicode <https://nedbatchelder.com/text/unipain.html>`_, a PyCon "
+"2012 presentation by Ned Batchelder."
+msgstr ""
+"`Pragmatic Unicode <https://nedbatchelder.com/text/unipain.html>`_, bài "
+"thuyết trình PyCon 2012 của Ned Batchelder."
+
+#: ../../howto/unicode.rst:525
+#, fuzzy
+msgid ""
+"The :class:`str` type is described in the Python library reference at "
+":ref:`textseq`."
+msgstr ""
+"Loại :class:`str` được mô tả trong tài liệu tham khảo thư viện Python tại "
+":ref:`textseq`."
+
+#: ../../howto/unicode.rst:528
+#, fuzzy
+msgid "The documentation for the :mod:`unicodedata` module."
+msgstr "Tài liệu dành cho mô-đun :mod:`unicodedata`."
+
+#: ../../howto/unicode.rst:530
+#, fuzzy
+msgid "The documentation for the :mod:`codecs` module."
+msgstr "Tài liệu dành cho mô-đun :mod:`codecs`."
+
+#: ../../howto/unicode.rst:532
+#, fuzzy
+msgid ""
+"Marc-André Lemburg gave `a presentation titled \"Python and Unicode\" (PDF "
+"slides) <https://downloads.egenix.com/python/Unicode-EPC2002-Talk.pdf>`_ at "
+"EuroPython 2002.  The slides are an excellent overview of the design of "
+"Python 2's Unicode features (where the Unicode string type is called "
+"``unicode`` and literals start with ``u``)."
+msgstr ""
+"Marc-André Lemburg đã trình bày `a presentation titled \"Python and "
+"Unicode\" (PDF slides) <https://downloads.egenix.com/python/Unicode-"
+"EPC2002-Talk.pdf>`_ tại EuroPython 2002. Các slide này là một cái nhìn tổng "
+"quan tuyệt vời về thiết kế các tính năng Unicode của Python 2 (trong đó loại"
+" chuỗi Unicode được gọi là ``unicode`` và các chữ bắt đầu bằng ``u``)."
+
+#: ../../howto/unicode.rst:540
+#, fuzzy
+msgid "Reading and Writing Unicode Data"
+msgstr "Đọc và ghi dữ liệu Unicode"
+
+#: ../../howto/unicode.rst:542
+#, fuzzy
+msgid ""
+"Once you've written some code that works with Unicode data, the next problem"
+" is input/output.  How do you get Unicode strings into your program, and how"
+" do you convert Unicode into a form suitable for storage or transmission?"
+msgstr ""
+"Khi bạn đã viết xong một số mã hoạt động với dữ liệu Unicode, vấn đề tiếp "
+"theo là đầu vào/đầu ra.  Làm cách nào để đưa chuỗi Unicode vào chương trình "
+"của bạn và làm cách nào để chuyển đổi Unicode thành dạng phù hợp để lưu trữ "
+"hoặc truyền tải?"
+
+#: ../../howto/unicode.rst:546
+#, fuzzy
+msgid ""
+"It's possible that you may not need to do anything depending on your input "
+"sources and output destinations; you should check whether the libraries used"
+" in your application support Unicode natively.  XML parsers often return "
+"Unicode data, for example.  Many relational databases also support Unicode-"
+"valued columns and can return Unicode values from an SQL query."
+msgstr ""
+"Có thể bạn không cần phải làm gì tùy thuộc vào nguồn đầu vào và đích đầu ra "
+"của mình; bạn nên kiểm tra xem các thư viện được sử dụng trong ứng dụng của "
+"bạn có hỗ trợ Unicode nguyên bản hay không.  Ví dụ: trình phân tích cú pháp "
+"XML thường trả về dữ liệu Unicode.  Nhiều cơ sở dữ liệu quan hệ cũng hỗ trợ "
+"các cột có giá trị Unicode và có thể trả về giá trị Unicode từ truy vấn SQL."
+
+#: ../../howto/unicode.rst:552
+#, fuzzy
+msgid ""
+"Unicode data is usually converted to a particular encoding before it gets "
+"written to disk or sent over a socket.  It's possible to do all the work "
+"yourself: open a file, read an 8-bit bytes object from it, and convert the "
+"bytes with ``bytes.decode(encoding)``.  However, the manual approach is not "
+"recommended."
+msgstr ""
+"Dữ liệu Unicode thường được chuyển đổi sang một mã hóa cụ thể trước khi nó "
+"được ghi vào đĩa hoặc gửi qua ổ cắm.  Bạn có thể tự mình thực hiện tất cả "
+"công việc: mở một tệp, đọc đối tượng byte 8 bit từ tệp đó và chuyển đổi các "
+"byte bằng ``bytes.decode(encoding)``.  Tuy nhiên, cách tiếp cận thủ công "
+"không được khuyến khích."
+
+#: ../../howto/unicode.rst:557
+#, fuzzy
+msgid ""
+"One problem is the multi-byte nature of encodings; one Unicode character can"
+" be represented by several bytes.  If you want to read the file in "
+"arbitrary-sized chunks (say, 1024 or 4096 bytes), you need to write error-"
+"handling code to catch the case where only part of the bytes encoding a "
+"single Unicode character are read at the end of a chunk.  One solution would"
+" be to read the entire file into memory and then perform the decoding, but "
+"that prevents you from working with files that are extremely large; if you "
+"need to read a 2 GiB file, you need 2 GiB of RAM. (More, really, since for "
+"at least a moment you'd need to have both the encoded string and its Unicode"
+" version in memory.)"
+msgstr ""
+"Một vấn đề là bản chất nhiều byte của mã hóa; một ký tự Unicode có thể được "
+"biểu diễn bằng nhiều byte.  Nếu bạn muốn đọc tệp theo từng đoạn có kích "
+"thước tùy ý (ví dụ: 1024 hoặc 4096 byte), bạn cần viết mã xử lý lỗi để phát "
+"hiện trường hợp chỉ một phần byte mã hóa một ký tự Unicode duy nhất được đọc"
+" ở cuối đoạn.  Một giải pháp là đọc toàn bộ tệp vào bộ nhớ rồi thực hiện "
+"giải mã, nhưng điều đó khiến bạn không thể làm việc với các tệp cực lớn; nếu"
+" bạn cần đọc tệp 2 GiB, bạn cần 2 GiB RAM. (Thực sự hơn thế, vì trong ít "
+"nhất một lúc, bạn cần có cả chuỗi được mã hóa và phiên bản Unicode của nó "
+"trong bộ nhớ.)"
+
+#: ../../howto/unicode.rst:567
+#, fuzzy
+msgid ""
+"The solution would be to use the low-level decoding interface to catch the "
+"case of partial coding sequences.  The work of implementing this has already"
+" been done for you: the built-in :func:`open` function can return a file-"
+"like object that assumes the file's contents are in a specified encoding and"
+" accepts Unicode parameters for methods such as :meth:`~io.TextIOBase.read` "
+"and :meth:`~io.TextIOBase.write`.  This works through :func:`open`\\'s "
+"*encoding* and *errors* parameters which are interpreted just like those in "
+":meth:`str.encode` and :meth:`bytes.decode`."
+msgstr ""
+"Giải pháp là sử dụng giao diện giải mã mức thấp để xử lý trường hợp chuỗi mã"
+" hóa một phần.  Công việc triển khai điều này đã được thực hiện cho bạn: hàm"
+" :func:`open` tích hợp có thể trả về một đối tượng giống như tệp giả sử nội "
+"dung của tệp ở dạng mã hóa được chỉ định và chấp nhận các tham số Unicode "
+"cho các phương thức như :meth:`~io.TextIOBase.read` và "
+":meth:`~io.TextIOBase.write`.  Điều này hoạt động thông qua các tham số "
+"*encoding* và *errors* của :func:`open` được diễn giải giống như các tham số"
+" trong :meth:`str.encode` và :meth:`bytes.decode`."
+
+#: ../../howto/unicode.rst:576
+#, fuzzy
+msgid "Reading Unicode from a file is therefore simple::"
+msgstr "Do đó, việc đọc Unicode từ một tệp rất đơn giản ::"
+
+#: ../../howto/unicode.rst:578
+#, fuzzy
+msgid ""
+"with open('unicode.txt', encoding='utf-8') as f:\n"
+"    for line in f:\n"
+"        print(repr(line))"
+msgstr ""
+"với open('unicode.txt',coding='utf-8') là f:\n"
+"    cho dòng trong f:\n"
+"        in(repr(dòng))"
+
+#: ../../howto/unicode.rst:582
+#, fuzzy
+msgid ""
+"It's also possible to open files in update mode, allowing both reading and "
+"writing::"
+msgstr "Cũng có thể mở tệp ở chế độ cập nhật, cho phép cả đọc và ghi ::"
+
+#: ../../howto/unicode.rst:585
+#, fuzzy
+msgid ""
+"with open('test', encoding='utf-8', mode='w+') as f:\n"
+"    f.write('\\u4500 blah blah blah\\n')\n"
+"    f.seek(0)\n"
+"    print(repr(f.readline()[:1]))"
+msgstr ""
+"với open('test',coding='utf-8', mode='w+') là f:\n"
+"    f.write('\\u4500 blah blah blah\\n')\n"
+"    f.seek(0)\n"
+"    print(repr(f.readline()[:1]))"
+
+#: ../../howto/unicode.rst:590
+#, fuzzy
+msgid ""
+"The Unicode character ``U+FEFF`` is used as a byte-order mark (BOM), and is "
+"often written as the first character of a file in order to assist with "
+"autodetection of the file's byte ordering.  Some encodings, such as UTF-16, "
+"expect a BOM to be present at the start of a file; when such an encoding is "
+"used, the BOM will be automatically written as the first character and will "
+"be silently dropped when the file is read.  There are variants of these "
+"encodings, such as 'utf-16-le' and 'utf-16-be' for little-endian and big-"
+"endian encodings, that specify one particular byte ordering and don't skip "
+"the BOM."
+msgstr ""
+"Ký tự Unicode ``U+FEFF`` được sử dụng làm dấu thứ tự byte (BOM) và thường "
+"được viết dưới dạng ký tự đầu tiên của tệp để hỗ trợ tự động phát hiện thứ "
+"tự byte của tệp.  Một số mã hóa, chẳng hạn như UTF-16, yêu cầu BOM xuất hiện"
+" ở đầu tệp; khi sử dụng mã hóa như vậy, BOM sẽ tự động được ghi dưới dạng ký"
+" tự đầu tiên và sẽ bị xóa âm thầm khi tệp được đọc.  Có các biến thể của các"
+" mã hóa này, chẳng hạn như 'utf-16-le' và 'utf-16-be' dành cho các mã hóa "
+"endian nhỏ và endian lớn, chỉ định một thứ tự byte cụ thể và không bỏ qua "
+"BOM."
+
+#: ../../howto/unicode.rst:599
+#, fuzzy
+msgid ""
+"In some areas, it is also convention to use a \"BOM\" at the start of UTF-8 "
+"encoded files; the name is misleading since UTF-8 is not byte-order "
+"dependent. The mark simply announces that the file is encoded in UTF-8.  For"
+" reading such files, use the 'utf-8-sig' codec to automatically skip the "
+"mark if present."
+msgstr ""
+"Ở một số khu vực, người ta cũng có quy ước sử dụng \"BOM\" khi bắt đầu các "
+"tệp được mã hóa UTF-8; tên này gây hiểu nhầm vì UTF-8 không phụ thuộc vào "
+"thứ tự byte. Dấu này chỉ thông báo rằng tệp được mã hóa bằng UTF-8.  Để đọc "
+"những tệp như vậy, hãy sử dụng codec 'utf-8-sig' để tự động bỏ qua dấu nếu "
+"có."
+
+#: ../../howto/unicode.rst:606
+#, fuzzy
+msgid "Unicode filenames"
+msgstr "Tên tệp Unicode"
+
+#: ../../howto/unicode.rst:608
+#, fuzzy
+msgid ""
+"Most of the operating systems in common use today support filenames that "
+"contain arbitrary Unicode characters.  Usually this is implemented by "
+"converting the Unicode string into some encoding that varies depending on "
+"the system.  Today Python is converging on using UTF-8: Python on MacOS has "
+"used UTF-8 for several versions, and Python 3.6 switched to using UTF-8 on "
+"Windows as well.  On Unix systems, there will only be a :term:`filesystem "
+"encoding <filesystem encoding and error handler>`. if you've set the "
+"``LANG`` or ``LC_CTYPE`` environment variables; if you haven't, the default "
+"encoding is again UTF-8."
+msgstr ""
+"Hầu hết các hệ điều hành được sử dụng phổ biến hiện nay đều hỗ trợ tên tệp "
+"chứa các ký tự Unicode tùy ý.  Thông thường, điều này được thực hiện bằng "
+"cách chuyển đổi chuỗi Unicode thành một số mã hóa khác nhau tùy thuộc vào hệ"
+" thống.  Ngày nay Python đang chuyển sang sử dụng UTF-8: Python trên MacOS "
+"đã sử dụng UTF-8 cho một số phiên bản và Python 3.6 cũng đã chuyển sang sử "
+"dụng UTF-8 trên Windows.  Trên hệ thống Unix sẽ chỉ có :term:`filesystem "
+"encoding <filesystem encoding and error handler>`. nếu bạn đã đặt các biến "
+"môi trường ``LANG`` hoặc ``LC_CTYPE``; nếu chưa, mã hóa mặc định lại là "
+"UTF-8."
+
+#: ../../howto/unicode.rst:618
+#, fuzzy
+msgid ""
+"The :func:`sys.getfilesystemencoding` function returns the encoding to use "
+"on your current system, in case you want to do the encoding manually, but "
+"there's not much reason to bother.  When opening a file for reading or "
+"writing, you can usually just provide the Unicode string as the filename, "
+"and it will be automatically converted to the right encoding for you::"
+msgstr ""
+"Hàm :func:`sys.getfilesystemencoding` trả về mã hóa để sử dụng trên hệ thống"
+" hiện tại của bạn, trong trường hợp bạn muốn thực hiện mã hóa theo cách thủ "
+"công nhưng không có nhiều lý do để bận tâm.  Khi mở tệp để đọc hoặc ghi, "
+"thông thường bạn chỉ cần cung cấp chuỗi Unicode làm tên tệp và nó sẽ tự động"
+" được chuyển đổi sang mã hóa phù hợp cho bạn::"
+
+#: ../../howto/unicode.rst:624
+#, fuzzy
+msgid ""
+"filename = 'filename\\u4500abc'\n"
+"with open(filename, 'w') as f:\n"
+"    f.write('blah\\n')"
+msgstr ""
+"tên tệp = 'tên tệp\\u4500abc'\n"
+"với open(filename, 'w') là f:\n"
+"    f.write('blah\\n')"
+
+#: ../../howto/unicode.rst:628
+#, fuzzy
+msgid ""
+"Functions in the :mod:`os` module such as :func:`os.stat` will also accept "
+"Unicode filenames."
+msgstr ""
+"Các chức năng trong mô-đun :mod:`os` như :func:`os.stat` cũng sẽ chấp nhận "
+"tên tệp Unicode."
+
+#: ../../howto/unicode.rst:631
+#, fuzzy
+msgid ""
+"The :func:`os.listdir` function returns filenames, which raises an issue: "
+"should it return the Unicode version of filenames, or should it return bytes"
+" containing the encoded versions?  :func:`os.listdir` can do both, depending"
+" on whether you provided the directory path as bytes or a Unicode string.  "
+"If you pass a Unicode string as the path, filenames will be decoded using "
+"the filesystem's encoding and a list of Unicode strings will be returned, "
+"while passing a byte path will return the filenames as bytes.  For example, "
+"assuming the default :term:`filesystem encoding <filesystem encoding and "
+"error handler>` is UTF-8, running the following program::"
+msgstr ""
+"Hàm :func:`os.listdir` trả về tên tệp, điều này đặt ra một vấn đề: hàm này "
+"có nên trả về phiên bản Unicode của tên tệp hay trả về byte chứa phiên bản "
+"được mã hóa?  :func:`os.listdir` có thể thực hiện cả hai, tùy thuộc vào việc"
+" bạn cung cấp đường dẫn thư mục dưới dạng byte hay chuỗi Unicode.  Nếu bạn "
+"truyền một chuỗi Unicode làm đường dẫn, tên tệp sẽ được giải mã bằng cách sử"
+" dụng mã hóa của hệ thống tệp và một danh sách các chuỗi Unicode sẽ được trả"
+" về, trong khi truyền một đường dẫn byte sẽ trả về tên tệp dưới dạng byte.  "
+"Ví dụ: giả sử :term:`filesystem encoding <filesystem encoding and error "
+"handler>` mặc định là UTF-8, chạy chương trình sau::"
+
+#: ../../howto/unicode.rst:641
+#, fuzzy
+msgid ""
+"fn = 'filename\\u4500abc'\n"
+"f = open(fn, 'w')\n"
+"f.close()\n"
+"\n"
+"import os\n"
+"print(os.listdir(b'.'))\n"
+"print(os.listdir('.'))"
+msgstr ""
+"fn = 'tên tệp\\u4500abc'\n"
+"f = mở(fn, 'w')\n"
+"f.close()\n"
+"\n"
+"hệ điều hành nhập khẩu\n"
+"print(os.listdir(b'.'))\n"
+"print(os.listdir('.'))"
+
+#: ../../howto/unicode.rst:649
+#, fuzzy
+msgid "will produce the following output:"
+msgstr "sẽ tạo ra đầu ra sau:"
+
+#: ../../howto/unicode.rst:651
+#, fuzzy
+msgid ""
+"$ python listdir-test.py\n"
+"[b'filename\\xe4\\x94\\x80abc', ...]\n"
+"['filename\\u4500abc', ...]"
+msgstr ""
+"$ python listdir-test.py\n"
+"[b'tên tệp\\xe4\\x94\\x80abc', ...]\n"
+"['tên tệp\\u4500abc', ...]"
+
+#: ../../howto/unicode.rst:657
+#, fuzzy
+msgid ""
+"The first list contains UTF-8-encoded filenames, and the second list "
+"contains the Unicode versions."
+msgstr ""
+"Danh sách đầu tiên chứa tên tệp được mã hóa UTF-8 và danh sách thứ hai chứa "
+"các phiên bản Unicode."
+
+#: ../../howto/unicode.rst:660
+#, fuzzy
+msgid ""
+"Note that on most occasions, you should can just stick with using Unicode "
+"with these APIs.  The bytes APIs should only be used on systems where "
+"undecodable file names can be present; that's pretty much only Unix systems "
+"now."
+msgstr ""
+"Lưu ý rằng trong hầu hết các trường hợp, bạn chỉ nên tiếp tục sử dụng "
+"Unicode với các API này.  API byte chỉ nên được sử dụng trên các hệ thống có"
+" thể có tên tệp không thể giải mã được; bây giờ hầu như chỉ có các hệ thống "
+"Unix."
+
+#: ../../howto/unicode.rst:667
+#, fuzzy
+msgid "Tips for Writing Unicode-aware Programs"
+msgstr "Mẹo viết chương trình nhận biết Unicode"
+
+#: ../../howto/unicode.rst:669
+#, fuzzy
+msgid ""
+"This section provides some suggestions on writing software that deals with "
+"Unicode."
+msgstr "Phần này đưa ra một số gợi ý về cách viết phần mềm xử lý Unicode."
+
+#: ../../howto/unicode.rst:672
+#, fuzzy
+msgid "The most important tip is:"
+msgstr "Mẹo quan trọng nhất là:"
+
+#: ../../howto/unicode.rst:674
+#, fuzzy
+msgid ""
+"Software should only work with Unicode strings internally, decoding the "
+"input data as soon as possible and encoding the output only at the end."
+msgstr ""
+"Phần mềm chỉ nên hoạt động với các chuỗi Unicode bên trong, giải mã dữ liệu "
+"đầu vào càng sớm càng tốt và chỉ mã hóa đầu ra ở cuối."
+
+#: ../../howto/unicode.rst:677
+#, fuzzy
+msgid ""
+"If you attempt to write processing functions that accept both Unicode and "
+"byte strings, you will find your program vulnerable to bugs wherever you "
+"combine the two different kinds of strings.  There is no automatic encoding "
+"or decoding: if you do e.g. ``str + bytes``, a :exc:`TypeError` will be "
+"raised."
+msgstr ""
+"Nếu bạn cố gắng viết các hàm xử lý chấp nhận cả chuỗi Unicode và chuỗi byte,"
+" bạn sẽ thấy chương trình của mình dễ bị lỗi khi bạn kết hợp hai loại chuỗi "
+"khác nhau.  Không có mã hóa hoặc giải mã tự động: nếu bạn thực hiện, ví dụ: "
+"``str + bytes``, :exc:`TypeError` sẽ được nâng lên."
+
+#: ../../howto/unicode.rst:682
+#, fuzzy
+msgid ""
+"When using data coming from a web browser or some other untrusted source, a "
+"common technique is to check for illegal characters in a string before using"
+" the string in a generated command line or storing it in a database.  If "
+"you're doing this, be careful to check the decoded string, not the encoded "
+"bytes data; some encodings may have interesting properties, such as not "
+"being bijective or not being fully ASCII-compatible.  This is especially "
+"true if the input data also specifies the encoding, since the attacker can "
+"then choose a clever way to hide malicious text in the encoded bytestream."
+msgstr ""
+"Khi sử dụng dữ liệu đến từ trình duyệt web hoặc một số nguồn không đáng tin "
+"cậy khác, một kỹ thuật phổ biến là kiểm tra các ký tự không hợp lệ trong "
+"chuỗi trước khi sử dụng chuỗi đó trong dòng lệnh được tạo hoặc lưu trữ chuỗi"
+" đó vào cơ sở dữ liệu.  Nếu bạn đang thực hiện việc này, hãy cẩn thận kiểm "
+"tra chuỗi đã giải mã chứ không phải dữ liệu byte được mã hóa; một số mã hóa "
+"có thể có các thuộc tính thú vị, chẳng hạn như không có tính phỏng đoán hoặc"
+" không tương thích hoàn toàn với ASCII.  Điều này đặc biệt đúng nếu dữ liệu "
+"đầu vào cũng chỉ định mã hóa, vì khi đó kẻ tấn công có thể chọn một cách "
+"thông minh để ẩn văn bản độc hại trong dòng byte được mã hóa."
+
+#: ../../howto/unicode.rst:693
+#, fuzzy
+msgid "Converting Between File Encodings"
+msgstr "Chuyển đổi giữa các mã hóa tệp"
+
+#: ../../howto/unicode.rst:695
+#, fuzzy
+msgid ""
+"The :class:`~codecs.StreamRecoder` class can transparently convert between "
+"encodings, taking a stream that returns data in encoding #1 and behaving "
+"like a stream returning data in encoding #2."
+msgstr ""
+"Lớp :class:`~codecs.StreamRecoder` có thể chuyển đổi một cách trong suốt "
+"giữa các mã hóa, lấy luồng trả về dữ liệu ở dạng mã hóa #1 và hoạt động "
+"giống như một luồng trả về dữ liệu ở dạng mã hóa #2."
+
+#: ../../howto/unicode.rst:699
+#, fuzzy
+msgid ""
+"For example, if you have an input file *f* that's in Latin-1, you can wrap "
+"it with a :class:`~codecs.StreamRecoder` to return bytes encoded in UTF-8::"
+msgstr ""
+"Ví dụ: nếu bạn có tệp đầu vào *f* bằng tiếng Latin-1, bạn có thể gói nó bằng"
+" :class:`~codecs.StreamRecoder` để trả về các byte được mã hóa trong UTF-8::"
+
+#: ../../howto/unicode.rst:703
+#, fuzzy
+msgid ""
+"new_f = codecs.StreamRecoder(f,\n"
+"    # en/decoder: used by read() to encode its results and\n"
+"    # by write() to decode its input.\n"
+"    codecs.getencoder('utf-8'), codecs.getdecoder('utf-8'),\n"
+"\n"
+"    # reader/writer: used to read and write to the stream.\n"
+"    codecs.getreader('latin-1'), codecs.getwriter('latin-1') )"
+msgstr ""
+"new_f = codecs.StreamRecoding(f,\n"
+"    # en/decode: được sử dụng bởi read() để mã hóa kết quả của nó và\n"
+"    # by write() để giải mã đầu vào của nó.\n"
+"    codecs.getencode('utf-8'), codecs.getdecode('utf-8'),\n"
+"\n"
+"    # reader/writer: dùng để đọc và ghi vào luồng.\n"
+"    codecs.getreader('latin-1'), codecs.getwriter('latin-1') )"
+
+#: ../../howto/unicode.rst:713
+#, fuzzy
+msgid "Files in an Unknown Encoding"
+msgstr "Các tệp có Mã hóa không xác định"
+
+#: ../../howto/unicode.rst:715
+#, fuzzy
+msgid ""
+"What can you do if you need to make a change to a file, but don't know the "
+"file's encoding?  If you know the encoding is ASCII-compatible and only want"
+" to examine or modify the ASCII parts, you can open the file with the "
+"``surrogateescape`` error handler::"
+msgstr ""
+"Bạn có thể làm gì nếu cần thay đổi một tệp nhưng không biết mã hóa của tệp?"
+"  Nếu bạn biết mã hóa tương thích với ASCII và chỉ muốn kiểm tra hoặc sửa "
+"đổi các phần ASCII, bạn có thể mở tệp bằng trình xử lý lỗi "
+"``surrogateescape``::"
+
+#: ../../howto/unicode.rst:720
+#, fuzzy
+msgid ""
+"with open(fname, 'r', encoding=\"ascii\", errors=\"surrogateescape\") as f:\n"
+"    data = f.read()\n"
+"\n"
+"# make changes to the string 'data'\n"
+"\n"
+"with open(fname + '.new', 'w',\n"
+"          encoding=\"ascii\", errors=\"surrogateescape\") as f:\n"
+"    f.write(data)"
+msgstr ""
+"với open(fname, 'r',coding=\"ascii\",error=\"surrogateescape\") là f:\n"
+"    dữ liệu = f.read()\n"
+"\n"
+"# make thay đổi chuỗi 'data'\n"
+"\n"
+"với open(fname + '.new', 'w',\n"
+"          mã hóa=\"ascii\", lỗi = \"surrogateescape\") dưới dạng f:\n"
+"    f.write(dữ liệu)"
+
+#: ../../howto/unicode.rst:729
+#, fuzzy
+msgid ""
+"The ``surrogateescape`` error handler will decode any non-ASCII bytes as "
+"code points in a special range running from U+DC80 to U+DCFF.  These code "
+"points will then turn back into the same bytes when the ``surrogateescape`` "
+"error handler is used to encode the data and write it back out."
+msgstr ""
+"Trình xử lý lỗi ``surrogateescape`` sẽ giải mã mọi byte không phải ASCII "
+"dưới dạng điểm mã trong một phạm vi đặc biệt chạy từ U+DC80 đến U+DCFF.  Sau"
+" đó, các điểm mã này sẽ chuyển trở lại thành các byte giống nhau khi trình "
+"xử lý lỗi ``surrogateescape`` được sử dụng để mã hóa dữ liệu và ghi lại dữ "
+"liệu."
+
+#: ../../howto/unicode.rst:739
+#, fuzzy
+msgid ""
+"One section of `Mastering Python 3 Input/Output "
+"<https://pyvideo.org/video/289/pycon-2010--mastering-python-3-i-o>`_, a "
+"PyCon 2010 talk by David Beazley, discusses text processing and binary data "
+"handling."
+msgstr ""
+"Một phần của `Mastering Python 3 Input/Output "
+"<https://pyvideo.org/video/289/pycon-2010--mastering-python-3-i-o>`_, bài "
+"nói chuyện PyCon 2010 của David Beazley, thảo luận về xử lý văn bản và xử lý"
+" dữ liệu nhị phân."
+
+#: ../../howto/unicode.rst:743
+#, fuzzy
+msgid ""
+"The `PDF slides for Marc-André Lemburg's presentation \"Writing Unicode-"
+"aware Applications in Python\" "
+"<https://downloads.egenix.com/python/LSM2005-Developing-Unicode-aware-"
+"applications-in-Python.pdf>`_ discuss questions of character encodings as "
+"well as how to internationalize and localize an application.  These slides "
+"cover Python 2.x only."
+msgstr ""
+"Zz000zz thảo luận các câu hỏi về mã hóa ký tự cũng như cách quốc tế hóa và "
+"bản địa hóa một ứng dụng.  Những trang trình bày này chỉ đề cập đến Python "
+"2.x."
+
+#: ../../howto/unicode.rst:749
+#, fuzzy
+msgid ""
+"`The Guts of Unicode in Python <https://pyvideo.org/video/1768/the-guts-of-"
+"unicode-in-python>`_ is a PyCon 2013 talk by Benjamin Peterson that "
+"discusses the internal Unicode representation in Python 3.3."
+msgstr ""
+"`The Guts of Unicode in Python <https://pyvideo.org/video/1768/the-guts-of-"
+"unicode-in-python>`_ là bài nói chuyện PyCon 2013 của Benjamin Peterson thảo"
+" luận về cách biểu diễn Unicode nội bộ trong Python 3.3."
+
+#: ../../howto/unicode.rst:756
+#, fuzzy
+msgid "Acknowledgements"
+msgstr "Lời cảm ơn"
+
+#: ../../howto/unicode.rst:758
+#, fuzzy
+msgid ""
+"The initial draft of this document was written by Andrew Kuchling. It has "
+"since been revised further by Alexander Belopolsky, Georg Brandl, Andrew "
+"Kuchling, and Ezio Melotti."
+msgstr ""
+"Bản thảo đầu tiên của tài liệu này được viết bởi Andrew Kuchling. Kể từ đó, "
+"nó đã được sửa đổi thêm bởi Alexander Belopolsky, Georg Brandl, Andrew "
+"Kuchling và Ezio Melotti."
+
+#: ../../howto/unicode.rst:762
+#, fuzzy
+msgid ""
+"Thanks to the following people who have noted errors or offered suggestions "
+"on this article: Éric Araujo, Nicholas Bastin, Nick Coghlan, Marius "
+"Gedminas, Kent Johnson, Ken Krugler, Marc-André Lemburg, Martin von Löwis, "
+"Terry J. Reedy, Serhiy Storchaka, Eryk Sun, Chad Whitacre, Graham Wideman."
+msgstr ""
+"Xin cảm ơn những người sau đã phát hiện lỗi hoặc đưa ra đề xuất cho bài viết"
+" này: Éric Araujo, Nicholas Bastin, Nick Coghlan, Marius Gedminas, Kent "
+"Johnson, Ken Krugler, Marc-André Lemburg, Martin von Löwis, Terry J. Reedy, "
+"Serhiy Storchaka, Eryk Sun, Chad Whitacre, Graham Wideman."

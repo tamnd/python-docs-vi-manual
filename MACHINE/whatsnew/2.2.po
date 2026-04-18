@@ -1,0 +1,3031 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../whatsnew/2.2.rst:3
+#, fuzzy
+msgid "What's New in Python 2.2"
+msgstr "Có gì mới trong Python 2.2"
+
+#: ../../whatsnew/2.2.rst
+#, fuzzy
+msgid "Author"
+msgstr "tác giả"
+
+#: ../../whatsnew/2.2.rst:5
+#, fuzzy
+msgid "A.M. Kuchling"
+msgstr "A.M. Kuchling"
+
+#: ../../whatsnew/2.2.rst:13
+#, fuzzy
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../whatsnew/2.2.rst:15
+#, fuzzy
+msgid ""
+"This article explains the new features in Python 2.2.2, released on October "
+"14, 2002.  Python 2.2.2 is a bugfix release of Python 2.2, originally "
+"released on December 21, 2001."
+msgstr ""
+"Bài viết này giải thích các tính năng mới trong Python 2.2.2, được phát hành"
+" vào ngày 14 tháng 10 năm 2002. Python 2.2.2 là bản phát hành sửa lỗi của "
+"Python 2.2, được phát hành lần đầu vào ngày 21 tháng 12 năm 2001."
+
+#: ../../whatsnew/2.2.rst:19
+#, fuzzy
+msgid ""
+"Python 2.2 can be thought of as the \"cleanup release\".  There are some "
+"features such as generators and iterators that are completely new, but most "
+"of the changes, significant and far-reaching though they may be, are aimed "
+"at cleaning up irregularities and dark corners of the language design."
+msgstr ""
+"Python 2.2 có thể được coi là \"bản phát hành dọn dẹp\".  Có một số tính "
+"năng như trình tạo và trình vòng lặp hoàn toàn mới, nhưng hầu hết các thay "
+"đổi, dù có ý nghĩa và sâu rộng, đều nhằm mục đích làm sạch những bất thường "
+"và góc tối của thiết kế ngôn ngữ."
+
+#: ../../whatsnew/2.2.rst:24
+#, fuzzy
+msgid ""
+"This article doesn't attempt to provide a complete specification of the new "
+"features, but instead provides a convenient overview.  For full details, you"
+" should refer to the documentation for Python 2.2, such as the `Python "
+"Library Reference <https://docs.python.org/2.2/lib/lib.html>`_ and the "
+"`Python Reference Manual <https://docs.python.org/2.2/ref/ref.html>`_.  If "
+"you want to understand the complete implementation and design rationale for "
+"a change, refer to the PEP for a particular new feature."
+msgstr ""
+"Bài viết này không cố gắng cung cấp thông số kỹ thuật đầy đủ về các tính "
+"năng mới mà thay vào đó cung cấp một cái nhìn tổng quan thuận tiện.  Để biết"
+" chi tiết đầy đủ, bạn nên tham khảo tài liệu dành cho Python 2.2, chẳng hạn "
+"như `Python Library Reference <https://docs.python.org/2.2/lib/lib.html>`_ "
+"và `Python Reference Manual <https://docs.python.org/2.2/ref/ref.html>`_.  "
+"Nếu bạn muốn hiểu lý do thiết kế và triển khai đầy đủ cho một thay đổi, hãy "
+"tham khảo PEP để biết một tính năng mới cụ thể."
+
+#: ../../whatsnew/2.2.rst:43
+#, fuzzy
+msgid "PEPs 252 and 253: Type and Class Changes"
+msgstr "PEP 252 và 253: Thay đổi loại và lớp"
+
+#: ../../whatsnew/2.2.rst:45
+#, fuzzy
+msgid ""
+"The largest and most far-reaching changes in Python 2.2 are to Python's "
+"model of objects and classes.  The changes should be backward compatible, so"
+" it's likely that your code will continue to run unchanged, but the changes "
+"provide some amazing new capabilities. Before beginning this, the longest "
+"and most complicated section of this article, I'll provide an overview of "
+"the changes and offer some comments."
+msgstr ""
+"Những thay đổi lớn nhất và sâu rộng nhất trong Python 2.2 là đối với mô hình"
+" đối tượng và lớp của Python.  Những thay đổi này phải tương thích ngược, do"
+" đó, có thể mã của bạn sẽ tiếp tục chạy không thay đổi nhưng những thay đổi "
+"này cung cấp một số khả năng mới đáng kinh ngạc. Trước khi bắt đầu phần này,"
+" phần dài nhất và phức tạp nhất của bài viết này, tôi sẽ cung cấp cái nhìn "
+"tổng quan về những thay đổi và đưa ra một số nhận xét."
+
+#: ../../whatsnew/2.2.rst:52
+#, fuzzy
+msgid ""
+"A long time ago I wrote a web page listing flaws in Python's design.  One of"
+" the most significant flaws was that it's impossible to subclass Python "
+"types implemented in C.  In particular, it's not possible to subclass built-"
+"in types, so you can't just subclass, say, lists in order to add a single "
+"useful method to them. The :mod:`!UserList` module provides a class that "
+"supports all of the methods of lists and that can be subclassed further, but"
+" there's lots of C code that expects a regular Python list and won't accept "
+"a :class:`~collections.UserList` instance."
+msgstr ""
+"Cách đây rất lâu tôi đã viết một trang web liệt kê các lỗi trong thiết kế "
+"của Python.  Một trong những sai sót quan trọng nhất là không thể phân lớp "
+"các kiểu Python được triển khai trong C. Đặc biệt, không thể phân lớp các "
+"kiểu dựng sẵn, vì vậy bạn không thể chỉ phân lớp các danh sách để thêm một "
+"phương thức hữu ích duy nhất cho chúng. Mô-đun :mod:`!UserList` cung cấp một"
+" lớp hỗ trợ tất cả các phương thức của danh sách và có thể được phân lớp "
+"thêm, nhưng có rất nhiều mã C yêu cầu danh sách Python thông thường và sẽ "
+"không chấp nhận phiên bản :class:`~collections.UserList`."
+
+#: ../../whatsnew/2.2.rst:61
+#, fuzzy
+msgid ""
+"Python 2.2 fixes this, and in the process adds some exciting new "
+"capabilities. A brief summary:"
+msgstr ""
+"Python 2.2 sửa lỗi này và trong quá trình này bổ sung thêm một số khả năng "
+"mới thú vị. Một bản tóm tắt ngắn gọn:"
+
+#: ../../whatsnew/2.2.rst:64
+#, fuzzy
+msgid ""
+"You can subclass built-in types such as lists and even integers, and your "
+"subclasses should work in every place that requires the original type."
+msgstr ""
+"Bạn có thể phân lớp các loại có sẵn như danh sách và thậm chí cả số nguyên, "
+"đồng thời các lớp con của bạn sẽ hoạt động ở mọi nơi yêu cầu loại gốc."
+
+#: ../../whatsnew/2.2.rst:67
+#, fuzzy
+msgid ""
+"It's now possible to define static and class methods, in addition to the "
+"instance methods available in previous versions of Python."
+msgstr ""
+"Giờ đây, bạn có thể định nghĩa các phương thức tĩnh và lớp, ngoài các phương"
+" thức phiên bản có sẵn trong các phiên bản Python trước đó."
+
+#: ../../whatsnew/2.2.rst:70
+#, fuzzy
+msgid ""
+"It's also possible to automatically call methods on accessing or setting an "
+"instance attribute by using a new mechanism called :dfn:`properties`.  Many "
+"uses of :meth:`~object.__getattr__` can be rewritten to use properties "
+"instead, making the resulting code simpler and faster.  As a small side "
+"benefit, attributes can now have docstrings, too."
+msgstr ""
+"Cũng có thể tự động gọi các phương thức truy cập hoặc thiết lập một thuộc "
+"tính phiên bản bằng cách sử dụng cơ chế mới có tên :dfn:`properties`.  Thay "
+"vào đó, nhiều cách sử dụng :meth:`~object.__getattr__` có thể được viết lại "
+"để sử dụng các thuộc tính, làm cho mã kết quả trở nên đơn giản và nhanh hơn."
+"  Là một lợi ích phụ nhỏ, giờ đây các thuộc tính cũng có thể có chuỗi tài "
+"liệu."
+
+#: ../../whatsnew/2.2.rst:76
+#, fuzzy
+msgid ""
+"The list of legal attributes for an instance can be limited to a particular "
+"set using :dfn:`slots`, making it possible to safeguard against typos and "
+"perhaps make more optimizations possible in future versions of Python."
+msgstr ""
+"Danh sách các thuộc tính pháp lý cho một phiên bản có thể được giới hạn ở "
+"một tập hợp cụ thể bằng cách sử dụng :dfn:`slots`, giúp bảo vệ khỏi lỗi "
+"chính tả và có thể thực hiện nhiều tối ưu hóa hơn trong các phiên bản Python"
+" trong tương lai."
+
+#: ../../whatsnew/2.2.rst:80
+#, fuzzy
+msgid ""
+"Some users have voiced concern about all these changes.  Sure, they say, the"
+" new features are neat and lend themselves to all sorts of tricks that "
+"weren't possible in previous versions of Python, but they also make the "
+"language more complicated.  Some people have said that they've always "
+"recommended Python for its simplicity, and feel that its simplicity is being"
+" lost."
+msgstr ""
+"Một số người dùng đã bày tỏ lo ngại về tất cả những thay đổi này.  Họ nói, "
+"chắc chắn, các tính năng mới rất gọn gàng và có đủ loại thủ thuật không thể "
+"có trong các phiên bản Python trước đó, nhưng chúng cũng làm cho ngôn ngữ "
+"trở nên phức tạp hơn.  Một số người đã nói rằng họ luôn khuyên dùng Python "
+"vì tính đơn giản của nó và cảm thấy rằng tính đơn giản của nó đang bị mất "
+"đi."
+
+#: ../../whatsnew/2.2.rst:86
+#, fuzzy
+msgid ""
+"Personally, I think there's no need to worry.  Many of the new features are "
+"quite esoteric, and you can write a lot of Python code without ever needed "
+"to be aware of them.  Writing a simple class is no more difficult than it "
+"ever was, so you don't need to bother learning or teaching them unless "
+"they're actually needed.  Some very complicated tasks that were previously "
+"only possible from C will now be possible in pure Python, and to my mind "
+"that's all for the better."
+msgstr ""
+"Cá nhân tôi nghĩ không cần phải lo lắng.  Nhiều tính năng mới khá bí truyền "
+"và bạn có thể viết nhiều mã Python mà không cần phải biết về chúng.  Viết "
+"một lớp đơn giản không còn khó khăn hơn bao giờ hết, vì vậy bạn không cần "
+"phải bận tâm đến việc học hoặc dạy chúng trừ khi chúng thực sự cần thiết.  "
+"Một số tác vụ rất phức tạp mà trước đây chỉ có thể thực hiện được từ C giờ "
+"đây sẽ có thể thực hiện được bằng Python thuần túy và theo tôi thì điều đó "
+"sẽ tốt hơn."
+
+#: ../../whatsnew/2.2.rst:93
+#, fuzzy
+msgid ""
+"I'm not going to attempt to cover every single corner case and small change "
+"that were required to make the new features work.  Instead this section will"
+" paint only the broad strokes.  See section :ref:`sect-rellinks`, \"Related "
+"Links\", for further sources of information about Python 2.2's new object "
+"model."
+msgstr ""
+"Tôi sẽ không cố gắng đề cập đến mọi trường hợp góc cạnh và thay đổi nhỏ cần "
+"thiết để các tính năng mới hoạt động.  Thay vào đó phần này sẽ chỉ vẽ những "
+"nét rộng.  Xem phần :ref:`sect-rellinks`, \"Các liên kết liên quan\", để "
+"biết thêm nguồn thông tin về mô hình đối tượng mới của Python 2.2."
+
+#: ../../whatsnew/2.2.rst:100
+#, fuzzy
+msgid "Old and New Classes"
+msgstr "Lớp cũ và lớp mới"
+
+#: ../../whatsnew/2.2.rst:102
+#, fuzzy
+msgid ""
+"First, you should know that Python 2.2 really has two kinds of classes: "
+"classic or old-style classes, and new-style classes.  The old-style class "
+"model is exactly the same as the class model in earlier versions of Python."
+"  All the new features described in this section apply only to new-style "
+"classes. This divergence isn't intended to last forever; eventually old-"
+"style classes will be dropped, possibly in Python 3.0."
+msgstr ""
+"Đầu tiên, bạn nên biết rằng Python 2.2 thực sự có hai loại lớp: lớp cổ điển "
+"hoặc lớp kiểu cũ và lớp kiểu mới.  Mô hình lớp kiểu cũ hoàn toàn giống với "
+"mô hình lớp trong các phiên bản Python trước đó.  Tất cả các tính năng mới "
+"được mô tả trong phần này chỉ áp dụng cho các lớp kiểu mới. Sự khác biệt này"
+" không có ý định kéo dài mãi mãi; cuối cùng các lớp kiểu cũ sẽ bị loại bỏ, "
+"có thể là trong Python 3.0."
+
+#: ../../whatsnew/2.2.rst:109
+#, fuzzy
+msgid ""
+"So how do you define a new-style class?  You do it by subclassing an "
+"existing new-style class.  Most of Python's built-in types, such as "
+"integers, lists, dictionaries, and even files, are new-style classes now.  A"
+" new-style class named :class:`object`, the base class for all built-in "
+"types, has also been added so if no built-in type is suitable, you can just "
+"subclass :class:`object`::"
+msgstr ""
+"Vậy làm thế nào để bạn xác định một lớp kiểu mới?  Bạn làm điều đó bằng cách"
+" phân lớp một lớp kiểu mới hiện có.  Hầu hết các kiểu dựng sẵn của Python, "
+"chẳng hạn như số nguyên, danh sách, từ điển và thậm chí cả tệp, hiện nay đều"
+" là các lớp kiểu mới.  Một lớp kiểu mới có tên :class:`object`, lớp cơ sở "
+"cho tất cả các kiểu dựng sẵn, cũng đã được thêm vào nên nếu không có kiểu "
+"dựng sẵn nào phù hợp, bạn chỉ có thể phân lớp :class:`object`::"
+
+#: ../../whatsnew/2.2.rst:116
+#, fuzzy
+msgid ""
+"class C(object):\n"
+"    def __init__ (self):\n"
+"        ...\n"
+"    ..."
+msgstr ""
+"lớp C (đối tượng):\n"
+"    def __init__ (tự):\n"
+"        ...\n"
+"    ..."
+
+#: ../../whatsnew/2.2.rst:121
+#, fuzzy
+msgid ""
+"This means that :keyword:`class` statements that don't have any base classes"
+" are always classic classes in Python 2.2.  (Actually you can also change "
+"this by setting a module-level variable named :attr:`!__metaclass__` --- see"
+" :pep:`253` for the details --- but it's easier to just subclass "
+":class:`object`.)"
+msgstr ""
+"Điều này có nghĩa là các câu lệnh :keyword:`class` không có bất kỳ lớp cơ sở"
+" nào luôn là các lớp cổ điển trong Python 2.2.  (Trên thực tế, bạn cũng có "
+"thể thay đổi điều này bằng cách đặt một biến cấp mô-đun có tên "
+":attr:`!__metaclass__` --- xem :pep:`253` để biết chi tiết --- nhưng chỉ "
+"phân lớp :class:`object` sẽ dễ dàng hơn.)"
+
+#: ../../whatsnew/2.2.rst:126
+#, fuzzy
+msgid ""
+"The type objects for the built-in types are available as built-ins, named "
+"using a clever trick.  Python has always had built-in functions named "
+":func:`int`, :func:`float`, and :func:`str`.  In 2.2, they aren't functions "
+"any more, but type objects that behave as factories when called. ::"
+msgstr ""
+"Các đối tượng kiểu cho các kiểu dựng sẵn có sẵn dưới dạng dựng sẵn, được đặt"
+" tên bằng một thủ thuật thông minh.  Python luôn có sẵn các hàm có tên "
+":func:`int`, :func:`float` và :func:`str`.  Trong 2.2, chúng không còn hoạt "
+"động nữa mà nhập các đối tượng hoạt động như nhà máy khi được gọi. ::"
+
+#: ../../whatsnew/2.2.rst:131
+#, fuzzy
+msgid ""
+">>> int\n"
+"<type 'int'>\n"
+">>> int('123')\n"
+"123"
+msgstr ""
+">>> int\n"
+"<gõ 'int'>\n"
+">>> int('123')\n"
+"123"
+
+#: ../../whatsnew/2.2.rst:136
+#, fuzzy
+msgid ""
+"To make the set of types complete, new type objects such as :func:`dict` and"
+" :func:`!file` have been added.  Here's a more interesting example, adding a"
+" :meth:`!lock` method to file objects::"
+msgstr ""
+"Để làm cho tập hợp các loại hoàn chỉnh, các đối tượng loại mới như "
+":func:`dict` và :func:`!file` đã được thêm vào.  Đây là một ví dụ thú vị "
+"hơn, thêm phương thức :meth:`!lock` vào tệp đối tượng::"
+
+#: ../../whatsnew/2.2.rst:140
+#, fuzzy
+msgid ""
+"class LockableFile(file):\n"
+"    def lock (self, operation, length=0, start=0, whence=0):\n"
+"        import fcntl\n"
+"        return fcntl.lockf(self.fileno(), operation,\n"
+"                           length, start, whence)"
+msgstr ""
+"lớp LockableFile(tập tin):\n"
+"    khóa def (tự, hoạt động, độ dài = 0, bắt đầu = 0, từ đó = 0):\n"
+"        nhập khẩu fcntl\n"
+"        trả về fcntl.lockf(self.fileno(), thao tác,\n"
+"                           độ dài, bắt đầu, từ đâu)"
+
+#: ../../whatsnew/2.2.rst:146
+#, fuzzy
+msgid ""
+"The now-obsolete :mod:`!posixfile` module contained a class that emulated "
+"all of a file object's methods and also added a :meth:`!lock` method, but "
+"this class couldn't be passed to internal functions that expected a built-in"
+" file, something which is possible with our new :class:`!LockableFile`."
+msgstr ""
+"Mô-đun :mod:`!posixfile` hiện đã lỗi thời chứa một lớp mô phỏng tất cả các "
+"phương thức của đối tượng tệp và cũng đã thêm phương thức :meth:`!lock`, "
+"nhưng lớp này không thể được chuyển đến các hàm nội bộ mong đợi một tệp tích"
+" hợp, điều này có thể thực hiện được với :class:`!LockableFile` mới của "
+"chúng tôi."
+
+#: ../../whatsnew/2.2.rst:153
+#, fuzzy
+msgid "Descriptors"
+msgstr "Mô tả"
+
+#: ../../whatsnew/2.2.rst:155
+#, fuzzy
+msgid ""
+"In previous versions of Python, there was no consistent way to discover what"
+" attributes and methods were supported by an object. There were some "
+"informal conventions, such as defining :attr:`!__members__` and "
+":attr:`!__methods__` attributes that were lists of names, but often the "
+"author of an extension type or a class wouldn't bother to define them.  You "
+"could fall back on inspecting the :attr:`~object.__dict__` of an object, but"
+" when class inheritance or an arbitrary :meth:`!__getattr__` hook were in "
+"use this could still be inaccurate."
+msgstr ""
+"Trong các phiên bản trước của Python, không có cách nhất quán để khám phá "
+"những thuộc tính và phương thức nào được một đối tượng hỗ trợ. Có một số quy"
+" ước không chính thức, chẳng hạn như xác định các thuộc tính "
+":attr:`!__members__` và :attr:`!__methods__` là danh sách tên, nhưng thường "
+"thì tác giả của loại tiện ích mở rộng hoặc lớp sẽ không bận tâm đến việc "
+"định nghĩa chúng.  Bạn có thể quay lại kiểm tra :attr:`~object.__dict__` của"
+" một đối tượng, nhưng khi sử dụng kế thừa lớp hoặc móc :meth:`!__getattr__` "
+"tùy ý, điều này vẫn có thể không chính xác."
+
+#: ../../whatsnew/2.2.rst:163
+#, fuzzy
+msgid ""
+"The one big idea underlying the new class model is that an API for "
+"describing the attributes of an object using :dfn:`descriptors` has been "
+"formalized. Descriptors specify the value of an attribute, stating whether "
+"it's a method or a field.  With the descriptor API, static methods and class"
+" methods become possible, as well as more exotic constructs."
+msgstr ""
+"Một ý tưởng lớn đằng sau mô hình lớp mới là API để mô tả các thuộc tính của "
+"một đối tượng bằng :dfn:`descriptors` đã được chính thức hóa. Bộ mô tả chỉ "
+"định giá trị của một thuộc tính, cho biết đó là phương thức hay trường.  Với"
+" bộ mô tả API, các phương thức tĩnh và phương thức lớp cũng như các cấu trúc"
+" kỳ lạ hơn đều có thể thực hiện được."
+
+#: ../../whatsnew/2.2.rst:169
+#, fuzzy
+msgid ""
+"Attribute descriptors are objects that live inside class objects, and have a"
+" few attributes of their own:"
+msgstr ""
+"Bộ mô tả thuộc tính là các đối tượng sống bên trong các đối tượng lớp và có "
+"một số thuộc tính riêng:"
+
+#: ../../whatsnew/2.2.rst:172
+#, fuzzy
+msgid ":attr:`~definition.__name__` is the attribute's name."
+msgstr ":attr:`~definition.__name__` là tên của thuộc tính."
+
+#: ../../whatsnew/2.2.rst:174
+#, fuzzy
+msgid ":attr:`~definition.__doc__` is the attribute's docstring."
+msgstr ":attr:`~definition.__doc__` là chuỗi tài liệu của thuộc tính."
+
+#: ../../whatsnew/2.2.rst:176
+#, fuzzy
+msgid ""
+"``__get__(object)`` is a method that retrieves the attribute value from "
+"*object*."
+msgstr ""
+"``__get__(object)`` là phương thức lấy giá trị thuộc tính từ *object*."
+
+#: ../../whatsnew/2.2.rst:179
+#, fuzzy
+msgid "``__set__(object, value)`` sets the attribute on *object* to *value*."
+msgstr ""
+"``__set__(object, value)`` đặt thuộc tính trên *object* thành *value*."
+
+#: ../../whatsnew/2.2.rst:181
+#, fuzzy
+msgid ""
+"``__delete__(object, value)`` deletes the *value*  attribute of *object*."
+msgstr "``__delete__(object, value)`` xóa thuộc tính *value* của *object*."
+
+#: ../../whatsnew/2.2.rst:183
+#, fuzzy
+msgid ""
+"For example, when you write ``obj.x``, the steps that Python actually "
+"performs are::"
+msgstr ""
+"Ví dụ: khi bạn viết ``obj.x``, các bước mà Python thực sự thực hiện là::"
+
+#: ../../whatsnew/2.2.rst:186
+#, fuzzy
+msgid ""
+"descriptor = obj.__class__.x\n"
+"descriptor.__get__(obj)"
+msgstr ""
+"bộ mô tả = obj.__class__.x\n"
+"bộ mô tả.__get__(obj)"
+
+#: ../../whatsnew/2.2.rst:189
+#, fuzzy
+msgid ""
+"For methods, :meth:`descriptor.__get__ <object.__get__>` returns a temporary"
+" object that's callable, and wraps up the instance and the method to be "
+"called on it. This is also why static methods and class methods are now "
+"possible; they have descriptors that wrap up just the method, or the method "
+"and the class.  As a brief explanation of these new kinds of methods, static"
+" methods aren't passed the instance, and therefore resemble regular "
+"functions.  Class methods are passed the class of the object, but not the "
+"object itself.  Static and class methods are defined like this::"
+msgstr ""
+"Đối với các phương thức, :meth:`descriptor.__get__ <object.__get__>` trả về "
+"một đối tượng tạm thời có thể gọi được và gói gọn thể hiện cũng như phương "
+"thức được gọi trên đó. Đây cũng là lý do tại sao hiện nay có thể sử dụng "
+"được các phương thức tĩnh và phương thức lớp; chúng có các bộ mô tả chỉ gói "
+"gọn phương thức hoặc phương thức và lớp.  Như một lời giải thích ngắn gọn về"
+" các loại phương thức mới này, các phương thức tĩnh không được truyền qua "
+"phiên bản và do đó giống với các hàm thông thường.  Các phương thức lớp được"
+" truyền vào lớp của đối tượng chứ không phải chính đối tượng đó.  Các phương"
+" thức tĩnh và lớp được định nghĩa như thế này ::"
+
+#: ../../whatsnew/2.2.rst:199
+#, fuzzy
+msgid ""
+"class C(object):\n"
+"    def f(arg1, arg2):\n"
+"        ...\n"
+"    f = staticmethod(f)\n"
+"\n"
+"    def g(cls, arg1, arg2):\n"
+"        ...\n"
+"    g = classmethod(g)"
+msgstr ""
+"lớp C (đối tượng):\n"
+"    định nghĩa f(arg1, arg2):\n"
+"        ...\n"
+"    f = phương thức tĩnh(f)\n"
+"\n"
+"    def g(cls, arg1, arg2):\n"
+"        ...\n"
+"    g = phương thức lớp (g)"
+
+#: ../../whatsnew/2.2.rst:208
+#, fuzzy
+msgid ""
+"The :func:`staticmethod` function takes the function :func:`!f`, and returns"
+" it wrapped up in a descriptor so it can be stored in the class object.  You"
+" might expect there to be special syntax for creating such methods (``def "
+"static f``, ``defstatic f()``, or something like that) but no such syntax "
+"has been defined yet; that's been left for future versions of Python."
+msgstr ""
+"Hàm :func:`staticmethod` lấy hàm :func:`!f` và trả về nó được gói trong một "
+"bộ mô tả để nó có thể được lưu trữ trong đối tượng lớp.  Bạn có thể mong đợi"
+" có cú pháp đặc biệt để tạo các phương thức như vậy (``def static f``, "
+"``defstatic f()`` hoặc tương tự) nhưng chưa có cú pháp nào như vậy được xác "
+"định; phần đó được để lại cho các phiên bản Python trong tương lai."
+
+#: ../../whatsnew/2.2.rst:214
+#, fuzzy
+msgid ""
+"More new features, such as slots and properties, are also implemented as new"
+" kinds of descriptors, and it's not difficult to write a descriptor class "
+"that does something novel.  For example, it would be possible to write a "
+"descriptor class that made it possible to write Eiffel-style preconditions "
+"and postconditions for a method.  A class that used this feature might be "
+"defined like this::"
+msgstr ""
+"Nhiều tính năng mới hơn, chẳng hạn như vị trí và thuộc tính, cũng được triển"
+" khai dưới dạng các loại bộ mô tả mới và không khó để viết một lớp mô tả "
+"thực hiện điều gì đó mới lạ.  Ví dụ, có thể viết một lớp mô tả để có thể "
+"viết các điều kiện tiên quyết và hậu điều kiện kiểu Eiffel cho một phương "
+"thức.  Một lớp sử dụng tính năng này có thể được định nghĩa như sau::"
+
+#: ../../whatsnew/2.2.rst:221
+#, fuzzy
+msgid ""
+"from eiffel import eiffelmethod\n"
+"\n"
+"class C(object):\n"
+"    def f(self, arg1, arg2):\n"
+"        # The actual function\n"
+"        ...\n"
+"    def pre_f(self):\n"
+"        # Check preconditions\n"
+"        ...\n"
+"    def post_f(self):\n"
+"        # Check postconditions\n"
+"        ...\n"
+"\n"
+"    f = eiffelmethod(f, pre_f, post_f)"
+msgstr ""
+"từ eiffel nhập eiffelmethod\n"
+"\n"
+"lớp C (đối tượng):\n"
+"    def f(tự, arg1, arg2):\n"
+"        chức năng thực tế của # The\n"
+"        ...\n"
+"    def pre_f(tự):\n"
+"        điều kiện tiên quyết của # Check\n"
+"        ...\n"
+"    def post_f(tự):\n"
+"        điều kiện sau # Check\n"
+"        ...\n"
+"\n"
+"    f = phương thức eiffel(f, pre_f, post_f)"
+
+#: ../../whatsnew/2.2.rst:236
+#, fuzzy
+msgid ""
+"Note that a person using the new :func:`!eiffelmethod` doesn't have to "
+"understand anything about descriptors.  This is why I think the new features"
+" don't increase the basic complexity of the language. There will be a few "
+"wizards who need to know about it in order to write :func:`!eiffelmethod` or"
+" the ZODB or whatever, but most users will just write code on top of the "
+"resulting libraries and ignore the implementation details."
+msgstr ""
+"Lưu ý rằng người sử dụng :func:`!eiffelmethod` mới không cần phải hiểu gì về"
+" bộ mô tả.  Đây là lý do tại sao tôi nghĩ các tính năng mới không làm tăng "
+"độ phức tạp cơ bản của ngôn ngữ. Sẽ có một số trình hướng dẫn cần biết về nó"
+" để viết :func:`!eiffelmethod` hoặc ZODB hoặc bất cứ thứ gì, nhưng hầu hết "
+"người dùng sẽ chỉ viết mã lên trên các thư viện kết quả và bỏ qua các chi "
+"tiết triển khai."
+
+#: ../../whatsnew/2.2.rst:245
+#, fuzzy
+msgid "Multiple Inheritance: The Diamond Rule"
+msgstr "Đa kế thừa: Quy tắc kim cương"
+
+#: ../../whatsnew/2.2.rst:247
+#, fuzzy
+msgid ""
+"Multiple inheritance has also been made more useful through changing the "
+"rules under which names are resolved.  Consider this set of classes (diagram"
+" taken from :pep:`253` by Guido van Rossum)::"
+msgstr ""
+"Tính đa kế thừa cũng trở nên hữu ích hơn thông qua việc thay đổi các quy tắc"
+" giải quyết các tên.  Hãy xem xét tập hợp các lớp này (sơ đồ lấy từ "
+":pep:`253` của Guido van Rossum)::"
+
+#: ../../whatsnew/2.2.rst:251
+#, fuzzy
+msgid ""
+"      class A:\n"
+"        ^ ^  def save(self): ...\n"
+"       /   \\\n"
+"      /     \\\n"
+"     /       \\\n"
+"    /         \\\n"
+"class B     class C:\n"
+"    ^         ^  def save(self): ...\n"
+"     \\       /\n"
+"      \\     /\n"
+"       \\   /\n"
+"        \\ /\n"
+"      class D"
+msgstr ""
+"lớp A:\n"
+"        ^ ^ def lưu (tự): ...\n"
+"       / \\\n"
+"      / \\\n"
+"     / \\\n"
+"    / \\\n"
+"lớp B lớp C:\n"
+"    ^ ^ def lưu (tự): ...\n"
+"     \\ /\n"
+"      \\ /\n"
+"       \\ /\n"
+"        \\ /\n"
+"      lớp D"
+
+#: ../../whatsnew/2.2.rst:265
+#, fuzzy
+msgid ""
+"The lookup rule for classic classes is simple but not very smart; the base "
+"classes are searched depth-first, going from left to right.  A reference to "
+":meth:`!D.save` will search the classes :class:`!D`, :class:`!B`, and then "
+":class:`!A`, where :meth:`!save` would be found and returned.  "
+":meth:`!C.save` would never be found at all.  This is bad, because if "
+":class:`!C`'s :meth:`!save` method is saving some internal state specific to"
+" :class:`!C`, not calling it will result in that state never getting saved."
+msgstr ""
+"Quy tắc tra cứu cho các lớp cổ điển rất đơn giản nhưng không thông minh lắm;"
+" các lớp cơ sở được tìm kiếm theo chiều sâu, từ trái sang phải.  Tham chiếu "
+"đến :meth:`!D.save` sẽ tìm kiếm các lớp :class:`!D`, :class:`!B`, và sau đó "
+"là :class:`!A`, trong đó :meth:`!save` sẽ được tìm thấy và trả về.  "
+":meth:`!C.save` sẽ không bao giờ được tìm thấy.  Điều này thật tệ, vì nếu "
+"phương thức :meth:`!save` của :class:`!C` đang lưu một số trạng thái nội bộ "
+"cụ thể cho :class:`!C`, thì việc không gọi nó sẽ dẫn đến trạng thái đó không"
+" bao giờ được lưu."
+
+#: ../../whatsnew/2.2.rst:273
+#, fuzzy
+msgid ""
+"New-style classes follow a different algorithm that's a bit more complicated"
+" to explain, but does the right thing in this situation. (Note that Python "
+"2.3 changes this algorithm to one that produces the same results in most "
+"cases, but produces more useful results for really complicated inheritance "
+"graphs.)"
+msgstr ""
+"Các lớp kiểu mới tuân theo một thuật toán khác phức tạp hơn một chút để giải"
+" thích, nhưng thực hiện đúng trong tình huống này. (Lưu ý rằng Python 2.3 "
+"thay đổi thuật toán này thành thuật toán tạo ra kết quả tương tự trong hầu "
+"hết các trường hợp, nhưng tạo ra kết quả hữu ích hơn cho các biểu đồ kế thừa"
+" thực sự phức tạp.)"
+
+#: ../../whatsnew/2.2.rst:278
+#, fuzzy
+msgid ""
+"List all the base classes, following the classic lookup rule and include a "
+"class multiple times if it's visited repeatedly.  In the above example, the "
+"list of visited classes is [:class:`!D`, :class:`!B`, :class:`!A`, "
+":class:`!C`, :class:`!A`]."
+msgstr ""
+"Liệt kê tất cả các lớp cơ sở, tuân theo quy tắc tra cứu cổ điển và bao gồm "
+"một lớp nhiều lần nếu nó được truy cập nhiều lần.  Trong ví dụ trên, danh "
+"sách các lớp đã truy cập là [:class:`!D`, :class:`!B`, :class:`!A`, "
+":class:`!C`, :class:`!A`]."
+
+#: ../../whatsnew/2.2.rst:283
+#, fuzzy
+msgid ""
+"Scan the list for duplicated classes.  If any are found, remove all but one "
+"occurrence, leaving the *last* one in the list.  In the above example, the "
+"list becomes [:class:`!D`, :class:`!B`, :class:`!C`, :class:`!A`] after "
+"dropping duplicates."
+msgstr ""
+"Quét danh sách các lớp trùng lặp.  Nếu tìm thấy bất kỳ lỗi nào, hãy xóa tất "
+"cả trừ một lần xuất hiện, để lại một lần xuất hiện *last* trong danh sách.  "
+"Trong ví dụ trên, danh sách trở thành [:class:`!D`, :class:`!B`, "
+":class:`!C`, :class:`!A`] sau khi loại bỏ các bản sao."
+
+#: ../../whatsnew/2.2.rst:288
+#, fuzzy
+msgid ""
+"Following this rule, referring to :meth:`!D.save` will return "
+":meth:`!C.save`, which is the behaviour we're after.  This lookup rule is "
+"the same as the one followed by Common Lisp.  A new built-in function, "
+":func:`super`, provides a way to get at a class's superclasses without "
+"having to reimplement Python's algorithm. The most commonly used form will "
+"be  ``super(class, obj)``, which returns  a bound superclass object (not the"
+" actual class object).  This form will be used in methods to call a method "
+"in the superclass; for example, :class:`!D`'s :meth:`!save` method would "
+"look like this::"
+msgstr ""
+"Tuân theo quy tắc này, việc tham chiếu đến :meth:`!D.save` sẽ trả về "
+":meth:`!C.save`, đây là hành vi mà chúng tôi đang theo đuổi.  Quy tắc tra "
+"cứu này giống với quy tắc theo sau của Common Lisp.  Một hàm tích hợp mới, "
+":func:`super`, cung cấp một cách để truy cập vào các siêu lớp của một lớp mà"
+" không cần phải triển khai lại thuật toán của Python. Dạng được sử dụng phổ "
+"biến nhất sẽ là ``super(class, obj)``, trả về một đối tượng siêu lớp bị ràng"
+" buộc (không phải đối tượng lớp thực tế).  Biểu mẫu này sẽ được sử dụng "
+"trong các phương thức để gọi một phương thức trong siêu lớp; ví dụ: phương "
+"thức :meth:`!save` của :class:`!D` sẽ trông như thế này ::"
+
+#: ../../whatsnew/2.2.rst:297
+#, fuzzy
+msgid ""
+"class D (B,C):\n"
+"    def save (self):\n"
+"        # Call superclass .save()\n"
+"        super(D, self).save()\n"
+"        # Save D's private information here\n"
+"        ..."
+msgstr ""
+"lớp D (B, C):\n"
+"    def lưu (tự):\n"
+"        siêu lớp # Call .save()\n"
+"        super(D, self).save()\n"
+"        Thông tin riêng của # Save D tại đây\n"
+"        ..."
+
+#: ../../whatsnew/2.2.rst:304
+#, fuzzy
+msgid ""
+":func:`super` can also return unbound superclass objects when called as "
+"``super(class)`` or ``super(class1, class2)``, but this probably won't often"
+" be useful."
+msgstr ""
+":func:`super` cũng có thể trả về các đối tượng siêu lớp không liên kết khi "
+"được gọi là ``super(class)`` hoặc ``super(class1, class2)``, nhưng điều này "
+"có thể không thường hữu ích."
+
+#: ../../whatsnew/2.2.rst:310
+#, fuzzy
+msgid "Attribute Access"
+msgstr "Quyền truy cập thuộc tính"
+
+#: ../../whatsnew/2.2.rst:312
+#, fuzzy
+msgid ""
+"A fair number of sophisticated Python classes define hooks for attribute "
+"access using :meth:`~object.__getattr__`; most commonly this is done for "
+"convenience, to make code more readable by automatically mapping an "
+"attribute access such as ``obj.parent`` into a method call such as "
+"``obj.get_parent``.  Python 2.2 adds some new ways of controlling attribute "
+"access."
+msgstr ""
+"Một số lượng khá lớn các lớp Python phức tạp xác định các hook để truy cập "
+"thuộc tính bằng :meth:`~object.__getattr__`; Thông thường nhất, điều này "
+"được thực hiện để thuận tiện, giúp mã dễ đọc hơn bằng cách tự động ánh xạ "
+"quyền truy cập thuộc tính, chẳng hạn như ``obj.parent`` vào lệnh gọi phương "
+"thức, chẳng hạn như ``obj.get_parent``.  Python 2.2 bổ sung thêm một số cách"
+" mới để kiểm soát quyền truy cập thuộc tính."
+
+#: ../../whatsnew/2.2.rst:318
+#, fuzzy
+msgid ""
+"First, ``__getattr__(attr_name)`` is still supported by new-style classes, "
+"and nothing about it has changed.  As before, it will be called when an "
+"attempt is made to access ``obj.foo`` and no attribute named ``foo`` is "
+"found in the instance's dictionary."
+msgstr ""
+"Đầu tiên, ``__getattr__(attr_name)`` vẫn được hỗ trợ bởi các lớp kiểu mới và"
+" không có gì thay đổi.  Như trước đây, nó sẽ được gọi khi cố gắng truy cập "
+"``obj.foo`` và không tìm thấy thuộc tính nào có tên ``foo`` trong từ điển "
+"của phiên bản."
+
+#: ../../whatsnew/2.2.rst:323
+#, fuzzy
+msgid ""
+"New-style classes also support a new method, "
+"``__getattribute__(attr_name)``.  The difference between the two methods is "
+"that :meth:`~object.__getattribute__` is *always* called whenever any "
+"attribute is accessed, while the old :meth:`~object.__getattr__` is only "
+"called if ``foo`` isn't found in the instance's dictionary."
+msgstr ""
+"Các lớp kiểu mới cũng hỗ trợ một phương thức mới, "
+"``__getattribute__(attr_name)``.  Sự khác biệt giữa hai phương thức là "
+":meth:`~object.__getattribute__` được gọi *always* bất cứ khi nào bất kỳ "
+"thuộc tính nào được truy cập, trong khi :meth:`~object.__getattr__` cũ chỉ "
+"được gọi nếu ``foo`` không được tìm thấy trong từ điển của phiên bản."
+
+#: ../../whatsnew/2.2.rst:329
+#, fuzzy
+msgid ""
+"However, Python 2.2's support for :dfn:`properties` will often be a simpler "
+"way to trap attribute references.  Writing a :meth:`!__getattr__` method is "
+"complicated because to avoid recursion you can't use regular attribute "
+"accesses inside them, and instead have to mess around with the contents of "
+":attr:`~object.__dict__`. :meth:`~object.__getattr__` methods also end up "
+"being called by Python when it checks for other methods such as "
+":meth:`~object.__repr__` or :meth:`!__coerce__`, and so have to be written "
+"with this in mind. Finally, calling a function on every attribute access "
+"results in a sizable performance loss."
+msgstr ""
+"Tuy nhiên, sự hỗ trợ của Python 2.2 cho :dfn:`properties` thường sẽ là cách "
+"đơn giản hơn để bẫy các tham chiếu thuộc tính.  Viết một phương thức "
+":meth:`!__getattr__` rất phức tạp vì để tránh đệ quy, bạn không thể sử dụng "
+"các truy cập thuộc tính thông thường bên trong chúng mà thay vào đó phải "
+"loay hoay với nội dung của :attr:`~object.__dict__`. Các phương thức "
+":meth:`~object.__getattr__` cuối cùng cũng được Python gọi khi nó kiểm tra "
+"các phương thức khác như :meth:`~object.__repr__` hoặc :meth:`!__coerce__`, "
+"và do đó phải được ghi nhớ điều này. Cuối cùng, việc gọi một hàm trên mọi "
+"quyền truy cập thuộc tính sẽ dẫn đến giảm hiệu suất đáng kể."
+
+#: ../../whatsnew/2.2.rst:338
+#, fuzzy
+msgid ""
+":class:`property` is a new built-in type that packages up three functions "
+"that get, set, or delete an attribute, and a docstring.  For example, if you"
+" want to define a :attr:`!size` attribute that's computed, but also "
+"settable, you could write::"
+msgstr ""
+":class:`property` là loại tích hợp mới, đóng gói ba chức năng nhận, đặt hoặc"
+" xóa một thuộc tính và một chuỗi tài liệu.  Ví dụ: nếu bạn muốn xác định "
+"thuộc tính :attr:`!size` được tính toán nhưng cũng có thể cài đặt được, bạn "
+"có thể viết::"
+
+#: ../../whatsnew/2.2.rst:343
+#, fuzzy
+msgid ""
+"class C(object):\n"
+"    def get_size (self):\n"
+"        result = ... computation ...\n"
+"        return result\n"
+"    def set_size (self, size):\n"
+"        ... compute something based on the size\n"
+"        and set internal state appropriately ...\n"
+"\n"
+"    # Define a property.  The 'delete this attribute'\n"
+"    # method is defined as None, so the attribute\n"
+"    # can't be deleted.\n"
+"    size = property(get_size, set_size,\n"
+"                    None,\n"
+"                    \"Storage size of this instance\")"
+msgstr ""
+"lớp C (đối tượng):\n"
+"    def get_size (tự):\n"
+"        kết quả = ... tính toán ...\n"
+"        kết quả trả về\n"
+"    def set_size (tự, kích thước):\n"
+"        ... tính toán thứ gì đó dựa trên kích thước\n"
+"        và thiết lập trạng thái nội bộ một cách thích hợp ...\n"
+"\n"
+"    # Define một tài sản.  'Xóa thuộc tính này'\n"
+"    # method được định nghĩa là Không có, do đó thuộc tính\n"
+"    # can không bị xóa.\n"
+"    kích thước = thuộc tính (get_size, set_size,\n"
+"                    không,\n"
+"                    \"Kích thước lưu trữ của phiên bản này\")"
+
+#: ../../whatsnew/2.2.rst:358
+#, fuzzy
+msgid ""
+"That is certainly clearer and easier to write than a pair of "
+":meth:`!__getattr__`/:meth:`!__setattr__` methods that check for the "
+":attr:`!size` attribute and handle it specially while retrieving all other "
+"attributes from the instance's :attr:`~object.__dict__`.  Accesses to "
+":attr:`!size` are also the only ones which have to perform the work of "
+"calling a function, so references to other attributes run at their usual "
+"speed."
+msgstr ""
+"Điều đó chắc chắn rõ ràng và dễ viết hơn một cặp phương thức "
+":meth:`!__getattr__`/:meth:`!__setattr__` kiểm tra thuộc tính :attr:`!size` "
+"và xử lý nó một cách đặc biệt trong khi truy xuất tất cả các thuộc tính khác"
+" từ :attr:`~object.__dict__` của cá thể.  Các quyền truy cập vào "
+":attr:`!size` cũng là những quyền duy nhất phải thực hiện công việc gọi một "
+"hàm, do đó các tham chiếu đến các thuộc tính khác chạy ở tốc độ thông "
+"thường."
+
+#: ../../whatsnew/2.2.rst:365
+#, fuzzy
+msgid ""
+"Finally, it's possible to constrain the list of attributes that can be "
+"referenced on an object using the new :attr:`~object.__slots__` class "
+"attribute. Python objects are usually very dynamic; at any time it's "
+"possible to define a new attribute on an instance by just doing "
+"``obj.new_attr=1``.   A new-style class can define a class attribute named "
+":attr:`~object.__slots__` to limit the legal attributes  to a particular set"
+" of names.  An example will make this clear::"
+msgstr ""
+"Cuối cùng, có thể hạn chế danh sách các thuộc tính có thể được tham chiếu "
+"trên một đối tượng bằng thuộc tính lớp :attr:`~object.__slots__` mới. Các "
+"đối tượng Python thường rất năng động; bất cứ lúc nào bạn cũng có thể xác "
+"định thuộc tính mới trên một phiên bản chỉ bằng cách thực hiện "
+"``obj.new_attr=1``.   Lớp kiểu mới có thể xác định thuộc tính lớp có tên "
+":attr:`~object.__slots__` để giới hạn các thuộc tính pháp lý cho một tập hợp"
+" tên cụ thể.  Một ví dụ sẽ làm rõ điều này::"
+
+#: ../../whatsnew/2.2.rst:372
+#, fuzzy
+msgid ""
+">>> class C(object):\n"
+"...     __slots__ = ('template', 'name')\n"
+"...\n"
+">>> obj = C()\n"
+">>> print obj.template\n"
+"None\n"
+">>> obj.template = 'Test'\n"
+">>> print obj.template\n"
+"Test\n"
+">>> obj.newattr = None\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in ?\n"
+"AttributeError: 'C' object has no attribute 'newattr'"
+msgstr ""
+">>> lớp C(đối tượng):\n"
+"... __slots__ = ('mẫu', 'tên')\n"
+"...\n"
+">>> obj = C()\n"
+">>> in obj.template\n"
+"không có\n"
+">>> obj.template = 'Kiểm tra'\n"
+">>> in obj.template\n"
+"kiểm tra\n"
+">>> obj.newatr = Không có\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, ở định dạng ?\n"
+"AttributionError: Đối tượng 'C' không có thuộc tính 'newattr'"
+
+#: ../../whatsnew/2.2.rst:386
+#, fuzzy
+msgid ""
+"Note how you get an :exc:`AttributeError` on the attempt to assign to an "
+"attribute not listed in :attr:`~object.__slots__`."
+msgstr ""
+"Lưu ý cách bạn nhận được :exc:`AttributeError` khi cố gắng gán cho một thuộc"
+" tính không được liệt kê trong :attr:`~object.__slots__`."
+
+#: ../../whatsnew/2.2.rst:393
+#, fuzzy
+msgid "Related Links"
+msgstr "Liên kết liên quan"
+
+#: ../../whatsnew/2.2.rst:395
+#, fuzzy
+msgid ""
+"This section has just been a quick overview of the new features, giving "
+"enough of an explanation to start you programming, but many details have "
+"been simplified or ignored.  Where should you go to get a more complete "
+"picture?"
+msgstr ""
+"Phần này chỉ cung cấp tổng quan nhanh về các tính năng mới, đưa ra đủ lời "
+"giải thích để bạn bắt đầu lập trình, nhưng nhiều chi tiết đã được đơn giản "
+"hóa hoặc bỏ qua.  Bạn nên đi đâu để có được bức tranh đầy đủ hơn?"
+
+#: ../../whatsnew/2.2.rst:399
+#, fuzzy
+msgid ""
+"The :ref:`descriptorhowto` is a lengthy tutorial introduction to the "
+"descriptor features, written by Guido van Rossum. If my description has "
+"whetted your appetite, go read this tutorial next, because it goes into much"
+" more detail about the new features while still remaining quite easy to "
+"read."
+msgstr ""
+"Zz000zz là phần giới thiệu hướng dẫn dài về các tính năng mô tả, được viết "
+"bởi Guido van Rossum. Nếu mô tả của tôi đã kích thích sự thèm ăn của bạn, "
+"hãy đọc hướng dẫn này tiếp theo, vì nó đi sâu vào chi tiết hơn nhiều về các "
+"tính năng mới trong khi vẫn khá dễ đọc."
+
+#: ../../whatsnew/2.2.rst:404
+#, fuzzy
+msgid ""
+"Next, there are two relevant PEPs, :pep:`252` and :pep:`253`.  :pep:`252` is"
+" titled \"Making Types Look More Like Classes\", and covers the descriptor "
+"API. :pep:`253` is titled \"Subtyping Built-in Types\", and describes the "
+"changes to type objects that make it possible to subtype built-in objects.  "
+":pep:`253` is the more complicated PEP of the two, and at a few points the "
+"necessary explanations of types and meta-types may cause your head to "
+"explode.  Both PEPs were written and implemented by Guido van Rossum, with "
+"substantial assistance from the rest of the Zope Corp. team."
+msgstr ""
+"Tiếp theo, có hai PEP liên quan là :pep:`252` và :pep:`253`.  :pep:`252` có "
+"tiêu đề \"Làm cho các kiểu trông giống các lớp hơn\" và bao gồm phần mô tả "
+"API. :pep:`253` có tiêu đề \"Phân loại các kiểu tích hợp sẵn\" và mô tả các "
+"thay đổi đối với kiểu đối tượng giúp có thể phân kiểu các đối tượng tích hợp"
+" sẵn.  :pep:`253` là PEP phức tạp hơn trong số hai loại, và ở một số điểm, "
+"những giải thích cần thiết về loại và siêu loại có thể khiến đầu bạn nổ "
+"tung.  Cả hai PEP đều do Guido van Rossum viết và triển khai, với sự hỗ trợ "
+"đáng kể từ các thành viên còn lại của nhóm Zope Corp."
+
+#: ../../whatsnew/2.2.rst:413
+#, fuzzy
+msgid ""
+"Finally, there's the ultimate authority: the source code.  Most of the "
+"machinery for the type handling is in :file:`Objects/typeobject.c`, but you "
+"should only resort to it after all other avenues have been exhausted, "
+"including posting a question to python-list or python-dev."
+msgstr ""
+"Cuối cùng, có quyền hạn tối cao: mã nguồn.  Hầu hết công cụ xử lý kiểu đều ở"
+" dạng :file:`Objects/typeobject.c`, nhưng bạn chỉ nên sử dụng nó sau khi đã "
+"sử dụng hết tất cả các cách khác, bao gồm cả việc đăng câu hỏi lên python-"
+"list hoặc python-dev."
+
+#: ../../whatsnew/2.2.rst:422
+#, fuzzy
+msgid "PEP 234: Iterators"
+msgstr "PEP 234: Trình vòng lặp"
+
+#: ../../whatsnew/2.2.rst:424
+#, fuzzy
+msgid ""
+"Another significant addition to 2.2 is an iteration interface at both the C "
+"and Python levels.  Objects can define how they can be looped over by "
+"callers."
+msgstr ""
+"Một bổ sung quan trọng khác cho 2.2 là giao diện lặp ở cả cấp độ C và "
+"Python.  Các đối tượng có thể xác định cách chúng có thể được người gọi lặp "
+"lại."
+
+#: ../../whatsnew/2.2.rst:427
+#, fuzzy
+msgid ""
+"In Python versions up to 2.1, the usual way to make ``for item in obj`` work"
+" is to define a :meth:`~object.__getitem__` method that looks something like"
+" this::"
+msgstr ""
+"Trong các phiên bản Python lên tới 2.1, cách thông thường để làm cho ``for "
+"item in obj`` hoạt động là xác định một phương thức "
+":meth:`~object.__getitem__` trông giống như thế này::"
+
+#: ../../whatsnew/2.2.rst:430
+#, fuzzy
+msgid ""
+"def __getitem__(self, index):\n"
+"    return <next item>"
+msgstr ""
+"def __getitem__(tự, chỉ mục):\n"
+"    trả lại <mục tiếp theo>"
+
+#: ../../whatsnew/2.2.rst:433
+#, fuzzy
+msgid ""
+":meth:`~object.__getitem__` is more properly used to define an indexing "
+"operation on an object so that you can write ``obj[5]`` to retrieve the "
+"sixth element.  It's a bit misleading when you're using this only to support"
+" :keyword:`for` loops. Consider some file-like object that wants to be "
+"looped over; the *index* parameter is essentially meaningless, as the class "
+"probably assumes that a series of :meth:`~object.__getitem__` calls will be "
+"made with *index* incrementing by one each time.  In other words, the "
+"presence of the :meth:`~object.__getitem__` method doesn't mean that using "
+"``file[5]``  to randomly access the sixth element will work, though it "
+"really should."
+msgstr ""
+":meth:`~object.__getitem__` được sử dụng chính xác hơn để xác định thao tác "
+"lập chỉ mục trên một đối tượng để bạn có thể viết ``obj[5]`` để truy xuất "
+"phần tử thứ sáu.  Sẽ hơi sai lầm một chút khi bạn chỉ sử dụng tính năng này "
+"để hỗ trợ các vòng lặp :keyword:`for`. Hãy xem xét một số đối tượng giống "
+"như tệp muốn được lặp lại; tham số *index* về cơ bản là vô nghĩa, vì lớp có "
+"thể giả định rằng một loạt lệnh gọi :meth:`~object.__getitem__` sẽ được thực"
+" hiện với *index* tăng dần mỗi lần một.  Nói cách khác, sự hiện diện của "
+"phương thức :meth:`~object.__getitem__` không có nghĩa là việc sử dụng "
+"``file[5]`` để truy cập ngẫu nhiên phần tử thứ sáu sẽ hoạt động, mặc dù điều"
+" đó thực sự nên làm."
+
+#: ../../whatsnew/2.2.rst:443
+#, fuzzy
+msgid ""
+"In Python 2.2, iteration can be implemented separately, and "
+":meth:`~object.__getitem__` methods can be limited to classes that really do"
+" support random access.  The basic idea of iterators is  simple.  A new "
+"built-in function, ``iter(obj)`` or ``iter(C, sentinel)``, is used to get an"
+" iterator. ``iter(obj)`` returns an iterator for the object *obj*, while "
+"``iter(C, sentinel)`` returns an iterator that will invoke the callable "
+"object *C* until it returns *sentinel* to signal that the iterator is done."
+msgstr ""
+"Trong Python 2.2, việc lặp có thể được triển khai riêng biệt và các phương "
+"thức :meth:`~object.__getitem__` có thể được giới hạn ở các lớp thực sự hỗ "
+"trợ truy cập ngẫu nhiên.  Ý tưởng cơ bản của iterator rất đơn giản.  Một hàm"
+" tích hợp mới, ``iter(obj)`` hoặc ``iter(C, sentinel)``, được sử dụng để lấy"
+" một trình vòng lặp. ``iter(obj)`` trả về một trình vòng lặp cho đối tượng "
+"*obj*, trong khi ``iter(C, sentinel)`` trả về một trình vòng lặp sẽ gọi đối "
+"tượng có thể gọi được *C* cho đến khi nó trả về *sentinel* để báo hiệu rằng "
+"trình vòng lặp đã hoàn thành."
+
+#: ../../whatsnew/2.2.rst:451
+#, fuzzy
+msgid ""
+"Python classes can define an :meth:`!__iter__` method, which should create "
+"and return a new iterator for the object; if the object is its own iterator,"
+" this method can just return ``self``.  In particular, iterators will "
+"usually be their own iterators.  Extension types implemented in C can "
+"implement a :c:member:`~PyTypeObject.tp_iter` function in order to return an"
+" iterator, and extension types that want to behave as iterators can define a"
+" :c:member:`~PyTypeObject.tp_iternext` function."
+msgstr ""
+"Các lớp Python có thể định nghĩa một phương thức :meth:`!__iter__`, phương "
+"thức này sẽ tạo và trả về một trình vòng lặp mới cho đối tượng; nếu đối "
+"tượng là trình lặp của chính nó, phương thức này chỉ có thể trả về ``self``."
+"  Đặc biệt, các trình vòng lặp thường sẽ là các trình vòng lặp của riêng "
+"chúng.  Các loại tiện ích mở rộng được triển khai trong C có thể triển khai "
+"hàm :c:member:`~PyTypeObject.tp_iter` để trả về một trình vòng lặp và các "
+"loại tiện ích mở rộng muốn hoạt động như các trình vòng lặp có thể xác định "
+"hàm :c:member:`~PyTypeObject.tp_iternext`."
+
+#: ../../whatsnew/2.2.rst:458
+#, fuzzy
+msgid ""
+"So, after all this, what do iterators actually do?  They have one required "
+"method, :meth:`next`, which takes no arguments and returns the next value.  "
+"When there are no more values to be returned, calling :meth:`next` should "
+"raise the :exc:`StopIteration` exception. ::"
+msgstr ""
+"Vì vậy, sau tất cả những điều này, các trình vòng lặp thực sự làm gì?  Họ có"
+" một phương thức bắt buộc, :meth:`next`, không có đối số và trả về giá trị "
+"tiếp theo.  Khi không còn giá trị nào được trả về, việc gọi :meth:`next` sẽ "
+"đưa ra ngoại lệ :exc:`StopIteration`. ::"
+
+#: ../../whatsnew/2.2.rst:463
+#, fuzzy
+msgid ""
+">>> L = [1,2,3]\n"
+">>> i = iter(L)\n"
+">>> print i\n"
+"<iterator object at 0x8116870>\n"
+">>> i.next()\n"
+"1\n"
+">>> i.next()\n"
+"2\n"
+">>> i.next()\n"
+"3\n"
+">>> i.next()\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in ?\n"
+"StopIteration\n"
+">>>"
+msgstr ""
+">>> L = [1,2,3]\n"
+">>> i = iter(L)\n"
+">>> in tôi\n"
+"<đối tượng iterator tại 0x8116870>\n"
+">>> i.next()\n"
+"1\n"
+">>> i.next()\n"
+"2\n"
+">>> i.next()\n"
+"3\n"
+">>> i.next()\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, ở định dạng ?\n"
+"Dừng lại\n"
+">>>"
+
+#: ../../whatsnew/2.2.rst:479
+#, fuzzy
+msgid ""
+"In 2.2, Python's :keyword:`for` statement no longer expects a sequence; it "
+"expects something for which :func:`iter` will return an iterator. For "
+"backward compatibility and convenience, an iterator is automatically "
+"constructed for sequences that don't implement :meth:`!__iter__` or a "
+":c:member:`~PyTypeObject.tp_iter` slot, so ``for i in [1,2,3]`` will still "
+"work.  Wherever the Python interpreter loops over a sequence, it's been "
+"changed to use the iterator protocol.  This means you can do things like "
+"this::"
+msgstr ""
+"Trong 2.2, câu lệnh :keyword:`for` của Python không còn mong đợi một chuỗi "
+"nữa; nó mong đợi thứ gì đó mà :func:`iter` sẽ trả về một trình vòng lặp. Để "
+"tương thích ngược và thuận tiện, một trình vòng lặp được tạo tự động cho các"
+" chuỗi không triển khai :meth:`!__iter__` hoặc khe "
+":c:member:`~PyTypeObject.tp_iter`, vì vậy ``for i in [1,2,3]`` sẽ vẫn hoạt "
+"động.  Bất cứ khi nào trình thông dịch Python lặp lại một chuỗi, nó sẽ được "
+"thay đổi để sử dụng giao thức lặp.  Điều này có nghĩa là bạn có thể làm "
+"những việc như thế này::"
+
+#: ../../whatsnew/2.2.rst:487
+#, fuzzy
+msgid ""
+">>> L = [1,2,3]\n"
+">>> i = iter(L)\n"
+">>> a,b,c = i\n"
+">>> a,b,c\n"
+"(1, 2, 3)"
+msgstr ""
+">>> L = [1,2,3]\n"
+">>> i = iter(L)\n"
+">>> a,b,c = i\n"
+">>> a,b,c\n"
+"(1, 2, 3)"
+
+#: ../../whatsnew/2.2.rst:493
+#, fuzzy
+msgid ""
+"Iterator support has been added to some of Python's basic types.   Calling "
+":func:`iter` on a dictionary will return an iterator which loops over its "
+"keys::"
+msgstr ""
+"Hỗ trợ Iterator đã được thêm vào một số loại cơ bản của Python.   Gọi "
+":func:`iter` trên từ điển sẽ trả về một trình vòng lặp lặp qua các khóa của "
+"nó ::"
+
+#: ../../whatsnew/2.2.rst:496
+#, python-brace-format, fuzzy
+msgid ""
+">>> m = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,\n"
+"...      'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}\n"
+">>> for key in m: print key, m[key]\n"
+"...\n"
+"Mar 3\n"
+"Feb 2\n"
+"Aug 8\n"
+"Sep 9\n"
+"May 5\n"
+"Jun 6\n"
+"Jul 7\n"
+"Jan 1\n"
+"Apr 4\n"
+"Nov 11\n"
+"Dec 12\n"
+"Oct 10"
+msgstr ""
+">>> m = {'Tháng 1': 1, 'Tháng 2': 2, 'Tháng 3': 3, 'Tháng 4': 4, 'Tháng 5': 5, 'Tháng 6': 6,\n"
+"... 'Tháng 7': 7, 'Tháng 8': 8, 'Tháng 9': 9, 'Tháng 10': 10, 'Tháng 11': 11, 'Tháng 12': 12}\n"
+">>> for key in m: print key, m[key]\n"
+"...\n"
+"3 tháng 3\n"
+"ngày 2 tháng 2\n"
+"ngày 8 tháng 8\n"
+"ngày 9 tháng 9\n"
+"ngày 5 tháng 5\n"
+"ngày 6 tháng 6\n"
+"ngày 7 tháng 7\n"
+"ngày 1 tháng 1\n"
+"ngày 4 tháng 4\n"
+"ngày 11 tháng 11\n"
+"ngày 12 tháng 12\n"
+"ngày 10 tháng 10"
+
+#: ../../whatsnew/2.2.rst:513
+#, fuzzy
+msgid ""
+"That's just the default behaviour.  If you want to iterate over keys, "
+"values, or key/value pairs, you can explicitly call the :meth:`!iterkeys`, "
+":meth:`!itervalues`, or :meth:`!iteritems` methods to get an appropriate "
+"iterator. In a minor related change, the :keyword:`in` operator now works on"
+" dictionaries, so ``key in dict`` is now equivalent to "
+"``dict.has_key(key)``."
+msgstr ""
+"Đó chỉ là hành vi mặc định.  Nếu bạn muốn lặp lại các khóa, giá trị hoặc cặp"
+" khóa/giá trị, bạn có thể gọi các phương thức :meth:`!iterkeys`, "
+":meth:`!itervalues` hoặc :meth:`!iteritems` một cách rõ ràng để có được một "
+"trình vòng lặp thích hợp. Trong một thay đổi nhỏ có liên quan, toán tử "
+":keyword:`in` hiện hoạt động trên từ điển, vì vậy ``key in dict`` hiện tương"
+" đương với ``dict.has_key(key)``."
+
+#: ../../whatsnew/2.2.rst:519
+#, fuzzy
+msgid ""
+"Files also provide an iterator, which calls the :meth:`readline` method "
+"until there are no more lines in the file.  This means you can now read each"
+" line of a file using code like this::"
+msgstr ""
+"Các tệp cũng cung cấp một trình lặp, gọi phương thức :meth:`readline` cho "
+"đến khi không còn dòng nào trong tệp.  Điều này có nghĩa là bây giờ bạn có "
+"thể đọc từng dòng của tệp bằng mã như thế này ::"
+
+#: ../../whatsnew/2.2.rst:523
+#, fuzzy
+msgid ""
+"for line in file:\n"
+"    # do something for each line\n"
+"    ..."
+msgstr ""
+"cho dòng trong tập tin:\n"
+"    # do một cái gì đó cho mỗi dòng\n"
+"    ..."
+
+#: ../../whatsnew/2.2.rst:527
+#, fuzzy
+msgid ""
+"Note that you can only go forward in an iterator; there's no way to get the "
+"previous element, reset the iterator, or make a copy of it. An iterator "
+"object could provide such additional capabilities, but the iterator protocol"
+" only requires a :meth:`next` method."
+msgstr ""
+"Lưu ý rằng bạn chỉ có thể tiếp tục trong một trình vòng lặp; không có cách "
+"nào để lấy phần tử trước đó, đặt lại trình vòng lặp hoặc tạo bản sao của "
+"phần tử đó. Đối tượng iterator có thể cung cấp các khả năng bổ sung như vậy,"
+" nhưng giao thức iterator chỉ yêu cầu phương thức :meth:`next`."
+
+#: ../../whatsnew/2.2.rst:535
+#, fuzzy
+msgid ":pep:`234` - Iterators"
+msgstr ":pep:`234` - Trình vòng lặp"
+
+#: ../../whatsnew/2.2.rst:536
+#, fuzzy
+msgid ""
+"Written by Ka-Ping Yee and GvR; implemented  by the Python Labs crew, mostly"
+" by GvR and Tim Peters."
+msgstr ""
+"Viết bởi Ka-Ping Yee và GvR; được triển khai bởi nhóm Python Labs, chủ yếu "
+"là bởi GvR và Tim Peters."
+
+#: ../../whatsnew/2.2.rst:543
+#, fuzzy
+msgid "PEP 255: Simple Generators"
+msgstr "PEP 255: Máy phát điện đơn giản"
+
+#: ../../whatsnew/2.2.rst:545
+#, fuzzy
+msgid ""
+"Generators are another new feature, one that interacts with the introduction"
+" of iterators."
+msgstr ""
+"Trình tạo là một tính năng mới khác, một tính năng tương tác với việc giới "
+"thiệu các trình vòng lặp."
+
+#: ../../whatsnew/2.2.rst:548
+#, fuzzy
+msgid ""
+"You're doubtless familiar with how function calls work in Python or C.  When"
+" you call a function, it gets a private namespace where its local variables "
+"are created.  When the function reaches a :keyword:`return` statement, the "
+"local variables are destroyed and the resulting value is returned to the "
+"caller.  A later call to the same function will get a fresh new set of local"
+" variables. But, what if the local variables weren't thrown away on exiting "
+"a function? What if you could later resume the function where it left off?  "
+"This is what generators provide; they can be thought of as resumable "
+"functions."
+msgstr ""
+"Bạn chắc chắn đã quen với cách hoạt động của các lệnh gọi hàm trong Python "
+"hoặc C. Khi bạn gọi một hàm, nó sẽ có một vùng tên riêng nơi các biến cục bộ"
+" của nó được tạo.  Khi hàm đạt đến câu lệnh :keyword:`return`, các biến cục "
+"bộ sẽ bị hủy và giá trị kết quả được trả về cho người gọi.  Lệnh gọi sau đó "
+"tới hàm tương tự sẽ nhận được một tập hợp biến cục bộ mới. Tuy nhiên, điều "
+"gì sẽ xảy ra nếu các biến cục bộ không bị loại bỏ khi thoát khỏi hàm? Điều "
+"gì sẽ xảy ra nếu sau này bạn có thể tiếp tục lại chức năng mà nó đã dừng "
+"lại?  Đây là những gì máy phát điện cung cấp; chúng có thể được coi là các "
+"chức năng có thể tiếp tục."
+
+#: ../../whatsnew/2.2.rst:557
+#, fuzzy
+msgid "Here's the simplest example of a generator function::"
+msgstr "Đây là ví dụ đơn giản nhất về hàm tạo::"
+
+#: ../../whatsnew/2.2.rst:559
+#, fuzzy
+msgid ""
+"def generate_ints(N):\n"
+"    for i in range(N):\n"
+"        yield i"
+msgstr ""
+"def tạo_ints (N):\n"
+"    cho tôi trong phạm vi (N):\n"
+"        nhường tôi"
+
+#: ../../whatsnew/2.2.rst:563
+#, fuzzy
+msgid ""
+"A new keyword, :keyword:`yield`, was introduced for generators.  Any "
+"function containing a :keyword:`!yield` statement is a generator function; "
+"this is detected by Python's bytecode compiler which compiles the function "
+"specially as a result.  Because a new keyword was introduced, generators "
+"must be explicitly enabled in a module by including a ``from __future__ "
+"import generators`` statement near the top of the module's source code.  In "
+"Python 2.3 this statement will become unnecessary."
+msgstr ""
+"Một từ khóa mới, :keyword:`yield`, đã được giới thiệu cho máy phát điện.  "
+"Bất kỳ hàm nào chứa câu lệnh :keyword:`!yield` đều là hàm tạo; điều này được"
+" phát hiện bởi trình biên dịch mã byte của Python để biên dịch hàm một cách "
+"đặc biệt.  Vì một từ khóa mới đã được giới thiệu nên trình tạo phải được "
+"kích hoạt rõ ràng trong mô-đun bằng cách đưa vào câu lệnh ``from __future__ "
+"import generators`` ở gần đầu mã nguồn của mô-đun.  Trong Python 2.3, câu "
+"lệnh này sẽ trở nên không cần thiết."
+
+#: ../../whatsnew/2.2.rst:571
+#, fuzzy
+msgid ""
+"When you call a generator function, it doesn't return a single value; "
+"instead it returns a generator object that supports the iterator protocol.  "
+"On executing the :keyword:`yield` statement, the generator outputs the value"
+" of ``i``, similar to a :keyword:`return` statement.  The big difference "
+"between :keyword:`!yield` and a :keyword:`!return` statement is that on "
+"reaching a :keyword:`!yield` the generator's state of execution is suspended"
+" and local variables are preserved.  On the next call to the generator's "
+"``next()`` method, the function will resume executing immediately after the "
+":keyword:`!yield` statement.  (For complicated reasons, the "
+":keyword:`!yield` statement isn't allowed inside the :keyword:`!try` block "
+"of a :keyword:`try`...\\ :keyword:`finally` statement; read :pep:`255` for a"
+" full explanation of the interaction between :keyword:`!yield` and "
+"exceptions.)"
+msgstr ""
+"Khi bạn gọi một hàm tạo, nó không trả về một giá trị nào; thay vào đó nó trả"
+" về một đối tượng trình tạo hỗ trợ giao thức vòng lặp.  Khi thực thi câu "
+"lệnh :keyword:`yield`, trình tạo sẽ xuất ra giá trị của ``i``, tương tự như "
+"câu lệnh :keyword:`return`.  Sự khác biệt lớn giữa câu lệnh "
+":keyword:`!yield` và câu lệnh :keyword:`!return` là khi đạt tới "
+":keyword:`!yield`, trạng thái thực thi của trình tạo bị tạm dừng và các biến"
+" cục bộ được giữ nguyên.  Trong lệnh gọi tiếp theo tới phương thức "
+"``next()`` của trình tạo, hàm sẽ tiếp tục thực thi ngay sau câu lệnh "
+":keyword:`!yield`.  (Vì những lý do phức tạp, câu lệnh :keyword:`!yield` "
+"không được phép bên trong khối :keyword:`!try` của câu lệnh "
+":keyword:`try`...\\ :keyword:`finally`; hãy đọc :pep:`255` để biết giải "
+"thích đầy đủ về sự tương tác giữa :keyword:`!yield` và các ngoại lệ.)"
+
+#: ../../whatsnew/2.2.rst:584
+#, fuzzy
+msgid "Here's a sample usage of the :func:`!generate_ints` generator::"
+msgstr "Đây là cách sử dụng mẫu của trình tạo :func:`!generate_ints`::"
+
+#: ../../whatsnew/2.2.rst:586
+#, fuzzy
+msgid ""
+">>> gen = generate_ints(3)\n"
+">>> gen\n"
+"<generator object at 0x8117f90>\n"
+">>> gen.next()\n"
+"0\n"
+">>> gen.next()\n"
+"1\n"
+">>> gen.next()\n"
+"2\n"
+">>> gen.next()\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in ?\n"
+"  File \"<stdin>\", line 2, in generate_ints\n"
+"StopIteration"
+msgstr ""
+">>> gen = generate_ints(3)\n"
+">>> thế hệ\n"
+"<đối tượng máy phát điện ở 0x8117f90>\n"
+">>> gen.next()\n"
+"0\n"
+">>> gen.next()\n"
+"1\n"
+">>> gen.next()\n"
+"2\n"
+">>> gen.next()\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, ở định dạng ?\n"
+"  Tệp \"<stdin>\", dòng 2, trong generate_ints\n"
+"Dừng lại"
+
+#: ../../whatsnew/2.2.rst:601
+#, fuzzy
+msgid ""
+"You could equally write ``for i in generate_ints(5)``, or ``a,b,c = "
+"generate_ints(3)``."
+msgstr ""
+"Bạn cũng có thể viết ``for i in generate_ints(5)`` hoặc ``a,b,c = "
+"generate_ints(3)``."
+
+#: ../../whatsnew/2.2.rst:604
+#, fuzzy
+msgid ""
+"Inside a generator function, the :keyword:`return` statement can only be "
+"used without a value, and signals the end of the procession of values; "
+"afterwards the generator cannot return any further values. "
+":keyword:`!return` with a value, such as ``return 5``, is a syntax error "
+"inside a generator function.  The end of the generator's results can also be"
+" indicated by raising :exc:`StopIteration` manually, or by just letting the "
+"flow of execution fall off the bottom of the function."
+msgstr ""
+"Bên trong hàm tạo, câu lệnh :keyword:`return` chỉ có thể được sử dụng mà "
+"không có giá trị và báo hiệu sự kết thúc của quá trình xử lý các giá trị; "
+"sau đó trình tạo không thể trả về bất kỳ giá trị nào nữa. :keyword:`!return`"
+" có giá trị, chẳng hạn như ``return 5``, là lỗi cú pháp bên trong hàm tạo.  "
+"Sự kết thúc của kết quả của trình tạo cũng có thể được biểu thị bằng cách "
+"tăng :exc:`StopIteration` theo cách thủ công hoặc chỉ bằng cách để luồng "
+"thực thi rơi ra khỏi phần dưới cùng của hàm."
+
+#: ../../whatsnew/2.2.rst:612
+#, fuzzy
+msgid ""
+"You could achieve the effect of generators manually by writing your own "
+"class and storing all the local variables of the generator as instance "
+"variables.  For example, returning a list of integers could be done by "
+"setting ``self.count`` to 0, and having the :meth:`next` method increment "
+"``self.count`` and return it. However, for a moderately complicated "
+"generator, writing a corresponding class would be much messier. "
+":file:`Lib/test/test_generators.py` contains a number of more interesting "
+"examples.  The simplest one implements an in-order traversal of a tree using"
+" generators recursively. ::"
+msgstr ""
+"Bạn có thể đạt được hiệu quả của trình tạo theo cách thủ công bằng cách viết"
+" lớp của riêng bạn và lưu trữ tất cả các biến cục bộ của trình tạo dưới dạng"
+" biến thể hiện.  Ví dụ: việc trả về một danh sách các số nguyên có thể được "
+"thực hiện bằng cách đặt ``self.count`` thành 0 và để phương thức "
+":meth:`next` tăng ``self.count`` rồi trả về nó. Tuy nhiên, đối với một trình"
+" tạo có độ phức tạp vừa phải, việc viết một lớp tương ứng sẽ rắc rối hơn "
+"nhiều. :file:`Lib/test/test_generators.py` chứa một số ví dụ thú vị hơn.  "
+"Cách đơn giản nhất là thực hiện duyệt cây theo thứ tự bằng cách sử dụng các "
+"trình tạo đệ quy. ::"
+
+#: ../../whatsnew/2.2.rst:621
+#, fuzzy
+msgid ""
+"# A recursive generator that generates Tree leaves in in-order.\n"
+"def inorder(t):\n"
+"    if t:\n"
+"        for x in inorder(t.left):\n"
+"            yield x\n"
+"        yield t.label\n"
+"        for x in inorder(t.right):\n"
+"            yield x"
+msgstr ""
+"Trình tạo đệ quy # A tạo ra các lá Cây theo thứ tự.\n"
+"thứ tự def (t):\n"
+"    nếu t:\n"
+"        cho x theo thứ tự (t.left):\n"
+"            năng suất x\n"
+"        năng suất t.label\n"
+"        cho x theo thứ tự (t.right):\n"
+"            năng suất x"
+
+#: ../../whatsnew/2.2.rst:630
+#, fuzzy
+msgid ""
+"Two other examples in :file:`Lib/test/test_generators.py` produce solutions "
+"for the N-Queens problem (placing $N$ queens on an $NxN$ chess board so that"
+" no queen threatens another) and the Knight's Tour (a route that takes a "
+"knight to every square of an $NxN$ chessboard without visiting any square "
+"twice)."
+msgstr ""
+"Hai ví dụ khác trong :file:`Lib/test/test_generators.py` đưa ra giải pháp "
+"cho bài toán N-Queens (đặt các quân hậu $N$ trên bàn cờ $NxN$ để không có "
+"quân hậu nào đe dọa quân hậu khác) và Chuyến tham quan của Hiệp sĩ (một lộ "
+"trình đưa một quân mã đến mọi ô của bàn cờ $NxN$ mà không ghé thăm bất kỳ ô "
+"nào hai lần)."
+
+#: ../../whatsnew/2.2.rst:635
+#, fuzzy
+msgid ""
+"The idea of generators comes from other programming languages, especially "
+"Icon (https://www2.cs.arizona.edu/icon/), where the idea of generators is "
+"central.  In Icon, every expression and function call behaves like a "
+"generator.  One example from \"An Overview of the Icon Programming "
+"Language\" at https://www2.cs.arizona.edu/icon/docs/ipd266.htm gives an idea"
+" of what this looks like::"
+msgstr ""
+"Ý tưởng về trình tạo xuất phát từ các ngôn ngữ lập trình khác, đặc biệt là "
+"Icon (https://www2.cs.arizona.edu/icon/), trong đó ý tưởng về trình tạo là "
+"trung tâm. Trong Icon, mọi lệnh gọi biểu thức và hàm hoạt động giống như một"
+" trình tạo. Một ví dụ từ \"Tổng quan về Ngôn ngữ lập trình biểu tượng\" tại "
+"https://www2.cs.arizona.edu/icon/docs/ipd266.htm đưa ra ý tưởng về giao diện"
+" này::"
+
+#: ../../whatsnew/2.2.rst:642
+#, fuzzy
+msgid ""
+"sentence := \"Store it in the neighboring harbor\"\n"
+"if (i := find(\"or\", sentence)) > 5 then write(i)"
+msgstr ""
+"câu := \"Cất nó ở bến cảng lân cận\"\n"
+"if (i := find(\"hoặc\", câu)) > 5 thì viết(i)"
+
+#: ../../whatsnew/2.2.rst:645
+#, fuzzy
+msgid ""
+"In Icon the :func:`!find` function returns the indexes at which the "
+"substring \"or\" is found: 3, 23, 33.  In the :keyword:`if` statement, ``i``"
+" is first assigned a value of 3, but 3 is less than 5, so the comparison "
+"fails, and Icon retries it with the second value of 23.  23 is greater than "
+"5, so the comparison now succeeds, and the code prints the value 23 to the "
+"screen."
+msgstr ""
+"Trong Icon, hàm :func:`!find` trả về các chỉ mục tại đó tìm thấy chuỗi con "
+"\"hoặc\": 3, 23, 33. Trong câu lệnh :keyword:`if`, ``i`` trước tiên được gán"
+" giá trị là 3, nhưng 3 nhỏ hơn 5, do đó so sánh không thành công và Icon thử"
+" lại với giá trị thứ hai là 23. 23 lớn hơn 5, do đó, phép so sánh bây giờ "
+"thành công và mã in giá trị 23 thành giá trị 23. màn hình."
+
+#: ../../whatsnew/2.2.rst:651
+#, fuzzy
+msgid ""
+"Python doesn't go nearly as far as Icon in adopting generators as a central "
+"concept.  Generators are considered a new part of the core Python language, "
+"but learning or using them isn't compulsory; if they don't solve any "
+"problems that you have, feel free to ignore them. One novel feature of "
+"Python's interface as compared to Icon's is that a generator's state is "
+"represented as a concrete object (the iterator) that can be passed around to"
+" other functions or stored in a data structure."
+msgstr ""
+"Python không tiến xa được như Icon trong việc áp dụng máy phát điện làm khái"
+" niệm trung tâm.  Trình tạo được coi là một phần mới của ngôn ngữ Python cốt"
+" lõi, nhưng việc học hoặc sử dụng chúng không bắt buộc; nếu chúng không giải"
+" quyết được bất kỳ vấn đề nào bạn gặp phải, hãy bỏ qua chúng. Một tính năng "
+"mới của giao diện Python so với Icon là trạng thái của trình tạo được biểu "
+"diễn dưới dạng một đối tượng cụ thể (trình vòng lặp) có thể được chuyển sang"
+" các hàm khác hoặc được lưu trữ trong cấu trúc dữ liệu."
+
+#: ../../whatsnew/2.2.rst:662
+#, fuzzy
+msgid ":pep:`255` - Simple Generators"
+msgstr ":pep:`255` - Máy phát điện đơn giản"
+
+#: ../../whatsnew/2.2.rst:663
+#, fuzzy
+msgid ""
+"Written by Neil Schemenauer, Tim Peters, Magnus Lie Hetland.  Implemented "
+"mostly by Neil Schemenauer and Tim Peters, with other fixes from the Python "
+"Labs crew."
+msgstr ""
+"Viết bởi Neil Schenauer, Tim Peters, Magnus Lie Hetland.  Được triển khai "
+"chủ yếu bởi Neil Schenauer và Tim Peters, cùng với các bản sửa lỗi khác từ "
+"nhóm Python Labs."
+
+#: ../../whatsnew/2.2.rst:670
+#, fuzzy
+msgid "PEP 237: Unifying Long Integers and Integers"
+msgstr "PEP 237: Thống nhất số nguyên dài và số nguyên"
+
+#: ../../whatsnew/2.2.rst:672
+#, fuzzy
+msgid ""
+"In recent versions, the distinction between regular integers, which are "
+"32-bit values on most machines, and long integers, which can be of arbitrary"
+" size, was becoming an annoyance.  For example, on platforms that support "
+"files larger than ``2**32`` bytes, the :meth:`!tell` method of file objects "
+"has to return a long integer. However, there were various bits of Python "
+"that expected plain integers and would raise an error if a long integer was "
+"provided instead.  For example, in Python 1.5, only regular integers could "
+"be used as a slice index, and ``'abc'[1L:]`` would raise a :exc:`TypeError` "
+"exception with the message 'slice index must be int'."
+msgstr ""
+"Trong các phiên bản gần đây, sự khác biệt giữa số nguyên thông thường, là "
+"giá trị 32 bit trên hầu hết các máy và số nguyên dài, có thể có kích thước "
+"tùy ý, đã trở thành một vấn đề khó chịu.  Ví dụ: trên nền tảng hỗ trợ các "
+"tệp lớn hơn ``2**32`` byte, phương thức :meth:`!tell` của các đối tượng tệp "
+"phải trả về một số nguyên dài. Tuy nhiên, có nhiều bit khác nhau của Python "
+"yêu cầu số nguyên đơn giản và sẽ gây ra lỗi nếu thay vào đó cung cấp số "
+"nguyên dài.  Ví dụ: trong Python 1.5, chỉ các số nguyên thông thường mới có "
+"thể được sử dụng làm chỉ mục lát cắt và ``'abc'[1L:]`` sẽ đưa ra một ngoại "
+"lệ :exc:`TypeError` với thông báo 'chỉ mục lát cắt phải là int'."
+
+#: ../../whatsnew/2.2.rst:682
+#, fuzzy
+msgid ""
+"Python 2.2 will shift values from short to long integers as required. The "
+"'L' suffix is no longer needed to indicate a long integer literal, as now "
+"the compiler will choose the appropriate type.  (Using the 'L' suffix will "
+"be discouraged in future 2.x versions of Python, triggering a warning in "
+"Python 2.4, and probably dropped in Python 3.0.)  Many operations that used "
+"to raise an :exc:`OverflowError` will now return a long integer as their "
+"result.  For example::"
+msgstr ""
+"Python 2.2 sẽ chuyển giá trị từ số nguyên ngắn sang số nguyên dài theo yêu "
+"cầu. Hậu tố 'L' không còn cần thiết để biểu thị một số nguyên dài, vì bây "
+"giờ trình biên dịch sẽ chọn loại thích hợp.  (Việc sử dụng hậu tố 'L' sẽ "
+"không được khuyến khích trong các phiên bản Python 2.x trong tương lai, gây "
+"ra cảnh báo trong Python 2.4 và có thể bị loại bỏ trong Python 3.0.) Nhiều "
+"thao tác từng dùng để tăng :exc:`OverflowError` giờ đây sẽ trả về một số "
+"nguyên dài làm kết quả.  Ví dụ::"
+
+#: ../../whatsnew/2.2.rst:690
+#, fuzzy
+msgid ""
+">>> 1234567890123\n"
+"1234567890123L\n"
+">>> 2 ** 64\n"
+"18446744073709551616L"
+msgstr ""
+">>> 1234567890123\n"
+"1234567890123L\n"
+">>> 2 ** 64\n"
+"18446744073709551616L"
+
+#: ../../whatsnew/2.2.rst:695
+#, fuzzy
+msgid ""
+"In most cases, integers and long integers will now be treated identically.  "
+"You can still distinguish them with the :func:`type` built-in function, but "
+"that's rarely needed."
+msgstr ""
+"Trong hầu hết các trường hợp, số nguyên và số nguyên dài bây giờ sẽ được xử "
+"lý giống hệt nhau.  Bạn vẫn có thể phân biệt chúng bằng chức năng tích hợp "
+"sẵn :func:`type`, nhưng điều đó hiếm khi cần thiết."
+
+#: ../../whatsnew/2.2.rst:702
+#, fuzzy
+msgid ":pep:`237` - Unifying Long Integers and Integers"
+msgstr ":pep:`237` - Hợp nhất số nguyên dài và số nguyên"
+
+#: ../../whatsnew/2.2.rst:703
+#, fuzzy
+msgid ""
+"Written by Moshe Zadka and Guido van Rossum.  Implemented mostly by Guido "
+"van Rossum."
+msgstr ""
+"Viết bởi Moshe Zadka và Guido van Rossum.  Được thực hiện chủ yếu bởi Guido "
+"van Rossum."
+
+#: ../../whatsnew/2.2.rst:710
+#, fuzzy
+msgid "PEP 238: Changing the Division Operator"
+msgstr "PEP 238: Thay đổi toán tử chia"
+
+#: ../../whatsnew/2.2.rst:712
+#, fuzzy
+msgid ""
+"The most controversial change in Python 2.2 heralds the start of an effort "
+"to fix an old design flaw that's been in Python from the beginning. "
+"Currently Python's division operator, ``/``, behaves like C's division "
+"operator when presented with two integer arguments: it returns an integer "
+"result that's truncated down when there would be a fractional part.  For "
+"example, ``3/2`` is 1, not 1.5, and ``(-1)/2`` is -1, not -0.5.  This means "
+"that the results of division can vary unexpectedly depending on the type of "
+"the two operands and because Python is dynamically typed, it can be "
+"difficult to determine the possible types of the operands."
+msgstr ""
+"Thay đổi gây tranh cãi nhất trong Python 2.2 báo trước sự khởi đầu của nỗ "
+"lực sửa lỗi thiết kế cũ đã có trong Python ngay từ đầu. Hiện tại, toán tử "
+"chia của Python, ``/``, hoạt động giống như toán tử chia của C khi được "
+"trình bày với hai đối số nguyên: nó trả về một kết quả số nguyên bị cắt bớt "
+"khi có phần phân số.  Ví dụ: ``3/2`` là 1, không phải 1,5 và ``(-1)/2`` là "
+"-1, không phải -0,5.  Điều này có nghĩa là kết quả của phép chia có thể thay"
+" đổi bất ngờ tùy thuộc vào loại của hai toán hạng và vì Python được gõ động "
+"nên có thể khó xác định các loại toán hạng có thể có."
+
+#: ../../whatsnew/2.2.rst:722
+#, fuzzy
+msgid ""
+"(The controversy is over whether this is *really* a design flaw, and whether"
+" it's worth breaking existing code to fix this.  It's caused endless "
+"discussions on python-dev, and in July 2001 erupted into a storm of acidly "
+"sarcastic postings on :newsgroup:`comp.lang.python`. I won't argue for "
+"either side here and will stick to describing what's  implemented in 2.2.  "
+"Read :pep:`238` for a summary of arguments and counter-arguments.)"
+msgstr ""
+"(Cuộc tranh cãi xoay quanh việc liệu đây có phải là một lỗi thiết kế của "
+"*really* hay không và liệu có đáng để phá mã hiện có để sửa lỗi này hay "
+"không. Nó đã gây ra các cuộc thảo luận bất tận về python-dev và vào tháng 7 "
+"năm 2001 đã nổ ra một cơn bão các bài đăng mang tính châm biếm gay gắt trên "
+":newsgroup:`comp.lang.python`. Tôi sẽ không tranh luận cho bên nào ở đây và "
+"sẽ tập trung vào việc mô tả những gì được triển khai trong 2.2. Đọc "
+":pep:`238` để biết tóm tắt các lập luận và lập luận phản biện.)"
+
+#: ../../whatsnew/2.2.rst:729
+#, fuzzy
+msgid ""
+"Because this change might break code, it's being introduced very gradually. "
+"Python 2.2 begins the transition, but the switch won't be complete until "
+"Python 3.0."
+msgstr ""
+"Vì thay đổi này có thể phá vỡ mã nên nó được áp dụng dần dần. Python 2.2 bắt"
+" đầu quá trình chuyển đổi, nhưng quá trình chuyển đổi sẽ không hoàn tất cho "
+"đến Python 3.0."
+
+#: ../../whatsnew/2.2.rst:733
+#, fuzzy
+msgid ""
+"First, I'll borrow some terminology from :pep:`238`.  \"True division\" is "
+"the division that most non-programmers are familiar with: 3/2 is 1.5, 1/4 is"
+" 0.25, and so forth.  \"Floor division\" is what Python's ``/`` operator "
+"currently does when given integer operands; the result is the floor of the "
+"value returned by true division.  \"Classic division\" is the current mixed "
+"behaviour of ``/``; it returns the result of floor division when the "
+"operands are integers, and returns the result of true division when one of "
+"the operands is a floating-point number."
+msgstr ""
+"Đầu tiên, tôi sẽ mượn một số thuật ngữ từ :pep:`238`.  \"Chia thực sự\" là "
+"phép chia mà hầu hết những người không phải lập trình viên đều quen thuộc: "
+"3/2 là 1,5, 1/4 là 0,25, v.v.  \"Chia tầng\" là điều mà toán tử ``/`` của "
+"Python hiện thực hiện khi cho các toán hạng số nguyên; kết quả là giá trị "
+"sàn được trả về bằng phép chia thực.  \"Phân chia cổ điển\" là hành vi hỗn "
+"hợp hiện tại của ``/``; nó trả về kết quả của phép chia sàn khi toán hạng là"
+" số nguyên và trả về kết quả của phép chia thực khi một trong các toán hạng "
+"là số dấu phẩy động."
+
+#: ../../whatsnew/2.2.rst:741
+#, fuzzy
+msgid "Here are the changes 2.2 introduces:"
+msgstr "Dưới đây là những thay đổi 2.2 giới thiệu:"
+
+#: ../../whatsnew/2.2.rst:743
+#, fuzzy
+msgid ""
+"A new operator, ``//``, is the floor division operator. (Yes, we know it "
+"looks like C++'s comment symbol.)  ``//`` *always* performs floor division "
+"no matter what the types of its operands are, so ``1 // 2`` is 0 and ``1.0 "
+"// 2.0`` is also 0.0."
+msgstr ""
+"Toán tử mới, ``//``, là toán tử phân chia tầng. (Đúng, chúng tôi biết nó "
+"trông giống biểu tượng nhận xét của C++.) ``//`` *always* thực hiện phép "
+"chia tầng bất kể loại toán hạng của nó là gì, vì vậy ``1 // 2`` là 0 và "
+"``1.0 // 2.0`` cũng là 0,0."
+
+#: ../../whatsnew/2.2.rst:748
+#, fuzzy
+msgid ""
+"``//`` is always available in Python 2.2; you don't need to enable it using "
+"a ``__future__`` statement."
+msgstr ""
+"``//`` luôn có sẵn trong Python 2.2; bạn không cần kích hoạt nó bằng câu "
+"lệnh ``__future__``."
+
+#: ../../whatsnew/2.2.rst:751
+#, fuzzy
+msgid ""
+"By including a ``from __future__ import division`` in a module, the ``/`` "
+"operator will be changed to return the result of true division, so ``1/2`` "
+"is 0.5.  Without the ``__future__`` statement, ``/`` still means classic "
+"division. The default meaning of ``/`` will not change until Python 3.0."
+msgstr ""
+"Bằng cách đưa ``from __future__ import division`` vào mô-đun, toán tử ``/`` "
+"sẽ được thay đổi để trả về kết quả của phép chia thực, vì vậy ``1/2`` là "
+"0,5.  Nếu không có câu lệnh ``__future__``, ``/`` vẫn có nghĩa là phép chia "
+"cổ điển. Ý nghĩa mặc định của ``/`` sẽ không thay đổi cho đến khi Python "
+"3.0."
+
+#: ../../whatsnew/2.2.rst:756
+#, fuzzy
+msgid ""
+"Classes can define methods called :meth:`~object.__truediv__` and "
+":meth:`~object.__floordiv__` to overload the two division operators.  At the"
+" C level, there are also slots in the :c:type:`PyNumberMethods` structure so"
+" extension types can define the two operators."
+msgstr ""
+"Các lớp có thể định nghĩa các phương thức được gọi là "
+":meth:`~object.__truediv__` và :meth:`~object.__floordiv__` để làm quá tải "
+"hai toán tử chia.  Ở cấp độ C, cũng có các vị trí trong cấu trúc "
+":c:type:`PyNumberMethods` để các loại tiện ích mở rộng có thể xác định hai "
+"toán tử."
+
+#: ../../whatsnew/2.2.rst:761
+#, fuzzy
+msgid ""
+"Python 2.2 supports some command-line arguments for testing whether code "
+"will work with the changed division semantics.  Running python with "
+":option:`!-Q warn` will cause a warning to be issued whenever division is "
+"applied to two integers.  You can use this to find code that's affected by "
+"the change and fix it.  By default, Python 2.2 will simply perform classic "
+"division without a warning; the warning will be turned on by default in "
+"Python 2.3."
+msgstr ""
+"Python 2.2 hỗ trợ một số đối số dòng lệnh để kiểm tra xem mã có hoạt động "
+"với ngữ nghĩa phân chia đã thay đổi hay không.  Chạy python với :option:`!-Q"
+" warn` sẽ gây ra cảnh báo mỗi khi áp dụng phép chia cho hai số nguyên.  Bạn "
+"có thể sử dụng tính năng này để tìm mã bị ảnh hưởng bởi thay đổi và khắc "
+"phục mã đó.  Theo mặc định, Python 2.2 sẽ chỉ thực hiện phép chia cổ điển mà"
+" không có cảnh báo; cảnh báo sẽ được bật theo mặc định trong Python 2.3."
+
+#: ../../whatsnew/2.2.rst:771
+#, fuzzy
+msgid ":pep:`238` - Changing the Division Operator"
+msgstr ":pep:`238` - Thay đổi toán tử chia"
+
+#: ../../whatsnew/2.2.rst:772
+#, fuzzy
+msgid ""
+"Written by Moshe Zadka and  Guido van Rossum.  Implemented by Guido van "
+"Rossum.."
+msgstr ""
+"Viết bởi Moshe Zadka và Guido van Rossum.  Được thực hiện bởi Guido van "
+"Rossum.."
+
+#: ../../whatsnew/2.2.rst:778
+#, fuzzy
+msgid "Unicode Changes"
+msgstr "Thay đổi Unicode"
+
+#: ../../whatsnew/2.2.rst:780
+#, fuzzy
+msgid ""
+"Python's Unicode support has been enhanced a bit in 2.2.  Unicode strings "
+"are usually stored as UCS-2, as 16-bit unsigned integers. Python 2.2 can "
+"also be compiled to use UCS-4, 32-bit unsigned integers, as its internal "
+"encoding by supplying :option:`!--enable-unicode=ucs4` to the configure "
+"script.   (It's also possible to specify :option:`!--disable-unicode` to "
+"completely disable Unicode support.)"
+msgstr ""
+"Hỗ trợ Unicode của Python đã được cải thiện một chút trong phiên bản 2.2.  "
+"Chuỗi Unicode thường được lưu trữ dưới dạng UCS-2, dưới dạng số nguyên không"
+" dấu 16 bit. Python 2.2 cũng có thể được biên dịch để sử dụng UCS-4, số "
+"nguyên không dấu 32 bit, làm mã hóa nội bộ bằng cách cung cấp :option:`!--"
+"enable-unicode=ucs4` cho tập lệnh cấu hình.   (Cũng có thể chỉ định "
+":option:`!--disable-unicode` để tắt hoàn toàn hỗ trợ Unicode.)"
+
+#: ../../whatsnew/2.2.rst:787
+#, fuzzy
+msgid ""
+"When built to use UCS-4 (a \"wide Python\"), the interpreter can natively "
+"handle Unicode characters from U+000000 to U+110000, so the range of legal "
+"values for the :func:`!unichr` function is expanded accordingly.  Using an "
+"interpreter compiled to use UCS-2 (a \"narrow Python\"), values greater than"
+" 65535 will still cause :func:`!unichr` to raise a :exc:`ValueError` "
+"exception. This is all described in :pep:`261`, \"Support for 'wide' Unicode"
+" characters\"; consult it for further details."
+msgstr ""
+"Khi được xây dựng để sử dụng UCS-4 (\"Python rộng\"), trình thông dịch có "
+"thể xử lý nguyên bản các ký tự Unicode từ U+000000 đến U+110000, do đó phạm "
+"vi giá trị pháp lý cho hàm :func:`!unichr` được mở rộng tương ứng.  Sử dụng "
+"trình thông dịch được biên dịch để sử dụng UCS-2 (\"Python hẹp\"), các giá "
+"trị lớn hơn 65535 vẫn sẽ khiến :func:`!unichr` đưa ra ngoại lệ "
+":exc:`ValueError`. Tất cả điều này được mô tả trong :pep:`261`, \"Hỗ trợ các"
+" ký tự Unicode 'rộng'\"; tham khảo ý kiến ​​​​nó để biết thêm chi tiết."
+
+#: ../../whatsnew/2.2.rst:795
+#, fuzzy
+msgid ""
+"Another change is simpler to explain. Since their introduction, Unicode "
+"strings have supported an :meth:`!encode` method to convert the string to a "
+"selected encoding such as UTF-8 or Latin-1.  A symmetric "
+"``decode([*encoding*])`` method has been added to 8-bit strings (though not "
+"to Unicode strings) in 2.2. :meth:`!decode` assumes that the string is in "
+"the specified encoding and decodes it, returning whatever is returned by the"
+" codec."
+msgstr ""
+"Một thay đổi khác dễ giải thích hơn. Kể từ khi được giới thiệu, chuỗi "
+"Unicode đã hỗ trợ phương thức :meth:`!encode` để chuyển đổi chuỗi thành mã "
+"hóa đã chọn, chẳng hạn như UTF-8 hoặc Latin-1.  Phương thức "
+"``decode([*encoding*])`` đối xứng đã được thêm vào chuỗi 8 bit (mặc dù không"
+" phải chuỗi Unicode) trong 2.2. :meth:`!decode` giả định rằng chuỗi đó nằm "
+"trong mã hóa được chỉ định và giải mã nó, trả về bất cứ thứ gì được codec "
+"trả về."
+
+#: ../../whatsnew/2.2.rst:802
+#, fuzzy
+msgid ""
+"Using this new feature, codecs have been added for tasks not directly "
+"related to Unicode.  For example, codecs have been added for uu-encoding, "
+"MIME's base64 encoding, and compression with the :mod:`zlib` module::"
+msgstr ""
+"Sử dụng tính năng mới này, codec đã được thêm vào cho các tác vụ không liên "
+"quan trực tiếp đến Unicode.  Ví dụ: codec đã được thêm vào để mã hóa uu, mã "
+"hóa base64 của MIME và nén bằng mô-đun :mod:`zlib`::"
+
+#: ../../whatsnew/2.2.rst:806
+#, fuzzy
+msgid ""
+">>> s = \"\"\"Here is a lengthy piece of redundant, overly verbose,\n"
+"... and repetitive text.\n"
+"... \"\"\"\n"
+">>> data = s.encode('zlib')\n"
+">>> data\n"
+"'x\\x9c\\r\\xc9\\xc1\\r\\x80 \\x10\\x04\\xc0?Ul...'\n"
+">>> data.decode('zlib')\n"
+"'Here is a lengthy piece of redundant, overly verbose,\\nand repetitive text.\\n'\n"
+">>> print s.encode('uu')\n"
+"begin 666 <data>\n"
+"M2&5R92!I<R!A(&QE;F=T:'D@<&EE8V4@;V8@<F5D=6YD86YT+\"!O=F5R;'D@\n"
+">=F5R8F]S92P*86YD(')E<&5T:71I=F4@=&5X=\"X*\n"
+"\n"
+"end\n"
+">>> \"sheesh\".encode('rot-13')\n"
+"'furrfu'"
+msgstr ""
+">>> s = \"\"\"Đây là một đoạn dài dòng dư thừa, quá dài dòng,\n"
+"... và văn bản lặp đi lặp lại.\n"
+"... \"\"\"\n"
+">>> data = s.encode('zlib')\n"
+">>> dữ liệu\n"
+"'x\\x9c\\r\\xc9\\xc1\\r\\x80 \\x10\\x04\\xc0?Ul...'\n"
+">>> data.decode('zlib')\n"
+"'Đây là một đoạn văn bản dài dòng, thừa thãi, quá dài dòng và lặp đi lặp lại.\\n'\n"
+">>> in s.encode('uu')\n"
+"bắt đầu 666 <dữ liệu>\n"
+"M2&5R92!I<R!A(&QE;F=T:'D@<&EE8V4@;V8@<F5D=6YD86YT+\"!O=F5R;'D@\n"
+">=F5R8F]S92P*86YD(')E<&5T:71I=F4@=&5X=\"X*\n"
+"\n"
+"kết thúc\n"
+">>> \"sheesh\".encode('rot-13')\n"
+"'furrfu'"
+
+#: ../../whatsnew/2.2.rst:823
+#, fuzzy
+msgid ""
+"To convert a class instance to Unicode, a :meth:`!__unicode__` method can be"
+" defined by a class, analogous to :meth:`!__str__`."
+msgstr ""
+"Để chuyển đổi một thể hiện của lớp thành Unicode, phương thức "
+":meth:`!__unicode__` có thể được định nghĩa bởi một lớp, tương tự như "
+":meth:`!__str__`."
+
+#: ../../whatsnew/2.2.rst:826
+#, fuzzy
+msgid ""
+":meth:`!encode`, :meth:`!decode`, and :meth:`!__unicode__` were implemented "
+"by Marc-André Lemburg.  The changes to support using UCS-4 internally were "
+"implemented by Fredrik Lundh and Martin von Löwis."
+msgstr ""
+":meth:`!encode`, :meth:`!decode` và :meth:`!__unicode__` được triển khai bởi"
+" Marc-André Lemburg.  Những thay đổi nhằm hỗ trợ việc sử dụng UCS-4 nội bộ "
+"được thực hiện bởi Fredrik Lundh và Martin von Löwis."
+
+#: ../../whatsnew/2.2.rst:833
+#, fuzzy
+msgid ":pep:`261` - Support for 'wide' Unicode characters"
+msgstr ":pep:`261` - Hỗ trợ các ký tự Unicode 'rộng'"
+
+#: ../../whatsnew/2.2.rst:834
+#, fuzzy
+msgid "Written by Paul Prescod."
+msgstr "Viết bởi Paul Prescod."
+
+#: ../../whatsnew/2.2.rst:840
+#, fuzzy
+msgid "PEP 227: Nested Scopes"
+msgstr "PEP 227: Phạm vi lồng nhau"
+
+#: ../../whatsnew/2.2.rst:842
+#, fuzzy
+msgid ""
+"In Python 2.1, statically nested scopes were added as an optional feature, "
+"to be enabled by a ``from __future__ import nested_scopes`` directive.  In "
+"2.2 nested scopes no longer need to be specially enabled, and are now always"
+" present.  The rest of this section is a copy of the description of nested "
+"scopes from my \"What's New in Python 2.1\" document; if you read it when "
+"2.1 came out, you can skip the rest of this section."
+msgstr ""
+"Trong Python 2.1, các phạm vi lồng nhau tĩnh đã được thêm dưới dạng tính "
+"năng tùy chọn, được kích hoạt bằng lệnh ``from __future__ import "
+"nested_scopes``.  Trong 2.2 phạm vi lồng nhau không còn cần phải được kích "
+"hoạt đặc biệt nữa và hiện luôn có sẵn.  Phần còn lại của phần này là bản sao"
+" mô tả về các phạm vi lồng nhau từ tài liệu \"Có gì mới trong Python 2.1\" "
+"của tôi; nếu bạn đọc nó khi 2.1 xuất hiện, bạn có thể bỏ qua phần còn lại "
+"của phần này."
+
+#: ../../whatsnew/2.2.rst:849
+#, fuzzy
+msgid ""
+"The largest change introduced in Python 2.1, and made complete in 2.2, is to"
+" Python's scoping rules.  In Python 2.0, at any given time there are at most"
+" three namespaces used to look up variable names: local, module-level, and "
+"the built-in namespace.  This often surprised people because it didn't match"
+" their intuitive expectations.  For example, a nested recursive function "
+"definition doesn't work::"
+msgstr ""
+"Thay đổi lớn nhất được giới thiệu trong Python 2.1 và được hoàn thiện trong "
+"2.2 là các quy tắc phạm vi của Python.  Trong Python 2.0, tại bất kỳ thời "
+"điểm nào cũng có tối đa ba không gian tên được sử dụng để tra cứu tên biến: "
+"cục bộ, cấp độ mô-đun và không gian tên tích hợp.  Điều này thường khiến mọi"
+" người ngạc nhiên vì nó không phù hợp với mong đợi trực quan của họ.  Ví dụ:"
+" định nghĩa hàm đệ quy lồng nhau không hoạt động::"
+
+#: ../../whatsnew/2.2.rst:856
+#, fuzzy
+msgid ""
+"def f():\n"
+"    ...\n"
+"    def g(value):\n"
+"        ...\n"
+"        return g(value-1) + 1\n"
+"    ..."
+msgstr ""
+"chắc chắn f():\n"
+"    ...\n"
+"    def g(giá trị):\n"
+"        ...\n"
+"        trả về g(giá trị-1) + 1\n"
+"    ..."
+
+#: ../../whatsnew/2.2.rst:863
+#, fuzzy
+msgid ""
+"The function :func:`!g` will always raise a :exc:`NameError` exception, "
+"because the binding of the name ``g`` isn't in either its local namespace or"
+" in the module-level namespace.  This isn't much of a problem in practice "
+"(how often do you recursively define interior functions like this?), but "
+"this also made using the :keyword:`lambda` expression clumsier, and this was"
+" a problem in practice. In code which uses :keyword:`!lambda` you can often "
+"find local variables being copied by passing them as the default values of "
+"arguments. ::"
+msgstr ""
+"Hàm :func:`!g` sẽ luôn đưa ra một ngoại lệ :exc:`NameError`, vì ràng buộc "
+"của tên ``g`` không nằm trong không gian tên cục bộ hoặc trong không gian "
+"tên cấp mô-đun.  Đây không phải là vấn đề lớn trong thực tế (bạn có thường "
+"xuyên xác định đệ quy các hàm bên trong như thế này không?), nhưng điều này "
+"cũng khiến việc sử dụng biểu thức :keyword:`lambda` trở nên vụng về hơn và "
+"đây là một vấn đề trong thực tế. Trong mã sử dụng :keyword:`!lambda`, bạn "
+"thường có thể thấy các biến cục bộ đang được sao chép bằng cách chuyển chúng"
+" làm giá trị mặc định của đối số. ::"
+
+#: ../../whatsnew/2.2.rst:871
+#, fuzzy
+msgid ""
+"def find(self, name):\n"
+"    \"Return list of any entries equal to 'name'\"\n"
+"    L = filter(lambda x, name=name: x == name,\n"
+"               self.list_attribute)\n"
+"    return L"
+msgstr ""
+"def find(bản thân, tên):\n"
+"    \"Trả về danh sách của bất kỳ mục nào bằng 'tên'\"\n"
+"    L = filter(lambda x, name=name: x == name,\n"
+"               self.list_attribute)\n"
+"    trả lại L"
+
+#: ../../whatsnew/2.2.rst:877
+#, fuzzy
+msgid ""
+"The readability of Python code written in a strongly functional style "
+"suffers greatly as a result."
+msgstr ""
+"Kết quả là khả năng đọc mã Python được viết theo phong cách chức năng mạnh "
+"mẽ bị ảnh hưởng rất nhiều."
+
+#: ../../whatsnew/2.2.rst:880
+#, fuzzy
+msgid ""
+"The most significant change to Python 2.2 is that static scoping has been "
+"added to the language to fix this problem.  As a first effect, the "
+"``name=name`` default argument is now unnecessary in the above example.  Put"
+" simply, when a given variable name is not assigned a value within a "
+"function (by an assignment, or the :keyword:`def`, :keyword:`class`, or "
+":keyword:`import` statements), references to the variable will be looked up "
+"in the local namespace of the enclosing scope.  A more detailed explanation "
+"of the rules, and a dissection of the implementation, can be found in the "
+"PEP."
+msgstr ""
+"Thay đổi quan trọng nhất đối với Python 2.2 là phạm vi tĩnh đã được thêm vào"
+" ngôn ngữ để khắc phục sự cố này.  Hiệu ứng đầu tiên là đối số mặc định "
+"``name=name`` hiện không còn cần thiết trong ví dụ trên.  Nói một cách đơn "
+"giản, khi một tên biến nhất định không được gán giá trị trong một hàm (bằng "
+"một phép gán hoặc các câu lệnh :keyword:`def`, :keyword:`class` hoặc "
+":keyword:`import`), các tham chiếu đến biến đó sẽ được tra cứu trong không "
+"gian tên cục bộ của phạm vi kèm theo.  Bạn có thể tìm thấy giải thích chi "
+"tiết hơn về các quy tắc và phân tích cách triển khai trong PEP."
+
+#: ../../whatsnew/2.2.rst:889
+#, fuzzy
+msgid ""
+"This change may cause some compatibility problems for code where the same "
+"variable name is used both at the module level and as a local variable "
+"within a function that contains further function definitions. This seems "
+"rather unlikely though, since such code would have been pretty confusing to "
+"read in the first place."
+msgstr ""
+"Thay đổi này có thể gây ra một số vấn đề về tính tương thích đối với mã "
+"trong đó tên biến giống nhau được sử dụng cả ở cấp mô-đun và dưới dạng biến "
+"cục bộ trong hàm chứa các định nghĩa hàm khác. Tuy nhiên, điều này có vẻ khó"
+" xảy ra vì mã như vậy sẽ khá khó hiểu ngay từ đầu."
+
+#: ../../whatsnew/2.2.rst:895
+#, fuzzy
+msgid ""
+"One side effect of the change is that the ``from module import *`` and "
+"``exec`` statements have been made illegal inside a function scope under "
+"certain conditions.  The Python reference manual has said all along that "
+"``from module import *`` is only legal at the top level of a module, but the"
+" CPython interpreter has never enforced this before.  As part of the "
+"implementation of nested scopes, the compiler which turns Python source into"
+" bytecodes has to generate different code to access variables in a "
+"containing scope.  ``from module import *`` and ``exec`` make it impossible "
+"for the compiler to figure this out, because they add names to the local "
+"namespace that are unknowable at compile time. Therefore, if a function "
+"contains function definitions or :keyword:`lambda` expressions with free "
+"variables, the compiler will flag this by raising a :exc:`SyntaxError` "
+"exception."
+msgstr ""
+"Một tác dụng phụ của sự thay đổi này là các câu lệnh ``from module import "
+"*`` và ``exec`` đã bị coi là bất hợp pháp trong phạm vi chức năng trong một "
+"số điều kiện nhất định.  Hướng dẫn tham khảo Python đã nói rõ rằng ``from "
+"module import *`` chỉ hợp pháp ở cấp cao nhất của mô-đun, nhưng trình thông "
+"dịch CPython chưa bao giờ thực thi điều này trước đây.  Là một phần của việc"
+" triển khai các phạm vi lồng nhau, trình biên dịch biến nguồn Python thành "
+"mã byte phải tạo mã khác nhau để truy cập các biến trong phạm vi chứa.  "
+"``from module import *`` và ``exec`` khiến trình biên dịch không thể tìm ra "
+"điều này vì chúng thêm tên vào không gian tên cục bộ mà không thể biết được "
+"tại thời điểm biên dịch. Do đó, nếu một hàm chứa các định nghĩa hàm hoặc "
+"biểu thức :keyword:`lambda` với các biến tự do, trình biên dịch sẽ gắn cờ "
+"hàm này bằng cách đưa ra một ngoại lệ :exc:`SyntaxError`."
+
+#: ../../whatsnew/2.2.rst:908
+#, fuzzy
+msgid "To make the preceding explanation a bit clearer, here's an example::"
+msgstr ""
+"Để làm cho lời giải thích trước đó rõ ràng hơn một chút, đây là một ví dụ::"
+
+#: ../../whatsnew/2.2.rst:910
+#, fuzzy
+msgid ""
+"x = 1\n"
+"def f():\n"
+"    # The next line is a syntax error\n"
+"    exec 'x=2'\n"
+"    def g():\n"
+"        return x"
+msgstr ""
+"x = 1\n"
+"chắc chắn f():\n"
+"    # The dòng tiếp theo là lỗi cú pháp\n"
+"    thực thi 'x=2'\n"
+"    chắc chắn g():\n"
+"        trả lại x"
+
+#: ../../whatsnew/2.2.rst:917
+#, fuzzy
+msgid ""
+"Line 4 containing the ``exec`` statement is a syntax error, since ``exec`` "
+"would define a new local variable named ``x`` whose value should be accessed"
+" by :func:`!g`."
+msgstr ""
+"Dòng 4 chứa câu lệnh ``exec`` là một lỗi cú pháp, vì ``exec`` sẽ xác định "
+"một biến cục bộ mới có tên là ``x`` mà giá trị của nó phải được truy cập bởi"
+" :func:`!g`."
+
+#: ../../whatsnew/2.2.rst:921
+#, fuzzy
+msgid ""
+"This shouldn't be much of a limitation, since ``exec`` is rarely used in "
+"most Python code (and when it is used, it's often a sign of a poor design "
+"anyway)."
+msgstr ""
+"Đây không phải là một hạn chế lớn, vì ``exec`` hiếm khi được sử dụng trong "
+"hầu hết các mã Python (và khi nó được sử dụng, đó thường là dấu hiệu của một"
+" thiết kế kém)."
+
+#: ../../whatsnew/2.2.rst:928
+#, fuzzy
+msgid ":pep:`227` - Statically Nested Scopes"
+msgstr ":pep:`227` - Phạm vi lồng nhau tĩnh"
+
+#: ../../whatsnew/2.2.rst:929
+#, fuzzy
+msgid "Written and implemented by Jeremy Hylton."
+msgstr "Được viết và thực hiện bởi Jeremy Hylton."
+
+#: ../../whatsnew/2.2.rst:935
+#, fuzzy
+msgid "New and Improved Modules"
+msgstr "Các mô-đun mới và cải tiến"
+
+#: ../../whatsnew/2.2.rst:937
+#, fuzzy
+msgid ""
+"The :mod:`xmlrpclib <xmlrpc.client>` module was contributed to the standard "
+"library by Fredrik Lundh, providing support for writing XML-RPC clients.  "
+"XML-RPC is a simple remote procedure call protocol built on top of HTTP and "
+"XML. For example, the following snippet retrieves a list of RSS channels "
+"from the O'Reilly Network, and then  lists the recent headlines for one "
+"channel::"
+msgstr ""
+"Mô-đun :mod:`xmlrpclib <xmlrpc.client>` được Fredrik Lundh đóng góp vào thư "
+"viện tiêu chuẩn, cung cấp hỗ trợ cho việc viết ứng dụng khách XML-RPC.  XML-"
+"RPC là một giao thức gọi thủ tục từ xa đơn giản được xây dựng dựa trên HTTP "
+"và XML. Ví dụ: đoạn mã sau truy xuất danh sách các kênh RSS từ Mạng O'Reilly"
+" và sau đó liệt kê các tiêu đề gần đây cho một kênh::"
+
+#: ../../whatsnew/2.2.rst:943
+#, python-brace-format, fuzzy
+msgid ""
+"import xmlrpclib\n"
+"s = xmlrpclib.Server(\n"
+"      'http://www.oreillynet.com/meerkat/xml-rpc/server.php')\n"
+"channels = s.meerkat.getChannels()\n"
+"# channels is a list of dictionaries, like this:\n"
+"# [{'id': 4, 'title': 'Freshmeat Daily News'}\n"
+"#  {'id': 190, 'title': '32Bits Online'},\n"
+"#  {'id': 4549, 'title': '3DGamers'}, ... ]\n"
+"\n"
+"# Get the items for one channel\n"
+"items = s.meerkat.getItems( {'channel': 4} )\n"
+"\n"
+"# 'items' is another list of dictionaries, like this:\n"
+"# [{'link': 'http://freshmeat.net/releases/52719/',\n"
+"#   'description': 'A utility which converts HTML to XSL FO.',\n"
+"#   'title': 'html2fo 0.3 (Default)'}, ... ]"
+msgstr ""
+"nhập xmlrpclib\n"
+"s = xmlrpclib.Server(\n"
+"      'http://www.oreillynet.com/meerkat/xml-rpc/server.php')\n"
+"kênh = s.meerkat.getChannels()\n"
+"# channels là danh sách các từ điển, như thế này:\n"
+"# [{'id': 4, 'title': 'Tin tức hàng ngày về thịt tươi'}\n"
+"# {'id': 190, 'title': '32Bits Online'},\n"
+"# {'id': 4549, 'title': '3DGamers'}, ... ]\n"
+"\n"
+"# Get các mục cho một kênh\n"
+"items = s.meerkat.getItems( {'channel': 4} )\n"
+"\n"
+"# 'items' là một danh sách từ điển khác, như thế này:\n"
+"# [{'liên kết': 'http://freshmeat.net/releases/52719/',\n"
+"# 'description': 'Một tiện ích chuyển đổi HTML thành XSL FO.',\n"
+"# 'tiêu đề': 'html2fo 0.3 (Mặc định)'}, ... ]"
+
+#: ../../whatsnew/2.2.rst:960
+#, fuzzy
+msgid ""
+"The :mod:`SimpleXMLRPCServer <xmlrpc.server>` module makes it easy to create"
+" straightforward XML-RPC servers.  See http://xmlrpc.scripting.com/ for more"
+" information about XML-RPC."
+msgstr ""
+"Mô-đun :mod:`SimpleXMLRPCServer <xmlrpc.server>` giúp dễ dàng tạo các máy "
+"chủ XML-RPC đơn giản.  Xem http://xmlrpc.scripting.com/ để biết thêm thông "
+"tin về XML-RPC."
+
+#: ../../whatsnew/2.2.rst:963
+#, fuzzy
+msgid ""
+"The new :mod:`hmac` module implements the HMAC algorithm described by "
+":rfc:`2104`. (Contributed by Gerhard Häring.)"
+msgstr ""
+"Mô-đun :mod:`hmac` mới triển khai thuật toán HMAC được mô tả bởi "
+":rfc:`2104`. (Được đóng góp bởi Gerhard Häring.)"
+
+#: ../../whatsnew/2.2.rst:966
+#, fuzzy
+msgid ""
+"Several functions that originally returned lengthy tuples now return pseudo-"
+"sequences that still behave like tuples but also have mnemonic attributes "
+"such as :attr:`!memberst_mtime` or :attr:`~time.struct_time.tm_year`. The "
+"enhanced functions include :func:`~os.stat`, :func:`~os.fstat`, "
+":func:`~os.statvfs`, and :func:`~os.fstatvfs` in the :mod:`os` module, and "
+":func:`~time.localtime`, :func:`~time.gmtime`, and :func:`~time.strptime` in"
+" the :mod:`time` module."
+msgstr ""
+"Một số hàm ban đầu trả về các bộ dữ liệu dài giờ đây trả về các chuỗi giả "
+"vẫn hoạt động giống như các bộ dữ liệu nhưng cũng có các thuộc tính ghi nhớ "
+"như :attr:`!memberst_mtime` hoặc :attr:`~time.struct_time.tm_year`. Các chức"
+" năng nâng cao bao gồm :func:`~os.stat`, :func:`~os.fstat`, "
+":func:`~os.statvfs` và :func:`~os.fstatvfs` trong mô-đun :mod:`os` và "
+":func:`~time.localtime`, :func:`~time.gmtime` và :func:`~time.strptime` "
+"trong mô-đun :mod:`time`."
+
+#: ../../whatsnew/2.2.rst:973
+#, fuzzy
+msgid ""
+"For example, to obtain a file's size using the old tuples, you'd end up "
+"writing something like ``file_size = os.stat(filename)[stat.ST_SIZE]``, but "
+"now this can be written more clearly as ``file_size = "
+"os.stat(filename).st_size``."
+msgstr ""
+"Ví dụ: để có được kích thước của tệp bằng cách sử dụng các bộ dữ liệu cũ, "
+"cuối cùng bạn sẽ viết một cái gì đó như ``file_size = "
+"os.stat(filename)[stat.ST_SIZE]``, nhưng bây giờ điều này có thể được viết "
+"rõ ràng hơn là ``file_size = os.stat(filename).st_size``."
+
+#: ../../whatsnew/2.2.rst:977
+#, fuzzy
+msgid "The original patch for this feature was contributed by Nick Mathewson."
+msgstr "Bản vá ban đầu cho tính năng này được đóng góp bởi Nick Mathewson."
+
+#: ../../whatsnew/2.2.rst:979
+#, fuzzy
+msgid ""
+"The Python profiler has been extensively reworked and various errors in its "
+"output have been corrected.  (Contributed by Fred L. Drake, Jr. and Tim "
+"Peters.)"
+msgstr ""
+"Trình lược tả Python đã được làm lại một cách rộng rãi và nhiều lỗi trong "
+"kết quả đầu ra của nó đã được sửa chữa.  (Được đóng góp bởi Fred L. Drake, "
+"Jr. và Tim Peters.)"
+
+#: ../../whatsnew/2.2.rst:982
+#, fuzzy
+msgid ""
+"The :mod:`socket` module can be compiled to support IPv6; specify the "
+":option:`!--enable-ipv6` option to Python's configure script.  (Contributed "
+"by Jun-ichiro \"itojun\" Hagino.)"
+msgstr ""
+"Mô-đun :mod:`socket` có thể được biên dịch để hỗ trợ IPv6; chỉ định tùy chọn"
+" :option:`!--enable-ipv6` cho tập lệnh cấu hình của Python.  (Được đóng góp "
+"bởi Jun-ichiro \"itojun\" Hagino.)"
+
+#: ../../whatsnew/2.2.rst:986
+#, fuzzy
+msgid ""
+"Two new format characters were added to the :mod:`struct` module for 64-bit "
+"integers on platforms that support the C :c:expr:`long long` type.  ``q`` is"
+" for a signed 64-bit integer, and ``Q`` is for an unsigned one.  The value "
+"is returned in Python's long integer type.  (Contributed by Tim Peters.)"
+msgstr ""
+"Hai ký tự định dạng mới đã được thêm vào mô-đun :mod:`struct` cho số nguyên "
+"64-bit trên nền tảng hỗ trợ loại C :c:expr:`long long`.  ``q`` dành cho số "
+"nguyên 64 bit có dấu và ``Q`` dành cho số nguyên không dấu.  Giá trị được "
+"trả về ở dạng số nguyên dài của Python.  (Được đóng góp bởi Tim Peters.)"
+
+#: ../../whatsnew/2.2.rst:991
+#, fuzzy
+msgid ""
+"In the interpreter's interactive mode, there's a new built-in function "
+":func:`help` that uses the :mod:`pydoc` module introduced in Python 2.1 to "
+"provide interactive help. ``help(object)`` displays any available help text "
+"about *object*.  :func:`help` with no argument puts you in an online help "
+"utility, where you can enter the names of functions, classes, or modules to "
+"read their help text. (Contributed by Guido van Rossum, using Ka-Ping Yee's "
+":mod:`pydoc` module.)"
+msgstr ""
+"Trong chế độ tương tác của trình thông dịch, có một hàm :func:`help` tích "
+"hợp mới sử dụng mô-đun :mod:`pydoc` được giới thiệu trong Python 2.1 để cung"
+" cấp trợ giúp tương tác. ``help(object)`` hiển thị mọi văn bản trợ giúp có "
+"sẵn về *object*.  :func:`help` không có đối số sẽ đưa bạn vào một tiện ích "
+"trợ giúp trực tuyến, nơi bạn có thể nhập tên của các hàm, lớp hoặc mô-đun để"
+" đọc văn bản trợ giúp của chúng. (Được đóng góp bởi Guido van Rossum, sử "
+"dụng mô-đun :mod:`pydoc` của Ka-Ping Yee.)"
+
+#: ../../whatsnew/2.2.rst:999
+#, fuzzy
+msgid ""
+"Various bugfixes and performance improvements have been made to the SRE "
+"engine underlying the :mod:`re` module.  For example, the :func:`re.sub` and"
+" :func:`re.split` functions have been rewritten in C.  Another contributed "
+"patch speeds up certain Unicode character ranges by a factor of two, and a "
+"new :meth:`~re.finditer`  method that returns an iterator over all the non-"
+"overlapping matches in  a given string.  (SRE is maintained by Fredrik "
+"Lundh.  The BIGCHARSET patch was contributed by Martin von Löwis.)"
+msgstr ""
+"Nhiều bản sửa lỗi và cải tiến hiệu suất đã được thực hiện cho công cụ SRE "
+"nằm bên dưới mô-đun :mod:`re`.  Ví dụ: các hàm :func:`re.sub` và "
+":func:`re.split` đã được viết lại bằng C. Một bản vá đóng góp khác tăng tốc "
+"các phạm vi ký tự Unicode nhất định theo hệ số hai và một phương thức "
+":meth:`~re.finditer` mới trả về một trình vòng lặp trên tất cả các kết quả "
+"khớp không chồng chéo trong một chuỗi nhất định.  (SRE được duy trì bởi "
+"Fredrik Lundh. Bản vá BIGCHARSET được đóng góp bởi Martin von Löwis.)"
+
+#: ../../whatsnew/2.2.rst:1007
+#, fuzzy
+msgid ""
+"The :mod:`smtplib` module now supports :rfc:`2487`, \"Secure SMTP over "
+"TLS\", so it's now possible to encrypt the SMTP traffic between a Python "
+"program and the mail transport agent being handed a message.  :mod:`smtplib`"
+" also supports SMTP authentication.  (Contributed by Gerhard Häring.)"
+msgstr ""
+"Mô-đun :mod:`smtplib` hiện hỗ trợ :rfc:`2487`, \"Bảo mật SMTP trên TLS\", vì"
+" vậy giờ đây có thể mã hóa lưu lượng SMTP giữa chương trình Python và tác "
+"nhân vận chuyển thư được chuyển một tin nhắn.  :mod:`smtplib` cũng hỗ trợ "
+"xác thực SMTP.  (Được đóng góp bởi Gerhard Häring.)"
+
+#: ../../whatsnew/2.2.rst:1012
+#, fuzzy
+msgid ""
+"The :mod:`imaplib` module, maintained by Piers Lauder, has support for "
+"several new extensions: the NAMESPACE extension defined in :rfc:`2342`, "
+"SORT, GETACL and SETACL.  (Contributed by Anthony Baxter and Michel "
+"Pelletier.)"
+msgstr ""
+"Mô-đun :mod:`imaplib`, do Piers Lauder duy trì, có hỗ trợ cho một số tiện "
+"ích mở rộng mới: tiện ích mở rộng NAMESPACE được xác định trong :rfc:`2342`,"
+" SORT, GETACL và SETACL.  (Được đóng góp bởi Anthony Baxter và Michel "
+"Pelletier.)"
+
+#: ../../whatsnew/2.2.rst:1016
+#, fuzzy
+msgid ""
+"The :mod:`!rfc822` module's parsing of email addresses is now compliant with"
+" :rfc:`2822`, an update to :rfc:`822`.  (The module's name is *not* going to"
+" be changed to ``rfc2822``.)  A new package, :mod:`email`, has also been "
+"added for parsing and generating e-mail messages.  (Contributed by Barry "
+"Warsaw, and arising out of his work on Mailman.)"
+msgstr ""
+"Việc phân tích cú pháp địa chỉ email của mô-đun :mod:`!rfc822` hiện đã tuân "
+"thủ :rfc:`2822`, một bản cập nhật cho :rfc:`822`.  (Tên mô-đun là *not* sẽ "
+"được đổi thành ``rfc2822``.) Một gói mới, :mod:`email`, cũng đã được thêm "
+"vào để phân tích cú pháp và tạo thư e-mail.  (Được đóng góp bởi Barry Warsaw"
+" và phát sinh từ tác phẩm của ông về Người đưa thư.)"
+
+#: ../../whatsnew/2.2.rst:1022
+#, fuzzy
+msgid ""
+"The :mod:`difflib` module now contains a new :class:`!Differ` class for "
+"producing human-readable lists of changes (a \"delta\") between two "
+"sequences of lines of text.  There are also two generator functions, "
+":func:`!ndiff` and :func:`!restore`, which respectively return a delta from "
+"two sequences, or one of the original sequences from a delta. (Grunt work "
+"contributed by David Goodger, from ndiff.py code by Tim Peters who then did "
+"the generatorization.)"
+msgstr ""
+"Mô-đun :mod:`difflib` hiện chứa một lớp :class:`!Differ` mới để tạo danh "
+"sách thay đổi mà con người có thể đọc được (\"delta\") giữa hai chuỗi dòng "
+"văn bản.  Ngoài ra còn có hai hàm tạo, :func:`!ndiff` và :func:`!restore`, "
+"lần lượt trả về một delta từ hai chuỗi hoặc một trong các chuỗi ban đầu từ "
+"một delta. (Công việc của Grunt do David Goodger đóng góp, từ mã ndiff.py "
+"của Tim Peters, người sau đó đã thực hiện quá trình tạo.)"
+
+#: ../../whatsnew/2.2.rst:1029
+#, fuzzy
+msgid ""
+"New constants :const:`!ascii_letters`, :const:`!ascii_lowercase`, and "
+":const:`!ascii_uppercase` were added to the :mod:`string` module.  There "
+"were several modules in the standard library that used "
+":const:`!string.letters` to mean the ranges A-Za-z, but that assumption is "
+"incorrect when locales are in use, because :const:`!string.letters` varies "
+"depending on the set of legal characters defined by the current locale.  The"
+" buggy modules have all been fixed to use :const:`!ascii_letters` instead. "
+"(Reported by an unknown person; fixed by Fred L. Drake, Jr.)"
+msgstr ""
+"Các hằng số mới :const:`!ascii_letters`, :const:`!ascii_lowercase` và "
+":const:`!ascii_uppercase` đã được thêm vào mô-đun :mod:`string`.  Có một số "
+"mô-đun trong thư viện tiêu chuẩn sử dụng :const:`!string.letters` để chỉ các"
+" phạm vi A-Za-z, nhưng giả định đó không chính xác khi sử dụng ngôn ngữ, vì "
+":const:`!string.letters` thay đổi tùy thuộc vào tập hợp các ký tự pháp lý "
+"được xác định bởi ngôn ngữ hiện tại.  Các mô-đun lỗi đều đã được sửa để sử "
+"dụng :const:`!ascii_letters` thay thế. (Báo cáo bởi một người không rõ danh "
+"tính; sửa bởi Fred L. Drake, Jr.)"
+
+#: ../../whatsnew/2.2.rst:1038
+#, fuzzy
+msgid ""
+"The :mod:`mimetypes` module now makes it easier to use alternative MIME-type"
+" databases by the addition of a :class:`~mimetypes.MimeTypes` class, which "
+"takes a list of filenames to be parsed.  (Contributed by Fred L. Drake, Jr.)"
+msgstr ""
+"Mô-đun :mod:`mimetypes` giờ đây giúp sử dụng cơ sở dữ liệu loại MIME thay "
+"thế dễ dàng hơn bằng cách bổ sung lớp :class:`~mimetypes.MimeTypes`, lớp này"
+" nhận danh sách tên tệp sẽ được phân tích cú pháp.  (Đóng góp bởi Fred L. "
+"Drake, Jr.)"
+
+#: ../../whatsnew/2.2.rst:1042
+#, fuzzy
+msgid ""
+"A :class:`~threading.Timer` class was added to the :mod:`threading` module "
+"that allows scheduling an activity to happen at some future time.  "
+"(Contributed by Itamar Shtull-Trauring.)"
+msgstr ""
+"Một lớp :class:`~threading.Timer` đã được thêm vào mô-đun :mod:`threading` "
+"cho phép lên lịch cho một hoạt động diễn ra vào một thời điểm nào đó trong "
+"tương lai.  (Được đóng góp bởi Itamar Shtull-Trauring.)"
+
+#: ../../whatsnew/2.2.rst:1050
+#, fuzzy
+msgid "Interpreter Changes and Fixes"
+msgstr "Thay đổi và sửa lỗi thông dịch viên"
+
+#: ../../whatsnew/2.2.rst:1052
+#, fuzzy
+msgid ""
+"Some of the changes only affect people who deal with the Python interpreter "
+"at the C level because they're writing Python extension modules, embedding "
+"the interpreter, or just hacking on the interpreter itself. If you only "
+"write Python code, none of the changes described here will affect you very "
+"much."
+msgstr ""
+"Một số thay đổi chỉ ảnh hưởng đến những người làm việc với trình thông dịch "
+"Python ở cấp độ C vì họ đang viết các mô-đun mở rộng Python, nhúng trình "
+"thông dịch hoặc chỉ hack vào chính trình thông dịch. Nếu bạn chỉ viết mã "
+"Python thì không có thay đổi nào được mô tả ở đây sẽ ảnh hưởng nhiều đến "
+"bạn."
+
+#: ../../whatsnew/2.2.rst:1057
+#, fuzzy
+msgid ""
+"Profiling and tracing functions can now be implemented in C, which can "
+"operate at much higher speeds than Python-based functions and should reduce "
+"the overhead of profiling and tracing.  This  will be of interest to authors"
+" of development environments for Python.  Two new C functions were added to "
+"Python's API, :c:func:`PyEval_SetProfile` and :c:func:`PyEval_SetTrace`. The"
+" existing :func:`sys.setprofile` and :func:`sys.settrace` functions still "
+"exist, and have simply been changed to use the new C-level interface.  "
+"(Contributed by Fred L. Drake, Jr.)"
+msgstr ""
+"Các chức năng lập hồ sơ và theo dõi hiện có thể được triển khai trong C, có "
+"thể hoạt động ở tốc độ cao hơn nhiều so với các hàm dựa trên Python và sẽ "
+"giảm chi phí cho việc lập hồ sơ và theo dõi.  Điều này sẽ được các tác giả "
+"của môi trường phát triển cho Python quan tâm.  Hai hàm C mới đã được thêm "
+"vào API, :c:func:`PyEval_SetProfile` và :c:func:`PyEval_SetTrace` của "
+"Python. Các chức năng :func:`sys.setprofile` và :func:`sys.settrace` hiện "
+"tại vẫn tồn tại và chỉ được thay đổi để sử dụng giao diện cấp C mới.  (Đóng "
+"góp bởi Fred L. Drake, Jr.)"
+
+#: ../../whatsnew/2.2.rst:1066
+#, fuzzy
+msgid ""
+"Another low-level API, primarily of interest to implementers of Python "
+"debuggers and development tools, was added. "
+":c:func:`PyInterpreterState_Head` and :c:func:`PyInterpreterState_Next` let "
+"a caller walk through all the existing interpreter objects; "
+":c:func:`PyInterpreterState_ThreadHead` and :c:func:`PyThreadState_Next` "
+"allow looping over all the thread states for a given interpreter.  "
+"(Contributed by David Beazley.)"
+msgstr ""
+"Một API cấp thấp khác, chủ yếu được những người triển khai trình gỡ lỗi và "
+"công cụ phát triển Python quan tâm, đã được thêm vào. "
+":c:func:`PyInterpreterState_Head` và :c:func:`PyInterpreterState_Next` cho "
+"phép người gọi duyệt qua tất cả các đối tượng thông dịch hiện có; "
+":c:func:`PyInterpreterState_ThreadHead` và :c:func:`PyThreadState_Next` cho "
+"phép lặp qua tất cả các trạng thái luồng cho một trình thông dịch nhất định."
+"  (Được đóng góp bởi David Beazley.)"
+
+#: ../../whatsnew/2.2.rst:1073
+#, fuzzy
+msgid ""
+"The C-level interface to the garbage collector has been changed to make it "
+"easier to write extension types that support garbage collection and to debug"
+" misuses of the functions. Various functions have slightly different "
+"semantics, so a bunch of functions had to be renamed.  Extensions that use "
+"the old API will still compile but will *not* participate in garbage "
+"collection, so updating them for 2.2 should be considered fairly high "
+"priority."
+msgstr ""
+"Giao diện cấp C cho trình thu gom rác đã được thay đổi để giúp viết các loại"
+" tiện ích mở rộng hỗ trợ thu thập rác dễ dàng hơn và gỡ lỗi các trường hợp "
+"sử dụng sai chức năng. Các hàm khác nhau có ngữ nghĩa hơi khác nhau, vì vậy "
+"một loạt hàm đã phải được đổi tên.  Các tiện ích mở rộng sử dụng API cũ vẫn "
+"sẽ biên dịch nhưng *not* sẽ tham gia vào quá trình thu gom rác, vì vậy việc "
+"cập nhật chúng lên phiên bản 2.2 nên được coi là có mức độ ưu tiên khá cao."
+
+#: ../../whatsnew/2.2.rst:1080
+#, fuzzy
+msgid ""
+"To upgrade an extension module to the new API, perform the following steps:"
+msgstr "Để nâng cấp mô-đun mở rộng lên API mới, hãy thực hiện các bước sau:"
+
+#: ../../whatsnew/2.2.rst:1082
+#, fuzzy
+msgid "Rename :c:macro:`!Py_TPFLAGS_GC` to :c:macro:`Py_TPFLAGS_HAVE_GC`."
+msgstr ""
+"Đổi tên :c:macro:`!Py_TPFLAGS_GC` thành :c:macro:`Py_TPFLAGS_HAVE_GC`."
+
+#: ../../whatsnew/2.2.rst:1084
+#, fuzzy
+msgid ""
+"Use :c:func:`PyObject_GC_New` or :c:func:`PyObject_GC_NewVar` to allocate"
+msgstr ""
+"Sử dụng :c:func:`PyObject_GC_New` hoặc :c:func:`PyObject_GC_NewVar` để phân "
+"bổ"
+
+#: ../../whatsnew/2.2.rst:1085
+#, fuzzy
+msgid "objects, and :c:func:`PyObject_GC_Del` to deallocate them."
+msgstr "các đối tượng và :c:func:`PyObject_GC_Del` để phân bổ chúng."
+
+#: ../../whatsnew/2.2.rst:1087
+#, fuzzy
+msgid ""
+"Rename :c:func:`!PyObject_GC_Init` to :c:func:`PyObject_GC_Track` and "
+":c:func:`!PyObject_GC_Fini` to :c:func:`PyObject_GC_UnTrack`."
+msgstr ""
+"Đổi tên :c:func:`!PyObject_GC_Init` thành :c:func:`PyObject_GC_Track` và "
+":c:func:`!PyObject_GC_Fini` thành :c:func:`PyObject_GC_UnTrack`."
+
+#: ../../whatsnew/2.2.rst:1090
+#, fuzzy
+msgid "Remove :c:macro:`!PyGC_HEAD_SIZE` from object size calculations."
+msgstr "Xóa :c:macro:`!PyGC_HEAD_SIZE` khỏi tính toán kích thước đối tượng."
+
+#: ../../whatsnew/2.2.rst:1092
+#, fuzzy
+msgid ""
+"Remove calls to :c:func:`!PyObject_AS_GC` and :c:func:`!PyObject_FROM_GC`."
+msgstr ""
+"Xóa cuộc gọi đến :c:func:`!PyObject_AS_GC` và :c:func:`!PyObject_FROM_GC`."
+
+#: ../../whatsnew/2.2.rst:1094
+#, fuzzy
+msgid ""
+"A new ``et`` format sequence was added to :c:func:`PyArg_ParseTuple`; ``et``"
+" takes both a parameter and an encoding name, and converts the parameter to "
+"the given encoding if the parameter turns out to be a Unicode string, or "
+"leaves it alone if it's an 8-bit string, assuming it to already be in the "
+"desired encoding.  This differs from the ``es`` format character, which "
+"assumes that 8-bit strings are in Python's default ASCII encoding and "
+"converts them to the specified new encoding. (Contributed by M.-A. Lemburg, "
+"and used for the MBCS support on Windows described in the following "
+"section.)"
+msgstr ""
+"Một chuỗi định dạng ``et`` mới đã được thêm vào :c:func:`PyArg_ParseTuple`; "
+"``et`` nhận cả tham số và tên mã hóa, đồng thời chuyển đổi tham số đó thành "
+"mã hóa đã cho nếu tham số đó trở thành chuỗi Unicode hoặc để nguyên tham số "
+"đó nếu đó là chuỗi 8 bit, giả sử tham số đó đã ở dạng mã hóa mong muốn.  "
+"Điều này khác với ký tự định dạng ``es``, giả định rằng các chuỗi 8 bit nằm "
+"trong mã hóa ASCII mặc định của Python và chuyển đổi chúng sang mã hóa mới "
+"được chỉ định. (Được đóng góp bởi M.-A. Lemburg và được sử dụng để hỗ trợ "
+"MBCS trên Windows được mô tả trong phần sau.)"
+
+#: ../../whatsnew/2.2.rst:1103
+#, fuzzy
+msgid ""
+"A different argument parsing function, :c:func:`PyArg_UnpackTuple`, has been"
+" added that's simpler and presumably faster.  Instead of specifying a format"
+" string, the caller simply gives the minimum and maximum number of arguments"
+" expected, and a set of pointers to :c:expr:`PyObject*` variables that will "
+"be filled in with argument values."
+msgstr ""
+"Một chức năng phân tích đối số khác, :c:func:`PyArg_UnpackTuple`, đã được "
+"thêm vào để đơn giản hơn và có lẽ nhanh hơn.  Thay vì chỉ định một chuỗi "
+"định dạng, trình gọi chỉ cần đưa ra số lượng đối số tối thiểu và tối đa dự "
+"kiến ​​cũng như một tập hợp các con trỏ tới các biến :c:expr:`PyObject*` sẽ "
+"được điền vào các giá trị đối số."
+
+#: ../../whatsnew/2.2.rst:1109
+#, fuzzy
+msgid ""
+"Two new flags :c:macro:`METH_NOARGS` and :c:macro:`METH_O` are available in "
+"method definition tables to simplify implementation of methods with no "
+"arguments or a single untyped argument. Calling such methods is more "
+"efficient than calling a corresponding method that uses "
+":c:macro:`METH_VARARGS`.  Also, the old :c:macro:`!METH_OLDARGS` style of "
+"writing C methods is  now officially deprecated."
+msgstr ""
+"Hai cờ mới :c:macro:`METH_NOARGS` và :c:macro:`METH_O` có sẵn trong bảng "
+"định nghĩa phương thức để đơn giản hóa việc triển khai các phương thức không"
+" có đối số hoặc một đối số chưa được gõ. Việc gọi các phương thức như vậy "
+"hiệu quả hơn việc gọi một phương thức tương ứng sử dụng "
+":c:macro:`METH_VARARGS`.  Ngoài ra, phong cách viết phương thức C cũ của "
+":c:macro:`!METH_OLDARGS` hiện không còn được dùng nữa."
+
+#: ../../whatsnew/2.2.rst:1115
+#, fuzzy
+msgid ""
+"Two new wrapper functions, :c:func:`PyOS_snprintf` and "
+":c:func:`PyOS_vsnprintf` were added to provide  cross-platform "
+"implementations for the relatively new :c:func:`snprintf` and "
+":c:func:`vsnprintf` C lib APIs. In contrast to the standard "
+":c:func:`sprintf` and :c:func:`!vsprintf` functions, the Python versions "
+"check the bounds of the buffer used to protect against buffer overruns. "
+"(Contributed by M.-A. Lemburg.)"
+msgstr ""
+"Hai hàm bao bọc mới, :c:func:`PyOS_snprintf` và :c:func:`PyOS_vsnprintf` đã "
+"được thêm vào để cung cấp khả năng triển khai đa nền tảng cho các API lib "
+":c:func:`snprintf` và :c:func:`vsnprintf` C tương đối mới. Ngược lại với các"
+" hàm :c:func:`sprintf` và :c:func:`!vsprintf` tiêu chuẩn, các phiên bản "
+"Python kiểm tra giới hạn của bộ đệm được sử dụng để bảo vệ khỏi lỗi tràn bộ "
+"đệm. (Được đóng góp bởi M.-A. Lemburg.)"
+
+#: ../../whatsnew/2.2.rst:1122
+#, fuzzy
+msgid ""
+"The :c:func:`_PyTuple_Resize` function has lost an unused parameter, so now "
+"it takes 2 parameters instead of 3.  The third argument was never used, and "
+"can simply be discarded when porting code from earlier versions to Python "
+"2.2."
+msgstr ""
+"Hàm :c:func:`_PyTuple_Resize` đã mất một tham số không được sử dụng nên hiện"
+" tại hàm này nhận 2 tham số thay vì 3. Đối số thứ ba chưa bao giờ được sử "
+"dụng và có thể bị loại bỏ khi chuyển mã từ các phiên bản trước sang Python "
+"2.2."
+
+#: ../../whatsnew/2.2.rst:1130
+#, fuzzy
+msgid "Other Changes and Fixes"
+msgstr "Những thay đổi và sửa lỗi khác"
+
+#: ../../whatsnew/2.2.rst:1132
+#, fuzzy
+msgid ""
+"As usual there were a bunch of other improvements and bugfixes scattered "
+"throughout the source tree.  A search through the CVS change logs finds "
+"there were 527 patches applied and 683 bugs fixed between Python 2.1 and "
+"2.2; 2.2.1 applied 139 patches and fixed 143 bugs; 2.2.2 applied 106 patches"
+" and fixed 82 bugs.  These figures are likely to be underestimates."
+msgstr ""
+"Như thường lệ, có một loạt các cải tiến và sửa lỗi khác nằm rải rác trong "
+"cây nguồn.  Tìm kiếm trong nhật ký thay đổi CVS cho thấy đã có 527 bản vá "
+"được áp dụng và 683 lỗi đã được sửa giữa Python 2.1 và 2.2; 2.2.1 áp dụng "
+"139 bản vá và sửa 143 lỗi; 2.2.2 áp dụng 106 bản vá và sửa 82 lỗi.  Những "
+"con số này có thể được đánh giá thấp."
+
+#: ../../whatsnew/2.2.rst:1138
+#, fuzzy
+msgid "Some of the more notable changes are:"
+msgstr "Một số thay đổi đáng chú ý hơn là:"
+
+#: ../../whatsnew/2.2.rst:1140
+#, fuzzy
+msgid ""
+"The code for the MacOS port for Python, maintained by Jack Jansen, is now "
+"kept in the main Python CVS tree, and many changes have been made to support"
+" MacOS X."
+msgstr ""
+"Mã cho cổng MacOS dành cho Python, do Jack Jansen duy trì, hiện được lưu giữ"
+" trong cây Python CVS chính và nhiều thay đổi đã được thực hiện để hỗ trợ "
+"MacOS X."
+
+#: ../../whatsnew/2.2.rst:1143
+#, fuzzy
+msgid ""
+"The most significant change is the ability to build Python as a framework, "
+"enabled by supplying the :option:`!--enable-framework` option to the "
+"configure script when compiling Python.  According to Jack Jansen, \"This "
+"installs a self-contained Python installation plus the OS X framework "
+"\"glue\" into :file:`/Library/Frameworks/Python.framework` (or another "
+"location of choice). For now there is little immediate added benefit to this"
+" (actually, there is the disadvantage that you have to change your PATH to "
+"be able to find Python), but it is the basis for creating a full-blown "
+"Python application, porting the MacPython IDE, possibly using Python as a "
+"standard OSA scripting language and much more.\""
+msgstr ""
+"Thay đổi đáng kể nhất là khả năng xây dựng Python dưới dạng khung, được kích"
+" hoạt bằng cách cung cấp tùy chọn :option:`!--enable-framework` cho tập lệnh"
+" cấu hình khi biên dịch Python.  Theo Jack Jansen, \"Điều này cài đặt một "
+"bản cài đặt Python độc lập cộng với \"keo\" khung OS X vào "
+":file:`/Library/Frameworks/Python.framework` (hoặc một vị trí khác được lựa "
+"chọn). Hiện tại, có rất ít lợi ích được bổ sung ngay lập tức cho việc này "
+"(thực ra, có một nhược điểm là bạn phải thay đổi PATH của mình để có thể tìm"
+" thấy Python), nhưng nó là cơ sở để tạo một ứng dụng Python toàn diện, "
+"chuyển MacPython IDE, có thể sử dụng Python làm tiêu chuẩn ngôn ngữ kịch bản"
+" OSA và nhiều hơn nữa.\""
+
+#: ../../whatsnew/2.2.rst:1154
+#, fuzzy
+msgid ""
+"Most of the MacPython toolbox modules, which interface to MacOS APIs such as"
+" windowing, QuickTime, scripting, etc. have been ported to OS X, but they've"
+" been left commented out in :file:`setup.py`.  People who want to experiment"
+" with these modules can uncomment them manually."
+msgstr ""
+"Hầu hết các mô-đun hộp công cụ MacPython, giao tiếp với các API MacOS như "
+"windowing, QuickTime, scripting, v.v. đã được chuyển sang OS X, nhưng chúng "
+"không được nhận xét trong :file:`setup.py`.  Những người muốn thử nghiệm các"
+" mô-đun này có thể bỏ ghi chú chúng theo cách thủ công."
+
+#: ../../whatsnew/2.2.rst:1177
+#, fuzzy
+msgid ""
+"Keyword arguments passed to built-in functions that don't take them now "
+"cause a :exc:`TypeError` exception to be raised, with the message "
+"\"*function* takes no keyword arguments\"."
+msgstr ""
+"Đối số từ khóa được chuyển đến các hàm tích hợp không nhận chúng hiện gây ra"
+" ngoại lệ :exc:`TypeError`, với thông báo \"*function* không nhận đối số từ "
+"khóa\"."
+
+#: ../../whatsnew/2.2.rst:1181
+#, fuzzy
+msgid ""
+"Weak references, added in Python 2.1 as an extension module, are now part of"
+" the core because they're used in the implementation of new-style classes.  "
+"The :exc:`ReferenceError` exception has therefore moved from the "
+":mod:`weakref` module to become a built-in exception."
+msgstr ""
+"Các tham chiếu yếu, được thêm vào Python 2.1 dưới dạng mô-đun mở rộng, hiện "
+"là một phần cốt lõi vì chúng được sử dụng để triển khai các lớp kiểu mới.  "
+"Do đó, ngoại lệ :exc:`ReferenceError` đã được chuyển từ mô-đun "
+":mod:`weakref` để trở thành một ngoại lệ tích hợp."
+
+#: ../../whatsnew/2.2.rst:1186
+#, fuzzy
+msgid ""
+"A new script, :file:`Tools/scripts/cleanfuture.py` by Tim Peters, "
+"automatically removes obsolete ``__future__`` statements from Python source "
+"code."
+msgstr ""
+"Một tập lệnh mới, :file:`Tools/scripts/cleanfuture.py` của Tim Peters, tự "
+"động xóa các câu lệnh ``__future__`` lỗi thời khỏi mã nguồn Python."
+
+#: ../../whatsnew/2.2.rst:1190
+#, fuzzy
+msgid ""
+"An additional *flags* argument has been added to the built-in function "
+":func:`compile`, so the behaviour of ``__future__`` statements can now be "
+"correctly observed in simulated shells, such as those presented by IDLE and "
+"other development environments.  This is described in :pep:`264`. "
+"(Contributed by Michael Hudson.)"
+msgstr ""
+"Một đối số *flags* bổ sung đã được thêm vào hàm tích hợp :func:`compile`, do"
+" đó, hành vi của các câu lệnh ``__future__`` hiện có thể được quan sát chính"
+" xác trong các shell mô phỏng, chẳng hạn như các shell được trình bày bởi "
+"IDLE và các môi trường phát triển khác.  Điều này được mô tả trong "
+":pep:`264`. (Được đóng góp bởi Michael Hudson.)"
+
+#: ../../whatsnew/2.2.rst:1196
+#, fuzzy
+msgid ""
+"The new license introduced with Python 1.6 wasn't GPL-compatible.  This is "
+"fixed by some minor textual changes to the 2.2 license, so it's now legal to"
+" embed Python inside a GPLed program again.  Note that Python itself is not "
+"GPLed, but instead is under a license that's essentially equivalent to the "
+"BSD license, same as it always was.  The license changes were also applied "
+"to the Python 2.0.1 and 2.1.1 releases."
+msgstr ""
+"Giấy phép mới được giới thiệu với Python 1.6 không tương thích với GPL.  "
+"Điều này được khắc phục bằng một số thay đổi văn bản nhỏ đối với giấy phép "
+"2.2, vì vậy giờ đây việc nhúng lại Python vào chương trình GPLed là hợp "
+"pháp.  Lưu ý rằng bản thân Python không được GPLed mà thay vào đó là theo "
+"một giấy phép về cơ bản tương đương với giấy phép BSD, giống như mọi khi.  "
+"Những thay đổi về giấy phép cũng được áp dụng cho các bản phát hành Python "
+"2.0.1 và 2.1.1."
+
+#: ../../whatsnew/2.2.rst:1203
+#, fuzzy
+msgid ""
+"When presented with a Unicode filename on Windows, Python will now convert "
+"it to an MBCS encoded string, as used by the Microsoft file APIs.  As MBCS "
+"is explicitly used by the file APIs, Python's choice of ASCII as the default"
+" encoding turns out to be an annoyance.  On Unix, the locale's character set"
+" is used if ``locale.nl_langinfo(CODESET)`` is available.  (Windows support "
+"was contributed by Mark Hammond with assistance from Marc-André Lemburg. "
+"Unix support was added by Martin von Löwis.)"
+msgstr ""
+"Khi được cung cấp tên tệp Unicode trên Windows, giờ đây Python sẽ chuyển đổi"
+" nó thành chuỗi được mã hóa MBCS, như được sử dụng bởi API tệp của "
+"Microsoft.  Vì MBCS được các API tệp sử dụng rõ ràng nên việc Python chọn "
+"ASCII làm mã hóa mặc định hóa ra lại gây khó chịu.  Trên Unix, bộ ký tự của "
+"miền địa phương được sử dụng nếu ``locale.nl_langinfo(CODESET)`` có sẵn.  "
+"(Hỗ trợ Windows được đóng góp bởi Mark Hammond với sự hỗ trợ từ Marc-André "
+"Lemburg. Hỗ trợ Unix được thêm bởi Martin von Löwis.)"
+
+#: ../../whatsnew/2.2.rst:1211
+#, fuzzy
+msgid ""
+"Large file support is now enabled on Windows.  (Contributed by Tim Peters.)"
+msgstr ""
+"Hỗ trợ tệp lớn hiện đã được bật trên Windows.  (Được đóng góp bởi Tim "
+"Peters.)"
+
+#: ../../whatsnew/2.2.rst:1213
+#, fuzzy
+msgid ""
+"The :file:`Tools/scripts/ftpmirror.py` script now parses a :file:`.netrc` "
+"file, if you have one. (Contributed by Mike Romberg.)"
+msgstr ""
+"Tập lệnh :file:`Tools/scripts/ftpmirror.py` hiện phân tích tệp "
+":file:`.netrc`, nếu bạn có. (Được đóng góp bởi Mike Romberg.)"
+
+#: ../../whatsnew/2.2.rst:1216
+#, fuzzy
+msgid ""
+"Some features of the object returned by the :func:`!xrange` function are now"
+" deprecated, and trigger warnings when they're accessed; they'll disappear "
+"in Python 2.3. :class:`!xrange` objects tried to pretend they were full "
+"sequence types by supporting slicing, sequence multiplication, and the "
+":keyword:`in` operator, but these features were rarely used and therefore "
+"buggy.  The :meth:`!tolist` method and the :attr:`!start`, :attr:`!stop`, "
+"and :attr:`!step` attributes are also being deprecated.  At the C level, the"
+" fourth argument to the :c:func:`!PyRange_New` function, ``repeat``, has "
+"also been deprecated."
+msgstr ""
+"Một số tính năng của đối tượng được hàm :func:`!xrange` trả về hiện không "
+"được dùng nữa và kích hoạt cảnh báo khi chúng được truy cập; chúng sẽ biến "
+"mất trong Python 2.3. Các đối tượng :class:`!xrange` đã cố gắng giả vờ chúng"
+" là các loại chuỗi đầy đủ bằng cách hỗ trợ cắt, nhân chuỗi và toán tử "
+":keyword:`in`, nhưng các tính năng này hiếm khi được sử dụng và do đó có "
+"lỗi.  Phương thức :meth:`!tolist` và các thuộc tính :attr:`!start`, "
+":attr:`!stop` và :attr:`!step` cũng không được dùng nữa.  Ở cấp độ C, đối số"
+" thứ tư của hàm :c:func:`!PyRange_New`, ``repeat``, cũng không được dùng "
+"nữa."
+
+#: ../../whatsnew/2.2.rst:1225
+#, fuzzy
+msgid ""
+"There were a bunch of patches to the dictionary implementation, mostly to "
+"fix potential core dumps if a dictionary contains objects that sneakily "
+"changed their hash value, or mutated the dictionary they were contained in. "
+"For a while python-dev fell into a gentle rhythm of Michael Hudson finding a"
+" case that dumped core, Tim Peters fixing the bug, Michael finding another "
+"case, and round and round it went."
+msgstr ""
+"Có một loạt bản vá cho quá trình triển khai từ điển, chủ yếu là để khắc phục"
+" các kết xuất lõi tiềm ẩn nếu từ điển chứa các đối tượng lén lút thay đổi "
+"giá trị băm của chúng hoặc làm biến đổi từ điển mà chúng chứa trong đó. "
+"Trong một thời gian, python-dev rơi vào nhịp điệu nhẹ nhàng khi Michael "
+"Hudson tìm ra một trường hợp loại bỏ lõi, Tim Peters sửa lỗi, Michael tìm "
+"một trường hợp khác, và mọi chuyện cứ thế diễn ra vòng tròn."
+
+#: ../../whatsnew/2.2.rst:1232
+#, fuzzy
+msgid ""
+"On Windows, Python can now be compiled with Borland C thanks to a number of "
+"patches contributed by Stephen Hansen, though the result isn't fully "
+"functional yet.  (But this *is* progress...)"
+msgstr ""
+"Trên Windows, giờ đây Python có thể được biên dịch bằng Borland C nhờ một số"
+" bản vá do Stephen Hansen đóng góp, mặc dù kết quả vẫn chưa hoạt động đầy "
+"đủ.  (Nhưng tiến trình *is* này...)"
+
+#: ../../whatsnew/2.2.rst:1236
+#, fuzzy
+msgid ""
+"Another Windows enhancement: Wise Solutions generously offered PythonLabs "
+"use of their InstallerMaster 8.1 system.  Earlier PythonLabs Windows "
+"installers used Wise 5.0a, which was beginning to show its age.  (Packaged "
+"up by Tim Peters.)"
+msgstr ""
+"Một cải tiến khác của Windows: Wise Solutions đã hào phóng cung cấp cho "
+"PythonLabs quyền sử dụng hệ thống InstallerMaster 8.1 của họ.  Các trình cài"
+" đặt PythonLabs Windows trước đó đã sử dụng Wise 5.0a, phiên bản này đã bắt "
+"đầu có dấu hiệu cũ kỹ.  (Được đóng gói bởi Tim Peters.)"
+
+#: ../../whatsnew/2.2.rst:1240
+#, fuzzy
+msgid ""
+"Files ending in ``.pyw`` can now be imported on Windows. ``.pyw`` is a "
+"Windows-only thing, used to indicate that a script needs to be run using "
+"PYTHONW.EXE instead of PYTHON.EXE in order to prevent a DOS console from "
+"popping up to display the output.  This patch makes it possible to import "
+"such scripts, in case they're also usable as modules.  (Implemented by David"
+" Bolen.)"
+msgstr ""
+"Các tệp kết thúc bằng ``.pyw`` hiện có thể được nhập vào Windows. ``.pyw`` "
+"là một thứ chỉ dành cho Windows, được sử dụng để chỉ ra rằng tập lệnh cần "
+"được chạy bằng PYTHONW.EXE thay vì PYTHON.EXE để ngăn bảng điều khiển DOS "
+"bật lên để hiển thị đầu ra.  Bản vá này cho phép nhập các tập lệnh như vậy, "
+"trong trường hợp chúng cũng có thể sử dụng được dưới dạng mô-đun.  (Được "
+"thực hiện bởi David Bolen.)"
+
+#: ../../whatsnew/2.2.rst:1246
+#, fuzzy
+msgid ""
+"On platforms where Python uses the C :c:func:`dlopen` function  to load "
+"extension modules, it's now possible to set the flags used  by "
+":c:func:`dlopen` using the :func:`sys.getdlopenflags` and "
+":func:`sys.setdlopenflags` functions. (Contributed by Bram Stolk.)"
+msgstr ""
+"Trên các nền tảng mà Python sử dụng hàm C :c:func:`dlopen` để tải các mô-đun"
+" mở rộng, giờ đây có thể đặt cờ được :c:func:`dlopen` sử dụng bằng cách sử "
+"dụng các hàm :func:`sys.getdlopenflags` và :func:`sys.setdlopenflags`. (Được"
+" đóng góp bởi Bram Stolk.)"
+
+#: ../../whatsnew/2.2.rst:1251
+#, fuzzy
+msgid ""
+"The :func:`pow` built-in function no longer supports 3 arguments when "
+"floating-point numbers are supplied. ``pow(x, y, z)`` returns ``(x**y) % "
+"z``, but this is never useful for floating-point numbers, and the final "
+"result varies unpredictably depending on the platform.  A call such as "
+"``pow(2.0, 8.0, 7.0)`` will now raise a :exc:`TypeError` exception."
+msgstr ""
+"Hàm tích hợp :func:`pow` không còn hỗ trợ 3 đối số khi cung cấp số dấu phẩy "
+"động. ``pow(x, y, z)`` trả về ``(x**y) % z``, nhưng điều này không bao giờ "
+"hữu ích đối với các số có dấu phẩy động và kết quả cuối cùng thay đổi khó "
+"lường tùy thuộc vào nền tảng.  Lệnh gọi như ``pow(2.0, 8.0, 7.0)`` giờ đây "
+"sẽ đưa ra ngoại lệ :exc:`TypeError`."
+
+#: ../../whatsnew/2.2.rst:1261
+#, fuzzy
+msgid "Acknowledgements"
+msgstr "Lời cảm ơn"
+
+#: ../../whatsnew/2.2.rst:1263
+#, fuzzy
+msgid ""
+"The author would like to thank the following people for offering "
+"suggestions, corrections and assistance with various drafts of this article:"
+" Fred Bremmer, Keith Briggs, Andrew Dalke, Fred L. Drake, Jr., Carel "
+"Fellinger, David Goodger, Mark Hammond, Stephen Hansen, Michael Hudson, Jack"
+" Jansen, Marc-André Lemburg, Martin von Löwis, Fredrik Lundh, Michael McLay,"
+" Nick Mathewson, Paul Moore, Gustavo Niemeyer, Don O'Donnell, Joonas "
+"Paalasma, Tim Peters, Jens Quade, Tom Reinhardt, Neil Schemenauer, Guido van"
+" Rossum, Greg Ward, Edward Welbourne."
+msgstr ""
+"Tác giả xin cảm ơn những người sau đây đã đưa ra gợi ý, chỉnh sửa và hỗ trợ "
+"các bản thảo khác nhau của bài viết này: Fred Bremmer, Keith Briggs, Andrew "
+"Dalke, Fred L. Drake, Jr., Carel Fellinger, David Goodger, Mark Hammond, "
+"Stephen Hansen, Michael Hudson, Jack Jansen, Marc-André Lemburg, Martin von "
+"Löwis, Fredrik Lundh, Michael McLay, Nick Mathewson, Paul Moore, Gustavo "
+"Niemeyer, Don O'Donnell, Joonas Paalasma, Tim Peters, Jens Quade, Tom "
+"Reinhardt, Neil Schenauer, Guido van Rossum, Greg Ward, Edward Welbourne."

@@ -1,0 +1,1330 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/socketserver.rst:2
+#, fuzzy
+msgid ":mod:`!socketserver` --- A framework for network servers"
+msgstr ":mod:`!socketserver` --- Framework cho máy chủ mạng"
+
+#: ../../library/socketserver.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/socketserver.py`"
+msgstr "**Source code:** :source:`Lib/socketserver.py`"
+
+#: ../../library/socketserver.rst:11
+#, fuzzy
+msgid ""
+"The :mod:`!socketserver` module simplifies the task of writing network "
+"servers."
+msgstr "Mô-đun :mod:`!socketserver` đơn giản hóa nhiệm vụ ghi máy chủ mạng."
+
+#: ../../includes/wasm-notavail.rst:3
+#, fuzzy
+msgid "Availability"
+msgstr "sẵn có"
+
+#: ../../includes/wasm-notavail.rst:5
+#, fuzzy
+msgid ""
+"This module does not work or is not available on WebAssembly. See "
+":ref:`wasm-availability` for more information."
+msgstr ""
+"Mô-đun này không hoạt động hoặc không có trên WebAssembly. Xem :ref:`wasm-"
+"availability` để biết thêm thông tin."
+
+#: ../../library/socketserver.rst:15
+#, fuzzy
+msgid "There are four basic concrete server classes:"
+msgstr "Có bốn lớp máy chủ cụ thể cơ bản:"
+
+#: ../../library/socketserver.rst:20
+#, fuzzy
+msgid ""
+"This uses the internet TCP protocol, which provides for continuous streams "
+"of data between the client and server. If *bind_and_activate* is true, the "
+"constructor automatically attempts to invoke :meth:`~BaseServer.server_bind`"
+" and :meth:`~BaseServer.server_activate`.  The other parameters are passed "
+"to the :class:`BaseServer` base class."
+msgstr ""
+"Điều này sử dụng giao thức TCP internet, cung cấp các luồng dữ liệu liên tục"
+" giữa máy khách và máy chủ. Nếu *bind_and_activate* là đúng, hàm tạo sẽ tự "
+"động thử gọi :meth:`~BaseServer.server_bind` và "
+":meth:`~BaseServer.server_activate`.  Các tham số khác được chuyển đến lớp "
+"cơ sở :class:`BaseServer`."
+
+#: ../../library/socketserver.rst:30
+#, fuzzy
+msgid ""
+"This uses datagrams, which are discrete packets of information that may "
+"arrive out of order or be lost while in transit.  The parameters are the "
+"same as for :class:`TCPServer`."
+msgstr ""
+"Điều này sử dụng các gói dữ liệu, là các gói thông tin riêng biệt có thể đến"
+" không đúng thứ tự hoặc bị mất trong khi truyền.  Các thông số giống như đối"
+" với :class:`TCPServer`."
+
+#: ../../library/socketserver.rst:38
+#, fuzzy
+msgid ""
+"These more infrequently used classes are similar to the TCP and UDP classes,"
+" but use Unix domain sockets; they're not available on non-Unix platforms.  "
+"The parameters are the same as for :class:`TCPServer`."
+msgstr ""
+"Các lớp ít được sử dụng hơn này tương tự như các lớp TCP và UDP, nhưng sử "
+"dụng ổ cắm miền Unix; chúng không có sẵn trên các nền tảng không phải Unix."
+"  Các thông số giống như đối với :class:`TCPServer`."
+
+#: ../../library/socketserver.rst:44
+#, fuzzy
+msgid ""
+"These four classes process requests :dfn:`synchronously`; each request must "
+"be completed before the next request can be started.  This isn't suitable if"
+" each request takes a long time to complete, because it requires a lot of "
+"computation, or because it returns a lot of data which the client is slow to"
+" process.  The solution is to create a separate process or thread to handle "
+"each request; the :class:`ForkingMixIn` and :class:`ThreadingMixIn` mix-in "
+"classes can be used to support asynchronous behaviour."
+msgstr ""
+"Bốn lớp này xử lý các yêu cầu :dfn:`synchronously`; mỗi yêu cầu phải được "
+"hoàn thành trước khi yêu cầu tiếp theo có thể được bắt đầu.  Điều này không "
+"phù hợp nếu mỗi yêu cầu mất nhiều thời gian để hoàn thành vì nó đòi hỏi "
+"nhiều tính toán hoặc vì nó trả về nhiều dữ liệu mà máy khách xử lý chậm.  "
+"Giải pháp là tạo một quy trình hoặc luồng riêng biệt để xử lý từng yêu cầu; "
+"các lớp hỗn hợp :class:`ForkingMixIn` và :class:`ThreadingMixIn` có thể được"
+" sử dụng để hỗ trợ hành vi không đồng bộ."
+
+#: ../../library/socketserver.rst:52
+#, fuzzy
+msgid ""
+"Creating a server requires several steps.  First, you must create a request "
+"handler class by subclassing the :class:`BaseRequestHandler` class and "
+"overriding its :meth:`~BaseRequestHandler.handle` method; this method will "
+"process incoming requests.  Second, you must instantiate one of the server "
+"classes, passing it the server's address and the request handler class. It "
+"is recommended to use the server in a :keyword:`with` statement. Then call "
+"the :meth:`~BaseServer.handle_request` or :meth:`~BaseServer.serve_forever` "
+"method of the server object to process one or many requests.  Finally, call "
+":meth:`~BaseServer.server_close` to close the socket (unless you used a "
+":keyword:`!with` statement)."
+msgstr ""
+"Tạo một máy chủ yêu cầu một số bước.  Trước tiên, bạn phải tạo một lớp xử lý"
+" yêu cầu bằng cách phân lớp con :class:`BaseRequestHandler` và ghi đè phương"
+" thức :meth:`~BaseRequestHandler.handle` của nó; phương pháp này sẽ xử lý "
+"các yêu cầu đến.  Thứ hai, bạn phải khởi tạo một trong các lớp máy chủ, "
+"chuyển cho nó địa chỉ của máy chủ và lớp xử lý yêu cầu. Bạn nên sử dụng máy "
+"chủ trong câu lệnh :keyword:`with`. Sau đó gọi phương thức "
+":meth:`~BaseServer.handle_request` hoặc :meth:`~BaseServer.serve_forever` "
+"của đối tượng máy chủ để xử lý một hoặc nhiều yêu cầu.  Cuối cùng, gọi "
+":meth:`~BaseServer.server_close` để đóng socket (trừ khi bạn sử dụng câu "
+"lệnh :keyword:`!with`)."
+
+#: ../../library/socketserver.rst:64
+#, fuzzy
+msgid ""
+"When inheriting from :class:`ThreadingMixIn` for threaded connection "
+"behavior, you should explicitly declare how you want your threads to behave "
+"on an abrupt shutdown.  The :class:`ThreadingMixIn` class defines an "
+"attribute *daemon_threads*, which indicates whether or not the server should"
+" wait for thread termination.  You should set the flag explicitly if you "
+"would like threads to behave autonomously; the default is :const:`False`, "
+"meaning that Python will not exit until all threads created by "
+":class:`ThreadingMixIn` have exited."
+msgstr ""
+"Khi kế thừa từ :class:`ThreadingMixIn` cho hành vi kết nối theo luồng, bạn "
+"nên khai báo rõ ràng cách bạn muốn các luồng của mình hoạt động khi tắt đột "
+"ngột.  Lớp :class:`ThreadingMixIn` định nghĩa một thuộc tính "
+"*daemon_threads*, cho biết liệu máy chủ có nên chờ kết thúc luồng hay không."
+"  Bạn nên đặt cờ rõ ràng nếu bạn muốn các luồng hoạt động tự chủ; mặc định "
+"là :const:`False`, nghĩa là Python sẽ không thoát cho đến khi tất cả các "
+"luồng được tạo bởi :class:`ThreadingMixIn` đã thoát."
+
+#: ../../library/socketserver.rst:73
+#, fuzzy
+msgid ""
+"Server classes have the same external methods and attributes, no matter what"
+" network protocol they use."
+msgstr ""
+"Các lớp máy chủ có cùng các phương thức và thuộc tính bên ngoài, bất kể "
+"chúng sử dụng giao thức mạng nào."
+
+#: ../../library/socketserver.rst:78
+#, fuzzy
+msgid "Server Creation Notes"
+msgstr "Ghi chú tạo máy chủ"
+
+#: ../../library/socketserver.rst:80
+#, fuzzy
+msgid ""
+"There are five classes in an inheritance diagram, four of which represent "
+"synchronous servers of four types::"
+msgstr ""
+"Có năm lớp trong sơ đồ kế thừa, bốn trong số đó đại diện cho các máy chủ "
+"đồng bộ gồm bốn loại::"
+
+#: ../../library/socketserver.rst:83
+#, fuzzy
+msgid ""
+"+------------+\n"
+"| BaseServer |\n"
+"+------------+\n"
+"      |\n"
+"      v\n"
+"+-----------+        +------------------+\n"
+"| TCPServer |------->| UnixStreamServer |\n"
+"+-----------+        +------------------+\n"
+"      |\n"
+"      v\n"
+"+-----------+        +--------------------+\n"
+"| UDPServer |------->| UnixDatagramServer |\n"
+"+-----------+        +--------------------+"
+msgstr ""
+"+-----------+\n"
+"| BaseServer |\n"
+"+-----------+\n"
+"      |\n"
+"      v\n"
+"+----------+ +-------------------+\n"
+"| TCPServer |------->| UnixStreamServer |\n"
+"+----------+ +-------------------+\n"
+"      |\n"
+"      v\n"
+"+----------+ +----------------------+\n"
+"| UDPServer |------->| UnixDatagramServer |\n"
+"+----------+ +----------------------+"
+
+#: ../../library/socketserver.rst:97
+#, fuzzy
+msgid ""
+"Note that :class:`UnixDatagramServer` derives from :class:`UDPServer`, not "
+"from :class:`UnixStreamServer` --- the only difference between an IP and a "
+"Unix server is the address family."
+msgstr ""
+"Lưu ý rằng :class:`UnixDatagramServer` bắt nguồn từ :class:`UDPServer`, "
+"không phải từ :class:`UnixStreamServer` --- sự khác biệt duy nhất giữa IP và"
+" máy chủ Unix là họ địa chỉ."
+
+#: ../../library/socketserver.rst:105
+#, fuzzy
+msgid ""
+"Forking and threading versions of each type of server can be created using "
+"these mix-in classes.  For instance, :class:`ThreadingUDPServer` is created "
+"as follows::"
+msgstr ""
+"Các phiên bản phân nhánh và phân luồng của từng loại máy chủ có thể được tạo"
+" bằng cách sử dụng các lớp trộn này.  Ví dụ: :class:`ThreadingUDPServer` "
+"được tạo như sau ::"
+
+#: ../../library/socketserver.rst:109
+#, fuzzy
+msgid ""
+"class ThreadingUDPServer(ThreadingMixIn, UDPServer):\n"
+"    pass"
+msgstr ""
+"lớp ThreadingUDPServer(ThreadingMixIn, UDPServer):\n"
+"    vượt qua"
+
+#: ../../library/socketserver.rst:112
+#, fuzzy
+msgid ""
+"The mix-in class comes first, since it overrides a method defined in "
+":class:`UDPServer`.  Setting the various attributes also changes the "
+"behavior of the underlying server mechanism."
+msgstr ""
+"Lớp hỗn hợp xuất hiện trước vì nó ghi đè một phương thức được xác định trong"
+" :class:`UDPServer`.  Việc đặt các thuộc tính khác nhau cũng làm thay đổi "
+"hành vi của cơ chế máy chủ cơ bản."
+
+#: ../../library/socketserver.rst:116
+#, fuzzy
+msgid ""
+":class:`ForkingMixIn` and the Forking classes mentioned below are only "
+"available on POSIX platforms that support :func:`~os.fork`."
+msgstr ""
+":class:`ForkingMixIn` và các lớp Forking được đề cập bên dưới chỉ khả dụng "
+"trên nền tảng POSIX hỗ trợ :func:`~os.fork`."
+
+#: ../../library/socketserver.rst:121
+#, fuzzy
+msgid ""
+":meth:`ForkingMixIn.server_close <BaseServer.server_close>` waits until all "
+"child processes complete, except if :attr:`block_on_close` attribute is "
+"``False``."
+msgstr ""
+":meth:`ForkingMixIn.server_close <BaseServer.server_close>` đợi cho đến khi "
+"tất cả các tiến trình con hoàn tất, ngoại trừ nếu thuộc tính "
+":attr:`block_on_close` là ``False``."
+
+#: ../../library/socketserver.rst:125
+#, fuzzy
+msgid ""
+":meth:`ThreadingMixIn.server_close <BaseServer.server_close>` waits until "
+"all non-daemon threads complete, except if :attr:`block_on_close` attribute "
+"is ``False``."
+msgstr ""
+":meth:`ThreadingMixIn.server_close <BaseServer.server_close>` đợi cho đến "
+"khi tất cả các luồng không phải daemon hoàn tất, ngoại trừ nếu thuộc tính "
+":attr:`block_on_close` là ``False``."
+
+#: ../../library/socketserver.rst:131
+#, fuzzy
+msgid ""
+"Specify how many child processes will exist to handle requests at a time for"
+" :class:`ForkingMixIn`.  If the limit is reached, new requests will wait "
+"until one child process has finished."
+msgstr ""
+"Chỉ định có bao nhiêu tiến trình con sẽ tồn tại để xử lý các yêu cầu tại một"
+" thời điểm cho :class:`ForkingMixIn`.  Nếu đạt đến giới hạn, các yêu cầu mới"
+" sẽ đợi cho đến khi một tiến trình con kết thúc."
+
+#: ../../library/socketserver.rst:137
+#, fuzzy
+msgid ""
+"For :class:`ThreadingMixIn` use daemonic threads by setting "
+":data:`ThreadingMixIn.daemon_threads <daemon_threads>` to ``True`` to not "
+"wait until threads complete."
+msgstr ""
+"Đối với :class:`ThreadingMixIn`, hãy sử dụng các luồng daemon bằng cách đặt "
+":data:`ThreadingMixIn.daemon_threads <daemon_threads>` thành ``True`` để "
+"không đợi cho đến khi các luồng hoàn tất."
+
+#: ../../library/socketserver.rst:143
+#, fuzzy
+msgid ""
+":meth:`ForkingMixIn.server_close <BaseServer.server_close>` and "
+":meth:`ThreadingMixIn.server_close <BaseServer.server_close>` now waits "
+"until all child processes and non-daemonic threads complete. Add a new "
+":attr:`ForkingMixIn.block_on_close <block_on_close>` class attribute to opt-"
+"in for the pre-3.7 behaviour."
+msgstr ""
+":meth:`ForkingMixIn.server_close <BaseServer.server_close>` và "
+":meth:`ThreadingMixIn.server_close <BaseServer.server_close>` hiện đợi cho "
+"đến khi tất cả các tiến trình con và các luồng không phải daemon hoàn tất. "
+"Thêm thuộc tính lớp :attr:`ForkingMixIn.block_on_close <block_on_close>` mới"
+" để chọn tham gia hành vi trước 3.7."
+
+#: ../../library/socketserver.rst:159
+#, fuzzy
+msgid "These classes are pre-defined using the mix-in classes."
+msgstr "Các lớp này được xác định trước bằng cách sử dụng các lớp trộn lẫn."
+
+#: ../../library/socketserver.rst:161
+#, fuzzy
+msgid ""
+"The ``ForkingUnixStreamServer`` and ``ForkingUnixDatagramServer`` classes "
+"were added."
+msgstr ""
+"Các lớp ``ForkingUnixStreamServer`` và ``ForkingUnixDatagramServer`` đã được"
+" thêm vào."
+
+#: ../../library/socketserver.rst:165
+#, fuzzy
+msgid ""
+"To implement a service, you must derive a class from "
+":class:`BaseRequestHandler` and redefine its "
+":meth:`~BaseRequestHandler.handle` method. You can then run various versions"
+" of the service by combining one of the server classes with your request "
+"handler class.  The request handler class must be different for datagram or "
+"stream services.  This can be hidden by using the handler subclasses "
+":class:`StreamRequestHandler` or :class:`DatagramRequestHandler`."
+msgstr ""
+"Để triển khai một dịch vụ, bạn phải lấy được một lớp từ "
+":class:`BaseRequestHandler` và xác định lại phương thức "
+":meth:`~BaseRequestHandler.handle` của nó. Sau đó, bạn có thể chạy các phiên"
+" bản khác nhau của dịch vụ bằng cách kết hợp một trong các lớp máy chủ với "
+"lớp xử lý yêu cầu của mình.  Lớp xử lý yêu cầu phải khác nhau đối với các "
+"dịch vụ datagram hoặc luồng.  Điều này có thể được ẩn bằng cách sử dụng các "
+"lớp con xử lý :class:`StreamRequestHandler` hoặc "
+":class:`DatagramRequestHandler`."
+
+#: ../../library/socketserver.rst:173
+#, fuzzy
+msgid ""
+"Of course, you still have to use your head!  For instance, it makes no sense"
+" to use a forking server if the service contains state in memory that can be"
+" modified by different requests, since the modifications in the child "
+"process would never reach the initial state kept in the parent process and "
+"passed to each child.  In this case, you can use a threading server, but you"
+" will probably have to use locks to protect the integrity of the shared "
+"data."
+msgstr ""
+"Tất nhiên, bạn vẫn phải sử dụng cái đầu của mình!  Ví dụ: sẽ vô nghĩa khi sử"
+" dụng máy chủ phân nhánh nếu dịch vụ chứa trạng thái trong bộ nhớ có thể "
+"được sửa đổi bởi các yêu cầu khác nhau, vì các sửa đổi trong quy trình con "
+"sẽ không bao giờ đạt đến trạng thái ban đầu được lưu giữ trong quy trình cha"
+" và được truyền cho từng quy trình con.  Trong trường hợp này, bạn có thể sử"
+" dụng máy chủ phân luồng, nhưng có thể bạn sẽ phải sử dụng các khóa để bảo "
+"vệ tính toàn vẹn của dữ liệu được chia sẻ."
+
+#: ../../library/socketserver.rst:180
+#, fuzzy
+msgid ""
+"On the other hand, if you are building an HTTP server where all data is "
+"stored externally (for instance, in the file system), a synchronous class "
+"will essentially render the service \"deaf\" while one request is being "
+"handled -- which may be for a very long time if a client is slow to receive "
+"all the data it has requested.  Here a threading or forking server is "
+"appropriate."
+msgstr ""
+"Mặt khác, nếu bạn đang xây dựng một máy chủ HTTP nơi tất cả dữ liệu được lưu"
+" trữ bên ngoài (ví dụ: trong hệ thống tệp), về cơ bản, một lớp đồng bộ sẽ "
+"khiến dịch vụ bị \"điếc\" trong khi một yêu cầu đang được xử lý -- điều này "
+"có thể xảy ra trong một thời gian rất dài nếu máy khách nhận được tất cả dữ "
+"liệu mà nó yêu cầu chậm.  Ở đây một máy chủ phân luồng hoặc phân nhánh là "
+"thích hợp."
+
+#: ../../library/socketserver.rst:186
+#, fuzzy
+msgid ""
+"In some cases, it may be appropriate to process part of a request "
+"synchronously, but to finish processing in a forked child depending on the "
+"request data.  This can be implemented by using a synchronous server and "
+"doing an explicit fork in the request handler class "
+":meth:`~BaseRequestHandler.handle` method."
+msgstr ""
+"Trong một số trường hợp, có thể phù hợp để xử lý một phần yêu cầu một cách "
+"đồng bộ, nhưng phải xử lý xong ở phần con được phân nhánh tùy thuộc vào dữ "
+"liệu yêu cầu.  Điều này có thể được thực hiện bằng cách sử dụng một máy chủ "
+"đồng bộ và thực hiện một nhánh rõ ràng trong phương thức "
+":meth:`~BaseRequestHandler.handle` của lớp xử lý yêu cầu."
+
+#: ../../library/socketserver.rst:191
+#, fuzzy
+msgid ""
+"Another approach to handling multiple simultaneous requests in an "
+"environment that supports neither threads nor :func:`~os.fork` (or where "
+"these are too expensive or inappropriate for the service) is to maintain an "
+"explicit table of partially finished requests and to use :mod:`selectors` to"
+" decide which request to work on next (or whether to handle a new incoming "
+"request).  This is particularly important for stream services where each "
+"client can potentially be connected for a long time (if threads or "
+"subprocesses cannot be used)."
+msgstr ""
+"Một cách tiếp cận khác để xử lý nhiều yêu cầu đồng thời trong môi trường "
+"không hỗ trợ cả luồng lẫn :func:`~os.fork` (hoặc khi những yêu cầu này quá "
+"đắt hoặc không phù hợp với dịch vụ) là duy trì một bảng rõ ràng gồm các yêu "
+"cầu đã hoàn thành một phần và sử dụng :mod:`selectors` để quyết định yêu cầu"
+" nào sẽ được thực hiện tiếp theo (hoặc có xử lý yêu cầu mới đến hay không)."
+"  Điều này đặc biệt quan trọng đối với các dịch vụ phát trực tuyến nơi mỗi "
+"máy khách có thể được kết nối trong thời gian dài (nếu không thể sử dụng các"
+" luồng hoặc quy trình con)."
+
+#: ../../library/socketserver.rst:204
+#, fuzzy
+msgid "Server Objects"
+msgstr "Đối tượng máy chủ"
+
+#: ../../library/socketserver.rst:208
+#, fuzzy
+msgid ""
+"This is the superclass of all Server objects in the module.  It defines the "
+"interface, given below, but does not implement most of the methods, which is"
+" done in subclasses.  The two parameters are stored in the respective "
+":attr:`server_address` and :attr:`RequestHandlerClass` attributes."
+msgstr ""
+"Đây là siêu lớp của tất cả các đối tượng Máy chủ trong mô-đun.  Nó định "
+"nghĩa giao diện được đưa ra dưới đây, nhưng không triển khai hầu hết các "
+"phương thức được thực hiện trong các lớp con.  Hai tham số được lưu trữ "
+"trong các thuộc tính :attr:`server_address` và :attr:`RequestHandlerClass` "
+"tương ứng."
+
+#: ../../library/socketserver.rst:216
+#, fuzzy
+msgid ""
+"Return an integer file descriptor for the socket on which the server is "
+"listening.  This function is most commonly passed to :mod:`selectors`, to "
+"allow monitoring multiple servers in the same process."
+msgstr ""
+"Trả về một bộ mô tả tệp số nguyên cho ổ cắm mà máy chủ đang lắng nghe.  Chức"
+" năng này thường được chuyển tới :mod:`selectors` để cho phép giám sát nhiều"
+" máy chủ trong cùng một quy trình."
+
+#: ../../library/socketserver.rst:223
+#, fuzzy
+msgid ""
+"Process a single request.  This function calls the following methods in "
+"order: :meth:`get_request`, :meth:`verify_request`, and "
+":meth:`process_request`.  If the user-provided "
+":meth:`~BaseRequestHandler.handle` method of the handler class raises an "
+"exception, the server's :meth:`handle_error` method will be called.  If no "
+"request is received within :attr:`timeout` seconds, :meth:`handle_timeout` "
+"will be called and :meth:`handle_request` will return."
+msgstr ""
+"Xử lý một yêu cầu duy nhất.  Hàm này gọi các phương thức sau theo thứ tự: "
+":meth:`get_request`, :meth:`verify_request` và :meth:`process_request`.  Nếu"
+" phương thức :meth:`~BaseRequestHandler.handle` do người dùng cung cấp của "
+"lớp trình xử lý đưa ra một ngoại lệ, thì phương thức :meth:`handle_error` "
+"của máy chủ sẽ được gọi.  Nếu không nhận được yêu cầu nào trong vòng "
+":attr:`timeout` giây, :meth:`handle_timeout` sẽ được gọi và "
+":meth:`handle_request` sẽ quay trở lại."
+
+#: ../../library/socketserver.rst:235
+#, fuzzy
+msgid ""
+"Handle requests until an explicit :meth:`shutdown` request.  Poll for "
+"shutdown every *poll_interval* seconds. Ignores the :attr:`timeout` "
+"attribute.  It also calls :meth:`service_actions`, which may be used by a "
+"subclass or mixin to provide actions specific to a given service.  For "
+"example, the :class:`ForkingMixIn` class uses :meth:`service_actions` to "
+"clean up zombie child processes."
+msgstr ""
+"Xử lý các yêu cầu cho đến khi có yêu cầu :meth:`shutdown` rõ ràng.  Thăm dò "
+"ý kiến ​​tắt máy mỗi giây *poll_interval*. Bỏ qua thuộc tính "
+":attr:`timeout`.  Nó cũng gọi :meth:`service_actions`, có thể được sử dụng "
+"bởi một lớp con hoặc mixin để cung cấp các hành động cụ thể cho một dịch vụ "
+"nhất định.  Ví dụ: lớp :class:`ForkingMixIn` sử dụng :meth:`service_actions`"
+" để dọn sạch các tiến trình con zombie."
+
+#: ../../library/socketserver.rst:243
+#, fuzzy
+msgid "Added ``service_actions`` call to the ``serve_forever`` method."
+msgstr ""
+"Đã thêm lệnh gọi ``service_actions`` vào phương thức ``serve_forever``."
+
+#: ../../library/socketserver.rst:249
+#, fuzzy
+msgid ""
+"This is called in the :meth:`serve_forever` loop. This method can be "
+"overridden by subclasses or mixin classes to perform actions specific to a "
+"given service, such as cleanup actions."
+msgstr ""
+"Điều này được gọi trong vòng lặp :meth:`serve_forever`. Phương thức này có "
+"thể được ghi đè bởi các lớp con hoặc lớp mixin để thực hiện các hành động cụ"
+" thể cho một dịch vụ nhất định, chẳng hạn như hành động dọn dẹp."
+
+#: ../../library/socketserver.rst:257
+#, fuzzy
+msgid ""
+"Tell the :meth:`serve_forever` loop to stop and wait until it does. "
+":meth:`shutdown` must be called while :meth:`serve_forever` is running in a "
+"different thread otherwise it will deadlock."
+msgstr ""
+"Yêu cầu vòng lặp :meth:`serve_forever` dừng lại và đợi cho đến khi nó dừng "
+"lại. :meth:`shutdown` phải được gọi trong khi :meth:`serve_forever` đang "
+"chạy trong một luồng khác nếu không nó sẽ bế tắc."
+
+#: ../../library/socketserver.rst:264
+#, fuzzy
+msgid "Clean up the server. May be overridden."
+msgstr "Dọn dẹp máy chủ. Có thể bị ghi đè."
+
+#: ../../library/socketserver.rst:269
+#, fuzzy
+msgid ""
+"The family of protocols to which the server's socket belongs.  Common "
+"examples are :const:`socket.AF_INET`, :const:`socket.AF_INET6`, and "
+":const:`socket.AF_UNIX`.  Subclass the TCP or UDP server classes in this "
+"module with class attribute ``address_family = AF_INET6`` set if you want "
+"IPv6 server classes."
+msgstr ""
+"Nhóm giao thức chứa socket của máy chủ.  Các ví dụ phổ biến là "
+":const:`socket.AF_INET`, :const:`socket.AF_INET6` và "
+":const:`socket.AF_UNIX`.  Phân lớp các lớp máy chủ TCP hoặc UDP trong mô-đun"
+" này với thuộc tính lớp ``address_family = AF_INET6`` được đặt nếu bạn muốn "
+"các lớp máy chủ IPv6."
+
+#: ../../library/socketserver.rst:278
+#, fuzzy
+msgid ""
+"The user-provided request handler class; an instance of this class is "
+"created for each request."
+msgstr ""
+"Lớp xử lý yêu cầu do người dùng cung cấp; một thể hiện của lớp này được tạo "
+"cho mỗi yêu cầu."
+
+#: ../../library/socketserver.rst:284
+#, fuzzy
+msgid ""
+"The address on which the server is listening.  The format of addresses "
+"varies depending on the protocol family; see the documentation for the "
+":mod:`socket` module for details.  For internet protocols, this is a tuple "
+"containing a string giving the address, and an integer port number: "
+"``('127.0.0.1', 80)``, for example."
+msgstr ""
+"Địa chỉ mà máy chủ đang lắng nghe.  Định dạng của địa chỉ khác nhau tùy "
+"thuộc vào họ giao thức; xem tài liệu về mô-đun :mod:`socket` để biết chi "
+"tiết.  Đối với các giao thức internet, đây là một bộ dữ liệu chứa một chuỗi "
+"cung cấp địa chỉ và số cổng số nguyên: ``('127.0.0.1', 80)`` chẳng hạn."
+
+#: ../../library/socketserver.rst:293
+#, fuzzy
+msgid ""
+"The socket object on which the server will listen for incoming requests."
+msgstr "Đối tượng socket mà máy chủ sẽ lắng nghe các yêu cầu gửi đến."
+
+#: ../../library/socketserver.rst:296
+#, fuzzy
+msgid "The server classes support the following class variables:"
+msgstr "Các lớp máy chủ hỗ trợ các biến lớp sau:"
+
+#: ../../library/socketserver.rst:302
+#, fuzzy
+msgid ""
+"Whether the server will allow the reuse of an address.  This defaults to "
+":const:`False`, and can be set in subclasses to change the policy."
+msgstr ""
+"Liệu máy chủ có cho phép sử dụng lại địa chỉ hay không.  Giá trị mặc định "
+"này là :const:`False` và có thể được đặt trong các lớp con để thay đổi chính"
+" sách."
+
+#: ../../library/socketserver.rst:308
+#, fuzzy
+msgid ""
+"The size of the request queue.  If it takes a long time to process a single "
+"request, any requests that arrive while the server is busy are placed into a"
+" queue, up to :attr:`request_queue_size` requests.  Once the queue is full, "
+"further requests from clients will get a \"Connection denied\" error.  The "
+"default value is usually 5, but this can be overridden by subclasses."
+msgstr ""
+"Kích thước của hàng đợi yêu cầu.  Nếu phải mất nhiều thời gian để xử lý một "
+"yêu cầu, mọi yêu cầu đến trong khi máy chủ đang bận sẽ được đưa vào hàng "
+"đợi, tối đa là yêu cầu :attr:`request_queue_size`.  Khi hàng đợi đã đầy, các"
+" yêu cầu tiếp theo từ khách hàng sẽ gặp lỗi \"Kết nối bị từ chối\".  Giá trị"
+" mặc định thường là 5, nhưng giá trị này có thể bị ghi đè bởi các lớp con."
+
+#: ../../library/socketserver.rst:317
+#, fuzzy
+msgid ""
+"The type of socket used by the server; :const:`socket.SOCK_STREAM` and "
+":const:`socket.SOCK_DGRAM` are two common values."
+msgstr ""
+"Loại ổ cắm được máy chủ sử dụng; :const:`socket.SOCK_STREAM` và "
+":const:`socket.SOCK_DGRAM` là hai giá trị chung."
+
+#: ../../library/socketserver.rst:323
+#, fuzzy
+msgid ""
+"Timeout duration, measured in seconds, or :const:`None` if no timeout is "
+"desired.  If :meth:`handle_request` receives no incoming requests within the"
+" timeout period, the :meth:`handle_timeout` method is called."
+msgstr ""
+"Thời lượng chờ, được tính bằng giây hoặc :const:`None` nếu không muốn hết "
+"thời gian chờ.  Nếu :meth:`handle_request` không nhận được yêu cầu nào trong"
+" khoảng thời gian chờ, phương thức :meth:`handle_timeout` sẽ được gọi."
+
+#: ../../library/socketserver.rst:328
+#, fuzzy
+msgid ""
+"There are various server methods that can be overridden by subclasses of "
+"base server classes like :class:`TCPServer`; these methods aren't useful to "
+"external users of the server object."
+msgstr ""
+"Có nhiều phương thức máy chủ khác nhau có thể bị ghi đè bởi các lớp con của "
+"các lớp máy chủ cơ sở như :class:`TCPServer`; những phương thức này không "
+"hữu ích đối với người dùng bên ngoài của đối tượng máy chủ."
+
+#: ../../library/socketserver.rst:337
+#, fuzzy
+msgid ""
+"Actually processes the request by instantiating :attr:`RequestHandlerClass` "
+"and calling its :meth:`~BaseRequestHandler.handle` method."
+msgstr ""
+"Trên thực tế xử lý yêu cầu bằng cách khởi tạo :attr:`RequestHandlerClass` và"
+" gọi phương thức :meth:`~BaseRequestHandler.handle` của nó."
+
+#: ../../library/socketserver.rst:343
+#, fuzzy
+msgid ""
+"Must accept a request from the socket, and return a 2-tuple containing the "
+"*new* socket object to be used to communicate with the client, and the "
+"client's address."
+msgstr ""
+"Phải chấp nhận yêu cầu từ ổ cắm và trả về 2 bộ dữ liệu chứa đối tượng ổ cắm "
+"*new* được sử dụng để liên lạc với máy khách và địa chỉ của máy khách."
+
+#: ../../library/socketserver.rst:350
+#, fuzzy
+msgid ""
+"This function is called if the :meth:`~BaseRequestHandler.handle` method of "
+"a :attr:`RequestHandlerClass` instance raises an exception.  The default "
+"action is to print the traceback to standard error and continue handling "
+"further requests."
+msgstr ""
+"Hàm này được gọi nếu phương thức :meth:`~BaseRequestHandler.handle` của "
+"phiên bản :attr:`RequestHandlerClass` đưa ra một ngoại lệ.  Hành động mặc "
+"định là in truy tìm lỗi tiêu chuẩn và tiếp tục xử lý các yêu cầu tiếp theo."
+
+#: ../../library/socketserver.rst:355
+#, fuzzy
+msgid ""
+"Now only called for exceptions derived from the :exc:`Exception` class."
+msgstr "Bây giờ chỉ gọi các ngoại lệ bắt nguồn từ lớp :exc:`Exception`."
+
+#: ../../library/socketserver.rst:362
+#, fuzzy
+msgid ""
+"This function is called when the :attr:`timeout` attribute has been set to a"
+" value other than :const:`None` and the timeout period has passed with no "
+"requests being received.  The default action for forking servers is to "
+"collect the status of any child processes that have exited, while in "
+"threading servers this method does nothing."
+msgstr ""
+"Hàm này được gọi khi thuộc tính :attr:`timeout` được đặt thành giá trị khác "
+":const:`None` và khoảng thời gian chờ đã trôi qua mà không nhận được yêu cầu"
+" nào.  Hành động mặc định cho các máy chủ phân nhánh là thu thập trạng thái "
+"của bất kỳ tiến trình con nào đã thoát, trong khi ở các máy chủ phân luồng, "
+"phương pháp này không thực hiện gì."
+
+#: ../../library/socketserver.rst:371
+#, fuzzy
+msgid ""
+"Calls :meth:`finish_request` to create an instance of the "
+":attr:`RequestHandlerClass`.  If desired, this function can create a new "
+"process or thread to handle the request; the :class:`ForkingMixIn` and "
+":class:`ThreadingMixIn` classes do this."
+msgstr ""
+"Gọi :meth:`finish_request` để tạo một phiên bản của "
+":attr:`RequestHandlerClass`.  Nếu muốn, chức năng này có thể tạo một tiến "
+"trình hoặc luồng mới để xử lý yêu cầu; các lớp :class:`ForkingMixIn` và "
+":class:`ThreadingMixIn` thực hiện việc này."
+
+#: ../../library/socketserver.rst:383
+#, fuzzy
+msgid ""
+"Called by the server's constructor to activate the server.  The default "
+"behavior for a TCP server just invokes :meth:`~socket.socket.listen` on the "
+"server's socket.  May be overridden."
+msgstr ""
+"Được gọi bởi hàm tạo của máy chủ để kích hoạt máy chủ.  Hành vi mặc định cho"
+" máy chủ TCP chỉ gọi :meth:`~socket.socket.listen` trên ổ cắm của máy chủ.  "
+"Có thể bị ghi đè."
+
+#: ../../library/socketserver.rst:390
+#, fuzzy
+msgid ""
+"Called by the server's constructor to bind the socket to the desired "
+"address. May be overridden."
+msgstr ""
+"Được hàm tạo của máy chủ gọi để liên kết ổ cắm với địa chỉ mong muốn. Có thể"
+" bị ghi đè."
+
+#: ../../library/socketserver.rst:396
+#, fuzzy
+msgid ""
+"Must return a Boolean value; if the value is :const:`True`, the request will"
+" be processed, and if it's :const:`False`, the request will be denied.  This"
+" function can be overridden to implement access controls for a server. The "
+"default implementation always returns :const:`True`."
+msgstr ""
+"Phải trả về giá trị Boolean; nếu giá trị là :const:`True` thì yêu cầu sẽ "
+"được xử lý và nếu là :const:`False` thì yêu cầu sẽ bị từ chối.  Chức năng "
+"này có thể được ghi đè để triển khai các biện pháp kiểm soát quyền truy cập "
+"cho máy chủ. Việc triển khai mặc định luôn trả về :const:`True`."
+
+#: ../../library/socketserver.rst:402
+#, fuzzy
+msgid ""
+"Support for the :term:`context manager` protocol was added.  Exiting the "
+"context manager is equivalent to calling :meth:`server_close`."
+msgstr ""
+"Hỗ trợ cho giao thức :term:`context manager` đã được thêm vào.  Thoát khỏi "
+"trình quản lý bối cảnh tương đương với việc gọi :meth:`server_close`."
+
+#: ../../library/socketserver.rst:408
+#, fuzzy
+msgid "Request Handler Objects"
+msgstr "Đối tượng xử lý yêu cầu"
+
+#: ../../library/socketserver.rst:412
+#, fuzzy
+msgid ""
+"This is the superclass of all request handler objects.  It defines the "
+"interface, given below.  A concrete request handler subclass must define a "
+"new :meth:`handle` method, and can override any of the other methods.  A new"
+" instance of the subclass is created for each request."
+msgstr ""
+"Đây là siêu lớp của tất cả các đối tượng xử lý yêu cầu.  Nó xác định giao "
+"diện, được đưa ra dưới đây.  Lớp con xử lý yêu cầu cụ thể phải xác định "
+"phương thức :meth:`handle` mới và có thể ghi đè bất kỳ phương thức nào khác."
+"  Một phiên bản mới của lớp con được tạo cho mỗi yêu cầu."
+
+#: ../../library/socketserver.rst:421
+#, fuzzy
+msgid ""
+"Called before the :meth:`handle` method to perform any initialization "
+"actions required.  The default implementation does nothing."
+msgstr ""
+"Được gọi trước phương thức :meth:`handle` để thực hiện mọi hành động khởi "
+"tạo cần thiết.  Việc triển khai mặc định không làm gì cả."
+
+#: ../../library/socketserver.rst:427
+#, fuzzy
+msgid ""
+"This function must do all the work required to service a request.  The "
+"default implementation does nothing.  Several instance attributes are "
+"available to it; the request is available as :attr:`request`; the client "
+"address as :attr:`client_address`; and the server instance as "
+":attr:`server`, in case it needs access to per-server information."
+msgstr ""
+"Chức năng này phải thực hiện tất cả công việc cần thiết để phục vụ một yêu "
+"cầu.  Việc triển khai mặc định không làm gì cả.  Một số thuộc tính phiên bản"
+" có sẵn cho nó; yêu cầu có sẵn dưới dạng :attr:`request`; địa chỉ khách hàng"
+" là :attr:`client_address`; và phiên bản máy chủ là :attr:`server`, trong "
+"trường hợp nó cần quyền truy cập vào thông tin trên mỗi máy chủ."
+
+#: ../../library/socketserver.rst:433
+#, fuzzy
+msgid ""
+"The type of :attr:`request` is different for datagram or stream services.  "
+"For stream services, :attr:`request` is a socket object; for datagram "
+"services, :attr:`request` is a pair of string and socket."
+msgstr ""
+"Loại :attr:`request` khác nhau đối với các dịch vụ datagram hoặc luồng.  Đối"
+" với các dịch vụ truyền phát, :attr:`request` là một đối tượng socket; đối "
+"với các dịch vụ datagram, :attr:`request` là một cặp chuỗi và ổ cắm."
+
+#: ../../library/socketserver.rst:440
+#, fuzzy
+msgid ""
+"Called after the :meth:`handle` method to perform any clean-up actions "
+"required.  The default implementation does nothing.  If :meth:`setup` raises"
+" an exception, this function will not be called."
+msgstr ""
+"Được gọi theo phương thức :meth:`handle` để thực hiện mọi hành động dọn dẹp "
+"cần thiết.  Việc triển khai mặc định không làm gì cả.  Nếu :meth:`setup` đưa"
+" ra một ngoại lệ, hàm này sẽ không được gọi."
+
+#: ../../library/socketserver.rst:447
+#, fuzzy
+msgid ""
+"The *new* :class:`socket.socket` object to be used to communicate with the "
+"client."
+msgstr ""
+"Đối tượng *new* :class:`socket.socket` được sử dụng để giao tiếp với khách "
+"hàng."
+
+#: ../../library/socketserver.rst:453
+#, fuzzy
+msgid "Client address returned by :meth:`BaseServer.get_request`."
+msgstr "Địa chỉ khách hàng được trả về bởi :meth:`BaseServer.get_request`."
+
+#: ../../library/socketserver.rst:458
+#, fuzzy
+msgid ":class:`BaseServer` object used for handling the request."
+msgstr "Đối tượng :class:`BaseServer` được sử dụng để xử lý yêu cầu."
+
+#: ../../library/socketserver.rst:464
+#, fuzzy
+msgid ""
+"These :class:`BaseRequestHandler` subclasses override the "
+":meth:`~BaseRequestHandler.setup` and :meth:`~BaseRequestHandler.finish` "
+"methods, and provide :attr:`rfile` and :attr:`wfile` attributes."
+msgstr ""
+"Các lớp con :class:`BaseRequestHandler` này ghi đè các phương thức "
+":meth:`~BaseRequestHandler.setup` và :meth:`~BaseRequestHandler.finish`, "
+"đồng thời cung cấp các thuộc tính :attr:`rfile` và :attr:`wfile`."
+
+#: ../../library/socketserver.rst:470
+#, fuzzy
+msgid ""
+"A file object from which receives the request is read. Support the "
+":class:`io.BufferedIOBase` readable interface."
+msgstr ""
+"Một đối tượng tệp nhận được yêu cầu sẽ được đọc. Hỗ trợ giao diện dễ đọc "
+":class:`io.BufferedIOBase`."
+
+#: ../../library/socketserver.rst:475
+#, fuzzy
+msgid ""
+"A file object to which the reply is written. Support the "
+":class:`io.BufferedIOBase` writable interface"
+msgstr ""
+"Một đối tượng tập tin mà câu trả lời được viết vào. Hỗ trợ giao diện có thể "
+"ghi :class:`io.BufferedIOBase`"
+
+#: ../../library/socketserver.rst:479
+#, fuzzy
+msgid ""
+":attr:`wfile` also supports the :class:`io.BufferedIOBase` writable "
+"interface."
+msgstr ""
+":attr:`wfile` cũng hỗ trợ giao diện có thể ghi :class:`io.BufferedIOBase`."
+
+#: ../../library/socketserver.rst:485
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/socketserver.rst:488
+#, fuzzy
+msgid ":class:`socketserver.TCPServer` Example"
+msgstr ":class:`socketserver.TCPServer` Ví dụ"
+
+#: ../../library/socketserver.rst:490 ../../library/socketserver.rst:601
+#, fuzzy
+msgid "This is the server side::"
+msgstr "Đây là phía máy chủ::"
+
+#: ../../library/socketserver.rst:492
+#, python-brace-format, fuzzy
+msgid ""
+"import socketserver\n"
+"\n"
+"class MyTCPHandler(socketserver.BaseRequestHandler):\n"
+"    \"\"\"\n"
+"    The request handler class for our server.\n"
+"\n"
+"    It is instantiated once per connection to the server, and must\n"
+"    override the handle() method to implement communication to the\n"
+"    client.\n"
+"    \"\"\"\n"
+"\n"
+"    def handle(self):\n"
+"        # self.request is the TCP socket connected to the client\n"
+"        pieces = [b'']\n"
+"        total = 0\n"
+"        while b'\\n' not in pieces[-1] and total < 10_000:\n"
+"            pieces.append(self.request.recv(2000))\n"
+"            total += len(pieces[-1])\n"
+"        self.data = b''.join(pieces)\n"
+"        print(f\"Received from {self.client_address[0]}:\")\n"
+"        print(self.data.decode(\"utf-8\"))\n"
+"        # just send back the same data, but upper-cased\n"
+"        self.request.sendall(self.data.upper())\n"
+"        # after we return, the socket will be closed.\n"
+"\n"
+"if __name__ == \"__main__\":\n"
+"    HOST, PORT = \"localhost\", 9999\n"
+"\n"
+"    # Create the server, binding to localhost on port 9999\n"
+"    with socketserver.TCPServer((HOST, PORT), MyTCPHandler) as server:\n"
+"        # Activate the server; this will keep running until you\n"
+"        # interrupt the program with Ctrl-C\n"
+"        server.serve_forever()"
+msgstr ""
+"nhập khẩu máy chủ ổ cắm\n"
+"\n"
+"lớp MyTCPHandler(socketserver.BaseRequestHandler):\n"
+"    \"\"\"\n"
+"    Lớp xử lý yêu cầu cho máy chủ của chúng tôi.\n"
+"\n"
+"    Nó được khởi tạo một lần cho mỗi kết nối tới máy chủ và phải\n"
+"    ghi đè phương thức hand() để thực hiện giao tiếp với\n"
+"    khách hàng.\n"
+"    \"\"\"\n"
+"\n"
+"    xử lý def (tự):\n"
+"        # self.request là ổ cắm TCP được kết nối với máy khách\n"
+"        miếng = [b'']\n"
+"        tổng cộng = 0\n"
+"        trong khi b'\\n' không ở dạng miếng[-1] và tổng số < 10_000:\n"
+"            miếng.append(self.request.recv(2000))\n"
+"            tổng += len(miếng[-1])\n"
+"        self.data = b''.join(mảnh)\n"
+"        print(f\"Đã nhận từ {self.client_address[0]}:\")\n"
+"        print(self.data.decode(\"utf-8\"))\n"
+"        # just gửi lại dữ liệu tương tự nhưng được viết hoa\n"
+"        self.request.sendall(self.data.upper())\n"
+"        # after chúng tôi quay lại, ổ cắm sẽ đóng lại.\n"
+"\n"
+"nếu __name__ == \"__main__\":\n"
+"    HOST, PORT = \"localhost\", 9999\n"
+"\n"
+"    # Create máy chủ, liên kết với localhost trên cổng 9999\n"
+"    với socketserver.TCPServer((HOST, PORT), MyTCPHandler) làm máy chủ:\n"
+"        # Activate máy chủ; cái này sẽ tiếp tục chạy cho đến khi bạn\n"
+"        # interrupt chương trình với Ctrl-C\n"
+"        server.serve_forever()"
+
+#: ../../library/socketserver.rst:526
+#, fuzzy
+msgid ""
+"An alternative request handler class that makes use of streams (file-like "
+"objects that simplify communication by providing the standard file "
+"interface)::"
+msgstr ""
+"Một lớp xử lý yêu cầu thay thế sử dụng các luồng (các đối tượng giống như "
+"tệp giúp đơn giản hóa việc giao tiếp bằng cách cung cấp giao diện tệp tiêu "
+"chuẩn)::"
+
+#: ../../library/socketserver.rst:529
+#, python-brace-format, fuzzy
+msgid ""
+"class MyTCPHandler(socketserver.StreamRequestHandler):\n"
+"\n"
+"    def handle(self):\n"
+"        # self.rfile is a file-like object created by the handler.\n"
+"        # We can now use e.g. readline() instead of raw recv() calls.\n"
+"        # We limit ourselves to 10000 bytes to avoid abuse by the sender.\n"
+"        self.data = self.rfile.readline(10000).rstrip()\n"
+"        print(f\"{self.client_address[0]} wrote:\")\n"
+"        print(self.data.decode(\"utf-8\"))\n"
+"        # Likewise, self.wfile is a file-like object used to write back\n"
+"        # to the client\n"
+"        self.wfile.write(self.data.upper())"
+msgstr ""
+"lớp MyTCPHandler(socketserver.StreamRequestHandler):\n"
+"\n"
+"    xử lý def (tự):\n"
+"        # self.rfile là một đối tượng giống như tệp được tạo bởi trình xử lý.\n"
+"        # We hiện có thể sử dụng ví dụ: readline() thay vì các lệnh gọi recv() thô.\n"
+"        # We giới hạn ở mức 10000 byte để tránh bị người gửi lạm dụng.\n"
+"        self.data = self.rfile.readline(10000).rstrip()\n"
+"        print(f\"{self.client_address[0]} đã viết:\")\n"
+"        print(self.data.decode(\"utf-8\"))\n"
+"        # Likewise, self.wfile là một đối tượng dạng file dùng để ghi lại\n"
+"        # to khách hàng\n"
+"        self.wfile.write(self.data.upper())"
+
+#: ../../library/socketserver.rst:542
+#, fuzzy
+msgid ""
+"The difference is that the ``readline()`` call in the second handler will "
+"call ``recv()`` multiple times until it encounters a newline character, "
+"while the first handler had to use a ``recv()`` loop to accumulate data "
+"until a newline itself.  If it had just used a single ``recv()`` without the"
+" loop it would just have returned what has been received so far from the "
+"client. TCP is stream based: data arrives in the order it was sent, but "
+"there is no correlation between client ``send()`` or ``sendall()`` calls and"
+" the number of ``recv()`` calls on the server required to receive it."
+msgstr ""
+"Sự khác biệt là lệnh gọi ``readline()`` trong trình xử lý thứ hai sẽ gọi "
+"``recv()`` nhiều lần cho đến khi gặp một ký tự dòng mới, trong khi trình xử "
+"lý đầu tiên phải sử dụng vòng lặp ``recv()`` để tích lũy dữ liệu cho đến khi"
+" có một dòng mới.  Nếu nó chỉ sử dụng một ``recv()`` duy nhất mà không có "
+"vòng lặp thì nó sẽ trả về những gì đã nhận được cho đến nay từ máy khách. "
+"TCP dựa trên luồng: dữ liệu đến theo thứ tự được gửi nhưng không có mối "
+"tương quan giữa các lệnh gọi ``send()`` hoặc ``sendall()`` của máy khách và "
+"số lượng lệnh gọi ``recv()`` trên máy chủ cần thiết để nhận dữ liệu đó."
+
+#: ../../library/socketserver.rst:552 ../../library/socketserver.rst:625
+#, fuzzy
+msgid "This is the client side::"
+msgstr "Đây là phía khách hàng::"
+
+#: ../../library/socketserver.rst:554
+#, fuzzy
+msgid ""
+"import socket\n"
+"import sys\n"
+"\n"
+"HOST, PORT = \"localhost\", 9999\n"
+"data = \" \".join(sys.argv[1:])\n"
+"\n"
+"# Create a socket (SOCK_STREAM means a TCP socket)\n"
+"with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:\n"
+"    # Connect to server and send data\n"
+"    sock.connect((HOST, PORT))\n"
+"    sock.sendall(bytes(data, \"utf-8\"))\n"
+"    sock.sendall(b\"\\n\")\n"
+"\n"
+"    # Receive data from the server and shut down\n"
+"    received = str(sock.recv(1024), \"utf-8\")\n"
+"\n"
+"print(\"Sent:    \", data)\n"
+"print(\"Received:\", received)"
+msgstr ""
+"ổ cắm nhập khẩu\n"
+"hệ thống nhập khẩu\n"
+"\n"
+"HOST, PORT = \"localhost\", 9999\n"
+"dữ liệu = \" \".join(sys.argv[1:])\n"
+"\n"
+"# Create một ổ cắm (SOCK_STREAM có nghĩa là ổ cắm TCP)\n"
+"với socket.socket(socket.AF_INET, socket.SOCK_STREAM) là sock:\n"
+"    # Connect đến máy chủ và gửi dữ liệu\n"
+"    sock.connect((HOST, PORT))\n"
+"    sock.sendall(byte(dữ liệu, \"utf-8\"))\n"
+"    sock.sendall(b\"\\n\")\n"
+"\n"
+"    dữ liệu # Receive từ máy chủ và tắt\n"
+"    đã nhận = str(sock.recv(1024), \"utf-8\")\n"
+"\n"
+"print(\"Đã gửi: \", dữ liệu)\n"
+"print(\"Đã nhận:\", đã nhận)"
+
+#: ../../library/socketserver.rst:574 ../../library/socketserver.rst:700
+#, fuzzy
+msgid "The output of the example should look something like this:"
+msgstr "Đầu ra của ví dụ sẽ trông giống như thế này:"
+
+#: ../../library/socketserver.rst:576
+#, fuzzy
+msgid "Server:"
+msgstr "Máy chủ:"
+
+#: ../../library/socketserver.rst:578
+#, fuzzy
+msgid ""
+"$ python TCPServer.py\n"
+"127.0.0.1 wrote:\n"
+"b'hello world with TCP'\n"
+"127.0.0.1 wrote:\n"
+"b'python is nice'"
+msgstr ""
+"$ trăn TCPServer.py\n"
+"127.0.0.1 đã viết:\n"
+"b'xin chào thế giới với TCP'\n"
+"127.0.0.1 đã viết:\n"
+"b'python thật tuyệt'"
+
+#: ../../library/socketserver.rst:586
+#, fuzzy
+msgid "Client:"
+msgstr "Khách hàng:"
+
+#: ../../library/socketserver.rst:588
+#, fuzzy
+msgid ""
+"$ python TCPClient.py hello world with TCP\n"
+"Sent:     hello world with TCP\n"
+"Received: HELLO WORLD WITH TCP\n"
+"$ python TCPClient.py python is nice\n"
+"Sent:     python is nice\n"
+"Received: PYTHON IS NICE"
+msgstr ""
+"$ python TCPClient.py xin chào thế giới với TCP\n"
+"Đã gửi: xin chào thế giới với TCP\n"
+"Đã nhận: HELLO WORLD WITH TCP\n"
+"$ python TCPClient.py python thật tuyệt\n"
+"Đã gửi: trăn thật tuyệt\n"
+"Đã nhận: PYTHON LÀ NICE"
+
+#: ../../library/socketserver.rst:599
+#, fuzzy
+msgid ":class:`socketserver.UDPServer` Example"
+msgstr ":class:`socketserver.UDPServer` Ví dụ"
+
+#: ../../library/socketserver.rst:603
+#, python-brace-format, fuzzy
+msgid ""
+"import socketserver\n"
+"\n"
+"class MyUDPHandler(socketserver.BaseRequestHandler):\n"
+"    \"\"\"\n"
+"    This class works similar to the TCP handler class, except that\n"
+"    self.request consists of a pair of data and client socket, and since\n"
+"    there is no connection the client address must be given explicitly\n"
+"    when sending data back via sendto().\n"
+"    \"\"\"\n"
+"\n"
+"    def handle(self):\n"
+"        data = self.request[0].strip()\n"
+"        socket = self.request[1]\n"
+"        print(f\"{self.client_address[0]} wrote:\")\n"
+"        print(data)\n"
+"        socket.sendto(data.upper(), self.client_address)\n"
+"\n"
+"if __name__ == \"__main__\":\n"
+"    HOST, PORT = \"localhost\", 9999\n"
+"    with socketserver.UDPServer((HOST, PORT), MyUDPHandler) as server:\n"
+"        server.serve_forever()"
+msgstr ""
+"nhập khẩu máy chủ ổ cắm\n"
+"\n"
+"lớp MyUDPHandler(socketserver.BaseRequestHandler):\n"
+"    \"\"\"\n"
+"    Lớp này hoạt động tương tự như lớp xử lý TCP, ngoại trừ việc\n"
+"    self.request bao gồm một cặp ổ cắm dữ liệu và máy khách, và vì\n"
+"    không có kết nối, địa chỉ khách hàng phải được cung cấp rõ ràng\n"
+"    khi gửi dữ liệu trở lại qua sendto().\n"
+"    \"\"\"\n"
+"\n"
+"    xử lý def (tự):\n"
+"        data = self.request[0].strip()\n"
+"        socket = self.request[1]\n"
+"        print(f\"{self.client_address[0]} đã viết:\")\n"
+"        in (dữ liệu)\n"
+"        socket.sendto(data.upper(), self.client_address)\n"
+"\n"
+"nếu __name__ == \"__main__\":\n"
+"    HOST, PORT = \"localhost\", 9999\n"
+"    với socketserver.UDPServer((HOST, PORT), MyUDPHandler) làm máy chủ:\n"
+"        server.serve_forever()"
+
+#: ../../library/socketserver.rst:627
+#, fuzzy
+msgid ""
+"import socket\n"
+"import sys\n"
+"\n"
+"HOST, PORT = \"localhost\", 9999\n"
+"data = \" \".join(sys.argv[1:])\n"
+"\n"
+"# SOCK_DGRAM is the socket type to use for UDP sockets\n"
+"sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)\n"
+"\n"
+"# As you can see, there is no connect() call; UDP has no connections.\n"
+"# Instead, data is directly sent to the recipient via sendto().\n"
+"sock.sendto(bytes(data + \"\\n\", \"utf-8\"), (HOST, PORT))\n"
+"received = str(sock.recv(1024), \"utf-8\")\n"
+"\n"
+"print(\"Sent:    \", data)\n"
+"print(\"Received:\", received)"
+msgstr ""
+"ổ cắm nhập khẩu\n"
+"hệ thống nhập khẩu\n"
+"\n"
+"HOST, PORT = \"localhost\", 9999\n"
+"dữ liệu = \" \".join(sys.argv[1:])\n"
+"\n"
+"# SOCK_DGRAM là loại socket sử dụng cho socket UDP\n"
+"sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)\n"
+"\n"
+"# As bạn có thể thấy, không có lệnh gọi connect(); UDP không có kết nối.\n"
+"# Instead, dữ liệu được gửi trực tiếp đến người nhận thông qua sendto().\n"
+"sock.sendto(byte(data + \"\\n\", \"utf-8\"), (HOST, PORT))\n"
+"đã nhận = str(sock.recv(1024), \"utf-8\")\n"
+"\n"
+"print(\"Đã gửi: \", dữ liệu)\n"
+"print(\"Đã nhận:\", đã nhận)"
+
+#: ../../library/socketserver.rst:644
+#, fuzzy
+msgid ""
+"The output of the example should look exactly like for the TCP server "
+"example."
+msgstr "Đầu ra của ví dụ sẽ trông giống hệt như ví dụ về máy chủ TCP."
+
+#: ../../library/socketserver.rst:648
+#, fuzzy
+msgid "Asynchronous Mixins"
+msgstr "Mixin không đồng bộ"
+
+#: ../../library/socketserver.rst:650
+#, fuzzy
+msgid ""
+"To build asynchronous handlers, use the :class:`ThreadingMixIn` and "
+":class:`ForkingMixIn` classes."
+msgstr ""
+"Để xây dựng các trình xử lý không đồng bộ, hãy sử dụng các lớp "
+":class:`ThreadingMixIn` và :class:`ForkingMixIn`."
+
+#: ../../library/socketserver.rst:653
+#, fuzzy
+msgid "An example for the :class:`ThreadingMixIn` class::"
+msgstr "Một ví dụ cho lớp :class:`ThreadingMixIn`::"
+
+#: ../../library/socketserver.rst:655
+#, python-brace-format, fuzzy
+msgid ""
+"import socket\n"
+"import threading\n"
+"import socketserver\n"
+"\n"
+"class ThreadedTCPRequestHandler(socketserver.BaseRequestHandler):\n"
+"\n"
+"    def handle(self):\n"
+"        data = str(self.request.recv(1024), 'ascii')\n"
+"        cur_thread = threading.current_thread()\n"
+"        response = bytes(\"{}: {}\".format(cur_thread.name, data), 'ascii')\n"
+"        self.request.sendall(response)\n"
+"\n"
+"class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):\n"
+"    pass\n"
+"\n"
+"def client(ip, port, message):\n"
+"    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:\n"
+"        sock.connect((ip, port))\n"
+"        sock.sendall(bytes(message, 'ascii'))\n"
+"        response = str(sock.recv(1024), 'ascii')\n"
+"        print(\"Received: {}\".format(response))\n"
+"\n"
+"if __name__ == \"__main__\":\n"
+"    # Port 0 means to select an arbitrary unused port\n"
+"    HOST, PORT = \"localhost\", 0\n"
+"\n"
+"    server = ThreadedTCPServer((HOST, PORT), ThreadedTCPRequestHandler)\n"
+"    with server:\n"
+"        ip, port = server.server_address\n"
+"\n"
+"        # Start a thread with the server -- that thread will then start one\n"
+"        # more thread for each request\n"
+"        server_thread = threading.Thread(target=server.serve_forever)\n"
+"        # Exit the server thread when the main thread terminates\n"
+"        server_thread.daemon = True\n"
+"        server_thread.start()\n"
+"        print(\"Server loop running in thread:\", server_thread.name)\n"
+"\n"
+"        client(ip, port, \"Hello World 1\")\n"
+"        client(ip, port, \"Hello World 2\")\n"
+"        client(ip, port, \"Hello World 3\")\n"
+"\n"
+"        server.shutdown()"
+msgstr ""
+"ổ cắm nhập khẩu\n"
+"nhập luồng\n"
+"nhập khẩu máy chủ ổ cắm\n"
+"\n"
+"lớp ThreadedTCPRequestHandler(socketserver.BaseRequestHandler):\n"
+"\n"
+"    xử lý def (tự):\n"
+"        data = str(self.request.recv(1024), 'ascii')\n"
+"        cur_thread = threading.current_thread()\n"
+"        phản hồi = byte(\"{}: {}\".format(cur_thread.name, data), 'ascii')\n"
+"        self.request.sendall(response)\n"
+"\n"
+"lớp ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):\n"
+"    vượt qua\n"
+"\n"
+"máy khách def (ip, cổng, tin nhắn):\n"
+"    với socket.socket(socket.AF_INET, socket.SOCK_STREAM) là sock:\n"
+"        sock.connect((ip, port))\n"
+"        sock.sendall(byte(tin nhắn, 'ascii'))\n"
+"        phản hồi = str(sock.recv(1024), 'ascii')\n"
+"        print(\"Đã nhận: {}\".format(response))\n"
+"\n"
+"nếu __name__ == \"__main__\":\n"
+"    # Port 0 có nghĩa là chọn một cổng không sử dụng tùy ý\n"
+"    HOST, PORT = \"localhost\", 0\n"
+"\n"
+"    máy chủ = ThreadedTCPServer((HOST, PORT), ThreadedTCPRequestHandler)\n"
+"    với máy chủ:\n"
+"        ip, port = server.server_address\n"
+"\n"
+"        # Start một luồng với máy chủ -- luồng đó sau đó sẽ bắt đầu một luồng\n"
+"        chủ đề # more cho mỗi yêu cầu\n"
+"        server_thread = threading.Thread(target=server.serve_forever)\n"
+"        # Exit luồng máy chủ khi luồng chính kết thúc\n"
+"        server_thread.daemon = Đúng\n"
+"        server_thread.start()\n"
+"        print(\"Vòng lặp máy chủ đang chạy trong luồng:\", server_thread.name)\n"
+"\n"
+"        client(ip, port, \"Xin chào thế giới 1\")\n"
+"        client(ip, port, \"Xin chào thế giới 2\")\n"
+"        client(ip, port, \"Xin chào thế giới 3\")\n"
+"\n"
+"        máy chủ.shutdown()"
+
+#: ../../library/socketserver.rst:702
+#, fuzzy
+msgid ""
+"$ python ThreadedTCPServer.py\n"
+"Server loop running in thread: Thread-1\n"
+"Received: Thread-2: Hello World 1\n"
+"Received: Thread-3: Hello World 2\n"
+"Received: Thread-4: Hello World 3"
+msgstr ""
+"$ python ThreadedTCPServer.py\n"
+"Vòng lặp máy chủ đang chạy trong luồng: Thread-1\n"
+"Đã nhận: Chủ đề-2: Hello World 1\n"
+"Đã nhận: Chủ đề-3: Hello World 2\n"
+"Đã nhận: Chủ đề-4: Hello World 3"
+
+#: ../../library/socketserver.rst:711
+#, fuzzy
+msgid ""
+"The :class:`ForkingMixIn` class is used in the same way, except that the "
+"server will spawn a new process for each request. Available only on POSIX "
+"platforms that support :func:`~os.fork`."
+msgstr ""
+"Lớp :class:`ForkingMixIn` được sử dụng theo cách tương tự, ngoại trừ việc "
+"máy chủ sẽ tạo ra một quy trình mới cho mỗi yêu cầu. Chỉ khả dụng trên nền "
+"tảng POSIX hỗ trợ :func:`~os.fork`."

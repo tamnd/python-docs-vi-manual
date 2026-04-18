@@ -1,0 +1,731 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/gc.rst:2
+#, fuzzy
+msgid ":mod:`!gc` --- Garbage Collector interface"
+msgstr ":mod:`!gc` --- Giao diện thu gom rác"
+
+#: ../../library/gc.rst:12
+#, fuzzy
+msgid ""
+"This module provides an interface to the optional garbage collector.  It "
+"provides the ability to disable the collector, tune the collection "
+"frequency, and set debugging options.  It also provides access to "
+"unreachable objects that the collector found but cannot free.  Since the "
+"collector supplements the reference counting already used in Python, you can"
+" disable the collector if you are sure your program does not create "
+"reference cycles.  Automatic collection can be disabled by calling "
+"``gc.disable()``.  To debug a leaking program call "
+"``gc.set_debug(gc.DEBUG_LEAK)``. Notice that this includes "
+"``gc.DEBUG_SAVEALL``, causing garbage-collected objects to be saved in "
+"gc.garbage for inspection."
+msgstr ""
+"Mô-đun này cung cấp giao diện cho trình thu gom rác tùy chọn.  Nó cung cấp "
+"khả năng vô hiệu hóa bộ thu thập, điều chỉnh tần suất thu thập và đặt các "
+"tùy chọn gỡ lỗi.  Nó cũng cung cấp quyền truy cập vào các đối tượng không "
+"thể truy cập được mà bộ sưu tập đã tìm thấy nhưng không thể giải phóng.  Vì "
+"bộ sưu tập bổ sung tính năng đếm tham chiếu đã được sử dụng trong Python nên"
+" bạn có thể tắt bộ sưu tập nếu bạn chắc chắn rằng chương trình của mình "
+"không tạo chu trình tham chiếu.  Việc thu thập tự động có thể bị vô hiệu hóa"
+" bằng cách gọi ``gc.disable()``.  Để gỡ lỗi chương trình bị rò rỉ, hãy gọi "
+"``gc.set_debug(gc.DEBUG_LEAK)``. Lưu ý rằng điều này bao gồm "
+"``gc.DEBUG_SAVEALL``, khiến các đối tượng được thu thập rác được lưu trong "
+"gc.garbage để kiểm tra."
+
+#: ../../library/gc.rst:23
+#, fuzzy
+msgid "The :mod:`!gc` module provides the following functions:"
+msgstr "Mô-đun :mod:`!gc` cung cấp các chức năng sau:"
+
+#: ../../library/gc.rst:28
+#, fuzzy
+msgid "Enable automatic garbage collection."
+msgstr "Kích hoạt tính năng thu gom rác tự động."
+
+#: ../../library/gc.rst:33
+#, fuzzy
+msgid "Disable automatic garbage collection."
+msgstr "Tắt tính năng thu gom rác tự động."
+
+#: ../../library/gc.rst:38
+#, fuzzy
+msgid "Return ``True`` if automatic collection is enabled."
+msgstr "Trả về ``True`` nếu tính năng thu thập tự động được bật."
+
+#: ../../library/gc.rst:43
+#, fuzzy
+msgid ""
+"Perform a collection.  The optional argument *generation* may be an integer "
+"specifying which generation to collect (from 0 to 2).  A :exc:`ValueError` "
+"is raised if the generation number is invalid. The sum of collected objects "
+"and uncollectable objects is returned."
+msgstr ""
+"Thực hiện một bộ sưu tập.  Đối số tùy chọn *generation* có thể là một số "
+"nguyên chỉ định thế hệ nào sẽ thu thập (từ 0 đến 2).  Một :exc:`ValueError` "
+"được nâng lên nếu số thế hệ không hợp lệ. Tổng số đối tượng đã thu thập và "
+"đối tượng không thể thu thập được trả về."
+
+#: ../../library/gc.rst:48
+#, fuzzy
+msgid ""
+"Calling ``gc.collect(0)`` will perform a GC collection on the young "
+"generation."
+msgstr "Gọi ``gc.collect(0)`` sẽ thực hiện bộ sưu tập GC cho thế hệ trẻ."
+
+#: ../../library/gc.rst:50
+#, fuzzy
+msgid ""
+"Calling ``gc.collect(1)`` will perform a GC collection on the young "
+"generation and an increment of the old generation."
+msgstr ""
+"Việc gọi ``gc.collect(1)`` sẽ thực hiện bộ sưu tập GC trên thế hệ trẻ và sự "
+"gia tăng của thế hệ cũ."
+
+#: ../../library/gc.rst:53
+#, fuzzy
+msgid ""
+"Calling ``gc.collect(2)`` or ``gc.collect()`` performs a full collection"
+msgstr ""
+"Gọi ``gc.collect(2)`` hoặc ``gc.collect()`` thực hiện một bộ sưu tập đầy đủ"
+
+#: ../../library/gc.rst:55
+#, fuzzy
+msgid ""
+"The free lists maintained for a number of built-in types are cleared "
+"whenever a full collection or collection of the highest generation (2) is "
+"run.  Not all items in some free lists may be freed due to the particular "
+"implementation, in particular :class:`float`."
+msgstr ""
+"Danh sách miễn phí được duy trì cho một số loại tích hợp sẽ bị xóa bất cứ "
+"khi nào bộ sưu tập đầy đủ hoặc bộ sưu tập thế hệ cao nhất (2) được chạy.  "
+"Không phải tất cả các mục trong một số danh sách miễn phí đều có thể được "
+"giải phóng do cách triển khai cụ thể, đặc biệt là :class:`float`."
+
+#: ../../library/gc.rst:60
+#, fuzzy
+msgid ""
+"The effect of calling ``gc.collect()`` while the interpreter is already "
+"performing a collection is undefined."
+msgstr ""
+"Hiệu ứng của việc gọi ``gc.collect()`` trong khi trình thông dịch đang thực "
+"hiện bộ sưu tập là không xác định."
+
+#: ../../library/gc.rst:63
+#, fuzzy
+msgid "``generation=1`` performs an increment of collection."
+msgstr "``generation=1`` thực hiện tăng dần bộ sưu tập."
+
+#: ../../library/gc.rst:69
+#, fuzzy
+msgid ""
+"Set the garbage collection debugging flags. Debugging information will be "
+"written to ``sys.stderr``.  See below for a list of debugging flags which "
+"can be combined using bit operations to control debugging."
+msgstr ""
+"Đặt cờ gỡ lỗi thu gom rác. Thông tin gỡ lỗi sẽ được ghi vào ``sys.stderr``."
+"  Xem bên dưới để biết danh sách các cờ gỡ lỗi có thể được kết hợp bằng các "
+"thao tác bit để kiểm soát việc gỡ lỗi."
+
+#: ../../library/gc.rst:76
+#, fuzzy
+msgid "Return the debugging flags currently set."
+msgstr "Trả lại cờ gỡ lỗi hiện được đặt."
+
+#: ../../library/gc.rst:82
+#, fuzzy
+msgid ""
+"Returns a list of all objects tracked by the collector, excluding the list "
+"returned. If *generation* is not ``None``, return only the objects as "
+"follows:"
+msgstr ""
+"Trả về danh sách tất cả các đối tượng được bộ sưu tập theo dõi, ngoại trừ "
+"danh sách được trả về. Nếu *generation* không phải là ``None``, chỉ trả về "
+"các đối tượng như sau:"
+
+#: ../../library/gc.rst:85
+#, fuzzy
+msgid "0: All objects in the young generation"
+msgstr "0: Tất cả các đối tượng trong thế hệ trẻ"
+
+#: ../../library/gc.rst:86
+#, fuzzy
+msgid "1: No objects, as there is no generation 1 (as of Python 3.14)"
+msgstr "1: Không có đối tượng, vì không có thế hệ 1 (kể từ Python 3.14)"
+
+#: ../../library/gc.rst:87
+#, fuzzy
+msgid "2: All objects in the old generation"
+msgstr "2: Tất cả các đối tượng ở thế hệ cũ"
+
+#: ../../library/gc.rst:89
+#, fuzzy
+msgid "New *generation* parameter."
+msgstr "Thông số *generation* mới."
+
+#: ../../library/gc.rst:92
+#, fuzzy
+msgid "Generation 1 is removed"
+msgstr "Thế hệ 1 bị loại bỏ"
+
+#: ../../library/gc.rst:95
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``gc.get_objects`` with argument "
+"``generation``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``gc.get_objects`` với đối số "
+"``generation``."
+
+#: ../../library/gc.rst:99
+#, fuzzy
+msgid ""
+"Return a list of three per-generation dictionaries containing collection "
+"statistics since interpreter start.  The number of keys may change in the "
+"future, but currently each dictionary will contain the following items:"
+msgstr ""
+"Trả về danh sách ba từ điển cho mỗi thế hệ chứa số liệu thống kê về bộ sưu "
+"tập kể từ khi bắt đầu trình thông dịch.  Số lượng khóa có thể thay đổi trong"
+" tương lai, nhưng hiện tại mỗi từ điển sẽ chứa các mục sau:"
+
+#: ../../library/gc.rst:104
+#, fuzzy
+msgid "``collections`` is the number of times this generation was collected;"
+msgstr "``collections`` là số lần thế hệ này được thu thập;"
+
+#: ../../library/gc.rst:106
+#, fuzzy
+msgid ""
+"``collected`` is the total number of objects collected inside this "
+"generation;"
+msgstr "``collected`` là tổng số đối tượng được thu thập trong thế hệ này;"
+
+#: ../../library/gc.rst:109
+#, fuzzy
+msgid ""
+"``uncollectable`` is the total number of objects which were found to be "
+"uncollectable (and were therefore moved to the :data:`garbage` list) inside "
+"this generation."
+msgstr ""
+"``uncollectable`` là tổng số đối tượng được phát hiện là không thể thu thập "
+"được (và do đó đã được chuyển vào danh sách :data:`garbage`) trong thế hệ "
+"này."
+
+#: ../../library/gc.rst:118
+#, fuzzy
+msgid ""
+"Set the garbage collection thresholds (the collection frequency). Setting "
+"*threshold0* to zero disables collection."
+msgstr ""
+"Đặt ngưỡng thu gom rác (tần suất thu gom). Đặt *threshold0* về 0 sẽ vô hiệu "
+"hóa việc thu thập."
+
+#: ../../library/gc.rst:121
+#, fuzzy
+msgid ""
+"The GC classifies objects into two generations depending on whether they "
+"have survived a collection. New objects are placed in the young generation. "
+"If an object survives a collection it is moved into the old generation."
+msgstr ""
+"GC phân loại các đối tượng thành hai thế hệ tùy thuộc vào việc chúng có tồn "
+"tại trong bộ sưu tập hay không. Những đối tượng mới được đặt vào thế hệ trẻ."
+" Nếu một đối tượng tồn tại trong bộ sưu tập thì nó sẽ được chuyển sang thế "
+"hệ cũ."
+
+#: ../../library/gc.rst:125
+#, fuzzy
+msgid ""
+"In order to decide when to run, the collector keeps track of the number of "
+"object allocations and deallocations since the last collection.  When the "
+"number of allocations minus the number of deallocations exceeds "
+"*threshold0*, collection starts. For each collection, all the objects in the"
+" young generation and some fraction of the old generation is collected."
+msgstr ""
+"Để quyết định thời điểm chạy, bộ sưu tập theo dõi số lượng phân bổ và phân "
+"bổ đối tượng kể từ bộ sưu tập cuối cùng.  Khi số lượng phân bổ trừ đi số "
+"lượng phân bổ vượt quá *threshold0*, quá trình thu thập sẽ bắt đầu. Đối với "
+"mỗi bộ sưu tập, tất cả các đồ vật thuộc thế hệ trẻ và một phần của thế hệ cũ"
+" sẽ được thu thập."
+
+#: ../../library/gc.rst:131
+#, python-format, fuzzy
+msgid ""
+"In the free-threaded build, the increase in process memory usage is also "
+"checked before running the collector.  If the memory usage has not increased"
+" by 10% since the last collection and the net number of object allocations "
+"has not exceeded 40 times *threshold0*, the collection is not run."
+msgstr ""
+"Trong bản dựng luồng tự do, việc tăng mức sử dụng bộ nhớ quy trình cũng được"
+" kiểm tra trước khi chạy trình thu thập.  Nếu mức sử dụng bộ nhớ không tăng "
+"10% kể từ bộ sưu tập cuối cùng và số lượng phân bổ đối tượng thực không vượt"
+" quá 40 lần *threshold0* thì bộ sưu tập sẽ không chạy."
+
+#: ../../library/gc.rst:136
+#, python-format, fuzzy
+msgid ""
+"The fraction of the old generation that is collected is **inversely** "
+"proportional to *threshold1*. The larger *threshold1* is, the slower objects"
+" in the old generation are collected. For the default value of 10, 1% of the"
+" old generation is scanned during each collection."
+msgstr ""
+"Tỷ lệ thế hệ cũ được thu thập là **inversely** tỷ lệ với *threshold1*. "
+"Zz002zz càng lớn thì các đối tượng ở thế hệ cũ được thu thập càng chậm. Với "
+"giá trị mặc định là 10, 1% thế hệ cũ sẽ được quét trong mỗi lần thu thập."
+
+#: ../../library/gc.rst:141
+#, fuzzy
+msgid "*threshold2* is ignored."
+msgstr "*threshold2* bị bỏ qua."
+
+#: ../../library/gc.rst:143
+#, fuzzy
+msgid ""
+"See `Garbage collector design "
+"<https://github.com/python/cpython/blob/3.14/InternalDocs/garbage_collector.md>`_"
+" for more information."
+msgstr ""
+"Xem `Garbage collector design "
+"<https://github.com/python/cpython/blob/3.14/InternalDocs/garbage_collector.md>`_"
+" để biết thêm thông tin."
+
+#: ../../library/gc.rst:145
+#, fuzzy
+msgid "*threshold2* is ignored"
+msgstr "*threshold2* bị bỏ qua"
+
+#: ../../library/gc.rst:151
+#, fuzzy
+msgid ""
+"Return the current collection  counts as a tuple of ``(count0, count1, "
+"count2)``."
+msgstr ""
+"Trả về bộ sưu tập hiện tại được tính là một bộ ``(count0, count1, count2)``."
+
+#: ../../library/gc.rst:157
+#, fuzzy
+msgid ""
+"Return the current collection thresholds as a tuple of ``(threshold0, "
+"threshold1, threshold2)``."
+msgstr ""
+"Trả về ngưỡng bộ sưu tập hiện tại dưới dạng bộ dữ liệu ``(threshold0, "
+"threshold1, threshold2)``."
+
+#: ../../library/gc.rst:163
+#, fuzzy
+msgid ""
+"Return the list of objects that directly refer to any of objs. This function"
+" will only locate those containers which support garbage collection; "
+"extension types which do refer to other objects but do not support garbage "
+"collection will not be found."
+msgstr ""
+"Trả về danh sách các đối tượng tham chiếu trực tiếp đến bất kỳ đối tượng "
+"nào. Chức năng này sẽ chỉ định vị những thùng chứa hỗ trợ thu gom rác; sẽ "
+"không tìm thấy các loại tiện ích mở rộng tham chiếu đến các đối tượng khác "
+"nhưng không hỗ trợ thu gom rác."
+
+#: ../../library/gc.rst:168
+#, fuzzy
+msgid ""
+"Note that objects which have already been dereferenced, but which live in "
+"cycles and have not yet been collected by the garbage collector can be "
+"listed among the resulting referrers.  To get only currently live objects, "
+"call :func:`collect` before calling :func:`get_referrers`."
+msgstr ""
+"Lưu ý rằng các đối tượng đã bị hủy đăng ký nhưng tồn tại theo chu kỳ và chưa"
+" được trình thu gom rác thu thập có thể được liệt kê trong số các liên kết "
+"giới thiệu kết quả.  Để chỉ nhận các đối tượng hiện đang hoạt động, hãy gọi "
+":func:`collect` trước khi gọi :func:`get_referrers`."
+
+#: ../../library/gc.rst:174
+#, fuzzy
+msgid ""
+"Care must be taken when using objects returned by :func:`get_referrers` "
+"because some of them could still be under construction and hence in a "
+"temporarily invalid state. Avoid using :func:`get_referrers` for any purpose"
+" other than debugging."
+msgstr ""
+"Phải cẩn thận khi sử dụng các đối tượng được trả về bởi "
+":func:`get_referrers` vì một số trong số chúng có thể vẫn đang được xây dựng"
+" và do đó ở trạng thái tạm thời không hợp lệ. Tránh sử dụng "
+":func:`get_referrers` cho bất kỳ mục đích nào khác ngoài việc gỡ lỗi."
+
+#: ../../library/gc.rst:179
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``gc.get_referrers`` with "
+"argument ``objs``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``gc.get_referrers`` với đối số "
+"``objs``."
+
+#: ../../library/gc.rst:184
+#, fuzzy
+msgid ""
+"Return a list of objects directly referred to by any of the arguments. The "
+"referents returned are those objects visited by the arguments' C-level "
+":c:member:`~PyTypeObject.tp_traverse` methods (if any), and may not be all "
+"objects actually directly reachable.  :c:member:`~PyTypeObject.tp_traverse` "
+"methods are supported only by objects that support garbage collection, and "
+"are only required to visit objects that may be involved in a cycle.  So, for"
+" example, if an integer is directly reachable from an argument, that integer"
+" object may or may not appear in the result list."
+msgstr ""
+"Trả về danh sách các đối tượng được tham chiếu trực tiếp bởi bất kỳ đối số "
+"nào. Các tham chiếu được trả về là những đối tượng được truy cập bằng các "
+"phương thức :c:member:`~PyTypeObject.tp_traverse` cấp C của đối số (nếu có) "
+"và có thể không phải là tất cả các đối tượng thực sự có thể truy cập trực "
+"tiếp.  Các phương thức :c:member:`~PyTypeObject.tp_traverse` chỉ được hỗ trợ"
+" bởi các đối tượng hỗ trợ thu thập rác và chỉ được yêu cầu truy cập các đối "
+"tượng có thể liên quan đến một chu trình.  Vì vậy, ví dụ, nếu một số nguyên "
+"có thể truy cập trực tiếp từ một đối số, thì đối tượng số nguyên đó có thể "
+"xuất hiện hoặc không xuất hiện trong danh sách kết quả."
+
+#: ../../library/gc.rst:192
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``gc.get_referents`` with "
+"argument ``objs``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``gc.get_referents`` với đối số "
+"``objs``."
+
+#: ../../library/gc.rst:196
+#, fuzzy
+msgid ""
+"Returns ``True`` if the object is currently tracked by the garbage "
+"collector, ``False`` otherwise.  As a general rule, instances of atomic "
+"types aren't tracked and instances of non-atomic types (containers, user-"
+"defined objects...) are.  However, some type-specific optimizations can be "
+"present in order to suppress the garbage collector footprint of simple "
+"instances (e.g. dicts containing only atomic keys and values)::"
+msgstr ""
+"Trả về ``True`` nếu đối tượng hiện đang được bộ thu gom rác theo dõi, nếu "
+"không thì trả về ``False``.  Theo nguyên tắc chung, các phiên bản của loại "
+"nguyên tử không được theo dõi và các phiên bản của loại không nguyên tử "
+"(vùng chứa, đối tượng do người dùng xác định...) thì có.  Tuy nhiên, có thể "
+"có một số tối ưu hóa dành riêng cho từng loại để ngăn chặn dấu chân của "
+"trình thu gom rác của các phiên bản đơn giản (ví dụ: các lệnh chỉ chứa khóa "
+"và giá trị nguyên tử)::"
+
+#: ../../library/gc.rst:203
+#, python-brace-format, fuzzy
+msgid ""
+">>> gc.is_tracked(0)\n"
+"False\n"
+">>> gc.is_tracked(\"a\")\n"
+"False\n"
+">>> gc.is_tracked([])\n"
+"True\n"
+">>> gc.is_tracked({})\n"
+"False\n"
+">>> gc.is_tracked({\"a\": 1})\n"
+"True"
+msgstr ""
+">>> gc.is_tracked(0)\n"
+"sai\n"
+">>> gc.is_tracked(\"a\")\n"
+"sai\n"
+">>> gc.is_tracked([])\n"
+"đúng\n"
+">>> gc.is_tracked({})\n"
+"sai\n"
+">>> gc.is_tracked({\"a\": 1})\n"
+"đúng"
+
+#: ../../library/gc.rst:219
+#, fuzzy
+msgid ""
+"Returns ``True`` if the given object has been finalized by the garbage "
+"collector, ``False`` otherwise. ::"
+msgstr ""
+"Trả về ``True`` nếu đối tượng đã cho đã được trình thu gom rác hoàn thiện, "
+"nếu không thì trả về ``False``. ::"
+
+#: ../../library/gc.rst:222
+#, fuzzy
+msgid ""
+">>> x = None\n"
+">>> class Lazarus:\n"
+"...     def __del__(self):\n"
+"...         global x\n"
+"...         x = self\n"
+"...\n"
+">>> lazarus = Lazarus()\n"
+">>> gc.is_finalized(lazarus)\n"
+"False\n"
+">>> del lazarus\n"
+">>> gc.is_finalized(x)\n"
+"True"
+msgstr ""
+">>> x = Không có\n"
+">>> lớp Lazarus:\n"
+"... chắc chắn __del__(tự):\n"
+"... toàn cầu x\n"
+"... x = bản thân\n"
+"...\n"
+">>> lazarus = Lazarus()\n"
+">>> gc.is_finalized(lazarus)\n"
+"sai\n"
+">>> del lazarus\n"
+">>> gc.is_finalized(x)\n"
+"đúng"
+
+#: ../../library/gc.rst:240
+#, fuzzy
+msgid ""
+"Freeze all the objects tracked by the garbage collector; move them to a "
+"permanent generation and ignore them in all the future collections."
+msgstr ""
+"Đóng băng tất cả các đối tượng được người thu gom rác theo dõi; chuyển chúng"
+" sang thế hệ vĩnh viễn và bỏ qua chúng trong tất cả các bộ sưu tập trong "
+"tương lai."
+
+#: ../../library/gc.rst:243
+#, fuzzy
+msgid ""
+"If a process will ``fork()`` without ``exec()``, avoiding unnecessary copy-"
+"on-write in child processes will maximize memory sharing and reduce overall "
+"memory usage. This requires both avoiding creation of freed \"holes\" in "
+"memory pages in the parent process and ensuring that GC collections in child"
+" processes won't touch the ``gc_refs`` counter of long-lived objects "
+"originating in the parent process. To accomplish both, call ``gc.disable()``"
+" early in the parent process, ``gc.freeze()`` right before ``fork()``, and "
+"``gc.enable()`` early in child processes."
+msgstr ""
+"Nếu một tiến trình sẽ ``fork()`` mà không có ``exec()``, việc tránh sao chép"
+" khi ghi không cần thiết trong các tiến trình con sẽ tối đa hóa việc chia sẻ"
+" bộ nhớ và giảm mức sử dụng bộ nhớ tổng thể. Điều này đòi hỏi cả việc tránh "
+"tạo ra các \"lỗ hổng\" giải phóng trên các trang bộ nhớ trong quy trình gốc "
+"và đảm bảo rằng các bộ sưu tập GC trong quy trình con sẽ không chạm vào bộ "
+"đếm ``gc_refs`` của các đối tượng tồn tại lâu dài có nguồn gốc trong quy "
+"trình gốc. Để thực hiện cả hai, hãy gọi ``gc.disable()`` sớm trong quy trình"
+" gốc, ``gc.freeze()`` ngay trước ``fork()`` và ``gc.enable()`` sớm trong quy"
+" trình con."
+
+#: ../../library/gc.rst:257
+#, fuzzy
+msgid ""
+"Unfreeze the objects in the permanent generation, put them back into the "
+"oldest generation."
+msgstr ""
+"Giải phóng các đối tượng ở thế hệ vĩnh viễn, đưa chúng trở lại thế hệ cũ "
+"nhất."
+
+#: ../../library/gc.rst:265
+#, fuzzy
+msgid "Return the number of objects in the permanent generation."
+msgstr "Trả về số lượng đối tượng trong thế hệ vĩnh viễn."
+
+#: ../../library/gc.rst:270
+#, fuzzy
+msgid ""
+"The following variables are provided for read-only access (you can mutate "
+"the values but should not rebind them):"
+msgstr ""
+"Các biến sau được cung cấp để truy cập chỉ đọc (bạn có thể thay đổi các giá "
+"trị nhưng không nên liên kết lại chúng):"
+
+#: ../../library/gc.rst:275
+#, fuzzy
+msgid ""
+"A list of objects which the collector found to be unreachable but could not "
+"be freed (uncollectable objects).  Starting with Python 3.4, this list "
+"should be empty most of the time, except when using instances of C extension"
+" types with a non-``NULL`` ``tp_del`` slot."
+msgstr ""
+"Danh sách các đối tượng mà bộ sưu tập nhận thấy không thể truy cập được "
+"nhưng không thể giải phóng (đối tượng không thể thu thập được).  Bắt đầu với"
+" Python 3.4, danh sách này hầu hết sẽ trống, ngoại trừ khi sử dụng các phiên"
+" bản của loại tiện ích mở rộng C có khe cắm không phải ``NULL`` ``tp_del``."
+
+#: ../../library/gc.rst:280
+#, fuzzy
+msgid ""
+"If :const:`DEBUG_SAVEALL` is set, then all unreachable objects will be added"
+" to this list rather than freed."
+msgstr ""
+"Nếu :const:`DEBUG_SAVEALL` được đặt thì tất cả các đối tượng không thể truy "
+"cập sẽ được thêm vào danh sách này thay vì được giải phóng."
+
+#: ../../library/gc.rst:283
+#, fuzzy
+msgid ""
+"If this list is non-empty at :term:`interpreter shutdown`, a "
+":exc:`ResourceWarning` is emitted, which is silent by default.  If "
+":const:`DEBUG_UNCOLLECTABLE` is set, in addition all uncollectable objects "
+"are printed."
+msgstr ""
+"Nếu danh sách này không trống ở :term:`interpreter shutdown`, thì "
+":exc:`ResourceWarning` sẽ được phát ra, theo mặc định là im lặng.  Nếu "
+":const:`DEBUG_UNCOLLECTABLE` được đặt, ngoài ra, tất cả các đối tượng không "
+"thể thu thập được sẽ được in."
+
+#: ../../library/gc.rst:289
+#, fuzzy
+msgid ""
+"Following :pep:`442`, objects with a :meth:`~object.__del__` method don't "
+"end up in :data:`gc.garbage` anymore."
+msgstr ""
+"Theo sau :pep:`442`, các đối tượng có phương thức :meth:`~object.__del__` "
+"không còn xuất hiện trong :data:`gc.garbage` nữa."
+
+#: ../../library/gc.rst:295
+#, fuzzy
+msgid ""
+"A list of callbacks that will be invoked by the garbage collector before and"
+" after collection.  The callbacks will be called with two arguments, *phase*"
+" and *info*."
+msgstr ""
+"Danh sách các lệnh gọi lại sẽ được trình thu gom rác gọi trước và sau khi "
+"thu thập.  Lệnh gọi lại sẽ được gọi với hai đối số, *phase* và *info*."
+
+#: ../../library/gc.rst:299
+#, fuzzy
+msgid "*phase* can be one of two values:"
+msgstr "*phase* có thể là một trong hai giá trị:"
+
+#: ../../library/gc.rst:301
+#, fuzzy
+msgid "\"start\": The garbage collection is about to start."
+msgstr "\"start\": Quá trình thu gom rác sắp bắt đầu."
+
+#: ../../library/gc.rst:303
+#, fuzzy
+msgid "\"stop\": The garbage collection has finished."
+msgstr "\"stop\": Quá trình thu gom rác đã kết thúc."
+
+#: ../../library/gc.rst:305
+#, fuzzy
+msgid ""
+"*info* is a dict providing more information for the callback.  The following"
+" keys are currently defined:"
+msgstr ""
+"*info* là một lệnh cung cấp thêm thông tin cho lệnh gọi lại.  Các khóa sau "
+"hiện được xác định:"
+
+#: ../../library/gc.rst:308
+#, fuzzy
+msgid "\"generation\": The oldest generation being collected."
+msgstr "\"thế hệ\": Thế hệ lâu đời nhất được thu thập."
+
+#: ../../library/gc.rst:310
+#, fuzzy
+msgid ""
+"\"collected\": When *phase* is \"stop\", the number of objects successfully "
+"collected."
+msgstr ""
+"\"đã thu thập\": Khi *phase* \"dừng\", số lượng đối tượng được thu thập "
+"thành công."
+
+#: ../../library/gc.rst:313
+#, fuzzy
+msgid ""
+"\"uncollectable\": When *phase* is \"stop\", the number of objects that "
+"could not be collected and were put in :data:`garbage`."
+msgstr ""
+"\"không thể thu thập\": Khi *phase* \"dừng\", số đối tượng không thể thu "
+"thập được và được đưa vào :data:`garbage`."
+
+#: ../../library/gc.rst:316
+#, fuzzy
+msgid ""
+"Applications can add their own callbacks to this list.  The primary use "
+"cases are:"
+msgstr ""
+"Các ứng dụng có thể thêm lệnh gọi lại của riêng mình vào danh sách này.  Các"
+" trường hợp sử dụng chính là:"
+
+#: ../../library/gc.rst:319
+#, fuzzy
+msgid ""
+"Gathering statistics about garbage collection, such as how often various "
+"generations are collected, and how long the collection takes."
+msgstr ""
+"Thu thập số liệu thống kê về việc thu gom rác, chẳng hạn như tần suất thu "
+"thập các thế hệ khác nhau và thời gian thu thập."
+
+#: ../../library/gc.rst:323
+#, fuzzy
+msgid ""
+"Allowing applications to identify and clear their own uncollectable types "
+"when they appear in :data:`garbage`."
+msgstr ""
+"Cho phép ứng dụng xác định và xóa các loại không thể thu thập của riêng "
+"chúng khi chúng xuất hiện trong :data:`garbage`."
+
+#: ../../library/gc.rst:329
+#, fuzzy
+msgid "The following constants are provided for use with :func:`set_debug`:"
+msgstr "Các hằng số sau được cung cấp để sử dụng với :func:`set_debug`:"
+
+#: ../../library/gc.rst:334
+#, fuzzy
+msgid ""
+"Print statistics during collection.  This information can be useful when "
+"tuning the collection frequency."
+msgstr ""
+"In số liệu thống kê trong quá trình thu thập.  Thông tin này có thể hữu ích "
+"khi điều chỉnh tần số thu thập."
+
+#: ../../library/gc.rst:340
+#, fuzzy
+msgid "Print information on collectable objects found."
+msgstr "In thông tin về các đồ vật sưu tầm được tìm thấy."
+
+#: ../../library/gc.rst:345
+#, fuzzy
+msgid ""
+"Print information of uncollectable objects found (objects which are not "
+"reachable but cannot be freed by the collector).  These objects will be "
+"added to the ``garbage`` list."
+msgstr ""
+"In thông tin về các đối tượng không thể thu thập được tìm thấy (các đối "
+"tượng không thể truy cập được nhưng người thu thập không thể giải phóng).  "
+"Những đối tượng này sẽ được thêm vào danh sách ``garbage``."
+
+#: ../../library/gc.rst:349
+#, fuzzy
+msgid ""
+"Also print the contents of the :data:`garbage` list at :term:`interpreter "
+"shutdown`, if it isn't empty."
+msgstr ""
+"Đồng thời in nội dung của danh sách :data:`garbage` tại :term:`interpreter "
+"shutdown`, nếu nó không trống."
+
+#: ../../library/gc.rst:355
+#, fuzzy
+msgid ""
+"When set, all unreachable objects found will be appended to *garbage* rather"
+" than being freed.  This can be useful for debugging a leaking program."
+msgstr ""
+"Khi được đặt, tất cả các đối tượng không thể truy cập được tìm thấy sẽ được "
+"thêm vào *garbage* thay vì được giải phóng.  Điều này có thể hữu ích cho "
+"việc gỡ lỗi một chương trình bị rò rỉ."
+
+#: ../../library/gc.rst:361
+#, fuzzy
+msgid ""
+"The debugging flags necessary for the collector to print information about a"
+" leaking program (equal to ``DEBUG_COLLECTABLE | DEBUG_UNCOLLECTABLE | "
+"DEBUG_SAVEALL``)."
+msgstr ""
+"Các cờ gỡ lỗi cần thiết để bộ sưu tập in thông tin về chương trình bị rò rỉ "
+"(bằng ``DEBUG_COLLECTABLE | DEBUG_UNCOLLECTABLE | DEBUG_SAVEALL``)."

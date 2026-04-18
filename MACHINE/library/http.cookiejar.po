@@ -1,0 +1,1478 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/http.cookiejar.rst:2
+#, fuzzy
+msgid ":mod:`!http.cookiejar` --- Cookie handling for HTTP clients"
+msgstr ":mod:`!http.cookiejar` --- Xử lý cookie cho khách hàng HTTP"
+
+#: ../../library/http.cookiejar.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/http/cookiejar.py`"
+msgstr "**Source code:** :source:`Lib/http/cookiejar.py`"
+
+#: ../../library/http.cookiejar.rst:14
+#, fuzzy
+msgid ""
+"The :mod:`!http.cookiejar` module defines classes for automatic handling of "
+"HTTP cookies.  It is useful for accessing websites that require small pieces"
+" of data -- :dfn:`cookies` -- to be set on the client machine by an HTTP "
+"response from a web server, and then returned to the server in later HTTP "
+"requests."
+msgstr ""
+"Mô-đun :mod:`!http.cookiejar` xác định các lớp để xử lý tự động cookie HTTP."
+"  Nó rất hữu ích khi truy cập các trang web yêu cầu các mẩu dữ liệu nhỏ -- "
+":dfn:`cookies` -- được đặt trên máy khách bằng phản hồi HTTP từ máy chủ web "
+"và sau đó được trả về máy chủ trong các yêu cầu HTTP sau này."
+
+#: ../../library/http.cookiejar.rst:19
+#, fuzzy
+msgid ""
+"Both the regular Netscape cookie protocol and the protocol defined by "
+":rfc:`2965` are handled.  RFC 2965 handling is switched off by default. "
+":rfc:`2109` cookies are parsed as Netscape cookies and subsequently treated "
+"either as Netscape or RFC 2965 cookies according to the 'policy' in effect. "
+"Note that the great majority of cookies on the internet are Netscape "
+"cookies. :mod:`!http.cookiejar` attempts to follow the de-facto Netscape "
+"cookie protocol (which differs substantially from that set out in the "
+"original Netscape specification), including taking note of the ``max-age`` "
+"and ``port`` cookie-attributes introduced with RFC 2965."
+msgstr ""
+"Cả giao thức cookie Netscape thông thường và giao thức được xác định bởi "
+":rfc:`2965` đều được xử lý.  Việc xử lý RFC 2965 bị tắt theo mặc định. "
+"Cookie :rfc:`2109` được phân tích cú pháp dưới dạng cookie Netscape và sau "
+"đó được xử lý dưới dạng cookie Netscape hoặc RFC 2965 theo 'chính sách' có "
+"hiệu lực. Lưu ý rằng phần lớn cookie trên internet là cookie Netscape. "
+":mod:`!http.cookiejar` cố gắng tuân theo giao thức cookie Netscape trên thực"
+" tế (khác biệt đáng kể so với giao thức được nêu trong đặc tả Netscape ban "
+"đầu), bao gồm cả việc lưu ý đến các thuộc tính cookie ``max-age`` và "
+"``port`` được giới thiệu với RFC 2965."
+
+#: ../../library/http.cookiejar.rst:31
+#, fuzzy
+msgid ""
+"The various named parameters found in :mailheader:`Set-Cookie` and "
+":mailheader:`Set-Cookie2` headers (eg. ``domain`` and ``expires``) are "
+"conventionally referred to as :dfn:`attributes`.  To distinguish them from "
+"Python attributes, the documentation for this module uses the term "
+":dfn:`cookie-attribute` instead."
+msgstr ""
+"Các tham số được đặt tên khác nhau được tìm thấy trong tiêu đề "
+":mailheader:`Set-Cookie` và :mailheader:`Set-Cookie2` (ví dụ: ``domain`` và "
+"``expires``) thường được gọi là :dfn:`attributes`.  Để phân biệt chúng với "
+"các thuộc tính Python, tài liệu dành cho mô-đun này sử dụng thuật ngữ "
+":dfn:`cookie-attribute` thay thế."
+
+#: ../../library/http.cookiejar.rst:38
+#, fuzzy
+msgid "The module defines the following exception:"
+msgstr "Mô-đun xác định ngoại lệ sau:"
+
+#: ../../library/http.cookiejar.rst:43
+#, fuzzy
+msgid ""
+"Instances of :class:`FileCookieJar` raise this exception on failure to load "
+"cookies from a file.  :exc:`LoadError` is a subclass of :exc:`OSError`."
+msgstr ""
+"Các phiên bản của :class:`FileCookieJar` đưa ra ngoại lệ này khi không tải "
+"được cookie từ một tệp.  :exc:`LoadError` là một lớp con của :exc:`OSError`."
+
+#: ../../library/http.cookiejar.rst:46
+#, fuzzy
+msgid ""
+":exc:`LoadError` used to be a subtype of :exc:`IOError`, which is now an "
+"alias of :exc:`OSError`."
+msgstr ""
+":exc:`LoadError` từng là một kiểu con của :exc:`IOError`, hiện là bí danh "
+"của :exc:`OSError`."
+
+#: ../../library/http.cookiejar.rst:51
+#, fuzzy
+msgid "The following classes are provided:"
+msgstr "Các lớp sau đây được cung cấp:"
+
+#: ../../library/http.cookiejar.rst:56
+#, fuzzy
+msgid ""
+"*policy* is an object implementing the :class:`CookiePolicy` interface."
+msgstr "*policy* là một đối tượng triển khai giao diện :class:`CookiePolicy`."
+
+#: ../../library/http.cookiejar.rst:58
+#, fuzzy
+msgid ""
+"The :class:`CookieJar` class stores HTTP cookies.  It extracts cookies from "
+"HTTP requests, and returns them in HTTP responses. :class:`CookieJar` "
+"instances automatically expire contained cookies when necessary.  Subclasses"
+" are also responsible for storing and retrieving cookies from a file or "
+"database."
+msgstr ""
+"Lớp :class:`CookieJar` lưu trữ cookie HTTP.  Nó trích xuất cookie từ các yêu"
+" cầu HTTP và trả về chúng trong phản hồi HTTP. Các phiên bản "
+":class:`CookieJar` tự động hết hạn cookie chứa khi cần thiết.  Các lớp con "
+"cũng chịu trách nhiệm lưu trữ và truy xuất cookie từ một tệp hoặc cơ sở dữ "
+"liệu."
+
+#: ../../library/http.cookiejar.rst:66
+#, fuzzy
+msgid ""
+"*policy* is an object implementing the :class:`CookiePolicy` interface.  For"
+" the other arguments, see the documentation for the corresponding "
+"attributes."
+msgstr ""
+"*policy* là một đối tượng triển khai giao diện :class:`CookiePolicy`.  Đối "
+"với các đối số khác, hãy xem tài liệu về các thuộc tính tương ứng."
+
+#: ../../library/http.cookiejar.rst:69
+#, fuzzy
+msgid ""
+"A :class:`CookieJar` which can load cookies from, and perhaps save cookies "
+"to, a file on disk.  Cookies are **NOT** loaded from the named file until "
+"either the :meth:`load` or :meth:`revert` method is called.  Subclasses of "
+"this class are documented in section :ref:`file-cookie-jar-classes`."
+msgstr ""
+"Một :class:`CookieJar` có thể tải cookie từ và có thể lưu cookie vào một tệp"
+" trên đĩa.  Cookie được **NOT** tải từ tệp được đặt tên cho đến khi phương "
+"thức :meth:`load` hoặc :meth:`revert` được gọi.  Các lớp con của lớp này "
+"được ghi lại trong phần :ref:`file-cookie-jar-classes`."
+
+#: ../../library/http.cookiejar.rst:74
+#, fuzzy
+msgid ""
+"This should not be initialized directly – use its subclasses below instead."
+msgstr ""
+"Điều này không nên được khởi tạo trực tiếp – thay vào đó hãy sử dụng các lớp"
+" con của nó bên dưới."
+
+#: ../../library/http.cookiejar.rst:78 ../../library/http.cookiejar.rst:351
+#, fuzzy
+msgid "The filename parameter supports a :term:`path-like object`."
+msgstr "Tham số tên tệp hỗ trợ :term:`path-like object`."
+
+#: ../../library/http.cookiejar.rst:83
+#, fuzzy
+msgid ""
+"This class is responsible for deciding whether each cookie should be "
+"accepted from / returned to the server."
+msgstr ""
+"Lớp này chịu trách nhiệm quyết định xem mỗi cookie có được chấp nhận/trả về "
+"máy chủ hay không."
+
+#: ../../library/http.cookiejar.rst:89
+#, fuzzy
+msgid ""
+"Constructor arguments should be passed as keyword arguments only. "
+"*blocked_domains* is a sequence of domain names that we never accept cookies"
+" from, nor return cookies to. *allowed_domains* if not :const:`None`, this "
+"is a sequence of the only domains for which we accept and return cookies. "
+"*secure_protocols* is a sequence of protocols for which secure cookies can "
+"be added to. By default *https* and *wss* (secure websocket) are considered "
+"secure protocols. For all other arguments, see the documentation for "
+":class:`CookiePolicy` and :class:`DefaultCookiePolicy` objects."
+msgstr ""
+"Đối số của hàm tạo chỉ nên được chuyển dưới dạng đối số từ khóa. "
+"*blocked_domains* là một chuỗi các tên miền mà chúng tôi không bao giờ chấp "
+"nhận cookie cũng như không trả lại cookie. *allowed_domains* nếu không phải "
+":const:`None`, đây là chuỗi các miền duy nhất mà chúng tôi chấp nhận và trả "
+"lại cookie. *secure_protocols* là một chuỗi các giao thức có thể thêm cookie"
+" bảo mật vào. Theo mặc định, *https* và *wss* (websocket bảo mật) được coi "
+"là các giao thức bảo mật. Đối với tất cả các đối số khác, hãy xem tài liệu "
+"về các đối tượng :class:`CookiePolicy` và :class:`DefaultCookiePolicy`."
+
+#: ../../library/http.cookiejar.rst:98
+#, fuzzy
+msgid ""
+":class:`DefaultCookiePolicy` implements the standard accept / reject rules "
+"for Netscape and :rfc:`2965` cookies.  By default, :rfc:`2109` cookies (ie. "
+"cookies received in a :mailheader:`Set-Cookie` header with a version cookie-"
+"attribute of 1) are treated according to the RFC 2965 rules.  However, if "
+"RFC 2965 handling is turned off or :attr:`rfc2109_as_netscape` is ``True``, "
+"RFC 2109 cookies are 'downgraded' by the :class:`CookieJar` instance to "
+"Netscape cookies, by setting the :attr:`version` attribute of the "
+":class:`Cookie` instance to 0. :class:`DefaultCookiePolicy` also provides "
+"some parameters to allow some fine-tuning of policy."
+msgstr ""
+":class:`DefaultCookiePolicy` triển khai các quy tắc chấp nhận/từ chối tiêu "
+"chuẩn cho cookie Netscape và :rfc:`2965`.  Theo mặc định, cookie :rfc:`2109`"
+" (tức là cookie nhận được trong tiêu đề :mailheader:`Set-Cookie` có thuộc "
+"tính cookie phiên bản là 1) được xử lý theo quy tắc RFC 2965.  Tuy nhiên, "
+"nếu việc xử lý RFC 2965 bị tắt hoặc :attr:`rfc2109_as_netscape` là ``True``,"
+" thì các cookie RFC 2109 sẽ bị phiên bản :class:`CookieJar` 'hạ cấp' thành "
+"cookie Netscape, bằng cách đặt thuộc tính :attr:`version` của phiên bản "
+":class:`Cookie` thành 0. :class:`DefaultCookiePolicy` cũng cung cấp một số "
+"tham số để cho phép tinh chỉnh một số chính sách."
+
+#: ../../library/http.cookiejar.rst:111
+#, fuzzy
+msgid ""
+"This class represents Netscape, :rfc:`2109` and :rfc:`2965` cookies.  It is "
+"not expected that users of :mod:`!http.cookiejar` construct their own "
+":class:`Cookie` instances.  Instead, if necessary, call :meth:`make_cookies`"
+" on a :class:`CookieJar` instance."
+msgstr ""
+"Lớp này đại diện cho các cookie Netscape, :rfc:`2109` và :rfc:`2965`.  Người"
+" dùng :mod:`!http.cookiejar` không thể xây dựng phiên bản :class:`Cookie` "
+"của riêng họ.  Thay vào đó, nếu cần, hãy gọi :meth:`make_cookies` trên phiên"
+" bản :class:`CookieJar`."
+
+#: ../../library/http.cookiejar.rst:119
+#, fuzzy
+msgid "Module :mod:`urllib.request`"
+msgstr "Mô-đun :mod:`urllib.request`"
+
+#: ../../library/http.cookiejar.rst:120
+#, fuzzy
+msgid "URL opening with automatic cookie handling."
+msgstr "mở URL bằng cách xử lý cookie tự động."
+
+#: ../../library/http.cookiejar.rst:122
+#, fuzzy
+msgid "Module :mod:`http.cookies`"
+msgstr "Mô-đun :mod:`http.cookies`"
+
+#: ../../library/http.cookiejar.rst:123
+#, fuzzy
+msgid ""
+"HTTP cookie classes, principally useful for server-side code.  The "
+":mod:`!http.cookiejar` and :mod:`http.cookies` modules do not depend on each"
+" other."
+msgstr ""
+"Các lớp cookie HTTP, chủ yếu hữu ích cho mã phía máy chủ.  Các mô-đun "
+":mod:`!http.cookiejar` và :mod:`http.cookies` không phụ thuộc vào nhau."
+
+#: ../../library/http.cookiejar.rst:127
+#, fuzzy
+msgid "https://curl.se/rfc/cookie_spec.html"
+msgstr "https://curl.se/rfc/cookie_spec.html"
+
+#: ../../library/http.cookiejar.rst:128
+#, fuzzy
+msgid ""
+"The specification of the original Netscape cookie protocol.  Though this is "
+"still the dominant protocol, the 'Netscape cookie protocol' implemented by "
+"all the major browsers (and :mod:`!http.cookiejar`) only bears a passing "
+"resemblance to the one sketched out in ``cookie_spec.html``."
+msgstr ""
+"Đặc điểm kỹ thuật của giao thức cookie Netscape ban đầu.  Mặc dù đây vẫn là "
+"giao thức chiếm ưu thế, 'Giao thức cookie Netscape' được triển khai bởi tất "
+"cả các trình duyệt chính (và :mod:`!http.cookiejar`) chỉ có một chút giống "
+"với giao thức được phác thảo trong ``cookie_spec.html``."
+
+#: ../../library/http.cookiejar.rst:133
+#, fuzzy
+msgid ":rfc:`2109` - HTTP State Management Mechanism"
+msgstr ":rfc:`2109` - HTTP Cơ chế quản lý nhà nước"
+
+#: ../../library/http.cookiejar.rst:134
+#, fuzzy
+msgid ""
+"Obsoleted by :rfc:`2965`. Uses :mailheader:`Set-Cookie` with version=1."
+msgstr ""
+"Đã lỗi thời bởi :rfc:`2965`. Sử dụng :mailheader:`Set-Cookie` với phiên "
+"bản=1."
+
+#: ../../library/http.cookiejar.rst:136
+#, fuzzy
+msgid ":rfc:`2965` - HTTP State Management Mechanism"
+msgstr ":rfc:`2965` - HTTP Cơ chế quản lý nhà nước"
+
+#: ../../library/http.cookiejar.rst:137
+#, fuzzy
+msgid ""
+"The Netscape protocol with the bugs fixed.  Uses :mailheader:`Set-Cookie2` "
+"in place of :mailheader:`Set-Cookie`.  Not widely used."
+msgstr ""
+"Giao thức Netscape đã sửa lỗi.  Sử dụng :mailheader:`Set-Cookie2` thay cho "
+":mailheader:`Set-Cookie`.  Không được sử dụng rộng rãi."
+
+#: ../../library/http.cookiejar.rst:140
+#, fuzzy
+msgid "https://kristol.org/cookie/errata.html"
+msgstr "https://kristol.org/cookie/errata.html"
+
+#: ../../library/http.cookiejar.rst:141
+#, fuzzy
+msgid "Unfinished errata to :rfc:`2965`."
+msgstr "Lỗi chưa hoàn thành đối với :rfc:`2965`."
+
+#: ../../library/http.cookiejar.rst:143
+#, fuzzy
+msgid ":rfc:`2964` - Use of HTTP State Management"
+msgstr ":rfc:`2964` - Sử dụng quản lý nhà nước HTTP"
+
+#: ../../library/http.cookiejar.rst:148
+#, fuzzy
+msgid "CookieJar and FileCookieJar Objects"
+msgstr "Đối tượng CookieJar và FileCookieJar"
+
+#: ../../library/http.cookiejar.rst:150
+#, fuzzy
+msgid ""
+":class:`CookieJar` objects support the :term:`iterator` protocol for "
+"iterating over contained :class:`Cookie` objects."
+msgstr ""
+"Các đối tượng :class:`CookieJar` hỗ trợ giao thức :term:`iterator` để lặp "
+"lại các đối tượng :class:`Cookie` được chứa."
+
+#: ../../library/http.cookiejar.rst:153
+#, fuzzy
+msgid ":class:`CookieJar` has the following methods:"
+msgstr ":class:`CookieJar` có các phương pháp sau:"
+
+#: ../../library/http.cookiejar.rst:158
+#, fuzzy
+msgid "Add correct :mailheader:`Cookie` header to *request*."
+msgstr "Thêm tiêu đề :mailheader:`Cookie` chính xác vào *request*."
+
+#: ../../library/http.cookiejar.rst:160
+#, fuzzy
+msgid ""
+"If policy allows (ie. the :attr:`rfc2965` and :attr:`hide_cookie2` "
+"attributes of the :class:`CookieJar`'s :class:`CookiePolicy` instance are "
+"true and false respectively), the :mailheader:`Cookie2` header is also added"
+" when appropriate."
+msgstr ""
+"Nếu chính sách cho phép (tức là các thuộc tính :attr:`rfc2965` và "
+":attr:`hide_cookie2` của phiên bản :class:`CookiePolicy` của "
+":class:`CookieJar` lần lượt là đúng và sai), thì tiêu đề "
+":mailheader:`Cookie2` cũng được thêm vào khi thích hợp."
+
+#: ../../library/http.cookiejar.rst:164
+#, fuzzy
+msgid ""
+"The *request* object (usually a :class:`urllib.request.Request` instance) "
+"must support the methods :meth:`get_full_url`, :meth:`has_header`, "
+":meth:`get_header`, :meth:`header_items`, :meth:`add_unredirected_header` "
+"and the attributes :attr:`host`, :attr:`!type`, :attr:`unverifiable` and "
+":attr:`origin_req_host` as documented by :mod:`urllib.request`."
+msgstr ""
+"Đối tượng *request* (thường là phiên bản :class:`urllib.request.Request`) "
+"phải hỗ trợ các phương thức :meth:`get_full_url`, :meth:`has_header`, "
+":meth:`get_header`, :meth:`header_items`, :meth:`add_unredirected_header` và"
+" các thuộc tính :attr:`host`, :attr:`!type`, :attr:`unverifiable` và "
+":attr:`origin_req_host` như được ghi lại bởi :mod:`urllib.request`."
+
+#: ../../library/http.cookiejar.rst:172 ../../library/http.cookiejar.rst:198
+#, fuzzy
+msgid ""
+"*request* object needs :attr:`origin_req_host` attribute. Dependency on a "
+"deprecated method :meth:`get_origin_req_host` has been removed."
+msgstr ""
+"Đối tượng *request* cần thuộc tính :attr:`origin_req_host`. Sự phụ thuộc vào"
+" phương thức không được dùng nữa :meth:`get_origin_req_host` đã bị xóa."
+
+#: ../../library/http.cookiejar.rst:178
+#, fuzzy
+msgid ""
+"Extract cookies from HTTP *response* and store them in the "
+":class:`CookieJar`, where allowed by policy."
+msgstr ""
+"Trích xuất cookie từ HTTP *response* và lưu trữ chúng trong "
+":class:`CookieJar`, nếu chính sách cho phép."
+
+#: ../../library/http.cookiejar.rst:181
+#, fuzzy
+msgid ""
+"The :class:`CookieJar` will look for allowable :mailheader:`Set-Cookie` and "
+":mailheader:`Set-Cookie2` headers in the *response* argument, and store "
+"cookies as appropriate (subject to the :meth:`CookiePolicy.set_ok` method's "
+"approval)."
+msgstr ""
+":class:`CookieJar` sẽ tìm kiếm các tiêu đề :mailheader:`Set-Cookie` và "
+":mailheader:`Set-Cookie2` được phép trong đối số *response* và lưu trữ "
+"cookie khi thích hợp (tùy thuộc vào sự chấp thuận của phương thức "
+":meth:`CookiePolicy.set_ok`)."
+
+#: ../../library/http.cookiejar.rst:185
+#, fuzzy
+msgid ""
+"The *response* object (usually the result of a call to "
+":meth:`urllib.request.urlopen`, or similar) should support an :meth:`info` "
+"method, which returns an :class:`email.message.Message` instance."
+msgstr ""
+"Đối tượng *response* (thường là kết quả của lệnh gọi tới "
+":meth:`urllib.request.urlopen` hoặc tương tự) sẽ hỗ trợ phương thức "
+":meth:`info`, trả về một phiên bản :class:`email.message.Message`."
+
+#: ../../library/http.cookiejar.rst:189
+#, fuzzy
+msgid ""
+"The *request* object (usually a :class:`urllib.request.Request` instance) "
+"must support the method :meth:`get_full_url` and the attributes "
+":attr:`host`, :attr:`unverifiable` and :attr:`origin_req_host`, as "
+"documented by :mod:`urllib.request`.  The request is used to set default "
+"values for cookie-attributes as well as for checking that the cookie is "
+"allowed to be set."
+msgstr ""
+"Đối tượng *request* (thường là phiên bản :class:`urllib.request.Request`) "
+"phải hỗ trợ phương thức :meth:`get_full_url` và các thuộc tính :attr:`host`,"
+" :attr:`unverifiable` và :attr:`origin_req_host`, như được ghi lại bởi "
+":mod:`urllib.request`.  Yêu cầu được sử dụng để đặt giá trị mặc định cho "
+"thuộc tính cookie cũng như để kiểm tra xem cookie có được phép đặt hay "
+"không."
+
+#: ../../library/http.cookiejar.rst:203
+#, fuzzy
+msgid "Set the :class:`CookiePolicy` instance to be used."
+msgstr "Đặt phiên bản :class:`CookiePolicy` sẽ được sử dụng."
+
+#: ../../library/http.cookiejar.rst:208
+#, fuzzy
+msgid ""
+"Return sequence of :class:`Cookie` objects extracted from *response* object."
+msgstr ""
+"Trả về chuỗi đối tượng :class:`Cookie` được trích xuất từ đối tượng "
+"*response*."
+
+#: ../../library/http.cookiejar.rst:210
+#, fuzzy
+msgid ""
+"See the documentation for :meth:`extract_cookies` for the interfaces "
+"required of the *response* and *request* arguments."
+msgstr ""
+"Xem tài liệu về :meth:`extract_cookies` để biết các giao diện được yêu cầu "
+"của các đối số *response* và *request*."
+
+#: ../../library/http.cookiejar.rst:216
+#, fuzzy
+msgid "Set a :class:`Cookie` if policy says it's OK to do so."
+msgstr "Đặt :class:`Cookie` nếu chính sách cho phép làm như vậy."
+
+#: ../../library/http.cookiejar.rst:221
+#, fuzzy
+msgid ""
+"Set a :class:`Cookie`, without checking with policy to see whether or not it"
+" should be set."
+msgstr ""
+"Đặt :class:`Cookie` mà không cần kiểm tra chính sách để xem có nên đặt chính"
+" sách này hay không."
+
+#: ../../library/http.cookiejar.rst:227
+#, fuzzy
+msgid "Clear some cookies."
+msgstr "Xóa một số cookie."
+
+#: ../../library/http.cookiejar.rst:229
+#, fuzzy
+msgid ""
+"If invoked without arguments, clear all cookies.  If given a single "
+"argument, only cookies belonging to that *domain* will be removed. If given "
+"two arguments, cookies belonging to the specified *domain* and URL *path* "
+"are removed.  If given three arguments, then the cookie with the specified "
+"*domain*, *path* and *name* is removed."
+msgstr ""
+"Nếu được gọi mà không có đối số, hãy xóa tất cả cookie.  Nếu được cung cấp "
+"một đối số duy nhất, chỉ các cookie thuộc *domain* đó sẽ bị xóa. Nếu được "
+"cung cấp hai đối số, các cookie thuộc *domain* và URL *path* được chỉ định "
+"sẽ bị xóa.  Nếu được cung cấp ba đối số thì cookie có *domain*, *path* và "
+"*name* được chỉ định sẽ bị xóa."
+
+#: ../../library/http.cookiejar.rst:235
+#, fuzzy
+msgid "Raises :exc:`KeyError` if no matching cookie exists."
+msgstr "Tăng :exc:`KeyError` nếu không có cookie phù hợp tồn tại."
+
+#: ../../library/http.cookiejar.rst:240
+#, fuzzy
+msgid "Discard all session cookies."
+msgstr "Loại bỏ tất cả cookie phiên."
+
+#: ../../library/http.cookiejar.rst:242
+#, fuzzy
+msgid ""
+"Discards all contained cookies that have a true :attr:`discard` attribute "
+"(usually because they had either no ``max-age`` or ``expires`` cookie-"
+"attribute, or an explicit ``discard`` cookie-attribute).  For interactive "
+"browsers, the end of a session usually corresponds to closing the browser "
+"window."
+msgstr ""
+"Loại bỏ tất cả các cookie chứa có thuộc tính :attr:`discard` thực sự (thường"
+" là do chúng không có thuộc tính cookie ``max-age`` hoặc ``expires`` hoặc "
+"thuộc tính cookie ``discard`` rõ ràng).  Đối với các trình duyệt tương tác, "
+"kết thúc phiên thường tương ứng với việc đóng cửa sổ trình duyệt."
+
+#: ../../library/http.cookiejar.rst:247
+#, fuzzy
+msgid ""
+"Note that the :meth:`save` method won't save session cookies anyway, unless "
+"you ask otherwise by passing a true *ignore_discard* argument."
+msgstr ""
+"Lưu ý rằng phương thức :meth:`save` sẽ không lưu cookie phiên, trừ khi bạn "
+"yêu cầu khác bằng cách chuyển một đối số *ignore_discard* thực sự."
+
+#: ../../library/http.cookiejar.rst:250
+#, fuzzy
+msgid ":class:`FileCookieJar` implements the following additional methods:"
+msgstr ":class:`FileCookieJar` thực hiện các phương pháp bổ sung sau:"
+
+#: ../../library/http.cookiejar.rst:255
+#, fuzzy
+msgid "Save cookies to a file."
+msgstr "Lưu cookie vào một tập tin."
+
+#: ../../library/http.cookiejar.rst:257
+#, fuzzy
+msgid ""
+"This base class raises :exc:`NotImplementedError`.  Subclasses may leave "
+"this method unimplemented."
+msgstr ""
+"Lớp cơ sở này tăng :exc:`NotImplementedError`.  Các lớp con có thể không "
+"thực hiện phương thức này."
+
+#: ../../library/http.cookiejar.rst:260
+#, fuzzy
+msgid ""
+"*filename* is the name of file in which to save cookies.  If *filename* is "
+"not specified, :attr:`self.filename` is used (whose default is the value "
+"passed to the constructor, if any); if :attr:`self.filename` is "
+":const:`None`, :exc:`ValueError` is raised."
+msgstr ""
+"*filename* là tên file lưu cookie.  Nếu *filename* không được chỉ định, "
+":attr:`self.filename` sẽ được sử dụng (có mặc định là giá trị được truyền "
+"cho hàm tạo, nếu có); nếu :attr:`self.filename` là :const:`None`, "
+":exc:`ValueError` được nâng lên."
+
+#: ../../library/http.cookiejar.rst:265
+#, fuzzy
+msgid ""
+"*ignore_discard*: save even cookies set to be discarded. *ignore_expires*: "
+"save even cookies that have expired"
+msgstr ""
+"*ignore_discard*: lưu cả những cookie đã được thiết lập để loại bỏ. "
+"*ignore_expires*: lưu cả những cookie đã hết hạn"
+
+#: ../../library/http.cookiejar.rst:268
+#, fuzzy
+msgid ""
+"The file is overwritten if it already exists, thus wiping all the cookies it"
+" contains.  Saved cookies can be restored later using the :meth:`load` or "
+":meth:`revert` methods."
+msgstr ""
+"Tệp sẽ bị ghi đè nếu nó đã tồn tại, do đó sẽ xóa sạch tất cả cookie chứa "
+"trong đó.  Cookie đã lưu có thể được khôi phục sau bằng phương pháp "
+":meth:`load` hoặc :meth:`revert`."
+
+#: ../../library/http.cookiejar.rst:275
+#, fuzzy
+msgid "Load cookies from a file."
+msgstr "Tải cookie từ một tập tin."
+
+#: ../../library/http.cookiejar.rst:277
+#, fuzzy
+msgid "Old cookies are kept unless overwritten by newly loaded ones."
+msgstr "Cookie cũ được giữ lại trừ khi bị ghi đè bởi cookie mới tải."
+
+#: ../../library/http.cookiejar.rst:279
+#, fuzzy
+msgid "Arguments are as for :meth:`save`."
+msgstr "Các đối số giống như đối với :meth:`save`."
+
+#: ../../library/http.cookiejar.rst:281
+#, fuzzy
+msgid ""
+"The named file must be in the format understood by the class, or "
+":exc:`LoadError` will be raised.  Also, :exc:`OSError` may be raised, for "
+"example if the file does not exist."
+msgstr ""
+"Tệp được đặt tên phải ở định dạng mà lớp có thể hiểu được, nếu không "
+":exc:`LoadError` sẽ được nâng lên.  Ngoài ra, :exc:`OSError` có thể được "
+"nâng lên, chẳng hạn nếu tệp không tồn tại."
+
+#: ../../library/http.cookiejar.rst:285
+#, fuzzy
+msgid ""
+":exc:`IOError` used to be raised, it is now an alias of :exc:`OSError`."
+msgstr ""
+":exc:`IOError` trước đây được nâng lên, bây giờ nó là bí danh của "
+":exc:`OSError`."
+
+#: ../../library/http.cookiejar.rst:291
+#, fuzzy
+msgid "Clear all cookies and reload cookies from a saved file."
+msgstr "Xóa tất cả cookie và tải lại cookie từ tệp đã lưu."
+
+#: ../../library/http.cookiejar.rst:293
+#, fuzzy
+msgid ""
+":meth:`revert` can raise the same exceptions as :meth:`load`. If there is a "
+"failure, the object's state will not be altered."
+msgstr ""
+":meth:`revert` có thể đưa ra các ngoại lệ tương tự như :meth:`load`. Nếu có "
+"lỗi, trạng thái của đối tượng sẽ không bị thay đổi."
+
+#: ../../library/http.cookiejar.rst:296
+#, fuzzy
+msgid ":class:`FileCookieJar` instances have the following public attributes:"
+msgstr "Các phiên bản :class:`FileCookieJar` có các thuộc tính công khai sau:"
+
+#: ../../library/http.cookiejar.rst:301
+#, fuzzy
+msgid ""
+"Filename of default file in which to keep cookies.  This attribute may be "
+"assigned to."
+msgstr ""
+"Tên tệp của tệp mặc định để giữ cookie.  Thuộc tính này có thể được gán cho."
+
+#: ../../library/http.cookiejar.rst:307
+#, fuzzy
+msgid ""
+"If true, load cookies lazily from disk.  This attribute should not be "
+"assigned to.  This is only a hint, since this only affects performance, not "
+"behaviour (unless the cookies on disk are changing). A :class:`CookieJar` "
+"object may ignore it.  None of the :class:`FileCookieJar` classes included "
+"in the standard library lazily loads cookies."
+msgstr ""
+"Nếu đúng, hãy tải cookie một cách lười biếng từ đĩa.  Thuộc tính này không "
+"nên được gán cho.  Đây chỉ là gợi ý vì điều này chỉ ảnh hưởng đến hiệu suất "
+"chứ không ảnh hưởng đến hành vi (trừ khi cookie trên đĩa đang thay đổi). Đối"
+" tượng :class:`CookieJar` có thể bỏ qua nó.  Không có lớp "
+":class:`FileCookieJar` nào có trong thư viện tiêu chuẩn tải cookie một cách "
+"lười biếng."
+
+#: ../../library/http.cookiejar.rst:317
+#, fuzzy
+msgid "FileCookieJar subclasses and co-operation with web browsers"
+msgstr "Các lớp con FileCookieJar và hợp tác với trình duyệt web"
+
+#: ../../library/http.cookiejar.rst:319
+#, fuzzy
+msgid ""
+"The following :class:`CookieJar` subclasses are provided for reading and "
+"writing."
+msgstr "Các lớp con :class:`CookieJar` sau đây được cung cấp để đọc và viết."
+
+#: ../../library/http.cookiejar.rst:324
+#, fuzzy
+msgid ""
+"A :class:`FileCookieJar` that can load from and save cookies to disk in the "
+"Mozilla ``cookies.txt`` file format (which is also used by curl and the Lynx"
+" and Netscape browsers)."
+msgstr ""
+"Một :class:`FileCookieJar` có thể tải và lưu cookie vào đĩa ở định dạng tệp "
+"Mozilla ``cookies.txt`` (cũng được sử dụng bởi trình duyệt Curl, Lynx và "
+"Netscape)."
+
+#: ../../library/http.cookiejar.rst:330
+#, fuzzy
+msgid ""
+"This loses information about :rfc:`2965` cookies, and also about newer or "
+"non-standard cookie-attributes such as ``port``."
+msgstr ""
+"Điều này sẽ làm mất thông tin về cookie :rfc:`2965` cũng như về các thuộc "
+"tính cookie mới hơn hoặc không chuẩn, chẳng hạn như ``port``."
+
+#: ../../library/http.cookiejar.rst:335
+#, fuzzy
+msgid ""
+"Back up your cookies before saving if you have cookies whose loss / "
+"corruption would be inconvenient (there are some subtleties which may lead "
+"to slight changes in the file over a load / save round-trip)."
+msgstr ""
+"Sao lưu cookie của bạn trước khi lưu nếu bạn có cookie mà việc mất / hỏng sẽ"
+" gây bất tiện (có một số chi tiết có thể dẫn đến những thay đổi nhỏ trong "
+"tệp khi tải / lưu khứ hồi)."
+
+#: ../../library/http.cookiejar.rst:339
+#, fuzzy
+msgid ""
+"Also note that cookies saved while Mozilla is running will get clobbered by "
+"Mozilla."
+msgstr ""
+"Cũng lưu ý rằng các cookie được lưu trong khi Mozilla đang chạy sẽ bị "
+"Mozilla ghi đè."
+
+#: ../../library/http.cookiejar.rst:345
+#, fuzzy
+msgid ""
+"A :class:`FileCookieJar` that can load from and save cookies to disk in "
+"format compatible with the libwww-perl library's ``Set-Cookie3`` file "
+"format.  This is convenient if you want to store cookies in a human-readable"
+" file."
+msgstr ""
+"Một :class:`FileCookieJar` có thể tải và lưu cookie vào đĩa ở định dạng "
+"tương thích với định dạng tệp ``Set-Cookie3`` của thư viện libwww-Perl.  "
+"Điều này thuận tiện nếu bạn muốn lưu trữ cookie trong một tệp mà con người "
+"có thể đọc được."
+
+#: ../../library/http.cookiejar.rst:356
+#, fuzzy
+msgid "CookiePolicy Objects"
+msgstr "Đối tượng Chính sách Cookie"
+
+#: ../../library/http.cookiejar.rst:358
+#, fuzzy
+msgid ""
+"Objects implementing the :class:`CookiePolicy` interface have the following "
+"methods:"
+msgstr ""
+"Các đối tượng thực hiện giao diện :class:`CookiePolicy` có các phương thức "
+"sau:"
+
+#: ../../library/http.cookiejar.rst:364
+#, fuzzy
+msgid ""
+"Return boolean value indicating whether cookie should be accepted from "
+"server."
+msgstr ""
+"Trả về giá trị boolean cho biết liệu cookie có được chấp nhận từ máy chủ hay"
+" không."
+
+#: ../../library/http.cookiejar.rst:366
+#, fuzzy
+msgid ""
+"*cookie* is a :class:`Cookie` instance.  *request* is an object implementing"
+" the interface defined by the documentation for "
+":meth:`CookieJar.extract_cookies`."
+msgstr ""
+"*cookie* là một phiên bản :class:`Cookie`.  *request* là một đối tượng triển"
+" khai giao diện được xác định bởi tài liệu dành cho "
+":meth:`CookieJar.extract_cookies`."
+
+#: ../../library/http.cookiejar.rst:373
+#, fuzzy
+msgid ""
+"Return boolean value indicating whether cookie should be returned to server."
+msgstr ""
+"Trả về giá trị boolean cho biết có nên trả lại cookie cho máy chủ hay không."
+
+#: ../../library/http.cookiejar.rst:375
+#, fuzzy
+msgid ""
+"*cookie* is a :class:`Cookie` instance.  *request* is an object implementing"
+" the interface defined by the documentation for "
+":meth:`CookieJar.add_cookie_header`."
+msgstr ""
+"*cookie* là một phiên bản :class:`Cookie`.  *request* là một đối tượng triển"
+" khai giao diện được xác định bởi tài liệu dành cho "
+":meth:`CookieJar.add_cookie_header`."
+
+#: ../../library/http.cookiejar.rst:382
+#, fuzzy
+msgid ""
+"Return ``False`` if cookies should not be returned, given cookie domain."
+msgstr ""
+"Trả về ``False`` nếu không nên trả lại cookie, với miền cookie được cung "
+"cấp."
+
+#: ../../library/http.cookiejar.rst:384
+#, fuzzy
+msgid ""
+"This method is an optimization.  It removes the need for checking every "
+"cookie with a particular domain (which might involve reading many files).  "
+"Returning true from :meth:`domain_return_ok` and :meth:`path_return_ok` "
+"leaves all the work to :meth:`return_ok`."
+msgstr ""
+"Phương pháp này là một sự tối ưu hóa.  Nó loại bỏ nhu cầu kiểm tra mọi "
+"cookie với một tên miền cụ thể (có thể liên quan đến việc đọc nhiều tệp).  "
+"Trả về true từ :meth:`domain_return_ok` và :meth:`path_return_ok` để lại tất"
+" cả công việc cho :meth:`return_ok`."
+
+#: ../../library/http.cookiejar.rst:389
+#, fuzzy
+msgid ""
+"If :meth:`domain_return_ok` returns true for the cookie domain, "
+":meth:`path_return_ok` is called for the cookie path.  Otherwise, "
+":meth:`path_return_ok` and :meth:`return_ok` are never called for that "
+"cookie domain.  If :meth:`path_return_ok` returns true, :meth:`return_ok` is"
+" called with the :class:`Cookie` object itself for a full check.  Otherwise,"
+" :meth:`return_ok` is never called for that cookie path."
+msgstr ""
+"Nếu :meth:`domain_return_ok` trả về true cho miền cookie thì "
+":meth:`path_return_ok` được gọi cho đường dẫn cookie.  Nếu không, "
+":meth:`path_return_ok` và :meth:`return_ok` không bao giờ được gọi cho miền "
+"cookie đó.  Nếu :meth:`path_return_ok` trả về true, :meth:`return_ok` sẽ "
+"được gọi với chính đối tượng :class:`Cookie` để kiểm tra đầy đủ.  Nếu không,"
+" :meth:`return_ok` không bao giờ được gọi cho đường dẫn cookie đó."
+
+#: ../../library/http.cookiejar.rst:396
+#, fuzzy
+msgid ""
+"Note that :meth:`domain_return_ok` is called for every *cookie* domain, not "
+"just for the *request* domain.  For example, the function might be called "
+"with both ``\".example.com\"`` and ``\"www.example.com\"`` if the request "
+"domain is ``\"www.example.com\"``.  The same goes for "
+":meth:`path_return_ok`."
+msgstr ""
+"Lưu ý rằng :meth:`domain_return_ok` được gọi cho mọi miền *cookie*, không "
+"chỉ cho miền *request*.  Ví dụ: hàm có thể được gọi với cả "
+"``\".example.com\"`` và ``\"www.example.com\"`` nếu miền yêu cầu là "
+"``\"www.example.com\"``.  Điều tương tự cũng xảy ra với "
+":meth:`path_return_ok`."
+
+#: ../../library/http.cookiejar.rst:401
+#, fuzzy
+msgid "The *request* argument is as documented for :meth:`return_ok`."
+msgstr "Đối số *request* được ghi lại cho :meth:`return_ok`."
+
+#: ../../library/http.cookiejar.rst:406
+#, fuzzy
+msgid "Return ``False`` if cookies should not be returned, given cookie path."
+msgstr ""
+"Trả về ``False`` nếu không trả về cookie, với đường dẫn cookie đã cho."
+
+#: ../../library/http.cookiejar.rst:408
+#, fuzzy
+msgid "See the documentation for :meth:`domain_return_ok`."
+msgstr "Xem tài liệu về :meth:`domain_return_ok`."
+
+#: ../../library/http.cookiejar.rst:410
+#, fuzzy
+msgid ""
+"In addition to implementing the methods above, implementations of the "
+":class:`CookiePolicy` interface must also supply the following attributes, "
+"indicating which protocols should be used, and how.  All of these attributes"
+" may be assigned to."
+msgstr ""
+"Ngoài việc triển khai các phương pháp trên, việc triển khai giao diện "
+":class:`CookiePolicy` cũng phải cung cấp các thuộc tính sau, cho biết nên sử"
+" dụng giao thức nào và sử dụng như thế nào.  Tất cả các thuộc tính này có "
+"thể được gán cho."
+
+#: ../../library/http.cookiejar.rst:418
+#, fuzzy
+msgid "Implement Netscape protocol."
+msgstr "Triển khai giao thức Netscape."
+
+#: ../../library/http.cookiejar.rst:423
+#, fuzzy
+msgid "Implement :rfc:`2965` protocol."
+msgstr "Triển khai giao thức :rfc:`2965`."
+
+#: ../../library/http.cookiejar.rst:428
+#, fuzzy
+msgid ""
+"Don't add :mailheader:`Cookie2` header to requests (the presence of this "
+"header indicates to the server that we understand :rfc:`2965` cookies)."
+msgstr ""
+"Không thêm tiêu đề :mailheader:`Cookie2` vào yêu cầu (sự hiện diện của tiêu "
+"đề này cho máy chủ biết rằng chúng tôi hiểu cookie :rfc:`2965`)."
+
+#: ../../library/http.cookiejar.rst:431
+#, fuzzy
+msgid ""
+"The most useful way to define a :class:`CookiePolicy` class is by "
+"subclassing from :class:`DefaultCookiePolicy` and overriding some or all of "
+"the methods above.  :class:`CookiePolicy` itself may be used as a 'null "
+"policy' to allow setting and receiving any and all cookies (this is unlikely"
+" to be useful)."
+msgstr ""
+"Cách hữu ích nhất để xác định lớp :class:`CookiePolicy` là phân lớp từ "
+":class:`DefaultCookiePolicy` và ghi đè một số hoặc tất cả các phương thức "
+"trên.  Bản thân :class:`CookiePolicy` có thể được sử dụng như một 'chính "
+"sách vô hiệu' để cho phép cài đặt và nhận bất kỳ và tất cả cookie nào (điều "
+"này có thể không hữu ích)."
+
+#: ../../library/http.cookiejar.rst:440
+#, fuzzy
+msgid "DefaultCookiePolicy Objects"
+msgstr "Đối tượng chính sách cookie mặc định"
+
+#: ../../library/http.cookiejar.rst:442
+#, fuzzy
+msgid "Implements the standard rules for accepting and returning cookies."
+msgstr "Triển khai các quy tắc tiêu chuẩn để chấp nhận và trả lại cookie."
+
+#: ../../library/http.cookiejar.rst:444
+#, fuzzy
+msgid ""
+"Both :rfc:`2965` and Netscape cookies are covered.  RFC 2965 handling is "
+"switched off by default."
+msgstr ""
+"Cả cookie :rfc:`2965` và Netscape đều được bảo vệ.  Việc xử lý RFC 2965 bị "
+"tắt theo mặc định."
+
+#: ../../library/http.cookiejar.rst:447
+#, fuzzy
+msgid ""
+"The easiest way to provide your own policy is to override this class and "
+"call its methods in your overridden implementations before adding your own "
+"additional checks::"
+msgstr ""
+"Cách dễ nhất để cung cấp chính sách của riêng bạn là ghi đè lớp này và gọi "
+"các phương thức của nó trong quá trình triển khai được ghi đè trước khi thêm"
+" các bước kiểm tra bổ sung của riêng bạn::"
+
+#: ../../library/http.cookiejar.rst:451
+#, fuzzy
+msgid ""
+"import http.cookiejar\n"
+"class MyCookiePolicy(http.cookiejar.DefaultCookiePolicy):\n"
+"    def set_ok(self, cookie, request):\n"
+"        if not http.cookiejar.DefaultCookiePolicy.set_ok(self, cookie, request):\n"
+"            return False\n"
+"        if i_dont_want_to_store_this_cookie(cookie):\n"
+"            return False\n"
+"        return True"
+msgstr ""
+"nhập http.cookiejar\n"
+"lớp MyCookiePolicy(http.cookiejar.DefaultCookiePolicy):\n"
+"    def set_ok(tự, cookie, yêu cầu):\n"
+"        nếu không http.cookiejar.DefaultCookiePolicy.set_ok(self, cookie, request):\n"
+"            trả về Sai\n"
+"        nếu i_dont_want_to_store_this_cookie(cookie):\n"
+"            trả về Sai\n"
+"        trả về Đúng"
+
+#: ../../library/http.cookiejar.rst:460
+#, fuzzy
+msgid ""
+"In addition to the features required to implement the :class:`CookiePolicy` "
+"interface, this class allows you to block and allow domains from setting and"
+" receiving cookies.  There are also some strictness switches that allow you "
+"to tighten up the rather loose Netscape protocol rules a little bit (at the "
+"cost of blocking some benign cookies)."
+msgstr ""
+"Ngoài các tính năng cần thiết để triển khai giao diện :class:`CookiePolicy`,"
+" lớp này cho phép bạn chặn và cho phép các miền thiết lập và nhận cookie.  "
+"Ngoài ra còn có một số công tắc nghiêm ngặt cho phép bạn thắt chặt các quy "
+"tắc giao thức Netscape khá lỏng lẻo một chút (với chi phí chặn một số cookie"
+" lành tính)."
+
+#: ../../library/http.cookiejar.rst:466
+#, fuzzy
+msgid ""
+"A domain blocklist and allowlist is provided (both off by default). Only "
+"domains not in the blocklist and present in the allowlist (if the allowlist "
+"is active) participate in cookie setting and returning.  Use the "
+"*blocked_domains* constructor argument, and :meth:`blocked_domains` and "
+":meth:`set_blocked_domains` methods (and the corresponding argument and "
+"methods for *allowed_domains*).  If you set an allowlist, you can turn it "
+"off again by setting it to :const:`None`."
+msgstr ""
+"Danh sách chặn và danh sách cho phép miền được cung cấp (cả hai đều tắt theo"
+" mặc định). Chỉ các miền không có trong danh sách chặn và có trong danh sách"
+" cho phép (nếu danh sách cho phép đang hoạt động) mới tham gia cài đặt "
+"cookie và quay lại.  Sử dụng đối số hàm tạo *blocked_domains* cũng như các "
+"phương thức :meth:`blocked_domains` và :meth:`set_blocked_domains` (cũng như"
+" đối số và phương thức tương ứng cho *allowed_domains*).  Nếu bạn đặt danh "
+"sách cho phép, bạn có thể tắt lại danh sách này bằng cách đặt thành "
+":const:`None`."
+
+#: ../../library/http.cookiejar.rst:474
+#, fuzzy
+msgid ""
+"Domains in block or allow lists that do not start with a dot must equal the "
+"cookie domain to be matched.  For example, ``\"example.com\"`` matches a "
+"blocklist entry of ``\"example.com\"``, but ``\"www.example.com\"`` does "
+"not.  Domains that do start with a dot are matched by more specific domains "
+"too. For example, both ``\"www.example.com\"`` and "
+"``\"www.coyote.example.com\"`` match ``\".example.com\"`` (but "
+"``\"example.com\"`` itself does not).  IP addresses are an exception, and "
+"must match exactly.  For example, if blocked_domains contains "
+"``\"192.168.1.2\"`` and ``\".168.1.2\"``, 192.168.1.2 is blocked, but "
+"193.168.1.2 is not."
+msgstr ""
+"Các miền trong danh sách chặn hoặc cho phép không bắt đầu bằng dấu chấm phải"
+" bằng miền cookie để được so khớp.  Ví dụ: ``\"example.com\"`` khớp với mục "
+"nhập danh sách chặn của ``\"example.com\"``, nhưng ``\"www.example.com\"`` "
+"thì không.  Các miền bắt đầu bằng dấu chấm cũng được khớp với các miền cụ "
+"thể hơn. Ví dụ: cả ``\"www.example.com\"`` và ``\"www.coyote.example.com\"``"
+" đều khớp với ``\".example.com\"`` (nhưng bản thân ``\"example.com\"`` thì "
+"không).  Địa chỉ IP là một ngoại lệ và phải khớp chính xác.  Ví dụ: nếu "
+"Block_domains chứa ``\"192.168.1.2\"`` và ``\".168.1.2\"`` thì 192.168.1.2 "
+"bị chặn nhưng 193.168.1.2 thì không."
+
+#: ../../library/http.cookiejar.rst:483
+#, fuzzy
+msgid ""
+":class:`DefaultCookiePolicy` implements the following additional methods:"
+msgstr ":class:`DefaultCookiePolicy` thực hiện các phương pháp bổ sung sau:"
+
+#: ../../library/http.cookiejar.rst:488
+#, fuzzy
+msgid "Return the sequence of blocked domains (as a tuple)."
+msgstr "Trả về chuỗi các miền bị chặn (dưới dạng tuple)."
+
+#: ../../library/http.cookiejar.rst:493
+#, fuzzy
+msgid "Set the sequence of blocked domains."
+msgstr "Đặt trình tự các tên miền bị chặn."
+
+#: ../../library/http.cookiejar.rst:498
+#, fuzzy
+msgid ""
+"Return ``True`` if *domain* is on the blocklist for setting or receiving "
+"cookies."
+msgstr ""
+"Trả về ``True`` nếu *domain* nằm trong danh sách chặn để cài đặt hoặc nhận "
+"cookie."
+
+#: ../../library/http.cookiejar.rst:504
+#, fuzzy
+msgid "Return :const:`None`, or the sequence of allowed domains (as a tuple)."
+msgstr ""
+"Trả về :const:`None` hoặc chuỗi các miền được phép (dưới dạng một bộ dữ "
+"liệu)."
+
+#: ../../library/http.cookiejar.rst:509
+#, fuzzy
+msgid "Set the sequence of allowed domains, or :const:`None`."
+msgstr "Đặt chuỗi các tên miền được phép hoặc :const:`None`."
+
+#: ../../library/http.cookiejar.rst:514
+#, fuzzy
+msgid ""
+"Return ``True`` if *domain* is not on the allowlist for setting or receiving"
+" cookies."
+msgstr ""
+"Trả về ``True`` nếu *domain* không có trong danh sách cho phép cài đặt hoặc "
+"nhận cookie."
+
+#: ../../library/http.cookiejar.rst:517
+#, fuzzy
+msgid ""
+":class:`DefaultCookiePolicy` instances have the following attributes, which "
+"are all initialised from the constructor arguments of the same name, and "
+"which may all be assigned to."
+msgstr ""
+"Các phiên bản :class:`DefaultCookiePolicy` có các thuộc tính sau, tất cả đều"
+" được khởi tạo từ các đối số hàm tạo có cùng tên và tất cả đều có thể được "
+"gán cho."
+
+#: ../../library/http.cookiejar.rst:524
+#, fuzzy
+msgid ""
+"If true, request that the :class:`CookieJar` instance downgrade :rfc:`2109` "
+"cookies (ie. cookies received in a :mailheader:`Set-Cookie` header with a "
+"version cookie-attribute of 1) to Netscape cookies by setting the version "
+"attribute of the :class:`Cookie` instance to 0.  The default value is "
+":const:`None`, in which case RFC 2109 cookies are downgraded if and only if "
+":rfc:`2965` handling is turned off.  Therefore, RFC 2109 cookies are "
+"downgraded by default."
+msgstr ""
+"Nếu đúng, hãy yêu cầu phiên bản :class:`CookieJar` hạ cấp cookie :rfc:`2109`"
+" (tức là các cookie nhận được trong tiêu đề :mailheader:`Set-Cookie` có "
+"thuộc tính cookie phiên bản là 1) xuống cookie Netscape bằng cách đặt thuộc "
+"tính phiên bản của phiên bản :class:`Cookie` thành 0. Giá trị mặc định là "
+":const:`None`, trong trường hợp đó, cookie RFC 2109 bị hạ cấp khi và chỉ khi"
+" việc xử lý :rfc:`2965` bị tắt.  Do đó, theo mặc định, cookie RFC 2109 bị hạ"
+" cấp."
+
+#: ../../library/http.cookiejar.rst:532
+#, fuzzy
+msgid "General strictness switches:"
+msgstr "Công tắc nghiêm ngặt chung:"
+
+#: ../../library/http.cookiejar.rst:536
+#, fuzzy
+msgid ""
+"Don't allow sites to set two-component domains with country-code top-level "
+"domains like ``.co.uk``, ``.gov.uk``, ``.co.nz``.etc.  This is far from "
+"perfect and isn't guaranteed to work!"
+msgstr ""
+"Không cho phép các trang web đặt miền hai thành phần với các miền cấp cao "
+"nhất theo mã quốc gia như ``.co.uk``, ``.gov.uk``, ``.co.nz``.etc.  Điều này"
+" còn lâu mới hoàn hảo và không được đảm bảo sẽ hoạt động!"
+
+#: ../../library/http.cookiejar.rst:541
+#, fuzzy
+msgid ":rfc:`2965` protocol strictness switches:"
+msgstr "Công tắc nghiêm ngặt của giao thức :rfc:`2965`:"
+
+#: ../../library/http.cookiejar.rst:545
+#, fuzzy
+msgid ""
+"Follow :rfc:`2965` rules on unverifiable transactions (usually, an "
+"unverifiable transaction is one resulting from a redirect or a request for "
+"an image hosted on another site).  If this is false, cookies are *never* "
+"blocked on the basis of verifiability"
+msgstr ""
+"Tuân theo quy tắc :rfc:`2965` đối với các giao dịch không thể xác minh "
+"(thông thường, giao dịch không thể xác minh là giao dịch do chuyển hướng "
+"hoặc yêu cầu về hình ảnh được lưu trữ trên trang web khác).  Nếu điều này là"
+" sai, cookie sẽ bị *never* chặn trên cơ sở có thể xác minh được"
+
+#: ../../library/http.cookiejar.rst:551
+#, fuzzy
+msgid "Netscape protocol strictness switches:"
+msgstr "Chuyển đổi mức độ nghiêm ngặt của giao thức Netscape:"
+
+#: ../../library/http.cookiejar.rst:555
+#, fuzzy
+msgid ""
+"Apply :rfc:`2965` rules on unverifiable transactions even to Netscape "
+"cookies."
+msgstr ""
+"Áp dụng quy tắc :rfc:`2965` cho các giao dịch không thể xác minh ngay cả đối"
+" với cookie Netscape."
+
+#: ../../library/http.cookiejar.rst:560
+#, fuzzy
+msgid ""
+"Flags indicating how strict to be with domain-matching rules for Netscape "
+"cookies.  See below for acceptable values."
+msgstr ""
+"Cờ cho biết mức độ nghiêm ngặt của các quy tắc so khớp tên miền đối với "
+"cookie Netscape.  Xem bên dưới để biết các giá trị có thể chấp nhận được."
+
+#: ../../library/http.cookiejar.rst:566
+#, fuzzy
+msgid ""
+"Ignore cookies in Set-Cookie: headers that have names starting with ``'$'``."
+msgstr "Bỏ qua cookie trong Set-Cookie: tiêu đề có tên bắt đầu bằng ``'$'``."
+
+#: ../../library/http.cookiejar.rst:571
+#, fuzzy
+msgid "Don't allow setting cookies whose path doesn't path-match request URI."
+msgstr "Không cho phép đặt cookie có đường dẫn không khớp với yêu cầu URI."
+
+#: ../../library/http.cookiejar.rst:573
+#, fuzzy
+msgid ""
+":attr:`~DefaultCookiePolicy.strict_ns_domain` is a collection of flags.  Its"
+" value is constructed by or-ing together (for example, "
+"``DomainStrictNoDots|DomainStrictNonDomain`` means both flags are set)."
+msgstr ""
+":attr:`~DefaultCookiePolicy.strict_ns_domain` là một tập hợp các lá cờ.  Giá"
+" trị của nó được xây dựng bằng cách kết hợp or-ing (ví dụ: "
+"``DomainStrictNoDots|DomainStrictNonDomain`` có nghĩa là cả hai cờ đều được "
+"đặt)."
+
+#: ../../library/http.cookiejar.rst:580
+#, fuzzy
+msgid ""
+"When setting cookies, the 'host prefix' must not contain a dot (eg. "
+"``www.foo.bar.com`` can't set a cookie for ``.bar.com``, because ``www.foo``"
+" contains a dot)."
+msgstr ""
+"Khi đặt cookie, 'tiền tố máy chủ' không được chứa dấu chấm (ví dụ: "
+"``www.foo.bar.com`` không thể đặt cookie cho ``.bar.com``, vì ``www.foo`` có"
+" chứa dấu chấm)."
+
+#: ../../library/http.cookiejar.rst:587
+#, fuzzy
+msgid ""
+"Cookies that did not explicitly specify a ``domain`` cookie-attribute can "
+"only be returned to a domain equal to the domain that set the cookie (eg. "
+"``spam.example.com`` won't be returned cookies from ``example.com`` that had"
+" no ``domain`` cookie-attribute)."
+msgstr ""
+"Những cookie không chỉ định rõ ràng thuộc tính cookie ``domain`` chỉ có thể "
+"được trả về miền bằng với miền đã đặt cookie (ví dụ: ``spam.example.com`` sẽ"
+" không được trả về cookie từ ``example.com`` không có thuộc tính cookie "
+"``domain``)."
+
+#: ../../library/http.cookiejar.rst:595
+#, fuzzy
+msgid "When setting cookies, require a full :rfc:`2965` domain-match."
+msgstr "Khi cài đặt cookie, yêu cầu phải khớp tên miền :rfc:`2965` đầy đủ."
+
+#: ../../library/http.cookiejar.rst:597
+#, fuzzy
+msgid ""
+"The following attributes are provided for convenience, and are the most "
+"useful combinations of the above flags:"
+msgstr ""
+"Các thuộc tính sau được cung cấp để thuận tiện và là sự kết hợp hữu ích nhất"
+" của các cờ trên:"
+
+#: ../../library/http.cookiejar.rst:603
+#, fuzzy
+msgid ""
+"Equivalent to 0 (ie. all of the above Netscape domain strictness flags "
+"switched off)."
+msgstr ""
+"Tương đương với 0 (tức là tất cả các cờ nghiêm ngặt của miền Netscape ở trên"
+" đã bị tắt)."
+
+#: ../../library/http.cookiejar.rst:609
+#, fuzzy
+msgid "Equivalent to ``DomainStrictNoDots|DomainStrictNonDomain``."
+msgstr "Tương đương với ``DomainStrictNoDots|DomainStrictNonDomain``."
+
+#: ../../library/http.cookiejar.rst:613
+#, fuzzy
+msgid "Cookie Objects"
+msgstr "Đối tượng cookie"
+
+#: ../../library/http.cookiejar.rst:615
+#, fuzzy
+msgid ""
+":class:`Cookie` instances have Python attributes roughly corresponding to "
+"the standard cookie-attributes specified in the various cookie standards.  "
+"The correspondence is not one-to-one, because there are complicated rules "
+"for assigning default values, because the ``max-age`` and ``expires`` "
+"cookie-attributes contain equivalent information, and because :rfc:`2109` "
+"cookies may be 'downgraded' by :mod:`!http.cookiejar` from version 1 to "
+"version 0 (Netscape) cookies."
+msgstr ""
+"Các phiên bản :class:`Cookie` có các thuộc tính Python gần tương ứng với các"
+" thuộc tính cookie tiêu chuẩn được chỉ định trong các tiêu chuẩn cookie khác"
+" nhau.  Sự tương ứng không phải là một, vì có các quy tắc phức tạp để gán "
+"giá trị mặc định, vì thuộc tính cookie ``max-age`` và ``expires`` chứa thông"
+" tin tương đương và vì cookie :rfc:`2109` có thể bị :mod:`!http.cookiejar` "
+"'hạ cấp' từ cookie phiên bản 1 xuống phiên bản 0 (Netscape)."
+
+#: ../../library/http.cookiejar.rst:623
+#, fuzzy
+msgid ""
+"Assignment to these attributes should not be necessary other than in rare "
+"circumstances in a :class:`CookiePolicy` method.  The class does not enforce"
+" internal consistency, so you should know what you're doing if you do that."
+msgstr ""
+"Việc gán cho các thuộc tính này không cần thiết ngoại trừ những trường hợp "
+"hiếm gặp trong phương thức :class:`CookiePolicy`.  Lớp này không thực thi "
+"tính nhất quán nội bộ, vì vậy bạn nên biết mình đang làm gì nếu làm điều đó."
+
+#: ../../library/http.cookiejar.rst:630
+#, fuzzy
+msgid ""
+"Integer or :const:`None`.  Netscape cookies have :attr:`version` 0. "
+":rfc:`2965` and :rfc:`2109` cookies have a ``version`` cookie-attribute of "
+"1.  However, note that :mod:`!http.cookiejar` may 'downgrade' RFC 2109 "
+"cookies to Netscape cookies, in which case :attr:`version` is 0."
+msgstr ""
+"Số nguyên hoặc :const:`None`.  Cookie Netscape có :attr:`version` 0. Cookie "
+":rfc:`2965` và :rfc:`2109` có thuộc tính cookie ``version`` là 1. Tuy nhiên,"
+" lưu ý rằng :mod:`!http.cookiejar` có thể 'hạ cấp' cookie RFC 2109 xuống "
+"cookie Netscape, trong trường hợp đó :attr:`version` là 0."
+
+#: ../../library/http.cookiejar.rst:638
+#, fuzzy
+msgid "Cookie name (a string)."
+msgstr "Tên cookie (một chuỗi)."
+
+#: ../../library/http.cookiejar.rst:643
+#, fuzzy
+msgid "Cookie value (a string), or :const:`None`."
+msgstr "Giá trị cookie (một chuỗi) hoặc :const:`None`."
+
+#: ../../library/http.cookiejar.rst:648
+#, fuzzy
+msgid ""
+"String representing a port or a set of ports (eg. '80', or '80,8080'), or "
+":const:`None`."
+msgstr ""
+"Chuỗi biểu thị một cổng hoặc một tập hợp cổng (ví dụ: '80' hoặc '80,8080') "
+"hoặc :const:`None`."
+
+#: ../../library/http.cookiejar.rst:654
+#, fuzzy
+msgid "Cookie domain (a string)."
+msgstr "Miền cookie (một chuỗi)."
+
+#: ../../library/http.cookiejar.rst:659
+#, fuzzy
+msgid "Cookie path (a string, eg. ``'/acme/rocket_launchers'``)."
+msgstr "Đường dẫn cookie (một chuỗi, ví dụ: ``'/acme/rocket_launchers'``)."
+
+#: ../../library/http.cookiejar.rst:664
+#, fuzzy
+msgid "``True`` if cookie should only be returned over a secure connection."
+msgstr "``True`` nếu cookie chỉ được trả về qua kết nối an toàn."
+
+#: ../../library/http.cookiejar.rst:669
+#, fuzzy
+msgid ""
+"Integer expiry date in seconds since epoch, or :const:`None`.  See also the "
+":meth:`is_expired` method."
+msgstr ""
+"Ngày hết hạn số nguyên tính bằng giây kể từ kỷ nguyên hoặc :const:`None`.  "
+"Xem thêm phương pháp :meth:`is_expired`."
+
+#: ../../library/http.cookiejar.rst:675
+#, fuzzy
+msgid "``True`` if this is a session cookie."
+msgstr "``True`` nếu đây là cookie phiên."
+
+#: ../../library/http.cookiejar.rst:680
+#, fuzzy
+msgid ""
+"String comment from the server explaining the function of this cookie, or "
+":const:`None`."
+msgstr ""
+"Chuỗi nhận xét từ máy chủ giải thích chức năng của cookie này hoặc "
+":const:`None`."
+
+#: ../../library/http.cookiejar.rst:686
+#, fuzzy
+msgid ""
+"URL linking to a comment from the server explaining the function of this "
+"cookie, or :const:`None`."
+msgstr ""
+"URL liên kết đến nhận xét từ máy chủ giải thích chức năng của cookie này "
+"hoặc :const:`None`."
+
+#: ../../library/http.cookiejar.rst:692
+#, fuzzy
+msgid ""
+"``True`` if this cookie was received as an :rfc:`2109` cookie (ie. the "
+"cookie arrived in a :mailheader:`Set-Cookie` header, and the value of the "
+"Version cookie-attribute in that header was 1).  This attribute is provided "
+"because :mod:`!http.cookiejar` may 'downgrade' RFC 2109 cookies to Netscape "
+"cookies, in which case :attr:`version` is 0."
+msgstr ""
+"``True`` nếu cookie này được nhận dưới dạng cookie :rfc:`2109` (tức là "
+"cookie đến trong tiêu đề :mailheader:`Set-Cookie` và giá trị của thuộc tính "
+"cookie Phiên bản trong tiêu đề đó là 1).  Thuộc tính này được cung cấp vì "
+":mod:`!http.cookiejar` có thể 'hạ cấp' cookie RFC 2109 xuống cookie "
+"Netscape, trong trường hợp đó :attr:`version` là 0."
+
+#: ../../library/http.cookiejar.rst:701
+#, fuzzy
+msgid ""
+"``True`` if a port or set of ports was explicitly specified by the server "
+"(in the :mailheader:`Set-Cookie` / :mailheader:`Set-Cookie2` header)."
+msgstr ""
+"``True`` nếu một cổng hoặc tập hợp các cổng được máy chủ chỉ định rõ ràng "
+"(trong tiêu đề :mailheader:`Set-Cookie` / :mailheader:`Set-Cookie2`)."
+
+#: ../../library/http.cookiejar.rst:707
+#, fuzzy
+msgid "``True`` if a domain was explicitly specified by the server."
+msgstr "``True`` nếu miền được máy chủ chỉ định rõ ràng."
+
+#: ../../library/http.cookiejar.rst:712
+#, fuzzy
+msgid ""
+"``True`` if the domain explicitly specified by the server began with a dot "
+"(``'.'``)."
+msgstr ""
+"``True`` nếu miền được máy chủ chỉ định rõ ràng bắt đầu bằng dấu chấm "
+"(``'.'``)."
+
+#: ../../library/http.cookiejar.rst:715
+#, fuzzy
+msgid ""
+"Cookies may have additional non-standard cookie-attributes.  These may be "
+"accessed using the following methods:"
+msgstr ""
+"Cookie có thể có thêm các thuộc tính cookie không chuẩn.  Chúng có thể được "
+"truy cập bằng các phương pháp sau:"
+
+#: ../../library/http.cookiejar.rst:721
+#, fuzzy
+msgid "Return ``True`` if cookie has the named cookie-attribute."
+msgstr "Trả về ``True`` nếu cookie có thuộc tính cookie được đặt tên."
+
+#: ../../library/http.cookiejar.rst:726
+#, fuzzy
+msgid ""
+"If cookie has the named cookie-attribute, return its value. Otherwise, "
+"return *default*."
+msgstr ""
+"Nếu cookie có thuộc tính cookie được đặt tên, hãy trả về giá trị của nó. Nếu"
+" không, hãy trả về *default*."
+
+#: ../../library/http.cookiejar.rst:732
+#, fuzzy
+msgid "Set the value of the named cookie-attribute."
+msgstr "Đặt giá trị của thuộc tính cookie được đặt tên."
+
+#: ../../library/http.cookiejar.rst:734
+#, fuzzy
+msgid "The :class:`Cookie` class also defines the following method:"
+msgstr "Lớp :class:`Cookie` cũng định nghĩa phương thức sau:"
+
+#: ../../library/http.cookiejar.rst:739
+#, fuzzy
+msgid ""
+"``True`` if cookie has passed the time at which the server requested it "
+"should expire.  If *now* is given (in seconds since the epoch), return "
+"whether the cookie has expired at the specified time."
+msgstr ""
+"``True`` nếu cookie đã vượt quá thời gian mà máy chủ yêu cầu hết hạn.  Nếu "
+"*now* được cung cấp (tính bằng giây kể từ Kỷ nguyên), hãy trả về xem cookie "
+"đã hết hạn tại thời điểm đã chỉ định hay chưa."
+
+#: ../../library/http.cookiejar.rst:745
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/http.cookiejar.rst:747
+#, fuzzy
+msgid ""
+"The first example shows the most common usage of :mod:`!http.cookiejar`::"
+msgstr ""
+"Ví dụ đầu tiên cho thấy cách sử dụng phổ biến nhất của "
+":mod:`!http.cookiejar`::"
+
+#: ../../library/http.cookiejar.rst:749
+#, fuzzy
+msgid ""
+"import http.cookiejar, urllib.request\n"
+"cj = http.cookiejar.CookieJar()\n"
+"opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))\n"
+"r = opener.open(\"http://example.com/\")"
+msgstr ""
+"nhập http.cookiejar, urllib.request\n"
+"cj = http.cookiejar.CookieJar()\n"
+"opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))\n"
+"r = opener.open(\"http://example.com/\")"
+
+#: ../../library/http.cookiejar.rst:754
+#, fuzzy
+msgid ""
+"This example illustrates how to open a URL using your Netscape, Mozilla, or "
+"Lynx cookies (assumes Unix/Netscape convention for location of the cookies "
+"file)::"
+msgstr ""
+"Ví dụ này minh họa cách mở URL bằng cookie Netscape, Mozilla hoặc Lynx của "
+"bạn (giả sử quy ước Unix/Netscape về vị trí của tệp cookie)::"
+
+#: ../../library/http.cookiejar.rst:757
+#, fuzzy
+msgid ""
+"import os, http.cookiejar, urllib.request\n"
+"cj = http.cookiejar.MozillaCookieJar()\n"
+"cj.load(os.path.join(os.path.expanduser(\"~\"), \".netscape\", \"cookies.txt\"))\n"
+"opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))\n"
+"r = opener.open(\"http://example.com/\")"
+msgstr ""
+"nhập hệ điều hành, http.cookiejar, urllib.request\n"
+"cj = http.cookiejar.MozillaCookieJar()\n"
+"cj.load(os.path.join(os.path.expanduser(\"~\"), \".netscape\", \"cookies.txt\"))\n"
+"opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))\n"
+"r = opener.open(\"http://example.com/\")"
+
+#: ../../library/http.cookiejar.rst:763
+#, fuzzy
+msgid ""
+"The next example illustrates the use of :class:`DefaultCookiePolicy`. Turn "
+"on :rfc:`2965` cookies, be more strict about domains when setting and "
+"returning Netscape cookies, and block some domains from setting cookies or "
+"having them returned::"
+msgstr ""
+"Ví dụ tiếp theo minh họa việc sử dụng :class:`DefaultCookiePolicy`. Bật "
+"cookie :rfc:`2965`, nghiêm ngặt hơn về tên miền khi cài đặt và trả lại "
+"cookie Netscape, đồng thời chặn một số tên miền đặt cookie hoặc yêu cầu trả "
+"lại chúng::"
+
+#: ../../library/http.cookiejar.rst:768
+#, fuzzy
+msgid ""
+"import urllib.request\n"
+"from http.cookiejar import CookieJar, DefaultCookiePolicy\n"
+"policy = DefaultCookiePolicy(\n"
+"    rfc2965=True, strict_ns_domain=Policy.DomainStrict,\n"
+"    blocked_domains=[\"ads.net\", \".ads.net\"])\n"
+"cj = CookieJar(policy)\n"
+"opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))\n"
+"r = opener.open(\"http://example.com/\")"
+msgstr ""
+"nhập urllib.request\n"
+"từ http.cookiejar nhập CookieJar, DefaultCookiePolicy\n"
+"chính sách = DefaultCookiePolicy(\n"
+"    rfc2965=Đúng, strict_ns_domain=Chính sách.DomainStrict,\n"
+"    bị chặn_domains=[\"ads.net\", \".ads.net\"])\n"
+"cj = CookieJar(chính sách)\n"
+"opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))\n"
+"r = opener.open(\"http://example.com/\")"

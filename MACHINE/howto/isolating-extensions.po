@@ -1,0 +1,1467 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/isolating-extensions.rst:7
+#, fuzzy
+msgid "Isolating Extension Modules"
+msgstr "Cách ly các mô-đun mở rộng"
+
+#: ../../howto/isolating-extensions.rst:-1
+#, fuzzy
+msgid "Abstract"
+msgstr "Tóm tắt"
+
+#: ../../howto/isolating-extensions.rst:11
+#, fuzzy
+msgid ""
+"Traditionally, state belonging to Python extension modules was kept in C "
+"``static`` variables, which have process-wide scope. This document describes"
+" problems of such per-process state and shows a safer way: per-module state."
+msgstr ""
+"Theo truyền thống, trạng thái thuộc về các mô-đun mở rộng Python được giữ "
+"trong các biến C ``static``, có phạm vi toàn quy trình. Tài liệu này mô tả "
+"các vấn đề về trạng thái trên mỗi quy trình và chỉ ra một cách an toàn hơn: "
+"trạng thái trên mỗi mô-đun."
+
+#: ../../howto/isolating-extensions.rst:16
+#, fuzzy
+msgid ""
+"The document also describes how to switch to per-module state where "
+"possible. This transition involves allocating space for that state, "
+"potentially switching from static types to heap types, and—perhaps most "
+"importantly—accessing per-module state from code."
+msgstr ""
+"Tài liệu cũng mô tả cách chuyển sang trạng thái trên mỗi mô-đun nếu có thể. "
+"Quá trình chuyển đổi này liên quan đến việc phân bổ không gian cho trạng "
+"thái đó, có khả năng chuyển từ loại tĩnh sang loại heap và—có lẽ quan trọng "
+"nhất—truy cập trạng thái trên mỗi mô-đun từ mã."
+
+#: ../../howto/isolating-extensions.rst:23
+#, fuzzy
+msgid "Who should read this"
+msgstr "Ai nên đọc cái này"
+
+#: ../../howto/isolating-extensions.rst:25
+#, fuzzy
+msgid ""
+"This guide is written for maintainers of :ref:`C-API <c-api-index>` "
+"extensions who would like to make that extension safer to use in "
+"applications where Python itself is used as a library."
+msgstr ""
+"Hướng dẫn này được viết cho những người bảo trì tiện ích mở rộng :ref:`C-API"
+" <c-api-index>`, những người muốn làm cho tiện ích mở rộng đó an toàn hơn để"
+" sử dụng trong các ứng dụng mà chính Python được sử dụng làm thư viện."
+
+#: ../../howto/isolating-extensions.rst:31
+#, fuzzy
+msgid "Background"
+msgstr "Nền"
+
+#: ../../howto/isolating-extensions.rst:33
+#, fuzzy
+msgid ""
+"An *interpreter* is the context in which Python code runs. It contains "
+"configuration (e.g. the import path) and runtime state (e.g. the set of "
+"imported modules)."
+msgstr ""
+"Một *interpreter* là bối cảnh mà mã Python chạy. Nó chứa cấu hình (ví dụ: "
+"đường dẫn nhập) và trạng thái thời gian chạy (ví dụ: tập hợp các mô-đun đã "
+"nhập)."
+
+#: ../../howto/isolating-extensions.rst:37
+#, fuzzy
+msgid ""
+"Python supports running multiple interpreters in one process. There are two "
+"cases to think about—users may run interpreters:"
+msgstr ""
+"Python hỗ trợ chạy nhiều trình thông dịch trong một tiến trình. Có hai "
+"trường hợp cần cân nhắc—người dùng có thể chạy trình thông dịch:"
+
+#: ../../howto/isolating-extensions.rst:40
+#, fuzzy
+msgid ""
+"in sequence, with several :c:func:`Py_InitializeEx`/:c:func:`Py_FinalizeEx` "
+"cycles, and"
+msgstr ""
+"theo trình tự, với một số chu kỳ "
+":c:func:`Py_InitializeEx`/:c:func:`Py_FinalizeEx` và"
+
+#: ../../howto/isolating-extensions.rst:42
+#, fuzzy
+msgid ""
+"in parallel, managing \"sub-interpreters\" using "
+":c:func:`Py_NewInterpreter`/:c:func:`Py_EndInterpreter`."
+msgstr ""
+"song song, quản lý \"thông dịch viên phụ\" bằng "
+":c:func:`Py_NewInterpreter`/:c:func:`Py_EndInterpreter`."
+
+#: ../../howto/isolating-extensions.rst:45
+#, fuzzy
+msgid ""
+"Both cases (and combinations of them) would be most useful when embedding "
+"Python within a library. Libraries generally shouldn't make assumptions "
+"about the application that uses them, which include assuming a process-wide "
+"\"main Python interpreter\"."
+msgstr ""
+"Cả hai trường hợp (và sự kết hợp của chúng) sẽ hữu ích nhất khi nhúng Python"
+" vào thư viện. Các thư viện nói chung không nên đưa ra các giả định về ứng "
+"dụng sử dụng chúng, bao gồm cả việc giả định một \"trình thông dịch Python "
+"chính\" trong toàn bộ quy trình."
+
+#: ../../howto/isolating-extensions.rst:50
+#, fuzzy
+msgid ""
+"Historically, Python extension modules don't handle this use case well. Many"
+" extension modules (and even some stdlib modules) use *per-process* global "
+"state, because C ``static`` variables are extremely easy to use. Thus, data "
+"that should be specific to an interpreter ends up being shared between "
+"interpreters. Unless the extension developer is careful, it is very easy to "
+"introduce edge cases that lead to crashes when a module is loaded in more "
+"than one interpreter in the same process."
+msgstr ""
+"Về mặt lịch sử, các mô-đun mở rộng Python không xử lý tốt trường hợp sử dụng"
+" này. Nhiều mô-đun mở rộng (và thậm chí một số mô-đun stdlib) sử dụng trạng "
+"thái toàn cục *per-process*, vì các biến C ``static`` cực kỳ dễ sử dụng. Do "
+"đó, dữ liệu dành riêng cho trình thông dịch sẽ được chia sẻ giữa các trình "
+"thông dịch. Trừ khi nhà phát triển tiện ích mở rộng cẩn thận, rất dễ xảy ra "
+"các trường hợp nguy hiểm dẫn đến sự cố khi một mô-đun được tải vào nhiều "
+"trình thông dịch trong cùng một quy trình."
+
+#: ../../howto/isolating-extensions.rst:58
+#, fuzzy
+msgid ""
+"Unfortunately, *per-interpreter* state is not easy to achieve. Extension "
+"authors tend to not keep multiple interpreters in mind when developing, and "
+"it is currently cumbersome to test the behavior."
+msgstr ""
+"Thật không may, trạng thái *per-interpreter* không dễ đạt được. Các tác giả "
+"tiện ích mở rộng có xu hướng không lưu ý đến nhiều trình thông dịch khi phát"
+" triển và việc kiểm tra hành vi hiện rất phức tạp."
+
+#: ../../howto/isolating-extensions.rst:63
+#, fuzzy
+msgid "Enter Per-Module State"
+msgstr "Nhập trạng thái trên mỗi mô-đun"
+
+#: ../../howto/isolating-extensions.rst:65
+#, fuzzy
+msgid ""
+"Instead of focusing on per-interpreter state, Python's C API is evolving to "
+"better support the more granular *per-module* state. This means that C-level"
+" data should be attached to a *module object*. Each interpreter creates its "
+"own module object, keeping the data separate. For testing the isolation, "
+"multiple module objects corresponding to a single extension can even be "
+"loaded in a single interpreter."
+msgstr ""
+"Thay vì tập trung vào trạng thái của mỗi người phiên dịch, C API của Python "
+"đang phát triển để hỗ trợ tốt hơn trạng thái *per-module* chi tiết hơn. Điều"
+" này có nghĩa là dữ liệu cấp C phải được đính kèm vào *module object*. Mỗi "
+"trình thông dịch tạo đối tượng mô-đun riêng, giữ dữ liệu riêng biệt. Để kiểm"
+" tra tính cách ly, nhiều đối tượng mô-đun tương ứng với một phần mở rộng "
+"thậm chí có thể được tải trong một trình thông dịch duy nhất."
+
+#: ../../howto/isolating-extensions.rst:72
+#, fuzzy
+msgid ""
+"Per-module state provides an easy way to think about lifetime and resource "
+"ownership: the extension module will initialize when a module object is "
+"created, and clean up when it's freed. In this regard, a module is just like"
+" any other :c:expr:`PyObject *`; there are no \"on interpreter shutdown\" "
+"hooks to think—or forget—about."
+msgstr ""
+"Trạng thái trên mỗi mô-đun cung cấp một cách dễ dàng để suy nghĩ về quyền sở"
+" hữu tài nguyên và thời gian tồn tại: mô-đun mở rộng sẽ khởi tạo khi một đối"
+" tượng mô-đun được tạo và dọn sạch khi nó được giải phóng. Về mặt này, một "
+"mô-đun cũng giống như bất kỳ :c:expr:`PyObject *` nào khác; không có câu "
+"lệnh \"tắt phiên dịch\" nào để suy nghĩ—hoặc quên—về."
+
+#: ../../howto/isolating-extensions.rst:78
+#, fuzzy
+msgid ""
+"Note that there are use cases for different kinds of \"globals\": per-"
+"process, per-interpreter, per-thread or per-task state. With per-module "
+"state as the default, these are still possible, but you should treat them as"
+" exceptional cases: if you need them, you should give them additional care "
+"and testing. (Note that this guide does not cover them.)"
+msgstr ""
+"Lưu ý rằng có các trường hợp sử dụng cho các loại \"toàn cầu\" khác nhau: "
+"trạng thái mỗi tiến trình, mỗi trình thông dịch, mỗi luồng hoặc mỗi tác vụ. "
+"Với trạng thái trên mỗi mô-đun làm mặc định, những điều này vẫn có thể thực "
+"hiện được nhưng bạn nên coi chúng là những trường hợp ngoại lệ: nếu cần, bạn"
+" nên chăm sóc và kiểm tra thêm cho chúng. (Lưu ý rằng hướng dẫn này không "
+"bao gồm chúng.)"
+
+#: ../../howto/isolating-extensions.rst:87
+#, fuzzy
+msgid "Isolated Module Objects"
+msgstr "Đối tượng mô-đun biệt lập"
+
+#: ../../howto/isolating-extensions.rst:89
+#, fuzzy
+msgid ""
+"The key point to keep in mind when developing an extension module is that "
+"several module objects can be created from a single shared library. For "
+"example:"
+msgstr ""
+"Điểm mấu chốt cần ghi nhớ khi phát triển một mô-đun mở rộng là một số đối "
+"tượng mô-đun có thể được tạo từ một thư viện dùng chung. Ví dụ:"
+
+#: ../../howto/isolating-extensions.rst:93
+#, fuzzy
+msgid ""
+">>> import sys\n"
+">>> import binascii\n"
+">>> old_binascii = binascii\n"
+">>> del sys.modules['binascii']\n"
+">>> import binascii  # create a new module object\n"
+">>> old_binascii == binascii\n"
+"False"
+msgstr ""
+">>> nhập hệ thống\n"
+">>> nhập binascii\n"
+">>> old_binascii = binascii\n"
+">>> del sys.modules['binascii']\n"
+">>> nhập binascii # create một đối tượng mô-đun mới\n"
+">>> old_binascii == binascii\n"
+"sai"
+
+#: ../../howto/isolating-extensions.rst:103
+#, fuzzy
+msgid ""
+"As a rule of thumb, the two modules should be completely independent. All "
+"objects and state specific to the module should be encapsulated within the "
+"module object, not shared with other module objects, and cleaned up when the"
+" module object is deallocated. Since this just is a rule of thumb, "
+"exceptions are possible (see `Managing Global State`_), but they will need "
+"more thought and attention to edge cases."
+msgstr ""
+"Theo nguyên tắc chung, hai mô-đun phải hoàn toàn độc lập. Tất cả các đối "
+"tượng và trạng thái cụ thể của mô-đun phải được gói gọn trong đối tượng mô-"
+"đun, không được chia sẻ với các đối tượng mô-đun khác và được dọn sạch khi "
+"đối tượng mô-đun bị hủy phân bổ. Vì đây chỉ là quy tắc chung nên có thể xảy "
+"ra trường hợp ngoại lệ (xem `Managing Global State`_), nhưng họ sẽ cần suy "
+"nghĩ và chú ý nhiều hơn đến các trường hợp đặc biệt."
+
+#: ../../howto/isolating-extensions.rst:111
+#, fuzzy
+msgid ""
+"While some modules could do with less stringent restrictions, isolated "
+"modules make it easier to set clear expectations and guidelines that work "
+"across a variety of use cases."
+msgstr ""
+"Mặc dù một số mô-đun có thể thực hiện với các hạn chế ít nghiêm ngặt hơn, "
+"nhưng các mô-đun riêng biệt giúp dễ dàng đặt ra các kỳ vọng và hướng dẫn rõ "
+"ràng phù hợp với nhiều trường hợp sử dụng khác nhau."
+
+#: ../../howto/isolating-extensions.rst:117
+#, fuzzy
+msgid "Surprising Edge Cases"
+msgstr "Trường hợp cạnh đáng ngạc nhiên"
+
+#: ../../howto/isolating-extensions.rst:119
+#, fuzzy
+msgid ""
+"Note that isolated modules do create some surprising edge cases. Most "
+"notably, each module object will typically not share its classes and "
+"exceptions with other similar modules. Continuing from the `example above "
+"<Isolated Module Objects_>`__, note that ``old_binascii.Error`` and "
+"``binascii.Error`` are separate objects. In the following code, the "
+"exception is *not* caught:"
+msgstr ""
+"Lưu ý rằng các mô-đun riêng biệt sẽ tạo ra một số trường hợp đáng ngạc "
+"nhiên. Đáng chú ý nhất là mỗi đối tượng mô-đun thường sẽ không chia sẻ các "
+"lớp và ngoại lệ của nó với các mô-đun tương tự khác. Tiếp tục từ `example "
+"above <Isolated Module Objects_>`__, lưu ý rằng ``old_binascii.Error`` và "
+"``binascii.Error`` là các đối tượng riêng biệt. Trong đoạn mã sau, ngoại lệ "
+"là *not*:"
+
+#: ../../howto/isolating-extensions.rst:126
+#, fuzzy
+msgid ""
+">>> old_binascii.Error == binascii.Error\n"
+"False\n"
+">>> try:\n"
+"...     old_binascii.unhexlify(b'qwertyuiop')\n"
+"... except binascii.Error:\n"
+"...     print('boo')\n"
+"...\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 2, in <module>\n"
+"binascii.Error: Non-hexadecimal digit found"
+msgstr ""
+">>> old_binascii.Error == binascii.Error\n"
+"sai\n"
+">>> thử:\n"
+"... old_binascii.unhexlify(b'qwertyuiop')\n"
+"... ngoại trừ binascii.Error:\n"
+"... in('boo')\n"
+"...\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 2, trong <module>\n"
+"binascii.Error: Tìm thấy chữ số không phải thập lục phân"
+
+#: ../../howto/isolating-extensions.rst:139
+#, fuzzy
+msgid ""
+"This is expected. Notice that pure-Python modules behave the same way: it is"
+" a part of how Python works."
+msgstr ""
+"Điều này được mong đợi. Lưu ý rằng các mô-đun Python thuần túy hoạt động "
+"theo cách tương tự: đó là một phần cách hoạt động của Python."
+
+#: ../../howto/isolating-extensions.rst:142
+#, fuzzy
+msgid ""
+"The goal is to make extension modules safe at the C level, not to make hacks"
+" behave intuitively. Mutating ``sys.modules`` \"manually\" counts as a hack."
+msgstr ""
+"Mục tiêu là làm cho các mô-đun mở rộng trở nên an toàn ở cấp độ C chứ không "
+"phải để khiến các bản hack hoạt động một cách trực quan. Đột biến "
+"``sys.modules`` \"thủ công\" được tính là hack."
+
+#: ../../howto/isolating-extensions.rst:148
+#, fuzzy
+msgid "Making Modules Safe with Multiple Interpreters"
+msgstr "Làm cho mô-đun an toàn với nhiều trình thông dịch"
+
+#: ../../howto/isolating-extensions.rst:152
+#, fuzzy
+msgid "Managing Global State"
+msgstr "Quản lý trạng thái toàn cầu"
+
+#: ../../howto/isolating-extensions.rst:154
+#, fuzzy
+msgid ""
+"Sometimes, the state associated with a Python module is not specific to that"
+" module, but to the entire process (or something else \"more global\" than a"
+" module). For example:"
+msgstr ""
+"Đôi khi, trạng thái được liên kết với mô-đun Python không dành riêng cho mô-"
+"đun đó mà dành cho toàn bộ quá trình (hoặc thứ gì đó \"toàn cầu hơn\" so với"
+" mô-đun). Ví dụ:"
+
+#: ../../howto/isolating-extensions.rst:158
+#, fuzzy
+msgid "The ``readline`` module manages *the* terminal."
+msgstr "Mô-đun ``readline`` quản lý thiết bị đầu cuối *the*."
+
+#: ../../howto/isolating-extensions.rst:159
+#, fuzzy
+msgid ""
+"A module running on a circuit board wants to control *the* on-board LED."
+msgstr ""
+"Một mô-đun chạy trên bảng mạch muốn điều khiển *the* trên bo mạch LED."
+
+#: ../../howto/isolating-extensions.rst:162
+#, fuzzy
+msgid ""
+"In these cases, the Python module should provide *access* to the global "
+"state, rather than *own* it. If possible, write the module so that multiple "
+"copies of it can access the state independently (along with other libraries,"
+" whether for Python or other languages). If that is not possible, consider "
+"explicit locking."
+msgstr ""
+"Trong những trường hợp này, mô-đun Python sẽ cung cấp *access* cho trạng "
+"thái toàn cục, thay vì *own*. Nếu có thể, hãy viết mô-đun sao cho nhiều bản "
+"sao của nó có thể truy cập trạng thái một cách độc lập (cùng với các thư "
+"viện khác, cho dù dành cho Python hay các ngôn ngữ khác). Nếu điều đó là "
+"không thể, hãy xem xét việc khóa rõ ràng."
+
+#: ../../howto/isolating-extensions.rst:168
+#, fuzzy
+msgid ""
+"If it is necessary to use process-global state, the simplest way to avoid "
+"issues with multiple interpreters is to explicitly prevent a module from "
+"being loaded more than once per process—see :ref:`isolating-extensions-"
+"optout`."
+msgstr ""
+"Nếu cần sử dụng trạng thái toàn cục của quy trình, cách đơn giản nhất để "
+"tránh sự cố với nhiều trình thông dịch là ngăn chặn rõ ràng việc một mô-đun "
+"được tải nhiều lần trong mỗi quy trình—xem :ref:`isolating-extensions-"
+"optout`."
+
+#: ../../howto/isolating-extensions.rst:175
+#, fuzzy
+msgid "Managing Per-Module State"
+msgstr "Quản lý trạng thái trên mỗi mô-đun"
+
+#: ../../howto/isolating-extensions.rst:177
+#, fuzzy
+msgid ""
+"To use per-module state, use :ref:`multi-phase extension module "
+"initialization <multi-phase-initialization>`. This signals that your module "
+"supports multiple interpreters correctly."
+msgstr ""
+"Để sử dụng trạng thái trên mỗi mô-đun, hãy sử dụng :ref:`multi-phase "
+"extension module initialization <multi-phase-initialization>`. Điều này báo "
+"hiệu rằng mô-đun của bạn hỗ trợ nhiều trình thông dịch một cách chính xác."
+
+#: ../../howto/isolating-extensions.rst:181
+#, fuzzy
+msgid ""
+"Set ``PyModuleDef.m_size`` to a positive number to request that many bytes "
+"of storage local to the module. Usually, this will be set to the size of "
+"some module-specific ``struct``, which can store all of the module's C-level"
+" state. In particular, it is where you should put pointers to classes "
+"(including exceptions, but excluding static types) and settings (e.g. "
+"``csv``'s :py:data:`~csv.field_size_limit`) which the C code needs to "
+"function."
+msgstr ""
+"Đặt ``PyModuleDef.m_size`` thành số dương để yêu cầu nhiều byte lưu trữ cục "
+"bộ cho mô-đun. Thông thường, điều này sẽ được đặt thành kích thước của một "
+"số ``struct`` dành riêng cho mô-đun, có thể lưu trữ tất cả trạng thái cấp C "
+"của mô-đun. Đặc biệt, đó là nơi bạn nên đặt con trỏ tới các lớp (bao gồm các"
+" ngoại lệ, nhưng loại trừ các kiểu tĩnh) và cài đặt (ví dụ: "
+":py:data:`~csv.field_size_limit` của ``csv``) mà mã C cần để hoạt động."
+
+#: ../../howto/isolating-extensions.rst:190
+#, fuzzy
+msgid ""
+"Another option is to store state in the module's ``__dict__``, but you must "
+"avoid crashing when users modify ``__dict__`` from Python code. This usually"
+" means error- and type-checking at the C level, which is easy to get wrong "
+"and hard to test sufficiently."
+msgstr ""
+"Một tùy chọn khác là lưu trữ trạng thái trong ``__dict__`` của mô-đun, nhưng"
+" bạn phải tránh gặp sự cố khi người dùng sửa đổi ``__dict__`` từ mã Python. "
+"Điều này thường có nghĩa là kiểm tra lỗi và loại ở cấp độ C, điều này rất dễ"
+" xảy ra sai sót và khó kiểm tra đầy đủ."
+
+#: ../../howto/isolating-extensions.rst:195
+#, fuzzy
+msgid ""
+"However, if module state is not needed in C code, storing it in ``__dict__``"
+" only is a good idea."
+msgstr ""
+"Tuy nhiên, nếu trạng thái mô-đun không cần thiết trong mã C thì chỉ nên lưu "
+"trữ nó trong ``__dict__``."
+
+#: ../../howto/isolating-extensions.rst:198
+#, fuzzy
+msgid ""
+"If the module state includes ``PyObject`` pointers, the module object must "
+"hold references to those objects and implement the module-level hooks "
+"``m_traverse``, ``m_clear`` and ``m_free``. These work like ``tp_traverse``,"
+" ``tp_clear`` and ``tp_free`` of a class. Adding them will require some work"
+" and make the code longer; this is the price for modules which can be "
+"unloaded cleanly."
+msgstr ""
+"Nếu trạng thái mô-đun bao gồm các con trỏ ``PyObject``, đối tượng mô-đun "
+"phải chứa các tham chiếu đến các đối tượng đó và triển khai các hook cấp mô-"
+"đun ``m_traverse``, ``m_clear`` và ``m_free``. Chúng hoạt động giống như "
+"``tp_traverse``, ``tp_clear`` và ``tp_free`` của một lớp. Việc thêm chúng sẽ"
+" đòi hỏi một số công việc và làm cho mã dài hơn; đây là giá cho các mô-đun "
+"có thể được dỡ xuống một cách sạch sẽ."
+
+#: ../../howto/isolating-extensions.rst:205
+#, fuzzy
+msgid ""
+"An example of a module with per-module state is currently available as "
+"`xxlimited "
+"<https://github.com/python/cpython/blob/master/Modules/xxlimited.c>`__; "
+"example module initialization shown at the bottom of the file."
+msgstr ""
+"Ví dụ về mô-đun có trạng thái trên mỗi mô-đun hiện có sẵn dưới dạng "
+"`xxlimited "
+"<https://github.com/python/cpython/blob/master/Modules/xxlimited.c>`__; ví "
+"dụ khởi tạo mô-đun được hiển thị ở cuối tệp."
+
+#: ../../howto/isolating-extensions.rst:213
+#, fuzzy
+msgid "Opt-Out: Limiting to One Module Object per Process"
+msgstr ""
+"Chọn không tham gia: Giới hạn ở một đối tượng mô-đun cho mỗi quy trình"
+
+#: ../../howto/isolating-extensions.rst:215
+#, fuzzy
+msgid ""
+"A non-negative ``PyModuleDef.m_size`` signals that a module supports "
+"multiple interpreters correctly. If this is not yet the case for your "
+"module, you can explicitly make your module loadable only once per process. "
+"For example::"
+msgstr ""
+"Một tín hiệu ``PyModuleDef.m_size`` không âm cho biết một mô-đun hỗ trợ "
+"nhiều trình thông dịch một cách chính xác. Nếu điều này chưa xảy ra với mô-"
+"đun của bạn, bạn có thể làm cho mô-đun của mình chỉ có thể tải một cách rõ "
+"ràng một lần cho mỗi quy trình. Ví dụ::"
+
+#: ../../howto/isolating-extensions.rst:220
+#, fuzzy
+msgid ""
+"// A process-wide flag\n"
+"static int loaded = 0;\n"
+"\n"
+"// Mutex to provide thread safety (only needed for free-threaded Python)\n"
+"static PyMutex modinit_mutex = {0};\n"
+"\n"
+"static int\n"
+"exec_module(PyObject* module)\n"
+"{\n"
+"    PyMutex_Lock(&modinit_mutex);\n"
+"    if (loaded) {\n"
+"        PyMutex_Unlock(&modinit_mutex);\n"
+"        PyErr_SetString(PyExc_ImportError,\n"
+"                        \"cannot load module more than once per process\");\n"
+"        return -1;\n"
+"    }\n"
+"    loaded = 1;\n"
+"    PyMutex_Unlock(&modinit_mutex);\n"
+"    // ... rest of initialization\n"
+"}"
+msgstr ""
+"// Cờ toàn tiến trình\n"
+"int tĩnh được tải = 0;\n"
+"\n"
+"// Mutex để cung cấp sự an toàn cho luồng (chỉ cần cho Python có luồng tự do)\n"
+"tĩnh PyMutex modinit_mutex = {0};\n"
+"\n"
+"int tĩnh\n"
+"exec_module(mô-đun PyObject*)\n"
+"{\n"
+"    PyMutex_Lock(&modinit_mutex);\n"
+"    nếu (đã tải) {\n"
+"        PyMutex_Unlock(&modinit_mutex);\n"
+"        PyErr_SetString(PyExc_ImportError,\n"
+"                        \"không thể tải mô-đun nhiều lần cho mỗi quy trình\");\n"
+"        trả về -1;\n"
+"    }\n"
+"    đã tải = 1;\n"
+"    PyMutex_Unlock(&modinit_mutex);\n"
+"    // ... phần còn lại của quá trình khởi tạo\n"
+"}"
+
+#: ../../howto/isolating-extensions.rst:242
+#, fuzzy
+msgid ""
+"If your module's :c:member:`PyModuleDef.m_clear` function is able to prepare"
+" for future re-initialization, it should clear the ``loaded`` flag. In this "
+"case, your module won't support multiple instances existing *concurrently*, "
+"but it will, for example, support being loaded after Python runtime shutdown"
+" (:c:func:`Py_FinalizeEx`) and re-initialization (:c:func:`Py_Initialize`)."
+msgstr ""
+"Nếu chức năng :c:member:`PyModuleDef.m_clear` của mô-đun của bạn có thể "
+"chuẩn bị cho việc khởi tạo lại trong tương lai thì chức năng này sẽ xóa cờ "
+"``loaded``. Trong trường hợp này, mô-đun của bạn sẽ không hỗ trợ nhiều phiên"
+" bản *concurrently* hiện có, nhưng chẳng hạn, nó sẽ hỗ trợ tải sau khi tắt "
+"thời gian chạy Python (:c:func:`Py_FinalizeEx`) và khởi tạo lại "
+"(:c:func:`Py_Initialize`)."
+
+#: ../../howto/isolating-extensions.rst:251
+#, fuzzy
+msgid "Module State Access from Functions"
+msgstr "Truy cập trạng thái mô-đun từ các chức năng"
+
+#: ../../howto/isolating-extensions.rst:253
+#, fuzzy
+msgid ""
+"Accessing the state from module-level functions is straightforward. "
+"Functions get the module object as their first argument; for extracting the "
+"state, you can use ``PyModule_GetState``::"
+msgstr ""
+"Việc truy cập trạng thái từ các hàm cấp mô-đun rất đơn giản. Các hàm lấy đối"
+" tượng mô-đun làm đối số đầu tiên của chúng; để trích xuất trạng thái, bạn "
+"có thể sử dụng ``PyModule_GetState``::"
+
+#: ../../howto/isolating-extensions.rst:257
+#, fuzzy
+msgid ""
+"static PyObject *\n"
+"func(PyObject *module, PyObject *args)\n"
+"{\n"
+"    my_struct *state = (my_struct*)PyModule_GetState(module);\n"
+"    if (state == NULL) {\n"
+"        return NULL;\n"
+"    }\n"
+"    // ... rest of logic\n"
+"}"
+msgstr ""
+"PyObject tĩnh *\n"
+"func(PyObject *module, PyObject *args)\n"
+"{\n"
+"    my_struct *state = (my_struct*)PyModule_GetState(module);\n"
+"    nếu (trạng thái == NULL) {\n"
+"        trả về NULL;\n"
+"    }\n"
+"    // ... phần còn lại của logic\n"
+"}"
+
+#: ../../howto/isolating-extensions.rst:268
+#, fuzzy
+msgid ""
+"``PyModule_GetState`` may return ``NULL`` without setting an exception if "
+"there is no module state, i.e. ``PyModuleDef.m_size`` was zero. In your own "
+"module, you're in control of ``m_size``, so this is easy to prevent."
+msgstr ""
+"``PyModule_GetState`` có thể trả về ``NULL`` mà không đặt ngoại lệ nếu không"
+" có trạng thái mô-đun, tức là ``PyModuleDef.m_size`` bằng 0. Trong mô-đun "
+"của riêng bạn, bạn có quyền kiểm soát ``m_size``, vì vậy điều này rất dễ "
+"ngăn chặn."
+
+#: ../../howto/isolating-extensions.rst:275
+#, fuzzy
+msgid "Heap Types"
+msgstr "Các loại đống"
+
+#: ../../howto/isolating-extensions.rst:277
+#, fuzzy
+msgid ""
+"Traditionally, types defined in C code are *static*; that is, ``static "
+"PyTypeObject`` structures defined directly in code and initialized using "
+"``PyType_Ready()``."
+msgstr ""
+"Theo truyền thống, các kiểu được xác định trong mã C là *static*; nghĩa là "
+"các cấu trúc ``static PyTypeObject`` được xác định trực tiếp trong mã và "
+"được khởi tạo bằng ``PyType_Ready()``."
+
+#: ../../howto/isolating-extensions.rst:281
+#, fuzzy
+msgid ""
+"Such types are necessarily shared across the process. Sharing them between "
+"module objects requires paying attention to any state they own or access. To"
+" limit the possible issues, static types are immutable at the Python level: "
+"for example, you can't set ``str.myattribute = 123``."
+msgstr ""
+"Những loại như vậy nhất thiết phải được chia sẻ trong suốt quá trình. Việc "
+"chia sẻ chúng giữa các đối tượng mô-đun đòi hỏi phải chú ý đến bất kỳ trạng "
+"thái nào mà chúng sở hữu hoặc truy cập. Để hạn chế các sự cố có thể xảy ra, "
+"các loại tĩnh là bất biến ở cấp độ Python: ví dụ: bạn không thể đặt "
+"``str.myattribute = 123``."
+
+#: ../../howto/isolating-extensions.rst:287
+#, fuzzy
+msgid ""
+"Sharing truly immutable objects between interpreters is fine, as long as "
+"they don't provide access to mutable objects. However, in CPython, every "
+"Python object has a mutable implementation detail: the reference count. "
+"Changes to the refcount are guarded by the GIL. Thus, code that shares any "
+"Python objects across interpreters implicitly depends on CPython's current, "
+"process-wide GIL."
+msgstr ""
+"Chia sẻ các đối tượng thực sự bất biến giữa các trình thông dịch là được, "
+"miễn là chúng không cung cấp quyền truy cập vào các đối tượng có thể thay "
+"đổi. Tuy nhiên, trong CPython, mọi đối tượng Python đều có chi tiết triển "
+"khai có thể thay đổi: số lượng tham chiếu. Những thay đổi về số tiền hoàn "
+"lại được bảo vệ bởi GIL. Do đó, mã chia sẻ bất kỳ đối tượng Python nào giữa "
+"các trình thông dịch hoàn toàn phụ thuộc vào GIL hiện tại trên toàn quy "
+"trình của CPython."
+
+#: ../../howto/isolating-extensions.rst:294
+#, fuzzy
+msgid ""
+"Because they are immutable and process-global, static types cannot access "
+"\"their\" module state. If any method of such a type requires access to "
+"module state, the type must be converted to a *heap-allocated type*, or "
+"*heap type* for short. These correspond more closely to classes created by "
+"Python's ``class`` statement."
+msgstr ""
+"Bởi vì chúng là bất biến và có tính toàn cục, nên các kiểu tĩnh không thể "
+"truy cập trạng thái mô-đun \"của chúng\". Nếu bất kỳ phương thức nào thuộc "
+"loại như vậy yêu cầu quyền truy cập vào trạng thái mô-đun thì loại đó phải "
+"được chuyển đổi thành *heap-allocated type* hoặc viết tắt là *heap type*. "
+"Chúng tương ứng chặt chẽ hơn với các lớp được tạo bởi câu lệnh ``class`` của"
+" Python."
+
+#: ../../howto/isolating-extensions.rst:301
+#, fuzzy
+msgid "For new modules, using heap types by default is a good rule of thumb."
+msgstr ""
+"Đối với các mô-đun mới, việc sử dụng các loại heap theo mặc định là một "
+"nguyên tắc chung."
+
+#: ../../howto/isolating-extensions.rst:305
+#, fuzzy
+msgid "Changing Static Types to Heap Types"
+msgstr "Thay đổi loại tĩnh thành loại heap"
+
+#: ../../howto/isolating-extensions.rst:307
+#, fuzzy
+msgid ""
+"Static types can be converted to heap types, but note that the heap type API"
+" was not designed for \"lossless\" conversion from static types—that is, "
+"creating a type that works exactly like a given static type. So, when "
+"rewriting the class definition in a new API, you are likely to "
+"unintentionally change a few details (e.g. pickleability or inherited "
+"slots). Always test the details that are important to you."
+msgstr ""
+"Loại tĩnh có thể được chuyển đổi thành loại vùng heap, nhưng lưu ý rằng loại"
+" vùng heap API không được thiết kế để chuyển đổi \"không mất dữ liệu\" từ "
+"loại tĩnh—nghĩa là tạo ra một loại hoạt động chính xác như một loại tĩnh "
+"nhất định. Vì vậy, khi viết lại định nghĩa lớp trong API mới, bạn có thể vô "
+"tình thay đổi một số chi tiết (ví dụ: khả năng chọn hoặc vị trí kế thừa). "
+"Luôn kiểm tra các chi tiết quan trọng đối với bạn."
+
+#: ../../howto/isolating-extensions.rst:316
+#, fuzzy
+msgid ""
+"Watch out for the following two points in particular (but note that this is "
+"not a comprehensive list):"
+msgstr ""
+"Đặc biệt hãy chú ý đến hai điểm sau đây (nhưng lưu ý rằng đây không phải là "
+"danh sách đầy đủ):"
+
+#: ../../howto/isolating-extensions.rst:319
+#, fuzzy
+msgid ""
+"Unlike static types, heap type objects are mutable by default. Use the "
+":c:macro:`Py_TPFLAGS_IMMUTABLETYPE` flag to prevent mutability."
+msgstr ""
+"Không giống như các kiểu tĩnh, các đối tượng kiểu heap có thể thay đổi theo "
+"mặc định. Sử dụng cờ :c:macro:`Py_TPFLAGS_IMMUTABLETYPE` để ngăn chặn khả "
+"năng thay đổi."
+
+#: ../../howto/isolating-extensions.rst:321
+#, fuzzy
+msgid ""
+"Heap types inherit :c:member:`~PyTypeObject.tp_new` by default, so it may "
+"become possible to instantiate them from Python code. You can prevent this "
+"with the :c:macro:`Py_TPFLAGS_DISALLOW_INSTANTIATION` flag."
+msgstr ""
+"Các loại heap kế thừa :c:member:`~PyTypeObject.tp_new` theo mặc định, do đó "
+"có thể khởi tạo chúng từ mã Python. Bạn có thể ngăn chặn điều này bằng cờ "
+":c:macro:`Py_TPFLAGS_DISALLOW_INSTANTIATION`."
+
+#: ../../howto/isolating-extensions.rst:327
+#, fuzzy
+msgid "Defining Heap Types"
+msgstr "Xác định loại Heap"
+
+#: ../../howto/isolating-extensions.rst:329
+#, fuzzy
+msgid ""
+"Heap types can be created by filling a :c:struct:`PyType_Spec` structure, a "
+"description or \"blueprint\" of a class, and calling "
+":c:func:`PyType_FromModuleAndSpec` to construct a new class object."
+msgstr ""
+"Các loại heap có thể được tạo bằng cách điền vào cấu trúc "
+":c:struct:`PyType_Spec`, mô tả hoặc \"bản thiết kế\" của một lớp và gọi "
+":c:func:`PyType_FromModuleAndSpec` để xây dựng một đối tượng lớp mới."
+
+#: ../../howto/isolating-extensions.rst:334
+#, fuzzy
+msgid ""
+"Other functions, like :c:func:`PyType_FromSpec`, can also create heap types,"
+" but :c:func:`PyType_FromModuleAndSpec` associates the module with the "
+"class, allowing access to the module state from methods."
+msgstr ""
+"Các hàm khác, như :c:func:`PyType_FromSpec`, cũng có thể tạo các loại heap, "
+"nhưng :c:func:`PyType_FromModuleAndSpec` liên kết mô-đun với lớp, cho phép "
+"truy cập vào trạng thái mô-đun từ các phương thức."
+
+#: ../../howto/isolating-extensions.rst:338
+#, fuzzy
+msgid ""
+"The class should generally be stored in *both* the module state (for safe "
+"access from C) and the module's ``__dict__`` (for access from Python code)."
+msgstr ""
+"Lớp này thường phải được lưu trữ ở trạng thái mô-đun *both* (để truy cập an "
+"toàn từ C) và ``__dict__`` của mô-đun (để truy cập từ mã Python)."
+
+#: ../../howto/isolating-extensions.rst:344
+#, fuzzy
+msgid "Garbage-Collection Protocol"
+msgstr "Giao thức thu gom rác"
+
+#: ../../howto/isolating-extensions.rst:346
+#, fuzzy
+msgid ""
+"Instances of heap types hold a reference to their type. This ensures that "
+"the type isn't destroyed before all its instances are, but may result in "
+"reference cycles that need to be broken by the garbage collector."
+msgstr ""
+"Các thể hiện của kiểu heap giữ một tham chiếu đến kiểu của chúng. Điều này "
+"đảm bảo rằng loại này không bị hủy trước khi tất cả các phiên bản của nó bị "
+"phá hủy, nhưng có thể dẫn đến các chu trình tham chiếu cần được trình thu "
+"gom rác phá vỡ."
+
+#: ../../howto/isolating-extensions.rst:351
+#, fuzzy
+msgid ""
+"To avoid memory leaks, instances of heap types must implement the garbage "
+"collection protocol. That is, heap types should:"
+msgstr ""
+"Để tránh rò rỉ bộ nhớ, các phiên bản của loại heap phải triển khai giao thức"
+" thu gom rác. Nghĩa là, các loại heap nên:"
+
+#: ../../howto/isolating-extensions.rst:355
+#, fuzzy
+msgid "Have the :c:macro:`Py_TPFLAGS_HAVE_GC` flag."
+msgstr "Có cờ :c:macro:`Py_TPFLAGS_HAVE_GC`."
+
+#: ../../howto/isolating-extensions.rst:356
+#, fuzzy
+msgid ""
+"Define a traverse function using :c:data:`Py_tp_traverse`, which visits the "
+"type (e.g. using ``Py_VISIT(Py_TYPE(self))``)."
+msgstr ""
+"Xác định hàm duyệt bằng cách sử dụng :c:data:`Py_tp_traverse`, hàm này sẽ "
+"truy cập loại (ví dụ: sử dụng ``Py_VISIT(Py_TYPE(self))``)."
+
+#: ../../howto/isolating-extensions.rst:359
+#, fuzzy
+msgid ""
+"Please refer to the documentation of :c:macro:`Py_TPFLAGS_HAVE_GC` and "
+":c:member:`~PyTypeObject.tp_traverse` for additional considerations."
+msgstr ""
+"Vui lòng tham khảo tài liệu của :c:macro:`Py_TPFLAGS_HAVE_GC` và "
+":c:member:`~PyTypeObject.tp_traverse` để biết thêm những cân nhắc."
+
+#: ../../howto/isolating-extensions.rst:363
+#, fuzzy
+msgid ""
+"The API for defining heap types grew organically, leaving it somewhat "
+"awkward to use in its current state. The following sections will guide you "
+"through common issues."
+msgstr ""
+"API để xác định các loại vùng heap phát triển một cách tự nhiên, khiến nó "
+"hơi khó sử dụng ở trạng thái hiện tại. Các phần sau đây sẽ hướng dẫn bạn các"
+" vấn đề thường gặp."
+
+#: ../../howto/isolating-extensions.rst:369
+#, fuzzy
+msgid "``tp_traverse`` in Python 3.8 and lower"
+msgstr "``tp_traverse`` trong Python 3.8 trở xuống"
+
+#: ../../howto/isolating-extensions.rst:371
+#, fuzzy
+msgid ""
+"The requirement to visit the type from ``tp_traverse`` was added in Python "
+"3.9. If you support Python 3.8 and lower, the traverse function must *not* "
+"visit the type, so it must be more complicated::"
+msgstr ""
+"Yêu cầu truy cập loại từ ``tp_traverse`` đã được thêm vào Python 3.9. Nếu "
+"bạn hỗ trợ Python 3.8 trở xuống thì hàm traverse phải *not* truy cập vào "
+"kiểu nên phải phức tạp hơn::"
+
+#: ../../howto/isolating-extensions.rst:375
+#, fuzzy
+msgid ""
+"static int my_traverse(PyObject *self, visitproc visit, void *arg)\n"
+"{\n"
+"    if (Py_Version >= 0x03090000) {\n"
+"        Py_VISIT(Py_TYPE(self));\n"
+"    }\n"
+"    return 0;\n"
+"}"
+msgstr ""
+"int tĩnh my_traverse(PyObject *self, visitproc visit, void *arg)\n"
+"{\n"
+"    nếu (Py_Version >= 0x03090000) {\n"
+"        Py_VISIT(Py_TYPE(tự));\n"
+"    }\n"
+"    trả về 0;\n"
+"}"
+
+#: ../../howto/isolating-extensions.rst:383
+#, fuzzy
+msgid ""
+"Unfortunately, :c:data:`Py_Version` was only added in Python 3.11. As a "
+"replacement, use:"
+msgstr ""
+"Thật không may, :c:data:`Py_Version` chỉ được thêm vào Python 3.11. Để thay "
+"thế, hãy sử dụng:"
+
+#: ../../howto/isolating-extensions.rst:386
+#, fuzzy
+msgid ":c:macro:`PY_VERSION_HEX`, if not using the stable ABI, or"
+msgstr ":c:macro:`PY_VERSION_HEX`, nếu không sử dụng ABI ổn định, hoặc"
+
+#: ../../howto/isolating-extensions.rst:387
+#, fuzzy
+msgid ""
+":py:data:`sys.version_info` (via :c:func:`PySys_GetObject` and "
+":c:func:`PyArg_ParseTuple`)."
+msgstr ""
+":py:data:`sys.version_info` (thông qua :c:func:`PySys_GetObject` và "
+":c:func:`PyArg_ParseTuple`)."
+
+#: ../../howto/isolating-extensions.rst:392
+#, fuzzy
+msgid "Delegating ``tp_traverse``"
+msgstr "Ủy quyền ``tp_traverse``"
+
+#: ../../howto/isolating-extensions.rst:394
+#, fuzzy
+msgid ""
+"If your traverse function delegates to the "
+":c:member:`~PyTypeObject.tp_traverse` of its base class (or another type), "
+"ensure that ``Py_TYPE(self)`` is visited only once. Note that only heap type"
+" are expected to visit the type in ``tp_traverse``."
+msgstr ""
+"Nếu hàm duyệt của bạn ủy quyền cho :c:member:`~PyTypeObject.tp_traverse` của"
+" lớp cơ sở của nó (hoặc loại khác), hãy đảm bảo rằng ``Py_TYPE(self)`` chỉ "
+"được truy cập một lần. Lưu ý rằng chỉ có loại heap mới được phép truy cập "
+"loại trong ``tp_traverse``."
+
+#: ../../howto/isolating-extensions.rst:399
+#, fuzzy
+msgid "For example, if your traverse function includes::"
+msgstr "Ví dụ: nếu chức năng di chuyển ngang của bạn bao gồm::"
+
+#: ../../howto/isolating-extensions.rst:401
+#, fuzzy
+msgid "base->tp_traverse(self, visit, arg)"
+msgstr "base->tp_traverse (tự, truy cập, arg)"
+
+#: ../../howto/isolating-extensions.rst:403
+#, fuzzy
+msgid "...and ``base`` may be a static type, then it should also include::"
+msgstr "...và ``base`` có thể là loại tĩnh, thì nó cũng phải bao gồm::"
+
+#: ../../howto/isolating-extensions.rst:405
+#, fuzzy
+msgid ""
+"if (base->tp_flags & Py_TPFLAGS_HEAPTYPE) {\n"
+"    // a heap type's tp_traverse already visited Py_TYPE(self)\n"
+"} else {\n"
+"    if (Py_Version >= 0x03090000) {\n"
+"        Py_VISIT(Py_TYPE(self));\n"
+"    }\n"
+"}"
+msgstr ""
+"if (base->tp_flags & Py_TPFLAGS_HEAPTYPE) {\n"
+"    // tp_traverse của loại heap đã truy cập Py_TYPE(self)\n"
+"} khác {\n"
+"    nếu (Py_Version >= 0x03090000) {\n"
+"        Py_VISIT(Py_TYPE(tự));\n"
+"    }\n"
+"}"
+
+#: ../../howto/isolating-extensions.rst:413
+#, fuzzy
+msgid ""
+"It is not necessary to handle the type's reference count in "
+":c:member:`~PyTypeObject.tp_new` and :c:member:`~PyTypeObject.tp_clear`."
+msgstr ""
+"Không cần thiết phải xử lý số tham chiếu của loại trong "
+":c:member:`~PyTypeObject.tp_new` và :c:member:`~PyTypeObject.tp_clear`."
+
+#: ../../howto/isolating-extensions.rst:418
+#, fuzzy
+msgid "Defining ``tp_dealloc``"
+msgstr "Xác định ``tp_dealloc``"
+
+#: ../../howto/isolating-extensions.rst:420
+#, fuzzy
+msgid ""
+"If your type has a custom :c:member:`~PyTypeObject.tp_dealloc` function, it "
+"needs to:"
+msgstr ""
+"Nếu loại của bạn có chức năng :c:member:`~PyTypeObject.tp_dealloc` tùy "
+"chỉnh, nó cần:"
+
+#: ../../howto/isolating-extensions.rst:423
+#, fuzzy
+msgid ""
+"call :c:func:`PyObject_GC_UnTrack` before any fields are invalidated, and"
+msgstr ""
+"gọi :c:func:`PyObject_GC_UnTrack` trước khi bất kỳ trường nào bị vô hiệu và"
+
+#: ../../howto/isolating-extensions.rst:424
+#, fuzzy
+msgid "decrement the reference count of the type."
+msgstr "giảm số lượng tham chiếu của loại."
+
+#: ../../howto/isolating-extensions.rst:426
+#, fuzzy
+msgid ""
+"To keep the type valid while ``tp_free`` is called, the type's refcount "
+"needs to be decremented *after* the instance is deallocated. For example::"
+msgstr ""
+"Để giữ cho loại hợp lệ trong khi ``tp_free`` được gọi, số lần đếm lại của "
+"loại đó cần phải giảm đi. *after* phiên bản sẽ bị hủy phân bổ. Ví dụ::"
+
+#: ../../howto/isolating-extensions.rst:429
+#, python-brace-format, fuzzy
+msgid ""
+"static void my_dealloc(PyObject *self)\n"
+"{\n"
+"    PyObject_GC_UnTrack(self);\n"
+"    ...\n"
+"    PyTypeObject *type = Py_TYPE(self);\n"
+"    type->tp_free(self);\n"
+"    Py_DECREF(type);\n"
+"}"
+msgstr ""
+"khoảng trống tĩnh my_dealloc(PyObject *self)\n"
+"{\n"
+"    PyObject_GC_UnTrack(tự);\n"
+"    ...\n"
+"    PyTypeObject *type = Py_TYPE(self);\n"
+"    gõ->tp_free(tự);\n"
+"    Py_DECREF(loại);\n"
+"}"
+
+#: ../../howto/isolating-extensions.rst:438
+#, fuzzy
+msgid ""
+"The default ``tp_dealloc`` function does this, so if your type does *not* "
+"override ``tp_dealloc`` you don't need to add it."
+msgstr ""
+"Hàm ``tp_dealloc`` mặc định thực hiện điều này, vì vậy nếu loại của bạn "
+"*not* ghi đè ``tp_dealloc`` thì bạn không cần thêm nó."
+
+#: ../../howto/isolating-extensions.rst:444
+#, fuzzy
+msgid "Not overriding ``tp_free``"
+msgstr "Không ghi đè ``tp_free``"
+
+#: ../../howto/isolating-extensions.rst:446
+#, fuzzy
+msgid ""
+"The :c:member:`~PyTypeObject.tp_free` slot of a heap type must be set to "
+":c:func:`PyObject_GC_Del`. This is the default; do not override it."
+msgstr ""
+"Khe :c:member:`~PyTypeObject.tp_free` của loại heap phải được đặt thành "
+":c:func:`PyObject_GC_Del`. Đây là mặc định; đừng ghi đè lên nó."
+
+#: ../../howto/isolating-extensions.rst:452
+#, fuzzy
+msgid "Avoiding ``PyObject_New``"
+msgstr "Tránh ``PyObject_New``"
+
+#: ../../howto/isolating-extensions.rst:454
+#, fuzzy
+msgid "GC-tracked objects need to be allocated using GC-aware functions."
+msgstr ""
+"Các đối tượng được theo dõi bởi GC cần được phân bổ bằng cách sử dụng các "
+"hàm nhận biết GC."
+
+#: ../../howto/isolating-extensions.rst:456
+#, fuzzy
+msgid "If you use :c:func:`PyObject_New` or :c:func:`PyObject_NewVar`:"
+msgstr ""
+"Nếu bạn sử dụng :c:func:`PyObject_New` hoặc :c:func:`PyObject_NewVar`:"
+
+#: ../../howto/isolating-extensions.rst:458
+#, fuzzy
+msgid ""
+"Get and call type's :c:member:`~PyTypeObject.tp_alloc` slot, if possible. "
+"That is, replace ``TYPE *o = PyObject_New(TYPE, typeobj)`` with::"
+msgstr ""
+"Nhận và gọi khe :c:member:`~PyTypeObject.tp_alloc` của loại, nếu có thể. Tức"
+" là thay thế ``TYPE *o = PyObject_New(TYPE, typeobj)`` bằng::"
+
+#: ../../howto/isolating-extensions.rst:461
+#, fuzzy
+msgid "TYPE *o = typeobj->tp_alloc(typeobj, 0);"
+msgstr "TYPE *o = typeobj->tp_alloc(typeobj, 0);"
+
+#: ../../howto/isolating-extensions.rst:463
+#, fuzzy
+msgid ""
+"Replace ``o = PyObject_NewVar(TYPE, typeobj, size)`` with the same, but use "
+"size instead of the 0."
+msgstr ""
+"Thay thế ``o = PyObject_NewVar(TYPE, typeobj, size)`` bằng số tương tự nhưng"
+" sử dụng kích thước thay vì 0."
+
+#: ../../howto/isolating-extensions.rst:466
+#, fuzzy
+msgid ""
+"If the above is not possible (e.g. inside a custom ``tp_alloc``), call "
+":c:func:`PyObject_GC_New` or :c:func:`PyObject_GC_NewVar`::"
+msgstr ""
+"Nếu không thể thực hiện được điều trên (ví dụ: bên trong ``tp_alloc`` tùy "
+"chỉnh), hãy gọi :c:func:`PyObject_GC_New` hoặc "
+":c:func:`PyObject_GC_NewVar`::"
+
+#: ../../howto/isolating-extensions.rst:469
+#, fuzzy
+msgid ""
+"TYPE *o = PyObject_GC_New(TYPE, typeobj);\n"
+"\n"
+"TYPE *o = PyObject_GC_NewVar(TYPE, typeobj, size);"
+msgstr ""
+"TYPE *o = PyObject_GC_New(TYPE, typeobj);\n"
+"\n"
+"TYPE *o = PyObject_GC_NewVar(TYPE, typeobj, kích thước);"
+
+#: ../../howto/isolating-extensions.rst:475
+#, fuzzy
+msgid "Module State Access from Classes"
+msgstr "Truy cập trạng thái mô-đun từ các lớp"
+
+#: ../../howto/isolating-extensions.rst:477
+#, fuzzy
+msgid ""
+"If you have a type object defined with :c:func:`PyType_FromModuleAndSpec`, "
+"you can call :c:func:`PyType_GetModule` to get the associated module, and "
+"then :c:func:`PyModule_GetState` to get the module's state."
+msgstr ""
+"Nếu bạn có một đối tượng loại được xác định bằng "
+":c:func:`PyType_FromModuleAndSpec`, bạn có thể gọi "
+":c:func:`PyType_GetModule` để lấy mô-đun liên quan và sau đó gọi "
+":c:func:`PyModule_GetState` để lấy trạng thái của mô-đun."
+
+#: ../../howto/isolating-extensions.rst:481
+#, fuzzy
+msgid ""
+"To save a some tedious error-handling boilerplate code, you can combine "
+"these two steps with :c:func:`PyType_GetModuleState`, resulting in::"
+msgstr ""
+"Để lưu một số mã soạn sẵn xử lý lỗi tẻ nhạt, bạn có thể kết hợp hai bước này"
+" với :c:func:`PyType_GetModuleState`, dẫn đến::"
+
+#: ../../howto/isolating-extensions.rst:484
+#, python-brace-format, fuzzy
+msgid ""
+"my_struct *state = (my_struct*)PyType_GetModuleState(type);\n"
+"if (state == NULL) {\n"
+"    return NULL;\n"
+"}"
+msgstr ""
+"my_struct *state = (my_struct*)PyType_GetModuleState(loại);\n"
+"nếu (trạng thái == NULL) {\n"
+"    trả lại NULL;\n"
+"}"
+
+#: ../../howto/isolating-extensions.rst:491
+#, fuzzy
+msgid "Module State Access from Regular Methods"
+msgstr "Truy cập trạng thái mô-đun từ các phương thức thông thường"
+
+#: ../../howto/isolating-extensions.rst:493
+#, fuzzy
+msgid ""
+"Accessing the module-level state from methods of a class is somewhat more "
+"complicated, but is possible thanks to API introduced in Python 3.9. To get "
+"the state, you need to first get the *defining class*, and then get the "
+"module state from it."
+msgstr ""
+"Việc truy cập trạng thái cấp mô-đun từ các phương thức của một lớp có phần "
+"phức tạp hơn, nhưng có thể thực hiện được nhờ API được giới thiệu trong "
+"Python 3.9. Để có được trạng thái, trước tiên bạn cần lấy *defining class*, "
+"sau đó lấy trạng thái mô-đun từ nó."
+
+#: ../../howto/isolating-extensions.rst:498
+#, fuzzy
+msgid ""
+"The largest roadblock is getting *the class a method was defined in*, or "
+"that method's \"defining class\" for short. The defining class can have a "
+"reference to the module it is part of."
+msgstr ""
+"Rào cản lớn nhất là nhận được *the class a method was defined in* hay gọi "
+"tắt là \"lớp xác định\" của phương thức đó. Lớp xác định có thể có tham "
+"chiếu đến mô-đun mà nó là một phần."
+
+#: ../../howto/isolating-extensions.rst:502
+#, fuzzy
+msgid ""
+"Do not confuse the defining class with ``Py_TYPE(self)``. If the method is "
+"called on a *subclass* of your type, ``Py_TYPE(self)`` will refer to that "
+"subclass, which may be defined in different module than yours."
+msgstr ""
+"Đừng nhầm lẫn lớp định nghĩa với ``Py_TYPE(self)``. Nếu phương thức được gọi"
+" trên *subclass* thuộc loại của bạn, ``Py_TYPE(self)`` sẽ tham chiếu đến lớp"
+" con đó, lớp này có thể được định nghĩa trong mô-đun khác với mô-đun của "
+"bạn."
+
+#: ../../howto/isolating-extensions.rst:507
+#, fuzzy
+msgid ""
+"The following Python code can illustrate the concept. "
+"``Base.get_defining_class`` returns ``Base`` even if ``type(self) == Sub``:"
+msgstr ""
+"Mã Python sau đây có thể minh họa khái niệm này. ``Base.get_defining_class``"
+" trả về ``Base`` ngay cả khi ``type(self) == Sub``:"
+
+#: ../../howto/isolating-extensions.rst:511
+#, fuzzy
+msgid ""
+"class Base:\n"
+"    def get_type_of_self(self):\n"
+"        return type(self)\n"
+"\n"
+"    def get_defining_class(self):\n"
+"        return __class__\n"
+"\n"
+"class Sub(Base):\n"
+"    pass"
+msgstr ""
+"lớp cơ sở:\n"
+"    chắc chắn get_type_of_self(self):\n"
+"        kiểu trả về (tự)\n"
+"\n"
+"    def get_defining_class(self):\n"
+"        trở về __lớp__\n"
+"\n"
+"lớp phụ (Cơ sở):\n"
+"    vượt qua"
+
+#: ../../howto/isolating-extensions.rst:523
+#, fuzzy
+msgid ""
+"For a method to get its \"defining class\", it must use the "
+":ref:`METH_METHOD | METH_FASTCALL | METH_KEYWORDS <METH_METHOD-"
+"METH_FASTCALL-METH_KEYWORDS>` :c:type:`calling convention <PyMethodDef>` and"
+" the corresponding :c:type:`PyCMethod` signature::"
+msgstr ""
+"Để một phương thức có được \"lớp xác định\" của nó, nó phải sử dụng "
+":ref:`METH_METHOD | METH_FASTCALL | METH_KEYWORDS <METH_METHOD-"
+"METH_FASTCALL-METH_KEYWORDS>` :c:type:`calling convention <PyMethodDef>` và "
+"chữ ký :c:type:`PyCMethod` tương ứng::"
+
+#: ../../howto/isolating-extensions.rst:528
+#, fuzzy
+msgid ""
+"PyObject *PyCMethod(\n"
+"    PyObject *self,               // object the method was called on\n"
+"    PyTypeObject *defining_class, // defining class\n"
+"    PyObject *const *args,        // C array of arguments\n"
+"    Py_ssize_t nargs,             // length of \"args\"\n"
+"    PyObject *kwnames)            // NULL, or dict of keyword arguments"
+msgstr ""
+"PyObject *PyCPhương thức(\n"
+"    PyObject *self, // đối tượng mà phương thức được gọi\n"
+"    PyTypeObject *defining_class, // định nghĩa lớp\n"
+"    PyObject *const *args, // C mảng đối số\n"
+"    Py_ssize_t nargs, // độ dài của \"args\"\n"
+"    PyObject *kwnames) // NULL hoặc mệnh lệnh đối số từ khóa"
+
+#: ../../howto/isolating-extensions.rst:535
+#, fuzzy
+msgid ""
+"Once you have the defining class, call :c:func:`PyType_GetModuleState` to "
+"get the state of its associated module."
+msgstr ""
+"Khi bạn có lớp xác định, hãy gọi :c:func:`PyType_GetModuleState` để biết "
+"trạng thái của mô-đun liên quan."
+
+#: ../../howto/isolating-extensions.rst:538
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../howto/isolating-extensions.rst:540
+#, fuzzy
+msgid ""
+"static PyObject *\n"
+"example_method(PyObject *self,\n"
+"        PyTypeObject *defining_class,\n"
+"        PyObject *const *args,\n"
+"        Py_ssize_t nargs,\n"
+"        PyObject *kwnames)\n"
+"{\n"
+"    my_struct *state = (my_struct*)PyType_GetModuleState(defining_class);\n"
+"    if (state == NULL) {\n"
+"        return NULL;\n"
+"    }\n"
+"    ... // rest of logic\n"
+"}\n"
+"\n"
+"PyDoc_STRVAR(example_method_doc, \"...\");\n"
+"\n"
+"static PyMethodDef my_methods[] = {\n"
+"    {\"example_method\",\n"
+"      (PyCFunction)(void(*)(void))example_method,\n"
+"      METH_METHOD|METH_FASTCALL|METH_KEYWORDS,\n"
+"      example_method_doc}\n"
+"    {NULL},\n"
+"}"
+msgstr ""
+"PyObject tĩnh *\n"
+"example_method(PyObject *self,\n"
+"        PyTypeObject *định nghĩa_class,\n"
+"        PyObject *const *args,\n"
+"        Py_ssize_t càu nhàu,\n"
+"        PyObject *kwname)\n"
+"{\n"
+"    my_struct *state = (my_struct*)PyType_GetModuleState(defining_class);\n"
+"    nếu (trạng thái == NULL) {\n"
+"        trả lại NULL;\n"
+"    }\n"
+"    ... // phần còn lại của logic\n"
+"}\n"
+"\n"
+"PyDoc_STRVAR(example_method_doc, \"...\");\n"
+"\n"
+"PyMethodDef tĩnh my_methods[] = {\n"
+"    {\"phương thức ví dụ\",\n"
+"      (PyCFunction)(void(*)(void))example_method,\n"
+"      METH_METHOD|METH_FASTCALL|METH_KEYWORDS,\n"
+"      example_method_doc}\n"
+"    {NULL},\n"
+"}"
+
+#: ../../howto/isolating-extensions.rst:566
+#, fuzzy
+msgid "Module State Access from Slot Methods, Getters and Setters"
+msgstr ""
+"Truy cập trạng thái mô-đun từ các phương thức slot, Getters và Setters"
+
+#: ../../howto/isolating-extensions.rst:570
+#, fuzzy
+msgid "This is new in Python 3.11."
+msgstr "Đây là tính năng mới trong Python 3.11."
+
+#: ../../howto/isolating-extensions.rst:578
+#, fuzzy
+msgid ""
+"Slot methods—the fast C equivalents for special methods, such as "
+":c:member:`~PyNumberMethods.nb_add` for :py:attr:`~object.__add__` or "
+":c:member:`~PyTypeObject.tp_new` for initialization—have a very simple API "
+"that doesn't allow passing in the defining class, unlike with "
+":c:type:`PyCMethod`. The same goes for getters and setters defined with "
+":c:type:`PyGetSetDef`."
+msgstr ""
+"Các phương thức slot—tương đương C nhanh cho các phương thức đặc biệt, chẳng"
+" hạn như :c:member:`~PyNumberMethods.nb_add` cho :py:attr:`~object.__add__` "
+"hoặc :c:member:`~PyTypeObject.tp_new` để khởi tạo—có một API rất đơn giản "
+"không cho phép chuyển vào lớp xác định, không giống như :c:type:`PyCMethod`."
+" Điều tương tự cũng xảy ra với getters và setters được xác định bằng "
+":c:type:`PyGetSetDef`."
+
+#: ../../howto/isolating-extensions.rst:585
+#, fuzzy
+msgid ""
+"To access the module state in these cases, use the "
+":c:func:`PyType_GetModuleByDef` function, and pass in the module definition."
+" Once you have the module, call :c:func:`PyModule_GetState` to get the "
+"state::"
+msgstr ""
+"Để truy cập trạng thái mô-đun trong những trường hợp này, hãy sử dụng hàm "
+":c:func:`PyType_GetModuleByDef` và chuyển vào định nghĩa mô-đun. Khi bạn có "
+"mô-đun, hãy gọi :c:func:`PyModule_GetState` để nhận trạng thái::"
+
+#: ../../howto/isolating-extensions.rst:590
+#, python-brace-format, fuzzy
+msgid ""
+"PyObject *module = PyType_GetModuleByDef(Py_TYPE(self), &module_def);\n"
+"my_struct *state = (my_struct*)PyModule_GetState(module);\n"
+"if (state == NULL) {\n"
+"    return NULL;\n"
+"}"
+msgstr ""
+"PyObject *mô-đun = PyType_GetModuleByDef(Py_TYPE(self), &module_def);\n"
+"my_struct *state = (my_struct*)PyModule_GetState(module);\n"
+"nếu (trạng thái == NULL) {\n"
+"    trả lại NULL;\n"
+"}"
+
+#: ../../howto/isolating-extensions.rst:596
+#, fuzzy
+msgid ""
+":c:func:`!PyType_GetModuleByDef` works by searching the :term:`method "
+"resolution order` (i.e. all superclasses) for the first superclass that has "
+"a corresponding module."
+msgstr ""
+":c:func:`!PyType_GetModuleByDef` hoạt động bằng cách tìm kiếm :term:`method "
+"resolution order` (tức là tất cả các siêu lớp) để tìm siêu lớp đầu tiên có "
+"mô-đun tương ứng."
+
+#: ../../howto/isolating-extensions.rst:602
+#, fuzzy
+msgid ""
+"In very exotic cases (inheritance chains spanning multiple modules created "
+"from the same definition), :c:func:`!PyType_GetModuleByDef` might not return"
+" the module of the true defining class. However, it will always return a "
+"module with the same definition, ensuring a compatible C memory layout."
+msgstr ""
+"Trong những trường hợp rất đặc biệt (chuỗi kế thừa bao trùm nhiều mô-đun "
+"được tạo từ cùng một định nghĩa), :c:func:`!PyType_GetModuleByDef` có thể "
+"không trả về mô-đun của lớp xác định thực sự. Tuy nhiên, nó sẽ luôn trả về "
+"một mô-đun có cùng định nghĩa, đảm bảo bố cục bộ nhớ C tương thích."
+
+#: ../../howto/isolating-extensions.rst:610
+#, fuzzy
+msgid "Lifetime of the Module State"
+msgstr "Tuổi thọ của trạng thái mô-đun"
+
+#: ../../howto/isolating-extensions.rst:612
+#, fuzzy
+msgid ""
+"When a module object is garbage-collected, its module state is freed. For "
+"each pointer to (a part of) the module state, you must hold a reference to "
+"the module object."
+msgstr ""
+"Khi một đối tượng mô-đun được thu gom rác, trạng thái mô-đun của nó sẽ được "
+"giải phóng. Đối với mỗi con trỏ tới (một phần) trạng thái mô-đun, bạn phải "
+"giữ một tham chiếu đến đối tượng mô-đun."
+
+#: ../../howto/isolating-extensions.rst:616
+#, fuzzy
+msgid ""
+"Usually this is not an issue, because types created with "
+":c:func:`PyType_FromModuleAndSpec`, and their instances, hold a reference to"
+" the module. However, you must be careful in reference counting when you "
+"reference module state from other places, such as callbacks for external "
+"libraries."
+msgstr ""
+"Thông thường, đây không phải là vấn đề vì các loại được tạo bằng "
+":c:func:`PyType_FromModuleAndSpec` và các phiên bản của chúng có tham chiếu "
+"đến mô-đun. Tuy nhiên, bạn phải cẩn thận trong việc tính tham chiếu khi tham"
+" chiếu trạng thái mô-đun từ những nơi khác, chẳng hạn như lệnh gọi lại cho "
+"các thư viện bên ngoài."
+
+#: ../../howto/isolating-extensions.rst:625
+#, fuzzy
+msgid "Open Issues"
+msgstr "Các vấn đề mở"
+
+#: ../../howto/isolating-extensions.rst:627
+#, fuzzy
+msgid "Several issues around per-module state and heap types are still open."
+msgstr ""
+"Một số vấn đề xung quanh trạng thái mỗi mô-đun và loại vùng nhớ heap vẫn "
+"chưa được giải quyết."
+
+#: ../../howto/isolating-extensions.rst:629
+#, fuzzy
+msgid ""
+"Discussions about improving the situation are best held on the `discuss "
+"forum under c-api tag <https://discuss.python.org/c/core-dev/c-api/30>`__."
+msgstr ""
+"Các cuộc thảo luận về việc cải thiện tình hình được tổ chức tốt nhất trên "
+"`discuss forum under c-api tag <https://discuss.python.org/c/core-"
+"dev/c-api/30>`__."
+
+#: ../../howto/isolating-extensions.rst:633
+#, fuzzy
+msgid "Per-Class Scope"
+msgstr "Phạm vi mỗi lớp"
+
+#: ../../howto/isolating-extensions.rst:635
+#, fuzzy
+msgid ""
+"It is currently (as of Python 3.11) not possible to attach state to "
+"individual *types* without relying on CPython implementation details (which "
+"may change in the future—perhaps, ironically, to allow a proper solution for"
+" per-class scope)."
+msgstr ""
+"Hiện tại (kể từ Python 3.11) không thể gắn trạng thái vào từng *types* mà "
+"không dựa vào chi tiết triển khai CPython (điều này có thể thay đổi trong "
+"tương lai—có lẽ, trớ trêu thay, lại cho phép một giải pháp thích hợp cho "
+"phạm vi mỗi lớp)."
+
+#: ../../howto/isolating-extensions.rst:642
+#, fuzzy
+msgid "Lossless Conversion to Heap Types"
+msgstr "Chuyển đổi không mất dữ liệu sang các loại Heap"
+
+#: ../../howto/isolating-extensions.rst:644
+#, fuzzy
+msgid ""
+"The heap type API was not designed for \"lossless\" conversion from static "
+"types; that is, creating a type that works exactly like a given static type."
+msgstr ""
+"Loại heap API không được thiết kế để chuyển đổi \"không mất dữ liệu\" từ các"
+" loại tĩnh; nghĩa là tạo một loại hoạt động chính xác như một loại tĩnh nhất"
+" định."

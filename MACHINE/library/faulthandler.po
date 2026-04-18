@@ -1,0 +1,544 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/faulthandler.rst:2
+#, fuzzy
+msgid ":mod:`!faulthandler` --- Dump the Python traceback"
+msgstr ":mod:`!faulthandler` --- Kết xuất truy nguyên Python"
+
+#: ../../library/faulthandler.rst:11
+#, fuzzy
+msgid ""
+"This module contains functions to dump Python tracebacks explicitly, on a "
+"fault, after a timeout, or on a user signal. Call "
+":func:`faulthandler.enable` to install fault handlers for the "
+":const:`~signal.SIGSEGV`, :const:`~signal.SIGFPE`, :const:`~signal.SIGABRT`,"
+" :const:`~signal.SIGBUS`, and :const:`~signal.SIGILL` signals. You can also "
+"enable them at startup by setting the :envvar:`PYTHONFAULTHANDLER` "
+"environment variable or by using the :option:`-X` ``faulthandler`` command "
+"line option."
+msgstr ""
+"Mô-đun này chứa các hàm để kết xuất các dấu vết Python một cách rõ ràng, khi"
+" có lỗi, sau khi hết thời gian chờ hoặc theo tín hiệu của người dùng. Gọi "
+":func:`faulthandler.enable` để cài đặt trình xử lý lỗi cho các tín hiệu "
+":const:`~signal.SIGSEGV`, :const:`~signal.SIGFPE`, :const:`~signal.SIGABRT`,"
+" :const:`~signal.SIGBUS` và :const:`~signal.SIGILL`. Bạn cũng có thể kích "
+"hoạt chúng khi khởi động bằng cách đặt biến môi trường "
+":envvar:`PYTHONFAULTHANDLER` hoặc bằng cách sử dụng tùy chọn dòng lệnh "
+":option:`-X` ``faulthandler``."
+
+#: ../../library/faulthandler.rst:19
+#, fuzzy
+msgid ""
+"The fault handler is compatible with system fault handlers like Apport or "
+"the Windows fault handler. The module uses an alternative stack for signal "
+"handlers if the :c:func:`!sigaltstack` function is available. This allows it"
+" to dump the traceback even on a stack overflow."
+msgstr ""
+"Trình xử lý lỗi tương thích với các trình xử lý lỗi hệ thống như Apport hoặc"
+" trình xử lý lỗi của Windows. Mô-đun này sử dụng ngăn xếp thay thế cho bộ xử"
+" lý tín hiệu nếu chức năng :c:func:`!sigaltstack` khả dụng. Điều này cho "
+"phép nó loại bỏ truy nguyên ngay cả khi tràn ngăn xếp."
+
+#: ../../library/faulthandler.rst:24
+#, fuzzy
+msgid ""
+"The fault handler is called on catastrophic cases and therefore can only use"
+" signal-safe functions (e.g. it cannot allocate memory on the heap). Because"
+" of this limitation traceback dumping is minimal compared to normal Python "
+"tracebacks:"
+msgstr ""
+"Trình xử lý lỗi được gọi trong các trường hợp nghiêm trọng và do đó chỉ có "
+"thể sử dụng các chức năng an toàn tín hiệu (ví dụ: nó không thể phân bổ bộ "
+"nhớ trên heap). Do hạn chế này, việc bán phá giá theo dõi là tối thiểu so "
+"với các lần truy nguyên thông thường của Python:"
+
+#: ../../library/faulthandler.rst:29
+#, fuzzy
+msgid ""
+"Only ASCII is supported. The ``backslashreplace`` error handler is used on "
+"encoding."
+msgstr ""
+"Chỉ ASCII được hỗ trợ. Trình xử lý lỗi ``backslashreplace`` được sử dụng khi"
+" mã hóa."
+
+#: ../../library/faulthandler.rst:31
+#, fuzzy
+msgid "Each string is limited to 500 characters."
+msgstr "Mỗi chuỗi được giới hạn ở 500 ký tự."
+
+#: ../../library/faulthandler.rst:32
+#, fuzzy
+msgid ""
+"Only the filename, the function name and the line number are displayed. (no "
+"source code)"
+msgstr "Chỉ có tên tệp, tên hàm và số dòng được hiển thị. (không có mã nguồn)"
+
+#: ../../library/faulthandler.rst:34
+#, fuzzy
+msgid "It is limited to 100 frames and 100 threads."
+msgstr "Nó được giới hạn ở 100 khung hình và 100 chủ đề."
+
+#: ../../library/faulthandler.rst:35
+#, fuzzy
+msgid "The order is reversed: the most recent call is shown first."
+msgstr "Thứ tự bị đảo ngược: cuộc gọi gần đây nhất được hiển thị trước."
+
+#: ../../library/faulthandler.rst:37
+#, fuzzy
+msgid ""
+"By default, the Python traceback is written to :data:`sys.stderr`. To see "
+"tracebacks, applications must be run in the terminal. A log file can "
+"alternatively be passed to :func:`faulthandler.enable`."
+msgstr ""
+"Theo mặc định, truy nguyên Python được ghi vào :data:`sys.stderr`. Để xem "
+"dấu vết, ứng dụng phải được chạy trong thiết bị đầu cuối. Ngoài ra, một tệp "
+"nhật ký có thể được chuyển tới :func:`faulthandler.enable`."
+
+#: ../../library/faulthandler.rst:41
+#, fuzzy
+msgid ""
+"The module is implemented in C, so tracebacks can be dumped on a crash or "
+"when Python is deadlocked."
+msgstr ""
+"Mô-đun này được triển khai bằng C, do đó, việc truy nguyên có thể bị loại bỏ"
+" khi gặp sự cố hoặc khi Python bị bế tắc."
+
+#: ../../library/faulthandler.rst:44
+#, fuzzy
+msgid ""
+"The :ref:`Python Development Mode <devmode>` calls "
+":func:`faulthandler.enable` at Python startup."
+msgstr "Zz000zz gọi :func:`faulthandler.enable` khi khởi động Python."
+
+#: ../../library/faulthandler.rst:49
+#, fuzzy
+msgid "Module :mod:`pdb`"
+msgstr "Mô-đun :mod:`pdb`"
+
+#: ../../library/faulthandler.rst:50
+#, fuzzy
+msgid "Interactive source code debugger for Python programs."
+msgstr "Trình gỡ lỗi mã nguồn tương tác cho các chương trình Python."
+
+#: ../../library/faulthandler.rst:52
+#, fuzzy
+msgid "Module :mod:`traceback`"
+msgstr "Mô-đun :mod:`traceback`"
+
+#: ../../library/faulthandler.rst:53
+#, fuzzy
+msgid ""
+"Standard interface to extract, format and print stack traces of Python "
+"programs."
+msgstr ""
+"Giao diện chuẩn để trích xuất, định dạng và in dấu vết ngăn xếp của chương "
+"trình Python."
+
+#: ../../library/faulthandler.rst:56
+#, fuzzy
+msgid "Dumping the traceback"
+msgstr "Loại bỏ dấu vết"
+
+#: ../../library/faulthandler.rst:60
+#, fuzzy
+msgid ""
+"Dump the tracebacks of all threads into *file*. If *all_threads* is "
+"``False``, dump only the current thread."
+msgstr ""
+"Kết xuất dấu vết của tất cả các chủ đề vào *file*. Nếu *all_threads* là "
+"``False``, chỉ kết xuất chuỗi hiện tại."
+
+#: ../../library/faulthandler.rst:63
+#, fuzzy
+msgid ""
+":func:`traceback.print_tb`, which can be used to print a traceback object."
+msgstr ""
+":func:`traceback.print_tb`, có thể được sử dụng để in đối tượng truy nguyên."
+
+#: ../../library/faulthandler.rst:65 ../../library/faulthandler.rst:119
+#: ../../library/faulthandler.rst:165 ../../library/faulthandler.rst:190
+#, fuzzy
+msgid "Added support for passing file descriptor to this function."
+msgstr "Đã thêm hỗ trợ để truyền bộ mô tả tệp cho chức năng này."
+
+#: ../../library/faulthandler.rst:70
+#, fuzzy
+msgid "Dumping the C stack"
+msgstr "Đổ ngăn xếp C"
+
+#: ../../library/faulthandler.rst:76
+#, fuzzy
+msgid "Dump the C stack trace of the current thread into *file*."
+msgstr "Kết xuất dấu vết ngăn xếp C của luồng hiện tại vào *file*."
+
+#: ../../library/faulthandler.rst:78
+#, fuzzy
+msgid ""
+"If the Python build does not support it or the operating system does not "
+"provide a stack trace, then this prints an error in place of a dumped C "
+"stack."
+msgstr ""
+"Nếu bản dựng Python không hỗ trợ nó hoặc hệ điều hành không cung cấp dấu vết"
+" ngăn xếp thì thao tác này sẽ in ra lỗi thay cho ngăn xếp C bị kết xuất."
+
+#: ../../library/faulthandler.rst:85
+#, fuzzy
+msgid "C Stack Compatibility"
+msgstr "Khả năng tương thích ngăn xếp C"
+
+#: ../../library/faulthandler.rst:87
+#, fuzzy
+msgid ""
+"If the system does not support the C-level :manpage:`backtrace(3)` or "
+":manpage:`dladdr1(3)`, then C stack dumps will not work. An error will be "
+"printed instead of the stack."
+msgstr ""
+"Nếu hệ thống không hỗ trợ :manpage:`backtrace(3)` hoặc :manpage:`dladdr1(3)`"
+" cấp C thì kết xuất ngăn xếp C sẽ không hoạt động. Một lỗi sẽ được in thay "
+"vì ngăn xếp."
+
+#: ../../library/faulthandler.rst:91
+#, fuzzy
+msgid ""
+"Additionally, some compilers do not support :term:`CPython's <CPython>` "
+"implementation of C stack dumps. As a result, a different error may be "
+"printed instead of the stack, even if the operating system supports dumping "
+"stacks."
+msgstr ""
+"Ngoài ra, một số trình biên dịch không hỗ trợ triển khai :term:`CPython's "
+"<CPython>` của các kết xuất ngăn xếp C. Kết quả là một lỗi khác có thể được "
+"in thay vì ngăn xếp, ngay cả khi hệ điều hành hỗ trợ đổ ngăn xếp."
+
+#: ../../library/faulthandler.rst:97
+#, fuzzy
+msgid ""
+"Dumping C stacks can be arbitrarily slow, depending on the DWARF level of "
+"the binaries in the call stack."
+msgstr ""
+"Việc kết xuất ngăn xếp C có thể chậm tùy ý, tùy thuộc vào mức DWARF của các "
+"tệp nhị phân trong ngăn xếp cuộc gọi."
+
+#: ../../library/faulthandler.rst:101
+#, fuzzy
+msgid "Fault handler state"
+msgstr "Trạng thái xử lý lỗi"
+
+#: ../../library/faulthandler.rst:105
+#, fuzzy
+msgid ""
+"Enable the fault handler: install handlers for the :const:`~signal.SIGSEGV`,"
+" :const:`~signal.SIGFPE`, :const:`~signal.SIGABRT`, :const:`~signal.SIGBUS` "
+"and :const:`~signal.SIGILL` signals to dump the Python traceback. If "
+"*all_threads* is ``True``, produce tracebacks for every running thread. "
+"Otherwise, dump only the current thread."
+msgstr ""
+"Kích hoạt trình xử lý lỗi: cài đặt trình xử lý cho các tín hiệu "
+":const:`~signal.SIGSEGV`, :const:`~signal.SIGFPE`, :const:`~signal.SIGABRT`,"
+" :const:`~signal.SIGBUS` và :const:`~signal.SIGILL` để loại bỏ dấu vết "
+"Python. Nếu *all_threads* là ``True``, hãy tạo dấu vết cho mọi luồng đang "
+"chạy. Nếu không, chỉ kết xuất chuỗi hiện tại."
+
+#: ../../library/faulthandler.rst:112
+#, fuzzy
+msgid ""
+"The *file* must be kept open until the fault handler is disabled: see "
+":ref:`issue with file descriptors <faulthandler-fd>`."
+msgstr ""
+"Zz001zz phải được mở cho đến khi trình xử lý lỗi bị tắt: xem :ref:`issue "
+"with file descriptors <faulthandler-fd>`."
+
+#: ../../library/faulthandler.rst:115
+#, fuzzy
+msgid ""
+"If *c_stack* is ``True``, then the C stack trace is printed after the Python"
+" traceback, unless the system does not support it. See :func:`dump_c_stack` "
+"for more information on compatibility."
+msgstr ""
+"Nếu *c_stack* là ``True`` thì dấu vết ngăn xếp C sẽ được in sau dấu vết "
+"Python, trừ khi hệ thống không hỗ trợ nó. Xem :func:`dump_c_stack` để biết "
+"thêm thông tin về khả năng tương thích."
+
+#: ../../library/faulthandler.rst:122
+#, fuzzy
+msgid "On Windows, a handler for Windows exception is also installed."
+msgstr "Trên Windows, trình xử lý ngoại lệ Windows cũng được cài đặt."
+
+#: ../../library/faulthandler.rst:125
+#, fuzzy
+msgid ""
+"The dump now mentions if a garbage collector collection is running if "
+"*all_threads* is true."
+msgstr ""
+"Hiện tại, kết xuất sẽ đề cập đến việc bộ sưu tập thu gom rác có đang chạy "
+"hay không nếu *all_threads* là đúng."
+
+#: ../../library/faulthandler.rst:129
+#, fuzzy
+msgid ""
+"Only the current thread is dumped if the :term:`GIL` is disabled to prevent "
+"the risk of data races."
+msgstr ""
+"Chỉ luồng hiện tại bị hủy nếu :term:`GIL` bị tắt để ngăn ngừa nguy cơ chạy "
+"đua dữ liệu."
+
+#: ../../library/faulthandler.rst:133
+#, fuzzy
+msgid "The dump now displays the C stack trace if *c_stack* is true."
+msgstr "Kết xuất hiện hiển thị dấu vết ngăn xếp C nếu *c_stack* là đúng."
+
+#: ../../library/faulthandler.rst:138
+#, fuzzy
+msgid ""
+"Disable the fault handler: uninstall the signal handlers installed by "
+":func:`enable`."
+msgstr ""
+"Tắt trình xử lý lỗi: gỡ cài đặt trình xử lý tín hiệu được cài đặt bởi "
+":func:`enable`."
+
+#: ../../library/faulthandler.rst:143
+#, fuzzy
+msgid "Check if the fault handler is enabled."
+msgstr "Kiểm tra xem trình xử lý lỗi có được bật hay không."
+
+#: ../../library/faulthandler.rst:147
+#, fuzzy
+msgid "Dumping the tracebacks after a timeout"
+msgstr "Loại bỏ dấu vết sau khi hết thời gian chờ"
+
+#: ../../library/faulthandler.rst:151
+#, fuzzy
+msgid ""
+"Dump the tracebacks of all threads, after a timeout of *timeout* seconds, or"
+" every *timeout* seconds if *repeat* is ``True``.  If *exit* is ``True``, "
+"call :c:func:`!_exit` with status=1 after dumping the tracebacks.  (Note "
+":c:func:`!_exit` exits the process immediately, which means it doesn't do "
+"any cleanup like flushing file buffers.) If the function is called twice, "
+"the new call replaces previous parameters and resets the timeout. The timer "
+"has a sub-second resolution."
+msgstr ""
+"Kết xuất dấu vết của tất cả các chuỗi, sau khoảng thời gian chờ là *timeout*"
+" giây hoặc cứ sau *timeout* giây nếu *repeat* là ``True``.  Nếu *exit* là "
+"``True``, hãy gọi :c:func:`!_exit` với trạng thái=1 sau khi loại bỏ dấu vết."
+"  (Lưu ý :c:func:`!_exit` thoát khỏi quy trình ngay lập tức, điều đó có "
+"nghĩa là nó không thực hiện bất kỳ hoạt động dọn dẹp nào như xóa bộ đệm "
+"tệp.) Nếu hàm được gọi hai lần, lệnh gọi mới sẽ thay thế các tham số trước "
+"đó và đặt lại thời gian chờ. Bộ đếm thời gian có độ phân giải dưới giây."
+
+#: ../../library/faulthandler.rst:159
+#, fuzzy
+msgid ""
+"The *file* must be kept open until the traceback is dumped or "
+":func:`cancel_dump_traceback_later` is called: see :ref:`issue with file "
+"descriptors <faulthandler-fd>`."
+msgstr ""
+"Zz002zz phải được mở cho đến khi truy nguyên được kết xuất hoặc "
+":func:`cancel_dump_traceback_later` được gọi: xem :ref:`issue with file "
+"descriptors <faulthandler-fd>`."
+
+#: ../../library/faulthandler.rst:163
+#, fuzzy
+msgid "This function is implemented using a watchdog thread."
+msgstr "Chức năng này được thực hiện bằng cách sử dụng một thread giám sát."
+
+#: ../../library/faulthandler.rst:168
+#, fuzzy
+msgid "This function is now always available."
+msgstr "Chức năng này bây giờ luôn có sẵn."
+
+#: ../../library/faulthandler.rst:173
+#, fuzzy
+msgid "Cancel the last call to :func:`dump_traceback_later`."
+msgstr "Hủy cuộc gọi cuối cùng tới :func:`dump_traceback_later`."
+
+#: ../../library/faulthandler.rst:177
+#, fuzzy
+msgid "Dumping the traceback on a user signal"
+msgstr "Bỏ dấu vết trên tín hiệu người dùng"
+
+#: ../../library/faulthandler.rst:181
+#, fuzzy
+msgid ""
+"Register a user signal: install a handler for the *signum* signal to dump "
+"the traceback of all threads, or of the current thread if *all_threads* is "
+"``False``, into *file*. Call the previous handler if chain is ``True``."
+msgstr ""
+"Đăng ký tín hiệu người dùng: cài đặt trình xử lý cho tín hiệu *signum* để "
+"kết xuất dấu vết của tất cả các luồng hoặc của luồng hiện tại nếu "
+"*all_threads* là ``False``, vào *file*. Gọi trình xử lý trước đó nếu chuỗi "
+"là ``True``."
+
+#: ../../library/faulthandler.rst:185
+#, fuzzy
+msgid ""
+"The *file* must be kept open until the signal is unregistered by "
+":func:`unregister`: see :ref:`issue with file descriptors <faulthandler-"
+"fd>`."
+msgstr ""
+"*file* phải được mở cho đến khi tín hiệu được :func:`unregister` hủy đăng "
+"ký: xem :ref:`issue with file descriptors <faulthandler-fd>`."
+
+#: ../../library/faulthandler.rst:188 ../../library/faulthandler.rst:199
+#, fuzzy
+msgid "Not available on Windows."
+msgstr "Không có sẵn trên Windows."
+
+#: ../../library/faulthandler.rst:195
+#, fuzzy
+msgid ""
+"Unregister a user signal: uninstall the handler of the *signum* signal "
+"installed by :func:`register`. Return ``True`` if the signal was registered,"
+" ``False`` otherwise."
+msgstr ""
+"Hủy đăng ký tín hiệu người dùng: gỡ cài đặt trình xử lý tín hiệu *signum* "
+"được cài đặt bởi :func:`register`. Trả về ``True`` nếu tín hiệu đã được đăng"
+" ký, ``False`` nếu không."
+
+#: ../../library/faulthandler.rst:205
+#, fuzzy
+msgid "Issue with file descriptors"
+msgstr "Vấn đề với bộ mô tả tập tin"
+
+#: ../../library/faulthandler.rst:207
+#, fuzzy
+msgid ""
+":func:`enable`, :func:`dump_traceback_later` and :func:`register` keep the "
+"file descriptor of their *file* argument. If the file is closed and its file"
+" descriptor is reused by a new file, or if :func:`os.dup2` is used to "
+"replace the file descriptor, the traceback will be written into a different "
+"file. Call these functions again each time that the file is replaced."
+msgstr ""
+":func:`enable`, :func:`dump_traceback_later` và :func:`register` giữ phần mô"
+" tả tệp của đối số *file* của chúng. Nếu tệp bị đóng và bộ mô tả tệp của nó "
+"được một tệp mới sử dụng lại hoặc nếu :func:`os.dup2` được sử dụng để thay "
+"thế bộ mô tả tệp, thì truy nguyên sẽ được ghi vào một tệp khác. Gọi lại các "
+"chức năng này mỗi khi tệp được thay thế."
+
+#: ../../library/faulthandler.rst:215
+#, fuzzy
+msgid "Example"
+msgstr "Ví dụ"
+
+#: ../../library/faulthandler.rst:217
+#, fuzzy
+msgid ""
+"Example of a segmentation fault on Linux with and without enabling the fault"
+" handler:"
+msgstr "Ví dụ về lỗi phân đoạn trên Linux có và không bật trình xử lý lỗi:"
+
+#: ../../library/faulthandler.rst:220
+#, fuzzy
+msgid ""
+"$ python -c \"import ctypes; ctypes.string_at(0)\"\n"
+"Segmentation fault\n"
+"\n"
+"$ python -q -X faulthandler\n"
+">>> import ctypes\n"
+">>> ctypes.string_at(0)\n"
+"Fatal Python error: Segmentation fault\n"
+"\n"
+"Current thread 0x00007fb899f39700 (most recent call first):\n"
+"  File \"/opt/python/Lib/ctypes/__init__.py\", line 486 in string_at\n"
+"  File \"<stdin>\", line 1 in <module>\n"
+"\n"
+"Current thread's C stack trace (most recent call first):\n"
+"  Binary file \"/opt/python/python\", at _Py_DumpStack+0x42 [0x5b27f7d7147e]\n"
+"  Binary file \"/opt/python/python\", at +0x32dcbd [0x5b27f7d85cbd]\n"
+"  Binary file \"/opt/python/python\", at +0x32df8a [0x5b27f7d85f8a]\n"
+"  Binary file \"/usr/lib/libc.so.6\", at +0x3def0 [0x77b73226bef0]\n"
+"  Binary file \"/usr/lib/libc.so.6\", at +0x17ef9c [0x77b7323acf9c]\n"
+"  Binary file \"/opt/python/build/lib.linux-x86_64-3.14/_ctypes.cpython-314d-x86_64-linux-gnu.so\", at +0xcdf6 [0x77b7315dddf6]\n"
+"  Binary file \"/usr/lib/libffi.so.8\", at +0x7976 [0x77b73158f976]\n"
+"  Binary file \"/usr/lib/libffi.so.8\", at +0x413c [0x77b73158c13c]\n"
+"  Binary file \"/usr/lib/libffi.so.8\", at ffi_call+0x12e [0x77b73158ef0e]\n"
+"  Binary file \"/opt/python/build/lib.linux-x86_64-3.14/_ctypes.cpython-314d-x86_64-linux-gnu.so\", at +0x15a33 [0x77b7315e6a33]\n"
+"  Binary file \"/opt/python/build/lib.linux-x86_64-3.14/_ctypes.cpython-314d-x86_64-linux-gnu.so\", at +0x164fa [0x77b7315e74fa]\n"
+"  Binary file \"/opt/python/build/lib.linux-x86_64-3.14/_ctypes.cpython-314d-x86_64-linux-gnu.so\", at +0xc624 [0x77b7315dd624]\n"
+"  Binary file \"/opt/python/python\", at _PyObject_MakeTpCall+0xce [0x5b27f7b73883]\n"
+"  Binary file \"/opt/python/python\", at +0x11bab6 [0x5b27f7b73ab6]\n"
+"  Binary file \"/opt/python/python\", at PyObject_Vectorcall+0x23 [0x5b27f7b73b04]\n"
+"  Binary file \"/opt/python/python\", at _PyEval_EvalFrameDefault+0x490c [0x5b27f7cbb302]\n"
+"  Binary file \"/opt/python/python\", at +0x2818e6 [0x5b27f7cd98e6]\n"
+"  Binary file \"/opt/python/python\", at +0x281aab [0x5b27f7cd9aab]\n"
+"  Binary file \"/opt/python/python\", at PyEval_EvalCode+0xc5 [0x5b27f7cd9ba3]\n"
+"  Binary file \"/opt/python/python\", at +0x255957 [0x5b27f7cad957]\n"
+"  Binary file \"/opt/python/python\", at +0x255ab4 [0x5b27f7cadab4]\n"
+"  Binary file \"/opt/python/python\", at _PyEval_EvalFrameDefault+0x6c3e [0x5b27f7cbd634]\n"
+"  Binary file \"/opt/python/python\", at +0x2818e6 [0x5b27f7cd98e6]\n"
+"  Binary file \"/opt/python/python\", at +0x281aab [0x5b27f7cd9aab]\n"
+"  Binary file \"/opt/python/python\", at +0x11b6e1 [0x5b27f7b736e1]\n"
+"  Binary file \"/opt/python/python\", at +0x11d348 [0x5b27f7b75348]\n"
+"  Binary file \"/opt/python/python\", at +0x11d626 [0x5b27f7b75626]\n"
+"  Binary file \"/opt/python/python\", at PyObject_Call+0x20 [0x5b27f7b7565e]\n"
+"  Binary file \"/opt/python/python\", at +0x32a67a [0x5b27f7d8267a]\n"
+"  Binary file \"/opt/python/python\", at +0x32a7f8 [0x5b27f7d827f8]\n"
+"  Binary file \"/opt/python/python\", at +0x32ac1b [0x5b27f7d82c1b]\n"
+"  Binary file \"/opt/python/python\", at Py_RunMain+0x31 [0x5b27f7d82ebe]\n"
+"  <truncated rest of calls>\n"
+"Segmentation fault"
+msgstr ""
+"$ python -c \"nhập ctypes; ctypes.string_at(0)\"\n"
+"Lỗi phân đoạn\n"
+"\n"
+"$ python -q -X trình xử lý lỗi\n"
+">>> nhập ctypes\n"
+">>> ctypes.string_at(0)\n"
+"Lỗi Python nghiêm trọng: Lỗi phân đoạn\n"
+"\n"
+"Chuỗi hiện tại 0x00007fb899f39700 (cuộc gọi gần đây nhất trước):\n"
+"  Tệp \"/opt/python/Lib/ctypes/__init__.py\", dòng 486 trong string_at\n"
+"  Tệp \"<stdin>\", dòng 1 trong <module>\n"
+"\n"
+"Dấu vết ngăn xếp C của luồng hiện tại (cuộc gọi gần đây nhất được đặt trước):\n"
+"  Tệp nhị phân \"/opt/python/python\", tại _Py_DumpStack+0x42 [0x5b27f7d7147e]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x32dcbd [0x5b27f7d85cbd]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x32df8a [0x5b27f7d85f8a]\n"
+"  Tệp nhị phân \"/usr/lib/libc.so.6\", tại +0x3def0 [0x77b73226bef0]\n"
+"  Tệp nhị phân \"/usr/lib/libc.so.6\", tại +0x17ef9c [0x77b7323acf9c]\n"
+"  Tệp nhị phân \"/opt/python/build/lib.linux-x86_64-3.14/_ctypes.cpython-314d-x86_64-linux-gnu.so\", tại +0xcdf6 [0x77b7315dddf6]\n"
+"  Tệp nhị phân \"/usr/lib/libffi.so.8\", tại +0x7976 [0x77b73158f976]\n"
+"  Tệp nhị phân \"/usr/lib/libffi.so.8\", tại +0x413c [0x77b73158c13c]\n"
+"  Tệp nhị phân \"/usr/lib/libffi.so.8\", tại ffi_call+0x12e [0x77b73158ef0e]\n"
+"  Tệp nhị phân \"/opt/python/build/lib.linux-x86_64-3.14/_ctypes.cpython-314d-x86_64-linux-gnu.so\", tại +0x15a33 [0x77b7315e6a33]\n"
+"  Tệp nhị phân \"/opt/python/build/lib.linux-x86_64-3.14/_ctypes.cpython-314d-x86_64-linux-gnu.so\", tại +0x164fa [0x77b7315e74fa]\n"
+"  Tệp nhị phân \"/opt/python/build/lib.linux-x86_64-3.14/_ctypes.cpython-314d-x86_64-linux-gnu.so\", tại +0xc624 [0x77b7315dd624]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại _PyObject_MakeTpCall+0xce [0x5b27f7b73883]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x11bab6 [0x5b27f7b73ab6]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại PyObject_Vectorcall+0x23 [0x5b27f7b73b04]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại _PyEval_EvalFrameDefault+0x490c [0x5b27f7cbb302]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x2818e6 [0x5b27f7cd98e6]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x281aab [0x5b27f7cd9aab]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại PyEval_EvalCode+0xc5 [0x5b27f7cd9ba3]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x255957 [0x5b27f7cad957]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x255ab4 [0x5b27f7cadab4]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại _PyEval_EvalFrameDefault+0x6c3e [0x5b27f7cbd634]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x2818e6 [0x5b27f7cd98e6]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x281aab [0x5b27f7cd9aab]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x11b6e1 [0x5b27f7b736e1]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x11d348 [0x5b27f7b75348]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x11d626 [0x5b27f7b75626]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại PyObject_Call+0x20 [0x5b27f7b7565e]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x32a67a [0x5b27f7d8267a]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x32a7f8 [0x5b27f7d827f8]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại +0x32ac1b [0x5b27f7d82c1b]\n"
+"  Tệp nhị phân \"/opt/python/python\", tại Py_RunMain+0x31 [0x5b27f7d82ebe]\n"
+"  <các cuộc gọi còn lại bị cắt ngắn>\n"
+"Lỗi phân đoạn"

@@ -1,0 +1,1272 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/threadsafety.rst:5
+#, fuzzy
+msgid "Thread Safety Guarantees"
+msgstr "Đảm bảo an toàn chủ đề"
+
+#: ../../library/threadsafety.rst:7
+#, fuzzy
+msgid ""
+"This page documents thread-safety guarantees for built-in types in Python's "
+"free-threaded build. The guarantees described here apply when using Python "
+"with the :term:`GIL` disabled (free-threaded mode). When the GIL is enabled,"
+" most operations are implicitly serialized."
+msgstr ""
+"Trang này ghi lại các đảm bảo an toàn luồng cho các loại tích hợp trong bản "
+"dựng luồng tự do của Python. Các đảm bảo được mô tả ở đây áp dụng khi sử "
+"dụng Python khi tắt :term:`GIL` (chế độ luồng tự do). Khi GIL được bật, hầu "
+"hết các hoạt động đều được tuần tự hóa ngầm."
+
+#: ../../library/threadsafety.rst:12
+#, fuzzy
+msgid ""
+"For general guidance on writing thread-safe code in free-threaded Python, "
+"see :ref:`freethreading-python-howto`."
+msgstr ""
+"Để biết hướng dẫn chung về cách viết mã an toàn luồng bằng Python có luồng "
+"tự do, hãy xem :ref:`freethreading-python-howto`."
+
+#: ../../library/threadsafety.rst:19
+#, fuzzy
+msgid "Thread safety levels"
+msgstr "Mức độ an toàn của chủ đề"
+
+#: ../../library/threadsafety.rst:21
+#, fuzzy
+msgid ""
+"The C API documentation uses the following levels to describe the thread "
+"safety guarantees of each function. The levels are listed from least to most"
+" safe."
+msgstr ""
+"Tài liệu C API sử dụng các cấp độ sau để mô tả đảm bảo an toàn luồng của "
+"từng chức năng. Các cấp độ được liệt kê từ ít nhất đến an toàn nhất."
+
+#: ../../library/threadsafety.rst:28
+#, fuzzy
+msgid "Incompatible"
+msgstr "Không tương thích"
+
+#: ../../library/threadsafety.rst:30
+#, fuzzy
+msgid ""
+"A function or operation that cannot be made safe for concurrent use even "
+"with external synchronization. Incompatible code typically accesses global "
+"state in an unsynchronized way and must only be called from a single thread "
+"throughout the program's lifetime."
+msgstr ""
+"Một chức năng hoặc hoạt động không thể đảm bảo an toàn khi sử dụng đồng thời"
+" ngay cả khi đồng bộ hóa bên ngoài. Mã không tương thích thường truy cập "
+"trạng thái chung theo cách không đồng bộ và chỉ được gọi từ một luồng duy "
+"nhất trong suốt vòng đời của chương trình."
+
+#: ../../library/threadsafety.rst:35
+#, fuzzy
+msgid ""
+"Example: a function that modifies process-wide state such as signal handlers"
+" or environment variables, where concurrent calls from any threads, even "
+"with external locking, can conflict with the runtime or other libraries."
+msgstr ""
+"Ví dụ: một hàm sửa đổi trạng thái toàn quy trình, chẳng hạn như trình xử lý "
+"tín hiệu hoặc biến môi trường, trong đó các lệnh gọi đồng thời từ bất kỳ "
+"luồng nào, ngay cả với khóa bên ngoài, có thể xung đột với thời gian chạy "
+"hoặc các thư viện khác."
+
+#: ../../library/threadsafety.rst:42
+#, fuzzy
+msgid "Compatible"
+msgstr "Tương thích"
+
+#: ../../library/threadsafety.rst:44
+#, fuzzy
+msgid ""
+"A function or operation that is safe to call from multiple threads "
+"*provided* the caller supplies appropriate external synchronization, for "
+"example by holding a :term:`lock` for the duration of each call. Without "
+"such synchronization, concurrent calls may produce :term:`race conditions "
+"<race condition>` or :term:`data races <data race>`."
+msgstr ""
+"Một chức năng hoặc thao tác an toàn để gọi từ nhiều luồng *provided*, người "
+"gọi sẽ cung cấp khả năng đồng bộ hóa bên ngoài thích hợp, chẳng hạn như bằng"
+" cách giữ :term:`lock` trong suốt thời gian của mỗi cuộc gọi. Nếu không đồng"
+" bộ hóa như vậy, các cuộc gọi đồng thời có thể tạo ra :term:`race conditions"
+" <race condition>` hoặc :term:`data races <data race>`."
+
+#: ../../library/threadsafety.rst:50
+#, fuzzy
+msgid ""
+"Example: a function that reads from or writes to an object whose internal "
+"state is not protected by a lock. Callers must ensure that no two threads "
+"access the same object at the same time."
+msgstr ""
+"Ví dụ: một hàm đọc hoặc ghi vào một đối tượng có trạng thái bên trong không "
+"được bảo vệ bằng khóa. Người gọi phải đảm bảo rằng không có hai luồng nào "
+"truy cập vào cùng một đối tượng cùng một lúc."
+
+#: ../../library/threadsafety.rst:57
+#, fuzzy
+msgid "Safe on distinct objects"
+msgstr "An toàn trên các vật thể riêng biệt"
+
+#: ../../library/threadsafety.rst:59
+#, fuzzy
+msgid ""
+"A function or operation that is safe to call from multiple threads without "
+"external synchronization, as long as each thread operates on a **different**"
+" object. Two threads may call the function at the same time, but they must "
+"not pass the same object (or objects that share underlying state) as "
+"arguments."
+msgstr ""
+"Một hàm hoặc thao tác an toàn để gọi từ nhiều luồng mà không cần đồng bộ hóa"
+" bên ngoài, miễn là mỗi luồng hoạt động trên một đối tượng **different**. "
+"Hai luồng có thể gọi hàm cùng lúc, nhưng chúng không được truyền cùng một "
+"đối tượng (hoặc các đối tượng có chung trạng thái cơ bản) làm đối số."
+
+#: ../../library/threadsafety.rst:65
+#, fuzzy
+msgid ""
+"Example: a function that modifies fields of a struct using non-atomic "
+"writes. Two threads can each call the function on their own struct instance "
+"safely, but concurrent calls on the *same* instance require external "
+"synchronization."
+msgstr ""
+"Ví dụ: một hàm sửa đổi các trường của cấu trúc bằng cách ghi phi nguyên tử. "
+"Mỗi luồng có thể gọi hàm trên phiên bản cấu trúc riêng của chúng một cách an"
+" toàn, nhưng các lệnh gọi đồng thời trên phiên bản *same* yêu cầu đồng bộ "
+"hóa bên ngoài."
+
+#: ../../library/threadsafety.rst:73
+#, fuzzy
+msgid "Safe on shared objects"
+msgstr "An toàn trên các đối tượng được chia sẻ"
+
+#: ../../library/threadsafety.rst:75
+#, fuzzy
+msgid ""
+"A function or operation that is safe for concurrent use on the **same** "
+"object. The implementation uses internal synchronization (such as "
+":term:`per-object locks <per-object lock>` or :ref:`critical sections "
+"<python-critical-section-api>`) to protect shared mutable state, so callers "
+"do not need to supply their own locking."
+msgstr ""
+"Một chức năng hoặc thao tác an toàn để sử dụng đồng thời trên đối tượng "
+"**same**. Việc triển khai sử dụng đồng bộ hóa nội bộ (chẳng hạn như "
+":term:`per-object locks <per-object lock>` hoặc :ref:`critical sections "
+"<python-critical-section-api>`) để bảo vệ trạng thái có thể thay đổi được "
+"chia sẻ, do đó người gọi không cần cung cấp khóa riêng của họ."
+
+#: ../../library/threadsafety.rst:81
+#, fuzzy
+msgid ""
+"Example: :c:func:`PyList_GetItemRef` can be called from multiple threads on "
+"the same :c:type:`PyListObject` - it uses internal synchronization to "
+"serialize access."
+msgstr ""
+"Ví dụ: :c:func:`PyList_GetItemRef` có thể được gọi từ nhiều luồng trên cùng "
+"một :c:type:`PyListObject` - nó sử dụng đồng bộ hóa nội bộ để tuần tự hóa "
+"quyền truy cập."
+
+#: ../../library/threadsafety.rst:88
+#, fuzzy
+msgid "Atomic"
+msgstr "nguyên tử"
+
+#: ../../library/threadsafety.rst:90
+#, fuzzy
+msgid ""
+"A function or operation that appears :term:`atomic <atomic operation>` with "
+"respect to other threads - it executes instantaneously from the perspective "
+"of other threads. This is the strongest form of thread safety."
+msgstr ""
+"Một hàm hoặc thao tác xuất hiện :term:`atomic <atomic operation>` đối với "
+"các luồng khác - nó thực thi ngay lập tức từ góc nhìn của các luồng khác. "
+"Đây là hình thức an toàn chủ đề mạnh nhất."
+
+#: ../../library/threadsafety.rst:94
+#, fuzzy
+msgid ""
+"Example: :c:func:`PyMutex_IsLocked` performs an atomic read of the mutex "
+"state and can be called from any thread at any time."
+msgstr ""
+"Ví dụ: :c:func:`PyMutex_IsLocked` thực hiện đọc nguyên tử trạng thái mutex "
+"và có thể được gọi từ bất kỳ luồng nào vào bất kỳ lúc nào."
+
+#: ../../library/threadsafety.rst:101
+#, fuzzy
+msgid "Thread safety for list objects"
+msgstr "An toàn chủ đề cho các đối tượng danh sách"
+
+#: ../../library/threadsafety.rst:103
+#, fuzzy
+msgid ""
+"Reading a single element from a :class:`list` is :term:`atomic <atomic "
+"operation>`:"
+msgstr ""
+"Đọc một phần tử từ :class:`list` là :term:`atomic <atomic operation>`:"
+
+#: ../../library/threadsafety.rst:106
+#, fuzzy
+msgid "lst[i]   # list.__getitem__"
+msgstr "lst[i] # list.__getitem__"
+
+#: ../../library/threadsafety.rst:111
+#, fuzzy
+msgid ""
+"The following methods traverse the list and use :term:`atomic <atomic "
+"operation>` reads of each item to perform their function. That means that "
+"they may return results affected by concurrent modifications:"
+msgstr ""
+"Các phương pháp sau đây duyệt qua danh sách và sử dụng số lần đọc "
+":term:`atomic <atomic operation>` của từng mục để thực hiện chức năng của "
+"chúng. Điều đó có nghĩa là chúng có thể trả về kết quả bị ảnh hưởng bởi các "
+"sửa đổi đồng thời:"
+
+#: ../../library/threadsafety.rst:115
+#, fuzzy
+msgid ""
+"item in lst\n"
+"lst.index(item)\n"
+"lst.count(item)"
+msgstr ""
+"mục trong lst\n"
+"lst.index(mục)\n"
+"lst.count(item)"
+
+#: ../../library/threadsafety.rst:122
+#, fuzzy
+msgid ""
+"All of the above operations avoid acquiring :term:`per-object locks <per-"
+"object lock>`. They do not block concurrent modifications. Other operations "
+"that hold a lock will not block these from observing intermediate states."
+msgstr ""
+"Tất cả các thao tác trên đều tránh việc thu được :term:`per-object locks "
+"<per-object lock>`. Chúng không chặn các sửa đổi đồng thời. Các hoạt động "
+"khác có khóa sẽ không chặn các hoạt động này quan sát các trạng thái trung "
+"gian."
+
+#: ../../library/threadsafety.rst:127
+#, fuzzy
+msgid ""
+"All other operations from here on block using the :term:`per-object lock`."
+msgstr ""
+"Tất cả các hoạt động khác từ đây đều được chặn bằng cách sử dụng :term:`per-"
+"object lock`."
+
+#: ../../library/threadsafety.rst:129
+#, fuzzy
+msgid ""
+"Writing a single item via ``lst[i] = x`` is safe to call from multiple "
+"threads and will not corrupt the list."
+msgstr ""
+"Viết một mục duy nhất qua ``lst[i] = x`` là an toàn để gọi từ nhiều luồng và"
+" sẽ không làm hỏng danh sách."
+
+#: ../../library/threadsafety.rst:132
+#, fuzzy
+msgid ""
+"The following operations return new objects and appear :term:`atomic <atomic"
+" operation>` to other threads:"
+msgstr ""
+"Các thao tác sau trả về các đối tượng mới và xuất hiện :term:`atomic <atomic"
+" operation>` cho các luồng khác:"
+
+#: ../../library/threadsafety.rst:135
+#, fuzzy
+msgid ""
+"lst1 + lst2    # concatenates two lists into a new list\n"
+"x * lst        # repeats lst x times into a new list\n"
+"lst.copy()     # returns a shallow copy of the list"
+msgstr ""
+"lst1 + lst2 # concatenates hai danh sách thành một danh sách mới\n"
+"x * lst # repeats lst x lần vào danh sách mới\n"
+"lst.copy() # returns một bản sao nông của danh sách"
+
+#: ../../library/threadsafety.rst:142
+#, fuzzy
+msgid ""
+"The following methods that only operate on a single element with no shifting"
+" required are :term:`atomic <atomic operation>`:"
+msgstr ""
+"Các phương thức sau chỉ hoạt động trên một phần tử duy nhất mà không cần "
+"dịch chuyển là :term:`atomic <atomic operation>`:"
+
+#: ../../library/threadsafety.rst:145
+#, fuzzy
+msgid ""
+"lst.append(x)  # append to the end of the list, no shifting required\n"
+"lst.pop()      # pop element from the end of the list, no shifting required"
+msgstr ""
+"lst.append(x) # append vào cuối danh sách, không cần dịch chuyển\n"
+"Phần tử lst.pop() # pop ở cuối danh sách, không cần dịch chuyển"
+
+#: ../../library/threadsafety.rst:151
+#, fuzzy
+msgid ""
+"The :meth:`~list.clear` method is also :term:`atomic <atomic operation>`. "
+"Other threads cannot observe elements being removed."
+msgstr ""
+"Phương thức :meth:`~list.clear` cũng là :term:`atomic <atomic operation>`. "
+"Các chủ đề khác không thể quan sát các phần tử bị xóa."
+
+#: ../../library/threadsafety.rst:154
+#, fuzzy
+msgid ""
+"The :meth:`~list.sort` method is not :term:`atomic <atomic operation>`. "
+"Other threads cannot observe intermediate states during sorting, but the "
+"list appears empty for the duration of the sort."
+msgstr ""
+"Phương thức :meth:`~list.sort` không phải là :term:`atomic <atomic "
+"operation>`. Các luồng khác không thể quan sát các trạng thái trung gian "
+"trong quá trình sắp xếp, nhưng danh sách sẽ trống trong suốt thời gian sắp "
+"xếp."
+
+#: ../../library/threadsafety.rst:158
+#, fuzzy
+msgid ""
+"The following operations may allow :term:`lock-free` operations to observe "
+"intermediate states since they modify multiple elements in place:"
+msgstr ""
+"Các hoạt động sau đây có thể cho phép các hoạt động :term:`lock-free` quan "
+"sát các trạng thái trung gian vì chúng sửa đổi nhiều thành phần tại chỗ:"
+
+#: ../../library/threadsafety.rst:161
+#, fuzzy
+msgid ""
+"lst.insert(idx, item)  # shifts elements\n"
+"lst.pop(idx)           # idx not at the end of the list, shifts elements\n"
+"lst *= x               # copies elements in place"
+msgstr ""
+"lst.insert(idx, item) phần tử # shifts\n"
+"lst.pop(idx) # idx không ở cuối danh sách, dịch chuyển các phần tử\n"
+"lst *= x # copies phần tử được đặt đúng chỗ"
+
+#: ../../library/threadsafety.rst:168
+#, fuzzy
+msgid ""
+"The :meth:`~list.remove` method may allow concurrent modifications since "
+"element comparison may execute arbitrary Python code (via "
+":meth:`~object.__eq__`)."
+msgstr ""
+"Phương thức :meth:`~list.remove` có thể cho phép sửa đổi đồng thời vì so "
+"sánh phần tử có thể thực thi mã Python tùy ý (thông qua "
+":meth:`~object.__eq__`)."
+
+#: ../../library/threadsafety.rst:172
+#, fuzzy
+msgid ""
+":meth:`~list.extend` is safe to call from multiple threads.  However, its "
+"guarantees depend on the iterable passed to it. If it is a :class:`list`, a "
+":class:`tuple`, a :class:`set`, a :class:`frozenset`, a :class:`dict` or a "
+":ref:`dictionary view object <dict-views>` (but not their subclasses), the "
+"``extend`` operation is safe from concurrent modifications to the iterable. "
+"Otherwise, an iterator is created which can be concurrently modified by "
+"another thread.  The same applies to inplace concatenation of a list with "
+"other iterables when using ``lst += iterable``."
+msgstr ""
+":meth:`~list.extend` có thể gọi từ nhiều luồng một cách an toàn.  Tuy nhiên,"
+" sự đảm bảo của nó phụ thuộc vào khả năng lặp được truyền cho nó. Nếu đó là "
+":class:`list`, :class:`tuple`, :class:`set`, :class:`frozenset`, "
+":class:`dict` hoặc :ref:`dictionary view object <dict-views>` (nhưng không "
+"phải là lớp con của chúng), hoạt động ``extend`` sẽ an toàn trước các sửa "
+"đổi đồng thời đối với iterable. Mặt khác, một trình vòng lặp được tạo ra có "
+"thể được sửa đổi đồng thời bởi một luồng khác.  Điều tương tự cũng áp dụng "
+"cho việc ghép nối tại chỗ một danh sách với các lần lặp khác khi sử dụng "
+"``lst += iterable``."
+
+#: ../../library/threadsafety.rst:181
+#, fuzzy
+msgid ""
+"Similarly, assigning to a list slice with ``lst[i:j] = iterable`` is safe to"
+" call from multiple threads, but ``iterable`` is only locked when it is also"
+" a :class:`list` (but not its subclasses)."
+msgstr ""
+"Tương tự, việc gán cho một lát danh sách với ``lst[i:j] = iterable`` là an "
+"toàn khi gọi từ nhiều luồng, nhưng ``iterable`` chỉ bị khóa khi nó cũng là "
+":class:`list` (chứ không phải các lớp con của nó)."
+
+#: ../../library/threadsafety.rst:185
+#, fuzzy
+msgid ""
+"Operations that involve multiple accesses, as well as iteration, are never "
+"atomic. For example:"
+msgstr ""
+"Các hoạt động liên quan đến nhiều quyền truy cập cũng như sự lặp lại không "
+"bao giờ mang tính nguyên tử. Ví dụ:"
+
+#: ../../library/threadsafety.rst:188
+#, fuzzy
+msgid ""
+"# NOT atomic: read-modify-write\n"
+"lst[i] = lst[i] + 1\n"
+"\n"
+"# NOT atomic: check-then-act\n"
+"if lst:\n"
+"    item = lst.pop()\n"
+"\n"
+"# NOT thread-safe: iteration while modifying\n"
+"for item in lst:\n"
+"    process(item)  # another thread may modify lst"
+msgstr ""
+"# NOT nguyên tử: đọc-sửa-ghi\n"
+"lst[i] = lst[i] + 1\n"
+"\n"
+"# NOT nguyên tử: kiểm tra rồi hành động\n"
+"nếu lst:\n"
+"    mục = lst.pop()\n"
+"\n"
+"# NOT thread-safe: lặp lại trong khi sửa đổi\n"
+"cho mục trong lst:\n"
+"    tiến trình(item) chủ đề # another có thể sửa đổi lst"
+
+#: ../../library/threadsafety.rst:202
+#, fuzzy
+msgid ""
+"Consider external synchronization when sharing :class:`list` instances "
+"across threads."
+msgstr ""
+"Xem xét đồng bộ hóa bên ngoài khi chia sẻ phiên bản :class:`list` trên các "
+"luồng."
+
+#: ../../library/threadsafety.rst:209
+#, fuzzy
+msgid "Thread safety for dict objects"
+msgstr "An toàn chủ đề cho các đối tượng dict"
+
+#: ../../library/threadsafety.rst:211
+#, fuzzy
+msgid ""
+"Creating a dictionary with the :class:`dict` constructor is atomic when the "
+"argument to it is a :class:`dict` or a :class:`tuple`. When using the "
+":meth:`dict.fromkeys` method, dictionary creation is atomic when the "
+"argument is a :class:`dict`, :class:`tuple`, :class:`set` or "
+":class:`frozenset`."
+msgstr ""
+"Việc tạo một từ điển bằng hàm tạo :class:`dict` là đơn giản khi đối số của "
+"nó là :class:`dict` hoặc :class:`tuple`. Khi sử dụng phương pháp "
+":meth:`dict.fromkeys`, việc tạo từ điển là nguyên tử khi đối số là "
+":class:`dict`, :class:`tuple`, :class:`set` hoặc :class:`frozenset`."
+
+#: ../../library/threadsafety.rst:217
+#, fuzzy
+msgid ""
+"The following operations and functions are :term:`lock-free` and "
+":term:`atomic <atomic operation>`."
+msgstr ""
+"Các hoạt động và chức năng sau đây là :term:`lock-free` và :term:`atomic "
+"<atomic operation>`."
+
+#: ../../library/threadsafety.rst:220
+#, fuzzy
+msgid ""
+"d[key]       # dict.__getitem__\n"
+"d.get(key)   # dict.get\n"
+"key in d     # dict.__contains__\n"
+"len(d)       # dict.__len__"
+msgstr ""
+"d[key] # dict.__getitem__\n"
+"d.get(key) # dict.get\n"
+"nhập vào d # dict.__contains__\n"
+"len(d) # dict.__len__"
+
+#: ../../library/threadsafety.rst:228
+#, fuzzy
+msgid "All other operations from here on hold the :term:`per-object lock`."
+msgstr "Tất cả các hoạt động khác từ đây sẽ được giữ :term:`per-object lock`."
+
+#: ../../library/threadsafety.rst:230
+#, fuzzy
+msgid ""
+"Writing or removing a single item is safe to call from multiple threads and "
+"will not corrupt the dictionary:"
+msgstr ""
+"Việc viết hoặc xóa một mục sẽ an toàn khi gọi từ nhiều luồng và sẽ không làm"
+" hỏng từ điển:"
+
+#: ../../library/threadsafety.rst:233
+#, fuzzy
+msgid ""
+"d[key] = value        # write\n"
+"del d[key]            # delete\n"
+"d.pop(key)            # remove and return\n"
+"d.popitem()           # remove and return last item\n"
+"d.setdefault(key, v)  # insert if missing"
+msgstr ""
+"d[key] = giá trị # write\n"
+"del d[key] # delete\n"
+"d.pop(key) # remove và quay lại\n"
+"d.popitem() # remove và trả về mục cuối cùng\n"
+"d.setdefault(key, v) # insert nếu thiếu"
+
+#: ../../library/threadsafety.rst:242
+#, fuzzy
+msgid ""
+"These operations may compare keys using :meth:`~object.__eq__`, which can "
+"execute arbitrary Python code. During such comparisons, the dictionary may "
+"be modified by another thread. For built-in types like :class:`str`, "
+":class:`int`, and :class:`float`, that implement :meth:`~object.__eq__` in "
+"C, the underlying lock is not released during comparisons and this is not a "
+"concern."
+msgstr ""
+"Các thao tác này có thể so sánh các khóa bằng :meth:`~object.__eq__`, có thể"
+" thực thi mã Python tùy ý. Trong quá trình so sánh như vậy, từ điển có thể "
+"được sửa đổi bởi một luồng khác. Đối với các loại tích hợp như :class:`str`,"
+" :class:`int` và :class:`float`, triển khai :meth:`~object.__eq__` trong C, "
+"khóa cơ bản không được giải phóng trong quá trình so sánh và đây không phải "
+"là vấn đề đáng lo ngại."
+
+#: ../../library/threadsafety.rst:249
+#, fuzzy
+msgid ""
+"The following operations return new objects and hold the :term:`per-object "
+"lock` for the duration of the operation:"
+msgstr ""
+"Các thao tác sau trả về các đối tượng mới và giữ :term:`per-object lock` "
+"trong suốt thời gian thực hiện thao tác:"
+
+#: ../../library/threadsafety.rst:252
+#, fuzzy
+msgid ""
+"d.copy()      # returns a shallow copy of the dictionary\n"
+"d | other     # merges two dicts into a new dict\n"
+"d.keys()      # returns a new dict_keys view object\n"
+"d.values()    # returns a new dict_values view object\n"
+"d.items()     # returns a new dict_items view object"
+msgstr ""
+"d.copy() # returns một bản sao nông của từ điển\n"
+"d | # merges khác hai lệnh thành một lệnh mới\n"
+"d.keys() # returns một đối tượng xem dict_keys mới\n"
+"d.values() # returns một đối tượng xem dict_values mới\n"
+"d.items() # returns một đối tượng xem dict_items mới"
+
+#: ../../library/threadsafety.rst:261
+#, fuzzy
+msgid ""
+"The :meth:`~dict.clear` method holds the lock for its duration. Other "
+"threads cannot observe elements being removed."
+msgstr ""
+"Phương thức :meth:`~dict.clear` giữ khóa trong suốt thời gian của nó. Các "
+"chủ đề khác không thể quan sát các phần tử bị xóa."
+
+#: ../../library/threadsafety.rst:264
+#, fuzzy
+msgid ""
+"The following operations lock both dictionaries. For :meth:`~dict.update` "
+"and ``|=``, this applies only when the other operand is a :class:`dict` that"
+" uses the standard dict iterator (but not subclasses that override "
+"iteration). For equality comparison, this applies to :class:`dict` and its "
+"subclasses:"
+msgstr ""
+"Các thao tác sau sẽ khóa cả hai từ điển. Đối với :meth:`~dict.update` và "
+"``|=``, điều này chỉ áp dụng khi toán hạng khác là :class:`dict` sử dụng "
+"trình lặp chính tả tiêu chuẩn (nhưng không áp dụng cho các lớp con ghi đè "
+"phép lặp). Để so sánh bình đẳng, điều này áp dụng cho :class:`dict` và các "
+"lớp con của nó:"
+
+#: ../../library/threadsafety.rst:270
+#, fuzzy
+msgid ""
+"d.update(other_dict)  # both locked when other_dict is a dict\n"
+"d |= other_dict       # both locked when other_dict is a dict\n"
+"d == other_dict       # both locked for dict and subclasses"
+msgstr ""
+"d.update(other_dict) # both bị khóa khi other_dict là một lệnh\n"
+"d |= other_dict # both bị khóa khi other_dict là một dict\n"
+"d == other_dict # both bị khóa đối với dict và các lớp con"
+
+#: ../../library/threadsafety.rst:277
+#, fuzzy
+msgid ""
+"All comparison operations also compare values using :meth:`~object.__eq__`, "
+"so for non-built-in types the lock may be released during comparison."
+msgstr ""
+"Tất cả các hoạt động so sánh cũng so sánh các giá trị bằng cách sử dụng "
+":meth:`~object.__eq__`, do đó, đối với các loại không tích hợp sẵn, khóa có "
+"thể được giải phóng trong quá trình so sánh."
+
+#: ../../library/threadsafety.rst:280
+#, fuzzy
+msgid ""
+":meth:`~dict.fromkeys` locks both the new dictionary and the iterable when "
+"the iterable is exactly a :class:`dict`, :class:`set`, or :class:`frozenset`"
+" (not subclasses):"
+msgstr ""
+":meth:`~dict.fromkeys` khóa cả từ điển mới và iterable khi iterable chính "
+"xác là :class:`dict`, :class:`set` hoặc :class:`frozenset` (không phải lớp "
+"con):"
+
+#: ../../library/threadsafety.rst:284
+#, fuzzy
+msgid ""
+"dict.fromkeys(a_dict)      # locks both\n"
+"dict.fromkeys(a_set)       # locks both\n"
+"dict.fromkeys(a_frozenset) # locks both"
+msgstr ""
+"dict.fromkeys(a_dict) # locks cả hai\n"
+"dict.fromkeys(a_set) # locks cả hai\n"
+"dict.fromkeys(a_frozenset) # locks cả hai"
+
+#: ../../library/threadsafety.rst:291
+#, fuzzy
+msgid ""
+"When updating from a non-dict iterable, only the target dictionary is "
+"locked. The iterable may be concurrently modified by another thread:"
+msgstr ""
+"Khi cập nhật từ một lần lặp không chính tả, chỉ có từ điển đích bị khóa. "
+"Việc lặp lại có thể được sửa đổi đồng thời bởi một luồng khác:"
+
+#: ../../library/threadsafety.rst:294
+#, fuzzy
+msgid ""
+"d.update(iterable)        # iterable is not a dict: only d locked\n"
+"d |= iterable             # iterable is not a dict: only d locked\n"
+"dict.fromkeys(iterable)   # iterable is not a dict/set/frozenset: only result locked"
+msgstr ""
+"d.update(iterable) # iterable không phải là một lệnh: chỉ có d bị khóa\n"
+"d |= iterable # iterable không phải là một lệnh: chỉ có d bị khóa\n"
+"dict.fromkeys(iterable) # iterable không phải là dict/set/frozenset: chỉ khóa kết quả"
+
+#: ../../library/threadsafety.rst:301 ../../library/threadsafety.rst:434
+#: ../../library/threadsafety.rst:525
+#, fuzzy
+msgid ""
+"Operations that involve multiple accesses, as well as iteration, are never "
+"atomic:"
+msgstr ""
+"Các hoạt động liên quan đến nhiều quyền truy cập cũng như việc lặp lại không"
+" bao giờ mang tính nguyên tử:"
+
+#: ../../library/threadsafety.rst:304
+#, fuzzy
+msgid ""
+"# NOT atomic: read-modify-write\n"
+"d[key] = d[key] + 1\n"
+"\n"
+"# NOT atomic: check-then-act (TOCTOU)\n"
+"if key in d:\n"
+"    del d[key]\n"
+"\n"
+"# NOT thread-safe: iteration while modifying\n"
+"for key, value in d.items():\n"
+"    process(key)  # another thread may modify d"
+msgstr ""
+"# NOT nguyên tử: đọc-sửa-ghi\n"
+"d[khóa] = d[khóa] + 1\n"
+"\n"
+"# NOT nguyên tử: kiểm tra rồi hành động (TOCTOU)\n"
+"nếu nhập vào d:\n"
+"    del d[khóa]\n"
+"\n"
+"# NOT thread-safe: lặp lại trong khi sửa đổi\n"
+"đối với khóa, giá trị trong d.items():\n"
+"    tiến trình (khóa) luồng # another có thể sửa đổi d"
+
+#: ../../library/threadsafety.rst:318
+#, fuzzy
+msgid ""
+"To avoid time-of-check to time-of-use (TOCTOU) issues, use atomic operations"
+" or handle exceptions:"
+msgstr ""
+"Để tránh các vấn đề về thời gian kiểm tra đối với thời gian sử dụng "
+"(TOCTOU), hãy sử dụng các thao tác nguyên tử hoặc xử lý các ngoại lệ:"
+
+#: ../../library/threadsafety.rst:321
+#, fuzzy
+msgid ""
+"# Use pop() with default instead of check-then-delete\n"
+"d.pop(key, None)\n"
+"\n"
+"# Or handle the exception\n"
+"try:\n"
+"    del d[key]\n"
+"except KeyError:\n"
+"    pass"
+msgstr ""
+"# Use pop() với mặc định thay vì kiểm tra rồi xóa\n"
+"d.pop(khóa, Không có)\n"
+"\n"
+"# Or xử lý ngoại lệ\n"
+"thử:\n"
+"    del d[khóa]\n"
+"ngoại trừ KeyError:\n"
+"    vượt qua"
+
+#: ../../library/threadsafety.rst:333
+#, fuzzy
+msgid ""
+"To safely iterate over a dictionary that may be modified by another thread, "
+"iterate over a copy:"
+msgstr ""
+"Để lặp lại một cách an toàn một từ điển có thể được sửa đổi bởi một luồng "
+"khác, hãy lặp lại một bản sao:"
+
+#: ../../library/threadsafety.rst:336
+#, fuzzy
+msgid ""
+"# Make a copy to iterate safely\n"
+"for key, value in d.copy().items():\n"
+"    process(key)"
+msgstr ""
+"# Make một bản sao để lặp lại một cách an toàn\n"
+"đối với khóa, giá trị trong d.copy().items():\n"
+"    quá trình (khóa)"
+
+#: ../../library/threadsafety.rst:343
+#, fuzzy
+msgid ""
+"Consider external synchronization when sharing :class:`dict` instances "
+"across threads."
+msgstr ""
+"Xem xét đồng bộ hóa bên ngoài khi chia sẻ phiên bản :class:`dict` trên các "
+"luồng."
+
+#: ../../library/threadsafety.rst:350
+#, fuzzy
+msgid "Thread safety for set objects"
+msgstr "An toàn luồng cho các đối tượng được thiết lập"
+
+#: ../../library/threadsafety.rst:352 ../../library/threadsafety.rst:457
+#, fuzzy
+msgid ""
+"The :func:`len` function is lock-free and :term:`atomic <atomic operation>`."
+msgstr ""
+"Chức năng :func:`len` không khóa và :term:`atomic <atomic operation>`."
+
+#: ../../library/threadsafety.rst:354
+#, fuzzy
+msgid ""
+"The following read operation is lock-free. It does not block concurrent "
+"modifications and may observe intermediate states from operations that hold "
+"the per-object lock:"
+msgstr ""
+"Thao tác đọc sau đây không bị khóa. Nó không chặn các sửa đổi đồng thời và "
+"có thể quan sát các trạng thái trung gian từ các hoạt động giữ khóa cho mỗi "
+"đối tượng:"
+
+#: ../../library/threadsafety.rst:358
+#, fuzzy
+msgid "elem in s    # set.__contains__"
+msgstr "phần tử trong s # set.__contains__"
+
+#: ../../library/threadsafety.rst:363
+#, fuzzy
+msgid ""
+"This operation may compare elements using :meth:`~object.__eq__`, which can "
+"execute arbitrary Python code. During such comparisons, the set may be "
+"modified by another thread. For built-in types like :class:`str`, "
+":class:`int`, and :class:`float`, :meth:`!__eq__` does not release the "
+"underlying lock during comparisons and this is not a concern."
+msgstr ""
+"Thao tác này có thể so sánh các phần tử bằng :meth:`~object.__eq__`, có thể "
+"thực thi mã Python tùy ý. Trong quá trình so sánh như vậy, tập hợp có thể "
+"được sửa đổi bởi một luồng khác. Đối với các loại tích hợp như :class:`str`,"
+" :class:`int` và :class:`float`, :meth:`!__eq__` không giải phóng khóa cơ "
+"bản trong quá trình so sánh và đây không phải là vấn đề đáng lo ngại."
+
+#: ../../library/threadsafety.rst:369 ../../library/threadsafety.rst:470
+#, fuzzy
+msgid "All other operations from here on hold the per-object lock."
+msgstr "Tất cả các hoạt động khác từ đây trở đi đều giữ khóa theo đối tượng."
+
+#: ../../library/threadsafety.rst:371
+#, fuzzy
+msgid ""
+"Adding or removing a single element is safe to call from multiple threads "
+"and will not corrupt the set:"
+msgstr ""
+"Việc thêm hoặc xóa một phần tử là an toàn để gọi từ nhiều luồng và sẽ không "
+"làm hỏng tập hợp:"
+
+#: ../../library/threadsafety.rst:374
+#, fuzzy
+msgid ""
+"s.add(elem)      # add element\n"
+"s.remove(elem)   # remove element, raise if missing\n"
+"s.discard(elem)  # remove element if present\n"
+"s.pop()          # remove and return arbitrary element"
+msgstr ""
+"phần tử s.add(elem) # add\n"
+"Phần tử s.remove(elem) # remove, tăng nếu thiếu\n"
+"phần tử s.discard(elem) # remove nếu có\n"
+"s.pop() # remove và trả về phần tử tùy ý"
+
+#: ../../library/threadsafety.rst:382
+#, fuzzy
+msgid ""
+"These operations also compare elements, so the same :meth:`~object.__eq__` "
+"considerations as above apply."
+msgstr ""
+"Các thao tác này cũng so sánh các phần tử, do đó, các cân nhắc "
+":meth:`~object.__eq__` tương tự như trên sẽ được áp dụng."
+
+#: ../../library/threadsafety.rst:385
+#, fuzzy
+msgid ""
+"The :meth:`~set.copy` method returns a new object and holds the per-object "
+"lock for the duration so that it is always atomic."
+msgstr ""
+"Phương thức :meth:`~set.copy` trả về một đối tượng mới và giữ khóa cho mỗi "
+"đối tượng trong suốt thời gian để nó luôn ở dạng nguyên tử."
+
+#: ../../library/threadsafety.rst:388
+#, fuzzy
+msgid ""
+"The :meth:`~set.clear` method holds the lock for its duration. Other threads"
+" cannot observe elements being removed."
+msgstr ""
+"Phương thức :meth:`~set.clear` giữ khóa trong suốt thời gian của nó. Các chủ"
+" đề khác không thể quan sát các phần tử bị xóa."
+
+#: ../../library/threadsafety.rst:391
+#, fuzzy
+msgid ""
+"The following operations only accept :class:`set` or :class:`frozenset` as "
+"operands and always lock both objects:"
+msgstr ""
+"Các thao tác sau chỉ chấp nhận :class:`set` hoặc :class:`frozenset` làm toán"
+" hạng và luôn khóa cả hai đối tượng:"
+
+#: ../../library/threadsafety.rst:394
+#, fuzzy
+msgid ""
+"s |= other                   # other must be set/frozenset\n"
+"s &= other                   # other must be set/frozenset\n"
+"s -= other                   # other must be set/frozenset\n"
+"s ^= other                   # other must be set/frozenset\n"
+"s & other                    # other must be set/frozenset\n"
+"s | other                    # other must be set/frozenset\n"
+"s - other                    # other must be set/frozenset\n"
+"s ^ other                    # other must be set/frozenset"
+msgstr ""
+"s |= # other khác phải được đặt/đóng băng\n"
+"s &= # other khác phải được đặt/đóng băng\n"
+"s -= # other khác phải được đặt/đóng băng\n"
+"s ^= # other khác phải được đặt/đóng băng\n"
+"s & # other khác phải được đặt/đóng băng\n"
+"s | # other khác phải được đặt/đóng băng\n"
+"s - # other khác phải được đặt/đóng băng\n"
+"s ^ # other khác phải được đặt/đóng băng"
+
+#: ../../library/threadsafety.rst:406
+#, fuzzy
+msgid ""
+":meth:`set.update`, :meth:`set.union`, :meth:`set.intersection` and "
+":meth:`set.difference` can take multiple iterables as arguments. They all "
+"iterate through all the passed iterables and do the following:"
+msgstr ""
+":meth:`set.update`, :meth:`set.union`, :meth:`set.intersection` và "
+":meth:`set.difference` có thể lấy nhiều lần lặp làm đối số. Tất cả đều lặp "
+"qua tất cả các lần lặp đã qua và thực hiện như sau:"
+
+#: ../../library/threadsafety.rst:410
+#, fuzzy
+msgid ":meth:`set.update` and :meth:`set.union` lock both objects only when"
+msgstr ":meth:`set.update` và :meth:`set.union` chỉ khóa cả hai đối tượng khi"
+
+#: ../../library/threadsafety.rst:411
+#, fuzzy
+msgid ""
+"the other operand is a :class:`set`, :class:`frozenset`, or :class:`dict`."
+msgstr ""
+"toán hạng còn lại là :class:`set`, :class:`frozenset` hoặc :class:`dict`."
+
+#: ../../library/threadsafety.rst:412
+#, fuzzy
+msgid ":meth:`set.intersection` and :meth:`set.difference` always try to lock"
+msgstr ":meth:`set.intersection` và :meth:`set.difference` luôn cố gắng khóa"
+
+#: ../../library/threadsafety.rst:413
+#, fuzzy
+msgid "all objects."
+msgstr "mọi đồ vật."
+
+#: ../../library/threadsafety.rst:415
+#, fuzzy
+msgid ":meth:`set.symmetric_difference` tries to lock both objects."
+msgstr ":meth:`set.symmetric_difference` cố gắng khóa cả hai đối tượng."
+
+#: ../../library/threadsafety.rst:417
+#, fuzzy
+msgid ""
+"The update variants of the above methods also have some differences between "
+"them:"
+msgstr ""
+"Các biến thể cập nhật của các phương pháp trên cũng có một số khác biệt giữa"
+" chúng:"
+
+#: ../../library/threadsafety.rst:420
+#, fuzzy
+msgid ":meth:`set.difference_update` and :meth:`set.intersection_update` try"
+msgstr ""
+":meth:`set.difference_update` và :meth:`set.intersection_update` thử xem"
+
+#: ../../library/threadsafety.rst:421
+#, fuzzy
+msgid "to lock all objects one-by-one."
+msgstr "để khóa tất cả các đối tượng một."
+
+#: ../../library/threadsafety.rst:422
+#, fuzzy
+msgid ""
+":meth:`set.symmetric_difference_update` only locks the arguments if it is"
+msgstr ":meth:`set.symmetric_difference_update` chỉ khóa các đối số nếu có"
+
+#: ../../library/threadsafety.rst:423
+#, fuzzy
+msgid "of type :class:`set`, :class:`frozenset`, or :class:`dict`."
+msgstr "thuộc loại :class:`set`, :class:`frozenset` hoặc :class:`dict`."
+
+#: ../../library/threadsafety.rst:425
+#, fuzzy
+msgid "The following methods always try to lock both objects:"
+msgstr "Các phương pháp sau đây luôn cố gắng khóa cả hai đối tượng:"
+
+#: ../../library/threadsafety.rst:427
+#, fuzzy
+msgid ""
+"s.isdisjoint(other)          # both locked\n"
+"s.issubset(other)            # both locked\n"
+"s.issuperset(other)          # both locked"
+msgstr ""
+"s.isdisjoint(other) # both đã bị khóa\n"
+"s.issubset(other) # both đã bị khóa\n"
+"s.issuperset(other) # both đã bị khóa"
+
+#: ../../library/threadsafety.rst:437
+#, fuzzy
+msgid ""
+"# NOT atomic: check-then-act\n"
+"if elem in s:\n"
+"      s.remove(elem)\n"
+"\n"
+"# NOT thread-safe: iteration while modifying\n"
+"for elem in s:\n"
+"      process(elem)  # another thread may modify s"
+msgstr ""
+"# NOT nguyên tử: kiểm tra rồi hành động\n"
+"nếu phần tử trong s:\n"
+"      s.remove(elem)\n"
+"\n"
+"# NOT thread-safe: lặp lại trong khi sửa đổi\n"
+"cho phần tử trong s:\n"
+"      thread(elem) # another thread có thể sửa đổi s"
+
+#: ../../library/threadsafety.rst:448
+#, fuzzy
+msgid ""
+"Consider external synchronization when sharing :class:`set` instances across"
+" threads.  See :ref:`freethreading-python-howto` for more information."
+msgstr ""
+"Xem xét đồng bộ hóa bên ngoài khi chia sẻ phiên bản :class:`set` trên các "
+"luồng.  Xem :ref:`freethreading-python-howto` để biết thêm thông tin."
+
+#: ../../library/threadsafety.rst:455
+#, fuzzy
+msgid "Thread safety for bytearray objects"
+msgstr "An toàn luồng cho các đối tượng bytearray"
+
+#: ../../library/threadsafety.rst:459
+#, fuzzy
+msgid ""
+"Concatenation and comparisons use the buffer protocol, which prevents "
+"resizing but does not hold the per-object lock. These operations may observe"
+" intermediate states from concurrent modifications:"
+msgstr ""
+"Ghép nối và so sánh sử dụng giao thức đệm, ngăn chặn việc thay đổi kích "
+"thước nhưng không giữ khóa cho mỗi đối tượng. Các hoạt động này có thể quan "
+"sát các trạng thái trung gian từ các sửa đổi đồng thời:"
+
+#: ../../library/threadsafety.rst:463
+#, fuzzy
+msgid ""
+"ba + other    # may observe concurrent writes\n"
+"ba == other   # may observe concurrent writes\n"
+"ba < other    # may observe concurrent writes"
+msgstr ""
+"ba + # may khác quan sát ghi đồng thời\n"
+"ba == # may khác quan sát ghi đồng thời\n"
+"ba < # may khác quan sát ghi đồng thời"
+
+#: ../../library/threadsafety.rst:472
+#, fuzzy
+msgid ""
+"Reading a single element or slice is safe to call from multiple threads:"
+msgstr "Đọc một phần tử hoặc lát cắt là an toàn để gọi từ nhiều luồng:"
+
+#: ../../library/threadsafety.rst:474
+#, fuzzy
+msgid ""
+"ba[i]        # bytearray.__getitem__\n"
+"ba[i:j]      # slice"
+msgstr ""
+"ba[i] # bytearray.__getitem__\n"
+"ba[i:j] # slice"
+
+#: ../../library/threadsafety.rst:480
+#, fuzzy
+msgid ""
+"The following operations are safe to call from multiple threads and will not"
+" corrupt the bytearray:"
+msgstr ""
+"Các thao tác sau đây có thể gọi an toàn từ nhiều luồng và sẽ không làm hỏng "
+"bytearray:"
+
+#: ../../library/threadsafety.rst:483
+#, fuzzy
+msgid ""
+"ba[i] = x         # write single byte\n"
+"ba[i:j] = values  # write slice\n"
+"ba.append(x)      # append single byte\n"
+"ba.extend(other)  # extend with iterable\n"
+"ba.insert(i, x)   # insert single byte\n"
+"ba.pop()          # remove and return last byte\n"
+"ba.pop(i)         # remove and return byte at index\n"
+"ba.remove(x)      # remove first occurrence\n"
+"ba.reverse()      # reverse in place\n"
+"ba.clear()        # remove all bytes"
+msgstr ""
+"ba[i] = x # write byte đơn\n"
+"ba[i:j] = giá trị lát cắt # write\n"
+"ba.append(x) # append byte đơn\n"
+"ba.extend(other) # extend với khả năng lặp lại\n"
+"ba.insert(i, x) # insert byte đơn\n"
+"ba.pop() # remove và trả về byte cuối cùng\n"
+"ba.pop(i) # remove và trả về byte tại chỉ mục\n"
+"ba.remove(x) # remove xuất hiện lần đầu\n"
+"ba.reverse() # reverse tại chỗ\n"
+"ba.clear() # remove tất cả byte"
+
+#: ../../library/threadsafety.rst:497
+#, fuzzy
+msgid ""
+"Slice assignment locks both objects when *values* is a :class:`bytearray`:"
+msgstr ""
+"Phép gán lát khóa cả hai đối tượng khi *values* là :class:`bytearray`:"
+
+#: ../../library/threadsafety.rst:499
+#, fuzzy
+msgid "ba[i:j] = other_bytearray  # both locked"
+msgstr "ba[i:j] = other_bytearray # both đã bị khóa"
+
+#: ../../library/threadsafety.rst:504
+#, fuzzy
+msgid ""
+"The following operations return new objects and hold the per-object lock for"
+" the duration:"
+msgstr ""
+"Các thao tác sau trả về các đối tượng mới và giữ khóa theo từng đối tượng "
+"trong suốt thời gian:"
+
+#: ../../library/threadsafety.rst:507
+#, fuzzy
+msgid ""
+"ba.copy()     # returns a shallow copy\n"
+"ba * n        # repeat into new bytearray"
+msgstr ""
+"ba.copy() # returns một bản sao nông\n"
+"ba * n # repeat vào bytearray mới"
+
+#: ../../library/threadsafety.rst:513
+#, fuzzy
+msgid "The membership test holds the lock for its duration:"
+msgstr "Bài kiểm tra tư cách thành viên giữ khóa trong suốt thời gian của nó:"
+
+#: ../../library/threadsafety.rst:515
+#, fuzzy
+msgid "x in ba       # bytearray.__contains__"
+msgstr "x trong ba # bytearray.__contains__"
+
+#: ../../library/threadsafety.rst:520
+#, fuzzy
+msgid ""
+"All other bytearray methods (such as :meth:`~bytearray.find`, "
+":meth:`~bytearray.replace`, :meth:`~bytearray.split`, "
+":meth:`~bytearray.decode`, etc.) hold the per-object lock for their "
+"duration."
+msgstr ""
+"Tất cả các phương thức bytearray khác (chẳng hạn như "
+":meth:`~bytearray.find`, :meth:`~bytearray.replace`, "
+":meth:`~bytearray.split`, :meth:`~bytearray.decode`, v.v.) đều giữ khóa mỗi "
+"đối tượng trong suốt thời gian của chúng."
+
+#: ../../library/threadsafety.rst:528
+#, fuzzy
+msgid ""
+"# NOT atomic: check-then-act\n"
+"if x in ba:\n"
+"    ba.remove(x)\n"
+"\n"
+"# NOT thread-safe: iteration while modifying\n"
+"for byte in ba:\n"
+"    process(byte)  # another thread may modify ba"
+msgstr ""
+"# NOT nguyên tử: kiểm tra rồi hành động\n"
+"nếu x trong ba:\n"
+"    ba.remove(x)\n"
+"\n"
+"# NOT thread-safe: lặp lại trong khi sửa đổi\n"
+"cho byte trong ba:\n"
+"    luồng xử lý (byte) # another có thể sửa đổi ba"
+
+#: ../../library/threadsafety.rst:539
+#, fuzzy
+msgid ""
+"To safely iterate over a bytearray that may be modified by another thread, "
+"iterate over a copy:"
+msgstr ""
+"Để lặp lại một cách an toàn trên một bytearray có thể được sửa đổi bởi một "
+"luồng khác, hãy lặp qua một bản sao:"
+
+#: ../../library/threadsafety.rst:542
+#, fuzzy
+msgid ""
+"# Make a copy to iterate safely\n"
+"for byte in ba.copy():\n"
+"    process(byte)"
+msgstr ""
+"# Make một bản sao để lặp lại một cách an toàn\n"
+"cho byte trong ba.copy():\n"
+"    quá trình (byte)"
+
+#: ../../library/threadsafety.rst:549
+#, fuzzy
+msgid ""
+"Consider external synchronization when sharing :class:`bytearray` instances "
+"across threads.  See :ref:`freethreading-python-howto` for more information."
+msgstr ""
+"Xem xét đồng bộ hóa bên ngoài khi chia sẻ phiên bản :class:`bytearray` trên "
+"các luồng.  Xem :ref:`freethreading-python-howto` để biết thêm thông tin."
+
+#: ../../library/threadsafety.rst:556
+#, fuzzy
+msgid "Thread safety for memoryview objects"
+msgstr "An toàn luồng cho các đối tượng MemoryView"
+
+#: ../../library/threadsafety.rst:558
+#, fuzzy
+msgid ""
+":class:`memoryview` objects provide access to the internal data of an "
+"underlying object without copying. Thread safety depends on both the "
+"memoryview itself and the underlying buffer exporter."
+msgstr ""
+"Đối tượng :class:`memoryview` cung cấp quyền truy cập vào dữ liệu nội bộ của"
+" đối tượng cơ bản mà không cần sao chép. Sự an toàn của luồng phụ thuộc vào "
+"cả bản thân bộ nhớ và trình xuất bộ đệm cơ bản."
+
+#: ../../library/threadsafety.rst:562
+#, fuzzy
+msgid ""
+"The memoryview implementation uses atomic operations to track its own "
+"exports in the :term:`free-threaded build`. Creating and releasing a "
+"memoryview are thread-safe. Attribute access (e.g., "
+":attr:`~memoryview.shape`, :attr:`~memoryview.format`) reads fields that are"
+" immutable for the lifetime of the memoryview, so concurrent reads are safe "
+"as long as the memoryview has not been released."
+msgstr ""
+"Việc triển khai chế độ xem bộ nhớ sử dụng các hoạt động nguyên tử để theo "
+"dõi quá trình xuất của chính nó trong :term:`free-threaded build`. Việc tạo "
+"và giải phóng chế độ xem bộ nhớ là an toàn theo luồng. Quyền truy cập thuộc "
+"tính (ví dụ: :attr:`~memoryview.shape`, :attr:`~memoryview.format`) đọc các "
+"trường không thay đổi trong suốt thời gian tồn tại của chế độ xem bộ nhớ, do"
+" đó, việc đọc đồng thời sẽ an toàn miễn là chế độ xem bộ nhớ chưa được giải "
+"phóng."
+
+#: ../../library/threadsafety.rst:569
+#, fuzzy
+msgid ""
+"However, the actual data accessed through the memoryview is owned by the "
+"underlying object. Concurrent access to this data is only safe if the "
+"underlying object supports it:"
+msgstr ""
+"Tuy nhiên, dữ liệu thực tế được truy cập thông qua chế độ xem bộ nhớ thuộc "
+"sở hữu của đối tượng cơ bản. Quyền truy cập đồng thời vào dữ liệu này chỉ an"
+" toàn nếu đối tượng cơ bản hỗ trợ nó:"
+
+#: ../../library/threadsafety.rst:573
+#, fuzzy
+msgid ""
+"For immutable objects like :class:`bytes`, concurrent reads through multiple"
+" memoryviews are safe."
+msgstr ""
+"Đối với các đối tượng bất biến như :class:`bytes`, việc đọc đồng thời qua "
+"nhiều chế độ xem bộ nhớ là an toàn."
+
+#: ../../library/threadsafety.rst:576
+#, fuzzy
+msgid ""
+"For mutable objects like :class:`bytearray`, reading and writing the same "
+"memory region from multiple threads without external synchronization is not "
+"safe and may result in data corruption. Note that even read-only memoryviews"
+" of mutable objects do not prevent data races if the underlying object is "
+"modified from another thread."
+msgstr ""
+"Đối với các đối tượng có thể thay đổi như :class:`bytearray`, việc đọc và "
+"ghi cùng một vùng bộ nhớ từ nhiều luồng mà không đồng bộ hóa bên ngoài là "
+"không an toàn và có thể dẫn đến hỏng dữ liệu. Lưu ý rằng ngay cả chế độ xem "
+"bộ nhớ chỉ đọc của các đối tượng có thể thay đổi cũng không ngăn cản được "
+"việc chạy đua dữ liệu nếu đối tượng cơ bản được sửa đổi từ một luồng khác."
+
+#: ../../library/threadsafety.rst:583
+#, fuzzy
+msgid ""
+"# NOT safe: concurrent writes to the same buffer\n"
+"data = bytearray(1000)\n"
+"view = memoryview(data)\n"
+"# Thread 1: view[0:500] = b'x' * 500\n"
+"# Thread 2: view[0:500] = b'y' * 500"
+msgstr ""
+"# NOT an toàn: ghi đồng thời vào cùng một bộ đệm\n"
+"dữ liệu = bytearray(1000)\n"
+"xem = bộ nhớ xem (dữ liệu)\n"
+"# Thread 1: lượt xem[0:500] = b'x' * 500\n"
+"# Thread 2: view[0:500] = b'y' * 500"
+
+#: ../../library/threadsafety.rst:592
+#, fuzzy
+msgid ""
+"# Safe: use a lock for concurrent access\n"
+"import threading\n"
+"lock = threading.Lock()\n"
+"data = bytearray(1000)\n"
+"view = memoryview(data)\n"
+"\n"
+"with lock:\n"
+"    view[0:500] = b'x' * 500"
+msgstr ""
+"# Safe: sử dụng khóa để truy cập đồng thời\n"
+"nhập luồng\n"
+"lock = threading.Lock()\n"
+"dữ liệu = bytearray(1000)\n"
+"xem = bộ nhớ xem (dữ liệu)\n"
+"\n"
+"có khóa:\n"
+"    lượt xem[0:500] = b'x' * 500"
+
+#: ../../library/threadsafety.rst:604
+#, fuzzy
+msgid ""
+"Resizing or reallocating the underlying object (such as calling "
+":meth:`bytearray.resize`) while a memoryview is exported raises "
+":exc:`BufferError`. This is enforced regardless of threading."
+msgstr ""
+"Việc thay đổi kích thước hoặc phân bổ lại đối tượng cơ bản (chẳng hạn như "
+"gọi :meth:`bytearray.resize`) trong khi xuất chế độ xem bộ nhớ sẽ làm tăng "
+":exc:`BufferError`. Điều này được thực thi bất kể luồng."

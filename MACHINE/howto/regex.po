@@ -1,0 +1,3530 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/regex.rst:5
+#, fuzzy
+msgid "Regular expression HOWTO"
+msgstr "Biểu thức chính quy HOWTO"
+
+#: ../../howto/regex.rst
+#, fuzzy
+msgid "Author"
+msgstr "tác giả"
+
+#: ../../howto/regex.rst:7
+#, fuzzy
+msgid "A.M. Kuchling <amk@amk.ca>"
+msgstr "A.M. Kuchling <amk@amk.ca>"
+
+#: ../../howto/regex.rst:-1
+#, fuzzy
+msgid "Abstract"
+msgstr "Tóm tắt"
+
+#: ../../howto/regex.rst:18
+#, fuzzy
+msgid ""
+"This document is an introductory tutorial to using regular expressions in "
+"Python with the :mod:`re` module.  It provides a gentler introduction than "
+"the corresponding section in the Library Reference."
+msgstr ""
+"Tài liệu này là hướng dẫn giới thiệu cách sử dụng biểu thức chính quy trong "
+"Python với mô-đun :mod:`re`.  Nó cung cấp phần giới thiệu nhẹ nhàng hơn phần"
+" tương ứng trong Tài liệu tham khảo Thư viện."
+
+#: ../../howto/regex.rst:24
+#, fuzzy
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../howto/regex.rst:26
+#, fuzzy
+msgid ""
+"Regular expressions (called REs, or regexes, or regex patterns) are "
+"essentially a tiny, highly specialized programming language embedded inside "
+"Python and made available through the :mod:`re` module. Using this little "
+"language, you specify the rules for the set of possible strings that you "
+"want to match; this set might contain English sentences, or e-mail "
+"addresses, or TeX commands, or anything you like.  You can then ask "
+"questions such as \"Does this string match the pattern?\", or \"Is there a "
+"match for the pattern anywhere in this string?\".  You can also use REs to "
+"modify a string or to split it apart in various ways."
+msgstr ""
+"Biểu thức chính quy (được gọi là RE, hoặc biểu thức chính quy hoặc mẫu biểu "
+"thức chính quy) về cơ bản là một ngôn ngữ lập trình nhỏ, có tính chuyên môn "
+"cao được nhúng bên trong Python và được cung cấp thông qua mô-đun :mod:`re`."
+" Bằng cách sử dụng ngôn ngữ nhỏ này, bạn chỉ định các quy tắc cho tập hợp "
+"các chuỗi có thể có mà bạn muốn khớp; bộ này có thể chứa các câu tiếng Anh, "
+"địa chỉ e-mail hoặc lệnh TeX hoặc bất cứ thứ gì bạn thích.  Sau đó, bạn có "
+"thể đặt các câu hỏi như \"Chuỗi này có khớp với mẫu không?\" hoặc \"Có khớp "
+"mẫu nào ở bất kỳ đâu trong chuỗi này không?\".  Bạn cũng có thể sử dụng RE "
+"để sửa đổi một chuỗi hoặc tách nó ra theo nhiều cách khác nhau."
+
+#: ../../howto/regex.rst:35
+#, fuzzy
+msgid ""
+"Regular expression patterns are compiled into a series of bytecodes which "
+"are then executed by a matching engine written in C.  For advanced use, it "
+"may be necessary to pay careful attention to how the engine will execute a "
+"given RE, and write the RE in a certain way in order to produce bytecode "
+"that runs faster. Optimization isn't covered in this document, because it "
+"requires that you have a good understanding of the matching engine's "
+"internals."
+msgstr ""
+"Các mẫu biểu thức chính quy được biên dịch thành một chuỗi mã byte, sau đó "
+"được thực thi bởi một công cụ phù hợp được viết bằng C. Để sử dụng nâng cao,"
+" có thể cần phải chú ý cẩn thận đến cách công cụ sẽ thực thi một RE nhất "
+"định và viết RE theo một cách nhất định để tạo ra mã byte chạy nhanh hơn. "
+"Tối ưu hóa không được đề cập trong tài liệu này vì nó yêu cầu bạn phải hiểu "
+"rõ về nội bộ của công cụ khớp."
+
+#: ../../howto/regex.rst:42
+#, fuzzy
+msgid ""
+"The regular expression language is relatively small and restricted, so not "
+"all possible string processing tasks can be done using regular expressions."
+"  There are also tasks that *can* be done with regular expressions, but the "
+"expressions turn out to be very complicated.  In these cases, you may be "
+"better off writing Python code to do the processing; while Python code will "
+"be slower than an elaborate regular expression, it will also probably be "
+"more understandable."
+msgstr ""
+"Ngôn ngữ biểu thức chính quy tương đối nhỏ và bị hạn chế, vì vậy không phải "
+"tất cả các tác vụ xử lý chuỗi có thể đều có thể được thực hiện bằng cách sử "
+"dụng biểu thức chính quy.  Ngoài ra còn có các nhiệm vụ *can* được thực hiện"
+" với các biểu thức thông thường, nhưng các biểu thức này hóa ra rất phức "
+"tạp.  Trong những trường hợp này, tốt hơn hết bạn nên viết mã Python để xử "
+"lý; mặc dù mã Python sẽ chậm hơn một biểu thức chính quy phức tạp nhưng nó "
+"cũng có thể dễ hiểu hơn."
+
+#: ../../howto/regex.rst:51
+#, fuzzy
+msgid "Simple patterns"
+msgstr "hoa văn đơn giản"
+
+#: ../../howto/regex.rst:53
+#, fuzzy
+msgid ""
+"We'll start by learning about the simplest possible regular expressions.  "
+"Since regular expressions are used to operate on strings, we'll begin with "
+"the most common task: matching characters."
+msgstr ""
+"Chúng ta sẽ bắt đầu bằng việc tìm hiểu về các biểu thức chính quy đơn giản "
+"nhất có thể.  Vì các biểu thức chính quy được sử dụng để hoạt động trên các "
+"chuỗi nên chúng ta sẽ bắt đầu với nhiệm vụ phổ biến nhất: khớp các ký tự."
+
+#: ../../howto/regex.rst:57
+#, fuzzy
+msgid ""
+"For a detailed explanation of the computer science underlying regular "
+"expressions (deterministic and non-deterministic finite automata), you can "
+"refer to almost any textbook on writing compilers."
+msgstr ""
+"Để có giải thích chi tiết về khoa học máy tính dựa trên các biểu thức chính "
+"quy (automata hữu hạn xác định và không xác định), bạn có thể tham khảo hầu "
+"hết mọi sách giáo khoa về viết trình biên dịch."
+
+#: ../../howto/regex.rst:63
+#, fuzzy
+msgid "Matching characters"
+msgstr "Ký tự phù hợp"
+
+#: ../../howto/regex.rst:65
+#, fuzzy
+msgid ""
+"Most letters and characters will simply match themselves.  For example, the "
+"regular expression ``test`` will match the string ``test`` exactly.  (You "
+"can enable a case-insensitive mode that would let this RE match ``Test`` or "
+"``TEST`` as well; more about this later.)"
+msgstr ""
+"Hầu hết các chữ cái và ký tự sẽ tự khớp với nhau.  Ví dụ: biểu thức chính "
+"quy ``test`` sẽ khớp chính xác với chuỗi ``test``.  (Bạn có thể bật chế độ "
+"không phân biệt chữ hoa chữ thường để cho phép RE này khớp với ``Test`` hoặc"
+" ``TEST``; thông tin thêm về điều này sau.)"
+
+#: ../../howto/regex.rst:70
+#, fuzzy
+msgid ""
+"There are exceptions to this rule; some characters are special "
+":dfn:`metacharacters`, and don't match themselves.  Instead, they signal "
+"that some out-of-the-ordinary thing should be matched, or they affect other "
+"portions of the RE by repeating them or changing their meaning.  Much of "
+"this document is devoted to discussing various metacharacters and what they "
+"do."
+msgstr ""
+"Có những ngoại lệ cho quy tắc này; một số ký tự là :dfn:`metacharacters` đặc"
+" biệt và không khớp với chính chúng.  Thay vào đó, chúng báo hiệu rằng một "
+"số điều không bình thường cần phải khớp với nhau hoặc chúng ảnh hưởng đến "
+"các phần khác của RE bằng cách lặp lại chúng hoặc thay đổi ý nghĩa của "
+"chúng.  Phần lớn tài liệu này được dành để thảo luận về các siêu ký tự khác "
+"nhau và chức năng của chúng."
+
+#: ../../howto/regex.rst:76
+#, fuzzy
+msgid ""
+"Here's a complete list of the metacharacters; their meanings will be "
+"discussed in the rest of this HOWTO."
+msgstr ""
+"Đây là danh sách đầy đủ các siêu ký tự; ý nghĩa của chúng sẽ được thảo luận "
+"trong phần còn lại của HOWTO này."
+
+#: ../../howto/regex.rst:79
+#, python-brace-format, fuzzy
+msgid ". ^ $ * + ? { } [ ] \\ | ( )"
+msgstr ". ^ $ * + ? { } [ ] \\ | ( )"
+
+#: ../../howto/regex.rst:83
+#, fuzzy
+msgid ""
+"The first metacharacters we'll look at are ``[`` and ``]``. They're used for"
+" specifying a character class, which is a set of characters that you wish to"
+" match.  Characters can be listed individually, or a range of characters can"
+" be indicated by giving two characters and separating them by a ``'-'``.  "
+"For example, ``[abc]`` will match any of the characters ``a``, ``b``, or "
+"``c``; this is the same as ``[a-c]``, which uses a range to express the same"
+" set of characters.  If you wanted to match only lowercase letters, your RE "
+"would be ``[a-z]``."
+msgstr ""
+"Các siêu ký tự đầu tiên chúng ta sẽ xem xét là ``[`` và ``]``. Chúng được sử"
+" dụng để chỉ định một lớp ký tự, là một tập hợp các ký tự mà bạn muốn so "
+"khớp.  Các ký tự có thể được liệt kê riêng lẻ hoặc có thể biểu thị một phạm "
+"vi ký tự bằng cách đưa ra hai ký tự và phân tách chúng bằng ``'-'``.  Ví dụ:"
+" ``[abc]`` sẽ khớp với bất kỳ ký tự nào trong số các ký tự ``a``, ``b`` hoặc"
+" ``c``; điều này giống với ``[a-c]``, sử dụng một phạm vi để thể hiện cùng "
+"một bộ ký tự.  Nếu bạn chỉ muốn khớp các chữ cái viết thường, RE của bạn sẽ "
+"là ``[a-z]``."
+
+#: ../../howto/regex.rst:92
+#, fuzzy
+msgid ""
+"Metacharacters (except ``\\``) are not active inside classes.  For example, "
+"``[akm$]`` will match any of the characters ``'a'``, ``'k'``, ``'m'``, or "
+"``'$'``; ``'$'`` is usually a metacharacter, but inside a character class "
+"it's stripped of its special nature."
+msgstr ""
+"Siêu ký tự (ngoại trừ ``\\``) không hoạt động bên trong các lớp.  Ví dụ: "
+"``[akm$]`` sẽ khớp với bất kỳ ký tự nào trong số các ký tự ``'a'``, ``'k'``,"
+" ``'m'`` hoặc ``'$'``; ``'$'`` thường là một siêu ký tự, nhưng bên trong một"
+" lớp nhân vật, nó bị mất đi tính chất đặc biệt."
+
+#: ../../howto/regex.rst:97
+#, fuzzy
+msgid ""
+"You can match the characters not listed within the class by "
+":dfn:`complementing` the set.  This is indicated by including a ``'^'`` as "
+"the first character of the class. For example, ``[^5]`` will match any "
+"character except ``'5'``.  If the caret appears elsewhere in a character "
+"class, it does not have special meaning. For example: ``[5^]`` will match "
+"either a ``'5'`` or a ``'^'``."
+msgstr ""
+"Bạn có thể khớp các ký tự không được liệt kê trong lớp theo bộ "
+":dfn:`complementing`.  Điều này được biểu thị bằng cách bao gồm ``'^'`` làm "
+"ký tự đầu tiên của lớp. Ví dụ: ``[^5]`` sẽ khớp với bất kỳ ký tự nào ngoại "
+"trừ ``'5'``.  Nếu dấu mũ xuất hiện ở nơi khác trong lớp ký tự thì nó không "
+"có ý nghĩa đặc biệt. Ví dụ: ``[5^]`` sẽ khớp với ``'5'`` hoặc ``'^'``."
+
+#: ../../howto/regex.rst:103
+#, fuzzy
+msgid ""
+"Perhaps the most important metacharacter is the backslash, ``\\``.   As in "
+"Python string literals, the backslash can be followed by various characters "
+"to signal various special sequences.  It's also used to escape all the "
+"metacharacters so you can still match them in patterns; for example, if you "
+"need to match a ``[`` or  ``\\``, you can precede them with a backslash to "
+"remove their special meaning: ``\\[`` or ``\\\\``."
+msgstr ""
+"Có lẽ siêu ký tự quan trọng nhất là dấu gạch chéo ngược, ``\\``.   Giống như"
+" trong chuỗi ký tự Python, dấu gạch chéo ngược có thể được theo sau bởi "
+"nhiều ký tự khác nhau để báo hiệu các chuỗi đặc biệt khác nhau.  Nó cũng "
+"được sử dụng để thoát khỏi tất cả các siêu ký tự để bạn vẫn có thể khớp "
+"chúng theo mẫu; ví dụ: nếu bạn cần khớp ``[`` hoặc ``\\``, bạn có thể đặt "
+"trước chúng bằng dấu gạch chéo ngược để loại bỏ ý nghĩa đặc biệt của chúng: "
+"``\\[`` hoặc ``\\\\``."
+
+#: ../../howto/regex.rst:110
+#, fuzzy
+msgid ""
+"Some of the special sequences beginning with ``'\\'`` represent predefined "
+"sets of characters that are often useful, such as the set of digits, the set"
+" of letters, or the set of anything that isn't whitespace."
+msgstr ""
+"Một số chuỗi đặc biệt bắt đầu bằng ``'\\'`` biểu thị các tập hợp ký tự được "
+"xác định trước thường hữu ích, chẳng hạn như tập hợp các chữ số, tập hợp các"
+" chữ cái hoặc tập hợp bất kỳ thứ gì không phải là khoảng trắng."
+
+#: ../../howto/regex.rst:115
+#, fuzzy
+msgid ""
+"Let's take an example: ``\\w`` matches any alphanumeric character.  If the "
+"regex pattern is expressed in bytes, this is equivalent to the class "
+"``[a-zA-Z0-9_]``.  If the regex pattern is a string, ``\\w`` will match all "
+"the characters marked as letters in the Unicode database provided by the "
+":mod:`unicodedata` module.  You can use the more restricted definition of "
+"``\\w`` in a string pattern by supplying the :const:`re.ASCII` flag when "
+"compiling the regular expression."
+msgstr ""
+"Hãy lấy một ví dụ: ``\\w`` khớp với bất kỳ ký tự chữ và số nào.  Nếu mẫu "
+"biểu thức chính quy được biểu thị bằng byte thì mẫu này tương đương với lớp "
+"``[a-zA-Z0-9_]``.  Nếu mẫu biểu thức chính quy là một chuỗi, ``\\w`` sẽ khớp"
+" với tất cả các ký tự được đánh dấu là các chữ cái trong cơ sở dữ liệu "
+"Unicode do mô-đun :mod:`unicodedata` cung cấp.  Bạn có thể sử dụng định "
+"nghĩa hạn chế hơn về ``\\w`` trong mẫu chuỗi bằng cách cung cấp cờ "
+":const:`re.ASCII` khi biên dịch biểu thức chính quy."
+
+#: ../../howto/regex.rst:123
+#, fuzzy
+msgid ""
+"The following list of special sequences isn't complete. For a complete list "
+"of sequences and expanded class definitions for Unicode string patterns, see"
+" the last part of :ref:`Regular Expression Syntax <re-syntax>` in the "
+"Standard Library reference.  In general, the Unicode versions match any "
+"character that's in the appropriate category in the Unicode database."
+msgstr ""
+"Danh sách các trình tự đặc biệt sau đây chưa đầy đủ. Để biết danh sách đầy "
+"đủ các chuỗi và định nghĩa lớp mở rộng cho các mẫu chuỗi Unicode, hãy xem "
+"phần cuối của :ref:`Regular Expression Syntax <re-syntax>` trong tài liệu "
+"tham khảo Thư viện chuẩn.  Nói chung, các phiên bản Unicode khớp với bất kỳ "
+"ký tự nào thuộc danh mục thích hợp trong cơ sở dữ liệu Unicode."
+
+#: ../../howto/regex.rst:130
+#, fuzzy
+msgid "``\\d``"
+msgstr "``\\d``"
+
+#: ../../howto/regex.rst:131
+#, fuzzy
+msgid "Matches any decimal digit; this is equivalent to the class ``[0-9]``."
+msgstr ""
+"Khớp với bất kỳ chữ số thập phân nào; điều này tương đương với lớp "
+"``[0-9]``."
+
+#: ../../howto/regex.rst:133
+#, fuzzy
+msgid "``\\D``"
+msgstr "``\\D``"
+
+#: ../../howto/regex.rst:134
+#, fuzzy
+msgid ""
+"Matches any non-digit character; this is equivalent to the class ``[^0-9]``."
+msgstr ""
+"Khớp với bất kỳ ký tự không có chữ số nào; điều này tương đương với lớp "
+"``[^0-9]``."
+
+#: ../../howto/regex.rst:136
+#, fuzzy
+msgid "``\\s``"
+msgstr "``\\s``"
+
+#: ../../howto/regex.rst:137
+#, fuzzy
+msgid ""
+"Matches any whitespace character; this is equivalent to the class ``[ "
+"\\t\\n\\r\\f\\v]``."
+msgstr ""
+"Khớp với bất kỳ ký tự khoảng trắng nào; điều này tương đương với lớp ``[ "
+"\\t\\n\\r\\f\\v]``."
+
+#: ../../howto/regex.rst:140
+#, fuzzy
+msgid "``\\S``"
+msgstr "``\\S``"
+
+#: ../../howto/regex.rst:141
+#, fuzzy
+msgid ""
+"Matches any non-whitespace character; this is equivalent to the class ``[^ "
+"\\t\\n\\r\\f\\v]``."
+msgstr ""
+"Khớp với bất kỳ ký tự không phải khoảng trắng nào; điều này tương đương với "
+"lớp ``[^ \\t\\n\\r\\f\\v]``."
+
+#: ../../howto/regex.rst:144
+#, fuzzy
+msgid "``\\w``"
+msgstr "``\\w``"
+
+#: ../../howto/regex.rst:145
+#, fuzzy
+msgid ""
+"Matches any alphanumeric character; this is equivalent to the class "
+"``[a-zA-Z0-9_]``."
+msgstr ""
+"Khớp với bất kỳ ký tự chữ và số nào; điều này tương đương với lớp "
+"``[a-zA-Z0-9_]``."
+
+#: ../../howto/regex.rst:148
+#, fuzzy
+msgid "``\\W``"
+msgstr "``\\W``"
+
+#: ../../howto/regex.rst:149
+#, fuzzy
+msgid ""
+"Matches any non-alphanumeric character; this is equivalent to the class "
+"``[^a-zA-Z0-9_]``."
+msgstr ""
+"Khớp với bất kỳ ký tự không phải chữ và số nào; điều này tương đương với lớp"
+" ``[^a-zA-Z0-9_]``."
+
+#: ../../howto/regex.rst:152
+#, fuzzy
+msgid ""
+"These sequences can be included inside a character class.  For example, "
+"``[\\s,.]`` is a character class that will match any whitespace character, "
+"or ``','`` or ``'.'``."
+msgstr ""
+"Những chuỗi này có thể được bao gồm trong một lớp ký tự.  Ví dụ: ``[\\s,.]``"
+" là lớp ký tự sẽ khớp với bất kỳ ký tự khoảng trắng nào hoặc ``','`` hoặc "
+"``'.'``."
+
+#: ../../howto/regex.rst:156
+#, fuzzy
+msgid ""
+"The final metacharacter in this section is ``.``.  It matches anything "
+"except a newline character, and there's an alternate mode "
+"(:const:`re.DOTALL`) where it will match even a newline.  ``.`` is often "
+"used where you want to match \"any character\"."
+msgstr ""
+"Siêu ký tự cuối cùng trong phần này là ``.``.  Nó khớp với mọi thứ ngoại trừ"
+" ký tự dòng mới và có một chế độ thay thế (:const:`re.DOTALL`) trong đó nó "
+"sẽ khớp ngay cả với một dòng mới.  ``.`` thường được sử dụng khi bạn muốn "
+"khớp \"bất kỳ ký tự nào\"."
+
+#: ../../howto/regex.rst:163
+#, fuzzy
+msgid "Repeating things"
+msgstr "Lặp đi lặp lại những điều"
+
+#: ../../howto/regex.rst:165
+#, fuzzy
+msgid ""
+"Being able to match varying sets of characters is the first thing regular "
+"expressions can do that isn't already possible with the methods available on"
+" strings.  However, if that was the only additional capability of regexes, "
+"they wouldn't be much of an advance. Another capability is that you can "
+"specify that portions of the RE must be repeated a certain number of times."
+msgstr ""
+"Khả năng khớp các tập hợp ký tự khác nhau là điều đầu tiên mà các biểu thức "
+"chính quy có thể thực hiện, điều này vốn không thể thực hiện được bằng các "
+"phương thức có sẵn trên chuỗi.  Tuy nhiên, nếu đó là khả năng bổ sung duy "
+"nhất của biểu thức chính quy thì chúng sẽ không tiến bộ nhiều. Một khả năng "
+"khác là bạn có thể chỉ định các phần của RE phải được lặp lại một số lần "
+"nhất định."
+
+#: ../../howto/regex.rst:171
+#, fuzzy
+msgid ""
+"The first metacharacter for repeating things that we'll look at is ``*``.  "
+"``*`` doesn't match the literal character ``'*'``; instead, it specifies "
+"that the previous character can be matched zero or more times, instead of "
+"exactly once."
+msgstr ""
+"Siêu ký tự đầu tiên để lặp lại những thứ mà chúng ta sẽ xem xét là ``*``.  "
+"``*`` không khớp với ký tự chữ ``'*'``; thay vào đó, nó chỉ định rằng ký tự "
+"trước đó có thể được khớp 0 hoặc nhiều lần, thay vì chính xác một lần."
+
+#: ../../howto/regex.rst:175
+#, fuzzy
+msgid ""
+"For example, ``ca*t`` will match ``'ct'`` (0 ``'a'`` characters), ``'cat'`` "
+"(1 ``'a'``), ``'caaat'`` (3 ``'a'`` characters), and so forth."
+msgstr ""
+"Ví dụ: ``ca*t`` sẽ khớp với ``'ct'`` (0 ký tự ``'a'``), ``'cat'`` (1 "
+"``'a'``), ``'caaat'`` (3 ký tự ``'a'``), v.v."
+
+#: ../../howto/regex.rst:178
+#, fuzzy
+msgid ""
+"Repetitions such as ``*`` are :dfn:`greedy`; when repeating a RE, the "
+"matching engine will try to repeat it as many times as possible. If later "
+"portions of the pattern don't match, the matching engine will then back up "
+"and try again with fewer repetitions."
+msgstr ""
+"Sự lặp lại như ``*`` là :dfn:`greedy`; khi lặp lại RE, công cụ so khớp sẽ cố"
+" gắng lặp lại nó nhiều lần nhất có thể. Nếu các phần sau của mẫu không khớp "
+"thì công cụ khớp sẽ sao lưu và thử lại với ít lần lặp lại hơn."
+
+#: ../../howto/regex.rst:183
+#, fuzzy
+msgid ""
+"A step-by-step example will make this more obvious.  Let's consider the "
+"expression ``a[bcd]*b``.  This matches the letter ``'a'``, zero or more "
+"letters from the class ``[bcd]``, and finally ends with a ``'b'``.  Now "
+"imagine matching this RE against the string ``'abcbd'``."
+msgstr ""
+"Một ví dụ từng bước sẽ làm cho điều này rõ ràng hơn.  Hãy xem xét biểu thức "
+"``a[bcd]*b``.  Điều này khớp với chữ cái ``'a'``, không hoặc nhiều chữ cái "
+"từ lớp ``[bcd]`` và cuối cùng kết thúc bằng ``'b'``.  Bây giờ hãy tưởng "
+"tượng kết hợp RE này với chuỗi ``'abcbd'``."
+
+#: ../../howto/regex.rst:189
+#, fuzzy
+msgid "Step"
+msgstr "Bước"
+
+#: ../../howto/regex.rst:189
+#, fuzzy
+msgid "Matched"
+msgstr "Đã khớp"
+
+#: ../../howto/regex.rst:189
+#, fuzzy
+msgid "Explanation"
+msgstr "Giải thích"
+
+#: ../../howto/regex.rst:191
+#, fuzzy
+msgid "1"
+msgstr "1"
+
+#: ../../howto/regex.rst:191
+#, fuzzy
+msgid "``a``"
+msgstr "``a``"
+
+#: ../../howto/regex.rst:191
+#, fuzzy
+msgid "The ``a`` in the RE matches."
+msgstr "Zz000zz trong các trận đấu RE."
+
+#: ../../howto/regex.rst:193
+#, fuzzy
+msgid "2"
+msgstr "2"
+
+#: ../../howto/regex.rst:193
+#, fuzzy
+msgid "``abcbd``"
+msgstr "``abcbd``"
+
+#: ../../howto/regex.rst:193
+#, fuzzy
+msgid ""
+"The engine matches ``[bcd]*``, going as far as it can, which is to the end "
+"of the string."
+msgstr "Công cụ khớp với ``[bcd]*``, đi xa nhất có thể, đến cuối chuỗi."
+
+#: ../../howto/regex.rst:197
+#, fuzzy
+msgid "3"
+msgstr "3"
+
+#: ../../howto/regex.rst:197 ../../howto/regex.rst:205
+#, fuzzy
+msgid "*Failure*"
+msgstr "*Failure*"
+
+#: ../../howto/regex.rst:197
+#, fuzzy
+msgid ""
+"The engine tries to match ``b``, but the current position is at the end of "
+"the string, so it fails."
+msgstr ""
+"Công cụ cố gắng khớp ``b`` nhưng vị trí hiện tại nằm ở cuối chuỗi nên không "
+"thành công."
+
+#: ../../howto/regex.rst:202
+#, fuzzy
+msgid "4"
+msgstr "4"
+
+#: ../../howto/regex.rst:202 ../../howto/regex.rst:213
+#, fuzzy
+msgid "``abcb``"
+msgstr "``abcb``"
+
+#: ../../howto/regex.rst:202
+#, fuzzy
+msgid "Back up, so that  ``[bcd]*`` matches one less character."
+msgstr "Sao lưu để ``[bcd]*`` khớp với ít ký tự hơn."
+
+#: ../../howto/regex.rst:205
+#, fuzzy
+msgid "5"
+msgstr "5"
+
+#: ../../howto/regex.rst:205
+#, fuzzy
+msgid ""
+"Try ``b`` again, but the current position is at the last character, which is"
+" a ``'d'``."
+msgstr ""
+"Hãy thử lại ``b`` nhưng vị trí hiện tại là ký tự cuối cùng, đó là ``'d'``."
+
+#: ../../howto/regex.rst:209
+#, fuzzy
+msgid "6"
+msgstr "6"
+
+#: ../../howto/regex.rst:209
+#, fuzzy
+msgid "``abc``"
+msgstr "``abc``"
+
+#: ../../howto/regex.rst:209
+#, fuzzy
+msgid "Back up again, so that ``[bcd]*`` is only matching ``bc``."
+msgstr "Sao lưu lại một lần nữa để ``[bcd]*`` chỉ khớp với ``bc``."
+
+#: ../../howto/regex.rst:213
+#, fuzzy
+msgid "7"
+msgstr "7"
+
+#: ../../howto/regex.rst:213
+#, fuzzy
+msgid ""
+"Try ``b`` again.  This time the character at the current position is "
+"``'b'``, so it succeeds."
+msgstr ""
+"Hãy thử lại ``b``.  Lần này nhân vật ở vị trí hiện tại là ``'b'`` nên thành "
+"công."
+
+#: ../../howto/regex.rst:219
+#, fuzzy
+msgid ""
+"The end of the RE has now been reached, and it has matched ``'abcb'``.  This"
+" demonstrates how the matching engine goes as far as it can at first, and if"
+" no match is found it will then progressively back up and retry the rest of "
+"the RE again and again.  It will back up until it has tried zero matches for"
+" ``[bcd]*``, and if that subsequently fails, the engine will conclude that "
+"the string doesn't match the RE at all."
+msgstr ""
+"Hiện tại đã đạt đến điểm cuối của RE và nó đã khớp với ``'abcb'``.  Điều này"
+" thể hiện cách công cụ so khớp đi xa nhất có thể lúc đầu và nếu không tìm "
+"thấy kết quả khớp nào thì nó sẽ dần dần sao lưu và thử đi thử lại phần còn "
+"lại của RE.  Nó sẽ sao lưu cho đến khi không thử kết quả nào cho ``[bcd]*`` "
+"và nếu sau đó không thành công, công cụ sẽ kết luận rằng chuỗi hoàn toàn "
+"không khớp với RE."
+
+#: ../../howto/regex.rst:226
+#, fuzzy
+msgid ""
+"Another repeating metacharacter is ``+``, which matches one or more times.  "
+"Pay careful attention to the difference between ``*`` and ``+``; ``*`` "
+"matches *zero* or more times, so whatever's being repeated may not be "
+"present at all, while ``+`` requires at least *one* occurrence.  To use a "
+"similar example, ``ca+t`` will match ``'cat'`` (1 ``'a'``), ``'caaat'`` (3 "
+"``'a'``\\ s), but won't match ``'ct'``."
+msgstr ""
+"Một siêu ký tự lặp lại khác là ``+``, khớp với một hoặc nhiều lần.  Hãy chú "
+"ý cẩn thận đến sự khác biệt giữa ``*`` và ``+``; ``*`` khớp với *zero* hoặc "
+"nhiều lần hơn, do đó, bất cứ điều gì được lặp lại có thể không xuất hiện, "
+"trong khi ``+`` yêu cầu ít nhất *one* xuất hiện.  Để sử dụng ví dụ tương tự,"
+" ``ca+t`` sẽ khớp với ``'cat'`` (1 ``'a'``), ``'caaat'`` (3 ``'a'``\\ s), "
+"nhưng sẽ không khớp với ``'ct'``."
+
+#: ../../howto/regex.rst:233
+#, fuzzy
+msgid ""
+"There are two more repeating operators or quantifiers.  The question mark "
+"character, ``?``, matches either once or zero times; you can think of it as "
+"marking something as being optional.  For example, ``home-?brew`` matches "
+"either ``'homebrew'`` or ``'home-brew'``."
+msgstr ""
+"Có thêm hai toán tử hoặc định lượng lặp lại.  Ký tự dấu chấm hỏi, ``?``, "
+"khớp một lần hoặc 0 lần; bạn có thể coi nó như việc đánh dấu một cái gì đó "
+"là tùy chọn.  Ví dụ: ``home-?brew`` khớp với ``'homebrew'`` hoặc ``'home-"
+"brew'``."
+
+#: ../../howto/regex.rst:238
+#, python-brace-format, fuzzy
+msgid ""
+"The most complicated quantifier is ``{m,n}``, where *m* and *n* are decimal "
+"integers.  This quantifier means there must be at least *m* repetitions, and"
+" at most *n*.  For example, ``a/{1,3}b`` will match ``'a/b'``, ``'a//b'``, "
+"and ``'a///b'``.  It won't match ``'ab'``, which has no slashes, or "
+"``'a////b'``, which has four."
+msgstr ""
+"Bộ định lượng phức tạp nhất là ``{m,n}``, trong đó *m* và *n* là số nguyên "
+"thập phân.  Bộ định lượng này có nghĩa là phải có ít nhất sự lặp lại *m* và "
+"nhiều nhất là *n*.  Ví dụ: ``a/{1,3}b`` sẽ khớp với ``'a/b'``, ``'a//b'`` và"
+" ``'a///b'``.  Nó sẽ không khớp với ``'ab'``, không có dấu gạch chéo hoặc "
+"``'a////b'``, có bốn dấu gạch chéo."
+
+#: ../../howto/regex.rst:244
+#, fuzzy
+msgid ""
+"You can omit either *m* or *n*; in that case, a reasonable value is assumed "
+"for the missing value.  Omitting *m* is interpreted as a lower limit of 0, "
+"while omitting *n* results in an upper bound of infinity."
+msgstr ""
+"Bạn có thể bỏ qua *m* hoặc *n*; trong trường hợp đó, một giá trị hợp lý được"
+" giả định cho giá trị còn thiếu.  Việc bỏ qua *m* được hiểu là giới hạn dưới"
+" của 0, trong khi việc bỏ qua *n* sẽ dẫn đến giới hạn trên của vô cực."
+
+#: ../../howto/regex.rst:248
+#, python-brace-format, fuzzy
+msgid ""
+"The simplest case ``{m}`` matches the preceding item exactly *m* times. For "
+"example, ``a/{2}b`` will only match ``'a//b'``."
+msgstr ""
+"Trường hợp đơn giản nhất ``{m}`` khớp với mục trước chính xác *m* lần. Ví "
+"dụ: ``a/{2}b`` sẽ chỉ khớp với ``'a//b'``."
+
+#: ../../howto/regex.rst:251
+#, python-brace-format, fuzzy
+msgid ""
+"Readers of a reductionist bent may notice that the three other quantifiers "
+"can all be expressed using this notation.  ``{0,}`` is the same as ``*``, "
+"``{1,}`` is equivalent to ``+``, and ``{0,1}`` is the same as ``?``.  It's "
+"better to use ``*``, ``+``, or ``?`` when you can, simply because they're "
+"shorter and easier to read."
+msgstr ""
+"Những độc giả theo khuynh hướng giản lược có thể nhận thấy rằng ba bộ định "
+"lượng khác đều có thể được biểu diễn bằng cách sử dụng ký hiệu này.  "
+"``{0,}`` giống với ``*``, ``{1,}`` tương đương với ``+``, và ``{0,1}`` giống"
+" với ``?``.  Tốt hơn nên sử dụng ``*``, ``+`` hoặc ``?`` khi có thể, đơn "
+"giản vì chúng ngắn hơn và dễ đọc hơn."
+
+#: ../../howto/regex.rst:259
+#, fuzzy
+msgid "Using regular expressions"
+msgstr "Sử dụng biểu thức chính quy"
+
+#: ../../howto/regex.rst:261
+#, fuzzy
+msgid ""
+"Now that we've looked at some simple regular expressions, how do we actually"
+" use them in Python?  The :mod:`re` module provides an interface to the "
+"regular expression engine, allowing you to compile REs into objects and then"
+" perform matches with them."
+msgstr ""
+"Bây giờ chúng ta đã xem xét một số biểu thức chính quy đơn giản, làm cách "
+"nào để sử dụng chúng trong Python?  Mô-đun :mod:`re` cung cấp giao diện cho "
+"công cụ biểu thức chính quy, cho phép bạn biên dịch RE thành các đối tượng "
+"và sau đó thực hiện so khớp với chúng."
+
+#: ../../howto/regex.rst:268
+#, fuzzy
+msgid "Compiling regular expressions"
+msgstr "Biên dịch biểu thức chính quy"
+
+#: ../../howto/regex.rst:270
+#, fuzzy
+msgid ""
+"Regular expressions are compiled into pattern objects, which have methods "
+"for various operations such as searching for pattern matches or performing "
+"string substitutions. ::"
+msgstr ""
+"Biểu thức chính quy được biên dịch thành các đối tượng mẫu, có các phương "
+"thức cho nhiều thao tác khác nhau như tìm kiếm kết quả khớp mẫu hoặc thực "
+"hiện thay thế chuỗi. ::"
+
+#: ../../howto/regex.rst:274
+#, fuzzy
+msgid ""
+">>> import re\n"
+">>> p = re.compile('ab*')\n"
+">>> p\n"
+"re.compile('ab*')"
+msgstr ""
+">>> nhập lại\n"
+">>> p = re.compile('ab*')\n"
+">>> p\n"
+"re.compile('ab*')"
+
+#: ../../howto/regex.rst:279
+#, fuzzy
+msgid ""
+":func:`re.compile` also accepts an optional *flags* argument, used to enable"
+" various special features and syntax variations.  We'll go over the "
+"available settings later, but for now a single example will do::"
+msgstr ""
+":func:`re.compile` cũng chấp nhận một đối số *flags* tùy chọn, được sử dụng "
+"để kích hoạt các tính năng đặc biệt và các biến thể cú pháp khác nhau.  "
+"Chúng ta sẽ xem xét các cài đặt có sẵn sau, nhưng bây giờ chỉ có một ví dụ "
+"sẽ thực hiện::"
+
+#: ../../howto/regex.rst:283
+#, fuzzy
+msgid ">>> p = re.compile('ab*', re.IGNORECASE)"
+msgstr ">>> p = re.compile('ab*', re.IGNORECASE)"
+
+#: ../../howto/regex.rst:285
+#, fuzzy
+msgid ""
+"The RE is passed to :func:`re.compile` as a string.  REs are handled as "
+"strings because regular expressions aren't part of the core Python language,"
+" and no special syntax was created for expressing them.  (There are "
+"applications that don't need REs at all, so there's no need to bloat the "
+"language specification by including them.) Instead, the :mod:`re` module is "
+"simply a C extension module included with Python, just like the "
+":mod:`socket` or :mod:`zlib` modules."
+msgstr ""
+"RE được chuyển tới :func:`re.compile` dưới dạng một chuỗi.  RE được xử lý "
+"dưới dạng chuỗi vì các biểu thức chính quy không phải là một phần của ngôn "
+"ngữ Python cốt lõi và không có cú pháp đặc biệt nào được tạo để biểu thị "
+"chúng.  (Có những ứng dụng hoàn toàn không cần RE, do đó không cần phải tăng"
+" cường đặc tả ngôn ngữ bằng cách đưa chúng vào.) Thay vào đó, mô-đun "
+":mod:`re` chỉ đơn giản là một mô-đun mở rộng C đi kèm với Python, giống như "
+"các mô-đun :mod:`socket` hoặc :mod:`zlib`."
+
+#: ../../howto/regex.rst:292
+#, fuzzy
+msgid ""
+"Putting REs in strings keeps the Python language simpler, but has one "
+"disadvantage which is the topic of the next section."
+msgstr ""
+"Việc đặt RE vào chuỗi giúp ngôn ngữ Python đơn giản hơn nhưng có một nhược "
+"điểm đó là chủ đề của phần tiếp theo."
+
+#: ../../howto/regex.rst:299
+#, fuzzy
+msgid "The backslash plague"
+msgstr "Bệnh dịch hạch ngược"
+
+#: ../../howto/regex.rst:301
+#, fuzzy
+msgid ""
+"As stated earlier, regular expressions use the backslash character "
+"(``'\\'``) to indicate special forms or to allow special characters to be "
+"used without invoking their special meaning. This conflicts with Python's "
+"usage of the same character for the same purpose in string literals."
+msgstr ""
+"Như đã nêu trước đó, biểu thức chính quy sử dụng ký tự dấu gạch chéo ngược "
+"(``'\\'``) để biểu thị các dạng đặc biệt hoặc cho phép sử dụng các ký tự đặc"
+" biệt mà không cần gọi ý nghĩa đặc biệt của chúng. Điều này mâu thuẫn với "
+"việc Python sử dụng cùng một ký tự cho cùng một mục đích trong chuỗi ký tự."
+
+#: ../../howto/regex.rst:306
+#, fuzzy
+msgid ""
+"Let's say you want to write a RE that matches the string ``\\section``, "
+"which might be found in a LaTeX file.  To figure out what to write in the "
+"program code, start with the desired string to be matched.  Next, you must "
+"escape any backslashes and other metacharacters by preceding them with a "
+"backslash, resulting in the string ``\\\\section``.  The resulting string "
+"that must be passed to :func:`re.compile` must be ``\\\\section``.  However,"
+" to express this as a Python string literal, both backslashes must be "
+"escaped *again*."
+msgstr ""
+"Giả sử bạn muốn viết một RE khớp với chuỗi ``\\section``, chuỗi này có thể "
+"tìm thấy trong tệp LaTeX.  Để tìm ra những gì cần viết trong mã chương "
+"trình, hãy bắt đầu với chuỗi mong muốn được khớp.  Tiếp theo, bạn phải thoát"
+" mọi dấu gạch chéo ngược và các siêu ký tự khác bằng cách đặt trước chúng "
+"một dấu gạch chéo ngược, dẫn đến chuỗi ``\\\\section``.  Chuỗi kết quả phải "
+"được chuyển tới :func:`re.compile` phải là ``\\\\section``.  Tuy nhiên, để "
+"thể hiện điều này dưới dạng chuỗi ký tự Python, cả hai dấu gạch chéo ngược "
+"phải được thoát *again*."
+
+#: ../../howto/regex.rst:315
+#, fuzzy
+msgid "Characters"
+msgstr "nhân vật"
+
+#: ../../howto/regex.rst:315
+#, fuzzy
+msgid "Stage"
+msgstr "Sân khấu"
+
+#: ../../howto/regex.rst:317
+#, fuzzy
+msgid "``\\section``"
+msgstr "``\\section``"
+
+#: ../../howto/regex.rst:317
+#, fuzzy
+msgid "Text string to be matched"
+msgstr "Chuỗi văn bản cần khớp"
+
+#: ../../howto/regex.rst:319
+#, fuzzy
+msgid "``\\\\section``"
+msgstr "``\\\\section``"
+
+#: ../../howto/regex.rst:319
+#, fuzzy
+msgid "Escaped backslash for :func:`re.compile`"
+msgstr "Đã thoát dấu gạch chéo ngược cho :func:`re.compile`"
+
+#: ../../howto/regex.rst:321 ../../howto/regex.rst:348
+#, fuzzy
+msgid "``\"\\\\\\\\section\"``"
+msgstr "``\"\\\\\\\\section\"``"
+
+#: ../../howto/regex.rst:321
+#, fuzzy
+msgid "Escaped backslashes for a string literal"
+msgstr "Đã thoát dấu gạch chéo ngược cho một chuỗi ký tự"
+
+#: ../../howto/regex.rst:324
+#, fuzzy
+msgid ""
+"In short, to match a literal backslash, one has to write ``'\\\\\\\\'`` as "
+"the RE string, because the regular expression must be ``\\\\``, and each "
+"backslash must be expressed as ``\\\\`` inside a regular Python string "
+"literal.  In REs that feature backslashes repeatedly, this leads to lots of "
+"repeated backslashes and makes the resulting strings difficult to "
+"understand."
+msgstr ""
+"Nói tóm lại, để khớp với dấu gạch chéo ngược theo nghĩa đen, người ta phải "
+"viết ``'\\\\\\\\'`` dưới dạng chuỗi RE, vì biểu thức chính quy phải là "
+"``\\\\`` và mỗi dấu gạch chéo ngược phải được biểu thị dưới dạng ``\\\\`` "
+"bên trong một chuỗi ký tự Python thông thường.  Trong RE có dấu gạch chéo "
+"ngược lặp đi lặp lại, điều này dẫn đến nhiều dấu gạch chéo ngược lặp lại và "
+"làm cho chuỗi kết quả khó hiểu."
+
+#: ../../howto/regex.rst:330
+#, fuzzy
+msgid ""
+"The solution is to use Python's raw string notation for regular expressions;"
+" backslashes are not handled in any special way in a string literal prefixed"
+" with ``'r'``, so ``r\"\\n\"`` is a two-character string containing ``'\\'``"
+" and ``'n'``, while ``\"\\n\"`` is a one-character string containing a "
+"newline. Regular expressions will often be written in Python code using this"
+" raw string notation."
+msgstr ""
+"Giải pháp là sử dụng ký hiệu chuỗi thô của Python cho các biểu thức chính "
+"quy; dấu gạch chéo ngược không được xử lý theo bất kỳ cách đặc biệt nào "
+"trong chuỗi ký tự có tiền tố ``'r'``, vì vậy ``r\"\\n\"`` là chuỗi hai ký tự"
+" chứa ``'\\'`` và ``'n'``, trong khi ``\"\\n\"`` là chuỗi một ký tự chứa "
+"dòng mới. Biểu thức chính quy thường sẽ được viết bằng mã Python bằng cách "
+"sử dụng ký hiệu chuỗi thô này."
+
+#: ../../howto/regex.rst:336
+#, fuzzy
+msgid ""
+"In addition, special escape sequences that are valid in regular expressions,"
+" but not valid as Python string literals, now result in a "
+":exc:`SyntaxWarning` and will eventually become a :exc:`SyntaxError`, which "
+"means the sequences will be invalid if raw string notation or escaping the "
+"backslashes isn't used."
+msgstr ""
+"Ngoài ra, các chuỗi thoát đặc biệt hợp lệ trong các biểu thức thông thường, "
+"nhưng không hợp lệ ở dạng chuỗi ký tự trong Python, hiện dẫn đến "
+":exc:`SyntaxWarning` và cuối cùng sẽ trở thành :exc:`SyntaxError`, có nghĩa "
+"là các chuỗi sẽ không hợp lệ nếu ký hiệu chuỗi thô hoặc thoát khỏi dấu gạch "
+"chéo ngược không được sử dụng."
+
+#: ../../howto/regex.rst:344
+#, fuzzy
+msgid "Regular String"
+msgstr "Chuỗi thông thường"
+
+#: ../../howto/regex.rst:344
+#, fuzzy
+msgid "Raw string"
+msgstr "Chuỗi thô"
+
+#: ../../howto/regex.rst:346
+#, fuzzy
+msgid "``\"ab*\"``"
+msgstr "``\"ab*\"``"
+
+#: ../../howto/regex.rst:346
+#, fuzzy
+msgid "``r\"ab*\"``"
+msgstr "``r\"ab*\"``"
+
+#: ../../howto/regex.rst:348
+#, fuzzy
+msgid "``r\"\\\\section\"``"
+msgstr "``r\"\\\\section\"``"
+
+#: ../../howto/regex.rst:350
+#, fuzzy
+msgid "``\"\\\\w+\\\\s+\\\\1\"``"
+msgstr "``\"\\\\w+\\\\s+\\\\1\"``"
+
+#: ../../howto/regex.rst:350
+#, fuzzy
+msgid "``r\"\\w+\\s+\\1\"``"
+msgstr "``r\"\\w+\\s+\\1\"``"
+
+#: ../../howto/regex.rst:355
+#, fuzzy
+msgid "Performing matches"
+msgstr "Thực hiện các trận đấu"
+
+#: ../../howto/regex.rst:357
+#, fuzzy
+msgid ""
+"Once you have an object representing a compiled regular expression, what do "
+"you do with it?  Pattern objects have several methods and attributes. Only "
+"the most significant ones will be covered here; consult the :mod:`re` docs "
+"for a complete listing."
+msgstr ""
+"Khi bạn có một đối tượng biểu thị một biểu thức chính quy được biên dịch, "
+"bạn sẽ làm gì với nó?  Các đối tượng mẫu có một số phương thức và thuộc "
+"tính. Chỉ những cái quan trọng nhất mới được đề cập ở đây; tham khảo tài "
+"liệu :mod:`re` để có danh sách đầy đủ."
+
+#: ../../howto/regex.rst:363 ../../howto/regex.rst:417
+#: ../../howto/regex.rst:1072
+#, fuzzy
+msgid "Method/Attribute"
+msgstr "Phương thức/Thuộc tính"
+
+#: ../../howto/regex.rst:363 ../../howto/regex.rst:417
+#: ../../howto/regex.rst:1072
+#, fuzzy
+msgid "Purpose"
+msgstr "Mục đích"
+
+#: ../../howto/regex.rst:365
+#, fuzzy
+msgid "``match()``"
+msgstr "``match()``"
+
+#: ../../howto/regex.rst:365
+#, fuzzy
+msgid "Determine if the RE matches at the beginning of the string."
+msgstr "Xác định xem RE có khớp ở đầu chuỗi không."
+
+#: ../../howto/regex.rst:368
+#, fuzzy
+msgid "``search()``"
+msgstr "``search()``"
+
+#: ../../howto/regex.rst:368
+#, fuzzy
+msgid "Scan through a string, looking for any location where this RE matches."
+msgstr "Quét qua một chuỗi, tìm kiếm bất kỳ vị trí nào có RE khớp."
+
+#: ../../howto/regex.rst:371
+#, fuzzy
+msgid "``findall()``"
+msgstr "``findall()``"
+
+#: ../../howto/regex.rst:371
+#, fuzzy
+msgid "Find all substrings where the RE matches, and return them as a list."
+msgstr ""
+"Tìm tất cả các chuỗi con có RE khớp và trả về chúng dưới dạng danh sách."
+
+#: ../../howto/regex.rst:374
+#, fuzzy
+msgid "``finditer()``"
+msgstr "``finditer()``"
+
+#: ../../howto/regex.rst:374
+#, fuzzy
+msgid ""
+"Find all substrings where the RE matches, and return them as an "
+":term:`iterator`."
+msgstr ""
+"Tìm tất cả các chuỗi con có RE khớp và trả về chúng dưới dạng "
+":term:`iterator`."
+
+#: ../../howto/regex.rst:378
+#, fuzzy
+msgid ""
+":meth:`~re.Pattern.match` and :meth:`~re.Pattern.search` return ``None`` if "
+"no match can be found.  If they're successful, a :ref:`match object <match-"
+"objects>` instance is returned, containing information about the match: "
+"where it starts and ends, the substring it matched, and more."
+msgstr ""
+":meth:`~re.Pattern.match` và :meth:`~re.Pattern.search` trả về ``None`` nếu "
+"không tìm thấy kết quả phù hợp.  Nếu thành công, một phiên bản :ref:`match "
+"object <match-objects>` sẽ được trả về, chứa thông tin về kết quả khớp: nơi "
+"nó bắt đầu và kết thúc, chuỗi con mà nó khớp, v.v."
+
+#: ../../howto/regex.rst:383
+#, fuzzy
+msgid ""
+"You can learn about this by interactively experimenting with the :mod:`re` "
+"module."
+msgstr ""
+"Bạn có thể tìm hiểu về điều này bằng cách thử nghiệm tương tác với mô-đun "
+":mod:`re`."
+
+#: ../../howto/regex.rst:386
+#, fuzzy
+msgid ""
+"This HOWTO uses the standard Python interpreter for its examples. First, run"
+" the Python interpreter, import the :mod:`re` module, and compile a RE::"
+msgstr ""
+"Zz001zz này sử dụng trình thông dịch Python tiêu chuẩn cho các ví dụ của nó."
+" Đầu tiên, chạy trình thông dịch Python, nhập mô-đun :mod:`re` và biên dịch "
+"RE::"
+
+#: ../../howto/regex.rst:389
+#, fuzzy
+msgid ""
+">>> import re\n"
+">>> p = re.compile('[a-z]+')\n"
+">>> p\n"
+"re.compile('[a-z]+')"
+msgstr ""
+">>> nhập lại\n"
+">>> p = re.compile('[a-z]+')\n"
+">>> p\n"
+"re.compile('[a-z]+')"
+
+#: ../../howto/regex.rst:394
+#, fuzzy
+msgid ""
+"Now, you can try matching various strings against the RE ``[a-z]+``.  An "
+"empty string shouldn't match at all, since ``+`` means 'one or more "
+"repetitions'. :meth:`~re.Pattern.match` should return ``None`` in this case,"
+" which will cause the interpreter to print no output.  You can explicitly "
+"print the result of :meth:`!match` to make this clear. ::"
+msgstr ""
+"Bây giờ, bạn có thể thử kết hợp nhiều chuỗi khác nhau với RE ``[a-z]+``.  "
+"Một chuỗi trống hoàn toàn không khớp vì ``+`` có nghĩa là 'một hoặc nhiều "
+"lần lặp lại'. :meth:`~re.Pattern.match` sẽ trả về ``None`` trong trường hợp "
+"này, điều này sẽ khiến trình thông dịch không in được kết quả.  Bạn có thể "
+"in rõ ràng kết quả của :meth:`!match` để làm rõ điều này. ::"
+
+#: ../../howto/regex.rst:400
+#, fuzzy
+msgid ""
+">>> p.match(\"\")\n"
+">>> print(p.match(\"\"))\n"
+"None"
+msgstr ""
+">>> p.match(\"\")\n"
+">>> print(p.match(\"\"))\n"
+"không có"
+
+#: ../../howto/regex.rst:404
+#, fuzzy
+msgid ""
+"Now, let's try it on a string that it should match, such as ``tempo``.  In "
+"this case, :meth:`~re.Pattern.match` will return a :ref:`match object "
+"<match-objects>`, so you should store the result in a variable for later "
+"use. ::"
+msgstr ""
+"Bây giờ, hãy thử trên một chuỗi phù hợp, chẳng hạn như ``tempo``.  Trong "
+"trường hợp này, :meth:`~re.Pattern.match` sẽ trả về :ref:`match object "
+"<match-objects>`, vì vậy bạn nên lưu kết quả vào một biến để sử dụng sau. ::"
+
+#: ../../howto/regex.rst:408
+#, fuzzy
+msgid ""
+">>> m = p.match('tempo')\n"
+">>> m\n"
+"<re.Match object; span=(0, 5), match='tempo'>"
+msgstr ""
+">>> m = p.match('tempo')\n"
+">>> tôi\n"
+"<re.Match đối tượng; span=(0, 5), match='nhịp độ'>"
+
+#: ../../howto/regex.rst:412
+#, fuzzy
+msgid ""
+"Now you can query the :ref:`match object <match-objects>` for information "
+"about the matching string.  Match object instances also have several methods"
+" and attributes; the most important ones are:"
+msgstr ""
+"Bây giờ bạn có thể truy vấn :ref:`match object <match-objects>` để biết "
+"thông tin về chuỗi phù hợp.  Các phiên bản đối tượng khớp cũng có một số "
+"phương thức và thuộc tính; những cái quan trọng nhất là:"
+
+#: ../../howto/regex.rst:419
+#, fuzzy
+msgid "``group()``"
+msgstr "``group()``"
+
+#: ../../howto/regex.rst:419
+#, fuzzy
+msgid "Return the string matched by the RE"
+msgstr "Trả về chuỗi khớp với RE"
+
+#: ../../howto/regex.rst:421
+#, fuzzy
+msgid "``start()``"
+msgstr "``start()``"
+
+#: ../../howto/regex.rst:421
+#, fuzzy
+msgid "Return the starting position of the match"
+msgstr "Trả lại vị trí bắt đầu của trận đấu"
+
+#: ../../howto/regex.rst:423
+#, fuzzy
+msgid "``end()``"
+msgstr "``end()``"
+
+#: ../../howto/regex.rst:423
+#, fuzzy
+msgid "Return the ending position of the match"
+msgstr "Trả về vị trí kết thúc trận đấu"
+
+#: ../../howto/regex.rst:425
+#, fuzzy
+msgid "``span()``"
+msgstr "``span()``"
+
+#: ../../howto/regex.rst:425
+#, fuzzy
+msgid "Return a tuple containing the (start, end) positions  of the match"
+msgstr "Trả về một bộ dữ liệu chứa vị trí (bắt đầu, kết thúc) của trận đấu"
+
+#: ../../howto/regex.rst:429
+#, fuzzy
+msgid "Trying these methods will soon clarify their meaning::"
+msgstr "Việc thử những phương pháp này sẽ sớm làm rõ ý nghĩa của chúng::"
+
+#: ../../howto/regex.rst:431
+#, fuzzy
+msgid ""
+">>> m.group()\n"
+"'tempo'\n"
+">>> m.start(), m.end()\n"
+"(0, 5)\n"
+">>> m.span()\n"
+"(0, 5)"
+msgstr ""
+">>> m.group()\n"
+"'nhịp độ'\n"
+">>> m.start(), m.end()\n"
+"(0, 5)\n"
+">>> m.span()\n"
+"(0, 5)"
+
+#: ../../howto/regex.rst:438
+#, fuzzy
+msgid ""
+":meth:`~re.Match.group` returns the substring that was matched by the RE.  "
+":meth:`~re.Match.start` and :meth:`~re.Match.end` return the starting and "
+"ending index of the match. :meth:`~re.Match.span` returns both start and end"
+" indexes in a single tuple.  Since the :meth:`~re.Pattern.match` method only"
+" checks if the RE matches at the start of a string, :meth:`!start` will "
+"always be zero.  However, the :meth:`~re.Pattern.search` method of patterns "
+"scans through the string, so  the match may not start at zero in that case. "
+"::"
+msgstr ""
+":meth:`~re.Match.group` trả về chuỗi con khớp với RE.  "
+":meth:`~re.Match.start` và :meth:`~re.Match.end` trả về chỉ số bắt đầu và "
+"kết thúc của trận đấu. :meth:`~re.Match.span` trả về cả chỉ mục bắt đầu và "
+"kết thúc trong một bộ dữ liệu.  Vì phương thức :meth:`~re.Pattern.match` chỉ"
+" kiểm tra xem RE có khớp ở đầu chuỗi hay không nên :meth:`!start` sẽ luôn "
+"bằng 0.  Tuy nhiên, phương pháp mẫu :meth:`~re.Pattern.search` quét qua "
+"chuỗi, do đó, kết quả khớp có thể không bắt đầu từ 0 trong trường hợp đó. ::"
+
+#: ../../howto/regex.rst:446
+#, fuzzy
+msgid ""
+">>> print(p.match('::: message'))\n"
+"None\n"
+">>> m = p.search('::: message'); print(m)\n"
+"<re.Match object; span=(4, 11), match='message'>\n"
+">>> m.group()\n"
+"'message'\n"
+">>> m.span()\n"
+"(4, 11)"
+msgstr ""
+">>> print(p.match('::: message'))\n"
+"không có\n"
+">>> m = p.search('::: message'); in(m)\n"
+"<re.Match đối tượng; span=(4, 11), match='message'>\n"
+">>> m.group()\n"
+"'tin nhắn'\n"
+">>> m.span()\n"
+"(4, 11)"
+
+#: ../../howto/regex.rst:455
+#, fuzzy
+msgid ""
+"In actual programs, the most common style is to store the :ref:`match object"
+" <match-objects>` in a variable, and then check if it was ``None``.  This "
+"usually looks like::"
+msgstr ""
+"Trong các chương trình thực tế, kiểu phổ biến nhất là lưu trữ :ref:`match "
+"object <match-objects>` trong một biến, sau đó kiểm tra xem đó có phải là "
+"``None`` hay không.  Điều này thường trông giống như::"
+
+#: ../../howto/regex.rst:459
+#, fuzzy
+msgid ""
+"p = re.compile( ... )\n"
+"m = p.match( 'string goes here' )\n"
+"if m:\n"
+"    print('Match found: ', m.group())\n"
+"else:\n"
+"    print('No match')"
+msgstr ""
+"p = biên dịch lại( ... )\n"
+"m = p.match( 'chuỗi ở đây' )\n"
+"nếu tôi:\n"
+"    print('Đã tìm thấy kết quả phù hợp: ', m.group())\n"
+"khác:\n"
+"    print('Không khớp')"
+
+#: ../../howto/regex.rst:466
+#, fuzzy
+msgid ""
+"Two pattern methods return all of the matches for a pattern. "
+":meth:`~re.Pattern.findall` returns a list of matching strings::"
+msgstr ""
+"Hai phương thức mẫu trả về tất cả các kết quả khớp cho một mẫu. "
+":meth:`~re.Pattern.findall` trả về danh sách các chuỗi phù hợp ::"
+
+#: ../../howto/regex.rst:469
+#, fuzzy
+msgid ""
+">>> p = re.compile(r'\\d+')\n"
+">>> p.findall('12 drummers drumming, 11 pipers piping, 10 lords a-leaping')\n"
+"['12', '11', '10']"
+msgstr ""
+">>> p = re.compile(r'\\d+')\n"
+">>> p.findall('12 tay trống đánh trống, 11 người thổi sáo, 10 chúa tể nhảy lên')\n"
+"['12', '11', '10']"
+
+#: ../../howto/regex.rst:473
+#, fuzzy
+msgid ""
+"The ``r`` prefix, making the literal a raw string literal, is needed in this"
+" example because escape sequences in a normal \"cooked\" string literal that"
+" are not recognized by Python, as opposed to regular expressions, now result"
+" in a :exc:`SyntaxWarning` and will eventually become a :exc:`SyntaxError`."
+"  See :ref:`the-backslash-plague`."
+msgstr ""
+"Tiền tố ``r``, làm cho chữ này trở thành chữ chuỗi thô, là cần thiết trong "
+"ví dụ này vì các chuỗi thoát trong một chữ chuỗi \"nấu\" thông thường không "
+"được Python nhận ra, trái ngược với các biểu thức thông thường, giờ đây dẫn "
+"đến :exc:`SyntaxWarning` và cuối cùng sẽ trở thành :exc:`SyntaxError`.  Xem "
+":ref:`the-backslash-plague`."
+
+#: ../../howto/regex.rst:479
+#, fuzzy
+msgid ""
+":meth:`~re.Pattern.findall` has to create the entire list before it can be "
+"returned as the result.  The :meth:`~re.Pattern.finditer` method returns a "
+"sequence of :ref:`match object <match-objects>` instances as an "
+":term:`iterator`::"
+msgstr ""
+":meth:`~re.Pattern.findall` phải tạo toàn bộ danh sách trước khi có thể trả "
+"về kết quả.  Phương thức :meth:`~re.Pattern.finditer` trả về một chuỗi các "
+"phiên bản :ref:`match object <match-objects>` dưới dạng :term:`iterator`::"
+
+#: ../../howto/regex.rst:483
+#, fuzzy
+msgid ""
+">>> iterator = p.finditer('12 drummers drumming, 11 ... 10 ...')\n"
+">>> iterator\n"
+"<callable_iterator object at 0x...>\n"
+">>> for match in iterator:\n"
+"...     print(match.span())\n"
+"...\n"
+"(0, 2)\n"
+"(22, 24)\n"
+"(29, 31)"
+msgstr ""
+">>> iterator = p.finditer('12 người đánh trống, 11 ... 10 ...')\n"
+">>> vòng lặp\n"
+"<đối tượng callable_iterator ở 0x...>\n"
+">>> để khớp trong iterator:\n"
+"... print(match.span())\n"
+"...\n"
+"(0, 2)\n"
+"(22, 24)\n"
+"(29, 31)"
+
+#: ../../howto/regex.rst:495
+#, fuzzy
+msgid "Module-level functions"
+msgstr "Các hàm cấp mô-đun"
+
+#: ../../howto/regex.rst:497
+#, fuzzy
+msgid ""
+"You don't have to create a pattern object and call its methods; the "
+":mod:`re` module also provides top-level functions called :func:`~re.match`,"
+" :func:`~re.search`, :func:`~re.findall`, :func:`~re.sub`, and so forth.  "
+"These functions take the same arguments as the corresponding pattern method "
+"with the RE string added as the first argument, and still return either "
+"``None`` or a :ref:`match object <match-objects>` instance. ::"
+msgstr ""
+"Bạn không cần phải tạo một đối tượng mẫu và gọi các phương thức của nó; mô-"
+"đun :mod:`re` cũng cung cấp các chức năng cấp cao nhất được gọi là "
+":func:`~re.match`, :func:`~re.search`, :func:`~re.findall`, :func:`~re.sub`,"
+" v.v.  Các hàm này nhận các đối số giống như phương thức mẫu tương ứng với "
+"chuỗi RE được thêm làm đối số đầu tiên và vẫn trả về một phiên bản ``None`` "
+"hoặc :ref:`match object <match-objects>`. ::"
+
+#: ../../howto/regex.rst:504
+#, fuzzy
+msgid ""
+">>> print(re.match(r'From\\s+', 'Fromage amk'))\n"
+"None\n"
+">>> re.match(r'From\\s+', 'From amk Thu May 14 19:12:10 1998')\n"
+"<re.Match object; span=(0, 5), match='From '>"
+msgstr ""
+">>> print(re.match(r'From\\s+', 'Fromage amk'))\n"
+"không có\n"
+">>> re.match(r'From\\s+', 'Từ amk Thu ngày 14 tháng 5 19:12:10 1998')\n"
+"<re.Match đối tượng; span=(0, 5), match='Từ '>"
+
+#: ../../howto/regex.rst:509
+#, fuzzy
+msgid ""
+"Under the hood, these functions simply create a pattern object for you and "
+"call the appropriate method on it.  They also store the compiled object in a"
+" cache, so future calls using the same RE won't need to parse the pattern "
+"again and again."
+msgstr ""
+"Về cơ bản, các hàm này chỉ đơn giản là tạo một đối tượng mẫu cho bạn và gọi "
+"phương thức thích hợp trên đó.  Họ cũng lưu trữ đối tượng đã biên dịch trong"
+" bộ đệm, do đó, các cuộc gọi trong tương lai sử dụng cùng một RE sẽ không "
+"cần phải phân tích cú pháp mẫu nhiều lần."
+
+#: ../../howto/regex.rst:514
+#, fuzzy
+msgid ""
+"Should you use these module-level functions, or should you get the pattern "
+"and call its methods yourself?  If you're accessing a regex within a loop, "
+"pre-compiling it will save a few function calls. Outside of loops, there's "
+"not much difference thanks to the internal cache."
+msgstr ""
+"Bạn nên sử dụng các hàm cấp mô-đun này hay bạn nên lấy mẫu và tự gọi các "
+"phương thức của nó?  Nếu bạn đang truy cập biểu thức chính quy trong vòng "
+"lặp, việc biên dịch trước nó sẽ lưu một số lệnh gọi hàm. Ngoài các vòng lặp,"
+" không có nhiều khác biệt nhờ bộ đệm trong."
+
+#: ../../howto/regex.rst:522
+#, fuzzy
+msgid "Compilation flags"
+msgstr "Cờ biên soạn"
+
+#: ../../howto/regex.rst:526
+#, fuzzy
+msgid ""
+"Compilation flags let you modify some aspects of how regular expressions "
+"work. Flags are available in the :mod:`re` module under two names, a long "
+"name such as :const:`IGNORECASE` and a short, one-letter form such as "
+":const:`I`.  (If you're familiar with Perl's pattern modifiers, the one-"
+"letter forms use the same letters; the short form of :const:`re.VERBOSE` is "
+":const:`re.X`, for example.) Multiple flags can be specified by bitwise OR-"
+"ing them; ``re.I | re.M`` sets both the :const:`I` and :const:`M` flags, for"
+" example."
+msgstr ""
+"Cờ biên dịch cho phép bạn sửa đổi một số khía cạnh về cách hoạt động của "
+"biểu thức chính quy. Cờ có sẵn trong mô-đun :mod:`re` dưới hai tên, một tên "
+"dài như :const:`IGNORECASE` và một dạng ngắn, một chữ cái như :const:`I`.  "
+"(Nếu bạn quen thuộc với các công cụ sửa đổi mẫu của Perl, thì dạng một chữ "
+"cái sử dụng các chữ cái giống nhau; ví dụ: dạng rút gọn của "
+":const:`re.VERBOSE` là :const:`re.X`.) Nhiều cờ có thể được chỉ định bằng "
+"cách OR-ing chúng theo bit; Ví dụ: ``re.I | re.M`` đặt cả cờ :const:`I` và "
+":const:`M`."
+
+#: ../../howto/regex.rst:534
+#, fuzzy
+msgid ""
+"Here's a table of the available flags, followed by a more detailed "
+"explanation of each one."
+msgstr ""
+"Đây là bảng các cờ có sẵn, theo sau là phần giải thích chi tiết hơn về từng "
+"cờ."
+
+#: ../../howto/regex.rst:538
+#, fuzzy
+msgid "Flag"
+msgstr "Cờ"
+
+#: ../../howto/regex.rst:538
+#, fuzzy
+msgid "Meaning"
+msgstr "Ý nghĩa"
+
+#: ../../howto/regex.rst:540
+#, fuzzy
+msgid ":const:`ASCII`, :const:`A`"
+msgstr ":const:`ASCII`, :const:`A`"
+
+#: ../../howto/regex.rst:540
+#, fuzzy
+msgid ""
+"Makes several escapes like ``\\w``, ``\\b``, ``\\s`` and ``\\d`` match only "
+"on ASCII characters with the respective property."
+msgstr ""
+"Làm cho một số ký tự thoát như ``\\w``, ``\\b``, ``\\s`` và ``\\d`` chỉ khớp"
+" với các ký tự ASCII có thuộc tính tương ứng."
+
+#: ../../howto/regex.rst:544
+#, fuzzy
+msgid ":const:`DOTALL`, :const:`S`"
+msgstr ":const:`DOTALL`, :const:`S`"
+
+#: ../../howto/regex.rst:544
+#, fuzzy
+msgid "Make ``.`` match any character, including newlines."
+msgstr "Làm cho ``.`` khớp với bất kỳ ký tự nào, kể cả dòng mới."
+
+#: ../../howto/regex.rst:547
+#, fuzzy
+msgid ":const:`IGNORECASE`, :const:`I`"
+msgstr ":const:`IGNORECASE`, :const:`I`"
+
+#: ../../howto/regex.rst:547
+#, fuzzy
+msgid "Do case-insensitive matches."
+msgstr "Thực hiện các trận đấu không phân biệt chữ hoa chữ thường."
+
+#: ../../howto/regex.rst:549
+#, fuzzy
+msgid ":const:`LOCALE`, :const:`L`"
+msgstr ":const:`LOCALE`, :const:`L`"
+
+#: ../../howto/regex.rst:549
+#, fuzzy
+msgid "Do a locale-aware match."
+msgstr "Thực hiện đối sánh nhận biết địa phương."
+
+#: ../../howto/regex.rst:551
+#, fuzzy
+msgid ":const:`MULTILINE`, :const:`M`"
+msgstr ":const:`MULTILINE`, :const:`M`"
+
+#: ../../howto/regex.rst:551
+#, fuzzy
+msgid "Multi-line matching, affecting ``^`` and ``$``."
+msgstr "Khớp nhiều dòng, ảnh hưởng đến ``^`` và ``$``."
+
+#: ../../howto/regex.rst:554
+#, fuzzy
+msgid ":const:`VERBOSE`, :const:`X` (for 'extended')"
+msgstr ":const:`VERBOSE`, :const:`X` (dành cho 'mở rộng')"
+
+#: ../../howto/regex.rst:554
+#, fuzzy
+msgid ""
+"Enable verbose REs, which can be organized more cleanly and understandably."
+msgstr "Kích hoạt RE chi tiết để có thể sắp xếp rõ ràng và dễ hiểu hơn."
+
+#: ../../howto/regex.rst:563
+#, fuzzy
+msgid ""
+"Perform case-insensitive matching; character class and literal strings will "
+"match letters by ignoring case.  For example, ``[A-Z]`` will match lowercase"
+" letters, too. Full Unicode matching also works unless the :const:`ASCII` "
+"flag is used to disable non-ASCII matches.  When the Unicode patterns "
+"``[a-z]`` or ``[A-Z]`` are used in combination with the :const:`IGNORECASE` "
+"flag, they will match the 52 ASCII letters and 4 additional non-ASCII "
+"letters: 'İ' (U+0130, Latin capital letter I with dot above), 'ı' (U+0131, "
+"Latin small letter dotless i), 'ſ' (U+017F, Latin small letter long s) and "
+"'K' (U+212A, Kelvin sign).  ``Spam`` will match ``'Spam'``, ``'spam'``, "
+"``'spAM'``, or ``'ſpam'`` (the latter is matched only in Unicode mode). This"
+" lowercasing doesn't take the current locale into account; it will if you "
+"also set the :const:`LOCALE` flag."
+msgstr ""
+"Thực hiện khớp không phân biệt chữ hoa chữ thường; lớp ký tự và chuỗi ký tự "
+"sẽ khớp với các chữ cái bằng cách bỏ qua chữ hoa chữ thường.  Ví dụ: "
+"``[A-Z]`` cũng sẽ khớp với các chữ cái viết thường. Đối sánh Unicode đầy đủ "
+"cũng hoạt động trừ khi cờ :const:`ASCII` được sử dụng để vô hiệu hóa các đối"
+" sánh không phải ASCII.  Khi sử dụng mẫu Unicode ``[a-z]`` hoặc ``[A-Z]`` "
+"kết hợp với cờ :const:`IGNORECASE`, chúng sẽ khớp với 52 chữ cái ASCII và 4 "
+"chữ cái không phải ASCII bổ sung: 'İ' (U+0130, chữ in hoa Latinh I có dấu "
+"chấm ở trên), 'ı' (U+0131, chữ nhỏ Latinh không có dấu chấm i), 'ſ' (U+017F,"
+" chữ nhỏ Latinh dài s) và 'K' (U+212A, ký hiệu Kelvin).  ``Spam`` sẽ khớp "
+"với ``'Spam'``, ``'spam'``, ``'spAM'`` hoặc ``'ſpam'`` (cái sau chỉ khớp ở "
+"chế độ Unicode). Việc viết thường này không tính đến ngôn ngữ hiện tại; điều"
+" đó sẽ xảy ra nếu bạn cũng đặt cờ :const:`LOCALE`."
+
+#: ../../howto/regex.rst:581
+#, fuzzy
+msgid ""
+"Make ``\\w``, ``\\W``, ``\\b``, ``\\B`` and case-insensitive matching "
+"dependent on the current locale instead of the Unicode database."
+msgstr ""
+"Tạo ``\\w``, ``\\W``, ``\\b``, ``\\B`` và đối sánh không phân biệt chữ hoa "
+"chữ thường phụ thuộc vào ngôn ngữ hiện tại thay vì cơ sở dữ liệu Unicode."
+
+#: ../../howto/regex.rst:584
+#, fuzzy
+msgid ""
+"Locales are a feature of the C library intended to help in writing programs "
+"that take account of language differences.  For example, if you're "
+"processing encoded French text, you'd want to be able to write ``\\w+`` to "
+"match words, but ``\\w`` only matches the character class ``[A-Za-z]`` in "
+"bytes patterns; it won't match bytes corresponding to ``é`` or ``ç``. If "
+"your system is configured properly and a French locale is selected, certain "
+"C functions will tell the program that the byte corresponding to ``é`` "
+"should also be considered a letter. Setting the :const:`LOCALE` flag when "
+"compiling a regular expression will cause the resulting compiled object to "
+"use these C functions for ``\\w``; this is slower, but also enables ``\\w+``"
+" to match French words as you'd expect. The use of this flag is discouraged "
+"in Python 3 as the locale mechanism is very unreliable, it only handles one "
+"\"culture\" at a time, and it only works with 8-bit locales.  Unicode "
+"matching is already enabled by default in Python 3 for Unicode (str) "
+"patterns, and it is able to handle different locales/languages."
+msgstr ""
+"Ngôn ngữ là một tính năng của thư viện C nhằm giúp viết các chương trình có "
+"tính đến sự khác biệt về ngôn ngữ.  Ví dụ: nếu bạn đang xử lý văn bản tiếng "
+"Pháp được mã hóa, bạn muốn có thể viết ``\\w+`` để khớp các từ, nhưng "
+"``\\w`` chỉ khớp với lớp ký tự ``[A-Za-z]`` theo mẫu byte; nó sẽ không khớp "
+"với byte tương ứng với ``é`` hoặc ``ç``. Nếu hệ thống của bạn được cấu hình "
+"đúng cách và ngôn ngữ tiếng Pháp được chọn, một số hàm C nhất định sẽ cho "
+"chương trình biết rằng byte tương ứng với ``é`` cũng phải được coi là một "
+"chữ cái. Đặt cờ :const:`LOCALE` khi biên dịch biểu thức chính quy sẽ khiến "
+"đối tượng được biên dịch thu được sử dụng các hàm C này cho ``\\w``; việc "
+"này chậm hơn nhưng cũng cho phép ``\\w+`` khớp với các từ tiếng Pháp như bạn"
+" mong đợi. Việc sử dụng cờ này không được khuyến khích trong Python 3 vì cơ "
+"chế ngôn ngữ rất không đáng tin cậy, nó chỉ xử lý một \"nền văn hóa\" tại "
+"một thời điểm và nó chỉ hoạt động với các ngôn ngữ 8 bit.  Tính năng khớp "
+"Unicode đã được bật theo mặc định trong Python 3 cho các mẫu Unicode (str) "
+"và nó có thể xử lý các ngôn ngữ/ngôn ngữ khác nhau."
+
+#: ../../howto/regex.rst:606
+#, fuzzy
+msgid ""
+"(``^`` and ``$`` haven't been explained yet;  they'll be introduced in "
+"section :ref:`more-metacharacters`.)"
+msgstr ""
+"(``^`` và ``$`` chưa được giải thích; chúng sẽ được giới thiệu trong phần "
+":ref:`more-metacharacters`.)"
+
+#: ../../howto/regex.rst:609
+#, fuzzy
+msgid ""
+"Usually ``^`` matches only at the beginning of the string, and ``$`` matches"
+" only at the end of the string and immediately before the newline (if any) "
+"at the end of the string. When this flag is specified, ``^`` matches at the "
+"beginning of the string and at the beginning of each line within the string,"
+" immediately following each newline.  Similarly, the ``$`` metacharacter "
+"matches either at the end of the string and at the end of each line "
+"(immediately preceding each newline)."
+msgstr ""
+"Thông thường ``^`` chỉ khớp ở đầu chuỗi và ``$`` chỉ khớp ở cuối chuỗi và "
+"ngay trước dòng mới (nếu có) ở cuối chuỗi. Khi cờ này được chỉ định, ``^`` "
+"khớp ở đầu chuỗi và ở đầu mỗi dòng trong chuỗi, ngay sau mỗi dòng mới.  "
+"Tương tự, siêu ký tự ``$`` khớp ở cuối chuỗi và ở cuối mỗi dòng (ngay trước "
+"mỗi dòng mới)."
+
+#: ../../howto/regex.rst:622
+#, fuzzy
+msgid ""
+"Makes the ``'.'`` special character match any character at all, including a "
+"newline; without this flag, ``'.'`` will match anything *except* a newline."
+msgstr ""
+"Làm cho ký tự đặc biệt ``'.'`` khớp với bất kỳ ký tự nào, kể cả dòng mới; "
+"không có cờ này, ``'.'`` sẽ khớp với bất kỳ dòng nào của *except*."
+
+#: ../../howto/regex.rst:630
+#, fuzzy
+msgid ""
+"Make ``\\w``, ``\\W``, ``\\b``, ``\\B``, ``\\s`` and ``\\S`` perform ASCII-"
+"only matching instead of full Unicode matching. This is only meaningful for "
+"Unicode patterns, and is ignored for byte patterns."
+msgstr ""
+"Làm cho ``\\w``, ``\\W``, ``\\b``, ``\\B``, ``\\s`` và ``\\S`` thực hiện đối"
+" sánh chỉ ASCII thay vì đối sánh Unicode đầy đủ. Điều này chỉ có ý nghĩa đối"
+" với các mẫu Unicode và bị bỏ qua đối với các mẫu byte."
+
+#: ../../howto/regex.rst:639
+#, fuzzy
+msgid ""
+"This flag allows you to write regular expressions that are more readable by "
+"granting you more flexibility in how you can format them.  When this flag "
+"has been specified, whitespace within the RE string is ignored, except when "
+"the whitespace is in a character class or preceded by an unescaped "
+"backslash; this lets you organize and indent the RE more clearly.  This flag"
+" also lets you put comments within a RE that will be ignored by the engine; "
+"comments are marked by a ``'#'`` that's neither in a character class nor "
+"preceded by an unescaped backslash."
+msgstr ""
+"Cờ này cho phép bạn viết các biểu thức chính quy dễ đọc hơn bằng cách cho "
+"phép bạn linh hoạt hơn trong cách định dạng chúng.  Khi cờ này đã được chỉ "
+"định, khoảng trắng trong chuỗi RE sẽ bị bỏ qua, ngoại trừ khi khoảng trắng "
+"nằm trong một lớp ký tự hoặc đứng trước dấu gạch chéo ngược không thoát; "
+"điều này cho phép bạn sắp xếp và thụt lề RE rõ ràng hơn.  Cờ này cũng cho "
+"phép bạn đặt các nhận xét trong RE mà công cụ sẽ bỏ qua; các nhận xét được "
+"đánh dấu bằng ``'#'`` không thuộc lớp ký tự cũng như không có dấu gạch chéo "
+"ngược không thoát trước."
+
+#: ../../howto/regex.rst:648
+#, fuzzy
+msgid ""
+"For example, here's a RE that uses :const:`re.VERBOSE`; see how much easier "
+"it is to read? ::"
+msgstr ""
+"Ví dụ: đây là RE sử dụng :const:`re.VERBOSE`; xem nó dễ đọc hơn bao nhiêu? "
+"::"
+
+#: ../../howto/regex.rst:651
+#, fuzzy
+msgid ""
+"charref = re.compile(r\"\"\"\n"
+" &[#]                # Start of a numeric entity reference\n"
+" (\n"
+"     0[0-7]+         # Octal form\n"
+"   | [0-9]+          # Decimal form\n"
+"   | x[0-9a-fA-F]+   # Hexadecimal form\n"
+" )\n"
+" ;                   # Trailing semicolon\n"
+"\"\"\", re.VERBOSE)"
+msgstr ""
+"charref = re.compile(r\"\"\"\n"
+" &[#] # Start của tham chiếu thực thể số\n"
+" (\n"
+"     0[0-7]+ dạng # Octal\n"
+"   | [0-9]+ dạng # Decimal\n"
+"   | dạng x[0-9a-fA-F]+ # Hexadecimal\n"
+" )\n"
+" ;                   dấu chấm phẩy # Trailing\n"
+"\"\"\", re.VERBOSE)"
+
+#: ../../howto/regex.rst:661
+#, fuzzy
+msgid "Without the verbose setting, the RE would look like this::"
+msgstr "Nếu không có cài đặt chi tiết, RE sẽ trông như thế này::"
+
+#: ../../howto/regex.rst:663
+#, fuzzy
+msgid ""
+"charref = re.compile(\"&#(0[0-7]+\"\n"
+"                     \"|[0-9]+\"\n"
+"                     \"|x[0-9a-fA-F]+);\")"
+msgstr ""
+"charref = re.compile(\"&#(0[0-7]+\"\n"
+"                     \"|[0-9]+\"\n"
+"                     \"|x[0-9a-fA-F]+);\")"
+
+#: ../../howto/regex.rst:667
+#, fuzzy
+msgid ""
+"In the above example, Python's automatic concatenation of string literals "
+"has been used to break up the RE into smaller pieces, but it's still more "
+"difficult to understand than the version using :const:`re.VERBOSE`."
+msgstr ""
+"Trong ví dụ trên, tính năng ghép chuỗi tự động của Python đã được sử dụng để"
+" chia RE thành các phần nhỏ hơn, nhưng nó vẫn khó hiểu hơn phiên bản sử dụng"
+" :const:`re.VERBOSE`."
+
+#: ../../howto/regex.rst:673
+#, fuzzy
+msgid "More pattern power"
+msgstr "Thêm sức mạnh mẫu"
+
+#: ../../howto/regex.rst:675
+#, fuzzy
+msgid ""
+"So far we've only covered a part of the features of regular expressions.  In"
+" this section, we'll cover some new metacharacters, and how to use groups to"
+" retrieve portions of the text that was matched."
+msgstr ""
+"Cho đến nay chúng ta mới chỉ đề cập đến một phần các tính năng của biểu thức"
+" chính quy.  Trong phần này, chúng tôi sẽ đề cập đến một số siêu ký tự mới "
+"và cách sử dụng các nhóm để truy xuất các phần văn bản khớp."
+
+#: ../../howto/regex.rst:683
+#, fuzzy
+msgid "More metacharacters"
+msgstr "Nhiều siêu ký tự hơn"
+
+#: ../../howto/regex.rst:685
+#, fuzzy
+msgid ""
+"There are some metacharacters that we haven't covered yet.  Most of them "
+"will be covered in this section."
+msgstr ""
+"Có một số siêu ký tự mà chúng tôi chưa đề cập đến.  Hầu hết chúng sẽ được đề"
+" cập trong phần này."
+
+#: ../../howto/regex.rst:688
+#, fuzzy
+msgid ""
+"Some of the remaining metacharacters to be discussed are :dfn:`zero-width "
+"assertions`.  They don't cause the engine to advance through the string; "
+"instead, they consume no characters at all, and simply succeed or fail.  For"
+" example, ``\\b`` is an assertion that the current position is located at a "
+"word boundary; the position isn't changed by the ``\\b`` at all.  This means"
+" that zero-width assertions should never be repeated, because if they match "
+"once at a given location, they can obviously be matched an infinite number "
+"of times."
+msgstr ""
+"Một số siêu ký tự còn lại sẽ được thảo luận là :dfn:`zero-width assertions`."
+"  Chúng không làm cho động cơ chuyển động qua dây đàn; thay vào đó, họ không"
+" sử dụng ký tự nào cả và chỉ đơn giản là thành công hay thất bại.  Ví dụ: "
+"``\\b`` là xác nhận rằng vị trí hiện tại nằm ở ranh giới từ; vị trí không hề"
+" bị thay đổi bởi ``\\b``.  Điều này có nghĩa là các xác nhận có độ rộng bằng"
+" 0 không bao giờ được lặp lại, bởi vì nếu chúng khớp một lần tại một vị trí "
+"nhất định, rõ ràng chúng có thể được khớp vô số lần."
+
+#: ../../howto/regex.rst:696
+#, fuzzy
+msgid "``|``"
+msgstr "``|``"
+
+#: ../../howto/regex.rst:697
+#, fuzzy
+msgid ""
+"Alternation, or the \"or\" operator.   If *A* and *B* are regular "
+"expressions, ``A|B`` will match any string that matches either *A* or *B*. "
+"``|`` has very low precedence in order to make it work reasonably when "
+"you're alternating multi-character strings. ``Crow|Servo`` will match either"
+" ``'Crow'`` or ``'Servo'``, not ``'Cro'``, a ``'w'`` or an ``'S'``, and "
+"``'ervo'``."
+msgstr ""
+"Luân phiên, hoặc toán tử \"hoặc\".   Nếu *A* và *B* là biểu thức chính quy, "
+"``A|B`` sẽ khớp với bất kỳ chuỗi nào khớp với *A* hoặc *B*. ``|`` có mức độ "
+"ưu tiên rất thấp để làm cho nó hoạt động hợp lý khi bạn xen kẽ các chuỗi "
+"nhiều ký tự. ``Crow|Servo`` sẽ khớp với ``'Crow'`` hoặc ``'Servo'``, không "
+"phải ``'Cro'``, ``'w'`` hoặc ``'S'`` và ``'ervo'``."
+
+#: ../../howto/regex.rst:703
+#, fuzzy
+msgid ""
+"To match a literal ``'|'``, use ``\\|``, or enclose it inside a character "
+"class, as in ``[|]``."
+msgstr ""
+"Để khớp với ``'|'`` theo nghĩa đen, hãy sử dụng ``\\|`` hoặc đặt nó bên "
+"trong một lớp ký tự, như trong ``[|]``."
+
+#: ../../howto/regex.rst:706
+#, fuzzy
+msgid "``^``"
+msgstr "``^``"
+
+#: ../../howto/regex.rst:707
+#, fuzzy
+msgid ""
+"Matches at the beginning of lines.  Unless the :const:`MULTILINE` flag has "
+"been set, this will only match at the beginning of the string.  In "
+":const:`MULTILINE` mode, this also matches immediately after each newline "
+"within the string."
+msgstr ""
+"Trận đấu ở đầu dòng.  Trừ khi cờ :const:`MULTILINE` được đặt, cờ này sẽ chỉ "
+"khớp ở đầu chuỗi.  Trong chế độ :const:`MULTILINE`, điều này cũng khớp ngay "
+"sau mỗi dòng mới trong chuỗi."
+
+#: ../../howto/regex.rst:711
+#, fuzzy
+msgid ""
+"For example, if you wish to match the word ``From`` only at the beginning of"
+" a line, the RE to use is ``^From``. ::"
+msgstr ""
+"Ví dụ: nếu bạn chỉ muốn khớp từ ``From`` ở đầu dòng thì RE cần sử dụng là "
+"``^From``. ::"
+
+#: ../../howto/regex.rst:714
+#, fuzzy
+msgid ""
+">>> print(re.search('^From', 'From Here to Eternity'))\n"
+"<re.Match object; span=(0, 4), match='From'>\n"
+">>> print(re.search('^From', 'Reciting From Memory'))\n"
+"None"
+msgstr ""
+">>> print(re.search('^From', 'Từ đây đến cõi vĩnh hằng'))\n"
+"<re.Match đối tượng; span=(0, 4), match='Từ'>\n"
+">>> print(re.search('^From', 'Đọc từ trí nhớ'))\n"
+"không có"
+
+#: ../../howto/regex.rst:719
+#, fuzzy
+msgid "To match a literal ``'^'``, use ``\\^``."
+msgstr "Để khớp với ``'^'`` theo nghĩa đen, hãy sử dụng ``\\^``."
+
+#: ../../howto/regex.rst:721
+#, fuzzy
+msgid "``$``"
+msgstr "``$``"
+
+#: ../../howto/regex.rst:722
+#, fuzzy
+msgid ""
+"Matches at the end of a line, which is defined as either the end of the "
+"string, or any location followed by a newline character.     ::"
+msgstr ""
+"Khớp ở cuối dòng, được xác định là cuối chuỗi hoặc bất kỳ vị trí nào theo "
+"sau là ký tự dòng mới.     ::"
+
+#: ../../howto/regex.rst:725
+#, fuzzy
+msgid ""
+">>> print(re.search('}$', '{block}'))\n"
+"<re.Match object; span=(6, 7), match='}'>\n"
+">>> print(re.search('}$', '{block} '))\n"
+"None\n"
+">>> print(re.search('}$', '{block}\\n'))\n"
+"<re.Match object; span=(6, 7), match='}'>"
+msgstr ""
+">>> print(re.search('}$', '{block}'))\n"
+"<re.Match đối tượng; span=(6, 7), match='}'>\n"
+">>> print(re.search('}$', '{block} '))\n"
+"không có\n"
+">>> print(re.search('}$', '{block}\\n'))\n"
+"<re.Match đối tượng; span=(6, 7), match='}'>"
+
+#: ../../howto/regex.rst:732
+#, fuzzy
+msgid ""
+"To match a literal ``'$'``, use ``\\$`` or enclose it inside a character "
+"class, as in  ``[$]``."
+msgstr ""
+"Để khớp với ``'$'`` theo nghĩa đen, hãy sử dụng ``\\$`` hoặc đặt nó bên "
+"trong một lớp ký tự, như trong ``[$]``."
+
+#: ../../howto/regex.rst:735
+#, fuzzy
+msgid "``\\A``"
+msgstr "``\\A``"
+
+#: ../../howto/regex.rst:736
+#, fuzzy
+msgid ""
+"Matches only at the start of the string.  When not in :const:`MULTILINE` "
+"mode, ``\\A`` and ``^`` are effectively the same.  In :const:`MULTILINE` "
+"mode, they're different: ``\\A`` still matches only at the beginning of the "
+"string, but ``^`` may match at any location inside the string that follows a"
+" newline character."
+msgstr ""
+"Chỉ khớp ở đầu chuỗi.  Khi không ở chế độ :const:`MULTILINE`, ``\\A`` và "
+"``^`` thực sự giống nhau.  Trong chế độ :const:`MULTILINE`, chúng khác nhau:"
+" ``\\A`` vẫn chỉ khớp ở đầu chuỗi, nhưng ``^`` có thể khớp ở bất kỳ vị trí "
+"nào trong chuỗi theo sau ký tự dòng mới."
+
+#: ../../howto/regex.rst:741
+#, fuzzy
+msgid "``\\z``"
+msgstr "``\\z``"
+
+#: ../../howto/regex.rst:742
+#, fuzzy
+msgid "Matches only at the end of the string."
+msgstr "Chỉ khớp ở cuối chuỗi."
+
+#: ../../howto/regex.rst:744
+#, fuzzy
+msgid "``\\Z``"
+msgstr "``\\Z``"
+
+#: ../../howto/regex.rst:745
+#, fuzzy
+msgid "The same as ``\\z``.  For compatibility with old Python versions."
+msgstr "Tương tự với ``\\z``  Để tương thích với các phiên bản Python cũ."
+
+#: ../../howto/regex.rst:747
+#, fuzzy
+msgid "``\\b``"
+msgstr "``\\b``"
+
+#: ../../howto/regex.rst:748
+#, fuzzy
+msgid ""
+"Word boundary.  This is a zero-width assertion that matches only at the "
+"beginning or end of a word.  A word is defined as a sequence of alphanumeric"
+" characters, so the end of a word is indicated by whitespace or a non-"
+"alphanumeric character."
+msgstr ""
+"Ranh giới từ.  Đây là xác nhận có độ rộng bằng 0 chỉ khớp ở đầu hoặc cuối "
+"của từ.  Một từ được định nghĩa là một chuỗi các ký tự chữ và số, do đó phần"
+" cuối của từ được biểu thị bằng khoảng trắng hoặc ký tự không phải chữ và "
+"số."
+
+#: ../../howto/regex.rst:753
+#, fuzzy
+msgid ""
+"The following example matches ``class`` only when it's a complete word; it "
+"won't match when it's contained inside another word. ::"
+msgstr ""
+"Ví dụ sau chỉ khớp với ``class`` khi đó là một từ hoàn chỉnh; nó sẽ không "
+"khớp khi nó được chứa trong một từ khác. ::"
+
+#: ../../howto/regex.rst:756
+#, fuzzy
+msgid ""
+">>> p = re.compile(r'\\bclass\\b')\n"
+">>> print(p.search('no class at all'))\n"
+"<re.Match object; span=(3, 8), match='class'>\n"
+">>> print(p.search('the declassified algorithm'))\n"
+"None\n"
+">>> print(p.search('one subclass is'))\n"
+"None"
+msgstr ""
+">>> p = re.compile(r'\\bclass\\b')\n"
+">>> print(p.search('không có lớp nào cả'))\n"
+"<re.Match đối tượng; span=(3, 8), match='class'>\n"
+">>> print(p.search('thuật toán được giải mật'))\n"
+"không có\n"
+">>> print(p.search('một lớp con là'))\n"
+"không có"
+
+#: ../../howto/regex.rst:764
+#, fuzzy
+msgid ""
+"There are two subtleties you should remember when using this special "
+"sequence. First, this is the worst collision between Python's string "
+"literals and regular expression sequences.  In Python's string literals, "
+"``\\b`` is the backspace character, ASCII value 8.  If you're not using raw "
+"strings, then Python will convert the ``\\b`` to a backspace, and your RE "
+"won't match as you expect it to. The following example looks the same as our"
+" previous RE, but omits the ``'r'`` in front of the RE string. ::"
+msgstr ""
+"Có hai điểm tinh tế bạn nên nhớ khi sử dụng trình tự đặc biệt này. Đầu tiên,"
+" đây là sự xung đột tồi tệ nhất giữa chuỗi ký tự của Python và chuỗi biểu "
+"thức chính quy.  Trong chuỗi ký tự của Python, ``\\b`` là ký tự backspace, "
+"giá trị ASCII 8. Nếu bạn không sử dụng chuỗi thô thì Python sẽ chuyển "
+"``\\b`` thành backspace và RE của bạn sẽ không khớp như bạn mong đợi. Ví dụ "
+"sau trông giống như RE trước của chúng tôi, nhưng bỏ qua ``'r'`` ở phía "
+"trước chuỗi RE. ::"
+
+#: ../../howto/regex.rst:772
+#, fuzzy
+msgid ""
+">>> p = re.compile('\\bclass\\b')\n"
+">>> print(p.search('no class at all'))\n"
+"None\n"
+">>> print(p.search('\\b' + 'class' + '\\b'))\n"
+"<re.Match object; span=(0, 7), match='\\x08class\\x08'>"
+msgstr ""
+">>> p = re.compile('\\bclass\\b')\n"
+">>> print(p.search('không có lớp nào cả'))\n"
+"không có\n"
+">>> print(p.search('\\b' + 'class' + '\\b'))\n"
+"<re.Match đối tượng; span=(0, 7), match='\\x08class\\x08'>"
+
+#: ../../howto/regex.rst:778
+#, fuzzy
+msgid ""
+"Second, inside a character class, where there's no use for this assertion, "
+"``\\b`` represents the backspace character, for compatibility with Python's "
+"string literals."
+msgstr ""
+"Thứ hai, bên trong một lớp ký tự, nơi xác nhận này không được sử dụng, "
+"``\\b`` biểu thị ký tự xóa lùi, để tương thích với các chuỗi ký tự của "
+"Python."
+
+#: ../../howto/regex.rst:782
+#, fuzzy
+msgid "``\\B``"
+msgstr "``\\B``"
+
+#: ../../howto/regex.rst:783
+#, fuzzy
+msgid ""
+"Another zero-width assertion, this is the opposite of ``\\b``, only matching"
+" when the current position is not at a word boundary."
+msgstr ""
+"Một xác nhận có độ rộng bằng 0 khác, điều này trái ngược với ``\\b``, chỉ "
+"khớp khi vị trí hiện tại không nằm ở ranh giới từ."
+
+#: ../../howto/regex.rst:788
+#, fuzzy
+msgid "Grouping"
+msgstr "Nhóm"
+
+#: ../../howto/regex.rst:790
+#, fuzzy
+msgid ""
+"Frequently you need to obtain more information than just whether the RE "
+"matched or not.  Regular expressions are often used to dissect strings by "
+"writing a RE divided into several subgroups which match different components"
+" of interest. For example, an RFC-822 header line is divided into a header "
+"name and a value, separated by a ``':'``, like this:"
+msgstr ""
+"Thông thường, bạn cần thu thập nhiều thông tin hơn là liệu RE có khớp hay "
+"không.  Biểu thức chính quy thường được sử dụng để phân tích các chuỗi bằng "
+"cách viết RE được chia thành nhiều nhóm con phù hợp với các thành phần quan "
+"tâm khác nhau. Ví dụ: dòng tiêu đề RFC-822 được chia thành tên tiêu đề và "
+"giá trị, được phân tách bằng ``':'``, như sau:"
+
+#: ../../howto/regex.rst:796
+#, fuzzy
+msgid ""
+"From: author@example.com\n"
+"User-Agent: Thunderbird 1.5.0.9 (X11/20061227)\n"
+"MIME-Version: 1.0\n"
+"To: editor@example.com"
+msgstr ""
+"Từ: tác giả@example.com\n"
+"Tác nhân người dùng: Thunderbird 1.5.0.9 (X11/20061227)\n"
+"MIME-Phiên bản: 1.0\n"
+"Tới: editor@example.com"
+
+#: ../../howto/regex.rst:803
+#, fuzzy
+msgid ""
+"This can be handled by writing a regular expression which matches an entire "
+"header line, and has one group which matches the header name, and another "
+"group which matches the header's value."
+msgstr ""
+"Điều này có thể được xử lý bằng cách viết một biểu thức chính quy khớp với "
+"toàn bộ dòng tiêu đề và có một nhóm khớp với tên tiêu đề và một nhóm khác "
+"khớp với giá trị của tiêu đề."
+
+#: ../../howto/regex.rst:807
+#, python-brace-format, fuzzy
+msgid ""
+"Groups are marked by the ``'('``, ``')'`` metacharacters. ``'('`` and "
+"``')'`` have much the same meaning as they do in mathematical expressions; "
+"they group together the expressions contained inside them, and you can "
+"repeat the contents of a group with a quantifier, such as ``*``, ``+``, "
+"``?``, or ``{m,n}``.  For example, ``(ab)*`` will match zero or more "
+"repetitions of ``ab``. ::"
+msgstr ""
+"Các nhóm được đánh dấu bằng siêu ký tự ``'('``, ``')'``. ``'('`` và ``')'`` "
+"có ý nghĩa tương tự như trong các biểu thức toán học; chúng nhóm các biểu "
+"thức chứa bên trong chúng lại với nhau và bạn có thể lặp lại nội dung của "
+"một nhóm bằng bộ định lượng, chẳng hạn như ``*``, ``+``, ``?`` hoặc "
+"``{m,n}``.  Ví dụ: ``(ab)*`` sẽ khớp với 0 hoặc nhiều lần lặp lại của "
+"``ab``. ::"
+
+#: ../../howto/regex.rst:814
+#, fuzzy
+msgid ""
+">>> p = re.compile('(ab)*')\n"
+">>> print(p.match('ababababab').span())\n"
+"(0, 10)"
+msgstr ""
+">>> p = re.compile('(ab)*')\n"
+">>> print(p.match('ababababab').span())\n"
+"(0, 10)"
+
+#: ../../howto/regex.rst:818
+#, fuzzy
+msgid ""
+"Groups indicated with ``'('``, ``')'`` also capture the starting and ending "
+"index of the text that they match; this can be retrieved by passing an "
+"argument to :meth:`~re.Match.group`, :meth:`~re.Match.start`, "
+":meth:`~re.Match.end`, and :meth:`~re.Match.span`.  Groups are numbered "
+"starting with 0.  Group 0 is always present; it's the whole RE, so "
+":ref:`match object <match-objects>` methods all have group 0 as their "
+"default argument.  Later we'll see how to express groups that don't capture "
+"the span of text that they match. ::"
+msgstr ""
+"Các nhóm được biểu thị bằng ``'('``, ``')'`` cũng ghi lại chỉ mục bắt đầu và"
+" kết thúc của văn bản mà chúng khớp; điều này có thể được truy xuất bằng "
+"cách chuyển một đối số tới :meth:`~re.Match.group`, :meth:`~re.Match.start`,"
+" :meth:`~re.Match.end` và :meth:`~re.Match.span`.  Các nhóm được đánh số bắt"
+" đầu bằng 0. Nhóm 0 luôn có mặt; đó là toàn bộ RE, vì vậy các phương thức "
+":ref:`match object <match-objects>` đều có nhóm 0 làm đối số mặc định.  Sau "
+"này chúng ta sẽ xem cách thể hiện các nhóm không nắm bắt được khoảng văn bản"
+" phù hợp với chúng. ::"
+
+#: ../../howto/regex.rst:827
+#, fuzzy
+msgid ""
+">>> p = re.compile('(a)b')\n"
+">>> m = p.match('ab')\n"
+">>> m.group()\n"
+"'ab'\n"
+">>> m.group(0)\n"
+"'ab'"
+msgstr ""
+">>> p = re.compile('(a)b')\n"
+">>> m = p.match('ab')\n"
+">>> m.group()\n"
+"'ab'\n"
+">>> m.group(0)\n"
+"'ab'"
+
+#: ../../howto/regex.rst:834
+#, fuzzy
+msgid ""
+"Subgroups are numbered from left to right, from 1 upward.  Groups can be "
+"nested; to determine the number, just count the opening parenthesis "
+"characters, going from left to right. ::"
+msgstr ""
+"Các nhóm con được đánh số từ trái sang phải, từ 1 trở lên.  Các nhóm có thể "
+"được lồng vào nhau; để xác định số, chỉ cần đếm các ký tự trong ngoặc đơn mở"
+" đầu, đi từ trái sang phải. ::"
+
+#: ../../howto/regex.rst:838
+#, fuzzy
+msgid ""
+">>> p = re.compile('(a(b)c)d')\n"
+">>> m = p.match('abcd')\n"
+">>> m.group(0)\n"
+"'abcd'\n"
+">>> m.group(1)\n"
+"'abc'\n"
+">>> m.group(2)\n"
+"'b'"
+msgstr ""
+">>> p = re.compile('(a(b)c)d')\n"
+">>> m = p.match('abcd')\n"
+">>> m.group(0)\n"
+"'abcd'\n"
+">>> m.group(1)\n"
+"'abc'\n"
+">>> m.group(2)\n"
+"'b'"
+
+#: ../../howto/regex.rst:847
+#, fuzzy
+msgid ""
+":meth:`~re.Match.group` can be passed multiple group numbers at a time, in "
+"which case it will return a tuple containing the corresponding values for "
+"those groups. ::"
+msgstr ""
+":meth:`~re.Match.group` có thể được truyền nhiều số nhóm cùng một lúc, trong"
+" trường hợp đó, nó sẽ trả về một bộ chứa các giá trị tương ứng cho các nhóm "
+"đó. ::"
+
+#: ../../howto/regex.rst:850
+#, fuzzy
+msgid ""
+">>> m.group(2,1,2)\n"
+"('b', 'abc', 'b')"
+msgstr ""
+">>> m.group(2,1,2)\n"
+"('b', 'abc', 'b')"
+
+#: ../../howto/regex.rst:853
+#, fuzzy
+msgid ""
+"The :meth:`~re.Match.groups` method returns a tuple containing the strings "
+"for all the subgroups, from 1 up to however many there are. ::"
+msgstr ""
+"Phương thức :meth:`~re.Match.groups` trả về một bộ chứa các chuỗi cho tất cả"
+" các nhóm con, từ 1 cho đến số lượng có nhiều. ::"
+
+#: ../../howto/regex.rst:856
+#, fuzzy
+msgid ""
+">>> m.groups()\n"
+"('abc', 'b')"
+msgstr ""
+">>> m.groups()\n"
+"('abc', 'b')"
+
+#: ../../howto/regex.rst:859
+#, fuzzy
+msgid ""
+"Backreferences in a pattern allow you to specify that the contents of an "
+"earlier capturing group must also be found at the current location in the "
+"string.  For example, ``\\1`` will succeed if the exact contents of group 1 "
+"can be found at the current position, and fails otherwise.  Remember that "
+"Python's string literals also use a backslash followed by numbers to allow "
+"including arbitrary characters in a string, so be sure to use a raw string "
+"when incorporating backreferences in a RE."
+msgstr ""
+"Tham chiếu ngược trong mẫu cho phép bạn chỉ định rằng nội dung của nhóm thu "
+"thập trước đó cũng phải được tìm thấy tại vị trí hiện tại trong chuỗi.  Ví "
+"dụ: ``\\1`` sẽ thành công nếu có thể tìm thấy nội dung chính xác của nhóm 1 "
+"ở vị trí hiện tại và nếu không thì sẽ thất bại.  Hãy nhớ rằng các chuỗi ký "
+"tự của Python cũng sử dụng dấu gạch chéo ngược theo sau là các số để cho "
+"phép bao gồm các ký tự tùy ý trong một chuỗi, vì vậy hãy đảm bảo sử dụng "
+"chuỗi thô khi kết hợp các tham chiếu ngược trong RE."
+
+#: ../../howto/regex.rst:867
+#, fuzzy
+msgid "For example, the following RE detects doubled words in a string. ::"
+msgstr "Ví dụ: RE sau đây phát hiện các từ được nhân đôi trong một chuỗi. ::"
+
+#: ../../howto/regex.rst:869
+#, fuzzy
+msgid ""
+">>> p = re.compile(r'\\b(\\w+)\\s+\\1\\b')\n"
+">>> p.search('Paris in the the spring').group()\n"
+"'the the'"
+msgstr ""
+">>> p = re.compile(r'\\b(\\w+)\\s+\\1\\b')\n"
+">>> p.search('Paris mùa xuân').group()\n"
+"'cái'"
+
+#: ../../howto/regex.rst:873
+#, fuzzy
+msgid ""
+"Backreferences like this aren't often useful for just searching through a "
+"string --- there are few text formats which repeat data in this way --- but "
+"you'll soon find out that they're *very* useful when performing string "
+"substitutions."
+msgstr ""
+"Các tham chiếu ngược như thế này thường không hữu ích khi chỉ tìm kiếm trong"
+" một chuỗi --- có một số định dạng văn bản lặp lại dữ liệu theo cách này ---"
+" nhưng bạn sẽ sớm nhận ra rằng chúng rất hữu ích khi thực hiện thay thế "
+"chuỗi."
+
+#: ../../howto/regex.rst:879
+#, fuzzy
+msgid "Non-capturing and named groups"
+msgstr "Các nhóm không bắt giữ và được đặt tên"
+
+#: ../../howto/regex.rst:881
+#, fuzzy
+msgid ""
+"Elaborate REs may use many groups, both to capture substrings of interest, "
+"and to group and structure the RE itself.  In complex REs, it becomes "
+"difficult to keep track of the group numbers.  There are two features which "
+"help with this problem.  Both of them use a common syntax for regular "
+"expression extensions, so we'll look at that first."
+msgstr ""
+"Các RE phức tạp có thể sử dụng nhiều nhóm, vừa để nắm bắt các chuỗi con quan"
+" tâm, vừa để nhóm và cấu trúc chính RE.  Trong các RE phức tạp, việc theo "
+"dõi số nhóm trở nên khó khăn.  Có hai tính năng giúp giải quyết vấn đề này."
+"  Cả hai đều sử dụng cú pháp chung cho phần mở rộng biểu thức chính quy, vì "
+"vậy chúng ta sẽ xem xét điều đó trước tiên."
+
+#: ../../howto/regex.rst:887
+#, fuzzy
+msgid ""
+"Perl 5 is well known for its powerful additions to standard regular "
+"expressions. For these new features the Perl developers couldn't choose new "
+"single-keystroke metacharacters or new special sequences beginning with "
+"``\\`` without making Perl's regular expressions confusingly different from "
+"standard REs.  If they chose ``&`` as a new metacharacter, for example, old "
+"expressions would be assuming that ``&`` was a regular character and "
+"wouldn't have escaped it by writing ``\\&`` or ``[&]``."
+msgstr ""
+"Perl 5 nổi tiếng với những bổ sung mạnh mẽ cho các biểu thức chính quy tiêu "
+"chuẩn. Đối với những tính năng mới này, các nhà phát triển Perl không thể "
+"chọn các siêu ký tự nhấn phím đơn mới hoặc các chuỗi đặc biệt mới bắt đầu "
+"bằng ``\\`` mà không làm cho các biểu thức chính quy của Perl khác biệt một "
+"cách khó hiểu với các RE tiêu chuẩn.  Ví dụ: nếu họ chọn ``&`` làm siêu ký "
+"tự mới thì các biểu thức cũ sẽ cho rằng ``&`` là một ký tự thông thường và "
+"sẽ không thoát khỏi nó bằng cách viết ``\\&`` hoặc ``[&]``."
+
+#: ../../howto/regex.rst:894
+#, fuzzy
+msgid ""
+"The solution chosen by the Perl developers was to use ``(?...)`` as the "
+"extension syntax.  ``?`` immediately after a parenthesis was a syntax error "
+"because the ``?`` would have nothing to repeat, so this didn't introduce any"
+" compatibility problems.  The characters immediately after the ``?``  "
+"indicate what extension is being used, so ``(?=foo)`` is one thing (a "
+"positive lookahead assertion) and ``(?:foo)`` is something else (a non-"
+"capturing group containing the subexpression ``foo``)."
+msgstr ""
+"Giải pháp được các nhà phát triển Perl lựa chọn là sử dụng ``(?...)`` làm cú"
+" pháp mở rộng.  ``?`` ngay sau dấu ngoặc đơn là lỗi cú pháp vì ``?`` sẽ "
+"không có gì để lặp lại, vì vậy điều này không gây ra bất kỳ vấn đề tương "
+"thích nào.  Các ký tự ngay sau ``?`` cho biết tiện ích mở rộng nào đang được"
+" sử dụng, vì vậy ``(?=foo)`` là một thứ (xác nhận nhìn về phía trước tích "
+"cực) và ``(?:foo)`` là một thứ khác (một nhóm không bắt giữ có chứa biểu "
+"thức con ``foo``)."
+
+#: ../../howto/regex.rst:902
+#, fuzzy
+msgid ""
+"Python supports several of Perl's extensions and adds an extension syntax to"
+" Perl's extension syntax.  If the first character after the question mark is"
+" a ``P``, you know that it's an extension that's specific to Python."
+msgstr ""
+"Python hỗ trợ một số phần mở rộng của Perl và thêm cú pháp phần mở rộng vào "
+"cú pháp phần mở rộng của Perl.  Nếu ký tự đầu tiên sau dấu chấm hỏi là ``P``"
+" thì bạn biết rằng đó là tiện ích mở rộng dành riêng cho Python."
+
+#: ../../howto/regex.rst:907
+#, fuzzy
+msgid ""
+"Now that we've looked at the general extension syntax, we can return to the "
+"features that simplify working with groups in complex REs."
+msgstr ""
+"Bây giờ chúng ta đã xem xét cú pháp mở rộng chung, chúng ta có thể quay lại "
+"các tính năng giúp đơn giản hóa việc làm việc với các nhóm trong RE phức "
+"tạp."
+
+#: ../../howto/regex.rst:910
+#, fuzzy
+msgid ""
+"Sometimes you'll want to use a group to denote a part of a regular "
+"expression, but aren't interested in retrieving the group's contents. You "
+"can make this fact explicit by using a non-capturing group: ``(?:...)``, "
+"where you can replace the ``...`` with any other regular expression. ::"
+msgstr ""
+"Đôi khi bạn muốn sử dụng một nhóm để biểu thị một phần của biểu thức chính "
+"quy nhưng không quan tâm đến việc truy xuất nội dung của nhóm. Bạn có thể "
+"làm rõ điều này bằng cách sử dụng nhóm không thu thập: ``(?:...)``, trong đó"
+" bạn có thể thay thế ``...`` bằng bất kỳ biểu thức chính quy nào khác. ::"
+
+#: ../../howto/regex.rst:915
+#, fuzzy
+msgid ""
+">>> m = re.match(\"([abc])+\", \"abc\")\n"
+">>> m.groups()\n"
+"('c',)\n"
+">>> m = re.match(\"(?:[abc])+\", \"abc\")\n"
+">>> m.groups()\n"
+"()"
+msgstr ""
+">>> m = re.match(\"([abc])+\", \"abc\")\n"
+">>> m.groups()\n"
+"('c',)\n"
+">>> m = re.match(\"(?:[abc])+\", \"abc\")\n"
+">>> m.groups()\n"
+"()"
+
+#: ../../howto/regex.rst:922
+#, fuzzy
+msgid ""
+"Except for the fact that you can't retrieve the contents of what the group "
+"matched, a non-capturing group behaves exactly the same as a capturing "
+"group; you can put anything inside it, repeat it with a repetition "
+"metacharacter such as ``*``, and nest it within other groups (capturing or "
+"non-capturing). ``(?:...)`` is particularly useful when modifying an "
+"existing pattern, since you can add new groups without changing how all the "
+"other groups are numbered.  It should be mentioned that there's no "
+"performance difference in searching between capturing and non-capturing "
+"groups; neither form is any faster than the other."
+msgstr ""
+"Ngoại trừ thực tế là bạn không thể truy xuất nội dung của những gì nhóm đã "
+"khớp, nhóm không bắt giữ hoạt động giống hệt như nhóm bắt giữ; bạn có thể "
+"đặt bất cứ thứ gì vào bên trong nó, lặp lại nó với một siêu ký tự lặp lại "
+"chẳng hạn như ``*`` và lồng nó vào các nhóm khác (chụp hoặc không bắt). "
+"``(?:...)`` đặc biệt hữu ích khi sửa đổi mẫu hiện có, vì bạn có thể thêm "
+"nhóm mới mà không thay đổi cách đánh số tất cả các nhóm khác.  Cần đề cập "
+"rằng không có sự khác biệt về hiệu suất trong việc tìm kiếm giữa các nhóm "
+"thu thập và không thu thập; không có hình thức nào nhanh hơn hình thức kia."
+
+#: ../../howto/regex.rst:931
+#, fuzzy
+msgid ""
+"A more significant feature is named groups: instead of referring to them by "
+"numbers, groups can be referenced by a name."
+msgstr ""
+"Một tính năng quan trọng hơn là các nhóm được đặt tên: thay vì đề cập đến "
+"chúng bằng số, các nhóm có thể được tham chiếu bằng tên."
+
+#: ../../howto/regex.rst:934
+#, fuzzy
+msgid ""
+"The syntax for a named group is one of the Python-specific extensions: "
+"``(?P<name>...)``.  *name* is, obviously, the name of the group.  Named "
+"groups behave exactly like capturing groups, and additionally associate a "
+"name with a group.  The :ref:`match object <match-objects>` methods that "
+"deal with capturing groups all accept either integers that refer to the "
+"group by number or strings that contain the desired group's name.  Named "
+"groups are still given numbers, so you can retrieve information about a "
+"group in two ways::"
+msgstr ""
+"Cú pháp cho một nhóm được đặt tên là một trong những phần mở rộng dành riêng"
+" cho Python: ``(?P<name>...)``.  *name* rõ ràng là tên của nhóm.  Các nhóm "
+"được đặt tên hoạt động giống hệt như việc thu thập các nhóm và liên kết thêm"
+" tên với một nhóm.  Tất cả các phương thức :ref:`match object <match-"
+"objects>` xử lý các nhóm bắt giữ đều chấp nhận số nguyên tham chiếu đến nhóm"
+" theo số hoặc chuỗi chứa tên nhóm mong muốn.  Các nhóm được đặt tên vẫn được"
+" cung cấp số nên bạn có thể truy xuất thông tin về nhóm theo hai cách::"
+
+#: ../../howto/regex.rst:942
+#, fuzzy
+msgid ""
+">>> p = re.compile(r'(?P<word>\\b\\w+\\b)')\n"
+">>> m = p.search( '(((( Lots of punctuation )))' )\n"
+">>> m.group('word')\n"
+"'Lots'\n"
+">>> m.group(1)\n"
+"'Lots'"
+msgstr ""
+">>> p = re.compile(r'(?P<word>\\b\\w+\\b)')\n"
+">>> m = p.search( '((((Nhiều dấu câu )))' )\n"
+">>> m.group('word')\n"
+"'Rất nhiều'\n"
+">>> m.group(1)\n"
+"'Rất nhiều'"
+
+#: ../../howto/regex.rst:949
+#, fuzzy
+msgid ""
+"Additionally, you can retrieve named groups as a dictionary with "
+":meth:`~re.Match.groupdict`::"
+msgstr ""
+"Ngoài ra, bạn có thể truy xuất các nhóm được đặt tên dưới dạng từ điển với "
+":meth:`~re.Match.groupdict`::"
+
+#: ../../howto/regex.rst:952
+#, python-brace-format, fuzzy
+msgid ""
+">>> m = re.match(r'(?P<first>\\w+) (?P<last>\\w+)', 'Jane Doe')\n"
+">>> m.groupdict()\n"
+"{'first': 'Jane', 'last': 'Doe'}"
+msgstr ""
+">>> m = re.match(r'(?P<first>\\w+) (?P<last>\\w+)', 'Jane Doe')\n"
+">>> m.groupdict()\n"
+"{'đầu tiên': 'Jane', 'cuối cùng': 'Doe'}"
+
+#: ../../howto/regex.rst:956
+#, fuzzy
+msgid ""
+"Named groups are handy because they let you use easily remembered names, "
+"instead of having to remember numbers.  Here's an example RE from the "
+":mod:`imaplib` module::"
+msgstr ""
+"Các nhóm được đặt tên rất tiện lợi vì chúng cho phép bạn sử dụng những cái "
+"tên dễ nhớ thay vì phải nhớ số.  Đây là ví dụ RE từ mô-đun :mod:`imaplib`::"
+
+#: ../../howto/regex.rst:960
+#, fuzzy
+msgid ""
+"InternalDate = re.compile(r'INTERNALDATE \"'\n"
+"        r'(?P<day>[ 123][0-9])-(?P<mon>[A-Z][a-z][a-z])-'\n"
+"        r'(?P<year>[0-9][0-9][0-9][0-9])'\n"
+"        r' (?P<hour>[0-9][0-9]):(?P<min>[0-9][0-9]):(?P<sec>[0-9][0-9])'\n"
+"        r' (?P<zonen>[-+])(?P<zoneh>[0-9][0-9])(?P<zonem>[0-9][0-9])'\n"
+"        r'\"')"
+msgstr ""
+"InternalDate = re.compile(r'INTERNALDATE \"'\n"
+"        r'(?P<day>[ 123][0-9])-(?P<mon>[A-Z][a-z][a-z])-'\n"
+"        r'(?P<năm>[0-9][0-9][0-9][0-9])'\n"
+"        r' (?P<hour>[0-9][0-9]):(?P<min>[0-9][0-9]):(?P<sec>[0-9][0-9])'\n"
+"        r' (?P<zonen>[-+])(?P<zoneh>[0-9][0-9])(?P<zonem>[0-9][0-9])'\n"
+"        r'\"')"
+
+#: ../../howto/regex.rst:967
+#, fuzzy
+msgid ""
+"It's obviously much easier to retrieve ``m.group('zonem')``, instead of "
+"having to remember to retrieve group 9."
+msgstr ""
+"Rõ ràng việc truy xuất ``m.group('zonem')`` dễ dàng hơn nhiều thay vì phải "
+"nhớ truy xuất nhóm 9."
+
+#: ../../howto/regex.rst:970
+#, fuzzy
+msgid ""
+"The syntax for backreferences in an expression such as ``(...)\\1`` refers "
+"to the number of the group.  There's naturally a variant that uses the group"
+" name instead of the number. This is another Python extension: ``(?P=name)``"
+" indicates that the contents of the group called *name* should again be "
+"matched at the current point.  The regular expression for finding doubled "
+"words, ``\\b(\\w+)\\s+\\1\\b`` can also be written as "
+"``\\b(?P<word>\\w+)\\s+(?P=word)\\b``::"
+msgstr ""
+"Cú pháp cho các tham chiếu ngược trong một biểu thức chẳng hạn như "
+"``(...)\\1`` đề cập đến số lượng của nhóm.  Đương nhiên có một biến thể sử "
+"dụng tên nhóm thay vì số. Đây là một tiện ích mở rộng Python khác: "
+"``(?P=name)`` chỉ ra rằng nội dung của nhóm có tên *name* sẽ lại được khớp "
+"tại thời điểm hiện tại.  Biểu thức chính quy để tìm các từ nhân đôi, "
+"``\\b(\\w+)\\s+\\1\\b`` cũng có thể được viết là "
+"``\\b(?P<word>\\w+)\\s+(?P=word)\\b``::"
+
+#: ../../howto/regex.rst:977
+#, fuzzy
+msgid ""
+">>> p = re.compile(r'\\b(?P<word>\\w+)\\s+(?P=word)\\b')\n"
+">>> p.search('Paris in the the spring').group()\n"
+"'the the'"
+msgstr ""
+">>> p = re.compile(r'\\b(?P<word>\\w+)\\s+(?P=word)\\b')\n"
+">>> p.search('Paris mùa xuân').group()\n"
+"'cái'"
+
+#: ../../howto/regex.rst:983
+#, fuzzy
+msgid "Lookahead assertions"
+msgstr "Những khẳng định về phía trước"
+
+#: ../../howto/regex.rst:985
+#, fuzzy
+msgid ""
+"Another zero-width assertion is the lookahead assertion.  Lookahead "
+"assertions are available in both positive and negative form, and  look like "
+"this:"
+msgstr ""
+"Một xác nhận có độ rộng bằng 0 khác là xác nhận nhìn về phía trước.  Các xác"
+" nhận trước mắt có sẵn ở cả dạng tích cực và tiêu cực và có dạng như sau:"
+
+#: ../../howto/regex.rst:988
+#, fuzzy
+msgid "``(?=...)``"
+msgstr "``(?=...)``"
+
+#: ../../howto/regex.rst:989
+#, fuzzy
+msgid ""
+"Positive lookahead assertion.  This succeeds if the contained regular "
+"expression, represented here by ``...``, successfully matches at the current"
+" location, and fails otherwise. But, once the contained expression has been "
+"tried, the matching engine doesn't advance at all; the rest of the pattern "
+"is tried right where the assertion started."
+msgstr ""
+"Khẳng định cái nhìn tích cực.  Điều này thành công nếu biểu thức chính quy "
+"chứa trong đó, được biểu thị ở đây bằng ``...``, khớp thành công tại vị trí "
+"hiện tại và ngược lại thì không thành công. Tuy nhiên, khi biểu thức chứa "
+"trong đó đã được thử, công cụ so khớp sẽ không hoạt động nữa; phần còn lại "
+"của mẫu được thử ngay tại nơi xác nhận bắt đầu."
+
+#: ../../howto/regex.rst:995
+#, fuzzy
+msgid "``(?!...)``"
+msgstr "``(?!...)``"
+
+#: ../../howto/regex.rst:996
+#, fuzzy
+msgid ""
+"Negative lookahead assertion.  This is the opposite of the positive "
+"assertion; it succeeds if the contained expression *doesn't* match at the "
+"current position in the string."
+msgstr ""
+"Khẳng định cái nhìn tiêu cực.  Điều này trái ngược với khẳng định tích cực; "
+"nó thành công nếu biểu thức chứa *doesn't* khớp với vị trí hiện tại trong "
+"chuỗi."
+
+#: ../../howto/regex.rst:1000
+#, fuzzy
+msgid ""
+"To make this concrete, let's look at a case where a lookahead is useful. "
+"Consider a simple pattern to match a filename and split it apart into a base"
+" name and an extension, separated by a ``.``.  For example, in ``news.rc``, "
+"``news`` is the base name, and ``rc`` is the filename's extension."
+msgstr ""
+"Để làm rõ điều này, chúng ta hãy xem xét một trường hợp trong đó việc xem "
+"trước rất hữu ích. Hãy xem xét một mẫu đơn giản để khớp với tên tệp và tách "
+"nó thành tên cơ sở và phần mở rộng, được phân tách bằng ``.``.  Ví dụ: trong"
+" ``news.rc``, ``news`` là tên cơ sở và ``rc`` là phần mở rộng của tên tệp."
+
+#: ../../howto/regex.rst:1005
+#, fuzzy
+msgid "The pattern to match this is quite simple:"
+msgstr "Mẫu để phù hợp với điều này khá đơn giản:"
+
+#: ../../howto/regex.rst:1007
+#, fuzzy
+msgid "``.*[.].*$``"
+msgstr "``.*[.].*$``"
+
+#: ../../howto/regex.rst:1009
+#, fuzzy
+msgid ""
+"Notice that the ``.`` needs to be treated specially because it's a "
+"metacharacter, so it's inside a character class to only match that specific "
+"character.  Also notice the trailing ``$``; this is added to ensure that all"
+" the rest of the string must be included in the extension.  This regular "
+"expression matches ``foo.bar`` and ``autoexec.bat`` and ``sendmail.cf`` and "
+"``printers.conf``."
+msgstr ""
+"Lưu ý rằng ``.`` cần được xử lý đặc biệt vì nó là siêu ký tự, do đó, nó nằm "
+"trong một lớp ký tự để chỉ khớp với ký tự cụ thể đó.  Ngoài ra, hãy chú ý "
+"đến dấu ``$``; điều này được thêm vào để đảm bảo rằng tất cả phần còn lại "
+"của chuỗi phải được đưa vào phần mở rộng.  Biểu thức chính quy này khớp với "
+"``foo.bar`` và ``autoexec.bat`` và ``sendmail.cf`` và ``printers.conf``."
+
+#: ../../howto/regex.rst:1016
+#, fuzzy
+msgid ""
+"Now, consider complicating the problem a bit; what if you want to match "
+"filenames where the extension is not ``bat``? Some incorrect attempts:"
+msgstr ""
+"Bây giờ, hãy xem xét việc phức tạp hóa vấn đề một chút; Điều gì sẽ xảy ra "
+"nếu bạn muốn khớp tên tệp có phần mở rộng không phải là ``bat``? Một số lần "
+"thử không chính xác:"
+
+#: ../../howto/regex.rst:1019
+#, fuzzy
+msgid "``.*[.][^b].*$``"
+msgstr "``.*[.][^b].*$``"
+
+#: ../../howto/regex.rst:1021
+#, fuzzy
+msgid ""
+"The first attempt above tries to exclude ``bat`` by requiring that the first"
+" character of the extension is not a ``b``.  This is wrong, because the "
+"pattern also doesn't match ``foo.bar``."
+msgstr ""
+"Lần thử đầu tiên ở trên cố gắng loại trừ ``bat`` bằng cách yêu cầu ký tự đầu"
+" tiên của tiện ích mở rộng không phải là ``b``.  Điều này là sai vì mẫu cũng"
+" không khớp với ``foo.bar``."
+
+#: ../../howto/regex.rst:1025
+#, fuzzy
+msgid "``.*[.]([^b]..|.[^a].|..[^t])$``"
+msgstr "``.*[.]([^b]..|.[^a].|..[^t])$``"
+
+#: ../../howto/regex.rst:1027
+#, fuzzy
+msgid ""
+"The expression gets messier when you try to patch up the first solution by "
+"requiring one of the following cases to match: the first character of the "
+"extension isn't ``b``; the second character isn't ``a``; or the third "
+"character isn't ``t``.  This accepts ``foo.bar`` and rejects "
+"``autoexec.bat``, but it requires a three-letter extension and won't accept "
+"a filename with a two-letter extension such as ``sendmail.cf``.  We'll "
+"complicate the pattern again in an effort to fix it."
+msgstr ""
+"Biểu thức trở nên lộn xộn hơn khi bạn cố gắng khắc phục giải pháp đầu tiên "
+"bằng cách yêu cầu một trong các trường hợp sau khớp: ký tự đầu tiên của tiện"
+" ích mở rộng không phải là ``b``; ký tự thứ hai không phải là ``a``; hoặc ký"
+" tự thứ ba không phải là ``t``.  Điều này chấp nhận ``foo.bar`` và từ chối "
+"``autoexec.bat``, nhưng nó yêu cầu phần mở rộng gồm ba chữ cái và sẽ không "
+"chấp nhận tên tệp có phần mở rộng hai chữ cái, chẳng hạn như "
+"``sendmail.cf``.  Chúng tôi sẽ làm phức tạp lại mẫu này trong nỗ lực sửa nó."
+
+#: ../../howto/regex.rst:1035
+#, fuzzy
+msgid "``.*[.]([^b].?.?|.[^a]?.?|..?[^t]?)$``"
+msgstr "``.*[.]([^b].?.?|.[^a]?.?|..?[^t]?)$``"
+
+#: ../../howto/regex.rst:1037
+#, fuzzy
+msgid ""
+"In the third attempt, the second and third letters are all made optional in "
+"order to allow matching extensions shorter than three characters, such as "
+"``sendmail.cf``."
+msgstr ""
+"Trong lần thử thứ ba, tất cả các chữ cái thứ hai và thứ ba đều được đặt làm "
+"tùy chọn để cho phép khớp các phần mở rộng ngắn hơn ba ký tự, chẳng hạn như "
+"``sendmail.cf``."
+
+#: ../../howto/regex.rst:1041
+#, fuzzy
+msgid ""
+"The pattern's getting really complicated now, which makes it hard to read "
+"and understand.  Worse, if the problem changes and you want to exclude both "
+"``bat`` and ``exe`` as extensions, the pattern would get even more "
+"complicated and confusing."
+msgstr ""
+"Mẫu này hiện đang trở nên thực sự phức tạp, khiến nó khó đọc và khó hiểu.  "
+"Tệ hơn nữa, nếu sự cố thay đổi và bạn muốn loại trừ cả ``bat`` và ``exe`` "
+"làm tiện ích mở rộng, mẫu sẽ càng trở nên phức tạp và khó hiểu hơn."
+
+#: ../../howto/regex.rst:1046
+#, fuzzy
+msgid "A negative lookahead cuts through all this confusion:"
+msgstr "Một cái nhìn tiêu cực sẽ cắt đứt tất cả sự nhầm lẫn này:"
+
+#: ../../howto/regex.rst:1048
+#, fuzzy
+msgid "``.*[.](?!bat$)[^.]*$``"
+msgstr "``.*[.](?!bat$)[^.]*$``"
+
+#: ../../howto/regex.rst:1050
+#, fuzzy
+msgid ""
+"The negative lookahead means: if the expression ``bat`` doesn't match at "
+"this point, try the rest of the pattern; if ``bat$`` does match, the whole "
+"pattern will fail.  The trailing ``$`` is required to ensure that something "
+"like ``sample.batch``, where the extension only starts with ``bat``, will be"
+" allowed.  The ``[^.]*`` makes sure that the pattern works when there are "
+"multiple dots in the filename."
+msgstr ""
+"Giao diện phủ định có nghĩa là: nếu biểu thức ``bat`` không khớp tại thời "
+"điểm này, hãy thử phần còn lại của mẫu; nếu ``bat$`` không khớp thì toàn bộ "
+"mẫu sẽ thất bại.  Cần có ``$`` ở cuối để đảm bảo rằng những thứ như "
+"``sample.batch``, trong đó tiện ích mở rộng chỉ bắt đầu bằng ``bat``, sẽ "
+"được cho phép.  Zz005zz đảm bảo rằng mẫu hoạt động khi có nhiều dấu chấm "
+"trong tên tệp."
+
+#: ../../howto/regex.rst:1057
+#, fuzzy
+msgid ""
+"Excluding another filename extension is now easy; simply add it as an "
+"alternative inside the assertion.  The following pattern excludes filenames "
+"that end in either ``bat`` or ``exe``:"
+msgstr ""
+"Việc loại trừ phần mở rộng tên tệp khác giờ đây thật dễ dàng; chỉ cần thêm "
+"nó như một sự thay thế bên trong xác nhận.  Mẫu sau loại trừ tên tệp kết "
+"thúc bằng ``bat`` hoặc ``exe``:"
+
+#: ../../howto/regex.rst:1061
+#, fuzzy
+msgid "``.*[.](?!bat$|exe$)[^.]*$``"
+msgstr "``.*[.](?!bat$|exe$)[^.]*$``"
+
+#: ../../howto/regex.rst:1065
+#, fuzzy
+msgid "Modifying strings"
+msgstr "Sửa đổi chuỗi"
+
+#: ../../howto/regex.rst:1067
+#, fuzzy
+msgid ""
+"Up to this point, we've simply performed searches against a static string. "
+"Regular expressions are also commonly used to modify strings in various "
+"ways, using the following pattern methods:"
+msgstr ""
+"Cho đến thời điểm này, chúng tôi chỉ thực hiện tìm kiếm dựa trên một chuỗi "
+"tĩnh. Biểu thức chính quy cũng thường được sử dụng để sửa đổi chuỗi theo "
+"nhiều cách khác nhau, sử dụng các phương thức mẫu sau:"
+
+#: ../../howto/regex.rst:1074
+#, fuzzy
+msgid "``split()``"
+msgstr "``split()``"
+
+#: ../../howto/regex.rst:1074
+#, fuzzy
+msgid "Split the string into a list, splitting it wherever the RE matches"
+msgstr ""
+"Chia chuỗi thành một danh sách, chia chuỗi đó ở bất cứ nơi nào RE khớp"
+
+#: ../../howto/regex.rst:1077
+#, fuzzy
+msgid "``sub()``"
+msgstr "``sub()``"
+
+#: ../../howto/regex.rst:1077
+#, fuzzy
+msgid ""
+"Find all substrings where the RE matches, and replace them with a different "
+"string"
+msgstr ""
+"Tìm tất cả các chuỗi con có RE khớp và thay thế chúng bằng một chuỗi khác"
+
+#: ../../howto/regex.rst:1080
+#, fuzzy
+msgid "``subn()``"
+msgstr "``subn()``"
+
+#: ../../howto/regex.rst:1080
+#, fuzzy
+msgid ""
+"Does the same thing as :meth:`!sub`,  but returns the new string and the "
+"number of replacements"
+msgstr ""
+"Thực hiện tương tự như :meth:`!sub`, nhưng trả về chuỗi mới và số lần thay "
+"thế"
+
+#: ../../howto/regex.rst:1087
+#, fuzzy
+msgid "Splitting strings"
+msgstr "Tách chuỗi"
+
+#: ../../howto/regex.rst:1089
+#, fuzzy
+msgid ""
+"The :meth:`~re.Pattern.split` method of a pattern splits a string apart "
+"wherever the RE matches, returning a list of the pieces. It's similar to the"
+" :meth:`~str.split` method of strings but provides much more generality in "
+"the delimiters that you can split by; string :meth:`!split` only supports "
+"splitting by whitespace or by a fixed string.  As you'd expect, there's a "
+"module-level :func:`re.split` function, too."
+msgstr ""
+"Phương thức :meth:`~re.Pattern.split` của một mẫu sẽ tách một chuỗi ra bất "
+"cứ nơi nào RE khớp, trả về danh sách các phần. Nó tương tự như phương thức "
+"chuỗi :meth:`~str.split` nhưng cung cấp tính tổng quát hơn nhiều trong các "
+"dấu phân cách mà bạn có thể phân chia theo; chuỗi :meth:`!split` chỉ hỗ trợ "
+"phân tách theo khoảng trắng hoặc theo chuỗi cố định.  Như bạn mong đợi, cũng"
+" có chức năng :func:`re.split` cấp mô-đun."
+
+#: ../../howto/regex.rst:1100
+#, fuzzy
+msgid ""
+"Split *string* by the matches of the regular expression.  If capturing "
+"parentheses are used in the RE, then their contents will also be returned as"
+" part of the resulting list.  If *maxsplit* is nonzero, at most *maxsplit* "
+"splits are performed."
+msgstr ""
+"Chia *string* cho các kết quả khớp của biểu thức chính quy.  Nếu sử dụng dấu"
+" ngoặc đơn trong RE thì nội dung của chúng cũng sẽ được trả về như một phần "
+"của danh sách kết quả.  Nếu *maxsplit* khác 0 thì tối đa việc phân chia "
+"*maxsplit* được thực hiện."
+
+#: ../../howto/regex.rst:1105
+#, fuzzy
+msgid ""
+"You can limit the number of splits made, by passing a value for *maxsplit*. "
+"When *maxsplit* is nonzero, at most *maxsplit* splits will be made, and the "
+"remainder of the string is returned as the final element of the list.  In "
+"the following example, the delimiter is any sequence of non-alphanumeric "
+"characters. ::"
+msgstr ""
+"Bạn có thể giới hạn số lần phân tách được thực hiện bằng cách chuyển giá trị"
+" cho *maxsplit*. Khi *maxsplit* khác 0, tối đa việc phân chia *maxsplit* sẽ "
+"được thực hiện và phần còn lại của chuỗi được trả về làm phần tử cuối cùng "
+"của danh sách.  Trong ví dụ sau, dấu phân cách là bất kỳ chuỗi ký tự không "
+"phải chữ và số nào. ::"
+
+#: ../../howto/regex.rst:1111
+#, fuzzy
+msgid ""
+">>> p = re.compile(r'\\W+')\n"
+">>> p.split('This is a test, short and sweet, of split().')\n"
+"['This', 'is', 'a', 'test', 'short', 'and', 'sweet', 'of', 'split', '']\n"
+">>> p.split('This is a test, short and sweet, of split().', 3)\n"
+"['This', 'is', 'a', 'test, short and sweet, of split().']"
+msgstr ""
+">>> p = re.compile(r'\\W+')\n"
+">>> p.split('Đây là một bài kiểm tra ngắn gọn và thú vị về phương pháp chia tách().')\n"
+"['Đây', 'là', 'a', 'kiểm tra', 'ngắn', 'và', 'ngọt ngào', 'của', 'tách', '']\n"
+">>> p.split('Đây là một bài kiểm tra ngắn gọn và hấp dẫn của Split().', 3)\n"
+"['Đây', 'là', 'a', 'kiểm tra, ngắn gọn và ngọt ngào, của Split().']"
+
+#: ../../howto/regex.rst:1117
+#, fuzzy
+msgid ""
+"Sometimes you're not only interested in what the text between delimiters is,"
+" but also need to know what the delimiter was.  If capturing parentheses are"
+" used in the RE, then their values are also returned as part of the list.  "
+"Compare the following calls::"
+msgstr ""
+"Đôi khi bạn không chỉ quan tâm đến văn bản giữa các dấu phân cách là gì mà "
+"còn cần biết dấu phân cách là gì.  Nếu sử dụng dấu ngoặc đơn trong RE thì "
+"giá trị của chúng cũng được trả về như một phần của danh sách.  So sánh các "
+"cuộc gọi sau::"
+
+#: ../../howto/regex.rst:1122
+#, fuzzy
+msgid ""
+">>> p = re.compile(r'\\W+')\n"
+">>> p2 = re.compile(r'(\\W+)')\n"
+">>> p.split('This... is a test.')\n"
+"['This', 'is', 'a', 'test', '']\n"
+">>> p2.split('This... is a test.')\n"
+"['This', '... ', 'is', ' ', 'a', ' ', 'test', '.', '']"
+msgstr ""
+">>> p = re.compile(r'\\W+')\n"
+">>> p2 = re.compile(r'(\\W+)')\n"
+">>> p.split('Đây... là một bài kiểm tra.')\n"
+"['Cái này', 'là', 'a', 'kiểm tra', '']\n"
+">>> p2.split('Đây... là một bài kiểm tra.')\n"
+"['Cái này', '... ', 'là', ' ', 'a', ' ', 'kiểm tra', '.', '']"
+
+#: ../../howto/regex.rst:1129
+#, fuzzy
+msgid ""
+"The module-level function :func:`re.split` adds the RE to be used as the "
+"first argument, but is otherwise the same.   ::"
+msgstr ""
+"Hàm cấp mô-đun :func:`re.split` thêm RE được sử dụng làm đối số đầu tiên, "
+"nhưng mặt khác thì giống nhau.   ::"
+
+#: ../../howto/regex.rst:1132
+#, fuzzy
+msgid ""
+">>> re.split(r'[\\W]+', 'Words, words, words.')\n"
+"['Words', 'words', 'words', '']\n"
+">>> re.split(r'([\\W]+)', 'Words, words, words.')\n"
+"['Words', ', ', 'words', ', ', 'words', '.', '']\n"
+">>> re.split(r'[\\W]+', 'Words, words, words.', 1)\n"
+"['Words', 'words, words.']"
+msgstr ""
+">>> re.split(r'[\\W]+', 'Từ, từ, từ.')\n"
+"['Từ', 'từ', 'từ', '']\n"
+">>> re.split(r'([\\W]+)', 'Từ, từ, từ.')\n"
+"['Từ', ', ', 'từ', ', ', 'từ', '.', '']\n"
+">>> re.split(r'[\\W]+', 'Từ, từ, từ.', 1)\n"
+"['Từ', 'từ, từ.']"
+
+#: ../../howto/regex.rst:1141
+#, fuzzy
+msgid "Search and replace"
+msgstr "Tìm kiếm và thay thế"
+
+#: ../../howto/regex.rst:1143
+#, fuzzy
+msgid ""
+"Another common task is to find all the matches for a pattern, and replace "
+"them with a different string.  The :meth:`~re.Pattern.sub` method takes a "
+"replacement value, which can be either a string or a function, and the "
+"string to be processed."
+msgstr ""
+"Một nhiệm vụ phổ biến khác là tìm tất cả các kết quả khớp cho một mẫu và "
+"thay thế chúng bằng một chuỗi khác.  Phương thức :meth:`~re.Pattern.sub` "
+"nhận một giá trị thay thế, có thể là chuỗi hoặc hàm và chuỗi cần xử lý."
+
+#: ../../howto/regex.rst:1150
+#, fuzzy
+msgid ""
+"Returns the string obtained by replacing the leftmost non-overlapping "
+"occurrences of the RE in *string* by the replacement *replacement*.  If the "
+"pattern isn't found, *string* is returned unchanged."
+msgstr ""
+"Trả về chuỗi thu được bằng cách thay thế các lần xuất hiện không chồng chéo "
+"ngoài cùng bên trái của RE trong *string* bằng *replacement* thay thế.  Nếu "
+"không tìm thấy mẫu, *string* sẽ được trả về không thay đổi."
+
+#: ../../howto/regex.rst:1154
+#, fuzzy
+msgid ""
+"The optional argument *count* is the maximum number of pattern occurrences "
+"to be replaced; *count* must be a non-negative integer.  The default value "
+"of 0 means to replace all occurrences."
+msgstr ""
+"Đối số tùy chọn *count* là số lần xuất hiện mẫu tối đa được thay thế; "
+"*count* phải là số nguyên không âm.  Giá trị mặc định là 0 có nghĩa là thay "
+"thế tất cả các lần xuất hiện."
+
+#: ../../howto/regex.rst:1158
+#, fuzzy
+msgid ""
+"Here's a simple example of using the :meth:`~re.Pattern.sub` method.  It "
+"replaces colour names with the word ``colour``::"
+msgstr ""
+"Đây là một ví dụ đơn giản về cách sử dụng phương pháp "
+":meth:`~re.Pattern.sub`.  Nó thay thế tên màu bằng từ ``colour``::"
+
+#: ../../howto/regex.rst:1161
+#, fuzzy
+msgid ""
+">>> p = re.compile('(blue|white|red)')\n"
+">>> p.sub('colour', 'blue socks and red shoes')\n"
+"'colour socks and colour shoes'\n"
+">>> p.sub('colour', 'blue socks and red shoes', count=1)\n"
+"'colour socks and red shoes'"
+msgstr ""
+">>> p = re.compile('(blue|white|red)')\n"
+">>> p.sub('color', 'tất xanh và giày đỏ')\n"
+"'tất màu và giày màu'\n"
+">>> p.sub('màu', 'tất xanh và giày đỏ', count=1)\n"
+"'tất màu và giày đỏ'"
+
+#: ../../howto/regex.rst:1167
+#, fuzzy
+msgid ""
+"The :meth:`~re.Pattern.subn` method does the same work, but returns a "
+"2-tuple containing the new string value and the number of replacements  that"
+" were performed::"
+msgstr ""
+"Phương thức :meth:`~re.Pattern.subn` thực hiện công việc tương tự nhưng trả "
+"về 2 bộ chứa giá trị chuỗi mới và số lần thay thế đã được thực hiện::"
+
+#: ../../howto/regex.rst:1170
+#, fuzzy
+msgid ""
+">>> p = re.compile('(blue|white|red)')\n"
+">>> p.subn('colour', 'blue socks and red shoes')\n"
+"('colour socks and colour shoes', 2)\n"
+">>> p.subn('colour', 'no colours at all')\n"
+"('no colours at all', 0)"
+msgstr ""
+">>> p = re.compile('(blue|white|red)')\n"
+">>> p.subn('color', 'tất xanh và giày đỏ')\n"
+"('tất màu và giày màu', 2)\n"
+">>> p.subn('color', 'không có màu nào cả')\n"
+"('không có màu sắc nào cả', 0)"
+
+#: ../../howto/regex.rst:1176
+#, fuzzy
+msgid ""
+"Empty matches are replaced only when they're not adjacent to a previous "
+"empty match. ::"
+msgstr ""
+"Các kết quả phù hợp trống chỉ được thay thế khi chúng không liền kề với kết "
+"quả trống trước đó. ::"
+
+#: ../../howto/regex.rst:1179
+#, fuzzy
+msgid ""
+">>> p = re.compile('x*')\n"
+">>> p.sub('-', 'abxd')\n"
+"'-a-b--d-'"
+msgstr ""
+">>> p = re.compile('x*')\n"
+">>> p.sub('-', 'abxd')\n"
+"'-a-b--d-'"
+
+#: ../../howto/regex.rst:1183
+#, fuzzy
+msgid ""
+"If *replacement* is a string, any backslash escapes in it are processed.  "
+"That is, ``\\n`` is converted to a single newline character, ``\\r`` is "
+"converted to a carriage return, and so forth. Unknown escapes such as "
+"``\\&`` are left alone. Backreferences, such as ``\\6``, are replaced with "
+"the substring matched by the corresponding group in the RE.  This lets you "
+"incorporate portions of the original text in the resulting replacement "
+"string."
+msgstr ""
+"Nếu *replacement* là một chuỗi, mọi dấu gạch chéo ngược thoát ra trong đó "
+"đều được xử lý.  Nghĩa là, ``\\n`` được chuyển đổi thành một ký tự dòng mới,"
+" ``\\r`` được chuyển đổi thành ký tự đầu dòng, v.v. Những lối thoát không "
+"xác định như ``\\&`` bị bỏ lại một mình. Các tham chiếu ngược, chẳng hạn như"
+" ``\\6``, được thay thế bằng chuỗi con khớp với nhóm tương ứng trong RE.  "
+"Điều này cho phép bạn kết hợp các phần của văn bản gốc vào chuỗi thay thế "
+"thu được."
+
+#: ../../howto/regex.rst:1190
+#, python-brace-format, fuzzy
+msgid ""
+"This example matches the word ``section`` followed by a string enclosed in "
+"``{``, ``}``, and changes ``section`` to ``subsection``::"
+msgstr ""
+"Ví dụ này khớp với từ ``section``, theo sau là một chuỗi được bao trong "
+"``{``, ``}`` và thay đổi ``section`` thành ``subsection``::"
+
+#: ../../howto/regex.rst:1193
+#, python-brace-format, fuzzy
+msgid ""
+">>> p = re.compile('section{ ( [^}]* ) }', re.VERBOSE)\n"
+">>> p.sub(r'subsection{\\1}','section{First} section{second}')\n"
+"'subsection{First} subsection{second}'"
+msgstr ""
+">>> p = re.compile('section{ ( [^}]* ) }', re.VERBOSE)\n"
+">>> p.sub(r'subsection{\\1}','section{Đầu tiên} phần{giây}')\n"
+"'tiểu mục{Đầu tiên} tiểu mục{giây}'"
+
+#: ../../howto/regex.rst:1197
+#, fuzzy
+msgid ""
+"There's also a syntax for referring to named groups as defined by the "
+"``(?P<name>...)`` syntax.  ``\\g<name>`` will use the substring matched by "
+"the group named ``name``, and  ``\\g<number>``  uses the corresponding group"
+" number. ``\\g<2>`` is therefore equivalent to ``\\2``,  but isn't ambiguous"
+" in a replacement string such as ``\\g<2>0``.  (``\\20`` would be "
+"interpreted as a reference to group 20, not a reference to group 2 followed "
+"by the literal character ``'0'``.)  The following substitutions are all "
+"equivalent, but use all three variations of the replacement string. ::"
+msgstr ""
+"Ngoài ra còn có một cú pháp để tham chiếu đến các nhóm được đặt tên như được"
+" xác định bởi cú pháp ``(?P<name>...)``.  ``\\g<name>`` sẽ sử dụng chuỗi con"
+" khớp với nhóm có tên ``name`` và ``\\g<number>`` sử dụng số nhóm tương ứng."
+" Do đó, ``\\g<2>`` tương đương với ``\\2``, nhưng không mơ hồ trong chuỗi "
+"thay thế, chẳng hạn như ``\\g<2>0``.  (``\\20`` sẽ được hiểu là tham chiếu "
+"đến nhóm 20, không phải tham chiếu đến nhóm 2 theo sau là ký tự chữ "
+"``'0'``.) Các thay thế sau đây đều tương đương, nhưng sử dụng cả ba biến thể"
+" của chuỗi thay thế. ::"
+
+#: ../../howto/regex.rst:1206
+#, python-brace-format, fuzzy
+msgid ""
+">>> p = re.compile('section{ (?P<name> [^}]* ) }', re.VERBOSE)\n"
+">>> p.sub(r'subsection{\\1}','section{First}')\n"
+"'subsection{First}'\n"
+">>> p.sub(r'subsection{\\g<1>}','section{First}')\n"
+"'subsection{First}'\n"
+">>> p.sub(r'subsection{\\g<name>}','section{First}')\n"
+"'subsection{First}'"
+msgstr ""
+">>> p = re.compile('section{ (?P<name> [^}]* ) }', re.VERBOSE)\n"
+">>> p.sub(r'subsection{\\1}','section{First}')\n"
+"'tiểu mục{Đầu tiên}'\n"
+">>> p.sub(r'subsection{\\g<1>}','section{First}')\n"
+"'tiểu mục{Đầu tiên}'\n"
+">>> p.sub(r'subsection{\\g<name>}','section{First}')\n"
+"'tiểu mục{Đầu tiên}'"
+
+#: ../../howto/regex.rst:1214
+#, fuzzy
+msgid ""
+"*replacement* can also be a function, which gives you even more control.  If"
+" *replacement* is a function, the function is called for every non-"
+"overlapping occurrence of *pattern*.  On each call, the function is passed a"
+" :ref:`match object <match-objects>` argument for the match and can use this"
+" information to compute the desired replacement string and return it."
+msgstr ""
+"*replacement* cũng có thể là một chức năng giúp bạn có nhiều quyền kiểm soát"
+" hơn.  Nếu *replacement* là một hàm thì hàm này sẽ được gọi cho mỗi lần xuất"
+" hiện không chồng lấp của *pattern*.  Trong mỗi lệnh gọi, hàm này được "
+"truyền một đối số :ref:`match object <match-objects>` cho kết quả khớp và có"
+" thể sử dụng thông tin này để tính toán chuỗi thay thế mong muốn và trả về "
+"chuỗi đó."
+
+#: ../../howto/regex.rst:1220
+#, fuzzy
+msgid ""
+"In the following example, the replacement function translates decimals into "
+"hexadecimal::"
+msgstr ""
+"Trong ví dụ sau, hàm thay thế chuyển số thập phân thành thập lục phân::"
+
+#: ../../howto/regex.rst:1223
+#, fuzzy
+msgid ""
+">>> def hexrepl(match):\n"
+"...     \"Return the hex string for a decimal number\"\n"
+"...     value = int(match.group())\n"
+"...     return hex(value)\n"
+"...\n"
+">>> p = re.compile(r'\\d+')\n"
+">>> p.sub(hexrepl, 'Call 65490 for printing, 49152 for user code.')\n"
+"'Call 0xffd2 for printing, 0xc000 for user code.'"
+msgstr ""
+">>> def hexrepl(match):\n"
+"... \"Trả về chuỗi hex cho số thập phân\"\n"
+"... giá trị = int(match.group())\n"
+"... trả về hex(giá trị)\n"
+"...\n"
+">>> p = re.compile(r'\\d+')\n"
+">>> p.sub(hexrepl, 'Gọi 65490 để in, 49152 để lấy mã người dùng.')\n"
+"'Gọi 0xffd2 để in, 0xc000 để lấy mã người dùng.'"
+
+#: ../../howto/regex.rst:1232
+#, fuzzy
+msgid ""
+"When using the module-level :func:`re.sub` function, the pattern is passed "
+"as the first argument.  The pattern may be provided as an object or as a "
+"string; if you need to specify regular expression flags, you must either use"
+" a pattern object as the first parameter, or use embedded modifiers in the "
+"pattern string, e.g. ``sub(\"(?i)b+\", \"x\", \"bbbb BBBB\")`` returns ``'x "
+"x'``."
+msgstr ""
+"Khi sử dụng hàm :func:`re.sub` cấp mô-đun, mẫu sẽ được chuyển làm đối số đầu"
+" tiên.  Mẫu có thể được cung cấp dưới dạng một đối tượng hoặc dưới dạng một "
+"chuỗi; nếu bạn cần chỉ định cờ biểu thức chính quy, bạn phải sử dụng đối "
+"tượng mẫu làm tham số đầu tiên hoặc sử dụng công cụ sửa đổi được nhúng trong"
+" chuỗi mẫu, ví dụ: ``sub(\"(?i)b+\", \"x\", \"bbbb BBBB\")`` trả về ``'x "
+"x'``."
+
+#: ../../howto/regex.rst:1240
+#, fuzzy
+msgid "Common problems"
+msgstr "Các vấn đề thường gặp"
+
+#: ../../howto/regex.rst:1242
+#, fuzzy
+msgid ""
+"Regular expressions are a powerful tool for some applications, but in some "
+"ways their behaviour isn't intuitive and at times they don't behave the way "
+"you may expect them to.  This section will point out some of the most common"
+" pitfalls."
+msgstr ""
+"Biểu thức chính quy là một công cụ mạnh mẽ cho một số ứng dụng, nhưng theo "
+"một số cách, hành vi của chúng không trực quan và đôi khi chúng không hoạt "
+"động theo cách bạn mong đợi.  Phần này sẽ chỉ ra một số cạm bẫy phổ biến "
+"nhất."
+
+#: ../../howto/regex.rst:1248
+#, fuzzy
+msgid "Use string methods"
+msgstr "Sử dụng các phương thức chuỗi"
+
+#: ../../howto/regex.rst:1250
+#, fuzzy
+msgid ""
+"Sometimes using the :mod:`re` module is a mistake.  If you're matching a "
+"fixed string, or a single character class, and you're not using any "
+":mod:`re` features such as the :const:`~re.IGNORECASE` flag, then the full "
+"power of regular expressions may not be required. Strings have several "
+"methods for performing operations with fixed strings and they're usually "
+"much faster, because the implementation is a single small C loop that's been"
+" optimized for the purpose, instead of the large, more generalized regular "
+"expression engine."
+msgstr ""
+"Đôi khi sử dụng mô-đun :mod:`re` là một sai lầm.  Nếu bạn đang khớp một "
+"chuỗi cố định hoặc một lớp ký tự đơn và bạn không sử dụng bất kỳ tính năng "
+":mod:`re` nào chẳng hạn như cờ :const:`~re.IGNORECASE` thì có thể không cần "
+"toàn bộ sức mạnh của biểu thức chính quy. Chuỗi có một số phương thức để "
+"thực hiện các thao tác với chuỗi cố định và chúng thường nhanh hơn nhiều vì "
+"việc triển khai là một vòng lặp C nhỏ duy nhất được tối ưu hóa cho mục đích "
+"thay vì công cụ biểu thức chính quy lớn, tổng quát hơn."
+
+#: ../../howto/regex.rst:1258
+#, fuzzy
+msgid ""
+"One example might be replacing a single fixed string with another one; for "
+"example, you might replace ``word`` with ``deed``.  :func:`re.sub` seems "
+"like the function to use for this, but consider the :meth:`~str.replace` "
+"method.  Note that :meth:`!replace` will also replace ``word`` inside words,"
+" turning ``swordfish`` into ``sdeedfish``, but the  naive RE ``word`` would "
+"have done that, too.  (To avoid performing the substitution on parts of "
+"words, the pattern would have to be ``\\bword\\b``, in order to require that"
+" ``word`` have a word boundary on either side.  This takes the job beyond  "
+":meth:`!replace`'s abilities.)"
+msgstr ""
+"Một ví dụ có thể là thay thế một chuỗi cố định bằng một chuỗi khác; ví dụ: "
+"bạn có thể thay thế ``word`` bằng ``deed``.  :func:`re.sub` có vẻ giống như "
+"hàm được sử dụng cho việc này, nhưng hãy xem xét phương pháp "
+":meth:`~str.replace`.  Lưu ý rằng :meth:`!replace` cũng sẽ thay thế ``word``"
+" bên trong các từ, biến ``swordfish`` thành ``sdeedfish``, nhưng RE ``word``"
+" ngây thơ cũng sẽ làm điều đó.  (Để tránh thực hiện việc thay thế các phần "
+"của từ, mẫu sẽ phải là ``\\bword\\b``, để yêu cầu ``word`` có ranh giới từ ở"
+" hai bên. Điều này khiến công việc vượt quá khả năng của :meth:`!replace`.)"
+
+#: ../../howto/regex.rst:1267
+#, fuzzy
+msgid ""
+"Another common task is deleting every occurrence of a single character from "
+"a string or replacing it with another single character.  You might do this "
+"with something like ``re.sub('\\n', ' ', S)``, but :meth:`~str.translate` is"
+" capable of doing both tasks and will be faster than any regular expression "
+"operation can be."
+msgstr ""
+"Một tác vụ phổ biến khác là xóa mọi lần xuất hiện của một ký tự trong chuỗi "
+"hoặc thay thế nó bằng một ký tự đơn khác.  Bạn có thể thực hiện việc này với"
+" thứ gì đó như ``re.sub('\\n', ' ', S)``, nhưng :meth:`~str.translate` có "
+"khả năng thực hiện cả hai tác vụ và sẽ nhanh hơn bất kỳ thao tác biểu thức "
+"chính quy nào có thể thực hiện được."
+
+#: ../../howto/regex.rst:1273
+#, fuzzy
+msgid ""
+"In short, before turning to the :mod:`re` module, consider whether your "
+"problem can be solved with a faster and simpler string method."
+msgstr ""
+"Nói tóm lại, trước khi chuyển sang mô-đun :mod:`re`, hãy xem xét liệu vấn đề"
+" của bạn có thể được giải quyết bằng phương pháp chuỗi nhanh hơn và đơn giản"
+" hơn hay không."
+
+#: ../../howto/regex.rst:1278
+#, fuzzy
+msgid "match() versus search()"
+msgstr "match() so với tìm kiếm()"
+
+#: ../../howto/regex.rst:1280
+#, fuzzy
+msgid ""
+"The :func:`~re.match` function only checks if the RE matches at the "
+"beginning of the string while :func:`~re.search` will scan forward through "
+"the string for a match. It's important to keep this distinction in mind.  "
+"Remember,  :func:`!match` will only report a successful match which will "
+"start at 0; if the match wouldn't start at zero,  :func:`!match` will *not* "
+"report it. ::"
+msgstr ""
+"Hàm :func:`~re.match` chỉ kiểm tra xem RE có khớp ở đầu chuỗi hay không "
+"trong khi :func:`~re.search` sẽ quét về phía trước qua chuỗi để tìm kết quả "
+"khớp. Điều quan trọng là phải ghi nhớ sự khác biệt này.  Hãy nhớ rằng, "
+":func:`!match` sẽ chỉ báo cáo trận đấu thành công bắt đầu từ 0; nếu trận đấu"
+" không bắt đầu ở con số 0, :func:`!match` sẽ báo cáo điều đó. ::"
+
+#: ../../howto/regex.rst:1286
+#, fuzzy
+msgid ""
+">>> print(re.match('super', 'superstition').span())\n"
+"(0, 5)\n"
+">>> print(re.match('super', 'insuperable'))\n"
+"None"
+msgstr ""
+">>> print(re.match('super', 'mê tín').span())\n"
+"(0, 5)\n"
+">>> print(re.match('super', 'không thể vượt qua'))\n"
+"không có"
+
+#: ../../howto/regex.rst:1291
+#, fuzzy
+msgid ""
+"On the other hand, :func:`~re.search` will scan forward through the string, "
+"reporting the first match it finds. ::"
+msgstr ""
+"Mặt khác, :func:`~re.search` sẽ quét tiếp qua chuỗi, báo cáo kết quả khớp "
+"đầu tiên mà nó tìm thấy. ::"
+
+#: ../../howto/regex.rst:1294
+#, fuzzy
+msgid ""
+">>> print(re.search('super', 'superstition').span())\n"
+"(0, 5)\n"
+">>> print(re.search('super', 'insuperable').span())\n"
+"(2, 7)"
+msgstr ""
+">>> print(re.search('siêu', 'mê tín').span())\n"
+"(0, 5)\n"
+">>> print(re.search('super', 'insuperable').span())\n"
+"(2, 7)"
+
+#: ../../howto/regex.rst:1299
+#, fuzzy
+msgid ""
+"Sometimes you'll be tempted to keep using :func:`re.match`, and just add "
+"``.*`` to the front of your RE.  Resist this temptation and use "
+":func:`re.search` instead.  The regular expression compiler does some "
+"analysis of REs in order to speed up the process of looking for a match.  "
+"One such analysis figures out what the first character of a match must be; "
+"for example, a pattern starting with ``Crow`` must match starting with a "
+"``'C'``.  The analysis lets the engine quickly scan through the string "
+"looking for the starting character, only trying the full match if a ``'C'`` "
+"is found."
+msgstr ""
+"Đôi khi bạn sẽ muốn tiếp tục sử dụng :func:`re.match` và chỉ cần thêm ``.*``"
+" vào trước RE của bạn.  Hãy chống lại sự cám dỗ này và thay vào đó hãy sử "
+"dụng :func:`re.search`.  Trình biên dịch biểu thức chính quy thực hiện một "
+"số phân tích về RE để tăng tốc quá trình tìm kiếm kết quả khớp.  Một phân "
+"tích như vậy sẽ tìm ra ký tự đầu tiên của trận đấu phải là gì; ví dụ: mẫu "
+"bắt đầu bằng ``Crow`` phải khớp với mẫu bắt đầu bằng ``'C'``.  Phân tích cho"
+" phép công cụ nhanh chóng quét qua chuỗi để tìm ký tự bắt đầu, chỉ thử kết "
+"quả khớp đầy đủ nếu tìm thấy ``'C'``."
+
+#: ../../howto/regex.rst:1308
+#, fuzzy
+msgid ""
+"Adding ``.*`` defeats this optimization, requiring scanning to the end of "
+"the string and then backtracking to find a match for the rest of the RE.  "
+"Use :func:`re.search` instead."
+msgstr ""
+"Việc thêm ``.*`` sẽ làm hỏng tối ưu hóa này, yêu cầu quét đến cuối chuỗi rồi"
+" quay lại để tìm kết quả khớp cho phần còn lại của RE.  Thay vào đó hãy sử "
+"dụng :func:`re.search`."
+
+#: ../../howto/regex.rst:1314
+#, fuzzy
+msgid "Greedy versus non-greedy"
+msgstr "Tham lam và không tham lam"
+
+#: ../../howto/regex.rst:1316
+#, fuzzy
+msgid ""
+"When repeating a regular expression, as in ``a*``, the resulting action is "
+"to consume as much of the pattern as possible.  This fact often bites you "
+"when you're trying to match a pair of balanced delimiters, such as the angle"
+" brackets surrounding an HTML tag.  The naive pattern for matching a single "
+"HTML tag doesn't work because of the greedy nature of ``.*``. ::"
+msgstr ""
+"Khi lặp lại một biểu thức chính quy, chẳng hạn như trong ``a*``, hành động "
+"thu được là sử dụng càng nhiều mẫu càng tốt.  Thực tế này thường làm bạn khó"
+" chịu khi bạn đang cố gắng so khớp một cặp dấu phân cách cân bằng, chẳng hạn"
+" như dấu ngoặc nhọn bao quanh thẻ HTML.  Mẫu đơn giản để khớp một thẻ HTML "
+"không hoạt động do tính chất tham lam của ``.*``. ::"
+
+#: ../../howto/regex.rst:1322
+#, fuzzy
+msgid ""
+">>> s = '<html><head><title>Title</title>'\n"
+">>> len(s)\n"
+"32\n"
+">>> print(re.match('<.*>', s).span())\n"
+"(0, 32)\n"
+">>> print(re.match('<.*>', s).group())\n"
+"<html><head><title>Title</title>"
+msgstr ""
+">>> s = '<html><head><title>Tiêu đề</title>'\n"
+">>> len(s)\n"
+"32\n"
+">>> print(re.match('<.*>', s).span())\n"
+"(0, 32)\n"
+">>> print(re.match('<.*>', s).group())\n"
+"<html><head><title>Tiêu đề</title>"
+
+#: ../../howto/regex.rst:1330
+#, fuzzy
+msgid ""
+"The RE matches the ``'<'`` in ``'<html>'``, and the ``.*`` consumes the rest"
+" of the string.  There's still more left in the RE, though, and the ``>`` "
+"can't match at the end of the string, so the regular expression engine has "
+"to backtrack character by character until it finds a match for the ``>``.   "
+"The final match extends from the ``'<'`` in ``'<html>'`` to the ``'>'`` in "
+"``'</title>'``, which isn't what you want."
+msgstr ""
+"RE khớp với ``'<'`` trong ``'<html>'`` và ``.*`` tiêu thụ phần còn lại của "
+"chuỗi.  Tuy nhiên, vẫn còn nhiều hơn trong RE và ``>`` không thể khớp ở cuối"
+" chuỗi, vì vậy công cụ biểu thức chính quy phải dò ngược từng ký tự cho đến "
+"khi tìm thấy kết quả khớp với ``>``.   Trận đấu cuối cùng kéo dài từ ``'<'``"
+" trong ``'<html>'`` đến ``'>'`` trong ``'</title>'``, đây không phải là điều"
+" bạn muốn."
+
+#: ../../howto/regex.rst:1337
+#, python-brace-format, fuzzy
+msgid ""
+"In this case, the solution is to use the non-greedy quantifiers ``*?``, "
+"``+?``, ``??``, or ``{m,n}?``, which match as *little* text as possible.  In"
+" the above example, the ``'>'`` is tried immediately after the first ``'<'``"
+" matches, and when it fails, the engine advances a character at a time, "
+"retrying the ``'>'`` at every step.  This produces just the right result::"
+msgstr ""
+"Trong trường hợp này, giải pháp là sử dụng các bộ định lượng không tham lam "
+"``*?``, ``+?``, ``??`` hoặc ``{m,n}?``, khớp với văn bản *little* nhất có "
+"thể.  Trong ví dụ trên, ``'>'`` được thử ngay sau lần khớp ``'<'`` đầu tiên "
+"và khi thất bại, công cụ sẽ tiến lên một nhân vật tại một thời điểm, thử lại"
+" ``'>'`` ở mỗi bước.  Điều này tạo ra kết quả đúng ::"
+
+#: ../../howto/regex.rst:1343
+#, fuzzy
+msgid ""
+">>> print(re.match('<.*?>', s).group())\n"
+"<html>"
+msgstr ""
+">>> print(re.match('<.*?>', s).group())\n"
+"<html>"
+
+#: ../../howto/regex.rst:1346
+#, fuzzy
+msgid ""
+"(Note that parsing HTML or XML with regular expressions is painful. Quick-"
+"and-dirty patterns will handle common cases, but HTML and XML have special "
+"cases that will break the obvious regular expression; by the time you've "
+"written a regular expression that handles all of the possible cases, the "
+"patterns will be *very* complicated.  Use an HTML or XML parser module for "
+"such tasks.)"
+msgstr ""
+"(Lưu ý rằng việc phân tích cú pháp HTML hoặc XML bằng các biểu thức chính "
+"quy là điều khó khăn. Các mẫu nhanh và bẩn sẽ xử lý các trường hợp phổ biến,"
+" nhưng HTML và XML có các trường hợp đặc biệt sẽ phá vỡ biểu thức chính quy "
+"rõ ràng; vào thời điểm bạn viết một biểu thức chính quy xử lý tất cả các "
+"trường hợp có thể xảy ra, các mẫu sẽ phức tạp *very*. Hãy sử dụng mô-đun "
+"phân tích cú pháp HTML hoặc XML cho các tác vụ như vậy.)"
+
+#: ../../howto/regex.rst:1354
+#, fuzzy
+msgid "Using re.VERBOSE"
+msgstr "Sử dụng re.VERBOSE"
+
+#: ../../howto/regex.rst:1356
+#, fuzzy
+msgid ""
+"By now you've probably noticed that regular expressions are a very compact "
+"notation, but they're not terribly readable.  REs of moderate complexity can"
+" become lengthy collections of backslashes, parentheses, and metacharacters,"
+" making them difficult to read and understand."
+msgstr ""
+"Đến đây có lẽ bạn đã nhận thấy rằng biểu thức chính quy là một ký hiệu rất "
+"nhỏ gọn nhưng chúng rất khó đọc.  RE có độ phức tạp vừa phải có thể trở "
+"thành tập hợp dài các dấu gạch chéo ngược, dấu ngoặc đơn và siêu ký tự, "
+"khiến chúng khó đọc và khó hiểu."
+
+#: ../../howto/regex.rst:1361
+#, fuzzy
+msgid ""
+"For such REs, specifying the :const:`re.VERBOSE` flag when compiling the "
+"regular expression can be helpful, because it allows you to format the "
+"regular expression more clearly."
+msgstr ""
+"Đối với các RE như vậy, việc chỉ định cờ :const:`re.VERBOSE` khi biên dịch "
+"biểu thức chính quy có thể hữu ích vì nó cho phép bạn định dạng biểu thức "
+"chính quy rõ ràng hơn."
+
+#: ../../howto/regex.rst:1365
+#, fuzzy
+msgid ""
+"The ``re.VERBOSE`` flag has several effects.  Whitespace in the regular "
+"expression that *isn't* inside a character class is ignored.  This means "
+"that an expression such as ``dog | cat`` is equivalent to the less readable "
+"``dog|cat``, but ``[a b]`` will still match the characters ``'a'``, ``'b'``,"
+" or a space.  In addition, you can also put comments inside a RE; comments "
+"extend from a ``#`` character to the next newline.  When used with triple-"
+"quoted strings, this enables REs to be formatted more neatly::"
+msgstr ""
+"Cờ ``re.VERBOSE`` có một số hiệu ứng.  Khoảng trắng trong biểu thức chính "
+"quy mà *isn't* bên trong một lớp ký tự bị bỏ qua.  Điều này có nghĩa là một "
+"biểu thức như ``dog | cat`` tương đương với ``dog|cat`` khó đọc hơn, nhưng "
+"``[a b]`` vẫn sẽ khớp với các ký tự ``'a'``, ``'b'`` hoặc khoảng trắng.  "
+"Ngoài ra, bạn cũng có thể đặt các nhận xét bên trong RE; nhận xét mở rộng từ"
+" ký tự ``#`` sang dòng mới tiếp theo.  Khi được sử dụng với các chuỗi có dấu"
+" ngoặc kép, điều này cho phép RE được định dạng gọn gàng hơn::"
+
+#: ../../howto/regex.rst:1373
+#, fuzzy
+msgid ""
+"pat = re.compile(r\"\"\"\n"
+" \\s*                 # Skip leading whitespace\n"
+" (?P<header>[^:]+)   # Header name\n"
+" \\s* :               # Whitespace, and a colon\n"
+" (?P<value>.*?)      # The header's value -- *? used to\n"
+"                     # lose the following trailing whitespace\n"
+" \\s*$                # Trailing whitespace to end-of-line\n"
+"\"\"\", re.VERBOSE)"
+msgstr ""
+"pat = re.compile(r\"\"\"\n"
+" \\s* # Skip khoảng trắng ở đầu\n"
+" (?P<header>[^:]+) tên # Header\n"
+" \\s* : # Whitespace và dấu hai chấm\n"
+" (?P<value>.*?)      # The header's value -- *? đã từng\n"
+"                     # lose khoảng trắng ở cuối sau\n"
+" \\s*$ # Trailing khoảng trắng ở cuối dòng\n"
+"\"\"\", re.VERBOSE)"
+
+#: ../../howto/regex.rst:1382
+#, fuzzy
+msgid "This is far more readable than::"
+msgstr "Điều này dễ đọc hơn nhiều so với::"
+
+#: ../../howto/regex.rst:1384
+#, fuzzy
+msgid "pat = re.compile(r\"\\s*(?P<header>[^:]+)\\s*:(?P<value>.*?)\\s*$\")"
+msgstr "pat = re.compile(r\"\\s*(?P<header>[^:]+)\\s*:(?P<value>.*?)\\s*$\")"
+
+#: ../../howto/regex.rst:1388
+#, fuzzy
+msgid "Feedback"
+msgstr "Phản hồi"
+
+#: ../../howto/regex.rst:1390
+#, fuzzy
+msgid ""
+"Regular expressions are a complicated topic.  Did this document help you "
+"understand them?  Were there parts that were unclear, or problems you "
+"encountered that weren't covered here?  If so, please send suggestions for "
+"improvements to the :ref:`issue tracker <using-the-tracker>`."
+msgstr ""
+"Biểu thức chính quy là một chủ đề phức tạp.  Tài liệu này có giúp bạn hiểu "
+"chúng không?  Có phần nào chưa rõ ràng hoặc vấn đề bạn gặp phải chưa được đề"
+" cập ở đây không?  Nếu vậy, vui lòng gửi đề xuất cải tiến cho :ref:`issue "
+"tracker <using-the-tracker>`."
+
+#: ../../howto/regex.rst:1395
+#, fuzzy
+msgid ""
+"The most complete book on regular expressions is almost certainly Jeffrey "
+"Friedl's Mastering Regular Expressions, published by O'Reilly.  "
+"Unfortunately, it exclusively concentrates on Perl and Java's flavours of "
+"regular expressions, and doesn't contain any Python material at all, so it "
+"won't be useful as a reference for programming in Python.  (The first "
+"edition covered Python's now-removed :mod:`!regex` module, which won't help "
+"you much.)  Consider checking it out from your library."
+msgstr ""
+"Cuốn sách đầy đủ nhất về biểu thức chính quy gần như chắc chắn là Mastering "
+"Regular Expressions của Jeffrey Friedl, do O'Reilly xuất bản.  Thật không "
+"may, nó chỉ tập trung vào các dạng biểu thức chính quy của Perl và Java và "
+"hoàn toàn không chứa bất kỳ tài liệu Python nào, vì vậy nó sẽ không hữu ích "
+"khi làm tài liệu tham khảo cho việc lập trình bằng Python.  (Phiên bản đầu "
+"tiên bao gồm mô-đun :mod:`!regex` hiện đã bị loại bỏ của Python, điều này sẽ"
+" không giúp ích gì nhiều cho bạn.) Hãy cân nhắc việc kiểm tra nó từ thư viện"
+" của bạn."

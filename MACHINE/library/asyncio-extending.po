@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/asyncio-extending.rst:6
+#, fuzzy
+msgid "Extending"
+msgstr "Mở rộng"
+
+#: ../../library/asyncio-extending.rst:8
+#, fuzzy
+msgid ""
+"The main direction for :mod:`asyncio` extending is writing custom *event "
+"loop* classes. Asyncio has helpers that could be used to simplify this task."
+msgstr ""
+"Hướng chính cho việc mở rộng :mod:`asyncio` là viết các lớp *event loop* tùy"
+" chỉnh. Asyncio có những người trợ giúp có thể được sử dụng để đơn giản hóa "
+"tác vụ này."
+
+#: ../../library/asyncio-extending.rst:13
+#, fuzzy
+msgid ""
+"Third-parties should reuse existing asyncio code with caution, a new Python "
+"version is free to break backward compatibility in *internal* part of API."
+msgstr ""
+"Các bên thứ ba nên thận trọng khi sử dụng lại mã asyncio hiện có, phiên bản "
+"Python mới có thể phá vỡ khả năng tương thích ngược trong phần *internal* "
+"của API."
+
+#: ../../library/asyncio-extending.rst:19
+#, fuzzy
+msgid "Writing a Custom Event Loop"
+msgstr "Viết vòng lặp sự kiện tùy chỉnh"
+
+#: ../../library/asyncio-extending.rst:21
+#, fuzzy
+msgid ""
+":class:`asyncio.AbstractEventLoop` declares very many methods.  Implementing"
+" all them from scratch is a tedious job."
+msgstr ""
+":class:`asyncio.AbstractEventLoop` khai báo rất nhiều phương thức.  Thực "
+"hiện tất cả chúng từ đầu là một công việc tẻ nhạt."
+
+#: ../../library/asyncio-extending.rst:24
+#, fuzzy
+msgid ""
+"A loop can get many common methods implementation for free by inheriting "
+"from :class:`asyncio.BaseEventLoop`."
+msgstr ""
+"Một vòng lặp có thể triển khai miễn phí nhiều phương thức phổ biến bằng cách"
+" kế thừa từ :class:`asyncio.BaseEventLoop`."
+
+#: ../../library/asyncio-extending.rst:27
+#, fuzzy
+msgid ""
+"In turn, the successor should implement a bunch of *private* methods "
+"declared but not implemented in :class:`asyncio.BaseEventLoop`."
+msgstr ""
+"Đổi lại, người kế nhiệm nên triển khai một loạt phương thức *private* được "
+"khai báo nhưng không được triển khai trong :class:`asyncio.BaseEventLoop`."
+
+#: ../../library/asyncio-extending.rst:30
+#, fuzzy
+msgid ""
+"For example, ``loop.create_connection()`` checks arguments, resolves DNS "
+"addresses, and calls ``loop._make_socket_transport()`` that should be "
+"implemented by inherited class. The ``_make_socket_transport()`` method is "
+"not documented and is considered as an *internal* API."
+msgstr ""
+"Ví dụ: ``loop.create_connection()`` kiểm tra các đối số, phân giải các địa "
+"chỉ DNS và gọi ``loop._make_socket_transport()`` mà lớp kế thừa sẽ triển "
+"khai. Phương thức ``_make_socket_transport()`` không được ghi lại và được "
+"coi là *internal* API."
+
+#: ../../library/asyncio-extending.rst:38
+#, fuzzy
+msgid "Future and Task private constructors"
+msgstr "Các nhà xây dựng riêng trong tương lai và nhiệm vụ"
+
+#: ../../library/asyncio-extending.rst:40
+#, fuzzy
+msgid ""
+":class:`asyncio.Future` and :class:`asyncio.Task` should be never created "
+"directly, please use corresponding :meth:`loop.create_future` and "
+":meth:`loop.create_task`, or :func:`asyncio.create_task` factories instead."
+msgstr ""
+":class:`asyncio.Future` và :class:`asyncio.Task` không bao giờ được tạo trực"
+" tiếp, thay vào đó hãy sử dụng các nhà máy :meth:`loop.create_future` và "
+":meth:`loop.create_task` hoặc :func:`asyncio.create_task` tương ứng."
+
+#: ../../library/asyncio-extending.rst:44
+#, fuzzy
+msgid ""
+"However, third-party *event loops* may *reuse* built-in future and task "
+"implementations for the sake of getting a complex and highly optimized code "
+"for free."
+msgstr ""
+"Tuy nhiên, *event loops* của bên thứ ba có thể triển khai tác vụ và tương "
+"lai tích hợp sẵn *reuse* nhằm mục đích nhận được mã phức tạp và được tối ưu "
+"hóa cao miễn phí."
+
+#: ../../library/asyncio-extending.rst:47
+#, fuzzy
+msgid "For this purpose the following, *private* constructors are listed:"
+msgstr "Với mục đích này, các hàm tạo *private* sau đây được liệt kê:"
+
+#: ../../library/asyncio-extending.rst:51
+#, fuzzy
+msgid "Create a built-in future instance."
+msgstr "Tạo một phiên bản tương lai tích hợp sẵn."
+
+#: ../../library/asyncio-extending.rst:53
+#, fuzzy
+msgid "*loop* is an optional event loop instance."
+msgstr "*loop* là một phiên bản vòng lặp sự kiện tùy chọn."
+
+#: ../../library/asyncio-extending.rst:57
+#, fuzzy
+msgid "Create a built-in task instance."
+msgstr "Tạo một phiên bản tác vụ tích hợp."
+
+#: ../../library/asyncio-extending.rst:59
+#, fuzzy
+msgid ""
+"*loop* is an optional event loop instance. The rest of arguments are "
+"described in :meth:`loop.create_task` description."
+msgstr ""
+"*loop* là một phiên bản vòng lặp sự kiện tùy chọn. Các đối số còn lại được "
+"mô tả trong mô tả :meth:`loop.create_task`."
+
+#: ../../library/asyncio-extending.rst:64
+#, fuzzy
+msgid "*context* argument is added."
+msgstr "đối số *context* được thêm vào."
+
+#: ../../library/asyncio-extending.rst:69
+#, fuzzy
+msgid "Task lifetime support"
+msgstr "Hỗ trợ trọn đời nhiệm vụ"
+
+#: ../../library/asyncio-extending.rst:71
+#, fuzzy
+msgid ""
+"A third party task implementation should call the following functions to "
+"keep a task visible by :func:`asyncio.all_tasks` and "
+":func:`asyncio.current_task`:"
+msgstr ""
+"Việc triển khai tác vụ của bên thứ ba nên gọi các hàm sau để giữ cho tác vụ "
+"được hiển thị bởi :func:`asyncio.all_tasks` và :func:`asyncio.current_task`:"
+
+#: ../../library/asyncio-extending.rst:76
+#, fuzzy
+msgid "Register a new *task* as managed by *asyncio*."
+msgstr "Đăng ký một *task* mới do *asyncio* quản lý."
+
+#: ../../library/asyncio-extending.rst:78
+#, fuzzy
+msgid "Call the function from a task constructor."
+msgstr "Gọi hàm từ một hàm tạo tác vụ."
+
+#: ../../library/asyncio-extending.rst:82
+#, fuzzy
+msgid "Unregister a *task* from *asyncio* internal structures."
+msgstr "Hủy đăng ký *task* khỏi cấu trúc bên trong *asyncio*."
+
+#: ../../library/asyncio-extending.rst:84
+#, fuzzy
+msgid "The function should be called when a task is about to finish."
+msgstr "Hàm nên được gọi khi một tác vụ sắp hoàn thành."
+
+#: ../../library/asyncio-extending.rst:88
+#, fuzzy
+msgid "Switch the current task to the *task* argument."
+msgstr "Chuyển tác vụ hiện tại sang đối số *task*."
+
+#: ../../library/asyncio-extending.rst:90
+#, fuzzy
+msgid ""
+"Call the function just before executing a portion of embedded *coroutine* "
+"(:meth:`coroutine.send` or :meth:`coroutine.throw`)."
+msgstr ""
+"Gọi hàm ngay trước khi thực thi một phần *coroutine* được nhúng "
+"(:meth:`coroutine.send` hoặc :meth:`coroutine.throw`)."
+
+#: ../../library/asyncio-extending.rst:95
+#, fuzzy
+msgid "Switch the current task back from *task* to ``None``."
+msgstr "Chuyển tác vụ hiện tại từ *task* sang ``None``."
+
+#: ../../library/asyncio-extending.rst:97
+#, fuzzy
+msgid ""
+"Call the function just after :meth:`coroutine.send` or "
+":meth:`coroutine.throw` execution."
+msgstr ""
+"Gọi hàm ngay sau khi thực hiện :meth:`coroutine.send` hoặc "
+":meth:`coroutine.throw`."

@@ -1,0 +1,608 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/email.parser.rst:2
+#, fuzzy
+msgid ":mod:`!email.parser`: Parsing email messages"
+msgstr ":mod:`!email.parser`: Phân tích tin nhắn email"
+
+#: ../../library/email.parser.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/email/parser.py`"
+msgstr "**Source code:** :source:`Lib/email/parser.py`"
+
+#: ../../library/email.parser.rst:11
+#, fuzzy
+msgid ""
+"Message object structures can be created in one of two ways: they can be "
+"created from whole cloth by creating an :class:`~email.message.EmailMessage`"
+" object, adding headers using the dictionary interface, and adding "
+"payload(s) using :meth:`~email.message.EmailMessage.set_content` and related"
+" methods, or they can be created by parsing a serialized representation of "
+"the email message."
+msgstr ""
+"Cấu trúc đối tượng thư có thể được tạo theo một trong hai cách: chúng có thể"
+" được tạo từ toàn bộ vải bằng cách tạo đối tượng "
+":class:`~email.message.EmailMessage`, thêm tiêu đề bằng giao diện từ điển và"
+" thêm (các) tải trọng bằng :meth:`~email.message.EmailMessage.set_content` "
+"và các phương thức liên quan hoặc chúng có thể được tạo bằng cách phân tích "
+"cú pháp trình bày được tuần tự hóa của thư email."
+
+#: ../../library/email.parser.rst:18
+#, fuzzy
+msgid ""
+"The :mod:`email` package provides a standard parser that understands most "
+"email document structures, including MIME documents.  You can pass the "
+"parser a bytes, string or file object, and the parser will return to you the"
+" root :class:`~email.message.EmailMessage` instance of the object structure."
+"  For simple, non-MIME messages the payload of this root object will likely "
+"be a string containing the text of the message.  For MIME messages, the root"
+" object will return ``True`` from its "
+":meth:`~email.message.EmailMessage.is_multipart` method, and the subparts "
+"can be accessed via the payload manipulation methods, such as "
+":meth:`~email.message.EmailMessage.get_body`, "
+":meth:`~email.message.EmailMessage.iter_parts`, and "
+":meth:`~email.message.EmailMessage.walk`."
+msgstr ""
+"Gói :mod:`email` cung cấp trình phân tích cú pháp tiêu chuẩn có thể hiểu hầu"
+" hết các cấu trúc tài liệu email, bao gồm cả tài liệu MIME.  Bạn có thể "
+"truyền cho trình phân tích cú pháp một đối tượng byte, chuỗi hoặc tệp và "
+"trình phân tích cú pháp sẽ trả về cho bạn phiên bản "
+":class:`~email.message.EmailMessage` gốc của cấu trúc đối tượng.  Đối với "
+"các tin nhắn đơn giản, không phải MIME, tải trọng của đối tượng gốc này có "
+"thể sẽ là một chuỗi chứa văn bản của tin nhắn.  Đối với các tin nhắn MIME, "
+"đối tượng gốc sẽ trả về ``True`` từ phương thức "
+":meth:`~email.message.EmailMessage.is_multipart` của nó và các phần con có "
+"thể được truy cập thông qua các phương thức thao tác tải trọng, chẳng hạn "
+"như :meth:`~email.message.EmailMessage.get_body`, "
+":meth:`~email.message.EmailMessage.iter_parts` và "
+":meth:`~email.message.EmailMessage.walk`."
+
+#: ../../library/email.parser.rst:30
+#, fuzzy
+msgid ""
+"There are actually two parser interfaces available for use, the "
+":class:`Parser` API and the incremental :class:`FeedParser` API.  The "
+":class:`Parser` API is most useful if you have the entire text of the "
+"message in memory, or if the entire message lives in a file on the file "
+"system.  :class:`FeedParser` is more appropriate when you are reading the "
+"message from a stream which might block waiting for more input (such as "
+"reading an email message from a socket).  The :class:`FeedParser` can "
+"consume and parse the message incrementally, and only returns the root "
+"object when you close the parser."
+msgstr ""
+"Thực tế có hai giao diện phân tích cú pháp có sẵn để sử dụng, "
+":class:`Parser` API và :class:`FeedParser` API gia tăng.  :class:`Parser` "
+"API hữu ích nhất nếu bạn có toàn bộ nội dung của tin nhắn trong bộ nhớ hoặc "
+"nếu toàn bộ tin nhắn nằm trong một tệp trên hệ thống tệp.  "
+":class:`FeedParser` thích hợp hơn khi bạn đang đọc tin nhắn từ một luồng có "
+"thể chặn việc chờ thêm đầu vào (chẳng hạn như đọc tin nhắn email từ ổ cắm)."
+"  Zz004zz có thể sử dụng và phân tích thông báo tăng dần và chỉ trả về đối "
+"tượng gốc khi bạn đóng trình phân tích cú pháp."
+
+#: ../../library/email.parser.rst:39
+#, fuzzy
+msgid ""
+"Note that the parser can be extended in limited ways, and of course you can "
+"implement your own parser completely from scratch.  All of the logic that "
+"connects the :mod:`email` package's bundled parser and the "
+":class:`~email.message.EmailMessage` class is embodied in the "
+":class:`~email.policy.Policy` class, so a custom parser can create message "
+"object trees any way it finds necessary by implementing custom versions of "
+"the appropriate :class:`!Policy` methods."
+msgstr ""
+"Lưu ý rằng trình phân tích cú pháp có thể được mở rộng theo những cách hạn "
+"chế và tất nhiên bạn có thể triển khai trình phân tích cú pháp của riêng "
+"mình hoàn toàn từ đầu.  Tất cả logic kết nối trình phân tích cú pháp đi kèm "
+"của gói :mod:`email` và lớp :class:`~email.message.EmailMessage` đều được "
+"thể hiện trong lớp :class:`~email.policy.Policy`, do đó, trình phân tích cú "
+"pháp tùy chỉnh có thể tạo cây đối tượng thông báo theo bất kỳ cách nào nó "
+"thấy cần thiết bằng cách triển khai các phiên bản tùy chỉnh của các phương "
+"thức :class:`!Policy` thích hợp."
+
+#: ../../library/email.parser.rst:49
+#, fuzzy
+msgid "FeedParser API"
+msgstr "FeedParser API"
+
+#: ../../library/email.parser.rst:51
+#, fuzzy
+msgid ""
+"The :class:`BytesFeedParser`, imported from the :mod:`email.feedparser` "
+"module, provides an API that is conducive to incremental parsing of email "
+"messages, such as would be necessary when reading the text of an email "
+"message from a source that can block (such as a socket).  The "
+":class:`BytesFeedParser` can of course be used to parse an email message "
+"fully contained in a :term:`bytes-like object`, string, or file, but the "
+":class:`BytesParser` API may be more convenient for such use cases.  The "
+"semantics and results of the two parser APIs are identical."
+msgstr ""
+":class:`BytesFeedParser`, được nhập từ mô-đun :mod:`email.feedparser`, cung "
+"cấp API có lợi cho việc phân tích cú pháp gia tăng các thông báo email, "
+"chẳng hạn như điều cần thiết khi đọc văn bản của thông báo email từ một "
+"nguồn có thể chặn (chẳng hạn như ổ cắm).  Tất nhiên, "
+":class:`BytesFeedParser` có thể được sử dụng để phân tích cú pháp một email "
+"chứa đầy đủ trong :term:`bytes-like object`, chuỗi hoặc tệp, nhưng "
+":class:`BytesParser` API có thể thuận tiện hơn cho những trường hợp sử dụng "
+"như vậy.  Ngữ nghĩa và kết quả của hai API trình phân tích cú pháp giống hệt"
+" nhau."
+
+#: ../../library/email.parser.rst:60
+#, fuzzy
+msgid ""
+"The :class:`BytesFeedParser`'s API is simple; you create an instance, feed "
+"it a bunch of bytes until there's no more to feed it, then close the parser "
+"to retrieve the root message object.  The :class:`BytesFeedParser` is "
+"extremely accurate when parsing standards-compliant messages, and it does a "
+"very good job of parsing non-compliant messages, providing information about"
+" how a message was deemed broken.  It will populate a message object's "
+":attr:`~email.message.EmailMessage.defects` attribute with a list of any "
+"problems it found in a message.  See the :mod:`email.errors` module for the "
+"list of defects that it can find."
+msgstr ""
+"API của :class:`BytesFeedParser` rất đơn giản; bạn tạo một phiên bản, cung "
+"cấp cho nó một loạt byte cho đến khi không còn byte nào để cung cấp cho nó, "
+"sau đó đóng trình phân tích cú pháp để truy xuất đối tượng thông báo gốc.  "
+":class:`BytesFeedParser` cực kỳ chính xác khi phân tích các tin nhắn tuân "
+"thủ tiêu chuẩn và thực hiện rất tốt việc phân tích các tin nhắn không tuân "
+"thủ, cung cấp thông tin về cách một tin nhắn được coi là bị hỏng.  Nó sẽ "
+"điền vào thuộc tính :attr:`~email.message.EmailMessage.defects` của đối "
+"tượng tin nhắn một danh sách các vấn đề mà nó tìm thấy trong tin nhắn.  Xem "
+"mô-đun :mod:`email.errors` để biết danh sách các lỗi mà nó có thể tìm thấy."
+
+#: ../../library/email.parser.rst:70
+#, fuzzy
+msgid "Here is the API for the :class:`BytesFeedParser`:"
+msgstr "Đây là API cho :class:`BytesFeedParser`:"
+
+#: ../../library/email.parser.rst:75
+#, fuzzy
+msgid ""
+"Create a :class:`BytesFeedParser` instance.  Optional *_factory* is a no-"
+"argument callable; if not specified use the "
+":attr:`~email.policy.Policy.message_factory` from the *policy*.  Call "
+"*_factory* whenever a new message object is needed."
+msgstr ""
+"Tạo một phiên bản :class:`BytesFeedParser`.  *_factory* tùy chọn là một lệnh"
+" gọi không có đối số; nếu không được chỉ định, hãy sử dụng "
+":attr:`~email.policy.Policy.message_factory` từ *policy*.  Gọi *_factory* "
+"bất cứ khi nào cần một đối tượng tin nhắn mới."
+
+#: ../../library/email.parser.rst:80
+#, fuzzy
+msgid ""
+"If *policy* is specified use the rules it specifies to update the "
+"representation of the message.  If *policy* is not set, use the "
+":class:`compat32 <email.policy.Compat32>` policy, which maintains backward "
+"compatibility with the Python 3.2 version of the email package and provides "
+":class:`~email.message.Message` as the default factory.  All other policies "
+"provide :class:`~email.message.EmailMessage` as the default *_factory*. For "
+"more information on what else *policy* controls, see the "
+":mod:`~email.policy` documentation."
+msgstr ""
+"Nếu *policy* được chỉ định, hãy sử dụng các quy tắc mà nó chỉ định để cập "
+"nhật cách trình bày thông báo.  Nếu *policy* không được đặt, hãy sử dụng "
+"chính sách :class:`compat32 <email.policy.Compat32>` để duy trì khả năng "
+"tương thích ngược với phiên bản Python 3.2 của gói email và cung cấp "
+":class:`~email.message.Message` làm mặc định ban đầu.  Tất cả các chính sách"
+" khác đều cung cấp :class:`~email.message.EmailMessage` làm *_factory* mặc "
+"định. Để biết thêm thông tin về những điều khiển khác của *policy*, hãy xem "
+"tài liệu về :mod:`~email.policy`."
+
+#: ../../library/email.parser.rst:89 ../../library/email.parser.rst:145
+#, fuzzy
+msgid ""
+"Note: **The policy keyword should always be specified**; The default will "
+"change to :data:`email.policy.default` in a future version of Python."
+msgstr ""
+"Lưu ý: **The policy keyword should always be specified**; Mặc định sẽ thay "
+"đổi thành :data:`email.policy.default` trong phiên bản Python trong tương "
+"lai."
+
+#: ../../library/email.parser.rst:94 ../../library/email.parser.rst:122
+#, fuzzy
+msgid "Added the *policy* keyword."
+msgstr "Đã thêm từ khóa *policy*."
+
+#: ../../library/email.parser.rst:95
+#, fuzzy
+msgid "*_factory* defaults to the policy ``message_factory``."
+msgstr "*_factory* mặc định theo chính sách ``message_factory``."
+
+#: ../../library/email.parser.rst:100
+#, fuzzy
+msgid ""
+"Feed the parser some more data.  *data* should be a :term:`bytes-like "
+"object` containing one or more lines.  The lines can be partial and the "
+"parser will stitch such partial lines together properly.  The lines can have"
+" any of the three common line endings: carriage return, newline, or carriage"
+" return and newline (they can even be mixed)."
+msgstr ""
+"Cung cấp cho trình phân tích cú pháp thêm một số dữ liệu.  *data* phải là "
+":term:`bytes-like object` chứa một hoặc nhiều dòng.  Các dòng có thể là một "
+"phần và trình phân tích cú pháp sẽ ghép các dòng một phần đó lại với nhau "
+"một cách chính xác.  Các dòng có thể có bất kỳ kết thúc nào trong ba kết "
+"thúc dòng phổ biến: xuống dòng, xuống dòng hoặc xuống dòng và xuống dòng "
+"(thậm chí chúng có thể được trộn lẫn)."
+
+#: ../../library/email.parser.rst:109
+#, fuzzy
+msgid ""
+"Complete the parsing of all previously fed data and return the root message "
+"object.  It is undefined what happens if :meth:`~feed` is called after this "
+"method has been called."
+msgstr ""
+"Hoàn thành việc phân tích cú pháp tất cả dữ liệu được cung cấp trước đó và "
+"trả về đối tượng thông báo gốc.  Không xác định được điều gì sẽ xảy ra nếu "
+":meth:`~feed` được gọi sau khi phương thức này được gọi."
+
+#: ../../library/email.parser.rst:116
+#, fuzzy
+msgid ""
+"Works like :class:`BytesFeedParser` except that the input to the "
+":meth:`~BytesFeedParser.feed` method must be a string.  This is of limited "
+"utility, since the only way for such a message to be valid is for it to "
+"contain only ASCII text or, if :attr:`~email.policy.EmailPolicy.utf8` is "
+"``True``, no binary attachments."
+msgstr ""
+"Hoạt động giống như :class:`BytesFeedParser` ngoại trừ đầu vào của phương "
+"thức :meth:`~BytesFeedParser.feed` phải là một chuỗi.  Đây là tiện ích hạn "
+"chế, vì cách duy nhất để một tin nhắn như vậy hợp lệ là nó chỉ chứa văn bản "
+"ASCII hoặc, nếu :attr:`~email.policy.EmailPolicy.utf8` là ``True``, không có"
+" tệp đính kèm nhị phân."
+
+#: ../../library/email.parser.rst:126
+#, fuzzy
+msgid "Parser API"
+msgstr "Trình phân tích cú pháp API"
+
+#: ../../library/email.parser.rst:128
+#, fuzzy
+msgid ""
+"The :class:`BytesParser` class, imported from the :mod:`!email.parser` "
+"module, provides an API that can be used to parse a message when the "
+"complete contents of the message are available in a :term:`bytes-like "
+"object` or file.  The :mod:`!email.parser` module also provides "
+":class:`Parser` for parsing strings, and header-only parsers, "
+":class:`BytesHeaderParser` and :class:`HeaderParser`, which can be used if "
+"you're only interested in the headers of the message.  "
+":class:`BytesHeaderParser` and :class:`HeaderParser` can be much faster in "
+"these situations, since they do not attempt to parse the message body, "
+"instead setting the payload to the raw body."
+msgstr ""
+"Lớp :class:`BytesParser`, được nhập từ mô-đun :mod:`!email.parser`, cung cấp"
+" API có thể được sử dụng để phân tích thông báo khi nội dung đầy đủ của "
+"thông báo có sẵn trong :term:`bytes-like object` hoặc tệp.  Mô-đun "
+":mod:`!email.parser` cũng cung cấp :class:`Parser` để phân tích chuỗi và các"
+" trình phân tích cú pháp chỉ có tiêu đề, :class:`BytesHeaderParser` và "
+":class:`HeaderParser`, có thể được sử dụng nếu bạn chỉ quan tâm đến tiêu đề "
+"của thư.  :class:`BytesHeaderParser` và :class:`HeaderParser` có thể nhanh "
+"hơn nhiều trong những trường hợp này, vì chúng không cố gắng phân tích nội "
+"dung thư mà thay vào đó đặt tải trọng vào nội dung thô."
+
+#: ../../library/email.parser.rst:141
+#, fuzzy
+msgid ""
+"Create a :class:`BytesParser` instance.  The *_class* and *policy* arguments"
+" have the same meaning and semantics as the *_factory* and *policy* "
+"arguments of :class:`BytesFeedParser`."
+msgstr ""
+"Tạo một phiên bản :class:`BytesParser`.  Các đối số *_class* và *policy* có "
+"cùng ý nghĩa và ngữ nghĩa như các đối số *_factory* và *policy* của "
+":class:`BytesFeedParser`."
+
+#: ../../library/email.parser.rst:148
+#, fuzzy
+msgid ""
+"Removed the *strict* argument that was deprecated in 2.4.  Added the "
+"*policy* keyword."
+msgstr ""
+"Đã xóa đối số *strict* không được dùng nữa trong 2.4.  Đã thêm từ khóa "
+"*policy*."
+
+#: ../../library/email.parser.rst:151 ../../library/email.parser.rst:200
+#: ../../library/email.parser.rst:280
+#, fuzzy
+msgid "*_class* defaults to the policy ``message_factory``."
+msgstr "*_class* mặc định theo chính sách ``message_factory``."
+
+#: ../../library/email.parser.rst:156
+#, fuzzy
+msgid ""
+"Read all the data from the binary file-like object *fp*, parse the resulting"
+" bytes, and return the message object.  *fp* must support both the "
+":meth:`~io.IOBase.readline` and the :meth:`~io.BufferedIOBase.read` methods."
+msgstr ""
+"Đọc tất cả dữ liệu từ đối tượng giống như tệp nhị phân *fp*, phân tích các "
+"byte kết quả và trả về đối tượng thông báo.  *fp* phải hỗ trợ cả phương pháp"
+" :meth:`~io.IOBase.readline` và :meth:`~io.BufferedIOBase.read`."
+
+#: ../../library/email.parser.rst:161
+#, fuzzy
+msgid ""
+"The bytes contained in *fp* must be formatted as a block of :rfc:`5322` (or,"
+" if :attr:`~email.policy.EmailPolicy.utf8` is ``True``, :rfc:`6532`) style "
+"headers and header continuation lines, optionally preceded by an envelope "
+"header.  The header block is terminated either by the end of the data or by "
+"a blank line.  Following the header block is the body of the message (which "
+"may contain MIME-encoded subparts, including subparts with a "
+":mailheader:`Content-Transfer-Encoding` of ``8bit``)."
+msgstr ""
+"Các byte chứa trong *fp* phải được định dạng dưới dạng một khối gồm các tiêu"
+" đề kiểu :rfc:`5322` (hoặc, nếu :attr:`~email.policy.EmailPolicy.utf8` là "
+"``True``, :rfc:`6532`) và các dòng tiếp tục tiêu đề, tùy chọn đặt trước một "
+"tiêu đề phong bì.  Khối tiêu đề được kết thúc ở cuối dữ liệu hoặc bằng một "
+"dòng trống.  Sau khối tiêu đề là nội dung của thông báo (có thể chứa các "
+"phần con được mã hóa MIME, bao gồm cả các phần con có :mailheader:`Content-"
+"Transfer-Encoding` là ``8bit``)."
+
+#: ../../library/email.parser.rst:169
+#, fuzzy
+msgid ""
+"Optional *headersonly* is a flag specifying whether to stop parsing after "
+"reading the headers or not.  The default is ``False``, meaning it parses the"
+" entire contents of the file."
+msgstr ""
+"Tùy chọn *headersonly* là cờ chỉ định có dừng phân tích cú pháp sau khi đọc "
+"tiêu đề hay không.  Mặc định là ``False``, nghĩa là nó phân tích toàn bộ nội"
+" dung của tệp."
+
+#: ../../library/email.parser.rst:176
+#, fuzzy
+msgid ""
+"Similar to the :meth:`parse` method, except it takes a :term:`bytes-like "
+"object` instead of a file-like object.  Calling this method on a "
+":term:`bytes-like object` is equivalent to wrapping *bytes* in a "
+":class:`~io.BytesIO` instance first and calling :meth:`parse`."
+msgstr ""
+"Tương tự như phương thức :meth:`parse`, ngoại trừ việc nó sử dụng "
+":term:`bytes-like object` thay vì một đối tượng giống như tệp.  Gọi phương "
+"thức này trên :term:`bytes-like object` tương đương với việc gói *bytes* "
+"trong phiên bản :class:`~io.BytesIO` trước và gọi :meth:`parse`."
+
+#: ../../library/email.parser.rst:181 ../../library/email.parser.rst:221
+#, fuzzy
+msgid "Optional *headersonly* is as with the :meth:`parse` method."
+msgstr "*headersonly* tùy chọn giống như phương pháp :meth:`parse`."
+
+#: ../../library/email.parser.rst:188
+#, fuzzy
+msgid ""
+"Exactly like :class:`BytesParser`, except that *headersonly* defaults to "
+"``True``."
+msgstr ""
+"Hoàn toàn giống :class:`BytesParser`, ngoại trừ *headersonly* mặc định là "
+"``True``."
+
+#: ../../library/email.parser.rst:196
+#, fuzzy
+msgid ""
+"This class is parallel to :class:`BytesParser`, but handles string input."
+msgstr ""
+"Lớp này song song với :class:`BytesParser`, nhưng xử lý đầu vào chuỗi."
+
+#: ../../library/email.parser.rst:198 ../../library/email.parser.rst:245
+#: ../../library/email.parser.rst:258 ../../library/email.parser.rst:268
+#: ../../library/email.parser.rst:278
+#, fuzzy
+msgid "Removed the *strict* argument.  Added the *policy* keyword."
+msgstr "Đã xóa đối số *strict*.  Đã thêm từ khóa *policy*."
+
+#: ../../library/email.parser.rst:205
+#, fuzzy
+msgid ""
+"Read all the data from the text-mode file-like object *fp*, parse the "
+"resulting text, and return the root message object.  *fp* must support both "
+"the :meth:`~io.TextIOBase.readline` and the :meth:`~io.TextIOBase.read` "
+"methods on file-like objects."
+msgstr ""
+"Đọc tất cả dữ liệu từ đối tượng giống như tệp chế độ văn bản *fp*, phân tích"
+" văn bản kết quả và trả về đối tượng thông báo gốc.  *fp* phải hỗ trợ cả hai"
+" phương thức :meth:`~io.TextIOBase.readline` và :meth:`~io.TextIOBase.read` "
+"trên các đối tượng giống như tệp."
+
+#: ../../library/email.parser.rst:210
+#, fuzzy
+msgid ""
+"Other than the text mode requirement, this method operates like "
+":meth:`BytesParser.parse`."
+msgstr ""
+"Ngoài yêu cầu về chế độ văn bản, phương pháp này hoạt động giống như "
+":meth:`BytesParser.parse`."
+
+#: ../../library/email.parser.rst:216
+#, fuzzy
+msgid ""
+"Similar to the :meth:`parse` method, except it takes a string object instead"
+" of a file-like object.  Calling this method on a string is equivalent to "
+"wrapping *text* in a :class:`~io.StringIO` instance first and calling "
+":meth:`parse`."
+msgstr ""
+"Tương tự như phương thức :meth:`parse`, ngoại trừ việc nó lấy một đối tượng "
+"chuỗi thay vì một đối tượng giống như tệp.  Việc gọi phương thức này trên "
+"một chuỗi tương đương với việc gói *text* trong phiên bản "
+":class:`~io.StringIO` trước và gọi :meth:`parse`."
+
+#: ../../library/email.parser.rst:226
+#, fuzzy
+msgid ""
+"Exactly like :class:`Parser`, except that *headersonly* defaults to "
+"``True``."
+msgstr ""
+"Hoàn toàn giống :class:`Parser`, ngoại trừ *headersonly* mặc định là "
+"``True``."
+
+#: ../../library/email.parser.rst:230
+#, fuzzy
+msgid ""
+"Since creating a message object structure from a string or a file object is "
+"such a common task, four functions are provided as a convenience.  They are "
+"available in the top-level :mod:`email` package namespace."
+msgstr ""
+"Vì việc tạo cấu trúc đối tượng thông báo từ một chuỗi hoặc một đối tượng tệp"
+" là một nhiệm vụ phổ biến nên bốn hàm được cung cấp để thuận tiện.  Chúng có"
+" sẵn trong không gian tên gói :mod:`email` cấp cao nhất."
+
+#: ../../library/email.parser.rst:239
+#, fuzzy
+msgid ""
+"Return a message object structure from a :term:`bytes-like object`.  This is"
+" equivalent to ``BytesParser().parsebytes(s)``.  Optional *_class* and "
+"*policy* are interpreted as with the :class:`~email.parser.BytesParser` "
+"class constructor."
+msgstr ""
+"Trả về cấu trúc đối tượng tin nhắn từ :term:`bytes-like object`.  Điều này "
+"tương đương với ``BytesParser().parsebytes(s)``.  *_class* và *policy* tùy "
+"chọn được hiểu như với hàm tạo của lớp :class:`~email.parser.BytesParser`."
+
+#: ../../library/email.parser.rst:252
+#, fuzzy
+msgid ""
+"Return a message object structure tree from an open binary :term:`file "
+"object`.  This is equivalent to ``BytesParser().parse(fp)``.  *_class* and "
+"*policy* are interpreted as with the :class:`~email.parser.BytesParser` "
+"class constructor."
+msgstr ""
+"Trả về cây cấu trúc đối tượng thông báo từ một :term:`file object` nhị phân "
+"mở.  Điều này tương đương với ``BytesParser().parse(fp)``.  *_class* và "
+"*policy* được hiểu như với hàm tạo của lớp "
+":class:`~email.parser.BytesParser`."
+
+#: ../../library/email.parser.rst:264
+#, fuzzy
+msgid ""
+"Return a message object structure from a string.  This is equivalent to "
+"``Parser().parsestr(s)``.  *_class* and *policy* are interpreted as with the"
+" :class:`~email.parser.Parser` class constructor."
+msgstr ""
+"Trả về cấu trúc đối tượng tin nhắn từ một chuỗi.  Điều này tương đương với "
+"``Parser().parsestr(s)``.  *_class* và *policy* được hiểu như với hàm tạo "
+"của lớp :class:`~email.parser.Parser`."
+
+#: ../../library/email.parser.rst:274
+#, fuzzy
+msgid ""
+"Return a message object structure tree from an open :term:`file object`. "
+"This is equivalent to ``Parser().parse(fp)``.  *_class* and *policy* are "
+"interpreted as with the :class:`~email.parser.Parser` class constructor."
+msgstr ""
+"Trả về cây cấu trúc đối tượng tin nhắn từ :term:`file object` đang mở. Điều "
+"này tương đương với ``Parser().parse(fp)``.  *_class* và *policy* được hiểu "
+"như với hàm tạo của lớp :class:`~email.parser.Parser`."
+
+#: ../../library/email.parser.rst:283
+#, fuzzy
+msgid ""
+"Here's an example of how you might use :func:`message_from_bytes` at an "
+"interactive Python prompt::"
+msgstr ""
+"Đây là ví dụ về cách bạn có thể sử dụng :func:`message_from_bytes` tại dấu "
+"nhắc Python tương tác::"
+
+#: ../../library/email.parser.rst:286
+#, fuzzy
+msgid ""
+">>> import email\n"
+">>> msg = email.message_from_bytes(myBytes)"
+msgstr ""
+">>> nhập email\n"
+">>> tin nhắn = email.message_from_bytes(myBytes)"
+
+#: ../../library/email.parser.rst:291
+#, fuzzy
+msgid "Additional notes"
+msgstr "Ghi chú bổ sung"
+
+#: ../../library/email.parser.rst:293
+#, fuzzy
+msgid "Here are some notes on the parsing semantics:"
+msgstr "Dưới đây là một số lưu ý về ngữ nghĩa phân tích cú pháp:"
+
+#: ../../library/email.parser.rst:295
+#, fuzzy
+msgid ""
+"Most non-\\ :mimetype:`multipart` type messages are parsed as a single "
+"message object with a string payload.  These objects will return ``False`` "
+"for :meth:`~email.message.EmailMessage.is_multipart`, and "
+":meth:`~email.message.EmailMessage.iter_parts` will yield an empty list."
+msgstr ""
+"Hầu hết các tin nhắn loại không phải \\ :mimetype:`multipart` đều được phân "
+"tích cú pháp dưới dạng một đối tượng tin nhắn duy nhất có tải trọng chuỗi.  "
+"Các đối tượng này sẽ trả về ``False`` cho "
+":meth:`~email.message.EmailMessage.is_multipart` và "
+":meth:`~email.message.EmailMessage.iter_parts` sẽ mang lại một danh sách "
+"trống."
+
+#: ../../library/email.parser.rst:300
+#, fuzzy
+msgid ""
+"All :mimetype:`multipart` type messages will be parsed as a container "
+"message object with a list of sub-message objects for their payload.  The "
+"outer container message will return ``True`` for "
+":meth:`~email.message.EmailMessage.is_multipart`, and "
+":meth:`~email.message.EmailMessage.iter_parts` will yield a list of "
+"subparts."
+msgstr ""
+"Tất cả các tin nhắn loại :mimetype:`multipart` sẽ được phân tích cú pháp "
+"dưới dạng đối tượng tin nhắn chứa với danh sách các đối tượng tin nhắn phụ "
+"cho tải trọng của chúng.  Thông báo vùng chứa bên ngoài sẽ trả về ``True`` "
+"cho :meth:`~email.message.EmailMessage.is_multipart` và "
+":meth:`~email.message.EmailMessage.iter_parts` sẽ mang lại danh sách các "
+"phần phụ."
+
+#: ../../library/email.parser.rst:306
+#, fuzzy
+msgid ""
+"Most messages with a content type of :mimetype:`message/\\*` (such as "
+":mimetype:`message/delivery-status` and :mimetype:`message/rfc822`) will "
+"also be parsed as container object containing a list payload of length 1.  "
+"Their :meth:`~email.message.EmailMessage.is_multipart` method will return "
+"``True``. The single element yielded by "
+":meth:`~email.message.EmailMessage.iter_parts` will be a sub-message object."
+msgstr ""
+"Hầu hết các tin nhắn có loại nội dung :mimetype:`message/\\*` (chẳng hạn như"
+" :mimetype:`message/delivery-status` và :mimetype:`message/rfc822`) cũng sẽ "
+"được phân tích cú pháp dưới dạng đối tượng vùng chứa chứa tải trọng danh "
+"sách có độ dài 1. Phương thức "
+":meth:`~email.message.EmailMessage.is_multipart` của chúng sẽ trả về "
+"``True``. Phần tử duy nhất do :meth:`~email.message.EmailMessage.iter_parts`"
+" mang lại sẽ là một đối tượng thông báo phụ."
+
+#: ../../library/email.parser.rst:313
+#, fuzzy
+msgid ""
+"Some non-standards-compliant messages may not be internally consistent about"
+" their :mimetype:`multipart`\\ -edness.  Such messages may have a "
+":mailheader:`Content-Type` header of type :mimetype:`multipart`, but their "
+":meth:`~email.message.EmailMessage.is_multipart` method may return "
+"``False``. If such messages were parsed with the "
+":class:`~email.parser.FeedParser`, they will have an instance of the "
+":class:`~email.errors.MultipartInvariantViolationDefect` class in their "
+"*defects* attribute list.  See :mod:`email.errors` for details."
+msgstr ""
+"Một số thông báo không tuân thủ tiêu chuẩn có thể không nhất quán nội bộ về "
+"độ :mimetype:`multipart`\\ -edness của chúng.  Những tin nhắn như vậy có thể"
+" có tiêu đề :mailheader:`Content-Type` thuộc loại :mimetype:`multipart`, "
+"nhưng phương thức :meth:`~email.message.EmailMessage.is_multipart` của chúng"
+" có thể trả về ``False``. Nếu những tin nhắn như vậy được phân tích cú pháp "
+"bằng :class:`~email.parser.FeedParser`, chúng sẽ có một phiên bản của lớp "
+":class:`~email.errors.MultipartInvariantViolationDefect` trong danh sách "
+"thuộc tính *defects* của chúng.  Xem :mod:`email.errors` để biết chi tiết."

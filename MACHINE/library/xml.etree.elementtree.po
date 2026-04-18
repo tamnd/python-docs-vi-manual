@@ -1,0 +1,3036 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/xml.etree.elementtree.rst:2
+#, fuzzy
+msgid ":mod:`!xml.etree.ElementTree` --- The ElementTree XML API"
+msgstr ":mod:`!xml.etree.ElementTree` --- ElementTree XML API"
+
+#: ../../library/xml.etree.elementtree.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/xml/etree/ElementTree.py`"
+msgstr "**Source code:** :source:`Lib/xml/etree/ElementTree.py`"
+
+#: ../../library/xml.etree.elementtree.rst:13
+#, fuzzy
+msgid ""
+"The :mod:`!xml.etree.ElementTree` module implements a simple and efficient "
+"API for parsing and creating XML data."
+msgstr ""
+"Mô-đun :mod:`!xml.etree.ElementTree` triển khai API đơn giản và hiệu quả để "
+"phân tích cú pháp và tạo dữ liệu XML."
+
+#: ../../library/xml.etree.elementtree.rst:16
+#, fuzzy
+msgid "This module will use a fast implementation whenever available."
+msgstr "Mô-đun này sẽ sử dụng triển khai nhanh bất cứ khi nào có sẵn."
+
+#: ../../library/xml.etree.elementtree.rst:19
+#, fuzzy
+msgid "The :mod:`!xml.etree.cElementTree` module is deprecated."
+msgstr "Mô-đun :mod:`!xml.etree.cElementTree` không được dùng nữa."
+
+#: ../../library/xml.etree.elementtree.rst:25
+#, fuzzy
+msgid ""
+"If you need to parse untrusted or unauthenticated data, see :ref:`xml-"
+"security`."
+msgstr ""
+"Nếu bạn cần phân tích dữ liệu không đáng tin cậy hoặc chưa được xác thực, "
+"hãy xem :ref:`xml-security`."
+
+#: ../../library/xml.etree.elementtree.rst:29
+#, fuzzy
+msgid "Tutorial"
+msgstr "Hướng dẫn"
+
+#: ../../library/xml.etree.elementtree.rst:31
+#, fuzzy
+msgid ""
+"This is a short tutorial for using :mod:`!xml.etree.ElementTree` (``ET`` in "
+"short).  The goal is to demonstrate some of the building blocks and basic "
+"concepts of the module."
+msgstr ""
+"Đây là một hướng dẫn ngắn về cách sử dụng :mod:`!xml.etree.ElementTree` (gọi"
+" tắt là ``ET``).  Mục đích là để trình bày một số khối xây dựng và các khái "
+"niệm cơ bản của mô-đun."
+
+#: ../../library/xml.etree.elementtree.rst:36
+#, fuzzy
+msgid "XML tree and elements"
+msgstr "cây và các phần tử XML"
+
+#: ../../library/xml.etree.elementtree.rst:38
+#, fuzzy
+msgid ""
+"XML is an inherently hierarchical data format, and the most natural way to "
+"represent it is with a tree.  ``ET`` has two classes for this purpose - "
+":class:`ElementTree` represents the whole XML document as a tree, and "
+":class:`Element` represents a single node in this tree.  Interactions with "
+"the whole document (reading and writing to/from files) are usually done on "
+"the :class:`ElementTree` level.  Interactions with a single XML element and "
+"its sub-elements are done on the :class:`Element` level."
+msgstr ""
+"XML vốn là một định dạng dữ liệu có thứ bậc và cách tự nhiên nhất để biểu "
+"diễn nó là bằng một cái cây.  ``ET`` có hai lớp cho mục đích này - "
+":class:`ElementTree` đại diện cho toàn bộ tài liệu XML dưới dạng cây và "
+":class:`Element` đại diện cho một nút duy nhất trong cây này.  Các tương tác"
+" với toàn bộ tài liệu (đọc và ghi vào/từ tệp) thường được thực hiện ở cấp độ"
+" :class:`ElementTree`.  Tương tác với một phần tử XML duy nhất và các phần "
+"tử phụ của nó được thực hiện ở cấp độ :class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:49
+#, fuzzy
+msgid "Parsing XML"
+msgstr "Phân tích cú pháp XML"
+
+#: ../../library/xml.etree.elementtree.rst:51
+#, fuzzy
+msgid ""
+"We'll be using the fictive :file:`country_data.xml` XML document as the "
+"sample data for this section:"
+msgstr ""
+"Chúng tôi sẽ sử dụng tài liệu :file:`country_data.xml` XML hư cấu làm dữ "
+"liệu mẫu cho phần này:"
+
+#: ../../library/xml.etree.elementtree.rst:53
+#, fuzzy
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<data>\n"
+"    <country name=\"Liechtenstein\">\n"
+"        <rank>1</rank>\n"
+"        <year>2008</year>\n"
+"        <gdppc>141100</gdppc>\n"
+"        <neighbor name=\"Austria\" direction=\"E\"/>\n"
+"        <neighbor name=\"Switzerland\" direction=\"W\"/>\n"
+"    </country>\n"
+"    <country name=\"Singapore\">\n"
+"        <rank>4</rank>\n"
+"        <year>2011</year>\n"
+"        <gdppc>59900</gdppc>\n"
+"        <neighbor name=\"Malaysia\" direction=\"N\"/>\n"
+"    </country>\n"
+"    <country name=\"Panama\">\n"
+"        <rank>68</rank>\n"
+"        <year>2011</year>\n"
+"        <gdppc>13600</gdppc>\n"
+"        <neighbor name=\"Costa Rica\" direction=\"W\"/>\n"
+"        <neighbor name=\"Colombia\" direction=\"E\"/>\n"
+"    </country>\n"
+"</data>"
+msgstr ""
+"<?xml phiên bản=\"1.0\"?>\n"
+"<dữ liệu>\n"
+"    <tên quốc gia=\"Liechtenstein\">\n"
+"        <thứ hạng>1</thứ hạng>\n"
+"        <năm>2008</năm>\n"
+"        <gdppc>141100</gdppc>\n"
+"        <tên hàng xóm=\"Áo\" Direction=\"E\"/>\n"
+"        <tên hàng xóm=\"Thụy Sĩ\" Direction=\"W\"/>\n"
+"    </quốc gia>\n"
+"    <tên quốc gia=\"Xin-ga-po\">\n"
+"        <thứ hạng>4</thứ hạng>\n"
+"        <năm>2011</năm>\n"
+"        <gdppc>59900</gdppc>\n"
+"        <tên hàng xóm=\"Malaysia\" Direction=\"N\"/>\n"
+"    </quốc gia>\n"
+"    <tên quốc gia=\"Panama\">\n"
+"        <thứ hạng>68</thứ hạng>\n"
+"        <năm>2011</năm>\n"
+"        <gdppc>13600</gdppc>\n"
+"        <tên hàng xóm=\"Costa Rica\" Direction=\"W\"/>\n"
+"        <tên hàng xóm=\"Colombia\" Direction=\"E\"/>\n"
+"    </quốc gia>\n"
+"</dữ liệu>"
+
+#: ../../library/xml.etree.elementtree.rst:79
+#, fuzzy
+msgid "We can import this data by reading from a file::"
+msgstr "Chúng tôi có thể nhập dữ liệu này bằng cách đọc từ một tệp ::"
+
+#: ../../library/xml.etree.elementtree.rst:81
+#, fuzzy
+msgid ""
+"import xml.etree.ElementTree as ET\n"
+"tree = ET.parse('country_data.xml')\n"
+"root = tree.getroot()"
+msgstr ""
+"nhập xml.etree.ElementTree dưới dạng ET\n"
+"cây = ET.parse('country_data.xml')\n"
+"root = cây.getroot()"
+
+#: ../../library/xml.etree.elementtree.rst:85
+#, fuzzy
+msgid "Or directly from a string::"
+msgstr "Hoặc trực tiếp từ một chuỗi ::"
+
+#: ../../library/xml.etree.elementtree.rst:87
+#, fuzzy
+msgid "root = ET.fromstring(country_data_as_string)"
+msgstr "root = ET.fromstring(country_data_as_string)"
+
+#: ../../library/xml.etree.elementtree.rst:89
+#, fuzzy
+msgid ""
+":func:`fromstring` parses XML from a string directly into an "
+":class:`Element`, which is the root element of the parsed tree.  Other "
+"parsing functions may create an :class:`ElementTree`.  Check the "
+"documentation to be sure."
+msgstr ""
+":func:`fromstring` phân tích cú pháp XML từ một chuỗi trực tiếp thành "
+":class:`Element`, đây là phần tử gốc của cây được phân tích cú pháp.  Các "
+"hàm phân tích cú pháp khác có thể tạo tệp :class:`ElementTree`.  Kiểm tra "
+"tài liệu để chắc chắn."
+
+#: ../../library/xml.etree.elementtree.rst:93
+#, fuzzy
+msgid ""
+"As an :class:`Element`, ``root`` has a tag and a dictionary of attributes::"
+msgstr "Là một :class:`Element`, ``root`` có thẻ và từ điển các thuộc tính::"
+
+#: ../../library/xml.etree.elementtree.rst:95
+#, python-brace-format, fuzzy
+msgid ""
+">>> root.tag\n"
+"'data'\n"
+">>> root.attrib\n"
+"{}"
+msgstr ""
+">>> root.tag\n"
+"'dữ liệu'\n"
+">>> root.attrib\n"
+"{}"
+
+#: ../../library/xml.etree.elementtree.rst:100
+#, fuzzy
+msgid "It also has children nodes over which we can iterate::"
+msgstr "Nó cũng có các nút con mà chúng ta có thể lặp lại ::"
+
+#: ../../library/xml.etree.elementtree.rst:102
+#, python-brace-format, fuzzy
+msgid ""
+">>> for child in root:\n"
+"...     print(child.tag, child.attrib)\n"
+"...\n"
+"country {'name': 'Liechtenstein'}\n"
+"country {'name': 'Singapore'}\n"
+"country {'name': 'Panama'}"
+msgstr ""
+">>> cho con trong root:\n"
+"... print(child.tag, child.attrib)\n"
+"...\n"
+"đất nước {'name': 'Liechtenstein'}\n"
+"quốc gia {'tên': 'Xin-ga-po'}\n"
+"đất nước {'name': 'Panama'}"
+
+#: ../../library/xml.etree.elementtree.rst:109
+#, fuzzy
+msgid "Children are nested, and we can access specific child nodes by index::"
+msgstr ""
+"Các nút con được lồng vào nhau và chúng ta có thể truy cập các nút con cụ "
+"thể theo chỉ mục::"
+
+#: ../../library/xml.etree.elementtree.rst:111
+#, fuzzy
+msgid ""
+">>> root[0][1].text\n"
+"'2008'"
+msgstr ""
+">>> gốc[0][1].văn bản\n"
+"'2008'"
+
+#: ../../library/xml.etree.elementtree.rst:117
+#, fuzzy
+msgid ""
+"Not all elements of the XML input will end up as elements of the parsed "
+"tree. Currently, this module skips over any XML comments, processing "
+"instructions, and document type declarations in the input. Nevertheless, "
+"trees built using this module's API rather than parsing from XML text can "
+"have comments and processing instructions in them; they will be included "
+"when generating XML output. A document type declaration may be accessed by "
+"passing a custom :class:`TreeBuilder` instance to the :class:`XMLParser` "
+"constructor."
+msgstr ""
+"Không phải tất cả các phần tử của đầu vào XML sẽ kết thúc dưới dạng các phần"
+" tử của cây được phân tích cú pháp. Hiện tại, mô-đun này bỏ qua mọi nhận "
+"xét, hướng dẫn xử lý và khai báo loại tài liệu XML trong đầu vào. Tuy nhiên,"
+" các cây được xây dựng bằng API của mô-đun này thay vì phân tích cú pháp từ "
+"văn bản XML có thể có các nhận xét và hướng dẫn xử lý trong đó; chúng sẽ "
+"được đưa vào khi tạo đầu ra XML. Một khai báo loại tài liệu có thể được truy"
+" cập bằng cách chuyển một phiên bản :class:`TreeBuilder` tùy chỉnh tới hàm "
+"tạo :class:`XMLParser`."
+
+#: ../../library/xml.etree.elementtree.rst:131
+#, fuzzy
+msgid "Pull API for non-blocking parsing"
+msgstr "Kéo API để phân tích cú pháp không chặn"
+
+#: ../../library/xml.etree.elementtree.rst:133
+#, fuzzy
+msgid ""
+"Most parsing functions provided by this module require the whole document to"
+" be read at once before returning any result.  It is possible to use an "
+":class:`XMLParser` and feed data into it incrementally, but it is a push API"
+" that calls methods on a callback target, which is too low-level and "
+"inconvenient for most needs.  Sometimes what the user really wants is to be "
+"able to parse XML incrementally, without blocking operations, while enjoying"
+" the convenience of fully constructed :class:`Element` objects."
+msgstr ""
+"Hầu hết các chức năng phân tích cú pháp do mô-đun này cung cấp đều yêu cầu "
+"phải đọc toàn bộ tài liệu cùng một lúc trước khi trả về bất kỳ kết quả nào."
+"  Có thể sử dụng :class:`XMLParser` và nạp dữ liệu vào đó tăng dần, nhưng "
+"API đẩy gọi các phương thức trên mục tiêu gọi lại, mức này quá thấp và bất "
+"tiện cho hầu hết các nhu cầu.  Đôi khi điều người dùng thực sự muốn là có "
+"thể phân tích cú pháp XML tăng dần mà không cần chặn các thao tác, đồng thời"
+" tận hưởng sự tiện lợi của các đối tượng :class:`Element` được xây dựng hoàn"
+" chỉnh."
+
+#: ../../library/xml.etree.elementtree.rst:141
+#, fuzzy
+msgid ""
+"The most powerful tool for doing this is :class:`XMLPullParser`.  It does "
+"not require a blocking read to obtain the XML data, and is instead fed with "
+"data incrementally with :meth:`XMLPullParser.feed` calls.  To get the parsed"
+" XML elements, call :meth:`XMLPullParser.read_events`.  Here is an example::"
+msgstr ""
+"Công cụ mạnh mẽ nhất để thực hiện việc này là :class:`XMLPullParser`.  Nó "
+"không yêu cầu đọc chặn để lấy dữ liệu XML và thay vào đó được cung cấp dữ "
+"liệu tăng dần bằng các lệnh gọi :meth:`XMLPullParser.feed`.  Để lấy các phần"
+" tử XML được phân tích cú pháp, hãy gọi :meth:`XMLPullParser.read_events`.  "
+"Đây là một ví dụ::"
+
+#: ../../library/xml.etree.elementtree.rst:146
+#, fuzzy
+msgid ""
+">>> parser = ET.XMLPullParser(['start', 'end'])\n"
+">>> parser.feed('<mytag>sometext')\n"
+">>> list(parser.read_events())\n"
+"[('start', <Element 'mytag' at 0x7fa66db2be58>)]\n"
+">>> parser.feed(' more text</mytag>')\n"
+">>> for event, elem in parser.read_events():\n"
+"...     print(event)\n"
+"...     print(elem.tag, 'text=', elem.text)\n"
+"...\n"
+"end\n"
+"mytag text= sometext more text"
+msgstr ""
+">>> trình phân tích cú pháp = ET.XMLPullParser(['start', 'end'])\n"
+">>> Parser.feed('<mytag>sometext')\n"
+">>> danh sách(parser.read_events())\n"
+"[('bắt đầu', <Thành phần 'mytag' tại 0x7fa66db2be58>)]\n"
+">>> Parser.feed(' thêm văn bản</mytag>')\n"
+">>> cho sự kiện, elem trong parser.read_events():\n"
+"... in(sự kiện)\n"
+"... print(elem.tag, 'text=', elem.text)\n"
+"...\n"
+"kết thúc\n"
+"văn bản mytag= văn bản nào đó thêm văn bản"
+
+#: ../../library/xml.etree.elementtree.rst:158
+#, fuzzy
+msgid ""
+"The obvious use case is applications that operate in a non-blocking fashion "
+"where the XML data is being received from a socket or read incrementally "
+"from some storage device.  In such cases, blocking reads are unacceptable."
+msgstr ""
+"Trường hợp sử dụng rõ ràng là các ứng dụng hoạt động theo kiểu không chặn "
+"trong đó dữ liệu XML đang được nhận từ ổ cắm hoặc đọc tăng dần từ một số "
+"thiết bị lưu trữ.  Trong những trường hợp như vậy, việc chặn đọc là không "
+"thể chấp nhận được."
+
+#: ../../library/xml.etree.elementtree.rst:162
+#, fuzzy
+msgid ""
+"Because it's so flexible, :class:`XMLPullParser` can be inconvenient to use "
+"for simpler use-cases.  If you don't mind your application blocking on "
+"reading XML data but would still like to have incremental parsing "
+"capabilities, take a look at :func:`iterparse`.  It can be useful when "
+"you're reading a large XML document and don't want to hold it wholly in "
+"memory."
+msgstr ""
+"Vì quá linh hoạt nên :class:`XMLPullParser` có thể bất tiện khi sử dụng cho "
+"những trường hợp sử dụng đơn giản hơn.  Nếu bạn không bận tâm đến việc ứng "
+"dụng của mình chặn việc đọc dữ liệu XML nhưng vẫn muốn có khả năng phân tích"
+" cú pháp gia tăng, hãy xem :func:`iterparse`.  Nó có thể hữu ích khi bạn "
+"đang đọc một tài liệu XML lớn và không muốn giữ toàn bộ tài liệu đó trong bộ"
+" nhớ."
+
+#: ../../library/xml.etree.elementtree.rst:168
+#, fuzzy
+msgid ""
+"Where *immediate* feedback through events is wanted, calling method "
+":meth:`XMLPullParser.flush` can help reduce delay; please make sure to study"
+" the related security notes."
+msgstr ""
+"Khi cần phản hồi *immediate* thông qua các sự kiện, việc gọi phương thức "
+":meth:`XMLPullParser.flush` có thể giúp giảm độ trễ; hãy đảm bảo nghiên cứu "
+"các ghi chú bảo mật liên quan."
+
+#: ../../library/xml.etree.elementtree.rst:174
+#, fuzzy
+msgid "Finding interesting elements"
+msgstr "Tìm kiếm yếu tố thú vị"
+
+#: ../../library/xml.etree.elementtree.rst:176
+#, fuzzy
+msgid ""
+":class:`Element` has some useful methods that help iterate recursively over "
+"all the sub-tree below it (its children, their children, and so on).  For "
+"example, :meth:`Element.iter`::"
+msgstr ""
+":class:`Element` có một số phương pháp hữu ích giúp lặp lại đệ quy trên tất "
+"cả các cây con bên dưới nó (con của nó, con của chúng, v.v.).  Ví dụ: "
+":meth:`Element.iter`::"
+
+#: ../../library/xml.etree.elementtree.rst:180
+#, python-brace-format, fuzzy
+msgid ""
+">>> for neighbor in root.iter('neighbor'):\n"
+"...     print(neighbor.attrib)\n"
+"...\n"
+"{'name': 'Austria', 'direction': 'E'}\n"
+"{'name': 'Switzerland', 'direction': 'W'}\n"
+"{'name': 'Malaysia', 'direction': 'N'}\n"
+"{'name': 'Costa Rica', 'direction': 'W'}\n"
+"{'name': 'Colombia', 'direction': 'E'}"
+msgstr ""
+">>> cho hàng xóm trong root.iter('neighbor'):\n"
+"... print(neighbor.attrib)\n"
+"...\n"
+"{'name': 'Áo', 'hướng': 'E'}\n"
+"{'name': 'Thụy Sĩ', 'hướng': 'W'}\n"
+"{'tên': 'Malaysia', 'hướng': 'N'}\n"
+"{'name': 'Costa Rica', 'hướng': 'W'}\n"
+"{'name': 'Colombia', 'hướng': 'E'}"
+
+#: ../../library/xml.etree.elementtree.rst:189
+#, fuzzy
+msgid ""
+":meth:`Element.findall` finds only elements with a tag which are direct "
+"children of the current element.  :meth:`Element.find` finds the *first* "
+"child with a particular tag, and :attr:`Element.text` accesses the element's"
+" text content.  :meth:`Element.get` accesses the element's attributes::"
+msgstr ""
+":meth:`Element.findall` chỉ tìm thấy các phần tử có thẻ là phần tử con trực "
+"tiếp của phần tử hiện tại.  :meth:`Element.find` tìm thấy *first* con bằng "
+"một thẻ cụ thể và :attr:`Element.text` truy cập nội dung văn bản của phần "
+"tử.  :meth:`Element.get` truy cập các thuộc tính của phần tử ::"
+
+#: ../../library/xml.etree.elementtree.rst:194
+#, fuzzy
+msgid ""
+">>> for country in root.findall('country'):\n"
+"...     rank = country.find('rank').text\n"
+"...     name = country.get('name')\n"
+"...     print(name, rank)\n"
+"...\n"
+"Liechtenstein 1\n"
+"Singapore 4\n"
+"Panama 68"
+msgstr ""
+">>> cho quốc gia trong root.findall('country'):\n"
+"... thứ hạng = country.find('rank').text\n"
+"... tên = country.get('name')\n"
+"... print(tên, cấp bậc)\n"
+"...\n"
+"Liechtenstein 1\n"
+"Singapore 4\n"
+"Panama 68"
+
+#: ../../library/xml.etree.elementtree.rst:203
+#, fuzzy
+msgid ""
+"More sophisticated specification of which elements to look for is possible "
+"by using :ref:`XPath <elementtree-xpath>`."
+msgstr ""
+"Có thể thực hiện đặc tả phức tạp hơn về các phần tử cần tìm bằng cách sử "
+"dụng :ref:`XPath <elementtree-xpath>`."
+
+#: ../../library/xml.etree.elementtree.rst:207
+#, fuzzy
+msgid "Modifying an XML File"
+msgstr "Sửa đổi tệp XML"
+
+#: ../../library/xml.etree.elementtree.rst:209
+#, fuzzy
+msgid ""
+":class:`ElementTree` provides a simple way to build XML documents and write "
+"them to files. The :meth:`ElementTree.write` method serves this purpose."
+msgstr ""
+":class:`ElementTree` cung cấp một cách đơn giản để xây dựng tài liệu XML và "
+"ghi chúng vào tệp. Phương pháp :meth:`ElementTree.write` phục vụ mục đích "
+"này."
+
+#: ../../library/xml.etree.elementtree.rst:212
+#, fuzzy
+msgid ""
+"Once created, an :class:`Element` object may be manipulated by directly "
+"changing its fields (such as :attr:`Element.text`), adding and modifying "
+"attributes (:meth:`Element.set` method), as well as adding new children (for"
+" example with :meth:`Element.append`)."
+msgstr ""
+"Sau khi được tạo, một đối tượng :class:`Element` có thể được điều khiển bằng"
+" cách thay đổi trực tiếp các trường của nó (chẳng hạn như "
+":attr:`Element.text`), thêm và sửa đổi các thuộc tính (phương thức "
+":meth:`Element.set`), cũng như thêm các phần tử con mới (ví dụ với "
+":meth:`Element.append`)."
+
+#: ../../library/xml.etree.elementtree.rst:217
+#, fuzzy
+msgid ""
+"Let's say we want to add one to each country's rank, and add an ``updated`` "
+"attribute to the rank element::"
+msgstr ""
+"Giả sử chúng tôi muốn thêm một thuộc tính vào thứ hạng của mỗi quốc gia và "
+"thêm thuộc tính ``updated`` vào thành phần thứ hạng ::"
+
+#: ../../library/xml.etree.elementtree.rst:220
+#, fuzzy
+msgid ""
+">>> for rank in root.iter('rank'):\n"
+"...     new_rank = int(rank.text) + 1\n"
+"...     rank.text = str(new_rank)\n"
+"...     rank.set('updated', 'yes')\n"
+"...\n"
+">>> tree.write('output.xml')"
+msgstr ""
+">>> để biết thứ hạng trong root.iter('rank'):\n"
+"... new_rank = int(rank.text) + 1\n"
+"... thứ hạng.text = str(new_rank)\n"
+"... thứ hạng.set('đã cập nhật', 'có')\n"
+"...\n"
+">>> tree.write('output.xml')"
+
+#: ../../library/xml.etree.elementtree.rst:227
+#: ../../library/xml.etree.elementtree.rst:271
+#, fuzzy
+msgid "Our XML now looks like this:"
+msgstr "Zz000zz của chúng tôi bây giờ trông như thế này:"
+
+#: ../../library/xml.etree.elementtree.rst:229
+#, fuzzy
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<data>\n"
+"    <country name=\"Liechtenstein\">\n"
+"        <rank updated=\"yes\">2</rank>\n"
+"        <year>2008</year>\n"
+"        <gdppc>141100</gdppc>\n"
+"        <neighbor name=\"Austria\" direction=\"E\"/>\n"
+"        <neighbor name=\"Switzerland\" direction=\"W\"/>\n"
+"    </country>\n"
+"    <country name=\"Singapore\">\n"
+"        <rank updated=\"yes\">5</rank>\n"
+"        <year>2011</year>\n"
+"        <gdppc>59900</gdppc>\n"
+"        <neighbor name=\"Malaysia\" direction=\"N\"/>\n"
+"    </country>\n"
+"    <country name=\"Panama\">\n"
+"        <rank updated=\"yes\">69</rank>\n"
+"        <year>2011</year>\n"
+"        <gdppc>13600</gdppc>\n"
+"        <neighbor name=\"Costa Rica\" direction=\"W\"/>\n"
+"        <neighbor name=\"Colombia\" direction=\"E\"/>\n"
+"    </country>\n"
+"</data>"
+msgstr ""
+"<?xml phiên bản=\"1.0\"?>\n"
+"<dữ liệu>\n"
+"    <tên quốc gia=\"Liechtenstein\">\n"
+"        <rank đã cập nhật=\"có\">2</rank>\n"
+"        <năm>2008</năm>\n"
+"        <gdppc>141100</gdppc>\n"
+"        <tên hàng xóm=\"Áo\" Direction=\"E\"/>\n"
+"        <tên hàng xóm=\"Thụy Sĩ\" Direction=\"W\"/>\n"
+"    </quốc gia>\n"
+"    <tên quốc gia=\"Xin-ga-po\">\n"
+"        <rank đã cập nhật=\"có\">5</rank>\n"
+"        <năm>2011</năm>\n"
+"        <gdppc>59900</gdppc>\n"
+"        <tên hàng xóm=\"Malaysia\" Direction=\"N\"/>\n"
+"    </quốc gia>\n"
+"    <tên quốc gia=\"Panama\">\n"
+"        <rank đã cập nhật=\"có\">69</rank>\n"
+"        <năm>2011</năm>\n"
+"        <gdppc>13600</gdppc>\n"
+"        <tên hàng xóm=\"Costa Rica\" Direction=\"W\"/>\n"
+"        <tên hàng xóm=\"Colombia\" Direction=\"E\"/>\n"
+"    </quốc gia>\n"
+"</dữ liệu>"
+
+#: ../../library/xml.etree.elementtree.rst:255
+#, fuzzy
+msgid ""
+"We can remove elements using :meth:`Element.remove`.  Let's say we want to "
+"remove all countries with a rank higher than 50::"
+msgstr ""
+"Chúng ta có thể loại bỏ các phần tử bằng :meth:`Element.remove`.  Giả sử "
+"chúng tôi muốn xóa tất cả các quốc gia có thứ hạng cao hơn 50::"
+
+#: ../../library/xml.etree.elementtree.rst:258
+#, fuzzy
+msgid ""
+">>> for country in root.findall('country'):\n"
+"...     # using root.findall() to avoid removal during traversal\n"
+"...     rank = int(country.find('rank').text)\n"
+"...     if rank > 50:\n"
+"...         root.remove(country)\n"
+"...\n"
+">>> tree.write('output.xml')"
+msgstr ""
+">>> cho quốc gia trong root.findall('country'):\n"
+"... # using root.findall() để tránh bị xóa trong quá trình truyền tải\n"
+"... thứ hạng = int(country.find('rank').text)\n"
+"... nếu thứ hạng > 50:\n"
+"... root.remove(quốc gia)\n"
+"...\n"
+">>> tree.write('output.xml')"
+
+#: ../../library/xml.etree.elementtree.rst:266
+#, fuzzy
+msgid ""
+"Note that concurrent modification while iterating can lead to problems, just"
+" like when iterating and modifying Python lists or dicts. Therefore, the "
+"example first collects all matching elements with ``root.findall()``, and "
+"only then iterates over the list of matches."
+msgstr ""
+"Lưu ý rằng việc sửa đổi đồng thời trong khi lặp có thể dẫn đến sự cố, giống "
+"như khi lặp và sửa đổi danh sách hoặc ký tự Python. Do đó, ví dụ trước tiên "
+"thu thập tất cả các phần tử phù hợp với ``root.findall()`` và chỉ sau đó lặp"
+" lại danh sách kết quả phù hợp."
+
+#: ../../library/xml.etree.elementtree.rst:273
+#, fuzzy
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<data>\n"
+"    <country name=\"Liechtenstein\">\n"
+"        <rank updated=\"yes\">2</rank>\n"
+"        <year>2008</year>\n"
+"        <gdppc>141100</gdppc>\n"
+"        <neighbor name=\"Austria\" direction=\"E\"/>\n"
+"        <neighbor name=\"Switzerland\" direction=\"W\"/>\n"
+"    </country>\n"
+"    <country name=\"Singapore\">\n"
+"        <rank updated=\"yes\">5</rank>\n"
+"        <year>2011</year>\n"
+"        <gdppc>59900</gdppc>\n"
+"        <neighbor name=\"Malaysia\" direction=\"N\"/>\n"
+"    </country>\n"
+"</data>"
+msgstr ""
+"<?xml phiên bản=\"1.0\"?>\n"
+"<dữ liệu>\n"
+"    <tên quốc gia=\"Liechtenstein\">\n"
+"        <rank đã cập nhật=\"có\">2</rank>\n"
+"        <năm>2008</năm>\n"
+"        <gdppc>141100</gdppc>\n"
+"        <tên hàng xóm=\"Áo\" Direction=\"E\"/>\n"
+"        <tên hàng xóm=\"Thụy Sĩ\" Direction=\"W\"/>\n"
+"    </quốc gia>\n"
+"    <tên quốc gia=\"Xin-ga-po\">\n"
+"        <rank đã cập nhật=\"có\">5</rank>\n"
+"        <năm>2011</năm>\n"
+"        <gdppc>59900</gdppc>\n"
+"        <tên hàng xóm=\"Malaysia\" Direction=\"N\"/>\n"
+"    </quốc gia>\n"
+"</dữ liệu>"
+
+#: ../../library/xml.etree.elementtree.rst:293
+#, fuzzy
+msgid "Building XML documents"
+msgstr "Xây dựng tài liệu XML"
+
+#: ../../library/xml.etree.elementtree.rst:295
+#, fuzzy
+msgid ""
+"The :func:`SubElement` function also provides a convenient way to create new"
+" sub-elements for a given element::"
+msgstr ""
+"Hàm :func:`SubElement` cũng cung cấp một cách thuận tiện để tạo các phần tử "
+"phụ mới cho một phần tử nhất định ::"
+
+#: ../../library/xml.etree.elementtree.rst:298
+#, fuzzy
+msgid ""
+">>> a = ET.Element('a')\n"
+">>> b = ET.SubElement(a, 'b')\n"
+">>> c = ET.SubElement(a, 'c')\n"
+">>> d = ET.SubElement(c, 'd')\n"
+">>> ET.dump(a)\n"
+"<a><b /><c><d /></c></a>"
+msgstr ""
+">>> a = ET.Element('a')\n"
+">>> b = ET.SubElement(a, 'b')\n"
+">>> c = ET.SubElement(a, 'c')\n"
+">>> d = ET.SubElement(c, 'd')\n"
+">>> ET.dump(a)\n"
+"<a><b /><c><d /></c></a>"
+
+#: ../../library/xml.etree.elementtree.rst:306
+#, fuzzy
+msgid "Parsing XML with Namespaces"
+msgstr "Phân tích cú pháp XML bằng không gian tên"
+
+#: ../../library/xml.etree.elementtree.rst:308
+#, python-brace-format, fuzzy
+msgid ""
+"If the XML input has `namespaces "
+"<https://en.wikipedia.org/wiki/XML_namespace>`__, tags and attributes with "
+"prefixes in the form ``prefix:sometag`` get expanded to ``{uri}sometag`` "
+"where the *prefix* is replaced by the full *URI*. Also, if there is a "
+"`default namespace <https://www.w3.org/TR/xml-names/#defaulting>`__, that "
+"full URI gets prepended to all of the non-prefixed tags."
+msgstr ""
+"Nếu đầu vào XML có `namespaces "
+"<https://en.wikipedia.org/wiki/XML_namespace>`__, các thẻ và thuộc tính có "
+"tiền tố ở dạng ``prefix:sometag`` sẽ được mở rộng thành ``{uri}sometag`` "
+"trong đó *prefix* được thay thế bằng *URI* đầy đủ. Ngoài ra, nếu có `default"
+" namespace <https://www.w3.org/TR/xml-names/#defaulting>`__, URI đầy đủ đó "
+"sẽ được thêm vào trước tất cả các thẻ không có tiền tố."
+
+#: ../../library/xml.etree.elementtree.rst:316
+#, fuzzy
+msgid ""
+"Here is an XML example that incorporates two namespaces, one with the prefix"
+" \"fictional\" and the other serving as the default namespace:"
+msgstr ""
+"Dưới đây là một ví dụ về XML kết hợp hai không gian tên, một không gian tên "
+"có tiền tố \"hư cấu\" và không gian tên còn lại đóng vai trò là không gian "
+"tên mặc định:"
+
+#: ../../library/xml.etree.elementtree.rst:319
+#, fuzzy
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<actors xmlns:fictional=\"http://characters.example.com\"\n"
+"        xmlns=\"http://people.example.com\">\n"
+"    <actor>\n"
+"        <name>John Cleese</name>\n"
+"        <fictional:character>Lancelot</fictional:character>\n"
+"        <fictional:character>Archie Leach</fictional:character>\n"
+"    </actor>\n"
+"    <actor>\n"
+"        <name>Eric Idle</name>\n"
+"        <fictional:character>Sir Robin</fictional:character>\n"
+"        <fictional:character>Gunther</fictional:character>\n"
+"        <fictional:character>Commander Clement</fictional:character>\n"
+"    </actor>\n"
+"</actors>"
+msgstr ""
+"<?xml phiên bản=\"1.0\"?>\n"
+"<diễn viên xmlns:fictional=\"http://characters.example.com\"\n"
+"        xmlns=\"http://people.example.com\">\n"
+"    <diễn viên>\n"
+"        <name>John Cleese</name>\n"
+"        <fictional:character>Lancelot</fictional:character>\n"
+"        <fictional:character>Archie Leach</fictional:character>\n"
+"    </ diễn viên>\n"
+"    <diễn viên>\n"
+"        <name>Eric nhàn rỗi</name>\n"
+"        <fictional:character>Ngài Robin</fictional:character>\n"
+"        <fictional:character>Gunther</fictional:character>\n"
+"        <fictional:character>Chỉ huy Clement</fictional:character>\n"
+"    </ diễn viên>\n"
+"</ diễn viên>"
+
+#: ../../library/xml.etree.elementtree.rst:337
+#, fuzzy
+msgid ""
+"One way to search and explore this XML example is to manually add the URI to"
+" every tag or attribute in the xpath of a :meth:`~Element.find` or "
+":meth:`~Element.findall`::"
+msgstr ""
+"Một cách để tìm kiếm và khám phá ví dụ về XML này là thêm URI theo cách thủ "
+"công vào mọi thẻ hoặc thuộc tính trong xpath của :meth:`~Element.find` hoặc "
+":meth:`~Element.findall`::"
+
+#: ../../library/xml.etree.elementtree.rst:341
+#, python-brace-format, fuzzy
+msgid ""
+"root = fromstring(xml_text)\n"
+"for actor in root.findall('{http://people.example.com}actor'):\n"
+"    name = actor.find('{http://people.example.com}name')\n"
+"    print(name.text)\n"
+"    for char in actor.findall('{http://characters.example.com}character'):\n"
+"        print(' |-->', char.text)"
+msgstr ""
+"root = fromstring(xml_text)\n"
+"dành cho diễn viên trong root.findall('{http://people.example.com}actor'):\n"
+"    tên = diễn viên.find('{http://people.example.com}name')\n"
+"    in(name.text)\n"
+"    cho char trong diễn viên.findall('{http://characters.example.com}character'):\n"
+"        print(' |-->', char.text)"
+
+#: ../../library/xml.etree.elementtree.rst:348
+#, fuzzy
+msgid ""
+"A better way to search the namespaced XML example is to create a dictionary "
+"with your own prefixes and use those in the search functions::"
+msgstr ""
+"Cách tốt hơn để tìm kiếm ví dụ về XML được đặt tên là tạo một từ điển với "
+"các tiền tố của riêng bạn và sử dụng chúng trong các chức năng tìm kiếm::"
+
+#: ../../library/xml.etree.elementtree.rst:351
+#, python-brace-format, fuzzy
+msgid ""
+"ns = {'real_person': 'http://people.example.com',\n"
+"      'role': 'http://characters.example.com'}\n"
+"\n"
+"for actor in root.findall('real_person:actor', ns):\n"
+"    name = actor.find('real_person:name', ns)\n"
+"    print(name.text)\n"
+"    for char in actor.findall('role:character', ns):\n"
+"        print(' |-->', char.text)"
+msgstr ""
+"ns = {'real_person': 'http://people.example.com',\n"
+"      'vai trò': 'http://characters.example.com'}\n"
+"\n"
+"dành cho diễn viên trong root.findall('real_person:actor', ns):\n"
+"    name = diễn viên.find('real_person:name', ns)\n"
+"    in(name.text)\n"
+"    cho char trong diễn viên.findall('role:character', ns):\n"
+"        print(' |-->', char.text)"
+
+#: ../../library/xml.etree.elementtree.rst:360
+#, fuzzy
+msgid "These two approaches both output::"
+msgstr "Hai cách tiếp cận này đều xuất ra ::"
+
+#: ../../library/xml.etree.elementtree.rst:362
+#, fuzzy
+msgid ""
+"John Cleese\n"
+" |--> Lancelot\n"
+" |--> Archie Leach\n"
+"Eric Idle\n"
+" |--> Sir Robin\n"
+" |--> Gunther\n"
+" |--> Commander Clement"
+msgstr ""
+"John Cleese\n"
+" |--> Lancelot\n"
+" |--> Archie Leach\n"
+"Eric nhàn rỗi\n"
+" |--> Ngài Robin\n"
+" |--> Gunther\n"
+" |--> Chỉ huy Clement"
+
+#: ../../library/xml.etree.elementtree.rst:374
+#, fuzzy
+msgid "XPath support"
+msgstr "Hỗ trợ XPath"
+
+#: ../../library/xml.etree.elementtree.rst:376
+#, fuzzy
+msgid ""
+"This module provides limited support for `XPath expressions "
+"<https://www.w3.org/TR/xpath>`_ for locating elements in a tree.  The goal "
+"is to support a small subset of the abbreviated syntax; a full XPath engine "
+"is outside the scope of the module."
+msgstr ""
+"Mô-đun này cung cấp hỗ trợ hạn chế cho `XPath expressions "
+"<https://www.w3.org/TR/xpath>`_ để định vị các phần tử trong cây.  Mục tiêu "
+"là hỗ trợ một tập hợp con nhỏ của cú pháp viết tắt; công cụ XPath đầy đủ nằm"
+" ngoài phạm vi của mô-đun."
+
+#: ../../library/xml.etree.elementtree.rst:382
+#: ../../library/xml.etree.elementtree.rst:781
+#, fuzzy
+msgid "Example"
+msgstr "Ví dụ"
+
+#: ../../library/xml.etree.elementtree.rst:384
+#, fuzzy
+msgid ""
+"Here's an example that demonstrates some of the XPath capabilities of the "
+"module.  We'll be using the ``countrydata`` XML document from the "
+":ref:`Parsing XML <elementtree-parsing-xml>` section::"
+msgstr ""
+"Đây là một ví dụ thể hiện một số khả năng XPath của mô-đun.  Chúng tôi sẽ sử"
+" dụng tài liệu ``countrydata`` XML từ phần :ref:`Parsing XML <elementtree-"
+"parsing-xml>`::"
+
+#: ../../library/xml.etree.elementtree.rst:388
+#, fuzzy
+msgid ""
+"import xml.etree.ElementTree as ET\n"
+"\n"
+"root = ET.fromstring(countrydata)\n"
+"\n"
+"# Top-level elements\n"
+"root.findall(\".\")\n"
+"\n"
+"# All 'neighbor' grand-children of 'country' children of the top-level\n"
+"# elements\n"
+"root.findall(\"./country/neighbor\")\n"
+"\n"
+"# Nodes with name='Singapore' that have a 'year' child\n"
+"root.findall(\".//year/..[@name='Singapore']\")\n"
+"\n"
+"# 'year' nodes that are children of nodes with name='Singapore'\n"
+"root.findall(\".//*[@name='Singapore']/year\")\n"
+"\n"
+"# All 'neighbor' nodes that are the second child of their parent\n"
+"root.findall(\".//neighbor[2]\")"
+msgstr ""
+"nhập xml.etree.ElementTree dưới dạng ET\n"
+"\n"
+"root = ET.fromstring(countrydata)\n"
+"\n"
+"yếu tố # Top-level\n"
+"root.findall(\".\")\n"
+"\n"
+"# All cháu 'hàng xóm' của con cháu 'nhà quê' cấp cao\n"
+"# elements\n"
+"root.findall(\"./country/neighbor\")\n"
+"\n"
+"# Nodes with name=' Singapore' có con 'năm'\n"
+"root.findall(\".//year/..[@name=' Singapore']\")\n"
+"\n"
+"# nút 'năm' là con của nút có tên=' Singapore'\n"
+"root.findall(\".//*[@name=' Singapore']/year\")\n"
+"\n"
+"Các nút 'hàng xóm' # All là con thứ hai của cha mẹ chúng\n"
+"root.findall(\".//neighbor[2]\")"
+
+#: ../../library/xml.etree.elementtree.rst:408
+#, python-brace-format, fuzzy
+msgid ""
+"For XML with namespaces, use the usual qualified ``{namespace}tag`` "
+"notation::"
+msgstr ""
+"Đối với XML có không gian tên, hãy sử dụng ký hiệu ``{namespace}tag`` đủ "
+"điều kiện thông thường ::"
+
+#: ../../library/xml.etree.elementtree.rst:410
+#, python-brace-format, fuzzy
+msgid ""
+"# All dublin-core \"title\" tags in the document\n"
+"root.findall(\".//{http://purl.org/dc/elements/1.1/}title\")"
+msgstr ""
+"# All dublin-core thẻ \"tiêu đề\" trong tài liệu\n"
+"root.findall(\".//{http://purl.org/dc/elements/1.1/}title\")"
+
+#: ../../library/xml.etree.elementtree.rst:415
+#, fuzzy
+msgid "Supported XPath syntax"
+msgstr "Cú pháp XPath được hỗ trợ"
+
+#: ../../library/xml.etree.elementtree.rst:420
+#, fuzzy
+msgid "Syntax"
+msgstr "Cú pháp"
+
+#: ../../library/xml.etree.elementtree.rst:420
+#, fuzzy
+msgid "Meaning"
+msgstr "Ý nghĩa"
+
+#: ../../library/xml.etree.elementtree.rst:422
+#, fuzzy
+msgid "``tag``"
+msgstr "``tag``"
+
+#: ../../library/xml.etree.elementtree.rst:422
+#, python-brace-format, fuzzy
+msgid ""
+"Selects all child elements with the given tag. For example, ``spam`` selects"
+" all child elements named ``spam``, and ``spam/egg`` selects all "
+"grandchildren named ``egg`` in all children named ``spam``.  "
+"``{namespace}*`` selects all tags in the given namespace, ``{*}spam`` "
+"selects tags named ``spam`` in any (or no) namespace, and ``{}*`` only "
+"selects tags that are not in a namespace."
+msgstr ""
+"Chọn tất cả các phần tử con có thẻ đã cho. Ví dụ: ``spam`` chọn tất cả các "
+"phần tử con có tên ``spam`` và ``spam/egg`` chọn tất cả các phần tử con có "
+"tên ``egg`` trong tất cả các phần tử con có tên ``spam``.  ``{namespace}*`` "
+"chọn tất cả các thẻ trong không gian tên đã cho, ``{*}spam`` chọn các thẻ có"
+" tên ``spam`` trong bất kỳ (hoặc không) không gian tên nào và ``{}*`` chỉ "
+"chọn các thẻ không có trong không gian tên."
+
+#: ../../library/xml.etree.elementtree.rst:431
+#, fuzzy
+msgid "Support for star-wildcards was added."
+msgstr "Hỗ trợ cho ký tự đại diện dấu sao đã được thêm vào."
+
+#: ../../library/xml.etree.elementtree.rst:434
+#, fuzzy
+msgid "``*``"
+msgstr "``*``"
+
+#: ../../library/xml.etree.elementtree.rst:434
+#, fuzzy
+msgid ""
+"Selects all child elements, including comments and processing instructions."
+"  For example, ``*/egg`` selects all grandchildren named ``egg``."
+msgstr ""
+"Chọn tất cả các phần tử con, bao gồm cả nhận xét và hướng dẫn xử lý.  Ví dụ:"
+" ``*/egg`` chọn tất cả các cháu có tên ``egg``."
+
+#: ../../library/xml.etree.elementtree.rst:438
+#, fuzzy
+msgid "``.``"
+msgstr "``.``"
+
+#: ../../library/xml.etree.elementtree.rst:438
+#, fuzzy
+msgid ""
+"Selects the current node.  This is mostly useful at the beginning of the "
+"path, to indicate that it's a relative path."
+msgstr ""
+"Chọn nút hiện tại.  Điều này chủ yếu hữu ích ở phần đầu của đường dẫn, để "
+"chỉ ra rằng đó là đường dẫn tương đối."
+
+#: ../../library/xml.etree.elementtree.rst:442
+#, fuzzy
+msgid "``//``"
+msgstr "``//``"
+
+#: ../../library/xml.etree.elementtree.rst:442
+#, fuzzy
+msgid ""
+"Selects all subelements, on all levels beneath the current  element.  For "
+"example, ``.//egg`` selects all ``egg`` elements in the entire tree."
+msgstr ""
+"Chọn tất cả các phần tử con, ở tất cả các cấp bên dưới phần tử hiện tại.  Ví"
+" dụ: ``.//egg`` chọn tất cả các phần tử ``egg`` trong toàn bộ cây."
+
+#: ../../library/xml.etree.elementtree.rst:446
+#, fuzzy
+msgid "``..``"
+msgstr "``..``"
+
+#: ../../library/xml.etree.elementtree.rst:446
+#, fuzzy
+msgid ""
+"Selects the parent element.  Returns ``None`` if the path attempts to reach "
+"the ancestors of the start element (the element ``find`` was called on)."
+msgstr ""
+"Chọn phần tử cha.  Trả về ``None`` nếu đường dẫn cố gắng tiếp cận tổ tiên "
+"của phần tử bắt đầu (phần tử ``find`` được gọi)."
+
+#: ../../library/xml.etree.elementtree.rst:450
+#, fuzzy
+msgid "``[@attrib]``"
+msgstr "``[@attrib]``"
+
+#: ../../library/xml.etree.elementtree.rst:450
+#, fuzzy
+msgid "Selects all elements that have the given attribute."
+msgstr "Chọn tất cả các phần tử có thuộc tính đã cho."
+
+#: ../../library/xml.etree.elementtree.rst:452
+#, fuzzy
+msgid "``[@attrib='value']``"
+msgstr "``[@attrib='value']``"
+
+#: ../../library/xml.etree.elementtree.rst:452
+#, fuzzy
+msgid ""
+"Selects all elements for which the given attribute has the given value.  The"
+" value cannot contain quotes."
+msgstr ""
+"Chọn tất cả các phần tử mà thuộc tính đã cho có giá trị đã cho.  Giá trị "
+"không thể chứa dấu ngoặc kép."
+
+#: ../../library/xml.etree.elementtree.rst:456
+#, fuzzy
+msgid "``[@attrib!='value']``"
+msgstr "``[@attrib!='value']``"
+
+#: ../../library/xml.etree.elementtree.rst:456
+#, fuzzy
+msgid ""
+"Selects all elements for which the given attribute does not have the given "
+"value. The value cannot contain quotes."
+msgstr ""
+"Chọn tất cả các phần tử mà thuộc tính đã cho không có giá trị đã cho. Giá "
+"trị không thể chứa dấu ngoặc kép."
+
+#: ../../library/xml.etree.elementtree.rst:462
+#, fuzzy
+msgid "``[tag]``"
+msgstr "``[tag]``"
+
+#: ../../library/xml.etree.elementtree.rst:462
+#, fuzzy
+msgid ""
+"Selects all elements that have a child named ``tag``.  Only immediate "
+"children are supported."
+msgstr ""
+"Chọn tất cả các phần tử có phần tử con có tên là ``tag``.  Chỉ có trẻ em "
+"ngay lập tức được hỗ trợ."
+
+#: ../../library/xml.etree.elementtree.rst:465
+#, fuzzy
+msgid "``[.='text']``"
+msgstr "``[.='text']``"
+
+#: ../../library/xml.etree.elementtree.rst:465
+#, fuzzy
+msgid ""
+"Selects all elements whose complete text content, including descendants, "
+"equals the given ``text``."
+msgstr ""
+"Chọn tất cả các phần tử có nội dung văn bản đầy đủ, bao gồm cả phần tử con, "
+"bằng ``text`` đã cho."
+
+#: ../../library/xml.etree.elementtree.rst:470
+#, fuzzy
+msgid "``[.!='text']``"
+msgstr "``[.!='text']``"
+
+#: ../../library/xml.etree.elementtree.rst:470
+#, fuzzy
+msgid ""
+"Selects all elements whose complete text content, including descendants, "
+"does not equal the given ``text``."
+msgstr ""
+"Chọn tất cả các phần tử có nội dung văn bản đầy đủ, bao gồm cả phần tử con, "
+"không bằng ``text`` đã cho."
+
+#: ../../library/xml.etree.elementtree.rst:476
+#, fuzzy
+msgid "``[tag='text']``"
+msgstr "``[tag='text']``"
+
+#: ../../library/xml.etree.elementtree.rst:476
+#, fuzzy
+msgid ""
+"Selects all elements that have a child named ``tag`` whose complete text "
+"content, including descendants, equals the given ``text``."
+msgstr ""
+"Chọn tất cả các phần tử có phần tử con tên là ``tag`` có nội dung văn bản "
+"đầy đủ, bao gồm cả phần tử con, bằng ``text`` đã cho."
+
+#: ../../library/xml.etree.elementtree.rst:480
+#, fuzzy
+msgid "``[tag!='text']``"
+msgstr "``[tag!='text']``"
+
+#: ../../library/xml.etree.elementtree.rst:480
+#, fuzzy
+msgid ""
+"Selects all elements that have a child named ``tag`` whose complete text "
+"content, including descendants, does not equal the given ``text``."
+msgstr ""
+"Chọn tất cả các phần tử có phần tử con tên là ``tag`` có nội dung văn bản "
+"đầy đủ, bao gồm cả phần tử con, không bằng ``text`` đã cho."
+
+#: ../../library/xml.etree.elementtree.rst:486
+#, fuzzy
+msgid "``[position]``"
+msgstr "``[position]``"
+
+#: ../../library/xml.etree.elementtree.rst:486
+#, fuzzy
+msgid ""
+"Selects all elements that are located at the given position.  The position "
+"can be either an integer (1 is the first position), the expression "
+"``last()`` (for the last position), or a position relative to the last "
+"position (e.g. ``last()-1``)."
+msgstr ""
+"Chọn tất cả các phần tử được đặt ở vị trí nhất định.  Vị trí có thể là số "
+"nguyên (1 là vị trí đầu tiên), biểu thức ``last()`` (cho vị trí cuối cùng) "
+"hoặc vị trí liên quan đến vị trí cuối cùng (ví dụ: ``last()-1``)."
+
+#: ../../library/xml.etree.elementtree.rst:493
+#, fuzzy
+msgid ""
+"Predicates (expressions within square brackets) must be preceded by a tag "
+"name, an asterisk, or another predicate.  ``position`` predicates must be "
+"preceded by a tag name."
+msgstr ""
+"Các vị từ (biểu thức trong dấu ngoặc vuông) phải được đặt trước bởi tên thẻ,"
+" dấu hoa thị hoặc một vị từ khác.  Vị từ ``position`` phải được đặt trước "
+"tên thẻ."
+
+#: ../../library/xml.etree.elementtree.rst:498
+#: ../../library/xml.etree.elementtree.rst:833
+#, fuzzy
+msgid "Reference"
+msgstr "Tài liệu tham khảo"
+
+#: ../../library/xml.etree.elementtree.rst:503
+#: ../../library/xml.etree.elementtree.rst:838
+#, fuzzy
+msgid "Functions"
+msgstr "Chức năng"
+
+#: ../../library/xml.etree.elementtree.rst:507
+#, fuzzy
+msgid ""
+"`C14N 2.0 <https://www.w3.org/TR/xml-c14n2/>`_ transformation function."
+msgstr "hàm biến đổi `C14N 2.0 <https://www.w3.org/TR/xml-c14n2/>`_."
+
+#: ../../library/xml.etree.elementtree.rst:509
+#, fuzzy
+msgid ""
+"Canonicalization is a way to normalise XML output in a way that allows byte-"
+"by-byte comparisons and digital signatures.  It reduces the freedom that XML"
+" serializers have and instead generates a more constrained XML "
+"representation.  The main restrictions regard the placement of namespace "
+"declarations, the ordering of attributes, and ignorable whitespace."
+msgstr ""
+"Canonicalization là một cách để bình thường hóa đầu ra XML theo cách cho "
+"phép so sánh từng byte và chữ ký số.  Nó làm giảm sự tự do mà các bộ nối "
+"tiếp XML có và thay vào đó tạo ra một biểu diễn XML hạn chế hơn.  Các hạn "
+"chế chính liên quan đến việc sắp xếp các khai báo vùng tên, thứ tự các thuộc"
+" tính và khoảng trắng không thể bỏ qua."
+
+#: ../../library/xml.etree.elementtree.rst:515
+#, fuzzy
+msgid ""
+"This function takes an XML data string (*xml_data*) or a file path or file-"
+"like object (*from_file*) as input, converts it to the canonical form, and "
+"writes it out using the *out* file(-like) object, if provided, or returns it"
+" as a text string if not.  The output file receives text, not bytes.  It "
+"should therefore be opened in text mode with ``utf-8`` encoding."
+msgstr ""
+"Hàm này lấy chuỗi dữ liệu XML (*xml_data*) hoặc đường dẫn tệp hoặc đối tượng"
+" giống tệp (*from_file*) làm đầu vào, chuyển đổi nó thành dạng chuẩn và ghi "
+"nó ra bằng cách sử dụng đối tượng tệp *out*(-like), nếu được cung cấp hoặc "
+"trả về dưới dạng chuỗi văn bản nếu không.  Tệp đầu ra nhận được văn bản, "
+"không phải byte.  Do đó, nó phải được mở ở chế độ văn bản với mã hóa "
+"``utf-8``."
+
+#: ../../library/xml.etree.elementtree.rst:522
+#, fuzzy
+msgid "Typical uses::"
+msgstr "Sử dụng điển hình::"
+
+#: ../../library/xml.etree.elementtree.rst:524
+#, fuzzy
+msgid ""
+"xml_data = \"<root>...</root>\"\n"
+"print(canonicalize(xml_data))\n"
+"\n"
+"with open(\"c14n_output.xml\", mode='w', encoding='utf-8') as out_file:\n"
+"    canonicalize(xml_data, out=out_file)\n"
+"\n"
+"with open(\"c14n_output.xml\", mode='w', encoding='utf-8') as out_file:\n"
+"    canonicalize(from_file=\"inputfile.xml\", out=out_file)"
+msgstr ""
+"xml_data = \"<root>...</root>\"\n"
+"in(chuẩn hóa(xml_data))\n"
+"\n"
+"với open(\"c14n_output.xml\", mode='w',coding='utf-8') là out_file:\n"
+"    chuẩn hóa(xml_data, out=out_file)\n"
+"\n"
+"với open(\"c14n_output.xml\", mode='w',coding='utf-8') là out_file:\n"
+"    chuẩn hóa(from_file=\"inputfile.xml\", out=out_file)"
+
+#: ../../library/xml.etree.elementtree.rst:533
+#, fuzzy
+msgid "The configuration *options* are as follows:"
+msgstr "Cấu hình *options* như sau:"
+
+#: ../../library/xml.etree.elementtree.rst:535
+#, fuzzy
+msgid "*with_comments*: set to true to include comments (default: false)"
+msgstr ""
+"*with_comments*: đặt thành true để bao gồm các nhận xét (mặc định: sai)"
+
+#: ../../library/xml.etree.elementtree.rst:536
+#, fuzzy
+msgid ""
+"*strip_text*: set to true to strip whitespace before and after text content"
+msgstr ""
+"*strip_text*: đặt thành true để loại bỏ khoảng trắng trước và sau nội dung "
+"văn bản"
+
+#: ../../library/xml.etree.elementtree.rst:537
+#: ../../library/xml.etree.elementtree.rst:539
+#, fuzzy
+msgid "(default: false)"
+msgstr "(mặc định: sai)"
+
+#: ../../library/xml.etree.elementtree.rst:538
+#, python-brace-format, fuzzy
+msgid ""
+"*rewrite_prefixes*: set to true to replace namespace prefixes by "
+"\"n{number}\""
+msgstr ""
+"*rewrite_prefixes*: đặt thành true để thay thế tiền tố vùng tên bằng "
+"\"n{number}\""
+
+#: ../../library/xml.etree.elementtree.rst:540
+#, fuzzy
+msgid "*qname_aware_tags*: a set of qname aware tag names in which prefixes"
+msgstr ""
+"*qname_aware_tags*: một tập hợp các tên thẻ nhận biết qname trong đó có tiền"
+" tố"
+
+#: ../../library/xml.etree.elementtree.rst:541
+#: ../../library/xml.etree.elementtree.rst:543
+#, fuzzy
+msgid "should be replaced in text content (default: empty)"
+msgstr "nên được thay thế trong nội dung văn bản (mặc định: trống)"
+
+#: ../../library/xml.etree.elementtree.rst:542
+#, fuzzy
+msgid ""
+"*qname_aware_attrs*: a set of qname aware attribute names in which prefixes"
+msgstr ""
+"*qname_aware_attrs*: một tập hợp các tên thuộc tính nhận biết qname trong đó"
+" có tiền tố"
+
+#: ../../library/xml.etree.elementtree.rst:544
+#, fuzzy
+msgid ""
+"*exclude_attrs*: a set of attribute names that should not be serialised"
+msgstr ""
+"*exclude_attrs*: một tập hợp các tên thuộc tính không nên được tuần tự hóa"
+
+#: ../../library/xml.etree.elementtree.rst:545
+#, fuzzy
+msgid "*exclude_tags*: a set of tag names that should not be serialised"
+msgstr "*exclude_tags*: tập hợp các tên thẻ không nên được tuần tự hóa"
+
+#: ../../library/xml.etree.elementtree.rst:547
+#, fuzzy
+msgid ""
+"In the option list above, \"a set\" refers to any collection or iterable of "
+"strings, no ordering is expected."
+msgstr ""
+"Trong danh sách tùy chọn ở trên, \"một tập hợp\" đề cập đến bất kỳ tập hợp "
+"hoặc chuỗi lặp nào, không yêu cầu thứ tự."
+
+#: ../../library/xml.etree.elementtree.rst:555
+#, fuzzy
+msgid ""
+"Comment element factory.  This factory function creates a special element "
+"that will be serialized as an XML comment by the standard serializer.  The "
+"comment string can be either a bytestring or a Unicode string.  *text* is a "
+"string containing the comment string.  Returns an element instance "
+"representing a comment."
+msgstr ""
+"Nhà máy sản xuất phần tử bình luận.  Hàm xuất xưởng này tạo ra một phần tử "
+"đặc biệt sẽ được tuần tự hóa dưới dạng nhận xét XML bởi trình tuần tự hóa "
+"tiêu chuẩn.  Chuỗi nhận xét có thể là chuỗi byte hoặc chuỗi Unicode.  *text*"
+" là một chuỗi chứa chuỗi nhận xét.  Trả về một thể hiện phần tử đại diện cho"
+" một nhận xét."
+
+#: ../../library/xml.etree.elementtree.rst:561
+#, fuzzy
+msgid ""
+"Note that :class:`XMLParser` skips over comments in the input instead of "
+"creating comment objects for them. An :class:`ElementTree` will only contain"
+" comment nodes if they have been inserted into to the tree using one of the "
+":class:`Element` methods."
+msgstr ""
+"Lưu ý rằng :class:`XMLParser` bỏ qua các nhận xét trong đầu vào thay vì tạo "
+"đối tượng nhận xét cho chúng. Một :class:`ElementTree` sẽ chỉ chứa các nút "
+"nhận xét nếu chúng được chèn vào cây bằng một trong các phương thức "
+":class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:568
+#, fuzzy
+msgid ""
+"Writes an element tree or element structure to sys.stdout.  This function "
+"should be used for debugging only."
+msgstr ""
+"Viết cây phần tử hoặc cấu trúc phần tử vào sys.stdout.  Chức năng này chỉ "
+"nên được sử dụng để gỡ lỗi."
+
+#: ../../library/xml.etree.elementtree.rst:571
+#, fuzzy
+msgid ""
+"The exact output format is implementation dependent.  In this version, it's "
+"written as an ordinary XML file."
+msgstr ""
+"Định dạng đầu ra chính xác phụ thuộc vào việc triển khai.  Trong phiên bản "
+"này, nó được viết dưới dạng tệp XML thông thường."
+
+#: ../../library/xml.etree.elementtree.rst:574
+#, fuzzy
+msgid "*elem* is an element tree or an individual element."
+msgstr "*elem* là một cây phần tử hoặc một phần tử riêng lẻ."
+
+#: ../../library/xml.etree.elementtree.rst:576
+#, fuzzy
+msgid ""
+"The :func:`dump` function now preserves the attribute order specified by the"
+" user."
+msgstr ""
+"Hàm :func:`dump` hiện giữ nguyên thứ tự thuộc tính do người dùng chỉ định."
+
+#: ../../library/xml.etree.elementtree.rst:583
+#, fuzzy
+msgid ""
+"Parses an XML section from a string constant.  Same as :func:`XML`.  *text* "
+"is a string containing XML data.  *parser* is an optional parser instance. "
+"If not given, the standard :class:`XMLParser` parser is used. Returns an "
+":class:`Element` instance."
+msgstr ""
+"Phân tích phần XML từ một hằng chuỗi.  Tương tự với :func:`XML`  *text* là "
+"một chuỗi chứa dữ liệu XML.  *parser* là một phiên bản trình phân tích cú "
+"pháp tùy chọn. Nếu không được cung cấp, trình phân tích cú pháp "
+":class:`XMLParser` tiêu chuẩn sẽ được sử dụng. Trả về một phiên bản "
+":class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:591
+#, fuzzy
+msgid ""
+"Parses an XML document from a sequence of string fragments.  *sequence* is a"
+" list or other sequence containing XML data fragments.  *parser* is an "
+"optional parser instance.  If not given, the standard :class:`XMLParser` "
+"parser is used.  Returns an :class:`Element` instance."
+msgstr ""
+"Phân tích tài liệu XML từ một chuỗi các đoạn chuỗi.  *sequence* là một danh "
+"sách hoặc chuỗi khác chứa các đoạn dữ liệu XML.  *parser* là một phiên bản "
+"trình phân tích cú pháp tùy chọn.  Nếu không được cung cấp, trình phân tích "
+"cú pháp :class:`XMLParser` tiêu chuẩn sẽ được sử dụng.  Trả về một phiên bản"
+" :class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:601
+#, fuzzy
+msgid ""
+"Appends whitespace to the subtree to indent the tree visually. This can be "
+"used to generate pretty-printed XML output. *tree* can be an Element or "
+"ElementTree.  *space* is the whitespace string that will be inserted for "
+"each indentation level, two space characters by default.  For indenting "
+"partial subtrees inside of an already indented tree, pass the initial "
+"indentation level as *level*."
+msgstr ""
+"Nối khoảng trắng vào cây con để thụt lề cây một cách trực quan. Điều này có "
+"thể được sử dụng để tạo đầu ra XML được in đẹp. *tree* có thể là Element "
+"hoặc ElementTree.  *space* là chuỗi khoảng trắng sẽ được chèn cho mỗi mức "
+"thụt lề, mặc định là hai ký tự khoảng trắng.  Để thụt lề một phần cây con "
+"bên trong cây đã được thụt lề, hãy chuyển mức thụt đầu dòng ban đầu là "
+"*level*."
+
+#: ../../library/xml.etree.elementtree.rst:613
+#, fuzzy
+msgid ""
+"Check if an object appears to be a valid element object.  *element* is an "
+"element instance.  Return ``True`` if this is an element object."
+msgstr ""
+"Kiểm tra xem một đối tượng có vẻ là một đối tượng phần tử hợp lệ hay không."
+"  *element* là một phiên bản phần tử.  Trả về ``True`` nếu đây là một đối "
+"tượng phần tử."
+
+#: ../../library/xml.etree.elementtree.rst:619
+#, fuzzy
+msgid ""
+"Parses an XML section into an element tree incrementally, and reports what's"
+" going on to the user.  *source* is a filename or :term:`file object` "
+"containing XML data.  *events* is a sequence of events to report back.  The "
+"supported events are the strings ``\"start\"``, ``\"end\"``, "
+"``\"comment\"``, ``\"pi\"``, ``\"start-ns\"`` and ``\"end-ns\"`` (the \"ns\""
+" events are used to get detailed namespace information).  If *events* is "
+"omitted, only ``\"end\"`` events are reported. *parser* is an optional "
+"parser instance.  If not given, the standard :class:`XMLParser` parser is "
+"used.  *parser* must be a subclass of :class:`XMLParser` and can only use "
+"the default :class:`TreeBuilder` as a target. Returns an :term:`iterator` "
+"providing ``(event, elem)`` pairs; it has a ``root`` attribute that "
+"references the root element of the resulting XML tree once *source* is fully"
+" read. The iterator has the :meth:`!close` method that closes the internal "
+"file object if *source* is a filename."
+msgstr ""
+"Phân tích dần dần phần XML thành cây phần tử và báo cáo những gì đang diễn "
+"ra cho người dùng.  *source* là tên tệp hoặc :term:`file object` chứa dữ "
+"liệu XML.  *events* là một chuỗi các sự kiện cần báo cáo lại.  Các sự kiện "
+"được hỗ trợ là các chuỗi ``\"start\"``, ``\"end\"``, ``\"comment\"``, "
+"``\"pi\"``, ``\"start-ns\"`` và ``\"end-ns\"`` (các sự kiện \"ns\" được sử "
+"dụng để lấy thông tin chi tiết về không gian tên).  Nếu *events* bị bỏ qua, "
+"chỉ các sự kiện ``\"end\"`` được báo cáo. *parser* là một phiên bản trình "
+"phân tích cú pháp tùy chọn.  Nếu không được cung cấp, trình phân tích cú "
+"pháp :class:`XMLParser` tiêu chuẩn sẽ được sử dụng.  *parser* phải là lớp "
+"con của :class:`XMLParser` và chỉ có thể sử dụng :class:`TreeBuilder` mặc "
+"định làm mục tiêu. Trả về một :term:`iterator` cung cấp các cặp ``(event, "
+"elem)``; nó có thuộc tính ``root`` tham chiếu phần tử gốc của cây XML sau "
+"khi *source* được đọc đầy đủ. Trình lặp có phương thức :meth:`!close` đóng "
+"đối tượng tệp bên trong nếu *source* là tên tệp."
+
+#: ../../library/xml.etree.elementtree.rst:635
+#, fuzzy
+msgid ""
+"Note that while :func:`iterparse` builds the tree incrementally, it issues "
+"blocking reads on *source* (or the file it names).  As such, it's unsuitable"
+" for applications where blocking reads can't be made.  For fully non-"
+"blocking parsing, see :class:`XMLPullParser`."
+msgstr ""
+"Lưu ý rằng mặc dù :func:`iterparse` xây dựng cây tăng dần nhưng nó lại gây "
+"ra sự cố chặn việc đọc trên *source* (hoặc tệp mà nó đặt tên).  Do đó, nó "
+"không phù hợp với các ứng dụng không thể thực hiện chặn việc đọc.  Để biết "
+"phân tích cú pháp không chặn hoàn toàn, hãy xem :class:`XMLPullParser`."
+
+#: ../../library/xml.etree.elementtree.rst:642
+#, fuzzy
+msgid ""
+":func:`iterparse` only guarantees that it has seen the \">\" character of a "
+"starting tag when it emits a \"start\" event, so the attributes are defined,"
+" but the contents of the text and tail attributes are undefined at that "
+"point.  The same applies to the element children; they may or may not be "
+"present."
+msgstr ""
+":func:`iterparse` chỉ đảm bảo rằng nó đã nhìn thấy ký tự \">\" của thẻ bắt "
+"đầu khi nó phát ra sự kiện \"bắt đầu\", do đó các thuộc tính được xác định, "
+"nhưng nội dung của thuộc tính văn bản và đuôi không được xác định tại thời "
+"điểm đó.  Điều tương tự cũng áp dụng cho phần tử con; họ có thể có mặt hoặc "
+"không."
+
+#: ../../library/xml.etree.elementtree.rst:648
+#: ../../library/xml.etree.elementtree.rst:1521
+#, fuzzy
+msgid "If you need a fully populated element, look for \"end\" events instead."
+msgstr ""
+"Nếu bạn cần một phần tử được điền đầy đủ, thay vào đó hãy tìm các sự kiện "
+"\"kết thúc\"."
+
+#: ../../library/xml.etree.elementtree.rst:650
+#, fuzzy
+msgid "The *parser* argument."
+msgstr "Đối số *parser*."
+
+#: ../../library/xml.etree.elementtree.rst:653
+#: ../../library/xml.etree.elementtree.rst:1525
+#, fuzzy
+msgid "The ``comment`` and ``pi`` events were added."
+msgstr "Các sự kiện ``comment`` và ``pi`` đã được thêm vào."
+
+#: ../../library/xml.etree.elementtree.rst:656
+#, fuzzy
+msgid "Added the :meth:`!close` method."
+msgstr "Đã thêm phương thức :meth:`!close`."
+
+#: ../../library/xml.etree.elementtree.rst:662
+#, fuzzy
+msgid ""
+"Parses an XML section into an element tree.  *source* is a filename or file "
+"object containing XML data.  *parser* is an optional parser instance.  If "
+"not given, the standard :class:`XMLParser` parser is used.  Returns an "
+":class:`ElementTree` instance."
+msgstr ""
+"Phân tích phần XML thành cây phần tử.  *source* là tên tệp hoặc đối tượng "
+"tệp chứa dữ liệu XML.  *parser* là một phiên bản trình phân tích cú pháp tùy"
+" chọn.  Nếu không được cung cấp, trình phân tích cú pháp :class:`XMLParser` "
+"tiêu chuẩn sẽ được sử dụng.  Trả về một phiên bản :class:`ElementTree`."
+
+#: ../../library/xml.etree.elementtree.rst:670
+#, fuzzy
+msgid ""
+"PI element factory.  This factory function creates a special element that "
+"will be serialized as an XML processing instruction.  *target* is a string "
+"containing the PI target.  *text* is a string containing the PI contents, if"
+" given.  Returns an element instance, representing a processing instruction."
+msgstr ""
+"Nhà máy sản xuất phần tử PI.  Hàm xuất xưởng này tạo ra một phần tử đặc biệt"
+" sẽ được tuần tự hóa dưới dạng lệnh xử lý XML.  *target* là một chuỗi chứa "
+"mục tiêu PI.  *text* là một chuỗi chứa nội dung PI, nếu được cung cấp.  Trả "
+"về một thể hiện phần tử, biểu diễn một lệnh xử lý."
+
+#: ../../library/xml.etree.elementtree.rst:675
+#, fuzzy
+msgid ""
+"Note that :class:`XMLParser` skips over processing instructions in the input"
+" instead of creating PI objects for them. An :class:`ElementTree` will only "
+"contain processing instruction nodes if they have been inserted into to the "
+"tree using one of the :class:`Element` methods."
+msgstr ""
+"Lưu ý rằng :class:`XMLParser` bỏ qua các hướng dẫn xử lý trong đầu vào thay "
+"vì tạo đối tượng PI cho chúng. Một :class:`ElementTree` sẽ chỉ chứa các nút "
+"lệnh xử lý nếu chúng được chèn vào cây bằng một trong các phương thức "
+":class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:683
+#, fuzzy
+msgid ""
+"Registers a namespace prefix.  The registry is global, and any existing "
+"mapping for either the given prefix or the namespace URI will be removed. "
+"*prefix* is a namespace prefix.  *uri* is a namespace uri.  Tags and "
+"attributes in this namespace will be serialized with the given prefix, if at"
+" all possible."
+msgstr ""
+"Đăng ký tiền tố không gian tên.  Cơ quan đăng ký có tính toàn cầu và mọi ánh"
+" xạ hiện có cho tiền tố đã cho hoặc vùng tên URI sẽ bị xóa. *prefix* là tiền"
+" tố không gian tên.  *uri* là một không gian tên uri.  Các thẻ và thuộc tính"
+" trong không gian tên này sẽ được tuần tự hóa với tiền tố đã cho, nếu có "
+"thể."
+
+#: ../../library/xml.etree.elementtree.rst:694
+#, fuzzy
+msgid ""
+"Subelement factory.  This function creates an element instance, and appends "
+"it to an existing element."
+msgstr ""
+"Nhà máy phụ kiện.  Hàm này tạo một thể hiện phần tử và nối nó vào một phần "
+"tử hiện có."
+
+#: ../../library/xml.etree.elementtree.rst:697
+#, fuzzy
+msgid ""
+"The element name, attribute names, and attribute values can be either "
+"bytestrings or Unicode strings.  *parent* is the parent element.  *tag* is "
+"the subelement name.  *attrib* is an optional dictionary, containing element"
+" attributes.  *extra* contains additional attributes, given as keyword "
+"arguments.  Returns an element instance."
+msgstr ""
+"Tên phần tử, tên thuộc tính và giá trị thuộc tính có thể là chuỗi byte hoặc "
+"chuỗi Unicode.  *parent* là phần tử gốc.  *tag* là tên phần tử con.  "
+"*attrib* là một từ điển tùy chọn, chứa các thuộc tính phần tử.  *extra* chứa"
+" các thuộc tính bổ sung, được đưa ra dưới dạng đối số từ khóa.  Trả về một "
+"thể hiện phần tử."
+
+#: ../../library/xml.etree.elementtree.rst:708
+#, fuzzy
+msgid ""
+"Generates a string representation of an XML element, including all "
+"subelements.  *element* is an :class:`Element` instance.  *encoding* [1]_ is"
+" the output encoding (default is US-ASCII).  Use ``encoding=\"unicode\"`` to"
+" generate a Unicode string (otherwise, a bytestring is generated).  *method*"
+" is either ``\"xml\"``, ``\"html\"`` or ``\"text\"`` (default is "
+"``\"xml\"``). *xml_declaration*, *default_namespace* and "
+"*short_empty_elements* has the same meaning as in :meth:`ElementTree.write`."
+" Returns an (optionally) encoded string containing the XML data."
+msgstr ""
+"Tạo biểu diễn chuỗi của phần tử XML, bao gồm tất cả các phần tử phụ.  "
+"*element* là một phiên bản :class:`Element`.  *encoding* [1]_ là mã hóa đầu "
+"ra (mặc định là US-ASCII).  Sử dụng ``encoding=\"unicode\"`` để tạo chuỗi "
+"Unicode (nếu không, chuỗi byte sẽ được tạo).  *method* là ``\"xml\"``, "
+"``\"html\"`` hoặc ``\"text\"`` (mặc định là ``\"xml\"``). *xml_declaration*,"
+" *default_namespace* và *short_empty_elements* có ý nghĩa tương tự như trong"
+" :meth:`ElementTree.write`. Trả về một chuỗi được mã hóa (tùy chọn) chứa dữ "
+"liệu XML."
+
+#: ../../library/xml.etree.elementtree.rst:717
+#: ../../library/xml.etree.elementtree.rst:744
+#: ../../library/xml.etree.elementtree.rst:1198
+#, fuzzy
+msgid "Added the *short_empty_elements* parameter."
+msgstr "Đã thêm tham số *short_empty_elements*."
+
+#: ../../library/xml.etree.elementtree.rst:720
+#: ../../library/xml.etree.elementtree.rst:747
+#, fuzzy
+msgid "Added the *xml_declaration* and *default_namespace* parameters."
+msgstr "Đã thêm thông số *xml_declaration* và *default_namespace*."
+
+#: ../../library/xml.etree.elementtree.rst:723
+#, fuzzy
+msgid ""
+"The :func:`tostring` function now preserves the attribute order specified by"
+" the user."
+msgstr ""
+"Hàm :func:`tostring` hiện giữ nguyên thứ tự thuộc tính do người dùng chỉ "
+"định."
+
+#: ../../library/xml.etree.elementtree.rst:732
+#, fuzzy
+msgid ""
+"Generates a string representation of an XML element, including all "
+"subelements.  *element* is an :class:`Element` instance.  *encoding* [1]_ is"
+" the output encoding (default is US-ASCII).  Use ``encoding=\"unicode\"`` to"
+" generate a Unicode string (otherwise, a bytestring is generated).  *method*"
+" is either ``\"xml\"``, ``\"html\"`` or ``\"text\"`` (default is "
+"``\"xml\"``). *xml_declaration*, *default_namespace* and "
+"*short_empty_elements* has the same meaning as in :meth:`ElementTree.write`."
+" Returns a list of (optionally) encoded strings containing the XML data. It "
+"does not guarantee any specific sequence, except that "
+"``b\"\".join(tostringlist(element)) == tostring(element)``."
+msgstr ""
+"Tạo biểu diễn chuỗi của phần tử XML, bao gồm tất cả các phần tử phụ.  "
+"*element* là một phiên bản :class:`Element`.  *encoding* [1]_ là mã hóa đầu "
+"ra (mặc định là US-ASCII).  Sử dụng ``encoding=\"unicode\"`` để tạo chuỗi "
+"Unicode (nếu không, chuỗi byte sẽ được tạo).  *method* là ``\"xml\"``, "
+"``\"html\"`` hoặc ``\"text\"`` (mặc định là ``\"xml\"``). *xml_declaration*,"
+" *default_namespace* và *short_empty_elements* có ý nghĩa tương tự như trong"
+" :meth:`ElementTree.write`. Trả về danh sách các chuỗi được mã hóa (tùy "
+"chọn) chứa dữ liệu XML. Nó không đảm bảo bất kỳ trình tự cụ thể nào, ngoại "
+"trừ ``b\"\".join(tostringlist(element)) == tostring(element)``."
+
+#: ../../library/xml.etree.elementtree.rst:750
+#, fuzzy
+msgid ""
+"The :func:`tostringlist` function now preserves the attribute order "
+"specified by the user."
+msgstr ""
+"Hàm :func:`tostringlist` hiện giữ nguyên thứ tự thuộc tính do người dùng chỉ"
+" định."
+
+#: ../../library/xml.etree.elementtree.rst:757
+#, fuzzy
+msgid ""
+"Parses an XML section from a string constant.  This function can be used to "
+"embed \"XML literals\" in Python code.  *text* is a string containing XML "
+"data.  *parser* is an optional parser instance.  If not given, the standard "
+":class:`XMLParser` parser is used.  Returns an :class:`Element` instance."
+msgstr ""
+"Phân tích phần XML từ một hằng chuỗi.  Hàm này có thể được sử dụng để nhúng "
+"\"chữ XML\" trong mã Python.  *text* là một chuỗi chứa dữ liệu XML.  "
+"*parser* là một phiên bản trình phân tích cú pháp tùy chọn.  Nếu không được "
+"cung cấp, trình phân tích cú pháp :class:`XMLParser` tiêu chuẩn sẽ được sử "
+"dụng.  Trả về một phiên bản :class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:765
+#, fuzzy
+msgid ""
+"Parses an XML section from a string constant, and also returns a dictionary "
+"which maps from element id:s to elements.  *text* is a string containing XML"
+" data.  *parser* is an optional parser instance.  If not given, the standard"
+" :class:`XMLParser` parser is used.  Returns a tuple containing an "
+":class:`Element` instance and a dictionary."
+msgstr ""
+"Phân tích phần XML từ một hằng chuỗi và cũng trả về một từ điển ánh xạ từ "
+"phần tử id:s đến phần tử.  *text* là một chuỗi chứa dữ liệu XML.  *parser* "
+"là một phiên bản trình phân tích cú pháp tùy chọn.  Nếu không được cung cấp,"
+" trình phân tích cú pháp :class:`XMLParser` tiêu chuẩn sẽ được sử dụng.  Trả"
+" về một bộ chứa phiên bản :class:`Element` và một từ điển."
+
+#: ../../library/xml.etree.elementtree.rst:775
+#, fuzzy
+msgid "XInclude support"
+msgstr "XBao gồm hỗ trợ"
+
+#: ../../library/xml.etree.elementtree.rst:777
+#, fuzzy
+msgid ""
+"This module provides limited support for `XInclude directives "
+"<https://www.w3.org/TR/xinclude/>`_, via the :mod:`xml.etree.ElementInclude`"
+" helper module.  This module can be used to insert subtrees and text strings"
+" into element trees, based on information in the tree."
+msgstr ""
+"Mô-đun này cung cấp hỗ trợ hạn chế cho `XInclude directives "
+"<https://www.w3.org/TR/xinclude/>`_, thông qua mô-đun trợ giúp "
+":mod:`xml.etree.ElementInclude`.  Mô-đun này có thể được sử dụng để chèn cây"
+" con và chuỗi văn bản vào cây phần tử, dựa trên thông tin trong cây."
+
+#: ../../library/xml.etree.elementtree.rst:783
+#, python-brace-format, fuzzy
+msgid ""
+"Here's an example that demonstrates use of the XInclude module. To include "
+"an XML document in the current document, use the "
+"``{http://www.w3.org/2001/XInclude}include`` element and set the **parse** "
+"attribute to ``\"xml\"``, and use the **href** attribute to specify the "
+"document to include."
+msgstr ""
+"Đây là ví dụ minh họa việc sử dụng mô-đun XInclude. Để đưa tài liệu XML vào "
+"tài liệu hiện tại, hãy sử dụng phần tử "
+"``{http://www.w3.org/2001/XInclude}include`` và đặt thuộc tính **parse** "
+"thành ``\"xml\"``, đồng thời sử dụng thuộc tính **href** để chỉ định tài "
+"liệu cần đưa vào."
+
+#: ../../library/xml.etree.elementtree.rst:785
+#, fuzzy
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<document xmlns:xi=\"http://www.w3.org/2001/XInclude\">\n"
+"  <xi:include href=\"source.xml\" parse=\"xml\" />\n"
+"</document>"
+msgstr ""
+"<?xml phiên bản=\"1.0\"?>\n"
+"<tài liệu xmlns:xi=\"http://www.w3.org/2001/XInclude\">\n"
+"  <xi:include href=\"source.xml\" pars=\"xml\" />\n"
+"</ tài liệu>"
+
+#: ../../library/xml.etree.elementtree.rst:792
+#, fuzzy
+msgid ""
+"By default, the **href** attribute is treated as a file name. You can use "
+"custom loaders to override this behaviour. Also note that the standard "
+"helper does not support XPointer syntax."
+msgstr ""
+"Theo mặc định, thuộc tính **href** được coi là tên tệp. Bạn có thể sử dụng "
+"trình tải tùy chỉnh để ghi đè hành vi này. Cũng lưu ý rằng trình trợ giúp "
+"tiêu chuẩn không hỗ trợ cú pháp XPointer."
+
+#: ../../library/xml.etree.elementtree.rst:794
+#, fuzzy
+msgid ""
+"To process this file, load it as usual, and pass the root element to the "
+":mod:`!xml.etree.ElementTree` module:"
+msgstr ""
+"Để xử lý tệp này, hãy tải nó như bình thường và chuyển phần tử gốc vào mô-"
+"đun :mod:`!xml.etree.ElementTree`:"
+
+#: ../../library/xml.etree.elementtree.rst:796
+#, fuzzy
+msgid ""
+"from xml.etree import ElementTree, ElementInclude\n"
+"\n"
+"tree = ElementTree.parse(\"document.xml\")\n"
+"root = tree.getroot()\n"
+"\n"
+"ElementInclude.include(root)"
+msgstr ""
+"từ xml.etree nhập ElementTree, ElementInclude\n"
+"\n"
+"cây = ElementTree.parse(\"document.xml\")\n"
+"root = cây.getroot()\n"
+"\n"
+"ElementInclude.include(root)"
+
+#: ../../library/xml.etree.elementtree.rst:805
+#, python-brace-format, fuzzy
+msgid ""
+"The ElementInclude module replaces the "
+"``{http://www.w3.org/2001/XInclude}include`` element with the root element "
+"from the **source.xml** document. The result might look something like this:"
+msgstr ""
+"Mô-đun ElementInclude thay thế phần tử "
+"``{http://www.w3.org/2001/XInclude}include`` bằng phần tử gốc từ tài liệu "
+"**source.xml**. Kết quả có thể trông giống như thế này:"
+
+#: ../../library/xml.etree.elementtree.rst:807
+#, fuzzy
+msgid ""
+"<document xmlns:xi=\"http://www.w3.org/2001/XInclude\">\n"
+"  <para>This is a paragraph.</para>\n"
+"</document>"
+msgstr ""
+"<tài liệu xmlns:xi=\"http://www.w3.org/2001/XInclude\">\n"
+"  <para>Đây là một đoạn văn.</para>\n"
+"</ tài liệu>"
+
+#: ../../library/xml.etree.elementtree.rst:813
+#, fuzzy
+msgid ""
+"If the **parse** attribute is omitted, it defaults to \"xml\". The href "
+"attribute is required."
+msgstr ""
+"Nếu thuộc tính **parse** bị bỏ qua, nó sẽ mặc định là \"xml\". Thuộc tính "
+"href là bắt buộc."
+
+#: ../../library/xml.etree.elementtree.rst:815
+#, python-brace-format, fuzzy
+msgid ""
+"To include a text document, use the "
+"``{http://www.w3.org/2001/XInclude}include`` element, and set the **parse** "
+"attribute to \"text\":"
+msgstr ""
+"Để bao gồm tài liệu văn bản, hãy sử dụng phần tử "
+"``{http://www.w3.org/2001/XInclude}include`` và đặt thuộc tính **parse** "
+"thành \"text\":"
+
+#: ../../library/xml.etree.elementtree.rst:817
+#, fuzzy
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<document xmlns:xi=\"http://www.w3.org/2001/XInclude\">\n"
+"  Copyright (c) <xi:include href=\"year.txt\" parse=\"text\" />.\n"
+"</document>"
+msgstr ""
+"<?xml phiên bản=\"1.0\"?>\n"
+"<tài liệu xmlns:xi=\"http://www.w3.org/2001/XInclude\">\n"
+"  Bản quyền (c) <xi:include href=\"year.txt\" pars=\"text\" />.\n"
+"</ tài liệu>"
+
+#: ../../library/xml.etree.elementtree.rst:824
+#, fuzzy
+msgid "The result might look something like:"
+msgstr "Kết quả có thể trông giống như:"
+
+#: ../../library/xml.etree.elementtree.rst:826
+#, fuzzy
+msgid ""
+"<document xmlns:xi=\"http://www.w3.org/2001/XInclude\">\n"
+"  Copyright (c) 2003.\n"
+"</document>"
+msgstr ""
+"<tài liệu xmlns:xi=\"http://www.w3.org/2001/XInclude\">\n"
+"  Bản quyền (c) 2003.\n"
+"</ tài liệu>"
+
+#: ../../library/xml.etree.elementtree.rst:844
+#, fuzzy
+msgid ""
+"Default loader. This default loader reads an included resource from disk. "
+"*href* is a URL.  *parse* is for parse mode either \"xml\" or \"text\". "
+"*encoding* is an optional text encoding.  If not given, encoding is "
+"``utf-8``. Returns the expanded resource. If the parse mode is ``\"xml\"``, "
+"this is an :class:`~xml.etree.ElementTree.Element` instance. If the parse "
+"mode is ``\"text\"``, this is a string. If the loader fails, it can return "
+"``None`` or raise an exception."
+msgstr ""
+"Trình tải mặc định. Trình tải mặc định này đọc tài nguyên đi kèm từ đĩa. "
+"*href* là URL.  *parse* dành cho chế độ phân tích cú pháp \"xml\" hoặc \"văn"
+" bản\". *encoding* là một mã hóa văn bản tùy chọn.  Nếu không được cung cấp,"
+" mã hóa là ``utf-8``. Trả về tài nguyên đã mở rộng. Nếu chế độ phân tích cú "
+"pháp là ``\"xml\"`` thì đây là phiên bản "
+":class:`~xml.etree.ElementTree.Element`. Nếu chế độ phân tích cú pháp là "
+"``\"text\"`` thì đây là một chuỗi. Nếu trình tải bị lỗi, nó có thể trả về "
+"``None`` hoặc đưa ra một ngoại lệ."
+
+#: ../../library/xml.etree.elementtree.rst:855
+#, fuzzy
+msgid ""
+"This function expands XInclude directives in-place in tree pointed by "
+"*elem*. *elem* is either the root :class:`~xml.etree.ElementTree.Element` or"
+" an :class:`~xml.etree.ElementTree.ElementTree` instance to find such "
+"element. *loader* is an optional resource loader.  If omitted, it defaults "
+"to :func:`default_loader`. If given, it should be a callable that implements"
+" the same interface as :func:`default_loader`.  *base_url* is base URL of "
+"the original file, to resolve relative include file references.  *max_depth*"
+" is the maximum number of recursive inclusions.  Limited to reduce the risk "
+"of malicious content explosion. Pass ``None`` to disable the limitation."
+msgstr ""
+"Hàm này mở rộng các chỉ thị XInclude tại chỗ trong cây được trỏ bởi *elem*. "
+"*elem* là :class:`~xml.etree.ElementTree.Element` gốc hoặc một phiên bản "
+":class:`~xml.etree.ElementTree.ElementTree` để tìm phần tử đó. *loader* là "
+"trình tải tài nguyên tùy chọn.  Nếu bỏ qua, nó mặc định là "
+":func:`default_loader`. Nếu được cung cấp, nó phải là một lệnh gọi có thể "
+"triển khai giao diện giống như :func:`default_loader`.  *base_url* là URL cơ"
+" sở của tệp gốc, để giải quyết các tham chiếu tệp tương đối.  *max_depth* là"
+" số lượng bao gồm đệ quy tối đa.  Hạn chế để giảm nguy cơ bùng nổ nội dung "
+"độc hại. Vượt qua ``None`` để vô hiệu hóa giới hạn."
+
+#: ../../library/xml.etree.elementtree.rst:865
+#, fuzzy
+msgid "Added the *base_url* and *max_depth* parameters."
+msgstr "Đã thêm thông số *base_url* và *max_depth*."
+
+#: ../../library/xml.etree.elementtree.rst:872
+#, fuzzy
+msgid "Element Objects"
+msgstr "Đối tượng phần tử"
+
+#: ../../library/xml.etree.elementtree.rst:880
+#, fuzzy
+msgid ""
+"Element class.  This class defines the Element interface, and provides a "
+"reference implementation of this interface."
+msgstr ""
+"Lớp phần tử.  Lớp này định nghĩa giao diện Element và cung cấp cách triển "
+"khai tham chiếu của giao diện này."
+
+#: ../../library/xml.etree.elementtree.rst:883
+#, fuzzy
+msgid ""
+"The element name, attribute names, and attribute values can be either "
+"bytestrings or Unicode strings.  *tag* is the element name.  *attrib* is an "
+"optional dictionary, containing element attributes.  *extra* contains "
+"additional attributes, given as keyword arguments."
+msgstr ""
+"Tên phần tử, tên thuộc tính và giá trị thuộc tính có thể là chuỗi byte hoặc "
+"chuỗi Unicode.  *tag* là tên phần tử.  *attrib* là một từ điển tùy chọn, "
+"chứa các thuộc tính phần tử.  *extra* chứa các thuộc tính bổ sung, được đưa "
+"ra dưới dạng đối số từ khóa."
+
+#: ../../library/xml.etree.elementtree.rst:891
+#, fuzzy
+msgid ""
+"A string identifying what kind of data this element represents (the element "
+"type, in other words)."
+msgstr ""
+"Một chuỗi xác định loại dữ liệu mà phần tử này đại diện (nói cách khác là "
+"loại phần tử)."
+
+#: ../../library/xml.etree.elementtree.rst:898
+#, fuzzy
+msgid ""
+"These attributes can be used to hold additional data associated with the "
+"element.  Their values are usually strings but may be any application-"
+"specific object.  If the element is created from an XML file, the *text* "
+"attribute holds either the text between the element's start tag and its "
+"first child or end tag, or ``None``, and the *tail* attribute holds either "
+"the text between the element's end tag and the next tag, or ``None``.  For "
+"the XML data"
+msgstr ""
+"Các thuộc tính này có thể được sử dụng để chứa dữ liệu bổ sung liên quan đến"
+" phần tử.  Giá trị của chúng thường là các chuỗi nhưng có thể là bất kỳ đối "
+"tượng nào dành riêng cho ứng dụng.  Nếu phần tử được tạo từ tệp XML, thuộc "
+"tính *text* giữ văn bản giữa thẻ bắt đầu của phần tử và thẻ con hoặc thẻ kết"
+" thúc đầu tiên của nó hoặc ``None`` và thuộc tính *tail* giữ văn bản giữa "
+"thẻ kết thúc của phần tử và thẻ tiếp theo hoặc ``None``.  Đối với dữ liệu "
+"XML"
+
+#: ../../library/xml.etree.elementtree.rst:906
+#, fuzzy
+msgid "<a><b>1<c>2<d/>3</c></b>4</a>"
+msgstr "<a><b>1<c>2<d/>3</c></b>4</a>"
+
+#: ../../library/xml.etree.elementtree.rst:910
+#, fuzzy
+msgid ""
+"the *a* element has ``None`` for both *text* and *tail* attributes, the *b* "
+"element has *text* ``\"1\"`` and *tail* ``\"4\"``, the *c* element has "
+"*text* ``\"2\"`` and *tail* ``None``, and the *d* element has *text* "
+"``None`` and *tail* ``\"3\"``."
+msgstr ""
+"phần tử *a* có ``None`` cho cả hai thuộc tính *text* và *tail*, phần tử *b* "
+"có *text* ``\"1\"`` và *tail* ``\"4\"``, phần tử *c* có *text* ``\"2\"`` và "
+"*tail* ``None``, và phần tử *d* có *text* ``None`` và *tail* ``\"3\"``."
+
+#: ../../library/xml.etree.elementtree.rst:915
+#, fuzzy
+msgid ""
+"To collect the inner text of an element, see :meth:`itertext`, for example "
+"``\"\".join(element.itertext())``."
+msgstr ""
+"Để thu thập văn bản bên trong của một phần tử, hãy xem :meth:`itertext`, ví "
+"dụ ``\"\".join(element.itertext())``."
+
+#: ../../library/xml.etree.elementtree.rst:918
+#, fuzzy
+msgid "Applications may store arbitrary objects in these attributes."
+msgstr "Ứng dụng có thể lưu trữ các đối tượng tùy ý trong các thuộc tính này."
+
+#: ../../library/xml.etree.elementtree.rst:923
+#, fuzzy
+msgid ""
+"A dictionary containing the element's attributes.  Note that while the "
+"*attrib* value is always a real mutable Python dictionary, an ElementTree "
+"implementation may choose to use another internal representation, and create"
+" the dictionary only if someone asks for it.  To take advantage of such "
+"implementations, use the dictionary methods below whenever possible."
+msgstr ""
+"Một từ điển chứa các thuộc tính của phần tử.  Lưu ý rằng mặc dù giá trị "
+"*attrib* luôn là một từ điển Python thực sự có thể thay đổi, nhưng việc "
+"triển khai ElementTree có thể chọn sử dụng một biểu diễn nội bộ khác và chỉ "
+"tạo từ điển nếu ai đó yêu cầu.  Để tận dụng những cách triển khai như vậy, "
+"hãy sử dụng các phương pháp từ điển bên dưới bất cứ khi nào có thể."
+
+#: ../../library/xml.etree.elementtree.rst:929
+#, fuzzy
+msgid "The following dictionary-like methods work on the element attributes."
+msgstr ""
+"Các phương thức giống như từ điển sau đây hoạt động trên các thuộc tính phần"
+" tử."
+
+#: ../../library/xml.etree.elementtree.rst:934
+#, fuzzy
+msgid ""
+"Resets an element.  This function removes all subelements, clears all "
+"attributes, and sets the text and tail attributes to ``None``."
+msgstr ""
+"Đặt lại một phần tử.  Hàm này loại bỏ tất cả các phần tử con, xóa tất cả các"
+" thuộc tính và đặt thuộc tính văn bản và đuôi thành ``None``."
+
+#: ../../library/xml.etree.elementtree.rst:940
+#, fuzzy
+msgid "Gets the element attribute named *key*."
+msgstr "Lấy thuộc tính phần tử có tên *key*."
+
+#: ../../library/xml.etree.elementtree.rst:942
+#, fuzzy
+msgid ""
+"Returns the attribute value, or *default* if the attribute was not found."
+msgstr ""
+"Trả về giá trị thuộc tính hoặc *default* nếu không tìm thấy thuộc tính."
+
+#: ../../library/xml.etree.elementtree.rst:947
+#, fuzzy
+msgid ""
+"Returns the element attributes as a sequence of (name, value) pairs.  The "
+"attributes are returned in an arbitrary order."
+msgstr ""
+"Trả về các thuộc tính phần tử dưới dạng một chuỗi các cặp (tên, giá trị).  "
+"Các thuộc tính được trả về theo thứ tự tùy ý."
+
+#: ../../library/xml.etree.elementtree.rst:953
+#, fuzzy
+msgid ""
+"Returns the elements attribute names as a list.  The names are returned in "
+"an arbitrary order."
+msgstr ""
+"Trả về tên thuộc tính của các phần tử dưới dạng danh sách.  Tên được trả về "
+"theo thứ tự tùy ý."
+
+#: ../../library/xml.etree.elementtree.rst:959
+#, fuzzy
+msgid "Set the attribute *key* on the element to *value*."
+msgstr "Đặt thuộc tính *key* trên phần tử thành *value*."
+
+#: ../../library/xml.etree.elementtree.rst:961
+#, fuzzy
+msgid "The following methods work on the element's children (subelements)."
+msgstr "Các phương pháp sau đây hoạt động trên các phần tử con (phần tử con)."
+
+#: ../../library/xml.etree.elementtree.rst:966
+#, fuzzy
+msgid ""
+"Adds the element *subelement* to the end of this element's internal list of "
+"subelements.  Raises :exc:`TypeError` if *subelement* is not an "
+":class:`Element`."
+msgstr ""
+"Thêm phần tử *subelement* vào cuối danh sách các phần tử con bên trong của "
+"phần tử này.  Tăng :exc:`TypeError` nếu *subelement* không phải là "
+":class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:973
+#, fuzzy
+msgid ""
+"Appends *subelements* from an iterable of elements. Raises :exc:`TypeError` "
+"if a subelement is not an :class:`Element`."
+msgstr ""
+"Nối *subelements* từ một phần tử có thể lặp lại. Tăng :exc:`TypeError` nếu "
+"phần tử con không phải là :class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:981
+#, fuzzy
+msgid ""
+"Finds the first subelement matching *match*.  *match* may be a tag name or a"
+" :ref:`path <elementtree-xpath>`.  Returns an element instance or ``None``."
+"  *namespaces* is an optional mapping from namespace prefix to full name.  "
+"Pass ``''`` as prefix to move all unprefixed tag names in the expression "
+"into the given namespace."
+msgstr ""
+"Tìm phần tử con đầu tiên khớp với *match*.  *match* có thể là tên thẻ hoặc "
+":ref:`path <elementtree-xpath>`.  Trả về một thể hiện phần tử hoặc ``None``."
+"  *namespaces* là ánh xạ tùy chọn từ tiền tố không gian tên đến tên đầy đủ."
+"  Chuyển ``''`` làm tiền tố để di chuyển tất cả các tên thẻ không có tiền tố"
+" trong biểu thức vào không gian tên đã cho."
+
+#: ../../library/xml.etree.elementtree.rst:990
+#, fuzzy
+msgid ""
+"Finds all matching subelements, by tag name or :ref:`path <elementtree-"
+"xpath>`.  Returns a list containing all matching elements in document order."
+"  *namespaces* is an optional mapping from namespace prefix to full name.  "
+"Pass ``''`` as prefix to move all unprefixed tag names in the expression "
+"into the given namespace."
+msgstr ""
+"Tìm tất cả các phần tử con phù hợp, theo tên thẻ hoặc :ref:`path "
+"<elementtree-xpath>`.  Trả về danh sách chứa tất cả các phần tử khớp theo "
+"thứ tự tài liệu.  *namespaces* là ánh xạ tùy chọn từ tiền tố vùng tên đến "
+"tên đầy đủ.  Chuyển ``''`` làm tiền tố để di chuyển tất cả các tên thẻ không"
+" có tiền tố trong biểu thức vào không gian tên đã cho."
+
+#: ../../library/xml.etree.elementtree.rst:999
+#, fuzzy
+msgid ""
+"Finds text for the first subelement matching *match*.  *match* may be a tag "
+"name or a :ref:`path <elementtree-xpath>`.  Returns the text content of the "
+"first matching element, or *default* if no element was found. Note that if "
+"the matching element has no text content an empty string is returned. "
+"*namespaces* is an optional mapping from namespace prefix to full name.  "
+"Pass ``''`` as prefix to move all unprefixed tag names in the expression "
+"into the given namespace."
+msgstr ""
+"Tìm văn bản cho phần tử con đầu tiên khớp với *match*.  *match* có thể là "
+"tên thẻ hoặc :ref:`path <elementtree-xpath>`.  Trả về nội dung văn bản của "
+"phần tử phù hợp đầu tiên hoặc *default* nếu không tìm thấy phần tử nào. Lưu "
+"ý rằng nếu phần tử phù hợp không có nội dung văn bản thì chuỗi trống sẽ được"
+" trả về. *namespaces* là ánh xạ tùy chọn từ tiền tố không gian tên đến tên "
+"đầy đủ.  Chuyển ``''`` làm tiền tố để di chuyển tất cả các tên thẻ không có "
+"tiền tố trong biểu thức vào không gian tên đã cho."
+
+#: ../../library/xml.etree.elementtree.rst:1010
+#, fuzzy
+msgid ""
+"Inserts *subelement* at the given position in this element.  Raises "
+":exc:`TypeError` if *subelement* is not an :class:`Element`."
+msgstr ""
+"Chèn *subelement* vào vị trí đã cho trong phần tử này.  Tăng "
+":exc:`TypeError` nếu *subelement* không phải là :class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:1016
+#, fuzzy
+msgid ""
+"Creates a tree :term:`iterator` with the current element as the root. The "
+"iterator iterates over this element and all elements below it, in document "
+"(depth first) order.  If *tag* is not ``None`` or ``'*'``, only elements "
+"whose tag equals *tag* are returned from the iterator.  If the tree "
+"structure is modified during iteration, the result is undefined."
+msgstr ""
+"Tạo một cây :term:`iterator` với phần tử hiện tại là gốc. Trình vòng lặp lặp"
+" lại phần tử này và tất cả các phần tử bên dưới nó, theo thứ tự tài liệu (độ"
+" sâu trước).  Nếu *tag* không phải là ``None`` hoặc ``'*'``, thì chỉ các "
+"phần tử có thẻ bằng *tag* mới được trả về từ trình vòng lặp.  Nếu cấu trúc "
+"cây bị sửa đổi trong quá trình lặp, kết quả sẽ không được xác định."
+
+#: ../../library/xml.etree.elementtree.rst:1027
+#, fuzzy
+msgid ""
+"Finds all matching subelements, by tag name or :ref:`path <elementtree-"
+"xpath>`.  Returns an iterable yielding all matching elements in document "
+"order. *namespaces* is an optional mapping from namespace prefix to full "
+"name."
+msgstr ""
+"Tìm tất cả các phần tử con phù hợp, theo tên thẻ hoặc :ref:`path "
+"<elementtree-xpath>`.  Trả về một iterable mang lại tất cả các phần tử phù "
+"hợp theo thứ tự tài liệu. *namespaces* là ánh xạ tùy chọn từ tiền tố vùng "
+"tên đến tên đầy đủ."
+
+#: ../../library/xml.etree.elementtree.rst:1038
+#, fuzzy
+msgid ""
+"Creates a text iterator.  The iterator loops over this element and all "
+"subelements, in document order, and returns all inner text."
+msgstr ""
+"Tạo một trình vòng lặp văn bản.  Trình vòng lặp lặp qua phần tử này và tất "
+"cả các phần tử con, theo thứ tự tài liệu và trả về tất cả văn bản bên trong."
+
+#: ../../library/xml.etree.elementtree.rst:1046
+#, fuzzy
+msgid ""
+"Creates a new element object of the same type as this element.  Do not call "
+"this method, use the :func:`SubElement` factory function instead."
+msgstr ""
+"Tạo một đối tượng phần tử mới cùng loại với phần tử này.  Đừng gọi phương "
+"thức này, thay vào đó hãy sử dụng hàm xuất xưởng :func:`SubElement`."
+
+#: ../../library/xml.etree.elementtree.rst:1052
+#, fuzzy
+msgid ""
+"Removes *subelement* from the element.  Unlike the find\\* methods this "
+"method compares elements based on the instance identity, not on tag value or"
+" contents."
+msgstr ""
+"Loại bỏ *subelement* khỏi phần tử.  Không giống như các phương thức find\\*,"
+" phương thức này so sánh các phần tử dựa trên danh tính cá thể, không dựa "
+"trên giá trị hoặc nội dung thẻ."
+
+#: ../../library/xml.etree.elementtree.rst:1056
+#, fuzzy
+msgid ""
+":class:`Element` objects also support the following sequence type methods "
+"for working with subelements: :meth:`~object.__delitem__`, "
+":meth:`~object.__getitem__`, :meth:`~object.__setitem__`, "
+":meth:`~object.__len__`."
+msgstr ""
+"Các đối tượng :class:`Element` cũng hỗ trợ các phương thức loại trình tự sau"
+" để làm việc với các phần tử con: :meth:`~object.__delitem__`, "
+":meth:`~object.__getitem__`, :meth:`~object.__setitem__`, "
+":meth:`~object.__len__`."
+
+#: ../../library/xml.etree.elementtree.rst:1061
+#, fuzzy
+msgid ""
+"Caution: Elements with no subelements will test as ``False``.  In a future "
+"release of Python, all elements will test as ``True`` regardless of whether "
+"subelements exist.  Instead, prefer explicit ``len(elem)`` or ``elem is not "
+"None`` tests.::"
+msgstr ""
+"Thận trọng: Các phần tử không có phần tử con sẽ kiểm tra dưới dạng "
+"``False``.  Trong bản phát hành Python trong tương lai, tất cả các phần tử "
+"sẽ kiểm tra dưới dạng ``True`` bất kể các phần tử phụ có tồn tại hay không."
+"  Thay vào đó, hãy ưu tiên các bài kiểm tra ``len(elem)`` hoặc ``elem is not"
+" None`` rõ ràng.::"
+
+#: ../../library/xml.etree.elementtree.rst:1066
+#, fuzzy
+msgid ""
+"element = root.find('foo')\n"
+"\n"
+"if not element:  # careful!\n"
+"    print(\"element not found, or element has no subelements\")\n"
+"\n"
+"if element is None:\n"
+"    print(\"element not found\")"
+msgstr ""
+"phần tử = root.find('foo')\n"
+"\n"
+"nếu không phải là phần tử: # careful!\n"
+"    print(\"không tìm thấy phần tử hoặc phần tử không có phần tử con\")\n"
+"\n"
+"nếu phần tử là Không có:\n"
+"    print(\"không tìm thấy phần tử\")"
+
+#: ../../library/xml.etree.elementtree.rst:1074
+#, fuzzy
+msgid "Testing the truth value of an Element emits :exc:`DeprecationWarning`."
+msgstr ""
+"Kiểm tra giá trị thực của một Phần tử sẽ phát ra :exc:`DeprecationWarning`."
+
+#: ../../library/xml.etree.elementtree.rst:1077
+#, fuzzy
+msgid ""
+"Prior to Python 3.8, the serialisation order of the XML attributes of "
+"elements was artificially made predictable by sorting the attributes by "
+"their name. Based on the now guaranteed ordering of dicts, this arbitrary "
+"reordering was removed in Python 3.8 to preserve the order in which "
+"attributes were originally parsed or created by user code."
+msgstr ""
+"Trước Python 3.8, thứ tự tuần tự hóa các thuộc tính XML của các phần tử đã "
+"được dự đoán một cách giả tạo bằng cách sắp xếp các thuộc tính theo tên của "
+"chúng. Dựa trên thứ tự ký tự hiện đã được đảm bảo, việc sắp xếp lại tùy ý "
+"này đã bị xóa trong Python 3.8 để duy trì thứ tự các thuộc tính ban đầu được"
+" phân tích cú pháp hoặc tạo bởi mã người dùng."
+
+#: ../../library/xml.etree.elementtree.rst:1083
+#, fuzzy
+msgid ""
+"In general, user code should try not to depend on a specific ordering of "
+"attributes, given that the `XML Information Set <https://www.w3.org/TR/xml-"
+"infoset/>`_ explicitly excludes the attribute order from conveying "
+"information. Code should be prepared to deal with any ordering on input. In "
+"cases where deterministic XML output is required, e.g. for cryptographic "
+"signing or test data sets, canonical serialisation is available with the "
+":func:`canonicalize` function."
+msgstr ""
+"Nói chung, mã người dùng nên cố gắng không phụ thuộc vào thứ tự thuộc tính "
+"cụ thể, vì `XML Information Set <https://www.w3.org/TR/xml-infoset/>`_ loại "
+"trừ rõ ràng thứ tự thuộc tính khỏi việc truyền tải thông tin. Mã phải được "
+"chuẩn bị để xử lý mọi thứ tự đầu vào. Trong trường hợp cần có đầu ra XML xác"
+" định, ví dụ: đối với các tập dữ liệu kiểm tra hoặc ký mật mã, việc tuần tự "
+"hóa chuẩn có sẵn với chức năng :func:`canonicalize`."
+
+#: ../../library/xml.etree.elementtree.rst:1091
+#, fuzzy
+msgid ""
+"In cases where canonical output is not applicable but a specific attribute "
+"order is still desirable on output, code should aim for creating the "
+"attributes directly in the desired order, to avoid perceptual mismatches for"
+" readers of the code. In cases where this is difficult to achieve, a recipe "
+"like the following can be applied prior to serialisation to enforce an order"
+" independently from the Element creation::"
+msgstr ""
+"Trong trường hợp không thể áp dụng đầu ra chuẩn nhưng thứ tự thuộc tính cụ "
+"thể vẫn được mong muốn trên đầu ra, mã nên nhằm mục đích tạo các thuộc tính "
+"trực tiếp theo thứ tự mong muốn, để tránh cảm giác không khớp đối với người "
+"đọc mã. Trong trường hợp khó đạt được điều này, có thể áp dụng công thức như"
+" sau trước khi xê-ri hóa để thực thi lệnh độc lập với quá trình tạo Phần "
+"tử::"
+
+#: ../../library/xml.etree.elementtree.rst:1098
+#, fuzzy
+msgid ""
+"def reorder_attributes(root):\n"
+"    for el in root.iter():\n"
+"        attrib = el.attrib\n"
+"        if len(attrib) > 1:\n"
+"            # adjust attribute order, e.g. by sorting\n"
+"            attribs = sorted(attrib.items())\n"
+"            attrib.clear()\n"
+"            attrib.update(attribs)"
+msgstr ""
+"def reorder_attributes(root):\n"
+"    cho el trong root.iter():\n"
+"        attrib = el.attrib\n"
+"        nếu len(attrib) > 1:\n"
+"            Thứ tự thuộc tính # adjust, ví dụ: bằng cách sắp xếp\n"
+"            attribs = đã sắp xếp(attrib.items())\n"
+"            attrib.clear()\n"
+"            attrib.update(attribs)"
+
+#: ../../library/xml.etree.elementtree.rst:1111
+#, fuzzy
+msgid "ElementTree Objects"
+msgstr "Đối tượng ElementTree"
+
+#: ../../library/xml.etree.elementtree.rst:1116
+#, fuzzy
+msgid ""
+"ElementTree wrapper class.  This class represents an entire element "
+"hierarchy, and adds some extra support for serialization to and from "
+"standard XML."
+msgstr ""
+"Lớp trình bao bọc ElementTree.  Lớp này đại diện cho toàn bộ hệ thống phân "
+"cấp phần tử và thêm một số hỗ trợ bổ sung cho việc tuần tự hóa đến và từ XML"
+" tiêu chuẩn."
+
+#: ../../library/xml.etree.elementtree.rst:1120
+#, fuzzy
+msgid ""
+"*element* is the root element.  The tree is initialized with the contents of"
+" the XML *file* if given."
+msgstr ""
+"*element* là phần tử gốc.  Cây được khởi tạo với nội dung của XML *file* nếu"
+" được cung cấp."
+
+#: ../../library/xml.etree.elementtree.rst:1126
+#, fuzzy
+msgid ""
+"Replaces the root element for this tree.  This discards the current contents"
+" of the tree, and replaces it with the given element.  Use with care.  "
+"*element* is an element instance."
+msgstr ""
+"Thay thế phần tử gốc cho cây này.  Việc này sẽ loại bỏ nội dung hiện tại của"
+" cây và thay thế nó bằng phần tử đã cho.  Sử dụng cẩn thận.  *element* là "
+"một phiên bản phần tử."
+
+#: ../../library/xml.etree.elementtree.rst:1133
+#, fuzzy
+msgid "Same as :meth:`Element.find`, starting at the root of the tree."
+msgstr "Tương tự như :meth:`Element.find`, bắt đầu từ gốc cây."
+
+#: ../../library/xml.etree.elementtree.rst:1138
+#, fuzzy
+msgid "Same as :meth:`Element.findall`, starting at the root of the tree."
+msgstr "Tương tự như :meth:`Element.findall`, bắt đầu từ gốc cây."
+
+#: ../../library/xml.etree.elementtree.rst:1143
+#, fuzzy
+msgid "Same as :meth:`Element.findtext`, starting at the root of the tree."
+msgstr "Tương tự như :meth:`Element.findtext`, bắt đầu từ gốc cây."
+
+#: ../../library/xml.etree.elementtree.rst:1148
+#, fuzzy
+msgid "Returns the root element for this tree."
+msgstr "Trả về phần tử gốc của cây này."
+
+#: ../../library/xml.etree.elementtree.rst:1153
+#, fuzzy
+msgid ""
+"Creates and returns a tree iterator for the root element.  The iterator "
+"loops over all elements in this tree, in section order.  *tag* is the tag to"
+" look for (default is to return all elements)."
+msgstr ""
+"Tạo và trả về một trình lặp cây cho phần tử gốc.  Trình vòng lặp lặp qua tất"
+" cả các phần tử trong cây này, theo thứ tự từng phần.  *tag* là thẻ cần tìm "
+"(mặc định là trả về tất cả các phần tử)."
+
+#: ../../library/xml.etree.elementtree.rst:1160
+#, fuzzy
+msgid "Same as :meth:`Element.iterfind`, starting at the root of the tree."
+msgstr "Tương tự như :meth:`Element.iterfind`, bắt đầu từ gốc cây."
+
+#: ../../library/xml.etree.elementtree.rst:1167
+#, fuzzy
+msgid ""
+"Loads an external XML section into this element tree.  *source* is a file "
+"name or :term:`file object`.  *parser* is an optional parser instance. If "
+"not given, the standard :class:`XMLParser` parser is used.  Returns the "
+"section root element."
+msgstr ""
+"Tải phần XML bên ngoài vào cây phần tử này.  *source* là tên tệp hoặc "
+":term:`file object`.  *parser* là một phiên bản trình phân tích cú pháp tùy "
+"chọn. Nếu không được cung cấp, trình phân tích cú pháp :class:`XMLParser` "
+"tiêu chuẩn sẽ được sử dụng.  Trả về phần tử gốc của phần."
+
+#: ../../library/xml.etree.elementtree.rst:1177
+#, fuzzy
+msgid ""
+"Writes the element tree to a file, as XML.  *file* is a file name, or a "
+":term:`file object` opened for writing.  *encoding* [1]_ is the output "
+"encoding (default is US-ASCII). *xml_declaration* controls if an XML "
+"declaration should be added to the file.  Use ``False`` for never, ``True`` "
+"for always, ``None`` for only if not US-ASCII or UTF-8 or Unicode (default "
+"is ``None``). *default_namespace* sets the default XML namespace (for "
+"\"xmlns\"). *method* is either ``\"xml\"``, ``\"html\"`` or ``\"text\"`` "
+"(default is ``\"xml\"``). The keyword-only *short_empty_elements* parameter "
+"controls the formatting of elements that contain no content.  If ``True`` "
+"(the default), they are emitted as a single self-closed tag, otherwise they "
+"are emitted as a pair of start/end tags."
+msgstr ""
+"Ghi cây phần tử vào một tệp, dưới dạng XML.  *file* là tên tệp hoặc "
+":term:`file object` được mở để ghi.  *encoding* [1]_ là mã hóa đầu ra (mặc "
+"định là US-ASCII). *xml_declaration* kiểm soát xem có nên thêm khai báo XML "
+"vào tệp hay không.  Sử dụng ``False`` cho không bao giờ, ``True`` cho luôn "
+"luôn, ``None`` chỉ khi không phải US-ASCII hoặc UTF-8 hoặc Unicode (mặc định"
+" là ``None``). *default_namespace* đặt không gian tên XML mặc định (cho "
+"\"xmlns\"). *method* là ``\"xml\"``, ``\"html\"`` hoặc ``\"text\"`` (mặc "
+"định là ``\"xml\"``). Tham số *short_empty_elements* chỉ từ khóa kiểm soát "
+"định dạng của các phần tử không chứa nội dung.  Nếu ``True`` (mặc định), "
+"chúng sẽ được phát ra dưới dạng một thẻ tự đóng duy nhất, nếu không chúng sẽ"
+" được phát ra dưới dạng một cặp thẻ bắt đầu/kết thúc."
+
+#: ../../library/xml.etree.elementtree.rst:1191
+#, fuzzy
+msgid ""
+"The output is either a string (:class:`str`) or binary (:class:`bytes`). "
+"This is controlled by the *encoding* argument.  If *encoding* is "
+"``\"unicode\"``, the output is a string; otherwise, it's binary.  Note that "
+"this may conflict with the type of *file* if it's an open :term:`file "
+"object`; make sure you do not try to write a string to a binary stream and "
+"vice versa."
+msgstr ""
+"Đầu ra là một chuỗi (:class:`str`) hoặc nhị phân (:class:`bytes`). Điều này "
+"được kiểm soát bởi đối số *encoding*.  Nếu *encoding* là ``\"unicode\"`` thì"
+" đầu ra là một chuỗi; mặt khác, nó là nhị phân.  Lưu ý rằng điều này có thể "
+"xung đột với loại *file* nếu đó là :term:`file object` mở; đảm bảo bạn không"
+" cố ghi một chuỗi vào luồng nhị phân và ngược lại."
+
+#: ../../library/xml.etree.elementtree.rst:1201
+#, fuzzy
+msgid ""
+"The :meth:`write` method now preserves the attribute order specified by the "
+"user."
+msgstr ""
+"Phương thức :meth:`write` hiện giữ nguyên thứ tự thuộc tính do người dùng "
+"chỉ định."
+
+#: ../../library/xml.etree.elementtree.rst:1206
+#, fuzzy
+msgid "This is the XML file that is going to be manipulated::"
+msgstr "Đây là tệp XML sẽ được thao tác::"
+
+#: ../../library/xml.etree.elementtree.rst:1208
+#, fuzzy
+msgid ""
+"<html>\n"
+"    <head>\n"
+"        <title>Example page</title>\n"
+"    </head>\n"
+"    <body>\n"
+"        <p>Moved to <a href=\"http://example.org/\">example.org</a>\n"
+"        or <a href=\"http://example.com/\">example.com</a>.</p>\n"
+"    </body>\n"
+"</html>"
+msgstr ""
+"<html>\n"
+"    <đầu>\n"
+"        <title>Trang ví dụ</title>\n"
+"    </head>\n"
+"    <cơ thể>\n"
+"        <p>Đã chuyển đến <a href=\"http://example.org/\">example.org</a>\n"
+"        hoặc <a href=\"http://example.com/\">example.com</a>.</p>\n"
+"    </body>\n"
+"</html>"
+
+#: ../../library/xml.etree.elementtree.rst:1218
+#, fuzzy
+msgid ""
+"Example of changing the attribute \"target\" of every link in first "
+"paragraph::"
+msgstr ""
+"Ví dụ về thay đổi thuộc tính \"đích\" của mọi liên kết trong đoạn đầu tiên::"
+
+#: ../../library/xml.etree.elementtree.rst:1220
+#, fuzzy
+msgid ""
+">>> from xml.etree.ElementTree import ElementTree\n"
+">>> tree = ElementTree()\n"
+">>> tree.parse(\"index.xhtml\")\n"
+"<Element 'html' at 0xb77e6fac>\n"
+">>> p = tree.find(\"body/p\")     # Finds first occurrence of tag p in body\n"
+">>> p\n"
+"<Element 'p' at 0xb77ec26c>\n"
+">>> links = list(p.iter(\"a\"))   # Returns list of all links\n"
+">>> links\n"
+"[<Element 'a' at 0xb77ec2ac>, <Element 'a' at 0xb77ec1cc>]\n"
+">>> for i in links:             # Iterates through all found links\n"
+"...     i.attrib[\"target\"] = \"blank\"\n"
+"...\n"
+">>> tree.write(\"output.xhtml\")"
+msgstr ""
+">>> từ xml.etree.ElementTree nhập ElementTree\n"
+">>> cây = ElementTree()\n"
+">>> tree.parse(\"index.xhtml\")\n"
+"<Phần tử 'html' tại 0xb77e6fac>\n"
+">>> p = tree.find(\"body/p\") # Finds lần xuất hiện đầu tiên của thẻ p trong nội dung\n"
+">>> p\n"
+"<Phần tử 'p' tại 0xb77ec26c>\n"
+">>> links = list(p.iter(\"a\")) # Returns danh sách tất cả các liên kết\n"
+">>> liên kết\n"
+"[<Phần tử 'a' tại 0xb77ec2ac>, <Phần tử 'a' tại 0xb77ec1cc>]\n"
+">>> cho i in links: # Iterates qua tất cả các link tìm thấy\n"
+"... i.attrib[\"target\"] = \"blank\"\n"
+"...\n"
+">>> tree.write(\"output.xhtml\")"
+
+#: ../../library/xml.etree.elementtree.rst:1238
+#, fuzzy
+msgid "QName Objects"
+msgstr "Đối tượng QName"
+
+#: ../../library/xml.etree.elementtree.rst:1243
+#, python-brace-format, fuzzy
+msgid ""
+"QName wrapper.  This can be used to wrap a QName attribute value, in order "
+"to get proper namespace handling on output.  *text_or_uri* is a string "
+"containing the QName value, in the form {uri}local, or, if the tag argument "
+"is given, the URI part of a QName.  If *tag* is given, the first argument is"
+" interpreted as a URI, and this argument is interpreted as a local name. "
+":class:`QName` instances are opaque."
+msgstr ""
+"Trình bao bọc QName.  Điều này có thể được sử dụng để bao bọc một giá trị "
+"thuộc tính QName, nhằm xử lý không gian tên thích hợp ở đầu ra.  "
+"*text_or_uri* là một chuỗi chứa giá trị QName, ở dạng {uri}cục bộ hoặc, nếu "
+"đối số thẻ được đưa ra, thì phần URI của QName.  Nếu *tag* được đưa ra, đối "
+"số đầu tiên được hiểu là URI và đối số này được hiểu là tên cục bộ. Các "
+"phiên bản :class:`QName` không rõ ràng."
+
+#: ../../library/xml.etree.elementtree.rst:1255
+#, fuzzy
+msgid "TreeBuilder Objects"
+msgstr "Đối tượng TreeBuilder"
+
+#: ../../library/xml.etree.elementtree.rst:1261
+#, fuzzy
+msgid ""
+"Generic element structure builder.  This builder converts a sequence of "
+"start, data, end, comment and pi method calls to a well-formed element "
+"structure.  You can use this class to build an element structure using a "
+"custom XML parser, or a parser for some other XML-like format."
+msgstr ""
+"Trình xây dựng cấu trúc phần tử chung.  Trình xây dựng này chuyển đổi một "
+"chuỗi các lệnh gọi phương thức bắt đầu, dữ liệu, kết thúc, nhận xét và pi "
+"thành cấu trúc phần tử được định dạng đúng.  Bạn có thể sử dụng lớp này để "
+"xây dựng cấu trúc phần tử bằng trình phân tích cú pháp XML tùy chỉnh hoặc "
+"trình phân tích cú pháp cho một số định dạng giống XML khác."
+
+#: ../../library/xml.etree.elementtree.rst:1266
+#, fuzzy
+msgid ""
+"*element_factory*, when given, must be a callable accepting two positional "
+"arguments: a tag and a dict of attributes.  It is expected to return a new "
+"element instance."
+msgstr ""
+"*element_factory*, khi được đưa ra, phải là một đối số có thể gọi được, chấp"
+" nhận hai đối số vị trí: một thẻ và một mệnh lệnh thuộc tính.  Dự kiến "
+"​​​​sẽ trả về một phiên bản phần tử mới."
+
+#: ../../library/xml.etree.elementtree.rst:1270
+#, fuzzy
+msgid ""
+"The *comment_factory* and *pi_factory* functions, when given, should behave "
+"like the :func:`Comment` and :func:`ProcessingInstruction` functions to "
+"create comments and processing instructions.  When not given, the default "
+"factories will be used.  When *insert_comments* and/or *insert_pis* is true,"
+" comments/pis will be inserted into the tree if they appear within the root "
+"element (but not outside of it)."
+msgstr ""
+"Khi được cung cấp, các hàm *comment_factory* và *pi_factory* sẽ hoạt động "
+"giống như các hàm :func:`Comment` và :func:`ProcessingInstruction` để tạo "
+"nhận xét và hướng dẫn xử lý.  Khi không được cung cấp, các nhà máy mặc định "
+"sẽ được sử dụng.  Khi *insert_comments* và/hoặc *insert_pis* là đúng, các "
+"nhận xét/pis sẽ được chèn vào cây nếu chúng xuất hiện bên trong phần tử gốc "
+"(nhưng không xuất hiện bên ngoài nó)."
+
+#: ../../library/xml.etree.elementtree.rst:1279
+#, fuzzy
+msgid ""
+"Flushes the builder buffers, and returns the toplevel document element.  "
+"Returns an :class:`Element` instance."
+msgstr ""
+"Xóa bộ đệm của trình tạo và trả về phần tử tài liệu cấp cao nhất.  Trả về "
+"một phiên bản :class:`Element`."
+
+#: ../../library/xml.etree.elementtree.rst:1285
+#, fuzzy
+msgid ""
+"Adds text to the current element.  *data* is a string.  This should be "
+"either a bytestring, or a Unicode string."
+msgstr ""
+"Thêm văn bản vào phần tử hiện tại.  *data* là một chuỗi.  Đây phải là chuỗi "
+"byte hoặc chuỗi Unicode."
+
+#: ../../library/xml.etree.elementtree.rst:1291
+#, fuzzy
+msgid ""
+"Closes the current element.  *tag* is the element name.  Returns the closed "
+"element."
+msgstr ""
+"Đóng phần tử hiện tại.  *tag* là tên phần tử.  Trả về phần tử đã đóng."
+
+#: ../../library/xml.etree.elementtree.rst:1297
+#, fuzzy
+msgid ""
+"Opens a new element.  *tag* is the element name.  *attrs* is a dictionary "
+"containing element attributes.  Returns the opened element."
+msgstr ""
+"Mở một phần tử mới.  *tag* là tên phần tử.  *attrs* là một từ điển chứa các "
+"thuộc tính phần tử.  Trả về phần tử đã mở."
+
+#: ../../library/xml.etree.elementtree.rst:1303
+#, fuzzy
+msgid ""
+"Creates a comment with the given *text*.  If ``insert_comments`` is true, "
+"this will also add it to the tree."
+msgstr ""
+"Tạo một nhận xét với *text* đã cho.  Nếu ``insert_comments`` là đúng, điều "
+"này cũng sẽ thêm nó vào cây."
+
+#: ../../library/xml.etree.elementtree.rst:1311
+#, fuzzy
+msgid ""
+"Creates a process instruction with the given *target* name and *text*. If "
+"``insert_pis`` is true, this will also add it to the tree."
+msgstr ""
+"Tạo một hướng dẫn quy trình với tên *target* và *text* đã cho. Nếu "
+"``insert_pis`` là đúng, điều này cũng sẽ thêm nó vào cây."
+
+#: ../../library/xml.etree.elementtree.rst:1317
+#, fuzzy
+msgid ""
+"In addition, a custom :class:`TreeBuilder` object can provide the following "
+"methods:"
+msgstr ""
+"Ngoài ra, một đối tượng :class:`TreeBuilder` tùy chỉnh có thể cung cấp các "
+"phương thức sau:"
+
+#: ../../library/xml.etree.elementtree.rst:1322
+#, fuzzy
+msgid ""
+"Handles a doctype declaration.  *name* is the doctype name.  *pubid* is the "
+"public identifier.  *system* is the system identifier.  This method does not"
+" exist on the default :class:`TreeBuilder` class."
+msgstr ""
+"Xử lý một khai báo loại tài liệu.  *name* là tên loại tài liệu.  *pubid* là "
+"mã định danh công khai.  *system* là mã định danh hệ thống.  Phương thức này"
+" không tồn tại trên lớp :class:`TreeBuilder` mặc định."
+
+#: ../../library/xml.etree.elementtree.rst:1330
+#, fuzzy
+msgid ""
+"Is called whenever the parser encounters a new namespace declaration, before"
+" the ``start()`` callback for the opening element that defines it. *prefix* "
+"is ``''`` for the default namespace and the declared namespace prefix name "
+"otherwise.  *uri* is the namespace URI."
+msgstr ""
+"Được gọi bất cứ khi nào trình phân tích cú pháp gặp một khai báo không gian "
+"tên mới, trước lệnh gọi lại ``start()`` cho phần tử mở xác định nó. *prefix*"
+" là ``''`` cho không gian tên mặc định và tên tiền tố không gian tên được "
+"khai báo nếu không.  *uri* là không gian tên URI."
+
+#: ../../library/xml.etree.elementtree.rst:1339
+#, fuzzy
+msgid ""
+"Is called after the ``end()`` callback of an element that declared a "
+"namespace prefix mapping, with the name of the *prefix* that went out of "
+"scope."
+msgstr ""
+"Được gọi sau lệnh gọi lại ``end()`` của một phần tử đã khai báo ánh xạ tiền "
+"tố vùng tên, với tên của *prefix* nằm ngoài phạm vi."
+
+#: ../../library/xml.etree.elementtree.rst:1351
+#, fuzzy
+msgid ""
+"A `C14N 2.0 <https://www.w3.org/TR/xml-c14n2/>`_ writer.  Arguments are the "
+"same as for the :func:`canonicalize` function.  This class does not build a "
+"tree but translates the callback events directly into a serialised form "
+"using the *write* function."
+msgstr ""
+"Một nhà văn `C14N 2.0 <https://www.w3.org/TR/xml-c14n2/>`_.  Các đối số "
+"giống như đối với hàm :func:`canonicalize`.  Lớp này không xây dựng cây mà "
+"dịch trực tiếp các sự kiện gọi lại thành dạng tuần tự hóa bằng hàm *write*."
+
+#: ../../library/xml.etree.elementtree.rst:1362
+#, fuzzy
+msgid "XMLParser Objects"
+msgstr "Đối tượng XMLParser"
+
+#: ../../library/xml.etree.elementtree.rst:1367
+#, fuzzy
+msgid ""
+"This class is the low-level building block of the module.  It uses "
+":mod:`xml.parsers.expat` for efficient, event-based parsing of XML.  It can "
+"be fed XML data incrementally with the :meth:`feed` method, and parsing "
+"events are translated to a push API - by invoking callbacks on the *target* "
+"object.  If *target* is omitted, the standard :class:`TreeBuilder` is used. "
+"If *encoding* [1]_ is given, the value overrides the encoding specified in "
+"the XML file."
+msgstr ""
+"Lớp này là khối xây dựng cấp thấp của mô-đun.  Nó sử dụng "
+":mod:`xml.parsers.expat` để phân tích cú pháp XML dựa trên sự kiện hiệu quả."
+"  Nó có thể được cung cấp dữ liệu XML tăng dần bằng phương thức :meth:`feed`"
+" và các sự kiện phân tích cú pháp được dịch sang API đẩy - bằng cách gọi lại"
+" lệnh gọi lại trên đối tượng *target*.  Nếu *target* bị bỏ qua thì "
+":class:`TreeBuilder` tiêu chuẩn sẽ được sử dụng. Nếu *encoding* [1]_ được "
+"cung cấp, giá trị sẽ ghi đè mã hóa được chỉ định trong tệp XML."
+
+#: ../../library/xml.etree.elementtree.rst:1375
+#, fuzzy
+msgid ""
+"Parameters are now :ref:`keyword-only <keyword-only_parameter>`. The *html* "
+"argument is no longer supported."
+msgstr ""
+"Các thông số bây giờ là :ref:`keyword-only <keyword-only_parameter>`. Đối số"
+" *html* không còn được hỗ trợ."
+
+#: ../../library/xml.etree.elementtree.rst:1382
+#, fuzzy
+msgid ""
+"Finishes feeding data to the parser.  Returns the result of calling the "
+"``close()`` method of the *target* passed during construction; by default, "
+"this is the toplevel document element."
+msgstr ""
+"Hoàn tất việc cung cấp dữ liệu cho trình phân tích cú pháp.  Trả về kết quả "
+"gọi phương thức ``close()`` của *target* được truyền trong quá trình xây "
+"dựng; theo mặc định, đây là thành phần tài liệu cấp cao nhất."
+
+#: ../../library/xml.etree.elementtree.rst:1389
+#, fuzzy
+msgid "Feeds data to the parser.  *data* is encoded data."
+msgstr ""
+"Cung cấp dữ liệu cho trình phân tích cú pháp.  *data* là dữ liệu được mã "
+"hóa."
+
+#: ../../library/xml.etree.elementtree.rst:1394
+#: ../../library/xml.etree.elementtree.rst:1472
+#, fuzzy
+msgid ""
+"Triggers parsing of any previously fed unparsed data, which can be used to "
+"ensure more immediate feedback, in particular with Expat >=2.6.0. The "
+"implementation of :meth:`flush` temporarily disables reparse deferral with "
+"Expat (if currently enabled) and triggers a reparse. Disabling reparse "
+"deferral has security consequences; please see "
+":meth:`xml.parsers.expat.xmlparser.SetReparseDeferralEnabled` for details."
+msgstr ""
+"Kích hoạt phân tích cú pháp của bất kỳ dữ liệu chưa được phân tích cú pháp "
+"nào được cung cấp trước đó, có thể được sử dụng để đảm bảo phản hồi ngay lập"
+" tức hơn, đặc biệt là với Expat >=2.6.0. Việc triển khai :meth:`flush` tạm "
+"thời vô hiệu hóa tính năng trì hoãn phân tích lại bằng Expat (nếu hiện được "
+"bật) và kích hoạt tính năng phân tích lại. Việc vô hiệu hóa việc trì hoãn "
+"phân tích lại có những hậu quả về bảo mật; vui lòng xem "
+":meth:`xml.parsers.expat.xmlparser.SetReparseDeferralEnabled` để biết chi "
+"tiết."
+
+#: ../../library/xml.etree.elementtree.rst:1401
+#: ../../library/xml.etree.elementtree.rst:1479
+#, fuzzy
+msgid ""
+"Note that :meth:`flush` has been backported to some prior releases of "
+"CPython as a security fix.  Check for availability of :meth:`flush` using "
+":func:`hasattr` if used in code running across a variety of Python versions."
+msgstr ""
+"Lưu ý rằng :meth:`flush` đã được đưa vào một số bản phát hành CPython trước "
+"đó như một bản sửa lỗi bảo mật.  Kiểm tra tính khả dụng của :meth:`flush` "
+"bằng :func:`hasattr` nếu được sử dụng trong mã chạy trên nhiều phiên bản "
+"Python."
+
+#: ../../library/xml.etree.elementtree.rst:1409
+#, fuzzy
+msgid ""
+":meth:`XMLParser.feed` calls *target*\\'s ``start(tag, attrs_dict)`` method "
+"for each opening tag, its ``end(tag)`` method for each closing tag, and data"
+" is processed by method ``data(data)``.  For further supported callback "
+"methods, see the :class:`TreeBuilder` class.  :meth:`XMLParser.close` calls "
+"*target*\\'s method ``close()``. :class:`XMLParser` can be used not only for"
+" building a tree structure. This is an example of counting the maximum depth"
+" of an XML file::"
+msgstr ""
+":meth:`XMLParser.feed` gọi phương thức ``start(tag, attrs_dict)`` của "
+"*target* cho mỗi thẻ mở, phương thức ``end(tag)`` cho mỗi thẻ đóng và dữ "
+"liệu được xử lý theo phương thức ``data(data)``.  Để biết thêm các phương "
+"thức gọi lại được hỗ trợ, hãy xem lớp :class:`TreeBuilder`.  "
+":meth:`XMLParser.close` gọi phương thức của *target* là ``close()``. "
+":class:`XMLParser` có thể được sử dụng không chỉ để xây dựng cấu trúc cây. "
+"Đây là ví dụ về cách đếm độ sâu tối đa của tệp XML::"
+
+#: ../../library/xml.etree.elementtree.rst:1417
+#, fuzzy
+msgid ""
+">>> from xml.etree.ElementTree import XMLParser\n"
+">>> class MaxDepth:                     # The target object of the parser\n"
+"...     maxDepth = 0\n"
+"...     depth = 0\n"
+"...     def start(self, tag, attrib):   # Called for each opening tag.\n"
+"...         self.depth += 1\n"
+"...         if self.depth > self.maxDepth:\n"
+"...             self.maxDepth = self.depth\n"
+"...     def end(self, tag):             # Called for each closing tag.\n"
+"...         self.depth -= 1\n"
+"...     def data(self, data):\n"
+"...         pass            # We do not need to do anything with data.\n"
+"...     def close(self):    # Called when all data has been parsed.\n"
+"...         return self.maxDepth\n"
+"...\n"
+">>> target = MaxDepth()\n"
+">>> parser = XMLParser(target=target)\n"
+">>> exampleXml = \"\"\"\n"
+"... <a>\n"
+"...   <b>\n"
+"...   </b>\n"
+"...   <b>\n"
+"...     <c>\n"
+"...       <d>\n"
+"...       </d>\n"
+"...     </c>\n"
+"...   </b>\n"
+"... </a>\"\"\"\n"
+">>> parser.feed(exampleXml)\n"
+">>> parser.close()\n"
+"4"
+msgstr ""
+">>> từ xml.etree.ElementTree nhập XMLParser\n"
+">>> class MaxDepth: đối tượng đích # The của trình phân tích cú pháp\n"
+"... maxDepth = 0\n"
+"... độ sâu = 0\n"
+"... def start(self, tag, attrib): # Called cho mỗi thẻ mở.\n"
+"... self.độ sâu += 1\n"
+"... nếu self.deep > self.maxDepth:\n"
+"... self.maxDepth = self.deep\n"
+"... def end(self, tag): # Called cho mỗi thẻ đóng.\n"
+"... self.độ sâu -= 1\n"
+"... dữ liệu def (bản thân, dữ liệu):\n"
+"... pass # We không cần làm gì với dữ liệu.\n"
+"... def close(self): # Called khi tất cả dữ liệu đã được phân tích cú pháp.\n"
+"... trả về self.maxDepth\n"
+"...\n"
+">>> mục tiêu = MaxDepth()\n"
+">>> trình phân tích cú pháp = XMLParser(target=target)\n"
+">>> ví dụXml = \"\"\"\n"
+"... <a>\n"
+"... <b>\n"
+"... </b>\n"
+"... <b>\n"
+"... <c>\n"
+"... <d>\n"
+"... </d>\n"
+"... </c>\n"
+"... </b>\n"
+"... </a>\"\"\"\n"
+">>> trình phân tích cú pháp.feed(exampleXml)\n"
+">>> trình phân tích cú pháp.close()\n"
+"4"
+
+#: ../../library/xml.etree.elementtree.rst:1453
+#, fuzzy
+msgid "XMLPullParser Objects"
+msgstr "Đối tượng XMLPullParser"
+
+#: ../../library/xml.etree.elementtree.rst:1457
+#, fuzzy
+msgid ""
+"A pull parser suitable for non-blocking applications.  Its input-side API is"
+" similar to that of :class:`XMLParser`, but instead of pushing calls to a "
+"callback target, :class:`XMLPullParser` collects an internal list of parsing"
+" events and lets the user read from it. *events* is a sequence of events to "
+"report back.  The supported events are the strings ``\"start\"``, "
+"``\"end\"``, ``\"comment\"``, ``\"pi\"``, ``\"start-ns\"`` and ``\"end-"
+"ns\"`` (the \"ns\" events are used to get detailed namespace information).  "
+"If *events* is omitted, only ``\"end\"`` events are reported."
+msgstr ""
+"Trình phân tích cú pháp kéo phù hợp cho các ứng dụng không chặn.  API phía "
+"đầu vào của nó tương tự như :class:`XMLParser`, nhưng thay vì đẩy các cuộc "
+"gọi đến mục tiêu gọi lại, :class:`XMLPullParser` thu thập danh sách nội bộ "
+"các sự kiện phân tích cú pháp và cho phép người dùng đọc từ đó. *events* là "
+"một chuỗi các sự kiện cần báo cáo lại.  Các sự kiện được hỗ trợ là các chuỗi"
+" ``\"start\"``, ``\"end\"``, ``\"comment\"``, ``\"pi\"``, ``\"start-ns\"`` "
+"và ``\"end-ns\"`` (các sự kiện \"ns\" được sử dụng để lấy thông tin chi tiết"
+" về không gian tên).  Nếu *events* bị bỏ qua, chỉ các sự kiện ``\"end\"`` "
+"được báo cáo."
+
+#: ../../library/xml.etree.elementtree.rst:1468
+#, fuzzy
+msgid "Feed the given bytes data to the parser."
+msgstr "Cung cấp dữ liệu byte đã cho cho trình phân tích cú pháp."
+
+#: ../../library/xml.etree.elementtree.rst:1488
+#, fuzzy
+msgid ""
+"Signal the parser that the data stream is terminated. Unlike "
+":meth:`XMLParser.close`, this method always returns :const:`None`. Any "
+"events not yet retrieved when the parser is closed can still be read with "
+":meth:`read_events`."
+msgstr ""
+"Báo hiệu cho bộ phân tích cú pháp rằng luồng dữ liệu đã kết thúc. Không "
+"giống như :meth:`XMLParser.close`, phương thức này luôn trả về "
+":const:`None`. Bất kỳ sự kiện nào chưa được truy xuất khi đóng trình phân "
+"tích cú pháp vẫn có thể được đọc bằng :meth:`read_events`."
+
+#: ../../library/xml.etree.elementtree.rst:1495
+#, fuzzy
+msgid ""
+"Return an iterator over the events which have been encountered in the data "
+"fed to the parser.  The iterator yields ``(event, elem)`` pairs, where "
+"*event* is a string representing the type of event (e.g. ``\"end\"``) and "
+"*elem* is the encountered :class:`Element` object, or other context value as"
+" follows."
+msgstr ""
+"Trả về một trình lặp về các sự kiện đã gặp trong dữ liệu được cung cấp cho "
+"trình phân tích cú pháp.  Trình vòng lặp tạo ra các cặp ``(event, elem)``, "
+"trong đó *event* là một chuỗi biểu thị loại sự kiện (ví dụ: ``\"end\"``) và "
+"*elem* là đối tượng :class:`Element` gặp phải hoặc giá trị ngữ cảnh khác như"
+" sau."
+
+#: ../../library/xml.etree.elementtree.rst:1501
+#, fuzzy
+msgid "``start``, ``end``: the current Element."
+msgstr "``start``, ``end``: Phần tử hiện tại."
+
+#: ../../library/xml.etree.elementtree.rst:1502
+#, fuzzy
+msgid "``comment``, ``pi``: the current comment / processing instruction"
+msgstr "``comment``, ``pi``: hướng dẫn xử lý/nhận xét hiện tại"
+
+#: ../../library/xml.etree.elementtree.rst:1503
+#, fuzzy
+msgid ""
+"``start-ns``: a tuple ``(prefix, uri)`` naming the declared namespace "
+"mapping."
+msgstr ""
+"``start-ns``: một bộ ``(prefix, uri)`` đặt tên cho ánh xạ không gian tên "
+"được khai báo."
+
+#: ../../library/xml.etree.elementtree.rst:1505
+#, fuzzy
+msgid "``end-ns``: :const:`None` (this may change in a future version)"
+msgstr ""
+"``end-ns``: :const:`None` (điều này có thể thay đổi trong phiên bản tương "
+"lai)"
+
+#: ../../library/xml.etree.elementtree.rst:1507
+#, fuzzy
+msgid ""
+"Events provided in a previous call to :meth:`read_events` will not be "
+"yielded again.  Events are consumed from the internal queue only when they "
+"are retrieved from the iterator, so multiple readers iterating in parallel "
+"over iterators obtained from :meth:`read_events` will have unpredictable "
+"results."
+msgstr ""
+"Các sự kiện được cung cấp trong lệnh gọi :meth:`read_events` trước đó sẽ "
+"không được thực hiện lại.  Các sự kiện chỉ được sử dụng từ hàng đợi nội bộ "
+"khi chúng được truy xuất từ ​​trình vòng lặp, do đó, nhiều trình đọc lặp "
+"song song trên các trình vòng lặp thu được từ :meth:`read_events` sẽ có kết "
+"quả không thể đoán trước."
+
+#: ../../library/xml.etree.elementtree.rst:1515
+#, fuzzy
+msgid ""
+":class:`XMLPullParser` only guarantees that it has seen the \">\" character "
+"of a starting tag when it emits a \"start\" event, so the attributes are "
+"defined, but the contents of the text and tail attributes are undefined at "
+"that point.  The same applies to the element children; they may or may not "
+"be present."
+msgstr ""
+":class:`XMLPullParser` chỉ đảm bảo rằng nó đã nhìn thấy ký tự \">\" của thẻ "
+"bắt đầu khi nó phát ra sự kiện \"bắt đầu\", do đó các thuộc tính được xác "
+"định, nhưng nội dung của thuộc tính văn bản và đuôi không được xác định tại "
+"thời điểm đó.  Điều tương tự cũng áp dụng cho phần tử con; họ có thể có mặt "
+"hoặc không."
+
+#: ../../library/xml.etree.elementtree.rst:1530
+#, fuzzy
+msgid "Exceptions"
+msgstr "Ngoại lệ"
+
+#: ../../library/xml.etree.elementtree.rst:1534
+#, fuzzy
+msgid ""
+"XML parse error, raised by the various parsing methods in this module when "
+"parsing fails.  The string representation of an instance of this exception "
+"will contain a user-friendly error message.  In addition, it will have the "
+"following attributes available:"
+msgstr ""
+"lỗi phân tích cú pháp XML, xảy ra do các phương pháp phân tích cú pháp khác "
+"nhau trong mô-đun này khi phân tích cú pháp không thành công.  Biểu diễn "
+"chuỗi của một phiên bản của ngoại lệ này sẽ chứa thông báo lỗi thân thiện "
+"với người dùng.  Ngoài ra, nó sẽ có sẵn các thuộc tính sau:"
+
+#: ../../library/xml.etree.elementtree.rst:1541
+#, fuzzy
+msgid ""
+"A numeric error code from the expat parser. See the documentation of "
+":mod:`xml.parsers.expat` for the list of error codes and their meanings."
+msgstr ""
+"Mã lỗi số từ trình phân tích cú pháp của người nước ngoài. Xem tài liệu của "
+":mod:`xml.parsers.expat` để biết danh sách mã lỗi và ý nghĩa của chúng."
+
+#: ../../library/xml.etree.elementtree.rst:1546
+#, fuzzy
+msgid ""
+"A tuple of *line*, *column* numbers, specifying where the error occurred."
+msgstr "Một bộ số *line*, *column*, chỉ định nơi xảy ra lỗi."
+
+#: ../../library/xml.etree.elementtree.rst:1549
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/xml.etree.elementtree.rst:1550
+#, fuzzy
+msgid ""
+"The encoding string included in XML output should conform to the appropriate"
+" standards.  For example, \"UTF-8\" is valid, but \"UTF8\" is not.  See "
+"https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EncodingDecl and "
+"https://www.iana.org/assignments/character-sets/character-sets.xhtml."
+msgstr ""
+"Chuỗi mã hóa có trong đầu ra XML phải tuân theo các tiêu chuẩn thích hợp.  "
+"Ví dụ: \"UTF-8\" hợp lệ nhưng \"UTF8\" thì không.  Xem "
+"https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EncodingDecl và "
+"https://www.iana.org/assignments/character-sets/character-sets.xhtml."

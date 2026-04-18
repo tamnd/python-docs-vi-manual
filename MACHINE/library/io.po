@@ -1,0 +1,2656 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/io.rst:2
+#, fuzzy
+msgid ":mod:`!io` --- Core tools for working with streams"
+msgstr ":mod:`!io` --- Các công cụ cốt lõi để làm việc với luồng"
+
+#: ../../library/io.rst:15
+#, fuzzy
+msgid "**Source code:** :source:`Lib/io.py`"
+msgstr "**Source code:** :source:`Lib/io.py`"
+
+#: ../../library/io.rst:22
+#, fuzzy
+msgid "Overview"
+msgstr "Tổng quan"
+
+#: ../../library/io.rst:27
+#, fuzzy
+msgid ""
+"The :mod:`!io` module provides Python's main facilities for dealing with "
+"various types of I/O.  There are three main types of I/O: *text I/O*, "
+"*binary I/O* and *raw I/O*.  These are generic categories, and various "
+"backing stores can be used for each of them.  A concrete object belonging to"
+" any of these categories is called a :term:`file object`.  Other common "
+"terms are *stream* and *file-like object*."
+msgstr ""
+"Mô-đun :mod:`!io` cung cấp các phương tiện chính của Python để xử lý nhiều "
+"loại I/O khác nhau.  Có ba loại I/O chính: *text I/O*, *binary I/O* và *raw "
+"I/O*.  Đây là những danh mục chung và có thể sử dụng nhiều kho lưu trữ hỗ "
+"trợ khác nhau cho từng danh mục.  Một đối tượng cụ thể thuộc bất kỳ loại nào"
+" trong số này được gọi là :term:`file object`.  Các thuật ngữ phổ biến khác "
+"là *stream* và *file-like object*."
+
+#: ../../library/io.rst:34
+#, fuzzy
+msgid ""
+"Independent of its category, each concrete stream object will also have "
+"various capabilities: it can be read-only, write-only, or read-write. It can"
+" also allow arbitrary random access (seeking forwards or backwards to any "
+"location), or only sequential access (for example in the case of a socket or"
+" pipe)."
+msgstr ""
+"Không phụ thuộc vào danh mục của nó, mỗi đối tượng luồng cụ thể cũng sẽ có "
+"nhiều khả năng khác nhau: nó có thể ở chế độ chỉ đọc, chỉ ghi hoặc đọc-ghi. "
+"Nó cũng có thể cho phép truy cập ngẫu nhiên tùy ý (tìm kiếm tiến hoặc lùi "
+"tới bất kỳ vị trí nào) hoặc chỉ truy cập tuần tự (ví dụ trong trường hợp ổ "
+"cắm hoặc đường ống)."
+
+#: ../../library/io.rst:40
+#, fuzzy
+msgid ""
+"All streams are careful about the type of data you give to them.  For "
+"example giving a :class:`str` object to the :meth:`!write` method of a "
+"binary stream will raise a :exc:`TypeError`.  So will giving a "
+":class:`bytes` object to the :meth:`!write` method of a text stream."
+msgstr ""
+"Tất cả các luồng đều cẩn thận về loại dữ liệu bạn cung cấp cho chúng.  Ví "
+"dụ: đưa đối tượng :class:`str` vào phương thức :meth:`!write` của luồng nhị "
+"phân sẽ tạo ra :exc:`TypeError`.  Vì vậy, việc cung cấp đối tượng "
+":class:`bytes` cho phương thức :meth:`!write` của luồng văn bản cũng vậy."
+
+#: ../../library/io.rst:45
+#, fuzzy
+msgid ""
+"Operations that used to raise :exc:`IOError` now raise :exc:`OSError`, since"
+" :exc:`IOError` is now an alias of :exc:`OSError`."
+msgstr ""
+"Các hoạt động trước đây tăng :exc:`IOError` giờ đây tăng :exc:`OSError`, vì "
+":exc:`IOError` hiện là bí danh của :exc:`OSError`."
+
+#: ../../library/io.rst:51 ../../library/io.rst:867 ../../library/io.rst:1217
+#, fuzzy
+msgid "Text I/O"
+msgstr "Vào/ra văn bản"
+
+#: ../../library/io.rst:53
+#, fuzzy
+msgid ""
+"Text I/O expects and produces :class:`str` objects.  This means that "
+"whenever the backing store is natively made of bytes (such as in the case of"
+" a file), encoding and decoding of data is made transparently as well as "
+"optional translation of platform-specific newline characters."
+msgstr ""
+"I/O văn bản mong đợi và tạo ra các đối tượng :class:`str`.  Điều này có "
+"nghĩa là bất cứ khi nào kho dự phòng được tạo từ byte (chẳng hạn như trong "
+"trường hợp tệp), việc mã hóa và giải mã dữ liệu được thực hiện một cách minh"
+" bạch cũng như việc dịch tùy chọn các ký tự dòng mới dành riêng cho nền "
+"tảng."
+
+#: ../../library/io.rst:58
+#, fuzzy
+msgid ""
+"The easiest way to create a text stream is with :meth:`open`, optionally "
+"specifying an encoding::"
+msgstr ""
+"Cách dễ nhất để tạo luồng văn bản là sử dụng :meth:`open`, tùy ý chỉ định mã"
+" hóa::"
+
+#: ../../library/io.rst:61
+#, fuzzy
+msgid "f = open(\"myfile.txt\", \"r\", encoding=\"utf-8\")"
+msgstr "f = open(\"myfile.txt\", \"r\", mã hóa=\"utf-8\")"
+
+#: ../../library/io.rst:63
+#, fuzzy
+msgid ""
+"In-memory text streams are also available as :class:`StringIO` objects::"
+msgstr ""
+"Các luồng văn bản trong bộ nhớ cũng có sẵn dưới dạng đối tượng "
+":class:`StringIO`::"
+
+#: ../../library/io.rst:65
+#, fuzzy
+msgid "f = io.StringIO(\"some initial text data\")"
+msgstr "f = io.StringIO(\"một số dữ liệu văn bản ban đầu\")"
+
+#: ../../library/io.rst:69
+#, fuzzy
+msgid ""
+"When working with a non-blocking stream, be aware that read operations on "
+"text I/O objects might raise a :exc:`BlockingIOError` if the stream cannot "
+"perform the operation immediately."
+msgstr ""
+"Khi làm việc với luồng không chặn, hãy lưu ý rằng các thao tác đọc trên đối "
+"tượng I/O văn bản có thể tăng :exc:`BlockingIOError` nếu luồng không thể "
+"thực hiện thao tác ngay lập tức."
+
+#: ../../library/io.rst:73
+#, fuzzy
+msgid ""
+"The text stream API is described in detail in the documentation of "
+":class:`TextIOBase`."
+msgstr ""
+"Luồng văn bản API được mô tả chi tiết trong tài liệu của "
+":class:`TextIOBase`."
+
+#: ../../library/io.rst:78 ../../library/io.rst:1205
+#, fuzzy
+msgid "Binary I/O"
+msgstr "I/O nhị phân"
+
+#: ../../library/io.rst:80
+#, fuzzy
+msgid ""
+"Binary I/O (also called *buffered I/O*) expects :term:`bytes-like objects "
+"<bytes-like object>` and produces :class:`bytes` objects.  No encoding, "
+"decoding, or newline translation is performed.  This category of streams can"
+" be used for all kinds of non-text data, and also when manual control over "
+"the handling of text data is desired."
+msgstr ""
+"I/O nhị phân (còn gọi là *buffered I/O*) mong đợi :term:`bytes-like objects "
+"<bytes-like object>` và tạo ra các đối tượng :class:`bytes`.  Không thực "
+"hiện mã hóa, giải mã hoặc dịch dòng mới.  Loại luồng này có thể được sử dụng"
+" cho tất cả các loại dữ liệu phi văn bản và cả khi muốn kiểm soát thủ công "
+"việc xử lý dữ liệu văn bản."
+
+#: ../../library/io.rst:86
+#, fuzzy
+msgid ""
+"The easiest way to create a binary stream is with :meth:`open` with ``'b'`` "
+"in the mode string::"
+msgstr ""
+"Cách dễ nhất để tạo luồng nhị phân là với :meth:`open` với ``'b'`` trong "
+"chuỗi chế độ ::"
+
+#: ../../library/io.rst:89
+#, fuzzy
+msgid "f = open(\"myfile.jpg\", \"rb\")"
+msgstr "f = open(\"myfile.jpg\", \"rb\")"
+
+#: ../../library/io.rst:91
+#, fuzzy
+msgid ""
+"In-memory binary streams are also available as :class:`BytesIO` objects::"
+msgstr ""
+"Luồng nhị phân trong bộ nhớ cũng có sẵn dưới dạng đối tượng :class:`BytesIO`"
+" ::"
+
+#: ../../library/io.rst:93
+#, fuzzy
+msgid "f = io.BytesIO(b\"some initial binary data: \\x00\\x01\")"
+msgstr "f = io.BytesIO(b\"một số dữ liệu nhị phân ban đầu: \\x00\\x01\")"
+
+#: ../../library/io.rst:95
+#, fuzzy
+msgid ""
+"The binary stream API is described in detail in the docs of "
+":class:`BufferedIOBase`."
+msgstr ""
+"Luồng nhị phân API được mô tả chi tiết trong tài liệu của "
+":class:`BufferedIOBase`."
+
+#: ../../library/io.rst:98
+#, fuzzy
+msgid ""
+"Other library modules may provide additional ways to create text or binary "
+"streams.  See :meth:`socket.socket.makefile` for example."
+msgstr ""
+"Các mô-đun thư viện khác có thể cung cấp các cách bổ sung để tạo văn bản "
+"hoặc luồng nhị phân.  Xem :meth:`socket.socket.makefile` chẳng hạn."
+
+#: ../../library/io.rst:103
+#, fuzzy
+msgid "Raw I/O"
+msgstr "I/O thô"
+
+#: ../../library/io.rst:105
+#, fuzzy
+msgid ""
+"Raw I/O (also called *unbuffered I/O*) is generally used as a low-level "
+"building-block for binary and text streams; it is rarely useful to directly "
+"manipulate a raw stream from user code.  Nevertheless, you can create a raw "
+"stream by opening a file in binary mode with buffering disabled::"
+msgstr ""
+"I/O thô (còn được gọi là *unbuffered I/O*) thường được sử dụng làm khối xây "
+"dựng cấp thấp cho các luồng văn bản và nhị phân; việc thao tác trực tiếp "
+"luồng thô từ mã người dùng hiếm khi hữu ích.  Tuy nhiên, bạn có thể tạo "
+"luồng thô bằng cách mở tệp ở chế độ nhị phân với tính năng đệm bị tắt ::"
+
+#: ../../library/io.rst:110
+#, fuzzy
+msgid "f = open(\"myfile.jpg\", \"rb\", buffering=0)"
+msgstr "f = open(\"myfile.jpg\", \"rb\", đệm=0)"
+
+#: ../../library/io.rst:112
+#, fuzzy
+msgid ""
+"The raw stream API is described in detail in the docs of :class:`RawIOBase`."
+msgstr ""
+"Luồng thô API được mô tả chi tiết trong tài liệu của :class:`RawIOBase`."
+
+#: ../../library/io.rst:118
+#, fuzzy
+msgid "Text Encoding"
+msgstr "Mã hóa văn bản"
+
+#: ../../library/io.rst:120
+#, fuzzy
+msgid ""
+"The default encoding of :class:`TextIOWrapper` and :func:`open` is locale-"
+"specific (:func:`locale.getencoding`)."
+msgstr ""
+"Mã hóa mặc định của :class:`TextIOWrapper` và :func:`open` là dành riêng cho"
+" miền địa phương (:func:`locale.getencoding`)."
+
+#: ../../library/io.rst:123
+#, fuzzy
+msgid ""
+"However, many developers forget to specify the encoding when opening text "
+"files encoded in UTF-8 (e.g. JSON, TOML, Markdown, etc...) since most Unix "
+"platforms use UTF-8 locale by default. This causes bugs because the locale "
+"encoding is not UTF-8 for most Windows users. For example::"
+msgstr ""
+"Tuy nhiên, nhiều nhà phát triển quên chỉ định mã hóa khi mở tệp văn bản được"
+" mã hóa bằng UTF-8 (ví dụ: JSON, TOML, Markdown, v.v.) vì hầu hết các nền "
+"tảng Unix đều sử dụng ngôn ngữ UTF-8 theo mặc định. Điều này gây ra lỗi vì "
+"mã hóa ngôn ngữ không phải là UTF-8 đối với hầu hết người dùng Windows. Ví "
+"dụ::"
+
+#: ../../library/io.rst:128
+#, fuzzy
+msgid ""
+"# May not work on Windows when non-ASCII characters in the file.\n"
+"with open(\"README.md\") as f:\n"
+"    long_description = f.read()"
+msgstr ""
+"# May không hoạt động trên Windows khi có các ký tự không phải ASCII trong tệp.\n"
+"với open(\"README.md\") là f:\n"
+"    long_description = f.read()"
+
+#: ../../library/io.rst:132
+#, fuzzy
+msgid ""
+"Accordingly, it is highly recommended that you specify the encoding "
+"explicitly when opening text files. If you want to use UTF-8, pass "
+"``encoding=\"utf-8\"``. To use the current locale encoding, "
+"``encoding=\"locale\"`` is supported since Python 3.10."
+msgstr ""
+"Theo đó, bạn nên chỉ định rõ ràng mã hóa khi mở tệp văn bản. Nếu bạn muốn sử"
+" dụng UTF-8, hãy chuyển ``encoding=\"utf-8\"``. Để sử dụng mã hóa ngôn ngữ "
+"hiện tại, ``encoding=\"locale\"`` được hỗ trợ kể từ Python 3.10."
+
+#: ../../library/io.rst:139
+#, fuzzy
+msgid ":ref:`utf8-mode`"
+msgstr ":ref:`utf8-mode`"
+
+#: ../../library/io.rst:140
+#, fuzzy
+msgid ""
+"Python UTF-8 Mode can be used to change the default encoding to UTF-8 from "
+"locale-specific encoding."
+msgstr ""
+"Chế độ UTF-8 của Python có thể được sử dụng để thay đổi mã hóa mặc định "
+"thành UTF-8 từ mã hóa theo ngôn ngữ cụ thể."
+
+#: ../../library/io.rst:143
+#, fuzzy
+msgid ":pep:`686`"
+msgstr ":pep:`686`"
+
+#: ../../library/io.rst:144
+#, fuzzy
+msgid "Python 3.15 will make :ref:`utf8-mode` default."
+msgstr "Python 3.15 sẽ đặt :ref:`utf8-mode` làm mặc định."
+
+#: ../../library/io.rst:149
+#, fuzzy
+msgid "Opt-in EncodingWarning"
+msgstr "Cảnh báo mã hóa chọn tham gia"
+
+#: ../../library/io.rst:151
+#, fuzzy
+msgid "See :pep:`597` for more details."
+msgstr "Xem :pep:`597` để biết thêm chi tiết."
+
+#: ../../library/io.rst:154
+#, fuzzy
+msgid ""
+"To find where the default locale encoding is used, you can enable the "
+":option:`-X warn_default_encoding <-X>` command line option or set the "
+":envvar:`PYTHONWARNDEFAULTENCODING` environment variable, which will emit an"
+" :exc:`EncodingWarning` when the default encoding is used."
+msgstr ""
+"Để tìm nơi sử dụng mã hóa ngôn ngữ mặc định, bạn có thể bật tùy chọn dòng "
+"lệnh :option:`-X warn_default_encoding <-X>` hoặc đặt biến môi trường "
+":envvar:`PYTHONWARNDEFAULTENCODING`, biến này sẽ phát ra "
+":exc:`EncodingWarning` khi sử dụng mã hóa mặc định."
+
+#: ../../library/io.rst:159
+#, fuzzy
+msgid ""
+"If you are providing an API that uses :func:`open` or :class:`TextIOWrapper`"
+" and passes ``encoding=None`` as a parameter, you can use "
+":func:`text_encoding` so that callers of the API will emit an "
+":exc:`EncodingWarning` if they don't pass an ``encoding``. However, please "
+"consider using UTF-8 by default (i.e. ``encoding=\"utf-8\"``) for new APIs."
+msgstr ""
+"Nếu bạn đang cung cấp API sử dụng :func:`open` hoặc :class:`TextIOWrapper` "
+"và chuyển ``encoding=None`` làm tham số, bạn có thể sử dụng "
+":func:`text_encoding` để người gọi API sẽ phát ra :exc:`EncodingWarning` nếu"
+" họ không chuyển ``encoding``. Tuy nhiên, vui lòng cân nhắc sử dụng UTF-8 "
+"theo mặc định (tức là ``encoding=\"utf-8\"``) cho các API mới."
+
+#: ../../library/io.rst:168
+#, fuzzy
+msgid "High-level Module Interface"
+msgstr "Giao diện mô-đun cấp cao"
+
+#: ../../library/io.rst:172
+#, fuzzy
+msgid ""
+"An int containing the default buffer size used by the module's buffered I/O "
+"classes.  :func:`open` uses the file's blksize (as obtained by "
+":func:`os.stat`) if possible."
+msgstr ""
+"Một int chứa kích thước bộ đệm mặc định được sử dụng bởi các lớp I/O được "
+"đệm của mô-đun.  :func:`open` sử dụng blksize của tệp (do :func:`os.stat` "
+"thu được) nếu có thể."
+
+#: ../../library/io.rst:179
+#, fuzzy
+msgid "This is an alias for the builtin :func:`open` function."
+msgstr "Đây là bí danh cho hàm :func:`open` dựng sẵn."
+
+#: ../../library/io.rst:181 ../../library/io.rst:183
+#, fuzzy
+msgid ""
+"This function raises an :ref:`auditing event <auditing>` ``open`` with "
+"arguments *path*, *mode* and *flags*. The *mode* and *flags* arguments may "
+"have been modified or inferred from the original call."
+msgstr ""
+"Hàm này tạo ra một :ref:`auditing event <auditing>` ``open`` với các đối số "
+"*path*, *mode* và *flags*. Các đối số *mode* và *flags* có thể đã được sửa "
+"đổi hoặc suy ra từ lệnh gọi ban đầu."
+
+#: ../../library/io.rst:190
+#, fuzzy
+msgid ""
+"Opens the provided file with mode ``'rb'``. This function should be used "
+"when the intent is to treat the contents as executable code."
+msgstr ""
+"Mở tệp được cung cấp với chế độ ``'rb'``. Hàm này nên được sử dụng khi mục "
+"đích coi nội dung là mã thực thi."
+
+#: ../../library/io.rst:193
+#, fuzzy
+msgid "*path* should be a :class:`str` and an absolute path."
+msgstr "*path* phải là :class:`str` và là đường dẫn tuyệt đối."
+
+#: ../../library/io.rst:195
+#, fuzzy
+msgid ""
+"The behavior of this function may be overridden by an earlier call to the "
+":c:func:`PyFile_SetOpenCodeHook`. However, assuming that *path* is a "
+":class:`str` and an absolute path, ``open_code(path)`` should always behave "
+"the same as ``open(path, 'rb')``. Overriding the behavior is intended for "
+"additional validation or preprocessing of the file."
+msgstr ""
+"Hoạt động của chức năng này có thể bị ghi đè bằng lệnh gọi trước đó tới "
+":c:func:`PyFile_SetOpenCodeHook`. Tuy nhiên, giả sử rằng *path* là "
+":class:`str` và là đường dẫn tuyệt đối, ``open_code(path)`` sẽ luôn hoạt "
+"động giống như ``open(path, 'rb')``. Việc ghi đè hành vi nhằm mục đích xác "
+"thực bổ sung hoặc xử lý trước tệp."
+
+#: ../../library/io.rst:206
+#, fuzzy
+msgid ""
+"This is a helper function for callables that use :func:`open` or "
+":class:`TextIOWrapper` and have an ``encoding=None`` parameter."
+msgstr ""
+"Đây là hàm trợ giúp dành cho các lệnh gọi sử dụng :func:`open` hoặc "
+":class:`TextIOWrapper` và có tham số ``encoding=None``."
+
+#: ../../library/io.rst:209
+#, fuzzy
+msgid ""
+"This function returns *encoding* if it is not ``None``. Otherwise, it "
+"returns ``\"locale\"`` or ``\"utf-8\"`` depending on :ref:`UTF-8 Mode "
+"<utf8-mode>`."
+msgstr ""
+"Hàm này trả về *encoding* nếu nó không phải là ``None``. Ngược lại, nó trả "
+"về ``\"locale\"`` hoặc ``\"utf-8\"`` tùy thuộc vào :ref:`UTF-8 Mode "
+"<utf8-mode>`."
+
+#: ../../library/io.rst:213
+#, fuzzy
+msgid ""
+"This function emits an :class:`EncodingWarning` if "
+":data:`sys.flags.warn_default_encoding <sys.flags>` is true and *encoding* "
+"is ``None``. *stacklevel* specifies where the warning is emitted. For "
+"example::"
+msgstr ""
+"Hàm này phát ra :class:`EncodingWarning` nếu "
+":data:`sys.flags.warn_default_encoding <sys.flags>` là đúng và *encoding* là"
+" ``None``. *stacklevel* chỉ định nơi phát ra cảnh báo. Ví dụ::"
+
+#: ../../library/io.rst:218
+#, fuzzy
+msgid ""
+"def read_text(path, encoding=None):\n"
+"    encoding = io.text_encoding(encoding)  # stacklevel=2\n"
+"    with open(path, encoding) as f:\n"
+"        return f.read()"
+msgstr ""
+"def read_text(đường dẫn, mã hóa=Không):\n"
+"    mã hóa = io.text_encoding(mã hóa) # stacklevel=2\n"
+"    với open(path, Encoding) là f:\n"
+"        trả về f.read()"
+
+#: ../../library/io.rst:223
+#, fuzzy
+msgid ""
+"In this example, an :class:`EncodingWarning` is emitted for the caller of "
+"``read_text()``."
+msgstr ""
+"Trong ví dụ này, một :class:`EncodingWarning` được phát ra cho người gọi "
+"``read_text()``."
+
+#: ../../library/io.rst:226
+#, fuzzy
+msgid "See :ref:`io-text-encoding` for more information."
+msgstr "Xem :ref:`io-text-encoding` để biết thêm thông tin."
+
+#: ../../library/io.rst:230
+#, fuzzy
+msgid ""
+":func:`text_encoding` returns \"utf-8\" when UTF-8 mode is enabled and "
+"*encoding* is ``None``."
+msgstr ""
+":func:`text_encoding` trả về \"utf-8\" khi chế độ UTF-8 được bật và "
+"*encoding* là ``None``."
+
+#: ../../library/io.rst:237
+#, fuzzy
+msgid ""
+"This is a compatibility alias for the builtin :exc:`BlockingIOError` "
+"exception."
+msgstr ""
+"Đây là bí danh tương thích cho ngoại lệ :exc:`BlockingIOError` dựng sẵn."
+
+#: ../../library/io.rst:243
+#, fuzzy
+msgid ""
+"An exception inheriting :exc:`OSError` and :exc:`ValueError` that is raised "
+"when an unsupported operation is called on a stream."
+msgstr ""
+"Một ngoại lệ kế thừa :exc:`OSError` và :exc:`ValueError` được đưa ra khi một"
+" thao tác không được hỗ trợ được gọi trên luồng."
+
+#: ../../library/io.rst:249
+#, fuzzy
+msgid ":mod:`sys`"
+msgstr ":mod:`sys`"
+
+#: ../../library/io.rst:250
+#, fuzzy
+msgid ""
+"contains the standard IO streams: :data:`sys.stdin`, :data:`sys.stdout`, and"
+" :data:`sys.stderr`."
+msgstr ""
+"chứa các luồng IO tiêu chuẩn: :data:`sys.stdin`, :data:`sys.stdout` và "
+":data:`sys.stderr`."
+
+#: ../../library/io.rst:255
+#, fuzzy
+msgid "Class hierarchy"
+msgstr "Hệ thống phân cấp lớp"
+
+#: ../../library/io.rst:257
+#, fuzzy
+msgid ""
+"The implementation of I/O streams is organized as a hierarchy of classes.  "
+"First :term:`abstract base classes <abstract base class>` (ABCs), which are "
+"used to specify the various categories of streams, then concrete classes "
+"providing the standard stream implementations."
+msgstr ""
+"Việc triển khai các luồng I/O được tổ chức dưới dạng phân cấp các lớp.  Đầu "
+"tiên là :term:`abstract base classes <abstract base class>` (ABC), được sử "
+"dụng để chỉ định các loại luồng khác nhau, sau đó là các lớp cụ thể cung cấp"
+" cách triển khai luồng tiêu chuẩn."
+
+#: ../../library/io.rst:264
+#, fuzzy
+msgid ""
+"The abstract base classes also provide default implementations of some "
+"methods in order to help implementation of concrete stream classes.  For "
+"example, :class:`BufferedIOBase` provides unoptimized implementations of "
+":meth:`!readinto` and :meth:`!readline`."
+msgstr ""
+"Các lớp cơ sở trừu tượng cũng cung cấp cách triển khai mặc định của một số "
+"phương thức để giúp triển khai các lớp luồng cụ thể.  Ví dụ: "
+":class:`BufferedIOBase` cung cấp các triển khai chưa được tối ưu hóa của "
+":meth:`!readinto` và :meth:`!readline`."
+
+#: ../../library/io.rst:269
+#, fuzzy
+msgid ""
+"At the top of the I/O hierarchy is the abstract base class :class:`IOBase`."
+"  It defines the basic interface to a stream.  Note, however, that there is "
+"no separation between reading and writing to streams; implementations are "
+"allowed to raise :exc:`UnsupportedOperation` if they do not support a given "
+"operation."
+msgstr ""
+"Ở trên cùng của hệ thống phân cấp I/O là lớp cơ sở trừu tượng "
+":class:`IOBase`.  Nó xác định giao diện cơ bản cho một luồng.  Tuy nhiên, "
+"hãy lưu ý rằng không có sự tách biệt giữa việc đọc và ghi vào luồng; việc "
+"triển khai được phép tăng :exc:`UnsupportedOperation` nếu chúng không hỗ trợ"
+" một thao tác nhất định."
+
+#: ../../library/io.rst:274
+#, fuzzy
+msgid ""
+"The :class:`RawIOBase` ABC extends :class:`IOBase`.  It deals with the "
+"reading and writing of bytes to a stream.  :class:`FileIO` subclasses "
+":class:`RawIOBase` to provide an interface to files in the machine's file "
+"system."
+msgstr ""
+":class:`RawIOBase` ABC mở rộng :class:`IOBase`.  Nó xử lý việc đọc và ghi "
+"byte vào một luồng.  :class:`FileIO` phân lớp :class:`RawIOBase` để cung cấp"
+" giao diện cho các tệp trong hệ thống tệp của máy."
+
+#: ../../library/io.rst:278
+#, fuzzy
+msgid ""
+"The :class:`BufferedIOBase` ABC extends :class:`IOBase`.  It deals with "
+"buffering on a raw binary stream (:class:`RawIOBase`).  Its subclasses, "
+":class:`BufferedWriter`, :class:`BufferedReader`, and "
+":class:`BufferedRWPair` buffer raw binary streams that are writable, "
+"readable, and both readable and writable, respectively. "
+":class:`BufferedRandom` provides a buffered interface to seekable streams. "
+"Another :class:`BufferedIOBase` subclass, :class:`BytesIO`, is a stream of "
+"in-memory bytes."
+msgstr ""
+":class:`BufferedIOBase` ABC mở rộng :class:`IOBase`.  Nó xử lý việc đệm trên"
+" luồng nhị phân thô (:class:`RawIOBase`).  Các lớp con của nó, "
+":class:`BufferedWriter`, :class:`BufferedReader` và :class:`BufferedRWPair` "
+"đệm các luồng nhị phân thô tương ứng có thể ghi, có thể đọc và cả hai đều có"
+" thể đọc và ghi. :class:`BufferedRandom` cung cấp giao diện được đệm cho các"
+" luồng có thể tìm kiếm. Một lớp con :class:`BufferedIOBase` khác, "
+":class:`BytesIO`, là một luồng byte trong bộ nhớ."
+
+#: ../../library/io.rst:286
+#, fuzzy
+msgid ""
+"The :class:`TextIOBase` ABC extends :class:`IOBase`.  It deals with streams "
+"whose bytes represent text, and handles encoding and decoding to and from "
+"strings.  :class:`TextIOWrapper`, which extends :class:`TextIOBase`, is a "
+"buffered text interface to a buffered raw stream (:class:`BufferedIOBase`)."
+"  Finally, :class:`StringIO` is an in-memory stream for text."
+msgstr ""
+":class:`TextIOBase` ABC mở rộng :class:`IOBase`.  Nó xử lý các luồng có byte"
+" đại diện cho văn bản và xử lý mã hóa và giải mã đến và đi từ các chuỗi.  "
+":class:`TextIOWrapper`, mở rộng :class:`TextIOBase`, là giao diện văn bản "
+"được lưu vào bộ đệm cho luồng thô được lưu vào bộ đệm "
+"(:class:`BufferedIOBase`).  Cuối cùng, :class:`StringIO` là luồng văn bản "
+"trong bộ nhớ."
+
+#: ../../library/io.rst:292
+#, fuzzy
+msgid ""
+"Argument names are not part of the specification, and only the arguments of "
+":func:`open` are intended to be used as keyword arguments."
+msgstr ""
+"Tên đối số không phải là một phần của đặc tả và chỉ các đối số của "
+":func:`open` mới được sử dụng làm đối số từ khóa."
+
+#: ../../library/io.rst:295
+#, fuzzy
+msgid ""
+"The following table summarizes the ABCs provided by the :mod:`!io` module:"
+msgstr "Bảng sau đây tóm tắt các ABC do mô-đun :mod:`!io` cung cấp:"
+
+#: ../../library/io.rst:300
+#, fuzzy
+msgid "ABC"
+msgstr "ABC"
+
+#: ../../library/io.rst:300
+#, fuzzy
+msgid "Inherits"
+msgstr "Kế thừa"
+
+#: ../../library/io.rst:300
+#, fuzzy
+msgid "Stub Methods"
+msgstr "Phương pháp sơ khai"
+
+#: ../../library/io.rst:300
+#, fuzzy
+msgid "Mixin Methods and Properties"
+msgstr "Phương pháp và thuộc tính Mixin"
+
+#: ../../library/io.rst:302 ../../library/io.rst:307 ../../library/io.rst:309
+#: ../../library/io.rst:311
+#, fuzzy
+msgid ":class:`IOBase`"
+msgstr ":class:`IOBase`"
+
+#: ../../library/io.rst:302
+#, fuzzy
+msgid "``fileno``, ``seek``, and ``truncate``"
+msgstr "``fileno``, ``seek`` và ``truncate``"
+
+#: ../../library/io.rst:302
+#, fuzzy
+msgid ""
+"``close``, ``closed``, ``__enter__``, ``__exit__``, ``flush``, ``isatty``, "
+"``__iter__``, ``__next__``, ``readable``, ``readline``, ``readlines``, "
+"``seekable``, ``tell``, ``writable``, and ``writelines``"
+msgstr ""
+"``close``, ``closed``, ``__enter__``, ``__exit__``, ``flush``, ``isatty``, "
+"``__iter__``, ``__next__``, ``readable``, ``readline``, ``readlines``, "
+"``seekable``, ``tell``, ``writable``, và ``writelines``"
+
+#: ../../library/io.rst:307
+#, fuzzy
+msgid ":class:`RawIOBase`"
+msgstr ":class:`RawIOBase`"
+
+#: ../../library/io.rst:307
+#, fuzzy
+msgid "``readinto`` and ``write``"
+msgstr "``readinto`` và ``write``"
+
+#: ../../library/io.rst:307
+#, fuzzy
+msgid "Inherited :class:`IOBase` methods, ``read``, and ``readall``"
+msgstr "Kế thừa các phương thức :class:`IOBase`, ``read`` và ``readall``"
+
+#: ../../library/io.rst:309
+#, fuzzy
+msgid ":class:`BufferedIOBase`"
+msgstr ":class:`BufferedIOBase`"
+
+#: ../../library/io.rst:309
+#, fuzzy
+msgid "``detach``, ``read``, ``read1``, and ``write``"
+msgstr "``detach``, ``read``, ``read1`` và ``write``"
+
+#: ../../library/io.rst:309
+#, fuzzy
+msgid "Inherited :class:`IOBase` methods, ``readinto``, and ``readinto1``"
+msgstr ""
+"Kế thừa các phương thức :class:`IOBase`, ``readinto`` và ``readinto1``"
+
+#: ../../library/io.rst:311
+#, fuzzy
+msgid ":class:`TextIOBase`"
+msgstr ":class:`TextIOBase`"
+
+#: ../../library/io.rst:311
+#, fuzzy
+msgid "``detach``, ``read``, ``readline``, and ``write``"
+msgstr "``detach``, ``read``, ``readline`` và ``write``"
+
+#: ../../library/io.rst:311
+#, fuzzy
+msgid ""
+"Inherited :class:`IOBase` methods, ``encoding``, ``errors``, and "
+"``newlines``"
+msgstr ""
+"Kế thừa các phương thức :class:`IOBase`, ``encoding``, ``errors`` và "
+"``newlines``"
+
+#: ../../library/io.rst:318
+#, fuzzy
+msgid "I/O Base Classes"
+msgstr "Các lớp cơ sở I/O"
+
+#: ../../library/io.rst:322
+#, fuzzy
+msgid "The abstract base class for all I/O classes."
+msgstr "Lớp cơ sở trừu tượng cho tất cả các lớp I/O."
+
+#: ../../library/io.rst:324
+#, fuzzy
+msgid ""
+"This class provides empty abstract implementations for many methods that "
+"derived classes can override selectively; the default implementations "
+"represent a file that cannot be read, written or seeked."
+msgstr ""
+"Lớp này cung cấp các triển khai trừu tượng trống cho nhiều phương thức mà "
+"các lớp dẫn xuất có thể ghi đè một cách có chọn lọc; việc triển khai mặc "
+"định đại diện cho một tệp không thể đọc, ghi hoặc tìm kiếm."
+
+#: ../../library/io.rst:329
+#, fuzzy
+msgid ""
+"Even though :class:`IOBase` does not declare :meth:`!read` or :meth:`!write`"
+" because their signatures will vary, implementations and clients should "
+"consider those methods part of the interface.  Also, implementations may "
+"raise a :exc:`ValueError` (or :exc:`UnsupportedOperation`) when operations "
+"they do not support are called."
+msgstr ""
+"Mặc dù :class:`IOBase` không khai báo :meth:`!read` hoặc :meth:`!write` vì "
+"chữ ký của chúng sẽ khác nhau, nhưng việc triển khai và khách hàng nên coi "
+"các phương thức đó là một phần của giao diện.  Ngoài ra, việc triển khai có "
+"thể tạo ra :exc:`ValueError` (hoặc :exc:`UnsupportedOperation`) khi các hoạt"
+" động mà chúng không hỗ trợ được gọi."
+
+#: ../../library/io.rst:335
+#, fuzzy
+msgid ""
+"The basic type used for binary data read from or written to a file is "
+":class:`bytes`.  Other :term:`bytes-like objects <bytes-like object>` are "
+"accepted as method arguments too.  Text I/O classes work with :class:`str` "
+"data."
+msgstr ""
+"Loại cơ bản được sử dụng để đọc hoặc ghi dữ liệu nhị phân vào tệp là "
+":class:`bytes`.  :term:`bytes-like objects <bytes-like object>` khác cũng "
+"được chấp nhận làm đối số phương thức.  Các lớp I/O văn bản hoạt động với dữ"
+" liệu :class:`str`."
+
+#: ../../library/io.rst:339
+#, fuzzy
+msgid ""
+"Note that calling any method (even inquiries) on a closed stream is "
+"undefined.  Implementations may raise :exc:`ValueError` in this case."
+msgstr ""
+"Lưu ý rằng việc gọi bất kỳ phương thức nào (thậm chí cả yêu cầu) trên luồng "
+"đã đóng đều không được xác định.  Việc triển khai có thể tăng "
+":exc:`ValueError` trong trường hợp này."
+
+#: ../../library/io.rst:342
+#, fuzzy
+msgid ""
+":class:`IOBase` (and its subclasses) supports the iterator protocol, meaning"
+" that an :class:`IOBase` object can be iterated over yielding the lines in a"
+" stream.  Lines are defined slightly differently depending on whether the "
+"stream is a binary stream (yielding bytes), or a text stream (yielding "
+"character strings).  See :meth:`~IOBase.readline` below."
+msgstr ""
+":class:`IOBase` (và các lớp con của nó) hỗ trợ giao thức iterator, nghĩa là "
+"một đối tượng :class:`IOBase` có thể được lặp lại để tạo ra các dòng trong "
+"luồng.  Các dòng được xác định hơi khác nhau tùy thuộc vào việc luồng đó là "
+"luồng nhị phân (mang lại byte) hay luồng văn bản (mang lại chuỗi ký tự).  "
+"Xem :meth:`~IOBase.readline` bên dưới."
+
+#: ../../library/io.rst:348
+#, fuzzy
+msgid ""
+":class:`IOBase` is also a context manager and therefore supports the "
+":keyword:`with` statement.  In this example, *file* is closed after the "
+":keyword:`!with` statement's suite is finished---even if an exception "
+"occurs::"
+msgstr ""
+":class:`IOBase` cũng là một trình quản lý bối cảnh và do đó hỗ trợ câu lệnh "
+":keyword:`with`.  Trong ví dụ này, *file* bị đóng sau khi bộ câu lệnh "
+":keyword:`!with` kết thúc---ngay cả khi xảy ra ngoại lệ::"
+
+#: ../../library/io.rst:352
+#, fuzzy
+msgid ""
+"with open('spam.txt', 'w') as file:\n"
+"    file.write('Spam and eggs!')"
+msgstr ""
+"với open('spam.txt', 'w') dưới dạng tệp:\n"
+"    file.write('Spam và trứng!')"
+
+#: ../../library/io.rst:355
+#, fuzzy
+msgid ":class:`IOBase` provides these data attributes and methods:"
+msgstr ":class:`IOBase` cung cấp các thuộc tính và phương thức dữ liệu sau:"
+
+#: ../../library/io.rst:359
+#, fuzzy
+msgid ""
+"Flush and close this stream. This method has no effect if the file is "
+"already closed. Once the file is closed, any operation on the file (e.g. "
+"reading or writing) will raise a :exc:`ValueError`."
+msgstr ""
+"Xóa và đóng luồng này. Phương pháp này không có hiệu lực nếu tệp đã bị đóng."
+" Khi tệp được đóng, mọi thao tác trên tệp (ví dụ: đọc hoặc ghi) sẽ tạo ra "
+":exc:`ValueError`."
+
+#: ../../library/io.rst:363
+#, fuzzy
+msgid ""
+"As a convenience, it is allowed to call this method more than once; only the"
+" first call, however, will have an effect."
+msgstr ""
+"Để thuận tiện, nó được phép gọi phương thức này nhiều lần; Tuy nhiên, chỉ "
+"cuộc gọi đầu tiên mới có hiệu lực."
+
+#: ../../library/io.rst:368
+#, fuzzy
+msgid "``True`` if the stream is closed."
+msgstr "``True`` nếu luồng bị đóng."
+
+#: ../../library/io.rst:372
+#, fuzzy
+msgid ""
+"Return the underlying file descriptor (an integer) of the stream if it "
+"exists.  An :exc:`OSError` is raised if the IO object does not use a file "
+"descriptor."
+msgstr ""
+"Trả về bộ mô tả tệp cơ bản (số nguyên) của luồng nếu nó tồn tại.  Một "
+":exc:`OSError` được nâng lên nếu đối tượng IO không sử dụng bộ mô tả tệp."
+
+#: ../../library/io.rst:378
+#, fuzzy
+msgid ""
+"Flush the write buffers of the stream if applicable.  This does nothing for "
+"read-only and non-blocking streams."
+msgstr ""
+"Xóa bộ đệm ghi của luồng nếu có.  Điều này không có tác dụng gì đối với các "
+"luồng chỉ đọc và không chặn."
+
+#: ../../library/io.rst:383
+#, fuzzy
+msgid ""
+"Return ``True`` if the stream is interactive (i.e., connected to a "
+"terminal/tty device)."
+msgstr ""
+"Trả về ``True`` nếu luồng có tính tương tác (tức là được kết nối với thiết "
+"bị đầu cuối/tty)."
+
+#: ../../library/io.rst:388
+#, fuzzy
+msgid ""
+"Return ``True`` if the stream can be read from. If ``False``, :meth:`!read` "
+"will raise :exc:`OSError`."
+msgstr ""
+"Trả về ``True`` nếu luồng có thể được đọc từ đó. Nếu ``False`` thì "
+":meth:`!read` sẽ raise :exc:`OSError`."
+
+#: ../../library/io.rst:393
+#, fuzzy
+msgid ""
+"Read and return one line from the stream.  If *size* is specified, at most "
+"*size* bytes will be read."
+msgstr ""
+"Đọc và trả về một dòng từ luồng.  Nếu *size* được chỉ định, tối đa *size* "
+"byte sẽ được đọc."
+
+#: ../../library/io.rst:396
+#, fuzzy
+msgid ""
+"The line terminator is always ``b'\\n'`` for binary files; for text files, "
+"the *newline* argument to :func:`open` can be used to select the line "
+"terminator(s) recognized."
+msgstr ""
+"Bộ kết thúc dòng luôn là ``b'\\n'`` đối với các tệp nhị phân; đối với các "
+"tệp văn bản, đối số *newline* cho :func:`open` có thể được sử dụng để chọn "
+"(các) dấu kết thúc dòng được nhận dạng."
+
+#: ../../library/io.rst:402
+#, fuzzy
+msgid ""
+"Read and return a list of lines from the stream.  *hint* can be specified to"
+" control the number of lines read: no more lines will be read if the total "
+"size (in bytes/characters) of all lines so far exceeds *hint*."
+msgstr ""
+"Đọc và trả về danh sách các dòng từ luồng.  *hint* có thể được chỉ định để "
+"kiểm soát số dòng được đọc: sẽ không đọc thêm dòng nào nếu tổng kích thước "
+"(tính bằng byte/ký tự) của tất cả các dòng cho đến nay vượt quá *hint*."
+
+#: ../../library/io.rst:406
+#, fuzzy
+msgid ""
+"*hint* values of ``0`` or less, as well as ``None``, are treated as no hint."
+msgstr ""
+"Các giá trị *hint* từ ``0`` trở xuống, cũng như ``None``, được coi là không "
+"có gợi ý."
+
+#: ../../library/io.rst:409
+#, fuzzy
+msgid ""
+"Note that it's already possible to iterate on file objects using ``for line "
+"in file: ...`` without calling :meth:`!file.readlines`."
+msgstr ""
+"Lưu ý rằng bạn có thể lặp lại các đối tượng tệp bằng cách sử dụng ``for line"
+" in file: ...`` mà không cần gọi :meth:`!file.readlines`."
+
+#: ../../library/io.rst:414
+#, fuzzy
+msgid ""
+"Change the stream position to the given byte *offset*, interpreted relative "
+"to the position indicated by *whence*, and return the new absolute position."
+" Values for *whence* are:"
+msgstr ""
+"Thay đổi vị trí luồng thành byte *offset* đã cho, được diễn giải tương ứng "
+"với vị trí được chỉ định bởi *whence* và trả về vị trí tuyệt đối mới. Các "
+"giá trị cho *whence* là:"
+
+#: ../../library/io.rst:419
+#, fuzzy
+msgid ""
+":data:`os.SEEK_SET` or ``0`` -- start of the stream (the default); *offset* "
+"should be zero or positive"
+msgstr ""
+":data:`os.SEEK_SET` hoặc ``0`` -- bắt đầu luồng (mặc định); *offset* phải "
+"bằng 0 hoặc dương"
+
+#: ../../library/io.rst:421
+#, fuzzy
+msgid ""
+":data:`os.SEEK_CUR` or ``1`` -- current stream position; *offset* may be "
+"negative"
+msgstr ""
+":data:`os.SEEK_CUR` hoặc ``1`` -- vị trí luồng hiện tại; *offset* có thể âm "
+"tính"
+
+#: ../../library/io.rst:423
+#, fuzzy
+msgid ""
+":data:`os.SEEK_END` or ``2`` -- end of the stream; *offset* is usually "
+"negative"
+msgstr ""
+":data:`os.SEEK_END` hoặc ``2`` -- kết thúc luồng; *offset* thường âm tính"
+
+#: ../../library/io.rst:426 ../../library/io.rst:943
+#, fuzzy
+msgid "The :data:`!SEEK_*` constants."
+msgstr "Các hằng số :data:`!SEEK_*`."
+
+#: ../../library/io.rst:429
+#, fuzzy
+msgid ""
+"Some operating systems could support additional values, like "
+":const:`os.SEEK_HOLE` or :const:`os.SEEK_DATA`. The valid values for a file "
+"could depend on it being open in text or binary mode."
+msgstr ""
+"Một số hệ điều hành có thể hỗ trợ các giá trị bổ sung, như "
+":const:`os.SEEK_HOLE` hoặc :const:`os.SEEK_DATA`. Các giá trị hợp lệ cho một"
+" tệp có thể phụ thuộc vào việc tệp đó được mở ở chế độ văn bản hoặc nhị "
+"phân."
+
+#: ../../library/io.rst:436
+#, fuzzy
+msgid ""
+"Return ``True`` if the stream supports random access.  If ``False``, "
+":meth:`seek`, :meth:`tell` and :meth:`truncate` will raise :exc:`OSError`."
+msgstr ""
+"Trả về ``True`` nếu luồng hỗ trợ truy cập ngẫu nhiên.  Nếu ``False``, "
+":meth:`seek`, :meth:`tell` và :meth:`truncate` sẽ tăng :exc:`OSError`."
+
+#: ../../library/io.rst:441
+#, fuzzy
+msgid "Return the current stream position."
+msgstr "Trả về vị trí luồng hiện tại."
+
+#: ../../library/io.rst:445
+#, fuzzy
+msgid ""
+"Resize the stream to the given *size* in bytes (or the current position if "
+"*size* is not specified).  The current stream position isn't changed. This "
+"resizing can extend or reduce the current file size.  In case of extension, "
+"the contents of the new file area depend on the platform (on most systems, "
+"additional bytes are zero-filled).  The new file size is returned."
+msgstr ""
+"Thay đổi kích thước luồng thành *size* đã cho theo byte (hoặc vị trí hiện "
+"tại nếu *size* không được chỉ định).  Vị trí luồng hiện tại không thay đổi. "
+"Việc thay đổi kích thước này có thể mở rộng hoặc giảm kích thước tệp hiện "
+"tại.  Trong trường hợp mở rộng, nội dung của vùng tệp mới phụ thuộc vào nền "
+"tảng (trên hầu hết các hệ thống, các byte bổ sung được điền bằng 0).  Kích "
+"thước tập tin mới được trả về."
+
+#: ../../library/io.rst:452
+#, fuzzy
+msgid "Windows will now zero-fill files when extending."
+msgstr "Bây giờ Windows sẽ không điền các tệp khi mở rộng."
+
+#: ../../library/io.rst:457
+#, fuzzy
+msgid ""
+"Return ``True`` if the stream supports writing.  If ``False``, "
+":meth:`!write` and :meth:`truncate` will raise :exc:`OSError`."
+msgstr ""
+"Trả về ``True`` nếu luồng hỗ trợ ghi.  Nếu ``False``, :meth:`!write` và "
+":meth:`truncate` sẽ tăng :exc:`OSError`."
+
+#: ../../library/io.rst:462
+#, fuzzy
+msgid ""
+"Write a list of lines to the stream.  Line separators are not added, so it "
+"is usual for each of the lines provided to have a line separator at the end."
+msgstr ""
+"Viết danh sách các dòng vào luồng.  Dấu phân cách dòng không được thêm vào, "
+"do đó, thông thường mỗi dòng được cung cấp sẽ có dấu phân cách dòng ở cuối."
+
+#: ../../library/io.rst:468
+#, fuzzy
+msgid ""
+"Prepare for object destruction. :class:`IOBase` provides a default "
+"implementation of this method that calls the instance's "
+":meth:`~IOBase.close` method."
+msgstr ""
+"Chuẩn bị cho việc phá hủy đối tượng. :class:`IOBase` cung cấp cách triển "
+"khai mặc định của phương thức này gọi phương thức :meth:`~IOBase.close` của "
+"cá thể."
+
+#: ../../library/io.rst:475
+#, fuzzy
+msgid "Base class for raw binary streams.  It inherits from :class:`IOBase`."
+msgstr "Lớp cơ sở cho luồng nhị phân thô.  Nó kế thừa từ :class:`IOBase`."
+
+#: ../../library/io.rst:477
+#, fuzzy
+msgid ""
+"Raw binary streams typically provide low-level access to an underlying OS "
+"device or API, and do not try to encapsulate it in high-level primitives "
+"(this functionality is done at a higher-level in buffered binary streams and"
+" text streams, described later in this page)."
+msgstr ""
+"Luồng nhị phân thô thường cung cấp quyền truy cập cấp thấp vào thiết bị hệ "
+"điều hành cơ bản hoặc API và không cố gắng đóng gói nó trong các luồng nhị "
+"phân cấp cao (chức năng này được thực hiện ở cấp cao hơn trong luồng nhị "
+"phân và luồng văn bản được đệm, được mô tả sau trong trang này)."
+
+#: ../../library/io.rst:482
+#, fuzzy
+msgid ""
+":class:`RawIOBase` provides these methods in addition to those from "
+":class:`IOBase`:"
+msgstr ""
+":class:`RawIOBase` cung cấp các phương thức này ngoài các phương thức từ "
+":class:`IOBase`:"
+
+#: ../../library/io.rst:487
+#, fuzzy
+msgid ""
+"Read up to *size* bytes from the object and return them.  As a convenience, "
+"if *size* is unspecified or -1, all bytes until EOF are returned. Otherwise,"
+" only one system call is ever made.  Fewer than *size* bytes may be returned"
+" if the operating system call returns fewer than *size* bytes."
+msgstr ""
+"Đọc tối đa *size* byte từ đối tượng và trả về chúng.  Để thuận tiện, nếu "
+"*size* không được chỉ định hoặc -1, tất cả byte cho đến EOF sẽ được trả về. "
+"Nếu không, chỉ có một cuộc gọi hệ thống được thực hiện.  Có thể trả về ít "
+"hơn *size* byte nếu lệnh gọi hệ điều hành trả về ít hơn *size* byte."
+
+#: ../../library/io.rst:492
+#, fuzzy
+msgid ""
+"If 0 bytes are returned, and *size* was not 0, this indicates end of file. "
+"If the object is in non-blocking mode and no bytes are available, ``None`` "
+"is returned."
+msgstr ""
+"Nếu trả về 0 byte và *size* không bằng 0, điều này cho biết kết thúc tệp. "
+"Nếu đối tượng ở chế độ không chặn và không có byte nào, ``None`` sẽ được trả"
+" về."
+
+#: ../../library/io.rst:496
+#, fuzzy
+msgid ""
+"The default implementation defers to :meth:`readall` and :meth:`readinto`."
+msgstr ""
+"Việc triển khai mặc định trì hoãn :meth:`readall` và :meth:`readinto`."
+
+#: ../../library/io.rst:501
+#, fuzzy
+msgid ""
+"Read and return all the bytes from the stream until EOF, using multiple "
+"calls to the stream if necessary."
+msgstr ""
+"Đọc và trả về tất cả byte từ luồng cho đến EOF, sử dụng nhiều lệnh gọi tới "
+"luồng nếu cần."
+
+#: ../../library/io.rst:506
+#, fuzzy
+msgid ""
+"Read bytes into a pre-allocated, writable :term:`bytes-like object` *b*, and"
+" return the number of bytes read.  For example, *b* might be a "
+":class:`bytearray`. If the object is in non-blocking mode and no bytes are "
+"available, ``None`` is returned."
+msgstr ""
+"Đọc byte vào một :term:`bytes-like object` *b* được phân bổ trước, có thể "
+"ghi và trả về số byte đã đọc.  Ví dụ: *b* có thể là :class:`bytearray`. Nếu "
+"đối tượng ở chế độ không chặn và không có byte nào, ``None`` sẽ được trả về."
+
+#: ../../library/io.rst:514
+#, fuzzy
+msgid ""
+"Write the given :term:`bytes-like object`, *b*, to the underlying raw "
+"stream, and return the number of bytes written.  This can be less than the "
+"length of *b* in bytes, depending on specifics of the underlying raw stream,"
+" and especially if it is in non-blocking mode.  ``None`` is returned if the "
+"raw stream is set not to block and no single byte could be readily written "
+"to it.  The caller may release or mutate *b* after this method returns, so "
+"the implementation should only access *b* during the method call."
+msgstr ""
+"Viết :term:`bytes-like object`, *b* đã cho vào luồng thô bên dưới và trả về "
+"số byte đã ghi.  Độ dài này có thể nhỏ hơn độ dài của *b* tính bằng byte, "
+"tùy thuộc vào thông tin cụ thể của luồng thô cơ bản và đặc biệt nếu luồng đó"
+" ở chế độ không chặn.  ``None`` được trả về nếu luồng thô được đặt ở chế độ "
+"không chặn và không có byte đơn nào có thể được ghi vào luồng đó.  Người gọi"
+" có thể giải phóng hoặc thay đổi *b* sau khi phương thức này trả về, vì vậy "
+"việc triển khai chỉ nên truy cập *b* trong khi gọi phương thức."
+
+#: ../../library/io.rst:527
+#, fuzzy
+msgid ""
+"Base class for binary streams that support some kind of buffering. It "
+"inherits from :class:`IOBase`."
+msgstr ""
+"Lớp cơ sở cho các luồng nhị phân hỗ trợ một số loại đệm. Nó kế thừa từ "
+":class:`IOBase`."
+
+#: ../../library/io.rst:530
+#, fuzzy
+msgid ""
+"The main difference with :class:`RawIOBase` is that methods :meth:`read`, "
+":meth:`readinto` and :meth:`write` will try (respectively) to read as much "
+"input as requested or to emit all provided data."
+msgstr ""
+"Sự khác biệt chính với :class:`RawIOBase` là các phương thức :meth:`read`, "
+":meth:`readinto` và :meth:`write` sẽ cố gắng (tương ứng) đọc nhiều dữ liệu "
+"đầu vào theo yêu cầu hoặc phát ra tất cả dữ liệu được cung cấp."
+
+#: ../../library/io.rst:534
+#, fuzzy
+msgid ""
+"In addition, if the underlying raw stream is in non-blocking mode, when the "
+"system returns would block :meth:`write` will raise :exc:`BlockingIOError` "
+"with :attr:`BlockingIOError.characters_written` and :meth:`read` will return"
+" data read so far or ``None`` if no data is available."
+msgstr ""
+"Ngoài ra, nếu luồng thô cơ bản ở chế độ không chặn, khi hệ thống quay trở "
+"lại, khối :meth:`write` sẽ tăng :exc:`BlockingIOError` với "
+":attr:`BlockingIOError.characters_written` và :meth:`read` sẽ trả về dữ liệu"
+" đã đọc cho đến nay hoặc ``None`` nếu không có dữ liệu."
+
+#: ../../library/io.rst:539
+#, fuzzy
+msgid ""
+"Besides, the :meth:`read` method does not have a default implementation that"
+" defers to :meth:`readinto`."
+msgstr ""
+"Ngoài ra, phương thức :meth:`read` không có cách triển khai mặc định dành "
+"cho :meth:`readinto`."
+
+#: ../../library/io.rst:542
+#, fuzzy
+msgid ""
+"A typical :class:`BufferedIOBase` implementation should not inherit from a "
+":class:`RawIOBase` implementation, but wrap one, like "
+":class:`BufferedWriter` and :class:`BufferedReader` do."
+msgstr ""
+"Việc triển khai :class:`BufferedIOBase` điển hình không nên kế thừa từ việc "
+"triển khai :class:`RawIOBase` mà nên gói gọn một triển khai, giống như "
+":class:`BufferedWriter` và :class:`BufferedReader`."
+
+#: ../../library/io.rst:546
+#, fuzzy
+msgid ""
+":class:`BufferedIOBase` provides or overrides these data attributes and "
+"methods in addition to those from :class:`IOBase`:"
+msgstr ""
+":class:`BufferedIOBase` cung cấp hoặc ghi đè các thuộc tính và phương thức "
+"dữ liệu này ngoài các thuộc tính và phương thức dữ liệu từ :class:`IOBase`:"
+
+#: ../../library/io.rst:551
+#, fuzzy
+msgid ""
+"The underlying raw stream (a :class:`RawIOBase` instance) that "
+":class:`BufferedIOBase` deals with.  This is not part of the "
+":class:`BufferedIOBase` API and may not exist on some implementations."
+msgstr ""
+"Luồng thô cơ bản (phiên bản :class:`RawIOBase`) mà :class:`BufferedIOBase` "
+"xử lý.  Đây không phải là một phần của :class:`BufferedIOBase` API và có thể"
+" không tồn tại trên một số triển khai."
+
+#: ../../library/io.rst:557
+#, fuzzy
+msgid "Separate the underlying raw stream from the buffer and return it."
+msgstr "Tách luồng thô cơ bản khỏi bộ đệm và trả lại nó."
+
+#: ../../library/io.rst:559
+#, fuzzy
+msgid ""
+"After the raw stream has been detached, the buffer is in an unusable state."
+msgstr "Sau khi luồng thô bị tách ra, bộ đệm ở trạng thái không sử dụng được."
+
+#: ../../library/io.rst:562
+#, fuzzy
+msgid ""
+"Some buffers, like :class:`BytesIO`, do not have the concept of a single raw"
+" stream to return from this method.  They raise :exc:`UnsupportedOperation`."
+msgstr ""
+"Một số bộ đệm, như :class:`BytesIO`, không có khái niệm về một luồng thô duy"
+" nhất được trả về từ phương thức này.  Họ quyên góp "
+":exc:`UnsupportedOperation`."
+
+#: ../../library/io.rst:570
+#, fuzzy
+msgid ""
+"Read and return up to *size* bytes. If the argument is omitted, ``None``, or"
+" negative read as much as possible."
+msgstr ""
+"Đọc và trả về byte *size*. Nếu đối số bị bỏ qua, ``None`` hoặc đọc âm càng "
+"nhiều càng tốt."
+
+#: ../../library/io.rst:573
+#, fuzzy
+msgid ""
+"Fewer bytes may be returned than requested. An empty :class:`bytes` object "
+"is returned if the stream is already at EOF. More than one read may be made "
+"and calls may be retried if specific errors are encountered, see "
+":meth:`os.read` and :pep:`475` for more details. Less than size bytes being "
+"returned does not imply that EOF is imminent."
+msgstr ""
+"Có thể trả về ít byte hơn yêu cầu. Một đối tượng :class:`bytes` trống sẽ "
+"được trả về nếu luồng đã ở EOF. Có thể thực hiện nhiều lần đọc và thử lại "
+"các lệnh gọi nếu gặp phải lỗi cụ thể, hãy xem :meth:`os.read` và :pep:`475` "
+"để biết thêm chi tiết. Kích thước byte nhỏ hơn được trả về không có nghĩa là"
+" EOF sắp xảy ra."
+
+#: ../../library/io.rst:579
+#, fuzzy
+msgid ""
+"When reading as much as possible the default implementation will use "
+"``raw.readall`` if available (which should implement "
+":meth:`RawIOBase.readall`), otherwise will read in a loop until read returns"
+" ``None``, an empty :class:`bytes`, or a non-retryable error. For most "
+"streams this is to EOF, but for non-blocking streams more data may become "
+"available."
+msgstr ""
+"Khi đọc càng nhiều càng tốt, việc triển khai mặc định sẽ sử dụng "
+"``raw.readall`` nếu có (cần triển khai :meth:`RawIOBase.readall`), nếu không"
+" thì sẽ đọc theo vòng lặp cho đến khi đọc trả về ``None``, :class:`bytes` "
+"trống hoặc lỗi không thể thử lại. Đối với hầu hết các luồng, đây là EOF, "
+"nhưng đối với các luồng không chặn, có thể có nhiều dữ liệu hơn."
+
+#: ../../library/io.rst:588 ../../library/io.rst:601
+#, fuzzy
+msgid ""
+"When the underlying raw stream is non-blocking, implementations may either "
+"raise :exc:`BlockingIOError` or return ``None`` if no data is available. "
+":mod:`!io` implementations return ``None``."
+msgstr ""
+"Khi luồng thô cơ bản không bị chặn, việc triển khai có thể tăng "
+":exc:`BlockingIOError` hoặc trả về ``None`` nếu không có dữ liệu. Việc triển"
+" khai :mod:`!io` trả về ``None``."
+
+#: ../../library/io.rst:594
+#, fuzzy
+msgid ""
+"Read and return up to *size* bytes, calling :meth:`~RawIOBase.readinto` "
+"which may retry if :py:const:`~errno.EINTR` is encountered per :pep:`475`. "
+"If *size* is ``-1`` or not provided, the implementation will choose an "
+"arbitrary value for *size*."
+msgstr ""
+"Đọc và trả về tối đa *size* byte, gọi :meth:`~RawIOBase.readinto` có thể thử"
+" lại nếu gặp :py:const:`~errno.EINTR` trên mỗi :pep:`475`. Nếu *size* là "
+"``-1`` hoặc không được cung cấp, quá trình triển khai sẽ chọn một giá trị "
+"tùy ý cho *size*."
+
+#: ../../library/io.rst:607
+#, fuzzy
+msgid ""
+"Read bytes into a pre-allocated, writable :term:`bytes-like object` *b* and "
+"return the number of bytes read. For example, *b* might be a "
+":class:`bytearray`."
+msgstr ""
+"Đọc byte vào một :term:`bytes-like object` *b* được phân bổ trước, có thể "
+"ghi và trả về số byte đã đọc. Ví dụ: *b* có thể là :class:`bytearray`."
+
+#: ../../library/io.rst:611
+#, fuzzy
+msgid ""
+"Like :meth:`read`, multiple reads may be issued to the underlying raw "
+"stream, unless the latter is interactive."
+msgstr ""
+"Giống như :meth:`read`, nhiều lần đọc có thể được cấp cho luồng thô cơ bản, "
+"trừ khi luồng sau có tính tương tác."
+
+#: ../../library/io.rst:614 ../../library/io.rst:624
+#, fuzzy
+msgid ""
+"A :exc:`BlockingIOError` is raised if the underlying raw stream is in non "
+"blocking-mode, and has no data available at the moment."
+msgstr ""
+"Một :exc:`BlockingIOError` được tăng lên nếu luồng thô cơ bản ở chế độ không"
+" chặn và hiện không có sẵn dữ liệu."
+
+#: ../../library/io.rst:619
+#, fuzzy
+msgid ""
+"Read bytes into a pre-allocated, writable :term:`bytes-like object` *b*, "
+"using at most one call to the underlying raw stream's "
+":meth:`~RawIOBase.read` (or :meth:`~RawIOBase.readinto`) method. Return the "
+"number of bytes read."
+msgstr ""
+"Đọc byte thành một :term:`bytes-like object` *b* được phân bổ trước, có thể "
+"ghi, sử dụng tối đa một lệnh gọi đến phương thức :meth:`~RawIOBase.read` "
+"(hoặc :meth:`~RawIOBase.readinto`) của luồng thô cơ bản. Trả về số byte đã "
+"đọc."
+
+#: ../../library/io.rst:631
+#, fuzzy
+msgid ""
+"Write the given :term:`bytes-like object`, *b*, and return the number of "
+"bytes written (always equal to the length of *b* in bytes, since if the "
+"write fails an :exc:`OSError` will be raised).  Depending on the actual "
+"implementation, these bytes may be readily written to the underlying stream,"
+" or held in a buffer for performance and latency reasons."
+msgstr ""
+"Viết :term:`bytes-like object`, *b* đã cho và trả về số byte đã ghi (luôn "
+"bằng độ dài của *b* tính bằng byte, vì nếu ghi không thành công thì "
+":exc:`OSError` sẽ được tăng lên).  Tùy thuộc vào việc triển khai thực tế, "
+"các byte này có thể được ghi dễ dàng vào luồng cơ bản hoặc được giữ trong bộ"
+" đệm vì lý do hiệu suất và độ trễ."
+
+#: ../../library/io.rst:638
+#, fuzzy
+msgid ""
+"When in non-blocking mode, a :exc:`BlockingIOError` is raised if the data "
+"needed to be written to the raw stream but it couldn't accept all the data "
+"without blocking."
+msgstr ""
+"Khi ở chế độ không chặn, :exc:`BlockingIOError` sẽ được nâng lên nếu dữ liệu"
+" cần được ghi vào luồng thô nhưng nó không thể chấp nhận tất cả dữ liệu mà "
+"không chặn."
+
+#: ../../library/io.rst:642
+#, fuzzy
+msgid ""
+"The caller may release or mutate *b* after this method returns, so the "
+"implementation should only access *b* during the method call."
+msgstr ""
+"Người gọi có thể giải phóng hoặc thay đổi *b* sau khi phương thức này trả "
+"về, vì vậy việc triển khai chỉ nên truy cập *b* trong khi gọi phương thức."
+
+#: ../../library/io.rst:647
+#, fuzzy
+msgid "Raw File I/O"
+msgstr "Vào/ra tệp thô"
+
+#: ../../library/io.rst:651
+#, fuzzy
+msgid ""
+"A raw binary stream representing an OS-level file containing bytes data.  It"
+" inherits from :class:`RawIOBase`."
+msgstr ""
+"Luồng nhị phân thô biểu thị tệp cấp hệ điều hành chứa dữ liệu byte.  Nó kế "
+"thừa từ :class:`RawIOBase`."
+
+#: ../../library/io.rst:654
+#, fuzzy
+msgid "The *name* can be one of two things:"
+msgstr "Zz000zz có thể là một trong hai thứ:"
+
+#: ../../library/io.rst:656
+#, fuzzy
+msgid ""
+"a character string or :class:`bytes` object representing the path to the "
+"file which will be opened. In this case closefd must be ``True`` (the "
+"default) otherwise an error will be raised."
+msgstr ""
+"một chuỗi ký tự hoặc đối tượng :class:`bytes` biểu thị đường dẫn đến tệp sẽ "
+"được mở. Trong trường hợp này, closefd phải là ``True`` (mặc định) nếu không"
+" sẽ xảy ra lỗi."
+
+#: ../../library/io.rst:659
+#, fuzzy
+msgid ""
+"an integer representing the number of an existing OS-level file descriptor "
+"to which the resulting :class:`FileIO` object will give access. When the "
+"FileIO object is closed this fd will be closed as well, unless *closefd* is "
+"set to ``False``."
+msgstr ""
+"một số nguyên biểu thị số lượng bộ mô tả tệp cấp hệ điều hành hiện có mà đối"
+" tượng :class:`FileIO` kết quả sẽ cấp quyền truy cập. Khi đối tượng FileIO "
+"bị đóng, fd này cũng sẽ bị đóng, trừ khi *closefd* được đặt thành ``False``."
+
+#: ../../library/io.rst:664
+#, fuzzy
+msgid ""
+"The *mode* can be ``'r'``, ``'w'``, ``'x'`` or ``'a'`` for reading "
+"(default), writing, exclusive creation or appending. The file will be "
+"created if it doesn't exist when opened for writing or appending; it will be"
+" truncated when opened for writing. :exc:`FileExistsError` will be raised if"
+" it already exists when opened for creating. Opening a file for creating "
+"implies writing, so this mode behaves in a similar way to ``'w'``. Add a "
+"``'+'`` to the mode to allow simultaneous reading and writing."
+msgstr ""
+"Zz007zz có thể là ``'r'``, ``'w'``, ``'x'`` hoặc ``'a'`` để đọc (mặc định), "
+"viết, tạo hoặc thêm độc quyền. Tệp sẽ được tạo nếu nó không tồn tại khi mở "
+"để ghi hoặc nối thêm; nó sẽ bị cắt bớt khi mở ra để viết. "
+":exc:`FileExistsError` sẽ được nâng lên nếu nó đã tồn tại khi mở để tạo. "
+"Việc mở một tệp để tạo có nghĩa là ghi, vì vậy chế độ này hoạt động theo "
+"cách tương tự như ``'w'``. Thêm ``'+'`` vào chế độ để cho phép đọc và ghi "
+"đồng thời."
+
+#: ../../library/io.rst:672
+#, fuzzy
+msgid ""
+"The :meth:`~RawIOBase.read` (when called with a positive argument), "
+":meth:`~RawIOBase.readinto` and :meth:`~RawIOBase.write` methods on this "
+"class will only make one system call."
+msgstr ""
+"Các phương thức :meth:`~RawIOBase.read` (khi được gọi với đối số dương), "
+":meth:`~RawIOBase.readinto` và :meth:`~RawIOBase.write` trên lớp này sẽ chỉ "
+"thực hiện một lệnh gọi hệ thống."
+
+#: ../../library/io.rst:676
+#, fuzzy
+msgid ""
+"A custom opener can be used by passing a callable as *opener*. The "
+"underlying file descriptor for the file object is then obtained by calling "
+"*opener* with (*name*, *flags*). *opener* must return an open file "
+"descriptor (passing :mod:`os.open` as *opener* results in functionality "
+"similar to passing ``None``)."
+msgstr ""
+"Bạn có thể sử dụng công cụ mở tùy chỉnh bằng cách chuyển một lệnh gọi có thể"
+" gọi là *opener*. Sau đó, bộ mô tả tệp cơ bản cho đối tượng tệp được lấy "
+"bằng cách gọi *opener* với (*name*, *flags*). *opener* phải trả về một bộ mô"
+" tả tệp đang mở (chuyển :mod:`os.open` vì *opener* sẽ có chức năng tương tự "
+"như truyền ``None``)."
+
+#: ../../library/io.rst:682
+#, fuzzy
+msgid "The newly created file is :ref:`non-inheritable <fd_inheritance>`."
+msgstr "Tệp mới được tạo là :ref:`non-inheritable <fd_inheritance>`."
+
+#: ../../library/io.rst:684
+#, fuzzy
+msgid ""
+"See the :func:`open` built-in function for examples on using the *opener* "
+"parameter."
+msgstr ""
+"Xem hàm tích hợp :func:`open` để biết ví dụ về cách sử dụng tham số "
+"*opener*."
+
+#: ../../library/io.rst:687
+#, fuzzy
+msgid "The *opener* parameter was added. The ``'x'`` mode was added."
+msgstr "Tham số *opener* đã được thêm vào. Chế độ ``'x'`` đã được thêm vào."
+
+#: ../../library/io.rst:691
+#, fuzzy
+msgid "The file is now non-inheritable."
+msgstr "Các tập tin bây giờ không thể kế thừa."
+
+#: ../../library/io.rst:694
+#, fuzzy
+msgid ""
+":class:`FileIO` provides these data attributes in addition to those from "
+":class:`RawIOBase` and :class:`IOBase`:"
+msgstr ""
+":class:`FileIO` cung cấp các thuộc tính dữ liệu này ngoài các thuộc tính dữ "
+"liệu từ :class:`RawIOBase` và :class:`IOBase`:"
+
+#: ../../library/io.rst:699
+#, fuzzy
+msgid "The mode as given in the constructor."
+msgstr "Chế độ như được đưa ra trong hàm tạo."
+
+#: ../../library/io.rst:703
+#, fuzzy
+msgid ""
+"The file name.  This is the file descriptor of the file when no name is "
+"given in the constructor."
+msgstr ""
+"Tên tập tin.  Đây là bộ mô tả tệp của tệp khi không có tên nào được đưa ra "
+"trong hàm tạo."
+
+#: ../../library/io.rst:708
+#, fuzzy
+msgid "Buffered Streams"
+msgstr "Luồng đệm"
+
+#: ../../library/io.rst:710
+#, fuzzy
+msgid ""
+"Buffered I/O streams provide a higher-level interface to an I/O device than "
+"raw I/O does."
+msgstr ""
+"Các luồng I/O được đệm cung cấp giao diện cấp cao hơn cho thiết bị I/O so "
+"với I/O thô."
+
+#: ../../library/io.rst:715
+#, fuzzy
+msgid ""
+"A binary stream using an in-memory bytes buffer.  It inherits from "
+":class:`BufferedIOBase`.  The buffer is discarded when the "
+":meth:`~IOBase.close` method is called."
+msgstr ""
+"Luồng nhị phân sử dụng bộ đệm byte trong bộ nhớ.  Nó kế thừa từ "
+":class:`BufferedIOBase`.  Bộ đệm bị loại bỏ khi phương thức "
+":meth:`~IOBase.close` được gọi."
+
+#: ../../library/io.rst:719
+#, fuzzy
+msgid ""
+"The optional argument *initial_bytes* is a :term:`bytes-like object` that "
+"contains initial data."
+msgstr ""
+"Đối số tùy chọn *initial_bytes* là :term:`bytes-like object` chứa dữ liệu "
+"ban đầu."
+
+#: ../../library/io.rst:722
+#, fuzzy
+msgid ""
+":class:`BytesIO` provides or overrides these methods in addition to those "
+"from :class:`BufferedIOBase` and :class:`IOBase`:"
+msgstr ""
+":class:`BytesIO` cung cấp hoặc ghi đè các phương thức này ngoài các phương "
+"thức từ :class:`BufferedIOBase` và :class:`IOBase`:"
+
+#: ../../library/io.rst:727
+#, fuzzy
+msgid ""
+"Return a readable and writable view over the contents of the buffer without "
+"copying them.  Also, mutating the view will transparently update the "
+"contents of the buffer::"
+msgstr ""
+"Trả về chế độ xem có thể đọc và ghi đối với nội dung của bộ đệm mà không cần"
+" sao chép chúng.  Ngoài ra, việc thay đổi chế độ xem sẽ cập nhật một cách "
+"minh bạch nội dung của bộ đệm ::"
+
+#: ../../library/io.rst:731
+#, fuzzy
+msgid ""
+">>> b = io.BytesIO(b\"abcdef\")\n"
+">>> view = b.getbuffer()\n"
+">>> view[2:4] = b\"56\"\n"
+">>> b.getvalue()\n"
+"b'ab56ef'"
+msgstr ""
+">>> b = io.BytesIO(b\"abcdef\")\n"
+">>> view = b.getbuffer()\n"
+">>> xem[2:4] = b\"56\"\n"
+">>> b.getvalue()\n"
+"b'ab56ef'"
+
+#: ../../library/io.rst:738
+#, fuzzy
+msgid ""
+"As long as the view exists, the :class:`BytesIO` object cannot be resized or"
+" closed."
+msgstr ""
+"Miễn là chế độ xem tồn tại, đối tượng :class:`BytesIO` không thể thay đổi "
+"kích thước hoặc đóng."
+
+#: ../../library/io.rst:745
+#, fuzzy
+msgid "Return :class:`bytes` containing the entire contents of the buffer."
+msgstr "Trả về :class:`bytes` chứa toàn bộ nội dung của bộ đệm."
+
+#: ../../library/io.rst:750
+#, fuzzy
+msgid "In :class:`BytesIO`, this is the same as :meth:`~BufferedIOBase.read`."
+msgstr ""
+"Trong :class:`BytesIO`, điều này giống với :meth:`~BufferedIOBase.read`."
+
+#: ../../library/io.rst:752 ../../library/io.rst:792
+#, fuzzy
+msgid "The *size* argument is now optional."
+msgstr "Đối số *size* hiện là tùy chọn."
+
+#: ../../library/io.rst:757
+#, fuzzy
+msgid ""
+"In :class:`BytesIO`, this is the same as :meth:`~BufferedIOBase.readinto`."
+msgstr ""
+"Trong :class:`BytesIO`, điều này giống với :meth:`~BufferedIOBase.readinto`."
+
+#: ../../library/io.rst:763
+#, fuzzy
+msgid ""
+"A buffered binary stream providing higher-level access to a readable, non "
+"seekable :class:`RawIOBase` raw binary stream.  It inherits from "
+":class:`BufferedIOBase`."
+msgstr ""
+"Luồng nhị phân được lưu vào bộ đệm cung cấp quyền truy cập cấp cao hơn vào "
+"luồng nhị phân thô :class:`RawIOBase` có thể đọc được, không thể tìm kiếm "
+"được.  Nó kế thừa từ :class:`BufferedIOBase`."
+
+#: ../../library/io.rst:767
+#, fuzzy
+msgid ""
+"When reading data from this object, a larger amount of data may be requested"
+" from the underlying raw stream, and kept in an internal buffer. The "
+"buffered data can then be returned directly on subsequent reads."
+msgstr ""
+"Khi đọc dữ liệu từ đối tượng này, lượng dữ liệu lớn hơn có thể được yêu cầu "
+"từ luồng thô cơ bản và được lưu trong bộ đệm bên trong. Dữ liệu được lưu vào"
+" bộ đệm sau đó có thể được trả về trực tiếp trong các lần đọc tiếp theo."
+
+#: ../../library/io.rst:771
+#, fuzzy
+msgid ""
+"The constructor creates a :class:`BufferedReader` for the given readable "
+"*raw* stream and *buffer_size*.  If *buffer_size* is omitted, "
+":data:`DEFAULT_BUFFER_SIZE` is used."
+msgstr ""
+"Hàm tạo tạo một :class:`BufferedReader` cho luồng *raw* có thể đọc được và "
+"*buffer_size*.  Nếu *buffer_size* bị bỏ qua, :data:`DEFAULT_BUFFER_SIZE` sẽ "
+"được sử dụng."
+
+#: ../../library/io.rst:775
+#, fuzzy
+msgid ""
+":class:`BufferedReader` provides or overrides these methods in addition to "
+"those from :class:`BufferedIOBase` and :class:`IOBase`:"
+msgstr ""
+":class:`BufferedReader` cung cấp hoặc ghi đè các phương thức này ngoài các "
+"phương thức từ :class:`BufferedIOBase` và :class:`IOBase`:"
+
+#: ../../library/io.rst:780
+#, fuzzy
+msgid ""
+"Return bytes from the stream without advancing the position. The number of "
+"bytes returned may be less or more than requested. If the underlying raw "
+"stream is non-blocking and the operation would block, returns empty bytes."
+msgstr ""
+"Trả về byte từ luồng mà không nâng cao vị trí. Số byte trả về có thể ít hơn "
+"hoặc nhiều hơn yêu cầu. Nếu luồng thô cơ bản không bị chặn và thao tác sẽ "
+"chặn thì sẽ trả về các byte trống."
+
+#: ../../library/io.rst:786
+#, fuzzy
+msgid ""
+"In :class:`BufferedReader` this is the same as "
+":meth:`io.BufferedIOBase.read`"
+msgstr ""
+"Trong :class:`BufferedReader` cái này giống với "
+":meth:`io.BufferedIOBase.read`"
+
+#: ../../library/io.rst:790
+#, fuzzy
+msgid ""
+"In :class:`BufferedReader` this is the same as "
+":meth:`io.BufferedIOBase.read1`"
+msgstr ""
+"Trong :class:`BufferedReader` cái này giống với "
+":meth:`io.BufferedIOBase.read1`"
+
+#: ../../library/io.rst:797
+#, fuzzy
+msgid ""
+"A buffered binary stream providing higher-level access to a writeable, non "
+"seekable :class:`RawIOBase` raw binary stream.  It inherits from "
+":class:`BufferedIOBase`."
+msgstr ""
+"Luồng nhị phân được lưu vào bộ đệm cung cấp quyền truy cập cấp cao hơn vào "
+"luồng nhị phân thô :class:`RawIOBase` có thể ghi, không thể tìm kiếm.  Nó kế"
+" thừa từ :class:`BufferedIOBase`."
+
+#: ../../library/io.rst:801
+#, fuzzy
+msgid ""
+"When writing to this object, data is normally placed into an internal "
+"buffer.  The buffer will be written out to the underlying :class:`RawIOBase`"
+" object under various conditions, including:"
+msgstr ""
+"Khi ghi vào đối tượng này, dữ liệu thường được đặt vào bộ đệm bên trong.  Bộ"
+" đệm sẽ được ghi vào đối tượng :class:`RawIOBase` cơ bản trong các điều kiện"
+" khác nhau, bao gồm:"
+
+#: ../../library/io.rst:805
+#, fuzzy
+msgid "when the buffer gets too small for all pending data;"
+msgstr "khi bộ đệm quá nhỏ đối với tất cả dữ liệu đang chờ xử lý;"
+
+#: ../../library/io.rst:806
+#, fuzzy
+msgid "when :meth:`flush` is called;"
+msgstr "khi :meth:`flush` được gọi;"
+
+#: ../../library/io.rst:807
+#, fuzzy
+msgid ""
+"when a :meth:`~IOBase.seek` is requested (for :class:`BufferedRandom` "
+"objects);"
+msgstr ""
+"khi yêu cầu :meth:`~IOBase.seek` (đối với đối tượng "
+":class:`BufferedRandom`);"
+
+#: ../../library/io.rst:808
+#, fuzzy
+msgid "when the :class:`BufferedWriter` object is closed or destroyed."
+msgstr "khi đối tượng :class:`BufferedWriter` bị đóng hoặc bị phá hủy."
+
+#: ../../library/io.rst:810
+#, fuzzy
+msgid ""
+"The constructor creates a :class:`BufferedWriter` for the given writeable "
+"*raw* stream.  If the *buffer_size* is not given, it defaults to "
+":data:`DEFAULT_BUFFER_SIZE`."
+msgstr ""
+"Hàm tạo tạo một :class:`BufferedWriter` cho luồng *raw* có thể ghi được.  "
+"Nếu *buffer_size* không được cung cấp, nó sẽ mặc định là "
+":data:`DEFAULT_BUFFER_SIZE`."
+
+#: ../../library/io.rst:814
+#, fuzzy
+msgid ""
+":class:`BufferedWriter` provides or overrides these methods in addition to "
+"those from :class:`BufferedIOBase` and :class:`IOBase`:"
+msgstr ""
+":class:`BufferedWriter` cung cấp hoặc ghi đè các phương thức này ngoài các "
+"phương thức từ :class:`BufferedIOBase` và :class:`IOBase`:"
+
+#: ../../library/io.rst:819
+#, fuzzy
+msgid ""
+"Force bytes held in the buffer into the raw stream.  A "
+":exc:`BlockingIOError` should be raised if the raw stream blocks."
+msgstr ""
+"Buộc các byte được giữ trong bộ đệm vào luồng thô.  Một "
+":exc:`BlockingIOError` sẽ được tăng lên nếu luồng thô bị chặn."
+
+#: ../../library/io.rst:824
+#, fuzzy
+msgid ""
+"Write the :term:`bytes-like object`, *b*, and return the number of bytes "
+"written.  When in non-blocking mode, a :exc:`BlockingIOError` with "
+":attr:`BlockingIOError.characters_written` set is raised if the buffer needs"
+" to be written out but the raw stream blocks."
+msgstr ""
+"Viết :term:`bytes-like object`, *b* và trả về số byte đã ghi.  Khi ở chế độ "
+"không chặn, một bộ :exc:`BlockingIOError` với "
+":attr:`BlockingIOError.characters_written` sẽ được nâng lên nếu bộ đệm cần "
+"được ghi ra nhưng luồng thô sẽ chặn."
+
+#: ../../library/io.rst:832
+#, fuzzy
+msgid ""
+"A buffered binary stream providing higher-level access to a seekable "
+":class:`RawIOBase` raw binary stream.  It inherits from "
+":class:`BufferedReader` and :class:`BufferedWriter`."
+msgstr ""
+"Luồng nhị phân được lưu vào bộ đệm cung cấp quyền truy cập cấp cao hơn vào "
+"luồng nhị phân thô :class:`RawIOBase` có thể tìm kiếm.  Nó kế thừa từ "
+":class:`BufferedReader` và :class:`BufferedWriter`."
+
+#: ../../library/io.rst:836
+#, fuzzy
+msgid ""
+"The constructor creates a reader and writer for a seekable raw stream, given"
+" in the first argument.  If the *buffer_size* is omitted it defaults to "
+":data:`DEFAULT_BUFFER_SIZE`."
+msgstr ""
+"Hàm tạo tạo một trình đọc và trình ghi cho luồng thô có thể tìm kiếm, được "
+"đưa ra trong đối số đầu tiên.  Nếu *buffer_size* bị bỏ qua, nó sẽ mặc định "
+"là :data:`DEFAULT_BUFFER_SIZE`."
+
+#: ../../library/io.rst:840
+#, fuzzy
+msgid ""
+":class:`BufferedRandom` is capable of anything :class:`BufferedReader` or "
+":class:`BufferedWriter` can do.  In addition, :meth:`~IOBase.seek` and "
+":meth:`~IOBase.tell` are guaranteed to be implemented."
+msgstr ""
+":class:`BufferedRandom` có khả năng làm mọi việc mà :class:`BufferedReader` "
+"hoặc :class:`BufferedWriter` có thể làm.  Ngoài ra, :meth:`~IOBase.seek` và "
+":meth:`~IOBase.tell` được đảm bảo sẽ được triển khai."
+
+#: ../../library/io.rst:847
+#, fuzzy
+msgid ""
+"A buffered binary stream providing higher-level access to two non seekable "
+":class:`RawIOBase` raw binary streams---one readable, the other writeable. "
+"It inherits from :class:`BufferedIOBase`."
+msgstr ""
+"Luồng nhị phân được lưu vào bộ đệm cung cấp quyền truy cập cấp cao hơn vào "
+"hai luồng nhị phân thô :class:`RawIOBase` không thể tìm kiếm---một luồng có "
+"thể đọc được, luồng còn lại có thể ghi. Nó kế thừa từ "
+":class:`BufferedIOBase`."
+
+#: ../../library/io.rst:851
+#, fuzzy
+msgid ""
+"*reader* and *writer* are :class:`RawIOBase` objects that are readable and "
+"writeable respectively.  If the *buffer_size* is omitted it defaults to "
+":data:`DEFAULT_BUFFER_SIZE`."
+msgstr ""
+"*reader* và *writer* lần lượt là các đối tượng :class:`RawIOBase` có thể đọc"
+" và ghi được.  Nếu *buffer_size* bị bỏ qua, nó sẽ mặc định là "
+":data:`DEFAULT_BUFFER_SIZE`."
+
+#: ../../library/io.rst:855
+#, fuzzy
+msgid ""
+":class:`BufferedRWPair` implements all of :class:`BufferedIOBase`\\'s "
+"methods except for :meth:`~BufferedIOBase.detach`, which raises "
+":exc:`UnsupportedOperation`."
+msgstr ""
+":class:`BufferedRWPair` thực hiện tất cả các phương thức của "
+":class:`BufferedIOBase` ngoại trừ :meth:`~BufferedIOBase.detach`, làm tăng "
+":exc:`UnsupportedOperation`."
+
+#: ../../library/io.rst:861
+#, fuzzy
+msgid ""
+":class:`BufferedRWPair` does not attempt to synchronize accesses to its "
+"underlying raw streams.  You should not pass it the same object as reader "
+"and writer; use :class:`BufferedRandom` instead."
+msgstr ""
+":class:`BufferedRWPair` không cố gắng đồng bộ hóa quyền truy cập vào luồng "
+"thô cơ bản của nó.  Bạn không nên truyền cho nó cùng một đối tượng như "
+"reader và writer; thay vào đó hãy sử dụng :class:`BufferedRandom`."
+
+#: ../../library/io.rst:871
+#, fuzzy
+msgid ""
+"Base class for text streams.  This class provides a character and line based"
+" interface to stream I/O.  It inherits from :class:`IOBase`."
+msgstr ""
+"Lớp cơ sở cho luồng văn bản.  Lớp này cung cấp giao diện dựa trên ký tự và "
+"dòng để truyền phát I/O.  Nó kế thừa từ :class:`IOBase`."
+
+#: ../../library/io.rst:874
+#, fuzzy
+msgid ""
+":class:`TextIOBase` provides or overrides these data attributes and methods "
+"in addition to those from :class:`IOBase`:"
+msgstr ""
+":class:`TextIOBase` cung cấp hoặc ghi đè các thuộc tính và phương thức dữ "
+"liệu này ngoài các thuộc tính và phương thức dữ liệu từ :class:`IOBase`:"
+
+#: ../../library/io.rst:879
+#, fuzzy
+msgid ""
+"The name of the encoding used to decode the stream's bytes into strings, and"
+" to encode strings into bytes."
+msgstr ""
+"Tên mã hóa được sử dụng để giải mã byte của luồng thành chuỗi và mã hóa "
+"chuỗi thành byte."
+
+#: ../../library/io.rst:884
+#, fuzzy
+msgid "The error setting of the decoder or encoder."
+msgstr "Cài đặt lỗi của bộ giải mã hoặc bộ mã hóa."
+
+#: ../../library/io.rst:888
+#, fuzzy
+msgid ""
+"A string, a tuple of strings, or ``None``, indicating the newlines "
+"translated so far.  Depending on the implementation and the initial "
+"constructor flags, this may not be available."
+msgstr ""
+"Một chuỗi, một bộ chuỗi hoặc ``None``, biểu thị các dòng mới được dịch cho "
+"đến nay.  Tùy thuộc vào việc triển khai và cờ hàm tạo ban đầu, điều này có "
+"thể không khả dụng."
+
+#: ../../library/io.rst:894
+#, fuzzy
+msgid ""
+"The underlying binary buffer (a :class:`BufferedIOBase` or "
+":class:`RawIOBase` instance) that :class:`TextIOBase` deals with. This is "
+"not part of the :class:`TextIOBase` API and may not exist in some "
+"implementations."
+msgstr ""
+"Bộ đệm nhị phân cơ bản (phiên bản :class:`BufferedIOBase` hoặc "
+":class:`RawIOBase`) mà :class:`TextIOBase` xử lý. Đây không phải là một phần"
+" của :class:`TextIOBase` API và có thể không tồn tại trong một số triển "
+"khai."
+
+#: ../../library/io.rst:901
+#, fuzzy
+msgid ""
+"Separate the underlying binary buffer from the :class:`TextIOBase` and "
+"return it."
+msgstr "Tách bộ đệm nhị phân cơ bản khỏi :class:`TextIOBase` và trả lại."
+
+#: ../../library/io.rst:904
+#, fuzzy
+msgid ""
+"After the underlying buffer has been detached, the :class:`TextIOBase` is in"
+" an unusable state."
+msgstr ""
+"Sau khi bộ đệm cơ bản được tách ra, :class:`TextIOBase` ở trạng thái không "
+"sử dụng được."
+
+#: ../../library/io.rst:907
+#, fuzzy
+msgid ""
+"Some :class:`TextIOBase` implementations, like :class:`StringIO`, may not "
+"have the concept of an underlying buffer and calling this method will raise "
+":exc:`UnsupportedOperation`."
+msgstr ""
+"Một số triển khai :class:`TextIOBase`, như :class:`StringIO`, có thể không "
+"có khái niệm về bộ đệm cơ bản và việc gọi phương thức này sẽ tăng "
+":exc:`UnsupportedOperation`."
+
+#: ../../library/io.rst:915
+#, fuzzy
+msgid ""
+"Read and return at most *size* characters from the stream as a single "
+":class:`str`.  If *size* is negative or ``None``, reads until EOF."
+msgstr ""
+"Đọc và trả về tối đa các ký tự *size* từ luồng dưới dạng một :class:`str`.  "
+"Nếu *size* âm hoặc ``None``, hãy đọc cho đến EOF."
+
+#: ../../library/io.rst:920
+#, fuzzy
+msgid ""
+"Read until newline or EOF and return a single :class:`str`.  If the stream "
+"is already at EOF, an empty string is returned."
+msgstr ""
+"Đọc cho đến dòng mới hoặc EOF và trả về một :class:`str`.  Nếu luồng đã ở "
+"EOF, một chuỗi trống sẽ được trả về."
+
+#: ../../library/io.rst:923
+#, fuzzy
+msgid "If *size* is specified, at most *size* characters will be read."
+msgstr "Nếu *size* được chỉ định, tối đa *size* ký tự sẽ được đọc."
+
+#: ../../library/io.rst:927
+#, fuzzy
+msgid ""
+"Change the stream position to the given *offset*.  Behaviour depends on the "
+"*whence* parameter.  The default value for *whence* is :data:`!SEEK_SET`."
+msgstr ""
+"Thay đổi vị trí luồng thành *offset* đã cho.  Hành vi phụ thuộc vào tham số "
+"*whence*.  Giá trị mặc định cho *whence* là :data:`!SEEK_SET`."
+
+#: ../../library/io.rst:931
+#, fuzzy
+msgid ""
+":data:`!SEEK_SET` or ``0``: seek from the start of the stream (the default);"
+" *offset* must either be a number returned by :meth:`TextIOBase.tell`, or "
+"zero.  Any other *offset* value produces undefined behaviour."
+msgstr ""
+":data:`!SEEK_SET` hoặc ``0``: tìm kiếm từ đầu luồng (mặc định); *offset* "
+"phải là số được trả về bởi :meth:`TextIOBase.tell` hoặc bằng 0.  Bất kỳ giá "
+"trị *offset* nào khác đều tạo ra hành vi không xác định."
+
+#: ../../library/io.rst:935
+#, fuzzy
+msgid ""
+":data:`!SEEK_CUR` or ``1``: \"seek\" to the current position; *offset* must "
+"be zero, which is a no-operation (all other values are unsupported)."
+msgstr ""
+":data:`!SEEK_CUR` hoặc ``1``: \"tìm kiếm\" vị trí hiện tại; *offset* phải "
+"bằng 0, tức là không hoạt động (tất cả các giá trị khác đều không được hỗ "
+"trợ)."
+
+#: ../../library/io.rst:938
+#, fuzzy
+msgid ""
+":data:`!SEEK_END` or ``2``: seek to the end of the stream; *offset* must be "
+"zero (all other values are unsupported)."
+msgstr ""
+":data:`!SEEK_END` hoặc ``2``: tìm đến cuối luồng; *offset* phải bằng 0 (tất "
+"cả các giá trị khác không được hỗ trợ)."
+
+#: ../../library/io.rst:941
+#, fuzzy
+msgid "Return the new absolute position as an opaque number."
+msgstr "Trả về vị trí tuyệt đối mới dưới dạng số mờ."
+
+#: ../../library/io.rst:948
+#, fuzzy
+msgid ""
+"Return the current stream position as an opaque number.  The number does not"
+" usually represent a number of bytes in the underlying binary storage."
+msgstr ""
+"Trả về vị trí luồng hiện tại dưới dạng số mờ.  Số này thường không đại diện "
+"cho một số byte trong bộ lưu trữ nhị phân cơ bản."
+
+#: ../../library/io.rst:954
+#, fuzzy
+msgid ""
+"Write the string *s* to the stream and return the number of characters "
+"written."
+msgstr "Viết chuỗi *s* vào luồng và trả về số ký tự đã ghi."
+
+#: ../../library/io.rst:961
+#, fuzzy
+msgid ""
+"A buffered text stream providing higher-level access to a "
+":class:`BufferedIOBase` buffered binary stream.  It inherits from "
+":class:`TextIOBase`."
+msgstr ""
+"Luồng văn bản được lưu vào bộ đệm cung cấp quyền truy cập cấp cao hơn vào "
+"luồng nhị phân được lưu vào bộ đệm :class:`BufferedIOBase`.  Nó kế thừa từ "
+":class:`TextIOBase`."
+
+#: ../../library/io.rst:965
+#, fuzzy
+msgid ""
+"*encoding* gives the name of the encoding that the stream will be decoded or"
+" encoded with.  In :ref:`UTF-8 Mode <utf8-mode>`, this defaults to UTF-8. "
+"Otherwise, it defaults to :func:`locale.getencoding`. "
+"``encoding=\"locale\"`` can be used to specify the current locale's encoding"
+" explicitly. See :ref:`io-text-encoding` for more information."
+msgstr ""
+"*encoding* cung cấp tên mã hóa mà luồng sẽ được giải mã hoặc mã hóa.  Trong "
+":ref:`UTF-8 Mode <utf8-mode>`, giá trị mặc định là UTF-8. Ngược lại, nó mặc "
+"định là :func:`locale.getencoding`. ``encoding=\"locale\"`` có thể được sử "
+"dụng để chỉ định rõ ràng mã hóa của ngôn ngữ hiện tại. Xem :ref:`io-text-"
+"encoding` để biết thêm thông tin."
+
+#: ../../library/io.rst:971
+#, python-brace-format, fuzzy
+msgid ""
+"*errors* is an optional string that specifies how encoding and decoding "
+"errors are to be handled.  Pass ``'strict'`` to raise a :exc:`ValueError` "
+"exception if there is an encoding error (the default of ``None`` has the "
+"same effect), or pass ``'ignore'`` to ignore errors.  (Note that ignoring "
+"encoding errors can lead to data loss.)  ``'replace'`` causes a replacement "
+"marker (such as ``'?'``) to be inserted where there is malformed data. "
+"``'backslashreplace'`` causes malformed data to be replaced by a backslashed"
+" escape sequence.  When writing, ``'xmlcharrefreplace'`` (replace with the "
+"appropriate XML character reference)  or ``'namereplace'`` (replace with "
+"``\\N{...}`` escape sequences) can be used.  Any other error handling name "
+"that has been registered with :func:`codecs.register_error` is also valid."
+msgstr ""
+"*errors* là một chuỗi tùy chọn chỉ định cách xử lý các lỗi mã hóa và giải "
+"mã.  Truyền ``'strict'`` để đưa ra ngoại lệ :exc:`ValueError` nếu có lỗi mã "
+"hóa (mặc định là ``None`` có tác dụng tương tự) hoặc truyền ``'ignore'`` để "
+"bỏ qua lỗi.  (Lưu ý rằng việc bỏ qua lỗi mã hóa có thể dẫn đến mất dữ liệu.)"
+" ``'replace'`` khiến một điểm đánh dấu thay thế (chẳng hạn như ``'?'``) được"
+" chèn vào nơi có dữ liệu không đúng định dạng. ``'backslashreplace'`` khiến "
+"dữ liệu không đúng định dạng được thay thế bằng chuỗi thoát bị gạch chéo "
+"ngược.  Khi viết, có thể sử dụng ``'xmlcharrefreplace'`` (thay thế bằng tham"
+" chiếu ký tự XML thích hợp) hoặc ``'namereplace'`` (thay thế bằng chuỗi "
+"thoát ``\\N{...}``).  Bất kỳ tên xử lý lỗi nào khác đã được đăng ký với "
+":func:`codecs.register_error` cũng hợp lệ."
+
+#: ../../library/io.rst:987
+#, fuzzy
+msgid ""
+"*newline* controls how line endings are handled.  It can be ``None``, "
+"``''``, ``'\\n'``, ``'\\r'``, and ``'\\r\\n'``.  It works as follows:"
+msgstr ""
+"*newline* kiểm soát cách xử lý kết thúc dòng.  Nó có thể là ``None``, "
+"``''``, ``'\\n'``, ``'\\r'`` và ``'\\r\\n'``.  Nó hoạt động như sau:"
+
+#: ../../library/io.rst:990
+#, fuzzy
+msgid ""
+"When reading input from the stream, if *newline* is ``None``, "
+":term:`universal newlines` mode is enabled.  Lines in the input can end in "
+"``'\\n'``, ``'\\r'``, or ``'\\r\\n'``, and these are translated into "
+"``'\\n'`` before being returned to the caller.  If *newline* is ``''``, "
+"universal newlines mode is enabled, but line endings are returned to the "
+"caller untranslated.  If *newline* has any of the other legal values, input "
+"lines are only terminated by the given string, and the line ending is "
+"returned to the caller untranslated."
+msgstr ""
+"Khi đọc đầu vào từ luồng, nếu *newline* là ``None`` thì chế độ "
+":term:`universal newlines` được bật.  Các dòng trong đầu vào có thể kết thúc"
+" bằng ``'\\n'``, ``'\\r'`` hoặc ``'\\r\\n'`` và những dòng này được dịch "
+"sang ``'\\n'`` trước khi được trả lại cho người gọi.  Nếu *newline* là "
+"``''``, chế độ dòng mới phổ quát được bật nhưng phần cuối dòng được trả về "
+"cho người gọi chưa được dịch.  Nếu *newline* có bất kỳ giá trị hợp pháp nào "
+"khác, các dòng đầu vào chỉ được kết thúc bởi chuỗi đã cho và kết thúc dòng "
+"được trả về cho người gọi chưa được dịch."
+
+#: ../../library/io.rst:999
+#, fuzzy
+msgid ""
+"When writing output to the stream, if *newline* is ``None``, any ``'\\n'`` "
+"characters written are translated to the system default line separator, "
+":data:`os.linesep`.  If *newline* is ``''`` or ``'\\n'``, no translation "
+"takes place.  If *newline* is any of the other legal values, any ``'\\n'`` "
+"characters written are translated to the given string."
+msgstr ""
+"Khi ghi đầu ra vào luồng, nếu *newline* là ``None`` thì mọi ký tự ``'\\n'`` "
+"được ghi sẽ được dịch sang dấu phân tách dòng mặc định của hệ thống, "
+":data:`os.linesep`.  Nếu *newline* là ``''`` hoặc ``'\\n'`` thì không có quá"
+" trình dịch thuật nào diễn ra.  Nếu *newline* là bất kỳ giá trị pháp lý nào "
+"khác thì mọi ký tự ``'\\n'`` được viết sẽ được dịch sang chuỗi đã cho."
+
+#: ../../library/io.rst:1005
+#, fuzzy
+msgid ""
+"If *line_buffering* is ``True``, :meth:`~IOBase.flush` is implied when a "
+"call to write contains a newline character or a carriage return."
+msgstr ""
+"Nếu *line_buffering* là ``True``, thì :meth:`~IOBase.flush` được ngụ ý khi "
+"lệnh gọi viết chứa ký tự dòng mới hoặc dấu xuống dòng."
+
+#: ../../library/io.rst:1008
+#, fuzzy
+msgid ""
+"If *write_through* is ``True``, calls to :meth:`~BufferedIOBase.write` are "
+"guaranteed not to be buffered: any data written on the "
+":class:`TextIOWrapper` object is immediately handled to its underlying "
+"binary *buffer*."
+msgstr ""
+"Nếu *write_through* là ``True``, các lệnh gọi đến "
+":meth:`~BufferedIOBase.write` được đảm bảo không bị lưu vào bộ đệm: mọi dữ "
+"liệu được ghi trên đối tượng :class:`TextIOWrapper` sẽ được xử lý ngay lập "
+"tức tới *buffer* nhị phân cơ bản của nó."
+
+#: ../../library/io.rst:1012
+#, fuzzy
+msgid "The *write_through* argument has been added."
+msgstr "Đối số *write_through* đã được thêm vào."
+
+#: ../../library/io.rst:1015
+#, fuzzy
+msgid ""
+"The default *encoding* is now ``locale.getpreferredencoding(False)`` instead"
+" of ``locale.getpreferredencoding()``. Don't change temporary the locale "
+"encoding using :func:`locale.setlocale`, use the current locale encoding "
+"instead of the user preferred encoding."
+msgstr ""
+"Zz003zz mặc định bây giờ là ``locale.getpreferredencoding(False)`` thay vì "
+"``locale.getpreferredencoding()``. Không thay đổi tạm thời mã hóa ngôn ngữ "
+"bằng :func:`locale.setlocale`, hãy sử dụng mã hóa ngôn ngữ hiện tại thay vì "
+"mã hóa ưa thích của người dùng."
+
+#: ../../library/io.rst:1021
+#, fuzzy
+msgid ""
+"The *encoding* argument now supports the ``\"locale\"`` dummy encoding name."
+msgstr "Đối số *encoding* hiện hỗ trợ tên mã hóa giả ``\"locale\"``."
+
+#: ../../library/io.rst:1026
+#, fuzzy
+msgid ""
+"When the underlying raw stream is non-blocking, a :exc:`BlockingIOError` may"
+" be raised if a read operation cannot be completed immediately."
+msgstr ""
+"Khi luồng thô cơ bản không bị chặn, :exc:`BlockingIOError` có thể được tăng "
+"lên nếu thao tác đọc không thể hoàn thành ngay lập tức."
+
+#: ../../library/io.rst:1029
+#, fuzzy
+msgid ""
+":class:`TextIOWrapper` provides these data attributes and methods in "
+"addition to those from :class:`TextIOBase` and :class:`IOBase`:"
+msgstr ""
+":class:`TextIOWrapper` cung cấp các thuộc tính và phương thức dữ liệu này "
+"ngoài các thuộc tính và phương thức dữ liệu từ :class:`TextIOBase` và "
+":class:`IOBase`:"
+
+#: ../../library/io.rst:1034
+#, fuzzy
+msgid "Whether line buffering is enabled."
+msgstr "Liệu tính năng đệm dòng có được bật hay không."
+
+#: ../../library/io.rst:1038
+#, fuzzy
+msgid "Whether writes are passed immediately to the underlying binary buffer."
+msgstr "Việc ghi có được chuyển ngay vào bộ đệm nhị phân cơ bản hay không."
+
+#: ../../library/io.rst:1046
+#, fuzzy
+msgid ""
+"Reconfigure this text stream using new settings for *encoding*, *errors*, "
+"*newline*, *line_buffering* and *write_through*."
+msgstr ""
+"Định cấu hình lại luồng văn bản này bằng cách sử dụng cài đặt mới cho "
+"*encoding*, *errors*, *newline*, *line_buffering* và *write_through*."
+
+#: ../../library/io.rst:1049
+#, fuzzy
+msgid ""
+"Parameters not specified keep current settings, except ``errors='strict'`` "
+"is used when *encoding* is specified but *errors* is not specified."
+msgstr ""
+"Các tham số không được chỉ định sẽ giữ nguyên cài đặt hiện tại, ngoại trừ "
+"``errors='strict'`` được sử dụng khi *encoding* được chỉ định nhưng *errors*"
+" không được chỉ định."
+
+#: ../../library/io.rst:1053
+#, fuzzy
+msgid ""
+"It is not possible to change the encoding or newline if some data has "
+"already been read from the stream. On the other hand, changing encoding "
+"after write is possible."
+msgstr ""
+"Không thể thay đổi mã hóa hoặc dòng mới nếu một số dữ liệu đã được đọc từ "
+"luồng. Mặt khác, có thể thay đổi mã hóa sau khi ghi."
+
+#: ../../library/io.rst:1057
+#, fuzzy
+msgid ""
+"This method does an implicit stream flush before setting the new parameters."
+msgstr ""
+"Phương pháp này thực hiện xóa luồng ngầm trước khi thiết lập các tham số "
+"mới."
+
+#: ../../library/io.rst:1062
+#, fuzzy
+msgid "The method supports ``encoding=\"locale\"`` option."
+msgstr "Phương pháp này hỗ trợ tùy chọn ``encoding=\"locale\"``."
+
+#: ../../library/io.rst:1067
+#, fuzzy
+msgid ""
+"Set the stream position. Return the new stream position as an :class:`int`."
+msgstr "Đặt vị trí luồng. Trả lại vị trí luồng mới dưới dạng :class:`int`."
+
+#: ../../library/io.rst:1070
+#, fuzzy
+msgid ""
+"Four operations are supported, given by the following argument combinations:"
+msgstr "Bốn thao tác được hỗ trợ, được đưa ra bởi các kết hợp đối số sau:"
+
+#: ../../library/io.rst:1073
+#, fuzzy
+msgid "``seek(0, SEEK_SET)``: Rewind to the start of the stream."
+msgstr "``seek(0, SEEK_SET)``: Tua lại về đầu luồng."
+
+#: ../../library/io.rst:1074
+#, fuzzy
+msgid ""
+"``seek(cookie, SEEK_SET)``: Restore a previous position; *cookie* **must "
+"be** a number returned by :meth:`tell`."
+msgstr ""
+"``seek(cookie, SEEK_SET)``: Khôi phục vị trí trước đó; *cookie* **must be** "
+"một số được trả về bởi :meth:`tell`."
+
+#: ../../library/io.rst:1076
+#, fuzzy
+msgid "``seek(0, SEEK_END)``: Fast-forward to the end of the stream."
+msgstr "``seek(0, SEEK_END)``: Tua nhanh đến cuối luồng."
+
+#: ../../library/io.rst:1077
+#, fuzzy
+msgid "``seek(0, SEEK_CUR)``: Leave the current stream position unchanged."
+msgstr "``seek(0, SEEK_CUR)``: Giữ nguyên vị trí luồng hiện tại."
+
+#: ../../library/io.rst:1079
+#, fuzzy
+msgid "Any other argument combinations are invalid, and may raise exceptions."
+msgstr ""
+"Bất kỳ kết hợp đối số nào khác đều không hợp lệ và có thể đưa ra ngoại lệ."
+
+#: ../../library/io.rst:1084
+#, fuzzy
+msgid ":data:`os.SEEK_SET`, :data:`os.SEEK_CUR`, and :data:`os.SEEK_END`."
+msgstr ":data:`os.SEEK_SET`, :data:`os.SEEK_CUR` và :data:`os.SEEK_END`."
+
+#: ../../library/io.rst:1088
+#, fuzzy
+msgid ""
+"Return the stream position as an opaque number. The return value of "
+":meth:`!tell` can be given as input to :meth:`seek`, to restore a previous "
+"stream position."
+msgstr ""
+"Trả về vị trí luồng dưới dạng số mờ. Giá trị trả về của :meth:`!tell` có thể"
+" được cung cấp làm đầu vào cho :meth:`seek` để khôi phục vị trí luồng trước "
+"đó."
+
+#: ../../library/io.rst:1095
+#, fuzzy
+msgid ""
+"A text stream using an in-memory text buffer.  It inherits from "
+":class:`TextIOBase`."
+msgstr ""
+"Luồng văn bản sử dụng bộ đệm văn bản trong bộ nhớ.  Nó kế thừa từ "
+":class:`TextIOBase`."
+
+#: ../../library/io.rst:1098
+#, fuzzy
+msgid ""
+"The text buffer is discarded when the :meth:`~IOBase.close` method is "
+"called."
+msgstr ""
+"Bộ đệm văn bản bị loại bỏ khi phương thức :meth:`~IOBase.close` được gọi."
+
+#: ../../library/io.rst:1101
+#, fuzzy
+msgid ""
+"The initial value of the buffer can be set by providing *initial_value*. If "
+"newline translation is enabled, newlines will be encoded as if by "
+":meth:`~TextIOBase.write`.  The stream is positioned at the start of the "
+"buffer which emulates opening an existing file in a ``w+`` mode, making it "
+"ready for an immediate write from the beginning or for a write that would "
+"overwrite the initial value.  To emulate opening a file in an ``a+`` mode "
+"ready for appending, use ``f.seek(0, io.SEEK_END)`` to reposition the stream"
+" at the end of the buffer."
+msgstr ""
+"Giá trị ban đầu của bộ đệm có thể được đặt bằng cách cung cấp "
+"*initial_value*. Nếu dịch dòng mới được bật, dòng mới sẽ được mã hóa như thể"
+" bởi :meth:`~TextIOBase.write`.  Luồng được định vị ở đầu bộ đệm mô phỏng "
+"việc mở một tệp hiện có ở chế độ ``w+``, giúp nó sẵn sàng ghi ngay từ đầu "
+"hoặc ghi đè lên giá trị ban đầu.  Để mô phỏng việc mở tệp ở chế độ ``a+`` "
+"sẵn sàng để thêm vào, hãy sử dụng ``f.seek(0, io.SEEK_END)`` để định vị lại "
+"luồng ở cuối bộ đệm."
+
+#: ../../library/io.rst:1110
+#, fuzzy
+msgid ""
+"The *newline* argument works like that of :class:`TextIOWrapper`, except "
+"that when writing output to the stream, if *newline* is ``None``, newlines "
+"are written as ``\\n`` on all platforms."
+msgstr ""
+"Đối số *newline* hoạt động giống như đối số :class:`TextIOWrapper`, ngoại "
+"trừ việc khi ghi đầu ra vào luồng, nếu *newline* là ``None`` thì dòng mới "
+"được viết là ``\\n`` trên tất cả các nền tảng."
+
+#: ../../library/io.rst:1114
+#, fuzzy
+msgid ""
+":class:`StringIO` provides this method in addition to those from "
+":class:`TextIOBase` and :class:`IOBase`:"
+msgstr ""
+":class:`StringIO` cung cấp phương thức này ngoài các phương thức từ "
+":class:`TextIOBase` và :class:`IOBase`:"
+
+#: ../../library/io.rst:1119
+#, fuzzy
+msgid ""
+"Return a :class:`str` containing the entire contents of the buffer. Newlines"
+" are decoded as if by :meth:`~TextIOBase.read`, although the stream position"
+" is not changed."
+msgstr ""
+"Trả về :class:`str` chứa toàn bộ nội dung của bộ đệm. Các dòng mới được giải"
+" mã như thể bằng :meth:`~TextIOBase.read`, mặc dù vị trí luồng không thay "
+"đổi."
+
+#: ../../library/io.rst:1123
+#, fuzzy
+msgid "Example usage::"
+msgstr "Ví dụ sử dụng::"
+
+#: ../../library/io.rst:1125
+#, fuzzy
+msgid ""
+"import io\n"
+"\n"
+"output = io.StringIO()\n"
+"output.write('First line.\\n')\n"
+"print('Second line.', file=output)\n"
+"\n"
+"# Retrieve file contents -- this will be\n"
+"# 'First line.\\nSecond line.\\n'\n"
+"contents = output.getvalue()\n"
+"\n"
+"# Close object and discard memory buffer --\n"
+"# .getvalue() will now raise an exception.\n"
+"output.close()"
+msgstr ""
+"nhập khẩu io\n"
+"\n"
+"đầu ra = io.StringIO()\n"
+"out.write('Dòng đầu tiên.\\n')\n"
+"print('Dòng thứ hai.', file=output)\n"
+"\n"
+"nội dung tập tin # Retrieve -- đây sẽ là\n"
+"# 'Dòng đầu tiên.\\nDòng thứ hai.\\n'\n"
+"nội dung = đầu ra.getvalue()\n"
+"\n"
+"đối tượng # Close và loại bỏ bộ nhớ đệm --\n"
+"# .getvalue() bây giờ sẽ đưa ra một ngoại lệ.\n"
+"đầu ra.close()"
+
+#: ../../library/io.rst:1145
+#, fuzzy
+msgid ""
+"A helper codec that decodes newlines for :term:`universal newlines` mode. It"
+" inherits from :class:`codecs.IncrementalDecoder`."
+msgstr ""
+"Một codec trợ giúp giải mã dòng mới cho chế độ :term:`universal newlines`. "
+"Nó kế thừa từ :class:`codecs.IncrementalDecoder`."
+
+#: ../../library/io.rst:1150
+#, fuzzy
+msgid "Static Typing"
+msgstr "Gõ tĩnh"
+
+#: ../../library/io.rst:1152
+#, fuzzy
+msgid ""
+"The following protocols can be used for annotating function and method "
+"arguments for simple stream reading or writing operations. They are "
+"decorated with :deco:`typing.runtime_checkable`."
+msgstr ""
+"Các giao thức sau đây có thể được sử dụng để chú thích các đối số hàm và "
+"phương thức cho các hoạt động đọc hoặc ghi luồng đơn giản. Chúng được trang "
+"trí bằng :deco:`typing.runtime_checkable`."
+
+#: ../../library/io.rst:1158
+#, fuzzy
+msgid ""
+"Generic protocol for reading from a file or other input stream. ``T`` will "
+"usually be :class:`str` or :class:`bytes`, but can be any type that is read "
+"from the stream."
+msgstr ""
+"Giao thức chung để đọc từ một tệp hoặc luồng đầu vào khác. ``T`` thường sẽ "
+"là :class:`str` hoặc :class:`bytes`, nhưng có thể là bất kỳ loại nào được "
+"đọc từ luồng."
+
+#: ../../library/io.rst:1167
+#, fuzzy
+msgid ""
+"Read data from the input stream and return it. If *size* is specified, it "
+"should be an integer, and at most *size* items (bytes/characters) will be "
+"read."
+msgstr ""
+"Đọc dữ liệu từ luồng đầu vào và trả về. Nếu *size* được chỉ định thì nó phải"
+" là số nguyên và tối đa các mục *size* (byte/ký tự) sẽ được đọc."
+
+#: ../../library/io.rst:1171 ../../library/io.rst:1190
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../library/io.rst:1173
+#, fuzzy
+msgid ""
+"def read_it(reader: Reader[str]):\n"
+"    data = reader.read(11)\n"
+"    assert isinstance(data, str)"
+msgstr ""
+"def read_it(reader: Reader[str]):\n"
+"    dữ liệu = reader.read(11)\n"
+"    khẳng định isinstance(data, str)"
+
+#: ../../library/io.rst:1179
+#, fuzzy
+msgid ""
+"Generic protocol for writing to a file or other output stream. ``T`` will "
+"usually be :class:`str` or :class:`bytes`, but can be any type that can be "
+"written to the stream."
+msgstr ""
+"Giao thức chung để ghi vào một tập tin hoặc luồng đầu ra khác. ``T`` thường "
+"sẽ là :class:`str` hoặc :class:`bytes`, nhưng có thể là bất kỳ loại nào có "
+"thể được ghi vào luồng."
+
+#: ../../library/io.rst:1187
+#, fuzzy
+msgid ""
+"Write *data* to the output stream and return the number of items "
+"(bytes/characters) written."
+msgstr "Ghi *data* vào luồng đầu ra và trả về số mục (byte/ký tự) đã ghi."
+
+#: ../../library/io.rst:1192
+#, fuzzy
+msgid ""
+"def write_binary(writer: Writer[bytes]):\n"
+"    writer.write(b\"Hello world!\\n\")"
+msgstr ""
+"def write_binary(writer: Writer[byte]):\n"
+"    writer.write(b\"Xin chào thế giới!\\n\")"
+
+#: ../../library/io.rst:1195
+#, fuzzy
+msgid ""
+"See :ref:`typing-io` for other I/O related protocols and classes that can be"
+" used for static type checking."
+msgstr ""
+"Xem :ref:`typing-io` để biết các lớp và giao thức liên quan đến I/O khác có "
+"thể được sử dụng để kiểm tra kiểu tĩnh."
+
+#: ../../library/io.rst:1199
+#, fuzzy
+msgid "Performance"
+msgstr "Hiệu suất"
+
+#: ../../library/io.rst:1201
+#, fuzzy
+msgid ""
+"This section discusses the performance of the provided concrete I/O "
+"implementations."
+msgstr ""
+"Phần này thảo luận về hiệu suất của các triển khai I/O cụ thể được cung cấp."
+
+#: ../../library/io.rst:1207
+#, fuzzy
+msgid ""
+"By reading and writing only large chunks of data even when the user asks for"
+" a single byte, buffered I/O hides any inefficiency in calling and executing"
+" the operating system's unbuffered I/O routines.  The gain depends on the OS"
+" and the kind of I/O which is performed.  For example, on some modern OSes "
+"such as Linux, unbuffered disk I/O can be as fast as buffered I/O.  The "
+"bottom line, however, is that buffered I/O offers predictable performance "
+"regardless of the platform and the backing device.  Therefore, it is almost "
+"always preferable to use buffered I/O rather than unbuffered I/O for binary "
+"data."
+msgstr ""
+"Bằng cách chỉ đọc và ghi những khối dữ liệu lớn ngay cả khi người dùng yêu "
+"cầu một byte đơn, I/O có đệm sẽ che giấu mọi sự kém hiệu quả trong việc gọi "
+"và thực thi các quy trình I/O không có bộ đệm của hệ điều hành.  Mức tăng "
+"phụ thuộc vào hệ điều hành và loại I/O được thực hiện.  Ví dụ: trên một số "
+"hệ điều hành hiện đại như Linux, I/O đĩa không có bộ đệm có thể nhanh như "
+"I/O có bộ đệm.  Tuy nhiên, điểm mấu chốt là I/O được đệm mang lại hiệu suất "
+"có thể dự đoán được bất kể nền tảng và thiết bị hỗ trợ.  Do đó, hầu như luôn"
+" luôn ưu tiên sử dụng I/O có bộ đệm hơn là I/O không có bộ đệm cho dữ liệu "
+"nhị phân."
+
+#: ../../library/io.rst:1219
+#, fuzzy
+msgid ""
+"Text I/O over a binary storage (such as a file) is significantly slower than"
+" binary I/O over the same storage, because it requires conversions between "
+"unicode and binary data using a character codec.  This can become noticeable"
+" handling huge amounts of text data like large log files.  Also, "
+":meth:`~TextIOBase.tell` and :meth:`~TextIOBase.seek` are both quite slow "
+"due to the reconstruction algorithm used."
+msgstr ""
+"I/O văn bản qua bộ lưu trữ nhị phân (chẳng hạn như tệp) chậm hơn đáng kể so "
+"với I/O nhị phân trên cùng một bộ lưu trữ, vì nó yêu cầu chuyển đổi giữa dữ "
+"liệu unicode và nhị phân bằng cách sử dụng codec ký tự.  Điều này có thể trở"
+" nên đáng chú ý khi xử lý lượng lớn dữ liệu văn bản như các tệp nhật ký lớn."
+"  Ngoài ra, :meth:`~TextIOBase.tell` và :meth:`~TextIOBase.seek` đều khá "
+"chậm do sử dụng thuật toán tái tạo."
+
+#: ../../library/io.rst:1226
+#, fuzzy
+msgid ""
+":class:`StringIO`, however, is a native in-memory unicode container and will"
+" exhibit similar speed to :class:`BytesIO`."
+msgstr ""
+"Tuy nhiên, :class:`StringIO` là vùng chứa unicode trong bộ nhớ gốc và sẽ có "
+"tốc độ tương tự như :class:`BytesIO`."
+
+#: ../../library/io.rst:1230
+#, fuzzy
+msgid "Multi-threading"
+msgstr "Đa luồng"
+
+#: ../../library/io.rst:1232
+#, fuzzy
+msgid ""
+":class:`FileIO` objects are thread-safe to the extent that the operating "
+"system calls (such as :manpage:`read(2)` under Unix) they wrap are thread-"
+"safe too."
+msgstr ""
+"Các đối tượng :class:`FileIO` an toàn theo luồng trong phạm vi hệ điều hành "
+"gọi (chẳng hạn như :manpage:`read(2)` trong Unix) mà chúng bao bọc cũng an "
+"toàn theo luồng."
+
+#: ../../library/io.rst:1235
+#, fuzzy
+msgid ""
+"Binary buffered objects (instances of :class:`BufferedReader`, "
+":class:`BufferedWriter`, :class:`BufferedRandom` and "
+":class:`BufferedRWPair`) protect their internal structures using a lock; it "
+"is therefore safe to call them from multiple threads at once."
+msgstr ""
+"Các đối tượng được đệm nhị phân (các phiên bản của :class:`BufferedReader`, "
+":class:`BufferedWriter`, :class:`BufferedRandom` và :class:`BufferedRWPair`)"
+" bảo vệ cấu trúc bên trong của chúng bằng cách sử dụng khóa; do đó việc gọi "
+"chúng từ nhiều luồng cùng một lúc là an toàn."
+
+#: ../../library/io.rst:1240
+#, fuzzy
+msgid ":class:`TextIOWrapper` objects are not thread-safe."
+msgstr "Các đối tượng :class:`TextIOWrapper` không an toàn cho luồng."
+
+#: ../../library/io.rst:1243
+#, fuzzy
+msgid "Reentrancy"
+msgstr "Tái nhập"
+
+#: ../../library/io.rst:1245
+#, fuzzy
+msgid ""
+"Binary buffered objects (instances of :class:`BufferedReader`, "
+":class:`BufferedWriter`, :class:`BufferedRandom` and "
+":class:`BufferedRWPair`) are not reentrant.  While reentrant calls will not "
+"happen in normal situations, they can arise from doing I/O in a "
+":mod:`signal` handler.  If a thread tries to re-enter a buffered object "
+"which it is already accessing, a :exc:`RuntimeError` is raised.  Note this "
+"doesn't prohibit a different thread from entering the buffered object."
+msgstr ""
+"Các đối tượng được đệm nhị phân (các phiên bản của :class:`BufferedReader`, "
+":class:`BufferedWriter`, :class:`BufferedRandom` và :class:`BufferedRWPair`)"
+" không được cấp lại.  Mặc dù các lệnh gọi lại sẽ không xảy ra trong các tình"
+" huống thông thường nhưng chúng có thể phát sinh từ việc thực hiện I/O trong"
+" trình xử lý :mod:`signal`.  Nếu một luồng cố gắng nhập lại một đối tượng "
+"được lưu vào bộ đệm mà nó đang truy cập, thì :exc:`RuntimeError` sẽ xuất "
+"hiện.  Lưu ý rằng điều này không cấm một luồng khác xâm nhập vào đối tượng "
+"được đệm."
+
+#: ../../library/io.rst:1253
+#, fuzzy
+msgid ""
+"The above implicitly extends to text files, since the :func:`open` function "
+"will wrap a buffered object inside a :class:`TextIOWrapper`.  This includes "
+"standard streams and therefore affects the built-in :func:`print` function "
+"as well."
+msgstr ""
+"Phần trên ngầm mở rộng sang các tệp văn bản, vì hàm :func:`open` sẽ bọc một "
+"đối tượng được lưu vào bộ đệm bên trong :class:`TextIOWrapper`.  Điều này "
+"bao gồm các luồng tiêu chuẩn và do đó cũng ảnh hưởng đến chức năng "
+":func:`print` tích hợp."
+
+#: ../../library/io.rst:24
+#, fuzzy
+msgid "file object"
+msgstr "đối tượng tập tin"
+
+#: ../../library/io.rst:24
+#, fuzzy
+msgid "io module"
+msgstr "mô-đun io"
+
+#: ../../library/io.rst:984 ../../library/io.rst:1140
+#, fuzzy
+msgid "universal newlines"
+msgstr "dòng mới phổ quát"
+
+#: ../../library/io.rst:984
+#, fuzzy
+msgid "io.TextIOWrapper class"
+msgstr "lớp io.TextIOWrapper"
+
+#: ../../library/io.rst:1140
+#, fuzzy
+msgid "io.IncrementalNewlineDecoder class"
+msgstr "lớp io.IncrementalNewlineDecoding"

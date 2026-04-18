@@ -1,0 +1,973 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/sorting.rst:4
+#, fuzzy
+msgid "Sorting Techniques"
+msgstr "Kỹ thuật sắp xếp"
+
+#: ../../howto/sorting.rst
+#, fuzzy
+msgid "Author"
+msgstr "tác giả"
+
+#: ../../howto/sorting.rst:6
+#, fuzzy
+msgid "Andrew Dalke and Raymond Hettinger"
+msgstr "Andrew Dalke và Raymond Hettinger"
+
+#: ../../howto/sorting.rst:9
+#, fuzzy
+msgid ""
+"Python lists have a built-in :meth:`list.sort` method that modifies the list"
+" in-place.  There is also a :func:`sorted` built-in function that builds a "
+"new sorted list from an iterable."
+msgstr ""
+"Danh sách Python có phương thức :meth:`list.sort` tích hợp sẵn để sửa đổi "
+"danh sách tại chỗ.  Ngoài ra còn có một hàm tích hợp :func:`sorted` để xây "
+"dựng một danh sách được sắp xếp mới từ một lần lặp."
+
+#: ../../howto/sorting.rst:13
+#, fuzzy
+msgid ""
+"In this document, we explore the various techniques for sorting data using "
+"Python."
+msgstr ""
+"Trong tài liệu này, chúng ta khám phá các kỹ thuật khác nhau để sắp xếp dữ "
+"liệu bằng Python."
+
+#: ../../howto/sorting.rst:17
+#, fuzzy
+msgid "Sorting Basics"
+msgstr "Sắp xếp cơ bản"
+
+#: ../../howto/sorting.rst:19
+#, fuzzy
+msgid ""
+"A simple ascending sort is very easy: just call the :func:`sorted` function."
+" It returns a new sorted list:"
+msgstr ""
+"Việc sắp xếp tăng dần đơn giản rất dễ dàng: chỉ cần gọi hàm :func:`sorted`. "
+"Nó trả về một danh sách được sắp xếp mới:"
+
+#: ../../howto/sorting.rst:22
+#, fuzzy
+msgid ""
+">>> sorted([5, 2, 3, 1, 4])\n"
+"[1, 2, 3, 4, 5]"
+msgstr ""
+">>> được sắp xếp([5, 2, 3, 1, 4])\n"
+"[1, 2, 3, 4, 5]"
+
+#: ../../howto/sorting.rst:27
+#, fuzzy
+msgid ""
+"You can also use the :meth:`list.sort` method. It modifies the list in-place"
+" (and returns ``None`` to avoid confusion). Usually it's less convenient "
+"than :func:`sorted` - but if you don't need the original list, it's slightly"
+" more efficient."
+msgstr ""
+"Bạn cũng có thể sử dụng phương pháp :meth:`list.sort`. Nó sửa đổi danh sách "
+"tại chỗ (và trả về ``None`` để tránh nhầm lẫn). Thông thường, nó kém tiện "
+"lợi hơn :func:`sorted` - nhưng nếu bạn không cần danh sách gốc thì nó hiệu "
+"quả hơn một chút."
+
+#: ../../howto/sorting.rst:32
+#, fuzzy
+msgid ""
+">>> a = [5, 2, 3, 1, 4]\n"
+">>> a.sort()\n"
+">>> a\n"
+"[1, 2, 3, 4, 5]"
+msgstr ""
+">>> a = [5, 2, 3, 1, 4]\n"
+">>> a.sort()\n"
+">>> một\n"
+"[1, 2, 3, 4, 5]"
+
+#: ../../howto/sorting.rst:39
+#, fuzzy
+msgid ""
+"Another difference is that the :meth:`list.sort` method is only defined for "
+"lists. In contrast, the :func:`sorted` function accepts any iterable."
+msgstr ""
+"Một điểm khác biệt nữa là phương thức :meth:`list.sort` chỉ được xác định "
+"cho danh sách. Ngược lại, hàm :func:`sorted` chấp nhận bất kỳ lần lặp nào."
+
+#: ../../howto/sorting.rst:42
+#, python-brace-format, fuzzy
+msgid ""
+">>> sorted({1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'})\n"
+"[1, 2, 3, 4, 5]"
+msgstr ""
+">>> được sắp xếp({1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'})\n"
+"[1, 2, 3, 4, 5]"
+
+#: ../../howto/sorting.rst:48
+#, fuzzy
+msgid "Key Functions"
+msgstr "Chức năng chính"
+
+#: ../../howto/sorting.rst:50
+#, fuzzy
+msgid ""
+"The :meth:`list.sort` method and the functions :func:`sorted`, :func:`min`, "
+":func:`max`, :func:`heapq.nsmallest`, and :func:`heapq.nlargest` have a "
+"*key* parameter to specify a function (or other callable) to be called on "
+"each list element prior to making comparisons."
+msgstr ""
+"Phương thức :meth:`list.sort` và các hàm :func:`sorted`, :func:`min`, "
+":func:`max`, :func:`heapq.nsmallest` và :func:`heapq.nlargest` có tham số "
+"*key* để chỉ định một hàm (hoặc có thể gọi khác) được gọi trên mỗi thành "
+"phần danh sách trước khi thực hiện so sánh."
+
+#: ../../howto/sorting.rst:56
+#, fuzzy
+msgid ""
+"For example, here's a case-insensitive string comparison using "
+":meth:`str.casefold`:"
+msgstr ""
+"Ví dụ: đây là so sánh chuỗi không phân biệt chữ hoa chữ thường bằng "
+":meth:`str.casefold`:"
+
+#: ../../howto/sorting.rst:59
+#, fuzzy
+msgid ""
+">>> sorted(\"This is a test string from Andrew\".split(), key=str.casefold)\n"
+"['a', 'Andrew', 'from', 'is', 'string', 'test', 'This']"
+msgstr ""
+">>> được sắp xếp(\"Đây là chuỗi thử nghiệm từ Andrew\".split(), key=str.casefold)\n"
+"['a', 'Andrew', 'từ', 'là', 'chuỗi', 'kiểm tra', 'Cái này']"
+
+#: ../../howto/sorting.rst:64
+#, fuzzy
+msgid ""
+"The value of the *key* parameter should be a function (or other callable) "
+"that takes a single argument and returns a key to use for sorting purposes. "
+"This technique is fast because the key function is called exactly once for "
+"each input record."
+msgstr ""
+"Giá trị của tham số *key* phải là một hàm (hoặc có thể gọi khác) nhận một "
+"đối số duy nhất và trả về một khóa để sử dụng cho mục đích sắp xếp. Kỹ thuật"
+" này nhanh vì hàm khóa được gọi chính xác một lần cho mỗi bản ghi đầu vào."
+
+#: ../../howto/sorting.rst:69
+#, fuzzy
+msgid ""
+"A common pattern is to sort complex objects using some of the object's "
+"indices as keys. For example:"
+msgstr ""
+"Một mẫu phổ biến là sắp xếp các đối tượng phức tạp bằng cách sử dụng một số "
+"chỉ mục của đối tượng làm khóa. Ví dụ:"
+
+#: ../../howto/sorting.rst:72
+#, fuzzy
+msgid ""
+">>> student_tuples = [\n"
+"...     ('john', 'A', 15),\n"
+"...     ('jane', 'B', 12),\n"
+"...     ('dave', 'B', 10),\n"
+"... ]\n"
+">>> sorted(student_tuples, key=lambda student: student[2])   # sort by age\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+msgstr ""
+">>> sinh viên_tuples = [\n"
+"... ('john', 'A', 15),\n"
+"... ('jane', 'B', 12),\n"
+"... ('dave', 'B', 10),\n"
+"...]\n"
+">>> sắp xếp(student_tuples, key=lambda sinh viên: sinh viên[2]) # sort theo độ tuổi\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+
+#: ../../howto/sorting.rst:82
+#, fuzzy
+msgid ""
+"The same technique works for objects with named attributes. For example:"
+msgstr ""
+"Kỹ thuật tương tự áp dụng cho các đối tượng có thuộc tính được đặt tên. Ví "
+"dụ:"
+
+#: ../../howto/sorting.rst:84
+#, fuzzy
+msgid ""
+">>> class Student:\n"
+"...     def __init__(self, name, grade, age):\n"
+"...         self.name = name\n"
+"...         self.grade = grade\n"
+"...         self.age = age\n"
+"...     def __repr__(self):\n"
+"...         return repr((self.name, self.grade, self.age))\n"
+"\n"
+">>> student_objects = [\n"
+"...     Student('john', 'A', 15),\n"
+"...     Student('jane', 'B', 12),\n"
+"...     Student('dave', 'B', 10),\n"
+"... ]\n"
+">>> sorted(student_objects, key=lambda student: student.age)   # sort by age\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+msgstr ""
+">>> Sinh viên lớp:\n"
+"... def __init__(bản thân, tên, lớp, tuổi):\n"
+"... self.name = tên\n"
+"... self.grade = điểm\n"
+"... self.age = tuổi\n"
+"... def __repr__(self):\n"
+"... return Repr((self.name, self.grade, self.age))\n"
+"\n"
+">>> sinh viên_objects = [\n"
+"... Sinh viên('john', 'A', 15),\n"
+"... Sinh viên('jane', 'B', 12),\n"
+"... Sinh viên('dave', 'B', 10),\n"
+"...]\n"
+">>> sắp xếp(student_objects, key=lambda sinh viên: sinh viên.age) # sort theo độ tuổi\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+
+#: ../../howto/sorting.rst:102
+#, fuzzy
+msgid ""
+"Objects with named attributes can be made by a regular class as shown above,"
+" or they can be instances of :class:`~dataclasses.dataclass` or a "
+":term:`named tuple`."
+msgstr ""
+"Các đối tượng có thuộc tính được đặt tên có thể được tạo bởi một lớp thông "
+"thường như được hiển thị ở trên hoặc chúng có thể là phiên bản của "
+":class:`~dataclasses.dataclass` hoặc :term:`named tuple`."
+
+#: ../../howto/sorting.rst:107
+#, fuzzy
+msgid "Operator Module Functions and Partial Function Evaluation"
+msgstr "Chức năng mô-đun toán tử và đánh giá chức năng một phần"
+
+#: ../../howto/sorting.rst:109
+#, fuzzy
+msgid ""
+"The :term:`key function` patterns shown above are very common, so Python "
+"provides convenience functions to make accessor functions easier and faster."
+" The :mod:`operator` module has :func:`~operator.itemgetter`, "
+":func:`~operator.attrgetter`, and a :func:`~operator.methodcaller` function."
+msgstr ""
+"Các mẫu :term:`key function` được hiển thị ở trên rất phổ biến, vì vậy "
+"Python cung cấp các hàm tiện lợi để làm cho các hàm truy cập trở nên dễ dàng"
+" và nhanh hơn. Mô-đun :mod:`operator` có chức năng "
+":func:`~operator.itemgetter`, :func:`~operator.attrgetter` và "
+":func:`~operator.methodcaller`."
+
+#: ../../howto/sorting.rst:114
+#, fuzzy
+msgid "Using those functions, the above examples become simpler and faster:"
+msgstr "Sử dụng các hàm đó, các ví dụ trên trở nên đơn giản và nhanh hơn:"
+
+#: ../../howto/sorting.rst:116
+#, fuzzy
+msgid ""
+">>> from operator import itemgetter, attrgetter\n"
+"\n"
+">>> sorted(student_tuples, key=itemgetter(2))\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]\n"
+"\n"
+">>> sorted(student_objects, key=attrgetter('age'))\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+msgstr ""
+">>> từ toán tử nhập itemgetter, attrgetter\n"
+"\n"
+">>> đã sắp xếp(student_tuples, key=itemgetter(2))\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]\n"
+"\n"
+">>> được sắp xếp(student_objects, key=attrgetter('age'))\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+
+#: ../../howto/sorting.rst:126
+#, fuzzy
+msgid ""
+"The operator module functions allow multiple levels of sorting. For example,"
+" to sort by *grade* then by *age*:"
+msgstr ""
+"Các chức năng của mô-đun vận hành cho phép nhiều cấp độ sắp xếp. Ví dụ: để "
+"sắp xếp theo *grade* rồi theo *age*:"
+
+#: ../../howto/sorting.rst:129
+#, fuzzy
+msgid ""
+">>> sorted(student_tuples, key=itemgetter(1,2))\n"
+"[('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]\n"
+"\n"
+">>> sorted(student_objects, key=attrgetter('grade', 'age'))\n"
+"[('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]"
+msgstr ""
+">>> đã sắp xếp(student_tuples, key=itemgetter(1,2))\n"
+"[('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]\n"
+"\n"
+">>> được sắp xếp(student_objects, key=attrgetter('grade', 'age'))\n"
+"[('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]"
+
+#: ../../howto/sorting.rst:137
+#, fuzzy
+msgid ""
+"The :mod:`functools` module provides another helpful tool for making key-"
+"functions.  The :func:`~functools.partial` function can reduce the `arity "
+"<https://en.wikipedia.org/wiki/Arity>`_ of a multi-argument function making "
+"it suitable for use as a key-function."
+msgstr ""
+"Mô-đun :mod:`functools` cung cấp một công cụ hữu ích khác để tạo các chức "
+"năng chính.  Hàm :func:`~functools.partial` có thể giảm `arity "
+"<https://en.wikipedia.org/wiki/Arity>`_ của hàm nhiều đối số, khiến nó phù "
+"hợp để sử dụng làm hàm khóa."
+
+#: ../../howto/sorting.rst:142
+#, fuzzy
+msgid ""
+">>> from functools import partial\n"
+">>> from unicodedata import normalize\n"
+"\n"
+">>> names = 'Zoë Åbjørn Núñez Élana Zeke Abe Nubia Eloise'.split()\n"
+"\n"
+">>> sorted(names, key=partial(normalize, 'NFD'))\n"
+"['Abe', 'Åbjørn', 'Eloise', 'Élana', 'Nubia', 'Núñez', 'Zeke', 'Zoë']\n"
+"\n"
+">>> sorted(names, key=partial(normalize, 'NFC'))\n"
+"['Abe', 'Eloise', 'Nubia', 'Núñez', 'Zeke', 'Zoë', 'Åbjørn', 'Élana']"
+msgstr ""
+">>> từ functools nhập một phần\n"
+">>> từ nhập unicodedata bình thường hóa\n"
+"\n"
+">>> tên = 'Zoë Åbjørn Núñez Élana Zeke Abe Nubia Eloise'.split()\n"
+"\n"
+">>> được sắp xếp(tên, key=một phần(chuẩn hóa, 'NFD'))\n"
+"['Abe', 'Åbjørn', 'Eloise', 'Élana', 'Nubia', 'Núñez', 'Zeke', 'Zoë']\n"
+"\n"
+">>> được sắp xếp(tên, key=partial(chuẩn hóa, 'NFC'))\n"
+"['Abe', 'Eloise', 'Nubia', 'Núñez', 'Zeke', 'Zoë', 'Åbjørn', 'Élana']"
+
+#: ../../howto/sorting.rst:156
+#, fuzzy
+msgid "Ascending and Descending"
+msgstr "Tăng dần và giảm dần"
+
+#: ../../howto/sorting.rst:158
+#, fuzzy
+msgid ""
+"Both :meth:`list.sort` and :func:`sorted` accept a *reverse* parameter with "
+"a boolean value. This is used to flag descending sorts. For example, to get "
+"the student data in reverse *age* order:"
+msgstr ""
+"Cả :meth:`list.sort` và :func:`sorted` đều chấp nhận tham số *reverse* có "
+"giá trị boolean. Điều này được sử dụng để gắn cờ các loại giảm dần. Ví dụ: "
+"để lấy dữ liệu học sinh theo thứ tự *age* ngược:"
+
+#: ../../howto/sorting.rst:162
+#, fuzzy
+msgid ""
+">>> sorted(student_tuples, key=itemgetter(2), reverse=True)\n"
+"[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]\n"
+"\n"
+">>> sorted(student_objects, key=attrgetter('age'), reverse=True)\n"
+"[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]"
+msgstr ""
+">>> được sắp xếp(student_tuples, key=itemgetter(2), Reverse=True)\n"
+"[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]\n"
+"\n"
+">>> được sắp xếp(student_objects, key=attrgetter('age'), Reverse=True)\n"
+"[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]"
+
+#: ../../howto/sorting.rst:171
+#, fuzzy
+msgid "Sort Stability and Complex Sorts"
+msgstr "Sắp xếp ổn định và sắp xếp phức tạp"
+
+#: ../../howto/sorting.rst:173
+#, fuzzy
+msgid ""
+"Sorts are guaranteed to be `stable "
+"<https://en.wikipedia.org/wiki/Sorting_algorithm#Stability>`_\\. That means "
+"that when multiple records have the same key, their original order is "
+"preserved."
+msgstr ""
+"Các loại được đảm bảo là `stable "
+"<https://en.wikipedia.org/wiki/Sorting_algorithm#Stability>`_\\. Điều đó có "
+"nghĩa là khi nhiều bản ghi có cùng khóa, thứ tự ban đầu của chúng được giữ "
+"nguyên."
+
+#: ../../howto/sorting.rst:177
+#, fuzzy
+msgid ""
+">>> data = [('red', 1), ('blue', 1), ('red', 2), ('blue', 2)]\n"
+">>> sorted(data, key=itemgetter(0))\n"
+"[('blue', 1), ('blue', 2), ('red', 1), ('red', 2)]"
+msgstr ""
+">>> data = [('red', 1), ('blue', 1), ('red', 2), ('blue', 2)]\n"
+">>> đã sắp xếp(dữ liệu, key=itemgetter(0))\n"
+"[('xanh', 1), ('xanh', 2), ('đỏ', 1), ('đỏ', 2)]"
+
+#: ../../howto/sorting.rst:183
+#, fuzzy
+msgid ""
+"Notice how the two records for *blue* retain their original order so that "
+"``('blue', 1)`` is guaranteed to precede ``('blue', 2)``."
+msgstr ""
+"Lưu ý cách hai bản ghi cho *blue* giữ nguyên thứ tự ban đầu của chúng để "
+"``('blue', 1)`` được đảm bảo đứng trước ``('blue', 2)``."
+
+#: ../../howto/sorting.rst:186
+#, fuzzy
+msgid ""
+"This wonderful property lets you build complex sorts in a series of sorting "
+"steps. For example, to sort the student data by descending *grade* and then "
+"ascending *age*, do the *age* sort first and then sort again using *grade*:"
+msgstr ""
+"Thuộc tính tuyệt vời này cho phép bạn xây dựng các kiểu sắp xếp phức tạp "
+"theo một loạt các bước sắp xếp. Ví dụ: để sắp xếp dữ liệu học sinh theo "
+"*grade* giảm dần rồi tăng dần *age*, hãy thực hiện sắp xếp *age* trước rồi "
+"sắp xếp lại bằng *grade*:"
+
+#: ../../howto/sorting.rst:190
+#, fuzzy
+msgid ""
+">>> s = sorted(student_objects, key=attrgetter('age'))     # sort on secondary key\n"
+">>> sorted(s, key=attrgetter('grade'), reverse=True)       # now sort on primary key, descending\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+msgstr ""
+">>> s = được sắp xếp(student_objects, key=attrgetter('age')) # sort trên khóa phụ\n"
+">>> được sắp xếp (s, key=attrgetter('grade'), Reverse=True) # now sắp xếp theo khóa chính, giảm dần\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+
+#: ../../howto/sorting.rst:196
+#, fuzzy
+msgid ""
+"This can be abstracted out into a wrapper function that can take a list and "
+"tuples of field and order to sort them on multiple passes."
+msgstr ""
+"Điều này có thể được trừu tượng hóa thành một hàm bao bọc có thể lấy danh "
+"sách và các bộ dữ liệu của trường rồi sắp xếp chúng theo nhiều lần."
+
+#: ../../howto/sorting.rst:199
+#, fuzzy
+msgid ""
+">>> def multisort(xs, specs):\n"
+"...     for key, reverse in reversed(specs):\n"
+"...         xs.sort(key=attrgetter(key), reverse=reverse)\n"
+"...     return xs\n"
+"\n"
+">>> multisort(list(student_objects), (('grade', True), ('age', False)))\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+msgstr ""
+">>> def multisort(xs, thông số kỹ thuật):\n"
+"... đối với khóa, đảo ngược trong đảo ngược(thông số kỹ thuật):\n"
+"... xs.sort(key=attrgetter(key), đảo ngược=đảo ngược)\n"
+"... trả lại xs\n"
+"\n"
+">>> multisort(list(student_objects), (('lớp', Đúng), ('tuổi', Sai)))\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+
+#: ../../howto/sorting.rst:209
+#, fuzzy
+msgid ""
+"The `Timsort <https://en.wikipedia.org/wiki/Timsort>`_ algorithm used in "
+"Python does multiple sorts efficiently because it can take advantage of any "
+"ordering already present in a dataset."
+msgstr ""
+"Thuật toán `Timsort <https://en.wikipedia.org/wiki/Timsort>`_ được sử dụng "
+"trong Python thực hiện nhiều loại hiệu quả vì nó có thể tận dụng mọi thứ tự "
+"đã có trong tập dữ liệu."
+
+#: ../../howto/sorting.rst:214
+#, fuzzy
+msgid "Decorate-Sort-Undecorate"
+msgstr "Trang trí-Sắp xếp-Không trang trí"
+
+#: ../../howto/sorting.rst:216
+#, fuzzy
+msgid "This idiom is called Decorate-Sort-Undecorate after its three steps:"
+msgstr ""
+"Thành ngữ này được gọi là Trang trí-Sắp xếp-Không trang trí sau ba bước:"
+
+#: ../../howto/sorting.rst:218
+#, fuzzy
+msgid ""
+"First, the initial list is decorated with new values that control the sort "
+"order."
+msgstr ""
+"Đầu tiên, danh sách ban đầu được trang trí bằng các giá trị mới kiểm soát "
+"thứ tự sắp xếp."
+
+#: ../../howto/sorting.rst:220
+#, fuzzy
+msgid "Second, the decorated list is sorted."
+msgstr "Thứ hai, danh sách trang trí được sắp xếp."
+
+#: ../../howto/sorting.rst:222
+#, fuzzy
+msgid ""
+"Finally, the decorations are removed, creating a list that contains only the"
+" initial values in the new order."
+msgstr ""
+"Cuối cùng, phần trang trí được loại bỏ, tạo ra một danh sách chỉ chứa các "
+"giá trị ban đầu theo thứ tự mới."
+
+#: ../../howto/sorting.rst:225
+#, fuzzy
+msgid ""
+"For example, to sort the student data by *grade* using the DSU approach:"
+msgstr "Ví dụ: để sắp xếp dữ liệu học sinh theo *grade* bằng phương pháp DSU:"
+
+#: ../../howto/sorting.rst:227
+#, fuzzy
+msgid ""
+">>> decorated = [(student.grade, i, student) for i, student in enumerate(student_objects)]\n"
+">>> decorated.sort()\n"
+">>> [student for grade, i, student in decorated]               # undecorate\n"
+"[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]"
+msgstr ""
+">>> trang trí = [(student.grade, i, sinh viên) cho i, sinh viên trong enumerate(student_objects)]\n"
+">>> trang trí.sort()\n"
+">>> [học sinh lớp, i, học sinh trang trí] # undecorate\n"
+"[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]"
+
+#: ../../howto/sorting.rst:234
+#, fuzzy
+msgid ""
+"This idiom works because tuples are compared lexicographically; the first "
+"items are compared; if they are the same then the second items are compared,"
+" and so on."
+msgstr ""
+"Thành ngữ này có tác dụng vì các bộ dữ liệu được so sánh theo từ điển; các "
+"mục đầu tiên được so sánh; nếu chúng giống nhau thì các mục thứ hai sẽ được "
+"so sánh, v.v."
+
+#: ../../howto/sorting.rst:238
+#, fuzzy
+msgid ""
+"It is not strictly necessary in all cases to include the index *i* in the "
+"decorated list, but including it gives two benefits:"
+msgstr ""
+"Trong mọi trường hợp, không nhất thiết phải đưa chỉ mục *i* vào danh sách "
+"được trang trí, nhưng việc đưa chỉ mục này mang lại hai lợi ích:"
+
+#: ../../howto/sorting.rst:241
+#, fuzzy
+msgid ""
+"The sort is stable -- if two items have the same key, their order will be "
+"preserved in the sorted list."
+msgstr ""
+"Việc sắp xếp ổn định -- nếu hai mục có cùng khóa, thứ tự của chúng sẽ được "
+"giữ nguyên trong danh sách đã sắp xếp."
+
+#: ../../howto/sorting.rst:244
+#, fuzzy
+msgid ""
+"The original items do not have to be comparable because the ordering of the "
+"decorated tuples will be determined by at most the first two items. So for "
+"example the original list could contain complex numbers which cannot be "
+"sorted directly."
+msgstr ""
+"Các mục ban đầu không cần phải so sánh được vì thứ tự của các bộ dữ liệu "
+"được trang trí sẽ được xác định nhiều nhất bởi hai mục đầu tiên. Vì vậy, ví "
+"dụ: danh sách ban đầu có thể chứa các số phức không thể sắp xếp trực tiếp."
+
+#: ../../howto/sorting.rst:249
+#, fuzzy
+msgid ""
+"Another name for this idiom is `Schwartzian transform "
+"<https://en.wikipedia.org/wiki/Schwartzian_transform>`_\\, after Randal L. "
+"Schwartz, who popularized it among Perl programmers."
+msgstr ""
+"Một tên khác cho thành ngữ này là `Schwartzian transform "
+"<https://en.wikipedia.org/wiki/Schwartzian_transform>`_\\, theo tên Randal "
+"L. Schwartz, người đã phổ biến nó trong giới lập trình viên Perl."
+
+#: ../../howto/sorting.rst:253
+#, fuzzy
+msgid ""
+"Now that Python sorting provides key-functions, this technique is not often "
+"needed."
+msgstr ""
+"Giờ đây, việc sắp xếp Python đã cung cấp các hàm chính nên kỹ thuật này "
+"thường không cần thiết."
+
+#: ../../howto/sorting.rst:256
+#, fuzzy
+msgid "Comparison Functions"
+msgstr "Hàm so sánh"
+
+#: ../../howto/sorting.rst:258
+#, fuzzy
+msgid ""
+"Unlike key functions that return an absolute value for sorting, a comparison"
+" function computes the relative ordering for two inputs."
+msgstr ""
+"Không giống như các hàm chính trả về giá trị tuyệt đối để sắp xếp, hàm so "
+"sánh tính toán thứ tự tương đối cho hai đầu vào."
+
+#: ../../howto/sorting.rst:261
+#, fuzzy
+msgid ""
+"For example, a `balance scale "
+"<https://upload.wikimedia.org/wikipedia/commons/1/17/Balance_à_tabac_1850.JPG>`_"
+" compares two samples giving a relative ordering: lighter, equal, or "
+"heavier. Likewise, a comparison function such as ``cmp(a, b)`` will return a"
+" negative value for less-than, zero if the inputs are equal, or a positive "
+"value for greater-than."
+msgstr ""
+"Ví dụ: `balance scale "
+"<https://upload.wikimedia.org/wikipedia/commons/1/17/Balance_à_tabac_1850.JPG>`_"
+" so sánh hai mẫu và đưa ra thứ tự tương đối: nhẹ hơn, bằng hoặc nặng hơn. "
+"Tương tự, hàm so sánh như ``cmp(a, b)`` sẽ trả về giá trị âm cho giá trị nhỏ"
+" hơn, bằng 0 nếu đầu vào bằng nhau hoặc giá trị dương cho giá trị lớn hơn."
+
+#: ../../howto/sorting.rst:268
+#, fuzzy
+msgid ""
+"It is common to encounter comparison functions when translating algorithms "
+"from other languages.  Also, some libraries provide comparison functions as "
+"part of their API.  For example, :func:`locale.strcoll` is a comparison "
+"function."
+msgstr ""
+"Người ta thường gặp phải các hàm so sánh khi dịch thuật toán từ các ngôn ngữ"
+" khác.  Ngoài ra, một số thư viện còn cung cấp chức năng so sánh như một "
+"phần của API.  Ví dụ: :func:`locale.strcoll` là một hàm so sánh."
+
+#: ../../howto/sorting.rst:272
+#, fuzzy
+msgid ""
+"To accommodate those situations, Python provides "
+":class:`functools.cmp_to_key` to wrap the comparison function to make it "
+"usable as a key function::"
+msgstr ""
+"Để phù hợp với những tình huống đó, Python cung cấp "
+":class:`functools.cmp_to_key` để bọc hàm so sánh để làm cho nó có thể sử "
+"dụng được như một hàm chính ::"
+
+#: ../../howto/sorting.rst:276
+#, fuzzy
+msgid "sorted(words, key=cmp_to_key(strcoll))  # locale-aware sort order"
+msgstr ""
+"được sắp xếp(từ, key=cmp_to_key(strcoll)) thứ tự sắp xếp # locale-aware"
+
+#: ../../howto/sorting.rst:279
+#, fuzzy
+msgid "Strategies For Unorderable Types and Values"
+msgstr "Chiến lược cho các loại và giá trị không thể sắp xếp"
+
+#: ../../howto/sorting.rst:281
+#, fuzzy
+msgid ""
+"A number of type and value issues can arise when sorting. Here are some "
+"strategies that can help:"
+msgstr ""
+"Một số vấn đề về loại và giá trị có thể phát sinh khi sắp xếp. Dưới đây là "
+"một số chiến lược có thể giúp ích:"
+
+#: ../../howto/sorting.rst:284
+#, fuzzy
+msgid "Convert non-comparable input types to strings prior to sorting:"
+msgstr ""
+"Chuyển đổi các loại đầu vào không thể so sánh thành chuỗi trước khi sắp xếp:"
+
+#: ../../howto/sorting.rst:286
+#, fuzzy
+msgid ""
+">>> data = ['twelve', '11', 10]\n"
+">>> sorted(map(str, data))\n"
+"['10', '11', 'twelve']"
+msgstr ""
+">>> dữ liệu = ['mười hai', '11', 10]\n"
+">>> đã sắp xếp(map(str, data))\n"
+"['10', '11', 'mười hai']"
+
+#: ../../howto/sorting.rst:292
+#, fuzzy
+msgid ""
+"This is needed because most cross-type comparisons raise a :exc:`TypeError`."
+msgstr ""
+"Điều này là cần thiết vì hầu hết các so sánh giữa các loại đều đưa ra "
+":exc:`TypeError`."
+
+#: ../../howto/sorting.rst:295
+#, fuzzy
+msgid "Remove special values prior to sorting:"
+msgstr "Xóa các giá trị đặc biệt trước khi sắp xếp:"
+
+#: ../../howto/sorting.rst:297
+#, fuzzy
+msgid ""
+">>> from math import isnan\n"
+">>> from itertools import filterfalse\n"
+">>> data = [3.3, float('nan'), 1.1, 2.2]\n"
+">>> sorted(filterfalse(isnan, data))\n"
+"[1.1, 2.2, 3.3]"
+msgstr ""
+">>> từ nhập toán isnan\n"
+">>> từ itertools nhập filterfalse\n"
+">>> data = [3.3, float('nan'), 1.1, 2.2]\n"
+">>> đã sắp xếp(filterfalse(isnan, data))\n"
+"[1.1, 2.2, 3.3]"
+
+#: ../../howto/sorting.rst:305
+#, fuzzy
+msgid ""
+"This is needed because the `IEEE-754 standard "
+"<https://en.wikipedia.org/wiki/IEEE_754>`_ specifies that, \"Every NaN shall"
+" compare unordered with everything, including itself.\""
+msgstr ""
+"Điều này là cần thiết vì `IEEE-754 standard "
+"<https://en.wikipedia.org/wiki/IEEE_754>`_ chỉ định rằng \"Mọi NaN sẽ so "
+"sánh không có thứ tự với mọi thứ, kể cả chính nó.\""
+
+#: ../../howto/sorting.rst:309
+#, fuzzy
+msgid "Likewise, ``None`` can be stripped from datasets as well:"
+msgstr "Tương tự, ``None`` cũng có thể bị xóa khỏi bộ dữ liệu:"
+
+#: ../../howto/sorting.rst:311
+#, fuzzy
+msgid ""
+">>> data = [3.3, None, 1.1, 2.2]\n"
+">>> sorted(x for x in data if x is not None)\n"
+"[1.1, 2.2, 3.3]"
+msgstr ""
+">>> dữ liệu = [3.3, Không, 1.1, 2.2]\n"
+">>> được sắp xếp(x cho x trong dữ liệu nếu x không phải là Không)\n"
+"[1.1, 2.2, 3.3]"
+
+#: ../../howto/sorting.rst:317
+#, fuzzy
+msgid "This is needed because ``None`` is not comparable to other types."
+msgstr ""
+"Điều này là cần thiết vì ``None`` không thể so sánh được với các loại khác."
+
+#: ../../howto/sorting.rst:319
+#, fuzzy
+msgid "Convert mapping types into sorted item lists before sorting:"
+msgstr ""
+"Chuyển đổi các loại ánh xạ thành danh sách mục được sắp xếp trước khi sắp "
+"xếp:"
+
+#: ../../howto/sorting.rst:321
+#, python-brace-format, fuzzy
+msgid ""
+">>> data = [{'a': 1}, {'b': 2}]\n"
+">>> sorted(data, key=lambda d: sorted(d.items()))\n"
+"[{'a': 1}, {'b': 2}]"
+msgstr ""
+">>> dữ liệu = [{'a': 1}, {'b': 2}]\n"
+">>> được sắp xếp(dữ liệu, key=lambda d: được sắp xếp(d.items()))\n"
+"[{'a': 1}, {'b': 2}]"
+
+#: ../../howto/sorting.rst:327
+#, fuzzy
+msgid ""
+"This is needed because dict-to-dict comparisons raise a :exc:`TypeError`."
+msgstr ""
+"Điều này là cần thiết vì so sánh dict-to-dict sẽ tăng :exc:`TypeError`."
+
+#: ../../howto/sorting.rst:330
+#, fuzzy
+msgid "Convert set types into sorted lists before sorting:"
+msgstr ""
+"Chuyển đổi các loại tập hợp thành danh sách được sắp xếp trước khi sắp xếp:"
+
+#: ../../howto/sorting.rst:332
+#, python-brace-format, fuzzy
+msgid ""
+">>> data = [{'a', 'b', 'c'}, {'b', 'c', 'd'}]\n"
+">>> sorted(map(sorted, data))\n"
+"[['a', 'b', 'c'], ['b', 'c', 'd']]"
+msgstr ""
+">>> data = [{'a', 'b', 'c'}, {'b', 'c', 'd'}]\n"
+">>> đã sắp xếp(bản đồ(đã sắp xếp, dữ liệu))\n"
+"[['a', 'b', 'c'], ['b', 'c', 'd']]"
+
+#: ../../howto/sorting.rst:338
+#, python-brace-format, fuzzy
+msgid ""
+"This is needed because the elements contained in set types do not have a "
+"deterministic order.  For example, ``list({'a', 'b'})`` may produce either "
+"``['a', 'b']`` or ``['b', 'a']``."
+msgstr ""
+"Điều này là cần thiết vì các phần tử chứa trong các kiểu tập hợp không có "
+"thứ tự xác định.  Ví dụ: ``list({'a', 'b'})`` có thể tạo ra ``['a', 'b']`` "
+"hoặc ``['b', 'a']``."
+
+#: ../../howto/sorting.rst:343
+#, fuzzy
+msgid "Odds and Ends"
+msgstr "Tỷ lệ cược và kết thúc"
+
+#: ../../howto/sorting.rst:345
+#, fuzzy
+msgid ""
+"For locale aware sorting, use :func:`locale.strxfrm` for a key function or "
+":func:`locale.strcoll` for a comparison function.  This is necessary because"
+" \"alphabetical\" sort orderings can vary across cultures even if the "
+"underlying alphabet is the same."
+msgstr ""
+"Để sắp xếp nhận biết ngôn ngữ, hãy sử dụng :func:`locale.strxfrm` cho hàm "
+"chính hoặc :func:`locale.strcoll` cho hàm so sánh.  Điều này là cần thiết vì"
+" thứ tự sắp xếp \"theo bảng chữ cái\" có thể khác nhau giữa các nền văn hóa "
+"ngay cả khi bảng chữ cái cơ bản giống nhau."
+
+#: ../../howto/sorting.rst:350
+#, fuzzy
+msgid ""
+"The *reverse* parameter still maintains sort stability (so that records with"
+" equal keys retain the original order). Interestingly, that effect can be "
+"simulated without the parameter by using the builtin :func:`reversed` "
+"function twice:"
+msgstr ""
+"Tham số *reverse* vẫn duy trì độ ổn định sắp xếp (để các bản ghi có khóa "
+"bằng nhau vẫn giữ nguyên thứ tự ban đầu). Điều thú vị là hiệu ứng đó có thể "
+"được mô phỏng mà không cần tham số bằng cách sử dụng hàm :func:`reversed` "
+"dựng sẵn hai lần:"
+
+#: ../../howto/sorting.rst:355
+#, fuzzy
+msgid ""
+">>> data = [('red', 1), ('blue', 1), ('red', 2), ('blue', 2)]\n"
+">>> standard_way = sorted(data, key=itemgetter(0), reverse=True)\n"
+">>> double_reversed = list(reversed(sorted(reversed(data), key=itemgetter(0))))\n"
+">>> assert standard_way == double_reversed\n"
+">>> standard_way\n"
+"[('red', 1), ('red', 2), ('blue', 1), ('blue', 2)]"
+msgstr ""
+">>> data = [('red', 1), ('blue', 1), ('red', 2), ('blue', 2)]\n"
+">>> tiêu chuẩn_way = đã sắp xếp(dữ liệu, key=itemgetter(0), đảo ngược=True)\n"
+">>> double_reversed = list(reversed(sorted(reversed(data), key=itemgetter(0))))\n"
+">>> khẳng định tiêu chuẩn_way == double_reversed\n"
+">>> đường tiêu chuẩn\n"
+"[('đỏ', 1), ('đỏ', 2), ('xanh', 1), ('xanh', 2)]"
+
+#: ../../howto/sorting.rst:364
+#, fuzzy
+msgid ""
+"The sort routines use ``<`` when making comparisons between two objects. So,"
+" it is easy to add a standard sort order to a class by defining an "
+":meth:`~object.__lt__` method:"
+msgstr ""
+"Các thủ tục sắp xếp sử dụng ``<`` khi thực hiện so sánh giữa hai đối tượng. "
+"Vì vậy, thật dễ dàng để thêm thứ tự sắp xếp tiêu chuẩn vào một lớp bằng cách"
+" xác định phương thức :meth:`~object.__lt__`:"
+
+#: ../../howto/sorting.rst:368
+#, fuzzy
+msgid ""
+">>> Student.__lt__ = lambda self, other: self.age < other.age\n"
+">>> sorted(student_objects)\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+msgstr ""
+">>> Sinh viên.__lt__ = lambda self, other: self.age < other.age\n"
+">>> đã sắp xếp(student_objects)\n"
+"[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]"
+
+#: ../../howto/sorting.rst:374
+#, fuzzy
+msgid ""
+"However, note that ``<`` can fall back to using :meth:`~object.__gt__` if "
+":meth:`~object.__lt__` is not implemented (see :func:`object.__lt__` for "
+"details on the mechanics).  To avoid surprises, :pep:`8` recommends that all"
+" six comparison methods be implemented. The "
+":func:`~functools.total_ordering` decorator is provided to make that task "
+"easier."
+msgstr ""
+"Tuy nhiên, lưu ý rằng ``<`` có thể quay lại sử dụng :meth:`~object.__gt__` "
+"nếu :meth:`~object.__lt__` không được triển khai (xem :func:`object.__lt__` "
+"để biết chi tiết về cơ chế).  Để tránh những điều bất ngờ, :pep:`8` khuyến "
+"nghị nên thực hiện tất cả sáu phương pháp so sánh. Trình trang trí "
+":func:`~functools.total_ordering` được cung cấp để thực hiện công việc đó dễ"
+" dàng hơn."
+
+#: ../../howto/sorting.rst:381
+#, fuzzy
+msgid ""
+"Key functions need not depend directly on the objects being sorted. A key "
+"function can also access external resources. For instance, if the student "
+"grades are stored in a dictionary, they can be used to sort a separate list "
+"of student names:"
+msgstr ""
+"Các chức năng chính không cần phụ thuộc trực tiếp vào các đối tượng được sắp"
+" xếp. Một chức năng chính cũng có thể truy cập các tài nguyên bên ngoài. Ví "
+"dụ: nếu điểm của học sinh được lưu trữ trong từ điển, chúng có thể được sử "
+"dụng để sắp xếp một danh sách tên học sinh riêng biệt:"
+
+#: ../../howto/sorting.rst:386
+#, python-brace-format, fuzzy
+msgid ""
+">>> students = ['dave', 'john', 'jane']\n"
+">>> newgrades = {'john': 'F', 'jane':'A', 'dave': 'C'}\n"
+">>> sorted(students, key=newgrades.__getitem__)\n"
+"['jane', 'dave', 'john']"
+msgstr ""
+">>> sinh viên = ['dave', 'john', 'jane']\n"
+">>> newgrades = {'john': 'F', 'jane':'A', 'dave': 'C'}\n"
+">>> đã sắp xếp(sinh viên, key=newgrades.__getitem__)\n"
+"['jane', 'dave', 'john']"
+
+#: ../../howto/sorting.rst:394
+#, fuzzy
+msgid "Partial Sorts"
+msgstr "Sắp xếp một phần"
+
+#: ../../howto/sorting.rst:396
+#, fuzzy
+msgid ""
+"Some applications require only some of the data to be ordered.  The standard"
+" library provides several tools that do less work than a full sort:"
+msgstr ""
+"Một số ứng dụng chỉ yêu cầu một số dữ liệu được sắp xếp.  Thư viện tiêu "
+"chuẩn cung cấp một số công cụ thực hiện ít công việc hơn so với một loại đầy"
+" đủ:"
+
+#: ../../howto/sorting.rst:399
+#, fuzzy
+msgid ""
+":func:`min` and :func:`max` return the smallest and largest values, "
+"respectively.  These functions make a single pass over the input data and "
+"require almost no auxiliary memory."
+msgstr ""
+":func:`min` và :func:`max` lần lượt trả về giá trị nhỏ nhất và lớn nhất.  "
+"Các hàm này thực hiện một lần chuyển qua dữ liệu đầu vào và hầu như không "
+"cần bộ nhớ phụ."
+
+#: ../../howto/sorting.rst:403
+#, fuzzy
+msgid ""
+":func:`heapq.nsmallest` and :func:`heapq.nlargest` return the *n* smallest "
+"and largest values, respectively.  These functions make a single pass over "
+"the data keeping only *n* elements in memory at a time.  For values of *n* "
+"that are small relative to the number of inputs, these functions make far "
+"fewer comparisons than a full sort."
+msgstr ""
+":func:`heapq.nsmallest` và :func:`heapq.nlargest` lần lượt trả về giá trị "
+"nhỏ nhất và lớn nhất của *n*.  Các hàm này thực hiện một lần chuyển dữ liệu "
+"chỉ giữ các phần tử *n* trong bộ nhớ tại một thời điểm.  Đối với các giá trị"
+" của *n* nhỏ so với số lượng đầu vào, các hàm này thực hiện so sánh ít hơn "
+"nhiều so với sắp xếp đầy đủ."
+
+#: ../../howto/sorting.rst:409
+#, fuzzy
+msgid ""
+":func:`heapq.heappush` and :func:`heapq.heappop` create and maintain a "
+"partially sorted arrangement of data that keeps the smallest element at "
+"position ``0``.  These functions are suitable for implementing priority "
+"queues which are commonly used for task scheduling."
+msgstr ""
+":func:`heapq.heappush` và :func:`heapq.heappop` tạo và duy trì sự sắp xếp dữ"
+" liệu được sắp xếp một phần để giữ phần tử nhỏ nhất ở vị trí ``0``.  Các "
+"chức năng này phù hợp để triển khai các hàng đợi ưu tiên thường được sử dụng"
+" để lập lịch tác vụ."

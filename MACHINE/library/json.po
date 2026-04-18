@@ -1,0 +1,1697 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/json.rst:2
+#, fuzzy
+msgid ":mod:`!json` --- JSON encoder and decoder"
+msgstr ":mod:`!json` --- bộ mã hóa và giải mã JSON"
+
+#: ../../library/json.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/json/__init__.py`"
+msgstr "**Source code:** :source:`Lib/json/__init__.py`"
+
+#: ../../library/json.rst:14
+#, fuzzy
+msgid ""
+"`JSON (JavaScript Object Notation) <https://json.org>`_, specified by "
+":rfc:`7159` (which obsoletes :rfc:`4627`) and by `ECMA-404 <https://ecma-"
+"international.org/publications-and-standards/standards/ecma-404/>`_, is a "
+"lightweight data interchange format inspired by `JavaScript "
+"<https://en.wikipedia.org/wiki/JavaScript>`_ object literal syntax (although"
+" it is not a strict subset of JavaScript [#rfc-errata]_ )."
+msgstr ""
+"`JSON (JavaScript Object Notation) <https://json.org>`_, được chỉ định bởi "
+":rfc:`7159` (đã lỗi thời :rfc:`4627`) và bởi `ECMA-404 <https://ecma-"
+"international.org/publications-and-standards/standards/ecma-404/>`_, là một "
+"định dạng trao đổi dữ liệu nhẹ lấy cảm hứng từ cú pháp chữ của đối tượng "
+"`JavaScript <https://en.wikipedia.org/wiki/JavaScript>`_ (mặc dù nó không "
+"phải là một tập hợp con nghiêm ngặt của JavaScript [#rfc-errata]_ )."
+
+#: ../../library/json.rst:22
+#, fuzzy
+msgid ""
+"The term \"object\" in the context of JSON processing in Python can be "
+"ambiguous. All values in Python are objects. In JSON, an object refers to "
+"any data wrapped in curly braces, similar to a Python dictionary."
+msgstr ""
+"Thuật ngữ \"đối tượng\" trong ngữ cảnh xử lý JSON trong Python có thể không "
+"rõ ràng. Tất cả các giá trị trong Python đều là đối tượng. Trong JSON, một "
+"đối tượng đề cập đến bất kỳ dữ liệu nào được gói trong dấu ngoặc nhọn, tương"
+" tự như từ điển Python."
+
+#: ../../library/json.rst:27
+#, fuzzy
+msgid ""
+"Be cautious when parsing JSON data from untrusted sources. A malicious JSON "
+"string may cause the decoder to consume considerable CPU and memory "
+"resources. Limiting the size of data to be parsed is recommended."
+msgstr ""
+"Hãy thận trọng khi phân tích dữ liệu JSON từ các nguồn không đáng tin cậy. "
+"Chuỗi JSON độc hại có thể khiến bộ giải mã tiêu tốn đáng kể tài nguyên bộ "
+"nhớ và CPU. Nên giới hạn kích thước của dữ liệu được phân tích cú pháp."
+
+#: ../../library/json.rst:31
+#, fuzzy
+msgid ""
+"This module exposes an API familiar to users of the standard library "
+":mod:`marshal` and :mod:`pickle` modules."
+msgstr ""
+"Mô-đun này hiển thị một API quen thuộc với người dùng mô-đun thư viện "
+":mod:`marshal` và :mod:`pickle` tiêu chuẩn."
+
+#: ../../library/json.rst:34
+#, fuzzy
+msgid "Encoding basic Python object hierarchies::"
+msgstr "Mã hóa phân cấp đối tượng Python cơ bản::"
+
+#: ../../library/json.rst:36
+#, python-brace-format, fuzzy
+msgid ""
+">>> import json\n"
+">>> json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])\n"
+"'[\"foo\", {\"bar\": [\"baz\", null, 1.0, 2]}]'\n"
+">>> print(json.dumps(\"\\\"foo\\bar\"))\n"
+"\"\\\"foo\\bar\"\n"
+">>> print(json.dumps('\\u1234'))\n"
+"\"\\u1234\"\n"
+">>> print(json.dumps('\\\\'))\n"
+"\"\\\\\"\n"
+">>> print(json.dumps({\"c\": 0, \"b\": 0, \"a\": 0}, sort_keys=True))\n"
+"{\"a\": 0, \"b\": 0, \"c\": 0}\n"
+">>> from io import StringIO\n"
+">>> io = StringIO()\n"
+">>> json.dump(['streaming API'], io)\n"
+">>> io.getvalue()\n"
+"'[\"streaming API\"]'"
+msgstr ""
+">>> nhập json\n"
+">>> json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])\n"
+"'[\"foo\", {\"bar\": [\"baz\", null, 1.0, 2]}]'\n"
+">>> print(json.dumps(\"\\\"foo\\bar\"))\n"
+"\"\\\"foo\\bar\"\n"
+">>> print(json.dumps('\\u1234'))\n"
+"\"\\u1234\"\n"
+">>> print(json.dumps('\\\\'))\n"
+"\"\\\\\"\n"
+">>> print(json.dumps({\"c\": 0, \"b\": 0, \"a\": 0}, Sort_keys=True))\n"
+"{\"a\": 0, \"b\": 0, \"c\": 0}\n"
+">>> từ io nhập StringIO\n"
+">>> io = StringIO()\n"
+">>> json.dump(['streaming API'], io)\n"
+">>> io.getvalue()\n"
+"'[\"đang phát trực tuyến API\"]'"
+
+#: ../../library/json.rst:53
+#, fuzzy
+msgid "Compact encoding::"
+msgstr "Mã hóa nhỏ gọn::"
+
+#: ../../library/json.rst:55
+#, python-brace-format, fuzzy
+msgid ""
+">>> import json\n"
+">>> json.dumps([1, 2, 3, {'4': 5, '6': 7}], separators=(',', ':'))\n"
+"'[1,2,3,{\"4\":5,\"6\":7}]'"
+msgstr ""
+">>> nhập json\n"
+">>> json.dumps([1, 2, 3, {'4': 5, '6': 7}], Separators=(',', ':'))\n"
+"'[1,2,3,{\"4\":5,\"6\":7}]'"
+
+#: ../../library/json.rst:59
+#, fuzzy
+msgid "Pretty printing::"
+msgstr "In ấn đẹp::"
+
+#: ../../library/json.rst:61
+#, python-brace-format, fuzzy
+msgid ""
+">>> import json\n"
+">>> print(json.dumps({'6': 7, '4': 5}, sort_keys=True, indent=4))\n"
+"{\n"
+"    \"4\": 5,\n"
+"    \"6\": 7\n"
+"}"
+msgstr ""
+">>> nhập json\n"
+">>> print(json.dumps({'6': 7, '4': 5}, Sort_keys=True, indent=4))\n"
+"{\n"
+"    \"4\": 5,\n"
+"    \"6\": 7\n"
+"}"
+
+#: ../../library/json.rst:68
+#, fuzzy
+msgid "Customizing JSON object encoding::"
+msgstr "Tùy chỉnh mã hóa đối tượng JSON::"
+
+#: ../../library/json.rst:70
+#, python-brace-format, fuzzy
+msgid ""
+">>> import json\n"
+">>> def custom_json(obj):\n"
+"...     if isinstance(obj, complex):\n"
+"...         return {'__complex__': True, 'real': obj.real, 'imag': obj.imag}\n"
+"...     raise TypeError(f'Cannot serialize object of {type(obj)}')\n"
+"...\n"
+">>> json.dumps(1 + 2j, default=custom_json)\n"
+"'{\"__complex__\": true, \"real\": 1.0, \"imag\": 2.0}'"
+msgstr ""
+">>> nhập json\n"
+">>> def custom_json(obj):\n"
+"... if isinstance(obj, complex):\n"
+"... return {'__complex__': Đúng, 'thực': obj.real, 'hình ảnh': obj.imag}\n"
+"... raise TypeError(f'Không thể tuần tự hóa đối tượng của {type(obj)}')\n"
+"...\n"
+">>> json.dumps(1 + 2j, default=custom_json)\n"
+"'{\"__complex__\": đúng, \"thực\": 1.0, \"hình ảnh\": 2.0}'"
+
+#: ../../library/json.rst:79
+#, fuzzy
+msgid "Decoding JSON::"
+msgstr "Giải mã JSON::"
+
+#: ../../library/json.rst:81
+#, python-brace-format, fuzzy
+msgid ""
+">>> import json\n"
+">>> json.loads('[\"foo\", {\"bar\":[\"baz\", null, 1.0, 2]}]')\n"
+"['foo', {'bar': ['baz', None, 1.0, 2]}]\n"
+">>> json.loads('\"\\\\\"foo\\\\bar\"')\n"
+"'\"foo\\x08ar'\n"
+">>> from io import StringIO\n"
+">>> io = StringIO('[\"streaming API\"]')\n"
+">>> json.load(io)\n"
+"['streaming API']"
+msgstr ""
+">>> nhập json\n"
+">>> json.loads('[\"foo\", {\"bar\":[\"baz\", null, 1.0, 2]}]')\n"
+"['foo', {'bar': ['baz', Không, 1.0, 2]}]\n"
+">>> json.loads('\"\\\\\"foo\\\\bar\"')\n"
+"'\"foo\\x08ar'\n"
+">>> từ io nhập StringIO\n"
+">>> io = StringIO('[\"streaming API\"]')\n"
+">>> json.load(io)\n"
+"['đang phát trực tuyến API']"
+
+#: ../../library/json.rst:91
+#, fuzzy
+msgid "Customizing JSON object decoding::"
+msgstr "Tùy chỉnh giải mã đối tượng JSON::"
+
+#: ../../library/json.rst:93
+#, python-brace-format, fuzzy
+msgid ""
+">>> import json\n"
+">>> def as_complex(dct):\n"
+"...     if '__complex__' in dct:\n"
+"...         return complex(dct['real'], dct['imag'])\n"
+"...     return dct\n"
+"...\n"
+">>> json.loads('{\"__complex__\": true, \"real\": 1, \"imag\": 2}',\n"
+"...     object_hook=as_complex)\n"
+"(1+2j)\n"
+">>> import decimal\n"
+">>> json.loads('1.1', parse_float=decimal.Decimal)\n"
+"Decimal('1.1')"
+msgstr ""
+">>> nhập json\n"
+">>> def as_complex(dct):\n"
+"... nếu '__complex__' trong dct:\n"
+"... trả về phức tạp(dct['real'], dct['imag'])\n"
+"... trả lại dct\n"
+"...\n"
+">>> json.loads('{\"__complex__\": true, \"real\": 1, \"imag\": 2}',\n"
+"... object_hook=as_complex)\n"
+"(1+2j)\n"
+">>> nhập số thập phân\n"
+">>> json.loads('1.1', parse_float=decimal.Decimal)\n"
+"Thập phân('1.1')"
+
+#: ../../library/json.rst:106
+#, fuzzy
+msgid "Extending :class:`JSONEncoder`::"
+msgstr "Mở rộng :class:`JSONEncoder`::"
+
+#: ../../library/json.rst:108
+#, fuzzy
+msgid ""
+">>> import json\n"
+">>> class ComplexEncoder(json.JSONEncoder):\n"
+"...     def default(self, obj):\n"
+"...         if isinstance(obj, complex):\n"
+"...             return [obj.real, obj.imag]\n"
+"...         # Let the base class default method raise the TypeError\n"
+"...         return super().default(obj)\n"
+"...\n"
+">>> json.dumps(2 + 1j, cls=ComplexEncoder)\n"
+"'[2.0, 1.0]'\n"
+">>> ComplexEncoder().encode(2 + 1j)\n"
+"'[2.0, 1.0]'\n"
+">>> list(ComplexEncoder().iterencode(2 + 1j))\n"
+"['[2.0', ', 1.0', ']']"
+msgstr ""
+">>> nhập json\n"
+">>> lớp ComplexEncode(json.JSONEncode):\n"
+"... mặc định mặc định(self, obj):\n"
+"... if isinstance(obj, complex):\n"
+"... trả về [obj.real, obj.image]\n"
+"... # Let phương thức mặc định của lớp cơ sở gây ra TypeError\n"
+"... trả về super().default(obj)\n"
+"...\n"
+">>> json.dumps(2 + 1j, cls=ComplexEncoding)\n"
+"'[2.0, 1.0]'\n"
+">>> ComplexEncode().encode(2 + 1j)\n"
+"'[2.0, 1.0]'\n"
+">>> list(ComplexEncode().iterencode(2 + 1j))\n"
+"['[2.0', ', 1.0', ']']"
+
+#: ../../library/json.rst:124
+#, fuzzy
+msgid "Using :mod:`!json` from the shell to validate and pretty-print:"
+msgstr "Sử dụng :mod:`!json` từ shell để xác thực và in đẹp:"
+
+#: ../../library/json.rst:126
+#, python-brace-format, fuzzy
+msgid ""
+"$ echo '{\"json\":\"obj\"}' | python -m json\n"
+"{\n"
+"    \"json\": \"obj\"\n"
+"}\n"
+"$ echo '{1.2:3.4}' | python -m json\n"
+"Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+msgstr ""
+"$ echo '{\"json://obj\"}' | trăn -m json\n"
+"{\n"
+"    \"json\": \"obj\"\n"
+"}\n"
+"$ echo '{1.2:3.4}' | trăn -m json\n"
+"Yêu cầu tên thuộc tính được đặt trong dấu ngoặc kép: dòng 1 cột 2 (char 1)"
+
+#: ../../library/json.rst:135
+#, fuzzy
+msgid "See :ref:`json-commandline` for detailed documentation."
+msgstr "Xem :ref:`json-commandline` để biết tài liệu chi tiết."
+
+#: ../../library/json.rst:139
+#, fuzzy
+msgid ""
+"JSON is a subset of `YAML <https://yaml.org/>`_ 1.2.  The JSON produced by "
+"this module's default settings (in particular, the default *separators* "
+"value) is also a subset of YAML 1.0 and 1.1.  This module can thus also be "
+"used as a YAML serializer."
+msgstr ""
+"JSON là tập hợp con của `YAML <https://yaml.org/>`_ 1.2.  Zz003zz được tạo "
+"bởi cài đặt mặc định của mô-đun này (cụ thể là giá trị *separators* mặc "
+"định) cũng là tập hợp con của YAML 1.0 và 1.1.  Do đó, mô-đun này cũng có "
+"thể được sử dụng làm bộ nối tiếp YAML."
+
+#: ../../library/json.rst:146
+#, fuzzy
+msgid ""
+"This module's encoders and decoders preserve input and output order by "
+"default.  Order is only lost if the underlying containers are unordered."
+msgstr ""
+"Bộ mã hóa và giải mã của mô-đun này duy trì thứ tự đầu vào và đầu ra theo "
+"mặc định.  Đơn hàng chỉ bị mất nếu các vùng chứa bên dưới không có thứ tự."
+
+#: ../../library/json.rst:151
+#, fuzzy
+msgid "Basic Usage"
+msgstr "Cách sử dụng cơ bản"
+
+#: ../../library/json.rst:158
+#, fuzzy
+msgid ""
+"Serialize *obj* as a JSON formatted stream to *fp* (a "
+"``.write()``-supporting :term:`file-like object`) using this :ref:`Python-"
+"to-JSON conversion table <py-to-json-table>`."
+msgstr ""
+"Tuần tự hóa *obj* dưới dạng luồng được định dạng JSON thành *fp* "
+"(:term:`file-like object` hỗ trợ ``.write()``) bằng cách sử dụng "
+":ref:`Python-to-JSON conversion table <py-to-json-table>` này."
+
+#: ../../library/json.rst:164
+#, fuzzy
+msgid ""
+"Unlike :mod:`pickle` and :mod:`marshal`, JSON is not a framed protocol, so "
+"trying to serialize multiple objects with repeated calls to :func:`dump` "
+"using the same *fp* will result in an invalid JSON file."
+msgstr ""
+"Không giống như :mod:`pickle` và :mod:`marshal`, JSON không phải là một giao"
+" thức được đóng khung, vì vậy việc cố gắng tuần tự hóa nhiều đối tượng bằng "
+"các lệnh gọi lặp lại tới :func:`dump` bằng cùng một *fp* sẽ dẫn đến một tệp "
+"JSON không hợp lệ."
+
+#: ../../library/json.rst
+#, fuzzy
+msgid "Parameters"
+msgstr "Thông số"
+
+#: ../../library/json.rst:168
+#, fuzzy
+msgid "The Python object to be serialized."
+msgstr "Đối tượng Python được tuần tự hóa."
+
+#: ../../library/json.rst:171
+#, fuzzy
+msgid ""
+"The file-like object *obj* will be serialized to. The :mod:`!json` module "
+"always produces :class:`str` objects, not :class:`bytes` objects, therefore "
+"``fp.write()`` must support :class:`str` input."
+msgstr ""
+"Đối tượng giống như tệp *obj* sẽ được tuần tự hóa. Mô-đun :mod:`!json` luôn "
+"tạo ra các đối tượng :class:`str` chứ không phải đối tượng :class:`bytes`, "
+"do đó ``fp.write()`` phải hỗ trợ đầu vào :class:`str`."
+
+#: ../../library/json.rst:178
+#, fuzzy
+msgid ""
+"If ``True``, keys that are not of a basic type (:class:`str`, :class:`int`, "
+":class:`float`, :class:`bool`, ``None``) will be skipped instead of raising "
+"a :exc:`TypeError`. Default ``False``."
+msgstr ""
+"Nếu ``True``, các phím không thuộc loại cơ bản (:class:`str`, :class:`int`, "
+":class:`float`, :class:`bool`, ``None``) sẽ bị bỏ qua thay vì tăng "
+":exc:`TypeError`. Mặc định ``False``."
+
+#: ../../library/json.rst:184
+#, fuzzy
+msgid ""
+"If ``True`` (the default), the output is guaranteed to have all incoming "
+"non-ASCII and non-printable characters escaped. If ``False``, all characters"
+" will be outputted as-is, except for the characters that must be escaped: "
+"quotation mark, reverse solidus, and the control characters U+0000 through "
+"U+001F."
+msgstr ""
+"Nếu ``True`` (mặc định), đầu ra được đảm bảo có tất cả các ký tự không phải "
+"ASCII và không thể in được thoát ra. Nếu ``False``, tất cả các ký tự sẽ được"
+" xuất nguyên trạng, ngoại trừ các ký tự phải thoát: dấu ngoặc kép, dấu gạch "
+"chéo ngược và các ký tự điều khiển từ U+0000 đến U+001F."
+
+#: ../../library/json.rst:191
+#, fuzzy
+msgid ""
+"If ``False``, the circular reference check for container types is skipped "
+"and a circular reference will result in a :exc:`RecursionError` (or worse). "
+"Default ``True``."
+msgstr ""
+"Nếu ``False``, việc kiểm tra tham chiếu vòng cho các loại vùng chứa bị bỏ "
+"qua và tham chiếu vòng sẽ dẫn đến :exc:`RecursionError` (hoặc tệ hơn). Mặc "
+"định ``True``."
+
+#: ../../library/json.rst:196
+#, fuzzy
+msgid ""
+"If ``False``, serialization of out-of-range :class:`float` values (``nan``, "
+"``inf``, ``-inf``) will result in a :exc:`ValueError`, in strict compliance "
+"with the JSON specification. If ``True`` (the default), their JavaScript "
+"equivalents (``NaN``, ``Infinity``, ``-Infinity``) are used."
+msgstr ""
+"Nếu ``False``, việc tuần tự hóa các giá trị :class:`float` ngoài phạm vi "
+"(``nan``, ``inf``, ``-inf``) sẽ tạo ra :exc:`ValueError`, tuân thủ nghiêm "
+"ngặt thông số kỹ thuật JSON. Nếu ``True`` (mặc định), các JavaScript tương "
+"đương của chúng (``NaN``, ``Infinity``, ``-Infinity``) sẽ được sử dụng."
+
+#: ../../library/json.rst:203
+#, fuzzy
+msgid ""
+"If set, a custom JSON encoder with the :meth:`~JSONEncoder.default` method "
+"overridden, for serializing into custom datatypes. If ``None`` (the "
+"default), :class:`!JSONEncoder` is used."
+msgstr ""
+"Nếu được đặt, một bộ mã hóa JSON tùy chỉnh có phương thức "
+":meth:`~JSONEncoder.default` được ghi đè để tuần tự hóa thành các kiểu dữ "
+"liệu tùy chỉnh. Nếu ``None`` (mặc định), :class:`!JSONEncoder` sẽ được sử "
+"dụng."
+
+#: ../../library/json.rst:210
+#, fuzzy
+msgid ""
+"If a positive integer or string, JSON array elements and object members will"
+" be pretty-printed with that indent level. A positive integer indents that "
+"many spaces per level; a string (such as ``\"\\t\"``) is used to indent each"
+" level. If zero, negative, or ``\"\"`` (the empty string), only newlines are"
+" inserted. If ``None`` (the default), the most compact representation is "
+"used."
+msgstr ""
+"Nếu một số nguyên hoặc chuỗi dương, các phần tử mảng và thành phần đối tượng"
+" JSON sẽ được in đẹp với mức thụt lề đó. Một số nguyên dương thụt vào nhiều "
+"khoảng trắng trên mỗi cấp độ; một chuỗi (chẳng hạn như ``\"\\t\"``) được sử "
+"dụng để thụt lề từng cấp độ. Nếu bằng 0, âm hoặc ``\"\"`` (chuỗi trống), chỉ"
+" các dòng mới được chèn vào. Nếu ``None`` (mặc định), cách biểu diễn nhỏ gọn"
+" nhất sẽ được sử dụng."
+
+#: ../../library/json.rst:220
+#, fuzzy
+msgid ""
+"A two-tuple: ``(item_separator, key_separator)``. If ``None`` (the default),"
+" *separators* defaults to ``(', ', ': ')`` if *indent* is ``None``, and "
+"``(',', ': ')`` otherwise. For the most compact JSON, specify ``(',', ':')``"
+" to eliminate whitespace."
+msgstr ""
+"Một bộ hai: ``(item_separator, key_separator)``. Nếu ``None`` (mặc định), "
+"*separators* mặc định là ``(', ', ': ')`` nếu *indent* là ``None`` và "
+"``(',', ': ')`` nếu ngược lại. Đối với JSON nhỏ gọn nhất, hãy chỉ định "
+"``(',', ':')`` để loại bỏ khoảng trắng."
+
+#: ../../library/json.rst:229
+#, fuzzy
+msgid ""
+"A function that is called for objects that can't otherwise be serialized. It"
+" should return a JSON encodable version of the object or raise a "
+":exc:`TypeError`. If ``None`` (the default), :exc:`!TypeError` is raised."
+msgstr ""
+"Một hàm được gọi cho các đối tượng không thể được sắp xếp theo thứ tự. Nó sẽ"
+" trả về phiên bản mã hóa JSON của đối tượng hoặc tăng :exc:`TypeError`. Nếu "
+"``None`` (mặc định), :exc:`!TypeError` được nâng lên."
+
+#: ../../library/json.rst:236
+#, fuzzy
+msgid ""
+"If ``True``, dictionaries will be outputted sorted by key. Default "
+"``False``."
+msgstr ""
+"Nếu ``True``, từ điển sẽ được xuất ra được sắp xếp theo khóa. Mặc định "
+"``False``."
+
+#: ../../library/json.rst:240 ../../library/json.rst:527
+#, fuzzy
+msgid "Allow strings for *indent* in addition to integers."
+msgstr "Cho phép chuỗi cho *indent* ngoài số nguyên."
+
+#: ../../library/json.rst:243 ../../library/json.rst:535
+#, fuzzy
+msgid "Use ``(',', ': ')`` as default if *indent* is not ``None``."
+msgstr ""
+"Sử dụng ``(',', ': ')`` làm mặc định nếu *indent* không phải là ``None``."
+
+#: ../../library/json.rst:246 ../../library/json.rst:345
+#, fuzzy
+msgid ""
+"All optional parameters are now :ref:`keyword-only <keyword-"
+"only_parameter>`."
+msgstr ""
+"Tất cả các tham số tùy chọn bây giờ là :ref:`keyword-only <keyword-"
+"only_parameter>`."
+
+#: ../../library/json.rst:255
+#, fuzzy
+msgid ""
+"Serialize *obj* to a JSON formatted :class:`str` using this :ref:`conversion"
+" table <py-to-json-table>`.  The arguments have the same meaning as in "
+":func:`dump`."
+msgstr ""
+"Nối tiếp *obj* thành :class:`str` được định dạng JSON bằng cách sử dụng "
+":ref:`conversion table <py-to-json-table>` này.  Các đối số có cùng ý nghĩa "
+"như trong :func:`dump`."
+
+#: ../../library/json.rst:261
+#, fuzzy
+msgid ""
+"Keys in key/value pairs of JSON are always of the type :class:`str`. When a "
+"dictionary is converted into JSON, all the keys of the dictionary are "
+"coerced to strings. As a result of this, if a dictionary is converted into "
+"JSON and then back into a dictionary, the dictionary may not equal the "
+"original one. That is, ``loads(dumps(x)) != x`` if x has non-string keys."
+msgstr ""
+"Các khóa trong cặp khóa/giá trị của JSON luôn thuộc loại :class:`str`. Khi "
+"một từ điển được chuyển đổi thành JSON, tất cả các khóa của từ điển sẽ bị ép"
+" buộc thành chuỗi. Kết quả của việc này là nếu một từ điển được chuyển đổi "
+"thành JSON rồi quay trở lại từ điển, từ điển có thể không bằng từ điển gốc. "
+"Nghĩa là, ``loads(dumps(x)) != x`` nếu x có khóa không phải chuỗi."
+
+#: ../../library/json.rst:272
+#, fuzzy
+msgid ""
+"Deserialize *fp* to a Python object using the :ref:`JSON-to-Python "
+"conversion table <json-to-py-table>`."
+msgstr ""
+"Giải tuần tự hóa *fp* thành đối tượng Python bằng :ref:`JSON-to-Python "
+"conversion table <json-to-py-table>`."
+
+#: ../../library/json.rst:275
+#, fuzzy
+msgid ""
+"A ``.read()``-supporting :term:`text file` or :term:`binary file` containing"
+" the JSON document to be deserialized."
+msgstr ""
+"Một :term:`text file` hoặc :term:`binary file` hỗ trợ ``.read()`` chứa tài "
+"liệu JSON sẽ được giải tuần tự hóa."
+
+#: ../../library/json.rst:280
+#, fuzzy
+msgid ""
+"If set, a custom JSON decoder. Additional keyword arguments to :func:`!load`"
+" will be passed to the constructor of *cls*. If ``None`` (the default), "
+":class:`!JSONDecoder` is used."
+msgstr ""
+"Nếu được đặt, bộ giải mã JSON tùy chỉnh. Các đối số từ khóa bổ sung cho "
+":func:`!load` sẽ được chuyển tới hàm tạo của *cls*. Nếu ``None`` (mặc định),"
+" :class:`!JSONDecoder` sẽ được sử dụng."
+
+#: ../../library/json.rst:287
+#, fuzzy
+msgid ""
+"If set, a function that is called with the result of any JSON object literal"
+" decoded (a :class:`dict`). The return value of this function will be used "
+"instead of the :class:`dict`. This feature can be used to implement custom "
+"decoders, for example `JSON-RPC <https://www.jsonrpc.org>`_ class hinting. "
+"Default ``None``."
+msgstr ""
+"Nếu được đặt, một hàm được gọi với kết quả của bất kỳ đối tượng JSON nào "
+"được giải mã theo nghĩa đen (:class:`dict`). Giá trị trả về của hàm này sẽ "
+"được sử dụng thay cho :class:`dict`. Tính năng này có thể được sử dụng để "
+"triển khai bộ giải mã tùy chỉnh, ví dụ như gợi ý lớp `JSON-RPC "
+"<https://www.jsonrpc.org>`_. Mặc định ``None``."
+
+#: ../../library/json.rst:297
+#, fuzzy
+msgid ""
+"If set, a function that is called with the result of any JSON object literal"
+" decoded with an ordered list of pairs. The return value of this function "
+"will be used instead of the :class:`dict`. This feature can be used to "
+"implement custom decoders. If *object_hook* is also set, *object_pairs_hook*"
+" takes priority. Default ``None``."
+msgstr ""
+"Nếu được đặt, một hàm được gọi với kết quả của bất kỳ đối tượng JSON nào "
+"được giải mã bằng danh sách các cặp có thứ tự. Giá trị trả về của hàm này sẽ"
+" được sử dụng thay cho :class:`dict`. Tính năng này có thể được sử dụng để "
+"triển khai bộ giải mã tùy chỉnh. Nếu *object_hook* cũng được đặt thì "
+"*object_pairs_hook* sẽ được ưu tiên. Mặc định ``None``."
+
+#: ../../library/json.rst:307
+#, fuzzy
+msgid ""
+"If set, a function that is called with the string of every JSON float to be "
+"decoded. If ``None`` (the default), it is equivalent to ``float(num_str)``. "
+"This can be used to parse JSON floats into custom datatypes, for example "
+":class:`decimal.Decimal`."
+msgstr ""
+"Nếu được đặt, một hàm được gọi với chuỗi của mỗi float JSON sẽ được giải mã."
+" Nếu ``None`` (mặc định) thì tương đương với ``float(num_str)``. Điều này có"
+" thể được sử dụng để phân tích các float JSON thành các kiểu dữ liệu tùy "
+"chỉnh, ví dụ: :class:`decimal.Decimal`."
+
+#: ../../library/json.rst:315
+#, fuzzy
+msgid ""
+"If set, a function that is called with the string of every JSON int to be "
+"decoded. If ``None`` (the default), it is equivalent to ``int(num_str)``. "
+"This can be used to parse JSON integers into custom datatypes, for example "
+":class:`float`."
+msgstr ""
+"Nếu được đặt, một hàm được gọi với chuỗi mỗi int JSON sẽ được giải mã. Nếu "
+"``None`` (mặc định) thì tương đương với ``int(num_str)``. Điều này có thể "
+"được sử dụng để phân tích các số nguyên JSON thành các kiểu dữ liệu tùy "
+"chỉnh, ví dụ: :class:`float`."
+
+#: ../../library/json.rst:323
+#, fuzzy
+msgid ""
+"If set, a function that is called with one of the following strings: "
+"``'-Infinity'``, ``'Infinity'``, or ``'NaN'``. This can be used to raise an "
+"exception if invalid JSON numbers are encountered. Default ``None``."
+msgstr ""
+"Nếu được đặt, hàm sẽ được gọi bằng một trong các chuỗi sau: ``'-Infinity'``,"
+" ``'Infinity'`` hoặc ``'NaN'``. Điều này có thể được sử dụng để đưa ra một "
+"ngoại lệ nếu gặp phải số JSON không hợp lệ. Mặc định ``None``."
+
+#: ../../library/json.rst
+#, fuzzy
+msgid "Raises"
+msgstr "Tăng"
+
+#: ../../library/json.rst:331
+#, fuzzy
+msgid "When the data being deserialized is not a valid JSON document."
+msgstr "Khi dữ liệu được giải tuần tự hóa không phải là tài liệu JSON hợp lệ."
+
+#: ../../library/json.rst:334
+#, fuzzy
+msgid ""
+"When the data being deserialized does not contain UTF-8, UTF-16 or UTF-32 "
+"encoded data."
+msgstr ""
+"Khi dữ liệu được giải tuần tự hóa không chứa dữ liệu được mã hóa UTF-8, "
+"UTF-16 hoặc UTF-32."
+
+#: ../../library/json.rst:340
+#, fuzzy
+msgid "Added the optional *object_pairs_hook* parameter."
+msgstr "Đã thêm tham số *object_pairs_hook* tùy chọn."
+
+#: ../../library/json.rst:341
+#, fuzzy
+msgid ""
+"*parse_constant* doesn't get called on 'null', 'true', 'false' anymore."
+msgstr "*parse_constant* không còn được gọi là 'null', 'true', 'false' nữa."
+
+#: ../../library/json.rst:346
+#, fuzzy
+msgid ""
+"*fp* can now be a :term:`binary file`. The input encoding should be UTF-8, "
+"UTF-16 or UTF-32."
+msgstr ""
+"*fp* bây giờ có thể là :term:`binary file`. Mã hóa đầu vào phải là UTF-8, "
+"UTF-16 hoặc UTF-32."
+
+#: ../../library/json.rst:349
+#, fuzzy
+msgid ""
+"The default *parse_int* of :func:`int` now limits the maximum length of the "
+"integer string via the interpreter's :ref:`integer string conversion length "
+"limitation <int_max_str_digits>` to help avoid denial of service attacks."
+msgstr ""
+"*parse_int* mặc định của :func:`int` hiện giới hạn độ dài tối đa của chuỗi "
+"số nguyên thông qua :ref:`integer string conversion length limitation "
+"<int_max_str_digits>` của trình thông dịch để giúp tránh các cuộc tấn công "
+"từ chối dịch vụ."
+
+#: ../../library/json.rst:357
+#, fuzzy
+msgid ""
+"Identical to :func:`load`, but instead of a file-like object, deserialize "
+"*s* (a :class:`str`, :class:`bytes` or :class:`bytearray` instance "
+"containing a JSON document) to a Python object using this :ref:`conversion "
+"table <json-to-py-table>`."
+msgstr ""
+"Giống hệt với :func:`load`, nhưng thay vì đối tượng giống như tệp, hãy giải "
+"tuần tự hóa *s* (một phiên bản :class:`str`, :class:`bytes` hoặc "
+":class:`bytearray` chứa tài liệu JSON) thành đối tượng Python bằng cách sử "
+"dụng :ref:`conversion table <json-to-py-table>` này."
+
+#: ../../library/json.rst:362
+#, fuzzy
+msgid ""
+"*s* can now be of type :class:`bytes` or :class:`bytearray`. The input "
+"encoding should be UTF-8, UTF-16 or UTF-32."
+msgstr ""
+"*s* bây giờ có thể thuộc loại :class:`bytes` hoặc :class:`bytearray`. Mã hóa"
+" đầu vào phải là UTF-8, UTF-16 hoặc UTF-32."
+
+#: ../../library/json.rst:366
+#, fuzzy
+msgid "The keyword argument *encoding* has been removed."
+msgstr "Đối số từ khóa *encoding* đã bị xóa."
+
+#: ../../library/json.rst:371
+#, fuzzy
+msgid "Encoders and Decoders"
+msgstr "Bộ mã hóa và giải mã"
+
+#: ../../library/json.rst:375
+#, fuzzy
+msgid "Simple JSON decoder."
+msgstr "Bộ giải mã JSON đơn giản."
+
+#: ../../library/json.rst:377
+#, fuzzy
+msgid "Performs the following translations in decoding by default:"
+msgstr "Thực hiện các bản dịch sau trong quá trình giải mã theo mặc định:"
+
+#: ../../library/json.rst:382 ../../library/json.rst:470
+#, fuzzy
+msgid "JSON"
+msgstr "JSON"
+
+#: ../../library/json.rst:382 ../../library/json.rst:470
+#, fuzzy
+msgid "Python"
+msgstr "Python"
+
+#: ../../library/json.rst:384 ../../library/json.rst:472
+#, fuzzy
+msgid "object"
+msgstr "vật thể"
+
+#: ../../library/json.rst:384 ../../library/json.rst:472
+#, fuzzy
+msgid "dict"
+msgstr "mệnh lệnh"
+
+#: ../../library/json.rst:386 ../../library/json.rst:474
+#, fuzzy
+msgid "array"
+msgstr "mảng"
+
+#: ../../library/json.rst:386
+#, fuzzy
+msgid "list"
+msgstr "danh sách"
+
+#: ../../library/json.rst:388 ../../library/json.rst:476
+#, fuzzy
+msgid "string"
+msgstr "chuỗi"
+
+#: ../../library/json.rst:388 ../../library/json.rst:476
+#, fuzzy
+msgid "str"
+msgstr "str"
+
+#: ../../library/json.rst:390
+#, fuzzy
+msgid "number (int)"
+msgstr "số (int)"
+
+#: ../../library/json.rst:390
+#, fuzzy
+msgid "int"
+msgstr "int"
+
+#: ../../library/json.rst:392
+#, fuzzy
+msgid "number (real)"
+msgstr "số (thực)"
+
+#: ../../library/json.rst:392
+#, fuzzy
+msgid "float"
+msgstr "phao"
+
+#: ../../library/json.rst:394 ../../library/json.rst:480
+#, fuzzy
+msgid "true"
+msgstr "đúng"
+
+#: ../../library/json.rst:394 ../../library/json.rst:480
+#, fuzzy
+msgid "True"
+msgstr "đúng"
+
+#: ../../library/json.rst:396 ../../library/json.rst:482
+#, fuzzy
+msgid "false"
+msgstr "sai"
+
+#: ../../library/json.rst:396 ../../library/json.rst:482
+#, fuzzy
+msgid "False"
+msgstr "sai"
+
+#: ../../library/json.rst:398 ../../library/json.rst:484
+#, fuzzy
+msgid "null"
+msgstr "vô giá trị"
+
+#: ../../library/json.rst:398 ../../library/json.rst:484
+#, fuzzy
+msgid "None"
+msgstr "không có"
+
+#: ../../library/json.rst:401
+#, fuzzy
+msgid ""
+"It also understands ``NaN``, ``Infinity``, and ``-Infinity`` as their "
+"corresponding ``float`` values, which is outside the JSON spec."
+msgstr ""
+"Nó cũng hiểu ``NaN``, ``Infinity`` và ``-Infinity`` là các giá trị ``float``"
+" tương ứng, nằm ngoài thông số JSON."
+
+#: ../../library/json.rst:404
+#, fuzzy
+msgid ""
+"*object_hook* is an optional function that will be called with the result of"
+" every JSON object decoded and its return value will be used in place of the"
+" given :class:`dict`.  This can be used to provide custom deserializations "
+"(e.g. to support `JSON-RPC <https://www.jsonrpc.org>`_ class hinting)."
+msgstr ""
+"*object_hook* là một hàm tùy chọn sẽ được gọi với kết quả của mọi đối tượng "
+"JSON được giải mã và giá trị trả về của nó sẽ được sử dụng thay cho "
+":class:`dict` đã cho.  Điều này có thể được sử dụng để cung cấp khả năng khử"
+" lưu lượng tùy chỉnh (ví dụ: để hỗ trợ gợi ý lớp `JSON-RPC "
+"<https://www.jsonrpc.org>`_)."
+
+#: ../../library/json.rst:409
+#, fuzzy
+msgid ""
+"*object_pairs_hook* is an optional function that will be called with the "
+"result of every JSON object decoded with an ordered list of pairs.  The "
+"return value of *object_pairs_hook* will be used instead of the "
+":class:`dict`.  This feature can be used to implement custom decoders.  If "
+"*object_hook* is also defined, the *object_pairs_hook* takes priority."
+msgstr ""
+"*object_pairs_hook* là một hàm tùy chọn sẽ được gọi với kết quả của mọi đối "
+"tượng JSON được giải mã bằng danh sách các cặp có thứ tự.  Giá trị trả về "
+"của *object_pairs_hook* sẽ được sử dụng thay vì :class:`dict`.  Tính năng "
+"này có thể được sử dụng để triển khai bộ giải mã tùy chỉnh.  Nếu "
+"*object_hook* cũng được xác định thì *object_pairs_hook* sẽ được ưu tiên."
+
+#: ../../library/json.rst:415
+#, fuzzy
+msgid "Added support for *object_pairs_hook*."
+msgstr "Đã thêm hỗ trợ cho *object_pairs_hook*."
+
+#: ../../library/json.rst:418
+#, fuzzy
+msgid ""
+"*parse_float* is an optional function that will be called with the string of"
+" every JSON float to be decoded.  By default, this is equivalent to "
+"``float(num_str)``.  This can be used to use another datatype or parser for "
+"JSON floats (e.g. :class:`decimal.Decimal`)."
+msgstr ""
+"*parse_float* là một hàm tùy chọn sẽ được gọi cùng với chuỗi của mỗi float "
+"JSON được giải mã.  Theo mặc định, điều này tương đương với "
+"``float(num_str)``.  Điều này có thể được sử dụng để sử dụng kiểu dữ liệu "
+"hoặc trình phân tích cú pháp khác cho các số float JSON (ví dụ: "
+":class:`decimal.Decimal`)."
+
+#: ../../library/json.rst:423
+#, fuzzy
+msgid ""
+"*parse_int* is an optional function that will be called with the string of "
+"every JSON int to be decoded.  By default, this is equivalent to "
+"``int(num_str)``.  This can be used to use another datatype or parser for "
+"JSON integers (e.g. :class:`float`)."
+msgstr ""
+"*parse_int* là một hàm tùy chọn sẽ được gọi cùng với chuỗi của mỗi JSON int "
+"cần được giải mã.  Theo mặc định, điều này tương đương với ``int(num_str)``."
+"  Điều này có thể được sử dụng để sử dụng kiểu dữ liệu hoặc trình phân tích "
+"cú pháp khác cho số nguyên JSON (ví dụ: :class:`float`)."
+
+#: ../../library/json.rst:428
+#, fuzzy
+msgid ""
+"*parse_constant* is an optional function that will be called with one of the"
+" following strings: ``'-Infinity'``, ``'Infinity'``, ``'NaN'``.  This can be"
+" used to raise an exception if invalid JSON numbers are encountered."
+msgstr ""
+"*parse_constant* là một hàm tùy chọn sẽ được gọi bằng một trong các chuỗi "
+"sau: ``'-Infinity'``, ``'Infinity'``, ``'NaN'``.  Điều này có thể được sử "
+"dụng để đưa ra một ngoại lệ nếu gặp phải số JSON không hợp lệ."
+
+#: ../../library/json.rst:432
+#, fuzzy
+msgid ""
+"If *strict* is false (``True`` is the default), then control characters will"
+" be allowed inside strings.  Control characters in this context are those "
+"with character codes in the 0--31 range, including ``'\\t'`` (tab), "
+"``'\\n'``, ``'\\r'`` and ``'\\0'``."
+msgstr ""
+"Nếu *strict* sai (``True`` là mặc định), thì các ký tự điều khiển sẽ được "
+"phép bên trong chuỗi.  Ký tự điều khiển trong ngữ cảnh này là những ký tự có"
+" mã ký tự trong phạm vi 0--31, bao gồm ``'\\t'`` (tab), ``'\\n'``, ``'\\r'``"
+" và ``'\\0'``."
+
+#: ../../library/json.rst:437
+#, fuzzy
+msgid ""
+"If the data being deserialized is not a valid JSON document, a "
+":exc:`JSONDecodeError` will be raised."
+msgstr ""
+"Nếu dữ liệu được giải tuần tự hóa không phải là tài liệu JSON hợp lệ thì "
+":exc:`JSONDecodeError` sẽ được nâng lên."
+
+#: ../../library/json.rst:440 ../../library/json.rst:543
+#, fuzzy
+msgid "All parameters are now :ref:`keyword-only <keyword-only_parameter>`."
+msgstr ""
+"Tất cả các thông số bây giờ là :ref:`keyword-only <keyword-only_parameter>`."
+
+#: ../../library/json.rst:445
+#, fuzzy
+msgid ""
+"Return the Python representation of *s* (a :class:`str` instance containing "
+"a JSON document)."
+msgstr ""
+"Trả về biểu diễn Python của *s* (một phiên bản :class:`str` chứa tài liệu "
+"JSON)."
+
+#: ../../library/json.rst:448
+#, fuzzy
+msgid ""
+":exc:`JSONDecodeError` will be raised if the given JSON document is not "
+"valid."
+msgstr ""
+":exc:`JSONDecodeError` sẽ được nâng lên nếu tài liệu JSON đã cho không hợp "
+"lệ."
+
+#: ../../library/json.rst:453
+#, fuzzy
+msgid ""
+"Decode a JSON document from *s* (a :class:`str` beginning with a JSON "
+"document) and return a 2-tuple of the Python representation and the index in"
+" *s* where the document ended."
+msgstr ""
+"Giải mã tài liệu JSON từ *s* (:class:`str` bắt đầu bằng tài liệu JSON) và "
+"trả về 2 bộ dữ liệu biểu diễn Python và chỉ mục trong *s* nơi tài liệu kết "
+"thúc."
+
+#: ../../library/json.rst:457
+#, fuzzy
+msgid ""
+"This can be used to decode a JSON document from a string that may have "
+"extraneous data at the end."
+msgstr ""
+"Điều này có thể được sử dụng để giải mã tài liệu JSON từ một chuỗi có thể có"
+" dữ liệu không liên quan ở cuối."
+
+#: ../../library/json.rst:463
+#, fuzzy
+msgid "Extensible JSON encoder for Python data structures."
+msgstr "Bộ mã hóa JSON mở rộng cho cấu trúc dữ liệu Python."
+
+#: ../../library/json.rst:465
+#, fuzzy
+msgid "Supports the following objects and types by default:"
+msgstr "Hỗ trợ các đối tượng và loại sau theo mặc định:"
+
+#: ../../library/json.rst:474
+#, fuzzy
+msgid "list, tuple"
+msgstr "danh sách, bộ dữ liệu"
+
+#: ../../library/json.rst:478
+#, fuzzy
+msgid "int, float, int- & float-derived Enums"
+msgstr "Enums có nguồn gốc từ int, float, int & float"
+
+#: ../../library/json.rst:478
+#, fuzzy
+msgid "number"
+msgstr "con số"
+
+#: ../../library/json.rst:487
+#, fuzzy
+msgid "Added support for int- and float-derived Enum classes."
+msgstr "Đã thêm hỗ trợ cho các lớp Enum có nguồn gốc từ int và float."
+
+#: ../../library/json.rst:490
+#, fuzzy
+msgid ""
+"To extend this to recognize other objects, subclass and implement a "
+":meth:`~JSONEncoder.default` method with another method that returns a "
+"serializable object for ``o`` if possible, otherwise it should call the "
+"superclass implementation (to raise :exc:`TypeError`)."
+msgstr ""
+"Để mở rộng điều này để nhận dạng các đối tượng khác, hãy phân lớp và triển "
+"khai phương thức :meth:`~JSONEncoder.default` bằng một phương thức khác trả "
+"về một đối tượng có thể tuần tự hóa cho ``o`` nếu có thể, nếu không thì nên "
+"gọi triển khai siêu lớp (để nâng cao :exc:`TypeError`)."
+
+#: ../../library/json.rst:495
+#, fuzzy
+msgid ""
+"If *skipkeys* is false (the default), a :exc:`TypeError` will be raised when"
+" trying to encode keys that are not :class:`str`, :class:`int`, "
+":class:`float`, :class:`bool` or ``None``.  If *skipkeys* is true, such "
+"items are simply skipped."
+msgstr ""
+"Nếu *skipkeys* là sai (mặc định), :exc:`TypeError` sẽ được nâng lên khi cố "
+"mã hóa các khóa không phải là :class:`str`, :class:`int`, :class:`float`, "
+":class:`bool` hoặc ``None``.  Nếu *skipkeys* là đúng, những mục đó sẽ bị bỏ "
+"qua."
+
+#: ../../library/json.rst:499
+#, fuzzy
+msgid ""
+"If *ensure_ascii* is true (the default), the output is guaranteed to have "
+"all incoming non-ASCII and non-printable characters escaped. If "
+"*ensure_ascii* is false, all characters will be output as-is, except for the"
+" characters that must be escaped: quotation mark, reverse solidus, and the "
+"control characters U+0000 through U+001F."
+msgstr ""
+"Nếu *ensure_ascii* là đúng (mặc định), đầu ra được đảm bảo có tất cả các ký "
+"tự không phải ASCII và không thể in được thoát ra. Nếu *ensure_ascii* là "
+"sai, tất cả các ký tự sẽ được xuất ra nguyên trạng, ngoại trừ các ký tự phải"
+" thoát: dấu ngoặc kép, dấu gạch chéo ngược và các ký tự điều khiển từ U+0000"
+" đến U+001F."
+
+#: ../../library/json.rst:505
+#, fuzzy
+msgid ""
+"If *check_circular* is true (the default), then lists, dicts, and custom "
+"encoded objects will be checked for circular references during encoding to "
+"prevent an infinite recursion (which would cause a :exc:`RecursionError`). "
+"Otherwise, no such check takes place."
+msgstr ""
+"Nếu *check_circular* là đúng (mặc định), thì danh sách, ký tự và đối tượng "
+"được mã hóa tùy chỉnh sẽ được kiểm tra để tìm tham chiếu vòng tròn trong quá"
+" trình mã hóa nhằm ngăn chặn đệ quy vô hạn (có thể gây ra "
+":exc:`RecursionError`). Nếu không, việc kiểm tra như vậy sẽ không diễn ra."
+
+#: ../../library/json.rst:510
+#, fuzzy
+msgid ""
+"If *allow_nan* is true (the default), then ``NaN``, ``Infinity``, and "
+"``-Infinity`` will be encoded as such.  This behavior is not JSON "
+"specification compliant, but is consistent with most JavaScript based "
+"encoders and decoders.  Otherwise, it will be a :exc:`ValueError` to encode "
+"such floats."
+msgstr ""
+"Nếu *allow_nan* là đúng (mặc định) thì ``NaN``, ``Infinity`` và "
+"``-Infinity`` sẽ được mã hóa như vậy.  Hành vi này không tuân thủ thông số "
+"kỹ thuật JSON nhưng phù hợp với hầu hết các bộ mã hóa và giải mã dựa trên "
+"JavaScript.  Nếu không, sẽ rất khó để mã hóa các số float như vậy."
+
+#: ../../library/json.rst:516
+#, fuzzy
+msgid ""
+"If *sort_keys* is true (default: ``False``), then the output of dictionaries"
+" will be sorted by key; this is useful for regression tests to ensure that "
+"JSON serializations can be compared on a day-to-day basis."
+msgstr ""
+"Nếu *sort_keys* là true (mặc định: ``False``), thì đầu ra của từ điển sẽ "
+"được sắp xếp theo khóa; điều này rất hữu ích cho các thử nghiệm hồi quy để "
+"đảm bảo rằng các sê-ri JSON có thể được so sánh hàng ngày."
+
+#: ../../library/json.rst:520
+#, fuzzy
+msgid ""
+"If *indent* is a non-negative integer or string, then JSON array elements "
+"and object members will be pretty-printed with that indent level.  An indent"
+" level of 0, negative, or ``\"\"`` will only insert newlines.  ``None`` (the"
+" default) selects the most compact representation. Using a positive integer "
+"indent indents that many spaces per level.  If *indent* is a string (such as"
+" ``\"\\t\"``), that string is used to indent each level."
+msgstr ""
+"Nếu *indent* là một số nguyên hoặc chuỗi không âm thì các phần tử mảng và "
+"thành phần đối tượng JSON sẽ được in đẹp với mức thụt lề đó.  Mức thụt lề "
+"bằng 0, âm hoặc ``\"\"`` sẽ chỉ chèn dòng mới.  ``None`` (mặc định) chọn "
+"cách biểu diễn nhỏ gọn nhất. Sử dụng số nguyên dương thụt lề để thụt nhiều "
+"khoảng trắng cho mỗi cấp độ.  Nếu *indent* là một chuỗi (chẳng hạn như "
+"``\"\\t\"``), chuỗi đó được dùng để thụt lề từng cấp độ."
+
+#: ../../library/json.rst:530
+#, fuzzy
+msgid ""
+"If specified, *separators* should be an ``(item_separator, key_separator)`` "
+"tuple.  The default is ``(', ', ': ')`` if *indent* is ``None`` and ``(',', "
+"': ')`` otherwise.  To get the most compact JSON representation, you should "
+"specify ``(',', ':')`` to eliminate whitespace."
+msgstr ""
+"Nếu được chỉ định, *separators* phải là một bộ ``(item_separator, "
+"key_separator)``.  Mặc định là ``(', ', ': ')`` nếu *indent* là ``None`` và "
+"``(',', ': ')`` nếu không.  Để có được cách biểu diễn JSON nhỏ gọn nhất, bạn"
+" nên chỉ định ``(',', ':')`` để loại bỏ khoảng trắng."
+
+#: ../../library/json.rst:538
+#, fuzzy
+msgid ""
+"If specified, *default* should be a function that gets called for objects "
+"that can't otherwise be serialized.  It should return a JSON encodable "
+"version of the object or raise a :exc:`TypeError`.  If not specified, "
+":exc:`TypeError` is raised."
+msgstr ""
+"Nếu được chỉ định, *default* sẽ là một hàm được gọi cho các đối tượng không "
+"thể được tuần tự hóa.  Nó sẽ trả về phiên bản mã hóa JSON của đối tượng hoặc"
+" tăng :exc:`TypeError`.  Nếu không được chỉ định, :exc:`TypeError` sẽ được "
+"nâng lên."
+
+#: ../../library/json.rst:549
+#, fuzzy
+msgid ""
+"Implement this method in a subclass such that it returns a serializable "
+"object for *o*, or calls the base implementation (to raise a "
+":exc:`TypeError`)."
+msgstr ""
+"Triển khai phương thức này trong một lớp con sao cho nó trả về một đối tượng"
+" có thể tuần tự hóa cho *o* hoặc gọi triển khai cơ sở (để nâng cao "
+":exc:`TypeError`)."
+
+#: ../../library/json.rst:553
+#, fuzzy
+msgid ""
+"For example, to support arbitrary iterators, you could implement "
+":meth:`~JSONEncoder.default` like this::"
+msgstr ""
+"Ví dụ: để hỗ trợ các trình vòng lặp tùy ý, bạn có thể triển khai "
+":meth:`~JSONEncoder.default` như thế này ::"
+
+#: ../../library/json.rst:556
+#, fuzzy
+msgid ""
+"def default(self, o):\n"
+"   try:\n"
+"       iterable = iter(o)\n"
+"   except TypeError:\n"
+"       pass\n"
+"   else:\n"
+"       return list(iterable)\n"
+"   # Let the base class default method raise the TypeError\n"
+"   return super().default(o)"
+msgstr ""
+"mặc định mặc định (tự, o):\n"
+"   thử:\n"
+"       lặp lại được = iter(o)\n"
+"   ngoại trừ Lỗi Loại:\n"
+"       vượt qua\n"
+"   khác:\n"
+"       danh sách trả về (lặp lại)\n"
+"   # Let phương thức mặc định của lớp cơ sở gây ra TypeError\n"
+"   trả về super().default(o)"
+
+#: ../../library/json.rst:569
+#, fuzzy
+msgid ""
+"Return a JSON string representation of a Python data structure, *o*.  For "
+"example::"
+msgstr ""
+"Trả về biểu diễn chuỗi JSON của cấu trúc dữ liệu Python, *o*.  Ví dụ::"
+
+#: ../../library/json.rst:572
+#, python-brace-format, fuzzy
+msgid ""
+">>> json.JSONEncoder().encode({\"foo\": [\"bar\", \"baz\"]})\n"
+"'{\"foo\": [\"bar\", \"baz\"]}'"
+msgstr ""
+">>> json.JSONEncode().encode({\"foo\": [\"bar\", \"baz\"]})\n"
+"'{\"foo\": [\"bar\", \"baz\"]}'"
+
+#: ../../library/json.rst:578
+#, fuzzy
+msgid ""
+"Encode the given object, *o*, and yield each string representation as "
+"available.  For example::"
+msgstr ""
+"Mã hóa đối tượng đã cho, *o* và mang lại từng biểu diễn chuỗi nếu có.  Ví "
+"dụ::"
+
+#: ../../library/json.rst:581
+#, fuzzy
+msgid ""
+"for chunk in json.JSONEncoder().iterencode(bigobject):\n"
+"    mysocket.write(chunk)"
+msgstr ""
+"cho đoạn trong json.JSONEncode().iterencode(bigobject):\n"
+"    mysocket.write(chunk)"
+
+#: ../../library/json.rst:586
+#, fuzzy
+msgid "Exceptions"
+msgstr "Ngoại lệ"
+
+#: ../../library/json.rst:590
+#, fuzzy
+msgid ""
+"Subclass of :exc:`ValueError` with the following additional attributes:"
+msgstr "Lớp con của :exc:`ValueError` với các thuộc tính bổ sung sau:"
+
+#: ../../library/json.rst:594
+#, fuzzy
+msgid "The unformatted error message."
+msgstr "Thông báo lỗi không được định dạng."
+
+#: ../../library/json.rst:598
+#, fuzzy
+msgid "The JSON document being parsed."
+msgstr "Tài liệu JSON đang được phân tích cú pháp."
+
+#: ../../library/json.rst:602
+#, fuzzy
+msgid "The start index of *doc* where parsing failed."
+msgstr "Chỉ mục bắt đầu của *doc* nơi phân tích cú pháp không thành công."
+
+#: ../../library/json.rst:606
+#, fuzzy
+msgid "The line corresponding to *pos*."
+msgstr "Dòng tương ứng với *pos*."
+
+#: ../../library/json.rst:610
+#, fuzzy
+msgid "The column corresponding to *pos*."
+msgstr "Cột tương ứng với *pos*."
+
+#: ../../library/json.rst:616
+#, fuzzy
+msgid "Standard Compliance and Interoperability"
+msgstr "Tuân thủ tiêu chuẩn và khả năng tương tác"
+
+#: ../../library/json.rst:618
+#, fuzzy
+msgid ""
+"The JSON format is specified by :rfc:`7159` and by `ECMA-404 <https://ecma-"
+"international.org/publications-and-standards/standards/ecma-404/>`_. This "
+"section details this module's level of compliance with the RFC. For "
+"simplicity, :class:`JSONEncoder` and :class:`JSONDecoder` subclasses, and "
+"parameters other than those explicitly mentioned, are not considered."
+msgstr ""
+"Định dạng JSON được chỉ định bởi :rfc:`7159` và `ECMA-404 <https://ecma-"
+"international.org/publications-and-standards/standards/ecma-404/>`_. Phần "
+"này nêu chi tiết mức độ tuân thủ của mô-đun này với RFC. Để đơn giản, các "
+"lớp con :class:`JSONEncoder` và :class:`JSONDecoder` cũng như các tham số "
+"khác ngoài những tham số được đề cập rõ ràng sẽ không được xem xét."
+
+#: ../../library/json.rst:624
+#, fuzzy
+msgid ""
+"This module does not comply with the RFC in a strict fashion, implementing "
+"some extensions that are valid JavaScript but not valid JSON.  In "
+"particular:"
+msgstr ""
+"Mô-đun này không tuân thủ RFC một cách nghiêm ngặt, triển khai một số tiện "
+"ích mở rộng là JavaScript hợp lệ nhưng không hợp lệ JSON.  Đặc biệt:"
+
+#: ../../library/json.rst:627
+#, fuzzy
+msgid "Infinite and NaN number values are accepted and output;"
+msgstr "Giá trị số vô hạn và NaN được chấp nhận và xuất ra;"
+
+#: ../../library/json.rst:628
+#, fuzzy
+msgid ""
+"Repeated names within an object are accepted, and only the value of the last"
+" name-value pair is used."
+msgstr ""
+"Các tên lặp lại trong một đối tượng được chấp nhận và chỉ sử dụng giá trị "
+"của cặp giá trị tên cuối cùng."
+
+#: ../../library/json.rst:631
+#, fuzzy
+msgid ""
+"Since the RFC permits RFC-compliant parsers to accept input texts that are "
+"not RFC-compliant, this module's deserializer is technically RFC-compliant "
+"under default settings."
+msgstr ""
+"Vì RFC cho phép các trình phân tích cú pháp tuân thủ RFC chấp nhận văn bản "
+"đầu vào không tuân thủ RFC, nên trình giải tuần tự của mô-đun này tuân thủ "
+"về mặt kỹ thuật RFC trong cài đặt mặc định."
+
+#: ../../library/json.rst:636
+#, fuzzy
+msgid "Character Encodings"
+msgstr "Mã hóa ký tự"
+
+#: ../../library/json.rst:638
+#, fuzzy
+msgid ""
+"The RFC requires that JSON be represented using either UTF-8, UTF-16, or "
+"UTF-32, with UTF-8 being the recommended default for maximum "
+"interoperability."
+msgstr ""
+"RFC yêu cầu JSON phải được thể hiện bằng UTF-8, UTF-16 hoặc UTF-32, với "
+"UTF-8 là mặc định được đề xuất để có khả năng tương tác tối đa."
+
+#: ../../library/json.rst:641
+#, fuzzy
+msgid ""
+"As permitted, though not required, by the RFC, this module's serializer sets"
+" *ensure_ascii=True* by default, thus escaping the output so that the "
+"resulting strings only contain printable ASCII characters."
+msgstr ""
+"Như được RFC cho phép, mặc dù không bắt buộc, bộ tuần tự hóa của mô-đun này "
+"đặt *ensure_ascii=True* theo mặc định, do đó thoát khỏi đầu ra để các chuỗi "
+"kết quả chỉ chứa các ký tự ASCII có thể in được."
+
+#: ../../library/json.rst:645
+#, fuzzy
+msgid ""
+"Other than the *ensure_ascii* parameter, this module is defined strictly in "
+"terms of conversion between Python objects and :class:`Unicode strings "
+"<str>`, and thus does not otherwise directly address the issue of character "
+"encodings."
+msgstr ""
+"Khác với tham số *ensure_ascii*, mô-đun này được xác định nghiêm ngặt về mặt"
+" chuyển đổi giữa các đối tượng Python và :class:`Unicode strings <str>` và "
+"do đó không trực tiếp giải quyết vấn đề mã hóa ký tự."
+
+#: ../../library/json.rst:650
+#, fuzzy
+msgid ""
+"The RFC prohibits adding a byte order mark (BOM) to the start of a JSON "
+"text, and this module's serializer does not add a BOM to its output. The RFC"
+" permits, but does not require, JSON deserializers to ignore an initial BOM "
+"in their input.  This module's deserializer raises a :exc:`ValueError` when "
+"an initial BOM is present."
+msgstr ""
+"RFC cấm thêm dấu thứ tự byte (BOM) vào đầu văn bản JSON và bộ tuần tự hóa "
+"của mô-đun này không thêm BOM vào đầu ra của nó. RFC cho phép, nhưng không "
+"yêu cầu, bộ giải tuần tự JSON bỏ qua BOM ban đầu trong đầu vào của chúng.  "
+"Trình giải tuần tự của mô-đun này tăng :exc:`ValueError` khi có BOM ban đầu."
+
+#: ../../library/json.rst:656
+#, fuzzy
+msgid ""
+"The RFC does not explicitly forbid JSON strings which contain byte sequences"
+" that don't correspond to valid Unicode characters (e.g. unpaired UTF-16 "
+"surrogates), but it does note that they may cause interoperability problems."
+" By default, this module accepts and outputs (when present in the original "
+":class:`str`) code points for such sequences."
+msgstr ""
+"RFC không cấm rõ ràng các chuỗi JSON chứa các chuỗi byte không tương ứng với"
+" các ký tự Unicode hợp lệ (ví dụ: các đại diện thay thế UTF-16 không ghép "
+"đôi), nhưng lưu ý rằng chúng có thể gây ra các vấn đề về khả năng tương tác."
+" Theo mặc định, mô-đun này chấp nhận và xuất ra các điểm mã (khi có trong "
+":class:`str` gốc) cho các chuỗi như vậy."
+
+#: ../../library/json.rst:664
+#, fuzzy
+msgid "Infinite and NaN Number Values"
+msgstr "Giá trị số vô hạn và NaN"
+
+#: ../../library/json.rst:666
+#, fuzzy
+msgid ""
+"The RFC does not permit the representation of infinite or NaN number values."
+" Despite that, by default, this module accepts and outputs ``Infinity``, "
+"``-Infinity``, and ``NaN`` as if they were valid JSON number literal "
+"values::"
+msgstr ""
+"Zz003zz không cho phép biểu diễn các giá trị số vô hạn hoặc NaN. Mặc dù vậy,"
+" theo mặc định, mô-đun này chấp nhận và xuất ra ``Infinity``, ``-Infinity`` "
+"và ``NaN`` như thể chúng là các giá trị chữ số JSON hợp lệ::"
+
+#: ../../library/json.rst:670
+#, fuzzy
+msgid ""
+">>> # Neither of these calls raises an exception, but the results are not valid JSON\n"
+">>> json.dumps(float('-inf'))\n"
+"'-Infinity'\n"
+">>> json.dumps(float('nan'))\n"
+"'NaN'\n"
+">>> # Same when deserializing\n"
+">>> json.loads('-Infinity')\n"
+"-inf\n"
+">>> json.loads('NaN')\n"
+"nan"
+msgstr ""
+">>> # Neither trong số các cuộc gọi này đưa ra một ngoại lệ, nhưng kết quả không hợp lệ JSON\n"
+">>> json.dumps(float('-inf'))\n"
+"'-Vô cực'\n"
+">>> json.dumps(float('nan'))\n"
+"'NaN'\n"
+">>> # Same khi giải tuần tự hóa\n"
+">>> json.loads('-Infinity')\n"
+"-inf\n"
+">>> json.loads('NaN')\n"
+"nan"
+
+#: ../../library/json.rst:681
+#, fuzzy
+msgid ""
+"In the serializer, the *allow_nan* parameter can be used to alter this "
+"behavior.  In the deserializer, the *parse_constant* parameter can be used "
+"to alter this behavior."
+msgstr ""
+"Trong bộ nối tiếp, tham số *allow_nan* có thể được sử dụng để thay đổi hành "
+"vi này.  Trong trình giải tuần tự, tham số *parse_constant* có thể được sử "
+"dụng để thay đổi hành vi này."
+
+#: ../../library/json.rst:687
+#, fuzzy
+msgid "Repeated Names Within an Object"
+msgstr "Tên lặp đi lặp lại trong một đối tượng"
+
+#: ../../library/json.rst:689
+#, fuzzy
+msgid ""
+"The RFC specifies that the names within a JSON object should be unique, but "
+"does not mandate how repeated names in JSON objects should be handled.  By "
+"default, this module does not raise an exception; instead, it ignores all "
+"but the last name-value pair for a given name::"
+msgstr ""
+"RFC chỉ định rằng các tên trong đối tượng JSON phải là duy nhất, nhưng không"
+" bắt buộc cách xử lý các tên lặp lại trong đối tượng JSON.  Theo mặc định, "
+"mô-đun này không đưa ra ngoại lệ; thay vào đó, nó bỏ qua tất cả ngoại trừ "
+"cặp tên-giá trị cuối cùng cho một tên đã cho::"
+
+#: ../../library/json.rst:694
+#, python-brace-format, fuzzy
+msgid ""
+">>> weird_json = '{\"x\": 1, \"x\": 2, \"x\": 3}'\n"
+">>> json.loads(weird_json)\n"
+"{'x': 3}"
+msgstr ""
+">>> lạ_json = '{\"x\": 1, \"x\": 2, \"x\": 3}'\n"
+">>> json.loads(weird_json)\n"
+"{'x': 3}"
+
+#: ../../library/json.rst:698
+#, fuzzy
+msgid "The *object_pairs_hook* parameter can be used to alter this behavior."
+msgstr ""
+"Tham số *object_pairs_hook* có thể được sử dụng để thay đổi hành vi này."
+
+#: ../../library/json.rst:702
+#, fuzzy
+msgid "Top-level Non-Object, Non-Array Values"
+msgstr "Giá trị không phải đối tượng, không phải mảng cấp cao nhất"
+
+#: ../../library/json.rst:704
+#, fuzzy
+msgid ""
+"The old version of JSON specified by the obsolete :rfc:`4627` required that "
+"the top-level value of a JSON text must be either a JSON object or array "
+"(Python :class:`dict` or :class:`list`), and could not be a JSON null, "
+"boolean, number, or string value.  :rfc:`7159` removed that restriction, and"
+" this module does not and has never implemented that restriction in either "
+"its serializer or its deserializer."
+msgstr ""
+"Phiên bản cũ của JSON được chỉ định bởi :rfc:`4627` lỗi thời yêu cầu giá trị"
+" cấp cao nhất của văn bản JSON phải là đối tượng hoặc mảng JSON (Python "
+":class:`dict` hoặc :class:`list`) và không được là giá trị null, boolean, số"
+" hoặc chuỗi JSON.  :rfc:`7159` đã loại bỏ hạn chế đó và mô-đun này không và "
+"chưa bao giờ triển khai hạn chế đó trong bộ tuần tự hóa hoặc bộ giải tuần tự"
+" của nó."
+
+#: ../../library/json.rst:711
+#, fuzzy
+msgid ""
+"Regardless, for maximum interoperability, you may wish to voluntarily adhere"
+" to the restriction yourself."
+msgstr ""
+"Bất chấp điều đó, để có khả năng tương tác tối đa, bạn có thể muốn tự mình "
+"tuân thủ hạn chế."
+
+#: ../../library/json.rst:716
+#, fuzzy
+msgid "Implementation Limitations"
+msgstr "Hạn chế thực hiện"
+
+#: ../../library/json.rst:718
+#, fuzzy
+msgid "Some JSON deserializer implementations may set limits on:"
+msgstr "Một số triển khai trình giải tuần tự JSON có thể đặt giới hạn cho:"
+
+#: ../../library/json.rst:720
+#, fuzzy
+msgid "the size of accepted JSON texts"
+msgstr "kích thước của văn bản JSON được chấp nhận"
+
+#: ../../library/json.rst:721
+#, fuzzy
+msgid "the maximum level of nesting of JSON objects and arrays"
+msgstr "mức lồng nhau tối đa của các đối tượng và mảng JSON"
+
+#: ../../library/json.rst:722
+#, fuzzy
+msgid "the range and precision of JSON numbers"
+msgstr "phạm vi và độ chính xác của số JSON"
+
+#: ../../library/json.rst:723
+#, fuzzy
+msgid "the content and maximum length of JSON strings"
+msgstr "nội dung và độ dài tối đa của chuỗi JSON"
+
+#: ../../library/json.rst:725
+#, fuzzy
+msgid ""
+"This module does not impose any such limits beyond those of the relevant "
+"Python datatypes themselves or the Python interpreter itself."
+msgstr ""
+"Mô-đun này không áp đặt bất kỳ giới hạn nào như vậy ngoài các giới hạn của "
+"chính các kiểu dữ liệu Python có liên quan hoặc chính trình thông dịch "
+"Python."
+
+#: ../../library/json.rst:728
+#, fuzzy
+msgid ""
+"When serializing to JSON, beware any such limitations in applications that "
+"may consume your JSON.  In particular, it is common for JSON numbers to be "
+"deserialized into IEEE 754 double precision numbers and thus subject to that"
+" representation's range and precision limitations.  This is especially "
+"relevant when serializing Python :class:`int` values of extremely large "
+"magnitude, or when serializing instances of \"exotic\" numerical types such "
+"as :class:`decimal.Decimal`."
+msgstr ""
+"Khi tuần tự hóa thành JSON, hãy cẩn thận với mọi hạn chế như vậy trong các "
+"ứng dụng có thể tiêu tốn JSON của bạn.  Đặc biệt, thông thường các số JSON "
+"sẽ được giải tuần tự hóa thành các số có độ chính xác kép IEEE 754 và do đó "
+"phải tuân theo các giới hạn về phạm vi và độ chính xác của biểu diễn đó.  "
+"Điều này đặc biệt có liên quan khi tuần tự hóa các giá trị :class:`int` của "
+"Python có cường độ cực lớn hoặc khi tuần tự hóa các phiên bản của các loại "
+"số \"kỳ lạ\" như :class:`decimal.Decimal`."
+
+#: ../../library/json.rst:741
+#, fuzzy
+msgid "Command-line interface"
+msgstr "Giao diện dòng lệnh"
+
+#: ../../library/json.rst:746
+#, fuzzy
+msgid "**Source code:** :source:`Lib/json/tool.py`"
+msgstr "**Source code:** :source:`Lib/json/tool.py`"
+
+#: ../../library/json.rst:750
+#, fuzzy
+msgid ""
+"The :mod:`!json` module can be invoked as a script via ``python -m json`` to"
+" validate and pretty-print JSON objects. The :mod:`!json.tool` submodule "
+"implements this interface."
+msgstr ""
+"Mô-đun :mod:`!json` có thể được gọi dưới dạng tập lệnh thông qua ``python -m"
+" json`` để xác thực và in các đối tượng JSON đẹp mắt. Mô-đun con "
+":mod:`!json.tool` thực hiện giao diện này."
+
+#: ../../library/json.rst:754
+#, fuzzy
+msgid ""
+"If the optional ``infile`` and ``outfile`` arguments are not specified, "
+":data:`sys.stdin` and :data:`sys.stdout` will be used respectively:"
+msgstr ""
+"Nếu các đối số ``infile`` và ``outfile`` tùy chọn không được chỉ định, "
+":data:`sys.stdin` và :data:`sys.stdout` sẽ được sử dụng tương ứng:"
+
+#: ../../library/json.rst:757
+#, python-brace-format, fuzzy
+msgid ""
+"$ echo '{\"json\": \"obj\"}' | python -m json\n"
+"{\n"
+"    \"json\": \"obj\"\n"
+"}\n"
+"$ echo '{1.2:3.4}' | python -m json\n"
+"Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+msgstr ""
+"$ echo '{\"json\": \"obj\"}' | trăn -m json\n"
+"{\n"
+"    \"json\": \"obj\"\n"
+"}\n"
+"$ echo '{1.2:3.4}' | trăn -m json\n"
+"Yêu cầu tên thuộc tính được đặt trong dấu ngoặc kép: dòng 1 cột 2 (char 1)"
+
+#: ../../library/json.rst:766
+#, fuzzy
+msgid ""
+"The output is now in the same order as the input. Use the :option:`--sort-"
+"keys` option to sort the output of dictionaries alphabetically by key."
+msgstr ""
+"Đầu ra bây giờ có cùng thứ tự với đầu vào. Sử dụng tùy chọn :option:`--sort-"
+"keys` để sắp xếp đầu ra của từ điển theo thứ tự bảng chữ cái theo khóa."
+
+#: ../../library/json.rst:771
+#, fuzzy
+msgid ""
+"The :mod:`!json` module may now be directly executed as ``python -m json``. "
+"For backwards compatibility, invoking the CLI as ``python -m json.tool`` "
+"remains supported."
+msgstr ""
+"Mô-đun :mod:`!json` hiện có thể được thực thi trực tiếp dưới dạng ``python "
+"-m json``. Để tương thích ngược, việc gọi CLI là ``python -m json.tool`` vẫn"
+" được hỗ trợ."
+
+#: ../../library/json.rst:778
+#, fuzzy
+msgid "Command-line options"
+msgstr "Tùy chọn dòng lệnh"
+
+#: ../../library/json.rst:782
+#, fuzzy
+msgid "The JSON file to be validated or pretty-printed:"
+msgstr "Tệp JSON cần được xác thực hoặc được in đẹp:"
+
+#: ../../library/json.rst:784
+#, python-brace-format, fuzzy
+msgid ""
+"$ python -m json mp_films.json\n"
+"[\n"
+"    {\n"
+"        \"title\": \"And Now for Something Completely Different\",\n"
+"        \"year\": 1971\n"
+"    },\n"
+"    {\n"
+"        \"title\": \"Monty Python and the Holy Grail\",\n"
+"        \"year\": 1975\n"
+"    }\n"
+"]"
+msgstr ""
+"$ python -m json mp_films.json\n"
+"[\n"
+"    {\n"
+"        \"title\": \"Và bây giờ là điều gì đó hoàn toàn khác\",\n"
+"        \"năm\": 1971\n"
+"    },\n"
+"    {\n"
+"        \"title\": \"Monty Python và Chén Thánh\",\n"
+"        \"năm\": 1975\n"
+"    }\n"
+"]"
+
+#: ../../library/json.rst:798
+#, fuzzy
+msgid "If *infile* is not specified, read from :data:`sys.stdin`."
+msgstr "Nếu *infile* không được chỉ định, hãy đọc từ :data:`sys.stdin`."
+
+#: ../../library/json.rst:802
+#, fuzzy
+msgid ""
+"Write the output of the *infile* to the given *outfile*. Otherwise, write it"
+" to :data:`sys.stdout`."
+msgstr ""
+"Viết đầu ra của *infile* vào *outfile* đã cho. Nếu không, hãy ghi nó vào "
+":data:`sys.stdout`."
+
+#: ../../library/json.rst:807
+#, fuzzy
+msgid "Sort the output of dictionaries alphabetically by key."
+msgstr "Sắp xếp đầu ra của từ điển theo thứ tự bảng chữ cái theo khóa."
+
+#: ../../library/json.rst:813
+#, fuzzy
+msgid ""
+"Disable escaping of non-ascii characters, see :func:`json.dumps` for more "
+"information."
+msgstr ""
+"Tắt tính năng thoát các ký tự không phải mã ascii, xem :func:`json.dumps` để"
+" biết thêm thông tin."
+
+#: ../../library/json.rst:819
+#, fuzzy
+msgid "Parse every input line as separate JSON object."
+msgstr "Phân tích từng dòng đầu vào dưới dạng đối tượng JSON riêng biệt."
+
+#: ../../library/json.rst:825
+#, fuzzy
+msgid "Mutually exclusive options for whitespace control."
+msgstr "Các tùy chọn loại trừ lẫn nhau để kiểm soát khoảng trắng."
+
+#: ../../library/json.rst:831
+#, fuzzy
+msgid "Show the help message."
+msgstr "Hiển thị thông báo trợ giúp."
+
+#: ../../library/json.rst:835
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/json.rst:836
+#, fuzzy
+msgid ""
+"As noted in `the errata for RFC 7159 <https://www.rfc-"
+"editor.org/errata_search.php?rfc=7159>`_, JSON permits literal U+2028 (LINE "
+"SEPARATOR) and U+2029 (PARAGRAPH SEPARATOR) characters in strings, whereas "
+"JavaScript (as of ECMAScript Edition 5.1) does not."
+msgstr ""
+"Như đã lưu ý trong `the errata for RFC 7159 <https://www.rfc-"
+"editor.org/errata_search.php?rfc=7159>`_, JSON cho phép các ký tự U+2028 "
+"(LINE SEPARATOR) và U+2029 (PARAGRAPH SEPARATOR) trong chuỗi, trong khi "
+"JavaScript (kể từ ECMAScript Edition 5.1) thì không."

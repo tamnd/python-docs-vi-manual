@@ -1,0 +1,476 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/marshal.rst:2
+#, fuzzy
+msgid ":mod:`!marshal` --- Internal Python object serialization"
+msgstr ":mod:`!marshal` --- Tuần tự hóa đối tượng Python nội bộ"
+
+#: ../../library/marshal.rst:10
+#, fuzzy
+msgid ""
+"This module contains functions that can read and write Python values in a "
+"binary format.  The format is specific to Python, but independent of machine"
+" architecture issues (e.g., you can write a Python value to a file on a PC, "
+"transport the file to a Mac, and read it back there).  Details of the format"
+" are undocumented on purpose; it may change between Python versions "
+"(although it rarely does). [#]_"
+msgstr ""
+"Mô-đun này chứa các hàm có thể đọc và ghi các giá trị Python ở định dạng nhị"
+" phân.  Định dạng này dành riêng cho Python nhưng không phụ thuộc vào các "
+"vấn đề về kiến ​​trúc máy (ví dụ: bạn có thể ghi giá trị Python vào tệp trên"
+" PC, truyền tệp sang máy Mac và đọc lại ở đó).  Thông tin chi tiết về định "
+"dạng không được ghi lại có mục đích; nó có thể thay đổi giữa các phiên bản "
+"Python (mặc dù hiếm khi xảy ra). [#]_"
+
+#: ../../library/marshal.rst:21
+#, fuzzy
+msgid ""
+"This is not a general \"persistence\" module.  For general persistence and "
+"transfer of Python objects through RPC calls, see the modules :mod:`pickle` "
+"and :mod:`shelve`.  The :mod:`!marshal` module exists mainly to support "
+"reading and writing the \"pseudo-compiled\" code for Python modules of "
+":file:`.pyc` files. Therefore, the Python maintainers reserve the right to "
+"modify the marshal format in backward incompatible ways should the need "
+"arise. The format of code objects is not compatible between Python versions,"
+" even if the version of the format is the same. De-serializing a code object"
+" in the incorrect Python version has undefined behavior. If you're "
+"serializing and de-serializing Python objects, use the :mod:`pickle` module "
+"instead -- the performance is comparable, version independence is "
+"guaranteed, and pickle supports a substantially wider range of objects than "
+"marshal."
+msgstr ""
+"Đây không phải là mô-đun \"kiên trì\" chung chung.  Để biết tính bền vững và"
+" chuyển giao chung của các đối tượng Python thông qua lệnh gọi RPC, hãy xem "
+"các mô-đun :mod:`pickle` và :mod:`shelve`.  Mô-đun :mod:`!marshal` tồn tại "
+"chủ yếu để hỗ trợ đọc và ghi mã \"được biên dịch giả\" cho các mô-đun Python"
+" của tệp :file:`.pyc`. Do đó, những người bảo trì Python có quyền sửa đổi "
+"định dạng nguyên soái theo những cách không tương thích ngược nếu cần. Định "
+"dạng của các đối tượng mã không tương thích giữa các phiên bản Python, ngay "
+"cả khi phiên bản có định dạng giống nhau. Việc hủy tuần tự hóa một đối tượng"
+" mã trong phiên bản Python không chính xác có hành vi không xác định. Nếu "
+"bạn đang tuần tự hóa và hủy tuần tự hóa các đối tượng Python, hãy sử dụng "
+"mô-đun :mod:`pickle` thay thế -- hiệu suất có thể so sánh được, tính độc lập"
+" của phiên bản được đảm bảo và dưa chua hỗ trợ phạm vi đối tượng rộng hơn "
+"đáng kể so với nguyên soái."
+
+#: ../../library/marshal.rst:37
+#, fuzzy
+msgid ""
+"The :mod:`!marshal` module is not intended to be secure against erroneous or"
+" maliciously constructed data.  Never unmarshal data received from an "
+"untrusted or unauthenticated source."
+msgstr ""
+"Mô-đun :mod:`!marshal` không nhằm mục đích bảo mật trước dữ liệu sai sót "
+"hoặc được xây dựng độc hại.  Không bao giờ sắp xếp dữ liệu nhận được từ một "
+"nguồn không đáng tin cậy hoặc không được xác thực."
+
+#: ../../library/marshal.rst:41
+#, fuzzy
+msgid ""
+"There are functions that read/write files as well as functions operating on "
+"bytes-like objects."
+msgstr ""
+"Có các hàm đọc/ghi tệp cũng như các hàm hoạt động trên các đối tượng giống "
+"byte."
+
+#: ../../library/marshal.rst:46
+#, fuzzy
+msgid ""
+"Not all Python object types are supported; in general, only objects whose "
+"value is independent from a particular invocation of Python can be written "
+"and read by this module.  The following types are supported:"
+msgstr ""
+"Không phải tất cả các loại đối tượng Python đều được hỗ trợ; nói chung, chỉ "
+"những đối tượng có giá trị độc lập với lệnh gọi Python cụ thể mới có thể "
+"được ghi và đọc bởi mô-đun này.  Các loại sau đây được hỗ trợ:"
+
+#: ../../library/marshal.rst:50
+#, fuzzy
+msgid ""
+"Numeric types: :class:`int`, :class:`bool`, :class:`float`, "
+":class:`complex`."
+msgstr ""
+"Các loại số: :class:`int`, :class:`bool`, :class:`float`, :class:`complex`."
+
+#: ../../library/marshal.rst:51
+#, fuzzy
+msgid ""
+"Strings (:class:`str`) and :class:`bytes`. :term:`Bytes-like objects <bytes-"
+"like object>` like :class:`bytearray` are marshalled as :class:`!bytes`."
+msgstr ""
+"Dây (:class:`str`) và :class:`bytes`. :term:`Bytes-like objects <bytes-like "
+"object>` như :class:`bytearray` được sắp xếp thành :class:`!bytes`."
+
+#: ../../library/marshal.rst:54
+#, fuzzy
+msgid ""
+"Containers: :class:`tuple`, :class:`list`, :class:`set`, :class:`frozenset`,"
+" and (since :data:`version` 5), :class:`slice`. It should be understood that"
+" these are supported only if the values contained therein are themselves "
+"supported. Recursive containers are supported since :data:`version` 3."
+msgstr ""
+"Vùng chứa: :class:`tuple`, :class:`list`, :class:`set`, :class:`frozenset` "
+"và (kể từ :data:`version` 5), :class:`slice`. Cần hiểu rằng những điều này "
+"chỉ được hỗ trợ nếu bản thân các giá trị chứa trong đó được hỗ trợ. Các vùng"
+" chứa đệ quy được hỗ trợ kể từ :data:`version` 3."
+
+#: ../../library/marshal.rst:59
+#, fuzzy
+msgid ""
+"The singletons :const:`None`, :const:`Ellipsis` and :exc:`StopIteration`."
+msgstr "Các đĩa đơn :const:`None`, :const:`Ellipsis` và :exc:`StopIteration`."
+
+#: ../../library/marshal.rst:60
+#, fuzzy
+msgid ""
+":class:`code` objects, if *allow_code* is true. See note above about version"
+" dependence."
+msgstr ""
+"đối tượng :class:`code`, nếu *allow_code* là đúng. Xem lưu ý ở trên về sự "
+"phụ thuộc vào phiên bản."
+
+#: ../../library/marshal.rst:65
+#, fuzzy
+msgid ""
+"Added format version 3, which supports marshalling recursive lists, sets and"
+" dictionaries."
+msgstr ""
+"Đã thêm định dạng phiên bản 3, hỗ trợ sắp xếp các danh sách, bộ và từ điển "
+"đệ quy."
+
+#: ../../library/marshal.rst:67
+#, fuzzy
+msgid ""
+"Added format version 4, which supports efficient representations of short "
+"strings."
+msgstr ""
+"Đã thêm phiên bản định dạng 4, hỗ trợ biểu diễn hiệu quả các chuỗi ngắn."
+
+#: ../../library/marshal.rst:72
+#, fuzzy
+msgid "Added format version 5, which allows marshalling slices."
+msgstr "Đã thêm định dạng phiên bản 5, cho phép sắp xếp các lát cắt."
+
+#: ../../library/marshal.rst:75
+#, fuzzy
+msgid "The module defines these functions:"
+msgstr "Mô-đun xác định các chức năng này:"
+
+#: ../../library/marshal.rst:80
+#, fuzzy
+msgid ""
+"Write the value on the open file.  The value must be a supported type.  The "
+"file must be a writeable :term:`binary file`."
+msgstr ""
+"Viết giá trị vào tập tin đang mở.  Giá trị phải là loại được hỗ trợ.  Tệp "
+"phải là :term:`binary file` có thể ghi được."
+
+#: ../../library/marshal.rst:83
+#, fuzzy
+msgid ""
+"If the value has (or contains an object that has) an unsupported type, a "
+":exc:`ValueError` exception is raised --- but garbage data will also be "
+"written to the file.  The object will not be properly read back by "
+":func:`load`. :ref:`Code objects <code-objects>` are only supported if "
+"*allow_code* is true."
+msgstr ""
+"Nếu giá trị có (hoặc chứa một đối tượng có) loại không được hỗ trợ, ngoại lệ"
+" :exc:`ValueError` sẽ xuất hiện --- nhưng dữ liệu rác cũng sẽ được ghi vào "
+"tệp.  Đối tượng sẽ không được :func:`load` đọc lại chính xác. :ref:`Code "
+"objects <code-objects>` chỉ được hỗ trợ nếu *allow_code* là đúng."
+
+#: ../../library/marshal.rst:88
+#, fuzzy
+msgid ""
+"The *version* argument indicates the data format that ``dump`` should use "
+"(see below)."
+msgstr ""
+"Đối số *version* cho biết định dạng dữ liệu mà ``dump`` nên sử dụng (xem bên"
+" dưới)."
+
+#: ../../library/marshal.rst:91 ../../library/marshal.rst:131
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``marshal.dumps`` with arguments "
+"``value``, ``version``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``marshal.dumps`` với các đối số "
+"``value``, ``version``."
+
+#: ../../library/marshal.rst:93 ../../library/marshal.rst:117
+#: ../../library/marshal.rst:133 ../../library/marshal.rst:151
+#, fuzzy
+msgid "Added the *allow_code* parameter."
+msgstr "Đã thêm tham số *allow_code*."
+
+#: ../../library/marshal.rst:99
+#, fuzzy
+msgid ""
+"Read one value from the open file and return it.  If no valid value is read "
+"(e.g. because the data has a different Python version's incompatible marshal"
+" format), raise :exc:`EOFError`, :exc:`ValueError` or :exc:`TypeError`. "
+":ref:`Code objects <code-objects>` are only supported if *allow_code* is "
+"true. The file must be a readable :term:`binary file`."
+msgstr ""
+"Đọc một giá trị từ tệp đang mở và trả về nó.  Nếu không có giá trị hợp lệ "
+"nào được đọc (ví dụ: vì dữ liệu có định dạng so sánh không tương thích của "
+"phiên bản Python khác), hãy tăng :exc:`EOFError`, :exc:`ValueError` hoặc "
+":exc:`TypeError`. :ref:`Code objects <code-objects>` chỉ được hỗ trợ nếu "
+"*allow_code* là đúng. Tệp phải là :term:`binary file` có thể đọc được."
+
+#: ../../library/marshal.rst:105
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``marshal.load`` with no "
+"arguments."
+msgstr ""
+"Tăng :ref:`auditing event <auditing>` ``marshal.load`` mà không có đối số."
+
+#: ../../library/marshal.rst:109
+#, fuzzy
+msgid ""
+"If an object containing an unsupported type was marshalled with "
+":func:`dump`, :func:`load` will substitute ``None`` for the unmarshallable "
+"type."
+msgstr ""
+"Nếu một đối tượng chứa loại không được hỗ trợ được sắp xếp bằng "
+":func:`dump`, :func:`load` sẽ thay thế ``None`` cho loại không thể sắp xếp "
+"được."
+
+#: ../../library/marshal.rst:114
+#, fuzzy
+msgid ""
+"This call used to raise a ``code.__new__`` audit event for each code object."
+" Now it raises a single ``marshal.load`` event for the entire load "
+"operation."
+msgstr ""
+"Cuộc gọi này được sử dụng để đưa ra sự kiện kiểm tra ``code.__new__`` cho "
+"từng đối tượng mã. Bây giờ nó đưa ra một sự kiện ``marshal.load`` duy nhất "
+"cho toàn bộ hoạt động tải."
+
+#: ../../library/marshal.rst:123
+#, fuzzy
+msgid ""
+"Return the bytes object that would be written to a file by ``dump(value, "
+"file)``.  The value must be a supported type.  Raise a :exc:`ValueError` "
+"exception if value has (or contains an object that has) an unsupported type."
+" :ref:`Code objects <code-objects>` are only supported if *allow_code* is "
+"true."
+msgstr ""
+"Trả về đối tượng byte sẽ được ``dump(value, file)`` ghi vào tệp.  Giá trị "
+"phải là loại được hỗ trợ.  Đưa ra ngoại lệ :exc:`ValueError` nếu giá trị có "
+"(hoặc chứa đối tượng có) loại không được hỗ trợ. :ref:`Code objects <code-"
+"objects>` chỉ được hỗ trợ nếu *allow_code* là đúng."
+
+#: ../../library/marshal.rst:128
+#, fuzzy
+msgid ""
+"The *version* argument indicates the data format that ``dumps`` should use "
+"(see below)."
+msgstr ""
+"Đối số *version* cho biết định dạng dữ liệu mà ``dumps`` nên sử dụng (xem "
+"bên dưới)."
+
+#: ../../library/marshal.rst:139
+#, fuzzy
+msgid ""
+"Convert the :term:`bytes-like object` to a value.  If no valid value is "
+"found, raise :exc:`EOFError`, :exc:`ValueError` or :exc:`TypeError`. "
+":ref:`Code objects <code-objects>` are only supported if *allow_code* is "
+"true. Extra bytes in the input are ignored."
+msgstr ""
+"Chuyển đổi :term:`bytes-like object` thành một giá trị.  Nếu không tìm thấy "
+"giá trị hợp lệ, hãy tăng :exc:`EOFError`, :exc:`ValueError` hoặc "
+":exc:`TypeError`. :ref:`Code objects <code-objects>` chỉ được hỗ trợ nếu "
+"*allow_code* là đúng. Các byte bổ sung trong đầu vào sẽ bị bỏ qua."
+
+#: ../../library/marshal.rst:144
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``marshal.loads`` with argument "
+"``bytes``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``marshal.loads`` với đối số "
+"``bytes``."
+
+#: ../../library/marshal.rst:148
+#, fuzzy
+msgid ""
+"This call used to raise a ``code.__new__`` audit event for each code object."
+" Now it raises a single ``marshal.loads`` event for the entire load "
+"operation."
+msgstr ""
+"Cuộc gọi này được sử dụng để đưa ra sự kiện kiểm tra ``code.__new__`` cho "
+"từng đối tượng mã. Bây giờ nó đưa ra một sự kiện ``marshal.loads`` duy nhất "
+"cho toàn bộ hoạt động tải."
+
+#: ../../library/marshal.rst:155
+#, fuzzy
+msgid "In addition, the following constants are defined:"
+msgstr "Ngoài ra, các hằng số sau được xác định:"
+
+#: ../../library/marshal.rst:159
+#, fuzzy
+msgid ""
+"Indicates the format that the module uses. Version 0 is the historical first"
+" version; subsequent versions add new features. Generally, a new version "
+"becomes the default when it is introduced."
+msgstr ""
+"Cho biết định dạng mà mô-đun sử dụng. Phiên bản 0 là phiên bản lịch sử đầu "
+"tiên; các phiên bản tiếp theo bổ sung thêm tính năng mới. Nói chung, một "
+"phiên bản mới sẽ trở thành mặc định khi nó được giới thiệu."
+
+#: ../../library/marshal.rst:165
+#, fuzzy
+msgid "Version"
+msgstr "Phiên bản"
+
+#: ../../library/marshal.rst:165
+#, fuzzy
+msgid "Available since"
+msgstr "Có sẵn kể từ"
+
+#: ../../library/marshal.rst:165
+#, fuzzy
+msgid "New features"
+msgstr "Tính năng mới"
+
+#: ../../library/marshal.rst:167
+#, fuzzy
+msgid "1"
+msgstr "1"
+
+#: ../../library/marshal.rst:167
+#, fuzzy
+msgid "Python 2.4"
+msgstr "Python 2.4"
+
+#: ../../library/marshal.rst:167
+#, fuzzy
+msgid "Sharing interned strings"
+msgstr "Chia sẻ chuỗi thực tập"
+
+#: ../../library/marshal.rst:169
+#, fuzzy
+msgid "2"
+msgstr "2"
+
+#: ../../library/marshal.rst:169
+#, fuzzy
+msgid "Python 2.5"
+msgstr "Python 2.5"
+
+#: ../../library/marshal.rst:169
+#, fuzzy
+msgid "Binary representation of floats"
+msgstr "Biểu diễn nhị phân của float"
+
+#: ../../library/marshal.rst:171
+#, fuzzy
+msgid "3"
+msgstr "3"
+
+#: ../../library/marshal.rst:171 ../../library/marshal.rst:173
+#, fuzzy
+msgid "Python 3.4"
+msgstr "Python 3.4"
+
+#: ../../library/marshal.rst:171
+#, fuzzy
+msgid "Support for object instancing and recursion"
+msgstr "Hỗ trợ khởi tạo và đệ quy đối tượng"
+
+#: ../../library/marshal.rst:173
+#, fuzzy
+msgid "4"
+msgstr "4"
+
+#: ../../library/marshal.rst:173
+#, fuzzy
+msgid "Efficient representation of short strings"
+msgstr "Biểu diễn hiệu quả các chuỗi ngắn"
+
+#: ../../library/marshal.rst:175
+#, fuzzy
+msgid "5"
+msgstr "5"
+
+#: ../../library/marshal.rst:175
+#, fuzzy
+msgid "Python 3.14"
+msgstr "Python 3.14"
+
+#: ../../library/marshal.rst:175
+#, fuzzy
+msgid "Support for :class:`slice` objects"
+msgstr "Hỗ trợ các đối tượng :class:`slice`"
+
+#: ../../library/marshal.rst:180
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/marshal.rst:181
+#, fuzzy
+msgid ""
+"The name of this module stems from a bit of terminology used by the "
+"designers of Modula-3 (amongst others), who use the term \"marshalling\" for"
+" shipping of data around in a self-contained form. Strictly speaking, \"to "
+"marshal\" means to convert some data from internal to external form (in an "
+"RPC buffer for instance) and \"unmarshalling\" for the reverse process."
+msgstr ""
+"Tên của mô-đun này bắt nguồn từ một số thuật ngữ được các nhà thiết kế "
+"Modula-3 (trong số những người khác) sử dụng, những người sử dụng thuật ngữ "
+"\"sắp xếp\" để vận chuyển dữ liệu ở dạng độc lập. Nói đúng ra, \"sang sắp "
+"xếp\" có nghĩa là chuyển đổi một số dữ liệu từ dạng bên trong sang dạng bên "
+"ngoài (ví dụ: trong bộ đệm RPC) và \"không sắp xếp theo thứ tự\" cho quy "
+"trình ngược lại."
+
+#: ../../library/marshal.rst:17
+#, fuzzy
+msgid "module"
+msgstr "mô-đun"
+
+#: ../../library/marshal.rst:17
+#, fuzzy
+msgid "pickle"
+msgstr "dưa chua"
+
+#: ../../library/marshal.rst:17
+#, fuzzy
+msgid "shelve"
+msgstr "kệ"
+
+#: ../../library/marshal.rst:44
+#, fuzzy
+msgid "object"
+msgstr "vật thể"
+
+#: ../../library/marshal.rst:44
+#, fuzzy
+msgid "code"
+msgstr "mã"
+
+#: ../../library/marshal.rst:44
+#, fuzzy
+msgid "code object"
+msgstr "đối tượng mã"

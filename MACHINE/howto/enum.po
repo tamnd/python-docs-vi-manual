@@ -1,0 +1,3502 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/enum.rst:5
+#, fuzzy
+msgid "Enum HOWTO"
+msgstr "Enum HOWTO"
+
+#: ../../howto/enum.rst:11
+#, fuzzy
+msgid ""
+"An :class:`Enum` is a set of symbolic names bound to unique values.  They "
+"are similar to global variables, but they offer a more useful :func:`repr`, "
+"grouping, type-safety, and a few other features."
+msgstr ""
+"Zz000zz là tập hợp các tên tượng trưng được liên kết với các giá trị duy "
+"nhất.  Chúng tương tự như các biến toàn cục, nhưng chúng cung cấp "
+":func:`repr`, nhóm, an toàn kiểu và một số tính năng khác hữu ích hơn."
+
+#: ../../howto/enum.rst:15
+#, fuzzy
+msgid ""
+"They are most useful when you have a variable that can take one of a limited"
+" selection of values.  For example, the days of the week::"
+msgstr ""
+"Chúng hữu ích nhất khi bạn có một biến có thể nhận một trong các giá trị "
+"được lựa chọn có giới hạn.  Ví dụ: các ngày trong tuần::"
+
+#: ../../howto/enum.rst:18
+#, fuzzy
+msgid ""
+">>> from enum import Enum\n"
+">>> class Weekday(Enum):\n"
+"...     MONDAY = 1\n"
+"...     TUESDAY = 2\n"
+"...     WEDNESDAY = 3\n"
+"...     THURSDAY = 4\n"
+"...     FRIDAY = 5\n"
+"...     SATURDAY = 6\n"
+"...     SUNDAY = 7"
+msgstr ""
+">>> từ nhập enum Enum\n"
+">>> lớp Ngày trong tuần(Enum):\n"
+"... MONDAY = 1\n"
+"... TUESDAY = 2\n"
+"... WEDNESDAY = 3\n"
+"... THURSDAY = 4\n"
+"... FRIDAY = 5\n"
+"... SATURDAY = 6\n"
+"... SUNDAY = 7"
+
+#: ../../howto/enum.rst:28
+#, fuzzy
+msgid "Or perhaps the RGB primary colors::"
+msgstr "Hoặc có lẽ là các màu cơ bản của RGB::"
+
+#: ../../howto/enum.rst:30
+#, fuzzy
+msgid ""
+">>> from enum import Enum\n"
+">>> class Color(Enum):\n"
+"...     RED = 1\n"
+"...     GREEN = 2\n"
+"...     BLUE = 3"
+msgstr ""
+">>> từ nhập enum Enum\n"
+">>> Màu lớp (Enum):\n"
+"... RED = 1\n"
+"...     GREEN = 2\n"
+"... BLUE = 3"
+
+#: ../../howto/enum.rst:36
+#, fuzzy
+msgid ""
+"As you can see, creating an :class:`Enum` is as simple as writing a class "
+"that inherits from :class:`Enum` itself."
+msgstr ""
+"Như bạn có thể thấy, việc tạo :class:`Enum` cũng đơn giản như viết một lớp "
+"kế thừa từ chính :class:`Enum`."
+
+#: ../../howto/enum.rst:39
+#, fuzzy
+msgid "Case of Enum Members"
+msgstr "Trường hợp thành viên Enum"
+
+#: ../../howto/enum.rst:41
+#, fuzzy
+msgid ""
+"Because Enums are used to represent constants, and to help avoid issues with"
+" name clashes between mixin-class methods/attributes and enum names, we "
+"strongly recommend using UPPER_CASE names for members, and will be using "
+"that style in our examples."
+msgstr ""
+"Vì Enum được sử dụng để biểu thị các hằng số và giúp tránh các vấn đề về "
+"xung đột tên giữa các phương thức/thuộc tính của lớp mixin và tên enum, nên "
+"chúng tôi thực sự khuyên bạn nên sử dụng tên UPPER_CASE cho các thành viên "
+"và sẽ sử dụng kiểu đó trong các ví dụ của chúng tôi."
+
+#: ../../howto/enum.rst:46
+#, fuzzy
+msgid ""
+"Depending on the nature of the enum a member's value may or may not be "
+"important, but either way that value can be used to get the corresponding "
+"member::"
+msgstr ""
+"Tùy thuộc vào bản chất của enum, giá trị của thành viên có thể quan trọng "
+"hoặc không quan trọng, nhưng theo cách nào đó, giá trị đó có thể được sử "
+"dụng để có được thành viên tương ứng ::"
+
+#: ../../howto/enum.rst:50
+#, fuzzy
+msgid ""
+">>> Weekday(3)\n"
+"<Weekday.WEDNESDAY: 3>"
+msgstr ""
+">>> Ngày trong tuần(3)\n"
+"<Ngày trong tuần.WEDNESDAY: 3>"
+
+#: ../../howto/enum.rst:53
+#, fuzzy
+msgid ""
+"As you can see, the ``repr()`` of a member shows the enum name, the member "
+"name, and the value.  The ``str()`` of a member shows only the enum name and"
+" member name::"
+msgstr ""
+"Như bạn có thể thấy, ``repr()`` của một thành viên hiển thị tên enum, tên "
+"thành viên và giá trị.  Zz001zz của một thành viên chỉ hiển thị tên enum và "
+"tên thành viên::"
+
+#: ../../howto/enum.rst:57
+#, fuzzy
+msgid ""
+">>> print(Weekday.THURSDAY)\n"
+"Weekday.THURSDAY"
+msgstr ""
+">>> in(Weekday.THURSDAY)\n"
+"Ngày trong tuần.THURSDAY"
+
+#: ../../howto/enum.rst:60
+#, fuzzy
+msgid "The *type* of an enumeration member is the enum it belongs to::"
+msgstr "Zz000zz của một thành viên liệt kê là enum mà nó thuộc về::"
+
+#: ../../howto/enum.rst:62
+#, fuzzy
+msgid ""
+">>> type(Weekday.MONDAY)\n"
+"<enum 'Weekday'>\n"
+">>> isinstance(Weekday.FRIDAY, Weekday)\n"
+"True"
+msgstr ""
+">>> gõ(Weekday.MONDAY)\n"
+"<enum 'Ngày trong tuần'>\n"
+">>> isinstance(Weekday.FRIDAY, Weekday)\n"
+"đúng"
+
+#: ../../howto/enum.rst:67
+#, fuzzy
+msgid ""
+"Enum members have an attribute that contains just their :attr:`!name`::"
+msgstr "Các thành viên Enum có một thuộc tính chỉ chứa :attr:`!name`::"
+
+#: ../../howto/enum.rst:69
+#, fuzzy
+msgid ""
+">>> print(Weekday.TUESDAY.name)\n"
+"TUESDAY"
+msgstr ""
+">>> in(Weekday.TUESDAY.name)\n"
+"TUESDAY"
+
+#: ../../howto/enum.rst:72
+#, fuzzy
+msgid "Likewise, they have an attribute for their :attr:`!value`::"
+msgstr "Tương tự như vậy, họ có một thuộc tính cho :attr:`!value`::"
+
+#: ../../howto/enum.rst:75
+#, fuzzy
+msgid ""
+">>> Weekday.WEDNESDAY.value\n"
+"3"
+msgstr ""
+">>> Ngày trong tuần.WEDNESDAY.value\n"
+"3"
+
+#: ../../howto/enum.rst:78
+#, fuzzy
+msgid ""
+"Unlike many languages that treat enumerations solely as name/value pairs, "
+"Python Enums can have behavior added.  For example, :class:`datetime.date` "
+"has two methods for returning the weekday: :meth:`~datetime.date.weekday` "
+"and :meth:`~datetime.date.isoweekday`. The difference is that one of them "
+"counts from 0-6 and the other from 1-7. Rather than keep track of that "
+"ourselves we can add a method to the :class:`!Weekday` enum to extract the "
+"day from the :class:`~datetime.date` instance and return the matching enum "
+"member::"
+msgstr ""
+"Không giống như nhiều ngôn ngữ chỉ coi bảng liệt kê là cặp tên/giá trị, "
+"Python Enums có thể được thêm vào hành vi.  Ví dụ: :class:`datetime.date` có"
+" hai phương thức trả về ngày trong tuần: :meth:`~datetime.date.weekday` và "
+":meth:`~datetime.date.isoweekday`. Sự khác biệt là một trong số chúng được "
+"tính từ 0-6 và cái còn lại từ 1-7. Thay vì tự mình theo dõi điều đó, chúng "
+"ta có thể thêm một phương thức vào enum :class:`!Weekday` để trích xuất ngày"
+" từ phiên bản :class:`~datetime.date` và trả về thành viên enum phù hợp::"
+
+#: ../../howto/enum.rst:87
+#, fuzzy
+msgid ""
+"@classmethod\n"
+"def from_date(cls, date):\n"
+"    return cls(date.isoweekday())"
+msgstr ""
+"@classmethod\n"
+"def from_date(cls, date):\n"
+"    trả về cls(date.isoweekday())"
+
+#: ../../howto/enum.rst:91
+#, fuzzy
+msgid "The complete :class:`!Weekday` enum now looks like this::"
+msgstr "Enum :class:`!Weekday` hoàn chỉnh bây giờ trông như thế này::"
+
+#: ../../howto/enum.rst:93
+#, fuzzy
+msgid ""
+">>> class Weekday(Enum):\n"
+"...     MONDAY = 1\n"
+"...     TUESDAY = 2\n"
+"...     WEDNESDAY = 3\n"
+"...     THURSDAY = 4\n"
+"...     FRIDAY = 5\n"
+"...     SATURDAY = 6\n"
+"...     SUNDAY = 7\n"
+"...     #\n"
+"...     @classmethod\n"
+"...     def from_date(cls, date):\n"
+"...         return cls(date.isoweekday())"
+msgstr ""
+">>> lớp Ngày trong tuần(Enum):\n"
+"... MONDAY = 1\n"
+"... TUESDAY = 2\n"
+"... WEDNESDAY = 3\n"
+"... THURSDAY = 4\n"
+"... FRIDAY = 5\n"
+"... SATURDAY = 6\n"
+"... SUNDAY = 7\n"
+"... #\n"
+"... @classmethod\n"
+"... def from_date(cls, date):\n"
+"... trả về cls(date.isoweekday())"
+
+#: ../../howto/enum.rst:106
+#, fuzzy
+msgid "Now we can find out what today is!  Observe::"
+msgstr "Bây giờ chúng ta có thể tìm hiểu hôm nay là ngày gì!  Quan sát::"
+
+#: ../../howto/enum.rst:108
+#, fuzzy
+msgid ""
+">>> import datetime as dt\n"
+">>> Weekday.from_date(dt.date.today())\n"
+"<Weekday.TUESDAY: 2>"
+msgstr ""
+">>> nhập ngày giờ dưới dạng dt\n"
+">>> Ngày trong tuần.from_date(dt.date.today())\n"
+"<Ngày trong tuần.TUESDAY: 2>"
+
+#: ../../howto/enum.rst:112
+#, fuzzy
+msgid ""
+"Of course, if you're reading this on some other day, you'll see that day "
+"instead."
+msgstr ""
+"Tất nhiên, nếu bạn đang đọc nó vào một ngày khác, thay vào đó bạn sẽ thấy "
+"ngày đó."
+
+#: ../../howto/enum.rst:114
+#, fuzzy
+msgid ""
+"This :class:`!Weekday` enum is great if our variable only needs one day, but"
+" what if we need several?  Maybe we're writing a function to plot chores "
+"during a week, and don't want to use a :class:`list` -- we could use a "
+"different type of :class:`Enum`::"
+msgstr ""
+"Enum :class:`!Weekday` này rất tuyệt nếu biến của chúng ta chỉ cần một ngày,"
+" nhưng nếu chúng ta cần nhiều ngày thì sao?  Có thể chúng ta đang viết một "
+"hàm để sắp xếp công việc trong một tuần và không muốn sử dụng :class:`list` "
+"-- chúng ta có thể sử dụng một loại :class:`Enum` khác::"
+
+#: ../../howto/enum.rst:119
+#, fuzzy
+msgid ""
+">>> from enum import Flag\n"
+">>> class Weekday(Flag):\n"
+"...     MONDAY = 1\n"
+"...     TUESDAY = 2\n"
+"...     WEDNESDAY = 4\n"
+"...     THURSDAY = 8\n"
+"...     FRIDAY = 16\n"
+"...     SATURDAY = 32\n"
+"...     SUNDAY = 64"
+msgstr ""
+">>> từ cờ nhập enum\n"
+">>> lớp Ngày trong tuần(Cờ):\n"
+"... MONDAY = 1\n"
+"... TUESDAY = 2\n"
+"... WEDNESDAY = 4\n"
+"... THURSDAY = 8\n"
+"... FRIDAY = 16\n"
+"... SATURDAY = 32\n"
+"... SUNDAY = 64"
+
+#: ../../howto/enum.rst:129
+#, fuzzy
+msgid ""
+"We've changed two things: we're inherited from :class:`Flag`, and the values"
+" are all powers of 2."
+msgstr ""
+"Chúng tôi đã thay đổi hai điều: chúng tôi được kế thừa từ :class:`Flag` và "
+"các giá trị đều là lũy thừa của 2."
+
+#: ../../howto/enum.rst:132
+#, fuzzy
+msgid ""
+"Just like the original :class:`!Weekday` enum above, we can have a single "
+"selection::"
+msgstr ""
+"Giống như enum :class:`!Weekday` ban đầu ở trên, chúng ta có thể có một lựa "
+"chọn duy nhất::"
+
+#: ../../howto/enum.rst:134
+#, fuzzy
+msgid ""
+">>> first_week_day = Weekday.MONDAY\n"
+">>> first_week_day\n"
+"<Weekday.MONDAY: 1>"
+msgstr ""
+">>> first_week_day = Weekday.MONDAY\n"
+">>> ngày_tuần_đầu tiên\n"
+"<Ngày trong tuần.MONDAY: 1>"
+
+#: ../../howto/enum.rst:138
+#, fuzzy
+msgid ""
+"But :class:`Flag` also allows us to combine several members into a single "
+"variable::"
+msgstr ""
+"Nhưng :class:`Flag` cũng cho phép chúng ta kết hợp nhiều thành viên thành "
+"một biến duy nhất::"
+
+#: ../../howto/enum.rst:141
+#, fuzzy
+msgid ""
+">>> weekend = Weekday.SATURDAY | Weekday.SUNDAY\n"
+">>> weekend\n"
+"<Weekday.SATURDAY|SUNDAY: 96>"
+msgstr ""
+">>> cuối tuần = Ngày trong tuần.SATURDAY | Ngày trong tuần.SUNDAY\n"
+">>> cuối tuần\n"
+"<Weekday.SATURDAY|SUNDAY: 96>"
+
+#: ../../howto/enum.rst:145
+#, fuzzy
+msgid "You can even iterate over a :class:`Flag` variable::"
+msgstr "Bạn thậm chí có thể lặp lại biến :class:`Flag` ::"
+
+#: ../../howto/enum.rst:147
+#, fuzzy
+msgid ""
+">>> for day in weekend:\n"
+"...     print(day)\n"
+"Weekday.SATURDAY\n"
+"Weekday.SUNDAY"
+msgstr ""
+">>> cho ngày cuối tuần:\n"
+"... in(ngày)\n"
+"Ngày trong tuần.SATURDAY\n"
+"Ngày trong tuần.SUNDAY"
+
+#: ../../howto/enum.rst:152
+#, fuzzy
+msgid "Okay, let's get some chores set up::"
+msgstr "Được rồi, hãy sắp xếp một số công việc nhé::"
+
+#: ../../howto/enum.rst:154
+#, python-brace-format, fuzzy
+msgid ""
+">>> chores_for_ethan = {\n"
+"...     'feed the cat': Weekday.MONDAY | Weekday.WEDNESDAY | Weekday.FRIDAY,\n"
+"...     'do the dishes': Weekday.TUESDAY | Weekday.THURSDAY,\n"
+"...     'answer SO questions': Weekday.SATURDAY,\n"
+"...     }"
+msgstr ""
+">>> việc vặt_for_ethan = {\n"
+"... 'cho mèo ăn': Weekday.MONDAY | Weekday.WEDNESDAY | Weekday.FRIDAY,\n"
+"... 'làm bát': Weekday.TUESDAY | Ngày trong tuần.THURSDAY,\n"
+"... 'trả lời các câu hỏi SO': Weekday.SATURDAY,\n"
+"... }"
+
+#: ../../howto/enum.rst:160
+#, fuzzy
+msgid "And a function to display the chores for a given day::"
+msgstr "Và một chức năng hiển thị công việc trong một ngày nhất định ::"
+
+#: ../../howto/enum.rst:162
+#, fuzzy
+msgid ""
+">>> def show_chores(chores, day):\n"
+"...     for chore, days in chores.items():\n"
+"...         if day in days:\n"
+"...             print(chore)\n"
+"...\n"
+">>> show_chores(chores_for_ethan, Weekday.SATURDAY)\n"
+"answer SO questions"
+msgstr ""
+">>> def show_chores(việc vặt, ngày):\n"
+"... cho việc vặt, ngày trong chores.items():\n"
+"... nếu ngày tính bằng ngày:\n"
+"... in(việc vặt)\n"
+"...\n"
+">>> show_chores(chores_for_ethan, Weekday.SATURDAY)\n"
+"trả lời câu hỏi SO"
+
+#: ../../howto/enum.rst:170
+#, fuzzy
+msgid ""
+"In cases where the actual values of the members do not matter, you can save "
+"yourself some work and use :func:`auto` for the values::"
+msgstr ""
+"Trong trường hợp giá trị thực tế của các thành viên không quan trọng, bạn có"
+" thể tiết kiệm cho mình một số công việc và sử dụng :func:`auto` cho các giá"
+" trị::"
+
+#: ../../howto/enum.rst:173
+#, fuzzy
+msgid ""
+">>> from enum import auto\n"
+">>> class Weekday(Flag):\n"
+"...     MONDAY = auto()\n"
+"...     TUESDAY = auto()\n"
+"...     WEDNESDAY = auto()\n"
+"...     THURSDAY = auto()\n"
+"...     FRIDAY = auto()\n"
+"...     SATURDAY = auto()\n"
+"...     SUNDAY = auto()\n"
+"...     WEEKEND = SATURDAY | SUNDAY"
+msgstr ""
+">>> từ tự động nhập enum\n"
+">>> lớp Ngày trong tuần(Cờ):\n"
+"... MONDAY = tự động()\n"
+"... TUESDAY = tự động()\n"
+"... WEDNESDAY = tự động()\n"
+"... THURSDAY = tự động()\n"
+"... FRIDAY = tự động()\n"
+"... SATURDAY = tự động()\n"
+"... SUNDAY = tự động()\n"
+"... WEEKEND = SATURDAY | SUNDAY"
+
+#: ../../howto/enum.rst:189
+#, fuzzy
+msgid "Programmatic access to enumeration members and their attributes"
+msgstr ""
+"Quyền truy cập có lập trình vào các thành viên liệt kê và thuộc tính của họ"
+
+#: ../../howto/enum.rst:191
+#, fuzzy
+msgid ""
+"Sometimes it's useful to access members in enumerations programmatically "
+"(i.e. situations where ``Color.RED`` won't do because the exact color is not"
+" known at program-writing time).  ``Enum`` allows such access::"
+msgstr ""
+"Đôi khi, việc truy cập các thành viên trong bảng liệt kê theo chương trình "
+"sẽ rất hữu ích (tức là các tình huống mà ``Color.RED`` sẽ không thực hiện "
+"được vì không biết màu chính xác tại thời điểm viết chương trình).  ``Enum``"
+" cho phép truy cập như vậy ::"
+
+#: ../../howto/enum.rst:195
+#, fuzzy
+msgid ""
+">>> Color(1)\n"
+"<Color.RED: 1>\n"
+">>> Color(3)\n"
+"<Color.BLUE: 3>"
+msgstr ""
+">>> Màu sắc(1)\n"
+"<Color.RED: 1>\n"
+">>> Màu sắc(3)\n"
+"<Color.BLUE: 3>"
+
+#: ../../howto/enum.rst:200
+#, fuzzy
+msgid "If you want to access enum members by *name*, use item access::"
+msgstr ""
+"Nếu bạn muốn truy cập các thành viên enum bằng *name*, hãy sử dụng quyền "
+"truy cập mục::"
+
+#: ../../howto/enum.rst:202
+#, fuzzy
+msgid ""
+">>> Color['RED']\n"
+"<Color.RED: 1>\n"
+">>> Color['GREEN']\n"
+"<Color.GREEN: 2>"
+msgstr ""
+">>> Màu sắc['RED']\n"
+"<Color.RED: 1>\n"
+">>> Màu sắc['GREEN']\n"
+"<Color.GREEN: 2>"
+
+#: ../../howto/enum.rst:207
+#, fuzzy
+msgid ""
+"If you have an enum member and need its :attr:`!name` or :attr:`!value`::"
+msgstr ""
+"Nếu bạn có thành viên enum và cần :attr:`!name` hoặc :attr:`!value` ::"
+
+#: ../../howto/enum.rst:209
+#, fuzzy
+msgid ""
+">>> member = Color.RED\n"
+">>> member.name\n"
+"'RED'\n"
+">>> member.value\n"
+"1"
+msgstr ""
+">>> thành viên = Color.RED\n"
+">>> thành viên.name\n"
+"'RED'\n"
+">>> thành viên.value\n"
+"1"
+
+#: ../../howto/enum.rst:217
+#, fuzzy
+msgid "Duplicating enum members and values"
+msgstr "Sao chép các thành viên và giá trị enum"
+
+#: ../../howto/enum.rst:219
+#, fuzzy
+msgid "Having two enum members with the same name is invalid::"
+msgstr "Có hai thành viên enum có cùng tên là không hợp lệ::"
+
+#: ../../howto/enum.rst:221
+#, fuzzy
+msgid ""
+">>> class Shape(Enum):\n"
+"...     SQUARE = 2\n"
+"...     SQUARE = 3\n"
+"...\n"
+"Traceback (most recent call last):\n"
+"...\n"
+"TypeError: 'SQUARE' already defined as 2"
+msgstr ""
+">>> Hình dạng lớp (Enum):\n"
+"... SQUARE = 2\n"
+"... SQUARE = 3\n"
+"...\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"...\n"
+"TypeError: 'SQUARE' đã được xác định là 2"
+
+#: ../../howto/enum.rst:229
+#, fuzzy
+msgid ""
+"However, an enum member can have other names associated with it.  Given two "
+"entries ``A`` and ``B`` with the same value (and ``A`` defined first), ``B``"
+" is an alias for the member ``A``.  By-value lookup of the value of ``A`` "
+"will return the member ``A``.  By-name lookup of ``A`` will return the "
+"member ``A``. By-name lookup of ``B`` will also return the member ``A``::"
+msgstr ""
+"Tuy nhiên, một thành viên enum có thể có những tên khác gắn liền với nó.  "
+"Cho hai mục ``A`` và ``B`` có cùng giá trị (và ``A`` được xác định trước), "
+"``B`` là bí danh của thành viên ``A``.  Tra cứu theo giá trị của giá trị "
+"``A`` sẽ trả về thành viên ``A``.  Tra cứu theo tên của ``A`` sẽ trả về "
+"thành viên ``A``. Tra cứu theo tên của ``B`` cũng sẽ trả về thành viên "
+"``A``::"
+
+#: ../../howto/enum.rst:235
+#, fuzzy
+msgid ""
+">>> class Shape(Enum):\n"
+"...     SQUARE = 2\n"
+"...     DIAMOND = 1\n"
+"...     CIRCLE = 3\n"
+"...     ALIAS_FOR_SQUARE = 2\n"
+"...\n"
+">>> Shape.SQUARE\n"
+"<Shape.SQUARE: 2>\n"
+">>> Shape.ALIAS_FOR_SQUARE\n"
+"<Shape.SQUARE: 2>\n"
+">>> Shape(2)\n"
+"<Shape.SQUARE: 2>"
+msgstr ""
+">>> Hình dạng lớp (Enum):\n"
+"... SQUARE = 2\n"
+"... DIAMOND = 1\n"
+"... CIRCLE = 3\n"
+"... ALIAS_FOR_SQUARE = 2\n"
+"...\n"
+">>> Shape.SQUARE\n"
+"<Hình dạng.SQUARE: 2>\n"
+">>> Shape.ALIAS_FOR_SQUARE\n"
+"<Shape.SQUARE: 2>\n"
+">>> Hình dạng(2)\n"
+"<Shape.SQUARE: 2>"
+
+#: ../../howto/enum.rst:250
+#, fuzzy
+msgid ""
+"Attempting to create a member with the same name as an already defined "
+"attribute (another member, a method, etc.) or attempting to create an "
+"attribute with the same name as a member is not allowed."
+msgstr ""
+"Không được phép cố gắng tạo một thành viên có cùng tên với một thuộc tính đã"
+" được xác định (thành viên khác, một phương thức, v.v.) hoặc cố gắng tạo một"
+" thuộc tính có cùng tên với một thành viên."
+
+#: ../../howto/enum.rst:256
+#, fuzzy
+msgid "Ensuring unique enumeration values"
+msgstr "Đảm bảo giá trị liệt kê duy nhất"
+
+#: ../../howto/enum.rst:258
+#, fuzzy
+msgid ""
+"By default, enumerations allow multiple names as aliases for the same value."
+" When this behavior isn't desired, you can use the :func:`unique` "
+"decorator::"
+msgstr ""
+"Theo mặc định, bảng liệt kê cho phép nhiều tên làm bí danh cho cùng một giá "
+"trị. Khi hành vi này không được mong muốn, bạn có thể sử dụng trình trang "
+"trí :func:`unique` ::"
+
+#: ../../howto/enum.rst:261
+#, fuzzy
+msgid ""
+">>> from enum import Enum, unique\n"
+">>> @unique\n"
+"... class Mistake(Enum):\n"
+"...     ONE = 1\n"
+"...     TWO = 2\n"
+"...     THREE = 3\n"
+"...     FOUR = 3\n"
+"...\n"
+"Traceback (most recent call last):\n"
+"...\n"
+"ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE"
+msgstr ""
+">>> from enum import Enum, duy nhất\n"
+">>> @unique\n"
+"... Lỗi lớp(Enum):\n"
+"... ONE = 1\n"
+"... TWO = 2\n"
+"... THREE = 3\n"
+"... FOUR = 3\n"
+"...\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"...\n"
+"ValueError: tìm thấy các giá trị trùng lặp trong <enum 'Mistake'>: FOUR -> THREE"
+
+#: ../../howto/enum.rst:275
+#, fuzzy
+msgid "Using automatic values"
+msgstr "Sử dụng giá trị tự động"
+
+#: ../../howto/enum.rst:277
+#, fuzzy
+msgid "If the exact value is unimportant you can use :class:`auto`::"
+msgstr ""
+"Nếu giá trị chính xác không quan trọng, bạn có thể sử dụng :class:`auto`::"
+
+#: ../../howto/enum.rst:279
+#, fuzzy
+msgid ""
+">>> from enum import Enum, auto\n"
+">>> class Color(Enum):\n"
+"...     RED = auto()\n"
+"...     BLUE = auto()\n"
+"...     GREEN = auto()\n"
+"...\n"
+">>> [member.value for member in Color]\n"
+"[1, 2, 3]"
+msgstr ""
+">>> from enum import Enum, auto\n"
+">>> Màu lớp (Enum):\n"
+"... RED = tự động()\n"
+"... BLUE = tự động()\n"
+"... GREEN = tự động()\n"
+"...\n"
+">>> [member.value cho thành viên trong Màu sắc]\n"
+"[1, 2, 3]"
+
+#: ../../howto/enum.rst:288
+#, fuzzy
+msgid ""
+"The values are chosen by :func:`~Enum._generate_next_value_`, which can be "
+"overridden::"
+msgstr ""
+"The values are chosen by :func:`~Enum._generate_next_value_`, which can be "
+"overridden::"
+
+#: ../../howto/enum.rst:291
+#, fuzzy
+msgid ""
+">>> class AutoName(Enum):\n"
+"...     @staticmethod\n"
+"...     def _generate_next_value_(name, start, count, last_values):\n"
+"...         return name\n"
+"...\n"
+">>> class Ordinal(AutoName):\n"
+"...     NORTH = auto()\n"
+"...     SOUTH = auto()\n"
+"...     EAST = auto()\n"
+"...     WEST = auto()\n"
+"...\n"
+">>> [member.value for member in Ordinal]\n"
+"['NORTH', 'SOUTH', 'EAST', 'WEST']"
+msgstr ""
+">>> lớp AutoName(Enum):\n"
+"... @staticmethod\n"
+"... def _generate_next_value_(tên, bắt đầu, đếm, giá trị cuối cùng):\n"
+"... trả lại tên\n"
+"...\n"
+">>> lớp Thứ tự(AutoName):\n"
+"... NORTH = tự động()\n"
+"... SOUTH = tự động()\n"
+"... EAST = tự động()\n"
+"... WEST = tự động()\n"
+"...\n"
+">>> [member.value cho thành viên theo thứ tự]\n"
+"['NORTH', 'SOUTH', 'EAST', 'WEST']"
+
+#: ../../howto/enum.rst:307
+#, fuzzy
+msgid ""
+"The :meth:`~Enum._generate_next_value_` method must be defined before any "
+"members."
+msgstr ""
+"Phương thức :meth:`~Enum._generate_next_value_` phải được xác định trước bất"
+" kỳ thành viên nào."
+
+#: ../../howto/enum.rst:310
+#, fuzzy
+msgid "Iteration"
+msgstr "Lặp lại"
+
+#: ../../howto/enum.rst:312
+#, fuzzy
+msgid "Iterating over the members of an enum does not provide the aliases::"
+msgstr "Việc lặp lại các thành viên của một enum không cung cấp các bí danh::"
+
+#: ../../howto/enum.rst:314
+#, fuzzy
+msgid ""
+">>> list(Shape)\n"
+"[<Shape.SQUARE: 2>, <Shape.DIAMOND: 1>, <Shape.CIRCLE: 3>]\n"
+">>> list(Weekday)\n"
+"[<Weekday.MONDAY: 1>, <Weekday.TUESDAY: 2>, <Weekday.WEDNESDAY: 4>, <Weekday.THURSDAY: 8>, <Weekday.FRIDAY: 16>, <Weekday.SATURDAY: 32>, <Weekday.SUNDAY: 64>]"
+msgstr ""
+">>> danh sách(Hình dạng)\n"
+"[<Shape.SQUARE: 2>, <Shape.DIAMOND: 1>, <Shape.CIRCLE: 3>]\n"
+">>> danh sách(Ngày trong tuần)\n"
+"[<Weekday.MONDAY: 1>, <Weekday.TUESDAY: 2>, <Weekday.WEDNESDAY: 4>, <Weekday.THURSDAY: 8>, <Weekday.FRIDAY: 16>, <Weekday.SATURDAY: 32>, <Weekday.SUNDAY: 64>]"
+
+#: ../../howto/enum.rst:319
+#, fuzzy
+msgid ""
+"Note that the aliases ``Shape.ALIAS_FOR_SQUARE`` and ``Weekday.WEEKEND`` "
+"aren't shown."
+msgstr ""
+"Lưu ý rằng bí danh ``Shape.ALIAS_FOR_SQUARE`` và ``Weekday.WEEKEND`` không "
+"được hiển thị."
+
+#: ../../howto/enum.rst:321
+#, fuzzy
+msgid ""
+"The special attribute ``__members__`` is a read-only ordered mapping of "
+"names to members.  It includes all names defined in the enumeration, "
+"including the aliases::"
+msgstr ""
+"Thuộc tính đặc biệt ``__members__`` là ánh xạ tên theo thứ tự chỉ đọc cho "
+"các thành viên.  Nó bao gồm tất cả các tên được xác định trong bảng liệt kê,"
+" bao gồm cả bí danh::"
+
+#: ../../howto/enum.rst:325
+#, fuzzy
+msgid ""
+">>> for name, member in Shape.__members__.items():\n"
+"...     name, member\n"
+"...\n"
+"('SQUARE', <Shape.SQUARE: 2>)\n"
+"('DIAMOND', <Shape.DIAMOND: 1>)\n"
+"('CIRCLE', <Shape.CIRCLE: 3>)\n"
+"('ALIAS_FOR_SQUARE', <Shape.SQUARE: 2>)"
+msgstr ""
+">>> cho tên, thành viên trong Shape.__members__.items():\n"
+"... tên, thành viên\n"
+"...\n"
+"('SQUARE', <Shape.SQUARE: 2>)\n"
+"('DIAMOND', <Shape.DIAMOND: 1>)\n"
+"('CIRCLE', <Shape.CIRCLE: 3>)\n"
+"('ALIAS_FOR_SQUARE', <Shape.SQUARE: 2>)"
+
+#: ../../howto/enum.rst:333
+#, fuzzy
+msgid ""
+"The ``__members__`` attribute can be used for detailed programmatic access "
+"to the enumeration members.  For example, finding all the aliases::"
+msgstr ""
+"Thuộc tính ``__members__`` có thể được sử dụng để truy cập theo chương trình"
+" chi tiết vào các thành viên liệt kê.  Ví dụ: tìm tất cả các bí danh::"
+
+#: ../../howto/enum.rst:336
+#, fuzzy
+msgid ""
+">>> [name for name, member in Shape.__members__.items() if member.name != name]\n"
+"['ALIAS_FOR_SQUARE']"
+msgstr ""
+">>> [tên cho tên, thành viên trong Shape.__members__.items() if member.name != name]\n"
+"['ALIAS_FOR_SQUARE']"
+
+#: ../../howto/enum.rst:341
+#, fuzzy
+msgid ""
+"Aliases for flags include values with multiple flags set, such as ``3``, and"
+" no flags set, i.e. ``0``."
+msgstr ""
+"Bí danh cho cờ bao gồm các giá trị có nhiều cờ được đặt, chẳng hạn như ``3``"
+" và không có cờ nào được đặt, tức là ``0``."
+
+#: ../../howto/enum.rst:346
+#, fuzzy
+msgid "Comparisons"
+msgstr "So sánh"
+
+#: ../../howto/enum.rst:348
+#, fuzzy
+msgid "Enumeration members are compared by identity::"
+msgstr "Các thành viên liệt kê được so sánh theo danh tính::"
+
+#: ../../howto/enum.rst:350
+#, fuzzy
+msgid ""
+">>> Color.RED is Color.RED\n"
+"True\n"
+">>> Color.RED is Color.BLUE\n"
+"False\n"
+">>> Color.RED is not Color.BLUE\n"
+"True"
+msgstr ""
+">>> Color.RED là Color.RED\n"
+"đúng\n"
+">>> Color.RED là Color.BLUE\n"
+"sai\n"
+">>> Color.RED không phải là Color.BLUE\n"
+"đúng"
+
+#: ../../howto/enum.rst:357
+#, fuzzy
+msgid ""
+"Ordered comparisons between enumeration values are *not* supported.  Enum "
+"members are not integers (but see `IntEnum`_ below)::"
+msgstr ""
+"So sánh có thứ tự giữa các giá trị liệt kê được hỗ trợ *not*.  Enum members "
+"are not integers (but see `IntEnum`_ below)::"
+
+#: ../../howto/enum.rst:360
+#, fuzzy
+msgid ""
+">>> Color.RED < Color.BLUE\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"TypeError: '<' not supported between instances of 'Color' and 'Color'"
+msgstr ""
+">>> Color.RED < Color.BLUE\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"TypeError: '<' không được hỗ trợ giữa các phiên bản của 'Color' và 'Color'"
+
+#: ../../howto/enum.rst:365
+#, fuzzy
+msgid "Equality comparisons are defined though::"
+msgstr "So sánh bình đẳng được xác định mặc dù ::"
+
+#: ../../howto/enum.rst:367
+#, fuzzy
+msgid ""
+">>> Color.BLUE == Color.RED\n"
+"False\n"
+">>> Color.BLUE != Color.RED\n"
+"True\n"
+">>> Color.BLUE == Color.BLUE\n"
+"True"
+msgstr ""
+">>> Color.BLUE == Color.RED\n"
+"sai\n"
+">>> Color.BLUE != Color.RED\n"
+"đúng\n"
+">>> Color.BLUE == Color.BLUE\n"
+"đúng"
+
+#: ../../howto/enum.rst:374
+#, fuzzy
+msgid ""
+"Comparisons against non-enumeration values will always compare not equal "
+"(again, :class:`IntEnum` was explicitly designed to behave differently, see "
+"below)::"
+msgstr ""
+"So sánh với các giá trị không liệt kê sẽ luôn so sánh không bằng nhau (một "
+"lần nữa, :class:`IntEnum` được thiết kế rõ ràng để hoạt động khác, xem bên "
+"dưới)::"
+
+#: ../../howto/enum.rst:378
+#, fuzzy
+msgid ""
+">>> Color.BLUE == 2\n"
+"False"
+msgstr ""
+">>> Color.BLUE == 2\n"
+"sai"
+
+#: ../../howto/enum.rst:383
+#, fuzzy
+msgid ""
+"It is possible to reload modules -- if a reloaded module contains enums, "
+"they will be recreated, and the new members may not compare identical/equal "
+"to the original members."
+msgstr ""
+"Có thể tải lại các mô-đun - nếu mô-đun được tải lại chứa enum, chúng sẽ được"
+" tạo lại và các thành viên mới có thể không so sánh giống/bằng với các thành"
+" viên ban đầu."
+
+#: ../../howto/enum.rst:388
+#, fuzzy
+msgid "Allowed members and attributes of enumerations"
+msgstr "Các thành viên được phép và thuộc tính của bảng liệt kê"
+
+#: ../../howto/enum.rst:390
+#, fuzzy
+msgid ""
+"Most of the examples above use integers for enumeration values.  Using "
+"integers is short and handy (and provided by default by the `Functional "
+"API`_), but not strictly enforced.  In the vast majority of use-cases, one "
+"doesn't care what the actual value of an enumeration is.  But if the value "
+"*is* important, enumerations can have arbitrary values."
+msgstr ""
+"Hầu hết các ví dụ trên đều sử dụng số nguyên cho các giá trị liệt kê.  Việc "
+"sử dụng số nguyên rất ngắn gọn và tiện dụng (và được `Functional API`_ cung "
+"cấp theo mặc định), nhưng không được thực thi nghiêm ngặt.  Trong phần lớn "
+"các trường hợp sử dụng, người ta không quan tâm giá trị thực của một bảng "
+"liệt kê là gì.  Nhưng nếu giá trị *is* quan trọng thì bảng liệt kê có thể có"
+" giá trị tùy ý."
+
+#: ../../howto/enum.rst:396
+#, fuzzy
+msgid ""
+"Enumerations are Python classes, and can have methods and special methods as"
+" usual.  If we have this enumeration::"
+msgstr ""
+"Bảng liệt kê là các lớp Python và có thể có các phương thức và phương thức "
+"đặc biệt như bình thường.  Nếu chúng ta có bảng liệt kê này::"
+
+#: ../../howto/enum.rst:399
+#, python-brace-format, fuzzy
+msgid ""
+">>> class Mood(Enum):\n"
+"...     FUNKY = 1\n"
+"...     HAPPY = 3\n"
+"...\n"
+"...     def describe(self):\n"
+"...         # self is the member here\n"
+"...         return self.name, self.value\n"
+"...\n"
+"...     def __str__(self):\n"
+"...         return 'my custom str! {0}'.format(self.value)\n"
+"...\n"
+"...     @classmethod\n"
+"...     def favorite_mood(cls):\n"
+"...         # cls here is the enumeration\n"
+"...         return cls.HAPPY\n"
+"..."
+msgstr ""
+">>> Tâm trạng lớp (Enum):\n"
+"... FUNKY = 1\n"
+"... HAPPY = 3\n"
+"...\n"
+"... def mô tả (tự):\n"
+"... # self là thành viên ở đây\n"
+"... trả về self.name, self.value\n"
+"...\n"
+"... def __str__(tự):\n"
+"... trả về 'str tùy chỉnh của tôi! {0}'.format(self.value)\n"
+"...\n"
+"... @classmethod\n"
+"... def favorite_mood(cls):\n"
+"... # cls đây là bảng liệt kê\n"
+"... trả lại cls.HAPPY\n"
+"..."
+
+#: ../../howto/enum.rst:416
+#, fuzzy
+msgid "Then::"
+msgstr "Sau đó::"
+
+#: ../../howto/enum.rst:418
+#, fuzzy
+msgid ""
+">>> Mood.favorite_mood()\n"
+"<Mood.HAPPY: 3>\n"
+">>> Mood.HAPPY.describe()\n"
+"('HAPPY', 3)\n"
+">>> str(Mood.FUNKY)\n"
+"'my custom str! 1'"
+msgstr ""
+">>> Tâm trạng.favorite_mood()\n"
+"<Tâm trạng.HAPPY: 3>\n"
+">>> Mood.HAPPY.describe()\n"
+"('HAPPY', 3)\n"
+">>> str(Tâm trạng.FUNKY)\n"
+"'str tùy chỉnh của tôi! 1'"
+
+#: ../../howto/enum.rst:425
+#, fuzzy
+msgid ""
+"The rules for what is allowed are as follows: names that start and end with "
+"a single underscore are reserved by enum and cannot be used; all other "
+"attributes defined within an enumeration will become members of this "
+"enumeration, with the exception of special methods (:meth:`~object.__str__`,"
+" :meth:`~object.__add__`, etc.), descriptors (methods are also descriptors),"
+" and variable names listed in :attr:`~Enum._ignore_`."
+msgstr ""
+"Các quy tắc về những gì được phép như sau: tên bắt đầu và kết thúc bằng một "
+"dấu gạch dưới duy nhất được đặt trước bởi enum và không thể sử dụng được; "
+"tất cả các thuộc tính khác được xác định trong một bảng liệt kê sẽ trở thành"
+" thành viên của bảng liệt kê này, ngoại trừ các phương thức đặc biệt "
+"(:meth:`~object.__str__`, :meth:`~object.__add__`, v.v.), bộ mô tả (các "
+"phương thức cũng là bộ mô tả) và tên biến được liệt kê trong "
+":attr:`~Enum._ignore_`."
+
+#: ../../howto/enum.rst:432
+#, fuzzy
+msgid ""
+"Note:  if your enumeration defines :meth:`~object.__new__` and/or "
+":meth:`~object.__init__`, any value(s) given to the enum member will be "
+"passed into those methods. See `Planet`_ for an example."
+msgstr ""
+"Lưu ý: nếu bảng liệt kê của bạn xác định :meth:`~object.__new__` và/hoặc "
+":meth:`~object.__init__`, mọi giá trị được cung cấp cho thành viên enum sẽ "
+"được chuyển vào các phương thức đó. Xem `Planet`_ để biết ví dụ."
+
+#: ../../howto/enum.rst:438
+#, fuzzy
+msgid ""
+"The :meth:`~object.__new__` method, if defined, is used during creation of "
+"the Enum members; it is then replaced by Enum's :meth:`~object.__new__` "
+"which is used after class creation for lookup of existing members.  See "
+":ref:`new-vs-init` for more details."
+msgstr ""
+"Phương thức :meth:`~object.__new__`, nếu được xác định, sẽ được sử dụng "
+"trong quá trình tạo thành viên Enum; sau đó nó được thay thế bằng "
+":meth:`~object.__new__` của Enum, được sử dụng sau khi tạo lớp để tra cứu "
+"các thành viên hiện có.  Xem :ref:`new-vs-init` để biết thêm chi tiết."
+
+#: ../../howto/enum.rst:445
+#, fuzzy
+msgid "Restricted Enum subclassing"
+msgstr "Phân lớp con Enum bị hạn chế"
+
+#: ../../howto/enum.rst:447
+#, fuzzy
+msgid ""
+"A new :class:`Enum` class must have one base enum class, up to one concrete "
+"data type, and as many :class:`object`-based mixin classes as needed.  The "
+"order of these base classes is::"
+msgstr ""
+"Một lớp :class:`Enum` mới phải có một lớp enum cơ sở, tối đa một kiểu dữ "
+"liệu cụ thể và nhiều lớp mixin dựa trên :class:`object` nếu cần.  Thứ tự của"
+" các lớp cơ sở này là::"
+
+#: ../../howto/enum.rst:451
+#, fuzzy
+msgid ""
+"class EnumName([mix-in, ...,] [data-type,] base-enum):\n"
+"    pass"
+msgstr ""
+"class EnumName([mix-in, ...,] [data-type,] base-enum):\n"
+"    vượt qua"
+
+#: ../../howto/enum.rst:454
+#, fuzzy
+msgid ""
+"Also, subclassing an enumeration is allowed only if the enumeration does not"
+" define any members.  So this is forbidden::"
+msgstr ""
+"Ngoài ra, việc phân lớp một bảng liệt kê chỉ được phép nếu bảng liệt kê "
+"không xác định bất kỳ thành viên nào.  Vì vậy điều này bị cấm::"
+
+#: ../../howto/enum.rst:457
+#, fuzzy
+msgid ""
+">>> class MoreColor(Color):\n"
+"...     PINK = 17\n"
+"...\n"
+"Traceback (most recent call last):\n"
+"...\n"
+"TypeError: <enum 'MoreColor'> cannot extend <enum 'Color'>"
+msgstr ""
+">>> lớp MoreColor(Color):\n"
+"... PINK = 17\n"
+"...\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"...\n"
+"TypeError: <enum 'MoreColor'> không thể mở rộng <enum 'Color'>"
+
+#: ../../howto/enum.rst:464
+#, fuzzy
+msgid "But this is allowed::"
+msgstr "Nhưng điều này được cho phép::"
+
+#: ../../howto/enum.rst:466
+#, fuzzy
+msgid ""
+">>> class Foo(Enum):\n"
+"...     def some_behavior(self):\n"
+"...         pass\n"
+"...\n"
+">>> class Bar(Foo):\n"
+"...     HAPPY = 1\n"
+"...     SAD = 2\n"
+"..."
+msgstr ""
+">>> lớp Foo(Enum):\n"
+"... def some_behavior(self):\n"
+"... vượt qua\n"
+"...\n"
+">>> Thanh lớp(Foo):\n"
+"... HAPPY = 1\n"
+"... SAD = 2\n"
+"..."
+
+#: ../../howto/enum.rst:475
+#, fuzzy
+msgid ""
+"Allowing subclassing of enums that define members would lead to a violation "
+"of some important invariants of types and instances.  On the other hand, it "
+"makes sense to allow sharing some common behavior between a group of "
+"enumerations. (See `OrderedEnum`_ for an example.)"
+msgstr ""
+"Việc cho phép phân lớp các enum xác định thành viên sẽ dẫn đến vi phạm một "
+"số bất biến quan trọng về loại và thể hiện.  Mặt khác, sẽ hợp lý khi cho "
+"phép chia sẻ một số hành vi chung giữa một nhóm liệt kê. (Xem `OrderedEnum`_"
+" để biết ví dụ.)"
+
+#: ../../howto/enum.rst:484
+#, fuzzy
+msgid "Dataclass support"
+msgstr "Hỗ trợ lớp dữ liệu"
+
+#: ../../howto/enum.rst:486
+#, fuzzy
+msgid ""
+"When inheriting from a :class:`~dataclasses.dataclass`, the "
+":meth:`~Enum.__repr__` omits the inherited class' name.  For example::"
+msgstr ""
+"Khi kế thừa từ :class:`~dataclasses.dataclass`, :meth:`~Enum.__repr__` sẽ bỏ"
+" qua tên của lớp được kế thừa.  Ví dụ::"
+
+#: ../../howto/enum.rst:489
+#, fuzzy
+msgid ""
+">>> from dataclasses import dataclass, field\n"
+">>> @dataclass\n"
+"... class CreatureDataMixin:\n"
+"...     size: str\n"
+"...     legs: int\n"
+"...     tail: bool = field(repr=False, default=True)\n"
+"...\n"
+">>> class Creature(CreatureDataMixin, Enum):\n"
+"...     BEETLE = 'small', 6\n"
+"...     DOG = 'medium', 4\n"
+"...\n"
+">>> Creature.DOG\n"
+"<Creature.DOG: size='medium', legs=4>"
+msgstr ""
+">>> từ các lớp dữ liệu nhập lớp dữ liệu, trường\n"
+">>> @dataclass\n"
+"... lớp CreatureDataMixin:\n"
+"... kích thước: str\n"
+"... chân: int\n"
+"... đuôi: bool = field(repr=False, default=True)\n"
+"...\n"
+">>> lớp Sinh vật(CreatureDataMixin, Enum):\n"
+"... BEETLE = 'nhỏ', 6\n"
+"... DOG = 'trung bình', 4\n"
+"...\n"
+">>> Sinh vật.DOG\n"
+"<Creature.DOG: size='trung bình', chân=4>"
+
+#: ../../howto/enum.rst:503
+#, fuzzy
+msgid ""
+"Use the :func:`~dataclasses.dataclass` argument ``repr=False`` to use the "
+"standard :func:`repr`."
+msgstr ""
+"Sử dụng đối số :func:`~dataclasses.dataclass` ``repr=False`` để sử dụng "
+":func:`repr` tiêu chuẩn."
+
+#: ../../howto/enum.rst:506
+#, fuzzy
+msgid ""
+"Only the dataclass fields are shown in the value area, not the dataclass' "
+"name."
+msgstr ""
+"Chỉ các trường lớp dữ liệu được hiển thị trong vùng giá trị chứ không phải "
+"tên của lớp dữ liệu."
+
+#: ../../howto/enum.rst:512
+#, fuzzy
+msgid ""
+"Adding :func:`~dataclasses.dataclass` decorator to :class:`Enum` and its "
+"subclasses is not supported. It will not raise any errors, but it will "
+"produce very strange results at runtime, such as members being equal to each"
+" other::"
+msgstr ""
+"Việc thêm trang trí :func:`~dataclasses.dataclass` vào :class:`Enum` và các "
+"lớp con của nó không được hỗ trợ. Nó sẽ không gây ra bất kỳ lỗi nào, nhưng "
+"nó sẽ tạo ra những kết quả rất lạ khi chạy, chẳng hạn như các thành viên "
+"bằng nhau ::"
+
+#: ../../howto/enum.rst:517
+#, fuzzy
+msgid ""
+">>> @dataclass               # don't do this: it does not make any sense\n"
+"... class Color(Enum):\n"
+"...    RED = 1\n"
+"...    BLUE = 2\n"
+"...\n"
+">>> Color.RED is Color.BLUE\n"
+"False\n"
+">>> Color.RED == Color.BLUE  # problem is here: they should not be equal\n"
+"True"
+msgstr ""
+">>> @dataclass # don đừng làm điều này: nó chẳng có ý nghĩa gì cả\n"
+"... Màu lớp (Enum):\n"
+"... RED = 1\n"
+"... BLUE = 2\n"
+"...\n"
+">>> Color.RED là Color.BLUE\n"
+"sai\n"
+">>> Color.RED == Color.BLUE # problem ở đây: chúng không được bằng nhau\n"
+"đúng"
+
+#: ../../howto/enum.rst:529
+#, fuzzy
+msgid "Pickling"
+msgstr "dưa chua"
+
+#: ../../howto/enum.rst:531
+#, fuzzy
+msgid "Enumerations can be pickled and unpickled::"
+msgstr "Bảng liệt kê có thể được ngâm và giải nén::"
+
+#: ../../howto/enum.rst:533
+#, fuzzy
+msgid ""
+">>> from test.test_enum import Fruit\n"
+">>> from pickle import dumps, loads\n"
+">>> Fruit.TOMATO is loads(dumps(Fruit.TOMATO))\n"
+"True"
+msgstr ""
+">>> từ test.test_enum nhập trái cây\n"
+">>> từ bãi nhập dưa chua, tải\n"
+">>> Fruit.TOMATO rất nhiều(dumps(Fruit.TOMATO))\n"
+"đúng"
+
+#: ../../howto/enum.rst:538
+#, fuzzy
+msgid ""
+"The usual restrictions for pickling apply: picklable enums must be defined "
+"in the top level of a module, since unpickling requires them to be "
+"importable from that module."
+msgstr ""
+"Áp dụng các hạn chế thông thường đối với việc tẩy chua: các enum có thể chọn"
+" được phải được xác định ở cấp cao nhất của mô-đun, vì việc giải nén yêu cầu"
+" chúng phải có thể được nhập từ mô-đun đó."
+
+#: ../../howto/enum.rst:544
+#, fuzzy
+msgid ""
+"With pickle protocol version 4 it is possible to easily pickle enums nested "
+"in other classes."
+msgstr ""
+"Với giao thức dưa chua phiên bản 4, có thể dễ dàng chọn các enum được lồng "
+"trong các lớp khác."
+
+#: ../../howto/enum.rst:547
+#, fuzzy
+msgid ""
+"It is possible to modify how enum members are pickled/unpickled by defining "
+":meth:`~object.__reduce_ex__` in the enumeration class.  The default method "
+"is by-value, but enums with complicated values may want to use by-name::"
+msgstr ""
+"Có thể sửa đổi cách các thành viên enum được chọn/bỏ chọn bằng cách xác định"
+" :meth:`~object.__reduce_ex__` trong lớp liệt kê.  Phương thức mặc định là "
+"theo giá trị, nhưng các enum có giá trị phức tạp có thể muốn sử dụng theo "
+"tên::"
+
+#: ../../howto/enum.rst:551
+#, fuzzy
+msgid ""
+">>> import enum\n"
+">>> class MyEnum(enum.Enum):\n"
+"...     __reduce_ex__ = enum.pickle_by_enum_name"
+msgstr ""
+">>> nhập enum\n"
+">>> lớp MyEnum(enum.Enum):\n"
+"... __reduce_ex__ = enum.pickle_by_enum_name"
+
+#: ../../howto/enum.rst:557
+#, fuzzy
+msgid ""
+"Using by-name for flags is not recommended, as unnamed aliases will not "
+"unpickle."
+msgstr ""
+"Không nên sử dụng tên theo cho cờ vì các bí danh không được đặt tên sẽ không"
+" được giải quyết."
+
+#: ../../howto/enum.rst:562
+#, fuzzy
+msgid "Functional API"
+msgstr "Chức năng API"
+
+#: ../../howto/enum.rst:564
+#, fuzzy
+msgid ""
+"The :class:`Enum` class is callable, providing the following functional "
+"API::"
+msgstr "Lớp :class:`Enum` có thể gọi được, cung cấp chức năng API sau::"
+
+#: ../../howto/enum.rst:566
+#, fuzzy
+msgid ""
+">>> Animal = Enum('Animal', 'ANT BEE CAT DOG')\n"
+">>> Animal\n"
+"<enum 'Animal'>\n"
+">>> Animal.ANT\n"
+"<Animal.ANT: 1>\n"
+">>> list(Animal)\n"
+"[<Animal.ANT: 1>, <Animal.BEE: 2>, <Animal.CAT: 3>, <Animal.DOG: 4>]"
+msgstr ""
+">>> Động vật = Enum('Động vật', 'ANT BEE CAT DOG')\n"
+">>> Động vật\n"
+"<enum 'Động vật'>\n"
+">>> Động vật.ANT\n"
+"<Động vật.ANT: 1>\n"
+">>> danh sách(Động vật)\n"
+"[<Animal.ANT: 1>, <Animal.BEE: 2>, <Animal.CAT: 3>, <Animal.DOG: 4>]"
+
+#: ../../howto/enum.rst:574
+#, fuzzy
+msgid ""
+"The semantics of this API resemble :class:`~collections.namedtuple`. The "
+"first argument of the call to :class:`Enum` is the name of the enumeration."
+msgstr ""
+"Ngữ nghĩa của API này giống với :class:`~collections.namedtuple`. Đối số đầu"
+" tiên của lệnh gọi tới :class:`Enum` là tên của bảng liệt kê."
+
+#: ../../howto/enum.rst:577
+#, fuzzy
+msgid ""
+"The second argument is the *source* of enumeration member names.  It can be "
+"a whitespace-separated string of names, a sequence of names, a sequence of "
+"2-tuples with key/value pairs, or a mapping (e.g. dictionary) of names to "
+"values.  The last two options enable assigning arbitrary values to "
+"enumerations; the others auto-assign increasing integers starting with 1 "
+"(use the ``start`` parameter to specify a different starting value).  A new "
+"class derived from :class:`Enum` is returned.  In other words, the above "
+"assignment to :class:`!Animal` is equivalent to::"
+msgstr ""
+"Đối số thứ hai là *source* của tên thành viên liệt kê.  Nó có thể là một "
+"chuỗi tên được phân tách bằng khoảng trắng, một chuỗi tên, một chuỗi gồm 2 "
+"bộ dữ liệu với các cặp khóa/giá trị hoặc ánh xạ (ví dụ: từ điển) tên thành "
+"giá trị.  Hai tùy chọn cuối cùng cho phép gán giá trị tùy ý cho bảng liệt "
+"kê; những cái khác tự động gán số nguyên tăng dần bắt đầu bằng 1 (sử dụng "
+"tham số ``start`` để chỉ định giá trị bắt đầu khác).  Một lớp mới bắt nguồn "
+"từ :class:`Enum` được trả về.  Nói cách khác, phép gán trên cho "
+":class:`!Animal` tương đương với::"
+
+#: ../../howto/enum.rst:586
+#, fuzzy
+msgid ""
+">>> class Animal(Enum):\n"
+"...     ANT = 1\n"
+"...     BEE = 2\n"
+"...     CAT = 3\n"
+"...     DOG = 4\n"
+"..."
+msgstr ""
+">>> lớp Động vật(Enum):\n"
+"... ANT = 1\n"
+"... BEE = 2\n"
+"... CAT = 3\n"
+"... DOG = 4\n"
+"..."
+
+#: ../../howto/enum.rst:593
+#, fuzzy
+msgid ""
+"The reason for defaulting to ``1`` as the starting number and not ``0`` is "
+"that ``0`` is ``False`` in a boolean sense, but by default enum members all "
+"evaluate to ``True``."
+msgstr ""
+"Lý do mặc định ``1`` là số bắt đầu chứ không phải ``0`` là vì ``0`` là "
+"``False`` theo nghĩa boolean, nhưng theo mặc định, các thành viên enum đều "
+"đánh giá là ``True``."
+
+#: ../../howto/enum.rst:597
+#, fuzzy
+msgid ""
+"Pickling enums created with the functional API can be tricky as frame stack "
+"implementation details are used to try and figure out which module the "
+"enumeration is being created in (e.g. it will fail if you use a utility "
+"function in a separate module, and also may not work on IronPython or "
+"Jython). The solution is to specify the module name explicitly as follows::"
+msgstr ""
+"Các enum tẩy được tạo bằng API chức năng có thể phức tạp vì các chi tiết "
+"triển khai ngăn xếp khung được sử dụng để thử và tìm ra mô-đun liệt kê đang "
+"được tạo trong mô-đun nào (ví dụ: nó sẽ thất bại nếu bạn sử dụng chức năng "
+"tiện ích trong một mô-đun riêng biệt và cũng có thể không hoạt động trên "
+"IronPython hoặc Jython). Giải pháp là chỉ định rõ ràng tên mô-đun như sau ::"
+
+#: ../../howto/enum.rst:603
+#, fuzzy
+msgid ">>> Animal = Enum('Animal', 'ANT BEE CAT DOG', module=__name__)"
+msgstr ">>> Động vật = Enum('Động vật', 'ANT BEE CAT DOG', module=__name__)"
+
+#: ../../howto/enum.rst:607
+#, fuzzy
+msgid ""
+"If ``module`` is not supplied, and Enum cannot determine what it is, the new"
+" Enum members will not be unpicklable; to keep errors closer to the source, "
+"pickling will be disabled."
+msgstr ""
+"Nếu ``module`` không được cung cấp và Enum không thể xác định nó là gì thì "
+"các thành viên Enum mới sẽ không thể chọn được; để giữ lỗi gần nguồn hơn, "
+"việc tẩy rửa sẽ bị vô hiệu hóa."
+
+#: ../../howto/enum.rst:611
+#, fuzzy
+msgid ""
+"The new pickle protocol 4 also, in some circumstances, relies on "
+":attr:`~type.__qualname__` being set to the location where pickle will be "
+"able to find the class.  For example, if the class was made available in "
+"class SomeData in the global scope::"
+msgstr ""
+"Trong một số trường hợp, giao thức dưa chua mới 4 cũng dựa vào "
+":attr:`~type.__qualname__` được đặt ở vị trí mà dưa chua có thể tìm thấy "
+"lớp.  Ví dụ: nếu lớp được cung cấp trong lớp SomeData trong phạm vi toàn cầu"
+" ::"
+
+#: ../../howto/enum.rst:616
+#, fuzzy
+msgid ""
+">>> Animal = Enum('Animal', 'ANT BEE CAT DOG', qualname='SomeData.Animal')"
+msgstr ""
+">>> Động vật = Enum('Động vật', 'ANT BEE CAT DOG', "
+"qualname='SomeData.Animal')"
+
+#: ../../howto/enum.rst:618
+#, fuzzy
+msgid "The complete signature is::"
+msgstr "Chữ ký đầy đủ là::"
+
+#: ../../howto/enum.rst:620
+#, fuzzy
+msgid ""
+"Enum(\n"
+"    value='NewEnumName',\n"
+"    names=<...>,\n"
+"    *,\n"
+"    module='...',\n"
+"    qualname='...',\n"
+"    type=<mixed-in class>,\n"
+"    start=1,\n"
+"    )"
+msgstr ""
+"liệt kê(\n"
+"    value='NewEnumName',\n"
+"    tên=<...>,\n"
+"    *,\n"
+"    mô-đun='...',\n"
+"    tên quốc tế='...',\n"
+"    type=<lớp hỗn hợp>,\n"
+"    bắt đầu=1,\n"
+"    )"
+
+#: ../../howto/enum.rst:630
+#, fuzzy
+msgid "*value*: What the new enum class will record as its name."
+msgstr "*value*: Lớp enum mới sẽ ghi gì làm tên của nó."
+
+#: ../../howto/enum.rst:632
+#, fuzzy
+msgid ""
+"*names*: The enum members.  This can be a whitespace- or comma-separated "
+"string (values will start at 1 unless otherwise specified)::"
+msgstr ""
+"*names*: Các thành viên enum.  Đây có thể là một chuỗi được phân tách bằng "
+"khoảng trắng hoặc bằng dấu phẩy (các giá trị sẽ bắt đầu từ 1 trừ khi có quy "
+"định khác)::"
+
+#: ../../howto/enum.rst:635
+#, fuzzy
+msgid "'RED GREEN BLUE' | 'RED,GREEN,BLUE' | 'RED, GREEN, BLUE'"
+msgstr "'RED GREEN BLUE' | 'RED,GREEN,BLUE' | 'RED, GREEN, BLUE'"
+
+#: ../../howto/enum.rst:637
+#, fuzzy
+msgid "or an iterator of names::"
+msgstr "hoặc một trình lặp tên::"
+
+#: ../../howto/enum.rst:639
+#, fuzzy
+msgid "['RED', 'GREEN', 'BLUE']"
+msgstr "['RED', 'GREEN', 'BLUE']"
+
+#: ../../howto/enum.rst:641
+#, fuzzy
+msgid "or an iterator of (name, value) pairs::"
+msgstr "hoặc một trình vòng lặp của các cặp (tên, giá trị)::"
+
+#: ../../howto/enum.rst:643
+#, fuzzy
+msgid "[('CYAN', 4), ('MAGENTA', 5), ('YELLOW', 6)]"
+msgstr "[('CYAN', 4), ('MAGENTA', 5), ('YELLOW', 6)]"
+
+#: ../../howto/enum.rst:645
+#, fuzzy
+msgid "or a mapping::"
+msgstr "hoặc một bản đồ::"
+
+#: ../../howto/enum.rst:647
+#, python-brace-format, fuzzy
+msgid "{'CHARTREUSE': 7, 'SEA_GREEN': 11, 'ROSEMARY': 42}"
+msgstr "{'CHARTREUSE': 7, 'SEA_GREEN': 11, 'ROSEMARY': 42}"
+
+#: ../../howto/enum.rst:649
+#, fuzzy
+msgid "*module*: name of module where new enum class can be found."
+msgstr "*module*: tên của mô-đun nơi có thể tìm thấy lớp enum mới."
+
+#: ../../howto/enum.rst:651
+#, fuzzy
+msgid "*qualname*: where in module new enum class can be found."
+msgstr "*qualname*: có thể tìm thấy lớp enum mới trong mô-đun ở đâu."
+
+#: ../../howto/enum.rst:653
+#, fuzzy
+msgid "*type*: type to mix in to new enum class."
+msgstr "*type*: gõ để trộn vào lớp enum mới."
+
+#: ../../howto/enum.rst:655
+#, fuzzy
+msgid "*start*: number to start counting at if only names are passed in."
+msgstr "*start*: số bắt đầu đếm nếu chỉ có tên được truyền vào."
+
+#: ../../howto/enum.rst:657
+#, fuzzy
+msgid "The *start* parameter was added."
+msgstr "Tham số *start* đã được thêm vào."
+
+#: ../../howto/enum.rst:662
+#, fuzzy
+msgid "Derived Enumerations"
+msgstr "Bảng liệt kê dẫn xuất"
+
+#: ../../howto/enum.rst:665
+#, fuzzy
+msgid "IntEnum"
+msgstr "IntEnum"
+
+#: ../../howto/enum.rst:667
+#, fuzzy
+msgid ""
+"The first variation of :class:`Enum` that is provided is also a subclass of "
+":class:`int`.  Members of an :class:`IntEnum` can be compared to integers; "
+"by extension, integer enumerations of different types can also be compared "
+"to each other::"
+msgstr ""
+"Biến thể đầu tiên của :class:`Enum` được cung cấp cũng là một lớp con của "
+":class:`int`.  Các thành viên của :class:`IntEnum` có thể được so sánh với "
+"số nguyên; bằng cách mở rộng, các bảng liệt kê số nguyên thuộc các loại khác"
+" nhau cũng có thể được so sánh với nhau ::"
+
+#: ../../howto/enum.rst:672
+#, fuzzy
+msgid ""
+">>> from enum import IntEnum\n"
+">>> class Shape(IntEnum):\n"
+"...     CIRCLE = 1\n"
+"...     SQUARE = 2\n"
+"...\n"
+">>> class Request(IntEnum):\n"
+"...     POST = 1\n"
+"...     GET = 2\n"
+"...\n"
+">>> Shape == 1\n"
+"False\n"
+">>> Shape.CIRCLE == 1\n"
+"True\n"
+">>> Shape.CIRCLE == Request.POST\n"
+"True"
+msgstr ""
+">>> từ nhập enum IntEnum\n"
+">>> Hình dạng lớp (IntEnum):\n"
+"... CIRCLE = 1\n"
+"... SQUARE = 2\n"
+"...\n"
+">>> Yêu cầu lớp(IntEnum):\n"
+"... POST = 1\n"
+"... GET = 2\n"
+"...\n"
+">>> Hình dạng == 1\n"
+"sai\n"
+">>> Shape.CIRCLE == 1\n"
+"đúng\n"
+">>> Shape.CIRCLE == Yêu cầu.POST\n"
+"đúng"
+
+#: ../../howto/enum.rst:688
+#, fuzzy
+msgid ""
+"However, they still can't be compared to standard :class:`Enum` "
+"enumerations::"
+msgstr ""
+"Tuy nhiên, chúng vẫn không thể so sánh với bảng liệt kê :class:`Enum` tiêu "
+"chuẩn::"
+
+#: ../../howto/enum.rst:690
+#, fuzzy
+msgid ""
+">>> class Shape(IntEnum):\n"
+"...     CIRCLE = 1\n"
+"...     SQUARE = 2\n"
+"...\n"
+">>> class Color(Enum):\n"
+"...     RED = 1\n"
+"...     GREEN = 2\n"
+"...\n"
+">>> Shape.CIRCLE == Color.RED\n"
+"False"
+msgstr ""
+">>> Hình dạng lớp (IntEnum):\n"
+"... CIRCLE = 1\n"
+"... SQUARE = 2\n"
+"...\n"
+">>> Màu lớp (Enum):\n"
+"... RED = 1\n"
+"... GREEN = 2\n"
+"...\n"
+">>> Shape.CIRCLE == Color.RED\n"
+"sai"
+
+#: ../../howto/enum.rst:701
+#, fuzzy
+msgid ""
+":class:`IntEnum` values behave like integers in other ways you'd expect::"
+msgstr ""
+"Các giá trị :class:`IntEnum` hoạt động giống như số nguyên theo những cách "
+"khác mà bạn mong đợi::"
+
+#: ../../howto/enum.rst:703
+#, fuzzy
+msgid ""
+">>> int(Shape.CIRCLE)\n"
+"1\n"
+">>> ['a', 'b', 'c'][Shape.CIRCLE]\n"
+"'b'\n"
+">>> [i for i in range(Shape.SQUARE)]\n"
+"[0, 1]"
+msgstr ""
+">>> int(Shape.CIRCLE)\n"
+"1\n"
+">>> ['a', 'b', 'c'][Shape.CIRCLE]\n"
+"'b'\n"
+">>> [i cho i trong phạm vi(Shape.SQUARE)]\n"
+"[0, 1]"
+
+#: ../../howto/enum.rst:712
+#, fuzzy
+msgid "StrEnum"
+msgstr "StrEnum"
+
+#: ../../howto/enum.rst:714
+#, fuzzy
+msgid ""
+"The second variation of :class:`Enum` that is provided is also a subclass of"
+" :class:`str`.  Members of a :class:`StrEnum` can be compared to strings; by"
+" extension, string enumerations of different types can also be compared to "
+"each other."
+msgstr ""
+"Biến thể thứ hai của :class:`Enum` được cung cấp cũng là một lớp con của "
+":class:`str`.  Các thành viên của :class:`StrEnum` có thể được so sánh với "
+"các chuỗi; bằng cách mở rộng, các bảng liệt kê chuỗi thuộc các loại khác "
+"nhau cũng có thể được so sánh với nhau."
+
+#: ../../howto/enum.rst:723
+#, fuzzy
+msgid "IntFlag"
+msgstr "cờ quốc tế"
+
+#: ../../howto/enum.rst:725
+#, fuzzy
+msgid ""
+"The next variation of :class:`Enum` provided, :class:`IntFlag`, is also "
+"based on :class:`int`.  The difference being :class:`IntFlag` members can be"
+" combined using the bitwise operators (&, \\|, ^, ~) and the result is still"
+" an :class:`IntFlag` member, if possible.  Like :class:`IntEnum`, "
+":class:`IntFlag` members are also integers and can be used wherever an "
+":class:`int` is used."
+msgstr ""
+"Biến thể tiếp theo của :class:`Enum` được cung cấp, :class:`IntFlag`, cũng "
+"dựa trên :class:`int`.  Sự khác biệt giữa các thành viên :class:`IntFlag` có"
+" thể được kết hợp bằng cách sử dụng các toán tử bitwise (&, \\|, ^, ~) và "
+"kết quả vẫn là thành viên :class:`IntFlag`, nếu có thể.  Giống như "
+":class:`IntEnum`, các thành phần :class:`IntFlag` cũng là số nguyên và có "
+"thể được sử dụng ở bất cứ nơi nào sử dụng :class:`int`."
+
+#: ../../howto/enum.rst:733
+#, fuzzy
+msgid ""
+"Any operation on an :class:`IntFlag` member besides the bit-wise operations "
+"will lose the :class:`IntFlag` membership."
+msgstr ""
+"Bất kỳ hoạt động nào trên thành viên :class:`IntFlag` ngoài các hoạt động "
+"khôn ngoan về bit sẽ mất tư cách thành viên :class:`IntFlag`."
+
+#: ../../howto/enum.rst:736
+#, fuzzy
+msgid ""
+"Bit-wise operations that result in invalid :class:`IntFlag` values will lose"
+" the :class:`IntFlag` membership.  See :class:`FlagBoundary` for details."
+msgstr ""
+"Các hoạt động khôn ngoan về bit dẫn đến giá trị :class:`IntFlag` không hợp "
+"lệ sẽ mất tư cách thành viên :class:`IntFlag`.  Xem :class:`FlagBoundary` để"
+" biết chi tiết."
+
+#: ../../howto/enum.rst:743
+#, fuzzy
+msgid "Sample :class:`IntFlag` class::"
+msgstr "Lớp :class:`IntFlag` mẫu::"
+
+#: ../../howto/enum.rst:745
+#, fuzzy
+msgid ""
+">>> from enum import IntFlag\n"
+">>> class Perm(IntFlag):\n"
+"...     R = 4\n"
+"...     W = 2\n"
+"...     X = 1\n"
+"...\n"
+">>> Perm.R | Perm.W\n"
+"<Perm.R|W: 6>\n"
+">>> Perm.R + Perm.W\n"
+"6\n"
+">>> RW = Perm.R | Perm.W\n"
+">>> Perm.R in RW\n"
+"True"
+msgstr ""
+">>> từ nhập enum IntFlag\n"
+">>> lớp Perm(IntFlag):\n"
+"... R = 4\n"
+"... W = 2\n"
+"... X = 1\n"
+"...\n"
+">>> Perm.R | Perm.W\n"
+"<Perm.R|W: 6>\n"
+">>> Perm.R + Perm.W\n"
+"6\n"
+">>> RW = Perm.R | Perm.W\n"
+">>> Perm.R trong RW\n"
+"đúng"
+
+#: ../../howto/enum.rst:759
+#, fuzzy
+msgid "It is also possible to name the combinations::"
+msgstr "Cũng có thể đặt tên cho các kết hợp::"
+
+#: ../../howto/enum.rst:761
+#, fuzzy
+msgid ""
+">>> class Perm(IntFlag):\n"
+"...     R = 4\n"
+"...     W = 2\n"
+"...     X = 1\n"
+"...     RWX = 7\n"
+"...\n"
+">>> Perm.RWX\n"
+"<Perm.RWX: 7>\n"
+">>> ~Perm.RWX\n"
+"<Perm: 0>\n"
+">>> Perm(7)\n"
+"<Perm.RWX: 7>"
+msgstr ""
+">>> lớp Perm(IntFlag):\n"
+"... R = 4\n"
+"... W = 2\n"
+"... X = 1\n"
+"... RWX = 7\n"
+"...\n"
+">>> Perm.RWX\n"
+"<Perm.RWX: 7>\n"
+">>> ~Perm.RWX\n"
+"<Perm: 0>\n"
+">>> Perm(7)\n"
+"<Perm.RWX: 7>"
+
+#: ../../howto/enum.rst:776
+#, fuzzy
+msgid ""
+"Named combinations are considered aliases.  Aliases do not show up during "
+"iteration, but can be returned from by-value lookups."
+msgstr ""
+"Các kết hợp được đặt tên được coi là bí danh.  Bí danh không hiển thị trong "
+"quá trình lặp lại nhưng có thể được trả về từ việc tra cứu theo giá trị."
+
+#: ../../howto/enum.rst:781
+#, fuzzy
+msgid ""
+"Another important difference between :class:`IntFlag` and :class:`Enum` is "
+"that if no flags are set (the value is 0), its boolean evaluation is "
+":data:`False`::"
+msgstr ""
+"Một điểm khác biệt quan trọng khác giữa :class:`IntFlag` và :class:`Enum` là"
+" nếu không có cờ nào được đặt (giá trị là 0), thì đánh giá boolean của nó là"
+" :data:`False`::"
+
+#: ../../howto/enum.rst:784
+#, fuzzy
+msgid ""
+">>> Perm.R & Perm.X\n"
+"<Perm: 0>\n"
+">>> bool(Perm.R & Perm.X)\n"
+"False"
+msgstr ""
+">>> Perm.R & Perm.X\n"
+"<Perm: 0>\n"
+">>> bool(Perm.R & Perm.X)\n"
+"sai"
+
+#: ../../howto/enum.rst:789
+#, fuzzy
+msgid ""
+"Because :class:`IntFlag` members are also subclasses of :class:`int` they "
+"can be combined with them (but may lose :class:`IntFlag` membership::"
+msgstr ""
+"Bởi vì các thành viên :class:`IntFlag` cũng là lớp con của :class:`int` nên "
+"chúng có thể được kết hợp với chúng (nhưng có thể mất tư cách thành viên "
+":class:`IntFlag`::"
+
+#: ../../howto/enum.rst:792
+#, fuzzy
+msgid ""
+">>> Perm.X | 4\n"
+"<Perm.R|X: 5>\n"
+"\n"
+">>> Perm.X + 8\n"
+"9"
+msgstr ""
+">>> Perm.X | 4\n"
+"<Perm.R|X: 5>\n"
+"\n"
+">>> Perm.X + 8\n"
+"9"
+
+#: ../../howto/enum.rst:800
+#, fuzzy
+msgid ""
+"The negation operator, ``~``, always returns an :class:`IntFlag` member with"
+" a positive value::"
+msgstr ""
+"Toán tử phủ định, ``~``, luôn trả về một thành viên :class:`IntFlag` có giá "
+"trị dương::"
+
+#: ../../howto/enum.rst:803
+#, fuzzy
+msgid ""
+">>> (~Perm.X).value == (Perm.R|Perm.W).value == 6\n"
+"True"
+msgstr ""
+">>> (~Perm.X).value == (Perm.R|Perm.W).value == 6\n"
+"đúng"
+
+#: ../../howto/enum.rst:806
+#, fuzzy
+msgid ":class:`IntFlag` members can also be iterated over::"
+msgstr "Các thành viên :class:`IntFlag` cũng có thể được lặp lại::"
+
+#: ../../howto/enum.rst:808
+#, fuzzy
+msgid ""
+">>> list(RW)\n"
+"[<Perm.R: 4>, <Perm.W: 2>]"
+msgstr ""
+">>> danh sách(RW)\n"
+"[<Perm.R: 4>, <Perm.W: 2>]"
+
+#: ../../howto/enum.rst:815
+#, fuzzy
+msgid "Flag"
+msgstr "Cờ"
+
+#: ../../howto/enum.rst:817
+#, fuzzy
+msgid ""
+"The last variation is :class:`Flag`.  Like :class:`IntFlag`, :class:`Flag` "
+"members can be combined using the bitwise operators (&, \\|, ^, ~).  Unlike "
+":class:`IntFlag`, they cannot be combined with, nor compared against, any "
+"other :class:`Flag` enumeration, nor :class:`int`.  While it is possible to "
+"specify the values directly it is recommended to use :class:`auto` as the "
+"value and let :class:`Flag` select an appropriate value."
+msgstr ""
+"Biến thể cuối cùng là :class:`Flag`.  Giống như :class:`IntFlag`, các thành "
+"viên :class:`Flag` có thể được kết hợp bằng cách sử dụng các toán tử bitwise"
+" (&, \\|, ^, ~).  Không giống như :class:`IntFlag`, chúng không thể được kết"
+" hợp hoặc so sánh với bất kỳ bảng liệt kê :class:`Flag` nào khác hoặc "
+":class:`int`.  Mặc dù có thể chỉ định trực tiếp các giá trị nhưng bạn nên sử"
+" dụng :class:`auto` làm giá trị và để :class:`Flag` chọn một giá trị thích "
+"hợp."
+
+#: ../../howto/enum.rst:826
+#, fuzzy
+msgid ""
+"Like :class:`IntFlag`, if a combination of :class:`Flag` members results in "
+"no flags being set, the boolean evaluation is :data:`False`::"
+msgstr ""
+"Giống như :class:`IntFlag`, nếu sự kết hợp của các thành viên :class:`Flag` "
+"dẫn đến không có cờ nào được đặt thì đánh giá boolean là :data:`False`::"
+
+#: ../../howto/enum.rst:829
+#, fuzzy
+msgid ""
+">>> from enum import Flag, auto\n"
+">>> class Color(Flag):\n"
+"...     RED = auto()\n"
+"...     BLUE = auto()\n"
+"...     GREEN = auto()\n"
+"...\n"
+">>> Color.RED & Color.GREEN\n"
+"<Color: 0>\n"
+">>> bool(Color.RED & Color.GREEN)\n"
+"False"
+msgstr ""
+">>> từ cờ nhập enum, tự động\n"
+">>> Màu lớp (Cờ):\n"
+"... RED = tự động()\n"
+"... BLUE = tự động()\n"
+"... GREEN = tự động()\n"
+"...\n"
+">>> Color.RED & Color.GREEN\n"
+"<Màu sắc: 0>\n"
+">>> bool(Color.RED & Color.GREEN)\n"
+"sai"
+
+#: ../../howto/enum.rst:840
+#, fuzzy
+msgid ""
+"Individual flags should have values that are powers of two (1, 2, 4, 8, "
+"...), while combinations of flags will not::"
+msgstr ""
+"Các cờ riêng lẻ phải có các giá trị là lũy thừa của hai (1, 2, 4, 8, ...), "
+"trong khi các tổ hợp cờ sẽ không::"
+
+#: ../../howto/enum.rst:843
+#, fuzzy
+msgid ""
+">>> class Color(Flag):\n"
+"...     RED = auto()\n"
+"...     BLUE = auto()\n"
+"...     GREEN = auto()\n"
+"...     WHITE = RED | BLUE | GREEN\n"
+"...\n"
+">>> Color.WHITE\n"
+"<Color.WHITE: 7>"
+msgstr ""
+">>> Màu lớp (Cờ):\n"
+"... RED = tự động()\n"
+"... BLUE = tự động()\n"
+"... GREEN = tự động()\n"
+"... WHITE = RED | BLUE | GREEN\n"
+"...\n"
+">>> Color.WHITE\n"
+"<Color.WHITE: 7>"
+
+#: ../../howto/enum.rst:852
+#, fuzzy
+msgid ""
+"Giving a name to the \"no flags set\" condition does not change its boolean "
+"value::"
+msgstr ""
+"Đặt tên cho điều kiện \"không đặt cờ\" không làm thay đổi giá trị boolean "
+"của nó::"
+
+#: ../../howto/enum.rst:855
+#, fuzzy
+msgid ""
+">>> class Color(Flag):\n"
+"...     BLACK = 0\n"
+"...     RED = auto()\n"
+"...     BLUE = auto()\n"
+"...     GREEN = auto()\n"
+"...\n"
+">>> Color.BLACK\n"
+"<Color.BLACK: 0>\n"
+">>> bool(Color.BLACK)\n"
+"False"
+msgstr ""
+">>> Màu lớp (Cờ):\n"
+"... BLACK = 0\n"
+"... RED = tự động()\n"
+"... BLUE = tự động()\n"
+"... GREEN = tự động()\n"
+"...\n"
+">>> Color.BLACK\n"
+"<Color.BLACK: 0>\n"
+">>> bool(Color.BLACK)\n"
+"sai"
+
+#: ../../howto/enum.rst:866
+#, fuzzy
+msgid ":class:`Flag` members can also be iterated over::"
+msgstr "Các thành viên :class:`Flag` cũng có thể được lặp lại::"
+
+#: ../../howto/enum.rst:868
+#, fuzzy
+msgid ""
+">>> purple = Color.RED | Color.BLUE\n"
+">>> list(purple)\n"
+"[<Color.RED: 1>, <Color.BLUE: 2>]"
+msgstr ""
+">>> tím = Color.RED | Màu.BLUE\n"
+">>> danh sách (màu tím)\n"
+"[<Color.RED: 1>, <Color.BLUE: 2>]"
+
+#: ../../howto/enum.rst:876
+#, fuzzy
+msgid ""
+"For the majority of new code, :class:`Enum` and :class:`Flag` are strongly "
+"recommended, since :class:`IntEnum` and :class:`IntFlag` break some semantic"
+" promises of an enumeration (by being comparable to integers, and thus by "
+"transitivity to other unrelated enumerations).  :class:`IntEnum` and "
+":class:`IntFlag` should be used only in cases where :class:`Enum` and "
+":class:`Flag` will not do; for example, when integer constants are replaced "
+"with enumerations, or for interoperability with other systems."
+msgstr ""
+"Đối với phần lớn mã mới, :class:`Enum` và :class:`Flag` được đặc biệt khuyến"
+" khích, vì :class:`IntEnum` và :class:`IntFlag` phá vỡ một số lời hứa về ngữ"
+" nghĩa của một bảng liệt kê (bằng cách có thể so sánh với các số nguyên và "
+"do đó có tính bắc cầu với các bảng liệt kê không liên quan khác).  "
+":class:`IntEnum` và :class:`IntFlag` chỉ nên được sử dụng trong trường hợp "
+":class:`Enum` và :class:`Flag` không làm được; ví dụ: khi các hằng số nguyên"
+" được thay thế bằng các bảng liệt kê hoặc để có khả năng tương tác với các "
+"hệ thống khác."
+
+#: ../../howto/enum.rst:886
+#, fuzzy
+msgid "Others"
+msgstr "Khác"
+
+#: ../../howto/enum.rst:888
+#, fuzzy
+msgid ""
+"While :class:`IntEnum` is part of the :mod:`enum` module, it would be very "
+"simple to implement independently::"
+msgstr ""
+"Mặc dù :class:`IntEnum` là một phần của mô-đun :mod:`enum` nhưng việc triển "
+"khai độc lập sẽ rất đơn giản::"
+
+#: ../../howto/enum.rst:891
+#, fuzzy
+msgid ""
+"class IntEnum(int, ReprEnum):   # or Enum instead of ReprEnum\n"
+"    pass"
+msgstr ""
+"lớp IntEnum(int, ReprEnum): # or Enum thay vì ReprEnum\n"
+"    vượt qua"
+
+#: ../../howto/enum.rst:894
+#, fuzzy
+msgid ""
+"This demonstrates how similar derived enumerations can be defined; for "
+"example a :class:`!FloatEnum` that mixes in :class:`float` instead of "
+":class:`int`."
+msgstr ""
+"Điều này chứng tỏ cách có thể định nghĩa các bảng liệt kê dẫn xuất tương tự;"
+" ví dụ: :class:`!FloatEnum` trộn trong :class:`float` thay vì :class:`int`."
+
+#: ../../howto/enum.rst:897
+#, fuzzy
+msgid "Some rules:"
+msgstr "Một số quy tắc:"
+
+#: ../../howto/enum.rst:899
+#, fuzzy
+msgid ""
+"When subclassing :class:`Enum`, mix-in types must appear before the "
+":class:`Enum` class itself in the sequence of bases, as in the "
+":class:`IntEnum` example above."
+msgstr ""
+"Khi phân lớp :class:`Enum`, các loại kết hợp phải xuất hiện trước chính lớp "
+":class:`Enum` theo chuỗi các cơ sở, như trong ví dụ :class:`IntEnum` ở trên."
+
+#: ../../howto/enum.rst:902
+#, fuzzy
+msgid ""
+"Mix-in types must be subclassable. For example, :class:`bool` and "
+":class:`range` are not subclassable and will throw an error during Enum "
+"creation if used as the mix-in type."
+msgstr ""
+"Các loại kết hợp phải có thể phân lớp được. Ví dụ: :class:`bool` và "
+":class:`range` không thể phân lớp được và sẽ gây ra lỗi trong quá trình tạo "
+"Enum nếu được sử dụng làm loại kết hợp."
+
+#: ../../howto/enum.rst:905
+#, fuzzy
+msgid ""
+"While :class:`Enum` can have members of any type, once you mix in an "
+"additional type, all the members must have values of that type, e.g. "
+":class:`int` above.  This restriction does not apply to mix-ins which only "
+"add methods and don't specify another type."
+msgstr ""
+"Mặc dù :class:`Enum` có thể có các thành viên thuộc bất kỳ loại nào, nhưng "
+"khi bạn kết hợp với một loại bổ sung, tất cả các thành viên phải có giá trị "
+"thuộc loại đó, ví dụ: :class:`int` ở trên.  Hạn chế này không áp dụng cho "
+"các hỗn hợp chỉ thêm phương thức và không chỉ định loại khác."
+
+#: ../../howto/enum.rst:909
+#, fuzzy
+msgid ""
+"When another data type is mixed in, the :attr:`~Enum.value` attribute is "
+"*not the same* as the enum member itself, although it is equivalent and will"
+" compare equal."
+msgstr ""
+"Khi một loại dữ liệu khác được trộn lẫn vào, thuộc tính :attr:`~Enum.value` "
+"là *not the same* với tư cách là thành viên enum, mặc dù nó tương đương và "
+"sẽ so sánh bằng nhau."
+
+#: ../../howto/enum.rst:912
+#, fuzzy
+msgid ""
+"A ``data type`` is a mixin that defines :meth:`~object.__new__`, or a "
+":class:`~dataclasses.dataclass`"
+msgstr ""
+"Zz002zz là một mixin xác định :meth:`~object.__new__` hoặc "
+":class:`~dataclasses.dataclass`"
+
+#: ../../howto/enum.rst:914
+#, python-format, fuzzy
+msgid ""
+"%-style formatting:  ``%s`` and ``%r`` call the :class:`Enum` class's "
+":meth:`~object.__str__` and :meth:`~object.__repr__` respectively; other "
+"codes (such as ``%i`` or ``%h`` for IntEnum) treat the enum member as its "
+"mixed-in type."
+msgstr ""
+"Định dạng kiểu %: ``%s`` và ``%r`` gọi lần lượt là :meth:`~object.__str__` "
+"và :meth:`~object.__repr__` của lớp :class:`Enum`; các mã khác (chẳng hạn "
+"như ``%i`` hoặc ``%h`` cho IntEnum) coi thành viên enum là loại hỗn hợp của "
+"nó."
+
+#: ../../howto/enum.rst:917
+#, fuzzy
+msgid ""
+":ref:`Formatted string literals <f-strings>`, :meth:`str.format`, and "
+":func:`format` will use the enum's :meth:`~object.__str__` method."
+msgstr ""
+":ref:`Formatted string literals <f-strings>`, :meth:`str.format` và "
+":func:`format` sẽ sử dụng phương thức :meth:`~object.__str__` của enum."
+
+#: ../../howto/enum.rst:922
+#, fuzzy
+msgid ""
+"Because :class:`IntEnum`, :class:`IntFlag`, and :class:`StrEnum` are "
+"designed to be drop-in replacements for existing constants, their "
+":meth:`~object.__str__` method has been reset to their data types' "
+":meth:`~object.__str__` method."
+msgstr ""
+"Vì :class:`IntEnum`, :class:`IntFlag` và :class:`StrEnum` được thiết kế để "
+"thay thế cho các hằng số hiện có nên phương thức :meth:`~object.__str__` của"
+" chúng đã được đặt lại thành phương thức :meth:`~object.__str__` của loại dữ"
+" liệu."
+
+#: ../../howto/enum.rst:930
+#, fuzzy
+msgid "When to use :meth:`~object.__new__` vs. :meth:`~object.__init__`"
+msgstr ""
+"Khi nào nên sử dụng :meth:`~object.__new__` so với :meth:`~object.__init__`"
+
+#: ../../howto/enum.rst:932
+#, fuzzy
+msgid ""
+":meth:`~object.__new__` must be used whenever you want to customize the "
+"actual value of the :class:`Enum` member.  Any other modifications may go in"
+" either :meth:`~object.__new__` or :meth:`~object.__init__`, with "
+":meth:`~object.__init__` being preferred."
+msgstr ""
+":meth:`~object.__new__` phải được sử dụng bất cứ khi nào bạn muốn tùy chỉnh "
+"giá trị thực của thành viên :class:`Enum`.  Bất kỳ sửa đổi nào khác có thể "
+"có trong :meth:`~object.__new__` hoặc :meth:`~object.__init__`, trong đó "
+":meth:`~object.__init__` được ưu tiên."
+
+#: ../../howto/enum.rst:936
+#, fuzzy
+msgid ""
+"For example, if you want to pass several items to the constructor, but only "
+"want one of them to be the value::"
+msgstr ""
+"Ví dụ: nếu bạn muốn chuyển một số mục cho hàm tạo nhưng chỉ muốn một trong "
+"số chúng là giá trị ::"
+
+#: ../../howto/enum.rst:939
+#, fuzzy
+msgid ""
+">>> class Coordinate(bytes, Enum):\n"
+"...     \"\"\"\n"
+"...     Coordinate with binary codes that can be indexed by the int code.\n"
+"...     \"\"\"\n"
+"...     def __new__(cls, value, label, unit):\n"
+"...         obj = bytes.__new__(cls, [value])\n"
+"...         obj._value_ = value\n"
+"...         obj.label = label\n"
+"...         obj.unit = unit\n"
+"...         return obj\n"
+"...     PX = (0, 'P.X', 'km')\n"
+"...     PY = (1, 'P.Y', 'km')\n"
+"...     VX = (2, 'V.X', 'km/s')\n"
+"...     VY = (3, 'V.Y', 'km/s')\n"
+"...\n"
+"\n"
+">>> print(Coordinate['PY'])\n"
+"Coordinate.PY\n"
+"\n"
+">>> print(Coordinate(3))\n"
+"Coordinate.VY"
+msgstr ""
+">>> Tọa độ lớp(byte, Enum):\n"
+"... \"\"\"\n"
+"... Phối hợp với các mã nhị phân có thể được lập chỉ mục bằng mã int.\n"
+"... \"\"\"\n"
+"... def __new__(cls, giá trị, nhãn, đơn vị):\n"
+"... obj = byte.__new__(cls, [giá trị])\n"
+"... obj._value_ = giá trị\n"
+"... obj.label = nhãn\n"
+"... obj.unit = đơn vị\n"
+"... trả lại đối tượng\n"
+"... PX = (0, 'P.X', 'km')\n"
+"... PY = (1, 'P.Y', 'km')\n"
+"... VX = (2, 'V.X', 'km/s')\n"
+"... VY = (3, 'V.Y', 'km/s')\n"
+"...\n"
+"\n"
+">>> print(Phối hợp['PY'])\n"
+"Tọa độ.PY\n"
+"\n"
+">>> in(Tọa độ(3))\n"
+"Tọa độ.VY"
+
+#: ../../howto/enum.rst:963
+#, fuzzy
+msgid ""
+"*Do not* call ``super().__new__()``, as the lookup-only ``__new__`` is the "
+"one that is found; instead, use the data type directly."
+msgstr ""
+"*Do not* gọi ``super().__new__()``, vì ``__new__`` chỉ tra cứu là cái được "
+"tìm thấy; thay vào đó, hãy sử dụng kiểu dữ liệu trực tiếp."
+
+#: ../../howto/enum.rst:968
+#, fuzzy
+msgid "Finer Points"
+msgstr "Điểm tốt hơn"
+
+#: ../../howto/enum.rst:971
+#, fuzzy
+msgid "Supported ``__dunder__`` and ``_sunder_`` names"
+msgstr "Tên ``__dunder__`` và ``_sunder_`` được hỗ trợ"
+
+#: ../../howto/enum.rst:973
+#, fuzzy
+msgid ""
+"The supported ``__dunder__`` and ``_sunder_`` names can be found in the "
+":ref:`Enum API documentation <enum-dunder-sunder>`."
+msgstr ""
+"Tên ``__dunder__`` và ``_sunder_`` được hỗ trợ có thể được tìm thấy trong "
+":ref:`Enum API documentation <enum-dunder-sunder>`."
+
+#: ../../howto/enum.rst:977
+#, fuzzy
+msgid "_Private__names"
+msgstr "_Riêng__tên"
+
+#: ../../howto/enum.rst:979
+#, fuzzy
+msgid ""
+":ref:`Private names <private-name-mangling>` are not converted to enum "
+"members, but remain normal attributes."
+msgstr ""
+":ref:`Private names <private-name-mangling>` không được chuyển đổi thành "
+"thành viên enum mà vẫn giữ nguyên các thuộc tính bình thường."
+
+#: ../../howto/enum.rst:986
+#, fuzzy
+msgid "``Enum`` member type"
+msgstr "loại thành viên ``Enum``"
+
+#: ../../howto/enum.rst:988
+#, fuzzy
+msgid ""
+"Enum members are instances of their enum class, and are normally accessed as"
+" ``EnumClass.member``.  In certain situations, such as writing custom enum "
+"behavior, being able to access one member directly from another is useful, "
+"and is supported; however, in order to avoid name clashes between member "
+"names and attributes/methods from mixed-in classes, upper-case names are "
+"strongly recommended."
+msgstr ""
+"Các thành viên Enum là các phiên bản của lớp enum và thường được truy cập "
+"dưới dạng ``EnumClass.member``.  Trong một số trường hợp nhất định, chẳng "
+"hạn như viết hành vi enum tùy chỉnh, việc có thể truy cập trực tiếp một "
+"thành viên từ một thành viên khác là hữu ích và được hỗ trợ; tuy nhiên, để "
+"tránh xung đột tên giữa tên thành viên và thuộc tính/phương thức từ các lớp "
+"hỗn hợp, nên sử dụng tên viết hoa."
+
+#: ../../howto/enum.rst:999
+#, fuzzy
+msgid "Creating members that are mixed with other data types"
+msgstr "Tạo các thành viên được trộn lẫn với các loại dữ liệu khác"
+
+#: ../../howto/enum.rst:1001
+#, fuzzy
+msgid ""
+"When subclassing other data types, such as :class:`int` or :class:`str`, "
+"with an :class:`Enum`, all values after the ``=`` are passed to that data "
+"type's constructor.  For example::"
+msgstr ""
+"Khi phân lớp các kiểu dữ liệu khác, chẳng hạn như :class:`int` hoặc "
+":class:`str`, bằng :class:`Enum`, tất cả các giá trị sau ``=`` đều được "
+"chuyển tới hàm tạo của kiểu dữ liệu đó.  Ví dụ::"
+
+#: ../../howto/enum.rst:1005
+#, fuzzy
+msgid ""
+">>> class MyEnum(IntEnum):      # help(int) -> int(x, base=10) -> integer\n"
+"...     example = '11', 16      # so x='11' and base=16\n"
+"...\n"
+">>> MyEnum.example.value        # and hex(11) is...\n"
+"17"
+msgstr ""
+">>> class MyEnum(IntEnum): # help(int) -> int(x, base=10) -> số nguyên\n"
+"... ví dụ = '11', 16 # so x='11' và base=16\n"
+"...\n"
+">>> MyEnum.example.value # and hex(11) là...\n"
+"17"
+
+#: ../../howto/enum.rst:1013
+#, fuzzy
+msgid "Boolean value of ``Enum`` classes and members"
+msgstr "Giá trị Boolean của các lớp và thành viên ``Enum``"
+
+#: ../../howto/enum.rst:1015
+#, fuzzy
+msgid ""
+"Enum classes that are mixed with non-:class:`Enum` types (such as "
+":class:`int`, :class:`str`, etc.) are evaluated according to the mixed-in "
+"type's rules; otherwise, all members evaluate as :data:`True`.  To make your"
+" own enum's boolean evaluation depend on the member's value add the "
+"following to your class::"
+msgstr ""
+"Các lớp Enum được trộn lẫn với các loại không phải :class:`Enum` (chẳng hạn "
+"như :class:`int`, :class:`str`, v.v.) được đánh giá theo quy tắc của loại "
+"hỗn hợp; nếu không, tất cả các thành viên sẽ đánh giá là :data:`True`.  Để "
+"thực hiện đánh giá boolean của enum của riêng bạn tùy thuộc vào giá trị của "
+"thành viên, hãy thêm phần sau vào lớp của bạn ::"
+
+#: ../../howto/enum.rst:1021
+#, fuzzy
+msgid ""
+"def __bool__(self):\n"
+"    return bool(self.value)"
+msgstr ""
+"chắc chắn __bool__(tự):\n"
+"    trả về bool(self.value)"
+
+#: ../../howto/enum.rst:1024
+#, fuzzy
+msgid "Plain :class:`Enum` classes always evaluate as :data:`True`."
+msgstr "Các lớp :class:`Enum` đơn giản luôn được đánh giá là :data:`True`."
+
+#: ../../howto/enum.rst:1028
+#, fuzzy
+msgid "``Enum`` classes with methods"
+msgstr "các lớp ``Enum`` với các phương thức"
+
+#: ../../howto/enum.rst:1030
+#, fuzzy
+msgid ""
+"If you give your enum subclass extra methods, like the `Planet`_ class "
+"below, those methods will show up in a :func:`dir` of the member, but not of"
+" the class::"
+msgstr ""
+"Nếu bạn cung cấp các phương thức bổ sung cho lớp con enum của mình, như lớp "
+"`Planet`_ bên dưới, thì các phương thức đó sẽ hiển thị trong :func:`dir` của"
+" thành viên chứ không phải của lớp::"
+
+#: ../../howto/enum.rst:1034
+#, fuzzy
+msgid ""
+">>> dir(Planet)\n"
+"['EARTH', 'JUPITER', 'MARS', 'MERCURY', 'NEPTUNE', 'SATURN', 'URANUS', 'VENUS', '__class__', '__doc__', '__members__', '__module__']\n"
+">>> dir(Planet.EARTH)\n"
+"['__class__', '__doc__', '__module__', 'mass', 'name', 'radius', 'surface_gravity', 'value']"
+msgstr ""
+">>> dir(Hành tinh)\n"
+"['EARTH', 'JUPITER', 'MARS', 'MERCURY', 'NEPTUNE', 'SATURN', 'URANUS', 'VENUS', '__class__', '__doc__', '__members__', '__module__']\n"
+">>> thư mục(Planet.EARTH)\n"
+"['__class__', '__doc__', '__module__', 'khối lượng', 'tên', 'bán kính', 'bề mặt_trọng lực', 'giá trị']"
+
+#: ../../howto/enum.rst:1041
+#, fuzzy
+msgid "Combining members of ``Flag``"
+msgstr "Tổng hợp các thành viên của ``Flag``"
+
+#: ../../howto/enum.rst:1043
+#, fuzzy
+msgid ""
+"Iterating over a combination of :class:`Flag` members will only return the "
+"members that are comprised of a single bit::"
+msgstr ""
+"Việc lặp lại sự kết hợp của các thành viên :class:`Flag` sẽ chỉ trả về các "
+"thành viên bao gồm một bit duy nhất::"
+
+#: ../../howto/enum.rst:1046
+#, fuzzy
+msgid ""
+">>> class Color(Flag):\n"
+"...     RED = auto()\n"
+"...     GREEN = auto()\n"
+"...     BLUE = auto()\n"
+"...     MAGENTA = RED | BLUE\n"
+"...     YELLOW = RED | GREEN\n"
+"...     CYAN = GREEN | BLUE\n"
+"...\n"
+">>> Color(3)  # named combination\n"
+"<Color.YELLOW: 3>\n"
+">>> Color(7)      # not named combination\n"
+"<Color.RED|GREEN|BLUE: 7>"
+msgstr ""
+">>> Màu lớp (Cờ):\n"
+"... RED = tự động()\n"
+"... GREEN = tự động()\n"
+"... BLUE = tự động()\n"
+"... MAGENTA = RED | BLUE\n"
+"... YELLOW = RED | GREEN\n"
+"... CYAN = GREEN | BLUE\n"
+"...\n"
+">>> Màu sắc(3) # named kết hợp\n"
+"<Color.YELLOW: 3>\n"
+">>> Màu(7) # not đặt tên kết hợp\n"
+"<Color.RED|GREEN|BLUE: 7>"
+
+#: ../../howto/enum.rst:1061
+#, fuzzy
+msgid "``Flag`` and ``IntFlag`` minutia"
+msgstr "``Flag`` và ``IntFlag`` chi tiết"
+
+#: ../../howto/enum.rst:1063
+#, fuzzy
+msgid "Using the following snippet for our examples::"
+msgstr "Sử dụng đoạn mã sau cho ví dụ của chúng tôi ::"
+
+#: ../../howto/enum.rst:1065
+#, fuzzy
+msgid ""
+">>> class Color(IntFlag):\n"
+"...     BLACK = 0\n"
+"...     RED = 1\n"
+"...     GREEN = 2\n"
+"...     BLUE = 4\n"
+"...     PURPLE = RED | BLUE\n"
+"...     WHITE = RED | GREEN | BLUE\n"
+"..."
+msgstr ""
+">>> Màu lớp (IntFlag):\n"
+"... BLACK = 0\n"
+"... RED = 1\n"
+"... GREEN = 2\n"
+"... BLUE = 4\n"
+"... PURPLE = RED | BLUE\n"
+"... WHITE = RED | GREEN | BLUE\n"
+"..."
+
+#: ../../howto/enum.rst:1074
+#, fuzzy
+msgid "the following are true:"
+msgstr "những điều sau đây là đúng:"
+
+#: ../../howto/enum.rst:1076
+#, fuzzy
+msgid "single-bit flags are canonical"
+msgstr "cờ một bit là hợp quy"
+
+#: ../../howto/enum.rst:1077
+#, fuzzy
+msgid "multi-bit and zero-bit flags are aliases"
+msgstr "cờ nhiều bit và 0 bit là bí danh"
+
+#: ../../howto/enum.rst:1078
+#, fuzzy
+msgid "only canonical flags are returned during iteration::"
+msgstr "chỉ các cờ chuẩn được trả về trong quá trình lặp ::"
+
+#: ../../howto/enum.rst:1080
+#, fuzzy
+msgid ""
+">>> list(Color.WHITE)\n"
+"[<Color.RED: 1>, <Color.GREEN: 2>, <Color.BLUE: 4>]"
+msgstr ""
+">>> danh sách(Color.WHITE)\n"
+"[<Color.RED: 1>, <Color.GREEN: 2>, <Color.BLUE: 4>]"
+
+#: ../../howto/enum.rst:1083
+#, fuzzy
+msgid ""
+"negating a flag or flag set returns a new flag/flag set with the "
+"corresponding positive integer value::"
+msgstr ""
+"phủ định một cờ hoặc bộ cờ trả về một bộ cờ/cờ mới có giá trị nguyên dương "
+"tương ứng::"
+
+#: ../../howto/enum.rst:1086
+#, fuzzy
+msgid ""
+">>> Color.BLUE\n"
+"<Color.BLUE: 4>\n"
+"\n"
+">>> ~Color.BLUE\n"
+"<Color.RED|GREEN: 3>"
+msgstr ""
+">>> Color.BLUE\n"
+"<Color.BLUE: 4>\n"
+"\n"
+">>> ~Color.BLUE\n"
+"<Color.RED|GREEN: 3>"
+
+#: ../../howto/enum.rst:1092
+#, fuzzy
+msgid "names of pseudo-flags are constructed from their members' names::"
+msgstr "tên của các cờ giả được xây dựng từ tên các thành viên của họ::"
+
+#: ../../howto/enum.rst:1094
+#, fuzzy
+msgid ""
+">>> (Color.RED | Color.GREEN).name\n"
+"'RED|GREEN'\n"
+"\n"
+">>> class Perm(IntFlag):\n"
+"...     R = 4\n"
+"...     W = 2\n"
+"...     X = 1\n"
+"...\n"
+">>> (Perm.R & Perm.W).name is None  # effectively Perm(0)\n"
+"True"
+msgstr ""
+">>> (Color.RED | Color.GREEN).name\n"
+"'RED|GREEN'\n"
+"\n"
+">>> lớp Perm(IntFlag):\n"
+"... R = 4\n"
+"... W = 2\n"
+"... X = 1\n"
+"...\n"
+">>> (Perm.R & Perm.W).name là Không có # effectively Perm(0)\n"
+"đúng"
+
+#: ../../howto/enum.rst:1105
+#, fuzzy
+msgid "multi-bit flags, aka aliases, can be returned from operations::"
+msgstr ""
+"cờ nhiều bit, còn gọi là bí danh, có thể được trả về từ các hoạt động ::"
+
+#: ../../howto/enum.rst:1107
+#, fuzzy
+msgid ""
+">>> Color.RED | Color.BLUE\n"
+"<Color.PURPLE: 5>\n"
+"\n"
+">>> Color(7)  # or Color(-1)\n"
+"<Color.WHITE: 7>\n"
+"\n"
+">>> Color(0)\n"
+"<Color.BLACK: 0>"
+msgstr ""
+">>> Color.RED | Màu.BLUE\n"
+"<Color.PURPLE: 5>\n"
+"\n"
+">>> Màu(7) # or Màu(-1)\n"
+"<Color.WHITE: 7>\n"
+"\n"
+">>> Màu sắc(0)\n"
+"<Color.BLACK: 0>"
+
+#: ../../howto/enum.rst:1116
+#, fuzzy
+msgid ""
+"membership / containment checking: zero-valued flags are always considered "
+"to be contained::"
+msgstr ""
+"kiểm tra tư cách thành viên/ngăn chặn: các cờ có giá trị bằng 0 luôn được "
+"coi là được chứa::"
+
+#: ../../howto/enum.rst:1119
+#, fuzzy
+msgid ""
+">>> Color.BLACK in Color.WHITE\n"
+"True"
+msgstr ""
+">>> Color.BLACK trong Color.WHITE\n"
+"đúng"
+
+#: ../../howto/enum.rst:1122
+#, fuzzy
+msgid ""
+"otherwise, only if all bits of one flag are in the other flag will True be "
+"returned::"
+msgstr ""
+"mặt khác, chỉ khi tất cả các bit của một cờ nằm trong cờ kia thì True mới "
+"được trả về ::"
+
+#: ../../howto/enum.rst:1125
+#, fuzzy
+msgid ""
+">>> Color.PURPLE in Color.WHITE\n"
+"True\n"
+"\n"
+">>> Color.GREEN in Color.PURPLE\n"
+"False"
+msgstr ""
+">>> Color.PURPLE trong Color.WHITE\n"
+"đúng\n"
+"\n"
+">>> Color.GREEN trong Color.PURPLE\n"
+"sai"
+
+#: ../../howto/enum.rst:1131
+#, fuzzy
+msgid ""
+"There is a new boundary mechanism that controls how out-of-range / invalid "
+"bits are handled: ``STRICT``, ``CONFORM``, ``EJECT``, and ``KEEP``:"
+msgstr ""
+"Có một cơ chế ranh giới mới kiểm soát cách xử lý các bit ngoài phạm vi/không"
+" hợp lệ: ``STRICT``, ``CONFORM``, ``EJECT`` và ``KEEP``:"
+
+#: ../../howto/enum.rst:1134
+#, fuzzy
+msgid "STRICT --> raises an exception when presented with invalid values"
+msgstr "STRICT --> đưa ra một ngoại lệ khi có giá trị không hợp lệ"
+
+#: ../../howto/enum.rst:1135
+#, fuzzy
+msgid "CONFORM --> discards any invalid bits"
+msgstr "CONFORM --> loại bỏ mọi bit không hợp lệ"
+
+#: ../../howto/enum.rst:1136
+#, fuzzy
+msgid ""
+"EJECT --> lose Flag status and become a normal int with the given value"
+msgstr ""
+"EJECT --> mất trạng thái Cờ và trở thành int bình thường với giá trị đã cho"
+
+#: ../../howto/enum.rst:1137
+#, fuzzy
+msgid "KEEP --> keep the extra bits"
+msgstr "KEEP --> giữ lại những bit thừa"
+
+#: ../../howto/enum.rst:1139
+#, fuzzy
+msgid "keeps Flag status and extra bits"
+msgstr "giữ trạng thái Cờ và các bit bổ sung"
+
+#: ../../howto/enum.rst:1140
+#, fuzzy
+msgid "extra bits do not show up in iteration"
+msgstr "các bit bổ sung không hiển thị trong lần lặp"
+
+#: ../../howto/enum.rst:1141
+#, fuzzy
+msgid "extra bits do show up in repr() and str()"
+msgstr "các bit bổ sung sẽ hiển thị trong repr() và str()"
+
+#: ../../howto/enum.rst:1143
+#, fuzzy
+msgid ""
+"The default for Flag is ``STRICT``, the default for ``IntFlag`` is "
+"``EJECT``, and the default for ``_convert_`` is ``KEEP`` (see "
+"``ssl.Options`` for an example of when ``KEEP`` is needed)."
+msgstr ""
+"Giá trị mặc định cho Flag là ``STRICT``, mặc định cho ``IntFlag`` là "
+"``EJECT`` và mặc định cho ``_convert_`` là ``KEEP`` (xem ``ssl.Options`` để "
+"biết ví dụ về thời điểm cần ``KEEP``)."
+
+#: ../../howto/enum.rst:1151
+#, fuzzy
+msgid "How are Enums and Flags different?"
+msgstr "Enums và Flags khác nhau như thế nào?"
+
+#: ../../howto/enum.rst:1153
+#, fuzzy
+msgid ""
+"Enums have a custom metaclass that affects many aspects of both derived "
+":class:`Enum` classes and their instances (members)."
+msgstr ""
+"Enums có siêu dữ liệu tùy chỉnh ảnh hưởng đến nhiều khía cạnh của cả lớp "
+":class:`Enum` dẫn xuất và phiên bản (thành viên) của chúng."
+
+#: ../../howto/enum.rst:1158
+#, fuzzy
+msgid "Enum Classes"
+msgstr "Lớp liệt kê"
+
+#: ../../howto/enum.rst:1160
+#, fuzzy
+msgid ""
+"The :class:`EnumType` metaclass is responsible for providing the "
+":meth:`~object.__contains__`, :meth:`~object.__dir__`, "
+":meth:`~object.__iter__` and other methods that allow one to do things with "
+"an :class:`Enum` class that fail on a typical class, such as ``list(Color)``"
+" or ``some_enum_var in Color``.  :class:`EnumType` is responsible for "
+"ensuring that various other methods on the final :class:`Enum` class are "
+"correct (such as :meth:`~object.__new__`, :meth:`~object.__getnewargs__`, "
+":meth:`~object.__str__` and :meth:`~object.__repr__`)."
+msgstr ""
+"Siêu dữ liệu :class:`EnumType` chịu trách nhiệm cung cấp các phương thức "
+":meth:`~object.__contains__`, :meth:`~object.__dir__`, "
+":meth:`~object.__iter__` và các phương thức khác cho phép một người thực "
+"hiện mọi việc với lớp :class:`Enum` không thành công trên một lớp điển hình,"
+" chẳng hạn như ``list(Color)`` hoặc ``some_enum_var in Color``.  "
+":class:`EnumType` chịu trách nhiệm đảm bảo rằng nhiều phương thức khác trên "
+"lớp :class:`Enum` cuối cùng là chính xác (chẳng hạn như "
+":meth:`~object.__new__`, :meth:`~object.__getnewargs__`, "
+":meth:`~object.__str__` và :meth:`~object.__repr__`)."
+
+#: ../../howto/enum.rst:1169
+#, fuzzy
+msgid "Flag Classes"
+msgstr "Lớp cờ"
+
+#: ../../howto/enum.rst:1171
+#, fuzzy
+msgid ""
+"Flags have an expanded view of aliasing: to be canonical, the value of a "
+"flag needs to be a power-of-two value, and not a duplicate name.  So, in "
+"addition to the :class:`Enum` definition of alias, a flag with no value "
+"(a.k.a. ``0``) or with more than one power-of-two value (e.g. ``3``) is "
+"considered an alias."
+msgstr ""
+"Cờ có chế độ xem mở rộng về bí danh: để hợp lệ, giá trị của cờ cần phải là "
+"giá trị lũy thừa hai chứ không phải tên trùng lặp.  Vì vậy, ngoài định nghĩa"
+" bí danh :class:`Enum`, một cờ không có giá trị (còn gọi là ``0``) hoặc có "
+"nhiều hơn một giá trị lũy thừa hai (ví dụ: ``3``) được coi là bí danh."
+
+#: ../../howto/enum.rst:1177
+#, fuzzy
+msgid "Enum Members (aka instances)"
+msgstr "Thành viên Enum (còn gọi là phiên bản)"
+
+#: ../../howto/enum.rst:1179
+#, fuzzy
+msgid ""
+"The most interesting thing about enum members is that they are singletons. "
+":class:`EnumType` creates them all while it is creating the enum class "
+"itself, and then puts a custom :meth:`~object.__new__` in place to ensure "
+"that no new ones are ever instantiated by returning only the existing member"
+" instances."
+msgstr ""
+"Điều thú vị nhất về các thành viên enum là họ là những người độc thân. "
+":class:`EnumType` tạo ra tất cả chúng trong khi nó đang tạo chính lớp enum, "
+"sau đó đặt một :meth:`~object.__new__` tùy chỉnh để đảm bảo rằng không có "
+"cái mới nào được khởi tạo bằng cách chỉ trả về các phiên bản thành viên hiện"
+" có."
+
+#: ../../howto/enum.rst:1185
+#, fuzzy
+msgid "Flag Members"
+msgstr "Cờ thành viên"
+
+#: ../../howto/enum.rst:1187
+#, fuzzy
+msgid ""
+"Flag members can be iterated over just like the :class:`Flag` class, and "
+"only the canonical members will be returned.  For example::"
+msgstr ""
+"Các thành viên gắn cờ có thể được lặp lại giống như lớp :class:`Flag` và chỉ"
+" các thành viên chuẩn mới được trả về.  Ví dụ::"
+
+#: ../../howto/enum.rst:1190
+#, fuzzy
+msgid ""
+">>> list(Color)\n"
+"[<Color.RED: 1>, <Color.GREEN: 2>, <Color.BLUE: 4>]"
+msgstr ""
+">>> danh sách (Màu)\n"
+"[<Color.RED: 1>, <Color.GREEN: 2>, <Color.BLUE: 4>]"
+
+#: ../../howto/enum.rst:1193
+#, fuzzy
+msgid "(Note that ``BLACK``, ``PURPLE``, and ``WHITE`` do not show up.)"
+msgstr "(Lưu ý rằng ``BLACK``, ``PURPLE`` và ``WHITE`` không hiển thị.)"
+
+#: ../../howto/enum.rst:1195
+#, fuzzy
+msgid ""
+"Inverting a flag member returns the corresponding positive value, rather "
+"than a negative value --- for example::"
+msgstr ""
+"Đảo ngược thành viên cờ trả về giá trị dương tương ứng, thay vì giá trị âm "
+"--- ví dụ::"
+
+#: ../../howto/enum.rst:1198
+#, fuzzy
+msgid ""
+">>> ~Color.RED\n"
+"<Color.GREEN|BLUE: 6>"
+msgstr ""
+">>> ~Color.RED\n"
+"<Color.GREEN|BLUE: 6>"
+
+#: ../../howto/enum.rst:1201
+#, fuzzy
+msgid ""
+"Flag members have a length corresponding to the number of power-of-two "
+"values they contain.  For example::"
+msgstr ""
+"Các thành viên cờ có độ dài tương ứng với số giá trị lũy thừa hai mà chúng "
+"chứa.  Ví dụ::"
+
+#: ../../howto/enum.rst:1204
+#, fuzzy
+msgid ""
+">>> len(Color.PURPLE)\n"
+"2"
+msgstr ""
+">>> len(Color.PURPLE)\n"
+"2"
+
+#: ../../howto/enum.rst:1211
+#, fuzzy
+msgid "Enum Cookbook"
+msgstr "Sách dạy nấu ăn Enum"
+
+#: ../../howto/enum.rst:1214
+#, fuzzy
+msgid ""
+"While :class:`Enum`, :class:`IntEnum`, :class:`StrEnum`, :class:`Flag`, and "
+":class:`IntFlag` are expected to cover the majority of use-cases, they "
+"cannot cover them all.  Here are recipes for some different types of "
+"enumerations that can be used directly, or as examples for creating one's "
+"own."
+msgstr ""
+"Mặc dù :class:`Enum`, :class:`IntEnum`, :class:`StrEnum`, :class:`Flag` và "
+":class:`IntFlag` dự kiến sẽ bao gồm phần lớn các trường hợp sử dụng nhưng "
+"chúng không thể bao gồm tất cả.  Dưới đây là các công thức cho một số loại "
+"bảng liệt kê khác nhau có thể được sử dụng trực tiếp hoặc làm ví dụ để tạo "
+"bảng liệt kê của riêng bạn."
+
+#: ../../howto/enum.rst:1221
+#, fuzzy
+msgid "Omitting values"
+msgstr "Bỏ qua các giá trị"
+
+#: ../../howto/enum.rst:1223
+#, fuzzy
+msgid ""
+"In many use-cases, one doesn't care what the actual value of an enumeration "
+"is. There are several ways to define this type of simple enumeration:"
+msgstr ""
+"Trong nhiều trường hợp sử dụng, người ta không quan tâm giá trị thực của một"
+" bảng liệt kê là gì. Có một số cách để định nghĩa kiểu liệt kê đơn giản này:"
+
+#: ../../howto/enum.rst:1226
+#, fuzzy
+msgid "use instances of :class:`auto` for the value"
+msgstr "sử dụng các phiên bản của :class:`auto` cho giá trị"
+
+#: ../../howto/enum.rst:1227
+#, fuzzy
+msgid "use instances of :class:`object` as the value"
+msgstr "sử dụng các phiên bản của :class:`object` làm giá trị"
+
+#: ../../howto/enum.rst:1228
+#, fuzzy
+msgid "use a descriptive string as the value"
+msgstr "sử dụng chuỗi mô tả làm giá trị"
+
+#: ../../howto/enum.rst:1229
+#, fuzzy
+msgid ""
+"use a tuple as the value and a custom :meth:`~object.__new__` to replace the"
+" tuple with an :class:`int` value"
+msgstr ""
+"sử dụng một bộ dữ liệu làm giá trị và một :meth:`~object.__new__` tùy chỉnh "
+"để thay thế bộ dữ liệu bằng một giá trị :class:`int`"
+
+#: ../../howto/enum.rst:1232
+#, fuzzy
+msgid ""
+"Using any of these methods signifies to the user that these values are not "
+"important, and also enables one to add, remove, or reorder members without "
+"having to renumber the remaining members."
+msgstr ""
+"Việc sử dụng bất kỳ phương pháp nào trong số này sẽ biểu thị cho người dùng "
+"rằng những giá trị này không quan trọng và cũng cho phép người dùng thêm, "
+"xóa hoặc sắp xếp lại các thành viên mà không cần phải đánh số lại các thành "
+"viên còn lại."
+
+#: ../../howto/enum.rst:1238
+#, fuzzy
+msgid "Using :class:`auto`"
+msgstr "Sử dụng :class:`auto`"
+
+#: ../../howto/enum.rst:1240
+#, fuzzy
+msgid "Using :class:`auto` would look like::"
+msgstr "Sử dụng :class:`auto` sẽ trông như thế này::"
+
+#: ../../howto/enum.rst:1242
+#, fuzzy
+msgid ""
+">>> class Color(Enum):\n"
+"...     RED = auto()\n"
+"...     BLUE = auto()\n"
+"...     GREEN = auto()\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN: 3>"
+msgstr ""
+">>> Màu lớp (Enum):\n"
+"... RED = tự động()\n"
+"... BLUE = tự động()\n"
+"... GREEN = tự động()\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN: 3>"
+
+#: ../../howto/enum.rst:1252
+#, fuzzy
+msgid "Using :class:`object`"
+msgstr "Sử dụng :class:`object`"
+
+#: ../../howto/enum.rst:1254
+#, fuzzy
+msgid "Using :class:`object` would look like::"
+msgstr "Sử dụng :class:`object` sẽ trông như thế này::"
+
+#: ../../howto/enum.rst:1256
+#, fuzzy
+msgid ""
+">>> class Color(Enum):\n"
+"...     RED = object()\n"
+"...     GREEN = object()\n"
+"...     BLUE = object()\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN: <object object at 0x...>>"
+msgstr ""
+">>> Màu lớp (Enum):\n"
+"... RED = đối tượng()\n"
+"... GREEN = đối tượng()\n"
+"... BLUE = đối tượng()\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN: <đối tượng ở 0x...>>"
+
+#: ../../howto/enum.rst:1264
+#, fuzzy
+msgid ""
+"This is also a good example of why you might want to write your own "
+":meth:`~object.__repr__`::"
+msgstr ""
+"Đây cũng là một ví dụ điển hình về lý do tại sao bạn có thể muốn viết "
+":meth:`~object.__repr__`::"
+
+#: ../../howto/enum.rst:1267
+#, python-format, fuzzy
+msgid ""
+">>> class Color(Enum):\n"
+"...     RED = object()\n"
+"...     GREEN = object()\n"
+"...     BLUE = object()\n"
+"...     def __repr__(self):\n"
+"...         return \"<%s.%s>\" % (self.__class__.__name__, self._name_)\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN>"
+msgstr ""
+">>> Màu lớp (Enum):\n"
+"... RED = đối tượng()\n"
+"... GREEN = đối tượng()\n"
+"... BLUE = đối tượng()\n"
+"... def __repr__(self):\n"
+"... return \"<%s.%s>\" % (self.__class__.__name__, self._name_)\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN>"
+
+#: ../../howto/enum.rst:1280
+#, fuzzy
+msgid "Using a descriptive string"
+msgstr "Sử dụng chuỗi mô tả"
+
+#: ../../howto/enum.rst:1282
+#, fuzzy
+msgid "Using a string as the value would look like::"
+msgstr "Sử dụng một chuỗi làm giá trị sẽ trông như sau::"
+
+#: ../../howto/enum.rst:1284
+#, fuzzy
+msgid ""
+">>> class Color(Enum):\n"
+"...     RED = 'stop'\n"
+"...     GREEN = 'go'\n"
+"...     BLUE = 'too fast!'\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN: 'go'>"
+msgstr ""
+">>> Màu lớp (Enum):\n"
+"... RED = 'dừng lại'\n"
+"... GREEN = 'đi'\n"
+"... BLUE = 'quá nhanh!'\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN: 'đi'>"
+
+#: ../../howto/enum.rst:1294
+#, fuzzy
+msgid "Using a custom :meth:`~object.__new__`"
+msgstr "Sử dụng :meth:`~object.__new__` tùy chỉnh"
+
+#: ../../howto/enum.rst:1296
+#, fuzzy
+msgid "Using an auto-numbering :meth:`~object.__new__` would look like::"
+msgstr "Sử dụng :meth:`~object.__new__` tự động đánh số sẽ trông như sau::"
+
+#: ../../howto/enum.rst:1298
+#, fuzzy
+msgid ""
+">>> class AutoNumber(Enum):\n"
+"...     def __new__(cls):\n"
+"...         value = len(cls.__members__) + 1\n"
+"...         obj = object.__new__(cls)\n"
+"...         obj._value_ = value\n"
+"...         return obj\n"
+"...\n"
+">>> class Color(AutoNumber):\n"
+"...     RED = ()\n"
+"...     GREEN = ()\n"
+"...     BLUE = ()\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN: 2>"
+msgstr ""
+">>> lớp AutoNumber(Enum):\n"
+"... chắc chắn __new__(cls):\n"
+"... giá trị = len(cls.__members__) + 1\n"
+"... obj = object.__new__(cls)\n"
+"... obj._value_ = giá trị\n"
+"... trả lại đối tượng\n"
+"...\n"
+">>> Màu lớp (Số tự động):\n"
+"... RED = ()\n"
+"... GREEN = ()\n"
+"... BLUE = ()\n"
+"...\n"
+">>> Color.GREEN\n"
+"<Color.GREEN: 2>"
+
+#: ../../howto/enum.rst:1313
+#, fuzzy
+msgid ""
+"To make a more general purpose ``AutoNumber``, add ``*args`` to the "
+"signature::"
+msgstr ""
+"Để tạo một ``AutoNumber`` có mục đích chung hơn, hãy thêm ``*args`` vào chữ "
+"ký::"
+
+#: ../../howto/enum.rst:1315
+#, fuzzy
+msgid ""
+">>> class AutoNumber(Enum):\n"
+"...     def __new__(cls, *args):      # this is the only change from above\n"
+"...         value = len(cls.__members__) + 1\n"
+"...         obj = object.__new__(cls)\n"
+"...         obj._value_ = value\n"
+"...         return obj\n"
+"..."
+msgstr ""
+">>> lớp AutoNumber(Enum):\n"
+"... def __new__(cls, *args): # this là thay đổi duy nhất so với ở trên\n"
+"... giá trị = len(cls.__members__) + 1\n"
+"... obj = object.__new__(cls)\n"
+"... obj._value_ = giá trị\n"
+"... trả lại đối tượng\n"
+"..."
+
+#: ../../howto/enum.rst:1323
+#, fuzzy
+msgid ""
+"Then when you inherit from ``AutoNumber`` you can write your own "
+"``__init__`` to handle any extra arguments::"
+msgstr ""
+"Sau đó, khi bạn kế thừa từ ``AutoNumber``, bạn có thể viết ``__init__`` của "
+"riêng mình để xử lý mọi đối số bổ sung ::"
+
+#: ../../howto/enum.rst:1326
+#, fuzzy
+msgid ""
+">>> class Swatch(AutoNumber):\n"
+"...     def __init__(self, pantone='unknown'):\n"
+"...         self.pantone = pantone\n"
+"...     AUBURN = '3497'\n"
+"...     SEA_GREEN = '1246'\n"
+"...     BLEACHED_CORAL = () # New color, no Pantone code yet!\n"
+"...\n"
+">>> Swatch.SEA_GREEN\n"
+"<Swatch.SEA_GREEN: 2>\n"
+">>> Swatch.SEA_GREEN.pantone\n"
+"'1246'\n"
+">>> Swatch.BLEACHED_CORAL.pantone\n"
+"'unknown'"
+msgstr ""
+">>> lớp Swatch(AutoNumber):\n"
+"... def __init__(self, pantone='unknown'):\n"
+"... self.pantone = pantone\n"
+"... AUBURN = '3497'\n"
+"... SEA_GREEN = '1246'\n"
+"... BLEACHED_CORAL = () màu # New, chưa có mã Pantone!\n"
+"...\n"
+">>> Swatch.SEA_GREEN\n"
+"<Swatch.SEA_GREEN: 2>\n"
+">>> Swatch.SEA_GREEN.pantone\n"
+"'1246'\n"
+">>> Swatch.BLEACHED_CORAL.pantone\n"
+"'không xác định'"
+
+#: ../../howto/enum.rst:1342
+#, fuzzy
+msgid ""
+"The :meth:`~object.__new__` method, if defined, is used during creation of "
+"the Enum members; it is then replaced by Enum's :meth:`~object.__new__` "
+"which is used after class creation for lookup of existing members."
+msgstr ""
+"Phương thức :meth:`~object.__new__`, nếu được xác định, sẽ được sử dụng "
+"trong quá trình tạo thành viên Enum; sau đó nó được thay thế bằng "
+":meth:`~object.__new__` của Enum, được sử dụng sau khi tạo lớp để tra cứu "
+"các thành viên hiện có."
+
+#: ../../howto/enum.rst:1348
+#, fuzzy
+msgid ""
+"*Do not* call ``super().__new__()``, as the lookup-only ``__new__`` is the "
+"one that is found; instead, use the data type directly -- e.g.::"
+msgstr ""
+"*Do not* gọi ``super().__new__()``, vì ``__new__`` chỉ tra cứu là cái được "
+"tìm thấy; thay vào đó, hãy sử dụng kiểu dữ liệu trực tiếp -- ví dụ:::"
+
+#: ../../howto/enum.rst:1351
+#, fuzzy
+msgid "obj = int.__new__(cls, value)"
+msgstr "obj = int.__new__(cls, giá trị)"
+
+#: ../../howto/enum.rst:1355
+#, fuzzy
+msgid "OrderedEnum"
+msgstr "Đã đặt hàngEnum"
+
+#: ../../howto/enum.rst:1357
+#, fuzzy
+msgid ""
+"An ordered enumeration that is not based on :class:`IntEnum` and so "
+"maintains the normal :class:`Enum` invariants (such as not being comparable "
+"to other enumerations)::"
+msgstr ""
+"Một bảng liệt kê có thứ tự không dựa trên :class:`IntEnum` và do đó duy trì "
+"các bất biến :class:`Enum` bình thường (chẳng hạn như không thể so sánh với "
+"các bảng liệt kê khác)::"
+
+#: ../../howto/enum.rst:1361
+#, fuzzy
+msgid ""
+">>> class OrderedEnum(Enum):\n"
+"...     def __ge__(self, other):\n"
+"...         if self.__class__ is other.__class__:\n"
+"...             return self.value >= other.value\n"
+"...         return NotImplemented\n"
+"...     def __gt__(self, other):\n"
+"...         if self.__class__ is other.__class__:\n"
+"...             return self.value > other.value\n"
+"...         return NotImplemented\n"
+"...     def __le__(self, other):\n"
+"...         if self.__class__ is other.__class__:\n"
+"...             return self.value <= other.value\n"
+"...         return NotImplemented\n"
+"...     def __lt__(self, other):\n"
+"...         if self.__class__ is other.__class__:\n"
+"...             return self.value < other.value\n"
+"...         return NotImplemented\n"
+"...\n"
+">>> class Grade(OrderedEnum):\n"
+"...     A = 5\n"
+"...     B = 4\n"
+"...     C = 3\n"
+"...     D = 2\n"
+"...     F = 1\n"
+"...\n"
+">>> Grade.C < Grade.A\n"
+"True"
+msgstr ""
+">>> lớp OrderedEnum(Enum):\n"
+"... def __ge__(bản thân, người khác):\n"
+"... nếu self.__class__ là other.__class__:\n"
+"... trả về self.value >= other.value\n"
+"... trả về Chưa thực hiện\n"
+"... def __gt__(bản thân, người khác):\n"
+"... nếu self.__class__ là other.__class__:\n"
+"... trả về self.value > other.value\n"
+"... trả về Chưa thực hiện\n"
+"... def __le__(bản thân, người khác):\n"
+"... nếu self.__class__ là other.__class__:\n"
+"... trả về self.value <= other.value\n"
+"... trả về Chưa thực hiện\n"
+"... def __lt__(bản thân, người khác):\n"
+"... nếu self.__class__ là other.__class__:\n"
+"... trả về self.value < other.value\n"
+"... trả về Chưa thực hiện\n"
+"...\n"
+">>> Lớp lớp (OrderedEnum):\n"
+"... A = 5\n"
+"... B = 4\n"
+"... C = 3\n"
+"... Đ = 2\n"
+"... F = 1\n"
+"...\n"
+">>> Lớp.C < Lớp.A\n"
+"đúng"
+
+#: ../../howto/enum.rst:1391
+#, fuzzy
+msgid "DuplicateFreeEnum"
+msgstr "trùng lặpmiễn phíEnum"
+
+#: ../../howto/enum.rst:1393
+#, fuzzy
+msgid ""
+"Raises an error if a duplicate member value is found instead of creating an "
+"alias::"
+msgstr ""
+"Xảy ra lỗi nếu tìm thấy giá trị thành viên trùng lặp thay vì tạo bí danh::"
+
+#: ../../howto/enum.rst:1396
+#, python-format, fuzzy
+msgid ""
+">>> class DuplicateFreeEnum(Enum):\n"
+"...     def __init__(self, *args):\n"
+"...         cls = self.__class__\n"
+"...         if any(self.value == e.value for e in cls):\n"
+"...             a = self.name\n"
+"...             e = cls(self.value).name\n"
+"...             raise ValueError(\n"
+"...                 \"aliases not allowed in DuplicateFreeEnum:  %r --> %r\"\n"
+"...                 % (a, e))\n"
+"...\n"
+">>> class Color(DuplicateFreeEnum):\n"
+"...     RED = 1\n"
+"...     GREEN = 2\n"
+"...     BLUE = 3\n"
+"...     GRENE = 2\n"
+"...\n"
+"Traceback (most recent call last):\n"
+"  ...\n"
+"ValueError: aliases not allowed in DuplicateFreeEnum:  'GRENE' --> 'GREEN'"
+msgstr ""
+">>> lớp DuplicateFreeEnum(Enum):\n"
+"... def __init__(self, *args):\n"
+"... cls = self.__class__\n"
+"... nếu có(self.value == e.value cho e trong cls):\n"
+"... a = self.name\n"
+"... e = cls(self.value).name\n"
+"... tăng ValueError(\n"
+"... \"bí danh không được phép trong DuplicateFreeEnum: %r --> %r\"\n"
+"... %(a,e))\n"
+"...\n"
+">>> Màu lớp (DuplicateFreeEnum):\n"
+"... RED = 1\n"
+"... GREEN = 2\n"
+"... BLUE = 3\n"
+"... GRENE = 2\n"
+"...\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  ...\n"
+"ValueError: bí danh không được phép trong DuplicateFreeEnum: 'GRENE' --> 'GREEN'"
+
+#: ../../howto/enum.rst:1418
+#, fuzzy
+msgid ""
+"This is a useful example for subclassing Enum to add or change other "
+"behaviors as well as disallowing aliases.  If the only desired change is "
+"disallowing aliases, the :func:`unique` decorator can be used instead."
+msgstr ""
+"Đây là một ví dụ hữu ích cho việc phân lớp Enum để thêm hoặc thay đổi các "
+"hành vi khác cũng như không cho phép các bí danh.  Nếu thay đổi mong muốn "
+"duy nhất là không cho phép bí danh, thì bạn có thể sử dụng trình trang trí "
+":func:`unique` để thay thế."
+
+#: ../../howto/enum.rst:1425
+#, fuzzy
+msgid "MultiValueEnum"
+msgstr "MultiValueEnum"
+
+#: ../../howto/enum.rst:1427
+#, fuzzy
+msgid "Supports having more than one value per member::"
+msgstr "Hỗ trợ có nhiều hơn một giá trị cho mỗi thành viên::"
+
+#: ../../howto/enum.rst:1429
+#, fuzzy
+msgid ""
+">>> class MultiValueEnum(Enum):\n"
+"...     def __new__(cls, value, *values):\n"
+"...         self = object.__new__(cls)\n"
+"...         self._value_ = value\n"
+"...         for v in values:\n"
+"...             self._add_value_alias_(v)\n"
+"...         return self\n"
+"...\n"
+">>> class DType(MultiValueEnum):\n"
+"...     float32 = 'f', 8\n"
+"...     double64 = 'd', 9\n"
+"...\n"
+">>> DType('f')\n"
+"<DType.float32: 'f'>\n"
+">>> DType(9)\n"
+"<DType.double64: 'd'>"
+msgstr ""
+">>> lớp MultiValueEnum(Enum):\n"
+"... def __new__(cls, value, *values):\n"
+"... self = object.__new__(cls)\n"
+"... self._value_ = giá trị\n"
+"... cho v trong các giá trị:\n"
+"... self._add_value_alias_(v)\n"
+"... trở về chính mình\n"
+"...\n"
+">>> lớp DType(MultiValueEnum):\n"
+"... float32 = 'f', 8\n"
+"... double64 = 'd', 9\n"
+"...\n"
+">>> DType('f')\n"
+"<DType.float32: 'f'>\n"
+">>> DType(9)\n"
+"<DType.double64: 'd'>"
+
+#: ../../howto/enum.rst:1448
+#, fuzzy
+msgid "Planet"
+msgstr "hành tinh"
+
+#: ../../howto/enum.rst:1450
+#, fuzzy
+msgid ""
+"If :meth:`~object.__new__` or :meth:`~object.__init__` is defined, the value"
+" of the enum member will be passed to those methods::"
+msgstr ""
+"Nếu :meth:`~object.__new__` hoặc :meth:`~object.__init__` được xác định, giá"
+" trị của thành viên enum sẽ được chuyển cho các phương thức đó ::"
+
+#: ../../howto/enum.rst:1453
+#, fuzzy
+msgid ""
+">>> class Planet(Enum):\n"
+"...     MERCURY = (3.303e+23, 2.4397e6)\n"
+"...     VENUS   = (4.869e+24, 6.0518e6)\n"
+"...     EARTH   = (5.976e+24, 6.37814e6)\n"
+"...     MARS    = (6.421e+23, 3.3972e6)\n"
+"...     JUPITER = (1.9e+27,   7.1492e7)\n"
+"...     SATURN  = (5.688e+26, 6.0268e7)\n"
+"...     URANUS  = (8.686e+25, 2.5559e7)\n"
+"...     NEPTUNE = (1.024e+26, 2.4746e7)\n"
+"...     def __init__(self, mass, radius):\n"
+"...         self.mass = mass       # in kilograms\n"
+"...         self.radius = radius   # in meters\n"
+"...     @property\n"
+"...     def surface_gravity(self):\n"
+"...         # universal gravitational constant  (m3 kg-1 s-2)\n"
+"...         G = 6.67300E-11\n"
+"...         return G * self.mass / (self.radius * self.radius)\n"
+"...\n"
+">>> Planet.EARTH.value\n"
+"(5.976e+24, 6378140.0)\n"
+">>> Planet.EARTH.surface_gravity\n"
+"9.802652743337129"
+msgstr ""
+">>> lớp Hành tinh(Enum):\n"
+"... MERCURY = (3.303e+23, 2.4397e6)\n"
+"... VENUS = (4.869e+24, 6.0518e6)\n"
+"... EARTH = (5.976e+24, 6.37814e6)\n"
+"... MARS = (6.421e+23, 3.3972e6)\n"
+"... JUPITER = (1.9e+27, 7.1492e7)\n"
+"... SATURN = (5.688e+26, 6.0268e7)\n"
+"... URANUS = (8.686e+25, 2.5559e7)\n"
+"... NEPTUNE = (1.024e+26, 2.4746e7)\n"
+"... def __init__(tự, khối lượng, bán kính):\n"
+"... self.khối lượng = khối lượng # in kilôgam\n"
+"... self.radius = bán kính # in mét\n"
+"... @property\n"
+"... def surface_Gravity(self):\n"
+"... # universal hằng số hấp dẫn (m3 kg-1 s-2)\n"
+"... G = 6,67300E-11\n"
+"... return G * self.mass / (self.radius * self.radius)\n"
+"...\n"
+">>> Planet.EARTH.value\n"
+"(5.976e+24, 6378140.0)\n"
+">>> Planet.EARTH.surface_Gravity\n"
+"9.802652743337129"
+
+#: ../../howto/enum.rst:1479
+#, fuzzy
+msgid "TimePeriod"
+msgstr "Thời gian"
+
+#: ../../howto/enum.rst:1481
+#, fuzzy
+msgid "An example to show the :attr:`~Enum._ignore_` attribute in use::"
+msgstr ""
+"Một ví dụ để hiển thị thuộc tính :attr:`~Enum._ignore_` đang sử dụng::"
+
+#: ../../howto/enum.rst:1483
+#, python-format, fuzzy
+msgid ""
+">>> import datetime as dt\n"
+">>> class Period(dt.timedelta, Enum):\n"
+"...     \"different lengths of time\"\n"
+"...     _ignore_ = 'Period i'\n"
+"...     Period = vars()\n"
+"...     for i in range(367):\n"
+"...         Period['day_%d' % i] = i\n"
+"...\n"
+">>> list(Period)[:2]\n"
+"[<Period.day_0: datetime.timedelta(0)>, <Period.day_1: datetime.timedelta(days=1)>]\n"
+">>> list(Period)[-2:]\n"
+"[<Period.day_365: datetime.timedelta(days=365)>, <Period.day_366: datetime.timedelta(days=366)>]"
+msgstr ""
+">>> nhập ngày giờ dưới dạng dt\n"
+">>> Giai đoạn lớp(dt.timedelta, Enum):\n"
+"... \"khoảng thời gian khác nhau\"\n"
+"... _ignore_ = 'Giai đoạn i'\n"
+"... Thời kỳ = vars()\n"
+"... cho tôi trong phạm vi (367):\n"
+"... Khoảng thời gian['day_%d' % i] = i\n"
+"...\n"
+">>> danh sách(Thời gian)[:2]\n"
+"[<Period.day_0: datetime.timedelta(0)>, <Period.day_1: datetime.timedelta(days=1)>]\n"
+">>> danh sách(Thời gian)[-2:]\n"
+"[<Period.day_365: datetime.timedelta(days=365)>, <Period.day_366: datetime.timedelta(days=366)>]"
+
+#: ../../howto/enum.rst:1500
+#, fuzzy
+msgid "Subclassing EnumType"
+msgstr "Phân lớp EnumType"
+
+#: ../../howto/enum.rst:1502
+#, fuzzy
+msgid ""
+"While most enum needs can be met by customizing :class:`Enum` subclasses, "
+"either with class decorators or custom functions, :class:`EnumType` can be "
+"subclassed to provide a different Enum experience."
+msgstr ""
+"Mặc dù hầu hết các nhu cầu về enum có thể được đáp ứng bằng cách tùy chỉnh "
+"các lớp con :class:`Enum`, bằng cách trang trí lớp hoặc các hàm tùy chỉnh, "
+"nhưng :class:`EnumType` có thể được phân lớp để mang lại trải nghiệm Enum "
+"khác."

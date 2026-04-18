@@ -1,0 +1,1782 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/pdb.rst:4
+#, fuzzy
+msgid ":mod:`!pdb` --- The Python Debugger"
+msgstr ":mod:`!pdb` --- Trình gỡ lỗi Python"
+
+#: ../../library/pdb.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/pdb.py`"
+msgstr "**Source code:** :source:`Lib/pdb.py`"
+
+#: ../../library/pdb.rst:15
+#, fuzzy
+msgid ""
+"The module :mod:`!pdb` defines an interactive source code debugger for "
+"Python programs.  It supports setting (conditional) breakpoints and single "
+"stepping at the source line level, inspection of stack frames, source code "
+"listing, and evaluation of arbitrary Python code in the context of any stack"
+" frame.  It also supports post-mortem debugging and can be called under "
+"program control."
+msgstr ""
+"Mô-đun :mod:`!pdb` xác định trình gỡ lỗi mã nguồn tương tác cho các chương "
+"trình Python.  Nó hỗ trợ thiết lập các điểm dừng (có điều kiện) và từng bước"
+" ở cấp dòng nguồn, kiểm tra khung ngăn xếp, liệt kê mã nguồn và đánh giá mã "
+"Python tùy ý trong ngữ cảnh của bất kỳ khung ngăn xếp nào.  Nó cũng hỗ trợ "
+"gỡ lỗi sau khi chết và có thể được gọi dưới sự kiểm soát của chương trình."
+
+#: ../../library/pdb.rst:26
+#, fuzzy
+msgid ""
+"The debugger is extensible -- it is actually defined as the class "
+":class:`Pdb`. This is currently undocumented but easily understood by "
+"reading the source.  The extension interface uses the modules :mod:`bdb` and"
+" :mod:`cmd`."
+msgstr ""
+"Trình gỡ lỗi có thể mở rộng -- nó thực sự được định nghĩa là lớp "
+":class:`Pdb`. Điều này hiện không có giấy tờ nhưng dễ hiểu bằng cách đọc "
+"nguồn.  Giao diện mở rộng sử dụng các mô-đun :mod:`bdb` và :mod:`cmd`."
+
+#: ../../library/pdb.rst:32
+#, fuzzy
+msgid "Module :mod:`faulthandler`"
+msgstr "Mô-đun :mod:`faulthandler`"
+
+#: ../../library/pdb.rst:33
+#, fuzzy
+msgid ""
+"Used to dump Python tracebacks explicitly, on a fault, after a timeout, or "
+"on a user signal."
+msgstr ""
+"Được sử dụng để kết xuất các dấu vết Python một cách rõ ràng, khi có lỗi, "
+"sau khi hết thời gian chờ hoặc theo tín hiệu của người dùng."
+
+#: ../../library/pdb.rst:36
+#, fuzzy
+msgid "Module :mod:`traceback`"
+msgstr "Mô-đun :mod:`traceback`"
+
+#: ../../library/pdb.rst:37
+#, fuzzy
+msgid ""
+"Standard interface to extract, format and print stack traces of Python "
+"programs."
+msgstr ""
+"Giao diện chuẩn để trích xuất, định dạng và in dấu vết ngăn xếp của chương "
+"trình Python."
+
+#: ../../library/pdb.rst:39
+#, fuzzy
+msgid "The typical usage to break into the debugger is to insert::"
+msgstr "Cách sử dụng thông thường để đột nhập vào trình gỡ lỗi là chèn::"
+
+#: ../../library/pdb.rst:41
+#, fuzzy
+msgid "import pdb; pdb.set_trace()"
+msgstr "nhập pdb; pdb.set_trace()"
+
+#: ../../library/pdb.rst:43
+#, fuzzy
+msgid "Or::"
+msgstr "Hoặc::"
+
+#: ../../library/pdb.rst:45
+#, fuzzy
+msgid "breakpoint()"
+msgstr "điểm dừng()"
+
+#: ../../library/pdb.rst:47
+#, fuzzy
+msgid ""
+"at the location you want to break into the debugger, and then run the "
+"program. You can then step through the code following this statement, and "
+"continue running without the debugger using the :pdbcmd:`continue` command."
+msgstr ""
+"tại vị trí bạn muốn đột nhập vào trình gỡ lỗi, rồi chạy chương trình. Sau "
+"đó, bạn có thể duyệt qua mã theo câu lệnh này và tiếp tục chạy mà không cần "
+"trình gỡ lỗi bằng lệnh :pdbcmd:`continue`."
+
+#: ../../library/pdb.rst:51
+#, fuzzy
+msgid ""
+"The built-in :func:`breakpoint`, when called with defaults, can be used "
+"instead of ``import pdb; pdb.set_trace()``."
+msgstr ""
+":func:`breakpoint` tích hợp, khi được gọi với giá trị mặc định, có thể được "
+"sử dụng thay vì ``import pdb; pdb.set_trace()``."
+
+#: ../../library/pdb.rst:57
+#, python-brace-format, fuzzy
+msgid ""
+"def double(x):\n"
+"   breakpoint()\n"
+"   return x * 2\n"
+"val = 3\n"
+"print(f\"{val} * 2 is {double(val)}\")"
+msgstr ""
+"def gấp đôi (x):\n"
+"   điểm dừng()\n"
+"   trả về x * 2\n"
+"giá trị = 3\n"
+"print(f\"{val} * 2 là {double(val)}\")"
+
+#: ../../library/pdb.rst:63
+#, fuzzy
+msgid ""
+"The debugger's prompt is ``(Pdb)``, which is the indicator that you are in "
+"debug mode::"
+msgstr ""
+"Lời nhắc của trình gỡ lỗi là ``(Pdb)``, đây là dấu hiệu cho biết bạn đang ở "
+"chế độ gỡ lỗi::"
+
+#: ../../library/pdb.rst:65
+#, fuzzy
+msgid ""
+"> ...(2)double()\n"
+"-> breakpoint()\n"
+"(Pdb) p x\n"
+"3\n"
+"(Pdb) continue\n"
+"3 * 2 is 6"
+msgstr ""
+"> ...(2)gấp đôi()\n"
+"-> điểm dừng()\n"
+"(Pdb) p x\n"
+"3\n"
+"(Pdb) tiếp tục\n"
+"3*2 là 6"
+
+#: ../../library/pdb.rst:72
+#, fuzzy
+msgid ""
+"Tab-completion via the :mod:`readline` module is available for commands and "
+"command arguments, e.g. the current global and local names are offered as "
+"arguments of the ``p`` command."
+msgstr ""
+"Hoàn thành tab thông qua mô-đun :mod:`readline` có sẵn cho các lệnh và đối "
+"số lệnh, ví dụ: tên toàn cầu và tên cục bộ hiện tại được cung cấp dưới dạng "
+"đối số của lệnh ``p``."
+
+#: ../../library/pdb.rst:81
+#, fuzzy
+msgid "Command-line interface"
+msgstr "Giao diện dòng lệnh"
+
+#: ../../library/pdb.rst:85
+#, fuzzy
+msgid ""
+"You can also invoke :mod:`!pdb` from the command line to debug other "
+"scripts.  For example::"
+msgstr ""
+"Bạn cũng có thể gọi :mod:`!pdb` từ dòng lệnh để gỡ lỗi các tập lệnh khác.  "
+"Ví dụ::"
+
+#: ../../library/pdb.rst:88
+#, fuzzy
+msgid "python -m pdb [-c command] (-m module | -p pid | pyfile) [args ...]"
+msgstr "python -m pdb [-c command] (-m module | -p pid | pyfile) [args ...]"
+
+#: ../../library/pdb.rst:90
+#, fuzzy
+msgid ""
+"When invoked as a module, pdb will automatically enter post-mortem debugging"
+" if the program being debugged exits abnormally.  After post-mortem "
+"debugging (or after normal exit of the program), pdb will restart the "
+"program.  Automatic restarting preserves pdb's state (such as breakpoints) "
+"and in most cases is more useful than quitting the debugger upon program's "
+"exit."
+msgstr ""
+"Khi được gọi dưới dạng một mô-đun, pdb sẽ tự động chuyển sang chế độ gỡ lỗi "
+"sau khi xử lý nếu chương trình được gỡ lỗi thoát ra một cách bất thường.  "
+"Sau khi gỡ lỗi sau khi chết (hoặc sau khi thoát khỏi chương trình bình "
+"thường), pdb sẽ khởi động lại chương trình.  Tự động khởi động lại sẽ duy "
+"trì trạng thái của pdb (chẳng hạn như điểm dừng) và trong hầu hết các trường"
+" hợp, việc này hữu ích hơn việc thoát khỏi trình gỡ lỗi khi thoát khỏi "
+"chương trình."
+
+#: ../../library/pdb.rst:98
+#, fuzzy
+msgid ""
+"To execute commands as if given in a :file:`.pdbrc` file; see "
+":ref:`debugger-commands`."
+msgstr ""
+"Để thực thi các lệnh như thể được đưa ra trong tệp :file:`.pdbrc`; xem "
+":ref:`debugger-commands`."
+
+#: ../../library/pdb.rst:101
+#, fuzzy
+msgid "Added the ``-c`` option."
+msgstr "Đã thêm tùy chọn ``-c``."
+
+#: ../../library/pdb.rst:106
+#, fuzzy
+msgid ""
+"To execute modules similar to the way ``python -m`` does. As with a script, "
+"the debugger will pause execution just before the first line of the module."
+msgstr ""
+"Để thực thi các mô-đun tương tự như cách ``python -m`` thực hiện. Giống như "
+"tập lệnh, trình gỡ lỗi sẽ tạm dừng thực thi ngay trước dòng đầu tiên của mô-"
+"đun."
+
+#: ../../library/pdb.rst:109
+#, fuzzy
+msgid "Added the ``-m`` option."
+msgstr "Đã thêm tùy chọn ``-m``."
+
+#: ../../library/pdb.rst:114
+#, fuzzy
+msgid "Attach to the process with the specified PID."
+msgstr "Đính kèm vào quy trình với PID được chỉ định."
+
+#: ../../library/pdb.rst:119
+#, fuzzy
+msgid ""
+"To attach to a running Python process for remote debugging, use the ``-p`` "
+"or ``--pid`` option with the target process's PID::"
+msgstr ""
+"Để đính kèm vào một quy trình Python đang chạy nhằm gỡ lỗi từ xa, hãy sử "
+"dụng tùy chọn ``-p`` hoặc ``--pid`` với PID:: của quy trình đích."
+
+#: ../../library/pdb.rst:122
+#, fuzzy
+msgid "python -m pdb -p 1234"
+msgstr "trăn -m pdb -p 1234"
+
+#: ../../library/pdb.rst:126
+#, fuzzy
+msgid ""
+"Attaching to a process that is blocked in a system call or waiting for I/O "
+"will only work once the next bytecode instruction is executed or when the "
+"process receives a signal."
+msgstr ""
+"Việc đính kèm vào một quy trình bị chặn trong lệnh gọi hệ thống hoặc chờ I/O"
+" sẽ chỉ hoạt động khi lệnh mã byte tiếp theo được thực thi hoặc khi quy "
+"trình nhận được tín hiệu."
+
+#: ../../library/pdb.rst:130
+#, fuzzy
+msgid ""
+"Typical usage to execute a statement under control of the debugger is::"
+msgstr ""
+"Cách sử dụng điển hình để thực thi một câu lệnh dưới sự kiểm soát của trình "
+"gỡ lỗi là::"
+
+#: ../../library/pdb.rst:132
+#, fuzzy
+msgid ""
+">>> import pdb\n"
+">>> def f(x):\n"
+"...     print(1 / x)\n"
+">>> pdb.run(\"f(2)\")\n"
+"> <string>(1)<module>()\n"
+"(Pdb) continue\n"
+"0.5\n"
+">>>"
+msgstr ""
+">>> nhập pdb\n"
+">>> định nghĩa f(x):\n"
+"... in(1 / x)\n"
+">>> pdb.run(\"f(2)\")\n"
+"> <string>(1)<module>()\n"
+"(Pdb) tiếp tục\n"
+"0,5\n"
+">>>"
+
+#: ../../library/pdb.rst:141
+#, fuzzy
+msgid "The typical usage to inspect a crashed program is::"
+msgstr "Cách sử dụng thông thường để kiểm tra một chương trình bị lỗi là::"
+
+#: ../../library/pdb.rst:143
+#, fuzzy
+msgid ""
+">>> import pdb\n"
+">>> def f(x):\n"
+"...     print(1 / x)\n"
+"...\n"
+">>> f(0)\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"  File \"<stdin>\", line 2, in f\n"
+"ZeroDivisionError: division by zero\n"
+">>> pdb.pm()\n"
+"> <stdin>(2)f()\n"
+"(Pdb) p x\n"
+"0\n"
+"(Pdb)"
+msgstr ""
+">>> nhập pdb\n"
+">>> định nghĩa f(x):\n"
+"... in(1 / x)\n"
+"...\n"
+">>>f(0)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"  Tệp \"<stdin>\", dòng 2, trong f\n"
+"ZeroDivisionError: chia cho 0\n"
+">>> pdb.pm()\n"
+"> <stdin>(2)f()\n"
+"(Pdb) p x\n"
+"0\n"
+"(Pdb)"
+
+#: ../../library/pdb.rst:158
+#, fuzzy
+msgid ""
+"The implementation of :pep:`667` means that name assignments made via "
+"``pdb`` will immediately affect the active scope, even when running inside "
+"an :term:`optimized scope`."
+msgstr ""
+"Việc triển khai :pep:`667` có nghĩa là việc gán tên được thực hiện qua "
+"``pdb`` sẽ ngay lập tức ảnh hưởng đến phạm vi hoạt động, ngay cả khi chạy "
+"bên trong :term:`optimized scope`."
+
+#: ../../library/pdb.rst:164
+#, fuzzy
+msgid ""
+"The module defines the following functions; each enters the debugger in a "
+"slightly different way:"
+msgstr ""
+"Mô-đun xác định các chức năng sau; mỗi cái vào trình gỡ lỗi theo một cách "
+"hơi khác:"
+
+#: ../../library/pdb.rst:169
+#, fuzzy
+msgid ""
+"Execute the *statement* (given as a string or a code object) under debugger "
+"control.  The debugger prompt appears before any code is executed; you can "
+"set breakpoints and type :pdbcmd:`continue`, or you can step through the "
+"statement using :pdbcmd:`step` or :pdbcmd:`next` (all these commands are "
+"explained below).  The optional *globals* and *locals* arguments specify the"
+" environment in which the code is executed; by default the dictionary of the"
+" module :mod:`__main__` is used.  (See the explanation of the built-in "
+":func:`exec` or :func:`eval` functions.)"
+msgstr ""
+"Thực thi *statement* (được cung cấp dưới dạng chuỗi hoặc đối tượng mã) dưới "
+"sự kiểm soát của trình gỡ lỗi.  Lời nhắc của trình gỡ lỗi xuất hiện trước "
+"khi bất kỳ mã nào được thực thi; bạn có thể đặt điểm dừng và nhập "
+":pdbcmd:`continue` hoặc bạn có thể xem qua câu lệnh bằng cách sử dụng "
+":pdbcmd:`step` hoặc :pdbcmd:`next` (tất cả các lệnh này được giải thích bên "
+"dưới).  Các đối số *globals* và *locals* tùy chọn chỉ định môi trường mà mã "
+"được thực thi; theo mặc định, từ điển của mô-đun :mod:`__main__` được sử "
+"dụng.  (Xem phần giải thích về các hàm :func:`exec` hoặc :func:`eval` tích "
+"hợp sẵn.)"
+
+#: ../../library/pdb.rst:181
+#, fuzzy
+msgid ""
+"Evaluate the *expression* (given as a string or a code object) under "
+"debugger control.  When :func:`runeval` returns, it returns the value of the"
+" *expression*.  Otherwise this function is similar to :func:`run`."
+msgstr ""
+"Đánh giá *expression* (được cung cấp dưới dạng chuỗi hoặc đối tượng mã) dưới"
+" sự kiểm soát của trình gỡ lỗi.  Khi :func:`runeval` trả về, nó trả về giá "
+"trị của *expression*.  Nếu không thì chức năng này tương tự như :func:`run`."
+
+#: ../../library/pdb.rst:188
+#, fuzzy
+msgid ""
+"Call the *function* (a function or method object, not a string) with the "
+"given arguments.  When :func:`runcall` returns, it returns whatever the "
+"function call returned.  The debugger prompt appears as soon as the function"
+" is entered."
+msgstr ""
+"Gọi *function* (một đối tượng hàm hoặc phương thức, không phải một chuỗi) "
+"với các đối số đã cho.  Khi :func:`runcall` trả về, nó sẽ trả về bất cứ thứ "
+"gì mà lệnh gọi hàm trả về.  Lời nhắc của trình gỡ lỗi xuất hiện ngay khi "
+"chức năng được nhập."
+
+#: ../../library/pdb.rst:196
+#, fuzzy
+msgid ""
+"Enter the debugger at the calling stack frame.  This is useful to hard-code "
+"a breakpoint at a given point in a program, even if the code is not "
+"otherwise being debugged (e.g. when an assertion fails).  If given, *header*"
+" is printed to the console just before debugging begins. The *commands* "
+"argument, if given, is a list of commands to execute when the debugger "
+"starts."
+msgstr ""
+"Nhập trình gỡ lỗi vào khung ngăn xếp cuộc gọi.  Điều này rất hữu ích để mã "
+"hóa cứng một điểm dừng tại một điểm nhất định trong chương trình, ngay cả "
+"khi mã không được gỡ lỗi (ví dụ: khi một xác nhận không thành công).  Nếu "
+"được cung cấp, *header* sẽ được in ra bảng điều khiển ngay trước khi quá "
+"trình gỡ lỗi bắt đầu. Đối số *commands*, nếu được cung cấp, là danh sách các"
+" lệnh sẽ thực thi khi trình gỡ lỗi khởi động."
+
+#: ../../library/pdb.rst:204
+#, fuzzy
+msgid "The keyword-only argument *header*."
+msgstr "Đối số chỉ có từ khóa *header*."
+
+#: ../../library/pdb.rst:207
+#, fuzzy
+msgid ""
+":func:`set_trace` will enter the debugger immediately, rather than on the "
+"next line of code to be executed."
+msgstr ""
+":func:`set_trace` sẽ vào trình gỡ lỗi ngay lập tức, thay vì vào dòng mã tiếp"
+" theo sẽ được thực thi."
+
+#: ../../library/pdb.rst:211
+#, fuzzy
+msgid "The *commands* argument."
+msgstr "Đối số *commands*."
+
+#: ../../library/pdb.rst:217
+#, fuzzy
+msgid ""
+"async version of :func:`set_trace`. This function should be used inside an "
+"async function with :keyword:`await`."
+msgstr ""
+"phiên bản không đồng bộ của :func:`set_trace`. Hàm này nên được sử dụng bên "
+"trong hàm không đồng bộ với :keyword:`await`."
+
+#: ../../library/pdb.rst:220
+#, fuzzy
+msgid ""
+"async def f():\n"
+"    await pdb.set_trace_async()"
+msgstr ""
+"không đồng bộ def f():\n"
+"    đang chờ pdb.set_trace_async()"
+
+#: ../../library/pdb.rst:225
+#, fuzzy
+msgid ""
+":keyword:`await` statements are supported if the debugger is invoked by this"
+" function."
+msgstr ""
+"Các câu lệnh :keyword:`await` được hỗ trợ nếu trình gỡ lỗi được gọi bởi hàm "
+"này."
+
+#: ../../library/pdb.rst:231
+#, fuzzy
+msgid ""
+"Enter post-mortem debugging of the given exception or :ref:`traceback object"
+" <traceback-objects>`. If no value is given, it uses the exception that is "
+"currently being handled, or raises ``ValueError`` if there isn’t one."
+msgstr ""
+"Nhập gỡ lỗi sau khi xử lý ngoại lệ đã cho hoặc :ref:`traceback object "
+"<traceback-objects>`. Nếu không có giá trị nào được đưa ra, nó sẽ sử dụng "
+"ngoại lệ hiện đang được xử lý hoặc tăng ``ValueError`` nếu không có."
+
+#: ../../library/pdb.rst:236
+#, fuzzy
+msgid "Support for exception objects was added."
+msgstr "Hỗ trợ cho các đối tượng ngoại lệ đã được thêm vào."
+
+#: ../../library/pdb.rst:241
+#, fuzzy
+msgid ""
+"Enter post-mortem debugging of the exception found in :data:`sys.last_exc`."
+msgstr ""
+"Nhập gỡ lỗi sau khi xử lý ngoại lệ được tìm thấy trong :data:`sys.last_exc`."
+
+#: ../../library/pdb.rst:246
+#, fuzzy
+msgid ""
+"There are two supported backends for pdb: ``'settrace'`` and "
+"``'monitoring'``. See :class:`bdb.Bdb` for details. The user can set the "
+"default backend to use if none is specified when instantiating :class:`Pdb`."
+" If no backend is specified, the default is ``'settrace'``."
+msgstr ""
+"Có hai phần phụ trợ được hỗ trợ cho pdb: ``'settrace'`` và ``'monitoring'``."
+" Xem :class:`bdb.Bdb` để biết chi tiết. Người dùng có thể đặt phần phụ trợ "
+"mặc định để sử dụng nếu không có phần phụ trợ nào được chỉ định khi khởi tạo"
+" :class:`Pdb`. Nếu không có phần phụ trợ nào được chỉ định thì mặc định là "
+"``'settrace'``."
+
+#: ../../library/pdb.rst:253
+#, fuzzy
+msgid ""
+":func:`breakpoint` and :func:`set_trace` will not be affected by this "
+"function. They always use ``'monitoring'`` backend."
+msgstr ""
+":func:`breakpoint` và :func:`set_trace` sẽ không bị ảnh hưởng bởi chức năng "
+"này. Họ luôn sử dụng phụ trợ ``'monitoring'``."
+
+#: ../../library/pdb.rst:260
+#, fuzzy
+msgid "Returns the default backend for pdb."
+msgstr "Trả về phần phụ trợ mặc định cho pdb."
+
+#: ../../library/pdb.rst:264
+#, fuzzy
+msgid ""
+"The ``run*`` functions and :func:`set_trace` are aliases for instantiating "
+"the :class:`Pdb` class and calling the method of the same name.  If you want"
+" to access further features, you have to do this yourself:"
+msgstr ""
+"Các hàm ``run*`` và :func:`set_trace` là bí danh để khởi tạo lớp "
+":class:`Pdb` và gọi phương thức cùng tên.  Nếu bạn muốn truy cập các tính "
+"năng khác, bạn phải tự mình thực hiện việc này:"
+
+#: ../../library/pdb.rst:271
+#, fuzzy
+msgid ":class:`Pdb` is the debugger class."
+msgstr ":class:`Pdb` là lớp trình gỡ lỗi."
+
+#: ../../library/pdb.rst:273
+#, fuzzy
+msgid ""
+"The *completekey*, *stdin* and *stdout* arguments are passed to the "
+"underlying :class:`cmd.Cmd` class; see the description there."
+msgstr ""
+"Các đối số *completekey*, *stdin* và *stdout* được chuyển đến lớp "
+":class:`cmd.Cmd` cơ bản; xem mô tả ở đó."
+
+#: ../../library/pdb.rst:276
+#, fuzzy
+msgid ""
+"The *skip* argument, if given, must be an iterable of glob-style module name"
+" patterns.  The debugger will not step into frames that originate in a "
+"module that matches one of these patterns. [1]_"
+msgstr ""
+"Đối số *skip*, nếu được đưa ra, phải là một đối số có thể lặp lại của các "
+"mẫu tên mô-đun kiểu toàn cầu.  Trình gỡ lỗi sẽ không bước vào các khung bắt "
+"nguồn từ mô-đun khớp với một trong các mẫu này. [1]_"
+
+#: ../../library/pdb.rst:280
+#, fuzzy
+msgid ""
+"By default, Pdb sets a handler for the SIGINT signal (which is sent when the"
+" user presses :kbd:`Ctrl-C` on the console) when you give a "
+":pdbcmd:`continue` command. This allows you to break into the debugger again"
+" by pressing :kbd:`Ctrl-C`.  If you want Pdb not to touch the SIGINT "
+"handler, set *nosigint* to true."
+msgstr ""
+"Theo mặc định, Pdb đặt trình xử lý cho tín hiệu SIGINT (được gửi khi người "
+"dùng nhấn :kbd:`Ctrl-C` trên bảng điều khiển) khi bạn đưa ra lệnh "
+":pdbcmd:`continue`. Điều này cho phép bạn đột nhập lại vào trình gỡ lỗi bằng"
+" cách nhấn :kbd:`Ctrl-C`.  Nếu bạn muốn Pdb không chạm vào trình xử lý "
+"SIGINT, hãy đặt *nosigint* thành true."
+
+#: ../../library/pdb.rst:285
+#, fuzzy
+msgid ""
+"The *readrc* argument defaults to true and controls whether Pdb will load "
+".pdbrc files from the filesystem."
+msgstr ""
+"Đối số *readrc* mặc định là true và kiểm soát xem Pdb có tải tệp .pdbrc từ "
+"hệ thống tệp hay không."
+
+#: ../../library/pdb.rst:288
+#, fuzzy
+msgid ""
+"The *mode* argument specifies how the debugger was invoked. It impacts the "
+"workings of some debugger commands. Valid values are ``'inline'`` (used by "
+"the breakpoint() builtin), ``'cli'`` (used by the command line invocation) "
+"or ``None`` (for backwards compatible behaviour, as before the *mode* "
+"argument was added)."
+msgstr ""
+"Đối số *mode* chỉ định cách gọi trình gỡ lỗi. Nó tác động đến hoạt động của "
+"một số lệnh gỡ lỗi. Các giá trị hợp lệ là ``'inline'`` (được sử dụng bởi nội"
+" dung breakpoint()), ``'cli'`` (được sử dụng bởi lệnh gọi dòng lệnh) hoặc "
+"``None`` (đối với hành vi tương thích ngược, như trước khi đối số *mode* "
+"được thêm vào)."
+
+#: ../../library/pdb.rst:295
+#, fuzzy
+msgid ""
+"The *backend* argument specifies the backend to use for the debugger. If "
+"``None`` is passed, the default backend will be used. See "
+":func:`set_default_backend`. Otherwise the supported backends are "
+"``'settrace'`` and ``'monitoring'``."
+msgstr ""
+"Đối số *backend* chỉ định phần phụ trợ sẽ sử dụng cho trình gỡ lỗi. Nếu "
+"``None`` được thông qua, phần phụ trợ mặc định sẽ được sử dụng. Xem "
+":func:`set_default_backend`. Nếu không thì các chương trình phụ trợ được hỗ "
+"trợ là ``'settrace'`` và ``'monitoring'``."
+
+#: ../../library/pdb.rst:299
+#, fuzzy
+msgid ""
+"The *colorize* argument, if set to ``True``, will enable colorized output in"
+" the debugger, if color is supported. This will highlight source code "
+"displayed in pdb."
+msgstr ""
+"Đối số *colorize*, nếu được đặt thành ``True``, sẽ bật đầu ra được tô màu "
+"trong trình gỡ lỗi nếu màu được hỗ trợ. Điều này sẽ làm nổi bật mã nguồn "
+"được hiển thị trong pdb."
+
+#: ../../library/pdb.rst:302
+#, fuzzy
+msgid "Example call to enable tracing with *skip*::"
+msgstr "Lệnh gọi ví dụ để bật theo dõi bằng *skip*::"
+
+#: ../../library/pdb.rst:304
+#, fuzzy
+msgid "import pdb; pdb.Pdb(skip=['django.*']).set_trace()"
+msgstr "nhập pdb; pdb.Pdb(skip=['django.*']).set_trace()"
+
+#: ../../library/pdb.rst:306
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``pdb.Pdb`` with no arguments."
+msgstr "Tăng :ref:`auditing event <auditing>` ``pdb.Pdb`` mà không có đối số."
+
+#: ../../library/pdb.rst:308
+#, fuzzy
+msgid "Added the *skip* parameter."
+msgstr "Đã thêm tham số *skip*."
+
+#: ../../library/pdb.rst:311
+#, fuzzy
+msgid ""
+"Added the *nosigint* parameter. Previously, a SIGINT handler was never set "
+"by Pdb."
+msgstr ""
+"Đã thêm tham số *nosigint*. Trước đây, trình xử lý SIGINT chưa bao giờ được "
+"Pdb thiết lập."
+
+#: ../../library/pdb.rst:315
+#, fuzzy
+msgid "The *readrc* argument."
+msgstr "Đối số *readrc*."
+
+#: ../../library/pdb.rst:318
+#, fuzzy
+msgid "Added the *mode* argument."
+msgstr "Đã thêm đối số *mode*."
+
+#: ../../library/pdb.rst:321
+#, fuzzy
+msgid "Added the *backend* argument."
+msgstr "Đã thêm đối số *backend*."
+
+#: ../../library/pdb.rst:324
+#, fuzzy
+msgid "Added the *colorize* argument."
+msgstr "Đã thêm đối số *colorize*."
+
+#: ../../library/pdb.rst:327
+#, fuzzy
+msgid ""
+"Inline breakpoints like :func:`breakpoint` or :func:`pdb.set_trace` will "
+"always stop the program at calling frame, ignoring the *skip* pattern (if "
+"any)."
+msgstr ""
+"Các điểm ngắt nội tuyến như :func:`breakpoint` hoặc :func:`pdb.set_trace` sẽ"
+" luôn dừng chương trình ở khung đang gọi, bỏ qua mẫu *skip* (nếu có)."
+
+#: ../../library/pdb.rst:336
+#, fuzzy
+msgid "See the documentation for the functions explained above."
+msgstr "Xem tài liệu về các chức năng được giải thích ở trên."
+
+#: ../../library/pdb.rst:342
+#, fuzzy
+msgid "Debugger commands"
+msgstr "Lệnh gỡ lỗi"
+
+#: ../../library/pdb.rst:344
+#, fuzzy
+msgid ""
+"The commands recognized by the debugger are listed below.  Most commands can"
+" be abbreviated to one or two letters as indicated; e.g. ``h(elp)`` means "
+"that either ``h`` or ``help`` can be used to enter the help command (but not"
+" ``he`` or ``hel``, nor ``H`` or ``Help`` or ``HELP``).  Arguments to "
+"commands must be separated by whitespace (spaces or tabs).  Optional "
+"arguments are enclosed in square brackets (``[]``) in the command syntax; "
+"the square brackets must not be typed.  Alternatives in the command syntax "
+"are separated by a vertical bar (``|``)."
+msgstr ""
+"Các lệnh được trình gỡ lỗi nhận dạng được liệt kê bên dưới.  Hầu hết các "
+"lệnh có thể được viết tắt thành một hoặc hai chữ cái như đã chỉ ra; ví dụ. "
+"``h(elp)`` có nghĩa là có thể sử dụng ``h`` hoặc ``help`` để nhập lệnh trợ "
+"giúp (nhưng không phải ``he`` hoặc ``hel``, cũng không phải ``H`` hoặc "
+"``Help`` hoặc ``HELP``).  Các đối số của lệnh phải được phân tách bằng "
+"khoảng trắng (dấu cách hoặc tab).  Các đối số tùy chọn được đặt trong dấu "
+"ngoặc vuông (``[]``) trong cú pháp lệnh; không được gõ dấu ngoặc vuông.  Các"
+" lựa chọn thay thế trong cú pháp lệnh được phân tách bằng thanh dọc (``|``)."
+
+#: ../../library/pdb.rst:353
+#, fuzzy
+msgid ""
+"Entering a blank line repeats the last command entered.  Exception: if the "
+"last command was a :pdbcmd:`list` command, the next 11 lines are listed."
+msgstr ""
+"Nhập một dòng trống sẽ lặp lại lệnh cuối cùng đã nhập.  Ngoại lệ: nếu lệnh "
+"cuối cùng là lệnh :pdbcmd:`list` thì 11 dòng tiếp theo sẽ được liệt kê."
+
+#: ../../library/pdb.rst:356
+#, fuzzy
+msgid ""
+"Commands that the debugger doesn't recognize are assumed to be Python "
+"statements and are executed in the context of the program being debugged.  "
+"Python statements can also be prefixed with an exclamation point (``!``).  "
+"This is a powerful way to inspect the program being debugged; it is even "
+"possible to change a variable or call a function.  When an exception occurs "
+"in such a statement, the exception name is printed but the debugger's state "
+"is not changed."
+msgstr ""
+"Các lệnh mà trình gỡ lỗi không nhận ra được coi là các câu lệnh Python và "
+"được thực thi trong bối cảnh chương trình đang được gỡ lỗi.  Các câu lệnh "
+"Python cũng có thể được bắt đầu bằng dấu chấm than (``!``).  Đây là một cách"
+" mạnh mẽ để kiểm tra chương trình đang được gỡ lỗi; thậm chí có thể thay đổi"
+" một biến hoặc gọi một hàm.  Khi một ngoại lệ xảy ra trong câu lệnh như vậy,"
+" tên ngoại lệ sẽ được in nhưng trạng thái của trình gỡ lỗi không thay đổi."
+
+#: ../../library/pdb.rst:364
+#, fuzzy
+msgid ""
+"Expressions/Statements whose prefix is a pdb command are now correctly "
+"identified and executed."
+msgstr ""
+"Các biểu thức/câu lệnh có tiền tố là lệnh pdb hiện đã được xác định và thực "
+"thi chính xác."
+
+#: ../../library/pdb.rst:368
+#, fuzzy
+msgid ""
+"The debugger supports :ref:`aliases <debugger-aliases>`.  Aliases can have "
+"parameters which allows one a certain level of adaptability to the context "
+"under examination."
+msgstr ""
+"Trình gỡ lỗi hỗ trợ :ref:`aliases <debugger-aliases>`.  Bí danh có thể có "
+"các tham số cho phép một mức độ thích ứng nhất định với bối cảnh đang được "
+"kiểm tra."
+
+#: ../../library/pdb.rst:372
+#, fuzzy
+msgid ""
+"Multiple commands may be entered on a single line, separated by ``;;``.  (A "
+"single ``;`` is not used as it is the separator for multiple commands in a "
+"line that is passed to the Python parser.)  No intelligence is applied to "
+"separating the commands; the input is split at the first ``;;`` pair, even "
+"if it is in the middle of a quoted string. A workaround for strings with "
+"double semicolons is to use implicit string concatenation ``';'';'`` or "
+"``\";\"\";\"``."
+msgstr ""
+"Nhiều lệnh có thể được nhập trên một dòng, cách nhau bằng ``;;``.  (Một "
+"``;`` không được sử dụng vì nó là dấu phân cách cho nhiều lệnh trong một "
+"dòng được chuyển tới trình phân tích cú pháp Python.) Không có thông tin nào"
+" được áp dụng để phân tách các lệnh; đầu vào được phân chia ở cặp ``;;`` đầu"
+" tiên, ngay cả khi nó nằm ở giữa chuỗi được trích dẫn. Một cách giải quyết "
+"khác cho các chuỗi có dấu chấm phẩy kép là sử dụng phép nối chuỗi ẩn "
+"``';'';'`` hoặc ``\";\"\";\"``."
+
+#: ../../library/pdb.rst:379
+#, fuzzy
+msgid ""
+"To set a temporary global variable, use a *convenience variable*. A "
+"*convenience variable* is a variable whose name starts with ``$``.  For "
+"example, ``$foo = 1`` sets a global variable ``$foo`` which you can use in "
+"the debugger session.  The *convenience variables* are cleared when the "
+"program resumes execution so it's less likely to interfere with your program"
+" compared to using normal variables like ``foo = 1``."
+msgstr ""
+"Để đặt biến toàn cục tạm thời, hãy sử dụng *convenience variable*. Zz005zz "
+"là một biến có tên bắt đầu bằng ``$``.  Ví dụ: ``$foo = 1`` đặt biến toàn "
+"cục ``$foo`` mà bạn có thể sử dụng trong phiên gỡ lỗi.  *convenience "
+"variables* sẽ bị xóa khi chương trình tiếp tục thực thi nên nó ít có khả "
+"năng can thiệp vào chương trình của bạn hơn so với việc sử dụng các biến "
+"thông thường như ``foo = 1``."
+
+#: ../../library/pdb.rst:386
+#, fuzzy
+msgid "There are four preset *convenience variables*:"
+msgstr "Có bốn *convenience variables* cài sẵn:"
+
+#: ../../library/pdb.rst:388
+#, fuzzy
+msgid "``$_frame``: the current frame you are debugging"
+msgstr "``$_frame``: khung hình hiện tại bạn đang gỡ lỗi"
+
+#: ../../library/pdb.rst:389
+#, fuzzy
+msgid "``$_retval``: the return value if the frame is returning"
+msgstr "``$_retval``: giá trị trả về nếu khung quay trở lại"
+
+#: ../../library/pdb.rst:390
+#, fuzzy
+msgid "``$_exception``: the exception if the frame is raising an exception"
+msgstr "``$_exception``: ngoại lệ nếu khung đang đưa ra ngoại lệ"
+
+#: ../../library/pdb.rst:391
+#, fuzzy
+msgid "``$_asynctask``: the asyncio task if pdb stops in an async function"
+msgstr ""
+"``$_asynctask``: tác vụ asyncio nếu pdb dừng ở chức năng không đồng bộ"
+
+#: ../../library/pdb.rst:395
+#, fuzzy
+msgid "Added the *convenience variable* feature."
+msgstr "Đã thêm tính năng *convenience variable*."
+
+#: ../../library/pdb.rst:397
+#, fuzzy
+msgid "Added the ``$_asynctask`` convenience variable."
+msgstr "Đã thêm biến tiện lợi ``$_asynctask``."
+
+#: ../../library/pdb.rst:404
+#, fuzzy
+msgid ""
+"If a file :file:`.pdbrc` exists in the user's home directory or in the "
+"current directory, it is read with ``'utf-8'`` encoding and executed as if "
+"it had been typed at the debugger prompt, with the exception that empty "
+"lines and lines starting with ``#`` are ignored.  This is particularly "
+"useful for aliases.  If both files exist, the one in the home directory is "
+"read first and aliases defined there can be overridden by the local file."
+msgstr ""
+"Nếu một tệp :file:`.pdbrc` tồn tại trong thư mục chính của người dùng hoặc "
+"trong thư mục hiện tại, nó sẽ được đọc bằng mã hóa ``'utf-8'`` và được thực "
+"thi như thể nó đã được gõ tại dấu nhắc của trình gỡ lỗi, ngoại trừ các dòng "
+"trống và các dòng bắt đầu bằng ``#`` sẽ bị bỏ qua.  Điều này đặc biệt hữu "
+"ích cho các bí danh.  Nếu cả hai tệp đều tồn tại, tệp trong thư mục chính sẽ"
+" được đọc trước và các bí danh được xác định ở đó có thể bị tệp cục bộ ghi "
+"đè."
+
+#: ../../library/pdb.rst:411
+#, fuzzy
+msgid ""
+":file:`.pdbrc` can now contain commands that continue debugging, such as "
+":pdbcmd:`continue` or :pdbcmd:`next`.  Previously, these commands had no "
+"effect."
+msgstr ""
+":file:`.pdbrc` hiện có thể chứa các lệnh tiếp tục gỡ lỗi, chẳng hạn như "
+":pdbcmd:`continue` hoặc :pdbcmd:`next`.  Trước đây, các lệnh này không có "
+"hiệu lực."
+
+#: ../../library/pdb.rst:416
+#, fuzzy
+msgid ""
+":file:`.pdbrc` is now read with ``'utf-8'`` encoding. Previously, it was "
+"read with the system locale encoding."
+msgstr ""
+":file:`.pdbrc` hiện được đọc bằng mã hóa ``'utf-8'``. Trước đây, nó được đọc"
+" bằng mã hóa ngôn ngữ hệ thống."
+
+#: ../../library/pdb.rst:423
+#, fuzzy
+msgid ""
+"Without argument, print the list of available commands.  With a *command* as"
+" argument, print help about that command.  ``help pdb`` displays the full "
+"documentation (the docstring of the :mod:`pdb` module).  Since the *command*"
+" argument must be an identifier, ``help exec`` must be entered to get help "
+"on the ``!`` command."
+msgstr ""
+"Không có đối số, hãy in danh sách các lệnh có sẵn.  Với đối số là *command*,"
+" hãy in phần trợ giúp về lệnh đó.  ``help pdb`` hiển thị tài liệu đầy đủ "
+"(chuỗi tài liệu của mô-đun :mod:`pdb`).  Vì đối số *command* phải là một mã "
+"định danh nên phải nhập ``help exec`` để nhận trợ giúp về lệnh ``!``."
+
+#: ../../library/pdb.rst:431
+#, fuzzy
+msgid ""
+"Print a stack trace, with the most recent frame at the bottom.  if *count* "
+"is 0, print the current frame entry. If *count* is negative, print the least"
+" recent - *count* frames. If *count* is positive, print the most recent "
+"*count* frames.  An arrow (``>``) indicates the current frame, which "
+"determines the context of most commands."
+msgstr ""
+"In dấu vết ngăn xếp, với khung gần đây nhất ở dưới cùng.  nếu *count* bằng "
+"0, hãy in mục nhập khung hiện tại. Nếu *count* âm, hãy in các khung gần đây "
+"nhất - *count*. Nếu *count* dương, hãy in các khung *count* gần đây nhất.  "
+"Mũi tên (``>``) biểu thị khung hiện tại, xác định ngữ cảnh của hầu hết các "
+"lệnh."
+
+#: ../../library/pdb.rst:437
+#, fuzzy
+msgid "*count* argument is added."
+msgstr "đối số *count* được thêm vào."
+
+#: ../../library/pdb.rst:442
+#, fuzzy
+msgid ""
+"Move the current frame *count* (default one) levels down in the stack trace "
+"(to a newer frame)."
+msgstr ""
+"Di chuyển mức *count* của khung hiện tại (mặc định) xuống trong dấu vết ngăn"
+" xếp (sang khung mới hơn)."
+
+#: ../../library/pdb.rst:447
+#, fuzzy
+msgid ""
+"Move the current frame *count* (default one) levels up in the stack trace "
+"(to an older frame)."
+msgstr ""
+"Di chuyển khung hình hiện tại *count* (mặc định) lên cấp trong dấu vết ngăn "
+"xếp (sang khung cũ hơn)."
+
+#: ../../library/pdb.rst:452
+#, fuzzy
+msgid ""
+"With a *lineno* argument, set a break at line *lineno* in the current file. "
+"The line number may be prefixed with a *filename* and a colon, to specify a "
+"breakpoint in another file (possibly one that hasn't been loaded yet).  The "
+"file is searched on :data:`sys.path`.  Acceptable forms of *filename* are "
+"``/abspath/to/file.py``, ``relpath/file.py``, ``module`` and "
+"``package.module``."
+msgstr ""
+"Với đối số *lineno*, đặt dấu ngắt ở dòng *lineno* trong tệp hiện tại. Số "
+"dòng có thể có tiền tố là *filename* và dấu hai chấm, để chỉ định điểm dừng "
+"trong một tệp khác (có thể là điểm dừng chưa được tải).  Tệp được tìm kiếm "
+"trên :data:`sys.path`.  Các dạng *filename* được chấp nhận là "
+"``/abspath/to/file.py``, ``relpath/file.py``, ``module`` và "
+"``package.module``."
+
+#: ../../library/pdb.rst:459
+#, fuzzy
+msgid ""
+"With a *function* argument, set a break at the first executable statement "
+"within that function. *function* can be any expression that evaluates to a "
+"function in the current namespace."
+msgstr ""
+"Với đối số *function*, đặt dấu ngắt ở câu lệnh thực thi đầu tiên trong hàm "
+"đó. *function* có thể là bất kỳ biểu thức nào đánh giá một hàm trong không "
+"gian tên hiện tại."
+
+#: ../../library/pdb.rst:463
+#, fuzzy
+msgid ""
+"If a second argument is present, it is an expression which must evaluate to "
+"true before the breakpoint is honored."
+msgstr ""
+"Nếu có đối số thứ hai thì đó là biểu thức phải đánh giá là đúng trước khi "
+"điểm ngắt được thực hiện."
+
+#: ../../library/pdb.rst:466
+#, fuzzy
+msgid ""
+"Without argument, list all breaks, including for each breakpoint, the number"
+" of times that breakpoint has been hit, the current ignore count, and the "
+"associated condition if any."
+msgstr ""
+"Không có đối số, hãy liệt kê tất cả các điểm ngắt, bao gồm từng điểm ngắt, "
+"số lần điểm ngắt đó đã được chạm, số lần bỏ qua hiện tại và điều kiện liên "
+"quan nếu có."
+
+#: ../../library/pdb.rst:470
+#, fuzzy
+msgid ""
+"Each breakpoint is assigned a number to which all the other breakpoint "
+"commands refer."
+msgstr ""
+"Mỗi điểm dừng được gán một số mà tất cả các lệnh điểm dừng khác tham chiếu "
+"đến."
+
+#: ../../library/pdb.rst:475
+#, fuzzy
+msgid ""
+"Temporary breakpoint, which is removed automatically when it is first hit. "
+"The arguments are the same as for :pdbcmd:`break`."
+msgstr ""
+"Điểm dừng tạm thời, điểm này sẽ tự động bị xóa khi chạm lần đầu. Các đối số "
+"giống như đối với :pdbcmd:`break`."
+
+#: ../../library/pdb.rst:480
+#, fuzzy
+msgid ""
+"With a *filename:lineno* argument, clear all the breakpoints at this line. "
+"With a space separated list of breakpoint numbers, clear those breakpoints. "
+"Without argument, clear all breaks (but first ask confirmation)."
+msgstr ""
+"Với đối số *filename:lineno*, hãy xóa tất cả các điểm dừng ở dòng này. Với "
+"danh sách các số điểm dừng được phân tách bằng dấu cách, hãy xóa các điểm "
+"dừng đó. Không cần tranh luận, hãy xóa tất cả các dấu ngắt (nhưng trước tiên"
+" hãy hỏi xác nhận)."
+
+#: ../../library/pdb.rst:486
+#, fuzzy
+msgid ""
+"Disable the breakpoints given as a space separated list of breakpoint "
+"numbers.  Disabling a breakpoint means it cannot cause the program to stop "
+"execution, but unlike clearing a breakpoint, it remains in the list of "
+"breakpoints and can be (re-)enabled."
+msgstr ""
+"Vô hiệu hóa các điểm dừng được cung cấp dưới dạng danh sách các số điểm dừng"
+" được phân tách bằng dấu cách.  Vô hiệu hóa điểm dừng có nghĩa là nó không "
+"thể khiến chương trình ngừng thực thi, nhưng không giống như xóa điểm dừng, "
+"nó vẫn nằm trong danh sách các điểm dừng và có thể được bật (bật lại)."
+
+#: ../../library/pdb.rst:493
+#, fuzzy
+msgid "Enable the breakpoints specified."
+msgstr "Kích hoạt các điểm dừng được chỉ định."
+
+#: ../../library/pdb.rst:497
+#, fuzzy
+msgid ""
+"Set the ignore count for the given breakpoint number.  If *count* is "
+"omitted, the ignore count is set to 0.  A breakpoint becomes active when the"
+" ignore count is zero.  When non-zero, the *count* is decremented each time "
+"the breakpoint is reached and the breakpoint is not disabled and any "
+"associated condition evaluates to true."
+msgstr ""
+"Đặt số lượng bỏ qua cho số điểm dừng đã cho.  Nếu *count* bị bỏ qua, số lần "
+"bỏ qua được đặt thành 0. Điểm dừng sẽ hoạt động khi số lần bỏ qua bằng 0.  "
+"Khi khác 0, *count* sẽ giảm đi mỗi khi đạt đến điểm dừng và điểm dừng không "
+"bị vô hiệu hóa cũng như mọi điều kiện liên quan đều được đánh giá là đúng."
+
+#: ../../library/pdb.rst:505
+#, fuzzy
+msgid ""
+"Set a new *condition* for the breakpoint, an expression which must evaluate "
+"to true before the breakpoint is honored.  If *condition* is absent, any "
+"existing condition is removed; i.e., the breakpoint is made unconditional."
+msgstr ""
+"Đặt *condition* mới cho điểm ngắt, một biểu thức phải đánh giá là đúng trước"
+" khi điểm ngắt được thực hiện.  Nếu *condition* vắng mặt, mọi điều kiện hiện"
+" có sẽ bị xóa; tức là điểm dừng được thực hiện vô điều kiện."
+
+#: ../../library/pdb.rst:511
+#, fuzzy
+msgid ""
+"Specify a list of commands for breakpoint number *bpnumber*.  The commands "
+"themselves appear on the following lines.  Type a line containing just "
+"``end`` to terminate the commands. An example::"
+msgstr ""
+"Chỉ định danh sách các lệnh cho số điểm dừng *bpnumber*.  Bản thân các lệnh "
+"xuất hiện trên các dòng sau.  Nhập một dòng chỉ chứa ``end`` để kết thúc "
+"lệnh. Một ví dụ::"
+
+#: ../../library/pdb.rst:515
+#, fuzzy
+msgid ""
+"(Pdb) commands 1\n"
+"(com) p some_variable\n"
+"(com) end\n"
+"(Pdb)"
+msgstr ""
+"(Pdb) lệnh 1\n"
+"(com) p some_variable\n"
+"(com) kết thúc\n"
+"(Pdb)"
+
+#: ../../library/pdb.rst:520
+#, fuzzy
+msgid ""
+"To remove all commands from a breakpoint, type ``commands`` and follow it "
+"immediately with ``end``; that is, give no commands."
+msgstr ""
+"Để xóa tất cả các lệnh khỏi điểm dừng, hãy nhập ``commands`` và làm theo "
+"ngay lập tức bằng ``end``; nghĩa là không đưa ra mệnh lệnh nào."
+
+#: ../../library/pdb.rst:523
+#, fuzzy
+msgid ""
+"With no *bpnumber* argument, ``commands`` refers to the last breakpoint set."
+msgstr ""
+"Không có đối số *bpnumber*, ``commands`` đề cập đến tập hợp điểm dừng cuối "
+"cùng."
+
+#: ../../library/pdb.rst:525
+#, fuzzy
+msgid ""
+"You can use breakpoint commands to start your program up again.  Simply use "
+"the :pdbcmd:`continue` command, or :pdbcmd:`step`, or any other command that"
+" resumes execution."
+msgstr ""
+"Bạn có thể sử dụng lệnh điểm dừng để khởi động lại chương trình của mình.  "
+"Chỉ cần sử dụng lệnh :pdbcmd:`continue` hoặc :pdbcmd:`step` hoặc bất kỳ lệnh"
+" nào khác để tiếp tục thực thi."
+
+#: ../../library/pdb.rst:529
+#, fuzzy
+msgid ""
+"Specifying any command resuming execution (currently :pdbcmd:`continue`, "
+":pdbcmd:`step`, :pdbcmd:`next`, :pdbcmd:`return`, :pdbcmd:`until`, "
+":pdbcmd:`jump`, :pdbcmd:`quit` and their abbreviations) terminates the "
+"command list (as if that command was immediately followed by end). This is "
+"because any time you resume execution (even with a simple next or step), you"
+" may encounter another breakpoint—which could have its own command list, "
+"leading to ambiguities about which list to execute."
+msgstr ""
+"Việc chỉ định bất kỳ lệnh nào tiếp tục thực thi (hiện tại là "
+":pdbcmd:`continue`, :pdbcmd:`step`, :pdbcmd:`next`, :pdbcmd:`return`, "
+":pdbcmd:`until`, :pdbcmd:`jump`, :pdbcmd:`quit` và các chữ viết tắt của "
+"chúng) sẽ chấm dứt danh sách lệnh (như thể lệnh đó được theo sau bởi end). "
+"Điều này là do bất cứ khi nào bạn tiếp tục thực thi (ngay cả với bước tiếp "
+"theo hoặc bước đơn giản), bạn có thể gặp phải một điểm dừng khác—điểm dừng "
+"này có thể có danh sách lệnh riêng, dẫn đến sự mơ hồ về danh sách nào sẽ "
+"thực thi."
+
+#: ../../library/pdb.rst:538
+#, fuzzy
+msgid ""
+"If the list of commands contains the ``silent`` command, or a command that "
+"resumes execution, then the breakpoint message containing information about "
+"the frame is not displayed."
+msgstr ""
+"Nếu danh sách lệnh chứa lệnh ``silent`` hoặc lệnh tiếp tục thực thi thì "
+"thông báo điểm dừng chứa thông tin về khung sẽ không được hiển thị."
+
+#: ../../library/pdb.rst:542
+#, fuzzy
+msgid ""
+"Frame information will not be displayed if a command that resumes execution "
+"is present in the command list."
+msgstr ""
+"Thông tin khung sẽ không được hiển thị nếu lệnh tiếp tục thực hiện có trong "
+"danh sách lệnh."
+
+#: ../../library/pdb.rst:548
+#, fuzzy
+msgid ""
+"Execute the current line, stop at the first possible occasion (either in a "
+"function that is called or on the next line in the current function)."
+msgstr ""
+"Thực thi dòng hiện tại, dừng lại ở trường hợp đầu tiên có thể (trong hàm "
+"được gọi hoặc ở dòng tiếp theo trong hàm hiện tại)."
+
+#: ../../library/pdb.rst:553
+#, fuzzy
+msgid ""
+"Continue execution until the next line in the current function is reached or"
+" it returns.  (The difference between :pdbcmd:`next` and :pdbcmd:`step` is "
+"that :pdbcmd:`step` stops inside a called function, while :pdbcmd:`next` "
+"executes called functions at (nearly) full speed, only stopping at the next "
+"line in the current function.)"
+msgstr ""
+"Tiếp tục thực hiện cho đến khi đạt đến dòng tiếp theo trong hàm hiện tại "
+"hoặc nó trả về.  (Sự khác biệt giữa :pdbcmd:`next` và :pdbcmd:`step` là "
+":pdbcmd:`step` dừng bên trong hàm được gọi, trong khi :pdbcmd:`next` thực "
+"thi các hàm được gọi ở tốc độ (gần) tối đa, chỉ dừng ở dòng tiếp theo trong "
+"hàm hiện tại.)"
+
+#: ../../library/pdb.rst:561
+#, fuzzy
+msgid ""
+"Without argument, continue execution until the line with a number greater "
+"than the current one is reached."
+msgstr ""
+"Không có đối số, tiếp tục thực thi cho đến khi đạt đến dòng có số lớn hơn số"
+" hiện tại."
+
+#: ../../library/pdb.rst:564
+#, fuzzy
+msgid ""
+"With *lineno*, continue execution until a line with a number greater or "
+"equal to *lineno* is reached.  In both cases, also stop when the current "
+"frame returns."
+msgstr ""
+"Với *lineno*, tiếp tục thực hiện cho đến khi đạt đến dòng có số lớn hơn hoặc"
+" bằng *lineno*.  Trong cả hai trường hợp, cũng dừng khi khung hiện tại quay "
+"trở lại."
+
+#: ../../library/pdb.rst:568
+#, fuzzy
+msgid "Allow giving an explicit line number."
+msgstr "Cho phép đưa ra số dòng rõ ràng."
+
+#: ../../library/pdb.rst:573
+#, fuzzy
+msgid "Continue execution until the current function returns."
+msgstr "Tiếp tục thực hiện cho đến khi hàm hiện tại trả về."
+
+#: ../../library/pdb.rst:577
+#, fuzzy
+msgid "Continue execution, only stop when a breakpoint is encountered."
+msgstr "Tiếp tục thực hiện, chỉ dừng khi gặp điểm ngắt."
+
+#: ../../library/pdb.rst:581
+#, fuzzy
+msgid ""
+"Set the next line that will be executed.  Only available in the bottom-most "
+"frame.  This lets you jump back and execute code again, or jump forward to "
+"skip code that you don't want to run."
+msgstr ""
+"Đặt dòng tiếp theo sẽ được thực thi.  Chỉ có ở khung dưới cùng.  Điều này "
+"cho phép bạn quay lại và thực thi lại mã hoặc nhảy về phía trước để bỏ qua "
+"mã mà bạn không muốn chạy."
+
+#: ../../library/pdb.rst:585
+#, fuzzy
+msgid ""
+"It should be noted that not all jumps are allowed -- for instance it is not "
+"possible to jump into the middle of a :keyword:`for` loop or out of a "
+":keyword:`finally` clause."
+msgstr ""
+"Cần lưu ý rằng không phải tất cả các bước nhảy đều được phép -- ví dụ: không"
+" thể nhảy vào giữa vòng lặp :keyword:`for` hoặc ra khỏi mệnh đề "
+":keyword:`finally`."
+
+#: ../../library/pdb.rst:591
+#, fuzzy
+msgid ""
+"List source code for the current file.  Without arguments, list 11 lines "
+"around the current line or continue the previous listing.  With ``.`` as "
+"argument, list 11 lines around the current line.  With one argument, list 11"
+" lines around at that line.  With two arguments, list the given range; if "
+"the second argument is less than the first, it is interpreted as a count."
+msgstr ""
+"Liệt kê mã nguồn của tập tin hiện tại.  Không có đối số, hãy liệt kê 11 dòng"
+" xung quanh dòng hiện tại hoặc tiếp tục danh sách trước đó.  Với ``.`` làm "
+"đối số, liệt kê 11 dòng xung quanh dòng hiện tại.  Với một đối số, hãy liệt "
+"kê 11 dòng xung quanh dòng đó.  Với hai đối số, hãy liệt kê phạm vi đã cho; "
+"nếu đối số thứ hai nhỏ hơn đối số thứ nhất thì nó được hiểu là số đếm."
+
+#: ../../library/pdb.rst:597
+#, fuzzy
+msgid ""
+"The current line in the current frame is indicated by ``->``.  If an "
+"exception is being debugged, the line where the exception was originally "
+"raised or propagated is indicated by ``>>``, if it differs from the current "
+"line."
+msgstr ""
+"Dòng hiện tại trong khung hiện tại được biểu thị bằng ``->``.  Nếu một ngoại"
+" lệ đang được gỡ lỗi, dòng nơi ngoại lệ ban đầu được đưa ra hoặc truyền bá "
+"sẽ được biểu thị bằng ``>>``, nếu nó khác với dòng hiện tại."
+
+#: ../../library/pdb.rst:602
+#, fuzzy
+msgid "Added the ``>>`` marker."
+msgstr "Đã thêm điểm đánh dấu ``>>``."
+
+#: ../../library/pdb.rst:607
+#, fuzzy
+msgid ""
+"List all source code for the current function or frame.  Interesting lines "
+"are marked as for :pdbcmd:`list`."
+msgstr ""
+"Liệt kê tất cả mã nguồn của hàm hoặc khung hiện tại.  Các dòng thú vị được "
+"đánh dấu là dành cho :pdbcmd:`list`."
+
+#: ../../library/pdb.rst:614
+#, fuzzy
+msgid "Print the arguments of the current function and their current values."
+msgstr "In các đối số của hàm hiện tại và các giá trị hiện tại của chúng."
+
+#: ../../library/pdb.rst:618
+#, fuzzy
+msgid "Evaluate *expression* in the current context and print its value."
+msgstr "Đánh giá *expression* trong bối cảnh hiện tại và in giá trị của nó."
+
+#: ../../library/pdb.rst:622
+#, fuzzy
+msgid ""
+"``print()`` can also be used, but is not a debugger command --- this "
+"executes the Python :func:`print` function."
+msgstr ""
+"``print()`` cũng có thể được sử dụng, nhưng không phải là lệnh gỡ lỗi --- "
+"lệnh này thực thi hàm :func:`print` của Python."
+
+#: ../../library/pdb.rst:628
+#, fuzzy
+msgid ""
+"Like the :pdbcmd:`p` command, except the value of *expression* is pretty-"
+"printed using the :mod:`pprint` module."
+msgstr ""
+"Giống như lệnh :pdbcmd:`p`, ngoại trừ giá trị của *expression* được in đẹp "
+"bằng mô-đun :mod:`pprint`."
+
+#: ../../library/pdb.rst:633
+#, fuzzy
+msgid "Print the type of *expression*."
+msgstr "In kiểu *expression*."
+
+#: ../../library/pdb.rst:637
+#, fuzzy
+msgid "Try to get source code of *expression* and display it."
+msgstr "Hãy thử lấy mã nguồn của *expression* và hiển thị nó."
+
+#: ../../library/pdb.rst:643
+#, fuzzy
+msgid ""
+"Display the value of *expression* if it changed, each time execution stops "
+"in the current frame."
+msgstr ""
+"Hiển thị giá trị của *expression* nếu nó thay đổi, mỗi lần dừng thực thi ở "
+"khung hiện tại."
+
+#: ../../library/pdb.rst:646
+#, fuzzy
+msgid ""
+"Without *expression*, list all display expressions for the current frame."
+msgstr ""
+"Không có *expression*, liệt kê tất cả các biểu thức hiển thị cho khung hiện "
+"tại."
+
+#: ../../library/pdb.rst:650
+#, fuzzy
+msgid ""
+"Display evaluates *expression* and compares to the result of the previous "
+"evaluation of *expression*, so when the result is mutable, display may not "
+"be able to pick up the changes."
+msgstr ""
+"Display đánh giá *expression* và so sánh với kết quả đánh giá *expression* "
+"trước đó, vì vậy, khi kết quả có thể thay đổi, màn hình có thể không nhận "
+"được các thay đổi."
+
+#: ../../library/pdb.rst:654 ../../library/pdb.rst:819
+#, fuzzy
+msgid "Example::"
+msgstr "Ví dụ::"
+
+#: ../../library/pdb.rst:656
+#, fuzzy
+msgid ""
+"lst = []\n"
+"breakpoint()\n"
+"pass\n"
+"lst.append(1)\n"
+"print(lst)"
+msgstr ""
+"lst = []\n"
+"điểm dừng()\n"
+"vượt qua\n"
+"lst.append(1)\n"
+"in(lst)"
+
+#: ../../library/pdb.rst:662
+#, fuzzy
+msgid ""
+"Display won't realize ``lst`` has been changed because the result of "
+"evaluation is modified in place by ``lst.append(1)`` before being compared::"
+msgstr ""
+"Màn hình sẽ không nhận ra ``lst`` đã bị thay đổi do kết quả đánh giá đã được"
+" ``lst.append(1)`` sửa đổi tại chỗ trước khi được so sánh::"
+
+#: ../../library/pdb.rst:665
+#, fuzzy
+msgid ""
+"> example.py(3)<module>()\n"
+"-> pass\n"
+"(Pdb) display lst\n"
+"display lst: []\n"
+"(Pdb) n\n"
+"> example.py(4)<module>()\n"
+"-> lst.append(1)\n"
+"(Pdb) n\n"
+"> example.py(5)<module>()\n"
+"-> print(lst)\n"
+"(Pdb)"
+msgstr ""
+"> example.py(3)<module>()\n"
+"-> vượt qua\n"
+"(Pdb) hiển thị lst\n"
+"hiển thị lst: []\n"
+"(Pdb) n\n"
+"> example.py(4)<module>()\n"
+"-> lst.append(1)\n"
+"(Pdb) n\n"
+"> example.py(5)<module>()\n"
+"-> in(lst)\n"
+"(Pdb)"
+
+#: ../../library/pdb.rst:677
+#, fuzzy
+msgid "You can do some tricks with copy mechanism to make it work::"
+msgstr ""
+"Bạn có thể thực hiện một số thủ thuật với cơ chế sao chép để làm cho nó hoạt"
+" động ::"
+
+#: ../../library/pdb.rst:679
+#, fuzzy
+msgid ""
+"> example.py(3)<module>()\n"
+"-> pass\n"
+"(Pdb) display lst[:]\n"
+"display lst[:]: []\n"
+"(Pdb) n\n"
+"> example.py(4)<module>()\n"
+"-> lst.append(1)\n"
+"(Pdb) n\n"
+"> example.py(5)<module>()\n"
+"-> print(lst)\n"
+"display lst[:]: [1]  [old: []]\n"
+"(Pdb)"
+msgstr ""
+"> example.py(3)<module>()\n"
+"-> vượt qua\n"
+"(Pdb) hiển thị lst[:]\n"
+"hiển thị lst[:]: []\n"
+"(Pdb) n\n"
+"> example.py(4)<module>()\n"
+"-> lst.append(1)\n"
+"(Pdb) n\n"
+"> example.py(5)<module>()\n"
+"-> in(lst)\n"
+"hiển thị lst[:]: [1] [cũ: []]\n"
+"(Pdb)"
+
+#: ../../library/pdb.rst:696
+#, fuzzy
+msgid ""
+"Do not display *expression* anymore in the current frame.  Without "
+"*expression*, clear all display expressions for the current frame."
+msgstr ""
+"Không hiển thị *expression* nữa trong khung hiện tại.  Nếu không có "
+"*expression*, hãy xóa tất cả biểu thức hiển thị cho khung hiện tại."
+
+#: ../../library/pdb.rst:703
+#, fuzzy
+msgid ""
+"Start an interactive interpreter (using the :mod:`code` module) in a new "
+"global namespace initialised from the local and global namespaces for the "
+"current scope. Use ``exit()`` or ``quit()`` to exit the interpreter and "
+"return to the debugger."
+msgstr ""
+"Khởi động trình thông dịch tương tác (sử dụng mô-đun :mod:`code`) trong một "
+"không gian tên chung mới được khởi tạo từ các không gian tên cục bộ và chung"
+" cho phạm vi hiện tại. Sử dụng ``exit()`` hoặc ``quit()`` để thoát trình "
+"thông dịch và quay lại trình gỡ lỗi."
+
+#: ../../library/pdb.rst:710
+#, fuzzy
+msgid ""
+"As ``interact`` creates a new dedicated namespace for code execution, "
+"assignments to variables will not affect the original namespaces. However, "
+"modifications to any referenced mutable objects will be reflected in the "
+"original namespaces as usual."
+msgstr ""
+"Vì ``interact`` tạo một không gian tên chuyên dụng mới để thực thi mã nên "
+"việc gán cho các biến sẽ không ảnh hưởng đến không gian tên ban đầu. Tuy "
+"nhiên, những sửa đổi đối với bất kỳ đối tượng có thể thay đổi được tham "
+"chiếu nào sẽ được phản ánh trong không gian tên ban đầu như thường lệ."
+
+#: ../../library/pdb.rst:717
+#, fuzzy
+msgid ""
+"``exit()`` and ``quit()`` can be used to exit the :pdbcmd:`interact` "
+"command."
+msgstr ""
+"``exit()`` và ``quit()`` có thể được sử dụng để thoát lệnh "
+":pdbcmd:`interact`."
+
+#: ../../library/pdb.rst:721
+#, fuzzy
+msgid ""
+":pdbcmd:`interact` directs its output to the debugger's output channel "
+"rather than :data:`sys.stderr`."
+msgstr ""
+":pdbcmd:`interact` hướng đầu ra của nó tới kênh đầu ra của trình gỡ lỗi thay"
+" vì :data:`sys.stderr`."
+
+#: ../../library/pdb.rst:729
+#, fuzzy
+msgid ""
+"Create an alias called *name* that executes *command*.  The *command* must "
+"*not* be enclosed in quotes.  Replaceable parameters can be indicated by "
+"``%1``, ``%2``, ... and ``%9``, while ``%*`` is replaced by all the "
+"parameters. If *command* is omitted, the current alias for *name* is shown. "
+"If no arguments are given, all aliases are listed."
+msgstr ""
+"Tạo bí danh có tên *name* để thực thi *command*.  *command* phải được đặt "
+"trong dấu ngoặc kép *not*.  Các tham số có thể thay thế có thể được biểu thị"
+" bằng ``%1``, ``%2``, ... và ``%9``, trong khi ``%*`` được thay thế bằng tất"
+" cả các tham số. Nếu *command* bị bỏ qua, bí danh hiện tại của *name* sẽ "
+"được hiển thị. Nếu không có đối số nào được đưa ra thì tất cả các bí danh sẽ"
+" được liệt kê."
+
+#: ../../library/pdb.rst:735
+#, fuzzy
+msgid ""
+"Aliases may be nested and can contain anything that can be legally typed at "
+"the pdb prompt.  Note that internal pdb commands *can* be overridden by "
+"aliases.  Such a command is then hidden until the alias is removed.  "
+"Aliasing is recursively applied to the first word of the command line; all "
+"other words in the line are left alone."
+msgstr ""
+"Các bí danh có thể được lồng vào nhau và có thể chứa bất kỳ thứ gì có thể "
+"được nhập hợp pháp tại dấu nhắc pdb.  Lưu ý rằng các lệnh pdb nội bộ *can* "
+"sẽ bị ghi đè bằng bí danh.  Lệnh như vậy sau đó sẽ bị ẩn cho đến khi bí danh"
+" bị xóa.  Bí danh được áp dụng đệ quy cho từ đầu tiên của dòng lệnh; tất cả "
+"các từ khác trong dòng được để yên."
+
+#: ../../library/pdb.rst:741
+#, fuzzy
+msgid ""
+"As an example, here are two useful aliases (especially when placed in the "
+":file:`.pdbrc` file)::"
+msgstr ""
+"Ví dụ: đây là hai bí danh hữu ích (đặc biệt khi được đặt trong tệp "
+":file:`.pdbrc`)::"
+
+#: ../../library/pdb.rst:744
+#, python-brace-format, fuzzy
+msgid ""
+"# Print instance variables (usage \"pi classInst\")\n"
+"alias pi for k in %1.__dict__.keys(): print(f\"%1.{k} = {%1.__dict__[k]}\")\n"
+"# Print instance variables in self\n"
+"alias ps pi self"
+msgstr ""
+"Các biến thể hiện của # Print (cách sử dụng \"pi classInst\")\n"
+"bí danh pi cho k trong %1.__dict__.keys(): print(f\"%1.{k} = {%1.__dict__[k]}\")\n"
+"Các biến thể hiện # Print trong bản thân\n"
+"bí danh ps pi tự"
+
+#: ../../library/pdb.rst:751
+#, fuzzy
+msgid "Delete the specified alias *name*."
+msgstr "Xóa bí danh được chỉ định *name*."
+
+#: ../../library/pdb.rst:755
+#, fuzzy
+msgid ""
+"Execute the (one-line) *statement* in the context of the current stack "
+"frame. The exclamation point can be omitted unless the first word of the "
+"statement resembles a debugger command, e.g.:"
+msgstr ""
+"Thực thi *statement* (một dòng) trong ngữ cảnh của khung ngăn xếp hiện tại. "
+"Dấu chấm than có thể được bỏ qua trừ khi từ đầu tiên của câu lệnh giống với "
+"lệnh gỡ lỗi, ví dụ:"
+
+#: ../../library/pdb.rst:759
+#, fuzzy
+msgid ""
+"(Pdb) ! n=42\n"
+"(Pdb)"
+msgstr ""
+"(Pdb) ! n=42\n"
+"(Pdb)"
+
+#: ../../library/pdb.rst:764
+#, fuzzy
+msgid ""
+"To set a global variable, you can prefix the assignment command with a "
+":keyword:`global` statement on the same line, e.g.:"
+msgstr ""
+"Để đặt biến toàn cục, bạn có thể đặt trước lệnh gán một câu lệnh "
+":keyword:`global` trên cùng một dòng, ví dụ:"
+
+#: ../../library/pdb.rst:767
+#, fuzzy
+msgid ""
+"(Pdb) global list_options; list_options = ['-l']\n"
+"(Pdb)"
+msgstr ""
+"(Pdb) danh sách toàn cầu_options; list_options = ['-l']\n"
+"(Pdb)"
+
+#: ../../library/pdb.rst:775
+#, fuzzy
+msgid ""
+"Restart the debugged Python program.  If *args* is supplied, it is split "
+"with :mod:`shlex` and the result is used as the new :data:`sys.argv`. "
+"History, breakpoints, actions and debugger options are preserved. "
+":pdbcmd:`restart` is an alias for :pdbcmd:`run`."
+msgstr ""
+"Khởi động lại chương trình Python đã được gỡ lỗi.  Nếu *args* được cung cấp,"
+" nó sẽ được chia thành :mod:`shlex` và kết quả được sử dụng làm "
+":data:`sys.argv` mới. Lịch sử, điểm dừng, hành động và tùy chọn trình gỡ lỗi"
+" được giữ nguyên. :pdbcmd:`restart` là bí danh của :pdbcmd:`run`."
+
+#: ../../library/pdb.rst:780
+#, fuzzy
+msgid ""
+":pdbcmd:`run` and :pdbcmd:`restart` commands are disabled when the debugger "
+"is invoked in ``'inline'`` mode."
+msgstr ""
+"Các lệnh :pdbcmd:`run` và :pdbcmd:`restart` bị tắt khi trình gỡ lỗi được gọi"
+" ở chế độ ``'inline'``."
+
+#: ../../library/pdb.rst:786
+#, fuzzy
+msgid ""
+"Quit from the debugger.  The program being executed is aborted. An end-of-"
+"file input is equivalent to :pdbcmd:`quit`."
+msgstr ""
+"Thoát khỏi trình gỡ lỗi.  Chương trình đang thực hiện bị hủy bỏ. Đầu vào ở "
+"cuối tệp tương đương với :pdbcmd:`quit`."
+
+#: ../../library/pdb.rst:789
+#, fuzzy
+msgid ""
+"A confirmation prompt will be shown if the debugger is invoked in "
+"``'inline'`` mode. Either ``y``, ``Y``, ``<Enter>`` or ``EOF`` will confirm "
+"the quit."
+msgstr ""
+"Lời nhắc xác nhận sẽ được hiển thị nếu trình gỡ lỗi được gọi ở chế độ "
+"``'inline'``. ``y``, ``Y``, ``<Enter>`` hoặc ``EOF`` sẽ xác nhận việc thoát."
+
+#: ../../library/pdb.rst:793
+#, fuzzy
+msgid ""
+"A confirmation prompt will be shown if the debugger is invoked in "
+"``'inline'`` mode. After the confirmation, the debugger will call "
+":func:`sys.exit` immediately, instead of raising :exc:`bdb.BdbQuit` in the "
+"next trace event."
+msgstr ""
+"Lời nhắc xác nhận sẽ được hiển thị nếu trình gỡ lỗi được gọi ở chế độ "
+"``'inline'``. Sau khi xác nhận, trình gỡ lỗi sẽ gọi :func:`sys.exit` ngay "
+"lập tức, thay vì tăng :exc:`bdb.BdbQuit` trong sự kiện theo dõi tiếp theo."
+
+#: ../../library/pdb.rst:801
+#, fuzzy
+msgid ""
+"Enter a recursive debugger that steps through *code* (which is an arbitrary "
+"expression or statement to be executed in the current environment)."
+msgstr ""
+"Nhập trình gỡ lỗi đệ quy đi qua *code* (là một biểu thức hoặc câu lệnh tùy ý"
+" sẽ được thực thi trong môi trường hiện tại)."
+
+#: ../../library/pdb.rst:807
+#, fuzzy
+msgid "Print the return value for the last return of the current function."
+msgstr "In giá trị trả về cho lần trả về cuối cùng của hàm hiện tại."
+
+#: ../../library/pdb.rst:811
+#, fuzzy
+msgid "List or jump between chained exceptions."
+msgstr "Liệt kê hoặc nhảy giữa các ngoại lệ theo chuỗi."
+
+#: ../../library/pdb.rst:813
+#, fuzzy
+msgid ""
+"When using ``pdb.pm()``  or ``Pdb.post_mortem(...)`` with a chained "
+"exception instead of a traceback, it allows the user to move between the "
+"chained exceptions using ``exceptions`` command to list exceptions, and "
+"``exceptions <number>`` to switch to that exception."
+msgstr ""
+"Khi sử dụng ``pdb.pm()`` hoặc ``Pdb.post_mortem(...)`` với ngoại lệ được xâu"
+" chuỗi thay vì truy nguyên, nó cho phép người dùng di chuyển giữa các ngoại "
+"lệ được xâu chuỗi bằng cách sử dụng lệnh ``exceptions`` để liệt kê các ngoại"
+" lệ và ``exceptions <number>`` để chuyển sang ngoại lệ đó."
+
+#: ../../library/pdb.rst:821
+#, fuzzy
+msgid ""
+"def out():\n"
+"    try:\n"
+"        middle()\n"
+"    except Exception as e:\n"
+"        raise ValueError(\"reraise middle() error\") from e\n"
+"\n"
+"def middle():\n"
+"    try:\n"
+"        return inner(0)\n"
+"    except Exception as e:\n"
+"        raise ValueError(\"Middle fail\")\n"
+"\n"
+"def inner(x):\n"
+"    1 / x\n"
+"\n"
+" out()"
+msgstr ""
+"chắc chắn ra():\n"
+"    thử:\n"
+"        giữa()\n"
+"    ngoại trừ Ngoại lệ là e:\n"
+"        raise ValueError(\"reraise middle() error\") từ e\n"
+"\n"
+"def giữa():\n"
+"    thử:\n"
+"        trở về bên trong(0)\n"
+"    ngoại trừ Ngoại lệ là e:\n"
+"        tăng ValueError(\"Thất bại ở giữa\")\n"
+"\n"
+"def bên trong (x):\n"
+"    1 / x\n"
+"\n"
+" ra()"
+
+#: ../../library/pdb.rst:838
+#, fuzzy
+msgid "calling ``pdb.pm()`` will allow to move between exceptions::"
+msgstr "gọi ``pdb.pm()`` sẽ cho phép di chuyển giữa các ngoại lệ ::"
+
+#: ../../library/pdb.rst:840
+#, fuzzy
+msgid ""
+"> example.py(5)out()\n"
+"-> raise ValueError(\"reraise middle() error\") from e\n"
+"\n"
+"(Pdb) exceptions\n"
+"  0 ZeroDivisionError('division by zero')\n"
+"  1 ValueError('Middle fail')\n"
+"> 2 ValueError('reraise middle() error')\n"
+"\n"
+"(Pdb) exceptions 0\n"
+"> example.py(16)inner()\n"
+"-> 1 / x\n"
+"\n"
+"(Pdb) up\n"
+"> example.py(10)middle()\n"
+"-> return inner(0)"
+msgstr ""
+"> example.py(5)out()\n"
+"-> tăng ValueError(\"reraise middle() error\") từ e\n"
+"\n"
+"(Pdb) ngoại lệ\n"
+"  0 ZeroDivisionError('chia cho số 0')\n"
+"  1 ValueError('Thất bại ở giữa')\n"
+"> 2 ValueError('reraise middle() error')\n"
+"\n"
+"(Pdb) ngoại lệ 0\n"
+"> example.py(16)inner()\n"
+"-> 1/x\n"
+"\n"
+"(Pdb) lên\n"
+"> example.py(10)middle()\n"
+"-> trả về bên trong (0)"
+
+#: ../../library/pdb.rst:859
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/pdb.rst:860
+#, fuzzy
+msgid ""
+"Whether a frame is considered to originate in a certain module is determined"
+" by the ``__name__`` in the frame globals."
+msgstr ""
+"Liệu một khung có được coi là có nguồn gốc từ một mô-đun nhất định hay không"
+" được xác định bởi ``__name__`` trong toàn cục khung."
+
+#: ../../library/pdb.rst:11
+#, fuzzy
+msgid "debugging"
+msgstr "gỡ lỗi"
+
+#: ../../library/pdb.rst:21
+#, fuzzy
+msgid "Pdb (class in pdb)"
+msgstr "Pdb (lớp trong pdb)"
+
+#: ../../library/pdb.rst:21
+#, fuzzy
+msgid "module"
+msgstr "mô-đun"
+
+#: ../../library/pdb.rst:21
+#, fuzzy
+msgid "bdb"
+msgstr "bdb"
+
+#: ../../library/pdb.rst:21
+#, fuzzy
+msgid "cmd"
+msgstr "cmd"
+
+#: ../../library/pdb.rst:400
+#, fuzzy
+msgid ".pdbrc"
+msgstr ".pdbrc"
+
+#: ../../library/pdb.rst:400
+#, fuzzy
+msgid "file"
+msgstr "tập tin"
+
+#: ../../library/pdb.rst:400
+#, fuzzy
+msgid "debugger"
+msgstr "trình gỡ lỗi"
+
+#: ../../library/pdb.rst:400
+#, fuzzy
+msgid "configuration"
+msgstr "cấu hình"

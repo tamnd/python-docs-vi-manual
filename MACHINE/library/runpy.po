@@ -1,0 +1,424 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/runpy.rst:2
+#, fuzzy
+msgid ":mod:`!runpy` --- Locating and executing Python modules"
+msgstr ":mod:`!runpy` --- Định vị và thực thi các mô-đun Python"
+
+#: ../../library/runpy.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/runpy.py`"
+msgstr "**Source code:** :source:`Lib/runpy.py`"
+
+#: ../../library/runpy.rst:13
+#, fuzzy
+msgid ""
+"The :mod:`!runpy` module is used to locate and run Python modules without "
+"importing them first. Its main use is to implement the :option:`-m` command "
+"line switch that allows scripts to be located using the Python module "
+"namespace rather than the filesystem."
+msgstr ""
+"Mô-đun :mod:`!runpy` được sử dụng để định vị và chạy các mô-đun Python mà "
+"không cần nhập chúng trước. Công dụng chính của nó là triển khai chuyển đổi "
+"dòng lệnh :option:`-m` cho phép định vị các tập lệnh bằng cách sử dụng không"
+" gian tên mô-đun Python thay vì hệ thống tệp."
+
+#: ../../library/runpy.rst:18
+#, fuzzy
+msgid ""
+"Note that this is *not* a sandbox module - all code is executed in the "
+"current process, and any side effects (such as cached imports of other "
+"modules) will remain in place after the functions have returned."
+msgstr ""
+"Lưu ý rằng đây là *not* một mô-đun hộp cát - tất cả mã được thực thi trong "
+"quy trình hiện tại và mọi tác dụng phụ (chẳng hạn như nhập các mô-đun khác "
+"vào bộ nhớ đệm) sẽ vẫn giữ nguyên sau khi các chức năng quay trở lại."
+
+#: ../../library/runpy.rst:22
+#, fuzzy
+msgid ""
+"Furthermore, any functions and classes defined by the executed code are not "
+"guaranteed to work correctly after a :mod:`!runpy` function has returned. If"
+" that limitation is not acceptable for a given use case, :mod:`importlib` is"
+" likely to be a more suitable choice than this module."
+msgstr ""
+"Hơn nữa, mọi hàm và lớp được xác định bởi mã thực thi đều không được đảm bảo"
+" hoạt động chính xác sau khi hàm :mod:`!runpy` trả về. Nếu giới hạn đó không"
+" được chấp nhận đối với một trường hợp sử dụng nhất định, :mod:`importlib` "
+"có thể là lựa chọn phù hợp hơn mô-đun này."
+
+#: ../../library/runpy.rst:27
+#, fuzzy
+msgid "The :mod:`!runpy` module provides two functions:"
+msgstr "Mô-đun :mod:`!runpy` cung cấp hai chức năng:"
+
+#: ../../library/runpy.rst:35
+#, fuzzy
+msgid ""
+"Execute the code of the specified module and return the resulting module's "
+"globals dictionary. The module's code is first located using the standard "
+"import mechanism (refer to :pep:`302` for details) and then executed in a "
+"fresh module namespace."
+msgstr ""
+"Thực thi mã của mô-đun đã chỉ định và trả về từ điển toàn cầu của mô-đun kết"
+" quả. Mã của mô-đun trước tiên được định vị bằng cơ chế nhập tiêu chuẩn "
+"(tham khảo :pep:`302` để biết chi tiết) và sau đó được thực thi trong không "
+"gian tên mô-đun mới."
+
+#: ../../library/runpy.rst:40
+#, fuzzy
+msgid ""
+"The *mod_name* argument should be an absolute module name. If the module "
+"name refers to a package rather than a normal module, then that package is "
+"imported and the :mod:`__main__` submodule within that package is then "
+"executed and the resulting module globals dictionary returned."
+msgstr ""
+"Đối số *mod_name* phải là tên mô-đun tuyệt đối. Nếu tên mô-đun đề cập đến "
+"một gói chứ không phải một mô-đun thông thường thì gói đó sẽ được nhập và "
+"mô-đun con :mod:`__main__` trong gói đó sẽ được thực thi và từ điển toàn cầu"
+" của mô-đun kết quả được trả về."
+
+#: ../../library/runpy.rst:46
+#, fuzzy
+msgid ""
+"The optional dictionary argument *init_globals* may be used to pre-populate "
+"the module's globals dictionary before the code is executed. *init_globals* "
+"will not be modified. If any of the special global variables below are "
+"defined in *init_globals*, those definitions are overridden by "
+":func:`run_module`."
+msgstr ""
+"Đối số từ điển tùy chọn *init_globals* có thể được sử dụng để điền trước từ "
+"điển toàn cục của mô-đun trước khi mã được thực thi. *init_globals* sẽ không"
+" được sửa đổi. Nếu bất kỳ biến toàn cục đặc biệt nào dưới đây được xác định "
+"trong *init_globals*, thì các định nghĩa đó sẽ bị :func:`run_module` ghi đè."
+
+#: ../../library/runpy.rst:52 ../../library/runpy.rst:127
+#, fuzzy
+msgid ""
+"The special global variables ``__name__``, ``__spec__``, ``__file__``, "
+"``__cached__``, ``__loader__`` and ``__package__`` are set in the globals "
+"dictionary before the module code is executed. (Note that this is a minimal "
+"set of variables - other variables may be set implicitly as an interpreter "
+"implementation detail.)"
+msgstr ""
+"Các biến toàn cục đặc biệt ``__name__``, ``__spec__``, ``__file__``, "
+"``__cached__``, ``__loader__`` và ``__package__`` được đặt trong từ điển "
+"toàn cầu trước khi mã mô-đun được thực thi. (Lưu ý rằng đây là tập hợp biến "
+"tối thiểu - các biến khác có thể được đặt ngầm dưới dạng chi tiết triển khai"
+" trình thông dịch.)"
+
+#: ../../library/runpy.rst:58
+#, fuzzy
+msgid ""
+"``__name__`` is set to *run_name* if this optional argument is not "
+":const:`None`, to ``mod_name + '.__main__'`` if the named module is a "
+"package and to the *mod_name* argument otherwise."
+msgstr ""
+"``__name__`` được đặt thành *run_name* nếu đối số tùy chọn này không phải là"
+" :const:`None`, thành ``mod_name + '.__main__'`` nếu mô-đun được đặt tên là "
+"một gói và đối số *mod_name* nếu ngược lại."
+
+#: ../../library/runpy.rst:62
+#, fuzzy
+msgid ""
+"``__spec__`` will be set appropriately for the *actually* imported module "
+"(that is, ``__spec__.name`` will always be *mod_name* or ``mod_name + "
+"'.__main__'``, never *run_name*)."
+msgstr ""
+"``__spec__`` sẽ được đặt phù hợp cho mô-đun nhập *actually* (nghĩa là "
+"``__spec__.name`` sẽ luôn là *mod_name* hoặc ``mod_name + '.__main__'``, "
+"không bao giờ là *run_name*)."
+
+#: ../../library/runpy.rst:66
+#, fuzzy
+msgid ""
+"``__file__``, ``__cached__``, ``__loader__`` and ``__package__`` are "
+":ref:`set as normal <import-mod-attrs>` based on the module spec."
+msgstr ""
+"``__file__``, ``__cached__``, ``__loader__`` và ``__package__`` là :ref:`set"
+" as normal <import-mod-attrs>` dựa trên thông số kỹ thuật của mô-đun."
+
+#: ../../library/runpy.rst:69
+#, fuzzy
+msgid ""
+"If the argument *alter_sys* is supplied and evaluates to :const:`True`, then"
+" ``sys.argv[0]`` is updated with the value of ``__file__`` and "
+"``sys.modules[__name__]`` is updated with a temporary module object for the "
+"module being executed. Both ``sys.argv[0]`` and ``sys.modules[__name__]`` "
+"are restored to their original values before the function returns."
+msgstr ""
+"Nếu đối số *alter_sys* được cung cấp và đánh giá thành :const:`True` thì "
+"``sys.argv[0]`` được cập nhật với giá trị ``__file__`` và "
+"``sys.modules[__name__]`` được cập nhật với một đối tượng mô-đun tạm thời "
+"cho mô-đun đang được thực thi. Cả ``sys.argv[0]`` và "
+"``sys.modules[__name__]`` đều được khôi phục về giá trị ban đầu trước khi "
+"hàm trả về."
+
+#: ../../library/runpy.rst:75
+#, fuzzy
+msgid ""
+"Note that this manipulation of :mod:`sys` is not thread-safe. Other threads "
+"may see the partially initialised module, as well as the altered list of "
+"arguments. It is recommended that the ``sys`` module be left alone when "
+"invoking this function from threaded code."
+msgstr ""
+"Lưu ý rằng thao tác :mod:`sys` này không an toàn cho luồng. Các luồng khác "
+"có thể thấy mô-đun được khởi tạo một phần cũng như danh sách các đối số đã "
+"thay đổi. Bạn nên để mô-đun ``sys`` một mình khi gọi hàm này từ mã luồng."
+
+#: ../../library/runpy.rst:81
+#, fuzzy
+msgid ""
+"The :option:`-m` option offering equivalent functionality from the command "
+"line."
+msgstr "Tùy chọn :option:`-m` cung cấp chức năng tương đương từ dòng lệnh."
+
+#: ../../library/runpy.rst:84
+#, fuzzy
+msgid ""
+"Added ability to execute packages by looking for a :mod:`__main__` "
+"submodule."
+msgstr ""
+"Đã thêm khả năng thực thi các gói bằng cách tìm kiếm mô-đun con "
+":mod:`__main__`."
+
+#: ../../library/runpy.rst:87
+#, fuzzy
+msgid "Added ``__cached__`` global variable (see :pep:`3147`)."
+msgstr "Đã thêm biến toàn cục ``__cached__`` (xem :pep:`3147`)."
+
+#: ../../library/runpy.rst:90
+#, fuzzy
+msgid ""
+"Updated to take advantage of the module spec feature added by :pep:`451`. "
+"This allows ``__cached__`` to be set correctly for modules run this way, as "
+"well as ensuring the real module name is always accessible as "
+"``__spec__.name``."
+msgstr ""
+"Đã cập nhật để tận dụng tính năng thông số mô-đun được thêm bởi :pep:`451`. "
+"Điều này cho phép ``__cached__`` được đặt chính xác cho các mô-đun chạy theo"
+" cách này, cũng như đảm bảo tên mô-đun thực luôn có thể truy cập được là "
+"``__spec__.name``."
+
+#: ../../library/runpy.rst:96
+#, fuzzy
+msgid ""
+"The setting of ``__cached__``, ``__loader__``, and ``__package__`` are "
+"deprecated. See :class:`~importlib.machinery.ModuleSpec` for alternatives."
+msgstr ""
+"Cài đặt ``__cached__``, ``__loader__`` và ``__package__`` không được dùng "
+"nữa. Xem :class:`~importlib.machinery.ModuleSpec` để biết các lựa chọn thay "
+"thế."
+
+#: ../../library/runpy.rst:106
+#, fuzzy
+msgid ""
+"Execute the code at the named filesystem location and return the resulting "
+"module's globals dictionary. As with a script name supplied to the CPython "
+"command line, *file_path* may refer to a Python source file, a compiled "
+"bytecode file or a valid :data:`sys.path` entry containing a :mod:`__main__`"
+" module (e.g. a zipfile containing a top-level :file:`__main__.py` file)."
+msgstr ""
+"Thực thi mã tại vị trí hệ thống tệp được đặt tên và trả về từ điển toàn cầu "
+"của mô-đun kết quả. Giống như tên tập lệnh được cung cấp cho dòng lệnh "
+"CPython, *file_path* có thể đề cập đến tệp nguồn Python, tệp mã byte được "
+"biên dịch hoặc mục nhập :data:`sys.path` hợp lệ chứa mô-đun :mod:`__main__` "
+"(ví dụ: tệp zip chứa tệp :file:`__main__.py` cấp cao nhất)."
+
+#: ../../library/runpy.rst:113
+#, fuzzy
+msgid ""
+"For a simple script, the specified code is simply executed in a fresh module"
+" namespace. For a valid :data:`sys.path` entry (typically a zipfile or "
+"directory), the entry is first added to the beginning of ``sys.path``. The "
+"function then looks for and executes a :mod:`__main__` module using the "
+"updated path. Note that there is no special protection against invoking an "
+"existing ``__main__`` entry located elsewhere on ``sys.path`` if there is no"
+" such module at the specified location."
+msgstr ""
+"Đối với một tập lệnh đơn giản, mã được chỉ định sẽ được thực thi đơn giản "
+"trong không gian tên mô-đun mới. Đối với mục nhập :data:`sys.path` hợp lệ "
+"(thường là tệp zip hoặc thư mục), mục nhập này trước tiên sẽ được thêm vào "
+"đầu ``sys.path``. Sau đó, hàm này sẽ tìm và thực thi mô-đun :mod:`__main__` "
+"bằng đường dẫn đã cập nhật. Lưu ý rằng không có biện pháp bảo vệ đặc biệt "
+"nào chống lại việc gọi mục nhập ``__main__`` hiện có nằm ở nơi khác trên "
+"``sys.path`` nếu không có mô-đun như vậy tại vị trí được chỉ định."
+
+#: ../../library/runpy.rst:121
+#, fuzzy
+msgid ""
+"The optional dictionary argument *init_globals* may be used to pre-populate "
+"the module's globals dictionary before the code is executed. *init_globals* "
+"will not be modified. If any of the special global variables below are "
+"defined in *init_globals*, those definitions are overridden by "
+":func:`run_path`."
+msgstr ""
+"Đối số từ điển tùy chọn *init_globals* có thể được sử dụng để điền trước từ "
+"điển toàn cục của mô-đun trước khi mã được thực thi. *init_globals* sẽ không"
+" được sửa đổi. Nếu bất kỳ biến toàn cục đặc biệt nào dưới đây được xác định "
+"trong *init_globals*, thì các định nghĩa đó sẽ bị :func:`run_path` ghi đè."
+
+#: ../../library/runpy.rst:133
+#, fuzzy
+msgid ""
+"``__name__`` is set to *run_name* if this optional argument is not "
+":const:`None` and to ``'<run_path>'`` otherwise."
+msgstr ""
+"``__name__`` được đặt thành *run_name* nếu đối số tùy chọn này không phải là"
+" :const:`None` và nếu không thì là ``'<run_path>'``."
+
+#: ../../library/runpy.rst:136
+#, fuzzy
+msgid ""
+"If *file_path* directly references a script file (whether as source or as "
+"precompiled byte code), then ``__file__`` will be set to *file_path*, and "
+"``__spec__``, ``__cached__``, ``__loader__`` and ``__package__`` will all be"
+" set to :const:`None`."
+msgstr ""
+"Nếu *file_path* tham chiếu trực tiếp đến tệp tập lệnh (dù là nguồn hay mã "
+"byte được biên dịch trước), thì ``__file__`` sẽ được đặt thành *file_path* "
+"và ``__spec__``, ``__cached__``, ``__loader__`` và ``__package__`` đều sẽ "
+"được đặt thành :const:`None`."
+
+#: ../../library/runpy.rst:141
+#, fuzzy
+msgid ""
+"If *file_path* is a reference to a valid :data:`sys.path` entry, then "
+"``__spec__`` will be set appropriately for the imported :mod:`__main__` "
+"module (that is, ``__spec__.name`` will always be ``__main__``). "
+"``__file__``, ``__cached__``, ``__loader__`` and ``__package__`` will be "
+":ref:`set as normal <import-mod-attrs>` based on the module spec."
+msgstr ""
+"Nếu *file_path* là tham chiếu đến mục nhập :data:`sys.path` hợp lệ thì "
+"``__spec__`` sẽ được đặt phù hợp cho mô-đun :mod:`__main__` đã nhập (nghĩa "
+"là ``__spec__.name`` sẽ luôn là ``__main__``). ``__file__``, ``__cached__``,"
+" ``__loader__`` và ``__package__`` sẽ là :ref:`set as normal <import-mod-"
+"attrs>` dựa trên thông số kỹ thuật của mô-đun."
+
+#: ../../library/runpy.rst:147
+#, fuzzy
+msgid ""
+"A number of alterations are also made to the :mod:`sys` module. Firstly, "
+":data:`sys.path` may be altered as described above. ``sys.argv[0]`` is "
+"updated with the value of *file_path* and ``sys.modules[__name__]`` is "
+"updated with a temporary module object for the module being executed. All "
+"modifications to items in :mod:`sys` are reverted before the function "
+"returns."
+msgstr ""
+"Một số thay đổi cũng được thực hiện đối với mô-đun :mod:`sys`. Thứ nhất, "
+":data:`sys.path` có thể được thay đổi như mô tả ở trên. ``sys.argv[0]`` được"
+" cập nhật với giá trị của *file_path* và ``sys.modules[__name__]`` được cập "
+"nhật với một đối tượng mô-đun tạm thời cho mô-đun đang được thực thi. Tất cả"
+" các sửa đổi đối với các mục trong :mod:`sys` đều được hoàn nguyên trước khi"
+" hàm trả về."
+
+#: ../../library/runpy.rst:154
+#, fuzzy
+msgid ""
+"Note that, unlike :func:`run_module`, the alterations made to :mod:`sys` are"
+" not optional in this function as these adjustments are essential to "
+"allowing the execution of :data:`sys.path` entries. As the thread-safety "
+"limitations still apply, use of this function in threaded code should be "
+"either serialised with the import lock or delegated to a separate process."
+msgstr ""
+"Lưu ý rằng, không giống như :func:`run_module`, những thay đổi được thực "
+"hiện đối với :mod:`sys` không phải là tùy chọn trong chức năng này vì những "
+"điều chỉnh này là cần thiết để cho phép thực thi các mục :data:`sys.path`. "
+"Vì các giới hạn về an toàn luồng vẫn được áp dụng nên việc sử dụng chức năng"
+" này trong mã luồng phải được tuần tự hóa bằng khóa nhập hoặc được ủy quyền "
+"cho một quy trình riêng biệt."
+
+#: ../../library/runpy.rst:161
+#, fuzzy
+msgid ""
+":ref:`using-on-interface-options` for equivalent functionality on the "
+"command line (``python path/to/script``)."
+msgstr ""
+":ref:`using-on-interface-options` để có chức năng tương đương trên dòng lệnh"
+" (``python path/to/script``)."
+
+#: ../../library/runpy.rst:166
+#, fuzzy
+msgid ""
+"Updated to take advantage of the module spec feature added by :pep:`451`. "
+"This allows ``__cached__`` to be set correctly in the case where "
+"``__main__`` is imported from a valid :data:`sys.path` entry rather than "
+"being executed directly."
+msgstr ""
+"Đã cập nhật để tận dụng tính năng thông số mô-đun được thêm bởi :pep:`451`. "
+"Điều này cho phép ``__cached__`` được đặt chính xác trong trường hợp "
+"``__main__`` được nhập từ mục nhập :data:`sys.path` hợp lệ thay vì được thực"
+" thi trực tiếp."
+
+#: ../../library/runpy.rst:172
+#, fuzzy
+msgid ""
+"The setting of ``__cached__``, ``__loader__``, and ``__package__`` are "
+"deprecated."
+msgstr ""
+"Cài đặt ``__cached__``, ``__loader__`` và ``__package__`` không được dùng "
+"nữa."
+
+#: ../../library/runpy.rst:178
+#, fuzzy
+msgid ":pep:`338` -- Executing modules as scripts"
+msgstr ":pep:`338` -- Thực thi các mô-đun dưới dạng tập lệnh"
+
+#: ../../library/runpy.rst:179 ../../library/runpy.rst:182
+#, fuzzy
+msgid "PEP written and implemented by Nick Coghlan."
+msgstr "PEP được viết và triển khai bởi Nick Coghlan."
+
+#: ../../library/runpy.rst:181
+#, fuzzy
+msgid ":pep:`366` -- Main module explicit relative imports"
+msgstr ":pep:`366` -- Nhập khẩu tương đối rõ ràng của mô-đun chính"
+
+#: ../../library/runpy.rst:184
+#, fuzzy
+msgid ":pep:`451` -- A ModuleSpec Type for the Import System"
+msgstr ":pep:`451` -- Loại ModuleSpec cho hệ thống nhập"
+
+#: ../../library/runpy.rst:185
+#, fuzzy
+msgid "PEP written and implemented by Eric Snow"
+msgstr "PEP được viết và triển khai bởi Eric Snow"
+
+#: ../../library/runpy.rst:187
+#, fuzzy
+msgid ":ref:`using-on-general` - CPython command line details"
+msgstr ":ref:`using-on-general` - Chi tiết dòng lệnh CPython"
+
+#: ../../library/runpy.rst:189
+#, fuzzy
+msgid "The :func:`importlib.import_module` function"
+msgstr "Chức năng :func:`importlib.import_module`"
+
+#: ../../library/runpy.rst:32 ../../library/runpy.rst:103
+#, fuzzy
+msgid "module"
+msgstr "mô-đun"
+
+#: ../../library/runpy.rst:32 ../../library/runpy.rst:103
+#, fuzzy
+msgid "__main__"
+msgstr "__chính__"

@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/perfmaps.rst:6
+#, fuzzy
+msgid "Support for Perf Maps"
+msgstr "Hỗ trợ cho Bản đồ hoàn hảo"
+
+#: ../../c-api/perfmaps.rst:8
+#, fuzzy
+msgid ""
+"On supported platforms (as of this writing, only Linux), the runtime can "
+"take advantage of *perf map files* to make Python functions visible to an "
+"external profiling tool (such as `perf "
+"<https://perf.wiki.kernel.org/index.php/Main_Page>`_). A running process may"
+" create a file in the ``/tmp`` directory, which contains entries that can "
+"map a section of executable code to a name. This interface is described in "
+"the `documentation of the Linux Perf tool "
+"<https://git.kernel.org/pub/scm/linux/ "
+"kernel/git/torvalds/linux.git/tree/tools/perf/Documentation/jit-"
+"interface.txt>`_."
+msgstr ""
+"Trên các nền tảng được hỗ trợ (tính đến thời điểm viết bài này, chỉ có "
+"Linux), thời gian chạy có thể tận dụng *perf map files* để hiển thị các hàm "
+"Python cho một công cụ định hình bên ngoài (chẳng hạn như `perf "
+"<https://perf.wiki.kernel.org/index.php/Main_Page>`_). Một quy trình đang "
+"chạy có thể tạo một tệp trong thư mục ``/tmp``, chứa các mục có thể ánh xạ "
+"một phần mã thực thi thành tên. Giao diện này được mô tả trong "
+"`documentation of the Linux Perf tool <https://git.kernel.org/pub/scm/linux/"
+" kernel/git/torvalds/linux.git/tree/tools/perf/Documentation/jit-"
+"interface.txt>`_."
+
+#: ../../c-api/perfmaps.rst:16
+#, fuzzy
+msgid ""
+"In Python, these helper APIs can be used by libraries and features that rely"
+" on generating machine code on the fly."
+msgstr ""
+"Trong Python, các API trợ giúp này có thể được sử dụng bởi các thư viện và "
+"tính năng dựa vào việc tạo mã máy một cách nhanh chóng."
+
+#: ../../c-api/perfmaps.rst:19
+#, fuzzy
+msgid ""
+"Note that holding an :term:`attached thread state` is not required for these"
+" APIs."
+msgstr ""
+"Lưu ý rằng việc giữ :term:`attached thread state` là không bắt buộc đối với "
+"các API này."
+
+#: ../../c-api/perfmaps.rst:23
+#, fuzzy
+msgid ""
+"Open the ``/tmp/perf-$pid.map`` file, unless it's already opened, and create"
+" a lock to ensure thread-safe writes to the file (provided the writes are "
+"done through :c:func:`PyUnstable_WritePerfMapEntry`). Normally, there's no "
+"need to call this explicitly; just use "
+":c:func:`PyUnstable_WritePerfMapEntry` and it will initialize the state on "
+"first call."
+msgstr ""
+"Mở tệp ``/tmp/perf-$pid.map``, trừ khi nó đã được mở và tạo một khóa để đảm "
+"bảo ghi an toàn theo luồng vào tệp (miễn là việc ghi được thực hiện thông "
+"qua :c:func:`PyUnstable_WritePerfMapEntry`). Thông thường, không cần phải "
+"gọi điều này một cách rõ ràng; chỉ cần sử dụng "
+":c:func:`PyUnstable_WritePerfMapEntry` và nó sẽ khởi tạo trạng thái trong "
+"cuộc gọi đầu tiên."
+
+#: ../../c-api/perfmaps.rst:29
+#, fuzzy
+msgid ""
+"Returns ``0`` on success, ``-1`` on failure to create/open the perf map "
+"file, or ``-2`` on failure to create a lock. Check ``errno`` for more "
+"information about the cause of a failure."
+msgstr ""
+"Trả về ``0`` nếu thành công, ``-1`` khi không tạo/mở tệp bản đồ hoàn hảo "
+"hoặc ``-2`` khi không tạo được khóa. Kiểm tra ``errno`` để biết thêm thông "
+"tin về nguyên nhân lỗi."
+
+#: ../../c-api/perfmaps.rst:35
+#, fuzzy
+msgid ""
+"Write one single entry to the ``/tmp/perf-$pid.map`` file. This function is "
+"thread safe. Here is what an example entry looks like::"
+msgstr ""
+"Viết một mục duy nhất vào tệp ``/tmp/perf-$pid.map``. Chức năng này là chủ "
+"đề an toàn. Đây là giao diện của một mục ví dụ::"
+
+#: ../../c-api/perfmaps.rst:38
+#, fuzzy
+msgid ""
+"# address      size  name\n"
+"7f3529fcf759 b     py::bar:/run/t.py"
+msgstr ""
+"tên kích thước # address\n"
+"7f3529fcf759 b py::bar:/run/t.py"
+
+#: ../../c-api/perfmaps.rst:41
+#, fuzzy
+msgid ""
+"Will call :c:func:`PyUnstable_PerfMapState_Init` before writing the entry, "
+"if the perf map file is not already opened. Returns ``0`` on success, or the"
+" same error codes as :c:func:`PyUnstable_PerfMapState_Init` on failure."
+msgstr ""
+"Sẽ gọi :c:func:`PyUnstable_PerfMapState_Init` trước khi viết mục, nếu tệp "
+"bản đồ hoàn hảo chưa được mở. Trả về ``0`` nếu thành công hoặc trả về mã lỗi"
+" tương tự như :c:func:`PyUnstable_PerfMapState_Init` nếu thất bại."
+
+#: ../../c-api/perfmaps.rst:47
+#, fuzzy
+msgid ""
+"Close the perf map file opened by :c:func:`PyUnstable_PerfMapState_Init`. "
+"This is called by the runtime itself during interpreter shut-down. In "
+"general, there shouldn't be a reason to explicitly call this, except to "
+"handle specific scenarios such as forking."
+msgstr ""
+"Đóng tệp bản đồ hoàn hảo được mở bởi :c:func:`PyUnstable_PerfMapState_Init`."
+" Điều này được gọi bởi chính thời gian chạy trong khi tắt trình thông dịch. "
+"Nói chung, không có lý do gì để gọi điều này một cách rõ ràng, ngoại trừ để "
+"xử lý các tình huống cụ thể như phân nhánh."

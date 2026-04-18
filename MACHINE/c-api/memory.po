@@ -1,0 +1,1872 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/memory.rst:8
+#, fuzzy
+msgid "Memory Management"
+msgstr "Quản lý bộ nhớ"
+
+#: ../../c-api/memory.rst:17
+#, fuzzy
+msgid "Overview"
+msgstr "Tổng quan"
+
+#: ../../c-api/memory.rst:19
+#, fuzzy
+msgid ""
+"Memory management in Python involves a private heap containing all Python "
+"objects and data structures. The management of this private heap is ensured "
+"internally by the *Python memory manager*.  The Python memory manager has "
+"different components which deal with various dynamic storage management "
+"aspects, like sharing, segmentation, preallocation or caching."
+msgstr ""
+"Quản lý bộ nhớ trong Python bao gồm một vùng riêng chứa tất cả các đối tượng"
+" và cấu trúc dữ liệu Python. Việc quản lý vùng nhớ riêng tư này được đảm bảo"
+" nội bộ bởi *Python memory manager*.  Trình quản lý bộ nhớ Python có các "
+"thành phần khác nhau xử lý các khía cạnh quản lý lưu trữ động khác nhau, như"
+" chia sẻ, phân đoạn, phân bổ trước hoặc bộ nhớ đệm."
+
+#: ../../c-api/memory.rst:25
+#, fuzzy
+msgid ""
+"At the lowest level, a raw memory allocator ensures that there is enough "
+"room in the private heap for storing all Python-related data by interacting "
+"with the memory manager of the operating system. On top of the raw memory "
+"allocator, several object-specific allocators operate on the same heap and "
+"implement distinct memory management policies adapted to the peculiarities "
+"of every object type. For example, integer objects are managed differently "
+"within the heap than strings, tuples or dictionaries because integers imply "
+"different storage requirements and speed/space tradeoffs. The Python memory "
+"manager thus delegates some of the work to the object-specific allocators, "
+"but ensures that the latter operate within the bounds of the private heap."
+msgstr ""
+"Ở mức thấp nhất, bộ cấp phát bộ nhớ thô đảm bảo có đủ chỗ trong vùng riêng "
+"để lưu trữ tất cả dữ liệu liên quan đến Python bằng cách tương tác với trình"
+" quản lý bộ nhớ của hệ điều hành. Ngoài bộ cấp phát bộ nhớ thô, một số bộ "
+"cấp phát dành riêng cho đối tượng hoạt động trên cùng một vùng nhớ và thực "
+"hiện các chính sách quản lý bộ nhớ riêng biệt phù hợp với đặc thù của từng "
+"loại đối tượng. Ví dụ: các đối tượng số nguyên được quản lý khác nhau trong "
+"vùng heap so với các chuỗi, bộ dữ liệu hoặc từ điển vì số nguyên ngụ ý các "
+"yêu cầu lưu trữ khác nhau và sự cân bằng giữa tốc độ/không gian. Do đó, "
+"trình quản lý bộ nhớ Python ủy quyền một số công việc cho các bộ cấp phát "
+"dành riêng cho đối tượng, nhưng đảm bảo rằng bộ cấp phát sau hoạt động trong"
+" giới hạn của vùng nhớ riêng."
+
+#: ../../c-api/memory.rst:36
+#, fuzzy
+msgid ""
+"It is important to understand that the management of the Python heap is "
+"performed by the interpreter itself and that the user has no control over "
+"it, even if they regularly manipulate object pointers to memory blocks "
+"inside that heap.  The allocation of heap space for Python objects and other"
+" internal buffers is performed on demand by the Python memory manager "
+"through the Python/C API functions listed in this document."
+msgstr ""
+"Điều quan trọng là phải hiểu rằng việc quản lý vùng heap Python được thực "
+"hiện bởi chính trình thông dịch và người dùng không có quyền kiểm soát nó, "
+"ngay cả khi họ thường xuyên thao tác các con trỏ đối tượng tới các khối bộ "
+"nhớ bên trong vùng nhớ heap đó.  Việc phân bổ vùng nhớ heap cho các đối "
+"tượng Python và các bộ đệm bên trong khác được trình quản lý bộ nhớ Python "
+"thực hiện theo yêu cầu thông qua các hàm Python/C API được liệt kê trong tài"
+" liệu này."
+
+#: ../../c-api/memory.rst:49
+#, fuzzy
+msgid ""
+"To avoid memory corruption, extension writers should never try to operate on"
+" Python objects with the functions exported by the C library: "
+":c:func:`malloc`, :c:func:`calloc`, :c:func:`realloc` and :c:func:`free`.  "
+"This will result in  mixed calls between the C allocator and the Python "
+"memory manager with fatal consequences, because they implement different "
+"algorithms and operate on different heaps.  However, one may safely allocate"
+" and release memory blocks with the C library allocator for individual "
+"purposes, as shown in the following example::"
+msgstr ""
+"Để tránh hỏng bộ nhớ, người viết tiện ích mở rộng không bao giờ nên thử thao"
+" tác trên các đối tượng Python có các hàm được xuất bởi thư viện C: "
+":c:func:`malloc`, :c:func:`calloc`, :c:func:`realloc` và :c:func:`free`.  "
+"Điều này sẽ dẫn đến các cuộc gọi hỗn hợp giữa bộ cấp phát C và trình quản lý"
+" bộ nhớ Python với những hậu quả nghiêm trọng vì chúng triển khai các thuật "
+"toán khác nhau và hoạt động trên các vùng nhớ khác nhau.  Tuy nhiên, người "
+"ta có thể phân bổ và giải phóng các khối bộ nhớ một cách an toàn bằng bộ cấp"
+" phát thư viện C cho các mục đích riêng lẻ, như trong ví dụ sau::"
+
+#: ../../c-api/memory.rst:58
+#, fuzzy
+msgid ""
+"PyObject *res;\n"
+"char *buf = (char *) malloc(BUFSIZ); /* for I/O */\n"
+"\n"
+"if (buf == NULL)\n"
+"    return PyErr_NoMemory();\n"
+"...Do some I/O operation involving buf...\n"
+"res = PyBytes_FromString(buf);\n"
+"free(buf); /* malloc'ed */\n"
+"return res;"
+msgstr ""
+"PyObject *res;\n"
+"char *buf = (char *) malloc(BUFSIZ); /* cho I/O */\n"
+"\n"
+"nếu (buf == NULL)\n"
+"    trả về PyErr_NoMemory();\n"
+"...Thực hiện một số thao tác I/O liên quan đến buf...\n"
+"res = PyBytes_FromString(buf);\n"
+"miễn phí(buf); /* bị hỏng */\n"
+"trả lại độ phân giải;"
+
+#: ../../c-api/memory.rst:68
+#, fuzzy
+msgid ""
+"In this example, the memory request for the I/O buffer is handled by the C "
+"library allocator. The Python memory manager is involved only in the "
+"allocation of the bytes object returned as a result."
+msgstr ""
+"Trong ví dụ này, yêu cầu bộ nhớ cho bộ đệm I/O được bộ cấp phát thư viện C "
+"xử lý. Kết quả là trình quản lý bộ nhớ Python chỉ liên quan đến việc phân bổ"
+" đối tượng byte được trả về."
+
+#: ../../c-api/memory.rst:72
+#, fuzzy
+msgid ""
+"In most situations, however, it is recommended to allocate memory from the "
+"Python heap specifically because the latter is under control of the Python "
+"memory manager. For example, this is required when the interpreter is "
+"extended with new object types written in C. Another reason for using the "
+"Python heap is the desire to *inform* the Python memory manager about the "
+"memory needs of the extension module. Even when the requested memory is used"
+" exclusively for internal, highly specific purposes, delegating all memory "
+"requests to the Python memory manager causes the interpreter to have a more "
+"accurate image of its memory footprint as a whole. Consequently, under "
+"certain circumstances, the Python memory manager may or may not trigger "
+"appropriate actions, like garbage collection, memory compaction or other "
+"preventive procedures. Note that by using the C library allocator as shown "
+"in the previous example, the allocated memory for the I/O buffer escapes "
+"completely the Python memory manager."
+msgstr ""
+"Tuy nhiên, trong hầu hết các trường hợp, bạn nên phân bổ bộ nhớ từ vùng heap"
+" Python một cách cụ thể vì vùng sau nằm dưới sự kiểm soát của trình quản lý "
+"bộ nhớ Python. Ví dụ: điều này là bắt buộc khi trình thông dịch được mở rộng"
+" với các kiểu đối tượng mới được viết bằng C. Một lý do khác để sử dụng vùng"
+" heap Python là mong muốn thông báo cho trình quản lý bộ nhớ Python về nhu "
+"cầu bộ nhớ của mô-đun mở rộng. Ngay cả khi bộ nhớ được yêu cầu chỉ được sử "
+"dụng cho các mục đích nội bộ, có tính đặc thù cao, việc ủy ​​quyền tất cả "
+"các yêu cầu bộ nhớ cho trình quản lý bộ nhớ Python sẽ khiến trình thông dịch"
+" có được hình ảnh chính xác hơn về toàn bộ dấu chân bộ nhớ của nó. Do đó, "
+"trong một số trường hợp nhất định, trình quản lý bộ nhớ Python có thể kích "
+"hoạt hoặc không kích hoạt các hành động thích hợp, như thu gom rác, nén bộ "
+"nhớ hoặc các quy trình phòng ngừa khác. Lưu ý rằng bằng cách sử dụng bộ cấp "
+"phát thư viện C như trong ví dụ trước, bộ nhớ được cấp phát cho bộ đệm I/O "
+"sẽ thoát hoàn toàn khỏi trình quản lý bộ nhớ Python."
+
+#: ../../c-api/memory.rst:88
+#, fuzzy
+msgid ""
+"The :envvar:`PYTHONMALLOC` environment variable can be used to configure the"
+" memory allocators used by Python."
+msgstr ""
+"Biến môi trường :envvar:`PYTHONMALLOC` có thể được sử dụng để định cấu hình "
+"bộ cấp phát bộ nhớ được Python sử dụng."
+
+#: ../../c-api/memory.rst:91
+#, fuzzy
+msgid ""
+"The :envvar:`PYTHONMALLOCSTATS` environment variable can be used to print "
+"statistics of the :ref:`pymalloc memory allocator <pymalloc>` every time a "
+"new pymalloc object arena is created, and on shutdown."
+msgstr ""
+"Biến môi trường :envvar:`PYTHONMALLOCSTATS` có thể được sử dụng để in số "
+"liệu thống kê của :ref:`pymalloc memory allocator <pymalloc>` mỗi khi một "
+"trường đối tượng pymalloc mới được tạo và khi tắt máy."
+
+#: ../../c-api/memory.rst:96
+#, fuzzy
+msgid "Allocator Domains"
+msgstr "Miền cấp phát"
+
+#: ../../c-api/memory.rst:100
+#, fuzzy
+msgid ""
+"All allocating functions belong to one of three different \"domains\" (see "
+"also :c:type:`PyMemAllocatorDomain`). These domains represent different "
+"allocation strategies and are optimized for different purposes. The specific"
+" details on how every domain allocates memory or what internal functions "
+"each domain calls is considered an implementation detail, but for debugging "
+"purposes a simplified table can be found at :ref:`default-memory-"
+"allocators`. The APIs used to allocate and free a block of memory must be "
+"from the same domain. For example, :c:func:`PyMem_Free` must be used to free"
+" memory allocated using :c:func:`PyMem_Malloc`."
+msgstr ""
+"Tất cả các chức năng phân bổ thuộc về một trong ba \"miền\" khác nhau (xem "
+"thêm :c:type:`PyMemAllocatorDomain`). Các miền này thể hiện các chiến lược "
+"phân bổ khác nhau và được tối ưu hóa cho các mục đích khác nhau. Chi tiết cụ"
+" thể về cách mỗi miền phân bổ bộ nhớ hoặc chức năng nội bộ mà mỗi miền gọi "
+"được coi là chi tiết triển khai, nhưng vì mục đích gỡ lỗi, bạn có thể tìm "
+"thấy bảng đơn giản hóa tại :ref:`default-memory-allocators`. Các API được sử"
+" dụng để phân bổ và giải phóng một khối bộ nhớ phải thuộc cùng một miền. Ví "
+"dụ: :c:func:`PyMem_Free` phải được sử dụng để giải phóng bộ nhớ được phân bổ"
+" bằng :c:func:`PyMem_Malloc`."
+
+#: ../../c-api/memory.rst:109
+#, fuzzy
+msgid "The three allocation domains are:"
+msgstr "Ba miền phân bổ là:"
+
+#: ../../c-api/memory.rst:111
+#, fuzzy
+msgid ""
+"Raw domain: intended for allocating memory for general-purpose memory "
+"buffers where the allocation *must* go to the system allocator or where the "
+"allocator can operate without an :term:`attached thread state`. The memory "
+"is requested directly from the system. See :ref:`Raw Memory Interface <raw-"
+"memoryinterface>`."
+msgstr ""
+"Miền thô: dành cho việc phân bổ bộ nhớ cho các bộ đệm bộ nhớ có mục đích "
+"chung trong đó việc phân bổ *must* được chuyển đến bộ cấp phát hệ thống hoặc"
+" nơi bộ cấp phát có thể hoạt động mà không cần :term:`attached thread "
+"state`. Bộ nhớ được yêu cầu trực tiếp từ hệ thống. Xem :ref:`Raw Memory "
+"Interface <raw-memoryinterface>`."
+
+#: ../../c-api/memory.rst:116
+#, fuzzy
+msgid ""
+"\"Mem\" domain: intended for allocating memory for Python buffers and "
+"general-purpose memory buffers where the allocation must be performed with "
+"an :term:`attached thread state`. The memory is taken from the Python "
+"private heap. See :ref:`Memory Interface <memoryinterface>`."
+msgstr ""
+"Miền \"Mem\": dành cho việc phân bổ bộ nhớ cho bộ đệm Python và bộ đệm bộ "
+"nhớ đa năng trong đó việc phân bổ phải được thực hiện bằng :term:`attached "
+"thread state`. Bộ nhớ được lấy từ vùng riêng của Python. Xem :ref:`Memory "
+"Interface <memoryinterface>`."
+
+#: ../../c-api/memory.rst:121
+#, fuzzy
+msgid ""
+"Object domain: intended for allocating memory for Python objects. The memory"
+" is taken from the Python private heap. See :ref:`Object allocators "
+"<objectinterface>`."
+msgstr ""
+"Miền đối tượng: dùng để phân bổ bộ nhớ cho các đối tượng Python. Bộ nhớ được"
+" lấy từ vùng riêng của Python. Xem :ref:`Object allocators "
+"<objectinterface>`."
+
+#: ../../c-api/memory.rst:126
+#, fuzzy
+msgid ""
+"The :term:`free-threaded <free threading>` build requires that only Python "
+"objects are allocated using the \"object\" domain and that all Python "
+"objects are allocated using that domain. This differs from the prior Python "
+"versions, where this was only a best practice and not a hard requirement."
+msgstr ""
+"Bản dựng :term:`free-threaded <free threading>` yêu cầu chỉ các đối tượng "
+"Python được phân bổ bằng miền \"đối tượng\" và tất cả các đối tượng Python "
+"được phân bổ bằng miền đó. Điều này khác với các phiên bản Python trước đó, "
+"đây chỉ là cách thực hành tốt nhất chứ không phải là một yêu cầu khó."
+
+#: ../../c-api/memory.rst:130
+#, fuzzy
+msgid ""
+"For example, buffers (non-Python objects) should be allocated using "
+":c:func:`PyMem_Malloc`, :c:func:`PyMem_RawMalloc`, or :c:func:`malloc`, but "
+"not :c:func:`PyObject_Malloc`."
+msgstr ""
+"Ví dụ: bộ đệm (đối tượng không phải Python) phải được phân bổ bằng "
+":c:func:`PyMem_Malloc`, :c:func:`PyMem_RawMalloc` hoặc :c:func:`malloc` chứ "
+"không phải :c:func:`PyObject_Malloc`."
+
+#: ../../c-api/memory.rst:133
+#, fuzzy
+msgid "See :ref:`Memory Allocation APIs <free-threaded-memory-allocation>`."
+msgstr "Xem :ref:`Memory Allocation APIs <free-threaded-memory-allocation>`."
+
+#: ../../c-api/memory.rst:139
+#, fuzzy
+msgid "Raw Memory Interface"
+msgstr "Giao diện bộ nhớ thô"
+
+#: ../../c-api/memory.rst:141
+#, fuzzy
+msgid ""
+"The following function sets are wrappers to the system allocator. These "
+"functions are thread-safe, so a :term:`thread state` does not need to be "
+":term:`attached <attached thread state>`."
+msgstr ""
+"Các bộ chức năng sau đây là các hàm bao cho bộ cấp phát hệ thống. Các chức "
+"năng này an toàn theo luồng, vì vậy :term:`thread state` không cần phải là "
+":term:`attached <attached thread state>`."
+
+#: ../../c-api/memory.rst:145
+#, fuzzy
+msgid ""
+"The :ref:`default raw memory allocator <default-memory-allocators>` uses the"
+" following functions: :c:func:`malloc`, :c:func:`calloc`, :c:func:`realloc` "
+"and :c:func:`!free`; call ``malloc(1)`` (or ``calloc(1, 1)``) when "
+"requesting zero bytes."
+msgstr ""
+":ref:`default raw memory allocator <default-memory-allocators>` sử dụng các "
+"chức năng sau: :c:func:`malloc`, :c:func:`calloc`, :c:func:`realloc` và "
+":c:func:`!free`; gọi ``malloc(1)`` (hoặc ``calloc(1, 1)``) khi yêu cầu byte "
+"0."
+
+#: ../../c-api/memory.rst:154 ../../c-api/memory.rst:232
+#: ../../c-api/memory.rst:365
+#, fuzzy
+msgid ""
+"Allocates *n* bytes and returns a pointer of type :c:expr:`void*` to the "
+"allocated memory, or ``NULL`` if the request fails."
+msgstr ""
+"Phân bổ byte *n* và trả về một con trỏ loại :c:expr:`void*` cho bộ nhớ được "
+"phân bổ hoặc ``NULL`` nếu yêu cầu không thành công."
+
+#: ../../c-api/memory.rst:157
+#, fuzzy
+msgid ""
+"Requesting zero bytes returns a distinct non-``NULL`` pointer if possible, "
+"as if ``PyMem_RawMalloc(1)`` had been called instead. The memory will not "
+"have been initialized in any way."
+msgstr ""
+"Yêu cầu byte 0 sẽ trả về một con trỏ không phải ``NULL`` riêng biệt nếu có "
+"thể, như thể ``PyMem_RawMalloc(1)`` đã được gọi thay thế. Bộ nhớ sẽ không "
+"được khởi tạo theo bất kỳ cách nào."
+
+#: ../../c-api/memory.rst:164 ../../c-api/memory.rst:242
+#: ../../c-api/memory.rst:375
+#, fuzzy
+msgid ""
+"Allocates *nelem* elements each whose size in bytes is *elsize* and returns "
+"a pointer of type :c:expr:`void*` to the allocated memory, or ``NULL`` if "
+"the request fails. The memory is initialized to zeros."
+msgstr ""
+"Phân bổ các phần tử *nelem*, mỗi phần tử có kích thước tính bằng byte là "
+"*elsize* và trả về một con trỏ loại :c:expr:`void*` cho bộ nhớ được phân bổ "
+"hoặc ``NULL`` nếu yêu cầu không thành công. Bộ nhớ được khởi tạo về số "
+"không."
+
+#: ../../c-api/memory.rst:168
+#, fuzzy
+msgid ""
+"Requesting zero elements or elements of size zero bytes returns a distinct "
+"non-``NULL`` pointer if possible, as if ``PyMem_RawCalloc(1, 1)`` had been "
+"called instead."
+msgstr ""
+"Yêu cầu các phần tử bằng 0 hoặc các phần tử có kích thước 0 byte sẽ trả về "
+"một con trỏ không phải ``NULL`` riêng biệt nếu có thể, như thể "
+"``PyMem_RawCalloc(1, 1)`` đã được gọi thay thế."
+
+#: ../../c-api/memory.rst:177 ../../c-api/memory.rst:255
+#: ../../c-api/memory.rst:388
+#, fuzzy
+msgid ""
+"Resizes the memory block pointed to by *p* to *n* bytes. The contents will "
+"be unchanged to the minimum of the old and the new sizes."
+msgstr ""
+"Thay đổi kích thước khối bộ nhớ được trỏ bởi *p* thành *n* byte. Nội dung sẽ"
+" không thay đổi ở mức tối thiểu của kích thước cũ và mới."
+
+#: ../../c-api/memory.rst:180
+#, fuzzy
+msgid ""
+"If *p* is ``NULL``, the call is equivalent to ``PyMem_RawMalloc(n)``; else "
+"if *n* is equal to zero, the memory block is resized but is not freed, and "
+"the returned pointer is non-``NULL``."
+msgstr ""
+"Nếu *p* là ``NULL``, lệnh gọi tương đương với ``PyMem_RawMalloc(n)``; ngược "
+"lại, nếu *n* bằng 0, khối bộ nhớ sẽ được thay đổi kích thước nhưng không "
+"được giải phóng và con trỏ trả về không phải là ``NULL``."
+
+#: ../../c-api/memory.rst:184
+#, fuzzy
+msgid ""
+"Unless *p* is ``NULL``, it must have been returned by a previous call to "
+":c:func:`PyMem_RawMalloc`, :c:func:`PyMem_RawRealloc` or "
+":c:func:`PyMem_RawCalloc`."
+msgstr ""
+"Trừ khi *p* là ``NULL``, nó phải được trả về bằng lệnh gọi trước đó tới "
+":c:func:`PyMem_RawMalloc`, :c:func:`PyMem_RawRealloc` hoặc "
+":c:func:`PyMem_RawCalloc`."
+
+#: ../../c-api/memory.rst:188
+#, fuzzy
+msgid ""
+"If the request fails, :c:func:`PyMem_RawRealloc` returns ``NULL`` and *p* "
+"remains a valid pointer to the previous memory area."
+msgstr ""
+"Nếu yêu cầu không thành công, :c:func:`PyMem_RawRealloc` trả về ``NULL`` và "
+"*p* vẫn là một con trỏ hợp lệ tới vùng bộ nhớ trước đó."
+
+#: ../../c-api/memory.rst:194
+#, fuzzy
+msgid ""
+"Frees the memory block pointed to by *p*, which must have been returned by a"
+" previous call to :c:func:`PyMem_RawMalloc`, :c:func:`PyMem_RawRealloc` or "
+":c:func:`PyMem_RawCalloc`.  Otherwise, or if ``PyMem_RawFree(p)`` has been "
+"called before, undefined behavior occurs."
+msgstr ""
+"Giải phóng khối bộ nhớ được trỏ tới bởi *p*, khối này phải được trả về bằng "
+"lệnh gọi trước đó tới :c:func:`PyMem_RawMalloc`, :c:func:`PyMem_RawRealloc` "
+"hoặc :c:func:`PyMem_RawCalloc`.  Ngược lại, hoặc nếu ``PyMem_RawFree(p)`` đã"
+" được gọi trước đó, hành vi không xác định sẽ xảy ra."
+
+#: ../../c-api/memory.rst:199 ../../c-api/memory.rst:276
+#: ../../c-api/memory.rst:409
+#, fuzzy
+msgid "If *p* is ``NULL``, no operation is performed."
+msgstr "Nếu *p* là ``NULL`` thì không có thao tác nào được thực hiện."
+
+#: ../../c-api/memory.rst:205
+#, fuzzy
+msgid "Memory Interface"
+msgstr "Giao diện bộ nhớ"
+
+#: ../../c-api/memory.rst:207 ../../c-api/memory.rst:344
+#, fuzzy
+msgid ""
+"The following function sets, modeled after the ANSI C standard, but "
+"specifying behavior when requesting zero bytes, are available for allocating"
+" and releasing memory from the Python heap."
+msgstr ""
+"Các bộ hàm sau, được mô hình hóa theo tiêu chuẩn ANSI C, nhưng chỉ định hành"
+" vi khi yêu cầu byte 0, có sẵn để phân bổ và giải phóng bộ nhớ khỏi vùng "
+"heap Python."
+
+#: ../../c-api/memory.rst:211
+#, fuzzy
+msgid ""
+"In the GIL-enabled build (default build) the :ref:`default memory allocator "
+"<default-memory-allocators>` uses the :ref:`pymalloc memory allocator "
+"<pymalloc>`, whereas in the :term:`free-threaded build`, the default is the "
+":ref:`mimalloc memory allocator <mimalloc>` instead."
+msgstr ""
+"Trong bản dựng hỗ trợ GIL (bản dựng mặc định), :ref:`default memory "
+"allocator <default-memory-allocators>` sử dụng :ref:`pymalloc memory "
+"allocator <pymalloc>`, trong khi ở :term:`free-threaded build`, mặc định là "
+":ref:`mimalloc memory allocator <mimalloc>`."
+
+#: ../../c-api/memory.rst:219 ../../c-api/memory.rst:361
+#, fuzzy
+msgid ""
+"There must be an :term:`attached thread state` when using these functions."
+msgstr "Phải có :term:`attached thread state` khi sử dụng các chức năng này."
+
+#: ../../c-api/memory.rst:223
+#, fuzzy
+msgid ""
+"The default allocator is now pymalloc instead of system :c:func:`malloc`."
+msgstr ""
+"Bộ cấp phát mặc định bây giờ là pymalloc thay vì hệ thống :c:func:`malloc`."
+
+#: ../../c-api/memory.rst:227
+#, fuzzy
+msgid ""
+"In the :term:`free-threaded <free threading>` build, the default allocator "
+"is now :ref:`mimalloc <mimalloc>`."
+msgstr ""
+"Trong bản dựng :term:`free-threaded <free threading>`, bộ cấp phát mặc định "
+"hiện là :ref:`mimalloc <mimalloc>`."
+
+#: ../../c-api/memory.rst:235
+#, fuzzy
+msgid ""
+"Requesting zero bytes returns a distinct non-``NULL`` pointer if possible, "
+"as if ``PyMem_Malloc(1)`` had been called instead. The memory will not have "
+"been initialized in any way."
+msgstr ""
+"Yêu cầu byte 0 sẽ trả về một con trỏ không phải ``NULL`` riêng biệt nếu có "
+"thể, như thể ``PyMem_Malloc(1)`` đã được gọi thay thế. Bộ nhớ sẽ không được "
+"khởi tạo theo bất kỳ cách nào."
+
+#: ../../c-api/memory.rst:246
+#, fuzzy
+msgid ""
+"Requesting zero elements or elements of size zero bytes returns a distinct "
+"non-``NULL`` pointer if possible, as if ``PyMem_Calloc(1, 1)`` had been "
+"called instead."
+msgstr ""
+"Yêu cầu các phần tử bằng 0 hoặc các phần tử có kích thước bằng 0 byte sẽ trả"
+" về một con trỏ không phải ``NULL`` riêng biệt nếu có thể, như thể "
+"``PyMem_Calloc(1, 1)`` đã được gọi thay thế."
+
+#: ../../c-api/memory.rst:258
+#, fuzzy
+msgid ""
+"If *p* is ``NULL``, the call is equivalent to ``PyMem_Malloc(n)``; else if "
+"*n* is equal to zero, the memory block is resized but is not freed, and the "
+"returned pointer is non-``NULL``."
+msgstr ""
+"Nếu *p* là ``NULL``, lệnh gọi tương đương với ``PyMem_Malloc(n)``; ngược "
+"lại, nếu *n* bằng 0, khối bộ nhớ sẽ được thay đổi kích thước nhưng không "
+"được giải phóng và con trỏ trả về không phải là ``NULL``."
+
+#: ../../c-api/memory.rst:262
+#, fuzzy
+msgid ""
+"Unless *p* is ``NULL``, it must have been returned by a previous call to "
+":c:func:`PyMem_Malloc`, :c:func:`PyMem_Realloc` or :c:func:`PyMem_Calloc`."
+msgstr ""
+"Trừ khi *p* là ``NULL``, nó phải được trả về bằng lệnh gọi trước đó tới "
+":c:func:`PyMem_Malloc`, :c:func:`PyMem_Realloc` hoặc :c:func:`PyMem_Calloc`."
+
+#: ../../c-api/memory.rst:265
+#, fuzzy
+msgid ""
+"If the request fails, :c:func:`PyMem_Realloc` returns ``NULL`` and *p* "
+"remains a valid pointer to the previous memory area."
+msgstr ""
+"Nếu yêu cầu không thành công, :c:func:`PyMem_Realloc` trả về ``NULL`` và *p*"
+" vẫn là một con trỏ hợp lệ tới vùng bộ nhớ trước đó."
+
+#: ../../c-api/memory.rst:271
+#, fuzzy
+msgid ""
+"Frees the memory block pointed to by *p*, which must have been returned by a"
+" previous call to :c:func:`PyMem_Malloc`, :c:func:`PyMem_Realloc` or "
+":c:func:`PyMem_Calloc`.  Otherwise, or if ``PyMem_Free(p)`` has been called "
+"before, undefined behavior occurs."
+msgstr ""
+"Giải phóng khối bộ nhớ được trỏ tới bởi *p*, khối này phải được trả về bằng "
+"lệnh gọi trước đó tới :c:func:`PyMem_Malloc`, :c:func:`PyMem_Realloc` hoặc "
+":c:func:`PyMem_Calloc`.  Ngược lại, hoặc nếu ``PyMem_Free(p)`` đã được gọi "
+"trước đó, hành vi không xác định sẽ xảy ra."
+
+#: ../../c-api/memory.rst:278
+#, fuzzy
+msgid ""
+"The following type-oriented macros are provided for convenience.  Note  that"
+" *TYPE* refers to any C type."
+msgstr ""
+"Các macro định hướng kiểu sau đây được cung cấp để thuận tiện.  Lưu ý rằng "
+"*TYPE* đề cập đến bất kỳ loại C nào."
+
+#: ../../c-api/memory.rst:284
+#, fuzzy
+msgid ""
+"Same as :c:func:`PyMem_Malloc`, but allocates ``(n * sizeof(TYPE))`` bytes "
+"of memory.  Returns a pointer cast to ``TYPE*``.  The memory will not have "
+"been initialized in any way."
+msgstr ""
+"Tương tự như :c:func:`PyMem_Malloc`, nhưng phân bổ byte bộ nhớ ``(n * "
+"sizeof(TYPE))``.  Trả về một con trỏ được truyền tới ``TYPE*``.  Bộ nhớ sẽ "
+"không được khởi tạo theo bất kỳ cách nào."
+
+#: ../../c-api/memory.rst:291
+#, fuzzy
+msgid ""
+"Same as :c:func:`PyMem_Realloc`, but the memory block is resized to ``(n * "
+"sizeof(TYPE))`` bytes.  Returns a pointer cast to ``TYPE*``. On return, *p* "
+"will be a pointer to the new memory area, or ``NULL`` in the event of "
+"failure."
+msgstr ""
+"Tương tự như :c:func:`PyMem_Realloc`, nhưng khối bộ nhớ được thay đổi kích "
+"thước thành byte ``(n * sizeof(TYPE))``.  Trả về một con trỏ được truyền tới"
+" ``TYPE*``. Khi quay lại, *p* sẽ là con trỏ tới vùng bộ nhớ mới hoặc "
+"``NULL`` trong trường hợp bị lỗi."
+
+#: ../../c-api/memory.rst:296
+#, fuzzy
+msgid ""
+"This is a C preprocessor macro; *p* is always reassigned.  Save the original"
+" value of *p* to avoid losing memory when handling errors."
+msgstr ""
+"Đây là macro tiền xử lý C; *p* luôn được chỉ định lại.  Lưu lại giá trị ban "
+"đầu của *p* để tránh bị mất bộ nhớ khi xử lý lỗi."
+
+#: ../../c-api/memory.rst:302
+#, fuzzy
+msgid "Same as :c:func:`PyMem_Free`."
+msgstr "Tương tự với :c:func:`PyMem_Free`"
+
+#: ../../c-api/memory.rst:306
+#, fuzzy
+msgid "Deprecated aliases"
+msgstr "Bí danh không được dùng nữa"
+
+#: ../../c-api/memory.rst:308
+#, fuzzy
+msgid ""
+"These are :term:`soft deprecated` aliases to existing functions and macros. "
+"They exist solely for backwards compatibility."
+msgstr ""
+"Đây là các bí danh :term:`soft deprecated` cho các hàm và macro hiện có. "
+"Chúng tồn tại chỉ để tương thích ngược."
+
+#: ../../c-api/memory.rst:315
+#, fuzzy
+msgid "Deprecated alias"
+msgstr "Bí danh không được dùng nữa"
+
+#: ../../c-api/memory.rst:316
+#, fuzzy
+msgid "Corresponding function or macro"
+msgstr "Chức năng hoặc macro tương ứng"
+
+#: ../../c-api/memory.rst:318
+#, fuzzy
+msgid ":c:func:`PyMem_Malloc`"
+msgstr ":c:func:`PyMem_Malloc`"
+
+#: ../../c-api/memory.rst:320
+#, fuzzy
+msgid ":c:macro:`PyMem_New`"
+msgstr ":c:macro:`PyMem_New`"
+
+#: ../../c-api/memory.rst:322 ../../c-api/memory.rst:511
+#, fuzzy
+msgid ":c:func:`PyMem_Realloc`"
+msgstr ":c:func:`PyMem_Realloc`"
+
+#: ../../c-api/memory.rst:324
+#, fuzzy
+msgid ":c:macro:`PyMem_Resize`"
+msgstr ":c:macro:`PyMem_Resize`"
+
+#: ../../c-api/memory.rst:326 ../../c-api/memory.rst:328
+#: ../../c-api/memory.rst:513
+#, fuzzy
+msgid ":c:func:`PyMem_Free`"
+msgstr ":c:func:`PyMem_Free`"
+
+#: ../../c-api/memory.rst:332
+#, fuzzy
+msgid ""
+"The macros are now aliases of the corresponding functions and macros. "
+"Previously, their behavior was the same, but their use did not necessarily "
+"preserve binary compatibility across Python versions."
+msgstr ""
+"Các macro bây giờ là bí danh của các hàm và macro tương ứng. Trước đây, hành"
+" vi của chúng giống nhau, nhưng việc sử dụng chúng không nhất thiết đảm bảo "
+"khả năng tương thích nhị phân giữa các phiên bản Python."
+
+#: ../../c-api/memory.rst:342
+#, fuzzy
+msgid "Object allocators"
+msgstr "Bộ cấp phát đối tượng"
+
+#: ../../c-api/memory.rst:349
+#, fuzzy
+msgid ""
+"There is no guarantee that the memory returned by these allocators can be "
+"successfully cast to a Python object when intercepting the allocating "
+"functions in this domain by the methods described in the :ref:`Customize "
+"Memory Allocators <customize-memory-allocators>` section."
+msgstr ""
+"Không có gì đảm bảo rằng bộ nhớ được trả về bởi các bộ cấp phát này có thể "
+"được chuyển thành công sang đối tượng Python khi chặn các hàm cấp phát trong"
+" miền này bằng các phương thức được mô tả trong phần :ref:`Customize Memory "
+"Allocators <customize-memory-allocators>`."
+
+#: ../../c-api/memory.rst:354
+#, fuzzy
+msgid ""
+"The :ref:`default object allocator <default-memory-allocators>` uses the "
+":ref:`pymalloc memory allocator <pymalloc>`.  In the :term:`free-threaded "
+"<free threading>` build, the default is the :ref:`mimalloc memory allocator "
+"<mimalloc>` instead."
+msgstr ""
+"Zz000zz sử dụng :ref:`pymalloc memory allocator <pymalloc>`.  Trong bản dựng"
+" :term:`free-threaded <free threading>`, mặc định là :ref:`mimalloc memory "
+"allocator <mimalloc>`."
+
+#: ../../c-api/memory.rst:368
+#, fuzzy
+msgid ""
+"Requesting zero bytes returns a distinct non-``NULL`` pointer if possible, "
+"as if ``PyObject_Malloc(1)`` had been called instead. The memory will not "
+"have been initialized in any way."
+msgstr ""
+"Yêu cầu byte 0 sẽ trả về một con trỏ không phải ``NULL`` riêng biệt nếu có "
+"thể, như thể ``PyObject_Malloc(1)`` đã được gọi thay thế. Bộ nhớ sẽ không "
+"được khởi tạo theo bất kỳ cách nào."
+
+#: ../../c-api/memory.rst:379
+#, fuzzy
+msgid ""
+"Requesting zero elements or elements of size zero bytes returns a distinct "
+"non-``NULL`` pointer if possible, as if ``PyObject_Calloc(1, 1)`` had been "
+"called instead."
+msgstr ""
+"Yêu cầu các phần tử bằng 0 hoặc các phần tử có kích thước 0 byte sẽ trả về "
+"một con trỏ không phải ``NULL`` riêng biệt nếu có thể, như thể "
+"``PyObject_Calloc(1, 1)`` đã được gọi thay thế."
+
+#: ../../c-api/memory.rst:391
+#, fuzzy
+msgid ""
+"If *p* is ``NULL``, the call is equivalent to ``PyObject_Malloc(n)``; else "
+"if *n* is equal to zero, the memory block is resized but is not freed, and "
+"the returned pointer is non-``NULL``."
+msgstr ""
+"Nếu *p* là ``NULL``, lệnh gọi tương đương với ``PyObject_Malloc(n)``; ngược "
+"lại, nếu *n* bằng 0, khối bộ nhớ sẽ được thay đổi kích thước nhưng không "
+"được giải phóng và con trỏ trả về không phải là ``NULL``."
+
+#: ../../c-api/memory.rst:395
+#, fuzzy
+msgid ""
+"Unless *p* is ``NULL``, it must have been returned by a previous call to "
+":c:func:`PyObject_Malloc`, :c:func:`PyObject_Realloc` or "
+":c:func:`PyObject_Calloc`."
+msgstr ""
+"Trừ khi *p* là ``NULL``, nó phải được trả về bằng lệnh gọi trước đó tới "
+":c:func:`PyObject_Malloc`, :c:func:`PyObject_Realloc` hoặc "
+":c:func:`PyObject_Calloc`."
+
+#: ../../c-api/memory.rst:398
+#, fuzzy
+msgid ""
+"If the request fails, :c:func:`PyObject_Realloc` returns ``NULL`` and *p* "
+"remains a valid pointer to the previous memory area."
+msgstr ""
+"Nếu yêu cầu không thành công, :c:func:`PyObject_Realloc` trả về ``NULL`` và "
+"*p* vẫn là một con trỏ hợp lệ tới vùng bộ nhớ trước đó."
+
+#: ../../c-api/memory.rst:404
+#, fuzzy
+msgid ""
+"Frees the memory block pointed to by *p*, which must have been returned by a"
+" previous call to :c:func:`PyObject_Malloc`, :c:func:`PyObject_Realloc` or "
+":c:func:`PyObject_Calloc`.  Otherwise, or if ``PyObject_Free(p)`` has been "
+"called before, undefined behavior occurs."
+msgstr ""
+"Giải phóng khối bộ nhớ được trỏ tới bởi *p*, khối này phải được trả về bằng "
+"lệnh gọi trước đó tới :c:func:`PyObject_Malloc`, :c:func:`PyObject_Realloc` "
+"hoặc :c:func:`PyObject_Calloc`.  Ngược lại, hoặc nếu ``PyObject_Free(p)`` đã"
+" được gọi trước đó, hành vi không xác định sẽ xảy ra."
+
+#: ../../c-api/memory.rst:411
+#, fuzzy
+msgid ""
+"Do not call this directly to free an object's memory; call the type's "
+":c:member:`~PyTypeObject.tp_free` slot instead."
+msgstr ""
+"Đừng gọi trực tiếp điều này để giải phóng bộ nhớ của đối tượng; thay vào đó "
+"hãy gọi loại :c:member:`~PyTypeObject.tp_free` slot."
+
+#: ../../c-api/memory.rst:414
+#, fuzzy
+msgid ""
+"Do not use this for memory allocated by :c:macro:`PyObject_GC_New` or "
+":c:macro:`PyObject_GC_NewVar`; use :c:func:`PyObject_GC_Del` instead."
+msgstr ""
+"Không sử dụng điều này cho bộ nhớ được phân bổ bởi "
+":c:macro:`PyObject_GC_New` hoặc :c:macro:`PyObject_GC_NewVar`; thay vào đó "
+"hãy sử dụng :c:func:`PyObject_GC_Del`."
+
+#: ../../c-api/memory.rst:419
+#, fuzzy
+msgid ""
+":c:func:`PyObject_GC_Del` is the equivalent of this function for memory "
+"allocated by types that support garbage collection."
+msgstr ""
+":c:func:`PyObject_GC_Del` tương đương với chức năng này dành cho bộ nhớ được"
+" phân bổ theo loại hỗ trợ thu gom rác."
+
+#: ../../c-api/memory.rst:421 ../../c-api/memory.rst:519
+#, fuzzy
+msgid ":c:func:`PyObject_Malloc`"
+msgstr ":c:func:`PyObject_Malloc`"
+
+#: ../../c-api/memory.rst:422 ../../c-api/memory.rst:520
+#, fuzzy
+msgid ":c:func:`PyObject_Realloc`"
+msgstr ":c:func:`PyObject_Realloc`"
+
+#: ../../c-api/memory.rst:423 ../../c-api/memory.rst:521
+#, fuzzy
+msgid ":c:func:`PyObject_Calloc`"
+msgstr ":c:func:`PyObject_Calloc`"
+
+#: ../../c-api/memory.rst:424
+#, fuzzy
+msgid ":c:macro:`PyObject_New`"
+msgstr ":c:macro:`PyObject_New`"
+
+#: ../../c-api/memory.rst:425
+#, fuzzy
+msgid ":c:macro:`PyObject_NewVar`"
+msgstr ":c:macro:`PyObject_NewVar`"
+
+#: ../../c-api/memory.rst:426
+#, fuzzy
+msgid ":c:func:`PyType_GenericAlloc`"
+msgstr ":c:func:`PyType_GenericAlloc`"
+
+#: ../../c-api/memory.rst:427
+#, fuzzy
+msgid ":c:member:`~PyTypeObject.tp_free`"
+msgstr ":c:member:`~PyTypeObject.tp_free`"
+
+#: ../../c-api/memory.rst:433
+#, fuzzy
+msgid "Default Memory Allocators"
+msgstr "Bộ cấp phát bộ nhớ mặc định"
+
+#: ../../c-api/memory.rst:435
+#, fuzzy
+msgid "Default memory allocators:"
+msgstr "Cấp phát bộ nhớ mặc định:"
+
+#: ../../c-api/memory.rst:438
+#, fuzzy
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#: ../../c-api/memory.rst:438
+#, fuzzy
+msgid "Name"
+msgstr "Tên"
+
+#: ../../c-api/memory.rst:438
+#, fuzzy
+msgid "PyMem_RawMalloc"
+msgstr "PyMem_RawMalloc"
+
+#: ../../c-api/memory.rst:438
+#, fuzzy
+msgid "PyMem_Malloc"
+msgstr "PyMem_Malloc"
+
+#: ../../c-api/memory.rst:438
+#, fuzzy
+msgid "PyObject_Malloc"
+msgstr "PyObject_Malloc"
+
+#: ../../c-api/memory.rst:440
+#, fuzzy
+msgid "Release build"
+msgstr "Bản phát hành"
+
+#: ../../c-api/memory.rst:440
+#, fuzzy
+msgid "``\"pymalloc\"``"
+msgstr "``\"pymalloc\"``"
+
+#: ../../c-api/memory.rst:440 ../../c-api/memory.rst:442
+#, fuzzy
+msgid "``malloc``"
+msgstr "``malloc``"
+
+#: ../../c-api/memory.rst:440
+#, fuzzy
+msgid "``pymalloc``"
+msgstr "``pymalloc``"
+
+#: ../../c-api/memory.rst:441
+#, fuzzy
+msgid "Debug build"
+msgstr "Bản dựng gỡ lỗi"
+
+#: ../../c-api/memory.rst:441
+#, fuzzy
+msgid "``\"pymalloc_debug\"``"
+msgstr "``\"pymalloc_debug\"``"
+
+#: ../../c-api/memory.rst:441 ../../c-api/memory.rst:443
+#, fuzzy
+msgid "``malloc`` + debug"
+msgstr "``malloc`` + gỡ lỗi"
+
+#: ../../c-api/memory.rst:441
+#, fuzzy
+msgid "``pymalloc`` + debug"
+msgstr "``pymalloc`` + gỡ lỗi"
+
+#: ../../c-api/memory.rst:442
+#, fuzzy
+msgid "Release build, without pymalloc"
+msgstr "Phát hành bản dựng, không có pymalloc"
+
+#: ../../c-api/memory.rst:442
+#, fuzzy
+msgid "``\"malloc\"``"
+msgstr "``\"malloc\"``"
+
+#: ../../c-api/memory.rst:443
+#, fuzzy
+msgid "Debug build, without pymalloc"
+msgstr "Bản dựng gỡ lỗi, không có pymalloc"
+
+#: ../../c-api/memory.rst:443
+#, fuzzy
+msgid "``\"malloc_debug\"``"
+msgstr "``\"malloc_debug\"``"
+
+#: ../../c-api/memory.rst:444
+#, fuzzy
+msgid "Free-threaded build"
+msgstr "Xây dựng theo luồng miễn phí"
+
+#: ../../c-api/memory.rst:444
+#, fuzzy
+msgid "``\"mimalloc\"``"
+msgstr "``\"mimalloc\"``"
+
+#: ../../c-api/memory.rst:444
+#, fuzzy
+msgid "``mimalloc``"
+msgstr "``mimalloc``"
+
+#: ../../c-api/memory.rst:445
+#, fuzzy
+msgid "Free-threaded debug build"
+msgstr "Xây dựng gỡ lỗi theo luồng miễn phí"
+
+#: ../../c-api/memory.rst:445
+#, fuzzy
+msgid "``\"mimalloc_debug\"``"
+msgstr "``\"mimalloc_debug\"``"
+
+#: ../../c-api/memory.rst:445
+#, fuzzy
+msgid "``mimalloc`` + debug"
+msgstr "``mimalloc`` + gỡ lỗi"
+
+#: ../../c-api/memory.rst:448
+#, fuzzy
+msgid "Legend:"
+msgstr "Huyền thoại:"
+
+#: ../../c-api/memory.rst:450
+#, fuzzy
+msgid "Name: value for :envvar:`PYTHONMALLOC` environment variable."
+msgstr "Tên: giá trị cho biến môi trường :envvar:`PYTHONMALLOC`."
+
+#: ../../c-api/memory.rst:451
+#, fuzzy
+msgid ""
+"``malloc``: system allocators from the standard C library, C functions: "
+":c:func:`malloc`, :c:func:`calloc`, :c:func:`realloc` and :c:func:`free`."
+msgstr ""
+"``malloc``: bộ cấp phát hệ thống từ thư viện C tiêu chuẩn, các hàm C: "
+":c:func:`malloc`, :c:func:`calloc`, :c:func:`realloc` và :c:func:`free`."
+
+#: ../../c-api/memory.rst:453
+#, fuzzy
+msgid "``pymalloc``: :ref:`pymalloc memory allocator <pymalloc>`."
+msgstr "``pymalloc``: :ref:`pymalloc memory allocator <pymalloc>`."
+
+#: ../../c-api/memory.rst:454
+#, fuzzy
+msgid "``mimalloc``: :ref:`mimalloc memory allocator <mimalloc>`."
+msgstr "``mimalloc``: :ref:`mimalloc memory allocator <mimalloc>`."
+
+#: ../../c-api/memory.rst:455
+#, fuzzy
+msgid ""
+"\"+ debug\": with :ref:`debug hooks on the Python memory allocators <pymem-"
+"debug-hooks>`."
+msgstr ""
+"\"+ gỡ lỗi\": với :ref:`debug hooks on the Python memory allocators <pymem-"
+"debug-hooks>`."
+
+#: ../../c-api/memory.rst:457
+#, fuzzy
+msgid "\"Debug build\": :ref:`Python build in debug mode <debug-build>`."
+msgstr "\"Bản dựng gỡ lỗi\": :ref:`Python build in debug mode <debug-build>`."
+
+#: ../../c-api/memory.rst:462
+#, fuzzy
+msgid "Customize Memory Allocators"
+msgstr "Tùy chỉnh bộ cấp phát bộ nhớ"
+
+#: ../../c-api/memory.rst:468
+#, fuzzy
+msgid ""
+"Structure used to describe a memory block allocator. The structure has the "
+"following fields:"
+msgstr ""
+"Cấu trúc được sử dụng để mô tả bộ cấp phát khối bộ nhớ. Cấu trúc có các "
+"trường sau:"
+
+#: ../../c-api/memory.rst:472 ../../c-api/memory.rst:723
+#, fuzzy
+msgid "Field"
+msgstr "Cánh đồng"
+
+#: ../../c-api/memory.rst:472 ../../c-api/memory.rst:723
+#, fuzzy
+msgid "Meaning"
+msgstr "Nghĩa"
+
+#: ../../c-api/memory.rst:474 ../../c-api/memory.rst:725
+#, fuzzy
+msgid "``void *ctx``"
+msgstr "``void *ctx``"
+
+#: ../../c-api/memory.rst:474 ../../c-api/memory.rst:725
+#, fuzzy
+msgid "user context passed as first argument"
+msgstr "bối cảnh người dùng được chuyển làm đối số đầu tiên"
+
+#: ../../c-api/memory.rst:476
+#, fuzzy
+msgid "``void* malloc(void *ctx, size_t size)``"
+msgstr "``void* malloc(void *ctx, size_t size)``"
+
+#: ../../c-api/memory.rst:476
+#, fuzzy
+msgid "allocate a memory block"
+msgstr "cấp phát khối bộ nhớ"
+
+#: ../../c-api/memory.rst:478
+#, fuzzy
+msgid "``void* calloc(void *ctx, size_t nelem, size_t elsize)``"
+msgstr "``void* calloc(void *ctx, size_t nelem, size_t elsize)``"
+
+#: ../../c-api/memory.rst:478
+#, fuzzy
+msgid "allocate a memory block initialized with zeros"
+msgstr "phân bổ một khối bộ nhớ được khởi tạo bằng số 0"
+
+#: ../../c-api/memory.rst:481
+#, fuzzy
+msgid "``void* realloc(void *ctx, void *ptr, size_t new_size)``"
+msgstr "``void* realloc(void *ctx, void *ptr, size_t new_size)``"
+
+#: ../../c-api/memory.rst:481
+#, fuzzy
+msgid "allocate or resize a memory block"
+msgstr "phân bổ hoặc thay đổi kích thước khối bộ nhớ"
+
+#: ../../c-api/memory.rst:483
+#, fuzzy
+msgid "``void free(void *ctx, void *ptr)``"
+msgstr "``void free(void *ctx, void *ptr)``"
+
+#: ../../c-api/memory.rst:483
+#, fuzzy
+msgid "free a memory block"
+msgstr "giải phóng một khối bộ nhớ"
+
+#: ../../c-api/memory.rst:486
+#, fuzzy
+msgid ""
+"The :c:type:`!PyMemAllocator` structure was renamed to "
+":c:type:`PyMemAllocatorEx` and a new ``calloc`` field was added."
+msgstr ""
+"Cấu trúc :c:type:`!PyMemAllocator` được đổi tên thành "
+":c:type:`PyMemAllocatorEx` và trường ``calloc`` mới đã được thêm vào."
+
+#: ../../c-api/memory.rst:493
+#, fuzzy
+msgid "Enum used to identify an allocator domain. Domains:"
+msgstr "Enum được sử dụng để xác định miền cấp phát. Tên miền:"
+
+#: ../../c-api/memory.rst:499 ../../c-api/memory.rst:508
+#: ../../c-api/memory.rst:517
+#, fuzzy
+msgid "Functions:"
+msgstr "Chức năng:"
+
+#: ../../c-api/memory.rst:501
+#, fuzzy
+msgid ":c:func:`PyMem_RawMalloc`"
+msgstr ":c:func:`PyMem_RawMalloc`"
+
+#: ../../c-api/memory.rst:502
+#, fuzzy
+msgid ":c:func:`PyMem_RawRealloc`"
+msgstr ":c:func:`PyMem_RawRealloc`"
+
+#: ../../c-api/memory.rst:503
+#, fuzzy
+msgid ":c:func:`PyMem_RawCalloc`"
+msgstr ":c:func:`PyMem_RawCalloc`"
+
+#: ../../c-api/memory.rst:504
+#, fuzzy
+msgid ":c:func:`PyMem_RawFree`"
+msgstr ":c:func:`PyMem_RawFree`"
+
+#: ../../c-api/memory.rst:510
+#, fuzzy
+msgid ":c:func:`PyMem_Malloc`,"
+msgstr ":c:func:`PyMem_Malloc`,"
+
+#: ../../c-api/memory.rst:512
+#, fuzzy
+msgid ":c:func:`PyMem_Calloc`"
+msgstr ":c:func:`PyMem_Calloc`"
+
+#: ../../c-api/memory.rst:522
+#, fuzzy
+msgid ":c:func:`PyObject_Free`"
+msgstr ":c:func:`PyObject_Free`"
+
+#: ../../c-api/memory.rst:526
+#, fuzzy
+msgid "Get the memory block allocator of the specified domain."
+msgstr "Lấy bộ cấp phát khối bộ nhớ của miền được chỉ định."
+
+#: ../../c-api/memory.rst:531
+#, fuzzy
+msgid "Set the memory block allocator of the specified domain."
+msgstr "Đặt bộ cấp phát khối bộ nhớ của miền được chỉ định."
+
+#: ../../c-api/memory.rst:533
+#, fuzzy
+msgid ""
+"The new allocator must return a distinct non-``NULL`` pointer when "
+"requesting zero bytes."
+msgstr ""
+"Bộ cấp phát mới phải trả về một con trỏ không phải ``NULL`` riêng biệt khi "
+"yêu cầu byte 0."
+
+#: ../../c-api/memory.rst:536
+#, fuzzy
+msgid ""
+"For the :c:macro:`PYMEM_DOMAIN_RAW` domain, the allocator must be thread-"
+"safe: a :term:`thread state` is not :term:`attached <attached thread state>`"
+" when the allocator is called."
+msgstr ""
+"Đối với miền :c:macro:`PYMEM_DOMAIN_RAW`, bộ cấp phát phải an toàn theo "
+"luồng: :term:`thread state` không phải là :term:`attached <attached thread "
+"state>` khi bộ cấp phát được gọi."
+
+#: ../../c-api/memory.rst:540
+#, fuzzy
+msgid ""
+"For the remaining domains, the allocator must also be thread-safe: the "
+"allocator may be called in different interpreters that do not share a "
+":term:`GIL`."
+msgstr ""
+"Đối với các miền còn lại, bộ cấp phát cũng phải an toàn theo luồng: bộ cấp "
+"phát có thể được gọi trong các trình thông dịch khác nhau không dùng chung "
+":term:`GIL`."
+
+#: ../../c-api/memory.rst:544
+#, fuzzy
+msgid ""
+"If the new allocator is not a hook (does not call the previous allocator), "
+"the :c:func:`PyMem_SetupDebugHooks` function must be called to reinstall the"
+" debug hooks on top on the new allocator."
+msgstr ""
+"Nếu bộ cấp phát mới không phải là một hook (không gọi bộ cấp phát trước đó),"
+" hàm :c:func:`PyMem_SetupDebugHooks` phải được gọi để cài đặt lại các móc gỡ"
+" lỗi ở trên cùng của bộ cấp phát mới."
+
+#: ../../c-api/memory.rst:548
+#, fuzzy
+msgid ""
+"See also :c:member:`PyPreConfig.allocator` and :ref:`Preinitialize Python "
+"with PyPreConfig <c-preinit>`."
+msgstr ""
+"Xem thêm :c:member:`PyPreConfig.allocator` và :ref:`Preinitialize Python "
+"with PyPreConfig <c-preinit>`."
+
+#: ../../c-api/memory.rst:553
+#, fuzzy
+msgid ":c:func:`PyMem_SetAllocator` does have the following contract:"
+msgstr ":c:func:`PyMem_SetAllocator` có hợp đồng sau:"
+
+#: ../../c-api/memory.rst:555
+#, fuzzy
+msgid ""
+"It can be called after :c:func:`Py_PreInitialize` and before "
+":c:func:`Py_InitializeFromConfig` to install a custom memory allocator. "
+"There are no restrictions over the installed allocator other than the ones "
+"imposed by the domain (for instance, the Raw Domain allows the allocator to "
+"be called without an :term:`attached thread state`). See :ref:`the section "
+"on allocator domains <allocator-domains>` for more information."
+msgstr ""
+"Nó có thể được gọi sau :c:func:`Py_PreInitialize` và trước "
+":c:func:`Py_InitializeFromConfig` để cài đặt bộ cấp phát bộ nhớ tùy chỉnh. "
+"Không có hạn chế nào đối với bộ cấp phát đã cài đặt ngoài những hạn chế do "
+"miền áp đặt (ví dụ: Miền thô cho phép gọi bộ cấp phát mà không cần "
+":term:`attached thread state`). Xem :ref:`the section on allocator domains "
+"<allocator-domains>` để biết thêm thông tin."
+
+#: ../../c-api/memory.rst:563
+#, fuzzy
+msgid ""
+"If called after Python has finish initializing (after "
+":c:func:`Py_InitializeFromConfig` has been called) the allocator **must** "
+"wrap the existing allocator. Substituting the current allocator for some "
+"other arbitrary one is **not supported**."
+msgstr ""
+"Nếu được gọi sau khi Python khởi tạo xong (sau khi "
+":c:func:`Py_InitializeFromConfig` được gọi), bộ cấp phát **must** sẽ bao bọc"
+" bộ cấp phát hiện có. Thay thế bộ cấp phát hiện tại bằng một số tùy ý khác "
+"là **not supported**."
+
+#: ../../c-api/memory.rst:568
+#, fuzzy
+msgid "All allocators must be thread-safe."
+msgstr "Tất cả các bộ cấp phát phải an toàn theo luồng."
+
+#: ../../c-api/memory.rst:574
+#, fuzzy
+msgid ""
+"Setup :ref:`debug hooks in the Python memory allocators <pymem-debug-hooks>`"
+" to detect memory errors."
+msgstr ""
+"Thiết lập :ref:`debug hooks in the Python memory allocators <pymem-debug-"
+"hooks>` để phát hiện lỗi bộ nhớ."
+
+#: ../../c-api/memory.rst:581
+#, fuzzy
+msgid "Debug hooks on the Python memory allocators"
+msgstr "Móc gỡ lỗi trên bộ cấp phát bộ nhớ Python"
+
+#: ../../c-api/memory.rst:583
+#, fuzzy
+msgid ""
+"When :ref:`Python is built in debug mode <debug-build>`, the "
+":c:func:`PyMem_SetupDebugHooks` function is called at the :ref:`Python "
+"preinitialization <c-preinit>` to setup debug hooks on Python memory "
+"allocators to detect memory errors."
+msgstr ""
+"Khi :ref:`Python is built in debug mode <debug-build>`, hàm "
+":c:func:`PyMem_SetupDebugHooks` được gọi tại :ref:`Python preinitialization "
+"<c-preinit>` để thiết lập móc gỡ lỗi trên bộ cấp phát bộ nhớ Python nhằm "
+"phát hiện lỗi bộ nhớ."
+
+#: ../../c-api/memory.rst:588
+#, fuzzy
+msgid ""
+"The :envvar:`PYTHONMALLOC` environment variable can be used to install debug"
+" hooks on a Python compiled in release mode (ex: ``PYTHONMALLOC=debug``)."
+msgstr ""
+"Biến môi trường :envvar:`PYTHONMALLOC` có thể được sử dụng để cài đặt móc gỡ"
+" lỗi trên Python được biên dịch ở chế độ phát hành (ví dụ: "
+"``PYTHONMALLOC=debug``)."
+
+#: ../../c-api/memory.rst:591
+#, fuzzy
+msgid ""
+"The :c:func:`PyMem_SetupDebugHooks` function can be used to set debug hooks "
+"after calling :c:func:`PyMem_SetAllocator`."
+msgstr ""
+"Hàm :c:func:`PyMem_SetupDebugHooks` có thể được sử dụng để đặt móc gỡ lỗi "
+"sau khi gọi :c:func:`PyMem_SetAllocator`."
+
+#: ../../c-api/memory.rst:594
+#, fuzzy
+msgid ""
+"These debug hooks fill dynamically allocated memory blocks with special, "
+"recognizable bit patterns. Newly allocated memory is filled with the byte "
+"``0xCD`` (``PYMEM_CLEANBYTE``), freed memory is filled with the byte "
+"``0xDD`` (``PYMEM_DEADBYTE``). Memory blocks are surrounded by \"forbidden "
+"bytes\" filled with the byte ``0xFD`` (``PYMEM_FORBIDDENBYTE``). Strings of "
+"these bytes are unlikely to be valid addresses, floats, or ASCII strings."
+msgstr ""
+"Các móc gỡ lỗi này lấp đầy các khối bộ nhớ được phân bổ động bằng các mẫu "
+"bit đặc biệt, dễ nhận biết. Bộ nhớ được cấp phát mới chứa byte ``0xCD`` "
+"(``PYMEM_CLEANBYTE``), bộ nhớ giải phóng chứa byte ``0xDD`` "
+"(``PYMEM_DEADBYTE``). Các khối bộ nhớ được bao quanh bởi các \"byte bị cấm\""
+" chứa đầy byte ``0xFD`` (``PYMEM_FORBIDDENBYTE``). Các chuỗi byte này không "
+"chắc là địa chỉ hợp lệ, số float hoặc chuỗi ASCII."
+
+#: ../../c-api/memory.rst:601
+#, fuzzy
+msgid "Runtime checks:"
+msgstr "Kiểm tra thời gian chạy:"
+
+#: ../../c-api/memory.rst:603
+#, fuzzy
+msgid ""
+"Detect API violations. For example, detect if :c:func:`PyObject_Free` is "
+"called on a memory block allocated by :c:func:`PyMem_Malloc`."
+msgstr ""
+"Phát hiện vi phạm API. Ví dụ: phát hiện xem :c:func:`PyObject_Free` có được "
+"gọi trên khối bộ nhớ được phân bổ bởi :c:func:`PyMem_Malloc` hay không."
+
+#: ../../c-api/memory.rst:605
+#, fuzzy
+msgid "Detect write before the start of the buffer (buffer underflow)."
+msgstr "Phát hiện ghi trước khi bắt đầu bộ đệm (tràn bộ đệm)."
+
+#: ../../c-api/memory.rst:606
+#, fuzzy
+msgid "Detect write after the end of the buffer (buffer overflow)."
+msgstr "Phát hiện ghi sau khi kết thúc bộ đệm (tràn bộ đệm)."
+
+#: ../../c-api/memory.rst:607
+#, fuzzy
+msgid ""
+"Check that there is an :term:`attached thread state` when allocator "
+"functions of :c:macro:`PYMEM_DOMAIN_OBJ` (ex: :c:func:`PyObject_Malloc`) and"
+" :c:macro:`PYMEM_DOMAIN_MEM` (ex: :c:func:`PyMem_Malloc`) domains are "
+"called."
+msgstr ""
+"Kiểm tra xem có :term:`attached thread state` hay không khi các hàm cấp phát"
+" của miền :c:macro:`PYMEM_DOMAIN_OBJ` (ví dụ: :c:func:`PyObject_Malloc`) và "
+":c:macro:`PYMEM_DOMAIN_MEM` (ví dụ: :c:func:`PyMem_Malloc`) được gọi."
+
+#: ../../c-api/memory.rst:612
+#, fuzzy
+msgid ""
+"On error, the debug hooks use the :mod:`tracemalloc` module to get the "
+"traceback where a memory block was allocated. The traceback is only "
+"displayed if :mod:`tracemalloc` is tracing Python memory allocations and the"
+" memory block was traced."
+msgstr ""
+"Nếu có lỗi, móc gỡ lỗi sử dụng mô-đun :mod:`tracemalloc` để lấy lại dấu vết "
+"nơi khối bộ nhớ được phân bổ. Truy nguyên chỉ được hiển thị nếu "
+":mod:`tracemalloc` đang theo dõi việc phân bổ bộ nhớ Python và khối bộ nhớ "
+"đã được theo dõi."
+
+#: ../../c-api/memory.rst:617
+#, fuzzy
+msgid ""
+"Let *S* = ``sizeof(size_t)``. ``2*S`` bytes are added at each end of each "
+"block of *N* bytes requested.  The memory layout is like so, where p "
+"represents the address returned by a malloc-like or realloc-like function "
+"(``p[i:j]`` means the slice of bytes from ``*(p+i)`` inclusive up to "
+"``*(p+j)`` exclusive; note that the treatment of negative indices differs "
+"from a Python slice):"
+msgstr ""
+"Đặt *S* = ``sizeof(size_t)``. Các byte ``2*S`` được thêm vào mỗi đầu của mỗi"
+" khối byte *N* được yêu cầu.  Bố cục bộ nhớ là như vậy, trong đó p đại diện "
+"cho địa chỉ được trả về bởi hàm giống malloc hoặc giống realloc (``p[i:j]`` "
+"có nghĩa là lát byte từ ``*(p+i)`` bao gồm tối đa ``*(p+j)`` độc quyền; lưu "
+"ý rằng việc xử lý các chỉ số âm khác với một lát Python):"
+
+#: ../../c-api/memory.rst:623
+#, fuzzy
+msgid "``p[-2*S:-S]``"
+msgstr "``p[-2*S:-S]``"
+
+#: ../../c-api/memory.rst:624
+#, fuzzy
+msgid ""
+"Number of bytes originally asked for.  This is a size_t, big-endian (easier "
+"to read in a memory dump)."
+msgstr ""
+"Số byte được yêu cầu ban đầu.  Đây là size_t, big endian (dễ đọc hơn trong "
+"kết xuất bộ nhớ)."
+
+#: ../../c-api/memory.rst:626
+#, fuzzy
+msgid "``p[-S]``"
+msgstr "``p[-S]``"
+
+#: ../../c-api/memory.rst:627
+#, fuzzy
+msgid "API identifier (ASCII character):"
+msgstr "mã định danh API (ký tự ASCII):"
+
+#: ../../c-api/memory.rst:629
+#, fuzzy
+msgid "``'r'`` for :c:macro:`PYMEM_DOMAIN_RAW`."
+msgstr "``'r'`` cho :c:macro:`PYMEM_DOMAIN_RAW`."
+
+#: ../../c-api/memory.rst:630
+#, fuzzy
+msgid "``'m'`` for :c:macro:`PYMEM_DOMAIN_MEM`."
+msgstr "``'m'`` cho :c:macro:`PYMEM_DOMAIN_MEM`."
+
+#: ../../c-api/memory.rst:631
+#, fuzzy
+msgid "``'o'`` for :c:macro:`PYMEM_DOMAIN_OBJ`."
+msgstr "``'o'`` cho :c:macro:`PYMEM_DOMAIN_OBJ`."
+
+#: ../../c-api/memory.rst:633
+#, fuzzy
+msgid "``p[-S+1:0]``"
+msgstr "``p[-S+1:0]``"
+
+#: ../../c-api/memory.rst:634
+#, fuzzy
+msgid "Copies of PYMEM_FORBIDDENBYTE.  Used to catch under- writes and reads."
+msgstr "Bản sao của PYMEM_FORBIDDENBYTE.  Được sử dụng để bắt lỗi ghi và đọc."
+
+#: ../../c-api/memory.rst:636
+#, fuzzy
+msgid "``p[0:N]``"
+msgstr "``p[0:N]``"
+
+#: ../../c-api/memory.rst:637
+#, fuzzy
+msgid ""
+"The requested memory, filled with copies of PYMEM_CLEANBYTE, used to catch "
+"reference to uninitialized memory.  When a realloc-like function is called "
+"requesting a larger memory block, the new excess bytes are also filled with "
+"PYMEM_CLEANBYTE.  When a free-like function is called, these are overwritten"
+" with PYMEM_DEADBYTE, to catch reference to freed memory.  When a realloc- "
+"like function is called requesting a smaller memory block, the excess old "
+"bytes are also filled with PYMEM_DEADBYTE."
+msgstr ""
+"Bộ nhớ được yêu cầu chứa đầy các bản sao của PYMEM_CLEANBYTE, được sử dụng "
+"để bắt tham chiếu đến bộ nhớ chưa được khởi tạo.  Khi một hàm giống realloc "
+"được gọi yêu cầu khối bộ nhớ lớn hơn, các byte dư thừa mới cũng được lấp đầy"
+" bằng PYMEM_CLEANBYTE.  Khi một hàm giống tự do được gọi, chúng sẽ được ghi "
+"đè bằng PYMEM_DEADBYTE để bắt tham chiếu đến bộ nhớ đã giải phóng.  Khi một "
+"hàm giống realloc được gọi yêu cầu khối bộ nhớ nhỏ hơn, các byte cũ dư thừa "
+"cũng được lấp đầy bằng PYMEM_DEADBYTE."
+
+#: ../../c-api/memory.rst:645
+#, fuzzy
+msgid "``p[N:N+S]``"
+msgstr "``p[N:N+S]``"
+
+#: ../../c-api/memory.rst:646
+#, fuzzy
+msgid "Copies of PYMEM_FORBIDDENBYTE.  Used to catch over- writes and reads."
+msgstr "Bản sao của PYMEM_FORBIDDENBYTE.  Được sử dụng để bắt ghi đè và đọc."
+
+#: ../../c-api/memory.rst:648
+#, fuzzy
+msgid "``p[N+S:N+2*S]``"
+msgstr "``p[N+S:N+2*S]``"
+
+#: ../../c-api/memory.rst:649
+#, fuzzy
+msgid ""
+"Only used if the ``PYMEM_DEBUG_SERIALNO`` macro is defined (not defined by "
+"default)."
+msgstr ""
+"Chỉ được sử dụng nếu macro ``PYMEM_DEBUG_SERIALNO`` được xác định (không "
+"được xác định theo mặc định)."
+
+#: ../../c-api/memory.rst:652
+#, fuzzy
+msgid ""
+"A serial number, incremented by 1 on each call to a malloc-like or realloc-"
+"like function.  Big-endian :c:type:`size_t`.  If \"bad memory\" is detected "
+"later, the serial number gives an excellent way to set a breakpoint on the "
+"next run, to capture the instant at which this block was passed out.  The "
+"static function bumpserialno() in obmalloc.c is the only place the serial "
+"number is incremented, and exists so you can set such a breakpoint easily."
+msgstr ""
+"Một số sê-ri, tăng thêm 1 trên mỗi lệnh gọi tới hàm giống malloc hoặc giống "
+"realloc.  Zz000zz lớn.  Nếu \"bộ nhớ kém\" được phát hiện sau đó, số sê-ri "
+"sẽ là một cách tuyệt vời để đặt điểm dừng trong lần chạy tiếp theo, để ghi "
+"lại thời điểm khối này được chuyển đi.  Hàm tĩnhbumserialno() trong "
+"obmalloc.c là nơi duy nhất số sê-ri được tăng lên và tồn tại để bạn có thể "
+"dễ dàng đặt điểm dừng như vậy."
+
+#: ../../c-api/memory.rst:659
+#, fuzzy
+msgid ""
+"A realloc-like or free-like function first checks that the "
+"PYMEM_FORBIDDENBYTE bytes at each end are intact.  If they've been altered, "
+"diagnostic output is written to stderr, and the program is aborted via "
+"Py_FatalError().  The other main failure mode is provoking a memory error "
+"when a program reads up one of the special bit patterns and tries to use it "
+"as an address.  If you get in a debugger then and look at the object, you're"
+" likely to see that it's entirely filled with PYMEM_DEADBYTE (meaning freed "
+"memory is getting used) or PYMEM_CLEANBYTE (meaning uninitialized memory is "
+"getting used)."
+msgstr ""
+"Trước tiên, một hàm giống realloc hoặc giống tự do sẽ kiểm tra xem các byte "
+"PYMEM_FORBIDDENBYTE ở mỗi đầu có còn nguyên vẹn hay không.  Nếu chúng đã bị "
+"thay đổi, đầu ra chẩn đoán sẽ được ghi vào stderr và chương trình sẽ bị hủy "
+"qua Py_FatalError().  Kiểu lỗi chính khác là gây ra lỗi bộ nhớ khi một "
+"chương trình đọc một trong các mẫu bit đặc biệt và cố gắng sử dụng nó làm "
+"địa chỉ.  Nếu bạn vào trình gỡ lỗi và nhìn vào đối tượng, bạn có thể thấy "
+"rằng nó hoàn toàn chứa đầy PYMEM_DEADBYTE (có nghĩa là bộ nhớ giải phóng "
+"đang được sử dụng) hoặc PYMEM_CLEANBYTE (có nghĩa là bộ nhớ chưa được khởi "
+"tạo đang được sử dụng)."
+
+#: ../../c-api/memory.rst:668
+#, fuzzy
+msgid ""
+"The :c:func:`PyMem_SetupDebugHooks` function now also works on Python "
+"compiled in release mode.  On error, the debug hooks now use "
+":mod:`tracemalloc` to get the traceback where a memory block was allocated. "
+"The debug hooks now also check if there is an :term:`attached thread state` "
+"when functions of :c:macro:`PYMEM_DOMAIN_OBJ` and "
+":c:macro:`PYMEM_DOMAIN_MEM` domains are called."
+msgstr ""
+"Hàm :c:func:`PyMem_SetupDebugHooks` hiện cũng hoạt động trên Python được "
+"biên dịch ở chế độ phát hành.  Do lỗi, các móc gỡ lỗi hiện sử dụng "
+":mod:`tracemalloc` để lấy lại dấu vết nơi khối bộ nhớ được phân bổ. Các móc "
+"gỡ lỗi hiện cũng kiểm tra xem có :term:`attached thread state` hay không khi"
+" các hàm của miền :c:macro:`PYMEM_DOMAIN_OBJ` và :c:macro:`PYMEM_DOMAIN_MEM`"
+" được gọi."
+
+#: ../../c-api/memory.rst:676
+#, fuzzy
+msgid ""
+"Byte patterns ``0xCB`` (``PYMEM_CLEANBYTE``), ``0xDB`` (``PYMEM_DEADBYTE``) "
+"and ``0xFB`` (``PYMEM_FORBIDDENBYTE``) have been replaced with ``0xCD``, "
+"``0xDD`` and ``0xFD`` to use the same values than Windows CRT debug "
+"``malloc()`` and ``free()``."
+msgstr ""
+"Các mẫu byte ``0xCB`` (``PYMEM_CLEANBYTE``), ``0xDB`` (``PYMEM_DEADBYTE``) "
+"và ``0xFB`` (``PYMEM_FORBIDDENBYTE``) đã được thay thế bằng ``0xCD``, "
+"``0xDD`` và ``0xFD`` để sử dụng cùng các giá trị so với Windows CRT debug "
+"``malloc()`` và ``free()``."
+
+#: ../../c-api/memory.rst:686
+#, fuzzy
+msgid "The pymalloc allocator"
+msgstr "Bộ cấp phát pymalloc"
+
+#: ../../c-api/memory.rst:688
+#, fuzzy
+msgid ""
+"Python has a *pymalloc* allocator optimized for small objects (smaller or "
+"equal to 512 bytes) with a short lifetime. It uses memory mappings called "
+"\"arenas\" with a fixed size of either 256 KiB on 32-bit platforms or 1 MiB "
+"on 64-bit platforms. It falls back to :c:func:`PyMem_RawMalloc` and "
+":c:func:`PyMem_RawRealloc` for allocations larger than 512 bytes."
+msgstr ""
+"Python có bộ cấp phát *pymalloc* được tối ưu hóa cho các đối tượng nhỏ (nhỏ "
+"hơn hoặc bằng 512 byte) với thời gian tồn tại ngắn. Nó sử dụng ánh xạ bộ nhớ"
+" được gọi là \"đấu trường\" với kích thước cố định là 256 KiB trên nền tảng "
+"32 bit hoặc 1 MiB trên nền tảng 64 bit. Nó quay trở lại "
+":c:func:`PyMem_RawMalloc` và :c:func:`PyMem_RawRealloc` đối với các phân bổ "
+"lớn hơn 512 byte."
+
+#: ../../c-api/memory.rst:694
+#, fuzzy
+msgid ""
+"*pymalloc* is the :ref:`default allocator <default-memory-allocators>` of "
+"the :c:macro:`PYMEM_DOMAIN_MEM` (ex: :c:func:`PyMem_Malloc`) and "
+":c:macro:`PYMEM_DOMAIN_OBJ` (ex: :c:func:`PyObject_Malloc`) domains."
+msgstr ""
+"*pymalloc* là :ref:`default allocator <default-memory-allocators>` của các "
+"miền :c:macro:`PYMEM_DOMAIN_MEM` (ví dụ: :c:func:`PyMem_Malloc`) và "
+":c:macro:`PYMEM_DOMAIN_OBJ` (ví dụ: :c:func:`PyObject_Malloc`)."
+
+#: ../../c-api/memory.rst:698
+#, fuzzy
+msgid "The arena allocator uses the following functions:"
+msgstr "Bộ cấp phát đấu trường sử dụng các chức năng sau:"
+
+#: ../../c-api/memory.rst:700
+#, fuzzy
+msgid ":c:func:`!VirtualAlloc` and :c:func:`!VirtualFree` on Windows,"
+msgstr ":c:func:`!VirtualAlloc` và :c:func:`!VirtualFree` trên Windows,"
+
+#: ../../c-api/memory.rst:701
+#, fuzzy
+msgid ":c:func:`!mmap` and :c:func:`!munmap` if available,"
+msgstr ":c:func:`!mmap` và :c:func:`!munmap` nếu có,"
+
+#: ../../c-api/memory.rst:702
+#, fuzzy
+msgid ":c:func:`malloc` and :c:func:`free` otherwise."
+msgstr ":c:func:`malloc` và :c:func:`free` nếu không."
+
+#: ../../c-api/memory.rst:704
+#, fuzzy
+msgid ""
+"This allocator is disabled if Python is configured with the "
+":option:`--without-pymalloc` option. It can also be disabled at runtime "
+"using the :envvar:`PYTHONMALLOC` environment variable (ex: "
+"``PYTHONMALLOC=malloc``)."
+msgstr ""
+"Bộ cấp phát này bị vô hiệu hóa nếu Python được định cấu hình với tùy chọn "
+":option:`--without-pymalloc`. Nó cũng có thể bị vô hiệu hóa trong thời gian "
+"chạy bằng cách sử dụng biến môi trường :envvar:`PYTHONMALLOC` (ví dụ: "
+"``PYTHONMALLOC=malloc``)."
+
+#: ../../c-api/memory.rst:708
+#, fuzzy
+msgid ""
+"Typically, it makes sense to disable the pymalloc allocator when building "
+"Python with AddressSanitizer (:option:`--with-address-sanitizer`) which "
+"helps uncover low level bugs within the C code."
+msgstr ""
+"Thông thường, nên tắt bộ cấp phát pymalloc khi xây dựng Python bằng "
+"addressSanitizer (:option:`--with-address-sanitizer`) để giúp phát hiện các "
+"lỗi cấp thấp trong mã C."
+
+#: ../../c-api/memory.rst:713
+#, fuzzy
+msgid "Customize pymalloc Arena Allocator"
+msgstr "Tùy chỉnh Bộ phân bổ Arena pymalloc"
+
+#: ../../c-api/memory.rst:719
+#, fuzzy
+msgid ""
+"Structure used to describe an arena allocator. The structure has three "
+"fields:"
+msgstr ""
+"Cấu trúc được sử dụng để mô tả một bộ cấp phát đấu trường. Cấu trúc có ba "
+"trường:"
+
+#: ../../c-api/memory.rst:727
+#, fuzzy
+msgid "``void* alloc(void *ctx, size_t size)``"
+msgstr "``void* alloc(void *ctx, size_t size)``"
+
+#: ../../c-api/memory.rst:727
+#, fuzzy
+msgid "allocate an arena of size bytes"
+msgstr "phân bổ một trường có kích thước byte"
+
+#: ../../c-api/memory.rst:729
+#, fuzzy
+msgid "``void free(void *ctx, void *ptr, size_t size)``"
+msgstr "``void free(void *ctx, void *ptr, size_t size)``"
+
+#: ../../c-api/memory.rst:729
+#, fuzzy
+msgid "free an arena"
+msgstr "giải phóng một đấu trường"
+
+#: ../../c-api/memory.rst:734
+#, fuzzy
+msgid "Get the arena allocator."
+msgstr "Nhận công cụ phân bổ đấu trường."
+
+#: ../../c-api/memory.rst:738
+#, fuzzy
+msgid "Set the arena allocator."
+msgstr "Đặt bộ phân bổ đấu trường."
+
+#: ../../c-api/memory.rst:743
+#, fuzzy
+msgid "The mimalloc allocator"
+msgstr "Bộ cấp phát mimalloc"
+
+#: ../../c-api/memory.rst:747
+#, fuzzy
+msgid ""
+"Python supports the `mimalloc <https://github.com/microsoft/mimalloc/>`__ "
+"allocator when the underlying platform support is available. mimalloc is a "
+"general purpose allocator with excellent performance characteristics, "
+"initially developed by Daan Leijen for the runtime systems of the Koka and "
+"Lean languages."
+msgstr ""
+"Python hỗ trợ bộ cấp phát `mimalloc "
+"<https://github.com/microsoft/mimalloc/>`__ khi có hỗ trợ nền tảng cơ bản. "
+"mimalloc là một công cụ cấp phát có mục đích chung với các đặc tính hiệu "
+"suất tuyệt vời, ban đầu được Daan Leijen phát triển cho hệ thống thời gian "
+"chạy của ngôn ngữ Koka và Lean."
+
+#: ../../c-api/memory.rst:753
+#, fuzzy
+msgid ""
+"Unlike :ref:`pymalloc <pymalloc>`, which is optimized for small objects (512"
+" bytes or fewer), mimalloc handles allocations of any size."
+msgstr ""
+"Không giống như :ref:`pymalloc <pymalloc>`, được tối ưu hóa cho các đối "
+"tượng nhỏ (512 byte trở xuống), mimalloc xử lý việc phân bổ ở mọi kích "
+"thước."
+
+#: ../../c-api/memory.rst:756
+#, fuzzy
+msgid ""
+"In the :term:`free-threaded <free threading>` build, mimalloc is the default"
+" and **required** allocator for the :c:macro:`PYMEM_DOMAIN_MEM` and "
+":c:macro:`PYMEM_DOMAIN_OBJ` domains.  It cannot be disabled in free-threaded"
+" builds.  The free-threaded build uses per-thread mimalloc heaps, which "
+"allows allocation and deallocation to proceed without locking in most cases."
+msgstr ""
+"Trong bản dựng :term:`free-threaded <free threading>`, mimalloc là bộ cấp "
+"phát mặc định và **required** cho các miền :c:macro:`PYMEM_DOMAIN_MEM` và "
+":c:macro:`PYMEM_DOMAIN_OBJ`.  Nó không thể bị vô hiệu hóa trong các bản dựng"
+" có luồng tự do.  Bản dựng luồng tự do sử dụng các vùng nhớ mimalloc trên "
+"mỗi luồng, cho phép tiến hành phân bổ và giải phóng mà không cần khóa trong "
+"hầu hết các trường hợp."
+
+#: ../../c-api/memory.rst:762
+#, fuzzy
+msgid ""
+"In the default (non-free-threaded) build, mimalloc is available but not the "
+"default allocator.  It can be selected at runtime using "
+":envvar:`PYTHONMALLOC`\\ ``=mimalloc`` (or ``mimalloc_debug`` to include "
+":ref:`debug hooks <pymem-debug-hooks>`).  It can be disabled at build time "
+"using the :option:`--without-mimalloc` configure option, but this option "
+"cannot be combined with :option:`--disable-gil`."
+msgstr ""
+"Trong bản dựng mặc định (không có luồng tự do), mimalloc có sẵn nhưng không "
+"có bộ cấp phát mặc định.  Nó có thể được chọn trong thời gian chạy bằng cách"
+" sử dụng :envvar:`PYTHONMALLOC`\\ ``=mimalloc`` (hoặc ``mimalloc_debug`` để "
+"bao gồm :ref:`debug hooks <pymem-debug-hooks>`).  Nó có thể bị vô hiệu hóa "
+"tại thời điểm xây dựng bằng tùy chọn cấu hình :option:`--without-mimalloc`, "
+"nhưng không thể kết hợp tùy chọn này với :option:`--disable-gil`."
+
+#: ../../c-api/memory.rst:770
+#, fuzzy
+msgid "tracemalloc C API"
+msgstr "tracemalloc C API"
+
+#: ../../c-api/memory.rst:776
+#, fuzzy
+msgid "Track an allocated memory block in the :mod:`tracemalloc` module."
+msgstr "Theo dõi khối bộ nhớ được phân bổ trong mô-đun :mod:`tracemalloc`."
+
+#: ../../c-api/memory.rst:778
+#, fuzzy
+msgid ""
+"Return ``0`` on success, return ``-1`` on error (failed to allocate memory "
+"to store the trace). Return ``-2`` if tracemalloc is disabled."
+msgstr ""
+"Trả về ``0`` nếu thành công, trả về ``-1`` nếu có lỗi (không phân bổ được bộ"
+" nhớ để lưu dấu vết). Trả về ``-2`` nếu tracemalloc bị tắt."
+
+#: ../../c-api/memory.rst:781
+#, fuzzy
+msgid "If memory block is already tracked, update the existing trace."
+msgstr "Nếu khối bộ nhớ đã được theo dõi, hãy cập nhật dấu vết hiện có."
+
+#: ../../c-api/memory.rst:785
+#, fuzzy
+msgid ""
+"Untrack an allocated memory block in the :mod:`tracemalloc` module. Do "
+"nothing if the block was not tracked."
+msgstr ""
+"Bỏ theo dõi khối bộ nhớ được phân bổ trong mô-đun :mod:`tracemalloc`. Không "
+"làm gì nếu khối không được theo dõi."
+
+#: ../../c-api/memory.rst:788
+#, fuzzy
+msgid "Return ``-2`` if tracemalloc is disabled, otherwise return ``0``."
+msgstr "Trả về ``-2`` nếu tracemalloc bị tắt, nếu không thì trả về ``0``."
+
+#: ../../c-api/memory.rst:794
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../c-api/memory.rst:796
+#, fuzzy
+msgid ""
+"Here is the example from section :ref:`memoryoverview`, rewritten so that "
+"the I/O buffer is allocated from the Python heap by using the first function"
+" set::"
+msgstr ""
+"Đây là ví dụ từ phần :ref:`memoryoverview`, được viết lại để bộ đệm I/O được"
+" phân bổ từ vùng heap Python bằng cách sử dụng bộ hàm đầu tiên::"
+
+#: ../../c-api/memory.rst:799
+#, fuzzy
+msgid ""
+"PyObject *res;\n"
+"char *buf = (char *) PyMem_Malloc(BUFSIZ); /* for I/O */\n"
+"\n"
+"if (buf == NULL)\n"
+"    return PyErr_NoMemory();\n"
+"/* ...Do some I/O operation involving buf... */\n"
+"res = PyBytes_FromString(buf);\n"
+"PyMem_Free(buf); /* allocated with PyMem_Malloc */\n"
+"return res;"
+msgstr ""
+"PyObject *res;\n"
+"char *buf = (char *) PyMem_Malloc(BUFSIZ); /* cho I/O */\n"
+"\n"
+"nếu (buf == NULL)\n"
+"    trả về PyErr_NoMemory();\n"
+"/* ...Thực hiện một số thao tác I/O liên quan đến buf... */\n"
+"res = PyBytes_FromString(buf);\n"
+"PyMem_Free(buf); /* được phân bổ bằng PyMem_Malloc */\n"
+"trả lại độ phân giải;"
+
+#: ../../c-api/memory.rst:809
+#, fuzzy
+msgid "The same code using the type-oriented function set::"
+msgstr "Mã tương tự sử dụng bộ hàm định hướng loại ::"
+
+#: ../../c-api/memory.rst:811
+#, fuzzy
+msgid ""
+"PyObject *res;\n"
+"char *buf = PyMem_New(char, BUFSIZ); /* for I/O */\n"
+"\n"
+"if (buf == NULL)\n"
+"    return PyErr_NoMemory();\n"
+"/* ...Do some I/O operation involving buf... */\n"
+"res = PyBytes_FromString(buf);\n"
+"PyMem_Free(buf); /* allocated with PyMem_New */\n"
+"return res;"
+msgstr ""
+"PyObject *res;\n"
+"char *buf = PyMem_New(char, BUFSIZ); /* cho I/O */\n"
+"\n"
+"nếu (buf == NULL)\n"
+"    trả về PyErr_NoMemory();\n"
+"/* ...Thực hiện một số thao tác I/O liên quan đến buf... */\n"
+"res = PyBytes_FromString(buf);\n"
+"PyMem_Free(buf); /* được phân bổ bằng PyMem_New */\n"
+"trả lại độ phân giải;"
+
+#: ../../c-api/memory.rst:821
+#, fuzzy
+msgid ""
+"Note that in the two examples above, the buffer is always manipulated via "
+"functions belonging to the same set. Indeed, it is required to use the same "
+"memory API family for a given memory block, so that the risk of mixing "
+"different allocators is reduced to a minimum. The following code sequence "
+"contains two errors, one of which is labeled as *fatal* because it mixes two"
+" different allocators operating on different heaps. ::"
+msgstr ""
+"Lưu ý rằng trong hai ví dụ trên, bộ đệm luôn được thao tác thông qua các hàm"
+" thuộc cùng một tập hợp. Thật vậy, cần phải sử dụng cùng một họ bộ nhớ API "
+"cho một khối bộ nhớ nhất định để giảm thiểu nguy cơ trộn lẫn các bộ cấp phát"
+" khác nhau. Chuỗi mã sau đây chứa hai lỗi, một trong số đó được gắn nhãn là "
+"*fatal* vì nó trộn lẫn hai bộ cấp phát khác nhau hoạt động trên các vùng nhớ"
+" khác nhau. ::"
+
+#: ../../c-api/memory.rst:828
+#, fuzzy
+msgid ""
+"char *buf1 = PyMem_New(char, BUFSIZ);\n"
+"char *buf2 = (char *) malloc(BUFSIZ);\n"
+"char *buf3 = (char *) PyMem_Malloc(BUFSIZ);\n"
+"...\n"
+"PyMem_Del(buf3);  /* Wrong -- should be PyMem_Free() */\n"
+"free(buf2);       /* Right -- allocated via malloc() */\n"
+"free(buf1);       /* Fatal -- should be PyMem_Free()  */"
+msgstr ""
+"char *buf1 = PyMem_New(char, BUFSIZ);\n"
+"char *buf2 = (char *) malloc(BUFSIZ);\n"
+"char *buf3 = (char *) PyMem_Malloc(BUFSIZ);\n"
+"...\n"
+"PyMem_Del(buf3);  /* Sai -- phải là PyMem_Free() */\n"
+"miễn phí(buf2);       /* Phải -- được phân bổ qua malloc() */\n"
+"miễn phí(buf1);       /* Gây tử vong -- phải là PyMem_Free() */"
+
+#: ../../c-api/memory.rst:836
+#, fuzzy
+msgid ""
+"In addition to the functions aimed at handling raw memory blocks from the "
+"Python heap, objects in Python are allocated and released with "
+":c:macro:`PyObject_New`, :c:macro:`PyObject_NewVar` and "
+":c:func:`PyObject_Free`."
+msgstr ""
+"Ngoài các chức năng nhằm xử lý các khối bộ nhớ thô từ vùng heap Python, các "
+"đối tượng trong Python còn được phân bổ và giải phóng với "
+":c:macro:`PyObject_New`, :c:macro:`PyObject_NewVar` và "
+":c:func:`PyObject_Free`."
+
+#: ../../c-api/memory.rst:840
+#, fuzzy
+msgid ""
+"These will be explained in the next chapter on defining and implementing new"
+" object types in C."
+msgstr ""
+"Những điều này sẽ được giải thích trong chương tiếp theo về việc xác định và"
+" triển khai các loại đối tượng mới trong C."
+
+#: ../../c-api/memory.rst:43
+#, fuzzy
+msgid "malloc (C function)"
+msgstr "malloc (hàm C)"
+
+#: ../../c-api/memory.rst:43
+#, fuzzy
+msgid "calloc (C function)"
+msgstr "calloc (hàm C)"
+
+#: ../../c-api/memory.rst:43
+#, fuzzy
+msgid "realloc (C function)"
+msgstr "realloc (hàm C)"
+
+#: ../../c-api/memory.rst:43
+#, fuzzy
+msgid "free (C function)"
+msgstr "miễn phí (chức năng C)"

@@ -1,0 +1,709 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/contextvars.rst:2
+#, fuzzy
+msgid ":mod:`!contextvars` --- Context Variables"
+msgstr ":mod:`!contextvars` --- Biến ngữ cảnh"
+
+#: ../../library/contextvars.rst:11
+#, fuzzy
+msgid ""
+"This module provides APIs to manage, store, and access context-local state."
+"  The :class:`~contextvars.ContextVar` class is used to declare and work "
+"with *Context Variables*.  The :func:`~contextvars.copy_context` function "
+"and the :class:`~contextvars.Context` class should be used to manage the "
+"current context in asynchronous frameworks."
+msgstr ""
+"Mô-đun này cung cấp các API để quản lý, lưu trữ và truy cập trạng thái cục "
+"bộ theo ngữ cảnh.  Lớp :class:`~contextvars.ContextVar` dùng để khai báo và "
+"làm việc với *Context Variables*.  Nên sử dụng hàm "
+":func:`~contextvars.copy_context` và lớp :class:`~contextvars.Context` để "
+"quản lý bối cảnh hiện tại trong các khung không đồng bộ."
+
+#: ../../library/contextvars.rst:17
+#, fuzzy
+msgid ""
+"Context managers that have state should use Context Variables instead of "
+":func:`threading.local` to prevent their state from bleeding to other code "
+"unexpectedly, when used in concurrent code."
+msgstr ""
+"Trình quản lý bối cảnh có trạng thái nên sử dụng Biến bối cảnh thay vì "
+":func:`threading.local` để ngăn trạng thái của chúng bất ngờ chuyển sang mã "
+"khác khi được sử dụng trong mã đồng thời."
+
+#: ../../library/contextvars.rst:21
+#, fuzzy
+msgid "See also :pep:`567` for additional details."
+msgstr "Xem thêm :pep:`567` để biết thêm chi tiết."
+
+#: ../../library/contextvars.rst:27
+#, fuzzy
+msgid "Context Variables"
+msgstr "Biến bối cảnh"
+
+#: ../../library/contextvars.rst:31
+#, fuzzy
+msgid "This class is used to declare a new Context Variable, e.g.::"
+msgstr "Lớp này được sử dụng để khai báo Biến bối cảnh mới, ví dụ:::"
+
+#: ../../library/contextvars.rst:33
+#, fuzzy
+msgid "var: ContextVar[int] = ContextVar('var', default=42)"
+msgstr "var: ContextVar[int] = ContextVar('var', default=42)"
+
+#: ../../library/contextvars.rst:35
+#, fuzzy
+msgid ""
+"The required *name* parameter is used for introspection and debug purposes."
+msgstr ""
+"Tham số *name* bắt buộc được sử dụng cho mục đích xem xét nội tâm và gỡ lỗi."
+
+#: ../../library/contextvars.rst:38
+#, fuzzy
+msgid ""
+"The optional keyword-only *default* parameter is returned by "
+":meth:`ContextVar.get` when no value for the variable is found in the "
+"current context."
+msgstr ""
+"Tham số *default* chỉ có từ khóa tùy chọn được trả về bởi "
+":meth:`ContextVar.get` khi không tìm thấy giá trị nào cho biến trong ngữ "
+"cảnh hiện tại."
+
+#: ../../library/contextvars.rst:42
+#, fuzzy
+msgid ""
+"**Important:** Context Variables should be created at the top module level "
+"and never in closures.  :class:`Context` objects hold strong references to "
+"context variables which prevents context variables from being properly "
+"garbage collected."
+msgstr ""
+"**Important:** Các biến bối cảnh phải được tạo ở cấp mô-đun cao nhất và "
+"không bao giờ được đóng ở dạng đóng.  Các đối tượng :class:`Context` chứa "
+"các tham chiếu mạnh đến các biến ngữ cảnh, ngăn cản việc thu thập rác đúng "
+"cách."
+
+#: ../../library/contextvars.rst:49
+#, fuzzy
+msgid "The name of the variable.  This is a read-only property."
+msgstr "Tên của biến.  Đây là thuộc tính chỉ đọc."
+
+#: ../../library/contextvars.rst:55
+#, fuzzy
+msgid "Return a value for the context variable for the current context."
+msgstr "Trả về giá trị cho biến bối cảnh cho bối cảnh hiện tại."
+
+#: ../../library/contextvars.rst:57
+#, fuzzy
+msgid ""
+"If there is no value for the variable in the current context, the method "
+"will:"
+msgstr ""
+"Nếu không có giá trị cho biến trong ngữ cảnh hiện tại, phương thức sẽ:"
+
+#: ../../library/contextvars.rst:60
+#, fuzzy
+msgid ""
+"return the value of the *default* argument of the method, if provided; or"
+msgstr ""
+"trả về giá trị của đối số *default* của phương thức, nếu được cung cấp; hoặc"
+
+#: ../../library/contextvars.rst:63
+#, fuzzy
+msgid ""
+"return the default value for the context variable, if it was created with "
+"one; or"
+msgstr ""
+"trả về giá trị mặc định cho biến bối cảnh, nếu nó được tạo bằng một biến bối"
+" cảnh; hoặc"
+
+#: ../../library/contextvars.rst:66
+#, fuzzy
+msgid "raise a :exc:`LookupError`."
+msgstr "tăng :exc:`LookupError`."
+
+#: ../../library/contextvars.rst:70
+#, fuzzy
+msgid ""
+"Call to set a new value for the context variable in the current context."
+msgstr "Gọi để đặt giá trị mới cho biến ngữ cảnh trong ngữ cảnh hiện tại."
+
+#: ../../library/contextvars.rst:73
+#, fuzzy
+msgid ""
+"The required *value* argument is the new value for the context variable."
+msgstr "Đối số *value* bắt buộc là giá trị mới cho biến ngữ cảnh."
+
+#: ../../library/contextvars.rst:76
+#, fuzzy
+msgid ""
+"Returns a :class:`~contextvars.Token` object that can be used to restore the"
+" variable to its previous value via the :meth:`ContextVar.reset` method."
+msgstr ""
+"Trả về một đối tượng :class:`~contextvars.Token` có thể được sử dụng để khôi"
+" phục biến về giá trị trước đó thông qua phương thức "
+":meth:`ContextVar.reset`."
+
+#: ../../library/contextvars.rst:80
+#, fuzzy
+msgid ""
+"For convenience, the token object can be used as a context manager to avoid "
+"calling :meth:`ContextVar.reset` manually::"
+msgstr ""
+"Để thuận tiện, đối tượng mã thông báo có thể được sử dụng làm trình quản lý "
+"bối cảnh để tránh gọi :meth:`ContextVar.reset` theo cách thủ công::"
+
+#: ../../library/contextvars.rst:83
+#, fuzzy
+msgid ""
+"var = ContextVar('var', default='default value')\n"
+"\n"
+"with var.set('new value'):\n"
+"    assert var.get() == 'new value'\n"
+"\n"
+"assert var.get() == 'default value'"
+msgstr ""
+"var = ContextVar('var', default='giá trị mặc định')\n"
+"\n"
+"với var.set('giá trị mới'):\n"
+"    khẳng định var.get() == 'giá trị mới'\n"
+"\n"
+"khẳng định var.get() == 'giá trị mặc định'"
+
+#: ../../library/contextvars.rst:90
+#, fuzzy
+msgid "It is a shorthand for::"
+msgstr "Nó là viết tắt của::"
+
+#: ../../library/contextvars.rst:92
+#, fuzzy
+msgid ""
+"var = ContextVar('var', default='default value')\n"
+"\n"
+"token = var.set('new value')\n"
+"try:\n"
+"    assert var.get() == 'new value'\n"
+"finally:\n"
+"    var.reset(token)\n"
+"\n"
+"assert var.get() == 'default value'"
+msgstr ""
+"var = ContextVar('var', default='giá trị mặc định')\n"
+"\n"
+"token = var.set('giá trị mới')\n"
+"thử:\n"
+"    khẳng định var.get() == 'giá trị mới'\n"
+"cuối cùng:\n"
+"    var.reset(mã thông báo)\n"
+"\n"
+"khẳng định var.get() == 'giá trị mặc định'"
+
+#: ../../library/contextvars.rst:104
+#, fuzzy
+msgid "Added support for using tokens as context managers."
+msgstr ""
+"Đã thêm hỗ trợ cho việc sử dụng mã thông báo làm trình quản lý bối cảnh."
+
+#: ../../library/contextvars.rst:108
+#, fuzzy
+msgid ""
+"Reset the context variable to the value it had before the "
+":meth:`ContextVar.set` that created the *token* was used."
+msgstr ""
+"Đặt lại biến bối cảnh về giá trị mà nó có trước khi :meth:`ContextVar.set` "
+"tạo ra *token* được sử dụng."
+
+#: ../../library/contextvars.rst:111
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../library/contextvars.rst:113
+#, fuzzy
+msgid ""
+"var = ContextVar('var')\n"
+"\n"
+"token = var.set('new value')\n"
+"# code that uses 'var'; var.get() returns 'new value'.\n"
+"var.reset(token)\n"
+"\n"
+"# After the reset call the var has no value again, so\n"
+"# var.get() would raise a LookupError."
+msgstr ""
+"var = ContextVar('var')\n"
+"\n"
+"token = var.set('giá trị mới')\n"
+"# code sử dụng 'var'; var.get() trả về 'giá trị mới'.\n"
+"var.reset(mã thông báo)\n"
+"\n"
+"# After lệnh gọi thiết lập lại var không còn giá trị nữa, vì vậy\n"
+"# var.get() sẽ đưa ra LookupError."
+
+#: ../../library/contextvars.rst:122
+#, fuzzy
+msgid "The same *token* cannot be used twice."
+msgstr "Cùng một *token* không thể được sử dụng hai lần."
+
+#: ../../library/contextvars.rst:127
+#, fuzzy
+msgid ""
+"*Token* objects are returned by the :meth:`ContextVar.set` method. They can "
+"be passed to the :meth:`ContextVar.reset` method to revert the value of the "
+"variable to what it was before the corresponding *set*. A single token "
+"cannot reset a context variable more than once."
+msgstr ""
+"Các đối tượng *Token* được trả về bằng phương thức :meth:`ContextVar.set`. "
+"Chúng có thể được chuyển đến phương thức :meth:`ContextVar.reset` để hoàn "
+"nguyên giá trị của biến về giá trị trước *set* tương ứng. Một mã thông báo "
+"không thể đặt lại biến ngữ cảnh nhiều lần."
+
+#: ../../library/contextvars.rst:132
+#, fuzzy
+msgid ""
+"Tokens support the :ref:`context manager protocol <context-managers>` to "
+"automatically reset context variables. See :meth:`ContextVar.set`."
+msgstr ""
+"Mã thông báo hỗ trợ :ref:`context manager protocol <context-managers>` để tự"
+" động đặt lại các biến ngữ cảnh. Xem :meth:`ContextVar.set`."
+
+#: ../../library/contextvars.rst:137
+#, fuzzy
+msgid "Added support for usage as a context manager."
+msgstr "Đã thêm hỗ trợ cho việc sử dụng làm trình quản lý bối cảnh."
+
+#: ../../library/contextvars.rst:141
+#, fuzzy
+msgid ""
+"A read-only property.  Points to the :class:`ContextVar` object that created"
+" the token."
+msgstr ""
+"Thuộc tính chỉ đọc.  Trỏ tới đối tượng :class:`ContextVar` đã tạo mã thông "
+"báo."
+
+#: ../../library/contextvars.rst:146
+#, fuzzy
+msgid ""
+"A read-only property.  Set to the value the variable had before the "
+":meth:`ContextVar.set` method call that created the token. It points to "
+":attr:`Token.MISSING` if the variable was not set before the call."
+msgstr ""
+"Thuộc tính chỉ đọc.  Đặt thành giá trị mà biến có trước lệnh gọi phương thức"
+" :meth:`ContextVar.set` đã tạo mã thông báo. Nó trỏ đến "
+":attr:`Token.MISSING` nếu biến không được đặt trước cuộc gọi."
+
+#: ../../library/contextvars.rst:153
+#, fuzzy
+msgid "A marker object used by :attr:`Token.old_value`."
+msgstr "Một đối tượng đánh dấu được sử dụng bởi :attr:`Token.old_value`."
+
+#: ../../library/contextvars.rst:157
+#, fuzzy
+msgid "Manual Context Management"
+msgstr "Quản lý bối cảnh thủ công"
+
+#: ../../library/contextvars.rst:161
+#, fuzzy
+msgid "Returns a copy of the current :class:`~contextvars.Context` object."
+msgstr "Trả về bản sao của đối tượng :class:`~contextvars.Context` hiện tại."
+
+#: ../../library/contextvars.rst:163
+#, fuzzy
+msgid ""
+"The following snippet gets a copy of the current context and prints all "
+"variables and their values that are set in it::"
+msgstr ""
+"Đoạn mã sau lấy một bản sao của ngữ cảnh hiện tại và in tất cả các biến cũng"
+" như giá trị của chúng được đặt trong đó::"
+
+#: ../../library/contextvars.rst:166
+#, fuzzy
+msgid ""
+"ctx: Context = copy_context()\n"
+"print(list(ctx.items()))"
+msgstr ""
+"ctx: Bối cảnh = copy_context()\n"
+"in(danh sách(ctx.items()))"
+
+#: ../../library/contextvars.rst:169
+#, fuzzy
+msgid ""
+"The function has an *O*\\ (1) complexity, i.e. works equally fast for "
+"contexts with a few context variables and for contexts that have a lot of "
+"them."
+msgstr ""
+"Hàm này có độ phức tạp *O*\\ (1), tức là hoạt động nhanh như nhau đối với "
+"các ngữ cảnh có một vài biến ngữ cảnh và đối với các ngữ cảnh có nhiều biến "
+"ngữ cảnh."
+
+#: ../../library/contextvars.rst:176
+#, fuzzy
+msgid "A mapping of :class:`ContextVars <ContextVar>` to their values."
+msgstr ""
+"Ánh xạ của :class:`ContextVars <ContextVar>` tới các giá trị của chúng."
+
+#: ../../library/contextvars.rst:178
+#, fuzzy
+msgid ""
+"``Context()`` creates an empty context with no values in it. To get a copy "
+"of the current context use the :func:`~contextvars.copy_context` function."
+msgstr ""
+"``Context()`` tạo một ngữ cảnh trống không có giá trị nào trong đó. Để có "
+"bản sao của ngữ cảnh hiện tại, hãy sử dụng hàm "
+":func:`~contextvars.copy_context`."
+
+#: ../../library/contextvars.rst:182
+#, fuzzy
+msgid ""
+"Each thread has its own effective stack of :class:`!Context` objects.  The "
+":term:`current context` is the :class:`!Context` object at the top of the "
+"current thread's stack.  All :class:`!Context` objects in the stacks are "
+"considered to be *entered*."
+msgstr ""
+"Mỗi luồng có một chồng đối tượng :class:`!Context` hiệu quả riêng.  "
+":term:`current context` là đối tượng :class:`!Context` ở đầu ngăn xếp của "
+"luồng hiện tại.  Tất cả các đối tượng :class:`!Context` trong ngăn xếp được "
+"coi là *entered*."
+
+#: ../../library/contextvars.rst:187
+#, fuzzy
+msgid ""
+"*Entering* a context, which can be done by calling its :meth:`~Context.run` "
+"method, makes the context the current context by pushing it onto the top of "
+"the current thread's context stack."
+msgstr ""
+"*Entering* một bối cảnh, có thể được thực hiện bằng cách gọi phương thức "
+":meth:`~Context.run` của nó, biến bối cảnh thành bối cảnh hiện tại bằng cách"
+" đẩy nó lên trên cùng của ngăn xếp bối cảnh của luồng hiện tại."
+
+#: ../../library/contextvars.rst:191
+#, fuzzy
+msgid ""
+"*Exiting* from the current context, which can be done by returning from the "
+"callback passed to the :meth:`~Context.run` method, restores the current "
+"context to what it was before the context was entered by popping the context"
+" off the top of the context stack."
+msgstr ""
+"*Exiting* từ ngữ cảnh hiện tại, có thể được thực hiện bằng cách quay lại từ "
+"lệnh gọi lại được truyền tới phương thức :meth:`~Context.run`, khôi phục ngữ"
+" cảnh hiện tại về trạng thái trước khi ngữ cảnh được nhập bằng cách bật ngữ "
+"cảnh ra khỏi đầu ngăn xếp ngữ cảnh."
+
+#: ../../library/contextvars.rst:196
+#, fuzzy
+msgid ""
+"Since each thread has its own context stack, :class:`ContextVar` objects "
+"behave in a similar fashion to :func:`threading.local` when values are "
+"assigned in different threads."
+msgstr ""
+"Vì mỗi luồng có ngăn xếp ngữ cảnh riêng nên các đối tượng "
+":class:`ContextVar` hoạt động theo kiểu tương tự như :func:`threading.local`"
+" khi các giá trị được gán trong các luồng khác nhau."
+
+#: ../../library/contextvars.rst:200
+#, fuzzy
+msgid ""
+"Attempting to enter an already entered context, including contexts entered "
+"in other threads, raises a :exc:`RuntimeError`."
+msgstr ""
+"Việc cố gắng nhập ngữ cảnh đã nhập, bao gồm cả ngữ cảnh đã nhập trong các "
+"luồng khác, sẽ gây ra :exc:`RuntimeError`."
+
+#: ../../library/contextvars.rst:203
+#, fuzzy
+msgid "After exiting a context, it can later be re-entered (from any thread)."
+msgstr ""
+"Sau khi thoát khỏi ngữ cảnh, nó có thể được nhập lại sau đó (từ bất kỳ chuỗi"
+" nào)."
+
+#: ../../library/contextvars.rst:205
+#, fuzzy
+msgid ""
+"Any changes to :class:`ContextVar` values via the :meth:`ContextVar.set` "
+"method are recorded in the current context.  The :meth:`ContextVar.get` "
+"method returns the value associated with the current context.  Exiting a "
+"context effectively reverts any changes made to context variables while the "
+"context was entered (if needed, the values can be restored by re-entering "
+"the context)."
+msgstr ""
+"Mọi thay đổi đối với giá trị :class:`ContextVar` thông qua phương thức "
+":meth:`ContextVar.set` đều được ghi lại trong ngữ cảnh hiện tại.  Phương "
+"thức :meth:`ContextVar.get` trả về giá trị được liên kết với ngữ cảnh hiện "
+"tại.  Việc thoát khỏi ngữ cảnh sẽ hoàn nguyên một cách hiệu quả mọi thay đổi"
+" được thực hiện đối với các biến ngữ cảnh trong khi ngữ cảnh được nhập (nếu "
+"cần, các giá trị có thể được khôi phục bằng cách nhập lại ngữ cảnh)."
+
+#: ../../library/contextvars.rst:212
+#, fuzzy
+msgid "Context implements the :class:`collections.abc.Mapping` interface."
+msgstr "Bối cảnh thực hiện giao diện :class:`collections.abc.Mapping`."
+
+#: ../../library/contextvars.rst:216
+#, fuzzy
+msgid ""
+"Enters the Context, executes ``callable(*args, **kwargs)``, then exits the "
+"Context.  Returns *callable*'s return value, or propagates an exception if "
+"one occurred."
+msgstr ""
+"Vào Ngữ cảnh, thực thi ``callable(*args, **kwargs)``, sau đó thoát khỏi Ngữ "
+"cảnh.  Trả về giá trị trả về của *callable* hoặc truyền bá một ngoại lệ nếu "
+"xảy ra."
+
+#: ../../library/contextvars.rst:220
+#, fuzzy
+msgid "Example:"
+msgstr "Ví dụ:"
+
+#: ../../library/contextvars.rst:222
+#, fuzzy
+msgid ""
+"import contextvars\n"
+"\n"
+"var = contextvars.ContextVar('var')\n"
+"var.set('spam')\n"
+"print(var.get())  # 'spam'\n"
+"\n"
+"ctx = contextvars.copy_context()\n"
+"\n"
+"def main():\n"
+"    # 'var' was set to 'spam' before\n"
+"    # calling 'copy_context()' and 'ctx.run(main)', so:\n"
+"    print(var.get())  # 'spam'\n"
+"    print(ctx[var])  # 'spam'\n"
+"\n"
+"    var.set('ham')\n"
+"\n"
+"    # Now, after setting 'var' to 'ham':\n"
+"    print(var.get())  # 'ham'\n"
+"    print(ctx[var])  # 'ham'\n"
+"\n"
+"# Any changes that the 'main' function makes to 'var'\n"
+"# will be contained in 'ctx'.\n"
+"ctx.run(main)\n"
+"\n"
+"# The 'main()' function was run in the 'ctx' context,\n"
+"# so changes to 'var' are contained in it:\n"
+"print(ctx[var])  # 'ham'\n"
+"\n"
+"# However, outside of 'ctx', 'var' is still set to 'spam':\n"
+"print(var.get())  # 'spam'"
+msgstr ""
+"nhập ngữ cảnh\n"
+"\n"
+"var = contextvars.ContextVar('var')\n"
+"var.set('thư rác')\n"
+"print(var.get()) # 'spam'\n"
+"\n"
+"ctx = bối cảnh.copy_context()\n"
+"\n"
+"chắc chắn chính():\n"
+"    # 'var' trước đây được đặt thành 'spam'\n"
+"    # calling 'copy_context()' và 'ctx.run(main)', vì vậy:\n"
+"    print(var.get()) # 'spam'\n"
+"    print(ctx[var]) # 'spam'\n"
+"\n"
+"    var.set('ham')\n"
+"\n"
+"    # Now, sau khi đặt 'var' thành 'ham':\n"
+"    print(var.get()) # 'ham'\n"
+"    print(ctx[var]) # 'ham'\n"
+"\n"
+"# Any thay đổi hàm 'main' thành 'var'\n"
+"# will được chứa trong 'ctx'.\n"
+"ctx.run(chính)\n"
+"\n"
+"Hàm # The 'main()' đã được chạy trong ngữ cảnh 'ctx',\n"
+"# so thay đổi thành 'var' được chứa trong đó:\n"
+"print(ctx[var]) # 'ham'\n"
+"\n"
+"# However, ngoài 'ctx', 'var' vẫn được đặt thành 'spam':\n"
+"print(var.get()) # 'spam'"
+
+#: ../../library/contextvars.rst:268
+#, fuzzy
+msgid "Return a shallow copy of the context object."
+msgstr "Trả về một bản sao nông của đối tượng bối cảnh."
+
+#: ../../library/contextvars.rst:272
+#, fuzzy
+msgid ""
+"Return ``True`` if the *context* has a value for *var* set; return ``False``"
+" otherwise."
+msgstr ""
+"Trả về ``True`` nếu *context* có giá trị cho bộ *var*; trả lại ``False`` nếu"
+" không."
+
+#: ../../library/contextvars.rst:277
+#, fuzzy
+msgid ""
+"Return the value of the *var* :class:`ContextVar` variable. If the variable "
+"is not set in the context object, a :exc:`KeyError` is raised."
+msgstr ""
+"Trả về giá trị của biến *var* :class:`ContextVar`. Nếu biến không được đặt "
+"trong đối tượng ngữ cảnh, :exc:`KeyError` sẽ được nâng lên."
+
+#: ../../library/contextvars.rst:283
+#, fuzzy
+msgid ""
+"Return the value for *var* if *var* has the value in the context object.  "
+"Return *default* otherwise.  If *default* is not given, return ``None``."
+msgstr ""
+"Trả về giá trị cho *var* nếu *var* có giá trị trong đối tượng ngữ cảnh.  Trả"
+" về *default* nếu không.  Nếu *default* không được cung cấp, hãy trả về "
+"``None``."
+
+#: ../../library/contextvars.rst:289
+#, fuzzy
+msgid "Return an iterator over the variables stored in the context object."
+msgstr ""
+"Trả về một trình vòng lặp qua các biến được lưu trữ trong đối tượng ngữ "
+"cảnh."
+
+#: ../../library/contextvars.rst:294
+#, fuzzy
+msgid "Return the number of variables set in the context object."
+msgstr "Trả về số lượng biến được đặt trong đối tượng bối cảnh."
+
+#: ../../library/contextvars.rst:298
+#, fuzzy
+msgid "Return a list of all variables in the context object."
+msgstr "Trả về danh sách tất cả các biến trong đối tượng ngữ cảnh."
+
+#: ../../library/contextvars.rst:302
+#, fuzzy
+msgid "Return a list of all variables' values in the context object."
+msgstr ""
+"Trả về danh sách giá trị của tất cả các biến trong đối tượng ngữ cảnh."
+
+#: ../../library/contextvars.rst:307
+#, fuzzy
+msgid ""
+"Return a list of 2-tuples containing all variables and their values in the "
+"context object."
+msgstr ""
+"Trả về danh sách gồm 2 bộ chứa tất cả các biến và giá trị của chúng trong "
+"đối tượng ngữ cảnh."
+
+#: ../../library/contextvars.rst:312
+#, fuzzy
+msgid "asyncio support"
+msgstr "hỗ trợ asyncio"
+
+#: ../../library/contextvars.rst:314
+#, fuzzy
+msgid ""
+"Context variables are natively supported in :mod:`asyncio` and are ready to "
+"be used without any extra configuration.  For example, here is a simple echo"
+" server, that uses a context variable to make the address of a remote client"
+" available in the Task that handles that client::"
+msgstr ""
+"Các biến bối cảnh được hỗ trợ nguyên bản trong :mod:`asyncio` và sẵn sàng sử"
+" dụng mà không cần bất kỳ cấu hình bổ sung nào.  Ví dụ: đây là một máy chủ "
+"echo đơn giản, sử dụng biến ngữ cảnh để cung cấp địa chỉ của máy khách từ xa"
+" trong Tác vụ xử lý máy khách đó::"
+
+#: ../../library/contextvars.rst:320
+#, python-brace-format, fuzzy
+msgid ""
+"import asyncio\n"
+"import contextvars\n"
+"\n"
+"client_addr_var = contextvars.ContextVar('client_addr')\n"
+"\n"
+"def render_goodbye():\n"
+"    # The address of the currently handled client can be accessed\n"
+"    # without passing it explicitly to this function.\n"
+"\n"
+"    client_addr = client_addr_var.get()\n"
+"    return f'Good bye, client @ {client_addr}\\r\\n'.encode()\n"
+"\n"
+"async def handle_request(reader, writer):\n"
+"    addr = writer.transport.get_extra_info('socket').getpeername()\n"
+"    client_addr_var.set(addr)\n"
+"\n"
+"    # In any code that we call is now possible to get\n"
+"    # client's address by calling 'client_addr_var.get()'.\n"
+"\n"
+"    while True:\n"
+"        line = await reader.readline()\n"
+"        print(line)\n"
+"        if not line.strip():\n"
+"            break\n"
+"\n"
+"    writer.write(b'HTTP/1.1 200 OK\\r\\n')  # status line\n"
+"    writer.write(b'\\r\\n')  # headers\n"
+"    writer.write(render_goodbye())  # body\n"
+"    writer.close()\n"
+"\n"
+"async def main():\n"
+"    srv = await asyncio.start_server(\n"
+"        handle_request, '127.0.0.1', 8081)\n"
+"\n"
+"    async with srv:\n"
+"        await srv.serve_forever()\n"
+"\n"
+"asyncio.run(main())\n"
+"\n"
+"# To test it you can use telnet or curl:\n"
+"#     telnet 127.0.0.1 8081\n"
+"#     curl 127.0.0.1:8081"
+msgstr ""
+"nhập asyncio\n"
+"nhập ngữ cảnh\n"
+"\n"
+"client_addr_var = contextvars.ContextVar('client_addr')\n"
+"\n"
+"chắc chắn render_goodbye():\n"
+"    Có thể truy cập địa chỉ # The của máy khách hiện đang được xử lý\n"
+"    # without chuyển nó một cách rõ ràng tới hàm này.\n"
+"\n"
+"    client_addr = client_addr_var.get()\n"
+"    return f'Tạm biệt khách hàng @ {client_addr}\\r\\n'.encode()\n"
+"\n"
+"async def hand_request(reader, writer):\n"
+"    addr = writer.transport.get_extra_info('socket').getpeername()\n"
+"    client_addr_var.set(addr)\n"
+"\n"
+"    # In bất kỳ mã nào chúng tôi gọi hiện đều có thể nhận được\n"
+"    địa chỉ của # client bằng cách gọi 'client_addr_var.get()'.\n"
+"\n"
+"    trong khi Đúng:\n"
+"        dòng = đang chờ reader.readline()\n"
+"        in (dòng)\n"
+"        nếu không phải là line.strip():\n"
+"            phá vỡ\n"
+"\n"
+"    writer.write(b'HTTP/1.1 200 OK\\r\\n') dòng # status\n"
+"    writer.write(b'\\r\\n') # headers\n"
+"    writer.write(render_goodbye()) # body\n"
+"    nhà văn.close()\n"
+"\n"
+"async def main():\n"
+"    srv = đang chờ asyncio.start_server(\n"
+"        hand_request, '127.0.0.1', 8081)\n"
+"\n"
+"    không đồng bộ với srv:\n"
+"        đang chờ srv.serve_forever()\n"
+"\n"
+"asyncio.run(chính())\n"
+"\n"
+"# To kiểm tra xem bạn có thể sử dụng telnet hoặc cuộn tròn:\n"
+"#     telnet 127.0.0.1 8081\n"
+"#     curl 127.0.0.1:8081"

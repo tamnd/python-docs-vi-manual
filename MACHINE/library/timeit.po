@@ -1,0 +1,756 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/timeit.rst:2
+#, fuzzy
+msgid ":mod:`!timeit` --- Measure execution time of small code snippets"
+msgstr ":mod:`!timeit` --- Đo thời gian thực thi các đoạn mã nhỏ"
+
+#: ../../library/timeit.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/timeit.py`"
+msgstr "**Source code:** :source:`Lib/timeit.py`"
+
+#: ../../library/timeit.rst:15
+#, fuzzy
+msgid ""
+"This module provides a simple way to time small bits of Python code. It has "
+"both a :ref:`timeit-command-line-interface` as well as a :ref:`callable "
+"<python-interface>` one.  It avoids a number of common traps for measuring "
+"execution times. See also Tim Peters' introduction to the \"Algorithms\" "
+"chapter in the second edition of *Python Cookbook*, published by O'Reilly."
+msgstr ""
+"Mô-đun này cung cấp một cách đơn giản để tính thời gian cho các đoạn mã "
+"Python nhỏ. Nó có cả :ref:`timeit-command-line-interface` cũng như "
+":ref:`callable <python-interface>`.  Nó tránh được một số bẫy phổ biến để đo"
+" thời gian thực hiện. Xem thêm phần giới thiệu của Tim Peters về chương "
+"\"Thuật toán\" trong ấn bản thứ hai của *Python Cookbook*, do O'Reilly xuất "
+"bản."
+
+#: ../../library/timeit.rst:23
+#, fuzzy
+msgid "Basic Examples"
+msgstr "Ví dụ cơ bản"
+
+#: ../../library/timeit.rst:25
+#, fuzzy
+msgid ""
+"The following example shows how the :ref:`timeit-command-line-interface` can"
+" be used to compare three different expressions:"
+msgstr ""
+"Ví dụ sau đây cho thấy cách sử dụng :ref:`timeit-command-line-interface` để "
+"so sánh ba biểu thức khác nhau:"
+
+#: ../../library/timeit.rst:28
+#, fuzzy
+msgid ""
+"$ python -m timeit \"'-'.join(str(n) for n in range(100))\"\n"
+"10000 loops, best of 5: 30.2 usec per loop\n"
+"$ python -m timeit \"'-'.join([str(n) for n in range(100)])\"\n"
+"10000 loops, best of 5: 27.5 usec per loop\n"
+"$ python -m timeit \"'-'.join(map(str, range(100)))\"\n"
+"10000 loops, best of 5: 23.2 usec per loop"
+msgstr ""
+"$ python -m timeit \"'-'.join(str(n) for n in range(100))\"\n"
+"10000 vòng lặp, tốt nhất là 5: 30,2 usec mỗi vòng lặp\n"
+"$ python -m timeit \"'-'.join([str(n) for n in range(100)])\"\n"
+"10000 vòng lặp, tốt nhất là 5: 27,5 usec mỗi vòng lặp\n"
+"$ python -m timeit \"'-'.join(map(str, range(100)))\"\n"
+"10000 vòng, tốt nhất là 5: 23,2 usec mỗi vòng"
+
+#: ../../library/timeit.rst:37
+#, fuzzy
+msgid "This can be achieved from the :ref:`python-interface` with::"
+msgstr "Điều này có thể đạt được từ :ref:`python-interface` với::"
+
+#: ../../library/timeit.rst:39
+#, fuzzy
+msgid ""
+">>> import timeit\n"
+">>> timeit.timeit('\"-\".join(str(n) for n in range(100))', number=10000)\n"
+"0.3018611848820001\n"
+">>> timeit.timeit('\"-\".join([str(n) for n in range(100)])', number=10000)\n"
+"0.2727368790656328\n"
+">>> timeit.timeit('\"-\".join(map(str, range(100)))', number=10000)\n"
+"0.23702679807320237"
+msgstr ""
+">>> nhập thời gian\n"
+">>> timeit.timeit('\"-\".join(str(n) for n in range(100))', number=10000)\n"
+"0.3018611848820001\n"
+">>> timeit.timeit('\"-\".join([str(n) for n in range(100)])', number=10000)\n"
+"0.2727368790656328\n"
+">>> timeit.timeit('\"-\".join(map(str, range(100)))', number=10000)\n"
+"0.23702679807320237"
+
+#: ../../library/timeit.rst:47
+#, fuzzy
+msgid "A callable can also be passed from the :ref:`python-interface`::"
+msgstr "Một lệnh gọi cũng có thể được truyền từ :ref:`python-interface`::"
+
+#: ../../library/timeit.rst:49
+#, fuzzy
+msgid ""
+">>> timeit.timeit(lambda: \"-\".join(map(str, range(100))), number=10000)\n"
+"0.19665591977536678"
+msgstr ""
+">>> timeit.timeit(lambda: \"-\".join(map(str, range(100))), number=10000)\n"
+"0.19665591977536678"
+
+#: ../../library/timeit.rst:52
+#, fuzzy
+msgid ""
+"Note however that :func:`.timeit` will automatically determine the number of"
+" repetitions only when the command-line interface is used.  In the "
+":ref:`timeit-examples` section you can find more advanced examples."
+msgstr ""
+"Tuy nhiên, xin lưu ý rằng :func:`.timeit` sẽ tự động xác định số lần lặp lại"
+" khi sử dụng giao diện dòng lệnh.  Trong phần :ref:`timeit-examples` bạn có "
+"thể tìm thấy các ví dụ nâng cao hơn."
+
+#: ../../library/timeit.rst:60
+#, fuzzy
+msgid "Python Interface"
+msgstr "Giao diện Python"
+
+#: ../../library/timeit.rst:62
+#, fuzzy
+msgid "The module defines three convenience functions and a public class:"
+msgstr "Mô-đun này xác định ba hàm tiện lợi và một lớp công khai:"
+
+#: ../../library/timeit.rst:67
+#, fuzzy
+msgid ""
+"Create a :class:`Timer` instance with the given statement, *setup* code and "
+"*timer* function and run its :meth:`.timeit` method with *number* "
+"executions. The optional *globals* argument specifies a namespace in which "
+"to execute the code."
+msgstr ""
+"Tạo một phiên bản :class:`Timer` với câu lệnh đã cho, mã *setup* và hàm "
+"*timer* rồi chạy phương thức :meth:`.timeit` của nó với các lần thực thi "
+"*number*. Đối số *globals* tùy chọn chỉ định một không gian tên để thực thi "
+"mã."
+
+#: ../../library/timeit.rst:72 ../../library/timeit.rst:83
+#: ../../library/timeit.rst:122
+#, fuzzy
+msgid "The optional *globals* parameter was added."
+msgstr "Tham số *globals* tùy chọn đã được thêm vào."
+
+#: ../../library/timeit.rst:78
+#, fuzzy
+msgid ""
+"Create a :class:`Timer` instance with the given statement, *setup* code and "
+"*timer* function and run its :meth:`.repeat` method with the given *repeat* "
+"count and *number* executions.  The optional *globals* argument specifies a "
+"namespace in which to execute the code."
+msgstr ""
+"Tạo một phiên bản :class:`Timer` với câu lệnh đã cho, mã *setup* và hàm "
+"*timer* rồi chạy phương thức :meth:`.repeat` của nó với số lần thực thi "
+"*repeat* và *number* đã cho.  Đối số *globals* tùy chọn chỉ định một không "
+"gian tên để thực thi mã."
+
+#: ../../library/timeit.rst:86 ../../library/timeit.rst:183
+#, fuzzy
+msgid "Default value of *repeat* changed from 3 to 5."
+msgstr "Giá trị mặc định của *repeat* đã thay đổi từ 3 thành 5."
+
+#: ../../library/timeit.rst:92
+#, fuzzy
+msgid ""
+"The default timer, which is always time.perf_counter(), returns float "
+"seconds. An alternative, time.perf_counter_ns, returns integer nanoseconds."
+msgstr ""
+"Bộ hẹn giờ mặc định, luôn là time.perf_counter(), trả về số float. Một cách "
+"khác, time.perf_counter_ns, trả về số nguyên nano giây."
+
+#: ../../library/timeit.rst:95
+#, fuzzy
+msgid ":func:`time.perf_counter` is now the default timer."
+msgstr ":func:`time.perf_counter` hiện là bộ đếm thời gian mặc định."
+
+#: ../../library/timeit.rst:101
+#, fuzzy
+msgid "Class for timing execution speed of small code snippets."
+msgstr "Lớp dành cho tốc độ thực thi thời gian của các đoạn mã nhỏ."
+
+#: ../../library/timeit.rst:103
+#, fuzzy
+msgid ""
+"The constructor takes a statement to be timed, an additional statement used "
+"for setup, and a timer function.  Both statements default to ``'pass'``; the"
+" timer function is platform-dependent (see the module doc string). *stmt* "
+"and *setup* may also contain multiple statements separated by ``;`` or "
+"newlines, as long as they don't contain multi-line string literals.  The "
+"statement will by default be executed within timeit's namespace; this "
+"behavior can be controlled by passing a namespace to *globals*."
+msgstr ""
+"Hàm tạo lấy một câu lệnh để tính thời gian, một câu lệnh bổ sung được sử "
+"dụng để thiết lập và một hàm hẹn giờ.  Cả hai câu lệnh đều mặc định là "
+"``'pass'``; chức năng hẹn giờ phụ thuộc vào nền tảng (xem chuỗi tài liệu mô-"
+"đun). *stmt* và *setup* cũng có thể chứa nhiều câu lệnh được phân tách bằng "
+"``;`` hoặc dòng mới, miễn là chúng không chứa các chuỗi ký tự nhiều dòng.  "
+"Theo mặc định, câu lệnh sẽ được thực thi trong không gian tên của timeit; "
+"hành vi này có thể được kiểm soát bằng cách chuyển một không gian tên tới "
+"*globals*."
+
+#: ../../library/timeit.rst:111
+#, fuzzy
+msgid ""
+"To measure the execution time of the first statement, use the "
+":meth:`.timeit` method.  The :meth:`.repeat` and :meth:`.autorange` methods "
+"are convenience methods to call :meth:`.timeit` multiple times."
+msgstr ""
+"Để đo thời gian thực hiện của câu lệnh đầu tiên, hãy sử dụng phương thức "
+":meth:`.timeit`.  Các phương thức :meth:`.repeat` và :meth:`.autorange` là "
+"các phương thức tiện lợi để gọi :meth:`.timeit` nhiều lần."
+
+#: ../../library/timeit.rst:115
+#, fuzzy
+msgid ""
+"The execution time of *setup* is excluded from the overall timed execution "
+"run."
+msgstr ""
+"Thời gian thực thi của *setup* được loại trừ khỏi quá trình thực thi được "
+"tính thời gian tổng thể."
+
+#: ../../library/timeit.rst:117
+#, fuzzy
+msgid ""
+"The *stmt* and *setup* parameters can also take objects that are callable "
+"without arguments.  This will embed calls to them in a timer function that "
+"will then be executed by :meth:`.timeit`.  Note that the timing overhead is "
+"a little larger in this case because of the extra function calls."
+msgstr ""
+"Các tham số *stmt* và *setup* cũng có thể lấy các đối tượng có thể gọi được "
+"mà không cần đối số.  Điều này sẽ nhúng các cuộc gọi đến chúng trong một "
+"chức năng hẹn giờ, sau đó sẽ được :meth:`.timeit` thực thi.  Lưu ý rằng chi "
+"phí thời gian lớn hơn một chút trong trường hợp này do có các lệnh gọi hàm "
+"bổ sung."
+
+#: ../../library/timeit.rst:127
+#, fuzzy
+msgid ""
+"Time *number* executions of the main statement.  This executes the setup "
+"statement once, and then returns the time it takes to execute the main "
+"statement a number of times.  The default timer returns seconds as a float. "
+"The argument is the number of times through the loop, defaulting to one "
+"million.  The main statement, the setup statement and the timer function to "
+"be used are passed to the constructor."
+msgstr ""
+"Thời gian thực thi *number* của câu lệnh chính.  Điều này thực thi câu lệnh "
+"thiết lập một lần và sau đó trả về thời gian cần thiết để thực thi câu lệnh "
+"chính một số lần.  Bộ hẹn giờ mặc định trả về giây dưới dạng float. Đối số "
+"là số lần thực hiện vòng lặp, mặc định là một triệu.  Câu lệnh chính, câu "
+"lệnh thiết lập và hàm hẹn giờ sẽ được sử dụng sẽ được chuyển đến hàm tạo."
+
+#: ../../library/timeit.rst:136
+#, fuzzy
+msgid ""
+"By default, :meth:`.timeit` temporarily turns off :term:`garbage collection`"
+" during the timing.  The advantage of this approach is that it makes "
+"independent timings more comparable.  The disadvantage is that GC may be an "
+"important component of the performance of the function being measured.  If "
+"so, GC can be re-enabled as the first statement in the *setup* string.  For "
+"example::"
+msgstr ""
+"Theo mặc định, :meth:`.timeit` tạm thời tắt :term:`garbage collection` trong"
+" thời gian tính giờ.  Ưu điểm của phương pháp này là nó làm cho việc định "
+"thời gian độc lập trở nên dễ so sánh hơn.  Điểm bất lợi là GC có thể là một "
+"thành phần quan trọng trong việc thực hiện chức năng được đo.  Nếu vậy, GC "
+"có thể được kích hoạt lại dưới dạng câu lệnh đầu tiên trong chuỗi *setup*.  "
+"Ví dụ::"
+
+#: ../../library/timeit.rst:143
+#, fuzzy
+msgid "timeit.Timer('for i in range(10): oct(i)', 'gc.enable()').timeit()"
+msgstr "timeit.Timer('for i in range(10): oct(i)', 'gc.enable()').timeit()"
+
+#: ../../library/timeit.rst:148
+#, fuzzy
+msgid "Automatically determine how many times to call :meth:`.timeit`."
+msgstr "Tự động xác định số lần gọi :meth:`.timeit`."
+
+#: ../../library/timeit.rst:150
+#, fuzzy
+msgid ""
+"This is a convenience function that calls :meth:`.timeit` repeatedly so that"
+" the total time >= 0.2 second, returning the eventual (number of loops, time"
+" taken for that number of loops). It calls :meth:`.timeit` with increasing "
+"numbers from the sequence 1, 2, 5, 10, 20, 50, ... until the time taken is "
+"at least 0.2 seconds."
+msgstr ""
+"Đây là một hàm tiện lợi gọi :meth:`.timeit` liên tục sao cho tổng thời gian "
+">= 0,2 giây, trả về kết quả cuối cùng (số vòng lặp, thời gian thực hiện cho "
+"số vòng lặp đó). Nó gọi :meth:`.timeit` với số lượng tăng dần từ dãy 1, 2, "
+"5, 10, 20, 50,... cho đến khi hết thời gian ít nhất là 0,2 giây."
+
+#: ../../library/timeit.rst:156
+#, fuzzy
+msgid ""
+"If *callback* is given and is not ``None``, it will be called after each "
+"trial with two arguments: ``callback(number, time_taken)``."
+msgstr ""
+"Nếu *callback* được đưa ra và không phải là ``None``, nó sẽ được gọi sau mỗi"
+" lần thử với hai đối số: ``callback(number, time_taken)``."
+
+#: ../../library/timeit.rst:164
+#, fuzzy
+msgid "Call :meth:`.timeit` a few times."
+msgstr "Gọi :meth:`.timeit` vài lần."
+
+#: ../../library/timeit.rst:166
+#, fuzzy
+msgid ""
+"This is a convenience function that calls the :meth:`.timeit` repeatedly, "
+"returning a list of results.  The first argument specifies how many times to"
+" call :meth:`.timeit`.  The second argument specifies the *number* argument "
+"for :meth:`.timeit`."
+msgstr ""
+"Đây là một chức năng tiện lợi gọi :meth:`.timeit` liên tục, trả về danh sách"
+" kết quả.  Đối số đầu tiên chỉ định số lần gọi :meth:`.timeit`.  Đối số thứ "
+"hai chỉ định đối số *number* cho :meth:`.timeit`."
+
+#: ../../library/timeit.rst:173
+#, fuzzy
+msgid ""
+"It's tempting to calculate mean and standard deviation from the result "
+"vector and report these.  However, this is not very useful. In a typical "
+"case, the lowest value gives a lower bound for how fast your machine can run"
+" the given code snippet; higher values in the result vector are typically "
+"not caused by variability in Python's speed, but by other processes "
+"interfering with your timing accuracy. So the :func:`min` of the result is "
+"probably the only number you should be interested in.  After that, you "
+"should look at the entire vector and apply common sense rather than "
+"statistics."
+msgstr ""
+"Thật thú vị khi tính giá trị trung bình và độ lệch chuẩn từ vectơ kết quả và"
+" báo cáo những điều này.  Tuy nhiên, điều này không hữu ích lắm. Trong "
+"trường hợp điển hình, giá trị thấp nhất đưa ra giới hạn dưới về tốc độ máy "
+"của bạn có thể chạy đoạn mã đã cho; các giá trị cao hơn trong vectơ kết quả "
+"thường không phải do sự thay đổi về tốc độ của Python mà do các quá trình "
+"khác cản trở độ chính xác về thời gian của bạn. Vì vậy, :func:`min` của kết "
+"quả có lẽ là con số duy nhất bạn nên quan tâm. Sau đó, bạn nên xem xét toàn "
+"bộ vectơ và áp dụng cảm giác thông thường hơn là thống kê."
+
+#: ../../library/timeit.rst:189
+#, fuzzy
+msgid "Helper to print a traceback from the timed code."
+msgstr "Trình trợ giúp in dấu vết từ mã thời gian."
+
+#: ../../library/timeit.rst:191
+#, fuzzy
+msgid "Typical use::"
+msgstr "Sử dụng điển hình::"
+
+#: ../../library/timeit.rst:193
+#, fuzzy
+msgid ""
+"t = Timer(...)       # outside the try/except\n"
+"try:\n"
+"    t.timeit(...)    # or t.repeat(...)\n"
+"except Exception:\n"
+"    t.print_exc()"
+msgstr ""
+"t = Hẹn giờ(...) # outside thử/ngoại trừ\n"
+"thử:\n"
+"    t.timeit(...) # or t.repeat(...)\n"
+"ngoại trừ Ngoại lệ:\n"
+"    t.print_exc()"
+
+#: ../../library/timeit.rst:199
+#, fuzzy
+msgid ""
+"The advantage over the standard traceback is that source lines in the "
+"compiled template will be displayed.  The optional *file* argument directs "
+"where the traceback is sent; it defaults to :data:`sys.stderr`."
+msgstr ""
+"Ưu điểm so với truy nguyên tiêu chuẩn là các dòng nguồn trong mẫu đã biên "
+"dịch sẽ được hiển thị.  Đối số *file* tùy chọn chỉ dẫn nơi gửi truy nguyên; "
+"nó mặc định là :data:`sys.stderr`."
+
+#: ../../library/timeit.rst:207
+#, fuzzy
+msgid "Command-Line Interface"
+msgstr "Giao diện dòng lệnh"
+
+#: ../../library/timeit.rst:209
+#, fuzzy
+msgid ""
+"When called as a program from the command line, the following form is used::"
+msgstr ""
+"Khi được gọi là một chương trình từ dòng lệnh, biểu mẫu sau được sử dụng ::"
+
+#: ../../library/timeit.rst:211
+#, fuzzy
+msgid ""
+"python -m timeit [-n N] [-r N] [-u U] [-s S] [-p] [-v] [-h] [statement ...]"
+msgstr ""
+"python -m timeit [-n N] [-r N] [-u U] [-s S] [-p] [-v] [-h] [câu lệnh ...]"
+
+#: ../../library/timeit.rst:213
+#, fuzzy
+msgid "Where the following options are understood:"
+msgstr "Trường hợp các tùy chọn sau được hiểu:"
+
+#: ../../library/timeit.rst:219
+#, fuzzy
+msgid "how many times to execute 'statement'"
+msgstr "bao nhiêu lần để thực hiện 'câu lệnh'"
+
+#: ../../library/timeit.rst:223
+#, fuzzy
+msgid "how many times to repeat the timer (default 5)"
+msgstr "bao nhiêu lần để lặp lại bộ đếm thời gian (mặc định 5)"
+
+#: ../../library/timeit.rst:227
+#, fuzzy
+msgid "statement to be executed once initially (default ``pass``)"
+msgstr "câu lệnh được thực thi một lần ban đầu (``pass`` mặc định)"
+
+#: ../../library/timeit.rst:231
+#, fuzzy
+msgid ""
+"measure process time, not wallclock time, using :func:`time.process_time` "
+"instead of :func:`time.perf_counter`, which is the default"
+msgstr ""
+"đo thời gian xử lý, không phải thời gian treo tường, sử dụng "
+":func:`time.process_time` thay vì :func:`time.perf_counter`, đây là mặc định"
+
+#: ../../library/timeit.rst:238
+#, fuzzy
+msgid ""
+"specify a time unit for timer output; can select ``nsec``, ``usec``, "
+"``msec``, or ``sec``"
+msgstr ""
+"chỉ định đơn vị thời gian cho đầu ra bộ đếm thời gian; có thể chọn ``nsec``,"
+" ``usec``, ``msec`` hoặc ``sec``"
+
+#: ../../library/timeit.rst:244
+#, fuzzy
+msgid "print raw timing results; repeat for more digits precision"
+msgstr "in kết quả thời gian thô; lặp lại để có độ chính xác cao hơn"
+
+#: ../../library/timeit.rst:248
+#, fuzzy
+msgid "print a short usage message and exit"
+msgstr "in một thông báo sử dụng ngắn và thoát"
+
+#: ../../library/timeit.rst:250
+#, fuzzy
+msgid ""
+"A multi-line statement may be given by specifying each line as a separate "
+"statement argument; indented lines are possible by enclosing an argument in "
+"quotes and using leading spaces.  Multiple :option:`-s` options are treated "
+"similarly."
+msgstr ""
+"Một câu lệnh nhiều dòng có thể được đưa ra bằng cách chỉ định mỗi dòng làm "
+"một đối số câu lệnh riêng biệt; Có thể thụt dòng bằng cách đặt đối số trong "
+"dấu ngoặc kép và sử dụng dấu cách ở đầu.  Nhiều tùy chọn :option:`-s` được "
+"xử lý tương tự."
+
+#: ../../library/timeit.rst:255
+#, fuzzy
+msgid ""
+"If :option:`-n` is not given, a suitable number of loops is calculated by "
+"trying increasing numbers from the sequence 1, 2, 5, 10, 20, 50, ... until "
+"the total time is at least 0.2 seconds."
+msgstr ""
+"Nếu không đưa ra :option:`-n`, số vòng lặp phù hợp sẽ được tính bằng cách "
+"thử tăng số lượng từ dãy 1, 2, 5, 10, 20, 50, ... cho đến khi tổng thời gian"
+" ít nhất là 0,2 giây."
+
+#: ../../library/timeit.rst:259
+#, fuzzy
+msgid ""
+":func:`default_timer` measurements can be affected by other programs running"
+" on the same machine, so the best thing to do when accurate timing is "
+"necessary is to repeat the timing a few times and use the best time.  The "
+":option:`-r` option is good for this; the default of 5 repetitions is "
+"probably enough in most cases.  You can use :func:`time.process_time` to "
+"measure CPU time."
+msgstr ""
+"Các phép đo :func:`default_timer` có thể bị ảnh hưởng bởi các chương trình "
+"khác đang chạy trên cùng một máy, vì vậy điều tốt nhất nên làm khi cần tính "
+"thời gian chính xác là lặp lại thời gian một vài lần và sử dụng thời gian "
+"tốt nhất.  Tùy chọn :option:`-r` phù hợp cho việc này; mặc định 5 lần lặp "
+"lại có lẽ là đủ trong hầu hết các trường hợp.  Bạn có thể sử dụng "
+":func:`time.process_time` để đo thời gian CPU."
+
+#: ../../library/timeit.rst:267
+#, fuzzy
+msgid ""
+"There is a certain baseline overhead associated with executing a pass "
+"statement. The code here doesn't try to hide it, but you should be aware of "
+"it.  The baseline overhead can be measured by invoking the program without "
+"arguments, and it might differ between Python versions."
+msgstr ""
+"Có một chi phí cơ bản nhất định liên quan đến việc thực thi một câu lệnh "
+"vượt qua. Mã ở đây không cố gắng che giấu nó, nhưng bạn nên biết về nó.  Chi"
+" phí cơ bản có thể được đo bằng cách gọi chương trình mà không có đối số và "
+"nó có thể khác nhau giữa các phiên bản Python."
+
+#: ../../library/timeit.rst:276
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/timeit.rst:278
+#, fuzzy
+msgid ""
+"It is possible to provide a setup statement that is executed only once at "
+"the beginning:"
+msgstr ""
+"Có thể cung cấp một câu lệnh thiết lập chỉ được thực hiện một lần khi bắt "
+"đầu:"
+
+#: ../../library/timeit.rst:280
+#, fuzzy
+msgid ""
+"$ python -m timeit -s \"text = 'sample string'; char = 'g'\" \"char in text\"\n"
+"5000000 loops, best of 5: 0.0877 usec per loop\n"
+"$ python -m timeit -s \"text = 'sample string'; char = 'g'\" \"text.find(char)\"\n"
+"1000000 loops, best of 5: 0.342 usec per loop"
+msgstr ""
+"$ python -m timeit -s \"text = 'chuỗi mẫu'; char = 'g'\" \"char trong văn bản\"\n"
+"5000000 vòng lặp, tốt nhất là 5: 0,0877 usec mỗi vòng lặp\n"
+"$ python -m timeit -s \"text = 'chuỗi mẫu'; char = 'g'\" \"text.find(char)\"\n"
+"1000000 vòng lặp, tốt nhất là 5: 0,342 usec mỗi vòng lặp"
+
+#: ../../library/timeit.rst:287
+#, fuzzy
+msgid ""
+"In the output, there are three fields. The loop count, which tells you how "
+"many times the statement body was run per timing loop repetition. The "
+"repetition count ('best of 5') which tells you how many times the timing "
+"loop was repeated, and finally the time the statement body took on average "
+"within the best repetition of the timing loop. That is, the time the fastest"
+" repetition took divided by the loop count."
+msgstr ""
+"Trong đầu ra, có ba trường. Số vòng lặp cho bạn biết số lần nội dung câu "
+"lệnh được chạy trong mỗi lần lặp lại vòng lặp định thời gian. Số lần lặp lại"
+" (\"tốt nhất trong 5\") cho bạn biết vòng lặp thời gian được lặp lại bao "
+"nhiêu lần và cuối cùng là thời gian trung bình của nội dung câu lệnh trong "
+"lần lặp lại tốt nhất của vòng lặp thời gian. Tức là lấy thời gian lặp lại "
+"nhanh nhất chia cho số vòng lặp."
+
+#: ../../library/timeit.rst:296
+#, fuzzy
+msgid ""
+">>> import timeit\n"
+">>> timeit.timeit('char in text', setup='text = \"sample string\"; char = \"g\"')\n"
+"0.41440500499993504\n"
+">>> timeit.timeit('text.find(char)', setup='text = \"sample string\"; char = \"g\"')\n"
+"1.7246671520006203"
+msgstr ""
+">>> nhập thời gian\n"
+">>> timeit.timeit('char trong văn bản', setup='text = \"chuỗi mẫu\"; char = \"g\"')\n"
+"0.41440500499993504\n"
+">>> timeit.timeit('text.find(char)', setup='text = \"chuỗi mẫu\"; char = \"g\"')\n"
+"1.7246671520006203"
+
+#: ../../library/timeit.rst:302
+#, fuzzy
+msgid "The same can be done using the :class:`Timer` class and its methods::"
+msgstr ""
+"Điều tương tự có thể được thực hiện bằng cách sử dụng lớp :class:`Timer` và "
+"các phương thức của nó ::"
+
+#: ../../library/timeit.rst:304
+#, fuzzy
+msgid ""
+">>> import timeit\n"
+">>> t = timeit.Timer('char in text', setup='text = \"sample string\"; char = \"g\"')\n"
+">>> t.timeit()\n"
+"0.3955516149999312\n"
+">>> t.repeat()\n"
+"[0.40183617287970225, 0.37027556854118704, 0.38344867356679524, 0.3712595970846668, 0.37866875250654886]"
+msgstr ""
+">>> nhập thời gian\n"
+">>> t = timeit.Timer('char trong văn bản', setup='text = \"chuỗi mẫu\"; char = \"g\"')\n"
+">>> t.timeit()\n"
+"0.3955516149999312\n"
+">>> t.repeat()\n"
+"[0,40183617287970225, 0,37027556854118704, 0,38344867356679524, 0,3712595970846668, 0,37866875250654886]"
+
+#: ../../library/timeit.rst:312
+#, fuzzy
+msgid ""
+"The following examples show how to time expressions that contain multiple "
+"lines. Here we compare the cost of using :func:`hasattr` vs. "
+":keyword:`try`/:keyword:`except` to test for missing and present object "
+"attributes:"
+msgstr ""
+"Các ví dụ sau đây cho thấy cách tính thời gian cho các biểu thức có nhiều "
+"dòng. Ở đây chúng tôi so sánh chi phí sử dụng :func:`hasattr` với "
+":keyword:`try`/:keyword:`except` để kiểm tra các thuộc tính đối tượng bị "
+"thiếu và hiện tại:"
+
+#: ../../library/timeit.rst:316
+#, fuzzy
+msgid ""
+"$ python -m timeit \"try:\" \"  str.__bool__\" \"except AttributeError:\" \"  pass\"\n"
+"20000 loops, best of 5: 15.7 usec per loop\n"
+"$ python -m timeit \"if hasattr(str, '__bool__'): pass\"\n"
+"50000 loops, best of 5: 4.26 usec per loop\n"
+"\n"
+"$ python -m timeit \"try:\" \"  int.__bool__\" \"except AttributeError:\" \"  pass\"\n"
+"200000 loops, best of 5: 1.43 usec per loop\n"
+"$ python -m timeit \"if hasattr(int, '__bool__'): pass\"\n"
+"100000 loops, best of 5: 2.23 usec per loop"
+msgstr ""
+"$ python -m timeit \"thử:\" \" str.__bool__\" \"ngoại trừ AttributionError:\" \" pass\"\n"
+"20000 vòng lặp, tốt nhất là 5: 15,7 usec mỗi vòng lặp\n"
+"$ python -m timeit \"if hasattr(str, '__bool__'): vượt qua\"\n"
+"50000 vòng lặp, tốt nhất là 5: 4,26 usec mỗi vòng lặp\n"
+"\n"
+"$ python -m timeit \"try:\" \" int.__bool__\" \"ngoại trừ AttributionError:\" \" pass\"\n"
+"200000 vòng lặp, tốt nhất là 5: 1,43 usec mỗi vòng lặp\n"
+"$ python -m timeit \"if hasattr(int, '__bool__'): vượt qua\"\n"
+"100000 vòng lặp, tốt nhất là 5: 2,23 usec mỗi vòng lặp"
+
+#: ../../library/timeit.rst:330
+#, fuzzy
+msgid ""
+">>> import timeit\n"
+">>> # attribute is missing\n"
+">>> s = \"\"\"\\\n"
+"... try:\n"
+"...     str.__bool__\n"
+"... except AttributeError:\n"
+"...     pass\n"
+"... \"\"\"\n"
+">>> timeit.timeit(stmt=s, number=100000)\n"
+"0.9138244460009446\n"
+">>> s = \"if hasattr(str, '__bool__'): pass\"\n"
+">>> timeit.timeit(stmt=s, number=100000)\n"
+"0.5829014980008651\n"
+">>>\n"
+">>> # attribute is present\n"
+">>> s = \"\"\"\\\n"
+"... try:\n"
+"...     int.__bool__\n"
+"... except AttributeError:\n"
+"...     pass\n"
+"... \"\"\"\n"
+">>> timeit.timeit(stmt=s, number=100000)\n"
+"0.04215312199994514\n"
+">>> s = \"if hasattr(int, '__bool__'): pass\"\n"
+">>> timeit.timeit(stmt=s, number=100000)\n"
+"0.08588060699912603"
+msgstr ""
+">>> nhập thời gian\n"
+">>> # attribute bị thiếu\n"
+">>> s = \"\"\"\\\n"
+"... thử:\n"
+"... str.__bool__\n"
+"... ngoại trừ AttributionError:\n"
+"... vượt qua\n"
+"... \"\"\"\n"
+">>> timeit.timeit(stmt=s, number=100000)\n"
+"0.9138244460009446\n"
+">>> s = \"if hasattr(str, '__bool__'): vượt qua\"\n"
+">>> timeit.timeit(stmt=s, number=100000)\n"
+"0,5829014980008651\n"
+">>>\n"
+">>> # attribute có mặt\n"
+">>> s = \"\"\"\\\n"
+"... thử:\n"
+"... int.__bool__\n"
+"... ngoại trừ AttributionError:\n"
+"... vượt qua\n"
+"... \"\"\"\n"
+">>> timeit.timeit(stmt=s, number=100000)\n"
+"0,04215312199994514\n"
+">>> s = \"if hasattr(int, '__bool__'): vượt qua\"\n"
+">>> timeit.timeit(stmt=s, number=100000)\n"
+"0,08588060699912603"
+
+#: ../../library/timeit.rst:358
+#, fuzzy
+msgid ""
+"To give the :mod:`!timeit` module access to functions you define, you can "
+"pass a *setup* parameter which contains an import statement::"
+msgstr ""
+"Để cấp cho mô-đun :mod:`!timeit` quyền truy cập vào các hàm bạn xác định, "
+"bạn có thể chuyển tham số *setup* chứa câu lệnh nhập ::"
+
+#: ../../library/timeit.rst:361
+#, fuzzy
+msgid ""
+"def test():\n"
+"    \"\"\"Stupid test function\"\"\"\n"
+"    L = [i for i in range(100)]\n"
+"\n"
+"if __name__ == '__main__':\n"
+"    import timeit\n"
+"    print(timeit.timeit(\"test()\", setup=\"from __main__ import test\"))"
+msgstr ""
+"kiểm tra chắc chắn():\n"
+"    \"\"\"Chức năng kiểm tra ngu ngốc\"\"\"\n"
+"    L = [i cho i trong phạm vi (100)]\n"
+"\n"
+"nếu __name__ == '__main__':\n"
+"    thời gian nhập khẩu\n"
+"    print(timeit.timeit(\"test()\", setup=\"from __main__ import test\"))"
+
+#: ../../library/timeit.rst:369
+#, fuzzy
+msgid ""
+"Another option is to pass :func:`globals` to the  *globals* parameter, which"
+" will cause the code to be executed within your current global namespace.  "
+"This can be more convenient than individually specifying imports::"
+msgstr ""
+"Một tùy chọn khác là chuyển :func:`globals` cho tham số *globals*, điều này "
+"sẽ khiến mã được thực thi trong không gian tên chung hiện tại của bạn.  Điều"
+" này có thể thuận tiện hơn việc chỉ định riêng từng lần nhập::"
+
+#: ../../library/timeit.rst:373
+#, fuzzy
+msgid ""
+"def f(x):\n"
+"    return x**2\n"
+"def g(x):\n"
+"    return x**4\n"
+"def h(x):\n"
+"    return x**8\n"
+"\n"
+"import timeit\n"
+"print(timeit.timeit('[func(42) for func in (f,g,h)]', globals=globals()))"
+msgstr ""
+"định nghĩa f(x):\n"
+"    trả lại x**2\n"
+"định nghĩa g(x):\n"
+"    trả lại x**4\n"
+"định nghĩa h(x):\n"
+"    trả lại x**8\n"
+"\n"
+"thời gian nhập khẩu\n"
+"print(timeit.timeit('[func(42) for func in (f,g,h)]', Globals=globals()))"
+
+#: ../../library/timeit.rst:9
+#, fuzzy
+msgid "Benchmarking"
+msgstr "Đo điểm chuẩn"
+
+#: ../../library/timeit.rst:9
+#, fuzzy
+msgid "Performance"
+msgstr "Hiệu suất"

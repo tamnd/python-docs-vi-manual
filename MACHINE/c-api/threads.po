@@ -1,0 +1,1712 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/threads.rst:6
+#, fuzzy
+msgid "Thread states and the global interpreter lock"
+msgstr "Trạng thái luồng và khóa trình thông dịch chung"
+
+#: ../../c-api/threads.rst:13
+#, fuzzy
+msgid ""
+"Unless on a :term:`free-threaded build` of :term:`CPython`, the Python "
+"interpreter is generally not thread-safe.  In order to support multi-"
+"threaded Python programs, there's a global lock, called the :term:`global "
+"interpreter lock` or :term:`GIL`, that must be held by a thread before "
+"accessing Python objects. Without the lock, even the simplest operations "
+"could cause problems in a multi-threaded program: for example, when two "
+"threads simultaneously increment the reference count of the same object, the"
+" reference count could end up being incremented only once instead of twice."
+msgstr ""
+"Trừ khi trên :term:`free-threaded build` của :term:`CPython`, trình thông "
+"dịch Python thường không an toàn theo luồng.  Để hỗ trợ các chương trình "
+"Python đa luồng, có một khóa chung, được gọi là :term:`global interpreter "
+"lock` hoặc :term:`GIL`, phải được giữ bởi một luồng trước khi truy cập các "
+"đối tượng Python. Nếu không có khóa, ngay cả những thao tác đơn giản nhất "
+"cũng có thể gây ra sự cố trong chương trình đa luồng: ví dụ: khi hai luồng "
+"đồng thời tăng số lượng tham chiếu của cùng một đối tượng, thì số lượng tham"
+" chiếu có thể chỉ tăng một lần thay vì hai lần."
+
+#: ../../c-api/threads.rst:22
+#, fuzzy
+msgid ""
+"As such, only a thread that holds the GIL may operate on Python objects or "
+"invoke Python's C API."
+msgstr ""
+"Như vậy, chỉ một luồng chứa GIL mới có thể hoạt động trên các đối tượng "
+"Python hoặc gọi C API của Python."
+
+#: ../../c-api/threads.rst:27
+#, fuzzy
+msgid ""
+"In order to emulate concurrency, the interpreter regularly tries to switch "
+"threads between bytecode instructions (see :func:`sys.setswitchinterval`). "
+"This is why locks are also necessary for thread-safety in pure-Python code."
+msgstr ""
+"Để mô phỏng sự tương tranh, trình thông dịch thường xuyên cố gắng chuyển đổi"
+" các luồng giữa các lệnh mã byte (xem :func:`sys.setswitchinterval`). Đây là"
+" lý do tại sao khóa cũng cần thiết để đảm bảo an toàn cho luồng trong mã "
+"Python thuần túy."
+
+#: ../../c-api/threads.rst:31
+#, fuzzy
+msgid ""
+"Additionally, the global interpreter lock is released around blocking I/O "
+"operations, such as reading or writing to a file. From the C API, this is "
+"done by :ref:`detaching the thread state <detaching-thread-state>`."
+msgstr ""
+"Ngoài ra, khóa trình thông dịch toàn cầu được phát hành xung quanh việc chặn"
+" các hoạt động I/O, chẳng hạn như đọc hoặc ghi vào tệp. Từ C API, việc này "
+"được thực hiện bởi :ref:`detaching the thread state <detaching-thread-"
+"state>`."
+
+#: ../../c-api/threads.rst:39
+#, fuzzy
+msgid ""
+"The Python interpreter keeps some thread-local information inside a data "
+"structure called :c:type:`PyThreadState`, known as a :term:`thread state`. "
+"Each thread has a thread-local pointer to a :c:type:`PyThreadState`; a "
+"thread state referenced by this pointer is considered to be :term:`attached "
+"<attached thread state>`."
+msgstr ""
+"Trình thông dịch Python lưu giữ một số thông tin cục bộ theo luồng bên trong"
+" cấu trúc dữ liệu có tên là :c:type:`PyThreadState`, còn được gọi là "
+":term:`thread state`. Mỗi luồng có một con trỏ cục bộ luồng tới "
+":c:type:`PyThreadState`; trạng thái luồng được tham chiếu bởi con trỏ này "
+"được coi là :term:`attached <attached thread state>`."
+
+#: ../../c-api/threads.rst:44
+#, fuzzy
+msgid ""
+"A thread can only have one :term:`attached thread state` at a time. An "
+"attached thread state is typically analogous with holding the GIL, except on"
+" free-threaded builds.  On builds with the GIL enabled, attaching a thread "
+"state will block until the GIL can be acquired. However, even on builds with"
+" the GIL disabled, it is still required to have an attached thread state, as"
+" the interpreter needs to keep track of which threads may access Python "
+"objects."
+msgstr ""
+"Một chủ đề chỉ có thể có một :term:`attached thread state` tại một thời "
+"điểm. Trạng thái luồng đính kèm thường tương tự như việc giữ GIL, ngoại trừ "
+"trên các bản dựng có luồng tự do.  Trên các bản dựng đã bật GIL, việc đính "
+"kèm trạng thái luồng sẽ chặn cho đến khi có thể lấy được GIL. Tuy nhiên, "
+"ngay cả trên các bản dựng bị tắt GIL, vẫn cần phải có trạng thái luồng đính "
+"kèm, vì trình thông dịch cần theo dõi xem luồng nào có thể truy cập các đối "
+"tượng Python."
+
+#: ../../c-api/threads.rst:53
+#, fuzzy
+msgid ""
+"Even on the free-threaded build, attaching a thread state may block, as the "
+"GIL can be re-enabled or threads might be temporarily suspended (such as "
+"during a garbage collection)."
+msgstr ""
+"Ngay cả trên bản dựng có luồng tự do, việc gắn trạng thái luồng có thể bị "
+"chặn vì GIL có thể được bật lại hoặc các luồng có thể bị tạm dừng (chẳng hạn"
+" như trong quá trình thu gom rác)."
+
+#: ../../c-api/threads.rst:57
+#, fuzzy
+msgid ""
+"Generally, there will always be an attached thread state when using Python's"
+" C API, including during embedding and when implementing methods, so it's "
+"uncommon to need to set up a thread state on your own. Only in some specific"
+" cases, such as in a :c:macro:`Py_BEGIN_ALLOW_THREADS` block or in a fresh "
+"thread, will the thread not have an attached thread state. If uncertain, "
+"check if :c:func:`PyThreadState_GetUnchecked` returns ``NULL``."
+msgstr ""
+"Nói chung, sẽ luôn có trạng thái luồng đính kèm khi sử dụng C API của "
+"Python, bao gồm cả trong quá trình nhúng và khi triển khai các phương thức, "
+"do đó, bạn không cần phải tự mình thiết lập trạng thái luồng. Chỉ trong một "
+"số trường hợp cụ thể, chẳng hạn như trong khối "
+":c:macro:`Py_BEGIN_ALLOW_THREADS` hoặc trong một luồng mới, luồng đó sẽ "
+"không có trạng thái luồng được đính kèm. Nếu không chắc chắn, hãy kiểm tra "
+"xem :c:func:`PyThreadState_GetUnchecked` có trả về ``NULL`` hay không."
+
+#: ../../c-api/threads.rst:64
+#, fuzzy
+msgid ""
+"If it turns out that you do need to create a thread state, call "
+":c:func:`PyThreadState_New` followed by :c:func:`PyThreadState_Swap`, or use"
+" the dangerous :c:func:`PyGILState_Ensure` function."
+msgstr ""
+"Nếu hóa ra bạn cần tạo trạng thái luồng, hãy gọi :c:func:`PyThreadState_New`"
+" theo sau là :c:func:`PyThreadState_Swap` hoặc sử dụng chức năng "
+":c:func:`PyGILState_Ensure` nguy hiểm."
+
+#: ../../c-api/threads.rst:72
+#, fuzzy
+msgid "Detaching the thread state from extension code"
+msgstr "Tách trạng thái luồng khỏi mã mở rộng"
+
+#: ../../c-api/threads.rst:74
+#, fuzzy
+msgid ""
+"Most extension code manipulating the :term:`thread state` has the following "
+"simple structure::"
+msgstr ""
+"Hầu hết mã mở rộng thao tác :term:`thread state` đều có cấu trúc đơn giản "
+"sau::"
+
+#: ../../c-api/threads.rst:77
+#, fuzzy
+msgid ""
+"Save the thread state in a local variable.\n"
+"... Do some blocking I/O operation ...\n"
+"Restore the thread state from the local variable."
+msgstr ""
+"Lưu trạng thái luồng trong một biến cục bộ.\n"
+"... Thực hiện một số thao tác chặn I/O ...\n"
+"Khôi phục trạng thái luồng từ biến cục bộ."
+
+#: ../../c-api/threads.rst:81
+#, fuzzy
+msgid "This is so common that a pair of macros exists to simplify it::"
+msgstr "Điều này phổ biến đến mức tồn tại một cặp macro để đơn giản hóa nó ::"
+
+#: ../../c-api/threads.rst:83
+#, fuzzy
+msgid ""
+"Py_BEGIN_ALLOW_THREADS\n"
+"... Do some blocking I/O operation ...\n"
+"Py_END_ALLOW_THREADS"
+msgstr ""
+"Py_BEGIN_ALLOW_THREADS\n"
+"... Thực hiện một số thao tác chặn I/O ...\n"
+"Py_END_ALLOW_THREADS"
+
+#: ../../c-api/threads.rst:91
+#, fuzzy
+msgid ""
+"The :c:macro:`Py_BEGIN_ALLOW_THREADS` macro opens a new block and declares a"
+" hidden local variable; the :c:macro:`Py_END_ALLOW_THREADS` macro closes the"
+" block."
+msgstr ""
+"Macro :c:macro:`Py_BEGIN_ALLOW_THREADS` mở một khối mới và khai báo một biến"
+" cục bộ ẩn; macro :c:macro:`Py_END_ALLOW_THREADS` đóng khối."
+
+#: ../../c-api/threads.rst:95
+#, fuzzy
+msgid "The block above expands to the following code::"
+msgstr "Khối ở trên mở rộng thành đoạn mã sau::"
+
+#: ../../c-api/threads.rst:97
+#, fuzzy
+msgid ""
+"PyThreadState *_save;\n"
+"\n"
+"_save = PyEval_SaveThread();\n"
+"... Do some blocking I/O operation ...\n"
+"PyEval_RestoreThread(_save);"
+msgstr ""
+"PyThreadState *_save;\n"
+"\n"
+"_save = PyEval_SaveThread();\n"
+"... Thực hiện một số thao tác chặn I/O ...\n"
+"PyEval_RestoreThread(_save);"
+
+#: ../../c-api/threads.rst:107
+#, fuzzy
+msgid "Here is how these functions work:"
+msgstr "Đây là cách các chức năng này hoạt động:"
+
+#: ../../c-api/threads.rst:109
+#, fuzzy
+msgid ""
+"The attached thread state implies that the GIL is held for the interpreter. "
+"To detach it, :c:func:`PyEval_SaveThread` is called and the result is stored"
+" in a local variable."
+msgstr ""
+"Trạng thái luồng đính kèm ngụ ý rằng GIL được giữ cho trình thông dịch. Để "
+"tách nó ra, :c:func:`PyEval_SaveThread` được gọi và kết quả được lưu trữ "
+"trong một biến cục bộ."
+
+#: ../../c-api/threads.rst:113
+#, fuzzy
+msgid ""
+"By detaching the thread state, the GIL is released, which allows other "
+"threads to attach to the interpreter and execute while the current thread "
+"performs blocking I/O. When the I/O operation is complete, the old thread "
+"state is reattached by calling :c:func:`PyEval_RestoreThread`, which will "
+"wait until the GIL can be acquired."
+msgstr ""
+"Bằng cách tách trạng thái luồng, GIL được giải phóng, cho phép các luồng "
+"khác gắn vào trình thông dịch và thực thi trong khi luồng hiện tại thực hiện"
+" chặn I/O. Khi thao tác I/O hoàn tất, trạng thái luồng cũ được gắn lại bằng "
+"cách gọi :c:func:`PyEval_RestoreThread`, thao tác này sẽ đợi cho đến khi có "
+"thể lấy được GIL."
+
+#: ../../c-api/threads.rst:120
+#, fuzzy
+msgid ""
+"Performing blocking I/O is the most common use case for detaching the thread"
+" state, but it is also useful to call it over long-running native code that "
+"doesn't need access to Python objects or Python's C API. For example, the "
+"standard :mod:`zlib` and :mod:`hashlib` modules detach the :term:`thread "
+"state <attached thread state>` when compressing or hashing data."
+msgstr ""
+"Thực hiện chặn I/O là trường hợp sử dụng phổ biến nhất để tách trạng thái "
+"luồng, nhưng cũng hữu ích khi gọi nó qua mã gốc chạy dài không cần quyền "
+"truy cập vào đối tượng Python hoặc C API của Python. Ví dụ: mô-đun "
+":mod:`zlib` và :mod:`hashlib` tiêu chuẩn sẽ tách :term:`thread state "
+"<attached thread state>` khi nén hoặc băm dữ liệu."
+
+#: ../../c-api/threads.rst:127
+#, fuzzy
+msgid ""
+"On a :term:`free-threaded build`, the :term:`GIL` is usually out of the "
+"question, but **detaching the thread state is still required**, because the "
+"interpreter periodically needs to block all threads to get a consistent view"
+" of Python objects without the risk of race conditions. For example, CPython"
+" currently suspends all threads for a short period of time while running the"
+" garbage collector."
+msgstr ""
+"Trên :term:`free-threaded build`, :term:`GIL` thường không được áp dụng, "
+"nhưng **detaching the thread state is still required**, vì trình thông dịch "
+"định kỳ cần chặn tất cả các luồng để có được cái nhìn nhất quán về các đối "
+"tượng Python mà không gặp rủi ro về điều kiện chủng tộc. Ví dụ: CPython hiện"
+" tạm dừng tất cả các luồng trong một khoảng thời gian ngắn khi chạy trình "
+"thu gom rác."
+
+#: ../../c-api/threads.rst:136
+#, fuzzy
+msgid ""
+"Detaching the thread state can lead to unexpected behavior during "
+"interpreter finalization. See :ref:`cautions-regarding-runtime-finalization`"
+" for more details."
+msgstr ""
+"Việc tách trạng thái luồng có thể dẫn đến hành vi không mong muốn trong quá "
+"trình hoàn thiện trình thông dịch. Xem :ref:`cautions-regarding-runtime-"
+"finalization` để biết thêm chi tiết."
+
+#: ../../c-api/threads.rst:142
+#, fuzzy
+msgid "APIs"
+msgstr "API"
+
+#: ../../c-api/threads.rst:144
+#, fuzzy
+msgid ""
+"The following macros are normally used without a trailing semicolon; look "
+"for example usage in the Python source distribution."
+msgstr ""
+"Các macro sau đây thường được sử dụng không có dấu chấm phẩy ở cuối; tìm "
+"cách sử dụng ví dụ trong bản phân phối nguồn Python."
+
+#: ../../c-api/threads.rst:149
+#, fuzzy
+msgid ""
+"These macros are still necessary on the :term:`free-threaded build` to "
+"prevent deadlocks."
+msgstr ""
+"Những macro này vẫn cần thiết trên :term:`free-threaded build` để ngăn chặn "
+"tình trạng bế tắc."
+
+#: ../../c-api/threads.rst:154
+#, fuzzy
+msgid ""
+"This macro expands to ``{ PyThreadState *_save; _save = "
+"PyEval_SaveThread();``. Note that it contains an opening brace; it must be "
+"matched with a following :c:macro:`Py_END_ALLOW_THREADS` macro.  See above "
+"for further discussion of this macro."
+msgstr ""
+"Macro này mở rộng tới ``{ PyThreadState *_save; _save = "
+"PyEval_SaveThread();``. Lưu ý rằng nó có chứa một dấu ngoặc mở; nó phải được"
+" khớp với macro :c:macro:`Py_END_ALLOW_THREADS` sau.  Xem ở trên để thảo "
+"luận thêm về macro này."
+
+#: ../../c-api/threads.rst:162
+#, fuzzy
+msgid ""
+"This macro expands to ``PyEval_RestoreThread(_save); }``. Note that it "
+"contains a closing brace; it must be matched with an earlier "
+":c:macro:`Py_BEGIN_ALLOW_THREADS` macro.  See above for further discussion "
+"of this macro."
+msgstr ""
+"Macro này mở rộng tới ``PyEval_RestoreThread(_save); }``. Lưu ý rằng nó có "
+"chứa dấu ngoặc nhọn đóng; nó phải được khớp với macro "
+":c:macro:`Py_BEGIN_ALLOW_THREADS` trước đó.  Xem ở trên để thảo luận thêm về"
+" macro này."
+
+#: ../../c-api/threads.rst:170
+#, fuzzy
+msgid ""
+"This macro expands to ``PyEval_RestoreThread(_save);``: it is equivalent to "
+":c:macro:`Py_END_ALLOW_THREADS` without the closing brace."
+msgstr ""
+"Macro này mở rộng thành ``PyEval_RestoreThread(_save);``: nó tương đương với"
+" :c:macro:`Py_END_ALLOW_THREADS` mà không có dấu ngoặc nhọn đóng."
+
+#: ../../c-api/threads.rst:176
+#, fuzzy
+msgid ""
+"This macro expands to ``_save = PyEval_SaveThread();``: it is equivalent to "
+":c:macro:`Py_BEGIN_ALLOW_THREADS` without the opening brace and variable "
+"declaration."
+msgstr ""
+"Macro này mở rộng thành ``_save = PyEval_SaveThread();``: nó tương đương với"
+" :c:macro:`Py_BEGIN_ALLOW_THREADS` mà không có dấu ngoặc nhọn mở và khai báo"
+" biến."
+
+#: ../../c-api/threads.rst:182
+#, fuzzy
+msgid "Non-Python created threads"
+msgstr "Chủ đề được tạo không phải bằng Python"
+
+#: ../../c-api/threads.rst:184
+#, fuzzy
+msgid ""
+"When threads are created using the dedicated Python APIs (such as the "
+":mod:`threading` module), a thread state is automatically associated with "
+"them, However, when a thread is created from native code (for example, by a "
+"third-party library with its own thread management), it doesn't hold an "
+"attached thread state."
+msgstr ""
+"Khi các luồng được tạo bằng API Python chuyên dụng (chẳng hạn như mô-đun "
+":mod:`threading`), trạng thái luồng sẽ tự động được liên kết với chúng. Tuy "
+"nhiên, khi một luồng được tạo từ mã gốc (ví dụ: bởi thư viện bên thứ ba có "
+"quản lý luồng riêng), thì luồng đó không giữ trạng thái luồng đính kèm."
+
+#: ../../c-api/threads.rst:190
+#, fuzzy
+msgid ""
+"If you need to call Python code from these threads (often this will be part "
+"of a callback API provided by the aforementioned third-party library), you "
+"must first register these threads with the interpreter by creating a new "
+"thread state and attaching it."
+msgstr ""
+"Nếu bạn cần gọi mã Python từ các luồng này (thường thì đây sẽ là một phần "
+"của lệnh gọi lại API do thư viện bên thứ ba nói trên cung cấp), trước tiên "
+"bạn phải đăng ký các luồng này với trình thông dịch bằng cách tạo trạng thái"
+" luồng mới và đính kèm nó."
+
+#: ../../c-api/threads.rst:195
+#, fuzzy
+msgid ""
+"The most robust way to do this is through :c:func:`PyThreadState_New` "
+"followed by :c:func:`PyThreadState_Swap`."
+msgstr ""
+"Cách mạnh mẽ nhất để thực hiện việc này là thông qua "
+":c:func:`PyThreadState_New`, sau đó là :c:func:`PyThreadState_Swap`."
+
+#: ../../c-api/threads.rst:199
+#, fuzzy
+msgid ""
+"``PyThreadState_New`` requires an argument pointing to the desired "
+"interpreter; such a pointer can be acquired via a call to "
+":c:func:`PyInterpreterState_Get` from the code where the thread was created."
+msgstr ""
+"``PyThreadState_New`` yêu cầu một đối số trỏ đến trình thông dịch mong muốn;"
+" một con trỏ như vậy có thể được lấy thông qua lệnh gọi tới "
+":c:func:`PyInterpreterState_Get` từ mã nơi chuỗi được tạo."
+
+#: ../../c-api/threads.rst:204
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../c-api/threads.rst:206
+#, fuzzy
+msgid ""
+"/* The return value of PyInterpreterState_Get() from the\n"
+"   function that created this thread. */\n"
+"PyInterpreterState *interp = thread_data->interp;\n"
+"\n"
+"/* Create a new thread state for the interpreter. It does not start out\n"
+"   attached. */\n"
+"PyThreadState *tstate = PyThreadState_New(interp);\n"
+"\n"
+"/* Attach the thread state, which will acquire the GIL. */\n"
+"PyThreadState_Swap(tstate);\n"
+"\n"
+"/* Perform Python actions here. */\n"
+"result = CallSomeFunction();\n"
+"/* evaluate result or handle exception */\n"
+"\n"
+"/* Destroy the thread state. No Python API allowed beyond this point. */\n"
+"PyThreadState_Clear(tstate);\n"
+"PyThreadState_DeleteCurrent();"
+msgstr ""
+"/* Giá trị trả về của PyInterpreterState_Get() từ\n"
+"   chức năng đã tạo ra chủ đề này. */\n"
+"PyInterpreterState *interp = thread_data->interp;\n"
+"\n"
+"/* Tạo trạng thái luồng mới cho trình thông dịch. Nó không bắt đầu\n"
+"   đính kèm. */\n"
+"PyThreadState *tstate = PyThreadState_New(interp);\n"
+"\n"
+"/* Đính kèm trạng thái luồng, trạng thái này sẽ thu được GIL. */\n"
+"PyThreadState_Swap(tstate);\n"
+"\n"
+"/* Thực hiện các thao tác Python tại đây. */\n"
+"result = CallSomeFunction();\n"
+"/*đánh giá kết quả hoặc xử lý ngoại lệ */\n"
+"\n"
+"/* Phá hủy trạng thái của luồng. Không có Python API nào được phép vượt quá thời điểm này. */\n"
+"PyThreadState_Clear(tstate);\n"
+"PyThreadState_DeleteCurrent();"
+
+#: ../../c-api/threads.rst:227
+#, fuzzy
+msgid ""
+"If the interpreter finalized before ``PyThreadState_Swap`` was called, then "
+"``interp`` will be a dangling pointer!"
+msgstr ""
+"Nếu trình thông dịch hoàn tất trước khi ``PyThreadState_Swap`` được gọi thì "
+"``interp`` sẽ là một con trỏ lơ lửng!"
+
+#: ../../c-api/threads.rst:233
+#, fuzzy
+msgid "Legacy API"
+msgstr "API kế thừa"
+
+#: ../../c-api/threads.rst:235
+#, fuzzy
+msgid ""
+"Another common pattern to call Python code from a non-Python thread is to "
+"use :c:func:`PyGILState_Ensure` followed by a call to "
+":c:func:`PyGILState_Release`."
+msgstr ""
+"Một mẫu phổ biến khác để gọi mã Python từ một luồng không phải Python là sử "
+"dụng :c:func:`PyGILState_Ensure`, sau đó gọi tới "
+":c:func:`PyGILState_Release`."
+
+#: ../../c-api/threads.rst:238
+#, fuzzy
+msgid ""
+"These functions do not work well when multiple interpreters exist in the "
+"Python process. If no Python interpreter has ever been used in the current "
+"thread (which is common for threads created outside Python), "
+"``PyGILState_Ensure`` will create and attach a thread state for the \"main\""
+" interpreter (the first interpreter in the Python process)."
+msgstr ""
+"Các hàm này không hoạt động tốt khi có nhiều trình thông dịch trong quy "
+"trình Python. Nếu chưa có trình thông dịch Python nào được sử dụng trong "
+"luồng hiện tại (điều này thường xảy ra với các luồng được tạo bên ngoài "
+"Python), ``PyGILState_Ensure`` sẽ tạo và đính kèm trạng thái luồng cho trình"
+" thông dịch \"chính\" (trình thông dịch đầu tiên trong quy trình Python)."
+
+#: ../../c-api/threads.rst:244
+#, fuzzy
+msgid ""
+"Additionally, these functions have thread-safety issues during interpreter "
+"finalization. Using ``PyGILState_Ensure`` during finalization will likely "
+"crash the process."
+msgstr ""
+"Ngoài ra, các chức năng này có vấn đề về an toàn luồng trong quá trình hoàn "
+"thiện trình thông dịch. Việc sử dụng ``PyGILState_Ensure`` trong quá trình "
+"hoàn thiện có thể sẽ làm hỏng quá trình."
+
+#: ../../c-api/threads.rst:248
+#, fuzzy
+msgid "Usage of these functions look like such::"
+msgstr "Cách sử dụng các chức năng này trông giống như sau::"
+
+#: ../../c-api/threads.rst:250
+#, fuzzy
+msgid ""
+"PyGILState_STATE gstate;\n"
+"gstate = PyGILState_Ensure();\n"
+"\n"
+"/* Perform Python actions here. */\n"
+"result = CallSomeFunction();\n"
+"/* evaluate result or handle exception */\n"
+"\n"
+"/* Release the thread. No Python API allowed beyond this point. */\n"
+"PyGILState_Release(gstate);"
+msgstr ""
+"PyGILState_STATE gstate;\n"
+"gstate = PyGILState_Ensure();\n"
+"\n"
+"/* Thực hiện các thao tác Python tại đây. */\n"
+"result = CallSomeFunction();\n"
+"/*đánh giá kết quả hoặc xử lý ngoại lệ */\n"
+"\n"
+"/* Giải phóng luồng. Không có Python API nào được phép vượt quá thời điểm này. */\n"
+"PyGILState_Release(gstate);"
+
+#: ../../c-api/threads.rst:264
+#, fuzzy
+msgid "Cautions about fork()"
+msgstr "Cảnh báo về fork()"
+
+#: ../../c-api/threads.rst:266
+#, fuzzy
+msgid ""
+"Another important thing to note about threads is their behaviour in the face"
+" of the C :c:func:`fork` call. On most systems with :c:func:`fork`, after a "
+"process forks only the thread that issued the fork will exist.  This has a "
+"concrete impact both on how locks must be handled and on all stored state in"
+" CPython's runtime."
+msgstr ""
+"Một điều quan trọng khác cần lưu ý về các luồng là hành vi của chúng khi đối"
+" mặt với lệnh gọi C :c:func:`fork`. Trên hầu hết các hệ thống có "
+":c:func:`fork`, sau một quá trình phân nhánh, chỉ có luồng phát hành phân "
+"nhánh mới tồn tại.  Điều này có tác động cụ thể đến cả cách xử lý khóa và "
+"đến tất cả trạng thái được lưu trữ trong thời gian chạy của CPython."
+
+#: ../../c-api/threads.rst:272
+#, fuzzy
+msgid ""
+"The fact that only the \"current\" thread remains means any locks held by "
+"other threads will never be released. Python solves this for :func:`os.fork`"
+" by acquiring the locks it uses internally before the fork, and releasing "
+"them afterwards. In addition, it resets any :ref:`lock-objects` in the "
+"child. When extending or embedding Python, there is no way to inform Python "
+"of additional (non-Python) locks that need to be acquired before or reset "
+"after a fork. OS facilities such as :c:func:`!pthread_atfork` would need to "
+"be used to accomplish the same thing. Additionally, when extending or "
+"embedding Python, calling :c:func:`fork` directly rather than through "
+":func:`os.fork` (and returning to or calling into Python) may result in a "
+"deadlock by one of Python's internal locks being held by a thread that is "
+"defunct after the fork. :c:func:`PyOS_AfterFork_Child` tries to reset the "
+"necessary locks, but is not always able to."
+msgstr ""
+"Thực tế là chỉ còn lại luồng \"hiện tại\" có nghĩa là mọi khóa được giữ bởi "
+"các luồng khác sẽ không bao giờ được giải phóng. Python giải quyết vấn đề "
+"này cho :func:`os.fork` bằng cách lấy các khóa mà nó sử dụng bên trong trước"
+" fork và giải phóng chúng sau đó. Ngoài ra, nó còn đặt lại bất kỳ "
+":ref:`lock-objects` nào ở trẻ em. Khi mở rộng hoặc nhúng Python, không có "
+"cách nào để thông báo cho Python về các khóa bổ sung (không phải Python) cần"
+" được lấy trước hoặc đặt lại sau một nhánh. Các cơ sở hệ điều hành như "
+":c:func:`!pthread_atfork` sẽ cần được sử dụng để thực hiện điều tương tự. "
+"Ngoài ra, khi mở rộng hoặc nhúng Python, việc gọi trực tiếp :c:func:`fork` "
+"thay vì thông qua :func:`os.fork` (và quay lại hoặc gọi vào Python) có thể "
+"dẫn đến bế tắc do một trong các khóa bên trong của Python bị giữ bởi một "
+"luồng không còn tồn tại sau ngã ba. :c:func:`PyOS_AfterFork_Child` cố gắng "
+"đặt lại các khóa cần thiết nhưng không phải lúc nào cũng làm được."
+
+#: ../../c-api/threads.rst:287
+#, fuzzy
+msgid ""
+"The fact that all other threads go away also means that CPython's runtime "
+"state there must be cleaned up properly, which :func:`os.fork` does.  This "
+"means finalizing all other :c:type:`PyThreadState` objects belonging to the "
+"current interpreter and all other :c:type:`PyInterpreterState` objects.  Due"
+" to this and the special nature of the :ref:`\"main\" interpreter <sub-"
+"interpreter-support>`, :c:func:`fork` should only be called in that "
+"interpreter's \"main\" thread, where the CPython global runtime was "
+"originally initialized. The only exception is if :c:func:`exec` will be "
+"called immediately after."
+msgstr ""
+"Việc tất cả các luồng khác biến mất cũng có nghĩa là trạng thái thời gian "
+"chạy của CPython ở đó phải được dọn dẹp đúng cách, điều mà :func:`os.fork` "
+"thực hiện.  Điều này có nghĩa là hoàn thiện tất cả các đối tượng "
+":c:type:`PyThreadState` khác thuộc về trình thông dịch hiện tại và tất cả "
+"các đối tượng :c:type:`PyInterpreterState` khác.  Do điều này và tính chất "
+"đặc biệt của :ref:`\"main\" interpreter <sub-interpreter-support>`, "
+":c:func:`fork` chỉ nên được gọi trong chuỗi \"chính\" của trình thông dịch "
+"đó, nơi thời gian chạy toàn cầu CPython ban đầu được khởi tạo. Ngoại lệ duy "
+"nhất là nếu :c:func:`exec` sẽ được gọi ngay sau đó."
+
+#: ../../c-api/threads.rst:300
+#, fuzzy
+msgid "High-level APIs"
+msgstr "API cấp cao"
+
+#: ../../c-api/threads.rst:302
+#, fuzzy
+msgid ""
+"These are the most commonly used types and functions when writing multi-"
+"threaded C extensions."
+msgstr ""
+"Đây là những loại và hàm được sử dụng phổ biến nhất khi viết phần mở rộng C "
+"đa luồng."
+
+#: ../../c-api/threads.rst:308
+#, fuzzy
+msgid ""
+"This data structure represents the state of a single thread.  The only "
+"public data member is:"
+msgstr ""
+"Cấu trúc dữ liệu này biểu thị trạng thái của một luồng.  Thành viên dữ liệu "
+"công khai duy nhất là:"
+
+#: ../../c-api/threads.rst:313
+#, fuzzy
+msgid "This thread's interpreter state."
+msgstr "Trạng thái thông dịch viên của chủ đề này."
+
+#: ../../c-api/threads.rst:324
+#, fuzzy
+msgid "Deprecated function which does nothing."
+msgstr "Chức năng không được dùng nữa mà không làm gì cả."
+
+#: ../../c-api/threads.rst:326
+#, fuzzy
+msgid ""
+"In Python 3.6 and older, this function created the GIL if it didn't exist."
+msgstr "Trong Python 3.6 trở lên, hàm này đã tạo GIL nếu nó không tồn tại."
+
+#: ../../c-api/threads.rst:328
+#, fuzzy
+msgid "The function now does nothing."
+msgstr "Chức năng bây giờ không làm gì cả."
+
+#: ../../c-api/threads.rst:331
+#, fuzzy
+msgid ""
+"This function is now called by :c:func:`Py_Initialize()`, so you don't have "
+"to call it yourself anymore."
+msgstr ""
+"Hàm này hiện được :c:func:`Py_Initialize()` gọi nên bạn không cần phải tự "
+"gọi nó nữa."
+
+#: ../../c-api/threads.rst:335
+#, fuzzy
+msgid ""
+"This function cannot be called before :c:func:`Py_Initialize()` anymore."
+msgstr "Chức năng này không thể được gọi trước :c:func:`Py_Initialize()` nữa."
+
+#: ../../c-api/threads.rst:345
+#, fuzzy
+msgid ""
+"Detach the :term:`attached thread state` and return it. The thread will have"
+" no :term:`thread state` upon returning."
+msgstr ""
+"Tháo :term:`attached thread state` ra và trả lại. Chủ đề sẽ không có "
+":term:`thread state` khi quay trở lại."
+
+#: ../../c-api/threads.rst:351
+#, fuzzy
+msgid ""
+"Set the :term:`attached thread state` to *tstate*. The passed :term:`thread "
+"state` **should not** be :term:`attached <attached thread state>`, otherwise"
+" deadlock ensues. *tstate* will be attached upon returning."
+msgstr ""
+"Đặt :term:`attached thread state` thành *tstate*. :term:`thread state` "
+"**should not** đã vượt qua là :term:`attached <attached thread state>`, nếu "
+"không sẽ xảy ra bế tắc. *tstate* sẽ được đính kèm khi quay trở lại."
+
+#: ../../c-api/threads.rst:356 ../../c-api/threads.rst:640
+#, fuzzy
+msgid ""
+"Calling this function from a thread when the runtime is finalizing will hang"
+" the thread until the program exits, even if the thread was not created by "
+"Python.  Refer to :ref:`cautions-regarding-runtime-finalization` for more "
+"details."
+msgstr ""
+"Việc gọi hàm này từ một luồng khi thời gian chạy đang hoàn tất sẽ treo luồng"
+" đó cho đến khi chương trình thoát ra, ngay cả khi luồng đó không được "
+"Python tạo ra.  Tham khảo :ref:`cautions-regarding-runtime-finalization` để "
+"biết thêm chi tiết."
+
+#: ../../c-api/threads.rst:361 ../../c-api/threads.rst:448
+#: ../../c-api/threads.rst:650
+#, fuzzy
+msgid ""
+"Hangs the current thread, rather than terminating it, if called while the "
+"interpreter is finalizing."
+msgstr ""
+"Treo chuỗi hiện tại, thay vì chấm dứt nó, nếu được gọi trong khi trình thông"
+" dịch đang hoàn thiện."
+
+#: ../../c-api/threads.rst:367
+#, fuzzy
+msgid ""
+"Return the :term:`attached thread state`. If the thread has no attached "
+"thread state, (such as when inside of :c:macro:`Py_BEGIN_ALLOW_THREADS` "
+"block), then this issues a fatal error (so that the caller needn't check for"
+" ``NULL``)."
+msgstr ""
+"Trả lại :term:`attached thread state`. Nếu luồng không có trạng thái luồng "
+"đính kèm, (chẳng hạn như khi ở bên trong khối "
+":c:macro:`Py_BEGIN_ALLOW_THREADS`), thì điều này sẽ gây ra lỗi nghiêm trọng "
+"(do đó người gọi không cần kiểm tra ``NULL``)."
+
+#: ../../c-api/threads.rst:372
+#, fuzzy
+msgid "See also :c:func:`PyThreadState_GetUnchecked`."
+msgstr "Xem thêm :c:func:`PyThreadState_GetUnchecked`."
+
+#: ../../c-api/threads.rst:376
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyThreadState_Get`, but don't kill the process with a "
+"fatal error if it is NULL. The caller is responsible to check if the result "
+"is NULL."
+msgstr ""
+"Tương tự như :c:func:`PyThreadState_Get`, nhưng đừng hủy tiến trình với một "
+"lỗi nghiêm trọng nếu đó là NULL. Người gọi có trách nhiệm kiểm tra xem kết "
+"quả có phải là NULL hay không."
+
+#: ../../c-api/threads.rst:380
+#, fuzzy
+msgid ""
+"In Python 3.5 to 3.12, the function was private and known as "
+"``_PyThreadState_UncheckedGet()``."
+msgstr ""
+"Trong Python 3.5 đến 3.12, hàm này ở chế độ riêng tư và được gọi là "
+"``_PyThreadState_UncheckedGet()``."
+
+#: ../../c-api/threads.rst:387
+#, fuzzy
+msgid ""
+"Set the :term:`attached thread state` to *tstate*, and return the "
+":term:`thread state` that was attached prior to calling."
+msgstr ""
+"Đặt :term:`attached thread state` thành *tstate* và trả lại :term:`thread "
+"state` đã được đính kèm trước khi gọi."
+
+#: ../../c-api/threads.rst:390
+#, fuzzy
+msgid ""
+"This function is safe to call without an :term:`attached thread state`; it "
+"will simply return ``NULL`` indicating that there was no prior thread state."
+msgstr ""
+"Chức năng này có thể gọi an toàn mà không cần :term:`attached thread state`;"
+" nó sẽ chỉ trả về ``NULL`` cho biết rằng không có trạng thái luồng trước đó."
+
+#: ../../c-api/threads.rst:394
+#, fuzzy
+msgid ":c:func:`PyEval_ReleaseThread`"
+msgstr ":c:func:`PyEval_ReleaseThread`"
+
+#: ../../c-api/threads.rst:397
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyGILState_Ensure`, this function will hang the thread "
+"if the runtime is finalizing."
+msgstr ""
+"Tương tự như :c:func:`PyGILState_Ensure`, chức năng này sẽ treo luồng nếu "
+"quá trình chạy kết thúc."
+
+#: ../../c-api/threads.rst:402
+#, fuzzy
+msgid "GIL-state APIs"
+msgstr "API trạng thái GIL"
+
+#: ../../c-api/threads.rst:404
+#, fuzzy
+msgid ""
+"The following functions use thread-local storage, and are not compatible "
+"with sub-interpreters:"
+msgstr ""
+"Các hàm sau sử dụng bộ lưu trữ cục bộ theo luồng và không tương thích với "
+"trình thông dịch phụ:"
+
+#: ../../c-api/threads.rst:409
+#, fuzzy
+msgid ""
+"The type of the value returned by :c:func:`PyGILState_Ensure` and passed to "
+":c:func:`PyGILState_Release`."
+msgstr ""
+"Loại giá trị được :c:func:`PyGILState_Ensure` trả về và được chuyển tới "
+":c:func:`PyGILState_Release`."
+
+#: ../../c-api/threads.rst:414
+#, fuzzy
+msgid "The GIL was already held when :c:func:`PyGILState_Ensure` was called."
+msgstr "GIL đã được giữ khi :c:func:`PyGILState_Ensure` được gọi."
+
+#: ../../c-api/threads.rst:418
+#, fuzzy
+msgid "The GIL was not held when :c:func:`PyGILState_Ensure` was called."
+msgstr "GIL không được giữ khi :c:func:`PyGILState_Ensure` được gọi."
+
+#: ../../c-api/threads.rst:422
+#, fuzzy
+msgid ""
+"Ensure that the current thread is ready to call the Python C API regardless "
+"of the current state of Python, or of the :term:`attached thread state`. "
+"This may be called as many times as desired by a thread as long as each call"
+" is matched with a call to :c:func:`PyGILState_Release`. In general, other "
+"thread-related APIs may be used between :c:func:`PyGILState_Ensure` and "
+":c:func:`PyGILState_Release` calls as long as the thread state is restored "
+"to its previous state before the Release().  For example, normal usage of "
+"the :c:macro:`Py_BEGIN_ALLOW_THREADS` and :c:macro:`Py_END_ALLOW_THREADS` "
+"macros is acceptable."
+msgstr ""
+"Đảm bảo rằng luồng hiện tại sẵn sàng gọi Python C API bất kể trạng thái hiện"
+" tại của Python hay :term:`attached thread state`. Điều này có thể được một "
+"luồng gọi bao nhiêu lần tùy thích miễn là mỗi lệnh gọi được khớp với lệnh "
+"gọi tới :c:func:`PyGILState_Release`. Nói chung, các API liên quan đến luồng"
+" khác có thể được sử dụng giữa các lệnh gọi :c:func:`PyGILState_Ensure` và "
+":c:func:`PyGILState_Release` miễn là trạng thái luồng được khôi phục về "
+"trạng thái trước đó trước Release().  Ví dụ: việc sử dụng macro "
+":c:macro:`Py_BEGIN_ALLOW_THREADS` và :c:macro:`Py_END_ALLOW_THREADS` bình "
+"thường là có thể chấp nhận được."
+
+#: ../../c-api/threads.rst:432
+#, fuzzy
+msgid ""
+"The return value is an opaque \"handle\" to the :term:`attached thread "
+"state` when :c:func:`PyGILState_Ensure` was called, and must be passed to "
+":c:func:`PyGILState_Release` to ensure Python is left in the same state. "
+"Even though recursive calls are allowed, these handles *cannot* be shared - "
+"each unique call to :c:func:`PyGILState_Ensure` must save the handle for its"
+" call to :c:func:`PyGILState_Release`."
+msgstr ""
+"Giá trị trả về là một \"điều khiển\" mờ đối với :term:`attached thread "
+"state` khi :c:func:`PyGILState_Ensure` được gọi và phải được chuyển tới "
+":c:func:`PyGILState_Release` để đảm bảo Python được giữ nguyên trạng thái. "
+"Mặc dù các cuộc gọi đệ quy được cho phép, nhưng các bộ điều khiển *cannot* "
+"này vẫn được chia sẻ - mỗi lệnh gọi duy nhất tới :c:func:`PyGILState_Ensure`"
+" phải lưu bộ điều khiển cho lệnh gọi tới :c:func:`PyGILState_Release` của "
+"nó."
+
+#: ../../c-api/threads.rst:439
+#, fuzzy
+msgid ""
+"When the function returns, there will be an :term:`attached thread state` "
+"and the thread will be able to call arbitrary Python code.  Failure is a "
+"fatal error."
+msgstr ""
+"Khi hàm trả về, sẽ có :term:`attached thread state` và luồng sẽ có thể gọi "
+"mã Python tùy ý.  Thất bại là một lỗi nghiêm trọng."
+
+#: ../../c-api/threads.rst:443
+#, fuzzy
+msgid ""
+"Calling this function when the runtime is finalizing is unsafe. Doing so "
+"will either hang the thread until the program ends, or fully crash the "
+"interpreter in rare cases. Refer to :ref:`cautions-regarding-runtime-"
+"finalization` for more details."
+msgstr ""
+"Gọi hàm này khi thời gian chạy đang hoàn tất là không an toàn. Làm như vậy "
+"sẽ treo luồng cho đến khi chương trình kết thúc hoặc làm hỏng hoàn toàn "
+"trình thông dịch trong một số trường hợp hiếm gặp. Tham khảo :ref:`cautions-"
+"regarding-runtime-finalization` để biết thêm chi tiết."
+
+#: ../../c-api/threads.rst:454
+#, fuzzy
+msgid ""
+"Release any resources previously acquired.  After this call, Python's state "
+"will be the same as it was prior to the corresponding "
+":c:func:`PyGILState_Ensure` call (but generally this state will be unknown "
+"to the caller, hence the use of the GILState API)."
+msgstr ""
+"Giải phóng mọi tài nguyên có được trước đó.  Sau cuộc gọi này, trạng thái "
+"của Python sẽ giống như trước cuộc gọi :c:func:`PyGILState_Ensure` tương ứng"
+" (nhưng nhìn chung người gọi sẽ không biết trạng thái này, do đó việc sử "
+"dụng GILState API)."
+
+#: ../../c-api/threads.rst:459
+#, fuzzy
+msgid ""
+"Every call to :c:func:`PyGILState_Ensure` must be matched by a call to "
+":c:func:`PyGILState_Release` on the same thread."
+msgstr ""
+"Mọi lệnh gọi tới :c:func:`PyGILState_Ensure` phải được khớp với lệnh gọi đến"
+" :c:func:`PyGILState_Release` trên cùng một chuỗi."
+
+#: ../../c-api/threads.rst:464
+#, fuzzy
+msgid ""
+"Get the :term:`attached thread state` for this thread.  May return ``NULL`` "
+"if no GILState API has been used on the current thread.  Note that the main "
+"thread always has such a thread-state, even if no auto-thread-state call has"
+" been made on the main thread.  This is mainly a helper/diagnostic function."
+msgstr ""
+"Nhận :term:`attached thread state` cho chủ đề này.  Có thể trả về ``NULL`` "
+"nếu không có GILState API nào được sử dụng trên chuỗi hiện tại.  Lưu ý rằng "
+"luồng chính luôn có trạng thái luồng như vậy, ngay cả khi không có lệnh gọi "
+"trạng thái luồng tự động nào được thực hiện trên luồng chính.  Đây chủ yếu "
+"là chức năng trợ giúp/chẩn đoán."
+
+#: ../../c-api/threads.rst:470
+#, fuzzy
+msgid ""
+"This function may return non-``NULL`` even when the :term:`thread state` is "
+"detached. Prefer :c:func:`PyThreadState_Get` or "
+":c:func:`PyThreadState_GetUnchecked` for most cases."
+msgstr ""
+"Hàm này có thể trả về non-``NULL`` ngay cả khi :term:`thread state` được "
+"tách ra. Ưu tiên :c:func:`PyThreadState_Get` hoặc "
+":c:func:`PyThreadState_GetUnchecked` trong hầu hết các trường hợp."
+
+#: ../../c-api/threads.rst:475
+#, fuzzy
+msgid ":c:func:`PyThreadState_Get`"
+msgstr ":c:func:`PyThreadState_Get`"
+
+#: ../../c-api/threads.rst:479
+#, fuzzy
+msgid ""
+"Return ``1`` if the current thread is holding the :term:`GIL` and ``0`` "
+"otherwise. This function can be called from any thread at any time. Only if "
+"it has had its :term:`thread state <attached thread state>` initialized via "
+":c:func:`PyGILState_Ensure` will it return ``1``. This is mainly a "
+"helper/diagnostic function.  It can be useful for example in callback "
+"contexts or memory allocation functions when knowing that the :term:`GIL` is"
+" locked can allow the caller to perform sensitive actions or otherwise "
+"behave differently."
+msgstr ""
+"Trả về ``1`` nếu luồng hiện tại đang giữ :term:`GIL` và ``0`` nếu ngược lại."
+" Hàm này có thể được gọi từ bất kỳ luồng nào vào bất kỳ lúc nào. Chỉ khi nó "
+"đã khởi tạo :term:`thread state <attached thread state>` thông qua "
+":c:func:`PyGILState_Ensure` thì nó mới trả về ``1``. Đây chủ yếu là chức "
+"năng trợ giúp/chẩn đoán.  Ví dụ, nó có thể hữu ích trong bối cảnh gọi lại "
+"hoặc chức năng cấp phát bộ nhớ khi biết rằng :term:`GIL` bị khóa có thể cho "
+"phép người gọi thực hiện các hành động nhạy cảm hoặc hành xử khác đi."
+
+#: ../../c-api/threads.rst:489
+#, fuzzy
+msgid ""
+"If the current Python process has ever created a subinterpreter, this "
+"function will *always* return ``1``. Prefer "
+":c:func:`PyThreadState_GetUnchecked` for most cases."
+msgstr ""
+"Nếu quy trình Python hiện tại đã từng tạo một trình thông dịch con, hàm này "
+"sẽ *always* trả về ``1``. Thích :c:func:`PyThreadState_GetUnchecked` cho hầu"
+" hết các trường hợp."
+
+#: ../../c-api/threads.rst:497
+#, fuzzy
+msgid "Low-level APIs"
+msgstr "API cấp thấp"
+
+#: ../../c-api/threads.rst:501
+#, fuzzy
+msgid ""
+"Create a new thread state object belonging to the given interpreter object. "
+"An :term:`attached thread state` is not needed."
+msgstr ""
+"Tạo một đối tượng trạng thái luồng mới thuộc đối tượng trình thông dịch đã "
+"cho. Không cần :term:`attached thread state`."
+
+#: ../../c-api/threads.rst:506
+#, fuzzy
+msgid ""
+"Reset all information in a :term:`thread state` object.  *tstate* must be "
+":term:`attached <attached thread state>`"
+msgstr ""
+"Đặt lại tất cả thông tin trong đối tượng :term:`thread state`.  *tstate* "
+"chắc chắn là :term:`attached <attached thread state>`"
+
+#: ../../c-api/threads.rst:509
+#, fuzzy
+msgid ""
+"This function now calls the :c:member:`!PyThreadState.on_delete` callback. "
+"Previously, that happened in :c:func:`PyThreadState_Delete`."
+msgstr ""
+"Hàm này bây giờ gọi lại lệnh gọi lại :c:member:`!PyThreadState.on_delete`. "
+"Trước đây, điều đó đã xảy ra ở :c:func:`PyThreadState_Delete`."
+
+#: ../../c-api/threads.rst:513
+#, fuzzy
+msgid "The :c:member:`!PyThreadState.on_delete` callback was removed."
+msgstr "Lệnh gọi lại :c:member:`!PyThreadState.on_delete` đã bị xóa."
+
+#: ../../c-api/threads.rst:519
+#, fuzzy
+msgid ""
+"Destroy a :term:`thread state` object.  *tstate* should not be "
+":term:`attached <attached thread state>` to any thread. *tstate* must have "
+"been reset with a previous call to :c:func:`PyThreadState_Clear`."
+msgstr ""
+"Phá hủy một đối tượng :term:`thread state`.  *tstate* không được là "
+":term:`attached <attached thread state>` đối với bất kỳ chủ đề nào. *tstate*"
+" phải được đặt lại bằng lệnh gọi tới :c:func:`PyThreadState_Clear` trước đó."
+
+#: ../../c-api/threads.rst:527
+#, fuzzy
+msgid ""
+"Detach the :term:`attached thread state` (which must have been reset with a "
+"previous call to :c:func:`PyThreadState_Clear`) and then destroy it."
+msgstr ""
+"Tách :term:`attached thread state` (phải được đặt lại bằng lệnh gọi "
+":c:func:`PyThreadState_Clear` trước đó) rồi hủy nó."
+
+#: ../../c-api/threads.rst:530
+#, fuzzy
+msgid ""
+"No :term:`thread state` will be :term:`attached <attached thread state>` "
+"upon returning."
+msgstr ""
+"Không có :term:`thread state` sẽ là :term:`attached <attached thread state>`"
+" khi quay trở lại."
+
+#: ../../c-api/threads.rst:535
+#, fuzzy
+msgid "Get the current frame of the Python thread state *tstate*."
+msgstr "Lấy khung hiện tại của trạng thái luồng Python *tstate*."
+
+#: ../../c-api/threads.rst:537
+#, fuzzy
+msgid ""
+"Return a :term:`strong reference`. Return ``NULL`` if no frame is currently "
+"executing."
+msgstr ""
+"Trả về :term:`strong reference`. Trả về ``NULL`` nếu hiện tại không có khung"
+" nào đang thực thi."
+
+#: ../../c-api/threads.rst:540
+#, fuzzy
+msgid "See also :c:func:`PyEval_GetFrame`."
+msgstr "Xem thêm :c:func:`PyEval_GetFrame`."
+
+#: ../../c-api/threads.rst:542 ../../c-api/threads.rst:551
+#: ../../c-api/threads.rst:560
+#, fuzzy
+msgid ""
+"*tstate* must not be ``NULL``, and must be :term:`attached <attached thread "
+"state>`."
+msgstr ""
+"*tstate* không được là ``NULL`` mà phải là :term:`attached <attached thread "
+"state>`."
+
+#: ../../c-api/threads.rst:549
+#, fuzzy
+msgid ""
+"Get the unique :term:`thread state` identifier of the Python thread state "
+"*tstate*."
+msgstr ""
+"Nhận mã định danh :term:`thread state` duy nhất của trạng thái luồng Python "
+"*tstate*."
+
+#: ../../c-api/threads.rst:558
+#, fuzzy
+msgid "Get the interpreter of the Python thread state *tstate*."
+msgstr "Nhận trình thông dịch của trạng thái luồng Python *tstate*."
+
+#: ../../c-api/threads.rst:567
+#, fuzzy
+msgid "Suspend tracing and profiling in the Python thread state *tstate*."
+msgstr "Tạm dừng theo dõi và lập hồ sơ ở trạng thái luồng Python *tstate*."
+
+#: ../../c-api/threads.rst:569
+#, fuzzy
+msgid "Resume them using the :c:func:`PyThreadState_LeaveTracing` function."
+msgstr "Tiếp tục chúng bằng chức năng :c:func:`PyThreadState_LeaveTracing`."
+
+#: ../../c-api/threads.rst:576
+#, fuzzy
+msgid ""
+"Resume tracing and profiling in the Python thread state *tstate* suspended "
+"by the :c:func:`PyThreadState_EnterTracing` function."
+msgstr ""
+"Tiếp tục theo dõi và lập hồ sơ ở trạng thái luồng Python *tstate* bị đình "
+"chỉ bởi hàm :c:func:`PyThreadState_EnterTracing`."
+
+#: ../../c-api/threads.rst:579
+#, fuzzy
+msgid ""
+"See also :c:func:`PyEval_SetTrace` and :c:func:`PyEval_SetProfile` "
+"functions."
+msgstr ""
+"Xem thêm các hàm :c:func:`PyEval_SetTrace` và :c:func:`PyEval_SetProfile`."
+
+#: ../../c-api/threads.rst:587
+#, fuzzy
+msgid ""
+"Set the stack protection start address and stack protection size of a Python"
+" thread state."
+msgstr ""
+"Đặt địa chỉ bắt đầu bảo vệ ngăn xếp và kích thước bảo vệ ngăn xếp của trạng "
+"thái luồng Python."
+
+#: ../../c-api/threads.rst:590
+#, fuzzy
+msgid ""
+"On success, return ``0``. On failure, set an exception and return ``-1``."
+msgstr ""
+"Nếu thành công, hãy trả về ``0``. Nếu thất bại, hãy đặt ngoại lệ và trả về "
+"``-1``."
+
+#: ../../c-api/threads.rst:593
+#, fuzzy
+msgid ""
+"CPython implements :ref:`recursion control <recursion>` for C code by "
+"raising :py:exc:`RecursionError` when it notices that the machine execution "
+"stack is close to overflow. See for example the "
+":c:func:`Py_EnterRecursiveCall` function. For this, it needs to know the "
+"location of the current thread's stack, which it normally gets from the "
+"operating system. When the stack is changed, for example using context "
+"switching techniques like the Boost library's ``boost::context``, you must "
+"call :c:func:`~PyUnstable_ThreadState_SetStackProtection` to inform CPython "
+"of the change."
+msgstr ""
+"CPython triển khai :ref:`recursion control <recursion>` cho mã C bằng cách "
+"tăng :py:exc:`RecursionError` khi nhận thấy ngăn xếp thực thi của máy gần "
+"tràn. Xem ví dụ hàm :c:func:`Py_EnterRecursiveCall`. Để làm được điều này, "
+"nó cần biết vị trí ngăn xếp của luồng hiện tại mà nó thường lấy từ hệ điều "
+"hành. Khi ngăn xếp bị thay đổi, ví dụ như sử dụng các kỹ thuật chuyển ngữ "
+"cảnh như ``boost::context`` của thư viện Boost, bạn phải gọi "
+":c:func:`~PyUnstable_ThreadState_SetStackProtection` để thông báo cho "
+"CPython về thay đổi."
+
+#: ../../c-api/threads.rst:602
+#, fuzzy
+msgid ""
+"Call :c:func:`~PyUnstable_ThreadState_SetStackProtection` either before or "
+"after changing the stack. Do not call any other Python C API between the "
+"call and the stack change."
+msgstr ""
+"Gọi :c:func:`~PyUnstable_ThreadState_SetStackProtection` trước hoặc sau khi "
+"thay đổi ngăn xếp. Không gọi bất kỳ Python C API nào khác giữa cuộc gọi và "
+"thay đổi ngăn xếp."
+
+#: ../../c-api/threads.rst:607
+#, fuzzy
+msgid ""
+"See :c:func:`PyUnstable_ThreadState_ResetStackProtection` for undoing this "
+"operation."
+msgstr ""
+"Xem :c:func:`PyUnstable_ThreadState_ResetStackProtection` để hoàn tác thao "
+"tác này."
+
+#: ../../c-api/threads.rst:614
+#, fuzzy
+msgid ""
+"Reset the stack protection start address and stack protection size of a "
+"Python thread state to the operating system defaults."
+msgstr ""
+"Đặt lại địa chỉ bắt đầu bảo vệ ngăn xếp và kích thước bảo vệ ngăn xếp của "
+"trạng thái luồng Python về mặc định của hệ điều hành."
+
+#: ../../c-api/threads.rst:617
+#, fuzzy
+msgid ""
+"See :c:func:`PyUnstable_ThreadState_SetStackProtection` for an explanation."
+msgstr ""
+"Xem :c:func:`PyUnstable_ThreadState_SetStackProtection` để được giải thích."
+
+#: ../../c-api/threads.rst:624
+#, fuzzy
+msgid ""
+"Return a dictionary in which extensions can store thread-specific state "
+"information.  Each extension should use a unique key to use to store state "
+"in the dictionary.  It is okay to call this function when no :term:`thread "
+"state` is :term:`attached <attached thread state>`. If this function returns"
+" ``NULL``, no exception has been raised and the caller should assume no "
+"thread state is attached."
+msgstr ""
+"Trả về một từ điển trong đó các tiện ích mở rộng có thể lưu trữ thông tin "
+"trạng thái cụ thể của luồng.  Mỗi tiện ích mở rộng nên sử dụng một khóa duy "
+"nhất để sử dụng để lưu trữ trạng thái trong từ điển.  Gọi hàm này khi không "
+"có :term:`thread state` là :term:`attached <attached thread state>` cũng "
+"được. Nếu hàm này trả về ``NULL`` thì không có ngoại lệ nào được đưa ra và "
+"người gọi sẽ cho rằng không có trạng thái luồng nào được đính kèm."
+
+#: ../../c-api/threads.rst:634
+#, fuzzy
+msgid ""
+":term:`Attach <attached thread state>` *tstate* to the current thread, which"
+" must not be ``NULL`` or already :term:`attached <attached thread state>`."
+msgstr ""
+":term:`Attach <attached thread state>` *tstate* vào chuỗi hiện tại, không "
+"được là ``NULL`` hoặc đã là :term:`attached <attached thread state>`."
+
+#: ../../c-api/threads.rst:637
+#, fuzzy
+msgid ""
+"The calling thread must not already have an :term:`attached thread state`."
+msgstr "Chuỗi cuộc gọi không được có :term:`attached thread state`."
+
+#: ../../c-api/threads.rst:645
+#, fuzzy
+msgid ""
+"Updated to be consistent with :c:func:`PyEval_RestoreThread`, "
+":c:func:`Py_END_ALLOW_THREADS`, and :c:func:`PyGILState_Ensure`, and "
+"terminate the current thread if called while the interpreter is finalizing."
+msgstr ""
+"Đã cập nhật để nhất quán với :c:func:`PyEval_RestoreThread`, "
+":c:func:`Py_END_ALLOW_THREADS` và :c:func:`PyGILState_Ensure`, đồng thời "
+"chấm dứt chuỗi hiện tại nếu được gọi trong khi trình thông dịch đang hoàn "
+"tất."
+
+#: ../../c-api/threads.rst:654
+#, fuzzy
+msgid ""
+":c:func:`PyEval_RestoreThread` is a higher-level function which is always "
+"available (even when threads have not been initialized)."
+msgstr ""
+":c:func:`PyEval_RestoreThread` là một hàm cấp cao hơn luôn khả dụng (ngay cả"
+" khi các luồng chưa được khởi tạo)."
+
+#: ../../c-api/threads.rst:660
+#, fuzzy
+msgid ""
+"Detach the :term:`attached thread state`. The *tstate* argument, which must "
+"not be ``NULL``, is only used to check that it represents the "
+":term:`attached thread state` --- if it isn't, a fatal error is reported."
+msgstr ""
+"Tháo :term:`attached thread state` ra. Đối số *tstate*, không được là "
+"``NULL``, chỉ được sử dụng để kiểm tra xem nó có đại diện cho "
+":term:`attached thread state` --- nếu không, sẽ báo cáo một lỗi nghiêm "
+"trọng."
+
+#: ../../c-api/threads.rst:665
+#, fuzzy
+msgid ""
+":c:func:`PyEval_SaveThread` is a higher-level function which is always "
+"available (even when threads have not been initialized)."
+msgstr ""
+":c:func:`PyEval_SaveThread` là một hàm cấp cao hơn luôn khả dụng (ngay cả "
+"khi các luồng chưa được khởi tạo)."
+
+#: ../../c-api/threads.rst:670
+#, fuzzy
+msgid "Asynchronous notifications"
+msgstr "Thông báo không đồng bộ"
+
+#: ../../c-api/threads.rst:672
+#, fuzzy
+msgid ""
+"A mechanism is provided to make asynchronous notifications to the main "
+"interpreter thread.  These notifications take the form of a function pointer"
+" and a void pointer argument."
+msgstr ""
+"Một cơ chế được cung cấp để tạo thông báo không đồng bộ cho luồng trình "
+"thông dịch chính.  Các thông báo này có dạng con trỏ hàm và đối số con trỏ "
+"void."
+
+#: ../../c-api/threads.rst:679
+#, fuzzy
+msgid ""
+"Schedule a function to be called from the main interpreter thread.  On "
+"success, ``0`` is returned and *func* is queued for being called in the main"
+" thread.  On failure, ``-1`` is returned without setting any exception."
+msgstr ""
+"Lên lịch cho một chức năng được gọi từ chuỗi trình thông dịch chính.  Khi "
+"thành công, ``0`` được trả về và *func* được xếp hàng đợi để được gọi trong "
+"luồng chính.  Khi thất bại, ``-1`` được trả về mà không đặt bất kỳ ngoại lệ "
+"nào."
+
+#: ../../c-api/threads.rst:683
+#, fuzzy
+msgid ""
+"When successfully queued, *func* will be *eventually* called from the main "
+"interpreter thread with the argument *arg*.  It will be called "
+"asynchronously with respect to normally running Python code, but with both "
+"these conditions met:"
+msgstr ""
+"Khi được xếp hàng thành công, *func* sẽ được gọi *eventually* từ chuỗi trình"
+" thông dịch chính với đối số *arg*.  Nó sẽ được gọi không đồng bộ đối với mã"
+" Python đang chạy thông thường, nhưng đáp ứng cả hai điều kiện sau:"
+
+#: ../../c-api/threads.rst:688
+#, fuzzy
+msgid "on a :term:`bytecode` boundary;"
+msgstr "trên ranh giới :term:`bytecode`;"
+
+#: ../../c-api/threads.rst:689
+#, fuzzy
+msgid ""
+"with the main thread holding an :term:`attached thread state` (*func* can "
+"therefore use the full C API)."
+msgstr ""
+"với luồng chính chứa :term:`attached thread state` (do đó *func* có thể sử "
+"dụng C API đầy đủ)."
+
+#: ../../c-api/threads.rst:692
+#, fuzzy
+msgid ""
+"*func* must return ``0`` on success, or ``-1`` on failure with an exception "
+"set.  *func* won't be interrupted to perform another asynchronous "
+"notification recursively, but it can still be interrupted to switch threads "
+"if the :term:`thread state <attached thread state>` is detached."
+msgstr ""
+"*func* phải trả về ``0`` nếu thành công hoặc ``-1`` nếu thất bại với một bộ "
+"ngoại lệ.  *func* sẽ không bị gián đoạn để thực hiện đệ quy một thông báo "
+"không đồng bộ khác, nhưng nó vẫn có thể bị gián đoạn để chuyển luồng nếu "
+":term:`thread state <attached thread state>` bị tách ra."
+
+#: ../../c-api/threads.rst:697
+#, fuzzy
+msgid ""
+"This function doesn't need an :term:`attached thread state`. However, to "
+"call this function in a subinterpreter, the caller must have an "
+":term:`attached thread state`. Otherwise, the function *func* can be "
+"scheduled to be called from the wrong interpreter."
+msgstr ""
+"Chức năng này không cần :term:`attached thread state`. Tuy nhiên, để gọi hàm"
+" này trong trình thông dịch phụ, trình gọi phải có :term:`attached thread "
+"state`. Nếu không, hàm *func* có thể được lên lịch để gọi từ trình thông "
+"dịch sai."
+
+#: ../../c-api/threads.rst:702
+#, fuzzy
+msgid ""
+"This is a low-level function, only useful for very special cases. There is "
+"no guarantee that *func* will be called as quick as possible.  If the main "
+"thread is busy executing a system call, *func* won't be called before the "
+"system call returns.  This function is generally **not** suitable for "
+"calling Python code from arbitrary C threads.  Instead, use the "
+":ref:`PyGILState API<gilstate>`."
+msgstr ""
+"Đây là chức năng cấp thấp, chỉ hữu ích cho những trường hợp rất đặc biệt. "
+"Không có gì đảm bảo rằng *func* sẽ được gọi nhanh nhất có thể.  Nếu luồng "
+"chính đang bận thực hiện lệnh gọi hệ thống, *func* sẽ không được gọi trước "
+"khi lệnh gọi hệ thống quay trở lại.  Hàm này nói chung là **not** phù hợp để"
+" gọi mã Python từ các luồng C tùy ý.  Thay vào đó, hãy sử dụng "
+":ref:`PyGILState API<gilstate>`."
+
+#: ../../c-api/threads.rst:711
+#, fuzzy
+msgid ""
+"If this function is called in a subinterpreter, the function *func* is now "
+"scheduled to be called from the subinterpreter, rather than being called "
+"from the main interpreter. Each subinterpreter now has its own list of "
+"scheduled calls."
+msgstr ""
+"Nếu hàm này được gọi trong trình thông dịch phụ thì hàm *func* hiện được lên"
+" lịch để gọi từ trình thông dịch phụ, thay vì được gọi từ trình thông dịch "
+"chính. Mỗi thông dịch viên phụ hiện có danh sách các cuộc gọi được lên lịch "
+"riêng."
+
+#: ../../c-api/threads.rst:717
+#, fuzzy
+msgid ""
+"This function now always schedules *func* to be run in the main interpreter."
+msgstr ""
+"Chức năng này hiện luôn lên lịch chạy *func* trong trình thông dịch chính."
+
+#: ../../c-api/threads.rst:724
+#, fuzzy
+msgid ""
+"Execute all pending calls. This is usually executed automatically by the "
+"interpreter."
+msgstr ""
+"Thực hiện tất cả các cuộc gọi đang chờ xử lý. Điều này thường được thực hiện"
+" tự động bởi trình thông dịch."
+
+#: ../../c-api/threads.rst:727
+#, fuzzy
+msgid ""
+"This function returns ``0`` on success, and returns ``-1`` with an exception"
+" set on failure."
+msgstr ""
+"Hàm này trả về ``0`` nếu thành công và trả về ``-1`` với ngoại lệ được đặt "
+"nếu thất bại."
+
+#: ../../c-api/threads.rst:730
+#, fuzzy
+msgid ""
+"If this is not called in the main thread of the main interpreter, this "
+"function does nothing and returns ``0``. The caller must hold an "
+":term:`attached thread state`."
+msgstr ""
+"Nếu điều này không được gọi trong luồng chính của trình thông dịch chính thì"
+" hàm này sẽ không thực hiện gì và trả về ``0``. Người gọi phải giữ "
+":term:`attached thread state`."
+
+#: ../../c-api/threads.rst:736
+#, fuzzy
+msgid "This function only runs pending calls in the main interpreter."
+msgstr ""
+"Chức năng này chỉ chạy các cuộc gọi đang chờ xử lý trong trình thông dịch "
+"chính."
+
+#: ../../c-api/threads.rst:742
+#, fuzzy
+msgid ""
+"Asynchronously raise an exception in a thread. The *id* argument is the "
+"thread id of the target thread; *exc* is the exception object to be raised. "
+"This function does not steal any references to *exc*. To prevent naive "
+"misuse, you must write your own C extension to call this.  Must be called "
+"with an :term:`attached thread state`. Returns the number of thread states "
+"modified; this is normally one, but will be zero if the thread id isn't "
+"found.  If *exc* is ``NULL``, the pending exception (if any) for the thread "
+"is cleared. This raises no exceptions."
+msgstr ""
+"Đưa ra một ngoại lệ không đồng bộ trong một chuỗi. Đối số *id* là id luồng "
+"của luồng đích; *exc* là đối tượng ngoại lệ được nêu ra. Hàm này không lấy "
+"cắp bất kỳ tham chiếu nào tới *exc*. Để tránh việc lạm dụng một cách ngây "
+"thơ, bạn phải viết phần mở rộng C của riêng mình để gọi nó.  Phải được gọi "
+"bằng :term:`attached thread state`. Trả về số trạng thái luồng đã sửa đổi; "
+"đây thường là một, nhưng sẽ bằng 0 nếu không tìm thấy id luồng.  Nếu *exc* "
+"là ``NULL``, ngoại lệ đang chờ xử lý (nếu có) cho chuỗi sẽ bị xóa. Điều này "
+"không có ngoại lệ."
+
+#: ../../c-api/threads.rst:750
+#, fuzzy
+msgid ""
+"The type of the *id* parameter changed from :c:expr:`long` to "
+":c:expr:`unsigned long`."
+msgstr ""
+"Loại tham số *id* đã thay đổi từ :c:expr:`long` thành :c:expr:`unsigned "
+"long`."
+
+#: ../../c-api/threads.rst:756
+#, fuzzy
+msgid "Operating system thread APIs"
+msgstr "API luồng của hệ điều hành"
+
+#: ../../c-api/threads.rst:760
+#, fuzzy
+msgid "Sentinel value for an invalid thread ID."
+msgstr "Giá trị Sentinel cho ID luồng không hợp lệ."
+
+#: ../../c-api/threads.rst:762
+#, fuzzy
+msgid "This is currently equivalent to ``(unsigned long)-1``."
+msgstr "Điều này hiện tương đương với ``(unsigned long)-1``."
+
+#: ../../c-api/threads.rst:767
+#, fuzzy
+msgid ""
+"Start function *func* in a new thread with argument *arg*. The resulting "
+"thread is not intended to be joined."
+msgstr ""
+"Bắt đầu hàm *func* trong một chuỗi mới với đối số *arg*. Chủ đề kết quả "
+"không có ý định được tham gia."
+
+#: ../../c-api/threads.rst:770
+#, fuzzy
+msgid "*func* must not be ``NULL``, but *arg* may be ``NULL``."
+msgstr "*func* không được là ``NULL``, nhưng *arg* có thể là ``NULL``."
+
+#: ../../c-api/threads.rst:772
+#, fuzzy
+msgid ""
+"On success, this function returns the identifier of the new thread; on "
+"failure, this returns :c:macro:`PYTHREAD_INVALID_THREAD_ID`."
+msgstr ""
+"Nếu thành công, hàm này trả về mã định danh của luồng mới; nếu thất bại, "
+"điều này sẽ trả về :c:macro:`PYTHREAD_INVALID_THREAD_ID`."
+
+#: ../../c-api/threads.rst:775 ../../c-api/threads.rst:859
+#: ../../c-api/threads.rst:867
+#, fuzzy
+msgid "The caller does not need to hold an :term:`attached thread state`."
+msgstr "Người gọi không cần giữ :term:`attached thread state`."
+
+#: ../../c-api/threads.rst:780
+#, fuzzy
+msgid "Return the identifier of the current thread, which will never be zero."
+msgstr ""
+"Trả về mã định danh của luồng hiện tại, giá trị này sẽ không bao giờ bằng 0."
+
+#: ../../c-api/threads.rst:782 ../../c-api/threads.rst:814
+#, fuzzy
+msgid ""
+"This function cannot fail, and the caller does not need to hold an "
+":term:`attached thread state`."
+msgstr ""
+"Chức năng này không thể bị lỗi và người gọi không cần giữ :term:`attached "
+"thread state`."
+
+#: ../../c-api/threads.rst:786
+#, fuzzy
+msgid ":py:func:`threading.get_ident`"
+msgstr ":py:func:`threading.get_ident`"
+
+#: ../../c-api/threads.rst:791
+#, fuzzy
+msgid ""
+"Get general information about the current thread in the form of a "
+":ref:`struct sequence <struct-sequence-objects>` object. This information is"
+" accessible as :py:attr:`sys.thread_info` in Python."
+msgstr ""
+"Nhận thông tin chung về luồng hiện tại ở dạng đối tượng :ref:`struct "
+"sequence <struct-sequence-objects>`. Thông tin này có thể truy cập được dưới"
+" dạng :py:attr:`sys.thread_info` trong Python."
+
+#: ../../c-api/threads.rst:795
+#, fuzzy
+msgid ""
+"On success, this returns a new :term:`strong reference` to the thread "
+"information; on failure, this returns ``NULL`` with an exception set."
+msgstr ""
+"Nếu thành công, thao tác này sẽ trả về một :term:`strong reference` mới cho "
+"thông tin luồng; nếu thất bại, điều này sẽ trả về ``NULL`` với một bộ ngoại "
+"lệ."
+
+#: ../../c-api/threads.rst:798
+#, fuzzy
+msgid "The caller must hold an :term:`attached thread state`."
+msgstr "Người gọi phải giữ :term:`attached thread state`."
+
+#: ../../c-api/threads.rst:803
+#, fuzzy
+msgid "This macro is defined when the system supports native thread IDs."
+msgstr "Macro này được xác định khi hệ thống hỗ trợ ID luồng gốc."
+
+#: ../../c-api/threads.rst:808
+#, fuzzy
+msgid ""
+"Get the native identifier of the current thread as it was assigned by the "
+"operating system's kernel, which will never be less than zero."
+msgstr ""
+"Lấy mã định danh riêng của luồng hiện tại do nó được gán bởi nhân của hệ "
+"điều hành, giá trị này sẽ không bao giờ nhỏ hơn 0."
+
+#: ../../c-api/threads.rst:811
+#, fuzzy
+msgid ""
+"This function is only available when :c:macro:`PY_HAVE_THREAD_NATIVE_ID` is "
+"defined."
+msgstr ""
+"Chức năng này chỉ khả dụng khi :c:macro:`PY_HAVE_THREAD_NATIVE_ID` được xác "
+"định."
+
+#: ../../c-api/threads.rst:818
+#, fuzzy
+msgid ":py:func:`threading.get_native_id`"
+msgstr ":py:func:`threading.get_native_id`"
+
+#: ../../c-api/threads.rst:823
+#, fuzzy
+msgid ""
+"Terminate the current thread. This function is generally considered unsafe "
+"and should be avoided. It is kept solely for backwards compatibility."
+msgstr ""
+"Chấm dứt chủ đề hiện tại. Chức năng này thường được coi là không an toàn và "
+"nên tránh. Nó được giữ chỉ để tương thích ngược."
+
+#: ../../c-api/threads.rst:826
+#, fuzzy
+msgid ""
+"This function is only safe to call if all functions in the full call stack "
+"are written to safely allow it."
+msgstr ""
+"Chức năng này chỉ an toàn để gọi nếu tất cả các chức năng trong ngăn xếp "
+"cuộc gọi đầy đủ được ghi để cho phép nó một cách an toàn."
+
+#: ../../c-api/threads.rst:831
+#, fuzzy
+msgid ""
+"If the current system uses POSIX threads (also known as \"pthreads\"), this "
+"calls :manpage:`pthread_exit(3)`, which attempts to unwind the stack and "
+"call C++ destructors on some libc implementations. However, if a "
+"``noexcept`` function is reached, it may terminate the process. Other "
+"systems, such as macOS, do unwinding."
+msgstr ""
+"Nếu hệ thống hiện tại sử dụng các luồng POSIX (còn được gọi là \"pthread\"),"
+" thì lệnh này gọi :manpage:`pthread_exit(3)`, cố gắng giải phóng ngăn xếp và"
+" gọi hàm hủy C++ trên một số triển khai libc. Tuy nhiên, nếu đạt được chức "
+"năng ``noexcept``, nó có thể chấm dứt quá trình. Các hệ thống khác, chẳng "
+"hạn như macOS, thực hiện việc giải nén."
+
+#: ../../c-api/threads.rst:837
+#, fuzzy
+msgid ""
+"On Windows, this function calls ``_endthreadex()``, which kills the thread "
+"without calling C++ destructors."
+msgstr ""
+"Trên Windows, hàm này gọi ``_endthreadex()``, chức năng này sẽ tắt luồng mà "
+"không gọi hàm hủy C++."
+
+#: ../../c-api/threads.rst:840
+#, fuzzy
+msgid "In any case, there is a risk of corruption on the thread's stack."
+msgstr "Trong mọi trường hợp, có nguy cơ hỏng ngăn xếp của luồng."
+
+#: ../../c-api/threads.rst:847
+#, fuzzy
+msgid ""
+"Initialize ``PyThread*`` APIs. Python executes this function automatically, "
+"so there's little need to call it from an extension module."
+msgstr ""
+"Khởi tạo API ``PyThread*``. Python thực thi chức năng này một cách tự động, "
+"do đó không cần phải gọi nó từ mô-đun mở rộng."
+
+#: ../../c-api/threads.rst:853
+#, fuzzy
+msgid "Set the stack size of the current thread to *size* bytes."
+msgstr "Đặt kích thước ngăn xếp của luồng hiện tại thành byte *size*."
+
+#: ../../c-api/threads.rst:855
+#, fuzzy
+msgid ""
+"This function returns ``0`` on success, ``-1`` if *size* is invalid, or "
+"``-2`` if the system does not support changing the stack size. This function"
+" does not set exceptions."
+msgstr ""
+"Hàm này trả về ``0`` nếu thành công, ``-1`` nếu *size* không hợp lệ hoặc "
+"``-2`` nếu hệ thống không hỗ trợ thay đổi kích thước ngăn xếp. Chức năng này"
+" không đặt ngoại lệ."
+
+#: ../../c-api/threads.rst:864
+#, fuzzy
+msgid ""
+"Return the stack size of the current thread in bytes, or ``0`` if the "
+"system's default stack size is in use."
+msgstr ""
+"Trả về kích thước ngăn xếp của luồng hiện tại theo byte hoặc ``0`` nếu kích "
+"thước ngăn xếp mặc định của hệ thống đang được sử dụng."
+
+#: ../../c-api/threads.rst:8
+#, fuzzy
+msgid "global interpreter lock"
+msgstr "khóa phiên dịch toàn cầu"
+
+#: ../../c-api/threads.rst:8
+#, fuzzy
+msgid "interpreter lock"
+msgstr "khóa thông dịch viên"
+
+#: ../../c-api/threads.rst:8
+#, fuzzy
+msgid "lock, interpreter"
+msgstr "khóa, thông dịch viên"
+
+#: ../../c-api/threads.rst:25
+#, fuzzy
+msgid "setswitchinterval (in module sys)"
+msgstr "setswitchinterval (trong mô-đun sys)"
+
+#: ../../c-api/threads.rst:36
+#, fuzzy
+msgid "PyThreadState (C type)"
+msgstr "PyThreadState (loại C)"
+
+#: ../../c-api/threads.rst:87
+#, fuzzy
+msgid "Py_BEGIN_ALLOW_THREADS (C macro)"
+msgstr "Py_BEGIN_ALLOW_THREADS (macro C)"
+
+#: ../../c-api/threads.rst:87
+#, fuzzy
+msgid "Py_END_ALLOW_THREADS (C macro)"
+msgstr "Py_END_ALLOW_THREADS (macro C)"
+
+#: ../../c-api/threads.rst:103
+#, fuzzy
+msgid "PyEval_RestoreThread (C function)"
+msgstr "PyEval_RestoreThread (hàm C)"
+
+#: ../../c-api/threads.rst:103
+#, fuzzy
+msgid "PyEval_SaveThread (C function)"
+msgstr "PyEval_SaveThread (hàm C)"
+
+#: ../../c-api/threads.rst:318
+#, fuzzy
+msgid "PyEval_AcquireThread()"
+msgstr "PyEval_AcquireThread()"
+
+#: ../../c-api/threads.rst:318
+#, fuzzy
+msgid "PyEval_ReleaseThread()"
+msgstr "PyEval_ReleaseThread()"
+
+#: ../../c-api/threads.rst:318
+#, fuzzy
+msgid "PyEval_SaveThread()"
+msgstr "PyEval_SaveThread()"
+
+#: ../../c-api/threads.rst:318
+#, fuzzy
+msgid "PyEval_RestoreThread()"
+msgstr "PyEval_RestoreThread()"
+
+#: ../../c-api/threads.rst:340
+#, fuzzy
+msgid "module"
+msgstr "mô-đun"
+
+#: ../../c-api/threads.rst:340
+#, fuzzy
+msgid "_thread"
+msgstr "_chủ đề"

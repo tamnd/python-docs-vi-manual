@@ -1,0 +1,2935 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/mailbox.rst:2
+#, fuzzy
+msgid ":mod:`!mailbox` --- Manipulate mailboxes in various formats"
+msgstr ":mod:`!mailbox` --- Thao tác với hộp thư ở nhiều định dạng khác nhau"
+
+#: ../../library/mailbox.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/mailbox.py`"
+msgstr "**Source code:** :source:`Lib/mailbox.py`"
+
+#: ../../library/mailbox.rst:14
+#, fuzzy
+msgid ""
+"This module defines two classes, :class:`Mailbox` and :class:`Message`, for "
+"accessing and manipulating on-disk mailboxes and the messages they contain. "
+":class:`!Mailbox` offers a dictionary-like mapping from keys to messages. "
+":class:`!Message` extends the :mod:`email.message` module's "
+":class:`~email.message.Message` class with format-specific state and "
+"behavior. Supported mailbox formats are Maildir, mbox, MH, Babyl, and MMDF."
+msgstr ""
+"Mô-đun này định nghĩa hai lớp, :class:`Mailbox` và :class:`Message`, để truy"
+" cập và thao tác các hộp thư trên đĩa cũng như các thư chứa trong đó. "
+":class:`!Mailbox` cung cấp khả năng ánh xạ giống như từ điển từ khóa đến tin"
+" nhắn. :class:`!Message` mở rộng lớp :class:`~email.message.Message` của mô-"
+"đun :mod:`email.message` với trạng thái và hành vi dành riêng cho định dạng."
+" Các định dạng hộp thư được hỗ trợ là Maildir, mbox, MH, Babyl và MMDF."
+
+#: ../../library/mailbox.rst:24
+#, fuzzy
+msgid "Module :mod:`email`"
+msgstr "Mô-đun :mod:`email`"
+
+#: ../../library/mailbox.rst:25
+#, fuzzy
+msgid "Represent and manipulate messages."
+msgstr "Đại diện và thao tác tin nhắn."
+
+#: ../../library/mailbox.rst:31
+#, fuzzy
+msgid ":class:`!Mailbox` objects"
+msgstr "đối tượng :class:`!Mailbox`"
+
+#: ../../library/mailbox.rst:35
+#, fuzzy
+msgid "A mailbox, which may be inspected and modified."
+msgstr "Một hộp thư có thể được kiểm tra và sửa đổi."
+
+#: ../../library/mailbox.rst:37
+#, fuzzy
+msgid ""
+"The :class:`!Mailbox` class defines an interface and is not intended to be "
+"instantiated.  Instead, format-specific subclasses should inherit from "
+":class:`!Mailbox` and your code should instantiate a particular subclass."
+msgstr ""
+"Lớp :class:`!Mailbox` xác định một giao diện và không nhằm mục đích khởi "
+"tạo.  Thay vào đó, các lớp con có định dạng cụ thể sẽ kế thừa từ "
+":class:`!Mailbox` và mã của bạn sẽ khởi tạo một lớp con cụ thể."
+
+#: ../../library/mailbox.rst:41
+#, fuzzy
+msgid ""
+"The :class:`!Mailbox` interface is dictionary-like, with small keys "
+"corresponding to messages. Keys are issued by the :class:`!Mailbox` instance"
+" with which they will be used and are only meaningful to that "
+":class:`!Mailbox` instance. A key continues to identify a message even if "
+"the corresponding message is modified, such as by replacing it with another "
+"message."
+msgstr ""
+"Giao diện của :class:`!Mailbox` giống như từ điển, có các phím nhỏ tương ứng"
+" với tin nhắn. Các khóa được cấp bởi phiên bản :class:`!Mailbox` mà chúng sẽ"
+" được sử dụng và chỉ có ý nghĩa đối với phiên bản :class:`!Mailbox` đó. Một "
+"khóa tiếp tục xác định một thông báo ngay cả khi thông báo tương ứng bị sửa "
+"đổi, chẳng hạn như bằng cách thay thế nó bằng một thông báo khác."
+
+#: ../../library/mailbox.rst:47
+#, fuzzy
+msgid ""
+"Messages may be added to a :class:`!Mailbox` instance using the set-like "
+"method :meth:`add` and removed using a ``del`` statement or the set-like "
+"methods :meth:`remove` and :meth:`discard`."
+msgstr ""
+"Tin nhắn có thể được thêm vào phiên bản :class:`!Mailbox` bằng phương thức "
+"giống tập hợp :meth:`add` và xóa bằng câu lệnh ``del`` hoặc các phương thức "
+"giống tập hợp :meth:`remove` và :meth:`discard`."
+
+#: ../../library/mailbox.rst:51
+#, fuzzy
+msgid ""
+":class:`!Mailbox` interface semantics differ from dictionary semantics in "
+"some noteworthy ways. Each time a message is requested, a new representation"
+" (typically a :class:`Message` instance) is generated based upon the current"
+" state of the mailbox. Similarly, when a message is added to a "
+":class:`!Mailbox` instance, the provided message representation's contents "
+"are copied. In neither case is a reference to the message representation "
+"kept by the :class:`!Mailbox` instance."
+msgstr ""
+"Ngữ nghĩa giao diện :class:`!Mailbox` khác với ngữ nghĩa từ điển ở một số "
+"điểm đáng chú ý. Mỗi khi một tin nhắn được yêu cầu, một đại diện mới (thường"
+" là phiên bản :class:`Message`) sẽ được tạo dựa trên trạng thái hiện tại của"
+" hộp thư. Tương tự, khi một thông báo được thêm vào phiên bản "
+":class:`!Mailbox`, nội dung của thông báo được cung cấp sẽ được sao chép. "
+"Trong cả hai trường hợp đều không có tham chiếu đến biểu diễn thông báo được"
+" giữ bởi phiên bản :class:`!Mailbox`."
+
+#: ../../library/mailbox.rst:59
+#, fuzzy
+msgid ""
+"The default :class:`!Mailbox` :term:`iterator` iterates over message "
+"representations, not keys as the default :class:`dictionary <dict>` iterator"
+" does. Moreover, modification of a mailbox during iteration is safe and "
+"well-defined. Messages added to the mailbox after an iterator is created "
+"will not be seen by the iterator. Messages removed from the mailbox before "
+"the iterator yields them will be silently skipped, though using a key from "
+"an iterator may result in a :exc:`KeyError` exception if the corresponding "
+"message is subsequently removed."
+msgstr ""
+":class:`!Mailbox` :term:`iterator` mặc định lặp lại các biểu diễn thông báo "
+"chứ không phải các khóa như trình vòng lặp :class:`dictionary <dict>` mặc "
+"định. Hơn nữa, việc sửa đổi hộp thư trong quá trình lặp lại là an toàn và "
+"được xác định rõ ràng. Các thông báo được thêm vào hộp thư sau khi trình "
+"vòng lặp được tạo sẽ không được trình vòng lặp nhìn thấy. Các thư bị xóa "
+"khỏi hộp thư trước khi trình vòng lặp mang lại chúng sẽ bị bỏ qua một cách "
+"âm thầm, mặc dù việc sử dụng khóa từ trình vòng lặp có thể dẫn đến ngoại lệ "
+":exc:`KeyError` nếu thư tương ứng sau đó bị xóa."
+
+#: ../../library/mailbox.rst:71
+#, fuzzy
+msgid ""
+"Be very cautious when modifying mailboxes that might be simultaneously "
+"changed by some other process.  The safest mailbox format to use for such "
+"tasks is :class:`Maildir`; try to avoid using single-file formats such as "
+":class:`mbox` for concurrent writing.  If you're modifying a mailbox, you "
+"*must* lock it by calling the :meth:`lock` and :meth:`unlock` methods "
+"*before* reading any messages in the file or making any changes by adding or"
+" deleting a message.  Failing to lock the mailbox runs the risk of losing "
+"messages or corrupting the entire mailbox."
+msgstr ""
+"Hãy hết sức thận trọng khi sửa đổi các hộp thư có thể bị thay đổi đồng thời "
+"bởi một số quy trình khác.  Định dạng hộp thư an toàn nhất để sử dụng cho "
+"những tác vụ như vậy là :class:`Maildir`; cố gắng tránh sử dụng các định "
+"dạng tệp đơn lẻ như :class:`mbox` để ghi đồng thời.  Nếu bạn đang sửa đổi "
+"một hộp thư, *must* sẽ khóa nó bằng cách gọi các phương thức :meth:`lock` và"
+" :meth:`unlock` *before* để đọc bất kỳ thư nào trong tệp hoặc thực hiện bất "
+"kỳ thay đổi nào bằng cách thêm hoặc xóa thư.  Không khóa hộp thư sẽ có nguy "
+"cơ bị mất tin nhắn hoặc làm hỏng toàn bộ hộp thư."
+
+#: ../../library/mailbox.rst:81
+#, fuzzy
+msgid ":class:`!Mailbox` instances have the following methods:"
+msgstr "Các phiên bản :class:`!Mailbox` có các phương thức sau:"
+
+#: ../../library/mailbox.rst:86
+#, fuzzy
+msgid ""
+"Add *message* to the mailbox and return the key that has been assigned to "
+"it."
+msgstr "Thêm *message* vào hộp thư và trả lại khóa đã được gán cho nó."
+
+#: ../../library/mailbox.rst:89
+#, fuzzy
+msgid ""
+"Parameter *message* may be a :class:`Message` instance, an "
+":class:`email.message.Message` instance, a string, a byte string, or a file-"
+"like object (which should be open in binary mode). If *message* is an "
+"instance of the appropriate format-specific :class:`Message` subclass (e.g.,"
+" if it's an :class:`mboxMessage` instance and this is an :class:`mbox` "
+"instance), its format-specific information is used. Otherwise, reasonable "
+"defaults for format-specific information are used."
+msgstr ""
+"Tham số *message* có thể là một phiên bản :class:`Message`, một phiên bản "
+":class:`email.message.Message`, một chuỗi, một chuỗi byte hoặc một đối tượng"
+" giống như tệp (cần mở ở chế độ nhị phân). Nếu *message* là một phiên bản "
+"của lớp con :class:`Message` có định dạng cụ thể thích hợp (ví dụ: nếu đó là"
+" một phiên bản :class:`mboxMessage` và đây là một phiên bản :class:`mbox`), "
+"thì thông tin về định dạng cụ thể của nó sẽ được sử dụng. Mặt khác, các giá "
+"trị mặc định hợp lý cho thông tin có định dạng cụ thể sẽ được sử dụng."
+
+#: ../../library/mailbox.rst:98
+#, fuzzy
+msgid "Support for binary input was added."
+msgstr "Hỗ trợ cho đầu vào nhị phân đã được thêm vào."
+
+#: ../../library/mailbox.rst:106
+#, fuzzy
+msgid "Delete the message corresponding to *key* from the mailbox."
+msgstr "Xóa tin nhắn tương ứng với *key* khỏi hộp thư."
+
+#: ../../library/mailbox.rst:108
+#, fuzzy
+msgid ""
+"If no such message exists, a :exc:`KeyError` exception is raised if the "
+"method was called as :meth:`remove` or :meth:`__delitem__` but no exception "
+"is raised if the method was called as :meth:`discard`. The behavior of "
+":meth:`discard` may be preferred if the underlying mailbox format supports "
+"concurrent modification by other processes."
+msgstr ""
+"Nếu không có thông báo như vậy tồn tại, ngoại lệ :exc:`KeyError` sẽ được đưa"
+" ra nếu phương thức được gọi là :meth:`remove` hoặc :meth:`__delitem__` "
+"nhưng không có ngoại lệ nào được đưa ra nếu phương thức được gọi là "
+":meth:`discard`. Hoạt động của :meth:`discard` có thể được ưu tiên hơn nếu "
+"định dạng hộp thư cơ bản hỗ trợ sửa đổi đồng thời bởi các quy trình khác."
+
+#: ../../library/mailbox.rst:117
+#, fuzzy
+msgid ""
+"Replace the message corresponding to *key* with *message*. Raise a "
+":exc:`KeyError` exception if no message already corresponds to *key*."
+msgstr ""
+"Thay thế tin nhắn tương ứng với *key* bằng *message*. Đưa ra ngoại lệ "
+":exc:`KeyError` nếu không có thông báo nào tương ứng với *key*."
+
+#: ../../library/mailbox.rst:120
+#, fuzzy
+msgid ""
+"As with :meth:`add`, parameter *message* may be a :class:`Message` instance,"
+" an :class:`email.message.Message` instance, a string, a byte string, or a "
+"file-like object (which should be open in binary mode). If *message* is an "
+"instance of the appropriate format-specific :class:`Message` subclass (e.g.,"
+" if it's an :class:`mboxMessage` instance and this is an :class:`mbox` "
+"instance), its format-specific information is used. Otherwise, the format-"
+"specific information of the message that currently corresponds to *key* is "
+"left unchanged."
+msgstr ""
+"Giống như :meth:`add`, tham số *message* có thể là một phiên bản "
+":class:`Message`, một phiên bản :class:`email.message.Message`, một chuỗi, "
+"một chuỗi byte hoặc một đối tượng giống như tệp (cần mở ở chế độ nhị phân). "
+"Nếu *message* là một phiên bản của lớp con :class:`Message` có định dạng cụ "
+"thể phù hợp (ví dụ: nếu đó là một phiên bản :class:`mboxMessage` và đây là "
+"một phiên bản :class:`mbox`), thì thông tin về định dạng cụ thể của nó sẽ "
+"được sử dụng. Mặt khác, thông tin về định dạng cụ thể của tin nhắn hiện "
+"tương ứng với *key* sẽ không thay đổi."
+
+#: ../../library/mailbox.rst:133
+#, fuzzy
+msgid "Return an :term:`iterator` over all keys"
+msgstr "Trả về :term:`iterator` trên tất cả các phím"
+
+#: ../../library/mailbox.rst:138
+#, fuzzy
+msgid ""
+"The same as :meth:`iterkeys`, except that a :class:`list` is returned rather"
+" than an :term:`iterator`"
+msgstr ""
+"Giống như :meth:`iterkeys`, ngoại trừ việc :class:`list` được trả về thay vì"
+" :term:`iterator`"
+
+#: ../../library/mailbox.rst:145
+#, fuzzy
+msgid ""
+"Return an :term:`iterator` over representations of all messages. The "
+"messages are represented as instances of the appropriate format-specific "
+":class:`Message` subclass unless a custom message factory was specified when"
+" the :class:`!Mailbox` instance was initialized."
+msgstr ""
+"Trả về :term:`iterator` trên phần trình bày của tất cả tin nhắn. Các thông "
+"báo được biểu diễn dưới dạng các phiên bản của lớp con :class:`Message` có "
+"định dạng cụ thể thích hợp trừ khi một nhà máy thông báo tùy chỉnh được chỉ "
+"định khi phiên bản :class:`!Mailbox` được khởi tạo."
+
+#: ../../library/mailbox.rst:153
+#, fuzzy
+msgid ""
+"The behavior of :meth:`__iter__` is unlike that of dictionaries, which "
+"iterate over keys."
+msgstr ""
+"Hoạt động của :meth:`__iter__` không giống như hoạt động của các từ điển lặp"
+" lại các phím."
+
+#: ../../library/mailbox.rst:159
+#, fuzzy
+msgid ""
+"The same as :meth:`itervalues`, except that a :class:`list` is returned "
+"rather than an :term:`iterator`"
+msgstr ""
+"Giống như :meth:`itervalues`, ngoại trừ việc :class:`list` được trả về thay "
+"vì :term:`iterator`"
+
+#: ../../library/mailbox.rst:165
+#, fuzzy
+msgid ""
+"Return an :term:`iterator` over (*key*, *message*) pairs, where *key* is a "
+"key and *message* is a message representation. The messages are represented "
+"as instances of the appropriate format-specific :class:`Message` subclass "
+"unless a custom message factory was specified when the :class:`!Mailbox` "
+"instance was initialized."
+msgstr ""
+"Trả về một cặp :term:`iterator` trên (*key*, *message*), trong đó *key* là "
+"khóa và *message* là biểu diễn thông báo. Các thông báo được biểu diễn dưới "
+"dạng các phiên bản của lớp con :class:`Message` có định dạng cụ thể thích "
+"hợp trừ khi một nhà máy thông báo tùy chỉnh được chỉ định khi phiên bản "
+":class:`!Mailbox` được khởi tạo."
+
+#: ../../library/mailbox.rst:174
+#, fuzzy
+msgid ""
+"The same as :meth:`iteritems`, except that a :class:`list` of pairs is "
+"returned rather than an :term:`iterator` of pairs."
+msgstr ""
+"Tương tự như :meth:`iteritems`, ngoại trừ việc trả về một cặp :class:`list` "
+"thay vì một cặp :term:`iterator`."
+
+#: ../../library/mailbox.rst:181
+#, fuzzy
+msgid ""
+"Return a representation of the message corresponding to *key*. If no such "
+"message exists, *default* is returned if the method was called as "
+":meth:`get` and a :exc:`KeyError` exception is raised if the method was "
+"called as :meth:`!__getitem__`. The message is represented as an instance of"
+" the appropriate format-specific :class:`Message` subclass unless a custom "
+"message factory was specified when the :class:`!Mailbox` instance was "
+"initialized."
+msgstr ""
+"Trả về đại diện của thông báo tương ứng với *key*. Nếu không có thông báo "
+"như vậy tồn tại, *default* sẽ được trả về nếu phương thức được gọi là "
+":meth:`get` và một ngoại lệ :exc:`KeyError` sẽ xuất hiện nếu phương thức đó "
+"được gọi là :meth:`!__getitem__`. Thông báo được biểu diễn dưới dạng một "
+"phiên bản của lớp con :class:`Message` có định dạng cụ thể thích hợp trừ khi"
+" một nhà máy thông báo tùy chỉnh được chỉ định khi phiên bản "
+":class:`!Mailbox` được khởi tạo."
+
+#: ../../library/mailbox.rst:192
+#, fuzzy
+msgid ""
+"Return a representation of the message corresponding to *key* as an instance"
+" of the appropriate format-specific :class:`Message` subclass, or raise a "
+":exc:`KeyError` exception if no such message exists."
+msgstr ""
+"Trả về một biểu diễn của thông báo tương ứng với *key* dưới dạng một phiên "
+"bản của lớp con :class:`Message` có định dạng cụ thể thích hợp hoặc đưa ra "
+"một ngoại lệ :exc:`KeyError` nếu không có thông báo như vậy tồn tại."
+
+#: ../../library/mailbox.rst:199
+#, fuzzy
+msgid ""
+"Return a byte representation of the message corresponding to *key*, or raise"
+" a :exc:`KeyError` exception if no such message exists."
+msgstr ""
+"Trả về biểu diễn byte của thông báo tương ứng với *key* hoặc đưa ra ngoại lệ"
+" :exc:`KeyError` nếu không tồn tại thông báo đó."
+
+#: ../../library/mailbox.rst:207
+#, fuzzy
+msgid ""
+"Return a string representation of the message corresponding to *key*, or "
+"raise a :exc:`KeyError` exception if no such message exists.  The message is"
+" processed through :class:`email.message.Message` to convert it to a 7bit "
+"clean representation."
+msgstr ""
+"Trả về một chuỗi biểu diễn thông báo tương ứng với *key* hoặc đưa ra một "
+"ngoại lệ :exc:`KeyError` nếu không tồn tại thông báo đó.  Thông báo được xử "
+"lý thông qua :class:`email.message.Message` để chuyển đổi nó thành bản trình"
+" bày rõ ràng 7 bit."
+
+#: ../../library/mailbox.rst:215
+#, fuzzy
+msgid ""
+"Return a :term:`file-like <file-like object>` representation of the message "
+"corresponding to *key*, or raise a :exc:`KeyError` exception if no such "
+"message exists.  The file-like object behaves as if open in binary mode.  "
+"This file should be closed once it is no longer needed."
+msgstr ""
+"Trả về biểu diễn :term:`file-like <file-like object>` của thông báo tương "
+"ứng với *key* hoặc đưa ra ngoại lệ :exc:`KeyError` nếu không tồn tại thông "
+"báo như vậy.  Đối tượng giống như tệp hoạt động như thể đang mở ở chế độ nhị"
+" phân.  Tập tin này sẽ được đóng lại khi không còn cần thiết nữa."
+
+#: ../../library/mailbox.rst:221
+#, fuzzy
+msgid ""
+"The file object really is a :term:`binary file`; previously it was "
+"incorrectly returned in text mode.  Also, the :term:`file-like object` now "
+"supports the :term:`context manager` protocol: you can use a :keyword:`with`"
+" statement to automatically close it."
+msgstr ""
+"Đối tượng tập tin thực sự là một :term:`binary file`; trước đó nó được trả "
+"về không chính xác ở chế độ văn bản.  Ngoài ra, :term:`file-like object` "
+"hiện hỗ trợ giao thức :term:`context manager`: bạn có thể sử dụng câu lệnh "
+":keyword:`with` để tự động đóng nó."
+
+#: ../../library/mailbox.rst:229
+#, fuzzy
+msgid ""
+"Unlike other representations of messages, :term:`file-like <file-like "
+"object>` representations are not necessarily independent of the "
+":class:`!Mailbox` instance that created them or of the underlying mailbox.  "
+"More specific documentation is provided by each subclass."
+msgstr ""
+"Không giống như các cách biểu diễn thư khác, cách biểu diễn :term:`file-like"
+" <file-like object>` không nhất thiết phải độc lập với phiên bản "
+":class:`!Mailbox` đã tạo ra chúng hoặc với hộp thư cơ bản.  Tài liệu cụ thể "
+"hơn được cung cấp bởi mỗi lớp con."
+
+#: ../../library/mailbox.rst:238
+#, fuzzy
+msgid ""
+"Return ``True`` if *key* corresponds to a message, ``False`` otherwise."
+msgstr ""
+"Trả về ``True`` nếu *key* tương ứng với một tin nhắn, ``False`` nếu không."
+
+#: ../../library/mailbox.rst:243
+#, fuzzy
+msgid "Return a count of messages in the mailbox."
+msgstr "Trả về số lượng tin nhắn trong hộp thư."
+
+#: ../../library/mailbox.rst:248
+#, fuzzy
+msgid "Delete all messages from the mailbox."
+msgstr "Xóa tất cả tin nhắn khỏi hộp thư."
+
+#: ../../library/mailbox.rst:253
+#, fuzzy
+msgid ""
+"Return a representation of the message corresponding to *key* and delete the"
+" message. If no such message exists, return *default*. The message is "
+"represented as an instance of the appropriate format-specific "
+":class:`Message` subclass unless a custom message factory was specified when"
+" the :class:`!Mailbox` instance was initialized."
+msgstr ""
+"Trả về đại diện của tin nhắn tương ứng với *key* và xóa tin nhắn. Nếu không "
+"có thông báo như vậy tồn tại, hãy trả về *default*. Thông báo được biểu diễn"
+" dưới dạng một phiên bản của lớp con :class:`Message` có định dạng cụ thể "
+"thích hợp trừ khi một nhà máy thông báo tùy chỉnh được chỉ định khi phiên "
+"bản :class:`!Mailbox` được khởi tạo."
+
+#: ../../library/mailbox.rst:262
+#, fuzzy
+msgid ""
+"Return an arbitrary (*key*, *message*) pair, where *key* is a key and "
+"*message* is a message representation, and delete the corresponding message."
+" If the mailbox is empty, raise a :exc:`KeyError` exception. The message is "
+"represented as an instance of the appropriate format-specific "
+":class:`Message` subclass unless a custom message factory was specified when"
+" the :class:`!Mailbox` instance was initialized."
+msgstr ""
+"Trả về một cặp (*key*, *message*) tùy ý, trong đó *key* là khóa và *message*"
+" là biểu thị thông báo và xóa thông báo tương ứng. Nếu hộp thư trống, hãy "
+"đưa ra ngoại lệ :exc:`KeyError`. Thông báo được biểu diễn dưới dạng một "
+"phiên bản của lớp con :class:`Message` có định dạng cụ thể thích hợp trừ khi"
+" một nhà máy thông báo tùy chỉnh được chỉ định khi phiên bản "
+":class:`!Mailbox` được khởi tạo."
+
+#: ../../library/mailbox.rst:272
+#, fuzzy
+msgid ""
+"Parameter *arg* should be a *key*-to-*message* mapping or an iterable of "
+"(*key*, *message*) pairs. Updates the mailbox so that, for each given *key* "
+"and *message*, the message corresponding to *key* is set to *message* as if "
+"by using :meth:`__setitem__`. As with :meth:`__setitem__`, each *key* must "
+"already correspond to a message in the mailbox or else a :exc:`KeyError` "
+"exception will be raised, so in general it is incorrect for *arg* to be a "
+":class:`!Mailbox` instance."
+msgstr ""
+"Tham số *arg* phải là ánh xạ *key*-to-*message* hoặc có thể lặp lại các cặp "
+"(*key*, *message*). Cập nhật hộp thư sao cho, đối với mỗi *key* và *message*"
+" nhất định, thông báo tương ứng với *key* được đặt thành *message* như thể "
+"sử dụng :meth:`__setitem__`. Giống như :meth:`__setitem__`, mỗi *key* phải "
+"tương ứng với một tin nhắn trong hộp thư, nếu không, một ngoại lệ "
+":exc:`KeyError` sẽ được đưa ra, vì vậy nói chung việc *arg* là một phiên bản"
+" :class:`!Mailbox` là không chính xác."
+
+#: ../../library/mailbox.rst:282
+#, fuzzy
+msgid "Unlike with dictionaries, keyword arguments are not supported."
+msgstr "Không giống như từ điển, đối số từ khóa không được hỗ trợ."
+
+#: ../../library/mailbox.rst:287
+#, fuzzy
+msgid ""
+"Write any pending changes to the filesystem. For some :class:`Mailbox` "
+"subclasses, changes are always written immediately and :meth:`!flush` does "
+"nothing, but you should still make a habit of calling this method."
+msgstr ""
+"Viết mọi thay đổi đang chờ xử lý vào hệ thống tập tin. Đối với một số lớp "
+"con :class:`Mailbox`, các thay đổi luôn được ghi ngay lập tức và "
+":meth:`!flush` không làm gì cả, nhưng bạn vẫn nên tạo thói quen gọi phương "
+"thức này."
+
+#: ../../library/mailbox.rst:294
+#, fuzzy
+msgid ""
+"Acquire an exclusive advisory lock on the mailbox so that other processes "
+"know not to modify it. An :exc:`ExternalClashError` is raised if the lock is"
+" not available. The particular locking mechanisms used depend upon the "
+"mailbox format.  You should *always* lock the mailbox before making any "
+"modifications to its contents."
+msgstr ""
+"Có được khóa tư vấn độc quyền trên hộp thư để các quy trình khác biết không "
+"sửa đổi nó. Một :exc:`ExternalClashError` sẽ xuất hiện nếu không có khóa. Cơ"
+" chế khóa cụ thể được sử dụng phụ thuộc vào định dạng hộp thư.  Bạn nên "
+"*always* khóa hộp thư trước khi thực hiện bất kỳ sửa đổi nào đối với nội "
+"dung của nó."
+
+#: ../../library/mailbox.rst:303
+#, fuzzy
+msgid "Release the lock on the mailbox, if any."
+msgstr "Nhả khóa trên hộp thư, nếu có."
+
+#: ../../library/mailbox.rst:308
+#, fuzzy
+msgid ""
+"Flush the mailbox, unlock it if necessary, and close any open files. For "
+"some :class:`!Mailbox` subclasses, this method does nothing."
+msgstr ""
+"Xóa hộp thư, mở khóa nếu cần và đóng mọi tệp đang mở. Đối với một số lớp con"
+" :class:`!Mailbox`, phương thức này không có tác dụng gì."
+
+#: ../../library/mailbox.rst:315
+#, fuzzy
+msgid ":class:`!Maildir` objects"
+msgstr "đối tượng :class:`!Maildir`"
+
+#: ../../library/mailbox.rst:320
+#, fuzzy
+msgid ""
+"A subclass of :class:`Mailbox` for mailboxes in Maildir format. Parameter "
+"*factory* is a callable object that accepts a file-like message "
+"representation (which behaves as if opened in binary mode) and returns a "
+"custom representation. If *factory* is ``None``, :class:`MaildirMessage` is "
+"used as the default message representation. If *create* is ``True``, the "
+"mailbox is created if it does not exist."
+msgstr ""
+"Một lớp con của :class:`Mailbox` dành cho các hộp thư ở định dạng Maildir. "
+"Tham số *factory* là một đối tượng có thể gọi được, chấp nhận biểu diễn "
+"thông báo giống như tệp (hoạt động như thể được mở ở chế độ nhị phân) và trả"
+" về một biểu diễn tùy chỉnh. Nếu *factory* là ``None`` thì "
+":class:`MaildirMessage` được sử dụng làm đại diện thông báo mặc định. Nếu "
+"*create* là ``True``, hộp thư sẽ được tạo nếu nó không tồn tại."
+
+#: ../../library/mailbox.rst:327
+#, fuzzy
+msgid ""
+"If *create* is ``True`` and the *dirname* path exists, it will be treated as"
+" an existing maildir without attempting to verify its directory layout."
+msgstr ""
+"Nếu *create* là ``True`` và đường dẫn *dirname* tồn tại, nó sẽ được coi là "
+"một maildir hiện có mà không cần cố gắng xác minh bố cục thư mục của nó."
+
+#: ../../library/mailbox.rst:330
+#, fuzzy
+msgid ""
+"It is for historical reasons that *dirname* is named as such rather than "
+"*path*."
+msgstr ""
+"Vì lý do lịch sử mà *dirname* được đặt tên như vậy chứ không phải *path*."
+
+#: ../../library/mailbox.rst:332
+#, fuzzy
+msgid ""
+"Maildir is a directory-based mailbox format invented for the qmail mail "
+"transfer agent and now widely supported by other programs. Messages in a "
+"Maildir mailbox are stored in separate files within a common directory "
+"structure. This design allows Maildir mailboxes to be accessed and modified "
+"by multiple unrelated programs without data corruption, so file locking is "
+"unnecessary."
+msgstr ""
+"Maildir là một định dạng hộp thư dựa trên thư mục được phát minh cho tác "
+"nhân chuyển thư qmail và hiện được các chương trình khác hỗ trợ rộng rãi. "
+"Thư trong hộp thư Maildir được lưu trữ trong các tệp riêng biệt trong cấu "
+"trúc thư mục chung. Thiết kế này cho phép nhiều chương trình không liên quan"
+" truy cập và sửa đổi hộp thư Maildir mà không làm hỏng dữ liệu, do đó việc "
+"khóa tệp là không cần thiết."
+
+#: ../../library/mailbox.rst:339
+#, fuzzy
+msgid ""
+"Maildir mailboxes contain three subdirectories, namely: :file:`tmp`, "
+":file:`new`, and :file:`cur`. Messages are created momentarily in the "
+":file:`tmp` subdirectory and then moved to the :file:`new` subdirectory to "
+"finalize delivery. A mail user agent may subsequently move the message to "
+"the :file:`cur` subdirectory and store information about the state of the "
+"message in a special \"info\" section appended to its file name."
+msgstr ""
+"Hộp thư Maildir chứa ba thư mục con, đó là: :file:`tmp`, :file:`new` và "
+":file:`cur`. Tin nhắn được tạo tạm thời trong thư mục con :file:`tmp` và sau"
+" đó được chuyển sang thư mục con :file:`new` để hoàn tất quá trình gửi. Sau "
+"đó, tác nhân người dùng thư có thể di chuyển thư đến thư mục con :file:`cur`"
+" và lưu trữ thông tin về trạng thái của thư trong phần \"thông tin\" đặc "
+"biệt được thêm vào tên tệp của nó."
+
+#: ../../library/mailbox.rst:346
+#, fuzzy
+msgid ""
+"Folders of the style introduced by the Courier mail transfer agent are also "
+"supported. Any subdirectory of the main mailbox is considered a folder if "
+"``'.'`` is the first character in its name. Folder names are represented by "
+":class:`!Maildir` without the leading ``'.'``. Each folder is itself a "
+"Maildir mailbox but should not contain other folders. Instead, a logical "
+"nesting is indicated using ``'.'`` to delimit levels, e.g., "
+"\"Archived.2005.07\"."
+msgstr ""
+"Các thư mục theo kiểu do đại lý chuyển thư Courier giới thiệu cũng được hỗ "
+"trợ. Bất kỳ thư mục con nào của hộp thư chính đều được coi là thư mục nếu "
+"``'.'`` là ký tự đầu tiên trong tên của nó. Tên thư mục được biểu thị bằng "
+":class:`!Maildir` mà không có ``'.'`` đứng đầu. Mỗi thư mục bản thân nó là "
+"một hộp thư Maildir nhưng không được chứa các thư mục khác. Thay vào đó, "
+"việc lồng logic được biểu thị bằng cách sử dụng ``'.'`` để phân định các cấp"
+" độ, ví dụ: \"Archived.2005.07\"."
+
+#: ../../library/mailbox.rst:355
+#, fuzzy
+msgid ""
+"The Maildir specification requires the use of a colon (``':'``) in certain "
+"message file names. However, some operating systems do not permit this "
+"character in file names, If you wish to use a Maildir-like format on such an"
+" operating system, you should specify another character to use instead. The "
+"exclamation point (``'!'``) is a popular choice. For example::"
+msgstr ""
+"Đặc tả Maildir yêu cầu sử dụng dấu hai chấm (``':'``) trong một số tên tệp "
+"thư nhất định. Tuy nhiên, một số hệ điều hành không cho phép ký tự này trong"
+" tên tệp. Nếu bạn muốn sử dụng định dạng giống Maildir trên hệ điều hành đó,"
+" bạn nên chỉ định một ký tự khác để sử dụng thay thế. Dấu chấm than "
+"(``'!'``) là một lựa chọn phổ biến. Ví dụ::"
+
+#: ../../library/mailbox.rst:362
+#, fuzzy
+msgid ""
+"import mailbox\n"
+"mailbox.Maildir.colon = '!'"
+msgstr ""
+"nhập hộp thư\n"
+"hộp thư.Maildir.colon = '!'"
+
+#: ../../library/mailbox.rst:365
+#, fuzzy
+msgid "The :attr:`!colon` attribute may also be set on a per-instance basis."
+msgstr ""
+"Thuộc tính :attr:`!colon` cũng có thể được đặt trên cơ sở từng trường hợp."
+
+#: ../../library/mailbox.rst:367
+#, fuzzy
+msgid ":class:`Maildir` now ignores files with a leading dot."
+msgstr ":class:`Maildir` hiện bỏ qua các tệp có dấu chấm ở đầu."
+
+#: ../../library/mailbox.rst:370
+#, fuzzy
+msgid ""
+":class:`!Maildir` instances have all of the methods of :class:`Mailbox` in "
+"addition to the following:"
+msgstr ""
+"Các phiên bản :class:`!Maildir` có tất cả các phương thức của "
+":class:`Mailbox` ngoài các phương thức sau:"
+
+#: ../../library/mailbox.rst:376 ../../library/mailbox.rst:669
+#, fuzzy
+msgid "Return a list of the names of all folders."
+msgstr "Trả về danh sách tên của tất cả các thư mục."
+
+#: ../../library/mailbox.rst:381
+#, fuzzy
+msgid ""
+"Return a :class:`!Maildir` instance representing the folder whose name is "
+"*folder*. A :exc:`NoSuchMailboxError` exception is raised if the folder does"
+" not exist."
+msgstr ""
+"Trả về một phiên bản :class:`!Maildir` đại diện cho thư mục có tên là "
+"*folder*. Ngoại lệ :exc:`NoSuchMailboxError` sẽ xuất hiện nếu thư mục không "
+"tồn tại."
+
+#: ../../library/mailbox.rst:388
+#, fuzzy
+msgid ""
+"Create a folder whose name is *folder* and return a :class:`!Maildir` "
+"instance representing it."
+msgstr ""
+"Tạo một thư mục có tên là *folder* và trả về một phiên bản :class:`!Maildir`"
+" đại diện cho nó."
+
+#: ../../library/mailbox.rst:394 ../../library/mailbox.rst:687
+#, fuzzy
+msgid ""
+"Delete the folder whose name is *folder*. If the folder contains any "
+"messages, a :exc:`NotEmptyError` exception will be raised and the folder "
+"will not be deleted."
+msgstr ""
+"Xóa thư mục có tên là *folder*. Nếu thư mục chứa bất kỳ thư nào, ngoại lệ "
+":exc:`NotEmptyError` sẽ xuất hiện và thư mục sẽ không bị xóa."
+
+#: ../../library/mailbox.rst:401
+#, fuzzy
+msgid ""
+"Delete temporary files from the mailbox that have not been accessed in the "
+"last 36 hours. The Maildir specification says that mail-reading programs "
+"should do this occasionally."
+msgstr ""
+"Xóa các tệp tạm thời khỏi hộp thư chưa được truy cập trong 36 giờ qua. Đặc "
+"tả của Maildir nói rằng các chương trình đọc thư thỉnh thoảng nên thực hiện "
+"việc này."
+
+#: ../../library/mailbox.rst:408
+#, fuzzy
+msgid ""
+"Return as a string the flags that are set on the message corresponding to "
+"*key*. This is the same as ``get_message(key).get_flags()`` but much faster,"
+" because it does not open the message file. Use this method when iterating "
+"over the keys to determine which messages are interesting to get."
+msgstr ""
+"Trả về dưới dạng chuỗi các cờ được đặt trên tin nhắn tương ứng với *key*. "
+"Điều này giống như ``get_message(key).get_flags()`` nhưng nhanh hơn nhiều vì"
+" nó không mở tệp tin nhắn. Sử dụng phương pháp này khi lặp lại các phím để "
+"xác định thông báo nào thú vị cần nhận."
+
+#: ../../library/mailbox.rst:415
+#, fuzzy
+msgid ""
+"If you do have a :class:`MaildirMessage` object, use its "
+":meth:`~MaildirMessage.get_flags` method instead, because changes made by "
+"the message's :meth:`~MaildirMessage.set_flags`, "
+":meth:`~MaildirMessage.add_flag` and :meth:`~MaildirMessage.remove_flag` "
+"methods are not reflected here until the mailbox's :meth:`__setitem__` "
+"method is called."
+msgstr ""
+"Nếu bạn có một đối tượng :class:`MaildirMessage`, hãy sử dụng phương thức "
+":meth:`~MaildirMessage.get_flags` của nó thay thế, vì những thay đổi được "
+"thực hiện bởi các phương thức :meth:`~MaildirMessage.set_flags`, "
+":meth:`~MaildirMessage.add_flag` và :meth:`~MaildirMessage.remove_flag` của "
+"thư không được phản ánh ở đây cho đến khi phương thức :meth:`__setitem__` "
+"của hộp thư được gọi."
+
+#: ../../library/mailbox.rst:427
+#, fuzzy
+msgid ""
+"On the message corresponding to *key*, set the flags specified by *flags* "
+"and unset all others. Calling ``some_mailbox.set_flags(key, flags)`` is "
+"similar to ::"
+msgstr ""
+"Trên thông báo tương ứng với *key*, hãy đặt các cờ do *flags* chỉ định và bỏ"
+" đặt tất cả các cờ khác. Gọi ``some_mailbox.set_flags(key, flags)`` cũng "
+"tương tự như ::"
+
+#: ../../library/mailbox.rst:431
+#, fuzzy
+msgid ""
+"one_message = some_mailbox.get_message(key)\n"
+"one_message.set_flags(flags)\n"
+"some_mailbox[key] = one_message"
+msgstr ""
+"one_message = some_mailbox.get_message(key)\n"
+"one_message.set_flags(cờ)\n"
+"some_mailbox[key] = one_message"
+
+#: ../../library/mailbox.rst:435 ../../library/mailbox.rst:498
+#, fuzzy
+msgid "but faster, because it does not open the message file."
+msgstr "nhưng nhanh hơn vì nó không mở được file tin nhắn."
+
+#: ../../library/mailbox.rst:437
+#, fuzzy
+msgid ""
+"If you do have a :class:`MaildirMessage` object, use its "
+":meth:`~MaildirMessage.set_flags` method instead, because changes made with "
+"this mailbox method will not be visible to the message object's method, "
+":meth:`~MaildirMessage.get_flags`."
+msgstr ""
+"Nếu bạn có một đối tượng :class:`MaildirMessage`, hãy sử dụng phương thức "
+":meth:`~MaildirMessage.set_flags` của nó thay thế, vì những thay đổi được "
+"thực hiện bằng phương thức hộp thư này sẽ không hiển thị đối với phương thức"
+" của đối tượng thư, :meth:`~MaildirMessage.get_flags`."
+
+#: ../../library/mailbox.rst:447
+#, fuzzy
+msgid ""
+"On the message corresponding to *key*, set the flags specified by *flag* "
+"without changing other flags. To add more than one flag at a time, *flag* "
+"may be a string of more than one character."
+msgstr ""
+"Trên thông báo tương ứng với *key*, đặt các cờ do *flag* chỉ định mà không "
+"thay đổi các cờ khác. Để thêm nhiều cờ cùng một lúc, *flag* có thể là một "
+"chuỗi gồm nhiều ký tự."
+
+#: ../../library/mailbox.rst:451
+#, fuzzy
+msgid ""
+"Considerations for using this method versus the message object's "
+":meth:`~MaildirMessage.add_flag` method are similar to those for "
+":meth:`set_flags`; see the discussion there."
+msgstr ""
+"Những cân nhắc khi sử dụng phương pháp này so với phương thức "
+":meth:`~MaildirMessage.add_flag` của đối tượng thông báo cũng tương tự như "
+"đối với :meth:`set_flags`; xem cuộc thảo luận ở đó."
+
+#: ../../library/mailbox.rst:460
+#, fuzzy
+msgid ""
+"On the message corresponding to *key*, unset the flags specified by *flag* "
+"without changing other flags. To remove more than one flag at a time, *flag*"
+" may be a string of more than one character."
+msgstr ""
+"Trên thông báo tương ứng với *key*, bỏ đặt các cờ do *flag* chỉ định mà "
+"không thay đổi các cờ khác. Để xóa nhiều cờ cùng một lúc, *flag* có thể là "
+"một chuỗi gồm nhiều ký tự."
+
+#: ../../library/mailbox.rst:464
+#, fuzzy
+msgid ""
+"Considerations for using this method versus the message object's "
+":meth:`~MaildirMessage.remove_flag` method are similar to those for "
+":meth:`set_flags`; see the discussion there."
+msgstr ""
+"Những cân nhắc khi sử dụng phương pháp này so với phương thức "
+":meth:`~MaildirMessage.remove_flag` của đối tượng thông báo cũng tương tự "
+"như đối với :meth:`set_flags`; xem cuộc thảo luận ở đó."
+
+#: ../../library/mailbox.rst:473
+#, fuzzy
+msgid ""
+"Return a string containing the info for the message corresponding to *key*. "
+"This is the same as ``get_message(key).get_info()`` but much faster, because"
+" it does not open the message file. Use this method when iterating over the "
+"keys to determine which messages are interesting to get."
+msgstr ""
+"Trả về một chuỗi chứa thông tin cho tin nhắn tương ứng với *key*. Điều này "
+"giống như ``get_message(key).get_info()`` nhưng nhanh hơn nhiều vì nó không "
+"mở tệp tin nhắn. Sử dụng phương pháp này khi lặp lại các phím để xác định "
+"thông báo nào thú vị cần nhận."
+
+#: ../../library/mailbox.rst:480
+#, fuzzy
+msgid ""
+"If you do have a :class:`MaildirMessage` object, use its "
+":meth:`~MaildirMessage.get_info` method instead, because changes made by the"
+" message's :meth:`~MaildirMessage.set_info` method are not reflected here "
+"until the mailbox's :meth:`__setitem__` method is called."
+msgstr ""
+"Nếu bạn có một đối tượng :class:`MaildirMessage`, hãy sử dụng phương thức "
+":meth:`~MaildirMessage.get_info` của nó thay thế, vì những thay đổi được "
+"thực hiện bởi phương thức :meth:`~MaildirMessage.set_info` của thư không "
+"được phản ánh ở đây cho đến khi phương thức :meth:`__setitem__` của hộp thư "
+"được gọi."
+
+#: ../../library/mailbox.rst:491
+#, fuzzy
+msgid ""
+"Set the info of the message corresponding to *key* to *info*. Calling "
+"``some_mailbox.set_info(key, flags)`` is similar to ::"
+msgstr ""
+"Đặt thông tin của tin nhắn tương ứng với *key* thành *info*. Gọi "
+"``some_mailbox.set_info(key, flags)`` cũng tương tự như ::"
+
+#: ../../library/mailbox.rst:494
+#, fuzzy
+msgid ""
+"one_message = some_mailbox.get_message(key)\n"
+"one_message.set_info(info)\n"
+"some_mailbox[key] = one_message"
+msgstr ""
+"one_message = some_mailbox.get_message(key)\n"
+"one_message.set_info(thông tin)\n"
+"some_mailbox[key] = one_message"
+
+#: ../../library/mailbox.rst:500
+#, fuzzy
+msgid ""
+"If you do have a :class:`MaildirMessage` object, use its "
+":meth:`~MaildirMessage.set_info` method instead, because changes made with "
+"this mailbox method will not be visible to the message object's method, "
+":meth:`~MaildirMessage.get_info`."
+msgstr ""
+"Nếu bạn có một đối tượng :class:`MaildirMessage`, hãy sử dụng phương thức "
+":meth:`~MaildirMessage.set_info` của nó thay thế, vì những thay đổi được "
+"thực hiện bằng phương thức hộp thư này sẽ không hiển thị đối với phương thức"
+" của đối tượng thư, :meth:`~MaildirMessage.get_info`."
+
+#: ../../library/mailbox.rst:507
+#, fuzzy
+msgid ""
+"Some :class:`Mailbox` methods implemented by :class:`!Maildir` deserve "
+"special remarks:"
+msgstr ""
+"Một số phương pháp :class:`Mailbox` do :class:`!Maildir` triển khai đáng "
+"được nhận xét đặc biệt:"
+
+#: ../../library/mailbox.rst:517
+#, fuzzy
+msgid ""
+"These methods generate unique file names based upon the current process ID. "
+"When using multiple threads, undetected name clashes may occur and cause "
+"corruption of the mailbox unless threads are coordinated to avoid using "
+"these methods to manipulate the same mailbox simultaneously."
+msgstr ""
+"Các phương pháp này tạo ra tên tệp duy nhất dựa trên ID tiến trình hiện tại."
+" Khi sử dụng nhiều luồng, xung đột tên không bị phát hiện có thể xảy ra và "
+"gây ra hỏng hộp thư trừ khi các luồng được phối hợp để tránh sử dụng các "
+"phương pháp này để thao tác đồng thời trên cùng một hộp thư."
+
+#: ../../library/mailbox.rst:525
+#, fuzzy
+msgid ""
+"All changes to Maildir mailboxes are immediately applied, so this method "
+"does nothing."
+msgstr ""
+"Tất cả các thay đổi đối với hộp thư Maildir sẽ được áp dụng ngay lập tức, vì"
+" vậy phương pháp này không có tác dụng gì."
+
+#: ../../library/mailbox.rst:532
+#, fuzzy
+msgid ""
+"Maildir mailboxes do not support (or require) locking, so these methods do "
+"nothing."
+msgstr ""
+"Hộp thư Maildir không hỗ trợ (hoặc yêu cầu) khóa, vì vậy những phương pháp "
+"này không có tác dụng gì."
+
+#: ../../library/mailbox.rst:538
+#, fuzzy
+msgid ""
+":class:`!Maildir` instances do not keep any open files and the underlying "
+"mailboxes do not support locking, so this method does nothing."
+msgstr ""
+"Các phiên bản :class:`!Maildir` không giữ bất kỳ tệp đang mở nào và các hộp "
+"thư bên dưới không hỗ trợ khóa, vì vậy phương pháp này không có tác dụng gì."
+
+#: ../../library/mailbox.rst:544
+#, fuzzy
+msgid ""
+"Depending upon the host platform, it may not be possible to modify or remove"
+" the underlying message while the returned file remains open."
+msgstr ""
+"Tùy thuộc vào nền tảng máy chủ, có thể không sửa đổi hoặc xóa được thông báo"
+" cơ bản trong khi tệp được trả về vẫn mở."
+
+#: ../../library/mailbox.rst:550
+#, fuzzy
+msgid ""
+"`maildir man page from Courier <https://www.courier-mta.org/maildir.html>`_"
+msgstr ""
+"`maildir man page from Courier <https://www.courier-mta.org/maildir.html>`_"
+
+#: ../../library/mailbox.rst:551
+#, fuzzy
+msgid ""
+"A specification of the format. Describes a common extension for supporting "
+"folders."
+msgstr ""
+"Một đặc điểm kỹ thuật của định dạng. Mô tả phần mở rộng chung cho các thư "
+"mục hỗ trợ."
+
+#: ../../library/mailbox.rst:554
+#, fuzzy
+msgid "`Using maildir format <https://cr.yp.to/proto/maildir.html>`_"
+msgstr "`Using maildir format <https://cr.yp.to/proto/maildir.html>`_"
+
+#: ../../library/mailbox.rst:555
+#, fuzzy
+msgid ""
+"Notes on Maildir by its inventor. Includes an updated name-creation scheme "
+"and details on \"info\" semantics."
+msgstr ""
+"Ghi chú về Maildir của nhà phát minh ra nó. Bao gồm sơ đồ tạo tên cập nhật "
+"và chi tiết về ngữ nghĩa \"thông tin\"."
+
+#: ../../library/mailbox.rst:562
+#, fuzzy
+msgid ":class:`!mbox` objects"
+msgstr "đối tượng :class:`!mbox`"
+
+#: ../../library/mailbox.rst:567
+#, fuzzy
+msgid ""
+"A subclass of :class:`Mailbox` for mailboxes in mbox format. Parameter "
+"*factory* is a callable object that accepts a file-like message "
+"representation (which behaves as if opened in binary mode) and returns a "
+"custom representation. If *factory* is ``None``, :class:`mboxMessage` is "
+"used as the default message representation. If *create* is ``True``, the "
+"mailbox is created if it does not exist."
+msgstr ""
+"Một lớp con của :class:`Mailbox` dành cho các hộp thư ở định dạng mbox. Tham"
+" số *factory* là một đối tượng có thể gọi được, chấp nhận biểu diễn thông "
+"báo giống như tệp (hoạt động như thể được mở ở chế độ nhị phân) và trả về "
+"một biểu diễn tùy chỉnh. Nếu *factory* là ``None`` thì :class:`mboxMessage` "
+"được sử dụng làm đại diện thông báo mặc định. Nếu *create* là ``True``, hộp "
+"thư sẽ được tạo nếu nó không tồn tại."
+
+#: ../../library/mailbox.rst:574
+#, fuzzy
+msgid ""
+"The mbox format is the classic format for storing mail on Unix systems. All "
+"messages in an mbox mailbox are stored in a single file with the beginning "
+"of each message indicated by a line whose first five characters are \"From "
+"\"."
+msgstr ""
+"Định dạng mbox là định dạng cổ điển để lưu trữ thư trên hệ thống Unix. Tất "
+"cả thư trong hộp thư mbox được lưu trữ trong một tệp duy nhất với phần đầu "
+"mỗi thư được biểu thị bằng một dòng có năm ký tự đầu tiên là \"Từ\"."
+
+#: ../../library/mailbox.rst:578
+#, fuzzy
+msgid ""
+"Several variations of the mbox format exist to address perceived "
+"shortcomings in the original. In the interest of compatibility, "
+":class:`!mbox` implements the original format, which is sometimes referred "
+"to as :dfn:`mboxo`. This means that the :mailheader:`Content-Length` header,"
+" if present, is ignored and that any occurrences of \"From \" at the "
+"beginning of a line in a message body are transformed to \">From \" when "
+"storing the message, although occurrences of \">From \" are not transformed "
+"to \"From \" when reading the message."
+msgstr ""
+"Một số biến thể của định dạng mbox tồn tại để giải quyết những thiếu sót "
+"trong bản gốc. Để đảm bảo khả năng tương thích, :class:`!mbox` triển khai "
+"định dạng ban đầu, đôi khi được gọi là :dfn:`mboxo`. Điều này có nghĩa là "
+"tiêu đề :mailheader:`Content-Length`, nếu có, sẽ bị bỏ qua và mọi lần xuất "
+"hiện của \"Từ \" ở đầu dòng trong nội dung thư đều được chuyển đổi thành "
+"\">Từ \" khi lưu trữ thư, mặc dù các lần xuất hiện của \">Từ \" không được "
+"chuyển đổi thành \"Từ \" khi đọc thư."
+
+#: ../../library/mailbox.rst:586
+#, fuzzy
+msgid ""
+"Some :class:`Mailbox` methods implemented by :class:`!mbox` deserve special "
+"remarks:"
+msgstr ""
+"Một số phương pháp :class:`Mailbox` do :class:`!mbox` triển khai đáng được "
+"nhận xét đặc biệt:"
+
+#: ../../library/mailbox.rst:592 ../../library/mailbox.rst:602
+#: ../../library/mailbox.rst:608 ../../library/mailbox.rst:871
+#: ../../library/mailbox.rst:881
+#, fuzzy
+msgid ""
+"Note: This method has an extra parameter (*from_*) compared with other "
+"classes. The first line of an mbox file entry is the Unix \"From \" line. If"
+" *from_* is False, the first line of the file is dropped."
+msgstr ""
+"Lưu ý: Phương thức này có thêm một tham số (*from_*) so với các lớp khác. "
+"Dòng đầu tiên của mục nhập tệp mbox là dòng Unix \"Từ\". Nếu *from_* là Sai,"
+" dòng đầu tiên của tệp sẽ bị xóa."
+
+#: ../../library/mailbox.rst:598
+#, fuzzy
+msgid ""
+"Using the file after calling :meth:`~Mailbox.flush` or "
+":meth:`~Mailbox.close` on the :class:`!mbox` instance may yield "
+"unpredictable results or raise an exception."
+msgstr ""
+"Việc sử dụng tệp sau khi gọi :meth:`~Mailbox.flush` hoặc "
+":meth:`~Mailbox.close` trên phiên bản :class:`!mbox` có thể mang lại kết quả"
+" không thể đoán trước hoặc gây ra ngoại lệ."
+
+#: ../../library/mailbox.rst:615 ../../library/mailbox.rst:828
+#: ../../library/mailbox.rst:889
+#, fuzzy
+msgid ""
+"Three locking mechanisms are used---dot locking and, if available, the "
+":c:func:`!flock` and :c:func:`!lockf` system calls."
+msgstr ""
+"Ba cơ chế khóa được sử dụng --- khóa dấu chấm và, nếu có, các lệnh gọi hệ "
+"thống :c:func:`!flock` và :c:func:`!lockf`."
+
+#: ../../library/mailbox.rst:621
+#, fuzzy
+msgid ""
+"`mbox man page from tin "
+"<http://www.tin.org/bin/man.cgi?section=5&topic=mbox>`_"
+msgstr ""
+"`mbox man page from tin "
+"<http://www.tin.org/bin/man.cgi?section=5&topic=mbox>`_"
+
+#: ../../library/mailbox.rst:622
+#, fuzzy
+msgid "A specification of the format, with details on locking."
+msgstr "Thông số kỹ thuật về định dạng, với các chi tiết về khóa."
+
+#: ../../library/mailbox.rst:624
+#, fuzzy
+msgid ""
+"`Configuring Netscape Mail on Unix: Why The Content-Length Format is Bad "
+"<https://www.jwz.org/doc/content-length.html>`_"
+msgstr ""
+"`Configuring Netscape Mail on Unix: Why The Content-Length Format is Bad "
+"<https://www.jwz.org/doc/content-length.html>`_"
+
+#: ../../library/mailbox.rst:625
+#, fuzzy
+msgid ""
+"An argument for using the original mbox format rather than a variation."
+msgstr "Đối số để sử dụng định dạng mbox gốc thay vì một biến thể."
+
+#: ../../library/mailbox.rst:627
+#, fuzzy
+msgid ""
+"`\"mbox\" is a family of several mutually incompatible mailbox formats "
+"<https://www.loc.gov/preservation/digital/formats/fdd/fdd000383.shtml>`_"
+msgstr ""
+"`\"mbox\" is a family of several mutually incompatible mailbox formats "
+"<https://www.loc.gov/preservation/digital/formats/fdd/fdd000383.shtml>`_"
+
+#: ../../library/mailbox.rst:628
+#, fuzzy
+msgid "A history of mbox variations."
+msgstr "Lịch sử của các biến thể mbox."
+
+#: ../../library/mailbox.rst:634
+#, fuzzy
+msgid ":class:`!MH` objects"
+msgstr "đối tượng :class:`!MH`"
+
+#: ../../library/mailbox.rst:639
+#, fuzzy
+msgid ""
+"A subclass of :class:`Mailbox` for mailboxes in MH format. Parameter "
+"*factory* is a callable object that accepts a file-like message "
+"representation (which behaves as if opened in binary mode) and returns a "
+"custom representation. If *factory* is ``None``, :class:`MHMessage` is used "
+"as the default message representation. If *create* is ``True``, the mailbox "
+"is created if it does not exist."
+msgstr ""
+"Một lớp con của :class:`Mailbox` dành cho các hộp thư ở định dạng MH. Tham "
+"số *factory* là một đối tượng có thể gọi được, chấp nhận biểu diễn thông báo"
+" giống như tệp (hoạt động như thể được mở ở chế độ nhị phân) và trả về một "
+"biểu diễn tùy chỉnh. Nếu *factory* là ``None`` thì :class:`MHMessage` được "
+"sử dụng làm đại diện thông báo mặc định. Nếu *create* là ``True``, hộp thư "
+"sẽ được tạo nếu nó không tồn tại."
+
+#: ../../library/mailbox.rst:646
+#, fuzzy
+msgid ""
+"MH is a directory-based mailbox format invented for the MH Message Handling "
+"System, a mail user agent. Each message in an MH mailbox resides in its own "
+"file. An MH mailbox may contain other MH mailboxes (called :dfn:`folders`) "
+"in addition to messages. Folders may be nested indefinitely. MH mailboxes "
+"also support :dfn:`sequences`, which are named lists used to logically group"
+" messages without moving them to sub-folders. Sequences are defined in a "
+"file called :file:`.mh_sequences` in each folder."
+msgstr ""
+"MH là định dạng hộp thư dựa trên thư mục được phát minh cho Hệ thống xử lý "
+"thư MH, một tác nhân người dùng thư. Mỗi thư trong hộp thư MH nằm trong tệp "
+"riêng của nó. Hộp thư MH có thể chứa các hộp thư MH khác (được gọi là "
+":dfn:`folders`) ngoài các tin nhắn. Các thư mục có thể được lồng vào nhau vô"
+" thời hạn. Hộp thư MH cũng hỗ trợ :dfn:`sequences`, là danh sách được đặt "
+"tên dùng để nhóm các thư một cách hợp lý mà không cần di chuyển chúng vào "
+"các thư mục con. Trình tự được xác định trong một tệp có tên "
+":file:`.mh_sequences` trong mỗi thư mục."
+
+#: ../../library/mailbox.rst:654
+#, fuzzy
+msgid ""
+"The :class:`!MH` class manipulates MH mailboxes, but it does not attempt to "
+"emulate all of :program:`mh`'s behaviors. In particular, it does not modify "
+"and is not affected by the :file:`context` or :file:`.mh_profile` files that"
+" are used by :program:`mh` to store its state and configuration."
+msgstr ""
+"Lớp :class:`!MH` thao tác các hộp thư MH, nhưng nó không cố gắng mô phỏng "
+"tất cả các hành vi của :program:`mh`. Đặc biệt, nó không sửa đổi và không bị"
+" ảnh hưởng bởi các tệp :file:`context` hoặc :file:`.mh_profile` được "
+":program:`mh` sử dụng để lưu trữ trạng thái và cấu hình của nó."
+
+#: ../../library/mailbox.rst:659
+#, fuzzy
+msgid ""
+":class:`!MH` instances have all of the methods of :class:`Mailbox` in "
+"addition to the following:"
+msgstr ""
+"Các phiên bản :class:`!MH` có tất cả các phương thức của :class:`Mailbox` "
+"ngoài các phương thức sau:"
+
+#: ../../library/mailbox.rst:664
+#, fuzzy
+msgid "Supported folders that don't contain a :file:`.mh_sequences` file."
+msgstr "Các thư mục được hỗ trợ không chứa tệp :file:`.mh_sequences`."
+
+#: ../../library/mailbox.rst:674
+#, fuzzy
+msgid ""
+"Return an :class:`!MH` instance representing the folder whose name is "
+"*folder*. A :exc:`NoSuchMailboxError` exception is raised if the folder does"
+" not exist."
+msgstr ""
+"Trả về một phiên bản :class:`!MH` đại diện cho thư mục có tên là *folder*. "
+"Ngoại lệ :exc:`NoSuchMailboxError` sẽ xuất hiện nếu thư mục không tồn tại."
+
+#: ../../library/mailbox.rst:681
+#, fuzzy
+msgid ""
+"Create a folder whose name is *folder* and return an :class:`!MH` instance "
+"representing it."
+msgstr ""
+"Tạo một thư mục có tên là *folder* và trả về một phiên bản :class:`!MH` đại "
+"diện cho nó."
+
+#: ../../library/mailbox.rst:694
+#, fuzzy
+msgid ""
+"Return a dictionary of sequence names mapped to key lists. If there are no "
+"sequences, the empty dictionary is returned."
+msgstr ""
+"Trả về một từ điển gồm các tên trình tự được ánh xạ tới danh sách khóa. Nếu "
+"không có chuỗi nào thì từ điển trống sẽ được trả về."
+
+#: ../../library/mailbox.rst:700
+#, fuzzy
+msgid ""
+"Re-define the sequences that exist in the mailbox based upon *sequences*, a "
+"dictionary of names mapped to key lists, like returned by "
+":meth:`get_sequences`."
+msgstr ""
+"Xác định lại các chuỗi tồn tại trong hộp thư dựa trên *sequences*, một từ "
+"điển tên được ánh xạ tới danh sách chính, giống như được trả về bởi "
+":meth:`get_sequences`."
+
+#: ../../library/mailbox.rst:707
+#, fuzzy
+msgid ""
+"Rename messages in the mailbox as necessary to eliminate gaps in numbering."
+"  Entries in the sequences list are updated correspondingly."
+msgstr ""
+"Đổi tên thư trong hộp thư nếu cần thiết để loại bỏ khoảng trống trong việc "
+"đánh số.  Các mục trong danh sách trình tự được cập nhật tương ứng."
+
+#: ../../library/mailbox.rst:712
+#, fuzzy
+msgid ""
+"Already-issued keys are invalidated by this operation and should not be "
+"subsequently used."
+msgstr ""
+"Các khóa đã được cấp sẽ bị vô hiệu bởi thao tác này và không được sử dụng "
+"sau đó."
+
+#: ../../library/mailbox.rst:715
+#, fuzzy
+msgid ""
+"Some :class:`Mailbox` methods implemented by :class:`!MH` deserve special "
+"remarks:"
+msgstr ""
+"Một số phương pháp :class:`Mailbox` do :class:`!MH` triển khai đáng được "
+"nhận xét đặc biệt:"
+
+#: ../../library/mailbox.rst:723
+#, fuzzy
+msgid ""
+"These methods immediately delete the message. The MH convention of marking a"
+" message for deletion by prepending a comma to its name is not used."
+msgstr ""
+"Những phương pháp này ngay lập tức xóa tin nhắn. Quy ước MH về việc đánh dấu"
+" một tin nhắn để xóa bằng cách thêm dấu phẩy vào trước tên của nó không được"
+" sử dụng."
+
+#: ../../library/mailbox.rst:730
+#, fuzzy
+msgid ""
+"Three locking mechanisms are used---dot locking and, if available, the "
+":c:func:`!flock` and :c:func:`!lockf` system calls. For MH mailboxes, "
+"locking the mailbox means locking the :file:`.mh_sequences` file and, only "
+"for the duration of any operations that affect them, locking individual "
+"message files."
+msgstr ""
+"Ba cơ chế khóa được sử dụng --- khóa dấu chấm và, nếu có, các lệnh gọi hệ "
+"thống :c:func:`!flock` và :c:func:`!lockf`. Đối với hộp thư MH, khóa hộp thư"
+" có nghĩa là khóa tệp :file:`.mh_sequences` và chỉ trong khoảng thời gian "
+"thực hiện bất kỳ thao tác nào ảnh hưởng đến chúng, khóa các tệp tin riêng "
+"lẻ."
+
+#: ../../library/mailbox.rst:739
+#, fuzzy
+msgid ""
+"Depending upon the host platform, it may not be possible to remove the "
+"underlying message while the returned file remains open."
+msgstr ""
+"Tùy thuộc vào nền tảng máy chủ, có thể không xóa được thông báo cơ bản trong"
+" khi tệp được trả về vẫn mở."
+
+#: ../../library/mailbox.rst:745
+#, fuzzy
+msgid ""
+"All changes to MH mailboxes are immediately applied, so this method does "
+"nothing."
+msgstr ""
+"Tất cả các thay đổi đối với hộp thư MH sẽ được áp dụng ngay lập tức, vì vậy "
+"phương pháp này không có tác dụng gì."
+
+#: ../../library/mailbox.rst:751
+#, fuzzy
+msgid ""
+":class:`!MH` instances do not keep any open files, so this method is "
+"equivalent to :meth:`unlock`."
+msgstr ""
+"Các phiên bản :class:`!MH` không giữ bất kỳ tệp đang mở nào, vì vậy phương "
+"pháp này tương đương với :meth:`unlock`."
+
+#: ../../library/mailbox.rst:757
+#, fuzzy
+msgid "`nmh - Message Handling System <https://www.nongnu.org/nmh/>`_"
+msgstr "`nmh - Message Handling System <https://www.nongnu.org/nmh/>`_"
+
+#: ../../library/mailbox.rst:758
+#, fuzzy
+msgid ""
+"Home page of :program:`nmh`, an updated version of the original "
+":program:`mh`."
+msgstr ""
+"Trang chủ của :program:`nmh`, phiên bản cập nhật của :program:`mh` gốc."
+
+#: ../../library/mailbox.rst:760
+#, fuzzy
+msgid ""
+"`MH & nmh: Email for Users & Programmers <https://rand-"
+"mh.sourceforge.io/book/>`_"
+msgstr ""
+"`MH & nmh: Email for Users & Programmers <https://rand-"
+"mh.sourceforge.io/book/>`_"
+
+#: ../../library/mailbox.rst:761
+#, fuzzy
+msgid ""
+"A GPL-licensed book on :program:`mh` and :program:`nmh`, with some "
+"information on the mailbox format."
+msgstr ""
+"Sách được cấp phép GPL về :program:`mh` và :program:`nmh`, với một số thông "
+"tin về định dạng hộp thư."
+
+#: ../../library/mailbox.rst:768
+#, fuzzy
+msgid ":class:`!Babyl` objects"
+msgstr "đối tượng :class:`!Babyl`"
+
+#: ../../library/mailbox.rst:773
+#, fuzzy
+msgid ""
+"A subclass of :class:`Mailbox` for mailboxes in Babyl format. Parameter "
+"*factory* is a callable object that accepts a file-like message "
+"representation (which behaves as if opened in binary mode) and returns a "
+"custom representation. If *factory* is ``None``, :class:`BabylMessage` is "
+"used as the default message representation. If *create* is ``True``, the "
+"mailbox is created if it does not exist."
+msgstr ""
+"Một lớp con của :class:`Mailbox` dành cho các hộp thư ở định dạng Babyl. "
+"Tham số *factory* là một đối tượng có thể gọi được, chấp nhận biểu diễn "
+"thông báo giống như tệp (hoạt động như thể được mở ở chế độ nhị phân) và trả"
+" về một biểu diễn tùy chỉnh. Nếu *factory* là ``None`` thì "
+":class:`BabylMessage` được sử dụng làm đại diện thông báo mặc định. Nếu "
+"*create* là ``True``, hộp thư sẽ được tạo nếu nó không tồn tại."
+
+#: ../../library/mailbox.rst:780
+#, fuzzy
+msgid ""
+"Babyl is a single-file mailbox format used by the Rmail mail user agent "
+"included with Emacs. The beginning of a message is indicated by a line "
+"containing the two characters Control-Underscore (``'\\037'``) and Control-L"
+" (``'\\014'``). The end of a message is indicated by the start of the next "
+"message or, in the case of the last message, a line containing a Control-"
+"Underscore (``'\\037'``) character."
+msgstr ""
+"Babyl là định dạng hộp thư một tệp được sử dụng bởi tác nhân người dùng thư "
+"Rmail đi kèm với Emacs. Phần đầu của thông báo được biểu thị bằng một dòng "
+"chứa hai ký tự Control-Underscore (``'\\037'``) và Control-L (``'\\014'``). "
+"Sự kết thúc của tin nhắn được biểu thị bằng phần bắt đầu của tin nhắn tiếp "
+"theo hoặc, trong trường hợp tin nhắn cuối cùng, một dòng chứa ký tự Control-"
+"Underscore (``'\\037'``)."
+
+#: ../../library/mailbox.rst:787
+#, fuzzy
+msgid ""
+"Messages in a Babyl mailbox have two sets of headers, original headers and "
+"so-called visible headers. Visible headers are typically a subset of the "
+"original headers that have been reformatted or abridged to be more "
+"attractive. Each message in a Babyl mailbox also has an accompanying list of"
+" :dfn:`labels`, or short strings that record extra information about the "
+"message, and a list of all user-defined labels found in the mailbox is kept "
+"in the Babyl options section."
+msgstr ""
+"Thư trong hộp thư Babyl có hai bộ tiêu đề, tiêu đề gốc và cái gọi là tiêu đề"
+" hiển thị. Tiêu đề hiển thị thường là tập hợp con của tiêu đề ban đầu đã "
+"được định dạng lại hoặc rút gọn để hấp dẫn hơn. Mỗi thư trong hộp thư Babyl "
+"cũng có một danh sách :dfn:`labels` đi kèm hoặc các chuỗi ngắn ghi lại thông"
+" tin bổ sung về thư và danh sách tất cả các nhãn do người dùng xác định tìm "
+"thấy trong hộp thư được lưu giữ trong phần tùy chọn Babyl."
+
+#: ../../library/mailbox.rst:795
+#, fuzzy
+msgid ""
+":class:`!Babyl` instances have all of the methods of :class:`Mailbox` in "
+"addition to the following:"
+msgstr ""
+"Các phiên bản :class:`!Babyl` có tất cả các phương thức của :class:`Mailbox`"
+" ngoài các phương thức sau:"
+
+#: ../../library/mailbox.rst:801
+#, fuzzy
+msgid ""
+"Return a list of the names of all user-defined labels used in the mailbox."
+msgstr ""
+"Trả về danh sách tên của tất cả các nhãn do người dùng xác định được sử dụng"
+" trong hộp thư."
+
+#: ../../library/mailbox.rst:805
+#, fuzzy
+msgid ""
+"The actual messages are inspected to determine which labels exist in the "
+"mailbox rather than consulting the list of labels in the Babyl options "
+"section, but the Babyl section is updated whenever the mailbox is modified."
+msgstr ""
+"Các thư thực tế được kiểm tra để xác định nhãn nào tồn tại trong hộp thư "
+"thay vì tham khảo danh sách nhãn trong phần tùy chọn Babyl, nhưng phần Babyl"
+" được cập nhật bất cứ khi nào hộp thư được sửa đổi."
+
+#: ../../library/mailbox.rst:810
+#, fuzzy
+msgid ""
+"Some :class:`Mailbox` methods implemented by :class:`!Babyl` deserve special"
+" remarks:"
+msgstr ""
+"Một số phương pháp :class:`Mailbox` do :class:`!Babyl` triển khai đáng được "
+"nhận xét đặc biệt:"
+
+#: ../../library/mailbox.rst:816
+#, fuzzy
+msgid ""
+"In Babyl mailboxes, the headers of a message are not stored contiguously "
+"with the body of the message. To generate a file-like representation, the "
+"headers and body are copied together into an :class:`io.BytesIO` instance, "
+"which has an API identical to that of a file. As a result, the file-like "
+"object is truly independent of the underlying mailbox but does not save "
+"memory compared to a string representation."
+msgstr ""
+"Trong hộp thư Babyl, tiêu đề của thư không được lưu liền kề với nội dung của"
+" thư. Để tạo biểu diễn giống như tệp, tiêu đề và nội dung được sao chép cùng"
+" nhau vào một phiên bản :class:`io.BytesIO`, phiên bản này có API giống hệt "
+"với phiên bản của một tệp. Kết quả là, đối tượng giống như tệp thực sự độc "
+"lập với hộp thư bên dưới nhưng không tiết kiệm bộ nhớ so với biểu diễn "
+"chuỗi."
+
+#: ../../library/mailbox.rst:834
+#, fuzzy
+msgid ""
+"`Format of Version 5 Babyl Files <https://quimby.gnus.org/notes/BABYL>`_"
+msgstr ""
+"`Format of Version 5 Babyl Files <https://quimby.gnus.org/notes/BABYL>`_"
+
+#: ../../library/mailbox.rst:835
+#, fuzzy
+msgid "A specification of the Babyl format."
+msgstr "Một đặc điểm kỹ thuật của định dạng Babyl."
+
+#: ../../library/mailbox.rst:837
+#, fuzzy
+msgid ""
+"`Reading Mail with Rmail "
+"<https://www.gnu.org/software/emacs/manual/html_node/emacs/Rmail.html>`_"
+msgstr ""
+"`Reading Mail with Rmail "
+"<https://www.gnu.org/software/emacs/manual/html_node/emacs/Rmail.html>`_"
+
+#: ../../library/mailbox.rst:838
+#, fuzzy
+msgid "The Rmail manual, with some information on Babyl semantics."
+msgstr "Hướng dẫn sử dụng Rmail, với một số thông tin về ngữ nghĩa của Babyl."
+
+#: ../../library/mailbox.rst:844
+#, fuzzy
+msgid ":class:`!MMDF` objects"
+msgstr "đối tượng :class:`!MMDF`"
+
+#: ../../library/mailbox.rst:849
+#, fuzzy
+msgid ""
+"A subclass of :class:`Mailbox` for mailboxes in MMDF format. Parameter "
+"*factory* is a callable object that accepts a file-like message "
+"representation (which behaves as if opened in binary mode) and returns a "
+"custom representation. If *factory* is ``None``, :class:`MMDFMessage` is "
+"used as the default message representation. If *create* is ``True``, the "
+"mailbox is created if it does not exist."
+msgstr ""
+"Một lớp con của :class:`Mailbox` dành cho các hộp thư ở định dạng MMDF. Tham"
+" số *factory* là một đối tượng có thể gọi được, chấp nhận biểu diễn thông "
+"báo giống như tệp (hoạt động như thể được mở ở chế độ nhị phân) và trả về "
+"một biểu diễn tùy chỉnh. Nếu *factory* là ``None`` thì :class:`MMDFMessage` "
+"được sử dụng làm đại diện thông báo mặc định. Nếu *create* là ``True``, hộp "
+"thư sẽ được tạo nếu nó không tồn tại."
+
+#: ../../library/mailbox.rst:856
+#, fuzzy
+msgid ""
+"MMDF is a single-file mailbox format invented for the Multichannel "
+"Memorandum Distribution Facility, a mail transfer agent. Each message is in "
+"the same form as an mbox message but is bracketed before and after by lines "
+"containing four Control-A (``'\\001'``) characters. As with the mbox format,"
+" the beginning of each message is indicated by a line whose first five "
+"characters are \"From \", but additional occurrences of \"From \" are not "
+"transformed to \">From \" when storing messages because the extra message "
+"separator lines prevent mistaking such occurrences for the starts of "
+"subsequent messages."
+msgstr ""
+"MMDF là định dạng hộp thư một tệp được phát minh cho Cơ sở phân phối bản ghi"
+" nhớ đa kênh, một đại lý chuyển thư. Mỗi thông báo có dạng giống như thông "
+"báo mbox nhưng được đặt trong ngoặc trước và sau bằng các dòng chứa bốn ký "
+"tự Control-A (``'\\001'``). Giống như định dạng mbox, phần đầu của mỗi thư "
+"được biểu thị bằng một dòng có năm ký tự đầu tiên là \"Từ \", nhưng các lần "
+"xuất hiện bổ sung của \"Từ \" không được chuyển đổi thành \">Từ \" khi lưu "
+"trữ thư vì các dòng phân tách thư bổ sung giúp tránh nhầm lẫn những lần xuất"
+" hiện như vậy với phần bắt đầu của các thư tiếp theo."
+
+#: ../../library/mailbox.rst:865
+#, fuzzy
+msgid ""
+"Some :class:`Mailbox` methods implemented by :class:`!MMDF` deserve special "
+"remarks:"
+msgstr ""
+"Một số phương pháp :class:`Mailbox` do :class:`!MMDF` triển khai đáng được "
+"nhận xét đặc biệt:"
+
+#: ../../library/mailbox.rst:877
+#, fuzzy
+msgid ""
+"Using the file after calling :meth:`~Mailbox.flush` or "
+":meth:`~Mailbox.close` on the :class:`!MMDF` instance may yield "
+"unpredictable results or raise an exception."
+msgstr ""
+"Việc sử dụng tệp sau khi gọi :meth:`~Mailbox.flush` hoặc "
+":meth:`~Mailbox.close` trên phiên bản :class:`!MMDF` có thể mang lại kết quả"
+" không thể đoán trước hoặc gây ra ngoại lệ."
+
+#: ../../library/mailbox.rst:895
+#, fuzzy
+msgid ""
+"`mmdf man page from tin "
+"<http://www.tin.org/bin/man.cgi?section=5&topic=mmdf>`_"
+msgstr ""
+"`mmdf man page from tin "
+"<http://www.tin.org/bin/man.cgi?section=5&topic=mmdf>`_"
+
+#: ../../library/mailbox.rst:896
+#, fuzzy
+msgid ""
+"A specification of MMDF format from the documentation of tin, a newsreader."
+msgstr ""
+"Thông số kỹ thuật của định dạng MMDF từ tài liệu của tin, một trình đọc tin "
+"tức."
+
+#: ../../library/mailbox.rst:898
+#, fuzzy
+msgid "`MMDF <https://en.wikipedia.org/wiki/MMDF>`_"
+msgstr "`MMDF <https://en.wikipedia.org/wiki/MMDF>`_"
+
+#: ../../library/mailbox.rst:899
+#, fuzzy
+msgid ""
+"A Wikipedia article describing the Multichannel Memorandum Distribution "
+"Facility."
+msgstr ""
+"Một bài viết trên Wikipedia mô tả Cơ sở phân phối bản ghi nhớ đa kênh."
+
+#: ../../library/mailbox.rst:906
+#, fuzzy
+msgid ":class:`!Message` objects"
+msgstr "đối tượng :class:`!Message`"
+
+#: ../../library/mailbox.rst:911
+#, fuzzy
+msgid ""
+"A subclass of the :mod:`email.message` module's "
+":class:`~email.message.Message`. Subclasses of :class:`!mailbox.Message` add"
+" mailbox-format-specific state and behavior."
+msgstr ""
+"Một lớp con của :class:`~email.message.Message` của mô-đun "
+":mod:`email.message`. Các lớp con của :class:`!mailbox.Message` thêm trạng "
+"thái và hành vi dành riêng cho định dạng hộp thư."
+
+#: ../../library/mailbox.rst:915
+#, fuzzy
+msgid ""
+"If *message* is omitted, the new instance is created in a default, empty "
+"state. If *message* is an :class:`email.message.Message` instance, its "
+"contents are copied; furthermore, any format-specific information is "
+"converted insofar as possible if *message* is a :class:`!Message` instance. "
+"If *message* is a string, a byte string, or a file, it should contain an "
+":rfc:`5322`\\ -compliant message, which is read and parsed.  Files should be"
+" open in binary mode, but text mode files are accepted for backward "
+"compatibility."
+msgstr ""
+"Nếu *message* bị bỏ qua, phiên bản mới sẽ được tạo ở trạng thái trống, mặc "
+"định. Nếu *message* là một phiên bản :class:`email.message.Message`, nội "
+"dung của nó sẽ được sao chép; hơn nữa, mọi thông tin về định dạng cụ thể đều"
+" được chuyển đổi trong chừng mực có thể nếu *message* là một phiên bản "
+":class:`!Message`. Nếu *message* là một chuỗi, một chuỗi byte hoặc một tệp "
+"thì nó phải chứa một thông báo tuân thủ :rfc:`5322`\\ -, được đọc và phân "
+"tích cú pháp.  Các tệp phải được mở ở chế độ nhị phân, nhưng các tệp ở chế "
+"độ văn bản được chấp nhận để tương thích ngược."
+
+#: ../../library/mailbox.rst:924
+#, fuzzy
+msgid ""
+"The format-specific state and behaviors offered by subclasses vary, but in "
+"general it is only the properties that are not specific to a particular "
+"mailbox that are supported (although presumably the properties are specific "
+"to a particular mailbox format). For example, file offsets for single-file "
+"mailbox formats and file names for directory-based mailbox formats are not "
+"retained, because they are only applicable to the original mailbox. But "
+"state such as whether a message has been read by the user or marked as "
+"important is retained, because it applies to the message itself."
+msgstr ""
+"Trạng thái và hành vi dành riêng cho định dạng được cung cấp bởi các lớp con"
+" khác nhau, nhưng nói chung chỉ các thuộc tính không dành riêng cho một hộp "
+"thư cụ thể mới được hỗ trợ (mặc dù có lẽ các thuộc tính này dành riêng cho "
+"một định dạng hộp thư cụ thể). Ví dụ: các khoảng bù tệp cho các định dạng "
+"hộp thư một tệp và tên tệp cho các định dạng hộp thư dựa trên thư mục sẽ "
+"không được giữ lại vì chúng chỉ áp dụng cho hộp thư gốc. Tuy nhiên, trạng "
+"thái chẳng hạn như liệu thư đã được người dùng đọc hay được đánh dấu là quan"
+" trọng vẫn được giữ lại vì nó áp dụng cho chính thư đó."
+
+#: ../../library/mailbox.rst:933
+#, fuzzy
+msgid ""
+"There is no requirement that :class:`!Message` instances be used to "
+"represent messages retrieved using :class:`Mailbox` instances. In some "
+"situations, the time and memory required to generate :class:`!Message` "
+"representations might not be acceptable. For such situations, "
+":class:`!Mailbox` instances also offer string and file-like representations,"
+" and a custom message factory may be specified when a :class:`!Mailbox` "
+"instance is initialized."
+msgstr ""
+"Không có yêu cầu nào về việc sử dụng các phiên bản :class:`!Message` để thể "
+"hiện các tin nhắn được truy xuất bằng các phiên bản :class:`Mailbox`. Trong "
+"một số trường hợp, thời gian và bộ nhớ cần thiết để tạo biểu diễn "
+":class:`!Message` có thể không được chấp nhận. Đối với những tình huống như "
+"vậy, các phiên bản :class:`!Mailbox` cũng cung cấp các biểu diễn giống như "
+"chuỗi và tệp, đồng thời có thể chỉ định một nhà máy thông báo tùy chỉnh khi "
+"phiên bản :class:`!Mailbox` được khởi tạo."
+
+#: ../../library/mailbox.rst:944
+#, fuzzy
+msgid ":class:`!MaildirMessage` objects"
+msgstr "đối tượng :class:`!MaildirMessage`"
+
+#: ../../library/mailbox.rst:949
+#, fuzzy
+msgid ""
+"A message with Maildir-specific behaviors. Parameter *message* has the same "
+"meaning as with the :class:`Message` constructor."
+msgstr ""
+"Một thông báo có hành vi dành riêng cho Maildir. Tham số *message* có ý "
+"nghĩa tương tự như với hàm tạo :class:`Message`."
+
+#: ../../library/mailbox.rst:952
+#, fuzzy
+msgid ""
+"Typically, a mail user agent application moves all of the messages in the "
+":file:`new` subdirectory to the :file:`cur` subdirectory after the first "
+"time the user opens and closes the mailbox, recording that the messages are "
+"old whether or not they've actually been read. Each message in :file:`cur` "
+"has an \"info\" section added to its file name to store information about "
+"its state. (Some mail readers may also add an \"info\" section to messages "
+"in :file:`new`.)  The \"info\" section may take one of two forms: it may "
+"contain \"2,\" followed by a list of standardized flags (e.g., \"2,FR\") or "
+"it may contain \"1,\" followed by so-called experimental information. "
+"Standard flags for Maildir messages are as follows:"
+msgstr ""
+"Thông thường, ứng dụng tác nhân người dùng thư sẽ di chuyển tất cả thư trong"
+" thư mục con :file:`new` sang thư mục con :file:`cur` sau lần đầu tiên người"
+" dùng mở và đóng hộp thư, ghi lại rằng các thư đó đã cũ cho dù chúng có thực"
+" sự được đọc hay không. Mỗi tin nhắn trong :file:`cur` đều có phần \"thông "
+"tin\" được thêm vào tên tệp để lưu trữ thông tin về trạng thái của nó. (Một "
+"số trình đọc thư cũng có thể thêm phần \"thông tin\" vào thư trong "
+":file:`new`.) Phần \"thông tin\" có thể có một trong hai dạng: có thể chứa "
+"\"2\", theo sau là danh sách các cờ được tiêu chuẩn hóa (ví dụ: \"2,FR\") "
+"hoặc có thể chứa \"1\", theo sau là cái gọi là thông tin thử nghiệm. Cờ tiêu"
+" chuẩn cho tin nhắn Maildir như sau:"
+
+#: ../../library/mailbox.rst:964 ../../library/mailbox.rst:1131
+#: ../../library/mailbox.rst:1502
+#, fuzzy
+msgid "Flag"
+msgstr "Cờ"
+
+#: ../../library/mailbox.rst:964 ../../library/mailbox.rst:1131
+#: ../../library/mailbox.rst:1502
+#, fuzzy
+msgid "Meaning"
+msgstr "Ý nghĩa"
+
+#: ../../library/mailbox.rst:964 ../../library/mailbox.rst:1131
+#: ../../library/mailbox.rst:1282 ../../library/mailbox.rst:1369
+#: ../../library/mailbox.rst:1502
+#, fuzzy
+msgid "Explanation"
+msgstr "Giải thích"
+
+#: ../../library/mailbox.rst:966 ../../library/mailbox.rst:1137
+#: ../../library/mailbox.rst:1508
+#, fuzzy
+msgid "D"
+msgstr "D"
+
+#: ../../library/mailbox.rst:966
+#, fuzzy
+msgid "Draft"
+msgstr "bản nháp"
+
+#: ../../library/mailbox.rst:966
+#, fuzzy
+msgid "Under composition"
+msgstr "Đang sáng tác"
+
+#: ../../library/mailbox.rst:968 ../../library/mailbox.rst:1139
+#: ../../library/mailbox.rst:1510
+#, fuzzy
+msgid "F"
+msgstr "F"
+
+#: ../../library/mailbox.rst:968 ../../library/mailbox.rst:1139
+#: ../../library/mailbox.rst:1510
+#, fuzzy
+msgid "Flagged"
+msgstr "Đã gắn cờ"
+
+#: ../../library/mailbox.rst:968 ../../library/mailbox.rst:1139
+#: ../../library/mailbox.rst:1288 ../../library/mailbox.rst:1510
+#, fuzzy
+msgid "Marked as important"
+msgstr "Được đánh dấu là quan trọng"
+
+#: ../../library/mailbox.rst:970
+#, fuzzy
+msgid "P"
+msgstr "P"
+
+#: ../../library/mailbox.rst:970
+#, fuzzy
+msgid "Passed"
+msgstr "Đã đậu"
+
+#: ../../library/mailbox.rst:970
+#, fuzzy
+msgid "Forwarded, resent, or bounced"
+msgstr "Đã chuyển tiếp, gửi lại hoặc bị trả lại"
+
+#: ../../library/mailbox.rst:972 ../../library/mailbox.rst:1133
+#: ../../library/mailbox.rst:1504
+#, fuzzy
+msgid "R"
+msgstr "R"
+
+#: ../../library/mailbox.rst:972
+#, fuzzy
+msgid "Replied"
+msgstr "đã trả lời"
+
+#: ../../library/mailbox.rst:972 ../../library/mailbox.rst:1141
+#: ../../library/mailbox.rst:1286 ../../library/mailbox.rst:1377
+#: ../../library/mailbox.rst:1512
+#, fuzzy
+msgid "Replied to"
+msgstr "Đã trả lời"
+
+#: ../../library/mailbox.rst:974
+#, fuzzy
+msgid "S"
+msgstr "S"
+
+#: ../../library/mailbox.rst:974
+#, fuzzy
+msgid "Seen"
+msgstr "Đã xem"
+
+#: ../../library/mailbox.rst:974 ../../library/mailbox.rst:1133
+#: ../../library/mailbox.rst:1504
+#, fuzzy
+msgid "Read"
+msgstr "Đọc"
+
+#: ../../library/mailbox.rst:976
+#, fuzzy
+msgid "T"
+msgstr "T"
+
+#: ../../library/mailbox.rst:976
+#, fuzzy
+msgid "Trashed"
+msgstr "Đã chuyển vào thùng rác"
+
+#: ../../library/mailbox.rst:976 ../../library/mailbox.rst:1137
+#: ../../library/mailbox.rst:1373 ../../library/mailbox.rst:1508
+#, fuzzy
+msgid "Marked for subsequent deletion"
+msgstr "Đánh dấu để xóa sau"
+
+#: ../../library/mailbox.rst:979
+#, fuzzy
+msgid ":class:`!MaildirMessage` instances offer the following methods:"
+msgstr "Các phiên bản :class:`!MaildirMessage` cung cấp các phương thức sau:"
+
+#: ../../library/mailbox.rst:984
+#, fuzzy
+msgid ""
+"Return either \"new\" (if the message should be stored in the :file:`new` "
+"subdirectory) or \"cur\" (if the message should be stored in the :file:`cur`"
+" subdirectory)."
+msgstr ""
+"Trả về \"mới\" (nếu thư cần được lưu trữ trong thư mục con :file:`new`) hoặc"
+" \"cur\" (nếu thư cần được lưu trữ trong thư mục con :file:`cur`)."
+
+#: ../../library/mailbox.rst:990
+#, fuzzy
+msgid ""
+"A message is typically moved from :file:`new` to :file:`cur` after its "
+"mailbox has been accessed, whether or not the message has been read. A "
+"message ``msg`` has been read if ``\"S\" in msg.get_flags()`` is ``True``."
+msgstr ""
+"Một tin nhắn thường được chuyển từ :file:`new` sang :file:`cur` sau khi hộp "
+"thư của nó được truy cập, cho dù tin nhắn đó đã được đọc hay chưa. Một tin "
+"nhắn ``msg`` đã được đọc nếu ``\"S\" in msg.get_flags()`` là ``True``."
+
+#: ../../library/mailbox.rst:998
+#, fuzzy
+msgid ""
+"Set the subdirectory the message should be stored in. Parameter *subdir* "
+"must be either \"new\" or \"cur\"."
+msgstr ""
+"Đặt thư mục con mà tin nhắn sẽ được lưu trữ trong đó. Tham số *subdir* phải "
+"là \"new\" hoặc \"cur\"."
+
+#: ../../library/mailbox.rst:1004
+#, fuzzy
+msgid ""
+"Return a string specifying the flags that are currently set. If the message "
+"complies with the standard Maildir format, the result is the concatenation "
+"in alphabetical order of zero or one occurrence of each of ``'D'``, ``'F'``,"
+" ``'P'``, ``'R'``, ``'S'``, and ``'T'``. The empty string is returned if no "
+"flags are set or if \"info\" contains experimental semantics."
+msgstr ""
+"Trả về một chuỗi chỉ định các cờ hiện được đặt. Nếu thư tuân theo định dạng "
+"Maildir tiêu chuẩn thì kết quả là sự ghép nối theo thứ tự bảng chữ cái bằng "
+"0 hoặc một lần xuất hiện của mỗi ``'D'``, ``'F'``, ``'P'``, ``'R'``, ``'S'``"
+" và ``'T'``. Chuỗi trống được trả về nếu không có cờ nào được đặt hoặc nếu "
+"\"thông tin\" chứa ngữ nghĩa thử nghiệm."
+
+#: ../../library/mailbox.rst:1014
+#, fuzzy
+msgid "Set the flags specified by *flags* and unset all others."
+msgstr "Đặt các cờ được chỉ định bởi *flags* và bỏ đặt tất cả các cờ khác."
+
+#: ../../library/mailbox.rst:1019
+#, fuzzy
+msgid ""
+"Set the flag(s) specified by *flag* without changing other flags. To add "
+"more than one flag at a time, *flag* may be a string of more than one "
+"character. The current \"info\" is overwritten whether or not it contains "
+"experimental information rather than flags."
+msgstr ""
+"Đặt (các) cờ được chỉ định bởi *flag* mà không thay đổi các cờ khác. Để thêm"
+" nhiều cờ cùng một lúc, *flag* có thể là một chuỗi gồm nhiều ký tự. \"Thông "
+"tin\" hiện tại sẽ bị ghi đè cho dù nó có chứa thông tin thử nghiệm thay vì "
+"cờ hay không."
+
+#: ../../library/mailbox.rst:1027
+#, fuzzy
+msgid ""
+"Unset the flag(s) specified by *flag* without changing other flags. To "
+"remove more than one flag at a time, *flag* may be a string of more than one"
+" character.  If \"info\" contains experimental information rather than "
+"flags, the current \"info\" is not modified."
+msgstr ""
+"Bỏ đặt (các) cờ được chỉ định bởi *flag* mà không thay đổi các cờ khác. Để "
+"xóa nhiều cờ cùng một lúc, *flag* có thể là một chuỗi gồm nhiều ký tự.  Nếu "
+"\"thông tin\" chứa thông tin thử nghiệm chứ không phải cờ thì \"thông tin\" "
+"hiện tại không được sửa đổi."
+
+#: ../../library/mailbox.rst:1035
+#, fuzzy
+msgid ""
+"Return the delivery date of the message as a floating-point number "
+"representing seconds since the epoch."
+msgstr ""
+"Trả về ngày gửi tin nhắn dưới dạng số dấu phẩy động biểu thị số giây kể từ "
+"kỷ nguyên."
+
+#: ../../library/mailbox.rst:1041
+#, fuzzy
+msgid ""
+"Set the delivery date of the message to *date*, a floating-point number "
+"representing seconds since the epoch."
+msgstr ""
+"Đặt ngày gửi tin nhắn thành *date*, một số dấu phẩy động biểu thị số giây kể"
+" từ kỷ nguyên."
+
+#: ../../library/mailbox.rst:1047
+#, fuzzy
+msgid ""
+"Return a string containing the \"info\" for a message. This is useful for "
+"accessing and modifying \"info\" that is experimental (i.e., not a list of "
+"flags)."
+msgstr ""
+"Trả về một chuỗi chứa \"thông tin\" cho tin nhắn. Điều này hữu ích cho việc "
+"truy cập và sửa đổi \"thông tin\" mang tính thử nghiệm (tức là không phải "
+"danh sách các cờ)."
+
+#: ../../library/mailbox.rst:1054
+#, fuzzy
+msgid "Set \"info\" to *info*, which should be a string."
+msgstr "Đặt \"thông tin\" thành *info*, phải là một chuỗi."
+
+#: ../../library/mailbox.rst:1056
+#, fuzzy
+msgid ""
+"When a :class:`!MaildirMessage` instance is created based upon an "
+":class:`mboxMessage` or :class:`MMDFMessage` instance, the "
+":mailheader:`Status` and :mailheader:`X-Status` headers are omitted and the "
+"following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!MaildirMessage` được tạo dựa trên phiên bản "
+":class:`mboxMessage` hoặc :class:`MMDFMessage`, các tiêu đề "
+":mailheader:`Status` và :mailheader:`X-Status` sẽ bị bỏ qua và các chuyển "
+"đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1062 ../../library/mailbox.rst:1080
+#: ../../library/mailbox.rst:1095 ../../library/mailbox.rst:1202
+#: ../../library/mailbox.rst:1219 ../../library/mailbox.rst:1234
+#: ../../library/mailbox.rst:1250 ../../library/mailbox.rst:1317
+#: ../../library/mailbox.rst:1332 ../../library/mailbox.rst:1346
+#: ../../library/mailbox.rst:1443 ../../library/mailbox.rst:1460
+#: ../../library/mailbox.rst:1474 ../../library/mailbox.rst:1574
+#: ../../library/mailbox.rst:1591 ../../library/mailbox.rst:1606
+#: ../../library/mailbox.rst:1622
+#, fuzzy
+msgid "Resulting state"
+msgstr "Trạng thái kết quả"
+
+#: ../../library/mailbox.rst:1062 ../../library/mailbox.rst:1332
+#: ../../library/mailbox.rst:1460
+#, fuzzy
+msgid ":class:`mboxMessage` or :class:`MMDFMessage` state"
+msgstr "trạng thái :class:`mboxMessage` hoặc :class:`MMDFMessage`"
+
+#: ../../library/mailbox.rst:1065 ../../library/mailbox.rst:1082
+#: ../../library/mailbox.rst:1097 ../../library/mailbox.rst:1206
+#: ../../library/mailbox.rst:1578
+#, fuzzy
+msgid "\"cur\" subdirectory"
+msgstr "thư mục con \"cur\""
+
+#: ../../library/mailbox.rst:1065 ../../library/mailbox.rst:1206
+#: ../../library/mailbox.rst:1223 ../../library/mailbox.rst:1238
+#: ../../library/mailbox.rst:1254 ../../library/mailbox.rst:1578
+#: ../../library/mailbox.rst:1595 ../../library/mailbox.rst:1610
+#: ../../library/mailbox.rst:1626
+#, fuzzy
+msgid "O flag"
+msgstr "Hỡi lá cờ"
+
+#: ../../library/mailbox.rst:1067 ../../library/mailbox.rst:1086
+#: ../../library/mailbox.rst:1210 ../../library/mailbox.rst:1225
+#: ../../library/mailbox.rst:1258 ../../library/mailbox.rst:1323
+#: ../../library/mailbox.rst:1339 ../../library/mailbox.rst:1582
+#: ../../library/mailbox.rst:1597 ../../library/mailbox.rst:1630
+#, fuzzy
+msgid "F flag"
+msgstr "Cờ F"
+
+#: ../../library/mailbox.rst:1069 ../../library/mailbox.rst:1071
+#: ../../library/mailbox.rst:1088 ../../library/mailbox.rst:1103
+#: ../../library/mailbox.rst:1204 ../../library/mailbox.rst:1212
+#: ../../library/mailbox.rst:1252 ../../library/mailbox.rst:1321
+#: ../../library/mailbox.rst:1449 ../../library/mailbox.rst:1576
+#: ../../library/mailbox.rst:1584 ../../library/mailbox.rst:1624
+#, fuzzy
+msgid "R flag"
+msgstr "Cờ R"
+
+#: ../../library/mailbox.rst:1069 ../../library/mailbox.rst:1212
+#: ../../library/mailbox.rst:1227 ../../library/mailbox.rst:1242
+#: ../../library/mailbox.rst:1260 ../../library/mailbox.rst:1337
+#: ../../library/mailbox.rst:1467 ../../library/mailbox.rst:1584
+#: ../../library/mailbox.rst:1599 ../../library/mailbox.rst:1614
+#: ../../library/mailbox.rst:1632
+#, fuzzy
+msgid "A flag"
+msgstr "Một lá cờ"
+
+#: ../../library/mailbox.rst:1071 ../../library/mailbox.rst:1204
+#: ../../library/mailbox.rst:1576
+#, fuzzy
+msgid "S flag"
+msgstr "Cờ chữ S"
+
+#: ../../library/mailbox.rst:1073 ../../library/mailbox.rst:1105
+#: ../../library/mailbox.rst:1208 ../../library/mailbox.rst:1447
+#: ../../library/mailbox.rst:1580
+#, fuzzy
+msgid "T flag"
+msgstr "Cờ chữ T"
+
+#: ../../library/mailbox.rst:1073 ../../library/mailbox.rst:1208
+#: ../../library/mailbox.rst:1240 ../../library/mailbox.rst:1256
+#: ../../library/mailbox.rst:1465 ../../library/mailbox.rst:1580
+#: ../../library/mailbox.rst:1612 ../../library/mailbox.rst:1628
+#, fuzzy
+msgid "D flag"
+msgstr "Cờ D"
+
+#: ../../library/mailbox.rst:1076
+#, fuzzy
+msgid ""
+"When a :class:`!MaildirMessage` instance is created based upon an "
+":class:`MHMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!MaildirMessage` được tạo dựa trên phiên bản "
+":class:`MHMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1080 ../../library/mailbox.rst:1219
+#: ../../library/mailbox.rst:1474 ../../library/mailbox.rst:1591
+#, fuzzy
+msgid ":class:`MHMessage` state"
+msgstr "trạng thái :class:`MHMessage`"
+
+#: ../../library/mailbox.rst:1082 ../../library/mailbox.rst:1223
+#: ../../library/mailbox.rst:1319 ../../library/mailbox.rst:1335
+#: ../../library/mailbox.rst:1348 ../../library/mailbox.rst:1476
+#: ../../library/mailbox.rst:1595
+#, fuzzy
+msgid "\"unseen\" sequence"
+msgstr "trình tự \"không nhìn thấy\""
+
+#: ../../library/mailbox.rst:1084 ../../library/mailbox.rst:1099
+#, fuzzy
+msgid "\"cur\" subdirectory and S flag"
+msgstr "thư mục con \"cur\" và cờ S"
+
+#: ../../library/mailbox.rst:1084 ../../library/mailbox.rst:1221
+#: ../../library/mailbox.rst:1593
+#, fuzzy
+msgid "no \"unseen\" sequence"
+msgstr "không có trình tự \"không nhìn thấy\""
+
+#: ../../library/mailbox.rst:1086 ../../library/mailbox.rst:1225
+#: ../../library/mailbox.rst:1323 ../../library/mailbox.rst:1339
+#: ../../library/mailbox.rst:1597
+#, fuzzy
+msgid "\"flagged\" sequence"
+msgstr "trình tự \"được gắn cờ\""
+
+#: ../../library/mailbox.rst:1088 ../../library/mailbox.rst:1227
+#: ../../library/mailbox.rst:1321 ../../library/mailbox.rst:1337
+#: ../../library/mailbox.rst:1350 ../../library/mailbox.rst:1478
+#: ../../library/mailbox.rst:1599
+#, fuzzy
+msgid "\"replied\" sequence"
+msgstr "trình tự \"trả lời\""
+
+#: ../../library/mailbox.rst:1091
+#, fuzzy
+msgid ""
+"When a :class:`!MaildirMessage` instance is created based upon a "
+":class:`BabylMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!MaildirMessage` được tạo dựa trên phiên bản "
+":class:`BabylMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1095 ../../library/mailbox.rst:1234
+#: ../../library/mailbox.rst:1346 ../../library/mailbox.rst:1606
+#, fuzzy
+msgid ":class:`BabylMessage` state"
+msgstr "trạng thái :class:`BabylMessage`"
+
+#: ../../library/mailbox.rst:1097 ../../library/mailbox.rst:1238
+#: ../../library/mailbox.rst:1348 ../../library/mailbox.rst:1445
+#: ../../library/mailbox.rst:1463 ../../library/mailbox.rst:1476
+#: ../../library/mailbox.rst:1610
+#, fuzzy
+msgid "\"unseen\" label"
+msgstr "nhãn \"không nhìn thấy\""
+
+#: ../../library/mailbox.rst:1099 ../../library/mailbox.rst:1236
+#: ../../library/mailbox.rst:1608
+#, fuzzy
+msgid "no \"unseen\" label"
+msgstr "không có nhãn \"không nhìn thấy\""
+
+#: ../../library/mailbox.rst:1101 ../../library/mailbox.rst:1451
+#, fuzzy
+msgid "P flag"
+msgstr "Cờ P"
+
+#: ../../library/mailbox.rst:1101
+#, fuzzy
+msgid "\"forwarded\" or \"resent\" label"
+msgstr "nhãn \"đã chuyển tiếp\" hoặc \"gửi lại\""
+
+#: ../../library/mailbox.rst:1103 ../../library/mailbox.rst:1242
+#: ../../library/mailbox.rst:1350 ../../library/mailbox.rst:1449
+#: ../../library/mailbox.rst:1467 ../../library/mailbox.rst:1478
+#: ../../library/mailbox.rst:1614
+#, fuzzy
+msgid "\"answered\" label"
+msgstr "nhãn \"đã trả lời\""
+
+#: ../../library/mailbox.rst:1105 ../../library/mailbox.rst:1240
+#: ../../library/mailbox.rst:1447 ../../library/mailbox.rst:1465
+#: ../../library/mailbox.rst:1612
+#, fuzzy
+msgid "\"deleted\" label"
+msgstr "nhãn \"đã xóa\""
+
+#: ../../library/mailbox.rst:1112
+#, fuzzy
+msgid ":class:`!mboxMessage` objects"
+msgstr "đối tượng :class:`!mboxMessage`"
+
+#: ../../library/mailbox.rst:1117
+#, fuzzy
+msgid ""
+"A message with mbox-specific behaviors. Parameter *message* has the same "
+"meaning as with the :class:`Message` constructor."
+msgstr ""
+"Một thông báo có hành vi dành riêng cho mbox. Tham số *message* có ý nghĩa "
+"tương tự như với hàm tạo :class:`Message`."
+
+#: ../../library/mailbox.rst:1120
+#, fuzzy
+msgid ""
+"Messages in an mbox mailbox are stored together in a single file. The "
+"sender's envelope address and the time of delivery are typically stored in a"
+" line beginning with \"From \" that is used to indicate the start of a "
+"message, though there is considerable variation in the exact format of this "
+"data among mbox implementations. Flags that indicate the state of the "
+"message, such as whether it has been read or marked as important, are "
+"typically stored in :mailheader:`Status` and :mailheader:`X-Status` headers."
+msgstr ""
+"Thư trong hộp thư mbox được lưu trữ cùng nhau trong một tệp duy nhất. Địa "
+"chỉ phong bì của người gửi và thời gian gửi thường được lưu trữ trong một "
+"dòng bắt đầu bằng \"Từ\" được sử dụng để biểu thị sự bắt đầu của thư, mặc dù"
+" có sự khác biệt đáng kể về định dạng chính xác của dữ liệu này trong quá "
+"trình triển khai mbox. Các cờ cho biết trạng thái của thư, chẳng hạn như thư"
+" đã được đọc hay được đánh dấu là quan trọng, thường được lưu trữ trong tiêu"
+" đề :mailheader:`Status` và :mailheader:`X-Status`."
+
+#: ../../library/mailbox.rst:1128
+#, fuzzy
+msgid "Conventional flags for mbox messages are as follows:"
+msgstr "Cờ thông thường cho tin nhắn mbox như sau:"
+
+#: ../../library/mailbox.rst:1135 ../../library/mailbox.rst:1506
+#, fuzzy
+msgid "O"
+msgstr "ồ"
+
+#: ../../library/mailbox.rst:1135 ../../library/mailbox.rst:1506
+#, fuzzy
+msgid "Old"
+msgstr "Cũ"
+
+#: ../../library/mailbox.rst:1135 ../../library/mailbox.rst:1506
+#, fuzzy
+msgid "Previously detected by MUA"
+msgstr "Được phát hiện trước đó bởi MUA"
+
+#: ../../library/mailbox.rst:1137 ../../library/mailbox.rst:1508
+#, fuzzy
+msgid "Deleted"
+msgstr "Đã xóa"
+
+#: ../../library/mailbox.rst:1141 ../../library/mailbox.rst:1512
+#, fuzzy
+msgid "A"
+msgstr "A"
+
+#: ../../library/mailbox.rst:1141 ../../library/mailbox.rst:1512
+#, fuzzy
+msgid "Answered"
+msgstr "Đã trả lời"
+
+#: ../../library/mailbox.rst:1144 ../../library/mailbox.rst:1515
+#, fuzzy
+msgid ""
+"The \"R\" and \"O\" flags are stored in the :mailheader:`Status` header, and"
+" the \"D\", \"F\", and \"A\" flags are stored in the :mailheader:`X-Status` "
+"header. The flags and headers typically appear in the order mentioned."
+msgstr ""
+"Cờ \"R\" và \"O\" được lưu trữ trong tiêu đề :mailheader:`Status` và cờ "
+"\"D\", \"F\" và \"A\" được lưu trữ trong tiêu đề :mailheader:`X-Status`. Các"
+" cờ và tiêu đề thường xuất hiện theo thứ tự được đề cập."
+
+#: ../../library/mailbox.rst:1148
+#, fuzzy
+msgid ":class:`!mboxMessage` instances offer the following methods:"
+msgstr "Các phiên bản :class:`!mboxMessage` cung cấp các phương thức sau:"
+
+#: ../../library/mailbox.rst:1153 ../../library/mailbox.rst:1525
+#, fuzzy
+msgid ""
+"Return a string representing the \"From \" line that marks the start of the "
+"message in an mbox mailbox. The leading \"From \" and the trailing newline "
+"are excluded."
+msgstr ""
+"Trả về một chuỗi đại diện cho dòng \"Từ\" đánh dấu sự bắt đầu của thư trong "
+"hộp thư mbox. Dòng \"Từ\" ở đầu và dòng mới ở cuối đều bị loại trừ."
+
+#: ../../library/mailbox.rst:1160 ../../library/mailbox.rst:1532
+#, fuzzy
+msgid ""
+"Set the \"From \" line to *from_*, which should be specified without a "
+"leading \"From \" or trailing newline. For convenience, *time_* may be "
+"specified and will be formatted appropriately and appended to *from_*. If "
+"*time_* is specified, it should be a :class:`time.struct_time` instance, a "
+"tuple suitable for passing to :func:`time.strftime`, or ``True`` (to use "
+":func:`time.gmtime`)."
+msgstr ""
+"Đặt dòng \"Từ \" thành *from_*, dòng này phải được chỉ định mà không có dòng"
+" \"Từ \" ở đầu hoặc dòng mới ở cuối. Để thuận tiện, *time_* có thể được chỉ "
+"định và sẽ được định dạng phù hợp và gắn vào *from_*. Nếu *time_* được chỉ "
+"định, thì đó phải là một phiên bản :class:`time.struct_time`, một bộ dữ liệu"
+" phù hợp để chuyển tới :func:`time.strftime` hoặc ``True`` (để sử dụng "
+":func:`time.gmtime`)."
+
+#: ../../library/mailbox.rst:1170 ../../library/mailbox.rst:1542
+#, fuzzy
+msgid ""
+"Return a string specifying the flags that are currently set. If the message "
+"complies with the conventional format, the result is the concatenation in "
+"the following order of zero or one occurrence of each of ``'R'``, ``'O'``, "
+"``'D'``, ``'F'``, and ``'A'``."
+msgstr ""
+"Trả về một chuỗi chỉ định các cờ hiện được đặt. Nếu thông báo tuân theo định"
+" dạng thông thường thì kết quả là sự ghép nối theo thứ tự 0 sau đây hoặc một"
+" lần xuất hiện của mỗi ``'R'``, ``'O'``, ``'D'``, ``'F'`` và ``'A'``."
+
+#: ../../library/mailbox.rst:1178 ../../library/mailbox.rst:1550
+#, fuzzy
+msgid ""
+"Set the flags specified by *flags* and unset all others. Parameter *flags* "
+"should be the concatenation in any order of zero or more occurrences of each"
+" of ``'R'``, ``'O'``, ``'D'``, ``'F'``, and ``'A'``."
+msgstr ""
+"Đặt các cờ được chỉ định bởi *flags* và bỏ đặt tất cả các cờ khác. Tham số "
+"*flags* phải là phép nối theo bất kỳ thứ tự nào, không có hoặc nhiều lần "
+"xuất hiện của mỗi ``'R'``, ``'O'``, ``'D'``, ``'F'`` và ``'A'``."
+
+#: ../../library/mailbox.rst:1185 ../../library/mailbox.rst:1557
+#, fuzzy
+msgid ""
+"Set the flag(s) specified by *flag* without changing other flags. To add "
+"more than one flag at a time, *flag* may be a string of more than one "
+"character."
+msgstr ""
+"Đặt (các) cờ được chỉ định bởi *flag* mà không thay đổi các cờ khác. Để thêm"
+" nhiều cờ cùng một lúc, *flag* có thể là một chuỗi gồm nhiều ký tự."
+
+#: ../../library/mailbox.rst:1192 ../../library/mailbox.rst:1564
+#, fuzzy
+msgid ""
+"Unset the flag(s) specified by *flag* without changing other flags. To "
+"remove more than one flag at a time, *flag* may be a string of more than one"
+" character."
+msgstr ""
+"Bỏ đặt (các) cờ được chỉ định bởi *flag* mà không thay đổi các cờ khác. Để "
+"xóa nhiều cờ cùng một lúc, *flag* có thể là một chuỗi gồm nhiều ký tự."
+
+#: ../../library/mailbox.rst:1196
+#, fuzzy
+msgid ""
+"When an :class:`!mboxMessage` instance is created based upon a "
+":class:`MaildirMessage` instance, a \"From \" line is generated based upon "
+"the :class:`MaildirMessage` instance's delivery date, and the following "
+"conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!mboxMessage` được tạo dựa trên phiên bản "
+":class:`MaildirMessage`, dòng \"Từ \" được tạo dựa trên ngày phân phối của "
+"phiên bản :class:`MaildirMessage` và các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1202 ../../library/mailbox.rst:1317
+#: ../../library/mailbox.rst:1443 ../../library/mailbox.rst:1574
+#, fuzzy
+msgid ":class:`MaildirMessage` state"
+msgstr "trạng thái :class:`MaildirMessage`"
+
+#: ../../library/mailbox.rst:1215
+#, fuzzy
+msgid ""
+"When an :class:`!mboxMessage` instance is created based upon an "
+":class:`MHMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!mboxMessage` được tạo dựa trên phiên bản "
+":class:`MHMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1221 ../../library/mailbox.rst:1236
+#: ../../library/mailbox.rst:1593 ../../library/mailbox.rst:1608
+#, fuzzy
+msgid "R flag and O flag"
+msgstr "Cờ R và cờ O"
+
+#: ../../library/mailbox.rst:1230
+#, fuzzy
+msgid ""
+"When an :class:`!mboxMessage` instance is created based upon a "
+":class:`BabylMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!mboxMessage` được tạo dựa trên phiên bản "
+":class:`BabylMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1245
+#, fuzzy
+msgid ""
+"When a :class:`!mboxMessage` instance is created based upon an "
+":class:`MMDFMessage` instance, the \"From \" line is copied and all flags "
+"directly correspond:"
+msgstr ""
+"Khi một phiên bản :class:`!mboxMessage` được tạo dựa trên một phiên bản "
+":class:`MMDFMessage`, dòng \"Từ \" sẽ được sao chép và tất cả các cờ tương "
+"ứng trực tiếp:"
+
+#: ../../library/mailbox.rst:1250
+#, fuzzy
+msgid ":class:`MMDFMessage` state"
+msgstr "trạng thái :class:`MMDFMessage`"
+
+#: ../../library/mailbox.rst:1267
+#, fuzzy
+msgid ":class:`!MHMessage` objects"
+msgstr "đối tượng :class:`!MHMessage`"
+
+#: ../../library/mailbox.rst:1272
+#, fuzzy
+msgid ""
+"A message with MH-specific behaviors. Parameter *message* has the same "
+"meaning as with the :class:`Message` constructor."
+msgstr ""
+"Một tin nhắn với các hành vi cụ thể của MH. Tham số *message* có ý nghĩa "
+"tương tự như với hàm tạo :class:`Message`."
+
+#: ../../library/mailbox.rst:1275
+#, fuzzy
+msgid ""
+"MH messages do not support marks or flags in the traditional sense, but they"
+" do support sequences, which are logical groupings of arbitrary messages. "
+"Some mail reading programs (although not the standard :program:`mh` and "
+":program:`nmh`) use sequences in much the same way flags are used with other"
+" formats, as follows:"
+msgstr ""
+"Các bản tin MH không hỗ trợ các nhãn hiệu hoặc cờ theo nghĩa truyền thống, "
+"nhưng chúng hỗ trợ các chuỗi, là các nhóm logic của các bản tin tùy ý. Một "
+"số chương trình đọc thư (mặc dù không phải là :program:`mh` và "
+":program:`nmh` tiêu chuẩn) sử dụng các chuỗi theo cách tương tự như cách sử "
+"dụng cờ với các định dạng khác, như sau:"
+
+#: ../../library/mailbox.rst:1282
+#, fuzzy
+msgid "Sequence"
+msgstr "trình tự"
+
+#: ../../library/mailbox.rst:1284 ../../library/mailbox.rst:1371
+#, fuzzy
+msgid "unseen"
+msgstr "không thể thấy được"
+
+#: ../../library/mailbox.rst:1284 ../../library/mailbox.rst:1371
+#, fuzzy
+msgid "Not read, but previously detected by MUA"
+msgstr "Chưa đọc nhưng đã được MUA phát hiện trước đó"
+
+#: ../../library/mailbox.rst:1286
+#, fuzzy
+msgid "replied"
+msgstr "đã trả lời"
+
+#: ../../library/mailbox.rst:1288
+#, fuzzy
+msgid "flagged"
+msgstr "bị gắn cờ"
+
+#: ../../library/mailbox.rst:1291
+#, fuzzy
+msgid ":class:`!MHMessage` instances offer the following methods:"
+msgstr "Các phiên bản :class:`!MHMessage` cung cấp các phương thức sau:"
+
+#: ../../library/mailbox.rst:1296
+#, fuzzy
+msgid "Return a list of the names of sequences that include this message."
+msgstr "Trả về danh sách tên của các chuỗi có chứa thông báo này."
+
+#: ../../library/mailbox.rst:1301
+#, fuzzy
+msgid "Set the list of sequences that include this message."
+msgstr "Đặt danh sách các chuỗi bao gồm thông báo này."
+
+#: ../../library/mailbox.rst:1306
+#, fuzzy
+msgid "Add *sequence* to the list of sequences that include this message."
+msgstr "Thêm *sequence* vào danh sách các chuỗi có thông báo này."
+
+#: ../../library/mailbox.rst:1311
+#, fuzzy
+msgid ""
+"Remove *sequence* from the list of sequences that include this message."
+msgstr "Xóa *sequence* khỏi danh sách các chuỗi có thông báo này."
+
+#: ../../library/mailbox.rst:1313
+#, fuzzy
+msgid ""
+"When an :class:`!MHMessage` instance is created based upon a "
+":class:`MaildirMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!MHMessage` được tạo dựa trên phiên bản "
+":class:`MaildirMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1319 ../../library/mailbox.rst:1445
+#, fuzzy
+msgid "no S flag"
+msgstr "không có cờ S"
+
+#: ../../library/mailbox.rst:1326
+#, fuzzy
+msgid ""
+"When an :class:`!MHMessage` instance is created based upon an "
+":class:`mboxMessage` or :class:`MMDFMessage` instance, the "
+":mailheader:`Status` and :mailheader:`X-Status` headers are omitted and the "
+"following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!MHMessage` được tạo dựa trên phiên bản "
+":class:`mboxMessage` hoặc :class:`MMDFMessage`, các tiêu đề "
+":mailheader:`Status` và :mailheader:`X-Status` sẽ bị bỏ qua và các chuyển "
+"đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1335 ../../library/mailbox.rst:1463
+#, fuzzy
+msgid "no R flag"
+msgstr "không có cờ R"
+
+#: ../../library/mailbox.rst:1342
+#, fuzzy
+msgid ""
+"When an :class:`!MHMessage` instance is created based upon a "
+":class:`BabylMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!MHMessage` được tạo dựa trên phiên bản "
+":class:`BabylMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1357
+#, fuzzy
+msgid ":class:`!BabylMessage` objects"
+msgstr "đối tượng :class:`!BabylMessage`"
+
+#: ../../library/mailbox.rst:1362
+#, fuzzy
+msgid ""
+"A message with Babyl-specific behaviors. Parameter *message* has the same "
+"meaning as with the :class:`Message` constructor."
+msgstr ""
+"Một tin nhắn với các hành vi cụ thể của Baby. Tham số *message* có ý nghĩa "
+"tương tự như với hàm tạo :class:`Message`."
+
+#: ../../library/mailbox.rst:1365
+#, fuzzy
+msgid ""
+"Certain message labels, called :dfn:`attributes`, are defined by convention "
+"to have special meanings. The attributes are as follows:"
+msgstr ""
+"Một số nhãn thông báo nhất định, được gọi là :dfn:`attributes`, được xác "
+"định theo quy ước để có ý nghĩa đặc biệt. Các thuộc tính như sau:"
+
+#: ../../library/mailbox.rst:1369
+#, fuzzy
+msgid "Label"
+msgstr "Nhãn"
+
+#: ../../library/mailbox.rst:1373
+#, fuzzy
+msgid "deleted"
+msgstr "đã xóa"
+
+#: ../../library/mailbox.rst:1375
+#, fuzzy
+msgid "filed"
+msgstr "nộp đơn"
+
+#: ../../library/mailbox.rst:1375
+#, fuzzy
+msgid "Copied to another file or mailbox"
+msgstr "Đã sao chép sang tập tin hoặc hộp thư khác"
+
+#: ../../library/mailbox.rst:1377
+#, fuzzy
+msgid "answered"
+msgstr "đã trả lời"
+
+#: ../../library/mailbox.rst:1379
+#, fuzzy
+msgid "forwarded"
+msgstr "chuyển tiếp"
+
+#: ../../library/mailbox.rst:1379
+#, fuzzy
+msgid "Forwarded"
+msgstr "Đã chuyển tiếp"
+
+#: ../../library/mailbox.rst:1381
+#, fuzzy
+msgid "edited"
+msgstr "đã chỉnh sửa"
+
+#: ../../library/mailbox.rst:1381
+#, fuzzy
+msgid "Modified by the user"
+msgstr "Được sửa đổi bởi người dùng"
+
+#: ../../library/mailbox.rst:1383
+#, fuzzy
+msgid "resent"
+msgstr "bực bội"
+
+#: ../../library/mailbox.rst:1383
+#, fuzzy
+msgid "Resent"
+msgstr "Bực bội"
+
+#: ../../library/mailbox.rst:1386
+#, fuzzy
+msgid ""
+"By default, Rmail displays only visible headers. The :class:`!BabylMessage` "
+"class, though, uses the original headers because they are more complete. "
+"Visible headers may be accessed explicitly if desired."
+msgstr ""
+"Theo mặc định, Rmail chỉ hiển thị các tiêu đề hiển thị. Tuy nhiên, lớp "
+":class:`!BabylMessage` sử dụng các tiêu đề ban đầu vì chúng hoàn thiện hơn. "
+"Các tiêu đề hiển thị có thể được truy cập một cách rõ ràng nếu muốn."
+
+#: ../../library/mailbox.rst:1390
+#, fuzzy
+msgid ":class:`!BabylMessage` instances offer the following methods:"
+msgstr "Các phiên bản :class:`!BabylMessage` cung cấp các phương thức sau:"
+
+#: ../../library/mailbox.rst:1395
+#, fuzzy
+msgid "Return a list of labels on the message."
+msgstr "Trả về danh sách các nhãn trên tin nhắn."
+
+#: ../../library/mailbox.rst:1400
+#, fuzzy
+msgid "Set the list of labels on the message to *labels*."
+msgstr "Đặt danh sách nhãn trên tin nhắn thành *labels*."
+
+#: ../../library/mailbox.rst:1405
+#, fuzzy
+msgid "Add *label* to the list of labels on the message."
+msgstr "Thêm *label* vào danh sách nhãn trên tin nhắn."
+
+#: ../../library/mailbox.rst:1410
+#, fuzzy
+msgid "Remove *label* from the list of labels on the message."
+msgstr "Xóa *label* khỏi danh sách nhãn trên tin nhắn."
+
+#: ../../library/mailbox.rst:1415
+#, fuzzy
+msgid ""
+"Return a :class:`Message` instance whose headers are the message's visible "
+"headers and whose body is empty."
+msgstr ""
+"Trả về một phiên bản :class:`Message` có tiêu đề là tiêu đề hiển thị của tin"
+" nhắn và nội dung trống."
+
+#: ../../library/mailbox.rst:1421
+#, fuzzy
+msgid ""
+"Set the message's visible headers to be the same as the headers in "
+"*message*.  Parameter *visible* should be a :class:`Message` instance, an "
+":class:`email.message.Message` instance, a string, or a file-like object "
+"(which should be open in text mode)."
+msgstr ""
+"Đặt tiêu đề hiển thị của tin nhắn giống với tiêu đề trong *message*.  Tham "
+"số *visible* phải là một phiên bản :class:`Message`, một phiên bản "
+":class:`email.message.Message`, một chuỗi hoặc một đối tượng giống như tệp "
+"(phải mở ở chế độ văn bản)."
+
+#: ../../library/mailbox.rst:1429
+#, fuzzy
+msgid ""
+"When a :class:`!BabylMessage` instance's original headers are modified, the "
+"visible headers are not automatically modified to correspond. This method "
+"updates the visible headers as follows: each visible header with a "
+"corresponding original header is set to the value of the original header, "
+"each visible header without a corresponding original header is removed, and "
+"any of :mailheader:`Date`, :mailheader:`From`, :mailheader:`Reply-To`, "
+":mailheader:`To`, :mailheader:`CC`, and :mailheader:`Subject` that are "
+"present in the original headers but not the visible headers are added to the"
+" visible headers."
+msgstr ""
+"Khi các tiêu đề ban đầu của phiên bản :class:`!BabylMessage` được sửa đổi, "
+"các tiêu đề hiển thị sẽ không tự động được sửa đổi cho tương ứng. Phương "
+"pháp này cập nhật các tiêu đề hiển thị như sau: mỗi tiêu đề hiển thị với "
+"tiêu đề gốc tương ứng được đặt thành giá trị của tiêu đề gốc, mỗi tiêu đề "
+"hiển thị không có tiêu đề gốc tương ứng sẽ bị xóa và bất kỳ tiêu đề nào "
+"trong số :mailheader:`Date`, :mailheader:`From`, :mailheader:`Reply-To`, "
+":mailheader:`To`, :mailheader:`CC` và :mailheader:`Subject` có trong tiêu đề"
+" gốc nhưng không phải tiêu đề hiển thị đều được thêm vào tiêu đề hiển thị."
+
+#: ../../library/mailbox.rst:1439
+#, fuzzy
+msgid ""
+"When a :class:`!BabylMessage` instance is created based upon a "
+":class:`MaildirMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!BabylMessage` được tạo dựa trên phiên bản "
+":class:`MaildirMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1451
+#, fuzzy
+msgid "\"forwarded\" label"
+msgstr "nhãn \"chuyển tiếp\""
+
+#: ../../library/mailbox.rst:1454
+#, fuzzy
+msgid ""
+"When a :class:`!BabylMessage` instance is created based upon an "
+":class:`mboxMessage` or :class:`MMDFMessage` instance, the "
+":mailheader:`Status` and :mailheader:`X-Status` headers are omitted and the "
+"following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!BabylMessage` được tạo dựa trên phiên bản "
+":class:`mboxMessage` hoặc :class:`MMDFMessage`, các tiêu đề "
+":mailheader:`Status` và :mailheader:`X-Status` sẽ bị bỏ qua và các chuyển "
+"đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1470
+#, fuzzy
+msgid ""
+"When a :class:`!BabylMessage` instance is created based upon an "
+":class:`MHMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!BabylMessage` được tạo dựa trên phiên bản "
+":class:`MHMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1485
+#, fuzzy
+msgid ":class:`!MMDFMessage` objects"
+msgstr "đối tượng :class:`!MMDFMessage`"
+
+#: ../../library/mailbox.rst:1490
+#, fuzzy
+msgid ""
+"A message with MMDF-specific behaviors. Parameter *message* has the same "
+"meaning as with the :class:`Message` constructor."
+msgstr ""
+"Một thông báo có hành vi dành riêng cho MMDF. Tham số *message* có ý nghĩa "
+"tương tự như với hàm tạo :class:`Message`."
+
+#: ../../library/mailbox.rst:1493
+#, fuzzy
+msgid ""
+"As with message in an mbox mailbox, MMDF messages are stored with the "
+"sender's address and the delivery date in an initial line beginning with "
+"\"From \".  Likewise, flags that indicate the state of the message are "
+"typically stored in :mailheader:`Status` and :mailheader:`X-Status` headers."
+msgstr ""
+"Giống như tin nhắn trong hộp thư mbox, tin nhắn MMDF được lưu trữ cùng với "
+"địa chỉ người gửi và ngày gửi ở dòng đầu tiên bắt đầu bằng \"Từ\".  Tương "
+"tự, các cờ cho biết trạng thái của thông báo thường được lưu trữ trong các "
+"tiêu đề :mailheader:`Status` và :mailheader:`X-Status`."
+
+#: ../../library/mailbox.rst:1498
+#, fuzzy
+msgid ""
+"Conventional flags for MMDF messages are identical to those of mbox message "
+"and are as follows:"
+msgstr ""
+"Cờ thông thường cho tin nhắn MMDF giống hệt với cờ của tin nhắn mbox và như "
+"sau:"
+
+#: ../../library/mailbox.rst:1519
+#, fuzzy
+msgid ""
+":class:`!MMDFMessage` instances offer the following methods, which are "
+"identical to those offered by :class:`mboxMessage`:"
+msgstr ""
+"Các phiên bản :class:`!MMDFMessage` cung cấp các phương thức sau, giống hệt "
+"với các phương thức do :class:`mboxMessage` cung cấp:"
+
+#: ../../library/mailbox.rst:1568
+#, fuzzy
+msgid ""
+"When an :class:`!MMDFMessage` instance is created based upon a "
+":class:`MaildirMessage` instance, a \"From \" line is generated based upon "
+"the :class:`MaildirMessage` instance's delivery date, and the following "
+"conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!MMDFMessage` được tạo dựa trên phiên bản "
+":class:`MaildirMessage`, dòng \"Từ \" được tạo dựa trên ngày phân phối của "
+"phiên bản :class:`MaildirMessage` và các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1587
+#, fuzzy
+msgid ""
+"When an :class:`!MMDFMessage` instance is created based upon an "
+":class:`MHMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!MMDFMessage` được tạo dựa trên phiên bản "
+":class:`MHMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1602
+#, fuzzy
+msgid ""
+"When an :class:`!MMDFMessage` instance is created based upon a "
+":class:`BabylMessage` instance, the following conversions take place:"
+msgstr ""
+"Khi một phiên bản :class:`!MMDFMessage` được tạo dựa trên phiên bản "
+":class:`BabylMessage`, các chuyển đổi sau sẽ diễn ra:"
+
+#: ../../library/mailbox.rst:1617
+#, fuzzy
+msgid ""
+"When an :class:`!MMDFMessage` instance is created based upon an "
+":class:`mboxMessage` instance, the \"From \" line is copied and all flags "
+"directly correspond:"
+msgstr ""
+"Khi một phiên bản :class:`!MMDFMessage` được tạo dựa trên một phiên bản "
+":class:`mboxMessage`, dòng \"Từ \" sẽ được sao chép và tất cả các cờ tương "
+"ứng trực tiếp:"
+
+#: ../../library/mailbox.rst:1622
+#, fuzzy
+msgid ":class:`mboxMessage` state"
+msgstr "trạng thái :class:`mboxMessage`"
+
+#: ../../library/mailbox.rst:1637
+#, fuzzy
+msgid "Exceptions"
+msgstr "Ngoại lệ"
+
+#: ../../library/mailbox.rst:1639
+#, fuzzy
+msgid ""
+"The following exception classes are defined in the :mod:`!mailbox` module:"
+msgstr "Các lớp ngoại lệ sau được xác định trong mô-đun :mod:`!mailbox`:"
+
+#: ../../library/mailbox.rst:1644
+#, fuzzy
+msgid "The base class for all other module-specific exceptions."
+msgstr "Lớp cơ sở cho tất cả các ngoại lệ khác dành riêng cho mô-đun."
+
+#: ../../library/mailbox.rst:1649
+#, fuzzy
+msgid ""
+"Raised when a mailbox is expected but is not found, such as when "
+"instantiating a :class:`Mailbox` subclass with a path that does not exist "
+"(and with the *create* parameter set to ``False``), or when opening a folder"
+" that does not exist."
+msgstr ""
+"Xảy ra khi mong đợi nhưng không tìm thấy hộp thư, chẳng hạn như khi khởi tạo"
+" lớp con :class:`Mailbox` với đường dẫn không tồn tại (và với tham số "
+"*create* được đặt thành ``False``) hoặc khi mở một thư mục không tồn tại."
+
+#: ../../library/mailbox.rst:1656
+#, fuzzy
+msgid ""
+"Raised when a mailbox is not empty but is expected to be, such as when "
+"deleting a folder that contains messages."
+msgstr ""
+"Xảy ra khi hộp thư không trống nhưng dự kiến sẽ trống, chẳng hạn như khi xóa"
+" thư mục chứa thư."
+
+#: ../../library/mailbox.rst:1662
+#, fuzzy
+msgid ""
+"Raised when some mailbox-related condition beyond the control of the program"
+" causes it to be unable to proceed, such as when failing to acquire a lock "
+"that another program already holds, or when a uniquely generated file name "
+"already exists."
+msgstr ""
+"Xảy ra khi một số điều kiện liên quan đến hộp thư nằm ngoài tầm kiểm soát "
+"của chương trình khiến chương trình không thể tiếp tục, chẳng hạn như khi "
+"không lấy được khóa mà chương trình khác đã nắm giữ hoặc khi tên tệp được "
+"tạo duy nhất đã tồn tại."
+
+#: ../../library/mailbox.rst:1670
+#, fuzzy
+msgid ""
+"Raised when the data in a file cannot be parsed, such as when an :class:`MH`"
+" instance attempts to read a corrupted :file:`.mh_sequences` file."
+msgstr ""
+"Xảy ra khi không thể phân tích cú pháp dữ liệu trong tệp, chẳng hạn như khi "
+"phiên bản :class:`MH` cố đọc tệp :file:`.mh_sequences` bị hỏng."
+
+#: ../../library/mailbox.rst:1677
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/mailbox.rst:1679
+#, fuzzy
+msgid ""
+"A simple example of printing the subjects of all messages in a mailbox that "
+"seem interesting::"
+msgstr ""
+"Một ví dụ đơn giản về việc in chủ đề của tất cả thư trong hộp thư có vẻ thú "
+"vị::"
+
+#: ../../library/mailbox.rst:1682
+#, fuzzy
+msgid ""
+"import mailbox\n"
+"for message in mailbox.mbox('~/mbox'):\n"
+"    subject = message['subject']       # Could possibly be None.\n"
+"    if subject and 'python' in subject.lower():\n"
+"        print(subject)"
+msgstr ""
+"nhập hộp thư\n"
+"cho thư trong hòm thư.mbox('~/mbox'):\n"
+"    chủ đề = tin nhắn ['chủ đề'] # Could có thể là Không có.\n"
+"    nếu chủ đề và 'python' trong topic.low():\n"
+"        in (chủ đề)"
+
+#: ../../library/mailbox.rst:1688
+#, fuzzy
+msgid ""
+"To copy all mail from a Babyl mailbox to an MH mailbox, converting all of "
+"the format-specific information that can be converted::"
+msgstr ""
+"Để sao chép tất cả thư từ hộp thư Babyl sang hộp thư MH, chuyển đổi tất cả "
+"thông tin theo định dạng cụ thể có thể được chuyển đổi::"
+
+#: ../../library/mailbox.rst:1691
+#, fuzzy
+msgid ""
+"import mailbox\n"
+"destination = mailbox.MH('~/Mail')\n"
+"destination.lock()\n"
+"for message in mailbox.Babyl('~/RMAIL'):\n"
+"    destination.add(mailbox.MHMessage(message))\n"
+"destination.flush()\n"
+"destination.unlock()"
+msgstr ""
+"nhập hộp thư\n"
+"đích = hộp thư.MH('~/Mail')\n"
+"đích.lock()\n"
+"cho tin nhắn trong hộp thư.Babyl('~/RMAIL'):\n"
+"    Destination.add(mailbox.MHMessage(tin nhắn))\n"
+"đích.flush()\n"
+"đích.unlock()"
+
+#: ../../library/mailbox.rst:1699
+#, fuzzy
+msgid ""
+"This example sorts mail from several mailing lists into different mailboxes,"
+" being careful to avoid mail corruption due to concurrent modification by "
+"other programs, mail loss due to interruption of the program, or premature "
+"termination due to malformed messages in the mailbox::"
+msgstr ""
+"Ví dụ này sắp xếp thư từ nhiều danh sách gửi thư vào các hộp thư khác nhau, "
+"cẩn thận để tránh hỏng thư do các chương trình khác sửa đổi đồng thời, mất "
+"thư do gián đoạn chương trình hoặc chấm dứt sớm do thư trong hộp thư không "
+"đúng định dạng::"
+
+#: ../../library/mailbox.rst:1704
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"import mailbox\n"
+"import email.errors\n"
+"\n"
+"list_names = ('python-list', 'python-dev', 'python-bugs')\n"
+"\n"
+"boxes = {name: mailbox.mbox('~/email/%s' % name) for name in list_names}\n"
+"inbox = mailbox.Maildir('~/Maildir', factory=None)\n"
+"\n"
+"for key in inbox.iterkeys():\n"
+"    try:\n"
+"        message = inbox[key]\n"
+"    except email.errors.MessageParseError:\n"
+"        continue                # The message is malformed. Just leave it.\n"
+"\n"
+"    for name in list_names:\n"
+"        list_id = message['list-id']\n"
+"        if list_id and name in list_id:\n"
+"            # Get mailbox to use\n"
+"            box = boxes[name]\n"
+"\n"
+"            # Write copy to disk before removing original.\n"
+"            # If there's a crash, you might duplicate a message, but\n"
+"            # that's better than losing a message completely.\n"
+"            box.lock()\n"
+"            box.add(message)\n"
+"            box.flush()\n"
+"            box.unlock()\n"
+"\n"
+"            # Remove original message\n"
+"            inbox.lock()\n"
+"            inbox.discard(key)\n"
+"            inbox.flush()\n"
+"            inbox.unlock()\n"
+"            break               # Found destination, so stop looking.\n"
+"\n"
+"for box in boxes.itervalues():\n"
+"    box.close()"
+msgstr ""
+"nhập hộp thư\n"
+"nhập email.errors\n"
+"\n"
+"list_names = ('python-list', 'python-dev', 'python-bugs')\n"
+"\n"
+"hộp = {name: hòm thư.mbox('~/email/%s' % name) cho tên trong list_names}\n"
+"inbox = hòm thư.Maildir('~/Maildir', Factory=None)\n"
+"\n"
+"cho khóa trong inbox.iterkeys():\n"
+"    thử:\n"
+"        tin nhắn = hộp thư đến[key]\n"
+"    ngoại trừ email.errors.MessageParseError:\n"
+"        tiếp tục tin nhắn # The không đúng định dạng. Cứ để đó đi.\n"
+"\n"
+"    cho tên trong list_names:\n"
+"        list_id = tin nhắn['list-id']\n"
+"        nếu list_id và tên trong list_id:\n"
+"            hộp thư # Get để sử dụng\n"
+"            hộp = hộp [tên]\n"
+"\n"
+"            # Write sao chép vào đĩa trước khi xóa bản gốc.\n"
+"            # If đang xảy ra sự cố, bạn có thể sao chép một tin nhắn, nhưng\n"
+"            # that còn hơn là mất tin nhắn hoàn toàn.\n"
+"            hộp.lock()\n"
+"            box.add(tin nhắn)\n"
+"            box.flush()\n"
+"            box.unlock()\n"
+"\n"
+"            tin nhắn gốc # Remove\n"
+"            hộp thư đến.lock()\n"
+"            inbox.discard(key)\n"
+"            hộp thư đến.flush()\n"
+"            hộp thư đến.unlock()\n"
+"            phá vỡ đích # Found nên đừng tìm nữa.\n"
+"\n"
+"cho hộp trong hộp.itervalues():\n"
+"    hộp.close()"

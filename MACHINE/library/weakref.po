@@ -1,0 +1,1168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/weakref.rst:4
+#, fuzzy
+msgid ":mod:`!weakref` --- Weak references"
+msgstr ":mod:`!weakref` --- Tài liệu tham khảo yếu"
+
+#: ../../library/weakref.rst:14
+#, fuzzy
+msgid "**Source code:** :source:`Lib/weakref.py`"
+msgstr "**Source code:** :source:`Lib/weakref.py`"
+
+#: ../../library/weakref.rst:18
+#, fuzzy
+msgid ""
+"The :mod:`!weakref` module allows the Python programmer to create :dfn:`weak"
+" references` to objects."
+msgstr ""
+"Mô-đun :mod:`!weakref` cho phép lập trình viên Python tạo :dfn:`weak "
+"references` cho các đối tượng."
+
+#: ../../library/weakref.rst:24
+#, fuzzy
+msgid ""
+"In the following, the term :dfn:`referent` means the object which is "
+"referred to by a weak reference."
+msgstr ""
+"Trong phần sau đây, thuật ngữ :dfn:`referent` có nghĩa là đối tượng được "
+"tham chiếu bằng tham chiếu yếu."
+
+#: ../../library/weakref.rst:27
+#, fuzzy
+msgid ""
+"A weak reference to an object is not enough to keep the object alive: when "
+"the only remaining references to a referent are weak references, "
+":term:`garbage collection` is free to destroy the referent and reuse its "
+"memory for something else.  However, until the object is actually destroyed "
+"the weak reference may return the object even if there are no strong "
+"references to it."
+msgstr ""
+"Tham chiếu yếu đến một đối tượng là không đủ để giữ cho đối tượng tồn tại: "
+"khi các tham chiếu duy nhất còn lại đến một tham chiếu là các tham chiếu "
+"yếu, :term:`garbage collection` có thể tự do hủy tham chiếu và sử dụng lại "
+"bộ nhớ của nó cho mục đích khác.  Tuy nhiên, cho đến khi đối tượng thực sự "
+"bị phá hủy, tham chiếu yếu có thể trả về đối tượng ngay cả khi không có tham"
+" chiếu mạnh tới nó."
+
+#: ../../library/weakref.rst:33
+#, fuzzy
+msgid ""
+"A primary use for weak references is to implement caches or mappings holding"
+" large objects, where it's desired that a large object not be kept alive "
+"solely because it appears in a cache or mapping."
+msgstr ""
+"Công dụng chính của các tham chiếu yếu là triển khai bộ nhớ đệm hoặc ánh xạ "
+"chứa các đối tượng lớn, trong đó người ta mong muốn rằng một đối tượng lớn "
+"không được giữ nguyên chỉ vì nó xuất hiện trong bộ nhớ đệm hoặc ánh xạ."
+
+#: ../../library/weakref.rst:37
+#, fuzzy
+msgid ""
+"For example, if you have a number of large binary image objects, you may "
+"wish to associate a name with each.  If you used a Python dictionary to map "
+"names to images, or images to names, the image objects would remain alive "
+"just because they appeared as values or keys in the dictionaries.  The "
+":class:`WeakKeyDictionary` and :class:`WeakValueDictionary` classes supplied"
+" by the :mod:`!weakref` module are an alternative, using weak references to "
+"construct mappings that don't keep objects alive solely because they appear "
+"in the mapping objects.  If, for example, an image object is a value in a "
+":class:`WeakValueDictionary`, then when the last remaining references to "
+"that image object are the weak references held by weak mappings, garbage "
+"collection can reclaim the object, and its corresponding entries in weak "
+"mappings are simply deleted."
+msgstr ""
+"Ví dụ: nếu bạn có một số đối tượng hình ảnh nhị phân lớn, bạn có thể muốn "
+"liên kết tên với mỗi đối tượng.  Nếu bạn sử dụng từ điển Python để ánh xạ "
+"tên thành hình ảnh hoặc hình ảnh thành tên thì đối tượng hình ảnh sẽ vẫn tồn"
+" tại chỉ vì chúng xuất hiện dưới dạng giá trị hoặc khóa trong từ điển.  Các "
+"lớp :class:`WeakKeyDictionary` và :class:`WeakValueDictionary` do mô-đun "
+":mod:`!weakref` cung cấp là một lựa chọn thay thế, sử dụng các tham chiếu "
+"yếu để xây dựng các ánh xạ không giữ cho các đối tượng tồn tại chỉ vì chúng "
+"xuất hiện trong các đối tượng ánh xạ.  Ví dụ: nếu một đối tượng hình ảnh là "
+"một giá trị trong :class:`WeakValueDictionary` thì khi các tham chiếu cuối "
+"cùng còn lại đến đối tượng hình ảnh đó là các tham chiếu yếu được giữ bởi "
+"ánh xạ yếu, việc thu thập rác có thể lấy lại đối tượng và các mục tương ứng "
+"của nó trong ánh xạ yếu sẽ bị xóa."
+
+#: ../../library/weakref.rst:50
+#, fuzzy
+msgid ""
+":class:`WeakKeyDictionary` and :class:`WeakValueDictionary` use weak "
+"references in their implementation, setting up callback functions on the "
+"weak references that notify the weak dictionaries when a key or value has "
+"been reclaimed by garbage collection.  :class:`WeakSet` implements the "
+":class:`set` interface, but keeps weak references to its elements, just like"
+" a :class:`WeakKeyDictionary` does."
+msgstr ""
+":class:`WeakKeyDictionary` và :class:`WeakValueDictionary` sử dụng các tham "
+"chiếu yếu trong quá trình triển khai, thiết lập các hàm gọi lại trên các "
+"tham chiếu yếu để thông báo cho các từ điển yếu khi một khóa hoặc giá trị "
+"được thu hồi bởi bộ thu thập rác.  :class:`WeakSet` triển khai giao diện "
+":class:`set` nhưng giữ các tham chiếu yếu đến các thành phần của nó, giống "
+"như :class:`WeakKeyDictionary`."
+
+#: ../../library/weakref.rst:57
+#, fuzzy
+msgid ""
+":class:`finalize` provides a straight forward way to register a cleanup "
+"function to be called when an object is garbage collected. This is simpler "
+"to use than setting up a callback function on a raw weak reference, since "
+"the module automatically ensures that the finalizer remains alive until the "
+"object is collected."
+msgstr ""
+":class:`finalize` cung cấp một cách đơn giản để đăng ký hàm dọn dẹp sẽ được "
+"gọi khi một đối tượng được thu gom rác. Việc sử dụng này đơn giản hơn so với"
+" việc thiết lập chức năng gọi lại trên một tham chiếu yếu thô, vì mô-đun tự "
+"động đảm bảo rằng trình hoàn thiện vẫn tồn tại cho đến khi đối tượng được "
+"thu thập."
+
+#: ../../library/weakref.rst:63
+#, fuzzy
+msgid ""
+"Most programs should find that using one of these weak container types or "
+":class:`finalize` is all they need -- it's not usually necessary to create "
+"your own weak references directly.  The low-level machinery is exposed by "
+"the :mod:`!weakref` module for the benefit of advanced uses."
+msgstr ""
+"Hầu hết các chương trình sẽ thấy rằng việc sử dụng một trong các loại vùng "
+"chứa yếu này hoặc :class:`finalize` là tất cả những gì chúng cần -- thông "
+"thường không cần thiết phải trực tiếp tạo các tham chiếu yếu của riêng bạn."
+"  Máy móc cấp thấp được mô-đun :mod:`!weakref` thể hiện nhằm mang lại lợi "
+"ích cho việc sử dụng nâng cao."
+
+#: ../../library/weakref.rst:68
+#, fuzzy
+msgid ""
+"Not all objects can be weakly referenced. Objects which support weak "
+"references include class instances, functions written in Python (but not in "
+"C), instance methods, sets, frozensets, some :term:`file objects <file "
+"object>`, :term:`generators <generator>`, type objects, sockets, arrays, "
+"deques, regular expression pattern objects, and code objects."
+msgstr ""
+"Không phải tất cả các đối tượng đều có thể được tham chiếu yếu. Các đối "
+"tượng hỗ trợ tham chiếu yếu bao gồm các phiên bản lớp, hàm viết bằng Python "
+"(nhưng không phải bằng C), phương thức phiên bản, bộ, Frozensets, một số "
+":term:`file objects <file object>`, :term:`generators <generator>`, đối "
+"tượng kiểu, ổ cắm, mảng, deques, đối tượng mẫu biểu thức chính quy và đối "
+"tượng mã."
+
+#: ../../library/weakref.rst:74
+#, fuzzy
+msgid "Added support for thread.lock, threading.Lock, and code objects."
+msgstr "Đã thêm hỗ trợ cho các đối tượng thread.lock, threading.Lock và mã."
+
+#: ../../library/weakref.rst:77
+#, fuzzy
+msgid ""
+"Several built-in types such as :class:`list` and :class:`dict` do not "
+"directly support weak references but can add support through subclassing::"
+msgstr ""
+"Một số loại tích hợp sẵn như :class:`list` và :class:`dict` không hỗ trợ "
+"trực tiếp các tham chiếu yếu nhưng có thể thêm hỗ trợ thông qua phân lớp::"
+
+#: ../../library/weakref.rst:80
+#, fuzzy
+msgid ""
+"class Dict(dict):\n"
+"    pass\n"
+"\n"
+"obj = Dict(red=1, green=2, blue=3)   # this object is weak referenceable"
+msgstr ""
+"lớp Dict(dict):\n"
+"    vượt qua\n"
+"\n"
+"obj = Dict(red=1, green=2, blue=3) đối tượng # this có khả năng tham chiếu yếu"
+
+#: ../../library/weakref.rst:87
+#, fuzzy
+msgid ""
+"Other built-in types such as :class:`tuple` and :class:`int` do not support "
+"weak references even when subclassed."
+msgstr ""
+"Các loại tích hợp khác như :class:`tuple` và :class:`int` không hỗ trợ các "
+"tham chiếu yếu ngay cả khi được phân lớp con."
+
+#: ../../library/weakref.rst:90
+#, fuzzy
+msgid ""
+"Extension types can easily be made to support weak references; see "
+":ref:`weakref-support`."
+msgstr ""
+"Các loại tiện ích mở rộng có thể dễ dàng được tạo để hỗ trợ các tham chiếu "
+"yếu; xem :ref:`weakref-support`."
+
+#: ../../library/weakref.rst:93
+#, fuzzy
+msgid ""
+"When ``__slots__`` are defined for a given type, weak reference support is "
+"disabled unless a ``'__weakref__'`` string is also present in the sequence "
+"of strings in the ``__slots__`` declaration. See :ref:`__slots__ "
+"documentation <slots>` for details."
+msgstr ""
+"Khi ``__slots__`` được xác định cho một loại nhất định, hỗ trợ tham chiếu "
+"yếu sẽ bị tắt trừ khi chuỗi ``'__weakref__'`` cũng xuất hiện trong chuỗi các"
+" chuỗi trong khai báo ``__slots__``. Xem :ref:`__slots__ documentation "
+"<slots>` để biết chi tiết."
+
+#: ../../library/weakref.rst:100
+#, fuzzy
+msgid ""
+"Return a weak reference to *object*.  The original object can be retrieved "
+"by calling the reference object if the referent is still alive; if the "
+"referent is no longer alive, calling the reference object will cause "
+":const:`None` to be returned.  If *callback* is provided and not "
+":const:`None`, and the returned weakref object is still alive, the callback "
+"will be called when the object is about to be finalized; the weak reference "
+"object will be passed as the only parameter to the callback; the referent "
+"will no longer be available."
+msgstr ""
+"Trả về tham chiếu yếu cho *object*.  Đối tượng ban đầu có thể được truy xuất"
+" bằng cách gọi đối tượng tham chiếu nếu đối tượng tham chiếu vẫn còn tồn "
+"tại; nếu người tham chiếu không còn tồn tại, việc gọi đối tượng tham chiếu "
+"sẽ khiến :const:`None` được trả về.  Nếu *callback* được cung cấp chứ không "
+"phải :const:`None` và đối tượng yếu được trả về vẫn còn tồn tại, lệnh gọi "
+"lại sẽ được gọi khi đối tượng sắp được hoàn tất; đối tượng tham chiếu yếu sẽ"
+" được chuyển làm tham số duy nhất cho lệnh gọi lại; người giới thiệu sẽ "
+"không còn nữa."
+
+#: ../../library/weakref.rst:108
+#, fuzzy
+msgid ""
+"It is allowable for many weak references to be constructed for the same "
+"object. Callbacks registered for each weak reference will be called from the"
+" most recently registered callback to the oldest registered callback."
+msgstr ""
+"Cho phép xây dựng nhiều tham chiếu yếu cho cùng một đối tượng. Các cuộc gọi "
+"lại được đăng ký cho mỗi tham chiếu yếu sẽ được gọi từ cuộc gọi lại được "
+"đăng ký gần đây nhất đến cuộc gọi lại được đăng ký cũ nhất."
+
+#: ../../library/weakref.rst:112
+#, fuzzy
+msgid ""
+"Exceptions raised by the callback will be noted on the standard error "
+"output, but cannot be propagated; they are handled in exactly the same way "
+"as exceptions raised from an object's :meth:`~object.__del__` method."
+msgstr ""
+"Các ngoại lệ do lệnh gọi lại đưa ra sẽ được ghi chú trên đầu ra lỗi tiêu "
+"chuẩn, nhưng không thể truyền bá; chúng được xử lý theo cách giống hệt như "
+"các ngoại lệ được tạo ra từ phương thức :meth:`~object.__del__` của đối "
+"tượng."
+
+#: ../../library/weakref.rst:116
+#, fuzzy
+msgid ""
+"Weak references are :term:`hashable` if the *object* is hashable.  They will"
+" maintain their hash value even after the *object* was deleted.  If "
+":func:`hash` is called the first time only after the *object* was deleted, "
+"the call will raise :exc:`TypeError`."
+msgstr ""
+"Tham chiếu yếu là :term:`hashable` nếu *object* có thể băm được.  Họ sẽ duy "
+"trì giá trị băm ngay cả sau khi *object* bị xóa.  Nếu :func:`hash` được gọi "
+"lần đầu tiên chỉ sau khi *object* bị xóa, cuộc gọi sẽ tăng :exc:`TypeError`."
+
+#: ../../library/weakref.rst:121
+#, fuzzy
+msgid ""
+"Weak references support tests for equality, but not ordering.  If the "
+"referents are still alive, two references have the same equality "
+"relationship as their referents (regardless of the *callback*).  If either "
+"referent has been deleted, the references are equal only if the reference "
+"objects are the same object."
+msgstr ""
+"Tham chiếu yếu hỗ trợ kiểm tra tính bằng nhau nhưng không hỗ trợ thứ tự.  "
+"Nếu các tham chiếu vẫn còn tồn tại thì hai tham chiếu có cùng mối quan hệ "
+"bình đẳng như các tham chiếu của chúng (bất kể *callback*).  Nếu một trong "
+"hai tham chiếu đã bị xóa, các tham chiếu chỉ bằng nhau nếu các đối tượng "
+"tham chiếu là cùng một đối tượng."
+
+#: ../../library/weakref.rst:126
+#, fuzzy
+msgid "This is a subclassable type rather than a factory function."
+msgstr "Đây là loại có thể phân lớp chứ không phải là chức năng của nhà máy."
+
+#: ../../library/weakref.rst:130
+#, fuzzy
+msgid ""
+"This read-only attribute returns the callback currently associated to the "
+"weakref.  If there is no callback or if the referent of the weakref is no "
+"longer alive then this attribute will have value ``None``."
+msgstr ""
+"Thuộc tính chỉ đọc này trả về cuộc gọi lại hiện được liên kết với điểm yếu."
+"  Nếu không có lệnh gọi lại hoặc nếu tham chiếu của điểm yếu không còn tồn "
+"tại thì thuộc tính này sẽ có giá trị ``None``."
+
+#: ../../library/weakref.rst:134
+#, fuzzy
+msgid "Added the :attr:`__callback__` attribute."
+msgstr "Đã thêm thuộc tính :attr:`__callback__`."
+
+#: ../../library/weakref.rst:140
+#, fuzzy
+msgid ""
+"Return a proxy to *object* which uses a weak reference.  This supports use "
+"of the proxy in most contexts instead of requiring the explicit "
+"dereferencing used with weak reference objects.  The returned object will "
+"have a type of either ``ProxyType`` or ``CallableProxyType``, depending on "
+"whether *object* is callable.  Proxy objects are not :term:`hashable` "
+"regardless of the referent; this avoids a number of problems related to "
+"their fundamentally mutable nature, and prevents their use as dictionary "
+"keys.  *callback* is the same as the parameter of the same name to the "
+":func:`ref` function."
+msgstr ""
+"Trả lại proxy cho *object* sử dụng tham chiếu yếu.  Điều này hỗ trợ việc sử "
+"dụng proxy trong hầu hết các ngữ cảnh thay vì yêu cầu hội thảo rõ ràng được "
+"sử dụng với các đối tượng tham chiếu yếu.  Đối tượng được trả về sẽ có loại "
+"``ProxyType`` hoặc ``CallableProxyType``, tùy thuộc vào việc *object* có thể"
+" gọi được hay không.  Các đối tượng proxy không phải là :term:`hashable` bất"
+" kể người tham chiếu; điều này tránh được một số vấn đề liên quan đến bản "
+"chất có thể thay đổi cơ bản của chúng và ngăn chặn việc sử dụng chúng làm "
+"khóa từ điển.  *callback* giống với tham số cùng tên của hàm :func:`ref`."
+
+#: ../../library/weakref.rst:149
+#, fuzzy
+msgid ""
+"Accessing an attribute of the proxy object after the referent is garbage "
+"collected raises :exc:`ReferenceError`."
+msgstr ""
+"Việc truy cập một thuộc tính của đối tượng proxy sau khi tham chiếu được thu"
+" thập rác sẽ làm tăng :exc:`ReferenceError`."
+
+#: ../../library/weakref.rst:152
+#, fuzzy
+msgid ""
+"Extended the operator support on proxy objects to include the matrix "
+"multiplication operators ``@`` and ``@=``."
+msgstr ""
+"Mở rộng hỗ trợ toán tử trên các đối tượng proxy để bao gồm các toán tử nhân "
+"ma trận ``@`` và ``@=``."
+
+#: ../../library/weakref.rst:159
+#, fuzzy
+msgid ""
+"Return the number of weak references and proxies which refer to *object*."
+msgstr "Trả về số lượng tham chiếu yếu và proxy tham chiếu đến *object*."
+
+#: ../../library/weakref.rst:164
+#, fuzzy
+msgid ""
+"Return a list of all weak reference and proxy objects which refer to "
+"*object*."
+msgstr ""
+"Trả về danh sách tất cả các đối tượng proxy và tham chiếu yếu tham chiếu đến"
+" *object*."
+
+#: ../../library/weakref.rst:169
+#, fuzzy
+msgid ""
+"Mapping class that references keys weakly.  Entries in the dictionary will "
+"be discarded when there is no longer a strong reference to the key.  This "
+"can be used to associate additional data with an object owned by other parts"
+" of an application without adding attributes to those objects.  This can be "
+"especially useful with objects that override attribute accesses."
+msgstr ""
+"Mapping class that references keys weakly.  Các mục trong từ điển sẽ bị loại"
+" bỏ khi không còn tham chiếu mạnh đến khóa nữa.  Điều này có thể được sử "
+"dụng để liên kết dữ liệu bổ sung với một đối tượng thuộc sở hữu của các phần"
+" khác của ứng dụng mà không cần thêm thuộc tính cho các đối tượng đó.  Điều "
+"này có thể đặc biệt hữu ích với các đối tượng ghi đè quyền truy cập thuộc "
+"tính."
+
+#: ../../library/weakref.rst:175
+#, fuzzy
+msgid ""
+"Note that when a key with equal value to an existing key (but not equal "
+"identity) is inserted into the dictionary, it replaces the value but does "
+"not replace the existing key. Due to this, when the reference to the "
+"original key is deleted, it also deletes the entry in the dictionary::"
+msgstr ""
+"Lưu ý rằng khi một khóa có giá trị bằng khóa hiện có (nhưng không nhận dạng "
+"bằng) được chèn vào từ điển, nó sẽ thay thế giá trị nhưng không thay thế "
+"khóa hiện có. Do đó, khi tham chiếu đến khóa gốc bị xóa, nó cũng xóa mục "
+"nhập trong từ điển::"
+
+#: ../../library/weakref.rst:180
+#, python-brace-format, fuzzy
+msgid ""
+">>> class T(str): pass\n"
+"...\n"
+">>> k1, k2 = T(), T()\n"
+">>> d = weakref.WeakKeyDictionary()\n"
+">>> d[k1] = 1   # d = {k1: 1}\n"
+">>> d[k2] = 2   # d = {k1: 2}\n"
+">>> del k1      # d = {}"
+msgstr ""
+">>> lớp T(str): đậu\n"
+"...\n"
+">>> k1, k2 = T(), T()\n"
+">>> d = yếuref.WeakKeyDictionary()\n"
+">>> d[k1] = 1 # d = {k1: 1}\n"
+">>> d[k2] = 2 # d = {k1: 2}\n"
+">>> del k1 # d = {}"
+
+#: ../../library/weakref.rst:188
+#, fuzzy
+msgid "A workaround would be to remove the key prior to reassignment::"
+msgstr "Một cách giải quyết khác là xóa khóa trước khi gán lại ::"
+
+#: ../../library/weakref.rst:190
+#, python-brace-format, fuzzy
+msgid ""
+">>> class T(str): pass\n"
+"...\n"
+">>> k1, k2 = T(), T()\n"
+">>> d = weakref.WeakKeyDictionary()\n"
+">>> d[k1] = 1   # d = {k1: 1}\n"
+">>> del d[k1]\n"
+">>> d[k2] = 2   # d = {k2: 2}\n"
+">>> del k1      # d = {k2: 2}"
+msgstr ""
+">>> lớp T(str): đậu\n"
+"...\n"
+">>> k1, k2 = T(), T()\n"
+">>> d = yếuref.WeakKeyDictionary()\n"
+">>> d[k1] = 1 # d = {k1: 1}\n"
+">>> del d[k1]\n"
+">>> d[k2] = 2 # d = {k2: 2}\n"
+">>> del k1 # d = {k2: 2}"
+
+#: ../../library/weakref.rst:199 ../../library/weakref.rst:220
+#, fuzzy
+msgid ""
+"Added support for ``|`` and ``|=`` operators, as specified in :pep:`584`."
+msgstr ""
+"Đã thêm hỗ trợ cho các toán tử ``|`` và ``|=``, như được chỉ định trong "
+":pep:`584`."
+
+#: ../../library/weakref.rst:202
+#, fuzzy
+msgid ""
+":class:`WeakKeyDictionary` objects have an additional method that exposes "
+"the internal references directly.  The references are not guaranteed to be "
+"\"live\" at the time they are used, so the result of calling the references "
+"needs to be checked before being used.  This can be used to avoid creating "
+"references that will cause the garbage collector to keep the keys around "
+"longer than needed."
+msgstr ""
+"Các đối tượng :class:`WeakKeyDictionary` có một phương thức bổ sung hiển thị"
+" trực tiếp các tham chiếu bên trong.  Các tham chiếu không được đảm bảo là "
+"\"trực tiếp\" tại thời điểm chúng được sử dụng, vì vậy kết quả của việc gọi "
+"các tham chiếu cần phải được kiểm tra trước khi sử dụng.  Điều này có thể "
+"được sử dụng để tránh tạo các tham chiếu khiến trình thu gom rác giữ các "
+"khóa lâu hơn mức cần thiết."
+
+#: ../../library/weakref.rst:212
+#, fuzzy
+msgid "Return an iterable of the weak references to the keys."
+msgstr "Trả về một tham chiếu yếu cho các khóa có thể lặp lại."
+
+#: ../../library/weakref.rst:217
+#, fuzzy
+msgid ""
+"Mapping class that references values weakly.  Entries in the dictionary will"
+" be discarded when no strong reference to the value exists any more."
+msgstr ""
+"Lớp ánh xạ tham chiếu các giá trị yếu.  Các mục trong từ điển sẽ bị loại bỏ "
+"khi không còn tham chiếu mạnh đến giá trị nữa."
+
+#: ../../library/weakref.rst:223
+#, fuzzy
+msgid ""
+":class:`WeakValueDictionary` objects have an additional method that has the "
+"same issues as the :meth:`WeakKeyDictionary.keyrefs` method."
+msgstr ""
+"Đối tượng :class:`WeakValueDictionary` có một phương thức bổ sung có cùng "
+"vấn đề với phương thức :meth:`WeakKeyDictionary.keyrefs`."
+
+#: ../../library/weakref.rst:229
+#, fuzzy
+msgid "Return an iterable of the weak references to the values."
+msgstr "Trả về giá trị có thể lặp lại của các tham chiếu yếu."
+
+#: ../../library/weakref.rst:234
+#, fuzzy
+msgid ""
+"Set class that keeps weak references to its elements.  An element will be "
+"discarded when no strong reference to it exists any more."
+msgstr ""
+"Đặt lớp giữ các tham chiếu yếu đến các phần tử của nó.  Một phần tử sẽ bị "
+"loại bỏ khi không còn tham chiếu mạnh đến nó nữa."
+
+#: ../../library/weakref.rst:240
+#, fuzzy
+msgid ""
+"A custom :class:`ref` subclass which simulates a weak reference to a bound "
+"method (i.e., a method defined on a class and looked up on an instance). "
+"Since a bound method is ephemeral, a standard weak reference cannot keep "
+"hold of it.  :class:`WeakMethod` has special code to recreate the bound "
+"method until either the object or the original function dies::"
+msgstr ""
+"Lớp con :class:`ref` tùy chỉnh mô phỏng tham chiếu yếu đến một phương thức "
+"bị ràng buộc (tức là một phương thức được xác định trên một lớp và tra cứu "
+"trên một phiên bản). Vì một phương thức bị ràng buộc là phù du nên một tham "
+"chiếu yếu tiêu chuẩn không thể giữ được nó.  :class:`WeakMethod` có mã đặc "
+"biệt để tạo lại phương thức bị ràng buộc cho đến khi đối tượng hoặc hàm ban "
+"đầu chết ::"
+
+#: ../../library/weakref.rst:246
+#, fuzzy
+msgid ""
+">>> class C:\n"
+"...     def method(self):\n"
+"...         print(\"method called!\")\n"
+"...\n"
+">>> c = C()\n"
+">>> r = weakref.ref(c.method)\n"
+">>> r()\n"
+">>> r = weakref.WeakMethod(c.method)\n"
+">>> r()\n"
+"<bound method C.method of <__main__.C object at 0x7fc859830220>>\n"
+">>> r()()\n"
+"method called!\n"
+">>> del c\n"
+">>> gc.collect()\n"
+"0\n"
+">>> r()\n"
+">>>"
+msgstr ""
+">>> lớp C:\n"
+"... phương thức def (tự):\n"
+"... print(\"phương thức được gọi!\")\n"
+"...\n"
+">>> c = C()\n"
+">>> r = yếuref.ref(c.method)\n"
+">>> r()\n"
+">>> r = yếuref.WeakMethod(c.method)\n"
+">>> r()\n"
+"<phương thức ràng buộc C.phương thức của đối tượng <__main__.C tại 0x7fc859830220>>\n"
+">>> r()()\n"
+"phương thức được gọi!\n"
+">>> del c\n"
+">>> gc.collect()\n"
+"0\n"
+">>> r()\n"
+">>>"
+
+#: ../../library/weakref.rst:264
+#, fuzzy
+msgid ""
+"*callback* is the same as the parameter of the same name to the :func:`ref` "
+"function."
+msgstr "*callback* giống với tham số cùng tên của hàm :func:`ref`."
+
+#: ../../library/weakref.rst:270
+#, fuzzy
+msgid ""
+"Return a callable finalizer object which will be called when *obj* is "
+"garbage collected. Unlike an ordinary weak reference, a finalizer will "
+"always survive until the reference object is collected, greatly simplifying "
+"lifecycle management."
+msgstr ""
+"Trả về một đối tượng hoàn thiện có thể gọi được, đối tượng này sẽ được gọi "
+"khi *obj* được thu gom rác. Không giống như một tham chiếu yếu thông thường,"
+" trình hoàn thiện sẽ luôn tồn tại cho đến khi đối tượng tham chiếu được thu "
+"thập, giúp đơn giản hóa đáng kể việc quản lý vòng đời."
+
+#: ../../library/weakref.rst:275
+#, fuzzy
+msgid ""
+"A finalizer is considered *alive* until it is called (either explicitly or "
+"at garbage collection), and after that it is *dead*.  Calling a live "
+"finalizer returns the result of evaluating ``func(*arg, **kwargs)``, whereas"
+" calling a dead finalizer returns :const:`None`."
+msgstr ""
+"Bộ hoàn thiện được coi là *alive* cho đến khi nó được gọi (rõ ràng hoặc lúc "
+"thu gom rác) và sau đó là *dead*.  Việc gọi trình hoàn thiện trực tiếp trả "
+"về kết quả đánh giá ``func(*arg, **kwargs)``, trong khi gọi trình hoàn thiện"
+" đã chết sẽ trả về :const:`None`."
+
+#: ../../library/weakref.rst:280
+#, fuzzy
+msgid ""
+"Exceptions raised by finalizer callbacks during garbage collection will be "
+"shown on the standard error output, but cannot be propagated.  They are "
+"handled in the same way as exceptions raised from an object's "
+":meth:`~object.__del__` method or a weak reference's callback."
+msgstr ""
+"Các ngoại lệ do các lệnh gọi lại bộ hoàn thiện đưa ra trong quá trình thu "
+"gom rác sẽ được hiển thị trên đầu ra lỗi tiêu chuẩn nhưng không thể lan "
+"truyền.  Chúng được xử lý theo cách tương tự như các ngoại lệ được tạo ra từ"
+" phương thức :meth:`~object.__del__` của đối tượng hoặc lệnh gọi lại của "
+"tham chiếu yếu."
+
+#: ../../library/weakref.rst:286
+#, fuzzy
+msgid ""
+"When the program exits, each remaining live finalizer is called unless its "
+":attr:`atexit` attribute has been set to false.  They are called in reverse "
+"order of creation."
+msgstr ""
+"Khi chương trình thoát, mỗi trình hoàn thiện trực tiếp còn lại sẽ được gọi "
+"trừ khi thuộc tính :attr:`atexit` của nó được đặt thành false.  Chúng được "
+"gọi theo thứ tự ngược lại của sự sáng tạo."
+
+#: ../../library/weakref.rst:290
+#, fuzzy
+msgid ""
+"A finalizer will never invoke its callback during the later part of the "
+":term:`interpreter shutdown` when module globals are liable to have been "
+"replaced by :const:`None`."
+msgstr ""
+"Trình hoàn thiện sẽ không bao giờ gọi lại lệnh gọi lại của nó trong phần sau"
+" của :term:`interpreter shutdown` khi các mô-đun toàn cầu có khả năng đã "
+"được thay thế bằng :const:`None`."
+
+#: ../../library/weakref.rst:296
+#, fuzzy
+msgid ""
+"If *self* is alive then mark it as dead and return the result of calling "
+"``func(*args, **kwargs)``.  If *self* is dead then return :const:`None`."
+msgstr ""
+"Nếu *self* còn sống thì đánh dấu nó là đã chết và trả về kết quả gọi "
+"``func(*args, **kwargs)``.  Nếu *self* chết thì trả về :const:`None`."
+
+#: ../../library/weakref.rst:302
+#, fuzzy
+msgid ""
+"If *self* is alive then mark it as dead and return the tuple ``(obj, func, "
+"args, kwargs)``.  If *self* is dead then return :const:`None`."
+msgstr ""
+"Nếu *self* còn sống thì đánh dấu nó là đã chết và trả về bộ dữ liệu ``(obj, "
+"func, args, kwargs)``.  Nếu *self* chết thì trả về :const:`None`."
+
+#: ../../library/weakref.rst:308
+#, fuzzy
+msgid ""
+"If *self* is alive then return the tuple ``(obj, func, args, kwargs)``.  If "
+"*self* is dead then return :const:`None`."
+msgstr ""
+"Nếu *self* còn sống thì trả về bộ ``(obj, func, args, kwargs)``.  Nếu *self*"
+" chết thì trả về :const:`None`."
+
+#: ../../library/weakref.rst:313
+#, fuzzy
+msgid "Property which is true if the finalizer is alive, false otherwise."
+msgstr "Thuộc tính đúng nếu bộ hoàn thiện còn sống, nếu không thì sai."
+
+#: ../../library/weakref.rst:317
+#, fuzzy
+msgid ""
+"A writable boolean property which by default is true.  When the program "
+"exits, it calls all remaining live finalizers for which :attr:`.atexit` is "
+"true.  They are called in reverse order of creation."
+msgstr ""
+"Thuộc tính boolean có thể ghi theo mặc định là đúng.  Khi chương trình "
+"thoát, nó sẽ gọi tất cả các bộ hoàn thiện trực tiếp còn lại mà "
+":attr:`.atexit` là đúng.  Chúng được gọi theo thứ tự ngược lại của sự sáng "
+"tạo."
+
+#: ../../library/weakref.rst:324
+#, fuzzy
+msgid ""
+"It is important to ensure that *func*, *args* and *kwargs* do not own any "
+"references to *obj*, either directly or indirectly, since otherwise *obj* "
+"will never be garbage collected.  In particular, *func* should not be a "
+"bound method of *obj*."
+msgstr ""
+"Điều quan trọng là phải đảm bảo rằng *func*, *args* và *kwargs* không sở hữu"
+" bất kỳ tham chiếu nào đến *obj*, trực tiếp hoặc gián tiếp, vì nếu không, "
+"*obj* sẽ không bao giờ được thu thập rác.  Đặc biệt, *func* không nên là một"
+" phương thức bị ràng buộc của *obj*."
+
+#: ../../library/weakref.rst:334
+#, fuzzy
+msgid "The type object for weak references objects."
+msgstr "Đối tượng loại cho các đối tượng tham chiếu yếu."
+
+#: ../../library/weakref.rst:339
+#, fuzzy
+msgid "The type object for proxies of objects which are not callable."
+msgstr "Đối tượng kiểu cho proxy của các đối tượng không thể gọi được."
+
+#: ../../library/weakref.rst:344
+#, fuzzy
+msgid "The type object for proxies of callable objects."
+msgstr "Đối tượng loại cho proxy của các đối tượng có thể gọi được."
+
+#: ../../library/weakref.rst:349
+#, fuzzy
+msgid ""
+"Sequence containing all the type objects for proxies.  This can make it "
+"simpler to test if an object is a proxy without being dependent on naming "
+"both proxy types."
+msgstr ""
+"Trình tự chứa tất cả các đối tượng loại cho proxy.  Điều này có thể giúp "
+"việc kiểm tra xem một đối tượng có phải là proxy trở nên đơn giản hơn hay "
+"không mà không phụ thuộc vào việc đặt tên cho cả hai loại proxy."
+
+#: ../../library/weakref.rst:356
+#, fuzzy
+msgid ":pep:`205` - Weak References"
+msgstr ":pep:`205` - Tài liệu tham khảo yếu"
+
+#: ../../library/weakref.rst:357
+#, fuzzy
+msgid ""
+"The proposal and rationale for this feature, including links to earlier "
+"implementations and information about similar features in other languages."
+msgstr ""
+"Đề xuất và lý do căn bản cho tính năng này, bao gồm các liên kết đến các "
+"triển khai trước đó và thông tin về các tính năng tương tự bằng các ngôn ngữ"
+" khác."
+
+#: ../../library/weakref.rst:364
+#, fuzzy
+msgid "Weak Reference Objects"
+msgstr "Đối tượng tham chiếu yếu"
+
+#: ../../library/weakref.rst:366
+#, fuzzy
+msgid ""
+"Weak reference objects have no methods and no attributes besides "
+":attr:`ref.__callback__`. A weak reference object allows the referent to be "
+"obtained, if it still exists, by calling it:"
+msgstr ""
+"Đối tượng tham chiếu yếu không có phương thức và không có thuộc tính nào "
+"ngoài :attr:`ref.__callback__`. Một đối tượng tham chiếu yếu cho phép lấy "
+"được tham chiếu, nếu nó vẫn tồn tại, bằng cách gọi nó:"
+
+#: ../../library/weakref.rst:380
+#, fuzzy
+msgid ""
+"If the referent no longer exists, calling the reference object returns "
+":const:`None`:"
+msgstr ""
+"Nếu tham chiếu không còn tồn tại, việc gọi đối tượng tham chiếu sẽ trả về "
+":const:`None`:"
+
+#: ../../library/weakref.rst:387
+#, fuzzy
+msgid ""
+"Testing that a weak reference object is still live should be done using the "
+"expression ``ref() is not None``.  Normally, application code that needs to "
+"use a reference object should follow this pattern::"
+msgstr ""
+"Việc kiểm tra xem đối tượng tham chiếu yếu vẫn còn hoạt động hay không nên "
+"được thực hiện bằng cách sử dụng biểu thức ``ref() is not None``.  Thông "
+"thường, mã ứng dụng cần sử dụng đối tượng tham chiếu phải tuân theo mẫu này "
+"::"
+
+#: ../../library/weakref.rst:391
+#, fuzzy
+msgid ""
+"# r is a weak reference object\n"
+"o = r()\n"
+"if o is None:\n"
+"    # referent has been garbage collected\n"
+"    print(\"Object has been deallocated; can't frobnicate.\")\n"
+"else:\n"
+"    print(\"Object is still live!\")\n"
+"    o.do_something_useful()"
+msgstr ""
+"# r là một đối tượng tham chiếu yếu\n"
+"o = r()\n"
+"nếu o là Không:\n"
+"    # referent đã được thu gom rác\n"
+"    print(\"Đối tượng đã bị hủy phân bổ; không thể đóng băng.\")\n"
+"khác:\n"
+"    print(\"Đối tượng vẫn còn tồn tại!\")\n"
+"    o.do_something_useful()"
+
+#: ../../library/weakref.rst:400
+#, fuzzy
+msgid ""
+"Using a separate test for \"liveness\" creates race conditions in threaded "
+"applications; another thread can cause a weak reference to become "
+"invalidated before the weak reference is called; the idiom shown above is "
+"safe in threaded applications as well as single-threaded applications."
+msgstr ""
+"Việc sử dụng thử nghiệm riêng biệt cho \"độ sống\" sẽ tạo ra các điều kiện "
+"tương tranh trong các ứng dụng theo luồng; một luồng khác có thể khiến tham "
+"chiếu yếu bị vô hiệu trước khi tham chiếu yếu được gọi; Thành ngữ hiển thị ở"
+" trên là an toàn trong các ứng dụng luồng cũng như các ứng dụng luồng đơn."
+
+#: ../../library/weakref.rst:405
+#, fuzzy
+msgid ""
+"Specialized versions of :class:`ref` objects can be created through "
+"subclassing. This is used in the implementation of the "
+":class:`WeakValueDictionary` to reduce the memory overhead for each entry in"
+" the mapping.  This may be most useful to associate additional information "
+"with a reference, but could also be used to insert additional processing on "
+"calls to retrieve the referent."
+msgstr ""
+"Các phiên bản chuyên dụng của đối tượng :class:`ref` có thể được tạo thông "
+"qua phân lớp. Điều này được sử dụng khi triển khai "
+":class:`WeakValueDictionary` để giảm chi phí bộ nhớ cho mỗi mục trong ánh "
+"xạ.  Điều này có thể hữu ích nhất khi liên kết thông tin bổ sung với một "
+"tham chiếu, nhưng cũng có thể được sử dụng để chèn xử lý bổ sung vào các "
+"cuộc gọi nhằm truy xuất tham chiếu."
+
+#: ../../library/weakref.rst:411
+#, fuzzy
+msgid ""
+"This example shows how a subclass of :class:`ref` can be used to store "
+"additional information about an object and affect the value that's returned "
+"when the referent is accessed::"
+msgstr ""
+"Ví dụ này cho thấy cách sử dụng một lớp con của :class:`ref` để lưu trữ "
+"thông tin bổ sung về một đối tượng và ảnh hưởng đến giá trị được trả về khi "
+"tham chiếu được truy cập::"
+
+#: ../../library/weakref.rst:415
+#, fuzzy
+msgid ""
+"import weakref\n"
+"\n"
+"class ExtendedRef(weakref.ref):\n"
+"    def __init__(self, ob, callback=None, /, **annotations):\n"
+"        super().__init__(ob, callback)\n"
+"        self.__counter = 0\n"
+"        for k, v in annotations.items():\n"
+"            setattr(self, k, v)\n"
+"\n"
+"    def __call__(self):\n"
+"        \"\"\"Return a pair containing the referent and the number of\n"
+"        times the reference has been called.\n"
+"        \"\"\"\n"
+"        ob = super().__call__()\n"
+"        if ob is not None:\n"
+"            self.__counter += 1\n"
+"            ob = (ob, self.__counter)\n"
+"        return ob"
+msgstr ""
+"nhập điểm yếu\n"
+"\n"
+"lớp ExtendedRef (yếu.ref):\n"
+"    def __init__(self, ob, callback=None, /, **chú thích):\n"
+"        super().__init__(ob, gọi lại)\n"
+"        self.__counter = 0\n"
+"        cho k, v trong chú thích.items():\n"
+"            setattr(tự, k, v)\n"
+"\n"
+"    chắc chắn __call__(tự):\n"
+"        \"\"\"Trả về một cặp chứa tham chiếu và số lượng\n"
+"        số lần tham chiếu đã được gọi.\n"
+"        \"\"\"\n"
+"        ob = super().__call__()\n"
+"        nếu ob không phải là Không có:\n"
+"            self.__counter += 1\n"
+"            ob = (ob, self.__counter)\n"
+"        trả lại"
+
+#: ../../library/weakref.rst:438
+#, fuzzy
+msgid "Example"
+msgstr "Ví dụ"
+
+#: ../../library/weakref.rst:440
+#, fuzzy
+msgid ""
+"This simple example shows how an application can use object IDs to retrieve "
+"objects that it has seen before.  The IDs of the objects can then be used in"
+" other data structures without forcing the objects to remain alive, but the "
+"objects can still be retrieved by ID if they do."
+msgstr ""
+"Ví dụ đơn giản này cho thấy cách ứng dụng có thể sử dụng ID đối tượng để "
+"truy xuất các đối tượng mà nó đã thấy trước đó.  ID của các đối tượng sau đó"
+" có thể được sử dụng trong các cấu trúc dữ liệu khác mà không buộc các đối "
+"tượng vẫn tồn tại, nhưng các đối tượng vẫn có thể được ID truy xuất nếu "
+"chúng làm như vậy."
+
+#: ../../library/weakref.rst:449
+#, fuzzy
+msgid ""
+"import weakref\n"
+"\n"
+"_id2obj_dict = weakref.WeakValueDictionary()\n"
+"\n"
+"def remember(obj):\n"
+"    oid = id(obj)\n"
+"    _id2obj_dict[oid] = obj\n"
+"    return oid\n"
+"\n"
+"def id2obj(oid):\n"
+"    return _id2obj_dict[oid]"
+msgstr ""
+"nhập điểm yếu\n"
+"\n"
+"_id2obj_dict = yếuref.WeakValueDictionary()\n"
+"\n"
+"chắc chắn nhớ(obj):\n"
+"    oid = id(obj)\n"
+"    _id2obj_dict[oid] = obj\n"
+"    trả lại oid\n"
+"\n"
+"def id2obj(oid):\n"
+"    trả về _id2obj_dict[oid]"
+
+#: ../../library/weakref.rst:465
+#, fuzzy
+msgid "Finalizer Objects"
+msgstr "Đối tượng hoàn thiện"
+
+#: ../../library/weakref.rst:467
+#, fuzzy
+msgid ""
+"The main benefit of using :class:`finalize` is that it makes it simple to "
+"register a callback without needing to preserve the returned finalizer "
+"object.  For instance"
+msgstr ""
+"Lợi ích chính của việc sử dụng :class:`finalize` là giúp việc đăng ký cuộc "
+"gọi lại trở nên đơn giản mà không cần phải bảo toàn đối tượng hoàn thiện "
+"được trả về.  Ví dụ"
+
+#: ../../library/weakref.rst:481
+#, fuzzy
+msgid ""
+"The finalizer can be called directly as well.  However the finalizer will "
+"invoke the callback at most once."
+msgstr ""
+"Bộ hoàn thiện cũng có thể được gọi trực tiếp.  Tuy nhiên, trình hoàn thiện "
+"sẽ gọi lại lệnh gọi lại nhiều nhất một lần."
+
+#: ../../library/weakref.rst:497
+#, fuzzy
+msgid ""
+"You can unregister a finalizer using its :meth:`~finalize.detach` method.  "
+"This kills the finalizer and returns the arguments passed to the constructor"
+" when it was created."
+msgstr ""
+"Bạn có thể hủy đăng ký trình hoàn thiện bằng phương pháp "
+":meth:`~finalize.detach` của nó.  Điều này sẽ tắt trình hoàn thiện và trả về"
+" các đối số được truyền cho hàm tạo khi nó được tạo."
+
+#: ../../library/weakref.rst:511
+#, fuzzy
+msgid ""
+"Unless you set the :attr:`~finalize.atexit` attribute to :const:`False`, a "
+"finalizer will be called when the program exits if it is still alive.  For "
+"instance"
+msgstr ""
+"Trừ khi bạn đặt thuộc tính :attr:`~finalize.atexit` thành :const:`False`, "
+"trình hoàn thiện sẽ được gọi khi chương trình thoát nếu nó vẫn còn hoạt "
+"động.  Ví dụ"
+
+#: ../../library/weakref.rst:515
+#, fuzzy
+msgid ""
+">>> obj = Object()\n"
+">>> weakref.finalize(obj, print, \"obj dead or exiting\")\n"
+"<finalize object at ...; for 'Object' at ...>\n"
+">>> exit()\n"
+"obj dead or exiting"
+msgstr ""
+">>> obj = Đối tượng()\n"
+">>> yếuref.finalize(obj, print, \"obj đã chết hoặc đang thoát\")\n"
+"<hoàn thiện đối tượng tại ...; cho 'Đối tượng' tại ...>\n"
+">>> thoát()\n"
+"obj đã chết hoặc đang thoát"
+
+#: ../../library/weakref.rst:526
+#, fuzzy
+msgid "Comparing finalizers with :meth:`~object.__del__` methods"
+msgstr ""
+"So sánh các công cụ hoàn thiện với các phương pháp :meth:`~object.__del__`"
+
+#: ../../library/weakref.rst:528
+#, fuzzy
+msgid ""
+"Suppose we want to create a class whose instances represent temporary "
+"directories.  The directories should be deleted with their contents when the"
+" first of the following events occurs:"
+msgstr ""
+"Giả sử chúng ta muốn tạo một lớp có các thể hiện đại diện cho các thư mục "
+"tạm thời.  Các thư mục sẽ bị xóa cùng với nội dung của chúng khi xảy ra sự "
+"kiện đầu tiên sau đây:"
+
+#: ../../library/weakref.rst:532
+#, fuzzy
+msgid "the object is garbage collected,"
+msgstr "đối tượng là rác được thu thập,"
+
+#: ../../library/weakref.rst:533
+#, fuzzy
+msgid "the object's :meth:`!remove` method is called, or"
+msgstr "phương thức :meth:`!remove` của đối tượng được gọi, hoặc"
+
+#: ../../library/weakref.rst:534
+#, fuzzy
+msgid "the program exits."
+msgstr "chương trình thoát ra."
+
+#: ../../library/weakref.rst:536
+#, fuzzy
+msgid ""
+"We might try to implement the class using a :meth:`~object.__del__` method "
+"as follows::"
+msgstr ""
+"Chúng ta có thể thử triển khai lớp bằng phương thức :meth:`~object.__del__` "
+"như sau::"
+
+#: ../../library/weakref.rst:539
+#, fuzzy
+msgid ""
+"class TempDir:\n"
+"    def __init__(self):\n"
+"        self.name = tempfile.mkdtemp()\n"
+"\n"
+"    def remove(self):\n"
+"        if self.name is not None:\n"
+"            shutil.rmtree(self.name)\n"
+"            self.name = None\n"
+"\n"
+"    @property\n"
+"    def removed(self):\n"
+"        return self.name is None\n"
+"\n"
+"    def __del__(self):\n"
+"        self.remove()"
+msgstr ""
+"lớp TempDir:\n"
+"    định nghĩa __init__(tự):\n"
+"        self.name = tempfile.mkdtemp()\n"
+"\n"
+"    chắc chắn loại bỏ (tự):\n"
+"        nếu self.name không phải là Không:\n"
+"            im lặng.rmtree(self.name)\n"
+"            self.name = Không\n"
+"\n"
+"    @property\n"
+"    def đã bị xóa (tự):\n"
+"        return self.name là Không có\n"
+"\n"
+"    chắc chắn __del__(tự):\n"
+"        tự.remove()"
+
+#: ../../library/weakref.rst:555
+#, fuzzy
+msgid ""
+"Starting with Python 3.4, :meth:`~object.__del__` methods no longer prevent "
+"reference cycles from being garbage collected, and module globals are no "
+"longer forced to :const:`None` during :term:`interpreter shutdown`. So this "
+"code should work without any issues on CPython."
+msgstr ""
+"Bắt đầu với Python 3.4, các phương thức :meth:`~object.__del__` không còn "
+"ngăn chặn việc thu thập rác trong các chu trình tham chiếu và các mô-đun "
+"toàn cầu không còn bị buộc phải chuyển sang :const:`None` trong "
+":term:`interpreter shutdown` nữa. Vì vậy, mã này sẽ hoạt động mà không gặp "
+"bất kỳ sự cố nào trên CPython."
+
+#: ../../library/weakref.rst:560
+#, fuzzy
+msgid ""
+"However, handling of :meth:`~object.__del__` methods is notoriously "
+"implementation specific, since it depends on internal details of the "
+"interpreter's garbage collector implementation."
+msgstr ""
+"Tuy nhiên, việc xử lý các phương thức :meth:`~object.__del__` nổi tiếng là "
+"cách triển khai cụ thể vì nó phụ thuộc vào các chi tiết nội bộ của quá trình"
+" triển khai trình thu gom rác của trình thông dịch."
+
+#: ../../library/weakref.rst:564
+#, fuzzy
+msgid ""
+"A more robust alternative can be to define a finalizer which only references"
+" the specific functions and objects that it needs, rather than having access"
+" to the full state of the object::"
+msgstr ""
+"Một giải pháp thay thế mạnh mẽ hơn có thể là xác định một trình hoàn thiện "
+"chỉ tham chiếu các hàm và đối tượng cụ thể mà nó cần, thay vì có quyền truy "
+"cập vào trạng thái đầy đủ của đối tượng::"
+
+#: ../../library/weakref.rst:568
+#, fuzzy
+msgid ""
+"class TempDir:\n"
+"    def __init__(self):\n"
+"        self.name = tempfile.mkdtemp()\n"
+"        self._finalizer = weakref.finalize(self, shutil.rmtree, self.name)\n"
+"\n"
+"    def remove(self):\n"
+"        self._finalizer()\n"
+"\n"
+"    @property\n"
+"    def removed(self):\n"
+"        return not self._finalizer.alive"
+msgstr ""
+"lớp TempDir:\n"
+"    định nghĩa __init__(tự):\n"
+"        self.name = tempfile.mkdtemp()\n"
+"        self._finalizer = yếuref.finalize(self, Shutil.rmtree, self.name)\n"
+"\n"
+"    chắc chắn loại bỏ (tự):\n"
+"        self._finalizer()\n"
+"\n"
+"    @property\n"
+"    def đã bị xóa (tự):\n"
+"        trả về không self._finalizer.alive"
+
+#: ../../library/weakref.rst:580
+#, fuzzy
+msgid ""
+"Defined like this, our finalizer only receives a reference to the details it"
+" needs to clean up the directory appropriately. If the object never gets "
+"garbage collected the finalizer will still be called at exit."
+msgstr ""
+"Được xác định như thế này, trình hoàn thiện của chúng tôi chỉ nhận được một "
+"tham chiếu đến các chi tiết cần thiết để dọn sạch thư mục một cách thích "
+"hợp. Nếu đối tượng không bao giờ được thu gom rác thì trình hoàn thiện sẽ "
+"vẫn được gọi khi thoát."
+
+#: ../../library/weakref.rst:584
+#, fuzzy
+msgid ""
+"The other advantage of weakref based finalizers is that they can be used to "
+"register finalizers for classes where the definition is controlled by a "
+"third party, such as running code when a module is unloaded::"
+msgstr ""
+"Ưu điểm khác của công cụ hoàn thiện dựa trên yếu là chúng có thể được sử "
+"dụng để đăng ký công cụ hoàn thiện cho các lớp trong đó định nghĩa được kiểm"
+" soát bởi bên thứ ba, chẳng hạn như chạy mã khi mô-đun không được tải ::"
+
+#: ../../library/weakref.rst:588
+#, fuzzy
+msgid ""
+"import weakref, sys\n"
+"def unloading_module():\n"
+"    # implicit reference to the module globals from the function body\n"
+"weakref.finalize(sys.modules[__name__], unloading_module)"
+msgstr ""
+"nhập điểm yếu, sys\n"
+"def dỡ hàng_module():\n"
+"    # implicit tham chiếu đến toàn cục mô-đun từ thân hàm\n"
+"yếuref.finalize(sys.modules[__name__], dỡ_module)"
+
+#: ../../library/weakref.rst:596
+#, fuzzy
+msgid ""
+"If you create a finalizer object in a daemonic thread just as the program "
+"exits then there is the possibility that the finalizer does not get called "
+"at exit.  However, in a daemonic thread :func:`atexit.register`, ``try: ... "
+"finally: ...`` and ``with: ...`` do not guarantee that cleanup occurs "
+"either."
+msgstr ""
+"Nếu bạn tạo một đối tượng bộ hoàn thiện trong một luồng daemon ngay khi "
+"chương trình thoát thì có khả năng bộ hoàn thiện không được gọi khi thoát.  "
+"Tuy nhiên, trong một chuỗi daemon :func:`atexit.register`, ``try: ... "
+"finally: ...`` và ``with: ...`` cũng không đảm bảo rằng quá trình dọn dẹp sẽ"
+" diễn ra."

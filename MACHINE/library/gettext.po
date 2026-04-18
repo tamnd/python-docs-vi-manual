@@ -1,0 +1,1408 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/gettext.rst:2
+#, fuzzy
+msgid ":mod:`!gettext` --- Multilingual internationalization services"
+msgstr ":mod:`!gettext` --- Dịch vụ quốc tế hóa đa ngôn ngữ"
+
+#: ../../library/gettext.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/gettext.py`"
+msgstr "**Source code:** :source:`Lib/gettext.py`"
+
+#: ../../library/gettext.rst:14
+#, fuzzy
+msgid ""
+"The :mod:`!gettext` module provides internationalization (I18N) and "
+"localization (L10N) services for your Python modules and applications. It "
+"supports both the GNU :program:`gettext` message catalog API and a higher "
+"level, class-based API that may be more appropriate for Python files.  The "
+"interface described below allows you to write your module and application "
+"messages in one natural language, and provide a catalog of translated "
+"messages for running under different natural languages."
+msgstr ""
+"Mô-đun :mod:`!gettext` cung cấp các dịch vụ quốc tế hóa (I18N) và bản địa "
+"hóa (L10N) cho các mô-đun và ứng dụng Python của bạn. Nó hỗ trợ cả danh mục "
+"tin nhắn GNU :program:`gettext` API và API dựa trên lớp, cấp độ cao hơn có "
+"thể phù hợp hơn cho các tệp Python.  Giao diện được mô tả bên dưới cho phép "
+"bạn viết các thông báo mô-đun và ứng dụng của mình bằng một ngôn ngữ tự "
+"nhiên, đồng thời cung cấp danh mục các thông báo đã dịch để chạy trong các "
+"ngôn ngữ tự nhiên khác nhau."
+
+#: ../../library/gettext.rst:22
+#, fuzzy
+msgid ""
+"Some hints on localizing your Python modules and applications are also "
+"given."
+msgstr ""
+"Một số gợi ý về cách bản địa hóa các mô-đun và ứng dụng Python của bạn cũng "
+"được cung cấp."
+
+#: ../../library/gettext.rst:26
+#, fuzzy
+msgid "GNU :program:`gettext` API"
+msgstr "GNU :program:`gettext` API"
+
+#: ../../library/gettext.rst:28
+#, fuzzy
+msgid ""
+"The :mod:`!gettext` module defines the following API, which is very similar "
+"to the GNU :program:`gettext` API.  If you use this API you will affect the "
+"translation of your entire application globally.  Often this is what you "
+"want if your application is monolingual, with the choice of language "
+"dependent on the locale of your user.  If you are localizing a Python "
+"module, or if your application needs to switch languages on the fly, you "
+"probably want to use the class-based API instead."
+msgstr ""
+"Mô-đun :mod:`!gettext` xác định API sau, rất giống với GNU "
+":program:`gettext` API.  Nếu bạn sử dụng API này, bạn sẽ ảnh hưởng đến việc "
+"dịch toàn bộ ứng dụng của mình trên toàn cầu.  Thông thường đây là điều bạn "
+"muốn nếu ứng dụng của bạn là đơn ngữ, với việc lựa chọn ngôn ngữ tùy thuộc "
+"vào ngôn ngữ của người dùng.  Nếu bạn đang bản địa hóa một mô-đun Python "
+"hoặc nếu ứng dụng của bạn cần chuyển đổi ngôn ngữ một cách nhanh chóng, bạn "
+"có thể muốn sử dụng API dựa trên lớp để thay thế."
+
+#: ../../library/gettext.rst:39
+#, python-brace-format, fuzzy
+msgid ""
+"Bind the *domain* to the locale directory *localedir*.  More concretely, "
+":mod:`!gettext` will look for binary :file:`.mo` files for the given domain "
+"using the path (on Unix): "
+":file:`{localedir}/{language}/LC_MESSAGES/{domain}.mo`, where *language* is "
+"searched for in the environment variables :envvar:`LANGUAGE`, "
+":envvar:`LC_ALL`, :envvar:`LC_MESSAGES`, and :envvar:`LANG` respectively."
+msgstr ""
+"Liên kết *domain* với thư mục miền địa phương *localedir*.  Cụ thể hơn, "
+":mod:`!gettext` sẽ tìm kiếm các tệp :file:`.mo` nhị phân cho tên miền nhất "
+"định bằng cách sử dụng đường dẫn (trên Unix): "
+":file:`{localedir}/{language}/LC_MESSAGES/{domain}.mo`, trong đó *language* "
+"được tìm kiếm trong các biến môi trường :envvar:`LANGUAGE`, "
+":envvar:`LC_ALL`, :envvar:`LC_MESSAGES` và :envvar:`LANG` tương ứng."
+
+#: ../../library/gettext.rst:45
+#, fuzzy
+msgid ""
+"If *localedir* is omitted or ``None``, then the current binding for *domain*"
+" is returned. [#]_"
+msgstr ""
+"Nếu *localedir* bị bỏ qua hoặc ``None`` thì liên kết hiện tại cho *domain* "
+"sẽ được trả về. [#]_"
+
+#: ../../library/gettext.rst:51
+#, fuzzy
+msgid ""
+"Change or query the current global domain.  If *domain* is ``None``, then "
+"the current global domain is returned, otherwise the global domain is set to"
+" *domain*, which is returned."
+msgstr ""
+"Thay đổi hoặc truy vấn tên miền toàn cầu hiện tại.  Nếu *domain* là ``None``"
+" thì miền toàn cầu hiện tại sẽ được trả về, nếu không thì miền chung sẽ được"
+" đặt thành *domain*, miền này sẽ được trả về."
+
+#: ../../library/gettext.rst:59
+#, fuzzy
+msgid ""
+"Return the localized translation of *message*, based on the current global "
+"domain, language, and locale directory.  This function is usually aliased as"
+" :func:`!_` in the local namespace (see examples below)."
+msgstr ""
+"Trả về bản dịch đã bản địa hóa của *message*, dựa trên thư mục tên miền, "
+"ngôn ngữ và ngôn ngữ toàn cầu hiện tại.  Hàm này thường được đặt bí danh là "
+":func:`!_` trong không gian tên cục bộ (xem ví dụ bên dưới)."
+
+#: ../../library/gettext.rst:66
+#, fuzzy
+msgid ""
+"Like :func:`.gettext`, but look the message up in the specified *domain*."
+msgstr ""
+"Giống như :func:`.gettext`, nhưng tra cứu thông báo trong *domain* được chỉ "
+"định."
+
+#: ../../library/gettext.rst:71
+#, fuzzy
+msgid ""
+"Like :func:`.gettext`, but consider plural forms. If a translation is found,"
+" apply the plural formula to *n*, and return the resulting message (some "
+"languages have more than two plural forms). If no translation is found, "
+"return *singular* if *n* is 1; return *plural* otherwise."
+msgstr ""
+"Giống như :func:`.gettext`, nhưng hãy xem xét các dạng số nhiều. Nếu tìm "
+"thấy bản dịch, hãy áp dụng công thức số nhiều cho *n* và trả về thông báo "
+"kết quả (một số ngôn ngữ có nhiều hơn hai dạng số nhiều). Nếu không tìm thấy"
+" bản dịch nào, hãy trả về *singular* nếu *n* là 1; trả lại *plural* nếu "
+"không."
+
+#: ../../library/gettext.rst:76
+#, fuzzy
+msgid ""
+"The Plural formula is taken from the catalog header. It is a C or Python "
+"expression that has a free variable *n*; the expression evaluates to the "
+"index of the plural in the catalog. See `the GNU gettext documentation "
+"<https://www.gnu.org/software/gettext/manual/gettext.html>`__ for the "
+"precise syntax to be used in :file:`.po` files and the formulas for a "
+"variety of languages."
+msgstr ""
+"Công thức Số nhiều được lấy từ tiêu đề danh mục. Đó là biểu thức C hoặc "
+"Python có biến tự do *n*; biểu thức đánh giá theo chỉ mục của số nhiều trong"
+" danh mục. Xem `the GNU gettext documentation "
+"<https://www.gnu.org/software/gettext/manual/gettext.html>`__ để biết cú "
+"pháp chính xác được sử dụng trong các tệp :file:`.po` và công thức cho nhiều"
+" ngôn ngữ."
+
+#: ../../library/gettext.rst:86
+#, fuzzy
+msgid ""
+"Like :func:`ngettext`, but look the message up in the specified *domain*."
+msgstr ""
+"Giống như :func:`ngettext`, nhưng tra cứu thông báo trong *domain* được chỉ "
+"định."
+
+#: ../../library/gettext.rst:94
+#, fuzzy
+msgid ""
+"Similar to the corresponding functions without the ``p`` in the prefix (that"
+" is, :func:`gettext`, :func:`dgettext`, :func:`ngettext`, "
+":func:`dngettext`), but the translation is restricted to the given message "
+"*context*."
+msgstr ""
+"Tương tự như các hàm tương ứng không có ``p`` trong tiền tố (nghĩa là "
+":func:`gettext`, :func:`dgettext`, :func:`ngettext`, :func:`dngettext`), "
+"nhưng bản dịch bị giới hạn ở thông báo đã cho *context*."
+
+#: ../../library/gettext.rst:101
+#, fuzzy
+msgid ""
+"Note that GNU :program:`gettext` also defines a :func:`!dcgettext` method, "
+"but this was deemed not useful and so it is currently unimplemented."
+msgstr ""
+"Lưu ý rằng GNU :program:`gettext` cũng định nghĩa một phương thức "
+":func:`!dcgettext`, nhưng điều này được cho là không hữu ích nên hiện tại nó"
+" chưa được triển khai."
+
+#: ../../library/gettext.rst:104
+#, fuzzy
+msgid "Here's an example of typical usage for this API::"
+msgstr "Đây là ví dụ về cách sử dụng điển hình cho API này::"
+
+#: ../../library/gettext.rst:106
+#, fuzzy
+msgid ""
+"import gettext\n"
+"gettext.bindtextdomain('myapplication', '/path/to/my/language/directory')\n"
+"gettext.textdomain('myapplication')\n"
+"_ = gettext.gettext\n"
+"# ...\n"
+"print(_('This is a translatable string.'))"
+msgstr ""
+"nhập gettext\n"
+"gettext.bindtextdomain('myapplication', '/path/to/my/lingu/directory')\n"
+"gettext.textdomain('myapplication')\n"
+"_ = gettext.gettext\n"
+"# ...\n"
+"print(_('Đây là một chuỗi có thể dịch được.'))"
+
+#: ../../library/gettext.rst:115
+#, fuzzy
+msgid "Class-based API"
+msgstr "API dựa trên lớp"
+
+#: ../../library/gettext.rst:117
+#, fuzzy
+msgid ""
+"The class-based API of the :mod:`!gettext` module gives you more flexibility"
+" and greater convenience than the GNU :program:`gettext` API.  It is the "
+"recommended way of localizing your Python applications and modules.  "
+":mod:`!gettext` defines a :class:`GNUTranslations` class which implements "
+"the parsing of GNU :file:`.mo` format files, and has methods for returning "
+"strings. Instances of this class can also install themselves in the built-in"
+" namespace as the function :func:`!_`."
+msgstr ""
+"Mô-đun API dựa trên lớp của mô-đun :mod:`!gettext` mang lại cho bạn sự linh "
+"hoạt và tiện lợi hơn so với GNU :program:`gettext` API.  Đó là cách được "
+"khuyến nghị để bản địa hóa các ứng dụng và mô-đun Python của bạn.  "
+":mod:`!gettext` định nghĩa một lớp :class:`GNUTranslations` thực hiện phân "
+"tích cú pháp các tệp định dạng GNU :file:`.mo` và có các phương thức trả về "
+"chuỗi. Các phiên bản của lớp này cũng có thể tự cài đặt trong không gian tên"
+" tích hợp dưới dạng hàm :func:`!_`."
+
+#: ../../library/gettext.rst:127
+#, fuzzy
+msgid ""
+"This function implements the standard :file:`.mo` file search algorithm.  It"
+" takes a *domain*, identical to what :func:`textdomain` takes.  Optional "
+"*localedir* is as in :func:`bindtextdomain`. Optional *languages* is a list "
+"of strings, where each string is a language code."
+msgstr ""
+"Hàm này thực hiện thuật toán tìm kiếm tệp :file:`.mo` tiêu chuẩn.  Nó cần "
+"một *domain*, giống hệt với những gì :func:`textdomain` cần.  *localedir* "
+"tùy chọn giống như trong :func:`bindtextdomain`. Tùy chọn *languages* là "
+"danh sách các chuỗi, trong đó mỗi chuỗi là một mã ngôn ngữ."
+
+#: ../../library/gettext.rst:132
+#, fuzzy
+msgid ""
+"If *localedir* is not given, then the default system locale directory is "
+"used. [#]_  If *languages* is not given, then the following environment "
+"variables are searched: :envvar:`LANGUAGE`, :envvar:`LC_ALL`, "
+":envvar:`LC_MESSAGES`, and :envvar:`LANG`.  The first one returning a non-"
+"empty value is used for the *languages* variable. The environment variables "
+"should contain a colon separated list of languages, which will be split on "
+"the colon to produce the expected list of language code strings."
+msgstr ""
+"Nếu *localedir* không được cung cấp thì thư mục ngôn ngữ hệ thống mặc định "
+"sẽ được sử dụng. [#]_ Nếu *languages* không được cung cấp thì các biến môi "
+"trường sau sẽ được tìm kiếm: :envvar:`LANGUAGE`, :envvar:`LC_ALL`, "
+":envvar:`LC_MESSAGES` và :envvar:`LANG`.  Giá trị đầu tiên trả về giá trị "
+"không trống được sử dụng cho biến *languages*. Các biến môi trường phải chứa"
+" một danh sách các ngôn ngữ được phân tách bằng dấu hai chấm, danh sách này "
+"sẽ được phân tách bằng dấu hai chấm để tạo ra danh sách các chuỗi mã ngôn "
+"ngữ dự kiến."
+
+#: ../../library/gettext.rst:140
+#, fuzzy
+msgid ""
+":func:`find` then expands and normalizes the languages, and then iterates "
+"through them, searching for an existing file built of these components:"
+msgstr ""
+":func:`find` sau đó mở rộng và chuẩn hóa các ngôn ngữ, sau đó lặp lại chúng,"
+" tìm kiếm tệp hiện có được xây dựng từ các thành phần này:"
+
+#: ../../library/gettext.rst:143
+#, python-brace-format, fuzzy
+msgid ":file:`{localedir}/{language}/LC_MESSAGES/{domain}.mo`"
+msgstr ":file:`{localedir}/{language}/LC_MESSAGES/{domain}.mo`"
+
+#: ../../library/gettext.rst:145
+#, fuzzy
+msgid ""
+"The first such file name that exists is returned by :func:`find`. If no such"
+" file is found, then ``None`` is returned. If *all* is given, it returns a "
+"list of all file names, in the order in which they appear in the languages "
+"list or the environment variables."
+msgstr ""
+"Tên tệp đầu tiên tồn tại được trả về bởi :func:`find`. Nếu không tìm thấy "
+"tệp nào như vậy thì ``None`` sẽ được trả về. Nếu *all* được cung cấp, nó sẽ "
+"trả về danh sách tất cả các tên tệp, theo thứ tự chúng xuất hiện trong danh "
+"sách ngôn ngữ hoặc các biến môi trường."
+
+#: ../../library/gettext.rst:153
+#, fuzzy
+msgid ""
+"Return a ``*Translations`` instance based on the *domain*, *localedir*, and "
+"*languages*, which are first passed to :func:`find` to get a list of the "
+"associated :file:`.mo` file paths.  Instances with identical :file:`.mo` "
+"file names are cached.  The actual class instantiated is *class_* if "
+"provided, otherwise :class:`GNUTranslations`.  The class's constructor must "
+"take a single :term:`file object` argument."
+msgstr ""
+"Trả về một phiên bản ``*Translations`` dựa trên *domain*, *localedir* và "
+"*languages*, những phiên bản này lần đầu tiên được chuyển tới :func:`find` "
+"để nhận danh sách các đường dẫn tệp :file:`.mo` liên quan.  Các phiên bản có"
+" tên tệp :file:`.mo` giống hệt nhau sẽ được lưu vào bộ đệm.  Lớp thực tế "
+"được khởi tạo là *class_* nếu được cung cấp, nếu không thì là "
+":class:`GNUTranslations`.  Hàm tạo của lớp phải lấy một đối số :term:`file "
+"object`."
+
+#: ../../library/gettext.rst:160
+#, fuzzy
+msgid ""
+"If multiple files are found, later files are used as fallbacks for earlier "
+"ones. To allow setting the fallback, :func:`copy.copy` is used to clone each"
+" translation object from the cache; the actual instance data is still shared"
+" with the cache."
+msgstr ""
+"Nếu tìm thấy nhiều tệp, các tệp sau này sẽ được sử dụng làm dự phòng cho các"
+" tệp trước đó. Để cho phép thiết lập dự phòng, :func:`copy.copy` được sử "
+"dụng để sao chép từng đối tượng dịch từ bộ đệm; dữ liệu phiên bản thực tế "
+"vẫn được chia sẻ với bộ đệm."
+
+#: ../../library/gettext.rst:165
+#, fuzzy
+msgid ""
+"If no :file:`.mo` file is found, this function raises :exc:`OSError` if "
+"*fallback* is false (which is the default), and returns a "
+":class:`NullTranslations` instance if *fallback* is true."
+msgstr ""
+"Nếu không tìm thấy tệp :file:`.mo`, hàm này sẽ tăng :exc:`OSError` nếu "
+"*fallback* sai (là mặc định) và trả về một phiên bản "
+":class:`NullTranslations` nếu *fallback* là đúng."
+
+#: ../../library/gettext.rst:169
+#, fuzzy
+msgid ""
+":exc:`IOError` used to be raised, it is now an alias of :exc:`OSError`."
+msgstr ""
+":exc:`IOError` trước đây được nâng lên, bây giờ nó là bí danh của "
+":exc:`OSError`."
+
+#: ../../library/gettext.rst:172
+#, fuzzy
+msgid "*codeset* parameter is removed."
+msgstr "tham số *codeset* bị loại bỏ."
+
+#: ../../library/gettext.rst:177
+#, fuzzy
+msgid ""
+"This installs the function :func:`!_` in Python's builtins namespace, based "
+"on *domain* and *localedir* which are passed to the function "
+":func:`translation`."
+msgstr ""
+"Thao tác này sẽ cài đặt hàm :func:`!_` trong không gian tên dựng sẵn của "
+"Python, dựa trên *domain* và *localedir* được truyền cho hàm "
+":func:`translation`."
+
+#: ../../library/gettext.rst:180
+#, fuzzy
+msgid ""
+"For the *names* parameter, please see the description of the translation "
+"object's :meth:`~NullTranslations.install` method."
+msgstr ""
+"Đối với tham số *names*, vui lòng xem mô tả về phương thức "
+":meth:`~NullTranslations.install` của đối tượng dịch thuật."
+
+#: ../../library/gettext.rst:183
+#, fuzzy
+msgid ""
+"As seen below, you usually mark the strings in your application that are "
+"candidates for translation, by wrapping them in a call to the :func:`!_` "
+"function, like this::"
+msgstr ""
+"Như được thấy bên dưới, bạn thường đánh dấu các chuỗi trong ứng dụng của "
+"mình là phù hợp để dịch, bằng cách gói chúng trong lệnh gọi hàm :func:`!_`, "
+"như sau::"
+
+#: ../../library/gettext.rst:187
+#, fuzzy
+msgid "print(_('This string will be translated.'))"
+msgstr "print(_('Chuỗi này sẽ được dịch.'))"
+
+#: ../../library/gettext.rst:189
+#, fuzzy
+msgid ""
+"For convenience, you want the :func:`!_` function to be installed in "
+"Python's builtins namespace, so it is easily accessible in all modules of "
+"your application."
+msgstr ""
+"Để thuận tiện, bạn muốn cài đặt hàm :func:`!_` trong không gian tên dựng sẵn"
+" của Python để có thể dễ dàng truy cập hàm này trong tất cả các mô-đun của "
+"ứng dụng của bạn."
+
+#: ../../library/gettext.rst:193
+#, fuzzy
+msgid "*names* is now a keyword-only parameter."
+msgstr "*names* hiện chỉ là thông số từ khóa."
+
+#: ../../library/gettext.rst:197
+#, fuzzy
+msgid "The :class:`NullTranslations` class"
+msgstr "Lớp :class:`NullTranslations`"
+
+#: ../../library/gettext.rst:199
+#, fuzzy
+msgid ""
+"Translation classes are what actually implement the translation of original "
+"source file message strings to translated message strings. The base class "
+"used by all translation classes is :class:`NullTranslations`; this provides "
+"the basic interface you can use to write your own specialized translation "
+"classes.  Here are the methods of :class:`!NullTranslations`:"
+msgstr ""
+"Các lớp dịch là những gì thực sự thực hiện việc dịch các chuỗi thông báo của"
+" tệp nguồn gốc sang các chuỗi thông báo đã dịch. Lớp cơ sở được tất cả các "
+"lớp dịch thuật sử dụng là :class:`NullTranslations`; điều này cung cấp giao "
+"diện cơ bản mà bạn có thể sử dụng để viết các lớp dịch thuật chuyên ngành "
+"của riêng mình.  Dưới đây là các phương pháp của :class:`!NullTranslations`:"
+
+#: ../../library/gettext.rst:208
+#, fuzzy
+msgid ""
+"Takes an optional :term:`file object` *fp*, which is ignored by the base "
+"class. Initializes \"protected\" instance variables *_info* and *_charset* "
+"which are set by derived classes, as well as *_fallback*, which is set "
+"through :meth:`add_fallback`.  It then calls ``self._parse(fp)`` if *fp* is "
+"not ``None``."
+msgstr ""
+"Nhận một :term:`file object` *fp* tùy chọn, lớp cơ sở này bỏ qua. Khởi tạo "
+"các biến thể hiện \"được bảo vệ\" *_info* và *_charset* được thiết lập bởi "
+"các lớp dẫn xuất, cũng như *_fallback*, được thiết lập thông qua "
+":meth:`add_fallback`.  Sau đó nó gọi ``self._parse(fp)`` nếu *fp* không phải"
+" là ``None``."
+
+#: ../../library/gettext.rst:216
+#, fuzzy
+msgid ""
+"No-op in the base class, this method takes file object *fp*, and reads the "
+"data from the file, initializing its message catalog.  If you have an "
+"unsupported message catalog file format, you should override this method to "
+"parse your format."
+msgstr ""
+"Không hoạt động trong lớp cơ sở, phương thức này lấy đối tượng tệp *fp* và "
+"đọc dữ liệu từ tệp, khởi tạo danh mục thông báo của nó.  Nếu bạn có định "
+"dạng tệp danh mục thư không được hỗ trợ, bạn nên ghi đè phương pháp này để "
+"phân tích cú pháp định dạng của mình."
+
+#: ../../library/gettext.rst:224
+#, fuzzy
+msgid ""
+"Add *fallback* as the fallback object for the current translation object. A "
+"translation object should consult the fallback if it cannot provide a "
+"translation for a given message."
+msgstr ""
+"Thêm *fallback* làm đối tượng dự phòng cho đối tượng dịch hiện tại. Đối "
+"tượng dịch thuật nên tham khảo phương án dự phòng nếu nó không thể cung cấp "
+"bản dịch cho một tin nhắn nhất định."
+
+#: ../../library/gettext.rst:231
+#, fuzzy
+msgid ""
+"If a fallback has been set, forward :meth:`!gettext` to the fallback. "
+"Otherwise, return *message*.  Overridden in derived classes."
+msgstr ""
+"Nếu một dự phòng đã được đặt, hãy chuyển tiếp :meth:`!gettext` tới dự phòng."
+" Nếu không, hãy trả về *message*.  Bị ghi đè trong các lớp dẫn xuất."
+
+#: ../../library/gettext.rst:237
+#, fuzzy
+msgid ""
+"If a fallback has been set, forward :meth:`!ngettext` to the fallback. "
+"Otherwise, return *singular* if *n* is 1; return *plural* otherwise. "
+"Overridden in derived classes."
+msgstr ""
+"Nếu một dự phòng đã được đặt, hãy chuyển tiếp :meth:`!ngettext` tới dự "
+"phòng. Ngược lại, trả về *singular* nếu *n* là 1; trả lại *plural* nếu "
+"không. Bị ghi đè trong các lớp dẫn xuất."
+
+#: ../../library/gettext.rst:244
+#, fuzzy
+msgid ""
+"If a fallback has been set, forward :meth:`pgettext` to the fallback. "
+"Otherwise, return the translated message.  Overridden in derived classes."
+msgstr ""
+"Nếu một dự phòng đã được đặt, hãy chuyển tiếp :meth:`pgettext` tới dự phòng."
+" Nếu không, hãy trả lại tin nhắn đã dịch.  Bị ghi đè trong các lớp dẫn xuất."
+
+#: ../../library/gettext.rst:252
+#, fuzzy
+msgid ""
+"If a fallback has been set, forward :meth:`npgettext` to the fallback. "
+"Otherwise, return the translated message.  Overridden in derived classes."
+msgstr ""
+"Nếu một dự phòng đã được đặt, hãy chuyển tiếp :meth:`npgettext` tới dự "
+"phòng. Nếu không, hãy trả lại tin nhắn đã dịch.  Bị ghi đè trong các lớp dẫn"
+" xuất."
+
+#: ../../library/gettext.rst:260
+#, fuzzy
+msgid ""
+"Return a dictionary containing the metadata found in the message catalog "
+"file."
+msgstr ""
+"Trả về một từ điển chứa siêu dữ liệu được tìm thấy trong tệp danh mục thư."
+
+#: ../../library/gettext.rst:266
+#, fuzzy
+msgid "Return the encoding of the message catalog file."
+msgstr "Trả về mã hóa của tệp danh mục tin nhắn."
+
+#: ../../library/gettext.rst:271
+#, fuzzy
+msgid ""
+"This method installs :meth:`.gettext` into the built-in namespace, binding "
+"it to ``_``."
+msgstr ""
+"Phương thức này cài đặt :meth:`.gettext` vào không gian tên tích hợp, liên "
+"kết nó với ``_``."
+
+#: ../../library/gettext.rst:274
+#, fuzzy
+msgid ""
+"If the *names* parameter is given, it must be a sequence containing the "
+"names of functions you want to install in the builtins namespace in addition"
+" to :func:`!_`.  Supported names are ``'gettext'``, ``'ngettext'``, "
+"``'pgettext'``, and ``'npgettext'``."
+msgstr ""
+"Nếu tham số *names* được cung cấp, thì tham số đó phải là một chuỗi chứa tên"
+" của các hàm bạn muốn cài đặt trong không gian tên nội trang bên cạnh "
+":func:`!_`.  Tên được hỗ trợ là ``'gettext'``, ``'ngettext'``, "
+"``'pgettext'`` và ``'npgettext'``."
+
+#: ../../library/gettext.rst:279
+#, fuzzy
+msgid ""
+"Note that this is only one way, albeit the most convenient way, to make the "
+":func:`!_` function available to your application.  Because it affects the "
+"entire application globally, and specifically the built-in namespace, "
+"localized modules should never install :func:`!_`. Instead, they should use "
+"this code to make :func:`!_` available to their module::"
+msgstr ""
+"Lưu ý rằng đây chỉ là một cách, mặc dù là cách thuận tiện nhất, để cung cấp "
+"chức năng :func:`!_` cho ứng dụng của bạn.  Vì nó ảnh hưởng đến toàn bộ ứng "
+"dụng trên toàn cầu và đặc biệt là không gian tên tích hợp nên các mô-đun "
+"được bản địa hóa không bao giờ nên cài đặt :func:`!_`. Thay vào đó, họ nên "
+"sử dụng mã này để cung cấp :func:`!_` cho mô-đun của mình::"
+
+#: ../../library/gettext.rst:285
+#, fuzzy
+msgid ""
+"import gettext\n"
+"t = gettext.translation('mymodule', ...)\n"
+"_ = t.gettext"
+msgstr ""
+"nhập gettext\n"
+"t = gettext.translation('mymodule', ...)\n"
+"_ = t.gettext"
+
+#: ../../library/gettext.rst:289
+#, fuzzy
+msgid ""
+"This puts :func:`!_` only in the module's global namespace and so only "
+"affects calls within this module."
+msgstr ""
+"Điều này chỉ đặt :func:`!_` trong không gian tên chung của mô-đun và do đó "
+"chỉ ảnh hưởng đến các lệnh gọi trong mô-đun này."
+
+#: ../../library/gettext.rst:292
+#, fuzzy
+msgid "Added ``'pgettext'`` and ``'npgettext'``."
+msgstr "Đã thêm ``'pgettext'`` và ``'npgettext'``."
+
+#: ../../library/gettext.rst:297
+#, fuzzy
+msgid "The :class:`GNUTranslations` class"
+msgstr "Lớp :class:`GNUTranslations`"
+
+#: ../../library/gettext.rst:299
+#, fuzzy
+msgid ""
+"The :mod:`!gettext` module provides one additional class derived from "
+":class:`NullTranslations`: :class:`GNUTranslations`.  This class overrides "
+":meth:`!_parse` to enable reading GNU :program:`gettext` format :file:`.mo` "
+"files in both big-endian and little-endian format."
+msgstr ""
+"Mô-đun :mod:`!gettext` cung cấp một lớp bổ sung bắt nguồn từ "
+":class:`NullTranslations`: :class:`GNUTranslations`.  Lớp này ghi đè "
+":meth:`!_parse` để cho phép đọc các tệp :file:`.mo` định dạng GNU "
+":program:`gettext` ở cả định dạng big-endian và little-endian."
+
+#: ../../library/gettext.rst:304
+#, fuzzy
+msgid ""
+":class:`GNUTranslations` parses optional metadata out of the translation "
+"catalog. It is convention with GNU :program:`gettext` to include metadata as"
+" the translation for the empty string. This metadata is in :rfc:`822`\\ "
+"-style ``key: value`` pairs, and should contain the ``Project-Id-Version`` "
+"key.  If the key ``Content-Type`` is found, then the ``charset`` property is"
+" used to initialize the \"protected\" :attr:`!_charset` instance variable, "
+"defaulting to ``None`` if not found.  If the charset encoding is specified, "
+"then all message ids and message strings read from the catalog are converted"
+" to Unicode using this encoding, else ASCII is assumed."
+msgstr ""
+":class:`GNUTranslations` phân tích siêu dữ liệu tùy chọn ra khỏi danh mục "
+"dịch thuật. Quy ước với GNU :program:`gettext` là đưa siêu dữ liệu làm bản "
+"dịch cho chuỗi trống. Siêu dữ liệu này nằm trong cặp :rfc:`822`\\ -style "
+"``key: value`` và phải chứa khóa ``Project-Id-Version``.  Nếu tìm thấy khóa "
+"``Content-Type`` thì thuộc tính ``charset`` được sử dụng để khởi tạo biến "
+"phiên bản :attr:`!_charset` \"được bảo vệ\", mặc định là ``None`` nếu không "
+"tìm thấy.  Nếu mã hóa bộ ký tự được chỉ định thì tất cả id tin nhắn và chuỗi"
+" tin nhắn được đọc từ danh mục sẽ được chuyển đổi sang Unicode bằng cách sử "
+"dụng mã hóa này, nếu không thì ASCII được giả định."
+
+#: ../../library/gettext.rst:314
+#, fuzzy
+msgid ""
+"Since message ids are read as Unicode strings too, all ``*gettext()`` "
+"methods will assume message ids as Unicode strings, not byte strings."
+msgstr ""
+"Vì id tin nhắn cũng được đọc dưới dạng chuỗi Unicode nên tất cả các phương "
+"thức ``*gettext()`` sẽ coi id tin nhắn là chuỗi Unicode chứ không phải chuỗi"
+" byte."
+
+#: ../../library/gettext.rst:317
+#, fuzzy
+msgid ""
+"The entire set of key/value pairs are placed into a dictionary and set as "
+"the \"protected\" :attr:`!_info` instance variable."
+msgstr ""
+"Toàn bộ tập hợp các cặp khóa/giá trị được đặt vào một từ điển và được đặt "
+"làm biến phiên bản :attr:`!_info` \"được bảo vệ\"."
+
+#: ../../library/gettext.rst:320
+#, fuzzy
+msgid ""
+"If the :file:`.mo` file's magic number is invalid, the major version number "
+"is unexpected, or if other problems occur while reading the file, "
+"instantiating a :class:`GNUTranslations` class can raise :exc:`OSError`."
+msgstr ""
+"Nếu số ma thuật của tệp :file:`.mo` không hợp lệ, số phiên bản chính không "
+"mong muốn hoặc nếu các sự cố khác xảy ra khi đọc tệp, việc khởi tạo lớp "
+":class:`GNUTranslations` có thể tăng :exc:`OSError`."
+
+#: ../../library/gettext.rst:326
+#, fuzzy
+msgid ""
+"The following methods are overridden from the base class implementation:"
+msgstr "Các phương thức sau được ghi đè từ quá trình triển khai lớp cơ sở:"
+
+#: ../../library/gettext.rst:330
+#, fuzzy
+msgid ""
+"Look up the *message* id in the catalog and return the corresponding message"
+" string, as a Unicode string.  If there is no entry in the catalog for the "
+"*message* id, and a fallback has been set, the look up is forwarded to the "
+"fallback's :meth:`~NullTranslations.gettext` method.  Otherwise, the "
+"*message* id is returned."
+msgstr ""
+"Tra cứu id *message* trong danh mục và trả về chuỗi thông báo tương ứng, "
+"dưới dạng chuỗi Unicode.  Nếu không có mục nào trong danh mục cho id "
+"*message* và một dự phòng đã được đặt thì việc tra cứu sẽ được chuyển tiếp "
+"tới phương thức :meth:`~NullTranslations.gettext` của dự phòng.  Nếu không, "
+"id *message* sẽ được trả về."
+
+#: ../../library/gettext.rst:339
+#, fuzzy
+msgid ""
+"Do a plural-forms lookup of a message id.  *singular* is used as the message"
+" id for purposes of lookup in the catalog, while *n* is used to determine "
+"which plural form to use.  The returned message string is a Unicode string."
+msgstr ""
+"Thực hiện tra cứu dạng số nhiều của id tin nhắn.  *singular* được sử dụng "
+"làm id tin nhắn nhằm mục đích tra cứu trong danh mục, trong khi *n* được sử "
+"dụng để xác định nên sử dụng dạng số nhiều nào.  Chuỗi thông báo trả về là "
+"chuỗi Unicode."
+
+#: ../../library/gettext.rst:343
+#, fuzzy
+msgid ""
+"If the message id is not found in the catalog, and a fallback is specified, "
+"the request is forwarded to the fallback's "
+":meth:`~NullTranslations.ngettext` method.  Otherwise, when *n* is 1 "
+"*singular* is returned, and *plural* is returned in all other cases."
+msgstr ""
+"Nếu không tìm thấy id tin nhắn trong danh mục và chỉ định một dự phòng thì "
+"yêu cầu sẽ được chuyển tiếp đến phương thức "
+":meth:`~NullTranslations.ngettext` của dự phòng.  Ngược lại, khi *n* là 1 "
+"thì *singular* được trả về và *plural* được trả về trong tất cả các trường "
+"hợp khác."
+
+#: ../../library/gettext.rst:348
+#, fuzzy
+msgid "Here is an example::"
+msgstr "Đây là một ví dụ::"
+
+#: ../../library/gettext.rst:350
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"n = len(os.listdir('.'))\n"
+"cat = GNUTranslations(somefile)\n"
+"message = cat.ngettext(\n"
+"    'There is %(num)d file in this directory',\n"
+"    'There are %(num)d files in this directory',\n"
+"    n) % {'num': n}"
+msgstr ""
+"n = len(os.listdir('.'))\n"
+"cat = GNUTranslations(somefile)\n"
+"tin nhắn = cat.ngettext(\n"
+"    'Có tập tin %(num)d trong thư mục này',\n"
+"    'Có %(num)d tập tin trong thư mục này',\n"
+"    n) % {'num': n}"
+
+#: ../../library/gettext.rst:360
+#, fuzzy
+msgid ""
+"Look up the *context* and *message* id in the catalog and return the "
+"corresponding message string, as a Unicode string.  If there is no entry in "
+"the catalog for the *message* id and *context*, and a fallback has been set,"
+" the look up is forwarded to the fallback's :meth:`pgettext` method.  "
+"Otherwise, the *message* id is returned."
+msgstr ""
+"Tra cứu id *context* và *message* trong danh mục và trả về chuỗi thông báo "
+"tương ứng, dưới dạng chuỗi Unicode.  Nếu không có mục nào trong danh mục cho"
+" id *message* và *context* và một dự phòng đã được đặt thì việc tra cứu sẽ "
+"được chuyển tiếp tới phương thức :meth:`pgettext` của dự phòng.  Nếu không, "
+"id *message* sẽ được trả về."
+
+#: ../../library/gettext.rst:371
+#, fuzzy
+msgid ""
+"Do a plural-forms lookup of a message id.  *singular* is used as the message"
+" id for purposes of lookup in the catalog, while *n* is used to determine "
+"which plural form to use."
+msgstr ""
+"Thực hiện tra cứu dạng số nhiều của id tin nhắn.  *singular* được sử dụng "
+"làm id tin nhắn nhằm mục đích tra cứu trong danh mục, trong khi *n* được sử "
+"dụng để xác định nên sử dụng dạng số nhiều nào."
+
+#: ../../library/gettext.rst:375
+#, fuzzy
+msgid ""
+"If the message id for *context* is not found in the catalog, and a fallback "
+"is specified, the request is forwarded to the fallback's :meth:`npgettext` "
+"method.  Otherwise, when *n* is 1 *singular* is returned, and *plural* is "
+"returned in all other cases."
+msgstr ""
+"Nếu không tìm thấy id thông báo cho *context* trong danh mục và một dự phòng"
+" được chỉ định thì yêu cầu sẽ được chuyển tiếp đến phương thức "
+":meth:`npgettext` của dự phòng.  Ngược lại, khi *n* là 1 thì *singular* được"
+" trả về và *plural* được trả về trong tất cả các trường hợp khác."
+
+#: ../../library/gettext.rst:384
+#, fuzzy
+msgid "Solaris message catalog support"
+msgstr "Hỗ trợ danh mục tin nhắn Solaris"
+
+#: ../../library/gettext.rst:386
+#, fuzzy
+msgid ""
+"The Solaris operating system defines its own binary :file:`.mo` file format,"
+" but since no documentation can be found on this format, it is not supported"
+" at this time."
+msgstr ""
+"Hệ điều hành Solaris xác định định dạng tệp :file:`.mo` nhị phân của riêng "
+"nó, nhưng vì không tìm thấy tài liệu nào về định dạng này nên nó không được "
+"hỗ trợ tại thời điểm này."
+
+#: ../../library/gettext.rst:392
+#, fuzzy
+msgid "The Catalog constructor"
+msgstr "Trình tạo danh mục"
+
+#: ../../library/gettext.rst:396
+#, fuzzy
+msgid ""
+"GNOME uses a version of the :mod:`!gettext` module by James Henstridge, but "
+"this version has a slightly different API.  Its documented usage was::"
+msgstr ""
+"GNOME sử dụng một phiên bản mô-đun :mod:`!gettext` của James Henstridge, "
+"nhưng phiên bản này có API hơi khác một chút.  Việc sử dụng tài liệu của nó "
+"là::"
+
+#: ../../library/gettext.rst:399
+#, fuzzy
+msgid ""
+"import gettext\n"
+"cat = gettext.Catalog(domain, localedir)\n"
+"_ = cat.gettext\n"
+"print(_('hello world'))"
+msgstr ""
+"nhập gettext\n"
+"cat = gettext.Catalog(domain, localedir)\n"
+"_ = cat.gettext\n"
+"print(_('xin chào thế giới'))"
+
+#: ../../library/gettext.rst:404
+#, fuzzy
+msgid ""
+"For compatibility with this older module, the function :func:`!Catalog` is "
+"an alias for the :func:`translation` function described above."
+msgstr ""
+"Để tương thích với mô-đun cũ hơn này, hàm :func:`!Catalog` là bí danh của "
+"hàm :func:`translation` được mô tả ở trên."
+
+#: ../../library/gettext.rst:407
+#, fuzzy
+msgid ""
+"One difference between this module and Henstridge's: his catalog objects "
+"supported access through a mapping API, but this appears to be unused and so"
+" is not currently supported."
+msgstr ""
+"Một điểm khác biệt giữa mô-đun này và mô-đun của Henstridge: các đối tượng "
+"danh mục của anh ấy hỗ trợ quyền truy cập thông qua ánh xạ API, nhưng điều "
+"này dường như không được sử dụng nên hiện không được hỗ trợ."
+
+#: ../../library/gettext.rst:414
+#, fuzzy
+msgid "Internationalizing your programs and modules"
+msgstr "Quốc tế hóa các chương trình và mô-đun của bạn"
+
+#: ../../library/gettext.rst:416
+#, fuzzy
+msgid ""
+"Internationalization (I18N) refers to the operation by which a program is "
+"made aware of multiple languages.  Localization (L10N) refers to the "
+"adaptation of your program, once internationalized, to the local language "
+"and cultural habits. In order to provide multilingual messages for your "
+"Python programs, you need to take the following steps:"
+msgstr ""
+"Quốc tế hóa (I18N) đề cập đến hoạt động trong đó một chương trình được nhận "
+"biết bằng nhiều ngôn ngữ.  Bản địa hóa (L10N) đề cập đến việc điều chỉnh "
+"chương trình của bạn, sau khi được quốc tế hóa, cho phù hợp với ngôn ngữ và "
+"thói quen văn hóa địa phương. Để cung cấp thông báo đa ngôn ngữ cho các "
+"chương trình Python của bạn, bạn cần thực hiện các bước sau:"
+
+#: ../../library/gettext.rst:422
+#, fuzzy
+msgid ""
+"prepare your program or module by specially marking translatable strings"
+msgstr ""
+"chuẩn bị chương trình hoặc mô-đun của bạn bằng cách đánh dấu đặc biệt các "
+"chuỗi có thể dịch được"
+
+#: ../../library/gettext.rst:424
+#, fuzzy
+msgid ""
+"run a suite of tools over your marked files to generate raw messages "
+"catalogs"
+msgstr ""
+"chạy một bộ công cụ trên các tệp đã đánh dấu của bạn để tạo danh mục thư thô"
+
+#: ../../library/gettext.rst:426
+#, fuzzy
+msgid "create language-specific translations of the message catalogs"
+msgstr "tạo bản dịch theo ngôn ngữ cụ thể của danh mục tin nhắn"
+
+#: ../../library/gettext.rst:428
+#, fuzzy
+msgid ""
+"use the :mod:`!gettext` module so that message strings are properly "
+"translated"
+msgstr "sử dụng mô-đun :mod:`!gettext` để chuỗi thông báo được dịch chính xác"
+
+#: ../../library/gettext.rst:430
+#, fuzzy
+msgid ""
+"In order to prepare your code for I18N, you need to look at all the strings "
+"in your files.  Any string that needs to be translated should be marked by "
+"wrapping it in ``_('...')`` --- that is, a call to the function :func:`_ "
+"<gettext>`.  For example::"
+msgstr ""
+"Để chuẩn bị mã cho I18N, bạn cần xem tất cả các chuỗi trong tệp của mình.  "
+"Bất kỳ chuỗi nào cần dịch phải được đánh dấu bằng cách gói nó trong "
+"``_('...')`` --- nghĩa là gọi hàm :func:`_ <gettext>`.  Ví dụ::"
+
+#: ../../library/gettext.rst:434
+#, fuzzy
+msgid ""
+"filename = 'mylog.txt'\n"
+"message = _('writing a log message')\n"
+"with open(filename, 'w') as fp:\n"
+"    fp.write(message)"
+msgstr ""
+"tên tệp = 'mylog.txt'\n"
+"message = _('viết thông điệp tường trình')\n"
+"với open(filename, 'w') là fp:\n"
+"    fp.write(tin nhắn)"
+
+#: ../../library/gettext.rst:439
+#, fuzzy
+msgid ""
+"In this example, the string ``'writing a log message'`` is marked as a "
+"candidate for translation, while the strings ``'mylog.txt'`` and ``'w'`` are"
+" not."
+msgstr ""
+"Trong ví dụ này, chuỗi ``'writing a log message'`` được đánh dấu là có thể "
+"dịch, trong khi các chuỗi ``'mylog.txt'`` và ``'w'`` thì không."
+
+#: ../../library/gettext.rst:442
+#, fuzzy
+msgid ""
+"There are a few tools to extract the strings meant for translation. The "
+"original GNU :program:`gettext` only supported C or C++ source code but its "
+"extended version :program:`xgettext` scans code written in a number of "
+"languages, including Python, to find strings marked as translatable.  `Babel"
+" <https://babel.pocoo.org/>`__ is a Python internationalization library that"
+" includes a :file:`pybabel` script to extract and compile message catalogs."
+"  François Pinard's program called :program:`xpot` does a similar job and is"
+" available as part of his `po-utils package <https://github.com/pinard/po-"
+"utils>`__."
+msgstr ""
+"Có một số công cụ để trích xuất các chuỗi dùng để dịch. GNU "
+":program:`gettext` ban đầu chỉ hỗ trợ mã nguồn C hoặc C++ nhưng phiên bản mở"
+" rộng :program:`xgettext` của nó quét mã được viết bằng một số ngôn ngữ, bao"
+" gồm cả Python, để tìm các chuỗi được đánh dấu là có thể dịch được.  `Babel "
+"<https://babel.pocoo.org/>`__ là thư viện quốc tế hóa Python bao gồm tập "
+"lệnh :file:`pybabel` để trích xuất và biên dịch danh mục thư.  Chương trình "
+":program:`xpot` của François Pinard thực hiện công việc tương tự và có sẵn "
+"như một phần của `po-utils package <https://github.com/pinard/po-utils>`__ "
+"của anh ấy."
+
+#: ../../library/gettext.rst:452
+#, fuzzy
+msgid ""
+"(Python also includes pure-Python versions of these programs, called "
+":program:`pygettext.py` and :program:`msgfmt.py`; some Python distributions "
+"will install them for you.  :program:`pygettext.py` is similar to "
+":program:`xgettext`, but only understands Python source code and cannot "
+"handle other programming languages such as C or C++. :program:`pygettext.py`"
+" supports a command-line interface similar to :program:`xgettext`; for "
+"details on its use, run ``pygettext.py --help``.  :program:`msgfmt.py` is "
+"binary compatible with GNU :program:`msgfmt`.  With these two programs, you "
+"may not need the GNU :program:`gettext` package to internationalize your "
+"Python applications.)"
+msgstr ""
+"(Python cũng bao gồm các phiên bản Python thuần túy của các chương trình "
+"này, được gọi là :program:`pygettext.py` và :program:`msgfmt.py`; một số bản"
+" phân phối Python sẽ cài đặt chúng cho bạn. :program:`pygettext.py` tương tự"
+" như :program:`xgettext`, nhưng chỉ hiểu mã nguồn Python và không thể xử lý "
+"các ngôn ngữ lập trình khác như C hoặc C++. :program:`pygettext.py` hỗ trợ "
+"giao diện dòng lệnh tương tự như :program:`xgettext`; để biết chi tiết về "
+"cách sử dụng nó, hãy chạy ``pygettext.py --help``. :program:`msgfmt.py` "
+"tương thích nhị phân với GNU :program:`msgfmt`. Với hai chương trình này, "
+"bạn có thể không cần gói GNU :program:`gettext` để quốc tế hóa các ứng dụng "
+"Python của mình.)"
+
+#: ../../library/gettext.rst:464
+#, fuzzy
+msgid ""
+":program:`xgettext`, :program:`pygettext`, and similar tools generate "
+":file:`.po` files that are message catalogs.  They are structured human-"
+"readable files that contain every marked string in the source code, along "
+"with a placeholder for the translated versions of these strings."
+msgstr ""
+":program:`xgettext`, :program:`pygettext` và các công cụ tương tự tạo ra các"
+" tệp :file:`.po` là danh mục thư.  Chúng là các tệp có cấu trúc mà con người"
+" có thể đọc được, chứa mọi chuỗi được đánh dấu trong mã nguồn, cùng với phần"
+" giữ chỗ cho các phiên bản đã dịch của các chuỗi này."
+
+#: ../../library/gettext.rst:470
+#, fuzzy
+msgid ""
+"Copies of these :file:`.po` files are then handed over to the individual "
+"human translators who write translations for every supported natural "
+"language.  They send back the completed language-specific versions as a "
+":file:`<language-name>.po` file that's compiled into a machine-readable "
+":file:`.mo` binary catalog file using the :program:`msgfmt` program.  The "
+":file:`.mo` files are used by the :mod:`!gettext` module for the actual "
+"translation processing at run-time."
+msgstr ""
+"Bản sao của các tệp :file:`.po` này sau đó sẽ được chuyển cho từng người "
+"dịch, những người viết bản dịch cho mọi ngôn ngữ tự nhiên được hỗ trợ.  Họ "
+"gửi lại các phiên bản dành riêng cho ngôn ngữ đã hoàn thành dưới dạng tệp "
+":file:`<language-name>.po` được biên dịch thành tệp danh mục nhị phân "
+":file:`.mo` có thể đọc được bằng chương trình :program:`msgfmt`.  Các tệp "
+":file:`.mo` được mô-đun :mod:`!gettext` sử dụng để xử lý dịch thực tế trong "
+"thời gian chạy."
+
+#: ../../library/gettext.rst:479
+#, fuzzy
+msgid ""
+"How you use the :mod:`!gettext` module in your code depends on whether you "
+"are internationalizing a single module or your entire application. The next "
+"two sections will discuss each case."
+msgstr ""
+"Cách bạn sử dụng mô-đun :mod:`!gettext` trong mã của mình tùy thuộc vào việc"
+" bạn đang quốc tế hóa một mô-đun hay toàn bộ ứng dụng của mình. Hai phần "
+"tiếp theo sẽ thảo luận về từng trường hợp."
+
+#: ../../library/gettext.rst:485
+#, fuzzy
+msgid "Localizing your module"
+msgstr "Bản địa hóa mô-đun của bạn"
+
+#: ../../library/gettext.rst:487
+#, fuzzy
+msgid ""
+"If you are localizing your module, you must take care not to make global "
+"changes, e.g. to the built-in namespace. You should not use the GNU "
+":program:`gettext` API but instead the class-based API."
+msgstr ""
+"Nếu bạn đang bản địa hóa mô-đun của mình, bạn phải cẩn thận để không thực "
+"hiện các thay đổi chung, ví dụ: vào không gian tên tích hợp. Bạn không nên "
+"sử dụng GNU :program:`gettext` API mà thay vào đó là API dựa trên lớp."
+
+#: ../../library/gettext.rst:491
+#, fuzzy
+msgid ""
+"Let's say your module is called \"spam\" and the module's various natural "
+"language translation :file:`.mo` files reside in :file:`/usr/share/locale` "
+"in GNU :program:`gettext` format.  Here's what you would put at the top of "
+"your module::"
+msgstr ""
+"Giả sử mô-đun của bạn được gọi là \"thư rác\" và các tệp :file:`.mo` dịch "
+"ngôn ngữ tự nhiên khác nhau của mô-đun nằm trong :file:`/usr/share/locale` ở"
+" định dạng GNU :program:`gettext`.  Đây là những gì bạn sẽ đặt ở đầu mô-đun "
+"của mình::"
+
+#: ../../library/gettext.rst:496
+#, fuzzy
+msgid ""
+"import gettext\n"
+"t = gettext.translation('spam', '/usr/share/locale')\n"
+"_ = t.gettext"
+msgstr ""
+"nhập gettext\n"
+"t = gettext.translation('spam', '/usr/share/locale')\n"
+"_ = t.gettext"
+
+#: ../../library/gettext.rst:502
+#, fuzzy
+msgid "Localizing your application"
+msgstr "Bản địa hóa ứng dụng của bạn"
+
+#: ../../library/gettext.rst:504
+#, fuzzy
+msgid ""
+"If you are localizing your application, you can install the :func:`!_` "
+"function globally into the built-in namespace, usually in the main driver "
+"file of your application.  This will let all your application-specific files"
+" just use ``_('...')`` without having to explicitly install it in each file."
+msgstr ""
+"Nếu bạn đang bản địa hóa ứng dụng của mình, bạn có thể cài đặt hàm "
+":func:`!_` trên toàn cầu vào không gian tên tích hợp, thường là trong tệp "
+"trình điều khiển chính của ứng dụng.  Điều này sẽ cho phép tất cả các tệp "
+"dành riêng cho ứng dụng của bạn chỉ sử dụng ``_('...')`` mà không cần phải "
+"cài đặt rõ ràng nó trong mỗi tệp."
+
+#: ../../library/gettext.rst:509
+#, fuzzy
+msgid ""
+"In the simple case then, you need only add the following bit of code to the "
+"main driver file of your application::"
+msgstr ""
+"Trong trường hợp đơn giản, bạn chỉ cần thêm đoạn mã sau vào tệp trình điều "
+"khiển chính của ứng dụng của mình ::"
+
+#: ../../library/gettext.rst:512
+#, fuzzy
+msgid ""
+"import gettext\n"
+"gettext.install('myapplication')"
+msgstr ""
+"nhập gettext\n"
+"gettext.install('myapplication')"
+
+#: ../../library/gettext.rst:515
+#, fuzzy
+msgid ""
+"If you need to set the locale directory, you can pass it into the "
+":func:`install` function::"
+msgstr ""
+"Nếu bạn cần đặt thư mục miền địa phương, bạn có thể chuyển nó vào hàm "
+":func:`install` ::"
+
+#: ../../library/gettext.rst:518
+#, fuzzy
+msgid ""
+"import gettext\n"
+"gettext.install('myapplication', '/usr/share/locale')"
+msgstr ""
+"nhập gettext\n"
+"gettext.install('myapplication', '/usr/share/locale')"
+
+#: ../../library/gettext.rst:523
+#, fuzzy
+msgid "Changing languages on the fly"
+msgstr "Thay đổi ngôn ngữ một cách nhanh chóng"
+
+#: ../../library/gettext.rst:525
+#, fuzzy
+msgid ""
+"If your program needs to support many languages at the same time, you may "
+"want to create multiple translation instances and then switch between them "
+"explicitly, like so::"
+msgstr ""
+"Nếu chương trình của bạn cần hỗ trợ nhiều ngôn ngữ cùng lúc, bạn có thể muốn"
+" tạo nhiều phiên bản dịch rồi chuyển đổi giữa chúng một cách rõ ràng, như "
+"vậy::"
+
+#: ../../library/gettext.rst:529
+#, fuzzy
+msgid ""
+"import gettext\n"
+"\n"
+"lang1 = gettext.translation('myapplication', languages=['en'])\n"
+"lang2 = gettext.translation('myapplication', languages=['fr'])\n"
+"lang3 = gettext.translation('myapplication', languages=['de'])\n"
+"\n"
+"# start by using language1\n"
+"lang1.install()\n"
+"\n"
+"# ... time goes by, user selects language 2\n"
+"lang2.install()\n"
+"\n"
+"# ... more time goes by, user selects language 3\n"
+"lang3.install()"
+msgstr ""
+"nhập gettext\n"
+"\n"
+"lang1 = gettext.translation('ứng dụng của tôi', ngôn ngữ=['en'])\n"
+"lang2 = gettext.translation('ứng dụng của tôi', ngôn ngữ=['fr'])\n"
+"lang3 = gettext.translation('ứng dụng của tôi', ngôn ngữ=['de'])\n"
+"\n"
+"# start bằng cách sử dụng ngôn ngữ1\n"
+"lang1.install()\n"
+"\n"
+"# ... thời gian trôi qua, người dùng chọn ngôn ngữ 2\n"
+"lang2.install()\n"
+"\n"
+"# ... thời gian trôi qua, người dùng chọn ngôn ngữ 3\n"
+"lang3.install()"
+
+#: ../../library/gettext.rst:546
+#, fuzzy
+msgid "Deferred translations"
+msgstr "Bản dịch hoãn lại"
+
+#: ../../library/gettext.rst:548
+#, fuzzy
+msgid ""
+"In most coding situations, strings are translated where they are coded. "
+"Occasionally however, you need to mark strings for translation, but defer "
+"actual translation until later.  A classic example is::"
+msgstr ""
+"Trong hầu hết các tình huống mã hóa, các chuỗi được dịch ở nơi chúng được mã"
+" hóa. Tuy nhiên, đôi khi, bạn cần đánh dấu các chuỗi để dịch nhưng hãy hoãn "
+"bản dịch thực tế cho đến sau này.  Một ví dụ cổ điển là::"
+
+#: ../../library/gettext.rst:552
+#, fuzzy
+msgid ""
+"animals = ['mollusk',\n"
+"           'albatross',\n"
+"           'rat',\n"
+"           'penguin',\n"
+"           'python', ]\n"
+"# ...\n"
+"for a in animals:\n"
+"    print(a)"
+msgstr ""
+"động vật = ['nhuyễn thể',\n"
+"           'hải âu',\n"
+"           'chuột',\n"
+"           'chim cánh cụt',\n"
+"           'con trăn',]\n"
+"# ...\n"
+"đối với a ở động vật:\n"
+"    in (a)"
+
+#: ../../library/gettext.rst:561
+#, fuzzy
+msgid ""
+"Here, you want to mark the strings in the ``animals`` list as being "
+"translatable, but you don't actually want to translate them until they are "
+"printed."
+msgstr ""
+"Ở đây, bạn muốn đánh dấu các chuỗi trong danh sách ``animals`` là có thể "
+"dịch được, nhưng thực tế bạn không muốn dịch chúng cho đến khi chúng được "
+"in."
+
+#: ../../library/gettext.rst:565
+#, fuzzy
+msgid "Here is one way you can handle this situation::"
+msgstr "Đây là một cách bạn có thể xử lý tình huống này::"
+
+#: ../../library/gettext.rst:567
+#, fuzzy
+msgid ""
+"def _(message): return message\n"
+"\n"
+"animals = [_('mollusk'),\n"
+"           _('albatross'),\n"
+"           _('rat'),\n"
+"           _('penguin'),\n"
+"           _('python'), ]\n"
+"\n"
+"del _\n"
+"\n"
+"# ...\n"
+"for a in animals:\n"
+"    print(_(a))"
+msgstr ""
+"def _(tin nhắn): trả lại tin nhắn\n"
+"\n"
+"động vật = [_('nhuyễn thể'),\n"
+"           _('chim hải âu'),\n"
+"           _('chuột'),\n"
+"           _('chim cánh cụt'),\n"
+"           _('trăn'), ]\n"
+"\n"
+"del _\n"
+"\n"
+"# ...\n"
+"đối với a ở động vật:\n"
+"    in(_(a))"
+
+#: ../../library/gettext.rst:581
+#, fuzzy
+msgid ""
+"This works because the dummy definition of :func:`!_` simply returns the "
+"string unchanged.  And this dummy definition will temporarily override any "
+"definition of :func:`!_` in the built-in namespace (until the :keyword:`del`"
+" command). Take care, though if you have a previous definition of :func:`!_`"
+" in the local namespace."
+msgstr ""
+"Điều này hoạt động vì định nghĩa giả của :func:`!_` chỉ đơn giản trả về "
+"chuỗi không thay đổi.  Và định nghĩa giả này sẽ tạm thời ghi đè bất kỳ định "
+"nghĩa nào về :func:`!_` trong không gian tên tích hợp (cho đến lệnh "
+":keyword:`del`). Tuy nhiên, hãy cẩn thận nếu bạn có định nghĩa trước đó về "
+":func:`!_` trong không gian tên cục bộ."
+
+#: ../../library/gettext.rst:587
+#, fuzzy
+msgid ""
+"Note that the second use of :func:`!_` will not identify \"a\" as being "
+"translatable to the :program:`gettext` program, because the parameter is not"
+" a string literal."
+msgstr ""
+"Lưu ý rằng lần sử dụng :func:`!_` thứ hai sẽ không xác định \"a\" là có thể "
+"dịch sang chương trình :program:`gettext` vì tham số này không phải là một "
+"chuỗi ký tự."
+
+#: ../../library/gettext.rst:591
+#, fuzzy
+msgid "Another way to handle this is with the following example::"
+msgstr "Một cách khác để xử lý vấn đề này là với ví dụ sau ::"
+
+#: ../../library/gettext.rst:593
+#, fuzzy
+msgid ""
+"def N_(message): return message\n"
+"\n"
+"animals = [N_('mollusk'),\n"
+"           N_('albatross'),\n"
+"           N_('rat'),\n"
+"           N_('penguin'),\n"
+"           N_('python'), ]\n"
+"\n"
+"# ...\n"
+"for a in animals:\n"
+"    print(_(a))"
+msgstr ""
+"def N_(tin nhắn): tin nhắn trả về\n"
+"\n"
+"động vật = [N_('nhuyễn thể'),\n"
+"           N_('hải âu'),\n"
+"           N_('chuột'),\n"
+"           N_('chim cánh cụt'),\n"
+"           N_('trăn'), ]\n"
+"\n"
+"# ...\n"
+"đối với a ở động vật:\n"
+"    in(_(a))"
+
+#: ../../library/gettext.rst:605
+#, fuzzy
+msgid ""
+"In this case, you are marking translatable strings with the function "
+":func:`!N_`, which won't conflict with any definition of :func:`!_`. "
+"However, you will need to teach your message extraction program to look for "
+"translatable strings marked with :func:`!N_`. :program:`xgettext`, "
+":program:`pygettext`, ``pybabel extract``, and :program:`xpot` all support "
+"this through the use of the :option:`!-k` command-line switch. The choice of"
+" :func:`!N_` here is totally arbitrary; it could have just as easily been "
+":func:`!MarkThisStringForTranslation`."
+msgstr ""
+"Trong trường hợp này, bạn đang đánh dấu các chuỗi có thể dịch được bằng hàm "
+":func:`!N_`, hàm này sẽ không xung đột với bất kỳ định nghĩa nào về "
+":func:`!_`. Tuy nhiên, bạn sẽ cần hướng dẫn chương trình trích xuất tin nhắn"
+" của mình cách tìm kiếm các chuỗi có thể dịch được được đánh dấu bằng "
+":func:`!N_`. :program:`xgettext`, :program:`pygettext`, ``pybabel extract`` "
+"và :program:`xpot` đều hỗ trợ điều này thông qua việc sử dụng chuyển đổi "
+"dòng lệnh :option:`!-k`. Việc lựa chọn :func:`!N_` ở đây là hoàn toàn tùy ý;"
+" nó có thể dễ dàng là :func:`!MarkThisStringForTranslation`."
+
+#: ../../library/gettext.rst:616
+#, fuzzy
+msgid "Acknowledgements"
+msgstr "Lời cảm ơn"
+
+#: ../../library/gettext.rst:618
+#, fuzzy
+msgid ""
+"The following people contributed code, feedback, design suggestions, "
+"previous implementations, and valuable experience to the creation of this "
+"module:"
+msgstr ""
+"Những người sau đây đã đóng góp mã, phản hồi, đề xuất thiết kế, các triển "
+"khai trước đó và kinh nghiệm quý báu cho việc tạo ra mô-đun này:"
+
+#: ../../library/gettext.rst:621
+#, fuzzy
+msgid "Peter Funk"
+msgstr "Peter Funk"
+
+#: ../../library/gettext.rst:623
+#, fuzzy
+msgid "James Henstridge"
+msgstr "James Henstridge"
+
+#: ../../library/gettext.rst:625
+#, fuzzy
+msgid "Juan David Ibáñez Palomar"
+msgstr "Juan David Ibáñez Palomar"
+
+#: ../../library/gettext.rst:627
+#, fuzzy
+msgid "Marc-André Lemburg"
+msgstr "Marc-André Lemburg"
+
+#: ../../library/gettext.rst:629
+#, fuzzy
+msgid "Martin von Löwis"
+msgstr "Martin von Lowis"
+
+#: ../../library/gettext.rst:631
+#, fuzzy
+msgid "François Pinard"
+msgstr "Francois Pinard"
+
+#: ../../library/gettext.rst:633
+#, fuzzy
+msgid "Barry Warsaw"
+msgstr "Barry Warsaw"
+
+#: ../../library/gettext.rst:635
+#, fuzzy
+msgid "Gustavo Niemeyer"
+msgstr "Gustavo Niemeyer"
+
+#: ../../library/gettext.rst:638
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/gettext.rst:639
+#, python-brace-format, fuzzy
+msgid ""
+"The default locale directory is system dependent; for example, on Red Hat "
+"Linux it is :file:`/usr/share/locale`, but on Solaris it is "
+":file:`/usr/lib/locale`. The :mod:`!gettext` module does not try to support "
+"these system dependent defaults; instead its default is "
+":file:`{sys.base_prefix}/share/locale` (see :data:`sys.base_prefix`). For "
+"this reason, it is always best to call :func:`bindtextdomain` with an "
+"explicit absolute path at the start of your application."
+msgstr ""
+"Thư mục miền địa phương mặc định phụ thuộc vào hệ thống; ví dụ: trên Red Hat"
+" Linux thì đó là :file:`/usr/share/locale`, nhưng trên Solaris thì đó là "
+":file:`/usr/lib/locale`. Mô-đun :mod:`!gettext` không cố gắng hỗ trợ các giá"
+" trị mặc định phụ thuộc vào hệ thống này; thay vào đó mặc định của nó là "
+":file:`{sys.base_prefix}/share/locale` (xem :data:`sys.base_prefix`). Vì lý "
+"do này, tốt nhất bạn nên gọi :func:`bindtextdomain` bằng đường dẫn tuyệt đối"
+" rõ ràng khi bắt đầu ứng dụng của mình."
+
+#: ../../library/gettext.rst:647
+#, fuzzy
+msgid "See the footnote for :func:`bindtextdomain` above."
+msgstr "Xem chú thích cuối trang cho :func:`bindtextdomain` ở trên."
+
+#: ../../library/gettext.rst:56
+#, fuzzy
+msgid "_ (underscore)"
+msgstr "_ (gạch dưới)"
+
+#: ../../library/gettext.rst:56
+#, fuzzy
+msgid "gettext"
+msgstr "nhận được văn bản"
+
+#: ../../library/gettext.rst:394
+#, fuzzy
+msgid "GNOME"
+msgstr "GNOME"

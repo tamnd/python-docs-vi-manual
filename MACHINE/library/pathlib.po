@@ -1,0 +1,4342 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/pathlib.rst:2
+#, fuzzy
+msgid ":mod:`!pathlib` --- Object-oriented filesystem paths"
+msgstr ":mod:`!pathlib` --- Đường dẫn hệ thống tập tin hướng đối tượng"
+
+#: ../../library/pathlib.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/pathlib/`"
+msgstr "**Source code:** :source:`Lib/pathlib/`"
+
+#: ../../library/pathlib.rst:15
+#, fuzzy
+msgid ""
+"This module offers classes representing filesystem paths with semantics "
+"appropriate for different operating systems.  Path classes are divided "
+"between :ref:`pure paths <pure-paths>`, which provide purely computational "
+"operations without I/O, and :ref:`concrete paths <concrete-paths>`, which "
+"inherit from pure paths but also provide I/O operations."
+msgstr ""
+"Mô-đun này cung cấp các lớp biểu diễn đường dẫn hệ thống tệp với ngữ nghĩa "
+"thích hợp cho các hệ điều hành khác nhau.  Các lớp đường dẫn được phân chia "
+"giữa :ref:`pure paths <pure-paths>`, cung cấp các hoạt động tính toán thuần "
+"túy không có I/O và :ref:`concrete paths <concrete-paths>`, kế thừa từ các "
+"đường dẫn thuần túy nhưng cũng cung cấp các hoạt động I/O."
+
+#: ../../library/pathlib.rst:21
+#, fuzzy
+msgid ""
+"Inheritance diagram showing the classes available in pathlib. The\n"
+"most basic class is PurePath, which has three direct subclasses:\n"
+"PurePosixPath, PureWindowsPath, and Path. Further to these four\n"
+"classes, there are two classes that use multiple inheritance:\n"
+"PosixPath subclasses PurePosixPath and Path, and WindowsPath\n"
+"subclasses PureWindowsPath and Path."
+msgstr ""
+"Sơ đồ kế thừa hiển thị các lớp có sẵn trong pathlib. các\n"
+"lớp cơ bản nhất là PurePath, có ba lớp con trực tiếp:\n"
+"PurePosixPath, PureWindowsPath và Đường dẫn. Ngoài bốn điều này\n"
+"các lớp, có hai lớp sử dụng đa kế thừa:\n"
+"Các lớp con PosixPath PurePosixPath và Path và WindowsPath\n"
+"các lớp con PureWindowsPath và Path."
+
+#: ../../library/pathlib.rst:31
+#, fuzzy
+msgid ""
+"If you've never used this module before or just aren't sure which class is "
+"right for your task, :class:`Path` is most likely what you need. It "
+"instantiates a :ref:`concrete path <concrete-paths>` for the platform the "
+"code is running on."
+msgstr ""
+"Nếu bạn chưa từng sử dụng mô-đun này trước đây hoặc không chắc chắn lớp nào "
+"phù hợp với nhiệm vụ của mình thì :class:`Path` rất có thể là thứ bạn cần. "
+"Nó khởi tạo một :ref:`concrete path <concrete-paths>` cho nền tảng mà mã "
+"đang chạy trên đó."
+
+#: ../../library/pathlib.rst:35
+#, fuzzy
+msgid "Pure paths are useful in some special cases; for example:"
+msgstr "Đường dẫn thuần túy hữu ích trong một số trường hợp đặc biệt; ví dụ:"
+
+#: ../../library/pathlib.rst:37
+#, fuzzy
+msgid ""
+"If you want to manipulate Windows paths on a Unix machine (or vice versa). "
+"You cannot instantiate a :class:`WindowsPath` when running on Unix, but you "
+"can instantiate :class:`PureWindowsPath`."
+msgstr ""
+"Nếu bạn muốn thao tác với đường dẫn Windows trên máy Unix (hoặc ngược lại). "
+"Bạn không thể khởi tạo :class:`WindowsPath` khi chạy trên Unix, nhưng bạn có"
+" thể khởi tạo :class:`PureWindowsPath`."
+
+#: ../../library/pathlib.rst:40
+#, fuzzy
+msgid ""
+"You want to make sure that your code only manipulates paths without actually"
+" accessing the OS. In this case, instantiating one of the pure classes may "
+"be useful since those simply don't have any OS-accessing operations."
+msgstr ""
+"Bạn muốn đảm bảo rằng mã của bạn chỉ thao tác các đường dẫn mà không thực sự"
+" truy cập vào hệ điều hành. Trong trường hợp này, việc khởi tạo một trong "
+"các lớp thuần túy có thể hữu ích vì những lớp đó đơn giản là không có bất kỳ"
+" hoạt động truy cập hệ điều hành nào."
+
+#: ../../library/pathlib.rst:45
+#, fuzzy
+msgid ":pep:`428`: The pathlib module -- object-oriented filesystem paths."
+msgstr ":pep:`428`: Mô-đun pathlib - đường dẫn hệ thống tệp hướng đối tượng."
+
+#: ../../library/pathlib.rst:48
+#, fuzzy
+msgid ""
+"For low-level path manipulation on strings, you can also use the "
+":mod:`os.path` module."
+msgstr ""
+"Để thao tác đường dẫn cấp thấp trên chuỗi, bạn cũng có thể sử dụng mô-đun "
+":mod:`os.path`."
+
+#: ../../library/pathlib.rst:53
+#, fuzzy
+msgid "Basic use"
+msgstr "Basic use"
+
+#: ../../library/pathlib.rst:55
+#, fuzzy
+msgid "Importing the main class::"
+msgstr "Nhập lớp chính::"
+
+#: ../../library/pathlib.rst:57
+#, fuzzy
+msgid ">>> from pathlib import Path"
+msgstr ">>> từ Đường dẫn nhập pathlib"
+
+#: ../../library/pathlib.rst:59
+#, fuzzy
+msgid "Listing subdirectories::"
+msgstr "Liệt kê các thư mục con::"
+
+#: ../../library/pathlib.rst:61
+#, fuzzy
+msgid ""
+">>> p = Path('.')\n"
+">>> [x for x in p.iterdir() if x.is_dir()]\n"
+"[PosixPath('.hg'), PosixPath('docs'), PosixPath('dist'),\n"
+" PosixPath('__pycache__'), PosixPath('build')]"
+msgstr ""
+">>> p = Đường dẫn('.')\n"
+">>> [x cho x trong p.iterdir() if x.is_dir()]\n"
+"[PosixPath('.hg'), PosixPath('docs'), PosixPath('dist'),\n"
+" PosixPath('__pycache__'), PosixPath('build')]"
+
+#: ../../library/pathlib.rst:66
+#, fuzzy
+msgid "Listing Python source files in this directory tree::"
+msgstr "Liệt kê các tệp nguồn Python trong cây thư mục này::"
+
+#: ../../library/pathlib.rst:68
+#, fuzzy
+msgid ""
+">>> list(p.glob('**/*.py'))\n"
+"[PosixPath('test_pathlib.py'), PosixPath('setup.py'),\n"
+" PosixPath('pathlib.py'), PosixPath('docs/conf.py'),\n"
+" PosixPath('build/lib/pathlib.py')]"
+msgstr ""
+">>> danh sách(p.glob('**/*.py'))\n"
+"[PosixPath('test_pathlib.py'), PosixPath('setup.py'),\n"
+" PosixPath('pathlib.py'), PosixPath('docs/conf.py'),\n"
+" PosixPath('build/lib/pathlib.py')]"
+
+#: ../../library/pathlib.rst:73
+#, fuzzy
+msgid "Navigating inside a directory tree::"
+msgstr "Điều hướng bên trong cây thư mục::"
+
+#: ../../library/pathlib.rst:75
+#, fuzzy
+msgid ""
+">>> p = Path('/etc')\n"
+">>> q = p / 'init.d' / 'reboot'\n"
+">>> q\n"
+"PosixPath('/etc/init.d/reboot')\n"
+">>> q.resolve()\n"
+"PosixPath('/etc/rc.d/init.d/halt')"
+msgstr ""
+">>> p = Đường dẫn('/etc')\n"
+">>> q = p / 'init.d' / 'khởi động lại'\n"
+">>> q\n"
+"PosixPath('/etc/init.d/reboot')\n"
+">>> q.resolve()\n"
+"PosixPath('/etc/rc.d/init.d/halt')"
+
+#: ../../library/pathlib.rst:82
+#, fuzzy
+msgid "Querying path properties::"
+msgstr "Truy vấn thuộc tính đường dẫn::"
+
+#: ../../library/pathlib.rst:84
+#, fuzzy
+msgid ""
+">>> q.exists()\n"
+"True\n"
+">>> q.is_dir()\n"
+"False"
+msgstr ""
+">>> q.exists()\n"
+"đúng\n"
+">>> q.is_dir()\n"
+"sai"
+
+#: ../../library/pathlib.rst:89
+#, fuzzy
+msgid "Opening a file::"
+msgstr "Mở một tập tin::"
+
+#: ../../library/pathlib.rst:91
+#, fuzzy
+msgid ""
+">>> with q.open() as f: f.readline()\n"
+"...\n"
+"'#!/bin/bash\\n'"
+msgstr ""
+">>> với q.open() là f: f.readline()\n"
+"...\n"
+"'#!/bin/bash\\n'"
+
+#: ../../library/pathlib.rst:97
+#, fuzzy
+msgid "Exceptions"
+msgstr "Ngoại lệ"
+
+#: ../../library/pathlib.rst:101
+#, fuzzy
+msgid ""
+"An exception inheriting :exc:`NotImplementedError` that is raised when an "
+"unsupported operation is called on a path object."
+msgstr ""
+"Một ngoại lệ kế thừa :exc:`NotImplementedError` được đưa ra khi một thao tác"
+" không được hỗ trợ được gọi trên đối tượng đường dẫn."
+
+#: ../../library/pathlib.rst:110
+#, fuzzy
+msgid "Pure paths"
+msgstr "Đường dẫn thuần túy"
+
+#: ../../library/pathlib.rst:112
+#, fuzzy
+msgid ""
+"Pure path objects provide path-handling operations which don't actually "
+"access a filesystem.  There are three ways to access these classes, which we"
+" also call *flavours*:"
+msgstr ""
+"Các đối tượng đường dẫn thuần túy cung cấp các hoạt động xử lý đường dẫn "
+"không thực sự truy cập vào hệ thống tệp.  Có ba cách để truy cập các lớp này"
+" mà chúng tôi còn gọi là *flavours*:"
+
+#: ../../library/pathlib.rst:118
+#, fuzzy
+msgid ""
+"A generic class that represents the system's path flavour (instantiating it "
+"creates either a :class:`PurePosixPath` or a :class:`PureWindowsPath`)::"
+msgstr ""
+"Một lớp chung đại diện cho hương vị đường dẫn của hệ thống (khởi tạo nó tạo "
+"ra :class:`PurePosixPath` hoặc :class:`PureWindowsPath`)::"
+
+#: ../../library/pathlib.rst:121
+#, fuzzy
+msgid ""
+">>> PurePath('setup.py')      # Running on a Unix machine\n"
+"PurePosixPath('setup.py')"
+msgstr ""
+">>> PurePath('setup.py') # Running trên máy Unix\n"
+"PurePosixPath('setup.py')"
+
+#: ../../library/pathlib.rst:124
+#, fuzzy
+msgid ""
+"Each element of *pathsegments* can be either a string representing a path "
+"segment, or an object implementing the :class:`os.PathLike` interface where "
+"the :meth:`~os.PathLike.__fspath__` method returns a string, such as another"
+" path object::"
+msgstr ""
+"Mỗi phần tử của *pathsegments* có thể là một chuỗi biểu thị một đoạn đường "
+"dẫn hoặc một đối tượng triển khai giao diện :class:`os.PathLike` trong đó "
+"phương thức :meth:`~os.PathLike.__fspath__` trả về một chuỗi, chẳng hạn như "
+"một đối tượng đường dẫn khác::"
+
+#: ../../library/pathlib.rst:129
+#, fuzzy
+msgid ""
+">>> PurePath('foo', 'some/path', 'bar')\n"
+"PurePosixPath('foo/some/path/bar')\n"
+">>> PurePath(Path('foo'), Path('bar'))\n"
+"PurePosixPath('foo/bar')"
+msgstr ""
+">>> PurePath('foo', 'some/path', 'bar')\n"
+"PurePosixPath('foo/some/path/bar')\n"
+">>> PurePath(Path('foo'), Path('bar'))\n"
+"PurePosixPath('foo/bar')"
+
+#: ../../library/pathlib.rst:134
+#, fuzzy
+msgid "When *pathsegments* is empty, the current directory is assumed::"
+msgstr "Khi *pathsegments* trống, thư mục hiện tại được giả định::"
+
+#: ../../library/pathlib.rst:136
+#, fuzzy
+msgid ""
+">>> PurePath()\n"
+"PurePosixPath('.')"
+msgstr ""
+">>> PurePath()\n"
+"PurePosixPath('.')"
+
+#: ../../library/pathlib.rst:139
+#, fuzzy
+msgid ""
+"If a segment is an absolute path, all previous segments are ignored (like "
+":func:`os.path.join`)::"
+msgstr ""
+"Nếu một phân đoạn là đường dẫn tuyệt đối thì tất cả các phân đoạn trước đó "
+"sẽ bị bỏ qua (như :func:`os.path.join`)::"
+
+#: ../../library/pathlib.rst:142
+#, fuzzy
+msgid ""
+">>> PurePath('/etc', '/usr', 'lib64')\n"
+"PurePosixPath('/usr/lib64')\n"
+">>> PureWindowsPath('c:/Windows', 'd:bar')\n"
+"PureWindowsPath('d:bar')"
+msgstr ""
+">>> PurePath('/etc', '/usr', 'lib64')\n"
+"PurePosixPath('/usr/lib64')\n"
+">>> PureWindowsPath('c:/Windows', 'd:bar')\n"
+"PureWindowsPath('d:bar')"
+
+#: ../../library/pathlib.rst:147
+#, fuzzy
+msgid ""
+"On Windows, the drive is not reset when a rooted relative path segment "
+"(e.g., ``r'\\foo'``) is encountered::"
+msgstr ""
+"Trên Windows, ổ đĩa không được đặt lại khi gặp phải đoạn đường dẫn tương đối"
+" đã được root (ví dụ: ``r'\\foo'``)::"
+
+#: ../../library/pathlib.rst:150
+#, fuzzy
+msgid ""
+">>> PureWindowsPath('c:/Windows', '/Program Files')\n"
+"PureWindowsPath('c:/Program Files')"
+msgstr ""
+">>> PureWindowsPath('c:/Windows', '/Program Files')\n"
+"PureWindowsPath('c:/Program Files')"
+
+#: ../../library/pathlib.rst:153
+#, fuzzy
+msgid ""
+"Spurious slashes and single dots are collapsed, but double dots (``'..'``) "
+"and leading double slashes (``'//'``) are not, since this would change the "
+"meaning of a path for various reasons (e.g. symbolic links, UNC paths)::"
+msgstr ""
+"Các dấu gạch chéo giả và dấu chấm đơn được thu gọn, nhưng dấu gạch chéo kép "
+"(``'..'``) và dấu gạch chéo kép ở đầu (``'//'``) thì không, vì điều này sẽ "
+"thay đổi ý nghĩa của đường dẫn vì nhiều lý do (ví dụ: liên kết tượng trưng, "
+"đường dẫn UNC)::"
+
+#: ../../library/pathlib.rst:157
+#, fuzzy
+msgid ""
+">>> PurePath('foo//bar')\n"
+"PurePosixPath('foo/bar')\n"
+">>> PurePath('//foo/bar')\n"
+"PurePosixPath('//foo/bar')\n"
+">>> PurePath('foo/./bar')\n"
+"PurePosixPath('foo/bar')\n"
+">>> PurePath('foo/../bar')\n"
+"PurePosixPath('foo/../bar')"
+msgstr ""
+">>> PurePath('foo//bar')\n"
+"PurePosixPath('foo/bar')\n"
+">>> PurePath('//foo/bar')\n"
+"PurePosixPath('//foo/bar')\n"
+">>> PurePath('foo/./bar')\n"
+"PurePosixPath('foo/bar')\n"
+">>> PurePath('foo/../bar')\n"
+"PurePosixPath('foo/../bar')"
+
+#: ../../library/pathlib.rst:166
+#, fuzzy
+msgid ""
+"(a naïve approach would make ``PurePosixPath('foo/../bar')`` equivalent to "
+"``PurePosixPath('bar')``, which is wrong if ``foo`` is a symbolic link to "
+"another directory)"
+msgstr ""
+"(một cách tiếp cận ngây thơ sẽ làm cho ``PurePosixPath('foo/../bar')`` tương"
+" đương với ``PurePosixPath('bar')``, điều này là sai nếu ``foo`` là một liên"
+" kết tượng trưng đến một thư mục khác)"
+
+#: ../../library/pathlib.rst:170
+#, fuzzy
+msgid ""
+"Pure path objects implement the :class:`os.PathLike` interface, allowing "
+"them to be used anywhere the interface is accepted."
+msgstr ""
+"Các đối tượng đường dẫn thuần túy triển khai giao diện :class:`os.PathLike`,"
+" cho phép chúng được sử dụng ở bất kỳ nơi nào giao diện được chấp nhận."
+
+#: ../../library/pathlib.rst:173
+#, fuzzy
+msgid "Added support for the :class:`os.PathLike` interface."
+msgstr "Đã thêm hỗ trợ cho giao diện :class:`os.PathLike`."
+
+#: ../../library/pathlib.rst:178
+#, fuzzy
+msgid ""
+"A subclass of :class:`PurePath`, this path flavour represents non-Windows "
+"filesystem paths::"
+msgstr ""
+"Một lớp con của :class:`PurePath`, hương vị đường dẫn này đại diện cho các "
+"đường dẫn hệ thống tệp không phải của Windows::"
+
+#: ../../library/pathlib.rst:181
+#, fuzzy
+msgid ""
+">>> PurePosixPath('/etc/hosts')\n"
+"PurePosixPath('/etc/hosts')"
+msgstr ""
+">>> PurePosixPath('/etc/hosts')\n"
+"PurePosixPath('/etc/hosts')"
+
+#: ../../library/pathlib.rst:184 ../../library/pathlib.rst:196
+#: ../../library/pathlib.rst:783 ../../library/pathlib.rst:793
+#: ../../library/pathlib.rst:808
+#, fuzzy
+msgid "*pathsegments* is specified similarly to :class:`PurePath`."
+msgstr "*pathsegments* được chỉ định tương tự như :class:`PurePath`."
+
+#: ../../library/pathlib.rst:188
+#, fuzzy
+msgid ""
+"A subclass of :class:`PurePath`, this path flavour represents Windows "
+"filesystem paths, including `UNC paths`_::"
+msgstr ""
+"Một lớp con của :class:`PurePath`, hương vị đường dẫn này đại diện cho các "
+"đường dẫn hệ thống tệp Windows, bao gồm `UNC paths`_::"
+
+#: ../../library/pathlib.rst:191
+#, fuzzy
+msgid ""
+">>> PureWindowsPath('c:/', 'Users', 'Ximénez')\n"
+"PureWindowsPath('c:/Users/Ximénez')\n"
+">>> PureWindowsPath('//server/share/file')\n"
+"PureWindowsPath('//server/share/file')"
+msgstr ""
+">>> PureWindowsPath('c:/', 'Users', 'Ximénez')\n"
+"PureWindowsPath('c:/Users/Ximénez')\n"
+">>> PureWindowsPath('//server/share/file')\n"
+"PureWindowsPath('//server/share/file')"
+
+#: ../../library/pathlib.rst:200
+#, fuzzy
+msgid ""
+"Regardless of the system you're running on, you can instantiate all of these"
+" classes, since they don't provide any operation that does system calls."
+msgstr ""
+"Bất kể bạn đang chạy trên hệ thống nào, bạn có thể khởi tạo tất cả các lớp "
+"này vì chúng không cung cấp bất kỳ thao tác nào thực hiện lệnh gọi hệ thống."
+
+#: ../../library/pathlib.rst:205
+#, fuzzy
+msgid "General properties"
+msgstr "Thuộc tính chung"
+
+#: ../../library/pathlib.rst:207
+#, fuzzy
+msgid ""
+"Paths are immutable and :term:`hashable`.  Paths of a same flavour are "
+"comparable and orderable.  These properties respect the flavour's case-"
+"folding semantics::"
+msgstr ""
+"Đường dẫn là bất biến và :term:`hashable`.  Các đường dẫn có cùng hương vị "
+"có thể so sánh được và có thể sắp xếp được.  Các thuộc tính này tôn trọng "
+"ngữ nghĩa phân loại của hương vị::"
+
+#: ../../library/pathlib.rst:211
+#, python-brace-format, fuzzy
+msgid ""
+">>> PurePosixPath('foo') == PurePosixPath('FOO')\n"
+"False\n"
+">>> PureWindowsPath('foo') == PureWindowsPath('FOO')\n"
+"True\n"
+">>> PureWindowsPath('FOO') in { PureWindowsPath('foo') }\n"
+"True\n"
+">>> PureWindowsPath('C:') < PureWindowsPath('d:')\n"
+"True"
+msgstr ""
+">>> PurePosixPath('foo') == PurePosixPath('FOO')\n"
+"sai\n"
+">>> PureWindowsPath('foo') == PureWindowsPath('FOO')\n"
+"đúng\n"
+">>> PureWindowsPath('FOO') trong { PureWindowsPath('foo') }\n"
+"đúng\n"
+">>> PureWindowsPath('C:') < PureWindowsPath('d:')\n"
+"đúng"
+
+#: ../../library/pathlib.rst:220
+#, fuzzy
+msgid "Paths of a different flavour compare unequal and cannot be ordered::"
+msgstr ""
+"Các đường dẫn có hương vị khác so sánh không bằng nhau và không thể sắp xếp "
+"được::"
+
+#: ../../library/pathlib.rst:222
+#, fuzzy
+msgid ""
+">>> PureWindowsPath('foo') == PurePosixPath('foo')\n"
+"False\n"
+">>> PureWindowsPath('foo') < PurePosixPath('foo')\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"TypeError: '<' not supported between instances of 'PureWindowsPath' and 'PurePosixPath'"
+msgstr ""
+">>> PureWindowsPath('foo') == PurePosixPath('foo')\n"
+"sai\n"
+">>> PureWindowsPath('foo') < PurePosixPath('foo')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"TypeError: '<' không được hỗ trợ giữa các phiên bản của 'PureWindowsPath' và 'PurePosixPath'"
+
+#: ../../library/pathlib.rst:231
+#, fuzzy
+msgid "Operators"
+msgstr "Toán tử"
+
+#: ../../library/pathlib.rst:233
+#, fuzzy
+msgid ""
+"The slash operator helps create child paths, like :func:`os.path.join`. If "
+"the argument is an absolute path, the previous path is ignored. On Windows, "
+"the drive is not reset when the argument is a rooted relative path (e.g., "
+"``r'\\foo'``)::"
+msgstr ""
+"Toán tử gạch chéo giúp tạo các đường dẫn con, như :func:`os.path.join`. Nếu "
+"đối số là đường dẫn tuyệt đối thì đường dẫn trước đó sẽ bị bỏ qua. Trên "
+"Windows, ổ đĩa không được đặt lại khi đối số là đường dẫn tương đối gốc (ví "
+"dụ: ``r'\\foo'``)::"
+
+#: ../../library/pathlib.rst:238
+#, fuzzy
+msgid ""
+">>> p = PurePath('/etc')\n"
+">>> p\n"
+"PurePosixPath('/etc')\n"
+">>> p / 'init.d' / 'apache2'\n"
+"PurePosixPath('/etc/init.d/apache2')\n"
+">>> q = PurePath('bin')\n"
+">>> '/usr' / q\n"
+"PurePosixPath('/usr/bin')\n"
+">>> p / '/an_absolute_path'\n"
+"PurePosixPath('/an_absolute_path')\n"
+">>> PureWindowsPath('c:/Windows', '/Program Files')\n"
+"PureWindowsPath('c:/Program Files')"
+msgstr ""
+">>> p = PurePath('/etc')\n"
+">>> p\n"
+"PurePosixPath('/etc')\n"
+">>>p/'init.d'/'apache2'\n"
+"PurePosixPath('/etc/init.d/apache2')\n"
+">>> q = PurePath('bin')\n"
+">>> '/usr'/q\n"
+"PurePosixPath('/usr/bin')\n"
+">>> p / '/an_absolute_path'\n"
+"PurePosixPath('/an_absolute_path')\n"
+">>> PureWindowsPath('c:/Windows', '/Program Files')\n"
+"PureWindowsPath('c:/Program Files')"
+
+#: ../../library/pathlib.rst:251
+#, fuzzy
+msgid ""
+"A path object can be used anywhere an object implementing "
+":class:`os.PathLike` is accepted::"
+msgstr ""
+"Một đối tượng đường dẫn có thể được sử dụng ở bất cứ nơi nào đối tượng triển"
+" khai :class:`os.PathLike` được chấp nhận ::"
+
+#: ../../library/pathlib.rst:254
+#, fuzzy
+msgid ""
+">>> import os\n"
+">>> p = PurePath('/etc')\n"
+">>> os.fspath(p)\n"
+"'/etc'"
+msgstr ""
+">>> nhập hệ điều hành\n"
+">>> p = PurePath('/etc')\n"
+">>> os.fspath(p)\n"
+"'/vv'"
+
+#: ../../library/pathlib.rst:259
+#, fuzzy
+msgid ""
+"The string representation of a path is the raw filesystem path itself (in "
+"native form, e.g. with backslashes under Windows), which you can pass to any"
+" function taking a file path as a string::"
+msgstr ""
+"Biểu diễn chuỗi của một đường dẫn là chính đường dẫn hệ thống tệp thô (ở "
+"dạng gốc, ví dụ: có dấu gạch chéo ngược trong Windows), mà bạn có thể chuyển"
+" sang bất kỳ hàm nào lấy đường dẫn tệp dưới dạng chuỗi ::"
+
+#: ../../library/pathlib.rst:263
+#, fuzzy
+msgid ""
+">>> p = PurePath('/etc')\n"
+">>> str(p)\n"
+"'/etc'\n"
+">>> p = PureWindowsPath('c:/Program Files')\n"
+">>> str(p)\n"
+"'c:\\\\Program Files'"
+msgstr ""
+">>> p = PurePath('/etc')\n"
+">>> str(p)\n"
+"'/vv'\n"
+">>> p = PureWindowsPath('c:/Program Files')\n"
+">>> str(p)\n"
+"'c:\\\\Tệp chương trình'"
+
+#: ../../library/pathlib.rst:270
+#, fuzzy
+msgid ""
+"Similarly, calling :class:`bytes` on a path gives the raw filesystem path as"
+" a bytes object, as encoded by :func:`os.fsencode`::"
+msgstr ""
+"Tương tự, việc gọi :class:`bytes` trên một đường dẫn sẽ cung cấp đường dẫn "
+"hệ thống tệp thô dưới dạng đối tượng byte, như được mã hóa bởi "
+":func:`os.fsencode`::"
+
+#: ../../library/pathlib.rst:273
+#, fuzzy
+msgid ""
+">>> bytes(p)\n"
+"b'/etc'"
+msgstr ""
+">>> byte(p)\n"
+"b'/vv'"
+
+#: ../../library/pathlib.rst:277
+#, fuzzy
+msgid ""
+"Calling :class:`bytes` is only recommended under Unix.  Under Windows, the "
+"unicode form is the canonical representation of filesystem paths."
+msgstr ""
+"Gọi :class:`bytes` chỉ được khuyến nghị trong Unix.  Trong Windows, dạng "
+"unicode là biểu diễn chuẩn của đường dẫn hệ thống tệp."
+
+#: ../../library/pathlib.rst:282
+#, fuzzy
+msgid "Accessing individual parts"
+msgstr "Truy cập các phần riêng lẻ"
+
+#: ../../library/pathlib.rst:284
+#, fuzzy
+msgid ""
+"To access the individual \"parts\" (components) of a path, use the following"
+" property:"
+msgstr ""
+"Để truy cập vào các \"bộ phận\" (thành phần) riêng lẻ của đường dẫn, hãy sử "
+"dụng thuộc tính sau:"
+
+#: ../../library/pathlib.rst:289
+#, fuzzy
+msgid "A tuple giving access to the path's various components::"
+msgstr ""
+"Một bộ dữ liệu cho phép truy cập vào các thành phần khác nhau của đường "
+"dẫn::"
+
+#: ../../library/pathlib.rst:291
+#, fuzzy
+msgid ""
+">>> p = PurePath('/usr/bin/python3')\n"
+">>> p.parts\n"
+"('/', 'usr', 'bin', 'python3')\n"
+"\n"
+">>> p = PureWindowsPath('c:/Program Files/PSF')\n"
+">>> p.parts\n"
+"('c:\\\\', 'Program Files', 'PSF')"
+msgstr ""
+">>> p = PurePath('/usr/bin/python3')\n"
+">>> p.phần\n"
+"('/', 'usr', 'bin', 'python3')\n"
+"\n"
+">>> p = PureWindowsPath('c:/Program Files/PSF')\n"
+">>> p.phần\n"
+"('c:\\\\', 'Tệp chương trình', 'PSF')"
+
+#: ../../library/pathlib.rst:299
+#, fuzzy
+msgid "(note how the drive and local root are regrouped in a single part)"
+msgstr "(lưu ý cách ổ đĩa và thư mục gốc cục bộ được nhóm lại thành một phần)"
+
+#: ../../library/pathlib.rst:303
+#, fuzzy
+msgid "Methods and properties"
+msgstr "Phương thức và thuộc tính"
+
+#: ../../library/pathlib.rst:309
+#, fuzzy
+msgid "Pure paths provide the following methods and properties:"
+msgstr "Đường dẫn thuần túy cung cấp các phương thức và thuộc tính sau:"
+
+#: ../../library/pathlib.rst:313
+#, fuzzy
+msgid ""
+"The implementation of the :mod:`os.path` module used for low-level path "
+"parsing and joining: either :mod:`!posixpath` or :mod:`!ntpath`."
+msgstr ""
+"Việc triển khai mô-đun :mod:`os.path` được sử dụng để phân tích và nối đường"
+" dẫn cấp thấp: :mod:`!posixpath` hoặc :mod:`!ntpath`."
+
+#: ../../library/pathlib.rst:320
+#, fuzzy
+msgid "A string representing the drive letter or name, if any::"
+msgstr "Một chuỗi đại diện cho ký tự hoặc tên ổ đĩa, nếu có::"
+
+#: ../../library/pathlib.rst:322
+#, fuzzy
+msgid ""
+">>> PureWindowsPath('c:/Program Files/').drive\n"
+"'c:'\n"
+">>> PureWindowsPath('/Program Files/').drive\n"
+"''\n"
+">>> PurePosixPath('/etc').drive\n"
+"''"
+msgstr ""
+">>> PureWindowsPath('c:/Program Files/').drive\n"
+"'c:'\n"
+">>> PureWindowsPath('/Program Files/').drive\n"
+"''\n"
+">>> PurePosixPath('/etc').drive\n"
+"''"
+
+#: ../../library/pathlib.rst:329
+#, fuzzy
+msgid "UNC shares are also considered drives::"
+msgstr "Chia sẻ UNC cũng được coi là động lực::"
+
+#: ../../library/pathlib.rst:331
+#, fuzzy
+msgid ""
+">>> PureWindowsPath('//host/share/foo.txt').drive\n"
+"'\\\\\\\\host\\\\share'"
+msgstr ""
+">>> PureWindowsPath('//host/share/foo.txt').drive\n"
+"'\\\\\\\\host\\\\share'"
+
+#: ../../library/pathlib.rst:336
+#, fuzzy
+msgid "A string representing the (local or global) root, if any::"
+msgstr "Một chuỗi đại diện cho gốc (cục bộ hoặc toàn cục), nếu có::"
+
+#: ../../library/pathlib.rst:338
+#, fuzzy
+msgid ""
+">>> PureWindowsPath('c:/Program Files/').root\n"
+"'\\\\'\n"
+">>> PureWindowsPath('c:Program Files/').root\n"
+"''\n"
+">>> PurePosixPath('/etc').root\n"
+"'/'"
+msgstr ""
+">>> PureWindowsPath('c:/Program Files/').root\n"
+"'\\\\'\n"
+">>> PureWindowsPath('c:Program Files/').root\n"
+"''\n"
+">>> PurePosixPath('/etc').root\n"
+"'/'"
+
+#: ../../library/pathlib.rst:345
+#, fuzzy
+msgid "UNC shares always have a root::"
+msgstr "UNC chia sẻ luôn có gốc::"
+
+#: ../../library/pathlib.rst:347
+#, fuzzy
+msgid ""
+">>> PureWindowsPath('//host/share').root\n"
+"'\\\\'"
+msgstr ""
+">>> PureWindowsPath('//host/share').root\n"
+"'\\\\'"
+
+#: ../../library/pathlib.rst:350
+#, fuzzy
+msgid ""
+"If the path starts with more than two successive slashes, "
+":class:`~pathlib.PurePosixPath` collapses them::"
+msgstr ""
+"Nếu đường dẫn bắt đầu bằng nhiều hơn hai dấu gạch chéo liên tiếp, "
+":class:`~pathlib.PurePosixPath` sẽ thu gọn chúng::"
+
+#: ../../library/pathlib.rst:353
+#, fuzzy
+msgid ""
+">>> PurePosixPath('//etc').root\n"
+"'//'\n"
+">>> PurePosixPath('///etc').root\n"
+"'/'\n"
+">>> PurePosixPath('////etc').root\n"
+"'/'"
+msgstr ""
+">>> PurePosixPath('//etc').root\n"
+"'//'\n"
+">>> PurePosixPath('///etc').root\n"
+"'/'\n"
+">>> PurePosixPath('////etc').root\n"
+"'/'"
+
+#: ../../library/pathlib.rst:362
+#, fuzzy
+msgid ""
+"This behavior conforms to *The Open Group Base Specifications Issue 6*, "
+"paragraph `4.11 Pathname Resolution "
+"<https://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap04.html#tag_04_11>`_:"
+msgstr ""
+"Hành vi này tuân theo *The Open Group Base Specifications Issue 6*, đoạn "
+"`4.11 Pathname Resolution "
+"<https://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap04.html#tag_04_11>`_:"
+
+#: ../../library/pathlib.rst:366
+#, fuzzy
+msgid ""
+"*\"A pathname that begins with two successive slashes may be interpreted in "
+"an implementation-defined manner, although more than two leading slashes "
+"shall be treated as a single slash.\"*"
+msgstr ""
+"*\"A pathname that begins with two successive slashes may be interpreted in "
+"an implementation-defined manner, although more than two leading slashes "
+"shall be treated as a single slash.\"*"
+
+#: ../../library/pathlib.rst:372
+#, fuzzy
+msgid "The concatenation of the drive and root::"
+msgstr "Sự kết hợp của ổ đĩa và root::"
+
+#: ../../library/pathlib.rst:374
+#, fuzzy
+msgid ""
+">>> PureWindowsPath('c:/Program Files/').anchor\n"
+"'c:\\\\'\n"
+">>> PureWindowsPath('c:Program Files/').anchor\n"
+"'c:'\n"
+">>> PurePosixPath('/etc').anchor\n"
+"'/'\n"
+">>> PureWindowsPath('//host/share').anchor\n"
+"'\\\\\\\\host\\\\share\\\\'"
+msgstr ""
+">>> PureWindowsPath('c:/Program Files/').anchor\n"
+"'c:\\\\'\n"
+">>> PureWindowsPath('c:Program Files/').anchor\n"
+"'c:'\n"
+">>> PurePosixPath('/etc').anchor\n"
+"'/'\n"
+">>> PureWindowsPath('//host/share').anchor\n"
+"'\\\\\\\\host\\\\share\\\\'"
+
+#: ../../library/pathlib.rst:386
+#, fuzzy
+msgid ""
+"An immutable sequence providing access to the logical ancestors of the "
+"path::"
+msgstr ""
+"Một chuỗi bất biến cung cấp quyền truy cập vào tổ tiên logic của đường dẫn::"
+
+#: ../../library/pathlib.rst:389
+#, fuzzy
+msgid ""
+">>> p = PureWindowsPath('c:/foo/bar/setup.py')\n"
+">>> p.parents[0]\n"
+"PureWindowsPath('c:/foo/bar')\n"
+">>> p.parents[1]\n"
+"PureWindowsPath('c:/foo')\n"
+">>> p.parents[2]\n"
+"PureWindowsPath('c:/')"
+msgstr ""
+">>> p = PureWindowsPath('c:/foo/bar/setup.py')\n"
+">>> p.parents[0]\n"
+"PureWindowsPath('c:/foo/bar')\n"
+">>> p.parents[1]\n"
+"PureWindowsPath('c:/foo')\n"
+">>> p.parents[2]\n"
+"PureWindowsPath('c:/')"
+
+#: ../../library/pathlib.rst:397
+#, fuzzy
+msgid ""
+"The parents sequence now supports :term:`slices <slice>` and negative index "
+"values."
+msgstr ""
+"Trình tự gốc hiện hỗ trợ :term:`slices <slice>` và các giá trị chỉ số âm."
+
+#: ../../library/pathlib.rst:402
+#, fuzzy
+msgid "The logical parent of the path::"
+msgstr "Cha mẹ logic của đường dẫn::"
+
+#: ../../library/pathlib.rst:404
+#, fuzzy
+msgid ""
+">>> p = PurePosixPath('/a/b/c/d')\n"
+">>> p.parent\n"
+"PurePosixPath('/a/b/c')"
+msgstr ""
+">>> p = PurePosixPath('/a/b/c/d')\n"
+">>> p.parent\n"
+"PurePosixPath('/a/b/c')"
+
+#: ../../library/pathlib.rst:408
+#, fuzzy
+msgid "You cannot go past an anchor, or empty path::"
+msgstr "Bạn không thể đi qua một điểm neo hoặc đường dẫn trống::"
+
+#: ../../library/pathlib.rst:410
+#, fuzzy
+msgid ""
+">>> p = PurePosixPath('/')\n"
+">>> p.parent\n"
+"PurePosixPath('/')\n"
+">>> p = PurePosixPath('.')\n"
+">>> p.parent\n"
+"PurePosixPath('.')"
+msgstr ""
+">>> p = PurePosixPath('/')\n"
+">>> p.parent\n"
+"PurePosixPath('/')\n"
+">>> p = PurePosixPath('.')\n"
+">>> p.parent\n"
+"PurePosixPath('.')"
+
+#: ../../library/pathlib.rst:418
+#, fuzzy
+msgid "This is a purely lexical operation, hence the following behaviour::"
+msgstr "Đây là một hoạt động từ vựng thuần túy, do đó có hành vi sau::"
+
+#: ../../library/pathlib.rst:420
+#, fuzzy
+msgid ""
+">>> p = PurePosixPath('foo/..')\n"
+">>> p.parent\n"
+"PurePosixPath('foo')"
+msgstr ""
+">>> p = PurePosixPath('foo/..')\n"
+">>> p.parent\n"
+"PurePosixPath('foo')"
+
+#: ../../library/pathlib.rst:424
+#, fuzzy
+msgid ""
+"If you want to walk an arbitrary filesystem path upwards, it is recommended "
+"to first call :meth:`Path.resolve` so as to resolve symlinks and eliminate "
+"``\"..\"`` components."
+msgstr ""
+"Nếu bạn muốn đi theo đường dẫn hệ thống tệp tùy ý lên trên, trước tiên bạn "
+"nên gọi :meth:`Path.resolve` để giải quyết các liên kết tượng trưng và loại "
+"bỏ các thành phần ``\"..\"``."
+
+#: ../../library/pathlib.rst:431
+#, fuzzy
+msgid ""
+"A string representing the final path component, excluding the drive and "
+"root, if any::"
+msgstr ""
+"Một chuỗi đại diện cho thành phần đường dẫn cuối cùng, ngoại trừ ổ đĩa và "
+"root, nếu có::"
+
+#: ../../library/pathlib.rst:434
+#, fuzzy
+msgid ""
+">>> PurePosixPath('my/library/setup.py').name\n"
+"'setup.py'"
+msgstr ""
+">>> PurePosixPath('my/library/setup.py').name\n"
+"'setup.py'"
+
+#: ../../library/pathlib.rst:437
+#, fuzzy
+msgid "UNC drive names are not considered::"
+msgstr "Tên ổ đĩa UNC không được xem xét::"
+
+#: ../../library/pathlib.rst:439
+#, fuzzy
+msgid ""
+">>> PureWindowsPath('//some/share/setup.py').name\n"
+"'setup.py'\n"
+">>> PureWindowsPath('//some/share').name\n"
+"''"
+msgstr ""
+">>> PureWindowsPath('//some/share/setup.py').name\n"
+"'setup.py'\n"
+">>> PureWindowsPath('//some/share').name\n"
+"''"
+
+#: ../../library/pathlib.rst:447
+#, fuzzy
+msgid "The last dot-separated portion of the final component, if any::"
+msgstr ""
+"Phần được phân tách bằng dấu chấm cuối cùng của thành phần cuối cùng, nếu "
+"có::"
+
+#: ../../library/pathlib.rst:449
+#, fuzzy
+msgid ""
+">>> PurePosixPath('my/library/setup.py').suffix\n"
+"'.py'\n"
+">>> PurePosixPath('my/library.tar.gz').suffix\n"
+"'.gz'\n"
+">>> PurePosixPath('my/library').suffix\n"
+"''"
+msgstr ""
+">>> PurePosixPath('my/library/setup.py').suffix\n"
+"'.py'\n"
+">>> PurePosixPath('my/library.tar.gz').suffix\n"
+"'.gz'\n"
+">>> PurePosixPath('my/library').suffix\n"
+"''"
+
+#: ../../library/pathlib.rst:456
+#, fuzzy
+msgid "This is commonly called the file extension."
+msgstr "Đây thường được gọi là phần mở rộng tập tin."
+
+#: ../../library/pathlib.rst:460 ../../library/pathlib.rst:475
+#: ../../library/pathlib.rst:491
+#, fuzzy
+msgid "A single dot (\"``.``\") is considered a valid suffix."
+msgstr "Một dấu chấm (\"``.``\") được coi là hậu tố hợp lệ."
+
+#: ../../library/pathlib.rst:464
+#, fuzzy
+msgid "A list of the path's suffixes, often called file extensions::"
+msgstr ""
+"Danh sách các hậu tố của đường dẫn, thường được gọi là phần mở rộng tệp::"
+
+#: ../../library/pathlib.rst:466
+#, fuzzy
+msgid ""
+">>> PurePosixPath('my/library.tar.gar').suffixes\n"
+"['.tar', '.gar']\n"
+">>> PurePosixPath('my/library.tar.gz').suffixes\n"
+"['.tar', '.gz']\n"
+">>> PurePosixPath('my/library').suffixes\n"
+"[]"
+msgstr ""
+">>> PurePosixPath('my/library.tar.gar').suffixes\n"
+"['.tar', '.gar']\n"
+">>> PurePosixPath('my/library.tar.gz').suffixes\n"
+"['.tar', '.gz']\n"
+">>> PurePosixPath('my/library').suffixes\n"
+"[]"
+
+#: ../../library/pathlib.rst:480
+#, fuzzy
+msgid "The final path component, without its suffix::"
+msgstr "Thành phần đường dẫn cuối cùng, không có hậu tố của nó::"
+
+#: ../../library/pathlib.rst:482
+#, fuzzy
+msgid ""
+">>> PurePosixPath('my/library.tar.gz').stem\n"
+"'library.tar'\n"
+">>> PurePosixPath('my/library.tar').stem\n"
+"'library'\n"
+">>> PurePosixPath('my/library').stem\n"
+"'library'"
+msgstr ""
+">>> PurePosixPath('my/library.tar.gz').stem\n"
+"'thư viện.tar'\n"
+">>> PurePosixPath('my/library.tar').stem\n"
+"'thư viện'\n"
+">>> PurePosixPath('my/library').stem\n"
+"'thư viện'"
+
+#: ../../library/pathlib.rst:496
+#, fuzzy
+msgid ""
+"Return a string representation of the path with forward slashes (``/``)::"
+msgstr "Trả về biểu diễn chuỗi của đường dẫn có dấu gạch chéo lên (``/``)::"
+
+#: ../../library/pathlib.rst:498
+#, fuzzy
+msgid ""
+">>> p = PureWindowsPath('c:\\\\windows')\n"
+">>> str(p)\n"
+"'c:\\\\windows'\n"
+">>> p.as_posix()\n"
+"'c:/windows'"
+msgstr ""
+">>> p = PureWindowsPath('c:\\\\windows')\n"
+">>> str(p)\n"
+"'c:\\\\windows'\n"
+">>> p.as_posix()\n"
+"'c:/windows'"
+
+#: ../../library/pathlib.rst:507
+#, fuzzy
+msgid ""
+"Return whether the path is absolute or not.  A path is considered absolute "
+"if it has both a root and (if the flavour allows) a drive::"
+msgstr ""
+"Trả về đường dẫn có tuyệt đối hay không.  Một đường dẫn được coi là tuyệt "
+"đối nếu nó có cả gốc và (nếu hương vị cho phép) ổ đĩa ::"
+
+#: ../../library/pathlib.rst:510
+#, fuzzy
+msgid ""
+">>> PurePosixPath('/a/b').is_absolute()\n"
+"True\n"
+">>> PurePosixPath('a/b').is_absolute()\n"
+"False\n"
+"\n"
+">>> PureWindowsPath('c:/a/b').is_absolute()\n"
+"True\n"
+">>> PureWindowsPath('/a/b').is_absolute()\n"
+"False\n"
+">>> PureWindowsPath('c:').is_absolute()\n"
+"False\n"
+">>> PureWindowsPath('//some/share').is_absolute()\n"
+"True"
+msgstr ""
+">>> PurePosixPath('/a/b').is_absolute()\n"
+"đúng\n"
+">>> PurePosixPath('a/b').is_absolute()\n"
+"sai\n"
+"\n"
+">>> PureWindowsPath('c:/a/b').is_absolute()\n"
+"đúng\n"
+">>> PureWindowsPath('/a/b').is_absolute()\n"
+"sai\n"
+">>> PureWindowsPath('c:').is_absolute()\n"
+"sai\n"
+">>> PureWindowsPath('//some/share').is_absolute()\n"
+"đúng"
+
+#: ../../library/pathlib.rst:527
+#, fuzzy
+msgid "Return whether or not this path is relative to the *other* path."
+msgstr ""
+"Trả về xem đường dẫn này có liên quan đến đường dẫn *other* hay không."
+
+#: ../../library/pathlib.rst:535
+#, fuzzy
+msgid ""
+"This method is string-based; it neither accesses the filesystem nor treats "
+"\"``..``\" segments specially. The following code is equivalent:"
+msgstr ""
+"Phương pháp này dựa trên chuỗi; nó không truy cập vào hệ thống tập tin cũng "
+"như không xử lý các phân đoạn \"``..``\" một cách đặc biệt. Đoạn mã sau là "
+"tương đương:"
+
+#: ../../library/pathlib.rst:546
+#, fuzzy
+msgid ""
+"Passing additional arguments is deprecated; if supplied, they are joined "
+"with *other*."
+msgstr ""
+"Việc chuyển các đối số bổ sung không được dùng nữa; nếu được cung cấp, chúng"
+" sẽ được nối với *other*."
+
+#: ../../library/pathlib.rst:551
+#, fuzzy
+msgid ""
+"With :class:`PureWindowsPath`, return ``True`` if the path is considered "
+"reserved under Windows, ``False`` otherwise.  With :class:`PurePosixPath`, "
+"``False`` is always returned."
+msgstr ""
+"Với :class:`PureWindowsPath`, trả về ``True`` nếu đường dẫn được coi là dành"
+" riêng trong Windows, ``False`` nếu không.  Với :class:`PurePosixPath`, "
+"``False`` luôn được trả về."
+
+#: ../../library/pathlib.rst:555
+#, fuzzy
+msgid ""
+"Windows path names that contain a colon, or end with a dot or a space, are "
+"considered reserved. UNC paths may be reserved."
+msgstr ""
+"Tên đường dẫn Windows chứa dấu hai chấm hoặc kết thúc bằng dấu chấm hoặc dấu"
+" cách được coi là dành riêng. Đường dẫn UNC có thể được bảo lưu."
+
+#: ../../library/pathlib.rst:559
+#, fuzzy
+msgid ""
+"This method is deprecated; use :func:`os.path.isreserved` to detect reserved"
+" paths on Windows."
+msgstr ""
+"Phương pháp này không được dùng nữa; sử dụng :func:`os.path.isreserved` để "
+"phát hiện các đường dẫn dành riêng trên Windows."
+
+#: ../../library/pathlib.rst:565
+#, fuzzy
+msgid ""
+"Calling this method is equivalent to combining the path with each of the "
+"given *pathsegments* in turn::"
+msgstr ""
+"Gọi phương thức này tương đương với việc kết hợp đường dẫn với từng "
+"*pathsegments* đã cho lần lượt ::"
+
+#: ../../library/pathlib.rst:568
+#, fuzzy
+msgid ""
+">>> PurePosixPath('/etc').joinpath('passwd')\n"
+"PurePosixPath('/etc/passwd')\n"
+">>> PurePosixPath('/etc').joinpath(PurePosixPath('passwd'))\n"
+"PurePosixPath('/etc/passwd')\n"
+">>> PurePosixPath('/etc').joinpath('init.d', 'apache2')\n"
+"PurePosixPath('/etc/init.d/apache2')\n"
+">>> PureWindowsPath('c:').joinpath('/Program Files')\n"
+"PureWindowsPath('c:/Program Files')"
+msgstr ""
+">>> PurePosixPath('/etc').joinpath('passwd')\n"
+"PurePosixPath('/etc/passwd')\n"
+">>> PurePosixPath('/etc').joinpath(PurePosixPath('passwd'))\n"
+"PurePosixPath('/etc/passwd')\n"
+">>> PurePosixPath('/etc').joinpath('init.d', 'apache2')\n"
+"PurePosixPath('/etc/init.d/apache2')\n"
+">>> PureWindowsPath('c:').joinpath('/Program Files')\n"
+"PureWindowsPath('c:/Program Files')"
+
+#: ../../library/pathlib.rst:580
+#, fuzzy
+msgid ""
+"Match this path against the provided glob-style pattern.  Return ``True`` if"
+" matching is successful, ``False`` otherwise.  For example::"
+msgstr ""
+"Khớp đường dẫn này với mẫu kiểu toàn cầu được cung cấp.  Trả về ``True`` nếu"
+" khớp thành công, nếu không thì trả về ``False``.  Ví dụ::"
+
+#: ../../library/pathlib.rst:583
+#, fuzzy
+msgid ""
+">>> PurePath('a/b.py').full_match('a/*.py')\n"
+"True\n"
+">>> PurePath('a/b.py').full_match('*.py')\n"
+"False\n"
+">>> PurePath('/a/b/c.py').full_match('/a/**')\n"
+"True\n"
+">>> PurePath('/a/b/c.py').full_match('**/*.py')\n"
+"True"
+msgstr ""
+">>> PurePath('a/b.py').full_match('a/*.py')\n"
+"đúng\n"
+">>> PurePath('a/b.py').full_match('*.py')\n"
+"sai\n"
+">>> PurePath('/a/b/c.py').full_match('/a/**')\n"
+"đúng\n"
+">>> PurePath('/a/b/c.py').full_match('**/*.py')\n"
+"đúng"
+
+#: ../../library/pathlib.rst:593 ../../library/pathlib.rst:1357
+#, fuzzy
+msgid ":ref:`pathlib-pattern-language` documentation."
+msgstr "tài liệu :ref:`pathlib-pattern-language`."
+
+#: ../../library/pathlib.rst:595
+#, fuzzy
+msgid "As with other methods, case-sensitivity follows platform defaults::"
+msgstr ""
+"Cũng như các phương pháp khác, phân biệt chữ hoa chữ thường tuân theo các "
+"giá trị mặc định của nền tảng::"
+
+#: ../../library/pathlib.rst:597
+#, fuzzy
+msgid ""
+">>> PurePosixPath('b.py').full_match('*.PY')\n"
+"False\n"
+">>> PureWindowsPath('b.py').full_match('*.PY')\n"
+"True"
+msgstr ""
+">>> PurePosixPath('b.py').full_match('*.PY')\n"
+"sai\n"
+">>> PureWindowsPath('b.py').full_match('*.PY')\n"
+"đúng"
+
+#: ../../library/pathlib.rst:602
+#, fuzzy
+msgid ""
+"Set *case_sensitive* to ``True`` or ``False`` to override this behaviour."
+msgstr ""
+"Đặt *case_sensitive* thành ``True`` hoặc ``False`` để ghi đè hành vi này."
+
+#: ../../library/pathlib.rst:609
+#, fuzzy
+msgid ""
+"Match this path against the provided non-recursive glob-style pattern. "
+"Return ``True`` if matching is successful, ``False`` otherwise."
+msgstr ""
+"So khớp đường dẫn này với mẫu kiểu toàn cầu không đệ quy được cung cấp. Trả "
+"về ``True`` nếu khớp thành công, nếu không thì trả về ``False``."
+
+#: ../../library/pathlib.rst:612
+#, fuzzy
+msgid ""
+"This method is similar to :meth:`~PurePath.full_match`, but empty patterns "
+"aren't allowed (:exc:`ValueError` is raised), the recursive wildcard "
+"\"``**``\" isn't supported (it acts like non-recursive \"``*``\"), and if a "
+"relative pattern is provided, then matching is done from the right::"
+msgstr ""
+"Phương thức này tương tự như :meth:`~PurePath.full_match`, nhưng không cho "
+"phép các mẫu trống (:exc:`ValueError` được nâng lên), ký tự đại diện đệ quy "
+"\"``**``\" không được hỗ trợ (nó hoạt động giống như \"``*``\" không đệ quy)"
+" và nếu một mẫu tương đối được cung cấp thì việc so khớp sẽ được thực hiện "
+"từ bên phải::"
+
+#: ../../library/pathlib.rst:617
+#, fuzzy
+msgid ""
+">>> PurePath('a/b.py').match('*.py')\n"
+"True\n"
+">>> PurePath('/a/b/c.py').match('b/*.py')\n"
+"True\n"
+">>> PurePath('/a/b/c.py').match('a/*.py')\n"
+"False"
+msgstr ""
+">>> PurePath('a/b.py').match('*.py')\n"
+"đúng\n"
+">>> PurePath('/a/b/c.py').match('b/*.py')\n"
+"đúng\n"
+">>> PurePath('/a/b/c.py').match('a/*.py')\n"
+"sai"
+
+#: ../../library/pathlib.rst:624 ../../library/pathlib.rst:1381
+#: ../../library/pathlib.rst:1415
+#, fuzzy
+msgid "The *pattern* parameter accepts a :term:`path-like object`."
+msgstr "Tham số *pattern* chấp nhận :term:`path-like object`."
+
+#: ../../library/pathlib.rst:627 ../../library/pathlib.rst:1375
+#: ../../library/pathlib.rst:1409
+#, fuzzy
+msgid "The *case_sensitive* parameter was added."
+msgstr "Tham số *case_sensitive* đã được thêm vào."
+
+#: ../../library/pathlib.rst:633
+#, fuzzy
+msgid ""
+"Compute a version of this path relative to the path represented by *other*."
+"  If it's impossible, :exc:`ValueError` is raised::"
+msgstr ""
+"Tính toán phiên bản của đường dẫn này tương ứng với đường dẫn được biểu thị "
+"bằng *other*.  Nếu không thể, :exc:`ValueError` sẽ được nêu ra::"
+
+#: ../../library/pathlib.rst:636
+#, fuzzy
+msgid ""
+">>> p = PurePosixPath('/etc/passwd')\n"
+">>> p.relative_to('/')\n"
+"PurePosixPath('etc/passwd')\n"
+">>> p.relative_to('/etc')\n"
+"PurePosixPath('passwd')\n"
+">>> p.relative_to('/usr')\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"  File \"pathlib.py\", line 941, in relative_to\n"
+"    raise ValueError(error_message.format(str(self), str(formatted)))\n"
+"ValueError: '/etc/passwd' is not in the subpath of '/usr' OR one path is relative and the other is absolute."
+msgstr ""
+">>> p = PurePosixPath('/etc/passwd')\n"
+">>> p.relative_to('/')\n"
+"PurePosixPath('etc/passwd')\n"
+">>> p.relative_to('/etc')\n"
+"PurePosixPath('passwd')\n"
+">>> p.relative_to('/usr')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"  Tệp \"pathlib.py\", dòng 941, ở dạngrel_to\n"
+"    raise ValueError(error_message.format(str(self), str(formatted)))\n"
+"ValueError: '/etc/passwd' không nằm trong đường dẫn phụ của '/usr' HOẶC một đường dẫn là tương đối và đường dẫn kia là tuyệt đối."
+
+#: ../../library/pathlib.rst:648
+#, fuzzy
+msgid ""
+"When *walk_up* is false (the default), the path must start with *other*. "
+"When the argument is true, ``..`` entries may be added to form the relative "
+"path. In all other cases, such as the paths referencing different drives, "
+":exc:`ValueError` is raised.::"
+msgstr ""
+"Khi *walk_up* sai (mặc định), đường dẫn phải bắt đầu bằng *other*. Khi đối "
+"số là đúng, các mục ``..`` có thể được thêm vào để tạo thành đường dẫn tương"
+" đối. Trong tất cả các trường hợp khác, chẳng hạn như đường dẫn tham chiếu "
+"đến các ổ đĩa khác nhau, :exc:`ValueError` được nâng lên.::"
+
+#: ../../library/pathlib.rst:653
+#, fuzzy
+msgid ""
+">>> p.relative_to('/usr', walk_up=True)\n"
+"PurePosixPath('../etc/passwd')\n"
+">>> p.relative_to('foo', walk_up=True)\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"  File \"pathlib.py\", line 941, in relative_to\n"
+"    raise ValueError(error_message.format(str(self), str(formatted)))\n"
+"ValueError: '/etc/passwd' is not on the same drive as 'foo' OR one path is relative and the other is absolute."
+msgstr ""
+">>> p.relative_to('/usr', walk_up=True)\n"
+"PurePosixPath('../etc/passwd')\n"
+">>> p.relative_to('foo', walk_up=True)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"  Tệp \"pathlib.py\", dòng 941, ở dạngrel_to\n"
+"    raise ValueError(error_message.format(str(self), str(formatted)))\n"
+"ValueError: '/etc/passwd' không nằm trên cùng ổ đĩa với 'foo' HOẶC một đường dẫn là tương đối và đường dẫn kia là tuyệt đối."
+
+#: ../../library/pathlib.rst:663
+#, fuzzy
+msgid ""
+"This function is part of :class:`PurePath` and works with strings. It does "
+"not check or access the underlying file structure. This can impact the "
+"*walk_up* option as it assumes that no symlinks are present in the path; "
+"call :meth:`~Path.resolve` first if necessary to resolve symlinks."
+msgstr ""
+"Hàm này là một phần của :class:`PurePath` và hoạt động với chuỗi. Nó không "
+"kiểm tra hoặc truy cập cấu trúc tập tin cơ bản. Điều này có thể ảnh hưởng "
+"đến tùy chọn *walk_up* vì nó giả định rằng không có liên kết tượng trưng nào"
+" trong đường dẫn; hãy gọi :meth:`~Path.resolve` trước nếu cần để giải quyết "
+"các liên kết tượng trưng."
+
+#: ../../library/pathlib.rst:669
+#, fuzzy
+msgid ""
+"The *walk_up* parameter was added (old behavior is the same as "
+"``walk_up=False``)."
+msgstr ""
+"Tham số *walk_up* đã được thêm vào (hành vi cũ giống như ``walk_up=False``)."
+
+#: ../../library/pathlib.rst:674
+#, fuzzy
+msgid ""
+"Passing additional positional arguments is deprecated; if supplied, they are"
+" joined with *other*."
+msgstr ""
+"Việc truyền các đối số vị trí bổ sung không được dùng nữa; nếu được cung "
+"cấp, chúng sẽ được nối với *other*."
+
+#: ../../library/pathlib.rst:679
+#, fuzzy
+msgid ""
+"Return a new path with the :attr:`name` changed.  If the original path "
+"doesn't have a name, ValueError is raised::"
+msgstr ""
+"Trả lại đường dẫn mới với :attr:`name` đã thay đổi.  Nếu đường dẫn ban đầu "
+"không có tên, ValueError sẽ được nâng lên::"
+
+#: ../../library/pathlib.rst:682
+#, python-format, fuzzy
+msgid ""
+">>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')\n"
+">>> p.with_name('setup.py')\n"
+"PureWindowsPath('c:/Downloads/setup.py')\n"
+">>> p = PureWindowsPath('c:/')\n"
+">>> p.with_name('setup.py')\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"  File \"/home/antoine/cpython/default/Lib/pathlib.py\", line 751, in with_name\n"
+"    raise ValueError(\"%r has an empty name\" % (self,))\n"
+"ValueError: PureWindowsPath('c:/') has an empty name"
+msgstr ""
+">>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')\n"
+">>> p.with_name('setup.py')\n"
+"PureWindowsPath('c:/Downloads/setup.py')\n"
+">>> p = PureWindowsPath('c:/')\n"
+">>> p.with_name('setup.py')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"  Tệp \"/home/antoine/cpython/default/Lib/pathlib.py\", dòng 751, trong with_name\n"
+"    raise ValueError(\"%r có tên trống\" % (self,))\n"
+"ValueError: PureWindowsPath('c:/') có tên trống"
+
+#: ../../library/pathlib.rst:696
+#, fuzzy
+msgid ""
+"Return a new path with the :attr:`stem` changed.  If the original path "
+"doesn't have a name, ValueError is raised::"
+msgstr ""
+"Trả lại đường dẫn mới với :attr:`stem` đã thay đổi.  Nếu đường dẫn ban đầu "
+"không có tên, ValueError sẽ được nâng lên::"
+
+#: ../../library/pathlib.rst:699
+#, python-format, fuzzy
+msgid ""
+">>> p = PureWindowsPath('c:/Downloads/draft.txt')\n"
+">>> p.with_stem('final')\n"
+"PureWindowsPath('c:/Downloads/final.txt')\n"
+">>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')\n"
+">>> p.with_stem('lib')\n"
+"PureWindowsPath('c:/Downloads/lib.gz')\n"
+">>> p = PureWindowsPath('c:/')\n"
+">>> p.with_stem('')\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"  File \"/home/antoine/cpython/default/Lib/pathlib.py\", line 861, in with_stem\n"
+"    return self.with_name(stem + self.suffix)\n"
+"  File \"/home/antoine/cpython/default/Lib/pathlib.py\", line 851, in with_name\n"
+"    raise ValueError(\"%r has an empty name\" % (self,))\n"
+"ValueError: PureWindowsPath('c:/') has an empty name"
+msgstr ""
+">>> p = PureWindowsPath('c:/Downloads/draft.txt')\n"
+">>> p.with_stem('cuối cùng')\n"
+"PureWindowsPath('c:/Downloads/final.txt')\n"
+">>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')\n"
+">>> p.with_stem('lib')\n"
+"PureWindowsPath('c:/Downloads/lib.gz')\n"
+">>> p = PureWindowsPath('c:/')\n"
+">>> p.with_stem('')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"  Tệp \"/home/antoine/cpython/default/Lib/pathlib.py\", dòng 861, trong with_stem\n"
+"    trả về self.with_name(stem + self.suffix)\n"
+"  Tệp \"/home/antoine/cpython/default/Lib/pathlib.py\", dòng 851, trong with_name\n"
+"    raise ValueError(\"%r có tên trống\" % (self,))\n"
+"ValueError: PureWindowsPath('c:/') có tên trống"
+
+#: ../../library/pathlib.rst:720
+#, fuzzy
+msgid ""
+"Return a new path with the :attr:`suffix` changed.  If the original path "
+"doesn't have a suffix, the new *suffix* is appended instead.  If the "
+"*suffix* is an empty string, the original suffix is removed::"
+msgstr ""
+"Trả lại đường dẫn mới với :attr:`suffix` đã thay đổi.  Nếu đường dẫn ban đầu"
+" không có hậu tố thì thay vào đó, *suffix* mới sẽ được thêm vào.  Nếu "
+"*suffix* là một chuỗi trống, hậu tố gốc sẽ bị xóa ::"
+
+#: ../../library/pathlib.rst:724
+#, fuzzy
+msgid ""
+">>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')\n"
+">>> p.with_suffix('.bz2')\n"
+"PureWindowsPath('c:/Downloads/pathlib.tar.bz2')\n"
+">>> p = PureWindowsPath('README')\n"
+">>> p.with_suffix('.txt')\n"
+"PureWindowsPath('README.txt')\n"
+">>> p = PureWindowsPath('README.txt')\n"
+">>> p.with_suffix('')\n"
+"PureWindowsPath('README')"
+msgstr ""
+">>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')\n"
+">>> p.with_suffix('.bz2')\n"
+"PureWindowsPath('c:/Downloads/pathlib.tar.bz2')\n"
+">>> p = PureWindowsPath('README')\n"
+">>> p.with_suffix('.txt')\n"
+"PureWindowsPath('README.txt')\n"
+">>> p = PureWindowsPath('README.txt')\n"
+">>> p.with_suffix('')\n"
+"PureWindowsPath('README')"
+
+#: ../../library/pathlib.rst:736
+#, fuzzy
+msgid ""
+"A single dot (\"``.``\") is considered a valid suffix. In previous versions,"
+" :exc:`ValueError` is raised if a single dot is supplied."
+msgstr ""
+"Một dấu chấm (\"``.``\") được coi là hậu tố hợp lệ. Trong các phiên bản "
+"trước, :exc:`ValueError` sẽ được nâng lên nếu có một dấu chấm duy nhất."
+
+#: ../../library/pathlib.rst:742
+#, fuzzy
+msgid ""
+"Create a new path object of the same type by combining the given "
+"*pathsegments*. This method is called whenever a derivative path is created,"
+" such as from :attr:`parent` and :meth:`relative_to`. Subclasses may "
+"override this method to pass information to derivative paths, for example::"
+msgstr ""
+"Tạo một đối tượng đường dẫn mới cùng loại bằng cách kết hợp *pathsegments* "
+"đã cho. Phương thức này được gọi bất cứ khi nào một đường dẫn phái sinh được"
+" tạo, chẳng hạn như từ :attr:`parent` và :meth:`relative_to`. Các lớp con có"
+" thể ghi đè phương thức này để truyền thông tin đến các đường dẫn phái sinh,"
+" ví dụ::"
+
+#: ../../library/pathlib.rst:747
+#, fuzzy
+msgid ""
+"from pathlib import PurePosixPath\n"
+"\n"
+"class MyPath(PurePosixPath):\n"
+"    def __init__(self, *pathsegments, session_id):\n"
+"        super().__init__(*pathsegments)\n"
+"        self.session_id = session_id\n"
+"\n"
+"    def with_segments(self, *pathsegments):\n"
+"        return type(self)(*pathsegments, session_id=self.session_id)\n"
+"\n"
+"etc = MyPath('/etc', session_id=42)\n"
+"hosts = etc / 'hosts'\n"
+"print(hosts.session_id)  # 42"
+msgstr ""
+"từ pathlib nhập PurePosixPath\n"
+"\n"
+"lớp MyPath(PurePosixPath):\n"
+"    def __init__(self, *pathsegments, session_id):\n"
+"        super().__init__(*đoạn đường dẫn)\n"
+"        self.session_id = session_id\n"
+"\n"
+"    def with_segments(self, *pathsegments):\n"
+"        kiểu trả về(self)(*đường dẫn, session_id=self.session_id)\n"
+"\n"
+"vv = MyPath('/etc', session_id=42)\n"
+"máy chủ = vv / 'máy chủ'\n"
+"print(hosts.session_id) # 42"
+
+#: ../../library/pathlib.rst:768
+#, fuzzy
+msgid "Concrete paths"
+msgstr "Đường dẫn bê tông"
+
+#: ../../library/pathlib.rst:770
+#, fuzzy
+msgid ""
+"Concrete paths are subclasses of the pure path classes.  In addition to "
+"operations provided by the latter, they also provide methods to do system "
+"calls on path objects.  There are three ways to instantiate concrete paths:"
+msgstr ""
+"Các đường dẫn cụ thể là các lớp con của các lớp đường dẫn thuần túy.  Ngoài "
+"các hoạt động do cái sau cung cấp, chúng còn cung cấp các phương thức để "
+"thực hiện lệnh gọi hệ thống trên các đối tượng đường dẫn.  Có ba cách để "
+"khởi tạo đường dẫn cụ thể:"
+
+#: ../../library/pathlib.rst:776
+#, fuzzy
+msgid ""
+"A subclass of :class:`PurePath`, this class represents concrete paths of the"
+" system's path flavour (instantiating it creates either a :class:`PosixPath`"
+" or a :class:`WindowsPath`)::"
+msgstr ""
+"Một lớp con của :class:`PurePath`, lớp này đại diện cho các đường dẫn cụ thể"
+" về loại đường dẫn của hệ thống (khởi tạo nó tạo ra :class:`PosixPath` hoặc "
+":class:`WindowsPath`)::"
+
+#: ../../library/pathlib.rst:780
+#, fuzzy
+msgid ""
+">>> Path('setup.py')\n"
+"PosixPath('setup.py')"
+msgstr ""
+">>> Đường dẫn('setup.py')\n"
+"PosixPath('setup.py')"
+
+#: ../../library/pathlib.rst:787
+#, fuzzy
+msgid ""
+"A subclass of :class:`Path` and :class:`PurePosixPath`, this class "
+"represents concrete non-Windows filesystem paths::"
+msgstr ""
+"Một lớp con của :class:`Path` và :class:`PurePosixPath`, lớp này đại diện "
+"cho các đường dẫn cụ thể của hệ thống tệp không phải Windows ::"
+
+#: ../../library/pathlib.rst:790
+#, fuzzy
+msgid ""
+">>> PosixPath('/etc/hosts')\n"
+"PosixPath('/etc/hosts')"
+msgstr ""
+">>> PosixPath('/etc/hosts')\n"
+"PosixPath('/etc/hosts')"
+
+#: ../../library/pathlib.rst:795
+#, fuzzy
+msgid ""
+"Raises :exc:`UnsupportedOperation` on Windows. In previous versions, "
+":exc:`NotImplementedError` was raised instead."
+msgstr ""
+"Tăng :exc:`UnsupportedOperation` trên Windows. Trong các phiên bản trước, "
+":exc:`NotImplementedError` đã được nâng lên thay thế."
+
+#: ../../library/pathlib.rst:802
+#, fuzzy
+msgid ""
+"A subclass of :class:`Path` and :class:`PureWindowsPath`, this class "
+"represents concrete Windows filesystem paths::"
+msgstr ""
+"Một lớp con của :class:`Path` và :class:`PureWindowsPath`, lớp này đại diện "
+"cho các đường dẫn hệ thống tệp Windows cụ thể::"
+
+#: ../../library/pathlib.rst:805
+#, fuzzy
+msgid ""
+">>> WindowsPath('c:/', 'Users', 'Ximénez')\n"
+"WindowsPath('c:/Users/Ximénez')"
+msgstr ""
+">>> WindowsPath('c:/', 'Người dùng', 'Ximénez')\n"
+"WindowsPath('c:/Users/Ximénez')"
+
+#: ../../library/pathlib.rst:810
+#, fuzzy
+msgid ""
+"Raises :exc:`UnsupportedOperation` on non-Windows platforms. In previous "
+"versions, :exc:`NotImplementedError` was raised instead."
+msgstr ""
+"Tăng :exc:`UnsupportedOperation` trên nền tảng không phải Windows. Trong các"
+" phiên bản trước, :exc:`NotImplementedError` đã được nâng lên thay thế."
+
+#: ../../library/pathlib.rst:815
+#, fuzzy
+msgid ""
+"You can only instantiate the class flavour that corresponds to your system "
+"(allowing system calls on non-compatible path flavours could lead to bugs or"
+" failures in your application)::"
+msgstr ""
+"Bạn chỉ có thể khởi tạo phiên bản lớp tương ứng với hệ thống của mình (cho "
+"phép lệnh gọi hệ thống trên các phiên bản đường dẫn không tương thích có thể"
+" dẫn đến lỗi hoặc lỗi trong ứng dụng của bạn)::"
+
+#: ../../library/pathlib.rst:819
+#, fuzzy
+msgid ""
+">>> import os\n"
+">>> os.name\n"
+"'posix'\n"
+">>> Path('setup.py')\n"
+"PosixPath('setup.py')\n"
+">>> PosixPath('setup.py')\n"
+"PosixPath('setup.py')\n"
+">>> WindowsPath('setup.py')\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"  File \"pathlib.py\", line 798, in __new__\n"
+"    % (cls.__name__,))\n"
+"UnsupportedOperation: cannot instantiate 'WindowsPath' on your system"
+msgstr ""
+">>> nhập hệ điều hành\n"
+">>> os.name\n"
+"'tích cực'\n"
+">>> Đường dẫn('setup.py')\n"
+"PosixPath('setup.py')\n"
+">>> PosixPath('setup.py')\n"
+"PosixPath('setup.py')\n"
+">>> WindowsPath('setup.py')\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"  Tệp \"pathlib.py\", dòng 798, trong __new__\n"
+"    % (cls.__name__,))\n"
+"UnsupportedOperation: không thể khởi tạo 'WindowsPath' trên hệ thống của bạn"
+
+#: ../../library/pathlib.rst:833
+#, fuzzy
+msgid ""
+"Some concrete path methods can raise an :exc:`OSError` if a system call "
+"fails (for example because the path doesn't exist)."
+msgstr ""
+"Một số phương thức đường dẫn cụ thể có thể tăng :exc:`OSError` nếu lệnh gọi "
+"hệ thống không thành công (ví dụ: vì đường dẫn không tồn tại)."
+
+#: ../../library/pathlib.rst:838
+#, fuzzy
+msgid "Parsing and generating URIs"
+msgstr "Phân tích cú pháp và tạo URI"
+
+#: ../../library/pathlib.rst:840
+#, fuzzy
+msgid ""
+"Concrete path objects can be created from, and represented as, 'file' URIs "
+"conforming to :rfc:`8089`."
+msgstr ""
+"Các đối tượng đường dẫn cụ thể có thể được tạo từ và được biểu diễn dưới "
+"dạng URI 'tệp' tuân theo :rfc:`8089`."
+
+#: ../../library/pathlib.rst:845
+#, fuzzy
+msgid ""
+"File URIs are not portable across machines with different :ref:`filesystem "
+"encodings <filesystem-encoding>`."
+msgstr ""
+"URI tệp không thể di chuyển được trên các máy có :ref:`filesystem encodings "
+"<filesystem-encoding>` khác nhau."
+
+#: ../../library/pathlib.rst:850
+#, fuzzy
+msgid "Return a new path object from parsing a 'file' URI. For example::"
+msgstr ""
+"Trả về một đối tượng đường dẫn mới từ việc phân tích cú pháp 'tệp' URI. Ví "
+"dụ::"
+
+#: ../../library/pathlib.rst:852
+#, fuzzy
+msgid ""
+">>> p = Path.from_uri('file:///etc/hosts')\n"
+"PosixPath('/etc/hosts')"
+msgstr ""
+">>> p = Path.from_uri('file:///etc/hosts')\n"
+"PosixPath('/etc/hosts')"
+
+#: ../../library/pathlib.rst:855
+#, fuzzy
+msgid "On Windows, DOS device and UNC paths may be parsed from URIs::"
+msgstr ""
+"Trên Windows, thiết bị DOS và đường dẫn UNC có thể được phân tích cú pháp từ"
+" URI::"
+
+#: ../../library/pathlib.rst:857
+#, fuzzy
+msgid ""
+">>> p = Path.from_uri('file:///c:/windows')\n"
+"WindowsPath('c:/windows')\n"
+">>> p = Path.from_uri('file://server/share')\n"
+"WindowsPath('//server/share')"
+msgstr ""
+">>> p = Path.from_uri('file:///c:/windows')\n"
+"WindowsPath('c:/windows')\n"
+">>> p = Path.from_uri('file://server/share')\n"
+"WindowsPath('//server/share')"
+
+#: ../../library/pathlib.rst:862
+#, fuzzy
+msgid "Several variant forms are supported::"
+msgstr "Một số dạng biến thể được hỗ trợ::"
+
+#: ../../library/pathlib.rst:864
+#, fuzzy
+msgid ""
+">>> p = Path.from_uri('file:////server/share')\n"
+"WindowsPath('//server/share')\n"
+">>> p = Path.from_uri('file://///server/share')\n"
+"WindowsPath('//server/share')\n"
+">>> p = Path.from_uri('file:c:/windows')\n"
+"WindowsPath('c:/windows')\n"
+">>> p = Path.from_uri('file:/c|/windows')\n"
+"WindowsPath('c:/windows')"
+msgstr ""
+">>> p = Path.from_uri('file:////server/share')\n"
+"WindowsPath('//server/share')\n"
+">>> p = Path.from_uri('file://///server/share')\n"
+"WindowsPath('//server/share')\n"
+">>> p = Path.from_uri('file:c:/windows')\n"
+"WindowsPath('c:/windows')\n"
+">>> p = Path.from_uri('file:/c|/windows')\n"
+"WindowsPath('c:/windows')"
+
+#: ../../library/pathlib.rst:873
+#, fuzzy
+msgid ""
+":exc:`ValueError` is raised if the URI does not start with ``file:``, or the"
+" parsed path isn't absolute."
+msgstr ""
+":exc:`ValueError` được nâng lên nếu URI không bắt đầu bằng ``file:`` hoặc "
+"đường dẫn được phân tích cú pháp không tuyệt đối."
+
+#: ../../library/pathlib.rst:878
+#, fuzzy
+msgid ""
+"The URL authority is discarded if it matches the local hostname. Otherwise, "
+"if the authority isn't empty or ``localhost``, then on Windows a UNC path is"
+" returned (as before), and on other platforms a :exc:`ValueError` is raised."
+msgstr ""
+"Quyền URL sẽ bị loại bỏ nếu nó khớp với tên máy chủ cục bộ. Ngược lại, nếu "
+"quyền không trống hoặc ``localhost`` thì trên Windows, đường dẫn UNC sẽ được"
+" trả về (như trước) và trên các nền tảng khác, :exc:`ValueError` sẽ được "
+"nâng lên."
+
+#: ../../library/pathlib.rst:887
+#, fuzzy
+msgid ""
+"Represent the path as a 'file' URI.  :exc:`ValueError` is raised if the path"
+" isn't absolute."
+msgstr ""
+"Biểu thị đường dẫn dưới dạng 'tệp' URI.  :exc:`ValueError` được nâng lên nếu"
+" đường dẫn không tuyệt đối."
+
+#: ../../library/pathlib.rst:890
+#, fuzzy
+msgid ""
+">>> p = PosixPath('/etc/passwd')\n"
+">>> p.as_uri()\n"
+"'file:///etc/passwd'\n"
+">>> p = WindowsPath('c:/Windows')\n"
+">>> p.as_uri()\n"
+"'file:///c:/Windows'"
+msgstr ""
+">>> p = PosixPath('/etc/passwd')\n"
+">>> p.as_uri()\n"
+"'tập tin:///etc/passwd'\n"
+">>> p = WindowsPath('c:/Windows')\n"
+">>> p.as_uri()\n"
+"'tệp:///c:/Windows'"
+
+#: ../../library/pathlib.rst:901
+#, fuzzy
+msgid ""
+"Calling this method from :class:`PurePath` rather than :class:`Path` is "
+"possible but deprecated. The method's use of :func:`os.fsencode` makes it "
+"strictly impure."
+msgstr ""
+"Có thể gọi phương thức này từ :class:`PurePath` thay vì :class:`Path` nhưng "
+"không được dùng nữa. Việc sử dụng :func:`os.fsencode` của phương pháp này "
+"khiến nó hoàn toàn không tinh khiết."
+
+#: ../../library/pathlib.rst:907
+#, fuzzy
+msgid "Expanding and resolving paths"
+msgstr "Mở rộng và giải quyết đường dẫn"
+
+#: ../../library/pathlib.rst:911
+#, fuzzy
+msgid ""
+"Return a new path object representing the user's home directory (as returned"
+" by :func:`os.path.expanduser` with ``~`` construct). If the home directory "
+"can't be resolved, :exc:`RuntimeError` is raised."
+msgstr ""
+"Trả về một đối tượng đường dẫn mới đại diện cho thư mục chính của người dùng"
+" (được trả về bởi :func:`os.path.expanduser` với cấu trúc ``~``). Nếu thư "
+"mục chính không thể giải quyết được, :exc:`RuntimeError` sẽ được nâng lên."
+
+#: ../../library/pathlib.rst:917
+#, fuzzy
+msgid ""
+">>> Path.home()\n"
+"PosixPath('/home/antoine')"
+msgstr ""
+">>> Đường dẫn.home()\n"
+"PosixPath('/home/antoine')"
+
+#: ../../library/pathlib.rst:925
+#, fuzzy
+msgid ""
+"Return a new path with expanded ``~`` and ``~user`` constructs, as returned "
+"by :meth:`os.path.expanduser`. If a home directory can't be resolved, "
+":exc:`RuntimeError` is raised."
+msgstr ""
+"Trả về một đường dẫn mới với các cấu trúc ``~`` và ``~user`` mở rộng, được "
+"trả về bởi :meth:`os.path.expanduser`. Nếu không thể giải quyết được thư mục"
+" chính, :exc:`RuntimeError` sẽ được nâng lên."
+
+#: ../../library/pathlib.rst:931
+#, fuzzy
+msgid ""
+">>> p = PosixPath('~/films/Monty Python')\n"
+">>> p.expanduser()\n"
+"PosixPath('/home/eric/films/Monty Python')"
+msgstr ""
+">>> p = PosixPath('~/films/Monty Python')\n"
+">>> p.expanduser()\n"
+"PosixPath('/home/eric/films/Monty Python')"
+
+#: ../../library/pathlib.rst:940
+#, fuzzy
+msgid ""
+"Return a new path object representing the current directory (as returned by "
+":func:`os.getcwd`)::"
+msgstr ""
+"Trả về một đối tượng đường dẫn mới đại diện cho thư mục hiện tại (được trả "
+"về bởi :func:`os.getcwd`)::"
+
+#: ../../library/pathlib.rst:943
+#, fuzzy
+msgid ""
+">>> Path.cwd()\n"
+"PosixPath('/home/antoine/pathlib')"
+msgstr ""
+">>> Đường dẫn.cwd()\n"
+"PosixPath('/home/antoine/pathlib')"
+
+#: ../../library/pathlib.rst:949
+#, fuzzy
+msgid ""
+"Make the path absolute, without normalization or resolving symlinks. Returns"
+" a new path object::"
+msgstr ""
+"Làm cho đường dẫn trở nên tuyệt đối, không cần chuẩn hóa hoặc giải quyết các"
+" liên kết tượng trưng. Trả về một đối tượng đường dẫn mới::"
+
+#: ../../library/pathlib.rst:952
+#, fuzzy
+msgid ""
+">>> p = Path('tests')\n"
+">>> p\n"
+"PosixPath('tests')\n"
+">>> p.absolute()\n"
+"PosixPath('/home/antoine/pathlib/tests')"
+msgstr ""
+">>> p = Đường dẫn('kiểm tra')\n"
+">>> p\n"
+"PosixPath('kiểm tra')\n"
+">>> p.absolute()\n"
+"PosixPath('/home/antoine/pathlib/tests')"
+
+#: ../../library/pathlib.rst:961
+#, fuzzy
+msgid ""
+"Make the path absolute, resolving any symlinks.  A new path object is "
+"returned::"
+msgstr ""
+"Tạo đường dẫn tuyệt đối, giải quyết mọi liên kết tượng trưng.  Một đối tượng"
+" đường dẫn mới được trả về::"
+
+#: ../../library/pathlib.rst:964
+#, fuzzy
+msgid ""
+">>> p = Path()\n"
+">>> p\n"
+"PosixPath('.')\n"
+">>> p.resolve()\n"
+"PosixPath('/home/antoine/pathlib')"
+msgstr ""
+">>> p = Đường dẫn()\n"
+">>> p\n"
+"PosixPath('.')\n"
+">>> p.resolve()\n"
+"PosixPath('/home/antoine/pathlib')"
+
+#: ../../library/pathlib.rst:970
+#, fuzzy
+msgid ""
+"\"``..``\" components are also eliminated (this is the only method to do "
+"so)::"
+msgstr ""
+"Các thành phần \"``..``\" cũng bị loại bỏ (đây là phương pháp duy nhất để "
+"làm như vậy)::"
+
+#: ../../library/pathlib.rst:972
+#, fuzzy
+msgid ""
+">>> p = Path('docs/../setup.py')\n"
+">>> p.resolve()\n"
+"PosixPath('/home/antoine/pathlib/setup.py')"
+msgstr ""
+">>> p = Đường dẫn('docs/../setup.py')\n"
+">>> p.resolve()\n"
+"PosixPath('/home/antoine/pathlib/setup.py')"
+
+#: ../../library/pathlib.rst:976
+#, fuzzy
+msgid ""
+"If a path doesn't exist or a symlink loop is encountered, and *strict* is "
+"``True``, :exc:`OSError` is raised.  If *strict* is ``False``, the path is "
+"resolved as far as possible and any remainder is appended without checking "
+"whether it exists."
+msgstr ""
+"Nếu đường dẫn không tồn tại hoặc gặp phải vòng lặp liên kết tượng trưng và "
+"*strict* là ``True``, :exc:`OSError` sẽ được nâng lên.  Nếu *strict* là "
+"``False``, đường dẫn sẽ được giải quyết ở mức tối đa có thể và mọi phần còn "
+"lại sẽ được thêm vào mà không cần kiểm tra xem nó có tồn tại hay không."
+
+#: ../../library/pathlib.rst:981
+#, fuzzy
+msgid "The *strict* parameter was added (pre-3.6 behavior is strict)."
+msgstr "Tham số *strict* đã được thêm vào (hành vi trước 3.6 là nghiêm ngặt)."
+
+#: ../../library/pathlib.rst:984
+#, fuzzy
+msgid ""
+"Symlink loops are treated like other errors: :exc:`OSError` is raised in "
+"strict mode, and no exception is raised in non-strict mode. In previous "
+"versions, :exc:`RuntimeError` is raised no matter the value of *strict*."
+msgstr ""
+"Vòng lặp liên kết tượng trưng được xử lý giống như các lỗi khác: "
+":exc:`OSError` được nâng lên ở chế độ nghiêm ngặt và không có ngoại lệ nào "
+"được đưa ra ở chế độ không nghiêm ngặt. Trong các phiên bản trước, "
+":exc:`RuntimeError` được tăng lên bất kể giá trị của *strict*."
+
+#: ../../library/pathlib.rst:992
+#, fuzzy
+msgid ""
+"Return the path to which the symbolic link points (as returned by "
+":func:`os.readlink`)::"
+msgstr ""
+"Trả về đường dẫn mà các điểm liên kết tượng trưng (được trả về bởi "
+":func:`os.readlink`)::"
+
+#: ../../library/pathlib.rst:995
+#, fuzzy
+msgid ""
+">>> p = Path('mylink')\n"
+">>> p.symlink_to('setup.py')\n"
+">>> p.readlink()\n"
+"PosixPath('setup.py')"
+msgstr ""
+">>> p = Đường dẫn('mylink')\n"
+">>> p.symlink_to('setup.py')\n"
+">>> p.readlink()\n"
+"PosixPath('setup.py')"
+
+#: ../../library/pathlib.rst:1002
+#, fuzzy
+msgid ""
+"Raises :exc:`UnsupportedOperation` if :func:`os.readlink` is not available. "
+"In previous versions, :exc:`NotImplementedError` was raised."
+msgstr ""
+"Tăng :exc:`UnsupportedOperation` nếu :func:`os.readlink` không có sẵn. Trong"
+" các phiên bản trước, :exc:`NotImplementedError` đã được nâng lên."
+
+#: ../../library/pathlib.rst:1008
+#, fuzzy
+msgid "Querying file type and status"
+msgstr "Truy vấn loại và trạng thái tệp"
+
+#: ../../library/pathlib.rst:1012
+#, fuzzy
+msgid ""
+":meth:`~Path.exists`, :meth:`~Path.is_dir`, :meth:`~Path.is_file`, "
+":meth:`~Path.is_mount`, :meth:`~Path.is_symlink`, "
+":meth:`~Path.is_block_device`, :meth:`~Path.is_char_device`, "
+":meth:`~Path.is_fifo`, :meth:`~Path.is_socket` now return ``False`` instead "
+"of raising an exception for paths that contain characters unrepresentable at"
+" the OS level."
+msgstr ""
+":meth:`~Path.exists`, :meth:`~Path.is_dir`, :meth:`~Path.is_file`, "
+":meth:`~Path.is_mount`, :meth:`~Path.is_symlink`, "
+":meth:`~Path.is_block_device`, :meth:`~Path.is_char_device`, "
+":meth:`~Path.is_fifo`, :meth:`~Path.is_socket` hiện trả về ``False`` thay vì"
+" đưa ra ngoại lệ cho các đường dẫn chứa các ký tự không thể biểu thị ở cấp "
+"độ hệ điều hành."
+
+#: ../../library/pathlib.rst:1021
+#, fuzzy
+msgid ""
+"The methods given above now return ``False`` instead of raising any "
+":exc:`OSError` exception from the operating system. In previous versions, "
+"some kinds of :exc:`OSError` exception are raised, and others suppressed. "
+"The new behaviour is consistent with :func:`os.path.exists`, "
+":func:`os.path.isdir`, etc. Use :meth:`~Path.stat` to retrieve the file "
+"status without suppressing exceptions."
+msgstr ""
+"Các phương thức nêu trên hiện trả về ``False`` thay vì đưa ra bất kỳ ngoại "
+"lệ :exc:`OSError` nào từ hệ điều hành. Trong các phiên bản trước, một số "
+"loại ngoại lệ :exc:`OSError` được nâng lên và một số khác bị loại bỏ. Hành "
+"vi mới nhất quán với :func:`os.path.exists`, :func:`os.path.isdir`, v.v. Sử "
+"dụng :meth:`~Path.stat` để truy xuất trạng thái tệp mà không loại bỏ các "
+"ngoại lệ."
+
+#: ../../library/pathlib.rst:1031
+#, fuzzy
+msgid ""
+"Return an :class:`os.stat_result` object containing information about this "
+"path, like :func:`os.stat`. The result is looked up at each call to this "
+"method."
+msgstr ""
+"Trả về một đối tượng :class:`os.stat_result` chứa thông tin về đường dẫn "
+"này, như :func:`os.stat`. Kết quả được tra cứu ở mỗi lần gọi phương thức "
+"này."
+
+#: ../../library/pathlib.rst:1034
+#, fuzzy
+msgid ""
+"This method normally follows symlinks; to stat a symlink add the argument "
+"``follow_symlinks=False``, or use :meth:`~Path.lstat`."
+msgstr ""
+"Phương pháp này thường theo các liên kết tượng trưng; để chỉ định một liên "
+"kết tượng trưng, ​​hãy thêm đối số ``follow_symlinks=False`` hoặc sử dụng "
+":meth:`~Path.lstat`."
+
+#: ../../library/pathlib.rst:1039
+#, fuzzy
+msgid ""
+">>> p = Path('setup.py')\n"
+">>> p.stat().st_size\n"
+"956\n"
+">>> p.stat().st_mtime\n"
+"1327883547.852554"
+msgstr ""
+">>> p = Đường dẫn('setup.py')\n"
+">>> p.stat().st_size\n"
+"956\n"
+">>> p.stat().st_mtime\n"
+"1327883547.852554"
+
+#: ../../library/pathlib.rst:1045 ../../library/pathlib.rst:1075
+#: ../../library/pathlib.rst:1089 ../../library/pathlib.rst:1103
+#: ../../library/pathlib.rst:1742 ../../library/pathlib.rst:1758
+#: ../../library/pathlib.rst:1779
+#, fuzzy
+msgid "The *follow_symlinks* parameter was added."
+msgstr "Tham số *follow_symlinks* đã được thêm vào."
+
+#: ../../library/pathlib.rst:1051
+#, fuzzy
+msgid ""
+"Like :meth:`Path.stat` but, if the path points to a symbolic link, return "
+"the symbolic link's information rather than its target's."
+msgstr ""
+"Giống như :meth:`Path.stat` nhưng, nếu đường dẫn trỏ đến một liên kết tượng "
+"trưng, ​​hãy trả về thông tin của liên kết tượng trưng thay vì mục tiêu của "
+"nó."
+
+#: ../../library/pathlib.rst:1057
+#, fuzzy
+msgid ""
+"Return ``True`` if the path points to an existing file or directory. "
+"``False`` will be returned if the path is invalid, inaccessible or missing. "
+"Use :meth:`Path.stat` to distinguish between these cases."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn trỏ đến một tệp hoặc thư mục hiện có. "
+"``False`` sẽ được trả về nếu đường dẫn không hợp lệ, không thể truy cập hoặc"
+" bị thiếu. Sử dụng :meth:`Path.stat` để phân biệt các trường hợp này."
+
+#: ../../library/pathlib.rst:1061
+#, fuzzy
+msgid ""
+"This method normally follows symlinks; to check if a symlink exists, add the"
+" argument ``follow_symlinks=False``."
+msgstr ""
+"Phương pháp này thường theo các liên kết tượng trưng; để kiểm tra xem liên "
+"kết tượng trưng có tồn tại hay không, hãy thêm đối số "
+"``follow_symlinks=False``."
+
+#: ../../library/pathlib.rst:1066
+#, fuzzy
+msgid ""
+">>> Path('.').exists()\n"
+"True\n"
+">>> Path('setup.py').exists()\n"
+"True\n"
+">>> Path('/etc').exists()\n"
+"True\n"
+">>> Path('nonexistentfile').exists()\n"
+"False"
+msgstr ""
+">>> Đường dẫn('.').exists()\n"
+"đúng\n"
+">>> Đường dẫn('setup.py').exists()\n"
+"đúng\n"
+">>> Đường dẫn('/etc').exists()\n"
+"đúng\n"
+">>> Đường dẫn('không tồn tại tệp').exists()\n"
+"sai"
+
+#: ../../library/pathlib.rst:1081
+#, fuzzy
+msgid ""
+"Return ``True`` if the path points to a regular file. ``False`` will be "
+"returned if the path is invalid, inaccessible or missing, or if it points to"
+" something other than a regular file. Use :meth:`Path.stat` to distinguish "
+"between these cases."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn trỏ đến một tệp thông thường. ``False`` sẽ "
+"được trả về nếu đường dẫn không hợp lệ, không thể truy cập hoặc bị thiếu "
+"hoặc nếu nó trỏ đến thứ gì đó không phải là tệp thông thường. Sử dụng "
+":meth:`Path.stat` để phân biệt các trường hợp này."
+
+#: ../../library/pathlib.rst:1086
+#, fuzzy
+msgid ""
+"This method normally follows symlinks; to exclude symlinks, add the argument"
+" ``follow_symlinks=False``."
+msgstr ""
+"Phương pháp này thường theo các liên kết tượng trưng; để loại trừ các liên "
+"kết tượng trưng, ​​hãy thêm đối số ``follow_symlinks=False``."
+
+#: ../../library/pathlib.rst:1095
+#, fuzzy
+msgid ""
+"Return ``True`` if the path points to a directory. ``False`` will be "
+"returned if the path is invalid, inaccessible or missing, or if it points to"
+" something other than a directory. Use :meth:`Path.stat` to distinguish "
+"between these cases."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn trỏ đến một thư mục. ``False`` sẽ được trả về "
+"nếu đường dẫn không hợp lệ, không thể truy cập hoặc bị thiếu hoặc nếu nó trỏ"
+" đến một thứ khác ngoài một thư mục. Sử dụng :meth:`Path.stat` để phân biệt "
+"các trường hợp này."
+
+#: ../../library/pathlib.rst:1100
+#, fuzzy
+msgid ""
+"This method normally follows symlinks; to exclude symlinks to directories, "
+"add the argument ``follow_symlinks=False``."
+msgstr ""
+"Phương pháp này thường theo các liên kết tượng trưng; để loại trừ các liên "
+"kết tượng trưng đến các thư mục, hãy thêm đối số ``follow_symlinks=False``."
+
+#: ../../library/pathlib.rst:1109
+#, fuzzy
+msgid ""
+"Return ``True`` if the path points to a symbolic link, even if that symlink "
+"is broken. ``False`` will be returned if the path is invalid, inaccessible "
+"or missing, or if it points to something other than a symbolic link. Use "
+":meth:`Path.stat` to distinguish between these cases."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn trỏ đến một liên kết tượng trưng, ​​ngay cả "
+"khi liên kết tượng trưng đó bị hỏng. ``False`` sẽ được trả về nếu đường dẫn "
+"không hợp lệ, không thể truy cập hoặc bị thiếu hoặc nếu nó trỏ đến thứ gì đó"
+" không phải là liên kết tượng trưng. Sử dụng :meth:`Path.stat` để phân biệt "
+"các trường hợp này."
+
+#: ../../library/pathlib.rst:1117
+#, fuzzy
+msgid ""
+"Return ``True`` if the path points to a junction, and ``False`` for any "
+"other type of file. Currently only Windows supports junctions."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn trỏ đến một điểm nối và ``False`` cho bất kỳ "
+"loại tệp nào khác. Hiện tại chỉ có Windows hỗ trợ các nút giao thông."
+
+#: ../../library/pathlib.rst:1125
+#, fuzzy
+msgid ""
+"Return ``True`` if the path is a :dfn:`mount point`: a point in a file "
+"system where a different file system has been mounted.  On POSIX, the "
+"function checks whether *path*'s parent, :file:`path/..`, is on a different "
+"device than *path*, or whether :file:`path/..` and *path* point to the same "
+"i-node on the same device --- this should detect mount points for all Unix "
+"and POSIX variants.  On Windows, a mount point is considered to be a drive "
+"letter root (e.g. ``c:\\``), a UNC share (e.g. ``\\\\server\\share``), or a "
+"mounted filesystem directory."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn là :dfn:`mount point`: một điểm trong hệ thống"
+" tệp nơi hệ thống tệp khác đã được gắn kết.  Trên POSIX, hàm này sẽ kiểm tra"
+" xem cha mẹ của *path*, :file:`path/..`, có ở trên một thiết bị khác với "
+"*path* hay không, hoặc liệu :file:`path/..` và *path* có trỏ đến cùng một "
+"nút i trên cùng một thiết bị hay không --- điều này sẽ phát hiện các điểm "
+"gắn kết cho tất cả các biến thể Unix và POSIX.  Trên Windows, điểm gắn kết "
+"được coi là gốc ký tự ổ đĩa (ví dụ: ``c:\\``), chia sẻ UNC (ví dụ: "
+"``\\\\server\\share``) hoặc thư mục hệ thống tệp được gắn."
+
+#: ../../library/pathlib.rst:1136
+#, fuzzy
+msgid "Windows support was added."
+msgstr "Hỗ trợ Windows đã được thêm vào."
+
+#: ../../library/pathlib.rst:1141
+#, fuzzy
+msgid ""
+"Return ``True`` if the path points to a Unix socket. ``False`` will be "
+"returned if the path is invalid, inaccessible or missing, or if it points to"
+" something other than a Unix socket. Use :meth:`Path.stat` to distinguish "
+"between these cases."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn trỏ đến ổ cắm Unix. ``False`` sẽ được trả về "
+"nếu đường dẫn không hợp lệ, không thể truy cập hoặc bị thiếu hoặc nếu nó trỏ"
+" đến thứ gì đó không phải là ổ cắm Unix. Sử dụng :meth:`Path.stat` để phân "
+"biệt các trường hợp này."
+
+#: ../../library/pathlib.rst:1149
+#, fuzzy
+msgid ""
+"Return ``True`` if the path points to a FIFO. ``False`` will be returned if "
+"the path is invalid, inaccessible or missing, or if it points to something "
+"other than a FIFO. Use :meth:`Path.stat` to distinguish between these cases."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn trỏ đến FIFO. ``False`` sẽ được trả về nếu "
+"đường dẫn không hợp lệ, không thể truy cập hoặc bị thiếu hoặc nếu nó trỏ đến"
+" thứ gì đó không phải là FIFO. Sử dụng :meth:`Path.stat` để phân biệt các "
+"trường hợp này."
+
+#: ../../library/pathlib.rst:1157
+#, fuzzy
+msgid ""
+"Return ``True`` if the path points to a block device. ``False`` will be "
+"returned if the path is invalid, inaccessible or missing, or if it points to"
+" something other than a block device. Use :meth:`Path.stat` to distinguish "
+"between these cases."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn trỏ tới một thiết bị khối. ``False`` sẽ được "
+"trả về nếu đường dẫn không hợp lệ, không thể truy cập hoặc bị thiếu hoặc nếu"
+" nó trỏ đến một thứ khác ngoài thiết bị khối. Sử dụng :meth:`Path.stat` để "
+"phân biệt các trường hợp này."
+
+#: ../../library/pathlib.rst:1165
+#, fuzzy
+msgid ""
+"Return ``True`` if the path points to a character device. ``False`` will be "
+"returned if the path is invalid, inaccessible or missing, or if it points to"
+" something other than a character device. Use :meth:`Path.stat` to "
+"distinguish between these cases."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn trỏ tới một thiết bị ký tự. ``False`` sẽ được "
+"trả về nếu đường dẫn không hợp lệ, không thể truy cập hoặc bị thiếu hoặc nếu"
+" nó trỏ đến một thứ khác ngoài thiết bị ký tự. Sử dụng :meth:`Path.stat` để "
+"phân biệt các trường hợp này."
+
+#: ../../library/pathlib.rst:1173
+#, fuzzy
+msgid ""
+"Return whether this path points to the same file as *other_path*, which can "
+"be either a Path object, or a string.  The semantics are similar to "
+":func:`os.path.samefile` and :func:`os.path.samestat`."
+msgstr ""
+"Trả về xem đường dẫn này có trỏ đến cùng một tệp với *other_path* hay không,"
+" tệp này có thể là đối tượng Đường dẫn hoặc một chuỗi.  Ngữ nghĩa tương tự "
+"như :func:`os.path.samefile` và :func:`os.path.samestat`."
+
+#: ../../library/pathlib.rst:1177
+#, fuzzy
+msgid ""
+"An :exc:`OSError` can be raised if either file cannot be accessed for some "
+"reason."
+msgstr ""
+"Một :exc:`OSError` có thể được nâng lên nếu một trong hai tệp không thể truy"
+" cập được vì lý do nào đó."
+
+#: ../../library/pathlib.rst:1182
+#, fuzzy
+msgid ""
+">>> p = Path('spam')\n"
+">>> q = Path('eggs')\n"
+">>> p.samefile(q)\n"
+"False\n"
+">>> p.samefile('spam')\n"
+"True"
+msgstr ""
+">>> p = Đường dẫn('thư rác')\n"
+">>> q = Đường dẫn('trứng')\n"
+">>> p.samefile(q)\n"
+"sai\n"
+">>> p.samefile('spam')\n"
+"đúng"
+
+#: ../../library/pathlib.rst:1194
+#, fuzzy
+msgid ""
+"A :class:`~pathlib.types.PathInfo` object that supports querying file type "
+"information. The object exposes methods that cache their results, which can "
+"help reduce the number of system calls needed when switching on file type. "
+"For example::"
+msgstr ""
+"Đối tượng :class:`~pathlib.types.PathInfo` hỗ trợ truy vấn thông tin loại "
+"tệp. Đối tượng hiển thị các phương thức lưu trữ kết quả của chúng vào bộ "
+"đệm, điều này có thể giúp giảm số lượng lệnh gọi hệ thống cần thiết khi bật "
+"loại tệp. Ví dụ::"
+
+#: ../../library/pathlib.rst:1199
+#, fuzzy
+msgid ""
+">>> p = Path('src')\n"
+">>> if p.info.is_symlink():\n"
+"...     print('symlink')\n"
+"... elif p.info.is_dir():\n"
+"...     print('directory')\n"
+"... elif p.info.exists():\n"
+"...     print('something else')\n"
+"... else:\n"
+"...     print('not found')\n"
+"...\n"
+"directory"
+msgstr ""
+">>> p = Đường dẫn('src')\n"
+">>> nếu p.info.is_symlink():\n"
+"... print('symlink')\n"
+"... elif p.info.is_dir():\n"
+"... in('thư mục')\n"
+"... Elif p.info.exists():\n"
+"... print('cái gì khác')\n"
+"... khác:\n"
+"... in('không tìm thấy')\n"
+"...\n"
+"thư mục"
+
+#: ../../library/pathlib.rst:1211
+#, fuzzy
+msgid ""
+"If the path was generated from :meth:`Path.iterdir` then this attribute is "
+"initialized with some information about the file type gleaned from scanning "
+"the parent directory. Merely accessing :attr:`Path.info` does not perform "
+"any filesystem queries."
+msgstr ""
+"Nếu đường dẫn được tạo từ :meth:`Path.iterdir` thì thuộc tính này sẽ được "
+"khởi tạo cùng với một số thông tin về loại tệp thu được từ quá trình quét "
+"thư mục mẹ. Chỉ truy cập :attr:`Path.info` không thực hiện bất kỳ truy vấn "
+"hệ thống tệp nào."
+
+#: ../../library/pathlib.rst:1216
+#, fuzzy
+msgid ""
+"To fetch up-to-date information, it's best to call :meth:`Path.is_dir`, "
+":meth:`~Path.is_file` and :meth:`~Path.is_symlink` rather than methods of "
+"this attribute. There is no way to reset the cache; instead you can create a"
+" new path object with an empty info cache via ``p = Path(p)``."
+msgstr ""
+"Để tìm nạp thông tin cập nhật, tốt nhất nên gọi :meth:`Path.is_dir`, "
+":meth:`~Path.is_file` và :meth:`~Path.is_symlink` thay vì gọi các phương "
+"thức của thuộc tính này. Không có cách nào để thiết lập lại bộ đệm; thay vào"
+" đó, bạn có thể tạo một đối tượng đường dẫn mới với bộ đệm thông tin trống "
+"thông qua ``p = Path(p)``."
+
+#: ../../library/pathlib.rst:1225
+#, fuzzy
+msgid "Reading and writing files"
+msgstr "Đọc và ghi tập tin"
+
+#: ../../library/pathlib.rst:1230
+#, fuzzy
+msgid ""
+"Open the file pointed to by the path, like the built-in :func:`open` "
+"function does::"
+msgstr ""
+"Mở tệp được trỏ đến bởi đường dẫn, giống như hàm :func:`open` tích hợp sẵn::"
+
+#: ../../library/pathlib.rst:1233
+#, fuzzy
+msgid ""
+">>> p = Path('setup.py')\n"
+">>> with p.open() as f:\n"
+"...     f.readline()\n"
+"...\n"
+"'#!/usr/bin/env python3\\n'"
+msgstr ""
+">>> p = Đường dẫn('setup.py')\n"
+">>> với p.open() là f:\n"
+"... f.readline()\n"
+"...\n"
+"'#!/usr/bin/env python3\\n'"
+
+#: ../../library/pathlib.rst:1242
+#, fuzzy
+msgid "Return the decoded contents of the pointed-to file as a string::"
+msgstr "Trả về nội dung đã giải mã của tệp được trỏ tới dưới dạng chuỗi ::"
+
+#: ../../library/pathlib.rst:1244 ../../library/pathlib.rst:1277
+#, fuzzy
+msgid ""
+">>> p = Path('my_text_file')\n"
+">>> p.write_text('Text file contents')\n"
+"18\n"
+">>> p.read_text()\n"
+"'Text file contents'"
+msgstr ""
+">>> p = Đường dẫn('my_text_file')\n"
+">>> p.write_text('Nội dung file văn bản')\n"
+"18\n"
+">>> p.read_text()\n"
+"'Nội dung tập tin văn bản'"
+
+#: ../../library/pathlib.rst:1250
+#, fuzzy
+msgid ""
+"The file is opened and then closed. The optional parameters have the same "
+"meaning as in :func:`open`."
+msgstr ""
+"Tập tin được mở và sau đó đóng lại. Các tham số tùy chọn có ý nghĩa tương tự"
+" như trong :func:`open`."
+
+#: ../../library/pathlib.rst:1255 ../../library/pathlib.rst:1288
+#, fuzzy
+msgid "The *newline* parameter was added."
+msgstr "Tham số *newline* đã được thêm vào."
+
+#: ../../library/pathlib.rst:1261
+#, fuzzy
+msgid "Return the binary contents of the pointed-to file as a bytes object::"
+msgstr ""
+"Trả về nội dung nhị phân của tệp được trỏ tới dưới dạng đối tượng byte ::"
+
+#: ../../library/pathlib.rst:1263 ../../library/pathlib.rst:1297
+#, fuzzy
+msgid ""
+">>> p = Path('my_binary_file')\n"
+">>> p.write_bytes(b'Binary file contents')\n"
+"20\n"
+">>> p.read_bytes()\n"
+"b'Binary file contents'"
+msgstr ""
+">>> p = Đường dẫn('my_binary_file')\n"
+">>> p.write_bytes(b'Nội dung tệp nhị phân')\n"
+"20\n"
+">>> p.read_bytes()\n"
+"b'Nội dung tập tin nhị phân'"
+
+#: ../../library/pathlib.rst:1274
+#, fuzzy
+msgid ""
+"Open the file pointed to in text mode, write *data* to it, and close the "
+"file::"
+msgstr ""
+"Mở tệp được trỏ đến ở chế độ văn bản, viết *data* vào đó và đóng tệp ::"
+
+#: ../../library/pathlib.rst:1283
+#, fuzzy
+msgid ""
+"An existing file of the same name is overwritten. The optional parameters "
+"have the same meaning as in :func:`open`."
+msgstr ""
+"Một tập tin hiện có cùng tên bị ghi đè. Các tham số tùy chọn có ý nghĩa "
+"tương tự như trong :func:`open`."
+
+#: ../../library/pathlib.rst:1294
+#, fuzzy
+msgid ""
+"Open the file pointed to in bytes mode, write *data* to it, and close the "
+"file::"
+msgstr "Mở tệp được trỏ đến ở chế độ byte, ghi *data* vào đó và đóng tệp ::"
+
+#: ../../library/pathlib.rst:1303
+#, fuzzy
+msgid "An existing file of the same name is overwritten."
+msgstr "Một tập tin hiện có cùng tên bị ghi đè."
+
+#: ../../library/pathlib.rst:1309
+#, fuzzy
+msgid "Reading directories"
+msgstr "Đọc thư mục"
+
+#: ../../library/pathlib.rst:1313
+#, fuzzy
+msgid ""
+"When the path points to a directory, yield path objects of the directory "
+"contents::"
+msgstr ""
+"Khi đường dẫn trỏ đến một thư mục, hãy mang lại các đối tượng đường dẫn của "
+"nội dung thư mục::"
+
+#: ../../library/pathlib.rst:1316
+#, fuzzy
+msgid ""
+">>> p = Path('docs')\n"
+">>> for child in p.iterdir(): child\n"
+"...\n"
+"PosixPath('docs/conf.py')\n"
+"PosixPath('docs/_templates')\n"
+"PosixPath('docs/make.bat')\n"
+"PosixPath('docs/index.rst')\n"
+"PosixPath('docs/_build')\n"
+"PosixPath('docs/_static')\n"
+"PosixPath('docs/Makefile')"
+msgstr ""
+">>> p = Đường dẫn('docs')\n"
+">>> cho con trong p.iterdir(): con\n"
+"...\n"
+"PosixPath('docs/conf.py')\n"
+"PosixPath('docs/_templates')\n"
+"PosixPath('docs/make.bat')\n"
+"PosixPath('docs/index.rst')\n"
+"PosixPath('docs/_build')\n"
+"PosixPath('docs/_static')\n"
+"PosixPath('docs/Makefile')"
+
+#: ../../library/pathlib.rst:1327
+#, fuzzy
+msgid ""
+"The children are yielded in arbitrary order, and the special entries ``'.'``"
+" and ``'..'`` are not included.  If a file is removed from or added to the "
+"directory after creating the iterator, it is unspecified whether a path "
+"object for that file is included."
+msgstr ""
+"Các phần tử con được sắp xếp theo thứ tự tùy ý và không bao gồm các mục đặc "
+"biệt ``'.'`` và ``'..'``.  Nếu một tệp bị xóa khỏi hoặc được thêm vào thư "
+"mục sau khi tạo trình vòng lặp, thì không xác định được liệu đối tượng đường"
+" dẫn cho tệp đó có được bao gồm hay không."
+
+#: ../../library/pathlib.rst:1332
+#, fuzzy
+msgid ""
+"If the path is not a directory or otherwise inaccessible, :exc:`OSError` is "
+"raised."
+msgstr ""
+"Nếu đường dẫn không phải là một thư mục hoặc không thể truy cập được, "
+":exc:`OSError` sẽ được nâng lên."
+
+#: ../../library/pathlib.rst:1338
+#, fuzzy
+msgid ""
+"Glob the given relative *pattern* in the directory represented by this path,"
+" yielding all matching files (of any kind)::"
+msgstr ""
+"Đưa *pattern* tương đối đã cho vào thư mục được biểu thị bằng đường dẫn này,"
+" mang lại tất cả các tệp phù hợp (thuộc bất kỳ loại nào)::"
+
+#: ../../library/pathlib.rst:1341
+#, fuzzy
+msgid ""
+">>> sorted(Path('.').glob('*.py'))\n"
+"[PosixPath('pathlib.py'), PosixPath('setup.py'), PosixPath('test_pathlib.py')]\n"
+">>> sorted(Path('.').glob('*/*.py'))\n"
+"[PosixPath('docs/conf.py')]\n"
+">>> sorted(Path('.').glob('**/*.py'))\n"
+"[PosixPath('build/lib/pathlib.py'),\n"
+" PosixPath('docs/conf.py'),\n"
+" PosixPath('pathlib.py'),\n"
+" PosixPath('setup.py'),\n"
+" PosixPath('test_pathlib.py')]"
+msgstr ""
+">>> được sắp xếp(Path('.').glob('*.py'))\n"
+"[PosixPath('pathlib.py'), PosixPath('setup.py'), PosixPath('test_pathlib.py')]\n"
+">>> được sắp xếp(Path('.').glob('*/*.py'))\n"
+"[PosixPath('docs/conf.py')]\n"
+">>> được sắp xếp(Path('.').glob('**/*.py'))\n"
+"[PosixPath('build/lib/pathlib.py'),\n"
+" PosixPath('docs/conf.py'),\n"
+" PosixPath('pathlib.py'),\n"
+" PosixPath('setup.py'),\n"
+" PosixPath('test_pathlib.py')]"
+
+#: ../../library/pathlib.rst:1353 ../../library/pathlib.rst:1396
+#, fuzzy
+msgid ""
+"The paths are returned in no particular order. If you need a specific order,"
+" sort the results."
+msgstr ""
+"Các đường dẫn được trả về không theo thứ tự cụ thể. Nếu bạn cần một thứ tự "
+"cụ thể, hãy sắp xếp kết quả."
+
+#: ../../library/pathlib.rst:1359
+#, fuzzy
+msgid ""
+"By default, or when the *case_sensitive* keyword-only argument is set to "
+"``None``, this method matches paths using platform-specific casing rules: "
+"typically, case-sensitive on POSIX, and case-insensitive on Windows. Set "
+"*case_sensitive* to ``True`` or ``False`` to override this behaviour."
+msgstr ""
+"Theo mặc định hoặc khi đối số chỉ từ khóa *case_sensitive* được đặt thành "
+"``None``, phương thức này khớp với các đường dẫn bằng cách sử dụng quy tắc "
+"viết hoa dành riêng cho nền tảng: thông thường, phân biệt chữ hoa chữ thường"
+" trên POSIX và không phân biệt chữ hoa chữ thường trên Windows. Đặt "
+"*case_sensitive* thành ``True`` hoặc ``False`` để ghi đè hành vi này."
+
+#: ../../library/pathlib.rst:1364
+#, fuzzy
+msgid ""
+"By default, or when the *recurse_symlinks* keyword-only argument is set to "
+"``False``, this method follows symlinks except when expanding \"``**``\" "
+"wildcards. Set *recurse_symlinks* to ``True`` to always follow symlinks."
+msgstr ""
+"Theo mặc định hoặc khi đối số chỉ từ khóa *recurse_symlinks* được đặt thành "
+"``False``, phương thức này tuân theo các liên kết tượng trưng ngoại trừ khi "
+"mở rộng các ký tự đại diện \"``**``\". Đặt *recurse_symlinks* thành ``True``"
+" để luôn theo các liên kết tượng trưng."
+
+#: ../../library/pathlib.rst:1369 ../../library/pathlib.rst:1400
+#, fuzzy
+msgid ""
+"Any :exc:`OSError` exceptions raised from scanning the filesystem are "
+"suppressed. This includes :exc:`PermissionError` when accessing directories "
+"without read permission."
+msgstr ""
+"Mọi ngoại lệ :exc:`OSError` phát sinh từ quá trình quét hệ thống tập tin đều"
+" bị chặn. Điều này bao gồm :exc:`PermissionError` khi truy cập các thư mục "
+"mà không có quyền đọc."
+
+#: ../../library/pathlib.rst:1373
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``pathlib.Path.glob`` with "
+"arguments ``self``, ``pattern``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``pathlib.Path.glob`` với các đối "
+"số ``self``, ``pattern``."
+
+#: ../../library/pathlib.rst:1378 ../../library/pathlib.rst:1412
+#, fuzzy
+msgid "The *recurse_symlinks* parameter was added."
+msgstr "Tham số *recurse_symlinks* đã được thêm vào."
+
+#: ../../library/pathlib.rst:1384
+#, fuzzy
+msgid ""
+"Any :exc:`OSError` exceptions raised from scanning the filesystem are "
+"suppressed. In previous versions, such exceptions are suppressed in many "
+"cases, but not all."
+msgstr ""
+"Mọi ngoại lệ :exc:`OSError` phát sinh từ quá trình quét hệ thống tập tin đều"
+" bị chặn. Trong các phiên bản trước, những ngoại lệ như vậy bị loại bỏ trong"
+" nhiều trường hợp, nhưng không phải tất cả."
+
+#: ../../library/pathlib.rst:1392
+#, fuzzy
+msgid ""
+"Glob the given relative *pattern* recursively.  This is like calling "
+":func:`Path.glob` with \"``**/``\" added in front of the *pattern*."
+msgstr ""
+"Toàn cầu hóa *pattern* tương đối đã cho theo cách đệ quy.  Điều này giống "
+"như gọi :func:`Path.glob` với \"``**/``\" được thêm vào trước *pattern*."
+
+#: ../../library/pathlib.rst:1405
+#, fuzzy
+msgid ":ref:`pathlib-pattern-language` and :meth:`Path.glob` documentation."
+msgstr "tài liệu :ref:`pathlib-pattern-language` và :meth:`Path.glob`."
+
+#: ../../library/pathlib.rst:1407
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``pathlib.Path.rglob`` with "
+"arguments ``self``, ``pattern``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``pathlib.Path.rglob`` với các đối"
+" số ``self``, ``pattern``."
+
+#: ../../library/pathlib.rst:1421
+#, fuzzy
+msgid ""
+"Generate the file names in a directory tree by walking the tree either top-"
+"down or bottom-up."
+msgstr ""
+"Tạo tên tệp trong cây thư mục bằng cách duyệt cây từ trên xuống hoặc từ dưới"
+" lên."
+
+#: ../../library/pathlib.rst:1424
+#, fuzzy
+msgid ""
+"For each directory in the directory tree rooted at *self* (including *self* "
+"but excluding '.' and '..'), the method yields a 3-tuple of ``(dirpath, "
+"dirnames, filenames)``."
+msgstr ""
+"Đối với mỗi thư mục trong cây thư mục có gốc tại *self* (bao gồm *self* "
+"nhưng loại trừ '.' và '..'), phương thức này mang lại 3 bộ ``(dirpath, "
+"dirnames, filenames)``."
+
+#: ../../library/pathlib.rst:1428
+#, fuzzy
+msgid ""
+"*dirpath* is a :class:`Path` to the directory currently being walked, "
+"*dirnames* is a list of strings for the names of subdirectories in *dirpath*"
+" (excluding ``'.'`` and ``'..'``), and *filenames* is a list of strings for "
+"the names of the non-directory files in *dirpath*. To get a full path (which"
+" begins with *self*) to a file or directory in *dirpath*, do ``dirpath / "
+"name``. Whether or not the lists are sorted is file system-dependent."
+msgstr ""
+"*dirpath* là một :class:`Path` cho thư mục hiện đang được duyệt, *dirnames* "
+"là danh sách các chuỗi cho tên của các thư mục con trong *dirpath* (không "
+"bao gồm ``'.'`` và ``'..'``) và *filenames* là danh sách các chuỗi cho tên "
+"của các tệp không phải thư mục trong *dirpath*. Để có đường dẫn đầy đủ (bắt "
+"đầu bằng *self*) tới một tệp hoặc thư mục trong *dirpath*, hãy thực hiện "
+"``dirpath / name``. Việc danh sách có được sắp xếp hay không phụ thuộc vào "
+"hệ thống tệp."
+
+#: ../../library/pathlib.rst:1436
+#, fuzzy
+msgid ""
+"If the optional argument *top_down* is true (which is the default), the "
+"triple for a directory is generated before the triples for any of its "
+"subdirectories (directories are walked top-down).  If *top_down* is false, "
+"the triple for a directory is generated after the triples for all of its "
+"subdirectories (directories are walked bottom-up). No matter the value of "
+"*top_down*, the list of subdirectories is retrieved before the triples for "
+"the directory and its subdirectories are walked."
+msgstr ""
+"Nếu đối số tùy chọn *top_down* là đúng (là mặc định), thì bộ ba cho một thư "
+"mục sẽ được tạo trước bộ ba cho bất kỳ thư mục con nào của nó (các thư mục "
+"được đi từ trên xuống).  Nếu *top_down* sai, bộ ba cho một thư mục sẽ được "
+"tạo sau bộ ba cho tất cả các thư mục con của nó (các thư mục được đi từ dưới"
+" lên). Bất kể giá trị của *top_down* là gì, danh sách các thư mục con đều "
+"được truy xuất trước khi bộ ba cho thư mục và các thư mục con của nó được "
+"duyệt."
+
+#: ../../library/pathlib.rst:1444
+#, fuzzy
+msgid ""
+"When *top_down* is true, the caller can modify the *dirnames* list in-place "
+"(for example, using :keyword:`del` or slice assignment), and "
+":meth:`Path.walk` will only recurse into the subdirectories whose names "
+"remain in *dirnames*. This can be used to prune the search, or to impose a "
+"specific order of visiting, or even to inform :meth:`Path.walk` about "
+"directories the caller creates or renames before it resumes "
+":meth:`Path.walk` again. Modifying *dirnames* when *top_down* is false has "
+"no effect on the behavior of :meth:`Path.walk` since the directories in "
+"*dirnames* have already been generated by the time *dirnames* is yielded to "
+"the caller."
+msgstr ""
+"Khi *top_down* là đúng, người gọi có thể sửa đổi danh sách *dirnames* tại "
+"chỗ (ví dụ: sử dụng :keyword:`del` hoặc gán lát) và :meth:`Path.walk` sẽ chỉ"
+" lặp lại vào các thư mục con có tên vẫn là *dirnames*. Điều này có thể được "
+"sử dụng để cắt bớt tìm kiếm hoặc áp đặt một thứ tự truy cập cụ thể hoặc thậm"
+" chí để thông báo cho :meth:`Path.walk` về các thư mục mà người gọi tạo hoặc"
+" đổi tên trước khi tiếp tục lại :meth:`Path.walk`. Việc sửa đổi *dirnames* "
+"khi *top_down* sai không ảnh hưởng đến hoạt động của :meth:`Path.walk` vì "
+"các thư mục trong *dirnames* đã được tạo vào thời điểm *dirnames* được "
+"chuyển cho người gọi."
+
+#: ../../library/pathlib.rst:1454
+#, fuzzy
+msgid ""
+"By default, errors from :func:`os.scandir` are ignored.  If the optional "
+"argument *on_error* is specified, it should be a callable; it will be called"
+" with one argument, an :exc:`OSError` instance. The callable can handle the "
+"error to continue the walk or re-raise it to stop the walk. Note that the "
+"filename is available as the ``filename`` attribute of the exception object."
+msgstr ""
+"Theo mặc định, các lỗi từ :func:`os.scandir` sẽ bị bỏ qua.  Nếu đối số tùy "
+"chọn *on_error* được chỉ định thì đối số đó phải là đối số có thể gọi được; "
+"nó sẽ được gọi với một đối số, một thể hiện :exc:`OSError`. Lệnh gọi có thể "
+"xử lý lỗi để tiếp tục quá trình đi bộ hoặc nâng lại nó để dừng quá trình đi "
+"bộ. Lưu ý rằng tên tệp có sẵn dưới dạng thuộc tính ``filename`` của đối "
+"tượng ngoại lệ."
+
+#: ../../library/pathlib.rst:1460
+#, fuzzy
+msgid ""
+"By default, :meth:`Path.walk` does not follow symbolic links, and instead "
+"adds them to the *filenames* list. Set *follow_symlinks* to true to resolve "
+"symlinks and place them in *dirnames* and *filenames* as appropriate for "
+"their targets, and consequently visit directories pointed to by symlinks "
+"(where supported)."
+msgstr ""
+"Theo mặc định, :meth:`Path.walk` không theo các liên kết tượng trưng mà thay"
+" vào đó thêm chúng vào danh sách *filenames*. Đặt *follow_symlinks* thành "
+"true để giải quyết các liên kết tượng trưng và đặt chúng vào *dirnames* và "
+"*filenames* phù hợp với mục tiêu của chúng, sau đó truy cập các thư mục được"
+" trỏ đến bởi các liên kết tượng trưng (nếu được hỗ trợ)."
+
+#: ../../library/pathlib.rst:1467
+#, fuzzy
+msgid ""
+"Be aware that setting *follow_symlinks* to true can lead to infinite "
+"recursion if a link points to a parent directory of itself. "
+":meth:`Path.walk` does not keep track of the directories it has already "
+"visited."
+msgstr ""
+"Xin lưu ý rằng việc đặt *follow_symlinks* thành true có thể dẫn đến đệ quy "
+"vô hạn nếu một liên kết trỏ đến thư mục mẹ của chính nó. :meth:`Path.walk` "
+"không theo dõi các thư mục mà nó đã truy cập."
+
+#: ../../library/pathlib.rst:1472
+#, fuzzy
+msgid ""
+":meth:`Path.walk` assumes the directories it walks are not modified during "
+"execution. For example, if a directory from *dirnames* has been replaced "
+"with a symlink and *follow_symlinks* is false, :meth:`Path.walk` will still "
+"try to descend into it. To prevent such behavior, remove directories from "
+"*dirnames* as appropriate."
+msgstr ""
+":meth:`Path.walk` giả định các thư mục mà nó đi qua không bị sửa đổi trong "
+"quá trình thực thi. Ví dụ: nếu một thư mục từ *dirnames* đã được thay thế "
+"bằng một liên kết tượng trưng và *follow_symlinks* là sai, :meth:`Path.walk`"
+" vẫn sẽ cố gắng truy cập vào đó. Để ngăn chặn hành vi đó, hãy xóa các thư "
+"mục khỏi *dirnames* nếu thích hợp."
+
+#: ../../library/pathlib.rst:1480
+#, fuzzy
+msgid ""
+"Unlike :func:`os.walk`, :meth:`Path.walk` lists symlinks to directories in "
+"*filenames* if *follow_symlinks* is false."
+msgstr ""
+"Không giống như :func:`os.walk`, :meth:`Path.walk` liệt kê các liên kết "
+"tượng trưng đến các thư mục trong *filenames* nếu *follow_symlinks* sai."
+
+#: ../../library/pathlib.rst:1483
+#, fuzzy
+msgid ""
+"This example displays the number of bytes used by all files in each "
+"directory, while ignoring ``__pycache__`` directories::"
+msgstr ""
+"Ví dụ này hiển thị số byte được sử dụng bởi tất cả các tệp trong mỗi thư "
+"mục, đồng thời bỏ qua các thư mục ``__pycache__``::"
+
+#: ../../library/pathlib.rst:1486
+#, fuzzy
+msgid ""
+"from pathlib import Path\n"
+"for root, dirs, files in Path(\"cpython/Lib/concurrent\").walk(on_error=print):\n"
+"  print(\n"
+"      root,\n"
+"      \"consumes\",\n"
+"      sum((root / file).stat().st_size for file in files),\n"
+"      \"bytes in\",\n"
+"      len(files),\n"
+"      \"non-directory files\"\n"
+"  )\n"
+"  if '__pycache__' in dirs:\n"
+"        dirs.remove('__pycache__')"
+msgstr ""
+"từ đường dẫn nhập pathlib\n"
+"đối với thư mục gốc, thư mục, tệp trong Đường dẫn(\"cpython/Lib/concurrent\").walk(on_error=print):\n"
+"  in(\n"
+"      gốc,\n"
+"      \"tiêu thụ\",\n"
+"      sum((root / file).stat().st_size cho tập tin trong tập tin),\n"
+"      \"byte trong\",\n"
+"      len(tập tin),\n"
+"      \"các tập tin không có thư mục\"\n"
+"  )\n"
+"  nếu '__pycache__' trong thư mục:\n"
+"        dirs.remove('__pycache__')"
+
+#: ../../library/pathlib.rst:1499
+#, fuzzy
+msgid ""
+"This next example is a simple implementation of :func:`shutil.rmtree`. "
+"Walking the tree bottom-up is essential as :func:`rmdir` doesn't allow "
+"deleting a directory before it is empty::"
+msgstr ""
+"Ví dụ tiếp theo này là cách triển khai đơn giản của :func:`shutil.rmtree`. "
+"Đi theo cây từ dưới lên là điều cần thiết vì :func:`rmdir` không cho phép "
+"xóa thư mục trước khi nó trống::"
+
+#: ../../library/pathlib.rst:1503
+#, fuzzy
+msgid ""
+"# Delete everything reachable from the directory \"top\".\n"
+"# CAUTION:  This is dangerous! For example, if top == Path('/'),\n"
+"# it could delete all of your files.\n"
+"for root, dirs, files in top.walk(top_down=False):\n"
+"    for name in files:\n"
+"        (root / name).unlink()\n"
+"    for name in dirs:\n"
+"        (root / name).rmdir()"
+msgstr ""
+"# Delete mọi thứ đều có thể truy cập được từ thư mục \"top\".\n"
+"# CAUTION: Nguy hiểm quá! Ví dụ: nếu top == Path('/'),\n"
+"# it có thể xóa tất cả các tập tin của bạn.\n"
+"cho thư mục gốc, thư mục, tập tin trong top.walk(top_down=False):\n"
+"    cho tên trong tập tin:\n"
+"        (gốc/tên).unlink()\n"
+"    cho tên trong thư mục:\n"
+"        (gốc / tên).rmdir()"
+
+#: ../../library/pathlib.rst:1516
+#, fuzzy
+msgid "Creating files and directories"
+msgstr "Tạo tập tin và thư mục"
+
+#: ../../library/pathlib.rst:1520
+#, fuzzy
+msgid ""
+"Create a file at this given path.  If *mode* is given, it is combined with "
+"the process's ``umask`` value to determine the file mode and access flags.  "
+"If the file already exists, the function succeeds when *exist_ok* is true "
+"(and its modification time is updated to the current time), otherwise "
+":exc:`FileExistsError` is raised."
+msgstr ""
+"Tạo một tập tin tại đường dẫn đã cho này.  Nếu *mode* được cung cấp, nó sẽ "
+"được kết hợp với giá trị ``umask`` của quy trình để xác định chế độ tệp và "
+"cờ truy cập.  Nếu tệp đã tồn tại, hàm sẽ thành công khi *exist_ok* là đúng "
+"(và thời gian sửa đổi của nó được cập nhật theo thời gian hiện tại), nếu "
+"không thì :exc:`FileExistsError` sẽ được nâng lên."
+
+#: ../../library/pathlib.rst:1527
+#, fuzzy
+msgid ""
+"The :meth:`~Path.open`, :meth:`~Path.write_text` and "
+":meth:`~Path.write_bytes` methods are often used to create files."
+msgstr ""
+"Các phương thức :meth:`~Path.open`, :meth:`~Path.write_text` và "
+":meth:`~Path.write_bytes` thường được sử dụng để tạo tệp."
+
+#: ../../library/pathlib.rst:1533
+#, fuzzy
+msgid ""
+"Create a new directory at this given path.  If *mode* is given, it is "
+"combined with the process's ``umask`` value to determine the file mode and "
+"access flags.  If the path already exists, :exc:`FileExistsError` is raised."
+msgstr ""
+"Tạo một thư mục mới tại đường dẫn đã cho này.  Nếu *mode* được cung cấp, nó "
+"sẽ được kết hợp với giá trị ``umask`` của quy trình để xác định chế độ tệp "
+"và cờ truy cập.  Nếu đường dẫn đã tồn tại, :exc:`FileExistsError` sẽ được "
+"nâng lên."
+
+#: ../../library/pathlib.rst:1538
+#, fuzzy
+msgid ""
+"If *parents* is true, any missing parents of this path are created as "
+"needed; they are created with the default permissions without taking *mode* "
+"into account (mimicking the POSIX ``mkdir -p`` command)."
+msgstr ""
+"Nếu *parents* là đúng, mọi cha mẹ bị thiếu của đường dẫn này sẽ được tạo khi"
+" cần thiết; chúng được tạo với các quyền mặc định mà không tính đến *mode* "
+"(bắt chước lệnh POSIX ``mkdir -p``)."
+
+#: ../../library/pathlib.rst:1542
+#, fuzzy
+msgid ""
+"If *parents* is false (the default), a missing parent raises "
+":exc:`FileNotFoundError`."
+msgstr ""
+"Nếu *parents* là sai (mặc định), cha mẹ bị thiếu sẽ tăng "
+":exc:`FileNotFoundError`."
+
+#: ../../library/pathlib.rst:1545
+#, fuzzy
+msgid ""
+"If *exist_ok* is false (the default), :exc:`FileExistsError` is raised if "
+"the target directory already exists."
+msgstr ""
+"Nếu *exist_ok* sai (mặc định), :exc:`FileExistsError` sẽ được nâng lên nếu "
+"thư mục đích đã tồn tại."
+
+#: ../../library/pathlib.rst:1548
+#, fuzzy
+msgid ""
+"If *exist_ok* is true, :exc:`FileExistsError` will not be raised unless the "
+"given path already exists in the file system and is not a directory (same "
+"behavior as the POSIX ``mkdir -p`` command)."
+msgstr ""
+"Nếu *exist_ok* là đúng, :exc:`FileExistsError` sẽ không được nâng lên trừ "
+"khi đường dẫn đã cho đã tồn tại trong hệ thống tệp và không phải là một thư "
+"mục (hành vi tương tự như lệnh POSIX ``mkdir -p``)."
+
+#: ../../library/pathlib.rst:1552
+#, fuzzy
+msgid "The *exist_ok* parameter was added."
+msgstr "Tham số *exist_ok* đã được thêm vào."
+
+#: ../../library/pathlib.rst:1558
+#, fuzzy
+msgid "Make this path a symbolic link pointing to *target*."
+msgstr "Biến đường dẫn này thành một liên kết tượng trưng trỏ tới *target*."
+
+#: ../../library/pathlib.rst:1560
+#, fuzzy
+msgid ""
+"On Windows, a symlink represents either a file or a directory, and does not "
+"morph to the target dynamically.  If the target is present, the type of the "
+"symlink will be created to match. Otherwise, the symlink will be created as "
+"a directory if *target_is_directory* is true or a file symlink (the default)"
+" otherwise.  On non-Windows platforms, *target_is_directory* is ignored."
+msgstr ""
+"Trên Windows, một liên kết tượng trưng đại diện cho một tệp hoặc một thư mục"
+" và không tự động biến thành mục tiêu.  Nếu có mục tiêu, loại liên kết tượng"
+" trưng sẽ được tạo để phù hợp. Nếu không, liên kết tượng trưng sẽ được tạo "
+"dưới dạng thư mục nếu *target_is_directory* là đúng hoặc liên kết tượng "
+"trưng tệp (mặc định) nếu ngược lại.  Trên nền tảng không phải Windows, "
+"*target_is_directory* bị bỏ qua."
+
+#: ../../library/pathlib.rst:1568
+#, fuzzy
+msgid ""
+">>> p = Path('mylink')\n"
+">>> p.symlink_to('setup.py')\n"
+">>> p.resolve()\n"
+"PosixPath('/home/antoine/pathlib/setup.py')\n"
+">>> p.stat().st_size\n"
+"956\n"
+">>> p.lstat().st_size\n"
+"8"
+msgstr ""
+">>> p = Đường dẫn('mylink')\n"
+">>> p.symlink_to('setup.py')\n"
+">>> p.resolve()\n"
+"PosixPath('/home/antoine/pathlib/setup.py')\n"
+">>> p.stat().st_size\n"
+"956\n"
+">>> p.lstat().st_size\n"
+"8"
+
+#: ../../library/pathlib.rst:1578
+#, fuzzy
+msgid ""
+"The order of arguments (link, target) is the reverse of "
+":func:`os.symlink`'s."
+msgstr ""
+"Thứ tự của các đối số (liên kết, đích) ngược lại với :func:`os.symlink`."
+
+#: ../../library/pathlib.rst:1581
+#, fuzzy
+msgid ""
+"Raises :exc:`UnsupportedOperation` if :func:`os.symlink` is not available. "
+"In previous versions, :exc:`NotImplementedError` was raised."
+msgstr ""
+"Tăng :exc:`UnsupportedOperation` nếu :func:`os.symlink` không có sẵn. Trong "
+"các phiên bản trước, :exc:`NotImplementedError` đã được nâng lên."
+
+#: ../../library/pathlib.rst:1588
+#, fuzzy
+msgid "Make this path a hard link to the same file as *target*."
+msgstr ""
+"Đặt đường dẫn này thành một liên kết cứng tới cùng một tệp với *target*."
+
+#: ../../library/pathlib.rst:1591
+#, fuzzy
+msgid ""
+"The order of arguments (link, target) is the reverse of :func:`os.link`'s."
+msgstr "Thứ tự của các đối số (liên kết, đích) ngược lại với :func:`os.link`."
+
+#: ../../library/pathlib.rst:1596
+#, fuzzy
+msgid ""
+"Raises :exc:`UnsupportedOperation` if :func:`os.link` is not available. In "
+"previous versions, :exc:`NotImplementedError` was raised."
+msgstr ""
+"Tăng :exc:`UnsupportedOperation` nếu :func:`os.link` không có sẵn. Trong các"
+" phiên bản trước, :exc:`NotImplementedError` đã được nâng lên."
+
+#: ../../library/pathlib.rst:1602
+#, fuzzy
+msgid "Copying, moving and deleting"
+msgstr "Sao chép, di chuyển và xóa"
+
+#: ../../library/pathlib.rst:1606
+#, fuzzy
+msgid ""
+"Copy this file or directory tree to the given *target*, and return a new "
+":class:`!Path` instance pointing to *target*."
+msgstr ""
+"Sao chép tệp hoặc cây thư mục này vào *target* đã cho và trả về một phiên "
+"bản :class:`!Path` mới trỏ đến *target*."
+
+#: ../../library/pathlib.rst:1609
+#, fuzzy
+msgid ""
+"If the source is a file, the target will be replaced if it is an existing "
+"file. If the source is a symlink and *follow_symlinks* is true (the "
+"default), the symlink's target is copied. Otherwise, the symlink is "
+"recreated at the destination."
+msgstr ""
+"Nếu nguồn là một tệp thì đích sẽ được thay thế nếu đó là tệp hiện có. Nếu "
+"nguồn là một liên kết tượng trưng và *follow_symlinks* là đúng (mặc định), "
+"mục tiêu của liên kết tượng trưng sẽ được sao chép. Nếu không, liên kết "
+"tượng trưng sẽ được tạo lại ở đích."
+
+#: ../../library/pathlib.rst:1614
+#, fuzzy
+msgid ""
+"If *preserve_metadata* is false (the default), only directory structures and"
+" file data are guaranteed to be copied. Set *preserve_metadata* to true to "
+"ensure that file and directory permissions, flags, last access and "
+"modification times, and extended attributes are copied where supported. This"
+" argument has no effect when copying files on Windows (where metadata is "
+"always preserved)."
+msgstr ""
+"Nếu *preserve_metadata* sai (mặc định), chỉ cấu trúc thư mục và dữ liệu tệp "
+"mới được đảm bảo sao chép. Đặt *preserve_metadata* thành true để đảm bảo "
+"rằng các quyền đối với tệp và thư mục, cờ, thời gian truy cập và sửa đổi lần"
+" cuối cũng như các thuộc tính mở rộng được sao chép ở những nơi được hỗ trợ."
+" Đối số này không có tác dụng khi sao chép tệp trên Windows (nơi siêu dữ "
+"liệu luôn được bảo tồn)."
+
+#: ../../library/pathlib.rst:1622
+#, fuzzy
+msgid ""
+"Where supported by the operating system and file system, this method "
+"performs a lightweight copy, where data blocks are only copied when "
+"modified. This is known as copy-on-write."
+msgstr ""
+"Khi được hệ điều hành và hệ thống tệp hỗ trợ, phương pháp này thực hiện một "
+"bản sao nhẹ, trong đó các khối dữ liệu chỉ được sao chép khi được sửa đổi. "
+"Điều này được gọi là sao chép trên ghi."
+
+#: ../../library/pathlib.rst:1632
+#, fuzzy
+msgid ""
+"Copy this file or directory tree into the given *target_dir*, which should "
+"be an existing directory. Other arguments are handled identically to "
+":meth:`Path.copy`. Returns a new :class:`!Path` instance pointing to the "
+"copy."
+msgstr ""
+"Sao chép tệp hoặc cây thư mục này vào *target_dir* đã cho, đây phải là một "
+"thư mục hiện có. Các đối số khác được xử lý giống hệt với :meth:`Path.copy`."
+" Trả về một phiên bản :class:`!Path` mới trỏ tới bản sao."
+
+#: ../../library/pathlib.rst:1642
+#, fuzzy
+msgid ""
+"Rename this file or directory to the given *target*, and return a new "
+":class:`!Path` instance pointing to *target*.  On Unix, if *target* exists "
+"and is a file, it will be replaced silently if the user has permission. On "
+"Windows, if *target* exists, :exc:`FileExistsError` will be raised. *target*"
+" can be either a string or another path object::"
+msgstr ""
+"Đổi tên tệp hoặc thư mục này thành *target* đã cho và trả về một phiên bản "
+":class:`!Path` mới trỏ đến *target*.  Trên Unix, nếu *target* tồn tại và là "
+"một tệp, nó sẽ được thay thế một cách âm thầm nếu người dùng có quyền. Trên "
+"Windows, nếu *target* tồn tại, :exc:`FileExistsError` sẽ được nâng lên. "
+"*target* có thể là một chuỗi hoặc một đối tượng đường dẫn khác::"
+
+#: ../../library/pathlib.rst:1648
+#, fuzzy
+msgid ""
+">>> p = Path('foo')\n"
+">>> p.open('w').write('some text')\n"
+"9\n"
+">>> target = Path('bar')\n"
+">>> p.rename(target)\n"
+"PosixPath('bar')\n"
+">>> target.open().read()\n"
+"'some text'"
+msgstr ""
+">>> p = Đường dẫn('foo')\n"
+">>> p.open('w').write('some text')\n"
+"9\n"
+">>> target = Đường dẫn('bar')\n"
+">>> p.rename(đích)\n"
+"PosixPath('bar')\n"
+">>> target.open().read()\n"
+"'một số văn bản'"
+
+#: ../../library/pathlib.rst:1657 ../../library/pathlib.rst:1673
+#, fuzzy
+msgid ""
+"The target path may be absolute or relative. Relative paths are interpreted "
+"relative to the current working directory, *not* the directory of the "
+":class:`!Path` object."
+msgstr ""
+"Đường dẫn đích có thể là tuyệt đối hoặc tương đối. Đường dẫn tương đối được "
+"hiểu tương ứng với thư mục làm việc hiện tại, *not* thư mục của đối tượng "
+":class:`!Path`."
+
+#: ../../library/pathlib.rst:1661
+#, fuzzy
+msgid ""
+"It is implemented in terms of :func:`os.rename` and gives the same "
+"guarantees."
+msgstr ""
+"Nó được triển khai theo :func:`os.rename` và đưa ra những đảm bảo tương tự."
+
+#: ../../library/pathlib.rst:1663 ../../library/pathlib.rst:1677
+#, fuzzy
+msgid "Added return value, return the new :class:`!Path` instance."
+msgstr "Đã thêm giá trị trả về, trả về phiên bản :class:`!Path` mới."
+
+#: ../../library/pathlib.rst:1669
+#, fuzzy
+msgid ""
+"Rename this file or directory to the given *target*, and return a new "
+":class:`!Path` instance pointing to *target*.  If *target* points to an "
+"existing file or empty directory, it will be unconditionally replaced."
+msgstr ""
+"Đổi tên tệp hoặc thư mục này thành *target* đã cho và trả về một phiên bản "
+":class:`!Path` mới trỏ đến *target*.  Nếu *target* trỏ đến một tập tin hiện "
+"có hoặc thư mục trống, nó sẽ được thay thế vô điều kiện."
+
+#: ../../library/pathlib.rst:1683
+#, fuzzy
+msgid ""
+"Move this file or directory tree to the given *target*, and return a new "
+":class:`!Path` instance pointing to *target*."
+msgstr ""
+"Di chuyển tệp hoặc cây thư mục này tới *target* đã cho và trả về một phiên "
+"bản :class:`!Path` mới trỏ đến *target*."
+
+#: ../../library/pathlib.rst:1686
+#, fuzzy
+msgid ""
+"If the *target* doesn't exist it will be created. If both this path and the "
+"*target* are existing files, then the target is overwritten. If both paths "
+"point to the same file or directory, or the *target* is a non-empty "
+"directory, then :exc:`OSError` is raised."
+msgstr ""
+"Nếu *target* không tồn tại, nó sẽ được tạo. Nếu cả đường dẫn này và *target*"
+" đều là các tệp hiện có thì mục tiêu sẽ bị ghi đè. Nếu cả hai đường dẫn đều "
+"trỏ đến cùng một tệp hoặc thư mục hoặc *target* là một thư mục không trống "
+"thì :exc:`OSError` sẽ được nâng lên."
+
+#: ../../library/pathlib.rst:1691
+#, fuzzy
+msgid ""
+"If both paths are on the same filesystem, the move is performed with "
+":func:`os.replace`. Otherwise, this path is copied (preserving metadata and "
+"symlinks) and then deleted."
+msgstr ""
+"Nếu cả hai đường dẫn đều nằm trên cùng một hệ thống tệp, việc di chuyển sẽ "
+"được thực hiện bằng :func:`os.replace`. Nếu không, đường dẫn này sẽ được sao"
+" chép (bảo toàn siêu dữ liệu và liên kết tượng trưng) rồi xóa."
+
+#: ../../library/pathlib.rst:1700
+#, fuzzy
+msgid ""
+"Move this file or directory tree into the given *target_dir*, which should "
+"be an existing directory. Returns a new :class:`!Path` instance pointing to "
+"the moved path."
+msgstr ""
+"Di chuyển tệp hoặc cây thư mục này vào *target_dir* đã cho, đây phải là một "
+"thư mục hiện có. Trả về một phiên bản :class:`!Path` mới trỏ đến đường dẫn "
+"đã di chuyển."
+
+#: ../../library/pathlib.rst:1709
+#, fuzzy
+msgid ""
+"Remove this file or symbolic link.  If the path points to a directory, use "
+":func:`Path.rmdir` instead."
+msgstr ""
+"Xóa tệp này hoặc liên kết tượng trưng.  Nếu đường dẫn trỏ đến một thư mục, "
+"thay vào đó hãy sử dụng :func:`Path.rmdir`."
+
+#: ../../library/pathlib.rst:1712
+#, fuzzy
+msgid ""
+"If *missing_ok* is false (the default), :exc:`FileNotFoundError` is raised "
+"if the path does not exist."
+msgstr ""
+"Nếu *missing_ok* sai (mặc định), :exc:`FileNotFoundError` sẽ được nâng lên "
+"nếu đường dẫn không tồn tại."
+
+#: ../../library/pathlib.rst:1715
+#, fuzzy
+msgid ""
+"If *missing_ok* is true, :exc:`FileNotFoundError` exceptions will be ignored"
+" (same behavior as the POSIX ``rm -f`` command)."
+msgstr ""
+"Nếu *missing_ok* là đúng, các ngoại lệ :exc:`FileNotFoundError` sẽ bị bỏ qua"
+" (hành vi tương tự như lệnh POSIX ``rm -f``)."
+
+#: ../../library/pathlib.rst:1718
+#, fuzzy
+msgid "The *missing_ok* parameter was added."
+msgstr "Tham số *missing_ok* đã được thêm vào."
+
+#: ../../library/pathlib.rst:1724
+#, fuzzy
+msgid "Remove this directory.  The directory must be empty."
+msgstr "Xóa thư mục này.  Thư mục phải trống."
+
+#: ../../library/pathlib.rst:1728
+#, fuzzy
+msgid "Permissions and ownership"
+msgstr "Quyền và quyền sở hữu"
+
+#: ../../library/pathlib.rst:1732
+#, fuzzy
+msgid ""
+"Return the name of the user owning the file. :exc:`KeyError` is raised if "
+"the file's user identifier (UID) isn't found in the system database."
+msgstr ""
+"Trả về tên của người dùng sở hữu tập tin. :exc:`KeyError` được nâng lên nếu "
+"không tìm thấy mã định danh người dùng của tệp (UID) trong cơ sở dữ liệu hệ "
+"thống."
+
+#: ../../library/pathlib.rst:1735
+#, fuzzy
+msgid ""
+"This method normally follows symlinks; to get the owner of the symlink, add "
+"the argument ``follow_symlinks=False``."
+msgstr ""
+"Phương pháp này thường theo các liên kết tượng trưng; để có được chủ sở hữu "
+"của liên kết tượng trưng, ​​hãy thêm đối số ``follow_symlinks=False``."
+
+#: ../../library/pathlib.rst:1738
+#, fuzzy
+msgid ""
+"Raises :exc:`UnsupportedOperation` if the :mod:`pwd` module is not "
+"available. In earlier versions, :exc:`NotImplementedError` was raised."
+msgstr ""
+"Tăng :exc:`UnsupportedOperation` nếu mô-đun :mod:`pwd` không khả dụng. Trong"
+" các phiên bản trước, :exc:`NotImplementedError` đã được nâng lên."
+
+#: ../../library/pathlib.rst:1748
+#, fuzzy
+msgid ""
+"Return the name of the group owning the file. :exc:`KeyError` is raised if "
+"the file's group identifier (GID) isn't found in the system database."
+msgstr ""
+"Trả về tên của nhóm sở hữu tập tin. :exc:`KeyError` được nâng lên nếu không "
+"tìm thấy mã định danh nhóm của tệp (GID) trong cơ sở dữ liệu hệ thống."
+
+#: ../../library/pathlib.rst:1751
+#, fuzzy
+msgid ""
+"This method normally follows symlinks; to get the group of the symlink, add "
+"the argument ``follow_symlinks=False``."
+msgstr ""
+"Phương pháp này thường theo các liên kết tượng trưng; để lấy nhóm liên kết "
+"tượng trưng, ​​hãy thêm đối số ``follow_symlinks=False``."
+
+#: ../../library/pathlib.rst:1754
+#, fuzzy
+msgid ""
+"Raises :exc:`UnsupportedOperation` if the :mod:`grp` module is not "
+"available. In earlier versions, :exc:`NotImplementedError` was raised."
+msgstr ""
+"Tăng :exc:`UnsupportedOperation` nếu mô-đun :mod:`grp` không khả dụng. Trong"
+" các phiên bản trước, :exc:`NotImplementedError` đã được nâng lên."
+
+#: ../../library/pathlib.rst:1764
+#, fuzzy
+msgid "Change the file mode and permissions, like :func:`os.chmod`."
+msgstr "Thay đổi chế độ và quyền của tệp, như :func:`os.chmod`."
+
+#: ../../library/pathlib.rst:1766
+#, fuzzy
+msgid ""
+"This method normally follows symlinks. Some Unix flavours support changing "
+"permissions on the symlink itself; on these platforms you may add the "
+"argument ``follow_symlinks=False``, or use :meth:`~Path.lchmod`."
+msgstr ""
+"Phương pháp này thường theo liên kết tượng trưng. Một số phiên bản Unix hỗ "
+"trợ thay đổi quyền trên chính liên kết tượng trưng; trên các nền tảng này, "
+"bạn có thể thêm đối số ``follow_symlinks=False`` hoặc sử dụng "
+":meth:`~Path.lchmod`."
+
+#: ../../library/pathlib.rst:1772
+#, fuzzy
+msgid ""
+">>> p = Path('setup.py')\n"
+">>> p.stat().st_mode\n"
+"33277\n"
+">>> p.chmod(0o444)\n"
+">>> p.stat().st_mode\n"
+"33060"
+msgstr ""
+">>> p = Đường dẫn('setup.py')\n"
+">>> p.stat().st_mode\n"
+"33277\n"
+">>> p.chmod(0o444)\n"
+">>> p.stat().st_mode\n"
+"33060"
+
+#: ../../library/pathlib.rst:1785
+#, fuzzy
+msgid ""
+"Like :meth:`Path.chmod` but, if the path points to a symbolic link, the "
+"symbolic link's mode is changed rather than its target's."
+msgstr ""
+"Giống như :meth:`Path.chmod` nhưng nếu đường dẫn trỏ đến một liên kết tượng "
+"trưng thì chế độ của liên kết tượng trưng sẽ thay đổi chứ không phải chế độ "
+"đích của nó."
+
+#: ../../library/pathlib.rst:1792
+#, fuzzy
+msgid "Pattern language"
+msgstr "Ngôn ngữ mẫu"
+
+#: ../../library/pathlib.rst:1794
+#, fuzzy
+msgid ""
+"The following wildcards are supported in patterns for "
+":meth:`~PurePath.full_match`, :meth:`~Path.glob` and :meth:`~Path.rglob`:"
+msgstr ""
+"Các ký tự đại diện sau được hỗ trợ trong các mẫu dành cho "
+":meth:`~PurePath.full_match`, :meth:`~Path.glob` và :meth:`~Path.rglob`:"
+
+#: ../../library/pathlib.rst:1797
+#, fuzzy
+msgid "``**`` (entire segment)"
+msgstr "``**`` (toàn bộ phân khúc)"
+
+#: ../../library/pathlib.rst:1798
+#, fuzzy
+msgid "Matches any number of file or directory segments, including zero."
+msgstr ""
+"Khớp với bất kỳ số lượng phân đoạn tệp hoặc thư mục nào, bao gồm cả số 0."
+
+#: ../../library/pathlib.rst:1799
+#, fuzzy
+msgid "``*`` (entire segment)"
+msgstr "``*`` (toàn bộ phân khúc)"
+
+#: ../../library/pathlib.rst:1800
+#, fuzzy
+msgid "Matches one file or directory segment."
+msgstr "Khớp với một phân đoạn tệp hoặc thư mục."
+
+#: ../../library/pathlib.rst:1801
+#, fuzzy
+msgid "``*`` (part of a segment)"
+msgstr "``*`` (một phần của phân khúc)"
+
+#: ../../library/pathlib.rst:1802
+#, fuzzy
+msgid "Matches any number of non-separator characters, including zero."
+msgstr "Khớp với bất kỳ số ký tự không phân cách nào, kể cả số 0."
+
+#: ../../library/pathlib.rst:1803
+#, fuzzy
+msgid "``?``"
+msgstr "``?``"
+
+#: ../../library/pathlib.rst:1804
+#, fuzzy
+msgid "Matches one non-separator character."
+msgstr "Khớp với một ký tự không phân cách."
+
+#: ../../library/pathlib.rst:1805
+#, fuzzy
+msgid "``[seq]``"
+msgstr "``[seq]``"
+
+#: ../../library/pathlib.rst:1806
+#, fuzzy
+msgid ""
+"Matches one character in *seq*, where *seq* is a sequence of characters. "
+"Range expressions are supported; for example, ``[a-z]`` matches any "
+"lowercase ASCII letter. Multiple ranges can be combined: ``[a-zA-Z0-9_]`` "
+"matches any ASCII letter, digit, or underscore."
+msgstr ""
+"Khớp với một ký tự trong *seq*, trong đó *seq* là một chuỗi ký tự. biểu thức"
+" phạm vi được hỗ trợ; ví dụ: ``[a-z]`` khớp với bất kỳ chữ cái ASCII viết "
+"thường nào. Có thể kết hợp nhiều phạm vi: ``[a-zA-Z0-9_]`` khớp với bất kỳ "
+"chữ cái, chữ số hoặc dấu gạch dưới nào của ASCII."
+
+#: ../../library/pathlib.rst:1810
+#, fuzzy
+msgid "``[!seq]``"
+msgstr "``[!seq]``"
+
+#: ../../library/pathlib.rst:1811
+#, fuzzy
+msgid ""
+"Matches one character not in *seq*, where *seq* follows the same rules as "
+"above."
+msgstr ""
+"Khớp với một ký tự không có trong *seq*, trong đó *seq* tuân theo các quy "
+"tắc tương tự như trên."
+
+#: ../../library/pathlib.rst:1813
+#, fuzzy
+msgid ""
+"For a literal match, wrap the meta-characters in brackets. For example, "
+"``\"[?]\"`` matches the character ``\"?\"``."
+msgstr ""
+"Để khớp theo nghĩa đen, hãy gói các ký tự meta trong ngoặc đơn. Ví dụ: "
+"``\"[?]\"`` khớp với ký tự ``\"?\"``."
+
+#: ../../library/pathlib.rst:1816
+#, fuzzy
+msgid "The \"``**``\" wildcard enables recursive globbing. A few examples:"
+msgstr "Ký tự đại diện \"``**``\" cho phép tạo hình cầu đệ quy. Một vài ví dụ:"
+
+#: ../../library/pathlib.rst:1819
+#, fuzzy
+msgid "Pattern"
+msgstr "mẫu"
+
+#: ../../library/pathlib.rst:1819
+#, fuzzy
+msgid "Meaning"
+msgstr "Ý nghĩa"
+
+#: ../../library/pathlib.rst:1821
+#, fuzzy
+msgid "\"``**/*``\""
+msgstr "\"``**/*``\""
+
+#: ../../library/pathlib.rst:1821
+#, fuzzy
+msgid "Any path with at least one segment."
+msgstr "Bất kỳ đường dẫn nào có ít nhất một đoạn."
+
+#: ../../library/pathlib.rst:1822
+#, fuzzy
+msgid "\"``**/*.py``\""
+msgstr "\"``**/*.py``\""
+
+#: ../../library/pathlib.rst:1822
+#, fuzzy
+msgid "Any path with a final segment ending \"``.py``\"."
+msgstr "Bất kỳ đường dẫn nào có đoạn cuối cùng kết thúc bằng \"``.py``\"."
+
+#: ../../library/pathlib.rst:1823
+#, fuzzy
+msgid "\"``assets/**``\""
+msgstr "\"``assets/**``\""
+
+#: ../../library/pathlib.rst:1823
+#, fuzzy
+msgid "Any path starting with \"``assets/``\"."
+msgstr "Bất kỳ đường dẫn nào bắt đầu bằng \"``assets/``\"."
+
+#: ../../library/pathlib.rst:1824
+#, fuzzy
+msgid "\"``assets/**/*``\""
+msgstr "\"``assets/**/*``\""
+
+#: ../../library/pathlib.rst:1824
+#, fuzzy
+msgid "Any path starting with \"``assets/``\", excluding \"``assets/``\" itself."
+msgstr ""
+"Bất kỳ đường dẫn nào bắt đầu bằng \"``assets/``\", ngoại trừ chính "
+"\"``assets/``\"."
+
+#: ../../library/pathlib.rst:1828
+#, fuzzy
+msgid ""
+"Globbing with the \"``**``\" wildcard visits every directory in the tree. "
+"Large directory trees may take a long time to search."
+msgstr ""
+"Globbing với ký tự đại diện \"``**``\" sẽ truy cập mọi thư mục trong cây. "
+"Cây thư mục lớn có thể mất nhiều thời gian để tìm kiếm."
+
+#: ../../library/pathlib.rst:1831
+#, fuzzy
+msgid ""
+"Globbing with a pattern that ends with \"``**``\" returns both files and "
+"directories. In previous versions, only directories were returned."
+msgstr ""
+"Globbing với mẫu kết thúc bằng \"``**``\" sẽ trả về cả tệp và thư mục. Trong"
+" các phiên bản trước, chỉ có các thư mục được trả về."
+
+#: ../../library/pathlib.rst:1835
+#, fuzzy
+msgid ""
+"In :meth:`Path.glob` and :meth:`~Path.rglob`, a trailing slash may be added "
+"to the pattern to match only directories."
+msgstr ""
+"Trong :meth:`Path.glob` và :meth:`~Path.rglob`, một dấu gạch chéo ở cuối có "
+"thể được thêm vào mẫu để chỉ khớp với các thư mục."
+
+#: ../../library/pathlib.rst:1838
+#, fuzzy
+msgid ""
+"Globbing with a pattern that ends with a pathname components separator "
+"(:data:`~os.sep` or :data:`~os.altsep`) returns only directories."
+msgstr ""
+"Globbing với mẫu kết thúc bằng dấu phân cách thành phần tên đường dẫn "
+"(:data:`~os.sep` hoặc :data:`~os.altsep`) chỉ trả về các thư mục."
+
+#: ../../library/pathlib.rst:1844
+#, fuzzy
+msgid "Comparison to the :mod:`glob` module"
+msgstr "So sánh với mô-đun :mod:`glob`"
+
+#: ../../library/pathlib.rst:1846
+#, fuzzy
+msgid ""
+"The patterns accepted and results generated by :meth:`Path.glob` and "
+":meth:`Path.rglob` differ slightly from those by the :mod:`glob` module:"
+msgstr ""
+"Các mẫu được chấp nhận và kết quả do :meth:`Path.glob` và :meth:`Path.rglob`"
+" tạo ra hơi khác so với các mẫu của mô-đun :mod:`glob`:"
+
+#: ../../library/pathlib.rst:1849
+#, fuzzy
+msgid ""
+"Files beginning with a dot are not special in pathlib. This is like passing "
+"``include_hidden=True`` to :func:`glob.glob`."
+msgstr ""
+"Các tệp bắt đầu bằng dấu chấm không có gì đặc biệt trong pathlib. Điều này "
+"giống như chuyển ``include_hidden=True`` sang :func:`glob.glob`."
+
+#: ../../library/pathlib.rst:1851
+#, fuzzy
+msgid ""
+"\"``**``\" pattern components are always recursive in pathlib. This is like "
+"passing ``recursive=True`` to :func:`glob.glob`."
+msgstr ""
+"Các thành phần mẫu \"``**``\" luôn đệ quy trong pathlib. Điều này giống như "
+"chuyển ``recursive=True`` sang :func:`glob.glob`."
+
+#: ../../library/pathlib.rst:1853
+#, fuzzy
+msgid ""
+"\"``**``\" pattern components do not follow symlinks by default in pathlib. "
+"This behaviour has no equivalent in :func:`glob.glob`, but you can pass "
+"``recurse_symlinks=True`` to :meth:`Path.glob` for compatible behaviour."
+msgstr ""
+"Các thành phần mẫu \"``**``\" không theo liên kết tượng trưng theo mặc định "
+"trong pathlib. Hành vi này không có hành vi tương đương trong "
+":func:`glob.glob`, nhưng bạn có thể chuyển ``recurse_symlinks=True`` sang "
+":meth:`Path.glob` để có hành vi tương thích."
+
+#: ../../library/pathlib.rst:1856
+#, fuzzy
+msgid ""
+"Like all :class:`PurePath` and :class:`Path` objects, the values returned "
+"from :meth:`Path.glob` and :meth:`Path.rglob` don't include trailing "
+"slashes."
+msgstr ""
+"Giống như tất cả các đối tượng :class:`PurePath` và :class:`Path`, các giá "
+"trị được trả về từ :meth:`Path.glob` và :meth:`Path.rglob` không bao gồm dấu"
+" gạch chéo ở cuối."
+
+#: ../../library/pathlib.rst:1859
+#, fuzzy
+msgid ""
+"The values returned from pathlib's ``path.glob()`` and ``path.rglob()`` "
+"include the *path* as a prefix, unlike the results of "
+"``glob.glob(root_dir=path)``."
+msgstr ""
+"Các giá trị được trả về từ ``path.glob()`` và ``path.rglob()`` của pathlib "
+"bao gồm *path* làm tiền tố, không giống như kết quả của "
+"``glob.glob(root_dir=path)``."
+
+#: ../../library/pathlib.rst:1862
+#, fuzzy
+msgid ""
+"The values returned from pathlib's ``path.glob()`` and ``path.rglob()`` may "
+"include *path* itself, for example when globbing \"``**``\", whereas the "
+"results of ``glob.glob(root_dir=path)`` never include an empty string that "
+"would correspond to *path*."
+msgstr ""
+"Các giá trị được trả về từ ``path.glob()`` và ``path.rglob()`` của pathlib "
+"có thể bao gồm chính *path*, ví dụ như khi toàn cầu hóa \"``**``\", trong "
+"khi kết quả của ``glob.glob(root_dir=path)`` không bao giờ bao gồm một chuỗi"
+" trống tương ứng với *path*."
+
+#: ../../library/pathlib.rst:1869
+#, fuzzy
+msgid "Comparison to the :mod:`os` and :mod:`os.path` modules"
+msgstr "So sánh với các mô-đun :mod:`os` và :mod:`os.path`"
+
+#: ../../library/pathlib.rst:1871
+#, fuzzy
+msgid ""
+"pathlib implements path operations using :class:`PurePath` and :class:`Path`"
+" objects, and so it's said to be *object-oriented*. On the other hand, the "
+":mod:`os` and :mod:`os.path` modules supply functions that work with low-"
+"level ``str`` and ``bytes`` objects, which is a more *procedural* approach. "
+"Some users consider the object-oriented style to be more readable."
+msgstr ""
+"pathlib triển khai các hoạt động đường dẫn bằng cách sử dụng các đối tượng "
+":class:`PurePath` và :class:`Path` và do đó nó được gọi là *object-"
+"oriented*. Mặt khác, các mô-đun :mod:`os` và :mod:`os.path` cung cấp các "
+"chức năng hoạt động với các đối tượng ``str`` và ``bytes`` cấp thấp, đây là "
+"một cách tiếp cận *procedural* hơn. Một số người dùng cho rằng phong cách "
+"hướng đối tượng dễ đọc hơn."
+
+#: ../../library/pathlib.rst:1877
+#, fuzzy
+msgid ""
+"Many functions in :mod:`os` and :mod:`os.path` support ``bytes`` paths and "
+":ref:`paths relative to directory descriptors <dir_fd>`. These features "
+"aren't available in pathlib."
+msgstr ""
+"Nhiều hàm trong :mod:`os` và :mod:`os.path` hỗ trợ đường dẫn ``bytes`` và "
+":ref:`paths relative to directory descriptors <dir_fd>`. Những tính năng này"
+" không có sẵn trong pathlib."
+
+#: ../../library/pathlib.rst:1881
+#, fuzzy
+msgid ""
+"Python's ``str`` and ``bytes`` types, and portions of the :mod:`os` and "
+":mod:`os.path` modules, are written in C and are very speedy. pathlib is "
+"written in pure Python and is often slower, but rarely slow enough to "
+"matter."
+msgstr ""
+"Các loại ``str`` và ``bytes`` của Python cũng như các phần của mô-đun "
+":mod:`os` và :mod:`os.path`, được viết bằng C và rất nhanh. pathlib được "
+"viết bằng Python thuần túy và thường chậm hơn, nhưng hiếm khi đủ chậm để "
+"quan trọng."
+
+#: ../../library/pathlib.rst:1885
+#, fuzzy
+msgid ""
+"pathlib's path normalization is slightly more opinionated and consistent "
+"than :mod:`os.path`. For example, whereas :func:`os.path.abspath` eliminates"
+" \"``..``\" segments from a path, which may change its meaning if symlinks "
+"are involved, :meth:`Path.absolute` preserves these segments for greater "
+"safety."
+msgstr ""
+"Quá trình chuẩn hóa đường dẫn của pathlib có quan điểm và nhất quán hơn một "
+"chút so với :mod:`os.path`. Ví dụ: trong khi :func:`os.path.abspath` loại bỏ"
+" các phân đoạn \"``..``\" khỏi một đường dẫn, điều này có thể thay đổi ý "
+"nghĩa của nó nếu có liên kết tượng trưng, ​​​​:meth:`Path.absolute` bảo tồn "
+"các phân đoạn này để đảm bảo an toàn hơn."
+
+#: ../../library/pathlib.rst:1890
+#, fuzzy
+msgid ""
+"pathlib's path normalization may render it unsuitable for some applications:"
+msgstr ""
+"Việc chuẩn hóa đường dẫn của pathlib có thể khiến nó không phù hợp với một "
+"số ứng dụng:"
+
+#: ../../library/pathlib.rst:1892
+#, fuzzy
+msgid ""
+"pathlib normalizes ``Path(\"my_folder/\")`` to ``Path(\"my_folder\")``, "
+"which changes a path's meaning when supplied to various operating system "
+"APIs and command-line utilities. Specifically, the absence of a trailing "
+"separator may allow the path to be resolved as either a file or directory, "
+"rather than a directory only."
+msgstr ""
+"pathlib chuẩn hóa ``Path(\"my_folder/\")`` thành ``Path(\"my_folder\")``, "
+"điều này thay đổi ý nghĩa của đường dẫn khi được cung cấp cho các API hệ "
+"điều hành và tiện ích dòng lệnh khác nhau. Cụ thể, việc không có dấu phân "
+"cách ở cuối có thể cho phép đường dẫn được giải quyết dưới dạng tệp hoặc thư"
+" mục chứ không chỉ là một thư mục."
+
+#: ../../library/pathlib.rst:1897
+#, fuzzy
+msgid ""
+"pathlib normalizes ``Path(\"./my_program\")`` to ``Path(\"my_program\")``, "
+"which changes a path's meaning when used as an executable search path, such "
+"as in a shell or when spawning a child process. Specifically, the absence of"
+" a separator in the path may force it to be looked up in :envvar:`PATH` "
+"rather than the current directory."
+msgstr ""
+"pathlib chuẩn hóa ``Path(\"./my_program\")`` thành ``Path(\"my_program\")``,"
+" điều này thay đổi ý nghĩa của đường dẫn khi được sử dụng làm đường dẫn tìm "
+"kiếm thực thi, chẳng hạn như trong shell hoặc khi sinh ra một tiến trình "
+"con. Cụ thể, việc thiếu dấu phân cách trong đường dẫn có thể buộc nó phải "
+"được tra cứu trong :envvar:`PATH` thay vì thư mục hiện tại."
+
+#: ../../library/pathlib.rst:1903
+#, fuzzy
+msgid ""
+"As a consequence of these differences, pathlib is not a drop-in replacement "
+"for :mod:`os.path`."
+msgstr ""
+"Do những khác biệt này, pathlib không phải là sự thay thế sẵn có cho "
+":mod:`os.path`."
+
+#: ../../library/pathlib.rst:1908
+#, fuzzy
+msgid "Corresponding tools"
+msgstr "Công cụ tương ứng"
+
+#: ../../library/pathlib.rst:1910
+#, fuzzy
+msgid ""
+"Below is a table mapping various :mod:`os` functions to their corresponding "
+":class:`PurePath`/:class:`Path` equivalent."
+msgstr ""
+"Dưới đây là bảng ánh xạ các hàm :mod:`os` khác nhau tới hàm "
+":class:`PurePath`/:class:`Path` tương ứng của chúng."
+
+#: ../../library/pathlib.rst:1914
+#, fuzzy
+msgid ":mod:`os` and :mod:`os.path`"
+msgstr ":mod:`os` và :mod:`os.path`"
+
+#: ../../library/pathlib.rst:1914
+#, fuzzy
+msgid ":mod:`!pathlib`"
+msgstr ":mod:`!pathlib`"
+
+#: ../../library/pathlib.rst:1916
+#, fuzzy
+msgid ":func:`os.path.dirname`"
+msgstr ":func:`os.path.dirname`"
+
+#: ../../library/pathlib.rst:1916
+#, fuzzy
+msgid ":attr:`PurePath.parent`"
+msgstr ":attr:`PurePath.parent`"
+
+#: ../../library/pathlib.rst:1917
+#, fuzzy
+msgid ":func:`os.path.basename`"
+msgstr ":func:`os.path.basename`"
+
+#: ../../library/pathlib.rst:1917
+#, fuzzy
+msgid ":attr:`PurePath.name`"
+msgstr ":attr:`PurePath.name`"
+
+#: ../../library/pathlib.rst:1918
+#, fuzzy
+msgid ":func:`os.path.splitext`"
+msgstr ":func:`os.path.splitext`"
+
+#: ../../library/pathlib.rst:1918
+#, fuzzy
+msgid ":attr:`PurePath.stem`, :attr:`PurePath.suffix`"
+msgstr ":attr:`PurePath.stem`, :attr:`PurePath.suffix`"
+
+#: ../../library/pathlib.rst:1919
+#, fuzzy
+msgid ":func:`os.path.join`"
+msgstr ":func:`os.path.join`"
+
+#: ../../library/pathlib.rst:1919
+#, fuzzy
+msgid ":meth:`PurePath.joinpath`"
+msgstr ":meth:`PurePath.joinpath`"
+
+#: ../../library/pathlib.rst:1920
+#, fuzzy
+msgid ":func:`os.path.isabs`"
+msgstr ":func:`os.path.isabs`"
+
+#: ../../library/pathlib.rst:1920
+#, fuzzy
+msgid ":meth:`PurePath.is_absolute`"
+msgstr ":meth:`PurePath.is_absolute`"
+
+#: ../../library/pathlib.rst:1921
+#, fuzzy
+msgid ":func:`os.path.relpath`"
+msgstr ":func:`os.path.relpath`"
+
+#: ../../library/pathlib.rst:1921
+#, fuzzy
+msgid ":meth:`PurePath.relative_to` [1]_"
+msgstr ":meth:`PurePath.relative_to` [1]_"
+
+#: ../../library/pathlib.rst:1922
+#, fuzzy
+msgid ":func:`os.path.expanduser`"
+msgstr ":func:`os.path.expanduser`"
+
+#: ../../library/pathlib.rst:1922
+#, fuzzy
+msgid ":meth:`Path.expanduser` [2]_"
+msgstr ":meth:`Path.expanduser` [2]_"
+
+#: ../../library/pathlib.rst:1923
+#, fuzzy
+msgid ":func:`os.path.realpath`"
+msgstr ":func:`os.path.realpath`"
+
+#: ../../library/pathlib.rst:1923
+#, fuzzy
+msgid ":meth:`Path.resolve`"
+msgstr ":meth:`Path.resolve`"
+
+#: ../../library/pathlib.rst:1924
+#, fuzzy
+msgid ":func:`os.path.abspath`"
+msgstr ":func:`os.path.abspath`"
+
+#: ../../library/pathlib.rst:1924
+#, fuzzy
+msgid ":meth:`Path.absolute` [3]_"
+msgstr ":meth:`Path.absolute` [3]_"
+
+#: ../../library/pathlib.rst:1925
+#, fuzzy
+msgid ":func:`os.path.exists`"
+msgstr ":func:`os.path.exists`"
+
+#: ../../library/pathlib.rst:1925
+#, fuzzy
+msgid ":meth:`Path.exists`"
+msgstr ":meth:`Path.exists`"
+
+#: ../../library/pathlib.rst:1926
+#, fuzzy
+msgid ":func:`os.path.isfile`"
+msgstr ":func:`os.path.isfile`"
+
+#: ../../library/pathlib.rst:1926
+#, fuzzy
+msgid ":meth:`Path.is_file`"
+msgstr ":meth:`Path.is_file`"
+
+#: ../../library/pathlib.rst:1927
+#, fuzzy
+msgid ":func:`os.path.isdir`"
+msgstr ":func:`os.path.isdir`"
+
+#: ../../library/pathlib.rst:1927
+#, fuzzy
+msgid ":meth:`Path.is_dir`"
+msgstr ":meth:`Path.is_dir`"
+
+#: ../../library/pathlib.rst:1928
+#, fuzzy
+msgid ":func:`os.path.islink`"
+msgstr ":func:`os.path.islink`"
+
+#: ../../library/pathlib.rst:1928
+#, fuzzy
+msgid ":meth:`Path.is_symlink`"
+msgstr ":meth:`Path.is_symlink`"
+
+#: ../../library/pathlib.rst:1929
+#, fuzzy
+msgid ":func:`os.path.isjunction`"
+msgstr ":func:`os.path.isjunction`"
+
+#: ../../library/pathlib.rst:1929
+#, fuzzy
+msgid ":meth:`Path.is_junction`"
+msgstr ":meth:`Path.is_junction`"
+
+#: ../../library/pathlib.rst:1930
+#, fuzzy
+msgid ":func:`os.path.ismount`"
+msgstr ":func:`os.path.ismount`"
+
+#: ../../library/pathlib.rst:1930
+#, fuzzy
+msgid ":meth:`Path.is_mount`"
+msgstr ":meth:`Path.is_mount`"
+
+#: ../../library/pathlib.rst:1931
+#, fuzzy
+msgid ":func:`os.path.samefile`"
+msgstr ":func:`os.path.samefile`"
+
+#: ../../library/pathlib.rst:1931
+#, fuzzy
+msgid ":meth:`Path.samefile`"
+msgstr ":meth:`Path.samefile`"
+
+#: ../../library/pathlib.rst:1932
+#, fuzzy
+msgid ":func:`os.getcwd`"
+msgstr ":func:`os.getcwd`"
+
+#: ../../library/pathlib.rst:1932
+#, fuzzy
+msgid ":meth:`Path.cwd`"
+msgstr ":meth:`Path.cwd`"
+
+#: ../../library/pathlib.rst:1933
+#, fuzzy
+msgid ":func:`os.stat`"
+msgstr ":func:`os.stat`"
+
+#: ../../library/pathlib.rst:1933
+#, fuzzy
+msgid ":meth:`Path.stat`"
+msgstr ":meth:`Path.stat`"
+
+#: ../../library/pathlib.rst:1934
+#, fuzzy
+msgid ":func:`os.lstat`"
+msgstr ":func:`os.lstat`"
+
+#: ../../library/pathlib.rst:1934
+#, fuzzy
+msgid ":meth:`Path.lstat`"
+msgstr ":meth:`Path.lstat`"
+
+#: ../../library/pathlib.rst:1935
+#, fuzzy
+msgid ":func:`os.listdir`"
+msgstr ":func:`os.listdir`"
+
+#: ../../library/pathlib.rst:1935
+#, fuzzy
+msgid ":meth:`Path.iterdir`"
+msgstr ":meth:`Path.iterdir`"
+
+#: ../../library/pathlib.rst:1936
+#, fuzzy
+msgid ":func:`os.walk`"
+msgstr ":func:`os.walk`"
+
+#: ../../library/pathlib.rst:1936
+#, fuzzy
+msgid ":meth:`Path.walk` [4]_"
+msgstr ":meth:`Path.walk` [4]_"
+
+#: ../../library/pathlib.rst:1937
+#, fuzzy
+msgid ":func:`os.mkdir`, :func:`os.makedirs`"
+msgstr ":func:`os.mkdir`, :func:`os.makedirs`"
+
+#: ../../library/pathlib.rst:1937
+#, fuzzy
+msgid ":meth:`Path.mkdir`"
+msgstr ":meth:`Path.mkdir`"
+
+#: ../../library/pathlib.rst:1938
+#, fuzzy
+msgid ":func:`os.link`"
+msgstr ":func:`os.link`"
+
+#: ../../library/pathlib.rst:1938
+#, fuzzy
+msgid ":meth:`Path.hardlink_to`"
+msgstr ":meth:`Path.hardlink_to`"
+
+#: ../../library/pathlib.rst:1939
+#, fuzzy
+msgid ":func:`os.symlink`"
+msgstr ":func:`os.symlink`"
+
+#: ../../library/pathlib.rst:1939
+#, fuzzy
+msgid ":meth:`Path.symlink_to`"
+msgstr ":meth:`Path.symlink_to`"
+
+#: ../../library/pathlib.rst:1940
+#, fuzzy
+msgid ":func:`os.readlink`"
+msgstr ":func:`os.readlink`"
+
+#: ../../library/pathlib.rst:1940
+#, fuzzy
+msgid ":meth:`Path.readlink`"
+msgstr ":meth:`Path.readlink`"
+
+#: ../../library/pathlib.rst:1941
+#, fuzzy
+msgid ":func:`os.rename`"
+msgstr ":func:`os.rename`"
+
+#: ../../library/pathlib.rst:1941
+#, fuzzy
+msgid ":meth:`Path.rename`"
+msgstr ":meth:`Path.rename`"
+
+#: ../../library/pathlib.rst:1942
+#, fuzzy
+msgid ":func:`os.replace`"
+msgstr ":func:`os.replace`"
+
+#: ../../library/pathlib.rst:1942
+#, fuzzy
+msgid ":meth:`Path.replace`"
+msgstr ":meth:`Path.replace`"
+
+#: ../../library/pathlib.rst:1943
+#, fuzzy
+msgid ":func:`os.remove`, :func:`os.unlink`"
+msgstr ":func:`os.remove`, :func:`os.unlink`"
+
+#: ../../library/pathlib.rst:1943
+#, fuzzy
+msgid ":meth:`Path.unlink`"
+msgstr ":meth:`Path.unlink`"
+
+#: ../../library/pathlib.rst:1944
+#, fuzzy
+msgid ":func:`os.rmdir`"
+msgstr ":func:`os.rmdir`"
+
+#: ../../library/pathlib.rst:1944
+#, fuzzy
+msgid ":meth:`Path.rmdir`"
+msgstr ":meth:`Path.rmdir`"
+
+#: ../../library/pathlib.rst:1945
+#, fuzzy
+msgid ":func:`os.chmod`"
+msgstr ":func:`os.chmod`"
+
+#: ../../library/pathlib.rst:1945
+#, fuzzy
+msgid ":meth:`Path.chmod`"
+msgstr ":meth:`Path.chmod`"
+
+#: ../../library/pathlib.rst:1946
+#, fuzzy
+msgid ":func:`os.lchmod`"
+msgstr ":func:`os.lchmod`"
+
+#: ../../library/pathlib.rst:1946
+#, fuzzy
+msgid ":meth:`Path.lchmod`"
+msgstr ":meth:`Path.lchmod`"
+
+#: ../../library/pathlib.rst:1950
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/pathlib.rst:1951
+#, fuzzy
+msgid ""
+":func:`os.path.relpath` calls :func:`~os.path.abspath` to make paths "
+"absolute and remove \"``..``\" parts, whereas :meth:`PurePath.relative_to` "
+"is a lexical operation that raises :exc:`ValueError` when its inputs' "
+"anchors differ (e.g. if one path is absolute and the other relative.)"
+msgstr ""
+":func:`os.path.relpath` gọi :func:`~os.path.abspath` để tạo các đường dẫn "
+"tuyệt đối và loại bỏ các phần \"``..``\", trong khi "
+":meth:`PurePath.relative_to` là một thao tác từ vựng làm tăng "
+":exc:`ValueError` khi các neo của đầu vào của nó khác nhau (ví dụ: nếu một "
+"đường dẫn là tuyệt đối và đường dẫn còn lại là tương đối.)"
+
+#: ../../library/pathlib.rst:1955
+#, fuzzy
+msgid ""
+":func:`os.path.expanduser` returns the path unchanged if the home directory "
+"can't be resolved, whereas :meth:`Path.expanduser` raises "
+":exc:`RuntimeError`."
+msgstr ""
+":func:`os.path.expanduser` trả về đường dẫn không thay đổi nếu không thể "
+"giải quyết được thư mục chính, trong khi :meth:`Path.expanduser` sẽ tăng "
+":exc:`RuntimeError`."
+
+#: ../../library/pathlib.rst:1958
+#, fuzzy
+msgid ""
+":func:`os.path.abspath` removes \"``..``\" components without resolving "
+"symlinks, which may change the meaning of the path, whereas "
+":meth:`Path.absolute` leaves any \"``..``\" components in the path."
+msgstr ""
+":func:`os.path.abspath` loại bỏ các thành phần \"``..``\" mà không giải "
+"quyết các liên kết tượng trưng, ​​điều này có thể thay đổi ý nghĩa của đường"
+" dẫn, trong khi :meth:`Path.absolute` để lại bất kỳ thành phần \"``..``\" "
+"nào trong đường dẫn."
+
+#: ../../library/pathlib.rst:1961
+#, fuzzy
+msgid ""
+":func:`os.walk` always follows symlinks when categorizing paths into "
+"*dirnames* and *filenames*, whereas :meth:`Path.walk` categorizes all "
+"symlinks into *filenames* when *follow_symlinks* is false (the default.)"
+msgstr ""
+":func:`os.walk` luôn đi theo các liên kết tượng trưng khi phân loại đường "
+"dẫn thành *dirnames* và *filenames*, trong khi :meth:`Path.walk` phân loại "
+"tất cả các liên kết tượng trưng thành *filenames* khi *follow_symlinks* sai "
+"(mặc định.)"
+
+#: ../../library/pathlib.rst:1967
+#, fuzzy
+msgid "Protocols"
+msgstr "Giao thức"
+
+#: ../../library/pathlib.rst:1973
+#, fuzzy
+msgid ""
+"The :mod:`!pathlib.types` module provides types for static type checking."
+msgstr "Mô-đun :mod:`!pathlib.types` cung cấp các loại để kiểm tra loại tĩnh."
+
+#: ../../library/pathlib.rst:1980
+#, fuzzy
+msgid ""
+"A :class:`typing.Protocol` describing the :attr:`Path.info "
+"<pathlib.Path.info>` attribute. Implementations may return cached results "
+"from their methods."
+msgstr ""
+"Một :class:`typing.Protocol` mô tả thuộc tính :attr:`Path.info "
+"<pathlib.Path.info>`. Việc triển khai có thể trả về kết quả được lưu trong "
+"bộ nhớ đệm từ các phương thức của chúng."
+
+#: ../../library/pathlib.rst:1986
+#, fuzzy
+msgid ""
+"Return ``True`` if the path is an existing file or directory, or any other "
+"kind of file; return ``False`` if the path doesn't exist."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn là một tệp hoặc thư mục hiện có hoặc bất kỳ "
+"loại tệp nào khác; trả về ``False`` nếu đường dẫn không tồn tại."
+
+#: ../../library/pathlib.rst:1989
+#, fuzzy
+msgid ""
+"If *follow_symlinks* is ``False``, return ``True`` for symlinks without "
+"checking if their targets exist."
+msgstr ""
+"Nếu *follow_symlinks* là ``False``, trả về ``True`` cho các liên kết tượng "
+"trưng mà không kiểm tra xem mục tiêu của chúng có tồn tại hay không."
+
+#: ../../library/pathlib.rst:1994
+#, fuzzy
+msgid ""
+"Return ``True`` if the path is a directory, or a symbolic link pointing to a"
+" directory; return ``False`` if the path is (or points to) any other kind of"
+" file, or if it doesn't exist."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn là một thư mục hoặc một liên kết tượng trưng "
+"trỏ đến một thư mục; trả về ``False`` nếu đường dẫn là (hoặc trỏ đến) bất kỳ"
+" loại tệp nào khác hoặc nếu nó không tồn tại."
+
+#: ../../library/pathlib.rst:1998
+#, fuzzy
+msgid ""
+"If *follow_symlinks* is ``False``, return ``True`` only if the path is a "
+"directory (without following symlinks); return ``False`` if the path is any "
+"other kind of file, or if it doesn't exist."
+msgstr ""
+"Nếu *follow_symlinks* là ``False``, chỉ trả về ``True`` nếu đường dẫn là một"
+" thư mục (không đi theo các liên kết tượng trưng); trả về ``False`` nếu "
+"đường dẫn là bất kỳ loại tệp nào khác hoặc nếu nó không tồn tại."
+
+#: ../../library/pathlib.rst:2004
+#, fuzzy
+msgid ""
+"Return ``True`` if the path is a file, or a symbolic link pointing to a "
+"file; return ``False`` if the path is (or points to) a directory or other "
+"non-file, or if it doesn't exist."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn là một tệp hoặc một liên kết tượng trưng trỏ "
+"đến một tệp; trả về ``False`` nếu đường dẫn là (hoặc trỏ đến) một thư mục "
+"hoặc không phải tệp khác hoặc nếu nó không tồn tại."
+
+#: ../../library/pathlib.rst:2008
+#, fuzzy
+msgid ""
+"If *follow_symlinks* is ``False``, return ``True`` only if the path is a "
+"file (without following symlinks); return ``False`` if the path is a "
+"directory or other non-file, or if it doesn't exist."
+msgstr ""
+"Nếu *follow_symlinks* là ``False``, chỉ trả về ``True`` nếu đường dẫn là một"
+" tệp (không đi theo các liên kết tượng trưng); trả về ``False`` nếu đường "
+"dẫn là một thư mục hoặc không phải tệp khác hoặc nếu nó không tồn tại."
+
+#: ../../library/pathlib.rst:2014
+#, fuzzy
+msgid ""
+"Return ``True`` if the path is a symbolic link (even if broken); return "
+"``False`` if the path is a directory or any kind of file, or if it doesn't "
+"exist."
+msgstr ""
+"Trả về ``True`` nếu đường dẫn là một liên kết tượng trưng (ngay cả khi bị "
+"hỏng); trả về ``False`` nếu đường dẫn là một thư mục hoặc bất kỳ loại tệp "
+"nào hoặc nếu nó không tồn tại."
+
+#: ../../library/pathlib.rst:11
+#, fuzzy
+msgid "path"
+msgstr "con đường"
+
+#: ../../library/pathlib.rst:11
+#, fuzzy
+msgid "operations"
+msgstr "hoạt động"

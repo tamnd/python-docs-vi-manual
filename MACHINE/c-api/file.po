@@ -1,0 +1,312 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/file.rst:6
+#, fuzzy
+msgid "File Objects"
+msgstr "Đối tượng tệp"
+
+#: ../../c-api/file.rst:10
+#, fuzzy
+msgid ""
+"These APIs are a minimal emulation of the Python 2 C API for built-in file "
+"objects, which used to rely on the buffered I/O (:c:expr:`FILE*`) support "
+"from the C standard library.  In Python 3, files and streams use the new "
+":mod:`io` module, which defines several layers over the low-level unbuffered"
+" I/O of the operating system.  The functions described below are convenience"
+" C wrappers over these new APIs, and meant mostly for internal error "
+"reporting in the interpreter; third-party code is advised to access the "
+":mod:`io` APIs instead."
+msgstr ""
+"Các API này là một mô phỏng tối thiểu của Python 2 C API dành cho các đối "
+"tượng tệp tích hợp, vốn dựa vào hỗ trợ I/O (:c:expr:`FILE*`) được đệm từ thư"
+" viện chuẩn C.  Trong Python 3, các tệp và luồng sử dụng mô-đun :mod:`io` "
+"mới, mô-đun này xác định một số lớp trên I/O không có bộ đệm cấp thấp của hệ"
+" điều hành.  Các hàm được mô tả bên dưới là các trình bao bọc C tiện lợi "
+"trên các API mới này và chủ yếu dùng để báo cáo lỗi nội bộ trong trình thông"
+" dịch; Thay vào đó, mã của bên thứ ba nên truy cập vào API :mod:`io`."
+
+#: ../../c-api/file.rst:22
+#, fuzzy
+msgid ""
+"Create a Python file object from the file descriptor of an already opened "
+"file *fd*.  The arguments *name*, *encoding*, *errors* and *newline* can be "
+"``NULL`` to use the defaults; *buffering* can be *-1* to use the default. "
+"*name* is ignored and kept for backward compatibility. Return ``NULL`` on "
+"failure. For a more comprehensive description of the arguments, please refer"
+" to the :func:`io.open` function documentation."
+msgstr ""
+"Tạo một đối tượng tệp Python từ bộ mô tả tệp của tệp *fd* đã mở.  Các đối số"
+" *name*, *encoding*, *errors* và *newline* có thể là ``NULL`` để sử dụng các"
+" giá trị mặc định; *buffering* có thể là *-1* để sử dụng mặc định. *name* bị"
+" bỏ qua và được giữ lại để tương thích ngược. Trả về ``NULL`` khi thất bại. "
+"Để có mô tả toàn diện hơn về các đối số, vui lòng tham khảo tài liệu về hàm "
+":func:`io.open`."
+
+#: ../../c-api/file.rst:31
+#, fuzzy
+msgid ""
+"Since Python streams have their own buffering layer, mixing them with OS-"
+"level file descriptors can produce various issues (such as unexpected "
+"ordering of data)."
+msgstr ""
+"Vì các luồng Python có lớp đệm riêng nên việc trộn chúng với các bộ mô tả "
+"tệp cấp hệ điều hành có thể tạo ra nhiều vấn đề khác nhau (chẳng hạn như thứ"
+" tự dữ liệu không mong muốn)."
+
+#: ../../c-api/file.rst:35
+#, fuzzy
+msgid "Ignore *name* attribute."
+msgstr "Bỏ qua thuộc tính *name*."
+
+#: ../../c-api/file.rst:41
+#, fuzzy
+msgid ""
+"Return the file descriptor associated with *p* as an :c:expr:`int`.  If the "
+"object is an integer, its value is returned.  If not, the object's "
+":meth:`~io.IOBase.fileno` method is called if it exists; the method must "
+"return an integer, which is returned as the file descriptor value.  Sets an "
+"exception and returns ``-1`` on failure."
+msgstr ""
+"Trả về bộ mô tả tệp được liên kết với *p* dưới dạng :c:expr:`int`.  Nếu đối "
+"tượng là số nguyên thì giá trị của nó sẽ được trả về.  Nếu không, phương "
+"thức :meth:`~io.IOBase.fileno` của đối tượng sẽ được gọi nếu nó tồn tại; "
+"phương thức phải trả về một số nguyên, số nguyên này được trả về dưới dạng "
+"giá trị mô tả tệp.  Đặt một ngoại lệ và trả về ``-1`` khi thất bại."
+
+#: ../../c-api/file.rst:52
+#, fuzzy
+msgid ""
+"Equivalent to ``p.readline([n])``, this function reads one line from the "
+"object *p*.  *p* may be a file object or any object with a "
+":meth:`~io.IOBase.readline` method.  If *n* is ``0``, exactly one line is "
+"read, regardless of the length of the line.  If *n* is greater than ``0``, "
+"no more than *n* bytes will be read from the file; a partial line can be "
+"returned.  In both cases, an empty string is returned if the end of the file"
+" is reached immediately.  If *n* is less than ``0``, however, one line is "
+"read regardless of length, but :exc:`EOFError` is raised if the end of the "
+"file is reached immediately."
+msgstr ""
+"Tương đương với ``p.readline([n])``, hàm này đọc một dòng từ đối tượng *p*."
+"  *p* có thể là một đối tượng tệp hoặc bất kỳ đối tượng nào có phương thức "
+":meth:`~io.IOBase.readline`.  Nếu *n* là ``0``, chính xác một dòng sẽ được "
+"đọc, bất kể độ dài của dòng.  Nếu *n* lớn hơn ``0``, không quá *n* byte sẽ "
+"được đọc từ tệp; một phần dòng có thể được trả lại.  Trong cả hai trường "
+"hợp, một chuỗi trống sẽ được trả về nếu đến cuối tệp ngay lập tức.  Tuy "
+"nhiên, nếu *n* nhỏ hơn ``0``, một dòng sẽ được đọc bất kể độ dài, nhưng "
+":exc:`EOFError` sẽ được nâng lên nếu đạt đến cuối tệp ngay lập tức."
+
+#: ../../c-api/file.rst:65
+#, fuzzy
+msgid ""
+"Overrides the normal behavior of :func:`io.open_code` to pass its parameter "
+"through the provided handler."
+msgstr ""
+"Ghi đè hành vi bình thường của :func:`io.open_code` để truyền tham số của nó"
+" thông qua trình xử lý được cung cấp."
+
+#: ../../c-api/file.rst:68
+#, fuzzy
+msgid "The *handler* is a function of type:"
+msgstr "Zz000zz là một hàm thuộc loại:"
+
+#: ../../c-api/file.rst:73
+#, fuzzy
+msgid ""
+"Equivalent of :c:expr:`PyObject *(\\*)(PyObject *path, void *userData)`, "
+"where *path* is guaranteed to be :c:type:`PyUnicodeObject`."
+msgstr ""
+"Tương đương với :c:expr:`PyObject *(\\*)(PyObject *path, void *userData)`, "
+"trong đó *path* được đảm bảo là :c:type:`PyUnicodeObject`."
+
+#: ../../c-api/file.rst:77
+#, fuzzy
+msgid ""
+"The *userData* pointer is passed into the hook function. Since hook "
+"functions may be called from different runtimes, this pointer should not "
+"refer directly to Python state."
+msgstr ""
+"Con trỏ *userData* được truyền vào hàm hook. Vì các hàm hook có thể được gọi"
+" từ các thời gian chạy khác nhau nên con trỏ này không được tham chiếu trực "
+"tiếp đến trạng thái Python."
+
+#: ../../c-api/file.rst:81
+#, fuzzy
+msgid ""
+"As this hook is intentionally used during import, avoid importing new "
+"modules during its execution unless they are known to be frozen or available"
+" in ``sys.modules``."
+msgstr ""
+"Vì hook này được cố ý sử dụng trong quá trình nhập, nên hãy tránh nhập các "
+"mô-đun mới trong quá trình thực thi nó trừ khi chúng được xác định là bị "
+"đóng băng hoặc có sẵn trong ``sys.modules``."
+
+#: ../../c-api/file.rst:85
+#, fuzzy
+msgid ""
+"Once a hook has been set, it cannot be removed or replaced, and later calls "
+"to :c:func:`PyFile_SetOpenCodeHook` will fail. On failure, the function "
+"returns -1 and sets an exception if the interpreter has been initialized."
+msgstr ""
+"Khi một hook đã được thiết lập, nó không thể được gỡ bỏ hoặc thay thế và các"
+" cuộc gọi sau này tới :c:func:`PyFile_SetOpenCodeHook` sẽ không thành công. "
+"Khi thất bại, hàm trả về -1 và đặt ngoại lệ nếu trình thông dịch đã được "
+"khởi tạo."
+
+#: ../../c-api/file.rst:89
+#, fuzzy
+msgid "This function is safe to call before :c:func:`Py_Initialize`."
+msgstr "Chức năng này an toàn để gọi trước :c:func:`Py_Initialize`."
+
+#: ../../c-api/file.rst:91
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` ``setopencodehook`` with no "
+"arguments."
+msgstr ""
+"Tăng :ref:`auditing event <auditing>` ``setopencodehook`` mà không có đối "
+"số."
+
+#: ../../c-api/file.rst:98
+#, fuzzy
+msgid ""
+"Open *path* with the mode ``'rb'``. *path* must be a Python :class:`str` "
+"object. The behavior of this function may be overridden by "
+":c:func:`PyFile_SetOpenCodeHook` to allow for some preprocessing of the "
+"text."
+msgstr ""
+"Mở *path* với chế độ ``'rb'``. *path* phải là đối tượng :class:`str` của "
+"Python. Hoạt động của chức năng này có thể bị "
+":c:func:`PyFile_SetOpenCodeHook` ghi đè để cho phép xử lý trước văn bản."
+
+#: ../../c-api/file.rst:103
+#, fuzzy
+msgid "This is analogous to :func:`io.open_code` in Python."
+msgstr "Điều này tương tự với :func:`io.open_code` trong Python."
+
+#: ../../c-api/file.rst:105
+#, fuzzy
+msgid ""
+"On success, this function returns a :term:`strong reference` to a Python "
+"file object. On failure, this function returns ``NULL`` with an exception "
+"set."
+msgstr ""
+"Nếu thành công, hàm này trả về :term:`strong reference` cho đối tượng tệp "
+"Python. Nếu thất bại, hàm này trả về ``NULL`` với một bộ ngoại lệ."
+
+#: ../../c-api/file.rst:114
+#, fuzzy
+msgid ""
+"Similar to :c:func:`PyFile_OpenCodeObject`, but *path* is a UTF-8 encoded "
+":c:expr:`const char*`."
+msgstr ""
+"Tương tự như :c:func:`PyFile_OpenCodeObject`, nhưng *path* là :c:expr:`const"
+" char*` được mã hóa UTF-8."
+
+#: ../../c-api/file.rst:124
+#, fuzzy
+msgid ""
+"Write object *obj* to file object *p*.  The only supported flag for *flags* "
+"is :c:macro:`Py_PRINT_RAW`; if given, the :func:`str` of the object is "
+"written instead of the :func:`repr`."
+msgstr ""
+"Viết đối tượng *obj* vào tệp đối tượng *p*.  Cờ được hỗ trợ duy nhất cho "
+"*flags* là :c:macro:`Py_PRINT_RAW`; nếu được cung cấp, :func:`str` của đối "
+"tượng sẽ được viết thay vì :func:`repr`."
+
+#: ../../c-api/file.rst:128
+#, fuzzy
+msgid "If *obj* is ``NULL``, write the string ``\"<NULL>\"``."
+msgstr "Nếu *obj* là ``NULL`` thì viết chuỗi ``\"<NULL>\"``."
+
+#: ../../c-api/file.rst:130
+#, fuzzy
+msgid ""
+"Return ``0`` on success or ``-1`` on failure; the appropriate exception will"
+" be set."
+msgstr ""
+"Trả về ``0`` nếu thành công hoặc ``-1`` nếu thất bại; ngoại lệ thích hợp sẽ "
+"được thiết lập."
+
+#: ../../c-api/file.rst:135
+#, fuzzy
+msgid ""
+"Write string *s* to file object *p*.  Return ``0`` on success or ``-1`` on "
+"failure; the appropriate exception will be set."
+msgstr ""
+"Viết chuỗi *s* vào tệp đối tượng *p*.  Trả về ``0`` nếu thành công hoặc "
+"``-1`` nếu thất bại; ngoại lệ thích hợp sẽ được thiết lập."
+
+#: ../../c-api/file.rst:140
+#, fuzzy
+msgid "Deprecated API"
+msgstr "API không được dùng nữa"
+
+#: ../../c-api/file.rst:143
+#, fuzzy
+msgid ""
+"These are :term:`soft deprecated` APIs that were included in Python's C API "
+"by mistake. They are documented solely for completeness; use other "
+"``PyFile*`` APIs instead."
+msgstr ""
+"Đây là các API :term:`soft deprecated` được đưa vào C API của Python do nhầm"
+" lẫn. Chúng chỉ được ghi lại để đảm bảo tính đầy đủ; thay vào đó hãy sử dụng"
+" các API ``PyFile*`` khác."
+
+#: ../../c-api/file.rst:149
+#, fuzzy
+msgid ""
+"Use :c:func:`PyFile_FromFd` with defaults (``fd, NULL, \"w\", -1, NULL, "
+"NULL, NULL, 0``) instead."
+msgstr ""
+"Thay vào đó, hãy sử dụng :c:func:`PyFile_FromFd` với giá trị mặc định (``fd,"
+" NULL, \"w\", -1, NULL, NULL, NULL, 0``)."
+
+#: ../../c-api/file.rst:153
+#, fuzzy
+msgid ""
+"Type of file-like objects used internally at Python startup when "
+":py:mod:`io` is not yet available. Use Python :py:func:`open` or "
+":c:func:`PyFile_FromFd` to create file objects instead."
+msgstr ""
+"Loại đối tượng giống như tệp được sử dụng nội bộ khi khởi động Python khi "
+":py:mod:`io` chưa có sẵn. Thay vào đó, hãy sử dụng Python :py:func:`open` "
+"hoặc :c:func:`PyFile_FromFd` để tạo các đối tượng tệp."
+
+#: ../../c-api/file.rst:8
+#, fuzzy
+msgid "object"
+msgstr "sự vật"
+
+#: ../../c-api/file.rst:8
+#, fuzzy
+msgid "file"
+msgstr "tài liệu"
+
+#: ../../c-api/file.rst:50
+#, fuzzy
+msgid "EOFError (built-in exception)"
+msgstr "EOFError (ngoại lệ tích hợp)"
+
+#: ../../c-api/file.rst:122
+#, fuzzy
+msgid "Py_PRINT_RAW (C macro)"
+msgstr "Py_PRINT_RAW (macro C)"

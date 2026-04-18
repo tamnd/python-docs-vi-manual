@@ -1,0 +1,787 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/multiprocessing.shared_memory.rst:2
+#, fuzzy
+msgid ""
+":mod:`!multiprocessing.shared_memory` --- Shared memory for direct access "
+"across processes"
+msgstr ""
+":mod:`!multiprocessing.shared_memory` --- Bộ nhớ dùng chung để truy cập trực"
+" tiếp qua các tiến trình"
+
+#: ../../library/multiprocessing.shared_memory.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/multiprocessing/shared_memory.py`"
+msgstr "**Source code:** :source:`Lib/multiprocessing/shared_memory.py`"
+
+#: ../../library/multiprocessing.shared_memory.rst:18
+#, fuzzy
+msgid ""
+"This module provides a class, :class:`SharedMemory`, for the allocation and "
+"management of shared memory to be accessed by one or more processes on a "
+"multicore or symmetric multiprocessor (SMP) machine.  To assist with the "
+"life-cycle management of shared memory especially across distinct processes,"
+" a :class:`~multiprocessing.managers.BaseManager` subclass, "
+":class:`~multiprocessing.managers.SharedMemoryManager`, is also provided in "
+"the :mod:`multiprocessing.managers` module."
+msgstr ""
+"Mô-đun này cung cấp một lớp, :class:`SharedMemory`, để phân bổ và quản lý bộ"
+" nhớ dùng chung được truy cập bởi một hoặc nhiều quy trình trên máy đa bộ xử"
+" lý đối xứng hoặc đa lõi (SMP).  Để hỗ trợ quản lý vòng đời của bộ nhớ dùng "
+"chung, đặc biệt là trên các quy trình riêng biệt, một lớp con "
+":class:`~multiprocessing.managers.BaseManager`, "
+":class:`~multiprocessing.managers.SharedMemoryManager`, cũng được cung cấp "
+"trong mô-đun :mod:`multiprocessing.managers`."
+
+#: ../../library/multiprocessing.shared_memory.rst:26
+#, fuzzy
+msgid ""
+"In this module, shared memory refers to \"POSIX style\" shared memory blocks"
+" (though is not necessarily implemented explicitly as such) and does not "
+"refer to \"distributed shared memory\".  This style of shared memory permits"
+" distinct processes to potentially read and write to a common (or shared) "
+"region of volatile memory.  Processes are conventionally limited to only "
+"have access to their own process memory space but shared memory permits the "
+"sharing of data between processes, avoiding the need to instead send "
+"messages between processes containing that data.  Sharing data directly via "
+"memory can provide significant performance benefits compared to sharing data"
+" via disk or socket or other communications requiring the "
+"serialization/deserialization and copying of data."
+msgstr ""
+"Trong mô-đun này, bộ nhớ dùng chung đề cập đến các khối bộ nhớ dùng chung "
+"\"kiểu POSIX\" (mặc dù không nhất thiết phải được triển khai rõ ràng như "
+"vậy) và không đề cập đến \"bộ nhớ chia sẻ được phân phối\".  Kiểu bộ nhớ "
+"dùng chung này cho phép các tiến trình riêng biệt có khả năng đọc và ghi vào"
+" vùng chung (hoặc dùng chung) của bộ nhớ khả biến.  Các quy trình thường bị "
+"giới hạn ở mức chỉ có quyền truy cập vào không gian bộ nhớ quy trình của "
+"riêng chúng nhưng bộ nhớ dùng chung cho phép chia sẻ dữ liệu giữa các quy "
+"trình, tránh nhu cầu gửi tin nhắn giữa các quy trình chứa dữ liệu đó.  Chia "
+"sẻ dữ liệu trực tiếp qua bộ nhớ có thể mang lại lợi ích hiệu suất đáng kể so"
+" với việc chia sẻ dữ liệu qua đĩa hoặc ổ cắm hoặc các phương thức liên lạc "
+"khác yêu cầu tuần tự hóa/giải tuần tự hóa và sao chép dữ liệu."
+
+#: ../../library/multiprocessing.shared_memory.rst:41
+#, fuzzy
+msgid ""
+"Create an instance of the :class:`!SharedMemory` class for either creating a"
+" new shared memory block or attaching to an existing shared memory block.  "
+"Each shared memory block is assigned a unique name. In this way, one process"
+" can create a shared memory block with a particular name and a different "
+"process can attach to that same shared memory block using that same name."
+msgstr ""
+"Tạo một thể hiện của lớp :class:`!SharedMemory` để tạo khối bộ nhớ dùng "
+"chung mới hoặc gắn vào khối bộ nhớ dùng chung hiện có.  Mỗi khối bộ nhớ dùng"
+" chung được gán một tên duy nhất. Bằng cách này, một tiến trình có thể tạo "
+"một khối bộ nhớ dùng chung với một tên cụ thể và một tiến trình khác có thể "
+"gắn vào cùng khối bộ nhớ dùng chung đó bằng cùng tên đó."
+
+#: ../../library/multiprocessing.shared_memory.rst:48
+#, fuzzy
+msgid ""
+"As a resource for sharing data across processes, shared memory blocks may "
+"outlive the original process that created them.  When one process no longer "
+"needs access to a shared memory block that might still be needed by other "
+"processes, the :meth:`close` method should be called. When a shared memory "
+"block is no longer needed by any process, the :meth:`unlink` method should "
+"be called to ensure proper cleanup."
+msgstr ""
+"Là tài nguyên để chia sẻ dữ liệu giữa các quy trình, các khối bộ nhớ dùng "
+"chung có thể tồn tại lâu hơn quy trình ban đầu đã tạo ra chúng.  Khi một "
+"tiến trình không còn cần quyền truy cập vào khối bộ nhớ dùng chung mà các "
+"tiến trình khác có thể vẫn cần, thì phương thức :meth:`close` sẽ được gọi. "
+"Khi bất kỳ tiến trình nào không còn cần khối bộ nhớ dùng chung nữa, phương "
+"thức :meth:`unlink` sẽ được gọi để đảm bảo việc dọn dẹp thích hợp."
+
+#: ../../library/multiprocessing.shared_memory.rst
+#, fuzzy
+msgid "Parameters"
+msgstr "Thông số"
+
+#: ../../library/multiprocessing.shared_memory.rst:55
+#, fuzzy
+msgid ""
+"The unique name for the requested shared memory, specified as a string. When"
+" creating a new shared memory block, if ``None`` (the default) is supplied "
+"for the name, a novel name will be generated."
+msgstr ""
+"Tên duy nhất cho bộ nhớ dùng chung được yêu cầu, được chỉ định dưới dạng "
+"chuỗi. Khi tạo khối bộ nhớ dùng chung mới, nếu ``None`` (mặc định) được cung"
+" cấp cho tên thì tên mới sẽ được tạo."
+
+#: ../../library/multiprocessing.shared_memory.rst:61
+#, fuzzy
+msgid ""
+"Control whether a new shared memory block is created (``True``) or an "
+"existing shared memory block is attached (``False``)."
+msgstr ""
+"Kiểm soát xem khối bộ nhớ chia sẻ mới được tạo (``True``) hay khối bộ nhớ "
+"chia sẻ hiện có được đính kèm (``False``)."
+
+#: ../../library/multiprocessing.shared_memory.rst:65
+#, fuzzy
+msgid ""
+"The requested number of bytes when creating a new shared memory block. "
+"Because some platforms choose to allocate chunks of memory based upon that "
+"platform's memory page size, the exact size of the shared memory block may "
+"be larger or equal to the size requested. When attaching to an existing "
+"shared memory block, the *size* parameter is ignored."
+msgstr ""
+"Số byte được yêu cầu khi tạo khối bộ nhớ dùng chung mới. Vì một số nền tảng "
+"chọn phân bổ các khối bộ nhớ dựa trên kích thước trang bộ nhớ của nền tảng "
+"đó nên kích thước chính xác của khối bộ nhớ dùng chung có thể lớn hơn hoặc "
+"bằng kích thước được yêu cầu. Khi gắn vào khối bộ nhớ dùng chung hiện có, "
+"tham số *size* sẽ bị bỏ qua."
+
+#: ../../library/multiprocessing.shared_memory.rst:73
+#, fuzzy
+msgid ""
+"When ``True``, register the shared memory block with a resource tracker "
+"process on platforms where the OS does not do this automatically. The "
+"resource tracker ensures proper cleanup of the shared memory even if all "
+"other processes with access to the memory exit without doing so. Python "
+"processes created from a common ancestor using :mod:`multiprocessing` "
+"facilities share a single resource tracker process, and the lifetime of "
+"shared memory segments is handled automatically among these processes. "
+"Python processes created in any other way will receive their own resource "
+"tracker when accessing shared memory with *track* enabled. This will cause "
+"the shared memory to be deleted by the resource tracker of the first process"
+" that terminates. To avoid this issue, users of :mod:`subprocess` or "
+"standalone Python processes should set *track* to ``False`` when there is "
+"already another process in place that does the bookkeeping. *track* is "
+"ignored on Windows, which has its own tracking and automatically deletes "
+"shared memory when all handles to it have been closed."
+msgstr ""
+"Khi ``True``, hãy đăng ký khối bộ nhớ dùng chung với quy trình theo dõi tài "
+"nguyên trên các nền tảng mà hệ điều hành không tự động thực hiện việc này. "
+"Trình theo dõi tài nguyên đảm bảo dọn dẹp đúng cách bộ nhớ dùng chung ngay "
+"cả khi tất cả các tiến trình khác có quyền truy cập vào bộ nhớ đều thoát ra "
+"mà không làm như vậy. Các quy trình Python được tạo từ một tổ tiên chung sử "
+"dụng cơ sở :mod:`multiprocessing` chia sẻ một quy trình theo dõi tài nguyên "
+"duy nhất và thời gian tồn tại của các phân đoạn bộ nhớ dùng chung được xử lý"
+" tự động giữa các quy trình này. Các quy trình Python được tạo theo bất kỳ "
+"cách nào khác sẽ nhận được trình theo dõi tài nguyên của riêng chúng khi "
+"truy cập bộ nhớ dùng chung có bật *track*. Điều này sẽ khiến bộ nhớ dùng "
+"chung bị xóa bởi trình theo dõi tài nguyên của quá trình đầu tiên kết thúc. "
+"Để tránh sự cố này, người dùng :mod:`subprocess` hoặc các quy trình Python "
+"độc lập nên đặt *track* thành ``False`` khi đã có sẵn một quy trình khác "
+"thực hiện việc ghi sổ. *track* bị bỏ qua trên Windows, Windows có tính năng "
+"theo dõi riêng và tự động xóa bộ nhớ dùng chung khi tất cả các thẻ điều "
+"khiển đối với nó đã bị đóng."
+
+#: ../../library/multiprocessing.shared_memory.rst:91
+#, fuzzy
+msgid "Added the *track* parameter."
+msgstr "Đã thêm tham số *track*."
+
+#: ../../library/multiprocessing.shared_memory.rst:96
+#, fuzzy
+msgid ""
+"Close the file descriptor/handle to the shared memory from this instance.  "
+":meth:`close` should be called once access to the shared memory block from "
+"this instance is no longer needed.  Depending on operating system, the "
+"underlying memory may or may not be freed even if all handles to it have "
+"been closed.  To ensure proper cleanup, use the :meth:`unlink` method."
+msgstr ""
+"Đóng bộ mô tả/xử lý tệp vào bộ nhớ dùng chung từ phiên bản này.  "
+":meth:`close` sẽ được gọi khi quyền truy cập vào khối bộ nhớ dùng chung từ "
+"phiên bản này không còn cần thiết nữa.  Tùy thuộc vào hệ điều hành, bộ nhớ "
+"cơ bản có thể được giải phóng hoặc không ngay cả khi tất cả các thẻ điều "
+"khiển đối với nó đã bị đóng.  Để đảm bảo dọn dẹp đúng cách, hãy sử dụng "
+"phương pháp :meth:`unlink`."
+
+#: ../../library/multiprocessing.shared_memory.rst:105
+#, fuzzy
+msgid ""
+"Delete the underlying shared memory block.  This should be called only once "
+"per shared memory block regardless of the number of handles to it, even in "
+"other processes. :meth:`unlink` and :meth:`close` can be called in any "
+"order, but trying to access data inside a shared memory block after "
+":meth:`unlink` may result in memory access errors, depending on platform."
+msgstr ""
+"Xóa khối bộ nhớ chia sẻ cơ bản.  Điều này chỉ nên được gọi một lần trên mỗi "
+"khối bộ nhớ dùng chung bất kể số lượng thẻ điều khiển đối với nó, ngay cả "
+"trong các quy trình khác. :meth:`unlink` và :meth:`close` có thể được gọi "
+"theo bất kỳ thứ tự nào, nhưng việc cố gắng truy cập dữ liệu bên trong khối "
+"bộ nhớ dùng chung sau :meth:`unlink` có thể dẫn đến lỗi truy cập bộ nhớ, tùy"
+" thuộc vào nền tảng."
+
+#: ../../library/multiprocessing.shared_memory.rst:112
+#, fuzzy
+msgid ""
+"This method has no effect on Windows, where the only way to delete a shared "
+"memory block is to close all handles."
+msgstr ""
+"Phương pháp này không có tác dụng trên Windows, trong đó cách duy nhất để "
+"xóa khối bộ nhớ dùng chung là đóng tất cả các thẻ điều khiển."
+
+#: ../../library/multiprocessing.shared_memory.rst:117
+#, fuzzy
+msgid "A memoryview of contents of the shared memory block."
+msgstr "Chế độ xem bộ nhớ về nội dung của khối bộ nhớ dùng chung."
+
+#: ../../library/multiprocessing.shared_memory.rst:121
+#, fuzzy
+msgid "Read-only access to the unique name of the shared memory block."
+msgstr "Quyền truy cập chỉ đọc vào tên duy nhất của khối bộ nhớ dùng chung."
+
+#: ../../library/multiprocessing.shared_memory.rst:125
+#, fuzzy
+msgid "Read-only access to size in bytes of the shared memory block."
+msgstr ""
+"Quyền truy cập chỉ đọc đối với kích thước tính bằng byte của khối bộ nhớ "
+"dùng chung."
+
+#: ../../library/multiprocessing.shared_memory.rst:128
+#, fuzzy
+msgid ""
+"The following example demonstrates low-level use of :class:`SharedMemory` "
+"instances::"
+msgstr ""
+"Ví dụ sau đây minh họa việc sử dụng phiên bản :class:`SharedMemory` ở mức độ"
+" thấp::"
+
+#: ../../library/multiprocessing.shared_memory.rst:131
+#, fuzzy
+msgid ""
+">>> from multiprocessing import shared_memory\n"
+">>> shm_a = shared_memory.SharedMemory(create=True, size=10)\n"
+">>> type(shm_a.buf)\n"
+"<class 'memoryview'>\n"
+">>> buffer = shm_a.buf\n"
+">>> len(buffer)\n"
+"10\n"
+">>> buffer[:4] = bytearray([22, 33, 44, 55])  # Modify multiple at once\n"
+">>> buffer[4] = 100                           # Modify single byte at a time\n"
+">>> # Attach to an existing shared memory block\n"
+">>> shm_b = shared_memory.SharedMemory(shm_a.name)\n"
+">>> import array\n"
+">>> array.array('b', shm_b.buf[:5])  # Copy the data into a new array.array\n"
+"array('b', [22, 33, 44, 55, 100])\n"
+">>> shm_b.buf[:5] = b'howdy'  # Modify via shm_b using bytes\n"
+">>> bytes(shm_a.buf[:5])      # Access via shm_a\n"
+"b'howdy'\n"
+">>> shm_b.close()   # Close each SharedMemory instance\n"
+">>> shm_a.close()\n"
+">>> shm_a.unlink()  # Call unlink only once to release the shared memory"
+msgstr ""
+">>> từ nhập đa xử lý Shared_memory\n"
+">>> shm_a = Shared_memory.SharedMemory(create=True, size=10)\n"
+">>> gõ(shm_a.buf)\n"
+"<lớp 'bộ nhớ'>\n"
+">>> bộ đệm = shm_a.buf\n"
+">>> len(bộ đệm)\n"
+"10\n"
+">>> buffer[:4] = bytearray([22, 33, 44, 55]) # Modify nhiều lần cùng một lúc\n"
+">>> bộ đệm[4] = 100 # Modify một byte mỗi lần\n"
+">>> # Attach vào khối bộ nhớ dùng chung hiện có\n"
+">>> shm_b = Shared_memory.SharedMemory(shm_a.name)\n"
+">>> nhập mảng\n"
+">>> array.array('b', shm_b.buf[:5]) # Copy dữ liệu vào một array.array mới\n"
+"mảng('b', [22, 33, 44, 55, 100])\n"
+">>> shm_b.buf[:5] = b'howdy' # Modify qua shm_b sử dụng byte\n"
+">>> byte(shm_a.buf[:5]) # Access qua shm_a\n"
+"xin chào'\n"
+">>> shm_b.close() # Close mỗi phiên bản SharedMemory\n"
+">>> shm_a.close()\n"
+">>> shm_a.unlink() # Call chỉ hủy liên kết một lần để giải phóng bộ nhớ dùng chung"
+
+#: ../../library/multiprocessing.shared_memory.rst:154
+#, fuzzy
+msgid ""
+"The following example demonstrates a practical use of the "
+":class:`SharedMemory` class with `NumPy arrays <https://numpy.org/>`_, "
+"accessing the same :class:`!numpy.ndarray` from two distinct Python shells:"
+msgstr ""
+"Ví dụ sau đây minh họa cách sử dụng thực tế của lớp :class:`SharedMemory` "
+"với `NumPy arrays <https://numpy.org/>`_, truy cập cùng một "
+":class:`!numpy.ndarray` từ hai shell Python riêng biệt:"
+
+#: ../../library/multiprocessing.shared_memory.rst:158
+#, fuzzy
+msgid ""
+">>> # In the first Python interactive shell\n"
+">>> import numpy as np\n"
+">>> a = np.array([1, 1, 2, 3, 5, 8])  # Start with an existing NumPy array\n"
+">>> from multiprocessing import shared_memory\n"
+">>> shm = shared_memory.SharedMemory(create=True, size=a.nbytes)\n"
+">>> # Now create a NumPy array backed by shared memory\n"
+">>> b = np.ndarray(a.shape, dtype=a.dtype, buffer=shm.buf)\n"
+">>> b[:] = a[:]  # Copy the original data into shared memory\n"
+">>> b\n"
+"array([1, 1, 2, 3, 5, 8])\n"
+">>> type(b)\n"
+"<class 'numpy.ndarray'>\n"
+">>> type(a)\n"
+"<class 'numpy.ndarray'>\n"
+">>> shm.name  # We did not specify a name so one was chosen for us\n"
+"'psm_21467_46075'\n"
+"\n"
+">>> # In either the same shell or a new Python shell on the same machine\n"
+">>> import numpy as np\n"
+">>> from multiprocessing import shared_memory\n"
+">>> # Attach to the existing shared memory block\n"
+">>> existing_shm = shared_memory.SharedMemory(name='psm_21467_46075')\n"
+">>> # Note that a.shape is (6,) and a.dtype is np.int64 in this example\n"
+">>> c = np.ndarray((6,), dtype=np.int64, buffer=existing_shm.buf)\n"
+">>> c\n"
+"array([1, 1, 2, 3, 5, 8])\n"
+">>> c[-1] = 888\n"
+">>> c\n"
+"array([  1,   1,   2,   3,   5, 888])\n"
+"\n"
+">>> # Back in the first Python interactive shell, b reflects this change\n"
+">>> b\n"
+"array([  1,   1,   2,   3,   5, 888])\n"
+"\n"
+">>> # Clean up from within the second Python shell\n"
+">>> del c  # Unnecessary; merely emphasizing the array is no longer used\n"
+">>> existing_shm.close()\n"
+"\n"
+">>> # Clean up from within the first Python shell\n"
+">>> del b  # Unnecessary; merely emphasizing the array is no longer used\n"
+">>> shm.close()\n"
+">>> shm.unlink()  # Free and release the shared memory block at the very end"
+msgstr ""
+">>> # In shell tương tác Python đầu tiên\n"
+">>> nhập numpy dưới dạng np\n"
+">>> a = np.array([1, 1, 2, 3, 5, 8]) # Start với mảng NumPy hiện có\n"
+">>> từ nhập đa xử lý Shared_memory\n"
+">>> shm = Shared_memory.SharedMemory(create=True, size=a.nbytes)\n"
+">>> # Now tạo mảng NumPy được hỗ trợ bởi bộ nhớ dùng chung\n"
+">>> b = np.ndarray(a.shape, dtype=a.dtype, buffer=shm.buf)\n"
+">>> b[:] = a[:] # Copy dữ liệu gốc vào bộ nhớ dùng chung\n"
+">>>b\n"
+"mảng([1, 1, 2, 3, 5, 8])\n"
+">>> loại (b)\n"
+"<lớp 'numpy.ndarray'>\n"
+">>> loại (a)\n"
+"<lớp 'numpy.ndarray'>\n"
+">>> shm.name # We không chỉ định tên nên một cái đã được chọn cho chúng tôi\n"
+"'psm_21467_46075'\n"
+"\n"
+">>> # In cùng một shell hoặc một shell Python mới trên cùng một máy\n"
+">>> nhập numpy dưới dạng np\n"
+">>> từ nhập đa xử lý Shared_memory\n"
+">>> # Attach vào khối bộ nhớ dùng chung hiện có\n"
+">>> hiện có_shm = Shared_memory.SharedMemory(name='psm_21467_46075')\n"
+">>> # Note rằng a.shape là (6,) và a.dtype là np.int64 trong ví dụ này\n"
+">>> c = np.ndarray((6,), dtype=np.int64, buffer=being_shm.buf)\n"
+">>> c\n"
+"mảng([1, 1, 2, 3, 5, 8])\n"
+">>> c[-1] = 888\n"
+">>> c\n"
+"mảng([ 1, 1, 2, 3, 5, 888])\n"
+"\n"
+">>> # Back trong shell tương tác Python đầu tiên, b phản ánh sự thay đổi này\n"
+">>>b\n"
+"mảng([ 1, 1, 2, 3, 5, 888])\n"
+"\n"
+">>> # Clean từ bên trong shell Python thứ hai\n"
+">>> del c # Unnecessary; chỉ nhấn mạnh mảng không còn được sử dụng\n"
+">>> hiện_shm.close()\n"
+"\n"
+">>> # Clean từ bên trong shell Python đầu tiên\n"
+">>> del b # Unnecessary; chỉ nhấn mạnh mảng không còn được sử dụng\n"
+">>> shm.close()\n"
+">>> shm.unlink() # Free và giải phóng khối bộ nhớ dùng chung ở cuối"
+
+#: ../../library/multiprocessing.shared_memory.rst:208
+#, fuzzy
+msgid ""
+"A subclass of :class:`multiprocessing.managers.BaseManager` which can be "
+"used for the management of shared memory blocks across processes."
+msgstr ""
+"Một lớp con của :class:`multiprocessing.managers.BaseManager` có thể được sử"
+" dụng để quản lý các khối bộ nhớ dùng chung giữa các tiến trình."
+
+#: ../../library/multiprocessing.shared_memory.rst:211
+#, fuzzy
+msgid ""
+"A call to :meth:`~multiprocessing.managers.BaseManager.start` on a "
+":class:`!SharedMemoryManager` instance causes a new process to be started. "
+"This new process's sole purpose is to manage the life cycle of all shared "
+"memory blocks created through it.  To trigger the release of all shared "
+"memory blocks managed by that process, call "
+":meth:`~multiprocessing.managers.BaseManager.shutdown` on the instance. This"
+" triggers a :meth:`~multiprocessing.shared_memory.SharedMemory.unlink` call "
+"on all of the :class:`SharedMemory` objects managed by that process and then"
+" stops the process itself.  By creating :class:`!SharedMemory` instances "
+"through a :class:`!SharedMemoryManager`, we avoid the need to manually track"
+" and trigger the freeing of shared memory resources."
+msgstr ""
+"Lệnh gọi tới :meth:`~multiprocessing.managers.BaseManager.start` trên phiên "
+"bản :class:`!SharedMemoryManager` sẽ khiến một quy trình mới được bắt đầu. "
+"Mục đích duy nhất của quy trình mới này là quản lý vòng đời của tất cả các "
+"khối bộ nhớ dùng chung được tạo thông qua nó.  Để kích hoạt giải phóng tất "
+"cả các khối bộ nhớ dùng chung do quy trình đó quản lý, hãy gọi "
+":meth:`~multiprocessing.managers.BaseManager.shutdown` trên phiên bản. Điều "
+"này kích hoạt lệnh gọi "
+":meth:`~multiprocessing.shared_memory.SharedMemory.unlink` trên tất cả các "
+"đối tượng :class:`SharedMemory` được quản lý bởi quy trình đó và sau đó tự "
+"dừng quá trình đó.  Bằng cách tạo các phiên bản :class:`!SharedMemory` thông"
+" qua :class:`!SharedMemoryManager`, chúng tôi tránh được việc phải theo dõi "
+"và kích hoạt giải phóng tài nguyên bộ nhớ dùng chung theo cách thủ công."
+
+#: ../../library/multiprocessing.shared_memory.rst:223
+#, fuzzy
+msgid ""
+"This class provides methods for creating and returning :class:`SharedMemory`"
+" instances and for creating a list-like object (:class:`ShareableList`) "
+"backed by shared memory."
+msgstr ""
+"Lớp này cung cấp các phương thức để tạo và trả về các phiên bản "
+":class:`SharedMemory` cũng như để tạo một đối tượng giống như danh sách "
+"(:class:`ShareableList`) được hỗ trợ bởi bộ nhớ dùng chung."
+
+#: ../../library/multiprocessing.shared_memory.rst:227
+#, fuzzy
+msgid ""
+"Refer to :class:`~multiprocessing.managers.BaseManager` for a description of"
+" the inherited *address* and *authkey* optional input arguments and how they"
+" may be used to connect to an existing :class:`!SharedMemoryManager` service"
+" from other processes."
+msgstr ""
+"Tham khảo :class:`~multiprocessing.managers.BaseManager` để biết mô tả về "
+"các đối số đầu vào tùy chọn *address* và *authkey* được kế thừa cũng như "
+"cách chúng có thể được sử dụng để kết nối với dịch vụ "
+":class:`!SharedMemoryManager` hiện có từ các quy trình khác."
+
+#: ../../library/multiprocessing.shared_memory.rst:234
+#, fuzzy
+msgid ""
+"Create and return a new :class:`SharedMemory` object with the specified "
+"*size* in bytes."
+msgstr ""
+"Tạo và trả về một đối tượng :class:`SharedMemory` mới với *size* được chỉ "
+"định theo byte."
+
+#: ../../library/multiprocessing.shared_memory.rst:239
+#, fuzzy
+msgid ""
+"Create and return a new :class:`ShareableList` object, initialized by the "
+"values from the input *sequence*."
+msgstr ""
+"Tạo và trả về một đối tượng :class:`ShareableList` mới, được khởi tạo bởi "
+"các giá trị từ *sequence* đầu vào."
+
+#: ../../library/multiprocessing.shared_memory.rst:243
+#, fuzzy
+msgid ""
+"The following example demonstrates the basic mechanisms of a "
+":class:`~multiprocessing.managers.SharedMemoryManager`:"
+msgstr ""
+"Ví dụ sau đây minh họa các cơ chế cơ bản của "
+":class:`~multiprocessing.managers.SharedMemoryManager`:"
+
+#: ../../library/multiprocessing.shared_memory.rst:246
+#, fuzzy
+msgid ""
+">>> from multiprocessing.managers import SharedMemoryManager\n"
+">>> smm = SharedMemoryManager()\n"
+">>> smm.start()  # Start the process that manages the shared memory blocks\n"
+">>> sl = smm.ShareableList(range(4))\n"
+">>> sl\n"
+"ShareableList([0, 1, 2, 3], name='psm_6572_7512')\n"
+">>> raw_shm = smm.SharedMemory(size=128)\n"
+">>> another_sl = smm.ShareableList('alpha')\n"
+">>> another_sl\n"
+"ShareableList(['a', 'l', 'p', 'h', 'a'], name='psm_6572_12221')\n"
+">>> smm.shutdown()  # Calls unlink() on sl, raw_shm, and another_sl"
+msgstr ""
+">>> từ multiprocessing.managers nhập SharedMemoryManager\n"
+">>> smm = SharedMemoryManager()\n"
+">>> smm.start() # Start quy trình quản lý các khối bộ nhớ dùng chung\n"
+">>> sl = smm.ShareableList(range(4))\n"
+">>> sl\n"
+"ShareableList([0, 1, 2, 3], name='psm_6572_7512')\n"
+">>> raw_shm = smm.SharedMemory(size=128)\n"
+">>> another_sl = smm.ShareableList('alpha')\n"
+">>> another_sl\n"
+"ShareableList(['a', 'l', 'p', 'h', 'a'], name='psm_6572_12221')\n"
+">>> smm.shutdown() # Calls unlink() trên sl, raw_shm và another_sl"
+
+#: ../../library/multiprocessing.shared_memory.rst:261
+#, fuzzy
+msgid ""
+"The following example depicts a potentially more convenient pattern for "
+"using :class:`~multiprocessing.managers.SharedMemoryManager` objects via the"
+" :keyword:`with` statement to ensure that all shared memory blocks are "
+"released after they are no longer needed:"
+msgstr ""
+"Ví dụ sau mô tả một mẫu có khả năng thuận tiện hơn khi sử dụng các đối tượng"
+" :class:`~multiprocessing.managers.SharedMemoryManager` thông qua câu lệnh "
+":keyword:`with` để đảm bảo rằng tất cả các khối bộ nhớ dùng chung được giải "
+"phóng sau khi chúng không còn cần thiết nữa:"
+
+#: ../../library/multiprocessing.shared_memory.rst:266
+#, fuzzy
+msgid ""
+">>> with SharedMemoryManager() as smm:\n"
+"...     sl = smm.ShareableList(range(2000))\n"
+"...     # Divide the work among two processes, storing partial results in sl\n"
+"...     p1 = Process(target=do_work, args=(sl, 0, 1000))\n"
+"...     p2 = Process(target=do_work, args=(sl, 1000, 2000))\n"
+"...     p1.start()\n"
+"...     p2.start()  # A multiprocessing.Pool might be more efficient\n"
+"...     p1.join()\n"
+"...     p2.join()   # Wait for all work to complete in both processes\n"
+"...     total_result = sum(sl)  # Consolidate the partial results now in sl"
+msgstr ""
+">>> với SharedMemoryManager() là smm:\n"
+"... sl = smm.ShareableList(range(2000))\n"
+"... # Divide công việc giữa hai quy trình, lưu trữ một phần kết quả trong sl\n"
+"... p1 = Quá trình(target=do_work, args=(sl, 0, 1000))\n"
+"... p2 = Quá trình(target=do_work, args=(sl, 1000, 2000))\n"
+"... p1.start()\n"
+"... p2.start() # A multiprocessing.Pool có thể hiệu quả hơn\n"
+"... p1.join()\n"
+"... p2.join() # Wait để hoàn thành mọi công việc trong cả hai quy trình\n"
+"... Total_result = sum(sl) # Consolidate một phần kết quả bây giờ ở dạng sl"
+
+#: ../../library/multiprocessing.shared_memory.rst:280
+#, fuzzy
+msgid ""
+"When using a :class:`~multiprocessing.managers.SharedMemoryManager` in a "
+":keyword:`with` statement, the shared memory blocks created using that "
+"manager are all released when the :keyword:`!with` statement's code block "
+"finishes execution."
+msgstr ""
+"Khi sử dụng :class:`~multiprocessing.managers.SharedMemoryManager` trong câu"
+" lệnh :keyword:`with`, các khối bộ nhớ dùng chung được tạo bằng trình quản "
+"lý đó đều được giải phóng khi khối mã của câu lệnh :keyword:`!with` kết thúc"
+" thực thi."
+
+#: ../../library/multiprocessing.shared_memory.rst:288
+#, fuzzy
+msgid ""
+"Provide a mutable list-like object where all values stored within are stored"
+" in a shared memory block. This constrains storable values to the following "
+"built-in data types:"
+msgstr ""
+"Cung cấp một đối tượng giống như danh sách có thể thay đổi trong đó tất cả "
+"các giá trị được lưu trữ bên trong đều được lưu trữ trong một khối bộ nhớ "
+"dùng chung. Điều này hạn chế các giá trị có thể lưu trữ đối với các kiểu dữ "
+"liệu tích hợp sau:"
+
+#: ../../library/multiprocessing.shared_memory.rst:292
+#, fuzzy
+msgid ":class:`int` (signed 64-bit)"
+msgstr ":class:`int` (có chữ ký 64-bit)"
+
+#: ../../library/multiprocessing.shared_memory.rst:293
+#, fuzzy
+msgid ":class:`float`"
+msgstr ":class:`float`"
+
+#: ../../library/multiprocessing.shared_memory.rst:294
+#, fuzzy
+msgid ":class:`bool`"
+msgstr ":class:`bool`"
+
+#: ../../library/multiprocessing.shared_memory.rst:295
+#, fuzzy
+msgid ":class:`str` (less than 10M bytes each when encoded as UTF-8)"
+msgstr ":class:`str` (mỗi byte nhỏ hơn 10M byte khi được mã hóa thành UTF-8)"
+
+#: ../../library/multiprocessing.shared_memory.rst:296
+#, fuzzy
+msgid ":class:`bytes` (less than 10M bytes each)"
+msgstr ":class:`bytes` (mỗi cái nhỏ hơn 10M byte)"
+
+#: ../../library/multiprocessing.shared_memory.rst:297
+#, fuzzy
+msgid "``None``"
+msgstr "``None``"
+
+#: ../../library/multiprocessing.shared_memory.rst:299
+#, fuzzy
+msgid ""
+"It also notably differs from the built-in :class:`list` type in that these "
+"lists can not change their overall length (i.e. no :meth:`!append`, "
+":meth:`!insert`, etc.) and do not support the dynamic creation of new "
+":class:`!ShareableList` instances via slicing."
+msgstr ""
+"Nó cũng khác biệt đáng kể so với loại :class:`list` tích hợp ở chỗ các danh "
+"sách này không thể thay đổi độ dài tổng thể của chúng (tức là không có "
+":meth:`!append`, :meth:`!insert`, v.v.) và không hỗ trợ việc tạo động các "
+"phiên bản :class:`!ShareableList` mới thông qua việc cắt."
+
+#: ../../library/multiprocessing.shared_memory.rst:305
+#, fuzzy
+msgid ""
+"*sequence* is used in populating a new :class:`!ShareableList` full of "
+"values. Set to ``None`` to instead attach to an already existing "
+":class:`!ShareableList` by its unique shared memory name."
+msgstr ""
+"*sequence* được sử dụng để điền vào một :class:`!ShareableList` mới chứa đầy"
+" các giá trị. Đặt thành ``None`` để gắn vào :class:`!ShareableList` hiện có "
+"bằng tên bộ nhớ dùng chung duy nhất của nó."
+
+#: ../../library/multiprocessing.shared_memory.rst:309
+#, fuzzy
+msgid ""
+"*name* is the unique name for the requested shared memory, as described in "
+"the definition for :class:`SharedMemory`.  When attaching to an existing "
+":class:`!ShareableList`, specify its shared memory block's unique name while"
+" leaving *sequence* set to ``None``."
+msgstr ""
+"*name* là tên duy nhất cho bộ nhớ dùng chung được yêu cầu, như được mô tả "
+"trong định nghĩa cho :class:`SharedMemory`.  Khi gắn vào "
+":class:`!ShareableList` hiện có, hãy chỉ định tên duy nhất của khối bộ nhớ "
+"dùng chung trong khi để *sequence* được đặt thành ``None``."
+
+#: ../../library/multiprocessing.shared_memory.rst:316
+#, fuzzy
+msgid ""
+"A known issue exists for :class:`bytes` and :class:`str` values. If they end"
+" with ``\\x00`` nul bytes or characters, those may be *silently stripped* "
+"when fetching them by index from the :class:`!ShareableList`. This "
+"``.rstrip(b'\\x00')`` behavior is considered a bug and may go away in the "
+"future. See :gh:`106939`."
+msgstr ""
+"Đã xảy ra sự cố đã biết đối với các giá trị :class:`bytes` và :class:`str`. "
+"Nếu chúng kết thúc bằng ``\\x00`` nul byte hoặc ký tự, thì chúng có thể là "
+"*silently stripped* khi tìm nạp chúng theo chỉ mục từ "
+":class:`!ShareableList`. Hành vi ``.rstrip(b'\\x00')`` này được coi là một "
+"lỗi và có thể biến mất trong tương lai. Xem :gh:`106939`."
+
+#: ../../library/multiprocessing.shared_memory.rst:322
+#, fuzzy
+msgid ""
+"For applications where rstripping of trailing nulls is a problem, work "
+"around it by always unconditionally appending an extra non-0 byte to the end"
+" of such values when storing and unconditionally removing it when fetching:"
+msgstr ""
+"Đối với các ứng dụng trong đó việc loại bỏ các giá trị null ở cuối là một "
+"vấn đề, hãy giải quyết vấn đề đó bằng cách luôn thêm một byte khác 0 vào "
+"cuối các giá trị đó một cách vô điều kiện khi lưu trữ và loại bỏ nó một cách"
+" vô điều kiện khi tìm nạp:"
+
+#: ../../library/multiprocessing.shared_memory.rst:327
+#, fuzzy
+msgid ""
+">>> from multiprocessing import shared_memory\n"
+">>> nul_bug_demo = shared_memory.ShareableList(['?\\x00', b'\\x03\\x02\\x01\\x00\\x00\\x00'])\n"
+">>> nul_bug_demo[0]\n"
+"'?'\n"
+">>> nul_bug_demo[1]\n"
+"b'\\x03\\x02\\x01'\n"
+">>> nul_bug_demo.shm.unlink()\n"
+">>> padded = shared_memory.ShareableList(['?\\x00\\x07', b'\\x03\\x02\\x01\\x00\\x00\\x00\\x07'])\n"
+">>> padded[0][:-1]\n"
+"'?\\x00'\n"
+">>> padded[1][:-1]\n"
+"b'\\x03\\x02\\x01\\x00\\x00\\x00'\n"
+">>> padded.shm.unlink()"
+msgstr ""
+">>> từ nhập đa xử lý Shared_memory\n"
+">>> nul_bug_demo = Shared_memory.ShareableList(['?\\x00', b'\\x03\\x02\\x01\\x00\\x00\\x00'])\n"
+">>> nul_bug_demo[0]\n"
+"'?'\n"
+">>> nul_bug_demo[1]\n"
+"b'\\x03\\x02\\x01'\n"
+">>> nul_bug_demo.shm.unlink()\n"
+">>> độn = Shared_memory.ShareableList(['?\\x00\\x07', b'\\x03\\x02\\x01\\x00\\x00\\x00\\x07'])\n"
+">>> đệm[0][:-1]\n"
+"'?\\x00'\n"
+">>> độn[1][:-1]\n"
+"b'\\x03\\x02\\x01\\x00\\x00\\x00'\n"
+">>> độn.shm.unlink()"
+
+#: ../../library/multiprocessing.shared_memory.rst:345
+#, fuzzy
+msgid "Return the number of occurrences of *value*."
+msgstr "Trả về số lần xuất hiện của *value*."
+
+#: ../../library/multiprocessing.shared_memory.rst:349
+#, fuzzy
+msgid ""
+"Return first index position of *value*. Raise :exc:`ValueError` if *value* "
+"is not present."
+msgstr ""
+"Trả về vị trí chỉ mục đầu tiên của *value*. Tăng :exc:`ValueError` nếu "
+"*value* không có mặt."
+
+#: ../../library/multiprocessing.shared_memory.rst:354
+#, fuzzy
+msgid ""
+"Read-only attribute containing the :mod:`struct` packing format used by all "
+"currently stored values."
+msgstr ""
+"Thuộc tính chỉ đọc chứa định dạng đóng gói :mod:`struct` được sử dụng bởi "
+"tất cả các giá trị hiện được lưu trữ."
+
+#: ../../library/multiprocessing.shared_memory.rst:359
+#, fuzzy
+msgid "The :class:`SharedMemory` instance where the values are stored."
+msgstr "Phiên bản :class:`SharedMemory` nơi các giá trị được lưu trữ."
+
+#: ../../library/multiprocessing.shared_memory.rst:362
+#, fuzzy
+msgid ""
+"The following example demonstrates basic use of a :class:`ShareableList` "
+"instance:"
+msgstr ""
+"Ví dụ sau đây minh họa cách sử dụng cơ bản của phiên bản "
+":class:`ShareableList`:"
+
+#: ../../library/multiprocessing.shared_memory.rst:395
+#, fuzzy
+msgid ""
+"The following example depicts how one, two, or many processes may access the"
+" same :class:`ShareableList` by supplying the name of the shared memory "
+"block behind it:"
+msgstr ""
+"Ví dụ sau mô tả cách một, hai hoặc nhiều tiến trình có thể truy cập vào cùng"
+" một :class:`ShareableList` bằng cách cung cấp tên của khối bộ nhớ dùng "
+"chung đằng sau nó:"
+
+#: ../../library/multiprocessing.shared_memory.rst:410
+#, fuzzy
+msgid ""
+"The following examples demonstrates that :class:`ShareableList` (and "
+"underlying :class:`SharedMemory`) objects can be pickled and unpickled if "
+"needed. Note, that it will still be the same shared object. This happens, "
+"because the deserialized object has the same unique name and is just "
+"attached to an existing object with the same name (if the object is still "
+"alive):"
+msgstr ""
+"Các ví dụ sau đây chứng minh rằng các đối tượng :class:`ShareableList` (và "
+":class:`SharedMemory` cơ bản) có thể được chọn và không được chọn nếu cần. "
+"Lưu ý rằng nó vẫn sẽ là đối tượng được chia sẻ tương tự. Điều này xảy ra vì "
+"đối tượng được deserialized có cùng tên duy nhất và chỉ được gắn vào một đối"
+" tượng hiện có có cùng tên (nếu đối tượng vẫn còn tồn tại):"
+
+#: ../../library/multiprocessing.shared_memory.rst:11
+#, fuzzy
+msgid "Shared Memory"
+msgstr "Bộ nhớ chia sẻ"
+
+#: ../../library/multiprocessing.shared_memory.rst:11
+#, fuzzy
+msgid "POSIX Shared Memory"
+msgstr "POSIX Bộ nhớ chia sẻ"
+
+#: ../../library/multiprocessing.shared_memory.rst:11
+#, fuzzy
+msgid "Named Shared Memory"
+msgstr "Bộ nhớ chia sẻ được đặt tên"

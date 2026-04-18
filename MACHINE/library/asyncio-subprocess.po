@@ -1,0 +1,766 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/asyncio-subprocess.rst:7
+#, fuzzy
+msgid "Subprocesses"
+msgstr "Quy trình con"
+
+#: ../../library/asyncio-subprocess.rst:9
+#, fuzzy
+msgid ""
+"**Source code:** :source:`Lib/asyncio/subprocess.py`, "
+":source:`Lib/asyncio/base_subprocess.py`"
+msgstr ""
+"**Source code:** :source:`Lib/asyncio/subprocess.py`, "
+":source:`Lib/asyncio/base_subprocess.py`"
+
+#: ../../library/asyncio-subprocess.rst:14
+#, fuzzy
+msgid ""
+"This section describes high-level async/await asyncio APIs to create and "
+"manage subprocesses."
+msgstr ""
+"Phần này mô tả các API async/await asyncio cấp cao để tạo và quản lý các quy"
+" trình con."
+
+#: ../../library/asyncio-subprocess.rst:19
+#, fuzzy
+msgid ""
+"Here's an example of how asyncio can run a shell command and obtain its "
+"result::"
+msgstr ""
+"Đây là một ví dụ về cách asyncio có thể chạy lệnh shell và nhận được kết quả"
+" của nó ::"
+
+#: ../../library/asyncio-subprocess.rst:22
+#, python-brace-format, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"async def run(cmd):\n"
+"    proc = await asyncio.create_subprocess_shell(\n"
+"        cmd,\n"
+"        stdout=asyncio.subprocess.PIPE,\n"
+"        stderr=asyncio.subprocess.PIPE)\n"
+"\n"
+"    stdout, stderr = await proc.communicate()\n"
+"\n"
+"    print(f'[{cmd!r} exited with {proc.returncode}]')\n"
+"    if stdout:\n"
+"        print(f'[stdout]\\n{stdout.decode()}')\n"
+"    if stderr:\n"
+"        print(f'[stderr]\\n{stderr.decode()}')\n"
+"\n"
+"asyncio.run(run('ls /zzz'))"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"chạy không đồng bộ (cmd):\n"
+"    proc = đang chờ asyncio.create_subprocess_shell(\n"
+"        cmd,\n"
+"        thiết bị xuất chuẩn = asyncio.subprocess.PIPE,\n"
+"        stderr=asyncio.subprocess.PIPE)\n"
+"\n"
+"    thiết bị xuất chuẩn, stderr = đang chờ proc.communicate()\n"
+"\n"
+"    print(f'[{cmd!r} đã thoát với {proc.returncode}]')\n"
+"    nếu thiết bị xuất chuẩn:\n"
+"        print(f'[stdout]\\n{stdout.decode()}')\n"
+"    nếu lỗi chuẩn:\n"
+"        print(f'[stderr]\\n{stderr.decode()}')\n"
+"\n"
+"asyncio.run(run('ls /zzz'))"
+
+#: ../../library/asyncio-subprocess.rst:40
+#, fuzzy
+msgid "will print::"
+msgstr "sẽ in::"
+
+#: ../../library/asyncio-subprocess.rst:42
+#, fuzzy
+msgid ""
+"['ls /zzz' exited with 1]\n"
+"[stderr]\n"
+"ls: /zzz: No such file or directory"
+msgstr ""
+"['ls /zzz' đã thoát với 1]\n"
+"[stderr]\n"
+"ls: /zzz: Không có tập tin hoặc thư mục như vậy"
+
+#: ../../library/asyncio-subprocess.rst:46
+#, fuzzy
+msgid ""
+"Because all asyncio subprocess functions are asynchronous and asyncio "
+"provides many tools to work with such functions, it is easy to execute and "
+"monitor multiple subprocesses in parallel.  It is indeed trivial to modify "
+"the above example to run several commands simultaneously::"
+msgstr ""
+"Bởi vì tất cả các hàm của quy trình con asyncio đều không đồng bộ và asyncio"
+" cung cấp nhiều công cụ để làm việc với các hàm đó nên rất dễ thực thi và "
+"giám sát nhiều quy trình con song song.  Thực sự là không cần thiết khi sửa "
+"đổi ví dụ trên để chạy nhiều lệnh cùng lúc ::"
+
+#: ../../library/asyncio-subprocess.rst:51
+#, fuzzy
+msgid ""
+"async def main():\n"
+"    await asyncio.gather(\n"
+"        run('ls /zzz'),\n"
+"        run('sleep 1; echo \"hello\"'))\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"async def main():\n"
+"    đang chờ asyncio.gather(\n"
+"        chạy('ls /zzz'),\n"
+"        run('ngủ 1; echo \"xin chào\"'))\n"
+"\n"
+"asyncio.run(chính())"
+
+#: ../../library/asyncio-subprocess.rst:58
+#, fuzzy
+msgid "See also the `Examples`_ subsection."
+msgstr "Xem thêm phần phụ `Examples`_."
+
+#: ../../library/asyncio-subprocess.rst:62
+#, fuzzy
+msgid "Creating Subprocesses"
+msgstr "Tạo quy trình con"
+
+#: ../../library/asyncio-subprocess.rst:68
+#, fuzzy
+msgid "Create a subprocess."
+msgstr "Tạo một quy trình con."
+
+#: ../../library/asyncio-subprocess.rst:70
+#: ../../library/asyncio-subprocess.rst:92
+#, fuzzy
+msgid ""
+"The *limit* argument sets the buffer limit for :class:`StreamReader` "
+"wrappers for :attr:`~asyncio.subprocess.Process.stdout` and "
+":attr:`~asyncio.subprocess.Process.stderr` (if :const:`subprocess.PIPE` is "
+"passed to *stdout* and *stderr* arguments)."
+msgstr ""
+"Đối số *limit* đặt giới hạn bộ đệm cho các trình bao bọc "
+":class:`StreamReader` cho :attr:`~asyncio.subprocess.Process.stdout` và "
+":attr:`~asyncio.subprocess.Process.stderr` (nếu :const:`subprocess.PIPE` "
+"được chuyển cho các đối số *stdout* và *stderr*)."
+
+#: ../../library/asyncio-subprocess.rst:74
+#: ../../library/asyncio-subprocess.rst:96
+#, fuzzy
+msgid "Return a :class:`~asyncio.subprocess.Process` instance."
+msgstr "Trả về một phiên bản :class:`~asyncio.subprocess.Process`."
+
+#: ../../library/asyncio-subprocess.rst:76
+#, fuzzy
+msgid ""
+"See the documentation of :meth:`loop.subprocess_exec` for other parameters."
+msgstr ""
+"Xem tài liệu của :meth:`loop.subprocess_exec` để biết các thông số khác."
+
+#: ../../library/asyncio-subprocess.rst:79
+#: ../../library/asyncio-subprocess.rst:101
+#, fuzzy
+msgid ""
+"If the process object is garbage collected while the process is still "
+"running, the child process will be killed."
+msgstr ""
+"Nếu đối tượng tiến trình bị thu gom rác trong khi tiến trình vẫn đang chạy "
+"thì tiến trình con sẽ bị hủy."
+
+#: ../../library/asyncio-subprocess.rst:82
+#: ../../library/asyncio-subprocess.rst:113
+#, fuzzy
+msgid "Removed the *loop* parameter."
+msgstr "Đã xóa tham số *loop*."
+
+#: ../../library/asyncio-subprocess.rst:90
+#, fuzzy
+msgid "Run the *cmd* shell command."
+msgstr "Chạy lệnh shell *cmd*."
+
+#: ../../library/asyncio-subprocess.rst:98
+#, fuzzy
+msgid ""
+"See the documentation of :meth:`loop.subprocess_shell` for other parameters."
+msgstr ""
+"Xem tài liệu của :meth:`loop.subprocess_shell` để biết các thông số khác."
+
+#: ../../library/asyncio-subprocess.rst:106
+#, fuzzy
+msgid ""
+"It is the application's responsibility to ensure that all whitespace and "
+"special characters are quoted appropriately to avoid `shell injection "
+"<https://en.wikipedia.org/wiki/Shell_injection#Shell_injection>`_ "
+"vulnerabilities. The :func:`shlex.quote` function can be used to properly "
+"escape whitespace and special shell characters in strings that are going to "
+"be used to construct shell commands."
+msgstr ""
+"Trách nhiệm của ứng dụng là đảm bảo rằng tất cả khoảng trắng và ký tự đặc "
+"biệt đều được trích dẫn một cách thích hợp để tránh các lỗ hổng `shell "
+"injection <https://en.wikipedia.org/wiki/Shell_injection#Shell_injection>`_."
+" Hàm :func:`shlex.quote` có thể được sử dụng để thoát khỏi khoảng trắng và "
+"các ký tự shell đặc biệt trong chuỗi sẽ được sử dụng để xây dựng các lệnh "
+"shell một cách chính xác."
+
+#: ../../library/asyncio-subprocess.rst:118
+#, fuzzy
+msgid ""
+"Subprocesses are available for Windows if a :class:`ProactorEventLoop` is "
+"used. See :ref:`Subprocess Support on Windows <asyncio-windows-subprocess>` "
+"for details."
+msgstr ""
+"Các quy trình con có sẵn cho Windows nếu sử dụng :class:`ProactorEventLoop`."
+" Xem :ref:`Subprocess Support on Windows <asyncio-windows-subprocess>` để "
+"biết chi tiết."
+
+#: ../../library/asyncio-subprocess.rst:124
+#, fuzzy
+msgid ""
+"asyncio also has the following *low-level* APIs to work with subprocesses: "
+":meth:`loop.subprocess_exec`, :meth:`loop.subprocess_shell`, "
+":meth:`loop.connect_read_pipe`, :meth:`loop.connect_write_pipe`, as well as "
+"the :ref:`Subprocess Transports <asyncio-subprocess-transports>` and "
+":ref:`Subprocess Protocols <asyncio-subprocess-protocols>`."
+msgstr ""
+"asyncio cũng có các API *low-level* sau để hoạt động với các quy trình con: "
+":meth:`loop.subprocess_exec`, :meth:`loop.subprocess_shell`, "
+":meth:`loop.connect_read_pipe`, :meth:`loop.connect_write_pipe`, cũng như "
+":ref:`Subprocess Transports <asyncio-subprocess-transports>` và "
+":ref:`Subprocess Protocols <asyncio-subprocess-protocols>`."
+
+#: ../../library/asyncio-subprocess.rst:132
+#, fuzzy
+msgid "Constants"
+msgstr "Hằng số"
+
+#: ../../library/asyncio-subprocess.rst:137
+#, fuzzy
+msgid "Can be passed to the *stdin*, *stdout* or *stderr* parameters."
+msgstr "Có thể được chuyển đến các tham số *stdin*, *stdout* hoặc *stderr*."
+
+#: ../../library/asyncio-subprocess.rst:139
+#, fuzzy
+msgid ""
+"If *PIPE* is passed to *stdin* argument, the :attr:`Process.stdin "
+"<asyncio.subprocess.Process.stdin>` attribute will point to a "
+":class:`~asyncio.StreamWriter` instance."
+msgstr ""
+"Nếu *PIPE* được truyền cho đối số *stdin*, thuộc tính :attr:`Process.stdin "
+"<asyncio.subprocess.Process.stdin>` sẽ trỏ đến một phiên bản "
+":class:`~asyncio.StreamWriter`."
+
+#: ../../library/asyncio-subprocess.rst:143
+#, fuzzy
+msgid ""
+"If *PIPE* is passed to *stdout* or *stderr* arguments, the "
+":attr:`Process.stdout <asyncio.subprocess.Process.stdout>` and "
+":attr:`Process.stderr <asyncio.subprocess.Process.stderr>` attributes will "
+"point to :class:`~asyncio.StreamReader` instances."
+msgstr ""
+"Nếu *PIPE* được chuyển tới các đối số *stdout* hoặc *stderr*, thuộc tính "
+":attr:`Process.stdout <asyncio.subprocess.Process.stdout>` và "
+":attr:`Process.stderr <asyncio.subprocess.Process.stderr>` sẽ trỏ đến các "
+"phiên bản :class:`~asyncio.StreamReader`."
+
+#: ../../library/asyncio-subprocess.rst:151
+#, fuzzy
+msgid ""
+"Special value that can be used as the *stderr* argument and indicates that "
+"standard error should be redirected into standard output."
+msgstr ""
+"Giá trị đặc biệt có thể được sử dụng làm đối số *stderr* và cho biết rằng "
+"lỗi tiêu chuẩn sẽ được chuyển hướng sang đầu ra tiêu chuẩn."
+
+#: ../../library/asyncio-subprocess.rst:157
+#, fuzzy
+msgid ""
+"Special value that can be used as the *stdin*, *stdout* or *stderr* argument"
+" to process creation functions.  It indicates that the special file "
+":data:`os.devnull` will be used for the corresponding subprocess stream."
+msgstr ""
+"Giá trị đặc biệt có thể được sử dụng làm đối số *stdin*, *stdout* hoặc "
+"*stderr* để xử lý các hàm tạo.  Nó chỉ ra rằng tệp đặc biệt "
+":data:`os.devnull` sẽ được sử dụng cho luồng quy trình con tương ứng."
+
+#: ../../library/asyncio-subprocess.rst:163
+#, fuzzy
+msgid "Interacting with Subprocesses"
+msgstr "Tương tác với các quy trình con"
+
+#: ../../library/asyncio-subprocess.rst:165
+#, fuzzy
+msgid ""
+"Both :func:`create_subprocess_exec` and :func:`create_subprocess_shell` "
+"functions return instances of the *Process* class.  *Process* is a high-"
+"level wrapper that allows communicating with subprocesses and watching for "
+"their completion."
+msgstr ""
+"Cả hai hàm :func:`create_subprocess_exec` và :func:`create_subprocess_shell`"
+" đều trả về các thể hiện của lớp *Process*.  *Process* là một trình bao bọc "
+"cấp cao cho phép giao tiếp với các quy trình con và theo dõi quá trình hoàn "
+"thành của chúng."
+
+#: ../../library/asyncio-subprocess.rst:173
+#, fuzzy
+msgid ""
+"An object that wraps OS processes created by the "
+":func:`~asyncio.create_subprocess_exec` and "
+":func:`~asyncio.create_subprocess_shell` functions."
+msgstr ""
+"Một đối tượng bao bọc các tiến trình hệ điều hành được tạo bởi các hàm "
+":func:`~asyncio.create_subprocess_exec` và "
+":func:`~asyncio.create_subprocess_shell`."
+
+#: ../../library/asyncio-subprocess.rst:177
+#, fuzzy
+msgid ""
+"This class is designed to have a similar API to the "
+":class:`subprocess.Popen` class, but there are some notable differences:"
+msgstr ""
+"Lớp này được thiết kế để có API tương tự như lớp :class:`subprocess.Popen`, "
+"nhưng có một số khác biệt đáng chú ý:"
+
+#: ../../library/asyncio-subprocess.rst:181
+#, fuzzy
+msgid ""
+"unlike Popen, Process instances do not have an equivalent to the "
+":meth:`~subprocess.Popen.poll` method;"
+msgstr ""
+"không giống như Popen, các phiên bản Process không có phương thức tương "
+"đương với phương thức :meth:`~subprocess.Popen.poll`;"
+
+#: ../../library/asyncio-subprocess.rst:184
+#, fuzzy
+msgid ""
+"the :meth:`~asyncio.subprocess.Process.communicate` and "
+":meth:`~asyncio.subprocess.Process.wait` methods don't have a *timeout* "
+"parameter: use the :func:`~asyncio.wait_for` function;"
+msgstr ""
+"phương thức :meth:`~asyncio.subprocess.Process.communicate` và "
+":meth:`~asyncio.subprocess.Process.wait` không có tham số *timeout*: sử dụng"
+" hàm :func:`~asyncio.wait_for`;"
+
+#: ../../library/asyncio-subprocess.rst:188
+#, fuzzy
+msgid ""
+"the :meth:`Process.wait() <asyncio.subprocess.Process.wait>` method is "
+"asynchronous, whereas :meth:`subprocess.Popen.wait` method is implemented as"
+" a blocking busy loop;"
+msgstr ""
+"phương thức :meth:`Process.wait() <asyncio.subprocess.Process.wait>` không "
+"đồng bộ, trong khi phương thức :meth:`subprocess.Popen.wait` được triển khai"
+" như một vòng lặp bận rộn chặn;"
+
+#: ../../library/asyncio-subprocess.rst:192
+#, fuzzy
+msgid "the *universal_newlines* parameter is not supported."
+msgstr "tham số *universal_newlines* không được hỗ trợ."
+
+#: ../../library/asyncio-subprocess.rst:194
+#, fuzzy
+msgid "This class is :ref:`not thread safe <asyncio-multithreading>`."
+msgstr "Lớp này là :ref:`not thread safe <asyncio-multithreading>`."
+
+#: ../../library/asyncio-subprocess.rst:196
+#, fuzzy
+msgid ""
+"See also the :ref:`Subprocess and Threads <asyncio-subprocess-threads>` "
+"section."
+msgstr ""
+"Xem thêm phần :ref:`Subprocess and Threads <asyncio-subprocess-threads>`."
+
+#: ../../library/asyncio-subprocess.rst:202
+#, fuzzy
+msgid "Wait for the child process to terminate."
+msgstr "Đợi quá trình con kết thúc."
+
+#: ../../library/asyncio-subprocess.rst:204
+#, fuzzy
+msgid "Set and return the :attr:`returncode` attribute."
+msgstr "Đặt và trả về thuộc tính :attr:`returncode`."
+
+#: ../../library/asyncio-subprocess.rst:208
+#, fuzzy
+msgid ""
+"This method can deadlock when using ``stdout=PIPE`` or ``stderr=PIPE`` and "
+"the child process generates so much output that it blocks waiting for the OS"
+" pipe buffer to accept more data. Use the :meth:`communicate` method when "
+"using pipes to avoid this condition."
+msgstr ""
+"Phương pháp này có thể bế tắc khi sử dụng ``stdout=PIPE`` hoặc "
+"``stderr=PIPE`` và tiến trình con tạo ra nhiều đầu ra đến mức chặn việc chờ "
+"bộ đệm ống hệ điều hành chấp nhận nhiều dữ liệu hơn. Sử dụng phương pháp "
+":meth:`communicate` khi sử dụng ống để tránh tình trạng này."
+
+#: ../../library/asyncio-subprocess.rst:217
+#, fuzzy
+msgid "Interact with process:"
+msgstr "Tương tác với quá trình:"
+
+#: ../../library/asyncio-subprocess.rst:219
+#, fuzzy
+msgid "send data to *stdin* (if *input* is not ``None``);"
+msgstr "gửi dữ liệu tới *stdin* (nếu *input* không phải là ``None``);"
+
+#: ../../library/asyncio-subprocess.rst:220
+#, fuzzy
+msgid "closes *stdin*;"
+msgstr "đóng *stdin*;"
+
+#: ../../library/asyncio-subprocess.rst:221
+#, fuzzy
+msgid "read data from *stdout* and *stderr*, until EOF is reached;"
+msgstr "đọc dữ liệu từ *stdout* và *stderr*, cho đến khi đạt được EOF;"
+
+#: ../../library/asyncio-subprocess.rst:222
+#, fuzzy
+msgid "wait for process to terminate."
+msgstr "chờ quá trình kết thúc."
+
+#: ../../library/asyncio-subprocess.rst:224
+#, fuzzy
+msgid ""
+"The optional *input* argument is the data (:class:`bytes` object) that will "
+"be sent to the child process."
+msgstr ""
+"Đối số *input* tùy chọn là dữ liệu (đối tượng :class:`bytes`) sẽ được gửi "
+"đến tiến trình con."
+
+#: ../../library/asyncio-subprocess.rst:227
+#, fuzzy
+msgid "Return a tuple ``(stdout_data, stderr_data)``."
+msgstr "Trả về một bộ ``(stdout_data, stderr_data)``."
+
+#: ../../library/asyncio-subprocess.rst:229
+#, fuzzy
+msgid ""
+"If either :exc:`BrokenPipeError` or :exc:`ConnectionResetError` exception is"
+" raised when writing *input* into *stdin*, the exception is ignored.  This "
+"condition occurs when the process exits before all data are written into "
+"*stdin*."
+msgstr ""
+"Nếu ngoại lệ :exc:`BrokenPipeError` hoặc :exc:`ConnectionResetError` được "
+"nêu ra khi ghi *input* vào *stdin* thì ngoại lệ đó sẽ bị bỏ qua.  Tình trạng"
+" này xảy ra khi quá trình thoát ra trước khi tất cả dữ liệu được ghi vào "
+"*stdin*."
+
+#: ../../library/asyncio-subprocess.rst:234
+#, fuzzy
+msgid ""
+"If it is desired to send data to the process' *stdin*, the process needs to "
+"be created with ``stdin=PIPE``.  Similarly, to get anything other than "
+"``None`` in the result tuple, the process has to be created with "
+"``stdout=PIPE`` and/or ``stderr=PIPE`` arguments."
+msgstr ""
+"Nếu muốn gửi dữ liệu đến tiến trình' *stdin*, thì tiến trình đó cần được tạo"
+" bằng ``stdin=PIPE``.  Tương tự, để nhận được bất kỳ thứ gì khác ngoài "
+"``None`` trong bộ kết quả, quy trình phải được tạo với các đối số "
+"``stdout=PIPE`` và/hoặc ``stderr=PIPE``."
+
+#: ../../library/asyncio-subprocess.rst:240
+#, fuzzy
+msgid ""
+"Note, that the data read is buffered in memory, so do not use this method if"
+" the data size is large or unlimited."
+msgstr ""
+"Lưu ý rằng dữ liệu đọc được lưu vào bộ đệm trong bộ nhớ, vì vậy không sử "
+"dụng phương pháp này nếu kích thước dữ liệu lớn hoặc không giới hạn."
+
+#: ../../library/asyncio-subprocess.rst:245
+#, fuzzy
+msgid "*stdin* gets closed when ``input=None`` too."
+msgstr "*stdin* bị đóng khi ``input=None`` cũng vậy."
+
+#: ../../library/asyncio-subprocess.rst:249
+#, fuzzy
+msgid "Sends the signal *signal* to the child process."
+msgstr "Gửi tín hiệu *signal* đến tiến trình con."
+
+#: ../../library/asyncio-subprocess.rst:253
+#, fuzzy
+msgid ""
+"On Windows, :py:const:`~signal.SIGTERM` is an alias for :meth:`terminate`. "
+"``CTRL_C_EVENT`` and ``CTRL_BREAK_EVENT`` can be sent to processes started "
+"with a *creationflags* parameter which includes "
+"``CREATE_NEW_PROCESS_GROUP``."
+msgstr ""
+"Trên Windows, :py:const:`~signal.SIGTERM` là bí danh của :meth:`terminate`. "
+"``CTRL_C_EVENT`` và ``CTRL_BREAK_EVENT`` có thể được gửi đến các tiến trình "
+"được bắt đầu bằng tham số *creationflags* bao gồm "
+"``CREATE_NEW_PROCESS_GROUP``."
+
+#: ../../library/asyncio-subprocess.rst:260
+#, fuzzy
+msgid "Stop the child process."
+msgstr "Dừng quá trình con."
+
+#: ../../library/asyncio-subprocess.rst:262
+#, fuzzy
+msgid ""
+"On POSIX systems this method sends :py:const:`~signal.SIGTERM` to the child "
+"process."
+msgstr ""
+"Trên hệ thống POSIX, phương thức này gửi :py:const:`~signal.SIGTERM` đến "
+"tiến trình con."
+
+#: ../../library/asyncio-subprocess.rst:265
+#, fuzzy
+msgid ""
+"On Windows the Win32 API function :c:func:`!TerminateProcess` is called to "
+"stop the child process."
+msgstr ""
+"Trên Windows, hàm API Win32 :c:func:`!TerminateProcess` được gọi để dừng "
+"tiến trình con."
+
+#: ../../library/asyncio-subprocess.rst:270
+#, fuzzy
+msgid "Kill the child process."
+msgstr "Giết tiến trình con."
+
+#: ../../library/asyncio-subprocess.rst:272
+#, fuzzy
+msgid ""
+"On POSIX systems this method sends :py:data:`~signal.SIGKILL` to the child "
+"process."
+msgstr ""
+"Trên hệ thống POSIX, phương thức này gửi :py:data:`~signal.SIGKILL` đến tiến"
+" trình con."
+
+#: ../../library/asyncio-subprocess.rst:275
+#, fuzzy
+msgid "On Windows this method is an alias for :meth:`terminate`."
+msgstr "Trên Windows phương pháp này là bí danh cho :meth:`terminate`."
+
+#: ../../library/asyncio-subprocess.rst:279
+#, fuzzy
+msgid ""
+"Standard input stream (:class:`~asyncio.StreamWriter`) or ``None`` if the "
+"process was created with ``stdin=None``."
+msgstr ""
+"Luồng đầu vào tiêu chuẩn (:class:`~asyncio.StreamWriter`) hoặc ``None`` nếu "
+"quy trình được tạo bằng ``stdin=None``."
+
+#: ../../library/asyncio-subprocess.rst:284
+#, fuzzy
+msgid ""
+"Standard output stream (:class:`~asyncio.StreamReader`) or ``None`` if the "
+"process was created with ``stdout=None``."
+msgstr ""
+"Luồng đầu ra tiêu chuẩn (:class:`~asyncio.StreamReader`) hoặc ``None`` nếu "
+"quy trình được tạo bằng ``stdout=None``."
+
+#: ../../library/asyncio-subprocess.rst:289
+#, fuzzy
+msgid ""
+"Standard error stream (:class:`~asyncio.StreamReader`) or ``None`` if the "
+"process was created with ``stderr=None``."
+msgstr ""
+"Luồng lỗi tiêu chuẩn (:class:`~asyncio.StreamReader`) hoặc ``None`` nếu quy "
+"trình được tạo bằng ``stderr=None``."
+
+#: ../../library/asyncio-subprocess.rst:294
+#, fuzzy
+msgid ""
+"Use the :meth:`communicate` method rather than :attr:`process.stdin.write() "
+"<stdin>`, :attr:`await process.stdout.read() <stdout>` or :attr:`await "
+"process.stderr.read() <stderr>`. This avoids deadlocks due to streams "
+"pausing reading or writing and blocking the child process."
+msgstr ""
+"Sử dụng phương pháp :meth:`communicate` thay vì :attr:`process.stdin.write()"
+" <stdin>`, :attr:`await process.stdout.read() <stdout>` hoặc :attr:`await "
+"process.stderr.read() <stderr>`. Điều này tránh được tình trạng bế tắc do "
+"các luồng tạm dừng đọc hoặc ghi và chặn tiến trình con."
+
+#: ../../library/asyncio-subprocess.rst:303
+#, fuzzy
+msgid "Process identification number (PID)."
+msgstr "Số nhận dạng quy trình (PID)."
+
+#: ../../library/asyncio-subprocess.rst:305
+#, fuzzy
+msgid ""
+"Note that for processes created by the "
+":func:`~asyncio.create_subprocess_shell` function, this attribute is the PID"
+" of the spawned shell."
+msgstr ""
+"Lưu ý rằng đối với các quy trình được tạo bởi hàm "
+":func:`~asyncio.create_subprocess_shell`, thuộc tính này là PID của shell "
+"được sinh ra."
+
+#: ../../library/asyncio-subprocess.rst:310
+#, fuzzy
+msgid "Return code of the process when it exits."
+msgstr "Trả lại mã của quá trình khi nó thoát."
+
+#: ../../library/asyncio-subprocess.rst:312
+#, fuzzy
+msgid "A ``None`` value indicates that the process has not terminated yet."
+msgstr "Giá trị ``None`` cho biết quá trình này chưa kết thúc."
+
+#: ../../library/asyncio-subprocess.rst:314
+#, fuzzy
+msgid ""
+"For processes created with :func:`~asyncio.create_subprocess_exec`, a "
+"negative value ``-N`` indicates that the child was terminated by signal "
+"``N`` (POSIX only)."
+msgstr ""
+"Đối với các tiến trình được tạo bằng "
+":func:`~asyncio.create_subprocess_exec`, giá trị âm ``-N`` cho biết rằng "
+"tiến trình con đã bị chấm dứt bởi tín hiệu ``N`` (chỉ POSIX)."
+
+#: ../../library/asyncio-subprocess.rst:318
+#, fuzzy
+msgid ""
+"For processes created with :func:`~asyncio.create_subprocess_shell`, the "
+"return code reflects the exit status of the shell itself (e.g. ``/bin/sh``),"
+" which may map signals to codes such as ``128+N``. See the documentation of "
+"the shell (for example, the Bash manual's Exit Status) for details."
+msgstr ""
+"Đối với các quy trình được tạo bằng "
+":func:`~asyncio.create_subprocess_shell`, mã trả về phản ánh trạng thái "
+"thoát của chính shell (ví dụ: ``/bin/sh``), có thể ánh xạ tín hiệu tới các "
+"mã như ``128+N``. Xem tài liệu về shell (ví dụ: Trạng thái thoát của hướng "
+"dẫn sử dụng Bash) để biết chi tiết."
+
+#: ../../library/asyncio-subprocess.rst:329
+#, fuzzy
+msgid "Subprocess and Threads"
+msgstr "Quy trình con và chủ đề"
+
+#: ../../library/asyncio-subprocess.rst:331
+#, fuzzy
+msgid ""
+"Standard asyncio event loop supports running subprocesses from different "
+"threads by default."
+msgstr ""
+"Theo mặc định, vòng lặp sự kiện asyncio tiêu chuẩn hỗ trợ chạy các quy trình"
+" con từ các luồng khác nhau."
+
+#: ../../library/asyncio-subprocess.rst:334
+#, fuzzy
+msgid ""
+"On Windows subprocesses are provided by :class:`ProactorEventLoop` only "
+"(default), :class:`SelectorEventLoop` has no subprocess support."
+msgstr ""
+"Trên các quy trình con của Windows chỉ được cung cấp bởi "
+":class:`ProactorEventLoop` (mặc định), :class:`SelectorEventLoop` không hỗ "
+"trợ quy trình con."
+
+#: ../../library/asyncio-subprocess.rst:337
+#, fuzzy
+msgid ""
+"Note that alternative event loop implementations might have own limitations;"
+" please refer to their documentation."
+msgstr ""
+"Lưu ý rằng việc triển khai vòng lặp sự kiện thay thế có thể có những hạn chế"
+" riêng; vui lòng tham khảo tài liệu của họ."
+
+#: ../../library/asyncio-subprocess.rst:342
+#, fuzzy
+msgid ""
+"The :ref:`Concurrency and multithreading in asyncio <asyncio-"
+"multithreading>` section."
+msgstr ""
+"Phần :ref:`Concurrency and multithreading in asyncio <asyncio-"
+"multithreading>`."
+
+#: ../../library/asyncio-subprocess.rst:347
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/asyncio-subprocess.rst:349
+#, fuzzy
+msgid ""
+"An example using the :class:`~asyncio.subprocess.Process` class to control a"
+" subprocess and the :class:`StreamReader` class to read from its standard "
+"output."
+msgstr ""
+"Một ví dụ sử dụng lớp :class:`~asyncio.subprocess.Process` để điều khiển một"
+" quy trình con và lớp :class:`StreamReader` để đọc từ đầu ra tiêu chuẩn của "
+"nó."
+
+#: ../../library/asyncio-subprocess.rst:355
+#, fuzzy
+msgid ""
+"The subprocess is created by the :func:`create_subprocess_exec` function::"
+msgstr "Quy trình con được tạo bởi hàm :func:`create_subprocess_exec` ::"
+
+#: ../../library/asyncio-subprocess.rst:358
+#, python-brace-format, fuzzy
+msgid ""
+"import asyncio\n"
+"import sys\n"
+"\n"
+"async def get_date():\n"
+"    code = 'import datetime as dt; print(dt.datetime.now())'\n"
+"\n"
+"    # Create the subprocess; redirect the standard output\n"
+"    # into a pipe.\n"
+"    proc = await asyncio.create_subprocess_exec(\n"
+"        sys.executable, '-c', code,\n"
+"        stdout=asyncio.subprocess.PIPE)\n"
+"\n"
+"    # Read one line of output.\n"
+"    data = await proc.stdout.readline()\n"
+"    line = data.decode('ascii').rstrip()\n"
+"\n"
+"    # Wait for the subprocess exit.\n"
+"    await proc.wait()\n"
+"    return line\n"
+"\n"
+"date = asyncio.run(get_date())\n"
+"print(f\"Current date: {date}\")"
+msgstr ""
+"nhập asyncio\n"
+"hệ thống nhập khẩu\n"
+"\n"
+"không đồng bộ get_date():\n"
+"    code = 'nhập ngày giờ dưới dạng dt; print(dt.datetime.now())'\n"
+"\n"
+"    # Create quy trình con; chuyển hướng đầu ra tiêu chuẩn\n"
+"    # into một cái ống.\n"
+"    proc = đang chờ asyncio.create_subprocess_exec(\n"
+"        sys.executable, '-c', mã,\n"
+"        stdout=asyncio.subprocess.PIPE)\n"
+"\n"
+"    # Read một dòng đầu ra.\n"
+"    dữ liệu = đang chờ proc.stdout.readline()\n"
+"    line = data.decode('ascii').rstrip()\n"
+"\n"
+"    # Wait để thoát khỏi quy trình con.\n"
+"    đang chờ proc.wait()\n"
+"    dòng trở về\n"
+"\n"
+"ngày = asyncio.run(get_date())\n"
+"print(f\"Ngày hiện tại: {date}\")"
+
+#: ../../library/asyncio-subprocess.rst:382
+#, fuzzy
+msgid ""
+"See also the :ref:`same example <asyncio_example_subprocess_proto>` written "
+"using low-level APIs."
+msgstr ""
+"Xem thêm :ref:`same example <asyncio_example_subprocess_proto>` được viết "
+"bằng API cấp thấp."

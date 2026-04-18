@@ -1,0 +1,3771 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../whatsnew/2.4.rst:3
+#, fuzzy
+msgid "What's New in Python 2.4"
+msgstr "Có gì mới trong Python 2.4"
+
+#: ../../whatsnew/2.4.rst
+#, fuzzy
+msgid "Author"
+msgstr "tác giả"
+
+#: ../../whatsnew/2.4.rst:5
+#, fuzzy
+msgid "A.M. Kuchling"
+msgstr "A.M. Kuchling"
+
+#: ../../whatsnew/2.4.rst:14
+#, fuzzy
+msgid ""
+"This article explains the new features in Python 2.4.1, released on March "
+"30, 2005."
+msgstr ""
+"Bài viết này giải thích các tính năng mới trong Python 2.4.1, phát hành ngày"
+" 30 tháng 3 năm 2005."
+
+#: ../../whatsnew/2.4.rst:17
+#, fuzzy
+msgid ""
+"Python 2.4 is a medium-sized release.  It doesn't introduce as many changes "
+"as the radical Python 2.2, but introduces more features than the "
+"conservative 2.3 release.  The most significant new language features are "
+"function decorators and generator expressions; most other changes are to the"
+" standard library."
+msgstr ""
+"Python 2.4 là bản phát hành cỡ trung bình.  Nó không đưa ra nhiều thay đổi "
+"như bản Python 2.2 cấp tiến, nhưng giới thiệu nhiều tính năng hơn bản phát "
+"hành 2.3 bảo thủ.  Các tính năng ngôn ngữ mới quan trọng nhất là trình trang"
+" trí hàm và biểu thức trình tạo; hầu hết các thay đổi khác là đối với thư "
+"viện chuẩn."
+
+#: ../../whatsnew/2.4.rst:22
+#, fuzzy
+msgid ""
+"According to the CVS change logs, there were 481 patches applied and 502 "
+"bugs fixed between Python 2.3 and 2.4.  Both figures are likely to be "
+"underestimates."
+msgstr ""
+"Theo nhật ký thay đổi của CVS, đã có 481 bản vá được áp dụng và 502 lỗi được"
+" sửa giữa Python 2.3 và 2.4.  Cả hai con số đều có khả năng bị đánh giá "
+"thấp."
+
+#: ../../whatsnew/2.4.rst:25
+#, fuzzy
+msgid ""
+"This article doesn't attempt to provide a complete specification of every "
+"single new feature, but instead provides a brief introduction to each "
+"feature.  For full details, you should refer to the documentation for Python"
+" 2.4, such as the Python Library Reference and the Python Reference Manual."
+"  Often you will be referred to the PEP for a particular new feature for "
+"explanations of the implementation and design rationale."
+msgstr ""
+"Bài viết này không cố gắng cung cấp thông số kỹ thuật đầy đủ cho từng tính "
+"năng mới mà thay vào đó cung cấp phần giới thiệu ngắn gọn về từng tính năng."
+"  Để biết chi tiết đầy đủ, bạn nên tham khảo tài liệu dành cho Python 2.4, "
+"chẳng hạn như Python Library Reference và Python Reference Manual.  Thông "
+"thường, bạn sẽ được giới thiệu đến PEP để biết một tính năng mới cụ thể để "
+"giải thích lý do triển khai và thiết kế."
+
+#: ../../whatsnew/2.4.rst:36
+#, fuzzy
+msgid "PEP 218: Built-In Set Objects"
+msgstr "PEP 218: Đối tượng cài sẵn"
+
+#: ../../whatsnew/2.4.rst:38
+#, fuzzy
+msgid ""
+"Python 2.3 introduced the :mod:`sets` module.  C implementations of set data"
+" types have now been added to the Python core as two new built-in types, "
+"``set(iterable)`` and ``frozenset(iterable)``.  They provide high speed "
+"operations for membership testing, for eliminating duplicates from "
+"sequences, and for mathematical operations like unions, intersections, "
+"differences, and symmetric differences. ::"
+msgstr ""
+"Python 2.3 đã giới thiệu mô-đun :mod:`sets`.  Việc triển khai C các kiểu dữ "
+"liệu tập hợp hiện đã được thêm vào lõi Python dưới dạng hai kiểu tích hợp "
+"mới, ``set(iterable)`` và ``frozenset(iterable)``.  Chúng cung cấp các phép "
+"toán tốc độ cao để kiểm tra tư cách thành viên, để loại bỏ các bản sao khỏi "
+"chuỗi và cho các phép toán như hợp, giao, sai phân và sai phân đối xứng. ::"
+
+#: ../../whatsnew/2.4.rst:45
+#, fuzzy
+msgid ""
+">>> a = set('abracadabra')              # form a set from a string\n"
+">>> 'z' in a                            # fast membership testing\n"
+"False\n"
+">>> a                                   # unique letters in a\n"
+"set(['a', 'r', 'b', 'c', 'd'])\n"
+">>> ''.join(a)                          # convert back into a string\n"
+"'arbcd'\n"
+"\n"
+">>> b = set('alacazam')                 # form a second set\n"
+">>> a - b                               # letters in a but not in b\n"
+"set(['r', 'd', 'b'])\n"
+">>> a | b                               # letters in either a or b\n"
+"set(['a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'])\n"
+">>> a & b                               # letters in both a and b\n"
+"set(['a', 'c'])\n"
+">>> a ^ b                               # letters in a or b but not both\n"
+"set(['r', 'd', 'b', 'm', 'z', 'l'])\n"
+"\n"
+">>> a.add('z')                          # add a new element\n"
+">>> a.update('wxy')                     # add multiple new elements\n"
+">>> a\n"
+"set(['a', 'c', 'b', 'd', 'r', 'w', 'y', 'x', 'z'])\n"
+">>> a.remove('x')                       # take one element out\n"
+">>> a\n"
+"set(['a', 'c', 'b', 'd', 'r', 'w', 'y', 'z'])"
+msgstr ""
+">>> a = set('abracadabra') # form một tập hợp từ một chuỗi\n"
+">>> 'z' trong cuộc thử nghiệm tư cách thành viên # fast\n"
+"sai\n"
+">>> một chữ cái # unique trong một\n"
+"set(['a', 'r', 'b', 'c', 'd'])\n"
+">>> ''.join(a) # convert trở lại thành một chuỗi\n"
+"'arbcd'\n"
+"\n"
+">>> b = set('alacazam') # form bộ thứ hai\n"
+">>> a - b # letters ở a nhưng không ở b\n"
+"set(['r', 'd', 'b'])\n"
+">>> một | b # letters ở a hoặc b\n"
+"set(['a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'])\n"
+">>> a & b # letters ở cả a và b\n"
+"set(['a', 'c'])\n"
+">>> a ^ b # letters ở a hoặc b nhưng không phải cả hai\n"
+"set(['r', 'd', 'b', 'm', 'z', 'l'])\n"
+"\n"
+">>> a.add('z') # add một phần tử mới\n"
+">>> a.update('wxy') # add nhiều phần tử mới\n"
+">>> một\n"
+"set(['a', 'c', 'b', 'd', 'r', 'w', 'y', 'x', 'z'])\n"
+">>> a.remove('x') # take một phần tử bị loại\n"
+">>> một\n"
+"set(['a', 'c', 'b', 'd', 'r', 'w', 'y', 'z'])"
+
+#: ../../whatsnew/2.4.rst:71
+#, fuzzy
+msgid ""
+"The :func:`frozenset` type is an immutable version of :func:`set`. Since it "
+"is immutable and hashable, it may be used as a dictionary key or as a member"
+" of another set."
+msgstr ""
+"Loại :func:`frozenset` là phiên bản bất biến của :func:`set`. Vì nó không "
+"thể thay đổi và có thể băm nên nó có thể được sử dụng làm khóa từ điển hoặc "
+"là thành viên của bộ khác."
+
+#: ../../whatsnew/2.4.rst:75
+#, fuzzy
+msgid ""
+"The :mod:`sets` module remains in the standard library, and may be useful if"
+" you wish to subclass the :class:`Set` or :class:`ImmutableSet` classes.  "
+"There are currently no plans to deprecate the module."
+msgstr ""
+"Mô-đun :mod:`sets` vẫn còn trong thư viện chuẩn và có thể hữu ích nếu bạn "
+"muốn phân lớp các lớp :class:`Set` hoặc :class:`ImmutableSet`.  Hiện tại "
+"không có kế hoạch ngừng sử dụng mô-đun này."
+
+#: ../../whatsnew/2.4.rst:82
+#, fuzzy
+msgid ":pep:`218` - Adding a Built-In Set Object Type"
+msgstr ":pep:`218` - Thêm loại đối tượng cài sẵn"
+
+#: ../../whatsnew/2.4.rst:83
+#, fuzzy
+msgid ""
+"Originally proposed by Greg Wilson and ultimately implemented by Raymond "
+"Hettinger."
+msgstr ""
+"Được đề xuất ban đầu bởi Greg Wilson và cuối cùng được thực hiện bởi Raymond"
+" Hettinger."
+
+#: ../../whatsnew/2.4.rst:90
+#, fuzzy
+msgid "PEP 237: Unifying Long Integers and Integers"
+msgstr "PEP 237: Thống nhất số nguyên dài và số nguyên"
+
+#: ../../whatsnew/2.4.rst:92
+#, fuzzy
+msgid ""
+"The lengthy transition process for this PEP, begun in Python 2.2, takes "
+"another step forward in Python 2.4.  In 2.3, certain integer operations that"
+" would behave differently after int/long unification triggered "
+":exc:`FutureWarning` warnings and returned values limited to 32 or 64 bits "
+"(depending on your platform).  In 2.4, these expressions no longer produce a"
+" warning and instead produce a different result that's usually a long "
+"integer."
+msgstr ""
+"Quá trình chuyển đổi kéo dài cho PEP này, bắt đầu bằng Python 2.2, tiến thêm"
+" một bước nữa trong Python 2.4.  Trong 2.3, một số thao tác số nguyên nhất "
+"định sẽ hoạt động khác sau khi hợp nhất int/long đã kích hoạt cảnh báo "
+":exc:`FutureWarning` và trả về các giá trị được giới hạn ở 32 hoặc 64 bit "
+"(tùy thuộc vào nền tảng của bạn).  Trong phiên bản 2.4, những biểu thức này "
+"không còn đưa ra cảnh báo nữa mà thay vào đó tạo ra một kết quả khác thường "
+"là số nguyên dài."
+
+#: ../../whatsnew/2.4.rst:99
+#, fuzzy
+msgid ""
+"The problematic expressions are primarily left shifts and lengthy "
+"hexadecimal and octal constants.  For example, ``2 << 32`` results in a "
+"warning in 2.3, evaluating to 0 on 32-bit platforms.  In Python 2.4, this "
+"expression now returns the correct answer, 8589934592."
+msgstr ""
+"Các biểu thức có vấn đề chủ yếu là dịch chuyển trái và các hằng số thập lục "
+"phân và bát phân dài.  Ví dụ: ``2 << 32`` dẫn đến cảnh báo ở phiên bản 2.3, "
+"đánh giá là 0 trên nền tảng 32 bit.  Trong Python 2.4, biểu thức này hiện "
+"trả về câu trả lời đúng, 8589934592."
+
+#: ../../whatsnew/2.4.rst:107
+#, fuzzy
+msgid ":pep:`237` - Unifying Long Integers and Integers"
+msgstr ":pep:`237` - Hợp nhất số nguyên dài và số nguyên"
+
+#: ../../whatsnew/2.4.rst:108
+#, fuzzy
+msgid ""
+"Original PEP written by Moshe Zadka and GvR.  The changes for 2.4 were "
+"implemented by  Kalle Svensson."
+msgstr ""
+"Zz000zz gốc được viết bởi Moshe Zadka và GvR.  Những thay đổi cho phiên bản "
+"2.4 được thực hiện bởi Kalle Svensson."
+
+#: ../../whatsnew/2.4.rst:115
+#, fuzzy
+msgid "PEP 289: Generator Expressions"
+msgstr "PEP 289: Biểu thức tạo"
+
+#: ../../whatsnew/2.4.rst:117
+#, fuzzy
+msgid ""
+"The iterator feature introduced in Python 2.2 and the :mod:`itertools` "
+"module make it easier to write programs that loop through large data sets "
+"without having the entire data set in memory at one time.  List "
+"comprehensions don't fit into this picture very well because they produce a "
+"Python list object containing all of the items.  This unavoidably pulls all "
+"of the objects into memory, which can be a problem if your data set is very "
+"large.  When trying to write a functionally styled program, it would be "
+"natural to write something like::"
+msgstr ""
+"Tính năng lặp được giới thiệu trong Python 2.2 và mô-đun :mod:`itertools` "
+"giúp viết chương trình lặp qua các tập dữ liệu lớn dễ dàng hơn mà không cần "
+"phải đặt toàn bộ dữ liệu vào bộ nhớ cùng một lúc.  Việc hiểu danh sách không"
+" phù hợp lắm với bức tranh này vì chúng tạo ra một đối tượng danh sách "
+"Python chứa tất cả các mục.  Điều này chắc chắn sẽ kéo tất cả các đối tượng "
+"vào bộ nhớ, đây có thể là một vấn đề nếu tập dữ liệu của bạn rất lớn.  Khi "
+"cố gắng viết một chương trình có kiểu dáng chức năng, việc viết một cái gì "
+"đó như :: là điều tự nhiên."
+
+#: ../../whatsnew/2.4.rst:125
+#, fuzzy
+msgid ""
+"links = [link for link in get_all_links() if not link.followed]\n"
+"for link in links:\n"
+"    ..."
+msgstr ""
+"links = [liên kết cho liên kết trong get_all_links() nếu không phải link.followed]\n"
+"cho liên kết trong liên kết:\n"
+"    ..."
+
+#: ../../whatsnew/2.4.rst:129
+#, fuzzy
+msgid "instead of  ::"
+msgstr "thay vì ::"
+
+#: ../../whatsnew/2.4.rst:131
+#, fuzzy
+msgid ""
+"for link in get_all_links():\n"
+"    if link.followed:\n"
+"        continue\n"
+"    ..."
+msgstr ""
+"cho liên kết trong get_all_links():\n"
+"    nếu link.followed:\n"
+"        tiếp tục\n"
+"    ..."
+
+#: ../../whatsnew/2.4.rst:136
+#, fuzzy
+msgid ""
+"The first form is more concise and perhaps more readable, but if you're "
+"dealing with a large number of link objects you'd have to write the second "
+"form to avoid having all link objects in memory at the same time."
+msgstr ""
+"Biểu mẫu đầu tiên ngắn gọn hơn và có lẽ dễ đọc hơn, nhưng nếu bạn đang xử lý"
+" một số lượng lớn đối tượng liên kết thì bạn phải viết biểu mẫu thứ hai để "
+"tránh có tất cả các đối tượng liên kết trong bộ nhớ cùng một lúc."
+
+#: ../../whatsnew/2.4.rst:140
+#, fuzzy
+msgid ""
+"Generator expressions work similarly to list comprehensions but don't "
+"materialize the entire list; instead they create a generator that will "
+"return elements one by one.  The above example could be written as::"
+msgstr ""
+"Các biểu thức của trình tạo hoạt động tương tự như việc hiểu danh sách nhưng"
+" không cụ thể hóa toàn bộ danh sách; thay vào đó họ tạo một trình tạo sẽ trả"
+" về từng phần tử một.  Ví dụ trên có thể được viết là::"
+
+#: ../../whatsnew/2.4.rst:144
+#, fuzzy
+msgid ""
+"links = (link for link in get_all_links() if not link.followed)\n"
+"for link in links:\n"
+"    ..."
+msgstr ""
+"links = (liên kết cho liên kết trong get_all_links() nếu không phải link.followed)\n"
+"cho liên kết trong liên kết:\n"
+"    ..."
+
+#: ../../whatsnew/2.4.rst:148
+#, fuzzy
+msgid ""
+"Generator expressions always have to be written inside parentheses, as in "
+"the above example.  The parentheses signalling a function call also count, "
+"so if you want to create an iterator that will be immediately passed to a "
+"function you could write::"
+msgstr ""
+"Các biểu thức của trình tạo luôn phải được viết bên trong dấu ngoặc đơn, như"
+" trong ví dụ trên.  Các dấu ngoặc đơn báo hiệu một lệnh gọi hàm cũng được "
+"tính, vì vậy nếu bạn muốn tạo một trình vòng lặp sẽ được chuyển ngay đến một"
+" hàm, bạn có thể viết::"
+
+#: ../../whatsnew/2.4.rst:153
+#, fuzzy
+msgid "print sum(obj.count for obj in list_all_objects())"
+msgstr "in tổng(obj.count cho obj trong list_all_objects())"
+
+#: ../../whatsnew/2.4.rst:155
+#, fuzzy
+msgid ""
+"Generator expressions differ from list comprehensions in various small ways."
+" Most notably, the loop variable (*obj* in the above example) is not "
+"accessible outside of the generator expression.  List comprehensions leave "
+"the variable assigned to its last value; future versions of Python will "
+"change this, making list comprehensions match generator expressions in this "
+"respect."
+msgstr ""
+"Các biểu thức của trình tạo khác với việc hiểu danh sách theo nhiều cách nhỏ"
+" khác nhau. Đáng chú ý nhất là biến vòng lặp (*obj* trong ví dụ trên) không "
+"thể truy cập được bên ngoài biểu thức trình tạo.  Việc hiểu danh sách để lại"
+" biến được gán cho giá trị cuối cùng của nó; các phiên bản tương lai của "
+"Python sẽ thay đổi điều này, làm cho việc hiểu danh sách khớp với các biểu "
+"thức của trình tạo về mặt này."
+
+#: ../../whatsnew/2.4.rst:164
+#, fuzzy
+msgid ":pep:`289` - Generator Expressions"
+msgstr ":pep:`289` - Biểu thức tạo"
+
+#: ../../whatsnew/2.4.rst:165
+#, fuzzy
+msgid ""
+"Proposed by Raymond Hettinger and implemented by Jiwon Seo with early "
+"efforts steered by Hye-Shik Chang."
+msgstr ""
+"Được đề xuất bởi Raymond Hettinger và được thực hiện bởi Jiwon Seo với những"
+" nỗ lực ban đầu do Hye-Shik Chang chỉ đạo."
+
+#: ../../whatsnew/2.4.rst:172
+#, fuzzy
+msgid "PEP 292: Simpler String Substitutions"
+msgstr "PEP 292: Thay thế chuỗi đơn giản hơn"
+
+#: ../../whatsnew/2.4.rst:174
+#, fuzzy
+msgid ""
+"Some new classes in the standard library provide an alternative mechanism "
+"for substituting variables into strings; this style of substitution may be "
+"better for applications where untrained users need to edit templates."
+msgstr ""
+"Một số lớp mới trong thư viện chuẩn cung cấp cơ chế thay thế để thay thế các"
+" biến thành chuỗi; kiểu thay thế này có thể tốt hơn cho các ứng dụng mà "
+"người dùng chưa qua đào tạo cần chỉnh sửa mẫu."
+
+#: ../../whatsnew/2.4.rst:178
+#, fuzzy
+msgid ""
+"The usual way of substituting variables by name is the ``%`` operator::"
+msgstr "Cách thông thường để thay thế các biến theo tên là toán tử ``%``::"
+
+#: ../../whatsnew/2.4.rst:180
+#, python-brace-format, python-format, fuzzy
+msgid ""
+">>> '%(page)i: %(title)s' % {'page':2, 'title': 'The Best of Times'}\n"
+"'2: The Best of Times'"
+msgstr ""
+">>> '%(page)i: %(title)s' % {'page':2, 'title': 'Điều tuyệt vời nhất'}\n"
+"'2: Thời đại tuyệt vời nhất'"
+
+#: ../../whatsnew/2.4.rst:183
+#, fuzzy
+msgid ""
+"When writing the template string, it can be easy to forget the ``i`` or "
+"``s`` after the closing parenthesis.  This isn't a big problem if the "
+"template is in a Python module, because you run the code, get an "
+"\"Unsupported format character\" :exc:`ValueError`, and fix the problem.  "
+"However, consider an application such as Mailman where template strings or "
+"translations are being edited by users who aren't aware of the Python "
+"language.  The format string's syntax is complicated to explain to such "
+"users, and if they make a mistake, it's difficult to provide helpful "
+"feedback to them."
+msgstr ""
+"Khi viết chuỗi mẫu, bạn có thể dễ dàng quên ``i`` hoặc ``s`` sau dấu ngoặc "
+"đơn đóng.  Đây không phải là vấn đề lớn nếu mẫu nằm trong mô-đun Python vì "
+"bạn chạy mã, nhận được \"Ký tự định dạng không được hỗ trợ\" "
+":exc:`ValueError` và khắc phục sự cố.  Tuy nhiên, hãy xem xét một ứng dụng "
+"như Mailman trong đó các chuỗi mẫu hoặc bản dịch đang được chỉnh sửa bởi "
+"những người dùng không biết về ngôn ngữ Python.  Cú pháp của chuỗi định dạng"
+" rất phức tạp để giải thích cho những người dùng như vậy và nếu họ mắc lỗi "
+"thì rất khó để cung cấp phản hồi hữu ích cho họ."
+
+#: ../../whatsnew/2.4.rst:192
+#, fuzzy
+msgid ""
+"PEP 292 adds a :class:`Template` class to the :mod:`string` module that uses"
+" ``$`` to indicate a substitution::"
+msgstr ""
+"PEP 292 thêm lớp :class:`Template` vào mô-đun :mod:`string` sử dụng ``$`` để"
+" biểu thị sự thay thế ::"
+
+#: ../../whatsnew/2.4.rst:195
+#, python-brace-format, fuzzy
+msgid ""
+">>> import string\n"
+">>> t = string.Template('$page: $title')\n"
+">>> t.substitute({'page':2, 'title': 'The Best of Times'})\n"
+"'2: The Best of Times'"
+msgstr ""
+">>> nhập chuỗi\n"
+">>> t = string.Template('$page: $title')\n"
+">>> t.substitute({'page':2, 'title': 'The Best of Times'})\n"
+"'2: Thời đại tuyệt vời nhất'"
+
+#: ../../whatsnew/2.4.rst:200
+#, fuzzy
+msgid ""
+"If a key is missing from the dictionary, the :meth:`substitute` method will "
+"raise a :exc:`KeyError`.  There's also a :meth:`safe_substitute` method that"
+" ignores missing keys::"
+msgstr ""
+"Nếu thiếu một khóa trong từ điển, phương thức :meth:`substitute` sẽ đưa ra "
+":exc:`KeyError`.  Ngoài ra còn có một phương pháp :meth:`safe_substitute` bỏ"
+" qua các khóa bị thiếu ::"
+
+#: ../../whatsnew/2.4.rst:204
+#, python-brace-format, fuzzy
+msgid ""
+">>> t = string.Template('$page: $title')\n"
+">>> t.safe_substitute({'page':3})\n"
+"'3: $title'"
+msgstr ""
+">>> t = string.Template('$page: $title')\n"
+">>> t.safe_substitute({'page':3})\n"
+"'3: $tiêu đề'"
+
+#: ../../whatsnew/2.4.rst:211
+#, fuzzy
+msgid ":pep:`292` - Simpler String Substitutions"
+msgstr ":pep:`292` - Thay thế chuỗi đơn giản hơn"
+
+#: ../../whatsnew/2.4.rst:212
+#, fuzzy
+msgid "Written and implemented  by Barry Warsaw."
+msgstr "Được viết và thực hiện bởi Barry Warsaw."
+
+#: ../../whatsnew/2.4.rst:218
+#, fuzzy
+msgid "PEP 318: Decorators for Functions and Methods"
+msgstr "PEP 318: Trang trí cho hàm và phương thức"
+
+#: ../../whatsnew/2.4.rst:220
+#, fuzzy
+msgid ""
+"Python 2.2 extended Python's object model by adding static methods and class"
+" methods, but it didn't extend Python's syntax to provide any new way of "
+"defining static or class methods.  Instead, you had to write a "
+":keyword:`def` statement in the usual way, and pass the resulting method to "
+"a :func:`staticmethod` or :func:`classmethod` function that would wrap up "
+"the function as a method of the new type. Your code would look like this::"
+msgstr ""
+"Python 2.2 đã mở rộng mô hình đối tượng của Python bằng cách thêm các phương"
+" thức tĩnh và phương thức lớp, nhưng nó không mở rộng cú pháp của Python để "
+"cung cấp bất kỳ cách mới nào để xác định các phương thức tĩnh hoặc lớp.  "
+"Thay vào đó, bạn phải viết câu lệnh :keyword:`def` theo cách thông thường và"
+" chuyển phương thức kết quả cho hàm :func:`staticmethod` hoặc "
+":func:`classmethod` để gói hàm này thành một phương thức của loại mới. Mã "
+"của bạn sẽ trông như thế này::"
+
+#: ../../whatsnew/2.4.rst:227
+#, fuzzy
+msgid ""
+"class C:\n"
+"   def meth (cls):\n"
+"       ...\n"
+"\n"
+"   meth = classmethod(meth)   # Rebind name to wrapped-up class method"
+msgstr ""
+"lớp C:\n"
+"   def meth (cls):\n"
+"       ...\n"
+"\n"
+"   meth = classmethod(meth) tên # Rebind thành phương thức lớp được gói gọn"
+
+#: ../../whatsnew/2.4.rst:233
+#, fuzzy
+msgid ""
+"If the method was very long, it would be easy to miss or forget the "
+":func:`classmethod` invocation after the function body."
+msgstr ""
+"Nếu phương thức này quá dài, bạn sẽ dễ bỏ lỡ hoặc quên lệnh gọi "
+":func:`classmethod` sau phần thân hàm."
+
+#: ../../whatsnew/2.4.rst:236
+#, fuzzy
+msgid ""
+"The intention was always to add some syntax to make such definitions more "
+"readable, but at the time of 2.2's release a good syntax was not obvious.  "
+"Today a good syntax *still* isn't obvious but users are asking for easier "
+"access to the feature; a new syntactic feature has been added to meet this "
+"need."
+msgstr ""
+"Mục đích luôn là thêm một số cú pháp để làm cho những định nghĩa như vậy dễ "
+"đọc hơn, nhưng tại thời điểm phát hành phiên bản 2.2, cú pháp tốt vẫn chưa "
+"rõ ràng.  Ngày nay, cú pháp tốt *still* không rõ ràng nhưng người dùng đang "
+"yêu cầu quyền truy cập vào tính năng này dễ dàng hơn; một tính năng cú pháp "
+"mới đã được thêm vào để đáp ứng nhu cầu này."
+
+#: ../../whatsnew/2.4.rst:241
+#, fuzzy
+msgid ""
+"The new feature is called \"function decorators\".  The name comes from the "
+"idea that :func:`classmethod`, :func:`staticmethod`, and friends are storing"
+" additional information on a function object; they're *decorating* functions"
+" with more details."
+msgstr ""
+"Tính năng mới được gọi là \"trang trí chức năng\".  Cái tên này xuất phát từ"
+" ý tưởng rằng :func:`classmethod`, :func:`staticmethod` và những người bạn "
+"đang lưu trữ thông tin bổ sung về một đối tượng hàm; chúng là các chức năng "
+"*decorating* với nhiều chi tiết hơn."
+
+#: ../../whatsnew/2.4.rst:246
+#, fuzzy
+msgid ""
+"The notation borrows from Java and uses the ``'@'`` character as an "
+"indicator. Using the new syntax, the example above would be written::"
+msgstr ""
+"Ký hiệu mượn từ Java và sử dụng ký tự ``'@'`` làm chỉ báo. Sử dụng cú pháp "
+"mới, ví dụ trên sẽ được viết::"
+
+#: ../../whatsnew/2.4.rst:249
+#, fuzzy
+msgid ""
+"class C:\n"
+"\n"
+"   @classmethod\n"
+"   def meth (cls):\n"
+"       ..."
+msgstr ""
+"lớp C:\n"
+"\n"
+"   @classmethod\n"
+"   def meth (cls):\n"
+"       ..."
+
+#: ../../whatsnew/2.4.rst:256
+#, fuzzy
+msgid ""
+"The ``@classmethod`` is shorthand for the ``meth=classmethod(meth)`` "
+"assignment. More generally, if you have the following::"
+msgstr ""
+"``@classmethod`` là viết tắt của nhiệm vụ ``meth=classmethod(meth)``. Tổng "
+"quát hơn, nếu bạn có những điều sau đây::"
+
+#: ../../whatsnew/2.4.rst:259
+#, fuzzy
+msgid ""
+"@A\n"
+"@B\n"
+"@C\n"
+"def f ():\n"
+"    ..."
+msgstr ""
+"@A\n"
+"@B\n"
+"@C\n"
+"định nghĩa f():\n"
+"    ..."
+
+#: ../../whatsnew/2.4.rst:265
+#, fuzzy
+msgid "It's equivalent to the following pre-decorator code::"
+msgstr "Nó tương đương với mã trang trí trước sau::"
+
+#: ../../whatsnew/2.4.rst:267
+#, fuzzy
+msgid ""
+"def f(): ...\n"
+"f = A(B(C(f)))"
+msgstr ""
+"chắc chắn f(): ...\n"
+"f = A(B(C(f)))"
+
+#: ../../whatsnew/2.4.rst:270
+#, fuzzy
+msgid ""
+"Decorators must come on the line before a function definition, one decorator"
+" per line, and can't be on the same line as the def statement, meaning that "
+"``@A def f(): ...`` is illegal.  You can only decorate function definitions,"
+" either at the module level or inside a class; you can't decorate class "
+"definitions."
+msgstr ""
+"Các trình trang trí phải xuất hiện trước định nghĩa hàm, một trình trang trí"
+" trên mỗi dòng và không được nằm trên cùng một dòng với câu lệnh def, nghĩa "
+"là ``@A def f(): ...`` là bất hợp pháp.  Bạn chỉ có thể trang trí các định "
+"nghĩa hàm, ở cấp mô-đun hoặc bên trong một lớp; bạn không thể trang trí các "
+"định nghĩa lớp."
+
+#: ../../whatsnew/2.4.rst:275
+#, fuzzy
+msgid ""
+"A decorator is just a function that takes the function to be decorated as an"
+" argument and returns either the same function or some new object.  The "
+"return value of the decorator need not be callable (though it typically is),"
+" unless further decorators will be applied to the result.  It's easy to "
+"write your own decorators.  The following simple example just sets an "
+"attribute on the function object::"
+msgstr ""
+"Trình trang trí chỉ là một hàm lấy hàm được trang trí làm đối số và trả về "
+"cùng một hàm hoặc một số đối tượng mới.  Giá trị trả về của trình trang trí "
+"không cần phải gọi được (mặc dù thông thường là như vậy), trừ khi các trình "
+"trang trí khác sẽ được áp dụng cho kết quả.  Thật dễ dàng để viết trang trí "
+"của riêng bạn.  Ví dụ đơn giản sau đây chỉ đặt một thuộc tính trên đối tượng"
+" hàm::"
+
+#: ../../whatsnew/2.4.rst:282
+#, fuzzy
+msgid ""
+">>> def deco(func):\n"
+"...    func.attr = 'decorated'\n"
+"...    return func\n"
+"...\n"
+">>> @deco\n"
+"... def f(): pass\n"
+"...\n"
+">>> f\n"
+"<function f at 0x402ef0d4>\n"
+">>> f.attr\n"
+"'decorated'\n"
+">>>"
+msgstr ""
+">>> trang trí def(func):\n"
+"... func.attr = 'được trang trí'\n"
+"... trả lại chức năng\n"
+"...\n"
+">>> @deco\n"
+"... def f(): vượt qua\n"
+"...\n"
+">>> f\n"
+"<hàm f tại 0x402ef0d4>\n"
+">>> f.attr\n"
+"'được trang trí'\n"
+">>>"
+
+#: ../../whatsnew/2.4.rst:295
+#, fuzzy
+msgid ""
+"As a slightly more realistic example, the following decorator checks that "
+"the supplied argument is an integer::"
+msgstr ""
+"Là một ví dụ thực tế hơn một chút, trình trang trí sau đây sẽ kiểm tra xem "
+"đối số được cung cấp có phải là số nguyên hay không::"
+
+#: ../../whatsnew/2.4.rst:298
+#, fuzzy
+msgid ""
+"def require_int (func):\n"
+"    def wrapper (arg):\n"
+"        assert isinstance(arg, int)\n"
+"        return func(arg)\n"
+"\n"
+"    return wrapper\n"
+"\n"
+"@require_int\n"
+"def p1 (arg):\n"
+"    print arg\n"
+"\n"
+"@require_int\n"
+"def p2(arg):\n"
+"    print arg*2"
+msgstr ""
+"def require_int (func):\n"
+"    trình bao bọc def (arg):\n"
+"        khẳng định isinstance(arg, int)\n"
+"        trả về func(arg)\n"
+"\n"
+"    giấy gói trả lại\n"
+"\n"
+"@require_int\n"
+"def p1 (arg):\n"
+"    in tranh luận\n"
+"\n"
+"@require_int\n"
+"định nghĩa p2(arg):\n"
+"    in arg*2"
+
+#: ../../whatsnew/2.4.rst:313
+#, fuzzy
+msgid ""
+"An example in :pep:`318` contains a fancier version of this idea that lets "
+"you both specify the required type and check the returned type."
+msgstr ""
+"Một ví dụ trong :pep:`318` chứa một phiên bản thú vị hơn của ý tưởng này cho"
+" phép bạn vừa chỉ định loại được yêu cầu vừa kiểm tra loại được trả về."
+
+#: ../../whatsnew/2.4.rst:316
+#, fuzzy
+msgid ""
+"Decorator functions can take arguments.  If arguments are supplied, your "
+"decorator function is called with only those arguments and must return a new"
+" decorator function; this function must take a single function and return a "
+"function, as previously described.  In other words, ``@A @B @C(args)`` "
+"becomes::"
+msgstr ""
+"Các hàm trang trí có thể nhận các đối số.  Nếu các đối số được cung cấp, hàm"
+" trang trí của bạn sẽ chỉ được gọi với các đối số đó và phải trả về một hàm "
+"trang trí mới; hàm này phải nhận một hàm duy nhất và trả về một hàm, như "
+"được mô tả trước đây.  Nói cách khác, ``@A @B @C(args)`` trở thành::"
+
+#: ../../whatsnew/2.4.rst:321
+#, fuzzy
+msgid ""
+"def f(): ...\n"
+"_deco = C(args)\n"
+"f = A(B(_deco(f)))"
+msgstr ""
+"chắc chắn f(): ...\n"
+"_deco = C(args)\n"
+"f = A(B(_deco(f)))"
+
+#: ../../whatsnew/2.4.rst:325
+#, fuzzy
+msgid ""
+"Getting this right can be slightly brain-bending, but it's not too "
+"difficult."
+msgstr "Làm đúng điều này có thể hơi khó khăn, nhưng nó không quá khó."
+
+#: ../../whatsnew/2.4.rst:327
+#, fuzzy
+msgid ""
+"A small related change makes the :attr:`func_name <function.__name__>` "
+"attribute of functions writable.  This attribute is used to display function"
+" names in tracebacks, so decorators should change the name of any new "
+"function that's constructed and returned."
+msgstr ""
+"Một thay đổi nhỏ có liên quan làm cho thuộc tính :attr:`func_name "
+"<function.__name__>` của hàm có thể ghi được.  Thuộc tính này được sử dụng "
+"để hiển thị tên hàm trong traceback, vì vậy người trang trí nên thay đổi tên"
+" của bất kỳ hàm mới nào được xây dựng và trả về."
+
+#: ../../whatsnew/2.4.rst:336
+#, fuzzy
+msgid ":pep:`318` - Decorators for Functions, Methods and Classes"
+msgstr ":pep:`318` - Trang trí cho hàm, phương thức và lớp"
+
+#: ../../whatsnew/2.4.rst:337
+#, fuzzy
+msgid ""
+"Written  by Kevin D. Smith, Jim Jewett, and Skip Montanaro.  Several people "
+"wrote patches implementing function decorators, but the one that was "
+"actually checked in was patch #979728, written by Mark Russell."
+msgstr ""
+"Được viết bởi Kevin D. Smith, Jim Jewett và Skip Montanaro.  Một số người đã"
+" viết các bản vá triển khai các trình trang trí chức năng, nhưng bản vá thực"
+" sự được kiểm tra là bản vá #979728, được viết bởi Mark Russell."
+
+#: ../../whatsnew/2.4.rst:341
+#, fuzzy
+msgid "https://wiki.python.org/moin/PythonDecoratorLibrary"
+msgstr "https://wiki.python.org/moin/PythonDecoratorLibrary"
+
+#: ../../whatsnew/2.4.rst:342
+#, fuzzy
+msgid "This Wiki page contains several examples of decorators."
+msgstr "Trang Wiki này chứa một số ví dụ về trang trí."
+
+#: ../../whatsnew/2.4.rst:348
+#, fuzzy
+msgid "PEP 322: Reverse Iteration"
+msgstr "PEP 322: Lặp lại ngược lại"
+
+#: ../../whatsnew/2.4.rst:350
+#, fuzzy
+msgid ""
+"A new built-in function, ``reversed(seq)``, takes a sequence and returns an "
+"iterator that loops over the elements of the sequence  in reverse order.   "
+"::"
+msgstr ""
+"Một hàm tích hợp mới, ``reversed(seq)``, nhận một chuỗi và trả về một trình "
+"vòng lặp lặp qua các phần tử của chuỗi theo thứ tự ngược lại.   ::"
+
+#: ../../whatsnew/2.4.rst:353
+#, fuzzy
+msgid ""
+">>> for i in reversed(xrange(1,4)):\n"
+"...    print i\n"
+"...\n"
+"3\n"
+"2\n"
+"1"
+msgstr ""
+">>> cho i ở vị trí đảo ngược(xrange(1,4)):\n"
+"... in tôi\n"
+"...\n"
+"3\n"
+"2\n"
+"1"
+
+#: ../../whatsnew/2.4.rst:360
+#, fuzzy
+msgid ""
+"Compared to extended slicing, such as ``range(1,4)[::-1]``, :func:`reversed`"
+" is easier to read, runs faster, and uses substantially less memory."
+msgstr ""
+"So với việc cắt mở rộng, chẳng hạn như ``range(1,4)[::-1]``, "
+":func:`reversed` dễ đọc hơn, chạy nhanh hơn và sử dụng ít bộ nhớ hơn đáng "
+"kể."
+
+#: ../../whatsnew/2.4.rst:363
+#, fuzzy
+msgid ""
+"Note that :func:`reversed` only accepts sequences, not arbitrary iterators."
+"  If you want to reverse an iterator, first convert it to  a list with "
+":func:`list`. ::"
+msgstr ""
+"Lưu ý rằng :func:`reversed` chỉ chấp nhận các chuỗi chứ không chấp nhận các "
+"trình vòng lặp tùy ý.  Nếu bạn muốn đảo ngược một trình vòng lặp, trước tiên"
+" hãy chuyển đổi nó thành một danh sách có :func:`list`. ::"
+
+#: ../../whatsnew/2.4.rst:367
+#, fuzzy
+msgid ""
+">>> input = open('/etc/passwd', 'r')\n"
+">>> for line in reversed(list(input)):\n"
+"...   print line\n"
+"...\n"
+"root:*:0:0:System Administrator:/var/root:/bin/tcsh\n"
+"  ..."
+msgstr ""
+">>> đầu vào = open('/etc/passwd', 'r')\n"
+">>> cho dòng bị đảo ngược(danh sách(đầu vào)):\n"
+"... dòng in\n"
+"...\n"
+"root:*:0:0:Quản trị viên hệ thống:/var/root:/bin/tcsh\n"
+"  ..."
+
+#: ../../whatsnew/2.4.rst:377
+#, fuzzy
+msgid ":pep:`322` - Reverse Iteration"
+msgstr ":pep:`322` - Lặp lại ngược"
+
+#: ../../whatsnew/2.4.rst:378
+#, fuzzy
+msgid "Written and implemented by Raymond Hettinger."
+msgstr "Được viết và thực hiện bởi Raymond Hettinger."
+
+#: ../../whatsnew/2.4.rst:384
+#, fuzzy
+msgid "PEP 324: New subprocess Module"
+msgstr "PEP 324: Mô-đun quy trình con mới"
+
+#: ../../whatsnew/2.4.rst:386
+#, fuzzy
+msgid ""
+"The standard library provides a number of ways to execute a subprocess, "
+"offering different features and different levels of complexity. "
+"``os.system(command)`` is easy to use, but slow (it runs a shell process "
+"which executes the command) and dangerous (you have to be careful about "
+"escaping the shell's metacharacters).  The :mod:`!popen2` module offers "
+"classes that can capture standard output and standard error from the "
+"subprocess, but the naming is confusing.  The :mod:`subprocess` module "
+"cleans  this up, providing a unified interface that offers all the features "
+"you might need."
+msgstr ""
+"Thư viện chuẩn cung cấp một số cách để thực thi một quy trình con, cung cấp "
+"các tính năng khác nhau và mức độ phức tạp khác nhau. ``os.system(command)``"
+" rất dễ sử dụng nhưng chậm (nó chạy một tiến trình shell thực thi lệnh) và "
+"nguy hiểm (bạn phải cẩn thận khi thoát khỏi siêu ký tự của shell).  Mô-đun "
+":mod:`!popen2` cung cấp các lớp có thể nắm bắt đầu ra tiêu chuẩn và lỗi tiêu"
+" chuẩn từ quy trình con, nhưng việc đặt tên gây nhầm lẫn.  Mô-đun "
+":mod:`subprocess` sẽ giải quyết vấn đề này, cung cấp giao diện hợp nhất cung"
+" cấp tất cả các tính năng mà bạn có thể cần."
+
+#: ../../whatsnew/2.4.rst:395
+#, fuzzy
+msgid ""
+"Instead of :mod:`!popen2`'s collection of classes, :mod:`subprocess` "
+"contains a single class called :class:`subprocess.Popen`  whose constructor "
+"supports a number of different keyword arguments. ::"
+msgstr ""
+"Thay vì tập hợp các lớp của :mod:`!popen2`, :mod:`subprocess` chứa một lớp "
+"duy nhất gọi là :class:`subprocess.Popen` mà hàm tạo của nó hỗ trợ một số "
+"đối số từ khóa khác nhau. ::"
+
+#: ../../whatsnew/2.4.rst:399
+#, fuzzy
+msgid ""
+"class Popen(args, bufsize=0, executable=None,\n"
+"            stdin=None, stdout=None, stderr=None,\n"
+"            preexec_fn=None, close_fds=False, shell=False,\n"
+"            cwd=None, env=None, universal_newlines=False,\n"
+"            startupinfo=None, creationflags=0):"
+msgstr ""
+"lớp Popen(args, bufsize=0,executable=None,\n"
+"            stdin=Không có, stdout=Không có, stderr=Không có,\n"
+"            preexec_fn=Không có, close_fds=Sai, shell=Sai,\n"
+"            cwd=Không có, env=Không có, Universal_newlines=False,\n"
+"            startupinfo=Không có, Creationflags=0):"
+
+#: ../../whatsnew/2.4.rst:405
+#, fuzzy
+msgid ""
+"*args* is commonly a sequence of strings that will be the arguments to the "
+"program executed as the subprocess.  (If the *shell* argument is true, "
+"*args* can be a string which will then be passed on to the shell for "
+"interpretation, just as :func:`os.system` does.)"
+msgstr ""
+"*args* thường là một chuỗi các chuỗi sẽ là đối số cho chương trình được thực"
+" thi dưới dạng quy trình con.  (Nếu đối số *shell* là đúng, *args* có thể là"
+" một chuỗi sau đó sẽ được chuyển tới shell để giải thích, giống như "
+":func:`os.system`.)"
+
+#: ../../whatsnew/2.4.rst:410
+#, fuzzy
+msgid ""
+"*stdin*, *stdout*, and *stderr* specify what the subprocess's input, output,"
+" and error streams will be.  You can provide a file object or a file "
+"descriptor, or you can use the constant ``subprocess.PIPE`` to create a pipe"
+" between the subprocess and the parent."
+msgstr ""
+"*stdin*, *stdout* và *stderr* chỉ định luồng đầu vào, đầu ra và lỗi của quy "
+"trình con sẽ là gì.  Bạn có thể cung cấp một đối tượng tệp hoặc một bộ mô tả"
+" tệp hoặc bạn có thể sử dụng hằng số ``subprocess.PIPE`` để tạo một đường "
+"dẫn giữa quy trình con và quy trình gốc."
+
+#: ../../whatsnew/2.4.rst:418
+#, fuzzy
+msgid "The constructor has a number of handy options:"
+msgstr "Hàm tạo có một số tùy chọn hữu ích:"
+
+#: ../../whatsnew/2.4.rst:420
+#, fuzzy
+msgid ""
+"*close_fds* requests that all file descriptors be closed before running the "
+"subprocess."
+msgstr ""
+"*close_fds* yêu cầu đóng tất cả các bộ mô tả tệp trước khi chạy quy trình "
+"con."
+
+#: ../../whatsnew/2.4.rst:423
+#, fuzzy
+msgid ""
+"*cwd* specifies the working directory in which the subprocess will be "
+"executed (defaulting to whatever the parent's working directory is)."
+msgstr ""
+"*cwd* chỉ định thư mục làm việc trong đó quy trình con sẽ được thực thi (mặc"
+" định là bất kỳ thư mục làm việc nào của cha mẹ)."
+
+#: ../../whatsnew/2.4.rst:426
+#, fuzzy
+msgid "*env* is a dictionary specifying environment variables."
+msgstr "*env* là một từ điển chỉ định các biến môi trường."
+
+#: ../../whatsnew/2.4.rst:428
+#, fuzzy
+msgid ""
+"*preexec_fn* is a function that gets called before the child is started."
+msgstr "*preexec_fn* là một hàm được gọi trước khi trẻ khởi động."
+
+#: ../../whatsnew/2.4.rst:430
+#, fuzzy
+msgid ""
+"*universal_newlines* opens the child's input and output using Python's "
+":term:`universal newlines` feature."
+msgstr ""
+"*universal_newlines* mở đầu vào và đầu ra của trẻ bằng tính năng "
+":term:`universal newlines` của Python."
+
+#: ../../whatsnew/2.4.rst:433
+#, fuzzy
+msgid ""
+"Once you've created the :class:`Popen` instance,  you can call its "
+":meth:`wait` method to pause until the subprocess has exited, :meth:`poll` "
+"to check if it's exited without pausing,  or ``communicate(data)`` to send "
+"the string *data* to the subprocess's standard input.   "
+"``communicate(data)``  then reads any data that the subprocess has sent to "
+"its standard output  or standard error, returning a tuple ``(stdout_data, "
+"stderr_data)``."
+msgstr ""
+"Sau khi tạo phiên bản :class:`Popen`, bạn có thể gọi phương thức "
+":meth:`wait` của nó để tạm dừng cho đến khi quy trình con thoát ra, "
+":meth:`poll` để kiểm tra xem nó có thoát mà không tạm dừng hay không, hoặc "
+"``communicate(data)`` để gửi chuỗi *data* đến đầu vào tiêu chuẩn của quy "
+"trình con.   ``communicate(data)`` sau đó đọc bất kỳ dữ liệu nào mà quy "
+"trình con đã gửi đến đầu ra tiêu chuẩn hoặc lỗi tiêu chuẩn của nó, trả về "
+"một bộ dữ liệu ``(stdout_data, stderr_data)``."
+
+#: ../../whatsnew/2.4.rst:440
+#, fuzzy
+msgid ""
+":func:`call` is a shortcut that passes its arguments along to the "
+":class:`Popen` constructor, waits for the command to complete, and returns "
+"the status code of the subprocess.  It can serve as a safer analog to "
+":func:`os.system`::"
+msgstr ""
+":func:`call` là một phím tắt chuyển các đối số của nó tới hàm tạo "
+":class:`Popen`, đợi lệnh hoàn thành và trả về mã trạng thái của quy trình "
+"con.  Nó có thể hoạt động như một chất tương tự an toàn hơn với "
+":func:`os.system`::"
+
+#: ../../whatsnew/2.4.rst:444
+#, fuzzy
+msgid ""
+"sts = subprocess.call(['dpkg', '-i', '/tmp/new-package.deb'])\n"
+"if sts == 0:\n"
+"    # Success\n"
+"    ...\n"
+"else:\n"
+"    # dpkg returned an error\n"
+"    ..."
+msgstr ""
+"sts = subprocess.call(['dpkg', '-i', '/tmp/new-package.deb'])\n"
+"nếu sts == 0:\n"
+"    # Success\n"
+"    ...\n"
+"khác:\n"
+"    # dpkg trả về lỗi\n"
+"    ..."
+
+#: ../../whatsnew/2.4.rst:452
+#, fuzzy
+msgid ""
+"The command is invoked without use of the shell.  If you really do want to  "
+"use the shell, you can add ``shell=True`` as a keyword argument and provide "
+"a string instead of a sequence::"
+msgstr ""
+"Lệnh được gọi mà không cần sử dụng shell.  Nếu bạn thực sự muốn sử dụng "
+"shell, bạn có thể thêm ``shell=True`` làm đối số từ khóa và cung cấp một "
+"chuỗi thay vì một chuỗi ::"
+
+#: ../../whatsnew/2.4.rst:456
+#, fuzzy
+msgid "sts = subprocess.call('dpkg -i /tmp/new-package.deb', shell=True)"
+msgstr "sts = subprocess.call('dpkg -i /tmp/new-package.deb', shell=True)"
+
+#: ../../whatsnew/2.4.rst:458
+#, fuzzy
+msgid ""
+"The PEP takes various examples of shell and Python code and shows how they'd"
+" be translated into Python code that uses :mod:`subprocess`.  Reading this "
+"section of the PEP is highly recommended."
+msgstr ""
+"Zz001zz lấy nhiều ví dụ khác nhau về mã shell và mã Python, đồng thời cho "
+"biết cách dịch chúng sang mã Python sử dụng :mod:`subprocess`.  Rất nên đọc "
+"phần này của PEP."
+
+#: ../../whatsnew/2.4.rst:465
+#, fuzzy
+msgid ":pep:`324` - subprocess - New process module"
+msgstr ":pep:`324` - quy trình con - Mô-đun quy trình mới"
+
+#: ../../whatsnew/2.4.rst:466
+#, fuzzy
+msgid ""
+"Written and implemented by Peter Åstrand, with assistance from Fredrik Lundh"
+" and others."
+msgstr ""
+"Được viết và thực hiện bởi Peter Åstrand, với sự hỗ trợ của Fredrik Lundh và"
+" những người khác."
+
+#: ../../whatsnew/2.4.rst:473
+#, fuzzy
+msgid "PEP 327: Decimal Data Type"
+msgstr "PEP 327: Kiểu dữ liệu thập phân"
+
+#: ../../whatsnew/2.4.rst:475
+#, fuzzy
+msgid ""
+"Python has always supported floating-point (FP) numbers, based on the "
+"underlying C :c:expr:`double` type, as a data type.  However, while most "
+"programming languages provide a floating-point type, many people (even "
+"programmers) are unaware that floating-point numbers don't represent certain"
+" decimal fractions accurately.  The new :class:`Decimal` type can represent "
+"these fractions accurately, up to a user-specified precision limit."
+msgstr ""
+"Python luôn hỗ trợ các số dấu phẩy động (FP), dựa trên kiểu C "
+":c:expr:`double` cơ bản, dưới dạng kiểu dữ liệu.  Tuy nhiên, trong khi hầu "
+"hết các ngôn ngữ lập trình đều cung cấp loại dấu phẩy động, nhiều người "
+"(thậm chí cả lập trình viên) không biết rằng các số dấu phẩy động không biểu"
+" thị chính xác một số phân số thập phân nhất định.  Loại :class:`Decimal` "
+"mới có thể biểu thị các phân số này một cách chính xác, lên đến giới hạn độ "
+"chính xác do người dùng chỉ định."
+
+#: ../../whatsnew/2.4.rst:484
+#, fuzzy
+msgid "Why is Decimal needed?"
+msgstr "Tại sao cần thập phân?"
+
+#: ../../whatsnew/2.4.rst:486
+#, fuzzy
+msgid ""
+"The limitations arise from the representation used for floating-point "
+"numbers. FP numbers are made up of three components:"
+msgstr ""
+"Những hạn chế phát sinh từ cách biểu diễn được sử dụng cho số dấu phẩy động."
+" Số FP được tạo thành từ ba thành phần:"
+
+#: ../../whatsnew/2.4.rst:489
+#, fuzzy
+msgid "The sign, which is positive or negative."
+msgstr "Dấu hiệu là dương hoặc âm."
+
+#: ../../whatsnew/2.4.rst:491
+#, fuzzy
+msgid ""
+"The mantissa, which is a single-digit binary number   followed by a "
+"fractional part.  For example, ``1.01`` in base-2 notation is ``1 + 0/2 + "
+"1/4``, or 1.25 in decimal notation."
+msgstr ""
+"Phần định trị, là số nhị phân có một chữ số, theo sau là phần phân số.  Ví "
+"dụ: ``1.01`` trong ký hiệu cơ số 2 là ``1 + 0/2 + 1/4`` hoặc 1,25 trong ký "
+"hiệu thập phân."
+
+#: ../../whatsnew/2.4.rst:495
+#, fuzzy
+msgid ""
+"The exponent, which tells where the decimal point is located in the number "
+"represented."
+msgstr "Số mũ, cho biết vị trí của dấu thập phân trong số được biểu thị."
+
+#: ../../whatsnew/2.4.rst:498
+#, fuzzy
+msgid ""
+"For example, the number 1.25 has positive sign, a mantissa value of 1.01 (in"
+" binary), and an exponent of 0 (the decimal point doesn't need to be "
+"shifted). The number 5 has the same sign and mantissa, but the exponent is 2"
+" because the mantissa is multiplied by 4 (2 to the power of the exponent 2);"
+" 1.25 \\* 4 equals 5."
+msgstr ""
+"Ví dụ: số 1,25 có dấu dương, giá trị mantissa là 1,01 (ở dạng nhị phân) và "
+"số mũ là 0 (không cần dịch chuyển dấu thập phân). Số 5 có cùng dấu và cùng "
+"số mũ nhưng số mũ là 2 vì số mũ được nhân với 4 (2 lũy thừa của số mũ 2); "
+"1,25 \\* 4 bằng 5."
+
+#: ../../whatsnew/2.4.rst:504
+#, fuzzy
+msgid ""
+"Modern systems usually provide floating-point support that conforms to a "
+"standard called IEEE 754.  C's :c:expr:`double` type is usually implemented "
+"as a 64-bit IEEE 754 number, which uses 52 bits of space for the mantissa.  "
+"This means that numbers can only be specified to 52 bits of precision.  If "
+"you're trying to represent numbers whose expansion repeats endlessly, the "
+"expansion is cut off after 52 bits. Unfortunately, most software needs to "
+"produce output in base 10, and common fractions in base 10 are often "
+"repeating decimals in binary. For example, 1.1 decimal is binary "
+"``1.0001100110011 ...``; .1 = 1/16 + 1/32 + 1/256 plus an infinite number of"
+" additional terms.  IEEE 754 has to chop off that infinitely repeated "
+"decimal after 52 digits, so the representation is slightly inaccurate."
+msgstr ""
+"Các hệ thống hiện đại thường cung cấp hỗ trợ dấu phẩy động tuân theo tiêu "
+"chuẩn gọi là IEEE 754. Loại :c:expr:`double` của C thường được triển khai "
+"dưới dạng số IEEE 754 64 bit, sử dụng 52 bit không gian cho phần định trị.  "
+"Điều này có nghĩa là các số chỉ có thể được xác định với độ chính xác 52 "
+"bit.  Nếu bạn đang cố gắng biểu diễn các số có phần mở rộng lặp lại vô tận "
+"thì phần mở rộng sẽ bị cắt sau 52 bit. Thật không may, hầu hết phần mềm cần "
+"tạo đầu ra ở cơ số 10 và các phân số phổ biến trong cơ số 10 thường lặp lại "
+"số thập phân ở dạng nhị phân. Ví dụ: 1,1 thập phân là ``1.0001100110011 "
+"...`` nhị phân; .1 = 1/16 + 1/32 + 1/256 cộng với vô số số hạng bổ sung.  "
+"IEEE 754 phải loại bỏ số thập phân lặp lại vô hạn đó sau 52 chữ số, do đó "
+"cách biểu diễn hơi không chính xác."
+
+#: ../../whatsnew/2.4.rst:516
+#, fuzzy
+msgid "Sometimes you can see this inaccuracy when the number is printed::"
+msgstr "Đôi khi bạn có thể thấy sự thiếu chính xác này khi số được in::"
+
+#: ../../whatsnew/2.4.rst:518
+#, fuzzy
+msgid ""
+">>> 1.1\n"
+"1.1000000000000001"
+msgstr ""
+">>> 1.1\n"
+"1.1000000000000001"
+
+#: ../../whatsnew/2.4.rst:521
+#, fuzzy
+msgid ""
+"The inaccuracy isn't always visible when you print the number because the "
+"FP-to-decimal-string conversion is provided by the C library, and most C "
+"libraries try to produce sensible output.  Even if it's not displayed, "
+"however, the inaccuracy is still there and subsequent operations can magnify"
+" the error."
+msgstr ""
+"Sự thiếu chính xác không phải lúc nào cũng hiển thị khi bạn in số vì chuyển "
+"đổi FP sang chuỗi thập phân được cung cấp bởi thư viện C và hầu hết các thư "
+"viện C đều cố gắng tạo ra đầu ra hợp lý.  Tuy nhiên, ngay cả khi nó không "
+"được hiển thị thì độ chính xác vẫn còn đó và các thao tác tiếp theo có thể "
+"làm cho lỗi trở nên nghiêm trọng hơn."
+
+#: ../../whatsnew/2.4.rst:526
+#, fuzzy
+msgid ""
+"For many applications this doesn't matter.  If I'm plotting points and "
+"displaying them on my monitor, the difference between 1.1 and "
+"1.1000000000000001 is too small to be visible.  Reports often limit output "
+"to a certain number of decimal places, and if you round the number to two or"
+" three or even eight decimal places, the error is never apparent.  However, "
+"for applications where it does matter,  it's a lot of work to implement your"
+" own custom arithmetic routines."
+msgstr ""
+"Đối với nhiều ứng dụng, điều này không thành vấn đề.  Nếu tôi vẽ các điểm và"
+" hiển thị chúng trên màn hình của mình, thì sự khác biệt giữa 1,1 và "
+"1,1000000000000001 là quá nhỏ để có thể nhìn thấy được.  Các báo cáo thường "
+"giới hạn kết quả đầu ra ở một số vị trí thập phân nhất định và nếu bạn làm "
+"tròn số đó đến hai, ba hoặc thậm chí tám chữ số thập phân thì lỗi sẽ không "
+"bao giờ rõ ràng.  Tuy nhiên, đối với các ứng dụng quan trọng, việc triển "
+"khai các quy trình số học tùy chỉnh của riêng bạn sẽ tốn rất nhiều công sức."
+
+#: ../../whatsnew/2.4.rst:534
+#, fuzzy
+msgid "Hence, the :class:`Decimal` type was created."
+msgstr "Do đó, loại :class:`Decimal` đã được tạo."
+
+#: ../../whatsnew/2.4.rst:538
+#, fuzzy
+msgid "The :class:`Decimal` type"
+msgstr "Loại :class:`Decimal`"
+
+#: ../../whatsnew/2.4.rst:540
+#, fuzzy
+msgid ""
+"A new module, :mod:`decimal`, was added to Python's standard library.  It "
+"contains two classes, :class:`Decimal` and :class:`Context`.  "
+":class:`Decimal` instances represent numbers, and :class:`Context` instances"
+" are used to wrap up various settings such as the precision and default "
+"rounding mode."
+msgstr ""
+"Một mô-đun mới, :mod:`decimal`, đã được thêm vào thư viện chuẩn của Python."
+"  Nó chứa hai lớp, :class:`Decimal` và :class:`Context`.  Các phiên bản "
+":class:`Decimal` đại diện cho các số và các phiên bản :class:`Context` được "
+"sử dụng để bao bọc các cài đặt khác nhau như độ chính xác và chế độ làm tròn"
+" mặc định."
+
+#: ../../whatsnew/2.4.rst:545
+#, fuzzy
+msgid ""
+":class:`Decimal` instances are immutable, like regular Python integers and "
+"FP numbers; once it's been created, you can't change the value an instance "
+"represents.  :class:`Decimal` instances can be created from integers or "
+"strings::"
+msgstr ""
+"Các phiên bản :class:`Decimal` là bất biến, giống như số nguyên Python và số"
+" FP thông thường; một khi nó đã được tạo, bạn không thể thay đổi giá trị mà "
+"một phiên bản thể hiện.  Các phiên bản :class:`Decimal` có thể được tạo từ "
+"số nguyên hoặc chuỗi ::"
+
+#: ../../whatsnew/2.4.rst:550
+#, fuzzy
+msgid ""
+">>> import decimal\n"
+">>> decimal.Decimal(1972)\n"
+"Decimal(\"1972\")\n"
+">>> decimal.Decimal(\"1.1\")\n"
+"Decimal(\"1.1\")"
+msgstr ""
+">>> nhập số thập phân\n"
+">>> thập phân.Decimal(1972)\n"
+"Thập phân(\"1972\")\n"
+">>> thập phân.Decimal(\"1.1\")\n"
+"Thập phân(\"1.1\")"
+
+#: ../../whatsnew/2.4.rst:556
+#, fuzzy
+msgid ""
+"You can also provide tuples containing the sign, the mantissa represented  "
+"as a tuple of decimal digits, and the exponent::"
+msgstr ""
+"Bạn cũng có thể cung cấp các bộ chứa dấu hiệu, phần định trị được biểu thị "
+"dưới dạng bộ các chữ số thập phân và số mũ::"
+
+#: ../../whatsnew/2.4.rst:559
+#, fuzzy
+msgid ""
+">>> decimal.Decimal((1, (1, 4, 7, 5), -2))\n"
+"Decimal(\"-14.75\")"
+msgstr ""
+">>> thập phân.Decimal((1, (1, 4, 7, 5), -2))\n"
+"Thập phân(\"-14.75\")"
+
+#: ../../whatsnew/2.4.rst:562
+#, fuzzy
+msgid ""
+"Cautionary note: the sign bit is a Boolean value, so 0 is positive and 1 is "
+"negative."
+msgstr ""
+"Lưu ý thận trọng: bit dấu là giá trị Boolean, vì vậy 0 là dương và 1 là âm."
+
+#: ../../whatsnew/2.4.rst:565
+#, fuzzy
+msgid ""
+"Converting from floating-point numbers poses a bit of a problem: should the "
+"FP number representing 1.1 turn into the decimal number for exactly 1.1, or "
+"for 1.1 plus whatever inaccuracies are introduced? The decision was to dodge"
+" the issue and leave such a conversion out of the API.  Instead, you should "
+"convert the floating-point number into a string using the desired precision "
+"and pass the string to the :class:`Decimal` constructor::"
+msgstr ""
+"Việc chuyển đổi từ số dấu phẩy động gặp một chút vấn đề: số FP đại diện cho "
+"1,1 có nên chuyển thành số thập phân cho chính xác 1,1 hay cho 1,1 cộng với "
+"bất kỳ điểm không chính xác nào được đưa ra không? Quyết định là tránh vấn "
+"đề này và loại bỏ việc chuyển đổi như vậy ra khỏi API.  Thay vào đó, bạn nên"
+" chuyển đổi số dấu phẩy động thành một chuỗi với độ chính xác mong muốn và "
+"chuyển chuỗi đó tới hàm tạo :class:`Decimal`::"
+
+#: ../../whatsnew/2.4.rst:572
+#, python-format, fuzzy
+msgid ""
+">>> f = 1.1\n"
+">>> decimal.Decimal(str(f))\n"
+"Decimal(\"1.1\")\n"
+">>> decimal.Decimal('%.12f' % f)\n"
+"Decimal(\"1.100000000000\")"
+msgstr ""
+">>> f = 1,1\n"
+">>> thập phân.Decimal(str(f))\n"
+"Thập phân(\"1.1\")\n"
+">>> thập phân.Decimal('%.12f' % f)\n"
+"Thập phân (\"1.100000000000\")"
+
+#: ../../whatsnew/2.4.rst:578
+#, fuzzy
+msgid ""
+"Once you have :class:`Decimal` instances, you can perform the usual "
+"mathematical operations on them.  One limitation: exponentiation requires an"
+" integer exponent::"
+msgstr ""
+"Sau khi có phiên bản :class:`Decimal`, bạn có thể thực hiện các phép toán "
+"thông thường trên chúng.  Một hạn chế: phép lũy thừa yêu cầu số mũ nguyên::"
+
+#: ../../whatsnew/2.4.rst:582
+#, fuzzy
+msgid ""
+">>> a = decimal.Decimal('35.72')\n"
+">>> b = decimal.Decimal('1.73')\n"
+">>> a+b\n"
+"Decimal(\"37.45\")\n"
+">>> a-b\n"
+"Decimal(\"33.99\")\n"
+">>> a*b\n"
+"Decimal(\"61.7956\")\n"
+">>> a/b\n"
+"Decimal(\"20.64739884393063583815028902\")\n"
+">>> a ** 2\n"
+"Decimal(\"1275.9184\")\n"
+">>> a**b\n"
+"Traceback (most recent call last):\n"
+"  ...\n"
+"decimal.InvalidOperation: x ** (non-integer)"
+msgstr ""
+">>> a = thập phân.Decimal('35.72')\n"
+">>> b = thập phân.Decimal('1.73')\n"
+">>> a+b\n"
+"Thập phân(\"37.45\")\n"
+">>> a-b\n"
+"Thập phân(\"33.99\")\n"
+">>> a*b\n"
+"Thập phân(\"61.7956\")\n"
+">>> a/b\n"
+"Thập phân (\"20,64739884393063583815028902\")\n"
+">>> một ** 2\n"
+"Thập phân(\"1275.9184\")\n"
+">>> a**b\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  ...\n"
+"thập phân.InvalidOperation: x ** (không nguyên)"
+
+#: ../../whatsnew/2.4.rst:599
+#, fuzzy
+msgid ""
+"You can combine :class:`Decimal` instances with integers, but not with "
+"floating-point numbers::"
+msgstr ""
+"Bạn có thể kết hợp các phiên bản :class:`Decimal` với số nguyên, nhưng không"
+" thể kết hợp với số dấu phẩy động::"
+
+#: ../../whatsnew/2.4.rst:602
+#, fuzzy
+msgid ""
+">>> a + 4\n"
+"Decimal(\"39.72\")\n"
+">>> a + 4.5\n"
+"Traceback (most recent call last):\n"
+"  ...\n"
+"TypeError: You can interact Decimal only with int, long or Decimal data types.\n"
+">>>"
+msgstr ""
+">>> một + 4\n"
+"Thập phân(\"39.72\")\n"
+">>> a + 4,5\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  ...\n"
+"TypeError: Bạn chỉ có thể tương tác Decimal với các kiểu dữ liệu int, long hoặc Decimal.\n"
+">>>"
+
+#: ../../whatsnew/2.4.rst:610
+#, fuzzy
+msgid ""
+":class:`Decimal` numbers can be used with the :mod:`math` and :mod:`cmath` "
+"modules, but note that they'll be immediately converted to  floating-point "
+"numbers before the operation is performed, resulting in a possible loss of "
+"precision and accuracy.  You'll also get back a regular floating-point "
+"number and not a :class:`Decimal`.   ::"
+msgstr ""
+"Bạn có thể sử dụng số :class:`Decimal` với mô-đun :mod:`math` và "
+":mod:`cmath` nhưng lưu ý rằng chúng sẽ ngay lập tức được chuyển đổi thành số"
+" dấu phẩy động trước khi thực hiện thao tác, dẫn đến có thể mất độ chính xác"
+" và độ chính xác.  Bạn cũng sẽ nhận được số dấu phẩy động thông thường chứ "
+"không phải :class:`Decimal`.   ::"
+
+#: ../../whatsnew/2.4.rst:616
+#, fuzzy
+msgid ""
+">>> import math, cmath\n"
+">>> d = decimal.Decimal('123456789012.345')\n"
+">>> math.sqrt(d)\n"
+"351364.18288201344\n"
+">>> cmath.sqrt(-d)\n"
+"351364.18288201344j"
+msgstr ""
+">>> nhập toán, cmath\n"
+">>> d = thập phân.Decimal('123456789012.345')\n"
+">>> math.sqrt(d)\n"
+"351364.18288201344\n"
+">>> cmath.sqrt(-d)\n"
+"351364.18288201344j"
+
+#: ../../whatsnew/2.4.rst:623
+#, fuzzy
+msgid ""
+":class:`Decimal` instances have a :meth:`sqrt` method that returns a "
+":class:`Decimal`, but if you need other things such as trigonometric "
+"functions you'll have to implement them. ::"
+msgstr ""
+"Các phiên bản :class:`Decimal` có phương thức :meth:`sqrt` trả về "
+":class:`Decimal`, nhưng nếu bạn cần những thứ khác như hàm lượng giác thì "
+"bạn sẽ phải triển khai chúng. ::"
+
+#: ../../whatsnew/2.4.rst:627
+#, fuzzy
+msgid ""
+">>> d.sqrt()\n"
+"Decimal(\"351364.1828820134592177245001\")"
+msgstr ""
+">>> d.sqrt()\n"
+"Thập phân (\"351364.1828820134592177245001\")"
+
+#: ../../whatsnew/2.4.rst:632
+#, fuzzy
+msgid "The :class:`Context` type"
+msgstr "Loại :class:`Context`"
+
+#: ../../whatsnew/2.4.rst:634
+#, fuzzy
+msgid ""
+"Instances of the :class:`Context` class encapsulate several settings for "
+"decimal operations:"
+msgstr ""
+"Các phiên bản của lớp :class:`Context` gói gọn một số cài đặt cho các phép "
+"toán thập phân:"
+
+#: ../../whatsnew/2.4.rst:637
+#, fuzzy
+msgid ":attr:`prec` is the precision, the number of decimal places."
+msgstr ":attr:`prec` là độ chính xác, số chữ số thập phân."
+
+#: ../../whatsnew/2.4.rst:639
+#, fuzzy
+msgid ""
+":attr:`rounding` specifies the rounding mode.  The :mod:`decimal` module has"
+" constants for the various possibilities: :const:`ROUND_DOWN`, "
+":const:`ROUND_CEILING`,  :const:`ROUND_HALF_EVEN`, and various others."
+msgstr ""
+":attr:`rounding` chỉ định chế độ làm tròn.  Mô-đun :mod:`decimal` có các "
+"hằng số cho các khả năng khác nhau: :const:`ROUND_DOWN`, "
+":const:`ROUND_CEILING`, :const:`ROUND_HALF_EVEN` và nhiều loại khác."
+
+#: ../../whatsnew/2.4.rst:643
+#, fuzzy
+msgid ""
+":attr:`traps` is a dictionary specifying what happens on encountering "
+"certain error conditions: either  an exception is raised or  a value is "
+"returned.  Some examples of error conditions are division by zero, loss of "
+"precision, and overflow."
+msgstr ""
+":attr:`traps` là một từ điển chỉ rõ điều gì sẽ xảy ra khi gặp phải một số "
+"điều kiện lỗi nhất định: hoặc một ngoại lệ được đưa ra hoặc một giá trị được"
+" trả về.  Một số ví dụ về điều kiện lỗi là chia cho 0, mất độ chính xác và "
+"tràn."
+
+#: ../../whatsnew/2.4.rst:648
+#, fuzzy
+msgid ""
+"There's a thread-local default context available by calling "
+":func:`getcontext`; you can change the properties of this context to alter "
+"the default precision, rounding, or trap handling.  The following example "
+"shows the effect of changing the precision of the default context::"
+msgstr ""
+"Có sẵn bối cảnh mặc định theo luồng cục bộ bằng cách gọi :func:`getcontext`;"
+" bạn có thể thay đổi các thuộc tính của ngữ cảnh này để thay đổi độ chính "
+"xác mặc định, làm tròn hoặc xử lý bẫy.  Ví dụ sau đây cho thấy tác động của "
+"việc thay đổi độ chính xác của ngữ cảnh mặc định::"
+
+#: ../../whatsnew/2.4.rst:653
+#, fuzzy
+msgid ""
+">>> decimal.getcontext().prec\n"
+"28\n"
+">>> decimal.Decimal(1) / decimal.Decimal(7)\n"
+"Decimal(\"0.1428571428571428571428571429\")\n"
+">>> decimal.getcontext().prec = 9\n"
+">>> decimal.Decimal(1) / decimal.Decimal(7)\n"
+"Decimal(\"0.142857143\")"
+msgstr ""
+">>> thập phân.getcontext().prec\n"
+"28\n"
+">>> thập phân.Decimal(1) / thập phân.Decimal(7)\n"
+"Thập phân (\"0,1428571428571428571428571429\")\n"
+">>> thập phân.getcontext().prec = 9\n"
+">>> thập phân.Decimal(1) / thập phân.Decimal(7)\n"
+"Thập phân(\"0.142857143\")"
+
+#: ../../whatsnew/2.4.rst:661
+#, fuzzy
+msgid ""
+"The default action for error conditions is selectable; the module can either"
+" return a special value such as infinity or not-a-number, or exceptions can "
+"be raised::"
+msgstr ""
+"Có thể lựa chọn hành động mặc định cho các điều kiện lỗi; mô-đun có thể trả "
+"về một giá trị đặc biệt như vô cực hoặc không phải số hoặc có thể đưa ra các"
+" ngoại lệ::"
+
+#: ../../whatsnew/2.4.rst:665
+#, fuzzy
+msgid ""
+">>> decimal.Decimal(1) / decimal.Decimal(0)\n"
+"Traceback (most recent call last):\n"
+"  ...\n"
+"decimal.DivisionByZero: x / 0\n"
+">>> decimal.getcontext().traps[decimal.DivisionByZero] = False\n"
+">>> decimal.Decimal(1) / decimal.Decimal(0)\n"
+"Decimal(\"Infinity\")\n"
+">>>"
+msgstr ""
+">>> thập phân.Decimal(1) / thập phân.Decimal(0)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  ...\n"
+"thập phân.DivisionByZero: x / 0\n"
+">>> thập phân.getcontext().traps[decimal.DivisionByZero] = Sai\n"
+">>> thập phân.Decimal(1) / thập phân.Decimal(0)\n"
+"Thập phân(\"Vô cực\")\n"
+">>>"
+
+#: ../../whatsnew/2.4.rst:674
+#, fuzzy
+msgid ""
+"The :class:`Context` instance also has various methods for formatting  "
+"numbers such as :meth:`to_eng_string` and :meth:`to_sci_string`."
+msgstr ""
+"Phiên bản :class:`Context` cũng có nhiều phương pháp khác nhau để định dạng "
+"số như :meth:`to_eng_string` và :meth:`to_sci_string`."
+
+#: ../../whatsnew/2.4.rst:677
+#, fuzzy
+msgid ""
+"For more information, see the documentation for the :mod:`decimal` module, "
+"which includes a quick-start tutorial and a reference."
+msgstr ""
+"Để biết thêm thông tin, hãy xem tài liệu dành cho mô-đun :mod:`decimal`, bao"
+" gồm hướng dẫn bắt đầu nhanh và tài liệu tham khảo."
+
+#: ../../whatsnew/2.4.rst:683
+#, fuzzy
+msgid ":pep:`327` - Decimal Data Type"
+msgstr ":pep:`327` - Kiểu dữ liệu thập phân"
+
+#: ../../whatsnew/2.4.rst:684
+#, fuzzy
+msgid ""
+"Written by Facundo Batista and implemented by Facundo Batista, Eric Price, "
+"Raymond Hettinger, Aahz, and Tim Peters."
+msgstr ""
+"Được viết bởi Facundo Batista và được thực hiện bởi Facundo Batista, Eric "
+"Price, Raymond Hettinger, Aahz và Tim Peters."
+
+#: ../../whatsnew/2.4.rst:687
+#, fuzzy
+msgid ""
+"`http://www.lahey.com/float.htm "
+"<https://web.archive.org/web/20230604072523/http://www.lahey.com/float.htm>`__"
+msgstr ""
+"`http://www.lahey.com/float.htm "
+"<https://web.archive.org/web/20230604072523/http://www.lahey.com/float.htm>`__"
+
+#: ../../whatsnew/2.4.rst:688
+#, fuzzy
+msgid ""
+"The article uses Fortran code to illustrate many of the problems that "
+"floating-point inaccuracy can cause."
+msgstr ""
+"Bài viết sử dụng mã Fortran để minh họa nhiều vấn đề mà tính không chính xác"
+" của dấu phẩy động có thể gây ra."
+
+#: ../../whatsnew/2.4.rst:691
+#, fuzzy
+msgid "https://speleotrove.com/decimal/"
+msgstr "https://speleotrove.com/decimal/"
+
+#: ../../whatsnew/2.4.rst:692
+#, fuzzy
+msgid ""
+"A description of a decimal-based representation.  This representation is "
+"being proposed as a standard, and underlies the new Python decimal type.  "
+"Much of this material was written by Mike Cowlishaw, designer of the Rexx "
+"language."
+msgstr ""
+"Mô tả cách biểu diễn dựa trên số thập phân.  Cách biểu diễn này đang được đề"
+" xuất làm tiêu chuẩn và làm cơ sở cho kiểu thập phân Python mới.  Phần lớn "
+"tài liệu này được viết bởi Mike Cowlishaw, người thiết kế ngôn ngữ Rexx."
+
+#: ../../whatsnew/2.4.rst:700
+#, fuzzy
+msgid "PEP 328: Multi-line Imports"
+msgstr "PEP 328: Nhập nhiều dòng"
+
+#: ../../whatsnew/2.4.rst:702
+#, fuzzy
+msgid ""
+"One language change is a small syntactic tweak aimed at making it easier to "
+"import many names from a module.  In a ``from module import names`` "
+"statement, *names* is a sequence of names separated by commas.  If the "
+"sequence is  very long, you can either write multiple imports from the same "
+"module, or you can use backslashes to escape the line endings like this::"
+msgstr ""
+"Một thay đổi về ngôn ngữ là một chỉnh sửa nhỏ về cú pháp nhằm mục đích giúp "
+"việc nhập nhiều tên từ một mô-đun trở nên dễ dàng hơn.  Trong câu lệnh "
+"``from module import names``, *names* là một chuỗi các tên được phân tách "
+"bằng dấu phẩy.  Nếu chuỗi rất dài, bạn có thể viết nhiều lần nhập từ cùng "
+"một mô-đun hoặc bạn có thể sử dụng dấu gạch chéo ngược để thoát khỏi các kết"
+" thúc dòng như thế này::"
+
+#: ../../whatsnew/2.4.rst:708
+#, fuzzy
+msgid ""
+"from SimpleXMLRPCServer import SimpleXMLRPCServer,\\\n"
+"            SimpleXMLRPCRequestHandler,\\\n"
+"            CGIXMLRPCRequestHandler,\\\n"
+"            resolve_dotted_attribute"
+msgstr ""
+"từ SimpleXMLRPCServer nhập SimpleXMLRPCServer,\\\n"
+"            SimpleXMLRPCRequestHandler,\\\n"
+"            CGIXMLRPCRequestHandler,\\\n"
+"            giải quyết_dotted_attribute"
+
+#: ../../whatsnew/2.4.rst:713
+#, fuzzy
+msgid ""
+"The syntactic change in Python 2.4 simply allows putting the names within "
+"parentheses.  Python ignores newlines within a parenthesized expression, so "
+"the backslashes are no longer needed::"
+msgstr ""
+"Thay đổi cú pháp trong Python 2.4 chỉ cho phép đặt tên trong ngoặc đơn.  "
+"Python bỏ qua các dòng mới trong biểu thức được ngoặc đơn, do đó dấu gạch "
+"chéo ngược không còn cần thiết nữa ::"
+
+#: ../../whatsnew/2.4.rst:717
+#, fuzzy
+msgid ""
+"from SimpleXMLRPCServer import (SimpleXMLRPCServer,\n"
+"                                SimpleXMLRPCRequestHandler,\n"
+"                                CGIXMLRPCRequestHandler,\n"
+"                                resolve_dotted_attribute)"
+msgstr ""
+"từ việc nhập SimpleXMLRPCServer (SimpleXMLRPCServer,\n"
+"                                SimpleXMLRPCRequestHandler,\n"
+"                                CGIXMLRPCRequestHandler,\n"
+"                                giải quyết_dotted_attribute)"
+
+#: ../../whatsnew/2.4.rst:722
+#, fuzzy
+msgid ""
+"The PEP also proposes that all :keyword:`import` statements be absolute "
+"imports, with a leading ``.`` character to indicate a relative import.  This"
+" part of the PEP was not implemented for Python 2.4, but was completed for "
+"Python 2.5."
+msgstr ""
+"PEP cũng đề xuất rằng tất cả các câu lệnh :keyword:`import` đều được nhập "
+"tuyệt đối, với ký tự ``.`` ở đầu để biểu thị mức nhập tương đối.  Phần PEP "
+"này chưa được triển khai cho Python 2.4 nhưng đã được hoàn thiện cho Python "
+"2.5."
+
+#: ../../whatsnew/2.4.rst:729
+#, fuzzy
+msgid ":pep:`328` - Imports: Multi-Line and Absolute/Relative"
+msgstr ":pep:`328` - Nhập khẩu: Nhiều dòng và Tuyệt đối/Tương đối"
+
+#: ../../whatsnew/2.4.rst:730
+#, fuzzy
+msgid "Written by Aahz.  Multi-line imports were implemented by Dima Dorfman."
+msgstr ""
+"Được viết bởi Aahz.  Nhập khẩu nhiều dòng được thực hiện bởi Dima Dorfman."
+
+#: ../../whatsnew/2.4.rst:736
+#, fuzzy
+msgid "PEP 331: Locale-Independent Float/String Conversions"
+msgstr "PEP 331: Chuyển đổi chuỗi/nổi độc lập với miền địa phương"
+
+#: ../../whatsnew/2.4.rst:738
+#, fuzzy
+msgid ""
+"The :mod:`locale` modules lets Python software select various conversions "
+"and display conventions that are localized to a particular country or "
+"language. However, the module was careful to not change the numeric locale "
+"because various functions in Python's implementation required that the "
+"numeric locale remain set to the ``'C'`` locale.  Often this was because the"
+" code was using the C library's :c:func:`atof` function."
+msgstr ""
+"Các mô-đun :mod:`locale` cho phép phần mềm Python chọn các quy ước chuyển "
+"đổi và hiển thị khác nhau được bản địa hóa cho một quốc gia hoặc ngôn ngữ cụ"
+" thể. Tuy nhiên, mô-đun này đã cẩn thận để không thay đổi ngôn ngữ số vì các"
+" hàm khác nhau trong quá trình triển khai của Python yêu cầu ngôn ngữ số vẫn"
+" được đặt thành ngôn ngữ ``'C'``.  Điều này thường là do mã đang sử dụng hàm"
+" :c:func:`atof` của thư viện C."
+
+#: ../../whatsnew/2.4.rst:745
+#, fuzzy
+msgid ""
+"Not setting the numeric locale caused trouble for extensions that used "
+"third-party C libraries, however, because they wouldn't have the correct "
+"locale set. The motivating example was GTK+, whose user interface widgets "
+"weren't displaying numbers in the current locale."
+msgstr ""
+"Tuy nhiên, việc không đặt ngôn ngữ số sẽ gây rắc rối cho các tiện ích mở "
+"rộng sử dụng thư viện C của bên thứ ba vì chúng không có ngôn ngữ chính xác "
+"được đặt. Ví dụ thúc đẩy là GTK+, tiện ích giao diện người dùng của nó không"
+" hiển thị số ở ngôn ngữ hiện tại."
+
+#: ../../whatsnew/2.4.rst:750
+#, fuzzy
+msgid ""
+"The solution described in the PEP is to add three new functions to the "
+"Python API that perform ASCII-only conversions, ignoring the locale setting:"
+msgstr ""
+"Giải pháp được mô tả trong PEP là thêm ba hàm mới vào Python API để thực "
+"hiện chuyển đổi chỉ dành cho ASCII, bỏ qua cài đặt ngôn ngữ:"
+
+#: ../../whatsnew/2.4.rst:753
+#, fuzzy
+msgid ""
+"``PyOS_ascii_strtod(str, ptr)``  and ``PyOS_ascii_atof(str, ptr)`` both "
+"convert a string to a C :c:expr:`double`."
+msgstr ""
+"``PyOS_ascii_strtod(str, ptr)`` và ``PyOS_ascii_atof(str, ptr)`` đều chuyển "
+"đổi một chuỗi thành C :c:expr:`double`."
+
+#: ../../whatsnew/2.4.rst:756
+#, fuzzy
+msgid ""
+"``PyOS_ascii_formatd(buffer, buf_len, format, d)`` converts a "
+":c:expr:`double` to an ASCII string."
+msgstr ""
+"``PyOS_ascii_formatd(buffer, buf_len, format, d)`` chuyển đổi "
+":c:expr:`double` thành chuỗi ASCII."
+
+#: ../../whatsnew/2.4.rst:759
+#, fuzzy
+msgid ""
+"The code for these functions came from the GLib library (`https://developer-"
+"old.gnome.org/glib/2.26/ "
+"<http://web.archive.org/web/20210306104320/https://developer.gnome.org/glib/2.26/>`__),"
+" whose developers kindly relicensed the relevant functions and donated them "
+"to the Python Software Foundation.  The :mod:`locale` module  can now change"
+" the numeric locale, letting extensions such as GTK+  produce the correct "
+"results."
+msgstr ""
+"Mã cho các hàm này đến từ thư viện GLib (`https://developer-"
+"old.gnome.org/glib/2.26/ "
+"<http://web.archive.org/web/20210306104320/https://developer.gnome.org/glib/2.26/>`__),"
+" các nhà phát triển của thư viện này đã vui lòng cấp lại các hàm liên quan "
+"và tặng chúng cho Python Software Foundation.  Mô-đun :mod:`locale` hiện có "
+"thể thay đổi ngôn ngữ số, cho phép các tiện ích mở rộng như GTK+ tạo ra kết "
+"quả chính xác."
+
+#: ../../whatsnew/2.4.rst:768
+#, fuzzy
+msgid ":pep:`331` - Locale-Independent Float/String Conversions"
+msgstr ":pep:`331` - Chuyển đổi chuỗi/chuỗi độc lập với miền địa phương"
+
+#: ../../whatsnew/2.4.rst:769
+#, fuzzy
+msgid "Written by Christian R. Reis, and implemented by Gustavo Carneiro."
+msgstr ""
+"Được viết bởi Christian R. Reis và được thực hiện bởi Gustavo Carneiro."
+
+#: ../../whatsnew/2.4.rst:775
+#, fuzzy
+msgid "Other Language Changes"
+msgstr "Những thay đổi ngôn ngữ khác"
+
+#: ../../whatsnew/2.4.rst:777
+#, fuzzy
+msgid ""
+"Here are all of the changes that Python 2.4 makes to the core Python "
+"language."
+msgstr ""
+"Dưới đây là tất cả những thay đổi mà Python 2.4 thực hiện đối với ngôn ngữ "
+"Python cốt lõi."
+
+#: ../../whatsnew/2.4.rst:779
+#, fuzzy
+msgid "Decorators for functions and methods were added (:pep:`318`)."
+msgstr "Trang trí cho các hàm và phương thức đã được thêm vào (:pep:`318`)."
+
+#: ../../whatsnew/2.4.rst:781
+#, fuzzy
+msgid ""
+"Built-in :func:`set` and :func:`frozenset` types were  added (:pep:`218`). "
+"Other new built-ins include the ``reversed(seq)`` function (:pep:`322`)."
+msgstr ""
+"Các loại :func:`set` và :func:`frozenset` tích hợp đã được thêm vào "
+"(:pep:`218`). Các phần mềm tích hợp mới khác bao gồm chức năng "
+"``reversed(seq)`` (:pep:`322`)."
+
+#: ../../whatsnew/2.4.rst:784
+#, fuzzy
+msgid "Generator expressions were added (:pep:`289`)."
+msgstr "Các biểu thức của trình tạo đã được thêm vào (:pep:`289`)."
+
+#: ../../whatsnew/2.4.rst:786
+#, fuzzy
+msgid ""
+"Certain numeric expressions no longer return values restricted to 32 or 64 "
+"bits (:pep:`237`)."
+msgstr ""
+"Một số biểu thức số nhất định không còn trả về các giá trị bị giới hạn ở 32 "
+"hoặc 64 bit (:pep:`237`)."
+
+#: ../../whatsnew/2.4.rst:789
+#, fuzzy
+msgid ""
+"You can now put parentheses around the list of names in a ``from module "
+"import names`` statement (:pep:`328`)."
+msgstr ""
+"Bây giờ bạn có thể đặt dấu ngoặc đơn xung quanh danh sách tên trong câu lệnh"
+" ``from module import names`` (:pep:`328`)."
+
+#: ../../whatsnew/2.4.rst:792
+#, fuzzy
+msgid ""
+"The :meth:`dict.update` method now accepts the same argument forms as the "
+":class:`dict` constructor.  This includes any mapping, any iterable of "
+"key/value pairs, and keyword arguments. (Contributed by Raymond Hettinger.)"
+msgstr ""
+"Phương thức :meth:`dict.update` hiện chấp nhận các dạng đối số giống như hàm"
+" tạo :class:`dict`.  Điều này bao gồm mọi ánh xạ, mọi cặp khóa/giá trị có "
+"thể lặp lại và đối số từ khóa. (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:796
+#, fuzzy
+msgid ""
+"The string methods :meth:`ljust`, :meth:`rjust`, and :meth:`center` now take"
+" an optional argument for specifying a fill character other than a space. "
+"(Contributed by Raymond Hettinger.)"
+msgstr ""
+"Các phương thức chuỗi :meth:`ljust`, :meth:`rjust` và :meth:`center` hiện có"
+" một đối số tùy chọn để chỉ định ký tự điền không phải là khoảng trắng. "
+"(Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:800
+#, fuzzy
+msgid ""
+"Strings also gained an :meth:`rsplit` method that works like the "
+":meth:`split` method but splits from the end of the string.   (Contributed "
+"by Sean Reifschneider.) ::"
+msgstr ""
+"Chuỗi cũng có được phương thức :meth:`rsplit` hoạt động giống như phương "
+"thức :meth:`split` nhưng tách ra từ cuối chuỗi.   (Được đóng góp bởi Sean "
+"Reifschneider.) ::"
+
+#: ../../whatsnew/2.4.rst:804
+#, fuzzy
+msgid ""
+">>> 'www.python.org'.split('.', 1)\n"
+"['www', 'python.org']\n"
+"'www.python.org'.rsplit('.', 1)\n"
+"['www.python', 'org']"
+msgstr ""
+">>> 'www.python.org'.split('.', 1)\n"
+"['www', 'python.org']\n"
+"'www.python.org'.rsplit('.', 1)\n"
+"['www.python', 'tổ chức']"
+
+#: ../../whatsnew/2.4.rst:809
+#, fuzzy
+msgid ""
+"Three keyword parameters, *cmp*, *key*, and *reverse*, were added to the "
+":meth:`sort` method of lists. These parameters make some common usages of "
+":meth:`sort` simpler. All of these parameters are optional."
+msgstr ""
+"Ba tham số từ khóa, *cmp*, *key* và *reverse*, đã được thêm vào phương thức "
+"danh sách :meth:`sort`. Các tham số này làm cho một số cách sử dụng phổ biến"
+" của :meth:`sort` trở nên đơn giản hơn. Tất cả các tham số này là tùy chọn."
+
+#: ../../whatsnew/2.4.rst:813
+#, fuzzy
+msgid ""
+"For the *cmp* parameter, the value should be a comparison function that "
+"takes two parameters and returns -1, 0, or +1 depending on how the "
+"parameters compare. This function will then be used to sort the list.  "
+"Previously this was the only parameter that could be provided to "
+":meth:`sort`."
+msgstr ""
+"Đối với tham số *cmp*, giá trị phải là hàm so sánh nhận hai tham số và trả "
+"về -1, 0 hoặc +1 tùy thuộc vào cách so sánh các tham số. Chức năng này sau "
+"đó sẽ được sử dụng để sắp xếp danh sách.  Trước đây đây là tham số duy nhất "
+"có thể được cung cấp cho :meth:`sort`."
+
+#: ../../whatsnew/2.4.rst:818
+#, fuzzy
+msgid ""
+"*key* should be a single-parameter function that takes a list element and "
+"returns a comparison key for the element.  The list is then sorted using the"
+" comparison keys.  The following example sorts a list case-insensitively::"
+msgstr ""
+"*key* phải là hàm một tham số nhận phần tử danh sách và trả về khóa so sánh "
+"cho phần tử đó.  Danh sách sau đó được sắp xếp bằng cách sử dụng các phím so"
+" sánh.  Ví dụ sau sắp xếp danh sách không phân biệt chữ hoa chữ thường::"
+
+#: ../../whatsnew/2.4.rst:822
+#, fuzzy
+msgid ""
+">>> L = ['A', 'b', 'c', 'D']\n"
+">>> L.sort()                 # Case-sensitive sort\n"
+">>> L\n"
+"['A', 'D', 'b', 'c']\n"
+">>> # Using 'key' parameter to sort list\n"
+">>> L.sort(key=lambda x: x.lower())\n"
+">>> L\n"
+"['A', 'b', 'c', 'D']\n"
+">>> # Old-fashioned way\n"
+">>> L.sort(cmp=lambda x,y: cmp(x.lower(), y.lower()))\n"
+">>> L\n"
+"['A', 'b', 'c', 'D']"
+msgstr ""
+">>> L = ['A', 'b', 'c', 'D']\n"
+">>> Sắp xếp L.sort() # Case-sensitive\n"
+">>> L\n"
+"['A', 'D', 'b', 'c']\n"
+">>> Tham số 'key' # Using để sắp xếp danh sách\n"
+">>> L.sort(key=lambda x: x.low())\n"
+">>> L\n"
+"['A', 'b', 'c', 'D']\n"
+">>> cách # Old-fashioned\n"
+">>> L.sort(cmp=lambda x,y: cmp(x.low(), y.low()))\n"
+">>> L\n"
+"['A', 'b', 'c', 'D']"
+
+#: ../../whatsnew/2.4.rst:835
+#, fuzzy
+msgid ""
+"The last example, which uses the *cmp* parameter, is the old way to perform "
+"a case-insensitive sort.  It works but is slower than using a *key* "
+"parameter. Using *key* calls :meth:`lower` method once for each element in "
+"the list while using *cmp* will call it twice for each comparison, so using "
+"*key* saves on invocations of the :meth:`lower` method."
+msgstr ""
+"Ví dụ cuối cùng, sử dụng tham số *cmp*, là cách cũ để thực hiện sắp xếp "
+"không phân biệt chữ hoa chữ thường.  Nó hoạt động nhưng chậm hơn so với sử "
+"dụng tham số *key*. Việc sử dụng *key* gọi phương thức :meth:`lower` một lần"
+" cho mỗi phần tử trong danh sách trong khi sử dụng *cmp* sẽ gọi nó hai lần "
+"cho mỗi lần so sánh, do đó, sử dụng *key* sẽ tiết kiệm được việc gọi phương "
+"thức :meth:`lower`."
+
+#: ../../whatsnew/2.4.rst:841
+#, fuzzy
+msgid ""
+"For simple key functions and comparison functions, it is often possible to "
+"avoid a :keyword:`lambda` expression by using an unbound method instead.  "
+"For example, the above case-insensitive sort is best written as::"
+msgstr ""
+"Đối với các hàm khóa đơn giản và hàm so sánh, thường có thể tránh được biểu "
+"thức :keyword:`lambda` bằng cách sử dụng phương thức không liên kết thay "
+"thế.  Ví dụ: cách sắp xếp không phân biệt chữ hoa chữ thường ở trên được "
+"viết tốt nhất là::"
+
+#: ../../whatsnew/2.4.rst:845
+#, fuzzy
+msgid ""
+">>> L.sort(key=str.lower)\n"
+">>> L\n"
+"['A', 'b', 'c', 'D']"
+msgstr ""
+">>> L.sort(key=str.low)\n"
+">>> L\n"
+"['A', 'b', 'c', 'D']"
+
+#: ../../whatsnew/2.4.rst:849
+#, fuzzy
+msgid ""
+"Finally, the *reverse* parameter takes a Boolean value.  If the value is "
+"true, the list will be sorted into reverse order. Instead of ``L.sort(); "
+"L.reverse()``, you can now write ``L.sort(reverse=True)``."
+msgstr ""
+"Cuối cùng, tham số *reverse* nhận giá trị Boolean.  Nếu giá trị đúng, danh "
+"sách sẽ được sắp xếp theo thứ tự ngược lại. Thay vì ``L.sort(); "
+"L.reverse()``, giờ đây bạn có thể viết ``L.sort(reverse=True)``."
+
+#: ../../whatsnew/2.4.rst:853
+#, fuzzy
+msgid ""
+"The results of sorting are now guaranteed to be stable.  This means that two"
+" entries with equal keys will be returned in the same order as they were "
+"input. For example, you can sort a list of people by name, and then sort the"
+" list by age, resulting in a list sorted by age where people with the same "
+"age are in name-sorted order."
+msgstr ""
+"Kết quả phân loại hiện nay được đảm bảo ổn định.  Điều này có nghĩa là hai "
+"mục có khóa bằng nhau sẽ được trả về theo cùng thứ tự như chúng được nhập "
+"vào. Ví dụ: bạn có thể sắp xếp danh sách những người theo tên, sau đó sắp "
+"xếp danh sách theo độ tuổi, dẫn đến danh sách được sắp xếp theo độ tuổi "
+"trong đó những người có cùng độ tuổi được sắp xếp theo thứ tự tên."
+
+#: ../../whatsnew/2.4.rst:859
+#, fuzzy
+msgid "(All changes to :meth:`sort` contributed by Raymond Hettinger.)"
+msgstr ""
+"(Tất cả các thay đổi đối với :meth:`sort` đều do Raymond Hettinger đóng "
+"góp.)"
+
+#: ../../whatsnew/2.4.rst:861
+#, fuzzy
+msgid ""
+"There is a new built-in function ``sorted(iterable)`` that works like the "
+"in-place :meth:`list.sort` method but can be used in expressions.  The "
+"differences are:"
+msgstr ""
+"Có một hàm tích hợp mới ``sorted(iterable)`` hoạt động giống như phương thức"
+" :meth:`list.sort` tại chỗ nhưng có thể được sử dụng trong biểu thức.  Sự "
+"khác biệt là:"
+
+#: ../../whatsnew/2.4.rst:865
+#, fuzzy
+msgid "the input may be any iterable;"
+msgstr "đầu vào có thể là bất kỳ lần lặp nào;"
+
+#: ../../whatsnew/2.4.rst:867
+#, fuzzy
+msgid "a newly formed copy is sorted, leaving the original intact; and"
+msgstr "một bản sao mới được tạo thành được sắp xếp, giữ nguyên bản gốc; và"
+
+#: ../../whatsnew/2.4.rst:869
+#, fuzzy
+msgid "the expression returns the new sorted copy"
+msgstr "biểu thức trả về bản sao được sắp xếp mới"
+
+#: ../../whatsnew/2.4.rst:873
+#, fuzzy
+msgid ""
+">>> L = [9,7,8,3,2,4,1,6,5]\n"
+">>> [10+i for i in sorted(L)]       # usable in a list comprehension\n"
+"[11, 12, 13, 14, 15, 16, 17, 18, 19]\n"
+">>> L                               # original is left unchanged\n"
+"[9,7,8,3,2,4,1,6,5]\n"
+">>> sorted('Monty Python')          # any iterable may be an input\n"
+"[' ', 'M', 'P', 'h', 'n', 'n', 'o', 'o', 't', 't', 'y', 'y']\n"
+"\n"
+">>> # List the contents of a dict sorted by key values\n"
+">>> colormap = dict(red=1, blue=2, green=3, black=4, yellow=5)\n"
+">>> for k, v in sorted(colormap.iteritems()):\n"
+"...     print k, v\n"
+"...\n"
+"black 4\n"
+"blue 2\n"
+"green 3\n"
+"red 1\n"
+"yellow 5"
+msgstr ""
+">>> L = [9,7,8,3,2,4,1,6,5]\n"
+">>> [10+i cho i trong được sắp xếp(L)] # usable trong phần hiểu danh sách\n"
+"[11, 12, 13, 14, 15, 16, 17, 18, 19]\n"
+">>> L # original được giữ nguyên\n"
+"[9,7,8,3,2,4,1,6,5]\n"
+">>> được sắp xếp('Monty Python') # any iterable có thể là đầu vào\n"
+"[' ', 'M', 'P', 'h', 'n', 'n', 'o', 'o', 't', 't', 'y', 'y']\n"
+"\n"
+">>> # List nội dung của một lệnh được sắp xếp theo các giá trị khóa\n"
+">>> colormap = dict(red=1, blue=2, green=3, black=4, yellow=5)\n"
+">>> cho k, v trong được sắp xếp(colormap.iteritems()):\n"
+"... in k, v\n"
+"...\n"
+"đen 4\n"
+"màu xanh 2\n"
+"xanh 3\n"
+"màu đỏ 1\n"
+"màu vàng 5"
+
+#: ../../whatsnew/2.4.rst:892 ../../whatsnew/2.4.rst:920
+#: ../../whatsnew/2.4.rst:1213
+#, fuzzy
+msgid "(Contributed by Raymond Hettinger.)"
+msgstr "(Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:894 ../../whatsnew/2.4.rst:1520
+#, fuzzy
+msgid ""
+"Integer operations will no longer trigger an :exc:`OverflowWarning`. The "
+":exc:`OverflowWarning` warning will disappear in Python 2.5."
+msgstr ""
+"Các phép toán số nguyên sẽ không còn kích hoạt :exc:`OverflowWarning` nữa. "
+"Cảnh báo :exc:`OverflowWarning` sẽ biến mất trong Python 2.5."
+
+#: ../../whatsnew/2.4.rst:897
+#, fuzzy
+msgid ""
+"The interpreter gained a new switch, :option:`-m`, that takes a name, "
+"searches for the corresponding  module on ``sys.path``, and runs the module "
+"as a script. For example,  you can now run the Python profiler with ``python"
+" -m profile``. (Contributed by Nick Coghlan.)"
+msgstr ""
+"Trình thông dịch đã có một công tắc mới, :option:`-m`, nhận tên, tìm kiếm "
+"mô-đun tương ứng trên ``sys.path`` và chạy mô-đun đó dưới dạng tập lệnh. Ví "
+"dụ: bây giờ bạn có thể chạy trình lược tả Python bằng ``python -m profile``."
+" (Được đóng góp bởi Nick Coghlan.)"
+
+#: ../../whatsnew/2.4.rst:902
+#, fuzzy
+msgid ""
+"The ``eval(expr, globals, locals)`` and ``execfile(filename, globals, "
+"locals)`` functions and the ``exec`` statement now accept any mapping type "
+"for the *locals* parameter.  Previously this had to be a regular Python "
+"dictionary.  (Contributed by Raymond Hettinger.)"
+msgstr ""
+"Các hàm ``eval(expr, globals, locals)`` và ``execfile(filename, globals, "
+"locals)`` cũng như câu lệnh ``exec`` hiện chấp nhận mọi loại ánh xạ cho tham"
+" số *locals*.  Trước đây đây phải là một từ điển Python thông thường.  (Được"
+" đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:907
+#, fuzzy
+msgid ""
+"The :func:`zip` built-in function and :func:`itertools.izip` now return an "
+"empty list if called with no arguments. Previously they raised a "
+":exc:`TypeError` exception.  This makes them more suitable for use with "
+"variable length argument lists::"
+msgstr ""
+"Hàm tích hợp :func:`zip` và :func:`itertools.izip` hiện trả về một danh sách"
+" trống nếu được gọi không có đối số. Trước đây họ đã đưa ra một ngoại lệ "
+":exc:`TypeError`.  Điều này làm cho chúng phù hợp hơn để sử dụng với danh "
+"sách đối số có độ dài thay đổi ::"
+
+#: ../../whatsnew/2.4.rst:912
+#, fuzzy
+msgid ""
+">>> def transpose(array):\n"
+"...    return zip(*array)\n"
+"...\n"
+">>> transpose([(1,2,3), (4,5,6)])\n"
+"[(1, 4), (2, 5), (3, 6)]\n"
+">>> transpose([])\n"
+"[]"
+msgstr ""
+">>> chuyển đổi def (mảng):\n"
+"... trả về zip(*array)\n"
+"...\n"
+">>> chuyển vị([(1,2,3), (4,5,6)])\n"
+"[(1, 4), (2, 5), (3, 6)]\n"
+">>> chuyển vị([])\n"
+"[]"
+
+#: ../../whatsnew/2.4.rst:922
+#, fuzzy
+msgid ""
+"Encountering a failure while importing a module no longer leaves a partially"
+" initialized module object in ``sys.modules``.  The incomplete module object"
+" left behind would fool further imports of the same module into succeeding, "
+"leading to confusing errors.   (Fixed by Tim Peters.)"
+msgstr ""
+"Gặp lỗi khi nhập mô-đun không còn để lại đối tượng mô-đun được khởi tạo một "
+"phần trong ``sys.modules``.  Đối tượng mô-đun chưa hoàn chỉnh bị bỏ lại sẽ "
+"đánh lừa việc nhập thêm mô-đun tương tự vào thành công, dẫn đến các lỗi khó "
+"hiểu.   (Đã sửa bởi Tim Peters.)"
+
+#: ../../whatsnew/2.4.rst:927
+#, fuzzy
+msgid ""
+":const:`None` is now a constant; code that binds a new value to  the name "
+"``None`` is now a syntax error. (Contributed by Raymond Hettinger.)"
+msgstr ""
+":const:`None` hiện là hằng số; mã liên kết một giá trị mới với tên ``None`` "
+"hiện là lỗi cú pháp. (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:934
+#, fuzzy
+msgid "Optimizations"
+msgstr "Tối ưu hóa"
+
+#: ../../whatsnew/2.4.rst:936
+#, fuzzy
+msgid ""
+"The inner loops for list and tuple slicing were optimized and now run about "
+"one-third faster.  The inner loops for dictionaries were also optimized, "
+"resulting in performance boosts for :meth:`keys`, :meth:`values`, "
+":meth:`items`, :meth:`iterkeys`, :meth:`itervalues`, and :meth:`iteritems`. "
+"(Contributed by Raymond Hettinger.)"
+msgstr ""
+"Các vòng lặp bên trong để cắt danh sách và cắt bộ dữ liệu đã được tối ưu hóa"
+" và hiện chạy nhanh hơn khoảng một phần ba.  Các vòng lặp bên trong dành cho"
+" từ điển cũng được tối ưu hóa, giúp tăng hiệu suất cho :meth:`keys`, "
+":meth:`values`, :meth:`items`, :meth:`iterkeys`, :meth:`itervalues` và "
+":meth:`iteritems`. (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:942
+#, fuzzy
+msgid ""
+"The machinery for growing and shrinking lists was optimized for speed and "
+"for space efficiency.  Appending and popping from lists now runs faster due "
+"to more efficient code paths and less frequent use of the underlying system "
+":c:func:`realloc`.  List comprehensions also benefit.   :meth:`list.extend` "
+"was also optimized and no longer converts its argument into a temporary list"
+" before extending the base list.  (Contributed by Raymond Hettinger.)"
+msgstr ""
+"Bộ máy phát triển và thu hẹp danh sách đã được tối ưu hóa về tốc độ và hiệu "
+"quả về không gian.  Việc thêm và bật từ danh sách giờ đây chạy nhanh hơn nhờ"
+" đường dẫn mã hiệu quả hơn và việc sử dụng hệ thống cơ bản :c:func:`realloc`"
+" ít thường xuyên hơn.  Việc hiểu danh sách cũng có lợi.   "
+":meth:`list.extend` cũng đã được tối ưu hóa và không còn chuyển đổi đối số "
+"của nó thành danh sách tạm thời trước khi mở rộng danh sách cơ sở.  (Được "
+"đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:949
+#, fuzzy
+msgid ""
+":func:`list`, :func:`tuple`, :func:`map`, :func:`filter`, and :func:`zip` "
+"now run several times faster with non-sequence arguments that supply a "
+":meth:`__len__` method.  (Contributed by Raymond Hettinger.)"
+msgstr ""
+":func:`list`, :func:`tuple`, :func:`map`, :func:`filter` và :func:`zip` hiện"
+" chạy nhanh hơn nhiều lần với các đối số không theo trình tự cung cấp phương"
+" thức :meth:`__len__`.  (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:953
+#, fuzzy
+msgid ""
+"The methods :meth:`list.__getitem__`, :meth:`dict.__getitem__`, and "
+":meth:`dict.__contains__` are now implemented as :class:`method_descriptor` "
+"objects rather than :class:`wrapper_descriptor` objects.  This form of  "
+"access doubles their performance and makes them more suitable for use as "
+"arguments to functionals: ``map(mydict.__getitem__, keylist)``. (Contributed"
+" by Raymond Hettinger.)"
+msgstr ""
+"Các phương thức :meth:`list.__getitem__`, :meth:`dict.__getitem__` và "
+":meth:`dict.__contains__` hiện được triển khai dưới dạng đối tượng "
+":class:`method_descriptor` thay vì đối tượng :class:`wrapper_descriptor`.  "
+"Hình thức truy cập này tăng gấp đôi hiệu suất của chúng và làm cho chúng phù"
+" hợp hơn để sử dụng làm đối số cho các hàm: ``map(mydict.__getitem__, "
+"keylist)``. (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:960
+#, fuzzy
+msgid ""
+"Added a new opcode, ``LIST_APPEND``, that simplifies the generated bytecode "
+"for list comprehensions and speeds them up by about a third.  (Contributed "
+"by Raymond Hettinger.)"
+msgstr ""
+"Đã thêm mã hoạt động mới, ``LIST_APPEND``, giúp đơn giản hóa mã byte được "
+"tạo để hiểu danh sách và tăng tốc chúng lên khoảng một phần ba.  (Được đóng "
+"góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:964
+#, fuzzy
+msgid ""
+"The peephole bytecode optimizer has been improved to  produce shorter, "
+"faster bytecode; remarkably, the resulting bytecode is  more readable.  "
+"(Enhanced by Raymond Hettinger.)"
+msgstr ""
+"Trình tối ưu hóa mã byte lỗ nhìn trộm đã được cải tiến để tạo ra mã byte "
+"ngắn hơn, nhanh hơn; đáng chú ý là mã byte kết quả dễ đọc hơn.  (Được tăng "
+"cường bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:968
+#, fuzzy
+msgid ""
+"String concatenations in statements of the form ``s = s + \"abc\"`` and ``s "
+"+= \"abc\"`` are now performed more efficiently in certain circumstances.  "
+"This optimization won't be present in other Python implementations such as "
+"Jython, so you shouldn't rely on it; using the :meth:`join` method of "
+"strings is still recommended when you want to efficiently glue a large "
+"number of strings together. (Contributed by Armin Rigo.)"
+msgstr ""
+"Việc nối chuỗi trong các câu lệnh có dạng ``s = s + \"abc\"`` và ``s += "
+"\"abc\"`` hiện được thực hiện hiệu quả hơn trong một số trường hợp nhất "
+"định.  Tính năng tối ưu hóa này sẽ không có trong các triển khai Python khác"
+" như Jython, vì vậy bạn không nên dựa vào nó; vẫn nên sử dụng phương pháp "
+"xâu chuỗi :meth:`join` khi bạn muốn dán một số lượng lớn chuỗi lại với nhau "
+"một cách hiệu quả. (Được đóng góp bởi Armin Rigo.)"
+
+#: ../../whatsnew/2.4.rst:975
+#, python-format, fuzzy
+msgid ""
+"The net result of the 2.4 optimizations is that Python 2.4 runs the pystone "
+"benchmark around 5% faster than Python 2.3 and 35% faster than Python 2.2. "
+"(pystone is not a particularly good benchmark, but it's the most commonly "
+"used measurement of Python's performance.  Your own applications may show "
+"greater or smaller benefits from Python 2.4.)"
+msgstr ""
+"Kết quả cuối cùng của việc tối ưu hóa 2.4 là Python 2.4 chạy điểm chuẩn "
+"pystone nhanh hơn khoảng 5% so với Python 2.3 và nhanh hơn 35% so với Python"
+" 2.2. (pystone không phải là một điểm chuẩn đặc biệt tốt nhưng nó là phép đo"
+" hiệu suất của Python được sử dụng phổ biến nhất. Các ứng dụng của riêng bạn"
+" có thể cho thấy những lợi ích lớn hơn hoặc nhỏ hơn từ Python 2.4.)"
+
+#: ../../whatsnew/2.4.rst:991
+#, fuzzy
+msgid "New, Improved, and Deprecated Modules"
+msgstr "Các mô-đun mới, cải tiến và không được dùng nữa"
+
+#: ../../whatsnew/2.4.rst:993
+#, fuzzy
+msgid ""
+"As usual, Python's standard library received a number of enhancements and "
+"bug fixes.  Here's a partial list of the most notable changes, sorted "
+"alphabetically by module name. Consult the :file:`Misc/NEWS` file in the "
+"source tree for a more complete list of changes, or look through the CVS "
+"logs for all the details."
+msgstr ""
+"Như thường lệ, thư viện chuẩn của Python nhận được một số cải tiến và sửa "
+"lỗi.  Đây là danh sách một phần những thay đổi đáng chú ý nhất, được sắp xếp"
+" theo thứ tự bảng chữ cái theo tên mô-đun. Tham khảo tệp :file:`Misc/NEWS` "
+"trong cây nguồn để biết danh sách thay đổi đầy đủ hơn hoặc xem qua nhật ký "
+"CVS để biết tất cả chi tiết."
+
+#: ../../whatsnew/2.4.rst:998
+#, fuzzy
+msgid ""
+"The :mod:`!asyncore` module's :func:`!loop` function now has a *count* "
+"parameter that lets you perform a limited number of passes through the "
+"polling loop.  The default is still to loop forever."
+msgstr ""
+"Chức năng :func:`!loop` của mô-đun :mod:`!asyncore` hiện có tham số *count* "
+"cho phép bạn thực hiện một số lần chuyển giới hạn qua vòng bỏ phiếu.  Mặc "
+"định vẫn là lặp mãi mãi."
+
+#: ../../whatsnew/2.4.rst:1002
+#, fuzzy
+msgid ""
+"The :mod:`base64` module now has more complete :rfc:`3548` support for "
+"Base64, Base32, and Base16 encoding and decoding, including optional case "
+"folding and optional alternative alphabets. (Contributed by Barry Warsaw.)"
+msgstr ""
+"Mô-đun :mod:`base64` hiện có hỗ trợ :rfc:`3548` hoàn chỉnh hơn cho mã hóa và"
+" giải mã Base64, Base32 và Base16, bao gồm cả cách gấp chữ hoa chữ thường và"
+" bảng chữ cái thay thế tùy chọn. (Được đóng góp bởi Barry Warsaw.)"
+
+#: ../../whatsnew/2.4.rst:1006
+#, fuzzy
+msgid ""
+"The :mod:`bisect` module now has an underlying C implementation for improved"
+" performance. (Contributed by Dmitry Vasiliev.)"
+msgstr ""
+"Mô-đun :mod:`bisect` hiện có triển khai C cơ bản để cải thiện hiệu suất. "
+"(Được đóng góp bởi Dmitry Vasiliev.)"
+
+#: ../../whatsnew/2.4.rst:1009
+#, fuzzy
+msgid ""
+"The CJKCodecs collections of East Asian codecs, maintained by Hye-Shik "
+"Chang, was integrated into 2.4.   The new encodings are:"
+msgstr ""
+"Bộ sưu tập CJKCodecs gồm các codec Đông Á, do Hye-Shik Chang duy trì, đã "
+"được tích hợp vào phiên bản 2.4.   Các mã hóa mới là:"
+
+#: ../../whatsnew/2.4.rst:1012
+#, fuzzy
+msgid "Chinese (PRC): gb2312, gbk, gb18030, big5hkscs, hz"
+msgstr "Tiếng Trung (PRC): gb2312, gbk, gb18030, big5hkscs, hz"
+
+#: ../../whatsnew/2.4.rst:1014
+#, fuzzy
+msgid "Chinese (ROC): big5, cp950"
+msgstr "Tiếng Trung (ROC): big5, cp950"
+
+#: ../../whatsnew/2.4.rst:1016
+#, fuzzy
+msgid "Japanese: cp932, euc-jis-2004, euc-jp, euc-jisx0213, iso-2022-jp,"
+msgstr "Tiếng Nhật: cp932, euc-jis-2004, euc-jp, euc-jisx0213, iso-2022-jp,"
+
+#: ../../whatsnew/2.4.rst:1017
+#, fuzzy
+msgid ""
+"iso-2022-jp-1, iso-2022-jp-2, iso-2022-jp-3, iso-2022-jp-ext, "
+"iso-2022-jp-2004, shift-jis, shift-jisx0213, shift-jis-2004"
+msgstr ""
+"iso-2022-jp-1, iso-2022-jp-2, iso-2022-jp-3, iso-2022-jp-ext, "
+"iso-2022-jp-2004, shift-jis, shift-jisx0213, shift-jis-2004"
+
+#: ../../whatsnew/2.4.rst:1020
+#, fuzzy
+msgid "Korean: cp949, euc-kr, johab, iso-2022-kr"
+msgstr "Tiếng Hàn: cp949, euc-kr, johab, iso-2022-kr"
+
+#: ../../whatsnew/2.4.rst:1022
+#, fuzzy
+msgid ""
+"Some other new encodings were added: HP Roman8,  ISO_8859-11, ISO_8859-16, "
+"PCTP-154, and TIS-620."
+msgstr ""
+"Một số mã hóa mới khác đã được thêm vào: HP Roman8, ISO_8859-11, "
+"ISO_8859-16, PCTP-154 và TIS-620."
+
+#: ../../whatsnew/2.4.rst:1025
+#, fuzzy
+msgid ""
+"The UTF-8 and UTF-16 codecs now cope better with receiving partial input. "
+"Previously the :class:`StreamReader` class would try to read more data, "
+"making it impossible to resume decoding from the stream.  The :meth:`read` "
+"method will now return as much data as it can and future calls will resume "
+"decoding where previous ones left off.  (Implemented by Walter Dörwald.)"
+msgstr ""
+"Các codec UTF-8 và UTF-16 hiện xử lý tốt hơn việc nhận một phần đầu vào. "
+"Trước đây, lớp :class:`StreamReader` sẽ cố đọc thêm dữ liệu, khiến không thể"
+" tiếp tục giải mã từ luồng.  Phương thức :meth:`read` giờ đây sẽ trả về "
+"nhiều dữ liệu nhất có thể và các cuộc gọi trong tương lai sẽ tiếp tục giải "
+"mã ở nơi các cuộc gọi trước đó đã dừng lại.  (Được thực hiện bởi Walter "
+"Dörwald.)"
+
+#: ../../whatsnew/2.4.rst:1031
+#, fuzzy
+msgid ""
+"There is a new :mod:`collections` module for  various specialized collection"
+" datatypes.  Currently it contains just one type, :class:`deque`, a double-"
+"ended queue that supports efficiently adding and removing elements from "
+"either end::"
+msgstr ""
+"Có một mô-đun :mod:`collections` mới dành cho nhiều kiểu dữ liệu bộ sưu tập "
+"chuyên biệt khác nhau.  Hiện tại, nó chỉ chứa một loại, :class:`deque`, một "
+"hàng đợi hai đầu hỗ trợ thêm và xóa các phần tử từ một trong hai đầu một "
+"cách hiệu quả::"
+
+#: ../../whatsnew/2.4.rst:1036
+#, fuzzy
+msgid ""
+">>> from collections import deque\n"
+">>> d = deque('ghi')        # make a new deque with three items\n"
+">>> d.append('j')           # add a new entry to the right side\n"
+">>> d.appendleft('f')       # add a new entry to the left side\n"
+">>> d                       # show the representation of the deque\n"
+"deque(['f', 'g', 'h', 'i', 'j'])\n"
+">>> d.pop()                 # return and remove the rightmost item\n"
+"'j'\n"
+">>> d.popleft()             # return and remove the leftmost item\n"
+"'f'\n"
+">>> list(d)                 # list the contents of the deque\n"
+"['g', 'h', 'i']\n"
+">>> 'h' in d                # search the deque\n"
+"True"
+msgstr ""
+">>> từ deque nhập bộ sưu tập\n"
+">>> d = deque('ghi') # make một deque mới với ba mục\n"
+">>> d.append('j') # add một mục mới ở bên phải\n"
+">>> d.appendleft('f') # add một mục mới ở phía bên trái\n"
+">>> d # show đại diện của deque\n"
+"deque(['f', 'g', 'h', 'i', 'j'])\n"
+">>> d.pop() # return và xóa mục ngoài cùng bên phải\n"
+"'j'\n"
+">>> d.popleft() # return và xóa mục ngoài cùng bên trái\n"
+"'f'\n"
+">>> list(d) # list nội dung của deque\n"
+"['g', 'h', 'tôi']\n"
+">>> 'h' trong d # search deque\n"
+"đúng"
+
+#: ../../whatsnew/2.4.rst:1051
+#, fuzzy
+msgid ""
+"Several modules, such as the :mod:`Queue` and :mod:`threading` modules, now "
+"take advantage of :class:`collections.deque` for improved performance.  "
+"(Contributed by Raymond Hettinger.)"
+msgstr ""
+"Một số mô-đun, chẳng hạn như mô-đun :mod:`Queue` và :mod:`threading`, hiện "
+"tận dụng :class:`collections.deque` để cải thiện hiệu suất.  (Được đóng góp "
+"bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:1055
+#, fuzzy
+msgid ""
+"The :mod:`ConfigParser <configparser>` classes have been enhanced slightly. "
+"The :meth:`~configparser.ConfigParser.read` method now returns a list of the"
+" files that were successfully parsed, and the "
+":meth:`~configparser.ConfigParser.set` method raises :exc:`TypeError` if "
+"passed a *value* argument that isn't a string.   (Contributed by John "
+"Belmonte and David Goodger.)"
+msgstr ""
+"Các lớp :mod:`ConfigParser <configparser>` đã được tăng cường một chút. "
+"Phương thức :meth:`~configparser.ConfigParser.read` hiện trả về danh sách "
+"các tệp đã được phân tích cú pháp thành công và phương thức "
+":meth:`~configparser.ConfigParser.set` sẽ tăng :exc:`TypeError` nếu truyền "
+"một đối số *value* không phải là một chuỗi.   (Được đóng góp bởi John "
+"Belmonte và David Goodger.)"
+
+#: ../../whatsnew/2.4.rst:1060
+#, fuzzy
+msgid ""
+"The :mod:`curses` module now supports the ncurses extension "
+":func:`use_default_colors`.  On platforms where the terminal supports "
+"transparency, this makes it possible to use a transparent background. "
+"(Contributed by Jörg Lehmann.)"
+msgstr ""
+"Mô-đun :mod:`curses` hiện hỗ trợ tiện ích mở rộng :func:`use_default_colors`"
+" của ncurses.  Trên nền tảng mà thiết bị đầu cuối hỗ trợ tính minh bạch, "
+"điều này cho phép sử dụng nền trong suốt. (Được đóng góp bởi Jörg Lehmann.)"
+
+#: ../../whatsnew/2.4.rst:1065
+#, fuzzy
+msgid ""
+"The :mod:`difflib` module now includes an :class:`HtmlDiff` class that "
+"creates an HTML table showing a side by side comparison of two versions of a"
+" text. (Contributed by Dan Gass.)"
+msgstr ""
+"Mô-đun :mod:`difflib` hiện bao gồm một lớp :class:`HtmlDiff` tạo bảng HTML "
+"hiển thị so sánh cạnh nhau của hai phiên bản của một văn bản. (Đóng góp bởi "
+"Dan Gass.)"
+
+#: ../../whatsnew/2.4.rst:1069
+#, fuzzy
+msgid ""
+"The :mod:`email` package was updated to version 3.0,  which dropped various "
+"deprecated APIs and removes support for Python versions earlier than 2.3.  "
+"The 3.0 version of the package uses a new incremental parser for MIME "
+"messages, available in the :mod:`email.FeedParser` module.  The new parser "
+"doesn't require reading the entire message into memory, and doesn't raise "
+"exceptions if a message is malformed; instead it records any problems in the"
+"  :attr:`defect` attribute of the message.  (Developed by Anthony Baxter, "
+"Barry Warsaw, Thomas Wouters, and others.)"
+msgstr ""
+"Gói :mod:`email` đã được cập nhật lên phiên bản 3.0, loại bỏ nhiều API không"
+" được dùng nữa và xóa hỗ trợ cho các phiên bản Python trước 2.3.  Phiên bản "
+"3.0 của gói sử dụng trình phân tích cú pháp gia tăng mới cho các tin nhắn "
+"MIME, có sẵn trong mô-đun :mod:`email.FeedParser`.  Trình phân tích cú pháp "
+"mới không yêu cầu đọc toàn bộ thông báo vào bộ nhớ và không đưa ra ngoại lệ "
+"nếu thông báo không đúng định dạng; thay vào đó nó ghi lại bất kỳ vấn đề nào"
+" trong thuộc tính :attr:`defect` của thông báo.  (Được phát triển bởi "
+"Anthony Baxter, Barry Warsaw, Thomas Wouters và những người khác.)"
+
+#: ../../whatsnew/2.4.rst:1078
+#, fuzzy
+msgid ""
+"The :mod:`heapq` module has been converted to C.  The resulting tenfold "
+"improvement in speed makes the module suitable for handling high volumes of "
+"data.  In addition, the module has two new functions :func:`nlargest` and "
+":func:`nsmallest` that use heaps to find the N largest or smallest values in"
+" a dataset without the expense of a full sort.  (Contributed by Raymond "
+"Hettinger.)"
+msgstr ""
+"Mô-đun :mod:`heapq` đã được chuyển đổi thành C. Tốc độ được cải thiện gấp 10"
+" lần giúp mô-đun này phù hợp để xử lý khối lượng dữ liệu lớn.  Ngoài ra, mô-"
+"đun này còn có hai hàm mới :func:`nlargest` và :func:`nsmallest` sử dụng "
+"vùng heap để tìm N giá trị lớn nhất hoặc nhỏ nhất trong tập dữ liệu mà không"
+" phải tốn chi phí sắp xếp đầy đủ.  (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:1084
+#, fuzzy
+msgid ""
+"The :mod:`httplib <http>` module now contains constants for HTTP status "
+"codes defined in various HTTP-related RFC documents.  Constants have names "
+"such as :const:`OK`, :const:`CREATED`, :const:`CONTINUE`, and "
+":const:`MOVED_PERMANENTLY`; use pydoc to get a full list.  (Contributed by "
+"Andrew Eland.)"
+msgstr ""
+"Mô-đun :mod:`httplib <http>` hiện chứa các hằng số cho mã trạng thái HTTP "
+"được xác định trong nhiều tài liệu RFC liên quan đến HTTP.  Các hằng số có "
+"tên như :const:`OK`, :const:`CREATED`, :const:`CONTINUE` và "
+":const:`MOVED_PERMANENTLY`; sử dụng pydoc để có danh sách đầy đủ.  (Được "
+"đóng góp bởi Andrew Eland.)"
+
+#: ../../whatsnew/2.4.rst:1090
+#, fuzzy
+msgid ""
+"The :mod:`imaplib` module now supports IMAP's THREAD command (contributed by"
+" Yves Dionne) and new :meth:`deleteacl` and :meth:`myrights` methods "
+"(contributed by Arnaud Mazin)."
+msgstr ""
+"Mô-đun :mod:`imaplib` hiện hỗ trợ lệnh THREAD của IMAP (do Yves Dionne đóng "
+"góp) và các phương thức :meth:`deleteacl` và :meth:`myrights` mới (do Arnaud"
+" Mazin đóng góp)."
+
+#: ../../whatsnew/2.4.rst:1094
+#, fuzzy
+msgid ""
+"The :mod:`itertools` module gained a ``groupby(iterable[, *func*])`` "
+"function. *iterable* is something that can be iterated over to return a "
+"stream of elements, and the optional *func* parameter is a function that "
+"takes an element and returns a key value; if omitted, the key is simply the "
+"element itself.  :func:`groupby` then groups the elements into subsequences "
+"which have matching values of the key, and returns a series of 2-tuples "
+"containing the key value and an iterator over the subsequence."
+msgstr ""
+"Mô-đun :mod:`itertools` có chức năng ``groupby(iterable[, *func*])``. "
+"*iterable* là thứ có thể được lặp lại để trả về một luồng phần tử và tham số"
+" *func* tùy chọn là một hàm lấy một phần tử và trả về một giá trị khóa; nếu "
+"bị bỏ qua, khóa chỉ đơn giản là chính phần tử đó.  :func:`groupby` sau đó "
+"nhóm các phần tử thành các chuỗi con có giá trị khóa phù hợp và trả về một "
+"chuỗi gồm 2 bộ chứa giá trị khóa và một trình vòng lặp trên chuỗi con."
+
+#: ../../whatsnew/2.4.rst:1102
+#, fuzzy
+msgid ""
+"Here's an example to make this clearer.  The *key* function simply returns "
+"whether a number is even or odd, so the result of :func:`groupby` is to "
+"return consecutive runs of odd or even numbers. ::"
+msgstr ""
+"Đây là một ví dụ để làm cho điều này rõ ràng hơn.  Hàm *key* chỉ trả về số "
+"chẵn hay số lẻ, vì vậy kết quả của :func:`groupby` là trả về các chuỗi số lẻ"
+" hoặc số chẵn liên tiếp. ::"
+
+#: ../../whatsnew/2.4.rst:1106
+#, fuzzy
+msgid ""
+">>> import itertools\n"
+">>> L = [2, 4, 6, 7, 8, 9, 11, 12, 14]\n"
+">>> for key_val, it in itertools.groupby(L, lambda x: x % 2):\n"
+"...    print key_val, list(it)\n"
+"...\n"
+"0 [2, 4, 6]\n"
+"1 [7]\n"
+"0 [8]\n"
+"1 [9, 11]\n"
+"0 [12, 14]\n"
+">>>"
+msgstr ""
+">>> nhập itertools\n"
+">>> L = [2, 4, 6, 7, 8, 9, 11, 12, 14]\n"
+">>> đối với key_val, nó có trong itertools.groupby(L, lambda x: x % 2):\n"
+"... in key_val, list(it)\n"
+"...\n"
+"0 [2, 4, 6]\n"
+"1 [7]\n"
+"0 [8]\n"
+"1 [9, 11]\n"
+"0 [12, 14]\n"
+">>>"
+
+#: ../../whatsnew/2.4.rst:1118
+#, fuzzy
+msgid ""
+":func:`groupby` is typically used with sorted input.  The logic for "
+":func:`groupby` is similar to the Unix ``uniq`` filter which makes it handy "
+"for eliminating, counting, or identifying duplicate elements::"
+msgstr ""
+":func:`groupby` thường được sử dụng với đầu vào được sắp xếp.  Logic của "
+":func:`groupby` tương tự như bộ lọc ``uniq`` của Unix, giúp thuận tiện cho "
+"việc loại bỏ, đếm hoặc xác định các phần tử trùng lặp::"
+
+#: ../../whatsnew/2.4.rst:1122
+#, fuzzy
+msgid ""
+">>> word = 'abracadabra'\n"
+">>> letters = sorted(word)   # Turn string into a sorted list of letters\n"
+">>> letters\n"
+"['a', 'a', 'a', 'a', 'a', 'b', 'b', 'c', 'd', 'r', 'r']\n"
+">>> for k, g in itertools.groupby(letters):\n"
+"...    print k, list(g)\n"
+"...\n"
+"a ['a', 'a', 'a', 'a', 'a']\n"
+"b ['b', 'b']\n"
+"c ['c']\n"
+"d ['d']\n"
+"r ['r', 'r']\n"
+">>> # List unique letters\n"
+">>> [k for k, g in groupby(letters)]\n"
+"['a', 'b', 'c', 'd', 'r']\n"
+">>> # Count letter occurrences\n"
+">>> [(k, len(list(g))) for k, g in groupby(letters)]\n"
+"[('a', 5), ('b', 2), ('c', 1), ('d', 1), ('r', 2)]"
+msgstr ""
+">>> từ = 'abracadabra'\n"
+">>> các chữ cái = đã sắp xếp(word) chuỗi # Turn thành danh sách các chữ cái đã được sắp xếp\n"
+">>> chữ cái\n"
+"['a', 'a', 'a', 'a', 'a', 'b', 'b', 'c', 'd', 'r', 'r']\n"
+">>> cho k, g trong itertools.groupby(chữ cái):\n"
+"... in k, danh sách(g)\n"
+"...\n"
+"một ['a', 'a', 'a', 'a', 'a']\n"
+"b ['b', 'b']\n"
+"c ['c']\n"
+"d ['d']\n"
+"r ['r', 'r']\n"
+">>> # List chữ độc đáo\n"
+">>> [k cho k, g trong nhómby(chữ cái)]\n"
+"['a', 'b', 'c', 'd', 'r']\n"
+">>> số lần xuất hiện chữ cái # Count\n"
+">>> [(k, len(list(g))) cho k, g trong nhóm(chữ cái)]\n"
+"[('a', 5), ('b', 2), ('c', 1), ('d', 1), ('r', 2)]"
+
+#: ../../whatsnew/2.4.rst:1141
+#, fuzzy
+msgid "(Contributed by Hye-Shik Chang.)"
+msgstr "(Được đóng góp bởi Hye-Shik Chang.)"
+
+#: ../../whatsnew/2.4.rst:1143
+#, fuzzy
+msgid ""
+":mod:`itertools` also gained a function named ``tee(iterator, N)`` that "
+"returns *N* independent iterators that replicate *iterator*.  If *N* is "
+"omitted, the default is 2. ::"
+msgstr ""
+":mod:`itertools` cũng có được một hàm có tên ``tee(iterator, N)`` trả về các"
+" trình vòng lặp độc lập *N* sao chép *iterator*.  Nếu bỏ qua *N* thì mặc "
+"định là 2. ::"
+
+#: ../../whatsnew/2.4.rst:1147
+#, fuzzy
+msgid ""
+">>> L = [1,2,3]\n"
+">>> i1, i2 = itertools.tee(L)\n"
+">>> i1,i2\n"
+"(<itertools.tee object at 0x402c2080>, <itertools.tee object at 0x402c2090>)\n"
+">>> list(i1)               # Run the first iterator to exhaustion\n"
+"[1, 2, 3]\n"
+">>> list(i2)               # Run the second iterator to exhaustion\n"
+"[1, 2, 3]"
+msgstr ""
+">>> L = [1,2,3]\n"
+">>> i1, i2 = itertools.tee(L)\n"
+">>> i1,i2\n"
+"(<đối tượng itertools.tee tại 0x402c2080>, <đối tượng itertools.tee tại 0x402c2090>)\n"
+">>> list(i1) # Run trình vòng lặp đầu tiên cạn kiệt\n"
+"[1, 2, 3]\n"
+">>> list(i2) # Run trình vòng lặp thứ hai đã cạn kiệt\n"
+"[1, 2, 3]"
+
+#: ../../whatsnew/2.4.rst:1156
+#, fuzzy
+msgid ""
+"Note that :func:`tee` has to keep copies of the values returned  by the "
+"iterator; in the worst case, it may need to keep all of them.   This should "
+"therefore be used carefully if the leading iterator can run far ahead of the"
+" trailing iterator in a long stream of inputs. If the separation is large, "
+"then you might as well use  :func:`list` instead.  When the iterators track "
+"closely with one another, :func:`tee` is ideal.  Possible applications "
+"include bookmarking, windowing, or lookahead iterators. (Contributed by "
+"Raymond Hettinger.)"
+msgstr ""
+"Lưu ý rằng :func:`tee` phải giữ bản sao của các giá trị được trình vòng lặp "
+"trả về; trong trường hợp xấu nhất, nó có thể cần phải giữ lại tất cả chúng."
+"   Do đó, điều này nên được sử dụng cẩn thận nếu trình vòng lặp dẫn đầu có "
+"thể chạy trước trình vòng lặp ở cuối trong một luồng đầu vào dài. Nếu khoảng"
+" cách lớn thì bạn cũng có thể sử dụng :func:`list` để thay thế.  Khi các "
+"vòng lặp theo dõi chặt chẽ với nhau, :func:`tee` là lý tưởng.  Các ứng dụng "
+"có thể bao gồm đánh dấu trang, cửa sổ hoặc vòng lặp tra cứu. (Được đóng góp "
+"bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:1165
+#, fuzzy
+msgid ""
+"A number of functions were added to the :mod:`locale`  module, such as "
+":func:`bind_textdomain_codeset` to specify a particular encoding and a "
+"family of :func:`!l\\*gettext` functions that return messages in the chosen "
+"encoding. (Contributed by Gustavo Niemeyer.)"
+msgstr ""
+"Một số chức năng đã được thêm vào mô-đun :mod:`locale`, chẳng hạn như "
+":func:`bind_textdomain_codeset` để chỉ định một mã hóa cụ thể và một nhóm "
+"hàm :func:`!l\\*gettext` trả về thông báo trong mã hóa đã chọn. (Đóng góp "
+"bởi Gustavo Niemeyer.)"
+
+#: ../../whatsnew/2.4.rst:1170
+#, fuzzy
+msgid ""
+"Some keyword arguments were added to the :mod:`logging` package's "
+":func:`basicConfig` function to simplify log configuration.  The default "
+"behavior is to log messages to standard error, but various keyword arguments"
+" can be specified to log to a particular file, change the logging format, or"
+" set the logging level. For example::"
+msgstr ""
+"Một số đối số từ khóa đã được thêm vào hàm :func:`basicConfig` của gói "
+":mod:`logging` để đơn giản hóa cấu hình nhật ký.  Hành vi mặc định là ghi "
+"thông báo vào lỗi tiêu chuẩn, nhưng có thể chỉ định nhiều đối số từ khóa "
+"khác nhau để ghi vào một tệp cụ thể, thay đổi định dạng ghi nhật ký hoặc đặt"
+" mức ghi nhật ký. Ví dụ::"
+
+#: ../../whatsnew/2.4.rst:1176
+#, fuzzy
+msgid ""
+"import logging\n"
+"logging.basicConfig(filename='/var/log/application.log',\n"
+"    level=0,  # Log all messages\n"
+"    format='%(levelname):%(process):%(thread):%(message)')"
+msgstr ""
+"nhập nhật ký\n"
+"logging.basicConfig(filename='/var/log/application.log',\n"
+"    cấp độ = 0, # Log tất cả tin nhắn\n"
+"    format='%(levelname):%(process):%(thread):%(message)')"
+
+#: ../../whatsnew/2.4.rst:1181
+#, fuzzy
+msgid ""
+"Other additions to the :mod:`logging` package include a ``log(level, msg)`` "
+"convenience method, as well as a :class:`TimedRotatingFileHandler` class "
+"that rotates its log files at a timed interval.  The module already had "
+":class:`RotatingFileHandler`, which rotated logs once the file exceeded a "
+"certain size.  Both classes derive from a new :class:`BaseRotatingHandler` "
+"class that can be used to implement other rotating handlers."
+msgstr ""
+"Các bổ sung khác cho gói :mod:`logging` bao gồm phương thức tiện lợi "
+"``log(level, msg)``, cũng như lớp :class:`TimedRotatingFileHandler` xoay các"
+" tệp nhật ký của nó theo một khoảng thời gian định sẵn.  Mô-đun này đã có "
+":class:`RotatingFileHandler`, chức năng này sẽ xoay nhật ký khi tệp vượt quá"
+" một kích thước nhất định.  Cả hai lớp đều bắt nguồn từ lớp "
+":class:`BaseRotatingHandler` mới có thể được sử dụng để triển khai các trình"
+" xử lý xoay khác."
+
+#: ../../whatsnew/2.4.rst:1188
+#, fuzzy
+msgid "(Changes implemented by Vinay Sajip.)"
+msgstr "(Những thay đổi được thực hiện bởi Vinay Sajip.)"
+
+#: ../../whatsnew/2.4.rst:1190
+#, fuzzy
+msgid ""
+"The :mod:`marshal` module now shares interned strings on unpacking a  data "
+"structure.  This may shrink the size of certain pickle strings, but the "
+"primary effect is to make :file:`.pyc` files significantly smaller. "
+"(Contributed by Martin von Löwis.)"
+msgstr ""
+"Mô-đun :mod:`marshal` hiện chia sẻ các chuỗi nội bộ khi giải nén cấu trúc dữ"
+" liệu.  Điều này có thể thu nhỏ kích thước của một số chuỗi dưa nhất định, "
+"nhưng tác dụng chính là làm cho các tệp :file:`.pyc` nhỏ hơn đáng kể. (Được "
+"đóng góp bởi Martin von Löwis.)"
+
+#: ../../whatsnew/2.4.rst:1195
+#, fuzzy
+msgid ""
+"The :mod:`!nntplib` module's :class:`NNTP` class gained :meth:`description` "
+"and :meth:`descriptions` methods to retrieve  newsgroup descriptions for a "
+"single group or for a range of groups. (Contributed by Jürgen A. Erhard.)"
+msgstr ""
+"Lớp :class:`NNTP` của mô-đun :mod:`!nntplib` đã nhận được các phương thức "
+":meth:`description` và :meth:`descriptions` để truy xuất các mô tả nhóm tin "
+"cho một nhóm hoặc cho một loạt các nhóm. (Được đóng góp bởi Jürgen A. "
+"Erhard.)"
+
+#: ../../whatsnew/2.4.rst:1199
+#, fuzzy
+msgid ""
+"Two new functions were added to the :mod:`operator` module, "
+"``attrgetter(attr)`` and ``itemgetter(index)``. Both functions return "
+"callables that take a single argument and return the corresponding attribute"
+" or item; these callables make excellent data extractors when used with "
+":func:`map` or :func:`sorted`.  For example::"
+msgstr ""
+"Hai chức năng mới đã được thêm vào mô-đun :mod:`operator`, "
+"``attrgetter(attr)`` và ``itemgetter(index)``. Cả hai hàm đều trả về các "
+"lệnh gọi có một đối số duy nhất và trả về thuộc tính hoặc mục tương ứng; "
+"những lệnh gọi này tạo ra trình trích xuất dữ liệu tuyệt vời khi được sử "
+"dụng với :func:`map` hoặc :func:`sorted`.  Ví dụ::"
+
+#: ../../whatsnew/2.4.rst:1205
+#, fuzzy
+msgid ""
+">>> L = [('c', 2), ('d', 1), ('a', 4), ('b', 3)]\n"
+">>> map(operator.itemgetter(0), L)\n"
+"['c', 'd', 'a', 'b']\n"
+">>> map(operator.itemgetter(1), L)\n"
+"[2, 1, 4, 3]\n"
+">>> sorted(L, key=operator.itemgetter(1)) # Sort list by second tuple item\n"
+"[('d', 1), ('c', 2), ('b', 3), ('a', 4)]"
+msgstr ""
+">>> L = [('c', 2), ('d', 1), ('a', 4), ('b', 3)]\n"
+">>> bản đồ(operator.itemgetter(0), L)\n"
+"['c', 'd', 'a', 'b']\n"
+">>> bản đồ(operator.itemgetter(1), L)\n"
+"[2, 1, 4, 3]\n"
+">>> được sắp xếp(L, key=operator.itemgetter(1)) danh sách # Sort theo mục tuple thứ hai\n"
+"[('d', 1), ('c', 2), ('b', 3), ('a', 4)]"
+
+#: ../../whatsnew/2.4.rst:1215
+#, python-format, fuzzy
+msgid ""
+"The :mod:`optparse` module was updated in various ways.  The module now "
+"passes its messages through :func:`gettext.gettext`, making it possible to "
+"internationalize Optik's help and error messages.  Help messages for options"
+" can now include the string ``'%default'``, which will be replaced by the "
+"option's default value.  (Contributed by Greg Ward.)"
+msgstr ""
+"Mô-đun :mod:`optparse` đã được cập nhật theo nhiều cách khác nhau.  Mô-đun "
+"hiện chuyển các thông báo của nó qua :func:`gettext.gettext`, giúp có thể "
+"quốc tế hóa các thông báo lỗi và trợ giúp của Optik.  Thông báo trợ giúp cho"
+" các tùy chọn hiện có thể bao gồm chuỗi ``'%default'``, chuỗi này sẽ được "
+"thay thế bằng giá trị mặc định của tùy chọn.  (Được đóng góp bởi Greg Ward.)"
+
+#: ../../whatsnew/2.4.rst:1221
+#, fuzzy
+msgid ""
+"The long-term plan is to deprecate the :mod:`!rfc822` module in some future "
+"Python release in favor of the :mod:`email` package. To this end, the "
+":func:`email.Utils.formatdate <email.utils.formatdate>` function has been "
+"changed to make it usable as a replacement for :func:`!rfc822.formatdate`.  "
+"You may want to write new e-mail processing code with this in mind.  (Change"
+" implemented by Anthony Baxter.)"
+msgstr ""
+"Kế hoạch dài hạn là không dùng mô-đun :mod:`!rfc822` trong một số bản phát "
+"hành Python trong tương lai để chuyển sang gói :mod:`email`. Vì mục đích "
+"này, chức năng :func:`email.Utils.formatdate <email.utils.formatdate>` đã "
+"được thay đổi để có thể sử dụng nó thay thế cho :func:`!rfc822.formatdate`."
+"  Bạn có thể muốn viết mã xử lý e-mail mới với ý tưởng này.  (Thay đổi được "
+"thực hiện bởi Anthony Baxter.)"
+
+#: ../../whatsnew/2.4.rst:1227
+#, fuzzy
+msgid ""
+"A new ``urandom(n)`` function was added to the :mod:`os` module, returning a"
+" string containing *n* bytes of random data.  This function provides access "
+"to platform-specific sources of randomness such as :file:`/dev/urandom` on "
+"Linux or the Windows CryptoAPI.  (Contributed by Trevor Perrin.)"
+msgstr ""
+"Một hàm ``urandom(n)`` mới đã được thêm vào mô-đun :mod:`os`, trả về một "
+"chuỗi chứa *n* byte dữ liệu ngẫu nhiên.  Chức năng này cung cấp quyền truy "
+"cập vào các nguồn ngẫu nhiên dành riêng cho nền tảng, chẳng hạn như "
+":file:`/dev/urandom` trên Linux hoặc Windows CryptoAPI.  (Được đóng góp bởi "
+"Trevor Perrin.)"
+
+#: ../../whatsnew/2.4.rst:1232
+#, fuzzy
+msgid ""
+"Another new function: ``os.path.lexists(path)``  returns true if the file "
+"specified by *path* exists, whether or not it's a symbolic link.  This "
+"differs from the existing ``os.path.exists(path)`` function, which returns "
+"false if *path* is a symlink that points to a destination that doesn't "
+"exist. (Contributed by Beni Cherniavsky.)"
+msgstr ""
+"Một chức năng mới khác: ``os.path.lexists(path)`` trả về true nếu tệp được "
+"chỉ định bởi *path* tồn tại, cho dù đó có phải là liên kết tượng trưng hay "
+"không.  Điều này khác với hàm ``os.path.exists(path)`` hiện có, hàm này trả "
+"về sai nếu *path* là một liên kết tượng trưng trỏ đến đích không tồn tại. "
+"(Được đóng góp bởi Beni Cherniavsky.)"
+
+#: ../../whatsnew/2.4.rst:1238
+#, fuzzy
+msgid ""
+"A new :func:`getsid` function was added to the :mod:`posix` module that "
+"underlies the :mod:`os` module. (Contributed by J. Raynor.)"
+msgstr ""
+"Một chức năng :func:`getsid` mới đã được thêm vào mô-đun :mod:`posix` làm "
+"nền tảng cho mô-đun :mod:`os`. (Đóng góp bởi J. Raynor.)"
+
+#: ../../whatsnew/2.4.rst:1241
+#, fuzzy
+msgid ""
+"The :mod:`poplib` module now supports POP over SSL.  (Contributed by Hector "
+"Urtubia.)"
+msgstr ""
+"Mô-đun :mod:`poplib` hiện hỗ trợ POP trên SSL.  (Được đóng góp bởi Hector "
+"Urtubia.)"
+
+#: ../../whatsnew/2.4.rst:1244
+#, fuzzy
+msgid ""
+"The :mod:`profile` module can now profile C extension functions. "
+"(Contributed by Nick Bastin.)"
+msgstr ""
+"Mô-đun :mod:`profile` hiện có thể cấu hình các chức năng mở rộng C. (Được "
+"đóng góp bởi Nick Bastin.)"
+
+#: ../../whatsnew/2.4.rst:1247
+#, fuzzy
+msgid ""
+"The :mod:`random` module has a new method called ``getrandbits(N)`` that "
+"returns a long integer *N* bits in length.  The existing :meth:`randrange` "
+"method now uses :meth:`getrandbits` where appropriate, making generation of "
+"arbitrarily large random numbers more efficient.  (Contributed by Raymond "
+"Hettinger.)"
+msgstr ""
+"Mô-đun :mod:`random` có một phương thức mới gọi là ``getrandbits(N)`` trả về"
+" một số nguyên dài *N* có độ dài bit.  Phương pháp :meth:`randrange` hiện "
+"tại sử dụng :meth:`getrandbits` khi thích hợp, giúp việc tạo số ngẫu nhiên "
+"lớn tùy ý hiệu quả hơn.  (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:1253
+#, fuzzy
+msgid ""
+"The regular expression language accepted by the :mod:`re` module was "
+"extended with simple conditional expressions, written as ``(?(group)A|B)``."
+"  *group* is either a numeric group ID or a group name defined with "
+"``(?P<group>...)`` earlier in the expression.  If the specified group "
+"matched, the regular expression pattern *A* will be tested against the "
+"string; if the group didn't match, the pattern *B* will be used instead. "
+"(Contributed by Gustavo Niemeyer.)"
+msgstr ""
+"Ngôn ngữ biểu thức chính quy được mô-đun :mod:`re` chấp nhận đã được mở rộng"
+" với các biểu thức điều kiện đơn giản, được viết là ``(?(group)A|B)``.  "
+"*group* là ID nhóm số hoặc tên nhóm được xác định bằng ``(?P<group>...)`` "
+"trước đó trong biểu thức.  Nếu nhóm được chỉ định khớp, mẫu biểu thức chính "
+"quy *A* sẽ được kiểm tra dựa trên chuỗi; nếu nhóm không khớp, mẫu *B* sẽ "
+"được sử dụng thay thế. (Đóng góp bởi Gustavo Niemeyer.)"
+
+#: ../../whatsnew/2.4.rst:1260
+#, fuzzy
+msgid ""
+"The :mod:`re` module is also no longer recursive, thanks to a massive amount"
+" of work by Gustavo Niemeyer.  In a recursive regular expression engine, "
+"certain patterns result in a large amount of C stack space being consumed, "
+"and it was possible to overflow the stack. For example, if you matched a "
+"30000-byte string of ``a`` characters against the expression ``(a|b)+``, one"
+" stack frame was consumed per character.  Python 2.3 tried to check for "
+"stack overflow and raise a :exc:`RuntimeError` exception, but certain "
+"patterns could sidestep the checking and if you were unlucky Python could "
+"segfault. Python 2.4's regular expression engine can match this pattern "
+"without problems."
+msgstr ""
+"Mô-đun :mod:`re` cũng không còn đệ quy nữa nhờ khối lượng công việc khổng lồ"
+" của Gustavo Niemeyer.  Trong công cụ biểu thức chính quy đệ quy, một số mẫu"
+" nhất định dẫn đến việc tiêu tốn một lượng lớn không gian ngăn xếp C và có "
+"thể làm tràn ngăn xếp. Ví dụ: nếu bạn so khớp chuỗi 30000 byte gồm các ký tự"
+" ``a`` với biểu thức ``(a|b)+``, thì một khung ngăn xếp sẽ được tiêu thụ cho"
+" mỗi ký tự.  Python 2.3 đã cố kiểm tra lỗi tràn ngăn xếp và đưa ra ngoại lệ "
+":exc:`RuntimeError`, nhưng một số mẫu nhất định có thể bỏ qua việc kiểm tra "
+"và nếu bạn không may mắn thì Python có thể phân tách. Công cụ biểu thức "
+"chính quy của Python 2.4 có thể khớp với mẫu này mà không gặp vấn đề gì."
+
+#: ../../whatsnew/2.4.rst:1270
+#, fuzzy
+msgid ""
+"The :mod:`signal` module now performs tighter error-checking on the "
+"parameters to the :func:`signal.signal` function.  For example, you can't "
+"set a handler on the :const:`SIGKILL` signal; previous versions of Python "
+"would quietly accept this, but 2.4 will raise a :exc:`RuntimeError` "
+"exception."
+msgstr ""
+"Mô-đun :mod:`signal` hiện thực hiện kiểm tra lỗi chặt chẽ hơn trên các tham "
+"số của chức năng :func:`signal.signal`.  Ví dụ: bạn không thể đặt trình xử "
+"lý tín hiệu :const:`SIGKILL`; các phiên bản trước của Python sẽ lặng lẽ chấp"
+" nhận điều này, nhưng 2.4 sẽ đưa ra ngoại lệ :exc:`RuntimeError`."
+
+#: ../../whatsnew/2.4.rst:1275
+#, fuzzy
+msgid ""
+"Two new functions were added to the :mod:`socket` module. :func:`socketpair`"
+" returns a pair of connected sockets and ``getservbyport(port)`` looks up "
+"the service name for a given port number. (Contributed by Dave Cole and "
+"Barry Warsaw.)"
+msgstr ""
+"Hai chức năng mới đã được thêm vào mô-đun :mod:`socket`. :func:`socketpair` "
+"trả về một cặp ổ cắm được kết nối và ``getservbyport(port)`` tra cứu tên "
+"dịch vụ cho một số cổng nhất định. (Được đóng góp bởi Dave Cole và Barry "
+"Warsaw.)"
+
+#: ../../whatsnew/2.4.rst:1280
+#, fuzzy
+msgid ""
+"The :func:`sys.exitfunc` function has been deprecated.  Code should be using"
+" the existing :mod:`atexit` module, which correctly handles calling multiple"
+" exit functions.  Eventually :func:`sys.exitfunc` will become a purely "
+"internal interface, accessed only by :mod:`atexit`."
+msgstr ""
+"Chức năng :func:`sys.exitfunc` không còn được dùng nữa.  Mã phải sử dụng mô-"
+"đun :mod:`atexit` hiện có để xử lý chính xác việc gọi nhiều hàm thoát.  Cuối"
+" cùng, :func:`sys.exitfunc` sẽ trở thành một giao diện nội bộ thuần túy, chỉ"
+" được truy cập bởi :mod:`atexit`."
+
+#: ../../whatsnew/2.4.rst:1285
+#, fuzzy
+msgid ""
+"The :mod:`tarfile` module now generates GNU-format tar files by default. "
+"(Contributed by Lars Gustäbel.)"
+msgstr ""
+"Mô-đun :mod:`tarfile` hiện tạo các tệp tar có định dạng GNU theo mặc định. "
+"(Được đóng góp bởi Lars Gustäbel.)"
+
+#: ../../whatsnew/2.4.rst:1288
+#, fuzzy
+msgid ""
+"The :mod:`threading` module now has an elegantly simple way to support "
+"thread-local data.  The module contains a :class:`local` class whose "
+"attribute values are local to different threads. ::"
+msgstr ""
+"Mô-đun :mod:`threading` hiện có một cách đơn giản để hỗ trợ dữ liệu luồng "
+"cục bộ.  Mô-đun này chứa một lớp :class:`local` có các giá trị thuộc tính "
+"cục bộ cho các luồng khác nhau. ::"
+
+#: ../../whatsnew/2.4.rst:1292
+#, fuzzy
+msgid ""
+"import threading\n"
+"\n"
+"data = threading.local()\n"
+"data.number = 42\n"
+"data.url = ('www.python.org', 80)"
+msgstr ""
+"nhập luồng\n"
+"\n"
+"dữ liệu = threading.local()\n"
+"dữ liệu.số = 42\n"
+"data.url = ('www.python.org', 80)"
+
+#: ../../whatsnew/2.4.rst:1298
+#, fuzzy
+msgid ""
+"Other threads can assign and retrieve their own values for the "
+":attr:`number` and :attr:`url` attributes.  You can subclass :class:`local` "
+"to initialize attributes or to add methods. (Contributed by Jim Fulton.)"
+msgstr ""
+"Các luồng khác có thể gán và truy xuất các giá trị riêng của chúng cho thuộc"
+" tính :attr:`number` và :attr:`url`.  Bạn có thể phân lớp :class:`local` để "
+"khởi tạo các thuộc tính hoặc thêm các phương thức. (Được đóng góp bởi Jim "
+"Fulton.)"
+
+#: ../../whatsnew/2.4.rst:1302
+#, fuzzy
+msgid ""
+"The :mod:`timeit` module now automatically disables periodic garbage "
+"collection during the timing loop.  This change makes consecutive timings "
+"more comparable.  (Contributed by Raymond Hettinger.)"
+msgstr ""
+"Mô-đun :mod:`timeit` hiện tự động vô hiệu hóa việc thu thập rác định kỳ "
+"trong vòng lặp thời gian.  Sự thay đổi này làm cho thời gian liên tiếp dễ so"
+" sánh hơn.  (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:1306
+#, fuzzy
+msgid ""
+"The :mod:`weakref` module now supports a wider variety of objects including "
+"Python functions, class instances, sets, frozensets, deques, arrays, files, "
+"sockets, and regular expression pattern objects. (Contributed by Raymond "
+"Hettinger.)"
+msgstr ""
+"Mô-đun :mod:`weakref` hiện hỗ trợ nhiều đối tượng hơn bao gồm các hàm "
+"Python, phiên bản lớp, bộ, tập hợp cố định, deques, mảng, tệp, ổ cắm và các "
+"đối tượng mẫu biểu thức chính quy. (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:1311
+#, fuzzy
+msgid ""
+"The :mod:`xmlrpclib <xmlrpc.client>` module now supports a multi-call "
+"extension for transmitting multiple XML-RPC calls in a single HTTP "
+"operation. (Contributed by Brian Quinlan.)"
+msgstr ""
+"Mô-đun :mod:`xmlrpclib <xmlrpc.client>` hiện hỗ trợ tiện ích mở rộng nhiều "
+"cuộc gọi để truyền nhiều cuộc gọi XML-RPC trong một thao tác HTTP duy nhất. "
+"(Được đóng góp bởi Brian Quinlan.)"
+
+#: ../../whatsnew/2.4.rst:1315
+#, fuzzy
+msgid ""
+"The :mod:`mpz`, :mod:`rotor`, and :mod:`xreadlines` modules have  been "
+"removed."
+msgstr "Các mô-đun :mod:`mpz`, :mod:`rotor` và :mod:`xreadlines` đã bị xóa."
+
+#: ../../whatsnew/2.4.rst:1324
+#, fuzzy
+msgid "cookielib"
+msgstr "cookielib"
+
+#: ../../whatsnew/2.4.rst:1326
+#, fuzzy
+msgid ""
+"The :mod:`cookielib <http.cookiejar>` library supports client-side handling "
+"for HTTP cookies, mirroring the :mod:`Cookie <http.cookies>` module's "
+"server-side cookie support. Cookies are stored in cookie jars; the library "
+"transparently stores cookies offered by the web server in the cookie jar, "
+"and fetches the cookie from the jar when connecting to the server. As in web"
+" browsers, policy objects control whether cookies are accepted or not."
+msgstr ""
+"Thư viện :mod:`cookielib <http.cookiejar>` hỗ trợ xử lý phía máy khách đối "
+"với cookie HTTP, phản ánh hỗ trợ cookie phía máy chủ của mô-đun :mod:`Cookie"
+" <http.cookies>`. Bánh quy được đựng trong lọ đựng bánh quy; thư viện lưu "
+"trữ một cách minh bạch các cookie do máy chủ web cung cấp trong lọ cookie và"
+" tìm nạp cookie từ lọ khi kết nối với máy chủ. Giống như trong trình duyệt "
+"web, các đối tượng chính sách kiểm soát xem cookie có được chấp nhận hay "
+"không."
+
+#: ../../whatsnew/2.4.rst:1333
+#, fuzzy
+msgid ""
+"In order to store cookies across sessions, two implementations of cookie "
+"jars are provided: one that stores cookies in the Netscape format so "
+"applications can use the Mozilla or Lynx cookie files, and one that stores "
+"cookies in the same format as the Perl libwww library."
+msgstr ""
+"Để lưu trữ cookie qua các phiên, hai triển khai lọ cookie được cung cấp: một"
+" lưu trữ cookie ở định dạng Netscape để các ứng dụng có thể sử dụng tệp "
+"cookie Mozilla hoặc Lynx và một lưu trữ cookie ở cùng định dạng với thư viện"
+" Perl libwww."
+
+#: ../../whatsnew/2.4.rst:1338
+#, fuzzy
+msgid ""
+":mod:`urllib2 <urllib.request>` has been changed to interact with "
+":mod:`cookielib <http.cookiejar>`: :class:`HTTPCookieProcessor` manages a "
+"cookie jar that is used when accessing URLs."
+msgstr ""
+":mod:`urllib2 <urllib.request>` đã được thay đổi để tương tác với "
+":mod:`cookielib <http.cookiejar>`: :class:`HTTPCookieProcessor` quản lý một "
+"lọ cookie được sử dụng khi truy cập URL."
+
+#: ../../whatsnew/2.4.rst:1342
+#, fuzzy
+msgid "This module was contributed by John J. Lee."
+msgstr "Mô-đun này được đóng góp bởi John J. Lee."
+
+#: ../../whatsnew/2.4.rst:1348
+#, fuzzy
+msgid "doctest"
+msgstr "doc nhất"
+
+#: ../../whatsnew/2.4.rst:1350
+#, fuzzy
+msgid ""
+"The :mod:`doctest` module underwent considerable refactoring thanks to "
+"Edward Loper and Tim Peters.  Testing can still be as simple as running "
+":func:`doctest.testmod`, but the refactorings allow customizing the module's"
+" operation in various ways"
+msgstr ""
+"Mô-đun :mod:`doctest` đã được tái cấu trúc đáng kể nhờ Edward Loper và Tim "
+"Peters.  Việc kiểm tra vẫn có thể đơn giản như chạy :func:`doctest.testmod`,"
+" nhưng việc tái cấu trúc cho phép tùy chỉnh hoạt động của mô-đun theo nhiều "
+"cách khác nhau"
+
+#: ../../whatsnew/2.4.rst:1355
+#, fuzzy
+msgid ""
+"The new :class:`DocTestFinder` class extracts the tests from a given  "
+"object's docstrings::"
+msgstr ""
+"Lớp :class:`DocTestFinder` mới trích xuất các bài kiểm tra từ chuỗi tài liệu"
+" của một đối tượng nhất định::"
+
+#: ../../whatsnew/2.4.rst:1358
+#, fuzzy
+msgid ""
+"def f (x, y):\n"
+"    \"\"\">>> f(2,2)\n"
+"4\n"
+">>> f(3,2)\n"
+"6\n"
+"    \"\"\"\n"
+"    return x*y\n"
+"\n"
+"finder = doctest.DocTestFinder()\n"
+"\n"
+"# Get list of DocTest instances\n"
+"tests = finder.find(f)"
+msgstr ""
+"định nghĩa f (x, y):\n"
+"    \"\"\">>> f(2,2)\n"
+"4\n"
+">>>f(3,2)\n"
+"6\n"
+"    \"\"\"\n"
+"    trả về x*y\n"
+"\n"
+"công cụ tìm = doctest.DocTestFinder()\n"
+"\n"
+"danh sách # Get của các phiên bản DocTest\n"
+"kiểm tra = finder.find(f)"
+
+#: ../../whatsnew/2.4.rst:1371
+#, fuzzy
+msgid ""
+"The new :class:`DocTestRunner` class then runs individual tests and can "
+"produce a summary of the results::"
+msgstr ""
+"Sau đó, lớp :class:`DocTestRunner` mới sẽ chạy các bài kiểm tra riêng lẻ và "
+"có thể tạo ra bản tóm tắt kết quả::"
+
+#: ../../whatsnew/2.4.rst:1374
+#, fuzzy
+msgid ""
+"runner = doctest.DocTestRunner()\n"
+"for t in tests:\n"
+"    tried, failed = runner.run(t)\n"
+"\n"
+"runner.summarize(verbose=1)"
+msgstr ""
+"Á hậu = doctest.DocTestRunner()\n"
+"cho t trong các bài kiểm tra:\n"
+"    đã thử, thất bại = Runner.run(t)\n"
+"\n"
+"á quân.tóm tắt(dài=1)"
+
+#: ../../whatsnew/2.4.rst:1380
+#, fuzzy
+msgid "The above example produces the following output::"
+msgstr "Ví dụ trên tạo ra kết quả đầu ra sau::"
+
+#: ../../whatsnew/2.4.rst:1382
+#, fuzzy
+msgid ""
+"1 items passed all tests:\n"
+"   2 tests in f\n"
+"2 tests in 1 items.\n"
+"2 passed and 0 failed.\n"
+"Test passed."
+msgstr ""
+"1 mục đã vượt qua tất cả các bài kiểm tra:\n"
+"   2 bài kiểm tra trong f\n"
+"2 bài kiểm tra trong 1 mục.\n"
+"2 đạt và 0 thất bại.\n"
+"Thử nghiệm đã trôi qua."
+
+#: ../../whatsnew/2.4.rst:1388
+#, fuzzy
+msgid ""
+":class:`DocTestRunner` uses an instance of the :class:`OutputChecker` class "
+"to compare the expected output with the actual output.  This class takes a "
+"number of different flags that customize its behaviour; ambitious users can "
+"also write a completely new subclass of :class:`OutputChecker`."
+msgstr ""
+":class:`DocTestRunner` sử dụng một phiên bản của lớp :class:`OutputChecker` "
+"để so sánh kết quả đầu ra dự kiến với đầu ra thực tế.  Lớp này có một số cờ "
+"khác nhau để tùy chỉnh hành vi của nó; những người dùng đầy tham vọng cũng "
+"có thể viết một lớp con hoàn toàn mới của :class:`OutputChecker`."
+
+#: ../../whatsnew/2.4.rst:1393
+#, fuzzy
+msgid ""
+"The default output checker provides a number of handy features. For example,"
+" with the :const:`doctest.ELLIPSIS` option flag, an ellipsis (``...``) in "
+"the expected output matches any substring,  making it easier to accommodate "
+"outputs that vary in minor ways::"
+msgstr ""
+"Trình kiểm tra đầu ra mặc định cung cấp một số tính năng tiện dụng. Ví dụ: "
+"với cờ tùy chọn :const:`doctest.ELLIPSIS`, dấu chấm lửng (``...``) trong đầu"
+" ra dự kiến khớp với bất kỳ chuỗi con nào, giúp dễ dàng điều chỉnh các đầu "
+"ra khác nhau theo những cách nhỏ hơn::"
+
+#: ../../whatsnew/2.4.rst:1398
+#, fuzzy
+msgid ""
+"def o (n):\n"
+"    \"\"\">>> o(1)\n"
+"<__main__.C instance at 0x...>\n"
+">>>\n"
+"\"\"\""
+msgstr ""
+"định nghĩa o (n):\n"
+"    \"\"\">>> o(1)\n"
+"<__main__.C phiên bản tại 0x...>\n"
+">>>\n"
+"\"\"\""
+
+#: ../../whatsnew/2.4.rst:1404
+#, fuzzy
+msgid "Another special string, ``<BLANKLINE>``, matches a blank line::"
+msgstr "Một chuỗi đặc biệt khác, ``<BLANKLINE>``, khớp với một dòng trống::"
+
+#: ../../whatsnew/2.4.rst:1406
+#, fuzzy
+msgid ""
+"def p (n):\n"
+"    \"\"\">>> p(1)\n"
+"<BLANKLINE>\n"
+">>>\n"
+"\"\"\""
+msgstr ""
+"định nghĩa p (n):\n"
+"    \"\"\">>> p(1)\n"
+"<BLANKLINE>\n"
+">>>\n"
+"\"\"\""
+
+#: ../../whatsnew/2.4.rst:1412
+#, fuzzy
+msgid ""
+"Another new capability is producing a diff-style display of the output by "
+"specifying the :const:`doctest.REPORT_UDIFF` (unified diffs), "
+":const:`doctest.REPORT_CDIFF` (context diffs), or "
+":const:`doctest.REPORT_NDIFF` (delta-style) option flags.  For example::"
+msgstr ""
+"Một khả năng mới khác là tạo ra màn hình hiển thị đầu ra theo kiểu khác nhau"
+" bằng cách chỉ định các cờ tùy chọn :const:`doctest.REPORT_UDIFF` (khác biệt"
+" thống nhất), :const:`doctest.REPORT_CDIFF` (khác biệt ngữ cảnh) hoặc "
+":const:`doctest.REPORT_NDIFF` (kiểu delta).  Ví dụ::"
+
+#: ../../whatsnew/2.4.rst:1417
+#, fuzzy
+msgid ""
+"def g (n):\n"
+"    \"\"\">>> g(4)\n"
+"here\n"
+"is\n"
+"a\n"
+"lengthy\n"
+">>>\"\"\"\n"
+"    L = 'here is a rather lengthy list of words'.split()\n"
+"    for word in L[:n]:\n"
+"        print word"
+msgstr ""
+"def g (n):\n"
+"    \"\"\">>>g(4)\n"
+"ở đây\n"
+"là\n"
+"một\n"
+"dài dòng\n"
+">>>\"\"\"\n"
+"    L = 'đây là danh sách các từ khá dài'.split()\n"
+"    cho từ trong L[:n]:\n"
+"        in chữ"
+
+#: ../../whatsnew/2.4.rst:1428
+#, fuzzy
+msgid ""
+"Running the above function's tests with :const:`doctest.REPORT_UDIFF` "
+"specified, you get the following output:"
+msgstr ""
+"Chạy thử nghiệm hàm trên với :const:`doctest.REPORT_UDIFF` được chỉ định, "
+"bạn sẽ nhận được kết quả đầu ra sau:"
+
+#: ../../whatsnew/2.4.rst:1431
+#, fuzzy
+msgid ""
+"**********************************************************************\n"
+"File \"t.py\", line 15, in g\n"
+"Failed example:\n"
+"    g(4)\n"
+"Differences (unified diff with -expected +actual):\n"
+"    @@ -2,3 +2,3 @@\n"
+"     is\n"
+"     a\n"
+"    -lengthy\n"
+"    +rather\n"
+"**********************************************************************"
+msgstr ""
+"*************************************************************************\n"
+"Tệp \"t.py\", dòng 15, trong g\n"
+"Ví dụ không thành công:\n"
+"    g(4)\n"
+"Sự khác biệt (khác biệt thống nhất với -expected +actual):\n"
+"    @@ -2,3 +2,3 @@\n"
+"     là\n"
+"     một\n"
+"    -dài\n"
+"    +đúng hơn\n"
+"*************************************************************************"
+
+#: ../../whatsnew/2.4.rst:1449
+#, fuzzy
+msgid "Build and C API Changes"
+msgstr "Xây dựng và thay đổi C API"
+
+#: ../../whatsnew/2.4.rst:1451
+#, fuzzy
+msgid "Some of the changes to Python's build process and to the C API are:"
+msgstr ""
+"Một số thay đổi đối với quy trình xây dựng của Python và đối với C API là:"
+
+#: ../../whatsnew/2.4.rst:1453
+#, fuzzy
+msgid ""
+"Three new convenience macros were added for common return values from "
+"extension functions: :c:macro:`Py_RETURN_NONE`, :c:macro:`Py_RETURN_TRUE`, "
+"and :c:macro:`Py_RETURN_FALSE`. (Contributed by Brett Cannon.)"
+msgstr ""
+"Ba macro tiện lợi mới đã được thêm vào cho các giá trị trả về chung từ các "
+"hàm mở rộng: :c:macro:`Py_RETURN_NONE`, :c:macro:`Py_RETURN_TRUE` và "
+":c:macro:`Py_RETURN_FALSE`. (Được đóng góp bởi Brett Cannon.)"
+
+#: ../../whatsnew/2.4.rst:1457
+#, fuzzy
+msgid ""
+"Another new macro, :c:macro:`Py_CLEAR`,  decreases the reference count of "
+"*obj* and sets *obj* to the null pointer.  (Contributed by Jim Fulton.)"
+msgstr ""
+"Một macro mới khác, :c:macro:`Py_CLEAR`, giảm số lượng tham chiếu của *obj* "
+"và đặt *obj* thành con trỏ null.  (Được đóng góp bởi Jim Fulton.)"
+
+#: ../../whatsnew/2.4.rst:1460
+#, fuzzy
+msgid ""
+"A new function, ``PyTuple_Pack(N, obj1, obj2, ..., objN)``, constructs "
+"tuples from a variable length argument list of Python objects.  (Contributed"
+" by Raymond Hettinger.)"
+msgstr ""
+"Một hàm mới, ``PyTuple_Pack(N, obj1, obj2, ..., objN)``, xây dựng các bộ dữ "
+"liệu từ danh sách đối số có độ dài thay đổi của các đối tượng Python.  (Được"
+" đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:1464
+#, fuzzy
+msgid ""
+"A new function, ``PyDict_Contains(d, k)``, implements fast dictionary "
+"lookups without masking exceptions raised during the look-up process. "
+"(Contributed by Raymond Hettinger.)"
+msgstr ""
+"Một chức năng mới, ``PyDict_Contains(d, k)``, thực hiện tra cứu từ điển "
+"nhanh chóng mà không che giấu các ngoại lệ được đưa ra trong quá trình tra "
+"cứu. (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:1468
+#, fuzzy
+msgid ""
+"The :c:expr:`Py_IS_NAN(X)` macro returns 1 if  its float or double argument "
+"*X* is a NaN.   (Contributed by Tim Peters.)"
+msgstr ""
+"Macro :c:expr:`Py_IS_NAN(X)` trả về 1 nếu đối số float hoặc double *X* của "
+"nó là NaN.   (Được đóng góp bởi Tim Peters.)"
+
+#: ../../whatsnew/2.4.rst:1471
+#, fuzzy
+msgid ""
+"C code can avoid unnecessary locking by using the new "
+":c:func:`!PyEval_ThreadsInitialized` function to tell  if any thread "
+"operations have been performed.  If this function  returns false, no lock "
+"operations are needed. (Contributed by Nick Coghlan.)"
+msgstr ""
+"Mã C có thể tránh việc khóa không cần thiết bằng cách sử dụng hàm "
+":c:func:`!PyEval_ThreadsInitialized` mới để biết liệu có bất kỳ thao tác "
+"luồng nào đã được thực hiện hay không.  Nếu hàm này trả về sai thì không cần"
+" thực hiện thao tác khóa nào. (Được đóng góp bởi Nick Coghlan.)"
+
+#: ../../whatsnew/2.4.rst:1476
+#, fuzzy
+msgid ""
+"A new function, :c:func:`PyArg_VaParseTupleAndKeywords`, is the same as "
+":c:func:`PyArg_ParseTupleAndKeywords` but takes a  :c:type:`va_list` instead"
+" of a number of arguments. (Contributed by Greg Chapman.)"
+msgstr ""
+"Một hàm mới, :c:func:`PyArg_VaParseTupleAndKeywords`, giống như "
+":c:func:`PyArg_ParseTupleAndKeywords` nhưng lấy :c:type:`va_list` thay vì "
+"một số đối số. (Được đóng góp bởi Greg Chapman.)"
+
+#: ../../whatsnew/2.4.rst:1480
+#, fuzzy
+msgid ""
+"A new method flag, :c:macro:`METH_COEXIST`, allows a function defined in "
+"slots to co-exist with a :c:type:`PyCFunction` having the same name.  This "
+"can halve the access time for a method such as :meth:`set.__contains__`.  "
+"(Contributed by Raymond Hettinger.)"
+msgstr ""
+"Cờ phương thức mới, :c:macro:`METH_COEXIST`, cho phép một hàm được xác định "
+"trong các vị trí cùng tồn tại với :c:type:`PyCFunction` có cùng tên.  Điều "
+"này có thể giảm một nửa thời gian truy cập cho một phương thức như "
+":meth:`set.__contains__`.  (Được đóng góp bởi Raymond Hettinger.)"
+
+#: ../../whatsnew/2.4.rst:1485
+#, fuzzy
+msgid ""
+"Python can now be built with additional profiling for the interpreter "
+"itself, intended as an aid to people developing the Python core.  Providing "
+":option:`!--enable-profiling` to the :program:`configure` script will let "
+"you profile the interpreter with :program:`gprof`, and providing the "
+":option:`!--with-tsc` switch enables profiling using the Pentium's Time-"
+"Stamp-Counter register.  Note that the :option:`!--with-tsc` switch is "
+"slightly misnamed, because the profiling feature also works on the PowerPC "
+"platform, though that processor architecture doesn't call that register "
+"\"the TSC register\".  (Contributed by Jeremy Hylton.)"
+msgstr ""
+"Giờ đây, Python có thể được xây dựng với cấu hình bổ sung cho chính trình "
+"thông dịch, nhằm mục đích hỗ trợ những người phát triển lõi Python.  Việc "
+"cung cấp :option:`!--enable-profiling` cho tập lệnh :program:`configure` sẽ "
+"cho phép bạn lập hồ sơ trình thông dịch với :program:`gprof` và việc cung "
+"cấp khóa chuyển :option:`!--with-tsc` cho phép lập hồ sơ bằng cách sử dụng "
+"thanh ghi Bộ đếm thời gian của Pentium.  Lưu ý rằng công tắc :option:`!--"
+"with-tsc` bị đặt tên hơi sai vì tính năng lập hồ sơ cũng hoạt động trên nền "
+"tảng PowerPC, mặc dù kiến ​​trúc bộ xử lý đó không gọi thanh ghi đó là "
+"\"thanh ghi TSC\".  (Được đóng góp bởi Jeremy Hylton.)"
+
+#: ../../whatsnew/2.4.rst:1495
+#, fuzzy
+msgid ""
+"The :c:type:`!tracebackobject` type has been renamed to "
+":c:type:`PyTracebackObject`."
+msgstr ""
+"Loại :c:type:`!tracebackobject` đã được đổi tên thành "
+":c:type:`PyTracebackObject`."
+
+#: ../../whatsnew/2.4.rst:1502
+#, fuzzy
+msgid "Port-Specific Changes"
+msgstr "Những thay đổi dành riêng cho từng cổng"
+
+#: ../../whatsnew/2.4.rst:1504
+#, fuzzy
+msgid ""
+"The Windows port now builds under MSVC++ 7.1 as well as version 6. "
+"(Contributed by Martin von Löwis.)"
+msgstr ""
+"Cổng Windows hiện được xây dựng theo MSVC++ 7.1 cũng như phiên bản 6. (Được "
+"đóng góp bởi Martin von Löwis.)"
+
+#: ../../whatsnew/2.4.rst:1511
+#, fuzzy
+msgid "Porting to Python 2.4"
+msgstr "Chuyển sang Python 2.4"
+
+#: ../../whatsnew/2.4.rst:1513
+#, fuzzy
+msgid ""
+"This section lists previously described changes that may require changes to "
+"your code:"
+msgstr ""
+"Phần này liệt kê những thay đổi được mô tả trước đây có thể yêu cầu thay đổi"
+" mã của bạn:"
+
+#: ../../whatsnew/2.4.rst:1516
+#, fuzzy
+msgid ""
+"Left shifts and hexadecimal/octal constants that are too  large no longer "
+"trigger a :exc:`FutureWarning` and return  a value limited to 32 or 64 bits;"
+" instead they return a long integer."
+msgstr ""
+"Dịch chuyển trái và hằng số thập lục phân/bát phân quá lớn không còn kích "
+"hoạt :exc:`FutureWarning` và trả về giá trị giới hạn ở 32 hoặc 64 bit; thay "
+"vào đó họ trả về một số nguyên dài."
+
+#: ../../whatsnew/2.4.rst:1523
+#, fuzzy
+msgid ""
+"The :func:`zip` built-in function and :func:`itertools.izip` now return  an "
+"empty list instead of raising a :exc:`TypeError` exception if called with no"
+" arguments."
+msgstr ""
+"Hàm tích hợp :func:`zip` và :func:`itertools.izip` hiện trả về một danh sách"
+" trống thay vì đưa ra ngoại lệ :exc:`TypeError` nếu được gọi mà không có đối"
+" số."
+
+#: ../../whatsnew/2.4.rst:1527
+#, fuzzy
+msgid ""
+"You can no longer compare the :class:`date` and :class:`~datetime.datetime` "
+"instances provided by the :mod:`datetime` module.  Two  instances of "
+"different classes will now always be unequal, and  relative comparisons "
+"(``<``, ``>``) will raise a :exc:`TypeError`."
+msgstr ""
+"Bạn không thể so sánh các phiên bản :class:`date` và "
+":class:`~datetime.datetime` do mô-đun :mod:`datetime` cung cấp nữa.  Hai "
+"phiên bản của các lớp khác nhau bây giờ sẽ luôn không bằng nhau và các so "
+"sánh tương đối (``<``, ``>``) sẽ tạo ra :exc:`TypeError`."
+
+#: ../../whatsnew/2.4.rst:1532
+#, fuzzy
+msgid ""
+":func:`!dircache.listdir` now passes exceptions to the caller instead of "
+"returning empty lists."
+msgstr ""
+":func:`!dircache.listdir` hiện chuyển ngoại lệ cho người gọi thay vì trả về "
+"danh sách trống."
+
+#: ../../whatsnew/2.4.rst:1535
+#, fuzzy
+msgid ""
+":func:`LexicalHandler.startDTD` used to receive the public and system IDs in"
+" the wrong order.  This has been corrected; applications relying on the "
+"wrong order need to be fixed."
+msgstr ""
+":func:`LexicalHandler.startDTD` được sử dụng để nhận ID công khai và ID hệ "
+"thống không đúng thứ tự.  Điều này đã được sửa chữa; các ứng dụng sai thứ tự"
+" cần phải được sửa chữa."
+
+#: ../../whatsnew/2.4.rst:1539
+#, fuzzy
+msgid ""
+":func:`fcntl.ioctl` now warns if the *mutate*  argument is omitted and "
+"relevant."
+msgstr ""
+":func:`fcntl.ioctl` hiện cảnh báo nếu đối số *mutate* bị bỏ qua và có liên "
+"quan."
+
+#: ../../whatsnew/2.4.rst:1542
+#, fuzzy
+msgid ""
+"The :mod:`tarfile` module now generates GNU-format tar files by default."
+msgstr ""
+"Mô-đun :mod:`tarfile` hiện tạo các tệp tar có định dạng GNU theo mặc định."
+
+#: ../../whatsnew/2.4.rst:1544
+#, fuzzy
+msgid ""
+"Encountering a failure while importing a module no longer leaves a partially"
+" initialized module object in ``sys.modules``."
+msgstr ""
+"Gặp lỗi khi nhập mô-đun không còn để lại đối tượng mô-đun được khởi tạo một "
+"phần trong ``sys.modules``."
+
+#: ../../whatsnew/2.4.rst:1547
+#, fuzzy
+msgid ""
+":const:`None` is now a constant; code that binds a new value to  the name "
+"``None`` is now a syntax error."
+msgstr ""
+":const:`None` hiện là hằng số; mã liên kết một giá trị mới với tên ``None`` "
+"hiện là lỗi cú pháp."
+
+#: ../../whatsnew/2.4.rst:1550
+#, fuzzy
+msgid ""
+"The :func:`signals.signal` function now raises a :exc:`RuntimeError` "
+"exception for certain illegal values; previously these errors would pass "
+"silently.  For example, you can no longer set a handler on the "
+":const:`SIGKILL` signal."
+msgstr ""
+"Hàm :func:`signals.signal` hiện đưa ra ngoại lệ :exc:`RuntimeError` đối với "
+"một số giá trị không hợp lệ; trước đây những lỗi này sẽ trôi qua một cách âm"
+" thầm.  Ví dụ: bạn không còn có thể đặt trình xử lý trên tín hiệu "
+":const:`SIGKILL` nữa."
+
+#: ../../whatsnew/2.4.rst:1560
+#, fuzzy
+msgid "Acknowledgements"
+msgstr "Lời cảm ơn"
+
+#: ../../whatsnew/2.4.rst:1562
+#, fuzzy
+msgid ""
+"The author would like to thank the following people for offering "
+"suggestions, corrections and assistance with various drafts of this article:"
+" Koray Can, Hye-Shik Chang, Michael Dyck, Raymond Hettinger, Brian Hurt, "
+"Hamish Lawson, Fredrik Lundh, Sean Reifschneider, Sadruddin Rejeb."
+msgstr ""
+"Tác giả xin cảm ơn những người sau đây đã đưa ra những gợi ý, chỉnh sửa và "
+"hỗ trợ cho các bản thảo khác nhau của bài viết này: Koray Can, Hye-Shik "
+"Chang, Michael Dyck, Raymond Hettinger, Brian Hurt, Hamish Lawson, Fredrik "
+"Lundh, Sean Reifschneider, Sadruddin Rejeb."
+
+#: ../../whatsnew/2.4.rst:415
+#, fuzzy
+msgid "universal newlines"
+msgstr "dòng mới phổ quát"
+
+#: ../../whatsnew/2.4.rst:415
+#, fuzzy
+msgid "What's new"
+msgstr "Có gì mới"

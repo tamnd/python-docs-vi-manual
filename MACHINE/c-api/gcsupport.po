@@ -1,0 +1,675 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/gcsupport.rst:6
+#, fuzzy
+msgid "Supporting Cyclic Garbage Collection"
+msgstr "Hỗ trợ thu gom rác tuần hoàn"
+
+#: ../../c-api/gcsupport.rst:8
+#, fuzzy
+msgid ""
+"Python's support for detecting and collecting garbage which involves "
+"circular references requires support from object types which are "
+"\"containers\" for other objects which may also be containers.  Types which "
+"do not store references to other objects, or which only store references to "
+"atomic types (such as numbers or strings), do not need to provide any "
+"explicit support for garbage collection."
+msgstr ""
+"Sự hỗ trợ của Python trong việc phát hiện và thu thập rác bao gồm các tham "
+"chiếu vòng tròn yêu cầu sự hỗ trợ từ các loại đối tượng là \"vùng chứa\" cho"
+" các đối tượng khác cũng có thể là vùng chứa.  Các loại không lưu trữ tham "
+"chiếu đến các đối tượng khác hoặc chỉ lưu trữ tham chiếu đến loại nguyên tử "
+"(chẳng hạn như số hoặc chuỗi), không cần cung cấp bất kỳ hỗ trợ rõ ràng nào "
+"cho việc thu gom rác."
+
+#: ../../c-api/gcsupport.rst:15
+#, fuzzy
+msgid ""
+"To create a container type, the :c:member:`~PyTypeObject.tp_flags` field of "
+"the type object must include the :c:macro:`Py_TPFLAGS_HAVE_GC` and provide "
+"an implementation of the :c:member:`~PyTypeObject.tp_traverse` handler.  If "
+"instances of the type are mutable, a :c:member:`~PyTypeObject.tp_clear` "
+"implementation must also be provided."
+msgstr ""
+"Để tạo loại vùng chứa, trường :c:member:`~PyTypeObject.tp_flags` của đối "
+"tượng loại phải bao gồm :c:macro:`Py_TPFLAGS_HAVE_GC` và cung cấp cách triển"
+" khai trình xử lý :c:member:`~PyTypeObject.tp_traverse`.  Nếu các phiên bản "
+"của loại này có thể thay đổi thì việc triển khai "
+":c:member:`~PyTypeObject.tp_clear` cũng phải được cung cấp."
+
+#: ../../c-api/gcsupport.rst:21
+#, fuzzy
+msgid ":c:macro:`Py_TPFLAGS_HAVE_GC`"
+msgstr ":c:macro:`Py_TPFLAGS_HAVE_GC`"
+
+#: ../../c-api/gcsupport.rst:22
+#, fuzzy
+msgid ""
+"Objects with a type with this flag set must conform with the rules "
+"documented here.  For convenience these objects will be referred to as "
+"container objects."
+msgstr ""
+"Các đối tượng có loại có bộ cờ này phải tuân thủ các quy tắc được ghi ở đây."
+"  Để thuận tiện, những đối tượng này sẽ được gọi là đối tượng chứa."
+
+#: ../../c-api/gcsupport.rst:26
+#, fuzzy
+msgid "Constructors for container types must conform to two rules:"
+msgstr "Trình xây dựng cho các loại vùng chứa phải tuân theo hai quy tắc:"
+
+#: ../../c-api/gcsupport.rst:28
+#, fuzzy
+msgid ""
+"The memory for the object must be allocated using :c:macro:`PyObject_GC_New`"
+" or :c:macro:`PyObject_GC_NewVar`."
+msgstr ""
+"Bộ nhớ cho đối tượng phải được phân bổ bằng :c:macro:`PyObject_GC_New` hoặc "
+":c:macro:`PyObject_GC_NewVar`."
+
+#: ../../c-api/gcsupport.rst:31
+#, fuzzy
+msgid ""
+"Once all the fields which may contain references to other containers are "
+"initialized, it must call :c:func:`PyObject_GC_Track`."
+msgstr ""
+"Khi tất cả các trường có thể chứa tham chiếu đến các vùng chứa khác được "
+"khởi tạo, nó phải gọi :c:func:`PyObject_GC_Track`."
+
+#: ../../c-api/gcsupport.rst:34
+#, fuzzy
+msgid ""
+"Similarly, the deallocator for the object must conform to a similar pair of "
+"rules:"
+msgstr ""
+"Tương tự, bộ giải phóng cho đối tượng phải tuân theo một cặp quy tắc tương "
+"tự:"
+
+#: ../../c-api/gcsupport.rst:37
+#, fuzzy
+msgid ""
+"Before fields which refer to other containers are invalidated, "
+":c:func:`PyObject_GC_UnTrack` must be called."
+msgstr ""
+"Trước khi các trường tham chiếu đến các vùng chứa khác bị vô hiệu, "
+":c:func:`PyObject_GC_UnTrack` phải được gọi."
+
+#: ../../c-api/gcsupport.rst:40
+#, fuzzy
+msgid ""
+"The object's memory must be deallocated using :c:func:`PyObject_GC_Del`."
+msgstr ""
+"Bộ nhớ của đối tượng phải được giải phóng bằng :c:func:`PyObject_GC_Del`."
+
+#: ../../c-api/gcsupport.rst:43
+#, fuzzy
+msgid ""
+"If a type adds the Py_TPFLAGS_HAVE_GC, then it *must* implement at least a "
+":c:member:`~PyTypeObject.tp_traverse` handler or explicitly use one from its"
+" subclass or subclasses."
+msgstr ""
+"Nếu một loại thêm Py_TPFLAGS_HAVE_GC thì *must* sẽ triển khai ít nhất một "
+"trình xử lý :c:member:`~PyTypeObject.tp_traverse` hoặc sử dụng rõ ràng một "
+"trình xử lý từ lớp con hoặc các lớp con của nó."
+
+#: ../../c-api/gcsupport.rst:47
+#, fuzzy
+msgid ""
+"When calling :c:func:`PyType_Ready` or some of the APIs that indirectly call"
+" it like :c:func:`PyType_FromSpecWithBases` or :c:func:`PyType_FromSpec` the"
+" interpreter will automatically populate the "
+":c:member:`~PyTypeObject.tp_flags`, :c:member:`~PyTypeObject.tp_traverse` "
+"and :c:member:`~PyTypeObject.tp_clear` fields if the type inherits from a "
+"class that implements the garbage collector protocol and the child class "
+"does *not* include the :c:macro:`Py_TPFLAGS_HAVE_GC` flag."
+msgstr ""
+"Khi gọi :c:func:`PyType_Ready` hoặc một số API gọi gián tiếp như "
+":c:func:`PyType_FromSpecWithBases` hoặc :c:func:`PyType_FromSpec`, trình "
+"thông dịch sẽ tự động điền vào các trường "
+":c:member:`~PyTypeObject.tp_flags`, :c:member:`~PyTypeObject.tp_traverse` và"
+" :c:member:`~PyTypeObject.tp_clear` nếu loại kế thừa từ một lớp thực hiện "
+"giao thức thu gom rác và lớp con *not* bao gồm cờ "
+":c:macro:`Py_TPFLAGS_HAVE_GC`."
+
+#: ../../c-api/gcsupport.rst:57
+#, fuzzy
+msgid ""
+"Analogous to :c:macro:`PyObject_New` but for container objects with the "
+":c:macro:`Py_TPFLAGS_HAVE_GC` flag set."
+msgstr ""
+"Tương tự như :c:macro:`PyObject_New` nhưng dành cho các đối tượng vùng chứa "
+"có bộ cờ :c:macro:`Py_TPFLAGS_HAVE_GC`."
+
+#: ../../c-api/gcsupport.rst:60 ../../c-api/gcsupport.rst:84
+#, fuzzy
+msgid ""
+"Do not call this directly to allocate memory for an object; call the type's "
+":c:member:`~PyTypeObject.tp_alloc` slot instead."
+msgstr ""
+"Đừng gọi trực tiếp điều này để cấp phát bộ nhớ cho một đối tượng; thay vào "
+"đó hãy gọi loại :c:member:`~PyTypeObject.tp_alloc` slot."
+
+#: ../../c-api/gcsupport.rst:63 ../../c-api/gcsupport.rst:87
+#, fuzzy
+msgid ""
+"When populating a type's :c:member:`~PyTypeObject.tp_alloc` slot, "
+":c:func:`PyType_GenericAlloc` is preferred over a custom function that "
+"simply calls this macro."
+msgstr ""
+"Khi điền vào vị trí :c:member:`~PyTypeObject.tp_alloc` của một loại, "
+":c:func:`PyType_GenericAlloc` được ưu tiên hơn chức năng tùy chỉnh chỉ gọi "
+"macro này."
+
+#: ../../c-api/gcsupport.rst:67 ../../c-api/gcsupport.rst:91
+#, fuzzy
+msgid ""
+"Memory allocated by this macro must be freed with :c:func:`PyObject_GC_Del` "
+"(usually called via the object's :c:member:`~PyTypeObject.tp_free` slot)."
+msgstr ""
+"Bộ nhớ được cấp phát bởi macro này phải được giải phóng bằng "
+":c:func:`PyObject_GC_Del` (thường được gọi thông qua khe "
+":c:member:`~PyTypeObject.tp_free` của đối tượng)."
+
+#: ../../c-api/gcsupport.rst:73 ../../c-api/gcsupport.rst:97
+#, fuzzy
+msgid ":c:func:`PyObject_GC_Del`"
+msgstr ":c:func:`PyObject_GC_Del`"
+
+#: ../../c-api/gcsupport.rst:74
+#, fuzzy
+msgid ":c:macro:`PyObject_New`"
+msgstr ":c:macro:`PyObject_New`"
+
+#: ../../c-api/gcsupport.rst:75 ../../c-api/gcsupport.rst:99
+#: ../../c-api/gcsupport.rst:193
+#, fuzzy
+msgid ":c:func:`PyType_GenericAlloc`"
+msgstr ":c:func:`PyType_GenericAlloc`"
+
+#: ../../c-api/gcsupport.rst:76 ../../c-api/gcsupport.rst:100
+#, fuzzy
+msgid ":c:member:`~PyTypeObject.tp_alloc`"
+msgstr ":c:member:`~PyTypeObject.tp_alloc`"
+
+#: ../../c-api/gcsupport.rst:81
+#, fuzzy
+msgid ""
+"Analogous to :c:macro:`PyObject_NewVar` but for container objects with the "
+":c:macro:`Py_TPFLAGS_HAVE_GC` flag set."
+msgstr ""
+"Tương tự như :c:macro:`PyObject_NewVar` nhưng dành cho các đối tượng vùng "
+"chứa có bộ cờ :c:macro:`Py_TPFLAGS_HAVE_GC`."
+
+#: ../../c-api/gcsupport.rst:98
+#, fuzzy
+msgid ":c:macro:`PyObject_NewVar`"
+msgstr ":c:macro:`PyObject_NewVar`"
+
+#: ../../c-api/gcsupport.rst:105
+#, fuzzy
+msgid ""
+"Analogous to :c:macro:`PyObject_GC_New` but allocates *extra_size* bytes at "
+"the end of the object (at offset :c:member:`~PyTypeObject.tp_basicsize`). "
+"The allocated memory is initialized to zeros, except for the :c:type:`Python"
+" object header <PyObject>`."
+msgstr ""
+"Tương tự như :c:macro:`PyObject_GC_New` nhưng phân bổ byte *extra_size* ở "
+"cuối đối tượng (ở offset :c:member:`~PyTypeObject.tp_basicsize`). Bộ nhớ "
+"được phân bổ được khởi tạo về số 0, ngoại trừ :c:type:`Python object header "
+"<PyObject>`."
+
+#: ../../c-api/gcsupport.rst:111
+#, fuzzy
+msgid ""
+"The extra data will be deallocated with the object, but otherwise it is not "
+"managed by Python."
+msgstr ""
+"Dữ liệu bổ sung sẽ được giải phóng cùng với đối tượng, nhưng nếu không thì "
+"nó không được Python quản lý."
+
+#: ../../c-api/gcsupport.rst:114
+#, fuzzy
+msgid ""
+"Memory allocated by this function must be freed with "
+":c:func:`PyObject_GC_Del` (usually called via the object's "
+":c:member:`~PyTypeObject.tp_free` slot)."
+msgstr ""
+"Bộ nhớ được cấp phát bởi chức năng này phải được giải phóng bằng "
+":c:func:`PyObject_GC_Del` (thường được gọi thông qua khe "
+":c:member:`~PyTypeObject.tp_free` của đối tượng)."
+
+#: ../../c-api/gcsupport.rst:119
+#, fuzzy
+msgid ""
+"The function is marked as unstable because the final mechanism for reserving"
+" extra data after an instance is not yet decided. For allocating a variable "
+"number of fields, prefer using :c:type:`PyVarObject` and "
+":c:member:`~PyTypeObject.tp_itemsize` instead."
+msgstr ""
+"Hàm này được đánh dấu là không ổn định vì cơ chế cuối cùng để dự trữ dữ liệu"
+" bổ sung sau một phiên bản vẫn chưa được quyết định. Để phân bổ số lượng "
+"trường khác nhau, thay vào đó, hãy ưu tiên sử dụng :c:type:`PyVarObject` và "
+":c:member:`~PyTypeObject.tp_itemsize`."
+
+#: ../../c-api/gcsupport.rst:130
+#, fuzzy
+msgid ""
+"Resize an object allocated by :c:macro:`PyObject_NewVar`. Returns the "
+"resized object of type ``TYPE*`` (refers to any C type) or ``NULL`` on "
+"failure."
+msgstr ""
+"Thay đổi kích thước đối tượng được phân bổ bởi :c:macro:`PyObject_NewVar`. "
+"Trả về đối tượng đã thay đổi kích thước thuộc loại ``TYPE*`` (tham chiếu đến"
+" bất kỳ loại C nào) hoặc ``NULL`` khi thất bại."
+
+#: ../../c-api/gcsupport.rst:134
+#, fuzzy
+msgid ""
+"*op* must be of type :c:expr:`PyVarObject *` and must not be tracked by the "
+"collector yet. *newsize* must be of type :c:type:`Py_ssize_t`."
+msgstr ""
+"*op* phải thuộc loại :c:expr:`PyVarObject *` và chưa được người thu thập "
+"theo dõi. *newsize* phải thuộc loại :c:type:`Py_ssize_t`."
+
+#: ../../c-api/gcsupport.rst:141
+#, fuzzy
+msgid ""
+"Adds the object *op* to the set of container objects tracked by the "
+"collector.  The collector can run at unexpected times so objects must be "
+"valid while being tracked.  This should be called once all the fields "
+"followed by the :c:member:`~PyTypeObject.tp_traverse` handler become valid, "
+"usually near the end of the constructor."
+msgstr ""
+"Thêm đối tượng *op* vào tập hợp các đối tượng chứa được bộ sưu tập theo dõi."
+"  Trình thu thập có thể chạy vào những thời điểm không mong muốn nên các đối"
+" tượng phải hợp lệ trong khi được theo dõi.  Điều này sẽ được gọi khi tất cả"
+" các trường theo sau bởi trình xử lý :c:member:`~PyTypeObject.tp_traverse` "
+"trở nên hợp lệ, thường ở gần cuối hàm tạo."
+
+#: ../../c-api/gcsupport.rst:150
+#, fuzzy
+msgid ""
+"Returns non-zero if the object implements the garbage collector protocol, "
+"otherwise returns 0."
+msgstr ""
+"Trả về khác 0 nếu đối tượng thực hiện giao thức thu gom rác, nếu không thì "
+"trả về 0."
+
+#: ../../c-api/gcsupport.rst:153
+#, fuzzy
+msgid ""
+"The object cannot be tracked by the garbage collector if this function "
+"returns 0."
+msgstr "Bộ thu gom rác không thể theo dõi đối tượng nếu hàm này trả về 0."
+
+#: ../../c-api/gcsupport.rst:158
+#, fuzzy
+msgid ""
+"Returns 1 if the object type of *op* implements the GC protocol and *op* is "
+"being currently tracked by the garbage collector and 0 otherwise."
+msgstr ""
+"Trả về 1 nếu loại đối tượng của *op* triển khai giao thức GC và *op* hiện "
+"đang được trình thu gom rác theo dõi và 0 nếu ngược lại."
+
+#: ../../c-api/gcsupport.rst:161
+#, fuzzy
+msgid "This is analogous to the Python function :func:`gc.is_tracked`."
+msgstr "Điều này tương tự với hàm Python :func:`gc.is_tracked`."
+
+#: ../../c-api/gcsupport.rst:168
+#, fuzzy
+msgid ""
+"Returns 1 if the object type of *op* implements the GC protocol and *op* has"
+" been already finalized by the garbage collector and 0 otherwise."
+msgstr ""
+"Trả về 1 nếu loại đối tượng của *op* thực hiện giao thức GC và *op* đã được "
+"trình thu gom rác hoàn thiện và 0 nếu ngược lại."
+
+#: ../../c-api/gcsupport.rst:171
+#, fuzzy
+msgid "This is analogous to the Python function :func:`gc.is_finalized`."
+msgstr "Điều này tương tự với hàm Python :func:`gc.is_finalized`."
+
+#: ../../c-api/gcsupport.rst:178
+#, fuzzy
+msgid ""
+"Releases memory allocated to an object using :c:macro:`PyObject_GC_New` or "
+":c:macro:`PyObject_GC_NewVar`."
+msgstr ""
+"Giải phóng bộ nhớ được phân bổ cho một đối tượng bằng "
+":c:macro:`PyObject_GC_New` hoặc :c:macro:`PyObject_GC_NewVar`."
+
+#: ../../c-api/gcsupport.rst:181
+#, fuzzy
+msgid ""
+"Do not call this directly to free an object's memory; call the type's "
+":c:member:`~PyTypeObject.tp_free` slot instead."
+msgstr ""
+"Đừng gọi trực tiếp điều này để giải phóng bộ nhớ của đối tượng; thay vào đó "
+"hãy gọi loại :c:member:`~PyTypeObject.tp_free` slot."
+
+#: ../../c-api/gcsupport.rst:184
+#, fuzzy
+msgid ""
+"Do not use this for memory allocated by :c:macro:`PyObject_New`, "
+":c:macro:`PyObject_NewVar`, or related allocation functions; use "
+":c:func:`PyObject_Free` instead."
+msgstr ""
+"Không sử dụng điều này cho bộ nhớ được phân bổ bởi :c:macro:`PyObject_New`, "
+":c:macro:`PyObject_NewVar` hoặc các hàm phân bổ liên quan; thay vào đó hãy "
+"sử dụng :c:func:`PyObject_Free`."
+
+#: ../../c-api/gcsupport.rst:190
+#, fuzzy
+msgid ":c:func:`PyObject_Free` is the non-GC equivalent of this function."
+msgstr ":c:func:`PyObject_Free` là hàm không tương đương với GC của hàm này."
+
+#: ../../c-api/gcsupport.rst:191
+#, fuzzy
+msgid ":c:macro:`PyObject_GC_New`"
+msgstr ":c:macro:`PyObject_GC_New`"
+
+#: ../../c-api/gcsupport.rst:192
+#, fuzzy
+msgid ":c:macro:`PyObject_GC_NewVar`"
+msgstr ":c:macro:`PyObject_GC_NewVar`"
+
+#: ../../c-api/gcsupport.rst:194
+#, fuzzy
+msgid ":c:member:`~PyTypeObject.tp_free`"
+msgstr ":c:member:`~PyTypeObject.tp_free`"
+
+#: ../../c-api/gcsupport.rst:199
+#, fuzzy
+msgid ""
+"Remove the object *op* from the set of container objects tracked by the "
+"collector.  Note that :c:func:`PyObject_GC_Track` can be called again on "
+"this object to add it back to the set of tracked objects.  The deallocator "
+"(:c:member:`~PyTypeObject.tp_dealloc` handler) should call this for the "
+"object before any of the fields used by the "
+":c:member:`~PyTypeObject.tp_traverse` handler become invalid."
+msgstr ""
+"Xóa đối tượng *op* khỏi tập hợp các đối tượng chứa được bộ sưu tập theo dõi."
+"  Lưu ý rằng :c:func:`PyObject_GC_Track` có thể được gọi lại trên đối tượng "
+"này để thêm nó trở lại tập hợp các đối tượng được theo dõi.  Trình giải "
+"quyết (trình xử lý :c:member:`~PyTypeObject.tp_dealloc`) nên gọi điều này "
+"cho đối tượng trước khi bất kỳ trường nào được trình xử lý "
+":c:member:`~PyTypeObject.tp_traverse` sử dụng trở nên không hợp lệ."
+
+#: ../../c-api/gcsupport.rst:208
+#, fuzzy
+msgid ""
+"The :c:func:`!_PyObject_GC_TRACK` and :c:func:`!_PyObject_GC_UNTRACK` macros"
+" have been removed from the public C API."
+msgstr ""
+"Các macro :c:func:`!_PyObject_GC_TRACK` và :c:func:`!_PyObject_GC_UNTRACK` "
+"đã bị xóa khỏi C API công khai."
+
+#: ../../c-api/gcsupport.rst:211
+#, fuzzy
+msgid ""
+"The :c:member:`~PyTypeObject.tp_traverse` handler accepts a function "
+"parameter of this type:"
+msgstr ""
+"Trình xử lý :c:member:`~PyTypeObject.tp_traverse` chấp nhận tham số hàm "
+"thuộc loại này:"
+
+#: ../../c-api/gcsupport.rst:216
+#, fuzzy
+msgid ""
+"Type of the visitor function passed to the "
+":c:member:`~PyTypeObject.tp_traverse` handler. The function should be called"
+" with an object to traverse as *object* and the third parameter to the "
+":c:member:`~PyTypeObject.tp_traverse` handler as *arg*.  The Python core "
+"uses several visitor functions to implement cyclic garbage detection; it's "
+"not expected that users will need to write their own visitor functions."
+msgstr ""
+"Loại hàm khách truy cập được chuyển tới trình xử lý "
+":c:member:`~PyTypeObject.tp_traverse`. Hàm này phải được gọi với đối tượng "
+"cần duyệt là *object* và tham số thứ ba cho trình xử lý "
+":c:member:`~PyTypeObject.tp_traverse` là *arg*.  Lõi Python sử dụng một số "
+"chức năng của khách truy cập để triển khai tính năng phát hiện rác theo chu "
+"kỳ; người dùng sẽ không cần phải viết các hàm truy cập của riêng mình."
+
+#: ../../c-api/gcsupport.rst:223
+#, fuzzy
+msgid ""
+"The :c:member:`~PyTypeObject.tp_traverse` handler must have the following "
+"type:"
+msgstr "Trình xử lý :c:member:`~PyTypeObject.tp_traverse` phải có loại sau:"
+
+#: ../../c-api/gcsupport.rst:228
+#, fuzzy
+msgid ""
+"Traversal function for a container object.  Implementations must call the "
+"*visit* function for each object directly contained by *self*, with the "
+"parameters to *visit* being the contained object and the *arg* value passed "
+"to the handler.  The *visit* function must not be called with a ``NULL`` "
+"object argument.  If *visit* returns a non-zero value that value should be "
+"returned immediately."
+msgstr ""
+"Chức năng truyền tải cho một đối tượng container.  Việc triển khai phải gọi "
+"hàm *visit* cho từng đối tượng được chứa trực tiếp bởi *self*, với các tham "
+"số cho *visit* là đối tượng được chứa và giá trị *arg* được truyền cho trình"
+" xử lý.  Không được gọi hàm *visit* với đối số đối tượng ``NULL``.  Nếu "
+"*visit* trả về giá trị khác 0 thì giá trị đó sẽ được trả về ngay lập tức."
+
+#: ../../c-api/gcsupport.rst:235
+#, fuzzy
+msgid ""
+"The traversal function must not have any side effects.  Implementations may "
+"not modify the reference counts of any Python objects nor create or destroy "
+"any Python objects."
+msgstr ""
+"Chức năng truyền tải không được có bất kỳ tác dụng phụ nào.  Việc triển khai"
+" không được sửa đổi số lượng tham chiếu của bất kỳ đối tượng Python nào cũng"
+" như không tạo hoặc hủy bất kỳ đối tượng Python nào."
+
+#: ../../c-api/gcsupport.rst:239
+#, fuzzy
+msgid ""
+"To simplify writing :c:member:`~PyTypeObject.tp_traverse` handlers, a "
+":c:func:`Py_VISIT` macro is provided.  In order to use this macro, the "
+":c:member:`~PyTypeObject.tp_traverse` implementation must name its arguments"
+" exactly *visit* and *arg*:"
+msgstr ""
+"Để đơn giản hóa việc viết trình xử lý :c:member:`~PyTypeObject.tp_traverse`,"
+" macro :c:func:`Py_VISIT` được cung cấp.  Để sử dụng macro này, việc triển "
+"khai :c:member:`~PyTypeObject.tp_traverse` phải đặt tên chính xác cho các "
+"đối số của nó là *visit* và *arg*:"
+
+#: ../../c-api/gcsupport.rst:246
+#, fuzzy
+msgid ""
+"If the :c:expr:`PyObject *` *o* is not ``NULL``, call the *visit* callback, "
+"with arguments *o* and *arg*.  If *visit* returns a non-zero value, then "
+"return it. Using this macro, :c:member:`~PyTypeObject.tp_traverse` handlers "
+"look like::"
+msgstr ""
+"Nếu :c:expr:`PyObject *` *o* không phải là ``NULL``, hãy gọi lệnh gọi lại "
+"*visit*, với các đối số *o* và *arg*.  Nếu *visit* trả về giá trị khác 0 thì"
+" trả về giá trị đó. Khi sử dụng macro này, trình xử lý "
+":c:member:`~PyTypeObject.tp_traverse` trông giống như ::"
+
+#: ../../c-api/gcsupport.rst:251
+#, python-brace-format, fuzzy
+msgid ""
+"static int\n"
+"my_traverse(Noddy *self, visitproc visit, void *arg)\n"
+"{\n"
+"    Py_VISIT(self->foo);\n"
+"    Py_VISIT(self->bar);\n"
+"    return 0;\n"
+"}"
+msgstr ""
+"int tĩnh\n"
+"my_traverse(Noddy *self, visitproc visit, void *arg)\n"
+"{\n"
+"    Py_VISIT(tự->foo);\n"
+"    Py_VISIT(tự->thanh);\n"
+"    trả về 0;\n"
+"}"
+
+#: ../../c-api/gcsupport.rst:259
+#, fuzzy
+msgid ""
+"The :c:member:`~PyTypeObject.tp_clear` handler must be of the "
+":c:type:`inquiry` type, or ``NULL`` if the object is immutable."
+msgstr ""
+"Trình xử lý :c:member:`~PyTypeObject.tp_clear` phải thuộc loại "
+":c:type:`inquiry` hoặc ``NULL`` nếu đối tượng là bất biến."
+
+#: ../../c-api/gcsupport.rst:265
+#, fuzzy
+msgid ""
+"Drop references that may have created reference cycles.  Immutable objects "
+"do not have to define this method since they can never directly create "
+"reference cycles.  Note that the object must still be valid after calling "
+"this method (don't just call :c:func:`Py_DECREF` on a reference).  The "
+"collector will call this method if it detects that this object is involved "
+"in a reference cycle."
+msgstr ""
+"Bỏ các tham chiếu có thể đã tạo ra chu kỳ tham chiếu.  Các đối tượng bất "
+"biến không phải xác định phương thức này vì chúng không bao giờ có thể trực "
+"tiếp tạo các chu trình tham chiếu.  Lưu ý rằng đối tượng vẫn phải hợp lệ sau"
+" khi gọi phương thức này (không chỉ gọi :c:func:`Py_DECREF` trên một tham "
+"chiếu).  Collector sẽ gọi phương thức này nếu phát hiện đối tượng này có "
+"liên quan đến một chu trình tham chiếu."
+
+#: ../../c-api/gcsupport.rst:274
+#, fuzzy
+msgid "Controlling the Garbage Collector State"
+msgstr "Kiểm soát trạng thái thu gom rác"
+
+#: ../../c-api/gcsupport.rst:276
+#, fuzzy
+msgid ""
+"The C-API provides the following functions for controlling garbage "
+"collection runs."
+msgstr "C-API cung cấp các chức năng sau để kiểm soát quá trình thu gom rác."
+
+#: ../../c-api/gcsupport.rst:281
+#, fuzzy
+msgid ""
+"Perform a full garbage collection, if the garbage collector is enabled. "
+"(Note that :func:`gc.collect` runs it unconditionally.)"
+msgstr ""
+"Thực hiện thu gom rác đầy đủ nếu trình thu gom rác được bật. (Lưu ý rằng "
+":func:`gc.collect` chạy nó vô điều kiện.)"
+
+#: ../../c-api/gcsupport.rst:284
+#, fuzzy
+msgid ""
+"Returns the number of collected + unreachable objects which cannot be "
+"collected. If the garbage collector is disabled or already collecting, "
+"returns ``0`` immediately. Errors during garbage collection are passed to "
+":data:`sys.unraisablehook`. This function does not raise exceptions."
+msgstr ""
+"Trả về số đối tượng đã thu thập + không thể truy cập không thể thu thập "
+"được. Nếu trình thu gom rác bị vô hiệu hóa hoặc đã được thu thập, hãy trả về"
+" ``0`` ngay lập tức. Lỗi trong quá trình thu thập rác được chuyển tới "
+":data:`sys.unraisablehook`. Chức năng này không đưa ra ngoại lệ."
+
+#: ../../c-api/gcsupport.rst:294
+#, fuzzy
+msgid ""
+"Enable the garbage collector: similar to :func:`gc.enable`. Returns the "
+"previous state, 0 for disabled and 1 for enabled."
+msgstr ""
+"Kích hoạt trình thu gom rác: tương tự như :func:`gc.enable`. Trả về trạng "
+"thái trước đó, 0 cho vô hiệu hóa và 1 cho kích hoạt."
+
+#: ../../c-api/gcsupport.rst:302
+#, fuzzy
+msgid ""
+"Disable the garbage collector: similar to :func:`gc.disable`. Returns the "
+"previous state, 0 for disabled and 1 for enabled."
+msgstr ""
+"Tắt trình thu gom rác: tương tự như :func:`gc.disable`. Trả về trạng thái "
+"trước đó, 0 cho vô hiệu hóa và 1 cho kích hoạt."
+
+#: ../../c-api/gcsupport.rst:310
+#, fuzzy
+msgid ""
+"Query the state of the garbage collector: similar to :func:`gc.isenabled`. "
+"Returns the current state, 0 for disabled and 1 for enabled."
+msgstr ""
+"Truy vấn trạng thái của trình thu gom rác: tương tự như "
+":func:`gc.isenabled`. Trả về trạng thái hiện tại, 0 cho vô hiệu hóa và 1 cho"
+" kích hoạt."
+
+#: ../../c-api/gcsupport.rst:317
+#, fuzzy
+msgid "Querying Garbage Collector State"
+msgstr "Truy vấn trạng thái của bộ thu gom rác"
+
+#: ../../c-api/gcsupport.rst:319
+#, fuzzy
+msgid ""
+"The C-API provides the following interface for querying information about "
+"the garbage collector."
+msgstr ""
+"C-API cung cấp giao diện sau để truy vấn thông tin về trình thu gom rác."
+
+#: ../../c-api/gcsupport.rst:324
+#, fuzzy
+msgid ""
+"Run supplied *callback* on all live GC-capable objects. *arg* is passed "
+"through to all invocations of *callback*."
+msgstr ""
+"Chạy *callback* được cung cấp trên tất cả các đối tượng có khả năng GC trực "
+"tiếp. *arg* được chuyển tới tất cả các lệnh gọi *callback*."
+
+#: ../../c-api/gcsupport.rst:328
+#, fuzzy
+msgid ""
+"If new objects are (de)allocated by the callback it is undefined if they "
+"will be visited."
+msgstr ""
+"Nếu các đối tượng mới được (hủy) phân bổ bởi lệnh gọi lại thì không xác định"
+" được liệu chúng có được truy cập hay không."
+
+#: ../../c-api/gcsupport.rst:331
+#, fuzzy
+msgid ""
+"Garbage collection is disabled during operation. Explicitly running a "
+"collection in the callback may lead to undefined behaviour e.g. visiting the"
+" same objects multiple times or not at all."
+msgstr ""
+"Việc thu gom rác bị vô hiệu hóa trong quá trình vận hành. Việc chạy một bộ "
+"sưu tập trong lệnh gọi lại một cách rõ ràng có thể dẫn đến hành vi không xác"
+" định, ví dụ: đến thăm cùng một đồ vật nhiều lần hoặc không ghé thăm lần "
+"nào."
+
+#: ../../c-api/gcsupport.rst:339
+#, fuzzy
+msgid ""
+"Type of the visitor function to be passed to "
+":c:func:`PyUnstable_GC_VisitObjects`. *arg* is the same as the *arg* passed "
+"to ``PyUnstable_GC_VisitObjects``. Return ``1`` to continue iteration, "
+"return ``0`` to stop iteration. Other return values are reserved for now so "
+"behavior on returning anything else is undefined."
+msgstr ""
+"Loại chức năng khách truy cập được chuyển tới "
+":c:func:`PyUnstable_GC_VisitObjects`. *arg* giống với *arg* được chuyển cho "
+"``PyUnstable_GC_VisitObjects``. Trả về ``1`` để tiếp tục lặp, trả về ``0`` "
+"để dừng lặp. Các giá trị trả về khác hiện được dành riêng nên hành vi trả về"
+" bất kỳ thứ gì khác không được xác định."

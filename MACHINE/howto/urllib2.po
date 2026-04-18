@@ -1,0 +1,1286 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/urllib2.rst:5
+#, fuzzy
+msgid "HOWTO Fetch Internet Resources Using The urllib Package"
+msgstr "HOWTO Tìm nạp tài nguyên Internet bằng gói urllib"
+
+#: ../../howto/urllib2.rst
+#, fuzzy
+msgid "Author"
+msgstr "tác giả"
+
+#: ../../howto/urllib2.rst:7
+#, fuzzy
+msgid "`Michael Foord <https://agileabstractions.com/>`_"
+msgstr "`Michael Foord <https://agileabstractions.com/>`_"
+
+#: ../../howto/urllib2.rst:11
+#, fuzzy
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../howto/urllib2.rst:15
+#, fuzzy
+msgid ""
+"You may also find useful the following article on fetching web resources "
+"with Python:"
+msgstr ""
+"Bạn cũng có thể thấy bài viết sau đây về tìm nạp tài nguyên web bằng Python:"
+
+#: ../../howto/urllib2.rst:18
+#, fuzzy
+msgid ""
+"`Basic Authentication "
+"<https://web.archive.org/web/20201215133350/http://www.voidspace.org.uk/python/articles/authentication.shtml>`__"
+msgstr ""
+"`Basic Authentication "
+"<https://web.archive.org/web/20201215133350/http://www.voidspace.org.uk/python/articles/authentication.shtml>`__"
+
+#: ../../howto/urllib2.rst:20
+#, fuzzy
+msgid "A tutorial on *Basic Authentication*, with examples in Python."
+msgstr "Hướng dẫn về *Basic Authentication*, với các ví dụ bằng Python."
+
+#: ../../howto/urllib2.rst:22
+#, fuzzy
+msgid ""
+"**urllib.request** is a Python module for fetching URLs (Uniform Resource "
+"Locators). It offers a very simple interface, in the form of the *urlopen* "
+"function. This is capable of fetching URLs using a variety of different "
+"protocols. It also offers a slightly more complex interface for handling "
+"common situations - like basic authentication, cookies, proxies and so on. "
+"These are provided by objects called handlers and openers."
+msgstr ""
+"**urllib.request** là mô-đun Python để tìm nạp URL (Bộ định vị tài nguyên "
+"thống nhất). Nó cung cấp một giao diện rất đơn giản, dưới dạng chức năng "
+"*urlopen*. Điều này có khả năng tìm nạp URL bằng nhiều giao thức khác nhau. "
+"Nó cũng cung cấp một giao diện phức tạp hơn một chút để xử lý các tình huống"
+" phổ biến - như xác thực cơ bản, cookie, proxy, v.v. Chúng được cung cấp bởi"
+" các đối tượng được gọi là trình xử lý và trình mở."
+
+#: ../../howto/urllib2.rst:29
+#, fuzzy
+msgid ""
+"urllib.request supports fetching URLs for many \"URL schemes\" (identified "
+"by the string before the ``\":\"`` in URL - for example ``\"ftp\"`` is the "
+"URL scheme of ``\"ftp://python.org/\"``) using their associated network "
+"protocols (e.g. FTP, HTTP). This tutorial focuses on the most common case, "
+"HTTP."
+msgstr ""
+"urllib.request hỗ trợ tìm nạp URL cho nhiều \"sơ đồ URL\" (được xác định "
+"bằng chuỗi trước ``\":\"`` trong URL - ví dụ: ``\"ftp\"`` là sơ đồ URL của "
+"``\"ftp://python.org/\"``) bằng cách sử dụng các giao thức mạng liên kết của"
+" chúng (ví dụ: FTP, HTTP). Hướng dẫn này tập trung vào trường hợp phổ biến "
+"nhất, HTTP."
+
+#: ../../howto/urllib2.rst:34
+#, fuzzy
+msgid ""
+"For straightforward situations *urlopen* is very easy to use. But as soon as"
+" you encounter errors or non-trivial cases when opening HTTP URLs, you will "
+"need some understanding of the HyperText Transfer Protocol. The most "
+"comprehensive and authoritative reference to HTTP is :rfc:`2616`. This is a "
+"technical document and not intended to be easy to read. This HOWTO aims to "
+"illustrate using *urllib*, with enough detail about HTTP to help you "
+"through. It is not intended to replace the :mod:`urllib.request` docs, but "
+"is supplementary to them."
+msgstr ""
+"Đối với những tình huống đơn giản, *urlopen* rất dễ sử dụng. Nhưng ngay khi "
+"gặp phải lỗi hoặc những trường hợp không hề nhỏ khi mở URL HTTP, bạn sẽ cần "
+"có một số hiểu biết về Giao thức truyền siêu văn bản. Tài liệu tham khảo "
+"toàn diện và có thẩm quyền nhất về HTTP là :rfc:`2616`. Đây là tài liệu kỹ "
+"thuật và không nhằm mục đích dễ đọc. Zz006zz này nhằm mục đích minh họa bằng"
+" cách sử dụng *urllib*, với đủ chi tiết về HTTP để giúp bạn thực hiện. Nó "
+"không nhằm mục đích thay thế các tài liệu :mod:`urllib.request` mà chỉ bổ "
+"sung cho chúng."
+
+#: ../../howto/urllib2.rst:44
+#, fuzzy
+msgid "Fetching URLs"
+msgstr "Đang tìm nạp URL"
+
+#: ../../howto/urllib2.rst:46
+#, fuzzy
+msgid "The simplest way to use urllib.request is as follows::"
+msgstr "Cách đơn giản nhất để sử dụng urllib.request như sau::"
+
+#: ../../howto/urllib2.rst:48
+#, fuzzy
+msgid ""
+"import urllib.request\n"
+"with urllib.request.urlopen('http://python.org/') as response:\n"
+"   html = response.read()"
+msgstr ""
+"nhập urllib.request\n"
+"với urllib.request.urlopen('http://python.org/') làm phản hồi:\n"
+"   html = phản hồi.read()"
+
+#: ../../howto/urllib2.rst:52
+#, fuzzy
+msgid ""
+"If you wish to retrieve a resource via URL and store it in a temporary "
+"location, you can do so via the :func:`shutil.copyfileobj` and "
+":func:`tempfile.NamedTemporaryFile` functions::"
+msgstr ""
+"Nếu bạn muốn truy xuất tài nguyên qua URL và lưu trữ nó ở một vị trí tạm "
+"thời, bạn có thể thực hiện điều đó thông qua các hàm "
+":func:`shutil.copyfileobj` và :func:`tempfile.NamedTemporaryFile` ::"
+
+#: ../../howto/urllib2.rst:56
+#, fuzzy
+msgid ""
+"import shutil\n"
+"import tempfile\n"
+"import urllib.request\n"
+"\n"
+"with urllib.request.urlopen('http://python.org/') as response:\n"
+"    with tempfile.NamedTemporaryFile(delete=False) as tmp_file:\n"
+"        shutil.copyfileobj(response, tmp_file)\n"
+"\n"
+"with open(tmp_file.name) as html:\n"
+"    pass"
+msgstr ""
+"nhập khẩu\n"
+"nhập tệp tạm thời\n"
+"nhập urllib.request\n"
+"\n"
+"với urllib.request.urlopen('http://python.org/') làm phản hồi:\n"
+"    với tempfile.NamedTemporaryFile(delete=False) là tmp_file:\n"
+"        Shutil.copyfileobj(phản hồi, tmp_file)\n"
+"\n"
+"với open(tmp_file.name) dưới dạng html:\n"
+"    vượt qua"
+
+#: ../../howto/urllib2.rst:67
+#, fuzzy
+msgid ""
+"Many uses of urllib will be that simple (note that instead of an 'http:' URL"
+" we could have used a URL starting with 'ftp:', 'file:', etc.).  However, "
+"it's the purpose of this tutorial to explain the more complicated cases, "
+"concentrating on HTTP."
+msgstr ""
+"Nhiều cách sử dụng urllib sẽ đơn giản như vậy (lưu ý rằng thay vì 'http:' "
+"URL, chúng ta có thể sử dụng URL bắt đầu bằng 'ftp:', 'file:', v.v.).  Tuy "
+"nhiên, mục đích của hướng dẫn này là giải thích các trường hợp phức tạp hơn,"
+" tập trung vào HTTP."
+
+#: ../../howto/urllib2.rst:72
+#, fuzzy
+msgid ""
+"HTTP is based on requests and responses - the client makes requests and "
+"servers send responses. urllib.request mirrors this with a ``Request`` "
+"object which represents the HTTP request you are making. In its simplest "
+"form you create a Request object that specifies the URL you want to fetch. "
+"Calling ``urlopen`` with this Request object returns a response object for "
+"the URL requested. This response is a file-like object, which means you can "
+"for example call ``.read()`` on the response::"
+msgstr ""
+"HTTP dựa trên yêu cầu và phản hồi - máy khách đưa ra yêu cầu và máy chủ gửi "
+"phản hồi. urllib.request phản ánh điều này với một đối tượng ``Request`` đại"
+" diện cho yêu cầu HTTP mà bạn đang thực hiện. Ở dạng đơn giản nhất, bạn tạo "
+"một đối tượng Yêu cầu chỉ định URL mà bạn muốn tìm nạp. Việc gọi ``urlopen``"
+" bằng đối tượng Yêu cầu này sẽ trả về một đối tượng phản hồi cho URL được "
+"yêu cầu. Phản hồi này là một đối tượng giống như tệp, có nghĩa là bạn có thể"
+" gọi ``.read()`` trên phản hồi::"
+
+#: ../../howto/urllib2.rst:80
+#, fuzzy
+msgid ""
+"import urllib.request\n"
+"\n"
+"req = urllib.request.Request('http://python.org/')\n"
+"with urllib.request.urlopen(req) as response:\n"
+"   the_page = response.read()"
+msgstr ""
+"nhập urllib.request\n"
+"\n"
+"req = urllib.request.Request('http://python.org/')\n"
+"với urllib.request.urlopen(req) làm phản hồi:\n"
+"   the_page = phản hồi.read()"
+
+#: ../../howto/urllib2.rst:86
+#, fuzzy
+msgid ""
+"Note that urllib.request makes use of the same Request interface to handle "
+"all URL schemes.  For example, you can make an FTP request like so::"
+msgstr ""
+"Lưu ý rằng urllib.request sử dụng cùng một giao diện Yêu cầu để xử lý tất cả"
+" các lược đồ URL.  Ví dụ: bạn có thể thực hiện yêu cầu FTP như sau::"
+
+#: ../../howto/urllib2.rst:89
+#, fuzzy
+msgid "req = urllib.request.Request('ftp://example.com/')"
+msgstr "req = urllib.request.Request('ftp://example.com/')"
+
+#: ../../howto/urllib2.rst:91
+#, fuzzy
+msgid ""
+"In the case of HTTP, there are two extra things that Request objects allow "
+"you to do: First, you can pass data to be sent to the server.  Second, you "
+"can pass extra information (\"metadata\") *about* the data or about the "
+"request itself, to the server - this information is sent as HTTP "
+"\"headers\".  Let's look at each of these in turn."
+msgstr ""
+"Trong trường hợp HTTP, có hai điều bổ sung mà đối tượng Yêu cầu cho phép bạn"
+" thực hiện: Đầu tiên, bạn có thể chuyển dữ liệu để gửi đến máy chủ.  Thứ "
+"hai, bạn có thể chuyển thông tin bổ sung (\"siêu dữ liệu\") *about* dữ liệu "
+"hoặc về chính yêu cầu đó tới máy chủ - thông tin này được gửi dưới dạng "
+"\"tiêu đề\" HTTP.  Chúng ta hãy lần lượt xem xét từng điều này."
+
+#: ../../howto/urllib2.rst:98
+#, fuzzy
+msgid "Data"
+msgstr "dữ liệu"
+
+#: ../../howto/urllib2.rst:100
+#, fuzzy
+msgid ""
+"Sometimes you want to send data to a URL (often the URL will refer to a CGI "
+"(Common Gateway Interface) script or other web application). With HTTP, this"
+" is often done using what's known as a **POST** request. This is often what "
+"your browser does when you submit a HTML form that you filled in on the web."
+" Not all POSTs have to come from forms: you can use a POST to transmit "
+"arbitrary data to your own application. In the common case of HTML forms, "
+"the data needs to be encoded in a standard way, and then passed to the "
+"Request object as the ``data`` argument. The encoding is done using a "
+"function from the :mod:`urllib.parse` library. ::"
+msgstr ""
+"Đôi khi bạn muốn gửi dữ liệu tới URL (thường thì URL sẽ đề cập đến tập lệnh "
+"CGI (Giao diện cổng chung) hoặc ứng dụng web khác). Với HTTP, việc này "
+"thường được thực hiện bằng cách sử dụng yêu cầu **POST**. Đây thường là "
+"những gì trình duyệt của bạn thực hiện khi bạn gửi biểu mẫu HTML mà bạn đã "
+"điền trên web. Không phải tất cả POST đều phải đến từ biểu mẫu: bạn có thể "
+"sử dụng POST để truyền dữ liệu tùy ý đến ứng dụng của riêng bạn. Trong "
+"trường hợp phổ biến của biểu mẫu HTML, dữ liệu cần được mã hóa theo cách "
+"tiêu chuẩn, sau đó được chuyển đến đối tượng Yêu cầu dưới dạng đối số "
+"``data``. Việc mã hóa được thực hiện bằng cách sử dụng một hàm từ thư viện "
+":mod:`urllib.parse`. ::"
+
+#: ../../howto/urllib2.rst:110
+#, python-brace-format, fuzzy
+msgid ""
+"import urllib.parse\n"
+"import urllib.request\n"
+"\n"
+"url = 'http://www.someserver.com/cgi-bin/register.cgi'\n"
+"values = {'name' : 'Michael Foord',\n"
+"          'location' : 'Northampton',\n"
+"          'language' : 'Python' }\n"
+"\n"
+"data = urllib.parse.urlencode(values)\n"
+"data = data.encode('ascii') # data should be bytes\n"
+"req = urllib.request.Request(url, data)\n"
+"with urllib.request.urlopen(req) as response:\n"
+"   the_page = response.read()"
+msgstr ""
+"nhập urllib.parse\n"
+"nhập urllib.request\n"
+"\n"
+"url = 'http://www.someserver.com/cgi-bin/register.cgi'\n"
+"giá trị = {'name' : 'Michael Foord',\n"
+"          'địa điểm' : 'Northampton',\n"
+"          'ngôn ngữ' : 'Python' }\n"
+"\n"
+"dữ liệu = urllib.parse.urlencode(giá trị)\n"
+"data = data.encode('ascii') # data phải là byte\n"
+"req = urllib.request.Request(url, dữ liệu)\n"
+"với urllib.request.urlopen(req) làm phản hồi:\n"
+"   the_page = phản hồi.read()"
+
+#: ../../howto/urllib2.rst:124
+#, fuzzy
+msgid ""
+"Note that other encodings are sometimes required (e.g. for file upload from "
+"HTML forms - see `HTML Specification, Form Submission "
+"<https://www.w3.org/TR/REC-html40/interact/forms.html#h-17.13>`_ for more "
+"details)."
+msgstr ""
+"Lưu ý rằng các mã hóa khác đôi khi được yêu cầu (ví dụ: để tải tệp lên từ "
+"biểu mẫu HTML - xem `HTML Specification, Form Submission "
+"<https://www.w3.org/TR/REC-html40/interact/forms.html#h-17.13>`_ để biết "
+"thêm chi tiết)."
+
+#: ../../howto/urllib2.rst:129
+#, fuzzy
+msgid ""
+"If you do not pass the ``data`` argument, urllib uses a **GET** request. One"
+" way in which GET and POST requests differ is that POST requests often have "
+"\"side-effects\": they change the state of the system in some way (for "
+"example by placing an order with the website for a hundredweight of tinned "
+"spam to be delivered to your door).  Though the HTTP standard makes it clear"
+" that POSTs are intended to *always* cause side-effects, and GET requests "
+"*never* to cause side-effects, nothing prevents a GET request from having "
+"side-effects, nor a POST requests from having no side-effects. Data can also"
+" be passed in an HTTP GET request by encoding it in the URL itself."
+msgstr ""
+"Nếu bạn không chuyển đối số ``data``, urllib sẽ sử dụng yêu cầu **GET**. Một"
+" điểm khác biệt giữa các yêu cầu GET và POST là các yêu cầu POST thường có "
+"\"tác dụng phụ\": chúng thay đổi trạng thái của hệ thống theo một cách nào "
+"đó (ví dụ: bằng cách đặt hàng trên trang web để gửi hàng trăm thư rác đóng "
+"hộp đến tận nhà bạn).  Mặc dù tiêu chuẩn HTTP nêu rõ rằng POST nhằm mục đích"
+" *always* gây ra tác dụng phụ và GET yêu cầu *never* gây ra tác dụng phụ, "
+"nhưng không có gì ngăn cản yêu cầu GET gây ra tác dụng phụ cũng như yêu cầu "
+"POST không có tác dụng phụ. Dữ liệu cũng có thể được chuyển trong yêu cầu "
+"HTTP GET bằng cách mã hóa nó trong chính URL."
+
+#: ../../howto/urllib2.rst:139
+#, fuzzy
+msgid "This is done as follows::"
+msgstr "Việc này được thực hiện như sau::"
+
+#: ../../howto/urllib2.rst:141
+#, python-brace-format, fuzzy
+msgid ""
+">>> import urllib.request\n"
+">>> import urllib.parse\n"
+">>> data = {}\n"
+">>> data['name'] = 'Somebody Here'\n"
+">>> data['location'] = 'Northampton'\n"
+">>> data['language'] = 'Python'\n"
+">>> url_values = urllib.parse.urlencode(data)\n"
+">>> print(url_values)  # The order may differ from below.\n"
+"name=Somebody+Here&language=Python&location=Northampton\n"
+">>> url = 'http://www.example.com/example.cgi'\n"
+">>> full_url = url + '?' + url_values\n"
+">>> data = urllib.request.urlopen(full_url)"
+msgstr ""
+">>> nhập urllib.request\n"
+">>> nhập urllib.parse\n"
+">>> dữ liệu = {}\n"
+">>> data['name'] = 'Có ai đó ở đây'\n"
+">>> data['location'] = 'Northampton'\n"
+">>> data['ngôn ngữ'] = 'Python'\n"
+">>> url_values = urllib.parse.urlencode(data)\n"
+">>> print(url_values) thứ tự # The có thể khác với bên dưới.\n"
+"name=Ai đó+Ở đây&ngôn ngữ=Python&location=Northampton\n"
+">>> url = 'http://www.example.com/example.cgi'\n"
+">>> full_url = url + '?' + giá trị url\n"
+">>> dữ liệu = urllib.request.urlopen(full_url)"
+
+#: ../../howto/urllib2.rst:154
+#, fuzzy
+msgid ""
+"Notice that the full URL is created by adding a ``?`` to the URL, followed "
+"by the encoded values."
+msgstr ""
+"Lưu ý rằng URL đầy đủ được tạo bằng cách thêm ``?`` vào URL, theo sau là các"
+" giá trị được mã hóa."
+
+#: ../../howto/urllib2.rst:158
+#, fuzzy
+msgid "Headers"
+msgstr "Tiêu đề"
+
+#: ../../howto/urllib2.rst:160
+#, fuzzy
+msgid ""
+"We'll discuss here one particular HTTP header, to illustrate how to add "
+"headers to your HTTP request."
+msgstr ""
+"Ở đây chúng ta sẽ thảo luận về một tiêu đề HTTP cụ thể để minh họa cách thêm"
+" tiêu đề vào yêu cầu HTTP của bạn."
+
+#: ../../howto/urllib2.rst:163
+#, fuzzy
+msgid ""
+"Some websites [#]_ dislike being browsed by programs, or send different "
+"versions to different browsers [#]_. By default urllib identifies itself as "
+"``Python-urllib/x.y`` (where ``x`` and ``y`` are the major and minor version"
+" numbers of the Python release, e.g. ``Python-urllib/2.5``), which may "
+"confuse the site, or just plain not work. The way a browser identifies "
+"itself is through the ``User-Agent`` header [#]_. When you create a Request "
+"object you can pass a dictionary of headers in. The following example makes "
+"the same request as above, but identifies itself as a version of Internet "
+"Explorer [#]_. ::"
+msgstr ""
+"Một số trang web [#]_ không thích bị các chương trình duyệt hoặc gửi các "
+"phiên bản khác nhau tới các trình duyệt khác nhau [#]_. Theo mặc định, "
+"urllib tự nhận mình là ``Python-urllib/x.y`` (trong đó ``x`` và ``y`` là số "
+"phiên bản chính và phụ của bản phát hành Python, ví dụ: ``Python-"
+"urllib/2.5``), điều này có thể gây nhầm lẫn cho trang web hoặc đơn giản là "
+"không hoạt động. Cách trình duyệt tự nhận dạng là thông qua tiêu đề ``User-"
+"Agent`` [#]_. Khi tạo một đối tượng Yêu cầu, bạn có thể chuyển một từ điển "
+"các tiêu đề vào. Ví dụ sau đưa ra yêu cầu tương tự như trên nhưng tự xác "
+"định đó là phiên bản của Internet Explorer [#]_. ::"
+
+#: ../../howto/urllib2.rst:174
+#, python-brace-format, fuzzy
+msgid ""
+"import urllib.parse\n"
+"import urllib.request\n"
+"\n"
+"url = 'http://www.someserver.com/cgi-bin/register.cgi'\n"
+"user_agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)'\n"
+"values = {'name': 'Michael Foord',\n"
+"          'location': 'Northampton',\n"
+"          'language': 'Python' }\n"
+"headers = {'User-Agent': user_agent}\n"
+"\n"
+"data = urllib.parse.urlencode(values)\n"
+"data = data.encode('ascii')\n"
+"req = urllib.request.Request(url, data, headers)\n"
+"with urllib.request.urlopen(req) as response:\n"
+"   the_page = response.read()"
+msgstr ""
+"nhập urllib.parse\n"
+"nhập urllib.request\n"
+"\n"
+"url = 'http://www.someserver.com/cgi-bin/register.cgi'\n"
+"user_agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)'\n"
+"giá trị = {'name': 'Michael Foord',\n"
+"          'vị trí': 'Northampton',\n"
+"          'ngôn ngữ': 'Python' }\n"
+"tiêu đề = {'Tác nhân người dùng': user_agent}\n"
+"\n"
+"dữ liệu = urllib.parse.urlencode(giá trị)\n"
+"dữ liệu = data.encode('ascii')\n"
+"req = urllib.request.Request(url, dữ liệu, tiêu đề)\n"
+"với urllib.request.urlopen(req) làm phản hồi:\n"
+"   the_page = phản hồi.read()"
+
+#: ../../howto/urllib2.rst:190
+#, fuzzy
+msgid ""
+"The response also has two useful methods. See the section on `info and "
+"geturl`_ which comes after we have a look at what happens when things go "
+"wrong."
+msgstr ""
+"Phản hồi cũng có hai phương pháp hữu ích. Xem phần trên `info and geturl`_ "
+"sau khi chúng ta xem điều gì sẽ xảy ra khi có sự cố xảy ra."
+
+#: ../../howto/urllib2.rst:195
+#, fuzzy
+msgid "Handling Exceptions"
+msgstr "Xử lý ngoại lệ"
+
+#: ../../howto/urllib2.rst:197
+#, fuzzy
+msgid ""
+"*urlopen* raises :exc:`~urllib.error.URLError` when it cannot handle a "
+"response (though as usual with Python APIs, built-in exceptions such as "
+":exc:`ValueError`, :exc:`TypeError` etc. may also be raised)."
+msgstr ""
+"*urlopen* tăng :exc:`~urllib.error.URLError` khi nó không thể xử lý phản hồi"
+" (mặc dù như thường lệ với API Python, các ngoại lệ tích hợp sẵn như "
+":exc:`ValueError`, :exc:`TypeError`, v.v. cũng có thể được tăng lên)."
+
+#: ../../howto/urllib2.rst:201
+#, fuzzy
+msgid ""
+":exc:`~urllib.error.HTTPError` is the subclass of "
+":exc:`~urllib.error.URLError` raised in the specific case of HTTP URLs."
+msgstr ""
+":exc:`~urllib.error.HTTPError` là lớp con của :exc:`~urllib.error.URLError` "
+"được nêu ra trong trường hợp cụ thể của URL HTTP."
+
+#: ../../howto/urllib2.rst:204
+#, fuzzy
+msgid ""
+"The exception classes are exported from the :mod:`urllib.error` module."
+msgstr "Các lớp ngoại lệ được xuất từ mô-đun :mod:`urllib.error`."
+
+#: ../../howto/urllib2.rst:207
+#, fuzzy
+msgid "URLError"
+msgstr "URLLỗi"
+
+#: ../../howto/urllib2.rst:209
+#, fuzzy
+msgid ""
+"Often, URLError is raised because there is no network connection (no route "
+"to the specified server), or the specified server doesn't exist.  In this "
+"case, the exception raised will have a 'reason' attribute, which is a tuple "
+"containing an error code and a text error message."
+msgstr ""
+"Thông thường, URLError xuất hiện do không có kết nối mạng (không có tuyến "
+"đến máy chủ được chỉ định) hoặc máy chủ được chỉ định không tồn tại.  Trong "
+"trường hợp này, ngoại lệ được nêu ra sẽ có thuộc tính 'lý do', là một bộ "
+"chứa mã lỗi và thông báo lỗi văn bản."
+
+#: ../../howto/urllib2.rst:214
+#, fuzzy
+msgid "e.g. ::"
+msgstr "ví dụ: ::"
+
+#: ../../howto/urllib2.rst:216
+#, fuzzy
+msgid ""
+">>> req = urllib.request.Request('http://www.pretend_server.org')\n"
+">>> try: urllib.request.urlopen(req)\n"
+"... except urllib.error.URLError as e:\n"
+"...     print(e.reason)\n"
+"...\n"
+"(4, 'getaddrinfo failed')"
+msgstr ""
+">>> req = urllib.request.Request('http://www.pretend_server.org')\n"
+">>> thử: urllib.request.urlopen(req)\n"
+"... ngoại trừ urllib.error.URLError là e:\n"
+"... in(e.reason)\n"
+"...\n"
+"(4, 'getaddrinfo không thành công')"
+
+#: ../../howto/urllib2.rst:225
+#, fuzzy
+msgid "HTTPError"
+msgstr "Lỗi HTTP"
+
+#: ../../howto/urllib2.rst:227
+#, fuzzy
+msgid ""
+"Every HTTP response from the server contains a numeric \"status code\". "
+"Sometimes the status code indicates that the server is unable to fulfil the "
+"request. The default handlers will handle some of these responses for you "
+"(for example, if the response is a \"redirection\" that requests the client "
+"fetch the document from a different URL, urllib will handle that for you). "
+"For those it can't handle, urlopen will raise an "
+":exc:`~urllib.error.HTTPError`. Typical errors include '404' (page not "
+"found), '403' (request forbidden), and '401' (authentication required)."
+msgstr ""
+"Mỗi phản hồi HTTP từ máy chủ đều chứa một \"mã trạng thái\" bằng số. Đôi khi"
+" mã trạng thái cho biết máy chủ không thể thực hiện yêu cầu. Trình xử lý mặc"
+" định sẽ xử lý một số phản hồi này cho bạn (ví dụ: nếu phản hồi là \"chuyển "
+"hướng\" yêu cầu khách hàng tìm nạp tài liệu từ một URL khác, urllib sẽ xử lý"
+" việc đó cho bạn). Đối với những thứ không thể xử lý, urlopen sẽ tăng "
+":exc:`~urllib.error.HTTPError`. Các lỗi điển hình bao gồm '404' (không tìm "
+"thấy trang), '403' (yêu cầu bị cấm) và '401' (yêu cầu xác thực)."
+
+#: ../../howto/urllib2.rst:235
+#, fuzzy
+msgid ""
+"See section 10 of :rfc:`2616` for a reference on all the HTTP error codes."
+msgstr "Xem phần 10 của :rfc:`2616` để tham khảo về tất cả các mã lỗi HTTP."
+
+#: ../../howto/urllib2.rst:237
+#, fuzzy
+msgid ""
+"The :exc:`~urllib.error.HTTPError` instance raised will have an integer "
+"'code' attribute, which corresponds to the error sent by the server."
+msgstr ""
+"Phiên bản :exc:`~urllib.error.HTTPError` được nêu ra sẽ có thuộc tính 'code'"
+" số nguyên, tương ứng với lỗi do máy chủ gửi."
+
+#: ../../howto/urllib2.rst:241
+#, fuzzy
+msgid "Error Codes"
+msgstr "Mã lỗi"
+
+#: ../../howto/urllib2.rst:243
+#, fuzzy
+msgid ""
+"Because the default handlers handle redirects (codes in the 300 range), and "
+"codes in the 100--299 range indicate success, you will usually only see "
+"error codes in the 400--599 range."
+msgstr ""
+"Vì trình xử lý mặc định xử lý chuyển hướng (mã trong phạm vi 300) và mã "
+"trong phạm vi 100--299 cho biết thành công nên bạn thường sẽ chỉ thấy mã lỗi"
+" trong phạm vi 400--599."
+
+#: ../../howto/urllib2.rst:247
+#, fuzzy
+msgid ""
+":attr:`http.server.BaseHTTPRequestHandler.responses` is a useful dictionary "
+"of response codes that shows all the response codes used by :rfc:`2616`. An "
+"excerpt from the dictionary is shown below ::"
+msgstr ""
+":attr:`http.server.BaseHTTPRequestHandler.responses` là một từ điển hữu ích "
+"về mã phản hồi hiển thị tất cả các mã phản hồi được :rfc:`2616` sử dụng. Một"
+" đoạn trích từ từ điển được hiển thị dưới đây ::"
+
+#: ../../howto/urllib2.rst:251
+#, python-brace-format, fuzzy
+msgid ""
+"responses = {\n"
+"    ...\n"
+"    <HTTPStatus.OK: 200>: ('OK', 'Request fulfilled, document follows'),\n"
+"    ...\n"
+"    <HTTPStatus.FORBIDDEN: 403>: ('Forbidden',\n"
+"                                  'Request forbidden -- authorization will '\n"
+"                                  'not help'),\n"
+"    <HTTPStatus.NOT_FOUND: 404>: ('Not Found',\n"
+"                                  'Nothing matches the given URI'),\n"
+"    ...\n"
+"    <HTTPStatus.IM_A_TEAPOT: 418>: (\"I'm a Teapot\",\n"
+"                                    'Server refuses to brew coffee because '\n"
+"                                    'it is a teapot'),\n"
+"    ...\n"
+"    <HTTPStatus.SERVICE_UNAVAILABLE: 503>: ('Service Unavailable',\n"
+"                                            'The server cannot process the '\n"
+"                                            'request due to a high load'),\n"
+"    ...\n"
+"    }"
+msgstr ""
+"phản hồi = {\n"
+"    ...\n"
+"    <HTTStatus.OK: 200>: ('OK', 'Yêu cầu đã được thực hiện, tài liệu sau'),\n"
+"    ...\n"
+"    <HTTPStatus.FORBIDDEN: 403>: ('Bị cấm',\n"
+"                                  'Yêu cầu bị cấm -- việc ủy quyền sẽ '\n"
+"                                  'không giúp được gì'),\n"
+"    <HTTStatus.NOT_FOUND: 404>: ('Không tìm thấy',\n"
+"                                  'Không có gì khớp với URI đã cho'),\n"
+"    ...\n"
+"    <HTTPStatus.IM_A_TEAPOT: 418>: (\"Tôi là Ấm Trà\",\n"
+"                                    'Máy chủ từ chối pha cà phê vì'\n"
+"                                    'đó là một ấm trà'),\n"
+"    ...\n"
+"    <HTTPStatus.SERVICE_UNAVAILABLE: 503>: ('Dịch vụ không khả dụng',\n"
+"                                            'Máy chủ không thể xử lý'\n"
+"                                            'yêu cầu do tải cao'),\n"
+"    ...\n"
+"    }"
+
+#: ../../howto/urllib2.rst:271
+#, fuzzy
+msgid ""
+"When an error is raised the server responds by returning an HTTP error code "
+"*and* an error page. You can use the :exc:`~urllib.error.HTTPError` instance"
+" as a response on the page returned. This means that as well as the code "
+"attribute, it also has read, geturl, and info, methods as returned by the "
+"``urllib.response`` module::"
+msgstr ""
+"Khi xảy ra lỗi, máy chủ sẽ phản hồi bằng cách trả về mã lỗi HTTP *and* một "
+"trang lỗi. Bạn có thể sử dụng phiên bản :exc:`~urllib.error.HTTPError` làm "
+"phản hồi trên trang được trả về. Điều này có nghĩa là ngoài thuộc tính mã, "
+"nó còn có các phương thức đọc, geturl và thông tin được mô-đun "
+"``urllib.response`` trả về::"
+
+#: ../../howto/urllib2.rst:276
+#, fuzzy
+msgid ""
+">>> req = urllib.request.Request('http://www.python.org/fish.html')\n"
+">>> try:\n"
+"...     urllib.request.urlopen(req)\n"
+"... except urllib.error.HTTPError as e:\n"
+"...     print(e.code)\n"
+"...     print(e.read())\n"
+"...\n"
+"404\n"
+"b'<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n"
+"  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\\n\\n\\n<html\n"
+"  ...\n"
+"  <title>Page Not Found</title>\\n\n"
+"  ..."
+msgstr ""
+">>> req = urllib.request.Request('http://www.python.org/fish.html')\n"
+">>> thử:\n"
+"... urllib.request.urlopen(req)\n"
+"... ngoại trừ urllib.error.HTTPError là e:\n"
+"... in(e.code)\n"
+"... in(e.read())\n"
+"...\n"
+"404\n"
+"b'<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Chuyển tiếp//EN\"\n"
+"  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\\n\\n\\n<html\n"
+"  ...\n"
+"  <title>Không tìm thấy trang</title>\\n\n"
+"  ..."
+
+#: ../../howto/urllib2.rst:291
+#, fuzzy
+msgid "Wrapping it Up"
+msgstr "Gói nó lại"
+
+#: ../../howto/urllib2.rst:293
+#, fuzzy
+msgid ""
+"So if you want to be prepared for :exc:`~urllib.error.HTTPError` *or* "
+":exc:`~urllib.error.URLError` there are two basic approaches. I prefer the "
+"second approach."
+msgstr ""
+"Vì vậy, nếu bạn muốn chuẩn bị cho :exc:`~urllib.error.HTTPError` *or* "
+":exc:`~urllib.error.URLError` thì có hai cách tiếp cận cơ bản. Tôi thích "
+"cách tiếp cận thứ hai hơn."
+
+#: ../../howto/urllib2.rst:297
+#, fuzzy
+msgid "Number 1"
+msgstr "Số 1"
+
+#: ../../howto/urllib2.rst:302
+#, fuzzy
+msgid ""
+"from urllib.request import Request, urlopen\n"
+"from urllib.error import URLError, HTTPError\n"
+"req = Request(someurl)\n"
+"try:\n"
+"    response = urlopen(req)\n"
+"except HTTPError as e:\n"
+"    print('The server couldn\\'t fulfill the request.')\n"
+"    print('Error code: ', e.code)\n"
+"except URLError as e:\n"
+"    print('We failed to reach a server.')\n"
+"    print('Reason: ', e.reason)\n"
+"else:\n"
+"    # everything is fine"
+msgstr ""
+"từ yêu cầu nhập urllib.request, urlopen\n"
+"từ urllib.error nhập URLError, HTTPError\n"
+"req = Yêu cầu(someurl)\n"
+"thử:\n"
+"    phản hồi = urlopen(req)\n"
+"ngoại trừ HTTPError là e:\n"
+"    print('Máy chủ không thể thực hiện yêu cầu.')\n"
+"    print('Mã lỗi: ', e.code)\n"
+"ngoại trừ URLError là e:\n"
+"    print('Chúng tôi không kết nối được với máy chủ.')\n"
+"    print('Lý do:', e.reason)\n"
+"khác:\n"
+"    # everything ổn đấy"
+
+#: ../../howto/urllib2.rst:319
+#, fuzzy
+msgid ""
+"The ``except HTTPError`` *must* come first, otherwise ``except URLError`` "
+"will *also* catch an :exc:`~urllib.error.HTTPError`."
+msgstr ""
+"``except HTTPError`` *must* đến trước, nếu không ``except URLError`` sẽ "
+"*also* bắt :exc:`~urllib.error.HTTPError`."
+
+#: ../../howto/urllib2.rst:323
+#, fuzzy
+msgid "Number 2"
+msgstr "Số 2"
+
+#: ../../howto/urllib2.rst:327
+#, fuzzy
+msgid ""
+"from urllib.request import Request, urlopen\n"
+"from urllib.error import URLError\n"
+"req = Request(someurl)\n"
+"try:\n"
+"    response = urlopen(req)\n"
+"except URLError as e:\n"
+"    if hasattr(e, 'reason'):\n"
+"        print('We failed to reach a server.')\n"
+"        print('Reason: ', e.reason)\n"
+"    elif hasattr(e, 'code'):\n"
+"        print('The server couldn\\'t fulfill the request.')\n"
+"        print('Error code: ', e.code)\n"
+"else:\n"
+"    # everything is fine"
+msgstr ""
+"từ yêu cầu nhập urllib.request, urlopen\n"
+"từ urllib.error nhập URLError\n"
+"req = Yêu cầu(someurl)\n"
+"thử:\n"
+"    phản hồi = urlopen(req)\n"
+"ngoại trừ URLError là e:\n"
+"    nếu hasattr(e, 'lý do'):\n"
+"        print('Chúng tôi không kết nối được với máy chủ.')\n"
+"        print('Lý do:', e.reason)\n"
+"    Elif hasattr(e, 'code'):\n"
+"        print('Máy chủ không thể thực hiện yêu cầu.')\n"
+"        print('Mã lỗi:', e.code)\n"
+"khác:\n"
+"    # everything ổn đấy"
+
+#: ../../howto/urllib2.rst:344
+#, fuzzy
+msgid "info and geturl"
+msgstr "thông tin và geturl"
+
+#: ../../howto/urllib2.rst:346
+#, fuzzy
+msgid ""
+"The response returned by urlopen (or the :exc:`~urllib.error.HTTPError` "
+"instance) has two useful methods :meth:`!info` and :meth:`!geturl` and is "
+"defined in the module :mod:`urllib.response`."
+msgstr ""
+"Phản hồi được trả về bởi urlopen (hoặc phiên bản "
+":exc:`~urllib.error.HTTPError`) có hai phương thức hữu ích :meth:`!info` và "
+":meth:`!geturl` và được xác định trong mô-đun :mod:`urllib.response`."
+
+#: ../../howto/urllib2.rst:350
+#, fuzzy
+msgid ""
+"**geturl** - this returns the real URL of the page fetched. This is useful "
+"because ``urlopen`` (or the opener object used) may have followed a "
+"redirect. The URL of the page fetched may not be the same as the URL "
+"requested."
+msgstr ""
+"**geturl** - điều này trả về URL thực của trang được tìm nạp. Điều này rất "
+"hữu ích vì ``urlopen`` (hoặc đối tượng mở được sử dụng) có thể đã theo một "
+"chuyển hướng. Zz003zz của trang được tìm nạp có thể không giống với URL được"
+" yêu cầu."
+
+#: ../../howto/urllib2.rst:354
+#, fuzzy
+msgid ""
+"**info** - this returns a dictionary-like object that describes the page "
+"fetched, particularly the headers sent by the server. It is currently an "
+":class:`http.client.HTTPMessage` instance."
+msgstr ""
+"**info** - điều này trả về một đối tượng giống như từ điển mô tả trang được "
+"tìm nạp, đặc biệt là các tiêu đề được gửi bởi máy chủ. Nó hiện là một phiên "
+"bản :class:`http.client.HTTPMessage`."
+
+#: ../../howto/urllib2.rst:358
+#, fuzzy
+msgid ""
+"Typical headers include 'Content-length', 'Content-type', and so on. See the"
+" `Quick Reference to HTTP Headers <https://jkorpela.fi/http.html>`_ for a "
+"useful listing of HTTP headers with brief explanations of their meaning and "
+"use."
+msgstr ""
+"Các tiêu đề điển hình bao gồm 'Độ dài nội dung', 'Loại nội dung', v.v. Xem "
+"`Quick Reference to HTTP Headers <https://jkorpela.fi/http.html>`_ để biết "
+"danh sách hữu ích về các tiêu đề HTTP kèm theo giải thích ngắn gọn về ý "
+"nghĩa và cách sử dụng của chúng."
+
+#: ../../howto/urllib2.rst:365
+#, fuzzy
+msgid "Openers and Handlers"
+msgstr "Dụng cụ mở và xử lý"
+
+#: ../../howto/urllib2.rst:367
+#, fuzzy
+msgid ""
+"When you fetch a URL you use an opener (an instance of the perhaps "
+"confusingly named :class:`urllib.request.OpenerDirector`). Normally we have "
+"been using the default opener - via ``urlopen`` - but you can create custom "
+"openers. Openers use handlers. All the \"heavy lifting\" is done by the "
+"handlers. Each handler knows how to open URLs for a particular URL scheme "
+"(http, ftp, etc.), or how to handle an aspect of URL opening, for example "
+"HTTP redirections or HTTP cookies."
+msgstr ""
+"Khi bạn tìm nạp URL, bạn sử dụng một công cụ mở (một ví dụ của "
+":class:`urllib.request.OpenerDirector` có thể được đặt tên gây nhầm lẫn). "
+"Thông thường chúng tôi đang sử dụng công cụ mở mặc định - thông qua "
+"``urlopen`` - nhưng bạn có thể tạo các công cụ mở tùy chỉnh. Dụng cụ mở sử "
+"dụng trình xử lý. Mọi việc “nâng vật nặng” đều do người xử lý đảm nhiệm. Mỗi"
+" trình xử lý đều biết cách mở URL cho một lược đồ URL cụ thể (http, ftp, "
+"v.v.) hoặc cách xử lý một khía cạnh của việc mở URL, ví dụ: chuyển hướng "
+"HTTP hoặc cookie HTTP."
+
+#: ../../howto/urllib2.rst:375
+#, fuzzy
+msgid ""
+"You will want to create openers if you want to fetch URLs with specific "
+"handlers installed, for example to get an opener that handles cookies, or to"
+" get an opener that does not handle redirections."
+msgstr ""
+"Bạn sẽ muốn tạo các trình mở nếu bạn muốn tìm nạp các URL đã cài đặt các "
+"trình xử lý cụ thể, chẳng hạn như để có một trình mở xử lý cookie hoặc để có"
+" một trình mở không xử lý các chuyển hướng."
+
+#: ../../howto/urllib2.rst:379
+#, fuzzy
+msgid ""
+"To create an opener, instantiate an ``OpenerDirector``, and then call "
+"``.add_handler(some_handler_instance)`` repeatedly."
+msgstr ""
+"Để tạo một trình mở, hãy khởi tạo một ``OpenerDirector``, sau đó gọi "
+"``.add_handler(some_handler_instance)`` liên tục."
+
+#: ../../howto/urllib2.rst:382
+#, fuzzy
+msgid ""
+"Alternatively, you can use ``build_opener``, which is a convenience function"
+" for creating opener objects with a single function call.  ``build_opener`` "
+"adds several handlers by default, but provides a quick way to add more "
+"and/or override the default handlers."
+msgstr ""
+"Ngoài ra, bạn có thể sử dụng ``build_opener``, đây là một chức năng tiện lợi"
+" để tạo các đối tượng mở chỉ bằng một lệnh gọi hàm.  ``build_opener`` thêm "
+"một số trình xử lý theo mặc định, nhưng cung cấp một cách nhanh chóng để "
+"thêm nhiều hơn và/hoặc ghi đè các trình xử lý mặc định."
+
+#: ../../howto/urllib2.rst:387
+#, fuzzy
+msgid ""
+"Other sorts of handlers you might want to can handle proxies, "
+"authentication, and other common but slightly specialised situations."
+msgstr ""
+"Các loại trình xử lý khác mà bạn có thể muốn có thể xử lý proxy, xác thực và"
+" các tình huống phổ biến nhưng hơi chuyên biệt khác."
+
+#: ../../howto/urllib2.rst:390
+#, fuzzy
+msgid ""
+"``install_opener`` can be used to make an ``opener`` object the (global) "
+"default opener. This means that calls to ``urlopen`` will use the opener you"
+" have installed."
+msgstr ""
+"``install_opener`` có thể được sử dụng để biến đối tượng ``opener`` thành "
+"công cụ mở mặc định (toàn cầu). Điều này có nghĩa là các lệnh gọi tới "
+"``urlopen`` sẽ sử dụng trình mở mà bạn đã cài đặt."
+
+#: ../../howto/urllib2.rst:394
+#, fuzzy
+msgid ""
+"Opener objects have an ``open`` method, which can be called directly to "
+"fetch urls in the same way as the ``urlopen`` function: there's no need to "
+"call ``install_opener``, except as a convenience."
+msgstr ""
+"Các đối tượng mở có một phương thức ``open``, có thể được gọi trực tiếp để "
+"tìm nạp các url theo cách tương tự như hàm ``urlopen``: không cần gọi "
+"``install_opener``, ngoại trừ để thuận tiện."
+
+#: ../../howto/urllib2.rst:400
+#, fuzzy
+msgid "Basic Authentication"
+msgstr "Xác thực cơ bản"
+
+#: ../../howto/urllib2.rst:402
+#, fuzzy
+msgid ""
+"To illustrate creating and installing a handler we will use the "
+"``HTTPBasicAuthHandler``. For a more detailed discussion of this subject -- "
+"including an explanation of how Basic Authentication works - see the `Basic "
+"Authentication Tutorial "
+"<https://web.archive.org/web/20201215133350/http://www.voidspace.org.uk/python/articles/authentication.shtml>`__."
+msgstr ""
+"Để minh họa việc tạo và cài đặt trình xử lý, chúng tôi sẽ sử dụng "
+"``HTTPBasicAuthHandler``. Để thảo luận chi tiết hơn về chủ đề này -- bao gồm"
+" phần giải thích về cách hoạt động của Xác thực Cơ bản - hãy xem `Basic "
+"Authentication Tutorial "
+"<https://web.archive.org/web/20201215133350/http://www.voidspace.org.uk/python/articles/authentication.shtml>`__."
+
+#: ../../howto/urllib2.rst:408
+#, fuzzy
+msgid ""
+"When authentication is required, the server sends a header (as well as the "
+"401 error code) requesting authentication.  This specifies the "
+"authentication scheme and a 'realm'. The header looks like: ``WWW-"
+"Authenticate: SCHEME realm=\"REALM\"``."
+msgstr ""
+"Khi cần xác thực, máy chủ sẽ gửi tiêu đề (cũng như mã lỗi 401) yêu cầu xác "
+"thực.  Điều này chỉ định sơ đồ xác thực và một 'cõi'. Tiêu đề trông giống "
+"như: ``WWW-Authenticate: SCHEME realm=\"REALM\"``."
+
+#: ../../howto/urllib2.rst:413
+#, fuzzy
+msgid "e.g."
+msgstr "ví dụ:"
+
+#: ../../howto/urllib2.rst:415
+#, fuzzy
+msgid "WWW-Authenticate: Basic realm=\"cPanel Users\""
+msgstr "WWW-Authenticate: Vương quốc cơ bản=\"Người dùng cPanel\""
+
+#: ../../howto/urllib2.rst:420
+#, fuzzy
+msgid ""
+"The client should then retry the request with the appropriate name and "
+"password for the realm included as a header in the request. This is 'basic "
+"authentication'. In order to simplify this process we can create an instance"
+" of ``HTTPBasicAuthHandler`` and an opener to use this handler."
+msgstr ""
+"Sau đó, khách hàng nên thử lại yêu cầu với tên và mật khẩu thích hợp cho "
+"lĩnh vực được đưa vào làm tiêu đề trong yêu cầu. Đây là 'xác thực cơ bản'. "
+"Để đơn giản hóa quá trình này, chúng ta có thể tạo một phiên bản "
+"``HTTPBasicAuthHandler`` và một trình mở để sử dụng trình xử lý này."
+
+#: ../../howto/urllib2.rst:425
+#, fuzzy
+msgid ""
+"The ``HTTPBasicAuthHandler`` uses an object called a password manager to "
+"handle the mapping of URLs and realms to passwords and usernames. If you "
+"know what the realm is (from the authentication header sent by the server), "
+"then you can use a ``HTTPPasswordMgr``. Frequently one doesn't care what the"
+" realm is. In that case, it is convenient to use "
+"``HTTPPasswordMgrWithDefaultRealm``. This allows you to specify a default "
+"username and password for a URL. This will be supplied in the absence of you"
+" providing an alternative combination for a specific realm. We indicate this"
+" by providing ``None`` as the realm argument to the ``add_password`` method."
+msgstr ""
+"Zz000zz sử dụng một đối tượng được gọi là trình quản lý mật khẩu để xử lý "
+"việc ánh xạ các URL và vùng tới mật khẩu và tên người dùng. Nếu bạn biết "
+"lĩnh vực này là gì (từ tiêu đề xác thực được gửi bởi máy chủ), thì bạn có "
+"thể sử dụng ``HTTPPasswordMgr``. Thông thường người ta không quan tâm đến "
+"cảnh giới là gì. Trong trường hợp đó, sử dụng "
+"``HTTPPasswordMgrWithDefaultRealm`` sẽ thuận tiện hơn. Điều này cho phép bạn"
+" chỉ định tên người dùng và mật khẩu mặc định cho URL. Điều này sẽ được cung"
+" cấp trong trường hợp bạn không cung cấp sự kết hợp thay thế cho một lĩnh "
+"vực cụ thể. Chúng tôi chỉ ra điều này bằng cách cung cấp ``None`` làm đối số"
+" lĩnh vực cho phương thức ``add_password``."
+
+#: ../../howto/urllib2.rst:435
+#, fuzzy
+msgid ""
+"The top-level URL is the first URL that requires authentication. URLs "
+"\"deeper\" than the URL you pass to .add_password() will also match. ::"
+msgstr ""
+"URL cấp cao nhất là URL đầu tiên yêu cầu xác thực. Các URL \"sâu hơn\" URL "
+"bạn chuyển tới .add_password() cũng sẽ khớp. ::"
+
+#: ../../howto/urllib2.rst:438
+#, fuzzy
+msgid ""
+"# create a password manager\n"
+"password_mgr = urllib.request.HTTPPasswordMgrWithDefaultRealm()\n"
+"\n"
+"# Add the username and password.\n"
+"# If we knew the realm, we could use it instead of None.\n"
+"top_level_url = \"http://example.com/foo/\"\n"
+"password_mgr.add_password(None, top_level_url, username, password)\n"
+"\n"
+"handler = urllib.request.HTTPBasicAuthHandler(password_mgr)\n"
+"\n"
+"# create \"opener\" (OpenerDirector instance)\n"
+"opener = urllib.request.build_opener(handler)\n"
+"\n"
+"# use the opener to fetch a URL\n"
+"opener.open(a_url)\n"
+"\n"
+"# Install the opener.\n"
+"# Now all calls to urllib.request.urlopen use our opener.\n"
+"urllib.request.install_opener(opener)"
+msgstr ""
+"# create một trình quản lý mật khẩu\n"
+"mật khẩu_mgr = urllib.request.HTTPPasswordMgrWithDefaultRealm()\n"
+"\n"
+"# Add tên người dùng và mật khẩu.\n"
+"# If chúng tôi biết vương quốc này, chúng tôi có thể sử dụng nó thay vì Không có.\n"
+"top_level_url = \"http://example.com/foo/\"\n"
+"pass_mgr.add_password(Không có, top_level_url, tên người dùng, mật khẩu)\n"
+"\n"
+"xử lý = urllib.request.HTTPBasicAuthHandler(password_mgr)\n"
+"\n"
+"# create \"opener\" (phiên bản OpenerDirector)\n"
+"opener = urllib.request.build_opener(handler)\n"
+"\n"
+"# use dụng cụ mở để lấy URL\n"
+"opener.open(a_url)\n"
+"\n"
+"# Install người mở màn.\n"
+"# Now tất cả các lệnh gọi đến urllib.request.urlopen đều sử dụng công cụ mở của chúng tôi.\n"
+"urllib.request.install_opener(opener)"
+
+#: ../../howto/urllib2.rst:460
+#, fuzzy
+msgid ""
+"In the above example we only supplied our ``HTTPBasicAuthHandler`` to "
+"``build_opener``. By default openers have the handlers for normal situations"
+" -- ``ProxyHandler`` (if a proxy setting such as an :envvar:`!http_proxy` "
+"environment variable is set), ``UnknownHandler``, ``HTTPHandler``, "
+"``HTTPDefaultErrorHandler``, ``HTTPRedirectHandler``, ``FTPHandler``, "
+"``FileHandler``, ``DataHandler``, ``HTTPErrorProcessor``."
+msgstr ""
+"Trong ví dụ trên, chúng tôi chỉ cung cấp ``HTTPBasicAuthHandler`` cho "
+"``build_opener``. Theo mặc định, các trình mở có trình xử lý cho các tình "
+"huống thông thường -- ``ProxyHandler`` (nếu cài đặt proxy chẳng hạn như biến"
+" môi trường :envvar:`!http_proxy` được đặt), ``UnknownHandler``, "
+"``HTTPHandler``, ``HTTPDefaultErrorHandler``, ``HTTPRedirectHandler``, "
+"``FTPHandler``, ``FileHandler``, ``DataHandler``, ``HTTPErrorProcessor``."
+
+#: ../../howto/urllib2.rst:467
+#, fuzzy
+msgid ""
+"``top_level_url`` is in fact *either* a full URL (including the 'http:' "
+"scheme component and the hostname and optionally the port number) e.g. "
+"``\"http://example.com/\"`` *or* an \"authority\" (i.e. the hostname, "
+"optionally including the port number) e.g. ``\"example.com\"`` or "
+"``\"example.com:8080\"`` (the latter example includes a port number).  The "
+"authority, if present, must NOT contain the \"userinfo\" component - for "
+"example ``\"joe:password@example.com\"`` is not correct."
+msgstr ""
+"``top_level_url`` trên thực tế là *either* một URL đầy đủ (bao gồm thành "
+"phần lược đồ 'http:' và tên máy chủ cũng như số cổng tùy chọn), ví dụ: "
+"``\"http://example.com/\"`` *or* một \"quyền\" (tức là tên máy chủ, tùy chọn"
+" bao gồm số cổng), ví dụ: ``\"example.com\"`` hoặc ``\"example.com:8080\"`` "
+"(ví dụ sau bao gồm số cổng).  Cơ quan có thẩm quyền, nếu có, phải NOT chứa "
+"thành phần \"userinfo\" - ví dụ ``\"joe:password@example.com\"`` là không "
+"chính xác."
+
+#: ../../howto/urllib2.rst:477
+#, fuzzy
+msgid "Proxies"
+msgstr "Proxy"
+
+#: ../../howto/urllib2.rst:479
+#, fuzzy
+msgid ""
+"**urllib** will auto-detect your proxy settings and use those. This is "
+"through the ``ProxyHandler``, which is part of the normal handler chain when"
+" a proxy setting is detected.  Normally that's a good thing, but there are "
+"occasions when it may not be helpful [#]_. One way to do this is to setup "
+"our own ``ProxyHandler``, with no proxies defined. This is done using "
+"similar steps to setting up a `Basic Authentication`_ handler: ::"
+msgstr ""
+"**urllib** sẽ tự động phát hiện cài đặt proxy của bạn và sử dụng chúng. Việc"
+" này được thực hiện thông qua ``ProxyHandler``, một phần của chuỗi xử lý "
+"thông thường khi phát hiện thấy cài đặt proxy.  Thông thường đó là điều tốt,"
+" nhưng có những lúc nó có thể không hữu ích [#]_. Một cách để làm điều này "
+"là thiết lập ``ProxyHandler`` của riêng chúng tôi mà không cần xác định "
+"proxy. Việc này được thực hiện bằng các bước tương tự như thiết lập trình xử"
+" lý `Basic Authentication`_: ::"
+
+#: ../../howto/urllib2.rst:486
+#, python-brace-format, fuzzy
+msgid ""
+">>> proxy_support = urllib.request.ProxyHandler({})\n"
+">>> opener = urllib.request.build_opener(proxy_support)\n"
+">>> urllib.request.install_opener(opener)"
+msgstr ""
+">>> proxy_support = urllib.request.ProxyHandler({})\n"
+">>> opener = urllib.request.build_opener(proxy_support)\n"
+">>> urllib.request.install_opener(opener)"
+
+#: ../../howto/urllib2.rst:492
+#, fuzzy
+msgid ""
+"Currently ``urllib.request`` *does not* support fetching of ``https`` "
+"locations through a proxy.  However, this can be enabled by extending "
+"urllib.request as shown in the recipe [#]_."
+msgstr ""
+"Hiện tại ``urllib.request`` *does not* hỗ trợ tìm nạp vị trí ``https`` thông"
+" qua proxy.  Tuy nhiên, điều này có thể được kích hoạt bằng cách mở rộng "
+"urllib.request như trong công thức [#]_."
+
+#: ../../howto/urllib2.rst:498
+#, fuzzy
+msgid ""
+"``HTTP_PROXY`` will be ignored if a variable ``REQUEST_METHOD`` is set; see "
+"the documentation on :func:`~urllib.request.getproxies`."
+msgstr ""
+"``HTTP_PROXY`` sẽ bị bỏ qua nếu biến ``REQUEST_METHOD`` được đặt; xem tài "
+"liệu trên :func:`~urllib.request.getproxies`."
+
+#: ../../howto/urllib2.rst:503
+#, fuzzy
+msgid "Sockets and Layers"
+msgstr "Ổ cắm và lớp"
+
+#: ../../howto/urllib2.rst:505
+#, fuzzy
+msgid ""
+"The Python support for fetching resources from the web is layered.  urllib "
+"uses the :mod:`http.client` library, which in turn uses the socket library."
+msgstr ""
+"Hỗ trợ Python để tìm nạp tài nguyên từ web được phân lớp.  urllib sử dụng "
+"thư viện :mod:`http.client`, thư viện này sử dụng thư viện socket."
+
+#: ../../howto/urllib2.rst:508
+#, fuzzy
+msgid ""
+"As of Python 2.3 you can specify how long a socket should wait for a "
+"response before timing out. This can be useful in applications which have to"
+" fetch web pages. By default the socket module has *no timeout* and can "
+"hang. Currently, the socket timeout is not exposed at the http.client or "
+"urllib.request levels. However, you can set the default timeout globally for"
+" all sockets using ::"
+msgstr ""
+"Kể từ Python 2.3, bạn có thể chỉ định thời gian ổ cắm sẽ đợi phản hồi trước "
+"khi hết thời gian chờ. Điều này có thể hữu ích trong các ứng dụng phải tìm "
+"nạp các trang web. Theo mặc định, mô-đun ổ cắm có *no timeout* và có thể bị "
+"treo. Hiện tại, thời gian chờ của ổ cắm không được hiển thị ở cấp độ "
+"http.client hoặc urllib.request. Tuy nhiên, bạn có thể đặt thời gian chờ mặc"
+" định trên toàn cầu cho tất cả các ổ cắm bằng cách sử dụng ::"
+
+#: ../../howto/urllib2.rst:514
+#, fuzzy
+msgid ""
+"import socket\n"
+"import urllib.request\n"
+"\n"
+"# timeout in seconds\n"
+"timeout = 10\n"
+"socket.setdefaulttimeout(timeout)\n"
+"\n"
+"# this call to urllib.request.urlopen now uses the default timeout\n"
+"# we have set in the socket module\n"
+"req = urllib.request.Request('http://www.voidspace.org.uk')\n"
+"response = urllib.request.urlopen(req)"
+msgstr ""
+"ổ cắm nhập khẩu\n"
+"nhập urllib.request\n"
+"\n"
+"# timeout trong vài giây\n"
+"thời gian chờ = 10\n"
+"socket.setdefaulttimeout(hết thời gian chờ)\n"
+"\n"
+"Cuộc gọi # this tới urllib.request.urlopen hiện sử dụng thời gian chờ mặc định\n"
+"# we đã thiết lập trong mô-đun ổ cắm\n"
+"req = urllib.request.Request('http://www.voidspace.org.uk')\n"
+"phản hồi = urllib.request.urlopen(req)"
+
+#: ../../howto/urllib2.rst:531
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../howto/urllib2.rst:533
+#, fuzzy
+msgid "This document was reviewed and revised by John Lee."
+msgstr "Tài liệu này đã được John Lee xem xét và sửa đổi."
+
+#: ../../howto/urllib2.rst:535
+#, fuzzy
+msgid "Google for example."
+msgstr "Google chẳng hạn."
+
+#: ../../howto/urllib2.rst:536
+#, fuzzy
+msgid ""
+"Browser sniffing is a very bad practice for website design - building sites "
+"using web standards is much more sensible. Unfortunately a lot of sites "
+"still send different versions to different browsers."
+msgstr ""
+"Đánh hơi trình duyệt là một phương pháp rất tồi đối với thiết kế trang web -"
+" việc xây dựng trang web sử dụng các tiêu chuẩn web sẽ hợp lý hơn nhiều. "
+"Thật không may, rất nhiều trang web vẫn gửi các phiên bản khác nhau cho các "
+"trình duyệt khác nhau."
+
+#: ../../howto/urllib2.rst:539
+#, fuzzy
+msgid ""
+"The user agent for MSIE 6 is *'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT"
+" 5.1; SV1; .NET CLR 1.1.4322)'*"
+msgstr ""
+"Tác nhân người dùng cho MSIE 6 là *'Mozilla/4.0 (compatible; MSIE 6.0; "
+"Windows NT 5.1; SV1; .NET CLR 1.1.4322)'*"
+
+#: ../../howto/urllib2.rst:541
+#, fuzzy
+msgid ""
+"For details of more HTTP request headers, see `Quick Reference to HTTP "
+"Headers`_."
+msgstr ""
+"Để biết thêm chi tiết về các tiêu đề yêu cầu HTTP khác, hãy xem `Quick "
+"Reference to HTTP Headers`_."
+
+#: ../../howto/urllib2.rst:543
+#, fuzzy
+msgid ""
+"In my case I have to use a proxy to access the internet at work. If you "
+"attempt to fetch *localhost* URLs through this proxy it blocks them. IE is "
+"set to use the proxy, which urllib picks up on. In order to test scripts "
+"with a localhost server, I have to prevent urllib from using the proxy."
+msgstr ""
+"Trong trường hợp của tôi, tôi phải sử dụng proxy để truy cập internet tại "
+"nơi làm việc. Nếu bạn cố gắng tìm nạp các URL *localhost* thông qua proxy "
+"này, nó sẽ chặn chúng. IE được thiết lập để sử dụng proxy mà urllib chọn. Để"
+" kiểm tra tập lệnh với máy chủ localhost, tôi phải ngăn urllib sử dụng "
+"proxy."
+
+#: ../../howto/urllib2.rst:548
+#, fuzzy
+msgid ""
+"urllib opener for SSL proxy (CONNECT method): `ASPN Cookbook Recipe "
+"<https://code.activestate.com/recipes/456195-urrlib2-opener-for-ssl-proxy-"
+"connect-method/>`_."
+msgstr ""
+"công cụ mở urllib cho proxy SSL (phương pháp CONNECT): `ASPN Cookbook Recipe"
+" <https://code.activestate.com/recipes/456195-urrlib2-opener-for-ssl-proxy-"
+"connect-method/>`_."

@@ -1,0 +1,1444 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/email.message.rst:2
+#, fuzzy
+msgid ":mod:`!email.message`: Representing an email message"
+msgstr ":mod:`!email.message`: Đại diện cho một tin nhắn email"
+
+#: ../../library/email.message.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/email/message.py`"
+msgstr "**Source code:** :source:`Lib/email/message.py`"
+
+#: ../../library/email.message.rst:14
+#, fuzzy
+msgid "[1]_"
+msgstr "[1]_"
+
+#: ../../library/email.message.rst:16
+#, fuzzy
+msgid ""
+"The central class in the :mod:`email` package is the :class:`EmailMessage` "
+"class, imported from the :mod:`!email.message` module.  It is the base class"
+" for the :mod:`email` object model.  :class:`EmailMessage` provides the core"
+" functionality for setting and querying header fields, for accessing message"
+" bodies, and for creating or modifying structured messages."
+msgstr ""
+"Lớp trung tâm trong gói :mod:`email` là lớp :class:`EmailMessage`, được nhập"
+" từ mô-đun :mod:`!email.message`.  Nó là lớp cơ sở cho mô hình đối tượng "
+":mod:`email`.  :class:`EmailMessage` cung cấp chức năng cốt lõi để cài đặt "
+"và truy vấn các trường tiêu đề, để truy cập nội dung thư cũng như để tạo "
+"hoặc sửa đổi các tin nhắn có cấu trúc."
+
+#: ../../library/email.message.rst:22
+#, fuzzy
+msgid ""
+"An email message consists of *headers* and a *payload* (which is also "
+"referred to as the *content*).  Headers are :rfc:`5322` or :rfc:`6532` style"
+" field names and values, where the field name and value are separated by a "
+"colon.  The colon is not part of either the field name or the field value.  "
+"The payload may be a simple text message, or a binary object, or a "
+"structured sequence of sub-messages each with their own set of headers and "
+"their own payload.  The latter type of payload is indicated by the message "
+"having a MIME type such as :mimetype:`multipart/\\*` or "
+":mimetype:`message/rfc822`."
+msgstr ""
+"Một email bao gồm *headers* và *payload* (còn được gọi là *content*).  Tiêu "
+"đề là tên và giá trị trường kiểu :rfc:`5322` hoặc :rfc:`6532`, trong đó tên "
+"và giá trị trường được phân tách bằng dấu hai chấm.  Dấu hai chấm không phải"
+" là một phần của tên trường hoặc giá trị trường.  Tải trọng có thể là một "
+"tin nhắn văn bản đơn giản hoặc một đối tượng nhị phân hoặc một chuỗi các tin"
+" nhắn phụ có cấu trúc, mỗi tin nhắn có bộ tiêu đề và tải trọng riêng.  Loại "
+"tải trọng thứ hai được biểu thị bằng thông báo có loại MIME như "
+":mimetype:`multipart/\\*` hoặc :mimetype:`message/rfc822`."
+
+#: ../../library/email.message.rst:31
+#, fuzzy
+msgid ""
+"The conceptual model provided by an :class:`EmailMessage` object is that of "
+"an ordered dictionary of headers coupled with a *payload* that represents "
+"the :rfc:`5322` body of the message, which might be a list of "
+"sub-``EmailMessage`` objects.  In addition to the normal dictionary methods "
+"for accessing the header names and values, there are methods for accessing "
+"specialized information from the headers (for example the MIME content "
+"type), for operating on the payload, for generating a serialized version of "
+"the message, and for recursively walking over the object tree."
+msgstr ""
+"Mô hình khái niệm được cung cấp bởi đối tượng :class:`EmailMessage` là mô "
+"hình từ điển có thứ tự các tiêu đề được ghép nối với *payload* đại diện cho "
+"phần thân :rfc:`5322` của thông báo, có thể là danh sách các đối tượng "
+"phụ-``EmailMessage``.  Ngoài các phương pháp từ điển thông thường để truy "
+"cập tên và giá trị tiêu đề, còn có các phương pháp truy cập thông tin chuyên"
+" biệt từ các tiêu đề (ví dụ: loại nội dung MIME), để vận hành trên tải "
+"trọng, để tạo phiên bản tuần tự của thông báo và để duyệt đệ quy trên cây "
+"đối tượng."
+
+#: ../../library/email.message.rst:40
+#, fuzzy
+msgid ""
+"The :class:`EmailMessage` dictionary-like interface is indexed by the header"
+" names, which must be ASCII values.  The values of the dictionary are "
+"strings with some extra methods.  Headers are stored and returned in case-"
+"preserving form, but field names are matched case-insensitively.  The keys "
+"are ordered, but unlike a real dict, there can be duplicates.  Additional "
+"methods are provided for working with headers that have duplicate keys."
+msgstr ""
+"Giao diện giống từ điển :class:`EmailMessage` được lập chỉ mục theo tên tiêu"
+" đề, phải là giá trị ASCII.  Các giá trị của từ điển là các chuỗi có một số "
+"phương thức bổ sung.  Các tiêu đề được lưu trữ và trả về ở dạng bảo toàn chữ"
+" hoa chữ thường, nhưng tên trường được khớp không phân biệt chữ hoa chữ "
+"thường.  Các khóa được sắp xếp theo thứ tự, nhưng không giống như một lệnh "
+"thực sự, có thể có các bản sao.  Các phương pháp bổ sung được cung cấp để "
+"làm việc với các tiêu đề có khóa trùng lặp."
+
+#: ../../library/email.message.rst:47
+#, fuzzy
+msgid ""
+"The *payload* is either a string or bytes object, in the case of simple "
+"message objects, or a list of :class:`EmailMessage` objects, for MIME "
+"container documents such as :mimetype:`multipart/\\*` and "
+":mimetype:`message/rfc822` message objects."
+msgstr ""
+"*payload* là một đối tượng chuỗi hoặc byte, trong trường hợp các đối tượng "
+"thông báo đơn giản hoặc một danh sách các đối tượng :class:`EmailMessage`, "
+"cho các tài liệu chứa MIME như các đối tượng thông báo "
+":mimetype:`multipart/\\*` và :mimetype:`message/rfc822`."
+
+#: ../../library/email.message.rst:55
+#, fuzzy
+msgid ""
+"If *policy* is specified use the rules it specifies to update and serialize "
+"the representation of the message.  If *policy* is not set, use the "
+":class:`~email.policy.default` policy, which follows the rules of the email "
+"RFCs except for line endings (instead of the RFC mandated ``\\r\\n``, it "
+"uses the Python standard ``\\n`` line endings).  For more information see "
+"the :mod:`~email.policy` documentation. [2]_"
+msgstr ""
+"Nếu *policy* được chỉ định, hãy sử dụng các quy tắc mà nó chỉ định để cập "
+"nhật và tuần tự hóa cách trình bày thông báo.  Nếu *policy* không được đặt, "
+"hãy sử dụng chính sách :class:`~email.policy.default`, tuân theo các quy tắc"
+" của RFC email ngoại trừ phần cuối dòng (thay vì RFC bắt buộc ``\\r\\n``, "
+"chính sách này sử dụng các phần cuối dòng ``\\n`` tiêu chuẩn Python).  Để "
+"biết thêm thông tin, hãy xem tài liệu :mod:`~email.policy`. [2]_"
+
+#: ../../library/email.message.rst:64
+#, fuzzy
+msgid ""
+"Return the entire message flattened as a string.  When optional *unixfrom* "
+"is true, the envelope header is included in the returned string.  *unixfrom*"
+" defaults to ``False``.  For backward compatibility with the base "
+":class:`~email.message.Message` class *maxheaderlen* is accepted, but "
+"defaults to ``None``, which means that by default the line length is "
+"controlled by the :attr:`~email.policy.Policy.max_line_length` of the "
+"policy.  The *policy* argument may be used to override the default policy "
+"obtained from the message instance.  This can be used to control some of the"
+" formatting produced by the method, since the specified *policy* will be "
+"passed to the :class:`~email.generator.Generator`."
+msgstr ""
+"Trả lại toàn bộ tin nhắn được làm phẳng dưới dạng một chuỗi.  Khi *unixfrom*"
+" tùy chọn là đúng, tiêu đề phong bì sẽ được bao gồm trong chuỗi trả về.  "
+"*unixfrom* mặc định là ``False``.  Để tương thích ngược với lớp "
+":class:`~email.message.Message` cơ sở, *maxheaderlen* được chấp nhận nhưng "
+"mặc định là ``None``, có nghĩa là theo mặc định, độ dài dòng được kiểm soát "
+"bởi :attr:`~email.policy.Policy.max_line_length` của chính sách.  Đối số "
+"*policy* có thể được sử dụng để ghi đè chính sách mặc định thu được từ phiên"
+" bản thông báo.  Điều này có thể được sử dụng để kiểm soát một số định dạng "
+"do phương thức tạo ra, vì *policy* được chỉ định sẽ được chuyển tới "
+":class:`~email.generator.Generator`."
+
+#: ../../library/email.message.rst:76 ../../library/email.message.rst:114
+#, fuzzy
+msgid ""
+"Flattening the message may trigger changes to the :class:`EmailMessage` if "
+"defaults need to be filled in to complete the transformation to a string "
+"(for example, MIME boundaries may be generated or modified)."
+msgstr ""
+"Việc làm phẳng thông báo có thể kích hoạt các thay đổi đối với "
+":class:`EmailMessage` nếu cần điền các giá trị mặc định để hoàn tất quá "
+"trình chuyển đổi thành chuỗi (ví dụ: ranh giới MIME có thể được tạo hoặc sửa"
+" đổi)."
+
+#: ../../library/email.message.rst:80
+#, fuzzy
+msgid ""
+"Note that this method is provided as a convenience and may not be the most "
+"useful way to serialize messages in your application, especially if you are "
+"dealing with multiple messages.  See :class:`email.generator.Generator` for "
+"a more flexible API for serializing messages.  Note also that this method is"
+" restricted to producing messages serialized as \"7 bit clean\" when "
+":attr:`~email.policy.EmailPolicy.utf8` is ``False``, which is the default."
+msgstr ""
+"Lưu ý rằng phương pháp này được cung cấp để thuận tiện và có thể không phải "
+"là cách hữu ích nhất để tuần tự hóa các tin nhắn trong ứng dụng của bạn, đặc"
+" biệt nếu bạn đang xử lý nhiều tin nhắn.  Xem "
+":class:`email.generator.Generator` để biết API linh hoạt hơn cho việc sắp "
+"xếp các tin nhắn theo thứ tự.  Cũng lưu ý rằng phương pháp này bị hạn chế "
+"trong việc tạo ra các thông báo được tuần tự hóa là \"sạch 7 bit\" khi "
+":attr:`~email.policy.EmailPolicy.utf8` là ``False``, đây là mặc định."
+
+#: ../../library/email.message.rst:88
+#, fuzzy
+msgid ""
+"the default behavior when *maxheaderlen* is not specified was changed from "
+"defaulting to 0 to defaulting to the value of *max_line_length* from the "
+"policy."
+msgstr ""
+"hành vi mặc định khi *maxheaderlen* không được chỉ định đã được thay đổi từ "
+"mặc định thành 0 thành mặc định thành giá trị *max_line_length* từ chính "
+"sách."
+
+#: ../../library/email.message.rst:95
+#, fuzzy
+msgid ""
+"Equivalent to ``as_string(policy=self.policy.clone(utf8=True))``.  Allows "
+"``str(msg)`` to produce a string containing the serialized message in a "
+"readable format."
+msgstr ""
+"Tương đương với ``as_string(policy=self.policy.clone(utf8=True))``.  Cho "
+"phép ``str(msg)`` tạo chuỗi chứa tin nhắn được tuần tự hóa ở định dạng có "
+"thể đọc được."
+
+#: ../../library/email.message.rst:99
+#, fuzzy
+msgid ""
+"the method was changed to use ``utf8=True``, thus producing an "
+":rfc:`6531`-like message representation, instead of being a direct alias for"
+" :meth:`as_string`."
+msgstr ""
+"phương thức đã được thay đổi để sử dụng ``utf8=True``, do đó tạo ra cách "
+"trình bày thông báo giống :rfc:`6531`, thay vì là bí danh trực tiếp cho "
+":meth:`as_string`."
+
+#: ../../library/email.message.rst:106
+#, fuzzy
+msgid ""
+"Return the entire message flattened as a bytes object.  When optional "
+"*unixfrom* is true, the envelope header is included in the returned string."
+"  *unixfrom* defaults to ``False``.  The *policy* argument may be used to "
+"override the default policy obtained from the message instance. This can be "
+"used to control some of the formatting produced by the method, since the "
+"specified *policy* will be passed to the "
+":class:`~email.generator.BytesGenerator`."
+msgstr ""
+"Trả về toàn bộ tin nhắn được làm phẳng dưới dạng đối tượng byte.  Khi "
+"*unixfrom* tùy chọn là đúng, tiêu đề phong bì sẽ được bao gồm trong chuỗi "
+"trả về.  *unixfrom* mặc định là ``False``.  Đối số *policy* có thể được sử "
+"dụng để ghi đè chính sách mặc định thu được từ phiên bản thông báo. Điều này"
+" có thể được sử dụng để kiểm soát một số định dạng do phương thức tạo ra, vì"
+" *policy* được chỉ định sẽ được chuyển tới "
+":class:`~email.generator.BytesGenerator`."
+
+#: ../../library/email.message.rst:118
+#, fuzzy
+msgid ""
+"Note that this method is provided as a convenience and may not be the most "
+"useful way to serialize messages in your application, especially if you are "
+"dealing with multiple messages.  See :class:`email.generator.BytesGenerator`"
+" for a more flexible API for serializing messages."
+msgstr ""
+"Lưu ý rằng phương pháp này được cung cấp để thuận tiện và có thể không phải "
+"là cách hữu ích nhất để tuần tự hóa các tin nhắn trong ứng dụng của bạn, đặc"
+" biệt nếu bạn đang xử lý nhiều tin nhắn.  Xem "
+":class:`email.generator.BytesGenerator` để biết API linh hoạt hơn cho việc "
+"sắp xếp các tin nhắn theo thứ tự."
+
+#: ../../library/email.message.rst:127
+#, fuzzy
+msgid ""
+"Equivalent to :meth:`.as_bytes`.  Allows ``bytes(msg)`` to produce a bytes "
+"object containing the serialized message."
+msgstr ""
+"Tương đương với :meth:`.as_bytes`.  Cho phép ``bytes(msg)`` tạo đối tượng "
+"byte chứa thông báo được tuần tự hóa."
+
+#: ../../library/email.message.rst:133
+#, fuzzy
+msgid ""
+"Return ``True`` if the message's payload is a list of sub-\\ "
+":class:`EmailMessage` objects, otherwise return ``False``.  When "
+":meth:`is_multipart` returns ``False``, the payload should be a string "
+"object (which might be a CTE encoded binary payload).  Note that "
+":meth:`is_multipart` returning ``True`` does not necessarily mean that "
+"\"msg.get_content_maintype() == 'multipart'\" will return the ``True``. For "
+"example, ``is_multipart`` will return ``True`` when the "
+":class:`EmailMessage` is of type ``message/rfc822``."
+msgstr ""
+"Trả về ``True`` nếu tải trọng của tin nhắn là danh sách các đối tượng "
+"phụ\\:class:`EmailMessage`, nếu không thì trả về ``False``.  Khi "
+":meth:`is_multipart` trả về ``False``, tải trọng phải là một đối tượng chuỗi"
+" (có thể là tải trọng nhị phân được mã hóa CTE).  Lưu ý rằng "
+":meth:`is_multipart` trả về ``True`` không nhất thiết có nghĩa là "
+"\"msg.get_content_maintype() == 'multipart'\" sẽ trả về ``True``. Ví dụ: "
+"``is_multipart`` sẽ trả về ``True`` khi :class:`EmailMessage` thuộc loại "
+"``message/rfc822``."
+
+#: ../../library/email.message.rst:145
+#, fuzzy
+msgid ""
+"Set the message's envelope header to *unixfrom*, which should be a string.  "
+"(See :class:`~mailbox.mboxMessage` for a brief description of this header.)"
+msgstr ""
+"Đặt tiêu đề phong bì của thư thành *unixfrom*, tiêu đề này phải là một "
+"chuỗi.  (Xem :class:`~mailbox.mboxMessage` để biết mô tả ngắn gọn về tiêu đề"
+" này.)"
+
+#: ../../library/email.message.rst:152
+#, fuzzy
+msgid ""
+"Return the message's envelope header.  Defaults to ``None`` if the envelope "
+"header was never set."
+msgstr ""
+"Trả lại tiêu đề phong bì của tin nhắn.  Mặc định là ``None`` nếu tiêu đề "
+"phong bì chưa bao giờ được đặt."
+
+#: ../../library/email.message.rst:156
+#, fuzzy
+msgid ""
+"The following methods implement the mapping-like interface for accessing the"
+" message's headers.  Note that there are some semantic differences between "
+"these methods and a normal mapping (i.e. dictionary) interface.  For "
+"example, in a dictionary there are no duplicate keys, but here there may be "
+"duplicate message headers.  Also, in dictionaries there is no guaranteed "
+"order to the keys returned by :meth:`keys`, but in an :class:`EmailMessage` "
+"object, headers are always returned in the order they appeared in the "
+"original message, or in which they were added to the message later.  Any "
+"header deleted and then re-added is always appended to the end of the header"
+" list."
+msgstr ""
+"Các phương pháp sau đây triển khai giao diện giống như ánh xạ để truy cập "
+"vào tiêu đề của thư.  Lưu ý rằng có một số khác biệt về ngữ nghĩa giữa các "
+"phương thức này và giao diện ánh xạ (tức là từ điển) thông thường.  Ví dụ: "
+"trong từ điển không có khóa trùng lặp nhưng ở đây có thể có tiêu đề thư "
+"trùng lặp.  Ngoài ra, trong từ điển không có thứ tự đảm bảo cho các khóa "
+"được trả về bởi :meth:`keys`, nhưng trong đối tượng :class:`EmailMessage`, "
+"các tiêu đề luôn được trả về theo thứ tự chúng xuất hiện trong thư gốc hoặc "
+"theo thứ tự chúng được thêm vào thư sau đó.  Bất kỳ tiêu đề nào bị xóa rồi "
+"được thêm lại luôn được thêm vào cuối danh sách tiêu đề."
+
+#: ../../library/email.message.rst:167
+#, fuzzy
+msgid ""
+"These semantic differences are intentional and are biased toward convenience"
+" in the most common use cases."
+msgstr ""
+"Những khác biệt về ngữ nghĩa này là có chủ ý và thiên về sự thuận tiện trong"
+" các trường hợp sử dụng phổ biến nhất."
+
+#: ../../library/email.message.rst:170
+#, fuzzy
+msgid ""
+"Note that in all cases, any envelope header present in the message is not "
+"included in the mapping interface."
+msgstr ""
+"Lưu ý rằng trong mọi trường hợp, mọi tiêu đề phong bì có trong tin nhắn đều "
+"không được đưa vào giao diện ánh xạ."
+
+#: ../../library/email.message.rst:176
+#, fuzzy
+msgid "Return the total number of headers, including duplicates."
+msgstr "Trả về tổng số tiêu đề, bao gồm cả các tiêu đề trùng lặp."
+
+#: ../../library/email.message.rst:181
+#, fuzzy
+msgid ""
+"Return ``True`` if the message object has a field named *name*. Matching is "
+"done without regard to case and *name* does not include the trailing colon."
+"  Used for the ``in`` operator.  For example::"
+msgstr ""
+"Trả về ``True`` nếu đối tượng tin nhắn có trường có tên *name*. Việc so khớp"
+" được thực hiện mà không phân biệt chữ hoa chữ thường và *name* không bao "
+"gồm dấu hai chấm ở cuối.  Được sử dụng cho toán tử ``in``.  Ví dụ::"
+
+#: ../../library/email.message.rst:185
+#, fuzzy
+msgid ""
+"if 'message-id' in myMessage:\n"
+"   print('Message-ID:', myMessage['message-id'])"
+msgstr ""
+"nếu 'id tin nhắn' trong myMessage:\n"
+"   print('Message-ID:', myMessage['message-id'])"
+
+#: ../../library/email.message.rst:191
+#, fuzzy
+msgid ""
+"Return the value of the named header field.  *name* does not include the "
+"colon field separator.  If the header is missing, ``None`` is returned; a "
+":exc:`KeyError` is never raised."
+msgstr ""
+"Trả về giá trị của trường tiêu đề được đặt tên.  *name* không bao gồm dấu "
+"phân cách trường dấu hai chấm.  Nếu thiếu tiêu đề, ``None`` sẽ được trả về; "
+"một :exc:`KeyError` không bao giờ được nâng lên."
+
+#: ../../library/email.message.rst:195
+#, fuzzy
+msgid ""
+"Note that if the named field appears more than once in the message's "
+"headers, exactly which of those field values will be returned is undefined."
+"  Use the :meth:`get_all` method to get the values of all the extant headers"
+" named *name*."
+msgstr ""
+"Lưu ý rằng nếu trường được đặt tên xuất hiện nhiều lần trong tiêu đề của thư"
+" thì giá trị chính xác của trường nào sẽ được trả về sẽ không được xác định."
+"  Sử dụng phương pháp :meth:`get_all` để lấy giá trị của tất cả các tiêu đề "
+"còn tồn tại có tên *name*."
+
+#: ../../library/email.message.rst:200
+#, fuzzy
+msgid ""
+"Using the standard (non-``compat32``) policies, the returned value is an "
+"instance of a subclass of :class:`email.headerregistry.BaseHeader`."
+msgstr ""
+"Sử dụng các chính sách tiêu chuẩn (không phải ``compat32``), giá trị được "
+"trả về là một phiên bản của lớp con của "
+":class:`email.headerregistry.BaseHeader`."
+
+#: ../../library/email.message.rst:206
+#, fuzzy
+msgid ""
+"Add a header to the message with field name *name* and value *val*.  The "
+"field is appended to the end of the message's existing headers."
+msgstr ""
+"Thêm tiêu đề vào tin nhắn với tên trường *name* và giá trị *val*.  Trường "
+"này được thêm vào cuối tiêu đề hiện có của thư."
+
+#: ../../library/email.message.rst:209
+#, fuzzy
+msgid ""
+"Note that this does *not* overwrite or delete any existing header with the "
+"same name.  If you want to ensure that the new header is the only one "
+"present in the message with field name *name*, delete the field first, "
+"e.g.::"
+msgstr ""
+"Lưu ý rằng điều này *not* ghi đè hoặc xóa bất kỳ tiêu đề hiện có nào có cùng"
+" tên.  Nếu bạn muốn đảm bảo rằng tiêu đề mới là tiêu đề duy nhất có trong "
+"thư có tên trường *name*, trước tiên hãy xóa trường đó, ví dụ:::"
+
+#: ../../library/email.message.rst:213
+#, fuzzy
+msgid ""
+"del msg['subject']\n"
+"msg['subject'] = 'Python roolz!'"
+msgstr ""
+"del tin nhắn['chủ đề']\n"
+"msg['subject'] = 'Python roolz!'"
+
+#: ../../library/email.message.rst:216
+#, fuzzy
+msgid ""
+"If the :mod:`policy <email.policy>` defines certain headers to be unique (as"
+" the standard policies do), this method may raise a :exc:`ValueError` when "
+"an attempt is made to assign a value to such a header when one already "
+"exists.  This behavior is intentional for consistency's sake, but do not "
+"depend on it as we may choose to make such assignments do an automatic "
+"deletion of the existing header in the future."
+msgstr ""
+"Nếu :mod:`policy <email.policy>` xác định một số tiêu đề nhất định là duy "
+"nhất (như các chính sách tiêu chuẩn thực hiện), phương pháp này có thể tạo "
+"ra :exc:`ValueError` khi cố gắng gán giá trị cho tiêu đề đó khi một tiêu đề "
+"đã tồn tại.  Hành vi này là có chủ ý vì mục đích nhất quán, nhưng không phụ "
+"thuộc vào nó vì chúng tôi có thể chọn thực hiện các nhiệm vụ như vậy để tự "
+"động xóa tiêu đề hiện có trong tương lai."
+
+#: ../../library/email.message.rst:226
+#, fuzzy
+msgid ""
+"Delete all occurrences of the field with name *name* from the message's "
+"headers.  No exception is raised if the named field isn't present in the "
+"headers."
+msgstr ""
+"Xóa tất cả các lần xuất hiện của trường có tên *name* khỏi tiêu đề của thư."
+"  Không có ngoại lệ nào được đưa ra nếu trường được đặt tên không có trong "
+"tiêu đề."
+
+#: ../../library/email.message.rst:233
+#, fuzzy
+msgid "Return a list of all the message's header field names."
+msgstr "Trả về danh sách tất cả tên trường tiêu đề của thư."
+
+#: ../../library/email.message.rst:238
+#, fuzzy
+msgid "Return a list of all the message's field values."
+msgstr "Trả về danh sách tất cả các giá trị trường của tin nhắn."
+
+#: ../../library/email.message.rst:243
+#, fuzzy
+msgid ""
+"Return a list of 2-tuples containing all the message's field headers and "
+"values."
+msgstr ""
+"Trả về danh sách gồm 2 bộ chứa tất cả các tiêu đề và giá trị trường của "
+"thông báo."
+
+#: ../../library/email.message.rst:249
+#, fuzzy
+msgid ""
+"Return the value of the named header field.  This is identical to "
+":meth:`~object.__getitem__` except that optional *failobj* is returned if "
+"the named header is missing (*failobj* defaults to ``None``)."
+msgstr ""
+"Trả về giá trị của trường tiêu đề được đặt tên.  Điều này giống hệt với "
+":meth:`~object.__getitem__` ngoại trừ *failobj* tùy chọn được trả về nếu "
+"thiếu tiêu đề được đặt tên (*failobj* mặc định là ``None``)."
+
+#: ../../library/email.message.rst:254
+#, fuzzy
+msgid "Here are some additional useful header related methods:"
+msgstr "Dưới đây là một số phương pháp liên quan đến tiêu đề hữu ích bổ sung:"
+
+#: ../../library/email.message.rst:259
+#, fuzzy
+msgid ""
+"Return a list of all the values for the field named *name*. If there are no "
+"such named headers in the message, *failobj* is returned (defaults to "
+"``None``)."
+msgstr ""
+"Trả về danh sách tất cả các giá trị cho trường có tên *name*. Nếu không có "
+"tiêu đề được đặt tên như vậy trong tin nhắn, *failobj* sẽ được trả về (mặc "
+"định là ``None``)."
+
+#: ../../library/email.message.rst:266
+#, fuzzy
+msgid ""
+"Extended header setting.  This method is similar to :meth:`__setitem__` "
+"except that additional header parameters can be provided as keyword "
+"arguments.  *_name* is the header field to add and *_value* is the *primary*"
+" value for the header."
+msgstr ""
+"Cài đặt tiêu đề mở rộng.  Phương thức này tương tự như :meth:`__setitem__` "
+"ngoại trừ các tham số tiêu đề bổ sung có thể được cung cấp làm đối số từ "
+"khóa.  *_name* là trường tiêu đề cần thêm và *_value* là giá trị *primary* "
+"cho tiêu đề."
+
+#: ../../library/email.message.rst:271
+#, fuzzy
+msgid ""
+"For each item in the keyword argument dictionary *_params*, the key is taken"
+" as the parameter name, with underscores converted to dashes (since dashes "
+"are illegal in Python identifiers).  Normally, the parameter will be added "
+"as ``key=\"value\"`` unless the value is ``None``, in which case only the "
+"key will be added."
+msgstr ""
+"Đối với mỗi mục trong từ điển đối số từ khóa *_params*, khóa được lấy làm "
+"tên tham số, với dấu gạch dưới được chuyển thành dấu gạch ngang (vì dấu gạch"
+" ngang là không hợp lệ trong mã định danh Python).  Thông thường, tham số sẽ"
+" được thêm dưới dạng ``key=\"value\"`` trừ khi giá trị là ``None``, trong "
+"trường hợp đó chỉ có khóa mới được thêm vào."
+
+#: ../../library/email.message.rst:277
+#, fuzzy
+msgid ""
+"If the value contains non-ASCII characters, the charset and language may be "
+"explicitly controlled by specifying the value as a three tuple in the format"
+" ``(CHARSET, LANGUAGE, VALUE)``, where ``CHARSET`` is a string naming the "
+"charset to be used to encode the value, ``LANGUAGE`` can usually be set to "
+"``None`` or the empty string (see :rfc:`2231` for other possibilities), and "
+"``VALUE`` is the string value containing non-ASCII code points.  If a three "
+"tuple is not passed and the value contains non-ASCII characters, it is "
+"automatically encoded in :rfc:`2231` format using a ``CHARSET`` of ``utf-8``"
+" and a ``LANGUAGE`` of ``None``."
+msgstr ""
+"Nếu giá trị chứa các ký tự không phải là ASCII thì bộ ký tự và ngôn ngữ có "
+"thể được kiểm soát rõ ràng bằng cách chỉ định giá trị dưới dạng bộ ba ở định"
+" dạng ``(CHARSET, LANGUAGE, VALUE)``, trong đó ``CHARSET`` là một chuỗi đặt "
+"tên cho bộ ký tự được sử dụng để mã hóa giá trị, ``LANGUAGE`` thường có thể "
+"được đặt thành ``None`` hoặc chuỗi trống (xem :rfc:`2231` để biết các khả "
+"năng khác) và ``VALUE`` là giá trị chuỗi chứa không phải ASCII điểm mã.  Nếu"
+" bộ ba không được chuyển và giá trị chứa các ký tự không phải là ASCII, thì "
+"nó sẽ tự động được mã hóa ở định dạng :rfc:`2231` bằng cách sử dụng "
+"``CHARSET`` của ``utf-8`` và ``LANGUAGE`` của ``None``."
+
+#: ../../library/email.message.rst:287
+#, fuzzy
+msgid "Here is an example::"
+msgstr "Đây là một ví dụ::"
+
+#: ../../library/email.message.rst:289
+#, fuzzy
+msgid ""
+"msg.add_header('Content-Disposition', 'attachment', filename='bud.gif')"
+msgstr "msg.add_header('Bố trí nội dung', 'tệp đính kèm', filename='bud.gif')"
+
+#: ../../library/email.message.rst:291
+#, fuzzy
+msgid "This will add a header that looks like ::"
+msgstr "Điều này sẽ thêm một tiêu đề trông giống như ::"
+
+#: ../../library/email.message.rst:293
+#, fuzzy
+msgid "Content-Disposition: attachment; filename=\"bud.gif\""
+msgstr "Bố trí nội dung: tệp đính kèm; tên tệp=\"bud.gif\""
+
+#: ../../library/email.message.rst:295
+#, fuzzy
+msgid "An example of the extended interface with non-ASCII characters::"
+msgstr "Một ví dụ về giao diện mở rộng có các ký tự không phải ASCII::"
+
+#: ../../library/email.message.rst:297
+#, fuzzy
+msgid ""
+"msg.add_header('Content-Disposition', 'attachment',\n"
+"               filename=('iso-8859-1', '', 'Fußballer.ppt'))"
+msgstr ""
+"msg.add_header('Bố trí nội dung', 'tệp đính kèm',\n"
+"               filename=('iso-8859-1', '', 'Fußballer.ppt'))"
+
+#: ../../library/email.message.rst:303
+#, fuzzy
+msgid ""
+"Replace a header.  Replace the first header found in the message that "
+"matches *_name*, retaining header order and field name case of the original "
+"header.  If no matching header is found, raise a :exc:`KeyError`."
+msgstr ""
+"Thay thế một tiêu đề.  Thay thế tiêu đề đầu tiên được tìm thấy trong tin "
+"nhắn khớp với *_name*, giữ nguyên thứ tự tiêu đề và kiểu chữ trường của tiêu"
+" đề ban đầu.  Nếu không tìm thấy tiêu đề phù hợp, hãy tăng :exc:`KeyError`."
+
+#: ../../library/email.message.rst:311
+#, fuzzy
+msgid ""
+"Return the message's content type, coerced to lower case of the form "
+":mimetype:`maintype/subtype`.  If there is no :mailheader:`Content-Type` "
+"header in the message return the value returned by :meth:`get_default_type`."
+"  If the :mailheader:`Content-Type` header is invalid, return "
+"``text/plain``."
+msgstr ""
+"Trả về kiểu nội dung của tin nhắn, buộc phải viết thường ở dạng "
+":mimetype:`maintype/subtype`.  Nếu không có tiêu đề :mailheader:`Content-"
+"Type` trong tin nhắn, hãy trả về giá trị được :meth:`get_default_type` trả "
+"về.  Nếu tiêu đề :mailheader:`Content-Type` không hợp lệ, hãy trả về "
+"``text/plain``."
+
+#: ../../library/email.message.rst:317
+#, fuzzy
+msgid ""
+"(According to :rfc:`2045`, messages always have a default type, "
+":meth:`get_content_type` will always return a value.  :rfc:`2045` defines a "
+"message's default type to be :mimetype:`text/plain` unless it appears inside"
+" a :mimetype:`multipart/digest` container, in which case it would be "
+":mimetype:`message/rfc822`.  If the :mailheader:`Content-Type` header has an"
+" invalid type specification, :rfc:`2045` mandates that the default type be "
+":mimetype:`text/plain`.)"
+msgstr ""
+"(Theo :rfc:`2045`, các tin nhắn luôn có loại mặc định, "
+":meth:`get_content_type` sẽ luôn trả về một giá trị. :rfc:`2045` xác định "
+"loại mặc định của tin nhắn là :mimetype:`text/plain` trừ khi nó xuất hiện "
+"bên trong vùng chứa :mimetype:`multipart/digest`, trong trường hợp đó nó sẽ "
+"là :mimetype:`message/rfc822`. Nếu tiêu đề :mailheader:`Content-Type` có "
+"thông số loại không hợp lệ, :rfc:`2045` bắt buộc loại mặc định là "
+":mimetype:`text/plain`.)"
+
+#: ../../library/email.message.rst:328
+#, fuzzy
+msgid ""
+"Return the message's main content type.  This is the :mimetype:`maintype` "
+"part of the string returned by :meth:`get_content_type`."
+msgstr ""
+"Trả về loại nội dung chính của tin nhắn.  Đây là phần :mimetype:`maintype` "
+"của chuỗi được trả về bởi :meth:`get_content_type`."
+
+#: ../../library/email.message.rst:334
+#, fuzzy
+msgid ""
+"Return the message's sub-content type.  This is the :mimetype:`subtype` part"
+" of the string returned by :meth:`get_content_type`."
+msgstr ""
+"Trả về loại nội dung phụ của tin nhắn.  Đây là phần :mimetype:`subtype` của "
+"chuỗi được trả về bởi :meth:`get_content_type`."
+
+#: ../../library/email.message.rst:340
+#, fuzzy
+msgid ""
+"Return the default content type.  Most messages have a default content type "
+"of :mimetype:`text/plain`, except for messages that are subparts of "
+":mimetype:`multipart/digest` containers.  Such subparts have a default "
+"content type of :mimetype:`message/rfc822`."
+msgstr ""
+"Trả về loại nội dung mặc định.  Hầu hết các tin nhắn đều có loại nội dung "
+"mặc định là :mimetype:`text/plain`, ngoại trừ các tin nhắn là phần phụ của "
+"vùng chứa :mimetype:`multipart/digest`.  Các phần con như vậy có loại nội "
+"dung mặc định là :mimetype:`message/rfc822`."
+
+#: ../../library/email.message.rst:348
+#, fuzzy
+msgid ""
+"Set the default content type.  *ctype* should either be "
+":mimetype:`text/plain` or :mimetype:`message/rfc822`, although this is not "
+"enforced.  The default content type is not stored in the "
+":mailheader:`Content-Type` header, so it only affects the return value of "
+"the ``get_content_type`` methods when no :mailheader:`Content-Type` header "
+"is present in the message."
+msgstr ""
+"Đặt loại nội dung mặc định.  *ctype* phải là :mimetype:`text/plain` hoặc "
+":mimetype:`message/rfc822`, mặc dù điều này không được thực thi.  Loại nội "
+"dung mặc định không được lưu trữ trong tiêu đề :mailheader:`Content-Type`, "
+"vì vậy nó chỉ ảnh hưởng đến giá trị trả về của các phương thức "
+"``get_content_type`` khi không có tiêu đề :mailheader:`Content-Type` trong "
+"tin nhắn."
+
+#: ../../library/email.message.rst:359
+#, fuzzy
+msgid ""
+"Set a parameter in the :mailheader:`Content-Type` header.  If the parameter "
+"already exists in the header, replace its value with *value*. When *header* "
+"is ``Content-Type`` (the default) and the header does not yet exist in the "
+"message, add it, set its value to :mimetype:`text/plain`, and append the new"
+" parameter value.  Optional *header* specifies an alternative header to "
+":mailheader:`Content-Type`."
+msgstr ""
+"Đặt tham số trong tiêu đề :mailheader:`Content-Type`.  Nếu tham số đã tồn "
+"tại trong tiêu đề, hãy thay thế giá trị của nó bằng *value*. Khi *header* là"
+" ``Content-Type`` (mặc định) và tiêu đề chưa tồn tại trong tin nhắn, hãy "
+"thêm nó, đặt giá trị của nó thành :mimetype:`text/plain` và thêm giá trị "
+"tham số mới.  *header* tùy chọn chỉ định tiêu đề thay thế cho "
+":mailheader:`Content-Type`."
+
+#: ../../library/email.message.rst:366
+#, fuzzy
+msgid ""
+"If the value contains non-ASCII characters, the charset and language may be "
+"explicitly specified using the optional *charset* and *language* parameters."
+"  Optional *language* specifies the :rfc:`2231` language, defaulting to the "
+"empty string.  Both *charset* and *language* should be strings.  The default"
+" is to use the ``utf8`` *charset* and ``None`` for the *language*."
+msgstr ""
+"Nếu giá trị chứa các ký tự không phải là ASCII thì bộ ký tự và ngôn ngữ có "
+"thể được chỉ định rõ ràng bằng cách sử dụng các tham số *charset* và "
+"*language* tùy chọn.  *language* tùy chọn chỉ định ngôn ngữ :rfc:`2231`, mặc"
+" định là chuỗi trống.  Cả *charset* và *language* đều phải là chuỗi.  Mặc "
+"định là sử dụng ``utf8`` *charset* và ``None`` cho *language*."
+
+#: ../../library/email.message.rst:373
+#, fuzzy
+msgid ""
+"If *replace* is ``False`` (the default) the header is moved to the end of "
+"the list of headers.  If *replace* is ``True``, the header will be updated "
+"in place."
+msgstr ""
+"Nếu *replace* là ``False`` (mặc định) thì tiêu đề sẽ được chuyển đến cuối "
+"danh sách các tiêu đề.  Nếu *replace* là ``True``, tiêu đề sẽ được cập nhật "
+"tại chỗ."
+
+#: ../../library/email.message.rst:377 ../../library/email.message.rst:394
+#, fuzzy
+msgid ""
+"Use of the *requote* parameter with :class:`EmailMessage` objects is "
+"deprecated."
+msgstr ""
+"Việc sử dụng tham số *requote* với các đối tượng :class:`EmailMessage` không"
+" được dùng nữa."
+
+#: ../../library/email.message.rst:380
+#, fuzzy
+msgid ""
+"Note that existing parameter values of headers may be accessed through the "
+":attr:`~email.headerregistry.ParameterizedMIMEHeader.params` attribute of "
+"the header value (for example, ``msg['Content-Type'].params['charset']``)."
+msgstr ""
+"Lưu ý rằng các giá trị tham số hiện có của tiêu đề có thể được truy cập "
+"thông qua thuộc tính "
+":attr:`~email.headerregistry.ParameterizedMIMEHeader.params` của giá trị "
+"tiêu đề (ví dụ: ``msg['Content-Type'].params['charset']``)."
+
+#: ../../library/email.message.rst:384
+#, fuzzy
+msgid "``replace`` keyword was added."
+msgstr "Từ khóa ``replace`` đã được thêm vào."
+
+#: ../../library/email.message.rst:389
+#, fuzzy
+msgid ""
+"Remove the given parameter completely from the :mailheader:`Content-Type` "
+"header.  The header will be re-written in place without the parameter or its"
+" value.  Optional *header* specifies an alternative to :mailheader:`Content-"
+"Type`."
+msgstr ""
+"Xóa hoàn toàn tham số đã cho khỏi tiêu đề :mailheader:`Content-Type`.  Tiêu "
+"đề sẽ được viết lại tại chỗ mà không có tham số hoặc giá trị của nó.  "
+"*header* tùy chọn chỉ định một giải pháp thay thế cho :mailheader:`Content-"
+"Type`."
+
+#: ../../library/email.message.rst:400
+#, fuzzy
+msgid ""
+"Return the value of the ``filename`` parameter of the :mailheader:`Content-"
+"Disposition` header of the message.  If the header does not have a "
+"``filename`` parameter, this method falls back to looking for the ``name`` "
+"parameter on the :mailheader:`Content-Type` header.  If neither is found, or"
+" the header is missing, then *failobj* is returned. The returned string will"
+" always be unquoted as per :func:`email.utils.unquote`."
+msgstr ""
+"Trả về giá trị của tham số ``filename`` của tiêu đề :mailheader:`Content-"
+"Disposition` của tin nhắn.  Nếu tiêu đề không có tham số ``filename``, "
+"phương pháp này sẽ quay lại tìm kiếm tham số ``name`` trên tiêu đề "
+":mailheader:`Content-Type`.  Nếu không tìm thấy hoặc thiếu tiêu đề thì "
+"*failobj* sẽ được trả về. Chuỗi trả về sẽ luôn không được trích dẫn theo "
+":func:`email.utils.unquote`."
+
+#: ../../library/email.message.rst:411
+#, fuzzy
+msgid ""
+"Return the value of the ``boundary`` parameter of the :mailheader:`Content-"
+"Type` header of the message, or *failobj* if either the header is missing, "
+"or has no ``boundary`` parameter.  The returned string will always be "
+"unquoted as per :func:`email.utils.unquote`."
+msgstr ""
+"Trả về giá trị của tham số ``boundary`` của tiêu đề :mailheader:`Content-"
+"Type` của tin nhắn hoặc *failobj* nếu tiêu đề bị thiếu hoặc không có tham số"
+" ``boundary``.  Chuỗi trả về sẽ luôn không được trích dẫn theo "
+":func:`email.utils.unquote`."
+
+#: ../../library/email.message.rst:419
+#, fuzzy
+msgid ""
+"Set the ``boundary`` parameter of the :mailheader:`Content-Type` header to "
+"*boundary*.  :meth:`set_boundary` will always quote *boundary* if necessary."
+"  A :exc:`~email.errors.HeaderParseError` is raised if the message object "
+"has no :mailheader:`Content-Type` header."
+msgstr ""
+"Đặt tham số ``boundary`` của tiêu đề :mailheader:`Content-Type` thành "
+"*boundary*.  :meth:`set_boundary` sẽ luôn trích dẫn *boundary* nếu cần "
+"thiết.  Một :exc:`~email.errors.HeaderParseError` được nâng lên nếu đối "
+"tượng tin nhắn không có tiêu đề :mailheader:`Content-Type`."
+
+#: ../../library/email.message.rst:424
+#, fuzzy
+msgid ""
+"Note that using this method is subtly different from deleting the old "
+":mailheader:`Content-Type` header and adding a new one with the new boundary"
+" via :meth:`add_header`, because :meth:`set_boundary` preserves the order of"
+" the :mailheader:`Content-Type` header in the list of headers."
+msgstr ""
+"Lưu ý rằng việc sử dụng phương pháp này hơi khác so với việc xóa tiêu đề "
+":mailheader:`Content-Type` cũ và thêm tiêu đề mới với ranh giới mới thông "
+"qua :meth:`add_header`, vì :meth:`set_boundary` giữ nguyên thứ tự của tiêu "
+"đề :mailheader:`Content-Type` trong danh sách các tiêu đề."
+
+#: ../../library/email.message.rst:433
+#, fuzzy
+msgid ""
+"Return the ``charset`` parameter of the :mailheader:`Content-Type` header, "
+"coerced to lower case.  If there is no :mailheader:`Content-Type` header, or"
+" if that header has no ``charset`` parameter, *failobj* is returned."
+msgstr ""
+"Trả về tham số ``charset`` của tiêu đề :mailheader:`Content-Type`, buộc phải"
+" viết thường.  Nếu không có tiêu đề :mailheader:`Content-Type` hoặc nếu tiêu"
+" đề đó không có tham số ``charset`` thì *failobj* sẽ được trả về."
+
+#: ../../library/email.message.rst:440
+#, fuzzy
+msgid ""
+"Return a list containing the character set names in the message.  If the "
+"message is a :mimetype:`multipart`, then the list will contain one element "
+"for each subpart in the payload, otherwise, it will be a list of length 1."
+msgstr ""
+"Trả về danh sách chứa tên bộ ký tự trong tin nhắn.  Nếu thông báo là "
+":mimetype:`multipart` thì danh sách sẽ chứa một phần tử cho mỗi phần con "
+"trong tải trọng, nếu không, đó sẽ là danh sách có độ dài 1."
+
+#: ../../library/email.message.rst:444
+#, fuzzy
+msgid ""
+"Each item in the list will be a string which is the value of the ``charset``"
+" parameter in the :mailheader:`Content-Type` header for the represented "
+"subpart.  If the subpart has no :mailheader:`Content-Type` header, no "
+"``charset`` parameter, or is not of the :mimetype:`text` main MIME type, "
+"then that item in the returned list will be *failobj*."
+msgstr ""
+"Mỗi mục trong danh sách sẽ là một chuỗi là giá trị của tham số ``charset`` "
+"trong tiêu đề :mailheader:`Content-Type` cho phần con được đại diện.  Nếu "
+"phần con không có tiêu đề :mailheader:`Content-Type`, không có tham số "
+"``charset`` hoặc không thuộc loại MIME chính :mimetype:`text` thì mục đó "
+"trong danh sách trả về sẽ là *failobj*."
+
+#: ../../library/email.message.rst:453
+#, fuzzy
+msgid ""
+"Return ``True`` if there is a :mailheader:`Content-Disposition` header and "
+"its (case insensitive) value is ``attachment``, ``False`` otherwise."
+msgstr ""
+"Trả về ``True`` nếu có tiêu đề :mailheader:`Content-Disposition` và giá trị "
+"(không phân biệt chữ hoa chữ thường) của nó là ``attachment``, ``False`` nếu"
+" không."
+
+#: ../../library/email.message.rst:456
+#, fuzzy
+msgid ""
+"is_attachment is now a method instead of a property, for consistency with "
+":meth:`~email.message.Message.is_multipart`."
+msgstr ""
+"is_attachment hiện là một phương thức thay vì thuộc tính, để đảm bảo tính "
+"nhất quán với :meth:`~email.message.Message.is_multipart`."
+
+#: ../../library/email.message.rst:463
+#, fuzzy
+msgid ""
+"Return the lowercased value (without parameters) of the message's "
+":mailheader:`Content-Disposition` header if it has one, or ``None``.  The "
+"possible values for this method are *inline*, *attachment* or ``None`` if "
+"the message follows :rfc:`2183`."
+msgstr ""
+"Trả về giá trị viết thường (không có tham số) của tiêu đề "
+":mailheader:`Content-Disposition` của tin nhắn nếu có hoặc ``None``.  Các "
+"giá trị có thể có cho phương pháp này là *inline*, *attachment* hoặc "
+"``None`` nếu thông báo theo sau :rfc:`2183`."
+
+#: ../../library/email.message.rst:471
+#, fuzzy
+msgid ""
+"The following methods relate to interrogating and manipulating the content "
+"(payload) of the message."
+msgstr ""
+"Các phương pháp sau đây liên quan đến việc thẩm vấn và thao tác nội dung "
+"(tải trọng) của tin nhắn."
+
+#: ../../library/email.message.rst:477
+#, fuzzy
+msgid ""
+"The :meth:`walk` method is an all-purpose generator which can be used to "
+"iterate over all the parts and subparts of a message object tree, in depth-"
+"first traversal order.  You will typically use :meth:`walk` as the iterator "
+"in a ``for`` loop; each iteration returns the next subpart."
+msgstr ""
+"Phương thức :meth:`walk` là một trình tạo đa năng có thể được sử dụng để lặp"
+" qua tất cả các phần và phần phụ của cây đối tượng thông báo, theo thứ tự "
+"duyệt theo chiều sâu.  Thông thường, bạn sẽ sử dụng :meth:`walk` làm trình "
+"vòng lặp trong vòng lặp ``for``; mỗi lần lặp trả về phần con tiếp theo."
+
+#: ../../library/email.message.rst:482
+#, fuzzy
+msgid ""
+"Here's an example that prints the MIME type of every part of a multipart "
+"message structure:"
+msgstr ""
+"Dưới đây là ví dụ in loại MIME của mọi phần của cấu trúc thông báo nhiều "
+"phần:"
+
+#: ../../library/email.message.rst:491
+#, fuzzy
+msgid ""
+">>> for part in msg.walk():\n"
+"...     print(part.get_content_type())\n"
+"multipart/report\n"
+"text/plain\n"
+"message/delivery-status\n"
+"text/plain\n"
+"text/plain\n"
+"message/rfc822\n"
+"text/plain"
+msgstr ""
+">>> cho một phần trong msg.walk():\n"
+"... in(part.get_content_type())\n"
+"nhiều phần/báo cáo\n"
+"văn bản/đồng bằng\n"
+"tin nhắn/trạng thái giao hàng\n"
+"văn bản/đồng bằng\n"
+"văn bản/đồng bằng\n"
+"tin nhắn/rfc822\n"
+"văn bản/đồng bằng"
+
+#: ../../library/email.message.rst:503
+#, fuzzy
+msgid ""
+"``walk`` iterates over the subparts of any part where :meth:`is_multipart` "
+"returns ``True``, even though ``msg.get_content_maintype() == 'multipart'`` "
+"may return ``False``.  We can see this in our example by making use of the "
+"``_structure`` debug helper function:"
+msgstr ""
+"``walk`` lặp lại các phần con của bất kỳ phần nào mà :meth:`is_multipart` "
+"trả về ``True``, mặc dù ``msg.get_content_maintype() == 'multipart'`` có thể"
+" trả về ``False``.  Chúng ta có thể thấy điều này trong ví dụ của mình bằng "
+"cách sử dụng hàm trợ giúp gỡ lỗi ``_structure``:"
+
+#: ../../library/email.message.rst:509
+#, fuzzy
+msgid ""
+">>> from email.iterators import _structure\n"
+">>> for part in msg.walk():\n"
+"...     print(part.get_content_maintype() == 'multipart',\n"
+"...           part.is_multipart())\n"
+"True True\n"
+"False False\n"
+"False True\n"
+"False False\n"
+"False False\n"
+"False True\n"
+"False False\n"
+">>> _structure(msg)\n"
+"multipart/report\n"
+"    text/plain\n"
+"    message/delivery-status\n"
+"        text/plain\n"
+"        text/plain\n"
+"    message/rfc822\n"
+"        text/plain"
+msgstr ""
+">>> từ email.iterators nhập _structure\n"
+">>> cho một phần trong msg.walk():\n"
+"... print(part.get_content_maintype() == 'multipart',\n"
+"... part.is_multipart())\n"
+"Đúng Đúng\n"
+"Sai Sai\n"
+"Sai Đúng\n"
+"Sai Sai\n"
+"Sai Sai\n"
+"Sai Đúng\n"
+"Sai Sai\n"
+">>> _cấu trúc (tin nhắn)\n"
+"nhiều phần/báo cáo\n"
+"    văn bản/đồng bằng\n"
+"    tin nhắn/trạng thái giao hàng\n"
+"        văn bản/đồng bằng\n"
+"        văn bản/đồng bằng\n"
+"    tin nhắn/rfc822\n"
+"        văn bản/đồng bằng"
+
+#: ../../library/email.message.rst:531
+#, fuzzy
+msgid ""
+"Here the ``message`` parts are not ``multiparts``, but they do contain "
+"subparts. ``is_multipart()`` returns ``True`` and ``walk`` descends into the"
+" subparts."
+msgstr ""
+"Ở đây các phần ``message`` không phải là ``multiparts`` nhưng chúng có chứa "
+"các phần phụ. ``is_multipart()`` trả về ``True`` và ``walk`` chuyển xuống "
+"các phần phụ."
+
+#: ../../library/email.message.rst:538
+#, fuzzy
+msgid ""
+"Return the MIME part that is the best candidate to be the \"body\" of the "
+"message."
+msgstr ""
+"Trả về phần MIME được coi là ứng cử viên sáng giá nhất để làm \"nội dung\" "
+"của tin nhắn."
+
+#: ../../library/email.message.rst:541
+#, fuzzy
+msgid ""
+"*preferencelist* must be a sequence of strings from the set ``related``, "
+"``html``, and ``plain``, and indicates the order of preference for the "
+"content type of the part returned."
+msgstr ""
+"*preferencelist* phải là một chuỗi các chuỗi từ tập hợp ``related``, "
+"``html`` và ``plain`` và cho biết thứ tự ưu tiên cho loại nội dung của phần "
+"được trả về."
+
+#: ../../library/email.message.rst:545
+#, fuzzy
+msgid ""
+"Start looking for candidate matches with the object on which the "
+"``get_body`` method is called."
+msgstr ""
+"Bắt đầu tìm kiếm các kết quả phù hợp với đối tượng mà phương thức "
+"``get_body`` được gọi."
+
+#: ../../library/email.message.rst:548
+#, fuzzy
+msgid ""
+"If ``related`` is not included in *preferencelist*, consider the root part "
+"(or subpart of the root part) of any related encountered as a candidate if "
+"the (sub-)part matches a preference."
+msgstr ""
+"Nếu ``related`` không được bao gồm trong *preferencelist*, hãy xem xét phần "
+"gốc (hoặc phần phụ của phần gốc) của bất kỳ phần liên quan nào gặp phải làm "
+"ứng cử viên nếu phần (phụ) phù hợp với tùy chọn."
+
+#: ../../library/email.message.rst:552
+#, fuzzy
+msgid ""
+"When encountering a ``multipart/related``, check the ``start`` parameter and"
+" if a part with a matching :mailheader:`Content-ID` is found, consider only "
+"it when looking for candidate matches.  Otherwise consider only the first "
+"(default root) part of the ``multipart/related``."
+msgstr ""
+"Khi gặp ``multipart/related``, hãy kiểm tra tham số ``start`` và nếu tìm "
+"thấy phần có :mailheader:`Content-ID` phù hợp, chỉ xem xét phần đó khi tìm "
+"kiếm kết quả phù hợp.  Mặt khác, chỉ xem xét phần đầu tiên (gốc mặc định) "
+"của ``multipart/related``."
+
+#: ../../library/email.message.rst:557
+#, fuzzy
+msgid ""
+"If a part has a :mailheader:`Content-Disposition` header, only consider the "
+"part a candidate match if the value of the header is ``inline``."
+msgstr ""
+"Nếu một phần có tiêu đề :mailheader:`Content-Disposition`, chỉ coi phần đó "
+"là ứng cử viên phù hợp nếu giá trị của tiêu đề là ``inline``."
+
+#: ../../library/email.message.rst:560
+#, fuzzy
+msgid ""
+"If none of the candidates matches any of the preferences in "
+"*preferencelist*, return ``None``."
+msgstr ""
+"Nếu không có ứng cử viên nào phù hợp với bất kỳ tùy chọn nào trong "
+"*preferencelist*, hãy trả về ``None``."
+
+#: ../../library/email.message.rst:563
+#, fuzzy
+msgid ""
+"Notes: (1) For most applications the only *preferencelist* combinations that"
+" really make sense are ``('plain',)``, ``('html', 'plain')``, and the "
+"default ``('related', 'html', 'plain')``.  (2) Because matching starts with "
+"the object on which ``get_body`` is called, calling ``get_body`` on a "
+"``multipart/related`` will return the object itself unless *preferencelist* "
+"has a non-default value. (3) Messages (or message parts) that do not specify"
+" a :mailheader:`Content-Type` or whose :mailheader:`Content-Type` header is "
+"invalid will be treated as if they are of type ``text/plain``, which may "
+"occasionally cause ``get_body`` to return unexpected results."
+msgstr ""
+"Lưu ý: (1) Đối với hầu hết các ứng dụng, các kết hợp *preferencelist* duy "
+"nhất thực sự có ý nghĩa là ``('plain',)``, ``('html', 'plain')`` và "
+"``('related', 'html', 'plain')`` mặc định.  (2) Bởi vì việc so khớp bắt đầu "
+"với đối tượng mà ``get_body`` được gọi, nên việc gọi ``get_body`` trên "
+"``multipart/related`` sẽ trả về chính đối tượng đó trừ khi *preferencelist* "
+"có giá trị không mặc định. (3) Các tin nhắn (hoặc các phần tin nhắn) không "
+"chỉ định :mailheader:`Content-Type` hoặc có tiêu đề :mailheader:`Content-"
+"Type` không hợp lệ sẽ được xử lý như thể chúng thuộc loại ``text/plain``, "
+"điều này đôi khi có thể khiến ``get_body`` trả về kết quả không mong muốn."
+
+#: ../../library/email.message.rst:577
+#, fuzzy
+msgid ""
+"Return an iterator over all of the immediate sub-parts of the message that "
+"are not candidate \"body\" parts.  That is, skip the first occurrence of "
+"each of ``text/plain``, ``text/html``, ``multipart/related``, or "
+"``multipart/alternative`` (unless they are explicitly marked as attachments "
+"via :mailheader:`Content-Disposition: attachment`), and return all remaining"
+" parts.  When applied directly to a ``multipart/related``, return an "
+"iterator over the all the related parts except the root part (ie: the part "
+"pointed to by the ``start`` parameter, or the first part if there is no "
+"``start`` parameter or the ``start`` parameter doesn't match the "
+":mailheader:`Content-ID` of any of the parts).  When applied directly to a "
+"``multipart/alternative`` or a non-``multipart``, return an empty iterator."
+msgstr ""
+"Trả về một trình vòng lặp trên tất cả các phần phụ ngay lập tức của thông "
+"báo không phải là phần \"nội dung\" ứng cử viên.  Tức là bỏ qua lần xuất "
+"hiện đầu tiên của mỗi ``text/plain``, ``text/html``, ``multipart/related`` "
+"hoặc ``multipart/alternative`` (trừ khi chúng được đánh dấu rõ ràng là tệp "
+"đính kèm qua :mailheader:`Content-Disposition: attachment`) và trả lại tất "
+"cả các phần còn lại.  Khi được áp dụng trực tiếp vào ``multipart/related``, "
+"hãy trả về một iterator trên tất cả các phần liên quan ngoại trừ phần gốc "
+"(tức là: phần được tham số ``start`` trỏ đến hoặc phần đầu tiên nếu không có"
+" tham số ``start`` hoặc tham số ``start`` không khớp với "
+":mailheader:`Content-ID` của bất kỳ phần nào).  Khi áp dụng trực tiếp cho "
+"``multipart/alternative`` hoặc không phải ``multipart``, hãy trả về một "
+"trình vòng lặp trống."
+
+#: ../../library/email.message.rst:593
+#, fuzzy
+msgid ""
+"Return an iterator over all of the immediate sub-parts of the message, which"
+" will be empty for a non-``multipart``.  (See also "
+":meth:`~email.message.EmailMessage.walk`.)"
+msgstr ""
+"Trả về một trình vòng lặp cho tất cả các phần phụ ngay lập tức của tin nhắn,"
+" phần này sẽ trống đối với phần không phải ``multipart``.  (Xem thêm "
+":meth:`~email.message.EmailMessage.walk`.)"
+
+#: ../../library/email.message.rst:600
+#, fuzzy
+msgid ""
+"Call the :meth:`~email.contentmanager.ContentManager.get_content` method of "
+"the *content_manager*, passing self as the message object, and passing along"
+" any other arguments or keywords as additional arguments.  If "
+"*content_manager* is not specified, use the ``content_manager`` specified by"
+" the current :mod:`~email.policy`."
+msgstr ""
+"Gọi phương thức :meth:`~email.contentmanager.ContentManager.get_content` của"
+" *content_manager*, chuyển self làm đối tượng thông báo và chuyển bất kỳ đối"
+" số hoặc từ khóa nào khác làm đối số bổ sung.  Nếu *content_manager* không "
+"được chỉ định, hãy sử dụng ``content_manager`` được chỉ định bởi "
+":mod:`~email.policy` hiện tại."
+
+#: ../../library/email.message.rst:609
+#, fuzzy
+msgid ""
+"Call the :meth:`~email.contentmanager.ContentManager.set_content` method of "
+"the *content_manager*, passing self as the message object, and passing along"
+" any other arguments or keywords as additional arguments.  If "
+"*content_manager* is not specified, use the ``content_manager`` specified by"
+" the current :mod:`~email.policy`."
+msgstr ""
+"Gọi phương thức :meth:`~email.contentmanager.ContentManager.set_content` của"
+" *content_manager*, chuyển self làm đối tượng thông báo và chuyển bất kỳ đối"
+" số hoặc từ khóa nào khác làm đối số bổ sung.  Nếu *content_manager* không "
+"được chỉ định, hãy sử dụng ``content_manager`` được chỉ định bởi "
+":mod:`~email.policy` hiện tại."
+
+#: ../../library/email.message.rst:618
+#, fuzzy
+msgid ""
+"Convert a non-``multipart`` message into a ``multipart/related`` message, "
+"moving any existing :mailheader:`Content-` headers and payload into a (new) "
+"first part of the ``multipart``.  If *boundary* is specified, use it as the "
+"boundary string in the multipart, otherwise leave the boundary to be "
+"automatically created when it is needed (for example, when the message is "
+"serialized)."
+msgstr ""
+"Chuyển đổi tin nhắn không phải ``multipart`` thành tin nhắn "
+"``multipart/related``, di chuyển mọi tiêu đề và tải trọng "
+":mailheader:`Content-` hiện có thành phần đầu tiên (mới) của ``multipart``."
+"  Nếu *boundary* được chỉ định, hãy sử dụng nó làm chuỗi ranh giới trong "
+"nhiều phần, nếu không, hãy để ranh giới được tạo tự động khi cần (ví dụ: khi"
+" tin nhắn được tuần tự hóa)."
+
+#: ../../library/email.message.rst:628
+#, fuzzy
+msgid ""
+"Convert a non-``multipart`` or a ``multipart/related`` into a "
+"``multipart/alternative``, moving any existing :mailheader:`Content-` "
+"headers and payload into a (new) first part of the ``multipart``.  If "
+"*boundary* is specified, use it as the boundary string in the multipart, "
+"otherwise leave the boundary to be automatically created when it is needed "
+"(for example, when the message is serialized)."
+msgstr ""
+"Chuyển đổi không phải ``multipart`` hoặc ``multipart/related`` thành "
+"``multipart/alternative``, di chuyển mọi tiêu đề và tải trọng "
+":mailheader:`Content-` hiện có thành phần đầu tiên (mới) của ``multipart``."
+"  Nếu *boundary* được chỉ định, hãy sử dụng nó làm chuỗi ranh giới trong "
+"nhiều phần, nếu không, hãy để ranh giới được tạo tự động khi cần (ví dụ: khi"
+" tin nhắn được tuần tự hóa)."
+
+#: ../../library/email.message.rst:638
+#, fuzzy
+msgid ""
+"Convert a non-``multipart``, a ``multipart/related``, or a ``multipart-"
+"alternative`` into a ``multipart/mixed``, moving any existing "
+":mailheader:`Content-` headers and payload into a (new) first part of the "
+"``multipart``.  If *boundary* is specified, use it as the boundary string in"
+" the multipart, otherwise leave the boundary to be automatically created "
+"when it is needed (for example, when the message is serialized)."
+msgstr ""
+"Chuyển đổi không phải ``multipart``, ``multipart/related`` hoặc ``multipart-"
+"alternative`` thành ``multipart/mixed``, di chuyển mọi tiêu đề và tải trọng "
+":mailheader:`Content-` hiện có thành phần đầu tiên (mới) của ``multipart``."
+"  Nếu *boundary* được chỉ định, hãy sử dụng nó làm chuỗi ranh giới trong "
+"nhiều phần, nếu không, hãy để ranh giới được tạo tự động khi cần (ví dụ: khi"
+" tin nhắn được tuần tự hóa)."
+
+#: ../../library/email.message.rst:648
+#, fuzzy
+msgid ""
+"If the message is a ``multipart/related``, create a new message object, pass"
+" all of the arguments to its :meth:`set_content` method, and "
+":meth:`~email.message.Message.attach` it to the ``multipart``.  If the "
+"message is a non-``multipart``, call :meth:`make_related` and then proceed "
+"as above.  If the message is any other type of ``multipart``, raise a "
+":exc:`TypeError`. If *content_manager* is not specified, use the "
+"``content_manager`` specified by the current :mod:`~email.policy`. If the "
+"added part has no :mailheader:`Content-Disposition` header, add one with the"
+" value ``inline``."
+msgstr ""
+"Nếu tin nhắn là ``multipart/related``, hãy tạo một đối tượng tin nhắn mới, "
+"chuyển tất cả các đối số cho phương thức :meth:`set_content` của nó và "
+":meth:`~email.message.Message.attach` cho ``multipart``.  Nếu tin nhắn không"
+" phải là ``multipart``, hãy gọi :meth:`make_related` rồi tiếp tục như trên."
+"  Nếu tin nhắn là bất kỳ loại ``multipart`` nào khác, hãy đưa ra "
+":exc:`TypeError`. Nếu *content_manager* không được chỉ định, hãy sử dụng "
+"``content_manager`` được chỉ định bởi :mod:`~email.policy` hiện tại. Nếu "
+"phần được thêm vào không có tiêu đề :mailheader:`Content-Disposition`, hãy "
+"thêm một phần có giá trị ``inline``."
+
+#: ../../library/email.message.rst:661
+#, fuzzy
+msgid ""
+"If the message is a ``multipart/alternative``, create a new message object, "
+"pass all of the arguments to its :meth:`set_content` method, and "
+":meth:`~email.message.Message.attach` it to the ``multipart``.  If the "
+"message is a non-``multipart`` or ``multipart/related``, call "
+":meth:`make_alternative` and then proceed as above.  If the message is any "
+"other type of ``multipart``, raise a :exc:`TypeError`. If *content_manager* "
+"is not specified, use the ``content_manager`` specified by the current "
+":mod:`~email.policy`."
+msgstr ""
+"Nếu tin nhắn là ``multipart/alternative``, hãy tạo một đối tượng tin nhắn "
+"mới, chuyển tất cả các đối số cho phương thức :meth:`set_content` của nó và "
+":meth:`~email.message.Message.attach` cho ``multipart``.  Nếu tin nhắn không"
+" phải là ``multipart`` hoặc ``multipart/related``, hãy gọi "
+":meth:`make_alternative` rồi tiếp tục như trên.  Nếu tin nhắn là bất kỳ loại"
+" ``multipart`` nào khác, hãy đưa ra :exc:`TypeError`. Nếu *content_manager* "
+"không được chỉ định, hãy sử dụng ``content_manager`` được chỉ định bởi "
+":mod:`~email.policy` hiện tại."
+
+#: ../../library/email.message.rst:673
+#, fuzzy
+msgid ""
+"If the message is a ``multipart/mixed``, create a new message object, pass "
+"all of the arguments to its :meth:`set_content` method, and "
+":meth:`~email.message.Message.attach` it to the ``multipart``.  If the "
+"message is a non-``multipart``, ``multipart/related``, or "
+"``multipart/alternative``, call :meth:`make_mixed` and then proceed as "
+"above. If *content_manager* is not specified, use the ``content_manager`` "
+"specified by the current :mod:`~email.policy`.  If the added part has no "
+":mailheader:`Content-Disposition` header, add one with the value "
+"``attachment``.  This method can be used both for explicit attachments "
+"(:mailheader:`Content-Disposition: attachment`) and ``inline`` attachments "
+"(:mailheader:`Content-Disposition: inline`), by passing appropriate options "
+"to the ``content_manager``."
+msgstr ""
+"Nếu tin nhắn là ``multipart/mixed``, hãy tạo một đối tượng tin nhắn mới, "
+"chuyển tất cả các đối số cho phương thức :meth:`set_content` của nó và "
+":meth:`~email.message.Message.attach` cho ``multipart``.  Nếu tin nhắn không"
+" phải là ``multipart``, ``multipart/related`` hoặc "
+"``multipart/alternative``, hãy gọi :meth:`make_mixed` rồi tiếp tục như trên."
+" Nếu *content_manager* không được chỉ định, hãy sử dụng ``content_manager`` "
+"được chỉ định bởi :mod:`~email.policy` hiện tại.  Nếu phần được thêm vào "
+"không có tiêu đề :mailheader:`Content-Disposition`, hãy thêm một phần có giá"
+" trị ``attachment``.  Phương pháp này có thể được sử dụng cho cả tệp đính "
+"kèm rõ ràng (:mailheader:`Content-Disposition: attachment`) và tệp đính kèm "
+"``inline`` (:mailheader:`Content-Disposition: inline`), bằng cách chuyển các"
+" tùy chọn thích hợp cho ``content_manager``."
+
+#: ../../library/email.message.rst:689
+#, fuzzy
+msgid "Remove the payload and all of the headers."
+msgstr "Loại bỏ tải trọng và tất cả các tiêu đề."
+
+#: ../../library/email.message.rst:694
+#, fuzzy
+msgid ""
+"Remove the payload and all of the :mailheader:`!Content-` headers, leaving "
+"all other headers intact and in their original order."
+msgstr ""
+"Xóa tải trọng và tất cả các tiêu đề :mailheader:`!Content-`, giữ nguyên tất "
+"cả các tiêu đề khác và theo thứ tự ban đầu."
+
+#: ../../library/email.message.rst:698
+#, fuzzy
+msgid ":class:`EmailMessage` objects have the following instance attributes:"
+msgstr "Các đối tượng :class:`EmailMessage` có các thuộc tính phiên bản sau:"
+
+#: ../../library/email.message.rst:703
+#, fuzzy
+msgid ""
+"The format of a MIME document allows for some text between the blank line "
+"following the headers, and the first multipart boundary string. Normally, "
+"this text is never visible in a MIME-aware mail reader because it falls "
+"outside the standard MIME armor.  However, when viewing the raw text of the "
+"message, or when viewing the message in a non-MIME aware reader, this text "
+"can become visible."
+msgstr ""
+"Định dạng của tài liệu MIME cho phép một số văn bản nằm giữa dòng trống theo"
+" tiêu đề và chuỗi ranh giới nhiều phần đầu tiên. Thông thường, văn bản này "
+"không bao giờ hiển thị trong trình đọc thư nhận biết MIME vì nó nằm ngoài "
+"lớp bảo vệ MIME tiêu chuẩn.  Tuy nhiên, khi xem văn bản thô của tin nhắn "
+"hoặc khi xem tin nhắn trong trình đọc không nhận biết MIME, văn bản này có "
+"thể hiển thị."
+
+#: ../../library/email.message.rst:710
+#, fuzzy
+msgid ""
+"The *preamble* attribute contains this leading extra-armor text for MIME "
+"documents.  When the :class:`~email.parser.Parser` discovers some text after"
+" the headers but before the first boundary string, it assigns this text to "
+"the message's *preamble* attribute.  When the "
+":class:`~email.generator.Generator` is writing out the plain text "
+"representation of a MIME message, and it finds the message has a *preamble* "
+"attribute, it will write this text in the area between the headers and the "
+"first boundary.  See :mod:`email.parser` and :mod:`email.generator` for "
+"details."
+msgstr ""
+"Thuộc tính *preamble* chứa văn bản bổ sung hàng đầu này cho các tài liệu "
+"MIME.  Khi :class:`~email.parser.Parser` phát hiện một số văn bản sau tiêu "
+"đề nhưng trước chuỗi ranh giới đầu tiên, nó sẽ gán văn bản này cho thuộc "
+"tính *preamble* của tin nhắn.  Khi :class:`~email.generator.Generator` đang "
+"viết văn bản đơn giản của tin nhắn MIME và nhận thấy tin nhắn có thuộc tính "
+"*preamble*, nó sẽ viết văn bản này vào vùng giữa tiêu đề và ranh giới đầu "
+"tiên.  Xem :mod:`email.parser` và :mod:`email.generator` để biết chi tiết."
+
+#: ../../library/email.message.rst:720
+#, fuzzy
+msgid ""
+"Note that if the message object has no preamble, the *preamble* attribute "
+"will be ``None``."
+msgstr ""
+"Lưu ý rằng nếu đối tượng thông báo không có phần mở đầu thì thuộc tính "
+"*preamble* sẽ là ``None``."
+
+#: ../../library/email.message.rst:726
+#, fuzzy
+msgid ""
+"The *epilogue* attribute acts the same way as the *preamble* attribute, "
+"except that it contains text that appears between the last boundary and the "
+"end of the message.  As with the :attr:`~EmailMessage.preamble`, if there is"
+" no epilog text this attribute will be ``None``."
+msgstr ""
+"Thuộc tính *epilogue* hoạt động tương tự như thuộc tính *preamble*, ngoại "
+"trừ việc nó chứa văn bản xuất hiện giữa ranh giới cuối cùng và cuối tin "
+"nhắn.  Giống như :attr:`~EmailMessage.preamble`, nếu không có văn bản kết "
+"thúc thì thuộc tính này sẽ là ``None``."
+
+#: ../../library/email.message.rst:734
+#, fuzzy
+msgid ""
+"The *defects* attribute contains a list of all the problems found when "
+"parsing this message.  See :mod:`email.errors` for a detailed description of"
+" the possible parsing defects."
+msgstr ""
+"Thuộc tính *defects* chứa danh sách tất cả các vấn đề được tìm thấy khi phân"
+" tích thông báo này.  Xem :mod:`email.errors` để biết mô tả chi tiết về các "
+"lỗi phân tích cú pháp có thể xảy ra."
+
+#: ../../library/email.message.rst:741
+#, fuzzy
+msgid ""
+"This class represents a subpart of a MIME message.  It is identical to "
+":class:`EmailMessage`, except that no :mailheader:`MIME-Version` headers are"
+" added when :meth:`~EmailMessage.set_content` is called, since sub-parts do "
+"not need their own :mailheader:`MIME-Version` headers."
+msgstr ""
+"Lớp này đại diện cho một phần con của thông báo MIME.  Nó giống hệt với "
+":class:`EmailMessage`, ngoại trừ việc không có tiêu đề :mailheader:`MIME-"
+"Version` nào được thêm vào khi :meth:`~EmailMessage.set_content` được gọi, "
+"vì các phần phụ không cần tiêu đề :mailheader:`MIME-Version` của riêng "
+"chúng."
+
+#: ../../library/email.message.rst:748
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/email.message.rst:749
+#, fuzzy
+msgid ""
+"Originally added in 3.4 as a :term:`provisional module <provisional "
+"package>`.  Docs for legacy message class moved to :ref:`compat32_message`."
+msgstr ""
+"Ban đầu được thêm vào 3.4 dưới dạng :term:`provisional module <provisional "
+"package>`.  Tài liệu dành cho lớp thông báo cũ đã được chuyển sang "
+":ref:`compat32_message`."
+
+#: ../../library/email.message.rst:753
+#, fuzzy
+msgid ""
+"The :class:`EmailMessage` class requires a policy that provides a "
+"``content_manager`` attribute for content management methods like "
+"``set_content()`` and ``get_content()`` to work. The legacy "
+":const:`~email.policy.compat32` policy does not support these methods and "
+"should not be used with :class:`EmailMessage`."
+msgstr ""
+"Lớp :class:`EmailMessage` yêu cầu chính sách cung cấp thuộc tính "
+"``content_manager`` để các phương thức quản lý nội dung như "
+"``set_content()`` và ``get_content()`` hoạt động. Chính sách "
+":const:`~email.policy.compat32` cũ không hỗ trợ các phương pháp này và không"
+" nên sử dụng với :class:`EmailMessage`."

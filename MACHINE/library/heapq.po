@@ -1,0 +1,936 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/heapq.rst:2
+#, fuzzy
+msgid ":mod:`!heapq` --- Heap queue algorithm"
+msgstr ":mod:`!heapq` --- Thuật toán xếp hàng đống"
+
+#: ../../library/heapq.rst:12
+#, fuzzy
+msgid "**Source code:** :source:`Lib/heapq.py`"
+msgstr "**Source code:** :source:`Lib/heapq.py`"
+
+#: ../../library/heapq.rst:16
+#, fuzzy
+msgid ""
+"This module provides an implementation of the heap queue algorithm, also "
+"known as the priority queue algorithm."
+msgstr ""
+"Mô-đun này cung cấp cách triển khai thuật toán hàng đợi đống, còn được gọi "
+"là thuật toán hàng đợi ưu tiên."
+
+#: ../../library/heapq.rst:19
+#, fuzzy
+msgid ""
+"Min-heaps are binary trees for which every parent node has a value less than"
+" or equal to any of its children. We refer to this condition as the heap "
+"invariant."
+msgstr ""
+"Đống tối thiểu là cây nhị phân mà mỗi nút cha có giá trị nhỏ hơn hoặc bằng "
+"bất kỳ nút con nào của nó. Chúng tôi gọi điều kiện này là bất biến heap."
+
+#: ../../library/heapq.rst:23
+#, fuzzy
+msgid ""
+"For min-heaps, this implementation uses lists for which ``heap[k] <= "
+"heap[2*k+1]`` and ``heap[k] <= heap[2*k+2]`` for all *k* for which the "
+"compared elements exist.  Elements are counted from zero.  The interesting "
+"property of a min-heap is that its smallest element is always the root, "
+"``heap[0]``."
+msgstr ""
+"Đối với các vùng heap tối thiểu, việc triển khai này sử dụng các danh sách "
+"có ``heap[k] <= heap[2*k+1]`` và ``heap[k] <= heap[2*k+2]`` cho tất cả *k* "
+"có các phần tử được so sánh tồn tại.  Các phần tử được tính từ số 0.  Thuộc "
+"tính thú vị của min-heap là phần tử nhỏ nhất của nó luôn là gốc, "
+"``heap[0]``."
+
+#: ../../library/heapq.rst:29
+#, fuzzy
+msgid ""
+"Max-heaps satisfy the reverse invariant: every parent node has a value "
+"*greater* than any of its children.  These are implemented as lists for "
+"which ``maxheap[2*k+1] <= maxheap[k]`` and ``maxheap[2*k+2] <= maxheap[k]`` "
+"for all *k* for which the compared elements exist. The root, ``maxheap[0]``,"
+" contains the *largest* element; ``heap.sort(reverse=True)`` maintains the "
+"max-heap invariant."
+msgstr ""
+"Heap tối đa thỏa mãn bất biến ngược: mọi nút cha đều có giá trị *greater* "
+"hơn bất kỳ nút con nào của nó.  Chúng được triển khai dưới dạng danh sách "
+"``maxheap[2*k+1] <= maxheap[k]`` và ``maxheap[2*k+2] <= maxheap[k]`` cho tất"
+" cả *k* có các phần tử được so sánh tồn tại. Gốc, ``maxheap[0]``, chứa phần "
+"tử *largest*; ``heap.sort(reverse=True)`` duy trì bất biến heap tối đa."
+
+#: ../../library/heapq.rst:36
+#, fuzzy
+msgid ""
+"The :mod:`!heapq` API differs from textbook heap algorithms in two aspects: "
+"(a) We use zero-based indexing.  This makes the relationship between the "
+"index for a node and the indexes for its children slightly less obvious, but"
+" is more suitable since Python uses zero-based indexing. (b) Textbooks often"
+" focus on max-heaps, due to their suitability for in-place sorting. Our "
+"implementation favors min-heaps as they better correspond to Python "
+":class:`lists <list>`."
+msgstr ""
+":mod:`!heapq` API khác với thuật toán heap trong sách giáo khoa ở hai khía "
+"cạnh: (a) Chúng tôi sử dụng lập chỉ mục dựa trên 0.  Điều này làm cho mối "
+"quan hệ giữa chỉ mục cho một nút và các chỉ mục cho nút con của nó ít rõ "
+"ràng hơn một chút, nhưng phù hợp hơn vì Python sử dụng lập chỉ mục dựa trên "
+"0. (b) Sách giáo khoa thường tập trung vào vùng heap tối đa do tính phù hợp "
+"của chúng cho việc sắp xếp tại chỗ. Việc triển khai của chúng tôi ưu tiên "
+"các vùng heap tối thiểu vì chúng tương ứng tốt hơn với Python :class:`lists "
+"<list>`."
+
+#: ../../library/heapq.rst:43
+#, fuzzy
+msgid ""
+"These two aspects make it possible to view the heap as a regular Python list"
+" without surprises: ``heap[0]`` is the smallest item, and ``heap.sort()`` "
+"maintains the heap invariant!"
+msgstr ""
+"Hai khía cạnh này giúp bạn có thể xem vùng heap như một danh sách Python "
+"thông thường mà không có gì đáng ngạc nhiên: ``heap[0]`` là mục nhỏ nhất và "
+"``heap.sort()`` duy trì sự bất biến của vùng heap!"
+
+#: ../../library/heapq.rst:47
+#, fuzzy
+msgid ""
+"Like :meth:`list.sort`, this implementation uses only the ``<`` operator for"
+" comparisons, for both min-heaps and max-heaps."
+msgstr ""
+"Giống như :meth:`list.sort`, cách triển khai này chỉ sử dụng toán tử ``<`` "
+"để so sánh, cho cả vùng heap tối thiểu và vùng heap tối đa."
+
+#: ../../library/heapq.rst:50
+#, fuzzy
+msgid ""
+"In the API below, and in this documentation, the unqualified term *heap* "
+"generally refers to a min-heap. The API for max-heaps is named using a "
+"``_max``  suffix."
+msgstr ""
+"Trong API bên dưới và trong tài liệu này, thuật ngữ không đủ tiêu chuẩn "
+"*heap* thường đề cập đến một vùng nhớ tối thiểu. Zz003zz cho vùng heap tối "
+"đa được đặt tên bằng hậu tố ``_max``."
+
+#: ../../library/heapq.rst:54
+#, fuzzy
+msgid ""
+"To create a heap, use a list initialized as ``[]``, or transform an existing"
+" list into a min-heap or max-heap using the :func:`heapify` or "
+":func:`heapify_max` functions, respectively."
+msgstr ""
+"Để tạo vùng nhớ heap, hãy sử dụng danh sách được khởi tạo dưới dạng ``[]`` "
+"hoặc chuyển đổi danh sách hiện có thành vùng heap tối thiểu hoặc vùng heap "
+"tối đa bằng cách sử dụng các hàm :func:`heapify` hoặc :func:`heapify_max` "
+"tương ứng."
+
+#: ../../library/heapq.rst:58
+#, fuzzy
+msgid "The following functions are provided for min-heaps:"
+msgstr "Các chức năng sau được cung cấp cho vùng heap tối thiểu:"
+
+#: ../../library/heapq.rst:63
+#, fuzzy
+msgid "Transform list *x* into a min-heap, in-place, in linear time."
+msgstr ""
+"Chuyển đổi danh sách *x* thành một đống tối thiểu, tại chỗ, theo thời gian "
+"tuyến tính."
+
+#: ../../library/heapq.rst:68
+#, fuzzy
+msgid ""
+"Push the value *item* onto the *heap*, maintaining the min-heap invariant."
+msgstr "Đẩy giá trị *item* lên *heap*, duy trì bất biến min-heap."
+
+#: ../../library/heapq.rst:73
+#, fuzzy
+msgid ""
+"Pop and return the smallest item from the *heap*, maintaining the min-heap "
+"invariant.  If the heap is empty, :exc:`IndexError` is raised.  To access "
+"the smallest item without popping it, use ``heap[0]``."
+msgstr ""
+"Bật và trả lại phần tử nhỏ nhất từ *heap*, duy trì tính bất biến của vùng "
+"heap tối thiểu.  Nếu heap trống, :exc:`IndexError` sẽ được nâng lên.  Để "
+"truy cập mục nhỏ nhất mà không cần bật nó lên, hãy sử dụng ``heap[0]``."
+
+#: ../../library/heapq.rst:80
+#, fuzzy
+msgid ""
+"Push *item* on the heap, then pop and return the smallest item from the "
+"*heap*.  The combined action runs more efficiently than :func:`heappush` "
+"followed by a separate call to :func:`heappop`."
+msgstr ""
+"Đẩy *item* lên heap, sau đó bật và trả lại phần tử nhỏ nhất từ *heap*.  Hành"
+" động kết hợp chạy hiệu quả hơn :func:`heappush`, sau đó là lệnh gọi riêng "
+"tới :func:`heappop`."
+
+#: ../../library/heapq.rst:87
+#, fuzzy
+msgid ""
+"Pop and return the smallest item from the *heap*, and also push the new "
+"*item*. The heap size doesn't change. If the heap is empty, "
+":exc:`IndexError` is raised."
+msgstr ""
+"Bật và trả lại mục nhỏ nhất từ *heap*, đồng thời đẩy *item* mới. Kích thước "
+"heap không thay đổi. Nếu heap trống, :exc:`IndexError` sẽ được nâng lên."
+
+#: ../../library/heapq.rst:90
+#, fuzzy
+msgid ""
+"This one step operation is more efficient than a :func:`heappop` followed by"
+" :func:`heappush` and can be more appropriate when using a fixed-size heap. "
+"The pop/push combination always returns an element from the heap and "
+"replaces it with *item*."
+msgstr ""
+"Thao tác một bước này hiệu quả hơn so với :func:`heappop`, theo sau là "
+":func:`heappush` và có thể phù hợp hơn khi sử dụng vùng nhớ heap có kích "
+"thước cố định. Sự kết hợp pop/push luôn trả về một phần tử từ heap và thay "
+"thế nó bằng *item*."
+
+#: ../../library/heapq.rst:95
+#, fuzzy
+msgid ""
+"The value returned may be larger than the *item* added.  If that isn't "
+"desired, consider using :func:`heappushpop` instead.  Its push/pop "
+"combination returns the smaller of the two values, leaving the larger value "
+"on the heap."
+msgstr ""
+"Giá trị được trả về có thể lớn hơn *item* được thêm vào.  Nếu không muốn, "
+"hãy cân nhắc sử dụng :func:`heappushpop`.  Sự kết hợp push/pop của nó trả về"
+" giá trị nhỏ hơn trong hai giá trị, để lại giá trị lớn hơn trong heap."
+
+#: ../../library/heapq.rst:101
+#, fuzzy
+msgid "For max-heaps, the following functions are provided:"
+msgstr "Đối với vùng heap tối đa, các chức năng sau được cung cấp:"
+
+#: ../../library/heapq.rst:106
+#, fuzzy
+msgid "Transform list *x* into a max-heap, in-place, in linear time."
+msgstr ""
+"Chuyển đổi danh sách *x* thành vùng heap tối đa, tại chỗ, theo thời gian "
+"tuyến tính."
+
+#: ../../library/heapq.rst:113
+#, fuzzy
+msgid ""
+"Push the value *item* onto the max-heap *heap*, maintaining the max-heap "
+"invariant."
+msgstr ""
+"Đẩy giá trị *item* lên *heap* heap tối đa, duy trì bất biến heap tối đa."
+
+#: ../../library/heapq.rst:121
+#, fuzzy
+msgid ""
+"Pop and return the largest item from the max-heap *heap*, maintaining the "
+"max-heap invariant.  If the max-heap is empty, :exc:`IndexError` is raised. "
+"To access the largest item without popping it, use ``maxheap[0]``."
+msgstr ""
+"Bật và trả lại mục lớn nhất từ *heap* heap tối đa, duy trì tính bất biến của"
+" heap tối đa.  Nếu vùng heap tối đa trống, :exc:`IndexError` sẽ được nâng "
+"lên. Để truy cập mục lớn nhất mà không cần bật nó, hãy sử dụng "
+"``maxheap[0]``."
+
+#: ../../library/heapq.rst:130
+#, fuzzy
+msgid ""
+"Push *item* on the max-heap *heap*, then pop and return the largest item "
+"from *heap*. The combined action runs more efficiently than "
+":func:`heappush_max` followed by a separate call to :func:`heappop_max`."
+msgstr ""
+"Đẩy *item* trên *heap* heap tối đa, sau đó bật và trả lại mục lớn nhất từ "
+"*heap*. Hành động kết hợp chạy hiệu quả hơn :func:`heappush_max`, sau đó là "
+"lệnh gọi riêng tới :func:`heappop_max`."
+
+#: ../../library/heapq.rst:140
+#, fuzzy
+msgid ""
+"Pop and return the largest item from the max-heap *heap* and also push the "
+"new *item*. The max-heap size doesn't change. If the max-heap is empty, "
+":exc:`IndexError` is raised."
+msgstr ""
+"Bật và trả lại mục lớn nhất từ *heap* heap tối đa, đồng thời đẩy *item* mới."
+" Kích thước heap tối đa không thay đổi. Nếu vùng heap tối đa trống, "
+":exc:`IndexError` sẽ được nâng lên."
+
+#: ../../library/heapq.rst:145
+#, fuzzy
+msgid ""
+"The value returned may be smaller than the *item* added.  Refer to the "
+"analogous function :func:`heapreplace` for detailed usage notes."
+msgstr ""
+"Giá trị trả về có thể nhỏ hơn *item* được thêm vào.  Tham khảo chức năng "
+"tương tự :func:`heapreplace` để biết ghi chú sử dụng chi tiết."
+
+#: ../../library/heapq.rst:151
+#, fuzzy
+msgid "The module also offers three general purpose functions based on heaps."
+msgstr ""
+"Mô-đun này cũng cung cấp ba chức năng có mục đích chung dựa trên vùng heap."
+
+#: ../../library/heapq.rst:156
+#, fuzzy
+msgid ""
+"Merge multiple sorted inputs into a single sorted output (for example, merge"
+" timestamped entries from multiple log files).  Returns an :term:`iterator` "
+"over the sorted values."
+msgstr ""
+"Hợp nhất nhiều đầu vào được sắp xếp thành một đầu ra được sắp xếp duy nhất "
+"(ví dụ: hợp nhất các mục nhập có dấu thời gian từ nhiều tệp nhật ký).  Trả "
+"về :term:`iterator` trên các giá trị được sắp xếp."
+
+#: ../../library/heapq.rst:160
+#, fuzzy
+msgid ""
+"Similar to ``sorted(itertools.chain(*iterables))`` but returns an iterable, "
+"does not pull the data into memory all at once, and assumes that each of the"
+" input streams is already sorted (smallest to largest)."
+msgstr ""
+"Tương tự như ``sorted(itertools.chain(*iterables))`` nhưng trả về một lần "
+"lặp, không kéo dữ liệu vào bộ nhớ cùng một lúc và giả định rằng mỗi luồng "
+"đầu vào đã được sắp xếp (nhỏ nhất đến lớn nhất)."
+
+#: ../../library/heapq.rst:164
+#, fuzzy
+msgid ""
+"Has two optional arguments which must be specified as keyword arguments."
+msgstr "Có hai đối số tùy chọn phải được chỉ định làm đối số từ khóa."
+
+#: ../../library/heapq.rst:166
+#, fuzzy
+msgid ""
+"*key* specifies a :term:`key function` of one argument that is used to "
+"extract a comparison key from each input element.  The default value is "
+"``None`` (compare the elements directly)."
+msgstr ""
+"*key* chỉ định :term:`key function` của một đối số được sử dụng để trích "
+"xuất khóa so sánh từ mỗi phần tử đầu vào.  Giá trị mặc định là ``None`` (so "
+"sánh trực tiếp các phần tử)."
+
+#: ../../library/heapq.rst:170
+#, fuzzy
+msgid ""
+"*reverse* is a boolean value.  If set to ``True``, then the input elements "
+"are merged as if each comparison were reversed. To achieve behavior similar "
+"to ``sorted(itertools.chain(*iterables), reverse=True)``, all iterables must"
+" be sorted from largest to smallest."
+msgstr ""
+"*reverse* là giá trị boolean.  Nếu được đặt thành ``True`` thì các phần tử "
+"đầu vào sẽ được hợp nhất như thể mỗi phép so sánh được đảo ngược. Để đạt "
+"được hành vi tương tự như ``sorted(itertools.chain(*iterables), "
+"reverse=True)``, tất cả các lần lặp phải được sắp xếp từ lớn nhất đến nhỏ "
+"nhất."
+
+#: ../../library/heapq.rst:175
+#, fuzzy
+msgid "Added the optional *key* and *reverse* parameters."
+msgstr "Đã thêm các tham số *key* và *reverse* tùy chọn."
+
+#: ../../library/heapq.rst:181
+#, fuzzy
+msgid ""
+"Return a list with the *n* largest elements from the dataset defined by "
+"*iterable*.  *key*, if provided, specifies a function of one argument that "
+"is used to extract a comparison key from each element in *iterable* (for "
+"example, ``key=str.lower``).  Equivalent to:  ``sorted(iterable, key=key, "
+"reverse=True)[:n]``."
+msgstr ""
+"Trả về danh sách có phần tử lớn nhất *n* từ tập dữ liệu được xác định bởi "
+"*iterable*.  *key*, nếu được cung cấp, sẽ chỉ định hàm của một đối số được "
+"sử dụng để trích xuất khóa so sánh từ mỗi phần tử trong *iterable* (ví dụ: "
+"``key=str.lower``).  Tương đương với: ``sorted(iterable, key=key, "
+"reverse=True)[:n]``."
+
+#: ../../library/heapq.rst:190
+#, fuzzy
+msgid ""
+"Return a list with the *n* smallest elements from the dataset defined by "
+"*iterable*.  *key*, if provided, specifies a function of one argument that "
+"is used to extract a comparison key from each element in *iterable* (for "
+"example, ``key=str.lower``).  Equivalent to:  ``sorted(iterable, "
+"key=key)[:n]``."
+msgstr ""
+"Trả về danh sách có các phần tử nhỏ nhất *n* từ tập dữ liệu được xác định "
+"bởi *iterable*.  *key*, nếu được cung cấp, sẽ chỉ định hàm của một đối số "
+"được sử dụng để trích xuất khóa so sánh từ mỗi phần tử trong *iterable* (ví "
+"dụ: ``key=str.lower``).  Tương đương với: ``sorted(iterable, key=key)[:n]``."
+
+#: ../../library/heapq.rst:196
+#, fuzzy
+msgid ""
+"The latter two functions perform best for smaller values of *n*.  For larger"
+" values, it is more efficient to use the :func:`sorted` function.  Also, "
+"when ``n==1``, it is more efficient to use the built-in :func:`min` and "
+":func:`max` functions.  If repeated usage of these functions is required, "
+"consider turning the iterable into an actual heap."
+msgstr ""
+"Hai hàm sau hoạt động tốt nhất với các giá trị nhỏ hơn của *n*.  Đối với các"
+" giá trị lớn hơn, việc sử dụng hàm :func:`sorted` sẽ hiệu quả hơn.  Ngoài "
+"ra, khi ``n==1``, sẽ hiệu quả hơn khi sử dụng các hàm :func:`min` và "
+":func:`max` tích hợp sẵn.  Nếu cần phải sử dụng nhiều lần các hàm này, hãy "
+"cân nhắc việc biến iterable thành một heap thực sự."
+
+#: ../../library/heapq.rst:204
+#, fuzzy
+msgid "Basic Examples"
+msgstr "Ví dụ cơ bản"
+
+#: ../../library/heapq.rst:206
+#, fuzzy
+msgid ""
+"A `heapsort <https://en.wikipedia.org/wiki/Heapsort>`_ can be implemented by"
+" pushing all values onto a heap and then popping off the smallest values one"
+" at a time::"
+msgstr ""
+"Một `heapsort <https://en.wikipedia.org/wiki/Heapsort>`_ có thể được triển "
+"khai bằng cách đẩy tất cả các giá trị vào một đống và sau đó bật ra từng giá"
+" trị nhỏ nhất::"
+
+#: ../../library/heapq.rst:210
+#, fuzzy
+msgid ""
+">>> def heapsort(iterable):\n"
+"...     h = []\n"
+"...     for value in iterable:\n"
+"...         heappush(h, value)\n"
+"...     return [heappop(h) for i in range(len(h))]\n"
+"...\n"
+">>> heapsort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0])\n"
+"[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+msgstr ""
+">>> def heapsort(iterable):\n"
+"... h = []\n"
+"... cho giá trị có thể lặp lại:\n"
+"... heapush(h, giá trị)\n"
+"... return [heappop(h) for i in range(len(h))]\n"
+"...\n"
+">>> heapsort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0])\n"
+"[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+
+#: ../../library/heapq.rst:219
+#, fuzzy
+msgid ""
+"This is similar to ``sorted(iterable)``, but unlike :func:`sorted`, this "
+"implementation is not stable."
+msgstr ""
+"Điều này tương tự như ``sorted(iterable)``, nhưng không giống như "
+":func:`sorted`, cách triển khai này không ổn định."
+
+#: ../../library/heapq.rst:222
+#, fuzzy
+msgid ""
+"Heap elements can be tuples.  This is useful for assigning comparison values"
+" (such as task priorities) alongside the main record being tracked::"
+msgstr ""
+"Các phần tử heap có thể là các bộ dữ liệu.  Điều này hữu ích khi gán các giá"
+" trị so sánh (chẳng hạn như mức độ ưu tiên của nhiệm vụ) cùng với bản ghi "
+"chính đang được theo dõi::"
+
+#: ../../library/heapq.rst:225
+#, fuzzy
+msgid ""
+">>> h = []\n"
+">>> heappush(h, (5, 'write code'))\n"
+">>> heappush(h, (7, 'release product'))\n"
+">>> heappush(h, (1, 'write spec'))\n"
+">>> heappush(h, (3, 'create tests'))\n"
+">>> heappop(h)\n"
+"(1, 'write spec')"
+msgstr ""
+">>> h = []\n"
+">>> Heappush(h, (5, 'viết mã'))\n"
+">>> Heappush(h, (7, 'phát hành sản phẩm'))\n"
+">>> Heappush(h, (1, 'viết thông số'))\n"
+">>> Heappush(h, (3, 'tạo bài kiểm tra'))\n"
+">>> heappop(h)\n"
+"(1, 'viết thông số kỹ thuật')"
+
+#: ../../library/heapq.rst:235
+#, fuzzy
+msgid "Other Applications"
+msgstr "Ứng dụng khác"
+
+#: ../../library/heapq.rst:237
+#, fuzzy
+msgid ""
+"`Medians <https://en.wikipedia.org/wiki/Median>`_ are a measure of central "
+"tendency for a set of numbers.  In distributions skewed by outliers, the "
+"median provides a more stable estimate than an average (arithmetic mean).  A"
+" running median is an `online algorithm "
+"<https://en.wikipedia.org/wiki/Online_algorithm>`_ that updates continuously"
+" as new data arrives."
+msgstr ""
+"`Medians <https://en.wikipedia.org/wiki/Median>`_ là thước đo xu hướng trung"
+" tâm của một tập hợp số.  Trong các phân phối bị lệch bởi các giá trị ngoại "
+"lệ, giá trị trung vị cung cấp ước tính ổn định hơn giá trị trung bình (trung"
+" bình số học).  Trung vị đang chạy là `online algorithm "
+"<https://en.wikipedia.org/wiki/Online_algorithm>`_ cập nhật liên tục khi có "
+"dữ liệu mới."
+
+#: ../../library/heapq.rst:244
+#, fuzzy
+msgid ""
+"A running median can be efficiently implemented by balancing two heaps, a "
+"max-heap for values at or below the midpoint and a min-heap for values above"
+" the midpoint.  When the two heaps have the same size, the new median is the"
+" average of the tops of the two heaps; otherwise, the median is at the top "
+"of the larger heap::"
+msgstr ""
+"Trung vị đang chạy có thể được triển khai một cách hiệu quả bằng cách cân "
+"bằng hai vùng heap, vùng heap tối đa cho các giá trị bằng hoặc dưới điểm "
+"giữa và vùng heap tối thiểu cho các giá trị trên điểm giữa.  Khi hai đống có"
+" cùng kích thước thì trung vị mới là trung bình cộng của các đỉnh của hai "
+"đống; mặt khác, số trung vị nằm ở đầu vùng heap lớn hơn::"
+
+#: ../../library/heapq.rst:250
+#, fuzzy
+msgid ""
+"def running_median(iterable):\n"
+"    \"Yields the cumulative median of values seen so far.\"\n"
+"\n"
+"    lo = []  # max-heap\n"
+"    hi = []  # min-heap (same size as or one smaller than lo)\n"
+"\n"
+"    for x in iterable:\n"
+"        if len(lo) == len(hi):\n"
+"            heappush_max(lo, heappushpop(hi, x))\n"
+"            yield lo[0]\n"
+"        else:\n"
+"            heappush(hi, heappushpop_max(lo, x))\n"
+"            yield (lo[0] + hi[0]) / 2"
+msgstr ""
+"chắc chắn đang chạy_median (có thể lặp lại):\n"
+"    \" Mang lại giá trị trung bình tích lũy được thấy cho đến nay.\"\n"
+"\n"
+"    lo = [] # max-heap\n"
+"    hi = [] # min-heap (cùng kích thước hoặc nhỏ hơn lo một cái)\n"
+"\n"
+"    cho x trong lần lặp:\n"
+"        nếu len(lo) == len(hi):\n"
+"            heappush_max(lo, heappushpop(hi, x))\n"
+"            năng suất lo[0]\n"
+"        khác:\n"
+"            heappush(xin chào, heappushpop_max(lo, x))\n"
+"            năng suất (lo[0] + hi[0]) / 2"
+
+#: ../../library/heapq.rst:264
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../library/heapq.rst:266
+#, fuzzy
+msgid ""
+">>> list(running_median([5.0, 9.0, 4.0, 12.0, 8.0, 9.0]))\n"
+"[5.0, 7.0, 5.0, 7.0, 8.0, 8.5]"
+msgstr ""
+">>> danh sách(running_median([5.0, 9.0, 4.0, 12.0, 8.0, 9.0]))\n"
+"[5.0, 7.0, 5.0, 7.0, 8.0, 8.5]"
+
+#: ../../library/heapq.rst:271
+#, fuzzy
+msgid "Priority Queue Implementation Notes"
+msgstr "Ghi chú triển khai hàng ưu tiên"
+
+#: ../../library/heapq.rst:273
+#, fuzzy
+msgid ""
+"A `priority queue <https://en.wikipedia.org/wiki/Priority_queue>`_ is common"
+" use for a heap, and it presents several implementation challenges:"
+msgstr ""
+"`priority queue <https://en.wikipedia.org/wiki/Priority_queue>`_ được sử "
+"dụng phổ biến cho một đống và nó đưa ra một số thách thức khi triển khai:"
+
+#: ../../library/heapq.rst:276
+#, fuzzy
+msgid ""
+"Sort stability:  how do you get two tasks with equal priorities to be "
+"returned in the order they were originally added?"
+msgstr ""
+"Tính ổn định của sắp xếp: làm cách nào để bạn có thể trả về hai tác vụ có "
+"mức độ ưu tiên như nhau theo thứ tự chúng được thêm vào ban đầu?"
+
+#: ../../library/heapq.rst:279
+#, fuzzy
+msgid ""
+"Tuple comparison breaks for (priority, task) pairs if the priorities are "
+"equal and the tasks do not have a default comparison order."
+msgstr ""
+"Ngắt so sánh bộ dữ liệu cho các cặp (mức độ ưu tiên, nhiệm vụ) nếu mức độ ưu"
+" tiên bằng nhau và các nhiệm vụ không có thứ tự so sánh mặc định."
+
+#: ../../library/heapq.rst:282
+#, fuzzy
+msgid ""
+"If the priority of a task changes, how do you move it to a new position in "
+"the heap?"
+msgstr ""
+"Nếu mức độ ưu tiên của một tác vụ thay đổi, bạn làm cách nào để di chuyển nó"
+" sang vị trí mới trong vùng nhớ heap?"
+
+#: ../../library/heapq.rst:285
+#, fuzzy
+msgid ""
+"Or if a pending task needs to be deleted, how do you find it and remove it "
+"from the queue?"
+msgstr ""
+"Hoặc nếu một tác vụ đang chờ xử lý cần được xóa, bạn làm cách nào để tìm nó "
+"và xóa nó khỏi hàng đợi?"
+
+#: ../../library/heapq.rst:288
+#, fuzzy
+msgid ""
+"A solution to the first two challenges is to store entries as 3-element list"
+" including the priority, an entry count, and the task.  The entry count "
+"serves as a tie-breaker so that two tasks with the same priority are "
+"returned in the order they were added. And since no two entry counts are the"
+" same, the tuple comparison will never attempt to directly compare two "
+"tasks."
+msgstr ""
+"Giải pháp cho hai thách thức đầu tiên là lưu trữ các mục dưới dạng danh sách"
+" 3 thành phần bao gồm mức độ ưu tiên, số lượng mục nhập và nhiệm vụ.  Số "
+"lượng mục nhập đóng vai trò là yếu tố quyết định để hai nhiệm vụ có cùng mức"
+" độ ưu tiên được trả về theo thứ tự chúng được thêm vào. Và vì không có hai "
+"mục nhập nào giống nhau nên việc so sánh bộ dữ liệu sẽ không bao giờ cố gắng"
+" so sánh trực tiếp hai nhiệm vụ."
+
+#: ../../library/heapq.rst:294
+#, fuzzy
+msgid ""
+"Another solution to the problem of non-comparable tasks is to create a "
+"wrapper class that ignores the task item and only compares the priority "
+"field::"
+msgstr ""
+"Một giải pháp khác cho vấn đề về các tác vụ không thể so sánh được là tạo "
+"một lớp trình bao bọc bỏ qua mục tác vụ và chỉ so sánh trường ưu tiên ::"
+
+#: ../../library/heapq.rst:297
+#, fuzzy
+msgid ""
+"from dataclasses import dataclass, field\n"
+"from typing import Any\n"
+"\n"
+"@dataclass(order=True)\n"
+"class PrioritizedItem:\n"
+"    priority: int\n"
+"    item: Any=field(compare=False)"
+msgstr ""
+"từ các lớp dữ liệu nhập lớp dữ liệu, trường\n"
+"từ việc nhập nhập Bất kỳ\n"
+"\n"
+"@dataclass(thứ tự=True)\n"
+"lớp Ưu tiên:\n"
+"    mức độ ưu tiên: int\n"
+"    mục: Any=field(so sánh=False)"
+
+#: ../../library/heapq.rst:305
+#, fuzzy
+msgid ""
+"The remaining challenges revolve around finding a pending task and making "
+"changes to its priority or removing it entirely.  Finding a task can be done"
+" with a dictionary pointing to an entry in the queue."
+msgstr ""
+"Những thách thức còn lại xoay quanh việc tìm kiếm một nhiệm vụ đang chờ xử "
+"lý và thực hiện các thay đổi về mức độ ưu tiên của nó hoặc loại bỏ nó hoàn "
+"toàn.  Việc tìm kiếm một tác vụ có thể được thực hiện bằng cách sử dụng từ "
+"điển trỏ đến một mục trong hàng đợi."
+
+#: ../../library/heapq.rst:309
+#, fuzzy
+msgid ""
+"Removing the entry or changing its priority is more difficult because it "
+"would break the heap structure invariants.  So, a possible solution is to "
+"mark the entry as removed and add a new entry with the revised priority::"
+msgstr ""
+"Việc loại bỏ mục nhập hoặc thay đổi mức độ ưu tiên của nó khó khăn hơn vì nó"
+" sẽ phá vỡ các bất biến cấu trúc heap.  Vì vậy, giải pháp khả thi là đánh "
+"dấu mục nhập là đã xóa và thêm mục nhập mới với mức độ ưu tiên đã sửa đổi::"
+
+#: ../../library/heapq.rst:313
+#, python-brace-format, fuzzy
+msgid ""
+"pq = []                         # list of entries arranged in a heap\n"
+"entry_finder = {}               # mapping of tasks to entries\n"
+"REMOVED = '<removed-task>'      # placeholder for a removed task\n"
+"counter = itertools.count()     # unique sequence count\n"
+"\n"
+"def add_task(task, priority=0):\n"
+"    'Add a new task or update the priority of an existing task'\n"
+"    if task in entry_finder:\n"
+"        remove_task(task)\n"
+"    count = next(counter)\n"
+"    entry = [priority, count, task]\n"
+"    entry_finder[task] = entry\n"
+"    heappush(pq, entry)\n"
+"\n"
+"def remove_task(task):\n"
+"    'Mark an existing task as REMOVED.  Raise KeyError if not found.'\n"
+"    entry = entry_finder.pop(task)\n"
+"    entry[-1] = REMOVED\n"
+"\n"
+"def pop_task():\n"
+"    'Remove and return the lowest priority task. Raise KeyError if empty.'\n"
+"    while pq:\n"
+"        priority, count, task = heappop(pq)\n"
+"        if task is not REMOVED:\n"
+"            del entry_finder[task]\n"
+"            return task\n"
+"    raise KeyError('pop from an empty priority queue')"
+msgstr ""
+"pq = [] # list các mục được sắp xếp thành một đống\n"
+"entry_finder = {} # mapping nhiệm vụ cho các mục\n"
+"REMOVED = '<removed-task>' # placeholder cho tác vụ đã xóa\n"
+"bộ đếm = itertools.count() đếm chuỗi # unique\n"
+"\n"
+"def add_task(tác vụ, mức độ ưu tiên=0):\n"
+"    'Thêm nhiệm vụ mới hoặc cập nhật mức độ ưu tiên của nhiệm vụ hiện có'\n"
+"    nếu tác vụ trong entry_finder:\n"
+"        xóa_task(nhiệm vụ)\n"
+"    đếm = tiếp theo (bộ đếm)\n"
+"    entry = [ưu tiên, số lượng, nhiệm vụ]\n"
+"    entry_finder[task] = mục nhập\n"
+"    heapush(pq, mục nhập)\n"
+"\n"
+"chắc chắn loại bỏ_task (tác vụ):\n"
+"    'Đánh dấu tác vụ hiện có là REMOVED.  Tăng KeyError nếu không tìm thấy.'\n"
+"    entry = entry_finder.pop(task)\n"
+"    mục [-1] = REMOVED\n"
+"\n"
+"chắc chắn pop_task():\n"
+"    'Xóa và trả lại nhiệm vụ có mức độ ưu tiên thấp nhất. Tăng KeyError nếu trống.'\n"
+"    trong khi pq:\n"
+"        mức độ ưu tiên, số lượng, nhiệm vụ = heappop(pq)\n"
+"        nếu nhiệm vụ không phải là REMOVED:\n"
+"            del entry_finder[task]\n"
+"            trả lại nhiệm vụ\n"
+"    raise KeyError('pop từ hàng ưu tiên trống')"
+
+#: ../../library/heapq.rst:343
+#, fuzzy
+msgid "Theory"
+msgstr "Lý thuyết"
+
+#: ../../library/heapq.rst:345
+#, fuzzy
+msgid ""
+"Heaps are arrays for which ``a[k] <= a[2*k+1]`` and ``a[k] <= a[2*k+2]`` for"
+" all *k*, counting elements from 0.  For the sake of comparison, non-"
+"existing elements are considered to be infinite.  The interesting property "
+"of a heap is that ``a[0]`` is always its smallest element."
+msgstr ""
+"Đống là các mảng trong đó ``a[k] <= a[2*k+1]`` và ``a[k] <= a[2*k+2]`` cho "
+"tất cả *k*, đếm các phần tử từ 0. Để so sánh, các phần tử không tồn tại được"
+" coi là vô hạn.  Thuộc tính thú vị của heap là ``a[0]`` luôn là phần tử nhỏ "
+"nhất của nó."
+
+#: ../../library/heapq.rst:350
+#, fuzzy
+msgid ""
+"The strange invariant above is meant to be an efficient memory "
+"representation for a tournament.  The numbers below are *k*, not ``a[k]``::"
+msgstr ""
+"Bất biến kỳ lạ ở trên nhằm mục đích biểu diễn bộ nhớ hiệu quả cho một giải "
+"đấu.  Các số bên dưới là *k*, không phải ``a[k]``::"
+
+#: ../../library/heapq.rst:353
+#, fuzzy
+msgid ""
+"                               0\n"
+"\n"
+"              1                                 2\n"
+"\n"
+"      3               4                5               6\n"
+"\n"
+"  7       8       9       10      11      12      13      14\n"
+"\n"
+"15 16   17 18   19 20   21 22   23 24   25 26   27 28   29 30"
+msgstr ""
+"0\n"
+"\n"
+"              1 2\n"
+"\n"
+"      3 4 5 6\n"
+"\n"
+"  7 8 9 10 11 12 13 14\n"
+"\n"
+"15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30"
+
+#: ../../library/heapq.rst:363
+#, fuzzy
+msgid ""
+"In the tree above, each cell *k* is topping ``2*k+1`` and ``2*k+2``. In a "
+"usual binary tournament we see in sports, each cell is the winner over the "
+"two cells it tops, and we can trace the winner down the tree to see all "
+"opponents s/he had.  However, in many computer applications of such "
+"tournaments, we do not need to trace the history of a winner. To be more "
+"memory efficient, when a winner is promoted, we try to replace it by "
+"something else at a lower level, and the rule becomes that a cell and the "
+"two cells it tops contain three different items, but the top cell \"wins\" "
+"over the two topped cells."
+msgstr ""
+"Trong cây ở trên, mỗi ô *k* đứng đầu ``2*k+1`` và ``2*k+2``. Trong một giải "
+"đấu nhị phân thông thường mà chúng ta thấy trong thể thao, mỗi ô là người "
+"chiến thắng trên hai ô mà nó đứng đầu và chúng ta có thể theo dõi người "
+"chiến thắng dọc theo cây để xem tất cả các đối thủ mà người đó có.  Tuy "
+"nhiên, trong nhiều ứng dụng máy tính của những giải đấu như vậy, chúng ta "
+"không cần theo dõi lịch sử của người chiến thắng. Để bộ nhớ hiệu quả hơn, "
+"khi một ô chiến thắng được thăng hạng, chúng tôi cố gắng thay thế nó bằng "
+"một ô khác ở cấp độ thấp hơn và quy tắc trở thành một ô và hai ô ở trên cùng"
+" chứa ba mục khác nhau, nhưng ô trên cùng \"thắng\" hai ô ở trên cùng."
+
+#: ../../library/heapq.rst:372
+#, fuzzy
+msgid ""
+"If this heap invariant is protected at all time, index 0 is clearly the "
+"overall winner.  The simplest algorithmic way to remove it and find the "
+"\"next\" winner is to move some loser (let's say cell 30 in the diagram "
+"above) into the 0 position, and then percolate this new 0 down the tree, "
+"exchanging values, until the invariant is re-established. This is clearly "
+"logarithmic on the total number of items in the tree. By iterating over all "
+"items, you get an *O*\\ (*n* log *n*) sort."
+msgstr ""
+"Nếu bất biến vùng heap này luôn được bảo vệ thì chỉ số 0 rõ ràng là người "
+"chiến thắng chung cuộc.  Cách thuật toán đơn giản nhất để loại bỏ nó và tìm "
+"ra người chiến thắng \"tiếp theo\" là di chuyển một số người thua cuộc (giả "
+"sử ô 30 trong sơ đồ ở trên) vào vị trí 0, sau đó thấm số 0 mới này xuống "
+"cây, trao đổi các giá trị cho đến khi bất biến được thiết lập lại. Đây rõ "
+"ràng là logarit của tổng số phần tử trong cây. Bằng cách lặp lại tất cả các "
+"mục, bạn sẽ có được sắp xếp *O*\\ (*n* log *n*)."
+
+#: ../../library/heapq.rst:379
+#, fuzzy
+msgid ""
+"A nice feature of this sort is that you can efficiently insert new items "
+"while the sort is going on, provided that the inserted items are not "
+"\"better\" than the last 0'th element you extracted.  This is especially "
+"useful in simulation contexts, where the tree holds all incoming events, and"
+" the \"win\" condition means the smallest scheduled time.  When an event "
+"schedules other events for execution, they are scheduled into the future, so"
+" they can easily go into the heap.  So, a heap is a good structure for "
+"implementing schedulers (this is what I used for my MIDI sequencer :-)."
+msgstr ""
+"Một tính năng hay của loại này là bạn có thể chèn các mục mới một cách hiệu "
+"quả trong khi quá trình sắp xếp đang diễn ra, miễn là các mục được chèn "
+"không \"tốt hơn\" phần tử thứ 0 cuối cùng mà bạn đã trích xuất.  Điều này "
+"đặc biệt hữu ích trong bối cảnh mô phỏng, trong đó cây chứa tất cả các sự "
+"kiện sắp đến và điều kiện \"thắng\" có nghĩa là thời gian dự kiến ​​nhỏ "
+"nhất.  Khi một sự kiện lên lịch cho các sự kiện khác để thực hiện, chúng sẽ "
+"được lên lịch trong tương lai để chúng có thể dễ dàng đi vào vùng nhớ heap."
+"  Vì vậy, heap là một cấu trúc tốt để triển khai bộ lập lịch (đây là cấu "
+"trúc mà tôi đã sử dụng cho trình sắp xếp thứ tự MIDI của mình :-)."
+
+#: ../../library/heapq.rst:388
+#, fuzzy
+msgid ""
+"Various structures for implementing schedulers have been extensively "
+"studied, and heaps are good for this, as they are reasonably speedy, the "
+"speed is almost constant, and the worst case is not much different than the "
+"average case. However, there are other representations which are more "
+"efficient overall, yet the worst cases might be terrible."
+msgstr ""
+"Các cấu trúc khác nhau để triển khai bộ lập lịch đã được nghiên cứu rộng rãi"
+" và heap rất tốt cho việc này vì chúng có tốc độ khá nhanh, tốc độ gần như "
+"không đổi và trường hợp xấu nhất không khác nhiều so với trường hợp trung "
+"bình. Tuy nhiên, có những cách biểu diễn khác hiệu quả hơn về tổng thể, tuy "
+"nhiên những trường hợp xấu nhất có thể rất khủng khiếp."
+
+#: ../../library/heapq.rst:394
+#, fuzzy
+msgid ""
+"Heaps are also very useful in big disk sorts.  You most probably all know "
+"that a big sort implies producing \"runs\" (which are pre-sorted sequences, "
+"whose size is usually related to the amount of CPU memory), followed by a "
+"merging passes for these runs, which merging is often very cleverly "
+"organised [#]_. It is very important that the initial sort produces the "
+"longest runs possible.  Tournaments are a good way to achieve that.  If, "
+"using all the memory available to hold a tournament, you replace and "
+"percolate items that happen to fit the current run, you'll produce runs "
+"which are twice the size of the memory for random input, and much better for"
+" input fuzzily ordered."
+msgstr ""
+"Heap cũng rất hữu ích trong các loại đĩa lớn.  Có lẽ tất cả các bạn đều biết"
+" rằng một loại lớn có nghĩa là tạo ra các \"chạy\" (là các chuỗi được sắp "
+"xếp trước, có kích thước thường liên quan đến dung lượng bộ nhớ CPU), theo "
+"sau là một đường chuyền hợp nhất cho các lần chạy này, việc hợp nhất này "
+"thường được tổ chức rất khéo léo [#]_. Điều rất quan trọng là việc sắp xếp "
+"ban đầu tạo ra thời gian chạy dài nhất có thể.  Các giải đấu là một cách tốt"
+" để đạt được điều đó.  Nếu sử dụng tất cả bộ nhớ có sẵn để tổ chức một giải "
+"đấu, bạn thay thế và chọn lọc các mục phù hợp với lượt chạy hiện tại, bạn sẽ"
+" tạo ra các lượt chạy có kích thước gấp đôi bộ nhớ cho đầu vào ngẫu nhiên và"
+" tốt hơn nhiều cho đầu vào được sắp xếp mờ."
+
+#: ../../library/heapq.rst:404
+#, fuzzy
+msgid ""
+"Moreover, if you output the 0'th item on disk and get an input which may not"
+" fit in the current tournament (because the value \"wins\" over the last "
+"output value), it cannot fit in the heap, so the size of the heap decreases."
+"  The freed memory could be cleverly reused immediately for progressively "
+"building a second heap, which grows at exactly the same rate the first heap "
+"is melting.  When the first heap completely vanishes, you switch heaps and "
+"start a new run.  Clever and quite effective!"
+msgstr ""
+"Hơn nữa, nếu bạn xuất mục thứ 0 trên đĩa và nhận được đầu vào có thể không "
+"phù hợp với giải đấu hiện tại (vì giá trị \"thắng\" so với giá trị đầu ra "
+"cuối cùng), nó không thể vừa với heap, do đó kích thước của heap giảm.  Bộ "
+"nhớ được giải phóng có thể được tái sử dụng một cách khéo léo ngay lập tức "
+"để dần dần xây dựng vùng nhớ thứ hai, vùng này phát triển với tốc độ chính "
+"xác như vùng heap thứ nhất đang tan chảy.  Khi đống đầu tiên biến mất hoàn "
+"toàn, bạn chuyển đổi đống và bắt đầu lần chạy mới.  Thông minh và khá hiệu "
+"quả!"
+
+#: ../../library/heapq.rst:412
+#, fuzzy
+msgid ""
+"In a word, heaps are useful memory structures to know.  I use them in a few "
+"applications, and I think it is good to keep a 'heap' module around. :-)"
+msgstr ""
+"Nói một cách dễ hiểu, heap là cấu trúc bộ nhớ hữu ích cần biết.  Tôi sử dụng"
+" chúng trong một số ứng dụng và tôi nghĩ sẽ tốt hơn nếu giữ lại một mô-đun "
+"'đống'. :-)"
+
+#: ../../library/heapq.rst:416
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../library/heapq.rst:417
+#, fuzzy
+msgid ""
+"The disk balancing algorithms which are current, nowadays, are more annoying"
+" than clever, and this is a consequence of the seeking capabilities of the "
+"disks. On devices which cannot seek, like big tape drives, the story was "
+"quite different, and one had to be very clever to ensure (far in advance) "
+"that each tape movement will be the most effective possible (that is, will "
+"best participate at \"progressing\" the merge).  Some tapes were even able "
+"to read backwards, and this was also used to avoid the rewinding time. "
+"Believe me, real good tape sorts were quite spectacular to watch! From all "
+"times, sorting has always been a Great Art! :-)"
+msgstr ""
+"Các thuật toán cân bằng đĩa hiện nay ngày nay gây khó chịu hơn là thông minh"
+" và đây là kết quả của khả năng tìm kiếm của đĩa. Trên các thiết bị không "
+"thể tìm kiếm, như các ổ băng từ lớn, câu chuyện hoàn toàn khác và người ta "
+"phải rất thông minh để đảm bảo (từ trước) rằng mỗi chuyển động của băng sẽ "
+"hiệu quả nhất có thể (nghĩa là sẽ tham gia tốt nhất vào quá trình \"tiến "
+"hành\" hợp nhất).  Một số băng thậm chí còn có thể đọc ngược và điều này "
+"cũng được sử dụng để tránh thời gian tua lại. Tin tôi đi, những loại băng "
+"thực sự hay rất đáng xem! Từ xưa đến nay, việc sắp xếp luôn là một Nghệ "
+"thuật vĩ đại! :-)"

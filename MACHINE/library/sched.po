@@ -1,0 +1,279 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/sched.rst:2
+#, fuzzy
+msgid ":mod:`!sched` --- Event scheduler"
+msgstr ":mod:`!sched` --- Lập lịch sự kiện"
+
+#: ../../library/sched.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/sched.py`"
+msgstr "**Source code:** :source:`Lib/sched.py`"
+
+#: ../../library/sched.rst:15
+#, fuzzy
+msgid ""
+"The :mod:`!sched` module defines a class which implements a general purpose "
+"event scheduler:"
+msgstr ""
+"Mô-đun :mod:`!sched` xác định một lớp thực hiện bộ lập lịch sự kiện cho mục "
+"đích chung:"
+
+#: ../../library/sched.rst:20
+#, fuzzy
+msgid ""
+"The :class:`scheduler` class defines a generic interface to scheduling "
+"events. It needs two functions to actually deal with the \"outside world\" "
+"--- *timefunc* should be callable without arguments, and return  a number "
+"(the \"time\", in any units whatsoever).  The *delayfunc* function should be"
+" callable with one argument, compatible with the output of *timefunc*, and "
+"should delay that many time units. *delayfunc* will also be called with the "
+"argument ``0`` after each event is run to allow other threads an opportunity"
+" to run in multi-threaded applications."
+msgstr ""
+"Lớp :class:`scheduler` định nghĩa một giao diện chung để lên lịch các sự "
+"kiện. Nó cần hai hàm để thực sự xử lý \"thế giới bên ngoài\" --- *timefunc* "
+"có thể gọi được mà không cần đối số và trả về một số (\"thời gian\", theo "
+"bất kỳ đơn vị nào).  Hàm *delayfunc* phải có thể gọi được với một đối số, "
+"tương thích với đầu ra của *timefunc* và sẽ trì hoãn nhiều đơn vị thời gian "
+"đó. *delayfunc* cũng sẽ được gọi với đối số ``0`` sau khi mỗi sự kiện được "
+"chạy để cho phép các luồng khác có cơ hội chạy trong các ứng dụng đa luồng."
+
+#: ../../library/sched.rst:29
+#, fuzzy
+msgid "*timefunc* and *delayfunc* parameters are optional."
+msgstr "Các tham số *timefunc* và *delayfunc* là tùy chọn."
+
+#: ../../library/sched.rst:32
+#, fuzzy
+msgid ""
+":class:`scheduler` class can be safely used in multi-threaded environments."
+msgstr ""
+"Lớp :class:`scheduler` có thể được sử dụng an toàn trong môi trường đa "
+"luồng."
+
+#: ../../library/sched.rst:36
+#, fuzzy
+msgid "Example::"
+msgstr "Ví dụ::"
+
+#: ../../library/sched.rst:38
+#, python-brace-format, fuzzy
+msgid ""
+">>> import sched, time\n"
+">>> s = sched.scheduler(time.time, time.sleep)\n"
+">>> def print_time(a='default'):\n"
+"...     print(\"From print_time\", time.time(), a)\n"
+"...\n"
+">>> def print_some_times():\n"
+"...     print(time.time())\n"
+"...     s.enter(10, 1, print_time)\n"
+"...     s.enter(5, 2, print_time, argument=('positional',))\n"
+"...     # despite having higher priority, 'keyword' runs after 'positional' as enter() is relative\n"
+"...     s.enter(5, 1, print_time, kwargs={'a': 'keyword'})\n"
+"...     s.enterabs(1_650_000_000, 10, print_time, argument=(\"first enterabs\",))\n"
+"...     s.enterabs(1_650_000_000, 5, print_time, argument=(\"second enterabs\",))\n"
+"...     s.run()\n"
+"...     print(time.time())\n"
+"...\n"
+">>> print_some_times()\n"
+"1652342830.3640375\n"
+"From print_time 1652342830.3642538 second enterabs\n"
+"From print_time 1652342830.3643398 first enterabs\n"
+"From print_time 1652342835.3694863 positional\n"
+"From print_time 1652342835.3696074 keyword\n"
+"From print_time 1652342840.369612 default\n"
+"1652342840.3697174"
+msgstr ""
+">>> nhập lịch, thời gian\n"
+">>> s = sched.scheduler(time.time, time.sleep)\n"
+">>> def print_time(a='default'):\n"
+"... print(\"Từ print_time\", time.time(), a)\n"
+"...\n"
+">>> def print_some_times():\n"
+"... print(time.time())\n"
+"... s.enter(10, 1, print_time)\n"
+"... s.enter(5, 2, print_time,argument=('positional',))\n"
+"... # despite có mức độ ưu tiên cao hơn, 'từ khóa' chạy sau 'vị trí' vì enter() là tương đối\n"
+"... s.enter(5, 1, print_time, kwargs={'a': 'keyword'})\n"
+"... s.enterabs(1_650_000_000, 10, print_time,argument=(\"enterabs đầu tiên\",))\n"
+"... s.enterabs(1_650_000_000, 5, print_time,argument=(\"enterabs thứ hai\",))\n"
+"... s.run()\n"
+"... print(time.time())\n"
+"...\n"
+">>> print_some_times()\n"
+"1652342830.3640375\n"
+"Từ print_time 1652342830.3642538 giây enterabs\n"
+"Từ print_time 1652342830.3643398 lượt truy cập đầu tiên\n"
+"Từ print_time 1652342835.3694863 vị trí\n"
+"Từ từ khóa print_time 1652342835.3696074\n"
+"Từ print_time 1652342840.369612 mặc định\n"
+"1652342840.3697174"
+
+#: ../../library/sched.rst:67
+#, fuzzy
+msgid "Scheduler Objects"
+msgstr "Đối tượng lập lịch"
+
+#: ../../library/sched.rst:69
+#, fuzzy
+msgid ""
+":class:`scheduler` instances have the following methods and attributes:"
+msgstr ""
+"Các phiên bản :class:`scheduler` có các phương thức và thuộc tính sau:"
+
+#: ../../library/sched.rst:74
+#, fuzzy
+msgid ""
+"Schedule a new event. The *time* argument should be a numeric type "
+"compatible with the return value of the *timefunc* function passed  to the "
+"constructor. Events scheduled for the same *time* will be executed in the "
+"order of their *priority*. A lower number represents a higher priority."
+msgstr ""
+"Lên lịch một sự kiện mới. Đối số *time* phải là kiểu số tương thích với giá "
+"trị trả về của hàm *timefunc* được truyền cho hàm tạo. Các sự kiện được lên "
+"lịch cho cùng một *time* sẽ được thực hiện theo thứ tự *priority* của chúng."
+" Số thấp hơn thể hiện mức độ ưu tiên cao hơn."
+
+#: ../../library/sched.rst:79
+#, fuzzy
+msgid ""
+"Executing the event means executing ``action(*argument, **kwargs)``. "
+"*argument* is a sequence holding the positional arguments for *action*. "
+"*kwargs* is a dictionary holding the keyword arguments for *action*."
+msgstr ""
+"Thực hiện sự kiện có nghĩa là thực thi ``action(*argument, **kwargs)``. "
+"*argument* là một chuỗi chứa các đối số vị trí cho *action*. *kwargs* là một"
+" từ điển chứa các đối số từ khóa cho *action*."
+
+#: ../../library/sched.rst:83
+#, fuzzy
+msgid ""
+"Return value is an event which may be used for later cancellation of the "
+"event (see :meth:`cancel`)."
+msgstr ""
+"Giá trị trả về là một sự kiện có thể được sử dụng để hủy sự kiện sau này "
+"(xem :meth:`cancel`)."
+
+#: ../../library/sched.rst:86 ../../library/sched.rst:99
+#, fuzzy
+msgid "*argument* parameter is optional."
+msgstr "Tham số *argument* là tùy chọn."
+
+#: ../../library/sched.rst:89 ../../library/sched.rst:102
+#, fuzzy
+msgid "*kwargs* parameter was added."
+msgstr "tham số *kwargs* đã được thêm vào."
+
+#: ../../library/sched.rst:95
+#, fuzzy
+msgid ""
+"Schedule an event for *delay* more time units. Other than the relative time,"
+" the other arguments, the effect and the return value are the same as those "
+"for :meth:`enterabs`."
+msgstr ""
+"Lên lịch sự kiện cho *delay* nhiều đơn vị thời gian hơn. Ngoài thời gian "
+"tương đối, các đối số khác, hiệu ứng và giá trị trả về giống như đối với "
+":meth:`enterabs`."
+
+#: ../../library/sched.rst:107
+#, fuzzy
+msgid ""
+"Remove the event from the queue. If *event* is not an event currently in the"
+" queue, this method will raise a :exc:`ValueError`."
+msgstr ""
+"Xóa sự kiện khỏi hàng đợi. Nếu *event* hiện không phải là một sự kiện trong "
+"hàng đợi, phương pháp này sẽ đưa ra :exc:`ValueError`."
+
+#: ../../library/sched.rst:113
+#, fuzzy
+msgid "Return ``True`` if the event queue is empty."
+msgstr "Trả về ``True`` nếu hàng đợi sự kiện trống."
+
+#: ../../library/sched.rst:118
+#, fuzzy
+msgid ""
+"Run all scheduled events. This method will wait  (using the *delayfunc* "
+"function passed to the constructor) for the next event, then execute it and "
+"so on until there are no more scheduled events."
+msgstr ""
+"Chạy tất cả các sự kiện theo lịch trình. Phương thức này sẽ đợi (sử dụng hàm"
+" *delayfunc* được truyền cho hàm tạo) cho sự kiện tiếp theo, sau đó thực thi"
+" nó, v.v. cho đến khi không còn sự kiện nào được lên lịch nữa."
+
+#: ../../library/sched.rst:122
+#, fuzzy
+msgid ""
+"If *blocking* is false executes the scheduled events due to expire soonest "
+"(if any) and then return the deadline of the next scheduled call in the "
+"scheduler (if any)."
+msgstr ""
+"Nếu *blocking* sai thì thực thi các sự kiện đã lên lịch sắp hết hạn sớm nhất"
+" (nếu có) và sau đó trả về thời hạn của cuộc gọi đã lên lịch tiếp theo trong"
+" bộ lập lịch (nếu có)."
+
+#: ../../library/sched.rst:126
+#, fuzzy
+msgid ""
+"Either *action* or *delayfunc* can raise an exception.  In either case, the "
+"scheduler will maintain a consistent state and propagate the exception.  If "
+"an exception is raised by *action*, the event will not be attempted in "
+"future calls to :meth:`run`."
+msgstr ""
+"*action* hoặc *delayfunc* có thể đưa ra ngoại lệ.  Trong cả hai trường hợp, "
+"bộ lập lịch sẽ duy trì trạng thái nhất quán và truyền bá ngoại lệ.  Nếu "
+"*action* đưa ra một ngoại lệ, thì sự kiện này sẽ không được thử trong các "
+"lệnh gọi tới :meth:`run` trong tương lai."
+
+#: ../../library/sched.rst:131
+#, fuzzy
+msgid ""
+"If a sequence of events takes longer to run than the time available before "
+"the next event, the scheduler will simply fall behind.  No events will be "
+"dropped; the calling code is responsible for canceling  events which are no "
+"longer pertinent."
+msgstr ""
+"Nếu một chuỗi sự kiện mất nhiều thời gian để chạy hơn thời gian có sẵn trước"
+" sự kiện tiếp theo, thì người lên lịch sẽ bị tụt lại phía sau.  Sẽ không có "
+"sự kiện nào bị loại bỏ; mã gọi có trách nhiệm hủy các sự kiện không còn phù "
+"hợp."
+
+#: ../../library/sched.rst:136
+#, fuzzy
+msgid "*blocking* parameter was added."
+msgstr "tham số *blocking* đã được thêm vào."
+
+#: ../../library/sched.rst:141
+#, fuzzy
+msgid ""
+"Read-only attribute returning a list of upcoming events in the order they "
+"will be run.  Each event is shown as a :term:`named tuple` with the "
+"following fields:  time, priority, action, argument, kwargs."
+msgstr ""
+"Thuộc tính chỉ đọc trả về danh sách các sự kiện sắp tới theo thứ tự chúng sẽ"
+" được chạy.  Mỗi sự kiện được hiển thị dưới dạng :term:`named tuple` với các"
+" trường sau: thời gian, mức độ ưu tiên, hành động, đối số, kwargs."
+
+#: ../../library/sched.rst:11
+#, fuzzy
+msgid "event scheduling"
+msgstr "lập kế hoạch sự kiện"

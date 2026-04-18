@@ -1,0 +1,1447 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/traceback.rst:2
+#, fuzzy
+msgid ":mod:`!traceback` --- Print or retrieve a stack traceback"
+msgstr ":mod:`!traceback` --- In hoặc truy xuất dấu vết ngăn xếp"
+
+#: ../../library/traceback.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/traceback.py`"
+msgstr "**Source code:** :source:`Lib/traceback.py`"
+
+#: ../../library/traceback.rst:11
+#, fuzzy
+msgid ""
+"This module provides a standard interface to extract, format and print stack"
+" traces of Python programs. It is more flexible than the interpreter's "
+"default traceback display, and therefore makes it possible to configure "
+"certain aspects of the output. Finally, it contains a utility for capturing "
+"enough information about an exception to print it later, without the need to"
+" save a reference to the actual exception. Since exceptions can be the roots"
+" of large objects graph, this utility can significantly improve memory "
+"management."
+msgstr ""
+"Mô-đun này cung cấp giao diện chuẩn để trích xuất, định dạng và in dấu vết "
+"ngăn xếp của các chương trình Python. Nó linh hoạt hơn hiển thị truy ngược "
+"mặc định của trình thông dịch và do đó có thể định cấu hình các khía cạnh "
+"nhất định của đầu ra. Cuối cùng, nó chứa một tiện ích để thu thập đủ thông "
+"tin về một ngoại lệ để in sau này mà không cần lưu tham chiếu đến ngoại lệ "
+"thực tế. Vì các ngoại lệ có thể là gốc của biểu đồ đối tượng lớn nên tiện "
+"ích này có thể cải thiện đáng kể việc quản lý bộ nhớ."
+
+#: ../../library/traceback.rst:23
+#, fuzzy
+msgid ""
+"The module uses :ref:`traceback objects <traceback-objects>` --- these are "
+"objects of type :class:`types.TracebackType`, which are assigned to the "
+":attr:`~BaseException.__traceback__` field of :class:`BaseException` "
+"instances."
+msgstr ""
+"Mô-đun sử dụng :ref:`traceback objects <traceback-objects>` --- đây là các "
+"đối tượng thuộc loại :class:`types.TracebackType`, được gán cho trường "
+":attr:`~BaseException.__traceback__` của các phiên bản "
+":class:`BaseException`."
+
+#: ../../library/traceback.rst:30
+#, fuzzy
+msgid "Module :mod:`faulthandler`"
+msgstr "Mô-đun :mod:`faulthandler`"
+
+#: ../../library/traceback.rst:31
+#, fuzzy
+msgid ""
+"Used to dump Python tracebacks explicitly, on a fault, after a timeout, or "
+"on a user signal."
+msgstr ""
+"Được sử dụng để kết xuất các dấu vết Python một cách rõ ràng, khi có lỗi, "
+"sau khi hết thời gian chờ hoặc theo tín hiệu của người dùng."
+
+#: ../../library/traceback.rst:33
+#, fuzzy
+msgid "Module :mod:`pdb`"
+msgstr "Mô-đun :mod:`pdb`"
+
+#: ../../library/traceback.rst:34
+#, fuzzy
+msgid "Interactive source code debugger for Python programs."
+msgstr "Trình gỡ lỗi mã nguồn tương tác cho các chương trình Python."
+
+#: ../../library/traceback.rst:36
+#, fuzzy
+msgid "The module's API can be divided into two parts:"
+msgstr "API của mô-đun có thể được chia thành hai phần:"
+
+#: ../../library/traceback.rst:38
+#, fuzzy
+msgid ""
+"Module-level functions offering basic functionality, which are useful for "
+"interactive inspection of exceptions and tracebacks."
+msgstr ""
+"Các hàm cấp mô-đun cung cấp chức năng cơ bản, hữu ích cho việc kiểm tra "
+"tương tác các ngoại lệ và truy nguyên."
+
+#: ../../library/traceback.rst:41
+#, fuzzy
+msgid ""
+":class:`TracebackException` class and its helper classes "
+":class:`StackSummary` and :class:`FrameSummary`. These offer both more "
+"flexibility in the output generated and the ability to store the information"
+" necessary for later formatting without holding references to actual "
+"exception and traceback objects."
+msgstr ""
+"Lớp :class:`TracebackException` và các lớp trợ giúp của nó "
+":class:`StackSummary` và :class:`FrameSummary`. Những tính năng này mang lại"
+" sự linh hoạt hơn trong kết quả đầu ra được tạo ra và khả năng lưu trữ thông"
+" tin cần thiết cho việc định dạng sau này mà không cần giữ tham chiếu đến "
+"các đối tượng ngoại lệ và truy nguyên thực tế."
+
+#: ../../library/traceback.rst:47
+#, fuzzy
+msgid ""
+"Output is colorized by default and can be :ref:`controlled using environment"
+" variables <using-on-controlling-color>`."
+msgstr ""
+"Đầu ra được tô màu theo mặc định và có thể là :ref:`controlled using "
+"environment variables <using-on-controlling-color>`."
+
+#: ../../library/traceback.rst:53
+#, fuzzy
+msgid "Module-Level Functions"
+msgstr "Chức năng cấp mô-đun"
+
+#: ../../library/traceback.rst:57
+#, fuzzy
+msgid ""
+"Print up to *limit* stack trace entries from :ref:`traceback object "
+"<traceback-objects>` *tb* (starting from the caller's frame) if *limit* is "
+"positive.  Otherwise, print the last ``abs(limit)`` entries.  If *limit* is "
+"omitted or ``None``, all entries are printed.  If *file* is omitted or "
+"``None``, the output goes to :data:`sys.stderr`; otherwise it should be an "
+"open :term:`file <file object>` or :term:`file-like object` to receive the "
+"output."
+msgstr ""
+"In tối đa các mục theo dõi ngăn xếp *limit* từ :ref:`traceback object "
+"<traceback-objects>` *tb* (bắt đầu từ khung của người gọi) nếu *limit* là "
+"dương.  Nếu không, hãy in các mục ``abs(limit)`` cuối cùng.  Nếu *limit* bị "
+"bỏ qua hoặc ``None``, tất cả các mục sẽ được in.  Nếu *file* bị bỏ qua hoặc "
+"``None``, đầu ra sẽ chuyển sang :data:`sys.stderr`; nếu không thì nó phải là"
+" :term:`file <file object>` hoặc :term:`file-like object` mở để nhận đầu ra."
+
+#: ../../library/traceback.rst:68
+#, fuzzy
+msgid ""
+"The meaning of the *limit* parameter is different than the meaning of "
+":const:`sys.tracebacklimit`. A negative *limit* value corresponds to a "
+"positive value of :const:`!sys.tracebacklimit`, whereas the behaviour of a "
+"positive *limit* value cannot be achieved with :const:`!sys.tracebacklimit`."
+msgstr ""
+"Ý nghĩa của tham số *limit* khác với ý nghĩa của "
+":const:`sys.tracebacklimit`. Giá trị *limit* âm tương ứng với giá trị dương "
+"của :const:`!sys.tracebacklimit`, trong khi hành vi của giá trị *limit* "
+"dương không thể đạt được với :const:`!sys.tracebacklimit`."
+
+#: ../../library/traceback.rst:74 ../../library/traceback.rst:139
+#, fuzzy
+msgid "Added negative *limit* support."
+msgstr "Đã thêm hỗ trợ *limit* tiêu cực."
+
+#: ../../library/traceback.rst:81
+#, fuzzy
+msgid ""
+"Print exception information and stack trace entries from :ref:`traceback "
+"object <traceback-objects>` *tb* to *file*. This differs from "
+":func:`print_tb` in the following ways:"
+msgstr ""
+"In thông tin ngoại lệ và xếp chồng các mục theo dõi từ :ref:`traceback "
+"object <traceback-objects>` *tb* đến *file*. Điều này khác với "
+":func:`print_tb` ở những điểm sau:"
+
+#: ../../library/traceback.rst:86
+#, fuzzy
+msgid ""
+"if *tb* is not ``None``, it prints a header ``Traceback (most recent call "
+"last):``"
+msgstr ""
+"nếu *tb* không phải là ``None``, nó sẽ in tiêu đề ``Traceback (most recent "
+"call last):``"
+
+#: ../../library/traceback.rst:89
+#, fuzzy
+msgid "it prints the exception type and *value* after the stack trace"
+msgstr "nó in loại ngoại lệ và *value* sau dấu vết ngăn xếp"
+
+#: ../../library/traceback.rst:93
+#, fuzzy
+msgid ""
+"if *type(value)* is :exc:`SyntaxError` and *value* has the appropriate "
+"format, it prints the line where the syntax error occurred with a caret "
+"indicating the approximate position of the error."
+msgstr ""
+"nếu *type(value)* là :exc:`SyntaxError` và *value* có định dạng phù hợp, nó "
+"sẽ in dòng xảy ra lỗi cú pháp kèm theo dấu mũ cho biết vị trí gần đúng của "
+"lỗi."
+
+#: ../../library/traceback.rst:97
+#, fuzzy
+msgid ""
+"Since Python 3.10, instead of passing *value* and *tb*, an exception object "
+"can be passed as the first argument. If *value* and *tb* are provided, the "
+"first argument is ignored in order to provide backwards compatibility."
+msgstr ""
+"Kể từ Python 3.10, thay vì truyền *value* và *tb*, một đối tượng ngoại lệ có"
+" thể được truyền làm đối số đầu tiên. Nếu *value* và *tb* được cung cấp, đối"
+" số đầu tiên sẽ bị bỏ qua để cung cấp khả năng tương thích ngược."
+
+#: ../../library/traceback.rst:101
+#, fuzzy
+msgid ""
+"The optional *limit* argument has the same meaning as for :func:`print_tb`. "
+"If *chain* is true (the default), then chained exceptions (the "
+":attr:`~BaseException.__cause__` or :attr:`~BaseException.__context__` "
+"attributes of the exception) will be printed as well, like the interpreter "
+"itself does when printing an unhandled exception."
+msgstr ""
+"Đối số *limit* tùy chọn có ý nghĩa tương tự như đối với :func:`print_tb`. "
+"Nếu *chain* là đúng (mặc định), thì các ngoại lệ được xâu chuỗi (thuộc tính "
+":attr:`~BaseException.__cause__` hoặc :attr:`~BaseException.__context__` của"
+" ngoại lệ) cũng sẽ được in, giống như chính trình thông dịch thực hiện khi "
+"in một ngoại lệ chưa được xử lý."
+
+#: ../../library/traceback.rst:108 ../../library/traceback.rst:219
+#, fuzzy
+msgid "The *etype* argument is ignored and inferred from the type of *value*."
+msgstr "Đối số *etype* bị bỏ qua và được suy ra từ loại *value*."
+
+#: ../../library/traceback.rst:111 ../../library/traceback.rst:199
+#, fuzzy
+msgid ""
+"The *etype* parameter has been renamed to *exc* and is now positional-only."
+msgstr "Tham số *etype* đã được đổi tên thành *exc* và hiện chỉ có vị trí."
+
+#: ../../library/traceback.rst:118
+#, fuzzy
+msgid ""
+"This is a shorthand for ``print_exception(sys.exception(), limit=limit, "
+"file=file, chain=chain)``."
+msgstr ""
+"Đây là cách viết tắt của ``print_exception(sys.exception(), limit=limit, "
+"file=file, chain=chain)``."
+
+#: ../../library/traceback.rst:124
+#, fuzzy
+msgid ""
+"This is a shorthand for ``print_exception(sys.last_exc, limit=limit, "
+"file=file, chain=chain)``.  In general it will work only after an exception "
+"has reached an interactive prompt (see :data:`sys.last_exc`)."
+msgstr ""
+"Đây là cách viết tắt của ``print_exception(sys.last_exc, limit=limit, "
+"file=file, chain=chain)``.  Nói chung, nó sẽ chỉ hoạt động sau khi một ngoại"
+" lệ đạt đến dấu nhắc tương tác (xem :data:`sys.last_exc`)."
+
+#: ../../library/traceback.rst:131
+#, fuzzy
+msgid ""
+"Print up to *limit* stack trace entries (starting from the invocation point)"
+" if *limit* is positive.  Otherwise, print the last ``abs(limit)`` entries."
+"  If *limit* is omitted or ``None``, all entries are printed. The optional "
+"*f* argument can be used to specify an alternate :ref:`stack frame <frame-"
+"objects>` to start.  The optional *file* argument has the same meaning as "
+"for :func:`print_tb`."
+msgstr ""
+"In tối đa các mục theo dõi ngăn xếp *limit* (bắt đầu từ điểm gọi) nếu "
+"*limit* dương.  Nếu không, hãy in các mục ``abs(limit)`` cuối cùng.  Nếu "
+"*limit* bị bỏ qua hoặc ``None``, tất cả các mục sẽ được in. Đối số *f* tùy "
+"chọn có thể được sử dụng để chỉ định một :ref:`stack frame <frame-objects>` "
+"thay thế để bắt đầu.  Đối số *file* tùy chọn có ý nghĩa tương tự như đối với"
+" :func:`print_tb`."
+
+#: ../../library/traceback.rst:145
+#, fuzzy
+msgid ""
+"Return a :class:`StackSummary` object representing a list of \"pre-"
+"processed\" stack trace entries extracted from the :ref:`traceback object "
+"<traceback-objects>` *tb*.  It is useful for alternate formatting of stack "
+"traces.  The optional *limit* argument has the same meaning as for "
+":func:`print_tb`.  A \"pre-processed\" stack trace entry is a "
+":class:`FrameSummary` object containing attributes "
+":attr:`~FrameSummary.filename`, :attr:`~FrameSummary.lineno`, "
+":attr:`~FrameSummary.name`, and :attr:`~FrameSummary.line` representing the "
+"information that is usually printed for a stack trace."
+msgstr ""
+"Trả về một đối tượng :class:`StackSummary` đại diện cho một danh sách các "
+"mục theo dõi ngăn xếp \"được xử lý trước\" được trích xuất từ "
+":ref:`traceback object <traceback-objects>` *tb*.  Nó rất hữu ích cho việc "
+"định dạng thay thế các dấu vết ngăn xếp.  Đối số *limit* tùy chọn có ý nghĩa"
+" tương tự như đối với :func:`print_tb`.  Mục nhập dấu vết ngăn xếp \"được xử"
+" lý trước\" là đối tượng :class:`FrameSummary` chứa các thuộc tính "
+":attr:`~FrameSummary.filename`, :attr:`~FrameSummary.lineno`, "
+":attr:`~FrameSummary.name` và :attr:`~FrameSummary.line` thể hiện thông tin "
+"thường được in cho dấu vết ngăn xếp."
+
+#: ../../library/traceback.rst:158
+#, fuzzy
+msgid ""
+"Extract the raw traceback from the current :ref:`stack frame <frame-"
+"objects>`.  The return value has the same format as for :func:`extract_tb`."
+"  The optional *f* and *limit* arguments have the same meaning as for "
+":func:`print_stack`."
+msgstr ""
+"Trích xuất dấu vết thô từ :ref:`stack frame <frame-objects>` hiện tại.  Giá "
+"trị trả về có cùng định dạng với :func:`extract_tb`.  Các đối số *f* và "
+"*limit* tùy chọn có ý nghĩa tương tự như đối với :func:`print_stack`."
+
+#: ../../library/traceback.rst:166
+#, fuzzy
+msgid ""
+"Print the list of tuples as returned by :func:`extract_tb` or "
+":func:`extract_stack` as a formatted stack trace to the given file. If "
+"*file* is ``None``, the output is written to :data:`sys.stderr`."
+msgstr ""
+"In danh sách các bộ dữ liệu được trả về bởi :func:`extract_tb` hoặc "
+":func:`extract_stack` dưới dạng dấu vết ngăn xếp được định dạng cho tệp đã "
+"cho. Nếu *file* là ``None``, đầu ra được ghi vào :data:`sys.stderr`."
+
+#: ../../library/traceback.rst:173
+#, fuzzy
+msgid ""
+"Given a list of tuples or :class:`FrameSummary` objects as returned by "
+":func:`extract_tb` or :func:`extract_stack`, return a list of strings ready "
+"for printing.  Each string in the resulting list corresponds to the item "
+"with the same index in the argument list.  Each string ends in a newline; "
+"the strings may contain internal newlines as well, for those items whose "
+"source text line is not ``None``."
+msgstr ""
+"Đưa ra danh sách các bộ dữ liệu hoặc đối tượng :class:`FrameSummary` được "
+"trả về bởi :func:`extract_tb` hoặc :func:`extract_stack`, hãy trả về danh "
+"sách các chuỗi sẵn sàng để in.  Mỗi chuỗi trong danh sách kết quả tương ứng "
+"với mục có cùng chỉ mục trong danh sách đối số.  Mỗi chuỗi kết thúc bằng một"
+" dòng mới; các chuỗi cũng có thể chứa các dòng mới nội bộ, đối với những mục"
+" có dòng văn bản nguồn không phải là ``None``."
+
+#: ../../library/traceback.rst:183
+#, fuzzy
+msgid ""
+"Format the exception part of a traceback using an exception value such as "
+"given by :data:`sys.last_value`.  The return value is a list of strings, "
+"each ending in a newline.  The list contains the exception's message, which "
+"is normally a single string; however, for :exc:`SyntaxError` exceptions, it "
+"contains several lines that (when printed) display detailed information "
+"about where the syntax error occurred. Following the message, the list "
+"contains the exception's :attr:`notes <BaseException.__notes__>`."
+msgstr ""
+"Định dạng phần ngoại lệ của truy nguyên bằng cách sử dụng giá trị ngoại lệ "
+"do :data:`sys.last_value` đưa ra.  Giá trị trả về là danh sách các chuỗi, "
+"mỗi chuỗi kết thúc bằng một dòng mới.  Danh sách chứa thông báo của ngoại "
+"lệ, thường là một chuỗi đơn; tuy nhiên, đối với các ngoại lệ "
+":exc:`SyntaxError`, nó chứa một số dòng (khi được in) hiển thị thông tin chi"
+" tiết về nơi xảy ra lỗi cú pháp. Theo sau thông báo, danh sách chứa "
+":attr:`notes <BaseException.__notes__>` của ngoại lệ."
+
+#: ../../library/traceback.rst:191
+#, fuzzy
+msgid ""
+"Since Python 3.10, instead of passing *value*, an exception object can be "
+"passed as the first argument.  If *value* is provided, the first argument is"
+" ignored in order to provide backwards compatibility."
+msgstr ""
+"Kể từ Python 3.10, thay vì truyền *value*, một đối tượng ngoại lệ có thể "
+"được truyền làm đối số đầu tiên.  Nếu *value* được cung cấp, đối số đầu tiên"
+" sẽ bị bỏ qua để cung cấp khả năng tương thích ngược."
+
+#: ../../library/traceback.rst:195 ../../library/traceback.rst:431
+#, fuzzy
+msgid ""
+"When *show_group* is ``True``, and the exception is an instance of "
+":exc:`BaseExceptionGroup`, the nested exceptions are included as well, "
+"recursively, with indentation relative to their nesting depth."
+msgstr ""
+"Khi *show_group* là ``True`` và ngoại lệ là một phiên bản của "
+":exc:`BaseExceptionGroup`, các ngoại lệ lồng nhau cũng được bao gồm theo "
+"cách đệ quy, với mức thụt lề tương ứng với độ sâu lồng của chúng."
+
+#: ../../library/traceback.rst:203
+#, fuzzy
+msgid ""
+"The returned list now includes any :attr:`notes <BaseException.__notes__>` "
+"attached to the exception."
+msgstr ""
+"Danh sách trả về hiện bao gồm mọi :attr:`notes <BaseException.__notes__>` "
+"được đính kèm với ngoại lệ."
+
+#: ../../library/traceback.rst:207
+#, fuzzy
+msgid "*show_group* parameter was added."
+msgstr "tham số *show_group* đã được thêm vào."
+
+#: ../../library/traceback.rst:213
+#, fuzzy
+msgid ""
+"Format a stack trace and the exception information.  The arguments  have the"
+" same meaning as the corresponding arguments to :func:`print_exception`.  "
+"The return value is a list of strings, each ending in a newline and some "
+"containing internal newlines.  When these lines are concatenated and "
+"printed, exactly the same text is printed as does :func:`print_exception`."
+msgstr ""
+"Định dạng dấu vết ngăn xếp và thông tin ngoại lệ.  Các đối số có cùng ý "
+"nghĩa với các đối số tương ứng với :func:`print_exception`.  Giá trị trả về "
+"là danh sách các chuỗi, mỗi chuỗi kết thúc bằng một dòng mới và một số chứa "
+"các dòng mới bên trong.  Khi các dòng này được nối và in, văn bản sẽ được in"
+" giống hệt như :func:`print_exception`."
+
+#: ../../library/traceback.rst:222
+#, fuzzy
+msgid ""
+"This function's behavior and signature were modified to match "
+":func:`print_exception`."
+msgstr ""
+"Hành vi và chữ ký của hàm này đã được sửa đổi để phù hợp với "
+":func:`print_exception`."
+
+#: ../../library/traceback.rst:229
+#, fuzzy
+msgid ""
+"This is like ``print_exc(limit)`` but returns a string instead of printing "
+"to a file."
+msgstr ""
+"Điều này giống như ``print_exc(limit)`` nhưng trả về một chuỗi thay vì in ra"
+" tệp."
+
+#: ../../library/traceback.rst:235
+#, fuzzy
+msgid "A shorthand for ``format_list(extract_tb(tb, limit))``."
+msgstr "Viết tắt của ``format_list(extract_tb(tb, limit))``."
+
+#: ../../library/traceback.rst:240
+#, fuzzy
+msgid "A shorthand for ``format_list(extract_stack(f, limit))``."
+msgstr "Viết tắt của ``format_list(extract_stack(f, limit))``."
+
+#: ../../library/traceback.rst:244
+#, fuzzy
+msgid ""
+"Clears the local variables of all the stack frames in a :ref:`traceback "
+"<traceback-objects>` *tb* by calling the :meth:`~frame.clear` method of each"
+" :ref:`frame object <frame-objects>`."
+msgstr ""
+"Xóa các biến cục bộ của tất cả các khung ngăn xếp trong :ref:`traceback "
+"<traceback-objects>` *tb* bằng cách gọi phương thức :meth:`~frame.clear` của"
+" mỗi :ref:`frame object <frame-objects>`."
+
+#: ../../library/traceback.rst:253
+#, fuzzy
+msgid ""
+"Walk a stack following :attr:`f.f_back <frame.f_back>` from the given frame,"
+" yielding the frame and line number for each frame. If *f* is ``None``, the "
+"current stack is used. This helper is used with "
+":meth:`StackSummary.extract`."
+msgstr ""
+"Di chuyển một ngăn xếp theo :attr:`f.f_back <frame.f_back>` từ khung nhất "
+"định, mang lại khung và số dòng cho mỗi khung. Nếu *f* là ``None`` thì ngăn "
+"xếp hiện tại sẽ được sử dụng. Trình trợ giúp này được sử dụng với "
+":meth:`StackSummary.extract`."
+
+#: ../../library/traceback.rst:260
+#, fuzzy
+msgid ""
+"This function previously returned a generator that would walk the stack when"
+" first iterated over. The generator returned now is the state of the stack "
+"when ``walk_stack`` is called."
+msgstr ""
+"Hàm này trước đây đã trả về một trình tạo sẽ di chuyển ngăn xếp khi lặp lại "
+"lần đầu tiên. Trình tạo được trả về bây giờ là trạng thái của ngăn xếp khi "
+"``walk_stack`` được gọi."
+
+#: ../../library/traceback.rst:267
+#, fuzzy
+msgid ""
+"Walk a traceback following :attr:`~traceback.tb_next` yielding the frame and"
+" line number for each frame. This helper is used with "
+":meth:`StackSummary.extract`."
+msgstr ""
+"Walk a traceback following :attr:`~traceback.tb_next` yielding the frame and"
+" line number for each frame. Trình trợ giúp này được sử dụng với "
+":meth:`StackSummary.extract`."
+
+#: ../../library/traceback.rst:275
+#, fuzzy
+msgid ":class:`!TracebackException` Objects"
+msgstr "Đối tượng :class:`!TracebackException`"
+
+#: ../../library/traceback.rst:279
+#, fuzzy
+msgid ""
+":class:`!TracebackException` objects are created from actual exceptions to "
+"capture data for later printing.  They offer a more lightweight method of "
+"storing this information by avoiding holding references to "
+":ref:`traceback<traceback-objects>` and :ref:`frame<frame-objects>` objects."
+" In addition, they expose more options to configure the output compared to "
+"the module-level functions described above."
+msgstr ""
+"Các đối tượng :class:`!TracebackException` được tạo từ các ngoại lệ thực tế "
+"để thu thập dữ liệu để in sau.  Họ cung cấp một phương pháp lưu trữ thông "
+"tin này nhẹ hơn bằng cách tránh giữ các tham chiếu đến các đối tượng "
+":ref:`traceback<traceback-objects>` và :ref:`frame<frame-objects>`. Ngoài "
+"ra, chúng còn cung cấp nhiều tùy chọn hơn để định cấu hình đầu ra so với các"
+" chức năng cấp mô-đun được mô tả ở trên."
+
+#: ../../library/traceback.rst:288
+#, fuzzy
+msgid ""
+"Capture an exception for later rendering. The meaning of *limit*, "
+"*lookup_lines* and *capture_locals* are as for the :class:`StackSummary` "
+"class."
+msgstr ""
+"Ghi lại một ngoại lệ để hiển thị sau này. Ý nghĩa của *limit*, "
+"*lookup_lines* và *capture_locals* giống như đối với lớp "
+":class:`StackSummary`."
+
+#: ../../library/traceback.rst:292
+#, fuzzy
+msgid ""
+"If *compact* is true, only data that is required by "
+":class:`!TracebackException`'s :meth:`format` method is saved in the class "
+"attributes. In particular, the :attr:`__context__` field is calculated only "
+"if :attr:`__cause__` is ``None`` and :attr:`__suppress_context__` is false."
+msgstr ""
+"Nếu *compact* là đúng, chỉ dữ liệu được yêu cầu bởi phương thức "
+":meth:`format` của :class:`!TracebackException` mới được lưu trong thuộc "
+"tính lớp. Đặc biệt, trường :attr:`__context__` chỉ được tính nếu "
+":attr:`__cause__` là ``None`` và :attr:`__suppress_context__` là sai."
+
+#: ../../library/traceback.rst:298 ../../library/traceback.rst:399
+#, fuzzy
+msgid ""
+"Note that when locals are captured, they are also shown in the traceback."
+msgstr ""
+"Lưu ý rằng khi người dân địa phương bị bắt, họ cũng được hiển thị trong truy"
+" nguyên."
+
+#: ../../library/traceback.rst:300
+#, fuzzy
+msgid ""
+"*max_group_width* and *max_group_depth* control the formatting of exception "
+"groups (see :exc:`BaseExceptionGroup`). The depth refers to the nesting "
+"level of the group, and the width refers to the size of a single exception "
+"group's exceptions array. The formatted output is truncated when either "
+"limit is exceeded."
+msgstr ""
+"*max_group_width* và *max_group_depth* kiểm soát định dạng của các nhóm "
+"ngoại lệ (xem :exc:`BaseExceptionGroup`). Độ sâu đề cập đến mức độ lồng nhau"
+" của nhóm và chiều rộng đề cập đến kích thước của mảng ngoại lệ của một nhóm"
+" ngoại lệ. Đầu ra được định dạng sẽ bị cắt bớt khi vượt quá một trong hai "
+"giới hạn."
+
+#: ../../library/traceback.rst:306
+#, fuzzy
+msgid "Added the *compact* parameter."
+msgstr "Đã thêm tham số *compact*."
+
+#: ../../library/traceback.rst:309
+#, fuzzy
+msgid "Added the *max_group_width* and *max_group_depth* parameters."
+msgstr "Đã thêm thông số *max_group_width* và *max_group_depth*."
+
+#: ../../library/traceback.rst:314
+#, fuzzy
+msgid ""
+"A :class:`!TracebackException` of the original "
+":attr:`~BaseException.__cause__`."
+msgstr ""
+"Một :class:`!TracebackException` của :attr:`~BaseException.__cause__` ban "
+"đầu."
+
+#: ../../library/traceback.rst:319
+#, fuzzy
+msgid ""
+"A :class:`!TracebackException` of the original "
+":attr:`~BaseException.__context__`."
+msgstr ""
+"Một :class:`!TracebackException` của :attr:`~BaseException.__context__` ban "
+"đầu."
+
+#: ../../library/traceback.rst:324
+#, fuzzy
+msgid ""
+"If ``self`` represents an :exc:`ExceptionGroup`, this field holds a list of "
+":class:`!TracebackException` instances representing the nested exceptions. "
+"Otherwise it is ``None``."
+msgstr ""
+"Nếu ``self`` đại diện cho :exc:`ExceptionGroup`, trường này chứa danh sách "
+"các phiên bản :class:`!TracebackException` đại diện cho các ngoại lệ lồng "
+"nhau. Nếu không thì đó là ``None``."
+
+#: ../../library/traceback.rst:332
+#, fuzzy
+msgid ""
+"The :attr:`~BaseException.__suppress_context__` value from the original "
+"exception."
+msgstr ""
+"Giá trị :attr:`~BaseException.__suppress_context__` từ ngoại lệ ban đầu."
+
+#: ../../library/traceback.rst:337
+#, fuzzy
+msgid ""
+"The :attr:`~BaseException.__notes__` value from the original exception, or "
+"``None`` if the exception does not have any notes. If it is not ``None`` is "
+"it formatted in the traceback after the exception string."
+msgstr ""
+"Giá trị :attr:`~BaseException.__notes__` từ ngoại lệ ban đầu hoặc ``None`` "
+"nếu ngoại lệ không có bất kỳ ghi chú nào. Nếu nó không phải là ``None`` thì "
+"nó có được định dạng trong truy nguyên sau chuỗi ngoại lệ không."
+
+#: ../../library/traceback.rst:346
+#, fuzzy
+msgid "A :class:`StackSummary` representing the traceback."
+msgstr "Một :class:`StackSummary` đại diện cho truy nguyên."
+
+#: ../../library/traceback.rst:350
+#, fuzzy
+msgid "The class of the original traceback."
+msgstr "Lớp của truy nguyên ban đầu."
+
+#: ../../library/traceback.rst:356
+#, fuzzy
+msgid "String display of the class of the original exception."
+msgstr "Hiển thị chuỗi của lớp ngoại lệ ban đầu."
+
+#: ../../library/traceback.rst:362
+#, fuzzy
+msgid "For syntax errors - the file name where the error occurred."
+msgstr "Đối với lỗi cú pháp - tên tệp xảy ra lỗi."
+
+#: ../../library/traceback.rst:366
+#, fuzzy
+msgid "For syntax errors - the line number where the error occurred."
+msgstr "Đối với lỗi cú pháp - số dòng xảy ra lỗi."
+
+#: ../../library/traceback.rst:370
+#, fuzzy
+msgid ""
+"For syntax errors - the end line number where the error occurred. Can be "
+"``None`` if not present."
+msgstr ""
+"Đối với lỗi cú pháp - số dòng cuối nơi xảy ra lỗi. Có thể là ``None`` nếu "
+"không có."
+
+#: ../../library/traceback.rst:377
+#, fuzzy
+msgid "For syntax errors - the text where the error occurred."
+msgstr "Đối với lỗi cú pháp - văn bản xảy ra lỗi."
+
+#: ../../library/traceback.rst:381
+#, fuzzy
+msgid "For syntax errors - the offset into the text where the error occurred."
+msgstr "Đối với lỗi cú pháp - phần bù vào văn bản xảy ra lỗi."
+
+#: ../../library/traceback.rst:385
+#, fuzzy
+msgid ""
+"For syntax errors - the end offset into the text where the error occurred. "
+"Can be ``None`` if not present."
+msgstr ""
+"Đối với lỗi cú pháp - phần bù cuối vào văn bản nơi xảy ra lỗi. Có thể là "
+"``None`` nếu không có."
+
+#: ../../library/traceback.rst:392
+#, fuzzy
+msgid "For syntax errors - the compiler error message."
+msgstr "Đối với lỗi cú pháp - thông báo lỗi trình biên dịch."
+
+#: ../../library/traceback.rst:396
+#, fuzzy
+msgid ""
+"Capture an exception for later rendering. *limit*, *lookup_lines* and "
+"*capture_locals* are as for the :class:`StackSummary` class."
+msgstr ""
+"Ghi lại một ngoại lệ để hiển thị sau này. *limit*, *lookup_lines* và "
+"*capture_locals* giống như lớp :class:`StackSummary`."
+
+#: ../../library/traceback.rst:403
+#, fuzzy
+msgid ""
+"Print to *file* (default ``sys.stderr``) the exception information returned "
+"by :meth:`format`."
+msgstr ""
+"In ra *file* (``sys.stderr`` mặc định) thông tin ngoại lệ được trả về bởi "
+":meth:`format`."
+
+#: ../../library/traceback.rst:410
+#, fuzzy
+msgid "Format the exception."
+msgstr "Định dạng ngoại lệ."
+
+#: ../../library/traceback.rst:412
+#, fuzzy
+msgid ""
+"If *chain* is not ``True``, :attr:`__cause__` and :attr:`__context__` will "
+"not be formatted."
+msgstr ""
+"Nếu *chain* không phải là ``True`` thì :attr:`__cause__` và "
+":attr:`__context__` sẽ không được định dạng."
+
+#: ../../library/traceback.rst:415
+#, fuzzy
+msgid ""
+"The return value is a generator of strings, each ending in a newline and "
+"some containing internal newlines. :func:`~traceback.print_exception` is a "
+"wrapper around this method which just prints the lines to a file."
+msgstr ""
+"Giá trị trả về là một trình tạo các chuỗi, mỗi chuỗi kết thúc bằng một dòng "
+"mới và một số chứa các dòng mới bên trong. "
+":func:`~traceback.print_exception` là một trình bao bọc xung quanh phương "
+"thức này, nó chỉ in các dòng vào một tệp."
+
+#: ../../library/traceback.rst:421
+#, fuzzy
+msgid "Format the exception part of the traceback."
+msgstr "Định dạng phần ngoại lệ của truy nguyên."
+
+#: ../../library/traceback.rst:423
+#, fuzzy
+msgid "The return value is a generator of strings, each ending in a newline."
+msgstr ""
+"Giá trị trả về là một trình tạo chuỗi, mỗi chuỗi kết thúc bằng một dòng mới."
+
+#: ../../library/traceback.rst:425
+#, fuzzy
+msgid ""
+"When *show_group* is ``False``, the generator emits the exception's message "
+"followed by its notes (if it has any). The exception message is normally a "
+"single string; however, for :exc:`SyntaxError` exceptions, it consists of "
+"several lines that (when printed) display detailed information about where "
+"the syntax error occurred."
+msgstr ""
+"Khi *show_group* là ``False``, trình tạo sẽ phát ra thông báo của ngoại lệ, "
+"theo sau là ghi chú của nó (nếu có). Thông báo ngoại lệ thường là một chuỗi "
+"đơn; tuy nhiên, đối với các ngoại lệ :exc:`SyntaxError`, nó bao gồm một số "
+"dòng (khi được in) hiển thị thông tin chi tiết về nơi xảy ra lỗi cú pháp."
+
+#: ../../library/traceback.rst:435
+#, fuzzy
+msgid ""
+"The exception's :attr:`notes <BaseException.__notes__>` are now included in "
+"the output."
+msgstr ""
+":attr:`notes <BaseException.__notes__>` của ngoại lệ hiện được bao gồm trong"
+" đầu ra."
+
+#: ../../library/traceback.rst:439
+#, fuzzy
+msgid "Added the *show_group* parameter."
+msgstr "Đã thêm tham số *show_group*."
+
+#: ../../library/traceback.rst:444
+#, fuzzy
+msgid ":class:`!StackSummary` Objects"
+msgstr "Đối tượng :class:`!StackSummary`"
+
+#: ../../library/traceback.rst:448
+#, fuzzy
+msgid ""
+":class:`!StackSummary` objects represent a call stack ready for formatting."
+msgstr ""
+"Các đối tượng :class:`!StackSummary` đại diện cho một ngăn xếp cuộc gọi sẵn "
+"sàng để định dạng."
+
+#: ../../library/traceback.rst:454
+#, fuzzy
+msgid ""
+"Construct a :class:`!StackSummary` object from a frame generator (such as is"
+" returned by :func:`~traceback.walk_stack` or :func:`~traceback.walk_tb`)."
+msgstr ""
+"Xây dựng đối tượng :class:`!StackSummary` từ trình tạo khung (chẳng hạn như "
+"được trả về bởi :func:`~traceback.walk_stack` hoặc "
+":func:`~traceback.walk_tb`)."
+
+#: ../../library/traceback.rst:458
+#, fuzzy
+msgid ""
+"If *limit* is supplied, only this many frames are taken from *frame_gen*. If"
+" *lookup_lines* is ``False``, the returned :class:`FrameSummary` objects "
+"will not have read their lines in yet, making the cost of creating the "
+":class:`!StackSummary` cheaper (which may be valuable if it may not actually"
+" get formatted). If *capture_locals* is ``True`` the local variables in each"
+" :class:`!FrameSummary` are captured as object representations."
+msgstr ""
+"Nếu *limit* được cung cấp thì chỉ có bấy nhiêu khung hình được lấy từ "
+"*frame_gen*. Nếu *lookup_lines* là ``False``, các đối tượng "
+":class:`FrameSummary` được trả về sẽ chưa đọc dòng của chúng, khiến chi phí "
+"tạo :class:`!StackSummary` rẻ hơn (có thể có giá trị nếu nó không thực sự "
+"được định dạng). Nếu *capture_locals* là ``True`` thì các biến cục bộ trong "
+"mỗi :class:`!FrameSummary` sẽ được ghi lại dưới dạng biểu diễn đối tượng."
+
+#: ../../library/traceback.rst:466
+#, fuzzy
+msgid ""
+"Exceptions raised from :func:`repr` on a local variable (when "
+"*capture_locals* is ``True``) are no longer propagated to the caller."
+msgstr ""
+"Các ngoại lệ được tạo ra từ :func:`repr` trên một biến cục bộ (khi "
+"*capture_locals* là ``True``) không còn được truyền tới người gọi nữa."
+
+#: ../../library/traceback.rst:472
+#, fuzzy
+msgid ""
+"Construct a :class:`!StackSummary` object from a supplied list of "
+":class:`FrameSummary` objects or old-style list of tuples.  Each tuple "
+"should be a 4-tuple with *filename*, *lineno*, *name*, *line* as the "
+"elements."
+msgstr ""
+"Xây dựng một đối tượng :class:`!StackSummary` từ danh sách các đối tượng "
+":class:`FrameSummary` được cung cấp hoặc danh sách các bộ dữ liệu kiểu cũ.  "
+"Mỗi bộ phải là một bộ gồm 4 bộ với các phần tử là *filename*, *lineno*, "
+"*name*, *line*."
+
+#: ../../library/traceback.rst:479
+#, fuzzy
+msgid ""
+"Returns a list of strings ready for printing.  Each string in the resulting "
+"list corresponds to a single :ref:`frame <frame-objects>` from the stack. "
+"Each string ends in a newline; the strings may contain internal newlines as "
+"well, for those items with source text lines."
+msgstr ""
+"Trả về danh sách các chuỗi sẵn sàng để in.  Mỗi chuỗi trong danh sách kết "
+"quả tương ứng với một :ref:`frame <frame-objects>` duy nhất từ ​​ngăn xếp. "
+"Mỗi chuỗi kết thúc bằng một dòng mới; các chuỗi cũng có thể chứa các dòng "
+"mới nội bộ đối với những mục có dòng văn bản nguồn."
+
+#: ../../library/traceback.rst:485
+#, fuzzy
+msgid ""
+"For long sequences of the same frame and line, the first few repetitions are"
+" shown, followed by a summary line stating the exact number of further "
+"repetitions."
+msgstr ""
+"Đối với các chuỗi dài có cùng khung và dòng, một vài lần lặp lại đầu tiên "
+"được hiển thị, theo sau là một dòng tóm tắt cho biết chính xác số lần lặp "
+"lại tiếp theo."
+
+#: ../../library/traceback.rst:489
+#, fuzzy
+msgid "Long sequences of repeated frames are now abbreviated."
+msgstr "Chuỗi dài các khung hình lặp đi lặp lại hiện được viết tắt."
+
+#: ../../library/traceback.rst:494
+#, fuzzy
+msgid ""
+"Returns a string for printing one of the :ref:`frames <frame-objects>` "
+"involved in the stack. This method is called for each :class:`FrameSummary` "
+"object to be printed by :meth:`StackSummary.format`. If it returns ``None``,"
+" the frame is omitted from the output."
+msgstr ""
+"Trả về một chuỗi để in một trong các :ref:`frames <frame-objects>` có trong "
+"ngăn xếp. Phương thức này được gọi cho mỗi đối tượng :class:`FrameSummary` "
+"được in bởi :meth:`StackSummary.format`. Nếu nó trả về ``None``, khung hình "
+"sẽ bị bỏ qua khỏi đầu ra."
+
+#: ../../library/traceback.rst:504
+#, fuzzy
+msgid ":class:`!FrameSummary` Objects"
+msgstr "Đối tượng :class:`!FrameSummary`"
+
+#: ../../library/traceback.rst:508
+#, fuzzy
+msgid ""
+"A :class:`!FrameSummary` object represents a single :ref:`frame <frame-"
+"objects>` in a :ref:`traceback <traceback-objects>`."
+msgstr ""
+"Đối tượng :class:`!FrameSummary` đại diện cho một :ref:`frame <frame-"
+"objects>` duy nhất trong :ref:`traceback <traceback-objects>`."
+
+#: ../../library/traceback.rst:515
+#, fuzzy
+msgid ""
+"Represents a single :ref:`frame <frame-objects>` in the :ref:`traceback "
+"<traceback-objects>` or stack that is being formatted or printed. It may "
+"optionally have a stringified version of the frame's locals included in it. "
+"If *lookup_line* is ``False``, the source code is not looked up until the "
+":class:`!FrameSummary` has the :attr:`~FrameSummary.line` attribute accessed"
+" (which also happens when casting it to a :class:`tuple`). "
+":attr:`~FrameSummary.line` may be directly provided, and will prevent line "
+"lookups happening at all. *locals* is an optional local variable mapping, "
+"and if supplied the variable representations are stored in the summary for "
+"later display."
+msgstr ""
+"Đại diện cho một :ref:`frame <frame-objects>` duy nhất trong :ref:`traceback"
+" <traceback-objects>` hoặc ngăn xếp đang được định dạng hoặc in. Tùy chọn có"
+" thể có một phiên bản được xâu chuỗi của các địa phương của khung được bao "
+"gồm trong đó. Nếu *lookup_line* là ``False``, mã nguồn sẽ không được tra cứu"
+" cho đến khi :class:`!FrameSummary` có thuộc tính :attr:`~FrameSummary.line`"
+" được truy cập (điều này cũng xảy ra khi truyền nó tới :class:`tuple`). "
+":attr:`~FrameSummary.line` có thể được cung cấp trực tiếp và sẽ ngăn chặn "
+"việc tra cứu dòng xảy ra. *locals* là một ánh xạ biến cục bộ tùy chọn và nếu"
+" được cung cấp, các biểu diễn biến sẽ được lưu trữ trong bản tóm tắt để hiển"
+" thị sau."
+
+#: ../../library/traceback.rst:526
+#, fuzzy
+msgid ":class:`!FrameSummary` instances have the following attributes:"
+msgstr "Các phiên bản :class:`!FrameSummary` có các thuộc tính sau:"
+
+#: ../../library/traceback.rst:530
+#, fuzzy
+msgid ""
+"The filename of the source code for this frame. Equivalent to accessing "
+":attr:`f.f_code.co_filename <codeobject.co_filename>` on a :ref:`frame "
+"object <frame-objects>` *f*."
+msgstr ""
+"Tên tệp của mã nguồn cho khung này. Tương đương với việc truy cập "
+":attr:`f.f_code.co_filename <codeobject.co_filename>` trên :ref:`frame "
+"object <frame-objects>` *f*."
+
+#: ../../library/traceback.rst:536
+#, fuzzy
+msgid "The line number of the source code for this frame."
+msgstr "Số dòng của mã nguồn cho khung này."
+
+#: ../../library/traceback.rst:540
+#, fuzzy
+msgid ""
+"Equivalent to accessing :attr:`f.f_code.co_name <codeobject.co_name>` on a "
+":ref:`frame object <frame-objects>` *f*."
+msgstr ""
+"Tương đương với việc truy cập :attr:`f.f_code.co_name <codeobject.co_name>` "
+"trên :ref:`frame object <frame-objects>` *f*."
+
+#: ../../library/traceback.rst:545
+#, fuzzy
+msgid ""
+"A string representing the source code for this frame, with leading and "
+"trailing whitespace stripped. If the source is not available, it is "
+"``None``."
+msgstr ""
+"Một chuỗi biểu thị mã nguồn cho khung này, với khoảng trắng ở đầu và cuối "
+"được loại bỏ. If the source is not available, it is ``None``."
+
+#: ../../library/traceback.rst:551
+#, fuzzy
+msgid ""
+"The last line number of the source code for this frame. By default, it is "
+"set to ``lineno`` and indexation starts from 1."
+msgstr ""
+"Số dòng cuối cùng của mã nguồn cho khung này. Theo mặc định, nó được đặt "
+"thành ``lineno`` và việc lập chỉ mục bắt đầu từ 1."
+
+#: ../../library/traceback.rst:554
+#, fuzzy
+msgid "The default value changed from ``None`` to ``lineno``."
+msgstr "Giá trị mặc định đã thay đổi từ ``None`` thành ``lineno``."
+
+#: ../../library/traceback.rst:559
+#, fuzzy
+msgid ""
+"The column number of the source code for this frame. By default, it is "
+"``None`` and indexation starts from 0."
+msgstr ""
+"Số cột của mã nguồn cho khung này. Theo mặc định, nó là ``None`` và việc lập"
+" chỉ mục bắt đầu từ 0."
+
+#: ../../library/traceback.rst:564
+#, fuzzy
+msgid ""
+"The last column number of the source code for this frame. By default, it is "
+"``None`` and indexation starts from 0."
+msgstr ""
+"Số cột cuối cùng của mã nguồn cho khung này. Theo mặc định, nó là ``None`` "
+"và việc lập chỉ mục bắt đầu từ 0."
+
+#: ../../library/traceback.rst:571
+#, fuzzy
+msgid "Examples of Using the Module-Level Functions"
+msgstr "Ví dụ về việc sử dụng các hàm cấp mô-đun"
+
+#: ../../library/traceback.rst:573
+#, fuzzy
+msgid ""
+"This simple example implements a basic read-eval-print loop, similar to (but"
+" less useful than) the standard Python interactive interpreter loop.  For a "
+"more complete implementation of the interpreter loop, refer to the "
+":mod:`code` module. ::"
+msgstr ""
+"Ví dụ đơn giản này triển khai một vòng lặp đọc-đánh giá-in cơ bản, tương tự "
+"(nhưng ít hữu ích hơn) vòng lặp trình thông dịch tương tác Python tiêu "
+"chuẩn.  Để triển khai vòng lặp trình thông dịch đầy đủ hơn, hãy tham khảo "
+"mô-đun :mod:`code`. ::"
+
+#: ../../library/traceback.rst:578
+#, python-brace-format, fuzzy
+msgid ""
+"import sys, traceback\n"
+"\n"
+"def run_user_code(envdir):\n"
+"    source = input(\">>> \")\n"
+"    try:\n"
+"        exec(source, envdir)\n"
+"    except Exception:\n"
+"        print(\"Exception in user code:\")\n"
+"        print(\"-\"*60)\n"
+"        traceback.print_exc(file=sys.stdout)\n"
+"        print(\"-\"*60)\n"
+"\n"
+"envdir = {}\n"
+"while True:\n"
+"    run_user_code(envdir)"
+msgstr ""
+"hệ thống nhập khẩu, truy nguyên\n"
+"\n"
+"chắc chắn run_user_code(envdir):\n"
+"    nguồn = đầu vào(\">>> \")\n"
+"    thử:\n"
+"        exec(nguồn, envdir)\n"
+"    ngoại trừ Ngoại lệ:\n"
+"        print(\"Ngoại lệ trong mã người dùng:\")\n"
+"        in(\"-\"*60)\n"
+"        traceback.print_exc(file=sys.stdout)\n"
+"        in(\"-\"*60)\n"
+"\n"
+"envdir = {}\n"
+"trong khi Đúng:\n"
+"    run_user_code(envdir)"
+
+#: ../../library/traceback.rst:595
+#, fuzzy
+msgid ""
+"The following example demonstrates the different ways to print and format "
+"the exception and traceback:"
+msgstr ""
+"Ví dụ sau đây minh họa các cách khác nhau để in và định dạng ngoại lệ và "
+"truy nguyên:"
+
+#: ../../library/traceback.rst:598
+#, fuzzy
+msgid ""
+"import sys, traceback\n"
+"\n"
+"def lumberjack():\n"
+"    bright_side_of_life()\n"
+"\n"
+"def bright_side_of_life():\n"
+"    return tuple()[0]\n"
+"\n"
+"try:\n"
+"    lumberjack()\n"
+"except IndexError as exc:\n"
+"    print(\"*** print_tb:\")\n"
+"    traceback.print_tb(exc.__traceback__, limit=1, file=sys.stdout)\n"
+"    print(\"*** print_exception:\")\n"
+"    traceback.print_exception(exc, limit=2, file=sys.stdout)\n"
+"    print(\"*** print_exc:\")\n"
+"    traceback.print_exc(limit=2, file=sys.stdout)\n"
+"    print(\"*** format_exc, first and last line:\")\n"
+"    formatted_lines = traceback.format_exc().splitlines()\n"
+"    print(formatted_lines[0])\n"
+"    print(formatted_lines[-1])\n"
+"    print(\"*** format_exception:\")\n"
+"    print(repr(traceback.format_exception(exc)))\n"
+"    print(\"*** extract_tb:\")\n"
+"    print(repr(traceback.extract_tb(exc.__traceback__)))\n"
+"    print(\"*** format_tb:\")\n"
+"    print(repr(traceback.format_tb(exc.__traceback__)))\n"
+"    print(\"*** tb_lineno:\", exc.__traceback__.tb_lineno)"
+msgstr ""
+"hệ thống nhập khẩu, truy nguyên\n"
+"\n"
+"def thợ rừng():\n"
+"    Bright_side_of_life()\n"
+"\n"
+"def bright_side_of_life():\n"
+"    trả về bộ dữ liệu()[0]\n"
+"\n"
+"thử:\n"
+"    thợ rừng()\n"
+"ngoại trừ IndexError dưới dạng exec:\n"
+"    in (\"*** print_tb:\")\n"
+"    traceback.print_tb(exc.__traceback__, limit=1, file=sys.stdout)\n"
+"    print(\"*** print_Exception:\")\n"
+"    traceback.print_Exception(exc, limit=2, file=sys.stdout)\n"
+"    in (\"*** print_exc:\")\n"
+"    traceback.print_exc(limit=2, file=sys.stdout)\n"
+"    print(\"*** format_exc, dòng đầu tiên và dòng cuối cùng:\")\n"
+"    formatted_lines = traceback.format_exc().splitlines()\n"
+"    in(formatted_lines[0])\n"
+"    print(formatted_lines[-1])\n"
+"    in (\"*** định dạng_ngoại lệ:\")\n"
+"    print(repr(traceback.format_Exception(exc)))\n"
+"    print(\"*** extract_tb:\")\n"
+"    print(repr(traceback.extract_tb(exc.__traceback__)))\n"
+"    in (\"*** định dạng_tb:\")\n"
+"    print(repr(traceback.format_tb(exc.__traceback__)))\n"
+"    print(\"*** tb_lineno:\", ex.__traceback__.tb_lineno)"
+
+#: ../../library/traceback.rst:629
+#, fuzzy
+msgid "The output for the example would look similar to this:"
+msgstr "Đầu ra của ví dụ sẽ trông giống như thế này:"
+
+#: ../../library/traceback.rst:631
+#, fuzzy
+msgid ""
+"*** print_tb:\n"
+"  File \"<doctest...>\", line 10, in <module>\n"
+"    lumberjack()\n"
+"    ~~~~~~~~~~^^\n"
+"*** print_exception:\n"
+"Traceback (most recent call last):\n"
+"  File \"<doctest...>\", line 10, in <module>\n"
+"    lumberjack()\n"
+"    ~~~~~~~~~~^^\n"
+"  File \"<doctest...>\", line 4, in lumberjack\n"
+"    bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~^^\n"
+"IndexError: tuple index out of range\n"
+"*** print_exc:\n"
+"Traceback (most recent call last):\n"
+"  File \"<doctest...>\", line 10, in <module>\n"
+"    lumberjack()\n"
+"    ~~~~~~~~~~^^\n"
+"  File \"<doctest...>\", line 4, in lumberjack\n"
+"    bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~^^\n"
+"IndexError: tuple index out of range\n"
+"*** format_exc, first and last line:\n"
+"Traceback (most recent call last):\n"
+"IndexError: tuple index out of range\n"
+"*** format_exception:\n"
+"['Traceback (most recent call last):\\n',\n"
+" '  File \"<doctest default[0]>\", line 10, in <module>\\n    lumberjack()\\n    ~~~~~~~~~~^^\\n',\n"
+" '  File \"<doctest default[0]>\", line 4, in lumberjack\\n    bright_side_of_life()\\n    ~~~~~~~~~~~~~~~~~~~^^\\n',\n"
+" '  File \"<doctest default[0]>\", line 7, in bright_side_of_life\\n    return tuple()[0]\\n           ~~~~~~~^^^\\n',\n"
+" 'IndexError: tuple index out of range\\n']\n"
+"*** extract_tb:\n"
+"[<FrameSummary file <doctest...>, line 10 in <module>>,\n"
+" <FrameSummary file <doctest...>, line 4 in lumberjack>,\n"
+" <FrameSummary file <doctest...>, line 7 in bright_side_of_life>]\n"
+"*** format_tb:\n"
+"['  File \"<doctest default[0]>\", line 10, in <module>\\n    lumberjack()\\n    ~~~~~~~~~~^^\\n',\n"
+" '  File \"<doctest default[0]>\", line 4, in lumberjack\\n    bright_side_of_life()\\n    ~~~~~~~~~~~~~~~~~~~^^\\n',\n"
+" '  File \"<doctest default[0]>\", line 7, in bright_side_of_life\\n    return tuple()[0]\\n           ~~~~~~~^^^\\n']\n"
+"*** tb_lineno: 10"
+msgstr ""
+"*** print_tb:\n"
+"  Tệp \"<doctest...>\", dòng 10, trong <module>\n"
+"    thợ rừng()\n"
+"    ~~~~~~~~~~ ^^\n"
+"*** print_Exception:\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<doctest...>\", dòng 10, trong <module>\n"
+"    thợ rừng()\n"
+"    ~~~~~~~~~~ ^^\n"
+"  Tệp \"<doctest...>\", dòng 4, trong Lumberjack\n"
+"    Bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~~ ^^\n"
+"IndexError: chỉ mục tuple nằm ngoài phạm vi\n"
+"*** print_exc:\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<doctest...>\", dòng 10, trong <module>\n"
+"    thợ rừng()\n"
+"    ~~~~~~~~~~ ^^\n"
+"  Tệp \"<doctest...>\", dòng 4, trong Lumberjack\n"
+"    Bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~~ ^^\n"
+"IndexError: chỉ mục tuple nằm ngoài phạm vi\n"
+"*** format_exc, dòng đầu tiên và dòng cuối cùng:\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"IndexError: chỉ mục tuple nằm ngoài phạm vi\n"
+"*** định dạng_ngoại lệ:\n"
+"['Traceback (cuộc gọi gần đây nhất):\\n',\n"
+" ' Tệp \"<doctest default[0]>\", dòng 10, trong <module>\\n Timberjack()\\n ~~~~~~~~~~^^\\n',\n"
+" ' Tệp \"<doctest default[0]>\", dòng 4, trong Timberjack\\n bright_side_of_life()\\n ~~~~~~~~~~~~~~~~~~~^^\\n',\n"
+" ' Tệp \"<doctest default[0]>\", dòng 7, trong bright_side_of_life\\n return tuple()[0]\\n ~~~~~~~^^\\n',\n"
+" 'IndexError: bộ chỉ mục nằm ngoài phạm vi\\n']\n"
+"*** giải nén_tb:\n"
+"[<Tệp FrameSummary <doctest...>, dòng 10 trong <module>>,\n"
+" <Tệp FrameSummary <doctest...>, dòng 4 trong Lumberjack>,\n"
+" <Tệp FrameSummary <doctest...>, dòng 7 trong bright_side_of_life>]\n"
+"*** định dạng_tb:\n"
+"[' Tệp \"<doctest default[0]>\", dòng 10, trong <module>\\n Timberjack()\\n ~~~~~~~~~~^^\\n',\n"
+" ' Tệp \"<doctest default[0]>\", dòng 4, trong Timberjack\\n bright_side_of_life()\\n ~~~~~~~~~~~~~~~~~~~^^\\n',\n"
+" ' Tệp \"<doctest default[0]>\", dòng 7, trong bright_side_of_life\\n return tuple()[0]\\n ~~~~~~~^^\\n']\n"
+"*** tb_lineno: 10"
+
+#: ../../library/traceback.rst:676
+#, fuzzy
+msgid ""
+"The following example shows the different ways to print and format the "
+"stack::"
+msgstr ""
+"Ví dụ sau đây cho thấy các cách khác nhau để in và định dạng ngăn xếp::"
+
+#: ../../library/traceback.rst:678
+#, fuzzy
+msgid ""
+">>> import traceback\n"
+">>> def another_function():\n"
+"...     lumberstack()\n"
+"...\n"
+">>> def lumberstack():\n"
+"...     traceback.print_stack()\n"
+"...     print(repr(traceback.extract_stack()))\n"
+"...     print(repr(traceback.format_stack()))\n"
+"...\n"
+">>> another_function()\n"
+"  File \"<doctest>\", line 10, in <module>\n"
+"    another_function()\n"
+"  File \"<doctest>\", line 3, in another_function\n"
+"    lumberstack()\n"
+"  File \"<doctest>\", line 6, in lumberstack\n"
+"    traceback.print_stack()\n"
+"[('<doctest>', 10, '<module>', 'another_function()'),\n"
+" ('<doctest>', 3, 'another_function', 'lumberstack()'),\n"
+" ('<doctest>', 7, 'lumberstack', 'print(repr(traceback.extract_stack()))')]\n"
+"['  File \"<doctest>\", line 10, in <module>\\n    another_function()\\n',\n"
+" '  File \"<doctest>\", line 3, in another_function\\n    lumberstack()\\n',\n"
+" '  File \"<doctest>\", line 8, in lumberstack\\n    print(repr(traceback.format_stack()))\\n']"
+msgstr ""
+">>> nhập truy nguyên\n"
+">>> định nghĩa another_function():\n"
+"... đống gỗ()\n"
+"...\n"
+">>> def gỗstack():\n"
+"... traceback.print_stack()\n"
+"... print(repr(traceback.extract_stack()))\n"
+"... print(repr(traceback.format_stack()))\n"
+"...\n"
+">>> another_function()\n"
+"  Tệp \"<doctest>\", dòng 10, trong <module>\n"
+"    other_function()\n"
+"  Tệp \"<doctest>\", dòng 3, trong another_function\n"
+"    đống gỗ()\n"
+"  Tệp \"<doctest>\", dòng 6, trong Lumberstack\n"
+"    traceback.print_stack()\n"
+"[('<doctest>', 10, '<module>', 'another_function()'),\n"
+" ('<doctest>', 3, 'another_function', 'lumberstack()'),\n"
+" ('<doctest>', 7, 'lumberstack', 'print(repr(traceback.extract_stack()))')]\n"
+"[' Tệp \"<doctest>\", dòng 10, trong <module>\\n another_function()\\n',\n"
+" ' Tệp \"<doctest>\", dòng 3, trong another_function\\n Timberstack()\\n',\n"
+" ' Tệp \"<doctest>\", dòng 8, trong Timberstack\\n print(repr(traceback.format_stack()))\\n']"
+
+#: ../../library/traceback.rst:702
+#, fuzzy
+msgid "This last example demonstrates the final few formatting functions:"
+msgstr "Ví dụ cuối cùng này minh họa một số hàm định dạng cuối cùng:"
+
+#: ../../library/traceback.rst:704
+#, fuzzy
+msgid ""
+">>> import traceback\n"
+">>> traceback.format_list([('spam.py', 3, '<module>', 'spam.eggs()'),\n"
+"...                        ('eggs.py', 42, 'eggs', 'return \"bacon\"')])\n"
+"['  File \"spam.py\", line 3, in <module>\\n    spam.eggs()\\n',\n"
+" '  File \"eggs.py\", line 42, in eggs\\n    return \"bacon\"\\n']\n"
+">>> an_error = IndexError('tuple index out of range')\n"
+">>> traceback.format_exception_only(an_error)\n"
+"['IndexError: tuple index out of range\\n']"
+msgstr ""
+">>> nhập truy nguyên\n"
+">>> traceback.format_list([('spam.py', 3, '<module>', 'spam.eggs()'),\n"
+"... ('eggs.py', 42, 'trứng', 'trả lại \"thịt xông khói\"')])\n"
+"[' Tệp \"spam.py\", dòng 3, trong <module>\\n spam.eggs()\\n',\n"
+" ' Tệp \"Eggs.py\", dòng 42, trong trứng\\n trả về \"thịt xông khói\"\\n']\n"
+">>> an_error = IndexError('chỉ mục bộ dữ liệu nằm ngoài phạm vi')\n"
+">>> traceback.format_Exception_only(an_error)\n"
+"['IndexError: chỉ mục bộ dữ liệu nằm ngoài phạm vi\\n']"
+
+#: ../../library/traceback.rst:718
+#, fuzzy
+msgid "Examples of Using :class:`TracebackException`"
+msgstr "Ví dụ về việc sử dụng :class:`TracebackException`"
+
+#: ../../library/traceback.rst:720
+#, fuzzy
+msgid "With the helper class, we have more options::"
+msgstr "Với lớp trợ giúp, chúng ta có nhiều lựa chọn hơn::"
+
+#: ../../library/traceback.rst:722
+#, fuzzy
+msgid ""
+">>> import sys\n"
+">>> from traceback import TracebackException\n"
+">>>\n"
+">>> def lumberjack():\n"
+"...     bright_side_of_life()\n"
+"...\n"
+">>> def bright_side_of_life():\n"
+"...     t = \"bright\", \"side\", \"of\", \"life\"\n"
+"...     return t[5]\n"
+"...\n"
+">>> try:\n"
+"...     lumberjack()\n"
+"... except IndexError as e:\n"
+"...     exc = e\n"
+"...\n"
+">>> try:\n"
+"...     try:\n"
+"...         lumberjack()\n"
+"...     except:\n"
+"...         1/0\n"
+"... except Exception as e:\n"
+"...     chained_exc = e\n"
+"...\n"
+">>> # limit works as with the module-level functions\n"
+">>> TracebackException.from_exception(exc, limit=-2).print()\n"
+"Traceback (most recent call last):\n"
+"  File \"<python-input-1>\", line 6, in lumberjack\n"
+"    bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~^^\n"
+"  File \"<python-input-1>\", line 10, in bright_side_of_life\n"
+"    return t[5]\n"
+"           ~^^^\n"
+"IndexError: tuple index out of range\n"
+"\n"
+">>> # capture_locals adds local variables in frames\n"
+">>> TracebackException.from_exception(exc, limit=-2, capture_locals=True).print()\n"
+"Traceback (most recent call last):\n"
+"  File \"<python-input-1>\", line 6, in lumberjack\n"
+"    bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~^^\n"
+"  File \"<python-input-1>\", line 10, in bright_side_of_life\n"
+"    return t[5]\n"
+"           ~^^^\n"
+"    t = (\"bright\", \"side\", \"of\", \"life\")\n"
+"IndexError: tuple index out of range\n"
+"\n"
+">>> # The *chain* kwarg to print() controls whether chained\n"
+">>> # exceptions are displayed\n"
+">>> TracebackException.from_exception(chained_exc).print()\n"
+"Traceback (most recent call last):\n"
+"  File \"<python-input-19>\", line 4, in <module>\n"
+"    lumberjack()\n"
+"    ~~~~~~~~~~^^\n"
+"  File \"<python-input-8>\", line 7, in lumberjack\n"
+"    bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~^^\n"
+"  File \"<python-input-8>\", line 11, in bright_side_of_life\n"
+"    return t[5]\n"
+"           ~^^^\n"
+"IndexError: tuple index out of range\n"
+"\n"
+"During handling of the above exception, another exception occurred:\n"
+"\n"
+"Traceback (most recent call last):\n"
+"  File \"<python-input-19>\", line 6, in <module>\n"
+"    1/0\n"
+"    ~^~\n"
+"ZeroDivisionError: division by zero\n"
+"\n"
+">>> TracebackException.from_exception(chained_exc).print(chain=False)\n"
+"Traceback (most recent call last):\n"
+"  File \"<python-input-19>\", line 6, in <module>\n"
+"    1/0\n"
+"    ~^~\n"
+"ZeroDivisionError: division by zero"
+msgstr ""
+">>> nhập hệ thống\n"
+">>> từ nhập truy nguyên TracebackException\n"
+">>>\n"
+">>> def thợ rừng():\n"
+"... bright_side_of_life()\n"
+"...\n"
+">>> def bright_side_of_life():\n"
+"... t = \"sáng\", \"bên\", \"của\", \"cuộc sống\"\n"
+"... trả lại t[5]\n"
+"...\n"
+">>> thử:\n"
+"... thợ rừng()\n"
+"... ngoại trừ IndexError như e:\n"
+"...exc = e\n"
+"...\n"
+">>> thử:\n"
+"... thử:\n"
+"... thợ rừng()\n"
+"... ngoại trừ:\n"
+"... 1/0\n"
+"... ngoại trừ Ngoại lệ là e:\n"
+"... chained_exc = e\n"
+"...\n"
+">>> # limit hoạt động giống như các chức năng cấp mô-đun\n"
+">>> TracebackException.from_Exception(exc, limit=-2).print()\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<python-input-1>\", dòng 6, trong thợ rừng\n"
+"    Bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~~ ^^\n"
+"  Tệp \"<python-input-1>\", dòng 10, trong bright_side_of_life\n"
+"    trả lại t[5]\n"
+"           ~^^^\n"
+"IndexError: chỉ mục tuple nằm ngoài phạm vi\n"
+"\n"
+">>> # capture_locals thêm các biến cục bộ vào khung\n"
+">>> TracebackException.from_Exception(exc, limit=-2, capture_locals=True).print()\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<python-input-1>\", dòng 6, trong thợ rừng\n"
+"    Bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~~ ^^\n"
+"  Tệp \"<python-input-1>\", dòng 10, trong bright_side_of_life\n"
+"    trả lại t[5]\n"
+"           ~^^^\n"
+"    t = (\"sáng\", \"bên\", \"của\", \"cuộc sống\")\n"
+"IndexError: chỉ mục tuple nằm ngoài phạm vi\n"
+"\n"
+">>> # The *chain* kwarg to print() kiểm soát xem có bị xích hay không\n"
+">>> # exceptions được hiển thị\n"
+">>> TracebackException.from_Exception(chained_exc).print()\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<python-input-19>\", dòng 4, trong <module>\n"
+"    thợ rừng()\n"
+"    ~~~~~~~~~~ ^^\n"
+"  Tệp \"<python-input-8>\", dòng 7, trong thợ rừng\n"
+"    Bright_side_of_life()\n"
+"    ~~~~~~~~~~~~~~~~~~~~ ^^\n"
+"  Tệp \"<python-input-8>\", dòng 11, trong bright_side_of_life\n"
+"    trả lại t[5]\n"
+"           ~^^^\n"
+"IndexError: chỉ mục tuple nằm ngoài phạm vi\n"
+"\n"
+"Trong quá trình xử lý ngoại lệ trên, một ngoại lệ khác đã xảy ra:\n"
+"\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<python-input-19>\", dòng 6, trong <module>\n"
+"    1/0\n"
+"    ~^~\n"
+"ZeroDivisionError: chia cho 0\n"
+"\n"
+">>> TracebackException.from_Exception(chained_exc).print(chain=False)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<python-input-19>\", dòng 6, trong <module>\n"
+"    1/0\n"
+"    ~^~\n"
+"ZeroDivisionError: chia cho 0"
+
+#: ../../library/traceback.rst:21
+#, fuzzy
+msgid "object"
+msgstr "vật thể"
+
+#: ../../library/traceback.rst:21
+#, fuzzy
+msgid "traceback"
+msgstr "truy nguyên"
+
+#: ../../library/traceback.rst:91
+#, fuzzy
+msgid "^ (caret)"
+msgstr "^ (dấu mũ)"
+
+#: ../../library/traceback.rst:91
+#, fuzzy
+msgid "marker"
+msgstr "điểm đánh dấu"

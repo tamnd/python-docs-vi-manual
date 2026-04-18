@@ -1,0 +1,479 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/stable.rst:7
+#, fuzzy
+msgid "C API Stability"
+msgstr "C API Tính ổn định"
+
+#: ../../c-api/stable.rst:9
+#, fuzzy
+msgid ""
+"Unless documented otherwise, Python's C API is covered by the Backwards "
+"Compatibility Policy, :pep:`387`. Most changes to it are source-compatible "
+"(typically by only adding new API). Changing existing API or removing API is"
+" only done after a deprecation period or to fix serious issues."
+msgstr ""
+"Trừ khi có tài liệu khác, C API của Python chịu sự điều chỉnh của Chính sách"
+" tương thích ngược, :pep:`387`. Hầu hết các thay đổi đối với nó đều tương "
+"thích với nguồn (thường chỉ bằng cách thêm API mới). Việc thay đổi API hiện "
+"có hoặc xóa API chỉ được thực hiện sau một thời gian không dùng nữa hoặc để "
+"khắc phục các sự cố nghiêm trọng."
+
+#: ../../c-api/stable.rst:15
+#, fuzzy
+msgid ""
+"CPython's Application Binary Interface (ABI) is forward- and backwards-"
+"compatible across a minor release (if these are compiled the same way; see "
+":ref:`stable-abi-platform` below). So, code compiled for Python 3.10.0 will "
+"work on 3.10.8 and vice versa, but will need to be compiled separately for "
+"3.9.x and 3.11.x."
+msgstr ""
+"Giao diện nhị phân ứng dụng của CPython (ABI) tương thích tiến và lùi trên "
+"một bản phát hành nhỏ (nếu chúng được biên dịch theo cùng một cách; xem "
+":ref:`stable-abi-platform` bên dưới). Vì vậy, mã được biên dịch cho Python "
+"3.10.0 sẽ hoạt động trên 3.10.8 và ngược lại, nhưng sẽ cần được biên dịch "
+"riêng cho 3.9.x và 3.11.x."
+
+#: ../../c-api/stable.rst:21
+#, fuzzy
+msgid "There are two tiers of C API with different stability expectations:"
+msgstr "Có hai cấp độ C API với các kỳ vọng về độ ổn định khác nhau:"
+
+#: ../../c-api/stable.rst:23
+#, fuzzy
+msgid ""
+":ref:`Unstable API <unstable-c-api>`, may change in minor versions without a"
+" deprecation period. It is marked by the ``PyUnstable`` prefix in names."
+msgstr ""
+":ref:`Unstable API <unstable-c-api>`, có thể thay đổi ở các phiên bản nhỏ mà"
+" không có thời gian ngừng sử dụng. Nó được đánh dấu bằng tiền tố "
+"``PyUnstable`` trong tên."
+
+#: ../../c-api/stable.rst:25
+#, fuzzy
+msgid ""
+":ref:`Limited API <limited-c-api>`, is compatible across several minor "
+"releases. When :c:macro:`Py_LIMITED_API` is defined, only this subset is "
+"exposed from ``Python.h``."
+msgstr ""
+":ref:`Limited API <limited-c-api>`, tương thích với một số phiên bản nhỏ. "
+"Khi :c:macro:`Py_LIMITED_API` được xác định, chỉ tập hợp con này được hiển "
+"thị từ ``Python.h``."
+
+#: ../../c-api/stable.rst:29
+#, fuzzy
+msgid "These are discussed in more detail below."
+msgstr "Những điều này sẽ được thảo luận chi tiết hơn dưới đây."
+
+#: ../../c-api/stable.rst:31
+#, fuzzy
+msgid ""
+"Names prefixed by an underscore, such as ``_Py_InternalState``, are private "
+"API that can change without notice even in patch releases. If you need to "
+"use this API, consider reaching out to `CPython developers "
+"<https://discuss.python.org/c/core-dev/c-api/30>`_ to discuss adding public "
+"API for your use case."
+msgstr ""
+"Các tên có tiền tố là dấu gạch dưới, chẳng hạn như ``_Py_InternalState``, là"
+" API riêng tư có thể thay đổi mà không cần thông báo ngay cả trong các bản "
+"phát hành bản vá. Nếu bạn cần sử dụng API này, hãy cân nhắc liên hệ với "
+"`CPython developers <https://discuss.python.org/c/core-dev/c-api/30>`_ để "
+"thảo luận về việc thêm API công khai cho trường hợp sử dụng của bạn."
+
+#: ../../c-api/stable.rst:40
+#, fuzzy
+msgid "Unstable C API"
+msgstr "C không ổn định API"
+
+#: ../../c-api/stable.rst:44
+#, fuzzy
+msgid ""
+"Any API named with the ``PyUnstable`` prefix exposes CPython implementation "
+"details, and may change in every minor release (e.g. from 3.9 to 3.10) "
+"without any deprecation warnings. However, it will not change in a bugfix "
+"release (e.g. from 3.10.0 to 3.10.1)."
+msgstr ""
+"Bất kỳ API nào được đặt tên bằng tiền tố ``PyUnstable`` đều hiển thị chi "
+"tiết triển khai CPython và có thể thay đổi trong mọi bản phát hành nhỏ (ví "
+"dụ: từ 3.9 đến 3.10) mà không có bất kỳ cảnh báo ngừng sử dụng nào. Tuy "
+"nhiên, nó sẽ không thay đổi trong bản phát hành sửa lỗi (ví dụ: từ 3.10.0 "
+"đến 3.10.1)."
+
+#: ../../c-api/stable.rst:49
+#, fuzzy
+msgid ""
+"It is generally intended for specialized, low-level tools like debuggers."
+msgstr ""
+"Nó thường dành cho các công cụ chuyên dụng, cấp thấp như trình gỡ lỗi."
+
+#: ../../c-api/stable.rst:51
+#, fuzzy
+msgid ""
+"Projects that use this API are expected to follow CPython development and "
+"spend extra effort adjusting to changes."
+msgstr ""
+"Các dự án sử dụng API này dự kiến ​​sẽ tuân theo sự phát triển của CPython "
+"và dành nhiều nỗ lực hơn để điều chỉnh các thay đổi."
+
+#: ../../c-api/stable.rst:57
+#, fuzzy
+msgid "Stable Application Binary Interface"
+msgstr "Giao diện nhị phân ứng dụng ổn định"
+
+#: ../../c-api/stable.rst:59
+#, fuzzy
+msgid ""
+"For simplicity, this document talks about *extensions*, but the Limited API "
+"and Stable ABI work the same way for all uses of the API – for example, "
+"embedding Python."
+msgstr ""
+"Để đơn giản, tài liệu này nói về *extensions*, nhưng API giới hạn và ABI ổn "
+"định hoạt động theo cách tương tự cho tất cả các mục đích sử dụng API – ví "
+"dụ: nhúng Python."
+
+#: ../../c-api/stable.rst:66
+#, fuzzy
+msgid "Limited C API"
+msgstr "Giới hạn C API"
+
+#: ../../c-api/stable.rst:68
+#, fuzzy
+msgid ""
+"Python 3.2 introduced the *Limited API*, a subset of Python's C API. "
+"Extensions that only use the Limited API can be compiled once and be loaded "
+"on multiple versions of Python. Contents of the Limited API are :ref:`listed"
+" below <limited-api-list>`."
+msgstr ""
+"Python 3.2 đã giới thiệu *Limited API*, một tập hợp con của C API của "
+"Python. Các tiện ích mở rộng chỉ sử dụng Limited API có thể được biên dịch "
+"một lần và tải trên nhiều phiên bản Python. Nội dung của API giới hạn là "
+":ref:`listed below <limited-api-list>`."
+
+#: ../../c-api/stable.rst:75
+#, fuzzy
+msgid ""
+"Define this macro before including ``Python.h`` to opt in to only use the "
+"Limited API, and to select the Limited API version."
+msgstr ""
+"Xác định macro này trước khi bao gồm ``Python.h`` để chọn tham gia chỉ sử "
+"dụng API giới hạn và chọn phiên bản API giới hạn."
+
+#: ../../c-api/stable.rst:78
+#, fuzzy
+msgid ""
+"Define ``Py_LIMITED_API`` to the value of :c:macro:`PY_VERSION_HEX` "
+"corresponding to the lowest Python version your extension supports. The "
+"extension will be ABI-compatible with all Python 3 releases from the "
+"specified one onward, and can use Limited API introduced up to that version."
+msgstr ""
+"Xác định ``Py_LIMITED_API`` với giá trị :c:macro:`PY_VERSION_HEX` tương ứng "
+"với phiên bản Python thấp nhất mà tiện ích mở rộng của bạn hỗ trợ. Tiện ích "
+"mở rộng sẽ tương thích với ABI với tất cả các bản phát hành Python 3 từ "
+"phiên bản được chỉ định trở đi và có thể sử dụng API giới hạn được giới "
+"thiệu cho phiên bản đó."
+
+#: ../../c-api/stable.rst:84
+#, fuzzy
+msgid ""
+"Rather than using the ``PY_VERSION_HEX`` macro directly, hardcode a minimum "
+"minor version (e.g. ``0x030A0000`` for Python 3.10) for stability when "
+"compiling with future Python versions."
+msgstr ""
+"Thay vì sử dụng trực tiếp macro ``PY_VERSION_HEX``, hãy mã hóa cứng một "
+"phiên bản nhỏ tối thiểu (ví dụ: ``0x030A0000`` cho Python 3.10) để ổn định "
+"khi biên dịch với các phiên bản Python trong tương lai."
+
+#: ../../c-api/stable.rst:88
+#, fuzzy
+msgid ""
+"You can also define ``Py_LIMITED_API`` to ``3``. This works the same as "
+"``0x03020000`` (Python 3.2, the version that introduced Limited API)."
+msgstr ""
+"Bạn cũng có thể định nghĩa ``Py_LIMITED_API`` thành ``3``. Điều này hoạt "
+"động tương tự như ``0x03020000`` (Python 3.2, phiên bản giới thiệu Limited "
+"API)."
+
+#: ../../c-api/stable.rst:95
+#, fuzzy
+msgid "Stable ABI"
+msgstr "ABI ổn định"
+
+#: ../../c-api/stable.rst:97
+#, fuzzy
+msgid ""
+"To enable this, Python provides a *Stable ABI*: a set of symbols that will "
+"remain ABI-compatible across Python 3.x versions."
+msgstr ""
+"Để kích hoạt tính năng này, Python cung cấp *Stable ABI*: một tập hợp các ký"
+" hiệu sẽ vẫn tương thích với ABI trên các phiên bản Python 3.x."
+
+#: ../../c-api/stable.rst:102
+#, fuzzy
+msgid ""
+"The Stable ABI prevents ABI issues, like linker errors due to missing "
+"symbols or data corruption due to changes in structure layouts or function "
+"signatures. However, other changes in Python can change the *behavior* of "
+"extensions. See Python's Backwards Compatibility Policy (:pep:`387`) for "
+"details."
+msgstr ""
+"ABI ổn định ngăn ngừa các sự cố ABI, như lỗi liên kết do thiếu ký hiệu hoặc "
+"hỏng dữ liệu do thay đổi bố cục cấu trúc hoặc chữ ký hàm. Tuy nhiên, những "
+"thay đổi khác trong Python có thể thay đổi *behavior* của tiện ích mở rộng. "
+"Xem Chính sách tương thích ngược của Python (:pep:`387`) để biết chi tiết."
+
+#: ../../c-api/stable.rst:108
+#, fuzzy
+msgid ""
+"The Stable ABI contains symbols exposed in the :ref:`Limited API <limited-c-"
+"api>`, but also other ones – for example, functions necessary to support "
+"older versions of the Limited API."
+msgstr ""
+"ABI ổn định chứa các ký hiệu hiển thị trong :ref:`Limited API <limited-c-"
+"api>`, nhưng cũng có các ký hiệu khác – ví dụ: các chức năng cần thiết để hỗ"
+" trợ các phiên bản cũ hơn của Limited API."
+
+#: ../../c-api/stable.rst:112
+#, fuzzy
+msgid ""
+"On Windows, extensions that use the Stable ABI should be linked against "
+"``python3.dll`` rather than a version-specific library such as "
+"``python39.dll``."
+msgstr ""
+"Trên Windows, các tiện ích mở rộng sử dụng ABI ổn định phải được liên kết "
+"với ``python3.dll`` thay vì thư viện dành riêng cho phiên bản như "
+"``python39.dll``."
+
+#: ../../c-api/stable.rst:116
+#, fuzzy
+msgid ""
+"On some platforms, Python will look for and load shared library files named "
+"with the ``abi3`` tag (e.g. ``mymodule.abi3.so``). It does not check if such"
+" extensions conform to a Stable ABI. The user (or their packaging tools) "
+"need to ensure that, for example, extensions built with the 3.10+ Limited "
+"API are not installed for lower versions of Python."
+msgstr ""
+"Trên một số nền tảng, Python sẽ tìm và tải các tệp thư viện dùng chung có "
+"tên bằng thẻ ``abi3`` (ví dụ: ``mymodule.abi3.so``). Nó không kiểm tra xem "
+"các tiện ích mở rộng như vậy có phù hợp với ABI ổn định hay không. Người "
+"dùng (hoặc công cụ đóng gói của họ) cần đảm bảo rằng, chẳng hạn như các tiện"
+" ích mở rộng được xây dựng bằng API 3.10+ Limited không được cài đặt cho các"
+" phiên bản Python thấp hơn."
+
+#: ../../c-api/stable.rst:123
+#, fuzzy
+msgid ""
+"All functions in the Stable ABI are present as functions in Python's shared "
+"library, not solely as macros. This makes them usable from languages that "
+"don't use the C preprocessor."
+msgstr ""
+"Tất cả các hàm trong ABI ổn định đều hiện diện dưới dạng các hàm trong thư "
+"viện dùng chung của Python, không chỉ dưới dạng macro. Điều này làm cho "
+"chúng có thể sử dụng được từ các ngôn ngữ không sử dụng bộ tiền xử lý C."
+
+#: ../../c-api/stable.rst:129
+#, fuzzy
+msgid "Limited API Scope and Performance"
+msgstr "Phạm vi và hiệu suất API hạn chế"
+
+#: ../../c-api/stable.rst:131
+#, fuzzy
+msgid ""
+"The goal for the Limited API is to allow everything that is possible with "
+"the full C API, but possibly with a performance penalty."
+msgstr ""
+"Mục tiêu của Limited API là cho phép mọi thứ có thể với C API đầy đủ, nhưng "
+"có thể kèm theo một hình phạt về hiệu suất."
+
+#: ../../c-api/stable.rst:134
+#, fuzzy
+msgid ""
+"For example, while :c:func:`PyList_GetItem` is available, its “unsafe” macro"
+" variant :c:func:`PyList_GET_ITEM` is not. The macro can be faster because "
+"it can rely on version-specific implementation details of the list object."
+msgstr ""
+"Ví dụ: mặc dù :c:func:`PyList_GetItem` có sẵn nhưng biến thể macro “không an"
+" toàn” :c:func:`PyList_GET_ITEM` thì không. Macro có thể nhanh hơn vì nó có "
+"thể dựa vào chi tiết triển khai theo phiên bản cụ thể của đối tượng danh "
+"sách."
+
+#: ../../c-api/stable.rst:139
+#, fuzzy
+msgid ""
+"Without ``Py_LIMITED_API`` defined, some C API functions are inlined or "
+"replaced by macros. Defining ``Py_LIMITED_API`` disables this inlining, "
+"allowing stability as Python's data structures are improved, but possibly "
+"reducing performance."
+msgstr ""
+"Nếu không xác định ``Py_LIMITED_API``, một số hàm C API sẽ được nội tuyến "
+"hoặc thay thế bằng macro. Việc xác định ``Py_LIMITED_API`` sẽ vô hiệu hóa "
+"nội tuyến này, cho phép tính ổn định khi cấu trúc dữ liệu của Python được "
+"cải thiện nhưng có thể làm giảm hiệu suất."
+
+#: ../../c-api/stable.rst:144
+#, fuzzy
+msgid ""
+"By leaving out the ``Py_LIMITED_API`` definition, it is possible to compile "
+"a Limited API extension with a version-specific ABI. This can improve "
+"performance for that Python version, but will limit compatibility. Compiling"
+" with ``Py_LIMITED_API`` will then yield an extension that can be "
+"distributed where a version-specific one is not available – for example, for"
+" prereleases of an upcoming Python version."
+msgstr ""
+"Bằng cách loại bỏ định nghĩa ``Py_LIMITED_API``, có thể biên dịch tiện ích "
+"mở rộng API giới hạn với ABI dành riêng cho phiên bản. Điều này có thể cải "
+"thiện hiệu suất cho phiên bản Python đó nhưng sẽ hạn chế khả năng tương "
+"thích. Việc biên dịch bằng ``Py_LIMITED_API`` sau đó sẽ mang lại một tiện "
+"ích mở rộng có thể được phân phối khi không có tiện ích mở rộng dành riêng "
+"cho phiên bản - ví dụ: đối với các bản phát hành trước của phiên bản Python "
+"sắp tới."
+
+#: ../../c-api/stable.rst:153
+#, fuzzy
+msgid "Limited API Caveats"
+msgstr "Giới hạn API Hãy cẩn thận"
+
+#: ../../c-api/stable.rst:155
+#, fuzzy
+msgid ""
+"Note that compiling with ``Py_LIMITED_API`` is *not* a complete guarantee "
+"that code conforms to the :ref:`Limited API <limited-c-api>` or the "
+":ref:`Stable ABI <stable-abi>`. ``Py_LIMITED_API`` only covers definitions, "
+"but an API also includes other issues, such as expected semantics."
+msgstr ""
+"Lưu ý rằng việc biên dịch bằng ``Py_LIMITED_API`` là *not* đảm bảo hoàn toàn"
+" rằng mã tuân theo :ref:`Limited API <limited-c-api>` hoặc :ref:`Stable ABI "
+"<stable-abi>`. ``Py_LIMITED_API`` chỉ đề cập đến các định nghĩa, nhưng API "
+"cũng bao gồm các vấn đề khác, chẳng hạn như ngữ nghĩa dự kiến."
+
+#: ../../c-api/stable.rst:160
+#, fuzzy
+msgid ""
+"One issue that ``Py_LIMITED_API`` does not guard against is calling a "
+"function with arguments that are invalid in a lower Python version. For "
+"example, consider a function that starts accepting ``NULL`` for an argument."
+" In Python 3.9, ``NULL`` now selects a default behavior, but in Python 3.8, "
+"the argument will be used directly, causing a ``NULL`` dereference and "
+"crash. A similar argument works for fields of structs."
+msgstr ""
+"Một vấn đề mà ``Py_LIMITED_API`` không đề phòng là gọi hàm với các đối số "
+"không hợp lệ ở phiên bản Python thấp hơn. Ví dụ: hãy xem xét một hàm bắt đầu"
+" chấp nhận ``NULL`` cho một đối số. Trong Python 3.9, ``NULL`` hiện chọn một"
+" hành vi mặc định, nhưng trong Python 3.8, đối số sẽ được sử dụng trực tiếp,"
+" gây ra sự cố và vô hiệu hóa ``NULL``. Một đối số tương tự hoạt động cho các"
+" trường cấu trúc."
+
+#: ../../c-api/stable.rst:167
+#, fuzzy
+msgid ""
+"Another issue is that some struct fields are currently not hidden when "
+"``Py_LIMITED_API`` is defined, even though they're part of the Limited API."
+msgstr ""
+"Một vấn đề khác là một số trường cấu trúc hiện không bị ẩn khi "
+"``Py_LIMITED_API`` được xác định, mặc dù chúng là một phần của API Limited."
+
+#: ../../c-api/stable.rst:170
+#, fuzzy
+msgid ""
+"For these reasons, we recommend testing an extension with *all* minor Python"
+" versions it supports, and preferably to build with the *lowest* such "
+"version."
+msgstr ""
+"Vì những lý do này, chúng tôi khuyên bạn nên thử nghiệm tiện ích mở rộng với"
+" các phiên bản Python nhỏ *all* mà nó hỗ trợ và tốt nhất là xây dựng bằng "
+"phiên bản *lowest* đó."
+
+#: ../../c-api/stable.rst:173
+#, fuzzy
+msgid ""
+"We also recommend reviewing documentation of all used API to check if it is "
+"explicitly part of the Limited API. Even with ``Py_LIMITED_API`` defined, a "
+"few private declarations are exposed for technical reasons (or even "
+"unintentionally, as bugs)."
+msgstr ""
+"Chúng tôi cũng khuyên bạn nên xem lại tài liệu về tất cả API đã sử dụng để "
+"kiểm tra xem liệu nó có phải là một phần rõ ràng của API giới hạn hay không."
+" Ngay cả khi xác định ``Py_LIMITED_API``, một số khai báo riêng tư vẫn bị lộ"
+" vì lý do kỹ thuật (hoặc thậm chí vô tình là lỗi)."
+
+#: ../../c-api/stable.rst:178
+#, fuzzy
+msgid ""
+"Also note that the Limited API is not necessarily stable: compiling with "
+"``Py_LIMITED_API`` with Python 3.8 means that the extension will run with "
+"Python 3.12, but it will not necessarily *compile* with Python 3.12. In "
+"particular, parts of the Limited API may be deprecated and removed, provided"
+" that the Stable ABI stays stable."
+msgstr ""
+"Cũng lưu ý rằng API giới hạn không nhất thiết phải ổn định: biên dịch bằng "
+"``Py_LIMITED_API`` bằng Python 3.8 có nghĩa là tiện ích mở rộng sẽ chạy với "
+"Python 3.12, nhưng không nhất thiết phải là *compile* với Python 3.12. Đặc "
+"biệt, các bộ phận của API Limited có thể không được dùng nữa và bị xóa, miễn"
+" là ABI ổn định vẫn ổn định."
+
+#: ../../c-api/stable.rst:188
+#, fuzzy
+msgid "Platform Considerations"
+msgstr "Cân nhắc về nền tảng"
+
+#: ../../c-api/stable.rst:190
+#, fuzzy
+msgid ""
+"ABI stability depends not only on Python, but also on the compiler used, "
+"lower-level libraries and compiler options. For the purposes of the "
+":ref:`Stable ABI <stable-abi>`, these details define a “platform”. They "
+"usually depend on the OS type and processor architecture"
+msgstr ""
+"Độ ổn định của ABI không chỉ phụ thuộc vào Python mà còn phụ thuộc vào trình"
+" biên dịch được sử dụng, các thư viện cấp thấp hơn và các tùy chọn trình "
+"biên dịch. Vì mục đích của :ref:`Stable ABI <stable-abi>`, những chi tiết "
+"này xác định một “nền tảng”. Chúng thường phụ thuộc vào loại hệ điều hành và"
+" kiến ​​trúc bộ xử lý"
+
+#: ../../c-api/stable.rst:195
+#, fuzzy
+msgid ""
+"It is the responsibility of each particular distributor of Python to ensure "
+"that all Python versions on a particular platform are built in a way that "
+"does not break the Stable ABI. This is the case with Windows and macOS "
+"releases from ``python.org`` and many third-party distributors."
+msgstr ""
+"Mỗi nhà phân phối Python cụ thể có trách nhiệm đảm bảo rằng tất cả các phiên"
+" bản Python trên một nền tảng cụ thể đều được xây dựng theo cách không phá "
+"vỡ ABI ổn định. Đây là trường hợp xảy ra với các bản phát hành Windows và "
+"macOS từ ``python.org`` và nhiều nhà phân phối bên thứ ba."
+
+#: ../../c-api/stable.rst:205
+#, fuzzy
+msgid "Contents of Limited API"
+msgstr "Nội dung của Limited API"
+
+#: ../../c-api/stable.rst:208
+#, fuzzy
+msgid ""
+"Currently, the :ref:`Limited API <limited-c-api>` includes the following "
+"items:"
+msgstr "Hiện tại, :ref:`Limited API <limited-c-api>` bao gồm các mục sau:"
+
+#: ../../c-api/stable.rst:42
+#, fuzzy
+msgid "PyUnstable"
+msgstr "PyKhông ổn định"

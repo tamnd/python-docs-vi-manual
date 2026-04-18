@@ -1,0 +1,914 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/asyncio-sync.rst:7
+#, fuzzy
+msgid "Synchronization Primitives"
+msgstr "Nguyên thủy đồng bộ hóa"
+
+#: ../../library/asyncio-sync.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/asyncio/locks.py`"
+msgstr "**Source code:** :source:`Lib/asyncio/locks.py`"
+
+#: ../../library/asyncio-sync.rst:13
+#, fuzzy
+msgid ""
+"asyncio synchronization primitives are designed to be similar to those of "
+"the :mod:`threading` module with two important caveats:"
+msgstr ""
+"Các nguyên hàm đồng bộ hóa asyncio được thiết kế tương tự như mô-đun "
+":mod:`threading` với hai lưu ý quan trọng:"
+
+#: ../../library/asyncio-sync.rst:16
+#, fuzzy
+msgid ""
+"asyncio primitives are not thread-safe, therefore they should not be used "
+"for OS thread synchronization (use :mod:`threading` for that);"
+msgstr ""
+"các nguyên hàm asyncio không an toàn cho luồng, do đó chúng không nên được "
+"sử dụng để đồng bộ hóa luồng của hệ điều hành (sử dụng :mod:`threading` cho "
+"việc đó);"
+
+#: ../../library/asyncio-sync.rst:20
+#, fuzzy
+msgid ""
+"methods of these synchronization primitives do not accept the *timeout* "
+"argument; use the :func:`asyncio.wait_for` function to perform operations "
+"with timeouts."
+msgstr ""
+"các phương thức đồng bộ hóa nguyên thủy này không chấp nhận đối số "
+"*timeout*; sử dụng chức năng :func:`asyncio.wait_for` để thực hiện các thao "
+"tác khi hết thời gian chờ."
+
+#: ../../library/asyncio-sync.rst:24
+#, fuzzy
+msgid "asyncio has the following basic synchronization primitives:"
+msgstr "asyncio có các nguyên tắc đồng bộ hóa cơ bản sau:"
+
+#: ../../library/asyncio-sync.rst:26
+#, fuzzy
+msgid ":class:`Lock`"
+msgstr ":class:`Lock`"
+
+#: ../../library/asyncio-sync.rst:27
+#, fuzzy
+msgid ":class:`Event`"
+msgstr ":class:`Event`"
+
+#: ../../library/asyncio-sync.rst:28
+#, fuzzy
+msgid ":class:`Condition`"
+msgstr ":class:`Condition`"
+
+#: ../../library/asyncio-sync.rst:29
+#, fuzzy
+msgid ":class:`Semaphore`"
+msgstr ":class:`Semaphore`"
+
+#: ../../library/asyncio-sync.rst:30
+#, fuzzy
+msgid ":class:`BoundedSemaphore`"
+msgstr ":class:`BoundedSemaphore`"
+
+#: ../../library/asyncio-sync.rst:31
+#, fuzzy
+msgid ":class:`Barrier`"
+msgstr ":class:`Barrier`"
+
+#: ../../library/asyncio-sync.rst:38
+#, fuzzy
+msgid "Lock"
+msgstr "Khóa"
+
+#: ../../library/asyncio-sync.rst:42
+#, fuzzy
+msgid "Implements a mutex lock for asyncio tasks.  Not thread-safe."
+msgstr ""
+"Triển khai khóa mutex cho các tác vụ không đồng bộ.  Không an toàn chủ đề."
+
+#: ../../library/asyncio-sync.rst:44
+#, fuzzy
+msgid ""
+"An asyncio lock can be used to guarantee exclusive access to a shared "
+"resource."
+msgstr ""
+"Khóa asyncio có thể được sử dụng để đảm bảo quyền truy cập độc quyền vào tài"
+" nguyên được chia sẻ."
+
+#: ../../library/asyncio-sync.rst:47
+#, fuzzy
+msgid ""
+"The preferred way to use a Lock is an :keyword:`async with` statement::"
+msgstr "Cách ưa thích để sử dụng Khóa là câu lệnh :keyword:`async with` ::"
+
+#: ../../library/asyncio-sync.rst:50
+#, fuzzy
+msgid ""
+"lock = asyncio.Lock()\n"
+"\n"
+"# ... later\n"
+"async with lock:\n"
+"    # access shared state"
+msgstr ""
+"khóa = asyncio.Lock()\n"
+"\n"
+"# ... sau\n"
+"không đồng bộ với khóa:\n"
+"    trạng thái chia sẻ # access"
+
+#: ../../library/asyncio-sync.rst:56 ../../library/asyncio-sync.rst:201
+#: ../../library/asyncio-sync.rst:309
+#, fuzzy
+msgid "which is equivalent to::"
+msgstr "tương đương với::"
+
+#: ../../library/asyncio-sync.rst:58
+#, fuzzy
+msgid ""
+"lock = asyncio.Lock()\n"
+"\n"
+"# ... later\n"
+"await lock.acquire()\n"
+"try:\n"
+"    # access shared state\n"
+"finally:\n"
+"    lock.release()"
+msgstr ""
+"khóa = asyncio.Lock()\n"
+"\n"
+"# ... sau\n"
+"đang chờ khóa.acquire()\n"
+"thử:\n"
+"    trạng thái chia sẻ # access\n"
+"cuối cùng:\n"
+"    lock.release()"
+
+#: ../../library/asyncio-sync.rst:67 ../../library/asyncio-sync.rst:113
+#: ../../library/asyncio-sync.rst:189 ../../library/asyncio-sync.rst:297
+#: ../../library/asyncio-sync.rst:353
+#, fuzzy
+msgid "Removed the *loop* parameter."
+msgstr "Đã xóa tham số *loop*."
+
+#: ../../library/asyncio-sync.rst:73
+#, fuzzy
+msgid "Acquire the lock."
+msgstr "Lấy ổ khóa."
+
+#: ../../library/asyncio-sync.rst:75
+#, fuzzy
+msgid ""
+"This method waits until the lock is *unlocked*, sets it to *locked* and "
+"returns ``True``."
+msgstr ""
+"Phương thức này đợi cho đến khi khóa là *unlocked*, đặt thành *locked* và "
+"trả về ``True``."
+
+#: ../../library/asyncio-sync.rst:78
+#, fuzzy
+msgid ""
+"When more than one coroutine is blocked in :meth:`acquire` waiting for the "
+"lock to be unlocked, only one coroutine eventually proceeds."
+msgstr ""
+"Khi có nhiều hơn một coroutine bị chặn trong :meth:`acquire` đang chờ khóa "
+"được mở khóa thì cuối cùng chỉ có một coroutine tiếp tục."
+
+#: ../../library/asyncio-sync.rst:82
+#, fuzzy
+msgid ""
+"Acquiring a lock is *fair*: the coroutine that proceeds will be the first "
+"coroutine that started waiting on the lock."
+msgstr ""
+"Việc nhận được khóa là *fair*: coroutine tiến hành sẽ là coroutine đầu tiên "
+"bắt đầu chờ trên khóa."
+
+#: ../../library/asyncio-sync.rst:87
+#, fuzzy
+msgid "Release the lock."
+msgstr "Mở khóa."
+
+#: ../../library/asyncio-sync.rst:89
+#, fuzzy
+msgid "When the lock is *locked*, reset it to *unlocked* and return."
+msgstr "Khi khóa là *locked* thì reset về *unlocked* rồi quay lại."
+
+#: ../../library/asyncio-sync.rst:91
+#, fuzzy
+msgid "If the lock is *unlocked*, a :exc:`RuntimeError` is raised."
+msgstr "Nếu khóa là *unlocked*, :exc:`RuntimeError` sẽ được nâng lên."
+
+#: ../../library/asyncio-sync.rst:95
+#, fuzzy
+msgid "Return ``True`` if the lock is *locked*."
+msgstr "Trả về ``True`` nếu khóa là *locked*."
+
+#: ../../library/asyncio-sync.rst:99
+#, fuzzy
+msgid "Event"
+msgstr "Sự kiện"
+
+#: ../../library/asyncio-sync.rst:103
+#, fuzzy
+msgid "An event object.  Not thread-safe."
+msgstr "Một đối tượng sự kiện  Không an toàn chủ đề."
+
+#: ../../library/asyncio-sync.rst:105
+#, fuzzy
+msgid ""
+"An asyncio event can be used to notify multiple asyncio tasks that some "
+"event has happened."
+msgstr ""
+"Một sự kiện asyncio có thể được sử dụng để thông báo cho nhiều tác vụ "
+"asyncio rằng một số sự kiện đã xảy ra."
+
+#: ../../library/asyncio-sync.rst:108
+#, fuzzy
+msgid ""
+"An Event object manages an internal flag that can be set to *true* with the "
+":meth:`~Event.set` method and reset to *false* with the :meth:`clear` "
+"method.  The :meth:`~Event.wait` method blocks until the flag is set to "
+"*true*.  The flag is set to *false* initially."
+msgstr ""
+"Một đối tượng Sự kiện quản lý một cờ nội bộ có thể được đặt thành *true* "
+"bằng phương thức :meth:`~Event.set` và đặt lại thành *false* bằng phương "
+"thức :meth:`clear`.  Phương thức :meth:`~Event.wait` chặn cho đến khi cờ "
+"được đặt thành *true*.  Cờ ban đầu được đặt thành *false*."
+
+#: ../../library/asyncio-sync.rst:118 ../../library/asyncio-sync.rst:377
+#, fuzzy
+msgid "Example::"
+msgstr "Ví dụ::"
+
+#: ../../library/asyncio-sync.rst:120
+#, fuzzy
+msgid ""
+"async def waiter(event):\n"
+"    print('waiting for it ...')\n"
+"    await event.wait()\n"
+"    print('... got it!')\n"
+"\n"
+"async def main():\n"
+"    # Create an Event object.\n"
+"    event = asyncio.Event()\n"
+"\n"
+"    # Spawn a Task to wait until 'event' is set.\n"
+"    waiter_task = asyncio.create_task(waiter(event))\n"
+"\n"
+"    # Sleep for 1 second and set the event.\n"
+"    await asyncio.sleep(1)\n"
+"    event.set()\n"
+"\n"
+"    # Wait until the waiter task is finished.\n"
+"    await waiter_task\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"người phục vụ không đồng bộ (sự kiện):\n"
+"    print('đang chờ nó ...')\n"
+"    đang chờ sự kiện.wait()\n"
+"    print('... hiểu rồi!')\n"
+"\n"
+"async def main():\n"
+"    # Create một đối tượng Sự kiện.\n"
+"    sự kiện = asyncio.Event()\n"
+"\n"
+"    # Spawn một Nhiệm vụ để đợi cho đến khi 'sự kiện' được đặt.\n"
+"    bồi bàn_task = asyncio.create_task(người phục vụ (sự kiện))\n"
+"\n"
+"    # Sleep trong 1 giây và thiết lập sự kiện.\n"
+"    đang chờ asyncio.sleep(1)\n"
+"    sự kiện.set()\n"
+"\n"
+"    # Wait cho đến khi hoàn thành nhiệm vụ bồi bàn.\n"
+"    chờ đợi bồi bàn_task\n"
+"\n"
+"asyncio.run(chính())"
+
+#: ../../library/asyncio-sync.rst:144
+#, fuzzy
+msgid "Wait until the event is set."
+msgstr "Đợi cho đến khi sự kiện được thiết lập."
+
+#: ../../library/asyncio-sync.rst:146
+#, fuzzy
+msgid ""
+"If the event is set, return ``True`` immediately. Otherwise block until "
+"another task calls :meth:`~Event.set`."
+msgstr ""
+"Nếu sự kiện được đặt, hãy trả lại ``True`` ngay lập tức. Nếu không thì chặn "
+"cho đến khi tác vụ khác gọi :meth:`~Event.set`."
+
+#: ../../library/asyncio-sync.rst:151
+#, fuzzy
+msgid "Set the event."
+msgstr "Đặt sự kiện."
+
+#: ../../library/asyncio-sync.rst:153
+#, fuzzy
+msgid "All tasks waiting for event to be set will be immediately awakened."
+msgstr ""
+"Tất cả các nhiệm vụ đang chờ sự kiện được thiết lập sẽ được đánh thức ngay "
+"lập tức."
+
+#: ../../library/asyncio-sync.rst:158
+#, fuzzy
+msgid "Clear (unset) the event."
+msgstr "Xóa (bỏ đặt) sự kiện."
+
+#: ../../library/asyncio-sync.rst:160
+#, fuzzy
+msgid ""
+"Subsequent tasks awaiting on :meth:`~Event.wait` will now block until the "
+":meth:`~Event.set` method is called again."
+msgstr ""
+"Các tác vụ tiếp theo đang chờ trên :meth:`~Event.wait` giờ đây sẽ bị chặn "
+"cho đến khi phương thức :meth:`~Event.set` được gọi lại."
+
+#: ../../library/asyncio-sync.rst:165
+#, fuzzy
+msgid "Return ``True`` if the event is set."
+msgstr "Trả về ``True`` nếu sự kiện được đặt."
+
+#: ../../library/asyncio-sync.rst:169
+#, fuzzy
+msgid "Condition"
+msgstr "tình trạng"
+
+#: ../../library/asyncio-sync.rst:173
+#, fuzzy
+msgid "A Condition object.  Not thread-safe."
+msgstr "Một đối tượng Điều kiện.  Không an toàn chủ đề."
+
+#: ../../library/asyncio-sync.rst:175
+#, fuzzy
+msgid ""
+"An asyncio condition primitive can be used by a task to wait for some event "
+"to happen and then get exclusive access to a shared resource."
+msgstr ""
+"Một tác vụ có thể sử dụng điều kiện asyncio nguyên thủy để chờ một số sự "
+"kiện xảy ra và sau đó có quyền truy cập độc quyền vào tài nguyên được chia "
+"sẻ."
+
+#: ../../library/asyncio-sync.rst:179
+#, fuzzy
+msgid ""
+"In essence, a Condition object combines the functionality of an "
+":class:`Event` and a :class:`Lock`.  It is possible to have multiple "
+"Condition objects share one Lock, which allows coordinating exclusive access"
+" to a shared resource between different tasks interested in particular "
+"states of that shared resource."
+msgstr ""
+"Về bản chất, đối tượng Điều kiện kết hợp chức năng của :class:`Event` và "
+":class:`Lock`.  Có thể có nhiều đối tượng Điều kiện chia sẻ một Khóa, điều "
+"này cho phép phối hợp quyền truy cập độc quyền vào tài nguyên được chia sẻ "
+"giữa các tác vụ khác nhau quan tâm đến trạng thái cụ thể của tài nguyên được"
+" chia sẻ đó."
+
+#: ../../library/asyncio-sync.rst:185
+#, fuzzy
+msgid ""
+"The optional *lock* argument must be a :class:`Lock` object or ``None``.  In"
+" the latter case a new Lock object is created automatically."
+msgstr ""
+"Đối số *lock* tùy chọn phải là đối tượng :class:`Lock` hoặc ``None``.  Trong"
+" trường hợp sau, một đối tượng Lock mới sẽ được tạo tự động."
+
+#: ../../library/asyncio-sync.rst:192
+#, fuzzy
+msgid ""
+"The preferred way to use a Condition is an :keyword:`async with` statement::"
+msgstr ""
+"Cách ưa thích để sử dụng Điều kiện là câu lệnh :keyword:`async with` ::"
+
+#: ../../library/asyncio-sync.rst:195
+#, fuzzy
+msgid ""
+"cond = asyncio.Condition()\n"
+"\n"
+"# ... later\n"
+"async with cond:\n"
+"    await cond.wait()"
+msgstr ""
+"cond = asyncio.Condition()\n"
+"\n"
+"# ... sau\n"
+"không đồng bộ với cond:\n"
+"    đang chờ cond.wait()"
+
+#: ../../library/asyncio-sync.rst:203
+#, fuzzy
+msgid ""
+"cond = asyncio.Condition()\n"
+"\n"
+"# ... later\n"
+"await cond.acquire()\n"
+"try:\n"
+"    await cond.wait()\n"
+"finally:\n"
+"    cond.release()"
+msgstr ""
+"cond = asyncio.Condition()\n"
+"\n"
+"# ... sau\n"
+"đang chờ cond.acquire()\n"
+"thử:\n"
+"    đang chờ cond.wait()\n"
+"cuối cùng:\n"
+"    cond.release()"
+
+#: ../../library/asyncio-sync.rst:215
+#, fuzzy
+msgid "Acquire the underlying lock."
+msgstr "Có được khóa cơ bản."
+
+#: ../../library/asyncio-sync.rst:217
+#, fuzzy
+msgid ""
+"This method waits until the underlying lock is *unlocked*, sets it to "
+"*locked* and returns ``True``."
+msgstr ""
+"Phương thức này đợi cho đến khi khóa cơ bản là *unlocked*, đặt nó thành "
+"*locked* và trả về ``True``."
+
+#: ../../library/asyncio-sync.rst:222
+#, fuzzy
+msgid ""
+"Wake up *n* tasks (1 by default) waiting on this condition.  If fewer than "
+"*n* tasks are waiting they are all awakened."
+msgstr ""
+"Đánh thức các tác vụ *n* (1 theo mặc định) đang chờ điều kiện này.  Nếu có "
+"ít hơn nhiệm vụ *n* đang chờ thì tất cả chúng đều được đánh thức."
+
+#: ../../library/asyncio-sync.rst:225 ../../library/asyncio-sync.rst:240
+#, fuzzy
+msgid ""
+"The lock must be acquired before this method is called and released shortly "
+"after.  If called with an *unlocked* lock a :exc:`RuntimeError` error is "
+"raised."
+msgstr ""
+"Khóa phải được lấy trước khi phương thức này được gọi và giải phóng ngay sau"
+" đó.  Nếu được gọi bằng khóa *unlocked*, lỗi :exc:`RuntimeError` sẽ xuất "
+"hiện."
+
+#: ../../library/asyncio-sync.rst:231
+#, fuzzy
+msgid "Return ``True`` if the underlying lock is acquired."
+msgstr "Trả về ``True`` nếu có được khóa cơ bản."
+
+#: ../../library/asyncio-sync.rst:235
+#, fuzzy
+msgid "Wake up all tasks waiting on this condition."
+msgstr "Đánh thức tất cả các nhiệm vụ đang chờ với điều kiện này."
+
+#: ../../library/asyncio-sync.rst:237
+#, fuzzy
+msgid "This method acts like :meth:`notify`, but wakes up all waiting tasks."
+msgstr ""
+"Phương pháp này hoạt động giống như :meth:`notify`, nhưng đánh thức tất cả "
+"các tác vụ đang chờ."
+
+#: ../../library/asyncio-sync.rst:246
+#, fuzzy
+msgid "Release the underlying lock."
+msgstr "Nhả khóa bên dưới."
+
+#: ../../library/asyncio-sync.rst:248
+#, fuzzy
+msgid "When invoked on an unlocked lock, a :exc:`RuntimeError` is raised."
+msgstr ""
+"Khi được gọi trên ổ khóa đã mở khóa, :exc:`RuntimeError` sẽ xuất hiện."
+
+#: ../../library/asyncio-sync.rst:254
+#, fuzzy
+msgid "Wait until notified."
+msgstr "Chờ cho đến khi được thông báo."
+
+#: ../../library/asyncio-sync.rst:256
+#, fuzzy
+msgid ""
+"If the calling task has not acquired the lock when this method is called, a "
+":exc:`RuntimeError` is raised."
+msgstr ""
+"Nếu tác vụ gọi không nhận được khóa khi phương thức này được gọi, thì "
+":exc:`RuntimeError` sẽ được đưa ra."
+
+#: ../../library/asyncio-sync.rst:259
+#, fuzzy
+msgid ""
+"This method releases the underlying lock, and then blocks until it is "
+"awakened by a :meth:`notify` or :meth:`notify_all` call. Once awakened, the "
+"Condition re-acquires its lock and this method returns ``True``."
+msgstr ""
+"Phương thức này giải phóng khóa cơ bản, sau đó chặn cho đến khi nó được đánh"
+" thức bởi lệnh gọi :meth:`notify` hoặc :meth:`notify_all`. Sau khi được đánh"
+" thức, Điều kiện lấy lại khóa của nó và phương thức này trả về ``True``."
+
+#: ../../library/asyncio-sync.rst:264
+#, fuzzy
+msgid ""
+"Note that a task *may* return from this call spuriously, which is why the "
+"caller should always re-check the state and be prepared to "
+":meth:`~Condition.wait` again. For this reason, you may prefer to use "
+":meth:`~Condition.wait_for` instead."
+msgstr ""
+"Lưu ý rằng tác vụ *may* quay trở lại từ cuộc gọi này một cách giả mạo, đó là"
+" lý do tại sao người gọi phải luôn kiểm tra lại trạng thái và chuẩn bị thực "
+"hiện lại :meth:`~Condition.wait`. Vì lý do này, bạn có thể thích sử dụng "
+":meth:`~Condition.wait_for` hơn."
+
+#: ../../library/asyncio-sync.rst:272
+#, fuzzy
+msgid "Wait until a predicate becomes *true*."
+msgstr "Đợi cho đến khi vị từ trở thành *true*."
+
+#: ../../library/asyncio-sync.rst:274
+#, fuzzy
+msgid ""
+"The predicate must be a callable which result will be interpreted as a "
+"boolean value.  The method will repeatedly :meth:`~Condition.wait` until the"
+" predicate evaluates to *true*. The final value is the return value."
+msgstr ""
+"Vị từ phải là một giá trị có thể gọi được và kết quả sẽ được hiểu là giá trị"
+" boolean.  Phương thức này sẽ lặp lại :meth:`~Condition.wait` cho đến khi vị"
+" từ có giá trị là *true*. Giá trị cuối cùng là giá trị trả về."
+
+#: ../../library/asyncio-sync.rst:281
+#, fuzzy
+msgid "Semaphore"
+msgstr "Semaphore"
+
+#: ../../library/asyncio-sync.rst:285
+#, fuzzy
+msgid "A Semaphore object.  Not thread-safe."
+msgstr "Một đối tượng Semaphore.  Không an toàn chủ đề."
+
+#: ../../library/asyncio-sync.rst:287
+#, fuzzy
+msgid ""
+"A semaphore manages an internal counter which is decremented by each "
+":meth:`acquire` call and incremented by each :meth:`release` call. The "
+"counter can never go below zero; when :meth:`acquire` finds that it is zero,"
+" it blocks, waiting until some task calls :meth:`release`."
+msgstr ""
+"Một semaphore quản lý một bộ đếm nội bộ được giảm dần theo mỗi lệnh gọi "
+":meth:`acquire` và tăng lên theo mỗi lệnh gọi :meth:`release`. Bộ đếm không "
+"bao giờ có thể xuống dưới 0; khi :meth:`acquire` thấy nó bằng 0, nó sẽ chặn,"
+" đợi cho đến khi tác vụ nào đó gọi :meth:`release`."
+
+#: ../../library/asyncio-sync.rst:293
+#, fuzzy
+msgid ""
+"The optional *value* argument gives the initial value for the internal "
+"counter (``1`` by default). If the given value is less than ``0`` a "
+":exc:`ValueError` is raised."
+msgstr ""
+"Đối số *value* tùy chọn cung cấp giá trị ban đầu cho bộ đếm bên trong (``1``"
+" theo mặc định). Nếu giá trị đã cho nhỏ hơn ``0`` thì :exc:`ValueError` sẽ "
+"được tăng lên."
+
+#: ../../library/asyncio-sync.rst:300
+#, fuzzy
+msgid ""
+"The preferred way to use a Semaphore is an :keyword:`async with` statement::"
+msgstr ""
+"Cách ưa thích để sử dụng Semaphore là câu lệnh :keyword:`async with` ::"
+
+#: ../../library/asyncio-sync.rst:303
+#, fuzzy
+msgid ""
+"sem = asyncio.Semaphore(10)\n"
+"\n"
+"# ... later\n"
+"async with sem:\n"
+"    # work with shared resource"
+msgstr ""
+"sem = asyncio.Semaphore(10)\n"
+"\n"
+"# ... sau\n"
+"không đồng bộ với sem:\n"
+"    # work với tài nguyên được chia sẻ"
+
+#: ../../library/asyncio-sync.rst:311
+#, fuzzy
+msgid ""
+"sem = asyncio.Semaphore(10)\n"
+"\n"
+"# ... later\n"
+"await sem.acquire()\n"
+"try:\n"
+"    # work with shared resource\n"
+"finally:\n"
+"    sem.release()"
+msgstr ""
+"sem = asyncio.Semaphore(10)\n"
+"\n"
+"# ... sau\n"
+"đang chờ sem.acquire()\n"
+"thử:\n"
+"    # work với tài nguyên được chia sẻ\n"
+"cuối cùng:\n"
+"    sem.release()"
+
+#: ../../library/asyncio-sync.rst:323
+#, fuzzy
+msgid "Acquire a semaphore."
+msgstr "Có được một semaphore."
+
+#: ../../library/asyncio-sync.rst:325
+#, fuzzy
+msgid ""
+"If the internal counter is greater than zero, decrement it by one and return"
+" ``True`` immediately.  If it is zero, wait until a :meth:`release` is "
+"called and return ``True``."
+msgstr ""
+"Nếu bộ đếm bên trong lớn hơn 0, hãy giảm nó đi một và trả về ``True`` ngay "
+"lập tức.  Nếu nó bằng 0, hãy đợi cho đến khi :meth:`release` được gọi và trả"
+" về ``True``."
+
+#: ../../library/asyncio-sync.rst:331
+#, fuzzy
+msgid "Returns ``True`` if semaphore can not be acquired immediately."
+msgstr "Trả về ``True`` nếu không thể lấy được semaphore ngay lập tức."
+
+#: ../../library/asyncio-sync.rst:335
+#, fuzzy
+msgid ""
+"Release a semaphore, incrementing the internal counter by one. Can wake up a"
+" task waiting to acquire the semaphore."
+msgstr ""
+"Giải phóng một đèn hiệu, tăng bộ đếm bên trong lên một. Có thể đánh thức một"
+" tác vụ đang chờ lấy semaphore."
+
+#: ../../library/asyncio-sync.rst:338
+#, fuzzy
+msgid ""
+"Unlike :class:`BoundedSemaphore`, :class:`Semaphore` allows making more "
+"``release()`` calls than ``acquire()`` calls."
+msgstr ""
+"Không giống như :class:`BoundedSemaphore`, :class:`Semaphore` cho phép thực "
+"hiện nhiều cuộc gọi ``release()`` hơn cuộc gọi ``acquire()``."
+
+#: ../../library/asyncio-sync.rst:343
+#, fuzzy
+msgid "BoundedSemaphore"
+msgstr "Giới hạnSemaphore"
+
+#: ../../library/asyncio-sync.rst:347
+#, fuzzy
+msgid "A bounded semaphore object.  Not thread-safe."
+msgstr "Một đối tượng semaphore giới hạn.  Không an toàn chủ đề."
+
+#: ../../library/asyncio-sync.rst:349
+#, fuzzy
+msgid ""
+"Bounded Semaphore is a version of :class:`Semaphore` that raises a "
+":exc:`ValueError` in :meth:`~Semaphore.release` if it increases the internal"
+" counter above the initial *value*."
+msgstr ""
+"Semaphore giới hạn là một phiên bản của :class:`Semaphore` tăng "
+":exc:`ValueError` trong :meth:`~Semaphore.release` nếu nó tăng bộ đếm bên "
+"trong lên trên *value* ban đầu."
+
+#: ../../library/asyncio-sync.rst:358
+#, fuzzy
+msgid "Barrier"
+msgstr "rào cản"
+
+#: ../../library/asyncio-sync.rst:362
+#, fuzzy
+msgid "A barrier object.  Not thread-safe."
+msgstr "Một vật cản.  Không an toàn chủ đề."
+
+#: ../../library/asyncio-sync.rst:364
+#, fuzzy
+msgid ""
+"A barrier is a simple synchronization primitive that allows to block until "
+"*parties* number of tasks are waiting on it. Tasks can wait on the "
+":meth:`~Barrier.wait` method and would be blocked until the specified number"
+" of tasks end up waiting on :meth:`~Barrier.wait`. At that point all of the "
+"waiting tasks would unblock simultaneously."
+msgstr ""
+"Rào cản là một nguyên tắc đồng bộ hóa đơn giản cho phép chặn cho đến khi số "
+"lượng nhiệm vụ *parties* đang chờ trên đó. Các tác vụ có thể chờ trên phương"
+" thức :meth:`~Barrier.wait` và sẽ bị chặn cho đến khi số lượng tác vụ được "
+"chỉ định kết thúc ở trạng thái chờ trên :meth:`~Barrier.wait`. Tại thời điểm"
+" đó, tất cả các tác vụ đang chờ sẽ được mở khóa đồng thời."
+
+#: ../../library/asyncio-sync.rst:370
+#, fuzzy
+msgid ""
+":keyword:`async with` can be used as an alternative to awaiting on "
+":meth:`~Barrier.wait`."
+msgstr ""
+":keyword:`async with` có thể được sử dụng thay thế cho việc chờ trên "
+":meth:`~Barrier.wait`."
+
+#: ../../library/asyncio-sync.rst:373
+#, fuzzy
+msgid "The barrier can be reused any number of times."
+msgstr "Rào chắn có thể được tái sử dụng bất kỳ số lần nào."
+
+#: ../../library/asyncio-sync.rst:379
+#, fuzzy
+msgid ""
+"async def example_barrier():\n"
+"   # barrier with 3 parties\n"
+"   b = asyncio.Barrier(3)\n"
+"\n"
+"   # create 2 new waiting tasks\n"
+"   asyncio.create_task(b.wait())\n"
+"   asyncio.create_task(b.wait())\n"
+"\n"
+"   await asyncio.sleep(0)\n"
+"   print(b)\n"
+"\n"
+"   # The third .wait() call passes the barrier\n"
+"   await b.wait()\n"
+"   print(b)\n"
+"   print(\"barrier passed\")\n"
+"\n"
+"   await asyncio.sleep(0)\n"
+"   print(b)\n"
+"\n"
+"asyncio.run(example_barrier())"
+msgstr ""
+"async def example_barrier():\n"
+"   # barrier cùng 3 bên\n"
+"   b = asyncio.Barrier(3)\n"
+"\n"
+"   # create 2 nhiệm vụ chờ mới\n"
+"   asyncio.create_task(b.wait())\n"
+"   asyncio.create_task(b.wait())\n"
+"\n"
+"   đang chờ asyncio.sleep(0)\n"
+"   in(b)\n"
+"\n"
+"   Cuộc gọi .wait() thứ ba # The vượt qua rào cản\n"
+"   đang chờ b.wait()\n"
+"   in(b)\n"
+"   print(\"đã vượt qua rào cản\")\n"
+"\n"
+"   đang chờ asyncio.sleep(0)\n"
+"   in(b)\n"
+"\n"
+"asyncio.run(example_barrier())"
+
+#: ../../library/asyncio-sync.rst:400
+#, fuzzy
+msgid "Result of this example is::"
+msgstr "Kết quả của ví dụ này là::"
+
+#: ../../library/asyncio-sync.rst:402
+#, fuzzy
+msgid ""
+"<asyncio.locks.Barrier object at 0x... [filling, waiters:2/3]>\n"
+"<asyncio.locks.Barrier object at 0x... [draining, waiters:0/3]>\n"
+"barrier passed\n"
+"<asyncio.locks.Barrier object at 0x... [filling, waiters:0/3]>"
+msgstr ""
+"<asyncio.locks.Barrier đối tượng ở 0x... [điền, bồi bàn:2/3]>\n"
+"<asyncio.locks.Barrier đối tượng ở 0x... [thoát nước, bồi bàn:0/3]>\n"
+"rào cản đã vượt qua\n"
+"<asyncio.locks.Barrier đối tượng ở 0x... [điền, bồi bàn:0/3]>"
+
+#: ../../library/asyncio-sync.rst:412
+#, fuzzy
+msgid ""
+"Pass the barrier. When all the tasks party to the barrier have called this "
+"function, they are all unblocked simultaneously."
+msgstr ""
+"Vượt qua rào cản. Khi tất cả các bên nhiệm vụ của rào chắn đã gọi chức năng "
+"này, tất cả chúng đều được bỏ chặn đồng thời."
+
+#: ../../library/asyncio-sync.rst:415
+#, fuzzy
+msgid ""
+"When a waiting or blocked task in the barrier is cancelled, this task exits "
+"the barrier which stays in the same state. If the state of the barrier is "
+"\"filling\", the number of waiting task decreases by 1."
+msgstr ""
+"Khi một nhiệm vụ đang chờ hoặc bị chặn trong rào cản bị hủy, nhiệm vụ này sẽ"
+" thoát khỏi rào cản và vẫn ở trạng thái tương tự. Nếu trạng thái của rào cản"
+" là \"lấp đầy\", số lượng nhiệm vụ chờ sẽ giảm đi 1."
+
+#: ../../library/asyncio-sync.rst:420
+#, fuzzy
+msgid ""
+"The return value is an integer in the range of 0 to ``parties-1``, different"
+" for each task. This can be used to select a task to do some special "
+"housekeeping, e.g.::"
+msgstr ""
+"Giá trị trả về là một số nguyên trong khoảng từ 0 đến ``parties-1``, khác "
+"nhau đối với từng tác vụ. Điều này có thể được sử dụng để chọn một nhiệm vụ "
+"thực hiện một số công việc dọn phòng đặc biệt, ví dụ::"
+
+#: ../../library/asyncio-sync.rst:424
+#, fuzzy
+msgid ""
+"...\n"
+"async with barrier as position:\n"
+"   if position == 0:\n"
+"      # Only one task prints this\n"
+"      print('End of *draining phase*')"
+msgstr ""
+"...\n"
+"không đồng bộ với rào cản là vị trí:\n"
+"   nếu vị trí == 0:\n"
+"      # Only một tác vụ in cái này\n"
+"      print('Kết thúc *draining phase*')"
+
+#: ../../library/asyncio-sync.rst:430
+#, fuzzy
+msgid ""
+"This method may raise a :class:`BrokenBarrierError` exception if the barrier"
+" is broken or reset while a task is waiting. It could raise a "
+":exc:`CancelledError` if a task is cancelled."
+msgstr ""
+"Phương pháp này có thể đưa ra ngoại lệ :class:`BrokenBarrierError` nếu rào "
+"cản bị hỏng hoặc được đặt lại trong khi tác vụ đang chờ. Nó có thể tăng "
+":exc:`CancelledError` nếu một tác vụ bị hủy."
+
+#: ../../library/asyncio-sync.rst:437
+#, fuzzy
+msgid ""
+"Return the barrier to the default, empty state.  Any tasks waiting on it "
+"will receive the :class:`BrokenBarrierError` exception."
+msgstr ""
+"Đưa rào cản về trạng thái trống, mặc định.  Bất kỳ nhiệm vụ nào đang chờ nó "
+"sẽ nhận được ngoại lệ :class:`BrokenBarrierError`."
+
+#: ../../library/asyncio-sync.rst:440
+#, fuzzy
+msgid ""
+"If a barrier is broken it may be better to just leave it and create a new "
+"one."
+msgstr ""
+"Nếu một rào cản bị phá vỡ, tốt hơn hết là bạn nên bỏ nó đi và tạo một rào "
+"cản mới."
+
+#: ../../library/asyncio-sync.rst:445
+#, fuzzy
+msgid ""
+"Put the barrier into a broken state.  This causes any active or future calls"
+" to :meth:`~Barrier.wait` to fail with the :class:`BrokenBarrierError`. Use "
+"this for example if one of the tasks needs to abort, to avoid infinite "
+"waiting tasks."
+msgstr ""
+"Đặt rào cản vào trạng thái bị phá vỡ.  Điều này khiến mọi lệnh gọi đang hoạt"
+" động hoặc trong tương lai tới :meth:`~Barrier.wait` đều không thành công "
+"với :class:`BrokenBarrierError`. Ví dụ: sử dụng điều này nếu một trong các "
+"tác vụ cần hủy bỏ để tránh các tác vụ phải chờ vô hạn."
+
+#: ../../library/asyncio-sync.rst:452
+#, fuzzy
+msgid "The number of tasks required to pass the barrier."
+msgstr "Số lượng nhiệm vụ cần thiết để vượt qua rào cản."
+
+#: ../../library/asyncio-sync.rst:456
+#, fuzzy
+msgid "The number of tasks currently waiting in the barrier while filling."
+msgstr "Số lượng nhiệm vụ hiện đang chờ trong rào chắn trong khi lấp đầy."
+
+#: ../../library/asyncio-sync.rst:460
+#, fuzzy
+msgid "A boolean that is ``True`` if the barrier is in the broken state."
+msgstr "Một boolean có giá trị ``True`` nếu rào cản ở trạng thái bị hỏng."
+
+#: ../../library/asyncio-sync.rst:465
+#, fuzzy
+msgid ""
+"This exception, a subclass of :exc:`RuntimeError`, is raised when the "
+":class:`Barrier` object is reset or broken."
+msgstr ""
+"Ngoại lệ này, một lớp con của :exc:`RuntimeError`, được đưa ra khi đối tượng"
+" :class:`Barrier` bị đặt lại hoặc bị hỏng."
+
+#: ../../library/asyncio-sync.rst:473
+#, fuzzy
+msgid ""
+"Acquiring a lock using ``await lock`` or ``yield from lock`` and/or "
+":keyword:`with` statement (``with await lock``, ``with (yield from lock)``) "
+"was removed.  Use ``async with lock`` instead."
+msgstr ""
+"Việc lấy khóa bằng câu lệnh ``await lock`` hoặc ``yield from lock`` và/hoặc "
+":keyword:`with` (``with await lock``, ``with (yield from lock)``) đã bị xóa."
+"  Thay vào đó hãy sử dụng ``async with lock``."

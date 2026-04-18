@@ -1,0 +1,1879 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../whatsnew/2.1.rst:3
+#, fuzzy
+msgid "What's New in Python 2.1"
+msgstr "Có gì mới trong Python 2.1"
+
+#: ../../whatsnew/2.1.rst
+#, fuzzy
+msgid "Author"
+msgstr "tác giả"
+
+#: ../../whatsnew/2.1.rst:5
+#, fuzzy
+msgid "A.M. Kuchling"
+msgstr "A.M. Kuchling"
+
+#: ../../whatsnew/2.1.rst:13
+#, fuzzy
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../whatsnew/2.1.rst:15
+#, fuzzy
+msgid ""
+"This article explains the new features in Python 2.1.  While there aren't as"
+" many changes in 2.1 as there were in Python 2.0, there are still some "
+"pleasant surprises in store.  2.1 is the first release to be steered through"
+" the use of Python Enhancement Proposals, or PEPs, so most of the sizable "
+"changes have accompanying PEPs that provide more complete documentation and "
+"a design rationale for the change.  This article doesn't attempt to document"
+" the new features completely, but simply provides an overview of the new "
+"features for Python programmers. Refer to the Python 2.1 documentation, or "
+"to the specific PEP, for more details about any new feature that "
+"particularly interests you."
+msgstr ""
+"Bài viết này giải thích các tính năng mới trong Python 2.1.  Mặc dù không có"
+" nhiều thay đổi trong phiên bản 2.1 như trong Python 2.0 nhưng vẫn có một số"
+" điều bất ngờ thú vị đang chờ đợi.  2.1 là bản phát hành đầu tiên được định "
+"hướng thông qua việc sử dụng Đề xuất cải tiến Python hoặc PEP, vì vậy hầu "
+"hết các thay đổi lớn đều có PEP đi kèm cung cấp tài liệu đầy đủ hơn và cơ sở"
+" thiết kế cho thay đổi.  Bài viết này không cố gắng ghi lại đầy đủ các tính "
+"năng mới mà chỉ cung cấp thông tin tổng quan về các tính năng mới dành cho "
+"lập trình viên Python. Tham khảo tài liệu Python 2.1 hoặc PEP cụ thể để biết"
+" thêm chi tiết về bất kỳ tính năng mới nào mà bạn đặc biệt quan tâm."
+
+#: ../../whatsnew/2.1.rst:25
+#, fuzzy
+msgid ""
+"One recent goal of the Python development team has been to accelerate the "
+"pace of new releases, with a new release coming every 6 to 9 months. 2.1 is "
+"the first release to come out at this faster pace, with the first alpha "
+"appearing in January, 3 months after the final version of 2.0 was released."
+msgstr ""
+"Một mục tiêu gần đây của nhóm phát triển Python là đẩy nhanh tốc độ phát "
+"hành các bản phát hành mới, với bản phát hành mới sẽ ra mắt sau mỗi 6 đến 9 "
+"tháng. 2.1 là bản phát hành đầu tiên ra mắt với tốc độ nhanh hơn, với bản "
+"alpha đầu tiên xuất hiện vào tháng 1, 3 tháng sau khi phiên bản cuối cùng "
+"của 2.0 được phát hành."
+
+#: ../../whatsnew/2.1.rst:30
+#, fuzzy
+msgid "The final release of Python 2.1 was made on April 17, 2001."
+msgstr ""
+"Bản phát hành cuối cùng của Python 2.1 được thực hiện vào ngày 17 tháng 4 "
+"năm 2001."
+
+#: ../../whatsnew/2.1.rst:36
+#, fuzzy
+msgid "PEP 227: Nested Scopes"
+msgstr "PEP 227: Phạm vi lồng nhau"
+
+#: ../../whatsnew/2.1.rst:38
+#, fuzzy
+msgid ""
+"The largest change in Python 2.1 is to Python's scoping rules.  In Python "
+"2.0, at any given time there are at most three namespaces used to look up "
+"variable names: local, module-level, and the built-in namespace.  This often"
+" surprised people because it didn't match their intuitive expectations.  For"
+" example, a nested recursive function definition doesn't work::"
+msgstr ""
+"Thay đổi lớn nhất trong Python 2.1 là các quy tắc xác định phạm vi của "
+"Python.  Trong Python 2.0, tại bất kỳ thời điểm nào cũng có tối đa ba không "
+"gian tên được sử dụng để tra cứu tên biến: cục bộ, cấp độ mô-đun và không "
+"gian tên tích hợp.  Điều này thường khiến mọi người ngạc nhiên vì nó không "
+"phù hợp với mong đợi trực quan của họ.  Ví dụ: định nghĩa hàm đệ quy lồng "
+"nhau không hoạt động::"
+
+#: ../../whatsnew/2.1.rst:44
+#, fuzzy
+msgid ""
+"def f():\n"
+"    ...\n"
+"    def g(value):\n"
+"        ...\n"
+"        return g(value-1) + 1\n"
+"    ..."
+msgstr ""
+"chắc chắn f():\n"
+"    ...\n"
+"    def g(giá trị):\n"
+"        ...\n"
+"        trả về g(giá trị-1) + 1\n"
+"    ..."
+
+#: ../../whatsnew/2.1.rst:51
+#, fuzzy
+msgid ""
+"The function :func:`!g` will always raise a :exc:`NameError` exception, "
+"because the binding of the name ``g`` isn't in either its local namespace or"
+" in the module-level namespace.  This isn't much of a problem in practice "
+"(how often do you recursively define interior functions like this?), but "
+"this also made using the :keyword:`lambda` expression clumsier, and this was"
+" a problem in practice. In code which uses :keyword:`lambda` you can often "
+"find local variables being copied by passing them as the default values of "
+"arguments. ::"
+msgstr ""
+"Hàm :func:`!g` sẽ luôn đưa ra một ngoại lệ :exc:`NameError`, vì ràng buộc "
+"của tên ``g`` không nằm trong không gian tên cục bộ hoặc trong không gian "
+"tên cấp mô-đun.  Đây không phải là vấn đề lớn trong thực tế (bạn có thường "
+"xuyên xác định đệ quy các hàm bên trong như thế này không?), nhưng điều này "
+"cũng khiến việc sử dụng biểu thức :keyword:`lambda` trở nên vụng về hơn và "
+"đây là một vấn đề trong thực tế. Trong mã sử dụng :keyword:`lambda`, bạn "
+"thường có thể thấy các biến cục bộ đang được sao chép bằng cách chuyển chúng"
+" làm giá trị mặc định của đối số. ::"
+
+#: ../../whatsnew/2.1.rst:59
+#, fuzzy
+msgid ""
+"def find(self, name):\n"
+"    \"Return list of any entries equal to 'name'\"\n"
+"    L = filter(lambda x, name=name: x == name,\n"
+"               self.list_attribute)\n"
+"    return L"
+msgstr ""
+"def find(bản thân, tên):\n"
+"    \"Trả về danh sách của bất kỳ mục nào bằng 'tên'\"\n"
+"    L = filter(lambda x, name=name: x == name,\n"
+"               self.list_attribute)\n"
+"    trả lại L"
+
+#: ../../whatsnew/2.1.rst:65
+#, fuzzy
+msgid ""
+"The readability of Python code written in a strongly functional style "
+"suffers greatly as a result."
+msgstr ""
+"Kết quả là khả năng đọc mã Python được viết theo phong cách chức năng mạnh "
+"mẽ bị ảnh hưởng rất nhiều."
+
+#: ../../whatsnew/2.1.rst:68
+#, fuzzy
+msgid ""
+"The most significant change to Python 2.1 is that static scoping has been "
+"added to the language to fix this problem.  As a first effect, the "
+"``name=name`` default argument is now unnecessary in the above example.  Put"
+" simply, when a given variable name is not assigned a value within a "
+"function (by an assignment, or the :keyword:`def`, :keyword:`class`, or "
+":keyword:`import` statements), references to the variable will be looked up "
+"in the local namespace of the enclosing scope.  A more detailed explanation "
+"of the rules, and a dissection of the implementation, can be found in the "
+"PEP."
+msgstr ""
+"Thay đổi quan trọng nhất đối với Python 2.1 là phạm vi tĩnh đã được thêm vào"
+" ngôn ngữ để khắc phục sự cố này.  Hiệu ứng đầu tiên là đối số mặc định "
+"``name=name`` hiện không còn cần thiết trong ví dụ trên.  Nói một cách đơn "
+"giản, khi một tên biến nhất định không được gán giá trị trong một hàm (bằng "
+"một phép gán hoặc các câu lệnh :keyword:`def`, :keyword:`class` hoặc "
+":keyword:`import`), các tham chiếu đến biến đó sẽ được tra cứu trong không "
+"gian tên cục bộ của phạm vi kèm theo.  Bạn có thể tìm thấy giải thích chi "
+"tiết hơn về các quy tắc và phân tích cách triển khai trong PEP."
+
+#: ../../whatsnew/2.1.rst:77
+#, fuzzy
+msgid ""
+"This change may cause some compatibility problems for code where the same "
+"variable name is used both at the module level and as a local variable "
+"within a function that contains further function definitions. This seems "
+"rather unlikely though, since such code would have been pretty confusing to "
+"read in the first place."
+msgstr ""
+"Thay đổi này có thể gây ra một số vấn đề về tính tương thích đối với mã "
+"trong đó tên biến giống nhau được sử dụng cả ở cấp mô-đun và dưới dạng biến "
+"cục bộ trong hàm chứa các định nghĩa hàm khác. Tuy nhiên, điều này có vẻ khó"
+" xảy ra vì mã như vậy sẽ khá khó hiểu ngay từ đầu."
+
+#: ../../whatsnew/2.1.rst:83
+#, fuzzy
+msgid ""
+"One side effect of the change is that the ``from module import *`` and "
+"``exec`` statements have been made illegal inside a function scope under "
+"certain conditions.  The Python reference manual has said all along that "
+"``from module import *`` is only legal at the top level of a module, but the"
+" CPython interpreter has never enforced this before.  As part of the "
+"implementation of nested scopes, the compiler which turns Python source into"
+" bytecodes has to generate different code to access variables in a "
+"containing scope.  ``from module import *`` and ``exec`` make it impossible "
+"for the compiler to figure this out, because they add names to the local "
+"namespace that are unknowable at compile time. Therefore, if a function "
+"contains function definitions or :keyword:`lambda` expressions with free "
+"variables, the compiler will flag this by raising a :exc:`SyntaxError` "
+"exception."
+msgstr ""
+"Một tác dụng phụ của sự thay đổi này là các câu lệnh ``from module import "
+"*`` và ``exec`` đã bị coi là bất hợp pháp trong phạm vi chức năng trong một "
+"số điều kiện nhất định.  Hướng dẫn tham khảo Python đã nói rõ rằng ``from "
+"module import *`` chỉ hợp pháp ở cấp cao nhất của mô-đun, nhưng trình thông "
+"dịch CPython chưa bao giờ thực thi điều này trước đây.  Là một phần của việc"
+" triển khai các phạm vi lồng nhau, trình biên dịch biến nguồn Python thành "
+"mã byte phải tạo mã khác nhau để truy cập các biến trong phạm vi chứa.  "
+"``from module import *`` và ``exec`` khiến trình biên dịch không thể tìm ra "
+"điều này vì chúng thêm tên vào không gian tên cục bộ mà không thể biết được "
+"tại thời điểm biên dịch. Do đó, nếu một hàm chứa các định nghĩa hàm hoặc "
+"biểu thức :keyword:`lambda` với các biến tự do, trình biên dịch sẽ gắn cờ "
+"hàm này bằng cách đưa ra một ngoại lệ :exc:`SyntaxError`."
+
+#: ../../whatsnew/2.1.rst:96
+#, fuzzy
+msgid "To make the preceding explanation a bit clearer, here's an example::"
+msgstr ""
+"Để làm cho lời giải thích trước đó rõ ràng hơn một chút, đây là một ví dụ::"
+
+#: ../../whatsnew/2.1.rst:98
+#, fuzzy
+msgid ""
+"x = 1\n"
+"def f():\n"
+"    # The next line is a syntax error\n"
+"    exec 'x=2'\n"
+"    def g():\n"
+"        return x"
+msgstr ""
+"x = 1\n"
+"chắc chắn f():\n"
+"    # The dòng tiếp theo là lỗi cú pháp\n"
+"    thực thi 'x=2'\n"
+"    chắc chắn g():\n"
+"        trả lại x"
+
+#: ../../whatsnew/2.1.rst:105
+#, fuzzy
+msgid ""
+"Line 4 containing the ``exec`` statement is a syntax error, since ``exec`` "
+"would define a new local variable named ``x`` whose value should be accessed"
+" by :func:`!g`."
+msgstr ""
+"Dòng 4 chứa câu lệnh ``exec`` là một lỗi cú pháp, vì ``exec`` sẽ xác định "
+"một biến cục bộ mới có tên là ``x`` mà giá trị của nó phải được truy cập bởi"
+" :func:`!g`."
+
+#: ../../whatsnew/2.1.rst:109
+#, fuzzy
+msgid ""
+"This shouldn't be much of a limitation, since ``exec`` is rarely used in "
+"most Python code (and when it is used, it's often a sign of a poor design "
+"anyway)."
+msgstr ""
+"Đây không phải là một hạn chế lớn, vì ``exec`` hiếm khi được sử dụng trong "
+"hầu hết các mã Python (và khi nó được sử dụng, đó thường là dấu hiệu của một"
+" thiết kế kém)."
+
+#: ../../whatsnew/2.1.rst:113
+#, fuzzy
+msgid ""
+"Compatibility concerns have led to nested scopes being introduced gradually;"
+" in Python 2.1, they aren't enabled by default, but can be turned on within "
+"a module by using a future statement as described in :pep:`236`.  (See the "
+"following section for further discussion of :pep:`236`.)  In Python 2.2, "
+"nested scopes will become the default and there will be no way to turn them "
+"off, but users will have had all of 2.1's lifetime to fix any breakage "
+"resulting from their introduction."
+msgstr ""
+"Những lo ngại về khả năng tương thích đã dẫn đến việc đưa ra phạm vi lồng "
+"nhau dần dần; trong Python 2.1, chúng không được bật theo mặc định nhưng có "
+"thể được bật trong mô-đun bằng cách sử dụng câu lệnh tương lai như được mô "
+"tả trong :pep:`236`.  (Xem phần sau để thảo luận thêm về :pep:`236`.) Trong "
+"Python 2.2, phạm vi lồng nhau sẽ trở thành mặc định và sẽ không có cách nào "
+"để tắt chúng, nhưng người dùng sẽ có toàn bộ thời gian sử dụng của 2.1 để "
+"khắc phục mọi sự cố do phần giới thiệu của chúng."
+
+#: ../../whatsnew/2.1.rst:123
+#, fuzzy
+msgid ":pep:`227` - Statically Nested Scopes"
+msgstr ":pep:`227` - Phạm vi lồng nhau tĩnh"
+
+#: ../../whatsnew/2.1.rst:124
+#, fuzzy
+msgid "Written and implemented by Jeremy Hylton."
+msgstr "Được viết và thực hiện bởi Jeremy Hylton."
+
+#: ../../whatsnew/2.1.rst:130
+#, fuzzy
+msgid "PEP 236: __future__ Directives"
+msgstr "PEP 236: __future__ Chỉ thị"
+
+#: ../../whatsnew/2.1.rst:132
+#, fuzzy
+msgid ""
+"The reaction to nested scopes was widespread concern about the dangers of "
+"breaking code with the 2.1 release, and it was strong enough to make the "
+"Pythoneers take a more conservative approach.  This approach consists of "
+"introducing a convention for enabling optional functionality in release N "
+"that will become compulsory in release N+1."
+msgstr ""
+"Phản ứng đối với các phạm vi lồng nhau là mối lo ngại rộng rãi về sự nguy "
+"hiểm của việc phá mã với bản phát hành 2.1 và nó đủ mạnh để khiến Pythoneers"
+" thực hiện một cách tiếp cận thận trọng hơn.  Cách tiếp cận này bao gồm việc"
+" giới thiệu một quy ước để kích hoạt chức năng tùy chọn trong bản phát hành "
+"N và sẽ trở thành bắt buộc trong bản phát hành N+1."
+
+#: ../../whatsnew/2.1.rst:138
+#, fuzzy
+msgid ""
+"The syntax uses a ``from...import`` statement using the reserved module name"
+" :mod:`__future__`.  Nested scopes can be enabled by the following "
+"statement::"
+msgstr ""
+"Cú pháp sử dụng câu lệnh ``from...import`` sử dụng tên mô-đun dành riêng "
+":mod:`__future__`.  Phạm vi lồng nhau có thể được kích hoạt bằng câu lệnh "
+"sau::"
+
+#: ../../whatsnew/2.1.rst:141
+#, fuzzy
+msgid "from __future__ import nested_scopes"
+msgstr "từ __future__ nhập lồng_scopes"
+
+#: ../../whatsnew/2.1.rst:143
+#, fuzzy
+msgid ""
+"While it looks like a normal :keyword:`import` statement, it's not; there "
+"are strict rules on where such a future statement can be put. They can only "
+"be at the top of a module, and must precede any Python code or regular "
+":keyword:`!import` statements.  This is because such statements can affect "
+"how the Python bytecode compiler parses code and generates bytecode, so they"
+" must precede any statement that will result in bytecodes being produced."
+msgstr ""
+"Mặc dù nó trông giống như một câu lệnh :keyword:`import` bình thường nhưng "
+"thực tế không phải vậy; có những quy định nghiêm ngặt về nơi có thể đưa ra "
+"tuyên bố tương lai như vậy. Chúng chỉ có thể ở đầu mô-đun và phải đứng trước"
+" bất kỳ mã Python hoặc câu lệnh :keyword:`!import` thông thường nào.  Điều "
+"này là do các câu lệnh như vậy có thể ảnh hưởng đến cách trình biên dịch mã "
+"byte Python phân tích mã và tạo mã byte, vì vậy chúng phải đặt trước bất kỳ "
+"câu lệnh nào dẫn đến mã byte được tạo ra."
+
+#: ../../whatsnew/2.1.rst:153
+#, fuzzy
+msgid ":pep:`236` - Back to the :mod:`__future__`"
+msgstr ":pep:`236` - Quay lại :mod:`__future__`"
+
+#: ../../whatsnew/2.1.rst:154
+#, fuzzy
+msgid "Written by Tim Peters, and primarily implemented by Jeremy Hylton."
+msgstr "Được viết bởi Tim Peters và chủ yếu được thực hiện bởi Jeremy Hylton."
+
+#: ../../whatsnew/2.1.rst:160
+#, fuzzy
+msgid "PEP 207: Rich Comparisons"
+msgstr "PEP 207: So sánh phong phú"
+
+#: ../../whatsnew/2.1.rst:162
+#, fuzzy
+msgid ""
+"In earlier versions, Python's support for implementing comparisons on user-"
+"defined classes and extension types was quite simple. Classes could "
+"implement a :meth:`!__cmp__` method that was given two instances of a class,"
+" and could only return 0 if they were equal or +1 or -1 if they weren't; the"
+" method couldn't raise an exception or return anything other than a Boolean "
+"value.  Users of Numeric Python often found this model too weak and "
+"restrictive, because in the number-crunching programs that numeric Python is"
+" used for, it would be more useful to be able to perform elementwise "
+"comparisons of two matrices, returning a matrix containing the results of a "
+"given comparison for each element.  If the two matrices are of different "
+"sizes, then the compare has to be able to raise an exception to signal the "
+"error."
+msgstr ""
+"Trong các phiên bản trước, sự hỗ trợ của Python để thực hiện so sánh trên "
+"các lớp do người dùng định nghĩa và các kiểu mở rộng khá đơn giản. Các lớp "
+"có thể triển khai phương thức :meth:`!__cmp__` được cung cấp hai phiên bản "
+"của một lớp và chỉ có thể trả về 0 nếu chúng bằng nhau hoặc +1 hoặc -1 nếu "
+"không; phương thức không thể đưa ra một ngoại lệ hoặc trả về bất cứ thứ gì "
+"ngoài giá trị Boolean.  Người dùng Python số thường thấy mô hình này quá yếu"
+" và hạn chế, bởi vì trong các chương trình xử lý số mà Python số được sử "
+"dụng, sẽ hữu ích hơn nếu có thể thực hiện so sánh theo từng phần tử của hai "
+"ma trận, trả về một ma trận chứa kết quả của một phép so sánh nhất định cho "
+"từng phần tử.  Nếu hai ma trận có kích thước khác nhau thì phép so sánh phải"
+" có khả năng đưa ra một ngoại lệ để báo hiệu lỗi."
+
+#: ../../whatsnew/2.1.rst:174
+#, fuzzy
+msgid ""
+"In Python 2.1, rich comparisons were added in order to support this need. "
+"Python classes can now individually overload each of the ``<``, ``<=``, "
+"``>``, ``>=``, ``==``, and ``!=`` operations.  The new magic method names "
+"are:"
+msgstr ""
+"Trong Python 2.1, các so sánh phong phú đã được thêm vào để hỗ trợ nhu cầu "
+"này. Giờ đây, các lớp Python có thể nạp chồng riêng lẻ từng thao tác ``<``, "
+"``<=``, ``>``, ``>=``, ``==`` và ``!=``.  Tên phương thức ma thuật mới là:"
+
+#: ../../whatsnew/2.1.rst:179
+#, fuzzy
+msgid "Operation"
+msgstr "hoạt động"
+
+#: ../../whatsnew/2.1.rst:179
+#, fuzzy
+msgid "Method name"
+msgstr "Tên phương thức"
+
+#: ../../whatsnew/2.1.rst:181
+#, fuzzy
+msgid "``<``"
+msgstr "``<``"
+
+#: ../../whatsnew/2.1.rst:181
+#, fuzzy
+msgid ":meth:`~object.__lt__`"
+msgstr ":meth:`~object.__lt__`"
+
+#: ../../whatsnew/2.1.rst:183
+#, fuzzy
+msgid "``<=``"
+msgstr "``<=``"
+
+#: ../../whatsnew/2.1.rst:183
+#, fuzzy
+msgid ":meth:`~object.__le__`"
+msgstr ":meth:`~object.__le__`"
+
+#: ../../whatsnew/2.1.rst:185
+#, fuzzy
+msgid "``>``"
+msgstr "``>``"
+
+#: ../../whatsnew/2.1.rst:185
+#, fuzzy
+msgid ":meth:`~object.__gt__`"
+msgstr ":meth:`~object.__gt__`"
+
+#: ../../whatsnew/2.1.rst:187
+#, fuzzy
+msgid "``>=``"
+msgstr "``>=``"
+
+#: ../../whatsnew/2.1.rst:187
+#, fuzzy
+msgid ":meth:`~object.__ge__`"
+msgstr ":meth:`~object.__ge__`"
+
+#: ../../whatsnew/2.1.rst:189
+#, fuzzy
+msgid "``==``"
+msgstr "``==``"
+
+#: ../../whatsnew/2.1.rst:189
+#, fuzzy
+msgid ":meth:`~object.__eq__`"
+msgstr ":meth:`~object.__eq__`"
+
+#: ../../whatsnew/2.1.rst:191
+#, fuzzy
+msgid "``!=``"
+msgstr "``!=``"
+
+#: ../../whatsnew/2.1.rst:191
+#, fuzzy
+msgid ":meth:`~object.__ne__`"
+msgstr ":meth:`~object.__ne__`"
+
+#: ../../whatsnew/2.1.rst:194
+#, fuzzy
+msgid ""
+"(The magic methods are named after the corresponding Fortran operators "
+"``.LT.``. ``.LE.``, &c.  Numeric programmers are almost certainly quite "
+"familiar with these names and will find them easy to remember.)"
+msgstr ""
+"(Các phương thức ma thuật được đặt theo tên của các toán tử Fortran tương "
+"ứng ``.LT.``. ``.LE.``, &c. Các lập trình viên số gần như chắc chắn khá quen"
+" thuộc với những cái tên này và sẽ thấy chúng dễ nhớ.)"
+
+#: ../../whatsnew/2.1.rst:198
+#, fuzzy
+msgid ""
+"Each of these magic methods is of the form ``method(self, other)``, where "
+"``self`` will be the object on the left-hand side of the operator, while "
+"``other`` will be the object on the right-hand side.  For example, the "
+"expression ``A < B`` will cause ``A.__lt__(B)`` to be called."
+msgstr ""
+"Mỗi phương thức ma thuật này đều có dạng ``method(self, other)``, trong đó "
+"``self`` sẽ là đối tượng ở phía bên trái của toán tử, trong khi ``other`` sẽ"
+" là đối tượng ở phía bên phải.  Ví dụ: biểu thức ``A < B`` sẽ khiến "
+"``A.__lt__(B)`` được gọi."
+
+#: ../../whatsnew/2.1.rst:203
+#, fuzzy
+msgid ""
+"Each of these magic methods can return anything at all: a Boolean, a matrix,"
+" a list, or any other Python object.  Alternatively they can raise an "
+"exception if the comparison is impossible, inconsistent, or otherwise "
+"meaningless."
+msgstr ""
+"Mỗi phương thức ma thuật này có thể trả về bất kỳ thứ gì: Boolean, ma trận, "
+"danh sách hoặc bất kỳ đối tượng Python nào khác.  Ngoài ra, họ có thể đưa ra"
+" một ngoại lệ nếu việc so sánh là không thể, không nhất quán hoặc vô nghĩa."
+
+#: ../../whatsnew/2.1.rst:207
+#, fuzzy
+msgid ""
+"The built-in ``cmp(A,B)`` function can use the rich comparison machinery, "
+"and now accepts an optional argument specifying which comparison operation "
+"to use; this is given as one of the strings ``\"<\"``, ``\"<=\"``, "
+"``\">\"``, ``\">=\"``, ``\"==\"``, or ``\"!=\"``.  If called without the "
+"optional third argument, :func:`!cmp` will only return -1, 0, or +1 as in "
+"previous versions of Python; otherwise it will call the appropriate method "
+"and can return any Python object."
+msgstr ""
+"Hàm ``cmp(A,B)`` tích hợp có thể sử dụng bộ máy so sánh phong phú và hiện "
+"chấp nhận một đối số tùy chọn chỉ định thao tác so sánh nào sẽ sử dụng; cái "
+"này được đưa ra dưới dạng một trong các chuỗi ``\"<\"``, ``\"<=\"``, "
+"``\">\"``, ``\">=\"``, ``\"==\"`` hoặc ``\"!=\"``.  Nếu được gọi mà không có"
+" đối số thứ ba tùy chọn, :func:`!cmp` sẽ chỉ trả về -1, 0 hoặc +1 như trong "
+"các phiên bản trước của Python; nếu không nó sẽ gọi phương thức thích hợp và"
+" có thể trả về bất kỳ đối tượng Python nào."
+
+#: ../../whatsnew/2.1.rst:214
+#, fuzzy
+msgid ""
+"There are also corresponding changes of interest to C programmers; there's a"
+" new slot ``tp_richcmp`` in type objects and an API for performing a given "
+"rich comparison.  I won't cover the C API here, but will refer you to "
+":pep:`207`, or to 2.1's C API documentation, for the full list of related "
+"functions."
+msgstr ""
+"Ngoài ra còn có những thay đổi tương ứng được các lập trình viên C quan tâm;"
+" có một vị trí ``tp_richcmp`` mới trong các đối tượng loại và một API để "
+"thực hiện một phép so sánh phong phú nhất định.  Tôi sẽ không đề cập đến C "
+"API ở đây mà sẽ giới thiệu cho bạn :pep:`207` hoặc tài liệu C API của 2.1 để"
+" biết danh sách đầy đủ các chức năng liên quan."
+
+#: ../../whatsnew/2.1.rst:222
+#, fuzzy
+msgid ":pep:`207` - Rich Comparisons"
+msgstr ":pep:`207` - So sánh phong phú"
+
+#: ../../whatsnew/2.1.rst:223
+#, fuzzy
+msgid ""
+"Written by Guido van Rossum, heavily based on earlier work by David Ascher, "
+"and implemented by Guido van Rossum."
+msgstr ""
+"Được viết bởi Guido van Rossum, chủ yếu dựa trên tác phẩm trước đó của David"
+" Ascher và được thực hiện bởi Guido van Rossum."
+
+#: ../../whatsnew/2.1.rst:230
+#, fuzzy
+msgid "PEP 230: Warning Framework"
+msgstr "PEP 230: Khung cảnh báo"
+
+#: ../../whatsnew/2.1.rst:232
+#, fuzzy
+msgid ""
+"Over its 10 years of existence, Python has accumulated a certain number of "
+"obsolete modules and features along the way.  It's difficult to know when a "
+"feature is safe to remove, since there's no way of knowing how much code "
+"uses it --- perhaps no programs depend on the feature, or perhaps many do.  "
+"To enable removing old features in a more structured way, a warning "
+"framework was added. When the Python developers want to get rid of a "
+"feature, it will first trigger a warning in the next version of Python.  The"
+" following Python version can then drop the feature, and users will have had"
+" a full release cycle to remove uses of the old feature."
+msgstr ""
+"Trong suốt 10 năm tồn tại, Python đã tích lũy được một số mô-đun và tính "
+"năng lỗi thời nhất định trong quá trình phát triển.  Thật khó để biết khi "
+"nào một tính năng là an toàn để xóa, vì không có cách nào biết được lượng mã"
+" sử dụng nó --- có lẽ không có chương trình nào phụ thuộc vào tính năng này "
+"hoặc có lẽ nhiều chương trình phụ thuộc vào tính năng đó.  Để cho phép loại "
+"bỏ các tính năng cũ theo cách có cấu trúc hơn, khung cảnh báo đã được thêm "
+"vào. Khi các nhà phát triển Python muốn loại bỏ một tính năng, trước tiên nó"
+" sẽ kích hoạt cảnh báo trong phiên bản tiếp theo của Python.  Sau đó, phiên "
+"bản Python sau đây có thể loại bỏ tính năng này và người dùng sẽ có chu kỳ "
+"phát hành đầy đủ để loại bỏ việc sử dụng tính năng cũ."
+
+#: ../../whatsnew/2.1.rst:242
+#, fuzzy
+msgid ""
+"Python 2.1 adds the warning framework to be used in this scheme.  It adds a "
+":mod:`warnings` module that provide functions to issue warnings, and to "
+"filter out warnings that you don't want to be displayed. Third-party modules"
+" can also use this framework to deprecate old features that they no longer "
+"wish to support."
+msgstr ""
+"Python 2.1 bổ sung khung cảnh báo sẽ được sử dụng trong sơ đồ này.  Nó bổ "
+"sung thêm mô-đun :mod:`warnings` cung cấp các chức năng đưa ra cảnh báo và "
+"lọc ra các cảnh báo mà bạn không muốn hiển thị. Các mô-đun của bên thứ ba "
+"cũng có thể sử dụng khung này để loại bỏ các tính năng cũ mà họ không muốn "
+"hỗ trợ nữa."
+
+#: ../../whatsnew/2.1.rst:248
+#, fuzzy
+msgid ""
+"For example, in Python 2.1 the :mod:`!regex` module is deprecated, so "
+"importing it causes a warning to be printed::"
+msgstr ""
+"Ví dụ: trong Python 2.1, mô-đun :mod:`!regex` không được dùng nữa, do đó "
+"việc nhập mô-đun này sẽ khiến cảnh báo được in ::"
+
+#: ../../whatsnew/2.1.rst:251
+#, fuzzy
+msgid ""
+">>> import regex\n"
+"__main__:1: DeprecationWarning: the regex module\n"
+"         is deprecated; please use the re module\n"
+">>>"
+msgstr ""
+">>> nhập biểu thức chính quy\n"
+"__main__:1: Không dùng nữaCảnh báo: mô-đun biểu thức chính quy\n"
+"         không còn được dùng nữa; vui lòng sử dụng mô-đun re\n"
+">>>"
+
+#: ../../whatsnew/2.1.rst:256
+#, fuzzy
+msgid "Warnings can be issued by calling the :func:`warnings.warn` function::"
+msgstr ""
+"Cảnh báo có thể được đưa ra bằng cách gọi hàm :func:`warnings.warn` ::"
+
+#: ../../whatsnew/2.1.rst:258
+#, fuzzy
+msgid "warnings.warn(\"feature X no longer supported\")"
+msgstr "Warning.warn(\"Tính năng X không còn được hỗ trợ\")"
+
+#: ../../whatsnew/2.1.rst:260
+#, fuzzy
+msgid ""
+"The first parameter is the warning message; an additional optional "
+"parameters can be used to specify a particular warning category."
+msgstr ""
+"Tham số đầu tiên là thông báo cảnh báo; một tham số tùy chọn bổ sung có thể "
+"được sử dụng để chỉ định một danh mục cảnh báo cụ thể."
+
+#: ../../whatsnew/2.1.rst:263
+#, fuzzy
+msgid ""
+"Filters can be added to disable certain warnings; a regular expression "
+"pattern can be applied to the message or to the module name in order to "
+"suppress a warning.  For example, you may have a program that uses the "
+":mod:`!regex` module and not want to spare the time to convert it to use the"
+" :mod:`re` module right now.  The warning can be suppressed by calling ::"
+msgstr ""
+"Bộ lọc có thể được thêm vào để tắt một số cảnh báo nhất định; một mẫu biểu "
+"thức chính quy có thể được áp dụng cho thông báo hoặc tên mô-đun để chặn "
+"cảnh báo.  Ví dụ: bạn có thể có một chương trình sử dụng mô-đun "
+":mod:`!regex` và không muốn dành thời gian chuyển đổi nó để sử dụng mô-đun "
+":mod:`re` ngay bây giờ.  Cảnh báo có thể được loại bỏ bằng cách gọi ::"
+
+#: ../../whatsnew/2.1.rst:269
+#, fuzzy
+msgid ""
+"import warnings\n"
+"warnings.filterwarnings(action = 'ignore',\n"
+"                        message='.*regex module is deprecated',\n"
+"                        category=DeprecationWarning,\n"
+"                        module = '__main__')"
+msgstr ""
+"cảnh báo nhập khẩu\n"
+"Warning.filterwarnings(action = 'bỏ qua',\n"
+"                        message='.*mô-đun biểu thức chính quy không được dùng nữa',\n"
+"                        Category=Không dùng nữaCảnh báo,\n"
+"                        mô-đun = '__ chính__')"
+
+#: ../../whatsnew/2.1.rst:275
+#, fuzzy
+msgid ""
+"This adds a filter that will apply only to warnings of the class "
+":class:`DeprecationWarning` triggered in the :mod:`__main__` module, and "
+"applies a regular expression to only match the message about the "
+":mod:`!regex` module being deprecated, and will cause such warnings to be "
+"ignored.  Warnings can also be printed only once, printed every time the "
+"offending code is executed, or turned into exceptions that will cause the "
+"program to stop (unless the exceptions are caught in the usual way, of "
+"course)."
+msgstr ""
+"Điều này thêm một bộ lọc sẽ chỉ áp dụng cho các cảnh báo của lớp "
+":class:`DeprecationWarning` được kích hoạt trong mô-đun :mod:`__main__` và "
+"áp dụng biểu thức chính quy để chỉ khớp với thông báo về mô-đun "
+":mod:`!regex` không được dùng nữa và sẽ khiến các cảnh báo đó bị bỏ qua.  "
+"Cảnh báo cũng chỉ có thể được in một lần, in mỗi khi mã vi phạm được thực "
+"thi hoặc chuyển thành ngoại lệ khiến chương trình dừng lại (tất nhiên trừ "
+"khi các ngoại lệ được phát hiện theo cách thông thường)."
+
+#: ../../whatsnew/2.1.rst:283
+#, fuzzy
+msgid ""
+"Functions were also added to Python's C API for issuing warnings; refer to "
+"PEP 230 or to Python's API documentation for the details."
+msgstr ""
+"Các chức năng cũng được thêm vào C API của Python để đưa ra cảnh báo; tham "
+"khảo PEP 230 hoặc tài liệu API của Python để biết chi tiết."
+
+#: ../../whatsnew/2.1.rst:289
+#, fuzzy
+msgid ":pep:`5` - Guidelines for Language Evolution"
+msgstr ":pep:`5` - Hướng dẫn tiến hóa ngôn ngữ"
+
+#: ../../whatsnew/2.1.rst:290
+#, fuzzy
+msgid ""
+"Written by Paul Prescod, to specify procedures to be followed when removing "
+"old features from Python.  The policy described in this PEP hasn't been "
+"officially adopted, but the eventual policy probably won't be too different "
+"from Prescod's proposal."
+msgstr ""
+"Được viết bởi Paul Prescod, để chỉ định các quy trình cần tuân theo khi xóa "
+"các tính năng cũ khỏi Python.  Chính sách được mô tả trong PEP này vẫn chưa "
+"được áp dụng chính thức, nhưng chính sách cuối cùng có thể sẽ không quá khác"
+" biệt so với đề xuất của Prescod."
+
+#: ../../whatsnew/2.1.rst:295
+#, fuzzy
+msgid ":pep:`230` - Warning Framework"
+msgstr ":pep:`230` - Khung cảnh báo"
+
+#: ../../whatsnew/2.1.rst:296
+#, fuzzy
+msgid "Written and implemented by Guido van Rossum."
+msgstr "Được viết và thực hiện bởi Guido van Rossum."
+
+#: ../../whatsnew/2.1.rst:302
+#, fuzzy
+msgid "PEP 229: New Build System"
+msgstr "PEP 229: Hệ thống xây dựng mới"
+
+#: ../../whatsnew/2.1.rst:304
+#, fuzzy
+msgid ""
+"When compiling Python, the user had to go in and edit the "
+":file:`Modules/Setup` file in order to enable various additional modules; "
+"the default set is relatively small and limited to modules that compile on "
+"most Unix platforms. This means that on Unix platforms with many more "
+"features, most notably Linux, Python installations often don't contain all "
+"useful modules they could."
+msgstr ""
+"Khi biên dịch Python, người dùng phải vào và chỉnh sửa tệp "
+":file:`Modules/Setup` để kích hoạt nhiều mô-đun bổ sung khác nhau; bộ mặc "
+"định tương đối nhỏ và giới hạn ở các mô-đun biên dịch trên hầu hết các nền "
+"tảng Unix. Điều này có nghĩa là trên nền tảng Unix có nhiều tính năng hơn, "
+"đặc biệt là Linux, các bản cài đặt Python thường không chứa tất cả các mô-"
+"đun hữu ích mà chúng có thể có."
+
+#: ../../whatsnew/2.1.rst:310
+#, fuzzy
+msgid ""
+"Python 2.0 added the Distutils, a set of modules for distributing and "
+"installing extensions.  In Python 2.1, the Distutils are used to compile "
+"much of the standard library of extension modules, autodetecting which ones "
+"are supported on the current machine.  It's hoped that this will make Python"
+" installations easier and more featureful."
+msgstr ""
+"Python 2.0 đã thêm Distutils, một bộ mô-đun để phân phối và cài đặt các tiện"
+" ích mở rộng.  Trong Python 2.1, Distutils được sử dụng để biên dịch phần "
+"lớn thư viện tiêu chuẩn của các mô-đun mở rộng, tự động phát hiện những mô-"
+"đun nào được hỗ trợ trên máy hiện tại.  Hy vọng rằng điều này sẽ giúp việc "
+"cài đặt Python dễ dàng hơn và nhiều tính năng hơn."
+
+#: ../../whatsnew/2.1.rst:316
+#, fuzzy
+msgid ""
+"Instead of having to edit the :file:`Modules/Setup` file in order to enable "
+"modules, a :file:`setup.py` script in the top directory of the Python source"
+" distribution is run at build time, and attempts to discover which modules "
+"can be enabled by examining the modules and header files on the system.  If "
+"a module is configured in :file:`Modules/Setup`, the :file:`setup.py` script"
+" won't attempt to compile that module and will defer to the "
+":file:`Modules/Setup` file's contents.  This provides a way to specific any "
+"strange command-line flags or libraries that are required for a specific "
+"platform."
+msgstr ""
+"Thay vì phải chỉnh sửa tệp :file:`Modules/Setup` để kích hoạt mô-đun, tập "
+"lệnh :file:`setup.py` trong thư mục trên cùng của bản phân phối nguồn Python"
+" được chạy tại thời điểm xây dựng và cố gắng khám phá mô-đun nào có thể được"
+" kích hoạt bằng cách kiểm tra các mô-đun và tệp tiêu đề trên hệ thống.  Nếu "
+"một mô-đun được định cấu hình trong :file:`Modules/Setup`, tập lệnh "
+":file:`setup.py` sẽ không cố gắng biên dịch mô-đun đó và sẽ tuân theo nội "
+"dung của tệp :file:`Modules/Setup`.  Điều này cung cấp một cách để chỉ định "
+"bất kỳ cờ hoặc thư viện dòng lệnh lạ nào được yêu cầu cho một nền tảng cụ "
+"thể."
+
+#: ../../whatsnew/2.1.rst:325
+#, fuzzy
+msgid ""
+"In another far-reaching change to the build mechanism, Neil Schemenauer "
+"restructured things so Python now uses a single makefile that isn't "
+"recursive, instead of makefiles in the top directory and in each of the "
+":file:`Python/`, :file:`Parser/`, :file:`Objects/`, and :file:`Modules/` "
+"subdirectories.  This makes building Python faster and also makes hacking "
+"the Makefiles clearer and simpler."
+msgstr ""
+"Trong một thay đổi sâu rộng khác đối với cơ chế xây dựng, Neil Schenauer đã "
+"cơ cấu lại mọi thứ để Python hiện sử dụng một tệp tạo tệp duy nhất không đệ "
+"quy, thay vì các tệp tạo tệp trong thư mục trên cùng và trong mỗi thư mục "
+"con :file:`Python/`, :file:`Parser/`, :file:`Objects/` và :file:`Modules/`."
+"  Điều này giúp việc xây dựng Python nhanh hơn và cũng giúp việc hack "
+"Makefiles trở nên rõ ràng và đơn giản hơn."
+
+#: ../../whatsnew/2.1.rst:335
+#, fuzzy
+msgid ":pep:`229` - Using Distutils to Build Python"
+msgstr ":pep:`229` - Sử dụng Distutils để xây dựng Python"
+
+#: ../../whatsnew/2.1.rst:336 ../../whatsnew/2.1.rst:575
+#, fuzzy
+msgid "Written and implemented by A.M. Kuchling."
+msgstr "Được viết và thực hiện bởi A.M. Kuchling."
+
+#: ../../whatsnew/2.1.rst:342
+#, fuzzy
+msgid "PEP 205: Weak References"
+msgstr "PEP 205: Tài liệu tham khảo yếu"
+
+#: ../../whatsnew/2.1.rst:344
+#, fuzzy
+msgid ""
+"Weak references, available through the :mod:`weakref` module, are a minor "
+"but useful new data type in the Python programmer's toolbox."
+msgstr ""
+"Các tham chiếu yếu, có sẵn thông qua mô-đun :mod:`weakref`, là một kiểu dữ "
+"liệu mới nhỏ nhưng hữu ích trong hộp công cụ của lập trình viên Python."
+
+#: ../../whatsnew/2.1.rst:347
+#, fuzzy
+msgid ""
+"Storing a reference to an object (say, in a dictionary or a list) has the "
+"side effect of keeping that object alive forever.  There are a few specific "
+"cases where this behaviour is undesirable, object caches being the most "
+"common one, and another being circular references in data structures such as"
+" trees."
+msgstr ""
+"Việc lưu trữ một tham chiếu đến một đối tượng (chẳng hạn như trong từ điển "
+"hoặc một danh sách) có tác dụng phụ là giữ cho đối tượng đó tồn tại mãi mãi."
+"  Có một số trường hợp cụ thể trong đó hành vi này là không mong muốn, bộ "
+"nhớ đệm đối tượng là trường hợp phổ biến nhất và một trường hợp khác là tham"
+" chiếu vòng tròn trong các cấu trúc dữ liệu như cây."
+
+#: ../../whatsnew/2.1.rst:352
+#, fuzzy
+msgid ""
+"For example, consider a memoizing function that caches the results of "
+"another function ``f(x)`` by storing the function's argument and its result "
+"in a dictionary::"
+msgstr ""
+"Ví dụ: hãy xem xét một hàm ghi nhớ lưu trữ kết quả của một hàm khác ``f(x)``"
+" bằng cách lưu trữ đối số của hàm và kết quả của nó trong một từ điển::"
+
+#: ../../whatsnew/2.1.rst:356
+#, python-brace-format, fuzzy
+msgid ""
+"_cache = {}\n"
+"def memoize(x):\n"
+"    if _cache.has_key(x):\n"
+"        return _cache[x]\n"
+"\n"
+"    retval = f(x)\n"
+"\n"
+"    # Cache the returned object\n"
+"    _cache[x] = retval\n"
+"\n"
+"    return retval"
+msgstr ""
+"_bộ đệm = {}\n"
+"def ghi nhớ (x):\n"
+"    nếu _cache.has_key(x):\n"
+"        trả về _cache[x]\n"
+"\n"
+"    hồi quy = f(x)\n"
+"\n"
+"    # Cache đối tượng được trả về\n"
+"    _cache[x] = lấy lại\n"
+"\n"
+"    trả lại"
+
+#: ../../whatsnew/2.1.rst:368
+#, fuzzy
+msgid ""
+"This version works for simple things such as integers, but it has a side "
+"effect; the ``_cache`` dictionary holds a reference to the return values, so"
+" they'll never be deallocated until the Python process exits and cleans up. "
+"This isn't very noticeable for integers, but if :func:`!f` returns an "
+"object, or a data structure that takes up a lot of memory, this can be a "
+"problem."
+msgstr ""
+"Phiên bản này hoạt động với những thứ đơn giản như số nguyên, nhưng nó có "
+"tác dụng phụ; từ điển ``_cache`` giữ tham chiếu đến các giá trị trả về, vì "
+"vậy chúng sẽ không bao giờ bị hủy phân bổ cho đến khi quá trình Python thoát"
+" và dọn sạch. Điều này không đáng chú ý lắm đối với số nguyên, nhưng nếu "
+":func:`!f` trả về một đối tượng hoặc cấu trúc dữ liệu chiếm nhiều bộ nhớ thì"
+" đây có thể là một vấn đề."
+
+#: ../../whatsnew/2.1.rst:374
+#, fuzzy
+msgid ""
+"Weak references provide a way to implement a cache that won't keep objects "
+"alive beyond their time.  If an object is only accessible through weak "
+"references, the object will be deallocated and the weak references will now "
+"indicate that the object it referred to no longer exists.  A weak reference "
+"to an object *obj* is created by calling ``wr = weakref.ref(obj)``.  The "
+"object being referred to is returned by calling the weak reference as if it "
+"were a function: ``wr()``.  It will return the referenced object, or "
+"``None`` if the object no longer exists."
+msgstr ""
+"Các tham chiếu yếu cung cấp một cách để triển khai bộ đệm không giữ cho các "
+"đối tượng tồn tại vượt quá thời gian của chúng.  Nếu một đối tượng chỉ có "
+"thể truy cập được thông qua các tham chiếu yếu, thì đối tượng đó sẽ bị hủy "
+"cấp phát và các tham chiếu yếu bây giờ sẽ chỉ ra rằng đối tượng mà nó tham "
+"chiếu đến không còn tồn tại.  Tham chiếu yếu đến đối tượng *obj* được tạo "
+"bằng cách gọi ``wr = weakref.ref(obj)``.  Đối tượng được tham chiếu sẽ được "
+"trả về bằng cách gọi tham chiếu yếu như thể nó là một hàm: ``wr()``.  Nó sẽ "
+"trả về đối tượng được tham chiếu hoặc ``None`` nếu đối tượng không còn tồn "
+"tại."
+
+#: ../../whatsnew/2.1.rst:382
+#, fuzzy
+msgid ""
+"This makes it possible to write a :func:`!memoize` function whose cache "
+"doesn't keep objects alive, by storing weak references in the cache. ::"
+msgstr ""
+"Điều này cho phép viết một hàm :func:`!memoize` có bộ đệm không giữ cho các "
+"đối tượng tồn tại bằng cách lưu trữ các tham chiếu yếu trong bộ đệm. ::"
+
+#: ../../whatsnew/2.1.rst:385
+#, python-brace-format, fuzzy
+msgid ""
+"_cache = {}\n"
+"def memoize(x):\n"
+"    if _cache.has_key(x):\n"
+"        obj = _cache[x]()\n"
+"        # If weak reference object still exists,\n"
+"        # return it\n"
+"        if obj is not None: return obj\n"
+"\n"
+"    retval = f(x)\n"
+"\n"
+"    # Cache a weak reference\n"
+"    _cache[x] = weakref.ref(retval)\n"
+"\n"
+"    return retval"
+msgstr ""
+"_bộ đệm = {}\n"
+"def ghi nhớ (x):\n"
+"    nếu _cache.has_key(x):\n"
+"        obj = _cache[x]()\n"
+"        đối tượng tham chiếu yếu # If vẫn tồn tại,\n"
+"        # return nó\n"
+"        nếu obj không phải là Không: trả về obj\n"
+"\n"
+"    hồi quy = f(x)\n"
+"\n"
+"    # Cache một tài liệu tham khảo yếu\n"
+"    _cache[x] = yếuref.ref(retval)\n"
+"\n"
+"    trả lại"
+
+#: ../../whatsnew/2.1.rst:400
+#, fuzzy
+msgid ""
+"The :mod:`weakref` module also allows creating proxy objects which behave "
+"like weak references --- an object referenced only by proxy objects is "
+"deallocated -- but instead of requiring an explicit call to retrieve the "
+"object, the proxy transparently forwards all operations to the object as "
+"long as the object still exists.  If the object is deallocated, attempting "
+"to use a proxy will cause a :exc:`!weakref.ReferenceError` exception to be "
+"raised. ::"
+msgstr ""
+"Mô-đun :mod:`weakref` cũng cho phép tạo các đối tượng proxy hoạt động giống "
+"như các tham chiếu yếu --- một đối tượng chỉ được tham chiếu bởi các đối "
+"tượng proxy sẽ bị hủy phân bổ -- nhưng thay vì yêu cầu một lệnh gọi rõ ràng "
+"để truy xuất đối tượng, proxy sẽ chuyển tiếp một cách minh bạch tất cả các "
+"hoạt động đến đối tượng miễn là đối tượng vẫn tồn tại.  Nếu đối tượng bị hủy"
+" cấp phát, việc cố gắng sử dụng proxy sẽ gây ra ngoại lệ "
+":exc:`!weakref.ReferenceError`. ::"
+
+#: ../../whatsnew/2.1.rst:407
+#, fuzzy
+msgid ""
+"proxy = weakref.proxy(obj)\n"
+"proxy.attr   # Equivalent to obj.attr\n"
+"proxy.meth() # Equivalent to obj.meth()\n"
+"del obj\n"
+"proxy.attr   # raises weakref.ReferenceError"
+msgstr ""
+"proxy = yếuref.proxy(obj)\n"
+"proxy.attr # Equivalent tới obj.attr\n"
+"proxy.meth() # Equivalent tới obj.meth()\n"
+"del obj\n"
+"proxy.attr # raises yếuref.ReferenceError"
+
+#: ../../whatsnew/2.1.rst:416
+#, fuzzy
+msgid ":pep:`205` - Weak References"
+msgstr ":pep:`205` - Tài liệu tham khảo yếu"
+
+#: ../../whatsnew/2.1.rst:417
+#, fuzzy
+msgid "Written and implemented by Fred L. Drake, Jr."
+msgstr "Được viết và thực hiện bởi Fred L. Drake, Jr."
+
+#: ../../whatsnew/2.1.rst:423
+#, fuzzy
+msgid "PEP 232: Function Attributes"
+msgstr "PEP 232: Thuộc tính chức năng"
+
+#: ../../whatsnew/2.1.rst:425
+#, fuzzy
+msgid ""
+"In Python 2.1, functions can now have arbitrary information attached to "
+"them. People were often using docstrings to hold information about functions"
+" and methods, because the :attr:`~function.__doc__` attribute was the only "
+"way of attaching any information to a function.  For example, in the Zope "
+"web application server, functions are marked as safe for public access by "
+"having a docstring, and in John Aycock's SPARK parsing framework, docstrings"
+" hold parts of the BNF grammar to be parsed.  This overloading is "
+"unfortunate, since docstrings are really intended to hold a function's "
+"documentation; for example, it means you can't properly document functions "
+"intended for private use in Zope."
+msgstr ""
+"Trong Python 2.1, giờ đây các hàm có thể có thông tin tùy ý được đính kèm. "
+"Mọi người thường sử dụng chuỗi tài liệu để chứa thông tin về các hàm và "
+"phương thức, vì thuộc tính :attr:`~function.__doc__` là cách duy nhất để "
+"đính kèm bất kỳ thông tin nào vào một hàm.  Ví dụ: trong máy chủ ứng dụng "
+"web Zope, các hàm được đánh dấu là an toàn để truy cập công cộng bằng cách "
+"có một chuỗi tài liệu và trong khung phân tích cú pháp SPARK của John "
+"Aycock, các chuỗi tài liệu giữ các phần của ngữ pháp BNF được phân tích cú "
+"pháp.  Việc quá tải này thật đáng tiếc vì các chuỗi tài liệu thực sự nhằm "
+"mục đích chứa tài liệu của hàm; ví dụ: điều đó có nghĩa là bạn không thể ghi"
+" lại chính xác các chức năng dành cho mục đích sử dụng cá nhân trong Zope."
+
+#: ../../whatsnew/2.1.rst:436
+#, fuzzy
+msgid ""
+"Arbitrary attributes can now be set and retrieved on functions using the "
+"regular Python syntax::"
+msgstr ""
+"Giờ đây, các thuộc tính tùy ý có thể được đặt và truy xuất trên các hàm bằng"
+" cú pháp Python thông thường ::"
+
+#: ../../whatsnew/2.1.rst:439
+#, fuzzy
+msgid ""
+"def f(): pass\n"
+"\n"
+"f.publish = 1\n"
+"f.secure = 1\n"
+"f.grammar = \"A ::= B (C D)*\""
+msgstr ""
+"def f(): vượt qua\n"
+"\n"
+"f.xuất bản = 1\n"
+"f.secure = 1\n"
+"f.grammar = \"A ::= B (C D)*\""
+
+#: ../../whatsnew/2.1.rst:445
+#, fuzzy
+msgid ""
+"The dictionary containing attributes can be accessed as the function's "
+":attr:`~function.__dict__`. Unlike the :attr:`~type.__dict__` attribute of "
+"class instances, in functions you can actually assign a new dictionary to "
+":attr:`~function.__dict__`, though the new value is restricted to a regular "
+"Python dictionary; you *can't* be tricky and set it to a :class:`!UserDict` "
+"instance, or any other random object that behaves like a mapping."
+msgstr ""
+"Từ điển chứa các thuộc tính có thể được truy cập dưới dạng "
+":attr:`~function.__dict__` của hàm. Không giống như thuộc tính "
+":attr:`~type.__dict__` của các thể hiện của lớp, trong các hàm, bạn thực sự "
+"có thể gán một từ điển mới cho :attr:`~function.__dict__`, mặc dù giá trị "
+"mới bị hạn chế đối với một từ điển Python thông thường; bạn *can't* hãy khéo"
+" léo và đặt nó thành một phiên bản :class:`!UserDict` hoặc bất kỳ đối tượng "
+"ngẫu nhiên nào khác hoạt động giống như một ánh xạ."
+
+#: ../../whatsnew/2.1.rst:455
+#, fuzzy
+msgid ":pep:`232` - Function Attributes"
+msgstr ":pep:`232` - Thuộc tính chức năng"
+
+#: ../../whatsnew/2.1.rst:456
+#, fuzzy
+msgid "Written and implemented by Barry Warsaw."
+msgstr "Được viết và thực hiện bởi Barry Warsaw."
+
+#: ../../whatsnew/2.1.rst:462
+#, fuzzy
+msgid "PEP 235: Importing Modules on Case-Insensitive Platforms"
+msgstr "PEP 235: Nhập mô-đun trên nền tảng không phân biệt chữ hoa chữ thường"
+
+#: ../../whatsnew/2.1.rst:464
+#, fuzzy
+msgid ""
+"Some operating systems have filesystems that are case-insensitive, MacOS and"
+" Windows being the primary examples; on these systems, it's impossible to "
+"distinguish the filenames ``FILE.PY`` and ``file.py``, even though they do "
+"store the file's name  in its original case (they're case-preserving, too)."
+msgstr ""
+"Một số hệ điều hành có hệ thống tệp không phân biệt chữ hoa chữ thường, "
+"MacOS và Windows là những ví dụ chính; trên các hệ thống này, không thể phân"
+" biệt tên tệp ``FILE.PY`` và ``file.py``, mặc dù chúng lưu tên tệp trong "
+"kiểu chữ gốc (chúng cũng được bảo quản kiểu chữ)."
+
+#: ../../whatsnew/2.1.rst:469
+#, fuzzy
+msgid ""
+"In Python 2.1, the :keyword:`import` statement will work to simulate case-"
+"sensitivity on case-insensitive platforms.  Python will now search for the "
+"first case-sensitive match by default, raising an :exc:`ImportError` if no "
+"such file is found, so ``import file`` will not import a module named "
+"``FILE.PY``. Case-insensitive matching can be requested by setting the "
+":envvar:`PYTHONCASEOK` environment variable before starting the Python "
+"interpreter."
+msgstr ""
+"Trong Python 2.1, câu lệnh :keyword:`import` sẽ hoạt động để mô phỏng phân "
+"biệt chữ hoa chữ thường trên các nền tảng không phân biệt chữ hoa chữ "
+"thường.  Giờ đây, Python sẽ tìm kiếm kết quả khớp phân biệt chữ hoa chữ "
+"thường đầu tiên theo mặc định, đưa ra :exc:`ImportError` nếu không tìm thấy "
+"tệp nào như vậy, vì vậy ``import file`` sẽ không nhập mô-đun có tên "
+"``FILE.PY``. Có thể yêu cầu khớp không phân biệt chữ hoa chữ thường bằng "
+"cách đặt biến môi trường :envvar:`PYTHONCASEOK` trước khi khởi động trình "
+"thông dịch Python."
+
+#: ../../whatsnew/2.1.rst:480
+#, fuzzy
+msgid "PEP 217: Interactive Display Hook"
+msgstr "PEP 217: Móc hiển thị tương tác"
+
+#: ../../whatsnew/2.1.rst:482
+#, fuzzy
+msgid ""
+"When using the Python interpreter interactively, the output of commands is "
+"displayed using the built-in :func:`repr` function. In Python 2.1, the "
+"variable :func:`sys.displayhook` can be set to a callable object which will "
+"be called instead of :func:`repr`. For example, you can set it to a special "
+"pretty-printing function::"
+msgstr ""
+"Khi sử dụng trình thông dịch Python một cách tương tác, đầu ra của các lệnh "
+"sẽ được hiển thị bằng hàm :func:`repr` tích hợp. Trong Python 2.1, biến "
+":func:`sys.displayhook` có thể được đặt thành một đối tượng có thể gọi được,"
+" đối tượng này sẽ được gọi thay vì :func:`repr`. Ví dụ: bạn có thể đặt nó "
+"thành chức năng in đẹp đặc biệt ::"
+
+#: ../../whatsnew/2.1.rst:488
+#, fuzzy
+msgid ""
+">>> # Create a recursive data structure\n"
+"... L = [1,2,3]\n"
+">>> L.append(L)\n"
+">>> L # Show Python's default output\n"
+"[1, 2, 3, [...]]\n"
+">>> # Use pprint.pprint() as the display function\n"
+"... import sys, pprint\n"
+">>> sys.displayhook = pprint.pprint\n"
+">>> L\n"
+"[1, 2, 3,  <Recursion on list with id=135143996>]\n"
+">>>"
+msgstr ""
+">>> # Create cấu trúc dữ liệu đệ quy\n"
+"... L = [1,2,3]\n"
+">>> L.append(L)\n"
+">>> L # Show Đầu ra mặc định của Python\n"
+"[1, 2, 3, […]]\n"
+">>> # Use pprint.pprint() làm chức năng hiển thị\n"
+"... nhập sys, pprint\n"
+">>> sys.displayhook = pprint.pprint\n"
+">>> L\n"
+"[1, 2, 3, <Đệ quy trong danh sách có id=135143996>]\n"
+">>>"
+
+#: ../../whatsnew/2.1.rst:503
+#, fuzzy
+msgid ":pep:`217` - Display Hook for Interactive Use"
+msgstr ":pep:`217` - Display Hook để sử dụng tương tác"
+
+#: ../../whatsnew/2.1.rst:504
+#, fuzzy
+msgid "Written and implemented by Moshe Zadka."
+msgstr "Được viết và thực hiện bởi Moshe Zadka."
+
+#: ../../whatsnew/2.1.rst:510
+#, fuzzy
+msgid "PEP 208: New Coercion Model"
+msgstr "PEP 208: Mô hình cưỡng bức mới"
+
+#: ../../whatsnew/2.1.rst:512
+#, fuzzy
+msgid ""
+"How numeric coercion is done at the C level was significantly modified.  "
+"This will only affect the authors of C extensions to Python, allowing them "
+"more flexibility in writing extension types that support numeric operations."
+msgstr ""
+"Cách thực hiện ép buộc số ở cấp độ C đã được sửa đổi đáng kể.  Điều này sẽ "
+"chỉ ảnh hưởng đến các tác giả của tiện ích mở rộng C cho Python, cho phép họ"
+" linh hoạt hơn trong việc viết các loại tiện ích mở rộng hỗ trợ các phép "
+"toán số."
+
+#: ../../whatsnew/2.1.rst:516
+#, fuzzy
+msgid ""
+"Extension types can now set the type flag ``Py_TPFLAGS_CHECKTYPES`` in their"
+" ``PyTypeObject`` structure to indicate that they support the new coercion "
+"model. In such extension types, the numeric slot functions can no longer "
+"assume that they'll be passed two arguments of the same type; instead they "
+"may be passed two arguments of differing types, and can then perform their "
+"own internal coercion. If the slot function is passed a type it can't "
+"handle, it can indicate the failure by returning a reference to the "
+"``Py_NotImplemented`` singleton value. The numeric functions of the other "
+"type will then be tried, and perhaps they can handle the operation; if the "
+"other type also returns ``Py_NotImplemented``, then a :exc:`TypeError` will "
+"be raised.  Numeric methods written in Python can also return "
+"``Py_NotImplemented``, causing the interpreter to act as if the method did "
+"not exist (perhaps raising a :exc:`TypeError`, perhaps trying another "
+"object's numeric methods)."
+msgstr ""
+"Các loại tiện ích mở rộng hiện có thể đặt cờ loại ``Py_TPFLAGS_CHECKTYPES`` "
+"trong cấu trúc ``PyTypeObject`` của chúng để cho biết rằng chúng hỗ trợ mô "
+"hình cưỡng chế mới. Trong các loại tiện ích mở rộng như vậy, các hàm khe số "
+"không còn có thể giả định rằng chúng sẽ được truyền hai đối số cùng loại; "
+"thay vào đó, chúng có thể được truyền hai đối số thuộc các loại khác nhau và"
+" sau đó có thể thực hiện sự ép buộc nội bộ của riêng chúng. Nếu hàm vị trí "
+"được truyền một loại mà nó không thể xử lý, thì nó có thể chỉ ra lỗi bằng "
+"cách trả về một tham chiếu đến giá trị singleton ``Py_NotImplemented``. Sau "
+"đó, các hàm số thuộc loại khác sẽ được thử và có lẽ chúng có thể xử lý được "
+"thao tác; nếu loại kia cũng trả về ``Py_NotImplemented`` thì "
+":exc:`TypeError` sẽ được nâng lên.  Các phương thức số được viết bằng Python"
+" cũng có thể trả về ``Py_NotImplemented``, khiến trình thông dịch hoạt động "
+"như thể phương thức đó không tồn tại (có thể tạo ra một :exc:`TypeError`, có"
+" thể thử các phương thức số của đối tượng khác)."
+
+#: ../../whatsnew/2.1.rst:533
+#, fuzzy
+msgid ":pep:`208` - Reworking the Coercion Model"
+msgstr ":pep:`208` - Làm lại mô hình cưỡng chế"
+
+#: ../../whatsnew/2.1.rst:534
+#, fuzzy
+msgid ""
+"Written and implemented by Neil Schemenauer, heavily based upon earlier work"
+" by Marc-André Lemburg.  Read this to understand the fine points of how "
+"numeric operations will now be processed at the C level."
+msgstr ""
+"Được viết và thực hiện bởi Neil Schenauer, dựa chủ yếu vào tác phẩm trước đó"
+" của Marc-André Lemburg.  Đọc phần này để hiểu những điểm chính về cách xử "
+"lý các phép toán số ở cấp độ C."
+
+#: ../../whatsnew/2.1.rst:542
+#, fuzzy
+msgid "PEP 241: Metadata in Python Packages"
+msgstr "PEP 241: Siêu dữ liệu trong gói Python"
+
+#: ../../whatsnew/2.1.rst:544
+#, fuzzy
+msgid ""
+"A common complaint from Python users is that there's no single catalog of "
+"all the Python modules in existence.  T. Middleton's Vaults of Parnassus at "
+"``www.vex.net/parnassus/`` (retired in February 2009, `available in the "
+"Internet Archive Wayback Machine "
+"<https://web.archive.org/web/20090130140102/http://www.vex.net/parnassus/>`_)"
+" was the largest catalog of Python modules, but registering software at the "
+"Vaults is optional, and many people did not bother."
+msgstr ""
+"Lời phàn nàn phổ biến của người dùng Python là không có một danh mục duy "
+"nhất nào chứa tất cả các mô-đun Python.  Vaults of Parnassus của T. "
+"Middleton tại ``www.vex.net/parnassus/`` (đã ngừng hoạt động vào tháng 2 năm"
+" 2009, `available in the Internet Archive Wayback Machine "
+"<https://web.archive.org/web/20090130140102/http://www.vex.net/parnassus/>`_)"
+" là danh mục mô-đun Python lớn nhất, nhưng việc đăng ký phần mềm tại Vaults "
+"là tùy chọn và nhiều người không bận tâm."
+
+#: ../../whatsnew/2.1.rst:552
+#, fuzzy
+msgid ""
+"As a first small step toward fixing the problem, Python software packaged "
+"using the Distutils :command:`sdist` command will include a file named "
+":file:`PKG-INFO` containing information about the package such as its name, "
+"version, and author (metadata, in cataloguing terminology).  :pep:`241` "
+"contains the full list of fields that can be present in the :file:`PKG-INFO`"
+" file.  As people began to package their software using Python 2.1, more and"
+" more packages will include metadata, making it possible to build automated "
+"cataloguing systems and experiment with them.  With the result experience, "
+"perhaps it'll be possible to design a really good catalog and then build "
+"support for it into Python 2.2. For example, the Distutils :command:`sdist` "
+"and :command:`bdist_\\*` commands could support an ``upload`` option that "
+"would automatically upload your package to a catalog server."
+msgstr ""
+"Là bước nhỏ đầu tiên để khắc phục sự cố, phần mềm Python được đóng gói bằng "
+"lệnh Distutils :command:`sdist` sẽ bao gồm một tệp có tên :file:`PKG-INFO` "
+"chứa thông tin về gói như tên, phiên bản và tác giả (siêu dữ liệu, theo "
+"thuật ngữ lập danh mục).  :pep:`241` chứa danh sách đầy đủ các trường có thể"
+" có trong tệp :file:`PKG-INFO`.  Khi mọi người bắt đầu đóng gói phần mềm của"
+" họ bằng Python 2.1, ngày càng có nhiều gói sẽ bao gồm siêu dữ liệu, giúp "
+"xây dựng hệ thống danh mục tự động và thử nghiệm chúng.  Với trải nghiệm thu"
+" được, có lẽ sẽ có thể thiết kế một danh mục thực sự tốt và sau đó xây dựng "
+"sự hỗ trợ cho nó bằng Python 2.2. Ví dụ: lệnh Distutils :command:`sdist` và "
+":command:`bdist_\\*` có thể hỗ trợ tùy chọn ``upload`` sẽ tự động tải gói "
+"hàng của bạn lên máy chủ danh mục."
+
+#: ../../whatsnew/2.1.rst:565
+#, fuzzy
+msgid ""
+"You can start creating packages containing :file:`PKG-INFO` even if you're "
+"not using Python 2.1, since a new release of the Distutils will be made for "
+"users of earlier Python versions.  Version 1.0.2 of the Distutils includes "
+"the changes described in :pep:`241`, as well as various bugfixes and "
+"enhancements.  It will be available from the Distutils SIG at "
+"https://www.python.org/community/sigs/current/distutils-sig/."
+msgstr ""
+"Bạn có thể bắt đầu tạo các gói chứa :file:`PKG-INFO` ngay cả khi bạn không "
+"sử dụng Python 2.1, vì bản phát hành Distutils mới sẽ được tạo cho người "
+"dùng các phiên bản Python cũ hơn.  Phiên bản 1.0.2 của Distutils bao gồm "
+"những thay đổi được mô tả trong :pep:`241`, cũng như các bản sửa lỗi và cải "
+"tiến khác nhau.  Nó sẽ có sẵn từ Distutils SIG tại "
+"https://www.python.org/community/sigs/current/distutils-sig/."
+
+#: ../../whatsnew/2.1.rst:574
+#, fuzzy
+msgid ":pep:`241` - Metadata for Python Software Packages"
+msgstr ":pep:`241` - Siêu dữ liệu cho gói phần mềm Python"
+
+#: ../../whatsnew/2.1.rst:577
+#, fuzzy
+msgid ":pep:`243` - Module Repository Upload Mechanism"
+msgstr ":pep:`243` - Cơ chế tải lên kho lưu trữ mô-đun"
+
+#: ../../whatsnew/2.1.rst:578
+#, fuzzy
+msgid ""
+"Written by Sean Reifschneider, this draft PEP describes a proposed mechanism"
+" for uploading  Python packages to a central server."
+msgstr ""
+"Được viết bởi Sean Reifschneider, bản dự thảo PEP này mô tả một cơ chế được "
+"đề xuất để tải các gói Python lên máy chủ trung tâm."
+
+#: ../../whatsnew/2.1.rst:585
+#, fuzzy
+msgid "New and Improved Modules"
+msgstr "Các mô-đun mới và cải tiến"
+
+#: ../../whatsnew/2.1.rst:587
+#, fuzzy
+msgid ""
+"Ka-Ping Yee contributed two new modules: :mod:`!inspect.py`, a module for "
+"getting information about live Python code, and :mod:`!pydoc.py`, a module "
+"for interactively converting docstrings to HTML or text.  As a bonus, "
+":file:`Tools/scripts/pydoc`, which is now automatically installed, uses "
+":mod:`!pydoc.py` to display documentation given a Python module, package, or"
+" class name.  For example, ``pydoc xml.dom`` displays the following::"
+msgstr ""
+"Ka-Ping Yee đã đóng góp hai mô-đun mới: :mod:`!inspect.py`, một mô-đun để "
+"nhận thông tin về mã Python trực tiếp và :mod:`!pydoc.py`, một mô-đun để "
+"chuyển đổi các chuỗi tài liệu thành HTML hoặc văn bản một cách tương tác.  "
+"Như một phần thưởng, :file:`Tools/scripts/pydoc`, hiện được cài đặt tự động,"
+" sử dụng :mod:`!pydoc.py` để hiển thị tài liệu được cung cấp tên mô-đun, gói"
+" hoặc lớp Python.  Ví dụ: ``pydoc xml.dom`` hiển thị như sau::"
+
+#: ../../whatsnew/2.1.rst:594
+#, fuzzy
+msgid ""
+"Python Library Documentation: package xml.dom in xml\n"
+"\n"
+"NAME\n"
+"    xml.dom - W3C Document Object Model implementation for Python.\n"
+"\n"
+"FILE\n"
+"    /usr/local/lib/python2.1/xml/dom/__init__.pyc\n"
+"\n"
+"DESCRIPTION\n"
+"    The Python mapping of the Document Object Model is documented in the\n"
+"    Python Library Reference in the section on the xml.dom package.\n"
+"\n"
+"    This package contains the following modules:\n"
+"      ..."
+msgstr ""
+"Tài liệu thư viện Python: gói xml.dom trong xml\n"
+"\n"
+"NAME\n"
+"    xml.dom - Triển khai Mô hình đối tượng tài liệu W3C cho Python.\n"
+"\n"
+"FILE\n"
+"    /usr/local/lib/python2.1/xml/dom/__init__.pyc\n"
+"\n"
+"DESCRIPTION\n"
+"    Ánh xạ Python của Mô hình đối tượng tài liệu được ghi lại trong\n"
+"    Tham khảo Thư viện Python trong phần trên gói xml.dom.\n"
+"\n"
+"    Gói này chứa các mô-đun sau:\n"
+"      ..."
+
+#: ../../whatsnew/2.1.rst:609
+#, fuzzy
+msgid ""
+":file:`pydoc` also includes a Tk-based interactive help browser.   "
+":file:`pydoc` quickly becomes addictive; try it out!"
+msgstr ""
+":file:`pydoc` cũng bao gồm trình duyệt trợ giúp tương tác dựa trên Tk.   "
+":file:`pydoc` nhanh chóng trở nên gây nghiện; hãy thử nó!"
+
+#: ../../whatsnew/2.1.rst:612
+#, fuzzy
+msgid ""
+"Two different modules for unit testing were added to the standard library. "
+"The :mod:`doctest` module, contributed by Tim Peters, provides a testing "
+"framework based on running embedded examples in docstrings and comparing the"
+" results against the expected output.  PyUnit, contributed by Steve Purcell,"
+" is a unit testing framework inspired by JUnit, which was in turn an "
+"adaptation of Kent Beck's Smalltalk testing framework.  See "
+"https://pyunit.sourceforge.net/ for more information about PyUnit."
+msgstr ""
+"Hai mô-đun khác nhau để kiểm tra đơn vị đã được thêm vào thư viện tiêu "
+"chuẩn. Mô-đun :mod:`doctest` do Tim Peters đóng góp cung cấp khung thử "
+"nghiệm dựa trên việc chạy các ví dụ được nhúng trong chuỗi tài liệu và so "
+"sánh kết quả với kết quả đầu ra dự kiến.  PyUnit, do Steve Purcell đóng góp,"
+" là một khung thử nghiệm đơn vị được lấy cảm hứng từ JUnit, đến lượt nó là "
+"một phiên bản chuyển thể từ khung thử nghiệm Smalltalk của Kent Beck.  Xem "
+"https://pyunit.sourceforge.net/ để biết thêm thông tin về PyUnit."
+
+#: ../../whatsnew/2.1.rst:620
+#, fuzzy
+msgid ""
+"The :mod:`difflib` module contains a class, "
+":class:`~difflib.SequenceMatcher`, which compares two sequences and computes"
+" the changes required to transform one sequence into the other.  For "
+"example, this module can be used to write a tool similar to the Unix "
+":program:`diff` program, and in fact the sample program "
+":file:`Tools/scripts/ndiff.py` demonstrates how to write such a script."
+msgstr ""
+"Mô-đun :mod:`difflib` chứa một lớp, :class:`~difflib.SequenceMatcher`, so "
+"sánh hai chuỗi và tính toán những thay đổi cần thiết để chuyển đổi chuỗi này"
+" thành chuỗi khác.  Ví dụ: mô-đun này có thể được sử dụng để viết một công "
+"cụ tương tự như chương trình Unix :program:`diff` và trên thực tế, chương "
+"trình mẫu :file:`Tools/scripts/ndiff.py` minh họa cách viết một tập lệnh như"
+" vậy."
+
+#: ../../whatsnew/2.1.rst:626
+#, fuzzy
+msgid ""
+":mod:`curses.panel`, a wrapper for the panel library, part of ncurses and of"
+" SYSV curses, was contributed by Thomas Gellekum.  The panel library "
+"provides windows with the additional feature of depth. Windows can be moved "
+"higher or lower in the depth ordering, and the panel library figures out "
+"where panels overlap and which sections are visible."
+msgstr ""
+":mod:`curses.panel`, một trình bao bọc cho thư viện bảng điều khiển, một "
+"phần của ncurses và SYSV, được đóng góp bởi Thomas Gelekum.  Thư viện bảng "
+"điều khiển cung cấp cho các cửa sổ tính năng bổ sung về độ sâu. Windows có "
+"thể được di chuyển cao hơn hoặc thấp hơn theo thứ tự độ sâu và thư viện bảng"
+" điều khiển sẽ tìm ra vị trí các bảng chồng lên nhau và phần nào hiển thị."
+
+#: ../../whatsnew/2.1.rst:632
+#, fuzzy
+msgid ""
+"The PyXML package has gone through a few releases since Python 2.0, and "
+"Python 2.1 includes an updated version of the :mod:`xml` package.  Some of "
+"the noteworthy changes include support for Expat 1.2 and later versions, the"
+" ability for Expat parsers to handle files in any encoding supported by "
+"Python, and various bugfixes for SAX, DOM, and the :mod:`!minidom` module."
+msgstr ""
+"Gói PyXML đã trải qua một số bản phát hành kể từ Python 2.0 và Python 2.1 "
+"bao gồm phiên bản cập nhật của gói :mod:`xml`.  Một số thay đổi đáng chú ý "
+"bao gồm hỗ trợ cho Expat 1.2 và các phiên bản mới hơn, khả năng trình phân "
+"tích cú pháp Expat xử lý các tệp ở bất kỳ mã hóa nào được Python hỗ trợ và "
+"các bản sửa lỗi khác nhau cho mô-đun SAX, DOM và :mod:`!minidom`."
+
+#: ../../whatsnew/2.1.rst:638
+#, fuzzy
+msgid ""
+"Ping also contributed another hook for handling uncaught exceptions. "
+":func:`sys.excepthook` can be set to a callable object.  When an exception "
+"isn't caught by any :keyword:`try`...\\ :keyword:`except` blocks, the "
+"exception will be passed to :func:`sys.excepthook`, which can then do "
+"whatever it likes.  At the Ninth Python Conference, Ping demonstrated an "
+"application for this hook: printing an extended traceback that not only "
+"lists the stack frames, but also lists the function arguments and the local "
+"variables for each frame."
+msgstr ""
+"Ping cũng đóng góp một cách khác để xử lý các trường hợp ngoại lệ chưa được "
+"phát hiện. :func:`sys.excepthook` có thể được đặt thành một đối tượng có thể"
+" gọi được.  Khi một ngoại lệ không bị bắt bởi bất kỳ khối "
+":keyword:`try`...\\ :keyword:`except` nào, ngoại lệ đó sẽ được chuyển đến "
+":func:`sys.excepthook`, sau đó có thể làm bất cứ điều gì nó thích.  Tại Hội "
+"nghị Python lần thứ 9, Ping đã trình diễn một ứng dụng cho hook này: in một "
+"truy ngược mở rộng không chỉ liệt kê các khung ngăn xếp mà còn liệt kê các "
+"đối số hàm và các biến cục bộ cho mỗi khung."
+
+#: ../../whatsnew/2.1.rst:646
+#, fuzzy
+msgid ""
+"Various functions in the :mod:`time` module, such as :func:`~time.asctime` "
+"and :func:`~time.localtime`, require a floating-point argument containing "
+"the time in seconds since the epoch.  The most common use of these functions"
+" is to work with the current time, so the floating-point argument has been "
+"made optional; when a value isn't provided, the current time will be used.  "
+"For example, log file entries usually need a string containing the current "
+"time; in Python 2.1, ``time.asctime()`` can be used, instead of the "
+"lengthier ``time.asctime(time.localtime(time.time()))`` that was previously "
+"required."
+msgstr ""
+"Các hàm khác nhau trong mô-đun :mod:`time`, chẳng hạn như "
+":func:`~time.asctime` và :func:`~time.localtime`, yêu cầu đối số dấu phẩy "
+"động chứa thời gian tính bằng giây kể từ kỷ nguyên.  Cách sử dụng phổ biến "
+"nhất của các hàm này là làm việc với thời gian hiện tại, vì vậy đối số dấu "
+"phẩy động được đặt làm tùy chọn; khi giá trị không được cung cấp, thời gian "
+"hiện tại sẽ được sử dụng.  Ví dụ: các mục nhập tệp nhật ký thường cần một "
+"chuỗi chứa thời gian hiện tại; trong Python 2.1, ``time.asctime()`` có thể "
+"được sử dụng thay vì ``time.asctime(time.localtime(time.time()))`` dài hơn "
+"được yêu cầu trước đây."
+
+#: ../../whatsnew/2.1.rst:655
+#, fuzzy
+msgid "This change was proposed and implemented by Thomas Wouters."
+msgstr "Sự thay đổi này được đề xuất và thực hiện bởi Thomas Wouters."
+
+#: ../../whatsnew/2.1.rst:657
+#, fuzzy
+msgid ""
+"The :mod:`ftplib` module now defaults to retrieving files in passive mode, "
+"because passive mode is more likely to work from behind a firewall.  This "
+"request came from the Debian bug tracking system, since other Debian "
+"packages use :mod:`ftplib` to retrieve files and then don't work from behind"
+" a firewall. It's deemed unlikely that this will cause problems for anyone, "
+"because Netscape defaults to passive mode and few people complain, but if "
+"passive mode is unsuitable for your application or network setup, call "
+"``set_pasv(0)`` on FTP objects to disable passive mode."
+msgstr ""
+"Mô-đun :mod:`ftplib` hiện mặc định truy xuất tệp ở chế độ thụ động, vì chế "
+"độ thụ động có nhiều khả năng hoạt động từ phía sau tường lửa hơn.  Yêu cầu "
+"này đến từ hệ thống theo dõi lỗi Debian, vì các gói Debian khác sử dụng "
+":mod:`ftplib` để truy xuất tệp và sau đó không hoạt động sau tường lửa. Có "
+"vẻ như điều này sẽ không gây ra vấn đề cho bất kỳ ai vì Netscape mặc định ở "
+"chế độ thụ động và ít người phàn nàn, nhưng nếu chế độ thụ động không phù "
+"hợp với ứng dụng hoặc thiết lập mạng của bạn, hãy gọi ``set_pasv(0)`` trên "
+"các đối tượng FTP để tắt chế độ thụ động."
+
+#: ../../whatsnew/2.1.rst:666
+#, fuzzy
+msgid ""
+"Support for raw socket access has been added to the :mod:`socket` module, "
+"contributed by Grant Edwards."
+msgstr ""
+"Hỗ trợ truy cập ổ cắm thô đã được thêm vào mô-đun :mod:`socket`, do Grant "
+"Edwards đóng góp."
+
+#: ../../whatsnew/2.1.rst:669
+#, fuzzy
+msgid ""
+"The :mod:`pstats` module now contains a simple interactive statistics "
+"browser for displaying timing profiles for Python programs, invoked when the"
+" module is run as a script.  Contributed by  Eric S. Raymond."
+msgstr ""
+"Mô-đun :mod:`pstats` hiện chứa một trình duyệt thống kê tương tác đơn giản "
+"để hiển thị cấu hình thời gian cho các chương trình Python, được gọi khi mô-"
+"đun được chạy dưới dạng tập lệnh.  Đóng góp bởi Eric S. Raymond."
+
+#: ../../whatsnew/2.1.rst:673
+#, fuzzy
+msgid ""
+"A new implementation-dependent function, ``sys._getframe([depth])``, has "
+"been added to return a given frame object from the current call stack. "
+":func:`sys._getframe` returns the frame at the top of the call stack;  if "
+"the optional integer argument *depth* is supplied, the function returns the "
+"frame that is *depth* calls below the top of the stack.  For example, "
+"``sys._getframe(1)`` returns the caller's frame object."
+msgstr ""
+"Một hàm phụ thuộc vào việc triển khai mới, ``sys._getframe([depth])``, đã "
+"được thêm vào để trả về một đối tượng khung nhất định từ ngăn xếp cuộc gọi "
+"hiện tại. :func:`sys._getframe` trả về khung ở đầu ngăn xếp cuộc gọi;  nếu "
+"đối số số nguyên tùy chọn *depth* được cung cấp, hàm sẽ trả về khung được "
+"*depth* gọi bên dưới đầu ngăn xếp.  Ví dụ: ``sys._getframe(1)`` trả về đối "
+"tượng khung của người gọi."
+
+#: ../../whatsnew/2.1.rst:680
+#, fuzzy
+msgid ""
+"This function is only present in CPython, not in Jython or the .NET "
+"implementation.  Use it for debugging, and resist the temptation to put it "
+"into production code."
+msgstr ""
+"Chức năng này chỉ có trong CPython, không có trong Jython hoặc triển khai "
+".NET.  Hãy sử dụng nó để gỡ lỗi và chống lại sự cám dỗ đưa nó vào mã sản "
+"xuất."
+
+#: ../../whatsnew/2.1.rst:688
+#, fuzzy
+msgid "Other Changes and Fixes"
+msgstr "Những thay đổi và sửa lỗi khác"
+
+#: ../../whatsnew/2.1.rst:690
+#, fuzzy
+msgid ""
+"There were relatively few smaller changes made in Python 2.1 due to the "
+"shorter release cycle.  A search through the CVS change logs turns up 117 "
+"patches applied, and 136 bugs fixed; both figures are likely to be "
+"underestimates.  Some of the more notable changes are:"
+msgstr ""
+"Có tương đối ít thay đổi nhỏ hơn được thực hiện trong Python 2.1 do chu kỳ "
+"phát hành ngắn hơn.  Tìm kiếm trong nhật ký thay đổi của CVS cho thấy 117 "
+"bản vá được áp dụng và 136 lỗi đã được sửa; cả hai con số đều có khả năng bị"
+" đánh giá thấp.  Một số thay đổi đáng chú ý hơn là:"
+
+#: ../../whatsnew/2.1.rst:695
+#, fuzzy
+msgid ""
+"A specialized object allocator is now optionally available, that should be "
+"faster than the system :c:func:`malloc` and have less memory overhead.  The "
+"allocator uses C's :c:func:`!malloc` function to get large pools of memory, "
+"and then fulfills smaller memory requests from these pools.  It can be "
+"enabled by providing the :option:`!--with-pymalloc` option to the "
+":program:`configure` script; see :file:`Objects/obmalloc.c` for the "
+"implementation details."
+msgstr ""
+"Một bộ cấp phát đối tượng chuyên dụng hiện có sẵn tùy chọn, bộ cấp phát này "
+"sẽ nhanh hơn hệ thống :c:func:`malloc` và có ít chi phí bộ nhớ hơn.  Bộ cấp "
+"phát sử dụng hàm :c:func:`!malloc` của C để có được vùng bộ nhớ lớn, sau đó "
+"đáp ứng các yêu cầu bộ nhớ nhỏ hơn từ các vùng này.  Nó có thể được kích "
+"hoạt bằng cách cung cấp tùy chọn :option:`!--with-pymalloc` cho tập lệnh "
+":program:`configure`; xem :file:`Objects/obmalloc.c` để biết chi tiết triển "
+"khai."
+
+#: ../../whatsnew/2.1.rst:702
+#, fuzzy
+msgid ""
+"Authors of C extension modules should test their code with the object "
+"allocator enabled, because some incorrect code may break, causing core dumps"
+" at runtime. There are a bunch of memory allocation functions in Python's C "
+"API that have previously been just aliases for the C library's "
+":c:func:`malloc` and :c:func:`free`, meaning that if you accidentally called"
+" mismatched functions, the error wouldn't be noticeable.  When the object "
+"allocator is enabled, these functions aren't aliases of :c:func:`!malloc` "
+"and :c:func:`!free` any more, and calling the wrong function to free memory "
+"will get you a core dump.  For example, if memory was allocated using "
+":c:macro:`PyMem_New`, it has to be freed using :c:func:`PyMem_Del`, not "
+":c:func:`!free`.  A few modules included with Python fell afoul of this and "
+"had to be fixed; doubtless there are more third-party modules that will have"
+" the same problem."
+msgstr ""
+"Tác giả của mô-đun mở rộng C nên kiểm tra mã của họ khi bật bộ cấp phát đối "
+"tượng, vì một số mã không chính xác có thể bị hỏng, gây ra hiện tượng kết "
+"xuất lõi trong thời gian chạy. Có một loạt hàm cấp phát bộ nhớ trong C API "
+"của Python trước đây chỉ là bí danh cho :c:func:`malloc` và :c:func:`free` "
+"của thư viện C, nghĩa là nếu bạn vô tình gọi các hàm không khớp, lỗi sẽ "
+"không đáng chú ý.  Khi bộ cấp phát đối tượng được bật, các hàm này không còn"
+" là bí danh của :c:func:`!malloc` và :c:func:`!free` nữa và việc gọi sai hàm"
+" để giải phóng bộ nhớ sẽ khiến bạn bị kết xuất lõi.  Ví dụ: nếu bộ nhớ được "
+"cấp phát bằng :c:macro:`PyMem_New` thì nó phải được giải phóng bằng "
+":c:func:`PyMem_Del` chứ không phải :c:func:`!free`.  Một số mô-đun đi kèm "
+"với Python đã gặp phải lỗi này và phải sửa; chắc chắn sẽ có nhiều mô-đun bên"
+" thứ ba gặp vấn đề tương tự."
+
+#: ../../whatsnew/2.1.rst:715
+#, fuzzy
+msgid "The object allocator was contributed by Vladimir Marangozov."
+msgstr "Bộ cấp phát đối tượng được đóng góp bởi Vladimir Marangozov."
+
+#: ../../whatsnew/2.1.rst:717
+#, fuzzy
+msgid ""
+"The speed of line-oriented file I/O has been improved because people often "
+"complain about its lack of speed, and because it's often been used as a "
+"naïve benchmark.  The :meth:`readline` method of file objects has therefore "
+"been rewritten to be much faster.  The exact amount of the speedup will vary"
+" from platform to platform depending on how slow the C library's "
+":c:func:`!getc` was, but is around 66%, and potentially much faster on some "
+"particular operating systems. Tim Peters did much of the benchmarking and "
+"coding for this change, motivated by a discussion in comp.lang.python."
+msgstr ""
+"Tốc độ của tệp I/O định hướng dòng đã được cải thiện vì mọi người thường "
+"phàn nàn về tốc độ thiếu của nó và vì nó thường được sử dụng làm điểm chuẩn "
+"ngây thơ.  Do đó, phương thức :meth:`readline` của các đối tượng tệp đã được"
+" viết lại để nhanh hơn nhiều.  Mức tăng tốc chính xác sẽ khác nhau tùy theo "
+"nền tảng tùy thuộc vào tốc độ chậm của :c:func:`!getc` của thư viện C, nhưng"
+" là khoảng 66% và có khả năng nhanh hơn nhiều trên một số hệ điều hành cụ "
+"thể. Tim Peters đã thực hiện phần lớn việc đo điểm chuẩn và mã hóa cho thay "
+"đổi này, được thúc đẩy bởi một cuộc thảo luận trên comp.lang.python."
+
+#: ../../whatsnew/2.1.rst:726
+#, fuzzy
+msgid ""
+"A new module and method for file objects was also added, contributed by Jeff"
+" Epler. The new method, :meth:`!xreadlines`, is similar to the existing "
+":func:`!xrange` built-in.  :func:`!xreadlines` returns an opaque sequence "
+"object that only supports being iterated over, reading a line on every "
+"iteration but not reading the entire file into memory as the existing "
+":meth:`!readlines` method does. You'd use it like this::"
+msgstr ""
+"Một mô-đun và phương thức mới cho các đối tượng tệp cũng được thêm vào, do "
+"Jeff Epler đóng góp. Phương thức mới, :meth:`!xreadlines`, tương tự như "
+":func:`!xrange` tích hợp sẵn.  :func:`!xreadlines` trả về một đối tượng "
+"chuỗi mờ chỉ hỗ trợ lặp đi lặp lại, đọc một dòng trên mỗi lần lặp nhưng "
+"không đọc toàn bộ tệp vào bộ nhớ như phương thức :meth:`!readlines` hiện có."
+" Bạn sẽ sử dụng nó như thế này::"
+
+#: ../../whatsnew/2.1.rst:733
+#, fuzzy
+msgid ""
+"for line in sys.stdin.xreadlines():\n"
+"    # ... do something for each line ...\n"
+"    ..."
+msgstr ""
+"cho dòng trong sys.stdin.xreadlines():\n"
+"    # ... làm gì đó cho mỗi dòng ...\n"
+"    ..."
+
+#: ../../whatsnew/2.1.rst:737
+#, fuzzy
+msgid ""
+"For a fuller discussion of the line I/O changes, see the python-dev summary "
+"for January 1--15, 2001 at https://mail.python.org/pipermail/python-"
+"dev/2001-January/."
+msgstr ""
+"Để có cuộc thảo luận đầy đủ hơn về các thay đổi I/O của dòng, hãy xem bản "
+"tóm tắt python-dev cho ngày 1--15 tháng 1 năm 2001 tại "
+"https://mail.python.org/pipermail/python-dev/2001-January/."
+
+#: ../../whatsnew/2.1.rst:740
+#, fuzzy
+msgid ""
+"A new method, :meth:`~dict.popitem`, was added to dictionaries to enable "
+"destructively iterating through the contents of a dictionary; this can be "
+"faster for large dictionaries because there's no need to construct a list "
+"containing all the keys or values. ``D.popitem()`` removes a random ``(key, "
+"value)`` pair from the dictionary ``D`` and returns it as a 2-tuple.  This "
+"was implemented mostly by Tim Peters and Guido van Rossum, after a "
+"suggestion and preliminary patch by Moshe Zadka."
+msgstr ""
+"Một phương pháp mới, :meth:`~dict.popitem`, đã được thêm vào từ điển để cho "
+"phép lặp lại triệt để thông qua nội dung của từ điển; việc này có thể nhanh "
+"hơn đối với các từ điển lớn vì không cần phải tạo danh sách chứa tất cả các "
+"khóa hoặc giá trị. ``D.popitem()`` xóa một cặp ``(key, value)`` ngẫu nhiên "
+"khỏi từ điển ``D`` và trả về dưới dạng 2 bộ.  Điều này chủ yếu được thực "
+"hiện bởi Tim Peters và Guido van Rossum, sau khi có gợi ý và bản vá sơ bộ "
+"của Moshe Zadka."
+
+#: ../../whatsnew/2.1.rst:748
+#, fuzzy
+msgid ""
+"Modules can now control which names are imported when ``from module import "
+"*`` is used, by defining an ``__all__`` attribute containing a list of names"
+" that will be imported.  One common complaint is that if the module imports "
+"other modules such as :mod:`sys` or :mod:`string`, ``from module import *`` "
+"will add them to the importing module's namespace.  To fix this, simply list"
+" the public names in ``__all__``::"
+msgstr ""
+"Giờ đây, các mô-đun có thể kiểm soát tên nào được nhập khi sử dụng ``from "
+"module import *``, bằng cách xác định thuộc tính ``__all__`` chứa danh sách "
+"các tên sẽ được nhập.  Một khiếu nại phổ biến là nếu mô-đun nhập các mô-đun "
+"khác như :mod:`sys` hoặc :mod:`string`, ``from module import *`` sẽ thêm "
+"chúng vào không gian tên của mô-đun nhập.  Để khắc phục điều này, chỉ cần "
+"liệt kê tên công khai trong ``__all__``::"
+
+#: ../../whatsnew/2.1.rst:755
+#, fuzzy
+msgid ""
+"# List public names\n"
+"__all__ = ['Database', 'open']"
+msgstr ""
+"# List tên công khai\n"
+"__all__ = ['Cơ sở dữ liệu', 'mở']"
+
+#: ../../whatsnew/2.1.rst:758
+#, fuzzy
+msgid ""
+"A stricter version of this patch was first suggested and implemented by Ben "
+"Wolfson, but after some python-dev discussion, a weaker final version was "
+"checked in."
+msgstr ""
+"Phiên bản chặt chẽ hơn của bản vá này lần đầu tiên được đề xuất và triển "
+"khai bởi Ben Wolfson, nhưng sau một số cuộc thảo luận giữa python-dev, phiên"
+" bản cuối cùng yếu hơn đã được kiểm tra."
+
+#: ../../whatsnew/2.1.rst:762
+#, fuzzy
+msgid ""
+"Applying :func:`repr` to strings previously used octal escapes for non-"
+"printable characters; for example, a newline was ``'\\012'``.  This was a "
+"vestigial trace of Python's C ancestry, but today octal is of very little "
+"practical use.  Ka-Ping Yee suggested using hex escapes instead of octal "
+"ones, and using the ``\\n``, ``\\t``, ``\\r`` escapes for the appropriate "
+"characters, and implemented this new formatting."
+msgstr ""
+"Áp dụng :func:`repr` cho các chuỗi thoát bát phân được sử dụng trước đó cho "
+"các ký tự không in được; ví dụ: một dòng mới là ``'\\012'``.  Đây là dấu vết"
+" còn sót lại của tổ tiên C của Python, nhưng ngày nay hệ bát phân được sử "
+"dụng rất ít trong thực tế.  Ka-Ping Yee đã đề xuất sử dụng các ký tự thoát "
+"hex thay vì ký tự bát phân và sử dụng các ký tự thoát ``\\n``, ``\\t``, "
+"``\\r`` cho các ký tự thích hợp và triển khai định dạng mới này."
+
+#: ../../whatsnew/2.1.rst:769
+#, fuzzy
+msgid ""
+"Syntax errors detected at compile-time can now raise exceptions containing "
+"the filename and line number of the error, a pleasant side effect of the "
+"compiler reorganization done by Jeremy Hylton."
+msgstr ""
+"Các lỗi cú pháp được phát hiện tại thời điểm biên dịch giờ đây có thể đưa ra"
+" các ngoại lệ chứa tên tệp và số dòng của lỗi, một tác dụng phụ dễ chịu của "
+"việc sắp xếp lại trình biên dịch do Jeremy Hylton thực hiện."
+
+#: ../../whatsnew/2.1.rst:773
+#, fuzzy
+msgid ""
+"C extensions which import other modules have been changed to use "
+":c:func:`PyImport_ImportModule`, which means that they will use any import "
+"hooks that have been installed.  This is also encouraged for third-party "
+"extensions that need to import some other module from C code."
+msgstr ""
+"Các tiện ích mở rộng C nhập các mô-đun khác đã được thay đổi để sử dụng "
+":c:func:`PyImport_ImportModule`, có nghĩa là chúng sẽ sử dụng bất kỳ móc "
+"nhập nào đã được cài đặt.  Điều này cũng được khuyến khích đối với các tiện "
+"ích mở rộng của bên thứ ba cần nhập một số mô-đun khác từ mã C."
+
+#: ../../whatsnew/2.1.rst:778
+#, fuzzy
+msgid ""
+"The size of the Unicode character database was shrunk by another 340K thanks"
+" to Fredrik Lundh."
+msgstr ""
+"Kích thước của cơ sở dữ liệu ký tự Unicode đã bị thu hẹp thêm 340K nhờ "
+"Fredrik Lundh."
+
+#: ../../whatsnew/2.1.rst:781
+#, fuzzy
+msgid ""
+"Some new ports were contributed: MacOS X (by Steven Majewski), Cygwin (by "
+"Jason Tishler); RISCOS (by Dietmar Schwertberger); Unixware 7  (by Billy G. "
+"Allie)."
+msgstr ""
+"Một số cổng mới được đóng góp: MacOS X (của Steven Majewski), Cygwin (của "
+"Jason Tishler); RISCOS (bởi Dietmar Schwertberger); Unixware 7 (bởi Billy G."
+" Allie)."
+
+#: ../../whatsnew/2.1.rst:785
+#, fuzzy
+msgid ""
+"And there's the usual list of minor bugfixes, minor memory leaks, docstring "
+"edits, and other tweaks, too lengthy to be worth itemizing; see the CVS logs"
+" for the full details if you want them."
+msgstr ""
+"Và có một danh sách thông thường gồm các sửa lỗi nhỏ, rò rỉ bộ nhớ nhỏ, "
+"chỉnh sửa chuỗi tài liệu và các chỉnh sửa khác, quá dài để có thể liệt kê "
+"thành từng mục; xem nhật ký CVS để biết chi tiết đầy đủ nếu bạn muốn."
+
+#: ../../whatsnew/2.1.rst:793
+#, fuzzy
+msgid "Acknowledgements"
+msgstr "Lời cảm ơn"
+
+#: ../../whatsnew/2.1.rst:795
+#, fuzzy
+msgid ""
+"The author would like to thank the following people for offering suggestions"
+" on various drafts of this article: Graeme Cross, David Goodger, Jay Graves,"
+" Michael Hudson, Marc-André Lemburg, Fredrik Lundh, Neil Schemenauer, Thomas"
+" Wouters."
+msgstr ""
+"Tác giả xin cảm ơn những người sau đây đã đưa ra những gợi ý cho các bản "
+"thảo khác nhau của bài viết này: Graeme Cross, David Goodger, Jay Graves, "
+"Michael Hudson, Marc-André Lemburg, Fredrik Lundh, Neil Schenauer, Thomas "
+"Wouters."

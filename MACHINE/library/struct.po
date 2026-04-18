@@ -1,0 +1,1656 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/struct.rst:2
+#, fuzzy
+msgid ":mod:`!struct` --- Interpret bytes as packed binary data"
+msgstr ""
+":mod:`!struct` --- Giải thích byte dưới dạng dữ liệu nhị phân được đóng gói"
+
+#: ../../library/struct.rst:11
+#, fuzzy
+msgid "**Source code:** :source:`Lib/struct.py`"
+msgstr "**Source code:** :source:`Lib/struct.py`"
+
+#: ../../library/struct.rst:19
+#, fuzzy
+msgid ""
+"This module converts between Python values and C structs represented as "
+"Python :class:`bytes` objects.  Compact :ref:`format strings <struct-format-"
+"strings>` describe the intended conversions to/from Python values. The "
+"module's functions and objects can be used for two largely distinct "
+"applications, data exchange with external sources (files or network "
+"connections), or data transfer between the Python application and the C "
+"layer."
+msgstr ""
+"Mô-đun này chuyển đổi giữa các giá trị Python và cấu trúc C được biểu diễn "
+"dưới dạng đối tượng Python :class:`bytes`.  Zz001zz nhỏ gọn mô tả các chuyển"
+" đổi dự kiến ​​sang/từ các giá trị Python. Các chức năng và đối tượng của "
+"mô-đun có thể được sử dụng cho hai ứng dụng khác nhau, trao đổi dữ liệu với "
+"các nguồn bên ngoài (tệp hoặc kết nối mạng) hoặc truyền dữ liệu giữa ứng "
+"dụng Python và lớp C."
+
+#: ../../library/struct.rst:29
+#, fuzzy
+msgid ""
+"When no prefix character is given, native mode is the default. It packs or "
+"unpacks data based on the platform and compiler on which the Python "
+"interpreter was built. The result of packing a given C struct includes pad "
+"bytes which maintain proper alignment for the C types involved; similarly, "
+"alignment is taken into account when unpacking.  In contrast, when "
+"communicating data between external sources, the programmer is responsible "
+"for defining byte ordering and padding between elements. See :ref:`struct-"
+"alignment` for details."
+msgstr ""
+"Khi không có ký tự tiền tố nào được cung cấp, chế độ gốc là mặc định. Nó "
+"đóng gói hoặc giải nén dữ liệu dựa trên nền tảng và trình biên dịch mà trình"
+" thông dịch Python được xây dựng trên đó. Kết quả của việc đóng gói một cấu "
+"trúc C nhất định bao gồm các byte đệm duy trì sự liên kết thích hợp cho các "
+"loại C có liên quan; tương tự, việc căn chỉnh cũng được tính đến khi giải "
+"nén.  Ngược lại, khi truyền dữ liệu giữa các nguồn bên ngoài, người lập "
+"trình chịu trách nhiệm xác định thứ tự byte và phần đệm giữa các phần tử. "
+"Xem :ref:`struct-alignment` để biết chi tiết."
+
+#: ../../library/struct.rst:39
+#, fuzzy
+msgid ""
+"Several :mod:`!struct` functions (and methods of :class:`Struct`) take a "
+"*buffer* argument.  This refers to objects that implement the "
+":ref:`bufferobjects` and provide either a readable or read-writable buffer."
+"  The most common types used for that purpose are :class:`bytes` and "
+":class:`bytearray`, but many other types that can be viewed as an array of "
+"bytes implement the buffer protocol, so that they can be read/filled without"
+" additional copying from a :class:`bytes` object."
+msgstr ""
+"Một số hàm :mod:`!struct` (và các phương thức của :class:`Struct`) nhận đối "
+"số *buffer*.  Điều này đề cập đến các đối tượng triển khai "
+":ref:`bufferobjects` và cung cấp bộ đệm có thể đọc hoặc có thể ghi.  Các "
+"loại phổ biến nhất được sử dụng cho mục đích đó là :class:`bytes` và "
+":class:`bytearray`, nhưng nhiều loại khác có thể được xem dưới dạng một mảng"
+" byte triển khai giao thức bộ đệm để có thể đọc/điền chúng mà không cần sao "
+"chép thêm từ đối tượng :class:`bytes`."
+
+#: ../../library/struct.rst:48
+#, fuzzy
+msgid "Functions and Exceptions"
+msgstr "Chức năng và ngoại lệ"
+
+#: ../../library/struct.rst:50
+#, fuzzy
+msgid "The module defines the following exception and functions:"
+msgstr "Mô-đun xác định các ngoại lệ và chức năng sau:"
+
+#: ../../library/struct.rst:55
+#, fuzzy
+msgid ""
+"Exception raised on various occasions; argument is a string describing what "
+"is wrong."
+msgstr ""
+"Ngoại lệ được nêu ra trong nhiều dịp khác nhau; đối số là một chuỗi mô tả "
+"những gì sai."
+
+#: ../../library/struct.rst:61
+#, fuzzy
+msgid ""
+"Return a bytes object containing the values *v1*, *v2*, ... packed according"
+" to the format string *format*.  The arguments must match the values "
+"required by the format exactly."
+msgstr ""
+"Trả về một đối tượng byte chứa các giá trị *v1*, *v2*, ... được đóng gói "
+"theo chuỗi định dạng *format*.  Các đối số phải khớp chính xác với các giá "
+"trị mà định dạng yêu cầu."
+
+#: ../../library/struct.rst:68
+#, fuzzy
+msgid ""
+"Pack the values *v1*, *v2*, ... according to the format string *format* and "
+"write the packed bytes into the writable buffer *buffer* starting at "
+"position *offset*.  Note that *offset* is a required argument."
+msgstr ""
+"Đóng gói các giá trị *v1*, *v2*, ... theo chuỗi định dạng *format* và ghi "
+"các byte đã đóng gói vào bộ đệm có thể ghi *buffer* bắt đầu từ vị trí "
+"*offset*.  Lưu ý rằng *offset* là đối số bắt buộc."
+
+#: ../../library/struct.rst:75
+#, fuzzy
+msgid ""
+"Unpack from the buffer *buffer* (presumably packed by ``pack(format, ...)``)"
+" according to the format string *format*.  The result is a tuple even if it "
+"contains exactly one item.  The buffer's size in bytes must match the size "
+"required by the format, as reflected by :func:`calcsize`."
+msgstr ""
+"Giải nén khỏi bộ đệm *buffer* (có lẽ được đóng gói bởi ``pack(format, "
+"...)``) theo chuỗi định dạng *format*.  Kết quả là một bộ ngay cả khi nó "
+"chứa đúng một mục.  Kích thước của bộ đệm tính bằng byte phải khớp với kích "
+"thước mà định dạng yêu cầu, như được phản ánh bởi :func:`calcsize`."
+
+#: ../../library/struct.rst:83
+#, fuzzy
+msgid ""
+"Unpack from *buffer* starting at position *offset*, according to the format "
+"string *format*.  The result is a tuple even if it contains exactly one "
+"item.  The buffer's size in bytes, starting at position *offset*, must be at"
+" least the size required by the format, as reflected by :func:`calcsize`."
+msgstr ""
+"Giải nén từ *buffer* bắt đầu từ vị trí *offset*, theo chuỗi định dạng "
+"*format*.  Kết quả là một bộ ngay cả khi nó chứa đúng một mục.  Kích thước "
+"của bộ đệm tính bằng byte, bắt đầu từ vị trí *offset*, ít nhất phải bằng "
+"kích thước mà định dạng yêu cầu, như được phản ánh bởi :func:`calcsize`."
+
+#: ../../library/struct.rst:91
+#, fuzzy
+msgid ""
+"Iteratively unpack from the buffer *buffer* according to the format string "
+"*format*.  This function returns an iterator which will read equally sized "
+"chunks from the buffer until all its contents have been consumed.  The "
+"buffer's size in bytes must be a multiple of the size required by the "
+"format, as reflected by :func:`calcsize`."
+msgstr ""
+"Lặp lại giải nén từ bộ đệm *buffer* theo chuỗi định dạng *format*.  Hàm này "
+"trả về một trình vòng lặp sẽ đọc các đoạn có kích thước bằng nhau từ bộ đệm "
+"cho đến khi tất cả nội dung của nó được sử dụng hết.  Kích thước của bộ đệm "
+"tính bằng byte phải là bội số của kích thước mà định dạng yêu cầu, như được "
+"phản ánh bởi :func:`calcsize`."
+
+#: ../../library/struct.rst:97
+#, fuzzy
+msgid "Each iteration yields a tuple as specified by the format string."
+msgstr ""
+"Mỗi lần lặp mang lại một bộ dữ liệu được chỉ định bởi chuỗi định dạng."
+
+#: ../../library/struct.rst:104
+#, fuzzy
+msgid ""
+"Return the size of the struct (and hence of the bytes object produced by "
+"``pack(format, ...)``) corresponding to the format string *format*."
+msgstr ""
+"Trả về kích thước của cấu trúc (và do đó của đối tượng byte được tạo bởi "
+"``pack(format, ...)``) tương ứng với chuỗi định dạng *format*."
+
+#: ../../library/struct.rst:111
+#, fuzzy
+msgid "Format Strings"
+msgstr "Chuỗi định dạng"
+
+#: ../../library/struct.rst:113
+#, fuzzy
+msgid ""
+"Format strings describe the data layout when packing and unpacking data.  "
+"They are built up from :ref:`format characters<format-characters>`, which "
+"specify the type of data being packed/unpacked.  In addition, special "
+"characters control the :ref:`byte order, size and alignment<struct-"
+"alignment>`. Each format string consists of an optional prefix character "
+"which describes the overall properties of the data and one or more format "
+"characters which describe the actual data values and padding."
+msgstr ""
+"Chuỗi định dạng mô tả bố cục dữ liệu khi đóng gói và giải nén dữ liệu.  "
+"Chúng được xây dựng từ :ref:`format characters<format-characters>`, chỉ định"
+" loại dữ liệu được đóng gói/giải nén.  Ngoài ra, các ký tự đặc biệt điều "
+"khiển :ref:`byte order, size and alignment<struct-alignment>`. Mỗi chuỗi "
+"định dạng bao gồm một ký tự tiền tố tùy chọn mô tả các thuộc tính tổng thể "
+"của dữ liệu và một hoặc nhiều ký tự định dạng mô tả các giá trị dữ liệu thực"
+" tế và phần đệm."
+
+#: ../../library/struct.rst:125
+#, fuzzy
+msgid "Byte Order, Size, and Alignment"
+msgstr "Thứ tự byte, kích thước và căn chỉnh"
+
+#: ../../library/struct.rst:127
+#, fuzzy
+msgid ""
+"By default, C types are represented in the machine's native format and byte "
+"order, and properly aligned by skipping pad bytes if necessary (according to"
+" the rules used by the C compiler). This behavior is chosen so that the "
+"bytes of a packed struct correspond exactly to the memory layout of the "
+"corresponding C struct. Whether to use native byte ordering and padding or "
+"standard formats depends on the application."
+msgstr ""
+"Theo mặc định, loại C được thể hiện ở định dạng gốc và thứ tự byte của máy, "
+"đồng thời được căn chỉnh chính xác bằng cách bỏ qua các byte đệm nếu cần "
+"(theo các quy tắc được trình biên dịch C sử dụng). Hành vi này được chọn sao"
+" cho các byte của cấu trúc được đóng gói tương ứng chính xác với bố cục bộ "
+"nhớ của cấu trúc C tương ứng. Việc sử dụng thứ tự byte gốc và phần đệm hay "
+"định dạng tiêu chuẩn tùy thuộc vào ứng dụng."
+
+#: ../../library/struct.rst:143
+#, fuzzy
+msgid ""
+"Alternatively, the first character of the format string can be used to "
+"indicate the byte order, size and alignment of the packed data, according to"
+" the following table:"
+msgstr ""
+"Ngoài ra, ký tự đầu tiên của chuỗi định dạng có thể được sử dụng để biểu thị"
+" thứ tự byte, kích thước và căn chỉnh của dữ liệu được đóng gói, theo bảng "
+"sau:"
+
+#: ../../library/struct.rst:148
+#, fuzzy
+msgid "Character"
+msgstr "nhân vật"
+
+#: ../../library/struct.rst:148
+#, fuzzy
+msgid "Byte order"
+msgstr "Thứ tự byte"
+
+#: ../../library/struct.rst:148
+#, fuzzy
+msgid "Size"
+msgstr "Kích thước"
+
+#: ../../library/struct.rst:148
+#, fuzzy
+msgid "Alignment"
+msgstr "Căn chỉnh"
+
+#: ../../library/struct.rst:150
+#, fuzzy
+msgid "``@``"
+msgstr "``@``"
+
+#: ../../library/struct.rst:150 ../../library/struct.rst:152
+#, fuzzy
+msgid "native"
+msgstr "bản xứ"
+
+#: ../../library/struct.rst:152
+#, fuzzy
+msgid "``=``"
+msgstr "``=``"
+
+#: ../../library/struct.rst:152 ../../library/struct.rst:154
+#: ../../library/struct.rst:156 ../../library/struct.rst:158
+#, fuzzy
+msgid "standard"
+msgstr "tiêu chuẩn"
+
+#: ../../library/struct.rst:152 ../../library/struct.rst:154
+#: ../../library/struct.rst:156 ../../library/struct.rst:158
+#, fuzzy
+msgid "none"
+msgstr "không có"
+
+#: ../../library/struct.rst:154
+#, fuzzy
+msgid "``<``"
+msgstr "``<``"
+
+#: ../../library/struct.rst:154
+#, fuzzy
+msgid "little-endian"
+msgstr "endian nhỏ"
+
+#: ../../library/struct.rst:156
+#, fuzzy
+msgid "``>``"
+msgstr "``>``"
+
+#: ../../library/struct.rst:156
+#, fuzzy
+msgid "big-endian"
+msgstr "người lớn tuổi"
+
+#: ../../library/struct.rst:158
+#, fuzzy
+msgid "``!``"
+msgstr "``!``"
+
+#: ../../library/struct.rst:158
+#, fuzzy
+msgid "network (= big-endian)"
+msgstr "mạng (= big-endian)"
+
+#: ../../library/struct.rst:161
+#, fuzzy
+msgid "If the first character is not one of these, ``'@'`` is assumed."
+msgstr ""
+"Nếu ký tự đầu tiên không phải là một trong những ký tự này thì ``'@'`` được "
+"giả định."
+
+#: ../../library/struct.rst:165
+#, fuzzy
+msgid ""
+"The number 1023 (``0x3ff`` in hexadecimal) has the following byte "
+"representations:"
+msgstr ""
+"Số 1023 (``0x3ff`` ở dạng thập lục phân) có các cách biểu diễn byte sau:"
+
+#: ../../library/struct.rst:167
+#, fuzzy
+msgid "``03 ff`` in big-endian (``>``)"
+msgstr "``03 ff`` ở dạng lớn (``>``)"
+
+#: ../../library/struct.rst:168
+#, fuzzy
+msgid "``ff 03`` in little-endian (``<``)"
+msgstr "``ff 03`` ở endian nhỏ (``<``)"
+
+#: ../../library/struct.rst:170
+#, fuzzy
+msgid "Python example:"
+msgstr "Ví dụ về Python:"
+
+#: ../../library/struct.rst:178
+#, fuzzy
+msgid ""
+"Native byte order is big-endian or little-endian, depending on the host "
+"system. For example, Intel x86, AMD64 (x86-64), and Apple M1 are little-"
+"endian; IBM z and many legacy architectures are big-endian. Use "
+":data:`sys.byteorder` to check the endianness of your system."
+msgstr ""
+"Thứ tự byte gốc là big-endian hoặc little-endian, tùy thuộc vào hệ thống máy"
+" chủ. Ví dụ: Intel x86, AMD64 (x86-64) và Apple M1 là những sản phẩm endian "
+"nhỏ; IBM z và nhiều kiến ​​trúc kế thừa có tính chất lớn. Sử dụng "
+":data:`sys.byteorder` để kiểm tra độ bền của hệ thống của bạn."
+
+#: ../../library/struct.rst:183
+#, fuzzy
+msgid ""
+"Native size and alignment are determined using the C compiler's ``sizeof`` "
+"expression.  This is always combined with native byte order."
+msgstr ""
+"Kích thước gốc và căn chỉnh được xác định bằng cách sử dụng biểu thức "
+"``sizeof`` của trình biên dịch C.  Điều này luôn được kết hợp với thứ tự "
+"byte gốc."
+
+#: ../../library/struct.rst:186
+#, fuzzy
+msgid ""
+"Standard size depends only on the format character;  see the table in the "
+":ref:`format-characters` section."
+msgstr ""
+"Kích thước tiêu chuẩn chỉ phụ thuộc vào ký tự định dạng;  xem bảng trong "
+"phần :ref:`format-characters`."
+
+#: ../../library/struct.rst:189
+#, fuzzy
+msgid ""
+"Note the difference between ``'@'`` and ``'='``: both use native byte order,"
+" but the size and alignment of the latter is standardized."
+msgstr ""
+"Lưu ý sự khác biệt giữa ``'@'`` và ``'='``: cả hai đều sử dụng thứ tự byte "
+"gốc, nhưng kích thước và căn chỉnh của cái sau được chuẩn hóa."
+
+#: ../../library/struct.rst:192
+#, fuzzy
+msgid ""
+"The form ``'!'`` represents the network byte order which is always big-"
+"endian as defined in `IETF RFC 1700 <IETF RFC 1700_>`_."
+msgstr ""
+"Biểu mẫu ``'!'`` thể hiện thứ tự byte mạng luôn là thứ tự lớn nhất như được "
+"xác định trong `IETF RFC 1700 <IETF RFC 1700_>`_."
+
+#: ../../library/struct.rst:195
+#, fuzzy
+msgid ""
+"There is no way to indicate non-native byte order (force byte-swapping); use"
+" the appropriate choice of ``'<'`` or ``'>'``."
+msgstr ""
+"Không có cách nào để chỉ ra thứ tự byte không gốc (buộc hoán đổi byte); sử "
+"dụng lựa chọn thích hợp là ``'<'`` hoặc ``'>'``."
+
+#: ../../library/struct.rst:198 ../../library/struct.rst:290
+#, fuzzy
+msgid "Notes:"
+msgstr "Ghi chú:"
+
+#: ../../library/struct.rst:200
+#, fuzzy
+msgid ""
+"Padding is only automatically added between successive structure members. No"
+" padding is added at the beginning or the end of the encoded struct."
+msgstr ""
+"Phần đệm chỉ được thêm tự động giữa các thành viên cấu trúc kế tiếp nhau. "
+"Không có phần đệm nào được thêm vào đầu hoặc cuối cấu trúc được mã hóa."
+
+#: ../../library/struct.rst:203
+#, fuzzy
+msgid ""
+"No padding is added when using non-native size and alignment, e.g. with '<',"
+" '>', '=', and '!'."
+msgstr ""
+"Không có phần đệm nào được thêm vào khi sử dụng kích thước và căn chỉnh "
+"không phải gốc, ví dụ: với '<', '>', '=' và '!'."
+
+#: ../../library/struct.rst:206
+#, fuzzy
+msgid ""
+"To align the end of a structure to the alignment requirement of a particular"
+" type, end the format with the code for that type with a repeat count of "
+"zero.  See :ref:`struct-examples`."
+msgstr ""
+"Để căn chỉnh phần cuối của cấu trúc theo yêu cầu căn chỉnh của một loại cụ "
+"thể, hãy kết thúc định dạng bằng mã cho loại đó với số lần lặp lại bằng 0.  "
+"Xem :ref:`struct-examples`."
+
+#: ../../library/struct.rst:214
+#, fuzzy
+msgid "Format Characters"
+msgstr "Định dạng ký tự"
+
+#: ../../library/struct.rst:216
+#, fuzzy
+msgid ""
+"Format characters have the following meaning; the conversion between C and "
+"Python values should be obvious given their types.  The 'Standard size' "
+"column refers to the size of the packed value in bytes when using standard "
+"size; that is, when the format string starts with one of ``'<'``, ``'>'``, "
+"``'!'`` or ``'='``.  When using native size, the size of the packed value is"
+" platform-dependent."
+msgstr ""
+"Các ký tự định dạng có ý nghĩa như sau; việc chuyển đổi giữa các giá trị C "
+"và Python phải rõ ràng với các loại của chúng.  Cột 'Kích thước chuẩn' đề "
+"cập đến kích thước của giá trị được đóng gói tính bằng byte khi sử dụng kích"
+" thước tiêu chuẩn; nghĩa là khi chuỗi định dạng bắt đầu bằng một trong các "
+"``'<'``, ``'>'``, ``'!'`` hoặc ``'='``.  Khi sử dụng kích thước gốc, kích "
+"thước của giá trị đóng gói phụ thuộc vào nền tảng."
+
+#: ../../library/struct.rst:224
+#, fuzzy
+msgid "Format"
+msgstr "định dạng"
+
+#: ../../library/struct.rst:224
+#, fuzzy
+msgid "C Type"
+msgstr "Loại C"
+
+#: ../../library/struct.rst:224
+#, fuzzy
+msgid "Python type"
+msgstr "loại Python"
+
+#: ../../library/struct.rst:224
+#, fuzzy
+msgid "Standard size"
+msgstr "Kích thước tiêu chuẩn"
+
+#: ../../library/struct.rst:224
+#, fuzzy
+msgid "Notes"
+msgstr "Ghi chú"
+
+#: ../../library/struct.rst:226
+#, fuzzy
+msgid "``x``"
+msgstr "``x``"
+
+#: ../../library/struct.rst:226
+#, fuzzy
+msgid "pad byte"
+msgstr "byte đệm"
+
+#: ../../library/struct.rst:226
+#, fuzzy
+msgid "no value"
+msgstr "không có giá trị"
+
+#: ../../library/struct.rst:226
+#, fuzzy
+msgid "\\(7)"
+msgstr "\\(7)"
+
+#: ../../library/struct.rst:228
+#, fuzzy
+msgid "``c``"
+msgstr "``c``"
+
+#: ../../library/struct.rst:228
+#, fuzzy
+msgid ":c:expr:`char`"
+msgstr ":c:expr:`char`"
+
+#: ../../library/struct.rst:228
+#, fuzzy
+msgid "bytes of length 1"
+msgstr "byte có độ dài 1"
+
+#: ../../library/struct.rst:228 ../../library/struct.rst:230
+#: ../../library/struct.rst:232 ../../library/struct.rst:234
+#, fuzzy
+msgid "1"
+msgstr "1"
+
+#: ../../library/struct.rst:230
+#, fuzzy
+msgid "``b``"
+msgstr "``b``"
+
+#: ../../library/struct.rst:230
+#, fuzzy
+msgid ":c:expr:`signed char`"
+msgstr ":c:expr:`signed char`"
+
+#: ../../library/struct.rst:230 ../../library/struct.rst:232
+#: ../../library/struct.rst:236 ../../library/struct.rst:238
+#: ../../library/struct.rst:240 ../../library/struct.rst:242
+#: ../../library/struct.rst:244 ../../library/struct.rst:246
+#: ../../library/struct.rst:248 ../../library/struct.rst:250
+#: ../../library/struct.rst:253 ../../library/struct.rst:255
+#: ../../library/struct.rst:271
+#, fuzzy
+msgid "integer"
+msgstr "số nguyên"
+
+#: ../../library/struct.rst:230
+#, fuzzy
+msgid "\\(1), \\(2)"
+msgstr "\\(1), \\(2)"
+
+#: ../../library/struct.rst:232
+#, fuzzy
+msgid "``B``"
+msgstr "``B``"
+
+#: ../../library/struct.rst:232
+#, fuzzy
+msgid ":c:expr:`unsigned char`"
+msgstr ":c:expr:`unsigned char`"
+
+#: ../../library/struct.rst:232 ../../library/struct.rst:236
+#: ../../library/struct.rst:238 ../../library/struct.rst:240
+#: ../../library/struct.rst:242 ../../library/struct.rst:244
+#: ../../library/struct.rst:246 ../../library/struct.rst:248
+#: ../../library/struct.rst:250
+#, fuzzy
+msgid "\\(2)"
+msgstr "\\(2)"
+
+#: ../../library/struct.rst:234
+#, fuzzy
+msgid "``?``"
+msgstr "``?``"
+
+#: ../../library/struct.rst:234
+#, fuzzy
+msgid ":c:expr:`_Bool`"
+msgstr ":c:expr:`_Bool`"
+
+#: ../../library/struct.rst:234
+#, fuzzy
+msgid "bool"
+msgstr "bool"
+
+#: ../../library/struct.rst:234
+#, fuzzy
+msgid "\\(1)"
+msgstr "\\(1)"
+
+#: ../../library/struct.rst:236
+#, fuzzy
+msgid "``h``"
+msgstr "``h``"
+
+#: ../../library/struct.rst:236
+#, fuzzy
+msgid ":c:expr:`short`"
+msgstr ":c:expr:`short`"
+
+#: ../../library/struct.rst:236 ../../library/struct.rst:238
+#: ../../library/struct.rst:257
+#, fuzzy
+msgid "2"
+msgstr "2"
+
+#: ../../library/struct.rst:238
+#, fuzzy
+msgid "``H``"
+msgstr "``H``"
+
+#: ../../library/struct.rst:238
+#, fuzzy
+msgid ":c:expr:`unsigned short`"
+msgstr ":c:expr:`unsigned short`"
+
+#: ../../library/struct.rst:240
+#, fuzzy
+msgid "``i``"
+msgstr "``i``"
+
+#: ../../library/struct.rst:240
+#, fuzzy
+msgid ":c:expr:`int`"
+msgstr ":c:expr:`int`"
+
+#: ../../library/struct.rst:240 ../../library/struct.rst:242
+#: ../../library/struct.rst:244 ../../library/struct.rst:246
+#: ../../library/struct.rst:259
+#, fuzzy
+msgid "4"
+msgstr "4"
+
+#: ../../library/struct.rst:242
+#, fuzzy
+msgid "``I``"
+msgstr "``I``"
+
+#: ../../library/struct.rst:242
+#, fuzzy
+msgid ":c:expr:`unsigned int`"
+msgstr ":c:expr:`unsigned int`"
+
+#: ../../library/struct.rst:244
+#, fuzzy
+msgid "``l``"
+msgstr "``l``"
+
+#: ../../library/struct.rst:244
+#, fuzzy
+msgid ":c:expr:`long`"
+msgstr ":c:expr:`long`"
+
+#: ../../library/struct.rst:246
+#, fuzzy
+msgid "``L``"
+msgstr "``L``"
+
+#: ../../library/struct.rst:246
+#, fuzzy
+msgid ":c:expr:`unsigned long`"
+msgstr ":c:expr:`unsigned long`"
+
+#: ../../library/struct.rst:248
+#, fuzzy
+msgid "``q``"
+msgstr "``q``"
+
+#: ../../library/struct.rst:248
+#, fuzzy
+msgid ":c:expr:`long long`"
+msgstr ":c:expr:`long long`"
+
+#: ../../library/struct.rst:248 ../../library/struct.rst:250
+#: ../../library/struct.rst:261 ../../library/struct.rst:263
+#, fuzzy
+msgid "8"
+msgstr "8"
+
+#: ../../library/struct.rst:250
+#, fuzzy
+msgid "``Q``"
+msgstr "``Q``"
+
+#: ../../library/struct.rst:250
+#, fuzzy
+msgid ":c:expr:`unsigned long long`"
+msgstr ":c:expr:`unsigned long long`"
+
+#: ../../library/struct.rst:253
+#, fuzzy
+msgid "``n``"
+msgstr "``n``"
+
+#: ../../library/struct.rst:253
+#, fuzzy
+msgid ":c:type:`ssize_t`"
+msgstr ":c:type:`ssize_t`"
+
+#: ../../library/struct.rst:253 ../../library/struct.rst:255
+#, fuzzy
+msgid "\\(3)"
+msgstr "\\(3)"
+
+#: ../../library/struct.rst:255
+#, fuzzy
+msgid "``N``"
+msgstr "``N``"
+
+#: ../../library/struct.rst:255
+#, fuzzy
+msgid ":c:type:`size_t`"
+msgstr ":c:type:`size_t`"
+
+#: ../../library/struct.rst:257
+#, fuzzy
+msgid "``e``"
+msgstr "``e``"
+
+#: ../../library/struct.rst:257
+#, fuzzy
+msgid ":c:expr:`_Float16`"
+msgstr ":c:expr:`_Float16`"
+
+#: ../../library/struct.rst:257 ../../library/struct.rst:259
+#: ../../library/struct.rst:261
+#, fuzzy
+msgid "float"
+msgstr "phao"
+
+#: ../../library/struct.rst:257
+#, fuzzy
+msgid "\\(4), \\(6)"
+msgstr "\\(4), \\(6)"
+
+#: ../../library/struct.rst:259
+#, fuzzy
+msgid "``f``"
+msgstr "``f``"
+
+#: ../../library/struct.rst:259
+#, fuzzy
+msgid ":c:expr:`float`"
+msgstr ":c:expr:`float`"
+
+#: ../../library/struct.rst:259 ../../library/struct.rst:261
+#, fuzzy
+msgid "\\(4)"
+msgstr "\\(4)"
+
+#: ../../library/struct.rst:261
+#, fuzzy
+msgid "``d``"
+msgstr "``d``"
+
+#: ../../library/struct.rst:261
+#, fuzzy
+msgid ":c:expr:`double`"
+msgstr ":c:expr:`double`"
+
+#: ../../library/struct.rst:263
+#, fuzzy
+msgid "``F``"
+msgstr "``F``"
+
+#: ../../library/struct.rst:263
+#, fuzzy
+msgid ":c:expr:`float complex`"
+msgstr ":c:expr:`float complex`"
+
+#: ../../library/struct.rst:263 ../../library/struct.rst:265
+#, fuzzy
+msgid "complex"
+msgstr "phức tạp"
+
+#: ../../library/struct.rst:263 ../../library/struct.rst:265
+#, fuzzy
+msgid "\\(10)"
+msgstr "\\(10)"
+
+#: ../../library/struct.rst:265
+#, fuzzy
+msgid "``D``"
+msgstr "``D``"
+
+#: ../../library/struct.rst:265
+#, fuzzy
+msgid ":c:expr:`double complex`"
+msgstr ":c:expr:`double complex`"
+
+#: ../../library/struct.rst:265
+#, fuzzy
+msgid "16"
+msgstr "16"
+
+#: ../../library/struct.rst:267
+#, fuzzy
+msgid "``s``"
+msgstr "``s``"
+
+#: ../../library/struct.rst:267 ../../library/struct.rst:269
+#, fuzzy
+msgid ":c:expr:`char[]`"
+msgstr ":c:expr:`char[]`"
+
+#: ../../library/struct.rst:267 ../../library/struct.rst:269
+#, fuzzy
+msgid "bytes"
+msgstr "byte"
+
+#: ../../library/struct.rst:267
+#, fuzzy
+msgid "\\(9)"
+msgstr "\\(9)"
+
+#: ../../library/struct.rst:269
+#, fuzzy
+msgid "``p``"
+msgstr "``p``"
+
+#: ../../library/struct.rst:269
+#, fuzzy
+msgid "\\(8)"
+msgstr "\\(8)"
+
+#: ../../library/struct.rst:271
+#, fuzzy
+msgid "``P``"
+msgstr "``P``"
+
+#: ../../library/struct.rst:271
+#, fuzzy
+msgid ":c:expr:`void \\*`"
+msgstr ":c:expr:`void \\*`"
+
+#: ../../library/struct.rst:271
+#, fuzzy
+msgid "\\(5)"
+msgstr "\\(5)"
+
+#: ../../library/struct.rst:274
+#, fuzzy
+msgid "Added support for the ``'n'`` and ``'N'`` formats."
+msgstr "Đã thêm hỗ trợ cho các định dạng ``'n'`` và ``'N'``."
+
+#: ../../library/struct.rst:277
+#, fuzzy
+msgid "Added support for the ``'e'`` format."
+msgstr "Đã thêm hỗ trợ cho định dạng ``'e'``."
+
+#: ../../library/struct.rst:280
+#, fuzzy
+msgid "Added support for the ``'F'`` and ``'D'`` formats."
+msgstr "Đã thêm hỗ trợ cho các định dạng ``'F'`` và ``'D'``."
+
+#: ../../library/struct.rst:285
+#, fuzzy
+msgid ""
+"The :mod:`array` and :ref:`ctypes <ctypes-fundamental-data-types>` modules, "
+"as well as third-party modules like `numpy "
+"<https://numpy.org/doc/stable/reference/arrays.interface.html#object.__array_interface__>`__,"
+" use similar -- but slightly different -- type codes."
+msgstr ""
+"Các mô-đun :mod:`array` và :ref:`ctypes <ctypes-fundamental-data-types>`, "
+"cũng như các mô-đun của bên thứ ba như `numpy "
+"<https://numpy.org/doc/stable/reference/arrays.interface.html#object.__array_interface__>`__,"
+" sử dụng mã loại tương tự -- nhưng hơi khác một chút."
+
+#: ../../library/struct.rst:295
+#, fuzzy
+msgid ""
+"The ``'?'`` conversion code corresponds to the :c:expr:`_Bool` type defined "
+"by C standards since C99.  In standard mode, it is represented by one byte."
+msgstr ""
+"Mã chuyển đổi ``'?'`` tương ứng với loại :c:expr:`_Bool` được xác định theo "
+"tiêu chuẩn C kể từ C99.  Ở chế độ tiêu chuẩn, nó được biểu thị bằng một "
+"byte."
+
+#: ../../library/struct.rst:300
+#, fuzzy
+msgid ""
+"When attempting to pack a non-integer using any of the integer conversion "
+"codes, if the non-integer has a :meth:`~object.__index__` method then that "
+"method is called to convert the argument to an integer before packing."
+msgstr ""
+"Khi cố gắng đóng gói một số không nguyên bằng cách sử dụng bất kỳ mã chuyển "
+"đổi số nguyên nào, nếu số không phải số nguyên có phương thức "
+":meth:`~object.__index__` thì phương thức đó sẽ được gọi để chuyển đổi đối "
+"số thành số nguyên trước khi đóng gói."
+
+#: ../../library/struct.rst:304
+#, fuzzy
+msgid "Added use of the :meth:`~object.__index__` method for non-integers."
+msgstr ""
+"Đã thêm việc sử dụng phương thức :meth:`~object.__index__` cho các số không "
+"nguyên."
+
+#: ../../library/struct.rst:308
+#, fuzzy
+msgid ""
+"The ``'n'`` and ``'N'`` conversion codes are only available for the native "
+"size (selected as the default or with the ``'@'`` byte order character). For"
+" the standard size, you can use whichever of the other integer formats fits "
+"your application."
+msgstr ""
+"Mã chuyển đổi ``'n'`` và ``'N'`` chỉ có sẵn cho kích thước gốc (được chọn "
+"làm mặc định hoặc với ký tự thứ tự byte ``'@'``). Đối với kích thước tiêu "
+"chuẩn, bạn có thể sử dụng bất kỳ định dạng số nguyên nào khác phù hợp với "
+"ứng dụng của bạn."
+
+#: ../../library/struct.rst:314
+#, fuzzy
+msgid ""
+"For the ``'f'``, ``'d'`` and ``'e'`` conversion codes, the packed "
+"representation uses the IEEE 754 binary32, binary64 or binary16 format (for "
+"``'f'``, ``'d'`` or ``'e'`` respectively), regardless of the floating-point "
+"format used by the platform."
+msgstr ""
+"Đối với các mã chuyển đổi ``'f'``, ``'d'`` và ``'e'``, biểu diễn đóng gói sử"
+" dụng định dạng IEEE 754 nhị phân32, nhị phân64 hoặc nhị phân16 (tương ứng "
+"cho ``'f'``, ``'d'`` hoặc ``'e'``), bất kể định dạng dấu phẩy động được nền "
+"tảng sử dụng."
+
+#: ../../library/struct.rst:320
+#, fuzzy
+msgid ""
+"The ``'P'`` format character is only available for the native byte ordering "
+"(selected as the default or with the ``'@'`` byte order character). The byte"
+" order character ``'='`` chooses to use little- or big-endian ordering based"
+" on the host system. The struct module does not interpret this as native "
+"ordering, so the ``'P'`` format is not available."
+msgstr ""
+"Ký tự định dạng ``'P'`` chỉ khả dụng cho thứ tự byte gốc (được chọn làm mặc "
+"định hoặc với ký tự thứ tự byte ``'@'``). Ký tự thứ tự byte ``'='`` chọn sử "
+"dụng thứ tự cuối nhỏ hoặc lớn dựa trên hệ thống máy chủ. Mô-đun struct không"
+" hiểu đây là thứ tự gốc, vì vậy định dạng ``'P'`` không khả dụng."
+
+#: ../../library/struct.rst:327
+#, fuzzy
+msgid ""
+"The IEEE 754 binary16 \"half precision\" type was introduced in the 2008 "
+"revision of the `IEEE 754 standard <ieee 754 standard_>`_. It has a sign "
+"bit, a 5-bit exponent and 11-bit precision (with 10 bits explicitly stored),"
+" and can represent numbers between approximately ``6.1e-05`` and ``6.5e+04``"
+" at full precision. This type is not widely supported by C compilers: it's "
+"available as :c:expr:`_Float16` type, if the compiler supports the Annex H "
+"of the C23 standard.  On a typical machine, an unsigned short can be used "
+"for storage, but not for math operations. See the Wikipedia page on the "
+"`half-precision floating-point format <half precision format_>`_ for more "
+"information."
+msgstr ""
+"Loại \"nửa chính xác\" IEEE 754 nhị phân16 được giới thiệu trong bản sửa đổi"
+" năm 2008 của `IEEE 754 standard <ieee 754 standard_>`_. Nó có một bit dấu, "
+"số mũ 5 bit và độ chính xác 11 bit (với 10 bit được lưu trữ rõ ràng) và có "
+"thể biểu thị các số trong khoảng từ ``6.1e-05`` đến ``6.5e+04`` với độ chính"
+" xác hoàn toàn. Loại này không được trình biên dịch C hỗ trợ rộng rãi: nó có"
+" sẵn dưới dạng loại :c:expr:`_Float16`, nếu trình biên dịch hỗ trợ Phụ lục H"
+" của tiêu chuẩn C23.  Trên một máy thông thường, một đoạn ngắn không dấu có "
+"thể được sử dụng để lưu trữ chứ không phải cho các phép toán. Xem trang "
+"Wikipedia trên `half-precision floating-point format <half precision "
+"format_>`_ để biết thêm thông tin."
+
+#: ../../library/struct.rst:339
+#, fuzzy
+msgid "When packing, ``'x'`` inserts one NUL byte."
+msgstr "Khi đóng gói, ``'x'`` chèn một byte NUL."
+
+#: ../../library/struct.rst:342
+#, fuzzy
+msgid ""
+"The ``'p'`` format character encodes a \"Pascal string\", meaning a short "
+"variable-length string stored in a *fixed number of bytes*, given by the "
+"count. The first byte stored is the length of the string, or 255, whichever "
+"is smaller.  The bytes of the string follow.  If the string passed in to "
+":func:`pack` is too long (longer than the count minus 1), only the leading "
+"``count-1`` bytes of the string are stored.  If the string is shorter than "
+"``count-1``, it is padded with null bytes so that exactly count bytes in all"
+" are used.  Note that for :func:`unpack`, the ``'p'`` format character "
+"consumes ``count`` bytes, but that the string returned can never contain "
+"more than 255 bytes."
+msgstr ""
+"Ký tự định dạng ``'p'`` mã hóa \"chuỗi Pascal\", nghĩa là một chuỗi ngắn có "
+"độ dài thay đổi được lưu trữ trong *fixed number of bytes*, được cung cấp "
+"bởi số lượng. Byte đầu tiên được lưu trữ là độ dài của chuỗi hoặc 255, tùy "
+"theo giá trị nào nhỏ hơn.  Các byte của chuỗi theo sau.  Nếu chuỗi được "
+"chuyển vào :func:`pack` quá dài (dài hơn số trừ 1), thì chỉ các byte "
+"``count-1`` đầu của chuỗi được lưu trữ.  Nếu chuỗi ngắn hơn ``count-1``, "
+"chuỗi đó sẽ được đệm bằng các byte rỗng để đếm chính xác tất cả các byte "
+"được sử dụng.  Lưu ý rằng đối với :func:`unpack`, ký tự định dạng ``'p'`` "
+"tiêu thụ byte ``count`` nhưng chuỗi được trả về không bao giờ có thể chứa "
+"nhiều hơn 255 byte."
+
+#: ../../library/struct.rst:354
+#, fuzzy
+msgid ""
+"For the ``'s'`` format character, the count is interpreted as the length of "
+"the bytes, not a repeat count like for the other format characters; for "
+"example, ``'10s'`` means a single 10-byte string mapping to or from a single"
+" Python byte string, while ``'10c'`` means 10 separate one byte character "
+"elements (e.g., ``cccccccccc``) mapping to or from ten different Python byte"
+" objects. (See :ref:`struct-examples` for a concrete demonstration of the "
+"difference.) If a count is not given, it defaults to 1.  For packing, the "
+"string is truncated or padded with null bytes as appropriate to make it fit."
+" For unpacking, the resulting bytes object always has exactly the specified "
+"number of bytes.  As a special case, ``'0s'`` means a single, empty string "
+"(while ``'0c'`` means 0 characters)."
+msgstr ""
+"Đối với ký tự định dạng ``'s'``, số đếm được hiểu là độ dài của byte, không "
+"phải số lần lặp lại như đối với các ký tự định dạng khác; ví dụ: ``'10s'`` "
+"có nghĩa là ánh xạ chuỗi 10 byte đơn đến hoặc từ một chuỗi byte Python đơn, "
+"trong khi ``'10c'`` có nghĩa là 10 phần tử ký tự một byte riêng biệt (ví dụ:"
+" ``cccccccccc``) ánh xạ tới hoặc từ mười đối tượng byte Python khác nhau. "
+"(Xem :ref:`struct-examples` để biết minh họa cụ thể về sự khác biệt.) Nếu "
+"không đưa ra số đếm, nó sẽ mặc định là 1. Để đóng gói, chuỗi được cắt ngắn "
+"hoặc đệm bằng các byte rỗng cho phù hợp để làm cho nó phù hợp. Để giải nén, "
+"đối tượng byte kết quả luôn có chính xác số byte được chỉ định.  Trong "
+"trường hợp đặc biệt, ``'0s'`` có nghĩa là một chuỗi trống, đơn (trong khi "
+"``'0c'`` có nghĩa là 0 ký tự)."
+
+#: ../../library/struct.rst:368
+#, fuzzy
+msgid ""
+"For the ``'F'`` and ``'D'`` format characters, the packed representation "
+"uses the IEEE 754 binary32 and binary64 format for components of the complex"
+" number, regardless of the floating-point format used by the platform. Note "
+"that complex types (``F`` and ``D``) are available unconditionally, despite "
+"complex types being an optional feature in C. As specified in the C11 "
+"standard, each complex type is represented by a two-element C array "
+"containing, respectively, the real and imaginary parts."
+msgstr ""
+"Đối với các ký tự định dạng ``'F'`` và ``'D'``, biểu diễn đóng gói sử dụng "
+"định dạng IEEE 754 nhị phân32 và nhị phân64 cho các thành phần của số phức, "
+"bất kể định dạng dấu phẩy động được nền tảng sử dụng. Lưu ý rằng các loại "
+"phức tạp (``F`` và ``D``) có sẵn vô điều kiện, mặc dù các loại phức tạp là "
+"một tính năng tùy chọn trong C. Như được chỉ định trong tiêu chuẩn C11, mỗi "
+"loại phức tạp được biểu thị bằng một mảng C hai phần tử chứa tương ứng phần "
+"thực và phần ảo."
+
+#: ../../library/struct.rst:377
+#, fuzzy
+msgid ""
+"A format character may be preceded by an integral repeat count.  For "
+"example, the format string ``'4h'`` means exactly the same as ``'hhhh'``."
+msgstr ""
+"Một ký tự định dạng có thể được đặt trước bởi số lần lặp lại tích phân.  Ví "
+"dụ: chuỗi định dạng ``'4h'`` có nghĩa giống hệt như ``'hhhh'``."
+
+#: ../../library/struct.rst:380
+#, fuzzy
+msgid ""
+"Whitespace characters between formats are ignored; a count and its format "
+"must not contain whitespace though."
+msgstr ""
+"Ký tự khoảng trắng giữa các định dạng bị bỏ qua; Tuy nhiên, số đếm và định "
+"dạng của nó không được chứa khoảng trắng."
+
+#: ../../library/struct.rst:383
+#, fuzzy
+msgid ""
+"When packing a value ``x`` using one of the integer formats (``'b'``, "
+"``'B'``, ``'h'``, ``'H'``, ``'i'``, ``'I'``, ``'l'``, ``'L'``, ``'q'``, "
+"``'Q'``), if ``x`` is outside the valid range for that format then "
+":exc:`struct.error` is raised."
+msgstr ""
+"Khi đóng gói một giá trị ``x`` bằng một trong các định dạng số nguyên "
+"(``'b'``, ``'B'``, ``'h'``, ``'H'``, ``'i'``, ``'I'``, ``'l'``, ``'L'``, "
+"``'q'``, ``'Q'``), nếu ``x`` nằm ngoài phạm vi hợp lệ cho định dạng đó thì "
+":exc:`struct.error` sẽ được nâng lên."
+
+#: ../../library/struct.rst:388
+#, fuzzy
+msgid ""
+"Previously, some of the integer formats wrapped out-of-range values and "
+"raised :exc:`DeprecationWarning` instead of :exc:`struct.error`."
+msgstr ""
+"Trước đây, một số định dạng số nguyên bao bọc các giá trị ngoài phạm vi và "
+"tăng :exc:`DeprecationWarning` thay vì :exc:`struct.error`."
+
+#: ../../library/struct.rst:394
+#, fuzzy
+msgid ""
+"For the ``'?'`` format character, the return value is either :const:`True` "
+"or :const:`False`. When packing, the truth value of the argument object is "
+"used. Either 0 or 1 in the native or standard bool representation will be "
+"packed, and any non-zero value will be ``True`` when unpacking."
+msgstr ""
+"Đối với ký tự định dạng ``'?'``, giá trị trả về là :const:`True` hoặc "
+":const:`False`. Khi đóng gói, giá trị thật của đối tượng đối số sẽ được sử "
+"dụng. 0 hoặc 1 trong biểu diễn bool gốc hoặc tiêu chuẩn sẽ được đóng gói và "
+"mọi giá trị khác 0 sẽ là ``True`` khi giải nén."
+
+#: ../../library/struct.rst:404
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/struct.rst:407
+#, fuzzy
+msgid ""
+"Native byte order examples (designated by the ``'@'`` format prefix or lack "
+"of any prefix character) may not match what the reader's machine produces as"
+" that depends on the platform and compiler."
+msgstr ""
+"Các ví dụ về thứ tự byte gốc (được chỉ định bởi tiền tố định dạng ``'@'`` "
+"hoặc thiếu bất kỳ ký tự tiền tố nào) có thể không khớp với những gì máy của "
+"trình đọc tạo ra vì điều đó phụ thuộc vào nền tảng và trình biên dịch."
+
+#: ../../library/struct.rst:412
+#, fuzzy
+msgid ""
+"Pack and unpack integers of three different sizes, using big endian "
+"ordering::"
+msgstr ""
+"Đóng gói và giải nén các số nguyên có ba kích cỡ khác nhau, sử dụng thứ tự "
+"endian lớn::"
+
+#: ../../library/struct.rst:415
+#, fuzzy
+msgid ""
+">>> from struct import *\n"
+">>> pack(\">bhl\", 1, 2, 3)\n"
+"b'\\x01\\x00\\x02\\x00\\x00\\x00\\x03'\n"
+">>> unpack('>bhl', b'\\x01\\x00\\x02\\x00\\x00\\x00\\x03')\n"
+"(1, 2, 3)\n"
+">>> calcsize('>bhl')\n"
+"7"
+msgstr ""
+">>> từ nhập cấu trúc *\n"
+">>> gói(\">bhl\", 1, 2, 3)\n"
+"b'\\x01\\x00\\x02\\x00\\x00\\x00\\x03'\n"
+">>> giải nén('>bhl', b'\\x01\\x00\\x02\\x00\\x00\\x00\\x03')\n"
+"(1, 2, 3)\n"
+">>> vôi hóa('>bhl')\n"
+"7"
+
+#: ../../library/struct.rst:423
+#, fuzzy
+msgid "Attempt to pack an integer which is too large for the defined field::"
+msgstr "Cố gắng đóng gói một số nguyên quá lớn đối với trường được xác định::"
+
+#: ../../library/struct.rst:425
+#, fuzzy
+msgid ""
+">>> pack(\">h\", 99999)\n"
+"Traceback (most recent call last):\n"
+"  File \"<stdin>\", line 1, in <module>\n"
+"struct.error: 'h' format requires -32768 <= number <= 32767"
+msgstr ""
+">>> gói(\">h\", 99999)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  Tệp \"<stdin>\", dòng 1, trong <module>\n"
+"struct.error: định dạng 'h' yêu cầu -32768 <= số <= 32767"
+
+#: ../../library/struct.rst:430
+#, fuzzy
+msgid ""
+"Demonstrate the difference between ``'s'`` and ``'c'`` format characters::"
+msgstr "Chứng minh sự khác biệt giữa các ký tự định dạng ``'s'`` và ``'c'``::"
+
+#: ../../library/struct.rst:433
+#, fuzzy
+msgid ""
+">>> pack(\"@ccc\", b'1', b'2', b'3')\n"
+"b'123'\n"
+">>> pack(\"@3s\", b'123')\n"
+"b'123'"
+msgstr ""
+">>> gói(\"@ccc\", b'1', b'2', b'3')\n"
+"b'123'\n"
+">>> gói(\"@3s\", b'123')\n"
+"b'123'"
+
+#: ../../library/struct.rst:438
+#, fuzzy
+msgid ""
+"Unpacked fields can be named by assigning them to variables or by wrapping "
+"the result in a named tuple::"
+msgstr ""
+"Các trường đã giải nén có thể được đặt tên bằng cách gán chúng cho các biến "
+"hoặc bằng cách gói kết quả vào một bộ dữ liệu được đặt tên ::"
+
+#: ../../library/struct.rst:441
+#, fuzzy
+msgid ""
+">>> record = b'raymond   \\x32\\x12\\x08\\x01\\x08'\n"
+">>> name, serialnum, school, gradelevel = unpack('<10sHHb', record)\n"
+"\n"
+">>> from collections import namedtuple\n"
+">>> Student = namedtuple('Student', 'name serialnum school gradelevel')\n"
+">>> Student._make(unpack('<10sHHb', record))\n"
+"Student(name=b'raymond   ', serialnum=4658, school=264, gradelevel=8)"
+msgstr ""
+">>> record = b'raymond \\x32\\x12\\x08\\x01\\x08'\n"
+">>> tên, số serial, trường, cấp lớp = giải nén('<10sHHb', record)\n"
+"\n"
+">>> từ bộ sưu tập nhập têntuple\n"
+">>> Sinh viên = têntuple('Học sinh', 'tên trường cấp lớp')\n"
+">>> Sinh viên._make(giải nén('<10sHHb', record))\n"
+"Học sinh(name=b'raymond ', serialnum=4658, school=264, Gradelevel=8)"
+
+#: ../../library/struct.rst:449
+#, fuzzy
+msgid ""
+"The ordering of format characters may have an impact on size in native mode "
+"since padding is implicit. In standard mode, the user is responsible for "
+"inserting any desired padding. Note in the first ``pack`` call below that "
+"three NUL bytes were added after the packed ``'#'`` to align the following "
+"integer on a four-byte boundary. In this example, the output was produced on"
+" a little endian machine::"
+msgstr ""
+"Thứ tự của các ký tự định dạng có thể có tác động đến kích thước ở chế độ "
+"gốc vì phần đệm là ẩn. Ở chế độ tiêu chuẩn, người dùng có trách nhiệm chèn "
+"bất kỳ phần đệm mong muốn nào. Lưu ý trong lệnh gọi ``pack`` đầu tiên bên "
+"dưới rằng ba byte NUL đã được thêm vào sau ``'#'`` được đóng gói để căn "
+"chỉnh số nguyên sau trên ranh giới bốn byte. Trong ví dụ này, kết quả đầu ra"
+" được tạo ra trên một máy endian nhỏ::"
+
+#: ../../library/struct.rst:457
+#, fuzzy
+msgid ""
+">>> pack('@ci', b'#', 0x12131415)\n"
+"b'#\\x00\\x00\\x00\\x15\\x14\\x13\\x12'\n"
+">>> pack('@ic', 0x12131415, b'#')\n"
+"b'\\x15\\x14\\x13\\x12#'\n"
+">>> calcsize('@ci')\n"
+"8\n"
+">>> calcsize('@ic')\n"
+"5"
+msgstr ""
+">>> gói('@ci', b'#', 0x12131415)\n"
+"b'#\\x00\\x00\\x00\\x15\\x14\\x13\\x12'\n"
+">>> gói('@ic', 0x12131415, b'#')\n"
+"b'\\x15\\x14\\x13\\x12#'\n"
+">>> calcsize('@ci')\n"
+"8\n"
+">>> calcsize('@ic')\n"
+"5"
+
+#: ../../library/struct.rst:466
+#, fuzzy
+msgid ""
+"The following format ``'llh0l'`` results in two pad bytes being added at the"
+" end, assuming the platform's longs are aligned on 4-byte boundaries::"
+msgstr ""
+"Định dạng ``'llh0l'`` sau đây dẫn đến hai byte đệm được thêm vào cuối, giả "
+"sử độ dài của nền tảng được căn chỉnh trên ranh giới 4 byte::"
+
+#: ../../library/struct.rst:469
+#, fuzzy
+msgid ""
+">>> pack('@llh0l', 1, 2, 3)\n"
+"b'\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\x00\\x03\\x00\\x00'"
+msgstr ""
+">>> gói('@llh0l', 1, 2, 3)\n"
+"b'\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\x00\\x03\\x00\\x00'"
+
+#: ../../library/struct.rst:475
+#, fuzzy
+msgid "Module :mod:`array`"
+msgstr "Mô-đun :mod:`array`"
+
+#: ../../library/struct.rst:476
+#, fuzzy
+msgid "Packed binary storage of homogeneous data."
+msgstr "Lưu trữ nhị phân đóng gói dữ liệu đồng nhất."
+
+#: ../../library/struct.rst:478
+#, fuzzy
+msgid "Module :mod:`json`"
+msgstr "Mô-đun :mod:`json`"
+
+#: ../../library/struct.rst:479
+#, fuzzy
+msgid "JSON encoder and decoder."
+msgstr "bộ mã hóa và giải mã JSON."
+
+#: ../../library/struct.rst:481
+#, fuzzy
+msgid "Module :mod:`pickle`"
+msgstr "Mô-đun :mod:`pickle`"
+
+#: ../../library/struct.rst:482
+#, fuzzy
+msgid "Python object serialization."
+msgstr "Tuần tự hóa đối tượng Python."
+
+#: ../../library/struct.rst:488
+#, fuzzy
+msgid "Applications"
+msgstr "Ứng dụng"
+
+#: ../../library/struct.rst:490
+#, fuzzy
+msgid ""
+"Two main applications for the :mod:`!struct` module exist, data interchange "
+"between Python and C code within an application or another application "
+"compiled using the same compiler (:ref:`native formats<struct-native-"
+"formats>`), and data interchange between applications using agreed upon data"
+" layout (:ref:`standard formats<struct-standard-formats>`).  Generally "
+"speaking, the format strings constructed for these two domains are distinct."
+msgstr ""
+"Có hai ứng dụng chính cho mô-đun :mod:`!struct`, trao đổi dữ liệu giữa mã "
+"Python và C trong một ứng dụng hoặc ứng dụng khác được biên dịch bằng cùng "
+"một trình biên dịch (:ref:`native formats<struct-native-formats>`) và trao "
+"đổi dữ liệu giữa các ứng dụng sử dụng bố cục dữ liệu đã thỏa thuận "
+"(:ref:`standard formats<struct-standard-formats>`).  Nói chung, các chuỗi "
+"định dạng được xây dựng cho hai miền này là khác nhau."
+
+#: ../../library/struct.rst:501
+#, fuzzy
+msgid "Native Formats"
+msgstr "Định dạng gốc"
+
+#: ../../library/struct.rst:503
+#, fuzzy
+msgid ""
+"When constructing format strings which mimic native layouts, the compiler "
+"and machine architecture determine byte ordering and padding. In such cases,"
+" the ``@`` format character should be used to specify native byte ordering "
+"and data sizes.  Internal pad bytes are normally inserted automatically.  It"
+" is possible that a zero-repeat format code will be needed at the end of a "
+"format string to round up to the correct byte boundary for proper alignment "
+"of consecutive chunks of data."
+msgstr ""
+"Khi xây dựng các chuỗi định dạng bắt chước bố cục gốc, trình biên dịch và "
+"kiến trúc máy sẽ xác định thứ tự byte và phần đệm. Trong những trường hợp "
+"như vậy, nên sử dụng ký tự định dạng ``@`` để chỉ định thứ tự byte gốc và "
+"kích thước dữ liệu.  Các byte đệm bên trong thường được chèn tự động.  Có "
+"thể cần có mã định dạng không lặp lại ở cuối chuỗi định dạng để làm tròn đến"
+" ranh giới byte chính xác để căn chỉnh chính xác các khối dữ liệu liên tiếp."
+
+#: ../../library/struct.rst:511
+#, fuzzy
+msgid ""
+"Consider these two simple examples (on a 64-bit, little-endian machine)::"
+msgstr "Hãy xem xét hai ví dụ đơn giản sau (trên máy 64-bit, little-endian)::"
+
+#: ../../library/struct.rst:514
+#, fuzzy
+msgid ""
+">>> calcsize('@lhl')\n"
+"24\n"
+">>> calcsize('@llh')\n"
+"18"
+msgstr ""
+">>> vôi hóa('@lhl')\n"
+"24\n"
+">>> vôi hóa('@llh')\n"
+"18"
+
+#: ../../library/struct.rst:519
+#, fuzzy
+msgid ""
+"Data is not padded to an 8-byte boundary at the end of the second format "
+"string without the use of extra padding.  A zero-repeat format code solves "
+"that problem::"
+msgstr ""
+"Dữ liệu không được đệm vào ranh giới 8 byte ở cuối chuỗi định dạng thứ hai "
+"mà không sử dụng phần đệm bổ sung.  Mã định dạng không lặp lại sẽ giải quyết"
+" vấn đề đó ::"
+
+#: ../../library/struct.rst:523
+#, fuzzy
+msgid ""
+">>> calcsize('@llh0l')\n"
+"24"
+msgstr ""
+">>> calcsize('@llh0l')\n"
+"24"
+
+#: ../../library/struct.rst:526
+#, fuzzy
+msgid ""
+"The ``'x'`` format code can be used to specify the repeat, but for native "
+"formats it is better to use a zero-repeat format like ``'0l'``."
+msgstr ""
+"Mã định dạng ``'x'`` có thể được sử dụng để chỉ định lặp lại, nhưng đối với "
+"các định dạng gốc, tốt hơn nên sử dụng định dạng không lặp lại như ``'0l'``."
+
+#: ../../library/struct.rst:529
+#, fuzzy
+msgid ""
+"By default, native byte ordering and alignment is used, but it is better to "
+"be explicit and use the ``'@'`` prefix character."
+msgstr ""
+"Theo mặc định, thứ tự và căn chỉnh byte gốc được sử dụng, nhưng tốt hơn là "
+"nên rõ ràng và sử dụng ký tự tiền tố ``'@'``."
+
+#: ../../library/struct.rst:536
+#, fuzzy
+msgid "Standard Formats"
+msgstr "Định dạng chuẩn"
+
+#: ../../library/struct.rst:538
+#, fuzzy
+msgid ""
+"When exchanging data beyond your process such as networking or storage, be "
+"precise.  Specify the exact byte order, size, and alignment.  Do not assume "
+"they match the native order of a particular machine. For example, network "
+"byte order is big-endian, while many popular CPUs are little-endian.  By "
+"defining this explicitly, the user need not care about the specifics of the "
+"platform their code is running on. The first character should typically be "
+"``<`` or ``>`` (or ``!``).  Padding is the responsibility of the programmer."
+"  The zero-repeat format character won't work.  Instead, the user must "
+"explicitly add ``'x'`` pad bytes where needed.  Revisiting the examples from"
+" the previous section, we have::"
+msgstr ""
+"Khi trao đổi dữ liệu ngoài quy trình của bạn như kết nối mạng hoặc lưu trữ, "
+"hãy chính xác.  Chỉ định thứ tự byte, kích thước và căn chỉnh chính xác.  "
+"Đừng cho rằng chúng khớp với thứ tự gốc của một máy cụ thể. Ví dụ: thứ tự "
+"byte mạng là endian lớn, trong khi nhiều CPU phổ biến là endian nhỏ.  Bằng "
+"cách xác định điều này một cách rõ ràng, người dùng không cần quan tâm đến "
+"các chi tiết cụ thể của nền tảng mà mã của họ đang chạy. Ký tự đầu tiên "
+"thường là ``<`` hoặc ``>`` (hoặc ``!``).  Việc đệm là trách nhiệm của người "
+"lập trình.  Ký tự định dạng không lặp lại sẽ không hoạt động.  Thay vào đó, "
+"người dùng phải thêm byte đệm ``'x'`` một cách rõ ràng khi cần.  Xem lại các"
+" ví dụ ở phần trước, chúng ta có::"
+
+#: ../../library/struct.rst:550
+#, fuzzy
+msgid ""
+">>> calcsize('<qh6xq')\n"
+"24\n"
+">>> pack('<qh6xq', 1, 2, 3) == pack('@lhl', 1, 2, 3)\n"
+"True\n"
+">>> calcsize('@llh')\n"
+"18\n"
+">>> pack('@llh', 1, 2, 3) == pack('<qqh', 1, 2, 3)\n"
+"True\n"
+">>> calcsize('<qqh6x')\n"
+"24\n"
+">>> calcsize('@llh0l')\n"
+"24\n"
+">>> pack('@llh0l', 1, 2, 3) == pack('<qqh6x', 1, 2, 3)\n"
+"True"
+msgstr ""
+">>> calcsize('<qh6xq')\n"
+"24\n"
+">>> gói('<qh6xq', 1, 2, 3) == gói('@lhl', 1, 2, 3)\n"
+"đúng\n"
+">>> vôi hóa('@llh')\n"
+"18\n"
+">>> gói('@llh', 1, 2, 3) == gói('<qqh', 1, 2, 3)\n"
+"đúng\n"
+">>> calcsize('<qqh6x')\n"
+"24\n"
+">>> calcsize('@llh0l')\n"
+"24\n"
+">>> gói('@llh0l', 1, 2, 3) == gói('<qqh6x', 1, 2, 3)\n"
+"đúng"
+
+#: ../../library/struct.rst:565
+#, fuzzy
+msgid ""
+"The above results (executed on a 64-bit machine) aren't guaranteed to match "
+"when executed on different machines.  For example, the examples below were "
+"executed on a 32-bit machine::"
+msgstr ""
+"Các kết quả trên (được thực thi trên máy 64 bit) không được đảm bảo khớp khi"
+" được thực thi trên các máy khác nhau.  Ví dụ: các ví dụ bên dưới được thực "
+"thi trên máy 32 bit::"
+
+#: ../../library/struct.rst:569
+#, fuzzy
+msgid ""
+">>> calcsize('<qqh6x')\n"
+"24\n"
+">>> calcsize('@llh0l')\n"
+"12\n"
+">>> pack('@llh0l', 1, 2, 3) == pack('<qqh6x', 1, 2, 3)\n"
+"False"
+msgstr ""
+">>> calcsize('<qqh6x')\n"
+"24\n"
+">>> calcsize('@llh0l')\n"
+"12\n"
+">>> gói('@llh0l', 1, 2, 3) == gói('<qqh6x', 1, 2, 3)\n"
+"sai"
+
+#: ../../library/struct.rst:580
+#, fuzzy
+msgid "Classes"
+msgstr "Lớp học"
+
+#: ../../library/struct.rst:582
+#, fuzzy
+msgid "The :mod:`!struct` module also defines the following type:"
+msgstr "Mô-đun :mod:`!struct` cũng xác định loại sau:"
+
+#: ../../library/struct.rst:587
+#, fuzzy
+msgid ""
+"Return a new Struct object which writes and reads binary data according to "
+"the format string *format*.  Creating a ``Struct`` object once and calling "
+"its methods is more efficient than calling module-level functions with the "
+"same format since the format string is only compiled once."
+msgstr ""
+"Trả về một đối tượng Struct mới ghi và đọc dữ liệu nhị phân theo chuỗi định "
+"dạng *format*.  Tạo một đối tượng ``Struct`` một lần và gọi các phương thức "
+"của nó sẽ hiệu quả hơn so với việc gọi các hàm cấp mô-đun có cùng định dạng "
+"vì chuỗi định dạng chỉ được biên dịch một lần."
+
+#: ../../library/struct.rst:594
+#, fuzzy
+msgid ""
+"The compiled versions of the most recent format strings passed to the "
+"module-level functions are cached, so programs that use only a few format "
+"strings needn't worry about reusing a single :class:`Struct` instance."
+msgstr ""
+"Các phiên bản đã biên dịch của chuỗi định dạng gần đây nhất được chuyển đến "
+"các hàm cấp mô-đun được lưu vào bộ nhớ đệm, do đó các chương trình chỉ sử "
+"dụng một vài chuỗi định dạng không cần phải lo lắng về việc sử dụng lại một "
+"phiên bản :class:`Struct` duy nhất."
+
+#: ../../library/struct.rst:599
+#, fuzzy
+msgid "Compiled Struct objects support the following methods and attributes:"
+msgstr ""
+"Các đối tượng Struct được biên dịch hỗ trợ các phương thức và thuộc tính "
+"sau:"
+
+#: ../../library/struct.rst:603
+#, fuzzy
+msgid ""
+"Identical to the :func:`pack` function, using the compiled format. "
+"(``len(result)`` will equal :attr:`size`.)"
+msgstr ""
+"Giống hệt hàm :func:`pack`, sử dụng định dạng đã biên dịch. (``len(result)``"
+" sẽ bằng :attr:`size`.)"
+
+#: ../../library/struct.rst:609
+#, fuzzy
+msgid ""
+"Identical to the :func:`pack_into` function, using the compiled format."
+msgstr "Giống hệt hàm :func:`pack_into`, sử dụng định dạng đã biên dịch."
+
+#: ../../library/struct.rst:614
+#, fuzzy
+msgid ""
+"Identical to the :func:`unpack` function, using the compiled format. The "
+"buffer's size in bytes must equal :attr:`size`."
+msgstr ""
+"Giống hệt hàm :func:`unpack`, sử dụng định dạng đã biên dịch. Kích thước của"
+" bộ đệm tính bằng byte phải bằng :attr:`size`."
+
+#: ../../library/struct.rst:620
+#, fuzzy
+msgid ""
+"Identical to the :func:`unpack_from` function, using the compiled format. "
+"The buffer's size in bytes, starting at position *offset*, must be at least "
+":attr:`size`."
+msgstr ""
+"Giống hệt hàm :func:`unpack_from`, sử dụng định dạng đã biên dịch. Kích "
+"thước của bộ đệm tính bằng byte, bắt đầu từ vị trí *offset*, ít nhất phải là"
+" :attr:`size`."
+
+#: ../../library/struct.rst:627
+#, fuzzy
+msgid ""
+"Identical to the :func:`iter_unpack` function, using the compiled format. "
+"The buffer's size in bytes must be a multiple of :attr:`size`."
+msgstr ""
+"Giống hệt hàm :func:`iter_unpack`, sử dụng định dạng đã biên dịch. Kích "
+"thước của bộ đệm tính bằng byte phải là bội số của :attr:`size`."
+
+#: ../../library/struct.rst:634
+#, fuzzy
+msgid "The format string used to construct this Struct object."
+msgstr "Chuỗi định dạng được sử dụng để xây dựng đối tượng Struct này."
+
+#: ../../library/struct.rst:636
+#, fuzzy
+msgid "The format string type is now :class:`str` instead of :class:`bytes`."
+msgstr "Loại chuỗi định dạng bây giờ là :class:`str` thay vì :class:`bytes`."
+
+#: ../../library/struct.rst:641
+#, fuzzy
+msgid ""
+"The calculated size of the struct (and hence of the bytes object produced by"
+" the :meth:`pack` method) corresponding to :attr:`format`."
+msgstr ""
+"Kích thước được tính toán của cấu trúc (và do đó của đối tượng byte được tạo"
+" bằng phương thức :meth:`pack`) tương ứng với :attr:`format`."
+
+#: ../../library/struct.rst:644
+#, fuzzy
+msgid "The *repr()* of structs has changed.  It is now:"
+msgstr "*repr()* của cấu trúc đã thay đổi.  Bây giờ là:"
+
+#: ../../library/struct.rst:13
+#, fuzzy
+msgid "C"
+msgstr "C"
+
+#: ../../library/struct.rst:13
+#, fuzzy
+msgid "structures"
+msgstr "cấu trúc"
+
+#: ../../library/struct.rst:13
+#, fuzzy
+msgid "packing"
+msgstr "đóng gói"
+
+#: ../../library/struct.rst:13
+#, fuzzy
+msgid "binary"
+msgstr "nhị phân"
+
+#: ../../library/struct.rst:13
+#, fuzzy
+msgid "data"
+msgstr "dữ liệu"
+
+#: ../../library/struct.rst:136
+#, fuzzy
+msgid "@ (at)"
+msgstr "@ (tại)"
+
+#: ../../library/struct.rst:136 ../../library/struct.rst:293
+#: ../../library/struct.rst:392
+#, fuzzy
+msgid "in struct format strings"
+msgstr "trong chuỗi định dạng cấu trúc"
+
+#: ../../library/struct.rst:136
+#, fuzzy
+msgid "= (equals)"
+msgstr "= (bằng)"
+
+#: ../../library/struct.rst:136
+#, fuzzy
+msgid "< (less)"
+msgstr "< (ít hơn)"
+
+#: ../../library/struct.rst:136
+#, fuzzy
+msgid "> (greater)"
+msgstr "> (lớn hơn)"
+
+#: ../../library/struct.rst:136
+#, fuzzy
+msgid "! (exclamation)"
+msgstr "! (cảm thán)"
+
+#: ../../library/struct.rst:293 ../../library/struct.rst:392
+#, fuzzy
+msgid "? (question mark)"
+msgstr "? (dấu chấm hỏi)"

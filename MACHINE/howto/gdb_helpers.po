@@ -1,0 +1,1060 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/gdb_helpers.rst:5
+#, fuzzy
+msgid "Debugging C API extensions and CPython Internals with GDB"
+msgstr "Gỡ lỗi tiện ích mở rộng C API và CPython Internals bằng GDB"
+
+#: ../../howto/gdb_helpers.rst:9
+#, fuzzy
+msgid ""
+"This document explains how the Python GDB extension, ``python-gdb.py``, can "
+"be used with the GDB debugger to debug CPython extensions and the CPython "
+"interpreter itself."
+msgstr ""
+"Tài liệu này giải thích cách có thể sử dụng tiện ích mở rộng GDB của Python,"
+" ``python-gdb.py``, với trình gỡ lỗi GDB để gỡ lỗi các tiện ích mở rộng "
+"CPython và chính trình thông dịch CPython."
+
+#: ../../howto/gdb_helpers.rst:13
+#, fuzzy
+msgid ""
+"When debugging low-level problems such as crashes or deadlocks, a low-level "
+"debugger, such as GDB, is useful to diagnose and correct the issue. By "
+"default, GDB (or any of its front-ends) doesn't support high-level "
+"information specific to the CPython interpreter."
+msgstr ""
+"Khi gỡ lỗi các sự cố cấp thấp như sự cố hoặc bế tắc, trình gỡ lỗi cấp thấp, "
+"chẳng hạn như GDB, rất hữu ích để chẩn đoán và khắc phục sự cố. Theo mặc "
+"định, GDB (hoặc bất kỳ giao diện người dùng nào của nó) không hỗ trợ thông "
+"tin cấp cao dành riêng cho trình thông dịch CPython."
+
+#: ../../howto/gdb_helpers.rst:18
+#, fuzzy
+msgid ""
+"The ``python-gdb.py`` extension adds CPython interpreter information to GDB."
+" The extension helps introspect the stack of currently executing Python "
+"functions. Given a Python object represented by a :c:expr:`PyObject *` "
+"pointer, the extension surfaces the type and value of the object."
+msgstr ""
+"Tiện ích mở rộng ``python-gdb.py`` thêm thông tin trình thông dịch CPython "
+"vào GDB. Tiện ích mở rộng giúp xem xét nội tâm các hàm Python hiện đang thực"
+" thi. Với một đối tượng Python được biểu thị bằng con trỏ :c:expr:`PyObject "
+"*`, phần mở rộng sẽ hiển thị loại và giá trị của đối tượng."
+
+#: ../../howto/gdb_helpers.rst:23
+#, fuzzy
+msgid ""
+"Developers who are working on CPython extensions or tinkering with parts of "
+"CPython that are written in C can use this document to learn how to use the "
+"``python-gdb.py`` extension with GDB."
+msgstr ""
+"Các nhà phát triển đang làm việc trên tiện ích mở rộng CPython hoặc mày mò "
+"các phần của CPython được viết bằng C có thể sử dụng tài liệu này để tìm "
+"hiểu cách sử dụng tiện ích mở rộng ``python-gdb.py`` với GDB."
+
+#: ../../howto/gdb_helpers.rst:29
+#, fuzzy
+msgid ""
+"This document assumes that you are familiar with the basics of GDB and the "
+"CPython C API. It consolidates guidance from the `devguide "
+"<https://devguide.python.org>`_  and the `Python wiki "
+"<https://wiki.python.org/moin/DebuggingWithGdb>`_."
+msgstr ""
+"Tài liệu này giả định rằng bạn đã quen thuộc với kiến thức cơ bản về GDB và "
+"CPython C API. Nó tổng hợp hướng dẫn từ `devguide "
+"<https://devguide.python.org>`_ và `Python wiki "
+"<https://wiki.python.org/moin/DebuggingWithGdb>`_."
+
+#: ../../howto/gdb_helpers.rst:36
+#, fuzzy
+msgid "Prerequisites"
+msgstr "Điều kiện tiên quyết"
+
+#: ../../howto/gdb_helpers.rst:38
+#, fuzzy
+msgid "You need to have:"
+msgstr "Bạn cần phải có:"
+
+#: ../../howto/gdb_helpers.rst:40
+#, fuzzy
+msgid ""
+"GDB 7 or later. (For earlier versions of GDB, see ``Misc/gdbinit`` in the "
+"sources of Python 3.11 or earlier.)"
+msgstr ""
+"GDB 7 trở lên. (Đối với các phiên bản cũ hơn của GDB, hãy xem "
+"``Misc/gdbinit`` trong các nguồn của Python 3.11 trở về trước.)"
+
+#: ../../howto/gdb_helpers.rst:42
+#, fuzzy
+msgid ""
+"GDB-compatible debugging information for Python and any extension you are "
+"debugging."
+msgstr ""
+"thông tin gỡ lỗi tương thích với GDB cho Python và bất kỳ tiện ích mở rộng "
+"nào bạn đang gỡ lỗi."
+
+#: ../../howto/gdb_helpers.rst:44
+#, fuzzy
+msgid "The ``python-gdb.py`` extension."
+msgstr "Tiện ích mở rộng ``python-gdb.py``."
+
+#: ../../howto/gdb_helpers.rst:46
+#, fuzzy
+msgid ""
+"The extension is built with Python, but might be distributed separately or "
+"not at all. Below, we include tips for a few common systems as examples. "
+"Note that even if the instructions match your system, they might be "
+"outdated."
+msgstr ""
+"Tiện ích mở rộng được xây dựng bằng Python nhưng có thể được phân phối riêng"
+" hoặc không được phân phối. Dưới đây, chúng tôi bao gồm các mẹo cho một số "
+"hệ thống phổ biến làm ví dụ. Lưu ý rằng ngay cả khi các hướng dẫn phù hợp "
+"với hệ thống của bạn thì chúng vẫn có thể lỗi thời."
+
+#: ../../howto/gdb_helpers.rst:52
+#, fuzzy
+msgid "Setup with Python built from source"
+msgstr "Thiết lập với Python được xây dựng từ nguồn"
+
+#: ../../howto/gdb_helpers.rst:54
+#, fuzzy
+msgid ""
+"When you build CPython from source, debugging information should be "
+"available, and the build should add a ``python-gdb.py`` file to the root "
+"directory of your repository."
+msgstr ""
+"Khi bạn xây dựng CPython từ nguồn, thông tin gỡ lỗi sẽ có sẵn và bản dựng sẽ"
+" thêm tệp ``python-gdb.py`` vào thư mục gốc của kho lưu trữ của bạn."
+
+#: ../../howto/gdb_helpers.rst:58
+#, fuzzy
+msgid ""
+"To activate support, you must add the directory containing ``python-gdb.py``"
+" to GDB's \"auto-load-safe-path\". If you haven't done this, recent versions"
+" of GDB will print out a warning with instructions on how to do this."
+msgstr ""
+"Để kích hoạt hỗ trợ, bạn phải thêm thư mục chứa ``python-gdb.py`` vào "
+"\"auto-load-safe-path\" của GDB. Nếu bạn chưa thực hiện việc này, các phiên "
+"bản gần đây của GDB sẽ in ra cảnh báo kèm theo hướng dẫn về cách thực hiện "
+"việc này."
+
+#: ../../howto/gdb_helpers.rst:65
+#, fuzzy
+msgid ""
+"If you do not see instructions for your version of GDB, put this in your "
+"configuration file (``~/.gdbinit`` or ``~/.config/gdb/gdbinit``)::"
+msgstr ""
+"Nếu bạn không thấy hướng dẫn cho phiên bản GDB của mình, hãy đặt phần này "
+"vào tệp cấu hình của bạn (``~/.gdbinit`` hoặc ``~/.config/gdb/gdbinit``)::"
+
+#: ../../howto/gdb_helpers.rst:68
+#, fuzzy
+msgid "add-auto-load-safe-path /path/to/cpython"
+msgstr "add-auto-load-safe-path /path/to/cpython"
+
+#: ../../howto/gdb_helpers.rst:70
+#, fuzzy
+msgid "You can also add multiple paths, separated by ``:``."
+msgstr "Bạn cũng có thể thêm nhiều đường dẫn, cách nhau bằng ``:``."
+
+#: ../../howto/gdb_helpers.rst:74
+#, fuzzy
+msgid "Setup for Python from a Linux distro"
+msgstr "Thiết lập cho Python từ bản phân phối Linux"
+
+#: ../../howto/gdb_helpers.rst:76
+#, fuzzy
+msgid ""
+"Most Linux systems provide debug information for the system Python in a "
+"package called ``python-debuginfo``, ``python-dbg`` or similar. For example:"
+msgstr ""
+"Hầu hết các hệ thống Linux đều cung cấp thông tin gỡ lỗi cho hệ thống Python"
+" trong gói có tên ``python-debuginfo``, ``python-dbg`` hoặc tương tự. Ví dụ:"
+
+#: ../../howto/gdb_helpers.rst:80
+#, fuzzy
+msgid "Fedora:"
+msgstr "Fedora:"
+
+#: ../../howto/gdb_helpers.rst:82
+#, fuzzy
+msgid ""
+"sudo dnf install gdb\n"
+"sudo dnf debuginfo-install python3"
+msgstr ""
+"sudo dnf cài đặt gdb\n"
+"sudo dnf debuginfo-cài đặt python3"
+
+#: ../../howto/gdb_helpers.rst:87
+#, fuzzy
+msgid "Ubuntu:"
+msgstr "Ubuntu:"
+
+#: ../../howto/gdb_helpers.rst:89
+#, fuzzy
+msgid "sudo apt install gdb python3-dbg"
+msgstr "sudo apt cài đặt gdb python3-dbg"
+
+#: ../../howto/gdb_helpers.rst:93
+#, fuzzy
+msgid ""
+"On several recent Linux systems, GDB can download debugging symbols "
+"automatically using *debuginfod*. However, this will not install the "
+"``python-gdb.py`` extension; you generally do need to install the debug info"
+" package separately."
+msgstr ""
+"Trên một số hệ thống Linux gần đây, GDB có thể tự động tải xuống các biểu "
+"tượng gỡ lỗi bằng *debuginfod*. Tuy nhiên, thao tác này sẽ không cài đặt "
+"tiện ích mở rộng ``python-gdb.py``; thông thường bạn cần phải cài đặt riêng "
+"gói thông tin gỡ lỗi."
+
+#: ../../howto/gdb_helpers.rst:100
+#, fuzzy
+msgid "Using the Debug build and Development mode"
+msgstr "Sử dụng chế độ Phát triển và xây dựng gỡ lỗi"
+
+#: ../../howto/gdb_helpers.rst:102
+#, fuzzy
+msgid "For easier debugging, you might want to:"
+msgstr "Để gỡ lỗi dễ dàng hơn, bạn có thể muốn:"
+
+#: ../../howto/gdb_helpers.rst:104
+#, fuzzy
+msgid ""
+"Use a :ref:`debug build <debug-build>` of Python. (When building from "
+"source, use ``configure --with-pydebug``. On Linux distros, install and run "
+"a package like ``python-debug`` or ``python-dbg``, if available.)"
+msgstr ""
+"Sử dụng :ref:`debug build <debug-build>` của Python. (Khi xây dựng từ nguồn,"
+" hãy sử dụng ``configure --with-pydebug``. Trên các bản phân phối Linux, hãy"
+" cài đặt và chạy gói như ``python-debug`` hoặc ``python-dbg``, nếu có.)"
+
+#: ../../howto/gdb_helpers.rst:107
+#, fuzzy
+msgid "Use the runtime :ref:`development mode <devmode>` (``-X dev``)."
+msgstr ""
+"Sử dụng thời gian chạy :ref:`development mode <devmode>` (``-X dev``)."
+
+#: ../../howto/gdb_helpers.rst:109
+#, fuzzy
+msgid ""
+"Both enable extra assertions and disable some optimizations. Sometimes this "
+"hides the bug you are trying to find, but in most cases they make the "
+"process easier."
+msgstr ""
+"Cả hai đều cho phép xác nhận bổ sung và vô hiệu hóa một số tối ưu hóa. Đôi "
+"khi điều này che giấu lỗi mà bạn đang cố gắng tìm kiếm, nhưng trong hầu hết "
+"các trường hợp, chúng giúp quá trình này trở nên dễ dàng hơn."
+
+#: ../../howto/gdb_helpers.rst:115
+#, fuzzy
+msgid "Using the ``python-gdb`` extension"
+msgstr "Sử dụng tiện ích mở rộng ``python-gdb``"
+
+#: ../../howto/gdb_helpers.rst:117
+#, fuzzy
+msgid ""
+"When the extension is loaded, it provides two main features: pretty printers"
+" for Python values, and additional commands."
+msgstr ""
+"Khi tiện ích mở rộng được tải, nó cung cấp hai tính năng chính: máy in đẹp "
+"cho các giá trị Python và các lệnh bổ sung."
+
+#: ../../howto/gdb_helpers.rst:121
+#, fuzzy
+msgid "Pretty-printers"
+msgstr "Máy in đẹp"
+
+#: ../../howto/gdb_helpers.rst:123
+#, fuzzy
+msgid ""
+"This is what a GDB backtrace looks like (truncated) when this extension is "
+"enabled::"
+msgstr ""
+"Đây là giao diện của backtrace GDB (cắt ngắn) khi tiện ích mở rộng này được "
+"bật::"
+
+#: ../../howto/gdb_helpers.rst:126
+#, python-brace-format, fuzzy
+msgid ""
+"#0  0x000000000041a6b1 in PyObject_Malloc (nbytes=Cannot access memory at address 0x7fffff7fefe8\n"
+") at Objects/obmalloc.c:748\n"
+"#1  0x000000000041b7c0 in _PyObject_DebugMallocApi (id=111 'o', nbytes=24) at Objects/obmalloc.c:1445\n"
+"#2  0x000000000041b717 in _PyObject_DebugMalloc (nbytes=24) at Objects/obmalloc.c:1412\n"
+"#3  0x000000000044060a in _PyUnicode_New (length=11) at Objects/unicodeobject.c:346\n"
+"#4  0x00000000004466aa in PyUnicodeUCS2_DecodeUTF8Stateful (s=0x5c2b8d \"__lltrace__\", size=11, errors=0x0, consumed=\n"
+"    0x0) at Objects/unicodeobject.c:2531\n"
+"#5  0x0000000000446647 in PyUnicodeUCS2_DecodeUTF8 (s=0x5c2b8d \"__lltrace__\", size=11, errors=0x0)\n"
+"    at Objects/unicodeobject.c:2495\n"
+"#6  0x0000000000440d1b in PyUnicodeUCS2_FromStringAndSize (u=0x5c2b8d \"__lltrace__\", size=11)\n"
+"    at Objects/unicodeobject.c:551\n"
+"#7  0x0000000000440d94 in PyUnicodeUCS2_FromString (u=0x5c2b8d \"__lltrace__\") at Objects/unicodeobject.c:569\n"
+"#8  0x0000000000584abd in PyDict_GetItemString (v=\n"
+"    {'Yuck': <type at remote 0xad4730>, '__builtins__': <module at remote 0x7ffff7fd5ee8>, '__file__': 'Lib/test/crashers/nasty_eq_vs_dict.py', '__package__': None, 'y': <Yuck(i=0) at remote 0xaacd80>, 'dict': {0: 0, 1: 1, 2: 2, 3: 3}, '__cached__': None, '__name__': '__main__', 'z': <Yuck(i=0) at remote 0xaace60>, '__doc__': None}, key=\n"
+"    0x5c2b8d \"__lltrace__\") at Objects/dictobject.c:2171"
+msgstr ""
+"#0 0x000000000041a6b1 trong PyObject_Malloc (nbytes=Không thể truy cập bộ nhớ tại địa chỉ 0x7fffff7fefe8\n"
+") tại Đối tượng/obmalloc.c:748\n"
+"#1 0x000000000041b7c0 trong _PyObject_DebugMallocApi (id=111 'o', nbytes=24) tại Objects/obmalloc.c:1445\n"
+"#2 0x000000000041b717 trong _PyObject_DebugMalloc (nbytes=24) tại Objects/obmalloc.c:1412\n"
+"#3 0x000000000044060a trong _PyUnicode_New (length=11) tại Objects/unicodeobject.c:346\n"
+"#4 0x00000000004466aa trong PyUnicodeUCS2_DecodeUTF8Stateful (s=0x5c2b8d \"__lltrace__\", size=11, error=0x0, used=\n"
+"    0x0) tại Đối tượng/unicodeobject.c:2531\n"
+"#5 0x0000000000446647 trong PyUnicodeUCS2_DecodeUTF8 (s=0x5c2b8d \"__lltrace__\", size=11, error=0x0)\n"
+"    tại Đối tượng/unicodeobject.c:2495\n"
+"#6 0x0000000000440d1b trong PyUnicodeUCS2_FromStringAndSize (u=0x5c2b8d \"__lltrace__\", size=11)\n"
+"    tại Đối tượng/unicodeobject.c:551\n"
+"#7 0x0000000000440d94 trong PyUnicodeUCS2_FromString (u=0x5c2b8d \"__lltrace__\") tại Objects/unicodeobject.c:569\n"
+"#8 0x0000000000584abd trong PyDict_GetItemString (v=\n"
+"    {'Yuck': <type at remote 0xad4730>, '__buildins__': <module at remote 0x7ffff7fd5ee8>, '__file__': 'Lib/test/crashers/nasty_eq_vs_dict.py', '__package__': None, 'y': <Yuck(i=0) at remote 0xaacd80>, 'dict': {0: 0, 1: 1, 2: 2, 3: 3}, '__cached__': None, '__name__': '__main__', 'z': <Yuck(i=0) at remote 0xaace60>, '__doc__': None}, key=\n"
+"    0x5c2b8d \"__lltrace__\") tại Objects/dictobject.c:2171"
+
+#: ../../howto/gdb_helpers.rst:142
+#, fuzzy
+msgid ""
+"Notice how the dictionary argument to ``PyDict_GetItemString`` is displayed "
+"as its ``repr()``, rather than an opaque ``PyObject *`` pointer."
+msgstr ""
+"Lưu ý cách đối số từ điển cho ``PyDict_GetItemString`` được hiển thị dưới "
+"dạng ``repr()`` của nó, thay vì một con trỏ ``PyObject *`` mờ đục."
+
+#: ../../howto/gdb_helpers.rst:145
+#, fuzzy
+msgid ""
+"The extension works by supplying a custom printing routine for values of "
+"type ``PyObject *``.  If you need to access lower-level details of an "
+"object, then cast the value to a pointer of the appropriate type.  For "
+"example::"
+msgstr ""
+"Tiện ích mở rộng hoạt động bằng cách cung cấp quy trình in tùy chỉnh cho các"
+" giá trị thuộc loại ``PyObject *``.  Nếu bạn cần truy cập các chi tiết cấp "
+"thấp hơn của một đối tượng, hãy truyền giá trị tới một con trỏ thuộc loại "
+"thích hợp.  Ví dụ::"
+
+#: ../../howto/gdb_helpers.rst:149
+#, fuzzy
+msgid ""
+"(gdb) p globals\n"
+"$1 = {'__builtins__': <module at remote 0x7ffff7fb1868>, '__name__':\n"
+"'__main__', 'ctypes': <module at remote 0x7ffff7f14360>, '__doc__': None,\n"
+"'__package__': None}\n"
+"\n"
+"(gdb) p *(PyDictObject*)globals\n"
+"$2 = {ob_refcnt = 3, ob_type = 0x3dbdf85820, ma_fill = 5, ma_used = 5,\n"
+"ma_mask = 7, ma_table = 0x63d0f8, ma_lookup = 0x3dbdc7ea70\n"
+"<lookdict_string>, ma_smalltable = {{me_hash = 7065186196740147912,\n"
+"me_key = '__builtins__', me_value = <module at remote 0x7ffff7fb1868>},\n"
+"{me_hash = -368181376027291943, me_key = '__name__',\n"
+"me_value ='__main__'}, {me_hash = 0, me_key = 0x0, me_value = 0x0},\n"
+"{me_hash = 0, me_key = 0x0, me_value = 0x0},\n"
+"{me_hash = -9177857982131165996, me_key = 'ctypes',\n"
+"me_value = <module at remote 0x7ffff7f14360>},\n"
+"{me_hash = -8518757509529533123, me_key = '__doc__', me_value = None},\n"
+"{me_hash = 0, me_key = 0x0, me_value = 0x0}, {\n"
+"  me_hash = 6614918939584953775, me_key = '__package__', me_value = None}}}"
+msgstr ""
+"(gdb) p toàn cầu\n"
+"$1 = {'__buildins__': <mô-đun tại 0x7ffff7fb1868 từ xa>, '__name__':\n"
+"'__main__', 'ctypes': <mô-đun ở xa 0x7ffff7f14360>, '__doc__': Không,\n"
+"'__gói__': Không có}\n"
+"\n"
+"(gdb) p *(PyDictObject*)toàn cầu\n"
+"$2 = {ob_refcnt = 3, ob_type = 0x3dbdf85820, ma_fill = 5, ma_used = 5,\n"
+"ma_mask = 7, ma_table = 0x63d0f8, ma_lookup = 0x3dbdc7ea70\n"
+"<lookdict_string>, ma_smalltable = {{me_hash = 7065186196740147912,\n"
+"me_key = '__buildins__', me_value = <mô-đun ở xa 0x7ffff7fb1868>},\n"
+"{me_hash = -368181376027291943, me_key = '__name__',\n"
+"me_value ='__main__'}, {me_hash = 0, me_key = 0x0, me_value = 0x0},\n"
+"{me_hash = 0, me_key = 0x0, me_value = 0x0},\n"
+"{me_hash = -9177857982131165996, me_key = 'ctypes',\n"
+"me_value = <mô-đun ở xa 0x7ffff7f14360>},\n"
+"{me_hash = -8518757509529533123, me_key = '__doc__', me_value = Không},\n"
+"{me_hash = 0, me_key = 0x0, me_value = 0x0}, {\n"
+"  me_hash = 6614918939584953775, me_key = '__package__', me_value = Không có}}}"
+
+#: ../../howto/gdb_helpers.rst:168
+#, fuzzy
+msgid ""
+"Note that the pretty-printers do not actually call ``repr()``. For basic "
+"types, they try to match its result closely."
+msgstr ""
+"Lưu ý rằng máy in đẹp không thực sự gọi ``repr()``. Đối với các loại cơ bản,"
+" họ cố gắng kết hợp chặt chẽ kết quả của nó."
+
+#: ../../howto/gdb_helpers.rst:171
+#, fuzzy
+msgid ""
+"An area that can be confusing is that the custom printer for some types look"
+" a lot like GDB's built-in printer for standard types.  For example, the "
+"pretty-printer for a Python ``int`` (:c:expr:`PyLongObject *`) gives a "
+"representation that is not distinguishable from one of a regular machine-"
+"level integer::"
+msgstr ""
+"Một lĩnh vực có thể gây nhầm lẫn là máy in tùy chỉnh cho một số loại trông "
+"rất giống máy in tích hợp của GDB dành cho các loại tiêu chuẩn.  Ví dụ: máy "
+"in đẹp cho Python ``int`` (:c:expr:`PyLongObject *`) đưa ra một biểu diễn "
+"không thể phân biệt được với một trong các số nguyên cấp máy thông thường ::"
+
+#: ../../howto/gdb_helpers.rst:177
+#, fuzzy
+msgid ""
+"(gdb) p some_machine_integer\n"
+"$3 = 42\n"
+"\n"
+"(gdb) p some_python_integer\n"
+"$4 = 42"
+msgstr ""
+"(gdb) p some_machine_integer\n"
+"$3 = 42\n"
+"\n"
+"(gdb) p some_python_integer\n"
+"4$ = 42"
+
+#: ../../howto/gdb_helpers.rst:183
+#, fuzzy
+msgid ""
+"The internal structure can be revealed with a cast to :c:expr:`PyLongObject "
+"*`::"
+msgstr ""
+"Cấu trúc bên trong có thể được tiết lộ khi chuyển sang :c:expr:`PyLongObject"
+" *`::"
+
+#: ../../howto/gdb_helpers.rst:185
+#, fuzzy
+msgid ""
+"(gdb) p *(PyLongObject*)some_python_integer\n"
+"$5 = {ob_base = {ob_base = {ob_refcnt = 8, ob_type = 0x3dad39f5e0}, ob_size = 1},\n"
+"ob_digit = {42}}"
+msgstr ""
+"(gdb) p *(PyLongObject*)some_python_integer\n"
+"$5 = {ob_base = {ob_base = {ob_refcnt = 8, ob_type = 0x3dad39f5e0}, ob_size = 1},\n"
+"ob_digit = {42}}"
+
+#: ../../howto/gdb_helpers.rst:189
+#, fuzzy
+msgid ""
+"A similar confusion can arise with the ``str`` type, where the output looks "
+"a lot like gdb's built-in printer for ``char *``::"
+msgstr ""
+"Một sự nhầm lẫn tương tự có thể xảy ra với loại ``str``, trong đó đầu ra "
+"trông rất giống máy in tích hợp của gdb cho ``char *``::"
+
+#: ../../howto/gdb_helpers.rst:192
+#, fuzzy
+msgid ""
+"(gdb) p ptr_to_python_str\n"
+"$6 = '__builtins__'"
+msgstr ""
+"(gdb) p ptr_to_python_str\n"
+"$6 = '__buildins__'"
+
+#: ../../howto/gdb_helpers.rst:195
+#, fuzzy
+msgid ""
+"The pretty-printer for ``str`` instances defaults to using single-quotes (as"
+" does Python's ``repr`` for strings) whereas the standard printer for ``char"
+" *`` values uses double-quotes and contains a hexadecimal address::"
+msgstr ""
+"Máy in đẹp cho các phiên bản ``str`` mặc định sử dụng dấu ngoặc đơn (cũng "
+"như ``repr`` của Python cho chuỗi) trong khi máy in tiêu chuẩn cho các giá "
+"trị ``char *`` sử dụng dấu ngoặc kép và chứa địa chỉ thập lục phân::"
+
+#: ../../howto/gdb_helpers.rst:199
+#, fuzzy
+msgid ""
+"(gdb) p ptr_to_char_star\n"
+"$7 = 0x6d72c0 \"hello world\""
+msgstr ""
+"(gdb) p ptr_to_char_star\n"
+"$7 = 0x6d72c0 \"xin chào thế giới\""
+
+#: ../../howto/gdb_helpers.rst:202
+#, fuzzy
+msgid ""
+"Again, the implementation details can be revealed with a cast to "
+":c:expr:`PyUnicodeObject *`::"
+msgstr ""
+"Một lần nữa, chi tiết triển khai có thể được tiết lộ khi chuyển sang "
+":c:expr:`PyUnicodeObject *`::"
+
+#: ../../howto/gdb_helpers.rst:205
+#, fuzzy
+msgid ""
+"(gdb) p *(PyUnicodeObject*)$6\n"
+"$8 = {ob_base = {ob_refcnt = 33, ob_type = 0x3dad3a95a0}, length = 12,\n"
+"str = 0x7ffff2128500, hash = 7065186196740147912, state = 1, defenc = 0x0}"
+msgstr ""
+"(gdb) p *(PyUnicodeObject*)$6\n"
+"$8 = {ob_base = {ob_refcnt = 33, ob_type = 0x3dad3a95a0}, chiều dài = 12,\n"
+"str = 0x7ffff2128500, hash = 7065186196740147912, trạng thái = 1, defenc = 0x0}"
+
+#: ../../howto/gdb_helpers.rst:210
+#, fuzzy
+msgid "``py-list``"
+msgstr "``py-list``"
+
+#: ../../howto/gdb_helpers.rst:212
+#, fuzzy
+msgid ""
+"The extension adds a ``py-list`` command, which lists the Python source code"
+" (if any) for the current frame in the selected thread.  The current line is"
+" marked with a \">\"::"
+msgstr ""
+"Tiện ích mở rộng thêm lệnh ``py-list``, liệt kê mã nguồn Python (nếu có) cho"
+" khung hiện tại trong chuỗi đã chọn.  Dòng hiện tại được đánh dấu bằng dấu "
+"\">\"::"
+
+#: ../../howto/gdb_helpers.rst:216
+#, fuzzy
+msgid ""
+"(gdb) py-list\n"
+" 901        if options.profile:\n"
+" 902            options.profile = False\n"
+" 903            profile_me()\n"
+" 904            return\n"
+" 905\n"
+">906        u = UI()\n"
+" 907        if not u.quit:\n"
+" 908            try:\n"
+" 909                gtk.main()\n"
+" 910            except KeyboardInterrupt:\n"
+" 911                # properly quit on a keyboard interrupt..."
+msgstr ""
+"(gdb) danh sách py\n"
+" 901 nếu tùy chọn.profile:\n"
+" 902 tùy chọn.profile = Sai\n"
+" 903 hồ sơ_me()\n"
+" 904 trở lại\n"
+" 905\n"
+">906 u = UI()\n"
+" 907 nếu không được bạn.bỏ cuộc:\n"
+" 908 thử:\n"
+" 909 gtk.main()\n"
+" 910 ngoại trừ ngắt bàn phím:\n"
+" 911 # properly thoát khi bàn phím bị gián đoạn..."
+
+#: ../../howto/gdb_helpers.rst:229
+#, fuzzy
+msgid ""
+"Use ``py-list START`` to list at a different line number within the Python "
+"source, and ``py-list START,END`` to list a specific range of lines within "
+"the Python source."
+msgstr ""
+"Sử dụng ``py-list START`` để liệt kê ở một số dòng khác trong nguồn Python "
+"và ``py-list START,END`` để liệt kê một phạm vi dòng cụ thể trong nguồn "
+"Python."
+
+#: ../../howto/gdb_helpers.rst:234
+#, fuzzy
+msgid "``py-up`` and ``py-down``"
+msgstr "``py-up`` và ``py-down``"
+
+#: ../../howto/gdb_helpers.rst:236
+#, fuzzy
+msgid ""
+"The ``py-up`` and ``py-down`` commands are analogous to GDB's regular ``up``"
+" and ``down`` commands, but try to move at the level of CPython frames, "
+"rather than C frames."
+msgstr ""
+"Các lệnh ``py-up`` và ``py-down`` tương tự như các lệnh ``up`` và ``down`` "
+"thông thường của GDB, nhưng hãy cố gắng di chuyển ở cấp độ khung CPython, "
+"thay vì khung C."
+
+#: ../../howto/gdb_helpers.rst:240
+#, fuzzy
+msgid ""
+"GDB is not always able to read the relevant frame information, depending on "
+"the optimization level with which CPython was compiled. Internally, the "
+"commands look for C frames that are executing the default frame evaluation "
+"function (that is, the core bytecode interpreter loop within CPython) and "
+"look up the value of the related ``PyFrameObject *``."
+msgstr ""
+"GDB không phải lúc nào cũng có thể đọc thông tin khung liên quan, tùy thuộc "
+"vào mức độ tối ưu hóa mà CPython được biên dịch. Trong nội bộ, các lệnh tìm "
+"kiếm các khung C đang thực thi chức năng đánh giá khung mặc định (nghĩa là "
+"vòng lặp trình thông dịch mã byte lõi trong CPython) và tra cứu giá trị của "
+"``PyFrameObject *`` có liên quan."
+
+#: ../../howto/gdb_helpers.rst:246
+#, fuzzy
+msgid "They emit the frame number (at the C level) within the thread."
+msgstr "Chúng phát ra số khung (ở cấp độ C) trong luồng."
+
+#: ../../howto/gdb_helpers.rst:248 ../../howto/gdb_helpers.rst:320
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../howto/gdb_helpers.rst:250
+#, fuzzy
+msgid ""
+"(gdb) py-up\n"
+"#37 Frame 0x9420b04, for file /usr/lib/python2.6/site-packages/\n"
+"gnome_sudoku/main.py, line 906, in start_game ()\n"
+"    u = UI()\n"
+"(gdb) py-up\n"
+"#40 Frame 0x948e82c, for file /usr/lib/python2.6/site-packages/\n"
+"gnome_sudoku/gnome_sudoku.py, line 22, in start_game(main=<module at remote 0xb771b7f4>)\n"
+"    main.start_game()\n"
+"(gdb) py-up\n"
+"Unable to find an older python frame"
+msgstr ""
+"(gdb) py-up\n"
+"#37 Khung 0x9420b04, cho tệp /usr/lib/python2.6/site-packages/\n"
+"gnome_sudoku/main.py, dòng 906, trong start_game ()\n"
+"    u = UI()\n"
+"(gdb) py-up\n"
+"#40 Khung 0x948e82c, cho tệp /usr/lib/python2.6/site-packages/\n"
+"gnome_sudoku/gnome_sudoku.py, dòng 22, trong start_game(main=<module at remote 0xb771b7f4>)\n"
+"    main.start_game()\n"
+"(gdb) py-up\n"
+"Không thể tìm thấy khung python cũ hơn"
+
+#: ../../howto/gdb_helpers.rst:261
+#, fuzzy
+msgid "so we're at the top of the Python stack."
+msgstr "vì vậy chúng tôi đang ở trên cùng của ngăn xếp Python."
+
+#: ../../howto/gdb_helpers.rst:263
+#, fuzzy
+msgid ""
+"The frame numbers correspond to those displayed by GDB's standard "
+"``backtrace`` command. The command skips C frames which are not executing "
+"Python code."
+msgstr ""
+"Số khung tương ứng với số khung được hiển thị bằng lệnh ``backtrace`` tiêu "
+"chuẩn của GDB. Lệnh bỏ qua các khung C không thực thi mã Python."
+
+#: ../../howto/gdb_helpers.rst:267
+#, fuzzy
+msgid "Going back down::"
+msgstr "Quay trở lại::"
+
+#: ../../howto/gdb_helpers.rst:269
+#, python-brace-format, fuzzy
+msgid ""
+"(gdb) py-down\n"
+"#37 Frame 0x9420b04, for file /usr/lib/python2.6/site-packages/gnome_sudoku/main.py, line 906, in start_game ()\n"
+"    u = UI()\n"
+"(gdb) py-down\n"
+"#34 (unable to read python frame information)\n"
+"(gdb) py-down\n"
+"#23 (unable to read python frame information)\n"
+"(gdb) py-down\n"
+"#19 (unable to read python frame information)\n"
+"(gdb) py-down\n"
+"#14 Frame 0x99262ac, for file /usr/lib/python2.6/site-packages/gnome_sudoku/game_selector.py, line 201, in run_swallowed_dialog (self=<NewOrSavedGameSelector(new_game_model=<gtk.ListStore at remote 0x98fab44>, puzzle=None, saved_games=[{'gsd.auto_fills': 0, 'tracking': {}, 'trackers': {}, 'notes': [], 'saved_at': 1270084485, 'game': '7 8 0 0 0 0 0 5 6 0 0 9 0 8 0 1 0 0 0 4 6 0 0 0 0 7 0 6 5 0 0 0 4 7 9 2 0 0 0 9 0 1 0 0 0 3 9 7 6 0 0 0 1 8 0 6 0 0 0 0 2 8 0 0 0 5 0 4 0 6 0 0 2 1 0 0 0 0 0 4 5\\n7 8 0 0 0 0 0 5 6 0 0 9 0 8 0 1 0 0 0 4 6 0 0 0 0 7 0 6 5 1 8 3 4 7 9 2 0 0 0 9 0 1 0 0 0 3 9 7 6 0 0 0 1 8 0 6 0 0 0 0 2 8 0 0 0 5 0 4 0 6 0 0 2 1 0 0 0 0 0 4 5', 'gsd.impossible_hints': 0, 'timer.__absolute_start_time__': <float at remote 0x984b474>, 'gsd.hints': 0, 'timer.active_time': <float at remote 0x984b494>, 'timer.total_time': <float at remote 0x984b464>}], dialog=<gtk.Dialog at remote 0x98faaa4>, saved_game_model=<gtk.ListStore at remote 0x98fad24>, sudoku_maker=<SudokuMaker(terminated=False, played=[], batch_siz...(truncated)\n"
+"            swallower.run_dialog(self.dialog)\n"
+"(gdb) py-down\n"
+"#11 Frame 0x9aead74, for file /usr/lib/python2.6/site-packages/gnome_sudoku/dialog_swallower.py, line 48, in run_dialog (self=<SwappableArea(running=<gtk.Dialog at remote 0x98faaa4>, main_page=0) at remote 0x98fa6e4>, d=<gtk.Dialog at remote 0x98faaa4>)\n"
+"            gtk.main()\n"
+"(gdb) py-down\n"
+"#8 (unable to read python frame information)\n"
+"(gdb) py-down\n"
+"Unable to find a newer python frame"
+msgstr ""
+"(gdb) py-down\n"
+"#37 Khung 0x9420b04, cho tệp /usr/lib/python2.6/site-packages/gnome_sudoku/main.py, dòng 906, trong start_game ()\n"
+"    u = UI()\n"
+"(gdb) py-down\n"
+"#34 (không thể đọc thông tin khung python)\n"
+"(gdb) py-down\n"
+"#23 (không thể đọc thông tin khung python)\n"
+"(gdb) py-down\n"
+"#19 (không thể đọc thông tin khung python)\n"
+"(gdb) py-down\n"
+"#14 Khung 0x99262ac, cho tệp /usr/lib/python2.6/site-packages/gnome_sudoku/game_selector.py, dòng 201, trong run_swallowed_dialog (self=<NewOrSavedGameSelector(new_game_model=<gtk.ListStore at remote 0x98fab44>, puzzle=None, save_games=[{'gsd.auto_fills': 0, 'tracking': {}, 'trackers': {}, 'notes': [], 'saved_at': 1270084485, 'game': '7 8 0 0 0 0 0 5 6 0 0 9 0 8 0 1 0 0 0 4 6 0 0 0 0 7 0 6 5 0 0 0 4 7 9 2 0 0 0 9 0 1 0 0 0 3 9 7 6 0 0 0 1 8 0 6 0 0 0 0 2 8 0 0 0 5 0 4 0 6 0 0 2 1 0 0 0 0 0 4 5\\n7 8 0 0 0 0 0 5 6 0 0 9 0 8 0 1 0 0 0 4 6 0 0 0 0 7 0 6 5 1 8 3 4 7 9 2 0 0 0 9 0 1 0 0 0 3 9 7 6 0 0 0 1 8 0 6 0 0 0 0 2 8 0 0 0 5 0 4 0 6 0 0 2 1 0 0 0 0 0 4 5', 'gsd.impossible_hints': 0, 'timer.__absolute_start_time__': <float ở điều khiển từ xa 0x984b474>, 'gsd.hints': 0, 'timer.active_time': <float ở điều khiển từ xa 0x984b494>, 'timer.total_time': <float ở điều khiển từ xa 0x984b464>}], hộp thoại=<gtk.Dialog ở điều khiển từ xa 0x98faaa4>, save_game_model=<gtk.ListStore ở điều khiển từ xa 0x98fad24>, sudoku_maker=<SudokuMaker(terminated=False, play=[], batch_siz...(cắt ngắn)\n"
+"            én.run_dialog(self.dialog)\n"
+"(gdb) py-down\n"
+"#11 Khung 0x9aead74, dành cho tệp /usr/lib/python2.6/site-packages/gnome_sudoku/dialog_swallower.py, dòng 48, trong run_dialog (self=<SwappableArea(running=<gtk.Dialog at remote 0x98faaa4>, main_page=0) tại remote 0x98fa6e4>, d=<gtk.Dialog ở xa 0x98faaa4>)\n"
+"            gtk.main()\n"
+"(gdb) py-down\n"
+"#8 (không thể đọc thông tin khung python)\n"
+"(gdb) py-down\n"
+"Không thể tìm thấy khung python mới hơn"
+
+#: ../../howto/gdb_helpers.rst:289
+#, fuzzy
+msgid "and we're at the bottom of the Python stack."
+msgstr "và chúng tôi đang ở cuối ngăn xếp Python."
+
+#: ../../howto/gdb_helpers.rst:291
+#, fuzzy
+msgid ""
+"Note that in Python 3.12 and newer, the same C stack frame can be used for "
+"multiple Python stack frames. This means that ``py-up`` and ``py-down`` may "
+"move multiple Python frames at once. For example::"
+msgstr ""
+"Lưu ý rằng trong Python 3.12 trở lên, cùng một khung ngăn xếp C có thể được "
+"sử dụng cho nhiều khung ngăn xếp Python. Điều này có nghĩa là ``py-up`` và "
+"``py-down`` có thể di chuyển nhiều khung Python cùng một lúc. Ví dụ::"
+
+#: ../../howto/gdb_helpers.rst:295
+#, fuzzy
+msgid ""
+"(gdb) py-up\n"
+"#6 Frame 0x7ffff7fb62b0, for file /tmp/rec.py, line 5, in recursive_function (n=0)\n"
+"   time.sleep(5)\n"
+"#6 Frame 0x7ffff7fb6240, for file /tmp/rec.py, line 7, in recursive_function (n=1)\n"
+"   recursive_function(n-1)\n"
+"#6 Frame 0x7ffff7fb61d0, for file /tmp/rec.py, line 7, in recursive_function (n=2)\n"
+"   recursive_function(n-1)\n"
+"#6 Frame 0x7ffff7fb6160, for file /tmp/rec.py, line 7, in recursive_function (n=3)\n"
+"   recursive_function(n-1)\n"
+"#6 Frame 0x7ffff7fb60f0, for file /tmp/rec.py, line 7, in recursive_function (n=4)\n"
+"   recursive_function(n-1)\n"
+"#6 Frame 0x7ffff7fb6080, for file /tmp/rec.py, line 7, in recursive_function (n=5)\n"
+"   recursive_function(n-1)\n"
+"#6 Frame 0x7ffff7fb6020, for file /tmp/rec.py, line 9, in <module> ()\n"
+"   recursive_function(5)\n"
+"(gdb) py-up\n"
+"Unable to find an older python frame"
+msgstr ""
+"(gdb) py-up\n"
+"#6 Khung 0x7ffff7fb62b0, cho tệp /tmp/rec.py, dòng 5, trong recursive_function (n=0)\n"
+"   thời gian.ngủ(5)\n"
+"#6 Khung 0x7ffff7fb6240, cho tệp /tmp/rec.py, dòng 7, trong recursive_function (n=1)\n"
+"   hàm_đệ quy(n-1)\n"
+"#6 Khung 0x7ffff7fb61d0, cho tệp /tmp/rec.py, dòng 7, trong recursive_function (n=2)\n"
+"   hàm_đệ quy(n-1)\n"
+"#6 Khung 0x7ffff7fb6160, cho tệp /tmp/rec.py, dòng 7, trong recursive_function (n=3)\n"
+"   hàm_đệ quy(n-1)\n"
+"#6 Khung 0x7ffff7fb60f0, cho tệp /tmp/rec.py, dòng 7, trong recursive_function (n=4)\n"
+"   hàm_đệ quy(n-1)\n"
+"#6 Khung 0x7ffff7fb6080, cho tệp /tmp/rec.py, dòng 7, trong recursive_function (n=5)\n"
+"   hàm_đệ quy(n-1)\n"
+"#6 Khung 0x7ffff7fb6020, cho tệp /tmp/rec.py, dòng 9, trong <module> ()\n"
+"   đệ quy_function(5)\n"
+"(gdb) py-up\n"
+"Không thể tìm thấy khung python cũ hơn"
+
+#: ../../howto/gdb_helpers.rst:315
+#, fuzzy
+msgid "``py-bt``"
+msgstr "``py-bt``"
+
+#: ../../howto/gdb_helpers.rst:317
+#, fuzzy
+msgid ""
+"The ``py-bt`` command attempts to display a Python-level backtrace of the "
+"current thread."
+msgstr ""
+"Lệnh ``py-bt`` cố gắng hiển thị dấu vết ngược ở cấp độ Python của luồng hiện"
+" tại."
+
+#: ../../howto/gdb_helpers.rst:322
+#, python-brace-format, fuzzy
+msgid ""
+"(gdb) py-bt\n"
+"#8 (unable to read python frame information)\n"
+"#11 Frame 0x9aead74, for file /usr/lib/python2.6/site-packages/gnome_sudoku/dialog_swallower.py, line 48, in run_dialog (self=<SwappableArea(running=<gtk.Dialog at remote 0x98faaa4>, main_page=0) at remote 0x98fa6e4>, d=<gtk.Dialog at remote 0x98faaa4>)\n"
+"            gtk.main()\n"
+"#14 Frame 0x99262ac, for file /usr/lib/python2.6/site-packages/gnome_sudoku/game_selector.py, line 201, in run_swallowed_dialog (self=<NewOrSavedGameSelector(new_game_model=<gtk.ListStore at remote 0x98fab44>, puzzle=None, saved_games=[{'gsd.auto_fills': 0, 'tracking': {}, 'trackers': {}, 'notes': [], 'saved_at': 1270084485, 'game': '7 8 0 0 0 0 0 5 6 0 0 9 0 8 0 1 0 0 0 4 6 0 0 0 0 7 0 6 5 0 0 0 4 7 9 2 0 0 0 9 0 1 0 0 0 3 9 7 6 0 0 0 1 8 0 6 0 0 0 0 2 8 0 0 0 5 0 4 0 6 0 0 2 1 0 0 0 0 0 4 5\\n7 8 0 0 0 0 0 5 6 0 0 9 0 8 0 1 0 0 0 4 6 0 0 0 0 7 0 6 5 1 8 3 4 7 9 2 0 0 0 9 0 1 0 0 0 3 9 7 6 0 0 0 1 8 0 6 0 0 0 0 2 8 0 0 0 5 0 4 0 6 0 0 2 1 0 0 0 0 0 4 5', 'gsd.impossible_hints': 0, 'timer.__absolute_start_time__': <float at remote 0x984b474>, 'gsd.hints': 0, 'timer.active_time': <float at remote 0x984b494>, 'timer.total_time': <float at remote 0x984b464>}], dialog=<gtk.Dialog at remote 0x98faaa4>, saved_game_model=<gtk.ListStore at remote 0x98fad24>, sudoku_maker=<SudokuMaker(terminated=False, played=[], batch_siz...(truncated)\n"
+"            swallower.run_dialog(self.dialog)\n"
+"#19 (unable to read python frame information)\n"
+"#23 (unable to read python frame information)\n"
+"#34 (unable to read python frame information)\n"
+"#37 Frame 0x9420b04, for file /usr/lib/python2.6/site-packages/gnome_sudoku/main.py, line 906, in start_game ()\n"
+"    u = UI()\n"
+"#40 Frame 0x948e82c, for file /usr/lib/python2.6/site-packages/gnome_sudoku/gnome_sudoku.py, line 22, in start_game (main=<module at remote 0xb771b7f4>)\n"
+"    main.start_game()"
+msgstr ""
+"(gdb) py-bt\n"
+"#8 (không thể đọc thông tin khung python)\n"
+"#11 Khung 0x9aead74, dành cho tệp /usr/lib/python2.6/site-packages/gnome_sudoku/dialog_swallower.py, dòng 48, trong run_dialog (self=<SwappableArea(running=<gtk.Dialog at remote 0x98faaa4>, main_page=0) tại remote 0x98fa6e4>, d=<gtk.Dialog ở xa 0x98faaa4>)\n"
+"            gtk.main()\n"
+"#14 Khung 0x99262ac, cho tệp /usr/lib/python2.6/site-packages/gnome_sudoku/game_selector.py, dòng 201, trong run_swallowed_dialog (self=<NewOrSavedGameSelector(new_game_model=<gtk.ListStore at remote 0x98fab44>, puzzle=None, save_games=[{'gsd.auto_fills': 0, 'tracking': {}, 'trackers': {}, 'notes': [], 'saved_at': 1270084485, 'game': '7 8 0 0 0 0 0 5 6 0 0 9 0 8 0 1 0 0 0 4 6 0 0 0 0 7 0 6 5 0 0 0 4 7 9 2 0 0 0 9 0 1 0 0 0 3 9 7 6 0 0 0 1 8 0 6 0 0 0 0 2 8 0 0 0 5 0 4 0 6 0 0 2 1 0 0 0 0 0 4 5\\n7 8 0 0 0 0 0 5 6 0 0 9 0 8 0 1 0 0 0 4 6 0 0 0 0 7 0 6 5 1 8 3 4 7 9 2 0 0 0 9 0 1 0 0 0 3 9 7 6 0 0 0 1 8 0 6 0 0 0 0 2 8 0 0 0 5 0 4 0 6 0 0 2 1 0 0 0 0 0 4 5', 'gsd.impossible_hints': 0, 'timer.__absolute_start_time__': <float ở điều khiển từ xa 0x984b474>, 'gsd.hints': 0, 'timer.active_time': <float ở điều khiển từ xa 0x984b494>, 'timer.total_time': <float ở điều khiển từ xa 0x984b464>}], hộp thoại=<gtk.Dialog ở điều khiển từ xa 0x98faaa4>, save_game_model=<gtk.ListStore ở điều khiển từ xa 0x98fad24>, sudoku_maker=<SudokuMaker(terminated=False, play=[], batch_siz...(cắt ngắn)\n"
+"            én.run_dialog(self.dialog)\n"
+"#19 (không thể đọc thông tin khung python)\n"
+"#23 (không thể đọc thông tin khung python)\n"
+"#34 (không thể đọc thông tin khung python)\n"
+"#37 Khung 0x9420b04, cho tệp /usr/lib/python2.6/site-packages/gnome_sudoku/main.py, dòng 906, trong start_game ()\n"
+"    u = UI()\n"
+"#40 Khung 0x948e82c, cho tệp /usr/lib/python2.6/site-packages/gnome_sudoku/gnome_sudoku.py, dòng 22, trong start_game (main=<module at remote 0xb771b7f4>)\n"
+"    main.start_game()"
+
+#: ../../howto/gdb_helpers.rst:336
+#, fuzzy
+msgid ""
+"The frame numbers correspond to those displayed by GDB's standard "
+"``backtrace`` command."
+msgstr ""
+"Số khung tương ứng với số khung được hiển thị bằng lệnh ``backtrace`` tiêu "
+"chuẩn của GDB."
+
+#: ../../howto/gdb_helpers.rst:340
+#, fuzzy
+msgid "``py-print``"
+msgstr "``py-print``"
+
+#: ../../howto/gdb_helpers.rst:342
+#, fuzzy
+msgid ""
+"The ``py-print`` command looks up a Python name and tries to print it. It "
+"looks in locals within the current thread, then globals, then finally "
+"builtins::"
+msgstr ""
+"Lệnh ``py-print`` tra cứu tên Python và cố gắng in nó. Nó tìm kiếm cục bộ "
+"trong luồng hiện tại, sau đó là toàn cầu, rồi cuối cùng là nội trang ::"
+
+#: ../../howto/gdb_helpers.rst:346
+#, fuzzy
+msgid ""
+"(gdb) py-print self\n"
+"local 'self' = <SwappableArea(running=<gtk.Dialog at remote 0x98faaa4>,\n"
+"main_page=0) at remote 0x98fa6e4>\n"
+"(gdb) py-print __name__\n"
+"global '__name__' = 'gnome_sudoku.dialog_swallower'\n"
+"(gdb) py-print len\n"
+"builtin 'len' = <built-in function len>\n"
+"(gdb) py-print scarlet_pimpernel\n"
+"'scarlet_pimpernel' not found"
+msgstr ""
+"(gdb) tự in py\n"
+"local 'self' = <SwappableArea(running=<gtk.Dialog at remote 0x98faaa4>,\n"
+"main_page=0) tại 0x98fa6e4 từ xa>\n"
+"(gdb) py-print __name__\n"
+"toàn cầu '__name__' = 'gnome_sudoku.dialog_swallower'\n"
+"(gdb) py-print len\n"
+"dựng sẵn 'len' = <hàm dựng sẵn len>\n"
+"(gdb) py-print Scarlet_pimpernel\n"
+"không tìm thấy 'scarlet_pimpernel'"
+
+#: ../../howto/gdb_helpers.rst:356
+#, fuzzy
+msgid ""
+"If the current C frame corresponds to multiple Python frames, ``py-print`` "
+"only considers the first one."
+msgstr ""
+"Nếu khung C hiện tại tương ứng với nhiều khung Python, ``py-print`` chỉ xem "
+"xét khung đầu tiên."
+
+#: ../../howto/gdb_helpers.rst:360
+#, fuzzy
+msgid "``py-locals``"
+msgstr "``py-locals``"
+
+#: ../../howto/gdb_helpers.rst:362
+#, fuzzy
+msgid ""
+"The ``py-locals`` command looks up all Python locals within the current "
+"Python frame in the selected thread, and prints their representations::"
+msgstr ""
+"Lệnh ``py-locals`` tra cứu tất cả các cục bộ Python trong khung Python hiện "
+"tại trong luồng đã chọn và in các biểu diễn của chúng ::"
+
+#: ../../howto/gdb_helpers.rst:365
+#, fuzzy
+msgid ""
+"(gdb) py-locals\n"
+"self = <SwappableArea(running=<gtk.Dialog at remote 0x98faaa4>,\n"
+"main_page=0) at remote 0x98fa6e4>\n"
+"d = <gtk.Dialog at remote 0x98faaa4>"
+msgstr ""
+"(gdb) người dân địa phương\n"
+"self = <SwappableArea(running=<gtk.Dialog at remote 0x98faaa4>,\n"
+"main_page=0) tại 0x98fa6e4 từ xa>\n"
+"d = <gtk.Dialog tại 0x98faaa4 từ xa>"
+
+#: ../../howto/gdb_helpers.rst:370
+#, fuzzy
+msgid ""
+"If the current C frame corresponds to multiple Python frames, locals from "
+"all of them will be shown::"
+msgstr ""
+"Nếu khung C hiện tại tương ứng với nhiều khung Python, các khung hình cục bộ"
+" từ tất cả chúng sẽ được hiển thị ::"
+
+#: ../../howto/gdb_helpers.rst:373
+#, fuzzy
+msgid ""
+"(gdb) py-locals\n"
+"Locals for recursive_function\n"
+"n = 0\n"
+"Locals for recursive_function\n"
+"n = 1\n"
+"Locals for recursive_function\n"
+"n = 2\n"
+"Locals for recursive_function\n"
+"n = 3\n"
+"Locals for recursive_function\n"
+"n = 4\n"
+"Locals for recursive_function\n"
+"n = 5\n"
+"Locals for <module>"
+msgstr ""
+"(gdb) người dân địa phương\n"
+"Người dân địa phương cho recursive_function\n"
+"n = 0\n"
+"Người dân địa phương cho recursive_function\n"
+"n = 1\n"
+"Người dân địa phương cho recursive_function\n"
+"n = 2\n"
+"Người dân địa phương cho recursive_function\n"
+"n = 3\n"
+"Người dân địa phương cho recursive_function\n"
+"n = 4\n"
+"Người dân địa phương cho recursive_function\n"
+"n = 5\n"
+"Người dân địa phương cho <mô-đun>"
+
+#: ../../howto/gdb_helpers.rst:390
+#, fuzzy
+msgid "Use with GDB commands"
+msgstr "Sử dụng với lệnh GDB"
+
+#: ../../howto/gdb_helpers.rst:392
+#, fuzzy
+msgid ""
+"The extension commands complement GDB's built-in commands. For example, you "
+"can use a frame numbers shown by ``py-bt`` with the ``frame`` command to go "
+"a specific frame within the selected thread, like this::"
+msgstr ""
+"Các lệnh mở rộng bổ sung cho các lệnh tích hợp của GDB. Ví dụ: bạn có thể sử"
+" dụng số khung được hiển thị bởi ``py-bt`` bằng lệnh ``frame`` để chuyển đến"
+" một khung cụ thể trong chuỗi đã chọn, như sau::"
+
+#: ../../howto/gdb_helpers.rst:396
+#, fuzzy
+msgid ""
+"(gdb) py-bt\n"
+"(output snipped)\n"
+"#68 Frame 0xaa4560, for file Lib/test/regrtest.py, line 1548, in <module> ()\n"
+"        main()\n"
+"(gdb) frame 68\n"
+"#68 0x00000000004cd1e6 in PyEval_EvalFrameEx (f=Frame 0xaa4560, for file Lib/test/regrtest.py, line 1548, in <module> (), throwflag=0) at Python/ceval.c:2665\n"
+"2665                            x = call_function(&sp, oparg);\n"
+"(gdb) py-list\n"
+"1543        # Run the tests in a context manager that temporary changes the CWD to a\n"
+"1544        # temporary and writable directory. If it's not possible to create or\n"
+"1545        # change the CWD, the original CWD will be used. The original CWD is\n"
+"1546        # available from test_support.SAVEDCWD.\n"
+"1547        with test_support.temp_cwd(TESTCWD, quiet=True):\n"
+">1548            main()"
+msgstr ""
+"(gdb) py-bt\n"
+"(đầu ra bị cắt)\n"
+"#68 Khung 0xaa4560, cho tệp Lib/test/regrtest.py, dòng 1548, trong <module> ()\n"
+"        chính()\n"
+"(gdb) khung 68\n"
+"#68 0x00000000004cd1e6 trong PyEval_EvalFrameEx (f=Frame 0xaa4560, đối với tệp Lib/test/regrtest.py, dòng 1548, trong <module> (), Throwflag=0) tại Python/ceval.c:2665\n"
+"2665 x = call_function(&sp, oparg);\n"
+"(gdb) danh sách py\n"
+"1543 # Run các thử nghiệm trong trình quản lý bối cảnh tạm thời thay đổi CWD thành\n"
+"1544 # temporary và thư mục có thể ghi. Nếu không thể tạo hoặc\n"
+"1545 # change CWD, CWD ban đầu sẽ được sử dụng. Z009zz ban đầu là\n"
+"1546 # available từ test_support.SAVEDCWD.\n"
+"1547 với test_support.temp_cwd(TESTCWD, Quiet=True):\n"
+">1548 chính()"
+
+#: ../../howto/gdb_helpers.rst:411
+#, fuzzy
+msgid ""
+"The ``info threads`` command will give you a list of the threads within the "
+"process, and you can use the ``thread`` command to select a different one::"
+msgstr ""
+"Lệnh ``info threads`` sẽ cung cấp cho bạn danh sách các luồng trong quy "
+"trình và bạn có thể sử dụng lệnh ``thread`` để chọn một luồng khác::"
+
+#: ../../howto/gdb_helpers.rst:414
+#, fuzzy
+msgid ""
+"(gdb) info threads\n"
+"  105 Thread 0x7fffefa18710 (LWP 10260)  sem_wait () at ../nptl/sysdeps/unix/sysv/linux/x86_64/sem_wait.S:86\n"
+"  104 Thread 0x7fffdf5fe710 (LWP 10259)  sem_wait () at ../nptl/sysdeps/unix/sysv/linux/x86_64/sem_wait.S:86\n"
+"* 1 Thread 0x7ffff7fe2700 (LWP 10145)  0x00000038e46d73e3 in select () at ../sysdeps/unix/syscall-template.S:82"
+msgstr ""
+"(gdb) chủ đề thông tin\n"
+"  105 Chủ đề 0x7fffefa18710 (LWP 10260) sem_wait () tại ../nptl/sysdeps/unix/sysv/linux/x86_64/sem_wait.S:86\n"
+"  104 Chủ đề 0x7fffdf5fe710 (LWP 10259) sem_wait () tại ../nptl/sysdeps/unix/sysv/linux/x86_64/sem_wait.S:86\n"
+"* 1 Thread 0x7ffff7fe2700 (LWP 10145) 0x00000038e46d73e3 trong select () tại ../sysdeps/unix/syscall-template.S:82"
+
+#: ../../howto/gdb_helpers.rst:419
+#, fuzzy
+msgid ""
+"You can use ``thread apply all COMMAND`` or (``t a a COMMAND`` for short) to"
+" run a command on all threads.  With ``py-bt``, this lets you see what every"
+" thread is doing at the Python level::"
+msgstr ""
+"Bạn có thể sử dụng ``thread apply all COMMAND`` hoặc (viết tắt là ``t a a "
+"COMMAND``) để chạy lệnh trên tất cả các luồng.  Với ``py-bt``, điều này cho "
+"phép bạn xem mọi luồng đang làm gì ở cấp độ Python ::"
+
+#: ../../howto/gdb_helpers.rst:423
+#, fuzzy
+msgid ""
+"(gdb) t a a py-bt\n"
+"\n"
+"Thread 105 (Thread 0x7fffefa18710 (LWP 10260)):\n"
+"#5 Frame 0x7fffd00019d0, for file /home/david/coding/python-svn/Lib/threading.py, line 155, in _acquire_restore (self=<_RLock(_Verbose__verbose=False, _RLock__owner=140737354016512, _RLock__block=<thread.lock at remote 0x858770>, _RLock__count=1) at remote 0xd7ff40>, count_owner=(1, 140737213728528), count=1, owner=140737213728528)\n"
+"        self.__block.acquire()\n"
+"#8 Frame 0x7fffac001640, for file /home/david/coding/python-svn/Lib/threading.py, line 269, in wait (self=<_Condition(_Condition__lock=<_RLock(_Verbose__verbose=False, _RLock__owner=140737354016512, _RLock__block=<thread.lock at remote 0x858770>, _RLock__count=1) at remote 0xd7ff40>, acquire=<instancemethod at remote 0xd80260>, _is_owned=<instancemethod at remote 0xd80160>, _release_save=<instancemethod at remote 0xd803e0>, release=<instancemethod at remote 0xd802e0>, _acquire_restore=<instancemethod at remote 0xd7ee60>, _Verbose__verbose=False, _Condition__waiters=[]) at remote 0xd7fd10>, timeout=None, waiter=<thread.lock at remote 0x858a90>, saved_state=(1, 140737213728528))\n"
+"            self._acquire_restore(saved_state)\n"
+"#12 Frame 0x7fffb8001a10, for file /home/david/coding/python-svn/Lib/test/lock_tests.py, line 348, in f ()\n"
+"            cond.wait()\n"
+"#16 Frame 0x7fffb8001c40, for file /home/david/coding/python-svn/Lib/test/lock_tests.py, line 37, in task (tid=140737213728528)\n"
+"                f()\n"
+"\n"
+"Thread 104 (Thread 0x7fffdf5fe710 (LWP 10259)):\n"
+"#5 Frame 0x7fffe4001580, for file /home/david/coding/python-svn/Lib/threading.py, line 155, in _acquire_restore (self=<_RLock(_Verbose__verbose=False, _RLock__owner=140737354016512, _RLock__block=<thread.lock at remote 0x858770>, _RLock__count=1) at remote 0xd7ff40>, count_owner=(1, 140736940992272), count=1, owner=140736940992272)\n"
+"        self.__block.acquire()\n"
+"#8 Frame 0x7fffc8002090, for file /home/david/coding/python-svn/Lib/threading.py, line 269, in wait (self=<_Condition(_Condition__lock=<_RLock(_Verbose__verbose=False, _RLock__owner=140737354016512, _RLock__block=<thread.lock at remote 0x858770>, _RLock__count=1) at remote 0xd7ff40>, acquire=<instancemethod at remote 0xd80260>, _is_owned=<instancemethod at remote 0xd80160>, _release_save=<instancemethod at remote 0xd803e0>, release=<instancemethod at remote 0xd802e0>, _acquire_restore=<instancemethod at remote 0xd7ee60>, _Verbose__verbose=False, _Condition__waiters=[]) at remote 0xd7fd10>, timeout=None, waiter=<thread.lock at remote 0x858860>, saved_state=(1, 140736940992272))\n"
+"            self._acquire_restore(saved_state)\n"
+"#12 Frame 0x7fffac001c90, for file /home/david/coding/python-svn/Lib/test/lock_tests.py, line 348, in f ()\n"
+"            cond.wait()\n"
+"#16 Frame 0x7fffac0011c0, for file /home/david/coding/python-svn/Lib/test/lock_tests.py, line 37, in task (tid=140736940992272)\n"
+"                f()\n"
+"\n"
+"Thread 1 (Thread 0x7ffff7fe2700 (LWP 10145)):\n"
+"#5 Frame 0xcb5380, for file /home/david/coding/python-svn/Lib/test/lock_tests.py, line 16, in _wait ()\n"
+"    time.sleep(0.01)\n"
+"#8 Frame 0x7fffd00024a0, for file /home/david/coding/python-svn/Lib/test/lock_tests.py, line 378, in _check_notify (self=<ConditionTests(_testMethodName='test_notify', _resultForDoCleanups=<TestResult(_original_stdout=<cStringIO.StringO at remote 0xc191e0>, skipped=[], _mirrorOutput=False, testsRun=39, buffer=False, _original_stderr=<file at remote 0x7ffff7fc6340>, _stdout_buffer=<cStringIO.StringO at remote 0xc9c7f8>, _stderr_buffer=<cStringIO.StringO at remote 0xc9c790>, _moduleSetUpFailed=False, expectedFailures=[], errors=[], _previousTestClass=<type at remote 0x928310>, unexpectedSuccesses=[], failures=[], shouldStop=False, failfast=False) at remote 0xc185a0>, _threads=(0,), _cleanups=[], _type_equality_funcs={<type at remote 0x7eba00>: <instancemethod at remote 0xd750e0>, <type at remote 0x7e7820>: <instancemethod at remote 0xd75160>, <type at remote 0x7e30e0>: <instancemethod at remote 0xd75060>, <type at remote 0x7e7d20>: <instancemethod at remote 0xd751e0>, <type at remote 0x7f19e0...(truncated)\n"
+"        _wait()"
+msgstr ""
+"(gdb) t a py-bt\n"
+"\n"
+"Chủ đề 105 (Chủ đề 0x7fffefa18710 (LWP 10260)):\n"
+"#5 Khung 0x7fffd00019d0, cho tệp /home/david/coding/python-svn/Lib/threading.py, dòng 155, trong _acquire_restore (self=<_RLock(_Verbose__verbose=False, _RLock__owner=140737354016512, _RLock__block=<thread.lock at remote 0x858770>, _RLock__count=1) tại điều khiển từ xa 0xd7ff40>, count_owner=(1, 140737213728528), count=1, owner=140737213728528)\n"
+"        self.__block.acquire()\n"
+"#8 Khung 0x7fffac001640, dành cho tệp /home/david/coding/python-svn/Lib/threading.py, dòng 269, đang chờ (self=<_Condition(_Condition__lock=<_RLock(_Verbose__verbose=False, _RLock__owner=140737354016512, _RLock__block=<thread.lock tại điều khiển từ xa 0x858770>, _RLock__count=1) tại điều khiển từ xa 0xd7ff40>, Acacqui=<phương pháp thực thể tại điều khiển từ xa 0xd80260>, _is_owned=<phương pháp thực thể tại điều khiển từ xa 0xd80160>, _release_save=<phương pháp thực thể tại điều khiển từ xa 0xd803e0>, phát hành=<phương thức thực thể tại từ xa 0xd802e0>, _acquire_restore=<phương pháp thực thể tại điều khiển từ xa 0xd7ee60>, _Verbose__verbose=False, _Condition__waiters=[]) tại điều khiển từ xa 0xd7fd10>, timeout=None, Waiter=<thread.lock at remote 0x858a90>, save_state=(1, 140737213728528))\n"
+"            self._acquire_restore(saved_state)\n"
+"#12 Khung 0x7fffb8001a10, cho tệp /home/david/coding/python-svn/Lib/test/lock_tests.py, dòng 348, trong f ()\n"
+"            cond.wait()\n"
+"#16 Khung 0x7fffb8001c40, dành cho tệp /home/david/coding/python-svn/Lib/test/lock_tests.py, dòng 37, trong tác vụ (tid=140737213728528)\n"
+"                f()\n"
+"\n"
+"Chủ đề 104 (Chủ đề 0x7fffdf5fe710 (LWP 10259)):\n"
+"#5 Khung 0x7fffe4001580, cho tệp /home/david/coding/python-svn/Lib/threading.py, dòng 155, trong _acquire_restore (self=<_RLock(_Verbose__verbose=False, _RLock__owner=140737354016512, _RLock__block=<thread.lock at remote 0x858770>, _RLock__count=1) tại điều khiển từ xa 0xd7ff40>, count_owner=(1, 140736940992272), count=1, owner=140736940992272)\n"
+"        self.__block.acquire()\n"
+"#8 Khung 0x7fffc8002090, dành cho tệp /home/david/coding/python-svn/Lib/threading.py, dòng 269, đang chờ (self=<_Condition(_Condition__lock=<_RLock(_Verbose__verbose=False, _RLock__owner=140737354016512, _RLock__block=<thread.lock tại điều khiển từ xa 0x858770>, _RLock__count=1) tại điều khiển từ xa 0xd7ff40>, Acacqui=<phương pháp thực thể tại điều khiển từ xa 0xd80260>, _is_owned=<phương pháp thực thể tại điều khiển từ xa 0xd80160>, _release_save=<phương pháp thực thể tại điều khiển từ xa 0xd803e0>, phát hành=<phương thức thực thể tại từ xa 0xd802e0>, _acquire_restore=<phương pháp thực thể tại điều khiển từ xa 0xd7ee60>, _Verbose__verbose=False, _Condition__waiters=[]) tại điều khiển từ xa 0xd7fd10>, timeout=None, Waiter=<thread.lock at remote 0x858860>, save_state=(1, 140736940992272))\n"
+"            self._acquire_restore(saved_state)\n"
+"#12 Khung 0x7fffac001c90, cho tệp /home/david/coding/python-svn/Lib/test/lock_tests.py, dòng 348, trong f ()\n"
+"            cond.wait()\n"
+"#16 Khung 0x7fffac0011c0, cho tệp /home/david/coding/python-svn/Lib/test/lock_tests.py, dòng 37, trong tác vụ (tid=140736940992272)\n"
+"                f()\n"
+"\n"
+"Chủ đề 1 (Chủ đề 0x7ffff7fe2700 (LWP 10145)):\n"
+"#5 Frame 0xcb5380, cho tệp /home/david/coding/python-svn/Lib/test/lock_tests.py, dòng 16, trong _wait ()\n"
+"    thời gian.ngủ (0,01)\n"
+"#8 Khung 0x7fffd00024a0, cho tệp /home/david/coding/python-svn/Lib/test/lock_tests.py, dòng 378, trong _check_notify (self=<ConditionTests(_testMethodName='test_notify', _resultForDoCleanups=<TestResult(_origin_stdout=<cStringIO.StringO ở từ xa 0xc191e0>, Skipped=[], _mirrorOutput=False, testRun=39, buffer=False, _origin_stderr=<file at remote 0x7ffff7fc6340>, _stdout_buffer=<cStringIO.StringO at remote 0xc9c7f8>, _stderr_buffer=<cStringIO.StringO at remote 0xc9c790>, _moduleSetUpFailed=False,expectedFailures=[],errors=[], _previousTestClass=<type at remote 0x928310>,expectedSuccesses=[], failed=[], ShouldStop=False, failedfast=False) tại remote 0xc185a0>, _threads=(0,), _cleanups=[], _type_equality_funcs={<type at remote 0x7eba00>: <instancemethod at remote 0xd750e0>, <type at remote 0x7e7820>: <instancemethod at remote 0xd75160>, <type at remote 0x7e30e0>: <instancemethod at remote 0xd75060>, <type at remote 0x7e7d20>: <phương thức thực thể tại điều khiển từ xa 0xd751e0>, <gõ tại điều khiển từ xa 0x7f19e0...(cắt ngắn)\n"
+"        _đợi()"

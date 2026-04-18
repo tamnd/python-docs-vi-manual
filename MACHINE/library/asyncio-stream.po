@@ -1,0 +1,1012 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/asyncio-stream.rst:7
+#, fuzzy
+msgid "Streams"
+msgstr "Luồng"
+
+#: ../../library/asyncio-stream.rst:9
+#, fuzzy
+msgid "**Source code:** :source:`Lib/asyncio/streams.py`"
+msgstr "**Source code:** :source:`Lib/asyncio/streams.py`"
+
+#: ../../library/asyncio-stream.rst:13
+#, fuzzy
+msgid ""
+"Streams are high-level async/await-ready primitives to work with network "
+"connections.  Streams allow sending and receiving data without using "
+"callbacks or low-level protocols and transports."
+msgstr ""
+"Luồng là các nguyên gốc không đồng bộ/sẵn sàng chờ cấp cao để hoạt động với "
+"các kết nối mạng.  Các luồng cho phép gửi và nhận dữ liệu mà không cần sử "
+"dụng lệnh gọi lại hoặc các giao thức và vận chuyển cấp thấp."
+
+#: ../../library/asyncio-stream.rst:19
+#, fuzzy
+msgid ""
+"Here is an example of a TCP echo client written using asyncio streams::"
+msgstr ""
+"Dưới đây là ví dụ về ứng dụng khách TCP echo được viết bằng luồng asyncio ::"
+
+#: ../../library/asyncio-stream.rst:22 ../../library/asyncio-stream.rst:441
+#, python-brace-format, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"async def tcp_echo_client(message):\n"
+"    reader, writer = await asyncio.open_connection(\n"
+"        '127.0.0.1', 8888)\n"
+"\n"
+"    print(f'Send: {message!r}')\n"
+"    writer.write(message.encode())\n"
+"    await writer.drain()\n"
+"\n"
+"    data = await reader.read(100)\n"
+"    print(f'Received: {data.decode()!r}')\n"
+"\n"
+"    print('Close the connection')\n"
+"    writer.close()\n"
+"    await writer.wait_closed()\n"
+"\n"
+"asyncio.run(tcp_echo_client('Hello World!'))"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"async def tcp_echo_client(tin nhắn):\n"
+"    người đọc, người viết = đang chờ asyncio.open_connection(\n"
+"        '127.0.0.1', 8888)\n"
+"\n"
+"    print(f'Send: {message!r}')\n"
+"    writer.write(message.encode())\n"
+"    đang chờ writer.drain()\n"
+"\n"
+"    dữ liệu = đang chờ reader.read(100)\n"
+"    print(f'Đã nhận: {data.decode()!r}')\n"
+"\n"
+"    print('Đóng kết nối')\n"
+"    nhà văn.close()\n"
+"    đang chờ nhà văn.wait_closed()\n"
+"\n"
+"asyncio.run(tcp_echo_client('Xin chào thế giới!'))"
+
+#: ../../library/asyncio-stream.rst:42
+#, fuzzy
+msgid "See also the `Examples`_ section below."
+msgstr "Xem thêm phần `Examples`_ bên dưới."
+
+#: ../../library/asyncio-stream.rst:46
+#, fuzzy
+msgid "Stream Functions"
+msgstr "Chức năng truyền phát"
+
+#: ../../library/asyncio-stream.rst:47
+#, fuzzy
+msgid ""
+"The following top-level asyncio functions can be used to create and work "
+"with streams:"
+msgstr ""
+"Bạn có thể sử dụng các hàm asyncio cấp cao nhất sau đây để tạo và làm việc "
+"với luồng:"
+
+#: ../../library/asyncio-stream.rst:59
+#, fuzzy
+msgid ""
+"Establish a network connection and return a pair of ``(reader, writer)`` "
+"objects."
+msgstr ""
+"Thiết lập kết nối mạng và trả về một cặp đối tượng ``(reader, writer)``."
+
+#: ../../library/asyncio-stream.rst:62
+#, fuzzy
+msgid ""
+"The returned *reader* and *writer* objects are instances of "
+":class:`StreamReader` and :class:`StreamWriter` classes."
+msgstr ""
+"Các đối tượng *reader* và *writer* được trả về là các thể hiện của các lớp "
+":class:`StreamReader` và :class:`StreamWriter`."
+
+#: ../../library/asyncio-stream.rst:65 ../../library/asyncio-stream.rst:112
+#, fuzzy
+msgid ""
+"*limit* determines the buffer size limit used by the returned "
+":class:`StreamReader` instance.  By default the *limit* is set to 64 KiB."
+msgstr ""
+"*limit* xác định giới hạn kích thước bộ đệm được sử dụng bởi phiên bản "
+":class:`StreamReader` được trả về.  Theo mặc định, *limit* được đặt thành 64"
+" KiB."
+
+#: ../../library/asyncio-stream.rst:69
+#, fuzzy
+msgid ""
+"The rest of the arguments are passed directly to "
+":meth:`loop.create_connection`."
+msgstr ""
+"Các đối số còn lại được chuyển trực tiếp tới :meth:`loop.create_connection`."
+
+#: ../../library/asyncio-stream.rst:74 ../../library/asyncio-stream.rst:154
+#, fuzzy
+msgid ""
+"The *sock* argument transfers ownership of the socket to the "
+":class:`StreamWriter` created. To close the socket, call its "
+":meth:`~asyncio.StreamWriter.close` method."
+msgstr ""
+"Đối số *sock* chuyển quyền sở hữu socket sang :class:`StreamWriter` đã tạo. "
+"Để đóng socket, hãy gọi phương thức :meth:`~asyncio.StreamWriter.close` của "
+"nó."
+
+#: ../../library/asyncio-stream.rst:78
+#, fuzzy
+msgid "Added the *ssl_handshake_timeout* parameter."
+msgstr "Đã thêm tham số *ssl_handshake_timeout*."
+
+#: ../../library/asyncio-stream.rst:81
+#, fuzzy
+msgid "Added the *happy_eyeballs_delay* and *interleave* parameters."
+msgstr "Đã thêm thông số *happy_eyeballs_delay* và *interleave*."
+
+#: ../../library/asyncio-stream.rst:84 ../../library/asyncio-stream.rst:128
+#: ../../library/asyncio-stream.rst:164 ../../library/asyncio-stream.rst:199
+#, fuzzy
+msgid "Removed the *loop* parameter."
+msgstr "Đã xóa tham số *loop*."
+
+#: ../../library/asyncio-stream.rst:87 ../../library/asyncio-stream.rst:131
+#: ../../library/asyncio-stream.rst:167 ../../library/asyncio-stream.rst:202
+#: ../../library/asyncio-stream.rst:408
+#, fuzzy
+msgid "Added the *ssl_shutdown_timeout* parameter."
+msgstr "Đã thêm tham số *ssl_shutdown_timeout*."
+
+#: ../../library/asyncio-stream.rst:101
+#, fuzzy
+msgid "Start a socket server."
+msgstr "Khởi động một máy chủ socket."
+
+#: ../../library/asyncio-stream.rst:103
+#, fuzzy
+msgid ""
+"The *client_connected_cb* callback is called whenever a new client "
+"connection is established.  It receives a ``(reader, writer)`` pair as two "
+"arguments, instances of the :class:`StreamReader` and :class:`StreamWriter` "
+"classes."
+msgstr ""
+"Lệnh gọi lại *client_connected_cb* được gọi bất cứ khi nào kết nối máy khách"
+" mới được thiết lập.  Nó nhận một cặp ``(reader, writer)`` làm hai đối số, "
+"các thể hiện của lớp :class:`StreamReader` và :class:`StreamWriter`."
+
+#: ../../library/asyncio-stream.rst:108
+#, fuzzy
+msgid ""
+"*client_connected_cb* can be a plain callable or a :ref:`coroutine function "
+"<coroutine>`; if it is a coroutine function, it will be automatically "
+"scheduled as a :class:`Task`."
+msgstr ""
+"*client_connected_cb* có thể là một lệnh gọi đơn giản hoặc :ref:`coroutine "
+"function <coroutine>`; nếu là hàm coroutine, nó sẽ tự động được lên lịch "
+"dưới dạng :class:`Task`."
+
+#: ../../library/asyncio-stream.rst:116
+#, fuzzy
+msgid ""
+"The rest of the arguments are passed directly to :meth:`loop.create_server`."
+msgstr ""
+"Các đối số còn lại được chuyển trực tiếp tới :meth:`loop.create_server`."
+
+#: ../../library/asyncio-stream.rst:121 ../../library/asyncio-stream.rst:189
+#, fuzzy
+msgid ""
+"The *sock* argument transfers ownership of the socket to the server created."
+" To close the socket, call the server's :meth:`~asyncio.Server.close` "
+"method."
+msgstr ""
+"Đối số *sock* chuyển quyền sở hữu socket sang máy chủ đã tạo. Để đóng "
+"socket, hãy gọi phương thức :meth:`~asyncio.Server.close` của máy chủ."
+
+#: ../../library/asyncio-stream.rst:125
+#, fuzzy
+msgid "Added the *ssl_handshake_timeout* and *start_serving* parameters."
+msgstr "Đã thêm thông số *ssl_handshake_timeout* và *start_serving*."
+
+#: ../../library/asyncio-stream.rst:134
+#, fuzzy
+msgid "Added the *keep_alive* parameter."
+msgstr "Đã thêm tham số *keep_alive*."
+
+#: ../../library/asyncio-stream.rst:139
+#, fuzzy
+msgid "Unix Sockets"
+msgstr "Ổ cắm Unix"
+
+#: ../../library/asyncio-stream.rst:145
+#, fuzzy
+msgid ""
+"Establish a Unix socket connection and return a pair of ``(reader, "
+"writer)``."
+msgstr "Thiết lập kết nối ổ cắm Unix và trả về một cặp ``(reader, writer)``."
+
+#: ../../library/asyncio-stream.rst:148
+#, fuzzy
+msgid "Similar to :func:`open_connection` but operates on Unix sockets."
+msgstr ""
+"Tương tự như :func:`open_connection` nhưng hoạt động trên socket Unix."
+
+#: ../../library/asyncio-stream.rst:150
+#, fuzzy
+msgid "See also the documentation of :meth:`loop.create_unix_connection`."
+msgstr "Xem thêm tài liệu của :meth:`loop.create_unix_connection`."
+
+#: ../../library/asyncio-stream.rst:158 ../../library/asyncio-stream.rst:193
+#, fuzzy
+msgid "Availability"
+msgstr "sẵn có"
+
+#: ../../library/asyncio-stream.rst:160
+#, fuzzy
+msgid ""
+"Added the *ssl_handshake_timeout* parameter. The *path* parameter can now be"
+" a :term:`path-like object`"
+msgstr ""
+"Đã thêm tham số *ssl_handshake_timeout*. Tham số *path* bây giờ có thể là "
+":term:`path-like object`"
+
+#: ../../library/asyncio-stream.rst:177
+#, fuzzy
+msgid "Start a Unix socket server."
+msgstr "Khởi động một máy chủ socket Unix."
+
+#: ../../library/asyncio-stream.rst:179
+#, fuzzy
+msgid "Similar to :func:`start_server` but works with Unix sockets."
+msgstr "Tương tự như :func:`start_server` nhưng hoạt động với socket Unix."
+
+#: ../../library/asyncio-stream.rst:181
+#, fuzzy
+msgid ""
+"If *cleanup_socket* is true then the Unix socket will automatically be "
+"removed from the filesystem when the server is closed, unless the socket has"
+" been replaced after the server has been created."
+msgstr ""
+"Nếu *cleanup_socket* là đúng thì ổ cắm Unix sẽ tự động bị xóa khỏi hệ thống "
+"tập tin khi máy chủ đóng, trừ khi ổ cắm đó đã được thay thế sau khi máy chủ "
+"được tạo."
+
+#: ../../library/asyncio-stream.rst:185
+#, fuzzy
+msgid "See also the documentation of :meth:`loop.create_unix_server`."
+msgstr "Xem thêm tài liệu của :meth:`loop.create_unix_server`."
+
+#: ../../library/asyncio-stream.rst:195
+#, fuzzy
+msgid ""
+"Added the *ssl_handshake_timeout* and *start_serving* parameters. The *path*"
+" parameter can now be a :term:`path-like object`."
+msgstr ""
+"Đã thêm thông số *ssl_handshake_timeout* và *start_serving*. Tham số *path* "
+"bây giờ có thể là :term:`path-like object`."
+
+#: ../../library/asyncio-stream.rst:205
+#, fuzzy
+msgid "Added the *cleanup_socket* parameter."
+msgstr "Đã thêm tham số *cleanup_socket*."
+
+#: ../../library/asyncio-stream.rst:210
+#, fuzzy
+msgid "StreamReader"
+msgstr "StreamReader"
+
+#: ../../library/asyncio-stream.rst:214
+#, fuzzy
+msgid ""
+"Represents a reader object that provides APIs to read data from the IO "
+"stream. As an :term:`asynchronous iterable`, the object supports the "
+":keyword:`async for` statement."
+msgstr ""
+"Đại diện cho một đối tượng reader cung cấp các API để đọc dữ liệu từ luồng "
+"IO. Là một :term:`asynchronous iterable`, đối tượng hỗ trợ câu lệnh "
+":keyword:`async for`."
+
+#: ../../library/asyncio-stream.rst:218
+#, fuzzy
+msgid ""
+"It is not recommended to instantiate *StreamReader* objects directly; use "
+":func:`open_connection` and :func:`start_server` instead."
+msgstr ""
+"Không nên khởi tạo trực tiếp các đối tượng *StreamReader*; thay vào đó hãy "
+"sử dụng :func:`open_connection` và :func:`start_server`."
+
+#: ../../library/asyncio-stream.rst:224
+#, fuzzy
+msgid "Acknowledge the EOF."
+msgstr "Thừa nhận EOF."
+
+#: ../../library/asyncio-stream.rst:229
+#, fuzzy
+msgid "Read up to *n* bytes from the stream."
+msgstr "Đọc tới *n* byte từ luồng."
+
+#: ../../library/asyncio-stream.rst:231
+#, fuzzy
+msgid ""
+"If *n* is not provided or set to ``-1``, read until EOF, then return all "
+"read :class:`bytes`. If EOF was received and the internal buffer is empty, "
+"return an empty ``bytes`` object."
+msgstr ""
+"Nếu *n* không được cung cấp hoặc được đặt thành ``-1``, hãy đọc cho đến EOF,"
+" sau đó trả về tất cả :class:`bytes` đã đọc. Nếu EOF được nhận và bộ đệm bên"
+" trong trống, hãy trả về một đối tượng ``bytes`` trống."
+
+#: ../../library/asyncio-stream.rst:236
+#, fuzzy
+msgid "If *n* is ``0``, return an empty ``bytes`` object immediately."
+msgstr ""
+"Nếu *n* là ``0``, hãy trả về một đối tượng ``bytes`` trống ngay lập tức."
+
+#: ../../library/asyncio-stream.rst:238
+#, fuzzy
+msgid ""
+"If *n* is positive, return at most *n* available ``bytes`` as soon as at "
+"least 1 byte is available in the internal buffer. If EOF is received before "
+"any byte is read, return an empty ``bytes`` object."
+msgstr ""
+"Nếu *n* là dương, hãy trả về tối đa *n* ``bytes`` có sẵn ngay khi có ít nhất"
+" 1 byte trong bộ đệm trong. Nếu nhận được EOF trước khi đọc bất kỳ byte nào,"
+" hãy trả về một đối tượng ``bytes`` trống."
+
+#: ../../library/asyncio-stream.rst:246
+#, fuzzy
+msgid "Read one line, where \"line\" is a sequence of bytes ending with ``\\n``."
+msgstr "Đọc một dòng, trong đó \"dòng\" là một chuỗi byte kết thúc bằng ``\\n``."
+
+#: ../../library/asyncio-stream.rst:249
+#, fuzzy
+msgid ""
+"If EOF is received and ``\\n`` was not found, the method returns partially "
+"read data."
+msgstr ""
+"Nếu nhận được EOF và không tìm thấy ``\\n``, phương thức sẽ trả về dữ liệu "
+"đã đọc một phần."
+
+#: ../../library/asyncio-stream.rst:252
+#, fuzzy
+msgid ""
+"If EOF is received and the internal buffer is empty, return an empty "
+"``bytes`` object."
+msgstr ""
+"Nếu nhận được EOF và bộ đệm bên trong trống, hãy trả về một đối tượng "
+"``bytes`` trống."
+
+#: ../../library/asyncio-stream.rst:258
+#, fuzzy
+msgid "Read exactly *n* bytes."
+msgstr "Đọc chính xác byte *n*."
+
+#: ../../library/asyncio-stream.rst:260
+#, fuzzy
+msgid ""
+"Raise an :exc:`IncompleteReadError` if EOF is reached before *n* can be "
+"read.  Use the :attr:`IncompleteReadError.partial` attribute to get the "
+"partially read data."
+msgstr ""
+"Tăng :exc:`IncompleteReadError` nếu đạt đến EOF trước khi có thể đọc được "
+"*n*.  Sử dụng thuộc tính :attr:`IncompleteReadError.partial` để lấy dữ liệu "
+"đã đọc một phần."
+
+#: ../../library/asyncio-stream.rst:267
+#, fuzzy
+msgid "Read data from the stream until *separator* is found."
+msgstr "Đọc dữ liệu từ luồng cho đến khi tìm thấy *separator*."
+
+#: ../../library/asyncio-stream.rst:269
+#, fuzzy
+msgid ""
+"On success, the data and separator will be removed from the internal buffer "
+"(consumed). Returned data will include the separator at the end."
+msgstr ""
+"Nếu thành công, dữ liệu và dấu phân cách sẽ bị xóa khỏi bộ đệm bên trong (đã"
+" tiêu thụ). Dữ liệu trả về sẽ bao gồm dấu phân cách ở cuối."
+
+#: ../../library/asyncio-stream.rst:273
+#, fuzzy
+msgid ""
+"If the amount of data read exceeds the configured stream limit, a "
+":exc:`LimitOverrunError` exception is raised, and the data is left in the "
+"internal buffer and can be read again."
+msgstr ""
+"Nếu lượng dữ liệu được đọc vượt quá giới hạn luồng đã định cấu hình, ngoại "
+"lệ :exc:`LimitOverrunError` sẽ xuất hiện và dữ liệu sẽ được lưu lại trong bộ"
+" đệm bên trong và có thể được đọc lại."
+
+#: ../../library/asyncio-stream.rst:277
+#, fuzzy
+msgid ""
+"If EOF is reached before the complete separator is found, an "
+":exc:`IncompleteReadError` exception is raised, and the internal buffer is "
+"reset.  The :attr:`IncompleteReadError.partial` attribute may contain a "
+"portion of the separator."
+msgstr ""
+"Nếu đạt đến EOF trước khi tìm thấy dấu phân cách hoàn chỉnh, một ngoại lệ "
+":exc:`IncompleteReadError` sẽ xuất hiện và bộ đệm bên trong được đặt lại.  "
+"Thuộc tính :attr:`IncompleteReadError.partial` có thể chứa một phần dấu phân"
+" cách."
+
+#: ../../library/asyncio-stream.rst:282
+#, fuzzy
+msgid ""
+"The *separator* may also be a tuple of separators. In this case the return "
+"value will be the shortest possible that has any separator as the suffix. "
+"For the purposes of :exc:`LimitOverrunError`, the shortest possible "
+"separator is considered to be the one that matched."
+msgstr ""
+"Zz001zz cũng có thể là một bộ dấu phân cách. Trong trường hợp này, giá trị "
+"trả về sẽ là giá trị ngắn nhất có thể có bất kỳ dấu phân cách nào làm hậu "
+"tố. Vì mục đích của :exc:`LimitOverrunError`, dấu phân cách ngắn nhất có thể"
+" được coi là dấu phân cách phù hợp."
+
+#: ../../library/asyncio-stream.rst:292
+#, fuzzy
+msgid "The *separator* parameter may now be a :class:`tuple` of separators."
+msgstr ""
+"Tham số *separator* bây giờ có thể là :class:`tuple` của dấu phân cách."
+
+#: ../../library/asyncio-stream.rst:297
+#, fuzzy
+msgid ""
+"Return ``True`` if the buffer is empty and :meth:`feed_eof` was called."
+msgstr "Trả về ``True`` nếu bộ đệm trống và :meth:`feed_eof` được gọi."
+
+#: ../../library/asyncio-stream.rst:302
+#, fuzzy
+msgid "StreamWriter"
+msgstr "StreamWriter"
+
+#: ../../library/asyncio-stream.rst:306
+#, fuzzy
+msgid ""
+"Represents a writer object that provides APIs to write data to the IO "
+"stream."
+msgstr ""
+"Đại diện cho một đối tượng nhà văn cung cấp API để ghi dữ liệu vào luồng IO."
+
+#: ../../library/asyncio-stream.rst:309
+#, fuzzy
+msgid ""
+"It is not recommended to instantiate *StreamWriter* objects directly; use "
+":func:`open_connection` and :func:`start_server` instead."
+msgstr ""
+"Không nên khởi tạo trực tiếp các đối tượng *StreamWriter*; thay vào đó hãy "
+"sử dụng :func:`open_connection` và :func:`start_server`."
+
+#: ../../library/asyncio-stream.rst:315
+#, fuzzy
+msgid ""
+"The method attempts to write the *data* to the underlying socket "
+"immediately. If that fails, the data is queued in an internal write buffer "
+"until it can be sent."
+msgstr ""
+"Phương thức này cố gắng ghi *data* vào ổ cắm bên dưới ngay lập tức. Nếu "
+"không thành công, dữ liệu sẽ được xếp hàng đợi trong bộ đệm ghi bên trong "
+"cho đến khi có thể gửi đi."
+
+#: ../../library/asyncio-stream.rst:319
+#, fuzzy
+msgid ""
+"The *data* buffer should be a bytes, bytearray, or C-contiguous one-"
+"dimensional memoryview object."
+msgstr ""
+"Bộ đệm *data* phải là đối tượng byte, bytearray hoặc đối tượng xem bộ nhớ "
+"một chiều liền kề C."
+
+#: ../../library/asyncio-stream.rst:322 ../../library/asyncio-stream.rst:335
+#, fuzzy
+msgid "The method should be used along with the ``drain()`` method::"
+msgstr "Phương thức này nên được sử dụng cùng với phương thức ``drain()`` ::"
+
+#: ../../library/asyncio-stream.rst:324
+#, fuzzy
+msgid ""
+"stream.write(data)\n"
+"await stream.drain()"
+msgstr ""
+"luồng.write(dữ liệu)\n"
+"đang chờ luồng.drain()"
+
+#: ../../library/asyncio-stream.rst:330
+#, fuzzy
+msgid ""
+"The method writes a list (or any iterable) of bytes to the underlying socket"
+" immediately. If that fails, the data is queued in an internal write buffer "
+"until it can be sent."
+msgstr ""
+"Phương thức này ghi ngay một danh sách (hoặc bất kỳ byte nào có thể lặp lại)"
+" vào ổ cắm bên dưới. Nếu không thành công, dữ liệu sẽ được xếp hàng đợi "
+"trong bộ đệm ghi bên trong cho đến khi có thể gửi đi."
+
+#: ../../library/asyncio-stream.rst:337
+#, fuzzy
+msgid ""
+"stream.writelines(lines)\n"
+"await stream.drain()"
+msgstr ""
+"suối.writelines(dòng)\n"
+"đang chờ luồng.drain()"
+
+#: ../../library/asyncio-stream.rst:342
+#, fuzzy
+msgid "The method closes the stream and the underlying socket."
+msgstr "Phương thức này đóng luồng và ổ cắm bên dưới."
+
+#: ../../library/asyncio-stream.rst:344
+#, fuzzy
+msgid ""
+"The method should be used, though not mandatory, along with the "
+"``wait_closed()`` method::"
+msgstr ""
+"Phương pháp này nên được sử dụng, mặc dù không bắt buộc, cùng với phương "
+"pháp ``wait_closed()``::"
+
+#: ../../library/asyncio-stream.rst:347
+#, fuzzy
+msgid ""
+"stream.close()\n"
+"await stream.wait_closed()"
+msgstr ""
+"luồng.close()\n"
+"đang chờ luồng.wait_closed()"
+
+#: ../../library/asyncio-stream.rst:352
+#, fuzzy
+msgid ""
+"Return ``True`` if the underlying transport supports the :meth:`write_eof` "
+"method, ``False`` otherwise."
+msgstr ""
+"Trả về ``True`` nếu phương thức vận chuyển cơ bản hỗ trợ phương thức "
+":meth:`write_eof`, ngược lại là ``False``."
+
+#: ../../library/asyncio-stream.rst:357
+#, fuzzy
+msgid ""
+"Close the write end of the stream after the buffered write data is flushed."
+msgstr "Đóng phần cuối ghi của luồng sau khi xóa dữ liệu ghi vào bộ đệm."
+
+#: ../../library/asyncio-stream.rst:362
+#, fuzzy
+msgid "Return the underlying asyncio transport."
+msgstr "Trả lại vận chuyển asyncio cơ bản."
+
+#: ../../library/asyncio-stream.rst:366
+#, fuzzy
+msgid ""
+"Access optional transport information; see "
+":meth:`BaseTransport.get_extra_info` for details."
+msgstr ""
+"Truy cập thông tin vận chuyển tùy chọn; xem "
+":meth:`BaseTransport.get_extra_info` để biết chi tiết."
+
+#: ../../library/asyncio-stream.rst:372
+#, fuzzy
+msgid ""
+"Wait until it is appropriate to resume writing to the stream. Example::"
+msgstr "Đợi cho đến khi thích hợp để tiếp tục ghi vào luồng. Ví dụ::"
+
+#: ../../library/asyncio-stream.rst:375
+#, fuzzy
+msgid ""
+"writer.write(data)\n"
+"await writer.drain()"
+msgstr ""
+"writer.write(dữ liệu)\n"
+"đang chờ writer.drain()"
+
+#: ../../library/asyncio-stream.rst:378
+#, fuzzy
+msgid ""
+"This is a flow control method that interacts with the underlying IO write "
+"buffer.  When the size of the buffer reaches the high watermark, *drain()* "
+"blocks until the size of the buffer is drained down to the low watermark and"
+" writing can be resumed.  When there is nothing to wait for, the "
+":meth:`drain` returns immediately."
+msgstr ""
+"Đây là phương pháp kiểm soát luồng tương tác với bộ đệm ghi IO bên dưới.  "
+"Khi kích thước của bộ đệm đạt đến hình mờ cao, *drain()* sẽ chặn cho đến khi"
+" kích thước của bộ đệm giảm xuống hình mờ thấp và có thể tiếp tục ghi.  Khi "
+"không có gì phải chờ đợi, :meth:`drain` sẽ quay trở lại ngay lập tức."
+
+#: ../../library/asyncio-stream.rst:389
+#, fuzzy
+msgid "Upgrade an existing stream-based connection to TLS."
+msgstr "Nâng cấp kết nối dựa trên luồng hiện có lên TLS."
+
+#: ../../library/asyncio-stream.rst:391
+#, fuzzy
+msgid "Parameters:"
+msgstr "Thông số:"
+
+#: ../../library/asyncio-stream.rst:393
+#, fuzzy
+msgid "*sslcontext*: a configured instance of :class:`~ssl.SSLContext`."
+msgstr ""
+"*sslcontext*: phiên bản được định cấu hình của :class:`~ssl.SSLContext`."
+
+#: ../../library/asyncio-stream.rst:395
+#, fuzzy
+msgid ""
+"*server_hostname*: sets or overrides the host name that the target server's "
+"certificate will be matched against."
+msgstr ""
+"*server_hostname*: đặt hoặc ghi đè tên máy chủ mà chứng chỉ của máy chủ mục "
+"tiêu sẽ được so khớp."
+
+#: ../../library/asyncio-stream.rst:398
+#, fuzzy
+msgid ""
+"*ssl_handshake_timeout* is the time in seconds to wait for the TLS handshake"
+" to complete before aborting the connection.  ``60.0`` seconds if ``None`` "
+"(default)."
+msgstr ""
+"*ssl_handshake_timeout* là thời gian tính bằng giây để chờ quá trình bắt tay"
+" TLS hoàn tất trước khi hủy kết nối.  ``60.0`` giây nếu ``None`` (mặc định)."
+
+#: ../../library/asyncio-stream.rst:402
+#, fuzzy
+msgid ""
+"*ssl_shutdown_timeout* is the time in seconds to wait for the SSL shutdown "
+"to complete before aborting the connection. ``30.0`` seconds if ``None`` "
+"(default)."
+msgstr ""
+"*ssl_shutdown_timeout* là thời gian tính bằng giây để chờ quá trình tắt SSL "
+"hoàn tất trước khi hủy kết nối. ``30.0`` giây nếu ``None`` (mặc định)."
+
+#: ../../library/asyncio-stream.rst:414
+#, fuzzy
+msgid ""
+"Return ``True`` if the stream is closed or in the process of being closed."
+msgstr "Trả về ``True`` nếu luồng bị đóng hoặc đang trong quá trình đóng."
+
+#: ../../library/asyncio-stream.rst:422
+#, fuzzy
+msgid "Wait until the stream is closed."
+msgstr "Đợi cho đến khi luồng được đóng lại."
+
+#: ../../library/asyncio-stream.rst:424
+#, fuzzy
+msgid ""
+"Should be called after :meth:`close` to wait until the underlying connection"
+" is closed, ensuring that all data has been flushed before e.g. exiting the "
+"program."
+msgstr ""
+"Nên gọi sau :meth:`close` để đợi cho đến khi kết nối cơ bản bị đóng, đảm bảo"
+" rằng tất cả dữ liệu đã bị xóa trước đó, ví dụ: thoát khỏi chương trình."
+
+#: ../../library/asyncio-stream.rst:432
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/asyncio-stream.rst:437
+#, fuzzy
+msgid "TCP echo client using streams"
+msgstr "TCP echo client sử dụng luồng"
+
+#: ../../library/asyncio-stream.rst:439
+#, fuzzy
+msgid "TCP echo client using the :func:`asyncio.open_connection` function::"
+msgstr "TCP echo client sử dụng chức năng :func:`asyncio.open_connection`::"
+
+#: ../../library/asyncio-stream.rst:463
+#, fuzzy
+msgid ""
+"The :ref:`TCP echo client protocol "
+"<asyncio_example_tcp_echo_client_protocol>` example uses the low-level "
+":meth:`loop.create_connection` method."
+msgstr ""
+"Ví dụ :ref:`TCP echo client protocol "
+"<asyncio_example_tcp_echo_client_protocol>` sử dụng phương pháp "
+":meth:`loop.create_connection` cấp thấp."
+
+#: ../../library/asyncio-stream.rst:470
+#, fuzzy
+msgid "TCP echo server using streams"
+msgstr "máy chủ echo TCP sử dụng luồng"
+
+#: ../../library/asyncio-stream.rst:472
+#, fuzzy
+msgid "TCP echo server using the :func:`asyncio.start_server` function::"
+msgstr "Máy chủ echo TCP sử dụng chức năng :func:`asyncio.start_server` ::"
+
+#: ../../library/asyncio-stream.rst:474
+#, python-brace-format, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"async def handle_echo(reader, writer):\n"
+"    data = await reader.read(100)\n"
+"    message = data.decode()\n"
+"    addr = writer.get_extra_info('peername')\n"
+"\n"
+"    print(f\"Received {message!r} from {addr!r}\")\n"
+"\n"
+"    print(f\"Send: {message!r}\")\n"
+"    writer.write(data)\n"
+"    await writer.drain()\n"
+"\n"
+"    print(\"Close the connection\")\n"
+"    writer.close()\n"
+"    await writer.wait_closed()\n"
+"\n"
+"async def main():\n"
+"    server = await asyncio.start_server(\n"
+"        handle_echo, '127.0.0.1', 8888)\n"
+"\n"
+"    addrs = ', '.join(str(sock.getsockname()) for sock in server.sockets)\n"
+"    print(f'Serving on {addrs}')\n"
+"\n"
+"    async with server:\n"
+"        await server.serve_forever()\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"async def hand_echo(người đọc, người viết):\n"
+"    dữ liệu = đang chờ reader.read(100)\n"
+"    tin nhắn = data.decode()\n"
+"    addr = writer.get_extra_info('peername')\n"
+"\n"
+"    print(f\"Đã nhận được {tin nhắn!r} từ {addr!r}\")\n"
+"\n"
+"    print(f\"Gửi: {message!r}\")\n"
+"    writer.write(dữ liệu)\n"
+"    đang chờ writer.drain()\n"
+"\n"
+"    print(\"Đóng kết nối\")\n"
+"    nhà văn.close()\n"
+"    đang chờ nhà văn.wait_closed()\n"
+"\n"
+"async def main():\n"
+"    máy chủ = đang chờ asyncio.start_server(\n"
+"        hand_echo, '127.0.0.1', 8888)\n"
+"\n"
+"    addrs = ', '.join(str(sock.getsockname()) cho sock trong server.sockets)\n"
+"    print(f'Phục vụ trên {addrs}')\n"
+"\n"
+"    không đồng bộ với máy chủ:\n"
+"        đang chờ server.serve_forever()\n"
+"\n"
+"asyncio.run(chính())"
+
+#: ../../library/asyncio-stream.rst:506
+#, fuzzy
+msgid ""
+"The :ref:`TCP echo server protocol "
+"<asyncio_example_tcp_echo_server_protocol>` example uses the "
+":meth:`loop.create_server` method."
+msgstr ""
+"Ví dụ :ref:`TCP echo server protocol "
+"<asyncio_example_tcp_echo_server_protocol>` sử dụng phương thức "
+":meth:`loop.create_server`."
+
+#: ../../library/asyncio-stream.rst:511
+#, fuzzy
+msgid "Get HTTP headers"
+msgstr "Nhận tiêu đề HTTP"
+
+#: ../../library/asyncio-stream.rst:513
+#, fuzzy
+msgid ""
+"Simple example querying HTTP headers of the URL passed on the command line::"
+msgstr ""
+"Ví dụ đơn giản truy vấn các tiêu đề HTTP của URL được truyền trên dòng lệnh "
+"::"
+
+#: ../../library/asyncio-stream.rst:515
+#, python-brace-format, fuzzy
+msgid ""
+"import asyncio\n"
+"import urllib.parse\n"
+"import sys\n"
+"\n"
+"async def print_http_headers(url):\n"
+"    url = urllib.parse.urlsplit(url)\n"
+"    if url.scheme == 'https':\n"
+"        reader, writer = await asyncio.open_connection(\n"
+"            url.hostname, 443, ssl=True)\n"
+"    else:\n"
+"        reader, writer = await asyncio.open_connection(\n"
+"            url.hostname, 80)\n"
+"\n"
+"    query = (\n"
+"        f\"HEAD {url.path or '/'} HTTP/1.0\\r\\n\"\n"
+"        f\"Host: {url.hostname}\\r\\n\"\n"
+"        f\"\\r\\n\"\n"
+"    )\n"
+"\n"
+"    writer.write(query.encode('latin-1'))\n"
+"    while True:\n"
+"        line = await reader.readline()\n"
+"        if not line:\n"
+"            break\n"
+"\n"
+"        line = line.decode('latin1').rstrip()\n"
+"        if line:\n"
+"            print(f'HTTP header> {line}')\n"
+"\n"
+"    # Ignore the body, close the socket\n"
+"    writer.close()\n"
+"    await writer.wait_closed()\n"
+"\n"
+"url = sys.argv[1]\n"
+"asyncio.run(print_http_headers(url))"
+msgstr ""
+"nhập asyncio\n"
+"nhập urllib.parse\n"
+"hệ thống nhập khẩu\n"
+"\n"
+"async def print_http_headers(url):\n"
+"    url = urllib.parse.urlsplit(url)\n"
+"    nếu url.scheme == 'https':\n"
+"        người đọc, người viết = đang chờ asyncio.open_connection(\n"
+"            url.tên máy chủ, 443, ssl=True)\n"
+"    khác:\n"
+"        người đọc, người viết = đang chờ asyncio.open_connection(\n"
+"            url.tên máy chủ, 80)\n"
+"\n"
+"    truy vấn = (\n"
+"        f\"HEAD {url.path hoặc '/'} HTTP/1.0\\r\\n\"\n"
+"        f\"Máy chủ: {url.tên máy chủ}\\r\\n\"\n"
+"        f\"\\r\\n\"\n"
+"    )\n"
+"\n"
+"    writer.write(query.encode('latin-1'))\n"
+"    trong khi Đúng:\n"
+"        dòng = đang chờ reader.readline()\n"
+"        nếu không phải dòng:\n"
+"            phá vỡ\n"
+"\n"
+"        line = line.decode('latin1').rstrip()\n"
+"        nếu dòng:\n"
+"            print(tiêu đề f'HTTP> {line}')\n"
+"\n"
+"    # Ignore thân máy, đóng ổ cắm lại\n"
+"    nhà văn.close()\n"
+"    đang chờ nhà văn.wait_closed()\n"
+"\n"
+"url = sys.argv[1]\n"
+"asyncio.run(print_http_headers(url))"
+
+#: ../../library/asyncio-stream.rst:552
+#, fuzzy
+msgid "Usage::"
+msgstr "Cách sử dụng::"
+
+#: ../../library/asyncio-stream.rst:554
+#, fuzzy
+msgid "python example.py http://example.com/path/page.html"
+msgstr "ví dụ về python.py http://example.com/path/page.html"
+
+#: ../../library/asyncio-stream.rst:556
+#, fuzzy
+msgid "or with HTTPS::"
+msgstr "hoặc với HTTPS::"
+
+#: ../../library/asyncio-stream.rst:558
+#, fuzzy
+msgid "python example.py https://example.com/path/page.html"
+msgstr "ví dụ về python.py https://example.com/path/page.html"
+
+#: ../../library/asyncio-stream.rst:564
+#, fuzzy
+msgid "Register an open socket to wait for data using streams"
+msgstr "Đăng ký một ổ cắm mở để chờ dữ liệu bằng luồng"
+
+#: ../../library/asyncio-stream.rst:566
+#, fuzzy
+msgid ""
+"Coroutine waiting until a socket receives data using the "
+":func:`open_connection` function::"
+msgstr ""
+"Coroutine chờ cho đến khi socket nhận được dữ liệu bằng hàm "
+":func:`open_connection` ::"
+
+#: ../../library/asyncio-stream.rst:569
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"import socket\n"
+"\n"
+"async def wait_for_data():\n"
+"    # Get a reference to the current event loop because\n"
+"    # we want to access low-level APIs.\n"
+"    loop = asyncio.get_running_loop()\n"
+"\n"
+"    # Create a pair of connected sockets.\n"
+"    rsock, wsock = socket.socketpair()\n"
+"\n"
+"    # Register the open socket to wait for data.\n"
+"    reader, writer = await asyncio.open_connection(sock=rsock)\n"
+"\n"
+"    # Simulate the reception of data from the network\n"
+"    loop.call_soon(wsock.send, 'abc'.encode())\n"
+"\n"
+"    # Wait for data\n"
+"    data = await reader.read(100)\n"
+"\n"
+"    # Got data, we are done: close the socket\n"
+"    print(\"Received:\", data.decode())\n"
+"    writer.close()\n"
+"    await writer.wait_closed()\n"
+"\n"
+"    # Close the second socket\n"
+"    wsock.close()\n"
+"\n"
+"asyncio.run(wait_for_data())"
+msgstr ""
+"nhập asyncio\n"
+"ổ cắm nhập khẩu\n"
+"\n"
+"async def wait_for_data():\n"
+"    # Get tham chiếu đến vòng lặp sự kiện hiện tại vì\n"
+"    # we muốn truy cập API cấp thấp.\n"
+"    vòng lặp = asyncio.get_running_loop()\n"
+"\n"
+"    # Create một cặp ổ cắm được kết nối.\n"
+"    rsock, wsock = socket.socketpair()\n"
+"\n"
+"    # Register ổ cắm mở để chờ dữ liệu.\n"
+"    người đọc, người viết = đang chờ asyncio.open_connection(sock=rsock)\n"
+"\n"
+"    # Simulate việc tiếp nhận dữ liệu từ mạng\n"
+"    loop.call_soon(wsock.send, 'abc'.encode())\n"
+"\n"
+"    # Wait cho dữ liệu\n"
+"    dữ liệu = đang chờ reader.read(100)\n"
+"\n"
+"    Dữ liệu # Got, chúng ta đã hoàn tất: đóng ổ cắm\n"
+"    print(\"Đã nhận:\", data.decode())\n"
+"    nhà văn.close()\n"
+"    đang chờ nhà văn.wait_closed()\n"
+"\n"
+"    # Close ổ cắm thứ hai\n"
+"    wsock.close()\n"
+"\n"
+"asyncio.run(wait_for_data())"
+
+#: ../../library/asyncio-stream.rst:601
+#, fuzzy
+msgid ""
+"The :ref:`register an open socket to wait for data using a protocol "
+"<asyncio_example_create_connection>` example uses a low-level protocol and "
+"the :meth:`loop.create_connection` method."
+msgstr ""
+"Ví dụ :ref:`register an open socket to wait for data using a protocol "
+"<asyncio_example_create_connection>` sử dụng giao thức cấp thấp và phương "
+"thức :meth:`loop.create_connection`."
+
+#: ../../library/asyncio-stream.rst:605
+#, fuzzy
+msgid ""
+"The :ref:`watch a file descriptor for read events "
+"<asyncio_example_watch_fd>` example uses the low-level "
+":meth:`loop.add_reader` method to watch a file descriptor."
+msgstr ""
+"Ví dụ :ref:`watch a file descriptor for read events "
+"<asyncio_example_watch_fd>` sử dụng phương pháp :meth:`loop.add_reader` cấp "
+"thấp để xem bộ mô tả tệp."

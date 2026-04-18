@@ -1,0 +1,510 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/email.header.rst:2
+#, fuzzy
+msgid ":mod:`!email.header`: Internationalized headers"
+msgstr ":mod:`!email.header`: Tiêu đề quốc tế hóa"
+
+#: ../../library/email.header.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/email/header.py`"
+msgstr "**Source code:** :source:`Lib/email/header.py`"
+
+#: ../../library/email.header.rst:11
+#, fuzzy
+msgid ""
+"This module is part of the legacy (``Compat32``) email API.  In the current "
+"API encoding and decoding of headers is handled transparently by the "
+"dictionary-like API of the :class:`~email.message.EmailMessage` class.  In "
+"addition to uses in legacy code, this module can be useful in applications "
+"that need to completely control the character sets used when encoding "
+"headers."
+msgstr ""
+"Mô-đun này là một phần của email API cũ (``Compat32``).  Trong mã hóa và "
+"giải mã API hiện tại của các tiêu đề được xử lý một cách minh bạch bởi API "
+"giống như từ điển của lớp :class:`~email.message.EmailMessage`.  Ngoài việc "
+"sử dụng trong mã kế thừa, mô-đun này có thể hữu ích trong các ứng dụng cần "
+"kiểm soát hoàn toàn các bộ ký tự được sử dụng khi mã hóa tiêu đề."
+
+#: ../../library/email.header.rst:17
+#, fuzzy
+msgid ""
+"The remaining text in this section is the original documentation of the "
+"module."
+msgstr "Văn bản còn lại trong phần này là tài liệu gốc của mô-đun."
+
+#: ../../library/email.header.rst:19
+#, fuzzy
+msgid ""
+":rfc:`2822` is the base standard that describes the format of email "
+"messages. It derives from the older :rfc:`822` standard which came into "
+"widespread use at a time when most email was composed of ASCII characters "
+"only.  :rfc:`2822` is a specification written assuming email contains only "
+"7-bit ASCII characters."
+msgstr ""
+":rfc:`2822` là tiêu chuẩn cơ bản mô tả định dạng của email. Nó bắt nguồn từ "
+"tiêu chuẩn :rfc:`822` cũ hơn được sử dụng rộng rãi vào thời điểm mà hầu hết "
+"email chỉ bao gồm các ký tự ASCII.  :rfc:`2822` là thông số kỹ thuật được "
+"viết giả sử email chỉ chứa các ký tự ASCII 7 bit."
+
+#: ../../library/email.header.rst:24
+#, fuzzy
+msgid ""
+"Of course, as email has been deployed worldwide, it has become "
+"internationalized, such that language specific character sets can now be "
+"used in email messages.  The base standard still requires email messages to "
+"be transferred using only 7-bit ASCII characters, so a slew of RFCs have "
+"been written describing how to encode email containing non-ASCII characters "
+"into :rfc:`2822`\\ -compliant format. These RFCs include :rfc:`2045`, "
+":rfc:`2046`, :rfc:`2047`, and :rfc:`2231`. The :mod:`email` package supports"
+" these standards in its :mod:`!email.header` and :mod:`email.charset` "
+"modules."
+msgstr ""
+"Tất nhiên, vì email đã được triển khai trên toàn thế giới nên nó đã được "
+"quốc tế hóa, đến mức giờ đây các bộ ký tự dành riêng cho ngôn ngữ có thể "
+"được sử dụng trong email.  Tiêu chuẩn cơ bản vẫn yêu cầu truyền email chỉ "
+"bằng các ký tự ASCII 7 bit, do đó, một loạt RFC đã được viết mô tả cách mã "
+"hóa email chứa các ký tự không phải ASCII thành định dạng tuân thủ "
+":rfc:`2822`\\ -. Các RFC này bao gồm :rfc:`2045`, :rfc:`2046`, :rfc:`2047` "
+"và :rfc:`2231`. Gói :mod:`email` hỗ trợ các tiêu chuẩn này trong các mô-đun "
+":mod:`!email.header` và :mod:`email.charset`."
+
+#: ../../library/email.header.rst:33
+#, fuzzy
+msgid ""
+"If you want to include non-ASCII characters in your email headers, say in "
+"the :mailheader:`Subject` or :mailheader:`To` fields, you should use the "
+":class:`Header` class and assign the field in the "
+":class:`~email.message.Message` object to an instance of :class:`Header` "
+"instead of using a string for the header value.  Import the :class:`Header` "
+"class from the :mod:`!email.header` module. For example::"
+msgstr ""
+"Nếu bạn muốn bao gồm các ký tự không phải ASCII trong tiêu đề email của "
+"mình, chẳng hạn như trong trường :mailheader:`Subject` hoặc "
+":mailheader:`To`, bạn nên sử dụng lớp :class:`Header` và gán trường trong "
+"đối tượng :class:`~email.message.Message` cho một phiên bản của "
+":class:`Header` thay vì sử dụng một chuỗi cho giá trị tiêu đề.  Nhập lớp "
+":class:`Header` từ mô-đun :mod:`!email.header`. Ví dụ::"
+
+#: ../../library/email.header.rst:40
+#, fuzzy
+msgid ""
+">>> from email.message import Message\n"
+">>> from email.header import Header\n"
+">>> msg = Message()\n"
+">>> h = Header('p\\xf6stal', 'iso-8859-1')\n"
+">>> msg['Subject'] = h\n"
+">>> msg.as_string()\n"
+"'Subject: =?iso-8859-1?q?p=F6stal?=\\n\\n'"
+msgstr ""
+">>> từ nhập email.message Tin nhắn\n"
+">>> từ tiêu đề nhập email.header\n"
+">>> tin nhắn = Tin nhắn()\n"
+">>> h = Tiêu đề('p\\xf6stal', 'iso-8859-1')\n"
+">>> tin nhắn['Chủ đề'] = h\n"
+">>> tin nhắn.as_string()\n"
+"'Chủ đề: =?iso-8859-1?q?p=F6stal?=\\n\\n'"
+
+#: ../../library/email.header.rst:50
+#, fuzzy
+msgid ""
+"Notice here how we wanted the :mailheader:`Subject` field to contain a non-"
+"ASCII character?  We did this by creating a :class:`Header` instance and "
+"passing in the character set that the byte string was encoded in.  When the "
+"subsequent :class:`~email.message.Message` instance was flattened, the "
+":mailheader:`Subject` field was properly :rfc:`2047` encoded.  MIME-aware "
+"mail readers would show this header using the embedded ISO-8859-1 character."
+msgstr ""
+"Lưu ý ở đây chúng tôi muốn trường :mailheader:`Subject` chứa ký tự không "
+"phải ASCII như thế nào?  Chúng tôi đã thực hiện điều này bằng cách tạo một "
+"phiên bản :class:`Header` và chuyển vào bộ ký tự chứa chuỗi byte đã được mã "
+"hóa. Khi phiên bản :class:`~email.message.Message` tiếp theo được làm phẳng,"
+" trường :mailheader:`Subject` đã được mã hóa :rfc:`2047` chính xác.  Trình "
+"đọc thư nhận biết MIME sẽ hiển thị tiêu đề này bằng cách sử dụng ký tự "
+"ISO-8859-1 được nhúng."
+
+#: ../../library/email.header.rst:57
+#, fuzzy
+msgid "Here is the :class:`Header` class description:"
+msgstr "Đây là mô tả lớp :class:`Header`:"
+
+#: ../../library/email.header.rst:62
+#, fuzzy
+msgid ""
+"Create a MIME-compliant header that can contain strings in different "
+"character sets."
+msgstr ""
+"Tạo tiêu đề tuân thủ MIME có thể chứa các chuỗi trong các bộ ký tự khác "
+"nhau."
+
+#: ../../library/email.header.rst:65
+#, fuzzy
+msgid ""
+"Optional *s* is the initial header value.  If ``None`` (the default), the "
+"initial header value is not set.  You can later append to the header with "
+":meth:`append` method calls.  *s* may be an instance of :class:`bytes` or "
+":class:`str`, but see the :meth:`append` documentation for semantics."
+msgstr ""
+"*s* tùy chọn là giá trị tiêu đề ban đầu.  Nếu ``None`` (mặc định), giá trị "
+"tiêu đề ban đầu không được đặt.  Sau này bạn có thể thêm vào tiêu đề bằng "
+"các lệnh gọi phương thức :meth:`append`.  *s* có thể là một phiên bản của "
+":class:`bytes` hoặc :class:`str`, nhưng hãy xem tài liệu về :meth:`append` "
+"để biết ngữ nghĩa."
+
+#: ../../library/email.header.rst:70
+#, fuzzy
+msgid ""
+"Optional *charset* serves two purposes: it has the same meaning as the "
+"*charset* argument to the :meth:`append` method.  It also sets the default "
+"character set for all subsequent :meth:`append` calls that omit the "
+"*charset* argument.  If *charset* is not provided in the constructor (the "
+"default), the ``us-ascii`` character set is used both as *s*'s initial "
+"charset and as the default for subsequent :meth:`append` calls."
+msgstr ""
+"*charset* tùy chọn phục vụ hai mục đích: nó có cùng ý nghĩa với đối số "
+"*charset* đối với phương thức :meth:`append`.  Nó cũng đặt bộ ký tự mặc định"
+" cho tất cả các lệnh gọi :meth:`append` tiếp theo bỏ qua đối số *charset*.  "
+"Nếu *charset* không được cung cấp trong hàm tạo (mặc định), bộ ký tự ``us-"
+"ascii`` được sử dụng làm bộ ký tự ban đầu của *s* và làm mặc định cho các "
+"lệnh gọi :meth:`append` tiếp theo."
+
+#: ../../library/email.header.rst:77
+#, fuzzy
+msgid ""
+"The maximum line length can be specified explicitly via *maxlinelen*.  For "
+"splitting the first line to a shorter value (to account for the field header"
+" which isn't included in *s*, e.g. :mailheader:`Subject`) pass in the name "
+"of the field in *header_name*.  The default *maxlinelen* is 78, and the "
+"default value for *header_name* is ``None``, meaning it is not taken into "
+"account for the first line of a long, split header."
+msgstr ""
+"Độ dài dòng tối đa có thể được chỉ định rõ ràng thông qua *maxlinelen*.  Để "
+"tách dòng đầu tiên thành giá trị ngắn hơn (để tính đến tiêu đề trường không "
+"có trong *s*, ví dụ: :mailheader:`Subject`), hãy chuyển tên của trường vào "
+"*header_name*.  *maxlinelen* mặc định là 78 ​​và giá trị mặc định cho "
+"*header_name* là ``None``, nghĩa là nó không được tính đến dòng đầu tiên của"
+" một tiêu đề dài, phân tách."
+
+#: ../../library/email.header.rst:84
+#, fuzzy
+msgid ""
+"Optional *continuation_ws* must be :rfc:`2822`\\ -compliant folding "
+"whitespace, and is usually either a space or a hard tab character.  This "
+"character will be prepended to continuation lines.  *continuation_ws* "
+"defaults to a single space character."
+msgstr ""
+"*continuation_ws* tùy chọn phải là khoảng trắng gấp tương thích với "
+":rfc:`2822`\\ - và thường là ký tự khoảng trắng hoặc ký tự tab cứng.  Ký tự "
+"này sẽ được thêm vào các dòng tiếp theo.  *continuation_ws* mặc định là một "
+"ký tự khoảng trắng."
+
+#: ../../library/email.header.rst:89
+#, fuzzy
+msgid ""
+"Optional *errors* is passed straight through to the :meth:`append` method."
+msgstr "*errors* tùy chọn được chuyển thẳng tới phương thức :meth:`append`."
+
+#: ../../library/email.header.rst:94
+#, fuzzy
+msgid "Append the string *s* to the MIME header."
+msgstr "Nối chuỗi *s* vào tiêu đề MIME."
+
+#: ../../library/email.header.rst:96
+#, fuzzy
+msgid ""
+"Optional *charset*, if given, should be a :class:`~email.charset.Charset` "
+"instance (see :mod:`email.charset`) or the name of a character set, which "
+"will be converted to a :class:`~email.charset.Charset` instance.  A value of"
+" ``None`` (the default) means that the *charset* given in the constructor is"
+" used."
+msgstr ""
+"*charset* tùy chọn, nếu được cung cấp, phải là phiên bản "
+":class:`~email.charset.Charset` (xem :mod:`email.charset`) hoặc tên của bộ "
+"ký tự, sẽ được chuyển đổi thành phiên bản :class:`~email.charset.Charset`.  "
+"Giá trị ``None`` (mặc định) có nghĩa là *charset* được cung cấp trong hàm "
+"tạo được sử dụng."
+
+#: ../../library/email.header.rst:102
+#, fuzzy
+msgid ""
+"*s* may be an instance of :class:`bytes` or :class:`str`.  If it is an "
+"instance of :class:`bytes`, then *charset* is the encoding of that byte "
+"string, and a :exc:`UnicodeError` will be raised if the string cannot be "
+"decoded with that character set."
+msgstr ""
+"*s* có thể là một phiên bản của :class:`bytes` hoặc :class:`str`.  Nếu đó là"
+" một phiên bản của :class:`bytes` thì *charset* là mã hóa của chuỗi byte đó "
+"và :exc:`UnicodeError` sẽ được nâng lên nếu chuỗi không thể được giải mã "
+"bằng bộ ký tự đó."
+
+#: ../../library/email.header.rst:107
+#, fuzzy
+msgid ""
+"If *s* is an instance of :class:`str`, then *charset* is a hint specifying "
+"the character set of the characters in the string."
+msgstr ""
+"Nếu *s* là một phiên bản của :class:`str` thì *charset* là gợi ý chỉ định bộ"
+" ký tự của các ký tự trong chuỗi."
+
+#: ../../library/email.header.rst:110
+#, fuzzy
+msgid ""
+"In either case, when producing an :rfc:`2822`\\ -compliant header using "
+":rfc:`2047` rules, the string will be encoded using the output codec of the "
+"charset.  If the string cannot be encoded using the output codec, a "
+"UnicodeError will be raised."
+msgstr ""
+"Trong cả hai trường hợp, khi tạo tiêu đề tuân thủ :rfc:`2822`\\ - bằng quy "
+"tắc :rfc:`2047`, chuỗi sẽ được mã hóa bằng codec đầu ra của bộ ký tự.  Nếu "
+"chuỗi không thể được mã hóa bằng codec đầu ra, UnicodeError sẽ xuất hiện."
+
+#: ../../library/email.header.rst:115
+#, fuzzy
+msgid ""
+"Optional *errors* is passed as the errors argument to the decode call if *s*"
+" is a byte string."
+msgstr ""
+"*errors* tùy chọn được chuyển làm đối số lỗi cho lệnh gọi giải mã nếu *s* là"
+" một chuỗi byte."
+
+#: ../../library/email.header.rst:121
+#, fuzzy
+msgid ""
+"Encode a message header into an RFC-compliant format, possibly wrapping long"
+" lines and encapsulating non-ASCII parts in base64 or quoted-printable "
+"encodings."
+msgstr ""
+"Mã hóa tiêu đề thư thành định dạng tuân thủ RFC, có thể gói các dòng dài và "
+"đóng gói các phần không phải ASCII ở dạng mã hóa base64 hoặc có thể in được "
+"trong trích dẫn."
+
+#: ../../library/email.header.rst:125
+#, fuzzy
+msgid ""
+"Optional *splitchars* is a string containing characters which should be "
+"given extra weight by the splitting algorithm during normal header wrapping."
+"  This is in very rough support of :RFC:`2822`\\'s 'higher level syntactic "
+"breaks':  split points preceded by a splitchar are preferred during line "
+"splitting, with the characters preferred in the order in which they appear "
+"in the string.  Space and tab may be included in the string to indicate "
+"whether preference should be given to one over the other as a split point "
+"when other split chars do not appear in the line being split.  Splitchars "
+"does not affect :RFC:`2047` encoded lines."
+msgstr ""
+"Zz002zz tùy chọn là một chuỗi chứa các ký tự cần được tăng thêm trọng số "
+"bằng thuật toán phân tách trong quá trình gói tiêu đề thông thường.  Điều "
+"này hỗ trợ rất sơ bộ cho 'ngắt cú pháp cấp cao hơn' của :RFC:`2822`: các "
+"điểm phân tách đứng trước dấu phân tách được ưu tiên trong quá trình phân "
+"tách dòng, với các ký tự được ưu tiên theo thứ tự chúng xuất hiện trong "
+"chuỗi.  Dấu cách và tab có thể được bao gồm trong chuỗi để cho biết liệu có "
+"nên ưu tiên cái này hơn cái kia làm điểm phân tách khi các ký tự phân tách "
+"khác không xuất hiện trong dòng được phân tách hay không.  Splitchars không "
+"ảnh hưởng đến các dòng được mã hóa :RFC:`2047`."
+
+#: ../../library/email.header.rst:135
+#, fuzzy
+msgid ""
+"*maxlinelen*, if given, overrides the instance's value for the maximum line "
+"length."
+msgstr ""
+"*maxlinelen*, nếu được cung cấp, sẽ ghi đè giá trị của phiên bản đối với độ "
+"dài dòng tối đa."
+
+#: ../../library/email.header.rst:138
+#, fuzzy
+msgid ""
+"*linesep* specifies the characters used to separate the lines of the folded "
+"header.  It defaults to the most useful value for Python application code "
+"(``\\n``), but ``\\r\\n`` can be specified in order to produce headers with "
+"RFC-compliant line separators."
+msgstr ""
+"*linesep* chỉ định các ký tự dùng để phân tách các dòng của phần đầu gấp "
+"lại.  Nó mặc định có giá trị hữu ích nhất cho mã ứng dụng Python (``\\n``), "
+"nhưng ``\\r\\n`` có thể được chỉ định để tạo các tiêu đề có dấu phân cách "
+"dòng tuân thủ RFC."
+
+#: ../../library/email.header.rst:143
+#, fuzzy
+msgid "Added the *linesep* argument."
+msgstr "Đã thêm đối số *linesep*."
+
+#: ../../library/email.header.rst:147
+#, fuzzy
+msgid ""
+"The :class:`Header` class also provides a number of methods to support "
+"standard operators and built-in functions."
+msgstr ""
+"Lớp :class:`Header` cũng cung cấp một số phương thức để hỗ trợ các toán tử "
+"tiêu chuẩn và các hàm dựng sẵn."
+
+#: ../../library/email.header.rst:152
+#, fuzzy
+msgid ""
+"Returns an approximation of the :class:`Header` as a string, using an "
+"unlimited line length.  All pieces are converted to unicode using the "
+"specified encoding and joined together appropriately.  Any pieces with a "
+"charset of ``'unknown-8bit'`` are decoded as ASCII using the ``'replace'`` "
+"error handler."
+msgstr ""
+"Trả về giá trị gần đúng của :class:`Header` dưới dạng một chuỗi, sử dụng độ "
+"dài dòng không giới hạn.  Tất cả các phần được chuyển đổi sang unicode bằng "
+"cách sử dụng mã hóa được chỉ định và nối với nhau một cách thích hợp.  Bất "
+"kỳ phần nào có bộ ký tự ``'unknown-8bit'`` đều được giải mã thành ASCII bằng"
+" trình xử lý lỗi ``'replace'``."
+
+#: ../../library/email.header.rst:158
+#, fuzzy
+msgid "Added handling for the ``'unknown-8bit'`` charset."
+msgstr "Đã thêm xử lý cho bộ ký tự ``'unknown-8bit'``."
+
+#: ../../library/email.header.rst:164
+#, fuzzy
+msgid ""
+"This method allows you to compare two :class:`Header` instances for "
+"equality."
+msgstr ""
+"Phương pháp này cho phép bạn so sánh hai trường hợp :class:`Header` về sự "
+"bằng nhau."
+
+#: ../../library/email.header.rst:170
+#, fuzzy
+msgid ""
+"This method allows you to compare two :class:`Header` instances for "
+"inequality."
+msgstr ""
+"Phương pháp này cho phép bạn so sánh hai trường hợp :class:`Header` về sự "
+"bất bình đẳng."
+
+#: ../../library/email.header.rst:173
+#, fuzzy
+msgid ""
+"The :mod:`!email.header` module also provides the following convenient "
+"functions."
+msgstr "Mô-đun :mod:`!email.header` cũng cung cấp các chức năng tiện lợi sau."
+
+#: ../../library/email.header.rst:178
+#, fuzzy
+msgid ""
+"Decode a message header value without converting the character set. The "
+"header value is in *header*."
+msgstr ""
+"Giải mã giá trị tiêu đề thư mà không cần chuyển đổi bộ ký tự. Giá trị tiêu "
+"đề là *header*."
+
+#: ../../library/email.header.rst:181
+#, fuzzy
+msgid "For historical reasons, this function may return either:"
+msgstr "Vì lý do lịch sử, hàm này có thể trả về:"
+
+#: ../../library/email.header.rst:183
+#, fuzzy
+msgid ""
+"A list of pairs containing each of the decoded parts of the header, "
+"``(decoded_bytes, charset)``, where *decoded_bytes* is always an instance of"
+" :class:`bytes`, and *charset* is either:"
+msgstr ""
+"Danh sách các cặp chứa từng phần được giải mã của tiêu đề, ``(decoded_bytes,"
+" charset)``, trong đó *decoded_bytes* luôn là một phiên bản của "
+":class:`bytes` và *charset* là:"
+
+#: ../../library/email.header.rst:187
+#, fuzzy
+msgid ""
+"A lower case string containing the name of the character set specified."
+msgstr "Một chuỗi chữ thường chứa tên của bộ ký tự được chỉ định."
+
+#: ../../library/email.header.rst:189
+#, fuzzy
+msgid "``None`` for non-encoded parts of the header."
+msgstr "``None`` cho các phần không được mã hóa của tiêu đề."
+
+#: ../../library/email.header.rst:191
+#, fuzzy
+msgid ""
+"A list of length 1 containing a pair ``(string, None)``, where *string* is "
+"always an instance of :class:`str`."
+msgstr ""
+"Danh sách có độ dài 1 chứa cặp ``(string, None)``, trong đó *string* luôn là"
+" một phiên bản của :class:`str`."
+
+#: ../../library/email.header.rst:194
+#, fuzzy
+msgid ""
+"An :exc:`email.errors.HeaderParseError` may be raised when certain decoding "
+"errors occur (e.g. a base64 decoding exception)."
+msgstr ""
+"Một :exc:`email.errors.HeaderParseError` có thể được tăng lên khi xảy ra một"
+" số lỗi giải mã nhất định (ví dụ: ngoại lệ giải mã base64)."
+
+#: ../../library/email.header.rst:197
+#, fuzzy
+msgid "Here are examples:"
+msgstr "Dưới đây là ví dụ:"
+
+#: ../../library/email.header.rst:209
+#, fuzzy
+msgid ""
+"This function exists for backwards compatibility only. For new code, we "
+"recommend using :class:`email.headerregistry.HeaderRegistry`."
+msgstr ""
+"Chức năng này tồn tại chỉ để tương thích ngược. Đối với mã mới, chúng tôi "
+"khuyên bạn nên sử dụng :class:`email.headerregistry.HeaderRegistry`."
+
+#: ../../library/email.header.rst:215
+#, fuzzy
+msgid ""
+"Create a :class:`Header` instance from a sequence of pairs as returned by "
+":func:`decode_header`."
+msgstr ""
+"Tạo một phiên bản :class:`Header` từ một chuỗi các cặp được trả về bởi "
+":func:`decode_header`."
+
+#: ../../library/email.header.rst:218
+#, fuzzy
+msgid ""
+":func:`decode_header` takes a header value string and returns a sequence of "
+"pairs of the format ``(decoded_string, charset)`` where *charset* is the "
+"name of the character set."
+msgstr ""
+":func:`decode_header` lấy chuỗi giá trị tiêu đề và trả về một chuỗi các cặp "
+"có định dạng ``(decoded_string, charset)`` trong đó *charset* là tên của bộ "
+"ký tự."
+
+#: ../../library/email.header.rst:222
+#, fuzzy
+msgid ""
+"This function takes one of those sequence of pairs and returns a "
+":class:`Header` instance.  Optional *maxlinelen*, *header_name*, and "
+"*continuation_ws* are as in the :class:`Header` constructor."
+msgstr ""
+"Hàm này lấy một trong các chuỗi cặp đó và trả về một phiên bản "
+":class:`Header`.  *maxlinelen*, *header_name* và *continuation_ws* tùy chọn "
+"giống như trong hàm tạo :class:`Header`."
+
+#: ../../library/email.header.rst:228
+#, fuzzy
+msgid ""
+"This function exists for backwards compatibility only, and is not "
+"recommended for use in new code."
+msgstr ""
+"Hàm này chỉ tồn tại để tương thích ngược và không được khuyến nghị sử dụng "
+"trong mã mới."

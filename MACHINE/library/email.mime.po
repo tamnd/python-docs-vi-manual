@@ -1,0 +1,480 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/email.mime.rst:2
+#, fuzzy
+msgid ":mod:`!email.mime`: Creating email and MIME objects from scratch"
+msgstr ":mod:`!email.mime`: Tạo email và đối tượng MIME từ đầu"
+
+#: ../../library/email.mime.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/email/mime/`"
+msgstr "**Source code:** :source:`Lib/email/mime/`"
+
+#: ../../library/email.mime.rst:11
+#, fuzzy
+msgid ""
+"This module is part of the legacy (``Compat32``) email API.  Its "
+"functionality is partially replaced by the :mod:`~email.contentmanager` in "
+"the new API, but in certain applications these classes may still be useful, "
+"even in non-legacy code."
+msgstr ""
+"Mô-đun này là một phần của email API cũ (``Compat32``).  Chức năng của nó "
+"được thay thế một phần bằng :mod:`~email.contentmanager` trong API mới, "
+"nhưng trong một số ứng dụng nhất định, các lớp này vẫn có thể hữu ích, ngay "
+"cả trong mã không kế thừa."
+
+#: ../../library/email.mime.rst:16
+#, fuzzy
+msgid ""
+"Ordinarily, you get a message object structure by passing a file or some "
+"text to a parser, which parses the text and returns the root message object."
+"  However you can also build a complete message structure from scratch, or "
+"even individual :class:`~email.message.Message` objects by hand.  In fact, "
+"you can also take an existing structure and add new "
+":class:`~email.message.Message` objects, move them around, etc.  This makes "
+"a very convenient interface for slicing-and-dicing MIME messages."
+msgstr ""
+"Thông thường, bạn nhận được cấu trúc đối tượng thông báo bằng cách chuyển "
+"một tệp hoặc một số văn bản tới trình phân tích cú pháp, trình phân tích cú "
+"pháp này sẽ phân tích văn bản và trả về đối tượng thông báo gốc.  Tuy nhiên,"
+" bạn cũng có thể xây dựng cấu trúc thông báo hoàn chỉnh từ đầu hoặc thậm chí"
+" các đối tượng :class:`~email.message.Message` riêng lẻ bằng tay.  Trên thực"
+" tế, bạn cũng có thể lấy cấu trúc hiện có và thêm các đối tượng "
+":class:`~email.message.Message` mới, di chuyển chúng xung quanh, v.v. Điều "
+"này tạo ra một giao diện rất thuận tiện cho việc cắt và cắt các thông báo "
+"MIME."
+
+#: ../../library/email.mime.rst:24
+#, fuzzy
+msgid ""
+"You can create a new object structure by creating "
+":class:`~email.message.Message` instances, adding attachments and all the "
+"appropriate headers manually.  For MIME messages though, the :mod:`email` "
+"package provides some convenient subclasses to make things easier."
+msgstr ""
+"Bạn có thể tạo cấu trúc đối tượng mới bằng cách tạo các phiên bản "
+":class:`~email.message.Message`, thêm tệp đính kèm và tất cả các tiêu đề "
+"thích hợp theo cách thủ công.  Tuy nhiên, đối với các tin nhắn MIME, gói "
+":mod:`email` cung cấp một số lớp con tiện lợi để giúp mọi việc dễ dàng hơn."
+
+#: ../../library/email.mime.rst:29
+#, fuzzy
+msgid "Here are the classes:"
+msgstr "Dưới đây là các lớp học:"
+
+#: ../../library/email.mime.rst:35
+#, fuzzy
+msgid "Module: :mod:`email.mime.base`"
+msgstr "Mô-đun: :mod:`email.mime.base`"
+
+#: ../../library/email.mime.rst:37
+#, fuzzy
+msgid ""
+"This is the base class for all the MIME-specific subclasses of "
+":class:`~email.message.Message`.  Ordinarily you won't create instances "
+"specifically of :class:`MIMEBase`, although you could.  :class:`MIMEBase` is"
+" provided primarily as a convenient base class for more specific MIME-aware "
+"subclasses."
+msgstr ""
+"Đây là lớp cơ sở cho tất cả các lớp con dành riêng cho MIME của "
+":class:`~email.message.Message`.  Thông thường, bạn sẽ không tạo các phiên "
+"bản cụ thể của :class:`MIMEBase`, mặc dù bạn có thể.  :class:`MIMEBase` được"
+" cung cấp chủ yếu dưới dạng lớp cơ sở thuận tiện cho các lớp con nhận biết "
+"MIME cụ thể hơn."
+
+#: ../../library/email.mime.rst:43
+#, fuzzy
+msgid ""
+"*_maintype* is the :mailheader:`Content-Type` major type (e.g. "
+":mimetype:`text` or :mimetype:`image`), and *_subtype* is the "
+":mailheader:`Content-Type` minor type  (e.g. :mimetype:`plain` or "
+":mimetype:`gif`).  *_params* is a parameter key/value dictionary and is "
+"passed directly to :meth:`Message.add_header "
+"<email.message.Message.add_header>`."
+msgstr ""
+"*_maintype* là loại :mailheader:`Content-Type` chính (ví dụ: "
+":mimetype:`text` hoặc :mimetype:`image`) và *_subtype* là loại phụ "
+":mailheader:`Content-Type` (ví dụ: :mimetype:`plain` hoặc :mimetype:`gif`)."
+"  *_params* là từ điển khóa/giá trị tham số và được truyền trực tiếp tới "
+":meth:`Message.add_header <email.message.Message.add_header>`."
+
+#: ../../library/email.mime.rst:49
+#, fuzzy
+msgid ""
+"If *policy* is specified, (defaults to the :class:`compat32 "
+"<email.policy.Compat32>` policy) it will be passed to "
+":class:`~email.message.Message`."
+msgstr ""
+"Nếu *policy* được chỉ định, (mặc định là chính sách :class:`compat32 "
+"<email.policy.Compat32>`), nó sẽ được chuyển tới "
+":class:`~email.message.Message`."
+
+#: ../../library/email.mime.rst:53
+#, fuzzy
+msgid ""
+"The :class:`MIMEBase` class always adds a :mailheader:`Content-Type` header "
+"(based on *_maintype*, *_subtype*, and *_params*), and a :mailheader:`MIME-"
+"Version` header (always set to ``1.0``)."
+msgstr ""
+"Lớp :class:`MIMEBase` luôn thêm tiêu đề :mailheader:`Content-Type` (dựa trên"
+" *_maintype*, *_subtype* và *_params*) và tiêu đề :mailheader:`MIME-Version`"
+" (luôn được đặt thành ``1.0``)."
+
+#: ../../library/email.mime.rst:57 ../../library/email.mime.rst:104
+#: ../../library/email.mime.rst:135 ../../library/email.mime.rst:169
+#: ../../library/email.mime.rst:205 ../../library/email.mime.rst:225
+#: ../../library/email.mime.rst:259
+#, fuzzy
+msgid "Added *policy* keyword-only parameter."
+msgstr "Đã thêm tham số chỉ từ khóa *policy*."
+
+#: ../../library/email.mime.rst:65
+#, fuzzy
+msgid "Module: :mod:`email.mime.nonmultipart`"
+msgstr "Mô-đun: :mod:`email.mime.nonmultipart`"
+
+#: ../../library/email.mime.rst:67
+#, fuzzy
+msgid ""
+"A subclass of :class:`~email.mime.base.MIMEBase`, this is an intermediate "
+"base class for MIME messages that are not :mimetype:`multipart`.  The "
+"primary purpose of this class is to prevent the use of the "
+":meth:`~email.message.Message.attach` method, which only makes sense for "
+":mimetype:`multipart` messages.  If :meth:`~email.message.Message.attach` is"
+" called, a :exc:`~email.errors.MultipartConversionError` exception is "
+"raised."
+msgstr ""
+"Một lớp con của :class:`~email.mime.base.MIMEBase`, đây là lớp cơ sở trung "
+"gian dành cho các tin nhắn MIME không phải là :mimetype:`multipart`.  Mục "
+"đích chính của lớp này là ngăn chặn việc sử dụng phương thức "
+":meth:`~email.message.Message.attach`, phương thức này chỉ có ý nghĩa đối "
+"với các tin nhắn :mimetype:`multipart`.  Nếu "
+":meth:`~email.message.Message.attach` được gọi, một ngoại lệ "
+":exc:`~email.errors.MultipartConversionError` sẽ xuất hiện."
+
+#: ../../library/email.mime.rst:80
+#, fuzzy
+msgid "Module: :mod:`email.mime.multipart`"
+msgstr "Mô-đun: :mod:`email.mime.multipart`"
+
+#: ../../library/email.mime.rst:82
+#, fuzzy
+msgid ""
+"A subclass of :class:`~email.mime.base.MIMEBase`, this is an intermediate "
+"base class for MIME messages that are :mimetype:`multipart`.  Optional "
+"*_subtype* defaults to :mimetype:`mixed`, but can be used to specify the "
+"subtype of the message.  A :mailheader:`Content-Type` header of "
+":mimetype:`multipart/_subtype` will be added to the message object.  A "
+":mailheader:`MIME-Version` header will also be added."
+msgstr ""
+"Một lớp con của :class:`~email.mime.base.MIMEBase`, đây là lớp cơ sở trung "
+"gian cho các tin nhắn MIME là :mimetype:`multipart`.  *_subtype* tùy chọn "
+"mặc định là :mimetype:`mixed`, nhưng có thể được sử dụng để chỉ định loại "
+"phụ của tin nhắn.  Tiêu đề :mailheader:`Content-Type` của "
+":mimetype:`multipart/_subtype` sẽ được thêm vào đối tượng tin nhắn.  Tiêu đề"
+" :mailheader:`MIME-Version` cũng sẽ được thêm vào."
+
+#: ../../library/email.mime.rst:89
+#, fuzzy
+msgid ""
+"Optional *boundary* is the multipart boundary string.  When ``None`` (the "
+"default), the boundary is calculated when needed (for example, when the "
+"message is serialized)."
+msgstr ""
+"*boundary* tùy chọn là chuỗi ranh giới nhiều phần.  Khi ``None`` (mặc định),"
+" ranh giới được tính khi cần (ví dụ: khi tin nhắn được tuần tự hóa)."
+
+#: ../../library/email.mime.rst:93
+#, fuzzy
+msgid ""
+"*_subparts* is a sequence of initial subparts for the payload.  It must be "
+"possible to convert this sequence to a list.  You can always attach new "
+"subparts to the message by using the :meth:`Message.attach "
+"<email.message.Message.attach>` method."
+msgstr ""
+"*_subparts* là một chuỗi các phần phụ ban đầu dành cho tải trọng.  Phải có "
+"khả năng chuyển đổi chuỗi này thành một danh sách.  Bạn luôn có thể đính kèm"
+" các phần phụ mới vào tin nhắn bằng phương pháp :meth:`Message.attach "
+"<email.message.Message.attach>`."
+
+#: ../../library/email.mime.rst:98 ../../library/email.mime.rst:131
+#: ../../library/email.mime.rst:165 ../../library/email.mime.rst:200
+#: ../../library/email.mime.rst:223 ../../library/email.mime.rst:254
+#, fuzzy
+msgid ""
+"Optional *policy* argument defaults to :class:`compat32 "
+"<email.policy.Compat32>`."
+msgstr ""
+"Đối số *policy* tùy chọn mặc định là :class:`compat32 "
+"<email.policy.Compat32>`."
+
+#: ../../library/email.mime.rst:100
+#, fuzzy
+msgid ""
+"Additional parameters for the :mailheader:`Content-Type` header are taken "
+"from the keyword arguments, or passed into the *_params* argument, which is "
+"a keyword dictionary."
+msgstr ""
+"Các tham số bổ sung cho tiêu đề :mailheader:`Content-Type` được lấy từ các "
+"đối số từ khóa hoặc được chuyển vào đối số *_params*, là một từ điển từ "
+"khóa."
+
+#: ../../library/email.mime.rst:113
+#, fuzzy
+msgid "Module: :mod:`email.mime.application`"
+msgstr "Mô-đun: :mod:`email.mime.application`"
+
+#: ../../library/email.mime.rst:115
+#, fuzzy
+msgid ""
+"A subclass of :class:`~email.mime.nonmultipart.MIMENonMultipart`, the "
+":class:`MIMEApplication` class is used to represent MIME message objects of "
+"major type :mimetype:`application`.  *_data* contains the bytes for the raw "
+"application data.  Optional *_subtype* specifies the MIME subtype and "
+"defaults to :mimetype:`octet-stream`."
+msgstr ""
+"Một lớp con của :class:`~email.mime.nonmultipart.MIMENonMultipart`, lớp "
+":class:`MIMEApplication` được sử dụng để biểu diễn các đối tượng thông báo "
+"MIME thuộc loại chính :mimetype:`application`.  *_data* chứa các byte cho dữ"
+" liệu ứng dụng thô.  *_subtype* tùy chọn chỉ định loại phụ MIME và mặc định "
+"là :mimetype:`octet-stream`."
+
+#: ../../library/email.mime.rst:121
+#, fuzzy
+msgid ""
+"Optional *_encoder* is a callable (i.e. function) which will perform the "
+"actual encoding of the data for transport.  This callable takes one "
+"argument, which is the :class:`MIMEApplication` instance. It should use "
+":meth:`~email.message.Message.get_payload` and "
+":meth:`~email.message.Message.set_payload` to change the payload to encoded "
+"form.  It should also add any :mailheader:`Content-Transfer-Encoding` or "
+"other headers to the message object as necessary.  The default encoding is "
+"base64.  See the :mod:`email.encoders` module for a list of the built-in "
+"encoders."
+msgstr ""
+"*_encoder* tùy chọn là một hàm có thể gọi được (tức là hàm) sẽ thực hiện mã "
+"hóa thực tế dữ liệu để truyền tải.  Lệnh gọi này nhận một đối số, đó là "
+"phiên bản :class:`MIMEApplication`. Nó nên sử dụng "
+":meth:`~email.message.Message.get_payload` và "
+":meth:`~email.message.Message.set_payload` để thay đổi tải trọng sang dạng "
+"được mã hóa.  Nó cũng nên thêm bất kỳ :mailheader:`Content-Transfer-"
+"Encoding` hoặc các tiêu đề khác vào đối tượng tin nhắn nếu cần.  Mã hóa mặc "
+"định là base64.  Xem mô-đun :mod:`email.encoders` để biết danh sách các bộ "
+"mã hóa tích hợp."
+
+#: ../../library/email.mime.rst:133 ../../library/email.mime.rst:167
+#, fuzzy
+msgid "*_params* are passed straight through to the base class constructor."
+msgstr "*_params* được chuyển thẳng tới hàm tạo của lớp cơ sở."
+
+#: ../../library/email.mime.rst:144
+#, fuzzy
+msgid "Module: :mod:`email.mime.audio`"
+msgstr "Mô-đun: :mod:`email.mime.audio`"
+
+#: ../../library/email.mime.rst:146
+#, fuzzy
+msgid ""
+"A subclass of :class:`~email.mime.nonmultipart.MIMENonMultipart`, the "
+":class:`MIMEAudio` class is used to create MIME message objects of major "
+"type :mimetype:`audio`. *_audiodata* contains the bytes for the raw audio "
+"data.  If this data can be decoded as au, wav, aiff, or aifc, then the "
+"subtype will be automatically included in the :mailheader:`Content-Type` "
+"header. Otherwise you can explicitly specify the audio subtype via the "
+"*_subtype* argument.  If the minor type could not be guessed and *_subtype* "
+"was not given, then :exc:`TypeError` is raised."
+msgstr ""
+"Một lớp con của :class:`~email.mime.nonmultipart.MIMENonMultipart`, lớp "
+":class:`MIMEAudio` được sử dụng để tạo các đối tượng thông báo MIME thuộc "
+"loại chính :mimetype:`audio`. *_audiodata* chứa các byte cho dữ liệu âm "
+"thanh thô.  Nếu dữ liệu này có thể được giải mã dưới dạng au, wav, aiff hoặc"
+" aifc thì loại phụ sẽ tự động được đưa vào tiêu đề :mailheader:`Content-"
+"Type`. Nếu không, bạn có thể chỉ định rõ ràng loại phụ âm thanh thông qua "
+"đối số *_subtype*.  Nếu không thể đoán được loại phụ và *_subtype* không "
+"được đưa ra thì :exc:`TypeError` sẽ được nâng lên."
+
+#: ../../library/email.mime.rst:155
+#, fuzzy
+msgid ""
+"Optional *_encoder* is a callable (i.e. function) which will perform the "
+"actual encoding of the audio data for transport.  This callable takes one "
+"argument, which is the :class:`MIMEAudio` instance. It should use "
+":meth:`~email.message.Message.get_payload` and "
+":meth:`~email.message.Message.set_payload` to change the payload to encoded "
+"form.  It should also add any :mailheader:`Content-Transfer-Encoding` or "
+"other headers to the message object as necessary.  The default encoding is "
+"base64.  See the :mod:`email.encoders` module for a list of the built-in "
+"encoders."
+msgstr ""
+"*_encoder* tùy chọn là một chức năng có thể gọi được (tức là chức năng) sẽ "
+"thực hiện mã hóa thực tế dữ liệu âm thanh để truyền tải.  Lệnh gọi này nhận "
+"một đối số, đó là phiên bản :class:`MIMEAudio`. Nó nên sử dụng "
+":meth:`~email.message.Message.get_payload` và "
+":meth:`~email.message.Message.set_payload` để thay đổi tải trọng sang dạng "
+"được mã hóa.  Nó cũng nên thêm bất kỳ :mailheader:`Content-Transfer-"
+"Encoding` hoặc các tiêu đề khác vào đối tượng tin nhắn nếu cần.  Mã hóa mặc "
+"định là base64.  Xem mô-đun :mod:`email.encoders` để biết danh sách các bộ "
+"mã hóa tích hợp."
+
+#: ../../library/email.mime.rst:178
+#, fuzzy
+msgid "Module: :mod:`email.mime.image`"
+msgstr "Mô-đun: :mod:`email.mime.image`"
+
+#: ../../library/email.mime.rst:180
+#, fuzzy
+msgid ""
+"A subclass of :class:`~email.mime.nonmultipart.MIMENonMultipart`, the "
+":class:`MIMEImage` class is used to create MIME message objects of major "
+"type :mimetype:`image`. *_imagedata* contains the bytes for the raw image "
+"data.  If this data type can be detected (jpeg, png, gif, tiff, rgb, pbm, "
+"pgm, ppm, rast, xbm, bmp, webp, and exr attempted), then the subtype will be"
+" automatically included in the :mailheader:`Content-Type` header. Otherwise "
+"you can explicitly specify the image subtype via the *_subtype* argument. If"
+" the minor type could not be guessed and *_subtype* was not given, then "
+":exc:`TypeError` is raised."
+msgstr ""
+"Một lớp con của :class:`~email.mime.nonmultipart.MIMENonMultipart`, lớp "
+":class:`MIMEImage` được sử dụng để tạo các đối tượng thông báo MIME thuộc "
+"loại chính :mimetype:`image`. *_imagedata* chứa các byte cho dữ liệu hình "
+"ảnh thô.  Nếu loại dữ liệu này có thể được phát hiện (đã thử jpeg, png, gif,"
+" tiff, rgb, pbm, pgm, ppm, rast, xbm, bmp, webp và exr), thì loại phụ sẽ tự "
+"động được đưa vào tiêu đề :mailheader:`Content-Type`. Nếu không, bạn có thể "
+"chỉ định rõ ràng loại hình ảnh phụ thông qua đối số *_subtype*. Nếu không "
+"thể đoán được loại phụ và *_subtype* không được đưa ra thì :exc:`TypeError` "
+"sẽ được nâng lên."
+
+#: ../../library/email.mime.rst:190
+#, fuzzy
+msgid ""
+"Optional *_encoder* is a callable (i.e. function) which will perform the "
+"actual encoding of the image data for transport.  This callable takes one "
+"argument, which is the :class:`MIMEImage` instance. It should use "
+":meth:`~email.message.Message.get_payload` and "
+":meth:`~email.message.Message.set_payload` to change the payload to encoded "
+"form.  It should also add any :mailheader:`Content-Transfer-Encoding` or "
+"other headers to the message object as necessary.  The default encoding is "
+"base64.  See the :mod:`email.encoders` module for a list of the built-in "
+"encoders."
+msgstr ""
+"*_encoder* tùy chọn là một hàm có thể gọi được (tức là hàm) sẽ thực hiện mã "
+"hóa thực tế dữ liệu hình ảnh để truyền tải.  Lệnh gọi này nhận một đối số, "
+"đó là phiên bản :class:`MIMEImage`. Nó nên sử dụng "
+":meth:`~email.message.Message.get_payload` và "
+":meth:`~email.message.Message.set_payload` để thay đổi tải trọng sang dạng "
+"được mã hóa.  Nó cũng nên thêm bất kỳ :mailheader:`Content-Transfer-"
+"Encoding` hoặc các tiêu đề khác vào đối tượng tin nhắn nếu cần.  Mã hóa mặc "
+"định là base64.  Xem mô-đun :mod:`email.encoders` để biết danh sách các bộ "
+"mã hóa tích hợp."
+
+#: ../../library/email.mime.rst:202
+#, fuzzy
+msgid ""
+"*_params* are passed straight through to the "
+":class:`~email.mime.base.MIMEBase` constructor."
+msgstr ""
+"*_params* được chuyển thẳng tới hàm tạo :class:`~email.mime.base.MIMEBase`."
+
+#: ../../library/email.mime.rst:212
+#, fuzzy
+msgid "Module: :mod:`email.mime.message`"
+msgstr "Mô-đun: :mod:`email.mime.message`"
+
+#: ../../library/email.mime.rst:214
+#, fuzzy
+msgid ""
+"A subclass of :class:`~email.mime.nonmultipart.MIMENonMultipart`, the "
+":class:`MIMEMessage` class is used to create MIME objects of main type "
+":mimetype:`message`. *_msg* is used as the payload, and must be an instance "
+"of class :class:`~email.message.Message` (or a subclass thereof), otherwise "
+"a :exc:`TypeError` is raised."
+msgstr ""
+"Một lớp con của :class:`~email.mime.nonmultipart.MIMENonMultipart`, lớp "
+":class:`MIMEMessage` được sử dụng để tạo các đối tượng MIME thuộc loại chính"
+" :mimetype:`message`. *_msg* được sử dụng làm tải trọng và phải là một phiên"
+" bản của lớp :class:`~email.message.Message` (hoặc một lớp con của lớp đó), "
+"nếu không thì :exc:`TypeError` sẽ được nâng lên."
+
+#: ../../library/email.mime.rst:220
+#, fuzzy
+msgid ""
+"Optional *_subtype* sets the subtype of the message; it defaults to "
+":mimetype:`rfc822`."
+msgstr ""
+"Tùy chọn *_subtype* đặt loại phụ của tin nhắn; nó mặc định là "
+":mimetype:`rfc822`."
+
+#: ../../library/email.mime.rst:232
+#, fuzzy
+msgid "Module: :mod:`email.mime.text`"
+msgstr "Mô-đun: :mod:`email.mime.text`"
+
+#: ../../library/email.mime.rst:234
+#, fuzzy
+msgid ""
+"A subclass of :class:`~email.mime.nonmultipart.MIMENonMultipart`, the "
+":class:`MIMEText` class is used to create MIME objects of major type "
+":mimetype:`text`. *_text* is the string for the payload.  *_subtype* is the "
+"minor type and defaults to :mimetype:`plain`.  *_charset* is the character "
+"set of the text and is passed as an argument to the "
+":class:`~email.mime.nonmultipart.MIMENonMultipart` constructor; it defaults "
+"to ``us-ascii`` if the string contains only ``ascii`` code points, and "
+"``utf-8`` otherwise.  The *_charset* parameter accepts either a string or a "
+":class:`~email.charset.Charset` instance."
+msgstr ""
+"Một lớp con của :class:`~email.mime.nonmultipart.MIMENonMultipart`, lớp "
+":class:`MIMEText` được sử dụng để tạo các đối tượng MIME thuộc loại chính "
+":mimetype:`text`. *_text* là chuỗi cho tải trọng.  *_subtype* là loại nhỏ và"
+" mặc định là :mimetype:`plain`.  *_charset* là bộ ký tự của văn bản và được "
+"truyền dưới dạng đối số cho hàm tạo "
+":class:`~email.mime.nonmultipart.MIMENonMultipart`; nó mặc định là ``us-"
+"ascii`` nếu chuỗi chỉ chứa các điểm mã ``ascii`` và ``utf-8`` nếu không.  "
+"Tham số *_charset* chấp nhận một chuỗi hoặc một phiên bản "
+":class:`~email.charset.Charset`."
+
+#: ../../library/email.mime.rst:244
+#, fuzzy
+msgid ""
+"Unless the *_charset* argument is explicitly set to ``None``, the MIMEText "
+"object created will have both a :mailheader:`Content-Type` header with a "
+"``charset`` parameter, and a :mailheader:`Content-Transfer-Encoding` header."
+"  This means that a subsequent ``set_payload`` call will not result in an "
+"encoded payload, even if a charset is passed in the ``set_payload`` command."
+"  You can \"reset\" this behavior by deleting the ``Content-Transfer-"
+"Encoding`` header, after which a ``set_payload`` call will automatically "
+"encode the new payload (and add a new :mailheader:`Content-Transfer-"
+"Encoding` header)."
+msgstr ""
+"Trừ khi đối số *_charset* được đặt rõ ràng thành ``None``, đối tượng "
+"MIMEText được tạo sẽ có cả tiêu đề :mailheader:`Content-Type` với tham số "
+"``charset`` và tiêu đề :mailheader:`Content-Transfer-Encoding`.  Điều này có"
+" nghĩa là lệnh gọi ``set_payload`` tiếp theo sẽ không dẫn đến tải trọng được"
+" mã hóa, ngay cả khi bộ ký tự được truyền trong lệnh ``set_payload``.  Bạn "
+"có thể \"đặt lại\" hành vi này bằng cách xóa tiêu đề ``Content-Transfer-"
+"Encoding``, sau đó lệnh gọi ``set_payload`` sẽ tự động mã hóa tải trọng mới "
+"(và thêm tiêu đề :mailheader:`Content-Transfer-Encoding` mới)."
+
+#: ../../library/email.mime.rst:256
+#, fuzzy
+msgid "*_charset* also accepts :class:`~email.charset.Charset` instances."
+msgstr ""
+"*_charset* cũng chấp nhận các phiên bản :class:`~email.charset.Charset`."

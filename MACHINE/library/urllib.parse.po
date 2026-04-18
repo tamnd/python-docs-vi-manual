@@ -1,0 +1,1570 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/urllib.parse.rst:2
+#, fuzzy
+msgid ":mod:`!urllib.parse` --- Parse URLs into components"
+msgstr ":mod:`!urllib.parse` --- Phân tích URL thành các thành phần"
+
+#: ../../library/urllib.parse.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/urllib/parse.py`"
+msgstr "**Source code:** :source:`Lib/urllib/parse.py`"
+
+#: ../../library/urllib.parse.rst:18
+#, fuzzy
+msgid ""
+"This module defines a standard interface to break Uniform Resource Locator "
+"(URL) strings up in components (addressing scheme, network location, path "
+"etc.), to combine the components back into a URL string, and to convert a "
+"\"relative URL\" to an absolute URL given a \"base URL.\""
+msgstr ""
+"Mô-đun này xác định một giao diện tiêu chuẩn để ngắt các chuỗi Bộ định vị "
+"tài nguyên thống nhất (URL) trong các thành phần (sơ đồ địa chỉ, vị trí "
+"mạng, đường dẫn, v.v.), để kết hợp các thành phần trở lại thành chuỗi URL và"
+" để chuyển đổi \"URL tương đối\" thành URL tuyệt đối với \"URL cơ sở\"."
+
+#: ../../library/urllib.parse.rst:23
+#, fuzzy
+msgid ""
+"The module has been designed to match the internet RFC on Relative Uniform "
+"Resource Locators. It supports the following URL schemes: ``file``, ``ftp``,"
+" ``gopher``, ``hdl``, ``http``, ``https``, ``imap``, ``itms-services``, "
+"``mailto``, ``mms``, ``news``, ``nntp``, ``prospero``, ``rsync``, ``rtsp``, "
+"``rtsps``, ``rtspu``, ``sftp``, ``shttp``, ``sip``, ``sips``, ``snews``, "
+"``svn``, ``svn+ssh``, ``telnet``, ``wais``, ``ws``, ``wss``."
+msgstr ""
+"Mô-đun này đã được thiết kế để phù hợp với RFC internet trên Bộ định vị tài "
+"nguyên thống nhất tương đối. Nó hỗ trợ các sơ đồ URL sau: ``file``, ``ftp``,"
+" ``gopher``, ``hdl``, ``http``, ``https``, ``imap``, ``itms-services``, "
+"``mailto``, ``mms``, ``news``, ``nntp``, ``prospero``, ``rsync``, ``rtsp``, "
+"``rtsps``, ``rtspu``, ``sftp``, ``shttp``, ``sip``, ``sips``, ``snews``, "
+"``svn``, ``svn+ssh``, ``telnet``, ``wais``, ``ws``, ``wss``."
+
+#: ../../library/urllib.parse.rst:32
+#, fuzzy
+msgid ""
+"The inclusion of the ``itms-services`` URL scheme can prevent an app from "
+"passing Apple's App Store review process for the macOS and iOS App Stores. "
+"Handling for the ``itms-services`` scheme is always removed on iOS; on "
+"macOS, it *may* be removed if CPython has been built with the "
+":option:`--with-app-store-compliance` option."
+msgstr ""
+"Việc đưa vào sơ đồ ``itms-services`` URL có thể ngăn ứng dụng vượt qua quy "
+"trình đánh giá App Store của Apple đối với macOS và iOS App Store. Việc xử "
+"lý sơ đồ ``itms-services`` luôn bị xóa trên iOS; trên macOS, *may* sẽ bị xóa"
+" nếu CPython được xây dựng với tùy chọn :option:`--with-app-store-"
+"compliance`."
+
+#: ../../library/urllib.parse.rst:38
+#, fuzzy
+msgid ""
+"The :mod:`!urllib.parse` module defines functions that fall into two broad "
+"categories: URL parsing and URL quoting. These are covered in detail in the "
+"following sections."
+msgstr ""
+"Mô-đun :mod:`!urllib.parse` xác định các hàm thuộc hai loại chính: phân tích"
+" cú pháp URL và trích dẫn URL. Chúng được trình bày chi tiết trong các phần "
+"sau."
+
+#: ../../library/urllib.parse.rst:42
+#, fuzzy
+msgid ""
+"This module's functions use the deprecated term ``netloc`` (or ``net_loc``),"
+" which was introduced in :rfc:`1808`. However, this term has been obsoleted "
+"by :rfc:`3986`, which introduced the term ``authority`` as its replacement. "
+"The use of ``netloc`` is continued for backward compatibility."
+msgstr ""
+"Các chức năng của mô-đun này sử dụng thuật ngữ không dùng nữa ``netloc`` "
+"(hoặc ``net_loc``), được giới thiệu trong :rfc:`1808`. Tuy nhiên, thuật ngữ "
+"này đã bị lỗi thời bởi :rfc:`3986`, họ đã giới thiệu thuật ngữ ``authority``"
+" để thay thế. Việc sử dụng ``netloc`` được tiếp tục để tương thích ngược."
+
+#: ../../library/urllib.parse.rst:48
+#, fuzzy
+msgid "URL Parsing"
+msgstr "URL Phân tích cú pháp"
+
+#: ../../library/urllib.parse.rst:50
+#, fuzzy
+msgid ""
+"The URL parsing functions focus on splitting a URL string into its "
+"components, or on combining URL components into a URL string."
+msgstr ""
+"Các hàm phân tích cú pháp URL tập trung vào việc tách chuỗi URL thành các "
+"thành phần của nó hoặc kết hợp các thành phần URL thành chuỗi URL."
+
+#: ../../library/urllib.parse.rst:55
+#, python-format, fuzzy
+msgid ""
+"Parse a URL into five components, returning a 5-item :term:`named tuple` "
+":class:`SplitResult` or :class:`SplitResultBytes`. This corresponds to the "
+"general structure of a URL: ``scheme://netloc/path?query#fragment``. Each "
+"tuple item is a string, possibly empty. The components are not broken up "
+"into smaller parts (for example, the network location is a single string), "
+"and % escapes are not expanded. The delimiters as shown above are not part "
+"of the result, except for a leading slash in the *path* component, which is "
+"retained if present.  For example:"
+msgstr ""
+"Phân tích URL thành năm thành phần, trả về :term:`named tuple` "
+":class:`SplitResult` hoặc :class:`SplitResultBytes` gồm 5 mục. Điều này "
+"tương ứng với cấu trúc chung của URL: "
+"``scheme://netloc/path?query#fragment``. Mỗi mục tuple là một chuỗi, có thể "
+"trống. Các thành phần không được chia thành các phần nhỏ hơn (ví dụ: vị trí "
+"mạng là một chuỗi) và % thoát không được mở rộng. Các dấu phân cách như được"
+" hiển thị ở trên không phải là một phần của kết quả, ngoại trừ dấu gạch chéo"
+" ở đầu trong thành phần *path*, được giữ lại nếu có.  Ví dụ:"
+
+#: ../../library/urllib.parse.rst:65
+#, fuzzy
+msgid ""
+">>> from urllib.parse import urlsplit\n"
+">>> urlsplit(\"scheme://netloc/path?query#fragment\")\n"
+"SplitResult(scheme='scheme', netloc='netloc', path='/path',\n"
+"            query='query', fragment='fragment')\n"
+">>> o = urlsplit(\"http://docs.python.org:80/3/library/urllib.parse.html?\"\n"
+"...              \"highlight=params#url-parsing\")\n"
+">>> o\n"
+"SplitResult(scheme='http', netloc='docs.python.org:80',\n"
+"            path='/3/library/urllib.parse.html',\n"
+"            query='highlight=params', fragment='url-parsing')\n"
+">>> o.scheme\n"
+"'http'\n"
+">>> o.netloc\n"
+"'docs.python.org:80'\n"
+">>> o.hostname\n"
+"'docs.python.org'\n"
+">>> o.port\n"
+"80\n"
+">>> o._replace(fragment=\"\").geturl()\n"
+"'http://docs.python.org:80/3/library/urllib.parse.html?highlight=params'"
+msgstr ""
+">>> từ urllib.parse nhập urlsplit\n"
+">>> urlsplit(\"sơ đồ://netloc/path?query#fragment\")\n"
+"SplitResult(scheme='scheme', netloc='netloc', path='/path',\n"
+"            truy vấn='truy vấn', đoạn='đoạn')\n"
+">>> o = urlsplit(\"http://docs.python.org:80/3/library/urllib.parse.html?\"\n"
+"... \"đánh dấu=params#url-parsing\")\n"
+">>> ồ\n"
+"SplitResult(scheme='http', netloc='docs.python.org:80',\n"
+"            path='/3/library/urllib.parse.html',\n"
+"            query='highlight=params', Fragment='phân tích cú pháp url')\n"
+">>> o.sơ đồ\n"
+"'http'\n"
+">>> o.netloc\n"
+"'docs.python.org:80'\n"
+">>> o.tên máy chủ\n"
+"'docs.python.org'\n"
+">>> o.port\n"
+"80\n"
+">>> o._replace(fragment=\"\").geturl()\n"
+"'http://docs.python.org:80/3/library/urllib.parse.html?highlight=params'"
+
+#: ../../library/urllib.parse.rst:89
+#, fuzzy
+msgid ""
+"Following the syntax specifications in :rfc:`1808`, :func:`!urlsplit` "
+"recognizes a netloc only if it is properly introduced by '//'.  Otherwise "
+"the input is presumed to be a relative URL and thus to start with a path "
+"component."
+msgstr ""
+"Tuân theo các đặc tả cú pháp trong :rfc:`1808`, :func:`!urlsplit` chỉ nhận "
+"ra netloc nếu nó được giới thiệu đúng cách bởi '//'.  Nếu không, đầu vào "
+"được coi là URL tương đối và do đó bắt đầu bằng thành phần đường dẫn."
+
+#: ../../library/urllib.parse.rst:94
+#, python-format, fuzzy
+msgid ""
+">>> from urllib.parse import urlsplit\n"
+">>> urlsplit('//www.cwi.nl:80/%7Eguido/Python.html')\n"
+"SplitResult(scheme='', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',\n"
+"            query='', fragment='')\n"
+">>> urlsplit('www.cwi.nl/%7Eguido/Python.html')\n"
+"SplitResult(scheme='', netloc='', path='www.cwi.nl/%7Eguido/Python.html',\n"
+"            query='', fragment='')\n"
+">>> urlsplit('help/Python.html')\n"
+"SplitResult(scheme='', netloc='', path='help/Python.html',\n"
+"            query='', fragment='')"
+msgstr ""
+">>> từ urllib.parse nhập urlsplit\n"
+">>> urlsplit('//www.cwi.nl:80/%7Eguido/Python.html')\n"
+"SplitResult(scheme='', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',\n"
+"            truy vấn='', đoạn='')\n"
+">>> urlsplit('www.cwi.nl/%7Eguido/Python.html')\n"
+"SplitResult(scheme='', netloc='', path='www.cwi.nl/%7Eguido/Python.html',\n"
+"            truy vấn='', đoạn='')\n"
+">>> urlsplit('help/Python.html')\n"
+"SplitResult(scheme='', netloc='', path='help/Python.html',\n"
+"            truy vấn='', đoạn='')"
+
+#: ../../library/urllib.parse.rst:108
+#, fuzzy
+msgid ""
+"The *scheme* argument gives the default addressing scheme, to be used only "
+"if the URL does not specify one.  It should be the same type (text or bytes)"
+" as *urlstring*, except that the default value ``''`` is always allowed, and"
+" is automatically converted to ``b''`` if appropriate."
+msgstr ""
+"Đối số *scheme* đưa ra sơ đồ địa chỉ mặc định, chỉ được sử dụng nếu URL "
+"không chỉ định một sơ đồ địa chỉ.  Nó phải cùng loại (văn bản hoặc byte) với"
+" *urlstring*, ngoại trừ giá trị mặc định ``''`` luôn được cho phép và được "
+"tự động chuyển đổi thành ``b''`` nếu thích hợp."
+
+#: ../../library/urllib.parse.rst:113
+#, fuzzy
+msgid ""
+"If the *allow_fragments* argument is false, fragment identifiers are not "
+"recognized.  Instead, they are parsed as part of the path, parameters or "
+"query component, and :attr:`fragment` is set to the empty string in the "
+"return value."
+msgstr ""
+"Nếu đối số *allow_fragments* là sai, thì số nhận dạng phân đoạn sẽ không "
+"được nhận dạng.  Thay vào đó, chúng được phân tích cú pháp như một phần của "
+"đường dẫn, tham số hoặc thành phần truy vấn và :attr:`fragment` được đặt "
+"thành chuỗi trống trong giá trị trả về."
+
+#: ../../library/urllib.parse.rst:118
+#, fuzzy
+msgid ""
+"The return value is a :term:`named tuple`, which means that its items can be"
+" accessed by index or as named attributes, which are:"
+msgstr ""
+"Giá trị trả về là :term:`named tuple`, có nghĩa là các mục của nó có thể "
+"được truy cập theo chỉ mục hoặc dưới dạng thuộc tính được đặt tên, đó là:"
+
+#: ../../library/urllib.parse.rst:122 ../../library/urllib.parse.rst:388
+#, fuzzy
+msgid "Attribute"
+msgstr "Thuộc tính"
+
+#: ../../library/urllib.parse.rst:122 ../../library/urllib.parse.rst:388
+#, fuzzy
+msgid "Index"
+msgstr "chỉ mục"
+
+#: ../../library/urllib.parse.rst:122 ../../library/urllib.parse.rst:388
+#, fuzzy
+msgid "Value"
+msgstr "Giá trị"
+
+#: ../../library/urllib.parse.rst:122 ../../library/urllib.parse.rst:388
+#, fuzzy
+msgid "Value if not present"
+msgstr "Giá trị nếu không có"
+
+#: ../../library/urllib.parse.rst:124
+#, fuzzy
+msgid ":attr:`scheme`"
+msgstr ":attr:`scheme`"
+
+#: ../../library/urllib.parse.rst:124 ../../library/urllib.parse.rst:390
+#, fuzzy
+msgid "0"
+msgstr "0"
+
+#: ../../library/urllib.parse.rst:124
+#, fuzzy
+msgid "URL scheme specifier"
+msgstr "công cụ xác định sơ đồ URL"
+
+#: ../../library/urllib.parse.rst:124
+#, fuzzy
+msgid "*scheme* parameter"
+msgstr "thông số *scheme*"
+
+#: ../../library/urllib.parse.rst:126
+#, fuzzy
+msgid ":attr:`netloc`"
+msgstr ":attr:`netloc`"
+
+#: ../../library/urllib.parse.rst:126 ../../library/urllib.parse.rst:392
+#, fuzzy
+msgid "1"
+msgstr "1"
+
+#: ../../library/urllib.parse.rst:126
+#, fuzzy
+msgid "Network location part"
+msgstr "Phần vị trí mạng"
+
+#: ../../library/urllib.parse.rst:126 ../../library/urllib.parse.rst:128
+#: ../../library/urllib.parse.rst:130 ../../library/urllib.parse.rst:132
+#: ../../library/urllib.parse.rst:390 ../../library/urllib.parse.rst:392
+#, fuzzy
+msgid "empty string"
+msgstr "chuỗi trống"
+
+#: ../../library/urllib.parse.rst:128
+#, fuzzy
+msgid ":attr:`path`"
+msgstr ":attr:`path`"
+
+#: ../../library/urllib.parse.rst:128
+#, fuzzy
+msgid "2"
+msgstr "2"
+
+#: ../../library/urllib.parse.rst:128
+#, fuzzy
+msgid "Hierarchical path"
+msgstr "Đường dẫn phân cấp"
+
+#: ../../library/urllib.parse.rst:130
+#, fuzzy
+msgid ":attr:`query`"
+msgstr ":attr:`query`"
+
+#: ../../library/urllib.parse.rst:130
+#, fuzzy
+msgid "3"
+msgstr "3"
+
+#: ../../library/urllib.parse.rst:130
+#, fuzzy
+msgid "Query component"
+msgstr "Thành phần truy vấn"
+
+#: ../../library/urllib.parse.rst:132 ../../library/urllib.parse.rst:392
+#, fuzzy
+msgid ":attr:`fragment`"
+msgstr ":attr:`fragment`"
+
+#: ../../library/urllib.parse.rst:132
+#, fuzzy
+msgid "4"
+msgstr "4"
+
+#: ../../library/urllib.parse.rst:132 ../../library/urllib.parse.rst:392
+#, fuzzy
+msgid "Fragment identifier"
+msgstr "Mã nhận dạng mảnh"
+
+#: ../../library/urllib.parse.rst:134
+#, fuzzy
+msgid ":attr:`username`"
+msgstr ":attr:`username`"
+
+#: ../../library/urllib.parse.rst:134
+#, fuzzy
+msgid "User name"
+msgstr "Tên người dùng"
+
+#: ../../library/urllib.parse.rst:134 ../../library/urllib.parse.rst:136
+#: ../../library/urllib.parse.rst:138 ../../library/urllib.parse.rst:140
+#, fuzzy
+msgid ":const:`None`"
+msgstr ":const:`None`"
+
+#: ../../library/urllib.parse.rst:136
+#, fuzzy
+msgid ":attr:`password`"
+msgstr ":attr:`password`"
+
+#: ../../library/urllib.parse.rst:136
+#, fuzzy
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: ../../library/urllib.parse.rst:138
+#, fuzzy
+msgid ":attr:`hostname`"
+msgstr ":attr:`hostname`"
+
+#: ../../library/urllib.parse.rst:138
+#, fuzzy
+msgid "Host name (lower case)"
+msgstr "Tên máy chủ (chữ thường)"
+
+#: ../../library/urllib.parse.rst:140
+#, fuzzy
+msgid ":attr:`port`"
+msgstr ":attr:`port`"
+
+#: ../../library/urllib.parse.rst:140
+#, fuzzy
+msgid "Port number as integer, if present"
+msgstr "Số cổng là số nguyên, nếu có"
+
+#: ../../library/urllib.parse.rst:144
+#, fuzzy
+msgid ""
+"Reading the :attr:`port` attribute will raise a :exc:`ValueError` if an "
+"invalid port is specified in the URL.  See section :ref:`urlparse-result-"
+"object` for more information on the result object."
+msgstr ""
+"Đọc thuộc tính :attr:`port` sẽ tạo ra :exc:`ValueError` nếu cổng không hợp "
+"lệ được chỉ định trong URL.  Xem phần :ref:`urlparse-result-object` để biết "
+"thêm thông tin về đối tượng kết quả."
+
+#: ../../library/urllib.parse.rst:148
+#, fuzzy
+msgid ""
+"Unmatched square brackets in the :attr:`netloc` attribute will raise a "
+":exc:`ValueError`."
+msgstr ""
+"Dấu ngoặc vuông không khớp trong thuộc tính :attr:`netloc` sẽ tạo ra "
+":exc:`ValueError`."
+
+#: ../../library/urllib.parse.rst:151
+#, fuzzy
+msgid ""
+"Characters in the :attr:`netloc` attribute that decompose under NFKC "
+"normalization (as used by the IDNA encoding) into any of ``/``, ``?``, "
+"``#``, ``@``, or ``:`` will raise a :exc:`ValueError`. If the URL is "
+"decomposed before parsing, no error will be raised."
+msgstr ""
+"Các ký tự trong thuộc tính :attr:`netloc` phân hủy theo chuẩn hóa NFKC (như "
+"được mã hóa IDNA sử dụng) thành bất kỳ ``/``, ``?``, ``#``, ``@`` hoặc ``:``"
+" nào sẽ tạo ra :exc:`ValueError`. Nếu URL bị phân hủy trước khi phân tích cú"
+" pháp thì sẽ không có lỗi nào phát sinh."
+
+#: ../../library/urllib.parse.rst:156
+#, fuzzy
+msgid ""
+"Following some of the `WHATWG spec`_ that updates :rfc:`3986`, leading C0 "
+"control and space characters are stripped from the URL. ``\\n``, ``\\r`` and"
+" tab ``\\t`` characters are removed from the URL at any position."
+msgstr ""
+"Sau một số `WHATWG spec`_ cập nhật :rfc:`3986`, các ký tự khoảng trắng và "
+"điều khiển C0 hàng đầu sẽ bị loại bỏ khỏi URL. Các ký tự ``\\n``, ``\\r`` và"
+" tab ``\\t`` bị xóa khỏi URL ở bất kỳ vị trí nào."
+
+#: ../../library/urllib.parse.rst:160
+#, fuzzy
+msgid ""
+"As is the case with all named tuples, the subclass has a few additional "
+"methods and attributes that are particularly useful. One such method is "
+":meth:`_replace`. The :meth:`_replace` method will return a new "
+":class:`SplitResult` object replacing specified fields with new values."
+msgstr ""
+"Như trường hợp của tất cả các bộ dữ liệu được đặt tên, lớp con có một số "
+"phương thức và thuộc tính bổ sung đặc biệt hữu ích. Một phương pháp như vậy "
+"là :meth:`_replace`. Phương thức :meth:`_replace` sẽ trả về một đối tượng "
+":class:`SplitResult` mới thay thế các trường được chỉ định bằng các giá trị "
+"mới."
+
+#: ../../library/urllib.parse.rst:165
+#, python-format, fuzzy
+msgid ""
+">>> from urllib.parse import urlsplit\n"
+">>> u = urlsplit('//www.cwi.nl:80/%7Eguido/Python.html')\n"
+">>> u\n"
+"SplitResult(scheme='', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',\n"
+"            query='', fragment='')\n"
+">>> u._replace(scheme='http')\n"
+"SplitResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',\n"
+"            query='', fragment='')"
+msgstr ""
+">>> từ urllib.parse nhập urlsplit\n"
+">>> u = urlsplit('//www.cwi.nl:80/%7Eguido/Python.html')\n"
+">>> bạn\n"
+"SplitResult(scheme='', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',\n"
+"            truy vấn='', đoạn='')\n"
+">>> u._replace(scheme='http')\n"
+"SplitResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',\n"
+"            truy vấn='', đoạn='')"
+
+#: ../../library/urllib.parse.rst:179
+#, fuzzy
+msgid ""
+":func:`urlsplit` does not perform validation.  See :ref:`URL parsing "
+"security <url-parsing-security>` for details."
+msgstr ""
+":func:`urlsplit` không thực hiện xác thực.  Xem :ref:`URL parsing security "
+"<url-parsing-security>` để biết chi tiết."
+
+#: ../../library/urllib.parse.rst:182
+#, fuzzy
+msgid "Added IPv6 URL parsing capabilities."
+msgstr "Đã thêm khả năng phân tích cú pháp IPv6 URL."
+
+#: ../../library/urllib.parse.rst:185
+#, fuzzy
+msgid ""
+"The fragment is now parsed for all URL schemes (unless *allow_fragments* is "
+"false), in accordance with :rfc:`3986`.  Previously, an allowlist of schemes"
+" that support fragments existed."
+msgstr ""
+"Đoạn này hiện được phân tích cú pháp cho tất cả các lược đồ URL (trừ khi "
+"*allow_fragments* sai), theo :rfc:`3986`.  Trước đây, đã tồn tại một danh "
+"sách cho phép các chương trình hỗ trợ các mảnh."
+
+#: ../../library/urllib.parse.rst:190
+#, fuzzy
+msgid ""
+"Out-of-range port numbers now raise :exc:`ValueError`, instead of returning "
+":const:`None`."
+msgstr ""
+"Số cổng ngoài phạm vi hiện tăng :exc:`ValueError`, thay vì trả về "
+":const:`None`."
+
+#: ../../library/urllib.parse.rst:194
+#, fuzzy
+msgid ""
+"Characters that affect netloc parsing under NFKC normalization will now "
+"raise :exc:`ValueError`."
+msgstr ""
+"Các ký tự ảnh hưởng đến phân tích cú pháp netloc trong quá trình chuẩn hóa "
+"NFKC giờ đây sẽ tăng :exc:`ValueError`."
+
+#: ../../library/urllib.parse.rst:198
+#, fuzzy
+msgid "ASCII newline and tab characters are stripped from the URL."
+msgstr "Các ký tự tab và dòng mới của ASCII bị loại bỏ khỏi URL."
+
+#: ../../library/urllib.parse.rst:201
+#, fuzzy
+msgid ""
+"Leading WHATWG C0 control and space characters are stripped from the URL."
+msgstr ""
+"Các ký tự khoảng trắng và điều khiển WHATWG C0 hàng đầu bị loại bỏ khỏi URL."
+
+#: ../../library/urllib.parse.rst:209
+#, fuzzy
+msgid ""
+"Parse a query string given as a string argument (data of type "
+":mimetype:`application/x-www-form-urlencoded`).  Data are returned as a "
+"dictionary.  The dictionary keys are the unique query variable names and the"
+" values are lists of values for each name."
+msgstr ""
+"Phân tích chuỗi truy vấn được cung cấp dưới dạng đối số chuỗi (dữ liệu thuộc"
+" loại :mimetype:`application/x-www-form-urlencoded`).  Dữ liệu được trả về "
+"dưới dạng từ điển.  Các khóa từ điển là tên biến truy vấn duy nhất và các "
+"giá trị là danh sách các giá trị cho mỗi tên."
+
+#: ../../library/urllib.parse.rst:214 ../../library/urllib.parse.rst:263
+#, fuzzy
+msgid ""
+"The optional argument *keep_blank_values* is a flag indicating whether blank"
+" values in percent-encoded queries should be treated as blank strings. A "
+"true value indicates that blanks should be retained as  blank strings.  The "
+"default false value indicates that blank values are to be ignored and "
+"treated as if they were not included."
+msgstr ""
+"Đối số tùy chọn *keep_blank_values* là cờ cho biết liệu các giá trị trống "
+"trong truy vấn được mã hóa phần trăm có nên được coi là chuỗi trống hay "
+"không. Giá trị đúng cho biết các khoảng trống phải được giữ lại dưới dạng "
+"chuỗi trống.  Giá trị sai mặc định cho biết rằng các giá trị trống sẽ bị bỏ "
+"qua và xử lý như thể chúng không được đưa vào."
+
+#: ../../library/urllib.parse.rst:220 ../../library/urllib.parse.rst:269
+#, fuzzy
+msgid ""
+"The optional argument *strict_parsing* is a flag indicating what to do with "
+"parsing errors.  If false (the default), errors are silently ignored.  If "
+"true, errors raise a :exc:`ValueError` exception."
+msgstr ""
+"Đối số tùy chọn *strict_parsing* là cờ cho biết phải làm gì với lỗi phân "
+"tích cú pháp.  Nếu sai (mặc định), lỗi sẽ được âm thầm bỏ qua.  Nếu đúng, "
+"lỗi sẽ tạo ra ngoại lệ :exc:`ValueError`."
+
+#: ../../library/urllib.parse.rst:224 ../../library/urllib.parse.rst:273
+#, fuzzy
+msgid ""
+"The optional *encoding* and *errors* parameters specify how to decode "
+"percent-encoded sequences into Unicode characters, as accepted by the "
+":meth:`bytes.decode` method."
+msgstr ""
+"Các tham số *encoding* và *errors* tùy chọn chỉ định cách giải mã các chuỗi "
+"được mã hóa phần trăm thành các ký tự Unicode, như được phương thức "
+":meth:`bytes.decode` chấp nhận."
+
+#: ../../library/urllib.parse.rst:228 ../../library/urllib.parse.rst:277
+#, fuzzy
+msgid ""
+"The optional argument *max_num_fields* is the maximum number of fields to "
+"read. If set, then throws a :exc:`ValueError` if there are more than "
+"*max_num_fields* fields read."
+msgstr ""
+"Đối số tùy chọn *max_num_fields* là số lượng trường tối đa cần đọc. Nếu được"
+" đặt, thì sẽ gửi :exc:`ValueError` nếu có nhiều hơn trường *max_num_fields* "
+"được đọc."
+
+#: ../../library/urllib.parse.rst:232 ../../library/urllib.parse.rst:281
+#, fuzzy
+msgid ""
+"The optional argument *separator* is the symbol to use for separating the "
+"query arguments. It defaults to ``&``."
+msgstr ""
+"Đối số tùy chọn *separator* là ký hiệu được sử dụng để phân tách các đối số "
+"truy vấn. Nó mặc định là ``&``."
+
+#: ../../library/urllib.parse.rst:235
+#, fuzzy
+msgid ""
+"Use the :func:`urllib.parse.urlencode` function (with the ``doseq`` "
+"parameter set to ``True``) to convert such dictionaries into query strings."
+msgstr ""
+"Sử dụng hàm :func:`urllib.parse.urlencode` (với tham số ``doseq`` được đặt "
+"thành ``True``) để chuyển đổi các từ điển đó thành chuỗi truy vấn."
+
+#: ../../library/urllib.parse.rst:240 ../../library/urllib.parse.rst:287
+#, fuzzy
+msgid "Add *encoding* and *errors* parameters."
+msgstr "Thêm thông số *encoding* và *errors*."
+
+#: ../../library/urllib.parse.rst:243 ../../library/urllib.parse.rst:290
+#, fuzzy
+msgid "Added *max_num_fields* parameter."
+msgstr "Đã thêm tham số *max_num_fields*."
+
+#: ../../library/urllib.parse.rst:246 ../../library/urllib.parse.rst:293
+#, fuzzy
+msgid ""
+"Added *separator* parameter with the default value of ``&``. Python versions"
+" earlier than Python 3.10 allowed using both ``;`` and ``&`` as query "
+"parameter separator. This has been changed to allow only a single separator "
+"key, with ``&`` as the default separator."
+msgstr ""
+"Đã thêm tham số *separator* với giá trị mặc định là ``&``. Các phiên bản "
+"Python cũ hơn Python 3.10 cho phép sử dụng cả ``;`` và ``&`` làm dấu tách "
+"tham số truy vấn. Điều này đã được thay đổi để chỉ cho phép một phím phân "
+"cách duy nhất, với ``&`` là dấu phân cách mặc định."
+
+#: ../../library/urllib.parse.rst:252 ../../library/urllib.parse.rst:713
+#, fuzzy
+msgid ""
+"Accepting objects with false values (like ``0`` and ``[]``) except empty "
+"strings and byte-like objects and ``None`` is now deprecated."
+msgstr ""
+"Việc chấp nhận các đối tượng có giá trị sai (như ``0`` và ``[]``) ngoại trừ "
+"các chuỗi trống và các đối tượng giống byte và ``None`` hiện không được dùng"
+" nữa."
+
+#: ../../library/urllib.parse.rst:259
+#, fuzzy
+msgid ""
+"Parse a query string given as a string argument (data of type "
+":mimetype:`application/x-www-form-urlencoded`).  Data are returned as a list"
+" of name, value pairs."
+msgstr ""
+"Phân tích chuỗi truy vấn được cung cấp dưới dạng đối số chuỗi (dữ liệu thuộc"
+" loại :mimetype:`application/x-www-form-urlencoded`).  Dữ liệu được trả về "
+"dưới dạng danh sách các cặp tên, giá trị."
+
+#: ../../library/urllib.parse.rst:284
+#, fuzzy
+msgid ""
+"Use the :func:`urllib.parse.urlencode` function to convert such lists of "
+"pairs into query strings."
+msgstr ""
+"Sử dụng hàm :func:`urllib.parse.urlencode` để chuyển đổi danh sách các cặp "
+"đó thành chuỗi truy vấn."
+
+#: ../../library/urllib.parse.rst:302
+#, fuzzy
+msgid ""
+"Construct a URL from a tuple as returned by ``urlsplit()``. The *parts* "
+"argument can be any five-item iterable. This may result in a slightly "
+"different, but equivalent URL, if the URL that was parsed originally had "
+"unnecessary delimiters (for example, a ``?`` with an empty query; the RFC "
+"states that these are equivalent)."
+msgstr ""
+"Xây dựng một URL từ một bộ dữ liệu được trả về bởi ``urlsplit()``. Đối số "
+"*parts* có thể lặp lại năm mục bất kỳ. Điều này có thể dẫn đến một URL hơi "
+"khác một chút nhưng tương đương, nếu URL được phân tích cú pháp ban đầu có "
+"các dấu phân cách không cần thiết (ví dụ: ``?`` có truy vấn trống; RFC cho "
+"biết những dấu phân cách này là tương đương)."
+
+#: ../../library/urllib.parse.rst:311
+#, fuzzy
+msgid ""
+"This is similar to :func:`urlsplit`, but additionally splits the *path* "
+"component on *path* and *params*. This function returns a 6-item "
+":term:`named tuple` :class:`ParseResult` or :class:`ParseResultBytes`. Its "
+"items are the same as for the :func:`!urlsplit` result, except that *params*"
+" is inserted at index 3, between *path* and *query*."
+msgstr ""
+"Điều này tương tự như :func:`urlsplit` nhưng còn phân chia thành phần *path*"
+" trên *path* và *params*. Hàm này trả về :term:`named tuple` "
+":class:`ParseResult` hoặc :class:`ParseResultBytes` gồm 6 mục. Các mục của "
+"nó giống như đối với kết quả :func:`!urlsplit`, ngoại trừ việc *params* được"
+" chèn ở chỉ mục 3, giữa *path* và *query*."
+
+#: ../../library/urllib.parse.rst:318
+#, fuzzy
+msgid ""
+"This function is based on obsoleted :rfc:`1738` and :rfc:`1808`, which "
+"listed *params* as the main URL component. The more recent URL syntax allows"
+" parameters to be applied to each segment of the *path* portion of the URL "
+"(see :rfc:`3986`). :func:`urlsplit` should generally be used instead of "
+":func:`urlparse`. A separate function is needed to separate the path "
+"segments and parameters."
+msgstr ""
+"Hàm này dựa trên :rfc:`1738` và :rfc:`1808` đã lỗi thời, liệt kê *params* là"
+" thành phần URL chính. Cú pháp URL gần đây hơn cho phép áp dụng các tham số "
+"cho từng phân đoạn của phần *path* của URL (xem :rfc:`3986`). "
+":func:`urlsplit` thường nên được sử dụng thay vì :func:`urlparse`. Cần có "
+"một chức năng riêng biệt để phân tách các đoạn đường dẫn và tham số."
+
+#: ../../library/urllib.parse.rst:327
+#, fuzzy
+msgid ""
+"Combine the elements of a tuple as returned by :func:`urlparse` into a "
+"complete URL as a string. The *parts* argument can be any six-item iterable."
+" This may result in a slightly different, but equivalent URL, if the URL "
+"that was parsed originally had unnecessary delimiters (for example, a ? with"
+" an empty query; the RFC states that these are equivalent)."
+msgstr ""
+"Kết hợp các phần tử của một bộ dữ liệu được trả về bởi :func:`urlparse` "
+"thành một URL hoàn chỉnh dưới dạng một chuỗi. Đối số *parts* có thể lặp lại "
+"sáu mục bất kỳ. Điều này có thể dẫn đến một URL hơi khác một chút nhưng "
+"tương đương, nếu URL được phân tích cú pháp ban đầu có các dấu phân cách "
+"không cần thiết (ví dụ: một ? với một truy vấn trống; RFC cho biết những dấu"
+" phân cách này là tương đương)."
+
+#: ../../library/urllib.parse.rst:336
+#, fuzzy
+msgid ""
+"Construct a full (\"absolute\") URL by combining a \"base URL\" (*base*) "
+"with another URL (*url*).  Informally, this uses components of the base URL,"
+" in particular the addressing scheme, the network location and (part of) the"
+" path, to provide missing components in the relative URL.  For example:"
+msgstr ""
+"Tạo một URL (\"tuyệt đối\") đầy đủ bằng cách kết hợp một \"URL cơ sở\" "
+"(*base*) với một URL (*url*) khác.  Một cách không chính thức, điều này sử "
+"dụng các thành phần của URL cơ sở, đặc biệt là sơ đồ địa chỉ, vị trí mạng và"
+" (một phần) đường dẫn, để cung cấp các thành phần còn thiếu trong URL tương "
+"đối.  Ví dụ:"
+
+#: ../../library/urllib.parse.rst:345
+#, fuzzy
+msgid ""
+"The *allow_fragments* argument has the same meaning and default as for "
+":func:`urlsplit`."
+msgstr ""
+"Đối số *allow_fragments* có cùng ý nghĩa và mặc định như đối với "
+":func:`urlsplit`."
+
+#: ../../library/urllib.parse.rst:350
+#, fuzzy
+msgid ""
+"If *url* is an absolute URL (that is, it starts with ``//`` or "
+"``scheme://``), the *url*'s hostname and/or scheme will be present in the "
+"result.  For example:"
+msgstr ""
+"Nếu *url* là URL tuyệt đối (nghĩa là nó bắt đầu bằng ``//`` hoặc "
+"``scheme://``), thì tên máy chủ và/hoặc lược đồ của *url* sẽ xuất hiện trong"
+" kết quả.  Ví dụ:"
+
+#: ../../library/urllib.parse.rst:353
+#, python-format, fuzzy
+msgid ""
+">>> urljoin('http://www.cwi.nl/%7Eguido/Python.html',\n"
+"...         '//www.python.org/%7Eguido')\n"
+"'http://www.python.org/%7Eguido'"
+msgstr ""
+">>> urljoin('http://www.cwi.nl/%7Eguido/Python.html',\n"
+"... '//www.python.org/%7Eguido')\n"
+"'http://www.python.org/%7Eguido'"
+
+#: ../../library/urllib.parse.rst:359
+#, fuzzy
+msgid ""
+"If you do not want that behavior, preprocess the *url* with :func:`urlsplit`"
+" and :func:`urlunsplit`, removing possible *scheme* and *netloc* parts."
+msgstr ""
+"Nếu bạn không muốn hành vi đó, hãy xử lý trước *url* bằng :func:`urlsplit` "
+"và :func:`urlunsplit`, loại bỏ các phần *scheme* và *netloc* có thể có."
+
+#: ../../library/urllib.parse.rst:364
+#, fuzzy
+msgid ""
+"Because an absolute URL may be passed as the ``url`` parameter, it is "
+"generally **not secure** to use ``urljoin`` with an attacker-controlled "
+"``url``. For example in, ``urljoin(\"https://website.com/users/\", "
+"username)``, if ``username`` can contain an absolute URL, the result of "
+"``urljoin`` will be the absolute URL."
+msgstr ""
+"Bởi vì một URL tuyệt đối có thể được chuyển dưới dạng tham số ``url``, nên "
+"thông thường **not secure** sẽ sử dụng ``urljoin`` với ``url`` do kẻ tấn "
+"công kiểm soát. Ví dụ: trong ``urljoin(\"https://website.com/users/\", "
+"username)``, nếu ``username`` có thể chứa URL tuyệt đối thì kết quả của "
+"``urljoin`` sẽ là URL tuyệt đối."
+
+#: ../../library/urllib.parse.rst:374
+#, fuzzy
+msgid "Behavior updated to match the semantics defined in :rfc:`3986`."
+msgstr ""
+"Hành vi được cập nhật để phù hợp với ngữ nghĩa được xác định trong "
+":rfc:`3986`."
+
+#: ../../library/urllib.parse.rst:379
+#, fuzzy
+msgid ""
+"If *url* contains a fragment identifier, return a modified version of *url* "
+"with no fragment identifier, and the fragment identifier as a separate "
+"string.  If there is no fragment identifier in *url*, return *url* "
+"unmodified and an empty string."
+msgstr ""
+"Nếu *url* chứa mã định danh phân đoạn, hãy trả về phiên bản sửa đổi của "
+"*url* không có mã định danh phân đoạn và mã định danh phân đoạn dưới dạng "
+"một chuỗi riêng biệt.  Nếu không có mã định danh phân đoạn trong *url*, hãy "
+"trả về *url* chưa sửa đổi và một chuỗi trống."
+
+#: ../../library/urllib.parse.rst:384
+#, fuzzy
+msgid ""
+"The return value is a :term:`named tuple`, its items can be accessed by "
+"index or as named attributes:"
+msgstr ""
+"Giá trị trả về là :term:`named tuple`, các mục của nó có thể được truy cập "
+"theo chỉ mục hoặc dưới dạng thuộc tính được đặt tên:"
+
+#: ../../library/urllib.parse.rst:390
+#, fuzzy
+msgid ":attr:`url`"
+msgstr ":attr:`url`"
+
+#: ../../library/urllib.parse.rst:390
+#, fuzzy
+msgid "URL with no fragment"
+msgstr "URL không có mảnh vỡ"
+
+#: ../../library/urllib.parse.rst:395
+#, fuzzy
+msgid ""
+"See section :ref:`urlparse-result-object` for more information on the result"
+" object."
+msgstr ""
+"Xem phần :ref:`urlparse-result-object` để biết thêm thông tin về đối tượng "
+"kết quả."
+
+#: ../../library/urllib.parse.rst:398
+#, fuzzy
+msgid "Result is a structured object rather than a simple 2-tuple."
+msgstr ""
+"Kết quả là một đối tượng có cấu trúc chứ không phải là một bộ 2 đơn giản."
+
+#: ../../library/urllib.parse.rst:403
+#, fuzzy
+msgid ""
+"Extract the url from a wrapped URL (that is, a string formatted as "
+"``<URL:scheme://host/path>``, ``<scheme://host/path>``, "
+"``URL:scheme://host/path`` or ``scheme://host/path``). If *url* is not a "
+"wrapped URL, it is returned without changes."
+msgstr ""
+"Trích xuất url từ một URL được bao bọc (nghĩa là một chuỗi được định dạng là"
+" ``<URL:scheme://host/path>``, ``<scheme://host/path>``, "
+"``URL:scheme://host/path`` hoặc ``scheme://host/path``). Nếu *url* không "
+"phải là URL được gói, nó sẽ được trả về mà không thay đổi."
+
+#: ../../library/urllib.parse.rst:411
+#, fuzzy
+msgid "URL parsing security"
+msgstr "bảo mật phân tích cú pháp URL"
+
+#: ../../library/urllib.parse.rst:413
+#, fuzzy
+msgid ""
+"The :func:`urlsplit` and :func:`urlparse` APIs do not perform **validation**"
+" of inputs.  They may not raise errors on inputs that other applications "
+"consider invalid.  They may also succeed on some inputs that might not be "
+"considered URLs elsewhere.  Their purpose is for practical functionality "
+"rather than purity."
+msgstr ""
+"API :func:`urlsplit` và :func:`urlparse` không thực hiện **validation** đầu "
+"vào.  Chúng có thể không gây ra lỗi ở đầu vào mà các ứng dụng khác cho là "
+"không hợp lệ.  Họ cũng có thể thành công trên một số thông tin đầu vào có "
+"thể không được coi là URL ở những nơi khác.  Mục đích của chúng là dành cho "
+"chức năng thực tế hơn là độ tinh khiết."
+
+#: ../../library/urllib.parse.rst:419
+#, fuzzy
+msgid ""
+"Instead of raising an exception on unusual input, they may instead return "
+"some component parts as empty strings. Or components may contain more than "
+"perhaps they should."
+msgstr ""
+"Thay vì đưa ra một ngoại lệ đối với đầu vào bất thường, thay vào đó, chúng "
+"có thể trả về một số bộ phận dưới dạng chuỗi trống. Hoặc các thành phần có "
+"thể chứa nhiều hơn mức cần thiết."
+
+#: ../../library/urllib.parse.rst:423
+#, fuzzy
+msgid ""
+"We recommend that users of these APIs where the values may be used anywhere "
+"with security implications code defensively. Do some verification within "
+"your code before trusting a returned component part.  Does that ``scheme`` "
+"make sense?  Is that a sensible ``path``?  Is there anything strange about "
+"that ``hostname``?  etc."
+msgstr ""
+"Chúng tôi khuyên người dùng các API này trong đó các giá trị có thể được sử "
+"dụng ở bất kỳ đâu có mã bảo mật có ý nghĩa phòng thủ. Thực hiện một số xác "
+"minh trong mã của bạn trước khi tin cậy một phần thành phần được trả về.  "
+"Liệu ``scheme`` đó có hợp lý không?  Đó có phải là một ``path`` hợp lý?  "
+"``hostname`` đó có gì lạ không?  v.v."
+
+#: ../../library/urllib.parse.rst:429
+#, fuzzy
+msgid ""
+"What constitutes a URL is not universally well defined.  Different "
+"applications have different needs and desired constraints.  For instance the"
+" living `WHATWG spec`_ describes what user facing web clients such as a web "
+"browser require. While :rfc:`3986` is more general.  These functions "
+"incorporate some aspects of both, but cannot be claimed compliant with "
+"either.  The APIs and existing user code with expectations on specific "
+"behaviors predate both standards leading us to be very cautious about making"
+" API behavior changes."
+msgstr ""
+"Những gì tạo nên URL không được xác định rõ ràng trên toàn cầu.  Các ứng "
+"dụng khác nhau có nhu cầu và ràng buộc mong muốn khác nhau.  Ví dụ: `WHATWG "
+"spec`_ sống mô tả những gì người dùng phải đối mặt với các máy khách web như"
+" trình duyệt web yêu cầu. Trong khi :rfc:`3986` tổng quát hơn.  Các chức "
+"năng này kết hợp một số khía cạnh của cả hai, nhưng không thể được tuyên bố "
+"là tuân thủ cả hai.  Các API và mã người dùng hiện tại có kỳ vọng về các "
+"hành vi cụ thể có trước cả hai tiêu chuẩn, khiến chúng tôi phải hết sức thận"
+" trọng khi thực hiện các thay đổi về hành vi của API."
+
+#: ../../library/urllib.parse.rst:440
+#, fuzzy
+msgid "Parsing ASCII Encoded Bytes"
+msgstr "Phân tích byte được mã hóa ASCII"
+
+#: ../../library/urllib.parse.rst:442
+#, fuzzy
+msgid ""
+"The URL parsing functions were originally designed to operate on character "
+"strings only. In practice, it is useful to be able to manipulate properly "
+"quoted and encoded URLs as sequences of ASCII bytes. Accordingly, the URL "
+"parsing functions in this module all operate on :class:`bytes` and "
+":class:`bytearray` objects in addition to :class:`str` objects."
+msgstr ""
+"Các hàm phân tích cú pháp URL ban đầu được thiết kế để chỉ hoạt động trên "
+"các chuỗi ký tự. Trong thực tế, sẽ rất hữu ích khi có thể thao tác các URL "
+"được trích dẫn và mã hóa chính xác dưới dạng chuỗi byte ASCII. Theo đó, các "
+"chức năng phân tích cú pháp URL trong mô-đun này đều hoạt động trên các đối "
+"tượng :class:`bytes` và :class:`bytearray` ngoài các đối tượng :class:`str`."
+
+#: ../../library/urllib.parse.rst:448
+#, fuzzy
+msgid ""
+"If :class:`str` data is passed in, the result will also contain only "
+":class:`str` data. If :class:`bytes` or :class:`bytearray` data is passed "
+"in, the result will contain only :class:`bytes` data."
+msgstr ""
+"Nếu dữ liệu :class:`str` được truyền vào, kết quả cũng sẽ chỉ chứa dữ liệu "
+":class:`str`. Nếu dữ liệu :class:`bytes` hoặc :class:`bytearray` được truyền"
+" vào, kết quả sẽ chỉ chứa dữ liệu :class:`bytes`."
+
+#: ../../library/urllib.parse.rst:452
+#, fuzzy
+msgid ""
+"Attempting to mix :class:`str` data with :class:`bytes` or "
+":class:`bytearray` in a single function call will result in a "
+":exc:`TypeError` being raised, while attempting to pass in non-ASCII byte "
+"values will trigger :exc:`UnicodeDecodeError`."
+msgstr ""
+"Việc cố gắng trộn dữ liệu :class:`str` với :class:`bytes` hoặc "
+":class:`bytearray` trong một lệnh gọi hàm sẽ dẫn đến :exc:`TypeError` được "
+"nâng lên, trong khi việc cố gắng chuyển các giá trị byte không phải ASCII sẽ"
+" kích hoạt :exc:`UnicodeDecodeError`."
+
+#: ../../library/urllib.parse.rst:457
+#, fuzzy
+msgid ""
+"To support easier conversion of result objects between :class:`str` and "
+":class:`bytes`, all return values from URL parsing functions provide either "
+"an :meth:`encode` method (when the result contains :class:`str` data) or a "
+":meth:`decode` method (when the result contains :class:`bytes` data). The "
+"signatures of these methods match those of the corresponding :class:`str` "
+"and :class:`bytes` methods (except that the default encoding is ``'ascii'`` "
+"rather than ``'utf-8'``). Each produces a value of a corresponding type that"
+" contains either :class:`bytes` data (for :meth:`encode` methods) or "
+":class:`str` data (for :meth:`decode` methods)."
+msgstr ""
+"Để hỗ trợ chuyển đổi dễ dàng hơn các đối tượng kết quả giữa :class:`str` và "
+":class:`bytes`, tất cả các giá trị trả về từ các hàm phân tích cú pháp URL "
+"đều cung cấp phương thức :meth:`encode` (khi kết quả chứa dữ liệu "
+":class:`str`) hoặc phương thức :meth:`decode` (khi kết quả chứa dữ liệu "
+":class:`bytes`). Chữ ký của các phương thức này khớp với chữ ký của các "
+"phương thức :class:`str` và :class:`bytes` tương ứng (ngoại trừ mã hóa mặc "
+"định là ``'ascii'`` chứ không phải ``'utf-8'``). Mỗi cái tạo ra một giá trị "
+"thuộc loại tương ứng chứa dữ liệu :class:`bytes` (đối với phương thức "
+":meth:`encode`) hoặc dữ liệu :class:`str` (đối với phương thức "
+":meth:`decode`)."
+
+#: ../../library/urllib.parse.rst:468
+#, fuzzy
+msgid ""
+"Applications that need to operate on potentially improperly quoted URLs that"
+" may contain non-ASCII data will need to do their own decoding from bytes to"
+" characters before invoking the URL parsing methods."
+msgstr ""
+"Các ứng dụng cần hoạt động trên các URL có khả năng được trích dẫn không "
+"chính xác có thể chứa dữ liệu không phải ASCII sẽ cần phải thực hiện giải mã"
+" riêng từ byte thành ký tự trước khi gọi các phương thức phân tích cú pháp "
+"URL."
+
+#: ../../library/urllib.parse.rst:472
+#, fuzzy
+msgid ""
+"The behaviour described in this section applies only to the URL parsing "
+"functions. The URL quoting functions use their own rules when producing or "
+"consuming byte sequences as detailed in the documentation of the individual "
+"URL quoting functions."
+msgstr ""
+"Hành vi được mô tả trong phần này chỉ áp dụng cho các hàm phân tích cú pháp "
+"URL. Các hàm trích dẫn URL sử dụng các quy tắc riêng của chúng khi tạo hoặc "
+"tiêu thụ các chuỗi byte như được nêu chi tiết trong tài liệu về các hàm "
+"trích dẫn URL riêng lẻ."
+
+#: ../../library/urllib.parse.rst:477
+#, fuzzy
+msgid "URL parsing functions now accept ASCII encoded byte sequences"
+msgstr ""
+"Các hàm phân tích cú pháp URL hiện chấp nhận chuỗi byte được mã hóa ASCII"
+
+#: ../../library/urllib.parse.rst:484
+#, fuzzy
+msgid "Structured Parse Results"
+msgstr "Kết quả phân tích có cấu trúc"
+
+#: ../../library/urllib.parse.rst:486
+#, fuzzy
+msgid ""
+"The result objects from the :func:`urlsplit`, :func:`urlparse`  and "
+":func:`urldefrag` functions are subclasses of the :class:`tuple` type. These"
+" subclasses add the attributes listed in the documentation for those "
+"functions, the encoding and decoding support described in the previous "
+"section, as well as an additional method:"
+msgstr ""
+"Các đối tượng kết quả từ các hàm :func:`urlsplit`, :func:`urlparse` và "
+":func:`urldefrag` là các lớp con của loại :class:`tuple`. Các lớp con này "
+"thêm các thuộc tính được liệt kê trong tài liệu dành cho các hàm đó, hỗ trợ "
+"mã hóa và giải mã được mô tả trong phần trước cũng như một phương thức bổ "
+"sung:"
+
+#: ../../library/urllib.parse.rst:494
+#, fuzzy
+msgid ""
+"Return the re-combined version of the original URL as a string. This may "
+"differ from the original URL in that the scheme may be normalized to lower "
+"case and empty components may be dropped. Specifically, empty parameters, "
+"queries, and fragment identifiers will be removed."
+msgstr ""
+"Trả về phiên bản được kết hợp lại của URL gốc dưới dạng chuỗi. Điều này có "
+"thể khác với URL ban đầu ở chỗ sơ đồ có thể được chuẩn hóa thành chữ thường "
+"và các thành phần trống có thể bị loại bỏ. Cụ thể, các tham số, truy vấn và "
+"mã nhận dạng phân đoạn trống sẽ bị xóa."
+
+#: ../../library/urllib.parse.rst:499
+#, fuzzy
+msgid ""
+"For :func:`urldefrag` results, only empty fragment identifiers will be "
+"removed. For :func:`urlsplit` and :func:`urlparse` results, all noted "
+"changes will be made to the URL returned by this method."
+msgstr ""
+"Đối với kết quả :func:`urldefrag`, chỉ các số nhận dạng đoạn trống sẽ bị "
+"xóa. Đối với kết quả :func:`urlsplit` và :func:`urlparse`, tất cả các thay "
+"đổi đã ghi chú sẽ được thực hiện đối với URL được trả về bằng phương pháp "
+"này."
+
+#: ../../library/urllib.parse.rst:503
+#, fuzzy
+msgid ""
+"The result of this method remains unchanged if passed back through the "
+"original parsing function:"
+msgstr ""
+"Kết quả của phương thức này không thay đổi nếu được truyền trở lại qua hàm "
+"phân tích ban đầu:"
+
+#: ../../library/urllib.parse.rst:516
+#, fuzzy
+msgid ""
+"The following classes provide the implementations of the structured parse "
+"results when operating on :class:`str` objects:"
+msgstr ""
+"Các lớp sau đây cung cấp cách triển khai các kết quả phân tích cú pháp có "
+"cấu trúc khi hoạt động trên các đối tượng :class:`str`:"
+
+#: ../../library/urllib.parse.rst:521
+#, fuzzy
+msgid ""
+"Concrete class for :func:`urldefrag` results containing :class:`str` data. "
+"The :meth:`encode` method returns a :class:`DefragResultBytes` instance."
+msgstr ""
+"Lớp cụ thể cho kết quả :func:`urldefrag` chứa dữ liệu :class:`str`. Phương "
+"thức :meth:`encode` trả về một phiên bản :class:`DefragResultBytes`."
+
+#: ../../library/urllib.parse.rst:529
+#, fuzzy
+msgid ""
+"Concrete class for :func:`urlparse` results containing :class:`str` data. "
+"The :meth:`encode` method returns a :class:`ParseResultBytes` instance."
+msgstr ""
+"Lớp cụ thể cho kết quả :func:`urlparse` chứa dữ liệu :class:`str`. Phương "
+"thức :meth:`encode` trả về một phiên bản :class:`ParseResultBytes`."
+
+#: ../../library/urllib.parse.rst:535
+#, fuzzy
+msgid ""
+"Concrete class for :func:`urlsplit` results containing :class:`str` data. "
+"The :meth:`encode` method returns a :class:`SplitResultBytes` instance."
+msgstr ""
+"Lớp cụ thể cho kết quả :func:`urlsplit` chứa dữ liệu :class:`str`. Phương "
+"thức :meth:`encode` trả về một phiên bản :class:`SplitResultBytes`."
+
+#: ../../library/urllib.parse.rst:540
+#, fuzzy
+msgid ""
+"The following classes provide the implementations of the parse results when "
+"operating on :class:`bytes` or :class:`bytearray` objects:"
+msgstr ""
+"Các lớp sau đây cung cấp cách triển khai các kết quả phân tích cú pháp khi "
+"hoạt động trên các đối tượng :class:`bytes` hoặc :class:`bytearray`:"
+
+#: ../../library/urllib.parse.rst:545
+#, fuzzy
+msgid ""
+"Concrete class for :func:`urldefrag` results containing :class:`bytes` data."
+" The :meth:`decode` method returns a :class:`DefragResult` instance."
+msgstr ""
+"Lớp cụ thể cho kết quả :func:`urldefrag` chứa dữ liệu :class:`bytes`. Phương"
+" thức :meth:`decode` trả về một phiên bản :class:`DefragResult`."
+
+#: ../../library/urllib.parse.rst:553
+#, fuzzy
+msgid ""
+"Concrete class for :func:`urlparse` results containing :class:`bytes` data. "
+"The :meth:`decode` method returns a :class:`ParseResult` instance."
+msgstr ""
+"Lớp cụ thể cho kết quả :func:`urlparse` chứa dữ liệu :class:`bytes`. Phương "
+"thức :meth:`decode` trả về một phiên bản :class:`ParseResult`."
+
+#: ../../library/urllib.parse.rst:561
+#, fuzzy
+msgid ""
+"Concrete class for :func:`urlsplit` results containing :class:`bytes` data. "
+"The :meth:`decode` method returns a :class:`SplitResult` instance."
+msgstr ""
+"Lớp cụ thể cho kết quả :func:`urlsplit` chứa dữ liệu :class:`bytes`. Phương "
+"thức :meth:`decode` trả về một phiên bản :class:`SplitResult`."
+
+#: ../../library/urllib.parse.rst:569
+#, fuzzy
+msgid "URL Quoting"
+msgstr "trích dẫn URL"
+
+#: ../../library/urllib.parse.rst:571
+#, fuzzy
+msgid ""
+"The URL quoting functions focus on taking program data and making it safe "
+"for use as URL components by quoting special characters and appropriately "
+"encoding non-ASCII text. They also support reversing these operations to "
+"recreate the original data from the contents of a URL component if that task"
+" isn't already covered by the URL parsing functions above."
+msgstr ""
+"Các chức năng trích dẫn URL tập trung vào việc lấy dữ liệu chương trình và "
+"đảm bảo an toàn khi sử dụng làm thành phần URL bằng cách trích dẫn các ký tự"
+" đặc biệt và mã hóa văn bản không phải ASCII một cách thích hợp. Chúng cũng "
+"hỗ trợ đảo ngược các thao tác này để tạo lại dữ liệu gốc từ nội dung của "
+"thành phần URL nếu tác vụ đó chưa được các hàm phân tích cú pháp URL ở trên "
+"thực hiện."
+
+#: ../../library/urllib.parse.rst:579
+#, python-brace-format, fuzzy
+msgid ""
+"Replace special characters in *string* using the :samp:`%{xx}` escape. "
+"Letters, digits, and the characters ``'_.-~'`` are never quoted. By default,"
+" this function is intended for quoting the path section of a URL. The "
+"optional *safe* parameter specifies additional ASCII characters that should "
+"not be quoted --- its default value is ``'/'``."
+msgstr ""
+"Thay thế các ký tự đặc biệt trong *string* bằng cách sử dụng lối thoát "
+":samp:`%{xx}`. Các chữ cái, chữ số và ký tự ``'_.-~'`` không bao giờ được "
+"trích dẫn. Theo mặc định, chức năng này nhằm mục đích trích dẫn phần đường "
+"dẫn của URL. Tham số *safe* tùy chọn chỉ định các ký tự ASCII bổ sung không "
+"được trích dẫn --- giá trị mặc định của nó là ``'/'``."
+
+#: ../../library/urllib.parse.rst:585 ../../library/urllib.parse.rst:631
+#: ../../library/urllib.parse.rst:660
+#, fuzzy
+msgid "*string* may be either a :class:`str` or a :class:`bytes` object."
+msgstr "*string* có thể là đối tượng :class:`str` hoặc :class:`bytes`."
+
+#: ../../library/urllib.parse.rst:587
+#, fuzzy
+msgid ""
+"Moved from :rfc:`2396` to :rfc:`3986` for quoting URL strings. \"~\" is now "
+"included in the set of unreserved characters."
+msgstr ""
+"Đã chuyển từ :rfc:`2396` sang :rfc:`3986` để trích dẫn chuỗi URL. \"~\" hiện"
+" được bao gồm trong bộ ký tự không được đặt trước."
+
+#: ../../library/urllib.parse.rst:591
+#, fuzzy
+msgid ""
+"The optional *encoding* and *errors* parameters specify how to deal with "
+"non-ASCII characters, as accepted by the :meth:`str.encode` method. "
+"*encoding* defaults to ``'utf-8'``. *errors* defaults to ``'strict'``, "
+"meaning unsupported characters raise a :class:`UnicodeEncodeError`. "
+"*encoding* and *errors* must not be supplied if *string* is a "
+":class:`bytes`, or a :class:`TypeError` is raised."
+msgstr ""
+"Các tham số *encoding* và *errors* tùy chọn chỉ định cách xử lý các ký tự "
+"không phải ASCII, như được phương thức :meth:`str.encode` chấp nhận. "
+"*encoding* mặc định là ``'utf-8'``. *errors* mặc định là ``'strict'``, nghĩa"
+" là các ký tự không được hỗ trợ sẽ tạo ra :class:`UnicodeEncodeError`. Không"
+" được cung cấp *encoding* và *errors* nếu *string* là :class:`bytes` hoặc "
+":class:`TypeError` được nâng lên."
+
+#: ../../library/urllib.parse.rst:599
+#, fuzzy
+msgid ""
+"Note that ``quote(string, safe, encoding, errors)`` is equivalent to "
+"``quote_from_bytes(string.encode(encoding, errors), safe)``."
+msgstr ""
+"Lưu ý rằng ``quote(string, safe, encoding, errors)`` tương đương với "
+"``quote_from_bytes(string.encode(encoding, errors), safe)``."
+
+#: ../../library/urllib.parse.rst:602
+#, fuzzy
+msgid "Example: ``quote('/El Niño/')`` yields ``'/El%20Ni%C3%B1o/'``."
+msgstr "Ví dụ: ``quote('/El Niño/')`` mang lại ``'/El%20Ni%C3%B1o/'``."
+
+#: ../../library/urllib.parse.rst:607
+#, fuzzy
+msgid ""
+"Like :func:`quote`, but also replace spaces with plus signs, as required for"
+" quoting HTML form values when building up a query string to go into a URL. "
+"Plus signs in the original string are escaped unless they are included in "
+"*safe*.  It also does not have *safe* default to ``'/'``."
+msgstr ""
+"Giống như :func:`quote`, nhưng cũng thay thế dấu cách bằng dấu cộng, theo "
+"yêu cầu để trích dẫn các giá trị biểu mẫu HTML khi xây dựng chuỗi truy vấn "
+"để đi vào URL. Dấu cộng trong chuỗi gốc được thoát trừ khi chúng được đưa "
+"vào *safe*.  Nó cũng không có *safe* mặc định là ``'/'``."
+
+#: ../../library/urllib.parse.rst:612
+#, python-format, fuzzy
+msgid "Example: ``quote_plus('/El Niño/')`` yields ``'%2FEl+Ni%C3%B1o%2F'``."
+msgstr "Ví dụ: ``quote_plus('/El Niño/')`` mang lại ``'%2FEl+Ni%C3%B1o%2F'``."
+
+#: ../../library/urllib.parse.rst:617
+#, fuzzy
+msgid ""
+"Like :func:`quote`, but accepts a :class:`bytes` object rather than a "
+":class:`str`, and does not perform string-to-bytes encoding."
+msgstr ""
+"Giống như :func:`quote`, nhưng chấp nhận đối tượng :class:`bytes` thay vì "
+":class:`str` và không thực hiện mã hóa chuỗi thành byte."
+
+#: ../../library/urllib.parse.rst:620
+#, python-format, fuzzy
+msgid "Example: ``quote_from_bytes(b'a&\\xef')`` yields ``'a%26%EF'``."
+msgstr "Ví dụ: ``quote_from_bytes(b'a&\\xef')`` mang lại ``'a%26%EF'``."
+
+#: ../../library/urllib.parse.rst:626
+#, python-brace-format, fuzzy
+msgid ""
+"Replace :samp:`%{xx}` escapes with their single-character equivalent. The "
+"optional *encoding* and *errors* parameters specify how to decode percent-"
+"encoded sequences into Unicode characters, as accepted by the "
+":meth:`bytes.decode` method."
+msgstr ""
+"Thay thế các ký tự thoát :samp:`%{xx}` bằng ký tự đơn tương đương của chúng."
+" Các tham số *encoding* và *errors* tùy chọn chỉ định cách giải mã các chuỗi"
+" được mã hóa phần trăm thành các ký tự Unicode, như được phương thức "
+":meth:`bytes.decode` chấp nhận."
+
+#: ../../library/urllib.parse.rst:633
+#, fuzzy
+msgid ""
+"*encoding* defaults to ``'utf-8'``. *errors* defaults to ``'replace'``, "
+"meaning invalid sequences are replaced by a placeholder character."
+msgstr ""
+"*encoding* mặc định là ``'utf-8'``. *errors* mặc định là ``'replace'``, "
+"nghĩa là các chuỗi không hợp lệ được thay thế bằng ký tự giữ chỗ."
+
+#: ../../library/urllib.parse.rst:637
+#, fuzzy
+msgid "Example: ``unquote('/El%20Ni%C3%B1o/')`` yields ``'/El Niño/'``."
+msgstr "Ví dụ: ``unquote('/El%20Ni%C3%B1o/')`` mang lại ``'/El Niño/'``."
+
+#: ../../library/urllib.parse.rst:639
+#, fuzzy
+msgid ""
+"*string* parameter supports bytes and str objects (previously only str)."
+msgstr ""
+"Tham số *string* hỗ trợ các đối tượng byte và str (trước đây chỉ có str)."
+
+#: ../../library/urllib.parse.rst:647
+#, fuzzy
+msgid ""
+"Like :func:`unquote`, but also replace plus signs with spaces, as required "
+"for unquoting HTML form values."
+msgstr ""
+"Giống như :func:`unquote`, nhưng cũng thay thế dấu cộng bằng dấu cách, theo "
+"yêu cầu để bỏ trích dẫn các giá trị biểu mẫu HTML."
+
+#: ../../library/urllib.parse.rst:650
+#, fuzzy
+msgid "*string* must be a :class:`str`."
+msgstr "*string* phải là :class:`str`."
+
+#: ../../library/urllib.parse.rst:652
+#, fuzzy
+msgid "Example: ``unquote_plus('/El+Ni%C3%B1o/')`` yields ``'/El Niño/'``."
+msgstr "Ví dụ: ``unquote_plus('/El+Ni%C3%B1o/')`` mang lại ``'/El Niño/'``."
+
+#: ../../library/urllib.parse.rst:657
+#, python-brace-format, fuzzy
+msgid ""
+"Replace :samp:`%{xx}` escapes with their single-octet equivalent, and return"
+" a :class:`bytes` object."
+msgstr ""
+"Thay thế các ký tự thoát :samp:`%{xx}` bằng ký tự octet đơn tương đương của "
+"chúng và trả về một đối tượng :class:`bytes`."
+
+#: ../../library/urllib.parse.rst:662
+#, fuzzy
+msgid ""
+"If it is a :class:`str`, unescaped non-ASCII characters in *string* are "
+"encoded into UTF-8 bytes."
+msgstr ""
+"Nếu là :class:`str`, các ký tự không phải ASCII không thoát trong *string* "
+"sẽ được mã hóa thành UTF-8 byte."
+
+#: ../../library/urllib.parse.rst:665
+#, python-format, fuzzy
+msgid "Example: ``unquote_to_bytes('a%26%EF')`` yields ``b'a&\\xef'``."
+msgstr "Ví dụ: ``unquote_to_bytes('a%26%EF')`` mang lại ``b'a&\\xef'``."
+
+#: ../../library/urllib.parse.rst:671
+#, fuzzy
+msgid ""
+"Convert a mapping object or a sequence of two-element tuples, which may "
+"contain :class:`str` or :class:`bytes` objects, to a percent-encoded ASCII "
+"text string.  If the resultant string is to be used as a *data* for POST "
+"operation with the :func:`~urllib.request.urlopen` function, then it should "
+"be encoded to bytes, otherwise it would result in a :exc:`TypeError`."
+msgstr ""
+"Chuyển đổi một đối tượng ánh xạ hoặc một chuỗi gồm các bộ dữ liệu hai phần "
+"tử, có thể chứa các đối tượng :class:`str` hoặc :class:`bytes`, thành chuỗi "
+"văn bản ASCII được mã hóa phần trăm.  Nếu chuỗi kết quả được sử dụng làm "
+"*data* cho thao tác POST với hàm :func:`~urllib.request.urlopen` thì chuỗi "
+"đó phải được mã hóa thành byte, nếu không thì chuỗi đó sẽ tạo ra "
+":exc:`TypeError`."
+
+#: ../../library/urllib.parse.rst:678
+#, python-format, fuzzy
+msgid ""
+"The resulting string is a series of ``key=value`` pairs separated by ``'&'``"
+" characters, where both *key* and *value* are quoted using the *quote_via* "
+"function.  By default, :func:`quote_plus` is used to quote the values, which"
+" means spaces are quoted as a ``'+'`` character and '/' characters are "
+"encoded as ``%2F``, which follows the standard for GET requests "
+"(``application/x-www-form-urlencoded``).  An alternate function that can be "
+"passed as *quote_via* is :func:`quote`, which will encode spaces as ``%20`` "
+"and not encode '/' characters.  For maximum control of what is quoted, use "
+"``quote`` and specify a value for *safe*."
+msgstr ""
+"Chuỗi kết quả là một chuỗi các cặp ``key=value`` được phân tách bằng các ký "
+"tự ``'&'``, trong đó cả *key* và *value* đều được trích dẫn bằng hàm "
+"*quote_via*.  Theo mặc định, :func:`quote_plus` được sử dụng để trích dẫn "
+"các giá trị, nghĩa là khoảng trắng được trích dẫn dưới dạng ký tự ``'+'`` và"
+" ký tự '/' được mã hóa thành ``%2F``, tuân theo tiêu chuẩn cho các yêu cầu "
+"GET (``application/x-www-form-urlencoded``).  Một hàm thay thế có thể được "
+"chuyển dưới dạng *quote_via* là :func:`quote`, hàm này sẽ mã hóa khoảng "
+"trắng dưới dạng ``%20`` và không mã hóa các ký tự '/'.  Để kiểm soát tối đa "
+"nội dung được trích dẫn, hãy sử dụng ``quote`` và chỉ định giá trị cho "
+"*safe*."
+
+#: ../../library/urllib.parse.rst:688
+#, fuzzy
+msgid ""
+"When a sequence of two-element tuples is used as the *query* argument, the "
+"first element of each tuple is a key and the second is a value. The value "
+"element in itself can be a sequence and in that case, if the optional "
+"parameter *doseq* evaluates to ``True``, individual ``key=value`` pairs "
+"separated by ``'&'`` are generated for each element of the value sequence "
+"for the key.  The order of parameters in the encoded string will match the "
+"order of parameter tuples in the sequence."
+msgstr ""
+"Khi một chuỗi các bộ dữ liệu hai phần tử được sử dụng làm đối số *query*, "
+"phần tử đầu tiên của mỗi bộ dữ liệu là một khóa và phần tử thứ hai là một "
+"giá trị. Bản thân phần tử giá trị có thể là một chuỗi và trong trường hợp "
+"đó, nếu tham số tùy chọn *doseq* ước tính là ``True`` thì các cặp "
+"``key=value`` riêng lẻ được phân tách bằng ``'&'`` sẽ được tạo cho mỗi phần "
+"tử của chuỗi giá trị cho khóa.  Thứ tự của các tham số trong chuỗi được mã "
+"hóa sẽ khớp với thứ tự của các bộ tham số trong chuỗi."
+
+#: ../../library/urllib.parse.rst:696
+#, fuzzy
+msgid ""
+"The *safe*, *encoding*, and *errors* parameters are passed down to "
+"*quote_via* (the *encoding* and *errors* parameters are only passed when a "
+"query element is a :class:`str`)."
+msgstr ""
+"Các tham số *safe*, *encoding* và *errors* được truyền xuống *quote_via* "
+"(các tham số *encoding* và *errors* chỉ được truyền khi phần tử truy vấn là "
+":class:`str`)."
+
+#: ../../library/urllib.parse.rst:700
+#, fuzzy
+msgid ""
+"To reverse this encoding process, :func:`parse_qs` and :func:`parse_qsl` are"
+" provided in this module to parse query strings into Python data structures."
+msgstr ""
+"Để đảo ngược quá trình mã hóa này, :func:`parse_qs` và :func:`parse_qsl` "
+"được cung cấp trong mô-đun này để phân tích các chuỗi truy vấn thành cấu "
+"trúc dữ liệu Python."
+
+#: ../../library/urllib.parse.rst:703
+#, fuzzy
+msgid ""
+"Refer to :ref:`urllib examples <urllib-examples>` to find out how the "
+":func:`urllib.parse.urlencode` method can be used for generating the query "
+"string of a URL or data for a POST request."
+msgstr ""
+"Tham khảo :ref:`urllib examples <urllib-examples>` để tìm hiểu cách sử dụng "
+"phương thức :func:`urllib.parse.urlencode` để tạo chuỗi truy vấn của URL "
+"hoặc dữ liệu cho yêu cầu POST."
+
+#: ../../library/urllib.parse.rst:707
+#, fuzzy
+msgid "*query* supports bytes and string objects."
+msgstr "*query* hỗ trợ các đối tượng byte và chuỗi."
+
+#: ../../library/urllib.parse.rst:710
+#, fuzzy
+msgid "Added the *quote_via* parameter."
+msgstr "Đã thêm tham số *quote_via*."
+
+#: ../../library/urllib.parse.rst:720
+#, fuzzy
+msgid "`WHATWG`_ -  URL Living standard"
+msgstr "`WHATWG`_ - URL Mức sống"
+
+#: ../../library/urllib.parse.rst:721
+#, fuzzy
+msgid ""
+"Working Group for the URL Standard that defines URLs, domains, IP addresses,"
+" the application/x-www-form-urlencoded format, and their API."
+msgstr ""
+"Nhóm làm việc về Tiêu chuẩn URL xác định URL, tên miền, địa chỉ IP, định "
+"dạng ứng dụng/x-www-form-urlencoded và API của chúng."
+
+#: ../../library/urllib.parse.rst:724
+#, fuzzy
+msgid ":rfc:`3986` - Uniform Resource Identifiers"
+msgstr ":rfc:`3986` - Mã định danh tài nguyên thống nhất"
+
+#: ../../library/urllib.parse.rst:725
+#, fuzzy
+msgid ""
+"This is the current standard (STD66). Any changes to urllib.parse module "
+"should conform to this. Certain deviations could be observed, which are "
+"mostly for backward compatibility purposes and for certain de-facto parsing "
+"requirements as commonly observed in major browsers."
+msgstr ""
+"Đây là tiêu chuẩn hiện hành (STD66). Mọi thay đổi đối với mô-đun "
+"urllib.parse đều phải tuân theo điều này. Có thể quan sát thấy một số sai "
+"lệch nhất định, phần lớn là nhằm mục đích tương thích ngược và cho một số "
+"yêu cầu phân tích cú pháp thực tế nhất định như thường thấy trong các trình "
+"duyệt chính."
+
+#: ../../library/urllib.parse.rst:730
+#, fuzzy
+msgid ":rfc:`2732` - Format for Literal IPv6 Addresses in URL's."
+msgstr ":rfc:`2732` - Định dạng cho địa chỉ IPv6 theo nghĩa đen trong URL."
+
+#: ../../library/urllib.parse.rst:731
+#, fuzzy
+msgid "This specifies the parsing requirements of IPv6 URLs."
+msgstr "Điều này chỉ định các yêu cầu phân tích cú pháp của URL IPv6."
+
+#: ../../library/urllib.parse.rst:733
+#, fuzzy
+msgid ":rfc:`2396` - Uniform Resource Identifiers (URI): Generic Syntax"
+msgstr ":rfc:`2396` - Mã định danh tài nguyên thống nhất (URI): Cú pháp chung"
+
+#: ../../library/urllib.parse.rst:734
+#, fuzzy
+msgid ""
+"Document describing the generic syntactic requirements for both Uniform "
+"Resource Names (URNs) and Uniform Resource Locators (URLs)."
+msgstr ""
+"Tài liệu mô tả các yêu cầu cú pháp chung cho cả Tên tài nguyên thống nhất "
+"(URN) và Bộ định vị tài nguyên thống nhất (URL)."
+
+#: ../../library/urllib.parse.rst:737
+#, fuzzy
+msgid ":rfc:`2368` - The mailto URL scheme."
+msgstr ":rfc:`2368` - Lược đồ mailto URL."
+
+#: ../../library/urllib.parse.rst:738
+#, fuzzy
+msgid "Parsing requirements for mailto URL schemes."
+msgstr "Yêu cầu phân tích cú pháp cho các lược đồ mailto URL."
+
+#: ../../library/urllib.parse.rst:740
+#, fuzzy
+msgid ":rfc:`1808` - Relative Uniform Resource Locators"
+msgstr ":rfc:`1808` - Bộ định vị tài nguyên thống nhất tương đối"
+
+#: ../../library/urllib.parse.rst:741
+#, fuzzy
+msgid ""
+"This Request For Comments includes the rules for joining an absolute and a "
+"relative URL, including a fair number of \"Abnormal Examples\" which govern "
+"the treatment of border cases."
+msgstr ""
+"Yêu cầu Nhận xét này bao gồm các quy tắc để tham gia URL tuyệt đối và tương "
+"đối, bao gồm một số lượng lớn \"Ví dụ bất thường\" chi phối việc xử lý các "
+"trường hợp biên giới."
+
+#: ../../library/urllib.parse.rst:745
+#, fuzzy
+msgid ":rfc:`1738` - Uniform Resource Locators (URL)"
+msgstr ":rfc:`1738` - Bộ định vị tài nguyên thống nhất (URL)"
+
+#: ../../library/urllib.parse.rst:746
+#, fuzzy
+msgid "This specifies the formal syntax and semantics of absolute URLs."
+msgstr ""
+"Điều này chỉ định cú pháp chính thức và ngữ nghĩa của các URL tuyệt đối."
+
+#: ../../library/urllib.parse.rst:9
+#, fuzzy
+msgid "WWW"
+msgstr "WWW"
+
+#: ../../library/urllib.parse.rst:9
+#, fuzzy
+msgid "World Wide Web"
+msgstr "Mạng toàn cầu"
+
+#: ../../library/urllib.parse.rst:9
+#, fuzzy
+msgid "URL"
+msgstr "URL"
+
+#: ../../library/urllib.parse.rst:9
+#, fuzzy
+msgid "parsing"
+msgstr "phân tích cú pháp"
+
+#: ../../library/urllib.parse.rst:9
+#, fuzzy
+msgid "relative"
+msgstr "tương đối"

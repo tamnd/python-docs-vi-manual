@@ -1,0 +1,2307 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/contextlib.rst:2
+#, fuzzy
+msgid ""
+":mod:`!contextlib` --- Utilities for :keyword:`!with`\\ -statement contexts"
+msgstr ""
+":mod:`!contextlib` --- Tiện ích cho bối cảnh câu lệnh :keyword:`!with`\\ -"
+
+#: ../../library/contextlib.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/contextlib.py`"
+msgstr "**Source code:** :source:`Lib/contextlib.py`"
+
+#: ../../library/contextlib.rst:11
+#, fuzzy
+msgid ""
+"This module provides utilities for common tasks involving the "
+":keyword:`with` statement. For more information see also "
+":ref:`typecontextmanager` and :ref:`context-managers`."
+msgstr ""
+"Mô-đun này cung cấp các tiện ích cho các tác vụ phổ biến liên quan đến câu "
+"lệnh :keyword:`with`. Để biết thêm thông tin, hãy xem thêm "
+":ref:`typecontextmanager` và :ref:`context-managers`."
+
+#: ../../library/contextlib.rst:17
+#, fuzzy
+msgid "Utilities"
+msgstr "Tiện ích"
+
+#: ../../library/contextlib.rst:19
+#, fuzzy
+msgid "Functions and classes provided:"
+msgstr "Các chức năng và lớp được cung cấp:"
+
+#: ../../library/contextlib.rst:23
+#, fuzzy
+msgid ""
+"An :term:`abstract base class` for classes that implement "
+":meth:`~object.__enter__` and :meth:`~object.__exit__`. A default "
+"implementation for :meth:`~object.__enter__` is provided which returns "
+"``self`` while :meth:`~object.__exit__` is an abstract method which by "
+"default returns ``None``. See also the definition of "
+":ref:`typecontextmanager`."
+msgstr ""
+"Một :term:`abstract base class` dành cho các lớp triển khai "
+":meth:`~object.__enter__` và :meth:`~object.__exit__`. Việc triển khai mặc "
+"định cho :meth:`~object.__enter__` được cung cấp sẽ trả về ``self`` trong "
+"khi :meth:`~object.__exit__` là một phương thức trừu tượng mà theo mặc định "
+"trả về ``None``. Xem thêm định nghĩa của :ref:`typecontextmanager`."
+
+#: ../../library/contextlib.rst:34
+#, fuzzy
+msgid ""
+"An :term:`abstract base class` for classes that implement "
+":meth:`~object.__aenter__` and :meth:`~object.__aexit__`. A default "
+"implementation for :meth:`~object.__aenter__` is provided which returns "
+"``self`` while :meth:`~object.__aexit__` is an abstract method which by "
+"default returns ``None``. See also the definition of :ref:`async-context-"
+"managers`."
+msgstr ""
+"Một :term:`abstract base class` dành cho các lớp triển khai "
+":meth:`~object.__aenter__` và :meth:`~object.__aexit__`. Việc triển khai mặc"
+" định cho :meth:`~object.__aenter__` được cung cấp sẽ trả về ``self`` trong "
+"khi :meth:`~object.__aexit__` là một phương thức trừu tượng mà theo mặc định"
+" trả về ``None``. Xem thêm định nghĩa của :ref:`async-context-managers`."
+
+#: ../../library/contextlib.rst:46
+#, fuzzy
+msgid ""
+"This function is a :term:`decorator` that can be used to define a factory "
+"function for :keyword:`with` statement context managers, without needing to "
+"create a class or separate :meth:`~object.__enter__` and "
+":meth:`~object.__exit__` methods."
+msgstr ""
+"Hàm này là :term:`decorator` có thể được sử dụng để xác định hàm xuất xưởng "
+"cho trình quản lý bối cảnh câu lệnh :keyword:`with` mà không cần tạo lớp "
+"hoặc các phương thức :meth:`~object.__enter__` và :meth:`~object.__exit__` "
+"riêng biệt."
+
+#: ../../library/contextlib.rst:50
+#, fuzzy
+msgid ""
+"While many objects natively support use in with statements, sometimes a "
+"resource needs to be managed that isn't a context manager in its own right, "
+"and doesn't implement a ``close()`` method for use with "
+"``contextlib.closing``."
+msgstr ""
+"Mặc dù nhiều đối tượng vốn hỗ trợ sử dụng bằng câu lệnh with, nhưng đôi khi "
+"một tài nguyên cần được quản lý không phải là trình quản lý bối cảnh theo "
+"đúng nghĩa của nó và không triển khai phương thức ``close()`` để sử dụng với"
+" ``contextlib.closing``."
+
+#: ../../library/contextlib.rst:54
+#, fuzzy
+msgid ""
+"An abstract example would be the following to ensure correct resource "
+"management::"
+msgstr ""
+"Một ví dụ trừu tượng sẽ như sau để đảm bảo quản lý tài nguyên chính xác ::"
+
+#: ../../library/contextlib.rst:57
+#, fuzzy
+msgid ""
+"from contextlib import contextmanager\n"
+"\n"
+"@contextmanager\n"
+"def managed_resource(*args, **kwds):\n"
+"    # Code to acquire resource, e.g.:\n"
+"    resource = acquire_resource(*args, **kwds)\n"
+"    try:\n"
+"        yield resource\n"
+"    finally:\n"
+"        # Code to release resource, e.g.:\n"
+"        release_resource(resource)"
+msgstr ""
+"từ trình quản lý bối cảnh nhập khẩu contextlib\n"
+"\n"
+"@contextmanager\n"
+"def Managed_resource(*args, **kwds):\n"
+"    # Code để lấy tài nguyên, ví dụ:\n"
+"    tài nguyên = thu được_resource(*args, **kwds)\n"
+"    thử:\n"
+"        nguồn lợi nhuận\n"
+"    cuối cùng:\n"
+"        # Code để giải phóng tài nguyên, ví dụ:\n"
+"        phát hành_resource(tài nguyên)"
+
+#: ../../library/contextlib.rst:69
+#, fuzzy
+msgid "The function can then be used like this::"
+msgstr "Chức năng sau đó có thể được sử dụng như thế này ::"
+
+#: ../../library/contextlib.rst:71
+#, fuzzy
+msgid ""
+">>> with managed_resource(timeout=3600) as resource:\n"
+"...     # Resource is released at the end of this block,\n"
+"...     # even if code in the block raises an exception"
+msgstr ""
+">>> với Managed_resource(timeout=3600) làm tài nguyên:\n"
+"... # Resource được phát hành ở cuối khối này,\n"
+"... # even nếu mã trong khối gây ra ngoại lệ"
+
+#: ../../library/contextlib.rst:75
+#, fuzzy
+msgid ""
+"The function being decorated must return a :term:`generator`-iterator when "
+"called. This iterator must yield exactly one value, which will be bound to "
+"the targets in the :keyword:`with` statement's :keyword:`!as` clause, if "
+"any."
+msgstr ""
+"Hàm được trang trí phải trả về :term:`generator`-iterator khi được gọi. "
+"Trình vòng lặp này phải mang lại chính xác một giá trị, giá trị này sẽ được "
+"liên kết với các mục tiêu trong mệnh đề :keyword:`!as` của câu lệnh "
+":keyword:`with`, nếu có."
+
+#: ../../library/contextlib.rst:79
+#, fuzzy
+msgid ""
+"At the point where the generator yields, the block nested in the "
+":keyword:`with` statement is executed.  The generator is then resumed after "
+"the block is exited. If an unhandled exception occurs in the block, it is "
+"reraised inside the generator at the point where the yield occurred.  Thus, "
+"you can use a :keyword:`try`...\\ :keyword:`except`...\\ :keyword:`finally` "
+"statement to trap the error (if any), or ensure that some cleanup takes "
+"place. If an exception is trapped merely in order to log it or to perform "
+"some action (rather than to suppress it entirely), the generator must "
+"reraise that exception. Otherwise the generator context manager will "
+"indicate to the :keyword:`!with` statement that the exception has been "
+"handled, and execution will resume with the statement immediately following "
+"the :keyword:`!with` statement."
+msgstr ""
+"Tại thời điểm trình tạo hoạt động, khối được lồng trong câu lệnh "
+":keyword:`with` sẽ được thực thi.  Sau đó, trình tạo sẽ được tiếp tục lại "
+"sau khi thoát khỏi khối. Nếu một ngoại lệ chưa được xử lý xảy ra trong khối,"
+" nó sẽ được kích hoạt lại bên trong trình tạo tại thời điểm xảy ra lỗi.  Do "
+"đó, bạn có thể sử dụng câu lệnh :keyword:`try`...\\ :keyword:`except`...\\ "
+":keyword:`finally` để bẫy lỗi (nếu có) hoặc đảm bảo rằng một số thao tác dọn"
+" dẹp diễn ra. Nếu một ngoại lệ bị giữ lại chỉ để ghi nhật ký hoặc thực hiện "
+"một số hành động (thay vì loại bỏ hoàn toàn), trình tạo phải xử lý lại ngoại"
+" lệ đó. Nếu không, trình quản lý bối cảnh của trình tạo sẽ cho câu lệnh "
+":keyword:`!with` biết rằng ngoại lệ đã được xử lý và việc thực thi sẽ tiếp "
+"tục với câu lệnh ngay sau câu lệnh :keyword:`!with`."
+
+#: ../../library/contextlib.rst:91
+#, fuzzy
+msgid ""
+":func:`contextmanager` uses :class:`ContextDecorator` so the context "
+"managers it creates can be used as decorators as well as in :keyword:`with` "
+"statements. When used as a decorator, a new generator instance is implicitly"
+" created on each function call (this allows the otherwise \"one-shot\" "
+"context managers created by :func:`contextmanager` to meet the requirement "
+"that context managers support multiple invocations in order to be used as "
+"decorators)."
+msgstr ""
+":func:`contextmanager` sử dụng :class:`ContextDecorator` nên các trình quản "
+"lý bối cảnh mà nó tạo ra có thể được sử dụng làm công cụ trang trí cũng như "
+"trong các câu lệnh :keyword:`with`. Khi được sử dụng làm công cụ trang trí, "
+"một phiên bản trình tạo mới sẽ được tạo ngầm trên mỗi lệnh gọi hàm (điều này"
+" cho phép các trình quản lý bối cảnh \"một lần\" do :func:`contextmanager` "
+"tạo ra đáp ứng yêu cầu rằng trình quản lý bối cảnh hỗ trợ nhiều lệnh gọi để "
+"được sử dụng làm trình trang trí)."
+
+#: ../../library/contextlib.rst:98
+#, fuzzy
+msgid "Use of :class:`ContextDecorator`."
+msgstr "Sử dụng :class:`ContextDecorator`."
+
+#: ../../library/contextlib.rst:104
+#, fuzzy
+msgid ""
+"Similar to :func:`~contextlib.contextmanager`, but creates an "
+":ref:`asynchronous context manager <async-context-managers>`."
+msgstr ""
+"Tương tự như :func:`~contextlib.contextmanager` nhưng tạo ra "
+":ref:`asynchronous context manager <async-context-managers>`."
+
+#: ../../library/contextlib.rst:107
+#, fuzzy
+msgid ""
+"This function is a :term:`decorator` that can be used to define a factory "
+"function for :keyword:`async with` statement asynchronous context managers, "
+"without needing to create a class or separate :meth:`~object.__aenter__` and"
+" :meth:`~object.__aexit__` methods. It must be applied to an "
+":term:`asynchronous generator` function."
+msgstr ""
+"Hàm này là một :term:`decorator` có thể được sử dụng để xác định hàm xuất "
+"xưởng cho các trình quản lý bối cảnh không đồng bộ của câu lệnh "
+":keyword:`async with` mà không cần tạo một lớp hoặc các phương thức "
+":meth:`~object.__aenter__` và :meth:`~object.__aexit__` riêng biệt. Nó phải "
+"được áp dụng cho hàm :term:`asynchronous generator`."
+
+#: ../../library/contextlib.rst:113
+#, fuzzy
+msgid "A simple example::"
+msgstr "Một ví dụ đơn giản::"
+
+#: ../../library/contextlib.rst:115
+#, fuzzy
+msgid ""
+"from contextlib import asynccontextmanager\n"
+"\n"
+"@asynccontextmanager\n"
+"async def get_connection():\n"
+"    conn = await acquire_db_connection()\n"
+"    try:\n"
+"        yield conn\n"
+"    finally:\n"
+"        await release_db_connection(conn)\n"
+"\n"
+"async def get_all_users():\n"
+"    async with get_connection() as conn:\n"
+"        return conn.query('SELECT ...')"
+msgstr ""
+"từ nhập ngữ cảnh lib asynccontextmanager\n"
+"\n"
+"@asynccontextmanager\n"
+"async def get_connection():\n"
+"    conn = đang chờ thu được_db_connection()\n"
+"    thử:\n"
+"        kết nối năng suất\n"
+"    cuối cùng:\n"
+"        đang chờ phát hành_db_connection(conn)\n"
+"\n"
+"async def get_all_users():\n"
+"    không đồng bộ với get_connection() dưới dạng kết nối:\n"
+"        return conn.query('SELECT ...')"
+
+#: ../../library/contextlib.rst:131
+#, fuzzy
+msgid ""
+"Context managers defined with :func:`asynccontextmanager` can be used either"
+" as decorators or with :keyword:`async with` statements::"
+msgstr ""
+"Trình quản lý bối cảnh được xác định bằng :func:`asynccontextmanager` có thể"
+" được sử dụng làm trình trang trí hoặc với câu lệnh :keyword:`async with` ::"
+
+#: ../../library/contextlib.rst:134
+#, python-brace-format, fuzzy
+msgid ""
+"import time\n"
+"from contextlib import asynccontextmanager\n"
+"\n"
+"@asynccontextmanager\n"
+"async def timeit():\n"
+"    now = time.monotonic()\n"
+"    try:\n"
+"        yield\n"
+"    finally:\n"
+"        print(f'it took {time.monotonic() - now}s to run')\n"
+"\n"
+"@timeit()\n"
+"async def main():\n"
+"    # ... async code ..."
+msgstr ""
+"thời gian nhập khẩu\n"
+"từ nhập ngữ cảnh lib asynccontextmanager\n"
+"\n"
+"@asynccontextmanager\n"
+"async def timeit():\n"
+"    bây giờ = time.monotonic()\n"
+"    thử:\n"
+"        năng suất\n"
+"    cuối cùng:\n"
+"        print(f'it mất {time.monotonic() - now}s để chạy')\n"
+"\n"
+"@timeit()\n"
+"async def main():\n"
+"    # ... mã không đồng bộ ..."
+
+#: ../../library/contextlib.rst:149
+#, fuzzy
+msgid ""
+"When used as a decorator, a new generator instance is implicitly created on "
+"each function call. This allows the otherwise \"one-shot\" context managers "
+"created by :func:`asynccontextmanager` to meet the requirement that context "
+"managers support multiple invocations in order to be used as decorators."
+msgstr ""
+"Khi được sử dụng làm công cụ trang trí, một phiên bản trình tạo mới sẽ được "
+"tạo ngầm trên mỗi lệnh gọi hàm. Điều này cho phép các trình quản lý bối cảnh"
+" \"một lần\" do :func:`asynccontextmanager` tạo ra đáp ứng yêu cầu rằng các "
+"trình quản lý bối cảnh hỗ trợ nhiều lệnh gọi để được sử dụng làm công cụ "
+"trang trí."
+
+#: ../../library/contextlib.rst:154
+#, fuzzy
+msgid ""
+"Async context managers created with :func:`asynccontextmanager` can be used "
+"as decorators."
+msgstr ""
+"Trình quản lý bối cảnh không đồng bộ được tạo bằng "
+":func:`asynccontextmanager` có thể được sử dụng làm công cụ trang trí."
+
+#: ../../library/contextlib.rst:161
+#, fuzzy
+msgid ""
+"Return a context manager that closes *thing* upon completion of the block.  "
+"This is basically equivalent to::"
+msgstr ""
+"Trả về trình quản lý bối cảnh đóng *thing* sau khi hoàn thành khối.  Điều "
+"này về cơ bản tương đương với::"
+
+#: ../../library/contextlib.rst:164
+#, fuzzy
+msgid ""
+"from contextlib import contextmanager\n"
+"\n"
+"@contextmanager\n"
+"def closing(thing):\n"
+"    try:\n"
+"        yield thing\n"
+"    finally:\n"
+"        thing.close()"
+msgstr ""
+"từ trình quản lý bối cảnh nhập khẩu contextlib\n"
+"\n"
+"@contextmanager\n"
+"def đóng (điều):\n"
+"    thử:\n"
+"        điều mang lại lợi nhuận\n"
+"    cuối cùng:\n"
+"        điều.close()"
+
+#: ../../library/contextlib.rst:173
+#, fuzzy
+msgid "And lets you write code like this::"
+msgstr "Và cho phép bạn viết mã như thế này ::"
+
+#: ../../library/contextlib.rst:175
+#, fuzzy
+msgid ""
+"from contextlib import closing\n"
+"from urllib.request import urlopen\n"
+"\n"
+"with closing(urlopen('https://www.python.org')) as page:\n"
+"    for line in page:\n"
+"        print(line)"
+msgstr ""
+"từ việc đóng nhập ngữ cảnh\n"
+"từ urllib.request nhập urlopen\n"
+"\n"
+"với việc đóng(urlopen('https://www.python.org')) dưới dạng trang:\n"
+"    cho dòng trong trang:\n"
+"        in (dòng)"
+
+#: ../../library/contextlib.rst:182
+#, fuzzy
+msgid ""
+"without needing to explicitly close ``page``.  Even if an error occurs, "
+"``page.close()`` will be called when the :keyword:`with` block is exited."
+msgstr ""
+"mà không cần phải đóng ``page`` một cách rõ ràng.  Ngay cả khi xảy ra lỗi, "
+"``page.close()`` sẽ được gọi khi thoát khối :keyword:`with`."
+
+#: ../../library/contextlib.rst:187
+#, fuzzy
+msgid ""
+"Most types managing resources support the :term:`context manager` protocol, "
+"which closes *thing* on leaving the :keyword:`with` statement. As such, "
+":func:`!closing` is most useful for third party types that don't support "
+"context managers. This example is purely for illustration purposes, as "
+":func:`~urllib.request.urlopen` would normally be used in a context manager."
+msgstr ""
+"Hầu hết các loại quản lý tài nguyên đều hỗ trợ giao thức :term:`context "
+"manager`, giao thức này sẽ đóng *thing* khi thoát khỏi câu lệnh "
+":keyword:`with`. Do đó, :func:`!closing` hữu ích nhất cho các loại bên thứ "
+"ba không hỗ trợ trình quản lý bối cảnh. Ví dụ này hoàn toàn nhằm mục đích "
+"minh họa, vì :func:`~urllib.request.urlopen` thường được sử dụng trong trình"
+" quản lý ngữ cảnh."
+
+#: ../../library/contextlib.rst:196
+#, fuzzy
+msgid ""
+"Return an async context manager that calls the ``aclose()`` method of "
+"*thing* upon completion of the block.  This is basically equivalent to::"
+msgstr ""
+"Trả về trình quản lý bối cảnh không đồng bộ gọi phương thức ``aclose()`` của"
+" *thing* sau khi hoàn thành khối.  Điều này về cơ bản tương đương với::"
+
+#: ../../library/contextlib.rst:199
+#, fuzzy
+msgid ""
+"from contextlib import asynccontextmanager\n"
+"\n"
+"@asynccontextmanager\n"
+"async def aclosing(thing):\n"
+"    try:\n"
+"        yield thing\n"
+"    finally:\n"
+"        await thing.aclose()"
+msgstr ""
+"từ nhập ngữ cảnh lib asynccontextmanager\n"
+"\n"
+"@asynccontextmanager\n"
+"async def kết thúc (điều):\n"
+"    thử:\n"
+"        điều mang lại lợi nhuận\n"
+"    cuối cùng:\n"
+"        đang chờ điều.aclose()"
+
+#: ../../library/contextlib.rst:208
+#, fuzzy
+msgid ""
+"Significantly, ``aclosing()`` supports deterministic cleanup of async "
+"generators when they happen to exit early by :keyword:`break` or an "
+"exception.  For example::"
+msgstr ""
+"Điều đáng chú ý là ``aclosing()`` hỗ trợ dọn dẹp xác định các trình tạo "
+"không đồng bộ khi chúng thoát ra sớm do :keyword:`break` hoặc một ngoại lệ."
+"  Ví dụ::"
+
+#: ../../library/contextlib.rst:212
+#, fuzzy
+msgid ""
+"from contextlib import aclosing\n"
+"\n"
+"async with aclosing(my_generator()) as values:\n"
+"    async for value in values:\n"
+"        if value == 42:\n"
+"            break"
+msgstr ""
+"từ quá trình nhập ngữ cảnh\n"
+"\n"
+"không đồng bộ với aclosing(my_generator()) làm giá trị:\n"
+"    không đồng bộ cho giá trị trong các giá trị:\n"
+"        nếu giá trị == 42:\n"
+"            phá vỡ"
+
+#: ../../library/contextlib.rst:219
+#, fuzzy
+msgid ""
+"This pattern ensures that the generator's async exit code is executed in the"
+" same context as its iterations (so that exceptions and context variables "
+"work as expected, and the exit code isn't run after the lifetime of some "
+"task it depends on)."
+msgstr ""
+"Mẫu này đảm bảo rằng mã thoát không đồng bộ của trình tạo được thực thi "
+"trong cùng ngữ cảnh với các lần lặp của nó (để các ngoại lệ và biến ngữ cảnh"
+" hoạt động như mong đợi và mã thoát không chạy sau vòng đời của một số tác "
+"vụ mà nó phụ thuộc vào)."
+
+#: ../../library/contextlib.rst:231
+#, fuzzy
+msgid ""
+"Return a context manager that returns *enter_result* from "
+":meth:`~object.__enter__`, but otherwise does nothing. It is intended to be "
+"used as a stand-in for an optional context manager, for example::"
+msgstr ""
+"Trả về trình quản lý bối cảnh trả về *enter_result* từ "
+":meth:`~object.__enter__`, nhưng không làm gì cả. Nó được thiết kế để sử "
+"dụng làm công cụ thay thế cho trình quản lý bối cảnh tùy chọn, ví dụ::"
+
+#: ../../library/contextlib.rst:235
+#, fuzzy
+msgid ""
+"def myfunction(arg, ignore_exceptions=False):\n"
+"    if ignore_exceptions:\n"
+"        # Use suppress to ignore all exceptions.\n"
+"        cm = contextlib.suppress(Exception)\n"
+"    else:\n"
+"        # Do not ignore any exceptions, cm has no effect.\n"
+"        cm = contextlib.nullcontext()\n"
+"    with cm:\n"
+"        # Do something"
+msgstr ""
+"def myfunction(arg, ign_Exceptions=False):\n"
+"    nếu bỏ qua_ngoại lệ:\n"
+"        # Use ngăn chặn để bỏ qua tất cả các ngoại lệ.\n"
+"        cm = contextlib.suppress(Ngoại lệ)\n"
+"    khác:\n"
+"        # Do không bỏ qua bất kỳ trường hợp ngoại lệ nào, cm không có tác dụng.\n"
+"        cm = contextlib.nullcontext()\n"
+"    với cm:\n"
+"        # Do gì đó"
+
+#: ../../library/contextlib.rst:245
+#, fuzzy
+msgid "An example using *enter_result*::"
+msgstr "Một ví dụ sử dụng *enter_result*::"
+
+#: ../../library/contextlib.rst:247
+#, fuzzy
+msgid ""
+"def process_file(file_or_path):\n"
+"    if isinstance(file_or_path, str):\n"
+"        # If string, open file\n"
+"        cm = open(file_or_path)\n"
+"    else:\n"
+"        # Caller is responsible for closing file\n"
+"        cm = nullcontext(file_or_path)\n"
+"\n"
+"    with cm as file:\n"
+"        # Perform processing on the file"
+msgstr ""
+"def process_file(file_or_path):\n"
+"    nếu isinstance(file_or_path, str):\n"
+"        chuỗi # If, mở tệp\n"
+"        cm = open(file_or_path)\n"
+"    khác:\n"
+"        # Caller chịu trách nhiệm đóng tập tin\n"
+"        cm = nullcontext(file_or_path)\n"
+"\n"
+"    với cm dưới dạng tệp:\n"
+"        xử lý # Perform trên tập tin"
+
+#: ../../library/contextlib.rst:258
+#, fuzzy
+msgid ""
+"It can also be used as a stand-in for :ref:`asynchronous context managers "
+"<async-context-managers>`::"
+msgstr ""
+"Nó cũng có thể được sử dụng làm dự phòng cho :ref:`asynchronous context "
+"managers <async-context-managers>`::"
+
+#: ../../library/contextlib.rst:261
+#, fuzzy
+msgid ""
+"async def send_http(session=None):\n"
+"    if not session:\n"
+"        # If no http session, create it with aiohttp\n"
+"        cm = aiohttp.ClientSession()\n"
+"    else:\n"
+"        # Caller is responsible for closing the session\n"
+"        cm = nullcontext(session)\n"
+"\n"
+"    async with cm as session:\n"
+"        # Send http requests with session"
+msgstr ""
+"async def send_http(session=None):\n"
+"    nếu không phiên:\n"
+"        # If không có phiên http, hãy tạo nó bằng aiohttp\n"
+"        cm = aiohttp.ClientSession()\n"
+"    khác:\n"
+"        # Caller chịu trách nhiệm đóng phiên\n"
+"        cm = nullcontext(phiên)\n"
+"\n"
+"    không đồng bộ với cm dưới dạng phiên:\n"
+"        yêu cầu http # Send với phiên"
+
+#: ../../library/contextlib.rst:274
+#, fuzzy
+msgid ":term:`asynchronous context manager` support was added."
+msgstr "hỗ trợ :term:`asynchronous context manager` đã được thêm vào."
+
+#: ../../library/contextlib.rst:281
+#, fuzzy
+msgid ""
+"Return a context manager that suppresses any of the specified exceptions if "
+"they occur in the body of a :keyword:`!with` statement and then resumes "
+"execution with the first statement following the end of the :keyword:`!with`"
+" statement."
+msgstr ""
+"Trả về trình quản lý bối cảnh ngăn chặn bất kỳ trường hợp ngoại lệ nào được "
+"chỉ định nếu chúng xuất hiện trong phần nội dung của câu lệnh "
+":keyword:`!with`, sau đó tiếp tục thực thi với câu lệnh đầu tiên sau khi kết"
+" thúc câu lệnh :keyword:`!with`."
+
+#: ../../library/contextlib.rst:286
+#, fuzzy
+msgid ""
+"As with any other mechanism that completely suppresses exceptions, this "
+"context manager should be used only to cover very specific errors where "
+"silently continuing with program execution is known to be the right thing to"
+" do."
+msgstr ""
+"Giống như bất kỳ cơ chế nào khác ngăn chặn hoàn toàn các ngoại lệ, trình "
+"quản lý bối cảnh này chỉ nên được sử dụng để xử lý các lỗi rất cụ thể trong "
+"đó việc tiếp tục âm thầm thực thi chương trình được biết là điều nên làm."
+
+#: ../../library/contextlib.rst:291
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../library/contextlib.rst:293
+#, fuzzy
+msgid ""
+"from contextlib import suppress\n"
+"\n"
+"with suppress(FileNotFoundError):\n"
+"    os.remove('somefile.tmp')\n"
+"\n"
+"with suppress(FileNotFoundError):\n"
+"    os.remove('someotherfile.tmp')"
+msgstr ""
+"từ ngăn chặn nhập ngữ cảnh\n"
+"\n"
+"với tính năng triệt tiêu (FileNotFoundError):\n"
+"    os.remove('somefile.tmp')\n"
+"\n"
+"với tính năng triệt tiêu (FileNotFoundError):\n"
+"    os.remove('someotherfile.tmp')"
+
+#: ../../library/contextlib.rst:301
+#, fuzzy
+msgid "This code is equivalent to::"
+msgstr "Mã này tương đương với::"
+
+#: ../../library/contextlib.rst:303
+#, fuzzy
+msgid ""
+"try:\n"
+"    os.remove('somefile.tmp')\n"
+"except FileNotFoundError:\n"
+"    pass\n"
+"\n"
+"try:\n"
+"    os.remove('someotherfile.tmp')\n"
+"except FileNotFoundError:\n"
+"    pass"
+msgstr ""
+"thử:\n"
+"    os.remove('somefile.tmp')\n"
+"ngoại trừ FileNotFoundError:\n"
+"    vượt qua\n"
+"\n"
+"thử:\n"
+"    os.remove('someotherfile.tmp')\n"
+"ngoại trừ FileNotFoundError:\n"
+"    vượt qua"
+
+#: ../../library/contextlib.rst:313 ../../library/contextlib.rst:362
+#: ../../library/contextlib.rst:372 ../../library/contextlib.rst:389
+#, fuzzy
+msgid "This context manager is :ref:`reentrant <reentrant-cms>`."
+msgstr "Trình quản lý bối cảnh này là :ref:`reentrant <reentrant-cms>`."
+
+#: ../../library/contextlib.rst:315
+#, fuzzy
+msgid ""
+"If the code within the :keyword:`!with` block raises a "
+":exc:`BaseExceptionGroup`, suppressed exceptions are removed from the group."
+"  Any exceptions of the group which are not suppressed are re-raised in a "
+"new group which is created using the original group's "
+":meth:`~BaseExceptionGroup.derive` method."
+msgstr ""
+"Nếu mã trong khối :keyword:`!with` tăng :exc:`BaseExceptionGroup`, các ngoại"
+" lệ bị loại bỏ sẽ bị xóa khỏi nhóm.  Bất kỳ trường hợp ngoại lệ nào của nhóm"
+" không bị chặn sẽ được đưa lại vào nhóm mới được tạo bằng phương pháp "
+":meth:`~BaseExceptionGroup.derive` của nhóm ban đầu."
+
+#: ../../library/contextlib.rst:323
+#, fuzzy
+msgid ""
+"``suppress`` now supports suppressing exceptions raised as part of a "
+":exc:`BaseExceptionGroup`."
+msgstr ""
+"``suppress`` hiện hỗ trợ loại bỏ các ngoại lệ được đưa ra như một phần của "
+":exc:`BaseExceptionGroup`."
+
+#: ../../library/contextlib.rst:329
+#, fuzzy
+msgid ""
+"Context manager for temporarily redirecting :data:`sys.stdout` to another "
+"file or file-like object."
+msgstr ""
+"Trình quản lý bối cảnh để tạm thời chuyển hướng :data:`sys.stdout` sang một "
+"tệp khác hoặc đối tượng giống như tệp."
+
+#: ../../library/contextlib.rst:332
+#, fuzzy
+msgid ""
+"This tool adds flexibility to existing functions or classes whose output is "
+"hardwired to stdout."
+msgstr ""
+"Công cụ này tăng thêm tính linh hoạt cho các hàm hoặc lớp hiện có có đầu ra "
+"được gắn cứng vào thiết bị xuất chuẩn."
+
+#: ../../library/contextlib.rst:335
+#, fuzzy
+msgid ""
+"For example, the output of :func:`help` normally is sent to *sys.stdout*. "
+"You can capture that output in a string by redirecting the output to an "
+":class:`io.StringIO` object. The replacement stream is returned from the "
+":meth:`~object.__enter__` method and so is available as the target of the "
+":keyword:`with` statement::"
+msgstr ""
+"Ví dụ: đầu ra của :func:`help` thường được gửi tới *sys.stdout*. Bạn có thể "
+"nắm bắt đầu ra đó trong một chuỗi bằng cách chuyển hướng đầu ra đến đối "
+"tượng :class:`io.StringIO`. Luồng thay thế được trả về từ phương thức "
+":meth:`~object.__enter__` và do đó có sẵn làm mục tiêu của câu lệnh "
+":keyword:`with` ::"
+
+#: ../../library/contextlib.rst:341
+#, fuzzy
+msgid ""
+"with redirect_stdout(io.StringIO()) as f:\n"
+"    help(pow)\n"
+"s = f.getvalue()"
+msgstr ""
+"với redirect_stdout(io.StringIO()) là f:\n"
+"    giúp đỡ(pow)\n"
+"s = f.getvalue()"
+
+#: ../../library/contextlib.rst:345
+#, fuzzy
+msgid ""
+"To send the output of :func:`help` to a file on disk, redirect the output to"
+" a regular file::"
+msgstr ""
+"Để gửi đầu ra của :func:`help` tới một tệp trên đĩa, hãy chuyển hướng đầu ra"
+" sang một tệp thông thường ::"
+
+#: ../../library/contextlib.rst:348
+#, fuzzy
+msgid ""
+"with open('help.txt', 'w') as f:\n"
+"    with redirect_stdout(f):\n"
+"        help(pow)"
+msgstr ""
+"với open('help.txt', 'w') là f:\n"
+"    với redirect_stdout(f):\n"
+"        giúp đỡ(pow)"
+
+#: ../../library/contextlib.rst:352
+#, fuzzy
+msgid "To send the output of :func:`help` to *sys.stderr*::"
+msgstr "Để gửi đầu ra của :func:`help` đến *sys.stderr*::"
+
+#: ../../library/contextlib.rst:354
+#, fuzzy
+msgid ""
+"with redirect_stdout(sys.stderr):\n"
+"    help(pow)"
+msgstr ""
+"với redirect_stdout(sys.stderr):\n"
+"    giúp đỡ(pow)"
+
+#: ../../library/contextlib.rst:357
+#, fuzzy
+msgid ""
+"Note that the global side effect on :data:`sys.stdout` means that this "
+"context manager is not suitable for use in library code and most threaded "
+"applications. It also has no effect on the output of subprocesses. However, "
+"it is still a useful approach for many utility scripts."
+msgstr ""
+"Lưu ý rằng tác dụng phụ toàn cầu trên :data:`sys.stdout` có nghĩa là trình "
+"quản lý bối cảnh này không phù hợp để sử dụng trong mã thư viện và hầu hết "
+"các ứng dụng theo luồng. Nó cũng không ảnh hưởng đến đầu ra của các quy "
+"trình con. Tuy nhiên, nó vẫn là một cách tiếp cận hữu ích cho nhiều tập lệnh"
+" tiện ích."
+
+#: ../../library/contextlib.rst:369
+#, fuzzy
+msgid ""
+"Similar to :func:`~contextlib.redirect_stdout` but redirecting "
+":data:`sys.stderr` to another file or file-like object."
+msgstr ""
+"Tương tự như :func:`~contextlib.redirect_stdout` nhưng chuyển hướng "
+":data:`sys.stderr` sang một tệp khác hoặc đối tượng giống như tệp."
+
+#: ../../library/contextlib.rst:379
+#, fuzzy
+msgid ""
+"Non parallel-safe context manager to change the current working directory. "
+"As this changes a global state, the working directory, it is not suitable "
+"for use in most threaded or async contexts. It is also not suitable for most"
+" non-linear code execution, like generators, where the program execution is "
+"temporarily relinquished -- unless explicitly desired, you should not yield "
+"when this context manager is active."
+msgstr ""
+"Trình quản lý bối cảnh không an toàn song song để thay đổi thư mục làm việc "
+"hiện tại. Vì điều này thay đổi trạng thái chung, thư mục làm việc, nên nó "
+"không phù hợp để sử dụng trong hầu hết các bối cảnh theo luồng hoặc không "
+"đồng bộ. Nó cũng không phù hợp với hầu hết việc thực thi mã phi tuyến tính, "
+"như trình tạo, trong đó việc thực thi chương trình tạm thời bị hủy bỏ -- trừ"
+" khi có mong muốn rõ ràng, bạn không nên nhường đường khi trình quản lý bối "
+"cảnh này đang hoạt động."
+
+#: ../../library/contextlib.rst:386
+#, fuzzy
+msgid ""
+"This is a simple wrapper around :func:`~os.chdir`, it changes the current "
+"working directory upon entering and restores the old one on exit."
+msgstr ""
+"Đây là một trình bao bọc đơn giản xung quanh :func:`~os.chdir`, nó thay đổi "
+"thư mục làm việc hiện tại khi nhập và khôi phục thư mục cũ khi thoát."
+
+#: ../../library/contextlib.rst:396
+#, fuzzy
+msgid ""
+"A base class that enables a context manager to also be used as a decorator."
+msgstr ""
+"Một lớp cơ sở cho phép sử dụng trình quản lý bối cảnh làm công cụ trang trí."
+
+#: ../../library/contextlib.rst:398
+#, fuzzy
+msgid ""
+"Context managers inheriting from ``ContextDecorator`` have to implement "
+":meth:`~object.__enter__` and :meth:`~object.__exit__` as normal. "
+"``__exit__`` retains its optional exception handling even when used as a "
+"decorator."
+msgstr ""
+"Trình quản lý bối cảnh kế thừa từ ``ContextDecorator`` phải triển khai "
+":meth:`~object.__enter__` và :meth:`~object.__exit__` như bình thường. "
+"``__exit__`` vẫn giữ lại khả năng xử lý ngoại lệ tùy chọn ngay cả khi được "
+"sử dụng làm trang trí."
+
+#: ../../library/contextlib.rst:403
+#, fuzzy
+msgid ""
+"``ContextDecorator`` is used by :func:`contextmanager`, so you get this "
+"functionality automatically."
+msgstr ""
+"``ContextDecorator`` được :func:`contextmanager` sử dụng, vì vậy bạn sẽ tự "
+"động có được chức năng này."
+
+#: ../../library/contextlib.rst:406
+#, fuzzy
+msgid "Example of ``ContextDecorator``::"
+msgstr "Ví dụ về ``ContextDecorator``::"
+
+#: ../../library/contextlib.rst:408
+#, fuzzy
+msgid ""
+"from contextlib import ContextDecorator\n"
+"\n"
+"class mycontext(ContextDecorator):\n"
+"    def __enter__(self):\n"
+"        print('Starting')\n"
+"        return self\n"
+"\n"
+"    def __exit__(self, *exc):\n"
+"        print('Finishing')\n"
+"        return False"
+msgstr ""
+"từ nhập ngữ cảnh vào ContextDecorator\n"
+"\n"
+"lớp mycontext(ContextDecorator):\n"
+"    chắc chắn __enter__(tự):\n"
+"        in('Bắt đầu')\n"
+"        tự trở về\n"
+"\n"
+"    def __exit__(self, *exc):\n"
+"        in('Hoàn tất')\n"
+"        trả về Sai"
+
+#: ../../library/contextlib.rst:419 ../../library/contextlib.rst:491
+#, fuzzy
+msgid "The class can then be used like this::"
+msgstr "Lớp sau đó có thể được sử dụng như thế này ::"
+
+#: ../../library/contextlib.rst:421
+#, fuzzy
+msgid ""
+">>> @mycontext()\n"
+"... def function():\n"
+"...     print('The bit in the middle')\n"
+"...\n"
+">>> function()\n"
+"Starting\n"
+"The bit in the middle\n"
+"Finishing\n"
+"\n"
+">>> with mycontext():\n"
+"...     print('The bit in the middle')\n"
+"...\n"
+"Starting\n"
+"The bit in the middle\n"
+"Finishing"
+msgstr ""
+">>> @mycontext()\n"
+"... hàm def():\n"
+"... print('Phần ở giữa')\n"
+"...\n"
+">>> hàm()\n"
+"Bắt đầu\n"
+"Phần ở giữa\n"
+"hoàn thiện\n"
+"\n"
+">>> với mycontext():\n"
+"... print('Phần ở giữa')\n"
+"...\n"
+"Bắt đầu\n"
+"Phần ở giữa\n"
+"hoàn thiện"
+
+#: ../../library/contextlib.rst:437
+#, fuzzy
+msgid ""
+"This change is just syntactic sugar for any construct of the following "
+"form::"
+msgstr "Sự thay đổi này chỉ là cú pháp cho bất kỳ cấu trúc nào có dạng sau::"
+
+#: ../../library/contextlib.rst:439
+#, fuzzy
+msgid ""
+"def f():\n"
+"    with cm():\n"
+"        # Do stuff"
+msgstr ""
+"chắc chắn f():\n"
+"    với cm():\n"
+"        thứ # Do"
+
+#: ../../library/contextlib.rst:443
+#, fuzzy
+msgid "``ContextDecorator`` lets you instead write::"
+msgstr "``ContextDecorator`` cho phép bạn viết::"
+
+#: ../../library/contextlib.rst:445
+#, fuzzy
+msgid ""
+"@cm()\n"
+"def f():\n"
+"    # Do stuff"
+msgstr ""
+"@cm()\n"
+"chắc chắn f():\n"
+"    thứ # Do"
+
+#: ../../library/contextlib.rst:449
+#, fuzzy
+msgid ""
+"It makes it clear that the ``cm`` applies to the whole function, rather than"
+" just a piece of it (and saving an indentation level is nice, too)."
+msgstr ""
+"Nó cho thấy rõ rằng ``cm`` áp dụng cho toàn bộ chức năng, thay vì chỉ một "
+"phần của nó (và việc lưu mức thụt đầu dòng cũng là điều tốt)."
+
+#: ../../library/contextlib.rst:452
+#, fuzzy
+msgid ""
+"Existing context managers that already have a base class can be extended by "
+"using ``ContextDecorator`` as a mixin class::"
+msgstr ""
+"Các trình quản lý bối cảnh hiện tại đã có lớp cơ sở có thể được mở rộng bằng"
+" cách sử dụng ``ContextDecorator`` làm lớp mixin ::"
+
+#: ../../library/contextlib.rst:455
+#, fuzzy
+msgid ""
+"from contextlib import ContextDecorator\n"
+"\n"
+"class mycontext(ContextBaseClass, ContextDecorator):\n"
+"    def __enter__(self):\n"
+"        return self\n"
+"\n"
+"    def __exit__(self, *exc):\n"
+"        return False"
+msgstr ""
+"từ nhập ngữ cảnh vào ContextDecorator\n"
+"\n"
+"lớp mycontext(ContextBaseClass, ContextDecorator):\n"
+"    chắc chắn __enter__(tự):\n"
+"        tự trở về\n"
+"\n"
+"    def __exit__(self, *exc):\n"
+"        trả về Sai"
+
+#: ../../library/contextlib.rst:465
+#, fuzzy
+msgid ""
+"As the decorated function must be able to be called multiple times, the "
+"underlying context manager must support use in multiple :keyword:`with` "
+"statements. If this is not the case, then the original construct with the "
+"explicit :keyword:`!with` statement inside the function should be used."
+msgstr ""
+"Vì hàm trang trí phải có thể được gọi nhiều lần nên trình quản lý bối cảnh "
+"cơ bản phải hỗ trợ sử dụng trong nhiều câu lệnh :keyword:`with`. Nếu không "
+"phải như vậy thì nên sử dụng cấu trúc ban đầu với câu lệnh :keyword:`!with` "
+"rõ ràng bên trong hàm."
+
+#: ../../library/contextlib.rst:475
+#, fuzzy
+msgid ""
+"Similar to :class:`ContextDecorator` but only for asynchronous functions."
+msgstr ""
+"Tương tự như :class:`ContextDecorator` nhưng chỉ dành cho các hàm không đồng"
+" bộ."
+
+#: ../../library/contextlib.rst:477
+#, fuzzy
+msgid "Example of ``AsyncContextDecorator``::"
+msgstr "Ví dụ về ``AsyncContextDecorator``::"
+
+#: ../../library/contextlib.rst:479
+#, fuzzy
+msgid ""
+"from asyncio import run\n"
+"from contextlib import AsyncContextDecorator\n"
+"\n"
+"class mycontext(AsyncContextDecorator):\n"
+"    async def __aenter__(self):\n"
+"        print('Starting')\n"
+"        return self\n"
+"\n"
+"    async def __aexit__(self, *exc):\n"
+"        print('Finishing')\n"
+"        return False"
+msgstr ""
+"từ quá trình nhập asyncio\n"
+"từ nhập ngữ cảnh AsyncContextDecorator\n"
+"\n"
+"lớp mycontext(AsyncContextDecorator):\n"
+"    async def __aenter__(self):\n"
+"        in('Bắt đầu')\n"
+"        tự trở về\n"
+"\n"
+"    async def __aexit__(self, *exc):\n"
+"        in('Hoàn tất')\n"
+"        trả về Sai"
+
+#: ../../library/contextlib.rst:493
+#, fuzzy
+msgid ""
+">>> @mycontext()\n"
+"... async def function():\n"
+"...     print('The bit in the middle')\n"
+"...\n"
+">>> run(function())\n"
+"Starting\n"
+"The bit in the middle\n"
+"Finishing\n"
+"\n"
+">>> async def function():\n"
+"...    async with mycontext():\n"
+"...         print('The bit in the middle')\n"
+"...\n"
+">>> run(function())\n"
+"Starting\n"
+"The bit in the middle\n"
+"Finishing"
+msgstr ""
+">>> @mycontext()\n"
+"... hàm def không đồng bộ():\n"
+"... print('Phần ở giữa')\n"
+"...\n"
+">>> chạy(hàm())\n"
+"Bắt đầu\n"
+"Phần ở giữa\n"
+"hoàn thiện\n"
+"\n"
+">>> hàm def không đồng bộ():\n"
+"... không đồng bộ với mycontext():\n"
+"... print('Phần ở giữa')\n"
+"...\n"
+">>> chạy(hàm())\n"
+"Bắt đầu\n"
+"Phần ở giữa\n"
+"hoàn thiện"
+
+#: ../../library/contextlib.rst:516
+#, fuzzy
+msgid ""
+"A context manager that is designed to make it easy to programmatically "
+"combine other context managers and cleanup functions, especially those that "
+"are optional or otherwise driven by input data."
+msgstr ""
+"Trình quản lý bối cảnh được thiết kế để giúp dễ dàng kết hợp các chức năng "
+"dọn dẹp và trình quản lý bối cảnh khác theo chương trình, đặc biệt là các "
+"chức năng tùy chọn hoặc được điều khiển bởi dữ liệu đầu vào."
+
+#: ../../library/contextlib.rst:520
+#, fuzzy
+msgid ""
+"For example, a set of files may easily be handled in a single with statement"
+" as follows::"
+msgstr ""
+"Ví dụ: một tập hợp các tệp có thể dễ dàng được xử lý trong một câu lệnh with"
+" như sau ::"
+
+#: ../../library/contextlib.rst:523
+#, fuzzy
+msgid ""
+"with ExitStack() as stack:\n"
+"    files = [stack.enter_context(open(fname)) for fname in filenames]\n"
+"    # All opened files will automatically be closed at the end of\n"
+"    # the with statement, even if attempts to open files later\n"
+"    # in the list raise an exception"
+msgstr ""
+"với ExitStack() dưới dạng ngăn xếp:\n"
+"    files = [stack.enter_context(open(fname)) cho fname trong tên tệp]\n"
+"    Các tập tin đã mở # All sẽ tự động bị đóng khi kết thúc\n"
+"    # the bằng câu lệnh, ngay cả khi cố gắng mở tệp sau\n"
+"    # in danh sách đưa ra một ngoại lệ"
+
+#: ../../library/contextlib.rst:529
+#, fuzzy
+msgid ""
+"The :meth:`~object.__enter__` method returns the :class:`ExitStack` "
+"instance, and performs no additional operations."
+msgstr ""
+"Phương thức :meth:`~object.__enter__` trả về phiên bản :class:`ExitStack` và"
+" không thực hiện thao tác bổ sung nào."
+
+#: ../../library/contextlib.rst:532
+#, fuzzy
+msgid ""
+"Each instance maintains a stack of registered callbacks that are called in "
+"reverse order when the instance is closed (either explicitly or implicitly "
+"at the end of a :keyword:`with` statement). Note that callbacks are *not* "
+"invoked implicitly when the context stack instance is garbage collected."
+msgstr ""
+"Mỗi phiên bản duy trì một chồng các lệnh gọi lại đã đăng ký được gọi theo "
+"thứ tự ngược lại khi phiên bản được đóng (rõ ràng hoặc ngầm định ở cuối câu "
+"lệnh :keyword:`with`). Lưu ý rằng các lệnh gọi lại *not* được gọi ngầm khi "
+"phiên bản ngăn xếp ngữ cảnh được thu thập rác."
+
+#: ../../library/contextlib.rst:537
+#, fuzzy
+msgid ""
+"This stack model is used so that context managers that acquire their "
+"resources in their ``__init__`` method (such as file objects) can be handled"
+" correctly."
+msgstr ""
+"Mô hình ngăn xếp này được sử dụng để các trình quản lý bối cảnh thu thập tài"
+" nguyên của chúng theo phương thức ``__init__`` (chẳng hạn như đối tượng "
+"tệp) có thể được xử lý chính xác."
+
+#: ../../library/contextlib.rst:541
+#, fuzzy
+msgid ""
+"Since registered callbacks are invoked in the reverse order of registration,"
+" this ends up behaving as if multiple nested :keyword:`with` statements had "
+"been used with the registered set of callbacks. This even extends to "
+"exception handling - if an inner callback suppresses or replaces an "
+"exception, then outer callbacks will be passed arguments based on that "
+"updated state."
+msgstr ""
+"Vì các lệnh gọi lại đã đăng ký được gọi theo thứ tự đăng ký ngược lại nên "
+"điều này sẽ hoạt động như thể nhiều câu lệnh :keyword:`with` lồng nhau đã "
+"được sử dụng với tập hợp các lệnh gọi lại đã đăng ký. Điều này thậm chí còn "
+"mở rộng sang việc xử lý ngoại lệ - nếu lệnh gọi lại bên trong ngăn chặn hoặc"
+" thay thế một ngoại lệ thì lệnh gọi lại bên ngoài sẽ được chuyển đối số dựa "
+"trên trạng thái cập nhật đó."
+
+#: ../../library/contextlib.rst:548
+#, fuzzy
+msgid ""
+"This is a relatively low level API that takes care of the details of "
+"correctly unwinding the stack of exit callbacks. It provides a suitable "
+"foundation for higher level context managers that manipulate the exit stack "
+"in application specific ways."
+msgstr ""
+"Đây là một API cấp độ tương đối thấp, đảm nhiệm các chi tiết trong việc giải"
+" phóng chính xác các lệnh gọi lại thoát. Nó cung cấp nền tảng phù hợp cho "
+"những người quản lý bối cảnh cấp cao hơn thao tác ngăn xếp thoát theo những "
+"cách cụ thể của ứng dụng."
+
+#: ../../library/contextlib.rst:557
+#, fuzzy
+msgid ""
+"Enters a new context manager and adds its :meth:`~object.__exit__` method to"
+" the callback stack. The return value is the result of the context manager's"
+" own :meth:`~object.__enter__` method."
+msgstr ""
+"Nhập trình quản lý bối cảnh mới và thêm phương thức :meth:`~object.__exit__`"
+" của nó vào ngăn xếp gọi lại. Giá trị trả về là kết quả của phương thức "
+":meth:`~object.__enter__` của chính trình quản lý bối cảnh."
+
+#: ../../library/contextlib.rst:561
+#, fuzzy
+msgid ""
+"These context managers may suppress exceptions just as they normally would "
+"if used directly as part of a :keyword:`with` statement."
+msgstr ""
+"Các trình quản lý bối cảnh này có thể loại bỏ các ngoại lệ giống như bình "
+"thường nếu được sử dụng trực tiếp như một phần của câu lệnh :keyword:`with`."
+
+#: ../../library/contextlib.rst:564
+#, fuzzy
+msgid ""
+"Raises :exc:`TypeError` instead of :exc:`AttributeError` if *cm* is not a "
+"context manager."
+msgstr ""
+"Tăng :exc:`TypeError` thay vì :exc:`AttributeError` nếu *cm* không phải là "
+"trình quản lý bối cảnh."
+
+#: ../../library/contextlib.rst:570
+#, fuzzy
+msgid ""
+"Adds a context manager's :meth:`~object.__exit__` method to the callback "
+"stack."
+msgstr ""
+"Thêm phương thức :meth:`~object.__exit__` của trình quản lý bối cảnh vào "
+"ngăn xếp gọi lại."
+
+#: ../../library/contextlib.rst:572
+#, fuzzy
+msgid ""
+"As ``__enter__`` is *not* invoked, this method can be used to cover part of "
+"an :meth:`~object.__enter__` implementation with a context manager's own "
+":meth:`~object.__exit__` method."
+msgstr ""
+"Vì ``__enter__`` được gọi *not* nên phương pháp này có thể được sử dụng để "
+"bao quát một phần của quá trình triển khai :meth:`~object.__enter__` bằng "
+"phương thức :meth:`~object.__exit__` của chính trình quản lý bối cảnh."
+
+#: ../../library/contextlib.rst:576
+#, fuzzy
+msgid ""
+"If passed an object that is not a context manager, this method assumes it is"
+" a callback with the same signature as a context manager's "
+":meth:`~object.__exit__` method and adds it directly to the callback stack."
+msgstr ""
+"Nếu được truyền một đối tượng không phải là trình quản lý bối cảnh, phương "
+"thức này sẽ giả sử đó là một lệnh gọi lại có cùng chữ ký với phương thức "
+":meth:`~object.__exit__` của trình quản lý ngữ cảnh và thêm nó trực tiếp vào"
+" ngăn xếp gọi lại."
+
+#: ../../library/contextlib.rst:580
+#, fuzzy
+msgid ""
+"By returning true values, these callbacks can suppress exceptions the same "
+"way context manager :meth:`~object.__exit__` methods can."
+msgstr ""
+"Bằng cách trả về các giá trị thực, các lệnh gọi lại này có thể loại bỏ các "
+"ngoại lệ giống như cách mà các phương thức :meth:`~object.__exit__` của "
+"trình quản lý bối cảnh có thể làm."
+
+#: ../../library/contextlib.rst:583
+#, fuzzy
+msgid ""
+"The passed in object is returned from the function, allowing this method to "
+"be used as a function decorator."
+msgstr ""
+"Đối tượng được truyền vào được trả về từ hàm, cho phép phương thức này được "
+"sử dụng làm công cụ trang trí hàm."
+
+#: ../../library/contextlib.rst:588
+#, fuzzy
+msgid ""
+"Accepts an arbitrary callback function and arguments and adds it to the "
+"callback stack."
+msgstr ""
+"Chấp nhận một hàm và đối số gọi lại tùy ý rồi thêm nó vào ngăn xếp gọi lại."
+
+#: ../../library/contextlib.rst:591
+#, fuzzy
+msgid ""
+"Unlike the other methods, callbacks added this way cannot suppress "
+"exceptions (as they are never passed the exception details)."
+msgstr ""
+"Không giống như các phương pháp khác, lệnh gọi lại được thêm theo cách này "
+"không thể loại bỏ ngoại lệ (vì chúng không bao giờ được chuyển chi tiết "
+"ngoại lệ)."
+
+#: ../../library/contextlib.rst:594
+#, fuzzy
+msgid ""
+"The passed in callback is returned from the function, allowing this method "
+"to be used as a function decorator."
+msgstr ""
+"Lệnh gọi lại được truyền vào được trả về từ hàm, cho phép sử dụng phương "
+"thức này làm công cụ trang trí hàm."
+
+#: ../../library/contextlib.rst:599
+#, fuzzy
+msgid ""
+"Transfers the callback stack to a fresh :class:`ExitStack` instance and "
+"returns it. No callbacks are invoked by this operation - instead, they will "
+"now be invoked when the new stack is closed (either explicitly or implicitly"
+" at the end of a :keyword:`with` statement)."
+msgstr ""
+"Chuyển ngăn xếp gọi lại sang phiên bản :class:`ExitStack` mới và trả về nó. "
+"Thao tác này không gọi lại lệnh gọi lại nào - thay vào đó, giờ đây chúng sẽ "
+"được gọi khi ngăn xếp mới bị đóng (rõ ràng hoặc ngầm định ở cuối câu lệnh "
+":keyword:`with`)."
+
+#: ../../library/contextlib.rst:604
+#, fuzzy
+msgid ""
+"For example, a group of files can be opened as an \"all or nothing\" "
+"operation as follows::"
+msgstr ""
+"Ví dụ: một nhóm tệp có thể được mở dưới dạng thao tác \"tất cả hoặc không có"
+" gì\" như sau::"
+
+#: ../../library/contextlib.rst:607
+#, fuzzy
+msgid ""
+"with ExitStack() as stack:\n"
+"    files = [stack.enter_context(open(fname)) for fname in filenames]\n"
+"    # Hold onto the close method, but don't call it yet.\n"
+"    close_files = stack.pop_all().close\n"
+"    # If opening any file fails, all previously opened files will be\n"
+"    # closed automatically. If all files are opened successfully,\n"
+"    # they will remain open even after the with statement ends.\n"
+"    # close_files() can then be invoked explicitly to close them all."
+msgstr ""
+"với ExitStack() dưới dạng ngăn xếp:\n"
+"    files = [stack.enter_context(open(fname)) cho fname trong tên tệp]\n"
+"    # Hold vào phương thức đóng, nhưng chưa gọi nó.\n"
+"    close_files = stack.pop_all().close\n"
+"    # If mở bất kỳ tệp nào không thành công, tất cả các tệp đã mở trước đó sẽ bị lỗi\n"
+"    # closed tự động. Nếu tất cả các tập tin được mở thành công,\n"
+"    # they sẽ vẫn mở ngay cả sau khi câu lệnh with kết thúc.\n"
+"    # close_files() sau đó có thể được gọi một cách rõ ràng để đóng tất cả."
+
+#: ../../library/contextlib.rst:618
+#, fuzzy
+msgid ""
+"Immediately unwinds the callback stack, invoking callbacks in the reverse "
+"order of registration. For any context managers and exit callbacks "
+"registered, the arguments passed in will indicate that no exception "
+"occurred."
+msgstr ""
+"Ngay lập tức hủy bỏ ngăn xếp lệnh gọi lại, gọi lệnh gọi lại theo thứ tự "
+"ngược lại với đăng ký. Đối với mọi trình quản lý bối cảnh và lệnh gọi lại "
+"thoát đã đăng ký, các đối số được truyền vào sẽ cho biết rằng không có ngoại"
+" lệ nào xảy ra."
+
+#: ../../library/contextlib.rst:625
+#, fuzzy
+msgid ""
+"An :ref:`asynchronous context manager <async-context-managers>`, similar to "
+":class:`ExitStack`, that supports combining both synchronous and "
+"asynchronous context managers, as well as having coroutines for cleanup "
+"logic."
+msgstr ""
+"Một :ref:`asynchronous context manager <async-context-managers>`, tương tự "
+"như :class:`ExitStack`, hỗ trợ kết hợp cả trình quản lý bối cảnh đồng bộ và "
+"không đồng bộ, cũng như có các coroutine để dọn dẹp logic."
+
+#: ../../library/contextlib.rst:630
+#, fuzzy
+msgid ""
+"The :meth:`~ExitStack.close` method is not implemented; :meth:`aclose` must "
+"be used instead."
+msgstr ""
+"Phương pháp :meth:`~ExitStack.close` không được triển khai; :meth:`aclose` "
+"phải được sử dụng thay thế."
+
+#: ../../library/contextlib.rst:636
+#, fuzzy
+msgid ""
+"Similar to :meth:`ExitStack.enter_context` but expects an asynchronous "
+"context manager."
+msgstr ""
+"Tương tự như :meth:`ExitStack.enter_context` nhưng yêu cầu trình quản lý bối"
+" cảnh không đồng bộ."
+
+#: ../../library/contextlib.rst:639
+#, fuzzy
+msgid ""
+"Raises :exc:`TypeError` instead of :exc:`AttributeError` if *cm* is not an "
+"asynchronous context manager."
+msgstr ""
+"Tăng :exc:`TypeError` thay vì :exc:`AttributeError` nếu *cm* không phải là "
+"trình quản lý bối cảnh không đồng bộ."
+
+#: ../../library/contextlib.rst:645
+#, fuzzy
+msgid ""
+"Similar to :meth:`ExitStack.push` but expects either an asynchronous context"
+" manager or a coroutine function."
+msgstr ""
+"Tương tự như :meth:`ExitStack.push` nhưng yêu cầu trình quản lý bối cảnh "
+"không đồng bộ hoặc chức năng coroutine."
+
+#: ../../library/contextlib.rst:650
+#, fuzzy
+msgid ""
+"Similar to :meth:`ExitStack.callback` but expects a coroutine function."
+msgstr ""
+"Tương tự như :meth:`ExitStack.callback` nhưng yêu cầu chức năng coroutine."
+
+#: ../../library/contextlib.rst:655
+#, fuzzy
+msgid "Similar to :meth:`ExitStack.close` but properly handles awaitables."
+msgstr ""
+"Tương tự như :meth:`ExitStack.close` nhưng xử lý đúng cách các chờ đợi."
+
+#: ../../library/contextlib.rst:657
+#, fuzzy
+msgid "Continuing the example for :func:`asynccontextmanager`::"
+msgstr "Tiếp tục ví dụ cho :func:`asynccontextmanager`::"
+
+#: ../../library/contextlib.rst:659
+#, fuzzy
+msgid ""
+"async with AsyncExitStack() as stack:\n"
+"    connections = [await stack.enter_async_context(get_connection())\n"
+"        for i in range(5)]\n"
+"    # All opened connections will automatically be released at the end of\n"
+"    # the async with statement, even if attempts to open a connection\n"
+"    # later in the list raise an exception."
+msgstr ""
+"không đồng bộ với AsyncExitStack() dưới dạng ngăn xếp:\n"
+"    kết nối = [đang chờ stack.enter_async_context(get_connection())\n"
+"        cho tôi trong phạm vi (5)]\n"
+"    các kết nối đã mở # All sẽ tự động được giải phóng vào cuối\n"
+"    # the không đồng bộ với câu lệnh, ngay cả khi cố gắng mở kết nối\n"
+"    # later trong danh sách đưa ra một ngoại lệ."
+
+#: ../../library/contextlib.rst:669
+#, fuzzy
+msgid "Examples and Recipes"
+msgstr "Ví dụ và Bí quyết"
+
+#: ../../library/contextlib.rst:671
+#, fuzzy
+msgid ""
+"This section describes some examples and recipes for making effective use of"
+" the tools provided by :mod:`!contextlib`."
+msgstr ""
+"Phần này mô tả một số ví dụ và công thức để sử dụng hiệu quả các công cụ do "
+":mod:`!contextlib` cung cấp."
+
+#: ../../library/contextlib.rst:676
+#, fuzzy
+msgid "Supporting a variable number of context managers"
+msgstr "Hỗ trợ một số lượng lớn các trình quản lý bối cảnh"
+
+#: ../../library/contextlib.rst:678
+#, fuzzy
+msgid ""
+"The primary use case for :class:`ExitStack` is the one given in the class "
+"documentation: supporting a variable number of context managers and other "
+"cleanup operations in a single :keyword:`with` statement. The variability "
+"may come from the number of context managers needed being driven by user "
+"input (such as opening a user specified collection of files), or from some "
+"of the context managers being optional::"
+msgstr ""
+"Trường hợp sử dụng chính của :class:`ExitStack` là trường hợp được đưa ra "
+"trong tài liệu lớp: hỗ trợ nhiều trình quản lý bối cảnh và các hoạt động dọn"
+" dẹp khác trong một câu lệnh :keyword:`with` duy nhất. Sự thay đổi có thể "
+"đến từ số lượng trình quản lý bối cảnh cần thiết được điều khiển bởi đầu vào"
+" của người dùng (chẳng hạn như mở bộ sưu tập tệp do người dùng chỉ định) "
+"hoặc từ một số trình quản lý bối cảnh là tùy chọn ::"
+
+#: ../../library/contextlib.rst:685
+#, fuzzy
+msgid ""
+"with ExitStack() as stack:\n"
+"    for resource in resources:\n"
+"        stack.enter_context(resource)\n"
+"    if need_special_resource():\n"
+"        special = acquire_special_resource()\n"
+"        stack.callback(release_special_resource, special)\n"
+"    # Perform operations that use the acquired resources"
+msgstr ""
+"với ExitStack() dưới dạng ngăn xếp:\n"
+"    cho tài nguyên trong tài nguyên:\n"
+"        stack.enter_context(tài nguyên)\n"
+"    nếu cần_special_resource():\n"
+"        đặc biệt = thu được_special_resource()\n"
+"        stack.callback(release_special_resource, đặc biệt)\n"
+"    Hoạt động # Perform sử dụng tài nguyên có được"
+
+#: ../../library/contextlib.rst:693
+#, fuzzy
+msgid ""
+"As shown, :class:`ExitStack` also makes it quite easy to use :keyword:`with`"
+" statements to manage arbitrary resources that don't natively support the "
+"context management protocol."
+msgstr ""
+"Như được hiển thị, :class:`ExitStack` cũng giúp bạn dễ dàng sử dụng các câu "
+"lệnh :keyword:`with` để quản lý các tài nguyên tùy ý vốn không hỗ trợ giao "
+"thức quản lý ngữ cảnh."
+
+#: ../../library/contextlib.rst:699
+#, fuzzy
+msgid "Catching exceptions from ``__enter__`` methods"
+msgstr "Bắt ngoại lệ từ các phương pháp ``__enter__``"
+
+#: ../../library/contextlib.rst:701
+#, fuzzy
+msgid ""
+"It is occasionally desirable to catch exceptions from an "
+":meth:`~object.__enter__` method implementation, *without* inadvertently "
+"catching exceptions from the :keyword:`with` statement body or the context "
+"manager's :meth:`~object.__exit__` method. By using :class:`ExitStack` the "
+"steps in the context management protocol can be separated slightly in order "
+"to allow this::"
+msgstr ""
+"Đôi khi, người ta mong muốn nắm bắt các ngoại lệ từ việc triển khai phương "
+"thức :meth:`~object.__enter__`, *without* vô tình bắt được các ngoại lệ từ "
+"nội dung câu lệnh :keyword:`with` hoặc phương thức :meth:`~object.__exit__` "
+"của trình quản lý bối cảnh. Bằng cách sử dụng :class:`ExitStack`, các bước "
+"trong giao thức quản lý ngữ cảnh có thể được tách ra một chút để cho phép "
+"điều này ::"
+
+#: ../../library/contextlib.rst:707
+#, fuzzy
+msgid ""
+"stack = ExitStack()\n"
+"try:\n"
+"    x = stack.enter_context(cm)\n"
+"except Exception:\n"
+"    # handle __enter__ exception\n"
+"else:\n"
+"    with stack:\n"
+"        # Handle normal case"
+msgstr ""
+"ngăn xếp = ExitStack()\n"
+"thử:\n"
+"    x = stack.enter_context(cm)\n"
+"ngoại trừ Ngoại lệ:\n"
+"    # handle __enter__ ngoại lệ\n"
+"khác:\n"
+"    với ngăn xếp:\n"
+"        # Handle trường hợp bình thường"
+
+#: ../../library/contextlib.rst:716
+#, fuzzy
+msgid ""
+"Actually needing to do this is likely to indicate that the underlying API "
+"should be providing a direct resource management interface for use with "
+":keyword:`try`/:keyword:`except`/:keyword:`finally` statements, but not all "
+"APIs are well designed in that regard. When a context manager is the only "
+"resource management API provided, then :class:`ExitStack` can make it easier"
+" to handle various situations that can't be handled directly in a "
+":keyword:`with` statement."
+msgstr ""
+"Trên thực tế, việc cần phải làm điều này có thể chỉ ra rằng API cơ bản phải "
+"cung cấp giao diện quản lý tài nguyên trực tiếp để sử dụng với các câu lệnh "
+":keyword:`try`/:keyword:`except`/:keyword:`finally`, nhưng không phải tất cả"
+" các API đều được thiết kế tốt về mặt đó. Khi trình quản lý bối cảnh là công"
+" cụ quản lý tài nguyên duy nhất mà API được cung cấp thì :class:`ExitStack` "
+"có thể giúp xử lý các tình huống khác nhau không thể xử lý trực tiếp trong "
+"câu lệnh :keyword:`with` dễ dàng hơn."
+
+#: ../../library/contextlib.rst:726
+#, fuzzy
+msgid "Cleaning up in an ``__enter__`` implementation"
+msgstr "Dọn dẹp trong triển khai ``__enter__``"
+
+#: ../../library/contextlib.rst:728
+#, fuzzy
+msgid ""
+"As noted in the documentation of :meth:`ExitStack.push`, this method can be "
+"useful in cleaning up an already allocated resource if later steps in the "
+":meth:`~object.__enter__` implementation fail."
+msgstr ""
+"Như đã lưu ý trong tài liệu của :meth:`ExitStack.push`, phương pháp này có "
+"thể hữu ích trong việc dọn sạch tài nguyên đã được phân bổ nếu các bước "
+"triển khai :meth:`~object.__enter__` sau đó không thành công."
+
+#: ../../library/contextlib.rst:732
+#, fuzzy
+msgid ""
+"Here's an example of doing this for a context manager that accepts resource "
+"acquisition and release functions, along with an optional validation "
+"function, and maps them to the context management protocol::"
+msgstr ""
+"Dưới đây là ví dụ về cách thực hiện việc này đối với trình quản lý bối cảnh "
+"chấp nhận các chức năng thu thập và giải phóng tài nguyên, cùng với chức "
+"năng xác thực tùy chọn và ánh xạ chúng tới giao thức quản lý bối cảnh::"
+
+#: ../../library/contextlib.rst:736
+#, python-brace-format, fuzzy
+msgid ""
+"from contextlib import contextmanager, AbstractContextManager, ExitStack\n"
+"\n"
+"class ResourceManager(AbstractContextManager):\n"
+"\n"
+"    def __init__(self, acquire_resource, release_resource, check_resource_ok=None):\n"
+"        self.acquire_resource = acquire_resource\n"
+"        self.release_resource = release_resource\n"
+"        if check_resource_ok is None:\n"
+"            def check_resource_ok(resource):\n"
+"                return True\n"
+"        self.check_resource_ok = check_resource_ok\n"
+"\n"
+"    @contextmanager\n"
+"    def _cleanup_on_error(self):\n"
+"        with ExitStack() as stack:\n"
+"            stack.push(self)\n"
+"            yield\n"
+"            # The validation check passed and didn't raise an exception\n"
+"            # Accordingly, we want to keep the resource, and pass it\n"
+"            # back to our caller\n"
+"            stack.pop_all()\n"
+"\n"
+"    def __enter__(self):\n"
+"        resource = self.acquire_resource()\n"
+"        with self._cleanup_on_error():\n"
+"            if not self.check_resource_ok(resource):\n"
+"                msg = \"Failed validation for {!r}\"\n"
+"                raise RuntimeError(msg.format(resource))\n"
+"        return resource\n"
+"\n"
+"    def __exit__(self, *exc_details):\n"
+"        # We don't need to duplicate any of our resource release logic\n"
+"        self.release_resource()"
+msgstr ""
+"từ trình quản lý bối cảnh nhập ngữ cảnh, Tóm tắtContextManager, ExitStack\n"
+"\n"
+"lớp Trình quản lý tài nguyên (AbstractContextManager):\n"
+"\n"
+"    def __init__(self, Acacqui_resource, Release_resource, check_resource_ok=Không):\n"
+"        self.acquire_resource = thu được_resource\n"
+"        self.release_resource=release_resource\n"
+"        nếu check_resource_ok là Không có:\n"
+"            def check_resource_ok(tài nguyên):\n"
+"                trả về Đúng\n"
+"        self.check_resource_ok = check_resource_ok\n"
+"\n"
+"    @contextmanager\n"
+"    def _cleanup_on_error(tự):\n"
+"        với ExitStack() dưới dạng ngăn xếp:\n"
+"            stack.push(tự)\n"
+"            năng suất\n"
+"            Kiểm tra xác thực # The đã vượt qua và không đưa ra ngoại lệ\n"
+"            # Accordingly, chúng tôi muốn giữ tài nguyên và chuyển nó\n"
+"            # back cho người gọi của chúng tôi\n"
+"            stack.pop_all()\n"
+"\n"
+"    chắc chắn __enter__(tự):\n"
+"        tài nguyên = self.acquire_resource()\n"
+"        với self._cleanup_on_error():\n"
+"            nếu không self.check_resource_ok(resource):\n"
+"                msg = \"Xác thực thất bại cho {!r}\"\n"
+"                raise RuntimeError(msg.format(resource))\n"
+"        trả lại tài nguyên\n"
+"\n"
+"    def __exit__(self, *exc_details):\n"
+"        # We không cần sao chép bất kỳ logic phát hành tài nguyên nào của chúng tôi\n"
+"        self.release_resource()"
+
+#: ../../library/contextlib.rst:772
+#, fuzzy
+msgid "Replacing any use of ``try-finally`` and flag variables"
+msgstr "Thay thế việc sử dụng các biến ``try-finally`` và flag"
+
+#: ../../library/contextlib.rst:774
+#, fuzzy
+msgid ""
+"A pattern you will sometimes see is a ``try-finally`` statement with a flag "
+"variable to indicate whether or not the body of the ``finally`` clause "
+"should be executed. In its simplest form (that can't already be handled just"
+" by using an ``except`` clause instead), it looks something like this::"
+msgstr ""
+"Một mẫu đôi khi bạn sẽ thấy là câu lệnh ``try-finally`` với biến cờ để cho "
+"biết liệu phần nội dung của mệnh đề ``finally`` có nên được thực thi hay "
+"không. Ở dạng đơn giản nhất (không thể xử lý được chỉ bằng cách sử dụng mệnh"
+" đề ``except``), nó trông giống như thế này ::"
+
+#: ../../library/contextlib.rst:779
+#, fuzzy
+msgid ""
+"cleanup_needed = True\n"
+"try:\n"
+"    result = perform_operation()\n"
+"    if result:\n"
+"        cleanup_needed = False\n"
+"finally:\n"
+"    if cleanup_needed:\n"
+"        cleanup_resources()"
+msgstr ""
+"cleanup_ Need = Đúng\n"
+"thử:\n"
+"    kết quả = performance_Operation()\n"
+"    nếu kết quả:\n"
+"        cleanup_ Need = Sai\n"
+"cuối cùng:\n"
+"    nếu cleanup_ Need:\n"
+"        dọn dẹp_resource()"
+
+#: ../../library/contextlib.rst:788
+#, fuzzy
+msgid ""
+"As with any ``try`` statement based code, this can cause problems for "
+"development and review, because the setup code and the cleanup code can end "
+"up being separated by arbitrarily long sections of code."
+msgstr ""
+"Giống như bất kỳ mã dựa trên câu lệnh ``try`` nào, điều này có thể gây ra sự"
+" cố cho quá trình phát triển và đánh giá vì mã thiết lập và mã dọn dẹp có "
+"thể bị phân tách bằng các đoạn mã dài tùy ý."
+
+#: ../../library/contextlib.rst:792
+#, fuzzy
+msgid ""
+":class:`ExitStack` makes it possible to instead register a callback for "
+"execution at the end of a ``with`` statement, and then later decide to skip "
+"executing that callback::"
+msgstr ""
+"Thay vào đó, :class:`ExitStack` có thể đăng ký một lệnh gọi lại để thực thi "
+"ở cuối câu lệnh ``with`` và sau đó quyết định bỏ qua việc thực hiện lệnh gọi"
+" lại đó::"
+
+#: ../../library/contextlib.rst:796
+#, fuzzy
+msgid ""
+"from contextlib import ExitStack\n"
+"\n"
+"with ExitStack() as stack:\n"
+"    stack.callback(cleanup_resources)\n"
+"    result = perform_operation()\n"
+"    if result:\n"
+"        stack.pop_all()"
+msgstr ""
+"từ nhập khẩu bối cảnh ExitStack\n"
+"\n"
+"với ExitStack() dưới dạng ngăn xếp:\n"
+"    stack.callback(cleanup_resources)\n"
+"    kết quả = performance_Operation()\n"
+"    nếu kết quả:\n"
+"        stack.pop_all()"
+
+#: ../../library/contextlib.rst:804
+#, fuzzy
+msgid ""
+"This allows the intended cleanup behaviour to be made explicit up front, "
+"rather than requiring a separate flag variable."
+msgstr ""
+"Điều này cho phép hành vi dọn dẹp dự định được thực hiện rõ ràng ngay từ "
+"đầu, thay vì yêu cầu một biến cờ riêng."
+
+#: ../../library/contextlib.rst:807
+#, fuzzy
+msgid ""
+"If a particular application uses this pattern a lot, it can be simplified "
+"even further by means of a small helper class::"
+msgstr ""
+"Nếu một ứng dụng cụ thể sử dụng mẫu này nhiều, nó có thể được đơn giản hóa "
+"hơn nữa bằng một lớp trợ giúp nhỏ ::"
+
+#: ../../library/contextlib.rst:810
+#, fuzzy
+msgid ""
+"from contextlib import ExitStack\n"
+"\n"
+"class Callback(ExitStack):\n"
+"    def __init__(self, callback, /, *args, **kwds):\n"
+"        super().__init__()\n"
+"        self.callback(callback, *args, **kwds)\n"
+"\n"
+"    def cancel(self):\n"
+"        self.pop_all()\n"
+"\n"
+"with Callback(cleanup_resources) as cb:\n"
+"    result = perform_operation()\n"
+"    if result:\n"
+"        cb.cancel()"
+msgstr ""
+"từ nhập khẩu bối cảnh ExitStack\n"
+"\n"
+"Gọi lại lớp (ExitStack):\n"
+"    def __init__(self, callback, /, *args, **kwds):\n"
+"        siêu().__init__()\n"
+"        self.callback(gọi lại, *args, **kwds)\n"
+"\n"
+"    def hủy (tự):\n"
+"        tự.pop_all()\n"
+"\n"
+"với Callback(cleanup_resources) là cb:\n"
+"    kết quả = performance_Operation()\n"
+"    nếu kết quả:\n"
+"        cb.cancel()"
+
+#: ../../library/contextlib.rst:825
+#, fuzzy
+msgid ""
+"If the resource cleanup isn't already neatly bundled into a standalone "
+"function, then it is still possible to use the decorator form of "
+":meth:`ExitStack.callback` to declare the resource cleanup in advance::"
+msgstr ""
+"Nếu việc dọn dẹp tài nguyên chưa được gói gọn gàng thành một hàm độc lập thì"
+" vẫn có thể sử dụng dạng trang trí của :meth:`ExitStack.callback` để khai "
+"báo trước việc dọn dẹp tài nguyên::"
+
+#: ../../library/contextlib.rst:830
+#, fuzzy
+msgid ""
+"from contextlib import ExitStack\n"
+"\n"
+"with ExitStack() as stack:\n"
+"    @stack.callback\n"
+"    def cleanup_resources():\n"
+"        ...\n"
+"    result = perform_operation()\n"
+"    if result:\n"
+"        stack.pop_all()"
+msgstr ""
+"từ nhập khẩu bối cảnh ExitStack\n"
+"\n"
+"với ExitStack() dưới dạng ngăn xếp:\n"
+"    @stack.callback\n"
+"    def cleanup_resource():\n"
+"        ...\n"
+"    kết quả = performance_Operation()\n"
+"    nếu kết quả:\n"
+"        stack.pop_all()"
+
+#: ../../library/contextlib.rst:840
+#, fuzzy
+msgid ""
+"Due to the way the decorator protocol works, a callback function declared "
+"this way cannot take any parameters. Instead, any resources to be released "
+"must be accessed as closure variables."
+msgstr ""
+"Do cách hoạt động của giao thức trang trí, hàm gọi lại được khai báo theo "
+"cách này không thể nhận bất kỳ tham số nào. Thay vào đó, mọi tài nguyên được"
+" giải phóng phải được truy cập dưới dạng các biến đóng."
+
+#: ../../library/contextlib.rst:846
+#, fuzzy
+msgid "Using a context manager as a function decorator"
+msgstr "Sử dụng trình quản lý bối cảnh làm công cụ trang trí chức năng"
+
+#: ../../library/contextlib.rst:848
+#, fuzzy
+msgid ""
+":class:`ContextDecorator` makes it possible to use a context manager in both"
+" an ordinary ``with`` statement and also as a function decorator."
+msgstr ""
+":class:`ContextDecorator` cho phép sử dụng trình quản lý bối cảnh trong cả "
+"câu lệnh ``with`` thông thường và cũng như một công cụ trang trí hàm."
+
+#: ../../library/contextlib.rst:851
+#, fuzzy
+msgid ""
+"For example, it is sometimes useful to wrap functions or groups of "
+"statements with a logger that can track the time of entry and time of exit."
+"  Rather than writing both a function decorator and a context manager for "
+"the task, inheriting from :class:`ContextDecorator` provides both "
+"capabilities in a single definition::"
+msgstr ""
+"Ví dụ: đôi khi rất hữu ích khi bọc các hàm hoặc nhóm câu lệnh bằng một trình"
+" ghi nhật ký có thể theo dõi thời gian vào và thời gian thoát.  Thay vì viết"
+" cả trình trang trí hàm và trình quản lý bối cảnh cho tác vụ, việc kế thừa "
+"từ :class:`ContextDecorator` cung cấp cả hai khả năng trong một định nghĩa "
+"duy nhất::"
+
+#: ../../library/contextlib.rst:857
+#, python-format, fuzzy
+msgid ""
+"from contextlib import ContextDecorator\n"
+"import logging\n"
+"\n"
+"logging.basicConfig(level=logging.INFO)\n"
+"\n"
+"class track_entry_and_exit(ContextDecorator):\n"
+"    def __init__(self, name):\n"
+"        self.name = name\n"
+"\n"
+"    def __enter__(self):\n"
+"        logging.info('Entering: %s', self.name)\n"
+"\n"
+"    def __exit__(self, exc_type, exc, exc_tb):\n"
+"        logging.info('Exiting: %s', self.name)"
+msgstr ""
+"từ nhập ngữ cảnh vào ContextDecorator\n"
+"nhập nhật ký\n"
+"\n"
+"logging.basicConfig(level=logging.INFO)\n"
+"\n"
+"lớp track_entry_and_exit(ContextDecorator):\n"
+"    def __init__(bản thân, tên):\n"
+"        self.name = tên\n"
+"\n"
+"    chắc chắn __enter__(tự):\n"
+"        logging.info('Đang nhập: %s', self.name)\n"
+"\n"
+"    def __exit__(self, ex_type, exc, ex_tb):\n"
+"        logging.info('Đang thoát: %s', self.name)"
+
+#: ../../library/contextlib.rst:872
+#, fuzzy
+msgid "Instances of this class can be used as both a context manager::"
+msgstr ""
+"Các thể hiện của lớp này có thể được sử dụng làm cả trình quản lý bối cảnh "
+"::"
+
+#: ../../library/contextlib.rst:874
+#, fuzzy
+msgid ""
+"with track_entry_and_exit('widget loader'):\n"
+"    print('Some time consuming activity goes here')\n"
+"    load_widget()"
+msgstr ""
+"với track_entry_and_exit('trình tải widget'):\n"
+"    print('Một số hoạt động tiêu tốn thời gian sẽ diễn ra ở đây')\n"
+"    tải_widget()"
+
+#: ../../library/contextlib.rst:878
+#, fuzzy
+msgid "And also as a function decorator::"
+msgstr "Và cũng như một người trang trí chức năng ::"
+
+#: ../../library/contextlib.rst:880
+#, fuzzy
+msgid ""
+"@track_entry_and_exit('widget loader')\n"
+"def activity():\n"
+"    print('Some time consuming activity goes here')\n"
+"    load_widget()"
+msgstr ""
+"@track_entry_and_exit('trình tải widget')\n"
+"hoạt động chắc chắn():\n"
+"    print('Một số hoạt động tiêu tốn thời gian sẽ diễn ra ở đây')\n"
+"    tải_widget()"
+
+#: ../../library/contextlib.rst:885
+#, fuzzy
+msgid ""
+"Note that there is one additional limitation when using context managers as "
+"function decorators: there's no way to access the return value of "
+":meth:`~object.__enter__`. If that value is needed, then it is still "
+"necessary to use an explicit ``with`` statement."
+msgstr ""
+"Lưu ý rằng có một hạn chế bổ sung khi sử dụng trình quản lý bối cảnh làm "
+"công cụ trang trí hàm: không có cách nào để truy cập giá trị trả về của "
+":meth:`~object.__enter__`. Nếu giá trị đó là cần thiết thì vẫn cần sử dụng "
+"câu lệnh ``with`` rõ ràng."
+
+#: ../../library/contextlib.rst:892
+#, fuzzy
+msgid ":pep:`343` - The \"with\" statement"
+msgstr ":pep:`343` - Câu lệnh \"với\""
+
+#: ../../library/contextlib.rst:893
+#, fuzzy
+msgid ""
+"The specification, background, and examples for the Python :keyword:`with` "
+"statement."
+msgstr ""
+"Thông số kỹ thuật, nền tảng và ví dụ cho câu lệnh :keyword:`with` của "
+"Python."
+
+#: ../../library/contextlib.rst:899
+#, fuzzy
+msgid "Single use, reusable and reentrant context managers"
+msgstr ""
+"Trình quản lý bối cảnh sử dụng một lần, có thể tái sử dụng và đăng ký lại"
+
+#: ../../library/contextlib.rst:901
+#, fuzzy
+msgid ""
+"Most context managers are written in a way that means they can only be used "
+"effectively in a :keyword:`with` statement once. These single use context "
+"managers must be created afresh each time they're used - attempting to use "
+"them a second time will trigger an exception or otherwise not work "
+"correctly."
+msgstr ""
+"Hầu hết các trình quản lý bối cảnh được viết theo cách có nghĩa là chúng chỉ"
+" có thể được sử dụng hiệu quả trong câu lệnh :keyword:`with` một lần. Các "
+"trình quản lý bối cảnh sử dụng một lần này phải được tạo lại mỗi lần chúng "
+"được sử dụng - việc cố gắng sử dụng chúng lần thứ hai sẽ gây ra ngoại lệ "
+"hoặc không hoạt động chính xác."
+
+#: ../../library/contextlib.rst:907
+#, fuzzy
+msgid ""
+"This common limitation means that it is generally advisable to create "
+"context managers directly in the header of the :keyword:`with` statement "
+"where they are used (as shown in all of the usage examples above)."
+msgstr ""
+"Hạn chế chung này có nghĩa là nói chung nên tạo trình quản lý bối cảnh trực "
+"tiếp trong tiêu đề của câu lệnh :keyword:`with` nơi chúng được sử dụng (như "
+"được hiển thị trong tất cả các ví dụ sử dụng ở trên)."
+
+#: ../../library/contextlib.rst:911
+#, fuzzy
+msgid ""
+"Files are an example of effectively single use context managers, since the "
+"first :keyword:`with` statement will close the file, preventing any further "
+"IO operations using that file object."
+msgstr ""
+"Tệp là một ví dụ về trình quản lý bối cảnh sử dụng một lần hiệu quả, vì câu "
+"lệnh :keyword:`with` đầu tiên sẽ đóng tệp, ngăn chặn mọi thao tác IO tiếp "
+"theo bằng cách sử dụng đối tượng tệp đó."
+
+#: ../../library/contextlib.rst:915
+#, fuzzy
+msgid ""
+"Context managers created using :func:`contextmanager` are also single use "
+"context managers, and will complain about the underlying generator failing "
+"to yield if an attempt is made to use them a second time::"
+msgstr ""
+"Trình quản lý bối cảnh được tạo bằng :func:`contextmanager` cũng là trình "
+"quản lý bối cảnh sử dụng một lần và sẽ phàn nàn về việc trình tạo cơ bản "
+"không hoạt động nếu cố gắng sử dụng chúng lần thứ hai::"
+
+#: ../../library/contextlib.rst:919
+#, fuzzy
+msgid ""
+">>> from contextlib import contextmanager\n"
+">>> @contextmanager\n"
+"... def singleuse():\n"
+"...     print(\"Before\")\n"
+"...     yield\n"
+"...     print(\"After\")\n"
+"...\n"
+">>> cm = singleuse()\n"
+">>> with cm:\n"
+"...     pass\n"
+"...\n"
+"Before\n"
+"After\n"
+">>> with cm:\n"
+"...     pass\n"
+"...\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"RuntimeError: generator didn't yield"
+msgstr ""
+">>> từ trình quản lý bối cảnh nhập ngữ cảnh\n"
+">>> @contextmanager\n"
+"... def sử dụng đơn():\n"
+"... print(\"Trước\")\n"
+"... năng suất\n"
+"... in(\"Sau\")\n"
+"...\n"
+">>> cm = sử dụng một lần()\n"
+">>> với cm:\n"
+"... vượt qua\n"
+"...\n"
+"trước đây\n"
+"Sau\n"
+">>> với cm:\n"
+"... vượt qua\n"
+"...\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"    ...\n"
+"RuntimeError: trình tạo không hoạt động"
+
+#: ../../library/contextlib.rst:943
+#, fuzzy
+msgid "Reentrant context managers"
+msgstr "Trình quản lý bối cảnh Reentrant"
+
+#: ../../library/contextlib.rst:945
+#, fuzzy
+msgid ""
+"More sophisticated context managers may be \"reentrant\". These context "
+"managers can not only be used in multiple :keyword:`with` statements, but "
+"may also be used *inside* a :keyword:`!with` statement that is already using"
+" the same context manager."
+msgstr ""
+"Các nhà quản lý bối cảnh phức tạp hơn có thể được \"tái nhập\". Các trình "
+"quản lý bối cảnh này không chỉ có thể được sử dụng trong nhiều câu lệnh "
+":keyword:`with` mà còn có thể được sử dụng *inside* một câu lệnh "
+":keyword:`!with` đã sử dụng cùng một trình quản lý bối cảnh."
+
+#: ../../library/contextlib.rst:950
+#, fuzzy
+msgid ""
+":class:`threading.RLock` is an example of a reentrant context manager, as "
+"are :func:`suppress`, :func:`redirect_stdout`, and :func:`chdir`. Here's a "
+"very simple example of reentrant use::"
+msgstr ""
+":class:`threading.RLock` là một ví dụ về trình quản lý bối cảnh được đăng ký"
+" lại, cũng như :func:`suppress`, :func:`redirect_stdout` và :func:`chdir`. "
+"Đây là một ví dụ rất đơn giản về việc sử dụng reentrant::"
+
+#: ../../library/contextlib.rst:954
+#, fuzzy
+msgid ""
+">>> from contextlib import redirect_stdout\n"
+">>> from io import StringIO\n"
+">>> stream = StringIO()\n"
+">>> write_to_stream = redirect_stdout(stream)\n"
+">>> with write_to_stream:\n"
+"...     print(\"This is written to the stream rather than stdout\")\n"
+"...     with write_to_stream:\n"
+"...         print(\"This is also written to the stream\")\n"
+"...\n"
+">>> print(\"This is written directly to stdout\")\n"
+"This is written directly to stdout\n"
+">>> print(stream.getvalue())\n"
+"This is written to the stream rather than stdout\n"
+"This is also written to the stream"
+msgstr ""
+">>> từ nhập khẩu contextlib redirect_stdout\n"
+">>> từ io nhập StringIO\n"
+">>> luồng = StringIO()\n"
+">>> write_to_stream = redirect_stdout(stream)\n"
+">>> với write_to_stream:\n"
+"... print(\"Điều này được ghi vào luồng chứ không phải thiết bị xuất chuẩn\")\n"
+"... với write_to_stream:\n"
+"... print(\"Điều này cũng được ghi vào luồng\")\n"
+"...\n"
+">>> print(\"Điều này được ghi trực tiếp vào thiết bị xuất chuẩn\")\n"
+"Điều này được viết trực tiếp vào thiết bị xuất chuẩn\n"
+">>> in(stream.getvalue())\n"
+"Điều này được ghi vào luồng chứ không phải thiết bị xuất chuẩn\n"
+"Điều này cũng được ghi vào luồng"
+
+#: ../../library/contextlib.rst:969
+#, fuzzy
+msgid ""
+"Real world examples of reentrancy are more likely to involve multiple "
+"functions calling each other and hence be far more complicated than this "
+"example."
+msgstr ""
+"Các ví dụ thực tế về việc quay lại có nhiều khả năng liên quan đến nhiều hàm"
+" gọi lẫn nhau và do đó phức tạp hơn nhiều so với ví dụ này."
+
+#: ../../library/contextlib.rst:973
+#, fuzzy
+msgid ""
+"Note also that being reentrant is *not* the same thing as being thread safe."
+" :func:`redirect_stdout`, for example, is definitely not thread safe, as it "
+"makes a global modification to the system state by binding "
+":data:`sys.stdout` to a different stream."
+msgstr ""
+"Cũng lưu ý rằng việc được đăng ký lại là *not* cũng giống như việc đảm bảo "
+"an toàn cho luồng. Ví dụ: :func:`redirect_stdout` chắc chắn không an toàn "
+"cho luồng vì nó thực hiện sửa đổi toàn cầu đối với trạng thái hệ thống bằng "
+"cách liên kết :data:`sys.stdout` với một luồng khác."
+
+#: ../../library/contextlib.rst:982
+#, fuzzy
+msgid "Reusable context managers"
+msgstr "Trình quản lý bối cảnh có thể tái sử dụng"
+
+#: ../../library/contextlib.rst:984
+#, fuzzy
+msgid ""
+"Distinct from both single use and reentrant context managers are "
+"\"reusable\" context managers (or, to be completely explicit, \"reusable, "
+"but not reentrant\" context managers, since reentrant context managers are "
+"also reusable). These context managers support being used multiple times, "
+"but will fail (or otherwise not work correctly) if the specific context "
+"manager instance has already been used in a containing with statement."
+msgstr ""
+"Khác biệt với cả trình quản lý bối cảnh sử dụng một lần và trình quản lý bối"
+" cảnh được cấp lại là các trình quản lý bối cảnh \"có thể tái sử dụng\" "
+"(hoặc nói một cách hoàn toàn rõ ràng là các trình quản lý bối cảnh \"có thể "
+"tái sử dụng nhưng không thể cấp lại\", vì các trình quản lý bối cảnh được "
+"cấp lại cũng có thể tái sử dụng). Các trình quản lý bối cảnh này hỗ trợ việc"
+" sử dụng nhiều lần nhưng sẽ không thành công (hoặc không hoạt động chính "
+"xác) nếu phiên bản trình quản lý bối cảnh cụ thể đã được sử dụng trong câu "
+"lệnh chứa with."
+
+#: ../../library/contextlib.rst:991
+#, fuzzy
+msgid ""
+":class:`threading.Lock` is an example of a reusable, but not reentrant, "
+"context manager (for a reentrant lock, it is necessary to use "
+":class:`threading.RLock` instead)."
+msgstr ""
+":class:`threading.Lock` là một ví dụ về trình quản lý bối cảnh có thể tái sử"
+" dụng nhưng không được cấp lại (đối với khóa đăng nhập lại, cần phải sử dụng"
+" :class:`threading.RLock` thay thế)."
+
+#: ../../library/contextlib.rst:995
+#, fuzzy
+msgid ""
+"Another example of a reusable, but not reentrant, context manager is "
+":class:`ExitStack`, as it invokes *all* currently registered callbacks when "
+"leaving any with statement, regardless of where those callbacks were added::"
+msgstr ""
+"Một ví dụ khác về trình quản lý bối cảnh có thể tái sử dụng nhưng không được"
+" cấp lại là :class:`ExitStack`, vì nó gọi các lệnh gọi lại *all* hiện đã "
+"đăng ký khi để lại bất kỳ câu lệnh nào, bất kể các lệnh gọi lại đó được thêm"
+" vào ở đâu::"
+
+#: ../../library/contextlib.rst:1000
+#, fuzzy
+msgid ""
+">>> from contextlib import ExitStack\n"
+">>> stack = ExitStack()\n"
+">>> with stack:\n"
+"...     stack.callback(print, \"Callback: from first context\")\n"
+"...     print(\"Leaving first context\")\n"
+"...\n"
+"Leaving first context\n"
+"Callback: from first context\n"
+">>> with stack:\n"
+"...     stack.callback(print, \"Callback: from second context\")\n"
+"...     print(\"Leaving second context\")\n"
+"...\n"
+"Leaving second context\n"
+"Callback: from second context\n"
+">>> with stack:\n"
+"...     stack.callback(print, \"Callback: from outer context\")\n"
+"...     with stack:\n"
+"...         stack.callback(print, \"Callback: from inner context\")\n"
+"...         print(\"Leaving inner context\")\n"
+"...     print(\"Leaving outer context\")\n"
+"...\n"
+"Leaving inner context\n"
+"Callback: from inner context\n"
+"Callback: from outer context\n"
+"Leaving outer context"
+msgstr ""
+">>> từ nhập khẩu bối cảnh ExitStack\n"
+">>> ngăn xếp = ExitStack()\n"
+">>> với ngăn xếp:\n"
+"... stack.callback(print, \"Gọi lại: từ ngữ cảnh đầu tiên\")\n"
+"... print(\"Rời khỏi ngữ cảnh đầu tiên\")\n"
+"...\n"
+"Rời khỏi bối cảnh đầu tiên\n"
+"Gọi lại: từ bối cảnh đầu tiên\n"
+">>> với ngăn xếp:\n"
+"... stack.callback(print, \"Gọi lại: từ ngữ cảnh thứ hai\")\n"
+"... print(\"Rời khỏi bối cảnh thứ hai\")\n"
+"...\n"
+"Rời khỏi bối cảnh thứ hai\n"
+"Gọi lại: từ bối cảnh thứ hai\n"
+">>> với ngăn xếp:\n"
+"... stack.callback(print, \"Gọi lại: từ ngữ cảnh bên ngoài\")\n"
+"... với ngăn xếp:\n"
+"... stack.callback(print, \"Gọi lại: từ ngữ cảnh bên trong\")\n"
+"... print(\"Rời khỏi bối cảnh bên trong\")\n"
+"... print(\"Rời khỏi bối cảnh bên ngoài\")\n"
+"...\n"
+"Rời khỏi bối cảnh bên trong\n"
+"Gọi lại: từ bối cảnh bên trong\n"
+"Gọi lại: từ bối cảnh bên ngoài\n"
+"Rời khỏi bối cảnh bên ngoài"
+
+#: ../../library/contextlib.rst:1026
+#, fuzzy
+msgid ""
+"As the output from the example shows, reusing a single stack object across "
+"multiple with statements works correctly, but attempting to nest them will "
+"cause the stack to be cleared at the end of the innermost with statement, "
+"which is unlikely to be desirable behaviour."
+msgstr ""
+"Như kết quả đầu ra từ ví dụ cho thấy, việc sử dụng lại một đối tượng ngăn "
+"xếp duy nhất trên nhiều đối tượng có câu lệnh hoạt động chính xác, nhưng "
+"việc cố gắng lồng chúng sẽ khiến ngăn xếp bị xóa ở cuối câu lệnh with trong "
+"cùng, đây khó có thể là hành vi mong muốn."
+
+#: ../../library/contextlib.rst:1031
+#, fuzzy
+msgid ""
+"Using separate :class:`ExitStack` instances instead of reusing a single "
+"instance avoids that problem::"
+msgstr ""
+"Sử dụng các phiên bản :class:`ExitStack` riêng biệt thay vì sử dụng lại một "
+"phiên bản duy nhất sẽ tránh được vấn đề đó ::"
+
+#: ../../library/contextlib.rst:1034
+#, fuzzy
+msgid ""
+">>> from contextlib import ExitStack\n"
+">>> with ExitStack() as outer_stack:\n"
+"...     outer_stack.callback(print, \"Callback: from outer context\")\n"
+"...     with ExitStack() as inner_stack:\n"
+"...         inner_stack.callback(print, \"Callback: from inner context\")\n"
+"...         print(\"Leaving inner context\")\n"
+"...     print(\"Leaving outer context\")\n"
+"...\n"
+"Leaving inner context\n"
+"Callback: from inner context\n"
+"Leaving outer context\n"
+"Callback: from outer context"
+msgstr ""
+">>> từ nhập khẩu bối cảnh ExitStack\n"
+">>> với ExitStack() là external_stack:\n"
+"... external_stack.callback(print, \"Gọi lại: từ ngữ cảnh bên ngoài\")\n"
+"... với ExitStack() là Inner_stack:\n"
+"... Inner_stack.callback(print, \"Gọi lại: từ ngữ cảnh bên trong\")\n"
+"... print(\"Rời khỏi bối cảnh bên trong\")\n"
+"... print(\"Rời khỏi bối cảnh bên ngoài\")\n"
+"...\n"
+"Rời khỏi bối cảnh bên trong\n"
+"Gọi lại: từ bối cảnh bên trong\n"
+"Rời khỏi bối cảnh bên ngoài\n"
+"Gọi lại: từ bối cảnh bên ngoài"

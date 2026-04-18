@@ -1,0 +1,166 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/codeop.rst:2
+#, fuzzy
+msgid ":mod:`!codeop` --- Compile Python code"
+msgstr ":mod:`!codeop` --- Biên dịch mã Python"
+
+#: ../../library/codeop.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/codeop.py`"
+msgstr "**Source code:** :source:`Lib/codeop.py`"
+
+#: ../../library/codeop.rst:14
+#, fuzzy
+msgid ""
+"The :mod:`!codeop` module provides utilities upon which the Python read-"
+"eval-print loop can be emulated, as is done in the :mod:`code` module.  As a"
+" result, you probably don't want to use the module directly; if you want to "
+"include such a loop in your program you probably want to use the :mod:`code`"
+" module instead."
+msgstr ""
+"Mô-đun :mod:`!codeop` cung cấp các tiện ích mà vòng lặp đọc-eval-in của "
+"Python có thể được mô phỏng, như được thực hiện trong mô-đun :mod:`code`.  "
+"Kết quả là bạn có thể không muốn sử dụng mô-đun một cách trực tiếp; nếu bạn "
+"muốn đưa một vòng lặp như vậy vào chương trình của mình thì có lẽ bạn muốn "
+"sử dụng mô-đun :mod:`code` để thay thế."
+
+#: ../../library/codeop.rst:20
+#, fuzzy
+msgid "There are two parts to this job:"
+msgstr "Có hai phần của công việc này:"
+
+#: ../../library/codeop.rst:22
+#, fuzzy
+msgid ""
+"Being able to tell if a line of input completes a Python statement: in "
+"short, telling whether to print '``>>>``' or '``...``' next."
+msgstr ""
+"Có thể biết liệu một dòng đầu vào có hoàn thành câu lệnh Python hay không: "
+"nói tóm lại là nên in '``>>>``' hay '``...``' tiếp theo."
+
+#: ../../library/codeop.rst:25
+#, fuzzy
+msgid ""
+"Remembering which future statements the user has entered, so subsequent "
+"input can be compiled with these in effect."
+msgstr ""
+"Ghi nhớ những câu lệnh trong tương lai mà người dùng đã nhập để đầu vào tiếp"
+" theo có thể được biên dịch với những câu lệnh này có hiệu lực."
+
+#: ../../library/codeop.rst:28
+#, fuzzy
+msgid ""
+"The :mod:`!codeop` module provides a way of doing each of these things, and "
+"a way of doing them both."
+msgstr ""
+"Mô-đun :mod:`!codeop` cung cấp cách thực hiện từng việc này và cách thực "
+"hiện cả hai việc đó."
+
+#: ../../library/codeop.rst:31
+#, fuzzy
+msgid "To do just the former:"
+msgstr "Để làm chỉ là trước đây:"
+
+#: ../../library/codeop.rst:35
+#, fuzzy
+msgid ""
+"Tries to compile *source*, which should be a string of Python code and "
+"return a code object if *source* is valid Python code.  In that case, the "
+"filename attribute of the code object will be *filename*, which defaults to "
+"``'<input>'``.  Returns ``None`` if *source* is *not* valid Python code, but"
+" is a prefix of valid Python code."
+msgstr ""
+"Cố gắng biên dịch *source*, đây phải là một chuỗi mã Python và trả về một "
+"đối tượng mã nếu *source* là mã Python hợp lệ.  Trong trường hợp đó, thuộc "
+"tính tên tệp của đối tượng mã sẽ là *filename*, mặc định là ``'<input>'``.  "
+"Trả về ``None`` nếu *source* là mã Python hợp lệ *not* nhưng là tiền tố của "
+"mã Python hợp lệ."
+
+#: ../../library/codeop.rst:41
+#, fuzzy
+msgid ""
+"If there is a problem with *source*, an exception will be raised. "
+":exc:`SyntaxError` is raised if there is invalid Python syntax, and "
+":exc:`OverflowError` or :exc:`ValueError` if there is an invalid literal."
+msgstr ""
+"Nếu có vấn đề với *source*, một ngoại lệ sẽ được đưa ra. :exc:`SyntaxError` "
+"được nâng lên nếu có cú pháp Python không hợp lệ và :exc:`OverflowError` "
+"hoặc :exc:`ValueError` nếu có một chữ không hợp lệ."
+
+#: ../../library/codeop.rst:45
+#, fuzzy
+msgid ""
+"The *symbol* argument determines whether *source* is compiled as a statement"
+" (``'single'``, the default), as a sequence of :term:`statement` "
+"(``'exec'``) or as an :term:`expression` (``'eval'``).  Any other value will"
+" cause :exc:`ValueError` to be raised."
+msgstr ""
+"Đối số *symbol* xác định xem *source* được biên dịch dưới dạng câu lệnh "
+"(``'single'``, mặc định), dưới dạng một chuỗi :term:`statement` (``'exec'``)"
+" hay dưới dạng :term:`expression` (``'eval'``).  Bất kỳ giá trị nào khác sẽ "
+"khiến :exc:`ValueError` được nâng lên."
+
+#: ../../library/codeop.rst:52
+#, fuzzy
+msgid ""
+"It is possible (but not likely) that the parser stops parsing with a "
+"successful outcome before reaching the end of the source; in this case, "
+"trailing symbols may be ignored instead of causing an error.  For example, a"
+" backslash followed by two newlines may be followed by arbitrary garbage. "
+"This will be fixed once the API for the parser is better."
+msgstr ""
+"Có thể (nhưng không có khả năng) trình phân tích cú pháp dừng phân tích cú "
+"pháp với kết quả thành công trước khi đến cuối nguồn; trong trường hợp này, "
+"các ký hiệu ở cuối có thể bị bỏ qua thay vì gây ra lỗi.  Ví dụ: dấu gạch "
+"chéo ngược theo sau là hai dòng mới có thể được theo sau bởi rác tùy ý. Điều"
+" này sẽ được khắc phục khi API cho trình phân tích cú pháp tốt hơn."
+
+#: ../../library/codeop.rst:61
+#, fuzzy
+msgid ""
+"Instances of this class have :meth:`~object.__call__` methods identical in "
+"signature to the built-in function :func:`compile`, but with the difference "
+"that if the instance compiles program text containing a :mod:`__future__` "
+"statement, the instance 'remembers' and compiles all subsequent program "
+"texts with the statement in force."
+msgstr ""
+"Các phiên bản của lớp này có các phương thức :meth:`~object.__call__` giống "
+"hệt về chữ ký với hàm dựng sẵn :func:`compile`, nhưng có điểm khác biệt là "
+"nếu phiên bản biên dịch văn bản chương trình có chứa câu lệnh "
+":mod:`__future__` thì phiên bản đó sẽ 'ghi nhớ' và biên dịch tất cả các văn "
+"bản chương trình tiếp theo có câu lệnh có hiệu lực."
+
+#: ../../library/codeop.rst:70
+#, fuzzy
+msgid ""
+"Instances of this class have :meth:`~object.__call__` methods identical in "
+"signature to :func:`compile_command`; the difference is that if the instance"
+" compiles program text containing a :mod:`__future__` statement, the "
+"instance 'remembers' and compiles all subsequent program texts with the "
+"statement in force."
+msgstr ""
+"Các phiên bản của lớp này có các phương thức :meth:`~object.__call__` giống "
+"hệt với :func:`compile_command`; điểm khác biệt là nếu phiên bản biên dịch "
+"văn bản chương trình có chứa câu lệnh :mod:`__future__`, thì phiên bản đó sẽ"
+" 'ghi nhớ' và biên dịch tất cả văn bản chương trình tiếp theo có câu lệnh có"
+" hiệu lực."

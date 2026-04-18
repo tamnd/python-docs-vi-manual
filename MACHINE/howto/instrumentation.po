@@ -1,0 +1,1055 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/instrumentation.rst:7
+#, fuzzy
+msgid "Instrumenting CPython with DTrace and SystemTap"
+msgstr "Thiết bị CPython với DTrace và SystemTap"
+
+#: ../../howto/instrumentation.rst
+#, fuzzy
+msgid "author"
+msgstr "tác giả"
+
+#: ../../howto/instrumentation.rst:9
+#, fuzzy
+msgid "David Malcolm"
+msgstr "David Malcolm"
+
+#: ../../howto/instrumentation.rst:10
+#, fuzzy
+msgid "Łukasz Langa"
+msgstr "Łukasz Langa"
+
+#: ../../howto/instrumentation.rst:12
+#, fuzzy
+msgid ""
+"DTrace and SystemTap are monitoring tools, each providing a way to inspect "
+"what the processes on a computer system are doing.  They both use domain-"
+"specific languages allowing a user to write scripts which:"
+msgstr ""
+"DTrace và SystemTap là các công cụ giám sát, mỗi công cụ cung cấp một cách "
+"để kiểm tra xem các quy trình trên hệ thống máy tính đang thực hiện những "
+"gì.  Cả hai đều sử dụng ngôn ngữ dành riêng cho miền cho phép người dùng "
+"viết các tập lệnh:"
+
+#: ../../howto/instrumentation.rst:16
+#, fuzzy
+msgid "filter which processes are to be observed"
+msgstr "lọc các quy trình sẽ được quan sát"
+
+#: ../../howto/instrumentation.rst:17
+#, fuzzy
+msgid "gather data from the processes of interest"
+msgstr "thu thập dữ liệu từ các quá trình quan tâm"
+
+#: ../../howto/instrumentation.rst:18
+#, fuzzy
+msgid "generate reports on the data"
+msgstr "tạo báo cáo về dữ liệu"
+
+#: ../../howto/instrumentation.rst:20
+#, fuzzy
+msgid ""
+"As of Python 3.6, CPython can be built with embedded \"markers\", also known"
+" as \"probes\", that can be observed by a DTrace or SystemTap script, making"
+" it easier to monitor what the CPython processes on a system are doing."
+msgstr ""
+"Kể từ Python 3.6, CPython có thể được xây dựng bằng các \"điểm đánh dấu\" "
+"nhúng, còn được gọi là \"đầu dò\", có thể được quan sát bằng tập lệnh DTrace"
+" hoặc SystemTap, giúp giám sát những gì quy trình CPython trên hệ thống đang"
+" thực hiện dễ dàng hơn."
+
+#: ../../howto/instrumentation.rst:27
+#, fuzzy
+msgid ""
+"DTrace markers are implementation details of the CPython interpreter. No "
+"guarantees are made about probe compatibility between versions of CPython. "
+"DTrace scripts can stop working or work incorrectly without warning when "
+"changing CPython versions."
+msgstr ""
+"Điểm đánh dấu DTrace là chi tiết triển khai của trình thông dịch CPython. "
+"Không có đảm bảo nào được đưa ra về khả năng tương thích của đầu dò giữa các"
+" phiên bản CPython. Các tập lệnh DTrace có thể ngừng hoạt động hoặc hoạt "
+"động không chính xác mà không có cảnh báo khi thay đổi phiên bản CPython."
+
+#: ../../howto/instrumentation.rst:34
+#, fuzzy
+msgid "Enabling the static markers"
+msgstr "Kích hoạt các điểm đánh dấu tĩnh"
+
+#: ../../howto/instrumentation.rst:36
+#, fuzzy
+msgid ""
+"macOS comes with built-in support for DTrace.  On Linux, in order to build "
+"CPython with the embedded markers for SystemTap, the SystemTap development "
+"tools must be installed."
+msgstr ""
+"macOS có hỗ trợ tích hợp sẵn cho DTrace.  Trên Linux, để xây dựng CPython "
+"với các điểm đánh dấu được nhúng cho SystemTap, bạn phải cài đặt các công cụ"
+" phát triển SystemTap."
+
+#: ../../howto/instrumentation.rst:40
+#, fuzzy
+msgid "On a Linux machine, this can be done via::"
+msgstr "Trên máy Linux, việc này có thể được thực hiện thông qua ::"
+
+#: ../../howto/instrumentation.rst:42
+#, fuzzy
+msgid "$ yum install systemtap-sdt-devel"
+msgstr "$ yum cài đặt systemtap-sdt-devel"
+
+#: ../../howto/instrumentation.rst:44
+#, fuzzy
+msgid "or::"
+msgstr "hoặc::"
+
+#: ../../howto/instrumentation.rst:46
+#, fuzzy
+msgid "$ sudo apt-get install systemtap-sdt-dev"
+msgstr "$ sudo apt-get cài đặt systemtap-sdt-dev"
+
+#: ../../howto/instrumentation.rst:49
+#, fuzzy
+msgid ""
+"CPython must then be :option:`configured with the --with-dtrace option "
+"<--with-dtrace>`:"
+msgstr ""
+"CPython thì phải là :option:`configured with the --with-dtrace option "
+"<--with-dtrace>`:"
+
+#: ../../howto/instrumentation.rst:52
+#, fuzzy
+msgid "checking for --with-dtrace... yes"
+msgstr "đang kiểm tra --with-dtrace... vâng"
+
+#: ../../howto/instrumentation.rst:56
+#, fuzzy
+msgid ""
+"On macOS, you can list available DTrace probes by running a Python process "
+"in the background and listing all probes made available by the Python "
+"provider::"
+msgstr ""
+"Trên macOS, bạn có thể liệt kê các đầu dò DTrace có sẵn bằng cách chạy quy "
+"trình Python ở chế độ nền và liệt kê tất cả các đầu dò do nhà cung cấp "
+"Python cung cấp::"
+
+#: ../../howto/instrumentation.rst:60
+#, fuzzy
+msgid ""
+"$ python3.6 -q &\n"
+"$ sudo dtrace -l -P python$!  # or: dtrace -l -m python3.6\n"
+"\n"
+"   ID   PROVIDER            MODULE                          FUNCTION NAME\n"
+"29564 python18035        python3.6          _PyEval_EvalFrameDefault function-entry\n"
+"29565 python18035        python3.6             dtrace_function_entry function-entry\n"
+"29566 python18035        python3.6          _PyEval_EvalFrameDefault function-return\n"
+"29567 python18035        python3.6            dtrace_function_return function-return\n"
+"29568 python18035        python3.6                           collect gc-done\n"
+"29569 python18035        python3.6                           collect gc-start\n"
+"29570 python18035        python3.6          _PyEval_EvalFrameDefault line\n"
+"29571 python18035        python3.6                 maybe_dtrace_line line"
+msgstr ""
+"$ python3.6 -q &\n"
+"$ sudo dtrace -l -P python$!  # or: dtrace -l -m python3.6\n"
+"\n"
+"   ID PROVIDER MODULE FUNCTION NAME\n"
+"29564 python18035 python3.6 _PyEval_EvalFrameDefault mục nhập hàm\n"
+"29565 python18035 python3.6 dtrace_function_entry hàm-entry\n"
+"29566 python18035 python3.6 _PyEval_EvalFrameDefault hàm trả về\n"
+"29567 python18035 python3.6 dtrace_function_return hàm-return\n"
+"29568 python18035 python3.6 thu thập gc-done\n"
+"29569 python18035 python3.6 thu thập gc-start\n"
+"29570 python18035 python3.6 _PyEval_EvalFrameDòng mặc định\n"
+"29571 python18035 python3.6 dòng may_dtrace_line"
+
+#: ../../howto/instrumentation.rst:73
+#, fuzzy
+msgid ""
+"On Linux, you can verify if the SystemTap static markers are present in the "
+"built binary by seeing if it contains a \".note.stapsdt\" section."
+msgstr ""
+"Trên Linux, bạn có thể xác minh xem các điểm đánh dấu tĩnh SystemTap có "
+"trong tệp nhị phân được xây dựng hay không bằng cách xem liệu nó có chứa "
+"phần \".note.stapsdt\" hay không."
+
+#: ../../howto/instrumentation.rst:78
+#, fuzzy
+msgid ""
+"$ readelf -S ./python | grep .note.stapsdt\n"
+"[30] .note.stapsdt        NOTE         0000000000000000 00308d78"
+msgstr ""
+"$ readelf -S ./python | grep .note.stapsdt\n"
+"[30] .note.stapsdt NOTE 00000000000000000 00308d78"
+
+#: ../../howto/instrumentation.rst:81
+#, fuzzy
+msgid ""
+"If you've built Python as a shared library (with the :option:`--enable-"
+"shared` configure option), you need to look instead within the shared "
+"library.  For example::"
+msgstr ""
+"Nếu bạn đã xây dựng Python làm thư viện dùng chung (với tùy chọn cấu hình "
+":option:`--enable-shared`), thay vào đó, bạn cần xem xét bên trong thư viện "
+"dùng chung.  Ví dụ::"
+
+#: ../../howto/instrumentation.rst:85
+#, fuzzy
+msgid ""
+"$ readelf -S libpython3.3dm.so.1.0 | grep .note.stapsdt\n"
+"[29] .note.stapsdt        NOTE         0000000000000000 00365b68"
+msgstr ""
+"$ readelf -S libpython3.3dm.so.1.0 | grep .note.stapsdt\n"
+"[29] .note.stapsdt NOTE 00000000000000000 00365b68"
+
+#: ../../howto/instrumentation.rst:88
+#, fuzzy
+msgid "Sufficiently modern readelf can print the metadata::"
+msgstr "Readelf đủ hiện đại có thể in siêu dữ liệu::"
+
+#: ../../howto/instrumentation.rst:90
+#, python-format, fuzzy
+msgid ""
+"$ readelf -n ./python\n"
+"\n"
+"Displaying notes found at file offset 0x00000254 with length 0x00000020:\n"
+"    Owner                 Data size          Description\n"
+"    GNU                  0x00000010          NT_GNU_ABI_TAG (ABI version tag)\n"
+"        OS: Linux, ABI: 2.6.32\n"
+"\n"
+"Displaying notes found at file offset 0x00000274 with length 0x00000024:\n"
+"    Owner                 Data size          Description\n"
+"    GNU                  0x00000014          NT_GNU_BUILD_ID (unique build ID bitstring)\n"
+"        Build ID: df924a2b08a7e89f6e11251d4602022977af2670\n"
+"\n"
+"Displaying notes found at file offset 0x002d6c30 with length 0x00000144:\n"
+"    Owner                 Data size          Description\n"
+"    stapsdt              0x00000031          NT_STAPSDT (SystemTap probe descriptors)\n"
+"        Provider: python\n"
+"        Name: gc__start\n"
+"        Location: 0x00000000004371c3, Base: 0x0000000000630ce2, Semaphore: 0x00000000008d6bf6\n"
+"        Arguments: -4@%ebx\n"
+"    stapsdt              0x00000030          NT_STAPSDT (SystemTap probe descriptors)\n"
+"        Provider: python\n"
+"        Name: gc__done\n"
+"        Location: 0x00000000004374e1, Base: 0x0000000000630ce2, Semaphore: 0x00000000008d6bf8\n"
+"        Arguments: -8@%rax\n"
+"    stapsdt              0x00000045          NT_STAPSDT (SystemTap probe descriptors)\n"
+"        Provider: python\n"
+"        Name: function__entry\n"
+"        Location: 0x000000000053db6c, Base: 0x0000000000630ce2, Semaphore: 0x00000000008d6be8\n"
+"        Arguments: 8@%rbp 8@%r12 -4@%eax\n"
+"    stapsdt              0x00000046          NT_STAPSDT (SystemTap probe descriptors)\n"
+"        Provider: python\n"
+"        Name: function__return\n"
+"        Location: 0x000000000053dba8, Base: 0x0000000000630ce2, Semaphore: 0x00000000008d6bea\n"
+"        Arguments: 8@%rbp 8@%r12 -4@%eax"
+msgstr ""
+"$ readelf -n ./python\n"
+"\n"
+"Hiển thị các ghi chú được tìm thấy ở tệp offset 0x00000254 với độ dài 0x00000020:\n"
+"    Kích thước dữ liệu của chủ sở hữu Mô tả\n"
+"    GNU 0x00000010 NT_GNU_ABI_TAG (thẻ phiên bản ABI)\n"
+"        Hệ điều hành: Linux, ABI: 2.6.32\n"
+"\n"
+"Hiển thị các ghi chú được tìm thấy ở tệp offset 0x00000274 với độ dài 0x00000024:\n"
+"    Kích thước dữ liệu của chủ sở hữu Mô tả\n"
+"    GNU 0x00000014 NT_GNU_BUILD_ID (chuỗi bit ID bản dựng duy nhất)\n"
+"        ID bản dựng: df924a2b08a7e89f6e11251d4602022977af2670\n"
+"\n"
+"Hiển thị các ghi chú được tìm thấy tại tệp offset 0x002d6c30 với độ dài 0x00000144:\n"
+"    Kích thước dữ liệu của chủ sở hữu Mô tả\n"
+"    stapsdt 0x00000031 NT_STAPSDT (mô tả thăm dò SystemTap)\n"
+"        Nhà cung cấp: trăn\n"
+"        Tên: gc__start\n"
+"        Vị trí: 0x00000000004371c3, Cơ sở: 0x0000000000630ce2, Semaphore: 0x00000000008d6bf6\n"
+"        Đối số: -4@%ebx\n"
+"    stapsdt 0x00000030 NT_STAPSDT (mô tả thăm dò SystemTap)\n"
+"        Nhà cung cấp: trăn\n"
+"        Tên: gc__done\n"
+"        Vị trí: 0x00000000004374e1, Cơ sở: 0x0000000000630ce2, Semaphore: 0x00000000008d6bf8\n"
+"        Đối số: -8@%rax\n"
+"    stapsdt 0x00000045 NT_STAPSDT (mô tả thăm dò SystemTap)\n"
+"        Nhà cung cấp: trăn\n"
+"        Tên: hàm__entry\n"
+"        Vị trí: 0x000000000053db6c, Cơ sở: 0x0000000000630ce2, Semaphore: 0x00000000008d6be8\n"
+"        Đối số: 8@%rbp 8@%r12 -4@%eax\n"
+"    stapsdt 0x00000046 NT_STAPSDT (mô tả thăm dò SystemTap)\n"
+"        Nhà cung cấp: trăn\n"
+"        Tên: hàm__return\n"
+"        Vị trí: 0x000000000053dba8, Cơ sở: 0x0000000000630ce2, Semaphore: 0x00000000008d6bea\n"
+"        Đối số: 8@%rbp 8@%r12 -4@%eax"
+
+#: ../../howto/instrumentation.rst:125
+#, fuzzy
+msgid ""
+"The above metadata contains information for SystemTap describing how it can "
+"patch strategically placed machine code instructions to enable the tracing "
+"hooks used by a SystemTap script."
+msgstr ""
+"Siêu dữ liệu ở trên chứa thông tin cho SystemTap mô tả cách nó có thể vá các"
+" hướng dẫn mã máy được đặt ở vị trí chiến lược để kích hoạt các móc theo dõi"
+" được sử dụng bởi tập lệnh SystemTap."
+
+#: ../../howto/instrumentation.rst:131
+#, fuzzy
+msgid "Static DTrace probes"
+msgstr "Đầu dò DTrace tĩnh"
+
+#: ../../howto/instrumentation.rst:133
+#, fuzzy
+msgid ""
+"The following example DTrace script can be used to show the call/return "
+"hierarchy of a Python script, only tracing within the invocation of a "
+"function called \"start\". In other words, import-time function invocations "
+"are not going to be listed:"
+msgstr ""
+"Tập lệnh DTrace mẫu sau đây có thể được sử dụng để hiển thị hệ thống phân "
+"cấp gọi/trả về của tập lệnh Python, chỉ theo dõi trong lệnh gọi hàm có tên "
+"\"bắt đầu\". Nói cách khác, các lệnh gọi hàm tại thời điểm nhập sẽ không "
+"được liệt kê:"
+
+#: ../../howto/instrumentation.rst:138
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"self int indent;\n"
+"\n"
+"python$target:::function-entry\n"
+"/copyinstr(arg1) == \"start\"/\n"
+"{\n"
+"        self->trace = 1;\n"
+"}\n"
+"\n"
+"python$target:::function-entry\n"
+"/self->trace/\n"
+"{\n"
+"        printf(\"%d\\t%*s:\", timestamp, 15, probename);\n"
+"        printf(\"%*s\", self->indent, \"\");\n"
+"        printf(\"%s:%s:%d\\n\", basename(copyinstr(arg0)), copyinstr(arg1), arg2);\n"
+"        self->indent++;\n"
+"}\n"
+"\n"
+"python$target:::function-return\n"
+"/self->trace/\n"
+"{\n"
+"        self->indent--;\n"
+"        printf(\"%d\\t%*s:\", timestamp, 15, probename);\n"
+"        printf(\"%*s\", self->indent, \"\");\n"
+"        printf(\"%s:%s:%d\\n\", basename(copyinstr(arg0)), copyinstr(arg1), arg2);\n"
+"}\n"
+"\n"
+"python$target:::function-return\n"
+"/copyinstr(arg1) == \"start\"/\n"
+"{\n"
+"        self->trace = 0;\n"
+"}"
+msgstr ""
+"tự thụt lề;\n"
+"\n"
+"python$target:::function-entry\n"
+"/copyinstr(arg1) == \"bắt đầu\"/\n"
+"{\n"
+"        tự-> dấu vết = 1;\n"
+"}\n"
+"\n"
+"python$target:::function-entry\n"
+"/tự->dấu vết/\n"
+"{\n"
+"        printf(\"%d\\t%*s:\", dấu thời gian, 15, tên thăm dò);\n"
+"        printf(\"%*s\", self->thụt lề, \"\");\n"
+"        printf(\"%s:%s:%d\\n\", basename(copyinstr(arg0)), copyinstr(arg1), arg2);\n"
+"        tự-> thụt lề++;\n"
+"}\n"
+"\n"
+"python$target:::function-return\n"
+"/tự->dấu vết/\n"
+"{\n"
+"        tự-> thụt lề--;\n"
+"        printf(\"%d\\t%*s:\", dấu thời gian, 15, tên thăm dò);\n"
+"        printf(\"%*s\", self->thụt lề, \"\");\n"
+"        printf(\"%s:%s:%d\\n\", basename(copyinstr(arg0)), copyinstr(arg1), arg2);\n"
+"}\n"
+"\n"
+"python$target:::function-return\n"
+"/copyinstr(arg1) == \"bắt đầu\"/\n"
+"{\n"
+"        tự->dấu vết = 0;\n"
+"}"
+
+#: ../../howto/instrumentation.rst:172 ../../howto/instrumentation.rst:230
+#, fuzzy
+msgid "It can be invoked like this::"
+msgstr "Nó có thể được gọi như thế này ::"
+
+#: ../../howto/instrumentation.rst:174
+#, fuzzy
+msgid "$ sudo dtrace -q -s call_stack.d -c \"python3.6 script.py\""
+msgstr "$ sudo dtrace -q -s call_stack.d -c \"python3.6 script.py\""
+
+#: ../../howto/instrumentation.rst:176 ../../howto/instrumentation.rst:236
+#, fuzzy
+msgid "The output looks like this:"
+msgstr "Đầu ra trông như thế này:"
+
+#: ../../howto/instrumentation.rst:178
+#, fuzzy
+msgid ""
+"156641360502280  function-entry:call_stack.py:start:23\n"
+"156641360518804  function-entry: call_stack.py:function_1:1\n"
+"156641360532797  function-entry:  call_stack.py:function_3:9\n"
+"156641360546807 function-return:  call_stack.py:function_3:10\n"
+"156641360563367 function-return: call_stack.py:function_1:2\n"
+"156641360578365  function-entry: call_stack.py:function_2:5\n"
+"156641360591757  function-entry:  call_stack.py:function_1:1\n"
+"156641360605556  function-entry:   call_stack.py:function_3:9\n"
+"156641360617482 function-return:   call_stack.py:function_3:10\n"
+"156641360629814 function-return:  call_stack.py:function_1:2\n"
+"156641360642285 function-return: call_stack.py:function_2:6\n"
+"156641360656770  function-entry: call_stack.py:function_3:9\n"
+"156641360669707 function-return: call_stack.py:function_3:10\n"
+"156641360687853  function-entry: call_stack.py:function_4:13\n"
+"156641360700719 function-return: call_stack.py:function_4:14\n"
+"156641360719640  function-entry: call_stack.py:function_5:18\n"
+"156641360732567 function-return: call_stack.py:function_5:21\n"
+"156641360747370 function-return:call_stack.py:start:28"
+msgstr ""
+"156641360502280 hàm-entry:call_stack.py:start:23\n"
+"156641360518804 mục nhập hàm: call_stack.py:function_1:1\n"
+"156641360532797 mục nhập hàm: call_stack.py:function_3:9\n"
+"156641360546807 hàm trả về: call_stack.py:function_3:10\n"
+"156641360563367 trả về hàm: call_stack.py:function_1:2\n"
+"156641360578365 mục nhập hàm: call_stack.py:function_2:5\n"
+"156641360591757 mục nhập hàm: call_stack.py:function_1:1\n"
+"156641360605556 mục nhập hàm: call_stack.py:function_3:9\n"
+"156641360617482 trả về hàm: call_stack.py:function_3:10\n"
+"156641360629814 hàm trả về: call_stack.py:function_1:2\n"
+"156641360642285 trả về hàm: call_stack.py:function_2:6\n"
+"156641360656770 mục nhập hàm: call_stack.py:function_3:9\n"
+"156641360669707 hàm trả về: call_stack.py:function_3:10\n"
+"156641360687853 mục nhập hàm: call_stack.py:function_4:13\n"
+"156641360700719 hàm trả về: call_stack.py:function_4:14\n"
+"156641360719640 mục nhập hàm: call_stack.py:function_5:18\n"
+"156641360732567 trả về hàm: call_stack.py:function_5:21\n"
+"156641360747370 hàm-return:call_stack.py:start:28"
+
+#: ../../howto/instrumentation.rst:201
+#, fuzzy
+msgid "Static SystemTap markers"
+msgstr "Điểm đánh dấu hệ thống tĩnh"
+
+#: ../../howto/instrumentation.rst:203
+#, fuzzy
+msgid ""
+"The low-level way to use the SystemTap integration is to use the static "
+"markers directly.  This requires you to explicitly state the binary file "
+"containing them."
+msgstr ""
+"Cách cấp thấp để sử dụng tích hợp SystemTap là sử dụng trực tiếp các điểm "
+"đánh dấu tĩnh.  Điều này yêu cầu bạn phải nêu rõ tệp nhị phân chứa chúng."
+
+#: ../../howto/instrumentation.rst:207
+#, fuzzy
+msgid ""
+"For example, this SystemTap script can be used to show the call/return "
+"hierarchy of a Python script:"
+msgstr ""
+"Ví dụ: tập lệnh SystemTap này có thể được sử dụng để hiển thị hệ thống phân "
+"cấp cuộc gọi/trả lại của tập lệnh Python:"
+
+#: ../../howto/instrumentation.rst:210
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"probe process(\"python\").mark(\"function__entry\") {\n"
+"     filename = user_string($arg1);\n"
+"     funcname = user_string($arg2);\n"
+"     lineno = $arg3;\n"
+"\n"
+"     printf(\"%s => %s in %s:%d\\\\n\",\n"
+"            thread_indent(1), funcname, filename, lineno);\n"
+"}\n"
+"\n"
+"probe process(\"python\").mark(\"function__return\") {\n"
+"    filename = user_string($arg1);\n"
+"    funcname = user_string($arg2);\n"
+"    lineno = $arg3;\n"
+"\n"
+"    printf(\"%s <= %s in %s:%d\\\\n\",\n"
+"           thread_indent(-1), funcname, filename, lineno);\n"
+"}"
+msgstr ""
+"quá trình thăm dò (\"python\"). mark (\"function__entry\") {\n"
+"     tên tệp = user_string($arg1);\n"
+"     funcname = user_string($arg2);\n"
+"     lineno = $arg3;\n"
+"\n"
+"     printf(\"%s => %s trong %s:%d\\\\n\",\n"
+"            thread_indent(1), funcname, filename, lineno);\n"
+"}\n"
+"\n"
+"quá trình thăm dò (\"python\"). mark (\"function__return\") {\n"
+"    tên tệp = user_string($arg1);\n"
+"    funcname = user_string($arg2);\n"
+"    lineno = $arg3;\n"
+"\n"
+"    printf(\"%s <= %s in %s:%d\\\\n\",\n"
+"           thread_indent(-1), funcname, filename, lineno);\n"
+"}"
+
+#: ../../howto/instrumentation.rst:232
+#, fuzzy
+msgid ""
+"$ stap \\\n"
+"  show-call-hierarchy.stp \\\n"
+"  -c \"./python test.py\""
+msgstr ""
+"$ dừng lại \\\n"
+"  show-call-hierarchy.stp \\\n"
+"  -c \"./python test.py\""
+
+#: ../../howto/instrumentation.rst:238
+#, fuzzy
+msgid ""
+"11408 python(8274):        => __contains__ in Lib/_abcoll.py:362\n"
+"11414 python(8274):         => __getitem__ in Lib/os.py:425\n"
+"11418 python(8274):          => encode in Lib/os.py:490\n"
+"11424 python(8274):          <= encode in Lib/os.py:493\n"
+"11428 python(8274):         <= __getitem__ in Lib/os.py:426\n"
+"11433 python(8274):        <= __contains__ in Lib/_abcoll.py:366"
+msgstr ""
+"11408 python(8274): => __contains__ trong Lib/_abcoll.py:362\n"
+"11414 trăn(8274): => __getitem__ trong Lib/os.py:425\n"
+"11418 python(8274): => mã hóa trong Lib/os.py:490\n"
+"11424 python(8274): <= mã hóa trong Lib/os.py:493\n"
+"11428 trăn (8274): <= __getitem__ trong Lib/os.py:426\n"
+"11433 trăn (8274): <= __contains__ trong Lib/_abcoll.py:366"
+
+#: ../../howto/instrumentation.rst:247
+#, fuzzy
+msgid "where the columns are:"
+msgstr "nơi các cột ở:"
+
+#: ../../howto/instrumentation.rst:249
+#, fuzzy
+msgid "time in microseconds since start of script"
+msgstr "thời gian tính bằng micro giây kể từ khi bắt đầu tập lệnh"
+
+#: ../../howto/instrumentation.rst:250
+#, fuzzy
+msgid "name of executable"
+msgstr "tên thực thi"
+
+#: ../../howto/instrumentation.rst:251
+#, fuzzy
+msgid "PID of process"
+msgstr "PID của quá trình"
+
+#: ../../howto/instrumentation.rst:253
+#, fuzzy
+msgid ""
+"and the remainder indicates the call/return hierarchy as the script "
+"executes."
+msgstr ""
+"và phần còn lại biểu thị hệ thống phân cấp cuộc gọi/trả lại khi tập lệnh "
+"thực thi."
+
+#: ../../howto/instrumentation.rst:255
+#, fuzzy
+msgid ""
+"For a :option:`--enable-shared` build of CPython, the markers are contained "
+"within the libpython shared library, and the probe's dotted path needs to "
+"reflect this. For example, this line from the above example:"
+msgstr ""
+"Đối với bản dựng CPython :option:`--enable-shared`, các điểm đánh dấu được "
+"chứa trong thư viện chia sẻ libpython và đường dẫn chấm của đầu dò cần phản "
+"ánh điều này. Ví dụ: dòng này từ ví dụ trên:"
+
+#: ../../howto/instrumentation.rst:259
+#, fuzzy
+msgid "probe process(\"python\").mark(\"function__entry\") {"
+msgstr "quá trình thăm dò (\"python\"). mark (\"function__entry\") {"
+
+#: ../../howto/instrumentation.rst:263
+#, fuzzy
+msgid "should instead read:"
+msgstr "thay vào đó nên đọc:"
+
+#: ../../howto/instrumentation.rst:265
+#, fuzzy
+msgid ""
+"probe "
+"process(\"python\").library(\"libpython3.6dm.so.1.0\").mark(\"function__entry\")"
+" {"
+msgstr ""
+"quá trình thăm dò (\"python\"). thư viện (\"libpython3.6dm.so.1.0\").mark "
+"(\"function__entry\") {"
+
+#: ../../howto/instrumentation.rst:269
+#, fuzzy
+msgid "(assuming a :ref:`debug build <debug-build>` of CPython 3.6)"
+msgstr "(giả sử :ref:`debug build <debug-build>` của CPython 3.6)"
+
+#: ../../howto/instrumentation.rst:275
+#, fuzzy
+msgid "Available static markers"
+msgstr "Điểm đánh dấu tĩnh có sẵn"
+
+#: ../../howto/instrumentation.rst:279
+#, fuzzy
+msgid ""
+"This marker indicates that execution of a Python function has begun. It is "
+"only triggered for pure-Python (bytecode) functions."
+msgstr ""
+"Điểm đánh dấu này cho biết rằng việc thực thi hàm Python đã bắt đầu. Nó chỉ "
+"được kích hoạt cho các hàm thuần Python (mã byte)."
+
+#: ../../howto/instrumentation.rst:282
+#, fuzzy
+msgid ""
+"The filename, function name, and line number are provided back to the "
+"tracing script as positional arguments, which must be accessed using "
+"``$arg1``, ``$arg2``, ``$arg3``:"
+msgstr ""
+"Tên tệp, tên hàm và số dòng được cung cấp trở lại tập lệnh theo dõi dưới "
+"dạng đối số vị trí, phải được truy cập bằng ``$arg1``, ``$arg2``, ``$arg3``:"
+
+#: ../../howto/instrumentation.rst:286
+#, fuzzy
+msgid ""
+"``$arg1`` : ``(const char *)`` filename, accessible using "
+"``user_string($arg1)``"
+msgstr ""
+"``$arg1`` : tên tệp ``(const char *)``, có thể truy cập bằng "
+"``user_string($arg1)``"
+
+#: ../../howto/instrumentation.rst:288
+#, fuzzy
+msgid ""
+"``$arg2`` : ``(const char *)`` function name, accessible using "
+"``user_string($arg2)``"
+msgstr ""
+"``$arg2`` : tên hàm ``(const char *)``, có thể truy cập bằng "
+"``user_string($arg2)``"
+
+#: ../../howto/instrumentation.rst:291
+#, fuzzy
+msgid "``$arg3`` : ``int`` line number"
+msgstr "``$arg3`` : số dòng ``int``"
+
+#: ../../howto/instrumentation.rst:295
+#, fuzzy
+msgid ""
+"This marker is the converse of :c:func:`!function__entry`, and indicates "
+"that execution of a Python function has ended (either via ``return``, or via"
+" an exception).  It is only triggered for pure-Python (bytecode) functions."
+msgstr ""
+"Điểm đánh dấu này là điểm đảo ngược của :c:func:`!function__entry` và cho "
+"biết rằng việc thực thi hàm Python đã kết thúc (thông qua ``return`` hoặc "
+"thông qua một ngoại lệ).  Nó chỉ được kích hoạt cho các hàm thuần Python (mã"
+" byte)."
+
+#: ../../howto/instrumentation.rst:299
+#, fuzzy
+msgid "The arguments are the same as for :c:func:`!function__entry`"
+msgstr "Các đối số giống như đối với :c:func:`!function__entry`"
+
+#: ../../howto/instrumentation.rst:303
+#, fuzzy
+msgid ""
+"This marker indicates a Python line is about to be executed.  It is the "
+"equivalent of line-by-line tracing with a Python profiler.  It is not "
+"triggered within C functions."
+msgstr ""
+"Điểm đánh dấu này cho biết một dòng Python sắp được thực thi.  Nó tương "
+"đương với việc theo dõi từng dòng một bằng trình lược tả Python.  Nó không "
+"được kích hoạt trong các hàm C."
+
+#: ../../howto/instrumentation.rst:307
+#, fuzzy
+msgid "The arguments are the same as for :c:func:`!function__entry`."
+msgstr "Các đối số giống như đối với :c:func:`!function__entry`."
+
+#: ../../howto/instrumentation.rst:311
+#, fuzzy
+msgid ""
+"Fires when the Python interpreter starts a garbage collection cycle. "
+"``arg0`` is the generation to scan, like :func:`gc.collect`."
+msgstr ""
+"Kích hoạt khi trình thông dịch Python bắt đầu chu trình thu gom rác. "
+"``arg0`` là thế hệ quét, giống như :func:`gc.collect`."
+
+#: ../../howto/instrumentation.rst:316
+#, fuzzy
+msgid ""
+"Fires when the Python interpreter finishes a garbage collection cycle. "
+"``arg0`` is the number of collected objects."
+msgstr ""
+"Kích hoạt khi trình thông dịch Python kết thúc chu trình thu gom rác. "
+"``arg0`` là số lượng đồ vật được thu thập."
+
+#: ../../howto/instrumentation.rst:321
+#, fuzzy
+msgid ""
+"Fires before :mod:`importlib` attempts to find and load the module. ``arg0``"
+" is the module name."
+msgstr ""
+"Kích hoạt trước khi :mod:`importlib` cố gắng tìm và tải mô-đun. ``arg0`` là "
+"tên mô-đun."
+
+#: ../../howto/instrumentation.rst:328
+#, fuzzy
+msgid ""
+"Fires after :mod:`importlib`'s find_and_load function is called. ``arg0`` is"
+" the module name, ``arg1`` indicates if module was successfully loaded."
+msgstr ""
+"Kích hoạt sau khi hàm find_and_load của :mod:`importlib` được gọi. ``arg0`` "
+"là tên mô-đun, ``arg1`` cho biết mô-đun đã được tải thành công hay chưa."
+
+#: ../../howto/instrumentation.rst:337
+#, fuzzy
+msgid ""
+"Fires when :func:`sys.audit` or :c:func:`PySys_Audit` is called. ``arg0`` is"
+" the event name as C string, ``arg1`` is a :c:type:`PyObject` pointer to a "
+"tuple object."
+msgstr ""
+"Kích hoạt khi :func:`sys.audit` hoặc :c:func:`PySys_Audit` được gọi. "
+"``arg0`` là tên sự kiện dưới dạng chuỗi C, ``arg1`` là con trỏ "
+":c:type:`PyObject` tới một đối tượng tuple."
+
+#: ../../howto/instrumentation.rst:345
+#, fuzzy
+msgid "C Entry Points"
+msgstr "Điểm vào C"
+
+#: ../../howto/instrumentation.rst:347
+#, fuzzy
+msgid ""
+"To simplify triggering of DTrace markers, Python's C API comes with a number"
+" of helper functions that mirror each static marker. On builds of Python "
+"without DTrace enabled, these do nothing."
+msgstr ""
+"Để đơn giản hóa việc kích hoạt các điểm đánh dấu DTrace, C API của Python đi"
+" kèm với một số hàm trợ giúp phản ánh từng điểm đánh dấu tĩnh. Trên các bản "
+"dựng Python không kích hoạt DTrace, những bản dựng này không có tác dụng gì."
+
+#: ../../howto/instrumentation.rst:351
+#, fuzzy
+msgid ""
+"In general, it is not necessary to call these yourself, as Python will do it"
+" for you."
+msgstr ""
+"Nói chung, bạn không cần phải tự mình gọi những thứ này vì Python sẽ làm "
+"việc đó cho bạn."
+
+#: ../../howto/instrumentation.rst:358
+#, fuzzy
+msgid "C API Function"
+msgstr "Chức năng C API"
+
+#: ../../howto/instrumentation.rst:359
+#, fuzzy
+msgid "Static Marker"
+msgstr "Điểm đánh dấu tĩnh"
+
+#: ../../howto/instrumentation.rst:360
+#, fuzzy
+msgid "Notes"
+msgstr "Ghi chú"
+
+#: ../../howto/instrumentation.rst:362
+#, fuzzy
+msgid ":c:func:`!line`"
+msgstr ":c:func:`!line`"
+
+#: ../../howto/instrumentation.rst:365
+#, fuzzy
+msgid ":c:func:`!function__entry`"
+msgstr ":c:func:`!function__entry`"
+
+#: ../../howto/instrumentation.rst:368
+#, fuzzy
+msgid ":c:func:`!function__return`"
+msgstr ":c:func:`!function__return`"
+
+#: ../../howto/instrumentation.rst:371
+#, fuzzy
+msgid ":c:func:`!gc__start`"
+msgstr ":c:func:`!gc__start`"
+
+#: ../../howto/instrumentation.rst:374
+#, fuzzy
+msgid ":c:func:`!gc__done`"
+msgstr ":c:func:`!gc__done`"
+
+#: ../../howto/instrumentation.rst:377
+#, fuzzy
+msgid ":c:func:`!instance__new__start`"
+msgstr ":c:func:`!instance__new__start`"
+
+#: ../../howto/instrumentation.rst:378 ../../howto/instrumentation.rst:381
+#: ../../howto/instrumentation.rst:384 ../../howto/instrumentation.rst:387
+#, fuzzy
+msgid "Not used by Python"
+msgstr "Không được Python sử dụng"
+
+#: ../../howto/instrumentation.rst:380
+#, fuzzy
+msgid ":c:func:`!instance__new__done`"
+msgstr ":c:func:`!instance__new__done`"
+
+#: ../../howto/instrumentation.rst:383
+#, fuzzy
+msgid ":c:func:`!instance__delete__start`"
+msgstr ":c:func:`!instance__delete__start`"
+
+#: ../../howto/instrumentation.rst:386
+#, fuzzy
+msgid ":c:func:`!instance__delete__done`"
+msgstr ":c:func:`!instance__delete__done`"
+
+#: ../../howto/instrumentation.rst:389
+#, fuzzy
+msgid ":c:func:`!import__find__load__start`"
+msgstr ":c:func:`!import__find__load__start`"
+
+#: ../../howto/instrumentation.rst:392
+#, fuzzy
+msgid ":c:func:`!import__find__load__done`"
+msgstr ":c:func:`!import__find__load__done`"
+
+#: ../../howto/instrumentation.rst:395
+#, fuzzy
+msgid ":c:func:`!audit`"
+msgstr ":c:func:`!audit`"
+
+#: ../../howto/instrumentation.rst:400
+#, fuzzy
+msgid "C Probing Checks"
+msgstr "C Kiểm tra thăm dò"
+
+#: ../../howto/instrumentation.rst:415
+#, fuzzy
+msgid ""
+"All calls to ``PyDTrace`` functions must be guarded by a call to one of "
+"these functions. This allows Python to minimize performance impact when "
+"probing is disabled."
+msgstr ""
+"Tất cả các lệnh gọi đến hàm ``PyDTrace`` phải được bảo vệ bằng lệnh gọi đến "
+"một trong các hàm này. Điều này cho phép Python giảm thiểu tác động đến hiệu"
+" suất khi việc thăm dò bị vô hiệu hóa."
+
+#: ../../howto/instrumentation.rst:419
+#, fuzzy
+msgid ""
+"On builds without DTrace enabled, these functions do nothing and return "
+"``0``."
+msgstr ""
+"Trên các bản dựng không bật DTrace, các hàm này không làm gì và trả về "
+"``0``."
+
+#: ../../howto/instrumentation.rst:423
+#, fuzzy
+msgid "SystemTap Tapsets"
+msgstr "Bộ vòi SystemTap"
+
+#: ../../howto/instrumentation.rst:425
+#, fuzzy
+msgid ""
+"The higher-level way to use the SystemTap integration is to use a "
+"\"tapset\": SystemTap's equivalent of a library, which hides some of the "
+"lower-level details of the static markers."
+msgstr ""
+"Cách cấp cao hơn để sử dụng tích hợp SystemTap là sử dụng \"tapset\": Thư "
+"viện tương đương của SystemTap, thư viện này ẩn một số chi tiết cấp thấp hơn"
+" của điểm đánh dấu tĩnh."
+
+#: ../../howto/instrumentation.rst:429
+#, fuzzy
+msgid "Here is a tapset file, based on a non-shared build of CPython:"
+msgstr "Đây là tệp tapset, dựa trên bản dựng CPython không được chia sẻ:"
+
+#: ../../howto/instrumentation.rst:431
+#, python-brace-format, fuzzy
+msgid ""
+"/*\n"
+"   Provide a higher-level wrapping around the function__entry and\n"
+"   function__return markers:\n"
+" \\*/\n"
+"probe python.function.entry = process(\"python\").mark(\"function__entry\")\n"
+"{\n"
+"    filename = user_string($arg1);\n"
+"    funcname = user_string($arg2);\n"
+"    lineno = $arg3;\n"
+"    frameptr = $arg4\n"
+"}\n"
+"probe python.function.return = process(\"python\").mark(\"function__return\")\n"
+"{\n"
+"    filename = user_string($arg1);\n"
+"    funcname = user_string($arg2);\n"
+"    lineno = $arg3;\n"
+"    frameptr = $arg4\n"
+"}"
+msgstr ""
+"/*\n"
+"   Cung cấp gói cấp độ cao hơn xung quanh hàm__entry và\n"
+"   chức năng__điểm đánh dấu trả về:\n"
+" \\*/\n"
+"thăm dò python.function.entry = process(\"python\").mark(\"function__entry\")\n"
+"{\n"
+"    tên tệp = user_string($arg1);\n"
+"    funcname = user_string($arg2);\n"
+"    lineno = $arg3;\n"
+"    khungptr = $arg4\n"
+"}\n"
+"thăm dò python.function.return = process(\"python\").mark(\"function__return\")\n"
+"{\n"
+"    tên tệp = user_string($arg1);\n"
+"    funcname = user_string($arg2);\n"
+"    lineno = $arg3;\n"
+"    khungptr = $arg4\n"
+"}"
+
+#: ../../howto/instrumentation.rst:452
+#, fuzzy
+msgid ""
+"If this file is installed in SystemTap's tapset directory (e.g. "
+"``/usr/share/systemtap/tapset``), then these additional probepoints become "
+"available:"
+msgstr ""
+"Nếu tệp này được cài đặt trong thư mục tapset của SystemTap (ví dụ: "
+"``/usr/share/systemtap/tapset``), thì các điểm thăm dò bổ sung này sẽ khả "
+"dụng:"
+
+#: ../../howto/instrumentation.rst:458
+#, fuzzy
+msgid ""
+"This probe point indicates that execution of a Python function has begun. It"
+" is only triggered for pure-Python (bytecode) functions."
+msgstr ""
+"Điểm thăm dò này cho biết rằng việc thực thi hàm Python đã bắt đầu. Nó chỉ "
+"được kích hoạt cho các hàm thuần Python (mã byte)."
+
+#: ../../howto/instrumentation.rst:463
+#, fuzzy
+msgid ""
+"This probe point is the converse of ``python.function.return``, and "
+"indicates that execution of a Python function has ended (either via "
+"``return``, or via an exception).  It is only triggered for pure-Python "
+"(bytecode) functions."
+msgstr ""
+"Điểm thăm dò này là điểm đảo ngược của ``python.function.return`` và cho "
+"biết rằng việc thực thi hàm Python đã kết thúc (thông qua ``return`` hoặc "
+"thông qua một ngoại lệ).  Nó chỉ được kích hoạt cho các hàm thuần Python (mã"
+" byte)."
+
+#: ../../howto/instrumentation.rst:470
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../howto/instrumentation.rst:471
+#, fuzzy
+msgid ""
+"This SystemTap script uses the tapset above to more cleanly implement the "
+"example given above of tracing the Python function-call hierarchy, without "
+"needing to directly name the static markers:"
+msgstr ""
+"Tập lệnh SystemTap này sử dụng tapset ở trên để triển khai rõ ràng hơn ví dụ"
+" được đưa ra ở trên về việc theo dõi hệ thống phân cấp lệnh gọi hàm Python "
+"mà không cần đặt tên trực tiếp cho các điểm đánh dấu tĩnh:"
+
+#: ../../howto/instrumentation.rst:475
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"probe python.function.entry\n"
+"{\n"
+"  printf(\"%s => %s in %s:%d\\n\",\n"
+"         thread_indent(1), funcname, filename, lineno);\n"
+"}\n"
+"\n"
+"probe python.function.return\n"
+"{\n"
+"  printf(\"%s <= %s in %s:%d\\n\",\n"
+"         thread_indent(-1), funcname, filename, lineno);\n"
+"}"
+msgstr ""
+"thăm dò python.function.entry\n"
+"{\n"
+"  printf(\"%s => %s trong %s:%d\\n\",\n"
+"         thread_indent(1), funcname, filename, lineno);\n"
+"}\n"
+"\n"
+"thăm dò python.function.return\n"
+"{\n"
+"  printf(\"%s <= %s in %s:%d\\n\",\n"
+"         thread_indent(-1), funcname, filename, lineno);\n"
+"}"
+
+#: ../../howto/instrumentation.rst:490
+#, fuzzy
+msgid ""
+"The following script uses the tapset above to provide a top-like view of all"
+" running CPython code, showing the top 20 most frequently entered bytecode "
+"frames, each second, across the whole system:"
+msgstr ""
+"Tập lệnh sau sử dụng tapset ở trên để cung cấp chế độ xem giống như trên "
+"cùng của tất cả mã CPython đang chạy, hiển thị 20 khung mã byte được nhập "
+"thường xuyên nhất, mỗi giây, trên toàn bộ hệ thống:"
+
+#: ../../howto/instrumentation.rst:494
+#, python-format, fuzzy
+msgid ""
+"global fn_calls;\n"
+"\n"
+"probe python.function.entry\n"
+"{\n"
+"    fn_calls[pid(), filename, funcname, lineno] += 1;\n"
+"}\n"
+"\n"
+"probe timer.ms(1000) {\n"
+"    printf(\"\\033[2J\\033[1;1H\") /* clear screen \\*/\n"
+"    printf(\"%6s %80s %6s %30s %6s\\n\",\n"
+"           \"PID\", \"FILENAME\", \"LINE\", \"FUNCTION\", \"CALLS\")\n"
+"    foreach ([pid, filename, funcname, lineno] in fn_calls- limit 20) {\n"
+"        printf(\"%6d %80s %6d %30s %6d\\n\",\n"
+"            pid, filename, lineno, funcname,\n"
+"            fn_calls[pid, filename, funcname, lineno]);\n"
+"    }\n"
+"    delete fn_calls;\n"
+"}"
+msgstr ""
+"fn_calls toàn cầu;\n"
+"\n"
+"thăm dò python.function.entry\n"
+"{\n"
+"    fn_calls[pid(), tên tệp, funcname, lineno] += 1;\n"
+"}\n"
+"\n"
+"thăm dò bộ đếm thời gian.ms(1000) {\n"
+"    printf(\"\\033[2J\\033[1;1H\") /* xóa màn hình \\*/\n"
+"    printf(\"%6s %80s %6s %30s %6s\\n\",\n"
+"           \"PID\", \"FILENAME\", \"LINE\", \"FUNCTION\", \"CALLS\")\n"
+"    foreach ([pid, filename, funcname, lineno] trong fn_calls- limit 20) {\n"
+"        printf(\"%6d %80s %6d %30s %6d\\n\",\n"
+"            pid, tên tệp, lineno, funcname,\n"
+"            fn_calls[pid, tên tệp, funcname, lineno]);\n"
+"    }\n"
+"    xóa fn_calls;\n"
+"}"

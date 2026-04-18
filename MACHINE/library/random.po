@@ -1,0 +1,1638 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/random.rst:2
+#, fuzzy
+msgid ":mod:`!random` --- Generate pseudo-random numbers"
+msgstr ":mod:`!random` --- Tạo số giả ngẫu nhiên"
+
+#: ../../library/random.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/random.py`"
+msgstr "**Source code:** :source:`Lib/random.py`"
+
+#: ../../library/random.rst:11
+#, fuzzy
+msgid ""
+"This module implements pseudo-random number generators for various "
+"distributions."
+msgstr ""
+"Mô-đun này triển khai các trình tạo số giả ngẫu nhiên cho các phân phối khác"
+" nhau."
+
+#: ../../library/random.rst:14
+#, fuzzy
+msgid ""
+"For integers, there is uniform selection from a range. For sequences, there "
+"is uniform selection of a random element, a function to generate a random "
+"permutation of a list in-place, and a function for random sampling without "
+"replacement."
+msgstr ""
+"Đối với số nguyên, có sự lựa chọn thống nhất từ một phạm vi. Đối với các "
+"chuỗi, có sự lựa chọn thống nhất một phần tử ngẫu nhiên, một hàm tạo ra hoán"
+" vị ngẫu nhiên của một danh sách tại chỗ và một hàm lấy mẫu ngẫu nhiên mà "
+"không cần thay thế."
+
+#: ../../library/random.rst:19
+#, fuzzy
+msgid ""
+"On the real line, there are functions to compute uniform, normal (Gaussian),"
+" lognormal, negative exponential, gamma, and beta distributions. For "
+"generating distributions of angles, the von Mises distribution is available."
+msgstr ""
+"Trên dòng thực, có các hàm để tính toán các phân phối đồng nhất, bình thường"
+" (Gaussian), logic chuẩn, hàm mũ âm, gamma và beta. Để tạo ra sự phân bố các"
+" góc, có thể sử dụng phân bố von Mises."
+
+#: ../../library/random.rst:23
+#, fuzzy
+msgid ""
+"Almost all module functions depend on the basic function :func:`.random`, "
+"which generates a random float uniformly in the half-open range ``0.0 <= X <"
+" 1.0``. Python uses the Mersenne Twister as the core generator.  It produces"
+" 53-bit precision floats and has a period of 2\\*\\*19937-1.  The underlying"
+" implementation in C is both fast and threadsafe.  The Mersenne Twister is "
+"one of the most extensively tested random number generators in existence.  "
+"However, being completely deterministic, it is not suitable for all "
+"purposes, and is completely unsuitable for cryptographic purposes."
+msgstr ""
+"Hầu hết tất cả các chức năng mô-đun đều phụ thuộc vào chức năng cơ bản "
+":func:`.random`, chức năng này tạo ra sự nổi ngẫu nhiên thống nhất trong "
+"phạm vi nửa mở ``0.0 <= X < 1.0``. Python sử dụng Mersenne Twister làm trình"
+" tạo lõi.  Nó tạo ra các số float chính xác 53 bit và có chu kỳ "
+"2\\*\\*19937-1.  Việc triển khai cơ bản trong C vừa nhanh vừa an toàn theo "
+"luồng.  Mersenne Twister là một trong những máy tạo số ngẫu nhiên được thử "
+"nghiệm rộng rãi nhất hiện nay.  Tuy nhiên, hoàn toàn mang tính xác định nên "
+"nó không phù hợp cho mọi mục đích và hoàn toàn không phù hợp cho mục đích mã"
+" hóa."
+
+#: ../../library/random.rst:32
+#, fuzzy
+msgid ""
+"The functions supplied by this module are actually bound methods of a hidden"
+" instance of the :class:`random.Random` class.  You can instantiate your own"
+" instances of :class:`Random` to get generators that don't share state."
+msgstr ""
+"Các hàm do mô-đun này cung cấp thực chất là các phương thức được liên kết "
+"của một phiên bản ẩn của lớp :class:`random.Random`.  Bạn có thể khởi tạo "
+"các phiên bản :class:`Random` của riêng mình để có được các trình tạo không "
+"chia sẻ trạng thái."
+
+#: ../../library/random.rst:36
+#, fuzzy
+msgid ""
+"Class :class:`Random` can also be subclassed if you want to use a different "
+"basic generator of your own devising: see the documentation on that class "
+"for more details."
+msgstr ""
+"Lớp :class:`Random` cũng có thể được phân lớp nếu bạn muốn sử dụng một trình"
+" tạo cơ bản khác do chính bạn nghĩ ra: xem tài liệu về lớp đó để biết thêm "
+"chi tiết."
+
+#: ../../library/random.rst:40
+#, fuzzy
+msgid ""
+"The :mod:`!random` module also provides the :class:`SystemRandom` class "
+"which uses the system function :func:`os.urandom` to generate random numbers"
+" from sources provided by the operating system."
+msgstr ""
+"Mô-đun :mod:`!random` cũng cung cấp lớp :class:`SystemRandom` sử dụng hàm hệ"
+" thống :func:`os.urandom` để tạo các số ngẫu nhiên từ các nguồn do hệ điều "
+"hành cung cấp."
+
+#: ../../library/random.rst:46
+#, fuzzy
+msgid ""
+"The pseudo-random generators of this module should not be used for security "
+"purposes.  For security or cryptographic uses, see the :mod:`secrets` "
+"module."
+msgstr ""
+"Không nên sử dụng trình tạo giả ngẫu nhiên của mô-đun này cho mục đích bảo "
+"mật.  Để biết cách sử dụng bảo mật hoặc mật mã, hãy xem mô-đun "
+":mod:`secrets`."
+
+#: ../../library/random.rst:52
+#, fuzzy
+msgid ""
+"M. Matsumoto and T. Nishimura, \"Mersenne Twister: A 623-dimensionally "
+"equidistributed uniform pseudorandom number generator\", ACM Transactions on"
+" Modeling and Computer Simulation Vol. 8, No. 1, January pp.3--30 1998."
+msgstr ""
+"M. Matsumoto và T. Nishimura, \"Mersenne Twister: Trình tạo số giả ngẫu "
+"nhiên thống nhất phân bố đều 623 chiều\", ACM Giao dịch trên mô hình hóa và "
+"mô phỏng máy tính Vol. 8, Số 1, tháng 1, tr.3--30 1998."
+
+#: ../../library/random.rst:57
+#, fuzzy
+msgid ""
+"`Complementary-Multiply-with-Carry recipe "
+"<https://code.activestate.com/recipes/576707-long-period-random-number-"
+"generator/>`_ for a compatible alternative random number generator with a "
+"long period and comparatively simple update operations."
+msgstr ""
+"`Complementary-Multiply-with-Carry recipe "
+"<https://code.activestate.com/recipes/576707-long-period-random-number-"
+"generator/>`_ để có một trình tạo số ngẫu nhiên thay thế tương thích với "
+"thời gian dài và các thao tác cập nhật tương đối đơn giản."
+
+#: ../../library/random.rst:63
+#, fuzzy
+msgid ""
+"The global random number generator and instances of :class:`Random` are "
+"thread-safe. However, in the free-threaded build, concurrent calls to the "
+"global generator or to the same instance of :class:`Random` may encounter "
+"contention and poor performance. Consider using separate instances of "
+":class:`Random` per thread instead."
+msgstr ""
+"Trình tạo số ngẫu nhiên toàn cầu và các phiên bản của :class:`Random` đều an"
+" toàn theo luồng. Tuy nhiên, trong bản dựng theo luồng tự do, các lệnh gọi "
+"đồng thời tới trình tạo chung hoặc tới cùng một phiên bản của "
+":class:`Random` có thể gặp phải sự tranh chấp và hiệu suất kém. Thay vào đó,"
+" hãy xem xét sử dụng các phiên bản :class:`Random` riêng biệt cho mỗi luồng."
+
+#: ../../library/random.rst:70
+#, fuzzy
+msgid "Bookkeeping functions"
+msgstr "Chức năng kế toán"
+
+#: ../../library/random.rst:74
+#, fuzzy
+msgid "Initialize the random number generator."
+msgstr "Khởi tạo trình tạo số ngẫu nhiên."
+
+#: ../../library/random.rst:76
+#, fuzzy
+msgid ""
+"If *a* is omitted or ``None``, the current system time is used.  If "
+"randomness sources are provided by the operating system, they are used "
+"instead of the system time (see the :func:`os.urandom` function for details "
+"on availability)."
+msgstr ""
+"Nếu *a* bị bỏ qua hoặc ``None``, thời gian hệ thống hiện tại sẽ được sử "
+"dụng.  Nếu các nguồn ngẫu nhiên được hệ điều hành cung cấp, chúng sẽ được sử"
+" dụng thay vì thời gian của hệ thống (xem hàm :func:`os.urandom` để biết chi"
+" tiết về tính khả dụng)."
+
+#: ../../library/random.rst:81
+#, fuzzy
+msgid "If *a* is an int, its absolute value is used directly."
+msgstr "Nếu *a* là int, giá trị tuyệt đối của nó sẽ được sử dụng trực tiếp."
+
+#: ../../library/random.rst:83
+#, fuzzy
+msgid ""
+"With version 2 (the default), a :class:`str`, :class:`bytes`, or "
+":class:`bytearray` object gets converted to an :class:`int` and all of its "
+"bits are used."
+msgstr ""
+"Với phiên bản 2 (mặc định), đối tượng :class:`str`, :class:`bytes` hoặc "
+":class:`bytearray` được chuyển đổi thành :class:`int` và tất cả các bit của "
+"nó đều được sử dụng."
+
+#: ../../library/random.rst:86
+#, fuzzy
+msgid ""
+"With version 1 (provided for reproducing random sequences from older "
+"versions of Python), the algorithm for :class:`str` and :class:`bytes` "
+"generates a narrower range of seeds."
+msgstr ""
+"Với phiên bản 1 (được cung cấp để tái tạo các chuỗi ngẫu nhiên từ các phiên "
+"bản Python cũ hơn), thuật toán cho :class:`str` và :class:`bytes` tạo ra "
+"phạm vi hạt giống hẹp hơn."
+
+#: ../../library/random.rst:90
+#, fuzzy
+msgid ""
+"Moved to the version 2 scheme which uses all of the bits in a string seed."
+msgstr ""
+"Đã chuyển sang sơ đồ phiên bản 2 sử dụng tất cả các bit trong chuỗi hạt "
+"giống."
+
+#: ../../library/random.rst:93
+#, fuzzy
+msgid ""
+"The *seed* must be one of the following types: ``None``, :class:`int`, "
+":class:`float`, :class:`str`, :class:`bytes`, or :class:`bytearray`."
+msgstr ""
+"Zz006zz phải là một trong các loại sau: ``None``, :class:`int`, "
+":class:`float`, :class:`str`, :class:`bytes` hoặc :class:`bytearray`."
+
+#: ../../library/random.rst:100
+#, fuzzy
+msgid ""
+"Return an object capturing the current internal state of the generator.  "
+"This object can be passed to :func:`setstate` to restore the state."
+msgstr ""
+"Trả về một đối tượng ghi lại trạng thái bên trong hiện tại của trình tạo.  "
+"Đối tượng này có thể được chuyển tới :func:`setstate` để khôi phục trạng "
+"thái."
+
+#: ../../library/random.rst:106
+#, fuzzy
+msgid ""
+"*state* should have been obtained from a previous call to :func:`getstate`, "
+"and :func:`setstate` restores the internal state of the generator to what it"
+" was at the time :func:`getstate` was called."
+msgstr ""
+"*state* đáng lẽ phải được lấy từ lệnh gọi trước tới :func:`getstate` và "
+":func:`setstate` khôi phục trạng thái bên trong của trình tạo về trạng thái "
+"như lúc :func:`getstate` được gọi."
+
+#: ../../library/random.rst:112
+#, fuzzy
+msgid "Functions for bytes"
+msgstr "Các hàm dành cho byte"
+
+#: ../../library/random.rst:116
+#, fuzzy
+msgid "Generate *n* random bytes."
+msgstr "Tạo byte ngẫu nhiên *n*."
+
+#: ../../library/random.rst:118
+#, fuzzy
+msgid ""
+"This method should not be used for generating security tokens. Use "
+":func:`secrets.token_bytes` instead."
+msgstr ""
+"Phương pháp này không nên được sử dụng để tạo mã thông báo bảo mật. Thay vào"
+" đó hãy sử dụng :func:`secrets.token_bytes`."
+
+#: ../../library/random.rst:125
+#, fuzzy
+msgid "Functions for integers"
+msgstr "Hàm cho số nguyên"
+
+#: ../../library/random.rst:130
+#, fuzzy
+msgid "Return a randomly selected element from ``range(start, stop, step)``."
+msgstr "Trả về phần tử được chọn ngẫu nhiên từ ``range(start, stop, step)``."
+
+#: ../../library/random.rst:132
+#, fuzzy
+msgid ""
+"This is roughly equivalent to ``choice(range(start, stop, step))`` but "
+"supports arbitrarily large ranges and is optimized for common cases."
+msgstr ""
+"Điều này gần tương đương với ``choice(range(start, stop, step))`` nhưng hỗ "
+"trợ phạm vi lớn tùy ý và được tối ưu hóa cho các trường hợp thông thường."
+
+#: ../../library/random.rst:135
+#, fuzzy
+msgid "The positional argument pattern matches the :func:`range` function."
+msgstr "Mẫu đối số vị trí khớp với hàm :func:`range`."
+
+#: ../../library/random.rst:137
+#, fuzzy
+msgid ""
+"Keyword arguments should not be used because they can be interpreted in "
+"unexpected ways. For example ``randrange(start=100)`` is interpreted as "
+"``randrange(0, 100, 1)``."
+msgstr ""
+"Không nên sử dụng đối số từ khóa vì chúng có thể được hiểu theo những cách "
+"không mong muốn. Ví dụ ``randrange(start=100)`` được hiểu là ``randrange(0, "
+"100, 1)``."
+
+#: ../../library/random.rst:141
+#, fuzzy
+msgid ""
+":meth:`randrange` is more sophisticated about producing equally distributed "
+"values.  Formerly it used a style like ``int(random()*n)`` which could "
+"produce slightly uneven distributions."
+msgstr ""
+":meth:`randrange` phức tạp hơn trong việc tạo ra các giá trị được phân bổ "
+"đồng đều.  Trước đây nó sử dụng kiểu như ``int(random()*n)`` có thể tạo ra "
+"sự phân bố hơi không đồng đều."
+
+#: ../../library/random.rst:146
+#, fuzzy
+msgid ""
+"Automatic conversion of non-integer types is no longer supported. Calls such"
+" as ``randrange(10.0)`` and ``randrange(Fraction(10, 1))`` now raise a "
+":exc:`TypeError`."
+msgstr ""
+"Tự động chuyển đổi các loại không nguyên không còn được hỗ trợ. Các lệnh gọi"
+" như ``randrange(10.0)`` và ``randrange(Fraction(10, 1))`` hiện tạo ra "
+":exc:`TypeError`."
+
+#: ../../library/random.rst:153
+#, fuzzy
+msgid ""
+"Return a random integer *N* such that ``a <= N <= b``.  Alias for "
+"``randrange(a, b+1)``."
+msgstr ""
+"Trả về một số nguyên ngẫu nhiên *N* sao cho ``a <= N <= b``.  Bí danh cho "
+"``randrange(a, b+1)``."
+
+#: ../../library/random.rst:158
+#, fuzzy
+msgid ""
+"Returns a non-negative Python integer with *k* random bits. This method is "
+"supplied with the Mersenne Twister generator and some other generators may "
+"also provide it as an optional part of the API. When available, "
+":meth:`getrandbits` enables :meth:`randrange` to handle arbitrarily large "
+"ranges."
+msgstr ""
+"Trả về số nguyên Python không âm với các bit ngẫu nhiên *k*. Phương pháp này"
+" được cung cấp cùng với trình tạo Mersenne Twister và một số trình tạo khác "
+"cũng có thể cung cấp nó như một phần tùy chọn của API. Khi khả dụng, "
+":meth:`getrandbits` cho phép :meth:`randrange` xử lý các phạm vi lớn tùy ý."
+
+#: ../../library/random.rst:164
+#, fuzzy
+msgid "This method now accepts zero for *k*."
+msgstr "Phương pháp này hiện chấp nhận số 0 cho *k*."
+
+#: ../../library/random.rst:169
+#, fuzzy
+msgid "Functions for sequences"
+msgstr "Chức năng cho trình tự"
+
+#: ../../library/random.rst:173
+#, fuzzy
+msgid ""
+"Return a random element from the non-empty sequence *seq*. If *seq* is "
+"empty, raises :exc:`IndexError`."
+msgstr ""
+"Trả về một phần tử ngẫu nhiên từ chuỗi không trống *seq*. Nếu *seq* trống, "
+"tăng :exc:`IndexError`."
+
+#: ../../library/random.rst:178
+#, fuzzy
+msgid ""
+"Return a *k* sized list of elements chosen from the *population* with "
+"replacement. If the *population* is empty, raises :exc:`IndexError`."
+msgstr ""
+"Trả về danh sách các phần tử có kích thước *k* được chọn từ *population* có "
+"thay thế. Nếu *population* trống, tăng :exc:`IndexError`."
+
+#: ../../library/random.rst:181
+#, fuzzy
+msgid ""
+"If a *weights* sequence is specified, selections are made according to the "
+"relative weights.  Alternatively, if a *cum_weights* sequence is given, the "
+"selections are made according to the cumulative weights (perhaps computed "
+"using :func:`itertools.accumulate`).  For example, the relative weights "
+"``[10, 5, 30, 5]`` are equivalent to the cumulative weights ``[10, 15, 45, "
+"50]``.  Internally, the relative weights are converted to cumulative weights"
+" before making selections, so supplying the cumulative weights saves work."
+msgstr ""
+"Nếu chuỗi *weights* được chỉ định, các lựa chọn sẽ được thực hiện theo trọng"
+" số tương đối.  Ngoài ra, nếu chuỗi *cum_weights* được đưa ra, các lựa chọn "
+"sẽ được thực hiện theo trọng số tích lũy (có thể được tính bằng "
+":func:`itertools.accumulate`).  Ví dụ: trọng số tương đối ``[10, 5, 30, 5]``"
+" tương đương với trọng số tích lũy ``[10, 15, 45, 50]``.  Trong nội bộ, các "
+"trọng số tương đối được chuyển đổi thành các trọng số tích lũy trước khi "
+"thực hiện các lựa chọn, do đó, việc cung cấp các trọng số tích lũy sẽ giúp "
+"tiết kiệm công việc."
+
+#: ../../library/random.rst:190
+#, fuzzy
+msgid ""
+"If neither *weights* nor *cum_weights* are specified, selections are made "
+"with equal probability.  If a weights sequence is supplied, it must be the "
+"same length as the *population* sequence.  It is a :exc:`TypeError` to "
+"specify both *weights* and *cum_weights*."
+msgstr ""
+"Nếu cả *weights* và *cum_weights* đều không được chỉ định thì các lựa chọn "
+"sẽ được thực hiện với xác suất bằng nhau.  Nếu một chuỗi trọng số được cung "
+"cấp thì nó phải có cùng độ dài với chuỗi *population*.  Đó là "
+":exc:`TypeError` để chỉ định cả *weights* và *cum_weights*."
+
+#: ../../library/random.rst:195
+#, fuzzy
+msgid ""
+"The *weights* or *cum_weights* can use any numeric type that interoperates "
+"with the :class:`float` values returned by :func:`random` (that includes "
+"integers, floats, and fractions but excludes decimals).  Weights are assumed"
+" to be non-negative and finite.  A :exc:`ValueError` is raised if all "
+"weights are zero."
+msgstr ""
+"*weights* hoặc *cum_weights* có thể sử dụng bất kỳ loại số nào tương tác với"
+" các giá trị :class:`float` được trả về bởi :func:`random` (bao gồm số "
+"nguyên, số thực và phân số nhưng không bao gồm số thập phân).  Trọng số được"
+" coi là không âm và hữu hạn.  Một :exc:`ValueError` được nâng lên nếu tất cả"
+" trọng số bằng 0."
+
+#: ../../library/random.rst:201
+#, fuzzy
+msgid ""
+"For a given seed, the :func:`choices` function with equal weighting "
+"typically produces a different sequence than repeated calls to "
+":func:`choice`.  The algorithm used by :func:`choices` uses floating-point "
+"arithmetic for internal consistency and speed.  The algorithm used by "
+":func:`choice` defaults to integer arithmetic with repeated selections to "
+"avoid small biases from round-off error."
+msgstr ""
+"Đối với một hạt giống nhất định, hàm :func:`choices` có trọng số bằng nhau "
+"thường tạo ra một chuỗi khác với các lệnh gọi lặp lại tới :func:`choice`.  "
+"Thuật toán được :func:`choices` sử dụng sử dụng số học dấu phẩy động để đảm "
+"bảo tính nhất quán và tốc độ bên trong.  Thuật toán được :func:`choice` sử "
+"dụng mặc định là số học số nguyên với các lựa chọn lặp đi lặp lại để tránh "
+"những sai lệch nhỏ do lỗi làm tròn."
+
+#: ../../library/random.rst:210
+#, fuzzy
+msgid "Raises a :exc:`ValueError` if all weights are zero."
+msgstr "Tăng :exc:`ValueError` nếu tất cả trọng số bằng 0."
+
+#: ../../library/random.rst:216
+#, fuzzy
+msgid "Shuffle the sequence *x* in place."
+msgstr "Xáo trộn chuỗi *x* tại chỗ."
+
+#: ../../library/random.rst:218
+#, fuzzy
+msgid ""
+"To shuffle an immutable sequence and return a new shuffled list, use "
+"``sample(x, k=len(x))`` instead."
+msgstr ""
+"Để xáo trộn một chuỗi bất biến và trả về một danh sách được xáo trộn mới, "
+"thay vào đó hãy sử dụng ``sample(x, k=len(x))``."
+
+#: ../../library/random.rst:221
+#, fuzzy
+msgid ""
+"Note that even for small ``len(x)``, the total number of permutations of *x*"
+" can quickly grow larger than the period of most random number generators. "
+"This implies that most permutations of a long sequence can never be "
+"generated.  For example, a sequence of length 2080 is the largest that can "
+"fit within the period of the Mersenne Twister random number generator."
+msgstr ""
+"Lưu ý rằng ngay cả đối với ``len(x)`` nhỏ, tổng số hoán vị của *x* có thể "
+"nhanh chóng tăng lớn hơn khoảng thời gian của hầu hết các trình tạo số ngẫu "
+"nhiên. Điều này ngụ ý rằng hầu hết các hoán vị của một chuỗi dài không bao "
+"giờ có thể được tạo ra.  Ví dụ: một chuỗi có độ dài 2080 là chuỗi lớn nhất "
+"có thể vừa với chu kỳ của bộ tạo số ngẫu nhiên Mersenne Twister."
+
+#: ../../library/random.rst:227
+#, fuzzy
+msgid "Removed the optional parameter *random*."
+msgstr "Đã xóa tham số tùy chọn *random*."
+
+#: ../../library/random.rst:233
+#, fuzzy
+msgid ""
+"Return a *k* length list of unique elements chosen from the population "
+"sequence.  Used for random sampling without replacement."
+msgstr ""
+"Trả về danh sách độ dài *k* gồm các phần tử duy nhất được chọn từ chuỗi tổng"
+" thể.  Được sử dụng để lấy mẫu ngẫu nhiên mà không cần thay thế."
+
+#: ../../library/random.rst:236
+#, fuzzy
+msgid ""
+"Returns a new list containing elements from the population while leaving the"
+" original population unchanged.  The resulting list is in selection order so"
+" that all sub-slices will also be valid random samples.  This allows raffle "
+"winners (the sample) to be partitioned into grand prize and second place "
+"winners (the subslices)."
+msgstr ""
+"Trả về một danh sách mới chứa các phần tử từ tập hợp trong khi vẫn giữ "
+"nguyên tập hợp ban đầu.  Danh sách kết quả được sắp xếp theo thứ tự lựa chọn"
+" sao cho tất cả các lát cắt phụ cũng sẽ là các mẫu ngẫu nhiên hợp lệ.  Điều "
+"này cho phép người chiến thắng xổ số (mẫu) được phân chia thành người chiến "
+"thắng giải thưởng lớn và người chiến thắng vị trí thứ hai (các phần phụ)."
+
+#: ../../library/random.rst:242
+#, fuzzy
+msgid ""
+"Members of the population need not be :term:`hashable` or unique.  If the "
+"population contains repeats, then each occurrence is a possible selection in"
+" the sample."
+msgstr ""
+"Các thành viên của quần thể không cần phải là :term:`hashable` hoặc duy "
+"nhất.  Nếu quần thể chứa các lần lặp lại thì mỗi lần xuất hiện là một lựa "
+"chọn có thể có trong mẫu."
+
+#: ../../library/random.rst:245
+#, fuzzy
+msgid ""
+"Repeated elements can be specified one at a time or with the optional "
+"keyword-only *counts* parameter.  For example, ``sample(['red', 'blue'], "
+"counts=[4, 2], k=5)`` is equivalent to ``sample(['red', 'red', 'red', 'red',"
+" 'blue', 'blue'], k=5)``."
+msgstr ""
+"Các phần tử lặp lại có thể được chỉ định lần lượt hoặc bằng tham số *counts*"
+" chỉ có từ khóa tùy chọn.  Ví dụ: ``sample(['red', 'blue'], counts=[4, 2], "
+"k=5)`` tương đương với ``sample(['red', 'red', 'red', 'red', 'blue', "
+"'blue'], k=5)``."
+
+#: ../../library/random.rst:250
+#, fuzzy
+msgid ""
+"To choose a sample from a range of integers, use a :func:`range` object as "
+"an argument.  This is especially fast and space efficient for sampling from "
+"a large population:  ``sample(range(10000000), k=60)``."
+msgstr ""
+"Để chọn một mẫu từ một dãy số nguyên, hãy sử dụng đối tượng :func:`range` "
+"làm đối số.  Điều này đặc biệt nhanh và tiết kiệm không gian để lấy mẫu từ "
+"một quần thể lớn: ``sample(range(10000000), k=60)``."
+
+#: ../../library/random.rst:254
+#, fuzzy
+msgid ""
+"If the sample size is larger than the population size, a :exc:`ValueError` "
+"is raised."
+msgstr ""
+"Nếu kích thước mẫu lớn hơn kích thước tổng thể thì :exc:`ValueError` sẽ tăng"
+" lên."
+
+#: ../../library/random.rst:257
+#, fuzzy
+msgid "Added the *counts* parameter."
+msgstr "Đã thêm tham số *counts*."
+
+#: ../../library/random.rst:262
+#, fuzzy
+msgid ""
+"The *population* must be a sequence.  Automatic conversion of sets to lists "
+"is no longer supported."
+msgstr ""
+"Zz000zz phải là một chuỗi.  Tự động chuyển đổi các bộ thành danh sách không "
+"còn được hỗ trợ."
+
+#: ../../library/random.rst:266
+#, fuzzy
+msgid "Discrete distributions"
+msgstr "Phân phối rời rạc"
+
+#: ../../library/random.rst:268
+#, fuzzy
+msgid "The following function generates a discrete distribution."
+msgstr "Hàm sau đây tạo ra một phân phối rời rạc."
+
+#: ../../library/random.rst:272
+#, fuzzy
+msgid ""
+"`Binomial distribution "
+"<https://mathworld.wolfram.com/BinomialDistribution.html>`_. Return the "
+"number of successes for *n* independent trials with the probability of "
+"success in each trial being *p*:"
+msgstr ""
+"`Binomial distribution "
+"<https://mathworld.wolfram.com/BinomialDistribution.html>`_. Trả về số lần "
+"thành công cho các lần thử độc lập *n* với xác suất thành công trong mỗi lần"
+" thử là *p*:"
+
+#: ../../library/random.rst:277
+#, fuzzy
+msgid "Mathematically equivalent to::"
+msgstr "Về mặt toán học tương đương với::"
+
+#: ../../library/random.rst:279
+#, fuzzy
+msgid "sum(random() < p for i in range(n))"
+msgstr "sum(random() < p for i in range(n))"
+
+#: ../../library/random.rst:281
+#, fuzzy
+msgid ""
+"The number of trials *n* should be a non-negative integer. The probability "
+"of success *p* should be between ``0.0 <= p <= 1.0``. The result is an "
+"integer in the range ``0 <= X <= n``."
+msgstr ""
+"Số lần thử *n* phải là số nguyên không âm. Xác suất thành công của *p* phải "
+"nằm trong khoảng ``0.0 <= p <= 1.0``. Kết quả là một số nguyên trong phạm vi"
+" ``0 <= X <= n``."
+
+#: ../../library/random.rst:291
+#, fuzzy
+msgid "Real-valued distributions"
+msgstr "Phân phối có giá trị thực"
+
+#: ../../library/random.rst:293
+#, fuzzy
+msgid ""
+"The following functions generate specific real-valued distributions. "
+"Function parameters are named after the corresponding variables in the "
+"distribution's equation, as used in common mathematical practice; most of "
+"these equations can be found in any statistics text."
+msgstr ""
+"Các hàm sau đây tạo ra các phân phối có giá trị thực cụ thể. Các tham số của"
+" hàm được đặt tên theo các biến tương ứng trong phương trình phân phối, như "
+"được sử dụng trong thực tiễn toán học thông thường; hầu hết các phương trình"
+" này có thể được tìm thấy trong bất kỳ văn bản thống kê nào."
+
+#: ../../library/random.rst:301
+#, fuzzy
+msgid ""
+"Return the next random floating-point number in the range ``0.0 <= X < 1.0``"
+msgstr ""
+"Trả về số dấu phẩy động ngẫu nhiên tiếp theo trong phạm vi ``0.0 <= X < "
+"1.0``"
+
+#: ../../library/random.rst:306
+#, fuzzy
+msgid ""
+"Return a random floating-point number *N* such that ``a <= N <= b`` for ``a "
+"<= b`` and ``b <= N <= a`` for ``b < a``."
+msgstr ""
+"Trả về một số dấu phẩy động ngẫu nhiên *N* sao cho ``a <= N <= b`` cho ``a "
+"<= b`` và ``b <= N <= a`` cho ``b < a``."
+
+#: ../../library/random.rst:309
+#, fuzzy
+msgid ""
+"The end-point value ``b`` may or may not be included in the range depending "
+"on floating-point rounding in the expression ``a + (b-a) * random()``."
+msgstr ""
+"Giá trị điểm cuối ``b`` có thể được bao gồm hoặc không trong phạm vi tùy "
+"thuộc vào việc làm tròn dấu phẩy động trong biểu thức ``a + (b-a) * "
+"random()``."
+
+#: ../../library/random.rst:316
+#, fuzzy
+msgid ""
+"Return a random floating-point number *N* such that ``low <= N <= high`` and"
+" with the specified *mode* between those bounds.  The *low* and *high* "
+"bounds default to zero and one.  The *mode* argument defaults to the "
+"midpoint between the bounds, giving a symmetric distribution."
+msgstr ""
+"Trả về một số dấu phẩy động ngẫu nhiên *N* sao cho ``low <= N <= high`` và "
+"với *mode* được chỉ định giữa các giới hạn đó.  Giới hạn *low* và *high* mặc"
+" định là 0 và 1.  Đối số *mode* mặc định là điểm giữa giữa các giới hạn, tạo"
+" ra sự phân bố đối xứng."
+
+#: ../../library/random.rst:324
+#, fuzzy
+msgid ""
+"Beta distribution.  Conditions on the parameters are ``alpha > 0`` and "
+"``beta > 0``. Returned values range between 0 and 1."
+msgstr ""
+"Phân phối beta.  Điều kiện trên các tham số là ``alpha > 0`` và ``beta > "
+"0``. Giá trị trả về nằm trong khoảng từ 0 đến 1."
+
+#: ../../library/random.rst:330
+#, fuzzy
+msgid ""
+"Exponential distribution.  *lambd* is 1.0 divided by the desired mean.  It "
+"should be nonzero.  (The parameter would be called \"lambda\", but that is a"
+" reserved word in Python.)  Returned values range from 0 to positive "
+"infinity if *lambd* is positive, and from negative infinity to 0 if *lambd* "
+"is negative."
+msgstr ""
+"Phân phối theo cấp số nhân.  *lambd* là 1,0 chia cho giá trị trung bình mong"
+" muốn.  Nó phải khác không.  (Tham số sẽ được gọi là \"lambda\", nhưng đó là"
+" một từ dành riêng trong Python.) Các giá trị trả về nằm trong khoảng từ 0 "
+"đến vô cực dương nếu *lambd* là dương và từ vô cực âm đến 0 nếu *lambd* là "
+"âm."
+
+#: ../../library/random.rst:336
+#, fuzzy
+msgid "Added the default value for ``lambd``."
+msgstr "Đã thêm giá trị mặc định cho ``lambd``."
+
+#: ../../library/random.rst:342
+#, fuzzy
+msgid ""
+"Gamma distribution.  (*Not* the gamma function!)  The shape and scale "
+"parameters, *alpha* and *beta*, must have positive values. (Calling "
+"conventions vary and some sources define 'beta' as the inverse of the "
+"scale)."
+msgstr ""
+"Phân bố gamma.  (*Not* hàm gamma!) Các tham số hình dạng và tỷ lệ, *alpha* "
+"và *beta*, phải có giá trị dương. (Quy ước gọi khác nhau và một số nguồn "
+"định nghĩa 'beta' là nghịch đảo của thang đo)."
+
+#: ../../library/random.rst:347
+#, fuzzy
+msgid "The probability distribution function is::"
+msgstr "Hàm phân phối xác suất là::"
+
+#: ../../library/random.rst:349
+#, fuzzy
+msgid ""
+"          x ** (alpha - 1) * math.exp(-x / beta)\n"
+"pdf(x) =  --------------------------------------\n"
+"            math.gamma(alpha) * beta ** alpha"
+msgstr ""
+"x ** (alpha - 1) * math.exp(-x / beta)\n"
+"pdf(x) = --------------------------------------\n"
+"            math.gamma(alpha) * beta ** alpha"
+
+#: ../../library/random.rst:356
+#, fuzzy
+msgid ""
+"Normal distribution, also called the Gaussian distribution. *mu* is the "
+"mean, and *sigma* is the standard deviation.  This is slightly faster than "
+"the :func:`normalvariate` function defined below."
+msgstr ""
+"Phân phối chuẩn, còn được gọi là phân phối Gaussian. *mu* là giá trị trung "
+"bình và *sigma* là độ lệch chuẩn.  Điều này nhanh hơn một chút so với hàm "
+":func:`normalvariate` được xác định bên dưới."
+
+#: ../../library/random.rst:361
+#, fuzzy
+msgid ""
+"Multithreading note:  When two threads call this function simultaneously, it"
+" is possible that they will receive the same return value.  This can be "
+"avoided in three ways. 1) Have each thread use a different instance of the "
+"random number generator. 2) Put locks around all calls. 3) Use the slower, "
+"but thread-safe :func:`normalvariate` function instead."
+msgstr ""
+"Lưu ý đa luồng: Khi hai luồng gọi hàm này cùng lúc, có thể chúng sẽ nhận "
+"được cùng một giá trị trả về.  Điều này có thể tránh được bằng ba cách. 1) "
+"Yêu cầu mỗi luồng sử dụng một phiên bản khác nhau của trình tạo số ngẫu "
+"nhiên. 2) Đặt khóa xung quanh tất cả các cuộc gọi. 3) Thay vào đó, hãy sử "
+"dụng chức năng :func:`normalvariate` chậm hơn nhưng an toàn theo luồng."
+
+#: ../../library/random.rst:368 ../../library/random.rst:384
+#, fuzzy
+msgid "*mu* and *sigma* now have default arguments."
+msgstr "*mu* và *sigma* hiện có đối số mặc định."
+
+#: ../../library/random.rst:374
+#, fuzzy
+msgid ""
+"Log normal distribution.  If you take the natural logarithm of this "
+"distribution, you'll get a normal distribution with mean *mu* and standard "
+"deviation *sigma*.  *mu* can have any value, and *sigma* must be greater "
+"than zero."
+msgstr ""
+"Đăng nhập phân phối bình thường.  Nếu bạn lấy logarit tự nhiên của phân phối"
+" này, bạn sẽ nhận được phân phối chuẩn với trung bình *mu* và độ lệch chuẩn "
+"*sigma*.  *mu* có thể có bất kỳ giá trị nào và *sigma* phải lớn hơn 0."
+
+#: ../../library/random.rst:382
+#, fuzzy
+msgid ""
+"Normal distribution.  *mu* is the mean, and *sigma* is the standard "
+"deviation."
+msgstr ""
+"Phân phối bình thường.  *mu* là giá trị trung bình và *sigma* là độ lệch "
+"chuẩn."
+
+#: ../../library/random.rst:390
+#, fuzzy
+msgid ""
+"*mu* is the mean angle, expressed in radians between 0 and 2\\*\\ *pi*, and "
+"*kappa* is the concentration parameter, which must be greater than or equal "
+"to zero.  If *kappa* is equal to zero, this distribution reduces to a "
+"uniform random angle over the range 0 to 2\\*\\ *pi*."
+msgstr ""
+"*mu* là góc trung bình, được biểu thị bằng radian trong khoảng từ 0 đến "
+"2\\*\\ *pi*, and *kappa* là tham số nồng độ, phải lớn hơn hoặc bằng 0.  Nếu "
+"*kappa* bằng 0, thì phân bố này giảm xuống một góc ngẫu nhiên đồng nhất "
+"trong phạm vi từ 0 đến 2\\*\\ *pi*."
+
+#: ../../library/random.rst:398
+#, fuzzy
+msgid "Pareto distribution.  *alpha* is the shape parameter."
+msgstr "Phân phối Pareto.  *alpha* là tham số hình dạng."
+
+#: ../../library/random.rst:403
+#, fuzzy
+msgid ""
+"Weibull distribution.  *alpha* is the scale parameter and *beta* is the "
+"shape parameter."
+msgstr ""
+"Phân phối Weibull.  *alpha* là tham số tỷ lệ và *beta* là tham số hình dạng."
+
+#: ../../library/random.rst:408
+#, fuzzy
+msgid "Alternative Generator"
+msgstr "Máy phát điện thay thế"
+
+#: ../../library/random.rst:412
+#, fuzzy
+msgid ""
+"Class that implements the default pseudo-random number generator used by the"
+" :mod:`!random` module."
+msgstr ""
+"Lớp triển khai trình tạo số giả ngẫu nhiên mặc định được mô-đun "
+":mod:`!random` sử dụng."
+
+#: ../../library/random.rst:415
+#, fuzzy
+msgid ""
+"Formerly the *seed* could be any hashable object.  Now it is limited to: "
+"``None``, :class:`int`, :class:`float`, :class:`str`, :class:`bytes`, or "
+":class:`bytearray`."
+msgstr ""
+"Trước đây *seed* có thể là bất kỳ đối tượng có thể băm nào.  Bây giờ nó được"
+" giới hạn ở: ``None``, :class:`int`, :class:`float`, :class:`str`, "
+":class:`bytes` hoặc :class:`bytearray`."
+
+#: ../../library/random.rst:420
+#, fuzzy
+msgid ""
+"Subclasses of :class:`!Random` should override the following methods if they"
+" wish to make use of a different basic generator:"
+msgstr ""
+"Các lớp con của :class:`!Random` nên ghi đè các phương thức sau nếu chúng "
+"muốn sử dụng một trình tạo cơ bản khác:"
+
+#: ../../library/random.rst:425
+#, fuzzy
+msgid ""
+"Override this method in subclasses to customise the :meth:`~random.seed` "
+"behaviour of :class:`!Random` instances."
+msgstr ""
+"Ghi đè phương thức này trong các lớp con để tùy chỉnh hành vi "
+":meth:`~random.seed` của các phiên bản :class:`!Random`."
+
+#: ../../library/random.rst:430
+#, fuzzy
+msgid ""
+"Override this method in subclasses to customise the :meth:`~random.getstate`"
+" behaviour of :class:`!Random` instances."
+msgstr ""
+"Ghi đè phương thức này trong các lớp con để tùy chỉnh hành vi "
+":meth:`~random.getstate` của các phiên bản :class:`!Random`."
+
+#: ../../library/random.rst:435
+#, fuzzy
+msgid ""
+"Override this method in subclasses to customise the :meth:`~random.setstate`"
+" behaviour of :class:`!Random` instances."
+msgstr ""
+"Ghi đè phương thức này trong các lớp con để tùy chỉnh hành vi "
+":meth:`~random.setstate` của các phiên bản :class:`!Random`."
+
+#: ../../library/random.rst:440
+#, fuzzy
+msgid ""
+"Override this method in subclasses to customise the :meth:`~random.random` "
+"behaviour of :class:`!Random` instances."
+msgstr ""
+"Ghi đè phương thức này trong các lớp con để tùy chỉnh hành vi "
+":meth:`~random.random` của các phiên bản :class:`!Random`."
+
+#: ../../library/random.rst:443
+#, fuzzy
+msgid ""
+"Optionally, a custom generator subclass can also supply the following "
+"method:"
+msgstr ""
+"Tùy chọn, một lớp con trình tạo tùy chỉnh cũng có thể cung cấp phương thức "
+"sau:"
+
+#: ../../library/random.rst:447
+#, fuzzy
+msgid ""
+"Override this method in subclasses to customise the "
+":meth:`~random.getrandbits` behaviour of :class:`!Random` instances."
+msgstr ""
+"Ghi đè phương thức này trong các lớp con để tùy chỉnh hành vi "
+":meth:`~random.getrandbits` của các phiên bản :class:`!Random`."
+
+#: ../../library/random.rst:452
+#, fuzzy
+msgid ""
+"Override this method in subclasses to customise the "
+":meth:`~random.randbytes` behaviour of :class:`!Random` instances."
+msgstr ""
+"Ghi đè phương thức này trong các lớp con để tùy chỉnh hành vi "
+":meth:`~random.randbytes` của các phiên bản :class:`!Random`."
+
+#: ../../library/random.rst:458
+#, fuzzy
+msgid ""
+"Class that uses the :func:`os.urandom` function for generating random "
+"numbers from sources provided by the operating system. Not available on all "
+"systems. Does not rely on software state, and sequences are not "
+"reproducible. Accordingly, the :meth:`seed` method has no effect and is "
+"ignored. The :meth:`getstate` and :meth:`setstate` methods raise "
+":exc:`NotImplementedError` if called."
+msgstr ""
+"Lớp sử dụng hàm :func:`os.urandom` để tạo số ngẫu nhiên từ các nguồn do hệ "
+"điều hành cung cấp. Không có sẵn trên tất cả các hệ thống. Không phụ thuộc "
+"vào trạng thái phần mềm và các chuỗi không thể tái tạo được. Theo đó, phương"
+" pháp :meth:`seed` không có tác dụng và bị bỏ qua. Các phương thức "
+":meth:`getstate` và :meth:`setstate` sẽ tăng :exc:`NotImplementedError` nếu "
+"được gọi."
+
+#: ../../library/random.rst:467
+#, fuzzy
+msgid "Notes on Reproducibility"
+msgstr "Lưu ý về độ tái lập"
+
+#: ../../library/random.rst:469
+#, fuzzy
+msgid ""
+"Sometimes it is useful to be able to reproduce the sequences given by a "
+"pseudo-random number generator.  By reusing a seed value, the same sequence "
+"should be reproducible from run to run as long as multiple threads are not "
+"running."
+msgstr ""
+"Đôi khi sẽ rất hữu ích khi có thể tái tạo các chuỗi được đưa ra bởi bộ tạo "
+"số giả ngẫu nhiên.  Bằng cách sử dụng lại giá trị hạt giống, trình tự tương "
+"tự sẽ được lặp lại từ lần chạy này sang lần chạy khác miễn là có nhiều luồng"
+" không chạy."
+
+#: ../../library/random.rst:473
+#, fuzzy
+msgid ""
+"Most of the random module's algorithms and seeding functions are subject to "
+"change across Python versions, but two aspects are guaranteed not to change:"
+msgstr ""
+"Hầu hết các thuật toán và chức năng gieo mầm của mô-đun ngẫu nhiên có thể "
+"thay đổi giữa các phiên bản Python, nhưng hai khía cạnh được đảm bảo không "
+"thay đổi:"
+
+#: ../../library/random.rst:476
+#, fuzzy
+msgid ""
+"If a new seeding method is added, then a backward compatible seeder will be "
+"offered."
+msgstr ""
+"Nếu một phương pháp gieo hạt mới được thêm vào thì một máy gieo hạt tương "
+"thích ngược sẽ được cung cấp."
+
+#: ../../library/random.rst:479
+#, fuzzy
+msgid ""
+"The generator's :meth:`~Random.random` method will continue to produce the "
+"same sequence when the compatible seeder is given the same seed."
+msgstr ""
+"Phương pháp :meth:`~Random.random` của trình tạo sẽ tiếp tục tạo ra trình tự"
+" tương tự khi máy gieo hạt tương thích được cấp cùng một hạt giống."
+
+#: ../../library/random.rst:485
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/random.rst:487
+#, fuzzy
+msgid "Basic examples::"
+msgstr "Ví dụ cơ bản::"
+
+#: ../../library/random.rst:489
+#, fuzzy
+msgid ""
+">>> random()                          # Random float:  0.0 <= x < 1.0\n"
+"0.37444887175646646\n"
+"\n"
+">>> uniform(2.5, 10.0)                # Random float:  2.5 <= x <= 10.0\n"
+"3.1800146073117523\n"
+"\n"
+">>> expovariate(1 / 5)                # Interval between arrivals averaging 5 seconds\n"
+"5.148957571865031\n"
+"\n"
+">>> randrange(10)                     # Integer from 0 to 9 inclusive\n"
+"7\n"
+"\n"
+">>> randrange(0, 101, 2)              # Even integer from 0 to 100 inclusive\n"
+"26\n"
+"\n"
+">>> choice(['win', 'lose', 'draw'])   # Single random element from a sequence\n"
+"'draw'\n"
+"\n"
+">>> deck = 'ace two three four'.split()\n"
+">>> shuffle(deck)                     # Shuffle a list\n"
+">>> deck\n"
+"['four', 'two', 'ace', 'three']\n"
+"\n"
+">>> sample([10, 20, 30, 40, 50], k=4) # Four samples without replacement\n"
+"[40, 10, 50, 30]"
+msgstr ""
+">>> ngẫu nhiên() # Random float: 0,0 <= x < 1,0\n"
+"0.37444887175646646\n"
+"\n"
+">>> thống nhất(2.5, 10.0) # Random float: 2.5 <= x <= 10.0\n"
+"3.1800146073117523\n"
+"\n"
+">>> expovariate(1 / 5) # Interval giữa các lần đến trung bình 5 giây\n"
+"5.148957571865031\n"
+"\n"
+">>> randrange(10) # Integer bao gồm từ 0 đến 9\n"
+"7\n"
+"\n"
+">>> randrange(0, 101, 2) # Even số nguyên từ 0 đến 100\n"
+"26\n"
+"\n"
+">>> lựa chọn(['thắng', 'thua', 'hòa']) phần tử ngẫu nhiên # Single từ một chuỗi\n"
+"'vẽ'\n"
+"\n"
+">>> deck = 'át hai ba bốn'.split()\n"
+">>> xáo trộn(bộ bài) # Shuffle một danh sách\n"
+">>> sàn\n"
+"['bốn', 'hai', 'át', 'ba']\n"
+"\n"
+">>> sample([10, 20, 30, 40, 50], k=4) mẫu # Four không thay thế\n"
+"[40, 10, 50, 30]"
+
+#: ../../library/random.rst:515
+#, fuzzy
+msgid "Simulations::"
+msgstr "Mô phỏng::"
+
+#: ../../library/random.rst:517
+#, python-format, fuzzy
+msgid ""
+">>> # Six roulette wheel spins (weighted sampling with replacement)\n"
+">>> choices(['red', 'black', 'green'], [18, 18, 2], k=6)\n"
+"['red', 'green', 'black', 'black', 'red', 'black']\n"
+"\n"
+">>> # Deal 20 cards without replacement from a deck\n"
+">>> # of 52 playing cards, and determine the proportion of cards\n"
+">>> # with a ten-value:  ten, jack, queen, or king.\n"
+">>> deal = sample(['tens', 'low cards'], counts=[16, 36], k=20)\n"
+">>> deal.count('tens') / 20\n"
+"0.15\n"
+"\n"
+">>> # Estimate the probability of getting 5 or more heads from 7 spins\n"
+">>> # of a biased coin that settles on heads 60% of the time.\n"
+">>> sum(binomialvariate(n=7, p=0.6) >= 5 for i in range(10_000)) / 10_000\n"
+"0.4169\n"
+"\n"
+">>> # Probability of the median of 5 samples being in middle two quartiles\n"
+">>> def trial():\n"
+"...     return 2_500 <= sorted(choices(range(10_000), k=5))[2] < 7_500\n"
+"...\n"
+">>> sum(trial() for i in range(10_000)) / 10_000\n"
+"0.7958"
+msgstr ""
+">>> Vòng quay bánh xe roulette # Six (lấy mẫu có trọng số kèm theo thay thế)\n"
+">>> lựa chọn(['đỏ', 'đen', 'xanh'], [18, 18, 2], k=6)\n"
+"['đỏ', 'xanh', 'đen', 'đen', 'đỏ', 'đen']\n"
+"\n"
+">>> # Deal 20 lá bài không cần thay thế từ bộ bài\n"
+">>> # of 52 bài chơi và xác định tỷ lệ bài\n"
+">>> # with một giá trị mười: mười, jack, nữ hoàng hoặc vua.\n"
+">>> chia = sample(['tens', 'thẻ thấp'], count=[16, 36], k=20)\n"
+">>> deal.count('tens') / 20\n"
+"0,15\n"
+"\n"
+">>> # Estimate xác suất nhận được 5 mặt ngửa trở lên từ 7 lần quay\n"
+">>> # of một đồng xu có xu hướng nghiêng về mặt ngửa 60% thời gian.\n"
+">>> sum(binomialvariate(n=7, p=0.6) >= 5 cho i trong phạm vi(10_000)) / 10_000\n"
+"0,4169\n"
+"\n"
+">>> # Probability trung vị của 5 mẫu nằm ở hai phần tư giữa\n"
+">>> thử nghiệm chắc chắn():\n"
+"... trả về 2_500 <= đã sắp xếp(lựa chọn(phạm vi(10_000), k=5))[2] < 7_500\n"
+"...\n"
+">>> sum(trial() cho i trong phạm vi(10_000)) / 10_000\n"
+"0,7958"
+
+#: ../../library/random.rst:540
+#, fuzzy
+msgid ""
+"Example of `statistical bootstrapping "
+"<https://en.wikipedia.org/wiki/Bootstrapping_(statistics)>`_ using "
+"resampling with replacement to estimate a confidence interval for the mean "
+"of a sample::"
+msgstr ""
+"Ví dụ về `statistical bootstrapping "
+"<https://en.wikipedia.org/wiki/Bootstrapping_(statistics)>`_ sử dụng lấy mẫu"
+" lại với thay thế để ước tính khoảng tin cậy cho giá trị trung bình của "
+"mẫu::"
+
+#: ../../library/random.rst:544
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"# https://www.thoughtco.com/example-of-bootstrapping-3126155\n"
+"from statistics import fmean as mean\n"
+"from random import choices\n"
+"\n"
+"data = [41, 50, 29, 37, 81, 30, 73, 63, 20, 35, 68, 22, 60, 31, 95]\n"
+"means = sorted(mean(choices(data, k=len(data))) for i in range(100))\n"
+"print(f'The sample mean of {mean(data):.1f} has a 90% confidence '\n"
+"      f'interval from {means[5]:.1f} to {means[94]:.1f}')"
+msgstr ""
+"# zz000zz\n"
+"từ số liệu thống kê nhập fmean làm giá trị trung bình\n"
+"từ các lựa chọn nhập ngẫu nhiên\n"
+"\n"
+"dữ liệu = [41, 50, 29, 37, 81, 30, 73, 63, 20, 35, 68, 22, 60, 31, 95]\n"
+"có nghĩa là = được sắp xếp (trung bình (lựa chọn (dữ liệu, k=len(dữ liệu))) cho i trong phạm vi (100))\n"
+"print(f'Giá trị trung bình mẫu của {mean(data):.1f} có độ tin cậy 90% '\n"
+"      f'khoảng từ {means[5]:.1f} đến {means[94]:.1f}')"
+
+#: ../../library/random.rst:553
+#, fuzzy
+msgid ""
+"Example of a `resampling permutation test "
+"<https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests>`_ "
+"to determine the statistical significance or `p-value "
+"<https://en.wikipedia.org/wiki/P-value>`_ of an observed difference between "
+"the effects of a drug versus a placebo::"
+msgstr ""
+"Ví dụ về `resampling permutation test "
+"<https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests>`_ "
+"để xác định ý nghĩa thống kê hoặc `p-value "
+"<https://en.wikipedia.org/wiki/P-value>`_ của sự khác biệt quan sát được "
+"giữa tác dụng của thuốc so với giả dược::"
+
+#: ../../library/random.rst:559
+#, python-brace-format, fuzzy
+msgid ""
+"# Example from \"Statistics is Easy\" by Dennis Shasha and Manda Wilson\n"
+"from statistics import fmean as mean\n"
+"from random import shuffle\n"
+"\n"
+"drug = [54, 73, 53, 70, 73, 68, 52, 65, 65]\n"
+"placebo = [54, 51, 58, 44, 55, 52, 42, 47, 58, 46]\n"
+"observed_diff = mean(drug) - mean(placebo)\n"
+"\n"
+"n = 10_000\n"
+"count = 0\n"
+"combined = drug + placebo\n"
+"for i in range(n):\n"
+"    shuffle(combined)\n"
+"    new_diff = mean(combined[:len(drug)]) - mean(combined[len(drug):])\n"
+"    count += (new_diff >= observed_diff)\n"
+"\n"
+"print(f'{n} label reshufflings produced only {count} instances with a difference')\n"
+"print(f'at least as extreme as the observed difference of {observed_diff:.1f}.')\n"
+"print(f'The one-sided p-value of {count / n:.4f} leads us to reject the null')\n"
+"print(f'hypothesis that there is no difference between the drug and the placebo.')"
+msgstr ""
+"# Example từ \"Thống kê thật dễ dàng\" của Dennis Shasha và Manda Wilson\n"
+"từ số liệu thống kê nhập fmean làm giá trị trung bình\n"
+"từ ngẫu nhiên nhập khẩu ngẫu nhiên\n"
+"\n"
+"thuốc = [54, 73, 53, 70, 73, 68, 52, 65, 65]\n"
+"giả dược = [54, 51, 58, 44, 55, 52, 42, 47, 58, 46]\n"
+"quan sát_diff = trung bình(thuốc) - trung bình(giả dược)\n"
+"\n"
+"n = 10_000\n"
+"đếm = 0\n"
+"kết hợp = thuốc + giả dược\n"
+"cho tôi trong phạm vi (n):\n"
+"    xáo trộn (kết hợp)\n"
+"    new_diff = Mean(combined[:len(thuốc)]) - Mean(combined[len(thuốc):])\n"
+"    đếm += (new_diff >= quan sát_diff)\n"
+"\n"
+"print(f'{n} việc xáo trộn lại nhãn chỉ tạo ra {count} trường hợp có sự khác biệt')\n"
+"print(f'ít nhất cũng bằng mức chênh lệch quan sát được của {observed_diff:.1f}.')\n"
+"print(f'Giá trị p một phía của {count / n:.4f} khiến chúng ta bác bỏ giá trị null')\n"
+"print(f'giả thuyết rằng không có sự khác biệt giữa thuốc và giả dược.')"
+
+#: ../../library/random.rst:580
+#, fuzzy
+msgid ""
+"Simulation of arrival times and service deliveries for a multiserver queue::"
+msgstr ""
+"Mô phỏng thời gian đến và cung cấp dịch vụ cho hàng đợi nhiều máy chủ::"
+
+#: ../../library/random.rst:582
+#, python-brace-format, fuzzy
+msgid ""
+"from heapq import heapify, heapreplace\n"
+"from random import expovariate, gauss\n"
+"from statistics import mean, quantiles\n"
+"\n"
+"average_arrival_interval = 5.6\n"
+"average_service_time = 15.0\n"
+"stdev_service_time = 3.5\n"
+"num_servers = 3\n"
+"\n"
+"waits = []\n"
+"arrival_time = 0.0\n"
+"servers = [0.0] * num_servers  # time when each server becomes available\n"
+"heapify(servers)\n"
+"for i in range(1_000_000):\n"
+"    arrival_time += expovariate(1.0 / average_arrival_interval)\n"
+"    next_server_available = servers[0]\n"
+"    wait = max(0.0, next_server_available - arrival_time)\n"
+"    waits.append(wait)\n"
+"    service_duration = max(0.0, gauss(average_service_time, stdev_service_time))\n"
+"    service_completed = arrival_time + wait + service_duration\n"
+"    heapreplace(servers, service_completed)\n"
+"\n"
+"print(f'Mean wait: {mean(waits):.1f}   Max wait: {max(waits):.1f}')\n"
+"print('Quartiles:', [round(q, 1) for q in quantiles(waits)])"
+msgstr ""
+"từ heapq nhập heapify, heapreplace\n"
+"từ nhập ngẫu nhiên expovariate, gauss\n"
+"từ số liệu thống kê nhập trung bình, lượng tử\n"
+"\n"
+"trung bình_đến_khoảng = 5,6\n"
+"trung bình_service_time = 15,0\n"
+"stdev_service_time = 3,5\n"
+"num_server = 3\n"
+"\n"
+"chờ đợi = []\n"
+"thời gian đến = 0,0\n"
+"máy chủ = [0,0] * num_servers # time khi mỗi máy chủ có sẵn\n"
+"tăng cường(máy chủ)\n"
+"cho tôi trong phạm vi (1_000_000):\n"
+"    thời gian đến += expovariate(1,0 / Average_arrival_interval)\n"
+"    next_server_available = máy chủ[0]\n"
+"    chờ = tối đa (0,0, next_server_available - Arrival_time)\n"
+"    chờ đợi.append(chờ)\n"
+"    service_duration = max(0,0, gauss(average_service_time, stdev_service_time))\n"
+"    dịch vụ_đã hoàn thành = thời gian đến + chờ + thời gian phục vụ\n"
+"    heapreplace(máy chủ, service_completed)\n"
+"\n"
+"print(f'Mean chờ: {mean(waits):.1f} Chờ tối đa: {max(waits):.1f}')\n"
+"print('Quartiles:', [round(q, 1) for q in quantiles(wait)])"
+
+#: ../../library/random.rst:609
+#, fuzzy
+msgid ""
+"`Statistics for Hackers <https://www.youtube.com/watch?v=Iq9DzN6mvYA>`_ a "
+"video tutorial by `Jake Vanderplas "
+"<https://us.pycon.org/2016/speaker/profile/295/>`_ on statistical analysis "
+"using just a few fundamental concepts including simulation, sampling, "
+"shuffling, and cross-validation."
+msgstr ""
+"`Statistics for Hackers <https://www.youtube.com/watch?v=Iq9DzN6mvYA>`_ "
+"video hướng dẫn của `Jake Vanderplas "
+"<https://us.pycon.org/2016/speaker/profile/295/>`_ về phân tích thống kê chỉ"
+" sử dụng một số khái niệm cơ bản bao gồm mô phỏng, lấy mẫu, xáo trộn và xác "
+"thực chéo."
+
+#: ../../library/random.rst:615
+#, fuzzy
+msgid ""
+"`Economics Simulation "
+"<https://nbviewer.org/url/norvig.com/ipython/Economics.ipynb>`_ a simulation"
+" of a marketplace by `Peter Norvig <https://norvig.com/bio.html>`_ that "
+"shows effective use of many of the tools and distributions provided by this "
+"module (gauss, uniform, sample, betavariate, choice, triangular, and "
+"randrange)."
+msgstr ""
+"`Economics Simulation "
+"<https://nbviewer.org/url/norvig.com/ipython/Economics.ipynb>`_ mô phỏng thị"
+" trường của `Peter Norvig <https://norvig.com/bio.html>`_ cho thấy việc sử "
+"dụng hiệu quả nhiều công cụ và phân phối được cung cấp bởi mô-đun này "
+"(gauss, thống nhất, mẫu, betavariate, lựa chọn, tam giác và ngẫu nhiên)."
+
+#: ../../library/random.rst:622
+#, fuzzy
+msgid ""
+"`A Concrete Introduction to Probability (using Python) "
+"<https://nbviewer.org/url/norvig.com/ipython/Probability.ipynb>`_ a tutorial"
+" by `Peter Norvig <https://norvig.com/bio.html>`_ covering the basics of "
+"probability theory, how to write simulations, and how to perform data "
+"analysis using Python."
+msgstr ""
+"`A Concrete Introduction to Probability (using Python) "
+"<https://nbviewer.org/url/norvig.com/ipython/Probability.ipynb>`_ hướng dẫn "
+"của `Peter Norvig <https://norvig.com/bio.html>`_ bao gồm các kiến thức cơ "
+"bản về lý thuyết xác suất, cách viết mô phỏng và cách thực hiện phân tích dữ"
+" liệu bằng Python."
+
+#: ../../library/random.rst:630
+#, fuzzy
+msgid "Recipes"
+msgstr "Công thức nấu ăn"
+
+#: ../../library/random.rst:632
+#, fuzzy
+msgid ""
+"These recipes show how to efficiently make random selections from the "
+"combinatoric iterators in the :mod:`itertools` module:"
+msgstr ""
+"Các công thức này cho thấy cách thực hiện các lựa chọn ngẫu nhiên một cách "
+"hiệu quả từ các trình vòng lặp tổ hợp trong mô-đun :mod:`itertools`:"
+
+#: ../../library/random.rst:635
+#, fuzzy
+msgid ""
+"import random\n"
+"\n"
+"def random_product(*iterables, repeat=1):\n"
+"    \"Random selection from itertools.product(*iterables, repeat=repeat)\"\n"
+"    pools = tuple(map(tuple, iterables)) * repeat\n"
+"    return tuple(map(random.choice, pools))\n"
+"\n"
+"def random_permutation(iterable, r=None):\n"
+"    \"Random selection from itertools.permutations(iterable, r)\"\n"
+"    pool = tuple(iterable)\n"
+"    r = len(pool) if r is None else r\n"
+"    return tuple(random.sample(pool, r))\n"
+"\n"
+"def random_combination(iterable, r):\n"
+"    \"Random selection from itertools.combinations(iterable, r)\"\n"
+"    pool = tuple(iterable)\n"
+"    n = len(pool)\n"
+"    indices = sorted(random.sample(range(n), r))\n"
+"    return tuple(pool[i] for i in indices)\n"
+"\n"
+"def random_combination_with_replacement(iterable, r):\n"
+"    \"Choose r elements with replacement.  Order the result to match the iterable.\"\n"
+"    # Result will be in set(itertools.combinations_with_replacement(iterable, r)).\n"
+"    pool = tuple(iterable)\n"
+"    n = len(pool)\n"
+"    indices = sorted(random.choices(range(n), k=r))\n"
+"    return tuple(pool[i] for i in indices)\n"
+"\n"
+"def random_derangement(iterable):\n"
+"    \"Choose a permutation where no element stays in its original position.\"\n"
+"    seq = tuple(iterable)\n"
+"    if len(seq) < 2:\n"
+"        if not seq:\n"
+"            return ()\n"
+"        raise IndexError('No derangments to choose from')\n"
+"    perm = list(range(len(seq)))\n"
+"    start = tuple(perm)\n"
+"    while True:\n"
+"        random.shuffle(perm)\n"
+"        if all(p != q for p, q in zip(start, perm)):\n"
+"            return tuple([seq[i] for i in perm])"
+msgstr ""
+"nhập khẩu ngẫu nhiên\n"
+"\n"
+"def Random_product(*iterables, Repeat=1):\n"
+"    \"Lựa chọn ngẫu nhiên từ itertools.product(*iterables, Repeat=repeat)\"\n"
+"    pool = tuple(map(tuple, iterables)) * lặp lại\n"
+"    trả về tuple(map(random.choice,pools))\n"
+"\n"
+"def Random_permutation(iterable, r=None):\n"
+"    \"Lựa chọn ngẫu nhiên từ itertools.permutations(iterable, r)\"\n"
+"    pool = tuple(lặp lại)\n"
+"    r = len(pool) nếu r là Không có gì khác r\n"
+"    trả về tuple(random.sample(pool, r))\n"
+"\n"
+"def Random_combination(iterable, r):\n"
+"    \"Lựa chọn ngẫu nhiên từ itertools.combinations(iterable, r)\"\n"
+"    pool = tuple(lặp lại)\n"
+"    n = len(pool)\n"
+"    chỉ số = được sắp xếp(random.sample(range(n), r))\n"
+"    trả về tuple(pool[i] cho i trong chỉ mục)\n"
+"\n"
+"def Random_combination_with_replacement(iterable, r):\n"
+"    \"Chọn r phần tử có thể thay thế. Sắp xếp kết quả sao cho khớp với phần tử có thể lặp lại.\"\n"
+"    # Result sẽ được thiết lập (itertools.combinations_with_replacement(iterable, r)).\n"
+"    pool = tuple(lặp lại)\n"
+"    n = len(pool)\n"
+"    chỉ số = được sắp xếp(random.choices(range(n), k=r))\n"
+"    trả về tuple(pool[i] cho i trong chỉ mục)\n"
+"\n"
+"def Random_derangement (lặp lại):\n"
+"    \"Chọn một hoán vị trong đó không có phần tử nào giữ nguyên vị trí ban đầu.\"\n"
+"    seq = tuple(lặp lại)\n"
+"    nếu len(seq) < 2:\n"
+"        nếu không phải seq:\n"
+"            trở lại ()\n"
+"        raise IndexError('Không có sự xáo trộn nào để lựa chọn')\n"
+"    perm = danh sách (phạm vi (len (seq)))\n"
+"    bắt đầu = tuple(perm)\n"
+"    trong khi Đúng:\n"
+"        ngẫu nhiên.shuffle(perm)\n"
+"        if all(p != q for p, q in zip(start, perm)):\n"
+"            trả về tuple([seq[i] for i in perm])"
+
+#: ../../library/random.rst:750
+#, fuzzy
+msgid ""
+"The default :func:`.random` returns multiples of 2⁻⁵³ in the range *0.0 ≤ x "
+"< 1.0*.  All such numbers are evenly spaced and are exactly representable as"
+" Python floats.  However, many other representable floats in that interval "
+"are not possible selections.  For example, ``0.05954861408025609`` isn't an "
+"integer multiple of 2⁻⁵³."
+msgstr ""
+":func:`.random` mặc định trả về bội số của 2⁻⁵³ trong phạm vi *0.0 ≤ x < "
+"1.0*.  Tất cả các số như vậy đều cách đều nhau và có thể biểu diễn chính xác"
+" dưới dạng số float của Python.  Tuy nhiên, nhiều số float có thể biểu thị "
+"khác trong khoảng đó không thể được lựa chọn.  Ví dụ: "
+"``0.05954861408025609`` không phải là bội số nguyên của 2⁻⁵³."
+
+#: ../../library/random.rst:756
+#, fuzzy
+msgid ""
+"The following recipe takes a different approach.  All floats in the interval"
+" are possible selections.  The mantissa comes from a uniform distribution of"
+" integers in the range *2⁵² ≤ mantissa < 2⁵³*.  The exponent comes from a "
+"geometric distribution where exponents smaller than *-53* occur half as "
+"often as the next larger exponent."
+msgstr ""
+"Công thức sau đây có cách tiếp cận khác.  Tất cả các số float trong khoảng "
+"đều là các lựa chọn có thể.  Phần định trị xuất phát từ sự phân bố đồng đều "
+"các số nguyên trong phạm vi *2⁵² ≤ mantissa < 2⁵³*.  Số mũ xuất phát từ một "
+"phân bố hình học trong đó số mũ nhỏ hơn *-53* xuất hiện thường xuyên bằng "
+"một nửa so với số mũ lớn hơn tiếp theo."
+
+#: ../../library/random.rst:764
+#, fuzzy
+msgid ""
+"from random import Random\n"
+"from math import ldexp\n"
+"\n"
+"class FullRandom(Random):\n"
+"\n"
+"    def random(self):\n"
+"        mantissa = 0x10_0000_0000_0000 | self.getrandbits(52)\n"
+"        exponent = -53\n"
+"        x = 0\n"
+"        while not x:\n"
+"            x = self.getrandbits(32)\n"
+"            exponent += x.bit_length() - 32\n"
+"        return ldexp(mantissa, exponent)"
+msgstr ""
+"từ nhập ngẫu nhiên\n"
+"từ nhập toán học ldexp\n"
+"\n"
+"lớp FullRandom (Ngẫu nhiên):\n"
+"\n"
+"    def ngẫu nhiên (tự):\n"
+"        lớp phủ = 0x10_0000_0000_0000 | self.getrandbits(52)\n"
+"        số mũ = -53\n"
+"        x = 0\n"
+"        trong khi không x:\n"
+"            x = self.getrandbits(32)\n"
+"            số mũ += x.bit_length() - 32\n"
+"        trả về ldexp(mantissa, số mũ)"
+
+#: ../../library/random.rst:778
+#, fuzzy
+msgid ""
+"All :ref:`real valued distributions <real-valued-distributions>` in the "
+"class will use the new method::"
+msgstr ""
+"Tất cả :ref:`real valued distributions <real-valued-distributions>` trong "
+"lớp sẽ sử dụng phương thức mới::"
+
+#: ../../library/random.rst:781
+#, fuzzy
+msgid ""
+">>> fr = FullRandom()\n"
+">>> fr.random()\n"
+"0.05954861408025609\n"
+">>> fr.expovariate(0.25)\n"
+"8.87925541791544"
+msgstr ""
+">>> fr = FullRandom()\n"
+">>> fr.random()\n"
+"0,05954861408025609\n"
+">>> fr.expovariate(0.25)\n"
+"8.87925541791544"
+
+#: ../../library/random.rst:787
+#, fuzzy
+msgid ""
+"The recipe is conceptually equivalent to an algorithm that chooses from all "
+"the multiples of 2⁻¹⁰⁷⁴ in the range *0.0 ≤ x < 1.0*.  All such numbers are "
+"evenly spaced, but most have to be rounded down to the nearest representable"
+" Python float.  (The value 2⁻¹⁰⁷⁴ is the smallest positive unnormalized "
+"float and is equal to ``math.ulp(0.0)``.)"
+msgstr ""
+"Công thức này về mặt khái niệm tương đương với một thuật toán chọn từ tất cả"
+" bội số của 2⁻¹⁰⁷⁴ trong phạm vi *0.0 ≤ x < 1.0*.  Tất cả các số như vậy đều"
+" cách đều nhau, nhưng hầu hết phải được làm tròn xuống số float Python có "
+"thể biểu thị gần nhất.  (Giá trị 2⁻¹⁰⁷⁴ là số float không chuẩn hóa dương "
+"nhỏ nhất và bằng ``math.ulp(0.0)``.)"
+
+#: ../../library/random.rst:796
+#, fuzzy
+msgid ""
+"`Generating Pseudo-random Floating-Point Values "
+"<https://allendowney.com/research/rand/downey07randfloat.pdf>`_ a paper by "
+"Allen B. Downey describing ways to generate more fine-grained floats than "
+"normally generated by :func:`.random`."
+msgstr ""
+"`Generating Pseudo-random Floating-Point Values "
+"<https://allendowney.com/research/rand/downey07randfloat.pdf>`_ một bài báo "
+"của Allen B. Downey mô tả các cách tạo ra nhiều phao chi tiết hơn so với "
+"thông thường do :func:`.random` tạo ra."
+
+#: ../../library/random.rst:804
+#, fuzzy
+msgid "Command-line usage"
+msgstr "Sử dụng dòng lệnh"
+
+#: ../../library/random.rst:808
+#, fuzzy
+msgid "The :mod:`!random` module can be executed from the command line."
+msgstr "Mô-đun :mod:`!random` có thể được thực thi từ dòng lệnh."
+
+#: ../../library/random.rst:810
+#, fuzzy
+msgid ""
+"python -m random [-h] [-c CHOICE [CHOICE ...] | -i N | -f N] [input ...]"
+msgstr ""
+"python -m ngẫu nhiên [-h] [-c CHOICE [CHOICE ...] | -i N | -f N] [đầu vào "
+"...]"
+
+#: ../../library/random.rst:814
+#, fuzzy
+msgid "The following options are accepted:"
+msgstr "Các tùy chọn sau được chấp nhận:"
+
+#: ../../library/random.rst:820
+#, fuzzy
+msgid "Show the help message and exit."
+msgstr "Hiển thị thông báo trợ giúp và thoát."
+
+#: ../../library/random.rst:825
+#, fuzzy
+msgid "Print a random choice, using :meth:`choice`."
+msgstr "In một lựa chọn ngẫu nhiên, sử dụng :meth:`choice`."
+
+#: ../../library/random.rst:830
+#, fuzzy
+msgid ""
+"Print a random integer between 1 and N inclusive, using :meth:`randint`."
+msgstr "In một số nguyên ngẫu nhiên từ 1 đến N, sử dụng :meth:`randint`."
+
+#: ../../library/random.rst:835
+#, fuzzy
+msgid ""
+"Print a random floating-point number between 0 and N inclusive, using "
+":meth:`uniform`."
+msgstr ""
+"In một số dấu phẩy động ngẫu nhiên trong khoảng từ 0 đến N, sử dụng "
+":meth:`uniform`."
+
+#: ../../library/random.rst:838
+#, fuzzy
+msgid "If no options are given, the output depends on the input:"
+msgstr ""
+"Nếu không có tùy chọn nào được đưa ra, đầu ra sẽ phụ thuộc vào đầu vào:"
+
+#: ../../library/random.rst:840
+#, fuzzy
+msgid "String or multiple: same as :option:`--choice`."
+msgstr "Chuỗi hoặc nhiều chuỗi: giống như :option:`--choice`."
+
+#: ../../library/random.rst:841
+#, fuzzy
+msgid "Integer: same as :option:`--integer`."
+msgstr "Số nguyên: giống như :option:`--integer`."
+
+#: ../../library/random.rst:842
+#, fuzzy
+msgid "Float: same as :option:`--float`."
+msgstr "Nổi: giống như :option:`--float`."
+
+#: ../../library/random.rst:847
+#, fuzzy
+msgid "Command-line example"
+msgstr "Ví dụ dòng lệnh"
+
+#: ../../library/random.rst:849
+#, fuzzy
+msgid "Here are some examples of the :mod:`!random` command-line interface:"
+msgstr "Dưới đây là một số ví dụ về giao diện dòng lệnh :mod:`!random`:"
+
+#: ../../library/random.rst:851
+#, fuzzy
+msgid ""
+"$ # Choose one at random\n"
+"$ python -m random egg bacon sausage spam \"Lobster Thermidor aux crevettes with a Mornay sauce\"\n"
+"Lobster Thermidor aux crevettes with a Mornay sauce\n"
+"\n"
+"$ # Random integer\n"
+"$ python -m random 6\n"
+"6\n"
+"\n"
+"$ # Random floating-point number\n"
+"$ python -m random 1.8\n"
+"1.7080016272295635\n"
+"\n"
+"$ # With explicit arguments\n"
+"$ python  -m random --choice egg bacon sausage spam \"Lobster Thermidor aux crevettes with a Mornay sauce\"\n"
+"egg\n"
+"\n"
+"$ python -m random --integer 6\n"
+"3\n"
+"\n"
+"$ python -m random --float 1.8\n"
+"1.5666339105010318\n"
+"\n"
+"$ python -m random --integer 6\n"
+"5\n"
+"\n"
+"$ python -m random --float 6\n"
+"3.1942323316565915"
+msgstr ""
+"$ # Choose một cái ngẫu nhiên\n"
+"$ python -m spam xúc xích trứng ngẫu nhiên thịt xông khói \"Tôm hùm Thermidor aux crevettes với sốt Mornay\"\n"
+"Tôm hùm Thermidor aux crevettes với sốt Mornay\n"
+"\n"
+"$# Random số nguyên\n"
+"$ trăn -m ngẫu nhiên 6\n"
+"6\n"
+"\n"
+"$ # Random số dấu phẩy động\n"
+"$ trăn -m ngẫu nhiên 1,8\n"
+"1.7080016272295635\n"
+"\n"
+"$ # With đối số rõ ràng\n"
+"$ python -m ngẫu nhiên --choice trứng xúc xích thịt xông khói thư rác \"Tôm hùm Thermidor aux crevettes với sốt Mornay\"\n"
+"quả trứng\n"
+"\n"
+"$ python -m ngẫu nhiên -- số nguyên 6\n"
+"3\n"
+"\n"
+"$ python -m ngẫu nhiên --float 1.8\n"
+"1.5666339105010318\n"
+"\n"
+"$ python -m ngẫu nhiên -- số nguyên 6\n"
+"5\n"
+"\n"
+"$ python -m ngẫu nhiên --float 6\n"
+"3.1942323316565915"

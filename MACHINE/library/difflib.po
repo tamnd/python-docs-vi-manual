@@ -1,0 +1,1661 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/difflib.rst:2
+#, fuzzy
+msgid ":mod:`!difflib` --- Helpers for computing deltas"
+msgstr ":mod:`!difflib` --- Người trợ giúp tính toán delta"
+
+#: ../../library/difflib.rst:11
+#, fuzzy
+msgid "**Source code:** :source:`Lib/difflib.py`"
+msgstr "**Source code:** :source:`Lib/difflib.py`"
+
+#: ../../library/difflib.rst:20
+#, fuzzy
+msgid ""
+"This module provides classes and functions for comparing sequences. It can "
+"be used for example, for comparing files, and can produce information about "
+"file differences in various formats, including HTML and context and unified "
+"diffs. For comparing directories and files, see also, the :mod:`filecmp` "
+"module."
+msgstr ""
+"Mô-đun này cung cấp các lớp và chức năng để so sánh trình tự. Ví dụ: nó có "
+"thể được sử dụng để so sánh các tệp và có thể tạo ra thông tin về sự khác "
+"biệt của tệp ở các định dạng khác nhau, bao gồm HTML, ngữ cảnh và các khác "
+"biệt thống nhất. Để so sánh các thư mục và tập tin, hãy xem thêm mô-đun "
+":mod:`filecmp`."
+
+#: ../../library/difflib.rst:29
+#, fuzzy
+msgid ""
+"This is a flexible class for comparing pairs of sequences of any type, so "
+"long as the sequence elements are :term:`hashable`.  The basic algorithm "
+"predates, and is a little fancier than, an algorithm published in the late "
+"1980's by Ratcliff and Obershelp under the hyperbolic name \"gestalt pattern"
+" matching.\"  The idea is to find the longest contiguous matching "
+"subsequence that contains no \"junk\" elements; these \"junk\" elements are "
+"ones that are uninteresting in some sense, such as blank lines or "
+"whitespace.  (Handling junk is an extension to the Ratcliff and Obershelp "
+"algorithm.) The same idea is then applied recursively to the pieces of the "
+"sequences to the left and to the right of the matching subsequence.  This "
+"does not yield minimal edit sequences, but does tend to yield matches that "
+"\"look right\" to people."
+msgstr ""
+"Đây là một lớp linh hoạt để so sánh các cặp chuỗi thuộc bất kỳ loại nào, "
+"miễn là các phần tử của chuỗi là :term:`hashable`.  Thuật toán cơ bản có "
+"trước và lạ hơn một chút so với thuật toán được Ratcliff và Obershelp xuất "
+"bản vào cuối những năm 1980 dưới tên hyperbol là \"khớp mẫu hình cử chỉ\".  "
+"Ý tưởng là tìm chuỗi con liền kề dài nhất không chứa phần tử \"rác\"; những "
+"phần tử \"rác\" này là những phần tử không thú vị theo một nghĩa nào đó, "
+"chẳng hạn như các dòng trống hoặc khoảng trắng.  (Xử lý rác là một phần mở "
+"rộng của thuật toán Ratcliff và Obershelp.) Ý tưởng tương tự sau đó được áp "
+"dụng đệ quy cho các phần của chuỗi ở bên trái và bên phải của chuỗi con phù "
+"hợp.  Điều này không mang lại trình tự chỉnh sửa tối thiểu nhưng có xu hướng"
+" mang lại kết quả phù hợp với mọi người."
+
+#: ../../library/difflib.rst:41
+#, fuzzy
+msgid ""
+"**Timing:** The basic Ratcliff-Obershelp algorithm is cubic time in the "
+"worst case and quadratic time in the expected case. :class:`SequenceMatcher`"
+" is quadratic time for the worst case and has expected-case behavior "
+"dependent in a complicated way on how many elements the sequences have in "
+"common; best case time is linear."
+msgstr ""
+"**Timing:** Thuật toán Ratcliff-Obershelp cơ bản là thời gian bậc ba trong "
+"trường hợp xấu nhất và thời gian bậc hai trong trường hợp dự kiến. "
+":class:`SequenceMatcher` là thời gian bậc hai cho trường hợp xấu nhất và có "
+"hành vi trong trường hợp dự kiến ​​phụ thuộc một cách phức tạp vào số phần "
+"tử chung của các chuỗi; trường hợp tốt nhất thời gian là tuyến tính."
+
+#: ../../library/difflib.rst:47
+#, python-format, fuzzy
+msgid ""
+"**Automatic junk heuristic:** :class:`SequenceMatcher` supports a heuristic "
+"that automatically treats certain sequence items as junk. The heuristic "
+"counts how many times each individual item appears in the sequence. If an "
+"item's duplicates (after the first one) account for more than 1% of the "
+"sequence and the sequence is at least 200 items long, this item is marked as"
+" \"popular\" and is treated as junk for the purpose of sequence matching. "
+"This heuristic can be turned off by setting the ``autojunk`` argument to "
+"``False`` when creating the :class:`SequenceMatcher`."
+msgstr ""
+"**Automatic junk heuristic:** :class:`SequenceMatcher` hỗ trợ phương pháp "
+"phỏng đoán tự động coi các mục trong chuỗi nhất định là rác. Heuristic đếm "
+"số lần mỗi mục riêng lẻ xuất hiện trong chuỗi. Nếu các bản sao của một mục "
+"(sau mục đầu tiên) chiếm hơn 1% trình tự và trình tự dài ít nhất 200 mục thì"
+" mục này được đánh dấu là \"phổ biến\" và được coi là rác vì mục đích khớp "
+"trình tự. Bạn có thể tắt phương pháp phỏng đoán này bằng cách đặt đối số "
+"``autojunk`` thành ``False`` khi tạo :class:`SequenceMatcher`."
+
+#: ../../library/difflib.rst:55 ../../library/difflib.rst:386
+#, fuzzy
+msgid "Added the *autojunk* parameter."
+msgstr "Đã thêm tham số *autojunk*."
+
+#: ../../library/difflib.rst:61
+#, fuzzy
+msgid ""
+"This is a class for comparing sequences of lines of text, and producing "
+"human-readable differences or deltas.  Differ uses :class:`SequenceMatcher` "
+"both to compare sequences of lines, and to compare sequences of characters "
+"within similar (near-matching) lines."
+msgstr ""
+"Đây là lớp để so sánh trình tự các dòng văn bản và tạo ra những điểm khác "
+"biệt hoặc vùng đồng bằng mà con người có thể đọc được.  Differ sử dụng "
+":class:`SequenceMatcher` để so sánh trình tự các dòng và so sánh trình tự "
+"các ký tự trong các dòng tương tự (gần khớp)."
+
+#: ../../library/difflib.rst:66
+#, fuzzy
+msgid "Each line of a :class:`Differ` delta begins with a two-letter code:"
+msgstr "Mỗi dòng của delta :class:`Differ` bắt đầu bằng mã gồm hai chữ cái:"
+
+#: ../../library/difflib.rst:69
+#, fuzzy
+msgid "Code"
+msgstr "Mã"
+
+#: ../../library/difflib.rst:69 ../../library/difflib.rst:496
+#, fuzzy
+msgid "Meaning"
+msgstr "Ý nghĩa"
+
+#: ../../library/difflib.rst:71
+#, fuzzy
+msgid "``'- '``"
+msgstr "``'- '``"
+
+#: ../../library/difflib.rst:71
+#, fuzzy
+msgid "line unique to sequence 1"
+msgstr "dòng duy nhất cho chuỗi 1"
+
+#: ../../library/difflib.rst:73
+#, fuzzy
+msgid "``'+ '``"
+msgstr "``'+ '``"
+
+#: ../../library/difflib.rst:73
+#, fuzzy
+msgid "line unique to sequence 2"
+msgstr "dòng duy nhất cho chuỗi 2"
+
+#: ../../library/difflib.rst:75
+#, fuzzy
+msgid "``'  '``"
+msgstr "``'  '``"
+
+#: ../../library/difflib.rst:75
+#, fuzzy
+msgid "line common to both sequences"
+msgstr "dòng chung cho cả hai chuỗi"
+
+#: ../../library/difflib.rst:77
+#, fuzzy
+msgid "``'? '``"
+msgstr "``'? '``"
+
+#: ../../library/difflib.rst:77
+#, fuzzy
+msgid "line not present in either input sequence"
+msgstr "dòng không có trong cả hai chuỗi đầu vào"
+
+#: ../../library/difflib.rst:80
+#, fuzzy
+msgid ""
+"Lines beginning with '``?``' attempt to guide the eye to intraline "
+"differences, and were not present in either input sequence. These lines can "
+"be confusing if the sequences contain whitespace characters, such as spaces,"
+" tabs or line breaks."
+msgstr ""
+"Các dòng bắt đầu bằng '``?``' cố gắng hướng mắt đến những khác biệt trong "
+"dòng và không xuất hiện trong cả hai chuỗi đầu vào. Những dòng này có thể "
+"gây nhầm lẫn nếu chuỗi chứa các ký tự khoảng trắng, chẳng hạn như dấu cách, "
+"tab hoặc dấu ngắt dòng."
+
+#: ../../library/difflib.rst:87
+#, fuzzy
+msgid ""
+"This class can be used to create an HTML table (or a complete HTML file "
+"containing the table) showing a side by side, line by line comparison of "
+"text with inter-line and intra-line change highlights.  The table can be "
+"generated in either full or contextual difference mode."
+msgstr ""
+"Lớp này có thể được sử dụng để tạo một bảng HTML (hoặc một tệp HTML hoàn "
+"chỉnh có chứa bảng) hiển thị so sánh văn bản cạnh nhau, từng dòng với các "
+"điểm nổi bật thay đổi giữa dòng và nội dòng.  Bảng có thể được tạo ở chế độ "
+"khác biệt đầy đủ hoặc theo ngữ cảnh."
+
+#: ../../library/difflib.rst:92
+#, fuzzy
+msgid "The constructor for this class is:"
+msgstr "Hàm tạo cho lớp này là:"
+
+#: ../../library/difflib.rst:97
+#, fuzzy
+msgid "Initializes instance of :class:`HtmlDiff`."
+msgstr "Khởi tạo phiên bản của :class:`HtmlDiff`."
+
+#: ../../library/difflib.rst:99
+#, fuzzy
+msgid ""
+"*tabsize* is an optional keyword argument to specify tab stop spacing and "
+"defaults to ``8``."
+msgstr ""
+"*tabsize* là một đối số từ khóa tùy chọn để chỉ định khoảng cách giữa các "
+"điểm dừng tab và mặc định là ``8``."
+
+#: ../../library/difflib.rst:102
+#, fuzzy
+msgid ""
+"*wrapcolumn* is an optional keyword to specify column number where lines are"
+" broken and wrapped, defaults to ``None`` where lines are not wrapped."
+msgstr ""
+"*wrapcolumn* là từ khóa tùy chọn để chỉ định số cột trong đó các dòng bị "
+"ngắt và được ngắt dòng, mặc định là ``None`` khi các dòng không được ngắt "
+"dòng."
+
+#: ../../library/difflib.rst:105
+#, fuzzy
+msgid ""
+"*linejunk* and *charjunk* are optional keyword arguments passed into "
+":func:`ndiff` (used by :class:`HtmlDiff` to generate the side by side HTML "
+"differences).  See :func:`ndiff` documentation for argument default values "
+"and descriptions."
+msgstr ""
+"*linejunk* và *charjunk* là các đối số từ khóa tùy chọn được chuyển vào "
+":func:`ndiff` (được :class:`HtmlDiff` sử dụng để tạo ra sự khác biệt giữa "
+"HTML).  Xem tài liệu :func:`ndiff` để biết các mô tả và giá trị mặc định của"
+" đối số."
+
+#: ../../library/difflib.rst:109
+#, fuzzy
+msgid "The following methods are public:"
+msgstr "Các phương pháp sau đây là công khai:"
+
+#: ../../library/difflib.rst:114
+#, fuzzy
+msgid ""
+"Compares *fromlines* and *tolines* (lists of strings) and returns a string "
+"which is a complete HTML file containing a table showing line by line "
+"differences with inter-line and intra-line changes highlighted."
+msgstr ""
+"So sánh *fromlines* và *tolines* (danh sách các chuỗi) và trả về một chuỗi "
+"là tệp HTML hoàn chỉnh chứa một bảng hiển thị sự khác biệt theo từng dòng "
+"với các thay đổi giữa các dòng và nội dòng được tô sáng."
+
+#: ../../library/difflib.rst:118
+#, fuzzy
+msgid ""
+"*fromdesc* and *todesc* are optional keyword arguments to specify from/to "
+"file column header strings (both default to an empty string)."
+msgstr ""
+"*fromdesc* và *todesc* là các đối số từ khóa tùy chọn để chỉ định các chuỗi "
+"tiêu đề cột từ/đến tệp (cả hai đều mặc định là một chuỗi trống)."
+
+#: ../../library/difflib.rst:121
+#, fuzzy
+msgid ""
+"*context* and *numlines* are both optional keyword arguments. Set *context* "
+"to ``True`` when contextual differences are to be shown, else the default is"
+" ``False`` to show the full files. *numlines* defaults to ``5``.  When "
+"*context* is ``True`` *numlines* controls the number of context lines which "
+"surround the difference highlights.  When *context* is ``False`` *numlines* "
+"controls the number of lines which are shown before a difference highlight "
+"when using the \"next\" hyperlinks (setting to zero would cause the \"next\""
+" hyperlinks to place the next difference highlight at the top of the browser"
+" without any leading context)."
+msgstr ""
+"*context* và *numlines* đều là đối số từ khóa tùy chọn. Đặt *context* thành "
+"``True`` khi hiển thị sự khác biệt về ngữ cảnh, nếu không thì mặc định là "
+"``False`` để hiển thị toàn bộ tệp. *numlines* mặc định là ``5``.  Khi "
+"*context* là ``True`` *numlines* kiểm soát số lượng dòng ngữ cảnh bao quanh "
+"các điểm nổi bật khác nhau.  Khi *context* là ``False`` *numlines* kiểm soát"
+" số dòng được hiển thị trước điểm đánh dấu sự khác biệt khi sử dụng siêu "
+"liên kết \"tiếp theo\" (việc đặt thành 0 sẽ khiến các siêu liên kết \"tiếp "
+"theo\" đặt điểm nổi bật khác biệt tiếp theo ở đầu trình duyệt mà không có "
+"bất kỳ bối cảnh dẫn đầu nào)."
+
+#: ../../library/difflib.rst:132
+#, fuzzy
+msgid ""
+"*fromdesc* and *todesc* are interpreted as unescaped HTML and should be "
+"properly escaped while receiving input from untrusted sources."
+msgstr ""
+"*fromdesc* và *todesc* được hiểu là HTML không thoát và phải được thoát đúng"
+" cách trong khi nhận đầu vào từ các nguồn không đáng tin cậy."
+
+#: ../../library/difflib.rst:135
+#, fuzzy
+msgid ""
+"*charset* keyword-only argument was added.  The default charset of HTML "
+"document changed from ``'ISO-8859-1'`` to ``'utf-8'``."
+msgstr ""
+"đối số chỉ từ khóa *charset* đã được thêm vào.  Bộ ký tự mặc định của tài "
+"liệu HTML đã thay đổi từ ``'ISO-8859-1'`` thành ``'utf-8'``."
+
+#: ../../library/difflib.rst:141
+#, fuzzy
+msgid ""
+"Compares *fromlines* and *tolines* (lists of strings) and returns a string "
+"which is a complete HTML table showing line by line differences with inter-"
+"line and intra-line changes highlighted."
+msgstr ""
+"So sánh *fromlines* và *tolines* (danh sách các chuỗi) và trả về một chuỗi "
+"là một bảng HTML hoàn chỉnh hiển thị sự khác biệt theo từng dòng với các "
+"thay đổi giữa các dòng và nội dòng được tô sáng."
+
+#: ../../library/difflib.rst:145
+#, fuzzy
+msgid ""
+"The arguments for this method are the same as those for the "
+":meth:`make_file` method."
+msgstr ""
+"Các đối số cho phương thức này giống với các đối số cho phương thức "
+":meth:`make_file`."
+
+#: ../../library/difflib.rst:152
+#, fuzzy
+msgid ""
+"Compare *a* and *b* (lists of strings); return a delta (a :term:`generator` "
+"generating the delta lines) in context diff format."
+msgstr ""
+"So sánh *a* và *b* (danh sách các chuỗi); trả về một delta "
+"(:term:`generator` tạo các dòng delta) ở định dạng khác biệt ngữ cảnh."
+
+#: ../../library/difflib.rst:155
+#, fuzzy
+msgid ""
+"Context diffs are a compact way of showing just the lines that have changed "
+"plus a few lines of context.  The changes are shown in a before/after style."
+"  The number of context lines is set by *n* which defaults to three."
+msgstr ""
+"Khác biệt ngữ cảnh là một cách nhỏ gọn để chỉ hiển thị những dòng đã thay "
+"đổi cộng với một vài dòng ngữ cảnh.  Những thay đổi được hiển thị theo kiểu "
+"trước/sau.  Số lượng dòng ngữ cảnh được đặt bởi *n*, mặc định là ba."
+
+#: ../../library/difflib.rst:159
+#, fuzzy
+msgid ""
+"By default, the diff control lines (those with ``***`` or ``---``) are "
+"created with a trailing newline.  This is helpful so that inputs created "
+"from :func:`io.IOBase.readlines` result in diffs that are suitable for use "
+"with :func:`io.IOBase.writelines` since both the inputs and outputs have "
+"trailing newlines."
+msgstr ""
+"Theo mặc định, các dòng điều khiển khác biệt (những dòng có ``***`` hoặc "
+"``---``) được tạo bằng một dòng mới ở cuối.  Điều này hữu ích để các đầu vào"
+" được tạo từ :func:`io.IOBase.readlines` tạo ra các khác biệt phù hợp để sử "
+"dụng với :func:`io.IOBase.writelines` vì cả đầu vào và đầu ra đều có dòng "
+"mới ở cuối."
+
+#: ../../library/difflib.rst:165 ../../library/difflib.rst:297
+#, fuzzy
+msgid ""
+"For inputs that do not have trailing newlines, set the *lineterm* argument "
+"to ``\"\"`` so that the output will be uniformly newline free."
+msgstr ""
+"Đối với các đầu vào không có dòng mới ở cuối, hãy đặt đối số *lineterm* "
+"thành ``\"\"`` để đầu ra sẽ không có dòng mới một cách thống nhất."
+
+#: ../../library/difflib.rst:168
+#, fuzzy
+msgid ""
+"The context diff format normally has a header for filenames and modification"
+" times.  Any or all of these may be specified using strings for *fromfile*, "
+"*tofile*, *fromfiledate*, and *tofiledate*.  The modification times are "
+"normally expressed in the ISO 8601 format. If not specified, the strings "
+"default to blanks."
+msgstr ""
+"Định dạng khác biệt ngữ cảnh thường có tiêu đề cho tên tệp và thời gian sửa "
+"đổi.  Bất kỳ hoặc tất cả những điều này có thể được chỉ định bằng cách sử "
+"dụng chuỗi cho *fromfile*, *tofile*, *fromfiledate* và *tofiledate*.  Thời "
+"gian sửa đổi thường được thể hiện ở định dạng ISO 8601. Nếu không được chỉ "
+"định, các chuỗi sẽ mặc định là khoảng trống."
+
+#: ../../library/difflib.rst:194 ../../library/difflib.rst:320
+#, fuzzy
+msgid "See :ref:`difflib-interface` for a more detailed example."
+msgstr "Xem :ref:`difflib-interface` để biết ví dụ chi tiết hơn."
+
+#: ../../library/difflib.rst:199
+#, fuzzy
+msgid ""
+"Return a list of the best \"good enough\" matches.  *word* is a sequence for"
+" which close matches are desired (typically a string), and *possibilities* "
+"is a list of sequences against which to match *word* (typically a list of "
+"strings)."
+msgstr ""
+"Trả về danh sách các kết quả phù hợp \"đủ tốt\" tốt nhất.  *word* là một "
+"chuỗi cần có các kết quả khớp gần nhau (thường là một chuỗi) và "
+"*possibilities* là danh sách các chuỗi để khớp với *word* (thường là danh "
+"sách các chuỗi)."
+
+#: ../../library/difflib.rst:203
+#, fuzzy
+msgid ""
+"Optional argument *n* (default ``3``) is the maximum number of close matches"
+" to return; *n* must be greater than ``0``."
+msgstr ""
+"Đối số tùy chọn *n* (``3`` mặc định) là số lượng kết quả khớp gần tối đa cần"
+" trả về; *n* phải lớn hơn ``0``."
+
+#: ../../library/difflib.rst:206
+#, fuzzy
+msgid ""
+"Optional argument *cutoff* (default ``0.6``) is a float in the range [0, 1]."
+" Possibilities that don't score at least that similar to *word* are ignored."
+msgstr ""
+"Đối số tùy chọn *cutoff* (``0.6`` mặc định) là một số float trong phạm vi "
+"[0, 1]. Những khả năng không đạt điểm tối thiểu tương tự như *word* sẽ bị bỏ"
+" qua."
+
+#: ../../library/difflib.rst:209
+#, fuzzy
+msgid ""
+"The best (no more than *n*) matches among the possibilities are returned in "
+"a list, sorted by similarity score, most similar first."
+msgstr ""
+"Các kết quả phù hợp nhất (không quá *n*) trong số các khả năng sẽ được trả "
+"về trong một danh sách, được sắp xếp theo điểm tương đồng, giống nhất trước "
+"tiên."
+
+#: ../../library/difflib.rst:225
+#, fuzzy
+msgid ""
+"Compare *a* and *b* (lists of strings); return a :class:`Differ`\\ -style "
+"delta (a :term:`generator` generating the delta lines)."
+msgstr ""
+"So sánh *a* và *b* (danh sách các chuỗi); trả về một delta kiểu "
+":class:`Differ`\\ - (một :term:`generator` tạo ra các đường delta)."
+
+#: ../../library/difflib.rst:228
+#, fuzzy
+msgid ""
+"Optional keyword parameters *linejunk* and *charjunk* are filtering "
+"functions (or ``None``):"
+msgstr ""
+"Các tham số từ khóa tùy chọn *linejunk* và *charjunk* là các hàm lọc (hoặc "
+"``None``):"
+
+#: ../../library/difflib.rst:231
+#, fuzzy
+msgid ""
+"*linejunk*: A function that accepts a single string argument, and returns "
+"true if the string is junk, or false if not. The default is ``None``. There "
+"is also a module-level function :func:`IS_LINE_JUNK`, which filters out "
+"lines without visible characters, except for at most one hash character "
+"(``'#'``) -- however the underlying :class:`SequenceMatcher` class does a "
+"dynamic analysis of which lines are so frequent as to constitute noise, and "
+"this usually works better than using this function."
+msgstr ""
+"*linejunk*: Hàm chấp nhận một đối số chuỗi đơn và trả về true nếu chuỗi đó "
+"là rác hoặc trả về false nếu không. Mặc định là ``None``. Ngoài ra còn có "
+"một hàm cấp mô-đun :func:`IS_LINE_JUNK`, giúp lọc ra các dòng không có ký tự"
+" hiển thị, ngoại trừ nhiều nhất một ký tự băm (``'#'``) -- tuy nhiên, lớp "
+":class:`SequenceMatcher` cơ bản thực hiện phân tích động về những dòng nào "
+"xuất hiện thường xuyên đến mức tạo thành nhiễu và điều này thường hoạt động "
+"tốt hơn so với việc sử dụng chức năng này."
+
+#: ../../library/difflib.rst:239
+#, fuzzy
+msgid ""
+"*charjunk*: A function that accepts a character (a string of length 1), and "
+"returns if the character is junk, or false if not. The default is module-"
+"level function :func:`IS_CHARACTER_JUNK`, which filters out whitespace "
+"characters (a blank or tab; it's a bad idea to include newline in this!)."
+msgstr ""
+"*charjunk*: Hàm chấp nhận một ký tự (chuỗi có độ dài 1) và trả về nếu ký tự "
+"đó là rác hoặc trả về sai nếu không. Mặc định là hàm cấp mô-đun "
+":func:`IS_CHARACTER_JUNK`, chức năng này lọc các ký tự khoảng trắng (trống "
+"hoặc tab; việc thêm dòng mới vào đây là một ý tưởng tồi!)."
+
+#: ../../library/difflib.rst:260
+#, fuzzy
+msgid "Return one of the two sequences that generated a delta."
+msgstr "Trả về một trong hai chuỗi đã tạo ra delta."
+
+#: ../../library/difflib.rst:262
+#, fuzzy
+msgid ""
+"Given a *sequence* produced by :meth:`Differ.compare` or :func:`ndiff`, "
+"extract lines originating from file 1 or 2 (parameter *which*), stripping "
+"off line prefixes."
+msgstr ""
+"Cho một *sequence* được tạo bởi :meth:`Differ.compare` hoặc :func:`ndiff`, "
+"trích xuất các dòng có nguồn gốc từ tệp 1 hoặc 2 (tham số *which*), loại bỏ "
+"các tiền tố dòng."
+
+#: ../../library/difflib.rst:266
+#, fuzzy
+msgid "Example:"
+msgstr "Ví dụ:"
+
+#: ../../library/difflib.rst:283
+#, fuzzy
+msgid ""
+"Compare *a* and *b* (lists of strings); return a delta (a :term:`generator` "
+"generating the delta lines) in unified diff format."
+msgstr ""
+"So sánh *a* và *b* (danh sách các chuỗi); trả về một delta "
+"(:term:`generator` tạo các dòng delta) ở định dạng khác biệt thống nhất."
+
+#: ../../library/difflib.rst:286
+#, fuzzy
+msgid ""
+"Unified diffs are a compact way of showing just the lines that have changed "
+"plus a few lines of context.  The changes are shown in an inline style "
+"(instead of separate before/after blocks).  The number of context lines is "
+"set by *n* which defaults to three."
+msgstr ""
+"Khác biệt thống nhất là một cách nhỏ gọn để chỉ hiển thị các dòng đã thay "
+"đổi cộng với một vài dòng ngữ cảnh.  Các thay đổi được hiển thị theo kiểu "
+"nội tuyến (thay vì các khối trước/sau riêng biệt).  Số lượng dòng ngữ cảnh "
+"được đặt bởi *n*, mặc định là ba."
+
+#: ../../library/difflib.rst:291
+#, fuzzy
+msgid ""
+"By default, the diff control lines (those with ``---``, ``+++``, or ``@@``) "
+"are created with a trailing newline.  This is helpful so that inputs created"
+" from :func:`io.IOBase.readlines` result in diffs that are suitable for use "
+"with :func:`io.IOBase.writelines` since both the inputs and outputs have "
+"trailing newlines."
+msgstr ""
+"Theo mặc định, các dòng điều khiển khác biệt (những dòng có ``---``, ``+++``"
+" hoặc ``@@``) được tạo bằng một dòng mới ở cuối.  Điều này hữu ích để các "
+"đầu vào được tạo từ :func:`io.IOBase.readlines` tạo ra các khác biệt phù hợp"
+" để sử dụng với :func:`io.IOBase.writelines` vì cả đầu vào và đầu ra đều có "
+"dòng mới ở cuối."
+
+#: ../../library/difflib.rst:300
+#, fuzzy
+msgid ""
+"The unified diff format normally has a header for filenames and modification"
+" times.  Any or all of these may be specified using strings for *fromfile*, "
+"*tofile*, *fromfiledate*, and *tofiledate*.  The modification times are "
+"normally expressed in the ISO 8601 format. If not specified, the strings "
+"default to blanks."
+msgstr ""
+"Định dạng khác biệt thống nhất thường có tiêu đề cho tên tệp và thời gian "
+"sửa đổi.  Bất kỳ hoặc tất cả những điều này có thể được chỉ định bằng cách "
+"sử dụng chuỗi cho *fromfile*, *tofile*, *fromfiledate* và *tofiledate*.  "
+"Thời gian sửa đổi thường được thể hiện ở định dạng ISO 8601. Nếu không được "
+"chỉ định, các chuỗi sẽ mặc định là khoảng trống."
+
+#: ../../library/difflib.rst:324
+#, fuzzy
+msgid ""
+"Compare *a* and *b* (lists of bytes objects) using *dfunc*; yield a sequence"
+" of delta lines (also bytes) in the format returned by *dfunc*. *dfunc* must"
+" be a callable, typically either :func:`unified_diff` or "
+":func:`context_diff`."
+msgstr ""
+"So sánh *a* và *b* (danh sách các đối tượng byte) bằng *dfunc*; mang lại một"
+" chuỗi các dòng delta (cũng là byte) ở định dạng được trả về bởi *dfunc*. "
+"*dfunc* phải có thể gọi được, thường là :func:`unified_diff` hoặc "
+":func:`context_diff`."
+
+#: ../../library/difflib.rst:329
+#, fuzzy
+msgid ""
+"Allows you to compare data with unknown or inconsistent encoding. All inputs"
+" except *n* must be bytes objects, not str. Works by losslessly converting "
+"all inputs (except *n*) to str, and calling ``dfunc(a, b, fromfile, tofile, "
+"fromfiledate, tofiledate, n, lineterm)``. The output of *dfunc* is then "
+"converted back to bytes, so the delta lines that you receive have the same "
+"unknown/inconsistent encodings as *a* and *b*."
+msgstr ""
+"Cho phép bạn so sánh dữ liệu với mã hóa không xác định hoặc không nhất quán."
+" Tất cả đầu vào ngoại trừ *n* phải là đối tượng byte, không phải str. Hoạt "
+"động bằng cách chuyển đổi dễ dàng tất cả đầu vào (ngoại trừ *n*) thành str "
+"và gọi ``dfunc(a, b, fromfile, tofile, fromfiledate, tofiledate, n, "
+"lineterm)``. Sau đó, đầu ra của *dfunc* được chuyển đổi trở lại thành byte, "
+"do đó, các dòng delta mà bạn nhận được có cùng mã hóa không xác định/không "
+"nhất quán như *a* và *b*."
+
+#: ../../library/difflib.rst:340
+#, fuzzy
+msgid ""
+"Return ``True`` for ignorable lines.  The line *line* is ignorable if *line*"
+" is blank or contains a single ``'#'``, otherwise it is not ignorable.  Used"
+" as a default for parameter *linejunk* in :func:`ndiff` in older versions."
+msgstr ""
+"Trả về ``True`` cho các dòng có thể bỏ qua.  Dòng *line* không thể bỏ qua "
+"nếu *line* trống hoặc chỉ chứa một ``'#'``, nếu không thì không thể bỏ qua."
+"  Được sử dụng làm mặc định cho tham số *linejunk* trong :func:`ndiff` ở các"
+" phiên bản cũ hơn."
+
+#: ../../library/difflib.rst:347
+#, fuzzy
+msgid ""
+"Return ``True`` for ignorable characters.  The character *ch* is ignorable "
+"if *ch* is a space or tab, otherwise it is not ignorable.  Used as a default"
+" for parameter *charjunk* in :func:`ndiff`."
+msgstr ""
+"Trả về ``True`` cho các ký tự không thể bỏ qua.  Ký tự *ch* không thể bỏ qua"
+" nếu *ch* là khoảng trắng hoặc tab, nếu không thì không thể bỏ qua.  Được sử"
+" dụng làm mặc định cho tham số *charjunk* trong :func:`ndiff`."
+
+#: ../../library/difflib.rst:354
+#, fuzzy
+msgid ""
+"`Pattern Matching: The Gestalt Approach "
+"<https://jacobfilipp.com/DrDobbs/articles/DDJ/1988/8807/8807c/8807c.htm>`_"
+msgstr ""
+"`Pattern Matching: The Gestalt Approach "
+"<https://jacobfilipp.com/DrDobbs/articles/DDJ/1988/8807/8807c/8807c.htm>`_"
+
+#: ../../library/difflib.rst:355
+#, fuzzy
+msgid ""
+"Discussion of a similar algorithm by John W. Ratcliff and D. E. Metzener. "
+"This was published in Dr. Dobb's Journal in July, 1988."
+msgstr ""
+"Thảo luận về một thuật toán tương tự của John W. Ratcliff và D. E. Metzener."
+" Điều này đã được công bố trên Tạp chí của Tiến sĩ Dobb vào tháng 7 năm "
+"1988."
+
+#: ../../library/difflib.rst:362
+#, fuzzy
+msgid "SequenceMatcher objects"
+msgstr "Đối tượng SequenceMatcher"
+
+#: ../../library/difflib.rst:364
+#, fuzzy
+msgid "The :class:`SequenceMatcher` class has this constructor:"
+msgstr "Lớp :class:`SequenceMatcher` có hàm tạo này:"
+
+#: ../../library/difflib.rst:369
+#, fuzzy
+msgid ""
+"Optional argument *isjunk* must be ``None`` (the default) or a one-argument "
+"function that takes a sequence element and returns true if and only if the "
+"element is \"junk\" and should be ignored. Passing ``None`` for *isjunk* is "
+"equivalent to passing ``lambda x: False``; in other words, no elements are "
+"ignored. For example, pass::"
+msgstr ""
+"Đối số tùy chọn *isjunk* phải là ``None`` (mặc định) hoặc hàm một đối số "
+"nhận một phần tử chuỗi và trả về true khi và chỉ khi phần tử đó là \"rác\" "
+"và nên được bỏ qua. Việc chuyển ``None`` cho *isjunk* tương đương với việc "
+"chuyển ``lambda x: False``; nói cách khác, không có phần tử nào bị bỏ qua. "
+"Ví dụ: vượt qua::"
+
+#: ../../library/difflib.rst:375
+#, fuzzy
+msgid "lambda x: x in \" \\t\""
+msgstr "lambda x: x trong \" \\t\""
+
+#: ../../library/difflib.rst:377
+#, fuzzy
+msgid ""
+"if you're comparing lines as sequences of characters, and don't want to "
+"synch up on blanks or hard tabs."
+msgstr ""
+"nếu bạn đang so sánh các dòng dưới dạng chuỗi ký tự và không muốn đồng bộ "
+"hóa trên các khoảng trống hoặc tab cứng."
+
+#: ../../library/difflib.rst:380
+#, fuzzy
+msgid ""
+"The optional arguments *a* and *b* are sequences to be compared; both "
+"default to empty strings.  The elements of both sequences must be "
+":term:`hashable`."
+msgstr ""
+"Các đối số tùy chọn *a* và *b* là các chuỗi được so sánh; cả hai đều mặc "
+"định là chuỗi trống.  Các phần tử của cả hai chuỗi phải là :term:`hashable`."
+
+#: ../../library/difflib.rst:383
+#, fuzzy
+msgid ""
+"The optional argument *autojunk* can be used to disable the automatic junk "
+"heuristic."
+msgstr ""
+"Đối số tùy chọn *autojunk* có thể được sử dụng để vô hiệu hóa tính năng "
+"phỏng đoán rác tự động."
+
+#: ../../library/difflib.rst:389
+#, fuzzy
+msgid ""
+"SequenceMatcher objects get three data attributes: *bjunk* is the set of "
+"elements of *b* for which *isjunk* is ``True``; *bpopular* is the set of "
+"non-junk elements considered popular by the heuristic (if it is not "
+"disabled); *b2j* is a dict mapping the remaining elements of *b* to a list "
+"of positions where they occur. All three are reset whenever *b* is reset "
+"with :meth:`set_seqs` or :meth:`set_seq2`."
+msgstr ""
+"Các đối tượng SequenceMatcher nhận ba thuộc tính dữ liệu: *bjunk* là tập hợp"
+" các phần tử của *b* mà *isjunk* là ``True``; *bpopular* là tập hợp các phần"
+" tử không phải rác được heuristic coi là phổ biến (nếu nó không bị vô hiệu "
+"hóa); *b2j* là một lệnh ánh xạ các phần tử còn lại của *b* vào danh sách các"
+" vị trí nơi chúng xuất hiện. Cả ba đều được đặt lại bất cứ khi nào *b* được "
+"đặt lại bằng :meth:`set_seqs` hoặc :meth:`set_seq2`."
+
+#: ../../library/difflib.rst:396
+#, fuzzy
+msgid "The *bjunk* and *bpopular* attributes."
+msgstr "Thuộc tính *bjunk* và *bpopular*."
+
+#: ../../library/difflib.rst:399
+#, fuzzy
+msgid ":class:`SequenceMatcher` objects have the following methods:"
+msgstr "Các đối tượng :class:`SequenceMatcher` có các phương thức sau:"
+
+#: ../../library/difflib.rst:403
+#, fuzzy
+msgid "Set the two sequences to be compared."
+msgstr "Đặt hai trình tự để so sánh."
+
+#: ../../library/difflib.rst:405
+#, fuzzy
+msgid ""
+":class:`SequenceMatcher` computes and caches detailed information about the "
+"second sequence, so if you want to compare one sequence against many "
+"sequences, use :meth:`set_seq2` to set the commonly used sequence once and "
+"call :meth:`set_seq1` repeatedly, once for each of the other sequences."
+msgstr ""
+":class:`SequenceMatcher` tính toán và lưu trữ thông tin chi tiết về chuỗi "
+"thứ hai, vì vậy nếu bạn muốn so sánh một chuỗi với nhiều chuỗi, hãy sử dụng "
+":meth:`set_seq2` để đặt chuỗi thường được sử dụng một lần và gọi "
+":meth:`set_seq1` liên tục, một lần cho mỗi chuỗi khác."
+
+#: ../../library/difflib.rst:413
+#, fuzzy
+msgid ""
+"Set the first sequence to be compared.  The second sequence to be compared "
+"is not changed."
+msgstr ""
+"Đặt trình tự đầu tiên để so sánh.  Trình tự thứ hai được so sánh không thay "
+"đổi."
+
+#: ../../library/difflib.rst:419
+#, fuzzy
+msgid ""
+"Set the second sequence to be compared.  The first sequence to be compared "
+"is not changed."
+msgstr ""
+"Đặt trình tự thứ hai để so sánh.  Trình tự đầu tiên được so sánh không thay "
+"đổi."
+
+#: ../../library/difflib.rst:425
+#, fuzzy
+msgid "Find longest matching block in ``a[alo:ahi]`` and ``b[blo:bhi]``."
+msgstr "Tìm khối khớp dài nhất trong ``a[alo:ahi]`` và ``b[blo:bhi]``."
+
+#: ../../library/difflib.rst:427
+#, fuzzy
+msgid ""
+"If *isjunk* was omitted or ``None``, :meth:`find_longest_match` returns "
+"``(i, j, k)`` such that ``a[i:i+k]`` is equal to ``b[j:j+k]``, where ``alo "
+"<= i <= i+k <= ahi`` and ``blo <= j <= j+k <= bhi``. For all ``(i', j', "
+"k')`` meeting those conditions, the additional conditions ``k >= k'``, ``i "
+"<= i'``, and if ``i == i'``, ``j <= j'`` are also met. In other words, of "
+"all maximal matching blocks, return one that starts earliest in *a*, and of "
+"all those maximal matching blocks that start earliest in *a*, return the one"
+" that starts earliest in *b*."
+msgstr ""
+"Nếu *isjunk* bị bỏ qua hoặc ``None``, :meth:`find_longest_match` trả về "
+"``(i, j, k)`` sao cho ``a[i:i+k]`` bằng ``b[j:j+k]``, trong đó ``alo <= i <="
+" i+k <= ahi`` và ``blo <= j <= j+k <= bhi``. Đối với tất cả ``(i', j', k')``"
+" đáp ứng các điều kiện đó, các điều kiện bổ sung ``k >= k'``, ``i <= i'`` và"
+" nếu ``i == i'``, ``j <= j'`` cũng được đáp ứng. Nói cách khác, trong tất cả"
+" các khối khớp tối đa, hãy trả về khối bắt đầu sớm nhất trong *a* và trong "
+"tất cả các khối khớp tối đa bắt đầu sớm nhất trong *a*, hãy trả về khối bắt "
+"đầu sớm nhất trong *b*."
+
+#: ../../library/difflib.rst:440
+#, fuzzy
+msgid ""
+"If *isjunk* was provided, first the longest matching block is determined as "
+"above, but with the additional restriction that no junk element appears in "
+"the block.  Then that block is extended as far as possible by matching "
+"(only) junk elements on both sides. So the resulting block never matches on "
+"junk except as identical junk happens to be adjacent to an interesting "
+"match."
+msgstr ""
+"Nếu *isjunk* được cung cấp, đầu tiên khối phù hợp dài nhất được xác định như"
+" trên, nhưng với hạn chế bổ sung là không có phần tử rác nào xuất hiện trong"
+" khối.  Sau đó, khối đó được mở rộng hết mức có thể bằng cách kết hợp (chỉ) "
+"các phần tử rác ở cả hai bên. Vì vậy, khối kết quả không bao giờ khớp với "
+"rác ngoại trừ khi rác giống hệt nhau nằm liền kề với một kết quả thú vị."
+
+#: ../../library/difflib.rst:447
+#, fuzzy
+msgid ""
+"Here's the same example as before, but considering blanks to be junk. That "
+"prevents ``' abcd'`` from matching the ``' abcd'`` at the tail end of the "
+"second sequence directly.  Instead only the ``'abcd'`` can match, and "
+"matches the leftmost ``'abcd'`` in the second sequence:"
+msgstr ""
+"Đây là ví dụ tương tự như trước, nhưng coi khoảng trống là rác. Điều đó ngăn"
+" ``' abcd'`` khớp trực tiếp với ``' abcd'`` ở phần cuối của chuỗi thứ hai.  "
+"Thay vào đó, chỉ ``'abcd'`` mới có thể khớp và khớp với ``'abcd'`` ngoài "
+"cùng bên trái trong chuỗi thứ hai:"
+
+#: ../../library/difflib.rst:456
+#, fuzzy
+msgid "If no blocks match, this returns ``(alo, blo, 0)``."
+msgstr "Nếu không có khối nào khớp, kết quả này sẽ trả về ``(alo, blo, 0)``."
+
+#: ../../library/difflib.rst:458
+#, fuzzy
+msgid "This method returns a :term:`named tuple` ``Match(a, b, size)``."
+msgstr "Phương thức này trả về :term:`named tuple` ``Match(a, b, size)``."
+
+#: ../../library/difflib.rst:460
+#, fuzzy
+msgid "Added default arguments."
+msgstr "Đã thêm đối số mặc định."
+
+#: ../../library/difflib.rst:466
+#, fuzzy
+msgid ""
+"Return list of triples describing non-overlapping matching subsequences. "
+"Each triple is of the form ``(i, j, n)``, and means that ``a[i:i+n] == "
+"b[j:j+n]``.  The triples are monotonically increasing in *i* and *j*."
+msgstr ""
+"Trả về danh sách các bộ ba mô tả các chuỗi con khớp không chồng chéo. Mỗi bộ"
+" ba có dạng ``(i, j, n)`` và có nghĩa là ``a[i:i+n] == b[j:j+n]``.  Bộ ba "
+"đang tăng đơn điệu trong *i* và *j*."
+
+#: ../../library/difflib.rst:471
+#, fuzzy
+msgid ""
+"The last triple is a dummy, and has the value ``(len(a), len(b), 0)``.  It "
+"is the only triple with ``n == 0``.  If ``(i, j, n)`` and ``(i', j', n')`` "
+"are adjacent triples in the list, and the second is not the last triple in "
+"the list, then ``i+n < i'`` or ``j+n < j'``; in other words, adjacent "
+"triples always describe non-adjacent equal blocks."
+msgstr ""
+"Bộ ba cuối cùng là giả và có giá trị ``(len(a), len(b), 0)``.  Đây là bộ ba "
+"duy nhất có ``n == 0``.  Nếu ``(i, j, n)`` và ``(i', j', n')`` là bộ ba liền"
+" kề trong danh sách và bộ thứ hai không phải là bộ ba cuối cùng trong danh "
+"sách, thì ``i+n < i'`` hoặc ``j+n < j'``; nói cách khác, các bộ ba liền kề "
+"luôn mô tả các khối bằng nhau không liền kề."
+
+#: ../../library/difflib.rst:479
+#, fuzzy
+msgid ""
+">>> s = SequenceMatcher(None, \"abxcd\", \"abcd\")\n"
+">>> s.get_matching_blocks()\n"
+"[Match(a=0, b=0, size=2), Match(a=3, b=2, size=2), Match(a=5, b=4, size=0)]"
+msgstr ""
+">>> s = SequenceMatcher(Không có, \"abxcd\", \"abcd\")\n"
+">>> s.get_matching_blocks()\n"
+"[Trận đấu(a=0, b=0, size=2), Trận đấu(a=3, b=2, size=2), Trận đấu(a=5, b=4, size=0)]"
+
+#: ../../library/difflib.rst:488
+#, fuzzy
+msgid ""
+"Return list of 5-tuples describing how to turn *a* into *b*. Each tuple is "
+"of the form ``(tag, i1, i2, j1, j2)``.  The first tuple has ``i1 == j1 == "
+"0``, and remaining tuples have *i1* equal to the *i2* from the preceding "
+"tuple, and, likewise, *j1* equal to the previous *j2*."
+msgstr ""
+"Trả về danh sách 5 bộ dữ liệu mô tả cách biến *a* thành *b*. Mỗi bộ có dạng "
+"``(tag, i1, i2, j1, j2)``.  Bộ đầu tiên có ``i1 == j1 == 0``, và các bộ còn "
+"lại có *i1* bằng *i2* từ bộ trước đó, và tương tự, *j1* bằng *j2* trước đó."
+
+#: ../../library/difflib.rst:493
+#, fuzzy
+msgid "The *tag* values are strings, with these meanings:"
+msgstr "Các giá trị *tag* là các chuỗi, có ý nghĩa sau:"
+
+#: ../../library/difflib.rst:496
+#, fuzzy
+msgid "Value"
+msgstr "Giá trị"
+
+#: ../../library/difflib.rst:498
+#, fuzzy
+msgid "``'replace'``"
+msgstr "``'replace'``"
+
+#: ../../library/difflib.rst:498
+#, fuzzy
+msgid "``a[i1:i2]`` should be replaced by ``b[j1:j2]``."
+msgstr "``a[i1:i2]`` nên được thay thế bằng ``b[j1:j2]``."
+
+#: ../../library/difflib.rst:501
+#, fuzzy
+msgid "``'delete'``"
+msgstr "``'delete'``"
+
+#: ../../library/difflib.rst:501
+#, fuzzy
+msgid "``a[i1:i2]`` should be deleted.  Note that ``j1 == j2`` in this case."
+msgstr ""
+"``a[i1:i2]`` nên xóa đi.  Lưu ý rằng ``j1 == j2`` trong trường hợp này."
+
+#: ../../library/difflib.rst:504
+#, fuzzy
+msgid "``'insert'``"
+msgstr "``'insert'``"
+
+#: ../../library/difflib.rst:504
+#, fuzzy
+msgid ""
+"``b[j1:j2]`` should be inserted at ``a[i1:i1]``. Note that ``i1 == i2`` in "
+"this case."
+msgstr ""
+"``b[j1:j2]`` nên được chèn vào ``a[i1:i1]``. Lưu ý rằng ``i1 == i2`` trong "
+"trường hợp này."
+
+#: ../../library/difflib.rst:508
+#, fuzzy
+msgid "``'equal'``"
+msgstr "``'equal'``"
+
+#: ../../library/difflib.rst:508
+#, fuzzy
+msgid "``a[i1:i2] == b[j1:j2]`` (the sub-sequences are equal)."
+msgstr "``a[i1:i2] == b[j1:j2]`` (các chuỗi con bằng nhau)."
+
+#: ../../library/difflib.rst:512
+#, fuzzy
+msgid "For example::"
+msgstr "Ví dụ::"
+
+#: ../../library/difflib.rst:514
+#, python-brace-format, fuzzy
+msgid ""
+">>> a = \"qabxcd\"\n"
+">>> b = \"abycdf\"\n"
+">>> s = SequenceMatcher(None, a, b)\n"
+">>> for tag, i1, i2, j1, j2 in s.get_opcodes():\n"
+"...     print('{:7}   a[{}:{}] --> b[{}:{}] {!r:>8} --> {!r}'.format(\n"
+"...         tag, i1, i2, j1, j2, a[i1:i2], b[j1:j2]))\n"
+"delete    a[0:1] --> b[0:0]      'q' --> ''\n"
+"equal     a[1:3] --> b[0:2]     'ab' --> 'ab'\n"
+"replace   a[3:4] --> b[2:3]      'x' --> 'y'\n"
+"equal     a[4:6] --> b[3:5]     'cd' --> 'cd'\n"
+"insert    a[6:6] --> b[5:6]       '' --> 'f'"
+msgstr ""
+">>> a = \"qabxcd\"\n"
+">>> b = \"abycdf\"\n"
+">>> s = SequenceMatcher(Không, a, b)\n"
+">>> cho tag, i1, i2, j1, j2 trong s.get_opcodes():\n"
+"... print('{:7} a[{}:{}] --> b[{}:{}] {!r:>8} --> {!r}'.format(\n"
+"... thẻ, i1, i2, j1, j2, a[i1:i2], b[j1:j2]))\n"
+"xóa a[0:1] --> b[0:0] 'q' --> ''\n"
+"bằng a[1:3] --> b[0:2] 'ab' --> 'ab'\n"
+"thay thế a[3:4] --> b[2:3] 'x' --> 'y'\n"
+"bằng a[4:6] --> b[3:5] 'cd' --> 'cd'\n"
+"chèn a[6:6] --> b[5:6] '' --> 'f'"
+
+#: ../../library/difflib.rst:529
+#, fuzzy
+msgid "Return a :term:`generator` of groups with up to *n* lines of context."
+msgstr "Trả về một nhóm :term:`generator` có dòng ngữ cảnh lên tới *n*."
+
+#: ../../library/difflib.rst:531
+#, fuzzy
+msgid ""
+"Starting with the groups returned by :meth:`get_opcodes`, this method splits"
+" out smaller change clusters and eliminates intervening ranges which have no"
+" changes."
+msgstr ""
+"Bắt đầu với các nhóm được :meth:`get_opcodes` trả về, phương pháp này tách "
+"ra các cụm thay đổi nhỏ hơn và loại bỏ các phạm vi can thiệp không có thay "
+"đổi."
+
+#: ../../library/difflib.rst:535
+#, fuzzy
+msgid "The groups are returned in the same format as :meth:`get_opcodes`."
+msgstr "Các nhóm được trả về có cùng định dạng với :meth:`get_opcodes`."
+
+#: ../../library/difflib.rst:540
+#, fuzzy
+msgid ""
+"Return a measure of the sequences' similarity as a float in the range [0, "
+"1]."
+msgstr ""
+"Trả về thước đo độ tương tự của chuỗi dưới dạng số float trong phạm vi [0, "
+"1]."
+
+#: ../../library/difflib.rst:543
+#, fuzzy
+msgid ""
+"Where T is the total number of elements in both sequences, and M is the "
+"number of matches, this is 2.0\\*M / T. Note that this is ``1.0`` if the "
+"sequences are identical, and ``0.0`` if they have nothing in common."
+msgstr ""
+"Trong đó T là tổng số phần tử trong cả hai chuỗi và M là số lượng trùng "
+"khớp, giá trị này là 2,0\\*M / T. Lưu ý rằng đây là ``1.0`` nếu các chuỗi "
+"giống hệt nhau và ``0.0`` nếu chúng không có điểm chung."
+
+#: ../../library/difflib.rst:547
+#, fuzzy
+msgid ""
+"This is expensive to compute if :meth:`get_matching_blocks` or "
+":meth:`get_opcodes` hasn't already been called, in which case you may want "
+"to try :meth:`quick_ratio` or :meth:`real_quick_ratio` first to get an upper"
+" bound."
+msgstr ""
+"Việc tính toán này rất tốn kém nếu :meth:`get_matching_blocks` hoặc "
+":meth:`get_opcodes` chưa được gọi, trong trường hợp đó bạn có thể muốn thử "
+":meth:`quick_ratio` hoặc :meth:`real_quick_ratio` trước để có giới hạn trên."
+
+#: ../../library/difflib.rst:554
+#, fuzzy
+msgid ""
+"Caution: The result of a :meth:`ratio` call may depend on the order of the "
+"arguments. For instance::"
+msgstr ""
+"Thận trọng: Kết quả của lệnh gọi :meth:`ratio` có thể phụ thuộc vào thứ tự "
+"của các đối số. Ví dụ::"
+
+#: ../../library/difflib.rst:557
+#, fuzzy
+msgid ""
+">>> SequenceMatcher(None, 'tide', 'diet').ratio()\n"
+"0.25\n"
+">>> SequenceMatcher(None, 'diet', 'tide').ratio()\n"
+"0.5"
+msgstr ""
+">>> SequenceMatcher(Không có, 'thủy triều', 'ăn kiêng').ratio()\n"
+"0,25\n"
+">>> SequenceMatcher(Không có, 'ăn kiêng', 'thủy triều').ratio()\n"
+"0,5"
+
+#: ../../library/difflib.rst:565
+#, fuzzy
+msgid "Return an upper bound on :meth:`ratio` relatively quickly."
+msgstr "Trả lại giới hạn trên của :meth:`ratio` tương đối nhanh chóng."
+
+#: ../../library/difflib.rst:570
+#, fuzzy
+msgid "Return an upper bound on :meth:`ratio` very quickly."
+msgstr "Trả lại giới hạn trên của :meth:`ratio` rất nhanh."
+
+#: ../../library/difflib.rst:573
+#, fuzzy
+msgid ""
+"The three methods that return the ratio of matching to total characters can "
+"give different results due to differing levels of approximation, although "
+":meth:`~SequenceMatcher.quick_ratio` and "
+":meth:`~SequenceMatcher.real_quick_ratio` are always at least as large as "
+":meth:`~SequenceMatcher.ratio`:"
+msgstr ""
+"Ba phương thức trả về tỷ lệ khớp với tổng số ký tự có thể cho kết quả khác "
+"nhau do mức độ gần đúng khác nhau, mặc dù "
+":meth:`~SequenceMatcher.quick_ratio` và "
+":meth:`~SequenceMatcher.real_quick_ratio` luôn lớn ít nhất bằng "
+":meth:`~SequenceMatcher.ratio`:"
+
+#: ../../library/difflib.rst:590
+#, fuzzy
+msgid "SequenceMatcher examples"
+msgstr "Ví dụ về SequenceMatcher"
+
+#: ../../library/difflib.rst:592
+#, fuzzy
+msgid "This example compares two strings, considering blanks to be \"junk\":"
+msgstr "Ví dụ này so sánh hai chuỗi, coi các khoảng trống là \"rác\":"
+
+#: ../../library/difflib.rst:598
+#, fuzzy
+msgid ""
+":meth:`~SequenceMatcher.ratio` returns a float in [0, 1], measuring the "
+"similarity of the sequences.  As a rule of thumb, a "
+":meth:`~SequenceMatcher.ratio` value over 0.6 means the sequences are close "
+"matches:"
+msgstr ""
+":meth:`~SequenceMatcher.ratio` trả về một số float trong [0, 1], đo lường "
+"mức độ giống nhau của các chuỗi.  Theo nguyên tắc chung, giá trị "
+":meth:`~SequenceMatcher.ratio` trên 0,6 có nghĩa là các chuỗi gần giống "
+"nhau:"
+
+#: ../../library/difflib.rst:605
+#, fuzzy
+msgid ""
+"If you're only interested in where the sequences match, "
+":meth:`~SequenceMatcher.get_matching_blocks` is handy:"
+msgstr ""
+"Nếu bạn chỉ quan tâm đến vị trí của các chuỗi khớp nhau, "
+":meth:`~SequenceMatcher.get_matching_blocks` sẽ rất hữu ích:"
+
+#: ../../library/difflib.rst:614
+#, fuzzy
+msgid ""
+"Note that the last tuple returned by "
+":meth:`~SequenceMatcher.get_matching_blocks` is always a dummy, ``(len(a), "
+"len(b), 0)``, and this is the only case in which the last tuple element "
+"(number of elements matched) is ``0``."
+msgstr ""
+"Lưu ý rằng bộ dữ liệu cuối cùng được "
+":meth:`~SequenceMatcher.get_matching_blocks` trả về luôn là một giá trị giả,"
+" ``(len(a), len(b), 0)`` và đây là trường hợp duy nhất trong đó phần tử bộ "
+"dữ liệu cuối cùng (số phần tử khớp) là ``0``."
+
+#: ../../library/difflib.rst:618
+#, fuzzy
+msgid ""
+"If you want to know how to change the first sequence into the second, use "
+":meth:`~SequenceMatcher.get_opcodes`:"
+msgstr ""
+"Nếu bạn muốn biết cách thay đổi chuỗi đầu tiên thành chuỗi thứ hai, hãy sử "
+"dụng :meth:`~SequenceMatcher.get_opcodes`:"
+
+#: ../../library/difflib.rst:629
+#, fuzzy
+msgid ""
+"The :func:`get_close_matches` function in this module which shows how simple"
+" code building on :class:`SequenceMatcher` can be used to do useful work."
+msgstr ""
+"Hàm :func:`get_close_matches` trong mô-đun này cho thấy cách sử dụng việc "
+"xây dựng mã đơn giản trên :class:`SequenceMatcher` để thực hiện công việc "
+"hữu ích."
+
+#: ../../library/difflib.rst:633
+#, fuzzy
+msgid ""
+"`Simple version control recipe "
+"<https://code.activestate.com/recipes/576729-simple-version-control/>`_ for "
+"a small application built with :class:`SequenceMatcher`."
+msgstr ""
+"`Simple version control recipe "
+"<https://code.activestate.com/recipes/576729-simple-version-control/>`_ cho "
+"một ứng dụng nhỏ được xây dựng bằng :class:`SequenceMatcher`."
+
+#: ../../library/difflib.rst:641
+#, fuzzy
+msgid "Differ objects"
+msgstr "Đối tượng khác nhau"
+
+#: ../../library/difflib.rst:643
+#, fuzzy
+msgid ""
+"Note that :class:`Differ`\\ -generated deltas make no claim to be "
+"**minimal** diffs. To the contrary, minimal diffs are often counter-"
+"intuitive, because they synch up anywhere possible, sometimes accidental "
+"matches 100 pages apart. Restricting synch points to contiguous matches "
+"preserves some notion of locality, at the occasional cost of producing a "
+"longer diff."
+msgstr ""
+"Lưu ý rằng các delta được tạo ra bởi :class:`Differ`\\ - không khẳng định đó"
+" là khác biệt của **minimal**. Ngược lại, những khác biệt tối thiểu thường "
+"phản trực giác, bởi vì chúng đồng bộ hóa ở mọi nơi có thể, đôi khi vô tình "
+"trùng khớp cách nhau 100 trang. Việc hạn chế các điểm đồng bộ đối với các "
+"kết quả khớp liền kề sẽ bảo tồn một số khái niệm về địa phương, với chi phí "
+"không thường xuyên là tạo ra sự khác biệt dài hơn."
+
+#: ../../library/difflib.rst:649
+#, fuzzy
+msgid "The :class:`Differ` class has this constructor:"
+msgstr "Lớp :class:`Differ` có hàm tạo này:"
+
+#: ../../library/difflib.rst:655
+#, fuzzy
+msgid ""
+"Optional keyword parameters *linejunk* and *charjunk* are for filter "
+"functions (or ``None``):"
+msgstr ""
+"Các tham số từ khóa tùy chọn *linejunk* và *charjunk* dành cho các chức năng"
+" lọc (hoặc ``None``):"
+
+#: ../../library/difflib.rst:658
+#, fuzzy
+msgid ""
+"*linejunk*: A function that accepts a single string argument, and returns "
+"true if the string is junk.  The default is ``None``, meaning that no line "
+"is considered junk."
+msgstr ""
+"*linejunk*: Hàm chấp nhận một đối số chuỗi đơn và trả về true nếu chuỗi đó "
+"là chuỗi rác.  Mặc định là ``None``, nghĩa là không có dòng nào bị coi là "
+"rác."
+
+#: ../../library/difflib.rst:662
+#, fuzzy
+msgid ""
+"*charjunk*: A function that accepts a single character argument (a string of"
+" length 1), and returns true if the character is junk. The default is "
+"``None``, meaning that no character is considered junk."
+msgstr ""
+"*charjunk*: Hàm chấp nhận một đối số ký tự đơn (chuỗi có độ dài 1) và trả về"
+" true nếu ký tự đó là ký tự rác. Mặc định là ``None``, nghĩa là không có ký "
+"tự nào bị coi là rác."
+
+#: ../../library/difflib.rst:666
+#, fuzzy
+msgid ""
+"These junk-filtering functions speed up matching to find differences and do "
+"not cause any differing lines or characters to be ignored.  Read the "
+"description of the :meth:`~SequenceMatcher.find_longest_match` method's "
+"*isjunk* parameter for an explanation."
+msgstr ""
+"Các chức năng lọc rác này tăng tốc độ khớp để tìm ra sự khác biệt và không "
+"làm bỏ qua bất kỳ dòng hoặc ký tự khác nhau nào.  Đọc mô tả về tham số "
+"*isjunk* của phương thức :meth:`~SequenceMatcher.find_longest_match` để được"
+" giải thích."
+
+#: ../../library/difflib.rst:672
+#, fuzzy
+msgid ""
+":class:`Differ` objects are used (deltas generated) via a single method:"
+msgstr ""
+"Các đối tượng :class:`Differ` được sử dụng (được tạo delta) thông qua một "
+"phương thức duy nhất:"
+
+#: ../../library/difflib.rst:677
+#, fuzzy
+msgid ""
+"Compare two sequences of lines, and generate the delta (a sequence of "
+"lines)."
+msgstr "So sánh hai chuỗi dòng và tạo delta (một chuỗi các dòng)."
+
+#: ../../library/difflib.rst:679
+#, fuzzy
+msgid ""
+"Each sequence must contain individual single-line strings ending with "
+"newlines.  Such sequences can be obtained from the "
+":meth:`~io.IOBase.readlines` method of file-like objects.  The delta "
+"generated also consists of newline-terminated strings, ready to be printed "
+"as-is via the :meth:`~io.IOBase.writelines` method of a file-like object."
+msgstr ""
+"Mỗi chuỗi phải chứa các chuỗi một dòng riêng lẻ kết thúc bằng dòng mới.  Các"
+" chuỗi như vậy có thể thu được từ phương pháp :meth:`~io.IOBase.readlines` "
+"của các đối tượng giống như tệp.  Delta được tạo cũng bao gồm các chuỗi kết "
+"thúc bằng dòng mới, sẵn sàng để được in nguyên trạng thông qua phương thức "
+":meth:`~io.IOBase.writelines` của một đối tượng giống như tệp."
+
+#: ../../library/difflib.rst:690
+#, fuzzy
+msgid "Differ example"
+msgstr "Ví dụ khác biệt"
+
+#: ../../library/difflib.rst:692
+#, fuzzy
+msgid ""
+"This example compares two texts. First we set up the texts, sequences of "
+"individual single-line strings ending with newlines (such sequences can also"
+" be obtained from the :meth:`~io.IOBase.readlines` method of file-like "
+"objects):"
+msgstr ""
+"Ví dụ này so sánh hai văn bản. Trước tiên, chúng tôi thiết lập các văn bản, "
+"chuỗi các chuỗi một dòng riêng lẻ kết thúc bằng dòng mới (các chuỗi như vậy "
+"cũng có thể được lấy từ phương thức :meth:`~io.IOBase.readlines` của các đối"
+" tượng giống như tệp):"
+
+#: ../../library/difflib.rst:711
+#, fuzzy
+msgid "Next we instantiate a Differ object:"
+msgstr "Tiếp theo chúng ta khởi tạo một đối tượng Differ:"
+
+#: ../../library/difflib.rst:715
+#, fuzzy
+msgid ""
+"Note that when instantiating a :class:`Differ` object we may pass functions "
+"to filter out line and character \"junk.\"  See the :meth:`Differ` "
+"constructor for details."
+msgstr ""
+"Lưu ý rằng khi khởi tạo một đối tượng :class:`Differ`, chúng ta có thể "
+"chuyển các hàm để lọc ra dòng và ký tự \"rác\".  Xem hàm tạo :meth:`Differ` "
+"để biết chi tiết."
+
+#: ../../library/difflib.rst:719
+#, fuzzy
+msgid "Finally, we compare the two:"
+msgstr "Cuối cùng, chúng tôi so sánh hai:"
+
+#: ../../library/difflib.rst:723
+#, fuzzy
+msgid "``result`` is a list of strings, so let's pretty-print it:"
+msgstr "``result`` là một danh sách các chuỗi, vì vậy hãy in nó ra:"
+
+#: ../../library/difflib.rst:738
+#, fuzzy
+msgid "As a single multi-line string it looks like this:"
+msgstr "Là một chuỗi nhiều dòng, nó trông như thế này:"
+
+#: ../../library/difflib.rst:757
+#, fuzzy
+msgid "A command-line interface to difflib"
+msgstr "Giao diện dòng lệnh cho difflib"
+
+#: ../../library/difflib.rst:759
+#, fuzzy
+msgid ""
+"This example shows how to use difflib to create a ``diff``-like utility."
+msgstr ""
+"Ví dụ này cho thấy cách sử dụng difflib để tạo tiện ích giống ``diff``."
+
+#: ../../library/difflib.rst:761
+#, fuzzy
+msgid ""
+"\"\"\" Command-line interface to difflib.py providing diffs in four formats:\n"
+"\n"
+"* ndiff:    lists every line and highlights interline changes.\n"
+"* context:  highlights clusters of changes in a before/after format.\n"
+"* unified:  highlights clusters of changes in an inline format.\n"
+"* html:     generates side by side comparison with change highlights.\n"
+"\n"
+"\"\"\"\n"
+"\n"
+"import sys, os, difflib, argparse\n"
+"import datetime as dt\n"
+"\n"
+"def file_mtime(path):\n"
+"    t = dt.datetime.fromtimestamp(os.stat(path).st_mtime,\n"
+"                                  dt.timezone.utc)\n"
+"    return t.astimezone().isoformat()\n"
+"\n"
+"def main():\n"
+"\n"
+"    parser = argparse.ArgumentParser()\n"
+"    parser.add_argument('-c', action='store_true', default=False,\n"
+"                        help='Produce a context format diff (default)')\n"
+"    parser.add_argument('-u', action='store_true', default=False,\n"
+"                        help='Produce a unified format diff')\n"
+"    parser.add_argument('-m', action='store_true', default=False,\n"
+"                        help='Produce HTML side by side diff '\n"
+"                             '(can use -c and -l in conjunction)')\n"
+"    parser.add_argument('-n', action='store_true', default=False,\n"
+"                        help='Produce a ndiff format diff')\n"
+"    parser.add_argument('-l', '--lines', type=int, default=3,\n"
+"                        help='Set number of context lines (default 3)')\n"
+"    parser.add_argument('fromfile')\n"
+"    parser.add_argument('tofile')\n"
+"    options = parser.parse_args()\n"
+"\n"
+"    n = options.lines\n"
+"    fromfile = options.fromfile\n"
+"    tofile = options.tofile\n"
+"\n"
+"    fromdate = file_mtime(fromfile)\n"
+"    todate = file_mtime(tofile)\n"
+"    with open(fromfile) as ff:\n"
+"        fromlines = ff.readlines()\n"
+"    with open(tofile) as tf:\n"
+"        tolines = tf.readlines()\n"
+"\n"
+"    if options.u:\n"
+"        diff = difflib.unified_diff(fromlines, tolines, fromfile, tofile, fromdate, todate, n=n)\n"
+"    elif options.n:\n"
+"        diff = difflib.ndiff(fromlines, tolines)\n"
+"    elif options.m:\n"
+"        diff = difflib.HtmlDiff().make_file(fromlines,tolines,fromfile,tofile,context=options.c,numlines=n)\n"
+"    else:\n"
+"        diff = difflib.context_diff(fromlines, tolines, fromfile, tofile, fromdate, todate, n=n)\n"
+"\n"
+"    sys.stdout.writelines(diff)\n"
+"\n"
+"if __name__ == '__main__':\n"
+"    main()\n"
+msgstr ""
+"\"\"\" Giao diện dòng lệnh cho difflib.py cung cấp các khác biệt ở bốn định dạng:\n"
+"\n"
+"* ndiff: liệt kê mọi dòng và đánh dấu những thay đổi giữa các dòng.\n"
+"* bối cảnh: làm nổi bật các cụm thay đổi ở định dạng trước/sau.\n"
+"* thống nhất: làm nổi bật các cụm thay đổi ở định dạng nội tuyến.\n"
+"* html: tạo ra sự so sánh song song với những điểm nổi bật của thay đổi.\n"
+"\n"
+"\"\"\"\n"
+"\n"
+"nhập sys, os, difflib, argparse\n"
+"nhập ngày giờ dưới dạng dt\n"
+"\n"
+"def file_mtime(đường dẫn):\n"
+"    t = dt.datetime.fromtimestamp(os.stat(path).st_mtime,\n"
+"                                  dt.timezone.utc)\n"
+"    trả về t.astimezone().isoformat()\n"
+"\n"
+"chắc chắn chính():\n"
+"\n"
+"    trình phân tích cú pháp = argparse.ArgumentParser()\n"
+"    parser.add_argument('-c', action='store_true', default=False,\n"
+"                        help='Tạo khác biệt về định dạng ngữ cảnh (mặc định)')\n"
+"    parser.add_argument('-u', action='store_true', default=False,\n"
+"                        help='Tạo ra sự khác biệt về định dạng thống nhất')\n"
+"    parser.add_argument('-m', action='store_true', default=False,\n"
+"                        help='Tạo ra HTML khác biệt cạnh nhau '\n"
+"                             '(có thể sử dụng kết hợp -c và -l)')\n"
+"    parser.add_argument('-n', action='store_true', default=False,\n"
+"                        help='Tạo ra sự khác biệt về định dạng ndiff')\n"
+"    Parser.add_argument('-l', '--lines', type=int, default=3,\n"
+"                        help='Đặt số dòng ngữ cảnh (mặc định 3)')\n"
+"    parser.add_argument('fromfile')\n"
+"    trình phân tích cú pháp.add_argument('tofile')\n"
+"    tùy chọn = trình phân tích cú pháp.parse_args()\n"
+"\n"
+"    n = tùy chọn.lines\n"
+"    fromfile = tùy chọn.fromfile\n"
+"    tofile = tùy chọn.tofile\n"
+"\n"
+"    fromdate = file_mtime(fromfile)\n"
+"    hôm nay = file_mtime(tofile)\n"
+"    với open(fromfile) là ff:\n"
+"        fromlines = ff.readlines()\n"
+"    với open(tofile) là tf:\n"
+"        tolines = tf.readlines()\n"
+"\n"
+"    nếu tùy chọn.u:\n"
+"        diff = difflib.unified_diff(fromlines, tolines, fromfile, tofile, fromdate, todate, n=n)\n"
+"    tùy chọn Elif.n:\n"
+"        diff = difflib.ndiff(fromlines, tolines)\n"
+"    tùy chọn Elif.m:\n"
+"        diff = difflib.HtmlDiff().make_file(fromlines,tolines,fromfile,tofile,context=options.c,numlines=n)\n"
+"    khác:\n"
+"        diff = difflib.context_diff(fromlines, tolines, fromfile, tofile, fromdate, todate, n=n)\n"
+"\n"
+"    sys.stdout.writelines(diff)\n"
+"\n"
+"nếu __name__ == '__main__':\n"
+"    chính()"
+
+#: ../../library/difflib.rst:764
+#, fuzzy
+msgid "ndiff example"
+msgstr "ví dụ khác"
+
+#: ../../library/difflib.rst:766
+#, fuzzy
+msgid "This example shows how to use :func:`difflib.ndiff`."
+msgstr "Ví dụ này cho thấy cách sử dụng :func:`difflib.ndiff`."
+
+#: ../../library/difflib.rst:768
+#, fuzzy
+msgid ""
+"\"\"\"ndiff [-q] file1 file2\n"
+"    or\n"
+"ndiff (-r1 | -r2) < ndiff_output > file1_or_file2\n"
+"\n"
+"Print a human-friendly file difference report to stdout.  Both inter-\n"
+"and intra-line differences are noted.  In the second form, recreate file1\n"
+"(-r1) or file2 (-r2) on stdout, from an ndiff report on stdin.\n"
+"\n"
+"In the first form, if -q (\"quiet\") is not specified, the first two lines\n"
+"of output are\n"
+"\n"
+"-: file1\n"
+"+: file2\n"
+"\n"
+"Each remaining line begins with a two-letter code:\n"
+"\n"
+"    \"- \"    line unique to file1\n"
+"    \"+ \"    line unique to file2\n"
+"    \"  \"    line common to both files\n"
+"    \"? \"    line not present in either input file\n"
+"\n"
+"Lines beginning with \"? \" attempt to guide the eye to intraline\n"
+"differences, and were not present in either input file.  These lines can be\n"
+"confusing if the source files contain tab characters.\n"
+"\n"
+"The first file can be recovered by retaining only lines that begin with\n"
+"\"  \" or \"- \", and deleting those 2-character prefixes; use ndiff with -r1.\n"
+"\n"
+"The second file can be recovered similarly, but by retaining only \"  \" and\n"
+"\"+ \" lines; use ndiff with -r2; or, on Unix, the second file can be\n"
+"recovered by piping the output through\n"
+"\n"
+"    sed -n '/^[+ ] /s/^..//p'\n"
+"\"\"\"\n"
+"\n"
+"__version__ = 1, 7, 0\n"
+"\n"
+"import difflib, sys\n"
+"\n"
+"def fail(msg):\n"
+"    out = sys.stderr.write\n"
+"    out(msg + \"\\n\\n\")\n"
+"    out(__doc__)\n"
+"    return 0\n"
+"\n"
+"# open a file & return the file object; gripe and return 0 if it\n"
+"# couldn't be opened\n"
+"def fopen(fname):\n"
+"    try:\n"
+"        return open(fname)\n"
+"    except IOError as detail:\n"
+"        return fail(\"couldn't open \" + fname + \": \" + str(detail))\n"
+"\n"
+"# open two files & spray the diff to stdout; return false iff a problem\n"
+"def fcompare(f1name, f2name):\n"
+"    f1 = fopen(f1name)\n"
+"    f2 = fopen(f2name)\n"
+"    if not f1 or not f2:\n"
+"        return 0\n"
+"\n"
+"    a = f1.readlines(); f1.close()\n"
+"    b = f2.readlines(); f2.close()\n"
+"    for line in difflib.ndiff(a, b):\n"
+"        print(line, end=' ')\n"
+"\n"
+"    return 1\n"
+"\n"
+"# crack args (sys.argv[1:] is normal) & compare;\n"
+"# return false iff a problem\n"
+"\n"
+"def main(args):\n"
+"    import getopt\n"
+"    try:\n"
+"        opts, args = getopt.getopt(args, \"qr:\")\n"
+"    except getopt.error as detail:\n"
+"        return fail(str(detail))\n"
+"    noisy = 1\n"
+"    qseen = rseen = 0\n"
+"    for opt, val in opts:\n"
+"        if opt == \"-q\":\n"
+"            qseen = 1\n"
+"            noisy = 0\n"
+"        elif opt == \"-r\":\n"
+"            rseen = 1\n"
+"            whichfile = val\n"
+"    if qseen and rseen:\n"
+"        return fail(\"can't specify both -q and -r\")\n"
+"    if rseen:\n"
+"        if args:\n"
+"            return fail(\"no args allowed with -r option\")\n"
+"        if whichfile in (\"1\", \"2\"):\n"
+"            restore(whichfile)\n"
+"            return 1\n"
+"        return fail(\"-r value must be 1 or 2\")\n"
+"    if len(args) != 2:\n"
+"        return fail(\"need 2 filename args\")\n"
+"    f1name, f2name = args\n"
+"    if noisy:\n"
+"        print('-:', f1name)\n"
+"        print('+:', f2name)\n"
+"    return fcompare(f1name, f2name)\n"
+"\n"
+"# read ndiff output from stdin, and print file1 (which=='1') or\n"
+"# file2 (which=='2') to stdout\n"
+"\n"
+"def restore(which):\n"
+"    restored = difflib.restore(sys.stdin.readlines(), which)\n"
+"    sys.stdout.writelines(restored)\n"
+"\n"
+"if __name__ == '__main__':\n"
+"    main(sys.argv[1:])\n"
+msgstr ""
+"\"\"\"ndiff [-q] file1 file2\n"
+"    hoặc\n"
+"ndiff (-r1 | -r2) < ndiff_output > file1_or_file2\n"
+"\n"
+"In báo cáo khác biệt về tệp thân thiện với con người tới thiết bị xuất chuẩn.  Cả hai liên\n"
+"và sự khác biệt trong dòng được ghi nhận.  Ở dạng thứ hai, tạo lại file1\n"
+"(-r1) hoặc file2 (-r2) trên thiết bị xuất chuẩn, từ báo cáo ndiff trên stdin.\n"
+"\n"
+"Ở dạng đầu tiên, nếu -q (\"im lặng\") không được chỉ định thì hai dòng đầu tiên\n"
+"của đầu ra là\n"
+"\n"
+"-: tập tin1\n"
+"+: tập tin2\n"
+"\n"
+"Mỗi dòng còn lại bắt đầu bằng mã gồm hai chữ cái:\n"
+"\n"
+"    \"- \" dòng duy nhất cho file1\n"
+"    dòng \"+\" duy nhất cho file2\n"
+"    \" \" dòng chung cho cả hai tập tin\n"
+"    \"? \" dòng không có trong cả hai tập tin đầu vào\n"
+"\n"
+"Các dòng bắt đầu bằng \"? \" cố gắng hướng mắt vào nội tuyến\n"
+"sự khác biệt và không có trong cả hai tệp đầu vào.  Những dòng này có thể\n"
+"khó hiểu nếu tệp nguồn chứa ký tự tab.\n"
+"\n"
+"Tệp đầu tiên có thể được phục hồi bằng cách chỉ giữ lại các dòng bắt đầu bằng\n"
+"\" \" hoặc \"- \" và xóa các tiền tố 2 ký tự đó; sử dụng ndiff với -r1.\n"
+"\n"
+"Tệp thứ hai có thể được phục hồi tương tự nhưng bằng cách chỉ giữ lại \" \" và\n"
+"dòng \"+\"; sử dụng ndiff với -r2; hoặc, trên Unix, tệp thứ hai có thể là\n"
+"được phục hồi bằng cách dẫn đầu ra qua\n"
+"\n"
+"    sed -n '/^[+ ] /s/^..//p'\n"
+"\"\"\"\n"
+"\n"
+"__phiên bản__ = 1, 7, 0\n"
+"\n"
+"nhập difflib, sys\n"
+"\n"
+"def thất bại (tin nhắn):\n"
+"    out = sys.stderr.write\n"
+"    out(tin nhắn + \"\\n\\n\")\n"
+"    ra(__doc__)\n"
+"    trở về 0\n"
+"\n"
+"# open một tệp và trả về đối tượng tệp; nắm và trả về 0 nếu nó\n"
+"# couldn không mở được\n"
+"def fopen(tên):\n"
+"    thử:\n"
+"        quay lại mở(fname)\n"
+"    ngoại trừ IOError như chi tiết:\n"
+"        return failed(\"không thể mở được \" + fname + \": \" + str(detail))\n"
+"\n"
+"# open hai tệp & phun phần khác biệt vào thiết bị xuất chuẩn; trả về sai nếu có vấn đề\n"
+"def fcompare(f1name, f2name):\n"
+"    f1 = fopen(f1name)\n"
+"    f2 = fopen(f2name)\n"
+"    nếu không phải f1 hay không f2:\n"
+"        trở về 0\n"
+"\n"
+"    a = f1.readlines(); f1.close()\n"
+"    b = f2.readlines(); f2.close()\n"
+"    cho dòng trong Difflib.ndiff(a, b):\n"
+"        in(dòng, kết thúc=' ')\n"
+"\n"
+"    trở lại 1\n"
+"\n"
+"# crack args (sys.argv[1:] là bình thường) & so sánh;\n"
+"# return sai nếu có vấn đề\n"
+"\n"
+"def chính (args):\n"
+"    nhập khẩu\n"
+"    thử:\n"
+"        opts, args = getopt.getopt(args, \"qr:\")\n"
+"    ngoại trừ getopt.error như chi tiết:\n"
+"        trả về thất bại(str(chi tiết))\n"
+"    ồn ào = 1\n"
+"    qseen = rseen = 0\n"
+"    cho opt, val trong opt:\n"
+"        nếu chọn == \"-q\":\n"
+"            qseen = 1\n"
+"            ồn ào = 0\n"
+"        lựa chọn Elif == \"-r\":\n"
+"            rseen = 1\n"
+"            tập tin nào = val\n"
+"    nếu qseen và rseen:\n"
+"        return failed(\"không thể chỉ định cả -q và -r\")\n"
+"    nếu nhìn thấy:\n"
+"        nếu lập luận:\n"
+"            return failed(\"không cho phép đối số với tùy chọn -r\")\n"
+"        nếu tệp nào trong (\"1\", \"2\"):\n"
+"            khôi phục (tệp nào)\n"
+"            trở lại 1\n"
+"        return failed(\"-r value phải là 1 hoặc 2\")\n"
+"    nếu len(args) != 2:\n"
+"        return failed(\"cần 2 tên file args\")\n"
+"    f1name, f2name = đối số\n"
+"    nếu ồn ào:\n"
+"        in('-:', f1name)\n"
+"        in('+:', f2name)\n"
+"    trả về fcompare(f1name, f2name)\n"
+"\n"
+"# read ndiff xuất ra từ stdin và in file1 (which=='1') hoặc\n"
+"# file2 (which=='2') thành thiết bị xuất chuẩn\n"
+"\n"
+"khôi phục chắc chắn (trong đó):\n"
+"    được khôi phục = difflib.restore(sys.stdin.readlines(), which)\n"
+"    sys.stdout.writelines (đã khôi phục)\n"
+"\n"
+"nếu __name__ == '__main__':\n"
+"    chính(sys.argv[1:])"

@@ -1,0 +1,1980 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/xml.dom.rst:2
+#, fuzzy
+msgid ":mod:`!xml.dom` --- The Document Object Model API"
+msgstr ":mod:`!xml.dom` --- Mô hình đối tượng tài liệu API"
+
+#: ../../library/xml.dom.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/xml/dom/__init__.py`"
+msgstr "**Source code:** :source:`Lib/xml/dom/__init__.py`"
+
+#: ../../library/xml.dom.rst:14
+#, fuzzy
+msgid ""
+"The Document Object Model, or \"DOM,\" is a cross-language API from the "
+"World Wide Web Consortium (W3C) for accessing and modifying XML documents.  "
+"A DOM implementation presents an XML document as a tree structure, or allows"
+" client code to build such a structure from scratch.  It then gives access "
+"to the structure through a set of objects which provided well-known "
+"interfaces."
+msgstr ""
+"Mô hình đối tượng tài liệu, hay \"DOM,\" là một API đa ngôn ngữ từ World "
+"Wide Web Consortium (W3C) để truy cập và sửa đổi các tài liệu XML.  Việc "
+"triển khai DOM trình bày tài liệu XML dưới dạng cấu trúc cây hoặc cho phép "
+"mã máy khách xây dựng cấu trúc như vậy từ đầu.  Sau đó, nó cấp quyền truy "
+"cập vào cấu trúc thông qua một tập hợp các đối tượng cung cấp các giao diện "
+"phổ biến."
+
+#: ../../library/xml.dom.rst:20
+#, fuzzy
+msgid ""
+"The DOM is extremely useful for random-access applications.  SAX only allows"
+" you a view of one bit of the document at a time.  If you are looking at one"
+" SAX element, you have no access to another.  If you are looking at a text "
+"node, you have no access to a containing element. When you write a SAX "
+"application, you need to keep track of your program's position in the "
+"document somewhere in your own code.  SAX does not do it for you.  Also, if "
+"you need to look ahead in the XML document, you are just out of luck."
+msgstr ""
+"Zz000zz cực kỳ hữu ích cho các ứng dụng truy cập ngẫu nhiên.  SAX chỉ cho "
+"phép bạn xem một bit của tài liệu tại một thời điểm.  Nếu bạn đang xem một "
+"phần tử SAX, bạn không có quyền truy cập vào phần tử khác.  Nếu bạn đang xem"
+" một nút văn bản, bạn không có quyền truy cập vào phần tử chứa nó. Khi bạn "
+"viết một ứng dụng SAX, bạn cần theo dõi vị trí của chương trình trong tài "
+"liệu ở đâu đó trong mã của riêng bạn.  SAX không làm điều đó cho bạn.  Ngoài"
+" ra, nếu bạn cần xem trước tài liệu XML, bạn sẽ không gặp may."
+
+#: ../../library/xml.dom.rst:28
+#, fuzzy
+msgid ""
+"Some applications are simply impossible in an event driven model with no "
+"access to a tree.  Of course you could build some sort of tree yourself in "
+"SAX events, but the DOM allows you to avoid writing that code.  The DOM is a"
+" standard tree representation for XML data."
+msgstr ""
+"Một số ứng dụng đơn giản là không thể thực hiện được trong mô hình hướng sự "
+"kiện không có quyền truy cập vào cây.  Tất nhiên, bạn có thể tự xây dựng một"
+" số loại cây trong các sự kiện SAX, nhưng DOM cho phép bạn tránh phải viết "
+"mã đó.  Zz002zz là biểu diễn cây tiêu chuẩn cho dữ liệu XML."
+
+#: ../../library/xml.dom.rst:33
+#, fuzzy
+msgid ""
+"The Document Object Model is being defined by the W3C in stages, or "
+"\"levels\" in their terminology.  The Python mapping of the API is "
+"substantially based on the DOM Level 2 recommendation."
+msgstr ""
+"Mô hình đối tượng tài liệu đang được W3C xác định theo từng giai đoạn hoặc "
+"\"cấp độ\" theo thuật ngữ của họ.  Ánh xạ Python của API về cơ bản dựa trên "
+"khuyến nghị DOM Cấp 2."
+
+#: ../../library/xml.dom.rst:45
+#, fuzzy
+msgid ""
+"DOM applications typically start by parsing some XML into a DOM.  How this "
+"is accomplished is not covered at all by DOM Level 1, and Level 2 provides "
+"only limited improvements: There is a :class:`DOMImplementation` object "
+"class which provides access to :class:`Document` creation methods, but no "
+"way to access an XML reader/parser/Document builder in an implementation-"
+"independent way. There is also no well-defined way to access these methods "
+"without an existing :class:`Document` object.  In Python, each DOM "
+"implementation will provide a function :func:`getDOMImplementation`. DOM "
+"Level 3 adds a Load/Store specification, which defines an interface to the "
+"reader, but this is not yet available in the Python standard library."
+msgstr ""
+"Các ứng dụng DOM thường bắt đầu bằng cách phân tích một số XML thành DOM.  "
+"Cách thực hiện điều này hoàn toàn không được đề cập trong DOM Cấp 1 và Cấp 2"
+" chỉ cung cấp những cải tiến hạn chế: Có một lớp đối tượng "
+":class:`DOMImplementation` cung cấp quyền truy cập vào các phương thức tạo "
+":class:`Document`, nhưng không có cách nào để truy cập trình đọc/phân tích "
+"cú pháp/Trình tạo tài liệu XML theo cách độc lập với việc triển khai. Cũng "
+"không có cách nào được xác định rõ ràng để truy cập các phương thức này mà "
+"không có đối tượng :class:`Document` hiện có.  Trong Python, mỗi lần triển "
+"khai DOM sẽ cung cấp một hàm :func:`getDOMImplementation`. DOM Cấp 3 bổ sung"
+" thông số Tải/Lưu trữ, xác định giao diện cho trình đọc, nhưng thông số này "
+"chưa có trong thư viện chuẩn Python."
+
+#: ../../library/xml.dom.rst:56
+#, fuzzy
+msgid ""
+"Once you have a DOM document object, you can access the parts of your XML "
+"document through its properties and methods.  These properties are defined "
+"in the DOM specification; this portion of the reference manual describes the"
+" interpretation of the specification in Python."
+msgstr ""
+"Khi bạn có đối tượng tài liệu DOM, bạn có thể truy cập các phần của tài liệu"
+" XML thông qua các thuộc tính và phương thức của nó.  Các thuộc tính này "
+"được xác định trong đặc tả DOM; phần này của tài liệu tham khảo mô tả cách "
+"diễn giải đặc tả bằng Python."
+
+#: ../../library/xml.dom.rst:61
+#, fuzzy
+msgid ""
+"The specification provided by the W3C defines the DOM API for Java, "
+"ECMAScript, and OMG IDL.  The Python mapping defined here is based in large "
+"part on the IDL version of the specification, but strict compliance is not "
+"required (though implementations are free to support the strict mapping from"
+" IDL).  See section :ref:`dom-conformance` for a detailed discussion of "
+"mapping requirements."
+msgstr ""
+"Thông số kỹ thuật do W3C cung cấp xác định DOM API cho Java, ECMAScript và "
+"OMG IDL.  Ánh xạ Python được xác định ở đây phần lớn dựa trên phiên bản IDL "
+"của thông số kỹ thuật, nhưng không cần phải tuân thủ nghiêm ngặt (mặc dù "
+"việc triển khai miễn phí để hỗ trợ ánh xạ nghiêm ngặt từ IDL).  Xem phần "
+":ref:`dom-conformance` để biết thảo luận chi tiết về các yêu cầu lập bản đồ."
+
+#: ../../library/xml.dom.rst:70
+#, fuzzy
+msgid ""
+"`Document Object Model (DOM) Level 2 Specification "
+"<https://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/>`_"
+msgstr ""
+"`Document Object Model (DOM) Level 2 Specification "
+"<https://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/>`_"
+
+#: ../../library/xml.dom.rst:71
+#, fuzzy
+msgid "The W3C recommendation upon which the Python DOM API is based."
+msgstr "Đề xuất W3C làm cơ sở cho Python DOM API."
+
+#: ../../library/xml.dom.rst:73
+#, fuzzy
+msgid ""
+"`Document Object Model (DOM) Level 1 Specification "
+"<https://www.w3.org/TR/REC-DOM-Level-1/>`_"
+msgstr ""
+"`Document Object Model (DOM) Level 1 Specification "
+"<https://www.w3.org/TR/REC-DOM-Level-1/>`_"
+
+#: ../../library/xml.dom.rst:74
+#, fuzzy
+msgid ""
+"The W3C recommendation for the DOM supported by :mod:`xml.dom.minidom`."
+msgstr "Đề xuất W3C cho DOM được :mod:`xml.dom.minidom` hỗ trợ."
+
+#: ../../library/xml.dom.rst:76
+#, fuzzy
+msgid ""
+"`Python Language Mapping Specification "
+"<https://www.omg.org/spec/PYTH/1.2/PDF>`_"
+msgstr ""
+"`Python Language Mapping Specification "
+"<https://www.omg.org/spec/PYTH/1.2/PDF>`_"
+
+#: ../../library/xml.dom.rst:77
+#, fuzzy
+msgid "This specifies the mapping from OMG IDL to Python."
+msgstr "Điều này chỉ định ánh xạ từ OMG IDL sang Python."
+
+#: ../../library/xml.dom.rst:81
+#, fuzzy
+msgid "Module Contents"
+msgstr "Nội dung mô-đun"
+
+#: ../../library/xml.dom.rst:83
+#, fuzzy
+msgid "The :mod:`!xml.dom` contains the following functions:"
+msgstr "Zz000zz chứa các chức năng sau:"
+
+#: ../../library/xml.dom.rst:88
+#, fuzzy
+msgid ""
+"Register the *factory* function with the name *name*.  The factory function "
+"should return an object which implements the :class:`DOMImplementation` "
+"interface.  The factory function can return the same object every time, or a"
+" new one for each call, as appropriate for the specific implementation (e.g."
+" if that implementation supports some customization)."
+msgstr ""
+"Đăng ký hàm *factory* với tên *name*.  Hàm xuất xưởng sẽ trả về một đối "
+"tượng triển khai giao diện :class:`DOMImplementation`.  Hàm xuất xưởng có "
+"thể trả về cùng một đối tượng mọi lúc hoặc một đối tượng mới cho mỗi cuộc "
+"gọi, nếu phù hợp với cách triển khai cụ thể (ví dụ: nếu việc triển khai đó "
+"hỗ trợ một số tùy chỉnh)."
+
+#: ../../library/xml.dom.rst:97
+#, fuzzy
+msgid ""
+"Return a suitable DOM implementation. The *name* is either well-known, the "
+"module name of a DOM implementation, or ``None``. If it is not ``None``, "
+"imports the corresponding module and returns a :class:`DOMImplementation` "
+"object if the import succeeds.  If no name is given, and if the environment "
+"variable :envvar:`PYTHON_DOM` is set, this variable is used to find the "
+"implementation."
+msgstr ""
+"Trả về cách triển khai DOM phù hợp. Zz004zz là tên mô-đun nổi tiếng của việc"
+" triển khai DOM hoặc ``None``. Nếu không phải là ``None``, hãy nhập mô-đun "
+"tương ứng và trả về đối tượng :class:`DOMImplementation` nếu quá trình nhập "
+"thành công.  Nếu không có tên nào được đặt và nếu biến môi trường "
+":envvar:`PYTHON_DOM` được đặt thì biến này sẽ được sử dụng để tìm cách triển"
+" khai."
+
+#: ../../library/xml.dom.rst:103
+#, fuzzy
+msgid ""
+"If name is not given, this examines the available implementations to find "
+"one with the required feature set.  If no implementation can be found, raise"
+" an :exc:`ImportError`.  The features list must be a sequence of ``(feature,"
+" version)`` pairs which are passed to the :meth:`hasFeature` method on "
+"available :class:`DOMImplementation` objects."
+msgstr ""
+"Nếu tên không được cung cấp, thao tác này sẽ kiểm tra các triển khai có sẵn "
+"để tìm ra một triển khai có bộ tính năng được yêu cầu.  Nếu không tìm thấy "
+"triển khai nào, hãy tăng :exc:`ImportError`.  Danh sách tính năng phải là "
+"một chuỗi các cặp ``(feature, version)`` được truyền cho phương thức "
+":meth:`hasFeature` trên các đối tượng :class:`DOMImplementation` có sẵn."
+
+#: ../../library/xml.dom.rst:109
+#, fuzzy
+msgid "Some convenience constants are also provided:"
+msgstr "Một số hằng số tiện lợi cũng được cung cấp:"
+
+#: ../../library/xml.dom.rst:114
+#, fuzzy
+msgid ""
+"The value used to indicate that no namespace is associated with a node in "
+"the DOM.  This is typically found as the :attr:`namespaceURI` of a node, or "
+"used as the *namespaceURI* parameter to a namespaces-specific method."
+msgstr ""
+"Giá trị được sử dụng để chỉ ra rằng không có vùng tên nào được liên kết với "
+"một nút trong DOM.  Điều này thường được tìm thấy dưới dạng "
+":attr:`namespaceURI` của một nút hoặc được sử dụng làm tham số "
+"*namespaceURI* cho một phương thức dành riêng cho không gian tên."
+
+#: ../../library/xml.dom.rst:121
+#, fuzzy
+msgid ""
+"The namespace URI associated with the reserved prefix ``xml``, as defined by"
+" `Namespaces in XML <https://www.w3.org/TR/REC-xml-names/>`_ (section 4)."
+msgstr ""
+"Không gian tên URI được liên kết với tiền tố dành riêng ``xml``, như được "
+"xác định bởi `Namespaces in XML <https://www.w3.org/TR/REC-xml-names/>`_ "
+"(phần 4)."
+
+#: ../../library/xml.dom.rst:127
+#, fuzzy
+msgid ""
+"The namespace URI for namespace declarations, as defined by `Document Object"
+" Model (DOM) Level 2 Core Specification <https://www.w3.org/TR/DOM-"
+"Level-2-Core/core.html>`_ (section 1.1.8)."
+msgstr ""
+"Không gian tên URI để khai báo không gian tên, như được định nghĩa bởi "
+"`Document Object Model (DOM) Level 2 Core Specification "
+"<https://www.w3.org/TR/DOM-Level-2-Core/core.html>`_ (phần 1.1.8)."
+
+#: ../../library/xml.dom.rst:134
+#, fuzzy
+msgid ""
+"The URI of the XHTML namespace as defined by `XHTML 1.0: The Extensible "
+"HyperText Markup Language <https://www.w3.org/TR/xhtml1/>`_ (section 3.1.1)."
+msgstr ""
+"URI của không gian tên XHTML được xác định bởi `XHTML 1.0: The Extensible "
+"HyperText Markup Language <https://www.w3.org/TR/xhtml1/>`_ (phần 3.1.1)."
+
+#: ../../library/xml.dom.rst:138
+#, fuzzy
+msgid ""
+"In addition, :mod:`!xml.dom` contains a base :class:`Node` class and the DOM"
+" exception classes.  The :class:`Node` class provided by this module does "
+"not implement any of the methods or attributes defined by the DOM "
+"specification; concrete DOM implementations must provide those.  The "
+":class:`Node` class provided as part of this module does provide the "
+"constants used for the :attr:`nodeType` attribute on concrete :class:`Node` "
+"objects; they are located within the class rather than at the module level "
+"to conform with the DOM specifications."
+msgstr ""
+"Ngoài ra, :mod:`!xml.dom` còn chứa một lớp :class:`Node` cơ sở và các lớp "
+"ngoại lệ DOM.  Lớp :class:`Node` do mô-đun này cung cấp không triển khai bất"
+" kỳ phương thức hoặc thuộc tính nào được xác định bởi đặc tả DOM; Việc triển"
+" khai DOM cụ thể phải cung cấp những điều đó.  Lớp :class:`Node` được cung "
+"cấp như một phần của mô-đun này cung cấp các hằng số được sử dụng cho thuộc "
+"tính :attr:`nodeType` trên các đối tượng :class:`Node` cụ thể; chúng được "
+"đặt trong lớp chứ không phải ở cấp mô-đun để tuân thủ các thông số kỹ thuật "
+"của DOM."
+
+#: ../../library/xml.dom.rst:153
+#, fuzzy
+msgid "Objects in the DOM"
+msgstr "Các đối tượng trong DOM"
+
+#: ../../library/xml.dom.rst:155
+#, fuzzy
+msgid ""
+"The definitive documentation for the DOM is the DOM specification from the "
+"W3C."
+msgstr "Tài liệu chính xác cho DOM là thông số kỹ thuật DOM từ W3C."
+
+#: ../../library/xml.dom.rst:157
+#, fuzzy
+msgid ""
+"Note that DOM attributes may also be manipulated as nodes instead of as "
+"simple strings.  It is fairly rare that you must do this, however, so this "
+"usage is not yet documented."
+msgstr ""
+"Lưu ý rằng các thuộc tính DOM cũng có thể được xử lý dưới dạng nút thay vì "
+"dưới dạng chuỗi đơn giản.  Tuy nhiên, khá hiếm khi bạn phải làm điều này, vì"
+" vậy việc sử dụng này vẫn chưa được ghi lại."
+
+#: ../../library/xml.dom.rst:162
+#, fuzzy
+msgid "Interface"
+msgstr "Giao diện"
+
+#: ../../library/xml.dom.rst:162
+#, fuzzy
+msgid "Section"
+msgstr "Phần"
+
+#: ../../library/xml.dom.rst:162
+#, fuzzy
+msgid "Purpose"
+msgstr "Mục đích"
+
+#: ../../library/xml.dom.rst:164
+#, fuzzy
+msgid ":class:`DOMImplementation`"
+msgstr ":class:`DOMImplementation`"
+
+#: ../../library/xml.dom.rst:164
+#, fuzzy
+msgid ":ref:`dom-implementation-objects`"
+msgstr ":ref:`dom-implementation-objects`"
+
+#: ../../library/xml.dom.rst:164
+#, fuzzy
+msgid "Interface to the underlying implementation."
+msgstr "Giao diện với việc thực hiện cơ bản."
+
+#: ../../library/xml.dom.rst:167
+#, fuzzy
+msgid ":class:`Node`"
+msgstr ":class:`Node`"
+
+#: ../../library/xml.dom.rst:167
+#, fuzzy
+msgid ":ref:`dom-node-objects`"
+msgstr ":ref:`dom-node-objects`"
+
+#: ../../library/xml.dom.rst:167
+#, fuzzy
+msgid "Base interface for most objects in a document."
+msgstr "Giao diện cơ bản cho hầu hết các đối tượng trong tài liệu."
+
+#: ../../library/xml.dom.rst:170
+#, fuzzy
+msgid ":class:`NodeList`"
+msgstr ":class:`NodeList`"
+
+#: ../../library/xml.dom.rst:170
+#, fuzzy
+msgid ":ref:`dom-nodelist-objects`"
+msgstr ":ref:`dom-nodelist-objects`"
+
+#: ../../library/xml.dom.rst:170
+#, fuzzy
+msgid "Interface for a sequence of nodes."
+msgstr "Giao diện cho một chuỗi các nút."
+
+#: ../../library/xml.dom.rst:173
+#, fuzzy
+msgid ":class:`DocumentType`"
+msgstr ":class:`DocumentType`"
+
+#: ../../library/xml.dom.rst:173
+#, fuzzy
+msgid ":ref:`dom-documenttype-objects`"
+msgstr ":ref:`dom-documenttype-objects`"
+
+#: ../../library/xml.dom.rst:173
+#, fuzzy
+msgid "Information about the declarations needed to process a document."
+msgstr "Thông tin về các khai báo cần thiết để xử lý một tài liệu."
+
+#: ../../library/xml.dom.rst:177
+#, fuzzy
+msgid ":class:`Document`"
+msgstr ":class:`Document`"
+
+#: ../../library/xml.dom.rst:177
+#, fuzzy
+msgid ":ref:`dom-document-objects`"
+msgstr ":ref:`dom-document-objects`"
+
+#: ../../library/xml.dom.rst:177
+#, fuzzy
+msgid "Object which represents an entire document."
+msgstr "Đối tượng đại diện cho toàn bộ tài liệu."
+
+#: ../../library/xml.dom.rst:180
+#, fuzzy
+msgid ":class:`Element`"
+msgstr ":class:`Element`"
+
+#: ../../library/xml.dom.rst:180
+#, fuzzy
+msgid ":ref:`dom-element-objects`"
+msgstr ":ref:`dom-element-objects`"
+
+#: ../../library/xml.dom.rst:180
+#, fuzzy
+msgid "Element nodes in the document hierarchy."
+msgstr "Các nút phần tử trong hệ thống phân cấp tài liệu."
+
+#: ../../library/xml.dom.rst:183
+#, fuzzy
+msgid ":class:`Attr`"
+msgstr ":class:`Attr`"
+
+#: ../../library/xml.dom.rst:183
+#, fuzzy
+msgid ":ref:`dom-attr-objects`"
+msgstr ":ref:`dom-attr-objects`"
+
+#: ../../library/xml.dom.rst:183
+#, fuzzy
+msgid "Attribute value nodes on element nodes."
+msgstr "Các nút giá trị thuộc tính trên các nút phần tử."
+
+#: ../../library/xml.dom.rst:186
+#, fuzzy
+msgid ":class:`Comment`"
+msgstr ":class:`Comment`"
+
+#: ../../library/xml.dom.rst:186
+#, fuzzy
+msgid ":ref:`dom-comment-objects`"
+msgstr ":ref:`dom-comment-objects`"
+
+#: ../../library/xml.dom.rst:186
+#, fuzzy
+msgid "Representation of comments in the source document."
+msgstr "Trình bày các ý kiến trong tài liệu nguồn."
+
+#: ../../library/xml.dom.rst:189
+#, fuzzy
+msgid ":class:`Text`"
+msgstr ":class:`Text`"
+
+#: ../../library/xml.dom.rst:189
+#, fuzzy
+msgid ":ref:`dom-text-objects`"
+msgstr ":ref:`dom-text-objects`"
+
+#: ../../library/xml.dom.rst:189
+#, fuzzy
+msgid "Nodes containing textual content from the document."
+msgstr "Các nút chứa nội dung văn bản từ tài liệu."
+
+#: ../../library/xml.dom.rst:192
+#, fuzzy
+msgid ":class:`ProcessingInstruction`"
+msgstr ":class:`ProcessingInstruction`"
+
+#: ../../library/xml.dom.rst:192
+#, fuzzy
+msgid ":ref:`dom-pi-objects`"
+msgstr ":ref:`dom-pi-objects`"
+
+#: ../../library/xml.dom.rst:192
+#, fuzzy
+msgid "Processing instruction representation."
+msgstr "Xử lý biểu diễn hướng dẫn."
+
+#: ../../library/xml.dom.rst:196
+#, fuzzy
+msgid ""
+"An additional section describes the exceptions defined for working with the "
+"DOM in Python."
+msgstr ""
+"Phần bổ sung mô tả các ngoại lệ được xác định để làm việc với DOM trong "
+"Python."
+
+#: ../../library/xml.dom.rst:203
+#, fuzzy
+msgid "DOMImplementation Objects"
+msgstr "Đối tượng triển khai DOM"
+
+#: ../../library/xml.dom.rst:205
+#, fuzzy
+msgid ""
+"The :class:`DOMImplementation` interface provides a way for applications to "
+"determine the availability of particular features in the DOM they are using."
+" DOM Level 2 added the ability to create new :class:`Document` and "
+":class:`DocumentType` objects using the :class:`DOMImplementation` as well."
+msgstr ""
+"Giao diện :class:`DOMImplementation` cung cấp một cách để các ứng dụng xác "
+"định tính khả dụng của các tính năng cụ thể trong DOM mà chúng đang sử dụng."
+" DOM Cấp 2 đã thêm khả năng tạo các đối tượng :class:`Document` và "
+":class:`DocumentType` mới bằng cách sử dụng :class:`DOMImplementation`."
+
+#: ../../library/xml.dom.rst:213
+#, fuzzy
+msgid ""
+"Return ``True`` if the feature identified by the pair of strings *feature* "
+"and *version* is implemented."
+msgstr ""
+"Trả về ``True`` nếu tính năng được xác định bởi cặp chuỗi *feature* và "
+"*version* được triển khai."
+
+#: ../../library/xml.dom.rst:219
+#, fuzzy
+msgid ""
+"Return a new :class:`Document` object (the root of the DOM), with a child "
+":class:`Element` object having the given *namespaceUri* and *qualifiedName*."
+" The *doctype* must be a :class:`DocumentType` object created by "
+":meth:`createDocumentType`, or ``None``. In the Python DOM API, the first "
+"two arguments can also be ``None`` in order to indicate that no "
+":class:`Element` child is to be created."
+msgstr ""
+"Trả về một đối tượng :class:`Document` mới (gốc của DOM), với một đối tượng "
+":class:`Element` con có *namespaceUri* và *qualifiedName* đã cho. Zz009zz "
+"phải là đối tượng :class:`DocumentType` được tạo bởi "
+":meth:`createDocumentType` hoặc ``None``. Trong Python DOM API, hai đối số "
+"đầu tiên cũng có thể là ``None`` để chỉ ra rằng không có :class:`Element` "
+"con nào được tạo."
+
+#: ../../library/xml.dom.rst:229
+#, fuzzy
+msgid ""
+"Return a new :class:`DocumentType` object that encapsulates the given "
+"*qualifiedName*, *publicId*, and *systemId* strings, representing the "
+"information contained in an XML document type declaration."
+msgstr ""
+"Trả về một đối tượng :class:`DocumentType` mới đóng gói các chuỗi "
+"*qualifiedName*, *publicId* và *systemId* đã cho, thể hiện thông tin có "
+"trong khai báo loại tài liệu XML."
+
+#: ../../library/xml.dom.rst:237
+#, fuzzy
+msgid "Node Objects"
+msgstr "Đối tượng nút"
+
+#: ../../library/xml.dom.rst:239
+#, fuzzy
+msgid ""
+"All of the components of an XML document are subclasses of :class:`Node`."
+msgstr ""
+"Tất cả các thành phần của tài liệu XML đều là lớp con của :class:`Node`."
+
+#: ../../library/xml.dom.rst:244
+#, fuzzy
+msgid ""
+"An integer representing the node type.  Symbolic constants for the types are"
+" on the :class:`Node` object: :const:`ELEMENT_NODE`, "
+":const:`ATTRIBUTE_NODE`, :const:`TEXT_NODE`, :const:`CDATA_SECTION_NODE`, "
+":const:`ENTITY_NODE`, :const:`PROCESSING_INSTRUCTION_NODE`, "
+":const:`COMMENT_NODE`, :const:`DOCUMENT_NODE`, :const:`DOCUMENT_TYPE_NODE`, "
+":const:`NOTATION_NODE`. This is a read-only attribute."
+msgstr ""
+"Một số nguyên đại diện cho loại nút.  Các hằng số ký hiệu cho các loại nằm "
+"trên đối tượng :class:`Node`: :const:`ELEMENT_NODE`, "
+":const:`ATTRIBUTE_NODE`, :const:`TEXT_NODE`, :const:`CDATA_SECTION_NODE`, "
+":const:`ENTITY_NODE`, :const:`PROCESSING_INSTRUCTION_NODE`, "
+":const:`COMMENT_NODE`, :const:`DOCUMENT_NODE`, :const:`DOCUMENT_TYPE_NODE`, "
+":const:`NOTATION_NODE`. Đây là thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:254
+#, fuzzy
+msgid ""
+"The parent of the current node, or ``None`` for the document node. The value"
+" is always a :class:`Node` object or ``None``.  For :class:`Element` nodes, "
+"this will be the parent element, except for the root element, in which case "
+"it will be the :class:`Document` object. For :class:`Attr` nodes, this is "
+"always ``None``. This is a read-only attribute."
+msgstr ""
+"Nút gốc của nút hiện tại hoặc ``None`` cho nút tài liệu. Giá trị luôn là đối"
+" tượng :class:`Node` hoặc ``None``.  Đối với các nút :class:`Element`, đây "
+"sẽ là phần tử cha, ngoại trừ phần tử gốc, trong trường hợp đó nó sẽ là đối "
+"tượng :class:`Document`. Đối với các nút :class:`Attr`, đây luôn là "
+"``None``. Đây là thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:263
+#, fuzzy
+msgid ""
+"A :class:`NamedNodeMap` of attribute objects.  Only elements have actual "
+"values for this; others provide ``None`` for this attribute. This is a read-"
+"only attribute."
+msgstr ""
+"Một :class:`NamedNodeMap` các đối tượng thuộc tính.  Chỉ các phần tử mới có "
+"giá trị thực tế cho việc này; những người khác cung cấp ``None`` cho thuộc "
+"tính này. Đây là thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:270
+#, fuzzy
+msgid ""
+"The node that immediately precedes this one with the same parent.  For "
+"instance the element with an end-tag that comes just before the *self* "
+"element's start-tag.  Of course, XML documents are made up of more than just"
+" elements so the previous sibling could be text, a comment, or something "
+"else. If this node is the first child of the parent, this attribute will be "
+"``None``. This is a read-only attribute."
+msgstr ""
+"Nút ngay trước nút này có cùng cha mẹ.  Ví dụ: phần tử có thẻ kết thúc xuất "
+"hiện ngay trước thẻ bắt đầu của phần tử *self*.  Tất nhiên, tài liệu XML "
+"không chỉ được tạo thành từ các phần tử nên phần tử anh chị em trước đó có "
+"thể là văn bản, nhận xét hoặc nội dung nào khác. Nếu nút này là nút con đầu "
+"tiên của nút cha thì thuộc tính này sẽ là ``None``. Đây là thuộc tính chỉ "
+"đọc."
+
+#: ../../library/xml.dom.rst:280
+#, fuzzy
+msgid ""
+"The node that immediately follows this one with the same parent.  See also "
+":attr:`previousSibling`.  If this is the last child of the parent, this "
+"attribute will be ``None``. This is a read-only attribute."
+msgstr ""
+"Nút ngay sau nút này có cùng cha mẹ.  Xem thêm :attr:`previousSibling`.  Nếu"
+" đây là con cuối cùng của cha mẹ thì thuộc tính này sẽ là ``None``. Đây là "
+"thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:287
+#, fuzzy
+msgid ""
+"A list of nodes contained within this node. This is a read-only attribute."
+msgstr "Danh sách các nút có trong nút này. Đây là thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:292
+#, fuzzy
+msgid ""
+"The first child of the node, if there are any, or ``None``. This is a read-"
+"only attribute."
+msgstr ""
+"Nút con đầu tiên của nút, nếu có, hoặc ``None``. Đây là thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:298
+#, fuzzy
+msgid ""
+"The last child of the node, if there are any, or ``None``. This is a read-"
+"only attribute."
+msgstr ""
+"Nút con cuối cùng của nút, nếu có, hoặc ``None``. Đây là thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:304
+#, fuzzy
+msgid ""
+"The part of the :attr:`tagName` following the colon if there is one, else "
+"the entire :attr:`tagName`.  The value is a string."
+msgstr ""
+"Phần :attr:`tagName` theo sau dấu hai chấm nếu có, phần còn lại là toàn bộ "
+":attr:`tagName`.  Giá trị là một chuỗi."
+
+#: ../../library/xml.dom.rst:310
+#, fuzzy
+msgid ""
+"The part of the :attr:`tagName` preceding the colon if there is one, else "
+"the empty string.  The value is a string, or ``None``."
+msgstr ""
+"Phần :attr:`tagName` đứng trước dấu hai chấm nếu có, phần còn lại là chuỗi "
+"trống.  Giá trị là một chuỗi hoặc ``None``."
+
+#: ../../library/xml.dom.rst:316
+#, fuzzy
+msgid ""
+"The namespace associated with the element name.  This will be a string or "
+"``None``.  This is a read-only attribute."
+msgstr ""
+"Không gian tên được liên kết với tên thành phần.  Đây sẽ là một chuỗi hoặc "
+"``None``.  Đây là thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:322
+#, fuzzy
+msgid ""
+"This has a different meaning for each node type; see the DOM specification "
+"for details.  You can always get the information you would get here from "
+"another property such as the :attr:`tagName` property for elements or the "
+":attr:`name` property for attributes. For all node types, the value of this "
+"attribute will be either a string or ``None``.  This is a read-only "
+"attribute."
+msgstr ""
+"Điều này có ý nghĩa khác nhau đối với từng loại nút; xem thông số kỹ thuật "
+"DOM để biết chi tiết.  Bạn luôn có thể lấy thông tin bạn sẽ nhận được ở đây "
+"từ một thuộc tính khác, chẳng hạn như thuộc tính :attr:`tagName` cho các "
+"phần tử hoặc thuộc tính :attr:`name` cho thuộc tính. Đối với tất cả các loại"
+" nút, giá trị của thuộc tính này sẽ là chuỗi hoặc ``None``.  Đây là thuộc "
+"tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:331
+#, fuzzy
+msgid ""
+"This has a different meaning for each node type; see the DOM specification "
+"for details.  The situation is similar to that with :attr:`nodeName`.  The "
+"value is a string or ``None``."
+msgstr ""
+"Điều này có ý nghĩa khác nhau đối với từng loại nút; xem thông số kỹ thuật "
+"DOM để biết chi tiết.  Tình huống tương tự với :attr:`nodeName`.  Giá trị là"
+" một chuỗi hoặc ``None``."
+
+#: ../../library/xml.dom.rst:338
+#, fuzzy
+msgid "Return ``True`` if the node has any attributes."
+msgstr "Trả về ``True`` nếu nút có bất kỳ thuộc tính nào."
+
+#: ../../library/xml.dom.rst:343
+#, fuzzy
+msgid "Return ``True`` if the node has any child nodes."
+msgstr "Trả về ``True`` nếu nút có bất kỳ nút con nào."
+
+#: ../../library/xml.dom.rst:348
+#, fuzzy
+msgid ""
+"Return ``True`` if *other* refers to the same node as this node. This is "
+"especially useful for DOM implementations which use any sort of proxy "
+"architecture (because more than one object can refer to the same node)."
+msgstr ""
+"Trả về ``True`` nếu *other* đề cập đến cùng một nút với nút này. Điều này "
+"đặc biệt hữu ích cho việc triển khai DOM sử dụng bất kỳ loại kiến ​​trúc "
+"proxy nào (vì nhiều đối tượng có thể tham chiếu đến cùng một nút)."
+
+#: ../../library/xml.dom.rst:354
+#, fuzzy
+msgid ""
+"This is based on a proposed DOM Level 3 API which is still in the \"working "
+"draft\" stage, but this particular interface appears uncontroversial.  "
+"Changes from the W3C will not necessarily affect this method in the Python "
+"DOM interface (though any new W3C API for this would also be supported)."
+msgstr ""
+"Điều này dựa trên DOM Cấp 3 API được đề xuất vẫn đang trong giai đoạn \"bản "
+"thảo đang hoạt động\", nhưng giao diện cụ thể này có vẻ không gây tranh cãi."
+"  Những thay đổi từ W3C sẽ không nhất thiết ảnh hưởng đến phương thức này "
+"trong giao diện Python DOM (mặc dù mọi W3C API mới cho điều này cũng sẽ được"
+" hỗ trợ)."
+
+#: ../../library/xml.dom.rst:362
+#, fuzzy
+msgid ""
+"Add a new child node to this node at the end of the list of children, "
+"returning *newChild*. If the node was already in the tree, it is removed "
+"first."
+msgstr ""
+"Thêm một nút con mới vào nút này ở cuối danh sách các nút con, trả về "
+"*newChild*. Nếu nút đã có trên cây thì nút đó sẽ bị xóa trước tiên."
+
+#: ../../library/xml.dom.rst:369
+#, fuzzy
+msgid ""
+"Insert a new child node before an existing child.  It must be the case that "
+"*refChild* is a child of this node; if not, :exc:`ValueError` is raised. "
+"*newChild* is returned. If *refChild* is ``None``, it inserts *newChild* at "
+"the end of the children's list."
+msgstr ""
+"Chèn một nút con mới trước một nút con hiện có.  Chắc chắn *refChild* là con"
+" của nút này; nếu không, :exc:`ValueError` sẽ được nâng lên. *newChild* được"
+" trả lại. Nếu *refChild* là ``None``, nó sẽ chèn *newChild* vào cuối danh "
+"sách trẻ em."
+
+#: ../../library/xml.dom.rst:377
+#, fuzzy
+msgid ""
+"Remove a child node.  *oldChild* must be a child of this node; if not, "
+":exc:`ValueError` is raised.  *oldChild* is returned on success.  If "
+"*oldChild* will not be used further, its :meth:`unlink` method should be "
+"called."
+msgstr ""
+"Loại bỏ một nút con.  *oldChild* phải là nút con của nút này; nếu không, "
+":exc:`ValueError` sẽ được nâng lên.  *oldChild* được trả về thành công.  Nếu"
+" *oldChild* không được sử dụng nữa thì phương thức :meth:`unlink` của nó sẽ "
+"được gọi."
+
+#: ../../library/xml.dom.rst:384
+#, fuzzy
+msgid ""
+"Replace an existing node with a new node. It must be the case that  "
+"*oldChild* is a child of this node; if not, :exc:`ValueError` is raised."
+msgstr ""
+"Thay thế một nút hiện có bằng một nút mới. Phải là *oldChild* là con của nút"
+" này; nếu không, :exc:`ValueError` sẽ được nâng lên."
+
+#: ../../library/xml.dom.rst:390
+#, fuzzy
+msgid ""
+"Join adjacent text nodes so that all stretches of text are stored as single "
+":class:`Text` instances.  This simplifies processing text from a DOM tree "
+"for many applications."
+msgstr ""
+"Nối các nút văn bản liền kề để tất cả các đoạn văn bản được lưu trữ dưới "
+"dạng các phiên bản :class:`Text` đơn lẻ.  Điều này giúp đơn giản hóa việc xử"
+" lý văn bản từ cây DOM cho nhiều ứng dụng."
+
+#: ../../library/xml.dom.rst:397
+#, fuzzy
+msgid ""
+"Clone this node.  Setting *deep* means to clone all child nodes as well.  "
+"This returns the clone."
+msgstr ""
+"Sao chép nút này.  Đặt *deep* có nghĩa là sao chép tất cả các nút con.  Điều"
+" này trả về bản sao."
+
+#: ../../library/xml.dom.rst:404
+#, fuzzy
+msgid "NodeList Objects"
+msgstr "Đối tượng danh sách nút"
+
+#: ../../library/xml.dom.rst:406
+#, fuzzy
+msgid ""
+"A :class:`NodeList` represents a sequence of nodes.  These objects are used "
+"in two ways in the DOM Core recommendation:  an :class:`Element` object "
+"provides one as its list of child nodes, and the "
+":meth:`getElementsByTagName` and :meth:`getElementsByTagNameNS` methods of "
+":class:`Node` return objects with this interface to represent query results."
+msgstr ""
+"Zz000zz đại diện cho một chuỗi các nút.  Các đối tượng này được sử dụng theo"
+" hai cách trong đề xuất cốt lõi của DOM: một đối tượng :class:`Element` cung"
+" cấp một đối tượng làm danh sách các nút con và các phương thức "
+":meth:`getElementsByTagName` và :meth:`getElementsByTagNameNS` của "
+":class:`Node` trả về các đối tượng có giao diện này để thể hiện kết quả truy"
+" vấn."
+
+#: ../../library/xml.dom.rst:412
+#, fuzzy
+msgid ""
+"The DOM Level 2 recommendation defines one method and one attribute for "
+"these objects:"
+msgstr ""
+"Đề xuất DOM Cấp 2 xác định một phương thức và một thuộc tính cho các đối "
+"tượng này:"
+
+#: ../../library/xml.dom.rst:418
+#, fuzzy
+msgid ""
+"Return the *i*'th item from the sequence, if there is one, or ``None``.  The"
+" index *i* is not allowed to be less than zero or greater than or equal to "
+"the length of the sequence."
+msgstr ""
+"Trả về mục thứ *i* từ chuỗi, nếu có, hoặc ``None``.  Chỉ số *i* không được "
+"phép nhỏ hơn 0 hoặc lớn hơn hoặc bằng độ dài của chuỗi."
+
+#: ../../library/xml.dom.rst:425
+#, fuzzy
+msgid "The number of nodes in the sequence."
+msgstr "Số lượng nút trong chuỗi."
+
+#: ../../library/xml.dom.rst:427
+#, fuzzy
+msgid ""
+"In addition, the Python DOM interface requires that some additional support "
+"is provided to allow :class:`NodeList` objects to be used as Python "
+"sequences.  All :class:`NodeList` implementations must include support for "
+":meth:`~object.__len__` and :meth:`~object.__getitem__`; this allows "
+"iteration over the :class:`NodeList` in :keyword:`for` statements and proper"
+" support for the :func:`len` built-in function."
+msgstr ""
+"Ngoài ra, giao diện Python DOM yêu cầu cung cấp một số hỗ trợ bổ sung để cho"
+" phép các đối tượng :class:`NodeList` được sử dụng làm chuỗi Python.  Tất cả"
+" các triển khai :class:`NodeList` phải bao gồm hỗ trợ cho "
+":meth:`~object.__len__` và :meth:`~object.__getitem__`; điều này cho phép "
+"lặp lại :class:`NodeList` trong các câu lệnh :keyword:`for` và hỗ trợ thích "
+"hợp cho hàm tích hợp :func:`len`."
+
+#: ../../library/xml.dom.rst:435
+#, fuzzy
+msgid ""
+"If a DOM implementation supports modification of the document, the "
+":class:`NodeList` implementation must also support the "
+":meth:`~object.__setitem__` and :meth:`~object.__delitem__` methods."
+msgstr ""
+"Nếu việc triển khai DOM hỗ trợ sửa đổi tài liệu thì việc triển khai "
+":class:`NodeList` cũng phải hỗ trợ các phương thức "
+":meth:`~object.__setitem__` và :meth:`~object.__delitem__`."
+
+#: ../../library/xml.dom.rst:443
+#, fuzzy
+msgid "DocumentType Objects"
+msgstr "Đối tượng loại tài liệu"
+
+#: ../../library/xml.dom.rst:445
+#, fuzzy
+msgid ""
+"Information about the notations and entities declared by a document "
+"(including the external subset if the parser uses it and can provide the "
+"information) is available from a :class:`DocumentType` object.  The "
+":class:`DocumentType` for a document is available from the :class:`Document`"
+" object's :attr:`doctype` attribute; if there is no ``DOCTYPE`` declaration "
+"for the document, the document's :attr:`doctype` attribute will be set to "
+"``None`` instead of an instance of this interface."
+msgstr ""
+"Thông tin về các ký hiệu và thực thể được khai báo bởi một tài liệu (bao gồm"
+" tập hợp con bên ngoài nếu trình phân tích cú pháp sử dụng nó và có thể cung"
+" cấp thông tin) có sẵn từ đối tượng :class:`DocumentType`.  "
+":class:`DocumentType` cho một tài liệu có sẵn từ thuộc tính :attr:`doctype` "
+"của đối tượng :class:`Document`; nếu không có khai báo ``DOCTYPE`` cho tài "
+"liệu, thuộc tính :attr:`doctype` của tài liệu sẽ được đặt thành ``None`` "
+"thay vì một phiên bản của giao diện này."
+
+#: ../../library/xml.dom.rst:453
+#, fuzzy
+msgid ""
+":class:`DocumentType` is a specialization of :class:`Node`, and adds the "
+"following attributes:"
+msgstr ""
+":class:`DocumentType` là một chuyên môn của :class:`Node` và thêm các thuộc "
+"tính sau:"
+
+#: ../../library/xml.dom.rst:459
+#, fuzzy
+msgid ""
+"The public identifier for the external subset of the document type "
+"definition. This will be a string or ``None``."
+msgstr ""
+"Mã định danh công khai cho tập hợp con bên ngoài của định nghĩa loại tài "
+"liệu. Đây sẽ là một chuỗi hoặc ``None``."
+
+#: ../../library/xml.dom.rst:465
+#, fuzzy
+msgid ""
+"The system identifier for the external subset of the document type "
+"definition. This will be a URI as a string, or ``None``."
+msgstr ""
+"Mã định danh hệ thống cho tập hợp con bên ngoài của định nghĩa loại tài "
+"liệu. Đây sẽ là URI dưới dạng một chuỗi hoặc ``None``."
+
+#: ../../library/xml.dom.rst:471
+#, fuzzy
+msgid ""
+"A string giving the complete internal subset from the document. This does "
+"not include the brackets which enclose the subset.  If the document has no "
+"internal subset, this should be ``None``."
+msgstr ""
+"Một chuỗi cung cấp tập hợp con nội bộ hoàn chỉnh từ tài liệu. Điều này không"
+" bao gồm các dấu ngoặc bao quanh tập hợp con.  Nếu tài liệu không có tập hợp"
+" con bên trong thì đây phải là ``None``."
+
+#: ../../library/xml.dom.rst:478
+#, fuzzy
+msgid ""
+"The name of the root element as given in the ``DOCTYPE`` declaration, if "
+"present."
+msgstr "Tên của phần tử gốc như được nêu trong khai báo ``DOCTYPE``, nếu có."
+
+#: ../../library/xml.dom.rst:484
+#, fuzzy
+msgid ""
+"This is a :class:`NamedNodeMap` giving the definitions of external entities."
+" For entity names defined more than once, only the first definition is "
+"provided (others are ignored as required by the XML recommendation).  This "
+"may be ``None`` if the information is not provided by the parser, or if no "
+"entities are defined."
+msgstr ""
+"Đây là :class:`NamedNodeMap` đưa ra định nghĩa về các thực thể bên ngoài. "
+"Đối với các tên thực thể được xác định nhiều lần, chỉ định nghĩa đầu tiên "
+"được cung cấp (các tên khác bị bỏ qua theo yêu cầu của đề xuất XML).  Đây có"
+" thể là ``None`` nếu thông tin không được trình phân tích cú pháp cung cấp "
+"hoặc nếu không có thực thể nào được xác định."
+
+#: ../../library/xml.dom.rst:493
+#, fuzzy
+msgid ""
+"This is a :class:`NamedNodeMap` giving the definitions of notations. For "
+"notation names defined more than once, only the first definition is provided"
+" (others are ignored as required by the XML recommendation).  This may be "
+"``None`` if the information is not provided by the parser, or if no "
+"notations are defined."
+msgstr ""
+"Đây là :class:`NamedNodeMap` đưa ra định nghĩa về các ký hiệu. Đối với các "
+"tên ký hiệu được xác định nhiều lần, chỉ định nghĩa đầu tiên được cung cấp "
+"(các tên khác bị bỏ qua theo yêu cầu của đề xuất XML).  Đây có thể là "
+"``None`` nếu thông tin không được trình phân tích cú pháp cung cấp hoặc nếu "
+"không có ký hiệu nào được xác định."
+
+#: ../../library/xml.dom.rst:503
+#, fuzzy
+msgid "Document Objects"
+msgstr "Đối tượng tài liệu"
+
+#: ../../library/xml.dom.rst:505
+#, fuzzy
+msgid ""
+"A :class:`Document` represents an entire XML document, including its "
+"constituent elements, attributes, processing instructions, comments etc.  "
+"Remember that it inherits properties from :class:`Node`."
+msgstr ""
+":class:`Document` đại diện cho toàn bộ tài liệu XML, bao gồm các thành phần "
+"cấu thành, thuộc tính, hướng dẫn xử lý, nhận xét, v.v. Hãy nhớ rằng nó kế "
+"thừa các thuộc tính từ :class:`Node`."
+
+#: ../../library/xml.dom.rst:512
+#, fuzzy
+msgid "The one and only root element of the document."
+msgstr "Phần tử gốc duy nhất của tài liệu."
+
+#: ../../library/xml.dom.rst:517
+#, fuzzy
+msgid ""
+"Create and return a new element node.  The element is not inserted into the "
+"document when it is created.  You need to explicitly insert it with one of "
+"the other methods such as :meth:`insertBefore` or :meth:`appendChild`."
+msgstr ""
+"Tạo và trả về một nút phần tử mới.  Phần tử không được chèn vào tài liệu khi"
+" nó được tạo.  Bạn cần chèn nó một cách rõ ràng bằng một trong các phương "
+"pháp khác như :meth:`insertBefore` hoặc :meth:`appendChild`."
+
+#: ../../library/xml.dom.rst:524
+#, fuzzy
+msgid ""
+"Create and return a new element with a namespace.  The *tagName* may have a "
+"prefix.  The element is not inserted into the document when it is created.  "
+"You need to explicitly insert it with one of the other methods such as "
+":meth:`insertBefore` or :meth:`appendChild`."
+msgstr ""
+"Tạo và trả về một phần tử mới có không gian tên.  Zz002zz có thể có tiền tố."
+"  Phần tử không được chèn vào tài liệu khi nó được tạo.  Bạn cần chèn nó một"
+" cách rõ ràng bằng một trong các phương pháp khác như :meth:`insertBefore` "
+"hoặc :meth:`appendChild`."
+
+#: ../../library/xml.dom.rst:532
+#, fuzzy
+msgid ""
+"Create and return a text node containing the data passed as a parameter.  As"
+" with the other creation methods, this one does not insert the node into the"
+" tree."
+msgstr ""
+"Tạo và trả về một nút văn bản chứa dữ liệu được truyền dưới dạng tham số.  "
+"Giống như các phương pháp tạo khác, phương pháp này không chèn nút vào cây."
+
+#: ../../library/xml.dom.rst:539
+#, fuzzy
+msgid ""
+"Create and return a comment node containing the data passed as a parameter."
+"  As with the other creation methods, this one does not insert the node into"
+" the tree."
+msgstr ""
+"Tạo và trả về một nút nhận xét chứa dữ liệu được truyền dưới dạng tham số.  "
+"Giống như các phương pháp tạo khác, phương pháp này không chèn nút vào cây."
+
+#: ../../library/xml.dom.rst:546
+#, fuzzy
+msgid ""
+"Create and return a processing instruction node containing the *target* and "
+"*data* passed as parameters.  As with the other creation methods, this one "
+"does not insert the node into the tree."
+msgstr ""
+"Tạo và trả về nút lệnh xử lý chứa *target* và *data* được truyền dưới dạng "
+"tham số.  Giống như các phương pháp tạo khác, phương pháp này không chèn nút"
+" vào cây."
+
+#: ../../library/xml.dom.rst:553
+#, fuzzy
+msgid ""
+"Create and return an attribute node.  This method does not associate the "
+"attribute node with any particular element.  You must use "
+":meth:`setAttributeNode` on the appropriate :class:`Element` object to use "
+"the newly created attribute instance."
+msgstr ""
+"Tạo và trả về một nút thuộc tính.  Phương pháp này không liên kết nút thuộc "
+"tính với bất kỳ phần tử cụ thể nào.  Bạn phải sử dụng "
+":meth:`setAttributeNode` trên đối tượng :class:`Element` thích hợp để sử "
+"dụng phiên bản thuộc tính mới được tạo."
+
+#: ../../library/xml.dom.rst:561
+#, fuzzy
+msgid ""
+"Create and return an attribute node with a namespace.  The *tagName* may "
+"have a prefix.  This method does not associate the attribute node with any "
+"particular element.  You must use :meth:`setAttributeNode` on the "
+"appropriate :class:`Element` object to use the newly created attribute "
+"instance."
+msgstr ""
+"Tạo và trả về một nút thuộc tính có không gian tên.  Zz002zz có thể có tiền "
+"tố.  Phương pháp này không liên kết nút thuộc tính với bất kỳ phần tử cụ thể"
+" nào.  Bạn phải sử dụng :meth:`setAttributeNode` trên đối tượng "
+":class:`Element` thích hợp để sử dụng phiên bản thuộc tính mới được tạo."
+
+#: ../../library/xml.dom.rst:569
+#, fuzzy
+msgid ""
+"Search for all descendants (direct children, children's children, etc.) with"
+" a particular element type name."
+msgstr ""
+"Tìm kiếm tất cả con cháu (con trực tiếp, con của con, v.v.) với tên loại "
+"phần tử cụ thể."
+
+#: ../../library/xml.dom.rst:575
+#, fuzzy
+msgid ""
+"Search for all descendants (direct children, children's children, etc.) with"
+" a particular namespace URI and localname.  The localname is the part of the"
+" namespace after the prefix."
+msgstr ""
+"Tìm kiếm tất cả con cháu (con trực tiếp, con của con, v.v.) với một không "
+"gian tên cụ thể URI và localname.  Tên địa phương là một phần của không gian"
+" tên sau tiền tố."
+
+#: ../../library/xml.dom.rst:583
+#, fuzzy
+msgid "Element Objects"
+msgstr "Đối tượng phần tử"
+
+#: ../../library/xml.dom.rst:585
+#, fuzzy
+msgid ""
+":class:`Element` is a subclass of :class:`Node`, so inherits all the "
+"attributes of that class."
+msgstr ""
+":class:`Element` là lớp con của :class:`Node` nên kế thừa tất cả các thuộc "
+"tính của lớp đó."
+
+#: ../../library/xml.dom.rst:591
+#, fuzzy
+msgid ""
+"The element type name.  In a namespace-using document it may have colons in "
+"it. The value is a string."
+msgstr ""
+"Tên loại phần tử.  Trong tài liệu sử dụng không gian tên, nó có thể có dấu "
+"hai chấm trong đó. Giá trị là một chuỗi."
+
+#: ../../library/xml.dom.rst:597 ../../library/xml.dom.rst:602
+#, fuzzy
+msgid "Same as equivalent method in the :class:`Document` class."
+msgstr "Tương tự như phương thức tương đương trong lớp :class:`Document`."
+
+#: ../../library/xml.dom.rst:607
+#, fuzzy
+msgid "Return ``True`` if the element has an attribute named by *name*."
+msgstr "Trả về ``True`` nếu phần tử có thuộc tính được đặt tên bởi *name*."
+
+#: ../../library/xml.dom.rst:612
+#, fuzzy
+msgid ""
+"Return ``True`` if the element has an attribute named by *namespaceURI* and "
+"*localName*."
+msgstr ""
+"Trả về ``True`` nếu phần tử có thuộc tính được đặt tên bởi *namespaceURI* và"
+" *localName*."
+
+#: ../../library/xml.dom.rst:618
+#, fuzzy
+msgid ""
+"Return the value of the attribute named by *name* as a string. If no such "
+"attribute exists, an empty string is returned, as if the attribute had no "
+"value."
+msgstr ""
+"Trả về giá trị của thuộc tính được đặt tên bởi *name* dưới dạng chuỗi. Nếu "
+"không có thuộc tính nào tồn tại thì một chuỗi trống sẽ được trả về, coi như "
+"thuộc tính đó không có giá trị."
+
+#: ../../library/xml.dom.rst:624
+#, fuzzy
+msgid "Return the :class:`Attr` node for the attribute named by *attrname*."
+msgstr "Trả về nút :class:`Attr` cho thuộc tính được đặt tên bởi *attrname*."
+
+#: ../../library/xml.dom.rst:629
+#, fuzzy
+msgid ""
+"Return the value of the attribute named by *namespaceURI* and *localName* as"
+" a string. If no such attribute exists, an empty string is returned, as if "
+"the attribute had no value."
+msgstr ""
+"Trả về giá trị của thuộc tính được đặt tên bởi *namespaceURI* và *localName*"
+" dưới dạng chuỗi. Nếu không có thuộc tính nào tồn tại thì một chuỗi trống sẽ"
+" được trả về, coi như thuộc tính đó không có giá trị."
+
+#: ../../library/xml.dom.rst:636
+#, fuzzy
+msgid ""
+"Return an attribute value as a node, given a *namespaceURI* and *localName*."
+msgstr ""
+"Trả về một giá trị thuộc tính dưới dạng nút, cho trước *namespaceURI* và "
+"*localName*."
+
+#: ../../library/xml.dom.rst:641
+#, fuzzy
+msgid ""
+"Remove an attribute by name.  If there is no matching attribute, a "
+":exc:`NotFoundErr` is raised."
+msgstr ""
+"Xóa một thuộc tính theo tên.  Nếu không có thuộc tính phù hợp, "
+":exc:`NotFoundErr` sẽ được nâng lên."
+
+#: ../../library/xml.dom.rst:647
+#, fuzzy
+msgid ""
+"Remove and return *oldAttr* from the attribute list, if present. If "
+"*oldAttr* is not present, :exc:`NotFoundErr` is raised."
+msgstr ""
+"Xóa và trả lại *oldAttr* khỏi danh sách thuộc tính, nếu có. Nếu *oldAttr* "
+"không xuất hiện, :exc:`NotFoundErr` sẽ được nâng lên."
+
+#: ../../library/xml.dom.rst:653
+#, fuzzy
+msgid ""
+"Remove an attribute by name.  Note that it uses a localName, not a qname.  "
+"No exception is raised if there is no matching attribute."
+msgstr ""
+"Xóa một thuộc tính theo tên.  Lưu ý rằng nó sử dụng localName chứ không phải"
+" qname.  Không có ngoại lệ nào được đưa ra nếu không có thuộc tính phù hợp."
+
+#: ../../library/xml.dom.rst:659
+#, fuzzy
+msgid "Set an attribute value from a string."
+msgstr "Đặt giá trị thuộc tính từ một chuỗi."
+
+#: ../../library/xml.dom.rst:664
+#, fuzzy
+msgid ""
+"Add a new attribute node to the element, replacing an existing attribute if "
+"necessary if the :attr:`name` attribute matches.  If a replacement occurs, "
+"the old attribute node will be returned.  If *newAttr* is already in use, "
+":exc:`InuseAttributeErr` will be raised."
+msgstr ""
+"Thêm nút thuộc tính mới vào phần tử, thay thế thuộc tính hiện có nếu cần nếu"
+" thuộc tính :attr:`name` khớp.  Nếu xảy ra sự thay thế, nút thuộc tính cũ sẽ"
+" được trả về.  Nếu *newAttr* đã được sử dụng, :exc:`InuseAttributeErr` sẽ "
+"được nâng lên."
+
+#: ../../library/xml.dom.rst:672
+#, fuzzy
+msgid ""
+"Add a new attribute node to the element, replacing an existing attribute if "
+"necessary if the :attr:`namespaceURI` and :attr:`localName` attributes "
+"match. If a replacement occurs, the old attribute node will be returned.  If"
+" *newAttr* is already in use, :exc:`InuseAttributeErr` will be raised."
+msgstr ""
+"Thêm nút thuộc tính mới vào phần tử, thay thế thuộc tính hiện có nếu cần nếu"
+" thuộc tính :attr:`namespaceURI` và :attr:`localName` khớp. Nếu xảy ra sự "
+"thay thế, nút thuộc tính cũ sẽ được trả về.  Nếu *newAttr* đã được sử dụng, "
+":exc:`InuseAttributeErr` sẽ được nâng lên."
+
+#: ../../library/xml.dom.rst:680
+#, fuzzy
+msgid ""
+"Set an attribute value from a string, given a *namespaceURI* and a *qname*. "
+"Note that a qname is the whole attribute name.  This is different than "
+"above."
+msgstr ""
+"Đặt giá trị thuộc tính từ một chuỗi, cho trước *namespaceURI* và *qname*. "
+"Lưu ý rằng qname là toàn bộ tên thuộc tính.  Điều này khác với ở trên."
+
+#: ../../library/xml.dom.rst:687
+#, fuzzy
+msgid "Attr Objects"
+msgstr "Đối tượng Attr"
+
+#: ../../library/xml.dom.rst:689
+#, fuzzy
+msgid ""
+":class:`Attr` inherits from :class:`Node`, so inherits all its attributes."
+msgstr ""
+":class:`Attr` kế thừa từ :class:`Node` nên kế thừa tất cả các thuộc tính của"
+" nó."
+
+#: ../../library/xml.dom.rst:694
+#, fuzzy
+msgid ""
+"The attribute name. In a namespace-using document it may include a colon."
+msgstr ""
+"Tên thuộc tính. Trong tài liệu sử dụng không gian tên, nó có thể bao gồm dấu"
+" hai chấm."
+
+#: ../../library/xml.dom.rst:700
+#, fuzzy
+msgid ""
+"The part of the name following the colon if there is one, else the entire "
+"name. This is a read-only attribute."
+msgstr ""
+"Phần tên theo sau dấu hai chấm nếu có, nếu không thì toàn bộ tên. Đây là "
+"thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:707
+#, fuzzy
+msgid ""
+"The part of the name preceding the colon if there is one, else the empty "
+"string."
+msgstr "Phần tên đứng trước dấu hai chấm nếu có, phần còn lại là chuỗi trống."
+
+#: ../../library/xml.dom.rst:713
+#, fuzzy
+msgid ""
+"The text value of the attribute.  This is a synonym for the "
+":attr:`nodeValue` attribute."
+msgstr ""
+"Giá trị văn bản của thuộc tính.  Đây là từ đồng nghĩa với thuộc tính "
+":attr:`nodeValue`."
+
+#: ../../library/xml.dom.rst:720
+#, fuzzy
+msgid "NamedNodeMap Objects"
+msgstr "Đối tượng NamedNodeMap"
+
+#: ../../library/xml.dom.rst:722
+#, fuzzy
+msgid ":class:`NamedNodeMap` does *not* inherit from :class:`Node`."
+msgstr ":class:`NamedNodeMap` có *not* kế thừa từ :class:`Node` không."
+
+#: ../../library/xml.dom.rst:727
+#, fuzzy
+msgid "The length of the attribute list."
+msgstr "Độ dài của danh sách thuộc tính."
+
+#: ../../library/xml.dom.rst:732
+#, fuzzy
+msgid ""
+"Return an attribute with a particular index.  The order you get the "
+"attributes in is arbitrary but will be consistent for the life of a DOM.  "
+"Each item is an attribute node.  Get its value with the :attr:`value` "
+"attribute."
+msgstr ""
+"Trả về một thuộc tính có chỉ mục cụ thể.  Thứ tự bạn nhận các thuộc tính là "
+"tùy ý nhưng sẽ nhất quán trong suốt vòng đời của DOM.  Mỗi mục là một nút "
+"thuộc tính.  Nhận giá trị của nó với thuộc tính :attr:`value`."
+
+#: ../../library/xml.dom.rst:736
+#, fuzzy
+msgid ""
+"There are also experimental methods that give this class more mapping "
+"behavior. You can use them or you can use the standardized "
+":meth:`!getAttribute\\*` family of methods on the :class:`Element` objects."
+msgstr ""
+"Ngoài ra còn có các phương pháp thử nghiệm giúp lớp này có nhiều hành vi ánh"
+" xạ hơn. Bạn có thể sử dụng chúng hoặc bạn có thể sử dụng họ phương thức "
+":meth:`!getAttribute\\*` được tiêu chuẩn hóa trên các đối tượng "
+":class:`Element`."
+
+#: ../../library/xml.dom.rst:744
+#, fuzzy
+msgid "Comment Objects"
+msgstr "Đối tượng bình luận"
+
+#: ../../library/xml.dom.rst:746
+#, fuzzy
+msgid ""
+":class:`Comment` represents a comment in the XML document.  It is a subclass"
+" of :class:`Node`, but cannot have child nodes."
+msgstr ""
+":class:`Comment` đại diện cho một nhận xét trong tài liệu XML.  Nó là lớp "
+"con của :class:`Node`, nhưng không thể có các nút con."
+
+#: ../../library/xml.dom.rst:752
+#, fuzzy
+msgid ""
+"The content of the comment as a string.  The attribute contains all "
+"characters between the leading ``<!-``\\ ``-`` and trailing ``-``\\ ``->``, "
+"but does not include them."
+msgstr ""
+"Nội dung của bình luận dưới dạng một chuỗi.  Thuộc tính này chứa tất cả các "
+"ký tự nằm giữa ``<!-``\\ ``-`` ở đầu và ``-``\\ ``->`` ở cuối, nhưng không "
+"bao gồm chúng."
+
+#: ../../library/xml.dom.rst:760
+#, fuzzy
+msgid "Text and CDATASection Objects"
+msgstr "Đối tượng văn bản và CDATASection"
+
+#: ../../library/xml.dom.rst:762
+#, fuzzy
+msgid ""
+"The :class:`Text` interface represents text in the XML document.  If the "
+"parser and DOM implementation support the DOM's XML extension, portions of "
+"the text enclosed in CDATA marked sections are stored in "
+":class:`CDATASection` objects. These two interfaces are identical, but "
+"provide different values for the :attr:`nodeType` attribute."
+msgstr ""
+"Giao diện :class:`Text` đại diện cho văn bản trong tài liệu XML.  Nếu trình "
+"phân tích cú pháp và triển khai DOM hỗ trợ phần mở rộng XML của DOM, các "
+"phần văn bản nằm trong các phần được đánh dấu CDATA sẽ được lưu trữ trong "
+"các đối tượng :class:`CDATASection`. Hai giao diện này giống hệt nhau nhưng "
+"cung cấp các giá trị khác nhau cho thuộc tính :attr:`nodeType`."
+
+#: ../../library/xml.dom.rst:768
+#, fuzzy
+msgid ""
+"These interfaces extend the :class:`Node` interface.  They cannot have child"
+" nodes."
+msgstr ""
+"Các giao diện này mở rộng giao diện :class:`Node`.  Họ không thể có các nút "
+"con."
+
+#: ../../library/xml.dom.rst:774
+#, fuzzy
+msgid "The content of the text node as a string."
+msgstr "Nội dung của nút văn bản dưới dạng một chuỗi."
+
+#: ../../library/xml.dom.rst:778
+#, fuzzy
+msgid ""
+"The use of a :class:`CDATASection` node does not indicate that the node "
+"represents a complete CDATA marked section, only that the content of the "
+"node was part of a CDATA section.  A single CDATA section may be represented"
+" by more than one node in the document tree.  There is no way to determine "
+"whether two adjacent :class:`CDATASection` nodes represent different CDATA "
+"marked sections."
+msgstr ""
+"Việc sử dụng nút :class:`CDATASection` không chỉ ra rằng nút đó đại diện cho"
+" phần được đánh dấu CDATA hoàn chỉnh, chỉ có nghĩa là nội dung của nút đó là"
+" một phần của phần CDATA.  Một phần CDATA có thể được biểu thị bằng nhiều "
+"nút trong cây tài liệu.  Không có cách nào để xác định xem hai nút "
+":class:`CDATASection` liền kề có đại diện cho các phần được đánh dấu CDATA "
+"khác nhau hay không."
+
+#: ../../library/xml.dom.rst:788
+#, fuzzy
+msgid "ProcessingInstruction Objects"
+msgstr "Đối tượng hướng dẫn xử lý"
+
+#: ../../library/xml.dom.rst:790
+#, fuzzy
+msgid ""
+"Represents a processing instruction in the XML document; this inherits from "
+"the :class:`Node` interface and cannot have child nodes."
+msgstr ""
+"Biểu thị hướng dẫn xử lý trong tài liệu XML; cái này kế thừa từ giao diện "
+":class:`Node` và không thể có các nút con."
+
+#: ../../library/xml.dom.rst:796
+#, fuzzy
+msgid ""
+"The content of the processing instruction up to the first whitespace "
+"character. This is a read-only attribute."
+msgstr ""
+"Nội dung của hướng dẫn xử lý lên đến ký tự khoảng trắng đầu tiên. Đây là "
+"thuộc tính chỉ đọc."
+
+#: ../../library/xml.dom.rst:802
+#, fuzzy
+msgid ""
+"The content of the processing instruction following the first whitespace "
+"character."
+msgstr "Nội dung của lệnh xử lý theo sau ký tự khoảng trắng đầu tiên."
+
+#: ../../library/xml.dom.rst:809
+#, fuzzy
+msgid "Exceptions"
+msgstr "Ngoại lệ"
+
+#: ../../library/xml.dom.rst:811
+#, fuzzy
+msgid ""
+"The DOM Level 2 recommendation defines a single exception, "
+":exc:`DOMException`, and a number of constants that allow applications to "
+"determine what sort of error occurred. :exc:`DOMException` instances carry a"
+" :attr:`code` attribute that provides the appropriate value for the specific"
+" exception."
+msgstr ""
+"Đề xuất DOM Cấp 2 xác định một ngoại lệ duy nhất, :exc:`DOMException` và một"
+" số hằng số cho phép ứng dụng xác định loại lỗi nào đã xảy ra. Các phiên bản"
+" :exc:`DOMException` mang thuộc tính :attr:`code` cung cấp giá trị phù hợp "
+"cho ngoại lệ cụ thể."
+
+#: ../../library/xml.dom.rst:816
+#, fuzzy
+msgid ""
+"The Python DOM interface provides the constants, but also expands the set of"
+" exceptions so that a specific exception exists for each of the exception "
+"codes defined by the DOM.  The implementations must raise the appropriate "
+"specific exception, each of which carries the appropriate value for the "
+":attr:`code` attribute."
+msgstr ""
+"Giao diện DOM của Python cung cấp các hằng số, nhưng cũng mở rộng tập hợp "
+"các ngoại lệ để tồn tại một ngoại lệ cụ thể cho từng mã ngoại lệ được xác "
+"định bởi DOM.  Việc triển khai phải đưa ra ngoại lệ cụ thể thích hợp, mỗi "
+"ngoại lệ mang giá trị phù hợp cho thuộc tính :attr:`code`."
+
+#: ../../library/xml.dom.rst:825
+#, fuzzy
+msgid ""
+"Base exception class used for all specific DOM exceptions.  This exception "
+"class cannot be directly instantiated."
+msgstr ""
+"Lớp ngoại lệ cơ sở được sử dụng cho tất cả các ngoại lệ DOM cụ thể.  Lớp "
+"ngoại lệ này không thể được khởi tạo trực tiếp."
+
+#: ../../library/xml.dom.rst:831
+#, fuzzy
+msgid ""
+"Raised when a specified range of text does not fit into a string. This is "
+"not known to be used in the Python DOM implementations, but may be received "
+"from DOM implementations not written in Python."
+msgstr ""
+"Xảy ra khi một phạm vi văn bản được chỉ định không vừa với một chuỗi. Điều "
+"này không được biết là sẽ được sử dụng trong triển khai DOM của Python, "
+"nhưng có thể được nhận từ các triển khai DOM không được viết bằng Python."
+
+#: ../../library/xml.dom.rst:838
+#, fuzzy
+msgid ""
+"Raised when an attempt is made to insert a node where the node type is not "
+"allowed."
+msgstr "Xảy ra khi cố gắng chèn một nút trong đó loại nút không được phép."
+
+#: ../../library/xml.dom.rst:844
+#, fuzzy
+msgid ""
+"Raised when an index or size parameter to a method is negative or exceeds "
+"the allowed values."
+msgstr ""
+"Xảy ra khi tham số chỉ mục hoặc kích thước của một phương thức là âm hoặc "
+"vượt quá giá trị cho phép."
+
+#: ../../library/xml.dom.rst:850
+#, fuzzy
+msgid ""
+"Raised when an attempt is made to insert an :class:`Attr` node that is "
+"already present elsewhere in the document."
+msgstr ""
+"Xảy ra khi cố gắng chèn nút :class:`Attr` đã có ở nơi khác trong tài liệu."
+
+#: ../../library/xml.dom.rst:856
+#, fuzzy
+msgid ""
+"Raised if a parameter or an operation is not supported on the underlying "
+"object."
+msgstr ""
+"Tăng lên nếu một tham số hoặc một thao tác không được hỗ trợ trên đối tượng "
+"cơ bản."
+
+#: ../../library/xml.dom.rst:861
+#, fuzzy
+msgid ""
+"This exception is raised when a string parameter contains a character that "
+"is not permitted in the context it's being used in by the XML 1.0 "
+"recommendation. For example, attempting to create an :class:`Element` node "
+"with a space in the element type name will cause this error to be raised."
+msgstr ""
+"Ngoại lệ này được đưa ra khi tham số chuỗi chứa ký tự không được phép trong "
+"ngữ cảnh nó đang được đề xuất XML 1.0 sử dụng. Ví dụ: cố gắng tạo nút "
+":class:`Element` có khoảng trắng trong tên loại phần tử sẽ gây ra lỗi này."
+
+#: ../../library/xml.dom.rst:869
+#, fuzzy
+msgid "Raised when an attempt is made to modify the type of a node."
+msgstr "Xảy ra khi cố gắng sửa đổi loại nút."
+
+#: ../../library/xml.dom.rst:874
+#, fuzzy
+msgid ""
+"Raised when an attempt is made to use an object that is not defined or is no"
+" longer usable."
+msgstr ""
+"Xảy ra khi cố gắng sử dụng một đối tượng không được xác định hoặc không còn "
+"sử dụng được nữa."
+
+#: ../../library/xml.dom.rst:880
+#, fuzzy
+msgid ""
+"If an attempt is made to change any object in a way that is not permitted "
+"with regard to the `Namespaces in XML <https://www.w3.org/TR/REC-xml-"
+"names/>`_ recommendation, this exception is raised."
+msgstr ""
+"Nếu cố gắng thay đổi bất kỳ đối tượng nào theo cách không được phép liên "
+"quan đến đề xuất `Namespaces in XML <https://www.w3.org/TR/REC-xml-"
+"names/>`_, ngoại lệ này sẽ được đưa ra."
+
+#: ../../library/xml.dom.rst:887
+#, fuzzy
+msgid ""
+"Exception when a node does not exist in the referenced context.  For "
+"example, :meth:`NamedNodeMap.removeNamedItem` will raise this if the node "
+"passed in does not exist in the map."
+msgstr ""
+"Ngoại lệ khi nút không tồn tại trong ngữ cảnh được tham chiếu.  Ví dụ: "
+":meth:`NamedNodeMap.removeNamedItem` sẽ đưa ra điều này nếu nút được truyền "
+"vào không tồn tại trên bản đồ."
+
+#: ../../library/xml.dom.rst:894
+#, fuzzy
+msgid ""
+"Raised when the implementation does not support the requested type of object"
+" or operation."
+msgstr ""
+"Xảy ra khi việc triển khai không hỗ trợ loại đối tượng hoặc thao tác được "
+"yêu cầu."
+
+#: ../../library/xml.dom.rst:900
+#, fuzzy
+msgid ""
+"This is raised if data is specified for a node which does not support data."
+msgstr ""
+"Điều này được nêu ra nếu dữ liệu được chỉ định cho một nút không hỗ trợ dữ "
+"liệu."
+
+#: ../../library/xml.dom.rst:907
+#, fuzzy
+msgid ""
+"Raised on attempts to modify an object where modifications are not allowed "
+"(such as for read-only nodes)."
+msgstr ""
+"Phát sinh khi cố gắng sửa đổi một đối tượng không được phép sửa đổi (chẳng "
+"hạn như đối với các nút chỉ đọc)."
+
+#: ../../library/xml.dom.rst:913
+#, fuzzy
+msgid "Raised when an invalid or illegal string is specified."
+msgstr "Xảy ra khi một chuỗi không hợp lệ hoặc không hợp lệ được chỉ định."
+
+#: ../../library/xml.dom.rst:920
+#, fuzzy
+msgid ""
+"Raised when a node is inserted in a different document than it currently "
+"belongs to, and the implementation does not support migrating the node from "
+"one document to the other."
+msgstr ""
+"Xảy ra khi một nút được chèn vào một tài liệu khác với tài liệu hiện tại và "
+"việc triển khai không hỗ trợ di chuyển nút từ tài liệu này sang tài liệu "
+"khác."
+
+#: ../../library/xml.dom.rst:924
+#, fuzzy
+msgid ""
+"The exception codes defined in the DOM recommendation map to the exceptions "
+"described above according to this table:"
+msgstr ""
+"Các mã ngoại lệ được xác định trong đề xuất DOM ánh xạ tới các ngoại lệ được"
+" mô tả ở trên theo bảng này:"
+
+#: ../../library/xml.dom.rst:928
+#, fuzzy
+msgid "Constant"
+msgstr "Hằng số"
+
+#: ../../library/xml.dom.rst:928
+#, fuzzy
+msgid "Exception"
+msgstr "Ngoại lệ"
+
+#: ../../library/xml.dom.rst:930
+#, fuzzy
+msgid ":const:`DOMSTRING_SIZE_ERR`"
+msgstr ":const:`DOMSTRING_SIZE_ERR`"
+
+#: ../../library/xml.dom.rst:930
+#, fuzzy
+msgid ":exc:`DomstringSizeErr`"
+msgstr ":exc:`DomstringSizeErr`"
+
+#: ../../library/xml.dom.rst:932
+#, fuzzy
+msgid ":const:`HIERARCHY_REQUEST_ERR`"
+msgstr ":const:`HIERARCHY_REQUEST_ERR`"
+
+#: ../../library/xml.dom.rst:932
+#, fuzzy
+msgid ":exc:`HierarchyRequestErr`"
+msgstr ":exc:`HierarchyRequestErr`"
+
+#: ../../library/xml.dom.rst:934
+#, fuzzy
+msgid ":const:`INDEX_SIZE_ERR`"
+msgstr ":const:`INDEX_SIZE_ERR`"
+
+#: ../../library/xml.dom.rst:934
+#, fuzzy
+msgid ":exc:`IndexSizeErr`"
+msgstr ":exc:`IndexSizeErr`"
+
+#: ../../library/xml.dom.rst:936
+#, fuzzy
+msgid ":const:`INUSE_ATTRIBUTE_ERR`"
+msgstr ":const:`INUSE_ATTRIBUTE_ERR`"
+
+#: ../../library/xml.dom.rst:936
+#, fuzzy
+msgid ":exc:`InuseAttributeErr`"
+msgstr ":exc:`InuseAttributeErr`"
+
+#: ../../library/xml.dom.rst:938
+#, fuzzy
+msgid ":const:`INVALID_ACCESS_ERR`"
+msgstr ":const:`INVALID_ACCESS_ERR`"
+
+#: ../../library/xml.dom.rst:938
+#, fuzzy
+msgid ":exc:`InvalidAccessErr`"
+msgstr ":exc:`InvalidAccessErr`"
+
+#: ../../library/xml.dom.rst:940
+#, fuzzy
+msgid ":const:`INVALID_CHARACTER_ERR`"
+msgstr ":const:`INVALID_CHARACTER_ERR`"
+
+#: ../../library/xml.dom.rst:940
+#, fuzzy
+msgid ":exc:`InvalidCharacterErr`"
+msgstr ":exc:`InvalidCharacterErr`"
+
+#: ../../library/xml.dom.rst:942
+#, fuzzy
+msgid ":const:`INVALID_MODIFICATION_ERR`"
+msgstr ":const:`INVALID_MODIFICATION_ERR`"
+
+#: ../../library/xml.dom.rst:942
+#, fuzzy
+msgid ":exc:`InvalidModificationErr`"
+msgstr ":exc:`InvalidModificationErr`"
+
+#: ../../library/xml.dom.rst:944
+#, fuzzy
+msgid ":const:`INVALID_STATE_ERR`"
+msgstr ":const:`INVALID_STATE_ERR`"
+
+#: ../../library/xml.dom.rst:944
+#, fuzzy
+msgid ":exc:`InvalidStateErr`"
+msgstr ":exc:`InvalidStateErr`"
+
+#: ../../library/xml.dom.rst:946
+#, fuzzy
+msgid ":const:`NAMESPACE_ERR`"
+msgstr ":const:`NAMESPACE_ERR`"
+
+#: ../../library/xml.dom.rst:946
+#, fuzzy
+msgid ":exc:`NamespaceErr`"
+msgstr ":exc:`NamespaceErr`"
+
+#: ../../library/xml.dom.rst:948
+#, fuzzy
+msgid ":const:`NOT_FOUND_ERR`"
+msgstr ":const:`NOT_FOUND_ERR`"
+
+#: ../../library/xml.dom.rst:948
+#, fuzzy
+msgid ":exc:`NotFoundErr`"
+msgstr ":exc:`NotFoundErr`"
+
+#: ../../library/xml.dom.rst:950
+#, fuzzy
+msgid ":const:`NOT_SUPPORTED_ERR`"
+msgstr ":const:`NOT_SUPPORTED_ERR`"
+
+#: ../../library/xml.dom.rst:950
+#, fuzzy
+msgid ":exc:`NotSupportedErr`"
+msgstr ":exc:`NotSupportedErr`"
+
+#: ../../library/xml.dom.rst:952
+#, fuzzy
+msgid ":const:`NO_DATA_ALLOWED_ERR`"
+msgstr ":const:`NO_DATA_ALLOWED_ERR`"
+
+#: ../../library/xml.dom.rst:952
+#, fuzzy
+msgid ":exc:`NoDataAllowedErr`"
+msgstr ":exc:`NoDataAllowedErr`"
+
+#: ../../library/xml.dom.rst:954
+#, fuzzy
+msgid ":const:`NO_MODIFICATION_ALLOWED_ERR`"
+msgstr ":const:`NO_MODIFICATION_ALLOWED_ERR`"
+
+#: ../../library/xml.dom.rst:954
+#, fuzzy
+msgid ":exc:`NoModificationAllowedErr`"
+msgstr ":exc:`NoModificationAllowedErr`"
+
+#: ../../library/xml.dom.rst:956
+#, fuzzy
+msgid ":const:`SYNTAX_ERR`"
+msgstr ":const:`SYNTAX_ERR`"
+
+#: ../../library/xml.dom.rst:956
+#, fuzzy
+msgid ":exc:`SyntaxErr`"
+msgstr ":exc:`SyntaxErr`"
+
+#: ../../library/xml.dom.rst:958
+#, fuzzy
+msgid ":const:`WRONG_DOCUMENT_ERR`"
+msgstr ":const:`WRONG_DOCUMENT_ERR`"
+
+#: ../../library/xml.dom.rst:958
+#, fuzzy
+msgid ":exc:`WrongDocumentErr`"
+msgstr ":exc:`WrongDocumentErr`"
+
+#: ../../library/xml.dom.rst:965
+#, fuzzy
+msgid "Conformance"
+msgstr "sự phù hợp"
+
+#: ../../library/xml.dom.rst:967
+#, fuzzy
+msgid ""
+"This section describes the conformance requirements and relationships "
+"between the Python DOM API, the W3C DOM recommendations, and the OMG IDL "
+"mapping for Python."
+msgstr ""
+"Phần này mô tả các yêu cầu tuân thủ và mối quan hệ giữa DOM API, đề xuất W3C"
+" DOM và ánh xạ OMG IDL cho Python."
+
+#: ../../library/xml.dom.rst:975
+#, fuzzy
+msgid "Type Mapping"
+msgstr "Ánh xạ loại"
+
+#: ../../library/xml.dom.rst:977
+#, fuzzy
+msgid ""
+"The IDL types used in the DOM specification are mapped to Python types "
+"according to the following table."
+msgstr ""
+"Các loại IDL được sử dụng trong đặc tả DOM được ánh xạ tới các loại Python "
+"theo bảng sau."
+
+#: ../../library/xml.dom.rst:981
+#, fuzzy
+msgid "IDL Type"
+msgstr "Loại IDL"
+
+#: ../../library/xml.dom.rst:981
+#, fuzzy
+msgid "Python Type"
+msgstr "Loại Python"
+
+#: ../../library/xml.dom.rst:983
+#, fuzzy
+msgid "``boolean``"
+msgstr "``boolean``"
+
+#: ../../library/xml.dom.rst:983
+#, fuzzy
+msgid "``bool`` or ``int``"
+msgstr "``bool`` hoặc ``int``"
+
+#: ../../library/xml.dom.rst:985 ../../library/xml.dom.rst:987
+#: ../../library/xml.dom.rst:989
+#, fuzzy
+msgid "``int``"
+msgstr "``int``"
+
+#: ../../library/xml.dom.rst:987
+#, fuzzy
+msgid "``long int``"
+msgstr "``long int``"
+
+#: ../../library/xml.dom.rst:989
+#, fuzzy
+msgid "``unsigned int``"
+msgstr "``unsigned int``"
+
+#: ../../library/xml.dom.rst:991
+#, fuzzy
+msgid "``DOMString``"
+msgstr "``DOMString``"
+
+#: ../../library/xml.dom.rst:991
+#, fuzzy
+msgid "``str`` or ``bytes``"
+msgstr "``str`` hoặc ``bytes``"
+
+#: ../../library/xml.dom.rst:993
+#, fuzzy
+msgid "``null``"
+msgstr "``null``"
+
+#: ../../library/xml.dom.rst:993
+#, fuzzy
+msgid "``None``"
+msgstr "``None``"
+
+#: ../../library/xml.dom.rst:999
+#, fuzzy
+msgid "Accessor Methods"
+msgstr "Phương thức truy cập"
+
+#: ../../library/xml.dom.rst:1001
+#, fuzzy
+msgid ""
+"The mapping from OMG IDL to Python defines accessor functions for IDL "
+"``attribute`` declarations in much the way the Java mapping does. Mapping "
+"the IDL declarations ::"
+msgstr ""
+"Ánh xạ từ OMG IDL sang Python xác định các hàm truy cập cho các khai báo IDL"
+" ``attribute`` giống như cách ánh xạ Java thực hiện. Ánh xạ các khai báo IDL"
+" ::"
+
+#: ../../library/xml.dom.rst:1005
+#, fuzzy
+msgid ""
+"readonly attribute string someValue;\n"
+"         attribute string anotherValue;"
+msgstr ""
+"chuỗi thuộc tính chỉ đọc someValue;\n"
+"         chuỗi thuộc tính anotherValue;"
+
+#: ../../library/xml.dom.rst:1008
+#, fuzzy
+msgid ""
+"yields three accessor functions:  a \"get\" method for :attr:`someValue` "
+"(:meth:`_get_someValue`), and \"get\" and \"set\" methods for "
+":attr:`anotherValue` (:meth:`_get_anotherValue` and "
+":meth:`_set_anotherValue`).  The mapping, in particular, does not require "
+"that the IDL attributes are accessible as normal Python attributes:  "
+"``object.someValue`` is *not* required to work, and may raise an "
+":exc:`AttributeError`."
+msgstr ""
+"mang lại ba hàm truy cập: phương thức \"get\" cho :attr:`someValue` "
+"(:meth:`_get_someValue`) và phương thức \"get\" và \"set\" cho "
+":attr:`anotherValue` (:meth:`_get_anotherValue` và "
+":meth:`_set_anotherValue`).  Đặc biệt, ánh xạ không yêu cầu các thuộc tính "
+"IDL có thể truy cập được như các thuộc tính Python thông thường: "
+"``object.someValue`` cần có *not* để hoạt động và có thể tăng "
+":exc:`AttributeError`."
+
+#: ../../library/xml.dom.rst:1015
+#, fuzzy
+msgid ""
+"The Python DOM API, however, *does* require that normal attribute access "
+"work. This means that the typical surrogates generated by Python IDL "
+"compilers are not likely to work, and wrapper objects may be needed on the "
+"client if the DOM objects are accessed via CORBA. While this does require "
+"some additional consideration for CORBA DOM clients, the implementers with "
+"experience using DOM over CORBA from Python do not consider this a problem."
+"  Attributes that are declared ``readonly`` may not restrict write access in"
+" all DOM implementations."
+msgstr ""
+"Tuy nhiên, DOM API của Python, *does* yêu cầu quyền truy cập thuộc tính "
+"thông thường đó hoạt động. Điều này có nghĩa là các đại diện thay thế điển "
+"hình được tạo bởi trình biên dịch IDL của Python không có khả năng hoạt động"
+" và các đối tượng trình bao bọc có thể cần thiết trên máy khách nếu các đối "
+"tượng DOM được truy cập thông qua CORBA. Mặc dù điều này đòi hỏi phải xem "
+"xét bổ sung đối với các máy khách CORBA DOM, nhưng những người triển khai có"
+" kinh nghiệm sử dụng DOM trên CORBA từ Python không coi đây là một vấn đề.  "
+"Các thuộc tính được khai báo ``readonly`` có thể không hạn chế quyền truy "
+"cập ghi trong tất cả các triển khai DOM."
+
+#: ../../library/xml.dom.rst:1024
+#, fuzzy
+msgid ""
+"In the Python DOM API, accessor functions are not required.  If provided, "
+"they should take the form defined by the Python IDL mapping, but these "
+"methods are considered unnecessary since the attributes are accessible "
+"directly from Python. \"Set\" accessors should never be provided for "
+"``readonly`` attributes."
+msgstr ""
+"Trong Python DOM API, không cần có các hàm truy cập.  Nếu được cung cấp, "
+"chúng phải có dạng được xác định bởi ánh xạ IDL của Python, nhưng những "
+"phương thức này được coi là không cần thiết vì các thuộc tính có thể truy "
+"cập trực tiếp từ Python. Không bao giờ được cung cấp bộ truy cập \"Đặt\" cho"
+" thuộc tính ``readonly``."
+
+#: ../../library/xml.dom.rst:1029
+#, fuzzy
+msgid ""
+"The IDL definitions do not fully embody the requirements of the W3C DOM API,"
+" such as the notion of certain objects, such as the return value of "
+":meth:`getElementsByTagName`, being \"live\".  The Python DOM API does not "
+"require implementations to enforce such requirements."
+msgstr ""
+"Các định nghĩa IDL không thể hiện đầy đủ các yêu cầu của W3C DOM API, chẳng "
+"hạn như khái niệm về một số đối tượng nhất định, chẳng hạn như giá trị trả "
+"về của :meth:`getElementsByTagName`, là \"trực tiếp\".  Python DOM API không"
+" yêu cầu triển khai để thực thi các yêu cầu đó."

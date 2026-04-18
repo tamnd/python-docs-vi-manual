@@ -1,0 +1,3496 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/logging.rst:2
+#, fuzzy
+msgid ":mod:`!logging` --- Logging facility for Python"
+msgstr ":mod:`!logging` --- Cơ sở ghi nhật ký cho Python"
+
+#: ../../library/logging.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/logging/__init__.py`"
+msgstr "**Source code:** :source:`Lib/logging/__init__.py`"
+
+#: ../../library/logging.rst:16
+#, fuzzy
+msgid ""
+"This page contains the API reference information. For tutorial information "
+"and discussion of more advanced topics, see"
+msgstr ""
+"Trang này chứa thông tin tham khảo API. Để biết thông tin hướng dẫn và thảo "
+"luận về các chủ đề nâng cao hơn, hãy xem"
+
+#: ../../library/logging.rst:19
+#, fuzzy
+msgid ":ref:`Basic Tutorial <logging-basic-tutorial>`"
+msgstr ":ref:`Basic Tutorial <logging-basic-tutorial>`"
+
+#: ../../library/logging.rst:20
+#, fuzzy
+msgid ":ref:`Advanced Tutorial <logging-advanced-tutorial>`"
+msgstr ":ref:`Advanced Tutorial <logging-advanced-tutorial>`"
+
+#: ../../library/logging.rst:21
+#, fuzzy
+msgid ":ref:`Logging Cookbook <logging-cookbook>`"
+msgstr ":ref:`Logging Cookbook <logging-cookbook>`"
+
+#: ../../library/logging.rst:25
+#, fuzzy
+msgid ""
+"This module defines functions and classes which implement a flexible event "
+"logging system for applications and libraries."
+msgstr ""
+"Mô-đun này xác định các hàm và lớp triển khai hệ thống ghi nhật ký sự kiện "
+"linh hoạt cho các ứng dụng và thư viện."
+
+#: ../../library/logging.rst:28
+#, fuzzy
+msgid ""
+"The key benefit of having the logging API provided by a standard library "
+"module is that all Python modules can participate in logging, so your "
+"application log can include your own messages integrated with messages from "
+"third-party modules."
+msgstr ""
+"Lợi ích chính của việc ghi nhật ký API do mô-đun thư viện tiêu chuẩn cung "
+"cấp là tất cả các mô-đun Python đều có thể tham gia ghi nhật ký, do đó, nhật"
+" ký ứng dụng của bạn có thể bao gồm các thông báo của riêng bạn được tích "
+"hợp với các thông báo từ mô-đun bên thứ ba."
+
+#: ../../library/logging.rst:33
+#, fuzzy
+msgid "Here's a simple example of idiomatic usage: ::"
+msgstr "Đây là một ví dụ đơn giản về cách sử dụng thành ngữ: ::"
+
+#: ../../library/logging.rst:35
+#, fuzzy
+msgid ""
+"# myapp.py\n"
+"import logging\n"
+"import mylib\n"
+"logger = logging.getLogger(__name__)\n"
+"\n"
+"def main():\n"
+"    logging.basicConfig(filename='myapp.log', level=logging.INFO)\n"
+"    logger.info('Started')\n"
+"    mylib.do_something()\n"
+"    logger.info('Finished')\n"
+"\n"
+"if __name__ == '__main__':\n"
+"    main()"
+msgstr ""
+"# myapp.py\n"
+"nhập nhật ký\n"
+"nhập khẩu mylib\n"
+"logger = log.getLogger(__name__)\n"
+"\n"
+"chắc chắn chính():\n"
+"    logging.basicConfig(filename='myapp.log', level=logging.INFO)\n"
+"    logger.info('Đã bắt đầu')\n"
+"    mylib.do_something()\n"
+"    logger.info('Đã hoàn thành')\n"
+"\n"
+"nếu __name__ == '__main__':\n"
+"    chính()"
+
+#: ../../library/logging.rst:51
+#, fuzzy
+msgid ""
+"# mylib.py\n"
+"import logging\n"
+"logger = logging.getLogger(__name__)\n"
+"\n"
+"def do_something():\n"
+"    logger.info('Doing something')"
+msgstr ""
+"# mylib.py\n"
+"nhập nhật ký\n"
+"logger = log.getLogger(__name__)\n"
+"\n"
+"chắc chắn do_something():\n"
+"    logger.info('Đang làm gì đó')"
+
+#: ../../library/logging.rst:58
+#, fuzzy
+msgid "If you run *myapp.py*, you should see this in *myapp.log*:"
+msgstr "Nếu bạn chạy *myapp.py*, bạn sẽ thấy điều này trong *myapp.log*:"
+
+#: ../../library/logging.rst:60
+#, fuzzy
+msgid ""
+"INFO:__main__:Started\n"
+"INFO:mylib:Doing something\n"
+"INFO:__main__:Finished"
+msgstr ""
+"INFO:__main__:Đã bắt đầu\n"
+"INFO:mylib:Đang làm gì đó\n"
+"INFO:__main__:Đã xong"
+
+#: ../../library/logging.rst:66
+#, fuzzy
+msgid ""
+"The key feature of this idiomatic usage is that the majority of code is "
+"simply creating a module level logger with ``getLogger(__name__)``, and "
+"using that logger to do any needed logging. This is concise, while allowing "
+"downstream code fine-grained control if needed. Logged messages to the "
+"module-level logger get forwarded to handlers of loggers in higher-level "
+"modules, all the way up to the highest-level logger known as the root "
+"logger; this approach is known as hierarchical logging."
+msgstr ""
+"Tính năng chính của cách sử dụng thành ngữ này là phần lớn mã chỉ đơn giản "
+"là tạo một trình ghi nhật ký cấp mô-đun với ``getLogger(__name__)`` và sử "
+"dụng trình ghi nhật ký đó để thực hiện mọi hoạt động ghi nhật ký cần thiết. "
+"Điều này ngắn gọn, đồng thời cho phép kiểm soát chi tiết mã xuôi dòng nếu "
+"cần. Các tin nhắn đã ghi vào trình ghi nhật ký cấp mô-đun sẽ được chuyển "
+"tiếp đến trình xử lý trình ghi nhật ký trong các mô-đun cấp cao hơn, cho đến"
+" trình ghi nhật ký cấp cao nhất được gọi là trình ghi nhật ký gốc; Cách tiếp"
+" cận này được gọi là ghi nhật ký phân cấp."
+
+#: ../../library/logging.rst:74
+#, fuzzy
+msgid ""
+"For logging to be useful, it needs to be configured: setting the levels and "
+"destinations for each logger, potentially changing how specific modules log,"
+" often based on command-line arguments or application configuration. In most"
+" cases, like the one above, only the root logger needs to be so configured, "
+"since all the lower level loggers at module level eventually forward their "
+"messages to its handlers.  :func:`~logging.basicConfig` provides a quick way"
+" to configure the root logger that handles many use cases."
+msgstr ""
+"Để việc ghi nhật ký trở nên hữu ích, nó cần phải được cấu hình: đặt cấp độ "
+"và đích đến cho mỗi trình ghi nhật ký, có khả năng thay đổi cách ghi nhật ký"
+" của các mô-đun cụ thể, thường dựa trên các đối số dòng lệnh hoặc cấu hình "
+"ứng dụng. Trong hầu hết các trường hợp, giống như trường hợp trên, chỉ trình"
+" ghi nhật ký gốc mới cần được cấu hình như vậy, vì tất cả các trình ghi nhật"
+" ký cấp thấp hơn ở cấp mô-đun cuối cùng sẽ chuyển tiếp tin nhắn của chúng "
+"đến trình xử lý của nó.  :func:`~logging.basicConfig` cung cấp một cách "
+"nhanh chóng để định cấu hình trình ghi nhật ký gốc để xử lý nhiều trường hợp"
+" sử dụng."
+
+#: ../../library/logging.rst:82
+#, fuzzy
+msgid ""
+"The module provides a lot of functionality and flexibility.  If you are "
+"unfamiliar with logging, the best way to get to grips with it is to view the"
+" tutorials (**see the links above and on the right**)."
+msgstr ""
+"Mô-đun này cung cấp rất nhiều chức năng và tính linh hoạt.  Nếu bạn không "
+"quen với việc ghi nhật ký, cách tốt nhất để nắm bắt được nó là xem các hướng"
+" dẫn (**see the links above and on the right**)."
+
+#: ../../library/logging.rst:86
+#, fuzzy
+msgid ""
+"The basic classes defined by the module, together with their attributes and "
+"methods, are listed in the sections below."
+msgstr ""
+"Các lớp cơ bản được xác định bởi mô-đun, cùng với các thuộc tính và phương "
+"thức của chúng, được liệt kê trong các phần bên dưới."
+
+#: ../../library/logging.rst:89
+#, fuzzy
+msgid "Loggers expose the interface that application code directly uses."
+msgstr ""
+"Trình ghi nhật ký hiển thị giao diện mà mã ứng dụng trực tiếp sử dụng."
+
+#: ../../library/logging.rst:90
+#, fuzzy
+msgid ""
+"Handlers send the log records (created by loggers) to the appropriate "
+"destination."
+msgstr ""
+"Trình xử lý gửi bản ghi nhật ký (do người ghi nhật ký tạo) đến đích thích "
+"hợp."
+
+#: ../../library/logging.rst:92
+#, fuzzy
+msgid ""
+"Filters provide a finer grained facility for determining which log records "
+"to output."
+msgstr ""
+"Bộ lọc cung cấp phương tiện chi tiết hơn để xác định bản ghi nhật ký nào sẽ "
+"được xuất ra."
+
+#: ../../library/logging.rst:94
+#, fuzzy
+msgid "Formatters specify the layout of log records in the final output."
+msgstr ""
+"Trình định dạng chỉ định cách bố trí các bản ghi nhật ký ở đầu ra cuối cùng."
+
+#: ../../library/logging.rst:100
+#, fuzzy
+msgid "Logger Objects"
+msgstr "Đối tượng ghi nhật ký"
+
+#: ../../library/logging.rst:102
+#, fuzzy
+msgid ""
+"Loggers have the following attributes and methods.  Note that Loggers should"
+" *NEVER* be instantiated directly, but always through the module-level "
+"function ``logging.getLogger(name)``.  Multiple calls to :func:`getLogger` "
+"with the same name will always return a reference to the same Logger object."
+msgstr ""
+"Trình ghi nhật ký có các thuộc tính và phương thức sau.  Lưu ý rằng Trình "
+"ghi nhật ký phải được khởi tạo trực tiếp *NEVER* nhưng luôn thông qua hàm "
+"cấp mô-đun ``logging.getLogger(name)``.  Nhiều lệnh gọi tới "
+":func:`getLogger` có cùng tên sẽ luôn trả về một tham chiếu đến cùng một đối"
+" tượng Logger."
+
+#: ../../library/logging.rst:107
+#, fuzzy
+msgid ""
+"The ``name`` is potentially a period-separated hierarchical value, like "
+"``foo.bar.baz`` (though it could also be just plain ``foo``, for example). "
+"Loggers that are further down in the hierarchical list are children of "
+"loggers higher up in the list.  For example, given a logger with a name of "
+"``foo``, loggers with names of ``foo.bar``, ``foo.bar.baz``, and ``foo.bam``"
+" are all descendants of ``foo``.  In addition, all loggers are descendants "
+"of the root logger. The logger name hierarchy is analogous to the Python "
+"package hierarchy, and identical to it if you organise your loggers on a "
+"per-module basis using the recommended construction "
+"``logging.getLogger(__name__)``.  That's because in a module, ``__name__`` "
+"is the module's name in the Python package namespace."
+msgstr ""
+"``name`` có khả năng là một giá trị phân cấp được phân tách bằng dấu chấm, "
+"chẳng hạn như ``foo.bar.baz`` (mặc dù nó cũng có thể chỉ là ``foo`` đơn giản"
+" chẳng hạn). Những người ghi nhật ký ở vị trí thấp hơn trong danh sách phân "
+"cấp là con của những người ghi nhật ký ở vị trí cao hơn trong danh sách.  Ví"
+" dụ: với một trình ghi nhật ký có tên ``foo``, các trình ghi nhật ký có tên "
+"``foo.bar``, ``foo.bar.baz`` và ``foo.bam`` đều là hậu duệ của ``foo``.  "
+"Ngoài ra, tất cả các logger đều là hậu duệ của root logger. Hệ thống phân "
+"cấp tên trình ghi nhật ký tương tự như hệ thống phân cấp gói Python và giống"
+" hệt với nó nếu bạn sắp xếp các trình ghi nhật ký của mình trên cơ sở từng "
+"mô-đun bằng cách sử dụng cấu trúc được đề xuất "
+"``logging.getLogger(__name__)``.  Đó là bởi vì trong một mô-đun, "
+"``__name__`` là tên của mô-đun đó trong không gian tên gói Python."
+
+#: ../../library/logging.rst:123
+#, fuzzy
+msgid ""
+"This is the logger's name, and is the value that was passed to "
+":func:`getLogger` to obtain the logger."
+msgstr ""
+"Đây là tên của trình ghi nhật ký và là giá trị được chuyển đến "
+":func:`getLogger` để lấy trình ghi nhật ký."
+
+#: ../../library/logging.rst:126 ../../library/logging.rst:186
+#, fuzzy
+msgid "This attribute should be treated as read-only."
+msgstr "Thuộc tính này phải được coi là chỉ đọc."
+
+#: ../../library/logging.rst:130
+#, fuzzy
+msgid "The threshold of this logger, as set by the :meth:`setLevel` method."
+msgstr "Ngưỡng của bộ ghi này, được đặt bằng phương pháp :meth:`setLevel`."
+
+#: ../../library/logging.rst:132
+#, fuzzy
+msgid ""
+"Do not set this attribute directly - always use :meth:`setLevel`, which has "
+"checks for the level passed to it."
+msgstr ""
+"Không đặt trực tiếp thuộc tính này - luôn sử dụng :meth:`setLevel`, có chức "
+"năng kiểm tra cấp độ được chuyển cho nó."
+
+#: ../../library/logging.rst:137
+#, fuzzy
+msgid ""
+"The parent logger of this logger. It may change based on later instantiation"
+" of loggers which are higher up in the namespace hierarchy."
+msgstr ""
+"Trình ghi nhật ký gốc của trình ghi nhật ký này. Nó có thể thay đổi dựa trên"
+" việc khởi tạo sau này của các trình ghi nhật ký có cấp độ cao hơn trong hệ "
+"thống phân cấp không gian tên."
+
+#: ../../library/logging.rst:140
+#, fuzzy
+msgid "This value should be treated as read-only."
+msgstr "Giá trị này phải được coi là chỉ đọc."
+
+#: ../../library/logging.rst:144
+#, fuzzy
+msgid ""
+"If this attribute evaluates to true, events logged to this logger will be "
+"passed to the handlers of higher level (ancestor) loggers, in addition to "
+"any handlers attached to this logger. Messages are passed directly to the "
+"ancestor loggers' handlers - neither the level nor filters of the ancestor "
+"loggers in question are considered."
+msgstr ""
+"Nếu thuộc tính này được đánh giá là đúng, thì các sự kiện được ghi vào trình"
+" ghi nhật ký này sẽ được chuyển đến trình xử lý của trình ghi nhật ký cấp "
+"cao hơn (tổ tiên), ngoài bất kỳ trình xử lý nào được đính kèm với trình ghi "
+"nhật ký này. Tin nhắn được chuyển trực tiếp đến trình xử lý của trình ghi "
+"nhật ký tổ tiên - cả cấp độ lẫn bộ lọc của trình ghi nhật ký tổ tiên được đề"
+" cập đều không được xem xét."
+
+#: ../../library/logging.rst:150
+#, fuzzy
+msgid ""
+"If this evaluates to false, logging messages are not passed to the handlers "
+"of ancestor loggers."
+msgstr ""
+"Nếu điều này được đánh giá là sai, thông báo ghi nhật ký sẽ không được "
+"chuyển đến trình xử lý của trình ghi nhật ký tổ tiên."
+
+#: ../../library/logging.rst:153
+#, fuzzy
+msgid ""
+"Spelling it out with an example: If the propagate attribute of the logger "
+"named ``A.B.C`` evaluates to true, any event logged to ``A.B.C`` via a "
+"method call such as ``logging.getLogger('A.B.C').error(...)`` will [subject "
+"to passing that logger's level and filter settings] be passed in turn to any"
+" handlers attached to loggers named ``A.B``, ``A`` and the root logger, "
+"after first being passed to any handlers attached to ``A.B.C``. If any "
+"logger in the chain ``A.B.C``, ``A.B``, ``A`` has its ``propagate`` "
+"attribute set to false, then that is the last logger whose handlers are "
+"offered the event to handle, and propagation stops at that point."
+msgstr ""
+"Đánh vần nó bằng một ví dụ: Nếu thuộc tính lan truyền của trình ghi nhật ký "
+"có tên ``A.B.C`` đánh giá là đúng, thì bất kỳ sự kiện nào được ghi vào "
+"``A.B.C`` thông qua lệnh gọi phương thức như "
+"``logging.getLogger('A.B.C').error(...)`` sẽ [có thể chuyển cấp độ của trình"
+" ghi nhật ký đó và cài đặt bộ lọc] lần lượt được chuyển đến bất kỳ trình xử "
+"lý nào được đính kèm với trình ghi nhật ký có tên ``A.B``, ``A`` và trình "
+"ghi nhật ký gốc, sau lần đầu tiên được chuyển đến bất kỳ trình xử lý nào "
+"được gắn với ``A.B.C``. Nếu bất kỳ trình ghi nhật ký nào trong chuỗi "
+"``A.B.C``, ``A.B``, ``A`` có thuộc tính ``propagate`` được đặt thành false "
+"thì đó là trình ghi nhật ký cuối cùng có trình xử lý được cung cấp sự kiện "
+"để xử lý và việc truyền bá sẽ dừng tại thời điểm đó."
+
+#: ../../library/logging.rst:162
+#, fuzzy
+msgid "The constructor sets this attribute to ``True``."
+msgstr "Hàm tạo đặt thuộc tính này thành ``True``."
+
+#: ../../library/logging.rst:164
+#, fuzzy
+msgid ""
+"If you attach a handler to a logger *and* one or more of its ancestors, it "
+"may emit the same record multiple times. In general, you should not need to "
+"attach a handler to more than one logger - if you just attach it to the "
+"appropriate logger which is highest in the logger hierarchy, then it will "
+"see all events logged by all descendant loggers, provided that their "
+"propagate setting is left set to ``True``. A common scenario is to attach "
+"handlers only to the root logger, and to let propagation take care of the "
+"rest."
+msgstr ""
+"Nếu bạn đính kèm trình xử lý vào trình ghi nhật ký *and* một hoặc nhiều tổ "
+"tiên của nó, nó có thể phát ra cùng một bản ghi nhiều lần. Nói chung, bạn "
+"không cần phải đính kèm một trình xử lý vào nhiều hơn một trình ghi nhật ký "
+"- nếu bạn chỉ đính kèm trình xử lý đó vào trình ghi nhật ký thích hợp có mức"
+" cao nhất trong hệ thống phân cấp trình ghi nhật ký thì nó sẽ thấy tất cả "
+"các sự kiện được ghi lại bởi tất cả các trình ghi nhật ký hậu duệ, miễn là "
+"cài đặt truyền bá của chúng được đặt thành ``True``. Một kịch bản phổ biến "
+"là chỉ đính kèm các trình xử lý vào bộ ghi nhật ký gốc và để việc truyền bá "
+"xử lý phần còn lại."
+
+#: ../../library/logging.rst:175
+#, fuzzy
+msgid "The list of handlers directly attached to this logger instance."
+msgstr ""
+"Danh sách các trình xử lý được đính kèm trực tiếp với phiên bản trình ghi "
+"nhật ký này."
+
+#: ../../library/logging.rst:177
+#, fuzzy
+msgid ""
+"This attribute should be treated as read-only; it is normally changed via "
+"the :meth:`addHandler` and :meth:`removeHandler` methods, which use locks to"
+" ensure thread-safe operation."
+msgstr ""
+"Thuộc tính này phải được coi là chỉ đọc; nó thường được thay đổi thông qua "
+"các phương thức :meth:`addHandler` và :meth:`removeHandler`, sử dụng các "
+"khóa để đảm bảo hoạt động an toàn theo luồng."
+
+#: ../../library/logging.rst:183
+#, fuzzy
+msgid ""
+"This attribute disables handling of any events. It is set to ``False`` in "
+"the initializer, and only changed by logging configuration code."
+msgstr ""
+"Thuộc tính này vô hiệu hóa việc xử lý bất kỳ sự kiện nào. Nó được đặt thành "
+"``False`` trong bộ khởi tạo và chỉ được thay đổi bằng cách ghi mã cấu hình."
+
+#: ../../library/logging.rst:190
+#, fuzzy
+msgid ""
+"Sets the threshold for this logger to *level*. Logging messages which are "
+"less severe than *level* will be ignored; logging messages which have "
+"severity *level* or higher will be emitted by whichever handler or handlers "
+"service this logger, unless a handler's level has been set to a higher "
+"severity level than *level*."
+msgstr ""
+"Đặt ngưỡng cho trình ghi nhật ký này thành *level*. Các tin nhắn ghi nhật ký"
+" ít nghiêm trọng hơn *level* sẽ bị bỏ qua; Thông báo ghi nhật ký có mức độ "
+"nghiêm trọng *level* trở lên sẽ được phát ra bởi bất kỳ trình xử lý hoặc "
+"trình xử lý nào phục vụ trình ghi nhật ký này, trừ khi cấp độ của trình xử "
+"lý được đặt ở mức độ nghiêm trọng cao hơn *level*."
+
+#: ../../library/logging.rst:195
+#, fuzzy
+msgid ""
+"When a logger is created, the level is set to :const:`NOTSET` (which causes "
+"all messages to be processed when the logger is the root logger, or "
+"delegation to the parent when the logger is a non-root logger). Note that "
+"the root logger is created with level :const:`WARNING`."
+msgstr ""
+"Khi một trình ghi nhật ký được tạo, cấp độ được đặt thành :const:`NOTSET` "
+"(điều này khiến tất cả các thông báo được xử lý khi trình ghi nhật ký là "
+"trình ghi nhật ký gốc hoặc ủy quyền cho cấp độ gốc khi trình ghi nhật ký là "
+"trình ghi nhật ký không phải gốc). Lưu ý rằng trình ghi nhật ký gốc được tạo"
+" ở cấp độ :const:`WARNING`."
+
+#: ../../library/logging.rst:200
+#, fuzzy
+msgid ""
+"The term 'delegation to the parent' means that if a logger has a level of "
+"NOTSET, its chain of ancestor loggers is traversed until either an ancestor "
+"with a level other than NOTSET is found, or the root is reached."
+msgstr ""
+"Thuật ngữ 'ủy quyền cho cấp độ gốc' có nghĩa là nếu một trình ghi nhật ký có"
+" cấp độ NOTSET, thì chuỗi các trình ghi nhật ký tổ tiên của nó sẽ được duyệt"
+" qua cho đến khi tìm thấy tổ tiên có cấp độ khác với NOTSET hoặc đạt được "
+"gốc."
+
+#: ../../library/logging.rst:204
+#, fuzzy
+msgid ""
+"If an ancestor is found with a level other than NOTSET, then that ancestor's"
+" level is treated as the effective level of the logger where the ancestor "
+"search began, and is used to determine how a logging event is handled."
+msgstr ""
+"Nếu tìm thấy cấp độ tổ tiên có cấp độ khác với NOTSET thì cấp độ tổ tiên đó "
+"được coi là cấp độ hiệu quả của trình ghi nhật ký nơi tìm kiếm tổ tiên bắt "
+"đầu và được sử dụng để xác định cách xử lý sự kiện ghi nhật ký."
+
+#: ../../library/logging.rst:208
+#, fuzzy
+msgid ""
+"If the root is reached, and it has a level of NOTSET, then all messages will"
+" be processed. Otherwise, the root's level will be used as the effective "
+"level."
+msgstr ""
+"Nếu đã đạt đến mức root và có mức NOTSET thì tất cả tin nhắn sẽ được xử lý. "
+"Nếu không, cấp độ gốc sẽ được sử dụng làm cấp độ hiệu quả."
+
+#: ../../library/logging.rst:211 ../../library/logging.rst:555
+#, fuzzy
+msgid "See :ref:`levels` for a list of levels."
+msgstr "Xem :ref:`levels` để biết danh sách các cấp độ."
+
+#: ../../library/logging.rst:213
+#, fuzzy
+msgid ""
+"The *level* parameter now accepts a string representation of the level such "
+"as 'INFO' as an alternative to the integer constants such as :const:`INFO`. "
+"Note, however, that levels are internally stored as integers, and methods "
+"such as e.g. :meth:`getEffectiveLevel` and :meth:`isEnabledFor` will "
+"return/expect to be passed integers."
+msgstr ""
+"Tham số *level* hiện chấp nhận biểu diễn chuỗi cấp độ chẳng hạn như 'INFO' "
+"thay thế cho các hằng số nguyên như :const:`INFO`. Tuy nhiên, lưu ý rằng các"
+" mức được lưu trữ nội bộ dưới dạng số nguyên và các phương thức, chẳng hạn "
+"như: :meth:`getEffectiveLevel` và :meth:`isEnabledFor` sẽ trả về/mong đợi "
+"được truyền số nguyên."
+
+#: ../../library/logging.rst:223
+#, fuzzy
+msgid ""
+"Indicates if a message of severity *level* would be processed by this "
+"logger. This method checks first the module-level level set by "
+"``logging.disable(level)`` and then the logger's effective level as "
+"determined by :meth:`getEffectiveLevel`."
+msgstr ""
+"Cho biết liệu trình ghi nhật ký này có xử lý thông báo có mức độ nghiêm "
+"trọng *level* hay không. Phương pháp này trước tiên kiểm tra mức cấp mô-đun "
+"do ``logging.disable(level)`` đặt, sau đó là mức hiệu quả của trình ghi nhật"
+" ký do :meth:`getEffectiveLevel` xác định."
+
+#: ../../library/logging.rst:231
+#, fuzzy
+msgid ""
+"Indicates the effective level for this logger. If a value other than "
+":const:`NOTSET` has been set using :meth:`setLevel`, it is returned. "
+"Otherwise, the hierarchy is traversed towards the root until a value other "
+"than :const:`NOTSET` is found, and that value is returned. The value "
+"returned is an integer, typically one of :const:`logging.DEBUG`, "
+":const:`logging.INFO` etc."
+msgstr ""
+"Cho biết mức độ hiệu quả của bộ ghi này. Nếu một giá trị khác "
+":const:`NOTSET` đã được đặt bằng :meth:`setLevel` thì giá trị đó sẽ được trả"
+" về. Nếu không, hệ thống phân cấp sẽ di chuyển về phía gốc cho đến khi tìm "
+"thấy một giá trị khác :const:`NOTSET` và giá trị đó được trả về. Giá trị "
+"được trả về là một số nguyên, thường là một trong số :const:`logging.DEBUG`,"
+" :const:`logging.INFO`, v.v."
+
+#: ../../library/logging.rst:241
+#, fuzzy
+msgid ""
+"Returns a logger which is a descendant to this logger, as determined by the "
+"suffix. Thus, ``logging.getLogger('abc').getChild('def.ghi')`` would return "
+"the same logger as would be returned by "
+"``logging.getLogger('abc.def.ghi')``. This is a convenience method, useful "
+"when the parent logger is named using e.g. ``__name__`` rather than a "
+"literal string."
+msgstr ""
+"Trả về một trình ghi nhật ký là hậu duệ của trình ghi nhật ký này, được xác "
+"định bởi hậu tố. Do đó, ``logging.getLogger('abc').getChild('def.ghi')`` sẽ "
+"trả về cùng một trình ghi nhật ký như ``logging.getLogger('abc.def.ghi')``. "
+"Đây là một phương pháp tiện lợi, hữu ích khi trình ghi nhật ký gốc được đặt "
+"tên bằng cách sử dụng ví dụ:. ``__name__`` chứ không phải là một chuỗi ký "
+"tự."
+
+#: ../../library/logging.rst:252
+#, fuzzy
+msgid ""
+"Returns a set of loggers which are immediate children of this logger. So for"
+" example ``logging.getLogger().getChildren()`` might return a set containing"
+" loggers named ``foo`` and ``bar``, but a logger named ``foo.bar`` wouldn't "
+"be included in the set. Likewise, ``logging.getLogger('foo').getChildren()``"
+" might return a set including a logger named ``foo.bar``, but it wouldn't "
+"include one named ``foo.bar.baz``."
+msgstr ""
+"Trả về một tập hợp các logger là con trực tiếp của logger này. Vì vậy, ví "
+"dụ: ``logging.getLogger().getChildren()`` có thể trả về một tập hợp chứa các"
+" trình ghi nhật ký có tên là ``foo`` và ``bar``, nhưng một trình ghi nhật ký"
+" có tên ``foo.bar`` sẽ không được đưa vào tập hợp đó. Tương tự như vậy, "
+"``logging.getLogger('foo').getChildren()`` có thể trả về một tập hợp bao gồm"
+" một trình ghi nhật ký có tên ``foo.bar``, nhưng nó sẽ không bao gồm một tập"
+" hợp có tên ``foo.bar.baz``."
+
+#: ../../library/logging.rst:264
+#, python-format, fuzzy
+msgid ""
+"Logs a message with level :const:`DEBUG` on this logger. The *msg* is the "
+"message format string, and the *args* are the arguments which are merged "
+"into *msg* using the string formatting operator. (Note that this means that "
+"you can use keywords in the format string, together with a single dictionary"
+" argument.) No % formatting operation is performed on *msg* when no *args* "
+"are supplied."
+msgstr ""
+"Ghi lại thông báo ở mức :const:`DEBUG` trên bộ ghi này. *msg* là chuỗi định "
+"dạng thông báo và *args* là các đối số được hợp nhất thành *msg* bằng toán "
+"tử định dạng chuỗi. (Lưu ý rằng điều này có nghĩa là bạn có thể sử dụng các "
+"từ khóa trong chuỗi định dạng, cùng với một đối số từ điển duy nhất.) Không "
+"có thao tác định dạng % nào được thực hiện trên *msg* khi không cung cấp "
+"*args*."
+
+#: ../../library/logging.rst:270
+#, fuzzy
+msgid ""
+"There are four keyword arguments in *kwargs* which are inspected: "
+"*exc_info*, *stack_info*, *stacklevel* and *extra*."
+msgstr ""
+"Có bốn đối số từ khóa trong *kwargs* được kiểm tra: *exc_info*, "
+"*stack_info*, *stacklevel* và *extra*."
+
+#: ../../library/logging.rst:273
+#, fuzzy
+msgid ""
+"If *exc_info* does not evaluate as false, it causes exception information to"
+" be added to the logging message. If an exception tuple (in the format "
+"returned by :func:`sys.exc_info`) or an exception instance is provided, it "
+"is used; otherwise, :func:`sys.exc_info` is called to get the exception "
+"information."
+msgstr ""
+"Nếu *exc_info* không đánh giá là sai, điều đó sẽ khiến thông tin ngoại lệ "
+"được thêm vào thông báo ghi nhật ký. Nếu một bộ ngoại lệ (ở định dạng được "
+"trả về bởi :func:`sys.exc_info`) hoặc một phiên bản ngoại lệ được cung cấp, "
+"thì nó sẽ được sử dụng; mặt khác, :func:`sys.exc_info` được gọi để lấy thông"
+" tin ngoại lệ."
+
+#: ../../library/logging.rst:278
+#, fuzzy
+msgid ""
+"The second optional keyword argument is *stack_info*, which defaults to "
+"``False``. If true, stack information is added to the logging message, "
+"including the actual logging call. Note that this is not the same stack "
+"information as that displayed through specifying *exc_info*: The former is "
+"stack frames from the bottom of the stack up to the logging call in the "
+"current thread, whereas the latter is information about stack frames which "
+"have been unwound, following an exception, while searching for exception "
+"handlers."
+msgstr ""
+"Đối số từ khóa tùy chọn thứ hai là *stack_info*, mặc định là ``False``. Nếu "
+"đúng, thông tin ngăn xếp sẽ được thêm vào thông báo ghi nhật ký, bao gồm cả "
+"lệnh gọi ghi nhật ký thực tế. Lưu ý rằng đây không phải là thông tin ngăn "
+"xếp giống như thông tin được hiển thị thông qua việc chỉ định *exc_info*: "
+"Cái trước là các khung xếp chồng từ cuối ngăn xếp lên đến lệnh gọi ghi nhật "
+"ký trong luồng hiện tại, trong khi cái sau là thông tin về các khung ngăn "
+"xếp đã được hủy liên kết, theo sau một ngoại lệ, trong khi tìm kiếm các "
+"trình xử lý ngoại lệ."
+
+#: ../../library/logging.rst:287
+#, fuzzy
+msgid ""
+"You can specify *stack_info* independently of *exc_info*, e.g. to just show "
+"how you got to a certain point in your code, even when no exceptions were "
+"raised. The stack frames are printed following a header line which says:"
+msgstr ""
+"Bạn có thể chỉ định *stack_info* độc lập với *exc_info*, ví dụ: để chỉ ra "
+"cách bạn đạt đến một điểm nhất định trong mã của mình, ngay cả khi không có "
+"ngoại lệ nào được nêu ra. Các khung ngăn xếp được in theo dòng tiêu đề có "
+"nội dung:"
+
+#: ../../library/logging.rst:291
+#, fuzzy
+msgid "Stack (most recent call last):"
+msgstr "Ngăn xếp (cuộc gọi gần đây nhất cuối cùng):"
+
+#: ../../library/logging.rst:295
+#, fuzzy
+msgid ""
+"This mimics the ``Traceback (most recent call last):`` which is used when "
+"displaying exception frames."
+msgstr ""
+"Điều này bắt chước ``Traceback (most recent call last):`` được sử dụng khi "
+"hiển thị các khung ngoại lệ."
+
+#: ../../library/logging.rst:298
+#, fuzzy
+msgid ""
+"The third optional keyword argument is *stacklevel*, which defaults to "
+"``1``. If greater than 1, the corresponding number of stack frames are "
+"skipped when computing the line number and function name set in the "
+":class:`LogRecord` created for the logging event. This can be used in "
+"logging helpers so that the function name, filename and line number recorded"
+" are not the information for the helper function/method, but rather its "
+"caller. The name of this parameter mirrors the equivalent one in the "
+":mod:`warnings` module."
+msgstr ""
+"Đối số từ khóa tùy chọn thứ ba là *stacklevel*, mặc định là ``1``. Nếu lớn "
+"hơn 1, số khung ngăn xếp tương ứng sẽ bị bỏ qua khi tính toán số dòng và tên"
+" hàm được đặt trong :class:`LogRecord` được tạo cho sự kiện ghi nhật ký. "
+"Điều này có thể được sử dụng trong các trình trợ giúp ghi nhật ký để tên "
+"hàm, tên tệp và số dòng được ghi không phải là thông tin cho hàm/phương thức"
+" của trình trợ giúp mà là thông tin về lệnh gọi của nó. Tên của tham số này "
+"phản ánh tên tương đương trong mô-đun :mod:`warnings`."
+
+#: ../../library/logging.rst:306
+#, fuzzy
+msgid ""
+"The fourth keyword argument is *extra* which can be used to pass a "
+"dictionary which is used to populate the :attr:`~object.__dict__` of the "
+":class:`LogRecord` created for the logging event with user-defined "
+"attributes. These custom attributes can then be used as you like. For "
+"example, they could be incorporated into logged messages. For example::"
+msgstr ""
+"Đối số từ khóa thứ tư là *extra* có thể được sử dụng để chuyển một từ điển "
+"được sử dụng để điền :attr:`~object.__dict__` của :class:`LogRecord` được "
+"tạo cho sự kiện ghi nhật ký với các thuộc tính do người dùng xác định. Các "
+"thuộc tính tùy chỉnh này sau đó có thể được sử dụng theo ý muốn. Ví dụ: "
+"chúng có thể được tích hợp vào các tin nhắn được ghi lại. Ví dụ::"
+
+#: ../../library/logging.rst:313
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"FORMAT = '%(asctime)s %(clientip)-15s %(user)-8s %(message)s'\n"
+"logging.basicConfig(format=FORMAT)\n"
+"d = {'clientip': '192.168.0.1', 'user': 'fbloggs'}\n"
+"logger = logging.getLogger('tcpserver')\n"
+"logger.warning('Protocol problem: %s', 'connection reset', extra=d)"
+msgstr ""
+"FORMAT = '%(asctime)s %(clientip)-15s %(user)-8s %(message)s'\n"
+"logging.basicConfig(format=FORMAT)\n"
+"d = {'clientip': '192.168.0.1', 'người dùng': 'fbloggs'}\n"
+"logger = log.getLogger('tcpserver')\n"
+"logger.warning('Vấn đề về giao thức: %s', 'thiết lập lại kết nối', extra=d)"
+
+#: ../../library/logging.rst:319
+#, fuzzy
+msgid "would print something like"
+msgstr "sẽ in một cái gì đó như"
+
+#: ../../library/logging.rst:321
+#, fuzzy
+msgid ""
+"2006-02-08 22:20:02,165 192.168.0.1 fbloggs  Protocol problem: connection "
+"reset"
+msgstr ""
+"2006-02-08 22:20:02,165 192.168.0.1 fbloggs Sự cố giao thức: thiết lập lại "
+"kết nối"
+
+#: ../../library/logging.rst:325
+#, fuzzy
+msgid ""
+"The keys in the dictionary passed in *extra* should not clash with the keys "
+"used by the logging system. (See the section on :ref:`logrecord-attributes` "
+"for more information on which keys are used by the logging system.)"
+msgstr ""
+"Các khóa trong từ điển được truyền trong *extra* không được xung đột với các"
+" khóa được hệ thống ghi nhật ký sử dụng. (Xem phần trên :ref:`logrecord-"
+"attributes` để biết thêm thông tin về những phím nào được hệ thống ghi nhật "
+"ký sử dụng.)"
+
+#: ../../library/logging.rst:329
+#, fuzzy
+msgid ""
+"If you choose to use these attributes in logged messages, you need to "
+"exercise some care. In the above example, for instance, the "
+":class:`Formatter` has been set up with a format string which expects "
+"'clientip' and 'user' in the attribute dictionary of the :class:`LogRecord`."
+" If these are missing, the message will not be logged because a string "
+"formatting exception will occur. So in this case, you always need to pass "
+"the *extra* dictionary with these keys."
+msgstr ""
+"Nếu bạn chọn sử dụng các thuộc tính này trong các tin nhắn được ghi lại, bạn"
+" cần phải cẩn thận. Ví dụ: trong ví dụ trên, :class:`Formatter` đã được "
+"thiết lập với một chuỗi định dạng mong đợi 'clientip' và 'user' trong từ "
+"điển thuộc tính của :class:`LogRecord`. Nếu thiếu những thông tin này, thông"
+" báo sẽ không được ghi vào nhật ký vì sẽ xảy ra ngoại lệ về định dạng chuỗi."
+" Vì vậy, trong trường hợp này, bạn luôn cần chuyển từ điển *extra* bằng các "
+"phím này."
+
+#: ../../library/logging.rst:336
+#, fuzzy
+msgid ""
+"While this might be annoying, this feature is intended for use in "
+"specialized circumstances, such as multi-threaded servers where the same "
+"code executes in many contexts, and interesting conditions which arise are "
+"dependent on this context (such as remote client IP address and "
+"authenticated user name, in the above example). In such circumstances, it is"
+" likely that specialized :class:`Formatter`\\ s would be used with "
+"particular :class:`Handler`\\ s."
+msgstr ""
+"Mặc dù điều này có thể gây khó chịu nhưng tính năng này được thiết kế để sử "
+"dụng trong các trường hợp đặc biệt, chẳng hạn như máy chủ đa luồng trong đó "
+"cùng một mã thực thi trong nhiều ngữ cảnh và các điều kiện thú vị phát sinh "
+"phụ thuộc vào ngữ cảnh này (chẳng hạn như địa chỉ IP của máy khách từ xa và "
+"tên người dùng được xác thực, trong ví dụ trên). Trong những trường hợp như "
+"vậy, rất có thể các :class:`Formatter`\\ s chuyên dụng sẽ được sử dụng với "
+":class:`Handler`\\ s cụ thể."
+
+#: ../../library/logging.rst:343
+#, fuzzy
+msgid ""
+"If no handler is attached to this logger (or any of its ancestors, taking "
+"into account the relevant :attr:`Logger.propagate` attributes), the message "
+"will be sent to the handler set on :data:`lastResort`."
+msgstr ""
+"Nếu không có trình xử lý nào được đính kèm với trình ghi nhật ký này (hoặc "
+"bất kỳ tổ tiên nào của nó, có tính đến các thuộc tính "
+":attr:`Logger.propagate` có liên quan), thì thông báo sẽ được gửi đến trình "
+"xử lý được đặt trên :data:`lastResort`."
+
+#: ../../library/logging.rst:347
+#, fuzzy
+msgid "The *stack_info* parameter was added."
+msgstr "Tham số *stack_info* đã được thêm vào."
+
+#: ../../library/logging.rst:350
+#, fuzzy
+msgid "The *exc_info* parameter can now accept exception instances."
+msgstr "Tham số *exc_info* hiện có thể chấp nhận các trường hợp ngoại lệ."
+
+#: ../../library/logging.rst:353
+#, fuzzy
+msgid "The *stacklevel* parameter was added."
+msgstr "Tham số *stacklevel* đã được thêm vào."
+
+#: ../../library/logging.rst:359
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`INFO` on this logger. The arguments are "
+"interpreted as for :meth:`debug`."
+msgstr ""
+"Ghi lại thông báo ở mức :const:`INFO` trên bộ ghi này. Các đối số được hiểu "
+"như đối với :meth:`debug`."
+
+#: ../../library/logging.rst:365
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`WARNING` on this logger. The arguments are"
+" interpreted as for :meth:`debug`."
+msgstr ""
+"Ghi lại thông báo ở mức :const:`WARNING` trên bộ ghi này. Các đối số được "
+"hiểu như đối với :meth:`debug`."
+
+#: ../../library/logging.rst:368
+#, fuzzy
+msgid ""
+"There is an obsolete method ``warn`` which is functionally identical to "
+"``warning``. As ``warn`` is deprecated, please do not use it - use "
+"``warning`` instead."
+msgstr ""
+"Có một phương thức lỗi thời ``warn`` có chức năng giống với ``warning``. Vì "
+"``warn`` không được dùng nữa nên vui lòng không sử dụng nó - thay vào đó hãy"
+" sử dụng ``warning``."
+
+#: ../../library/logging.rst:374
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`ERROR` on this logger. The arguments are "
+"interpreted as for :meth:`debug`."
+msgstr ""
+"Ghi lại thông báo ở mức :const:`ERROR` trên bộ ghi này. Các đối số được hiểu"
+" như đối với :meth:`debug`."
+
+#: ../../library/logging.rst:380
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`CRITICAL` on this logger. The arguments "
+"are interpreted as for :meth:`debug`."
+msgstr ""
+"Ghi lại thông báo ở mức :const:`CRITICAL` trên bộ ghi này. Các đối số được "
+"hiểu như đối với :meth:`debug`."
+
+#: ../../library/logging.rst:386
+#, fuzzy
+msgid ""
+"Logs a message with integer level *level* on this logger. The other "
+"arguments are interpreted as for :meth:`debug`."
+msgstr ""
+"Ghi nhật ký thông báo với mức số nguyên *level* trên bộ ghi này. Các đối số "
+"khác được hiểu là dành cho :meth:`debug`."
+
+#: ../../library/logging.rst:392
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`ERROR` on this logger. The arguments are "
+"interpreted as for :meth:`debug`. Exception info is added to the logging "
+"message. This method should only be called from an exception handler."
+msgstr ""
+"Ghi lại thông báo ở mức :const:`ERROR` trên bộ ghi này. Các đối số được hiểu"
+" như đối với :meth:`debug`. Thông tin ngoại lệ được thêm vào thông báo ghi "
+"nhật ký. Phương thức này chỉ nên được gọi từ một trình xử lý ngoại lệ."
+
+#: ../../library/logging.rst:399
+#, fuzzy
+msgid "Adds the specified filter *filter* to this logger."
+msgstr "Thêm bộ lọc *filter* được chỉ định vào bộ ghi này."
+
+#: ../../library/logging.rst:404
+#, fuzzy
+msgid "Removes the specified filter *filter* from this logger."
+msgstr "Xóa bộ lọc *filter* được chỉ định khỏi nhật ký này."
+
+#: ../../library/logging.rst:409
+#, fuzzy
+msgid ""
+"Apply this logger's filters to the record and return ``True`` if the record "
+"is to be processed. The filters are consulted in turn, until one of them "
+"returns a false value. If none of them return a false value, the record will"
+" be processed (passed to handlers). If one returns a false value, no further"
+" processing of the record occurs."
+msgstr ""
+"Áp dụng các bộ lọc của trình ghi nhật ký này cho bản ghi và trả về ``True`` "
+"nếu bản ghi được xử lý. Các bộ lọc lần lượt được tham khảo cho đến khi một "
+"trong số chúng trả về giá trị sai. Nếu không có giá trị nào trả về giá trị "
+"sai thì bản ghi sẽ được xử lý (chuyển tới trình xử lý). Nếu trả về một giá "
+"trị sai thì bản ghi sẽ không được xử lý thêm nữa."
+
+#: ../../library/logging.rst:418
+#, fuzzy
+msgid "Adds the specified handler *hdlr* to this logger."
+msgstr "Thêm trình xử lý được chỉ định *hdlr* vào trình ghi nhật ký này."
+
+#: ../../library/logging.rst:423
+#, fuzzy
+msgid "Removes the specified handler *hdlr* from this logger."
+msgstr "Xóa trình xử lý được chỉ định *hdlr* khỏi nhật ký này."
+
+#: ../../library/logging.rst:428
+#, fuzzy
+msgid ""
+"Finds the caller's source filename and line number. Returns the filename, "
+"line number, function name and stack information as a 4-element tuple. The "
+"stack information is returned as ``None`` unless *stack_info* is ``True``."
+msgstr ""
+"Tìm tên tệp nguồn và số dòng của người gọi. Trả về tên tệp, số dòng, tên hàm"
+" và thông tin ngăn xếp dưới dạng bộ dữ liệu 4 phần tử. Thông tin ngăn xếp "
+"được trả về dưới dạng ``None`` trừ khi *stack_info* là ``True``."
+
+#: ../../library/logging.rst:432
+#, fuzzy
+msgid ""
+"The *stacklevel* parameter is passed from code calling the :meth:`debug` and"
+" other APIs. If greater than 1, the excess is used to skip stack frames "
+"before determining the values to be returned. This will generally be useful "
+"when calling logging APIs from helper/wrapper code, so that the information "
+"in the event log refers not to the helper/wrapper code, but to the code that"
+" calls it."
+msgstr ""
+"Tham số *stacklevel* được truyền từ mã gọi :meth:`debug` và các API khác. "
+"Nếu lớn hơn 1, phần vượt quá sẽ được sử dụng để bỏ qua các khung ngăn xếp "
+"trước khi xác định giá trị được trả về. Điều này thường sẽ hữu ích khi gọi "
+"các API ghi nhật ký từ mã trợ giúp/trình bao bọc, để thông tin trong nhật ký"
+" sự kiện không đề cập đến mã trình trợ giúp/trình bao bọc mà là mã gọi nó."
+
+#: ../../library/logging.rst:442
+#, fuzzy
+msgid ""
+"Handles a record by passing it to all handlers associated with this logger "
+"and its ancestors (until a false value of *propagate* is found). This method"
+" is used for unpickled records received from a socket, as well as those "
+"created locally. Logger-level filtering is applied using "
+":meth:`~Logger.filter`."
+msgstr ""
+"Xử lý một bản ghi bằng cách chuyển nó tới tất cả các trình xử lý được liên "
+"kết với trình ghi nhật ký này và tổ tiên của nó (cho đến khi tìm thấy giá "
+"trị sai là *propagate*). Phương pháp này được sử dụng cho các bản ghi chưa "
+"được chọn nhận được từ ổ cắm cũng như các bản ghi được tạo cục bộ. Lọc cấp "
+"độ ghi nhật ký được áp dụng bằng :meth:`~Logger.filter`."
+
+#: ../../library/logging.rst:450
+#, fuzzy
+msgid ""
+"This is a factory method which can be overridden in subclasses to create "
+"specialized :class:`LogRecord` instances."
+msgstr ""
+"Đây là một phương thức xuất xưởng có thể được ghi đè trong các lớp con để "
+"tạo các phiên bản :class:`LogRecord` chuyên dụng."
+
+#: ../../library/logging.rst:455
+#, fuzzy
+msgid ""
+"Checks to see if this logger has any handlers configured. This is done by "
+"looking for handlers in this logger and its parents in the logger hierarchy."
+" Returns ``True`` if a handler was found, else ``False``. The method stops "
+"searching up the hierarchy whenever a logger with the 'propagate' attribute "
+"set to false is found - that will be the last logger which is checked for "
+"the existence of handlers."
+msgstr ""
+"Kiểm tra xem trình ghi nhật ký này có bất kỳ trình xử lý nào được cấu hình "
+"hay không. Điều này được thực hiện bằng cách tìm kiếm các trình xử lý trong "
+"trình ghi nhật ký này và các trình xử lý cấp trên của nó trong hệ thống phân"
+" cấp của trình ghi nhật ký. Trả về ``True`` nếu tìm thấy trình xử lý, nếu "
+"không thì trả về ``False``. Phương thức này dừng tìm kiếm theo thứ bậc bất "
+"cứ khi nào tìm thấy một trình ghi nhật ký có thuộc tính 'propagate' được đặt"
+" thành false - đó sẽ là trình ghi nhật ký cuối cùng được kiểm tra sự tồn tại"
+" của trình xử lý."
+
+#: ../../library/logging.rst:464
+#, fuzzy
+msgid "Loggers can now be pickled and unpickled."
+msgstr "Người ghi nhật ký bây giờ có thể được ngâm và giải nén."
+
+#: ../../library/logging.rst:470
+#, fuzzy
+msgid "Logging Levels"
+msgstr "Cấp độ ghi nhật ký"
+
+#: ../../library/logging.rst:472
+#, fuzzy
+msgid ""
+"The numeric values of logging levels are given in the following table. These"
+" are primarily of interest if you want to define your own levels, and need "
+"them to have specific values relative to the predefined levels. If you "
+"define a level with the same numeric value, it overwrites the predefined "
+"value; the predefined name is lost."
+msgstr ""
+"Các giá trị số của mức ghi nhật ký được đưa ra trong bảng sau. Những điều "
+"này chủ yếu được quan tâm nếu bạn muốn xác định cấp độ của riêng mình và cần"
+" chúng có các giá trị cụ thể liên quan đến các cấp độ được xác định trước. "
+"Nếu bạn xác định một mức có cùng giá trị số, nó sẽ ghi đè giá trị được xác "
+"định trước; tên được xác định trước bị mất."
+
+#: ../../library/logging.rst:479
+#, fuzzy
+msgid "Level"
+msgstr "Cấp độ"
+
+#: ../../library/logging.rst:479
+#, fuzzy
+msgid "Numeric value"
+msgstr "Giá trị số"
+
+#: ../../library/logging.rst:479
+#, fuzzy
+msgid "What it means / When to use it"
+msgstr "Ý nghĩa của nó / Khi nào nên sử dụng nó"
+
+#: ../../library/logging.rst:481
+#, fuzzy
+msgid "0"
+msgstr "0"
+
+#: ../../library/logging.rst:481
+#, fuzzy
+msgid ""
+"When set on a logger, indicates that ancestor loggers are to be consulted to"
+" determine the effective level. If that still resolves to :const:`!NOTSET`, "
+"then all events are logged. When set on a handler, all events are handled."
+msgstr ""
+"Khi được đặt trên một trình ghi nhật ký, biểu thị rằng các trình ghi nhật ký"
+" tổ tiên sẽ được tham khảo để xác định mức hiệu quả. Nếu điều đó vẫn giải "
+"quyết được thành :const:`!NOTSET` thì tất cả các sự kiện đều được ghi lại. "
+"Khi được đặt trên trình xử lý, tất cả các sự kiện đều được xử lý."
+
+#: ../../library/logging.rst:489
+#, fuzzy
+msgid "10"
+msgstr "10"
+
+#: ../../library/logging.rst:489
+#, fuzzy
+msgid ""
+"Detailed information, typically only of interest to a developer trying to "
+"diagnose a problem."
+msgstr ""
+"Thông tin chi tiết, thường chỉ được nhà phát triển đang cố gắng chẩn đoán sự"
+" cố quan tâm."
+
+#: ../../library/logging.rst:493
+#, fuzzy
+msgid "20"
+msgstr "20"
+
+#: ../../library/logging.rst:493
+#, fuzzy
+msgid "Confirmation that things are working as expected."
+msgstr "Xác nhận rằng mọi thứ đang hoạt động như mong đợi."
+
+#: ../../library/logging.rst:496
+#, fuzzy
+msgid "30"
+msgstr "30"
+
+#: ../../library/logging.rst:496
+#, fuzzy
+msgid ""
+"An indication that something unexpected happened, or that a problem might "
+"occur in the near future (e.g. 'disk space low'). The software is still "
+"working as expected."
+msgstr ""
+"Dấu hiệu cho thấy điều gì đó không mong muốn đã xảy ra hoặc sự cố có thể xảy"
+" ra trong tương lai gần (ví dụ: 'dung lượng ổ đĩa sắp hết'). Phần mềm vẫn "
+"hoạt động như mong đợi."
+
+#: ../../library/logging.rst:503
+#, fuzzy
+msgid "40"
+msgstr "40"
+
+#: ../../library/logging.rst:503
+#, fuzzy
+msgid ""
+"Due to a more serious problem, the software has not been able to perform "
+"some function."
+msgstr ""
+"Do một sự cố nghiêm trọng hơn nên phần mềm không thể thực hiện được một số "
+"chức năng."
+
+#: ../../library/logging.rst:507
+#, fuzzy
+msgid "50"
+msgstr "50"
+
+#: ../../library/logging.rst:507
+#, fuzzy
+msgid ""
+"A serious error, indicating that the program itself may be unable to "
+"continue running."
+msgstr ""
+"Một lỗi nghiêm trọng cho thấy bản thân chương trình có thể không thể tiếp "
+"tục chạy."
+
+#: ../../library/logging.rst:516
+#, fuzzy
+msgid "Handler Objects"
+msgstr "Đối tượng xử lý"
+
+#: ../../library/logging.rst:518
+#, fuzzy
+msgid ""
+"Handlers have the following attributes and methods. Note that "
+":class:`Handler` is never instantiated directly; this class acts as a base "
+"for more useful subclasses. However, the :meth:`!__init__` method in "
+"subclasses needs to call :meth:`Handler.__init__`."
+msgstr ""
+"Trình xử lý có các thuộc tính và phương thức sau. Lưu ý rằng "
+":class:`Handler` không bao giờ được khởi tạo trực tiếp; lớp này hoạt động "
+"như một cơ sở cho các lớp con hữu ích hơn. Tuy nhiên, phương thức "
+":meth:`!__init__` trong các lớp con cần gọi :meth:`Handler.__init__`."
+
+#: ../../library/logging.rst:527
+#, fuzzy
+msgid ""
+"Initializes the :class:`Handler` instance by setting its level, setting the "
+"list of filters to the empty list and creating a lock (using "
+":meth:`createLock`) for serializing access to an I/O mechanism."
+msgstr ""
+"Khởi tạo phiên bản :class:`Handler` bằng cách đặt cấp độ của nó, đặt danh "
+"sách bộ lọc vào danh sách trống và tạo khóa (sử dụng :meth:`createLock`) để "
+"tuần tự hóa quyền truy cập vào cơ chế I/O."
+
+#: ../../library/logging.rst:534
+#, fuzzy
+msgid ""
+"Initializes a thread lock which can be used to serialize access to "
+"underlying I/O functionality which may not be threadsafe."
+msgstr ""
+"Khởi tạo khóa luồng có thể được sử dụng để tuần tự hóa quyền truy cập vào "
+"chức năng I/O cơ bản có thể không an toàn cho luồng."
+
+#: ../../library/logging.rst:540
+#, fuzzy
+msgid "Acquires the thread lock created with :meth:`createLock`."
+msgstr "Có được khóa luồng được tạo bằng :meth:`createLock`."
+
+#: ../../library/logging.rst:545
+#, fuzzy
+msgid "Releases the thread lock acquired with :meth:`acquire`."
+msgstr "Giải phóng khóa luồng có được bằng :meth:`acquire`."
+
+#: ../../library/logging.rst:550
+#, fuzzy
+msgid ""
+"Sets the threshold for this handler to *level*. Logging messages which are "
+"less severe than *level* will be ignored. When a handler is created, the "
+"level is set to :const:`NOTSET` (which causes all messages to be processed)."
+msgstr ""
+"Đặt ngưỡng cho trình xử lý này thành *level*. Các tin nhắn ghi nhật ký ít "
+"nghiêm trọng hơn *level* sẽ bị bỏ qua. Khi một trình xử lý được tạo, mức "
+"được đặt thành :const:`NOTSET` (điều này khiến tất cả các tin nhắn đều được "
+"xử lý)."
+
+#: ../../library/logging.rst:557
+#, fuzzy
+msgid ""
+"The *level* parameter now accepts a string representation of the level such "
+"as 'INFO' as an alternative to the integer constants such as :const:`INFO`."
+msgstr ""
+"Tham số *level* hiện chấp nhận biểu diễn chuỗi cấp độ chẳng hạn như 'INFO' "
+"thay thế cho các hằng số nguyên như :const:`INFO`."
+
+#: ../../library/logging.rst:565
+#, fuzzy
+msgid ""
+"Sets the formatter for this handler to *fmt*. The *fmt* argument must be a "
+":class:`Formatter` instance or ``None``."
+msgstr ""
+"Đặt bộ định dạng cho trình xử lý này thành *fmt*. Đối số *fmt* phải là phiên"
+" bản :class:`Formatter` hoặc ``None``."
+
+#: ../../library/logging.rst:571
+#, fuzzy
+msgid "Adds the specified filter *filter* to this handler."
+msgstr "Thêm bộ lọc *filter* được chỉ định vào trình xử lý này."
+
+#: ../../library/logging.rst:576
+#, fuzzy
+msgid "Removes the specified filter *filter* from this handler."
+msgstr "Xóa bộ lọc *filter* đã chỉ định khỏi trình xử lý này."
+
+#: ../../library/logging.rst:581
+#, fuzzy
+msgid ""
+"Apply this handler's filters to the record and return ``True`` if the record"
+" is to be processed. The filters are consulted in turn, until one of them "
+"returns a false value. If none of them return a false value, the record will"
+" be emitted. If one returns a false value, the handler will not emit the "
+"record."
+msgstr ""
+"Áp dụng các bộ lọc của trình xử lý này cho bản ghi và trả về ``True`` nếu "
+"bản ghi được xử lý. Các bộ lọc lần lượt được tham khảo cho đến khi một trong"
+" số chúng trả về giá trị sai. Nếu không có giá trị nào trả về giá trị sai "
+"thì bản ghi sẽ được phát ra. Nếu trả về giá trị sai, trình xử lý sẽ không "
+"phát ra bản ghi."
+
+#: ../../library/logging.rst:590
+#, fuzzy
+msgid ""
+"Ensure all logging output has been flushed. This version does nothing and is"
+" intended to be implemented by subclasses."
+msgstr ""
+"Đảm bảo tất cả đầu ra ghi nhật ký đã được xóa. Phiên bản này không làm gì cả"
+" và được dự định sẽ được các lớp con triển khai."
+
+#: ../../library/logging.rst:596
+#, fuzzy
+msgid ""
+"Tidy up any resources used by the handler. This version does no output but "
+"removes the handler from an internal map of handlers, which is used for "
+"handler lookup by name."
+msgstr ""
+"Dọn dẹp mọi tài nguyên được người xử lý sử dụng. Phiên bản này không có đầu "
+"ra nhưng loại bỏ trình xử lý khỏi bản đồ nội bộ của các trình xử lý, được sử"
+" dụng để tra cứu trình xử lý theo tên."
+
+#: ../../library/logging.rst:600
+#, fuzzy
+msgid ""
+"Subclasses should ensure that this gets called from overridden :meth:`close`"
+" methods."
+msgstr ""
+"Các lớp con phải đảm bảo rằng điều này được gọi từ các phương thức "
+":meth:`close` được ghi đè."
+
+#: ../../library/logging.rst:606
+#, fuzzy
+msgid ""
+"Conditionally emits the specified logging record, depending on filters which"
+" may have been added to the handler. Wraps the actual emission of the record"
+" with acquisition/release of the I/O thread lock."
+msgstr ""
+"Có điều kiện phát ra bản ghi ghi nhật ký được chỉ định, tùy thuộc vào các bộ"
+" lọc có thể đã được thêm vào trình xử lý. Kết thúc quá trình phát bản ghi "
+"thực tế bằng việc thu/giải phóng khóa luồng I/O."
+
+#: ../../library/logging.rst:613
+#, fuzzy
+msgid ""
+"This method should be called from handlers when an exception is encountered "
+"during an :meth:`emit` call. If the module-level attribute "
+":data:`raiseExceptions` is ``False``, exceptions get silently ignored. This "
+"is what is mostly wanted for a logging system - most users will not care "
+"about errors in the logging system, they are more interested in application "
+"errors. You could, however, replace this with a custom handler if you wish. "
+"The specified record is the one which was being processed when the exception"
+" occurred. (The default value of :data:`raiseExceptions` is ``True``, as "
+"that is more useful during development)."
+msgstr ""
+"Phương thức này nên được gọi từ trình xử lý khi gặp ngoại lệ trong cuộc gọi "
+":meth:`emit`. Nếu thuộc tính cấp mô-đun :data:`raiseExceptions` là "
+"``False``, các ngoại lệ sẽ bị bỏ qua một cách âm thầm. Đây là điều được mong"
+" muốn nhất đối với một hệ thống ghi nhật ký - hầu hết người dùng sẽ không "
+"quan tâm đến lỗi trong hệ thống ghi nhật ký, họ quan tâm nhiều hơn đến lỗi "
+"ứng dụng. Tuy nhiên, bạn có thể thay thế nó bằng một trình xử lý tùy chỉnh "
+"nếu muốn. Bản ghi được chỉ định là bản ghi đang được xử lý khi xảy ra ngoại "
+"lệ. (Giá trị mặc định của :data:`raiseExceptions` là ``True``, vì giá trị "
+"này hữu ích hơn trong quá trình phát triển)."
+
+#: ../../library/logging.rst:626
+#, fuzzy
+msgid ""
+"Do formatting for a record - if a formatter is set, use it. Otherwise, use "
+"the default formatter for the module."
+msgstr ""
+"Thực hiện định dạng cho bản ghi - nếu bộ định dạng được đặt, hãy sử dụng nó."
+" Nếu không, hãy sử dụng trình định dạng mặc định cho mô-đun."
+
+#: ../../library/logging.rst:632
+#, fuzzy
+msgid ""
+"Do whatever it takes to actually log the specified logging record. This "
+"version is intended to be implemented by subclasses and so raises a "
+":exc:`NotImplementedError`."
+msgstr ""
+"Làm bất cứ điều gì cần thiết để thực sự ghi lại bản ghi ghi nhật ký đã chỉ "
+"định. Phiên bản này dự định được triển khai bởi các lớp con và do đó sẽ tạo "
+"ra :exc:`NotImplementedError`."
+
+#: ../../library/logging.rst:636
+#, fuzzy
+msgid ""
+"This method is called after a handler-level lock is acquired, which is "
+"released after this method returns. When you override this method, note that"
+" you should be careful when calling anything that invokes other parts of the"
+" logging API which might do locking, because that might result in a "
+"deadlock. Specifically:"
+msgstr ""
+"Phương thức này được gọi sau khi có được khóa cấp độ xử lý, khóa này sẽ được"
+" giải phóng sau khi phương thức này trả về. Khi bạn ghi đè phương thức này, "
+"hãy lưu ý rằng bạn nên cẩn thận khi gọi bất kỳ thứ gì gọi bất kỳ phần nào "
+"khác của API ghi nhật ký có thể thực hiện khóa vì điều đó có thể dẫn đến bế "
+"tắc. Cụ thể:"
+
+#: ../../library/logging.rst:642
+#, fuzzy
+msgid ""
+"Logging configuration APIs acquire the module-level lock, and then "
+"individual handler-level locks as those handlers are configured."
+msgstr ""
+"API cấu hình ghi nhật ký thu được khóa cấp mô-đun, sau đó khóa cấp trình xử "
+"lý riêng lẻ khi các trình xử lý đó được định cấu hình."
+
+#: ../../library/logging.rst:645
+#, fuzzy
+msgid ""
+"Many logging APIs lock the module-level lock. If such an API is called from "
+"this method, it could cause a deadlock if a configuration call is made on "
+"another thread, because that thread will try to acquire the module-level "
+"lock *before* the handler-level lock, whereas this thread tries to acquire "
+"the module-level lock *after* the handler-level lock (because in this "
+"method, the handler-level lock has already been acquired)."
+msgstr ""
+"Nhiều API ghi nhật ký khóa khóa cấp mô-đun. Nếu một API như vậy được gọi từ "
+"phương thức này, nó có thể gây ra bế tắc nếu lệnh gọi cấu hình được thực "
+"hiện trên một luồng khác, vì luồng đó sẽ cố gắng lấy khóa cấp mô-đun "
+"*before* khóa cấp trình xử lý, trong khi luồng này cố gắng lấy khóa cấp mô-"
+"đun *after* khóa cấp trình xử lý (vì trong phương thức này, khóa cấp trình "
+"xử lý đã được lấy)."
+
+#: ../../library/logging.rst:652
+#, fuzzy
+msgid ""
+"For a list of handlers included as standard, see :mod:`logging.handlers`."
+msgstr ""
+"Để biết danh sách các trình xử lý được bao gồm dưới dạng tiêu chuẩn, hãy xem"
+" :mod:`logging.handlers`."
+
+#: ../../library/logging.rst:657
+#, fuzzy
+msgid "Formatter Objects"
+msgstr "Đối tượng định dạng"
+
+#: ../../library/logging.rst:663
+#, fuzzy
+msgid ""
+"Responsible for converting a :class:`LogRecord` to an output string to be "
+"interpreted by a human or external system."
+msgstr ""
+"Chịu trách nhiệm chuyển đổi :class:`LogRecord` thành chuỗi đầu ra để con "
+"người hoặc hệ thống bên ngoài giải thích."
+
+#: ../../library/logging.rst
+#, fuzzy
+msgid "Parameters"
+msgstr "Thông số"
+
+#: ../../library/logging.rst:666
+#, python-format, fuzzy
+msgid ""
+"A format string in the given *style* for the logged output as a whole. The "
+"possible mapping keys are drawn from the :class:`LogRecord` object's "
+":ref:`logrecord-attributes`. If not specified, ``'%(message)s'`` is used, "
+"which is just the logged message."
+msgstr ""
+"Một chuỗi định dạng trong *style* nhất định cho toàn bộ đầu ra được ghi lại."
+" Các khóa ánh xạ có thể được rút ra từ :ref:`logrecord-attributes` của đối "
+"tượng :class:`LogRecord`. Nếu không được chỉ định, ``'%(message)s'`` sẽ được"
+" sử dụng, đây chỉ là thông báo được ghi lại."
+
+#: ../../library/logging.rst:674
+#, fuzzy
+msgid ""
+"A format string for the date/time portion of the logged output. If not "
+"specified, the default described in :meth:`formatTime` is used."
+msgstr ""
+"Chuỗi định dạng cho phần ngày/giờ của kết quả được ghi lại. Nếu không được "
+"chỉ định, mặc định được mô tả trong :meth:`formatTime` sẽ được sử dụng."
+
+#: ../../library/logging.rst:678
+#, python-format, fuzzy
+msgid ""
+"Can be one of ``'%'``, ``'{'`` or ``'$'`` and determines how the format "
+"string will be merged with its data: using one of :ref:`old-string-"
+"formatting` (``%``), :meth:`str.format` (``{``) or :class:`string.Template` "
+"(``$``). This only applies to *fmt* (e.g. ``'%(message)s'`` versus "
+"``'{message}'``), not to the actual log messages passed to the logging "
+"methods. However, there are :ref:`other ways <formatting-styles>` to use "
+"``{``- and ``$``-formatting for log messages."
+msgstr ""
+"Có thể là một trong ``'%'``, ``'{'`` hoặc ``'$'`` và xác định cách chuỗi "
+"định dạng sẽ được hợp nhất với dữ liệu của nó: sử dụng một trong các "
+":ref:`old-string-formatting` (``%``), :meth:`str.format` (``{``) hoặc "
+":class:`string.Template` (``$``). Điều này chỉ áp dụng cho *fmt* (ví dụ: "
+"``'%(message)s'`` so với ``'{message}'``), không áp dụng cho các thông báo "
+"nhật ký thực tế được chuyển đến các phương thức ghi nhật ký. Tuy nhiên, có "
+":ref:`other ways <formatting-styles>` sử dụng định dạng ``{``- và ``$`` cho "
+"thông điệp tường trình."
+
+#: ../../library/logging.rst:688
+#, python-format, fuzzy
+msgid ""
+"If ``True`` (the default), incorrect or mismatched *fmt* and *style* will "
+"raise a :exc:`ValueError`; for example, ``logging.Formatter('%(asctime)s - "
+"%(message)s', style='{')``."
+msgstr ""
+"Nếu ``True`` (mặc định), *fmt* không chính xác hoặc không khớp và *style* sẽ"
+" tạo ra :exc:`ValueError`; ví dụ: ``logging.Formatter('%(asctime)s - "
+"%(message)s', style='{')``."
+
+#: ../../library/logging.rst:693
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"A dictionary with default values to use in custom fields. For example, "
+"``logging.Formatter('%(ip)s %(message)s', defaults={\"ip\": None})``"
+msgstr ""
+"Từ điển có giá trị mặc định để sử dụng trong các trường tùy chỉnh. Ví dụ: "
+"``logging.Formatter('%(ip)s %(message)s', defaults={\"ip\": None})``"
+
+#: ../../library/logging.rst:698
+#, fuzzy
+msgid "Added the *style* parameter."
+msgstr "Đã thêm tham số *style*."
+
+#: ../../library/logging.rst:701
+#, fuzzy
+msgid "Added the *validate* parameter."
+msgstr "Đã thêm tham số *validate*."
+
+#: ../../library/logging.rst:704
+#, fuzzy
+msgid "Added the *defaults* parameter."
+msgstr "Đã thêm tham số *defaults*."
+
+#: ../../library/logging.rst:710
+#, fuzzy
+msgid ""
+"The record's attribute dictionary is used as the operand to a string "
+"formatting operation. Returns the resulting string. Before formatting the "
+"dictionary, a couple of preparatory steps are carried out. The *message* "
+"attribute of the record is computed using *msg* % *args*. If the formatting "
+"string contains ``'(asctime)'``, :meth:`formatTime` is called to format the "
+"event time. If there is exception information, it is formatted using "
+":meth:`formatException` and appended to the message. Note that the formatted"
+" exception information is cached in attribute *exc_text*. This is useful "
+"because the exception information can be pickled and sent across the wire, "
+"but you should be careful if you have more than one :class:`Formatter` "
+"subclass which customizes the formatting of exception information. In this "
+"case, you will have to clear the cached value (by setting the *exc_text* "
+"attribute to ``None``) after a formatter has done its formatting, so that "
+"the next formatter to handle the event doesn't use the cached value, but "
+"recalculates it afresh."
+msgstr ""
+"Từ điển thuộc tính của bản ghi được sử dụng làm toán hạng cho thao tác định "
+"dạng chuỗi. Trả về chuỗi kết quả. Trước khi định dạng từ điển, một số bước "
+"chuẩn bị được thực hiện. Thuộc tính *message* của bản ghi được tính bằng "
+"*msg* %*args*. Nếu chuỗi định dạng chứa ``'(asctime)'``, :meth:`formatTime` "
+"được gọi để định dạng thời gian sự kiện. Nếu có thông tin ngoại lệ, thông "
+"tin đó sẽ được định dạng bằng :meth:`formatException` và được thêm vào tin "
+"nhắn. Lưu ý rằng thông tin ngoại lệ được định dạng được lưu trong thuộc tính"
+" *exc_text*. Điều này rất hữu ích vì thông tin ngoại lệ có thể được chọn và "
+"gửi qua mạng, nhưng bạn nên cẩn thận nếu bạn có nhiều hơn một lớp con "
+":class:`Formatter` tùy chỉnh định dạng thông tin ngoại lệ. Trong trường hợp "
+"này, bạn sẽ phải xóa giá trị được lưu trong bộ nhớ đệm (bằng cách đặt thuộc "
+"tính *exc_text* thành ``None``) sau khi trình định dạng đã thực hiện định "
+"dạng của nó, để trình định dạng tiếp theo xử lý sự kiện không sử dụng giá "
+"trị được lưu trong bộ nhớ đệm mà tính toán lại giá trị đó từ đầu."
+
+#: ../../library/logging.rst:726
+#, fuzzy
+msgid ""
+"If stack information is available, it's appended after the exception "
+"information, using :meth:`formatStack` to transform it if necessary."
+msgstr ""
+"Nếu có thông tin ngăn xếp, nó sẽ được thêm vào sau thông tin ngoại lệ, sử "
+"dụng :meth:`formatStack` để chuyển đổi nếu cần."
+
+#: ../../library/logging.rst:732
+#, python-format, fuzzy
+msgid ""
+"This method should be called from :meth:`format` by a formatter which wants "
+"to make use of a formatted time. This method can be overridden in formatters"
+" to provide for any specific requirement, but the basic behavior is as "
+"follows: if *datefmt* (a string) is specified, it is used with "
+":func:`time.strftime` to format the creation time of the record. Otherwise, "
+"the format '%Y-%m-%d %H:%M:%S,uuu' is used, where the uuu part is a "
+"millisecond value and the other letters are as per the :func:`time.strftime`"
+" documentation.  An example time in this format is ``2003-01-23 "
+"00:29:50,411``.  The resulting string is returned."
+msgstr ""
+"Phương thức này phải được gọi từ :meth:`format` bởi một trình định dạng muốn"
+" sử dụng thời gian được định dạng. Phương thức này có thể được ghi đè trong "
+"các trình định dạng để đáp ứng bất kỳ yêu cầu cụ thể nào, nhưng hành vi cơ "
+"bản như sau: nếu *datefmt* (một chuỗi) được chỉ định, thì nó được sử dụng "
+"với :func:`time.strftime` để định dạng thời gian tạo bản ghi. Mặt khác, định"
+" dạng '%Y-%m-%d %H:%M:%S,uuu' được sử dụng, trong đó phần uuu là giá trị "
+"mili giây và các chữ cái khác theo tài liệu :func:`time.strftime`.  Ví dụ về"
+" thời gian ở định dạng này là ``2003-01-23 00:29:50,411``.  Chuỗi kết quả "
+"được trả về."
+
+#: ../../library/logging.rst:742
+#, fuzzy
+msgid ""
+"This function uses a user-configurable function to convert the creation time"
+" to a tuple. By default, :func:`time.localtime` is used; to change this for "
+"a particular formatter instance, set the ``converter`` attribute to a "
+"function with the same signature as :func:`time.localtime` or "
+":func:`time.gmtime`. To change it for all formatters, for example if you "
+"want all logging times to be shown in GMT, set the ``converter`` attribute "
+"in the ``Formatter`` class."
+msgstr ""
+"Hàm này sử dụng hàm do người dùng định cấu hình để chuyển đổi thời gian tạo "
+"thành một bộ dữ liệu. Theo mặc định, :func:`time.localtime` được sử dụng; để"
+" thay đổi điều này cho một phiên bản trình định dạng cụ thể, hãy đặt thuộc "
+"tính ``converter`` thành một hàm có cùng chữ ký với :func:`time.localtime` "
+"hoặc :func:`time.gmtime`. Để thay đổi nó cho tất cả các trình định dạng, ví "
+"dụ: nếu bạn muốn tất cả thời gian ghi nhật ký được hiển thị trong GMT, hãy "
+"đặt thuộc tính ``converter`` trong lớp ``Formatter``."
+
+#: ../../library/logging.rst:750
+#, python-format, fuzzy
+msgid ""
+"Previously, the default format was hard-coded as in this example: "
+"``2010-09-06 22:38:15,292`` where the part before the comma is handled by a "
+"strptime format string (``'%Y-%m-%d %H:%M:%S'``), and the part after the "
+"comma is a millisecond value. Because strptime does not have a format "
+"placeholder for milliseconds, the millisecond value is appended using "
+"another format string, ``'%s,%03d'`` --- and both of these format strings "
+"have been hardcoded into this method. With the change, these strings are "
+"defined as class-level attributes which can be overridden at the instance "
+"level when desired. The names of the attributes are ``default_time_format`` "
+"(for the strptime format string) and ``default_msec_format`` (for appending "
+"the millisecond value)."
+msgstr ""
+"Trước đây, định dạng mặc định được mã hóa cứng như trong ví dụ này: "
+"``2010-09-06 22:38:15,292`` trong đó phần trước dấu phẩy được xử lý bằng "
+"chuỗi định dạng strptime (``'%Y-%m-%d %H:%M:%S'``) và phần sau dấu phẩy là "
+"giá trị mili giây. Vì strptime không có trình giữ chỗ định dạng cho mili "
+"giây nên giá trị mili giây được thêm vào bằng chuỗi định dạng khác, "
+"``'%s,%03d'`` --- và cả hai chuỗi định dạng này đã được mã hóa cứng vào "
+"phương thức này. Với sự thay đổi, các chuỗi này được định nghĩa là thuộc "
+"tính cấp độ lớp có thể được ghi đè ở cấp độ cá thể khi muốn. Tên của các "
+"thuộc tính là ``default_time_format`` (đối với chuỗi định dạng strptime) và "
+"``default_msec_format`` (để nối thêm giá trị mili giây)."
+
+#: ../../library/logging.rst:763
+#, fuzzy
+msgid "The ``default_msec_format`` can be ``None``."
+msgstr "Zz000zz có thể là ``None``."
+
+#: ../../library/logging.rst:768
+#, fuzzy
+msgid ""
+"Formats the specified exception information (a standard exception tuple as "
+"returned by :func:`sys.exc_info`) as a string. This default implementation "
+"just uses :func:`traceback.print_exception`. The resulting string is "
+"returned."
+msgstr ""
+"Định dạng thông tin ngoại lệ đã chỉ định (một bộ ngoại lệ tiêu chuẩn được "
+"trả về bởi :func:`sys.exc_info`) dưới dạng một chuỗi. Việc triển khai mặc "
+"định này chỉ sử dụng :func:`traceback.print_exception`. Chuỗi kết quả được "
+"trả về."
+
+#: ../../library/logging.rst:775
+#, fuzzy
+msgid ""
+"Formats the specified stack information (a string as returned by "
+":func:`traceback.print_stack`, but with the last newline removed) as a "
+"string. This default implementation just returns the input value."
+msgstr ""
+"Định dạng thông tin ngăn xếp đã chỉ định (một chuỗi được trả về bởi "
+":func:`traceback.print_stack`, nhưng đã xóa dòng mới cuối cùng) dưới dạng "
+"một chuỗi. Việc triển khai mặc định này chỉ trả về giá trị đầu vào."
+
+#: ../../library/logging.rst:781
+#, fuzzy
+msgid ""
+"A base formatter class suitable for subclassing when you want to format a "
+"number of records. You can pass a :class:`Formatter` instance which you want"
+" to use to format each line (that corresponds to a single record). If not "
+"specified, the default formatter (which just outputs the event message) is "
+"used as the line formatter."
+msgstr ""
+"Lớp định dạng cơ sở thích hợp cho việc phân lớp khi bạn muốn định dạng một "
+"số bản ghi. Bạn có thể chuyển một phiên bản :class:`Formatter` mà bạn muốn "
+"sử dụng để định dạng từng dòng (tương ứng với một bản ghi). Nếu không được "
+"chỉ định, trình định dạng mặc định (chỉ xuất ra thông báo sự kiện) sẽ được "
+"sử dụng làm trình định dạng dòng."
+
+#: ../../library/logging.rst:789
+#, fuzzy
+msgid ""
+"Return a header for a list of *records*. The base implementation just "
+"returns the empty string. You will need to override this method if you want "
+"specific behaviour, e.g. to show the count of records, a title or a "
+"separator line."
+msgstr ""
+"Trả về tiêu đề cho danh sách *records*. Việc triển khai cơ sở chỉ trả về "
+"chuỗi trống. Bạn sẽ cần ghi đè phương thức này nếu bạn muốn có hành vi cụ "
+"thể, ví dụ: để hiển thị số lượng bản ghi, tiêu đề hoặc dòng phân cách."
+
+#: ../../library/logging.rst:796
+#, fuzzy
+msgid ""
+"Return a footer for a list of *records*. The base implementation just "
+"returns the empty string. You will need to override this method if you want "
+"specific behaviour, e.g. to show the count of records or a separator line."
+msgstr ""
+"Trả về chân trang cho danh sách *records*. Việc triển khai cơ sở chỉ trả về "
+"chuỗi trống. Bạn sẽ cần ghi đè phương thức này nếu bạn muốn có hành vi cụ "
+"thể, ví dụ: để hiển thị số lượng bản ghi hoặc một dòng phân cách."
+
+#: ../../library/logging.rst:803
+#, fuzzy
+msgid ""
+"Return formatted text for a list of *records*. The base implementation just "
+"returns the empty string if there are no records; otherwise, it returns the "
+"concatenation of the header, each record formatted with the line formatter, "
+"and the footer."
+msgstr ""
+"Trả về văn bản đã định dạng cho danh sách *records*. Việc triển khai cơ sở "
+"chỉ trả về chuỗi trống nếu không có bản ghi; mặt khác, nó trả về phần nối "
+"của tiêu đề, mỗi bản ghi được định dạng bằng bộ định dạng dòng và chân "
+"trang."
+
+#: ../../library/logging.rst:811
+#, fuzzy
+msgid "Filter Objects"
+msgstr "Lọc đối tượng"
+
+#: ../../library/logging.rst:813
+#, fuzzy
+msgid ""
+"``Filters`` can be used by ``Handlers`` and ``Loggers`` for more "
+"sophisticated filtering than is provided by levels. The base filter class "
+"only allows events which are below a certain point in the logger hierarchy. "
+"For example, a filter initialized with 'A.B' will allow events logged by "
+"loggers 'A.B', 'A.B.C', 'A.B.C.D', 'A.B.D' etc. but not 'A.BB', 'B.A.B' etc."
+" If initialized with the empty string, all events are passed."
+msgstr ""
+"``Filters`` có thể được ``Handlers`` và ``Loggers`` sử dụng để lọc phức tạp "
+"hơn mức được cung cấp bởi các cấp độ. Lớp bộ lọc cơ sở chỉ cho phép các sự "
+"kiện nằm dưới một điểm nhất định trong hệ thống phân cấp trình ghi nhật ký. "
+"Ví dụ: bộ lọc được khởi tạo bằng 'A.B' sẽ cho phép các sự kiện được ghi lại "
+"bởi trình ghi nhật ký 'A.B', 'A.B.C', 'A.B.C.D', 'A.B.D', v.v. nhưng không "
+"cho phép 'A.BB', 'B.A.B', v.v. Nếu được khởi tạo bằng chuỗi trống, tất cả "
+"các sự kiện đều được thông qua."
+
+#: ../../library/logging.rst:823
+#, fuzzy
+msgid ""
+"Returns an instance of the :class:`Filter` class. If *name* is specified, it"
+" names a logger which, together with its children, will have its events "
+"allowed through the filter. If *name* is the empty string, allows every "
+"event."
+msgstr ""
+"Trả về một thể hiện của lớp :class:`Filter`. Nếu *name* được chỉ định, nó sẽ"
+" đặt tên cho một trình ghi nhật ký, cùng với các phần tử con của nó, sẽ cho "
+"phép các sự kiện của nó thông qua bộ lọc. Nếu *name* là chuỗi trống, hãy cho"
+" phép mọi sự kiện."
+
+#: ../../library/logging.rst:830
+#, fuzzy
+msgid ""
+"Is the specified record to be logged? Returns false for no, true for yes. "
+"Filters can either modify log records in-place or return a completely "
+"different record instance which will replace the original log record in any "
+"future processing of the event."
+msgstr ""
+"Bản ghi được chỉ định có được ghi lại không? Trả về sai cho không, đúng cho "
+"có. Bộ lọc có thể sửa đổi bản ghi nhật ký tại chỗ hoặc trả về một phiên bản "
+"bản ghi hoàn toàn khác sẽ thay thế bản ghi nhật ký ban đầu trong bất kỳ quá "
+"trình xử lý sự kiện nào trong tương lai."
+
+#: ../../library/logging.rst:835
+#, fuzzy
+msgid ""
+"Note that filters attached to handlers are consulted before an event is "
+"emitted by the handler, whereas filters attached to loggers are consulted "
+"whenever an event is logged (using :meth:`debug`, :meth:`info`, etc.), "
+"before sending an event to handlers. This means that events which have been "
+"generated by descendant loggers will not be filtered by a logger's filter "
+"setting, unless the filter has also been applied to those descendant "
+"loggers."
+msgstr ""
+"Lưu ý rằng các bộ lọc gắn với trình xử lý sẽ được tham khảo trước khi một sự"
+" kiện được trình xử lý phát ra, trong khi các bộ lọc gắn với trình ghi nhật "
+"ký sẽ được tham khảo bất cứ khi nào một sự kiện được ghi lại (sử dụng "
+":meth:`debug`, :meth:`info`, v.v.), trước khi gửi sự kiện đến trình xử lý. "
+"Điều này có nghĩa là các sự kiện được tạo bởi trình ghi nhật ký con sẽ không"
+" bị lọc bởi cài đặt bộ lọc của trình ghi nhật ký, trừ khi bộ lọc cũng được "
+"áp dụng cho các trình ghi nhật ký con đó."
+
+#: ../../library/logging.rst:842
+#, fuzzy
+msgid ""
+"You don't actually need to subclass ``Filter``: you can pass any instance "
+"which has a ``filter`` method with the same semantics."
+msgstr ""
+"Bạn thực sự không cần phải phân lớp ``Filter``: bạn có thể chuyển bất kỳ "
+"phiên bản nào có phương thức ``filter`` có cùng ngữ nghĩa."
+
+#: ../../library/logging.rst:845
+#, fuzzy
+msgid ""
+"You don't need to create specialized ``Filter`` classes, or use other "
+"classes with a ``filter`` method: you can use a function (or other callable)"
+" as a filter. The filtering logic will check to see if the filter object has"
+" a ``filter`` attribute: if it does, it's assumed to be a ``Filter`` and its"
+" :meth:`~Filter.filter` method is called. Otherwise, it's assumed to be a "
+"callable and called with the record as the single parameter. The returned "
+"value should conform to that returned by :meth:`~Filter.filter`."
+msgstr ""
+"Bạn không cần tạo các lớp ``Filter`` chuyên biệt hoặc sử dụng các lớp khác "
+"bằng phương thức ``filter``: bạn có thể sử dụng một hàm (hoặc có thể gọi "
+"khác) làm bộ lọc. Logic lọc sẽ kiểm tra xem đối tượng bộ lọc có thuộc tính "
+"``filter`` hay không: nếu có, nó được coi là ``Filter`` và phương thức "
+":meth:`~Filter.filter` của nó được gọi. Mặt khác, nó được coi là có thể gọi "
+"được và được gọi với bản ghi dưới dạng tham số duy nhất. Giá trị được trả về"
+" phải phù hợp với giá trị được trả về bởi :meth:`~Filter.filter`."
+
+#: ../../library/logging.rst:855
+#, fuzzy
+msgid ""
+"You can now return a :class:`LogRecord` instance from filters to replace the"
+" log record rather than modifying it in place. This allows filters attached "
+"to a :class:`Handler` to modify the log record before it is emitted, without"
+" having side effects on other handlers."
+msgstr ""
+"Bây giờ bạn có thể trả về một phiên bản :class:`LogRecord` từ các bộ lọc để "
+"thay thế bản ghi nhật ký thay vì sửa đổi nó tại chỗ. Điều này cho phép các "
+"bộ lọc được gắn vào :class:`Handler` sửa đổi bản ghi nhật ký trước khi nó "
+"được phát ra mà không gây tác dụng phụ đối với các trình xử lý khác."
+
+#: ../../library/logging.rst:861
+#, fuzzy
+msgid ""
+"Although filters are used primarily to filter records based on more "
+"sophisticated criteria than levels, they get to see every record which is "
+"processed by the handler or logger they're attached to: this can be useful "
+"if you want to do things like counting how many records were processed by a "
+"particular logger or handler, or adding, changing or removing attributes in "
+"the :class:`LogRecord` being processed. Obviously changing the LogRecord "
+"needs to be done with some care, but it does allow the injection of "
+"contextual information into logs (see :ref:`filters-contextual`)."
+msgstr ""
+"Mặc dù các bộ lọc được sử dụng chủ yếu để lọc các bản ghi dựa trên các tiêu "
+"chí phức tạp hơn các cấp độ, nhưng chúng có thể xem mọi bản ghi được xử lý "
+"bởi trình xử lý hoặc trình ghi nhật ký mà chúng được đính kèm: điều này có "
+"thể hữu ích nếu bạn muốn thực hiện những việc như đếm số lượng bản ghi đã "
+"được xử lý bởi một trình ghi nhật ký hoặc trình xử lý cụ thể hoặc thêm, thay"
+" đổi hoặc xóa các thuộc tính trong :class:`LogRecord` đang được xử lý. Rõ "
+"ràng việc thay đổi LogRecord cần phải được thực hiện một cách cẩn thận, "
+"nhưng nó cho phép đưa thông tin theo ngữ cảnh vào nhật ký (xem "
+":ref:`filters-contextual`)."
+
+#: ../../library/logging.rst:874
+#, fuzzy
+msgid "LogRecord Objects"
+msgstr "Đối tượng LogRecord"
+
+#: ../../library/logging.rst:876
+#, fuzzy
+msgid ""
+":class:`LogRecord` instances are created automatically by the "
+":class:`Logger` every time something is logged, and can be created manually "
+"via :func:`makeLogRecord` (for example, from a pickled event received over "
+"the wire)."
+msgstr ""
+"Các phiên bản :class:`LogRecord` được :class:`Logger` tạo tự động mỗi khi có"
+" nội dung nào đó được ghi lại và có thể được tạo thủ công thông qua "
+":func:`makeLogRecord` (ví dụ: từ một sự kiện được chọn qua đường dây)."
+
+#: ../../library/logging.rst:884
+#, fuzzy
+msgid "Contains all the information pertinent to the event being logged."
+msgstr "Chứa tất cả thông tin liên quan đến sự kiện đang được ghi lại."
+
+#: ../../library/logging.rst:886
+#, fuzzy
+msgid ""
+"The primary information is passed in *msg* and *args*, which are combined "
+"using ``msg % args`` to create the :attr:`!message` attribute of the record."
+msgstr ""
+"Thông tin chính được truyền trong *msg* và *args*, được kết hợp bằng ``msg %"
+" args`` để tạo thuộc tính :attr:`!message` của bản ghi."
+
+#: ../../library/logging.rst:890
+#, fuzzy
+msgid ""
+"The name of the logger used to log the event represented by this "
+":class:`!LogRecord`. Note that the logger name in the :class:`!LogRecord` "
+"will always have this value, even though it may be emitted by a handler "
+"attached to a different (ancestor) logger."
+msgstr ""
+"Tên của trình ghi nhật ký được sử dụng để ghi lại sự kiện được đại diện bởi "
+":class:`!LogRecord` này. Lưu ý rằng tên trình ghi nhật ký trong "
+":class:`!LogRecord` sẽ luôn có giá trị này, mặc dù nó có thể được phát ra "
+"bởi một trình xử lý gắn liền với một trình ghi nhật ký (tổ tiên) khác."
+
+#: ../../library/logging.rst:898
+#, fuzzy
+msgid ""
+"The :ref:`numeric level <levels>` of the logging event (such as ``10`` for "
+"``DEBUG``, ``20`` for ``INFO``, etc). Note that this is converted to *two* "
+"attributes of the LogRecord: :attr:`!levelno` for the numeric value and "
+":attr:`!levelname` for the corresponding level name."
+msgstr ""
+":ref:`numeric level <levels>` của sự kiện ghi nhật ký (chẳng hạn như ``10`` "
+"cho ``DEBUG``, ``20`` cho ``INFO``, v.v.). Lưu ý rằng điều này được chuyển "
+"đổi thành thuộc tính *two* của LogRecord: :attr:`!levelno` cho giá trị số và"
+" :attr:`!levelname` cho tên cấp độ tương ứng."
+
+#: ../../library/logging.rst:905
+#, fuzzy
+msgid ""
+"The full string path of the source file where the logging call was made."
+msgstr ""
+"Đường dẫn chuỗi đầy đủ của tệp nguồn nơi thực hiện lệnh gọi ghi nhật ký."
+
+#: ../../library/logging.rst:909
+#, fuzzy
+msgid "The line number in the source file where the logging call was made."
+msgstr "Số dòng trong tệp nguồn nơi thực hiện cuộc gọi ghi nhật ký."
+
+#: ../../library/logging.rst:913
+#, python-format, fuzzy
+msgid ""
+"The event description message, which can be a %-format string with "
+"placeholders for variable data, or an arbitrary object (see :ref:`arbitrary-"
+"object-messages`)."
+msgstr ""
+"Thông báo mô tả sự kiện, có thể là chuỗi định dạng % với phần giữ chỗ cho dữ"
+" liệu biến đổi hoặc một đối tượng tùy ý (xem :ref:`arbitrary-object-"
+"messages`)."
+
+#: ../../library/logging.rst:918
+#, fuzzy
+msgid ""
+"Variable data to merge into the *msg* argument to obtain the event "
+"description."
+msgstr "Dữ liệu biến để hợp nhất vào đối số *msg* để có được mô tả sự kiện."
+
+#: ../../library/logging.rst:922
+#, fuzzy
+msgid ""
+"An exception tuple with the current exception information, as returned by "
+":func:`sys.exc_info`, or ``None`` if no exception information is available."
+msgstr ""
+"Một bộ ngoại lệ với thông tin ngoại lệ hiện tại, được trả về bởi "
+":func:`sys.exc_info` hoặc ``None`` nếu không có thông tin ngoại lệ."
+
+#: ../../library/logging.rst:927
+#, fuzzy
+msgid ""
+"The name of the function or method from which the logging call was invoked."
+msgstr "Tên của hàm hoặc phương thức mà lệnh gọi ghi nhật ký được gọi."
+
+#: ../../library/logging.rst:931
+#, fuzzy
+msgid ""
+"A text string representing stack information from the base of the stack in "
+"the current thread, up to the logging call."
+msgstr ""
+"Một chuỗi văn bản biểu thị thông tin ngăn xếp từ đáy ngăn xếp trong luồng "
+"hiện tại cho đến lệnh gọi ghi nhật ký."
+
+#: ../../library/logging.rst:938
+#, fuzzy
+msgid ""
+"Returns the message for this :class:`LogRecord` instance after merging any "
+"user-supplied arguments with the message. If the user-supplied message "
+"argument to the logging call is not a string, :func:`str` is called on it to"
+" convert it to a string. This allows use of user-defined classes as "
+"messages, whose ``__str__`` method can return the actual format string to be"
+" used."
+msgstr ""
+"Trả về thông báo cho phiên bản :class:`LogRecord` này sau khi hợp nhất mọi "
+"đối số do người dùng cung cấp với thông báo. Nếu đối số tin nhắn do người "
+"dùng cung cấp cho cuộc gọi ghi nhật ký không phải là một chuỗi, thì "
+":func:`str` sẽ được gọi trên đó để chuyển đổi nó thành một chuỗi. Điều này "
+"cho phép sử dụng các lớp do người dùng định nghĩa làm tin nhắn, có phương "
+"thức ``__str__`` có thể trả về chuỗi định dạng thực tế sẽ được sử dụng."
+
+#: ../../library/logging.rst:945
+#, fuzzy
+msgid ""
+"The creation of a :class:`LogRecord` has been made more configurable by "
+"providing a factory which is used to create the record. The factory can be "
+"set using :func:`getLogRecordFactory` and :func:`setLogRecordFactory` (see "
+"this for the factory's signature)."
+msgstr ""
+"Việc tạo :class:`LogRecord` đã được thực hiện dễ dàng hơn bằng cách cung cấp"
+" một nhà máy được sử dụng để tạo bản ghi. Nhà máy có thể được thiết lập bằng"
+" :func:`getLogRecordFactory` và :func:`setLogRecordFactory` (xem phần này để"
+" biết chữ ký của nhà máy)."
+
+#: ../../library/logging.rst:951
+#, fuzzy
+msgid ""
+"This functionality can be used to inject your own values into a "
+":class:`LogRecord` at creation time. You can use the following pattern::"
+msgstr ""
+"Chức năng này có thể được sử dụng để đưa các giá trị của riêng bạn vào "
+":class:`LogRecord` tại thời điểm tạo. Bạn có thể sử dụng mẫu sau::"
+
+#: ../../library/logging.rst:954
+#, fuzzy
+msgid ""
+"old_factory = logging.getLogRecordFactory()\n"
+"\n"
+"def record_factory(*args, **kwargs):\n"
+"    record = old_factory(*args, **kwargs)\n"
+"    record.custom_attribute = 0xdecafbad\n"
+"    return record\n"
+"\n"
+"logging.setLogRecordFactory(record_factory)"
+msgstr ""
+"old_factory = log.getLogRecordFactory()\n"
+"\n"
+"def record_factory(*args, **kwargs):\n"
+"    bản ghi = old_factory(*args, **kwargs)\n"
+"    record.custom_attribute = 0xdecafbad\n"
+"    hồ sơ trả lại\n"
+"\n"
+"logging.setLogRecordFactory(record_factory)"
+
+#: ../../library/logging.rst:963
+#, fuzzy
+msgid ""
+"With this pattern, multiple factories could be chained, and as long as they "
+"don't overwrite each other's attributes or unintentionally overwrite the "
+"standard attributes listed above, there should be no surprises."
+msgstr ""
+"Với mô hình này, nhiều nhà máy có thể bị xích và miễn là chúng không ghi đè "
+"lên các thuộc tính của nhau hoặc vô tình ghi đè lên các thuộc tính tiêu "
+"chuẩn được liệt kê ở trên thì sẽ không có gì đáng ngạc nhiên."
+
+#: ../../library/logging.rst:972
+#, fuzzy
+msgid "LogRecord attributes"
+msgstr "Thuộc tính LogRecord"
+
+#: ../../library/logging.rst:974
+#, python-format, fuzzy
+msgid ""
+"The LogRecord has a number of attributes, most of which are derived from the"
+" parameters to the constructor. (Note that the names do not always "
+"correspond exactly between the LogRecord constructor parameters and the "
+"LogRecord attributes.) These attributes can be used to merge data from the "
+"record into the format string. The following table lists (in alphabetical "
+"order) the attribute names, their meanings and the corresponding placeholder"
+" in a %-style format string."
+msgstr ""
+"LogRecord có một số thuộc tính, hầu hết chúng đều được lấy từ các tham số "
+"của hàm tạo. (Lưu ý rằng các tên không phải lúc nào cũng tương ứng chính xác"
+" giữa các tham số của hàm tạo LogRecord và thuộc tính LogRecord.) Các thuộc "
+"tính này có thể được sử dụng để hợp nhất dữ liệu từ bản ghi vào chuỗi định "
+"dạng. Bảng sau liệt kê (theo thứ tự bảng chữ cái) tên thuộc tính, ý nghĩa "
+"của chúng và phần giữ chỗ tương ứng trong chuỗi định dạng kiểu %."
+
+#: ../../library/logging.rst:982
+#, python-brace-format, fuzzy
+msgid ""
+"If you are using {}-formatting (:func:`str.format`), you can use "
+"``{attrname}`` as the placeholder in the format string. If you are using "
+"$-formatting (:class:`string.Template`), use the form ``${attrname}``. In "
+"both cases, of course, replace ``attrname`` with the actual attribute name "
+"you want to use."
+msgstr ""
+"Nếu bạn đang sử dụng định dạng {} (:func:`str.format`), bạn có thể sử dụng "
+"``{attrname}`` làm phần giữ chỗ trong chuỗi định dạng. Nếu bạn đang sử dụng "
+"định dạng $ (:class:`string.Template`), hãy sử dụng biểu mẫu "
+"``${attrname}``. Tất nhiên, trong cả hai trường hợp, hãy thay thế "
+"``attrname`` bằng tên thuộc tính thực tế mà bạn muốn sử dụng."
+
+#: ../../library/logging.rst:988
+#, python-brace-format, fuzzy
+msgid ""
+"In the case of {}-formatting, you can specify formatting flags by placing "
+"them after the attribute name, separated from it with a colon. For example: "
+"a placeholder of ``{msecs:03.0f}`` would format a millisecond value of ``4``"
+" as ``004``. Refer to the :meth:`str.format` documentation for full details "
+"on the options available to you."
+msgstr ""
+"Trong trường hợp định dạng {}, bạn có thể chỉ định các cờ định dạng bằng "
+"cách đặt chúng sau tên thuộc tính, phân tách bằng dấu hai chấm. Ví dụ: phần "
+"giữ chỗ của ``{msecs:03.0f}`` sẽ định dạng giá trị mili giây của ``4`` là "
+"``004``. Tham khảo tài liệu :meth:`str.format` để biết chi tiết đầy đủ về "
+"các tùy chọn có sẵn cho bạn."
+
+#: ../../library/logging.rst:995
+#, fuzzy
+msgid "Attribute name"
+msgstr "Tên thuộc tính"
+
+#: ../../library/logging.rst:995 ../../library/logging.rst:1375
+#, fuzzy
+msgid "Format"
+msgstr "định dạng"
+
+#: ../../library/logging.rst:995 ../../library/logging.rst:1375
+#, fuzzy
+msgid "Description"
+msgstr "Mô tả"
+
+#: ../../library/logging.rst ../../library/logging.rst:997
+#, fuzzy
+msgid "args"
+msgstr "lập luận"
+
+#: ../../library/logging.rst:997 ../../library/logging.rst:1011
+#: ../../library/logging.rst:1014 ../../library/logging.rst:1044
+#: ../../library/logging.rst:1062
+#, fuzzy
+msgid "You shouldn't need to format this yourself."
+msgstr "Bạn không cần phải tự định dạng cái này."
+
+#: ../../library/logging.rst:997
+#, fuzzy
+msgid ""
+"The tuple of arguments merged into ``msg`` to produce ``message``, or a dict"
+" whose values are used for the merge (when there is only one argument, and "
+"it is a dictionary)."
+msgstr ""
+"Bộ đối số được hợp nhất thành ``msg`` để tạo ra ``message`` hoặc một lệnh có"
+" giá trị được sử dụng để hợp nhất (khi chỉ có một đối số và đó là một từ "
+"điển)."
+
+#: ../../library/logging.rst:1002
+#, fuzzy
+msgid "asctime"
+msgstr "tăng dần"
+
+#: ../../library/logging.rst:1002
+#, python-format, fuzzy
+msgid "``%(asctime)s``"
+msgstr "``%(asctime)s``"
+
+#: ../../library/logging.rst:1002
+#, fuzzy
+msgid ""
+"Human-readable time when the :class:`LogRecord` was created.  By default "
+"this is of the form '2003-07-08 16:49:45,896' (the numbers after the comma "
+"are millisecond portion of the time)."
+msgstr ""
+"Thời gian con người có thể đọc được khi :class:`LogRecord` được tạo.  Theo "
+"mặc định, đây là dạng '2003-07-08 16:49:45,896' (các số sau dấu phẩy là phần"
+" mili giây của thời gian)."
+
+#: ../../library/logging.rst:1008
+#, fuzzy
+msgid "created"
+msgstr "đã tạo"
+
+#: ../../library/logging.rst:1008
+#, python-format, fuzzy
+msgid "``%(created)f``"
+msgstr "``%(created)f``"
+
+#: ../../library/logging.rst:1008
+#, fuzzy
+msgid ""
+"Time when the :class:`LogRecord` was created (as returned by "
+":func:`time.time_ns` / 1e9)."
+msgstr ""
+"Thời điểm :class:`LogRecord` được tạo (được trả về bởi "
+":func:`time.time_ns`/1e9)."
+
+#: ../../library/logging.rst ../../library/logging.rst:1011
+#, fuzzy
+msgid "exc_info"
+msgstr "ex_info"
+
+#: ../../library/logging.rst:1011
+#, fuzzy
+msgid ""
+"Exception tuple (à la ``sys.exc_info``) or, if no exception has occurred, "
+"``None``."
+msgstr ""
+"Bộ ngoại lệ (à la ``sys.exc_info``) hoặc, nếu không có ngoại lệ nào xảy ra, "
+"``None``."
+
+#: ../../library/logging.rst:1014
+#, fuzzy
+msgid "exc_text"
+msgstr "văn bản exc_text"
+
+#: ../../library/logging.rst:1014
+#, fuzzy
+msgid ""
+"Exception information formatted as a string. This is set when "
+":meth:`Formatter.format` is invoked, or ``None`` if no exception has "
+"occurred."
+msgstr ""
+"Thông tin ngoại lệ được định dạng dưới dạng chuỗi. Điều này được đặt khi "
+":meth:`Formatter.format` được gọi hoặc ``None`` nếu không có ngoại lệ nào "
+"xảy ra."
+
+#: ../../library/logging.rst:1019
+#, fuzzy
+msgid "filename"
+msgstr "tên tập tin"
+
+#: ../../library/logging.rst:1019
+#, python-format, fuzzy
+msgid "``%(filename)s``"
+msgstr "``%(filename)s``"
+
+#: ../../library/logging.rst:1019
+#, fuzzy
+msgid "Filename portion of ``pathname``."
+msgstr "Phần tên tệp của ``pathname``."
+
+#: ../../library/logging.rst:1021
+#, fuzzy
+msgid "funcName"
+msgstr "tên chức năng"
+
+#: ../../library/logging.rst:1021
+#, python-format, fuzzy
+msgid "``%(funcName)s``"
+msgstr "``%(funcName)s``"
+
+#: ../../library/logging.rst:1021
+#, fuzzy
+msgid "Name of function containing the logging call."
+msgstr "Tên hàm chứa lệnh gọi ghi nhật ký."
+
+#: ../../library/logging.rst:1023
+#, fuzzy
+msgid "levelname"
+msgstr "tên cấp độ"
+
+#: ../../library/logging.rst:1023
+#, python-format, fuzzy
+msgid "``%(levelname)s``"
+msgstr "``%(levelname)s``"
+
+#: ../../library/logging.rst:1023
+#, fuzzy
+msgid ""
+"Text logging level for the message (``'DEBUG'``, ``'INFO'``, ``'WARNING'``, "
+"``'ERROR'``, ``'CRITICAL'``)."
+msgstr ""
+"Mức ghi văn bản cho tin nhắn (``'DEBUG'``, ``'INFO'``, ``'WARNING'``, "
+"``'ERROR'``, ``'CRITICAL'``)."
+
+#: ../../library/logging.rst:1027
+#, fuzzy
+msgid "levelno"
+msgstr "cấp độ không"
+
+#: ../../library/logging.rst:1027
+#, python-format, fuzzy
+msgid "``%(levelno)s``"
+msgstr "``%(levelno)s``"
+
+#: ../../library/logging.rst:1027
+#, fuzzy
+msgid ""
+"Numeric logging level for the message (:const:`DEBUG`, :const:`INFO`, "
+":const:`WARNING`, :const:`ERROR`, :const:`CRITICAL`)."
+msgstr ""
+"Mức ghi nhật ký số cho tin nhắn (:const:`DEBUG`, :const:`INFO`, "
+":const:`WARNING`, :const:`ERROR`, :const:`CRITICAL`)."
+
+#: ../../library/logging.rst:1032
+#, fuzzy
+msgid "lineno"
+msgstr "vải lanh"
+
+#: ../../library/logging.rst:1032
+#, python-format, fuzzy
+msgid "``%(lineno)d``"
+msgstr "``%(lineno)d``"
+
+#: ../../library/logging.rst:1032
+#, fuzzy
+msgid "Source line number where the logging call was issued (if available)."
+msgstr "Số dòng nguồn nơi cuộc gọi ghi nhật ký được thực hiện (nếu có)."
+
+#: ../../library/logging.rst:1035
+#, fuzzy
+msgid "message"
+msgstr "tin nhắn"
+
+#: ../../library/logging.rst:1035
+#, python-format, fuzzy
+msgid "``%(message)s``"
+msgstr "``%(message)s``"
+
+#: ../../library/logging.rst:1035
+#, fuzzy
+msgid ""
+"The logged message, computed as ``msg % args``. This is set when "
+":meth:`Formatter.format` is invoked."
+msgstr ""
+"Tin nhắn được ghi lại, được tính là ``msg % args``. Điều này được đặt khi "
+":meth:`Formatter.format` được gọi."
+
+#: ../../library/logging.rst:1039
+#, fuzzy
+msgid "module"
+msgstr "mô-đun"
+
+#: ../../library/logging.rst:1039
+#, python-format, fuzzy
+msgid "``%(module)s``"
+msgstr "``%(module)s``"
+
+#: ../../library/logging.rst:1039
+#, fuzzy
+msgid "Module (name portion of ``filename``)."
+msgstr "Mô-đun (phần tên của ``filename``)."
+
+#: ../../library/logging.rst:1041
+#, fuzzy
+msgid "msecs"
+msgstr "mili giây"
+
+#: ../../library/logging.rst:1041
+#, python-format, fuzzy
+msgid "``%(msecs)d``"
+msgstr "``%(msecs)d``"
+
+#: ../../library/logging.rst:1041
+#, fuzzy
+msgid ""
+"Millisecond portion of the time when the :class:`LogRecord` was created."
+msgstr "Phần mili giây của thời gian khi :class:`LogRecord` được tạo."
+
+#: ../../library/logging.rst ../../library/logging.rst:1044
+#, fuzzy
+msgid "msg"
+msgstr "tin nhắn"
+
+#: ../../library/logging.rst:1044
+#, fuzzy
+msgid ""
+"The format string passed in the original logging call. Merged with ``args`` "
+"to produce ``message``, or an arbitrary object (see :ref:`arbitrary-object-"
+"messages`)."
+msgstr ""
+"Chuỗi định dạng được chuyển trong lệnh gọi ghi nhật ký ban đầu. Hợp nhất với"
+" ``args`` để tạo ra ``message`` hoặc một đối tượng tùy ý (xem "
+":ref:`arbitrary-object-messages`)."
+
+#: ../../library/logging.rst ../../library/logging.rst:1049
+#, fuzzy
+msgid "name"
+msgstr "tên"
+
+#: ../../library/logging.rst:1049
+#, python-format, fuzzy
+msgid "``%(name)s``"
+msgstr "``%(name)s``"
+
+#: ../../library/logging.rst:1049
+#, fuzzy
+msgid "Name of the logger used to log the call."
+msgstr "Tên của logger được sử dụng để ghi lại cuộc gọi."
+
+#: ../../library/logging.rst:1051
+#, fuzzy
+msgid "pathname"
+msgstr "tên đường dẫn"
+
+#: ../../library/logging.rst:1051
+#, python-format, fuzzy
+msgid "``%(pathname)s``"
+msgstr "``%(pathname)s``"
+
+#: ../../library/logging.rst:1051
+#, fuzzy
+msgid ""
+"Full pathname of the source file where the logging call was issued (if "
+"available)."
+msgstr ""
+"Tên đường dẫn đầy đủ của tệp nguồn nơi lệnh gọi ghi nhật ký được thực hiện "
+"(nếu có)."
+
+#: ../../library/logging.rst:1054
+#, fuzzy
+msgid "process"
+msgstr "quá trình"
+
+#: ../../library/logging.rst:1054
+#, python-format, fuzzy
+msgid "``%(process)d``"
+msgstr "``%(process)d``"
+
+#: ../../library/logging.rst:1054
+#, fuzzy
+msgid "Process ID (if available)."
+msgstr "ID tiến trình (nếu có)."
+
+#: ../../library/logging.rst:1056
+#, fuzzy
+msgid "processName"
+msgstr "tên quy trình"
+
+#: ../../library/logging.rst:1056
+#, python-format, fuzzy
+msgid "``%(processName)s``"
+msgstr "``%(processName)s``"
+
+#: ../../library/logging.rst:1056
+#, fuzzy
+msgid "Process name (if available)."
+msgstr "Tên quy trình (nếu có)."
+
+#: ../../library/logging.rst:1058
+#, fuzzy
+msgid "relativeCreated"
+msgstr "tương đốiĐã tạo"
+
+#: ../../library/logging.rst:1058
+#, python-format, fuzzy
+msgid "``%(relativeCreated)d``"
+msgstr "``%(relativeCreated)d``"
+
+#: ../../library/logging.rst:1058
+#, fuzzy
+msgid ""
+"Time in milliseconds when the LogRecord was created, relative to the time "
+"the logging module was loaded."
+msgstr ""
+"Thời gian tính bằng mili giây khi LogRecord được tạo, liên quan đến thời "
+"gian mô-đun ghi nhật ký được tải."
+
+#: ../../library/logging.rst:1062
+#, fuzzy
+msgid "stack_info"
+msgstr "thông tin ngăn xếp"
+
+#: ../../library/logging.rst:1062
+#, fuzzy
+msgid ""
+"Stack frame information (where available) from the bottom of the stack in "
+"the current thread, up to and including the stack frame of the logging call "
+"which resulted in the creation of this record."
+msgstr ""
+"Thông tin khung ngăn xếp (nếu có) từ cuối ngăn xếp trong luồng hiện tại, lên"
+" đến và bao gồm khung ngăn xếp của lệnh gọi ghi nhật ký dẫn đến việc tạo bản"
+" ghi này."
+
+#: ../../library/logging.rst:1068
+#, fuzzy
+msgid "thread"
+msgstr "chủ đề"
+
+#: ../../library/logging.rst:1068
+#, python-format, fuzzy
+msgid "``%(thread)d``"
+msgstr "``%(thread)d``"
+
+#: ../../library/logging.rst:1068
+#, fuzzy
+msgid "Thread ID (if available)."
+msgstr "ID chủ đề (nếu có)."
+
+#: ../../library/logging.rst:1070
+#, fuzzy
+msgid "threadName"
+msgstr "tên chủ đề"
+
+#: ../../library/logging.rst:1070
+#, python-format, fuzzy
+msgid "``%(threadName)s``"
+msgstr "``%(threadName)s``"
+
+#: ../../library/logging.rst:1070
+#, fuzzy
+msgid "Thread name (if available)."
+msgstr "Tên chủ đề (nếu có)."
+
+#: ../../library/logging.rst:1072
+#, fuzzy
+msgid "taskName"
+msgstr "tên nhiệm vụ"
+
+#: ../../library/logging.rst:1072
+#, python-format, fuzzy
+msgid "``%(taskName)s``"
+msgstr "``%(taskName)s``"
+
+#: ../../library/logging.rst:1072
+#, fuzzy
+msgid ":class:`asyncio.Task` name (if available)."
+msgstr "tên :class:`asyncio.Task` (nếu có)."
+
+#: ../../library/logging.rst:1075
+#, fuzzy
+msgid "*processName* was added."
+msgstr "*processName* đã được thêm vào."
+
+#: ../../library/logging.rst:1078
+#, fuzzy
+msgid "*taskName* was added."
+msgstr "*taskName* đã được thêm vào."
+
+#: ../../library/logging.rst:1084
+#, fuzzy
+msgid "LoggerAdapter Objects"
+msgstr "Đối tượng LoggerAdapter"
+
+#: ../../library/logging.rst:1086
+#, fuzzy
+msgid ""
+":class:`LoggerAdapter` instances are used to conveniently pass contextual "
+"information into logging calls. For a usage example, see the section on "
+":ref:`adding contextual information to your logging output <context-info>`."
+msgstr ""
+"Các phiên bản :class:`LoggerAdapter` được sử dụng để chuyển thông tin theo "
+"ngữ cảnh vào các cuộc gọi ghi nhật ký một cách thuận tiện. Để biết ví dụ về "
+"cách sử dụng, hãy xem phần trên :ref:`adding contextual information to your "
+"logging output <context-info>`."
+
+#: ../../library/logging.rst:1092
+#, fuzzy
+msgid ""
+"Returns an instance of :class:`LoggerAdapter` initialized with an underlying"
+" :class:`Logger` instance, an optional dict-like object (*extra*), and an "
+"optional boolean (*merge_extra*) indicating whether or not the *extra* "
+"argument of individual log calls should be merged with the "
+":class:`LoggerAdapter` extra. The default behavior is to ignore the *extra* "
+"argument of individual log calls and only use the one of the "
+":class:`LoggerAdapter` instance"
+msgstr ""
+"Trả về một phiên bản của :class:`LoggerAdapter` được khởi tạo với một phiên "
+"bản :class:`Logger` cơ bản, một đối tượng giống dict tùy chọn (*extra*) và "
+"một boolean tùy chọn (*merge_extra*) cho biết liệu đối số *extra* của các "
+"lệnh gọi nhật ký riêng lẻ có nên được hợp nhất với :class:`LoggerAdapter` bổ"
+" sung hay không. Hành vi mặc định là bỏ qua đối số *extra* của các lệnh gọi "
+"nhật ký riêng lẻ và chỉ sử dụng một trong các phiên bản "
+":class:`LoggerAdapter`"
+
+#: ../../library/logging.rst:1102
+#, fuzzy
+msgid ""
+"Modifies the message and/or keyword arguments passed to a logging call in "
+"order to insert contextual information. This implementation takes the object"
+" passed as *extra* to the constructor and adds it to *kwargs* using key "
+"'extra'. The return value is a (*msg*, *kwargs*) tuple which has the "
+"(possibly modified) versions of the arguments passed in."
+msgstr ""
+"Sửa đổi thông báo và/hoặc đối số từ khóa được chuyển đến cuộc gọi ghi nhật "
+"ký để chèn thông tin theo ngữ cảnh. Việc triển khai này lấy đối tượng được "
+"truyền dưới dạng *extra* cho hàm tạo và thêm nó vào *kwargs* bằng cách sử "
+"dụng khóa 'phụ'. Giá trị trả về là một bộ (*msg*, *kwargs*) có các phiên bản"
+" (có thể được sửa đổi) của các đối số được truyền vào."
+
+#: ../../library/logging.rst:1110
+#, fuzzy
+msgid "Delegates to the underlying :attr:`!manager` on *logger*."
+msgstr "Đại biểu cho :attr:`!manager` cơ bản trên *logger*."
+
+#: ../../library/logging.rst:1114
+#, fuzzy
+msgid "Delegates to the underlying :meth:`!_log` method on *logger*."
+msgstr "Đại biểu cho phương thức :meth:`!_log` cơ bản trên *logger*."
+
+#: ../../library/logging.rst:1116
+#, fuzzy
+msgid ""
+"In addition to the above, :class:`LoggerAdapter` supports the following "
+"methods of :class:`Logger`: :meth:`~Logger.debug`, :meth:`~Logger.info`, "
+":meth:`~Logger.warning`, :meth:`~Logger.error`, :meth:`~Logger.exception`, "
+":meth:`~Logger.critical`, :meth:`~Logger.log`, :meth:`~Logger.isEnabledFor`,"
+" :meth:`~Logger.getEffectiveLevel`, :meth:`~Logger.setLevel` and "
+":meth:`~Logger.hasHandlers`. These methods have the same signatures as their"
+" counterparts in :class:`Logger`, so you can use the two types of instances "
+"interchangeably."
+msgstr ""
+"Ngoài những cách trên, :class:`LoggerAdapter` còn hỗ trợ các phương thức sau"
+" của :class:`Logger`: :meth:`~Logger.debug`, :meth:`~Logger.info`, "
+":meth:`~Logger.warning`, :meth:`~Logger.error`, :meth:`~Logger.exception`, "
+":meth:`~Logger.critical`, :meth:`~Logger.log`, :meth:`~Logger.isEnabledFor`,"
+" :meth:`~Logger.getEffectiveLevel`, :meth:`~Logger.setLevel` và "
+":meth:`~Logger.hasHandlers`. Các phương thức này có đặc điểm giống với các "
+"phương thức tương ứng của chúng trong :class:`Logger`, vì vậy bạn có thể sử "
+"dụng hai loại phiên bản này thay thế cho nhau."
+
+#: ../../library/logging.rst:1127
+#, fuzzy
+msgid ""
+"The :meth:`~Logger.isEnabledFor`, :meth:`~Logger.getEffectiveLevel`, "
+":meth:`~Logger.setLevel` and :meth:`~Logger.hasHandlers` methods were added "
+"to :class:`LoggerAdapter`.  These methods delegate to the underlying logger."
+msgstr ""
+"Các phương thức :meth:`~Logger.isEnabledFor`, "
+":meth:`~Logger.getEffectiveLevel`, :meth:`~Logger.setLevel` và "
+":meth:`~Logger.hasHandlers` đã được thêm vào :class:`LoggerAdapter`.  Các "
+"phương thức này ủy quyền cho trình ghi nhật ký cơ bản."
+
+#: ../../library/logging.rst:1133
+#, fuzzy
+msgid ""
+"Attribute :attr:`!manager` and method :meth:`!_log` were added, which "
+"delegate to the underlying logger and allow adapters to be nested."
+msgstr ""
+"Thuộc tính :attr:`!manager` và phương thức :meth:`!_log` đã được thêm vào, "
+"ủy quyền cho trình ghi nhật ký cơ bản và cho phép các bộ điều hợp được lồng "
+"vào nhau."
+
+#: ../../library/logging.rst:1138
+#, fuzzy
+msgid "The *extra* argument is now optional."
+msgstr "Đối số *extra* hiện là tùy chọn."
+
+#: ../../library/logging.rst:1142
+#, fuzzy
+msgid "The *merge_extra* parameter was added."
+msgstr "Tham số *merge_extra* đã được thêm vào."
+
+#: ../../library/logging.rst:1146
+#, fuzzy
+msgid "Thread Safety"
+msgstr "An toàn chủ đề"
+
+#: ../../library/logging.rst:1148
+#, fuzzy
+msgid ""
+"The logging module is intended to be thread-safe without any special work "
+"needing to be done by its clients. It achieves this through using threading "
+"locks; there is one lock to serialize access to the module's shared data, "
+"and each handler also creates a lock to serialize access to its underlying "
+"I/O."
+msgstr ""
+"Mô-đun ghi nhật ký được thiết kế để đảm bảo an toàn cho luồng mà không cần "
+"khách hàng thực hiện bất kỳ công việc đặc biệt nào. Nó đạt được điều này "
+"thông qua việc sử dụng các khóa ren; có một khóa để tuần tự hóa quyền truy "
+"cập vào dữ liệu được chia sẻ của mô-đun và mỗi trình xử lý cũng tạo một khóa"
+" để tuần tự hóa quyền truy cập vào I/O cơ bản của nó."
+
+#: ../../library/logging.rst:1153
+#, fuzzy
+msgid ""
+"If you are implementing asynchronous signal handlers using the :mod:`signal`"
+" module, you may not be able to use logging from within such handlers. This "
+"is because lock implementations in the :mod:`threading` module are not "
+"always re-entrant, and so cannot be invoked from such signal handlers."
+msgstr ""
+"Nếu bạn đang triển khai trình xử lý tín hiệu không đồng bộ bằng mô-đun "
+":mod:`signal`, bạn có thể không sử dụng được tính năng ghi nhật ký từ bên "
+"trong các trình xử lý đó. Điều này là do việc triển khai khóa trong mô-đun "
+":mod:`threading` không phải lúc nào cũng được đăng nhập lại và do đó không "
+"thể gọi được từ các trình xử lý tín hiệu như vậy."
+
+#: ../../library/logging.rst:1160
+#, fuzzy
+msgid "Module-Level Functions"
+msgstr "Chức năng cấp mô-đun"
+
+#: ../../library/logging.rst:1162
+#, fuzzy
+msgid ""
+"In addition to the classes described above, there are a number of module-"
+"level functions."
+msgstr "Ngoài các lớp được mô tả ở trên, còn có một số hàm cấp mô-đun."
+
+#: ../../library/logging.rst:1168
+#, fuzzy
+msgid ""
+"Return a logger with the specified name or, if name is ``None``, return the "
+"root logger of the hierarchy. If specified, the name is typically a dot-"
+"separated hierarchical name like *'a'*, *'a.b'* or *'a.b.c.d'*. Choice of "
+"these names is entirely up to the developer who is using logging, though it "
+"is recommended that ``__name__`` be used unless you have a specific reason "
+"for not doing that, as mentioned in :ref:`logger`."
+msgstr ""
+"Trả về một trình ghi nhật ký có tên được chỉ định hoặc, nếu tên là ``None``,"
+" hãy trả về trình ghi nhật ký gốc của hệ thống phân cấp. Nếu được chỉ định, "
+"tên thường là tên phân cấp được phân tách bằng dấu chấm như *'a'*, *'a.b'* "
+"hoặc *'a.b.c.d'*. Việc lựa chọn những tên này hoàn toàn tùy thuộc vào nhà "
+"phát triển đang sử dụng tính năng ghi nhật ký, mặc dù vậy, chúng tôi khuyên "
+"bạn nên sử dụng ``__name__`` trừ khi bạn có lý do cụ thể để không làm điều "
+"đó, như đã đề cập trong :ref:`logger`."
+
+#: ../../library/logging.rst:1175
+#, fuzzy
+msgid ""
+"All calls to this function with a given name return the same logger "
+"instance. This means that logger instances never need to be passed between "
+"different parts of an application."
+msgstr ""
+"Tất cả lệnh gọi hàm này có tên cụ thể đều trả về cùng một phiên bản trình "
+"ghi nhật ký. Điều này có nghĩa là các phiên bản trình ghi nhật ký không bao "
+"giờ cần phải được chuyển giữa các phần khác nhau của ứng dụng."
+
+#: ../../library/logging.rst:1182
+#, fuzzy
+msgid ""
+"Return either the standard :class:`Logger` class, or the last class passed "
+"to :func:`setLoggerClass`. This function may be called from within a new "
+"class definition, to ensure that installing a customized :class:`Logger` "
+"class will not undo customizations already applied by other code. For "
+"example::"
+msgstr ""
+"Trả về lớp :class:`Logger` tiêu chuẩn hoặc lớp cuối cùng được chuyển cho "
+":func:`setLoggerClass`. Hàm này có thể được gọi từ bên trong định nghĩa lớp "
+"mới, để đảm bảo rằng việc cài đặt lớp :class:`Logger` tùy chỉnh sẽ không "
+"hoàn tác các tùy chỉnh đã được áp dụng bởi mã khác. Ví dụ::"
+
+#: ../../library/logging.rst:1187
+#, fuzzy
+msgid ""
+"class MyLogger(logging.getLoggerClass()):\n"
+"    # ... override behaviour here"
+msgstr ""
+"lớp MyLogger(logging.getLoggerClass()):\n"
+"    # ... ghi đè hành vi ở đây"
+
+#: ../../library/logging.rst:1193
+#, fuzzy
+msgid "Return a callable which is used to create a :class:`LogRecord`."
+msgstr "Trả về một giá trị có thể gọi được dùng để tạo :class:`LogRecord`."
+
+#: ../../library/logging.rst:1195
+#, fuzzy
+msgid ""
+"This function has been provided, along with :func:`setLogRecordFactory`, to "
+"allow developers more control over how the :class:`LogRecord` representing a"
+" logging event is constructed."
+msgstr ""
+"Chức năng này đã được cung cấp, cùng với :func:`setLogRecordFactory`, để cho"
+" phép các nhà phát triển kiểm soát nhiều hơn cách tạo :class:`LogRecord` đại"
+" diện cho một sự kiện ghi nhật ký."
+
+#: ../../library/logging.rst:1200
+#, fuzzy
+msgid ""
+"See :func:`setLogRecordFactory` for more information about the how the "
+"factory is called."
+msgstr ""
+"Xem :func:`setLogRecordFactory` để biết thêm thông tin về cách gọi tên nhà "
+"máy."
+
+#: ../../library/logging.rst:1205
+#, fuzzy
+msgid ""
+"This is a convenience function that calls :meth:`Logger.debug`, on the root "
+"logger. The handling of the arguments is in every way identical to what is "
+"described in that method."
+msgstr ""
+"Đây là một chức năng tiện lợi gọi :meth:`Logger.debug`, trên bộ ghi gốc. "
+"Việc xử lý các đối số về mọi mặt giống hệt với những gì được mô tả trong "
+"phương thức đó."
+
+#: ../../library/logging.rst:1209
+#, fuzzy
+msgid ""
+"The only difference is that if the root logger has no handlers, then "
+":func:`basicConfig` is called, prior to calling ``debug`` on the root "
+"logger."
+msgstr ""
+"Sự khác biệt duy nhất là nếu trình ghi nhật ký gốc không có trình xử lý thì "
+":func:`basicConfig` sẽ được gọi trước khi gọi ``debug`` trên trình ghi nhật "
+"ký gốc."
+
+#: ../../library/logging.rst:1212
+#, fuzzy
+msgid ""
+"For very short scripts or quick demonstrations of ``logging`` facilities, "
+"``debug`` and the other module-level functions may be convenient. However, "
+"most programs will want to carefully and explicitly control the logging "
+"configuration, and should therefore prefer creating a module-level logger "
+"and calling :meth:`Logger.debug` (or other level-specific methods) on it, as"
+" described at the beginning of this documentation."
+msgstr ""
+"Đối với các tập lệnh rất ngắn hoặc trình diễn nhanh các tiện ích của "
+"``logging``, ``debug`` và các chức năng cấp mô-đun khác có thể thuận tiện. "
+"Tuy nhiên, hầu hết các chương trình sẽ muốn kiểm soát cẩn thận và rõ ràng "
+"cấu hình ghi nhật ký và do đó nên tạo một trình ghi nhật ký cấp mô-đun và "
+"gọi :meth:`Logger.debug` (hoặc các phương thức cấp cụ thể khác) trên đó, như"
+" được mô tả ở phần đầu của tài liệu này."
+
+#: ../../library/logging.rst:1222
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`INFO` on the root logger. The arguments "
+"and behavior are otherwise the same as for :func:`debug`."
+msgstr ""
+"Ghi lại thông báo có cấp độ :const:`INFO` trên bộ ghi nhật ký gốc. Các đối "
+"số và hành vi khác cũng giống như đối với :func:`debug`."
+
+#: ../../library/logging.rst:1228
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`WARNING` on the root logger. The arguments"
+" and behavior are otherwise the same as for :func:`debug`."
+msgstr ""
+"Ghi lại thông báo có cấp độ :const:`WARNING` trên bộ ghi nhật ký gốc. Các "
+"đối số và hành vi khác cũng giống như đối với :func:`debug`."
+
+#: ../../library/logging.rst:1231
+#, fuzzy
+msgid ""
+"There is an obsolete function ``warn`` which is functionally identical to "
+"``warning``. As ``warn`` is deprecated, please do not use it - use "
+"``warning`` instead."
+msgstr ""
+"Có một chức năng lỗi thời ``warn`` có chức năng giống với ``warning``. Vì "
+"``warn`` không được dùng nữa nên vui lòng không sử dụng nó - thay vào đó hãy"
+" sử dụng ``warning``."
+
+#: ../../library/logging.rst:1238
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`ERROR` on the root logger. The arguments "
+"and behavior are otherwise the same as for :func:`debug`."
+msgstr ""
+"Ghi lại thông báo có cấp độ :const:`ERROR` trên bộ ghi nhật ký gốc. Các đối "
+"số và hành vi khác cũng giống như đối với :func:`debug`."
+
+#: ../../library/logging.rst:1244
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`CRITICAL` on the root logger. The "
+"arguments and behavior are otherwise the same as for :func:`debug`."
+msgstr ""
+"Ghi lại thông báo có cấp độ :const:`CRITICAL` trên bộ ghi nhật ký gốc. Các "
+"đối số và hành vi khác cũng giống như đối với :func:`debug`."
+
+#: ../../library/logging.rst:1250
+#, fuzzy
+msgid ""
+"Logs a message with level :const:`ERROR` on the root logger. The arguments "
+"and behavior are otherwise the same as for :func:`debug`. Exception info is "
+"added to the logging message. This function should only be called from an "
+"exception handler."
+msgstr ""
+"Ghi lại thông báo có cấp độ :const:`ERROR` trên bộ ghi nhật ký gốc. Các đối "
+"số và hành vi khác cũng giống như đối với :func:`debug`. Thông tin ngoại lệ "
+"được thêm vào thông báo ghi nhật ký. Hàm này chỉ nên được gọi từ trình xử lý"
+" ngoại lệ."
+
+#: ../../library/logging.rst:1256
+#, fuzzy
+msgid ""
+"Logs a message with level *level* on the root logger. The arguments and "
+"behavior are otherwise the same as for :func:`debug`."
+msgstr ""
+"Ghi lại thông báo có cấp độ *level* trên bộ ghi nhật ký gốc. Các đối số và "
+"hành vi khác cũng giống như đối với :func:`debug`."
+
+#: ../../library/logging.rst:1261
+#, fuzzy
+msgid ""
+"Provides an overriding level *level* for all loggers which takes precedence "
+"over the logger's own level. When the need arises to temporarily throttle "
+"logging output down across the whole application, this function can be "
+"useful. Its effect is to disable all logging calls of severity *level* and "
+"below, so that if you call it with a value of INFO, then all INFO and DEBUG "
+"events would be discarded, whereas those of severity WARNING and above would"
+" be processed according to the logger's effective level. If "
+"``logging.disable(logging.NOTSET)`` is called, it effectively removes this "
+"overriding level, so that logging output again depends on the effective "
+"levels of individual loggers."
+msgstr ""
+"Cung cấp mức ghi đè *level* cho tất cả các trình ghi nhật ký được ưu tiên "
+"hơn cấp độ của chính trình ghi nhật ký. Khi có nhu cầu tạm thời giảm tốc độ "
+"ghi nhật ký trên toàn bộ ứng dụng, chức năng này có thể hữu ích. Tác dụng "
+"của nó là vô hiệu hóa tất cả các lệnh gọi ghi nhật ký có mức độ nghiêm trọng"
+" *level* trở xuống, do đó nếu bạn gọi nó với giá trị INFO thì tất cả các sự "
+"kiện INFO và DEBUG sẽ bị loại bỏ, trong khi các sự kiện có mức độ nghiêm "
+"trọng WARNING trở lên sẽ được xử lý theo mức độ hiệu quả của trình ghi nhật "
+"ký. Nếu ``logging.disable(logging.NOTSET)`` được gọi, nó sẽ loại bỏ mức ghi "
+"đè này một cách hiệu quả, do đó kết quả ghi nhật ký lại phụ thuộc vào mức "
+"hiệu quả của từng trình ghi nhật ký riêng lẻ."
+
+#: ../../library/logging.rst:1272
+#, fuzzy
+msgid ""
+"Note that if you have defined any custom logging level higher than "
+"``CRITICAL`` (this is not recommended), you won't be able to rely on the "
+"default value for the *level* parameter, but will have to explicitly supply "
+"a suitable value."
+msgstr ""
+"Lưu ý rằng nếu bạn đã xác định bất kỳ mức ghi nhật ký tùy chỉnh nào cao hơn "
+"``CRITICAL`` (điều này không được khuyến nghị), bạn sẽ không thể dựa vào giá"
+" trị mặc định cho tham số *level* mà sẽ phải cung cấp một giá trị phù hợp "
+"một cách rõ ràng."
+
+#: ../../library/logging.rst:1277
+#, fuzzy
+msgid ""
+"The *level* parameter was defaulted to level ``CRITICAL``. See "
+":issue:`28524` for more information about this change."
+msgstr ""
+"Tham số *level* được mặc định ở mức ``CRITICAL``. Xem :issue:`28524` để biết"
+" thêm thông tin về thay đổi này."
+
+#: ../../library/logging.rst:1283
+#, fuzzy
+msgid ""
+"Associates level *level* with text *levelName* in an internal dictionary, "
+"which is used to map numeric levels to a textual representation, for example"
+" when a :class:`Formatter` formats a message. This function can also be used"
+" to define your own levels. The only constraints are that all levels used "
+"must be registered using this function, levels should be positive integers "
+"and they should increase in increasing order of severity."
+msgstr ""
+"Liên kết cấp độ *level* với văn bản *levelName* trong từ điển nội bộ, được "
+"sử dụng để ánh xạ các cấp độ số thành biểu diễn văn bản, ví dụ: khi "
+":class:`Formatter` định dạng một tin nhắn. Chức năng này cũng có thể được sử"
+" dụng để xác định cấp độ của riêng bạn. Hạn chế duy nhất là tất cả các cấp "
+"độ được sử dụng phải được đăng ký bằng hàm này, các cấp độ phải là số nguyên"
+" dương và chúng phải tăng theo thứ tự mức độ nghiêm trọng tăng dần."
+
+#: ../../library/logging.rst:1290
+#, fuzzy
+msgid ""
+"If you are thinking of defining your own levels, please see the section on "
+":ref:`custom-levels`."
+msgstr ""
+"Nếu bạn đang nghĩ đến việc xác định cấp độ của riêng mình, vui lòng xem phần"
+" trên :ref:`custom-levels`."
+
+#: ../../library/logging.rst:1295
+#, fuzzy
+msgid ""
+"Returns a mapping from level names to their corresponding logging levels. "
+"For example, the string \"CRITICAL\" maps to :const:`CRITICAL`. The returned"
+" mapping is copied from an internal mapping on each call to this function."
+msgstr ""
+"Trả về ánh xạ từ tên cấp tới cấp ghi nhật ký tương ứng của chúng. Ví dụ: "
+"chuỗi \"CRITICAL\" ánh xạ tới :const:`CRITICAL`. Ánh xạ trả về được sao chép"
+" từ ánh xạ nội bộ trên mỗi lệnh gọi hàm này."
+
+#: ../../library/logging.rst:1303
+#, fuzzy
+msgid ""
+"Returns the textual or numeric representation of logging level *level*."
+msgstr "Trả về dạng văn bản hoặc dạng số của mức ghi nhật ký *level*."
+
+#: ../../library/logging.rst:1305
+#, fuzzy
+msgid ""
+"If *level* is one of the predefined levels :const:`CRITICAL`, "
+":const:`ERROR`, :const:`WARNING`, :const:`INFO` or :const:`DEBUG` then you "
+"get the corresponding string. If you have associated levels with names using"
+" :func:`addLevelName` then the name you have associated with *level* is "
+"returned. If a numeric value corresponding to one of the defined levels is "
+"passed in, the corresponding string representation is returned."
+msgstr ""
+"Nếu *level* là một trong các cấp độ được xác định trước :const:`CRITICAL`, "
+":const:`ERROR`, :const:`WARNING`, :const:`INFO` hoặc :const:`DEBUG` thì bạn "
+"sẽ nhận được chuỗi tương ứng. Nếu bạn đã liên kết các cấp độ với tên bằng "
+":func:`addLevelName` thì tên bạn đã liên kết với *level* sẽ được trả về. Nếu"
+" một giá trị số tương ứng với một trong các mức đã xác định được truyền vào "
+"thì biểu diễn chuỗi tương ứng sẽ được trả về."
+
+#: ../../library/logging.rst:1312
+#, fuzzy
+msgid ""
+"The *level* parameter also accepts a string representation of the level such"
+" as 'INFO'. In such cases, this functions returns the corresponding numeric "
+"value of the level."
+msgstr ""
+"Tham số *level* cũng chấp nhận biểu diễn chuỗi của cấp độ, chẳng hạn như "
+"'INFO'. Trong những trường hợp như vậy, hàm này trả về giá trị số tương ứng "
+"của cấp độ."
+
+#: ../../library/logging.rst:1316
+#, python-format, fuzzy
+msgid ""
+"If no matching numeric or string value is passed in, the string 'Level %s' %"
+" level is returned."
+msgstr ""
+"Nếu không có giá trị số hoặc chuỗi phù hợp nào được truyền vào thì chuỗi "
+"'Mức %s' % sẽ được trả về."
+
+#: ../../library/logging.rst:1319
+#, python-format, fuzzy
+msgid ""
+"Levels are internally integers (as they need to be compared in the logging "
+"logic). This function is used to convert between an integer level and the "
+"level name displayed in the formatted log output by means of the "
+"``%(levelname)s`` format specifier (see :ref:`logrecord-attributes`), and "
+"vice versa."
+msgstr ""
+"Các cấp độ là số nguyên bên trong (vì chúng cần được so sánh trong logic ghi"
+" nhật ký). Hàm này được sử dụng để chuyển đổi giữa cấp số nguyên và tên cấp "
+"được hiển thị trong đầu ra nhật ký được định dạng bằng bộ xác định định dạng"
+" ``%(levelname)s`` (xem :ref:`logrecord-attributes`) và ngược lại."
+
+#: ../../library/logging.rst:1325
+#, fuzzy
+msgid ""
+"In Python versions earlier than 3.4, this function could also be passed a "
+"text level, and would return the corresponding numeric value of the level. "
+"This undocumented behaviour was considered a mistake, and was removed in "
+"Python 3.4, but reinstated in 3.4.2 due to retain backward compatibility."
+msgstr ""
+"Trong các phiên bản Python trước 3.4, hàm này cũng có thể được chuyển sang "
+"cấp độ văn bản và sẽ trả về giá trị số tương ứng của cấp độ đó. Hành vi "
+"không có giấy tờ này được coi là một lỗi và đã bị xóa trong Python 3.4 nhưng"
+" được khôi phục trong 3.4.2 do vẫn giữ được khả năng tương thích ngược."
+
+#: ../../library/logging.rst:1333
+#, fuzzy
+msgid ""
+"Returns a handler with the specified *name*, or ``None`` if there is no "
+"handler with that name."
+msgstr ""
+"Trả về một trình xử lý có *name* được chỉ định hoặc ``None`` nếu không có "
+"trình xử lý nào có tên đó."
+
+#: ../../library/logging.rst:1340
+#, fuzzy
+msgid "Returns an immutable set of all known handler names."
+msgstr "Trả về một tập hợp bất biến của tất cả các tên trình xử lý đã biết."
+
+#: ../../library/logging.rst:1346
+#, fuzzy
+msgid ""
+"Creates and returns a new :class:`LogRecord` instance whose attributes are "
+"defined by *attrdict*. This function is useful for taking a pickled "
+":class:`LogRecord` attribute dictionary, sent over a socket, and "
+"reconstituting it as a :class:`LogRecord` instance at the receiving end."
+msgstr ""
+"Tạo và trả về một phiên bản :class:`LogRecord` mới có thuộc tính được xác "
+"định bởi *attrdict*. Hàm này hữu ích khi lấy từ điển thuộc tính "
+":class:`LogRecord` đã được chọn lọc, gửi qua ổ cắm và cấu trúc lại nó dưới "
+"dạng phiên bản :class:`LogRecord` ở đầu nhận."
+
+#: ../../library/logging.rst:1354
+#, fuzzy
+msgid ""
+"Does basic configuration for the logging system by creating a "
+":class:`StreamHandler` with a default :class:`Formatter` and adding it to "
+"the root logger. The functions :func:`debug`, :func:`info`, :func:`warning`,"
+" :func:`error` and :func:`critical` will call :func:`basicConfig` "
+"automatically if no handlers are defined for the root logger."
+msgstr ""
+"Thực hiện cấu hình cơ bản cho hệ thống ghi nhật ký bằng cách tạo "
+":class:`StreamHandler` với :class:`Formatter` mặc định và thêm nó vào trình "
+"ghi nhật ký gốc. Các hàm :func:`debug`, :func:`info`, :func:`warning`, "
+":func:`error` và :func:`critical` sẽ tự động gọi :func:`basicConfig` nếu "
+"không có trình xử lý nào được xác định cho trình ghi nhật ký gốc."
+
+#: ../../library/logging.rst:1360
+#, fuzzy
+msgid ""
+"This function does nothing if the root logger already has handlers "
+"configured, unless the keyword argument *force* is set to ``True``."
+msgstr ""
+"Hàm này không làm gì nếu trình ghi nhật ký gốc đã được định cấu hình trình "
+"xử lý, trừ khi đối số từ khóa *force* được đặt thành ``True``."
+
+#: ../../library/logging.rst:1363
+#, fuzzy
+msgid ""
+"This function should be called from the main thread before other threads are"
+" started. In versions of Python prior to 2.7.1 and 3.2, if this function is "
+"called from multiple threads, it is possible (in rare circumstances) that a "
+"handler will be added to the root logger more than once, leading to "
+"unexpected results such as messages being duplicated in the log."
+msgstr ""
+"Hàm này phải được gọi từ luồng chính trước khi các luồng khác được bắt đầu. "
+"Trong các phiên bản Python trước 2.7.1 và 3.2, nếu hàm này được gọi từ nhiều"
+" luồng, thì có thể (trong một số ít trường hợp) trình xử lý sẽ được thêm vào"
+" trình ghi nhật ký gốc nhiều lần, dẫn đến các kết quả không mong muốn như "
+"thông báo bị trùng lặp trong nhật ký."
+
+#: ../../library/logging.rst:1370
+#, fuzzy
+msgid "The following keyword arguments are supported."
+msgstr "Các đối số từ khóa sau đây được hỗ trợ."
+
+#: ../../library/logging.rst:1377
+#, fuzzy
+msgid "*filename*"
+msgstr "*filename*"
+
+#: ../../library/logging.rst:1377
+#, fuzzy
+msgid ""
+"Specifies that a :class:`FileHandler` be created, using the specified "
+"filename, rather than a :class:`StreamHandler`."
+msgstr ""
+"Chỉ định rằng một :class:`FileHandler` sẽ được tạo bằng cách sử dụng tên tệp"
+" được chỉ định, thay vì :class:`StreamHandler`."
+
+#: ../../library/logging.rst:1381
+#, fuzzy
+msgid "*filemode*"
+msgstr "*filemode*"
+
+#: ../../library/logging.rst:1381
+#, fuzzy
+msgid ""
+"If *filename* is specified, open the file in this :ref:`mode <filemodes>`. "
+"Defaults to ``'a'``."
+msgstr ""
+"Nếu *filename* được chỉ định, hãy mở tệp trong :ref:`mode <filemodes>` này. "
+"Mặc định là ``'a'``."
+
+#: ../../library/logging.rst:1385
+#, fuzzy
+msgid "*format*"
+msgstr "*format*"
+
+#: ../../library/logging.rst:1385
+#, fuzzy
+msgid ""
+"Use the specified format string for the handler. Defaults to attributes "
+"``levelname``, ``name`` and ``message`` separated by colons."
+msgstr ""
+"Sử dụng chuỗi định dạng được chỉ định cho trình xử lý. Mặc định là các thuộc"
+" tính ``levelname``, ``name`` và ``message`` được phân tách bằng dấu hai "
+"chấm."
+
+#: ../../library/logging.rst:1390
+#, fuzzy
+msgid "*datefmt*"
+msgstr "*datefmt*"
+
+#: ../../library/logging.rst:1390
+#, fuzzy
+msgid ""
+"Use the specified date/time format, as accepted by :func:`time.strftime`."
+msgstr ""
+"Sử dụng định dạng ngày/giờ được chỉ định, được :func:`time.strftime` chấp "
+"nhận."
+
+#: ../../library/logging.rst:1393
+#, fuzzy
+msgid "*style*"
+msgstr "*style*"
+
+#: ../../library/logging.rst:1393
+#, fuzzy
+msgid ""
+"If *format* is specified, use this style for the format string. One of "
+"``'%'``, ``'{'`` or ``'$'`` for :ref:`printf-style <old-string-formatting>`,"
+" :meth:`str.format` or :class:`string.Template` respectively. Defaults to "
+"``'%'``."
+msgstr ""
+"Nếu *format* được chỉ định, hãy sử dụng kiểu này cho chuỗi định dạng. Một "
+"trong các ``'%'``, ``'{'`` hoặc ``'$'`` tương ứng cho :ref:`printf-style "
+"<old-string-formatting>`, :meth:`str.format` hoặc :class:`string.Template`. "
+"Mặc định là ``'%'``."
+
+#: ../../library/logging.rst:1401
+#, fuzzy
+msgid "*level*"
+msgstr "*level*"
+
+#: ../../library/logging.rst:1401
+#, fuzzy
+msgid "Set the root logger level to the specified :ref:`level <levels>`."
+msgstr "Đặt mức ghi nhật ký gốc thành :ref:`level <levels>` được chỉ định."
+
+#: ../../library/logging.rst:1404
+#, fuzzy
+msgid "*stream*"
+msgstr "*stream*"
+
+#: ../../library/logging.rst:1404
+#, fuzzy
+msgid ""
+"Use the specified stream to initialize the :class:`StreamHandler`. Note that"
+" this argument is incompatible with *filename* - if both are present, a "
+"``ValueError`` is raised."
+msgstr ""
+"Sử dụng luồng được chỉ định để khởi tạo :class:`StreamHandler`. Lưu ý rằng "
+"đối số này không tương thích với *filename* - nếu cả hai đều có mặt, "
+"``ValueError`` sẽ được nâng lên."
+
+#: ../../library/logging.rst:1410
+#, fuzzy
+msgid "*handlers*"
+msgstr "*handlers*"
+
+#: ../../library/logging.rst:1410
+#, fuzzy
+msgid ""
+"If specified, this should be an iterable of already created handlers to add "
+"to the root logger. Any handlers which don't already have a formatter set "
+"will be assigned the default formatter created in this function. Note that "
+"this argument is incompatible with *filename* or *stream* - if both are "
+"present, a ``ValueError`` is raised."
+msgstr ""
+"Nếu được chỉ định, đây sẽ là một trình xử lý lặp lại đã được tạo để thêm vào"
+" trình ghi nhật ký gốc. Bất kỳ trình xử lý nào chưa có bộ định dạng sẽ được "
+"chỉ định bộ định dạng mặc định được tạo trong hàm này. Lưu ý rằng đối số này"
+" không tương thích với *filename* hoặc *stream* - nếu cả hai đều có mặt, "
+"``ValueError`` sẽ được nâng lên."
+
+#: ../../library/logging.rst:1419
+#, fuzzy
+msgid "*force*"
+msgstr "*force*"
+
+#: ../../library/logging.rst:1419
+#, fuzzy
+msgid ""
+"If this keyword argument is specified as true, any existing handlers "
+"attached to the root logger are removed and closed, before carrying out the "
+"configuration as specified by the other arguments."
+msgstr ""
+"Nếu đối số từ khóa này được chỉ định là đúng, thì mọi trình xử lý hiện có "
+"gắn với bộ ghi nhật ký gốc sẽ bị xóa và đóng trước khi thực hiện cấu hình "
+"như được chỉ định bởi các đối số khác."
+
+#: ../../library/logging.rst:1425
+#, fuzzy
+msgid "*encoding*"
+msgstr "*encoding*"
+
+#: ../../library/logging.rst:1425
+#, fuzzy
+msgid ""
+"If this keyword argument is specified along with *filename*, its value is "
+"used when the :class:`FileHandler` is created, and thus used when opening "
+"the output file."
+msgstr ""
+"Nếu đối số từ khóa này được chỉ định cùng với *filename*, giá trị của nó sẽ "
+"được sử dụng khi :class:`FileHandler` được tạo và do đó được sử dụng khi mở "
+"tệp đầu ra."
+
+#: ../../library/logging.rst:1430
+#, fuzzy
+msgid "*errors*"
+msgstr "*errors*"
+
+#: ../../library/logging.rst:1430
+#, fuzzy
+msgid ""
+"If this keyword argument is specified along with *filename*, its value is "
+"used when the :class:`FileHandler` is created, and thus used when opening "
+"the output file. If not specified, the value 'backslashreplace' is used. "
+"Note that if ``None`` is specified, it will be passed as such to "
+":func:`open`, which means that it will be treated the same as passing "
+"'errors'."
+msgstr ""
+"Nếu đối số từ khóa này được chỉ định cùng với *filename*, giá trị của nó sẽ "
+"được sử dụng khi :class:`FileHandler` được tạo và do đó được sử dụng khi mở "
+"tệp đầu ra. Nếu không được chỉ định, giá trị 'dấu gạch chéo ngược' sẽ được "
+"sử dụng. Lưu ý rằng nếu ``None`` được chỉ định, nó sẽ được chuyển đến "
+":func:`open`, điều đó có nghĩa là nó sẽ được xử lý giống như việc truyền "
+"'lỗi'."
+
+#: ../../library/logging.rst:1441
+#, fuzzy
+msgid "The *style* argument was added."
+msgstr "Đối số *style* đã được thêm vào."
+
+#: ../../library/logging.rst:1444
+#, fuzzy
+msgid ""
+"The *handlers* argument was added. Additional checks were added to catch "
+"situations where incompatible arguments are specified (e.g. *handlers* "
+"together with *stream* or *filename*, or *stream* together with *filename*)."
+msgstr ""
+"Đối số *handlers* đã được thêm vào. Các bước kiểm tra bổ sung đã được thêm "
+"vào để nắm bắt các tình huống trong đó các đối số không tương thích được chỉ"
+" định (ví dụ: *handlers* cùng với *stream* hoặc *filename* hoặc *stream* "
+"cùng với *filename*)."
+
+#: ../../library/logging.rst:1450
+#, fuzzy
+msgid "The *force* argument was added."
+msgstr "Đối số *force* đã được thêm vào."
+
+#: ../../library/logging.rst:1453
+#, fuzzy
+msgid "The *encoding* and *errors* arguments were added."
+msgstr "Các đối số *encoding* và *errors* đã được thêm vào."
+
+#: ../../library/logging.rst:1458
+#, fuzzy
+msgid ""
+"Informs the logging system to perform an orderly shutdown by flushing and "
+"closing all handlers. This should be called at application exit and no "
+"further use of the logging system should be made after this call."
+msgstr ""
+"Thông báo cho hệ thống ghi nhật ký thực hiện tắt máy theo thứ tự bằng cách "
+"xóa và đóng tất cả các trình xử lý. Điều này sẽ được gọi khi thoát ứng dụng "
+"và không được sử dụng thêm hệ thống ghi nhật ký sau lệnh gọi này."
+
+#: ../../library/logging.rst:1462
+#, fuzzy
+msgid ""
+"When the logging module is imported, it registers this function as an exit "
+"handler (see :mod:`atexit`), so normally there's no need to do that "
+"manually."
+msgstr ""
+"Khi mô-đun ghi nhật ký được nhập, nó sẽ đăng ký chức năng này làm trình xử "
+"lý thoát (xem :mod:`atexit`), vì vậy thông thường không cần phải thực hiện "
+"việc đó theo cách thủ công."
+
+#: ../../library/logging.rst:1469
+#, fuzzy
+msgid ""
+"Tells the logging system to use the class *klass* when instantiating a "
+"logger. The class should define :meth:`!__init__` such that only a name "
+"argument is required, and the :meth:`!__init__` should call "
+":meth:`!Logger.__init__`. This function is typically called before any "
+"loggers are instantiated by applications which need to use custom logger "
+"behavior. After this call, as at any other time, do not instantiate loggers "
+"directly using the subclass: continue to use the :func:`logging.getLogger` "
+"API to get your loggers."
+msgstr ""
+"Yêu cầu hệ thống ghi nhật ký sử dụng lớp *klass* khi khởi tạo trình ghi nhật"
+" ký. Lớp nên định nghĩa :meth:`!__init__` sao cho chỉ cần một đối số tên và "
+":meth:`!__init__` sẽ gọi :meth:`!Logger.__init__`. Hàm này thường được gọi "
+"trước khi bất kỳ trình ghi nhật ký nào được khởi tạo bởi các ứng dụng cần sử"
+" dụng hành vi của trình ghi nhật ký tùy chỉnh. Sau lệnh gọi này, cũng như "
+"bất kỳ lúc nào khác, không khởi tạo trực tiếp trình ghi nhật ký bằng cách sử"
+" dụng lớp con: tiếp tục sử dụng :func:`logging.getLogger` API để lấy trình "
+"ghi nhật ký của bạn."
+
+#: ../../library/logging.rst:1480
+#, fuzzy
+msgid "Set a callable which is used to create a :class:`LogRecord`."
+msgstr "Đặt một cuộc gọi có thể được sử dụng để tạo :class:`LogRecord`."
+
+#: ../../library/logging.rst:1482
+#, fuzzy
+msgid "The factory callable to be used to instantiate a log record."
+msgstr "Nhà máy có thể gọi được sử dụng để khởi tạo bản ghi nhật ký."
+
+#: ../../library/logging.rst:1484
+#, fuzzy
+msgid ""
+"This function has been provided, along with :func:`getLogRecordFactory`, to "
+"allow developers more control over how the :class:`LogRecord` representing a"
+" logging event is constructed."
+msgstr ""
+"Chức năng này đã được cung cấp, cùng với :func:`getLogRecordFactory`, để cho"
+" phép các nhà phát triển kiểm soát nhiều hơn cách tạo :class:`LogRecord` đại"
+" diện cho một sự kiện ghi nhật ký."
+
+#: ../../library/logging.rst:1489
+#, fuzzy
+msgid "The factory has the following signature:"
+msgstr "Nhà máy có chữ ký sau:"
+
+#: ../../library/logging.rst:1491
+#, fuzzy
+msgid ""
+"``factory(name, level, fn, lno, msg, args, exc_info, func=None, sinfo=None, "
+"**kwargs)``"
+msgstr ""
+"``factory(name, level, fn, lno, msg, args, exc_info, func=None, sinfo=None, "
+"**kwargs)``"
+
+#: ../../library/logging.rst:1493
+#, fuzzy
+msgid "The logger name."
+msgstr "Tên nhật ký."
+
+#: ../../library/logging.rst
+#, fuzzy
+msgid "level"
+msgstr "cấp độ"
+
+#: ../../library/logging.rst:1494
+#, fuzzy
+msgid "The logging level (numeric)."
+msgstr "Mức ghi nhật ký (số)."
+
+#: ../../library/logging.rst
+#, fuzzy
+msgid "fn"
+msgstr "fn"
+
+#: ../../library/logging.rst:1495
+#, fuzzy
+msgid "The full pathname of the file where the logging call was made."
+msgstr "Tên đường dẫn đầy đủ của tệp nơi cuộc gọi ghi nhật ký được thực hiện."
+
+#: ../../library/logging.rst
+#, fuzzy
+msgid "lno"
+msgstr "tôi không"
+
+#: ../../library/logging.rst:1496
+#, fuzzy
+msgid "The line number in the file where the logging call was made."
+msgstr "Số dòng trong tệp nơi cuộc gọi ghi nhật ký được thực hiện."
+
+#: ../../library/logging.rst:1497
+#, fuzzy
+msgid "The logging message."
+msgstr "Thông báo ghi nhật ký."
+
+#: ../../library/logging.rst:1498
+#, fuzzy
+msgid "The arguments for the logging message."
+msgstr "Các đối số cho thông điệp ghi nhật ký."
+
+#: ../../library/logging.rst:1499
+#, fuzzy
+msgid "An exception tuple, or ``None``."
+msgstr "Một bộ ngoại lệ, hoặc ``None``."
+
+#: ../../library/logging.rst
+#, fuzzy
+msgid "func"
+msgstr "vui vẻ"
+
+#: ../../library/logging.rst:1500
+#, fuzzy
+msgid "The name of the function or method which invoked the logging call."
+msgstr "Tên của hàm hoặc phương thức đã gọi lệnh gọi ghi nhật ký."
+
+#: ../../library/logging.rst
+#, fuzzy
+msgid "sinfo"
+msgstr "thông tin sin"
+
+#: ../../library/logging.rst:1502
+#, fuzzy
+msgid ""
+"A stack traceback such as is provided by :func:`traceback.print_stack`, "
+"showing the call hierarchy."
+msgstr ""
+"Truy nguyên ngăn xếp như được cung cấp bởi :func:`traceback.print_stack`, "
+"hiển thị hệ thống phân cấp cuộc gọi."
+
+#: ../../library/logging.rst
+#, fuzzy
+msgid "kwargs"
+msgstr "kwargs"
+
+#: ../../library/logging.rst:1504
+#, fuzzy
+msgid "Additional keyword arguments."
+msgstr "Đối số từ khóa bổ sung."
+
+#: ../../library/logging.rst:1508
+#, fuzzy
+msgid "Module-Level Attributes"
+msgstr "Thuộc tính cấp mô-đun"
+
+#: ../../library/logging.rst:1512
+#, fuzzy
+msgid ""
+"A \"handler of last resort\" is available through this attribute. This is a "
+":class:`StreamHandler` writing to ``sys.stderr`` with a level of "
+"``WARNING``, and is used to handle logging events in the absence of any "
+"logging configuration. The end result is to just print the message to "
+"``sys.stderr``. This replaces the earlier error message saying that \"no "
+"handlers could be found for logger XYZ\". If you need the earlier behaviour "
+"for some reason, ``lastResort`` can be set to ``None``."
+msgstr ""
+"\"Trình xử lý cuối cùng\" có sẵn thông qua thuộc tính này. Đây là "
+":class:`StreamHandler` ghi vào ``sys.stderr`` với cấp độ ``WARNING`` và được"
+" sử dụng để xử lý các sự kiện ghi nhật ký trong trường hợp không có bất kỳ "
+"cấu hình ghi nhật ký nào. Kết quả cuối cùng là chỉ in tin nhắn tới "
+"``sys.stderr``. Điều này thay thế thông báo lỗi trước đó nói rằng \"không "
+"tìm thấy trình xử lý nào cho logger XYZ\". Nếu bạn cần hành vi trước đó vì "
+"lý do nào đó, ``lastResort`` có thể được đặt thành ``None``."
+
+#: ../../library/logging.rst:1524
+#, fuzzy
+msgid "Used to see if exceptions during handling should be propagated."
+msgstr ""
+"Được sử dụng để xem liệu có nên phổ biến các ngoại lệ trong quá trình xử lý "
+"hay không."
+
+#: ../../library/logging.rst:1526
+#, fuzzy
+msgid "Default: ``True``."
+msgstr "Mặc định: ``True``."
+
+#: ../../library/logging.rst:1528
+#, fuzzy
+msgid ""
+"If :data:`raiseExceptions` is ``False``, exceptions get silently ignored. "
+"This is what is mostly wanted for a logging system - most users will not "
+"care about errors in the logging system, they are more interested in "
+"application errors."
+msgstr ""
+"Nếu :data:`raiseExceptions` là ``False``, các ngoại lệ sẽ được âm thầm bỏ "
+"qua. Đây là điều được mong muốn nhất đối với một hệ thống ghi nhật ký - hầu "
+"hết người dùng sẽ không quan tâm đến lỗi trong hệ thống ghi nhật ký, họ quan"
+" tâm nhiều hơn đến lỗi ứng dụng."
+
+#: ../../library/logging.rst:1535
+#, fuzzy
+msgid "Integration with the warnings module"
+msgstr "Tích hợp với mô-đun cảnh báo"
+
+#: ../../library/logging.rst:1537
+#, fuzzy
+msgid ""
+"The :func:`captureWarnings` function can be used to integrate "
+":mod:`!logging` with the :mod:`warnings` module."
+msgstr ""
+"Chức năng :func:`captureWarnings` có thể được sử dụng để tích hợp "
+":mod:`!logging` với mô-đun :mod:`warnings`."
+
+#: ../../library/logging.rst:1542
+#, fuzzy
+msgid ""
+"This function is used to turn the capture of warnings by logging on and off."
+msgstr ""
+"Chức năng này được sử dụng để bật và tắt tính năng ghi lại cảnh báo bằng "
+"cách đăng nhập và tắt."
+
+#: ../../library/logging.rst:1545
+#, fuzzy
+msgid ""
+"If *capture* is ``True``, warnings issued by the :mod:`warnings` module will"
+" be redirected to the logging system. Specifically, a warning will be "
+"formatted using :func:`warnings.formatwarning` and the resulting string "
+"logged to a logger named ``'py.warnings'`` with a severity of "
+":const:`WARNING`."
+msgstr ""
+"Nếu *capture* là ``True``, các cảnh báo do mô-đun :mod:`warnings` đưa ra sẽ "
+"được chuyển hướng đến hệ thống ghi nhật ký. Cụ thể, một cảnh báo sẽ được "
+"định dạng bằng :func:`warnings.formatwarning` và chuỗi kết quả được ghi vào "
+"một trình ghi nhật ký có tên ``'py.warnings'`` với mức độ nghiêm trọng là "
+":const:`WARNING`."
+
+#: ../../library/logging.rst:1550
+#, fuzzy
+msgid ""
+"If *capture* is ``False``, the redirection of warnings to the logging system"
+" will stop, and warnings will be redirected to their original destinations "
+"(i.e. those in effect before ``captureWarnings(True)`` was called)."
+msgstr ""
+"Nếu *capture* là ``False``, quá trình chuyển hướng cảnh báo đến hệ thống ghi"
+" nhật ký sẽ dừng lại và các cảnh báo sẽ được chuyển hướng đến đích ban đầu "
+"của chúng (tức là những cảnh báo có hiệu lực trước khi "
+"``captureWarnings(True)`` được gọi)."
+
+#: ../../library/logging.rst:1557
+#, fuzzy
+msgid "Module :mod:`logging.config`"
+msgstr "Mô-đun :mod:`logging.config`"
+
+#: ../../library/logging.rst:1558
+#, fuzzy
+msgid "Configuration API for the logging module."
+msgstr "Cấu hình API cho mô-đun ghi nhật ký."
+
+#: ../../library/logging.rst:1560
+#, fuzzy
+msgid "Module :mod:`logging.handlers`"
+msgstr "Mô-đun :mod:`logging.handlers`"
+
+#: ../../library/logging.rst:1561
+#, fuzzy
+msgid "Useful handlers included with the logging module."
+msgstr "Trình xử lý hữu ích đi kèm với mô-đun ghi nhật ký."
+
+#: ../../library/logging.rst:1563
+#, fuzzy
+msgid ":pep:`282` - A Logging System"
+msgstr ":pep:`282` - Hệ thống ghi nhật ký"
+
+#: ../../library/logging.rst:1564
+#, fuzzy
+msgid ""
+"The proposal which described this feature for inclusion in the Python "
+"standard library."
+msgstr "Đề xuất mô tả tính năng này để đưa vào thư viện chuẩn Python."
+
+#: ../../library/logging.rst:1567
+#, fuzzy
+msgid ""
+"`Original Python logging package <https://old.red-"
+"dove.com/python_logging.html>`_"
+msgstr ""
+"`Original Python logging package <https://old.red-"
+"dove.com/python_logging.html>`_"
+
+#: ../../library/logging.rst:1568
+#, fuzzy
+msgid ""
+"This is the original source for the :mod:`!logging` package.  The version of"
+" the package available from this site is suitable for use with Python 1.5.2,"
+" 2.1.x and 2.2.x, which do not include the :mod:`!logging` package in the "
+"standard library."
+msgstr ""
+"Đây là nguồn ban đầu cho gói :mod:`!logging`.  Phiên bản của gói có sẵn từ "
+"trang này phù hợp để sử dụng với Python 1.5.2, 2.1.x và 2.2.x, không bao gồm"
+" gói :mod:`!logging` trong thư viện chuẩn."
+
+#: ../../library/logging.rst:12
+#, fuzzy
+msgid "Errors"
+msgstr "Lỗi"
+
+#: ../../library/logging.rst:12
+#, fuzzy
+msgid "logging"
+msgstr "khai thác gỗ"

@@ -1,0 +1,490 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/graphlib.rst:2
+#, fuzzy
+msgid ""
+":mod:`!graphlib` --- Functionality to operate with graph-like structures"
+msgstr ""
+":mod:`!graphlib` --- Chức năng hoạt động với các cấu trúc giống như đồ thị"
+
+#: ../../library/graphlib.rst:8
+#, fuzzy
+msgid "**Source code:** :source:`Lib/graphlib.py`"
+msgstr "**Source code:** :source:`Lib/graphlib.py`"
+
+#: ../../library/graphlib.rst:20
+#, fuzzy
+msgid ""
+"Provides functionality to topologically sort a graph of :term:`hashable` "
+"nodes."
+msgstr ""
+"Cung cấp chức năng sắp xếp theo cấu trúc liên kết biểu đồ của các nút "
+":term:`hashable`."
+
+#: ../../library/graphlib.rst:22
+#, fuzzy
+msgid ""
+"A topological order is a linear ordering of the vertices in a graph such "
+"that for every directed edge u -> v from vertex u to vertex v, vertex u "
+"comes before vertex v in the ordering. For instance, the vertices of the "
+"graph may represent tasks to be performed, and the edges may represent "
+"constraints that one task must be performed before another; in this example,"
+" a topological ordering is just a valid sequence for the tasks. A complete "
+"topological ordering is possible if and only if the graph has no directed "
+"cycles, that is, if it is a directed acyclic graph."
+msgstr ""
+"Thứ tự tôpô là thứ tự tuyến tính của các đỉnh trong đồ thị sao cho với mọi "
+"cạnh có hướng u -> v từ đỉnh u đến đỉnh v, đỉnh u xuất hiện trước đỉnh v "
+"theo thứ tự. Ví dụ: các đỉnh của biểu đồ có thể biểu thị các nhiệm vụ cần "
+"thực hiện và các cạnh có thể biểu thị các ràng buộc mà một nhiệm vụ phải "
+"được thực hiện trước một nhiệm vụ khác; trong ví dụ này, thứ tự tôpô chỉ là "
+"một chuỗi hợp lệ cho các tác vụ. Có thể sắp xếp thứ tự tôpô hoàn chỉnh khi "
+"và chỉ khi đồ thị không có chu trình có hướng, nghĩa là nếu nó là đồ thị "
+"không có chu trình có hướng."
+
+#: ../../library/graphlib.rst:31
+#, fuzzy
+msgid ""
+"If the optional *graph* argument is provided it must be a dictionary "
+"representing a directed acyclic graph where the keys are nodes and the "
+"values are iterables of all predecessors of that node in the graph (the "
+"nodes that have edges that point to the value in the key). Additional nodes "
+"can be added to the graph using the :meth:`~TopologicalSorter.add` method."
+msgstr ""
+"Nếu đối số *graph* tùy chọn được cung cấp thì đó phải là một từ điển biểu "
+"thị biểu đồ tuần hoàn có hướng trong đó các khóa là các nút và các giá trị "
+"là các giá trị có thể lặp lại của tất cả các nút trước của nút đó trong biểu"
+" đồ (các nút có các cạnh trỏ đến giá trị trong khóa). Các nút bổ sung có thể"
+" được thêm vào biểu đồ bằng phương pháp :meth:`~TopologicalSorter.add`."
+
+#: ../../library/graphlib.rst:37
+#, fuzzy
+msgid ""
+"In the general case, the steps required to perform the sorting of a given "
+"graph are as follows:"
+msgstr ""
+"Trong trường hợp chung, các bước cần thiết để thực hiện sắp xếp một biểu đồ "
+"đã cho như sau:"
+
+#: ../../library/graphlib.rst:40
+#, fuzzy
+msgid ""
+"Create an instance of the :class:`TopologicalSorter` with an optional "
+"initial graph."
+msgstr ""
+"Tạo một phiên bản của :class:`TopologicalSorter` với biểu đồ ban đầu tùy "
+"chọn."
+
+#: ../../library/graphlib.rst:42
+#, fuzzy
+msgid "Add additional nodes to the graph."
+msgstr "Thêm các nút bổ sung vào biểu đồ."
+
+#: ../../library/graphlib.rst:43
+#, fuzzy
+msgid "Call :meth:`~TopologicalSorter.prepare` on the graph."
+msgstr "Gọi :meth:`~TopologicalSorter.prepare` trên đồ thị."
+
+#: ../../library/graphlib.rst:44
+#, fuzzy
+msgid ""
+"While :meth:`~TopologicalSorter.is_active` is ``True``, iterate over the "
+"nodes returned by :meth:`~TopologicalSorter.get_ready` and process them. "
+"Call :meth:`~TopologicalSorter.done` on each node as it finishes processing."
+msgstr ""
+"Trong khi :meth:`~TopologicalSorter.is_active` là ``True``, hãy lặp lại các "
+"nút được :meth:`~TopologicalSorter.get_ready` trả về và xử lý chúng. Gọi "
+":meth:`~TopologicalSorter.done` trên mỗi nút khi nó xử lý xong."
+
+#: ../../library/graphlib.rst:49
+#, fuzzy
+msgid ""
+"In case just an immediate sorting of the nodes in the graph is required and "
+"no parallelism is involved, the convenience method "
+":meth:`TopologicalSorter.static_order` can be used directly:"
+msgstr ""
+"Trong trường hợp chỉ cần sắp xếp ngay lập tức các nút trong biểu đồ và không"
+" liên quan đến tính song song, phương thức tiện lợi "
+":meth:`TopologicalSorter.static_order` có thể được sử dụng trực tiếp:"
+
+#: ../../library/graphlib.rst:53
+#, python-brace-format, fuzzy
+msgid ""
+">>> graph = {\"D\": {\"B\", \"C\"}, \"C\": {\"A\"}, \"B\": {\"A\"}}\n"
+">>> ts = TopologicalSorter(graph)\n"
+">>> tuple(ts.static_order())\n"
+"('A', 'C', 'B', 'D')"
+msgstr ""
+">>> đồ thị = {\"D\": {\"B\", \"C\"}, \"C\": {\"A\"}, \"B\": {\"A\"}}\n"
+">>> ts = TopologicalSorter(đồ thị)\n"
+">>> bộ dữ liệu(ts.static_order())\n"
+"('A', 'C', 'B', 'D')"
+
+#: ../../library/graphlib.rst:60
+#, fuzzy
+msgid ""
+"The class is designed to easily support parallel processing of the nodes as "
+"they become ready. For instance::"
+msgstr ""
+"Lớp này được thiết kế để dễ dàng hỗ trợ xử lý song song các nút khi chúng "
+"sẵn sàng. Ví dụ::"
+
+#: ../../library/graphlib.rst:63
+#, fuzzy
+msgid ""
+"topological_sorter = TopologicalSorter()\n"
+"\n"
+"# Add nodes to 'topological_sorter'...\n"
+"\n"
+"topological_sorter.prepare()\n"
+"while topological_sorter.is_active():\n"
+"    for node in topological_sorter.get_ready():\n"
+"        # Worker threads or processes take nodes to work on off the\n"
+"        # 'task_queue' queue.\n"
+"        task_queue.put(node)\n"
+"\n"
+"    # When the work for a node is done, workers put the node in\n"
+"    # 'finalized_tasks_queue' so we can get more nodes to work on.\n"
+"    # The definition of 'is_active()' guarantees that, at this point, at\n"
+"    # least one node has been placed on 'task_queue' that hasn't yet\n"
+"    # been passed to 'done()', so this blocking 'get()' must (eventually)\n"
+"    # succeed.  After calling 'done()', we loop back to call 'get_ready()'\n"
+"    # again, so put newly freed nodes on 'task_queue' as soon as\n"
+"    # logically possible.\n"
+"    node = finalized_tasks_queue.get()\n"
+"    topological_sorter.done(node)"
+msgstr ""
+"topological_sorter=TopologicalSorter()\n"
+"\n"
+"các nút # Add thành 'topological_sorter'...\n"
+"\n"
+"topo_sorter.prepare()\n"
+"trong khi topological_sorter.is_active():\n"
+"    cho nút trong topological_sorter.get_ready():\n"
+"        các luồng hoặc quy trình # Worker yêu cầu các nút hoạt động ngoài\n"
+"        # hàng đợi 'task_queue'.\n"
+"        task_queue.put(nút)\n"
+"\n"
+"    # When công việc của một nút đã hoàn tất, công nhân đã đưa nút vào\n"
+"    # 'finalized_tasks_queue' để chúng tôi có thể có thêm nút để làm việc.\n"
+"    Định nghĩa # The của 'is_active()' đảm bảo rằng, tại thời điểm này, tại\n"
+"    # least một nút đã được đặt trên 'task_queue' nhưng vẫn chưa\n"
+"    # been được chuyển tới 'done()', vì vậy việc chặn 'get()' này phải (cuối cùng)\n"
+"    # succeed.  Sau khi gọi 'done()', chúng ta lặp lại để gọi 'get_ready()'\n"
+"    # again, vì vậy hãy đặt các nút mới được giải phóng vào 'task_queue' ngay khi\n"
+"    # logically có thể.\n"
+"    nút = Finalized_tasks_queue.get()\n"
+"    topo_sorter.done(nút)"
+
+#: ../../library/graphlib.rst:87
+#, fuzzy
+msgid ""
+"Add a new node and its predecessors to the graph. Both the *node* and all "
+"elements in *predecessors* must be :term:`hashable`."
+msgstr ""
+"Thêm một nút mới và các nút trước đó vào biểu đồ. Cả *node* và tất cả các "
+"phần tử trong *predecessors* đều phải là :term:`hashable`."
+
+#: ../../library/graphlib.rst:90
+#, fuzzy
+msgid ""
+"If called multiple times with the same node argument, the set of "
+"dependencies will be the union of all dependencies passed in."
+msgstr ""
+"Nếu được gọi nhiều lần với cùng một đối số nút, tập hợp các phần phụ thuộc "
+"sẽ là tập hợp của tất cả các phần phụ thuộc được truyền vào."
+
+#: ../../library/graphlib.rst:93
+#, fuzzy
+msgid ""
+"It is possible to add a node with no dependencies (*predecessors* is not "
+"provided) or to provide a dependency twice. If a node that has not been "
+"provided before is included among *predecessors* it will be automatically "
+"added to the graph with no predecessors of its own."
+msgstr ""
+"Có thể thêm một nút không có phần phụ thuộc (*predecessors* không được cung "
+"cấp) hoặc cung cấp phần phụ thuộc hai lần. Nếu một nút chưa được cung cấp "
+"trước đó được bao gồm trong *predecessors*, nó sẽ tự động được thêm vào biểu"
+" đồ mà không có nút trước đó."
+
+#: ../../library/graphlib.rst:98
+#, fuzzy
+msgid ""
+"Raises :exc:`ValueError` if called after :meth:`~TopologicalSorter.prepare`."
+msgstr ""
+"Tăng :exc:`ValueError` nếu được gọi sau :meth:`~TopologicalSorter.prepare`."
+
+#: ../../library/graphlib.rst:102
+#, fuzzy
+msgid ""
+"Mark the graph as finished and check for cycles in the graph. If any cycle "
+"is detected, :exc:`CycleError` will be raised, but "
+":meth:`~TopologicalSorter.get_ready` can still be used to obtain as many "
+"nodes as possible until cycles block more progress. After a call to this "
+"function, the graph cannot be modified, and therefore no more nodes can be "
+"added using :meth:`~TopologicalSorter.add`."
+msgstr ""
+"Đánh dấu biểu đồ là đã hoàn thành và kiểm tra các chu kỳ trong biểu đồ. Nếu "
+"phát hiện bất kỳ chu kỳ nào, :exc:`CycleError` sẽ được tăng lên, nhưng "
+":meth:`~TopologicalSorter.get_ready` vẫn có thể được sử dụng để thu được "
+"càng nhiều nút càng tốt cho đến khi các chu kỳ chặn nhiều tiến trình hơn. "
+"Sau khi gọi hàm này, biểu đồ không thể được sửa đổi và do đó không thể thêm "
+"nút nào nữa bằng :meth:`~TopologicalSorter.add`."
+
+#: ../../library/graphlib.rst:109
+#, fuzzy
+msgid ""
+"A :exc:`ValueError` will be raised if the sort has been started by "
+":meth:`~.static_order` or :meth:`~.get_ready`."
+msgstr ""
+"Một :exc:`ValueError` sẽ được nâng lên nếu việc sắp xếp được bắt đầu bởi "
+":meth:`~.static_order` hoặc :meth:`~.get_ready`."
+
+#: ../../library/graphlib.rst:114
+#, fuzzy
+msgid ""
+"``prepare()`` can now be called more than once as long as the sort has not "
+"started. Previously this raised :exc:`ValueError`."
+msgstr ""
+"``prepare()`` bây giờ có thể được gọi nhiều lần miễn là việc sắp xếp chưa "
+"bắt đầu. Trước đây điều này đã gây ra :exc:`ValueError`."
+
+#: ../../library/graphlib.rst:119
+#, fuzzy
+msgid ""
+"Returns ``True`` if more progress can be made and ``False`` otherwise. "
+"Progress can be made if cycles do not block the resolution and either there "
+"are still nodes ready that haven't yet been returned by "
+":meth:`TopologicalSorter.get_ready` or the number of nodes marked "
+":meth:`TopologicalSorter.done` is less than the number that have been "
+"returned by :meth:`TopologicalSorter.get_ready`."
+msgstr ""
+"Trả về ``True`` nếu có thể thực hiện được nhiều tiến bộ hơn và trả về "
+"``False`` nếu ngược lại. Tiến trình có thể được thực hiện nếu các chu kỳ "
+"không chặn độ phân giải và vẫn còn các nút sẵn sàng chưa được "
+":meth:`TopologicalSorter.get_ready` trả về hoặc số nút được đánh dấu "
+":meth:`TopologicalSorter.done` ít hơn số được "
+":meth:`TopologicalSorter.get_ready` trả về."
+
+#: ../../library/graphlib.rst:126
+#, fuzzy
+msgid ""
+"The :meth:`~object.__bool__` method of this class defers to this function, "
+"so instead of::"
+msgstr ""
+"Phương thức :meth:`~object.__bool__` của lớp này trì hoãn chức năng này, vì "
+"vậy thay vì ::"
+
+#: ../../library/graphlib.rst:129
+#, fuzzy
+msgid ""
+"if ts.is_active():\n"
+"    ..."
+msgstr ""
+"nếu ts.is_active():\n"
+"    ..."
+
+#: ../../library/graphlib.rst:132
+#, fuzzy
+msgid "it is possible to simply do::"
+msgstr "có thể chỉ cần làm::"
+
+#: ../../library/graphlib.rst:134
+#, fuzzy
+msgid ""
+"if ts:\n"
+"    ..."
+msgstr ""
+"nếu ts:\n"
+"    ..."
+
+#: ../../library/graphlib.rst:137 ../../library/graphlib.rst:160
+#, fuzzy
+msgid ""
+"Raises :exc:`ValueError` if called without calling "
+":meth:`~TopologicalSorter.prepare` previously."
+msgstr ""
+"Tăng :exc:`ValueError` nếu được gọi mà không gọi "
+":meth:`~TopologicalSorter.prepare` trước đó."
+
+#: ../../library/graphlib.rst:142
+#, fuzzy
+msgid ""
+"Marks a set of nodes returned by :meth:`TopologicalSorter.get_ready` as "
+"processed, unblocking any successor of each node in *nodes* for being "
+"returned in the future by a call to :meth:`TopologicalSorter.get_ready`."
+msgstr ""
+"Đánh dấu một tập hợp các nút được :meth:`TopologicalSorter.get_ready` trả về"
+" là đã được xử lý, bỏ chặn mọi nút kế thừa của mỗi nút trong *nodes* để được"
+" trả về trong tương lai bằng lệnh gọi tới "
+":meth:`TopologicalSorter.get_ready`."
+
+#: ../../library/graphlib.rst:146
+#, fuzzy
+msgid ""
+"Raises :exc:`ValueError` if any node in *nodes* has already been marked as "
+"processed by a previous call to this method or if a node was not added to "
+"the graph by using :meth:`TopologicalSorter.add`, if called without calling "
+":meth:`~TopologicalSorter.prepare` or if node has not yet been returned by "
+":meth:`~TopologicalSorter.get_ready`."
+msgstr ""
+"Tăng :exc:`ValueError` nếu bất kỳ nút nào trong *nodes* đã được đánh dấu là "
+"đã được xử lý bằng lệnh gọi trước đó tới phương thức này hoặc nếu một nút "
+"không được thêm vào biểu đồ bằng cách sử dụng :meth:`TopologicalSorter.add`,"
+" nếu được gọi mà không gọi :meth:`~TopologicalSorter.prepare` hoặc nếu nút "
+"chưa được :meth:`~TopologicalSorter.get_ready` trả về."
+
+#: ../../library/graphlib.rst:154
+#, fuzzy
+msgid ""
+"Returns a ``tuple`` with all the nodes that are ready. Initially it returns "
+"all nodes with no predecessors, and once those are marked as processed by "
+"calling :meth:`TopologicalSorter.done`, further calls will return all new "
+"nodes that have all their predecessors already processed. Once no more "
+"progress can be made, empty tuples are returned."
+msgstr ""
+"Trả về ``tuple`` với tất cả các nút đã sẵn sàng. Ban đầu, nó trả về tất cả "
+"các nút không có nút trước đó và khi các nút đó được đánh dấu là đã xử lý "
+"bằng cách gọi :meth:`TopologicalSorter.done`, các lệnh gọi tiếp theo sẽ trả "
+"về tất cả các nút mới có tất cả các nút trước đó đã được xử lý. Khi không "
+"thể thực hiện được tiến trình nào nữa, các bộ dữ liệu trống sẽ được trả về."
+
+#: ../../library/graphlib.rst:165
+#, fuzzy
+msgid ""
+"Returns an iterator object which will iterate over nodes in a topological "
+"order. When using this method, :meth:`~TopologicalSorter.prepare` and "
+":meth:`~TopologicalSorter.done` should not be called. This method is "
+"equivalent to::"
+msgstr ""
+"Trả về một đối tượng iterator sẽ lặp qua các nút theo thứ tự tôpô. Khi sử "
+"dụng phương pháp này, không nên gọi :meth:`~TopologicalSorter.prepare` và "
+":meth:`~TopologicalSorter.done`. Phương pháp này tương đương với::"
+
+#: ../../library/graphlib.rst:170
+#, fuzzy
+msgid ""
+"def static_order(self):\n"
+"    self.prepare()\n"
+"    while self.is_active():\n"
+"        node_group = self.get_ready()\n"
+"        yield from node_group\n"
+"        self.done(*node_group)"
+msgstr ""
+"def static_order(tự):\n"
+"    tự.prepare()\n"
+"    trong khi self.is_active():\n"
+"        node_group = self.get_ready()\n"
+"        lợi nhuận từ node_group\n"
+"        self.done(*node_group)"
+
+#: ../../library/graphlib.rst:177
+#, fuzzy
+msgid ""
+"The particular order that is returned may depend on the specific order in "
+"which the items were inserted in the graph. For example:"
+msgstr ""
+"Thứ tự cụ thể được trả về có thể phụ thuộc vào thứ tự cụ thể mà các mục được"
+" chèn vào biểu đồ. Ví dụ:"
+
+#: ../../library/graphlib.rst:180
+#, fuzzy
+msgid ""
+">>> ts = TopologicalSorter()\n"
+">>> ts.add(3, 2, 1)\n"
+">>> ts.add(1, 0)\n"
+">>> print([*ts.static_order()])\n"
+"[2, 0, 1, 3]\n"
+"\n"
+">>> ts2 = TopologicalSorter()\n"
+">>> ts2.add(1, 0)\n"
+">>> ts2.add(3, 2, 1)\n"
+">>> print([*ts2.static_order()])\n"
+"[0, 2, 1, 3]"
+msgstr ""
+">>> ts = TopologicalSorter()\n"
+">>> ts.add(3, 2, 1)\n"
+">>> ts.add(1, 0)\n"
+">>> print([*ts.static_order()])\n"
+"[2, 0, 1, 3]\n"
+"\n"
+">>> ts2 = TopologicalSorter()\n"
+">>> ts2.add(1, 0)\n"
+">>> ts2.add(3, 2, 1)\n"
+">>> print([*ts2.static_order()])\n"
+"[0, 2, 1, 3]"
+
+#: ../../library/graphlib.rst:194
+#, fuzzy
+msgid ""
+"This is due to the fact that \"0\" and \"2\" are in the same level in the "
+"graph (they would have been returned in the same call to "
+":meth:`~TopologicalSorter.get_ready`) and the order between them is "
+"determined by the order of insertion."
+msgstr ""
+"Điều này là do thực tế là \"0\" và \"2\" ở cùng cấp độ trong biểu đồ (chúng "
+"sẽ được trả về trong cùng một lệnh gọi tới "
+":meth:`~TopologicalSorter.get_ready`) và thứ tự giữa chúng được xác định "
+"theo thứ tự chèn."
+
+#: ../../library/graphlib.rst:200
+#, fuzzy
+msgid "If any cycle is detected, :exc:`CycleError` will be raised."
+msgstr "Nếu phát hiện bất kỳ chu kỳ nào, :exc:`CycleError` sẽ được nâng lên."
+
+#: ../../library/graphlib.rst:206
+#, fuzzy
+msgid "Exceptions"
+msgstr "Ngoại lệ"
+
+#: ../../library/graphlib.rst:207
+#, fuzzy
+msgid "The :mod:`!graphlib` module defines the following exception classes:"
+msgstr "Mô-đun :mod:`!graphlib` xác định các lớp ngoại lệ sau:"
+
+#: ../../library/graphlib.rst:211
+#, fuzzy
+msgid ""
+"Subclass of :exc:`ValueError` raised by :meth:`TopologicalSorter.prepare` if"
+" cycles exist in the working graph. If multiple cycles exist, only one "
+"undefined choice among them will be reported and included in the exception."
+msgstr ""
+"Lớp con của :exc:`ValueError` được tạo ra bởi "
+":meth:`TopologicalSorter.prepare` nếu tồn tại các chu trình trong biểu đồ "
+"đang hoạt động. Nếu có nhiều chu kỳ tồn tại, chỉ một lựa chọn không xác định"
+" trong số đó sẽ được báo cáo và đưa vào ngoại lệ."
+
+#: ../../library/graphlib.rst:215
+#, fuzzy
+msgid ""
+"The detected cycle can be accessed via the second element in the "
+":attr:`~BaseException.args` attribute of the exception instance and consists"
+" in a list of nodes, such that each node is, in the graph, an immediate "
+"predecessor of the next node in the list. In the reported list, the first "
+"and the last node will be the same, to make it clear that it is cyclic."
+msgstr ""
+"Chu trình được phát hiện có thể được truy cập thông qua phần tử thứ hai "
+"trong thuộc tính :attr:`~BaseException.args` của phiên bản ngoại lệ và bao "
+"gồm một danh sách các nút, sao cho mỗi nút, trong biểu đồ, là tiền thân trực"
+" tiếp của nút tiếp theo trong danh sách. Trong danh sách được báo cáo, nút "
+"đầu tiên và nút cuối cùng sẽ giống nhau, để làm rõ rằng nó có tính tuần "
+"hoàn."

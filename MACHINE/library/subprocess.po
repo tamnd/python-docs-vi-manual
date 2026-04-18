@@ -1,0 +1,3095 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/subprocess.rst:2
+#, fuzzy
+msgid ":mod:`!subprocess` --- Subprocess management"
+msgstr ":mod:`!subprocess` --- Quản lý quy trình con"
+
+#: ../../library/subprocess.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/subprocess.py`"
+msgstr "**Source code:** :source:`Lib/subprocess.py`"
+
+#: ../../library/subprocess.rst:14
+#, fuzzy
+msgid ""
+"The :mod:`!subprocess` module allows you to spawn new processes, connect to "
+"their input/output/error pipes, and obtain their return codes.  This module "
+"intends to replace several older modules and functions::"
+msgstr ""
+"Mô-đun :mod:`!subprocess` cho phép bạn tạo ra các quy trình mới, kết nối với"
+" các đường dẫn đầu vào/đầu ra/lỗi của chúng và lấy mã trả về của chúng.  Mô-"
+"đun này nhằm thay thế một số mô-đun và chức năng cũ hơn::"
+
+#: ../../library/subprocess.rst:18
+#, fuzzy
+msgid ""
+"os.system\n"
+"os.spawn*"
+msgstr ""
+"os.system\n"
+"os.spawn*"
+
+#: ../../library/subprocess.rst:21
+#, fuzzy
+msgid ""
+"Information about how the :mod:`!subprocess` module can be used to replace "
+"these modules and functions can be found in the following sections."
+msgstr ""
+"Bạn có thể tìm thấy thông tin về cách sử dụng mô-đun :mod:`!subprocess` để "
+"thay thế các mô-đun và chức năng này trong các phần sau."
+
+#: ../../library/subprocess.rst:26
+#, fuzzy
+msgid ":pep:`324` -- PEP proposing the subprocess module"
+msgstr ":pep:`324` -- PEP đề xuất mô-đun quy trình con"
+
+#: ../../includes/wasm-mobile-notavail.rst:3 ../../library/subprocess.rst:598
+#: ../../library/subprocess.rst:605 ../../library/subprocess.rst:615
+#: ../../library/subprocess.rst:624 ../../library/subprocess.rst:639
+#: ../../library/subprocess.rst:645 ../../library/subprocess.rst:1512
+#: ../../library/subprocess.rst:1534
+#, fuzzy
+msgid "Availability"
+msgstr "sẵn có"
+
+#: ../../includes/wasm-mobile-notavail.rst:5
+#, fuzzy
+msgid ""
+"This module is not supported on :ref:`mobile platforms <mobile-"
+"availability>` or :ref:`WebAssembly platforms <wasm-availability>`."
+msgstr ""
+"Mô-đun này không được hỗ trợ trên :ref:`mobile platforms <mobile-"
+"availability>` hoặc :ref:`WebAssembly platforms <wasm-availability>`."
+
+#: ../../library/subprocess.rst:31
+#, fuzzy
+msgid "Using the :mod:`!subprocess` Module"
+msgstr "Sử dụng Mô-đun :mod:`!subprocess`"
+
+#: ../../library/subprocess.rst:33
+#, fuzzy
+msgid ""
+"The recommended approach to invoking subprocesses is to use the :func:`run` "
+"function for all use cases it can handle. For more advanced use cases, the "
+"underlying :class:`Popen` interface can be used directly."
+msgstr ""
+"Cách tiếp cận được khuyến nghị để gọi các quy trình con là sử dụng hàm "
+":func:`run` cho tất cả các trường hợp sử dụng mà nó có thể xử lý. Đối với "
+"các trường hợp sử dụng nâng cao hơn, giao diện :class:`Popen` cơ bản có thể "
+"được sử dụng trực tiếp."
+
+#: ../../library/subprocess.rst:43
+#, fuzzy
+msgid ""
+"Run the command described by *args*.  Wait for command to complete, then "
+"return a :class:`CompletedProcess` instance."
+msgstr ""
+"Chạy lệnh được mô tả bởi *args*.  Đợi lệnh hoàn tất, sau đó trả về phiên bản"
+" :class:`CompletedProcess`."
+
+#: ../../library/subprocess.rst:46
+#, fuzzy
+msgid ""
+"The arguments shown above are merely the most common ones, described below "
+"in :ref:`frequently-used-arguments` (hence the use of keyword-only notation "
+"in the abbreviated signature). The full function signature is largely the "
+"same as that of the :class:`Popen` constructor - most of the arguments to "
+"this function are passed through to that interface. (*timeout*,  *input*, "
+"*check*, and *capture_output* are not.)"
+msgstr ""
+"Các đối số được hiển thị ở trên chỉ là những đối số phổ biến nhất, được mô "
+"tả bên dưới trong :ref:`frequently-used-arguments` (do đó việc sử dụng ký "
+"hiệu chỉ từ khóa trong chữ ký viết tắt). Chữ ký đầy đủ của hàm phần lớn "
+"giống với chữ ký của hàm tạo :class:`Popen` - hầu hết các đối số của hàm này"
+" đều được chuyển qua giao diện đó. (*timeout*, *input*, *check* và "
+"*capture_output* thì không.)"
+
+#: ../../library/subprocess.rst:53
+#, fuzzy
+msgid ""
+"If *capture_output* is true, stdout and stderr will be captured. When used, "
+"the internal :class:`Popen` object is automatically created with *stdout* "
+"and *stderr* both set to :data:`~subprocess.PIPE`. The *stdout* and *stderr*"
+" arguments may not be supplied at the same time as *capture_output*. If you "
+"wish to capture and combine both streams into one, set *stdout* to "
+":data:`~subprocess.PIPE` and *stderr* to :data:`~subprocess.STDOUT`, instead"
+" of using *capture_output*."
+msgstr ""
+"Nếu *capture_output* là đúng, thiết bị xuất chuẩn và thiết bị xuất chuẩn sẽ "
+"bị ghi lại. Khi được sử dụng, đối tượng :class:`Popen` bên trong sẽ tự động "
+"được tạo với *stdout* và *stderr* đều được đặt thành "
+":data:`~subprocess.PIPE`. Các đối số *stdout* và *stderr* có thể không được "
+"cung cấp cùng lúc với *capture_output*. Nếu bạn muốn ghi lại và kết hợp cả "
+"hai luồng thành một, hãy đặt *stdout* thành :data:`~subprocess.PIPE` và "
+"*stderr* thành :data:`~subprocess.STDOUT`, thay vì sử dụng *capture_output*."
+
+#: ../../library/subprocess.rst:62
+#, fuzzy
+msgid ""
+"A *timeout* may be specified in seconds, it is internally passed on to "
+":meth:`Popen.communicate`. If the timeout expires, the child process will be"
+" killed and waited for. The :exc:`TimeoutExpired` exception will be re-"
+"raised after the child process has terminated. The initial process creation "
+"itself cannot be interrupted on many platform APIs so you are not guaranteed"
+" to see a timeout exception until at least after however long process "
+"creation takes."
+msgstr ""
+"Một *timeout* có thể được chỉ định trong vài giây, nó được chuyển nội bộ tới"
+" :meth:`Popen.communicate`. Nếu hết thời gian chờ, tiến trình con sẽ bị hủy "
+"và chờ đợi. Ngoại lệ :exc:`TimeoutExpired` sẽ được kích hoạt lại sau khi quá"
+" trình con kết thúc. Bản thân quá trình tạo quy trình ban đầu không thể bị "
+"gián đoạn trên nhiều API nền tảng, do đó bạn không được đảm bảo sẽ thấy "
+"ngoại lệ hết thời gian chờ cho đến ít nhất sau khi quá trình tạo quy trình "
+"mất nhiều thời gian."
+
+#: ../../library/subprocess.rst:70
+#, fuzzy
+msgid ""
+"The *input* argument is passed to :meth:`Popen.communicate` and thus to the "
+"subprocess's stdin.  If used it must be a byte sequence, or a string if "
+"*encoding* or *errors* is specified or *text* is true.  When used, the "
+"internal :class:`Popen` object is automatically created with *stdin* set to "
+":data:`~subprocess.PIPE`, and the *stdin* argument may not be used as well."
+msgstr ""
+"Đối số *input* được chuyển tới :meth:`Popen.communicate` và do đó chuyển tới"
+" stdin của quy trình con.  Nếu được sử dụng thì nó phải là một chuỗi byte "
+"hoặc một chuỗi nếu *encoding* hoặc *errors* được chỉ định hoặc *text* là "
+"đúng.  Khi được sử dụng, đối tượng :class:`Popen` bên trong sẽ tự động được "
+"tạo với *stdin* được đặt thành :data:`~subprocess.PIPE` và đối số *stdin* "
+"cũng có thể không được sử dụng."
+
+#: ../../library/subprocess.rst:77
+#, fuzzy
+msgid ""
+"If *check* is true, and the process exits with a non-zero exit code, a "
+":exc:`CalledProcessError` exception will be raised. Attributes of that "
+"exception hold the arguments, the exit code, and stdout and stderr if they "
+"were captured."
+msgstr ""
+"Nếu *check* là đúng và quá trình thoát ra với mã thoát khác 0 thì ngoại lệ "
+":exc:`CalledProcessError` sẽ được đưa ra. Các thuộc tính của ngoại lệ đó "
+"chứa các đối số, mã thoát, thiết bị xuất chuẩn và thiết bị xuất chuẩn nếu "
+"chúng bị bắt."
+
+#: ../../library/subprocess.rst:82
+#, fuzzy
+msgid ""
+"If *encoding* or *errors* are specified, or *text* is true, file objects for"
+" stdin, stdout and stderr are opened in text mode using the specified "
+"*encoding* and *errors* or the :class:`io.TextIOWrapper` default. The "
+"*universal_newlines* argument is equivalent  to *text* and is provided for "
+"backwards compatibility. By default, file objects are opened in binary mode."
+msgstr ""
+"Nếu *encoding* hoặc *errors* được chỉ định hoặc *text* là đúng, các đối "
+"tượng tệp cho stdin, stdout và stderr sẽ được mở ở chế độ văn bản bằng cách "
+"sử dụng *encoding* và *errors* được chỉ định hoặc mặc định "
+":class:`io.TextIOWrapper`. Đối số *universal_newlines* tương đương với "
+"*text* và được cung cấp để tương thích ngược. Theo mặc định, các đối tượng "
+"tệp được mở ở chế độ nhị phân."
+
+#: ../../library/subprocess.rst:88
+#, fuzzy
+msgid ""
+"If *env* is not ``None``, it must be a mapping that defines the environment "
+"variables for the new process; these are used instead of the default "
+"behavior of inheriting the current process' environment. It is passed "
+"directly to :class:`Popen`. This mapping can be str to str on any platform "
+"or bytes to bytes on POSIX platforms much like :data:`os.environ` or "
+":data:`os.environb`."
+msgstr ""
+"Nếu *env* không phải là ``None`` thì đó phải là ánh xạ xác định các biến môi"
+" trường cho quy trình mới; chúng được sử dụng thay vì hành vi mặc định là kế"
+" thừa môi trường của quy trình hiện tại. Nó được chuyển trực tiếp đến "
+":class:`Popen`. Ánh xạ này có thể là str thành str trên bất kỳ nền tảng nào "
+"hoặc byte thành byte trên nền tảng POSIX giống như :data:`os.environ` hoặc "
+":data:`os.environb`."
+
+#: ../../library/subprocess.rst:95
+#, fuzzy
+msgid "Examples::"
+msgstr "Ví dụ::"
+
+#: ../../library/subprocess.rst:97
+#, fuzzy
+msgid ""
+">>> subprocess.run([\"ls\", \"-l\"])  # doesn't capture output\n"
+"CompletedProcess(args=['ls', '-l'], returncode=0)\n"
+"\n"
+">>> subprocess.run(\"exit 1\", shell=True, check=True)\n"
+"Traceback (most recent call last):\n"
+"  ...\n"
+"subprocess.CalledProcessError: Command 'exit 1' returned non-zero exit status 1\n"
+"\n"
+">>> subprocess.run([\"ls\", \"-l\", \"/dev/null\"], capture_output=True)\n"
+"CompletedProcess(args=['ls', '-l', '/dev/null'], returncode=0,\n"
+"stdout=b'crw-rw-rw- 1 root root 1, 3 Jan 23 16:23 /dev/null\\n', stderr=b'')"
+msgstr ""
+">>> subprocess.run([\"ls\", \"-l\"]) # doesn không chụp được đầu ra\n"
+"CompletedProcess(args=['ls', '-l'], returncode=0)\n"
+"\n"
+">>> subprocess.run(\"exit 1\", shell=True, check=True)\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"  ...\n"
+"subprocess.CalledProcessError: Lệnh 'exit 1' trả về trạng thái thoát khác 0 1\n"
+"\n"
+">>> subprocess.run([\"ls\", \"-l\", \"/dev/null\"], capture_output=True)\n"
+"CompletedProcess(args=['ls', '-l', '/dev/null'], returncode=0,\n"
+"stdout=b'crw-rw-rw- 1 gốc gốc 1, 3 ngày 23 tháng 1 16:23 /dev/null\\n', stderr=b'')"
+
+#: ../../library/subprocess.rst:113
+#, fuzzy
+msgid "Added *encoding* and *errors* parameters"
+msgstr "Đã thêm thông số *encoding* và *errors*"
+
+#: ../../library/subprocess.rst:117
+#, fuzzy
+msgid ""
+"Added the *text* parameter, as a more understandable alias of "
+"*universal_newlines*. Added the *capture_output* parameter."
+msgstr ""
+"Đã thêm tham số *text*, làm bí danh dễ hiểu hơn của *universal_newlines*. Đã"
+" thêm tham số *capture_output*."
+
+#: ../../library/subprocess.rst:122 ../../library/subprocess.rst:506
+#: ../../library/subprocess.rst:1232 ../../library/subprocess.rst:1272
+#: ../../library/subprocess.rst:1335
+#, fuzzy
+msgid ""
+"Changed Windows shell search order for ``shell=True``. The current directory"
+" and ``%PATH%`` are replaced with ``%COMSPEC%`` and "
+"``%SystemRoot%\\System32\\cmd.exe``. As a result, dropping a malicious "
+"program named ``cmd.exe`` into a current directory no longer works."
+msgstr ""
+"Đã thay đổi thứ tự tìm kiếm shell của Windows cho ``shell=True``. Thư mục "
+"hiện tại và ``%PATH%`` được thay thế bằng ``%COMSPEC%`` và "
+"``%SystemRoot%\\System32\\cmd.exe``. Kết quả là việc thả chương trình độc "
+"hại có tên ``cmd.exe`` vào thư mục hiện tại không còn hoạt động."
+
+#: ../../library/subprocess.rst:130
+#, fuzzy
+msgid ""
+"The return value from :func:`run`, representing a process that has finished."
+msgstr "Giá trị trả về từ :func:`run`, biểu thị một quá trình đã kết thúc."
+
+#: ../../library/subprocess.rst:134
+#, fuzzy
+msgid ""
+"The arguments used to launch the process. This may be a list or a string."
+msgstr ""
+"Các đối số được sử dụng để khởi động quá trình. Đây có thể là một danh sách "
+"hoặc một chuỗi."
+
+#: ../../library/subprocess.rst:138
+#, fuzzy
+msgid ""
+"Exit status of the child process. Typically, an exit status of 0 indicates "
+"that it ran successfully."
+msgstr ""
+"Trạng thái thoát của tiến trình con. Thông thường, trạng thái thoát là 0 cho"
+" biết nó đã chạy thành công."
+
+#: ../../library/subprocess.rst:141 ../../library/subprocess.rst:958
+#, fuzzy
+msgid ""
+"A negative value ``-N`` indicates that the child was terminated by signal "
+"``N`` (POSIX only)."
+msgstr ""
+"Giá trị âm ``-N`` chỉ ra rằng phần tử con đã bị chấm dứt bởi tín hiệu ``N`` "
+"(chỉ POSIX)."
+
+#: ../../library/subprocess.rst:146
+#, fuzzy
+msgid ""
+"Captured stdout from the child process. A bytes sequence, or a string if "
+":func:`run` was called with an encoding, errors, or text=True. ``None`` if "
+"stdout was not captured."
+msgstr ""
+"Đã thu được thiết bị xuất chuẩn từ tiến trình con. Một chuỗi byte hoặc một "
+"chuỗi nếu :func:`run` được gọi có mã hóa, lỗi hoặc văn bản=True. ``None`` "
+"nếu thiết bị xuất chuẩn không được chụp."
+
+#: ../../library/subprocess.rst:150
+#, fuzzy
+msgid ""
+"If you ran the process with ``stderr=subprocess.STDOUT``, stdout and stderr "
+"will be combined in this attribute, and :attr:`stderr` will be ``None``."
+msgstr ""
+"Nếu bạn chạy quy trình với ``stderr=subprocess.STDOUT``, stdout và stderr sẽ"
+" được kết hợp trong thuộc tính này và :attr:`stderr` sẽ là ``None``."
+
+#: ../../library/subprocess.rst:156
+#, fuzzy
+msgid ""
+"Captured stderr from the child process. A bytes sequence, or a string if "
+":func:`run` was called with an encoding, errors, or text=True. ``None`` if "
+"stderr was not captured."
+msgstr ""
+"Đã thu thập stderr từ tiến trình con. Một chuỗi byte hoặc một chuỗi nếu "
+":func:`run` được gọi có mã hóa, lỗi hoặc văn bản=True. ``None`` nếu stderr "
+"không bị bắt."
+
+#: ../../library/subprocess.rst:162
+#, fuzzy
+msgid "If :attr:`returncode` is non-zero, raise a :exc:`CalledProcessError`."
+msgstr "Nếu :attr:`returncode` khác 0, hãy tăng :exc:`CalledProcessError`."
+
+#: ../../library/subprocess.rst:168
+#, fuzzy
+msgid ""
+"Special value that can be used as the *stdin*, *stdout* or *stderr* argument"
+" to :class:`Popen` and indicates that the special file :data:`os.devnull` "
+"will be used."
+msgstr ""
+"Giá trị đặc biệt có thể được sử dụng làm đối số *stdin*, *stdout* hoặc "
+"*stderr* cho :class:`Popen` và cho biết rằng tệp đặc biệt :data:`os.devnull`"
+" sẽ được sử dụng."
+
+#: ../../library/subprocess.rst:177
+#, fuzzy
+msgid ""
+"Special value that can be used as the *stdin*, *stdout* or *stderr* argument"
+" to :class:`Popen` and indicates that a pipe to the standard stream should "
+"be opened.  Most useful with :meth:`Popen.communicate`."
+msgstr ""
+"Giá trị đặc biệt có thể được sử dụng làm đối số *stdin*, *stdout* hoặc "
+"*stderr* cho :class:`Popen` và cho biết rằng cần mở một đường dẫn đến luồng "
+"tiêu chuẩn.  Hữu ích nhất với :meth:`Popen.communicate`."
+
+#: ../../library/subprocess.rst:184
+#, fuzzy
+msgid ""
+"Special value that can be used as the *stderr* argument to :class:`Popen` "
+"and indicates that standard error should go into the same handle as standard"
+" output."
+msgstr ""
+"Giá trị đặc biệt có thể được sử dụng làm đối số *stderr* cho :class:`Popen` "
+"và cho biết rằng lỗi tiêu chuẩn sẽ được xử lý giống như đầu ra tiêu chuẩn."
+
+#: ../../library/subprocess.rst:191
+#, fuzzy
+msgid "Base class for all other exceptions from this module."
+msgstr "Lớp cơ sở cho tất cả các ngoại lệ khác từ mô-đun này."
+
+#: ../../library/subprocess.rst:198
+#, fuzzy
+msgid ""
+"Subclass of :exc:`SubprocessError`, raised when a timeout expires while "
+"waiting for a child process."
+msgstr ""
+"Lớp con của :exc:`SubprocessError`, được nâng lên khi hết thời gian chờ "
+"trong khi chờ tiến trình con."
+
+#: ../../library/subprocess.rst:203 ../../library/subprocess.rst:247
+#, fuzzy
+msgid "Command that was used to spawn the child process."
+msgstr "Lệnh được sử dụng để sinh ra tiến trình con."
+
+#: ../../library/subprocess.rst:207
+#, fuzzy
+msgid "Timeout in seconds."
+msgstr "Thời gian chờ tính bằng giây."
+
+#: ../../library/subprocess.rst:211
+#, fuzzy
+msgid ""
+"Output of the child process if it was captured by :func:`run` or "
+":func:`check_output`.  Otherwise, ``None``.  This is always :class:`bytes` "
+"when any output was captured regardless of the ``text=True`` setting.  It "
+"may remain ``None`` instead of ``b''`` when no output was observed."
+msgstr ""
+"Đầu ra của tiến trình con nếu nó được :func:`run` hoặc :func:`check_output` "
+"nắm bắt.  Nếu không thì ``None``.  Đây luôn là :class:`bytes` khi bất kỳ đầu"
+" ra nào được ghi lại bất kể cài đặt ``text=True``.  Nó có thể vẫn là "
+"``None`` thay vì ``b''`` khi không quan sát thấy đầu ra."
+
+#: ../../library/subprocess.rst:219 ../../library/subprocess.rst:256
+#, fuzzy
+msgid "Alias for output, for symmetry with :attr:`stderr`."
+msgstr "Bí danh cho đầu ra, đối xứng với :attr:`stderr`."
+
+#: ../../library/subprocess.rst:223
+#, fuzzy
+msgid ""
+"Stderr output of the child process if it was captured by :func:`run`. "
+"Otherwise, ``None``.  This is always :class:`bytes` when stderr output was "
+"captured regardless of the ``text=True`` setting.  It may remain ``None`` "
+"instead of ``b''`` when no stderr output was observed."
+msgstr ""
+"Đầu ra Stderr của tiến trình con nếu nó được :func:`run` ghi lại. Nếu không "
+"thì ``None``.  Đây luôn là :class:`bytes` khi đầu ra stderr được ghi lại bất"
+" kể cài đặt ``text=True``.  Nó có thể vẫn là ``None`` thay vì ``b''`` khi "
+"không quan sát thấy đầu ra stderr."
+
+#: ../../library/subprocess.rst:230 ../../library/subprocess.rst:263
+#, fuzzy
+msgid "*stdout* and *stderr* attributes added"
+msgstr "Đã thêm thuộc tính *stdout* và *stderr*"
+
+#: ../../library/subprocess.rst:235
+#, fuzzy
+msgid ""
+"Subclass of :exc:`SubprocessError`, raised when a process run by "
+":func:`check_call`, :func:`check_output`, or :func:`run` (with "
+"``check=True``) returns a non-zero exit status."
+msgstr ""
+"Lớp con của :exc:`SubprocessError`, được nâng lên khi một quá trình được "
+"chạy bởi :func:`check_call`, :func:`check_output` hoặc :func:`run` (với "
+"``check=True``) trả về trạng thái thoát khác 0."
+
+#: ../../library/subprocess.rst:242
+#, fuzzy
+msgid ""
+"Exit status of the child process.  If the process exited due to a signal, "
+"this will be the negative signal number."
+msgstr ""
+"Trạng thái thoát của tiến trình con.  Nếu quá trình thoát do tín hiệu, đây "
+"sẽ là số tín hiệu âm."
+
+#: ../../library/subprocess.rst:251
+#, fuzzy
+msgid ""
+"Output of the child process if it was captured by :func:`run` or "
+":func:`check_output`.  Otherwise, ``None``."
+msgstr ""
+"Đầu ra của tiến trình con nếu nó được :func:`run` hoặc :func:`check_output` "
+"nắm bắt.  Nếu không thì ``None``."
+
+#: ../../library/subprocess.rst:260
+#, fuzzy
+msgid ""
+"Stderr output of the child process if it was captured by :func:`run`. "
+"Otherwise, ``None``."
+msgstr ""
+"Đầu ra Stderr của tiến trình con nếu nó được :func:`run` ghi lại. Nếu không "
+"thì ``None``."
+
+#: ../../library/subprocess.rst:270
+#, fuzzy
+msgid "Frequently Used Arguments"
+msgstr "Đối số thường được sử dụng"
+
+#: ../../library/subprocess.rst:272
+#, fuzzy
+msgid ""
+"To support a wide variety of use cases, the :class:`Popen` constructor (and "
+"the convenience functions) accept a large number of optional arguments. For "
+"most typical use cases, many of these arguments can be safely left at their "
+"default values. The arguments that are most commonly needed are:"
+msgstr ""
+"Để hỗ trợ nhiều trường hợp sử dụng khác nhau, hàm tạo :class:`Popen` (và các"
+" hàm tiện lợi) chấp nhận một số lượng lớn các đối số tùy chọn. Đối với hầu "
+"hết các trường hợp sử dụng thông thường, nhiều đối số trong số này có thể "
+"được giữ nguyên ở giá trị mặc định một cách an toàn. Các đối số thường được "
+"yêu cầu nhất là:"
+
+#: ../../library/subprocess.rst:277
+#, fuzzy
+msgid ""
+"*args* is required for all calls and should be a string, or a sequence of "
+"program arguments. Providing a sequence of arguments is generally preferred,"
+" as it allows the module to take care of any required escaping and quoting "
+"of arguments (e.g. to permit spaces in file names). If passing a single "
+"string, either *shell* must be :const:`True` (see below) or else the string "
+"must simply name the program to be executed without specifying any "
+"arguments."
+msgstr ""
+"*args* là bắt buộc đối với tất cả các cuộc gọi và phải là một chuỗi hoặc một"
+" chuỗi các đối số chương trình. Việc cung cấp một chuỗi các đối số thường "
+"được ưu tiên hơn vì nó cho phép mô-đun xử lý mọi việc thoát và trích dẫn các"
+" đối số cần thiết (ví dụ: để cho phép khoảng trắng trong tên tệp). Nếu "
+"truyền một chuỗi, *shell* phải là :const:`True` (xem bên dưới) hoặc nếu "
+"không thì chuỗi đó chỉ cần đặt tên cho chương trình sẽ được thực thi mà "
+"không chỉ định bất kỳ đối số nào."
+
+#: ../../library/subprocess.rst:285
+#, fuzzy
+msgid ""
+"*stdin*, *stdout* and *stderr* specify the executed program's standard "
+"input, standard output and standard error file handles, respectively.  Valid"
+" values are ``None``, :data:`PIPE`, :data:`DEVNULL`, an existing file "
+"descriptor (a positive integer), and an existing :term:`file object` with a "
+"valid file descriptor.  With the default settings of ``None``, no "
+"redirection will occur.  :data:`PIPE` indicates that a new pipe to the child"
+" should be created.  :data:`DEVNULL` indicates that the special file "
+":data:`os.devnull` will be used.  Additionally, *stderr* can be "
+":data:`STDOUT`, which indicates that the stderr data from the child process "
+"should be captured into the same file handle as for *stdout*."
+msgstr ""
+"*stdin*, *stdout* và *stderr* chỉ định lần lượt các xử lý đầu vào tiêu "
+"chuẩn, đầu ra tiêu chuẩn và xử lý tệp lỗi tiêu chuẩn của chương trình được "
+"thực hiện.  Các giá trị hợp lệ là ``None``, :data:`PIPE`, :data:`DEVNULL`, "
+"bộ mô tả tệp hiện có (số nguyên dương) và :term:`file object` hiện có với bộ"
+" mô tả tệp hợp lệ.  Với cài đặt mặc định của ``None``, sẽ không có chuyển "
+"hướng nào xảy ra.  :data:`PIPE` chỉ ra rằng cần tạo một đường ống mới cho "
+"trẻ.  :data:`DEVNULL` chỉ ra rằng tệp đặc biệt :data:`os.devnull` sẽ được sử"
+" dụng.  Ngoài ra, *stderr* có thể là :data:`STDOUT`, cho biết rằng dữ liệu "
+"stderr từ tiến trình con phải được ghi vào cùng một trình xử lý tệp như đối "
+"với *stdout*."
+
+#: ../../library/subprocess.rst:299
+#, fuzzy
+msgid ""
+"If *encoding* or *errors* are specified, or *text* (also known as "
+"*universal_newlines*) is true, the file objects *stdin*, *stdout* and "
+"*stderr* will be opened in text mode using the *encoding* and *errors* "
+"specified in the call or the defaults for :class:`io.TextIOWrapper`."
+msgstr ""
+"Nếu *encoding* hoặc *errors* được chỉ định hoặc *text* (còn được gọi là "
+"*universal_newlines*) là đúng thì các đối tượng tệp *stdin*, *stdout* và "
+"*stderr* sẽ được mở ở chế độ văn bản bằng cách sử dụng *encoding* và "
+"*errors* được chỉ định trong lệnh gọi hoặc cài đặt mặc định cho "
+":class:`io.TextIOWrapper`."
+
+#: ../../library/subprocess.rst:305
+#, fuzzy
+msgid ""
+"For *stdin*, line ending characters ``'\\n'`` in the input will be converted"
+" to the default line separator :data:`os.linesep`. For *stdout* and "
+"*stderr*, all line endings in the output will be converted to ``'\\n'``.  "
+"For more information see the documentation of the :class:`io.TextIOWrapper` "
+"class when the *newline* argument to its constructor is ``None``."
+msgstr ""
+"Đối với *stdin*, ký tự kết thúc dòng ``'\\n'`` trong đầu vào sẽ được chuyển "
+"đổi thành dấu phân cách dòng mặc định :data:`os.linesep`. Đối với *stdout* "
+"và *stderr*, tất cả các kết thúc dòng ở đầu ra sẽ được chuyển đổi thành "
+"``'\\n'``.  Để biết thêm thông tin, hãy xem tài liệu về lớp "
+":class:`io.TextIOWrapper` khi đối số *newline* cho hàm tạo của nó là "
+"``None``."
+
+#: ../../library/subprocess.rst:311
+#, fuzzy
+msgid ""
+"If text mode is not used, *stdin*, *stdout* and *stderr* will be opened as "
+"binary streams. No encoding or line ending conversion is performed."
+msgstr ""
+"Nếu chế độ văn bản không được sử dụng, *stdin*, *stdout* và *stderr* sẽ được"
+" mở dưới dạng luồng nhị phân. Không có chuyển đổi mã hóa hoặc kết thúc dòng "
+"nào được thực hiện."
+
+#: ../../library/subprocess.rst:314 ../../library/subprocess.rst:1521
+#: ../../library/subprocess.rst:1539
+#, fuzzy
+msgid "Added the *encoding* and *errors* parameters."
+msgstr "Đã thêm thông số *encoding* và *errors*."
+
+#: ../../library/subprocess.rst:317
+#, fuzzy
+msgid "Added the *text* parameter as an alias for *universal_newlines*."
+msgstr "Đã thêm tham số *text* làm bí danh cho *universal_newlines*."
+
+#: ../../library/subprocess.rst:322
+#, fuzzy
+msgid ""
+"The newlines attribute of the file objects :attr:`Popen.stdin`, "
+":attr:`Popen.stdout` and :attr:`Popen.stderr` are not updated by the "
+":meth:`Popen.communicate` method."
+msgstr ""
+"Thuộc tính dòng mới của các đối tượng tệp :attr:`Popen.stdin`, "
+":attr:`Popen.stdout` và :attr:`Popen.stderr` không được cập nhật bằng phương"
+" thức :meth:`Popen.communicate`."
+
+#: ../../library/subprocess.rst:326
+#, fuzzy
+msgid ""
+"If *shell* is ``True``, the specified command will be executed through the "
+"shell.  This can be useful if you are using Python primarily for the "
+"enhanced control flow it offers over most system shells and still want "
+"convenient access to other shell features such as shell pipes, filename "
+"wildcards, environment variable expansion, and expansion of ``~`` to a "
+"user's home directory.  However, note that Python itself offers "
+"implementations of many shell-like features (in particular, :mod:`glob`, "
+":mod:`fnmatch`, :func:`os.walk`, :func:`os.path.expandvars`, "
+":func:`os.path.expanduser`, and :mod:`shutil`)."
+msgstr ""
+"Nếu *shell* là ``True``, lệnh được chỉ định sẽ được thực thi thông qua "
+"shell.  Điều này có thể hữu ích nếu bạn đang sử dụng Python chủ yếu cho "
+"luồng điều khiển nâng cao mà nó cung cấp trên hầu hết các shell hệ thống và "
+"vẫn muốn truy cập thuận tiện vào các tính năng shell khác như ống shell, ký "
+"tự đại diện tên tệp, mở rộng biến môi trường và mở rộng ``~`` sang thư mục "
+"chính của người dùng.  Tuy nhiên, lưu ý rằng bản thân Python cung cấp việc "
+"triển khai nhiều tính năng giống shell (cụ thể là :mod:`glob`, "
+":mod:`fnmatch`, :func:`os.walk`, :func:`os.path.expandvars`, "
+":func:`os.path.expanduser` và :mod:`shutil`)."
+
+#: ../../library/subprocess.rst:336
+#, fuzzy
+msgid ""
+"When *universal_newlines* is ``True``, the class uses the encoding "
+":func:`locale.getpreferredencoding(False) <locale.getpreferredencoding>` "
+"instead of ``locale.getpreferredencoding()``.  See the "
+":class:`io.TextIOWrapper` class for more information on this change."
+msgstr ""
+"Khi *universal_newlines* là ``True``, lớp sử dụng mã hóa "
+":func:`locale.getpreferredencoding(False) <locale.getpreferredencoding>` "
+"thay vì ``locale.getpreferredencoding()``.  Xem lớp "
+":class:`io.TextIOWrapper` để biết thêm thông tin về thay đổi này."
+
+#: ../../library/subprocess.rst:344 ../../library/subprocess.rst:465
+#, fuzzy
+msgid ""
+"Read the `Security Considerations`_ section before using ``shell=True``."
+msgstr "Đọc phần `Security Considerations`_ trước khi sử dụng ``shell=True``."
+
+#: ../../library/subprocess.rst:346
+#, fuzzy
+msgid ""
+"These options, along with all of the other options, are described in more "
+"detail in the :class:`Popen` constructor documentation."
+msgstr ""
+"Các tùy chọn này, cùng với tất cả các tùy chọn khác, được mô tả chi tiết hơn"
+" trong tài liệu về hàm tạo :class:`Popen`."
+
+#: ../../library/subprocess.rst:351
+#, fuzzy
+msgid "Popen Constructor"
+msgstr "Nhà xây dựng Popen"
+
+#: ../../library/subprocess.rst:353
+#, fuzzy
+msgid ""
+"The underlying process creation and management in this module is handled by "
+"the :class:`Popen` class. It offers a lot of flexibility so that developers "
+"are able to handle the less common cases not covered by the convenience "
+"functions."
+msgstr ""
+"Việc tạo và quản lý quy trình cơ bản trong mô-đun này được xử lý bởi lớp "
+":class:`Popen`. Nó cung cấp rất nhiều tính linh hoạt để các nhà phát triển "
+"có thể xử lý các trường hợp ít phổ biến hơn mà các chức năng tiện lợi không "
+"đề cập đến."
+
+#: ../../library/subprocess.rst:368
+#, fuzzy
+msgid ""
+"Execute a child program in a new process.  On POSIX, the class uses "
+":meth:`os.execvpe`-like behavior to execute the child program.  On Windows, "
+"the class uses the Windows ``CreateProcess()`` function.  The arguments to "
+":class:`Popen` are as follows."
+msgstr ""
+"Thực hiện một chương trình con trong một tiến trình mới.  Trên POSIX, lớp sử"
+" dụng hành vi giống :meth:`os.execvpe` để thực thi chương trình con.  Trên "
+"Windows, lớp sử dụng hàm Windows ``CreateProcess()``.  Các đối số cho "
+":class:`Popen` như sau."
+
+#: ../../library/subprocess.rst:373
+#, fuzzy
+msgid ""
+"*args* should be a sequence of program arguments or else a single string or "
+":term:`path-like object`. By default, the program to execute is the first "
+"item in *args* if *args* is a sequence.  If *args* is a string, the "
+"interpretation is platform-dependent and described below.  See the *shell* "
+"and *executable* arguments for additional differences from the default "
+"behavior.  Unless otherwise stated, it is recommended to pass *args* as a "
+"sequence."
+msgstr ""
+"*args* phải là một chuỗi các đối số chương trình hoặc một chuỗi đơn hoặc "
+":term:`path-like object`. Theo mặc định, chương trình thực thi là mục đầu "
+"tiên trong *args* nếu *args* là một chuỗi.  Nếu *args* là một chuỗi thì việc"
+" diễn giải sẽ phụ thuộc vào nền tảng và được mô tả bên dưới.  Xem các đối số"
+" *shell* và *executable* để biết thêm những khác biệt so với hành vi mặc "
+"định.  Trừ khi có quy định khác, bạn nên chuyển *args* theo trình tự."
+
+#: ../../library/subprocess.rst:383
+#, fuzzy
+msgid ""
+"For maximum reliability, use a fully qualified path for the executable. To "
+"search for an unqualified name on :envvar:`PATH`, use :meth:`shutil.which`. "
+"On all platforms, passing :data:`sys.executable` is the recommended way to "
+"launch the current Python interpreter again, and use the ``-m`` command-line"
+" format to launch an installed module."
+msgstr ""
+"Để có độ tin cậy tối đa, hãy sử dụng đường dẫn đủ điều kiện cho tệp thực "
+"thi. Để tìm kiếm tên không đủ tiêu chuẩn trên :envvar:`PATH`, hãy sử dụng "
+":meth:`shutil.which`. Trên tất cả các nền tảng, chuyển "
+":data:`sys.executable` là cách được khuyến nghị để khởi chạy lại trình thông"
+" dịch Python hiện tại và sử dụng định dạng dòng lệnh ``-m`` để khởi chạy mô-"
+"đun đã cài đặt."
+
+#: ../../library/subprocess.rst:389
+#, fuzzy
+msgid ""
+"Resolving the path of *executable* (or the first item of *args*) is platform"
+" dependent. For POSIX, see :meth:`os.execvpe`, and note that when resolving "
+"or searching for the executable path, *cwd* overrides the current working "
+"directory and *env* can override the ``PATH`` environment variable. For "
+"Windows, see the documentation of the ``lpApplicationName`` and "
+"``lpCommandLine`` parameters of WinAPI ``CreateProcess``, and note that when"
+" resolving or searching for the executable path with ``shell=False``, *cwd* "
+"does not override the current working directory and *env* cannot override "
+"the ``PATH`` environment variable. Using a full path avoids all of these "
+"variations."
+msgstr ""
+"Việc giải quyết đường dẫn của *executable* (hoặc mục đầu tiên của *args*) "
+"phụ thuộc vào nền tảng. Đối với POSIX, hãy xem :meth:`os.execvpe` và lưu ý "
+"rằng khi phân giải hoặc tìm kiếm đường dẫn thực thi, *cwd* sẽ ghi đè thư mục"
+" làm việc hiện tại và *env* có thể ghi đè biến môi trường ``PATH``. Đối với "
+"Windows, hãy xem tài liệu về các tham số ``lpApplicationName`` và "
+"``lpCommandLine`` của WinAPI ``CreateProcess``, đồng thời lưu ý rằng khi "
+"phân giải hoặc tìm kiếm đường dẫn thực thi bằng ``shell=False``, *cwd* không"
+" ghi đè thư mục làm việc hiện tại và *env* không thể ghi đè biến môi trường "
+"``PATH``. Sử dụng đường dẫn đầy đủ sẽ tránh được tất cả các biến thể này."
+
+#: ../../library/subprocess.rst:400
+#, fuzzy
+msgid ""
+"An example of passing some arguments to an external program as a sequence "
+"is::"
+msgstr ""
+"Một ví dụ về việc chuyển một số đối số sang chương trình bên ngoài dưới dạng"
+" một chuỗi là::"
+
+#: ../../library/subprocess.rst:403
+#, fuzzy
+msgid "Popen([\"/usr/bin/git\", \"commit\", \"-m\", \"Fixes a bug.\"])"
+msgstr "Popen([\"/usr/bin/git\", \"commit\", \"-m\", \"Sửa lỗi.\"])"
+
+#: ../../library/subprocess.rst:405
+#, fuzzy
+msgid ""
+"On POSIX, if *args* is a string, the string is interpreted as the name or "
+"path of the program to execute.  However, this can only be done if not "
+"passing arguments to the program."
+msgstr ""
+"Trên POSIX, nếu *args* là một chuỗi thì chuỗi đó được hiểu là tên hoặc đường"
+" dẫn của chương trình cần thực thi.  Tuy nhiên, điều này chỉ có thể thực "
+"hiện được nếu không truyền đối số cho chương trình."
+
+#: ../../library/subprocess.rst:411
+#, fuzzy
+msgid ""
+"It may not be obvious how to break a shell command into a sequence of "
+"arguments, especially in complex cases. :meth:`shlex.split` can illustrate "
+"how to determine the correct tokenization for *args*::"
+msgstr ""
+"Có thể không rõ ràng về cách chia lệnh shell thành một chuỗi đối số, đặc "
+"biệt là trong các trường hợp phức tạp. :meth:`shlex.split` có thể minh họa "
+"cách xác định mã thông báo chính xác cho *args*::"
+
+#: ../../library/subprocess.rst:415
+#, fuzzy
+msgid ""
+">>> import shlex, subprocess\n"
+">>> command_line = input()\n"
+"/bin/vikings -input eggs.txt -output \"spam spam.txt\" -cmd \"echo '$MONEY'\"\n"
+">>> args = shlex.split(command_line)\n"
+">>> print(args)\n"
+"['/bin/vikings', '-input', 'eggs.txt', '-output', 'spam spam.txt', '-cmd', \"echo '$MONEY'\"]\n"
+">>> p = subprocess.Popen(args) # Success!"
+msgstr ""
+">>> nhập shlex, quy trình con\n"
+">>> command_line = đầu vào()\n"
+"/bin/vikings -input egg.txt -output \"spam spam.txt\" -cmd \"echo '$MONEY'\"\n"
+">>> args = shlex.split(command_line)\n"
+">>> in(args)\n"
+"['/bin/vikings', '-input', 'eggs.txt', '-output', 'spam spam.txt', '-cmd', \"echo '$MONEY'\"]\n"
+">>> p = subprocess.Popen(args) # Success!"
+
+#: ../../library/subprocess.rst:423
+#, fuzzy
+msgid ""
+"Note in particular that options (such as *-input*) and arguments (such as "
+"*eggs.txt*) that are separated by whitespace in the shell go in separate "
+"list elements, while arguments that need quoting or backslash escaping when "
+"used in the shell (such as filenames containing spaces or the *echo* command"
+" shown above) are single list elements."
+msgstr ""
+"Đặc biệt lưu ý rằng các tùy chọn (chẳng hạn như *-input*) và các đối số "
+"(chẳng hạn như *eggs.txt*) được phân tách bằng khoảng trắng trong shell sẽ "
+"nằm trong các thành phần danh sách riêng biệt, trong khi các đối số cần "
+"thoát khỏi trích dẫn hoặc dấu gạch chéo ngược khi được sử dụng trong shell "
+"(chẳng hạn như tên tệp chứa dấu cách hoặc lệnh *echo* hiển thị ở trên) là "
+"các thành phần danh sách đơn."
+
+#: ../../library/subprocess.rst:429
+#, fuzzy
+msgid ""
+"On Windows, if *args* is a sequence, it will be converted to a string in a "
+"manner described in :ref:`converting-argument-sequence`.  This is because "
+"the underlying ``CreateProcess()`` operates on strings."
+msgstr ""
+"Trên Windows, nếu *args* là một chuỗi, nó sẽ được chuyển đổi thành chuỗi "
+"theo cách được mô tả trong :ref:`converting-argument-sequence`.  Điều này là"
+" do ``CreateProcess()`` cơ bản hoạt động trên chuỗi."
+
+#: ../../library/subprocess.rst:433
+#, fuzzy
+msgid ""
+"*args* parameter accepts a :term:`path-like object` if *shell* is ``False`` "
+"and a sequence containing path-like objects on POSIX."
+msgstr ""
+"Tham số *args* chấp nhận :term:`path-like object` nếu *shell* là ``False`` "
+"và một chuỗi chứa các đối tượng giống đường dẫn trên POSIX."
+
+#: ../../library/subprocess.rst:437
+#, fuzzy
+msgid ""
+"*args* parameter accepts a :term:`path-like object` if *shell* is ``False`` "
+"and a sequence containing bytes and path-like objects on Windows."
+msgstr ""
+"Tham số *args* chấp nhận :term:`path-like object` nếu *shell* là ``False`` "
+"và một chuỗi chứa byte và các đối tượng giống đường dẫn trên Windows."
+
+#: ../../library/subprocess.rst:442
+#, fuzzy
+msgid ""
+"The *shell* argument (which defaults to ``False``) specifies whether to use "
+"the shell as the program to execute.  If *shell* is ``True``, it is "
+"recommended to pass *args* as a string rather than as a sequence."
+msgstr ""
+"Đối số *shell* (mặc định là ``False``) chỉ định xem có sử dụng shell làm "
+"chương trình để thực thi hay không.  Nếu *shell* là ``True``, bạn nên chuyển"
+" *args* dưới dạng một chuỗi thay vì một chuỗi."
+
+#: ../../library/subprocess.rst:446
+#, fuzzy
+msgid ""
+"On POSIX with ``shell=True``, the shell defaults to :file:`/bin/sh`.  If "
+"*args* is a string, the string specifies the command to execute through the "
+"shell.  This means that the string must be formatted exactly as it would be "
+"when typed at the shell prompt.  This includes, for example, quoting or "
+"backslash escaping filenames with spaces in them.  If *args* is a sequence, "
+"the first item specifies the command string, and any additional items will "
+"be treated as additional arguments to the shell itself.  That is to say, "
+":class:`Popen` does the equivalent of::"
+msgstr ""
+"Trên POSIX với ``shell=True``, shell mặc định là :file:`/bin/sh`.  Nếu "
+"*args* là một chuỗi, chuỗi đó chỉ định lệnh thực thi thông qua shell.  Điều "
+"này có nghĩa là chuỗi phải được định dạng chính xác như khi gõ vào dấu nhắc "
+"shell.  Ví dụ: điều này bao gồm trích dẫn hoặc dấu gạch chéo ngược thoát "
+"khỏi tên tệp có dấu cách trong đó.  Nếu *args* là một chuỗi, mục đầu tiên "
+"chỉ định chuỗi lệnh và mọi mục bổ sung sẽ được coi là đối số bổ sung cho "
+"chính shell.  Điều đó có nghĩa là, :class:`Popen` thực hiện tương đương "
+"với::"
+
+#: ../../library/subprocess.rst:455
+#, fuzzy
+msgid "Popen(['/bin/sh', '-c', args[0], args[1], ...])"
+msgstr "Popen(['/bin/sh', '-c', args[0], args[1], ...])"
+
+#: ../../library/subprocess.rst:457
+#, fuzzy
+msgid ""
+"On Windows with ``shell=True``, the :envvar:`COMSPEC` environment variable "
+"specifies the default shell.  The only time you need to specify "
+"``shell=True`` on Windows is when the command you wish to execute is built "
+"into the shell (e.g. :command:`dir` or :command:`copy`).  You do not need "
+"``shell=True`` to run a batch file or console-based executable."
+msgstr ""
+"Trên Windows có ``shell=True``, biến môi trường :envvar:`COMSPEC` chỉ định "
+"shell mặc định.  Lần duy nhất bạn cần chỉ định ``shell=True`` trên Windows "
+"là khi lệnh bạn muốn thực thi được tích hợp vào shell (ví dụ: :command:`dir`"
+" hoặc :command:`copy`).  Bạn không cần ``shell=True`` để chạy tệp bó hoặc "
+"tệp thực thi dựa trên bảng điều khiển."
+
+#: ../../library/subprocess.rst:467
+#, fuzzy
+msgid ""
+"*bufsize* will be supplied as the corresponding argument to the :func:`open`"
+" function when creating the stdin/stdout/stderr pipe file objects:"
+msgstr ""
+"*bufsize* sẽ được cung cấp dưới dạng đối số tương ứng cho hàm :func:`open` "
+"khi tạo các đối tượng tệp ống stdin/stdout/stderr:"
+
+#: ../../library/subprocess.rst:471
+#, fuzzy
+msgid ""
+"``0`` means unbuffered (read and write are one system call and can return "
+"short)"
+msgstr ""
+"``0`` có nghĩa là không có bộ đệm (đọc và ghi là một lệnh gọi hệ thống và có"
+" thể trả về ngắn gọn)"
+
+#: ../../library/subprocess.rst:473
+#, fuzzy
+msgid ""
+"``1`` means line buffered (only usable if ``text=True`` or "
+"``universal_newlines=True``)"
+msgstr ""
+"``1`` có nghĩa là dòng được đệm (chỉ sử dụng được nếu ``text=True`` hoặc "
+"``universal_newlines=True``)"
+
+#: ../../library/subprocess.rst:475
+#, fuzzy
+msgid "any other positive value means use a buffer of approximately that size"
+msgstr ""
+"bất kỳ giá trị dương nào khác có nghĩa là sử dụng bộ đệm có kích thước xấp "
+"xỉ đó"
+
+#: ../../library/subprocess.rst:477
+#, fuzzy
+msgid ""
+"negative bufsize (the default) means the system default of "
+"io.DEFAULT_BUFFER_SIZE will be used."
+msgstr ""
+"bufsize âm (mặc định) có nghĩa là mặc định hệ thống của "
+"io.DEFAULT_BUFFER_SIZE sẽ được sử dụng."
+
+#: ../../library/subprocess.rst:480
+#, fuzzy
+msgid ""
+"*bufsize* now defaults to -1 to enable buffering by default to match the "
+"behavior that most code expects.  In versions prior to Python 3.2.4 and "
+"3.3.1 it incorrectly defaulted to ``0`` which was unbuffered and allowed "
+"short reads.  This was unintentional and did not match the behavior of "
+"Python 2 as most code expected."
+msgstr ""
+"*bufsize* hiện được mặc định là -1 để bật tính năng đệm theo mặc định nhằm "
+"phù hợp với hành vi mà hầu hết các mã mong đợi.  Trong các phiên bản trước "
+"Python 3.2.4 và 3.3.1, nó được đặt mặc định không chính xác thành ``0``, "
+"không có bộ đệm và cho phép đọc ngắn.  Điều này là vô tình và không phù hợp "
+"với hành vi của Python 2 như hầu hết các mã mong đợi."
+
+#: ../../library/subprocess.rst:487
+#, fuzzy
+msgid ""
+"The *executable* argument specifies a replacement program to execute.   It "
+"is very seldom needed.  When ``shell=False``, *executable* replaces the "
+"program to execute specified by *args*.  However, the original *args* is "
+"still passed to the program.  Most programs treat the program specified by "
+"*args* as the command name, which can then be different from the program "
+"actually executed.  On POSIX, the *args* name becomes the display name for "
+"the executable in utilities such as :program:`ps`.  If ``shell=True``, on "
+"POSIX the *executable* argument specifies a replacement shell for the "
+"default :file:`/bin/sh`."
+msgstr ""
+"Đối số *executable* chỉ định chương trình thay thế sẽ thực thi.   Nó rất "
+"hiếm khi cần thiết.  Khi ``shell=False``, *executable* thay thế chương trình"
+" để thực thi do *args* chỉ định.  Tuy nhiên, *args* ban đầu vẫn được chuyển "
+"vào chương trình.  Hầu hết các chương trình đều coi chương trình được chỉ "
+"định bởi *args* làm tên lệnh, khi đó tên này có thể khác với chương trình "
+"được thực thi thực sự.  Trên POSIX, tên *args* trở thành tên hiển thị cho "
+"tệp thực thi trong các tiện ích như :program:`ps`.  Nếu ``shell=True``, trên"
+" POSIX đối số *executable* chỉ định một shell thay thế cho :file:`/bin/sh` "
+"mặc định."
+
+#: ../../library/subprocess.rst:497
+#, fuzzy
+msgid "*executable* parameter accepts a :term:`path-like object` on POSIX."
+msgstr "Tham số *executable* chấp nhận :term:`path-like object` trên POSIX."
+
+#: ../../library/subprocess.rst:500
+#, fuzzy
+msgid ""
+"*executable* parameter accepts a bytes and :term:`path-like object` on "
+"Windows."
+msgstr ""
+"Tham số *executable* chấp nhận byte và :term:`path-like object` trên "
+"Windows."
+
+#: ../../library/subprocess.rst:512
+#, fuzzy
+msgid ""
+"*stdin*, *stdout* and *stderr* specify the executed program's standard "
+"input, standard output and standard error file handles, respectively.  Valid"
+" values are ``None``, :data:`PIPE`, :data:`DEVNULL`, an existing file "
+"descriptor (a positive integer), and an existing :term:`file object` with a "
+"valid file descriptor.  With the default settings of ``None``, no "
+"redirection will occur.  :data:`PIPE` indicates that a new pipe to the child"
+" should be created.  :data:`DEVNULL` indicates that the special file "
+":data:`os.devnull` will be used.  Additionally, *stderr* can be "
+":data:`STDOUT`, which indicates that the stderr data from the applications "
+"should be captured into the same file handle as for *stdout*."
+msgstr ""
+"*stdin*, *stdout* và *stderr* chỉ định lần lượt các xử lý đầu vào tiêu "
+"chuẩn, đầu ra tiêu chuẩn và xử lý tệp lỗi tiêu chuẩn của chương trình được "
+"thực thi.  Các giá trị hợp lệ là ``None``, :data:`PIPE`, :data:`DEVNULL`, bộ"
+" mô tả tệp hiện có (số nguyên dương) và :term:`file object` hiện có với bộ "
+"mô tả tệp hợp lệ.  Với cài đặt mặc định của ``None``, sẽ không có chuyển "
+"hướng nào xảy ra.  :data:`PIPE` chỉ ra rằng cần tạo một đường ống mới cho "
+"trẻ.  :data:`DEVNULL` chỉ ra rằng tệp đặc biệt :data:`os.devnull` sẽ được sử"
+" dụng.  Ngoài ra, *stderr* có thể là :data:`STDOUT`, cho biết rằng dữ liệu "
+"stderr từ các ứng dụng phải được ghi vào cùng một trình xử lý tệp như đối "
+"với *stdout*."
+
+#: ../../library/subprocess.rst:523
+#, fuzzy
+msgid ""
+"If *preexec_fn* is set to a callable object, this object will be called in "
+"the child process just before the child is executed. (POSIX only)"
+msgstr ""
+"Nếu *preexec_fn* được đặt thành một đối tượng có thể gọi được, đối tượng này"
+" sẽ được gọi trong tiến trình con ngay trước khi tiến trình con đó được thực"
+" thi. (chỉ POSIX)"
+
+#: ../../library/subprocess.rst:529
+#, fuzzy
+msgid ""
+"The *preexec_fn* parameter is NOT SAFE to use in the presence of threads in "
+"your application.  The child process could deadlock before exec is called."
+msgstr ""
+"Tham số *preexec_fn* là NOT SAFE để sử dụng khi có các luồng trong ứng dụng "
+"của bạn.  Tiến trình con có thể bị bế tắc trước khi lệnh thực thi được gọi."
+
+#: ../../library/subprocess.rst:535
+#, fuzzy
+msgid ""
+"If you need to modify the environment for the child use the *env* parameter "
+"rather than doing it in a *preexec_fn*. The *start_new_session* and "
+"*process_group* parameters should take the place of code using *preexec_fn* "
+"to call :func:`os.setsid` or :func:`os.setpgid` in the child."
+msgstr ""
+"Nếu bạn cần sửa đổi môi trường cho trẻ, hãy sử dụng tham số *env* thay vì "
+"thực hiện trong *preexec_fn*. Các tham số *start_new_session* và "
+"*process_group* sẽ thay thế mã sử dụng *preexec_fn* để gọi :func:`os.setsid`"
+" hoặc :func:`os.setpgid` ở trẻ em."
+
+#: ../../library/subprocess.rst:542
+#, fuzzy
+msgid ""
+"The *preexec_fn* parameter is no longer supported in subinterpreters. The "
+"use of the parameter in a subinterpreter raises :exc:`RuntimeError`. The new"
+" restriction may affect applications that are deployed in mod_wsgi, uWSGI, "
+"and other embedded environments."
+msgstr ""
+"Tham số *preexec_fn* không còn được hỗ trợ trong trình thông dịch phụ. Việc "
+"sử dụng tham số trong trình thông dịch phụ sẽ tăng :exc:`RuntimeError`. Hạn "
+"chế mới có thể ảnh hưởng đến các ứng dụng được triển khai trong mod_wsgi, "
+"uWSGI và các môi trường nhúng khác."
+
+#: ../../library/subprocess.rst:547
+#, fuzzy
+msgid ""
+"If *close_fds* is true, all file descriptors except ``0``, ``1`` and ``2`` "
+"will be closed before the child process is executed.  Otherwise when "
+"*close_fds* is false, file descriptors obey their inheritable flag as "
+"described in :ref:`fd_inheritance`."
+msgstr ""
+"Nếu *close_fds* là đúng, tất cả các bộ mô tả tệp ngoại trừ ``0``, ``1`` và "
+"``2`` sẽ bị đóng trước khi tiến trình con được thực thi.  Mặt khác, khi "
+"*close_fds* sai, bộ mô tả tệp sẽ tuân theo cờ kế thừa của chúng như được mô "
+"tả trong :ref:`fd_inheritance`."
+
+#: ../../library/subprocess.rst:552
+#, fuzzy
+msgid ""
+"On Windows, if *close_fds* is true then no handles will be inherited by the "
+"child process unless explicitly passed in the ``handle_list`` element of "
+":attr:`STARTUPINFO.lpAttributeList`, or by standard handle redirection."
+msgstr ""
+"Trên Windows, nếu *close_fds* là đúng thì sẽ không có bộ điều khiển nào được"
+" kế thừa bởi tiến trình con trừ khi được chuyển một cách rõ ràng trong phần "
+"tử ``handle_list`` của :attr:`STARTUPINFO.lpAttributeList` hoặc bằng cách "
+"chuyển hướng bộ điều khiển tiêu chuẩn."
+
+#: ../../library/subprocess.rst:556
+#, fuzzy
+msgid ""
+"The default for *close_fds* was changed from :const:`False` to what is "
+"described above."
+msgstr ""
+"Mặc định cho *close_fds* đã được thay đổi từ :const:`False` thành cài đặt "
+"được mô tả ở trên."
+
+#: ../../library/subprocess.rst:560
+#, fuzzy
+msgid ""
+"On Windows the default for *close_fds* was changed from :const:`False` to "
+":const:`True` when redirecting the standard handles. It's now possible to "
+"set *close_fds* to :const:`True` when redirecting the standard handles."
+msgstr ""
+"Trên Windows, mặc định cho *close_fds* đã được thay đổi từ :const:`False` "
+"thành :const:`True` khi chuyển hướng các thẻ điều khiển tiêu chuẩn. Hiện "
+"tại, bạn có thể đặt *close_fds* thành :const:`True` khi chuyển hướng các thẻ"
+" điều khiển tiêu chuẩn."
+
+#: ../../library/subprocess.rst:565
+#, fuzzy
+msgid ""
+"*pass_fds* is an optional sequence of file descriptors to keep open between "
+"the parent and child.  Providing any *pass_fds* forces *close_fds* to be "
+":const:`True`.  (POSIX only)"
+msgstr ""
+"*pass_fds* là một chuỗi mô tả tệp tùy chọn để giữ mở giữa cha mẹ và con.  "
+"Việc cung cấp bất kỳ *pass_fds* nào đều buộc *close_fds* phải là "
+":const:`True`.  (chỉ POSIX)"
+
+#: ../../library/subprocess.rst:569
+#, fuzzy
+msgid "The *pass_fds* parameter was added."
+msgstr "Tham số *pass_fds* đã được thêm vào."
+
+#: ../../library/subprocess.rst:572
+#, fuzzy
+msgid ""
+"If *cwd* is not ``None``, the function changes the working directory to "
+"*cwd* before executing the child.  *cwd* can be a string, bytes or "
+":term:`path-like <path-like object>` object.  On POSIX, the function looks "
+"for *executable* (or for the first item in *args*) relative to *cwd* if the "
+"executable path is a relative path."
+msgstr ""
+"Nếu *cwd* không phải là ``None``, hàm sẽ thay đổi thư mục làm việc thành "
+"*cwd* trước khi thực thi con.  *cwd* có thể là một đối tượng chuỗi, byte "
+"hoặc :term:`path-like <path-like object>`.  Trên POSIX, hàm tìm kiếm "
+"*executable* (hoặc mục đầu tiên trong *args*) liên quan đến *cwd* nếu đường "
+"dẫn thực thi là đường dẫn tương đối."
+
+#: ../../library/subprocess.rst:578
+#, fuzzy
+msgid "*cwd* parameter accepts a :term:`path-like object` on POSIX."
+msgstr "Tham số *cwd* chấp nhận :term:`path-like object` trên POSIX."
+
+#: ../../library/subprocess.rst:581
+#, fuzzy
+msgid "*cwd* parameter accepts a :term:`path-like object` on Windows."
+msgstr "Tham số *cwd* chấp nhận :term:`path-like object` trên Windows."
+
+#: ../../library/subprocess.rst:584
+#, fuzzy
+msgid "*cwd* parameter accepts a bytes object on Windows."
+msgstr "Tham số *cwd* chấp nhận đối tượng byte trên Windows."
+
+#: ../../library/subprocess.rst:587
+#, fuzzy
+msgid ""
+"If *restore_signals* is true (the default) all signals that Python has set "
+"to SIG_IGN are restored to SIG_DFL in the child process before the exec. "
+"Currently this includes the SIGPIPE, SIGXFZ and SIGXFSZ signals. (POSIX "
+"only)"
+msgstr ""
+"Nếu *restore_signals* là đúng (mặc định) thì tất cả các tín hiệu mà Python "
+"đã đặt thành SIG_IGN sẽ được khôi phục về SIG_DFL trong tiến trình con trước"
+" lệnh thực thi. Hiện tại, điều này bao gồm các tín hiệu SIGPIPE, SIGXFZ và "
+"SIGXFSZ. (chỉ POSIX)"
+
+#: ../../library/subprocess.rst:592
+#, fuzzy
+msgid "*restore_signals* was added."
+msgstr "*restore_signals* đã được thêm vào."
+
+#: ../../library/subprocess.rst:595
+#, fuzzy
+msgid ""
+"If *start_new_session* is true the ``setsid()`` system call will be made in "
+"the child process prior to the execution of the subprocess."
+msgstr ""
+"Nếu *start_new_session* đúng, lệnh gọi hệ thống ``setsid()`` sẽ được thực "
+"hiện trong tiến trình con trước khi thực thi tiến trình con."
+
+#: ../../library/subprocess.rst:599
+#, fuzzy
+msgid "*start_new_session* was added."
+msgstr "*start_new_session* đã được thêm vào."
+
+#: ../../library/subprocess.rst:602
+#, fuzzy
+msgid ""
+"If *process_group* is a non-negative integer, the ``setpgid(0, value)`` "
+"system call will be made in the child process prior to the execution of the "
+"subprocess."
+msgstr ""
+"Nếu *process_group* là số nguyên không âm, lệnh gọi hệ thống ``setpgid(0, "
+"value)`` sẽ được thực hiện trong tiến trình con trước khi thực thi tiến "
+"trình con."
+
+#: ../../library/subprocess.rst:606
+#, fuzzy
+msgid "*process_group* was added."
+msgstr "*process_group* đã được thêm vào."
+
+#: ../../library/subprocess.rst:609
+#, fuzzy
+msgid ""
+"If *group* is not ``None``, the setregid() system call will be made in the "
+"child process prior to the execution of the subprocess. If the provided "
+"value is a string, it will be looked up via :func:`grp.getgrnam` and the "
+"value in ``gr_gid`` will be used. If the value is an integer, it will be "
+"passed verbatim. (POSIX only)"
+msgstr ""
+"Nếu *group* không phải là ``None``, lệnh gọi hệ thống setregid() sẽ được "
+"thực hiện trong tiến trình con trước khi thực thi tiến trình con. Nếu giá "
+"trị được cung cấp là một chuỗi, nó sẽ được tra cứu thông qua "
+":func:`grp.getgrnam` và giá trị trong ``gr_gid`` sẽ được sử dụng. Nếu giá "
+"trị là số nguyên, nó sẽ được truyền nguyên văn. (chỉ POSIX)"
+
+#: ../../library/subprocess.rst:618
+#, fuzzy
+msgid ""
+"If *extra_groups* is not ``None``, the setgroups() system call will be made "
+"in the child process prior to the execution of the subprocess. Strings "
+"provided in *extra_groups* will be looked up via :func:`grp.getgrnam` and "
+"the values in ``gr_gid`` will be used. Integer values will be passed "
+"verbatim. (POSIX only)"
+msgstr ""
+"Nếu *extra_groups* không phải là ``None``, lệnh gọi hệ thống setgroups() sẽ "
+"được thực hiện trong tiến trình con trước khi thực thi tiến trình con. Các "
+"chuỗi được cung cấp trong *extra_groups* sẽ được tra cứu thông qua "
+":func:`grp.getgrnam` và các giá trị trong ``gr_gid`` sẽ được sử dụng. Các "
+"giá trị số nguyên sẽ được truyền nguyên văn. (chỉ POSIX)"
+
+#: ../../library/subprocess.rst:627
+#, fuzzy
+msgid ""
+"If *user* is not ``None``, the setreuid() system call will be made in the "
+"child process prior to the execution of the subprocess. If the provided "
+"value is a string, it will be looked up via :func:`pwd.getpwnam` and the "
+"value in ``pw_uid`` will be used. If the value is an integer, it will be "
+"passed verbatim. (POSIX only)"
+msgstr ""
+"Nếu *user* không phải là ``None``, lệnh gọi hệ thống setreuid() sẽ được thực"
+" hiện trong tiến trình con trước khi thực thi tiến trình con. Nếu giá trị "
+"được cung cấp là một chuỗi, nó sẽ được tra cứu thông qua "
+":func:`pwd.getpwnam` và giá trị trong ``pw_uid`` sẽ được sử dụng. Nếu giá "
+"trị là số nguyên, nó sẽ được truyền nguyên văn. (chỉ POSIX)"
+
+#: ../../library/subprocess.rst:635
+#, fuzzy
+msgid ""
+"Specifying *user* will not drop existing supplementary group memberships! "
+"The caller must also pass ``extra_groups=()`` to reduce the group membership"
+" of the child process for security purposes."
+msgstr ""
+"Việc chỉ định *user* sẽ không loại bỏ tư cách thành viên nhóm bổ sung hiện "
+"có! Người gọi cũng phải vượt qua ``extra_groups=()`` để giảm tư cách thành "
+"viên nhóm của tiến trình con vì mục đích bảo mật."
+
+#: ../../library/subprocess.rst:642
+#, fuzzy
+msgid ""
+"If *umask* is not negative, the umask() system call will be made in the "
+"child process prior to the execution of the subprocess."
+msgstr ""
+"Nếu *umask* không âm, lệnh gọi hệ thống umask() sẽ được thực hiện trong tiến"
+" trình con trước khi thực thi tiến trình con."
+
+#: ../../library/subprocess.rst:648
+#, fuzzy
+msgid ""
+"If *env* is not ``None``, it must be a mapping that defines the environment "
+"variables for the new process; these are used instead of the default "
+"behavior of inheriting the current process' environment. This mapping can be"
+" str to str on any platform or bytes to bytes on POSIX platforms much like "
+":data:`os.environ` or :data:`os.environb`."
+msgstr ""
+"Nếu *env* không phải là ``None``, thì đó phải là ánh xạ xác định các biến "
+"môi trường cho quy trình mới; chúng được sử dụng thay vì hành vi mặc định là"
+" kế thừa môi trường của quy trình hiện tại. Ánh xạ này có thể là str thành "
+"str trên bất kỳ nền tảng nào hoặc byte thành byte trên nền tảng POSIX giống "
+"như :data:`os.environ` hoặc :data:`os.environb`."
+
+#: ../../library/subprocess.rst:656
+#, fuzzy
+msgid ""
+"If specified, *env* must provide any variables required for the program to "
+"execute.  On Windows, in order to run a `side-by-side assembly`_ the "
+"specified *env* **must** include a valid ``%SystemRoot%``."
+msgstr ""
+"Nếu được chỉ định, *env* phải cung cấp bất kỳ biến nào cần thiết để chương "
+"trình thực thi.  Trên Windows, để chạy `side-by-side assembly`_, *env* "
+"**must** được chỉ định phải bao gồm ``%SystemRoot%`` hợp lệ."
+
+#: ../../library/subprocess.rst:662
+#, fuzzy
+msgid ""
+"If *encoding* or *errors* are specified, or *text* is true, the file objects"
+" *stdin*, *stdout* and *stderr* are opened in text mode with the specified "
+"*encoding* and *errors*, as described above in :ref:`frequently-used-"
+"arguments`. The *universal_newlines* argument is equivalent  to *text* and "
+"is provided for backwards compatibility. By default, file objects are opened"
+" in binary mode."
+msgstr ""
+"Nếu *encoding* hoặc *errors* được chỉ định hoặc *text* là đúng, thì các đối "
+"tượng tệp *stdin*, *stdout* và *stderr* sẽ được mở ở chế độ văn bản với "
+"*encoding* và *errors* được chỉ định, như được mô tả ở trên trong "
+":ref:`frequently-used-arguments`. Đối số *universal_newlines* tương đương "
+"với *text* và được cung cấp để tương thích ngược. Theo mặc định, các đối "
+"tượng tệp được mở ở chế độ nhị phân."
+
+#: ../../library/subprocess.rst:668
+#, fuzzy
+msgid "*encoding* and *errors* were added."
+msgstr "*encoding* và *errors* đã được thêm vào."
+
+#: ../../library/subprocess.rst:671 ../../library/subprocess.rst:1330
+#, fuzzy
+msgid "*text* was added as a more readable alias for *universal_newlines*."
+msgstr "*text* đã được thêm làm bí danh dễ đọc hơn cho *universal_newlines*."
+
+#: ../../library/subprocess.rst:674
+#, fuzzy
+msgid ""
+"If given, *startupinfo* will be a :class:`STARTUPINFO` object, which is "
+"passed to the underlying ``CreateProcess`` function."
+msgstr ""
+"Nếu được cung cấp, *startupinfo* sẽ là một đối tượng :class:`STARTUPINFO`, "
+"được chuyển đến hàm ``CreateProcess`` cơ bản."
+
+#: ../../library/subprocess.rst:677
+#, fuzzy
+msgid "If given, *creationflags*, can be one or more of the following flags:"
+msgstr "Nếu được cung cấp, *creationflags*, có thể là một hoặc nhiều cờ sau:"
+
+#: ../../library/subprocess.rst:679
+#, fuzzy
+msgid ":data:`CREATE_NEW_CONSOLE`"
+msgstr ":data:`CREATE_NEW_CONSOLE`"
+
+#: ../../library/subprocess.rst:680
+#, fuzzy
+msgid ":data:`CREATE_NEW_PROCESS_GROUP`"
+msgstr ":data:`CREATE_NEW_PROCESS_GROUP`"
+
+#: ../../library/subprocess.rst:681
+#, fuzzy
+msgid ":data:`ABOVE_NORMAL_PRIORITY_CLASS`"
+msgstr ":data:`ABOVE_NORMAL_PRIORITY_CLASS`"
+
+#: ../../library/subprocess.rst:682
+#, fuzzy
+msgid ":data:`BELOW_NORMAL_PRIORITY_CLASS`"
+msgstr ":data:`BELOW_NORMAL_PRIORITY_CLASS`"
+
+#: ../../library/subprocess.rst:683
+#, fuzzy
+msgid ":data:`HIGH_PRIORITY_CLASS`"
+msgstr ":data:`HIGH_PRIORITY_CLASS`"
+
+#: ../../library/subprocess.rst:684
+#, fuzzy
+msgid ":data:`IDLE_PRIORITY_CLASS`"
+msgstr ":data:`IDLE_PRIORITY_CLASS`"
+
+#: ../../library/subprocess.rst:685
+#, fuzzy
+msgid ":data:`NORMAL_PRIORITY_CLASS`"
+msgstr ":data:`NORMAL_PRIORITY_CLASS`"
+
+#: ../../library/subprocess.rst:686
+#, fuzzy
+msgid ":data:`REALTIME_PRIORITY_CLASS`"
+msgstr ":data:`REALTIME_PRIORITY_CLASS`"
+
+#: ../../library/subprocess.rst:687
+#, fuzzy
+msgid ":data:`CREATE_NO_WINDOW`"
+msgstr ":data:`CREATE_NO_WINDOW`"
+
+#: ../../library/subprocess.rst:688
+#, fuzzy
+msgid ":data:`DETACHED_PROCESS`"
+msgstr ":data:`DETACHED_PROCESS`"
+
+#: ../../library/subprocess.rst:689
+#, fuzzy
+msgid ":data:`CREATE_DEFAULT_ERROR_MODE`"
+msgstr ":data:`CREATE_DEFAULT_ERROR_MODE`"
+
+#: ../../library/subprocess.rst:690
+#, fuzzy
+msgid ":data:`CREATE_BREAKAWAY_FROM_JOB`"
+msgstr ":data:`CREATE_BREAKAWAY_FROM_JOB`"
+
+#: ../../library/subprocess.rst:692
+#, fuzzy
+msgid ""
+"*pipesize* can be used to change the size of the pipe when :data:`PIPE` is "
+"used for *stdin*, *stdout* or *stderr*. The size of the pipe is only changed"
+" on platforms that support this (only Linux at this time of writing). Other "
+"platforms will ignore this parameter."
+msgstr ""
+"*pipesize* có thể được sử dụng để thay đổi kích thước của pipe khi "
+":data:`PIPE` được sử dụng cho *stdin*, *stdout* hoặc *stderr*. Kích thước "
+"của đường ống chỉ được thay đổi trên các nền tảng hỗ trợ điều này (chỉ có "
+"Linux tại thời điểm viết bài). Các nền tảng khác sẽ bỏ qua tham số này."
+
+#: ../../library/subprocess.rst:697
+#, fuzzy
+msgid "Added the *pipesize* parameter."
+msgstr "Đã thêm tham số *pipesize*."
+
+#: ../../library/subprocess.rst:700
+#, fuzzy
+msgid ""
+"Popen objects are supported as context managers via the :keyword:`with` "
+"statement: on exit, standard file descriptors are closed, and the process is"
+" waited for. ::"
+msgstr ""
+"Các đối tượng Popen được hỗ trợ dưới dạng trình quản lý bối cảnh thông qua "
+"câu lệnh :keyword:`with`: khi thoát, các bộ mô tả tệp tiêu chuẩn sẽ bị đóng "
+"và quá trình này được chờ đợi. ::"
+
+#: ../../library/subprocess.rst:704
+#, fuzzy
+msgid ""
+"with Popen([\"ifconfig\"], stdout=PIPE) as proc:\n"
+"    log.write(proc.stdout.read())"
+msgstr ""
+"với Popen([\"ifconfig\"], stdout=PIPE) là Proc:\n"
+"    log.write(proc.stdout.read())"
+
+#: ../../library/subprocess.rst:707 ../../library/subprocess.rst:709
+#, fuzzy
+msgid ""
+"Popen and the other functions in this module that use it raise an "
+":ref:`auditing event <auditing>` ``subprocess.Popen`` with arguments "
+"``executable``, ``args``, ``cwd``, and ``env``. The value for ``args`` may "
+"be a single string or a list of strings, depending on platform."
+msgstr ""
+"Popen và các hàm khác trong mô-đun này sử dụng nó sẽ tạo ra :ref:`auditing "
+"event <auditing>` ``subprocess.Popen`` với các đối số ``executable``, "
+"``args``, ``cwd`` và ``env``. Giá trị cho ``args`` có thể là một chuỗi đơn "
+"hoặc một danh sách các chuỗi, tùy thuộc vào nền tảng."
+
+#: ../../library/subprocess.rst:714
+#, fuzzy
+msgid "Added context manager support."
+msgstr "Đã thêm hỗ trợ quản lý bối cảnh."
+
+#: ../../library/subprocess.rst:717
+#, fuzzy
+msgid ""
+"Popen destructor now emits a :exc:`ResourceWarning` warning if the child "
+"process is still running."
+msgstr ""
+"Hàm hủy Popen hiện phát ra cảnh báo :exc:`ResourceWarning` nếu tiến trình "
+"con vẫn đang chạy."
+
+#: ../../library/subprocess.rst:721
+#, fuzzy
+msgid ""
+"Popen can use :func:`os.posix_spawn` in some cases for better performance. "
+"On Windows Subsystem for Linux and QEMU User Emulation, Popen constructor "
+"using :func:`os.posix_spawn` no longer raise an exception on errors like "
+"missing program, but the child process fails with a non-zero "
+":attr:`~Popen.returncode`."
+msgstr ""
+"Popen có thể sử dụng :func:`os.posix_spawn` trong một số trường hợp để có "
+"hiệu suất tốt hơn. Trên Hệ thống con Windows dành cho Linux và Mô phỏng "
+"người dùng QEMU, hàm tạo Popen sử dụng :func:`os.posix_spawn` không còn đưa "
+"ra ngoại lệ đối với các lỗi như thiếu chương trình, nhưng quy trình con "
+"không thành công với :attr:`~Popen.returncode` khác 0."
+
+#: ../../library/subprocess.rst:730
+#, fuzzy
+msgid "Exceptions"
+msgstr "Ngoại lệ"
+
+#: ../../library/subprocess.rst:732
+#, fuzzy
+msgid ""
+"Exceptions raised in the child process, before the new program has started "
+"to execute, will be re-raised in the parent."
+msgstr ""
+"Các ngoại lệ được đưa ra trong tiến trình con, trước khi chương trình mới "
+"bắt đầu thực thi, sẽ được đưa ra lại trong tiến trình mẹ."
+
+#: ../../library/subprocess.rst:735
+#, fuzzy
+msgid ""
+"The most common exception raised is :exc:`OSError`.  This occurs, for "
+"example, when trying to execute a non-existent file.  Applications should "
+"prepare for :exc:`OSError` exceptions. Note that, when ``shell=True``, "
+":exc:`OSError` will be raised by the child only if the selected shell itself"
+" was not found. To determine if the shell failed to find the requested "
+"application, it is necessary to check the return code or output from the "
+"subprocess."
+msgstr ""
+"Ngoại lệ phổ biến nhất được nêu ra là :exc:`OSError`.  Ví dụ: điều này xảy "
+"ra khi cố gắng thực thi một tệp không tồn tại.  Các ứng dụng nên chuẩn bị "
+"cho trường hợp ngoại lệ :exc:`OSError`. Lưu ý rằng, khi ``shell=True``, "
+":exc:`OSError` sẽ chỉ được trẻ nâng lên nếu không tìm thấy chính shell đã "
+"chọn. Để xác định xem shell có tìm thấy ứng dụng được yêu cầu hay không, cần"
+" kiểm tra mã trả về hoặc đầu ra từ quy trình con."
+
+#: ../../library/subprocess.rst:742
+#, fuzzy
+msgid ""
+"A :exc:`ValueError` will be raised if :class:`Popen` is called with invalid "
+"arguments."
+msgstr ""
+"Một :exc:`ValueError` sẽ được nâng lên nếu :class:`Popen` được gọi với các "
+"đối số không hợp lệ."
+
+#: ../../library/subprocess.rst:745
+#, fuzzy
+msgid ""
+":func:`check_call` and :func:`check_output` will raise "
+":exc:`CalledProcessError` if the called process returns a non-zero return "
+"code."
+msgstr ""
+":func:`check_call` và :func:`check_output` sẽ tăng :exc:`CalledProcessError`"
+" nếu quá trình được gọi trả về mã trả về khác 0."
+
+#: ../../library/subprocess.rst:749
+#, fuzzy
+msgid ""
+"All of the functions and methods that accept a *timeout* parameter, such as "
+":func:`run` and :meth:`Popen.communicate` will raise :exc:`TimeoutExpired` "
+"if the timeout expires before the process exits."
+msgstr ""
+"Tất cả các hàm và phương thức chấp nhận tham số *timeout*, chẳng hạn như "
+":func:`run` và :meth:`Popen.communicate` sẽ tăng :exc:`TimeoutExpired` nếu "
+"hết thời gian chờ trước khi quá trình thoát."
+
+#: ../../library/subprocess.rst:753
+#, fuzzy
+msgid ""
+"Exceptions defined in this module all inherit from :exc:`SubprocessError`."
+msgstr ""
+"Tất cả các ngoại lệ được xác định trong mô-đun này đều kế thừa từ "
+":exc:`SubprocessError`."
+
+#: ../../library/subprocess.rst:755
+#, fuzzy
+msgid "The :exc:`SubprocessError` base class was added."
+msgstr "Lớp cơ sở :exc:`SubprocessError` đã được thêm vào."
+
+#: ../../library/subprocess.rst:761
+#, fuzzy
+msgid "Security Considerations"
+msgstr "Cân nhắc về bảo mật"
+
+#: ../../library/subprocess.rst:763
+#, fuzzy
+msgid ""
+"Unlike some other popen functions, this library will not implicitly choose "
+"to call a system shell.  This means that all characters, including shell "
+"metacharacters, can safely be passed to child processes. If the shell is "
+"invoked explicitly, via ``shell=True``, it is the application's "
+"responsibility to ensure that all whitespace and metacharacters are quoted "
+"appropriately to avoid `shell injection "
+"<https://en.wikipedia.org/wiki/Shell_injection#Shell_injection>`_ "
+"vulnerabilities. On :ref:`some platforms <shlex-quote-warning>`, it is "
+"possible to use :func:`shlex.quote` for this escaping."
+msgstr ""
+"Không giống như một số hàm popen khác, thư viện này sẽ không ngầm chọn gọi "
+"shell hệ thống.  Điều này có nghĩa là tất cả các ký tự, bao gồm cả siêu ký "
+"tự shell, có thể được chuyển đến các tiến trình con một cách an toàn. Nếu "
+"shell được gọi một cách rõ ràng, thông qua ``shell=True``, thì trách nhiệm "
+"của ứng dụng là đảm bảo rằng tất cả khoảng trắng và siêu ký tự đều được "
+"trích dẫn một cách thích hợp để tránh các lỗ hổng `shell injection "
+"<https://en.wikipedia.org/wiki/Shell_injection#Shell_injection>`_. Trên "
+":ref:`some platforms <shlex-quote-warning>`, có thể sử dụng "
+":func:`shlex.quote` để thoát này."
+
+#: ../../library/subprocess.rst:773
+#, fuzzy
+msgid ""
+"On Windows, batch files (:file:`*.bat` or :file:`*.cmd`) may be launched by "
+"the operating system in a system shell regardless of the arguments passed to"
+" this library. This could result in arguments being parsed according to "
+"shell rules, but without any escaping added by Python. If you are "
+"intentionally launching a batch file with arguments from untrusted sources, "
+"consider passing ``shell=True`` to allow Python to escape special "
+"characters. See :gh:`114539` for additional discussion."
+msgstr ""
+"Trên Windows, các tệp bó (:file:`*.bat` hoặc :file:`*.cmd`) có thể được hệ "
+"điều hành khởi chạy trong shell hệ thống bất kể các đối số được chuyển đến "
+"thư viện này. Điều này có thể dẫn đến các đối số được phân tích cú pháp theo"
+" quy tắc shell, nhưng không có bất kỳ lối thoát nào được Python thêm vào. "
+"Nếu bạn cố tình khởi chạy một tệp bó có đối số từ các nguồn không đáng tin "
+"cậy, hãy xem xét chuyển ``shell=True`` để cho phép Python thoát các ký tự "
+"đặc biệt. Xem :gh:`114539` để thảo luận thêm."
+
+#: ../../library/subprocess.rst:783
+#, fuzzy
+msgid "Popen Objects"
+msgstr "Đối tượng Popen"
+
+#: ../../library/subprocess.rst:785
+#, fuzzy
+msgid "Instances of the :class:`Popen` class have the following methods:"
+msgstr "Các phiên bản của lớp :class:`Popen` có các phương thức sau:"
+
+#: ../../library/subprocess.rst:790
+#, fuzzy
+msgid ""
+"Check if child process has terminated.  Set and return "
+":attr:`~Popen.returncode` attribute. Otherwise, returns ``None``."
+msgstr ""
+"Kiểm tra xem tiến trình con đã kết thúc chưa.  Đặt và trả về thuộc tính "
+":attr:`~Popen.returncode`. Nếu không, trả về ``None``."
+
+#: ../../library/subprocess.rst:796
+#, fuzzy
+msgid ""
+"Wait for child process to terminate.  Set and return "
+":attr:`~Popen.returncode` attribute."
+msgstr ""
+"Đợi quá trình con kết thúc.  Đặt và trả về thuộc tính "
+":attr:`~Popen.returncode`."
+
+#: ../../library/subprocess.rst:799
+#, fuzzy
+msgid ""
+"If the process does not terminate after *timeout* seconds, raise a "
+":exc:`TimeoutExpired` exception.  It is safe to catch this exception and "
+"retry the wait."
+msgstr ""
+"Nếu quá trình không kết thúc sau *timeout* giây, hãy đưa ra ngoại lệ "
+":exc:`TimeoutExpired`.  Việc bắt ngoại lệ này và thử lại việc chờ đợi là an "
+"toàn."
+
+#: ../../library/subprocess.rst:805
+#, fuzzy
+msgid ""
+"This will deadlock when using ``stdout=PIPE`` or ``stderr=PIPE`` and the "
+"child process generates enough output to a pipe such that it blocks waiting "
+"for the OS pipe buffer to accept more data. Use :meth:`Popen.communicate` "
+"when using pipes to avoid that."
+msgstr ""
+"Điều này sẽ bế tắc khi sử dụng ``stdout=PIPE`` hoặc ``stderr=PIPE`` và quy "
+"trình con tạo ra đủ đầu ra cho một đường ống sao cho nó chặn việc chờ bộ đệm"
+" đường ống hệ điều hành chấp nhận nhiều dữ liệu hơn. Sử dụng "
+":meth:`Popen.communicate` khi sử dụng ống để tránh điều đó."
+
+#: ../../library/subprocess.rst:812
+#, fuzzy
+msgid ""
+"When the ``timeout`` parameter is not ``None``, then (on POSIX) the function"
+" is implemented using a busy loop (non-blocking call and short sleeps). Use "
+"the :mod:`asyncio` module for an asynchronous wait: see "
+":class:`asyncio.create_subprocess_exec`."
+msgstr ""
+"Khi tham số ``timeout`` không phải là ``None`` thì (trên POSIX) chức năng "
+"này sẽ được triển khai bằng vòng lặp bận (cuộc gọi không chặn và thời gian "
+"ngủ ngắn). Sử dụng mô-đun :mod:`asyncio` để chờ không đồng bộ: xem "
+":class:`asyncio.create_subprocess_exec`."
+
+#: ../../library/subprocess.rst:817 ../../library/subprocess.rst:865
+#: ../../library/subprocess.rst:1227 ../../library/subprocess.rst:1267
+#: ../../library/subprocess.rst:1321
+#, fuzzy
+msgid "*timeout* was added."
+msgstr "*timeout* đã được thêm vào."
+
+#: ../../library/subprocess.rst:822
+#, fuzzy
+msgid ""
+"Interact with process: Send data to stdin.  Read data from stdout and "
+"stderr, until end-of-file is reached.  Wait for process to terminate and set"
+" the :attr:`~Popen.returncode` attribute.  The optional *input* argument "
+"should be data to be sent to the child process, or ``None``, if no data "
+"should be sent to the child.  If streams were opened in text mode, *input* "
+"must be a string. Otherwise, it must be bytes."
+msgstr ""
+"Tương tác với tiến trình: Gửi dữ liệu tới stdin.  Đọc dữ liệu từ thiết bị "
+"xuất chuẩn và thiết bị xuất chuẩn, cho đến khi đạt đến cuối tệp.  Đợi quá "
+"trình kết thúc và đặt thuộc tính :attr:`~Popen.returncode`.  Đối số *input* "
+"tùy chọn phải là dữ liệu được gửi đến tiến trình con hoặc ``None`` nếu không"
+" có dữ liệu nào được gửi đến tiến trình con.  Nếu luồng được mở ở chế độ văn"
+" bản, *input* phải là một chuỗi. Nếu không thì nó phải là byte."
+
+#: ../../library/subprocess.rst:829
+#, fuzzy
+msgid ""
+":meth:`communicate` returns a tuple ``(stdout_data, stderr_data)``. The data"
+" will be strings if streams were opened in text mode; otherwise, bytes."
+msgstr ""
+":meth:`communicate` trả về một bộ ``(stdout_data, stderr_data)``. Dữ liệu sẽ"
+" ở dạng chuỗi nếu luồng được mở ở chế độ văn bản; mặt khác, byte."
+
+#: ../../library/subprocess.rst:833
+#, fuzzy
+msgid ""
+"Note that if you want to send data to the process's stdin, you need to "
+"create the Popen object with ``stdin=PIPE``.  Similarly, to get anything "
+"other than ``None`` in the result tuple, you need to give ``stdout=PIPE`` "
+"and/or ``stderr=PIPE`` too."
+msgstr ""
+"Lưu ý rằng nếu bạn muốn gửi dữ liệu đến stdin của tiến trình, bạn cần tạo "
+"đối tượng Popen bằng ``stdin=PIPE``.  Tương tự, để nhận được bất kỳ thứ gì "
+"khác ngoài ``None`` trong bộ kết quả, bạn cũng cần cung cấp ``stdout=PIPE`` "
+"và/hoặc ``stderr=PIPE``."
+
+#: ../../library/subprocess.rst:838
+#, fuzzy
+msgid ""
+"If the process does not terminate after *timeout* seconds, a "
+":exc:`TimeoutExpired` exception will be raised.  Catching this exception and"
+" retrying communication will not lose any output.  Supplying *input* to a "
+"subsequent post-timeout :meth:`communicate` call is in undefined behavior "
+"and may become an error in the future."
+msgstr ""
+"Nếu quá trình không kết thúc sau *timeout* giây, một ngoại lệ "
+":exc:`TimeoutExpired` sẽ được đưa ra.  Bắt ngoại lệ này và thử lại giao tiếp"
+" sẽ không mất bất kỳ đầu ra nào.  Việc cung cấp *input* cho lệnh gọi "
+":meth:`communicate` sau thời gian chờ tiếp theo có hành vi không xác định và"
+" có thể trở thành lỗi trong tương lai."
+
+#: ../../library/subprocess.rst:844
+#, fuzzy
+msgid ""
+"The child process is not killed if the timeout expires, so in order to "
+"cleanup properly a well-behaved application should kill the child process "
+"and finish communication::"
+msgstr ""
+"Quá trình con không bị hủy nếu hết thời gian chờ, do đó, để dọn dẹp đúng "
+"cách, một ứng dụng hoạt động tốt phải hủy tiến trình con và kết thúc giao "
+"tiếp::"
+
+#: ../../library/subprocess.rst:848
+#, fuzzy
+msgid ""
+"proc = subprocess.Popen(...)\n"
+"try:\n"
+"    outs, errs = proc.communicate(timeout=15)\n"
+"except TimeoutExpired:\n"
+"    proc.kill()\n"
+"    outs, errs = proc.communicate()"
+msgstr ""
+"proc = subprocess.Popen(...)\n"
+"thử:\n"
+"    outs, errs = proc.communicate(timeout=15)\n"
+"ngoại trừ Hết thời gian chờHết hạn:\n"
+"    proc.kill()\n"
+"    outs, errs = proc.communicate()"
+
+#: ../../library/subprocess.rst:855
+#, fuzzy
+msgid ""
+"After a call to :meth:`~Popen.communicate` raises :exc:`TimeoutExpired`, do "
+"not call :meth:`~Popen.wait`. Use an additional :meth:`~Popen.communicate` "
+"call to finish handling pipes and populate the :attr:`~Popen.returncode` "
+"attribute."
+msgstr ""
+"Sau khi gọi tới :meth:`~Popen.communicate`, :exc:`TimeoutExpired` sẽ tăng "
+"lên, đừng gọi :meth:`~Popen.wait`. Sử dụng lệnh gọi "
+":meth:`~Popen.communicate` bổ sung để hoàn tất việc xử lý các đường ống và "
+"điền thuộc tính :attr:`~Popen.returncode`."
+
+#: ../../library/subprocess.rst:862
+#, fuzzy
+msgid ""
+"The data read is buffered in memory, so do not use this method if the data "
+"size is large or unlimited."
+msgstr ""
+"Dữ liệu đọc được lưu vào bộ nhớ đệm, vì vậy không sử dụng phương pháp này "
+"nếu kích thước dữ liệu lớn hoặc không giới hạn."
+
+#: ../../library/subprocess.rst:871
+#, fuzzy
+msgid "Sends the signal *signal* to the child."
+msgstr "Gửi tín hiệu *signal* cho trẻ."
+
+#: ../../library/subprocess.rst:873
+#, fuzzy
+msgid "Do nothing if the process completed."
+msgstr "Không làm gì nếu quá trình hoàn thành."
+
+#: ../../library/subprocess.rst:877
+#, fuzzy
+msgid ""
+"On Windows, SIGTERM is an alias for :meth:`terminate`. CTRL_C_EVENT and "
+"CTRL_BREAK_EVENT can be sent to processes started with a *creationflags* "
+"parameter which includes ``CREATE_NEW_PROCESS_GROUP``."
+msgstr ""
+"Trên Windows, SIGTERM là bí danh của :meth:`terminate`. CTRL_C_EVENT và "
+"CTRL_BREAK_EVENT có thể được gửi đến các tiến trình được bắt đầu bằng tham "
+"số *creationflags* bao gồm ``CREATE_NEW_PROCESS_GROUP``."
+
+#: ../../library/subprocess.rst:884
+#, fuzzy
+msgid ""
+"Stop the child. On POSIX OSs the method sends :py:const:`~signal.SIGTERM` to"
+" the child. On Windows the Win32 API function :c:func:`!TerminateProcess` is"
+" called to stop the child."
+msgstr ""
+"Dừng con lại. Trên hệ điều hành POSIX, phương thức này sẽ gửi "
+":py:const:`~signal.SIGTERM` cho trẻ. Trên Windows, hàm API "
+":c:func:`!TerminateProcess` của Win32 được gọi để ngăn chặn trẻ em."
+
+#: ../../library/subprocess.rst:891
+#, fuzzy
+msgid ""
+"Kills the child. On POSIX OSs the function sends SIGKILL to the child. On "
+"Windows :meth:`kill` is an alias for :meth:`terminate`."
+msgstr ""
+"Giết chết đứa trẻ. Trên hệ điều hành POSIX, hàm này sẽ gửi SIGKILL cho trẻ. "
+"Trên Windows :meth:`kill` là bí danh của :meth:`terminate`."
+
+#: ../../library/subprocess.rst:895
+#, fuzzy
+msgid ""
+"The following attributes are also set by the class for you to access. "
+"Reassigning them to new values is unsupported:"
+msgstr ""
+"Các thuộc tính sau cũng được lớp đặt để bạn truy cập. Việc gán lại chúng cho"
+" các giá trị mới không được hỗ trợ:"
+
+#: ../../library/subprocess.rst:900
+#, fuzzy
+msgid ""
+"The *args* argument as it was passed to :class:`Popen` -- a sequence of "
+"program arguments or else a single string."
+msgstr ""
+"Đối số *args* khi nó được chuyển tới :class:`Popen` -- một chuỗi các đối số "
+"chương trình hoặc một chuỗi đơn."
+
+#: ../../library/subprocess.rst:907
+#, fuzzy
+msgid ""
+"If the *stdin* argument was :data:`PIPE`, this attribute is a writeable "
+"stream object as returned by :func:`open`. If the *encoding* or *errors* "
+"arguments were specified or the *text* or *universal_newlines* argument was "
+"``True``, the stream is a text stream, otherwise it is a byte stream. If the"
+" *stdin* argument was not :data:`PIPE`, this attribute is ``None``."
+msgstr ""
+"Nếu đối số *stdin* là :data:`PIPE`, thuộc tính này là một đối tượng luồng có"
+" thể ghi được trả về bởi :func:`open`. Nếu đối số *encoding* hoặc *errors* "
+"được chỉ định hoặc đối số *text* hoặc *universal_newlines* là ``True`` thì "
+"luồng đó là luồng văn bản, nếu không thì đó là luồng byte. Nếu đối số "
+"*stdin* không phải là :data:`PIPE` thì thuộc tính này là ``None``."
+
+#: ../../library/subprocess.rst:916
+#, fuzzy
+msgid ""
+"If the *stdout* argument was :data:`PIPE`, this attribute is a readable "
+"stream object as returned by :func:`open`. Reading from the stream provides "
+"output from the child process. If the *encoding* or *errors* arguments were "
+"specified or the *text* or *universal_newlines* argument was ``True``, the "
+"stream is a text stream, otherwise it is a byte stream. If the *stdout* "
+"argument was not :data:`PIPE`, this attribute is ``None``."
+msgstr ""
+"Nếu đối số *stdout* là :data:`PIPE` thì thuộc tính này là một đối tượng "
+"luồng có thể đọc được và được trả về bởi :func:`open`. Đọc từ luồng cung cấp"
+" đầu ra từ tiến trình con. Nếu đối số *encoding* hoặc *errors* được chỉ định"
+" hoặc đối số *text* hoặc *universal_newlines* là ``True`` thì luồng đó là "
+"luồng văn bản, nếu không thì đó là luồng byte. Nếu đối số *stdout* không "
+"phải là :data:`PIPE` thì thuộc tính này là ``None``."
+
+#: ../../library/subprocess.rst:926
+#, fuzzy
+msgid ""
+"If the *stderr* argument was :data:`PIPE`, this attribute is a readable "
+"stream object as returned by :func:`open`. Reading from the stream provides "
+"error output from the child process. If the *encoding* or *errors* arguments"
+" were specified or the *text* or *universal_newlines* argument was ``True``,"
+" the stream is a text stream, otherwise it is a byte stream. If the *stderr*"
+" argument was not :data:`PIPE`, this attribute is ``None``."
+msgstr ""
+"Nếu đối số *stderr* là :data:`PIPE` thì thuộc tính này là một đối tượng "
+"luồng có thể đọc được và được trả về bởi :func:`open`. Việc đọc từ luồng "
+"cung cấp đầu ra lỗi từ tiến trình con. Nếu đối số *encoding* hoặc *errors* "
+"được chỉ định hoặc đối số *text* hoặc *universal_newlines* là ``True`` thì "
+"luồng đó là luồng văn bản, nếu không thì đó là luồng byte. Nếu đối số "
+"*stderr* không phải là :data:`PIPE` thì thuộc tính này là ``None``."
+
+#: ../../library/subprocess.rst:935
+#, fuzzy
+msgid ""
+"Use :meth:`~Popen.communicate` rather than :attr:`.stdin.write "
+"<Popen.stdin>`, :attr:`.stdout.read <Popen.stdout>` or :attr:`.stderr.read "
+"<Popen.stderr>` to avoid deadlocks due to any of the other OS pipe buffers "
+"filling up and blocking the child process."
+msgstr ""
+"Sử dụng :meth:`~Popen.communicate` thay vì :attr:`.stdin.write "
+"<Popen.stdin>`, :attr:`.stdout.read <Popen.stdout>` hoặc :attr:`.stderr.read"
+" <Popen.stderr>` để tránh bế tắc do bất kỳ bộ đệm đường ống hệ điều hành nào"
+" khác lấp đầy và chặn tiến trình con."
+
+#: ../../library/subprocess.rst:943
+#, fuzzy
+msgid "The process ID of the child process."
+msgstr "ID tiến trình của tiến trình con."
+
+#: ../../library/subprocess.rst:945
+#, fuzzy
+msgid ""
+"Note that if you set the *shell* argument to ``True``, this is the process "
+"ID of the spawned shell."
+msgstr ""
+"Lưu ý rằng nếu bạn đặt đối số *shell* thành ``True`` thì đây là ID tiến "
+"trình của shell được sinh ra."
+
+#: ../../library/subprocess.rst:951
+#, fuzzy
+msgid ""
+"The child return code. Initially ``None``, :attr:`returncode` is set by a "
+"call to the :meth:`poll`, :meth:`wait`, or :meth:`communicate` methods if "
+"they detect that the process has terminated."
+msgstr ""
+"Mã trả về của trẻ. Ban đầu ``None``, :attr:`returncode` được thiết lập bằng "
+"lệnh gọi tới các phương thức :meth:`poll`, :meth:`wait` hoặc "
+":meth:`communicate` nếu chúng phát hiện rằng quá trình đã kết thúc."
+
+#: ../../library/subprocess.rst:955
+#, fuzzy
+msgid ""
+"A ``None`` value indicates that the process hadn't yet terminated at the "
+"time of the last method call."
+msgstr ""
+"Giá trị ``None`` cho biết quy trình chưa kết thúc tại thời điểm gọi phương "
+"thức cuối cùng."
+
+#: ../../library/subprocess.rst:961
+#, fuzzy
+msgid ""
+"When ``shell=True``, the return code reflects the exit status of the shell "
+"itself (e.g. ``/bin/sh``), which may map signals to codes such as ``128+N``."
+" See the documentation of the shell (for example, the Bash manual's Exit "
+"Status) for details."
+msgstr ""
+"Khi ``shell=True``, mã trả về phản ánh trạng thái thoát của chính shell (ví "
+"dụ: ``/bin/sh``), có thể ánh xạ tín hiệu tới các mã như ``128+N``. Xem tài "
+"liệu về shell (ví dụ: Trạng thái thoát của hướng dẫn sử dụng Bash) để biết "
+"chi tiết."
+
+#: ../../library/subprocess.rst:968
+#, fuzzy
+msgid "Windows Popen Helpers"
+msgstr "Trình trợ giúp Windows Popen"
+
+#: ../../library/subprocess.rst:970
+#, fuzzy
+msgid ""
+"The :class:`STARTUPINFO` class and following constants are only available on"
+" Windows."
+msgstr "Lớp :class:`STARTUPINFO` và các hằng số sau chỉ có trên Windows."
+
+#: ../../library/subprocess.rst:976
+#, fuzzy
+msgid ""
+"Partial support of the Windows `STARTUPINFO <https://msdn.microsoft.com/en-"
+"us/library/ms686331(v=vs.85).aspx>`__ structure is used for :class:`Popen` "
+"creation.  The following attributes can be set by passing them as keyword-"
+"only arguments."
+msgstr ""
+"Hỗ trợ một phần cấu trúc `STARTUPINFO <https://msdn.microsoft.com/en-"
+"us/library/ms686331(v=vs.85).aspx>`__ của Windows được sử dụng để tạo "
+":class:`Popen`.  Các thuộc tính sau có thể được đặt bằng cách chuyển chúng "
+"dưới dạng đối số chỉ từ khóa."
+
+#: ../../library/subprocess.rst:981
+#, fuzzy
+msgid "Keyword-only argument support was added."
+msgstr "Hỗ trợ đối số chỉ từ khóa đã được thêm vào."
+
+#: ../../library/subprocess.rst:986
+#, fuzzy
+msgid ""
+"A bit field that determines whether certain :class:`STARTUPINFO` attributes "
+"are used when the process creates a window. ::"
+msgstr ""
+"Trường bit xác định xem các thuộc tính :class:`STARTUPINFO` nhất định có "
+"được sử dụng hay không khi quá trình tạo cửa sổ. ::"
+
+#: ../../library/subprocess.rst:989
+#, fuzzy
+msgid ""
+"si = subprocess.STARTUPINFO()\n"
+"si.dwFlags = subprocess.STARTF_USESTDHANDLES | subprocess.STARTF_USESHOWWINDOW"
+msgstr ""
+"si = subprocess.STARTUPINFO()\n"
+"si.dwFlags = subprocess.STARTF_USESTDHANDLES | subprocess.STARTF_USESHOWWINDOW"
+
+#: ../../library/subprocess.rst:994
+#, fuzzy
+msgid ""
+"If :attr:`dwFlags` specifies :data:`STARTF_USESTDHANDLES`, this attribute is"
+" the standard input handle for the process. If :data:`STARTF_USESTDHANDLES` "
+"is not specified, the default for standard input is the keyboard buffer."
+msgstr ""
+"Nếu :attr:`dwFlags` chỉ định :data:`STARTF_USESTDHANDLES`, thuộc tính này là"
+" bộ điều khiển đầu vào tiêu chuẩn cho quy trình. Nếu "
+":data:`STARTF_USESTDHANDLES` không được chỉ định, mặc định cho đầu vào tiêu "
+"chuẩn là bộ đệm bàn phím."
+
+#: ../../library/subprocess.rst:1001
+#, fuzzy
+msgid ""
+"If :attr:`dwFlags` specifies :data:`STARTF_USESTDHANDLES`, this attribute is"
+" the standard output handle for the process. Otherwise, this attribute is "
+"ignored and the default for standard output is the console window's buffer."
+msgstr ""
+"Nếu :attr:`dwFlags` chỉ định :data:`STARTF_USESTDHANDLES`, thuộc tính này là"
+" bộ điều khiển đầu ra tiêu chuẩn cho quy trình. Nếu không, thuộc tính này sẽ"
+" bị bỏ qua và mặc định cho đầu ra tiêu chuẩn là bộ đệm của cửa sổ bảng điều "
+"khiển."
+
+#: ../../library/subprocess.rst:1008
+#, fuzzy
+msgid ""
+"If :attr:`dwFlags` specifies :data:`STARTF_USESTDHANDLES`, this attribute is"
+" the standard error handle for the process. Otherwise, this attribute is "
+"ignored and the default for standard error is the console window's buffer."
+msgstr ""
+"Nếu :attr:`dwFlags` chỉ định :data:`STARTF_USESTDHANDLES`, thuộc tính này là"
+" phần xử lý lỗi tiêu chuẩn cho quy trình. Nếu không, thuộc tính này sẽ bị bỏ"
+" qua và mặc định cho lỗi tiêu chuẩn là bộ đệm của cửa sổ bảng điều khiển."
+
+#: ../../library/subprocess.rst:1014
+#, fuzzy
+msgid ""
+"If :attr:`dwFlags` specifies :data:`STARTF_USESHOWWINDOW`, this attribute "
+"can be any of the values that can be specified in the ``nCmdShow`` parameter"
+" for the `ShowWindow <https://msdn.microsoft.com/en-"
+"us/library/ms633548(v=vs.85).aspx>`__ function, except for "
+"``SW_SHOWDEFAULT``. Otherwise, this attribute is ignored."
+msgstr ""
+"Nếu :attr:`dwFlags` chỉ định :data:`STARTF_USESHOWWINDOW`, thuộc tính này có"
+" thể là bất kỳ giá trị nào có thể được chỉ định trong tham số ``nCmdShow`` "
+"cho hàm `ShowWindow <https://msdn.microsoft.com/en-"
+"us/library/ms633548(v=vs.85).aspx>`__, ngoại trừ ``SW_SHOWDEFAULT``. Ngược "
+"lại, thuộc tính này sẽ bị bỏ qua."
+
+#: ../../library/subprocess.rst:1021
+#, fuzzy
+msgid ""
+":data:`SW_HIDE` is provided for this attribute. It is used when "
+":class:`Popen` is called with ``shell=True``."
+msgstr ""
+":data:`SW_HIDE` được cung cấp cho thuộc tính này. Nó được sử dụng khi "
+":class:`Popen` được gọi bằng ``shell=True``."
+
+#: ../../library/subprocess.rst:1026
+#, fuzzy
+msgid ""
+"A dictionary of additional attributes for process creation as given in "
+"``STARTUPINFOEX``, see `UpdateProcThreadAttribute "
+"<https://msdn.microsoft.com/en-"
+"us/library/windows/desktop/ms686880(v=vs.85).aspx>`__."
+msgstr ""
+"Từ điển các thuộc tính bổ sung để tạo quy trình như được cung cấp trong "
+"``STARTUPINFOEX``, xem `UpdateProcThreadAttribute "
+"<https://msdn.microsoft.com/en-"
+"us/library/windows/desktop/ms686880(v=vs.85).aspx>`__."
+
+#: ../../library/subprocess.rst:1030
+#, fuzzy
+msgid "Supported attributes:"
+msgstr "Các thuộc tính được hỗ trợ:"
+
+#: ../../library/subprocess.rst:1032
+#, fuzzy
+msgid "**handle_list**"
+msgstr "**handle_list**"
+
+#: ../../library/subprocess.rst:1033
+#, fuzzy
+msgid ""
+"Sequence of handles that will be inherited. *close_fds* must be true if non-"
+"empty."
+msgstr ""
+"Trình tự các tay cầm sẽ được kế thừa. *close_fds* phải đúng nếu không trống."
+
+#: ../../library/subprocess.rst:1036
+#, fuzzy
+msgid ""
+"The handles must be temporarily made inheritable by "
+":func:`os.set_handle_inheritable` when passed to the :class:`Popen` "
+"constructor, else :class:`OSError` will be raised with Windows error "
+"``ERROR_INVALID_PARAMETER`` (87)."
+msgstr ""
+"Các thẻ điều khiển phải được :func:`os.set_handle_inheritable` tạm thời có "
+"thể kế thừa khi được chuyển tới hàm tạo :class:`Popen`, nếu không, "
+":class:`OSError` sẽ xuất hiện với lỗi Windows ``ERROR_INVALID_PARAMETER`` "
+"(87)."
+
+#: ../../library/subprocess.rst:1043
+#, fuzzy
+msgid ""
+"In a multithreaded process, use caution to avoid leaking handles that are "
+"marked inheritable when combining this feature with concurrent calls to "
+"other process creation functions that inherit all handles such as "
+":func:`os.system`.  This also applies to standard handle redirection, which "
+"temporarily creates inheritable handles."
+msgstr ""
+"Trong quy trình đa luồng, hãy thận trọng để tránh rò rỉ các thẻ điều khiển "
+"được đánh dấu là có thể kế thừa khi kết hợp tính năng này với lệnh gọi đồng "
+"thời tới các hàm tạo quy trình khác kế thừa tất cả các thẻ điều khiển như "
+":func:`os.system`.  Điều này cũng áp dụng cho việc chuyển hướng tay cầm tiêu"
+" chuẩn, tạm thời tạo ra các tay cầm có thể kế thừa."
+
+#: ../../library/subprocess.rst:1053
+#, fuzzy
+msgid "Windows Constants"
+msgstr "Hằng số Windows"
+
+#: ../../library/subprocess.rst:1055
+#, fuzzy
+msgid "The :mod:`!subprocess` module exposes the following constants."
+msgstr "Mô-đun :mod:`!subprocess` hiển thị các hằng số sau."
+
+#: ../../library/subprocess.rst:1059
+#, fuzzy
+msgid ""
+"The standard input device. Initially, this is the console input buffer, "
+"``CONIN$``."
+msgstr ""
+"Thiết bị đầu vào tiêu chuẩn Ban đầu, đây là bộ đệm đầu vào của bảng điều "
+"khiển, ``CONIN$``."
+
+#: ../../library/subprocess.rst:1064
+#, fuzzy
+msgid ""
+"The standard output device. Initially, this is the active console screen "
+"buffer, ``CONOUT$``."
+msgstr ""
+"Thiết bị đầu ra tiêu chuẩn. Ban đầu, đây là bộ đệm màn hình bảng điều khiển "
+"đang hoạt động, ``CONOUT$``."
+
+#: ../../library/subprocess.rst:1069
+#, fuzzy
+msgid ""
+"The standard error device. Initially, this is the active console screen "
+"buffer, ``CONOUT$``."
+msgstr ""
+"Thiết bị lỗi tiêu chuẩn. Ban đầu, đây là bộ đệm màn hình bảng điều khiển "
+"đang hoạt động, ``CONOUT$``."
+
+#: ../../library/subprocess.rst:1074
+#, fuzzy
+msgid "Hides the window. Another window will be activated."
+msgstr "Ẩn cửa sổ. Một cửa sổ khác sẽ được kích hoạt."
+
+#: ../../library/subprocess.rst:1078
+#, fuzzy
+msgid ""
+"Specifies that the :attr:`STARTUPINFO.hStdInput`, "
+":attr:`STARTUPINFO.hStdOutput`, and :attr:`STARTUPINFO.hStdError` attributes"
+" contain additional information."
+msgstr ""
+"Chỉ định rằng các thuộc tính :attr:`STARTUPINFO.hStdInput`, "
+":attr:`STARTUPINFO.hStdOutput` và :attr:`STARTUPINFO.hStdError` chứa thông "
+"tin bổ sung."
+
+#: ../../library/subprocess.rst:1084
+#, fuzzy
+msgid ""
+"Specifies that the :attr:`STARTUPINFO.wShowWindow` attribute contains "
+"additional information."
+msgstr ""
+"Chỉ định rằng thuộc tính :attr:`STARTUPINFO.wShowWindow` chứa thông tin bổ "
+"sung."
+
+#: ../../library/subprocess.rst:1089
+#, fuzzy
+msgid ""
+"A :attr:`STARTUPINFO.dwFlags` parameter to specify that the *Working in "
+"Background* mouse cursor will be displayed while a process is launching. "
+"This is the default behavior for GUI processes."
+msgstr ""
+"Tham số :attr:`STARTUPINFO.dwFlags` để chỉ định rằng con trỏ chuột *Working "
+"in Background* sẽ được hiển thị trong khi một tiến trình đang khởi chạy. Đây"
+" là hành vi mặc định cho các tiến trình GUI."
+
+#: ../../library/subprocess.rst:1098
+#, fuzzy
+msgid ""
+"A :attr:`STARTUPINFO.dwFlags` parameter to specify that the mouse cursor "
+"will not be changed when launching a process."
+msgstr ""
+"Tham số :attr:`STARTUPINFO.dwFlags` để chỉ định rằng con trỏ chuột sẽ không "
+"bị thay đổi khi khởi chạy một tiến trình."
+
+#: ../../library/subprocess.rst:1105
+#, fuzzy
+msgid ""
+"The new process has a new console, instead of inheriting its parent's "
+"console (the default)."
+msgstr ""
+"Quy trình mới có bảng điều khiển mới, thay vì kế thừa bảng điều khiển gốc "
+"của nó (mặc định)."
+
+#: ../../library/subprocess.rst:1110
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"group will be created. This flag is necessary for using :func:`os.kill` on "
+"the subprocess."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một nhóm quy trình"
+" mới sẽ được tạo. Cờ này là cần thiết để sử dụng :func:`os.kill` trên quy "
+"trình con."
+
+#: ../../library/subprocess.rst:1114
+#, fuzzy
+msgid "This flag is ignored if :data:`CREATE_NEW_CONSOLE` is specified."
+msgstr "Cờ này bị bỏ qua nếu :data:`CREATE_NEW_CONSOLE` được chỉ định."
+
+#: ../../library/subprocess.rst:1118
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"will have an above average priority."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"sẽ có mức độ ưu tiên trên mức trung bình."
+
+#: ../../library/subprocess.rst:1125
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"will have a below average priority."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"sẽ có mức độ ưu tiên dưới mức trung bình."
+
+#: ../../library/subprocess.rst:1132
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"will have a high priority."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"sẽ có mức độ ưu tiên cao."
+
+#: ../../library/subprocess.rst:1139
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"will have an idle (lowest) priority."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"sẽ có mức độ ưu tiên không hoạt động (thấp nhất)."
+
+#: ../../library/subprocess.rst:1146
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"will have a normal priority. (default)"
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"sẽ có mức độ ưu tiên bình thường. (mặc định)"
+
+#: ../../library/subprocess.rst:1153
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"will have realtime priority. You should almost never use "
+"REALTIME_PRIORITY_CLASS, because this interrupts system threads that manage "
+"mouse input, keyboard input, and background disk flushing. This class can be"
+" appropriate for applications that \"talk\" directly to hardware or that "
+"perform brief tasks that should have limited interruptions."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"sẽ có mức độ ưu tiên theo thời gian thực. Bạn hầu như không bao giờ nên sử "
+"dụng REALTIME_PRIORITY_CLASS vì điều này làm gián đoạn các luồng hệ thống "
+"quản lý hoạt động nhập chuột, nhập bàn phím và xóa đĩa nền. Lớp này có thể "
+"thích hợp cho các ứng dụng \"giao tiếp\" trực tiếp với phần cứng hoặc thực "
+"hiện các tác vụ ngắn gọn và hạn chế bị gián đoạn."
+
+#: ../../library/subprocess.rst:1164
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"will not create a window."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"sẽ không tạo cửa sổ."
+
+#: ../../library/subprocess.rst:1171
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"will not inherit its parent's console. This value cannot be used with "
+"CREATE_NEW_CONSOLE."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"sẽ không kế thừa bảng điều khiển gốc của nó. Giá trị này không thể được sử "
+"dụng với CREATE_NEW_CONSOLE."
+
+#: ../../library/subprocess.rst:1179
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"does not inherit the error mode of the calling process. Instead, the new "
+"process gets the default error mode. This feature is particularly useful for"
+" multithreaded shell applications that run with hard errors disabled."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"không kế thừa chế độ lỗi của quy trình gọi. Thay vào đó, quy trình mới sẽ có"
+" chế độ lỗi mặc định. Tính năng này đặc biệt hữu ích cho các ứng dụng shell "
+"đa luồng chạy với các lỗi cứng bị tắt."
+
+#: ../../library/subprocess.rst:1189
+#, fuzzy
+msgid ""
+"A :class:`Popen` ``creationflags`` parameter to specify that a new process "
+"is not associated with the job."
+msgstr ""
+"Tham số :class:`Popen` ``creationflags`` để chỉ định rằng một quy trình mới "
+"không được liên kết với công việc."
+
+#: ../../library/subprocess.rst:1197
+#, fuzzy
+msgid "Older high-level API"
+msgstr "API cấp cao cũ hơn"
+
+#: ../../library/subprocess.rst:1199
+#, fuzzy
+msgid ""
+"Prior to Python 3.5, these three functions comprised the high level API to "
+"subprocess. You can now use :func:`run` in many cases, but lots of existing "
+"code calls these functions."
+msgstr ""
+"Trước Python 3.5, ba hàm này bao gồm API cấp cao cho subprocess. Bây giờ bạn"
+" có thể sử dụng :func:`run` trong nhiều trường hợp, nhưng rất nhiều mã hiện "
+"có gọi các hàm này."
+
+#: ../../library/subprocess.rst:1206
+#, fuzzy
+msgid ""
+"Run the command described by *args*.  Wait for command to complete, then "
+"return the :attr:`~Popen.returncode` attribute."
+msgstr ""
+"Chạy lệnh được mô tả bởi *args*.  Đợi lệnh hoàn thành rồi trả về thuộc tính "
+":attr:`~Popen.returncode`."
+
+#: ../../library/subprocess.rst:1209 ../../library/subprocess.rst:1249
+#, fuzzy
+msgid ""
+"Code needing to capture stdout or stderr should use :func:`run` instead::"
+msgstr ""
+"Mã cần chụp thiết bị xuất chuẩn hoặc thiết bị xuất chuẩn nên sử dụng "
+":func:`run` thay thế ::"
+
+#: ../../library/subprocess.rst:1211
+#, fuzzy
+msgid "run(...).returncode"
+msgstr "chạy(...).returncode"
+
+#: ../../library/subprocess.rst:1213 ../../library/subprocess.rst:1253
+#, fuzzy
+msgid "To suppress stdout or stderr, supply a value of :data:`DEVNULL`."
+msgstr ""
+"Để chặn thiết bị xuất chuẩn hoặc thiết bị xuất chuẩn, hãy cung cấp giá trị "
+":data:`DEVNULL`."
+
+#: ../../library/subprocess.rst:1215 ../../library/subprocess.rst:1255
+#, fuzzy
+msgid ""
+"The arguments shown above are merely some common ones. The full function "
+"signature is the same as that of the :class:`Popen` constructor - this "
+"function passes all supplied arguments other than *timeout* directly through"
+" to that interface."
+msgstr ""
+"Những lập luận trình bày ở trên chỉ là một số lý lẽ phổ biến. Chữ ký hàm đầy"
+" đủ giống với chữ ký của hàm tạo :class:`Popen` - hàm này chuyển trực tiếp "
+"tất cả các đối số được cung cấp ngoài *timeout* tới giao diện đó."
+
+#: ../../library/subprocess.rst:1222 ../../library/subprocess.rst:1262
+#, fuzzy
+msgid ""
+"Do not use ``stdout=PIPE`` or ``stderr=PIPE`` with this function.  The child"
+" process will block if it generates enough output to a pipe to fill up the "
+"OS pipe buffer as the pipes are not being read from."
+msgstr ""
+"Không sử dụng ``stdout=PIPE`` hoặc ``stderr=PIPE`` với chức năng này.  Quá "
+"trình con sẽ chặn nếu nó tạo ra đủ đầu ra cho một đường ống để lấp đầy bộ "
+"đệm đường ống của hệ điều hành vì các đường ống không được đọc từ đó."
+
+#: ../../library/subprocess.rst:1242
+#, fuzzy
+msgid ""
+"Run command with arguments.  Wait for command to complete. If the return "
+"code was zero then return, otherwise raise :exc:`CalledProcessError`. The "
+":exc:`CalledProcessError` object will have the return code in the "
+":attr:`~CalledProcessError.returncode` attribute. If :func:`check_call` was "
+"unable to start the process it will propagate the exception that was raised."
+msgstr ""
+"Chạy lệnh với các đối số.  Chờ lệnh hoàn tất. Nếu mã trả về bằng 0 thì trả "
+"về, nếu không thì tăng :exc:`CalledProcessError`. Đối tượng "
+":exc:`CalledProcessError` sẽ có mã trả về trong thuộc tính "
+":attr:`~CalledProcessError.returncode`. Nếu :func:`check_call` không thể bắt"
+" đầu quá trình, nó sẽ truyền bá ngoại lệ đã được nêu ra."
+
+#: ../../library/subprocess.rst:1251
+#, fuzzy
+msgid "run(..., check=True)"
+msgstr "run(..., check=True)"
+
+#: ../../library/subprocess.rst:1284
+#, fuzzy
+msgid "Run command with arguments and return its output."
+msgstr "Chạy lệnh với các đối số và trả về đầu ra của nó."
+
+#: ../../library/subprocess.rst:1286
+#, fuzzy
+msgid ""
+"If the return code was non-zero it raises a :exc:`CalledProcessError`. The "
+":exc:`CalledProcessError` object will have the return code in the "
+":attr:`~CalledProcessError.returncode` attribute and any output in the "
+":attr:`~CalledProcessError.output` attribute."
+msgstr ""
+"Nếu mã trả về khác 0, nó sẽ tăng :exc:`CalledProcessError`. Đối tượng "
+":exc:`CalledProcessError` sẽ có mã trả về trong thuộc tính "
+":attr:`~CalledProcessError.returncode` và bất kỳ đầu ra nào trong thuộc tính"
+" :attr:`~CalledProcessError.output`."
+
+#: ../../library/subprocess.rst:1291
+#, fuzzy
+msgid "This is equivalent to::"
+msgstr "Điều này tương đương với::"
+
+#: ../../library/subprocess.rst:1293
+#, fuzzy
+msgid "run(..., check=True, stdout=PIPE).stdout"
+msgstr "run(..., check=True, stdout=PIPE).stdout"
+
+#: ../../library/subprocess.rst:1295
+#, fuzzy
+msgid ""
+"The arguments shown above are merely some common ones. The full function "
+"signature is largely the same as that of :func:`run` - most arguments are "
+"passed directly through to that interface. One API deviation from "
+":func:`run` behavior exists: passing ``input=None`` will behave the same as "
+"``input=b''`` (or ``input=''``, depending on other arguments) rather than "
+"using the parent's standard input file handle."
+msgstr ""
+"Những lập luận trình bày ở trên chỉ là một số lý lẽ phổ biến. Chữ ký đầy đủ "
+"của hàm phần lớn giống với chữ ký của :func:`run` - hầu hết các đối số được "
+"truyền trực tiếp qua giao diện đó. Tồn tại một sai lệch API so với hành vi "
+"của :func:`run`: truyền ``input=None`` sẽ hoạt động giống như ``input=b''`` "
+"(hoặc ``input=''``, tùy thuộc vào các đối số khác) thay vì sử dụng trình xử "
+"lý tệp đầu vào tiêu chuẩn của cha mẹ."
+
+#: ../../library/subprocess.rst:1302
+#, fuzzy
+msgid ""
+"By default, this function will return the data as encoded bytes. The actual "
+"encoding of the output data may depend on the command being invoked, so the "
+"decoding to text will often need to be handled at the application level."
+msgstr ""
+"Theo mặc định, hàm này sẽ trả về dữ liệu dưới dạng byte được mã hóa. Việc mã"
+" hóa thực tế của dữ liệu đầu ra có thể phụ thuộc vào lệnh được gọi, do đó "
+"việc giải mã thành văn bản thường cần được xử lý ở cấp ứng dụng."
+
+#: ../../library/subprocess.rst:1306
+#, fuzzy
+msgid ""
+"This behaviour may be overridden by setting *text*, *encoding*, *errors*, or"
+" *universal_newlines* to ``True`` as described in :ref:`frequently-used-"
+"arguments` and :func:`run`."
+msgstr ""
+"Hành vi này có thể bị ghi đè bằng cách đặt *text*, *encoding*, *errors* hoặc"
+" *universal_newlines* thành ``True`` như được mô tả trong :ref:`frequently-"
+"used-arguments` và :func:`run`."
+
+#: ../../library/subprocess.rst:1310
+#, fuzzy
+msgid ""
+"To also capture standard error in the result, use "
+"``stderr=subprocess.STDOUT``::"
+msgstr ""
+"Để ghi lại lỗi tiêu chuẩn trong kết quả, hãy sử dụng "
+"``stderr=subprocess.STDOUT``::"
+
+#: ../../library/subprocess.rst:1313
+#, fuzzy
+msgid ""
+">>> subprocess.check_output(\n"
+"...     \"ls non_existent_file; exit 0\",\n"
+"...     stderr=subprocess.STDOUT,\n"
+"...     shell=True)\n"
+"'ls: non_existent_file: No such file or directory\\n'"
+msgstr ""
+">>> subprocess.check_output(\n"
+"... \"ls non_exist_file; thoát 0\",\n"
+"... stderr=subprocess.STDOUT,\n"
+"... vỏ=Đúng)\n"
+"'ls: non_exist_file: Không có tập tin hoặc thư mục như vậy\\n'"
+
+#: ../../library/subprocess.rst:1324
+#, fuzzy
+msgid "Support for the *input* keyword argument was added."
+msgstr "Hỗ trợ cho đối số từ khóa *input* đã được thêm vào."
+
+#: ../../library/subprocess.rst:1327
+#, fuzzy
+msgid "*encoding* and *errors* were added.  See :func:`run` for details."
+msgstr ""
+"*encoding* và *errors* đã được thêm vào.  Xem :func:`run` để biết chi tiết."
+
+#: ../../library/subprocess.rst:1345
+#, fuzzy
+msgid "Replacing Older Functions with the :mod:`!subprocess` Module"
+msgstr "Thay thế các chức năng cũ hơn bằng Mô-đun :mod:`!subprocess`"
+
+#: ../../library/subprocess.rst:1347
+#, fuzzy
+msgid ""
+"In this section, \"a becomes b\" means that b can be used as a replacement "
+"for a."
+msgstr ""
+"Trong phần này, “a trở thành b” có nghĩa là b có thể được dùng thay thế cho "
+"a."
+
+#: ../../library/subprocess.rst:1351
+#, fuzzy
+msgid ""
+"All \"a\" functions in this section fail (more or less) silently if the "
+"executed program cannot be found; the \"b\" replacements raise "
+":exc:`OSError` instead."
+msgstr ""
+"Tất cả các hàm \"a\" trong phần này đều bị lỗi (ít nhiều) trong âm thầm nếu "
+"không tìm thấy chương trình đã thực thi; thay thế \"b\" sẽ tăng "
+":exc:`OSError`."
+
+#: ../../library/subprocess.rst:1355
+#, fuzzy
+msgid ""
+"In addition, the replacements using :func:`check_output` will fail with a "
+":exc:`CalledProcessError` if the requested operation produces a non-zero "
+"return code. The output is still available as the "
+":attr:`~CalledProcessError.output` attribute of the raised exception."
+msgstr ""
+"Ngoài ra, các thay thế bằng :func:`check_output` sẽ không thành công với "
+":exc:`CalledProcessError` nếu thao tác được yêu cầu tạo ra mã trả về khác 0."
+" Đầu ra vẫn có sẵn dưới dạng thuộc tính :attr:`~CalledProcessError.output` "
+"của ngoại lệ được nêu ra."
+
+#: ../../library/subprocess.rst:1360
+#, fuzzy
+msgid ""
+"In the following examples, we assume that the relevant functions have "
+"already been imported from the :mod:`!subprocess` module."
+msgstr ""
+"Trong các ví dụ sau, chúng tôi giả định rằng các hàm liên quan đã được nhập "
+"từ mô-đun :mod:`!subprocess`."
+
+#: ../../library/subprocess.rst:1365
+#, fuzzy
+msgid "Replacing :program:`/bin/sh` shell command substitution"
+msgstr "Thay thế thay thế lệnh shell :program:`/bin/sh`"
+
+#: ../../library/subprocess.rst:1367
+#, fuzzy
+msgid "output=$(mycmd myarg)"
+msgstr "đầu ra=$(mycmd myarg)"
+
+#: ../../library/subprocess.rst:1371 ../../library/subprocess.rst:1382
+#: ../../library/subprocess.rst:1399
+#, fuzzy
+msgid "becomes::"
+msgstr "trở thành::"
+
+#: ../../library/subprocess.rst:1373
+#, fuzzy
+msgid "output = check_output([\"mycmd\", \"myarg\"])"
+msgstr "đầu ra = check_output([\"mycmd\", \"myarg\"])"
+
+#: ../../library/subprocess.rst:1376
+#, fuzzy
+msgid "Replacing shell pipeline"
+msgstr "Thay thế đường ống vỏ"
+
+#: ../../library/subprocess.rst:1378 ../../library/subprocess.rst:1395
+#, fuzzy
+msgid "output=$(dmesg | grep hda)"
+msgstr "đầu ra=$(dmesg | grep hda)"
+
+#: ../../library/subprocess.rst:1384
+#, fuzzy
+msgid ""
+"p1 = Popen([\"dmesg\"], stdout=PIPE)\n"
+"p2 = Popen([\"grep\", \"hda\"], stdin=p1.stdout, stdout=PIPE)\n"
+"p1.stdout.close()  # Allow p1 to receive a SIGPIPE if p2 exits.\n"
+"output = p2.communicate()[0]"
+msgstr ""
+"p1 = Popen([\"dmesg\"], stdout=PIPE)\n"
+"p2 = Popen([\"grep\", \"hda\"], stdin=p1.stdout, stdout=PIPE)\n"
+"p1.stdout.close() # Allow p1 để nhận SIGPIPE nếu p2 thoát.\n"
+"đầu ra = p2.communicate()[0]"
+
+#: ../../library/subprocess.rst:1389
+#, fuzzy
+msgid ""
+"The ``p1.stdout.close()`` call after starting the p2 is important in order "
+"for p1 to receive a SIGPIPE if p2 exits before p1."
+msgstr ""
+"Cuộc gọi ``p1.stdout.close()`` sau khi khởi động p2 rất quan trọng để p1 "
+"nhận được SIGPIPE nếu p2 thoát trước p1."
+
+#: ../../library/subprocess.rst:1392
+#, fuzzy
+msgid ""
+"Alternatively, for trusted input, the shell's own pipeline support may still"
+" be used directly:"
+msgstr ""
+"Ngoài ra, đối với đầu vào đáng tin cậy, hỗ trợ đường ống riêng của shell vẫn"
+" có thể được sử dụng trực tiếp:"
+
+#: ../../library/subprocess.rst:1401
+#, fuzzy
+msgid "output = check_output(\"dmesg | grep hda\", shell=True)"
+msgstr "đầu ra = check_output(\"dmesg | grep hda\", shell=True)"
+
+#: ../../library/subprocess.rst:1405
+#, fuzzy
+msgid "Replacing :func:`os.system`"
+msgstr "Thay thế :func:`os.system`"
+
+#: ../../library/subprocess.rst:1409
+#, fuzzy
+msgid ""
+"sts = os.system(\"mycmd\" + \" myarg\")\n"
+"# becomes\n"
+"retcode = call(\"mycmd\" + \" myarg\", shell=True)"
+msgstr ""
+"sts = os.system(\"mycmd\" + \"myarg\")\n"
+"# becomes\n"
+"retcode = call(\"mycmd\" + \" myarg\", shell=True)"
+
+#: ../../library/subprocess.rst:1413
+#, fuzzy
+msgid "Notes:"
+msgstr "Ghi chú:"
+
+#: ../../library/subprocess.rst:1415
+#, fuzzy
+msgid "Calling the program through the shell is usually not required."
+msgstr "Việc gọi chương trình thông qua shell thường không cần thiết."
+
+#: ../../library/subprocess.rst:1416
+#, fuzzy
+msgid ""
+"The :func:`call` return value is encoded differently to that of "
+":func:`os.system`."
+msgstr ""
+"Giá trị trả về của :func:`call` được mã hóa khác với giá trị của "
+":func:`os.system`."
+
+#: ../../library/subprocess.rst:1419
+#, fuzzy
+msgid ""
+"The :func:`os.system` function ignores SIGINT and SIGQUIT signals while the "
+"command is running, but the caller must do this separately when using the "
+":mod:`!subprocess` module."
+msgstr ""
+"Hàm :func:`os.system` bỏ qua các tín hiệu SIGINT và SIGQUIT trong khi lệnh "
+"đang chạy, nhưng người gọi phải thực hiện việc này một cách riêng biệt khi "
+"sử dụng mô-đun :mod:`!subprocess`."
+
+#: ../../library/subprocess.rst:1423
+#, fuzzy
+msgid "A more realistic example would look like this::"
+msgstr "Một ví dụ thực tế hơn sẽ như thế này::"
+
+#: ../../library/subprocess.rst:1425
+#, fuzzy
+msgid ""
+"try:\n"
+"    retcode = call(\"mycmd\" + \" myarg\", shell=True)\n"
+"    if retcode < 0:\n"
+"        print(\"Child was terminated by signal\", -retcode, file=sys.stderr)\n"
+"    else:\n"
+"        print(\"Child returned\", retcode, file=sys.stderr)\n"
+"except OSError as e:\n"
+"    print(\"Execution failed:\", e, file=sys.stderr)"
+msgstr ""
+"thử:\n"
+"    retcode = call(\"mycmd\" + \" myarg\", shell=True)\n"
+"    nếu mã hóa lại < 0:\n"
+"        print(\"Con đã bị chấm dứt bởi tín hiệu\", -retcode, file=sys.stderr)\n"
+"    khác:\n"
+"        print(\"Con được trả về\", retcode, file=sys.stderr)\n"
+"ngoại trừ OSError là e:\n"
+"    print(\"Thực thi thất bại:\", e, file=sys.stderr)"
+
+#: ../../library/subprocess.rst:1436
+#, fuzzy
+msgid "Replacing the :func:`os.spawn <os.spawnl>` family"
+msgstr "Thay thế gia đình :func:`os.spawn <os.spawnl>`"
+
+#: ../../library/subprocess.rst:1438
+#, fuzzy
+msgid "P_NOWAIT example::"
+msgstr "ví dụ về P_NOWAIT::"
+
+#: ../../library/subprocess.rst:1440
+#, fuzzy
+msgid ""
+"pid = os.spawnlp(os.P_NOWAIT, \"/bin/mycmd\", \"mycmd\", \"myarg\")\n"
+"==>\n"
+"pid = Popen([\"/bin/mycmd\", \"myarg\"]).pid"
+msgstr ""
+"pid = os.spawnlp(os.P_NOWAIT, \"/bin/mycmd\", \"mycmd\", \"myarg\")\n"
+"==>\n"
+"pid = Popen([\"/bin/mycmd\", \"myarg\"]).pid"
+
+#: ../../library/subprocess.rst:1444
+#, fuzzy
+msgid "P_WAIT example::"
+msgstr "ví dụ về P_WAIT::"
+
+#: ../../library/subprocess.rst:1446
+#, fuzzy
+msgid ""
+"retcode = os.spawnlp(os.P_WAIT, \"/bin/mycmd\", \"mycmd\", \"myarg\")\n"
+"==>\n"
+"retcode = call([\"/bin/mycmd\", \"myarg\"])"
+msgstr ""
+"retcode = os.spawnlp(os.P_WAIT, \"/bin/mycmd\", \"mycmd\", \"myarg\")\n"
+"==>\n"
+"retcode = call([\"/bin/mycmd\", \"myarg\"])"
+
+#: ../../library/subprocess.rst:1450
+#, fuzzy
+msgid "Vector example::"
+msgstr "Ví dụ về vectơ::"
+
+#: ../../library/subprocess.rst:1452
+#, fuzzy
+msgid ""
+"os.spawnvp(os.P_NOWAIT, path, args)\n"
+"==>\n"
+"Popen([path] + args[1:])"
+msgstr ""
+"os.spawnvp(os.P_NOWAIT, đường dẫn, args)\n"
+"==>\n"
+"Popen([path] + args[1:])"
+
+#: ../../library/subprocess.rst:1456
+#, fuzzy
+msgid "Environment example::"
+msgstr "Ví dụ về môi trường::"
+
+#: ../../library/subprocess.rst:1458
+#, python-brace-format, fuzzy
+msgid ""
+"os.spawnlpe(os.P_NOWAIT, \"/bin/mycmd\", \"mycmd\", \"myarg\", env)\n"
+"==>\n"
+"Popen([\"/bin/mycmd\", \"myarg\"], env={\"PATH\": \"/usr/bin\"})"
+msgstr ""
+"os.spawnlpe(os.P_NOWAIT, \"/bin/mycmd\", \"mycmd\", \"myarg\", env)\n"
+"==>\n"
+"Popen([\"/bin/mycmd\", \"myarg\"], env={\"PATH\": \"/usr/bin\"})"
+
+#: ../../library/subprocess.rst:1465
+#, fuzzy
+msgid "Replacing :func:`os.popen`"
+msgstr "Thay thế :func:`os.popen`"
+
+#: ../../library/subprocess.rst:1467
+#, fuzzy
+msgid "Return code handling translates as follows::"
+msgstr "Việc xử lý mã trả về được dịch như sau::"
+
+#: ../../library/subprocess.rst:1469
+#, fuzzy
+msgid ""
+"pipe = os.popen(cmd, 'w')\n"
+"...\n"
+"rc = pipe.close()\n"
+"if rc is not None and rc >> 8:\n"
+"    print(\"There were some errors\")\n"
+"==>\n"
+"process = Popen(cmd, stdin=PIPE)\n"
+"...\n"
+"process.stdin.close()\n"
+"if process.wait() != 0:\n"
+"    print(\"There were some errors\")"
+msgstr ""
+"pipe = os.popen(cmd, 'w')\n"
+"...\n"
+"rc = pipe.close()\n"
+"nếu rc không phải là None và rc >> 8:\n"
+"    print(\"Có một số lỗi\")\n"
+"==>\n"
+"quá trình = Popen(cmd, stdin=PIPE)\n"
+"...\n"
+"quá trình.stdin.close()\n"
+"nếu process.wait() != 0:\n"
+"    print(\"Có một số lỗi\")"
+
+#: ../../library/subprocess.rst:1483
+#, fuzzy
+msgid "Legacy Shell Invocation Functions"
+msgstr "Chức năng gọi Shell kế thừa"
+
+#: ../../library/subprocess.rst:1485
+#, fuzzy
+msgid ""
+"This module also provides the following legacy functions from the 2.x "
+"``commands`` module. These operations implicitly invoke the system shell and"
+" none of the guarantees described above regarding security and exception "
+"handling consistency are valid for these functions."
+msgstr ""
+"Mô-đun này cũng cung cấp các chức năng kế thừa sau từ mô-đun 2.x "
+"``commands``. Các hoạt động này ngầm gọi shell hệ thống và không có đảm bảo "
+"nào được mô tả ở trên về tính nhất quán trong xử lý bảo mật và ngoại lệ là "
+"hợp lệ cho các chức năng này."
+
+#: ../../library/subprocess.rst:1492
+#, fuzzy
+msgid "Return ``(exitcode, output)`` of executing *cmd* in a shell."
+msgstr "Trả về ``(exitcode, output)`` khi thực thi *cmd* trong shell."
+
+#: ../../library/subprocess.rst:1494
+#, fuzzy
+msgid ""
+"Execute the string *cmd* in a shell with :func:`check_output` and return a "
+"2-tuple ``(exitcode, output)``. *encoding* and *errors* are used to decode "
+"output; see the notes on :ref:`frequently-used-arguments` for more details."
+msgstr ""
+"Thực thi chuỗi *cmd* trong shell với :func:`check_output` và trả về "
+"``(exitcode, output)`` gồm 2 bộ. *encoding* và *errors* được sử dụng để giải"
+" mã đầu ra; xem ghi chú trên :ref:`frequently-used-arguments` để biết thêm "
+"chi tiết."
+
+#: ../../library/subprocess.rst:1499
+#, fuzzy
+msgid ""
+"A trailing newline is stripped from the output. The exit code for the "
+"command can be interpreted as the return code of subprocess.  Example::"
+msgstr ""
+"Dòng mới ở cuối bị loại bỏ khỏi đầu ra. Mã thoát cho lệnh có thể được hiểu "
+"là mã trả về của subprocess.  Ví dụ::"
+
+#: ../../library/subprocess.rst:1503
+#, fuzzy
+msgid ""
+">>> subprocess.getstatusoutput('ls /bin/ls')\n"
+"(0, '/bin/ls')\n"
+">>> subprocess.getstatusoutput('cat /bin/junk')\n"
+"(1, 'cat: /bin/junk: No such file or directory')\n"
+">>> subprocess.getstatusoutput('/bin/junk')\n"
+"(127, 'sh: /bin/junk: not found')\n"
+">>> subprocess.getstatusoutput('/bin/kill $$')\n"
+"(-15, '')"
+msgstr ""
+">>> subprocess.getstatusoutput('ls /bin/ls')\n"
+"(0, '/bin/ls')\n"
+">>> subprocess.getstatusoutput('cat /bin/junk')\n"
+"(1, 'cat: /bin/junk: Không có tập tin hoặc thư mục như vậy')\n"
+">>> subprocess.getstatusoutput('/bin/junk')\n"
+"(127, 'sh:/bin/rác: không tìm thấy')\n"
+">>> subprocess.getstatusoutput('/bin/kill $$')\n"
+"(-15, '')"
+
+#: ../../library/subprocess.rst:1514
+#, fuzzy
+msgid "Windows support was added."
+msgstr "Hỗ trợ Windows đã được thêm vào."
+
+#: ../../library/subprocess.rst:1517
+#, fuzzy
+msgid ""
+"The function now returns (exitcode, output) instead of (status, output) as "
+"it did in Python 3.3.3 and earlier.  exitcode has the same value as "
+":attr:`~Popen.returncode`."
+msgstr ""
+"Hàm bây giờ trả về (exitcode, đầu ra) thay vì (trạng thái, đầu ra) như trong"
+" Python 3.3.3 trở về trước.  mã thoát có cùng giá trị với "
+":attr:`~Popen.returncode`."
+
+#: ../../library/subprocess.rst:1526
+#, fuzzy
+msgid "Return output (stdout and stderr) of executing *cmd* in a shell."
+msgstr "Trả về đầu ra (stdout và stderr) của việc thực thi *cmd* trong shell."
+
+#: ../../library/subprocess.rst:1528
+#, fuzzy
+msgid ""
+"Like :func:`getstatusoutput`, except the exit code is ignored and the return"
+" value is a string containing the command's output.  Example::"
+msgstr ""
+"Giống như :func:`getstatusoutput`, ngoại trừ mã thoát bị bỏ qua và giá trị "
+"trả về là một chuỗi chứa đầu ra của lệnh.  Ví dụ::"
+
+#: ../../library/subprocess.rst:1531
+#, fuzzy
+msgid ""
+">>> subprocess.getoutput('ls /bin/ls')\n"
+"'/bin/ls'"
+msgstr ""
+">>> subprocess.getoutput('ls /bin/ls')\n"
+"'/bin/ls'"
+
+#: ../../library/subprocess.rst:1536
+#, fuzzy
+msgid "Windows support added"
+msgstr "Đã thêm hỗ trợ Windows"
+
+#: ../../library/subprocess.rst:1544
+#, fuzzy
+msgid "Notes"
+msgstr "Ghi chú"
+
+#: ../../library/subprocess.rst:1549
+#, fuzzy
+msgid "Timeout Behavior"
+msgstr "Hành vi hết thời gian chờ"
+
+#: ../../library/subprocess.rst:1551
+#, fuzzy
+msgid ""
+"When using the ``timeout`` parameter in functions like :func:`run`, "
+":meth:`Popen.wait`, or :meth:`Popen.communicate`, users should be aware of "
+"the following behaviors:"
+msgstr ""
+"Khi sử dụng tham số ``timeout`` trong các hàm như :func:`run`, "
+":meth:`Popen.wait` hoặc :meth:`Popen.communicate`, người dùng nên lưu ý các "
+"hành vi sau:"
+
+#: ../../library/subprocess.rst:1555
+#, fuzzy
+msgid ""
+"**Process Creation Delay**: The initial process creation itself cannot be "
+"interrupted on many platform APIs. This means that even when specifying a "
+"timeout, you are not guaranteed to see a timeout exception until at least "
+"after however long process creation takes."
+msgstr ""
+"**Process Creation Delay**: Quá trình tạo quy trình ban đầu không thể bị "
+"gián đoạn trên nhiều API nền tảng. Điều này có nghĩa là ngay cả khi chỉ định"
+" thời gian chờ, bạn không được đảm bảo sẽ thấy ngoại lệ hết thời gian chờ "
+"cho đến ít nhất sau khi quá trình tạo quá trình mất nhiều thời gian."
+
+#: ../../library/subprocess.rst:1560
+#, fuzzy
+msgid ""
+"**Extremely Small Timeout Values**: Setting very small timeout values (such "
+"as a few milliseconds) may result in almost immediate :exc:`TimeoutExpired` "
+"exceptions because process creation and system scheduling inherently require"
+" time."
+msgstr ""
+"**Extremely Small Timeout Values**: Việc đặt các giá trị thời gian chờ rất "
+"nhỏ (chẳng hạn như vài mili giây) có thể dẫn đến các ngoại lệ gần như ngay "
+"lập tức đối với :exc:`TimeoutExpired` vì việc tạo quy trình và lập lịch hệ "
+"thống vốn dĩ đã yêu cầu thời gian."
+
+#: ../../library/subprocess.rst:1567
+#, fuzzy
+msgid "Converting an argument sequence to a string on Windows"
+msgstr "Chuyển đổi chuỗi đối số thành chuỗi trên Windows"
+
+#: ../../library/subprocess.rst:1569
+#, fuzzy
+msgid ""
+"On Windows, an *args* sequence is converted to a string that can be parsed "
+"using the following rules (which correspond to the rules used by the MS C "
+"runtime):"
+msgstr ""
+"Trên Windows, chuỗi *args* được chuyển đổi thành chuỗi có thể được phân tích"
+" cú pháp bằng các quy tắc sau (tương ứng với các quy tắc được sử dụng trong "
+"thời gian chạy MS C):"
+
+#: ../../library/subprocess.rst:1573
+#, fuzzy
+msgid ""
+"Arguments are delimited by white space, which is either a space or a tab."
+msgstr ""
+"Các đối số được phân cách bằng khoảng trắng, đó là khoảng trắng hoặc tab."
+
+#: ../../library/subprocess.rst:1576
+#, fuzzy
+msgid ""
+"A string surrounded by double quotation marks is interpreted as a single "
+"argument, regardless of white space contained within.  A quoted string can "
+"be embedded in an argument."
+msgstr ""
+"Một chuỗi được bao quanh bởi dấu ngoặc kép được hiểu là một đối số duy nhất,"
+" bất kể khoảng trắng chứa bên trong.  Một chuỗi trích dẫn có thể được nhúng "
+"vào một đối số."
+
+#: ../../library/subprocess.rst:1581
+#, fuzzy
+msgid ""
+"A double quotation mark preceded by a backslash is interpreted as a literal "
+"double quotation mark."
+msgstr ""
+"Dấu ngoặc kép đứng trước dấu gạch chéo ngược được hiểu là dấu ngoặc kép theo"
+" nghĩa đen."
+
+#: ../../library/subprocess.rst:1584
+#, fuzzy
+msgid ""
+"Backslashes are interpreted literally, unless they immediately precede a "
+"double quotation mark."
+msgstr ""
+"Dấu gạch chéo ngược được hiểu theo nghĩa đen, trừ khi chúng ngay trước dấu "
+"ngoặc kép."
+
+#: ../../library/subprocess.rst:1587
+#, fuzzy
+msgid ""
+"If backslashes immediately precede a double quotation mark, every pair of "
+"backslashes is interpreted as a literal backslash.  If the number of "
+"backslashes is odd, the last backslash escapes the next double quotation "
+"mark as described in rule 3."
+msgstr ""
+"Nếu dấu gạch chéo ngược ngay trước dấu ngoặc kép thì mỗi cặp dấu gạch chéo "
+"ngược được hiểu là dấu gạch chéo ngược theo nghĩa đen.  Nếu số dấu gạch chéo"
+" ngược là số lẻ thì dấu gạch chéo ngược cuối cùng sẽ thoát khỏi dấu ngoặc "
+"kép tiếp theo như được mô tả trong quy tắc 3."
+
+#: ../../library/subprocess.rst:1596
+#, fuzzy
+msgid ":mod:`shlex`"
+msgstr ":mod:`shlex`"
+
+#: ../../library/subprocess.rst:1597
+#, fuzzy
+msgid "Module which provides function to parse and escape command lines."
+msgstr "Mô-đun cung cấp chức năng phân tích cú pháp và thoát dòng lệnh."
+
+#: ../../library/subprocess.rst:1603
+#, fuzzy
+msgid "Disable use of ``posix_spawn()``"
+msgstr "Vô hiệu hóa việc sử dụng ``posix_spawn()``"
+
+#: ../../library/subprocess.rst:1605
+#, fuzzy
+msgid ""
+"On Linux, :mod:`!subprocess` defaults to using the ``vfork()`` system call "
+"internally when it is safe to do so rather than ``fork()``. This greatly "
+"improves performance."
+msgstr ""
+"Trên Linux, :mod:`!subprocess` mặc định sử dụng lệnh gọi hệ thống "
+"``vfork()`` nội bộ khi thấy an toàn để thực hiện điều đó thay vì ``fork()``."
+" Điều này cải thiện đáng kể hiệu suất."
+
+#: ../../library/subprocess.rst:1611
+#, fuzzy
+msgid "subprocess._USE_POSIX_SPAWN = False  # See CPython issue gh-NNNNNN."
+msgstr "subprocess._USE_POSIX_SPAWN = Sai # See CPython phát hành gh-NNNNNN."
+
+#: ../../library/subprocess.rst:1613
+#, fuzzy
+msgid ""
+"It is safe to set this to false on any Python version. It will have no "
+"effect on older or newer versions where unsupported. Do not assume the "
+"attribute is available to read. Despite the name, a true value does not "
+"indicate the corresponding function will be used, only that it may be."
+msgstr ""
+"Việc đặt giá trị này thành sai trên bất kỳ phiên bản Python nào là an toàn. "
+"Nó sẽ không có hiệu lực đối với các phiên bản cũ hơn hoặc mới hơn nếu không "
+"được hỗ trợ. Đừng cho rằng thuộc tính có sẵn để đọc. Bất chấp tên gọi, giá "
+"trị thực không cho biết hàm tương ứng sẽ được sử dụng, chỉ có thể là như "
+"vậy."
+
+#: ../../library/subprocess.rst:1618
+#, fuzzy
+msgid ""
+"Please file issues any time you have to use these private knobs with a way "
+"to reproduce the issue you were seeing. Link to that issue from a comment in"
+" your code."
+msgstr ""
+"Vui lòng gửi các vấn đề bất cứ khi nào bạn phải sử dụng các núm riêng tư này"
+" để tìm cách tái tạo sự cố mà bạn đang gặp phải. Liên kết đến vấn đề đó từ "
+"nhận xét trong mã của bạn."
+
+#: ../../library/subprocess.rst:1622
+#, fuzzy
+msgid "``_USE_POSIX_SPAWN``"
+msgstr "``_USE_POSIX_SPAWN``"
+
+#: ../../library/subprocess.rst:296
+#, fuzzy
+msgid "universal newlines"
+msgstr "dòng mới phổ quát"
+
+#: ../../library/subprocess.rst:296
+#, fuzzy
+msgid "subprocess module"
+msgstr "mô-đun quy trình con"

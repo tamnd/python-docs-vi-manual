@@ -1,0 +1,3113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/asyncio-task.rst:6
+#, fuzzy
+msgid "Coroutines and tasks"
+msgstr "Coroutine và nhiệm vụ"
+
+#: ../../library/asyncio-task.rst:8
+#, fuzzy
+msgid ""
+"This section outlines high-level asyncio APIs to work with coroutines and "
+"Tasks."
+msgstr ""
+"Phần này trình bày các API asyncio cấp cao để hoạt động với coroutine và "
+"Task."
+
+#: ../../library/asyncio-task.rst:19 ../../library/asyncio-task.rst:148
+#, fuzzy
+msgid "Coroutines"
+msgstr "Coroutine"
+
+#: ../../library/asyncio-task.rst:21
+#, fuzzy
+msgid "**Source code:** :source:`Lib/asyncio/coroutines.py`"
+msgstr "**Source code:** :source:`Lib/asyncio/coroutines.py`"
+
+#: ../../library/asyncio-task.rst:25
+#, fuzzy
+msgid ""
+":term:`Coroutines <coroutine>` declared with the async/await syntax is the "
+"preferred way of writing asyncio applications.  For example, the following "
+"snippet of code prints \"hello\", waits 1 second, and then prints "
+"\"world\"::"
+msgstr ""
+":term:`Coroutines <coroutine>` được khai báo bằng cú pháp async/await là "
+"cách viết ứng dụng asyncio ưa thích.  Ví dụ: đoạn mã sau in \"hello\", đợi 1"
+" giây rồi in \"world\"::"
+
+#: ../../library/asyncio-task.rst:30
+#, fuzzy
+msgid ""
+">>> import asyncio\n"
+"\n"
+">>> async def main():\n"
+"...     print('hello')\n"
+"...     await asyncio.sleep(1)\n"
+"...     print('world')\n"
+"\n"
+">>> asyncio.run(main())\n"
+"hello\n"
+"world"
+msgstr ""
+">>> nhập asyncio\n"
+"\n"
+">>> async def main():\n"
+"... in('xin chào')\n"
+"... đang chờ asyncio.sleep(1)\n"
+"... in('thế giới')\n"
+"\n"
+">>> asyncio.run(main())\n"
+"xin chào\n"
+"thế giới"
+
+#: ../../library/asyncio-task.rst:41
+#, fuzzy
+msgid ""
+"Note that simply calling a coroutine will not schedule it to be executed::"
+msgstr "Lưu ý rằng việc chỉ gọi một coroutine sẽ không lên lịch thực thi nó::"
+
+#: ../../library/asyncio-task.rst:44
+#, fuzzy
+msgid ""
+">>> main()\n"
+"<coroutine object main at 0x1053bb7c8>"
+msgstr ""
+">>> chính()\n"
+"<đối tượng coroutine chính tại 0x1053bb7c8>"
+
+#: ../../library/asyncio-task.rst:47
+#, fuzzy
+msgid ""
+"To actually run a coroutine, asyncio provides the following mechanisms:"
+msgstr "Để thực sự chạy một coroutine, asyncio cung cấp các cơ chế sau:"
+
+#: ../../library/asyncio-task.rst:49
+#, fuzzy
+msgid ""
+"The :func:`asyncio.run` function to run the top-level entry point \"main()\""
+" function (see the above example.)"
+msgstr ""
+"Hàm :func:`asyncio.run` để chạy hàm \"main()\" của điểm nhập cấp cao nhất "
+"(xem ví dụ trên.)"
+
+#: ../../library/asyncio-task.rst:52
+#, fuzzy
+msgid ""
+"Awaiting on a coroutine.  The following snippet of code will print \"hello\""
+" after waiting for 1 second, and then print \"world\" after waiting for "
+"*another* 2 seconds::"
+msgstr ""
+"Đang chờ coroutine.  Đoạn mã sau sẽ in \"hello\" sau khi đợi 1 giây và sau "
+"đó in \"world\" sau khi đợi *another* 2 giây ::"
+
+#: ../../library/asyncio-task.rst:56
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"import asyncio\n"
+"import time\n"
+"\n"
+"async def say_after(delay, what):\n"
+"    await asyncio.sleep(delay)\n"
+"    print(what)\n"
+"\n"
+"async def main():\n"
+"    print(f\"started at {time.strftime('%X')}\")\n"
+"\n"
+"    await say_after(1, 'hello')\n"
+"    await say_after(2, 'world')\n"
+"\n"
+"    print(f\"finished at {time.strftime('%X')}\")\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"nhập asyncio\n"
+"thời gian nhập khẩu\n"
+"\n"
+"async def say_after(delay, what):\n"
+"    đang chờ asyncio.sleep(delay)\n"
+"    in (cái gì)\n"
+"\n"
+"async def main():\n"
+"    print(f\"bắt đầu lúc {time.strftime('%X')}\")\n"
+"\n"
+"    đang chờ say_after(1, 'xin chào')\n"
+"    đang chờ say_after(2, 'thế giới')\n"
+"\n"
+"    print(f\"hoàn thành lúc {time.strftime('%X')}\")\n"
+"\n"
+"asyncio.run(chính())"
+
+#: ../../library/asyncio-task.rst:73
+#, fuzzy
+msgid "Expected output::"
+msgstr "Sản lượng dự kiến::"
+
+#: ../../library/asyncio-task.rst:75
+#, fuzzy
+msgid ""
+"started at 17:13:52\n"
+"hello\n"
+"world\n"
+"finished at 17:13:55"
+msgstr ""
+"bắt đầu lúc 17:13:52\n"
+"xin chào\n"
+"thế giới\n"
+"kết thúc lúc 17:13:55"
+
+#: ../../library/asyncio-task.rst:80
+#, fuzzy
+msgid ""
+"The :func:`asyncio.create_task` function to run coroutines concurrently as "
+"asyncio :class:`Tasks <Task>`."
+msgstr ""
+"Hàm :func:`asyncio.create_task` để chạy đồng thời các coroutine dưới dạng "
+"asyncio :class:`Tasks <Task>`."
+
+#: ../../library/asyncio-task.rst:83
+#, fuzzy
+msgid ""
+"Let's modify the above example and run two ``say_after`` coroutines "
+"*concurrently*::"
+msgstr ""
+"Hãy sửa đổi ví dụ trên và chạy hai coroutine ``say_after`` *concurrently*::"
+
+#: ../../library/asyncio-task.rst:86
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"async def main():\n"
+"    task1 = asyncio.create_task(\n"
+"        say_after(1, 'hello'))\n"
+"\n"
+"    task2 = asyncio.create_task(\n"
+"        say_after(2, 'world'))\n"
+"\n"
+"    print(f\"started at {time.strftime('%X')}\")\n"
+"\n"
+"    # Wait until both tasks are completed (should take\n"
+"    # around 2 seconds.)\n"
+"    await task1\n"
+"    await task2\n"
+"\n"
+"    print(f\"finished at {time.strftime('%X')}\")"
+msgstr ""
+"async def main():\n"
+"    task1 = asyncio.create_task(\n"
+"        say_after(1, 'xin chào'))\n"
+"\n"
+"    task2 = asyncio.create_task(\n"
+"        say_after(2, 'thế giới'))\n"
+"\n"
+"    print(f\"bắt đầu lúc {time.strftime('%X')}\")\n"
+"\n"
+"    # Wait cho đến khi cả hai nhiệm vụ được hoàn thành (nên mất\n"
+"    # around 2 giây.)\n"
+"    đang chờ nhiệm vụ 1\n"
+"    đang chờ nhiệm vụ2\n"
+"\n"
+"    print(f\"hoàn thành lúc {time.strftime('%X')}\")"
+
+#: ../../library/asyncio-task.rst:102
+#, fuzzy
+msgid ""
+"Note that expected output now shows that the snippet runs 1 second faster "
+"than before::"
+msgstr ""
+"Lưu ý rằng kết quả dự kiến hiện cho thấy đoạn mã chạy nhanh hơn 1 giây so "
+"với trước đây::"
+
+#: ../../library/asyncio-task.rst:105
+#, fuzzy
+msgid ""
+"started at 17:14:32\n"
+"hello\n"
+"world\n"
+"finished at 17:14:34"
+msgstr ""
+"bắt đầu lúc 17:14:32\n"
+"xin chào\n"
+"thế giới\n"
+"kết thúc lúc 17:14:34"
+
+#: ../../library/asyncio-task.rst:110
+#, fuzzy
+msgid ""
+"The :class:`asyncio.TaskGroup` class provides a more modern alternative to "
+":func:`create_task`. Using this API, the last example becomes::"
+msgstr ""
+"Lớp :class:`asyncio.TaskGroup` cung cấp một giải pháp thay thế hiện đại hơn "
+"cho :func:`create_task`. Sử dụng API này, ví dụ cuối cùng trở thành::"
+
+#: ../../library/asyncio-task.rst:114
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"async def main():\n"
+"    async with asyncio.TaskGroup() as tg:\n"
+"        task1 = tg.create_task(\n"
+"            say_after(1, 'hello'))\n"
+"\n"
+"        task2 = tg.create_task(\n"
+"            say_after(2, 'world'))\n"
+"\n"
+"        print(f\"started at {time.strftime('%X')}\")\n"
+"\n"
+"    # The await is implicit when the context manager exits.\n"
+"\n"
+"    print(f\"finished at {time.strftime('%X')}\")"
+msgstr ""
+"async def main():\n"
+"    không đồng bộ với asyncio.TaskGroup() dưới dạng tg:\n"
+"        task1 = tg.create_task(\n"
+"            say_after(1, 'xin chào'))\n"
+"\n"
+"        task2 = tg.create_task(\n"
+"            say_after(2, 'thế giới'))\n"
+"\n"
+"        print(f\"bắt đầu lúc {time.strftime('%X')}\")\n"
+"\n"
+"    # The chờ đợi ẩn khi trình quản lý bối cảnh thoát.\n"
+"\n"
+"    print(f\"hoàn thành lúc {time.strftime('%X')}\")"
+
+#: ../../library/asyncio-task.rst:128
+#, fuzzy
+msgid "The timing and output should be the same as for the previous version."
+msgstr "Thời gian và đầu ra phải giống như phiên bản trước."
+
+#: ../../library/asyncio-task.rst:130
+#, fuzzy
+msgid ":class:`asyncio.TaskGroup`."
+msgstr ":class:`asyncio.TaskGroup`."
+
+#: ../../library/asyncio-task.rst:137
+#, fuzzy
+msgid "Awaitables"
+msgstr "Đang chờ"
+
+#: ../../library/asyncio-task.rst:139
+#, fuzzy
+msgid ""
+"We say that an object is an **awaitable** object if it can be used in an "
+":keyword:`await` expression.  Many asyncio APIs are designed to accept "
+"awaitables."
+msgstr ""
+"Chúng ta nói rằng một đối tượng là đối tượng **awaitable** nếu nó có thể "
+"được sử dụng trong biểu thức :keyword:`await`.  Nhiều API asyncio được thiết"
+" kế để chấp nhận các sản phẩm có thể chờ được."
+
+#: ../../library/asyncio-task.rst:143
+#, fuzzy
+msgid ""
+"There are three main types of *awaitable* objects: **coroutines**, "
+"**Tasks**, and **Futures**."
+msgstr ""
+"Có ba loại đối tượng *awaitable* chính: **coroutines**, **Tasks** và "
+"**Futures**."
+
+#: ../../library/asyncio-task.rst:149
+#, fuzzy
+msgid ""
+"Python coroutines are *awaitables* and therefore can be awaited from other "
+"coroutines::"
+msgstr ""
+"Các coroutine Python là *awaitables* và do đó có thể chờ đợi từ các "
+"coroutine khác::"
+
+#: ../../library/asyncio-task.rst:152
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"async def nested():\n"
+"    return 42\n"
+"\n"
+"async def main():\n"
+"    # Nothing happens if we just call \"nested()\".\n"
+"    # A coroutine object is created but not awaited,\n"
+"    # so it *won't run at all*.\n"
+"    nested()  # will raise a \"RuntimeWarning\".\n"
+"\n"
+"    # Let's do it differently now and await it:\n"
+"    print(await nested())  # will print \"42\".\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"async def lồng nhau():\n"
+"    trở lại 42\n"
+"\n"
+"async def main():\n"
+"    # Nothing xảy ra nếu chúng ta chỉ gọi \"nested()\".\n"
+"    Đối tượng coroutine # A được tạo nhưng không được chờ đợi,\n"
+"    # so nó *won't run at all*.\n"
+"    Nested() # will đưa ra \"RuntimeWarning\".\n"
+"\n"
+"    # Let hãy làm điều đó theo cách khác ngay bây giờ và chờ đợi:\n"
+"    print(await Nested()) # will print \"42\".\n"
+"\n"
+"asyncio.run(chính())"
+
+#: ../../library/asyncio-task.rst:170
+#, fuzzy
+msgid ""
+"In this documentation the term \"coroutine\" can be used for two closely "
+"related concepts:"
+msgstr ""
+"Trong tài liệu này, thuật ngữ \"coroutine\" có thể được sử dụng cho hai khái"
+" niệm có liên quan chặt chẽ với nhau:"
+
+#: ../../library/asyncio-task.rst:173
+#, fuzzy
+msgid "a *coroutine function*: an :keyword:`async def` function;"
+msgstr "*coroutine function*: hàm :keyword:`async def`;"
+
+#: ../../library/asyncio-task.rst:175
+#, fuzzy
+msgid ""
+"a *coroutine object*: an object returned by calling a *coroutine function*."
+msgstr ""
+"a *coroutine object*: một đối tượng được trả về bằng cách gọi *coroutine "
+"function*."
+
+#: ../../library/asyncio-task.rst:180
+#, fuzzy
+msgid "Tasks"
+msgstr "Nhiệm vụ"
+
+#: ../../library/asyncio-task.rst:181
+#, fuzzy
+msgid "*Tasks* are used to schedule coroutines *concurrently*."
+msgstr "*Tasks* được dùng để lên lịch cho coroutine *concurrently*."
+
+#: ../../library/asyncio-task.rst:183
+#, fuzzy
+msgid ""
+"When a coroutine is wrapped into a *Task* with functions like "
+":func:`asyncio.create_task` the coroutine is automatically scheduled to run "
+"soon::"
+msgstr ""
+"Khi một coroutine được gói vào một *Task* với các chức năng như "
+":func:`asyncio.create_task`, coroutine sẽ tự động được lên lịch để chạy "
+"sớm::"
+
+#: ../../library/asyncio-task.rst:187
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"async def nested():\n"
+"    return 42\n"
+"\n"
+"async def main():\n"
+"    # Schedule nested() to run soon concurrently\n"
+"    # with \"main()\".\n"
+"    task = asyncio.create_task(nested())\n"
+"\n"
+"    # \"task\" can now be used to cancel \"nested()\", or\n"
+"    # can simply be awaited to wait until it is complete:\n"
+"    await task\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"async def lồng nhau():\n"
+"    trở lại 42\n"
+"\n"
+"async def main():\n"
+"    # Schedule lồng nhau() sẽ sớm chạy đồng thời\n"
+"    # with \"chính()\".\n"
+"    nhiệm vụ = asyncio.create_task(nested())\n"
+"\n"
+"    # \"task\" bây giờ có thể được sử dụng để hủy \"nested()\" hoặc\n"
+"    # can chỉ cần đợi cho đến khi nó hoàn thành:\n"
+"    chờ đợi nhiệm vụ\n"
+"\n"
+"asyncio.run(chính())"
+
+#: ../../library/asyncio-task.rst:205
+#, fuzzy
+msgid "Futures"
+msgstr "Hợp đồng tương lai"
+
+#: ../../library/asyncio-task.rst:206
+#, fuzzy
+msgid ""
+"A :class:`Future` is a special **low-level** awaitable object that "
+"represents an **eventual result** of an asynchronous operation."
+msgstr ""
+":class:`Future` là một đối tượng **low-level** đặc biệt có thể chờ đợi, đại "
+"diện cho **eventual result** của một hoạt động không đồng bộ."
+
+#: ../../library/asyncio-task.rst:209
+#, fuzzy
+msgid ""
+"When a Future object is *awaited* it means that the coroutine will wait "
+"until the Future is resolved in some other place."
+msgstr ""
+"Khi một đối tượng Tương lai là *awaited*, điều đó có nghĩa là coroutine sẽ "
+"đợi cho đến khi Tương lai được giải quyết ở một nơi khác."
+
+#: ../../library/asyncio-task.rst:212
+#, fuzzy
+msgid ""
+"Future objects in asyncio are needed to allow callback-based code to be used"
+" with async/await."
+msgstr ""
+"Các đối tượng trong tương lai trong asyncio là cần thiết để cho phép sử dụng"
+" mã dựa trên lệnh gọi lại với async/await."
+
+#: ../../library/asyncio-task.rst:215
+#, fuzzy
+msgid ""
+"Normally **there is no need** to create Future objects at the application "
+"level code."
+msgstr ""
+"Thông thường **there is no need** để tạo các đối tượng Tương lai ở mã cấp "
+"ứng dụng."
+
+#: ../../library/asyncio-task.rst:218
+#, fuzzy
+msgid ""
+"Future objects, sometimes exposed by libraries and some asyncio APIs, can be"
+" awaited::"
+msgstr ""
+"Các đối tượng trong tương lai, đôi khi được các thư viện và một số API "
+"asyncio hiển thị, có thể được chờ đợi ::"
+
+#: ../../library/asyncio-task.rst:221
+#, fuzzy
+msgid ""
+"async def main():\n"
+"    await function_that_returns_a_future_object()\n"
+"\n"
+"    # this is also valid:\n"
+"    await asyncio.gather(\n"
+"        function_that_returns_a_future_object(),\n"
+"        some_python_coroutine()\n"
+"    )"
+msgstr ""
+"async def main():\n"
+"    đang chờ hàm_that_returns_a_future_object()\n"
+"\n"
+"    # this cũng hợp lệ:\n"
+"    đang chờ asyncio.gather(\n"
+"        function_that_returns_a_future_object(),\n"
+"        some_python_coroutine()\n"
+"    )"
+
+#: ../../library/asyncio-task.rst:230
+#, fuzzy
+msgid ""
+"A good example of a low-level function that returns a Future object is "
+":meth:`loop.run_in_executor`."
+msgstr ""
+"Một ví dụ điển hình về hàm cấp thấp trả về đối tượng Tương lai là "
+":meth:`loop.run_in_executor`."
+
+#: ../../library/asyncio-task.rst:235
+#, fuzzy
+msgid "Creating tasks"
+msgstr "Tạo nhiệm vụ"
+
+#: ../../library/asyncio-task.rst:237
+#, fuzzy
+msgid "**Source code:** :source:`Lib/asyncio/tasks.py`"
+msgstr "**Source code:** :source:`Lib/asyncio/tasks.py`"
+
+#: ../../library/asyncio-task.rst:243
+#, fuzzy
+msgid ""
+"Wrap the *coro* :ref:`coroutine <coroutine>` into a :class:`Task` and "
+"schedule its execution.  Return the Task object."
+msgstr ""
+"Gói *coro* :ref:`coroutine <coroutine>` vào :class:`Task` và lên lịch thực "
+"hiện.  Trả về đối tượng Nhiệm vụ."
+
+#: ../../library/asyncio-task.rst:246
+#, fuzzy
+msgid ""
+"The full function signature is largely the same as that of the :class:`Task`"
+" constructor (or factory) - all of the keyword arguments to this function "
+"are passed through to that interface."
+msgstr ""
+"Chữ ký hàm đầy đủ phần lớn giống với chữ ký của hàm tạo :class:`Task` (hoặc "
+"nhà máy) - tất cả các đối số từ khóa cho hàm này đều được chuyển qua giao "
+"diện đó."
+
+#: ../../library/asyncio-task.rst:250
+#, fuzzy
+msgid ""
+"An optional keyword-only *context* argument allows specifying a custom "
+":class:`contextvars.Context` for the *coro* to run in. The current context "
+"copy is created when no *context* is provided."
+msgstr ""
+"Đối số *context* chỉ có từ khóa tùy chọn cho phép chỉ định một "
+":class:`contextvars.Context` tùy chỉnh để *coro* chạy vào. Bản sao ngữ cảnh "
+"hiện tại được tạo khi không cung cấp *context*."
+
+#: ../../library/asyncio-task.rst:254
+#, fuzzy
+msgid ""
+"An optional keyword-only *eager_start* argument allows specifying if the "
+"task should execute eagerly during the call to create_task, or be scheduled "
+"later. If *eager_start* is not passed the mode set by "
+":meth:`loop.set_task_factory` will be used."
+msgstr ""
+"Đối số *eager_start* chỉ có từ khóa tùy chọn cho phép chỉ định xem tác vụ sẽ"
+" được thực thi một cách háo hức trong khi gọi tới create_task hay được lên "
+"lịch sau. Nếu *eager_start* không được thông qua, chế độ do "
+":meth:`loop.set_task_factory` đặt sẽ được sử dụng."
+
+#: ../../library/asyncio-task.rst:259
+#, fuzzy
+msgid ""
+"The task is executed in the loop returned by :func:`get_running_loop`, "
+":exc:`RuntimeError` is raised if there is no running loop in current thread."
+msgstr ""
+"Tác vụ được thực thi trong vòng lặp được trả về bởi "
+":func:`get_running_loop`, :exc:`RuntimeError` được nâng lên nếu không có "
+"vòng lặp đang chạy trong luồng hiện tại."
+
+#: ../../library/asyncio-task.rst:265
+#, fuzzy
+msgid ""
+":meth:`asyncio.TaskGroup.create_task` is a new alternative leveraging "
+"structural concurrency; it allows for waiting for a group of related tasks "
+"with strong safety guarantees."
+msgstr ""
+":meth:`asyncio.TaskGroup.create_task` là một giải pháp thay thế mới tận dụng"
+" tính đồng thời của cấu trúc; nó cho phép chờ đợi một nhóm nhiệm vụ liên "
+"quan với sự đảm bảo an toàn mạnh mẽ."
+
+#: ../../library/asyncio-task.rst:271
+#, fuzzy
+msgid ""
+"Save a reference to the result of this function, to avoid a task "
+"disappearing mid-execution. The event loop only keeps weak references to "
+"tasks. A task that isn't referenced elsewhere may get garbage collected at "
+"any time, even before it's done. For reliable \"fire-and-forget\" background"
+" tasks, gather them in a collection::"
+msgstr ""
+"Lưu tham chiếu đến kết quả của hàm này để tránh tác vụ biến mất khi đang "
+"thực thi. Vòng lặp sự kiện chỉ giữ các tham chiếu yếu đến các tác vụ. Một "
+"tác vụ không được tham chiếu ở nơi khác có thể được thu gom rác bất cứ lúc "
+"nào, ngay cả trước khi nó được thực hiện. Để có các tác vụ nền \"bắn và "
+"quên\" đáng tin cậy, hãy tập hợp chúng vào bộ sưu tập::"
+
+#: ../../library/asyncio-task.rst:278
+#, fuzzy
+msgid ""
+"background_tasks = set()\n"
+"\n"
+"for i in range(10):\n"
+"    task = asyncio.create_task(some_coro(param=i))\n"
+"\n"
+"    # Add task to the set. This creates a strong reference.\n"
+"    background_tasks.add(task)\n"
+"\n"
+"    # To prevent keeping references to finished tasks forever,\n"
+"    # make each task remove its own reference from the set after\n"
+"    # completion:\n"
+"    task.add_done_callback(background_tasks.discard)"
+msgstr ""
+"nền_tasks = set()\n"
+"\n"
+"cho tôi trong phạm vi (10):\n"
+"    nhiệm vụ = asyncio.create_task(some_coro(param=i))\n"
+"\n"
+"    nhiệm vụ # Add vào tập hợp. Điều này tạo ra một tài liệu tham khảo mạnh mẽ.\n"
+"    nền_tác vụ.add (tác vụ)\n"
+"\n"
+"    # To ngăn việc lưu giữ các tham chiếu đến các nhiệm vụ đã hoàn thành mãi mãi,\n"
+"    # make mỗi tác vụ sẽ xóa tham chiếu riêng của nó khỏi tập hợp sau\n"
+"    # completion:\n"
+"    task.add_done_callback(background_tasks.discard)"
+
+#: ../../library/asyncio-task.rst:293 ../../library/asyncio-task.rst:1254
+#, fuzzy
+msgid "Added the *name* parameter."
+msgstr "Đã thêm tham số *name*."
+
+#: ../../library/asyncio-task.rst:296 ../../library/asyncio-task.rst:1261
+#, fuzzy
+msgid "Added the *context* parameter."
+msgstr "Đã thêm tham số *context*."
+
+#: ../../library/asyncio-task.rst:299
+#, fuzzy
+msgid "Added the *eager_start* parameter by passing on all *kwargs*."
+msgstr "Đã thêm tham số *eager_start* bằng cách chuyển tất cả *kwargs*."
+
+#: ../../library/asyncio-task.rst:304
+#, fuzzy
+msgid "Task cancellation"
+msgstr "Hủy nhiệm vụ"
+
+#: ../../library/asyncio-task.rst:306
+#, fuzzy
+msgid ""
+"Tasks can easily and safely be cancelled. When a task is cancelled, "
+":exc:`asyncio.CancelledError` will be raised in the task at the next "
+"opportunity."
+msgstr ""
+"Nhiệm vụ có thể được hủy bỏ một cách dễ dàng và an toàn. Khi một nhiệm vụ bị"
+" hủy, :exc:`asyncio.CancelledError` sẽ được nâng lên trong nhiệm vụ ở cơ hội"
+" tiếp theo."
+
+#: ../../library/asyncio-task.rst:310
+#, fuzzy
+msgid ""
+"It is recommended that coroutines use ``try/finally`` blocks to robustly "
+"perform clean-up logic. In case :exc:`asyncio.CancelledError` is explicitly "
+"caught, it should generally be propagated when clean-up is complete. "
+":exc:`asyncio.CancelledError` directly subclasses :exc:`BaseException` so "
+"most code will not need to be aware of it."
+msgstr ""
+"Các coroutine nên sử dụng khối ``try/finally`` để thực hiện logic dọn dẹp "
+"một cách mạnh mẽ. Trong trường hợp :exc:`asyncio.CancelledError` bị bắt rõ "
+"ràng, thông thường nó sẽ được phổ biến khi quá trình dọn dẹp hoàn tất. "
+":exc:`asyncio.CancelledError` trực tiếp phân lớp :exc:`BaseException` nên "
+"hầu hết mã sẽ không cần phải biết về nó."
+
+#: ../../library/asyncio-task.rst:316
+#, fuzzy
+msgid ""
+"The asyncio components that enable structured concurrency, like "
+":class:`asyncio.TaskGroup` and :func:`asyncio.timeout`, are implemented "
+"using cancellation internally and might misbehave if a coroutine swallows "
+":exc:`asyncio.CancelledError`. Similarly, user code should not generally "
+"call :meth:`uncancel <asyncio.Task.uncancel>`. However, in cases when "
+"suppressing :exc:`asyncio.CancelledError` is truly desired, it is necessary "
+"to also call ``uncancel()`` to completely remove the cancellation state."
+msgstr ""
+"Các thành phần asyncio cho phép hoạt động đồng thời có cấu trúc, như "
+":class:`asyncio.TaskGroup` và :func:`asyncio.timeout`, được triển khai bằng "
+"cách hủy nội bộ và có thể hoạt động sai nếu một coroutine nuốt "
+":exc:`asyncio.CancelledError`. Tương tự, mã người dùng thường không nên gọi "
+":meth:`uncancel <asyncio.Task.uncancel>`. Tuy nhiên, trong trường hợp thực "
+"sự muốn loại bỏ :exc:`asyncio.CancelledError`, cũng cần phải gọi "
+"``uncancel()`` để loại bỏ hoàn toàn trạng thái hủy."
+
+#: ../../library/asyncio-task.rst:328
+#, fuzzy
+msgid "Task groups"
+msgstr "Nhóm nhiệm vụ"
+
+#: ../../library/asyncio-task.rst:330
+#, fuzzy
+msgid ""
+"Task groups combine a task creation API with a convenient and reliable way "
+"to wait for all tasks in the group to finish."
+msgstr ""
+"Các nhóm nhiệm vụ kết hợp việc tạo nhiệm vụ API với một cách thuận tiện và "
+"đáng tin cậy để chờ tất cả các nhiệm vụ trong nhóm hoàn thành."
+
+#: ../../library/asyncio-task.rst:335
+#, fuzzy
+msgid ""
+"An :ref:`asynchronous context manager <async-context-managers>` holding a "
+"group of tasks. Tasks can be added to the group using :meth:`create_task`. "
+"All tasks are awaited when the context manager exits."
+msgstr ""
+"Một :ref:`asynchronous context manager <async-context-managers>` đang nắm "
+"giữ một nhóm nhiệm vụ. Nhiệm vụ có thể được thêm vào nhóm bằng "
+":meth:`create_task`. Tất cả các tác vụ được chờ đợi khi trình quản lý bối "
+"cảnh thoát."
+
+#: ../../library/asyncio-task.rst:344
+#, fuzzy
+msgid ""
+"Create a task in this task group. The signature matches that of "
+":func:`asyncio.create_task`. If the task group is inactive (e.g. not yet "
+"entered, already finished, or in the process of shutting down), we will "
+"close the given ``coro``."
+msgstr ""
+"Tạo một nhiệm vụ trong nhóm nhiệm vụ này. Chữ ký khớp với chữ ký của "
+":func:`asyncio.create_task`. Nếu nhóm nhiệm vụ không hoạt động (ví dụ: chưa "
+"được nhập, đã hoàn thành hoặc đang trong quá trình tắt), chúng tôi sẽ đóng "
+"``coro`` đã cho."
+
+#: ../../library/asyncio-task.rst:352
+#, fuzzy
+msgid "Close the given coroutine if the task group is not active."
+msgstr "Đóng coroutine đã cho nếu nhóm tác vụ không hoạt động."
+
+#: ../../library/asyncio-task.rst:356
+#, fuzzy
+msgid "Passes on all *kwargs* to :meth:`loop.create_task`"
+msgstr "Chuyển tất cả *kwargs* sang :meth:`loop.create_task`"
+
+#: ../../library/asyncio-task.rst:358 ../../library/asyncio-task.rst:564
+#: ../../library/asyncio-task.rst:737 ../../library/asyncio-task.rst:798
+#: ../../library/asyncio-task.rst:824 ../../library/asyncio-task.rst:865
+#, fuzzy
+msgid "Example::"
+msgstr "Ví dụ::"
+
+#: ../../library/asyncio-task.rst:360
+#, python-brace-format, fuzzy
+msgid ""
+"async def main():\n"
+"    async with asyncio.TaskGroup() as tg:\n"
+"        task1 = tg.create_task(some_coro(...))\n"
+"        task2 = tg.create_task(another_coro(...))\n"
+"    print(f\"Both tasks have completed now: {task1.result()}, {task2.result()}\")"
+msgstr ""
+"async def main():\n"
+"    không đồng bộ với asyncio.TaskGroup() dưới dạng tg:\n"
+"        task1 = tg.create_task(some_coro(...))\n"
+"        task2 = tg.create_task(another_coro(...))\n"
+"    print(f\"Cả hai tác vụ hiện đã hoàn thành: {task1.result()}, {task2.result()}\")"
+
+#: ../../library/asyncio-task.rst:366
+#, fuzzy
+msgid ""
+"The ``async with`` statement will wait for all tasks in the group to finish."
+" While waiting, new tasks may still be added to the group (for example, by "
+"passing ``tg`` into one of the coroutines and calling ``tg.create_task()`` "
+"in that coroutine). Once the last task has finished and the ``async with`` "
+"block is exited, no new tasks may be added to the group."
+msgstr ""
+"Câu lệnh ``async with`` sẽ đợi tất cả các task trong nhóm kết thúc. Trong "
+"khi chờ đợi, các tác vụ mới vẫn có thể được thêm vào nhóm (ví dụ: bằng cách "
+"chuyển ``tg`` vào một trong các coroutine và gọi ``tg.create_task()`` trong "
+"coroutine đó). Khi nhiệm vụ cuối cùng đã hoàn thành và khối ``async with`` "
+"được thoát ra, không có nhiệm vụ mới nào có thể được thêm vào nhóm."
+
+#: ../../library/asyncio-task.rst:373
+#, fuzzy
+msgid ""
+"The first time any of the tasks belonging to the group fails with an "
+"exception other than :exc:`asyncio.CancelledError`, the remaining tasks in "
+"the group are cancelled. No further tasks can then be added to the group. At"
+" this point, if the body of the ``async with`` statement is still active "
+"(i.e., :meth:`~object.__aexit__` hasn't been called yet), the task directly "
+"containing the ``async with`` statement is also cancelled. The resulting "
+":exc:`asyncio.CancelledError` will interrupt an ``await``, but it will not "
+"bubble out of the containing ``async with`` statement."
+msgstr ""
+"Lần đầu tiên bất kỳ nhiệm vụ nào thuộc nhóm không thành công với ngoại lệ "
+"không phải là :exc:`asyncio.CancelledError`, các nhiệm vụ còn lại trong nhóm"
+" sẽ bị hủy. Sau đó, không thể thêm nhiệm vụ nào nữa vào nhóm. Tại thời điểm "
+"này, nếu phần nội dung của câu lệnh ``async with`` vẫn hoạt động (tức là "
+":meth:`~object.__aexit__` chưa được gọi), thì tác vụ chứa trực tiếp câu lệnh"
+" ``async with`` cũng bị hủy. Kết quả :exc:`asyncio.CancelledError` sẽ làm "
+"gián đoạn ``await``, nhưng nó sẽ không thoát ra khỏi câu lệnh ``async with``"
+" chứa."
+
+#: ../../library/asyncio-task.rst:383
+#, fuzzy
+msgid ""
+"Once all tasks have finished, if any tasks have failed with an exception "
+"other than :exc:`asyncio.CancelledError`, those exceptions are combined in "
+"an :exc:`ExceptionGroup` or :exc:`BaseExceptionGroup` (as appropriate; see "
+"their documentation) which is then raised."
+msgstr ""
+"Sau khi tất cả tác vụ đã hoàn tất, nếu bất kỳ tác vụ nào không thành công "
+"với ngoại lệ không phải là :exc:`asyncio.CancelledError`, thì những ngoại lệ"
+" đó sẽ được kết hợp trong :exc:`ExceptionGroup` hoặc "
+":exc:`BaseExceptionGroup` (nếu thích hợp; xem tài liệu của chúng) sau đó sẽ "
+"được đưa ra."
+
+#: ../../library/asyncio-task.rst:390
+#, fuzzy
+msgid ""
+"Two base exceptions are treated specially: If any task fails with "
+":exc:`KeyboardInterrupt` or :exc:`SystemExit`, the task group still cancels "
+"the remaining tasks and waits for them, but then the initial "
+":exc:`KeyboardInterrupt` or :exc:`SystemExit` is re-raised instead of "
+":exc:`ExceptionGroup` or :exc:`BaseExceptionGroup`."
+msgstr ""
+"Hai trường hợp ngoại lệ cơ bản được xử lý đặc biệt: Nếu bất kỳ tác vụ nào "
+"không thành công với :exc:`KeyboardInterrupt` hoặc :exc:`SystemExit`, nhóm "
+"tác vụ vẫn hủy các tác vụ còn lại và chờ chúng, nhưng sau đó "
+":exc:`KeyboardInterrupt` hoặc :exc:`SystemExit` ban đầu sẽ được kích hoạt "
+"lại thay vì :exc:`ExceptionGroup` hoặc :exc:`BaseExceptionGroup`."
+
+#: ../../library/asyncio-task.rst:396
+#, fuzzy
+msgid ""
+"If the body of the ``async with`` statement exits with an exception (so "
+":meth:`~object.__aexit__` is called with an exception set), this is treated "
+"the same as if one of the tasks failed: the remaining tasks are cancelled "
+"and then waited for, and non-cancellation exceptions are grouped into an "
+"exception group and raised. The exception passed into "
+":meth:`~object.__aexit__`, unless it is :exc:`asyncio.CancelledError`, is "
+"also included in the exception group. The same special case is made for "
+":exc:`KeyboardInterrupt` and :exc:`SystemExit` as in the previous paragraph."
+msgstr ""
+"Nếu phần nội dung của câu lệnh ``async with`` thoát ra với một ngoại lệ (vì "
+"vậy :meth:`~object.__aexit__` được gọi với một bộ ngoại lệ), thì điều này "
+"được xử lý giống như khi một trong các tác vụ không thành công: các tác vụ "
+"còn lại bị hủy và sau đó được chờ đợi, đồng thời các ngoại lệ không bị hủy "
+"sẽ được nhóm thành một nhóm ngoại lệ và được nâng lên. Ngoại lệ được chuyển "
+"vào :meth:`~object.__aexit__`, trừ khi đó là :exc:`asyncio.CancelledError`, "
+"cũng được bao gồm trong nhóm ngoại lệ. Trường hợp đặc biệt tương tự được "
+"thực hiện cho :exc:`KeyboardInterrupt` và :exc:`SystemExit` như trong đoạn "
+"trước."
+
+#: ../../library/asyncio-task.rst:408
+#, fuzzy
+msgid ""
+"Task groups are careful not to mix up the internal cancellation used to "
+"\"wake up\" their :meth:`~object.__aexit__` with cancellation requests for "
+"the task in which they are running made by other parties. In particular, "
+"when one task group is syntactically nested in another, and both experience "
+"an exception in one of their child tasks simultaneously, the inner task "
+"group will process its exceptions, and then the outer task group will "
+"receive another cancellation and process its own exceptions."
+msgstr ""
+"Các nhóm nhiệm vụ phải cẩn thận để không nhầm lẫn việc hủy bỏ nội bộ được sử"
+" dụng để \"đánh thức\" :meth:`~object.__aexit__` của họ với các yêu cầu hủy "
+"đối với nhiệm vụ mà họ đang thực hiện do các bên khác thực hiện. Đặc biệt, "
+"khi một nhóm nhiệm vụ được lồng vào một nhóm nhiệm vụ khác về mặt cú pháp và"
+" cả hai đều gặp phải một ngoại lệ ở một trong các nhiệm vụ con của chúng "
+"cùng một lúc thì nhóm nhiệm vụ bên trong sẽ xử lý các ngoại lệ của nó, sau "
+"đó nhóm nhiệm vụ bên ngoài sẽ nhận được một lần hủy khác và xử lý các ngoại "
+"lệ của chính nó."
+
+#: ../../library/asyncio-task.rst:416
+#, fuzzy
+msgid ""
+"In the case where a task group is cancelled externally and also must raise "
+"an :exc:`ExceptionGroup`, it will call the parent task's "
+":meth:`~asyncio.Task.cancel` method. This ensures that a "
+":exc:`asyncio.CancelledError` will be raised at the next :keyword:`await`, "
+"so the cancellation is not lost."
+msgstr ""
+"Trong trường hợp một nhóm nhiệm vụ bị hủy bên ngoài và cũng phải tăng "
+":exc:`ExceptionGroup`, nó sẽ gọi phương thức :meth:`~asyncio.Task.cancel` "
+"của nhiệm vụ mẹ. Điều này đảm bảo rằng :exc:`asyncio.CancelledError` sẽ được"
+" nâng lên ở :keyword:`await` tiếp theo, do đó việc hủy không bị mất."
+
+#: ../../library/asyncio-task.rst:422
+#, fuzzy
+msgid ""
+"Task groups preserve the cancellation count reported by "
+":meth:`asyncio.Task.cancelling`."
+msgstr ""
+"Các nhóm nhiệm vụ bảo toàn số lần hủy được báo cáo bởi "
+":meth:`asyncio.Task.cancelling`."
+
+#: ../../library/asyncio-task.rst:427
+#, fuzzy
+msgid ""
+"Improved handling of simultaneous internal and external cancellations and "
+"correct preservation of cancellation counts."
+msgstr ""
+"Cải thiện việc xử lý các lần hủy nội bộ và bên ngoài đồng thời và bảo toàn "
+"số lượng hủy chính xác."
+
+#: ../../library/asyncio-task.rst:431
+#, fuzzy
+msgid "Terminating a task group"
+msgstr "Chấm dứt một nhóm nhiệm vụ"
+
+#: ../../library/asyncio-task.rst:433
+#, fuzzy
+msgid ""
+"While terminating a task group is not natively supported by the standard "
+"library, termination can be achieved by adding an exception-raising task to "
+"the task group and ignoring the raised exception:"
+msgstr ""
+"Mặc dù việc chấm dứt một nhóm nhiệm vụ không được thư viện chuẩn hỗ trợ "
+"nguyên bản, nhưng việc chấm dứt có thể đạt được bằng cách thêm một nhiệm vụ "
+"tăng ngoại lệ vào nhóm nhiệm vụ và bỏ qua ngoại lệ đã nêu:"
+
+#: ../../library/asyncio-task.rst:437
+#, python-brace-format, fuzzy
+msgid ""
+"import asyncio\n"
+"from asyncio import TaskGroup\n"
+"\n"
+"class TerminateTaskGroup(Exception):\n"
+"    \"\"\"Exception raised to terminate a task group.\"\"\"\n"
+"\n"
+"async def force_terminate_task_group():\n"
+"    \"\"\"Used to force termination of a task group.\"\"\"\n"
+"    raise TerminateTaskGroup()\n"
+"\n"
+"async def job(task_id, sleep_time):\n"
+"    print(f'Task {task_id}: start')\n"
+"    await asyncio.sleep(sleep_time)\n"
+"    print(f'Task {task_id}: done')\n"
+"\n"
+"async def main():\n"
+"    try:\n"
+"        async with TaskGroup() as group:\n"
+"            # spawn some tasks\n"
+"            group.create_task(job(1, 0.5))\n"
+"            group.create_task(job(2, 1.5))\n"
+"            # sleep for 1 second\n"
+"            await asyncio.sleep(1)\n"
+"            # add an exception-raising task to force the group to terminate\n"
+"            group.create_task(force_terminate_task_group())\n"
+"    except* TerminateTaskGroup:\n"
+"        pass\n"
+"\n"
+"asyncio.run(main())"
+msgstr ""
+"nhập asyncio\n"
+"từ nhóm tác vụ nhập asyncio\n"
+"\n"
+"lớp Chấm dứtTaskGroup (Ngoại lệ):\n"
+"    \"\"\"Ngoại lệ được nêu ra để chấm dứt một nhóm nhiệm vụ.\"\"\"\n"
+"\n"
+"async def Force_terminate_task_group():\n"
+"    \"\"\"Được sử dụng để buộc chấm dứt một nhóm nhiệm vụ.\"\"\"\n"
+"    tăng Chấm dứtTaskGroup()\n"
+"\n"
+"công việc không đồng bộ (task_id, sleep_time):\n"
+"    print(f'Task {task_id}: start')\n"
+"    đang chờ asyncio.sleep(sleep_time)\n"
+"    print(f'Task {task_id}: xong')\n"
+"\n"
+"async def main():\n"
+"    thử:\n"
+"        không đồng bộ với TaskGroup() dưới dạng nhóm:\n"
+"            # spawn một số nhiệm vụ\n"
+"            group.create_task(job(1, 0.5))\n"
+"            group.create_task(job(2, 1.5))\n"
+"            # sleep trong 1 giây\n"
+"            đang chờ asyncio.sleep(1)\n"
+"            # add một nhiệm vụ tăng ngoại lệ để buộc nhóm chấm dứt\n"
+"            nhóm.create_task(force_terminate_task_group())\n"
+"    ngoại trừ* Chấm dứtTaskGroup:\n"
+"        vượt qua\n"
+"\n"
+"asyncio.run(chính())"
+
+#: ../../library/asyncio-task.rst:469
+#, fuzzy
+msgid "Expected output:"
+msgstr "Sản lượng dự kiến:"
+
+#: ../../library/asyncio-task.rst:471
+#, fuzzy
+msgid ""
+"Task 1: start\n"
+"Task 2: start\n"
+"Task 1: done"
+msgstr ""
+"Nhiệm vụ 1: bắt đầu\n"
+"Nhiệm vụ 2: bắt đầu\n"
+"Nhiệm vụ 1: đã xong"
+
+#: ../../library/asyncio-task.rst:478
+#, fuzzy
+msgid "Sleeping"
+msgstr "đang ngủ"
+
+#: ../../library/asyncio-task.rst:483
+#, fuzzy
+msgid "Block for *delay* seconds."
+msgstr "Chặn trong *delay* giây."
+
+#: ../../library/asyncio-task.rst:485
+#, fuzzy
+msgid ""
+"If *result* is provided, it is returned to the caller when the coroutine "
+"completes."
+msgstr ""
+"Nếu *result* được cung cấp, nó sẽ được trả về cho người gọi khi coroutine "
+"hoàn tất."
+
+#: ../../library/asyncio-task.rst:488
+#, fuzzy
+msgid ""
+"``sleep()`` always suspends the current task, allowing other tasks to run."
+msgstr ""
+"``sleep()`` luôn tạm dừng tác vụ hiện tại, cho phép các tác vụ khác chạy."
+
+#: ../../library/asyncio-task.rst:491
+#, fuzzy
+msgid ""
+"Setting the delay to 0 provides an optimized path to allow other tasks to "
+"run. This can be used by long-running functions to avoid blocking the event "
+"loop for the full duration of the function call."
+msgstr ""
+"Đặt độ trễ thành 0 sẽ cung cấp đường dẫn được tối ưu hóa để cho phép các tác"
+" vụ khác chạy. Điều này có thể được sử dụng bởi các hàm chạy dài để tránh "
+"chặn vòng lặp sự kiện trong toàn bộ thời gian của lệnh gọi hàm."
+
+#: ../../library/asyncio-task.rst:497
+#, fuzzy
+msgid ""
+"Example of coroutine displaying the current date every second for 5 "
+"seconds::"
+msgstr "Ví dụ về coroutine hiển thị ngày hiện tại mỗi giây trong 5 giây::"
+
+#: ../../library/asyncio-task.rst:500
+#, fuzzy
+msgid ""
+"import asyncio\n"
+"import datetime as dt\n"
+"\n"
+"async def display_date():\n"
+"    loop = asyncio.get_running_loop()\n"
+"    end_time = loop.time() + 5.0\n"
+"    while True:\n"
+"        print(dt.datetime.now())\n"
+"        if (loop.time() + 1.0) >= end_time:\n"
+"            break\n"
+"        await asyncio.sleep(1)\n"
+"\n"
+"asyncio.run(display_date())"
+msgstr ""
+"nhập asyncio\n"
+"nhập ngày giờ dưới dạng dt\n"
+"\n"
+"không đồng bộ hiển thị_date():\n"
+"    vòng lặp = asyncio.get_running_loop()\n"
+"    end_time = loop.time() + 5.0\n"
+"    trong khi Đúng:\n"
+"        in(dt.datetime.now())\n"
+"        if (loop.time() + 1.0) >= end_time:\n"
+"            phá vỡ\n"
+"        đang chờ asyncio.sleep(1)\n"
+"\n"
+"asyncio.run(display_date())"
+
+#: ../../library/asyncio-task.rst:515 ../../library/asyncio-task.rst:613
+#: ../../library/asyncio-task.rst:712 ../../library/asyncio-task.rst:890
+#: ../../library/asyncio-task.rst:945 ../../library/asyncio-task.rst:1002
+#, fuzzy
+msgid "Removed the *loop* parameter."
+msgstr "Đã xóa tham số *loop*."
+
+#: ../../library/asyncio-task.rst:518
+#, fuzzy
+msgid "Raises :exc:`ValueError` if *delay* is :data:`~math.nan`."
+msgstr "Tăng :exc:`ValueError` nếu *delay* là :data:`~math.nan`."
+
+#: ../../library/asyncio-task.rst:523
+#, fuzzy
+msgid "Running tasks concurrently"
+msgstr "Chạy các tác vụ đồng thời"
+
+#: ../../library/asyncio-task.rst:527
+#, fuzzy
+msgid ""
+"Run :ref:`awaitable objects <asyncio-awaitables>` in the *aws* sequence "
+"*concurrently*."
+msgstr ""
+"Chạy :ref:`awaitable objects <asyncio-awaitables>` theo trình tự *aws* "
+"*concurrently*."
+
+#: ../../library/asyncio-task.rst:530
+#, fuzzy
+msgid ""
+"If any awaitable in *aws* is a coroutine, it is automatically scheduled as a"
+" Task."
+msgstr ""
+"Nếu bất kỳ thứ gì có thể chờ đợi trong *aws* là một coroutine thì nó sẽ tự "
+"động được lên lịch dưới dạng Nhiệm vụ."
+
+#: ../../library/asyncio-task.rst:533
+#, fuzzy
+msgid ""
+"If all awaitables are completed successfully, the result is an aggregate "
+"list of returned values.  The order of result values corresponds to the "
+"order of awaitables in *aws*."
+msgstr ""
+"Nếu tất cả các mục chờ được hoàn thành thành công thì kết quả là danh sách "
+"tổng hợp các giá trị được trả về.  Thứ tự của các giá trị kết quả tương ứng "
+"với thứ tự của các sản phẩm đang chờ trong *aws*."
+
+#: ../../library/asyncio-task.rst:537
+#, fuzzy
+msgid ""
+"If *return_exceptions* is ``False`` (default), the first raised exception is"
+" immediately propagated to the task that awaits on ``gather()``.  Other "
+"awaitables in the *aws* sequence **won't be cancelled** and will continue to"
+" run."
+msgstr ""
+"Nếu *return_exceptions* là ``False`` (mặc định), ngoại lệ được nêu ra đầu "
+"tiên sẽ ngay lập tức được truyền tới tác vụ đang chờ trên ``gather()``.  Các"
+" sản phẩm chờ đợi khác trong chuỗi *aws* **won't be cancelled** và sẽ tiếp "
+"tục chạy."
+
+#: ../../library/asyncio-task.rst:542
+#, fuzzy
+msgid ""
+"If *return_exceptions* is ``True``, exceptions are treated the same as "
+"successful results, and aggregated in the result list."
+msgstr ""
+"Nếu *return_exceptions* là ``True``, các trường hợp ngoại lệ sẽ được xử lý "
+"giống như kết quả thành công và được tổng hợp trong danh sách kết quả."
+
+#: ../../library/asyncio-task.rst:545
+#, fuzzy
+msgid ""
+"If ``gather()`` is *cancelled*, all submitted awaitables (that have not "
+"completed yet) are also *cancelled*."
+msgstr ""
+"Nếu ``gather()`` là *cancelled*, tất cả các sản phẩm chờ được gửi (chưa hoàn"
+" thành) cũng là *cancelled*."
+
+#: ../../library/asyncio-task.rst:548
+#, fuzzy
+msgid ""
+"If any Task or Future from the *aws* sequence is *cancelled*, it is treated "
+"as if it raised :exc:`CancelledError` -- the ``gather()`` call is **not** "
+"cancelled in this case.  This is to prevent the cancellation of one "
+"submitted Task/Future to cause other Tasks/Futures to be cancelled."
+msgstr ""
+"Nếu bất kỳ Nhiệm vụ hoặc Tương lai nào từ chuỗi *aws* là *cancelled*, thì "
+"nhiệm vụ đó sẽ được xử lý như thể nó đã tăng :exc:`CancelledError` -- lệnh "
+"gọi ``gather()`` bị hủy trong trường hợp này.  Điều này nhằm ngăn chặn việc "
+"hủy bỏ một Nhiệm vụ/Tương lai đã gửi để khiến các Nhiệm vụ/Tương lai khác "
+"cũng bị hủy."
+
+#: ../../library/asyncio-task.rst:555
+#, fuzzy
+msgid ""
+"A new alternative to create and run tasks concurrently and wait for their "
+"completion is :class:`asyncio.TaskGroup`. *TaskGroup* provides stronger "
+"safety guarantees than *gather* for scheduling a nesting of subtasks: if a "
+"task (or a subtask, a task scheduled by a task) raises an exception, "
+"*TaskGroup* will, while *gather* will not, cancel the remaining scheduled "
+"tasks."
+msgstr ""
+"Một giải pháp thay thế mới để tạo và chạy các tác vụ đồng thời và chờ chúng "
+"hoàn thành là :class:`asyncio.TaskGroup`. *TaskGroup* cung cấp các đảm bảo "
+"an toàn mạnh mẽ hơn *gather* trong việc lên lịch lồng các nhiệm vụ phụ: nếu "
+"một nhiệm vụ (hoặc một nhiệm vụ phụ, một nhiệm vụ được lên lịch bởi một "
+"nhiệm vụ) đưa ra một ngoại lệ, thì *TaskGroup* sẽ, trong khi *gather* sẽ "
+"không hủy các nhiệm vụ đã lên lịch còn lại."
+
+#: ../../library/asyncio-task.rst:566
+#, python-brace-format, fuzzy
+msgid ""
+"import asyncio\n"
+"\n"
+"async def factorial(name, number):\n"
+"    f = 1\n"
+"    for i in range(2, number + 1):\n"
+"        print(f\"Task {name}: Compute factorial({number}), currently i={i}...\")\n"
+"        await asyncio.sleep(1)\n"
+"        f *= i\n"
+"    print(f\"Task {name}: factorial({number}) = {f}\")\n"
+"    return f\n"
+"\n"
+"async def main():\n"
+"    # Schedule three calls *concurrently*:\n"
+"    L = await asyncio.gather(\n"
+"        factorial(\"A\", 2),\n"
+"        factorial(\"B\", 3),\n"
+"        factorial(\"C\", 4),\n"
+"    )\n"
+"    print(L)\n"
+"\n"
+"asyncio.run(main())\n"
+"\n"
+"# Expected output:\n"
+"#\n"
+"#     Task A: Compute factorial(2), currently i=2...\n"
+"#     Task B: Compute factorial(3), currently i=2...\n"
+"#     Task C: Compute factorial(4), currently i=2...\n"
+"#     Task A: factorial(2) = 2\n"
+"#     Task B: Compute factorial(3), currently i=3...\n"
+"#     Task C: Compute factorial(4), currently i=3...\n"
+"#     Task B: factorial(3) = 6\n"
+"#     Task C: Compute factorial(4), currently i=4...\n"
+"#     Task C: factorial(4) = 24\n"
+"#     [2, 6, 24]"
+msgstr ""
+"nhập asyncio\n"
+"\n"
+"async def giai thừa (tên, số):\n"
+"    f = 1\n"
+"    cho i trong phạm vi (2, số + 1):\n"
+"        print(f\"Nhiệm vụ {name}: Tính giai thừa({number}), hiện tại i={i}...\")\n"
+"        đang chờ asyncio.sleep(1)\n"
+"        f *= tôi\n"
+"    print(f\"Nhiệm vụ {name}: giai thừa({number}) = {f}\")\n"
+"    trở lại f\n"
+"\n"
+"async def main():\n"
+"    # Schedule ba cuộc gọi *concurrently*:\n"
+"    L = đang chờ asyncio.gather(\n"
+"        giai thừa(\"A\", 2),\n"
+"        giai thừa(\"B\", 3),\n"
+"        giai thừa(\"C\", 4),\n"
+"    )\n"
+"    in(L)\n"
+"\n"
+"asyncio.run(chính())\n"
+"\n"
+"đầu ra # Expected:\n"
+"#\n"
+"#     Task A: Tính giai thừa(2), hiện tại i=2...\n"
+"#     Task B: Tính giai thừa(3), hiện tại i=2...\n"
+"#     Task C: Tính giai thừa(4), hiện tại i=2...\n"
+"#     Task A: giai thừa(2) = 2\n"
+"#     Task B: Tính giai thừa(3), hiện tại i=3...\n"
+"#     Task C: Tính giai thừa(4), hiện tại i=3...\n"
+"#     Task B: giai thừa(3) = 6\n"
+"#     Task C: Tính giai thừa(4), hiện tại i=4...\n"
+"#     Task C: giai thừa(4) = 24\n"
+"# [2, 6, 24]"
+
+#: ../../library/asyncio-task.rst:602
+#, fuzzy
+msgid ""
+"If *return_exceptions* is false, cancelling gather() after it has been "
+"marked done won't cancel any submitted awaitables. For instance, gather can "
+"be marked done after propagating an exception to the caller, therefore, "
+"calling ``gather.cancel()`` after catching an exception (raised by one of "
+"the awaitables) from gather won't cancel any other awaitables."
+msgstr ""
+"Nếu *return_exceptions* sai, việc hủy thu thập() sau khi được đánh dấu là "
+"xong sẽ không hủy bất kỳ sản phẩm đang chờ nào đã gửi. Ví dụ: việc thu thập "
+"có thể được đánh dấu là hoàn tất sau khi truyền một ngoại lệ cho người gọi, "
+"do đó, việc gọi ``gather.cancel()`` sau khi bắt được một ngoại lệ (được đưa "
+"ra bởi một trong các đối tượng có thể chờ) từ việc thu thập sẽ không hủy bất"
+" kỳ đối tượng có thể chờ nào khác."
+
+#: ../../library/asyncio-task.rst:609
+#, fuzzy
+msgid ""
+"If the *gather* itself is cancelled, the cancellation is propagated "
+"regardless of *return_exceptions*."
+msgstr ""
+"Nếu *gather* bị hủy thì việc hủy sẽ được truyền đi bất kể "
+"*return_exceptions*."
+
+#: ../../library/asyncio-task.rst:616
+#, fuzzy
+msgid ""
+"Deprecation warning is emitted if no positional arguments are provided or "
+"not all positional arguments are Future-like objects and there is no running"
+" event loop."
+msgstr ""
+"Cảnh báo không dùng nữa được đưa ra nếu không cung cấp đối số vị trí hoặc "
+"không phải tất cả đối số vị trí đều là đối tượng giống Tương lai và không có"
+" vòng lặp sự kiện đang chạy."
+
+#: ../../library/asyncio-task.rst:625
+#, fuzzy
+msgid "Eager task factory"
+msgstr "Nhà máy nhiệm vụ háo hức"
+
+#: ../../library/asyncio-task.rst:629
+#, fuzzy
+msgid "A task factory for eager task execution."
+msgstr "Một nhà máy nhiệm vụ để thực hiện nhiệm vụ háo hức."
+
+#: ../../library/asyncio-task.rst:631
+#, fuzzy
+msgid ""
+"When using this factory (via "
+":meth:`loop.set_task_factory(asyncio.eager_task_factory) "
+"<loop.set_task_factory>`), coroutines begin execution synchronously during "
+":class:`Task` construction. Tasks are only scheduled on the event loop if "
+"they block. This can be a performance improvement as the overhead of loop "
+"scheduling is avoided for coroutines that complete synchronously."
+msgstr ""
+"Khi sử dụng nhà máy này (thông qua "
+":meth:`loop.set_task_factory(asyncio.eager_task_factory) "
+"<loop.set_task_factory>`), coroutine bắt đầu thực thi đồng bộ trong quá "
+"trình xây dựng :class:`Task`. Nhiệm vụ chỉ được lên lịch trên vòng lặp sự "
+"kiện nếu chúng bị chặn. Đây có thể là một cải tiến hiệu suất vì tránh được "
+"chi phí lên lịch vòng lặp đối với các coroutine hoàn thành đồng bộ."
+
+#: ../../library/asyncio-task.rst:637
+#, fuzzy
+msgid ""
+"A common example where this is beneficial is coroutines which employ caching"
+" or memoization to avoid actual I/O when possible."
+msgstr ""
+"Một ví dụ phổ biến cho thấy điều này có lợi là các coroutine sử dụng bộ nhớ "
+"đệm hoặc ghi nhớ để tránh thao tác I/O thực tế khi có thể."
+
+#: ../../library/asyncio-task.rst:642
+#, fuzzy
+msgid ""
+"Immediate execution of the coroutine is a semantic change. If the coroutine "
+"returns or raises, the task is never scheduled to the event loop. If the "
+"coroutine execution blocks, the task is scheduled to the event loop. This "
+"change may introduce behavior changes to existing applications. For example,"
+" the application's task execution order is likely to change."
+msgstr ""
+"Việc thực thi coroutine ngay lập tức là một sự thay đổi về ngữ nghĩa. Nếu "
+"coroutine trả về hoặc tăng lên thì tác vụ sẽ không bao giờ được lên lịch cho"
+" vòng lặp sự kiện. Nếu việc thực thi coroutine chặn thì tác vụ sẽ được lên "
+"lịch vào vòng lặp sự kiện. Thay đổi này có thể giới thiệu những thay đổi về "
+"hành vi đối với các ứng dụng hiện có. Ví dụ: thứ tự thực hiện tác vụ của ứng"
+" dụng có thể thay đổi."
+
+#: ../../library/asyncio-task.rst:653
+#, fuzzy
+msgid ""
+"Create an eager task factory, similar to :func:`eager_task_factory`, using "
+"the provided *custom_task_constructor* when creating a new task instead of "
+"the default :class:`Task`."
+msgstr ""
+"Tạo một nhà máy sản xuất nhiệm vụ háo hức, tương tự như "
+":func:`eager_task_factory`, sử dụng *custom_task_constructor* được cung cấp "
+"khi tạo một nhiệm vụ mới thay vì :class:`Task` mặc định."
+
+#: ../../library/asyncio-task.rst:657
+#, fuzzy
+msgid ""
+"*custom_task_constructor* must be a *callable* with the signature matching "
+"the signature of :class:`Task.__init__ <Task>`. The callable must return a "
+":class:`asyncio.Task`-compatible object."
+msgstr ""
+"*custom_task_constructor* phải là *callable* có chữ ký trùng với chữ ký của "
+":class:`Task.__init__ <Task>`. Có thể gọi được phải trả về một đối tượng "
+"tương thích với :class:`asyncio.Task`."
+
+#: ../../library/asyncio-task.rst:661
+#, fuzzy
+msgid ""
+"This function returns a *callable* intended to be used as a task factory of "
+"an event loop via :meth:`loop.set_task_factory(factory) "
+"<loop.set_task_factory>`)."
+msgstr ""
+"Hàm này trả về một *callable* dự định được sử dụng làm nhà máy tác vụ của "
+"vòng lặp sự kiện thông qua :meth:`loop.set_task_factory(factory) "
+"<loop.set_task_factory>`)."
+
+#: ../../library/asyncio-task.rst:668
+#, fuzzy
+msgid "Shielding from cancellation"
+msgstr "Bảo vệ khỏi việc hủy bỏ"
+
+#: ../../library/asyncio-task.rst:672
+#, fuzzy
+msgid ""
+"Protect an :ref:`awaitable object <asyncio-awaitables>` from being "
+":meth:`cancelled <Task.cancel>`."
+msgstr ""
+"Bảo vệ :ref:`awaitable object <asyncio-awaitables>` khỏi bị :meth:`cancelled"
+" <Task.cancel>`."
+
+#: ../../library/asyncio-task.rst:675 ../../library/asyncio-task.rst:845
+#, fuzzy
+msgid "If *aw* is a coroutine it is automatically scheduled as a Task."
+msgstr ""
+"Nếu *aw* là một coroutine thì nó sẽ tự động được lên lịch dưới dạng Tác vụ."
+
+#: ../../library/asyncio-task.rst:677
+#, fuzzy
+msgid "The statement::"
+msgstr "Tuyên bố::"
+
+#: ../../library/asyncio-task.rst:679
+#, fuzzy
+msgid ""
+"task = asyncio.create_task(something())\n"
+"res = await shield(task)"
+msgstr ""
+"nhiệm vụ = asyncio.create_task(something())\n"
+"res = lá chắn chờ đợi (nhiệm vụ)"
+
+#: ../../library/asyncio-task.rst:682
+#, fuzzy
+msgid "is equivalent to::"
+msgstr "tương đương với::"
+
+#: ../../library/asyncio-task.rst:684
+#, fuzzy
+msgid "res = await something()"
+msgstr "res = đang chờ đợi điều gì đó()"
+
+#: ../../library/asyncio-task.rst:686
+#, fuzzy
+msgid ""
+"*except* that if the coroutine containing it is cancelled, the Task running "
+"in ``something()`` is not cancelled.  From the point of view of "
+"``something()``, the cancellation did not happen. Although its caller is "
+"still cancelled, so the \"await\" expression still raises a "
+":exc:`CancelledError`."
+msgstr ""
+"*except* rằng nếu coroutine chứa nó bị hủy thì Tác vụ đang chạy trong "
+"``something()`` cũng không bị hủy.  Theo quan điểm của ``something()``, việc"
+" hủy bỏ đã không xảy ra. Mặc dù người gọi nó vẫn bị hủy, nhưng biểu thức "
+"\"chờ\" vẫn tăng :exc:`CancelledError`."
+
+#: ../../library/asyncio-task.rst:692
+#, fuzzy
+msgid ""
+"If ``something()`` is cancelled by other means (i.e. from within itself) "
+"that would also cancel ``shield()``."
+msgstr ""
+"Nếu ``something()`` bị hủy bằng cách khác (tức là từ bên trong chính nó) thì"
+" điều đó cũng sẽ hủy ``shield()``."
+
+#: ../../library/asyncio-task.rst:695
+#, fuzzy
+msgid ""
+"If it is desired to completely ignore cancellation (not recommended) the "
+"``shield()`` function should be combined with a try/except clause, as "
+"follows::"
+msgstr ""
+"Nếu muốn bỏ qua hoàn toàn việc hủy (không được khuyến nghị), hàm "
+"``shield()`` phải được kết hợp với mệnh đề thử/ngoại trừ, như sau::"
+
+#: ../../library/asyncio-task.rst:699
+#, fuzzy
+msgid ""
+"task = asyncio.create_task(something())\n"
+"try:\n"
+"    res = await shield(task)\n"
+"except CancelledError:\n"
+"    res = None"
+msgstr ""
+"nhiệm vụ = asyncio.create_task(something())\n"
+"thử:\n"
+"    res = lá chắn chờ đợi (nhiệm vụ)\n"
+"ngoại trừ Đã hủyError:\n"
+"    res = Không có"
+
+#: ../../library/asyncio-task.rst:707
+#, fuzzy
+msgid ""
+"Save a reference to tasks passed to this function, to avoid a task "
+"disappearing mid-execution. The event loop only keeps weak references to "
+"tasks. A task that isn't referenced elsewhere may get garbage collected at "
+"any time, even before it's done."
+msgstr ""
+"Lưu tham chiếu đến các tác vụ được chuyển đến hàm này để tránh tác vụ biến "
+"mất trong quá trình thực thi. Vòng lặp sự kiện chỉ giữ các tham chiếu yếu "
+"đến các tác vụ. Một tác vụ không được tham chiếu ở nơi khác có thể được thu "
+"gom rác bất cứ lúc nào, ngay cả trước khi nó được thực hiện."
+
+#: ../../library/asyncio-task.rst:715
+#, fuzzy
+msgid ""
+"Deprecation warning is emitted if *aw* is not Future-like object and there "
+"is no running event loop."
+msgstr ""
+"Cảnh báo không dùng nữa được đưa ra nếu *aw* không phải là đối tượng giống "
+"Tương lai và không có vòng lặp sự kiện đang chạy."
+
+#: ../../library/asyncio-task.rst:721
+#, fuzzy
+msgid "Timeouts"
+msgstr "Hết giờ"
+
+#: ../../library/asyncio-task.rst:725
+#, fuzzy
+msgid ""
+"Return an :ref:`asynchronous context manager <async-context-managers>` that "
+"can be used to limit the amount of time spent waiting on something."
+msgstr ""
+"Trả về :ref:`asynchronous context manager <async-context-managers>` có thể "
+"được sử dụng để giới hạn lượng thời gian chờ đợi một thứ gì đó."
+
+#: ../../library/asyncio-task.rst:729
+#, fuzzy
+msgid ""
+"*delay* can either be ``None``, or a float/int number of seconds to wait. If"
+" *delay* is ``None``, no time limit will be applied; this can be useful if "
+"the delay is unknown when the context manager is created."
+msgstr ""
+"*delay* có thể là ``None`` hoặc số float/int số giây để chờ. Nếu *delay* là "
+"``None`` thì sẽ không áp dụng giới hạn thời gian; điều này có thể hữu ích "
+"nếu không xác định được độ trễ khi trình quản lý bối cảnh được tạo."
+
+#: ../../library/asyncio-task.rst:734
+#, fuzzy
+msgid ""
+"In either case, the context manager can be rescheduled after creation using "
+":meth:`Timeout.reschedule`."
+msgstr ""
+"Trong cả hai trường hợp, trình quản lý bối cảnh có thể được lên lịch lại sau"
+" khi tạo bằng :meth:`Timeout.reschedule`."
+
+#: ../../library/asyncio-task.rst:739
+#, fuzzy
+msgid ""
+"async def main():\n"
+"    async with asyncio.timeout(10):\n"
+"        await long_running_task()"
+msgstr ""
+"async def main():\n"
+"    không đồng bộ với asyncio.timeout(10):\n"
+"        đang chờ long_running_task()"
+
+#: ../../library/asyncio-task.rst:743
+#, fuzzy
+msgid ""
+"If ``long_running_task`` takes more than 10 seconds to complete, the context"
+" manager will cancel the current task and handle the resulting "
+":exc:`asyncio.CancelledError` internally, transforming it into a "
+":exc:`TimeoutError` which can be caught and handled."
+msgstr ""
+"Nếu ``long_running_task`` mất hơn 10 giây để hoàn thành, trình quản lý bối "
+"cảnh sẽ hủy tác vụ hiện tại và xử lý :exc:`asyncio.CancelledError` kết quả "
+"trong nội bộ, chuyển nó thành :exc:`TimeoutError` có thể bị bắt và xử lý."
+
+#: ../../library/asyncio-task.rst:750
+#, fuzzy
+msgid ""
+"The :func:`asyncio.timeout` context manager is what transforms the "
+":exc:`asyncio.CancelledError` into a :exc:`TimeoutError`, which means the "
+":exc:`TimeoutError` can only be caught *outside* of the context manager."
+msgstr ""
+"Trình quản lý bối cảnh :func:`asyncio.timeout` là thứ biến "
+":exc:`asyncio.CancelledError` thành :exc:`TimeoutError`, có nghĩa là "
+":exc:`TimeoutError` chỉ có thể bắt được *outside* của trình quản lý bối "
+"cảnh."
+
+#: ../../library/asyncio-task.rst:755
+#, fuzzy
+msgid "Example of catching :exc:`TimeoutError`::"
+msgstr "Ví dụ về việc bắt :exc:`TimeoutError`::"
+
+#: ../../library/asyncio-task.rst:757
+#, fuzzy
+msgid ""
+"async def main():\n"
+"    try:\n"
+"        async with asyncio.timeout(10):\n"
+"            await long_running_task()\n"
+"    except TimeoutError:\n"
+"        print(\"The long operation timed out, but we've handled it.\")\n"
+"\n"
+"    print(\"This statement will run regardless.\")"
+msgstr ""
+"async def main():\n"
+"    thử:\n"
+"        không đồng bộ với asyncio.timeout(10):\n"
+"            đang chờ long_running_task()\n"
+"    ngoại trừ Hết thời gianLỗi:\n"
+"        print(\"Thao tác kéo dài đã hết thời gian chờ, nhưng chúng tôi đã xử lý được.\")\n"
+"\n"
+"    print(\"Câu lệnh này sẽ vẫn chạy bất kể.\")"
+
+#: ../../library/asyncio-task.rst:766
+#, fuzzy
+msgid ""
+"The context manager produced by :func:`asyncio.timeout` can be rescheduled "
+"to a different deadline and inspected."
+msgstr ""
+"Trình quản lý bối cảnh do :func:`asyncio.timeout` tạo ra có thể được lên "
+"lịch lại cho một thời hạn khác và được kiểm tra."
+
+#: ../../library/asyncio-task.rst:771
+#, fuzzy
+msgid ""
+"An :ref:`asynchronous context manager <async-context-managers>` for "
+"cancelling overdue coroutines."
+msgstr ""
+"Một :ref:`asynchronous context manager <async-context-managers>` để hủy các "
+"coroutine quá hạn."
+
+#: ../../library/asyncio-task.rst:774
+#, fuzzy
+msgid ""
+"Prefer using :func:`asyncio.timeout` or :func:`asyncio.timeout_at` rather "
+"than instantiating :class:`!Timeout` directly."
+msgstr ""
+"Thích sử dụng :func:`asyncio.timeout` hoặc :func:`asyncio.timeout_at` hơn là"
+" khởi tạo trực tiếp :class:`!Timeout`."
+
+#: ../../library/asyncio-task.rst:777
+#, fuzzy
+msgid ""
+"``when`` should be an absolute time at which the context should time out, as"
+" measured by the event loop's clock:"
+msgstr ""
+"``when`` phải là thời điểm tuyệt đối mà ngữ cảnh sẽ hết thời gian, được đo "
+"bằng đồng hồ của vòng lặp sự kiện:"
+
+#: ../../library/asyncio-task.rst:780
+#, fuzzy
+msgid "If ``when`` is ``None``, the timeout will never trigger."
+msgstr ""
+"Nếu ``when`` là ``None``, thời gian chờ sẽ không bao giờ được kích hoạt."
+
+#: ../../library/asyncio-task.rst:781
+#, fuzzy
+msgid ""
+"If ``when < loop.time()``, the timeout will trigger on the next iteration of"
+" the event loop."
+msgstr ""
+"Nếu ``when < loop.time()``, thời gian chờ sẽ kích hoạt ở lần lặp tiếp theo "
+"của vòng lặp sự kiện."
+
+#: ../../library/asyncio-task.rst:786
+#, fuzzy
+msgid ""
+"Return the current deadline, or ``None`` if the current deadline is not set."
+msgstr ""
+"Trả về thời hạn hiện tại hoặc ``None`` nếu thời hạn hiện tại chưa được đặt."
+
+#: ../../library/asyncio-task.rst:791
+#, fuzzy
+msgid "Reschedule the timeout."
+msgstr "Lên lịch lại thời gian chờ."
+
+#: ../../library/asyncio-task.rst:795
+#, fuzzy
+msgid ""
+"Return whether the context manager has exceeded its deadline (expired)."
+msgstr ""
+"Trả về xem trình quản lý bối cảnh đã vượt quá thời hạn (hết hạn) hay chưa."
+
+#: ../../library/asyncio-task.rst:800
+#, fuzzy
+msgid ""
+"async def main():\n"
+"    try:\n"
+"        # We do not know the timeout when starting, so we pass ``None``.\n"
+"        async with asyncio.timeout(None) as cm:\n"
+"            # We know the timeout now, so we reschedule it.\n"
+"            new_deadline = get_running_loop().time() + 10\n"
+"            cm.reschedule(new_deadline)\n"
+"\n"
+"            await long_running_task()\n"
+"    except TimeoutError:\n"
+"        pass\n"
+"\n"
+"    if cm.expired():\n"
+"        print(\"Looks like we haven't finished on time.\")"
+msgstr ""
+"async def main():\n"
+"    thử:\n"
+"        # We không biết thời gian chờ khi bắt đầu nên chúng tôi chuyển ``None``.\n"
+"        không đồng bộ với asyncio.timeout(None) dưới dạng cm:\n"
+"            # We biết thời gian chờ bây giờ nên chúng tôi lên lịch lại.\n"
+"            new_deadline = get_running_loop().time() + 10\n"
+"            cm.reschedule(new_deadline)\n"
+"\n"
+"            đang chờ long_running_task()\n"
+"    ngoại trừ Hết thời gianLỗi:\n"
+"        vượt qua\n"
+"\n"
+"    nếu cm.expired():\n"
+"        print(\"Có vẻ như chúng ta chưa hoàn thành đúng thời hạn.\")"
+
+#: ../../library/asyncio-task.rst:815
+#, fuzzy
+msgid "Timeout context managers can be safely nested."
+msgstr ""
+"Trình quản lý bối cảnh hết thời gian chờ có thể được lồng vào nhau một cách "
+"an toàn."
+
+#: ../../library/asyncio-task.rst:821
+#, fuzzy
+msgid ""
+"Similar to :func:`asyncio.timeout`, except *when* is the absolute time to "
+"stop waiting, or ``None``."
+msgstr ""
+"Tương tự như :func:`asyncio.timeout`, ngoại trừ *when* là thời điểm tuyệt "
+"đối để ngừng chờ đợi, hay ``None``."
+
+#: ../../library/asyncio-task.rst:826
+#, fuzzy
+msgid ""
+"async def main():\n"
+"    loop = get_running_loop()\n"
+"    deadline = loop.time() + 20\n"
+"    try:\n"
+"        async with asyncio.timeout_at(deadline):\n"
+"            await long_running_task()\n"
+"    except TimeoutError:\n"
+"        print(\"The long operation timed out, but we've handled it.\")\n"
+"\n"
+"    print(\"This statement will run regardless.\")"
+msgstr ""
+"async def main():\n"
+"    vòng lặp = get_running_loop()\n"
+"    thời hạn = loop.time() + 20\n"
+"    thử:\n"
+"        không đồng bộ với asyncio.timeout_at(hạn chót):\n"
+"            đang chờ long_running_task()\n"
+"    ngoại trừ Hết thời gianLỗi:\n"
+"        print(\"Thao tác kéo dài đã hết thời gian chờ, nhưng chúng tôi đã xử lý được.\")\n"
+"\n"
+"    print(\"Câu lệnh này sẽ vẫn chạy bất kể.\")"
+
+#: ../../library/asyncio-task.rst:842
+#, fuzzy
+msgid ""
+"Wait for the *aw* :ref:`awaitable <asyncio-awaitables>` to complete with a "
+"timeout."
+msgstr ""
+"Đợi *aw* :ref:`awaitable <asyncio-awaitables>` hoàn thành với thời gian chờ."
+
+#: ../../library/asyncio-task.rst:847
+#, fuzzy
+msgid ""
+"*timeout* can either be ``None`` or a float or int number of seconds to wait"
+" for.  If *timeout* is ``None``, block until the future completes."
+msgstr ""
+"*timeout* có thể là ``None`` hoặc float hoặc int số giây để chờ.  Nếu "
+"*timeout* là ``None``, hãy chặn cho đến khi tương lai hoàn thành."
+
+#: ../../library/asyncio-task.rst:851
+#, fuzzy
+msgid ""
+"If a timeout occurs, it cancels the task and raises :exc:`TimeoutError`."
+msgstr "Nếu hết thời gian chờ, nó sẽ hủy tác vụ và tăng :exc:`TimeoutError`."
+
+#: ../../library/asyncio-task.rst:854
+#, fuzzy
+msgid ""
+"To avoid the task :meth:`cancellation <Task.cancel>`, wrap it in "
+":func:`shield`."
+msgstr ""
+"Để tránh nhiệm vụ :meth:`cancellation <Task.cancel>`, hãy bọc nó trong "
+":func:`shield`."
+
+#: ../../library/asyncio-task.rst:857
+#, fuzzy
+msgid ""
+"The function will wait until the future is actually cancelled, so the total "
+"wait time may exceed the *timeout*. If an exception happens during "
+"cancellation, it is propagated."
+msgstr ""
+"Hàm này sẽ đợi cho đến khi tương lai thực sự bị hủy, do đó tổng thời gian "
+"chờ có thể vượt quá *timeout*. Nếu một ngoại lệ xảy ra trong quá trình hủy, "
+"nó sẽ được truyền đi."
+
+#: ../../library/asyncio-task.rst:861
+#, fuzzy
+msgid "If the wait is cancelled, the future *aw* is also cancelled."
+msgstr "Nếu quá trình chờ bị hủy, *aw* trong tương lai cũng bị hủy."
+
+#: ../../library/asyncio-task.rst:867
+#, fuzzy
+msgid ""
+"async def eternity():\n"
+"    # Sleep for one hour\n"
+"    await asyncio.sleep(3600)\n"
+"    print('yay!')\n"
+"\n"
+"async def main():\n"
+"    # Wait for at most 1 second\n"
+"    try:\n"
+"        await asyncio.wait_for(eternity(), timeout=1.0)\n"
+"    except TimeoutError:\n"
+"        print('timeout!')\n"
+"\n"
+"asyncio.run(main())\n"
+"\n"
+"# Expected output:\n"
+"#\n"
+"#     timeout!"
+msgstr ""
+"async def vĩnh cửu():\n"
+"    # Sleep trong một giờ\n"
+"    đang chờ asyncio.sleep(3600)\n"
+"    in('yay!')\n"
+"\n"
+"async def main():\n"
+"    # Wait trong tối đa 1 giây\n"
+"    thử:\n"
+"        đang chờ asyncio.wait_for(eternity(), timeout=1.0)\n"
+"    ngoại trừ Hết thời gianLỗi:\n"
+"        in('hết giờ!')\n"
+"\n"
+"asyncio.run(chính())\n"
+"\n"
+"đầu ra # Expected:\n"
+"#\n"
+"#     timeout!"
+
+#: ../../library/asyncio-task.rst:885
+#, fuzzy
+msgid ""
+"When *aw* is cancelled due to a timeout, ``wait_for`` waits for *aw* to be "
+"cancelled.  Previously, it raised :exc:`TimeoutError` immediately."
+msgstr ""
+"Khi *aw* bị hủy do hết thời gian chờ, ``wait_for`` sẽ đợi *aw* bị hủy.  Lúc "
+"trước nó kêu :exc:`TimeoutError` ngay lập tức."
+
+#: ../../library/asyncio-task.rst:893
+#, fuzzy
+msgid "Raises :exc:`TimeoutError` instead of :exc:`asyncio.TimeoutError`."
+msgstr "Tăng :exc:`TimeoutError` thay vì :exc:`asyncio.TimeoutError`."
+
+#: ../../library/asyncio-task.rst:898
+#, fuzzy
+msgid "Waiting primitives"
+msgstr "Đang chờ nguyên thủy"
+
+#: ../../library/asyncio-task.rst:903
+#, fuzzy
+msgid ""
+"Run :class:`~asyncio.Future` and :class:`~asyncio.Task` instances in the "
+"*aws* iterable concurrently and block until the condition specified by "
+"*return_when*."
+msgstr ""
+"Chạy đồng thời các phiên bản :class:`~asyncio.Future` và "
+":class:`~asyncio.Task` trong *aws* có thể lặp lại và chặn cho đến khi điều "
+"kiện được chỉ định bởi *return_when*."
+
+#: ../../library/asyncio-task.rst:907
+#, fuzzy
+msgid "The *aws* iterable must not be empty."
+msgstr "Lặp lại *aws* không được để trống."
+
+#: ../../library/asyncio-task.rst:909
+#, fuzzy
+msgid "Returns two sets of Tasks/Futures: ``(done, pending)``."
+msgstr "Trả về hai bộ Nhiệm vụ/Tương lai: ``(done, pending)``."
+
+#: ../../library/asyncio-task.rst:911
+#, fuzzy
+msgid "Usage::"
+msgstr "Cách sử dụng::"
+
+#: ../../library/asyncio-task.rst:913
+#, fuzzy
+msgid "done, pending = await asyncio.wait(aws)"
+msgstr "xong, đang chờ xử lý = đang chờ asyncio.wait(aws)"
+
+#: ../../library/asyncio-task.rst:915
+#, fuzzy
+msgid ""
+"*timeout* (a float or int), if specified, can be used to control the maximum"
+" number of seconds to wait before returning."
+msgstr ""
+"*timeout* (một float hoặc int), nếu được chỉ định, có thể được sử dụng để "
+"kiểm soát số giây tối đa phải chờ trước khi quay lại."
+
+#: ../../library/asyncio-task.rst:918
+#, fuzzy
+msgid ""
+"Note that this function does not raise :exc:`TimeoutError`. Futures or Tasks"
+" that aren't done when the timeout occurs are simply returned in the second "
+"set."
+msgstr ""
+"Lưu ý rằng chức năng này không tăng :exc:`TimeoutError`. Tương lai hoặc "
+"Nhiệm vụ không được thực hiện khi hết thời gian chờ sẽ được trả về trong tập"
+" thứ hai."
+
+#: ../../library/asyncio-task.rst:922
+#, fuzzy
+msgid ""
+"*return_when* indicates when this function should return.  It must be one of"
+" the following constants:"
+msgstr ""
+"*return_when* cho biết khi nào hàm này sẽ quay trở lại.  Nó phải là một "
+"trong các hằng số sau:"
+
+#: ../../library/asyncio-task.rst:928
+#, fuzzy
+msgid "Constant"
+msgstr "Hằng số"
+
+#: ../../library/asyncio-task.rst:929
+#, fuzzy
+msgid "Description"
+msgstr "Mô tả"
+
+#: ../../library/asyncio-task.rst:932
+#, fuzzy
+msgid "The function will return when any future finishes or is cancelled."
+msgstr ""
+"Hàm sẽ quay trở lại khi bất kỳ thao tác nào trong tương lai kết thúc hoặc bị"
+" hủy."
+
+#: ../../library/asyncio-task.rst:935
+#, fuzzy
+msgid ""
+"The function will return when any future finishes by raising an exception. "
+"If no future raises an exception then it is equivalent to "
+":const:`ALL_COMPLETED`."
+msgstr ""
+"Hàm sẽ trả về khi bất kỳ tương lai nào kết thúc bằng cách đưa ra một ngoại "
+"lệ. Nếu không có tương lai nào đưa ra ngoại lệ thì nó tương đương với "
+":const:`ALL_COMPLETED`."
+
+#: ../../library/asyncio-task.rst:940
+#, fuzzy
+msgid "The function will return when all futures finish or are cancelled."
+msgstr "Hàm sẽ trả về khi tất cả hợp đồng tương lai kết thúc hoặc bị hủy."
+
+#: ../../library/asyncio-task.rst:942
+#, fuzzy
+msgid ""
+"Unlike :func:`~asyncio.wait_for`, ``wait()`` does not cancel the futures "
+"when a timeout occurs."
+msgstr ""
+"Không giống như :func:`~asyncio.wait_for`, ``wait()`` không hủy hợp đồng "
+"tương lai khi hết thời gian chờ."
+
+#: ../../library/asyncio-task.rst:948
+#, fuzzy
+msgid "Passing coroutine objects to ``wait()`` directly is forbidden."
+msgstr ""
+"Việc truyền trực tiếp các đối tượng coroutine tới ``wait()`` đều bị cấm."
+
+#: ../../library/asyncio-task.rst:951 ../../library/asyncio-task.rst:1009
+#, fuzzy
+msgid "Added support for generators yielding tasks."
+msgstr "Đã thêm hỗ trợ cho các nhiệm vụ tạo ra năng suất."
+
+#: ../../library/asyncio-task.rst:957
+#, fuzzy
+msgid ""
+"Run :ref:`awaitable objects <asyncio-awaitables>` in the *aws* iterable "
+"concurrently. The returned object can be iterated to obtain the results of "
+"the awaitables as they finish."
+msgstr ""
+"Chạy đồng thời :ref:`awaitable objects <asyncio-awaitables>` trong *aws* "
+"iterable. Đối tượng được trả về có thể được lặp lại để thu được kết quả của "
+"các đối tượng có thể chờ đợi khi chúng hoàn thành."
+
+#: ../../library/asyncio-task.rst:961
+#, fuzzy
+msgid ""
+"The object returned by ``as_completed()`` can be iterated as an "
+":term:`asynchronous iterator` or a plain :term:`iterator`. When asynchronous"
+" iteration is used, the originally-supplied awaitables are yielded if they "
+"are tasks or futures. This makes it easy to correlate previously-scheduled "
+"tasks with their results. Example::"
+msgstr ""
+"Đối tượng được trả về bởi ``as_completed()`` có thể được lặp lại dưới dạng "
+":term:`asynchronous iterator` hoặc :term:`iterator` đơn giản. Khi sử dụng "
+"phép lặp không đồng bộ, các sản phẩm có thể chờ được cung cấp ban đầu sẽ "
+"được cung cấp nếu chúng là nhiệm vụ hoặc tương lai. Điều này giúp dễ dàng "
+"liên hệ các nhiệm vụ đã lên lịch trước đó với kết quả của chúng. Ví dụ::"
+
+#: ../../library/asyncio-task.rst:967
+#, fuzzy
+msgid ""
+"ipv4_connect = create_task(open_connection(\"127.0.0.1\", 80))\n"
+"ipv6_connect = create_task(open_connection(\"::1\", 80))\n"
+"tasks = [ipv4_connect, ipv6_connect]\n"
+"\n"
+"async for earliest_connect in as_completed(tasks):\n"
+"    # earliest_connect is done. The result can be obtained by\n"
+"    # awaiting it or calling earliest_connect.result()\n"
+"    reader, writer = await earliest_connect\n"
+"\n"
+"    if earliest_connect is ipv6_connect:\n"
+"        print(\"IPv6 connection established.\")\n"
+"    else:\n"
+"        print(\"IPv4 connection established.\")"
+msgstr ""
+"ipv4_connect = create_task(open_connection(\"127.0.0.1\", 80))\n"
+"ipv6_connect = create_task(open_connection(\"::1\", 80))\n"
+"nhiệm vụ = [ipv4_connect, ipv6_connect]\n"
+"\n"
+"không đồng bộ cho kết nối sớm nhất trong as_completed(task):\n"
+"    # earliest_connect đã xong. Kết quả có thể thu được bằng cách\n"
+"    # awaiting hoặc gọi sớm nhất_connect.result()\n"
+"    người đọc, người viết = chờ đợi sớm nhất_kết nối\n"
+"\n"
+"    nếu sớm nhất_connect là ipv6_connect:\n"
+"        print(\"Đã thiết lập kết nối IPv6.\")\n"
+"    khác:\n"
+"        print(\"Đã thiết lập kết nối IPv4.\")"
+
+#: ../../library/asyncio-task.rst:981
+#, fuzzy
+msgid ""
+"During asynchronous iteration, implicitly-created tasks will be yielded for "
+"supplied awaitables that aren't tasks or futures."
+msgstr ""
+"Trong quá trình lặp không đồng bộ, các tác vụ được tạo ngầm sẽ được cung cấp"
+" cho các sản phẩm chờ được cung cấp không phải là nhiệm vụ hoặc tương lai."
+
+#: ../../library/asyncio-task.rst:984
+#, fuzzy
+msgid ""
+"When used as a plain iterator, each iteration yields a new coroutine that "
+"returns the result or raises the exception of the next completed awaitable. "
+"This pattern is compatible with Python versions older than 3.13::"
+msgstr ""
+"Khi được sử dụng như một trình lặp đơn giản, mỗi lần lặp sẽ tạo ra một "
+"coroutine mới trả về kết quả hoặc đưa ra ngoại lệ của đối tượng có thể chờ "
+"hoàn thành tiếp theo. Mẫu này tương thích với các phiên bản Python cũ hơn "
+"3.13::"
+
+#: ../../library/asyncio-task.rst:988
+#, fuzzy
+msgid ""
+"ipv4_connect = create_task(open_connection(\"127.0.0.1\", 80))\n"
+"ipv6_connect = create_task(open_connection(\"::1\", 80))\n"
+"tasks = [ipv4_connect, ipv6_connect]\n"
+"\n"
+"for next_connect in as_completed(tasks):\n"
+"    # next_connect is not one of the original task objects. It must be\n"
+"    # awaited to obtain the result value or raise the exception of the\n"
+"    # awaitable that finishes next.\n"
+"    reader, writer = await next_connect"
+msgstr ""
+"ipv4_connect = create_task(open_connection(\"127.0.0.1\", 80))\n"
+"ipv6_connect = create_task(open_connection(\"::1\", 80))\n"
+"nhiệm vụ = [ipv4_connect, ipv6_connect]\n"
+"\n"
+"cho next_connect trong as_completed(task):\n"
+"    # next_connect không phải là một trong những đối tượng tác vụ ban đầu. Nó phải như vậy\n"
+"    # awaited để lấy giá trị kết quả hoặc đưa ra ngoại lệ của\n"
+"    # awaitable sẽ kết thúc tiếp theo.\n"
+"    người đọc, người viết = đang chờ next_connect"
+
+#: ../../library/asyncio-task.rst:998
+#, fuzzy
+msgid ""
+"A :exc:`TimeoutError` is raised if the timeout occurs before all awaitables "
+"are done. This is raised by the ``async for`` loop during asynchronous "
+"iteration or by the coroutines yielded during plain iteration."
+msgstr ""
+"Một :exc:`TimeoutError` được nâng lên nếu hết thời gian chờ trước khi tất cả"
+" các mục có thể chờ được hoàn thành. Điều này được tạo ra bởi vòng lặp "
+"``async for`` trong quá trình lặp không đồng bộ hoặc bởi các coroutine được "
+"tạo ra trong quá trình lặp đơn giản."
+
+#: ../../library/asyncio-task.rst:1005
+#, fuzzy
+msgid ""
+"Deprecation warning is emitted if not all awaitable objects in the *aws* "
+"iterable are Future-like objects and there is no running event loop."
+msgstr ""
+"Cảnh báo không dùng nữa được đưa ra nếu không phải tất cả các đối tượng có "
+"thể chờ đợi trong vòng lặp *aws* đều là các đối tượng giống Tương lai và "
+"không có vòng lặp sự kiện đang chạy."
+
+#: ../../library/asyncio-task.rst:1012
+#, fuzzy
+msgid ""
+"The result can now be used as either an :term:`asynchronous iterator` or as "
+"a plain :term:`iterator` (previously it was only a plain iterator)."
+msgstr ""
+"Kết quả hiện có thể được sử dụng dưới dạng :term:`asynchronous iterator` "
+"hoặc :term:`iterator` đơn giản (trước đây nó chỉ là một trình vòng lặp đơn "
+"giản)."
+
+#: ../../library/asyncio-task.rst:1018
+#, fuzzy
+msgid "Running in threads"
+msgstr "Chạy trong chủ đề"
+
+#: ../../library/asyncio-task.rst:1023
+#, fuzzy
+msgid "Asynchronously run function *func* in a separate thread."
+msgstr "Chức năng chạy không đồng bộ *func* trong một luồng riêng biệt."
+
+#: ../../library/asyncio-task.rst:1025
+#, fuzzy
+msgid ""
+"Any \\*args and \\*\\*kwargs supplied for this function are directly passed "
+"to *func*. Also, the current :class:`contextvars.Context` is propagated, "
+"allowing context variables from the event loop thread to be accessed in the "
+"separate thread."
+msgstr ""
+"Bất kỳ \\*args and \\*\\*kwargs supplied for this function are directly "
+"passed to *func*. Ngoài ra, :class:`contextvars.Context` hiện tại được "
+"truyền bá, cho phép truy cập các biến ngữ cảnh từ chuỗi vòng lặp sự kiện "
+"trong chuỗi riêng biệt."
+
+#: ../../library/asyncio-task.rst:1030
+#, fuzzy
+msgid ""
+"Return a coroutine that can be awaited to get the eventual result of *func*."
+msgstr ""
+"Trả về một coroutine có thể chờ để nhận được kết quả cuối cùng là *func*."
+
+#: ../../library/asyncio-task.rst:1032
+#, fuzzy
+msgid ""
+"This coroutine function is primarily intended to be used for executing IO-"
+"bound functions/methods that would otherwise block the event loop if they "
+"were run in the main thread. For example::"
+msgstr ""
+"Hàm coroutine này chủ yếu nhằm mục đích sử dụng để thực thi các hàm/phương "
+"thức liên kết IO mà lẽ ra sẽ chặn vòng lặp sự kiện nếu chúng được chạy trong"
+" luồng chính. Ví dụ::"
+
+#: ../../library/asyncio-task.rst:1036
+#, python-brace-format, python-format, fuzzy
+msgid ""
+"def blocking_io():\n"
+"    print(f\"start blocking_io at {time.strftime('%X')}\")\n"
+"    # Note that time.sleep() can be replaced with any blocking\n"
+"    # IO-bound operation, such as file operations.\n"
+"    time.sleep(1)\n"
+"    print(f\"blocking_io complete at {time.strftime('%X')}\")\n"
+"\n"
+"async def main():\n"
+"    print(f\"started main at {time.strftime('%X')}\")\n"
+"\n"
+"    await asyncio.gather(\n"
+"        asyncio.to_thread(blocking_io),\n"
+"        asyncio.sleep(1))\n"
+"\n"
+"    print(f\"finished main at {time.strftime('%X')}\")\n"
+"\n"
+"\n"
+"asyncio.run(main())\n"
+"\n"
+"# Expected output:\n"
+"#\n"
+"# started main at 19:50:53\n"
+"# start blocking_io at 19:50:53\n"
+"# blocking_io complete at 19:50:54\n"
+"# finished main at 19:50:54"
+msgstr ""
+"chặn chắc chắn_io():\n"
+"    print(f\"bắt đầu chặn_io lúc {time.strftime('%X')}\")\n"
+"    # Note rằng time.sleep() có thể được thay thế bằng bất kỳ lệnh chặn nào\n"
+"    hoạt động # IO-bound, chẳng hạn như hoạt động tập tin.\n"
+"    thời gian.ngủ(1)\n"
+"    print(f\"blocking_io hoàn thành lúc {time.strftime('%X')}\")\n"
+"\n"
+"async def main():\n"
+"    print(f\"bắt đầu chính vào lúc {time.strftime('%X')}\")\n"
+"\n"
+"    đang chờ asyncio.gather(\n"
+"        asyncio.to_thread(blocking_io),\n"
+"        asyncio.sleep(1))\n"
+"\n"
+"    print(f\"đã hoàn thành phần chính lúc {time.strftime('%X')}\")\n"
+"\n"
+"\n"
+"asyncio.run(chính())\n"
+"\n"
+"đầu ra # Expected:\n"
+"#\n"
+"# started chính lúc 19:50:53\n"
+"# start chặn_io lúc 19:50:53\n"
+"# blocking_io hoàn thành lúc 19:50:54\n"
+"# finished chính lúc 19:50:54"
+
+#: ../../library/asyncio-task.rst:1062
+#, fuzzy
+msgid ""
+"Directly calling ``blocking_io()`` in any coroutine would block the event "
+"loop for its duration, resulting in an additional 1 second of run time. "
+"Instead, by using ``asyncio.to_thread()``, we can run it in a separate "
+"thread without blocking the event loop."
+msgstr ""
+"Việc gọi trực tiếp ``blocking_io()`` trong bất kỳ coroutine nào sẽ chặn vòng"
+" lặp sự kiện trong suốt thời gian của nó, khiến thời gian chạy tăng thêm 1 "
+"giây. Thay vào đó, bằng cách sử dụng ``asyncio.to_thread()``, chúng ta có "
+"thể chạy nó trong một luồng riêng biệt mà không chặn vòng lặp sự kiện."
+
+#: ../../library/asyncio-task.rst:1069
+#, fuzzy
+msgid ""
+"Due to the :term:`GIL`, ``asyncio.to_thread()`` can typically only be used "
+"to make IO-bound functions non-blocking. However, for extension modules that"
+" release the GIL or alternative Python implementations that don't have one, "
+"``asyncio.to_thread()`` can also be used for CPU-bound functions."
+msgstr ""
+"Do :term:`GIL`, ``asyncio.to_thread()`` thường chỉ có thể được sử dụng để "
+"làm cho các hàm liên kết IO không bị chặn. Tuy nhiên, đối với các mô-đun mở "
+"rộng phát hành GIL hoặc các triển khai Python thay thế không có, "
+"``asyncio.to_thread()`` cũng có thể được sử dụng cho các hàm gắn với CPU."
+
+#: ../../library/asyncio-task.rst:1078
+#, fuzzy
+msgid "Scheduling from other threads"
+msgstr "Lập lịch từ các chủ đề khác"
+
+#: ../../library/asyncio-task.rst:1082
+#, fuzzy
+msgid "Submit a coroutine to the given event loop.  Thread-safe."
+msgstr "Gửi một coroutine đến vòng lặp sự kiện nhất định.  Chủ đề an toàn."
+
+#: ../../library/asyncio-task.rst:1084
+#, fuzzy
+msgid ""
+"Return a :class:`concurrent.futures.Future` to wait for the result from "
+"another OS thread."
+msgstr ""
+"Trả về :class:`concurrent.futures.Future` để chờ kết quả từ một chuỗi hệ "
+"điều hành khác."
+
+#: ../../library/asyncio-task.rst:1087
+#, fuzzy
+msgid ""
+"This function is meant to be called from a different OS thread than the one "
+"where the event loop is running.  Example::"
+msgstr ""
+"Hàm này được gọi từ một luồng hệ điều hành khác với luồng mà vòng lặp sự "
+"kiện đang chạy.  Ví dụ::"
+
+#: ../../library/asyncio-task.rst:1090
+#, fuzzy
+msgid ""
+"def in_thread(loop: asyncio.AbstractEventLoop) -> None:\n"
+"    # Run some blocking IO\n"
+"    pathlib.Path(\"example.txt\").write_text(\"hello world\", encoding=\"utf8\")\n"
+"\n"
+"    # Create a coroutine\n"
+"    coro = asyncio.sleep(1, result=3)\n"
+"\n"
+"    # Submit the coroutine to a given loop\n"
+"    future = asyncio.run_coroutine_threadsafe(coro, loop)\n"
+"\n"
+"    # Wait for the result with an optional timeout argument\n"
+"    assert future.result(timeout=2) == 3\n"
+"\n"
+"async def amain() -> None:\n"
+"    # Get the running loop\n"
+"    loop = asyncio.get_running_loop()\n"
+"\n"
+"    # Run something in a thread\n"
+"    await asyncio.to_thread(in_thread, loop)"
+msgstr ""
+"def in_thread(loop: asyncio.AbstractEventLoop) -> Không có:\n"
+"    # Run chặn IO\n"
+"    pathlib.Path(\"example.txt\").write_text(\"xin chào thế giới\", mã hóa=\"utf8\")\n"
+"\n"
+"    # Create một coroutine\n"
+"    coro = asyncio.sleep(1, result=3)\n"
+"\n"
+"    # Submit coroutine vào một vòng lặp nhất định\n"
+"    tương lai = asyncio.run_coroutine_threadsafe(coro, loop)\n"
+"\n"
+"    # Wait để biết kết quả với đối số hết thời gian tùy chọn\n"
+"    khẳng định tương lai.result(timeout=2) == 3\n"
+"\n"
+"async def amain() -> Không có:\n"
+"    # Get vòng lặp đang chạy\n"
+"    vòng lặp = asyncio.get_running_loop()\n"
+"\n"
+"    # Run có gì đó trong một chủ đề\n"
+"    đang chờ asyncio.to_thread(in_thread, loop)"
+
+#: ../../library/asyncio-task.rst:1110
+#, fuzzy
+msgid "It's also possible to run the other way around.  Example::"
+msgstr "Cũng có thể chạy theo cách khác.  Ví dụ::"
+
+#: ../../library/asyncio-task.rst:1112
+#, fuzzy
+msgid ""
+"@contextlib.contextmanager\n"
+"def loop_in_thread() -> Generator[asyncio.AbstractEventLoop]:\n"
+"    loop_fut = concurrent.futures.Future[asyncio.AbstractEventLoop]()\n"
+"    stop_event = asyncio.Event()\n"
+"\n"
+"    async def main() -> None:\n"
+"        loop_fut.set_result(asyncio.get_running_loop())\n"
+"        await stop_event.wait()\n"
+"\n"
+"    with concurrent.futures.ThreadPoolExecutor(1) as tpe:\n"
+"        complete_fut = tpe.submit(asyncio.run, main())\n"
+"        for fut in concurrent.futures.as_completed((loop_fut, complete_fut)):\n"
+"            if fut is loop_fut:\n"
+"                loop = loop_fut.result()\n"
+"                try:\n"
+"                    yield loop\n"
+"                finally:\n"
+"                    loop.call_soon_threadsafe(stop_event.set)\n"
+"            else:\n"
+"                fut.result()\n"
+"\n"
+"# Create a loop in another thread\n"
+"with loop_in_thread() as loop:\n"
+"    # Create a coroutine\n"
+"    coro = asyncio.sleep(1, result=3)\n"
+"\n"
+"    # Submit the coroutine to a given loop\n"
+"    future = asyncio.run_coroutine_threadsafe(coro, loop)\n"
+"\n"
+"    # Wait for the result with an optional timeout argument\n"
+"    assert future.result(timeout=2) == 3"
+msgstr ""
+"@contextlib.contextmanager\n"
+"def loop_in_thread() -> Trình tạo [asyncio.AbstractEventLoop]:\n"
+"    loop_fut = concurrent.futures.Future[asyncio.AbstractEventLoop]()\n"
+"    stop_event = asyncio.Event()\n"
+"\n"
+"    async def main() -> Không có:\n"
+"        loop_fut.set_result(asyncio.get_running_loop())\n"
+"        đang chờ stop_event.wait()\n"
+"\n"
+"    với concurrent.futures.ThreadPoolExecutor(1) là tpe:\n"
+"        Complete_fut = tpe.submit(asyncio.run, main())\n"
+"        cho fut trong concurrent.futures.as_completed((loop_fut, Complete_fut)):\n"
+"            nếu tương lai là loop_fut:\n"
+"                vòng lặp = loop_fut.result()\n"
+"                thử:\n"
+"                    vòng lặp năng suất\n"
+"                cuối cùng:\n"
+"                    loop.call_soon_threadsafe(stop_event.set)\n"
+"            khác:\n"
+"                fut.result()\n"
+"\n"
+"# Create một vòng lặp trong một chủ đề khác\n"
+"với loop_in_thread() là vòng lặp:\n"
+"    # Create một coroutine\n"
+"    coro = asyncio.sleep(1, result=3)\n"
+"\n"
+"    # Submit coroutine vào một vòng lặp nhất định\n"
+"    tương lai = asyncio.run_coroutine_threadsafe(coro, loop)\n"
+"\n"
+"    # Wait để biết kết quả với đối số hết thời gian tùy chọn\n"
+"    khẳng định tương lai.result(timeout=2) == 3"
+
+#: ../../library/asyncio-task.rst:1144
+#, fuzzy
+msgid ""
+"If an exception is raised in the coroutine, the returned Future will be "
+"notified.  It can also be used to cancel the task in the event loop::"
+msgstr ""
+"Nếu một ngoại lệ được nêu ra trong coroutine thì Tương lai được trả về sẽ "
+"được thông báo.  Nó cũng có thể được sử dụng để hủy tác vụ trong vòng lặp sự"
+" kiện::"
+
+#: ../../library/asyncio-task.rst:1148
+#, python-brace-format, fuzzy
+msgid ""
+"try:\n"
+"    result = future.result(timeout)\n"
+"except TimeoutError:\n"
+"    print('The coroutine took too long, cancelling the task...')\n"
+"    future.cancel()\n"
+"except Exception as exc:\n"
+"    print(f'The coroutine raised an exception: {exc!r}')\n"
+"else:\n"
+"    print(f'The coroutine returned: {result!r}')"
+msgstr ""
+"thử:\n"
+"    kết quả = tương lai.result (hết thời gian)\n"
+"ngoại trừ Hết thời gianLỗi:\n"
+"    print('Coroutine mất quá nhiều thời gian, hủy tác vụ...')\n"
+"    tương lai.cancel()\n"
+"ngoại trừ Ngoại lệ như exec:\n"
+"    print(f'Coroutine đưa ra một ngoại lệ: {exc!r}')\n"
+"khác:\n"
+"    print(f'Coroutine trả về: {result!r}')"
+
+#: ../../library/asyncio-task.rst:1158
+#, fuzzy
+msgid ""
+"See the :ref:`concurrency and multithreading <asyncio-multithreading>` "
+"section of the documentation."
+msgstr ""
+"Xem phần :ref:`concurrency and multithreading <asyncio-multithreading>` của "
+"tài liệu."
+
+#: ../../library/asyncio-task.rst:1161
+#, fuzzy
+msgid ""
+"Unlike other asyncio functions this function requires the *loop* argument to"
+" be passed explicitly."
+msgstr ""
+"Không giống như các hàm asyncio khác, hàm này yêu cầu đối số *loop* phải "
+"được truyền một cách rõ ràng."
+
+#: ../../library/asyncio-task.rst:1168
+#, fuzzy
+msgid "Introspection"
+msgstr "Xem xét nội tâm"
+
+#: ../../library/asyncio-task.rst:1173
+#, fuzzy
+msgid ""
+"Return the currently running :class:`Task` instance, or ``None`` if no task "
+"is running."
+msgstr ""
+"Trả về phiên bản :class:`Task` hiện đang chạy hoặc ``None`` nếu không có tác"
+" vụ nào đang chạy."
+
+#: ../../library/asyncio-task.rst:1176
+#, fuzzy
+msgid ""
+"If *loop* is ``None`` :func:`get_running_loop` is used to get the current "
+"loop."
+msgstr ""
+"Nếu *loop* là ``None`` :func:`get_running_loop` được sử dụng để lấy vòng lặp"
+" hiện tại."
+
+#: ../../library/asyncio-task.rst:1184
+#, fuzzy
+msgid ""
+"Return a set of not yet finished :class:`Task` objects run by the loop."
+msgstr ""
+"Trả về một tập hợp các đối tượng :class:`Task` chưa hoàn thành do vòng lặp "
+"chạy."
+
+#: ../../library/asyncio-task.rst:1187
+#, fuzzy
+msgid ""
+"If *loop* is ``None``, :func:`get_running_loop` is used for getting current "
+"loop."
+msgstr ""
+"Nếu *loop* là ``None``, :func:`get_running_loop` được sử dụng để lấy vòng "
+"lặp hiện tại."
+
+#: ../../library/asyncio-task.rst:1195
+#, fuzzy
+msgid "Return ``True`` if *obj* is a coroutine object."
+msgstr "Trả về ``True`` nếu *obj* là đối tượng coroutine."
+
+#: ../../library/asyncio-task.rst:1202
+#, fuzzy
+msgid "Task object"
+msgstr "Đối tượng nhiệm vụ"
+
+#: ../../library/asyncio-task.rst:1206
+#, fuzzy
+msgid ""
+"A :class:`Future-like <Future>` object that runs a Python :ref:`coroutine "
+"<coroutine>`.  Not thread-safe."
+msgstr ""
+"Một đối tượng :class:`Future-like <Future>` chạy Python :ref:`coroutine "
+"<coroutine>`.  Không an toàn chủ đề."
+
+#: ../../library/asyncio-task.rst:1209
+#, fuzzy
+msgid ""
+"Tasks are used to run coroutines in event loops. If a coroutine awaits on a "
+"Future, the Task suspends the execution of the coroutine and waits for the "
+"completion of the Future.  When the Future is *done*, the execution of the "
+"wrapped coroutine resumes."
+msgstr ""
+"Tác vụ được dùng để chạy coroutine trong vòng lặp sự kiện. Nếu một coroutine"
+" đang chờ trong Tương lai, Tác vụ sẽ tạm dừng việc thực thi coroutine và chờ"
+" cho đến khi Tương lai hoàn thành.  Khi Tương lai là *done*, quá trình thực "
+"thi coroutine được bao bọc sẽ tiếp tục."
+
+#: ../../library/asyncio-task.rst:1215
+#, fuzzy
+msgid ""
+"Event loops use cooperative scheduling: an event loop runs one Task at a "
+"time.  While a Task awaits for the completion of a Future, the event loop "
+"runs other Tasks, callbacks, or performs IO operations."
+msgstr ""
+"Vòng lặp sự kiện sử dụng lập lịch hợp tác: vòng lặp sự kiện chạy một Nhiệm "
+"vụ tại một thời điểm.  Trong khi Nhiệm vụ chờ hoàn thành Tương lai, vòng lặp"
+" sự kiện sẽ chạy các Nhiệm vụ khác, lệnh gọi lại hoặc thực hiện các thao tác"
+" IO."
+
+#: ../../library/asyncio-task.rst:1220
+#, fuzzy
+msgid ""
+"Use the high-level :func:`asyncio.create_task` function to create Tasks, or "
+"the low-level :meth:`loop.create_task` or :func:`ensure_future` functions.  "
+"Manual instantiation of Tasks is discouraged."
+msgstr ""
+"Sử dụng hàm :func:`asyncio.create_task` cấp cao để tạo Nhiệm vụ hoặc các hàm"
+" :meth:`loop.create_task` hoặc :func:`ensure_future` cấp thấp.  Việc khởi "
+"tạo Nhiệm vụ theo cách thủ công không được khuyến khích."
+
+#: ../../library/asyncio-task.rst:1225
+#, fuzzy
+msgid ""
+"To cancel a running Task use the :meth:`cancel` method.  Calling it will "
+"cause the Task to throw a :exc:`CancelledError` exception into the wrapped "
+"coroutine.  If a coroutine is awaiting on a Future object during "
+"cancellation, the Future object will be cancelled."
+msgstr ""
+"Để hủy một Tác vụ đang chạy, hãy sử dụng phương thức :meth:`cancel`.  Việc "
+"gọi nó sẽ khiến Tác vụ ném ngoại lệ :exc:`CancelledError` vào coroutine được"
+" bao bọc.  Nếu một coroutine đang chờ trên một đối tượng Future trong quá "
+"trình hủy, đối tượng Future sẽ bị hủy."
+
+#: ../../library/asyncio-task.rst:1230
+#, fuzzy
+msgid ""
+":meth:`cancelled` can be used to check if the Task was cancelled. The method"
+" returns ``True`` if the wrapped coroutine did not suppress the "
+":exc:`CancelledError` exception and was actually cancelled."
+msgstr ""
+":meth:`cancelled` có thể được sử dụng để kiểm tra xem Tác vụ có bị hủy hay "
+"không. Phương thức này trả về ``True`` nếu coroutine được bao bọc không loại"
+" bỏ ngoại lệ :exc:`CancelledError` và thực sự đã bị hủy."
+
+#: ../../library/asyncio-task.rst:1235
+#, fuzzy
+msgid ""
+":class:`asyncio.Task` inherits from :class:`Future` all of its APIs except "
+":meth:`Future.set_result` and :meth:`Future.set_exception`."
+msgstr ""
+":class:`asyncio.Task` kế thừa từ :class:`Future` tất cả các API của nó ngoại"
+" trừ :meth:`Future.set_result` và :meth:`Future.set_exception`."
+
+#: ../../library/asyncio-task.rst:1239
+#, fuzzy
+msgid ""
+"An optional keyword-only *context* argument allows specifying a custom "
+":class:`contextvars.Context` for the *coro* to run in. If no *context* is "
+"provided, the Task copies the current context and later runs its coroutine "
+"in the copied context."
+msgstr ""
+"Đối số *context* chỉ có từ khóa tùy chọn cho phép chỉ định một "
+":class:`contextvars.Context` tùy chỉnh để *coro* chạy vào. Nếu không cung "
+"cấp *context*, Tác vụ sẽ sao chép ngữ cảnh hiện tại và sau đó chạy coroutine"
+" của nó trong ngữ cảnh được sao chép."
+
+#: ../../library/asyncio-task.rst:1244
+#, fuzzy
+msgid ""
+"An optional keyword-only *eager_start* argument allows eagerly starting the "
+"execution of the :class:`asyncio.Task` at task creation time. If set to "
+"``True`` and the event loop is running, the task will start executing the "
+"coroutine immediately, until the first time the coroutine blocks. If the "
+"coroutine returns or raises without blocking, the task will be finished "
+"eagerly and will skip scheduling to the event loop."
+msgstr ""
+"Đối số *eager_start* chỉ có từ khóa tùy chọn cho phép bắt đầu háo hức thực "
+"thi :class:`asyncio.Task` tại thời điểm tạo tác vụ. Nếu được đặt thành "
+"``True`` và vòng lặp sự kiện đang chạy, tác vụ sẽ bắt đầu thực thi coroutine"
+" ngay lập tức, cho đến khi coroutine chặn lần đầu tiên. Nếu coroutine quay "
+"trở lại hoặc tăng lên mà không bị chặn, nhiệm vụ sẽ được hoàn thành một cách"
+" háo hức và sẽ bỏ qua việc lên lịch cho vòng lặp sự kiện."
+
+#: ../../library/asyncio-task.rst:1251
+#, fuzzy
+msgid "Added support for the :mod:`contextvars` module."
+msgstr "Đã thêm hỗ trợ cho mô-đun :mod:`contextvars`."
+
+#: ../../library/asyncio-task.rst:1257
+#, fuzzy
+msgid ""
+"Deprecation warning is emitted if *loop* is not specified and there is no "
+"running event loop."
+msgstr ""
+"Cảnh báo không dùng nữa được phát ra nếu *loop* không được chỉ định và không"
+" có vòng lặp sự kiện đang chạy."
+
+#: ../../library/asyncio-task.rst:1264
+#, fuzzy
+msgid "Added the *eager_start* parameter."
+msgstr "Đã thêm tham số *eager_start*."
+
+#: ../../library/asyncio-task.rst:1269
+#, fuzzy
+msgid "Return ``True`` if the Task is *done*."
+msgstr "Trả về ``True`` nếu Nhiệm vụ là *done*."
+
+#: ../../library/asyncio-task.rst:1271
+#, fuzzy
+msgid ""
+"A Task is *done* when the wrapped coroutine either returned a value, raised "
+"an exception, or the Task was cancelled."
+msgstr ""
+"Nhiệm vụ là *done* khi coroutine được bao bọc trả về một giá trị, đưa ra "
+"ngoại lệ hoặc Nhiệm vụ bị hủy."
+
+#: ../../library/asyncio-task.rst:1276
+#, fuzzy
+msgid "Return the result of the Task."
+msgstr "Trả về kết quả của Task."
+
+#: ../../library/asyncio-task.rst:1278
+#, fuzzy
+msgid ""
+"If the Task is *done*, the result of the wrapped coroutine is returned (or "
+"if the coroutine raised an exception, that exception is re-raised.)"
+msgstr ""
+"Nếu Tác vụ là *done* thì kết quả của coroutine được bao bọc sẽ được trả về "
+"(hoặc nếu coroutine đưa ra một ngoại lệ thì ngoại lệ đó sẽ được đưa ra lại.)"
+
+#: ../../library/asyncio-task.rst:1282 ../../library/asyncio-task.rst:1296
+#, fuzzy
+msgid ""
+"If the Task has been *cancelled*, this method raises a :exc:`CancelledError`"
+" exception."
+msgstr ""
+"Nếu Tác vụ là *cancelled*, phương pháp này sẽ đưa ra một ngoại lệ "
+":exc:`CancelledError`."
+
+#: ../../library/asyncio-task.rst:1285
+#, fuzzy
+msgid ""
+"If the Task's result isn't yet available, this method raises an "
+":exc:`InvalidStateError` exception."
+msgstr ""
+"Nếu kết quả của Nhiệm vụ chưa có, phương pháp này sẽ đưa ra ngoại lệ "
+":exc:`InvalidStateError`."
+
+#: ../../library/asyncio-task.rst:1290
+#, fuzzy
+msgid "Return the exception of the Task."
+msgstr "Trả về ngoại lệ của Nhiệm vụ."
+
+#: ../../library/asyncio-task.rst:1292
+#, fuzzy
+msgid ""
+"If the wrapped coroutine raised an exception that exception is returned.  If"
+" the wrapped coroutine returned normally this method returns ``None``."
+msgstr ""
+"Nếu coroutine được bao bọc đưa ra một ngoại lệ thì ngoại lệ đó sẽ được trả "
+"về.  Nếu coroutine được gói trả về bình thường thì phương thức này trả về "
+"``None``."
+
+#: ../../library/asyncio-task.rst:1299
+#, fuzzy
+msgid ""
+"If the Task isn't *done* yet, this method raises an :exc:`InvalidStateError`"
+" exception."
+msgstr ""
+"Nếu Tác vụ chưa phải là *done* thì phương pháp này sẽ đưa ra một ngoại lệ "
+":exc:`InvalidStateError`."
+
+#: ../../library/asyncio-task.rst:1304
+#, fuzzy
+msgid "Add a callback to be run when the Task is *done*."
+msgstr "Thêm lệnh gọi lại để chạy khi Tác vụ là *done*."
+
+#: ../../library/asyncio-task.rst:1306 ../../library/asyncio-task.rst:1315
+#, fuzzy
+msgid "This method should only be used in low-level callback-based code."
+msgstr ""
+"Phương pháp này chỉ nên được sử dụng trong mã dựa trên lệnh gọi lại cấp "
+"thấp."
+
+#: ../../library/asyncio-task.rst:1308
+#, fuzzy
+msgid ""
+"See the documentation of :meth:`Future.add_done_callback` for more details."
+msgstr ""
+"Xem tài liệu của :meth:`Future.add_done_callback` để biết thêm chi tiết."
+
+#: ../../library/asyncio-task.rst:1313
+#, fuzzy
+msgid "Remove *callback* from the callbacks list."
+msgstr "Xóa *callback* khỏi danh sách gọi lại."
+
+#: ../../library/asyncio-task.rst:1317
+#, fuzzy
+msgid ""
+"See the documentation of :meth:`Future.remove_done_callback` for more "
+"details."
+msgstr ""
+"Xem tài liệu của :meth:`Future.remove_done_callback` để biết thêm chi tiết."
+
+#: ../../library/asyncio-task.rst:1322
+#, fuzzy
+msgid "Return the list of stack frames for this Task."
+msgstr "Trả về danh sách các khung ngăn xếp cho Tác vụ này."
+
+#: ../../library/asyncio-task.rst:1324
+#, fuzzy
+msgid ""
+"If the wrapped coroutine is not done, this returns the stack where it is "
+"suspended.  If the coroutine has completed successfully or was cancelled, "
+"this returns an empty list. If the coroutine was terminated by an exception,"
+" this returns the list of traceback frames."
+msgstr ""
+"Nếu coroutine được bao bọc không được thực hiện, thao tác này sẽ trả về ngăn"
+" xếp nơi nó bị treo.  Nếu coroutine đã hoàn thành thành công hoặc bị hủy, "
+"kết quả này sẽ trả về một danh sách trống. Nếu coroutine bị chấm dứt bởi một"
+" ngoại lệ, thì kết quả này sẽ trả về danh sách các khung truy nguyên."
+
+#: ../../library/asyncio-task.rst:1330
+#, fuzzy
+msgid "The frames are always ordered from oldest to newest."
+msgstr "Các khung hình luôn được sắp xếp từ cũ nhất đến mới nhất."
+
+#: ../../library/asyncio-task.rst:1332
+#, fuzzy
+msgid "Only one stack frame is returned for a suspended coroutine."
+msgstr "Chỉ một khung ngăn xếp được trả về cho một coroutine bị treo."
+
+#: ../../library/asyncio-task.rst:1334
+#, fuzzy
+msgid ""
+"The optional *limit* argument sets the maximum number of frames to return; "
+"by default all available frames are returned. The ordering of the returned "
+"list differs depending on whether a stack or a traceback is returned: the "
+"newest frames of a stack are returned, but the oldest frames of a traceback "
+"are returned.  (This matches the behavior of the traceback module.)"
+msgstr ""
+"Đối số *limit* tùy chọn đặt số lượng khung hình tối đa cần trả về; theo mặc "
+"định tất cả các khung có sẵn sẽ được trả về. Thứ tự của danh sách được trả "
+"về khác nhau tùy thuộc vào việc trả về một ngăn xếp hay truy ngược: các "
+"khung mới nhất của ngăn xếp được trả về, nhưng các khung cũ nhất của truy "
+"nguyên được trả về.  (Điều này phù hợp với hành vi của mô-đun truy nguyên.)"
+
+#: ../../library/asyncio-task.rst:1343
+#, fuzzy
+msgid "Print the stack or traceback for this Task."
+msgstr "In ngăn xếp hoặc truy nguyên cho Nhiệm vụ này."
+
+#: ../../library/asyncio-task.rst:1345
+#, fuzzy
+msgid ""
+"This produces output similar to that of the traceback module for the frames "
+"retrieved by :meth:`get_stack`."
+msgstr ""
+"Điều này tạo ra đầu ra tương tự như đầu ra của mô-đun truy nguyên cho các "
+"khung được :meth:`get_stack` truy xuất."
+
+#: ../../library/asyncio-task.rst:1348
+#, fuzzy
+msgid "The *limit* argument is passed to :meth:`get_stack` directly."
+msgstr "Đối số *limit* được truyền trực tiếp tới :meth:`get_stack`."
+
+#: ../../library/asyncio-task.rst:1350
+#, fuzzy
+msgid ""
+"The *file* argument is an I/O stream to which the output is written; by "
+"default output is written to :data:`sys.stdout`."
+msgstr ""
+"Đối số *file* là luồng I/O mà đầu ra được ghi vào đó; theo mặc định, đầu ra "
+"được ghi vào :data:`sys.stdout`."
+
+#: ../../library/asyncio-task.rst:1355
+#, fuzzy
+msgid "Return the coroutine object wrapped by the :class:`Task`."
+msgstr "Trả về đối tượng coroutine được bao bọc bởi :class:`Task`."
+
+#: ../../library/asyncio-task.rst:1359
+#, fuzzy
+msgid ""
+"This will return ``None`` for Tasks which have already completed eagerly. "
+"See the :ref:`Eager Task Factory <eager-task-factory>`."
+msgstr ""
+"Điều này sẽ trả về ``None`` cho các Nhiệm vụ đã hoàn thành một cách háo hức."
+" Xem :ref:`Eager Task Factory <eager-task-factory>`."
+
+#: ../../library/asyncio-task.rst:1366
+#, fuzzy
+msgid "Newly added eager task execution means result may be ``None``."
+msgstr ""
+"Việc thực thi tác vụ háo hức mới được thêm vào có nghĩa là kết quả có thể là"
+" ``None``."
+
+#: ../../library/asyncio-task.rst:1370
+#, fuzzy
+msgid ""
+"Return the :class:`contextvars.Context` object associated with the task."
+msgstr ""
+"Trả về đối tượng :class:`contextvars.Context` được liên kết với tác vụ."
+
+#: ../../library/asyncio-task.rst:1377
+#, fuzzy
+msgid "Return the name of the Task."
+msgstr "Trả về tên của Nhiệm vụ."
+
+#: ../../library/asyncio-task.rst:1379
+#, fuzzy
+msgid ""
+"If no name has been explicitly assigned to the Task, the default asyncio "
+"Task implementation generates a default name during instantiation."
+msgstr ""
+"Nếu không có tên nào được gán rõ ràng cho Tác vụ thì việc triển khai Tác vụ "
+"asyncio mặc định sẽ tạo ra một tên mặc định trong quá trình khởi tạo."
+
+#: ../../library/asyncio-task.rst:1387
+#, fuzzy
+msgid "Set the name of the Task."
+msgstr "Đặt tên của Nhiệm vụ."
+
+#: ../../library/asyncio-task.rst:1389
+#, fuzzy
+msgid ""
+"The *value* argument can be any object, which is then converted to a string."
+msgstr ""
+"Đối số *value* có thể là bất kỳ đối tượng nào, sau đó được chuyển đổi thành "
+"một chuỗi."
+
+#: ../../library/asyncio-task.rst:1392
+#, fuzzy
+msgid ""
+"In the default Task implementation, the name will be visible in the "
+":func:`repr` output of a task object."
+msgstr ""
+"Trong quá trình triển khai Tác vụ mặc định, tên sẽ hiển thị trong đầu ra "
+":func:`repr` của đối tượng tác vụ."
+
+#: ../../library/asyncio-task.rst:1399
+#, fuzzy
+msgid "Request the Task to be cancelled."
+msgstr "Yêu cầu hủy bỏ nhiệm vụ."
+
+#: ../../library/asyncio-task.rst:1401
+#, fuzzy
+msgid ""
+"If the Task is already *done* or *cancelled*, return ``False``, otherwise, "
+"return ``True``."
+msgstr ""
+"Nếu Tác vụ đã có *done* hoặc *cancelled*, hãy trả về ``False``, nếu không, "
+"hãy trả về ``True``."
+
+#: ../../library/asyncio-task.rst:1404
+#, fuzzy
+msgid ""
+"The method arranges for a :exc:`CancelledError` exception to be thrown into "
+"the wrapped coroutine on the next cycle of the event loop."
+msgstr ""
+"Phương thức này sắp xếp để đưa một ngoại lệ :exc:`CancelledError` vào "
+"coroutine được bao bọc trong chu kỳ tiếp theo của vòng lặp sự kiện."
+
+#: ../../library/asyncio-task.rst:1407
+#, fuzzy
+msgid ""
+"The coroutine then has a chance to clean up or even deny the request by "
+"suppressing the exception with a :keyword:`try` ... ... ``except "
+"CancelledError`` ... :keyword:`finally` block. Therefore, unlike "
+":meth:`Future.cancel`, :meth:`Task.cancel` does not guarantee that the Task "
+"will be cancelled, although suppressing cancellation completely is not "
+"common and is actively discouraged.  Should the coroutine nevertheless "
+"decide to suppress the cancellation, it needs to call :meth:`Task.uncancel` "
+"in addition to catching the exception."
+msgstr ""
+"Sau đó, coroutine có cơ hội dọn dẹp hoặc thậm chí từ chối yêu cầu bằng cách "
+"loại bỏ ngoại lệ bằng khối :keyword:`try` ... ... ``except CancelledError`` "
+"... :keyword:`finally`. Do đó, không giống như :meth:`Future.cancel`, "
+":meth:`Task.cancel` không đảm bảo rằng Nhiệm vụ sẽ bị hủy, mặc dù việc ngăn "
+"chặn hoàn toàn việc hủy không phổ biến và thường không được khuyến khích.  "
+"Tuy nhiên, nếu coroutine quyết định ngăn chặn việc hủy, nó sẽ phải gọi "
+":meth:`Task.uncancel` ngoài việc bắt ngoại lệ."
+
+#: ../../library/asyncio-task.rst:1417
+#, fuzzy
+msgid "Added the *msg* parameter."
+msgstr "Đã thêm tham số *msg*."
+
+#: ../../library/asyncio-task.rst:1420
+#, fuzzy
+msgid ""
+"The ``msg`` parameter is propagated from cancelled task to its awaiter."
+msgstr "Tham số ``msg`` được truyền từ tác vụ bị hủy đến bộ chờ của nó."
+
+#: ../../library/asyncio-task.rst:1425
+#, fuzzy
+msgid ""
+"The following example illustrates how coroutines can intercept the "
+"cancellation request::"
+msgstr "Ví dụ sau minh họa cách coroutine có thể chặn yêu cầu hủy::"
+
+#: ../../library/asyncio-task.rst:1428
+#, fuzzy
+msgid ""
+"async def cancel_me():\n"
+"    print('cancel_me(): before sleep')\n"
+"\n"
+"    try:\n"
+"        # Wait for 1 hour\n"
+"        await asyncio.sleep(3600)\n"
+"    except asyncio.CancelledError:\n"
+"        print('cancel_me(): cancel sleep')\n"
+"        raise\n"
+"    finally:\n"
+"        print('cancel_me(): after sleep')\n"
+"\n"
+"async def main():\n"
+"    # Create a \"cancel_me\" Task\n"
+"    task = asyncio.create_task(cancel_me())\n"
+"\n"
+"    # Wait for 1 second\n"
+"    await asyncio.sleep(1)\n"
+"\n"
+"    task.cancel()\n"
+"    try:\n"
+"        await task\n"
+"    except asyncio.CancelledError:\n"
+"        print(\"main(): cancel_me is cancelled now\")\n"
+"\n"
+"asyncio.run(main())\n"
+"\n"
+"# Expected output:\n"
+"#\n"
+"#     cancel_me(): before sleep\n"
+"#     cancel_me(): cancel sleep\n"
+"#     cancel_me(): after sleep\n"
+"#     main(): cancel_me is cancelled now"
+msgstr ""
+"async def cancel_me():\n"
+"    print('cancel_me(): trước khi ngủ')\n"
+"\n"
+"    thử:\n"
+"        # Wait trong 1 giờ\n"
+"        đang chờ asyncio.sleep(3600)\n"
+"    ngoại trừ asyncio.CancelledError:\n"
+"        print('cancel_me(): hủy chế độ ngủ')\n"
+"        nâng cao\n"
+"    cuối cùng:\n"
+"        print('cancel_me(): sau khi ngủ')\n"
+"\n"
+"async def main():\n"
+"    # Create nhiệm vụ \"hủy_me\"\n"
+"    nhiệm vụ = asyncio.create_task(cancel_me())\n"
+"\n"
+"    # Wait trong 1 giây\n"
+"    đang chờ asyncio.sleep(1)\n"
+"\n"
+"    nhiệm vụ.cancel()\n"
+"    thử:\n"
+"        chờ đợi nhiệm vụ\n"
+"    ngoại trừ asyncio.CancelledError:\n"
+"        print(\"main(): cancel_me hiện đã bị hủy\")\n"
+"\n"
+"asyncio.run(chính())\n"
+"\n"
+"đầu ra # Expected:\n"
+"#\n"
+"#     cancel_me(): trước khi ngủ\n"
+"#     cancel_me(): hủy chế độ ngủ\n"
+"#     cancel_me(): sau khi ngủ\n"
+"#     main(): cancel_me hiện đã bị hủy"
+
+#: ../../library/asyncio-task.rst:1464
+#, fuzzy
+msgid "Return ``True`` if the Task is *cancelled*."
+msgstr "Trả về ``True`` nếu Nhiệm vụ là *cancelled*."
+
+#: ../../library/asyncio-task.rst:1466
+#, fuzzy
+msgid ""
+"The Task is *cancelled* when the cancellation was requested with "
+":meth:`cancel` and the wrapped coroutine propagated the "
+":exc:`CancelledError` exception thrown into it."
+msgstr ""
+"Nhiệm vụ là *cancelled* khi yêu cầu hủy với :meth:`cancel` và coroutine được"
+" bao bọc đã truyền bá ngoại lệ :exc:`CancelledError` được ném vào đó."
+
+#: ../../library/asyncio-task.rst:1472
+#, fuzzy
+msgid "Decrement the count of cancellation requests to this Task."
+msgstr "Giảm số lượng yêu cầu hủy đối với Nhiệm vụ này."
+
+#: ../../library/asyncio-task.rst:1474
+#, fuzzy
+msgid "Returns the remaining number of cancellation requests."
+msgstr "Trả về số lượng yêu cầu hủy còn lại."
+
+#: ../../library/asyncio-task.rst:1476
+#, fuzzy
+msgid ""
+"Note that once execution of a cancelled task completed, further calls to "
+":meth:`uncancel` are ineffective."
+msgstr ""
+"Lưu ý rằng sau khi hoàn thành việc thực thi tác vụ bị hủy, các lệnh gọi tiếp"
+" theo tới :meth:`uncancel` sẽ không có hiệu lực."
+
+#: ../../library/asyncio-task.rst:1481
+#, fuzzy
+msgid ""
+"This method is used by asyncio's internals and isn't expected to be used by "
+"end-user code.  In particular, if a Task gets successfully uncancelled, this"
+" allows for elements of structured concurrency like :ref:`taskgroups` and "
+":func:`asyncio.timeout` to continue running, isolating cancellation to the "
+"respective structured block. For example::"
+msgstr ""
+"Phương pháp này được sử dụng bởi nội bộ của asyncio và dự kiến sẽ không được"
+" sử dụng bởi mã người dùng cuối.  Đặc biệt, nếu một Tác vụ được hủy hủy "
+"thành công, điều này cho phép các thành phần đồng thời có cấu trúc như "
+":ref:`taskgroups` và :func:`asyncio.timeout` tiếp tục chạy, cách ly tính "
+"năng hủy đối với khối có cấu trúc tương ứng. Ví dụ::"
+
+#: ../../library/asyncio-task.rst:1488
+#, fuzzy
+msgid ""
+"async def make_request_with_timeout():\n"
+"    try:\n"
+"        async with asyncio.timeout(1):\n"
+"            # Structured block affected by the timeout:\n"
+"            await make_request()\n"
+"            await make_another_request()\n"
+"    except TimeoutError:\n"
+"        log(\"There was a timeout\")\n"
+"    # Outer code not affected by the timeout:\n"
+"    await unrelated_code()"
+msgstr ""
+"async def make_request_with_timeout():\n"
+"    thử:\n"
+"        không đồng bộ với asyncio.timeout(1):\n"
+"            Khối # Structured bị ảnh hưởng bởi thời gian chờ:\n"
+"            đang chờ make_request()\n"
+"            đang chờ make_another_request()\n"
+"    ngoại trừ Hết thời gianLỗi:\n"
+"        log(\"Đã hết thời gian chờ\")\n"
+"    Mã # Outer không bị ảnh hưởng bởi thời gian chờ:\n"
+"    đang chờ không liên quan_code()"
+
+#: ../../library/asyncio-task.rst:1499
+#, fuzzy
+msgid ""
+"While the block with ``make_request()`` and ``make_another_request()`` might"
+" get cancelled due to the timeout, ``unrelated_code()`` should continue "
+"running even in case of the timeout.  This is implemented with "
+":meth:`uncancel`.  :class:`TaskGroup` context managers use :func:`uncancel` "
+"in a similar fashion."
+msgstr ""
+"Mặc dù khối có ``make_request()`` và ``make_another_request()`` có thể bị "
+"hủy do hết thời gian chờ, nhưng ``unrelated_code()`` sẽ tiếp tục chạy ngay "
+"cả trong trường hợp hết thời gian chờ.  Điều này được thực hiện với "
+":meth:`uncancel`.  Trình quản lý bối cảnh :class:`TaskGroup` sử dụng "
+":func:`uncancel` theo cách tương tự."
+
+#: ../../library/asyncio-task.rst:1505
+#, fuzzy
+msgid ""
+"If end-user code is, for some reason, suppressing cancellation by catching "
+":exc:`CancelledError`, it needs to call this method to remove the "
+"cancellation state."
+msgstr ""
+"Nếu vì lý do nào đó, mã người dùng cuối ngăn chặn việc hủy bằng cách bắt "
+":exc:`CancelledError`, thì mã đó cần gọi phương thức này để xóa trạng thái "
+"hủy."
+
+#: ../../library/asyncio-task.rst:1509
+#, fuzzy
+msgid ""
+"When this method decrements the cancellation count to zero, the method "
+"checks if a previous :meth:`cancel` call had arranged for "
+":exc:`CancelledError` to be thrown into the task. If it hasn't been thrown "
+"yet, that arrangement will be rescinded (by resetting the internal "
+"``_must_cancel`` flag)."
+msgstr ""
+"Khi phương thức này giảm số lần hủy xuống 0, phương thức này sẽ kiểm tra xem"
+" lệnh gọi :meth:`cancel` trước đó có sắp xếp để đưa :exc:`CancelledError` "
+"vào tác vụ hay không. Nếu nó chưa được ném ra, sự sắp xếp đó sẽ bị hủy bỏ "
+"(bằng cách đặt lại cờ ``_must_cancel`` bên trong)."
+
+#: ../../library/asyncio-task.rst:1515
+#, fuzzy
+msgid "Changed to rescind pending cancellation requests upon reaching zero."
+msgstr ""
+"Đã thay đổi để hủy bỏ các yêu cầu hủy đang chờ xử lý khi đạt đến số 0."
+
+#: ../../library/asyncio-task.rst:1520
+#, fuzzy
+msgid ""
+"Return the number of pending cancellation requests to this Task, i.e., the "
+"number of calls to :meth:`cancel` less the number of :meth:`uncancel` calls."
+msgstr ""
+"Trả về số lượng yêu cầu hủy đang chờ xử lý cho Tác vụ này, tức là số lượng "
+"cuộc gọi đến :meth:`cancel` ít hơn số lượng cuộc gọi :meth:`uncancel`."
+
+#: ../../library/asyncio-task.rst:1524
+#, fuzzy
+msgid ""
+"Note that if this number is greater than zero but the Task is still "
+"executing, :meth:`cancelled` will still return ``False``. This is because "
+"this number can be lowered by calling :meth:`uncancel`, which can lead to "
+"the task not being cancelled after all if the cancellation requests go down "
+"to zero."
+msgstr ""
+"Lưu ý rằng nếu số này lớn hơn 0 nhưng Task vẫn đang thực thi thì "
+":meth:`cancelled` vẫn sẽ trả về ``False``. Điều này là do con số này có thể "
+"được hạ xuống bằng cách gọi :meth:`uncancel`, điều này có thể dẫn đến việc "
+"nhiệm vụ không bị hủy nếu yêu cầu hủy giảm xuống 0."
+
+#: ../../library/asyncio-task.rst:1530
+#, fuzzy
+msgid ""
+"This method is used by asyncio's internals and isn't expected to be used by "
+"end-user code.  See :meth:`uncancel` for more details."
+msgstr ""
+"Phương pháp này được sử dụng bởi nội bộ của asyncio và dự kiến sẽ không được"
+" sử dụng bởi mã người dùng cuối.  Xem :meth:`uncancel` để biết thêm chi "
+"tiết."

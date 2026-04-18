@@ -1,0 +1,649 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/tokenize.rst:2
+#, fuzzy
+msgid ":mod:`!tokenize` --- Tokenizer for Python source"
+msgstr ":mod:`!tokenize` --- Tokenizer cho nguồn Python"
+
+#: ../../library/tokenize.rst:10
+#, fuzzy
+msgid "**Source code:** :source:`Lib/tokenize.py`"
+msgstr "**Source code:** :source:`Lib/tokenize.py`"
+
+#: ../../library/tokenize.rst:14
+#, fuzzy
+msgid ""
+"The :mod:`!tokenize` module provides a lexical scanner for Python source "
+"code, implemented in Python.  The scanner in this module returns comments as"
+" tokens as well, making it useful for implementing \"pretty-printers\", "
+"including colorizers for on-screen displays."
+msgstr ""
+"Mô-đun :mod:`!tokenize` cung cấp trình quét từ vựng cho mã nguồn Python, "
+"được triển khai bằng Python.  Máy quét trong mô-đun này cũng trả về các nhận"
+" xét dưới dạng mã thông báo, giúp nó hữu ích cho việc triển khai \"máy in "
+"đẹp\", bao gồm cả bộ tạo màu cho hiển thị trên màn hình."
+
+#: ../../library/tokenize.rst:19
+#, fuzzy
+msgid ""
+"To simplify token stream handling, all :ref:`operator <operators>` and "
+":ref:`delimiter <delimiters>` tokens and :data:`Ellipsis` are returned using"
+" the generic :data:`~token.OP` token type.  The exact type can be determined"
+" by checking the ``exact_type`` property on the :term:`named tuple` returned"
+" from :func:`tokenize.tokenize`."
+msgstr ""
+"Để đơn giản hóa việc xử lý luồng mã thông báo, tất cả mã thông báo "
+":ref:`operator <operators>`, :ref:`delimiter <delimiters>` và "
+":data:`Ellipsis` đều được trả về bằng loại mã thông báo :data:`~token.OP` "
+"chung.  Loại chính xác có thể được xác định bằng cách kiểm tra thuộc tính "
+"``exact_type`` trên :term:`named tuple` được trả về từ "
+":func:`tokenize.tokenize`."
+
+#: ../../library/tokenize.rst:28
+#, fuzzy
+msgid ""
+"Note that the functions in this module are only designed to parse "
+"syntactically valid Python code (code that does not raise when parsed using "
+":func:`ast.parse`).  The behavior of the functions in this module is "
+"**undefined** when providing invalid Python code and it can change at any "
+"point."
+msgstr ""
+"Lưu ý rằng các hàm trong mô-đun này chỉ được thiết kế để phân tích mã Python"
+" hợp lệ về mặt cú pháp (mã không tăng khi được phân tích cú pháp bằng "
+":func:`ast.parse`).  Hoạt động của các hàm trong mô-đun này là **undefined**"
+" khi cung cấp mã Python không hợp lệ và nó có thể thay đổi bất kỳ lúc nào."
+
+#: ../../library/tokenize.rst:35
+#, fuzzy
+msgid "Tokenizing Input"
+msgstr "Đầu vào mã thông báo"
+
+#: ../../library/tokenize.rst:37
+#, fuzzy
+msgid "The primary entry point is a :term:`generator`:"
+msgstr "Điểm vào chính là :term:`generator`:"
+
+#: ../../library/tokenize.rst:41
+#, fuzzy
+msgid ""
+"The :func:`.tokenize` generator requires one argument, *readline*, which "
+"must be a callable object which provides the same interface as the "
+":meth:`io.IOBase.readline` method of file objects.  Each call to the "
+"function should return one line of input as bytes."
+msgstr ""
+"Trình tạo :func:`.tokenize` yêu cầu một đối số, *readline*, phải là một đối "
+"tượng có thể gọi được và cung cấp giao diện giống như phương thức "
+":meth:`io.IOBase.readline` của các đối tượng tệp.  Mỗi lệnh gọi hàm sẽ trả "
+"về một dòng đầu vào dưới dạng byte."
+
+#: ../../library/tokenize.rst:46
+#, fuzzy
+msgid ""
+"The generator produces 5-tuples with these members: the token type; the "
+"token string; a 2-tuple ``(srow, scol)`` of ints specifying the row and "
+"column where the token begins in the source; a 2-tuple ``(erow, ecol)`` of "
+"ints specifying the row and column where the token ends in the source; and "
+"the line on which the token was found. The line passed (the last tuple item)"
+" is the *physical* line.  The 5 tuple is returned as a :term:`named tuple` "
+"with the field names: ``type string start end line``."
+msgstr ""
+"Trình tạo tạo ra 5 bộ dữ liệu với các thành viên này: loại mã thông báo; "
+"chuỗi mã thông báo; một ``(srow, scol)`` 2 bộ dữ liệu int chỉ định hàng và "
+"cột nơi mã thông báo bắt đầu trong nguồn; một ``(erow, ecol)`` 2 bộ dữ liệu "
+"int chỉ định hàng và cột nơi mã thông báo kết thúc trong nguồn; và dòng mà "
+"mã thông báo được tìm thấy. Dòng được truyền (mục bộ cuối cùng) là dòng "
+"*physical*.  Bộ thứ 5 được trả về dưới dạng :term:`named tuple` với tên "
+"trường: ``type string start end line``."
+
+#: ../../library/tokenize.rst:55
+#, fuzzy
+msgid ""
+"The returned :term:`named tuple` has an additional property named "
+"``exact_type`` that contains the exact operator type for :data:`~token.OP` "
+"tokens.  For all other token types ``exact_type`` equals the named tuple "
+"``type`` field."
+msgstr ""
+":term:`named tuple` được trả về có một thuộc tính bổ sung có tên "
+"``exact_type`` chứa loại toán tử chính xác cho mã thông báo "
+":data:`~token.OP`.  Đối với tất cả các loại mã thông báo khác, "
+"``exact_type`` bằng với trường ``type`` tuple được đặt tên."
+
+#: ../../library/tokenize.rst:60
+#, fuzzy
+msgid "Added support for named tuples."
+msgstr "Đã thêm hỗ trợ cho các bộ dữ liệu được đặt tên."
+
+#: ../../library/tokenize.rst:63
+#, fuzzy
+msgid "Added support for ``exact_type``."
+msgstr "Đã thêm hỗ trợ cho ``exact_type``."
+
+#: ../../library/tokenize.rst:66
+#, fuzzy
+msgid ""
+":func:`.tokenize` determines the source encoding of the file by looking for "
+"a UTF-8 BOM or encoding cookie, according to :pep:`263`."
+msgstr ""
+":func:`.tokenize` xác định mã hóa nguồn của tệp bằng cách tìm kiếm UTF-8 BOM"
+" hoặc cookie mã hóa, theo :pep:`263`."
+
+#: ../../library/tokenize.rst:71
+#, fuzzy
+msgid "Tokenize a source reading unicode strings instead of bytes."
+msgstr "Mã hóa nguồn đọc chuỗi unicode thay vì byte."
+
+#: ../../library/tokenize.rst:73
+#, fuzzy
+msgid ""
+"Like :func:`.tokenize`, the *readline* argument is a callable returning a "
+"single line of input. However, :func:`generate_tokens` expects *readline* to"
+" return a str object rather than bytes."
+msgstr ""
+"Giống như :func:`.tokenize`, đối số *readline* là một đối số có thể gọi được"
+" và trả về một dòng đầu vào. Tuy nhiên, :func:`generate_tokens` mong đợi "
+"*readline* trả về một đối tượng str thay vì byte."
+
+#: ../../library/tokenize.rst:77
+#, fuzzy
+msgid ""
+"The result is an iterator yielding named tuples, exactly like "
+":func:`.tokenize`. It does not yield an :data:`~token.ENCODING` token."
+msgstr ""
+"Kết quả là một trình vòng lặp mang lại các bộ dữ liệu có tên, giống hệt như "
+":func:`.tokenize`. Nó không mang lại mã thông báo :data:`~token.ENCODING`."
+
+#: ../../library/tokenize.rst:80
+#, fuzzy
+msgid ""
+"All constants from the :mod:`token` module are also exported from "
+":mod:`!tokenize`."
+msgstr ""
+"Tất cả các hằng số từ mô-đun :mod:`token` cũng được xuất từ "
+":mod:`!tokenize`."
+
+#: ../../library/tokenize.rst:83
+#, fuzzy
+msgid ""
+"Another function is provided to reverse the tokenization process. This is "
+"useful for creating tools that tokenize a script, modify the token stream, "
+"and write back the modified script."
+msgstr ""
+"Một chức năng khác được cung cấp để đảo ngược quá trình mã hóa. Điều này hữu"
+" ích khi tạo các công cụ mã hóa tập lệnh, sửa đổi luồng mã thông báo và ghi "
+"lại tập lệnh đã sửa đổi."
+
+#: ../../library/tokenize.rst:90
+#, fuzzy
+msgid ""
+"Converts tokens back into Python source code.  The *iterable* must return "
+"sequences with at least two elements, the token type and the token string. "
+"Any additional sequence elements are ignored."
+msgstr ""
+"Chuyển đổi mã thông báo trở lại mã nguồn Python.  Zz000zz phải trả về các "
+"chuỗi có ít nhất hai phần tử, loại mã thông báo và chuỗi mã thông báo. Mọi "
+"phần tử trình tự bổ sung đều bị bỏ qua."
+
+#: ../../library/tokenize.rst:94
+#, fuzzy
+msgid ""
+"The result is guaranteed to tokenize back to match the input so that the "
+"conversion is lossless and round-trips are assured.  The guarantee applies "
+"only to the token type and token string as the spacing between tokens "
+"(column positions) may change."
+msgstr ""
+"Kết quả được đảm bảo mã hóa trở lại để khớp với đầu vào để việc chuyển đổi "
+"không bị mất và các chuyến đi khứ hồi được đảm bảo.  Bảo đảm chỉ áp dụng cho"
+" loại mã thông báo và chuỗi mã thông báo vì khoảng cách giữa các mã thông "
+"báo (vị trí cột) có thể thay đổi."
+
+#: ../../library/tokenize.rst:99
+#, fuzzy
+msgid ""
+"It returns bytes, encoded using the :data:`~token.ENCODING` token, which is "
+"the first token sequence output by :func:`.tokenize`. If there is no "
+"encoding token in the input, it returns a str instead."
+msgstr ""
+"Nó trả về byte, được mã hóa bằng mã thông báo :data:`~token.ENCODING`, đây "
+"là đầu ra chuỗi mã thông báo đầu tiên của :func:`.tokenize`. Nếu không có mã"
+" thông báo mã hóa trong đầu vào thì thay vào đó, nó sẽ trả về một str."
+
+#: ../../library/tokenize.rst:104
+#, fuzzy
+msgid ""
+":func:`.tokenize` needs to detect the encoding of source files it tokenizes."
+" The function it uses to do this is available:"
+msgstr ""
+":func:`.tokenize` cần phát hiện mã hóa của tệp nguồn mà nó mã hóa. Chức năng"
+" nó sử dụng để thực hiện việc này có sẵn:"
+
+#: ../../library/tokenize.rst:109
+#, fuzzy
+msgid ""
+"The :func:`detect_encoding` function is used to detect the encoding that "
+"should be used to decode a Python source file. It requires one argument, "
+"readline, in the same way as the :func:`.tokenize` generator."
+msgstr ""
+"Hàm :func:`detect_encoding` được sử dụng để phát hiện mã hóa nên được sử "
+"dụng để giải mã tệp nguồn Python. Nó yêu cầu một đối số, readline, giống như"
+" cách tạo :func:`.tokenize`."
+
+#: ../../library/tokenize.rst:113
+#, fuzzy
+msgid ""
+"It will call readline a maximum of twice, and return the encoding used (as a"
+" string) and a list of any lines (not decoded from bytes) it has read in."
+msgstr ""
+"Nó sẽ gọi đường đọc tối đa hai lần và trả về mã hóa được sử dụng (dưới dạng "
+"chuỗi) và danh sách bất kỳ dòng nào (không được giải mã từ byte) mà nó đã "
+"đọc."
+
+#: ../../library/tokenize.rst:117
+#, fuzzy
+msgid ""
+"It detects the encoding from the presence of a UTF-8 BOM or an encoding "
+"cookie as specified in :pep:`263`. If both a BOM and a cookie are present, "
+"but disagree, a :exc:`SyntaxError` will be raised. Note that if the BOM is "
+"found, ``'utf-8-sig'`` will be returned as an encoding."
+msgstr ""
+"Nó phát hiện mã hóa từ sự hiện diện của UTF-8 BOM hoặc cookie mã hóa như "
+"được chỉ định trong :pep:`263`. Nếu có cả BOM và cookie nhưng không đồng ý "
+"thì :exc:`SyntaxError` sẽ được nâng lên. Lưu ý rằng nếu tìm thấy BOM, "
+"``'utf-8-sig'`` sẽ được trả về dưới dạng mã hóa."
+
+#: ../../library/tokenize.rst:122
+#, fuzzy
+msgid ""
+"If no encoding is specified, then the default of ``'utf-8'`` will be "
+"returned."
+msgstr ""
+"Nếu không chỉ định mã hóa thì giá trị mặc định là ``'utf-8'`` sẽ được trả "
+"về."
+
+#: ../../library/tokenize.rst:125
+#, fuzzy
+msgid ""
+"Use :func:`.open` to open Python source files: it uses "
+":func:`detect_encoding` to detect the file encoding."
+msgstr ""
+"Sử dụng :func:`.open` để mở tệp nguồn Python: nó sử dụng "
+":func:`detect_encoding` để phát hiện mã hóa tệp."
+
+#: ../../library/tokenize.rst:131
+#, fuzzy
+msgid ""
+"Open a file in read only mode using the encoding detected by "
+":func:`detect_encoding`."
+msgstr ""
+"Mở tệp ở chế độ chỉ đọc bằng cách sử dụng mã hóa được phát hiện bởi "
+":func:`detect_encoding`."
+
+#: ../../library/tokenize.rst:138
+#, fuzzy
+msgid ""
+"Raised when either a docstring or expression that may be split over several "
+"lines is not completed anywhere in the file, for example::"
+msgstr ""
+"Xảy ra khi một chuỗi tài liệu hoặc biểu thức có thể được chia thành nhiều "
+"dòng không được hoàn thành ở bất kỳ đâu trong tệp, ví dụ::"
+
+#: ../../library/tokenize.rst:141
+#, fuzzy
+msgid ""
+"\"\"\"Beginning of\n"
+"docstring"
+msgstr ""
+"\"\"\"Bắt đầu\n"
+"chuỗi tài liệu"
+
+#: ../../library/tokenize.rst:144
+#, fuzzy
+msgid "or::"
+msgstr "hoặc::"
+
+#: ../../library/tokenize.rst:146
+#, fuzzy
+msgid ""
+"[1,\n"
+" 2,\n"
+" 3"
+msgstr ""
+"[1,\n"
+" 2,\n"
+" 3"
+
+#: ../../library/tokenize.rst:153
+#, fuzzy
+msgid "Command-Line Usage"
+msgstr "Sử dụng dòng lệnh"
+
+#: ../../library/tokenize.rst:157
+#, fuzzy
+msgid ""
+"The :mod:`!tokenize` module can be executed as a script from the command "
+"line. It is as simple as:"
+msgstr ""
+"Mô-đun :mod:`!tokenize` có thể được thực thi dưới dạng tập lệnh từ dòng "
+"lệnh. Nó đơn giản như:"
+
+#: ../../library/tokenize.rst:160
+#, fuzzy
+msgid "python -m tokenize [-e] [filename.py]"
+msgstr "python -m tokenize [-e] [filename.py]"
+
+#: ../../library/tokenize.rst:164
+#, fuzzy
+msgid "The following options are accepted:"
+msgstr "Các tùy chọn sau được chấp nhận:"
+
+#: ../../library/tokenize.rst:170
+#, fuzzy
+msgid "show this help message and exit"
+msgstr "hiển thị thông báo trợ giúp này và thoát"
+
+#: ../../library/tokenize.rst:174
+#, fuzzy
+msgid "display token names using the exact type"
+msgstr "hiển thị tên mã thông báo bằng loại chính xác"
+
+#: ../../library/tokenize.rst:176
+#, fuzzy
+msgid ""
+"If :file:`filename.py` is specified its contents are tokenized to stdout. "
+"Otherwise, tokenization is performed on stdin."
+msgstr ""
+"Nếu :file:`filename.py` được chỉ định, nội dung của nó sẽ được mã hóa thành "
+"thiết bị xuất chuẩn. Mặt khác, quá trình mã hóa được thực hiện trên stdin."
+
+#: ../../library/tokenize.rst:180
+#, fuzzy
+msgid "Examples"
+msgstr "Ví dụ"
+
+#: ../../library/tokenize.rst:182
+#, fuzzy
+msgid ""
+"Example of a script rewriter that transforms float literals into Decimal "
+"objects::"
+msgstr ""
+"Ví dụ về trình viết lại tập lệnh chuyển đổi các ký tự float thành các đối "
+"tượng thập phân::"
+
+#: ../../library/tokenize.rst:185
+#, fuzzy
+msgid ""
+"from tokenize import tokenize, untokenize, NUMBER, STRING, NAME, OP\n"
+"from io import BytesIO\n"
+"\n"
+"def decistmt(s):\n"
+"    \"\"\"Substitute Decimals for floats in a string of statements.\n"
+"\n"
+"    >>> from decimal import Decimal\n"
+"    >>> s = 'print(+21.3e-5*-.1234/81.7)'\n"
+"    >>> decistmt(s)\n"
+"    \"print (+Decimal ('21.3e-5')*-Decimal ('.1234')/Decimal ('81.7'))\"\n"
+"\n"
+"    The format of the exponent is inherited from the platform C library.\n"
+"    Known cases are \"e-007\" (Windows) and \"e-07\" (not Windows).  Since\n"
+"    we're only showing 12 digits, and the 13th isn't close to 5, the\n"
+"    rest of the output should be platform-independent.\n"
+"\n"
+"    >>> exec(s)  #doctest: +ELLIPSIS\n"
+"    -3.21716034272e-0...7\n"
+"\n"
+"    Output from calculations with Decimal should be identical across all\n"
+"    platforms.\n"
+"\n"
+"    >>> exec(decistmt(s))\n"
+"    -3.217160342717258261933904529E-7\n"
+"    \"\"\"\n"
+"    result = []\n"
+"    g = tokenize(BytesIO(s.encode('utf-8')).readline)  # tokenize the string\n"
+"    for toknum, tokval, _, _, _ in g:\n"
+"        if toknum == NUMBER and '.' in tokval:  # replace NUMBER tokens\n"
+"            result.extend([\n"
+"                (NAME, 'Decimal'),\n"
+"                (OP, '('),\n"
+"                (STRING, repr(tokval)),\n"
+"                (OP, ')')\n"
+"            ])\n"
+"        else:\n"
+"            result.append((toknum, tokval))\n"
+"    return untokenize(result).decode('utf-8')"
+msgstr ""
+"từ tokenize nhập tokenize, unkenize, NUMBER, STRING, NAME, OP\n"
+"từ io nhập ByteIO\n"
+"\n"
+"def deistmt(s):\n"
+"    \"\"\"Thay thế số thập phân cho số float trong chuỗi câu lệnh.\n"
+"\n"
+"    >>> từ nhập thập phân Thập phân\n"
+"    >>> s = 'print(+21.3e-5*-.1234/81.7)'\n"
+"    >>> quyết định\n"
+"    \"in (+Thập phân ('21.3e-5')*-Thập phân ('.1234')/Thập phân ('81.7'))\"\n"
+"\n"
+"    Định dạng của số mũ được kế thừa từ thư viện nền tảng C.\n"
+"    Các trường hợp đã biết là \"e-007\" (Windows) và \"e-07\" (không phải Windows).  Kể từ khi\n"
+"    chúng tôi chỉ hiển thị 12 chữ số và số 13 không gần bằng 5,\n"
+"    phần còn lại của đầu ra phải độc lập với nền tảng.\n"
+"\n"
+"    >>> (các) người thực thi #doctest: +ELLIPSIS\n"
+"    -3.21716034272e-0...7\n"
+"\n"
+"    Đầu ra từ các phép tính với Decimal phải giống hệt nhau trên tất cả\n"
+"    nền tảng.\n"
+"\n"
+"    >>> exec(decistmt(s))\n"
+"    -3.217160342717258261933904529E-7\n"
+"    \"\"\"\n"
+"    kết quả = []\n"
+"    g = tokenize(BytesIO(s.encode('utf-8')).readline) # tokenize chuỗi\n"
+"    cho toknum, tokval, _, _, _ trong g:\n"
+"        nếu toknum == NUMBER và '.' trong tokval: mã thông báo # replace NUMBER\n"
+"            result.extend([\n"
+"                (NAME, 'Thập phân'),\n"
+"                (OP, '('),\n"
+"                (STRING, đại diện (tokval)),\n"
+"                (OP, ')')\n"
+"            ])\n"
+"        khác:\n"
+"            result.append((toknum, tokval))\n"
+"    trả về unkenize(result).decode('utf-8')"
+
+#: ../../library/tokenize.rst:224
+#, fuzzy
+msgid "Example of tokenizing from the command line.  The script::"
+msgstr "Ví dụ về mã thông báo từ dòng lệnh.  Kịch bản::"
+
+#: ../../library/tokenize.rst:226
+#, fuzzy
+msgid ""
+"def say_hello():\n"
+"    print(\"Hello, World!\")\n"
+"\n"
+"say_hello()"
+msgstr ""
+"chắc chắn say_hello():\n"
+"    print(\"Xin chào thế giới!\")\n"
+"\n"
+"say_hello()"
+
+#: ../../library/tokenize.rst:231
+#, fuzzy
+msgid ""
+"will be tokenized to the following output where the first column is the "
+"range of the line/column coordinates where the token is found, the second "
+"column is the name of the token, and the final column is the value of the "
+"token (if any)"
+msgstr ""
+"sẽ được mã hóa thành đầu ra sau trong đó cột đầu tiên là phạm vi tọa độ "
+"dòng/cột nơi tìm thấy mã thông báo, cột thứ hai là tên của mã thông báo và "
+"cột cuối cùng là giá trị của mã thông báo (nếu có)"
+
+#: ../../library/tokenize.rst:235
+#, fuzzy
+msgid ""
+"$ python -m tokenize hello.py\n"
+"0,0-0,0:            ENCODING       'utf-8'\n"
+"1,0-1,3:            NAME           'def'\n"
+"1,4-1,13:           NAME           'say_hello'\n"
+"1,13-1,14:          OP             '('\n"
+"1,14-1,15:          OP             ')'\n"
+"1,15-1,16:          OP             ':'\n"
+"1,16-1,17:          NEWLINE        '\\n'\n"
+"2,0-2,4:            INDENT         '    '\n"
+"2,4-2,9:            NAME           'print'\n"
+"2,9-2,10:           OP             '('\n"
+"2,10-2,25:          STRING         '\"Hello, World!\"'\n"
+"2,25-2,26:          OP             ')'\n"
+"2,26-2,27:          NEWLINE        '\\n'\n"
+"3,0-3,1:            NL             '\\n'\n"
+"4,0-4,0:            DEDENT         ''\n"
+"4,0-4,9:            NAME           'say_hello'\n"
+"4,9-4,10:           OP             '('\n"
+"4,10-4,11:          OP             ')'\n"
+"4,11-4,12:          NEWLINE        '\\n'\n"
+"5,0-5,0:            ENDMARKER      ''"
+msgstr ""
+"$ python -m token hóa hello.py\n"
+"0,0-0,0: ENCODING 'utf-8'\n"
+"1,0-1,3: NAME 'def'\n"
+"1,4-1,13: NAME 'say_hello'\n"
+"1,13-1,14: OP '('\n"
+"1,14-1,15: OP ')'\n"
+"1,15-1,16: OP':'\n"
+"1,16-1,17: NEWLINE '\\n'\n"
+"2,0-2,4: INDENT ''\n"
+"2,4-2,9: NAME 'in'\n"
+"2,9-2,10: OP '('\n"
+"2,10-2,25: STRING '\"Xin chào thế giới!\"'\n"
+"2,25-2,26: OP ')'\n"
+"2,26-2,27: NEWLINE '\\n'\n"
+"3,0-3,1: NL '\\n'\n"
+"4,0-4,0: DEDENT''\n"
+"4,0-4,9: NAME 'say_hello'\n"
+"4,9-4,10: OP '('\n"
+"4,10-4,11: OP ')'\n"
+"4,11-4,12: NEWLINE '\\n'\n"
+"5,0-5,0: ENDMARKER''"
+
+#: ../../library/tokenize.rst:259
+#, fuzzy
+msgid ""
+"The exact token type names can be displayed using the :option:`-e` option:"
+msgstr ""
+"Tên loại mã thông báo chính xác có thể được hiển thị bằng tùy chọn "
+":option:`-e`:"
+
+#: ../../library/tokenize.rst:261
+#, fuzzy
+msgid ""
+"$ python -m tokenize -e hello.py\n"
+"0,0-0,0:            ENCODING       'utf-8'\n"
+"1,0-1,3:            NAME           'def'\n"
+"1,4-1,13:           NAME           'say_hello'\n"
+"1,13-1,14:          LPAR           '('\n"
+"1,14-1,15:          RPAR           ')'\n"
+"1,15-1,16:          COLON          ':'\n"
+"1,16-1,17:          NEWLINE        '\\n'\n"
+"2,0-2,4:            INDENT         '    '\n"
+"2,4-2,9:            NAME           'print'\n"
+"2,9-2,10:           LPAR           '('\n"
+"2,10-2,25:          STRING         '\"Hello, World!\"'\n"
+"2,25-2,26:          RPAR           ')'\n"
+"2,26-2,27:          NEWLINE        '\\n'\n"
+"3,0-3,1:            NL             '\\n'\n"
+"4,0-4,0:            DEDENT         ''\n"
+"4,0-4,9:            NAME           'say_hello'\n"
+"4,9-4,10:           LPAR           '('\n"
+"4,10-4,11:          RPAR           ')'\n"
+"4,11-4,12:          NEWLINE        '\\n'\n"
+"5,0-5,0:            ENDMARKER      ''"
+msgstr ""
+"$ python -m tokenize -e hello.py\n"
+"0,0-0,0: ENCODING 'utf-8'\n"
+"1,0-1,3: NAME 'def'\n"
+"1,4-1,13: NAME 'say_hello'\n"
+"1,13-1,14: LPAR '('\n"
+"1,14-1,15: RPAR ')'\n"
+"1,15-1,16: COLON ':'\n"
+"1,16-1,17: NEWLINE '\\n'\n"
+"2,0-2,4: INDENT ''\n"
+"2,4-2,9: NAME 'in'\n"
+"2,9-2,10: LPAR '('\n"
+"2,10-2,25: STRING '\"Xin chào thế giới!\"'\n"
+"2,25-2,26: RPAR ')'\n"
+"2,26-2,27: NEWLINE '\\n'\n"
+"3,0-3,1: NL '\\n'\n"
+"4,0-4,0: DEDENT''\n"
+"4,0-4,9: NAME 'say_hello'\n"
+"4,9-4,10: LPAR '('\n"
+"4,10-4,11: RPAR ')'\n"
+"4,11-4,12: NEWLINE '\\n'\n"
+"5,0-5,0: ENDMARKER ''"
+
+#: ../../library/tokenize.rst:285
+#, fuzzy
+msgid ""
+"Example of tokenizing a file programmatically, reading unicode strings "
+"instead of bytes with :func:`generate_tokens`::"
+msgstr ""
+"Ví dụ về mã hóa tệp theo chương trình, đọc chuỗi unicode thay vì byte bằng "
+":func:`generate_tokens`::"
+
+#: ../../library/tokenize.rst:288
+#, fuzzy
+msgid ""
+"import tokenize\n"
+"\n"
+"with tokenize.open('hello.py') as f:\n"
+"    tokens = tokenize.generate_tokens(f.readline)\n"
+"    for token in tokens:\n"
+"        print(token)"
+msgstr ""
+"nhập mã thông báo\n"
+"\n"
+"với tokenize.open('hello.py') là f:\n"
+"    mã thông báo = tokenize.generate_tokens(f.readline)\n"
+"    đối với mã thông báo trong mã thông báo:\n"
+"        in (mã thông báo)"
+
+#: ../../library/tokenize.rst:295
+#, fuzzy
+msgid "Or reading bytes directly with :func:`.tokenize`::"
+msgstr "Hoặc đọc byte trực tiếp với :func:`.tokenize`::"
+
+#: ../../library/tokenize.rst:297
+#, fuzzy
+msgid ""
+"import tokenize\n"
+"\n"
+"with open('hello.py', 'rb') as f:\n"
+"    tokens = tokenize.tokenize(f.readline)\n"
+"    for token in tokens:\n"
+"        print(token)"
+msgstr ""
+"nhập mã thông báo\n"
+"\n"
+"với open('hello.py', 'rb') là f:\n"
+"    mã thông báo = tokenize.tokenize(f.readline)\n"
+"    đối với mã thông báo trong mã thông báo:\n"
+"        in (mã thông báo)"

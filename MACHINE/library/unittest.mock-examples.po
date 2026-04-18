@@ -1,0 +1,2176 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/unittest.mock-examples.rst:2
+#, fuzzy
+msgid ":mod:`!unittest.mock` --- getting started"
+msgstr ":mod:`!unittest.mock` --- bắt đầu"
+
+#: ../../library/unittest.mock-examples.rst:27
+#, fuzzy
+msgid "Using Mock"
+msgstr "Sử dụng mô phỏng"
+
+#: ../../library/unittest.mock-examples.rst:30
+#, fuzzy
+msgid "Mock patching methods"
+msgstr "Phương pháp vá giả"
+
+#: ../../library/unittest.mock-examples.rst:32
+#, fuzzy
+msgid "Common uses for :class:`Mock` objects include:"
+msgstr "Các cách sử dụng phổ biến cho các đối tượng :class:`Mock` bao gồm:"
+
+#: ../../library/unittest.mock-examples.rst:34
+#, fuzzy
+msgid "Patching methods"
+msgstr "Phương pháp vá lỗi"
+
+#: ../../library/unittest.mock-examples.rst:35
+#, fuzzy
+msgid "Recording method calls on objects"
+msgstr "Ghi lại các cuộc gọi phương thức trên các đối tượng"
+
+#: ../../library/unittest.mock-examples.rst:37
+#, fuzzy
+msgid ""
+"You might want to replace a method on an object to check that it is called "
+"with the correct arguments by another part of the system:"
+msgstr ""
+"Bạn có thể muốn thay thế một phương thức trên một đối tượng để kiểm tra xem "
+"nó có được một phần khác của hệ thống gọi với các đối số chính xác hay "
+"không:"
+
+#: ../../library/unittest.mock-examples.rst:45
+#, fuzzy
+msgid ""
+"Once our mock has been used (``real.method`` in this example) it has methods"
+" and attributes that allow you to make assertions about how it has been "
+"used."
+msgstr ""
+"Khi mô hình của chúng tôi đã được sử dụng (``real.method`` trong ví dụ này),"
+" nó có các phương thức và thuộc tính cho phép bạn đưa ra xác nhận về cách nó"
+" được sử dụng."
+
+#: ../../library/unittest.mock-examples.rst:50
+#, fuzzy
+msgid ""
+"In most of these examples the :class:`Mock` and :class:`MagicMock` classes "
+"are interchangeable. As the ``MagicMock`` is the more capable class it makes"
+" a sensible one to use by default."
+msgstr ""
+"Trong hầu hết các ví dụ này, các lớp :class:`Mock` và :class:`MagicMock` có "
+"thể hoán đổi cho nhau. Vì ``MagicMock`` là lớp có khả năng cao hơn nên nó "
+"trở thành một lớp hợp lý để sử dụng theo mặc định."
+
+#: ../../library/unittest.mock-examples.rst:54
+#, fuzzy
+msgid ""
+"Once the mock has been called its :attr:`~Mock.called` attribute is set to "
+"``True``. More importantly we can use the :meth:`~Mock.assert_called_with` "
+"or :meth:`~Mock.assert_called_once_with` method to check that it was called "
+"with the correct arguments."
+msgstr ""
+"Khi mô hình đã được gọi, thuộc tính :attr:`~Mock.called` của nó được đặt "
+"thành ``True``. Quan trọng hơn, chúng ta có thể sử dụng phương thức "
+":meth:`~Mock.assert_called_with` hoặc :meth:`~Mock.assert_called_once_with` "
+"để kiểm tra xem nó có được gọi với các đối số chính xác hay không."
+
+#: ../../library/unittest.mock-examples.rst:59
+#, fuzzy
+msgid ""
+"This example tests that calling ``ProductionClass().method`` results in a "
+"call to the ``something`` method:"
+msgstr ""
+"Ví dụ này kiểm tra việc gọi ``ProductionClass().method`` có dẫn đến lệnh gọi"
+" phương thức ``something`` hay không:"
+
+#: ../../library/unittest.mock-examples.rst:76
+#, fuzzy
+msgid "Mock for method calls on an object"
+msgstr "Mô phỏng các lệnh gọi phương thức trên một đối tượng"
+
+#: ../../library/unittest.mock-examples.rst:78
+#, fuzzy
+msgid ""
+"In the last example we patched a method directly on an object to check that "
+"it was called correctly. Another common use case is to pass an object into a"
+" method (or some part of the system under test) and then check that it is "
+"used in the correct way."
+msgstr ""
+"Trong ví dụ trước, chúng tôi đã vá một phương thức trực tiếp trên một đối "
+"tượng để kiểm tra xem nó có được gọi chính xác hay không. Một trường hợp sử "
+"dụng phổ biến khác là chuyển một đối tượng vào một phương thức (hoặc một "
+"phần nào đó của hệ thống đang được kiểm tra) và sau đó kiểm tra xem nó có "
+"được sử dụng đúng cách hay không."
+
+#: ../../library/unittest.mock-examples.rst:83
+#, fuzzy
+msgid ""
+"The simple ``ProductionClass`` below has a ``closer`` method. If it is "
+"called with an object then it calls ``close`` on it."
+msgstr ""
+"Zz000zz đơn giản bên dưới có phương thức ``closer``. Nếu nó được gọi với một"
+" đối tượng thì nó sẽ gọi ``close`` trên đó."
+
+#: ../../library/unittest.mock-examples.rst:91
+#, fuzzy
+msgid ""
+"So to test it we need to pass in an object with a ``close`` method and check"
+" that it was called correctly."
+msgstr ""
+"Vì vậy, để kiểm tra nó, chúng ta cần truyền vào một đối tượng bằng phương "
+"thức ``close`` và kiểm tra xem nó có được gọi chính xác hay không."
+
+#: ../../library/unittest.mock-examples.rst:99
+#, fuzzy
+msgid ""
+"We don't have to do any work to provide the 'close' method on our mock. "
+"Accessing close creates it. So, if 'close' hasn't already been called then "
+"accessing it in the test will create it, but "
+":meth:`~Mock.assert_called_with` will raise a failure exception."
+msgstr ""
+"Chúng tôi không phải thực hiện bất kỳ công việc nào để cung cấp phương thức "
+"'đóng' trên mô hình của mình. Truy cập đóng sẽ tạo ra nó. Vì vậy, nếu 'đóng'"
+" chưa được gọi thì việc truy cập vào nó trong thử nghiệm sẽ tạo ra nó, nhưng"
+" :meth:`~Mock.assert_called_with` sẽ đưa ra một ngoại lệ lỗi."
+
+#: ../../library/unittest.mock-examples.rst:106
+#, fuzzy
+msgid "Mocking classes"
+msgstr "Lớp học chế nhạo"
+
+#: ../../library/unittest.mock-examples.rst:108
+#, fuzzy
+msgid ""
+"A common use case is to mock out classes instantiated by your code under "
+"test. When you patch a class, then that class is replaced with a mock. "
+"Instances are created by *calling the class*. This means you access the "
+"\"mock instance\" by looking at the return value of the mocked class."
+msgstr ""
+"Trường hợp sử dụng phổ biến là mô phỏng các lớp được khởi tạo bằng mã của "
+"bạn đang được thử nghiệm. Khi bạn vá một lớp, lớp đó sẽ được thay thế bằng "
+"một bản mô phỏng. Các phiên bản được tạo bởi *calling the class*. Điều này "
+"có nghĩa là bạn truy cập vào \"phiên bản giả\" bằng cách xem giá trị trả về "
+"của lớp được mô phỏng."
+
+#: ../../library/unittest.mock-examples.rst:113
+#, fuzzy
+msgid ""
+"In the example below we have a function ``some_function`` that instantiates "
+"``Foo`` and calls a method on it. The call to :func:`patch` replaces the "
+"class ``Foo`` with a mock. The ``Foo`` instance is the result of calling the"
+" mock, so it is configured by modifying the mock :attr:`~Mock.return_value`."
+" ::"
+msgstr ""
+"Trong ví dụ bên dưới, chúng ta có hàm ``some_function`` khởi tạo ``Foo`` và "
+"gọi một phương thức trên đó. Lệnh gọi tới :func:`patch` thay thế lớp ``Foo``"
+" bằng một bản mô phỏng. Phiên bản ``Foo`` là kết quả của việc gọi mô hình, "
+"vì vậy nó được định cấu hình bằng cách sửa đổi mô hình "
+":attr:`~Mock.return_value`. ::"
+
+#: ../../library/unittest.mock-examples.rst:118
+#, fuzzy
+msgid ""
+">>> def some_function():\n"
+"...     instance = module.Foo()\n"
+"...     return instance.method()\n"
+"...\n"
+">>> with patch('module.Foo') as mock:\n"
+"...     instance = mock.return_value\n"
+"...     instance.method.return_value = 'the result'\n"
+"...     result = some_function()\n"
+"...     assert result == 'the result'"
+msgstr ""
+">>> def some_function():\n"
+"... instance = module.Foo()\n"
+"... trả về instance.method()\n"
+"...\n"
+">>> với patch('module.Foo') làm mô hình:\n"
+"... instance = mock.return_value\n"
+"... instance.method.return_value = 'kết quả'\n"
+"... kết quả = some_function()\n"
+"... khẳng định kết quả == 'kết quả'"
+
+#: ../../library/unittest.mock-examples.rst:130
+#, fuzzy
+msgid "Naming your mocks"
+msgstr "Đặt tên cho mô hình của bạn"
+
+#: ../../library/unittest.mock-examples.rst:132
+#, fuzzy
+msgid ""
+"It can be useful to give your mocks a name. The name is shown in the repr of"
+" the mock and can be helpful when the mock appears in test failure messages."
+" The name is also propagated to attributes or methods of the mock:"
+msgstr ""
+"Việc đặt tên cho mô hình của bạn có thể hữu ích. Tên được hiển thị trong "
+"phần mô phỏng của mô hình và có thể hữu ích khi mô hình xuất hiện trong "
+"thông báo kiểm tra thất bại. Tên này cũng được truyền tới các thuộc tính "
+"hoặc phương thức của mô hình:"
+
+#: ../../library/unittest.mock-examples.rst:144
+#, fuzzy
+msgid "Tracking all calls"
+msgstr "Theo dõi tất cả các cuộc gọi"
+
+#: ../../library/unittest.mock-examples.rst:146
+#, fuzzy
+msgid ""
+"Often you want to track more than a single call to a method. The "
+":attr:`~Mock.mock_calls` attribute records all calls to child attributes of "
+"the mock - and also to their children."
+msgstr ""
+"Thường thì bạn muốn theo dõi nhiều hơn một cuộc gọi đến một phương thức. "
+"Thuộc tính :attr:`~Mock.mock_calls` ghi lại tất cả các lệnh gọi đến thuộc "
+"tính con của mô hình - và cả thuộc tính con của chúng."
+
+#: ../../library/unittest.mock-examples.rst:158
+#, fuzzy
+msgid ""
+"If you make an assertion about ``mock_calls`` and any unexpected methods "
+"have been called, then the assertion will fail. This is useful because as "
+"well as asserting that the calls you expected have been made, you are also "
+"checking that they were made in the right order and with no additional "
+"calls:"
+msgstr ""
+"Nếu bạn đưa ra một xác nhận về ``mock_calls`` và bất kỳ phương thức không "
+"mong muốn nào đã được gọi thì xác nhận đó sẽ thất bại. Điều này rất hữu ích "
+"vì ngoài việc xác nhận rằng các cuộc gọi bạn mong đợi đã được thực hiện, bạn"
+" cũng đang kiểm tra xem chúng có được thực hiện theo đúng thứ tự và không có"
+" cuộc gọi bổ sung nào không:"
+
+#: ../../library/unittest.mock-examples.rst:163
+#, fuzzy
+msgid ""
+"You use the :data:`call` object to construct lists for comparing with "
+"``mock_calls``:"
+msgstr ""
+"Bạn sử dụng đối tượng :data:`call` để xây dựng danh sách so sánh với "
+"``mock_calls``:"
+
+#: ../../library/unittest.mock-examples.rst:170
+#, fuzzy
+msgid ""
+"However, parameters to calls that return mocks are not recorded, which means"
+" it is not possible to track nested calls where the parameters used to "
+"create ancestors are important:"
+msgstr ""
+"Tuy nhiên, các tham số cho các cuộc gọi trả về mô phỏng không được ghi lại, "
+"điều đó có nghĩa là không thể theo dõi các cuộc gọi lồng nhau trong đó các "
+"tham số được sử dụng để tạo tổ tiên là quan trọng:"
+
+#: ../../library/unittest.mock-examples.rst:181
+#, fuzzy
+msgid "Setting return values and attributes"
+msgstr "Đặt giá trị và thuộc tính trả về"
+
+#: ../../library/unittest.mock-examples.rst:183
+#, fuzzy
+msgid "Setting the return values on a mock object is trivially easy:"
+msgstr "Việc đặt các giá trị trả về trên một đối tượng giả rất dễ dàng:"
+
+#: ../../library/unittest.mock-examples.rst:190
+#, fuzzy
+msgid "Of course you can do the same for methods on the mock:"
+msgstr "Tất nhiên bạn có thể làm tương tự với các phương thức trên mô hình:"
+
+#: ../../library/unittest.mock-examples.rst:197
+#, fuzzy
+msgid "The return value can also be set in the constructor:"
+msgstr "Giá trị trả về cũng có thể được đặt trong hàm tạo:"
+
+#: ../../library/unittest.mock-examples.rst:203
+#, fuzzy
+msgid "If you need an attribute setting on your mock, just do it:"
+msgstr ""
+"Nếu bạn cần cài đặt thuộc tính trên mô hình của mình, chỉ cần thực hiện:"
+
+#: ../../library/unittest.mock-examples.rst:210
+#, fuzzy
+msgid ""
+"Sometimes you want to mock up a more complex situation, like for example "
+"``mock.connection.cursor().execute(\"SELECT 1\")``. If we wanted this call "
+"to return a list, then we have to configure the result of the nested call."
+msgstr ""
+"Đôi khi bạn muốn mô phỏng một tình huống phức tạp hơn, chẳng hạn như "
+"``mock.connection.cursor().execute(\"SELECT 1\")``. Nếu chúng ta muốn lệnh "
+"gọi này trả về một danh sách thì chúng ta phải định cấu hình kết quả của "
+"lệnh gọi lồng nhau."
+
+#: ../../library/unittest.mock-examples.rst:214
+#, fuzzy
+msgid ""
+"We can use :data:`call` to construct the set of calls in a \"chained call\" "
+"like this for easy assertion afterwards:"
+msgstr ""
+"Chúng ta có thể sử dụng :data:`call` để xây dựng tập hợp các cuộc gọi theo "
+"\"cuộc gọi nối tiếp\" như thế này để dễ dàng xác nhận sau đó:"
+
+#: ../../library/unittest.mock-examples.rst:228
+#, fuzzy
+msgid ""
+"It is the call to ``.call_list()`` that turns our call object into a list of"
+" calls representing the chained calls."
+msgstr ""
+"Chính lệnh gọi tới ``.call_list()`` sẽ biến đối tượng cuộc gọi của chúng ta "
+"thành một danh sách các cuộc gọi đại diện cho các cuộc gọi được xâu chuỗi."
+
+#: ../../library/unittest.mock-examples.rst:233
+#, fuzzy
+msgid "Raising exceptions with mocks"
+msgstr "Tăng ngoại lệ với mô phỏng"
+
+#: ../../library/unittest.mock-examples.rst:235
+#, fuzzy
+msgid ""
+"A useful attribute is :attr:`~Mock.side_effect`. If you set this to an "
+"exception class or instance then the exception will be raised when the mock "
+"is called."
+msgstr ""
+"Một thuộc tính hữu ích là :attr:`~Mock.side_effect`. Nếu bạn đặt điều này "
+"thành một lớp hoặc phiên bản ngoại lệ thì ngoại lệ đó sẽ được đưa ra khi mô "
+"hình được gọi."
+
+#: ../../library/unittest.mock-examples.rst:247
+#, fuzzy
+msgid "Side effect functions and iterables"
+msgstr "Các hàm tác dụng phụ và các lần lặp"
+
+#: ../../library/unittest.mock-examples.rst:249
+#, fuzzy
+msgid ""
+"``side_effect`` can also be set to a function or an iterable. The use case "
+"for ``side_effect`` as an iterable is where your mock is going to be called "
+"several times, and you want each call to return a different value. When you "
+"set ``side_effect`` to an iterable every call to the mock returns the next "
+"value from the iterable:"
+msgstr ""
+"``side_effect`` cũng có thể được đặt thành một hàm hoặc một iterable. Trường"
+" hợp sử dụng ``side_effect`` dưới dạng iterable là nơi mô phỏng của bạn sẽ "
+"được gọi nhiều lần và bạn muốn mỗi lệnh gọi trả về một giá trị khác nhau. "
+"Khi bạn đặt ``side_effect`` thành một iterable, mọi lệnh gọi tới mock sẽ trả"
+" về giá trị tiếp theo từ iterable:"
+
+#: ../../library/unittest.mock-examples.rst:264
+#, fuzzy
+msgid ""
+"For more advanced use cases, like dynamically varying the return values "
+"depending on what the mock is called with, ``side_effect`` can be a "
+"function. The function will be called with the same arguments as the mock. "
+"Whatever the function returns is what the call returns:"
+msgstr ""
+"Đối với các trường hợp sử dụng nâng cao hơn, chẳng hạn như thay đổi linh "
+"hoạt các giá trị trả về tùy thuộc vào nội dung mô phỏng được gọi, "
+"``side_effect`` có thể là một hàm. Hàm sẽ được gọi với các đối số giống như "
+"hàm giả. Bất cứ điều gì hàm trả về là những gì cuộc gọi trả về:"
+
+#: ../../library/unittest.mock-examples.rst:281
+#, fuzzy
+msgid "Mocking asynchronous iterators"
+msgstr "Mô phỏng các trình vòng lặp không đồng bộ"
+
+#: ../../library/unittest.mock-examples.rst:283
+#, fuzzy
+msgid ""
+"Since Python 3.8, ``AsyncMock`` and ``MagicMock`` have support to mock "
+":ref:`async-iterators` through ``__aiter__``. The :attr:`~Mock.return_value`"
+" attribute of ``__aiter__`` can be used to set the return values to be used "
+"for iteration."
+msgstr ""
+"Vì Python 3.8, ``AsyncMock`` và ``MagicMock`` có hỗ trợ mô phỏng "
+":ref:`async-iterators` thông qua ``__aiter__``. Thuộc tính "
+":attr:`~Mock.return_value` của ``__aiter__`` có thể được sử dụng để đặt các "
+"giá trị trả về được sử dụng cho lần lặp."
+
+#: ../../library/unittest.mock-examples.rst:298
+#, fuzzy
+msgid "Mocking asynchronous context manager"
+msgstr "Mô phỏng trình quản lý bối cảnh không đồng bộ"
+
+#: ../../library/unittest.mock-examples.rst:300
+#, fuzzy
+msgid ""
+"Since Python 3.8, ``AsyncMock`` and ``MagicMock`` have support to mock "
+":ref:`async-context-managers` through ``__aenter__`` and ``__aexit__``. By "
+"default, ``__aenter__`` and ``__aexit__`` are ``AsyncMock`` instances that "
+"return an async function."
+msgstr ""
+"Kể từ Python 3.8, ``AsyncMock`` và ``MagicMock`` có hỗ trợ mô phỏng "
+":ref:`async-context-managers` thông qua ``__aenter__`` và ``__aexit__``. "
+"Theo mặc định, ``__aenter__`` và ``__aexit__`` là các phiên bản "
+"``AsyncMock`` trả về hàm không đồng bộ."
+
+#: ../../library/unittest.mock-examples.rst:322
+#, fuzzy
+msgid "Creating a mock from an existing object"
+msgstr "Tạo mô hình từ đối tượng hiện có"
+
+#: ../../library/unittest.mock-examples.rst:324
+#, fuzzy
+msgid ""
+"One problem with over use of mocking is that it couples your tests to the "
+"implementation of your mocks rather than your real code. Suppose you have a "
+"class that implements ``some_method``. In a test for another class, you "
+"provide a mock of this object that *also* provides ``some_method``. If later"
+" you refactor the first class, so that it no longer has ``some_method`` - "
+"then your tests will continue to pass even though your code is now broken!"
+msgstr ""
+"Một vấn đề với việc sử dụng quá nhiều chế độ mô phỏng là nó kết hợp các thử "
+"nghiệm của bạn với việc triển khai các mô hình thay vì mã thực của bạn. Giả "
+"sử bạn có một lớp triển khai ``some_method``. Trong quá trình kiểm tra cho "
+"một lớp khác, bạn cung cấp một bản mô phỏng của đối tượng này mà *also* cung"
+" cấp cho ``some_method``. Nếu sau này bạn cấu trúc lại lớp đầu tiên để nó "
+"không còn ``some_method`` nữa - thì các bài kiểm tra của bạn sẽ tiếp tục "
+"vượt qua ngay cả khi mã của bạn hiện đã bị hỏng!"
+
+#: ../../library/unittest.mock-examples.rst:331
+#, fuzzy
+msgid ""
+":class:`Mock` allows you to provide an object as a specification for the "
+"mock, using the *spec* keyword argument. Accessing methods / attributes on "
+"the mock that don't exist on your specification object will immediately "
+"raise an attribute error. If you change the implementation of your "
+"specification, then tests that use that class will start failing immediately"
+" without you having to instantiate the class in those tests."
+msgstr ""
+":class:`Mock` cho phép bạn cung cấp một đối tượng làm thông số kỹ thuật cho "
+"mô hình bằng cách sử dụng đối số từ khóa *spec*. Việc truy cập các phương "
+"thức/thuộc tính trên mô hình không tồn tại trên đối tượng đặc tả của bạn sẽ "
+"ngay lập tức gây ra lỗi thuộc tính. Nếu bạn thay đổi cách triển khai đặc tả "
+"của mình thì các thử nghiệm sử dụng lớp đó sẽ bắt đầu thất bại ngay lập tức "
+"mà bạn không cần phải khởi tạo lớp trong các thử nghiệm đó."
+
+#: ../../library/unittest.mock-examples.rst:344
+#, fuzzy
+msgid ""
+"Using a specification also enables a smarter matching of calls made to the "
+"mock, regardless of whether some parameters were passed as positional or "
+"named arguments::"
+msgstr ""
+"Việc sử dụng thông số kỹ thuật cũng cho phép kết hợp thông minh hơn các lệnh"
+" gọi được thực hiện với mô hình, bất kể một số tham số được chuyển dưới dạng"
+" đối số vị trí hay đối số được đặt tên::"
+
+#: ../../library/unittest.mock-examples.rst:348
+#, fuzzy
+msgid ""
+">>> def f(a, b, c): pass\n"
+"...\n"
+">>> mock = Mock(spec=f)\n"
+">>> mock(1, 2, 3)\n"
+"<Mock name='mock()' id='140161580456576'>\n"
+">>> mock.assert_called_with(a=1, b=2, c=3)"
+msgstr ""
+">>> def f(a, b, c): đạt\n"
+"...\n"
+">>> mô phỏng = mô phỏng(spec=f)\n"
+">>> giả (1, 2, 3)\n"
+"<Tên giả='mock()' id='140161580456576'>\n"
+">>> mock.assert_gọi_with(a=1, b=2, c=3)"
+
+#: ../../library/unittest.mock-examples.rst:355
+#, fuzzy
+msgid ""
+"If you want this smarter matching to also work with method calls on the "
+"mock, you can use :ref:`auto-speccing <auto-speccing>`."
+msgstr ""
+"Nếu bạn muốn tính năng kết hợp thông minh hơn này cũng hoạt động với các "
+"lệnh gọi phương thức trên mô hình, bạn có thể sử dụng :ref:`auto-speccing "
+"<auto-speccing>`."
+
+#: ../../library/unittest.mock-examples.rst:358
+#, fuzzy
+msgid ""
+"If you want a stronger form of specification that prevents the setting of "
+"arbitrary attributes as well as the getting of them then you can use "
+"*spec_set* instead of *spec*."
+msgstr ""
+"Nếu bạn muốn một dạng đặc tả mạnh hơn nhằm ngăn chặn việc thiết lập các "
+"thuộc tính tùy ý cũng như việc lấy chúng thì bạn có thể sử dụng *spec_set* "
+"thay vì *spec*."
+
+#: ../../library/unittest.mock-examples.rst:364
+#, fuzzy
+msgid "Using side_effect to return per file content"
+msgstr "Sử dụng side_effect để trả về mỗi nội dung tệp"
+
+#: ../../library/unittest.mock-examples.rst:366
+#, fuzzy
+msgid ""
+":func:`mock_open` is used to patch :func:`open` method. "
+":attr:`~Mock.side_effect` can be used to return a new Mock object per call. "
+"This can be used to return different contents per file stored in a "
+"dictionary::"
+msgstr ""
+":func:`mock_open` được sử dụng để vá phương thức :func:`open`. "
+":attr:`~Mock.side_effect` có thể được sử dụng để trả về một đối tượng Mock "
+"mới cho mỗi lệnh gọi. Điều này có thể được sử dụng để trả về các nội dung "
+"khác nhau cho mỗi tệp được lưu trữ trong từ điển ::"
+
+#: ../../library/unittest.mock-examples.rst:370
+#, python-brace-format, fuzzy
+msgid ""
+"DEFAULT = \"default\"\n"
+"data_dict = {\"file1\": \"data1\",\n"
+"             \"file2\": \"data2\"}\n"
+"\n"
+"def open_side_effect(name):\n"
+"    return mock_open(read_data=data_dict.get(name, DEFAULT))()\n"
+"\n"
+"with patch(\"builtins.open\", side_effect=open_side_effect):\n"
+"    with open(\"file1\") as file1:\n"
+"        assert file1.read() == \"data1\"\n"
+"\n"
+"    with open(\"file2\") as file2:\n"
+"        assert file2.read() == \"data2\"\n"
+"\n"
+"    with open(\"file3\") as file2:\n"
+"        assert file2.read() == \"default\""
+msgstr ""
+"DEFAULT = \"mặc định\"\n"
+"data_dict = {\"file1\": \"data1\",\n"
+"             \"file2\": \"data2\"}\n"
+"\n"
+"def open_side_effect(tên):\n"
+"    trả về mock_open(read_data=data_dict.get(name, DEFAULT))()\n"
+"\n"
+"với bản vá (\"buildins.open\", side_effect=open_side_effect):\n"
+"    với open(\"file1\") là file1:\n"
+"        khẳng định file1.read() == \"data1\"\n"
+"\n"
+"    với open(\"file2\") là file2:\n"
+"        khẳng định file2.read() == \"data2\"\n"
+"\n"
+"    với open(\"file3\") là file2:\n"
+"        khẳng định file2.read() == \"mặc định\""
+
+#: ../../library/unittest.mock-examples.rst:389
+#, fuzzy
+msgid "Patch decorators"
+msgstr "Trang trí bản vá"
+
+#: ../../library/unittest.mock-examples.rst:393
+#, fuzzy
+msgid ""
+"With :func:`patch` it matters that you patch objects in the namespace where "
+"they are looked up. This is normally straightforward, but for a quick guide "
+"read :ref:`where to patch <where-to-patch>`."
+msgstr ""
+"Với :func:`patch`, điều quan trọng là bạn vá các đối tượng trong không gian "
+"tên nơi chúng được tra cứu. Điều này thường đơn giản nhưng để có hướng dẫn "
+"nhanh, hãy đọc :ref:`where to patch <where-to-patch>`."
+
+#: ../../library/unittest.mock-examples.rst:398
+#, fuzzy
+msgid ""
+"A common need in tests is to patch a class attribute or a module attribute, "
+"for example patching a builtin or patching a class in a module to test that "
+"it is instantiated. Modules and classes are effectively global, so patching "
+"on them has to be undone after the test or the patch will persist into other"
+" tests and cause hard to diagnose problems."
+msgstr ""
+"Một nhu cầu phổ biến trong các thử nghiệm là vá một thuộc tính lớp hoặc một "
+"thuộc tính mô-đun, ví dụ như vá một phần dựng sẵn hoặc vá một lớp trong mô-"
+"đun để kiểm tra xem nó đã được khởi tạo chưa. Các mô-đun và lớp có tính chất"
+" toàn cầu một cách hiệu quả, vì vậy việc vá lỗi trên chúng phải được hoàn "
+"tác sau khi thử nghiệm, nếu không bản vá sẽ tiếp tục tồn tại trong các thử "
+"nghiệm khác và gây ra sự cố khó chẩn đoán."
+
+#: ../../library/unittest.mock-examples.rst:404
+#, fuzzy
+msgid ""
+"mock provides three convenient decorators for this: :func:`patch`, "
+":func:`patch.object` and :func:`patch.dict`. ``patch`` takes a single "
+"string, of the form ``package.module.Class.attribute`` to specify the "
+"attribute you are patching. It also optionally takes a value that you want "
+"the attribute (or class or whatever) to be replaced with. 'patch.object' "
+"takes an object and the name of the attribute you would like patched, plus "
+"optionally the value to patch it with."
+msgstr ""
+"mock cung cấp ba trình trang trí thuận tiện cho việc này: :func:`patch`, "
+":func:`patch.object` và :func:`patch.dict`. ``patch`` lấy một chuỗi duy nhất"
+" có dạng ``package.module.Class.attribute`` để chỉ định thuộc tính bạn đang "
+"vá. Nó cũng tùy ý nhận một giá trị mà bạn muốn thay thế thuộc tính (hoặc lớp"
+" hoặc bất cứ thứ gì). 'patch.object' lấy một đối tượng và tên của thuộc tính"
+" bạn muốn vá, cộng với giá trị tùy chọn để vá nó."
+
+#: ../../library/unittest.mock-examples.rst:412
+#, fuzzy
+msgid "``patch.object``::"
+msgstr "``patch.object``::"
+
+#: ../../library/unittest.mock-examples.rst:414
+#, fuzzy
+msgid ""
+">>> original = SomeClass.attribute\n"
+">>> @patch.object(SomeClass, 'attribute', sentinel.attribute)\n"
+"... def test():\n"
+"...     assert SomeClass.attribute == sentinel.attribute\n"
+"...\n"
+">>> test()\n"
+">>> assert SomeClass.attribute == original\n"
+"\n"
+">>> @patch('package.module.attribute', sentinel.attribute)\n"
+"... def test():\n"
+"...     from package.module import attribute\n"
+"...     assert attribute is sentinel.attribute\n"
+"...\n"
+">>> test()"
+msgstr ""
+">>> gốc = SomeClass.attribute\n"
+">>> @patch.object(SomeClass, 'thuộc tính', canh gác.attribute)\n"
+"... kiểm tra chắc chắn():\n"
+"... khẳng định SomeClass.attribute == canh gác.attribute\n"
+"...\n"
+">>> kiểm tra()\n"
+">>> khẳng định SomeClass.attribute == bản gốc\n"
+"\n"
+">>> @patch('package.module.attribute', sendinel.attribute)\n"
+"... kiểm tra chắc chắn():\n"
+"... từ thuộc tính nhập package.module\n"
+"... thuộc tính khẳng định là canh gác.attribute\n"
+"...\n"
+">>> kiểm tra()"
+
+#: ../../library/unittest.mock-examples.rst:429
+#, fuzzy
+msgid ""
+"If you are patching a module (including :mod:`builtins`) then use "
+":func:`patch` instead of :func:`patch.object`:"
+msgstr ""
+"Nếu bạn đang vá một mô-đun (bao gồm :mod:`builtins`) thì hãy sử dụng "
+":func:`patch` thay vì :func:`patch.object`:"
+
+#: ../../library/unittest.mock-examples.rst:439
+#, fuzzy
+msgid ""
+"The module name can be 'dotted', in the form ``package.module`` if needed::"
+msgstr "Tên mô-đun có thể được 'chấm', ở dạng ``package.module`` nếu cần::"
+
+#: ../../library/unittest.mock-examples.rst:441
+#, fuzzy
+msgid ""
+">>> @patch('package.module.ClassName.attribute', sentinel.attribute)\n"
+"... def test():\n"
+"...     from package.module import ClassName\n"
+"...     assert ClassName.attribute == sentinel.attribute\n"
+"...\n"
+">>> test()"
+msgstr ""
+">>> @patch('package.module.ClassName.attribute', canh gác.attribute)\n"
+"... kiểm tra chắc chắn():\n"
+"... từ nhập package.module ClassName\n"
+"... khẳng định ClassName.attribute == canh gác.attribute\n"
+"...\n"
+">>> kiểm tra()"
+
+#: ../../library/unittest.mock-examples.rst:448
+#, fuzzy
+msgid "A nice pattern is to actually decorate test methods themselves:"
+msgstr "Một mô hình hay là thực sự tự trang trí các phương pháp thử nghiệm:"
+
+#: ../../library/unittest.mock-examples.rst:459
+#, fuzzy
+msgid ""
+"If you want to patch with a Mock, you can use :func:`patch` with only one "
+"argument (or :func:`patch.object` with two arguments). The mock will be "
+"created for you and passed into the test function / method:"
+msgstr ""
+"Nếu bạn muốn vá bằng Mock, bạn có thể sử dụng :func:`patch` chỉ với một đối "
+"số (hoặc :func:`patch.object` với hai đối số). Bản mô phỏng sẽ được tạo cho "
+"bạn và chuyển vào hàm/phương thức kiểm tra:"
+
+#: ../../library/unittest.mock-examples.rst:471
+#, fuzzy
+msgid "You can stack up multiple patch decorators using this pattern::"
+msgstr ""
+"Bạn có thể xếp chồng nhiều công cụ trang trí bản vá bằng cách sử dụng mẫu "
+"này::"
+
+#: ../../library/unittest.mock-examples.rst:473
+#, fuzzy
+msgid ""
+">>> class MyTest(unittest.TestCase):\n"
+"...     @patch('package.module.ClassName1')\n"
+"...     @patch('package.module.ClassName2')\n"
+"...     def test_something(self, MockClass2, MockClass1):\n"
+"...         self.assertIs(package.module.ClassName1, MockClass1)\n"
+"...         self.assertIs(package.module.ClassName2, MockClass2)\n"
+"...\n"
+">>> MyTest('test_something').test_something()"
+msgstr ""
+">>> lớp MyTest(unittest.TestCase):\n"
+"... @patch('package.module.ClassName1')\n"
+"... @patch('package.module.ClassName2')\n"
+"... def test_something(self, MockClass2, MockClass1):\n"
+"... self.assertIs(package.module.ClassName1, MockClass1)\n"
+"... self.assertIs(package.module.ClassName2, MockClass2)\n"
+"...\n"
+">>> MyTest('test_something').test_something()"
+
+#: ../../library/unittest.mock-examples.rst:482
+#, fuzzy
+msgid ""
+"When you nest patch decorators the mocks are passed in to the decorated "
+"function in the same order they applied (the normal *Python* order that "
+"decorators are applied). This means from the bottom up, so in the example "
+"above the mock for ``test_module.ClassName2`` is passed in first."
+msgstr ""
+"Khi bạn lồng các trình trang trí bản vá, các mô phỏng sẽ được chuyển vào hàm"
+" trang trí theo đúng thứ tự mà chúng đã áp dụng (thứ tự *Python* thông "
+"thường mà các trình trang trí được áp dụng). Điều này có nghĩa là từ dưới "
+"lên, vì vậy trong ví dụ trên, mô hình cho ``test_module.ClassName2`` được "
+"chuyển vào đầu tiên."
+
+#: ../../library/unittest.mock-examples.rst:487
+#, fuzzy
+msgid ""
+"There is also :func:`patch.dict` for setting values in a dictionary just "
+"during a scope and restoring the dictionary to its original state when the "
+"test ends:"
+msgstr ""
+"Ngoài ra còn có :func:`patch.dict` để đặt giá trị trong từ điển chỉ trong "
+"phạm vi và khôi phục từ điển về trạng thái ban đầu khi quá trình kiểm tra "
+"kết thúc:"
+
+#: ../../library/unittest.mock-examples.rst:498
+#, fuzzy
+msgid ""
+"``patch``, ``patch.object`` and ``patch.dict`` can all be used as context "
+"managers."
+msgstr ""
+"``patch``, ``patch.object`` và ``patch.dict`` đều có thể được sử dụng làm "
+"trình quản lý bối cảnh."
+
+#: ../../library/unittest.mock-examples.rst:500
+#, fuzzy
+msgid ""
+"Where you use :func:`patch` to create a mock for you, you can get a "
+"reference to the mock using the \"as\" form of the with statement:"
+msgstr ""
+"Khi bạn sử dụng :func:`patch` để tạo một bản mô phỏng cho mình, bạn có thể "
+"lấy tham chiếu đến mô hình đó bằng cách sử dụng dạng \"as\" của câu lệnh "
+"with:"
+
+#: ../../library/unittest.mock-examples.rst:515
+#, fuzzy
+msgid ""
+"As an alternative ``patch``, ``patch.object`` and ``patch.dict`` can be used"
+" as class decorators. When used in this way it is the same as applying the "
+"decorator individually to every method whose name starts with \"test\"."
+msgstr ""
+"Là một ``patch`` thay thế, ``patch.object`` và ``patch.dict`` có thể được sử"
+" dụng làm trang trí lớp. Khi được sử dụng theo cách này, nó cũng giống như "
+"việc áp dụng trình trang trí riêng lẻ cho mọi phương thức có tên bắt đầu "
+"bằng \"test\"."
+
+#: ../../library/unittest.mock-examples.rst:523
+#, fuzzy
+msgid "Further examples"
+msgstr "Các ví dụ khác"
+
+#: ../../library/unittest.mock-examples.rst:526
+#, fuzzy
+msgid "Here are some more examples for some slightly more advanced scenarios."
+msgstr ""
+"Dưới đây là một số ví dụ khác cho một số tình huống nâng cao hơn một chút."
+
+#: ../../library/unittest.mock-examples.rst:530
+#, fuzzy
+msgid "Mocking chained calls"
+msgstr "Chế giễu các cuộc gọi bị xiềng xích"
+
+#: ../../library/unittest.mock-examples.rst:532
+#, fuzzy
+msgid ""
+"Mocking chained calls is actually straightforward with mock once you "
+"understand the :attr:`~Mock.return_value` attribute. When a mock is called "
+"for the first time, or you fetch its ``return_value`` before it has been "
+"called, a new :class:`Mock` is created."
+msgstr ""
+"Việc mô phỏng các cuộc gọi chuỗi thực sự đơn giản với mô phỏng khi bạn hiểu "
+"thuộc tính :attr:`~Mock.return_value`. Khi một bản mô phỏng được gọi lần đầu"
+" tiên hoặc bạn tìm nạp ``return_value`` của nó trước khi nó được gọi, một "
+":class:`Mock` mới sẽ được tạo."
+
+#: ../../library/unittest.mock-examples.rst:537
+#, fuzzy
+msgid ""
+"This means that you can see how the object returned from a call to a mocked "
+"object has been used by interrogating the ``return_value`` mock:"
+msgstr ""
+"Điều này có nghĩa là bạn có thể xem đối tượng được trả về từ lệnh gọi đến "
+"đối tượng bị mô phỏng đã được sử dụng như thế nào bằng cách thẩm vấn mô hình"
+" ``return_value``:"
+
+#: ../../library/unittest.mock-examples.rst:545
+#, fuzzy
+msgid ""
+"From here it is a simple step to configure and then make assertions about "
+"chained calls. Of course another alternative is writing your code in a more "
+"testable way in the first place..."
+msgstr ""
+"Từ đây, chỉ cần một bước đơn giản để định cấu hình và sau đó đưa ra xác nhận"
+" về các cuộc gọi theo chuỗi. Tất nhiên, một giải pháp thay thế khác là viết "
+"mã của bạn theo cách dễ kiểm tra hơn ngay từ đầu..."
+
+#: ../../library/unittest.mock-examples.rst:549
+#, fuzzy
+msgid "So, suppose we have some code that looks a little bit like this:"
+msgstr "Vì vậy, giả sử chúng ta có một số mã trông hơi giống thế này:"
+
+#: ../../library/unittest.mock-examples.rst:558
+#, fuzzy
+msgid ""
+"Assuming that ``BackendProvider`` is already well tested, how do we test "
+"``method()``? Specifically, we want to test that the code section ``# more "
+"code`` uses the response object in the correct way."
+msgstr ""
+"Giả sử rằng ``BackendProvider`` đã được kiểm tra tốt, chúng tôi kiểm tra "
+"``method()`` như thế nào? Cụ thể, chúng tôi muốn kiểm tra xem phần mã ``# "
+"more code`` có sử dụng đối tượng phản hồi đúng cách hay không."
+
+#: ../../library/unittest.mock-examples.rst:562
+#, fuzzy
+msgid ""
+"As this chain of calls is made from an instance attribute we can monkey "
+"patch the ``backend`` attribute on a ``Something`` instance. In this "
+"particular case we are only interested in the return value from the final "
+"call to ``start_call`` so we don't have much configuration to do. Let's "
+"assume the object it returns is 'file-like', so we'll ensure that our "
+"response object uses the builtin :func:`open` as its ``spec``."
+msgstr ""
+"Vì chuỗi lệnh gọi này được thực hiện từ một thuộc tính phiên bản nên chúng "
+"ta có thể vá thuộc tính ``backend`` trên phiên bản ``Something``. Trong "
+"trường hợp cụ thể này, chúng tôi chỉ quan tâm đến giá trị trả về từ lệnh gọi"
+" cuối cùng tới ``start_call`` nên chúng tôi không có nhiều việc phải cấu "
+"hình. Giả sử đối tượng mà nó trả về là 'giống như tệp', vì vậy chúng tôi sẽ "
+"đảm bảo rằng đối tượng phản hồi của chúng tôi sử dụng :func:`open` dựng sẵn "
+"làm ``spec``."
+
+#: ../../library/unittest.mock-examples.rst:569
+#, fuzzy
+msgid ""
+"To do this we create a mock instance as our mock backend and create a mock "
+"response object for it. To set the response as the return value for that "
+"final ``start_call`` we could do this::"
+msgstr ""
+"Để làm điều này, chúng tôi tạo một phiên bản mô phỏng làm chương trình phụ "
+"trợ mô phỏng và tạo một đối tượng phản hồi mô phỏng cho nó. Để đặt phản hồi "
+"làm giá trị trả về cho ``start_call`` cuối cùng đó, chúng ta có thể thực "
+"hiện điều này ::"
+
+#: ../../library/unittest.mock-examples.rst:573
+#, fuzzy
+msgid ""
+"mock_backend.get_endpoint.return_value.create_call.return_value.start_call.return_value"
+" = mock_response"
+msgstr ""
+"mock_backend.get_endpoint.return_value.create_call.return_value.start_call.return_value"
+" = mock_response"
+
+#: ../../library/unittest.mock-examples.rst:575
+#, fuzzy
+msgid ""
+"We can do that in a slightly nicer way using the "
+":meth:`~Mock.configure_mock` method to directly set the return value for "
+"us::"
+msgstr ""
+"Chúng ta có thể làm điều đó theo cách tốt hơn một chút bằng cách sử dụng "
+"phương thức :meth:`~Mock.configure_mock` để đặt trực tiếp giá trị trả về cho"
+" chúng ta::"
+
+#: ../../library/unittest.mock-examples.rst:578
+#, python-brace-format, fuzzy
+msgid ""
+">>> something = Something()\n"
+">>> mock_response = Mock(spec=open)\n"
+">>> mock_backend = Mock()\n"
+">>> config = {'get_endpoint.return_value.create_call.return_value.start_call.return_value': mock_response}\n"
+">>> mock_backend.configure_mock(**config)"
+msgstr ""
+">>> cái gì đó = Cái gì đó()\n"
+">>> mock_response = Mô phỏng(spec=open)\n"
+">>> mock_backend = Giả()\n"
+">>> config = {'get_endpoint.return_value.create_call.return_value.start_call.return_value': mock_response}\n"
+">>> mock_backend.configure_mock(**config)"
+
+#: ../../library/unittest.mock-examples.rst:584
+#, fuzzy
+msgid ""
+"With these we monkey patch the \"mock backend\" in place and can make the "
+"real call::"
+msgstr ""
+"Với những thứ này, chúng tôi sẽ vá \"phụ trợ giả\" tại chỗ và có thể thực "
+"hiện cuộc gọi thực sự ::"
+
+#: ../../library/unittest.mock-examples.rst:587
+#, fuzzy
+msgid ""
+">>> something.backend = mock_backend\n"
+">>> something.method()"
+msgstr ""
+">>> something.backend = mock_backend\n"
+">>> something.method()"
+
+#: ../../library/unittest.mock-examples.rst:590
+#, fuzzy
+msgid ""
+"Using :attr:`~Mock.mock_calls` we can check the chained call with a single "
+"assert. A chained call is several calls in one line of code, so there will "
+"be several entries in ``mock_calls``. We can use :meth:`call.call_list` to "
+"create this list of calls for us::"
+msgstr ""
+"Sử dụng :attr:`~Mock.mock_calls`, chúng ta có thể kiểm tra cuộc gọi theo "
+"chuỗi chỉ bằng một lần xác nhận. Cuộc gọi theo chuỗi là một số cuộc gọi "
+"trong một dòng mã, do đó sẽ có một số mục trong ``mock_calls``. Chúng tôi có"
+" thể sử dụng :meth:`call.call_list` để tạo danh sách cuộc gọi này cho chúng "
+"tôi ::"
+
+#: ../../library/unittest.mock-examples.rst:595
+#, fuzzy
+msgid ""
+">>> chained = call.get_endpoint('foobar').create_call('spam', 'eggs').start_call()\n"
+">>> call_list = chained.call_list()\n"
+">>> assert mock_backend.mock_calls == call_list"
+msgstr ""
+">>> chained = call.get_endpoint('foobar').create_call('spam', 'eggs').start_call()\n"
+">>> call_list = chained.call_list()\n"
+">>> khẳng định mock_backend.mock_calls == call_list"
+
+#: ../../library/unittest.mock-examples.rst:601
+#, fuzzy
+msgid "Partial mocking"
+msgstr "Chế nhạo một phần"
+
+#: ../../library/unittest.mock-examples.rst:603
+#, fuzzy
+msgid ""
+"For some tests, you may want to mock out a call to "
+":meth:`datetime.date.today` to return a known date, but don't want to "
+"prevent the code under test from creating new date objects. Unfortunately "
+":class:`datetime.date` is written in C, so you cannot just monkey-patch out "
+"the static :meth:`datetime.date.today` method."
+msgstr ""
+"Đối với một số thử nghiệm, bạn có thể muốn thực hiện lệnh gọi tới "
+":meth:`datetime.date.today` để trả về một ngày đã biết nhưng không muốn ngăn"
+" mã đang được thử nghiệm tạo đối tượng ngày mới. Thật không may, "
+":class:`datetime.date` được viết bằng C, vì vậy bạn không thể chỉ vá lỗi "
+"phương thức :meth:`datetime.date.today` tĩnh."
+
+#: ../../library/unittest.mock-examples.rst:608
+#, fuzzy
+msgid ""
+"Instead, you can effectively wrap the date class with a mock, while passing "
+"through calls to the constructor to the real class (and returning real "
+"instances)."
+msgstr ""
+"Thay vào đó, bạn có thể bao bọc lớp ngày bằng một bản mô phỏng một cách hiệu"
+" quả, đồng thời chuyển các lệnh gọi từ hàm tạo sang lớp thực (và trả về các "
+"phiên bản thực)."
+
+#: ../../library/unittest.mock-examples.rst:612
+#, fuzzy
+msgid ""
+"The :func:`patch decorator <patch>` is used here to mock out the ``date`` "
+"class in the module under test. The :attr:`~Mock.side_effect` attribute on "
+"the mock date class is then set to a lambda function that returns a real "
+"date. When the mock date class is called a real date will be constructed and"
+" returned by ``side_effect``. ::"
+msgstr ""
+"Ở đây, :func:`patch decorator <patch>` được sử dụng để mô phỏng lớp ``date``"
+" trong mô-đun đang được thử nghiệm. Sau đó, thuộc tính "
+":attr:`~Mock.side_effect` trên lớp ngày mô phỏng được đặt thành hàm lambda "
+"trả về ngày thực. Khi lớp ngày mô phỏng được gọi, ngày thực sẽ được tạo và "
+"trả về bởi ``side_effect``. ::"
+
+#: ../../library/unittest.mock-examples.rst:618
+#, fuzzy
+msgid ""
+">>> import datetime as dt\n"
+">>> with patch('mymodule.date') as mock_date:\n"
+"...     mock_date.today.return_value = dt.date(2010, 10, 8)\n"
+"...     mock_date.side_effect = lambda *args, **kw: dt.date(*args, **kw)\n"
+"...\n"
+"...     assert mymodule.date.today() == dt.date(2010, 10, 8)\n"
+"...     assert mymodule.date(2009, 6, 8) == dt.date(2009, 6, 8)"
+msgstr ""
+">>> nhập ngày giờ dưới dạng dt\n"
+">>> với bản vá('mymodule.date') là mock_date:\n"
+"... mock_date.today.return_value = dt.date(2010, 10, 8)\n"
+"... mock_date.side_effect = lambda *args, **kw: dt.date(*args, **kw)\n"
+"...\n"
+"... khẳng định mymodule.date.today() == dt.date(2010, 10, 8)\n"
+"... khẳng định mymodule.date(2009, 6, 8) == dt.date(2009, 6, 8)"
+
+#: ../../library/unittest.mock-examples.rst:626
+#, fuzzy
+msgid ""
+"Note that we don't patch :class:`datetime.date` globally, we patch ``date`` "
+"in the module that *uses* it. See :ref:`where to patch <where-to-patch>`."
+msgstr ""
+"Lưu ý rằng chúng tôi không vá :class:`datetime.date` trên toàn cầu, chúng "
+"tôi vá ``date`` trong mô-đun chứa *uses* đó. Xem :ref:`where to patch "
+"<where-to-patch>`."
+
+#: ../../library/unittest.mock-examples.rst:629
+#, fuzzy
+msgid ""
+"When ``date.today()`` is called a known date is returned, but calls to the "
+"``date(...)`` constructor still return normal dates. Without this you can "
+"find yourself having to calculate an expected result using exactly the same "
+"algorithm as the code under test, which is a classic testing anti-pattern."
+msgstr ""
+"Khi ``date.today()`` được gọi, ngày đã biết sẽ được trả về, nhưng các lệnh "
+"gọi tới hàm tạo ``date(...)`` vẫn trả về ngày bình thường. Nếu không có điều"
+" này, bạn có thể thấy mình phải tính toán kết quả mong đợi bằng cách sử dụng"
+" chính xác thuật toán giống như mã đang được thử nghiệm, đây là một mô hình "
+"chống thử nghiệm cổ điển."
+
+#: ../../library/unittest.mock-examples.rst:634
+#, fuzzy
+msgid ""
+"Calls to the date constructor are recorded in the ``mock_date`` attributes "
+"(``call_count`` and friends) which may also be useful for your tests."
+msgstr ""
+"Các cuộc gọi đến hàm tạo ngày được ghi lại trong thuộc tính ``mock_date`` "
+"(``call_count`` và bạn bè), điều này cũng có thể hữu ích cho các thử nghiệm "
+"của bạn."
+
+#: ../../library/unittest.mock-examples.rst:637
+#, fuzzy
+msgid ""
+"An alternative way of dealing with mocking dates, or other builtin classes, "
+"is discussed in `this blog entry <https://williambert.online/2011/07/how-to-"
+"unit-testing-in-django-with-mocking-and-patching/>`_."
+msgstr ""
+"Một cách khác để xử lý ngày mô phỏng hoặc các lớp dựng sẵn khác được thảo "
+"luận trong `this blog entry <https://williambert.online/2011/07/how-to-unit-"
+"testing-in-django-with-mocking-and-patching/>`_."
+
+#: ../../library/unittest.mock-examples.rst:643
+#, fuzzy
+msgid "Mocking a generator method"
+msgstr "Chế nhạo một phương pháp tạo"
+
+#: ../../library/unittest.mock-examples.rst:645
+#, fuzzy
+msgid ""
+"A Python generator is a function or method that uses the :keyword:`yield` "
+"statement to return a series of values when iterated over [#]_."
+msgstr ""
+"Trình tạo Python là một hàm hoặc phương thức sử dụng câu lệnh "
+":keyword:`yield` để trả về một chuỗi giá trị khi lặp qua [#]_."
+
+#: ../../library/unittest.mock-examples.rst:648
+#, fuzzy
+msgid ""
+"A generator method / function is called to return the generator object. It "
+"is the generator object that is then iterated over. The protocol method for "
+"iteration is :meth:`~container.__iter__`, so we can mock this using a "
+":class:`MagicMock`."
+msgstr ""
+"Một phương thức/hàm tạo được gọi để trả về đối tượng trình tạo. Sau đó, đối "
+"tượng trình tạo sẽ được lặp lại. Phương thức giao thức cho phép lặp là "
+":meth:`~container.__iter__`, vì vậy chúng ta có thể mô phỏng điều này bằng "
+"cách sử dụng :class:`MagicMock`."
+
+#: ../../library/unittest.mock-examples.rst:653
+#, fuzzy
+msgid ""
+"Here's an example class with an \"iter\" method implemented as a generator:"
+msgstr ""
+"Đây là một lớp ví dụ với phương thức \"iter\" được triển khai dưới dạng "
+"trình tạo:"
+
+#: ../../library/unittest.mock-examples.rst:665
+#, fuzzy
+msgid "How would we mock this class, and in particular its \"iter\" method?"
+msgstr ""
+"Chúng ta sẽ mô phỏng lớp này như thế nào và đặc biệt là phương thức \"iter\""
+" của nó?"
+
+#: ../../library/unittest.mock-examples.rst:667
+#, fuzzy
+msgid ""
+"To configure the values returned from the iteration (implicit in the call to"
+" :class:`list`), we need to configure the object returned by the call to "
+"``foo.iter()``."
+msgstr ""
+"Để định cấu hình các giá trị được trả về từ lần lặp (ẩn trong lệnh gọi tới "
+":class:`list`), chúng ta cần định cấu hình đối tượng được trả về bởi lệnh "
+"gọi tới ``foo.iter()``."
+
+#: ../../library/unittest.mock-examples.rst:675
+#, fuzzy
+msgid ""
+"There are also generator expressions and more `advanced uses "
+"<http://www.dabeaz.com/coroutines/index.html>`_ of generators, but we aren't"
+" concerned about them here. A very good introduction to generators and how "
+"powerful they are is: `Generator Tricks for Systems Programmers "
+"<http://www.dabeaz.com/generators/>`_."
+msgstr ""
+"Ngoài ra còn có các biểu thức trình tạo và nhiều trình tạo `advanced uses "
+"<http://www.dabeaz.com/coroutines/index.html>`_ hơn, nhưng chúng tôi không "
+"quan tâm đến chúng ở đây. Phần giới thiệu rất hay về máy phát điện và sức "
+"mạnh của chúng: `Generator Tricks for Systems Programmers "
+"<http://www.dabeaz.com/generators/>`_."
+
+#: ../../library/unittest.mock-examples.rst:683
+#, fuzzy
+msgid "Applying the same patch to every test method"
+msgstr "Áp dụng cùng một bản vá cho mọi phương pháp thử nghiệm"
+
+#: ../../library/unittest.mock-examples.rst:685
+#, fuzzy
+msgid ""
+"If you want several patches in place for multiple test methods the obvious "
+"way is to apply the patch decorators to every method. This can feel like "
+"unnecessary repetition. Instead, you can use :func:`patch` (in all its "
+"various forms) as a class decorator. This applies the patches to all test "
+"methods on the class. A test method is identified by methods whose names "
+"start with ``test``::"
+msgstr ""
+"Nếu bạn muốn có nhiều bản vá cho nhiều phương pháp thử nghiệm thì cách rõ "
+"ràng là áp dụng các trình trang trí bản vá cho mọi phương pháp. Điều này có "
+"thể khiến bạn cảm thấy như sự lặp lại không cần thiết. Thay vào đó, bạn có "
+"thể sử dụng :func:`patch` (ở mọi dạng khác nhau) làm công cụ trang trí lớp. "
+"Điều này áp dụng các bản vá cho tất cả các phương pháp kiểm tra trên lớp. "
+"Phương thức thử nghiệm được xác định bằng các phương thức có tên bắt đầu "
+"bằng ``test``::"
+
+#: ../../library/unittest.mock-examples.rst:692
+#, fuzzy
+msgid ""
+">>> @patch('mymodule.SomeClass')\n"
+"... class MyTest(unittest.TestCase):\n"
+"...\n"
+"...     def test_one(self, MockSomeClass):\n"
+"...         self.assertIs(mymodule.SomeClass, MockSomeClass)\n"
+"...\n"
+"...     def test_two(self, MockSomeClass):\n"
+"...         self.assertIs(mymodule.SomeClass, MockSomeClass)\n"
+"...\n"
+"...     def not_a_test(self):\n"
+"...         return 'something'\n"
+"...\n"
+">>> MyTest('test_one').test_one()\n"
+">>> MyTest('test_two').test_two()\n"
+">>> MyTest('test_two').not_a_test()\n"
+"'something'"
+msgstr ""
+">>> @patch('mymodule.SomeClass')\n"
+"... lớp MyTest(unittest.TestCase):\n"
+"...\n"
+"... def test_one(self, MockSomeClass):\n"
+"... self.assertIs(mymodule.SomeClass, MockSomeClass)\n"
+"...\n"
+"... def test_two(self, MockSomeClass):\n"
+"... self.assertIs(mymodule.SomeClass, MockSomeClass)\n"
+"...\n"
+"... def not_a_test(self):\n"
+"... trả lại 'thứ gì đó'\n"
+"...\n"
+">>> MyTest('test_one').test_one()\n"
+">>> MyTest('test_two').test_two()\n"
+">>> MyTest('test_two').not_a_test()\n"
+"'cái gì đó'"
+
+#: ../../library/unittest.mock-examples.rst:709
+#, fuzzy
+msgid ""
+"An alternative way of managing patches is to use the :ref:`start-and-stop`. "
+"These allow you to move the patching into your ``setUp`` and ``tearDown`` "
+"methods. ::"
+msgstr ""
+"Một cách khác để quản lý các bản vá là sử dụng :ref:`start-and-stop`. Những "
+"điều này cho phép bạn di chuyển bản vá vào các phương thức ``setUp`` và "
+"``tearDown`` của mình. ::"
+
+#: ../../library/unittest.mock-examples.rst:713
+#, fuzzy
+msgid ""
+">>> class MyTest(unittest.TestCase):\n"
+"...     def setUp(self):\n"
+"...         self.patcher = patch('mymodule.foo')\n"
+"...         self.mock_foo = self.patcher.start()\n"
+"...\n"
+"...     def test_foo(self):\n"
+"...         self.assertIs(mymodule.foo, self.mock_foo)\n"
+"...\n"
+"...     def tearDown(self):\n"
+"...         self.patcher.stop()\n"
+"...\n"
+">>> MyTest('test_foo').run()"
+msgstr ""
+">>> lớp MyTest(unittest.TestCase):\n"
+"... def setUp(self):\n"
+"... self.patcher = patch('mymodule.foo')\n"
+"... self.mock_foo = self.patcher.start()\n"
+"...\n"
+"... def test_foo(self):\n"
+"... self.assertIs(mymodule.foo, self.mock_foo)\n"
+"...\n"
+"... def TearsDown(self):\n"
+"... self.patcher.stop()\n"
+"...\n"
+">>> MyTest('test_foo').run()"
+
+#: ../../library/unittest.mock-examples.rst:726
+#, fuzzy
+msgid ""
+"If you use this technique you must ensure that the patching is \"undone\" by"
+" calling ``stop``. This can be fiddlier than you might think, because if an "
+"exception is raised in the setUp then tearDown is not called. "
+":meth:`unittest.TestCase.addCleanup` makes this easier::"
+msgstr ""
+"Nếu bạn sử dụng kỹ thuật này, bạn phải đảm bảo rằng việc vá lỗi được \"hoàn "
+"tác\" bằng cách gọi ``stop``. Điều này có thể phức tạp hơn bạn nghĩ, bởi vì "
+"nếu một ngoại lệ được đưa ra trong setUp thì TearsDown sẽ không được gọi. "
+":meth:`unittest.TestCase.addCleanup` làm cho việc này trở nên dễ dàng hơn::"
+
+#: ../../library/unittest.mock-examples.rst:731
+#, fuzzy
+msgid ""
+">>> class MyTest(unittest.TestCase):\n"
+"...     def setUp(self):\n"
+"...         patcher = patch('mymodule.foo')\n"
+"...         self.addCleanup(patcher.stop)\n"
+"...         self.mock_foo = patcher.start()\n"
+"...\n"
+"...     def test_foo(self):\n"
+"...         self.assertIs(mymodule.foo, self.mock_foo)\n"
+"...\n"
+">>> MyTest('test_foo').run()"
+msgstr ""
+">>> lớp MyTest(unittest.TestCase):\n"
+"... def setUp(self):\n"
+"... patcher = patch('mymodule.foo')\n"
+"... self.addCleanup(patcher.stop)\n"
+"... self.mock_foo = patcher.start()\n"
+"...\n"
+"... def test_foo(self):\n"
+"... self.assertIs(mymodule.foo, self.mock_foo)\n"
+"...\n"
+">>> MyTest('test_foo').run()"
+
+#: ../../library/unittest.mock-examples.rst:744
+#, fuzzy
+msgid "Mocking unbound methods"
+msgstr "Chế nhạo các phương pháp không ràng buộc"
+
+#: ../../library/unittest.mock-examples.rst:746
+#, fuzzy
+msgid ""
+"Sometimes a test needs to patch an *unbound method*, which means patching "
+"the method on the class rather than on the instance. In order to make "
+"assertions about which objects were calling this particular method, you need"
+" to pass ``self`` as the first argument. The issue is that you can't patch "
+"with a mock for this, because if you replace an unbound method with a mock "
+"it doesn't become a bound method when fetched from the instance, and so it "
+"doesn't get ``self`` passed in. The workaround is to patch the unbound "
+"method with a real function instead. The :func:`patch` decorator makes it so"
+" simple to patch out methods with a mock that having to create a real "
+"function becomes a nuisance."
+msgstr ""
+"Đôi khi một bài kiểm tra cần vá một *unbound method*, có nghĩa là vá phương "
+"thức trên lớp thay vì trên phiên bản. Để đưa ra xác nhận về đối tượng nào "
+"đang gọi phương thức cụ thể này, bạn cần chuyển ``self`` làm đối số đầu "
+"tiên. Vấn đề là bạn không thể vá bằng một mô hình cho việc này, bởi vì nếu "
+"bạn thay thế một phương thức không liên kết bằng một mô hình thì nó sẽ không"
+" trở thành một phương thức bị ràng buộc khi được tìm nạp từ phiên bản và do "
+"đó nó không được truyền vào ``self``. Cách giải quyết là vá phương thức "
+"không liên kết bằng một hàm thực. Trình trang trí :func:`patch` giúp việc vá"
+" các phương thức bằng mô hình trở nên đơn giản đến mức việc phải tạo một hàm"
+" thực sẽ trở thành một mối phiền toái."
+
+#: ../../library/unittest.mock-examples.rst:756
+#, fuzzy
+msgid ""
+"If you pass ``autospec=True`` to patch then it does the patching with a "
+"*real* function object. This function object has the same signature as the "
+"one it is replacing, but delegates to a mock under the hood. You still get "
+"your mock auto-created in exactly the same way as before. What it means "
+"though, is that if you use it to patch out an unbound method on a class the "
+"mocked function will be turned into a bound method if it is fetched from an "
+"instance. It will have ``self`` passed in as the first argument, which is "
+"exactly what was needed:"
+msgstr ""
+"Nếu bạn chuyển ``autospec=True`` sang bản vá thì nó sẽ thực hiện việc vá "
+"bằng đối tượng hàm *real*. Đối tượng hàm này có cùng chữ ký với đối tượng mà"
+" nó đang thay thế, nhưng ủy quyền cho một bản mô phỏng bên trong. Bạn vẫn "
+"nhận được bản mô phỏng được tạo tự động theo cách giống hệt như trước đây. "
+"Tuy nhiên, điều đó có nghĩa là nếu bạn sử dụng nó để vá một phương thức "
+"không liên kết trên một lớp thì hàm giả định sẽ được chuyển thành một phương"
+" thức liên kết nếu nó được tìm nạp từ một thể hiện. Nó sẽ có ``self`` được "
+"chuyển vào làm đối số đầu tiên, đó chính xác là những gì cần thiết:"
+
+#: ../../library/unittest.mock-examples.rst:777
+#, fuzzy
+msgid ""
+"If we don't use ``autospec=True`` then the unbound method is patched out "
+"with a Mock instance instead, and isn't called with ``self``."
+msgstr ""
+"Nếu chúng ta không sử dụng ``autospec=True`` thì phương thức không liên kết "
+"sẽ được vá bằng một phiên bản Mock thay vào đó và không được gọi bằng "
+"``self``."
+
+#: ../../library/unittest.mock-examples.rst:782
+#, fuzzy
+msgid "Checking multiple calls with mock"
+msgstr "Kiểm tra nhiều cuộc gọi bằng mô hình"
+
+#: ../../library/unittest.mock-examples.rst:784
+#, fuzzy
+msgid ""
+"mock has a nice API for making assertions about how your mock objects are "
+"used."
+msgstr ""
+"mock có một API tuyệt vời để đưa ra các xác nhận về cách sử dụng các đối "
+"tượng giả của bạn."
+
+#: ../../library/unittest.mock-examples.rst:791
+#, fuzzy
+msgid ""
+"If your mock is only being called once you can use the "
+":meth:`~Mock.assert_called_once_with` method that also asserts that the "
+":attr:`~Mock.call_count` is one."
+msgstr ""
+"Nếu mô hình của bạn chỉ được gọi một lần, bạn có thể sử dụng phương thức "
+":meth:`~Mock.assert_called_once_with` để xác nhận rằng "
+":attr:`~Mock.call_count` là một."
+
+#: ../../library/unittest.mock-examples.rst:803
+#, fuzzy
+msgid ""
+"Both ``assert_called_with`` and ``assert_called_once_with`` make assertions "
+"about the *most recent* call. If your mock is going to be called several "
+"times, and you want to make assertions about *all* those calls you can use "
+":attr:`~Mock.call_args_list`:"
+msgstr ""
+"Cả ``assert_called_with`` và ``assert_called_once_with`` đều đưa ra khẳng "
+"định về lệnh gọi *most recent*. Nếu mô hình của bạn sắp được gọi nhiều lần "
+"và bạn muốn đưa ra xác nhận về *all* thì những cuộc gọi đó bạn có thể sử "
+"dụng :attr:`~Mock.call_args_list`:"
+
+#: ../../library/unittest.mock-examples.rst:815
+#, fuzzy
+msgid ""
+"The :data:`call` helper makes it easy to make assertions about these calls. "
+"You can build up a list of expected calls and compare it to "
+"``call_args_list``. This looks remarkably similar to the repr of the "
+"``call_args_list``:"
+msgstr ""
+"Trình trợ giúp :data:`call` giúp bạn dễ dàng đưa ra xác nhận về các lệnh gọi"
+" này. Bạn có thể xây dựng danh sách các cuộc gọi dự kiến ​​và so sánh với "
+"``call_args_list``. Điều này trông khá giống với bản repr của "
+"``call_args_list``:"
+
+#: ../../library/unittest.mock-examples.rst:825
+#, fuzzy
+msgid "Coping with mutable arguments"
+msgstr "Đối phó với các đối số có thể thay đổi"
+
+#: ../../library/unittest.mock-examples.rst:827
+#, fuzzy
+msgid ""
+"Another situation is rare, but can bite you, is when your mock is called "
+"with mutable arguments. ``call_args`` and ``call_args_list`` store "
+"*references* to the arguments. If the arguments are mutated by the code "
+"under test then you can no longer make assertions about what the values were"
+" when the mock was called."
+msgstr ""
+"Một tình huống khác rất hiếm gặp nhưng có thể khiến bạn khó chịu, đó là khi "
+"mô hình giả của bạn được gọi với các đối số có thể thay đổi. ``call_args`` "
+"và ``call_args_list`` lưu trữ *references* vào các đối số. Nếu các đối số bị"
+" thay đổi bởi mã đang được kiểm tra thì bạn không còn có thể đưa ra xác nhận"
+" về giá trị khi mô hình được gọi."
+
+#: ../../library/unittest.mock-examples.rst:832
+#, fuzzy
+msgid ""
+"Here's some example code that shows the problem. Imagine the following "
+"functions defined in 'mymodule'::"
+msgstr ""
+"Dưới đây là một số mã ví dụ cho thấy sự cố. Hãy tưởng tượng các hàm sau được"
+" định nghĩa trong 'mymodule'::"
+
+#: ../../library/unittest.mock-examples.rst:835
+#, fuzzy
+msgid ""
+"def frob(val):\n"
+"    pass\n"
+"\n"
+"def grob(val):\n"
+"    \"First frob and then clear val\"\n"
+"    frob(val)\n"
+"    val.clear()"
+msgstr ""
+"def Frob(val):\n"
+"    vượt qua\n"
+"\n"
+"def grob(val):\n"
+"    \"Đầu tiên là Frob và sau đó là Clear val\"\n"
+"    đông lạnh(val)\n"
+"    val.clear()"
+
+#: ../../library/unittest.mock-examples.rst:843
+#, fuzzy
+msgid ""
+"When we try to test that ``grob`` calls ``frob`` with the correct argument "
+"look what happens::"
+msgstr ""
+"Khi chúng tôi cố gắng kiểm tra xem ``grob`` có gọi ``frob`` với đối số chính"
+" xác hay không, hãy xem điều gì sẽ xảy ra ::"
+
+#: ../../library/unittest.mock-examples.rst:846
+#, python-brace-format, fuzzy
+msgid ""
+">>> with patch('mymodule.frob') as mock_frob:\n"
+"...     val = {6}\n"
+"...     mymodule.grob(val)\n"
+"...\n"
+">>> val\n"
+"set()\n"
+">>> mock_frob.assert_called_with({6})\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"AssertionError: Expected: (({6},), {})\n"
+"Called with: ((set(),), {})"
+msgstr ""
+">>> với bản vá('mymodule.frob') là mock_frob:\n"
+"... giá trị = {6}\n"
+"... mymodule.grob(val)\n"
+"...\n"
+">>> giá trị\n"
+"đặt()\n"
+">>> mock_frob.assert_gọi_with({6})\n"
+"Traceback (cuộc gọi gần đây nhất):\n"
+"    ...\n"
+"AssertionError: Dự kiến: (({6},, {})\n"
+"Được gọi với: ((set(),), {})"
+
+#: ../../library/unittest.mock-examples.rst:858
+#, fuzzy
+msgid ""
+"One possibility would be for mock to copy the arguments you pass in. This "
+"could then cause problems if you do assertions that rely on object identity "
+"for equality."
+msgstr ""
+"Một khả năng là giả lập sao chép các đối số bạn truyền vào. Điều này sau đó "
+"có thể gây ra vấn đề nếu bạn thực hiện các xác nhận dựa vào danh tính đối "
+"tượng để đảm bảo sự bình đẳng."
+
+#: ../../library/unittest.mock-examples.rst:862
+#, fuzzy
+msgid ""
+"Here's one solution that uses the :attr:`~Mock.side_effect` functionality. "
+"If you provide a ``side_effect`` function for a mock then ``side_effect`` "
+"will be called with the same args as the mock. This gives us an opportunity "
+"to copy the arguments and store them for later assertions. In this example "
+"I'm using *another* mock to store the arguments so that I can use the mock "
+"methods for doing the assertion. Again a helper function sets this up for "
+"me. ::"
+msgstr ""
+"Đây là một giải pháp sử dụng chức năng :attr:`~Mock.side_effect`. Nếu bạn "
+"cung cấp hàm ``side_effect`` cho một bản mô phỏng thì ``side_effect`` sẽ "
+"được gọi với cùng các đối số như mô hình. Điều này cho chúng ta cơ hội sao "
+"chép các đối số và lưu trữ chúng để xác nhận sau này. Trong ví dụ này, tôi "
+"đang sử dụng mô hình *another* để lưu trữ các đối số để tôi có thể sử dụng "
+"các phương thức mô phỏng để thực hiện xác nhận. Một lần nữa, chức năng trợ "
+"giúp thiết lập điều này cho tôi. ::"
+
+#: ../../library/unittest.mock-examples.rst:870
+#, python-brace-format, fuzzy
+msgid ""
+">>> from copy import deepcopy\n"
+">>> from unittest.mock import Mock, patch, DEFAULT\n"
+">>> def copy_call_args(mock):\n"
+"...     new_mock = Mock()\n"
+"...     def side_effect(*args, **kwargs):\n"
+"...         args = deepcopy(args)\n"
+"...         kwargs = deepcopy(kwargs)\n"
+"...         new_mock(*args, **kwargs)\n"
+"...         return DEFAULT\n"
+"...     mock.side_effect = side_effect\n"
+"...     return new_mock\n"
+"...\n"
+">>> with patch('mymodule.frob') as mock_frob:\n"
+"...     new_mock = copy_call_args(mock_frob)\n"
+"...     val = {6}\n"
+"...     mymodule.grob(val)\n"
+"...\n"
+">>> new_mock.assert_called_with({6})\n"
+">>> new_mock.call_args\n"
+"call({6})"
+msgstr ""
+">>> từ bản sao nhập bản sâu\n"
+">>> từ nhập unittest.mock Mock, patch, DEFAULT\n"
+">>> def copy_call_args(giả):\n"
+"... new_mock = Mô phỏng()\n"
+"... def side_effect(*args, **kwargs):\n"
+"... args = deepcopy(args)\n"
+"... kwargs = deepcopy(kwargs)\n"
+"... new_mock(*args, **kwargs)\n"
+"... trả lại DEFAULT\n"
+"... mock.side_effect = side_effect\n"
+"... trả lại new_mock\n"
+"...\n"
+">>> với bản vá('mymodule.frob') là mock_frob:\n"
+"... new_mock = copy_call_args(mock_frob)\n"
+"... giá trị = {6}\n"
+"... mymodule.grob(val)\n"
+"...\n"
+">>> new_mock.assert_gọi_with({6})\n"
+">>> new_mock.call_args\n"
+"gọi({6})"
+
+#: ../../library/unittest.mock-examples.rst:891
+#, fuzzy
+msgid ""
+"``copy_call_args`` is called with the mock that will be called. It returns a"
+" new mock that we do the assertion on. The ``side_effect`` function makes a "
+"copy of the args and calls our ``new_mock`` with the copy."
+msgstr ""
+"``copy_call_args`` được gọi với mô hình sẽ được gọi. Nó trả về một mô hình "
+"mới mà chúng ta thực hiện xác nhận trên đó. Hàm ``side_effect`` tạo một bản "
+"sao của các đối số và gọi ``new_mock`` của chúng ta bằng bản sao đó."
+
+#: ../../library/unittest.mock-examples.rst:897
+#, fuzzy
+msgid ""
+"If your mock is only going to be used once there is an easier way of "
+"checking arguments at the point they are called. You can simply do the "
+"checking inside a ``side_effect`` function."
+msgstr ""
+"Nếu mô hình của bạn chỉ được sử dụng một lần thì có cách dễ dàng hơn để kiểm"
+" tra các đối số tại thời điểm chúng được gọi. Bạn có thể chỉ cần thực hiện "
+"việc kiểm tra bên trong hàm ``side_effect``."
+
+#: ../../library/unittest.mock-examples.rst:911
+#, fuzzy
+msgid ""
+"An alternative approach is to create a subclass of :class:`Mock` or "
+":class:`MagicMock` that copies (using :func:`copy.deepcopy`) the arguments. "
+"Here's an example implementation:"
+msgstr ""
+"Một cách tiếp cận khác là tạo một lớp con của :class:`Mock` hoặc "
+":class:`MagicMock` sao chép (sử dụng :func:`copy.deepcopy`) các đối số. Đây "
+"là một ví dụ thực hiện:"
+
+#: ../../library/unittest.mock-examples.rst:936
+#, fuzzy
+msgid ""
+"When you subclass ``Mock`` or ``MagicMock`` all dynamically created "
+"attributes, and the ``return_value`` will use your subclass automatically. "
+"That means all children of a ``CopyingMock`` will also have the type "
+"``CopyingMock``."
+msgstr ""
+"Khi bạn phân lớp ``Mock`` hoặc ``MagicMock``, tất cả các thuộc tính được tạo"
+" động và ``return_value`` sẽ tự động sử dụng lớp con của bạn. Điều đó có "
+"nghĩa là tất cả con của ``CopyingMock`` cũng sẽ có loại ``CopyingMock``."
+
+#: ../../library/unittest.mock-examples.rst:942
+#, fuzzy
+msgid "Nesting patches"
+msgstr "Các bản vá lồng nhau"
+
+#: ../../library/unittest.mock-examples.rst:944
+#, fuzzy
+msgid ""
+"Using patch as a context manager is nice, but if you do multiple patches you"
+" can end up with nested with statements indenting further and further to the"
+" right::"
+msgstr ""
+"Sử dụng bản vá làm trình quản lý bối cảnh là điều tốt, nhưng nếu bạn thực "
+"hiện nhiều bản vá, bạn có thể kết thúc bằng các câu lệnh thụt ngày càng xa "
+"về bên phải::"
+
+#: ../../library/unittest.mock-examples.rst:948
+#, fuzzy
+msgid ""
+">>> class MyTest(unittest.TestCase):\n"
+"...\n"
+"...     def test_foo(self):\n"
+"...         with patch('mymodule.Foo') as mock_foo:\n"
+"...             with patch('mymodule.Bar') as mock_bar:\n"
+"...                 with patch('mymodule.Spam') as mock_spam:\n"
+"...                     assert mymodule.Foo is mock_foo\n"
+"...                     assert mymodule.Bar is mock_bar\n"
+"...                     assert mymodule.Spam is mock_spam\n"
+"...\n"
+">>> original = mymodule.Foo\n"
+">>> MyTest('test_foo').test_foo()\n"
+">>> assert mymodule.Foo is original"
+msgstr ""
+">>> lớp MyTest(unittest.TestCase):\n"
+"...\n"
+"... def test_foo(self):\n"
+"... với bản vá('mymodule.Foo') là mock_foo:\n"
+"... với bản vá ('mymodule.Bar') là mock_bar:\n"
+"... với bản vá('mymodule.Spam') là mock_spam:\n"
+"... khẳng định mymodule.Foo là mock_foo\n"
+"... khẳng định mymodule.Bar là mock_bar\n"
+"... khẳng định mymodule.Spam là mock_spam\n"
+"...\n"
+">>> gốc = mymodule.Foo\n"
+">>> MyTest('test_foo').test_foo()\n"
+">>> khẳng định mymodule.Foo là bản gốc"
+
+#: ../../library/unittest.mock-examples.rst:962
+#, fuzzy
+msgid ""
+"With unittest ``cleanup`` functions and the :ref:`start-and-stop` we can "
+"achieve the same effect without the nested indentation. A simple helper "
+"method, ``create_patch``, puts the patch in place and returns the created "
+"mock for us::"
+msgstr ""
+"Với các hàm ``cleanup`` nhỏ nhất và :ref:`start-and-stop`, chúng ta có thể "
+"đạt được hiệu ứng tương tự mà không cần thụt lề lồng nhau. Một phương thức "
+"trợ giúp đơn giản, ``create_patch``, đặt bản vá vào đúng vị trí và trả về "
+"bản mô phỏng đã tạo cho chúng ta::"
+
+#: ../../library/unittest.mock-examples.rst:967
+#, fuzzy
+msgid ""
+">>> class MyTest(unittest.TestCase):\n"
+"...\n"
+"...     def create_patch(self, name):\n"
+"...         patcher = patch(name)\n"
+"...         thing = patcher.start()\n"
+"...         self.addCleanup(patcher.stop)\n"
+"...         return thing\n"
+"...\n"
+"...     def test_foo(self):\n"
+"...         mock_foo = self.create_patch('mymodule.Foo')\n"
+"...         mock_bar = self.create_patch('mymodule.Bar')\n"
+"...         mock_spam = self.create_patch('mymodule.Spam')\n"
+"...\n"
+"...         assert mymodule.Foo is mock_foo\n"
+"...         assert mymodule.Bar is mock_bar\n"
+"...         assert mymodule.Spam is mock_spam\n"
+"...\n"
+">>> original = mymodule.Foo\n"
+">>> MyTest('test_foo').run()\n"
+">>> assert mymodule.Foo is original"
+msgstr ""
+">>> lớp MyTest(unittest.TestCase):\n"
+"...\n"
+"... def create_patch(tự, tên):\n"
+"... patcher = patch(name)\n"
+"... điều = patcher.start()\n"
+"... self.addCleanup(patcher.stop)\n"
+"... trả lại đồ\n"
+"...\n"
+"... def test_foo(self):\n"
+"... mock_foo = self.create_patch('mymodule.Foo')\n"
+"... mock_bar = self.create_patch('mymodule.Bar')\n"
+"... mock_spam = self.create_patch('mymodule.Spam')\n"
+"...\n"
+"... khẳng định mymodule.Foo là mock_foo\n"
+"... khẳng định mymodule.Bar là mock_bar\n"
+"... khẳng định mymodule.Spam là mock_spam\n"
+"...\n"
+">>> gốc = mymodule.Foo\n"
+">>> MyTest('test_foo').run()\n"
+">>> khẳng định mymodule.Foo là bản gốc"
+
+#: ../../library/unittest.mock-examples.rst:990
+#, fuzzy
+msgid "Mocking a dictionary with MagicMock"
+msgstr "Chế nhạo từ điển bằng MagicMock"
+
+#: ../../library/unittest.mock-examples.rst:992
+#, fuzzy
+msgid ""
+"You may want to mock a dictionary, or other container object, recording all "
+"access to it whilst having it still behave like a dictionary."
+msgstr ""
+"Bạn có thể muốn mô phỏng một từ điển hoặc đối tượng chứa khác, ghi lại tất "
+"cả quyền truy cập vào nó trong khi nó vẫn hoạt động giống như một từ điển."
+
+#: ../../library/unittest.mock-examples.rst:995
+#, fuzzy
+msgid ""
+"We can do this with :class:`MagicMock`, which will behave like a dictionary,"
+" and using :data:`~Mock.side_effect` to delegate dictionary access to a real"
+" underlying dictionary that is under our control."
+msgstr ""
+"Chúng tôi có thể thực hiện việc này với :class:`MagicMock`, nó sẽ hoạt động "
+"giống như một từ điển và sử dụng :data:`~Mock.side_effect` để ủy quyền quyền"
+" truy cập từ điển vào một từ điển cơ bản thực sự nằm dưới sự kiểm soát của "
+"chúng tôi."
+
+#: ../../library/unittest.mock-examples.rst:999
+#, fuzzy
+msgid ""
+"When the :meth:`~object.__getitem__` and :meth:`~object.__setitem__` methods"
+" of our ``MagicMock`` are called (normal dictionary access) then "
+"``side_effect`` is called with the key (and in the case of ``__setitem__`` "
+"the value too). We can also control what is returned."
+msgstr ""
+"Khi các phương thức :meth:`~object.__getitem__` và "
+":meth:`~object.__setitem__` của ``MagicMock`` của chúng tôi được gọi (truy "
+"cập từ điển thông thường) thì ``side_effect`` được gọi bằng khóa (và trong "
+"trường hợp ``__setitem__`` thì cả giá trị nữa). Chúng tôi cũng có thể kiểm "
+"soát những gì được trả lại."
+
+#: ../../library/unittest.mock-examples.rst:1004
+#, fuzzy
+msgid ""
+"After the ``MagicMock`` has been used we can use attributes like "
+":data:`~Mock.call_args_list` to assert about how the dictionary was used:"
+msgstr ""
+"Sau khi sử dụng ``MagicMock``, chúng ta có thể sử dụng các thuộc tính như "
+":data:`~Mock.call_args_list` để xác nhận về cách sử dụng từ điển:"
+
+#: ../../library/unittest.mock-examples.rst:1020
+#, fuzzy
+msgid ""
+"An alternative to using ``MagicMock`` is to use ``Mock`` and *only* provide "
+"the magic methods you specifically want:"
+msgstr ""
+"Một cách khác để sử dụng ``MagicMock`` là sử dụng ``Mock`` và *only* cung "
+"cấp các phương pháp kỳ diệu mà bạn đặc biệt muốn:"
+
+#: ../../library/unittest.mock-examples.rst:1027
+#, fuzzy
+msgid ""
+"A *third* option is to use ``MagicMock`` but passing in ``dict`` as the "
+"*spec* (or *spec_set*) argument so that the ``MagicMock`` created only has "
+"dictionary magic methods available:"
+msgstr ""
+"Tùy chọn *third* là sử dụng ``MagicMock`` nhưng chuyển vào ``dict`` làm đối "
+"số *spec* (hoặc *spec_set*) để ``MagicMock`` được tạo chỉ có sẵn các phương "
+"thức ma thuật từ điển:"
+
+#: ../../library/unittest.mock-examples.rst:1035
+#, fuzzy
+msgid ""
+"With these side effect functions in place, the ``mock`` will behave like a "
+"normal dictionary but recording the access. It even raises a :exc:`KeyError`"
+" if you try to access a key that doesn't exist."
+msgstr ""
+"Với các chức năng tác dụng phụ này, ``mock`` sẽ hoạt động giống như một từ "
+"điển bình thường nhưng ghi lại quyền truy cập. Nó thậm chí còn tăng "
+":exc:`KeyError` nếu bạn cố truy cập vào một khóa không tồn tại."
+
+#: ../../library/unittest.mock-examples.rst:1054
+#, fuzzy
+msgid ""
+"After it has been used you can make assertions about the access using the "
+"normal mock methods and attributes:"
+msgstr ""
+"Sau khi nó được sử dụng, bạn có thể đưa ra các xác nhận về quyền truy cập "
+"bằng các thuộc tính và phương thức mô phỏng thông thường:"
+
+#: ../../library/unittest.mock-examples.rst:1066
+#, fuzzy
+msgid "Mock subclasses and their attributes"
+msgstr "Các lớp con mô phỏng và thuộc tính của chúng"
+
+#: ../../library/unittest.mock-examples.rst:1068
+#, fuzzy
+msgid ""
+"There are various reasons why you might want to subclass :class:`Mock`. One "
+"reason might be to add helper methods. Here's a silly example:"
+msgstr ""
+"Có nhiều lý do khác nhau khiến bạn muốn phân lớp :class:`Mock`. Một lý do có"
+" thể là thêm các phương thức trợ giúp. Đây là một ví dụ ngớ ngẩn:"
+
+#: ../../library/unittest.mock-examples.rst:1084
+#, fuzzy
+msgid ""
+"The standard behaviour for ``Mock`` instances is that attributes and the "
+"return value mocks are of the same type as the mock they are accessed on. "
+"This ensures that ``Mock`` attributes are ``Mocks`` and ``MagicMock`` "
+"attributes are ``MagicMocks`` [#]_. So if you're subclassing to add helper "
+"methods then they'll also be available on the attributes and return value "
+"mock of instances of your subclass."
+msgstr ""
+"Hành vi tiêu chuẩn cho các phiên bản ``Mock`` là các thuộc tính và mô hình "
+"giá trị trả về có cùng loại với mô hình mà chúng được truy cập. Điều này đảm"
+" bảo rằng thuộc tính ``Mock`` là ``Mocks`` và thuộc tính ``MagicMock`` là "
+"``MagicMocks`` [#]_. Vì vậy, nếu bạn đang phân lớp để thêm các phương thức "
+"trợ giúp thì chúng cũng sẽ có sẵn trên các thuộc tính và giá trị trả về mô "
+"phỏng các phiên bản của lớp con của bạn."
+
+#: ../../library/unittest.mock-examples.rst:1100
+#, fuzzy
+msgid ""
+"Sometimes this is inconvenient. For example, `one user "
+"<https://code.google.com/archive/p/mock/issues/105>`_ is subclassing mock to"
+" created a `Twisted adaptor "
+"<https://twisted.org/documents/11.0.0/api/twisted.python.components.html>`_."
+" Having this applied to attributes too actually causes errors."
+msgstr ""
+"Đôi khi điều này thật bất tiện. Ví dụ: `one user "
+"<https://code.google.com/archive/p/mock/issues/105>`_ là mô phỏng phân lớp "
+"con để tạo `Twisted adaptor "
+"<https://twisted.org/documents/11.0.0/api/twisted.python.components.html>`_."
+" Việc áp dụng điều này cho các thuộc tính cũng thực sự gây ra lỗi."
+
+#: ../../library/unittest.mock-examples.rst:1106
+#, fuzzy
+msgid ""
+"``Mock`` (in all its flavours) uses a method called ``_get_child_mock`` to "
+"create these \"sub-mocks\" for attributes and return values. You can prevent"
+" your subclass being used for attributes by overriding this method. The "
+"signature is that it takes arbitrary keyword arguments (``**kwargs``) which "
+"are then passed onto the mock constructor:"
+msgstr ""
+"``Mock`` (trong tất cả các phiên bản của nó) sử dụng một phương thức có tên "
+"``_get_child_mock`` để tạo các \"mô hình phụ\" này cho các thuộc tính và giá"
+" trị trả về. Bạn có thể ngăn việc sử dụng lớp con của mình cho các thuộc "
+"tính bằng cách ghi đè phương thức này. Đặc điểm là nó lấy các đối số từ khóa"
+" tùy ý (``**kwargs``) sau đó được chuyển vào hàm tạo giả:"
+
+#: ../../library/unittest.mock-examples.rst:1123
+#, fuzzy
+msgid ""
+"An exception to this rule are the non-callable mocks. Attributes use the "
+"callable variant because otherwise non-callable mocks couldn't have callable"
+" methods."
+msgstr ""
+"Một ngoại lệ cho quy tắc này là các mô hình không thể gọi được. Các thuộc "
+"tính sử dụng biến thể có thể gọi được vì nếu không thì các mô hình không thể"
+" gọi được sẽ không thể có các phương thức có thể gọi được."
+
+#: ../../library/unittest.mock-examples.rst:1129
+#, fuzzy
+msgid "Mocking imports with patch.dict"
+msgstr "Chế nhạo nhập khẩu bằng patch.dict"
+
+#: ../../library/unittest.mock-examples.rst:1131
+#, fuzzy
+msgid ""
+"One situation where mocking can be hard is where you have a local import "
+"inside a function. These are harder to mock because they aren't using an "
+"object from the module namespace that we can patch out."
+msgstr ""
+"Một tình huống mà việc chế nhạo có thể khó khăn là khi bạn nhập cục bộ bên "
+"trong một hàm. Những điều này khó mô phỏng hơn vì chúng không sử dụng một "
+"đối tượng từ không gian tên mô-đun mà chúng ta có thể vá lỗi."
+
+#: ../../library/unittest.mock-examples.rst:1135
+#, fuzzy
+msgid ""
+"Generally local imports are to be avoided. They are sometimes done to "
+"prevent circular dependencies, for which there is *usually* a much better "
+"way to solve the problem (refactor the code) or to prevent \"up front "
+"costs\" by delaying the import. This can also be solved in better ways than "
+"an unconditional local import (store the module as a class or module "
+"attribute and only do the import on first use)."
+msgstr ""
+"Nói chung nên tránh nhập khẩu nội địa. Đôi khi chúng được thực hiện để ngăn "
+"chặn sự phụ thuộc vòng tròn, trong đó *usually* có một cách tốt hơn nhiều để"
+" giải quyết vấn đề (cấu trúc lại mã) hoặc để ngăn chặn \"chi phí trả trước\""
+" bằng cách trì hoãn việc nhập. Điều này cũng có thể được giải quyết theo "
+"những cách tốt hơn so với nhập cục bộ vô điều kiện (lưu trữ mô-đun dưới dạng"
+" thuộc tính lớp hoặc mô-đun và chỉ thực hiện nhập khi sử dụng lần đầu)."
+
+#: ../../library/unittest.mock-examples.rst:1142
+#, fuzzy
+msgid ""
+"That aside there is a way to use ``mock`` to affect the results of an "
+"import. Importing fetches an *object* from the :data:`sys.modules` "
+"dictionary. Note that it fetches an *object*, which need not be a module. "
+"Importing a module for the first time results in a module object being put "
+"in ``sys.modules``, so usually when you import something you get a module "
+"back. This need not be the case however."
+msgstr ""
+"Ngoài ra, còn có một cách sử dụng ``mock`` để ảnh hưởng đến kết quả nhập. "
+"Quá trình nhập sẽ tìm nạp *object* từ từ điển :data:`sys.modules`. Lưu ý "
+"rằng nó tìm nạp *object*, không cần phải là mô-đun. Việc nhập mô-đun lần đầu"
+" tiên dẫn đến đối tượng mô-đun được đặt trong ``sys.modules``, do đó, thông "
+"thường khi bạn nhập nội dung nào đó, bạn sẽ nhận được mô-đun trở lại. Tuy "
+"nhiên, điều này không cần thiết phải như vậy."
+
+#: ../../library/unittest.mock-examples.rst:1149
+#, fuzzy
+msgid ""
+"This means you can use :func:`patch.dict` to *temporarily* put a mock in "
+"place in :data:`sys.modules`. Any imports whilst this patch is active will "
+"fetch the mock. When the patch is complete (the decorated function exits, "
+"the with statement body is complete or ``patcher.stop()`` is called) then "
+"whatever was there previously will be restored safely."
+msgstr ""
+"Điều này có nghĩa là bạn có thể sử dụng :func:`patch.dict` để *temporarily* "
+"đặt một bản mô phỏng vào :data:`sys.modules`. Mọi hoạt động nhập trong khi "
+"bản vá này đang hoạt động sẽ lấy bản mô phỏng. Khi bản vá hoàn tất (hàm "
+"trang trí thoát, phần thân câu lệnh with hoàn tất hoặc ``patcher.stop()`` "
+"được gọi) thì mọi thứ ở đó trước đó sẽ được khôi phục an toàn."
+
+#: ../../library/unittest.mock-examples.rst:1155
+#, fuzzy
+msgid "Here's an example that mocks out the 'fooble' module."
+msgstr "Đây là một ví dụ mô phỏng mô-đun 'ngu ngốc'."
+
+#: ../../library/unittest.mock-examples.rst:1167
+#, fuzzy
+msgid ""
+"As you can see the ``import fooble`` succeeds, but on exit there is no "
+"'fooble' left in :data:`sys.modules`."
+msgstr ""
+"Như bạn có thể thấy ``import fooble`` thành công, nhưng khi thoát ra, không "
+"còn 'kẻ ngốc' nào trong :data:`sys.modules`."
+
+#: ../../library/unittest.mock-examples.rst:1170
+#, fuzzy
+msgid "This also works for the ``from module import name`` form:"
+msgstr "Điều này cũng hoạt động với dạng ``from module import name``:"
+
+#: ../../library/unittest.mock-examples.rst:1180
+#, fuzzy
+msgid "With slightly more work you can also mock package imports:"
+msgstr ""
+"Với công việc nhiều hơn một chút, bạn cũng có thể mô phỏng việc nhập gói:"
+
+#: ../../library/unittest.mock-examples.rst:1193
+#, fuzzy
+msgid "Tracking order of calls and less verbose call assertions"
+msgstr "Theo dõi thứ tự cuộc gọi và xác nhận cuộc gọi ít chi tiết hơn"
+
+#: ../../library/unittest.mock-examples.rst:1195
+#, fuzzy
+msgid ""
+"The :class:`Mock` class allows you to track the *order* of method calls on "
+"your mock objects through the :attr:`~Mock.method_calls` attribute. This "
+"doesn't allow you to track the order of calls between separate mock objects,"
+" however we can use :attr:`~Mock.mock_calls` to achieve the same effect."
+msgstr ""
+"Lớp :class:`Mock` cho phép bạn theo dõi *order* của các lệnh gọi phương thức"
+" trên các đối tượng mô phỏng của bạn thông qua thuộc tính "
+":attr:`~Mock.method_calls`. Điều này không cho phép bạn theo dõi thứ tự cuộc"
+" gọi giữa các đối tượng mô phỏng riêng biệt, tuy nhiên chúng ta có thể sử "
+"dụng :attr:`~Mock.mock_calls` để đạt được hiệu quả tương tự."
+
+#: ../../library/unittest.mock-examples.rst:1200
+#, fuzzy
+msgid ""
+"Because mocks track calls to child mocks in ``mock_calls``, and accessing an"
+" arbitrary attribute of a mock creates a child mock, we can create our "
+"separate mocks from a parent one. Calls to those child mock will then all be"
+" recorded, in order, in the ``mock_calls`` of the parent:"
+msgstr ""
+"Bởi vì các mô phỏng theo dõi các cuộc gọi đến các mô phỏng con trong "
+"``mock_calls`` và việc truy cập vào một thuộc tính tùy ý của một mô phỏng sẽ"
+" tạo ra một mô phỏng con, nên chúng ta có thể tạo các mô phỏng riêng biệt từ"
+" mô phỏng gốc. Sau đó, tất cả các cuộc gọi đến mô phỏng con đó sẽ được ghi "
+"lại theo thứ tự trong ``mock_calls`` của cha mẹ:"
+
+#: ../../library/unittest.mock-examples.rst:1217
+#, fuzzy
+msgid ""
+"We can then assert about the calls, including the order, by comparing with "
+"the ``mock_calls`` attribute on the manager mock:"
+msgstr ""
+"Sau đó, chúng tôi có thể xác nhận về các lệnh gọi, bao gồm cả thứ tự, bằng "
+"cách so sánh với thuộc tính ``mock_calls`` trên mô hình trình quản lý:"
+
+#: ../../library/unittest.mock-examples.rst:1224
+#, fuzzy
+msgid ""
+"If ``patch`` is creating, and putting in place, your mocks then you can "
+"attach them to a manager mock using the :meth:`~Mock.attach_mock` method. "
+"After attaching calls will be recorded in ``mock_calls`` of the manager. ::"
+msgstr ""
+"Nếu ``patch`` đang tạo và đặt các mô hình của bạn vào vị trí thì bạn có thể "
+"đính kèm chúng vào một mô hình quản lý bằng phương pháp "
+":meth:`~Mock.attach_mock`. Sau khi đính kèm cuộc gọi sẽ được ghi vào "
+"``mock_calls`` của người quản lý. ::"
+
+#: ../../library/unittest.mock-examples.rst:1228
+#, fuzzy
+msgid ""
+">>> manager = MagicMock()\n"
+">>> with patch('mymodule.Class1') as MockClass1:\n"
+"...     with patch('mymodule.Class2') as MockClass2:\n"
+"...         manager.attach_mock(MockClass1, 'MockClass1')\n"
+"...         manager.attach_mock(MockClass2, 'MockClass2')\n"
+"...         MockClass1().foo()\n"
+"...         MockClass2().bar()\n"
+"<MagicMock name='mock.MockClass1().foo()' id='...'>\n"
+"<MagicMock name='mock.MockClass2().bar()' id='...'>\n"
+">>> manager.mock_calls\n"
+"[call.MockClass1(),\n"
+"call.MockClass1().foo(),\n"
+"call.MockClass2(),\n"
+"call.MockClass2().bar()]"
+msgstr ""
+">>> người quản lý = MagicMock()\n"
+">>> với bản vá('mymodule.Class1') là MockClass1:\n"
+"... với bản vá('mymodule.Class2') là MockClass2:\n"
+"... manager.attach_mock(MockClass1, 'MockClass1')\n"
+"... manager.attach_mock(MockClass2, 'MockClass2')\n"
+"... MockClass1().foo()\n"
+"... MockClass2().bar()\n"
+"<MagicMock name='mock.MockClass1().foo()' id='...'>\n"
+"<MagicMock name='mock.MockClass2().bar()' id='...'>\n"
+">>> manager.mock_calls\n"
+"[gọi.MockClass1(),\n"
+"gọi.MockClass1().foo(),\n"
+"gọi.MockClass2(),\n"
+"call.MockClass2().bar()]"
+
+#: ../../library/unittest.mock-examples.rst:1243
+#, fuzzy
+msgid ""
+"If many calls have been made, but you're only interested in a particular "
+"sequence of them then an alternative is to use the "
+":meth:`~Mock.assert_has_calls` method. This takes a list of calls "
+"(constructed with the :data:`call` object). If that sequence of calls are in"
+" :attr:`~Mock.mock_calls` then the assert succeeds."
+msgstr ""
+"Nếu nhiều cuộc gọi đã được thực hiện nhưng bạn chỉ quan tâm đến một chuỗi cụ"
+" thể trong số đó thì một giải pháp thay thế là sử dụng phương pháp "
+":meth:`~Mock.assert_has_calls`. Cái này lấy danh sách các cuộc gọi (được xây"
+" dựng bằng đối tượng :data:`call`). Nếu chuỗi lệnh gọi đó nằm trong "
+":attr:`~Mock.mock_calls` thì xác nhận thành công."
+
+#: ../../library/unittest.mock-examples.rst:1257
+#, fuzzy
+msgid ""
+"Even though the chained call ``m.one().two().three()`` aren't the only calls"
+" that have been made to the mock, the assert still succeeds."
+msgstr ""
+"Mặc dù lệnh gọi ``m.one().two().three()`` theo chuỗi không phải là lệnh gọi "
+"duy nhất được thực hiện cho bản mô phỏng, nhưng khẳng định vẫn thành công."
+
+#: ../../library/unittest.mock-examples.rst:1260
+#, fuzzy
+msgid ""
+"Sometimes a mock may have several calls made to it, and you are only "
+"interested in asserting about *some* of those calls. You may not even care "
+"about the order. In this case you can pass ``any_order=True`` to "
+"``assert_has_calls``:"
+msgstr ""
+"Đôi khi một mô phỏng có thể có một số lệnh gọi được thực hiện và bạn chỉ "
+"quan tâm đến việc xác nhận khoảng *some* của các lệnh gọi đó. Bạn thậm chí "
+"có thể không quan tâm đến thứ tự. Trong trường hợp này bạn có thể chuyển "
+"``any_order=True`` sang ``assert_has_calls``:"
+
+#: ../../library/unittest.mock-examples.rst:1272
+#, fuzzy
+msgid "More complex argument matching"
+msgstr "Kết hợp đối số phức tạp hơn"
+
+#: ../../library/unittest.mock-examples.rst:1274
+#, fuzzy
+msgid ""
+"Using the same basic concept as :data:`ANY` we can implement matchers to do "
+"more complex assertions on objects used as arguments to mocks."
+msgstr ""
+"Sử dụng khái niệm cơ bản tương tự như :data:`ANY`, chúng ta có thể triển "
+"khai trình so khớp để thực hiện các xác nhận phức tạp hơn trên các đối tượng"
+" được sử dụng làm đối số cho mô phỏng."
+
+#: ../../library/unittest.mock-examples.rst:1277
+#, fuzzy
+msgid ""
+"Suppose we expect some object to be passed to a mock that by default "
+"compares equal based on object identity (which is the Python default for "
+"user defined classes). To use :meth:`~Mock.assert_called_with` we would need"
+" to pass in the exact same object. If we are only interested in some of the "
+"attributes of this object then we can create a matcher that will check these"
+" attributes for us."
+msgstr ""
+"Giả sử chúng ta mong đợi một số đối tượng được chuyển đến một mô hình giả mà"
+" theo mặc định sẽ so sánh bằng nhau dựa trên danh tính đối tượng (là mặc "
+"định của Python cho các lớp do người dùng xác định). Để sử dụng "
+":meth:`~Mock.assert_called_with`, chúng ta cần truyền vào cùng một đối "
+"tượng. Nếu chúng ta chỉ quan tâm đến một số thuộc tính của đối tượng này thì"
+" chúng ta có thể tạo một trình so khớp để kiểm tra các thuộc tính này cho "
+"chúng ta."
+
+#: ../../library/unittest.mock-examples.rst:1284
+#, fuzzy
+msgid ""
+"You can see in this example how a 'standard' call to ``assert_called_with`` "
+"isn't sufficient:"
+msgstr ""
+"Bạn có thể thấy trong ví dụ này lệnh gọi 'tiêu chuẩn' tới "
+"``assert_called_with`` là không đủ:"
+
+#: ../../library/unittest.mock-examples.rst:1300
+#, fuzzy
+msgid ""
+"A comparison function for our ``Foo`` class might look something like this:"
+msgstr ""
+"Hàm so sánh cho lớp ``Foo`` của chúng ta có thể trông giống như thế này:"
+
+#: ../../library/unittest.mock-examples.rst:1312
+#, fuzzy
+msgid ""
+"And a matcher object that can use comparison functions like this for its "
+"equality operation would look something like this:"
+msgstr ""
+"Và một đối tượng so khớp có thể sử dụng các hàm so sánh như thế này cho phép"
+" tính đẳng thức của nó sẽ trông giống như thế này:"
+
+#: ../../library/unittest.mock-examples.rst:1323
+#, fuzzy
+msgid "Putting all this together:"
+msgstr "Đặt tất cả những thứ này lại với nhau:"
+
+#: ../../library/unittest.mock-examples.rst:1328
+#, fuzzy
+msgid ""
+"The ``Matcher`` is instantiated with our compare function and the ``Foo`` "
+"object we want to compare against. In ``assert_called_with`` the ``Matcher``"
+" equality method will be called, which compares the object the mock was "
+"called with against the one we created our matcher with. If they match then "
+"``assert_called_with`` passes, and if they don't an :exc:`AssertionError` is"
+" raised:"
+msgstr ""
+"``Matcher`` được khởi tạo bằng hàm so sánh của chúng tôi và đối tượng "
+"``Foo`` mà chúng tôi muốn so sánh. Trong ``assert_called_with``, phương thức"
+" đẳng thức ``Matcher`` sẽ được gọi, phương thức này sẽ so sánh đối tượng mà "
+"mô hình được gọi với đối tượng mà chúng ta đã tạo đối tượng so khớp. Nếu "
+"chúng khớp nhau thì ``assert_called_with`` sẽ vượt qua và nếu không thì "
+":exc:`AssertionError` sẽ được nâng lên:"
+
+#: ../../library/unittest.mock-examples.rst:1341
+#, fuzzy
+msgid ""
+"With a bit of tweaking you could have the comparison function raise the "
+":exc:`AssertionError` directly and provide a more useful failure message."
+msgstr ""
+"Với một chút tinh chỉnh, bạn có thể yêu cầu chức năng so sánh nâng trực tiếp"
+" :exc:`AssertionError` và cung cấp thông báo lỗi hữu ích hơn."
+
+#: ../../library/unittest.mock-examples.rst:1344
+#, fuzzy
+msgid ""
+"As of version 1.5, the Python testing library `PyHamcrest "
+"<https://pyhamcrest.readthedocs.io/>`_ provides similar functionality, that "
+"may be useful here, in the form of its equality matcher "
+"(`hamcrest.library.integration.match_equality "
+"<https://pyhamcrest.readthedocs.io/en/release-1.8/integration/#module-"
+"hamcrest.library.integration.match_equality>`_)."
+msgstr ""
+"Kể từ phiên bản 1.5, thư viện thử nghiệm Python `PyHamcrest "
+"<https://pyhamcrest.readthedocs.io/>`_ cung cấp chức năng tương tự, có thể "
+"hữu ích ở đây, dưới dạng trình so khớp đẳng thức "
+"(`hamcrest.library.integration.match_equality "
+"<https://pyhamcrest.readthedocs.io/en/release-1.8/integration/#module-"
+"hamcrest.library.integration.match_equality>`_)."

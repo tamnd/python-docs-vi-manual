@@ -1,0 +1,1700 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/profile.rst:5
+#, fuzzy
+msgid "The Python Profilers"
+msgstr "Trình biên dịch Python"
+
+#: ../../library/profile.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/profile.py` and :source:`Lib/pstats.py`"
+msgstr "**Source code:** :source:`Lib/profile.py` và :source:`Lib/pstats.py`"
+
+#: ../../library/profile.rst:14
+#, fuzzy
+msgid "Introduction to the profilers"
+msgstr "Giới thiệu về hồ sơ"
+
+#: ../../library/profile.rst:20
+#, fuzzy
+msgid ""
+":mod:`cProfile` and :mod:`profile` provide :dfn:`deterministic profiling` of"
+" Python programs. A :dfn:`profile` is a set of statistics that describes how"
+" often and for how long various parts of the program executed. These "
+"statistics can be formatted into reports via the :mod:`pstats` module."
+msgstr ""
+":mod:`cProfile` và :mod:`profile` cung cấp :dfn:`deterministic profiling` "
+"cho các chương trình Python. Zz003zz là một tập hợp số liệu thống kê mô tả "
+"tần suất và thời gian thực hiện các phần khác nhau của chương trình. Những "
+"thống kê này có thể được định dạng thành báo cáo thông qua mô-đun "
+":mod:`pstats`."
+
+#: ../../library/profile.rst:25
+#, fuzzy
+msgid ""
+"The Python standard library provides two different implementations of the "
+"same profiling interface:"
+msgstr ""
+"Thư viện chuẩn Python cung cấp hai cách triển khai khác nhau của cùng một "
+"giao diện lược tả:"
+
+#: ../../library/profile.rst:28
+#, fuzzy
+msgid ""
+":mod:`cProfile` is recommended for most users; it's a C extension with "
+"reasonable overhead that makes it suitable for profiling long-running "
+"programs.  Based on :mod:`lsprof`, contributed by Brett Rosen and Ted "
+"Czotter."
+msgstr ""
+":mod:`cProfile` được khuyên dùng cho hầu hết người dùng; đó là một tiện ích "
+"mở rộng C với chi phí hợp lý giúp nó phù hợp để lập cấu hình các chương "
+"trình chạy dài.  Dựa trên :mod:`lsprof`, do Brett Rosen và Ted Czotter đóng "
+"góp."
+
+#: ../../library/profile.rst:33
+#, fuzzy
+msgid ""
+":mod:`profile`, a pure Python module whose interface is imitated by "
+":mod:`cProfile`, but which adds significant overhead to profiled programs. "
+"If you're trying to extend the profiler in some way, the task might be "
+"easier with this module.  Originally designed and written by Jim Roskind."
+msgstr ""
+":mod:`profile`, một mô-đun Python thuần túy có giao diện được bắt chước bởi "
+":mod:`cProfile`, nhưng bổ sung thêm chi phí đáng kể cho các chương trình "
+"được định hình. Nếu bạn đang cố gắng mở rộng trình lược tả theo một cách nào"
+" đó, tác vụ có thể dễ dàng hơn với mô-đun này.  Được thiết kế và viết ban "
+"đầu bởi Jim Roskind."
+
+#: ../../library/profile.rst:40
+#, fuzzy
+msgid ""
+"The profiler modules are designed to provide an execution profile for a "
+"given program, not for benchmarking purposes (for that, there is "
+":mod:`timeit` for reasonably accurate results).  This particularly applies "
+"to benchmarking Python code against C code: the profilers introduce overhead"
+" for Python code, but not for C-level functions, and so the C code would "
+"seem faster than any Python one."
+msgstr ""
+"Các mô-đun trình hồ sơ được thiết kế để cung cấp hồ sơ thực thi cho một "
+"chương trình nhất định, không nhằm mục đích đo điểm chuẩn (vì mục đích đó, "
+"có :mod:`timeit` để có kết quả chính xác hợp lý).  Điều này đặc biệt áp dụng"
+" cho việc đo điểm chuẩn của mã Python so với mã C: trình lược tả đưa ra chi "
+"phí chung cho mã Python, nhưng không áp dụng cho các hàm cấp C và do đó, mã "
+"C có vẻ nhanh hơn bất kỳ mã Python nào."
+
+#: ../../library/profile.rst:51
+#, fuzzy
+msgid "Instant User's Manual"
+msgstr "Hướng dẫn sử dụng tức thì"
+
+#: ../../library/profile.rst:53
+#, fuzzy
+msgid ""
+"This section is provided for users that \"don't want to read the manual.\" "
+"It provides a very brief overview, and allows a user to rapidly perform "
+"profiling on an existing application."
+msgstr ""
+"Phần này được cung cấp cho những người dùng “không muốn đọc hướng dẫn”. Nó "
+"cung cấp một cái nhìn tổng quan rất ngắn gọn và cho phép người dùng nhanh "
+"chóng thực hiện lập hồ sơ trên một ứng dụng hiện có."
+
+#: ../../library/profile.rst:57
+#, fuzzy
+msgid "To profile a function that takes a single argument, you can do::"
+msgstr "Để cấu hình một hàm có một đối số duy nhất, bạn có thể thực hiện ::"
+
+#: ../../library/profile.rst:59
+#, fuzzy
+msgid ""
+"import cProfile\n"
+"import re\n"
+"cProfile.run('re.compile(\"foo|bar\")')"
+msgstr ""
+"nhập cProfile\n"
+"nhập lại\n"
+"cProfile.run('re.compile(\"foo|bar\")')"
+
+#: ../../library/profile.rst:63
+#, fuzzy
+msgid ""
+"(Use :mod:`profile` instead of :mod:`cProfile` if the latter is not "
+"available on your system.)"
+msgstr ""
+"(Sử dụng :mod:`profile` thay vì :mod:`cProfile` nếu cái sau không có sẵn "
+"trên hệ thống của bạn.)"
+
+#: ../../library/profile.rst:66
+#, fuzzy
+msgid ""
+"The above action would run :func:`re.compile` and print profile results like"
+" the following::"
+msgstr ""
+"Hành động trên sẽ chạy :func:`re.compile` và in kết quả hồ sơ như sau::"
+
+#: ../../library/profile.rst:69
+#, python-brace-format, fuzzy
+msgid ""
+"      214 function calls (207 primitive calls) in 0.002 seconds\n"
+"\n"
+"Ordered by: cumulative time\n"
+"\n"
+"ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n"
+"     1    0.000    0.000    0.002    0.002 {built-in method builtins.exec}\n"
+"     1    0.000    0.000    0.001    0.001 <string>:1(<module>)\n"
+"     1    0.000    0.000    0.001    0.001 __init__.py:250(compile)\n"
+"     1    0.000    0.000    0.001    0.001 __init__.py:289(_compile)\n"
+"     1    0.000    0.000    0.000    0.000 _compiler.py:759(compile)\n"
+"     1    0.000    0.000    0.000    0.000 _parser.py:937(parse)\n"
+"     1    0.000    0.000    0.000    0.000 _compiler.py:598(_code)\n"
+"     1    0.000    0.000    0.000    0.000 _parser.py:435(_parse_sub)"
+msgstr ""
+"214 lệnh gọi hàm (207 lệnh gọi nguyên thủy) trong 0,002 giây\n"
+"\n"
+"Sắp xếp theo: thời gian tích lũy\n"
+"\n"
+"ncalls tottime percall tên tệp cumtime percall:lineno(function)\n"
+"     1 0,000 0,000 0,002 0,002 {phương thức dựng sẵn buildins.exec}\n"
+"     1 0,000 0,000 0,001 0,001 <string>:1(<module>)\n"
+"     1 0,000 0,000 0,001 0,001 __init__.py:250(biên dịch)\n"
+"     1 0,000 0,000 0,001 0,001 __init__.py:289(_compile)\n"
+"     1 0,000 0,000 0,000 0,000 _compiler.py:759(biên dịch)\n"
+"     1 0,000 0,000 0,000 0,000 _parser.py:937(phân tích cú pháp)\n"
+"     1 0,000 0,000 0,000 0,000 _compiler.py:598(_code)\n"
+"     1 0,000 0,000 0,000 0,000 _parser.py:435(_parse_sub)"
+
+#: ../../library/profile.rst:83
+#, fuzzy
+msgid ""
+"The first line indicates that 214 calls were monitored.  Of those calls, 207"
+" were :dfn:`primitive`, meaning that the call was not induced via recursion."
+" The next line: ``Ordered by: cumulative time`` indicates the output is "
+"sorted by the ``cumtime`` values. The column headings include:"
+msgstr ""
+"Dòng đầu tiên cho biết 214 cuộc gọi đã được theo dõi.  Trong số các cuộc gọi"
+" đó, 207 cuộc gọi là :dfn:`primitive`, nghĩa là cuộc gọi không được thực "
+"hiện thông qua đệ quy. Dòng tiếp theo: ``Ordered by: cumulative time`` cho "
+"biết đầu ra được sắp xếp theo các giá trị ``cumtime``. Các tiêu đề cột bao "
+"gồm:"
+
+#: ../../library/profile.rst:88
+#, fuzzy
+msgid "ncalls"
+msgstr "ncall"
+
+#: ../../library/profile.rst:89
+#, fuzzy
+msgid "for the number of calls."
+msgstr "về số lượng cuộc gọi."
+
+#: ../../library/profile.rst:91
+#, fuzzy
+msgid "tottime"
+msgstr "toàn thời gian"
+
+#: ../../library/profile.rst:92
+#, fuzzy
+msgid ""
+"for the total time spent in the given function (and excluding time made in "
+"calls to sub-functions)"
+msgstr ""
+"trong tổng thời gian dành cho chức năng nhất định (và không bao gồm thời "
+"gian thực hiện khi gọi đến các chức năng phụ)"
+
+#: ../../library/profile.rst:95 ../../library/profile.rst:102
+#, fuzzy
+msgid "percall"
+msgstr "cuộc gọi"
+
+#: ../../library/profile.rst:96
+#, fuzzy
+msgid "is the quotient of ``tottime`` divided by ``ncalls``"
+msgstr "là thương của ``tottime`` chia cho ``ncalls``"
+
+#: ../../library/profile.rst:98
+#, fuzzy
+msgid "cumtime"
+msgstr "xuất tinh"
+
+#: ../../library/profile.rst:99
+#, fuzzy
+msgid ""
+"is the cumulative time spent in this and all subfunctions (from invocation "
+"till exit). This figure is accurate *even* for recursive functions."
+msgstr ""
+"là thời gian tích lũy dành cho chức năng này và tất cả các chức năng con (từ"
+" khi gọi đến khi thoát). Con số này chính xác *even* cho hàm đệ quy."
+
+#: ../../library/profile.rst:103
+#, fuzzy
+msgid "is the quotient of ``cumtime`` divided by primitive calls"
+msgstr "là thương của ``cumtime`` chia cho các lệnh gọi nguyên thủy"
+
+#: ../../library/profile.rst:105
+#, fuzzy
+msgid "filename:lineno(function)"
+msgstr "tên tập tin:lineno(chức năng)"
+
+#: ../../library/profile.rst:106
+#, fuzzy
+msgid "provides the respective data of each function"
+msgstr "cung cấp dữ liệu tương ứng của từng chức năng"
+
+#: ../../library/profile.rst:108
+#, fuzzy
+msgid ""
+"When there are two numbers in the first column (for example ``3/1``), it "
+"means that the function recursed.  The second value is the number of "
+"primitive calls and the former is the total number of calls.  Note that when"
+" the function does not recurse, these two values are the same, and only the "
+"single figure is printed."
+msgstr ""
+"Khi có hai số trong cột đầu tiên (ví dụ ``3/1``), điều đó có nghĩa là hàm "
+"được đệ quy.  Giá trị thứ hai là số lượng cuộc gọi nguyên thủy và giá trị "
+"thứ nhất là tổng số cuộc gọi.  Lưu ý rằng khi hàm không lặp lại, hai giá trị"
+" này giống nhau và chỉ in một hình duy nhất."
+
+#: ../../library/profile.rst:114
+#, fuzzy
+msgid ""
+"Instead of printing the output at the end of the profile run, you can save "
+"the results to a file by specifying a filename to the :func:`run` function::"
+msgstr ""
+"Thay vì in kết quả khi kết thúc quá trình chạy hồ sơ, bạn có thể lưu kết quả"
+" vào một tệp bằng cách chỉ định tên tệp cho hàm :func:`run`::"
+
+#: ../../library/profile.rst:117
+#, fuzzy
+msgid ""
+"import cProfile\n"
+"import re\n"
+"cProfile.run('re.compile(\"foo|bar\")', 'restats')"
+msgstr ""
+"nhập cProfile\n"
+"nhập lại\n"
+"cProfile.run('re.compile(\"foo|bar\")', 'restats')"
+
+#: ../../library/profile.rst:121
+#, fuzzy
+msgid ""
+"The :class:`pstats.Stats` class reads profile results from a file and "
+"formats them in various ways."
+msgstr ""
+"Lớp :class:`pstats.Stats` đọc kết quả hồ sơ từ một tệp và định dạng chúng "
+"theo nhiều cách khác nhau."
+
+#: ../../library/profile.rst:128
+#, fuzzy
+msgid ""
+"The files :mod:`cProfile` and :mod:`profile` can also be invoked as a script"
+" to profile another script.  For example::"
+msgstr ""
+"Các tệp :mod:`cProfile` và :mod:`profile` cũng có thể được gọi dưới dạng tập"
+" lệnh để cấu hình tập lệnh khác.  Ví dụ::"
+
+#: ../../library/profile.rst:131
+#, fuzzy
+msgid ""
+"python -m cProfile [-o output_file] [-s sort_order] (-m module | "
+"myscript.py)"
+msgstr ""
+"python -m cProfile [-o đầu ra_file] [-s sắp xếp_order] (-m mô-đun | "
+"myscript.py)"
+
+#: ../../library/profile.rst:135
+#, fuzzy
+msgid "Writes the profile results to a file instead of to stdout."
+msgstr "Ghi kết quả hồ sơ vào một tập tin thay vì vào thiết bị xuất chuẩn."
+
+#: ../../library/profile.rst:139
+#, fuzzy
+msgid ""
+"Specifies one of the :func:`~pstats.Stats.sort_stats` sort values to sort "
+"the output by. This only applies when :option:`-o <cProfile -o>` is not "
+"supplied."
+msgstr ""
+"Chỉ định một trong các giá trị sắp xếp :func:`~pstats.Stats.sort_stats` để "
+"sắp xếp đầu ra theo. Điều này chỉ áp dụng khi :option:`-o <cProfile -o>` "
+"không được cung cấp."
+
+#: ../../library/profile.rst:145
+#, fuzzy
+msgid "Specifies that a module is being profiled instead of a script."
+msgstr "Chỉ định rằng một mô-đun đang được cấu hình thay vì tập lệnh."
+
+#: ../../library/profile.rst:147
+#, fuzzy
+msgid "Added the ``-m`` option to :mod:`cProfile`."
+msgstr "Đã thêm tùy chọn ``-m`` vào :mod:`cProfile`."
+
+#: ../../library/profile.rst:150
+#, fuzzy
+msgid "Added the ``-m`` option to :mod:`profile`."
+msgstr "Đã thêm tùy chọn ``-m`` vào :mod:`profile`."
+
+#: ../../library/profile.rst:153
+#, fuzzy
+msgid ""
+"The :mod:`pstats` module's :class:`~pstats.Stats` class has a variety of "
+"methods for manipulating and printing the data saved into a profile results "
+"file::"
+msgstr ""
+"Lớp :class:`~pstats.Stats` của mô-đun :mod:`pstats` có nhiều phương thức "
+"khác nhau để thao tác và in dữ liệu được lưu vào tệp kết quả hồ sơ::"
+
+#: ../../library/profile.rst:156
+#, fuzzy
+msgid ""
+"import pstats\n"
+"from pstats import SortKey\n"
+"p = pstats.Stats('restats')\n"
+"p.strip_dirs().sort_stats(-1).print_stats()"
+msgstr ""
+"nhập pstat\n"
+"từ pstats nhập SortKey\n"
+"p = pstats.Stats('restats')\n"
+"p.strip_dirs().sort_stats(-1).print_stats()"
+
+#: ../../library/profile.rst:161
+#, fuzzy
+msgid ""
+"The :meth:`~pstats.Stats.strip_dirs` method removed the extraneous path from"
+" all the module names. The :meth:`~pstats.Stats.sort_stats` method sorted "
+"all the entries according to the standard module/line/name string that is "
+"printed. The :meth:`~pstats.Stats.print_stats` method printed out all the "
+"statistics.  You might try the following sort calls::"
+msgstr ""
+"Phương thức :meth:`~pstats.Stats.strip_dirs` đã xóa đường dẫn không liên "
+"quan khỏi tất cả các tên mô-đun. Phương thức "
+":meth:`~pstats.Stats.sort_stats` đã sắp xếp tất cả các mục theo chuỗi mô-"
+"đun/dòng/tên tiêu chuẩn được in. Phương pháp "
+":meth:`~pstats.Stats.print_stats` in ra tất cả số liệu thống kê.  Bạn có thể"
+" thử các cuộc gọi sắp xếp sau::"
+
+#: ../../library/profile.rst:167
+#, fuzzy
+msgid ""
+"p.sort_stats(SortKey.NAME)\n"
+"p.print_stats()"
+msgstr ""
+"p.sort_stats(SortKey.NAME)\n"
+"p.print_stats()"
+
+#: ../../library/profile.rst:170
+#, fuzzy
+msgid ""
+"The first call will actually sort the list by function name, and the second "
+"call will print out the statistics.  The following are some interesting "
+"calls to experiment with::"
+msgstr ""
+"Cuộc gọi đầu tiên sẽ thực sự sắp xếp danh sách theo tên hàm và cuộc gọi thứ "
+"hai sẽ in ra số liệu thống kê.  Sau đây là một số lệnh gọi thú vị để thử "
+"nghiệm::"
+
+#: ../../library/profile.rst:174
+#, fuzzy
+msgid "p.sort_stats(SortKey.CUMULATIVE).print_stats(10)"
+msgstr "p.sort_stats(SortKey.CUMULATIVE).print_stats(10)"
+
+#: ../../library/profile.rst:176
+#, fuzzy
+msgid ""
+"This sorts the profile by cumulative time in a function, and then only "
+"prints the ten most significant lines.  If you want to understand what "
+"algorithms are taking time, the above line is what you would use."
+msgstr ""
+"Thao tác này sắp xếp cấu hình theo thời gian tích lũy trong một hàm và sau "
+"đó chỉ in mười dòng quan trọng nhất.  Nếu bạn muốn hiểu thuật toán nào đang "
+"tiêu tốn nhiều thời gian thì dòng trên là những gì bạn sẽ sử dụng."
+
+#: ../../library/profile.rst:180
+#, fuzzy
+msgid ""
+"If you were looking to see what functions were looping a lot, and taking a "
+"lot of time, you would do::"
+msgstr ""
+"Nếu bạn muốn xem hàm nào lặp nhiều và tốn nhiều thời gian, bạn sẽ làm::"
+
+#: ../../library/profile.rst:183
+#, fuzzy
+msgid "p.sort_stats(SortKey.TIME).print_stats(10)"
+msgstr "p.sort_stats(SortKey.TIME).print_stats(10)"
+
+#: ../../library/profile.rst:185
+#, fuzzy
+msgid ""
+"to sort according to time spent within each function, and then print the "
+"statistics for the top ten functions."
+msgstr ""
+"để sắp xếp theo thời gian dành cho mỗi chức năng, sau đó in số liệu thống kê"
+" cho 10 chức năng hàng đầu."
+
+#: ../../library/profile.rst:188
+#, fuzzy
+msgid "You might also try::"
+msgstr "Bạn cũng có thể thử::"
+
+#: ../../library/profile.rst:190
+#, fuzzy
+msgid "p.sort_stats(SortKey.FILENAME).print_stats('__init__')"
+msgstr "p.sort_stats(SortKey.FILENAME).print_stats('__init__')"
+
+#: ../../library/profile.rst:192
+#, fuzzy
+msgid ""
+"This will sort all the statistics by file name, and then print out "
+"statistics for only the class init methods (since they are spelled with "
+"``__init__`` in them).  As one final example, you could try::"
+msgstr ""
+"Thao tác này sẽ sắp xếp tất cả số liệu thống kê theo tên tệp và sau đó in ra"
+" số liệu thống kê chỉ cho các phương thức init của lớp (vì chúng được đánh "
+"vần bằng ``__init__`` trong đó).  Là một ví dụ cuối cùng, bạn có thể thử::"
+
+#: ../../library/profile.rst:196
+#, fuzzy
+msgid "p.sort_stats(SortKey.TIME, SortKey.CUMULATIVE).print_stats(.5, 'init')"
+msgstr ""
+"p.sort_stats(SortKey.TIME, SortKey.CUMULATIVE).print_stats(.5, 'init')"
+
+#: ../../library/profile.rst:198
+#, fuzzy
+msgid ""
+"This line sorts statistics with a primary key of time, and a secondary key "
+"of cumulative time, and then prints out some of the statistics. To be "
+"specific, the list is first culled down to 50% (re: ``.5``) of its original "
+"size, then only lines containing ``init`` are maintained, and that sub-sub-"
+"list is printed."
+msgstr ""
+"Dòng này sắp xếp số liệu thống kê với khóa chính là thời gian và khóa phụ là"
+" thời gian tích lũy, sau đó in ra một số số liệu thống kê. Cụ thể, danh sách"
+" trước tiên được chọn lọc xuống còn 50% (re: ``.5``) kích thước ban đầu của "
+"nó, sau đó chỉ các dòng chứa ``init`` được duy trì và danh sách phụ đó được "
+"in."
+
+#: ../../library/profile.rst:203
+#, fuzzy
+msgid ""
+"If you wondered what functions called the above functions, you could now "
+"(``p`` is still sorted according to the last criteria) do::"
+msgstr ""
+"Nếu bạn thắc mắc những hàm nào được gọi là các hàm trên thì bây giờ bạn có "
+"thể (``p`` vẫn được sắp xếp theo tiêu chí cuối cùng) thực hiện::"
+
+#: ../../library/profile.rst:206
+#, fuzzy
+msgid "p.print_callers(.5, 'init')"
+msgstr "p.print_callers(.5, 'init')"
+
+#: ../../library/profile.rst:208
+#, fuzzy
+msgid "and you would get a list of callers for each of the listed functions."
+msgstr ""
+"và bạn sẽ nhận được danh sách người gọi cho từng chức năng được liệt kê."
+
+#: ../../library/profile.rst:210
+#, fuzzy
+msgid ""
+"If you want more functionality, you're going to have to read the manual, or "
+"guess what the following functions do::"
+msgstr ""
+"Nếu bạn muốn có nhiều chức năng hơn, bạn sẽ phải đọc hướng dẫn sử dụng hoặc "
+"đoán xem các chức năng sau đây làm gì::"
+
+#: ../../library/profile.rst:213
+#, fuzzy
+msgid ""
+"p.print_callees()\n"
+"p.add('restats')"
+msgstr ""
+"p.print_callees()\n"
+"p.add('khởi động lại')"
+
+#: ../../library/profile.rst:216
+#, fuzzy
+msgid ""
+"Invoked as a script, the :mod:`pstats` module is a statistics browser for "
+"reading and examining profile dumps.  It has a simple line-oriented "
+"interface (implemented using :mod:`cmd`) and interactive help."
+msgstr ""
+"Được gọi dưới dạng tập lệnh, mô-đun :mod:`pstats` là một trình duyệt thống "
+"kê để đọc và kiểm tra kết xuất hồ sơ.  Nó có giao diện hướng dòng đơn giản "
+"(được triển khai bằng :mod:`cmd`) và trợ giúp tương tác."
+
+#: ../../library/profile.rst:221
+#, fuzzy
+msgid ":mod:`profile` and :mod:`!cProfile` Module Reference"
+msgstr "Tham khảo mô-đun :mod:`profile` và :mod:`!cProfile`"
+
+#: ../../library/profile.rst:227
+#, fuzzy
+msgid ""
+"Both the :mod:`profile` and :mod:`!cProfile` modules provide the following "
+"functions:"
+msgstr ""
+"Cả hai mô-đun :mod:`profile` và :mod:`!cProfile` đều cung cấp các chức năng "
+"sau:"
+
+#: ../../library/profile.rst:232
+#, fuzzy
+msgid ""
+"This function takes a single argument that can be passed to the :func:`exec`"
+" function, and an optional file name.  In all cases this routine executes::"
+msgstr ""
+"Hàm này nhận một đối số duy nhất có thể được truyền cho hàm :func:`exec` và "
+"một tên tệp tùy chọn.  Trong mọi trường hợp, thói quen này thực thi::"
+
+#: ../../library/profile.rst:235
+#, fuzzy
+msgid "exec(command, __main__.__dict__, __main__.__dict__)"
+msgstr "exec(lệnh, __main__.__dict__, __main__.__dict__)"
+
+#: ../../library/profile.rst:237
+#, fuzzy
+msgid ""
+"and gathers profiling statistics from the execution. If no file name is "
+"present, then this function automatically creates a :class:`~pstats.Stats` "
+"instance and prints a simple profiling report. If the sort value is "
+"specified, it is passed to this :class:`~pstats.Stats` instance to control "
+"how the results are sorted."
+msgstr ""
+"và thu thập số liệu thống kê hồ sơ từ việc thực hiện. Nếu không có tên tệp "
+"thì hàm này sẽ tự động tạo một phiên bản :class:`~pstats.Stats` và in một "
+"báo cáo hồ sơ đơn giản. Nếu giá trị sắp xếp được chỉ định, giá trị đó sẽ "
+"được chuyển đến phiên bản :class:`~pstats.Stats` này để kiểm soát cách sắp "
+"xếp kết quả."
+
+#: ../../library/profile.rst:245
+#, fuzzy
+msgid ""
+"This function is similar to :func:`run`, with added arguments to supply the "
+"globals and locals mappings for the *command* string. This routine "
+"executes::"
+msgstr ""
+"Hàm này tương tự như :func:`run`, với các đối số được thêm vào để cung cấp "
+"ánh xạ toàn cục và cục bộ cho chuỗi *command*. Thói quen này thực thi::"
+
+#: ../../library/profile.rst:249
+#, fuzzy
+msgid "exec(command, globals, locals)"
+msgstr "exec(lệnh, toàn cục, cục bộ)"
+
+#: ../../library/profile.rst:251
+#, fuzzy
+msgid "and gathers profiling statistics as in the :func:`run` function above."
+msgstr "và thu thập số liệu thống kê hồ sơ như trong hàm :func:`run` ở trên."
+
+#: ../../library/profile.rst:255
+#, fuzzy
+msgid ""
+"This class is normally only used if more precise control over profiling is "
+"needed than what the :func:`cProfile.run` function provides."
+msgstr ""
+"Lớp này thường chỉ được sử dụng nếu cần kiểm soát hồ sơ chính xác hơn những "
+"gì hàm :func:`cProfile.run` cung cấp."
+
+#: ../../library/profile.rst:258
+#, fuzzy
+msgid ""
+"A custom timer can be supplied for measuring how long code takes to run via "
+"the *timer* argument. This must be a function that returns a single number "
+"representing the current time. If the number is an integer, the *timeunit* "
+"specifies a multiplier that specifies the duration of each unit of time. For"
+" example, if the timer returns times measured in thousands of seconds, the "
+"time unit would be ``.001``."
+msgstr ""
+"Bộ hẹn giờ tùy chỉnh có thể được cung cấp để đo thời gian chạy mã thông qua "
+"đối số *timer*. Đây phải là hàm trả về một số duy nhất biểu thị thời gian "
+"hiện tại. Nếu số là số nguyên, *timeunit* chỉ định một hệ số chỉ định khoảng"
+" thời gian của từng đơn vị thời gian. Ví dụ: nếu bộ hẹn giờ trả về thời gian"
+" được đo bằng hàng nghìn giây thì đơn vị thời gian sẽ là ``.001``."
+
+#: ../../library/profile.rst:265
+#, fuzzy
+msgid ""
+"Directly using the :class:`Profile` class allows formatting profile results "
+"without writing the profile data to a file::"
+msgstr ""
+"Sử dụng trực tiếp lớp :class:`Profile` cho phép định dạng kết quả hồ sơ mà "
+"không cần ghi dữ liệu hồ sơ vào tệp ::"
+
+#: ../../library/profile.rst:268
+#, fuzzy
+msgid ""
+"import cProfile, pstats, io\n"
+"from pstats import SortKey\n"
+"pr = cProfile.Profile()\n"
+"pr.enable()\n"
+"# ... do something ...\n"
+"pr.disable()\n"
+"s = io.StringIO()\n"
+"sortby = SortKey.CUMULATIVE\n"
+"ps = pstats.Stats(pr, stream=s).sort_stats(sortby)\n"
+"ps.print_stats()\n"
+"print(s.getvalue())"
+msgstr ""
+"nhập cProfile, pstats, io\n"
+"từ pstats nhập SortKey\n"
+"pr = cProfile.Profile()\n"
+"pr.enable()\n"
+"# ... làm điều gì đó ...\n"
+"pr.disable()\n"
+"s = io.StringIO()\n"
+"sắp xếp = SortKey.CUMULATIVE\n"
+"ps = pstats.Stats(pr, stream=s).sort_stats(sortby)\n"
+"ps.print_stats()\n"
+"print(s.getvalue())"
+
+#: ../../library/profile.rst:280
+#, fuzzy
+msgid ""
+"The :class:`Profile` class can also be used as a context manager (supported "
+"only in :mod:`!cProfile` module. see :ref:`typecontextmanager`)::"
+msgstr ""
+"Lớp :class:`Profile` cũng có thể được sử dụng làm trình quản lý bối cảnh "
+"(chỉ được hỗ trợ trong mô-đun :mod:`!cProfile`. Xem "
+":ref:`typecontextmanager`)::"
+
+#: ../../library/profile.rst:283
+#, fuzzy
+msgid ""
+"import cProfile\n"
+"\n"
+"with cProfile.Profile() as pr:\n"
+"    # ... do something ...\n"
+"\n"
+"    pr.print_stats()"
+msgstr ""
+"nhập cProfile\n"
+"\n"
+"với cProfile.Profile() là pr:\n"
+"    # ... làm điều gì đó ...\n"
+"\n"
+"    pr.print_stats()"
+
+#: ../../library/profile.rst:290
+#, fuzzy
+msgid "Added context manager support."
+msgstr "Đã thêm hỗ trợ quản lý bối cảnh."
+
+#: ../../library/profile.rst:295
+#, fuzzy
+msgid "Start collecting profiling data. Only in :mod:`!cProfile`."
+msgstr "Bắt đầu thu thập dữ liệu hồ sơ. Chỉ có ở :mod:`!cProfile`."
+
+#: ../../library/profile.rst:299
+#, fuzzy
+msgid "Stop collecting profiling data. Only in :mod:`!cProfile`."
+msgstr "Ngừng thu thập dữ liệu hồ sơ. Chỉ có ở :mod:`!cProfile`."
+
+#: ../../library/profile.rst:303
+#, fuzzy
+msgid ""
+"Stop collecting profiling data and record the results internally as the "
+"current profile."
+msgstr ""
+"Dừng thu thập dữ liệu hồ sơ và ghi lại kết quả nội bộ dưới dạng hồ sơ hiện "
+"tại."
+
+#: ../../library/profile.rst:308
+#, fuzzy
+msgid ""
+"Create a :class:`~pstats.Stats` object based on the current profile and "
+"print the results to stdout."
+msgstr ""
+"Tạo một đối tượng :class:`~pstats.Stats` dựa trên hồ sơ hiện tại và in kết "
+"quả ra thiết bị xuất chuẩn."
+
+#: ../../library/profile.rst:311
+#, fuzzy
+msgid ""
+"The *sort* parameter specifies the sorting order of the displayed "
+"statistics. It accepts a single key or a tuple of keys to enable multi-level"
+" sorting, as in :func:`Stats.sort_stats <pstats.Stats.sort_stats>`."
+msgstr ""
+"Tham số *sort* chỉ định thứ tự sắp xếp của số liệu thống kê được hiển thị. "
+"Nó chấp nhận một khóa đơn hoặc một bộ khóa để cho phép sắp xếp nhiều cấp độ,"
+" như trong :func:`Stats.sort_stats <pstats.Stats.sort_stats>`."
+
+#: ../../library/profile.rst:315
+#, fuzzy
+msgid ":meth:`~Profile.print_stats` now accepts a tuple of keys."
+msgstr ":meth:`~Profile.print_stats` hiện chấp nhận một bộ khóa."
+
+#: ../../library/profile.rst:320
+#, fuzzy
+msgid "Write the results of the current profile to *filename*."
+msgstr "Ghi kết quả của profile hiện tại vào *filename*."
+
+#: ../../library/profile.rst:324
+#, fuzzy
+msgid "Profile the cmd via :func:`exec`."
+msgstr "Hồ sơ cmd qua :func:`exec`."
+
+#: ../../library/profile.rst:328
+#, fuzzy
+msgid ""
+"Profile the cmd via :func:`exec` with the specified global and local "
+"environment."
+msgstr ""
+"Lập hồ sơ cmd qua :func:`exec` với môi trường cục bộ và toàn cầu được chỉ "
+"định."
+
+#: ../../library/profile.rst:333
+#, fuzzy
+msgid "Profile ``func(*args, **kwargs)``"
+msgstr "Hồ sơ ``func(*args, **kwargs)``"
+
+#: ../../library/profile.rst:335
+#, fuzzy
+msgid ""
+"Note that profiling will only work if the called command/function actually "
+"returns.  If the interpreter is terminated (e.g. via a :func:`sys.exit` call"
+" during the called command/function execution) no profiling results will be "
+"printed."
+msgstr ""
+"Lưu ý rằng việc lập hồ sơ sẽ chỉ hoạt động nếu lệnh/hàm được gọi thực sự trả"
+" về.  Nếu trình thông dịch bị chấm dứt (ví dụ: thông qua lệnh gọi "
+":func:`sys.exit` trong quá trình thực thi lệnh/chức năng được gọi) thì sẽ "
+"không có kết quả lược tả nào được in."
+
+#: ../../library/profile.rst:343
+#, fuzzy
+msgid "The :class:`Stats` Class"
+msgstr "Lớp :class:`Stats`"
+
+#: ../../library/profile.rst:345
+#, fuzzy
+msgid ""
+"Analysis of the profiler data is done using the :class:`~pstats.Stats` "
+"class."
+msgstr ""
+"Việc phân tích dữ liệu hồ sơ được thực hiện bằng lớp :class:`~pstats.Stats`."
+
+#: ../../library/profile.rst:352
+#, fuzzy
+msgid ""
+"This class constructor creates an instance of a \"statistics object\" from a"
+" *filename* (or list of filenames) or from a :class:`Profile` instance. "
+"Output will be printed to the stream specified by *stream*."
+msgstr ""
+"Hàm tạo lớp này tạo một phiên bản của \"đối tượng thống kê\" từ *filename* "
+"(hoặc danh sách tên tệp) hoặc từ một phiên bản :class:`Profile`. Đầu ra sẽ "
+"được in ra luồng được chỉ định bởi *stream*."
+
+#: ../../library/profile.rst:356
+#, fuzzy
+msgid ""
+"The file selected by the above constructor must have been created by the "
+"corresponding version of :mod:`profile` or :mod:`cProfile`.  To be specific,"
+" there is *no* file compatibility guaranteed with future versions of this "
+"profiler, and there is no compatibility with files produced by other "
+"profilers, or the same profiler run on a different operating system.  If "
+"several files are provided, all the statistics for identical functions will "
+"be coalesced, so that an overall view of several processes can be considered"
+" in a single report.  If additional files need to be combined with data in "
+"an existing :class:`~pstats.Stats` object, the :meth:`~pstats.Stats.add` "
+"method can be used."
+msgstr ""
+"Tệp được hàm tạo ở trên chọn phải được tạo bởi phiên bản tương ứng của "
+":mod:`profile` hoặc :mod:`cProfile`.  Cụ thể, khả năng tương thích tệp *no* "
+"được đảm bảo với các phiên bản trong tương lai của trình lược tả này và "
+"không có khả năng tương thích với các tệp do các trình lược tả khác tạo ra "
+"hoặc cùng một trình lược tả đó chạy trên một hệ điều hành khác.  Nếu một số "
+"tệp được cung cấp, tất cả số liệu thống kê cho các chức năng giống nhau sẽ "
+"được hợp nhất để có thể xem xét cái nhìn tổng thể về một số quy trình trong "
+"một báo cáo.  Nếu các tệp bổ sung cần được kết hợp với dữ liệu trong đối "
+"tượng :class:`~pstats.Stats` hiện có, có thể sử dụng phương thức "
+":meth:`~pstats.Stats.add`."
+
+#: ../../library/profile.rst:367
+#, fuzzy
+msgid ""
+"Instead of reading the profile data from a file, a :class:`cProfile.Profile`"
+" or :class:`profile.Profile` object can be used as the profile data source."
+msgstr ""
+"Thay vì đọc dữ liệu hồ sơ từ một tệp, đối tượng :class:`cProfile.Profile` "
+"hoặc :class:`profile.Profile` có thể được sử dụng làm nguồn dữ liệu hồ sơ."
+
+#: ../../library/profile.rst:370
+#, fuzzy
+msgid ":class:`Stats` objects have the following methods:"
+msgstr "Các đối tượng :class:`Stats` có các phương thức sau:"
+
+#: ../../library/profile.rst:374
+#, fuzzy
+msgid ""
+"This method for the :class:`Stats` class removes all leading path "
+"information from file names.  It is very useful in reducing the size of the "
+"printout to fit within (close to) 80 columns.  This method modifies the "
+"object, and the stripped information is lost.  After performing a strip "
+"operation, the object is considered to have its entries in a \"random\" "
+"order, as it was just after object initialization and loading. If "
+":meth:`~pstats.Stats.strip_dirs` causes two function names to be "
+"indistinguishable (they are on the same line of the same filename, and have "
+"the same function name), then the statistics for these two entries are "
+"accumulated into a single entry."
+msgstr ""
+"Phương thức này dành cho lớp :class:`Stats` sẽ xóa tất cả thông tin đường "
+"dẫn hàng đầu khỏi tên tệp.  Nó rất hữu ích trong việc giảm kích thước của "
+"bản in để vừa với (gần) 80 cột.  Phương pháp này sửa đổi đối tượng và thông "
+"tin bị loại bỏ sẽ bị mất.  Sau khi thực hiện thao tác dải, đối tượng được "
+"coi là có các mục nhập theo thứ tự \"ngẫu nhiên\", giống như ngay sau khi "
+"khởi tạo và tải đối tượng. Nếu :meth:`~pstats.Stats.strip_dirs` khiến hai "
+"tên hàm không thể phân biệt được (chúng nằm trên cùng một dòng của cùng một "
+"tên tệp và có cùng tên hàm), thì số liệu thống kê cho hai mục này sẽ được "
+"tích lũy vào một mục duy nhất."
+
+#: ../../library/profile.rst:388
+#, fuzzy
+msgid ""
+"This method of the :class:`Stats` class accumulates additional profiling "
+"information into the current profiling object.  Its arguments should refer "
+"to filenames created by the corresponding version of :func:`profile.run` or "
+":func:`cProfile.run`. Statistics for identically named (re: file, line, "
+"name) functions are automatically accumulated into single function "
+"statistics."
+msgstr ""
+"Phương thức này của lớp :class:`Stats` tích lũy thông tin lược tả bổ sung "
+"vào đối tượng lược tả hiện tại.  Các đối số của nó phải đề cập đến tên tệp "
+"được tạo bởi phiên bản tương ứng của :func:`profile.run` hoặc "
+":func:`cProfile.run`. Thống kê cho các hàm có tên giống hệt nhau (re: file, "
+"dòng, tên) được tự động tích lũy vào thống kê hàm đơn."
+
+#: ../../library/profile.rst:398
+#, fuzzy
+msgid ""
+"Save the data loaded into the :class:`Stats` object to a file named "
+"*filename*.  The file is created if it does not exist, and is overwritten if"
+" it already exists.  This is equivalent to the method of the same name on "
+"the :class:`profile.Profile` and :class:`cProfile.Profile` classes."
+msgstr ""
+"Lưu dữ liệu được tải vào đối tượng :class:`Stats` vào một tệp có tên "
+"*filename*.  Tệp được tạo nếu nó không tồn tại và bị ghi đè nếu nó đã tồn "
+"tại.  Điều này tương đương với phương thức cùng tên trên lớp "
+":class:`profile.Profile` và :class:`cProfile.Profile`."
+
+#: ../../library/profile.rst:406
+#, fuzzy
+msgid ""
+"This method modifies the :class:`Stats` object by sorting it according to "
+"the supplied criteria.  The argument can be either a string or a SortKey "
+"enum identifying the basis of a sort (example: ``'time'``, ``'name'``, "
+"``SortKey.TIME`` or ``SortKey.NAME``). The SortKey enums argument have "
+"advantage over the string argument in that it is more robust and less error "
+"prone."
+msgstr ""
+"Phương thức này sửa đổi đối tượng :class:`Stats` bằng cách sắp xếp nó theo "
+"tiêu chí được cung cấp.  Đối số có thể là một chuỗi hoặc một enum SortKey "
+"xác định cơ sở của một loại sắp xếp (ví dụ: ``'time'``, ``'name'``, "
+"``SortKey.TIME`` hoặc ``SortKey.NAME``). Đối số enum SortKey có lợi thế hơn "
+"đối số chuỗi ở chỗ nó mạnh hơn và ít xảy ra lỗi hơn."
+
+#: ../../library/profile.rst:413
+#, fuzzy
+msgid ""
+"When more than one key is provided, then additional keys are used as "
+"secondary criteria when there is equality in all keys selected before them."
+"  For example, ``sort_stats(SortKey.NAME, SortKey.FILE)`` will sort all the "
+"entries according to their function name, and resolve all ties (identical "
+"function names) by sorting by file name."
+msgstr ""
+"Khi có nhiều hơn một khóa được cung cấp thì các khóa bổ sung sẽ được sử dụng"
+" làm tiêu chí phụ khi có sự bằng nhau trong tất cả các khóa được chọn trước "
+"chúng.  Ví dụ: ``sort_stats(SortKey.NAME, SortKey.FILE)`` sẽ sắp xếp tất cả "
+"các mục theo tên hàm của chúng và giải quyết tất cả các mối quan hệ (tên hàm"
+" giống hệt nhau) bằng cách sắp xếp theo tên tệp."
+
+#: ../../library/profile.rst:419
+#, fuzzy
+msgid ""
+"For the string argument, abbreviations can be used for any key names, as "
+"long as the abbreviation is unambiguous."
+msgstr ""
+"Đối với đối số chuỗi, có thể sử dụng chữ viết tắt cho bất kỳ tên khóa nào, "
+"miễn là chữ viết tắt đó rõ ràng."
+
+#: ../../library/profile.rst:422
+#, fuzzy
+msgid "The following are the valid string and SortKey:"
+msgstr "Sau đây là chuỗi hợp lệ và SortKey:"
+
+#: ../../library/profile.rst:425
+#, fuzzy
+msgid "Valid String Arg"
+msgstr "Đối số chuỗi hợp lệ"
+
+#: ../../library/profile.rst:425
+#, fuzzy
+msgid "Valid enum Arg"
+msgstr "Arg enum hợp lệ"
+
+#: ../../library/profile.rst:425
+#, fuzzy
+msgid "Meaning"
+msgstr "Ý nghĩa"
+
+#: ../../library/profile.rst:427
+#, fuzzy
+msgid "``'calls'``"
+msgstr "``'calls'``"
+
+#: ../../library/profile.rst:427
+#, fuzzy
+msgid "SortKey.CALLS"
+msgstr "SortKey.CALLS"
+
+#: ../../library/profile.rst:427 ../../library/profile.rst:439
+#, fuzzy
+msgid "call count"
+msgstr "số cuộc gọi"
+
+#: ../../library/profile.rst:429
+#, fuzzy
+msgid "``'cumulative'``"
+msgstr "``'cumulative'``"
+
+#: ../../library/profile.rst:429
+#, fuzzy
+msgid "SortKey.CUMULATIVE"
+msgstr "SortKey.CUMULATIVE"
+
+#: ../../library/profile.rst:429 ../../library/profile.rst:431
+#, fuzzy
+msgid "cumulative time"
+msgstr "thời gian tích lũy"
+
+#: ../../library/profile.rst:431
+#, fuzzy
+msgid "``'cumtime'``"
+msgstr "``'cumtime'``"
+
+#: ../../library/profile.rst:431 ../../library/profile.rst:433
+#: ../../library/profile.rst:437 ../../library/profile.rst:439
+#: ../../library/profile.rst:453
+#, fuzzy
+msgid "N/A"
+msgstr "không áp dụng"
+
+#: ../../library/profile.rst:433
+#, fuzzy
+msgid "``'file'``"
+msgstr "``'file'``"
+
+#: ../../library/profile.rst:433 ../../library/profile.rst:435
+#: ../../library/profile.rst:437
+#, fuzzy
+msgid "file name"
+msgstr "tên tập tin"
+
+#: ../../library/profile.rst:435
+#, fuzzy
+msgid "``'filename'``"
+msgstr "``'filename'``"
+
+#: ../../library/profile.rst:435
+#, fuzzy
+msgid "SortKey.FILENAME"
+msgstr "SortKey.FILENAME"
+
+#: ../../library/profile.rst:437
+#, fuzzy
+msgid "``'module'``"
+msgstr "``'module'``"
+
+#: ../../library/profile.rst:439
+#, fuzzy
+msgid "``'ncalls'``"
+msgstr "``'ncalls'``"
+
+#: ../../library/profile.rst:441
+#, fuzzy
+msgid "``'pcalls'``"
+msgstr "``'pcalls'``"
+
+#: ../../library/profile.rst:441
+#, fuzzy
+msgid "SortKey.PCALLS"
+msgstr "SortKey.PCALLS"
+
+#: ../../library/profile.rst:441
+#, fuzzy
+msgid "primitive call count"
+msgstr "số cuộc gọi nguyên thủy"
+
+#: ../../library/profile.rst:443
+#, fuzzy
+msgid "``'line'``"
+msgstr "``'line'``"
+
+#: ../../library/profile.rst:443
+#, fuzzy
+msgid "SortKey.LINE"
+msgstr "SortKey.LINE"
+
+#: ../../library/profile.rst:443
+#, fuzzy
+msgid "line number"
+msgstr "số dòng"
+
+#: ../../library/profile.rst:445
+#, fuzzy
+msgid "``'name'``"
+msgstr "``'name'``"
+
+#: ../../library/profile.rst:445
+#, fuzzy
+msgid "SortKey.NAME"
+msgstr "SortKey.NAME"
+
+#: ../../library/profile.rst:445
+#, fuzzy
+msgid "function name"
+msgstr "tên hàm"
+
+#: ../../library/profile.rst:447
+#, fuzzy
+msgid "``'nfl'``"
+msgstr "``'nfl'``"
+
+#: ../../library/profile.rst:447
+#, fuzzy
+msgid "SortKey.NFL"
+msgstr "SortKey.NFL"
+
+#: ../../library/profile.rst:447
+#, fuzzy
+msgid "name/file/line"
+msgstr "tên/tập tin/dòng"
+
+#: ../../library/profile.rst:449
+#, fuzzy
+msgid "``'stdname'``"
+msgstr "``'stdname'``"
+
+#: ../../library/profile.rst:449
+#, fuzzy
+msgid "SortKey.STDNAME"
+msgstr "SortKey.STDNAME"
+
+#: ../../library/profile.rst:449
+#, fuzzy
+msgid "standard name"
+msgstr "tên tiêu chuẩn"
+
+#: ../../library/profile.rst:451
+#, fuzzy
+msgid "``'time'``"
+msgstr "``'time'``"
+
+#: ../../library/profile.rst:451
+#, fuzzy
+msgid "SortKey.TIME"
+msgstr "SortKey.TIME"
+
+#: ../../library/profile.rst:451 ../../library/profile.rst:453
+#, fuzzy
+msgid "internal time"
+msgstr "thời gian nội bộ"
+
+#: ../../library/profile.rst:453
+#, fuzzy
+msgid "``'tottime'``"
+msgstr "``'tottime'``"
+
+#: ../../library/profile.rst:456
+#, fuzzy
+msgid ""
+"Note that all sorts on statistics are in descending order (placing most time"
+" consuming items first), where as name, file, and line number searches are "
+"in ascending order (alphabetical). The subtle distinction between "
+"``SortKey.NFL`` and ``SortKey.STDNAME`` is that the standard name is a sort "
+"of the name as printed, which means that the embedded line numbers get "
+"compared in an odd way.  For example, lines 3, 20, and 40 would (if the file"
+" names were the same) appear in the string order 20, 3 and 40. In contrast, "
+"``SortKey.NFL`` does a numeric compare of the line numbers. In fact, "
+"``sort_stats(SortKey.NFL)`` is the same as ``sort_stats(SortKey.NAME, "
+"SortKey.FILENAME, SortKey.LINE)``."
+msgstr ""
+"Lưu ý rằng tất cả các loại thống kê đều theo thứ tự giảm dần (đặt các mục "
+"tiêu tốn nhiều thời gian nhất lên đầu tiên), trong đó tìm kiếm tên, tệp và "
+"số dòng theo thứ tự tăng dần (theo bảng chữ cái). Sự khác biệt tinh tế giữa "
+"``SortKey.NFL`` và ``SortKey.STDNAME`` là tên tiêu chuẩn là một loại tên "
+"được in, có nghĩa là số dòng nhúng được so sánh theo một cách kỳ lạ.  Ví dụ:"
+" các dòng 3, 20 và 40 (nếu tên tệp giống nhau) sẽ xuất hiện theo thứ tự "
+"chuỗi 20, 3 và 40. Ngược lại, ``SortKey.NFL`` thực hiện so sánh số của các "
+"số dòng. Trên thực tế, ``sort_stats(SortKey.NFL)`` cũng giống như "
+"``sort_stats(SortKey.NAME, SortKey.FILENAME, SortKey.LINE)``."
+
+#: ../../library/profile.rst:467
+#, fuzzy
+msgid ""
+"For backward-compatibility reasons, the numeric arguments ``-1``, ``0``, "
+"``1``, and ``2`` are permitted.  They are interpreted as ``'stdname'``, "
+"``'calls'``, ``'time'``, and ``'cumulative'`` respectively.  If this old "
+"style format (numeric) is used, only one sort key (the numeric key) will be "
+"used, and additional arguments will be silently ignored."
+msgstr ""
+"Vì lý do tương thích ngược, các đối số số ``-1``, ``0``, ``1`` và ``2`` được"
+" cho phép.  Chúng được hiểu lần lượt là ``'stdname'``, ``'calls'``, "
+"``'time'`` và ``'cumulative'``.  Nếu định dạng kiểu cũ (số) này được sử dụng"
+" thì chỉ có một khóa sắp xếp (phím số) sẽ được sử dụng và các đối số bổ sung"
+" sẽ bị bỏ qua trong âm thầm."
+
+#: ../../library/profile.rst:475
+#, fuzzy
+msgid "Added the SortKey enum."
+msgstr "Đã thêm enum SortKey."
+
+#: ../../library/profile.rst:480
+#, fuzzy
+msgid ""
+"This method for the :class:`Stats` class reverses the ordering of the basic "
+"list within the object.  Note that by default ascending vs descending order "
+"is properly selected based on the sort key of choice."
+msgstr ""
+"Phương thức này dành cho lớp :class:`Stats` đảo ngược thứ tự của danh sách "
+"cơ bản trong đối tượng.  Lưu ý rằng theo mặc định, thứ tự tăng dần và giảm "
+"dần được chọn chính xác dựa trên khóa sắp xếp được chọn."
+
+#: ../../library/profile.rst:490
+#, fuzzy
+msgid ""
+"This method for the :class:`Stats` class prints out a report as described in"
+" the :func:`profile.run` definition."
+msgstr ""
+"Phương thức này dành cho lớp :class:`Stats` in ra một báo cáo như được mô tả"
+" trong định nghĩa :func:`profile.run`."
+
+#: ../../library/profile.rst:493
+#, fuzzy
+msgid ""
+"The order of the printing is based on the last "
+":meth:`~pstats.Stats.sort_stats` operation done on the object (subject to "
+"caveats in :meth:`~pstats.Stats.add` and :meth:`~pstats.Stats.strip_dirs`)."
+msgstr ""
+"Thứ tự in dựa trên thao tác :meth:`~pstats.Stats.sort_stats` cuối cùng được "
+"thực hiện trên đối tượng (có thể lưu ý trong :meth:`~pstats.Stats.add` và "
+":meth:`~pstats.Stats.strip_dirs`)."
+
+#: ../../library/profile.rst:498
+#, fuzzy
+msgid ""
+"The arguments provided (if any) can be used to limit the list down to the "
+"significant entries.  Initially, the list is taken to be the complete set of"
+" profiled functions.  Each restriction is either an integer (to select a "
+"count of lines), or a decimal fraction between 0.0 and 1.0 inclusive (to "
+"select a percentage of lines), or a string that will be interpreted as a "
+"regular expression (to pattern match the standard name that is printed). If "
+"several restrictions are provided, then they are applied sequentially. For "
+"example::"
+msgstr ""
+"Các đối số được cung cấp (nếu có) có thể được sử dụng để giới hạn danh sách "
+"ở các mục quan trọng.  Ban đầu, danh sách được coi là tập hợp đầy đủ các "
+"chức năng được định hình.  Mỗi hạn chế là một số nguyên (để chọn số dòng) "
+"hoặc một phân số thập phân nằm trong khoảng từ 0,0 đến 1,0 (để chọn phần "
+"trăm dòng) hoặc một chuỗi sẽ được hiểu là biểu thức chính quy (để khớp mẫu "
+"với tên tiêu chuẩn được in). Nếu một số hạn chế được đưa ra thì chúng sẽ "
+"được áp dụng tuần tự. Ví dụ::"
+
+#: ../../library/profile.rst:507
+#, fuzzy
+msgid "print_stats(.1, 'foo:')"
+msgstr "print_stats(.1, 'foo:')"
+
+#: ../../library/profile.rst:509
+#, python-format, fuzzy
+msgid ""
+"would first limit the printing to first 10% of list, and then only print "
+"functions that were part of filename :file:`.\\*foo:`.  In contrast, the "
+"command::"
+msgstr ""
+"trước tiên sẽ giới hạn việc in ở 10% đầu tiên của danh sách và sau đó chỉ in"
+" các chức năng là một phần của tên tệp :file:`.\\*foo:`.  Ngược lại, lệnh::"
+
+#: ../../library/profile.rst:513
+#, fuzzy
+msgid "print_stats('foo:', .1)"
+msgstr "print_stats('foo:', .1)"
+
+#: ../../library/profile.rst:515
+#, python-format, fuzzy
+msgid ""
+"would limit the list to all functions having file names :file:`.\\*foo:`, "
+"and then proceed to only print the first 10% of them."
+msgstr ""
+"sẽ giới hạn danh sách ở tất cả các hàm có tên tệp :file:`.\\*foo:` và sau đó"
+" tiến hành chỉ in 10% đầu tiên trong số chúng."
+
+#: ../../library/profile.rst:521
+#, fuzzy
+msgid ""
+"This method for the :class:`Stats` class prints a list of all functions that"
+" called each function in the profiled database.  The ordering is identical "
+"to that provided by :meth:`~pstats.Stats.print_stats`, and the definition of"
+" the restricting argument is also identical.  Each caller is reported on its"
+" own line.  The format differs slightly depending on the profiler that "
+"produced the stats:"
+msgstr ""
+"Phương thức này dành cho lớp :class:`Stats` in danh sách tất cả các hàm gọi "
+"từng hàm trong cơ sở dữ liệu được định hình.  Thứ tự giống hệt với thứ tự "
+"được cung cấp bởi :meth:`~pstats.Stats.print_stats` và định nghĩa của đối số"
+" hạn chế cũng giống hệt nhau.  Mỗi người gọi được báo cáo trên dòng riêng "
+"của mình.  Định dạng hơi khác một chút tùy thuộc vào trình lược tả tạo ra số"
+" liệu thống kê:"
+
+#: ../../library/profile.rst:528
+#, fuzzy
+msgid ""
+"With :mod:`profile`, a number is shown in parentheses after each caller to "
+"show how many times this specific call was made.  For convenience, a second "
+"non-parenthesized number repeats the cumulative time spent in the function "
+"at the right."
+msgstr ""
+"Với :mod:`profile`, một số được hiển thị trong ngoặc đơn sau mỗi người gọi "
+"để hiển thị số lần cuộc gọi cụ thể này được thực hiện.  Để thuận tiện, số "
+"thứ hai không có dấu ngoặc đơn sẽ lặp lại thời gian tích lũy dành cho hàm ở "
+"bên phải."
+
+#: ../../library/profile.rst:533
+#, fuzzy
+msgid ""
+"With :mod:`cProfile`, each caller is preceded by three numbers: the number "
+"of times this specific call was made, and the total and cumulative times "
+"spent in the current function while it was invoked by this specific caller."
+msgstr ""
+"Với :mod:`cProfile`, trước mỗi người gọi là ba số: số lần cuộc gọi cụ thể "
+"này được thực hiện cũng như tổng thời gian và thời gian tích lũy dành cho "
+"hàm hiện tại trong khi người gọi cụ thể này gọi nó."
+
+#: ../../library/profile.rst:541
+#, fuzzy
+msgid ""
+"This method for the :class:`Stats` class prints a list of all function that "
+"were called by the indicated function.  Aside from this reversal of "
+"direction of calls (re: called vs was called by), the arguments and ordering"
+" are identical to the :meth:`~pstats.Stats.print_callers` method."
+msgstr ""
+"Phương thức này dành cho lớp :class:`Stats` in danh sách tất cả các hàm được"
+" gọi bởi hàm được chỉ định.  Ngoài sự đảo ngược hướng gọi này (re: được gọi "
+"và được gọi bởi), các đối số và thứ tự giống hệt với phương thức "
+":meth:`~pstats.Stats.print_callers`."
+
+#: ../../library/profile.rst:549
+#, fuzzy
+msgid ""
+"This method returns an instance of StatsProfile, which contains a mapping of"
+" function names to instances of FunctionProfile. Each FunctionProfile "
+"instance holds information related to the function's profile such as how "
+"long the function took to run, how many times it was called, etc..."
+msgstr ""
+"Phương thức này trả về một phiên bản của StatsProfile, chứa ánh xạ tên hàm "
+"tới các phiên bản của FunctionProfile. Mỗi phiên bản FunctionProfile chứa "
+"thông tin liên quan đến hồ sơ của hàm, chẳng hạn như hàm chạy trong bao lâu,"
+" số lần nó được gọi, v.v..."
+
+#: ../../library/profile.rst:554
+#, fuzzy
+msgid ""
+"Added the following dataclasses: StatsProfile, FunctionProfile. Added the "
+"following function: get_stats_profile."
+msgstr ""
+"Đã thêm các lớp dữ liệu sau: StatsProfile, FunctionProfile. Đã thêm chức "
+"năng sau: get_stats_profile."
+
+#: ../../library/profile.rst:561
+#, fuzzy
+msgid "What Is Deterministic Profiling?"
+msgstr "Hồ sơ xác định là gì?"
+
+#: ../../library/profile.rst:563
+#, fuzzy
+msgid ""
+":dfn:`Deterministic profiling` is meant to reflect the fact that all "
+"*function call*, *function return*, and *exception* events are monitored, "
+"and precise timings are made for the intervals between these events (during "
+"which time the user's code is executing).  In contrast, :dfn:`statistical "
+"profiling` (which is not done by this module) randomly samples the effective"
+" instruction pointer, and deduces where time is being spent.  The latter "
+"technique traditionally involves less overhead (as the code does not need to"
+" be instrumented), but provides only relative indications of where time is "
+"being spent."
+msgstr ""
+":dfn:`Deterministic profiling` nhằm phản ánh thực tế rằng tất cả các sự kiện"
+" *function call*, *function return* và *exception* đều được theo dõi và thời"
+" gian chính xác được thực hiện cho các khoảng thời gian giữa các sự kiện này"
+" (trong thời gian mã của người dùng đang thực thi).  Ngược lại, "
+":dfn:`statistical profiling` (điều này không được mô-đun này thực hiện) lấy "
+"mẫu ngẫu nhiên con trỏ lệnh hiệu quả và suy ra thời gian đang được sử dụng ở"
+" đâu.  Kỹ thuật thứ hai theo truyền thống đòi hỏi ít chi phí hơn (vì mã "
+"không cần phải được đo lường), nhưng chỉ cung cấp các dấu hiệu tương đối về "
+"thời gian được sử dụng."
+
+#: ../../library/profile.rst:572
+#, fuzzy
+msgid ""
+"In Python, since there is an interpreter active during execution, the "
+"presence of instrumented code is not required in order to do deterministic "
+"profiling. Python automatically provides a :dfn:`hook` (optional callback) "
+"for each event. In addition, the interpreted nature of Python tends to add "
+"so much overhead to execution, that deterministic profiling tends to only "
+"add small processing overhead in typical applications.  The result is that "
+"deterministic profiling is not that expensive, yet provides extensive run "
+"time statistics about the execution of a Python program."
+msgstr ""
+"Trong Python, vì có một trình thông dịch hoạt động trong quá trình thực thi "
+"nên không cần phải có mã công cụ để thực hiện lập hồ sơ xác định. Python tự "
+"động cung cấp :dfn:`hook` (gọi lại tùy chọn) cho mỗi sự kiện. Ngoài ra, bản "
+"chất diễn giải của Python có xu hướng tăng thêm rất nhiều chi phí thực thi, "
+"nên việc lập hồ sơ xác định có xu hướng chỉ thêm chi phí xử lý nhỏ trong các"
+" ứng dụng điển hình.  Kết quả là việc lập hồ sơ xác định không quá tốn kém "
+"nhưng vẫn cung cấp số liệu thống kê về thời gian chạy rộng rãi về việc thực "
+"thi chương trình Python."
+
+#: ../../library/profile.rst:581
+#, fuzzy
+msgid ""
+"Call count statistics can be used to identify bugs in code (surprising "
+"counts), and to identify possible inline-expansion points (high call "
+"counts).  Internal time statistics can be used to identify \"hot loops\" "
+"that should be carefully optimized.  Cumulative time statistics should be "
+"used to identify high level errors in the selection of algorithms.  Note "
+"that the unusual handling of cumulative times in this profiler allows "
+"statistics for recursive implementations of algorithms to be directly "
+"compared to iterative implementations."
+msgstr ""
+"Thống kê số lượng cuộc gọi có thể được sử dụng để xác định lỗi trong mã (số "
+"lượng đáng ngạc nhiên) và để xác định các điểm mở rộng nội tuyến có thể có "
+"(số lượng cuộc gọi cao).  Thống kê thời gian nội bộ có thể được sử dụng để "
+"xác định \"vòng lặp nóng\" cần được tối ưu hóa cẩn thận.  Thống kê thời gian"
+" tích lũy nên được sử dụng để xác định các lỗi cấp cao trong việc lựa chọn "
+"thuật toán.  Lưu ý rằng việc xử lý bất thường về thời gian tích lũy trong "
+"trình lược tả này cho phép số liệu thống kê về việc triển khai thuật toán đệ"
+" quy được so sánh trực tiếp với việc triển khai lặp lại."
+
+#: ../../library/profile.rst:594
+#, fuzzy
+msgid "Limitations"
+msgstr "Hạn chế"
+
+#: ../../library/profile.rst:596
+#, fuzzy
+msgid ""
+"One limitation has to do with accuracy of timing information. There is a "
+"fundamental problem with deterministic profilers involving accuracy.  The "
+"most obvious restriction is that the underlying \"clock\" is only ticking at"
+" a rate (typically) of about .001 seconds.  Hence no measurements will be "
+"more accurate than the underlying clock.  If enough measurements are taken, "
+"then the \"error\" will tend to average out. Unfortunately, removing this "
+"first error induces a second source of error."
+msgstr ""
+"Một hạn chế liên quan đến độ chính xác của thông tin thời gian. Có một vấn "
+"đề cơ bản với các trình lập hồ sơ xác định liên quan đến độ chính xác.  Hạn "
+"chế rõ ràng nhất là \"đồng hồ\" cơ bản chỉ tích tắc với tốc độ (thường) "
+"khoảng 0,001 giây.  Do đó, không có phép đo nào chính xác hơn đồng hồ cơ "
+"bản.  Nếu thực hiện đủ số đo thì \"lỗi\" sẽ có xu hướng lấy giá trị trung "
+"bình. Thật không may, việc loại bỏ lỗi đầu tiên này sẽ gây ra nguồn lỗi thứ "
+"hai."
+
+#: ../../library/profile.rst:604
+#, fuzzy
+msgid ""
+"The second problem is that it \"takes a while\" from when an event is "
+"dispatched until the profiler's call to get the time actually *gets* the "
+"state of the clock.  Similarly, there is a certain lag when exiting the "
+"profiler event handler from the time that the clock's value was obtained "
+"(and then squirreled away), until the user's code is once again executing.  "
+"As a result, functions that are called many times, or call many functions, "
+"will typically accumulate this error. The error that accumulates in this "
+"fashion is typically less than the accuracy of the clock (less than one "
+"clock tick), but it *can* accumulate and become very significant."
+msgstr ""
+"Vấn đề thứ hai là \"mất một khoảng thời gian\" từ khi một sự kiện được gửi "
+"đi cho đến khi có lệnh gọi của trình lược tả để có được thời gian thực sự là"
+" *gets* trạng thái của đồng hồ.  Tương tự, có một độ trễ nhất định khi thoát"
+" khỏi trình xử lý sự kiện của trình lược tả kể từ thời điểm nhận được giá "
+"trị của đồng hồ (và sau đó bị loại bỏ), cho đến khi mã của người dùng được "
+"thực thi lại một lần nữa.  Do đó, các hàm được gọi nhiều lần hoặc gọi nhiều "
+"hàm thường sẽ tích lũy lỗi này. Lỗi tích lũy theo kiểu này thường thấp hơn "
+"độ chính xác của đồng hồ (ít hơn một tích tắc đồng hồ), nhưng *can* sẽ tích "
+"lũy và trở nên rất đáng kể."
+
+#: ../../library/profile.rst:614
+#, fuzzy
+msgid ""
+"The problem is more important with :mod:`profile` than with the lower-"
+"overhead :mod:`cProfile`.  For this reason, :mod:`profile` provides a means "
+"of calibrating itself for a given platform so that this error can be "
+"probabilistically (on the average) removed. After the profiler is "
+"calibrated, it will be more accurate (in a least square sense), but it will "
+"sometimes produce negative numbers (when call counts are exceptionally low, "
+"and the gods of probability work against you :-). )  Do *not* be alarmed by "
+"negative numbers in the profile.  They should *only* appear if you have "
+"calibrated your profiler, and the results are actually better than without "
+"calibration."
+msgstr ""
+"Vấn đề với :mod:`profile` quan trọng hơn so với :mod:`cProfile` có chi phí "
+"thấp hơn.  Vì lý do này, :mod:`profile` cung cấp một phương tiện tự hiệu "
+"chỉnh cho một nền tảng nhất định để lỗi này có thể được loại bỏ theo xác "
+"suất (trung bình). Sau khi trình hồ sơ được hiệu chỉnh, nó sẽ chính xác hơn "
+"(theo nghĩa bình phương tối thiểu), nhưng đôi khi nó sẽ tạo ra các số âm "
+"(khi số lượng cuộc gọi cực kỳ thấp và các vị thần xác suất đang chống lại "
+"bạn :-). ) *not* có bị cảnh báo bởi những con số âm trong hồ sơ không.  "
+"Chúng sẽ xuất hiện *only* nếu bạn đã hiệu chỉnh trình hồ sơ của mình và kết "
+"quả thực sự tốt hơn so với việc không hiệu chỉnh."
+
+#: ../../library/profile.rst:628
+#, fuzzy
+msgid "Calibration"
+msgstr "Hiệu chuẩn"
+
+#: ../../library/profile.rst:630
+#, fuzzy
+msgid ""
+"The profiler of the :mod:`profile` module subtracts a constant from each "
+"event handling time to compensate for the overhead of calling the time "
+"function, and socking away the results.  By default, the constant is 0. The "
+"following procedure can be used to obtain a better constant for a given "
+"platform (see :ref:`profile-limitations`). ::"
+msgstr ""
+"Trình phân tích hồ sơ của mô-đun :mod:`profile` sẽ trừ một hằng số từ mỗi "
+"thời gian xử lý sự kiện để bù đắp chi phí cho việc gọi hàm thời gian và loại"
+" bỏ kết quả.  Theo mặc định, hằng số là 0. Bạn có thể sử dụng quy trình sau "
+"để có được hằng số tốt hơn cho một nền tảng nhất định (xem :ref:`profile-"
+"limitations`). ::"
+
+#: ../../library/profile.rst:636
+#, fuzzy
+msgid ""
+"import profile\n"
+"pr = profile.Profile()\n"
+"for i in range(5):\n"
+"    print(pr.calibrate(10000))"
+msgstr ""
+"hồ sơ nhập khẩu\n"
+"pr = profile.Profile()\n"
+"cho tôi trong phạm vi (5):\n"
+"    print(pr.calibrate(10000))"
+
+#: ../../library/profile.rst:641
+#, fuzzy
+msgid ""
+"The method executes the number of Python calls given by the argument, "
+"directly and again under the profiler, measuring the time for both. It then "
+"computes the hidden overhead per profiler event, and returns that as a "
+"float.  For example, on a 1.8Ghz Intel Core i5 running macOS, and using "
+"Python's time.process_time() as the timer, the magical number is about "
+"4.04e-6."
+msgstr ""
+"Phương thức này thực thi số lượng lệnh gọi Python do đối số đưa ra, trực "
+"tiếp và lặp lại trong trình lược tả, đo thời gian cho cả hai. Sau đó, nó "
+"tính toán chi phí ẩn cho mỗi sự kiện của trình lược tả và trả về chi phí đó "
+"dưới dạng float.  Ví dụ: trên Intel Core i5 1,8 GHz chạy macOS và sử dụng "
+"time.process_time() của Python làm bộ hẹn giờ, con số kỳ diệu là khoảng "
+"4,04e-6."
+
+#: ../../library/profile.rst:647
+#, fuzzy
+msgid ""
+"The object of this exercise is to get a fairly consistent result. If your "
+"computer is *very* fast, or your timer function has poor resolution, you "
+"might have to pass 100000, or even 1000000, to get consistent results."
+msgstr ""
+"Mục tiêu của bài tập này là để có được một kết quả khá nhất quán. Nếu máy "
+"tính của bạn chạy nhanh *very* hoặc chức năng hẹn giờ của bạn có độ phân "
+"giải kém, bạn có thể phải vượt qua 100000 hoặc thậm chí 1000000 để có được "
+"kết quả nhất quán."
+
+#: ../../library/profile.rst:651
+#, fuzzy
+msgid ""
+"When you have a consistent answer, there are three ways you can use it::"
+msgstr ""
+"Khi bạn có câu trả lời nhất quán, bạn có thể sử dụng câu trả lời đó theo ba "
+"cách::"
+
+#: ../../library/profile.rst:653
+#, fuzzy
+msgid ""
+"import profile\n"
+"\n"
+"# 1. Apply computed bias to all Profile instances created hereafter.\n"
+"profile.Profile.bias = your_computed_bias\n"
+"\n"
+"# 2. Apply computed bias to a specific Profile instance.\n"
+"pr = profile.Profile()\n"
+"pr.bias = your_computed_bias\n"
+"\n"
+"# 3. Specify computed bias in instance constructor.\n"
+"pr = profile.Profile(bias=your_computed_bias)"
+msgstr ""
+"hồ sơ nhập khẩu\n"
+"\n"
+"# 1. Áp dụng độ lệch được tính toán cho tất cả các phiên bản Hồ sơ được tạo sau đây.\n"
+"profile.Profile.bias = your_computed_bias\n"
+"\n"
+"# 2. Áp dụng độ lệch được tính toán cho một phiên bản Hồ sơ cụ thể.\n"
+"pr = profile.Profile()\n"
+"pr.bias = your_computed_bias\n"
+"\n"
+"# 3. Chỉ định độ lệch được tính toán trong hàm tạo cá thể.\n"
+"pr = profile.Profile(bias=your_computed_bias)"
+
+#: ../../library/profile.rst:665
+#, fuzzy
+msgid ""
+"If you have a choice, you are better off choosing a smaller constant, and "
+"then your results will \"less often\" show up as negative in profile "
+"statistics."
+msgstr ""
+"Nếu bạn có quyền lựa chọn, tốt hơn hết bạn nên chọn một hằng số nhỏ hơn và "
+"khi đó kết quả của bạn sẽ \"ít thường xuyên hơn\" hiển thị dưới dạng âm "
+"trong thống kê hồ sơ."
+
+#: ../../library/profile.rst:671
+#, fuzzy
+msgid "Using a custom timer"
+msgstr "Sử dụng bộ hẹn giờ tùy chỉnh"
+
+#: ../../library/profile.rst:673
+#, fuzzy
+msgid ""
+"If you want to change how current time is determined (for example, to force "
+"use of wall-clock time or elapsed process time), pass the timing function "
+"you want to the :class:`Profile` class constructor::"
+msgstr ""
+"Nếu bạn muốn thay đổi cách xác định thời gian hiện tại (ví dụ: để buộc sử "
+"dụng thời gian trên đồng hồ treo tường hoặc thời gian xử lý đã trôi qua), "
+"hãy chuyển hàm định giờ bạn muốn cho hàm tạo của lớp :class:`Profile`::"
+
+#: ../../library/profile.rst:677
+#, fuzzy
+msgid "pr = profile.Profile(your_time_func)"
+msgstr "pr = profile.Profile(your_time_func)"
+
+#: ../../library/profile.rst:679
+#, fuzzy
+msgid ""
+"The resulting profiler will then call ``your_time_func``. Depending on "
+"whether you are using :class:`profile.Profile` or :class:`cProfile.Profile`,"
+" ``your_time_func``'s return value will be interpreted differently:"
+msgstr ""
+"Trình lược tả kết quả sau đó sẽ gọi ``your_time_func``. Tùy thuộc vào việc "
+"bạn đang sử dụng :class:`profile.Profile` hay :class:`cProfile.Profile`, giá"
+" trị trả về của ``your_time_func`` sẽ được diễn giải khác nhau:"
+
+#: ../../library/profile.rst:683
+#, fuzzy
+msgid ":class:`profile.Profile`"
+msgstr ":class:`profile.Profile`"
+
+#: ../../library/profile.rst:684
+#, fuzzy
+msgid ""
+"``your_time_func`` should return a single number, or a list of numbers whose"
+" sum is the current time (like what :func:`os.times` returns).  If the "
+"function returns a single time number, or the list of returned numbers has "
+"length 2, then you will get an especially fast version of the dispatch "
+"routine."
+msgstr ""
+"``your_time_func`` sẽ trả về một số hoặc một danh sách các số có tổng là "
+"thời gian hiện tại (như kết quả mà :func:`os.times` trả về).  Nếu hàm trả về"
+" một số thời gian duy nhất hoặc danh sách các số được trả về có độ dài bằng "
+"2 thì bạn sẽ nhận được một phiên bản đặc biệt nhanh của quy trình gửi đi."
+
+#: ../../library/profile.rst:690
+#, fuzzy
+msgid ""
+"Be warned that you should calibrate the profiler class for the timer "
+"function that you choose (see :ref:`profile-calibration`).  For most "
+"machines, a timer that returns a lone integer value will provide the best "
+"results in terms of low overhead during profiling.  (:func:`os.times` is "
+"*pretty* bad, as it returns a tuple of floating-point values).  If you want "
+"to substitute a better timer in the cleanest fashion, derive a class and "
+"hardwire a replacement dispatch method that best handles your timer call, "
+"along with the appropriate calibration constant."
+msgstr ""
+"Được cảnh báo rằng bạn nên hiệu chỉnh lớp trình lược tả cho chức năng hẹn "
+"giờ mà bạn chọn (xem :ref:`profile-calibration`).  Đối với hầu hết các máy, "
+"bộ hẹn giờ trả về một giá trị số nguyên duy nhất sẽ mang lại kết quả tốt "
+"nhất về mặt chi phí thấp trong quá trình lập hồ sơ.  (:func:`os.times` là "
+"*pretty* không tốt vì nó trả về một bộ giá trị dấu phẩy động).  Nếu bạn muốn"
+" thay thế một bộ hẹn giờ tốt hơn theo cách rõ ràng nhất, hãy lấy một lớp và "
+"thiết lập một phương thức điều phối thay thế để xử lý tốt nhất lệnh gọi bộ "
+"hẹn giờ của bạn, cùng với hằng số hiệu chuẩn thích hợp."
+
+#: ../../library/profile.rst:699
+#, fuzzy
+msgid ":class:`cProfile.Profile`"
+msgstr ":class:`cProfile.Profile`"
+
+#: ../../library/profile.rst:700
+#, fuzzy
+msgid ""
+"``your_time_func`` should return a single number.  If it returns integers, "
+"you can also invoke the class constructor with a second argument specifying "
+"the real duration of one unit of time.  For example, if "
+"``your_integer_time_func`` returns times measured in thousands of seconds, "
+"you would construct the :class:`Profile` instance as follows::"
+msgstr ""
+"``your_time_func`` sẽ trả về một số duy nhất.  Nếu nó trả về số nguyên, bạn "
+"cũng có thể gọi hàm tạo của lớp với đối số thứ hai chỉ định khoảng thời gian"
+" thực của một đơn vị thời gian.  Ví dụ: nếu ``your_integer_time_func`` trả "
+"về thời gian được đo bằng hàng nghìn giây, bạn sẽ xây dựng phiên bản "
+":class:`Profile` như sau::"
+
+#: ../../library/profile.rst:706
+#, fuzzy
+msgid "pr = cProfile.Profile(your_integer_time_func, 0.001)"
+msgstr "pr = cProfile.Profile(your_integer_time_func, 0,001)"
+
+#: ../../library/profile.rst:708
+#, fuzzy
+msgid ""
+"As the :class:`cProfile.Profile` class cannot be calibrated, custom timer "
+"functions should be used with care and should be as fast as possible.  For "
+"the best results with a custom timer, it might be necessary to hard-code it "
+"in the C source of the internal :mod:`!_lsprof` module."
+msgstr ""
+"Vì lớp :class:`cProfile.Profile` không thể hiệu chỉnh được nên các chức năng"
+" hẹn giờ tùy chỉnh phải được sử dụng cẩn thận và phải nhanh nhất có thể.  Để"
+" có kết quả tốt nhất với bộ hẹn giờ tùy chỉnh, có thể cần phải mã hóa cứng "
+"bộ hẹn giờ đó trong nguồn C của mô-đun :mod:`!_lsprof` bên trong."
+
+#: ../../library/profile.rst:713
+#, fuzzy
+msgid ""
+"Python 3.3 adds several new functions in :mod:`time` that can be used to "
+"make precise measurements of process or wall-clock time. For example, see "
+":func:`time.perf_counter`."
+msgstr ""
+"Python 3.3 bổ sung một số hàm mới trong :mod:`time` có thể được sử dụng để "
+"thực hiện các phép đo chính xác về quy trình hoặc thời gian trên đồng hồ "
+"treo tường. Ví dụ: xem :func:`time.perf_counter`."
+
+#: ../../library/profile.rst:16
+#, fuzzy
+msgid "deterministic profiling"
+msgstr "hồ sơ xác định"
+
+#: ../../library/profile.rst:16
+#, fuzzy
+msgid "profiling, deterministic"
+msgstr "hồ sơ, xác định"

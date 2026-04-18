@@ -1,0 +1,292 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../c-api/tls.rst:6
+#, fuzzy
+msgid "Thread-local storage support"
+msgstr "Hỗ trợ lưu trữ cục bộ theo chủ đề"
+
+#: ../../c-api/tls.rst:8
+#, fuzzy
+msgid ""
+"The Python interpreter provides low-level support for thread-local storage "
+"(TLS) which wraps the underlying native TLS implementation to support the "
+"Python-level thread-local storage API (:class:`threading.local`).  The "
+"CPython C level APIs are similar to those offered by pthreads and Windows: "
+"use a thread key and functions to associate a :c:expr:`void*` value per "
+"thread."
+msgstr ""
+"Trình thông dịch Python cung cấp hỗ trợ cấp thấp cho bộ lưu trữ cục bộ theo "
+"luồng (TLS), gói này bao bọc việc triển khai TLS gốc cơ bản để hỗ trợ bộ lưu"
+" trữ cục bộ theo luồng ở cấp độ Python API (:class:`threading.local`).  API "
+"cấp CPython C tương tự như API được cung cấp bởi pthreads và Windows: sử "
+"dụng khóa luồng và các hàm để liên kết giá trị :c:expr:`void*` cho mỗi "
+"luồng."
+
+#: ../../c-api/tls.rst:15
+#, fuzzy
+msgid ""
+"A :term:`thread state` does *not* need to be :term:`attached <attached "
+"thread state>` when calling these functions; they supply their own locking."
+msgstr ""
+"Một :term:`thread state` thì *not* cần phải là :term:`attached <attached "
+"thread state>` khi gọi các hàm này; họ cung cấp khóa riêng của họ."
+
+#: ../../c-api/tls.rst:18
+#, fuzzy
+msgid ""
+"Note that :file:`Python.h` does not include the declaration of the TLS APIs,"
+" you need to include :file:`pythread.h` to use thread-local storage."
+msgstr ""
+"Lưu ý rằng :file:`Python.h` không bao gồm việc khai báo API TLS, bạn cần bao"
+" gồm :file:`pythread.h` để sử dụng bộ nhớ cục bộ theo luồng."
+
+#: ../../c-api/tls.rst:22
+#, fuzzy
+msgid ""
+"None of these API functions handle memory management on behalf of the "
+":c:expr:`void*` values.  You need to allocate and deallocate them yourself. "
+"If the :c:expr:`void*` values happen to be :c:expr:`PyObject*`, these "
+"functions don't do refcount operations on them either."
+msgstr ""
+"Không có hàm API nào xử lý việc quản lý bộ nhớ thay mặt cho các giá trị "
+":c:expr:`void*`.  Bạn cần phải tự mình phân bổ và giải quyết chúng. Nếu các "
+"giá trị :c:expr:`void*` là :c:expr:`PyObject*` thì các hàm này cũng không "
+"thực hiện các thao tác đếm lại trên chúng."
+
+#: ../../c-api/tls.rst:30
+#, fuzzy
+msgid "Thread-specific storage API"
+msgstr "Lưu trữ theo chủ đề cụ thể API"
+
+#: ../../c-api/tls.rst:32
+#, fuzzy
+msgid ""
+"The thread-specific storage (TSS) API was introduced to supersede the use of"
+" the existing TLS API within the CPython interpreter.  This API uses a new "
+"type :c:type:`Py_tss_t` instead of :c:expr:`int` to represent thread keys."
+msgstr ""
+"Bộ lưu trữ dành riêng cho luồng (TSS) API được giới thiệu để thay thế việc "
+"sử dụng TLS API hiện có trong trình thông dịch CPython.  Zz006zz này sử dụng"
+" loại :c:type:`Py_tss_t` mới thay vì :c:expr:`int` để biểu thị các khóa của "
+"luồng."
+
+#: ../../c-api/tls.rst:38
+#, fuzzy
+msgid "\"A New C-API for Thread-Local Storage in CPython\" (:pep:`539`)"
+msgstr "\"C-API mới cho bộ nhớ cục bộ theo luồng trong CPython\" (:pep:`539`)"
+
+#: ../../c-api/tls.rst:43
+#, fuzzy
+msgid ""
+"This data structure represents the state of a thread key, the definition of "
+"which may depend on the underlying TLS implementation, and it has an "
+"internal field representing the key's initialization state.  There are no "
+"public members in this structure."
+msgstr ""
+"Cấu trúc dữ liệu này biểu thị trạng thái của khóa luồng, định nghĩa của nó "
+"có thể phụ thuộc vào việc triển khai TLS cơ bản và nó có trường bên trong "
+"biểu thị trạng thái khởi tạo của khóa.  Không có thành viên công cộng trong "
+"cấu trúc này."
+
+#: ../../c-api/tls.rst:48
+#, fuzzy
+msgid ""
+"When :ref:`Py_LIMITED_API <stable>` is not defined, static allocation of "
+"this type by :c:macro:`Py_tss_NEEDS_INIT` is allowed."
+msgstr ""
+"Khi :ref:`Py_LIMITED_API <stable>` không được xác định, việc phân bổ tĩnh "
+"loại này theo :c:macro:`Py_tss_NEEDS_INIT` được cho phép."
+
+#: ../../c-api/tls.rst:54
+#, fuzzy
+msgid ""
+"This macro expands to the initializer for :c:type:`Py_tss_t` variables. Note"
+" that this macro won't be defined with :ref:`Py_LIMITED_API <stable>`."
+msgstr ""
+"Macro này mở rộng tới bộ khởi tạo cho các biến :c:type:`Py_tss_t`. Lưu ý "
+"rằng macro này sẽ không được xác định bằng :ref:`Py_LIMITED_API <stable>`."
+
+#: ../../c-api/tls.rst:59
+#, fuzzy
+msgid "Dynamic allocation"
+msgstr "Phân bổ động"
+
+#: ../../c-api/tls.rst:61
+#, fuzzy
+msgid ""
+"Dynamic allocation of the :c:type:`Py_tss_t`, required in extension modules "
+"built with :ref:`Py_LIMITED_API <stable>`, where static allocation of this "
+"type is not possible due to its implementation being opaque at build time."
+msgstr ""
+"Phân bổ động của :c:type:`Py_tss_t`, được yêu cầu trong các mô-đun mở rộng "
+"được xây dựng bằng :ref:`Py_LIMITED_API <stable>`, trong đó không thể thực "
+"hiện phân bổ tĩnh loại này do việc triển khai nó không rõ ràng tại thời điểm"
+" xây dựng."
+
+#: ../../c-api/tls.rst:68
+#, fuzzy
+msgid ""
+"Return a value which is the same state as a value initialized with "
+":c:macro:`Py_tss_NEEDS_INIT`, or ``NULL`` in the case of dynamic allocation "
+"failure."
+msgstr ""
+"Trả về một giá trị có cùng trạng thái với giá trị được khởi tạo bằng "
+":c:macro:`Py_tss_NEEDS_INIT` hoặc ``NULL`` trong trường hợp phân bổ động "
+"không thành công."
+
+#: ../../c-api/tls.rst:75
+#, fuzzy
+msgid ""
+"Free the given *key* allocated by :c:func:`PyThread_tss_alloc`, after first "
+"calling :c:func:`PyThread_tss_delete` to ensure any associated thread locals"
+" have been unassigned. This is a no-op if the *key* argument is ``NULL``."
+msgstr ""
+"Giải phóng *key* đã cho do :c:func:`PyThread_tss_alloc` phân bổ, sau lần gọi"
+" :c:func:`PyThread_tss_delete` đầu tiên để đảm bảo mọi luồng cục bộ liên "
+"quan đã được bỏ chỉ định. Đây là điều không thể thực hiện được nếu đối số "
+"*key* là ``NULL``."
+
+#: ../../c-api/tls.rst:81
+#, fuzzy
+msgid ""
+"A freed key becomes a dangling pointer. You should reset the key to "
+"``NULL``."
+msgstr ""
+"Một phím được giải phóng sẽ trở thành một con trỏ lơ lửng. Bạn nên reset key"
+" về ``NULL``."
+
+#: ../../c-api/tls.rst:86
+#, fuzzy
+msgid "Methods"
+msgstr "phương pháp"
+
+#: ../../c-api/tls.rst:88
+#, fuzzy
+msgid ""
+"The parameter *key* of these functions must not be ``NULL``.  Moreover, the "
+"behaviors of :c:func:`PyThread_tss_set` and :c:func:`PyThread_tss_get` are "
+"undefined if the given :c:type:`Py_tss_t` has not been initialized by "
+":c:func:`PyThread_tss_create`."
+msgstr ""
+"Tham số *key* của các hàm này không được là ``NULL``.  Hơn nữa, các hành vi "
+"của :c:func:`PyThread_tss_set` và :c:func:`PyThread_tss_get` không được xác "
+"định nếu :c:type:`Py_tss_t` đã cho chưa được :c:func:`PyThread_tss_create` "
+"khởi tạo."
+
+#: ../../c-api/tls.rst:96
+#, fuzzy
+msgid ""
+"Return a non-zero value if the given :c:type:`Py_tss_t` has been initialized"
+" by :c:func:`PyThread_tss_create`."
+msgstr ""
+"Trả về giá trị khác 0 nếu :c:type:`Py_tss_t` đã cho được khởi tạo bởi "
+":c:func:`PyThread_tss_create`."
+
+#: ../../c-api/tls.rst:102
+#, fuzzy
+msgid ""
+"Return a zero value on successful initialization of a TSS key.  The behavior"
+" is undefined if the value pointed to by the *key* argument is not "
+"initialized by :c:macro:`Py_tss_NEEDS_INIT`.  This function can be called "
+"repeatedly on the same key -- calling it on an already initialized key is a "
+"no-op and immediately returns success."
+msgstr ""
+"Trả về giá trị 0 khi khởi tạo thành công khóa TSS.  Hành vi này không được "
+"xác định nếu giá trị được chỉ ra bởi đối số *key* không được khởi tạo bởi "
+":c:macro:`Py_tss_NEEDS_INIT`.  Hàm này có thể được gọi nhiều lần trên cùng "
+"một khóa -- việc gọi nó trên một khóa đã được khởi tạo là điều không nên và "
+"ngay lập tức trả về thành công."
+
+#: ../../c-api/tls.rst:111
+#, fuzzy
+msgid ""
+"Destroy a TSS key to forget the values associated with the key across all "
+"threads, and change the key's initialization state to uninitialized.  A "
+"destroyed key is able to be initialized again by "
+":c:func:`PyThread_tss_create`. This function can be called repeatedly on the"
+" same key -- calling it on an already destroyed key is a no-op."
+msgstr ""
+"Phá hủy khóa TSS để quên các giá trị được liên kết với khóa trên tất cả các "
+"luồng và thay đổi trạng thái khởi tạo của khóa thành chưa được khởi tạo.  "
+"Một khóa bị phá hủy có thể được khởi tạo lại bởi "
+":c:func:`PyThread_tss_create`. Hàm này có thể được gọi nhiều lần trên cùng "
+"một khóa -- việc gọi nó trên một khóa đã bị hủy là điều không nên."
+
+#: ../../c-api/tls.rst:120
+#, fuzzy
+msgid ""
+"Return a zero value to indicate successfully associating a :c:expr:`void*` "
+"value with a TSS key in the current thread.  Each thread has a distinct "
+"mapping of the key to a :c:expr:`void*` value."
+msgstr ""
+"Trả về giá trị 0 để biểu thị việc liên kết thành công giá trị "
+":c:expr:`void*` với khóa TSS trong luồng hiện tại.  Mỗi luồng có một ánh xạ "
+"riêng biệt của khóa tới giá trị :c:expr:`void*`."
+
+#: ../../c-api/tls.rst:127
+#, fuzzy
+msgid ""
+"Return the :c:expr:`void*` value associated with a TSS key in the current "
+"thread.  This returns ``NULL`` if no value is associated with the key in the"
+" current thread."
+msgstr ""
+"Trả về giá trị :c:expr:`void*` được liên kết với khóa TSS trong luồng hiện "
+"tại.  Điều này trả về ``NULL`` nếu không có giá trị nào được liên kết với "
+"khóa trong luồng hiện tại."
+
+#: ../../c-api/tls.rst:135
+#, fuzzy
+msgid "Legacy APIs"
+msgstr "API kế thừa"
+
+#: ../../c-api/tls.rst:137
+#, fuzzy
+msgid ""
+"This API is superseded by the :ref:`thread-specific storage (TSS) API "
+"<thread-specific-storage-api>`."
+msgstr ""
+"Zz001zz này được thay thế bởi :ref:`thread-specific storage (TSS) API "
+"<thread-specific-storage-api>`."
+
+#: ../../c-api/tls.rst:142
+#, fuzzy
+msgid ""
+"This version of the API does not support platforms where the native TLS key "
+"is defined in a way that cannot be safely cast to ``int``.  On such "
+"platforms, :c:func:`PyThread_create_key` will return immediately with a "
+"failure status, and the other TLS functions will all be no-ops on such "
+"platforms."
+msgstr ""
+"Phiên bản API này không hỗ trợ các nền tảng trong đó khóa TLS gốc được xác "
+"định theo cách không thể truyền tới ``int`` một cách an toàn.  Trên các nền "
+"tảng như vậy, :c:func:`PyThread_create_key` sẽ ngay lập tức quay trở lại với"
+" trạng thái lỗi và các chức năng TLS khác sẽ không hoạt động trên các nền "
+"tảng đó."
+
+#: ../../c-api/tls.rst:147
+#, fuzzy
+msgid ""
+"Due to the compatibility problem noted above, this version of the API should"
+" not be used in new code."
+msgstr ""
+"Do vấn đề tương thích đã nêu ở trên, phiên bản API này không nên được sử "
+"dụng trong mã mới."

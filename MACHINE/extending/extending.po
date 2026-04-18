@@ -1,0 +1,3297 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../extending/extending.rst:8
+#, fuzzy
+msgid "Extending Python with C or C++"
+msgstr "Mở rộng Python bằng C hoặc C++"
+
+#: ../../extending/extending.rst:10
+#, fuzzy
+msgid ""
+"It is quite easy to add new built-in modules to Python, if you know how to "
+"program in C.  Such :dfn:`extension modules` can do two things that can't be"
+" done directly in Python: they can implement new built-in object types, and "
+"they can call C library functions and system calls."
+msgstr ""
+"Việc thêm các mô-đun tích hợp mới vào Python khá dễ dàng nếu bạn biết cách "
+"lập trình trong C. :dfn:`extension modules` như vậy có thể thực hiện hai "
+"việc mà không thể thực hiện trực tiếp trong Python: chúng có thể triển khai "
+"các loại đối tượng tích hợp mới và chúng có thể gọi các hàm thư viện C và "
+"lệnh gọi hệ thống."
+
+#: ../../extending/extending.rst:15
+#, fuzzy
+msgid ""
+"To support extensions, the Python API (Application Programmers Interface) "
+"defines a set of functions, macros and variables that provide access to most"
+" aspects of the Python run-time system.  The Python API is incorporated in a"
+" C source file by including the header ``\"Python.h\"``."
+msgstr ""
+"Để hỗ trợ các tiện ích mở rộng, Python API (Giao diện lập trình ứng dụng) "
+"xác định một tập hợp các hàm, macro và biến cung cấp quyền truy cập vào hầu "
+"hết các khía cạnh của hệ thống thời gian chạy Python.  Python API được kết "
+"hợp trong tệp nguồn C bằng cách bao gồm tiêu đề ``\"Python.h\"``."
+
+#: ../../extending/extending.rst:20
+#, fuzzy
+msgid ""
+"The compilation of an extension module depends on its intended use as well "
+"as on your system setup; details are given in later chapters."
+msgstr ""
+"Việc biên soạn mô-đun mở rộng phụ thuộc vào mục đích sử dụng cũng như thiết "
+"lập hệ thống của bạn; chi tiết được đưa ra trong các chương sau."
+
+#: ../../extending/extending.rst:25
+#, fuzzy
+msgid ""
+"The C extension interface is specific to CPython, and extension modules do "
+"not work on other Python implementations.  In many cases, it is possible to "
+"avoid writing C extensions and preserve portability to other "
+"implementations. For example, if your use case is calling C library "
+"functions or system calls, you should consider using the :mod:`ctypes` "
+"module or the `cffi <https://cffi.readthedocs.io/>`_ library rather than "
+"writing custom C code. These modules let you write Python code to interface "
+"with C code and are more portable between implementations of Python than "
+"writing and compiling a C extension module."
+msgstr ""
+"Giao diện mở rộng C dành riêng cho CPython và các mô-đun mở rộng không hoạt "
+"động trên các triển khai Python khác.  Trong nhiều trường hợp, có thể tránh "
+"viết các phần mở rộng C và duy trì tính di động cho các triển khai khác. Ví "
+"dụ: nếu trường hợp sử dụng của bạn đang gọi các hàm thư viện C hoặc lệnh gọi"
+" hệ thống, bạn nên cân nhắc sử dụng mô-đun :mod:`ctypes` hoặc thư viện `cffi"
+" <https://cffi.readthedocs.io/>`_ thay vì viết mã C tùy chỉnh. Các mô-đun "
+"này cho phép bạn viết mã Python để giao tiếp với mã C và dễ di chuyển hơn "
+"giữa các lần triển khai Python so với việc viết và biên dịch mô-đun mở rộng "
+"C."
+
+#: ../../extending/extending.rst:40
+#, fuzzy
+msgid "A Simple Example"
+msgstr "Một ví dụ đơn giản"
+
+#: ../../extending/extending.rst:42
+#, fuzzy
+msgid ""
+"Let's create an extension module called ``spam`` (the favorite food of Monty"
+" Python fans...) and let's say we want to create a Python interface to the C"
+" library function :c:func:`system` [#]_. This function takes a null-"
+"terminated character string as argument and returns an integer.  We want "
+"this function to be callable from Python as follows:"
+msgstr ""
+"Hãy tạo một mô-đun mở rộng có tên ``spam`` (món ăn yêu thích của những người"
+" hâm mộ Monty Python...) và giả sử chúng ta muốn tạo giao diện Python cho "
+"hàm thư viện C :c:func:`system` [#]_. Hàm này lấy chuỗi ký tự kết thúc bằng "
+"null làm đối số và trả về một số nguyên.  Chúng tôi muốn hàm này có thể gọi "
+"được từ Python như sau:"
+
+#: ../../extending/extending.rst:48
+#, fuzzy
+msgid ""
+">>> import spam\n"
+">>> status = spam.system(\"ls -l\")"
+msgstr ""
+">>> nhập thư rác\n"
+">>> trạng thái = spam.system(\"ls -l\")"
+
+#: ../../extending/extending.rst:53
+#, fuzzy
+msgid ""
+"Begin by creating a file :file:`spammodule.c`.  (Historically, if a module "
+"is called ``spam``, the C file containing its implementation is called "
+":file:`spammodule.c`; if the module name is very long, like ``spammify``, "
+"the module name can be just :file:`spammify.c`.)"
+msgstr ""
+"Bắt đầu bằng cách tạo một tệp :file:`spammodule.c`.  (Trước đây, nếu một mô-"
+"đun có tên là ``spam`` thì tệp C chứa phần triển khai của nó được gọi là "
+":file:`spammodule.c`; nếu tên mô-đun rất dài, như ``spammify``, thì tên mô-"
+"đun có thể chỉ là :file:`spammify.c`.)"
+
+#: ../../extending/extending.rst:58
+#, fuzzy
+msgid "The first two lines of our file can be::"
+msgstr "Hai dòng đầu tiên của tệp của chúng tôi có thể là::"
+
+#: ../../extending/extending.rst:60 ../../extending/extending.rst:706
+#, fuzzy
+msgid ""
+"#define PY_SSIZE_T_CLEAN\n"
+"#include <Python.h>"
+msgstr ""
+"#define PY_SSIZE_T_CLEAN\n"
+"#include <Python.h>"
+
+#: ../../extending/extending.rst:63
+#, fuzzy
+msgid ""
+"which pulls in the Python API (you can add a comment describing the purpose "
+"of the module and a copyright notice if you like)."
+msgstr ""
+"kéo theo Python API (bạn có thể thêm nhận xét mô tả mục đích của mô-đun và "
+"thông báo bản quyền nếu muốn)."
+
+#: ../../extending/extending.rst:68
+#, fuzzy
+msgid ""
+"Since Python may define some pre-processor definitions which affect the "
+"standard headers on some systems, you *must* include :file:`Python.h` before"
+" any standard headers are included."
+msgstr ""
+"Vì Python có thể xác định một số định nghĩa tiền xử lý ảnh hưởng đến các "
+"tiêu đề tiêu chuẩn trên một số hệ thống, nên bạn *must* bao gồm "
+":file:`Python.h` trước bất kỳ tiêu đề tiêu chuẩn nào được đưa vào."
+
+#: ../../extending/extending.rst:72
+#, fuzzy
+msgid ""
+"``#define PY_SSIZE_T_CLEAN`` was used to indicate that ``Py_ssize_t`` should"
+" be used in some APIs instead of ``int``. It is not necessary since Python "
+"3.13, but we keep it here for backward compatibility. See :ref:`arg-parsing-"
+"string-and-buffers` for a description of this macro."
+msgstr ""
+"``#define PY_SSIZE_T_CLEAN`` được dùng để chỉ ra rằng nên sử dụng "
+"``Py_ssize_t`` trong một số API thay vì ``int``. Nó không cần thiết kể từ "
+"Python 3.13, nhưng chúng tôi giữ nó ở đây để tương thích ngược. Xem "
+":ref:`arg-parsing-string-and-buffers` để biết mô tả về macro này."
+
+#: ../../extending/extending.rst:77
+#, fuzzy
+msgid ""
+"All user-visible symbols defined by :file:`Python.h` have a prefix of ``Py``"
+" or ``PY``, except those defined in standard header files."
+msgstr ""
+"Tất cả các ký hiệu mà người dùng nhìn thấy được xác định bởi "
+":file:`Python.h` đều có tiền tố là ``Py`` hoặc ``PY``, ngoại trừ những ký "
+"hiệu được xác định trong tệp tiêu đề tiêu chuẩn."
+
+#: ../../extending/extending.rst:82
+#, fuzzy
+msgid ""
+"For backward compatibility, :file:`Python.h` includes several standard "
+"header files. C extensions should include the standard headers that they "
+"use, and should not rely on these implicit includes. If using the limited C "
+"API version 3.13 or newer, the implicit includes are:"
+msgstr ""
+"Để tương thích ngược, :file:`Python.h` bao gồm một số tệp tiêu đề tiêu "
+"chuẩn. Tiện ích mở rộng C phải bao gồm các tiêu đề tiêu chuẩn mà chúng sử "
+"dụng và không nên dựa vào các tiêu đề ngầm này. Nếu sử dụng phiên bản C API "
+"giới hạn 3.13 trở lên thì hàm ý bao gồm:"
+
+#: ../../extending/extending.rst:87
+#, fuzzy
+msgid "``<assert.h>``"
+msgstr "``<assert.h>``"
+
+#: ../../extending/extending.rst:88
+#, fuzzy
+msgid "``<intrin.h>`` (on Windows)"
+msgstr "``<intrin.h>`` (trên Windows)"
+
+#: ../../extending/extending.rst:89
+#, fuzzy
+msgid "``<inttypes.h>``"
+msgstr "``<inttypes.h>``"
+
+#: ../../extending/extending.rst:90
+#, fuzzy
+msgid "``<limits.h>``"
+msgstr "``<limits.h>``"
+
+#: ../../extending/extending.rst:91
+#, fuzzy
+msgid "``<math.h>``"
+msgstr "``<math.h>``"
+
+#: ../../extending/extending.rst:92
+#, fuzzy
+msgid "``<stdarg.h>``"
+msgstr "``<stdarg.h>``"
+
+#: ../../extending/extending.rst:93
+#, fuzzy
+msgid "``<wchar.h>``"
+msgstr "``<wchar.h>``"
+
+#: ../../extending/extending.rst:94
+#, fuzzy
+msgid "``<sys/types.h>`` (if present)"
+msgstr "``<sys/types.h>`` (nếu có)"
+
+#: ../../extending/extending.rst:96
+#, fuzzy
+msgid ""
+"If :c:macro:`Py_LIMITED_API` is not defined, or is set to version 3.12 or "
+"older, the headers below are also included:"
+msgstr ""
+"Nếu :c:macro:`Py_LIMITED_API` không được xác định hoặc được đặt ở phiên bản "
+"3.12 trở lên thì các tiêu đề bên dưới cũng được bao gồm:"
+
+#: ../../extending/extending.rst:99
+#, fuzzy
+msgid "``<ctype.h>``"
+msgstr "``<ctype.h>``"
+
+#: ../../extending/extending.rst:100
+#, fuzzy
+msgid "``<unistd.h>`` (on POSIX)"
+msgstr "``<unistd.h>`` (trên POSIX)"
+
+#: ../../extending/extending.rst:102
+#, fuzzy
+msgid ""
+"If :c:macro:`Py_LIMITED_API` is not defined, or is set to version 3.10 or "
+"older, the headers below are also included:"
+msgstr ""
+"Nếu :c:macro:`Py_LIMITED_API` không được xác định hoặc được đặt ở phiên bản "
+"3.10 trở lên thì các tiêu đề bên dưới cũng được bao gồm:"
+
+#: ../../extending/extending.rst:105
+#, fuzzy
+msgid "``<errno.h>``"
+msgstr "``<errno.h>``"
+
+#: ../../extending/extending.rst:106
+#, fuzzy
+msgid "``<stdio.h>``"
+msgstr "``<stdio.h>``"
+
+#: ../../extending/extending.rst:107
+#, fuzzy
+msgid "``<stdlib.h>``"
+msgstr "``<stdlib.h>``"
+
+#: ../../extending/extending.rst:108
+#, fuzzy
+msgid "``<string.h>``"
+msgstr "``<string.h>``"
+
+#: ../../extending/extending.rst:110
+#, fuzzy
+msgid ""
+"The next thing we add to our module file is the C function that will be "
+"called when the Python expression ``spam.system(string)`` is evaluated "
+"(we'll see shortly how it ends up being called)::"
+msgstr ""
+"Điều tiếp theo mà chúng tôi thêm vào tệp mô-đun của mình là hàm C sẽ được "
+"gọi khi biểu thức Python ``spam.system(string)`` được đánh giá (chúng tôi sẽ"
+" xem ngay cách nó được gọi)::"
+
+#: ../../extending/extending.rst:114
+#, fuzzy
+msgid ""
+"static PyObject *\n"
+"spam_system(PyObject *self, PyObject *args)\n"
+"{\n"
+"    const char *command;\n"
+"    int sts;\n"
+"\n"
+"    if (!PyArg_ParseTuple(args, \"s\", &command))\n"
+"        return NULL;\n"
+"    sts = system(command);\n"
+"    return PyLong_FromLong(sts);\n"
+"}"
+msgstr ""
+"PyObject tĩnh *\n"
+"spam_system(PyObject *self, PyObject *args)\n"
+"{\n"
+"    lệnh const char *;\n"
+"    int sts;\n"
+"\n"
+"    if (!PyArg_ParseTuple(args, \"s\", &command))\n"
+"        trả lại NULL;\n"
+"    sts = hệ thống(lệnh);\n"
+"    trả về PyLong_FromLong(sts);\n"
+"}"
+
+#: ../../extending/extending.rst:126
+#, fuzzy
+msgid ""
+"There is a straightforward translation from the argument list in Python (for"
+" example, the single expression ``\"ls -l\"``) to the arguments passed to "
+"the C function.  The C function always has two arguments, conventionally "
+"named *self* and *args*."
+msgstr ""
+"Có một bản dịch đơn giản từ danh sách đối số trong Python (ví dụ: biểu thức "
+"đơn ``\"ls -l\"``) sang các đối số được truyền cho hàm C.  Hàm C luôn có hai"
+" đối số, thường được đặt tên là *self* và *args*."
+
+#: ../../extending/extending.rst:131
+#, fuzzy
+msgid ""
+"The *self* argument points to the module object for module-level functions; "
+"for a method it would point to the object instance."
+msgstr ""
+"Đối số *self* trỏ đến đối tượng mô-đun cho các hàm cấp mô-đun; đối với một "
+"phương thức, nó sẽ trỏ đến thể hiện đối tượng."
+
+#: ../../extending/extending.rst:134
+#, fuzzy
+msgid ""
+"The *args* argument will be a pointer to a Python tuple object containing "
+"the arguments.  Each item of the tuple corresponds to an argument in the "
+"call's argument list.  The arguments are Python objects --- in order to do "
+"anything with them in our C function we have to convert them to C values.  "
+"The function :c:func:`PyArg_ParseTuple` in the Python API checks the "
+"argument types and converts them to C values.  It uses a template string to "
+"determine the required types of the arguments as well as the types of the C "
+"variables into which to store the converted values.  More about this later."
+msgstr ""
+"Đối số *args* sẽ là một con trỏ tới đối tượng bộ dữ liệu Python chứa các đối"
+" số.  Mỗi mục của bộ dữ liệu tương ứng với một đối số trong danh sách đối số"
+" của lệnh gọi.  Các đối số là các đối tượng Python --- để thực hiện bất kỳ "
+"điều gì với chúng trong hàm C, chúng ta phải chuyển đổi chúng thành giá trị "
+"C.  Hàm :c:func:`PyArg_ParseTuple` trong Python API kiểm tra các loại đối số"
+" và chuyển đổi chúng thành giá trị C.  Nó sử dụng một chuỗi mẫu để xác định "
+"các loại đối số cần thiết cũng như các loại biến C để lưu trữ các giá trị "
+"được chuyển đổi.  Thông tin thêm về điều này sau."
+
+#: ../../extending/extending.rst:143
+#, fuzzy
+msgid ""
+":c:func:`PyArg_ParseTuple` returns true (nonzero) if all arguments have the "
+"right type and its components have been stored in the variables whose "
+"addresses are passed.  It returns false (zero) if an invalid argument list "
+"was passed.  In the latter case it also raises an appropriate exception so "
+"the calling function can return ``NULL`` immediately (as we saw in the "
+"example)."
+msgstr ""
+":c:func:`PyArg_ParseTuple` trả về true (khác 0) nếu tất cả đối số có đúng "
+"loại và các thành phần của nó đã được lưu trữ trong các biến có địa chỉ được"
+" truyền.  Nó trả về false (không) nếu danh sách đối số không hợp lệ được "
+"thông qua.  Trong trường hợp sau, nó cũng đưa ra một ngoại lệ thích hợp để "
+"hàm gọi có thể trả về ``NULL`` ngay lập tức (như chúng ta đã thấy trong ví "
+"dụ)."
+
+#: ../../extending/extending.rst:153
+#, fuzzy
+msgid "Intermezzo: Errors and Exceptions"
+msgstr "Intermezzo: Lỗi và ngoại lệ"
+
+#: ../../extending/extending.rst:155
+#, fuzzy
+msgid ""
+"An important convention throughout the Python interpreter is the following: "
+"when a function fails, it should set an exception condition and return an "
+"error value (usually ``-1`` or a ``NULL`` pointer).  Exception information "
+"is stored in three members of the interpreter's thread state.  These are "
+"``NULL`` if there is no exception.  Otherwise they are the C equivalents of "
+"the members of the Python tuple returned by :meth:`sys.exc_info`.  These are"
+" the exception type, exception instance, and a traceback object.  It is "
+"important to know about them to understand how errors are passed around."
+msgstr ""
+"Một quy ước quan trọng xuyên suốt trình thông dịch Python là: khi một hàm bị"
+" lỗi, nó phải đặt một điều kiện ngoại lệ và trả về một giá trị lỗi (thường "
+"là ``-1`` hoặc con trỏ ``NULL``).  Thông tin ngoại lệ được lưu trữ trong ba "
+"thành viên của trạng thái luồng của trình thông dịch.  Đây là ``NULL`` nếu "
+"không có ngoại lệ.  Mặt khác, chúng là các thành phần tương đương C của các "
+"thành viên trong bộ Python được trả về bởi :meth:`sys.exc_info`.  Đây là "
+"loại ngoại lệ, trường hợp ngoại lệ và đối tượng truy nguyên.  Điều quan "
+"trọng là phải biết về chúng để hiểu lỗi được truyền đi như thế nào."
+
+#: ../../extending/extending.rst:164
+#, fuzzy
+msgid ""
+"The Python API defines a number of functions to set various types of "
+"exceptions."
+msgstr "Python API xác định một số hàm để đặt nhiều loại ngoại lệ khác nhau."
+
+#: ../../extending/extending.rst:166
+#, fuzzy
+msgid ""
+"The most common one is :c:func:`PyErr_SetString`.  Its arguments are an "
+"exception object and a C string.  The exception object is usually a "
+"predefined object like :c:data:`PyExc_ZeroDivisionError`.  The C string "
+"indicates the cause of the error and is converted to a Python string object "
+"and stored as the \"associated value\" of the exception."
+msgstr ""
+"Phổ biến nhất là :c:func:`PyErr_SetString`.  Đối số của nó là một đối tượng "
+"ngoại lệ và một chuỗi C.  Đối tượng ngoại lệ thường là đối tượng được xác "
+"định trước như :c:data:`PyExc_ZeroDivisionError`.  Chuỗi C cho biết nguyên "
+"nhân gây ra lỗi và được chuyển đổi thành đối tượng chuỗi Python và được lưu "
+"dưới dạng \"giá trị liên quan\" của ngoại lệ."
+
+#: ../../extending/extending.rst:172
+#, fuzzy
+msgid ""
+"Another useful function is :c:func:`PyErr_SetFromErrno`, which only takes an"
+" exception argument and constructs the associated value by inspection of the"
+" global variable :c:data:`errno`.  The most general function is "
+":c:func:`PyErr_SetObject`, which takes two object arguments, the exception "
+"and its associated value.  You don't need to :c:func:`Py_INCREF` the objects"
+" passed to any of these functions."
+msgstr ""
+"Một hàm hữu ích khác là :c:func:`PyErr_SetFromErrno`, hàm này chỉ nhận một "
+"đối số ngoại lệ và xây dựng giá trị liên quan bằng cách kiểm tra biến toàn "
+"cục :c:data:`errno`.  Hàm tổng quát nhất là :c:func:`PyErr_SetObject`, hàm "
+"này nhận hai đối số đối tượng, ngoại lệ và giá trị liên quan của nó.  Bạn "
+"không cần phải :c:func:`Py_INCREF` các đối tượng được truyền cho bất kỳ hàm "
+"nào trong số này."
+
+#: ../../extending/extending.rst:179
+#, fuzzy
+msgid ""
+"You can test non-destructively whether an exception has been set with "
+":c:func:`PyErr_Occurred`.  This returns the current exception object, or "
+"``NULL`` if no exception has occurred.  You normally don't need to call "
+":c:func:`PyErr_Occurred` to see whether an error occurred in a function "
+"call, since you should be able to tell from the return value."
+msgstr ""
+"Bạn có thể kiểm tra không phá hủy xem ngoại lệ có được đặt bằng "
+":c:func:`PyErr_Occurred` hay không.  Điều này trả về đối tượng ngoại lệ hiện"
+" tại hoặc ``NULL`` nếu không có ngoại lệ nào xảy ra.  Thông thường, bạn "
+"không cần gọi :c:func:`PyErr_Occurred` để xem liệu có xảy ra lỗi trong lệnh "
+"gọi hàm hay không vì bạn có thể biết từ giá trị trả về."
+
+#: ../../extending/extending.rst:185
+#, fuzzy
+msgid ""
+"When a function *f* that calls another function *g* detects that the latter "
+"fails, *f* should itself return an error value (usually ``NULL`` or ``-1``)."
+"  It should *not* call one of the ``PyErr_*`` functions --- one has already "
+"been called by *g*. *f*'s caller is then supposed to also return an error "
+"indication to *its* caller, again *without* calling ``PyErr_*``, and so on "
+"--- the most detailed cause of the error was already reported by the "
+"function that first detected it.  Once the error reaches the Python "
+"interpreter's main loop, this aborts the currently executing Python code and"
+" tries to find an exception handler specified by the Python programmer."
+msgstr ""
+"Khi một hàm *f* gọi một hàm khác *g* phát hiện ra rằng hàm sau bị lỗi, thì "
+"*f* sẽ tự trả về một giá trị lỗi (thường là ``NULL`` hoặc ``-1``).  *not* sẽ"
+" gọi một trong các hàm ``PyErr_*`` --- một hàm đã được *g* gọi. Sau đó, "
+"người gọi *f* cũng phải trả về một chỉ báo lỗi cho người gọi *its*, một lần "
+"nữa *without* gọi ``PyErr_*``, v.v. --- nguyên nhân chi tiết nhất của lỗi đã"
+" được chức năng phát hiện lỗi đầu tiên báo cáo.  Khi lỗi chạm tới vòng lặp "
+"chính của trình thông dịch Python, thao tác này sẽ hủy bỏ mã Python hiện "
+"đang thực thi và cố gắng tìm một trình xử lý ngoại lệ do lập trình viên "
+"Python chỉ định."
+
+#: ../../extending/extending.rst:195
+#, fuzzy
+msgid ""
+"(There are situations where a module can actually give a more detailed error"
+" message by calling another ``PyErr_*`` function, and in such cases it is "
+"fine to do so.  As a general rule, however, this is not necessary, and can "
+"cause information about the cause of the error to be lost: most operations "
+"can fail for a variety of reasons.)"
+msgstr ""
+"(Có những tình huống trong đó mô-đun thực sự có thể đưa ra thông báo lỗi chi"
+" tiết hơn bằng cách gọi một hàm ``PyErr_*`` khác và trong những trường hợp "
+"như vậy, bạn có thể làm như vậy. Tuy nhiên, theo nguyên tắc chung, điều này "
+"là không cần thiết và có thể khiến thông tin về nguyên nhân lỗi bị mất: hầu "
+"hết các thao tác có thể không thành công vì nhiều lý do.)"
+
+#: ../../extending/extending.rst:201
+#, fuzzy
+msgid ""
+"To ignore an exception set by a function call that failed, the exception "
+"condition must be cleared explicitly by calling :c:func:`PyErr_Clear`.  The "
+"only time C code should call :c:func:`PyErr_Clear` is if it doesn't want to "
+"pass the error on to the interpreter but wants to handle it completely by "
+"itself (possibly by trying something else, or pretending nothing went "
+"wrong)."
+msgstr ""
+"Để bỏ qua một ngoại lệ được đặt bởi lệnh gọi hàm không thành công, điều kiện"
+" ngoại lệ phải được xóa rõ ràng bằng cách gọi :c:func:`PyErr_Clear`.  Lần "
+"duy nhất mã C nên gọi :c:func:`PyErr_Clear` là nếu nó không muốn chuyển lỗi "
+"cho trình thông dịch mà muốn tự xử lý nó hoàn toàn (có thể bằng cách thử "
+"cách khác hoặc giả vờ như không có gì sai)."
+
+#: ../../extending/extending.rst:207
+#, fuzzy
+msgid ""
+"Every failing :c:func:`malloc` call must be turned into an exception --- the"
+" direct caller of :c:func:`malloc` (or :c:func:`realloc`) must call "
+":c:func:`PyErr_NoMemory` and return a failure indicator itself.  All the "
+"object-creating functions (for example, :c:func:`PyLong_FromLong`) already "
+"do this, so this note is only relevant to those who call :c:func:`malloc` "
+"directly."
+msgstr ""
+"Mọi cuộc gọi :c:func:`malloc` không thành công phải được chuyển thành một "
+"ngoại lệ --- người gọi trực tiếp :c:func:`malloc` (hoặc :c:func:`realloc`) "
+"phải gọi :c:func:`PyErr_NoMemory` và trả về chính chỉ báo lỗi.  Tất cả các "
+"hàm tạo đối tượng (ví dụ: :c:func:`PyLong_FromLong`) đều đã thực hiện việc "
+"này, vì vậy lưu ý này chỉ liên quan đến những người gọi trực tiếp "
+":c:func:`malloc`."
+
+#: ../../extending/extending.rst:213
+#, fuzzy
+msgid ""
+"Also note that, with the important exception of :c:func:`PyArg_ParseTuple` "
+"and friends, functions that return an integer status usually return a "
+"positive value or zero for success and ``-1`` for failure, like Unix system "
+"calls."
+msgstr ""
+"Cũng lưu ý rằng, ngoại trừ :c:func:`PyArg_ParseTuple` và những người bạn, "
+"các hàm trả về trạng thái số nguyên thường trả về giá trị dương hoặc 0 nếu "
+"thành công và ``-1`` nếu thất bại, chẳng hạn như các lệnh gọi hệ thống Unix."
+
+#: ../../extending/extending.rst:217
+#, fuzzy
+msgid ""
+"Finally, be careful to clean up garbage (by making :c:func:`Py_XDECREF` or "
+":c:func:`Py_DECREF` calls for objects you have already created) when you "
+"return an error indicator!"
+msgstr ""
+"Cuối cùng, hãy cẩn thận dọn sạch rác (bằng cách thực hiện lệnh gọi "
+":c:func:`Py_XDECREF` hoặc :c:func:`Py_DECREF` cho các đối tượng bạn đã tạo) "
+"khi bạn trả về một chỉ báo lỗi!"
+
+#: ../../extending/extending.rst:221
+#, fuzzy
+msgid ""
+"The choice of which exception to raise is entirely yours.  There are "
+"predeclared C objects corresponding to all built-in Python exceptions, such "
+"as :c:data:`PyExc_ZeroDivisionError`, which you can use directly. Of course,"
+" you should choose exceptions wisely --- don't use :c:data:`PyExc_TypeError`"
+" to mean that a file couldn't be opened (that should probably be "
+":c:data:`PyExc_OSError`). If something's wrong with the argument list, the "
+":c:func:`PyArg_ParseTuple` function usually raises "
+":c:data:`PyExc_TypeError`.  If you have an argument whose value must be in a"
+" particular range or must satisfy other conditions, "
+":c:data:`PyExc_ValueError` is appropriate."
+msgstr ""
+"Việc lựa chọn ngoại lệ nào để nêu ra hoàn toàn là của bạn.  Có các đối tượng"
+" C được khai báo trước tương ứng với tất cả các ngoại lệ Python tích hợp, "
+"chẳng hạn như :c:data:`PyExc_ZeroDivisionError`, mà bạn có thể sử dụng trực "
+"tiếp. Tất nhiên, bạn nên chọn ngoại lệ một cách khôn ngoan --- không sử dụng"
+" :c:data:`PyExc_TypeError` để có nghĩa là không thể mở được tệp (có thể là "
+":c:data:`PyExc_OSError`). Nếu có gì đó không ổn với danh sách đối số, hàm "
+":c:func:`PyArg_ParseTuple` thường tăng :c:data:`PyExc_TypeError`.  Nếu bạn "
+"có một đối số có giá trị phải nằm trong một phạm vi cụ thể hoặc phải đáp ứng"
+" các điều kiện khác thì :c:data:`PyExc_ValueError` là phù hợp."
+
+#: ../../extending/extending.rst:231
+#, fuzzy
+msgid ""
+"You can also define a new exception that is unique to your module. The "
+"simplest way to do this is to declare a static global object variable at the"
+" beginning of the file::"
+msgstr ""
+"Bạn cũng có thể xác định một ngoại lệ mới dành riêng cho mô-đun của mình. "
+"Cách đơn giản nhất để làm điều này là khai báo một biến đối tượng toàn cục "
+"tĩnh ở đầu tệp ::"
+
+#: ../../extending/extending.rst:235
+#, fuzzy
+msgid "static PyObject *SpamError = NULL;"
+msgstr "PyObject tĩnh *SpamError = NULL;"
+
+#: ../../extending/extending.rst:237
+#, fuzzy
+msgid ""
+"and initialize it by calling :c:func:`PyErr_NewException` in the module's "
+":c:data:`Py_mod_exec` function (:c:func:`!spam_module_exec`)::"
+msgstr ""
+"và khởi tạo nó bằng cách gọi :c:func:`PyErr_NewException` trong hàm "
+":c:data:`Py_mod_exec` của mô-đun (:c:func:`!spam_module_exec`)::"
+
+#: ../../extending/extending.rst:240
+#, fuzzy
+msgid "SpamError = PyErr_NewException(\"spam.error\", NULL, NULL);"
+msgstr "SpamError = PyErr_NewException(\"spam.error\", NULL, NULL);"
+
+#: ../../extending/extending.rst:242
+#, fuzzy
+msgid ""
+"Since :c:data:`!SpamError` is a global variable, it will be overwritten "
+"every time the module is reinitialized, when the :c:data:`Py_mod_exec` "
+"function is called."
+msgstr ""
+"Vì :c:data:`!SpamError` là biến toàn cục nên nó sẽ bị ghi đè mỗi khi mô-đun "
+"được khởi tạo lại khi hàm :c:data:`Py_mod_exec` được gọi."
+
+#: ../../extending/extending.rst:245
+#, fuzzy
+msgid ""
+"For now, let's avoid the issue: we will block repeated initialization by "
+"raising an :py:exc:`ImportError`::"
+msgstr ""
+"Hiện tại, hãy tránh vấn đề này: chúng tôi sẽ chặn việc khởi tạo lặp lại bằng"
+" cách tăng :py:exc:`ImportError`::"
+
+#: ../../extending/extending.rst:248
+#, fuzzy
+msgid ""
+"static PyObject *SpamError = NULL;\n"
+"\n"
+"static int\n"
+"spam_module_exec(PyObject *m)\n"
+"{\n"
+"    if (SpamError != NULL) {\n"
+"        PyErr_SetString(PyExc_ImportError,\n"
+"                        \"cannot initialize spam module more than once\");\n"
+"        return -1;\n"
+"    }\n"
+"    SpamError = PyErr_NewException(\"spam.error\", NULL, NULL);\n"
+"    if (PyModule_AddObjectRef(m, \"SpamError\", SpamError) < 0) {\n"
+"        return -1;\n"
+"    }\n"
+"\n"
+"    return 0;\n"
+"}\n"
+"\n"
+"static PyModuleDef_Slot spam_module_slots[] = {\n"
+"    {Py_mod_exec, spam_module_exec},\n"
+"    {0, NULL}\n"
+"};\n"
+"\n"
+"static struct PyModuleDef spam_module = {\n"
+"    .m_base = PyModuleDef_HEAD_INIT,\n"
+"    .m_name = \"spam\",\n"
+"    .m_size = 0,  // non-negative\n"
+"    .m_slots = spam_module_slots,\n"
+"};\n"
+"\n"
+"PyMODINIT_FUNC\n"
+"PyInit_spam(void)\n"
+"{\n"
+"    return PyModuleDef_Init(&spam_module);\n"
+"}"
+msgstr ""
+"PyObject tĩnh *SpamError = NULL;\n"
+"\n"
+"int tĩnh\n"
+"spam_module_exec(PyObject *m)\n"
+"{\n"
+"    if (SpamError != NULL) {\n"
+"        PyErr_SetString(PyExc_ImportError,\n"
+"                        \"không thể khởi tạo mô-đun thư rác nhiều lần\");\n"
+"        trả về -1;\n"
+"    }\n"
+"    SpamError = PyErr_NewException(\"spam.error\", NULL, NULL);\n"
+"    if (PyModule_AddObjectRef(m, \"SpamError\", SpamError) < 0) {\n"
+"        trả về -1;\n"
+"    }\n"
+"\n"
+"    trả về 0;\n"
+"}\n"
+"\n"
+"tĩnh PyModuleDef_Slot spam_module_slots[] = {\n"
+"    {Py_mod_exec, spam_module_exec},\n"
+"    {0, NULL}\n"
+"};\n"
+"\n"
+"cấu trúc tĩnh PyModuleDef spam_module = {\n"
+"    .m_base = PyModuleDef_HEAD_INIT,\n"
+"    .m_name = \"thư rác\",\n"
+"    .m_size = 0, // không âm\n"
+"    .m_slots = spam_module_slots,\n"
+"};\n"
+"\n"
+"PyMODINIT_FUNC\n"
+"PyInit_spam(void)\n"
+"{\n"
+"    trả về PyModuleDef_Init(&spam_module);\n"
+"}"
+
+#: ../../extending/extending.rst:284
+#, fuzzy
+msgid ""
+"Note that the Python name for the exception object is :exc:`!spam.error`.  "
+"The :c:func:`PyErr_NewException` function may create a class with the base "
+"class being :exc:`Exception` (unless another class is passed in instead of "
+"``NULL``), described in :ref:`bltin-exceptions`."
+msgstr ""
+"Lưu ý rằng tên Python cho đối tượng ngoại lệ là :exc:`!spam.error`.  Hàm "
+":c:func:`PyErr_NewException` có thể tạo một lớp với lớp cơ sở là "
+":exc:`Exception` (trừ khi một lớp khác được truyền vào thay vì ``NULL``), "
+"được mô tả trong :ref:`bltin-exceptions`."
+
+#: ../../extending/extending.rst:289
+#, fuzzy
+msgid ""
+"Note also that the :c:data:`!SpamError` variable retains a reference to the "
+"newly created exception class; this is intentional!  Since the exception "
+"could be removed from the module by external code, an owned reference to the"
+" class is needed to ensure that it will not be discarded, causing "
+":c:data:`!SpamError` to become a dangling pointer. Should it become a "
+"dangling pointer, C code which raises the exception could cause a core dump "
+"or other unintended side effects."
+msgstr ""
+"Cũng lưu ý rằng biến :c:data:`!SpamError` giữ lại tham chiếu đến lớp ngoại "
+"lệ mới được tạo; đây là cố ý!  Vì ngoại lệ có thể được loại bỏ khỏi mô-đun "
+"bằng mã bên ngoài nên cần có một tham chiếu thuộc sở hữu của lớp để đảm bảo "
+"rằng nó sẽ không bị loại bỏ, khiến :c:data:`!SpamError` trở thành một con "
+"trỏ lơ lửng. Nếu nó trở thành một con trỏ lơ lửng, mã C đưa ra ngoại lệ có "
+"thể gây ra kết xuất lõi hoặc các tác dụng phụ ngoài ý muốn khác."
+
+#: ../../extending/extending.rst:296
+#, fuzzy
+msgid ""
+"For now, the :c:func:`Py_DECREF` call to remove this reference is missing. "
+"Even when the Python interpreter shuts down, the global :c:data:`!SpamError`"
+" variable will not be garbage-collected. It will \"leak\". We did, however, "
+"ensure that this will happen at most once per process."
+msgstr ""
+"Hiện tại, lệnh gọi :c:func:`Py_DECREF` để xóa tham chiếu này bị thiếu. Ngay "
+"cả khi trình thông dịch Python tắt, biến :c:data:`!SpamError` toàn cục sẽ "
+"không được thu thập rác. Nó sẽ \"rò rỉ\". Tuy nhiên, chúng tôi đã đảm bảo "
+"rằng điều này sẽ xảy ra nhiều nhất một lần trong mỗi quy trình."
+
+#: ../../extending/extending.rst:301
+#, fuzzy
+msgid ""
+"We discuss the use of :c:macro:`PyMODINIT_FUNC` as a function return type "
+"later in this sample."
+msgstr ""
+"Chúng ta sẽ thảo luận về việc sử dụng :c:macro:`PyMODINIT_FUNC` làm kiểu trả"
+" về hàm ở phần sau trong mẫu này."
+
+#: ../../extending/extending.rst:304
+#, fuzzy
+msgid ""
+"The :exc:`!spam.error` exception can be raised in your extension module "
+"using a call to :c:func:`PyErr_SetString` as shown below::"
+msgstr ""
+"Ngoại lệ :exc:`!spam.error` có thể được đưa ra trong mô-đun tiện ích mở rộng"
+" của bạn bằng cách gọi tới :c:func:`PyErr_SetString` như hiển thị bên dưới "
+"::"
+
+#: ../../extending/extending.rst:307
+#, fuzzy
+msgid ""
+"static PyObject *\n"
+"spam_system(PyObject *self, PyObject *args)\n"
+"{\n"
+"    const char *command;\n"
+"    int sts;\n"
+"\n"
+"    if (!PyArg_ParseTuple(args, \"s\", &command))\n"
+"        return NULL;\n"
+"    sts = system(command);\n"
+"    if (sts < 0) {\n"
+"        PyErr_SetString(SpamError, \"System command failed\");\n"
+"        return NULL;\n"
+"    }\n"
+"    return PyLong_FromLong(sts);\n"
+"}"
+msgstr ""
+"PyObject tĩnh *\n"
+"spam_system(PyObject *self, PyObject *args)\n"
+"{\n"
+"    lệnh const char *;\n"
+"    int sts;\n"
+"\n"
+"    if (!PyArg_ParseTuple(args, \"s\", &command))\n"
+"        trả lại NULL;\n"
+"    sts = hệ thống(lệnh);\n"
+"    nếu (st < 0) {\n"
+"        PyErr_SetString(SpamError, \"Lệnh hệ thống không thành công\");\n"
+"        trả lại NULL;\n"
+"    }\n"
+"    trả về PyLong_FromLong(sts);\n"
+"}"
+
+#: ../../extending/extending.rst:327
+#, fuzzy
+msgid "Back to the Example"
+msgstr "Quay lại ví dụ"
+
+#: ../../extending/extending.rst:329
+#, fuzzy
+msgid ""
+"Going back to our example function, you should now be able to understand "
+"this statement::"
+msgstr ""
+"Quay trở lại hàm ví dụ của chúng tôi, bây giờ bạn có thể hiểu được câu lệnh "
+"này::"
+
+#: ../../extending/extending.rst:332
+#, fuzzy
+msgid ""
+"if (!PyArg_ParseTuple(args, \"s\", &command))\n"
+"    return NULL;"
+msgstr ""
+"if (!PyArg_ParseTuple(args, \"s\", &command))\n"
+"    trả về NULL;"
+
+#: ../../extending/extending.rst:335
+#, fuzzy
+msgid ""
+"It returns ``NULL`` (the error indicator for functions returning object "
+"pointers) if an error is detected in the argument list, relying on the "
+"exception set by :c:func:`PyArg_ParseTuple`.  Otherwise the string value of "
+"the argument has been copied to the local variable :c:data:`!command`.  This"
+" is a pointer assignment and you are not supposed to modify the string to "
+"which it points (so in Standard C, the variable :c:data:`!command` should "
+"properly be declared as ``const char *command``)."
+msgstr ""
+"Nó trả về ``NULL`` (chỉ báo lỗi cho các hàm trả về con trỏ đối tượng) nếu "
+"phát hiện thấy lỗi trong danh sách đối số, dựa vào ngoại lệ do "
+":c:func:`PyArg_ParseTuple` đặt.  Nếu không, giá trị chuỗi của đối số đã được"
+" sao chép sang biến cục bộ :c:data:`!command`.  Đây là phép gán con trỏ và "
+"bạn không được phép sửa đổi chuỗi mà nó trỏ tới (vì vậy, trong Tiêu chuẩn C,"
+" biến :c:data:`!command` phải được khai báo chính xác là ``const char "
+"*command``)."
+
+#: ../../extending/extending.rst:343
+#, fuzzy
+msgid ""
+"The next statement is a call to the Unix function :c:func:`system`, passing "
+"it the string we just got from :c:func:`PyArg_ParseTuple`::"
+msgstr ""
+"Câu lệnh tiếp theo là lệnh gọi hàm Unix :c:func:`system`, truyền cho nó "
+"chuỗi chuỗi chúng ta vừa nhận được từ :c:func:`PyArg_ParseTuple`::"
+
+#: ../../extending/extending.rst:346
+#, fuzzy
+msgid "sts = system(command);"
+msgstr "sts = hệ thống(lệnh);"
+
+#: ../../extending/extending.rst:348
+#, fuzzy
+msgid ""
+"Our :func:`!spam.system` function must return the value of :c:data:`!sts` as"
+" a Python object.  This is done using the function "
+":c:func:`PyLong_FromLong`. ::"
+msgstr ""
+"Hàm :func:`!spam.system` của chúng tôi phải trả về giá trị của "
+":c:data:`!sts` dưới dạng đối tượng Python.  Điều này được thực hiện bằng "
+"cách sử dụng hàm :c:func:`PyLong_FromLong`. ::"
+
+#: ../../extending/extending.rst:351
+#, fuzzy
+msgid "return PyLong_FromLong(sts);"
+msgstr "trả về PyLong_FromLong(sts);"
+
+#: ../../extending/extending.rst:353
+#, fuzzy
+msgid ""
+"In this case, it will return an integer object.  (Yes, even integers are "
+"objects on the heap in Python!)"
+msgstr ""
+"Trong trường hợp này, nó sẽ trả về một đối tượng số nguyên.  (Có, ngay cả số"
+" nguyên cũng là đối tượng trên vùng heap trong Python!)"
+
+#: ../../extending/extending.rst:356
+#, fuzzy
+msgid ""
+"If you have a C function that returns no useful argument (a function "
+"returning :c:expr:`void`), the corresponding Python function must return "
+"``None``.   You need this idiom to do so (which is implemented by the "
+":c:macro:`Py_RETURN_NONE` macro)::"
+msgstr ""
+"Nếu bạn có hàm C không trả về đối số hữu ích (hàm trả về :c:expr:`void`), "
+"thì hàm Python tương ứng phải trả về ``None``.   Bạn cần thành ngữ này để "
+"làm như vậy (được triển khai bởi macro :c:macro:`Py_RETURN_NONE`)::"
+
+#: ../../extending/extending.rst:361
+#, fuzzy
+msgid ""
+"Py_INCREF(Py_None);\n"
+"return Py_None;"
+msgstr ""
+"Py_INCREF(Py_None);\n"
+"trả về Py_None;"
+
+#: ../../extending/extending.rst:364
+#, fuzzy
+msgid ""
+":c:data:`Py_None` is the C name for the special Python object ``None``.  It "
+"is a genuine Python object rather than a ``NULL`` pointer, which means "
+"\"error\" in most contexts, as we have seen."
+msgstr ""
+":c:data:`Py_None` là tên C của đối tượng Python đặc biệt ``None``.  Nó là "
+"một đối tượng Python chính hãng chứ không phải là con trỏ ``NULL``, có nghĩa"
+" là \"lỗi\" trong hầu hết các ngữ cảnh, như chúng ta đã thấy."
+
+#: ../../extending/extending.rst:372
+#, fuzzy
+msgid "The Module's Method Table and Initialization Function"
+msgstr "Bảng phương thức và hàm khởi tạo của mô-đun"
+
+#: ../../extending/extending.rst:374
+#, fuzzy
+msgid ""
+"I promised to show how :c:func:`!spam_system` is called from Python "
+"programs. First, we need to list its name and address in a \"method "
+"table\"::"
+msgstr ""
+"Tôi đã hứa sẽ chỉ ra cách gọi :c:func:`!spam_system` từ các chương trình "
+"Python. Đầu tiên, chúng ta cần liệt kê tên và địa chỉ của nó trong \"bảng "
+"phương thức\"::"
+
+#: ../../extending/extending.rst:377
+#, fuzzy
+msgid ""
+"static PyMethodDef spam_methods[] = {\n"
+"    ...\n"
+"    {\"system\",  spam_system, METH_VARARGS,\n"
+"     \"Execute a shell command.\"},\n"
+"    ...\n"
+"    {NULL, NULL, 0, NULL}        /* Sentinel */\n"
+"};"
+msgstr ""
+"tĩnh PyMethodDef spam_methods[] = {\n"
+"    ...\n"
+"    {\"hệ thống\", spam_system, METH_VARARGS,\n"
+"     \"Thực thi lệnh shell.\"},\n"
+"    ...\n"
+"    {NULL, NULL, 0, NULL} /* Trọng điểm */\n"
+"};"
+
+#: ../../extending/extending.rst:385
+#, fuzzy
+msgid ""
+"Note the third entry (``METH_VARARGS``).  This is a flag telling the "
+"interpreter the calling convention to be used for the C function.  It should"
+" normally always be ``METH_VARARGS`` or ``METH_VARARGS | METH_KEYWORDS``; a "
+"value of ``0`` means that an obsolete variant of :c:func:`PyArg_ParseTuple` "
+"is used."
+msgstr ""
+"Lưu ý mục thứ ba (``METH_VARARGS``).  Đây là cờ báo cho trình thông dịch "
+"biết quy ước gọi sẽ được sử dụng cho hàm C.  Thông thường nó phải luôn là "
+"``METH_VARARGS`` hoặc ``METH_VARARGS | METH_KEYWORDS``; giá trị ``0`` có "
+"nghĩa là một biến thể lỗi thời của :c:func:`PyArg_ParseTuple` được sử dụng."
+
+#: ../../extending/extending.rst:390
+#, fuzzy
+msgid ""
+"When using only ``METH_VARARGS``, the function should expect the Python-"
+"level parameters to be passed in as a tuple acceptable for parsing via "
+":c:func:`PyArg_ParseTuple`; more information on this function is provided "
+"below."
+msgstr ""
+"Khi chỉ sử dụng ``METH_VARARGS``, hàm sẽ yêu cầu các tham số cấp Python được"
+" truyền vào dưới dạng một bộ dữ liệu được chấp nhận để phân tích cú pháp qua"
+" :c:func:`PyArg_ParseTuple`; thông tin thêm về chức năng này được cung cấp "
+"dưới đây."
+
+#: ../../extending/extending.rst:394
+#, fuzzy
+msgid ""
+"The :c:macro:`METH_KEYWORDS` bit may be set in the third field if keyword "
+"arguments should be passed to the function.  In this case, the C function "
+"should accept a third ``PyObject *`` parameter which will be a dictionary of"
+" keywords. Use :c:func:`PyArg_ParseTupleAndKeywords` to parse the arguments "
+"to such a function."
+msgstr ""
+"Bit :c:macro:`METH_KEYWORDS` có thể được đặt trong trường thứ ba nếu đối số "
+"từ khóa được truyền cho hàm.  Trong trường hợp này, hàm C phải chấp nhận "
+"tham số ``PyObject *`` thứ ba sẽ là từ điển các từ khóa. Sử dụng "
+":c:func:`PyArg_ParseTupleAndKeywords` để phân tích các đối số cho hàm như "
+"vậy."
+
+#: ../../extending/extending.rst:400
+#, fuzzy
+msgid ""
+"The method table must be referenced in the module definition structure::"
+msgstr ""
+"Bảng phương thức phải được tham chiếu trong cấu trúc định nghĩa mô-đun::"
+
+#: ../../extending/extending.rst:402
+#, python-brace-format, fuzzy
+msgid ""
+"static struct PyModuleDef spam_module = {\n"
+"    ...\n"
+"    .m_methods = spam_methods,\n"
+"    ...\n"
+"};"
+msgstr ""
+"cấu trúc tĩnh PyModuleDef spam_module = {\n"
+"    ...\n"
+"    .m_methods = phương thức spam,\n"
+"    ...\n"
+"};"
+
+#: ../../extending/extending.rst:408
+#, fuzzy
+msgid ""
+"This structure, in turn, must be passed to the interpreter in the module's "
+"initialization function.  The initialization function must be named "
+":c:func:`!PyInit_name`, where *name* is the name of the module, and should "
+"be the only non-\\ ``static`` item defined in the module file::"
+msgstr ""
+"Ngược lại, cấu trúc này phải được chuyển tới trình thông dịch trong hàm khởi"
+" tạo của mô-đun.  Hàm khởi tạo phải được đặt tên là :c:func:`!PyInit_name`, "
+"trong đó *name* là tên của mô-đun và phải là mục duy nhất không phải\\ "
+"``static`` được xác định trong tệp mô-đun::"
+
+#: ../../extending/extending.rst:413
+#, python-brace-format, fuzzy
+msgid ""
+"PyMODINIT_FUNC\n"
+"PyInit_spam(void)\n"
+"{\n"
+"    return PyModuleDef_Init(&spam_module);\n"
+"}"
+msgstr ""
+"PyMODINIT_FUNC\n"
+"PyInit_spam(void)\n"
+"{\n"
+"    trả về PyModuleDef_Init(&spam_module);\n"
+"}"
+
+#: ../../extending/extending.rst:419
+#, fuzzy
+msgid ""
+"Note that :c:macro:`PyMODINIT_FUNC` declares the function as ``PyObject *`` "
+"return type, declares any special linkage declarations required by the "
+"platform, and for C++ declares the function as ``extern \"C\"``."
+msgstr ""
+"Lưu ý rằng :c:macro:`PyMODINIT_FUNC` khai báo hàm là kiểu trả về ``PyObject "
+"*``, khai báo mọi khai báo liên kết đặc biệt mà nền tảng yêu cầu và đối với "
+"C++ khai báo hàm là ``extern \"C\"``."
+
+#: ../../extending/extending.rst:423
+#, fuzzy
+msgid ""
+":c:func:`!PyInit_spam` is called when each interpreter imports its module "
+":mod:`!spam` for the first time.  (See below for comments about embedding "
+"Python.) A pointer to the module definition must be returned via "
+":c:func:`PyModuleDef_Init`, so that the import machinery can create the "
+"module and store it in ``sys.modules``."
+msgstr ""
+":c:func:`!PyInit_spam` được gọi khi mỗi trình thông dịch nhập mô-đun "
+":mod:`!spam` của nó lần đầu tiên.  (Xem bên dưới để biết nhận xét về cách "
+"nhúng Python.) Một con trỏ tới định nghĩa mô-đun phải được trả về qua "
+":c:func:`PyModuleDef_Init`, để máy nhập có thể tạo mô-đun và lưu trữ nó "
+"trong ``sys.modules``."
+
+#: ../../extending/extending.rst:428
+#, fuzzy
+msgid ""
+"When embedding Python, the :c:func:`!PyInit_spam` function is not called "
+"automatically unless there's an entry in the :c:data:`PyImport_Inittab` "
+"table. To add the module to the initialization table, use "
+":c:func:`PyImport_AppendInittab`, optionally followed by an import of the "
+"module::"
+msgstr ""
+"Khi nhúng Python, hàm :c:func:`!PyInit_spam` không được gọi tự động trừ khi "
+"có một mục trong bảng :c:data:`PyImport_Inittab`. Để thêm mô-đun vào bảng "
+"khởi tạo, hãy sử dụng :c:func:`PyImport_AppendInittab`, tùy chọn sau đó là "
+"nhập mô-đun ::"
+
+#: ../../extending/extending.rst:433
+#, fuzzy
+msgid ""
+"#define PY_SSIZE_T_CLEAN\n"
+"#include <Python.h>\n"
+"\n"
+"int\n"
+"main(int argc, char *argv[])\n"
+"{\n"
+"    PyStatus status;\n"
+"    PyConfig config;\n"
+"    PyConfig_InitPythonConfig(&config);\n"
+"\n"
+"    /* Add a built-in module, before Py_Initialize */\n"
+"    if (PyImport_AppendInittab(\"spam\", PyInit_spam) == -1) {\n"
+"        fprintf(stderr, \"Error: could not extend in-built modules table\\n\");\n"
+"        exit(1);\n"
+"    }\n"
+"\n"
+"    /* Pass argv[0] to the Python interpreter */\n"
+"    status = PyConfig_SetBytesString(&config, &config.program_name, argv[0]);\n"
+"    if (PyStatus_Exception(status)) {\n"
+"        goto exception;\n"
+"    }\n"
+"\n"
+"    /* Initialize the Python interpreter.  Required.\n"
+"       If this step fails, it will be a fatal error. */\n"
+"    status = Py_InitializeFromConfig(&config);\n"
+"    if (PyStatus_Exception(status)) {\n"
+"        goto exception;\n"
+"    }\n"
+"    PyConfig_Clear(&config);\n"
+"\n"
+"    /* Optionally import the module; alternatively,\n"
+"       import can be deferred until the embedded script\n"
+"       imports it. */\n"
+"    PyObject *pmodule = PyImport_ImportModule(\"spam\");\n"
+"    if (!pmodule) {\n"
+"        PyErr_Print();\n"
+"        fprintf(stderr, \"Error: could not import module 'spam'\\n\");\n"
+"    }\n"
+"\n"
+"    // ... use Python C API here ...\n"
+"\n"
+"    return 0;\n"
+"\n"
+"  exception:\n"
+"     PyConfig_Clear(&config);\n"
+"     Py_ExitStatusException(status);\n"
+"}"
+msgstr ""
+"#define PY_SSIZE_T_CLEAN\n"
+"#include <Python.h>\n"
+"\n"
+"int\n"
+"chính(int argc, char *argv[])\n"
+"{\n"
+"    Trạng thái PyStatus;\n"
+"    Cấu hình PyConfig;\n"
+"    PyConfig_InitPythonConfig(&config);\n"
+"\n"
+"    /* Thêm mô-đun tích hợp sẵn, trước Py_Initialize */\n"
+"    if (PyImport_AppendInittab(\"spam\", PyInit_spam) == -1) {\n"
+"        fprintf(stderr, \"Lỗi: không thể mở rộng bảng mô-đun dựng sẵn\\n\");\n"
+"        thoát (1);\n"
+"    }\n"
+"\n"
+"    /* Truyền argv[0] tới trình thông dịch Python */\n"
+"    status = PyConfig_SetBytesString(&config, &config.program_name, argv[0]);\n"
+"    if (PyStatus_Exception(trạng thái)) {\n"
+"        ngoại lệ goto;\n"
+"    }\n"
+"\n"
+"    /* Khởi tạo trình thông dịch Python.  Yêu cầu.\n"
+"       Nếu bước này không thành công thì đó sẽ là một lỗi nghiêm trọng. */\n"
+"    trạng thái = Py_InitializeFromConfig(&config);\n"
+"    if (PyStatus_Exception(trạng thái)) {\n"
+"        ngoại lệ goto;\n"
+"    }\n"
+"    PyConfig_Clear(&config);\n"
+"\n"
+"    /* Tùy chọn nhập mô-đun; cách khác,\n"
+"       việc nhập có thể được hoãn lại cho đến khi tập lệnh được nhúng\n"
+"       nhập khẩu nó. */\n"
+"    PyObject *pmodule = PyImport_ImportModule(\"spam\");\n"
+"    nếu (! pmodule) {\n"
+"        PyErr_Print();\n"
+"        fprintf(stderr, \"Lỗi: không thể nhập mô-đun 'spam'\\n\");\n"
+"    }\n"
+"\n"
+"    // ... sử dụng Python C API tại đây ...\n"
+"\n"
+"    trả về 0;\n"
+"\n"
+"  ngoại lệ:\n"
+"     PyConfig_Clear(&config);\n"
+"     Py_ExitStatusException(trạng thái);\n"
+"}"
+
+#: ../../extending/extending.rst:483
+#, fuzzy
+msgid ""
+"If you declare a global variable or a local static one, the module may "
+"experience unintended side-effects on re-initialisation, for example when "
+"removing entries from ``sys.modules`` or importing compiled modules into "
+"multiple interpreters within a process (or following a :c:func:`fork` "
+"without an intervening :c:func:`exec`). If module state is not yet fully "
+":ref:`isolated <isolating-extensions-howto>`, authors should consider "
+"marking the module as having no support for subinterpreters (via "
+":c:macro:`Py_MOD_MULTIPLE_INTERPRETERS_NOT_SUPPORTED`)."
+msgstr ""
+"Nếu bạn khai báo một biến toàn cục hoặc một biến tĩnh cục bộ, mô-đun có thể "
+"gặp các tác dụng phụ ngoài ý muốn khi khởi tạo lại, chẳng hạn như khi xóa "
+"các mục nhập khỏi ``sys.modules`` hoặc nhập các mô-đun đã biên dịch vào "
+"nhiều trình thông dịch trong một quy trình (hoặc theo dõi :c:func:`fork` mà "
+"không có :c:func:`exec` can thiệp). Nếu trạng thái mô-đun chưa hoàn toàn là "
+":ref:`isolated <isolating-extensions-howto>`, tác giả nên cân nhắc việc đánh"
+" dấu mô-đun là không hỗ trợ trình thông dịch phụ (thông qua "
+":c:macro:`Py_MOD_MULTIPLE_INTERPRETERS_NOT_SUPPORTED`)."
+
+#: ../../extending/extending.rst:492
+#, fuzzy
+msgid ""
+"A more substantial example module is included in the Python source "
+"distribution as :file:`Modules/xxlimited.c`.  This file may be used as a "
+"template or simply read as an example."
+msgstr ""
+"Một mô-đun ví dụ quan trọng hơn được bao gồm trong bản phân phối nguồn "
+"Python dưới dạng :file:`Modules/xxlimited.c`.  Tập tin này có thể được sử "
+"dụng làm mẫu hoặc chỉ đọc làm ví dụ."
+
+#: ../../extending/extending.rst:500
+#, fuzzy
+msgid "Compilation and Linkage"
+msgstr "Biên soạn và liên kết"
+
+#: ../../extending/extending.rst:502
+#, fuzzy
+msgid ""
+"There are two more things to do before you can use your new extension: "
+"compiling and linking it with the Python system.  If you use dynamic "
+"loading, the details may depend on the style of dynamic loading your system "
+"uses; see the chapters about building extension modules (chapter "
+":ref:`building`) and additional information that pertains only to building "
+"on Windows (chapter :ref:`building-on-windows`) for more information about "
+"this."
+msgstr ""
+"Có hai việc nữa cần làm trước khi bạn có thể sử dụng tiện ích mở rộng mới "
+"của mình: biên dịch và liên kết nó với hệ thống Python.  Nếu bạn sử dụng tải"
+" động, các chi tiết có thể phụ thuộc vào kiểu tải động mà hệ thống của bạn "
+"sử dụng; xem các chương về xây dựng mô-đun mở rộng (chương :ref:`building`) "
+"và thông tin bổ sung chỉ liên quan đến việc xây dựng trên Windows (chương "
+":ref:`building-on-windows`) để biết thêm thông tin về điều này."
+
+#: ../../extending/extending.rst:509
+#, fuzzy
+msgid ""
+"If you can't use dynamic loading, or if you want to make your module a "
+"permanent part of the Python interpreter, you will have to change the "
+"configuration setup and rebuild the interpreter.  Luckily, this is very "
+"simple on Unix: just place your file (:file:`spammodule.c` for example) in "
+"the :file:`Modules/` directory of an unpacked source distribution, add a "
+"line to the file :file:`Modules/Setup.local` describing your file:"
+msgstr ""
+"Nếu bạn không thể sử dụng tính năng tải động hoặc nếu bạn muốn biến mô-đun "
+"của mình thành một phần cố định của trình thông dịch Python, bạn sẽ phải "
+"thay đổi thiết lập cấu hình và xây dựng lại trình thông dịch.  May mắn thay,"
+" điều này rất đơn giản trên Unix: chỉ cần đặt tệp của bạn (ví dụ "
+":file:`spammodule.c`) vào thư mục :file:`Modules/` của bản phân phối nguồn "
+"đã giải nén, thêm một dòng vào tệp :file:`Modules/Setup.local` mô tả tệp của"
+" bạn:"
+
+#: ../../extending/extending.rst:516
+#, fuzzy
+msgid "spam spammodule.o"
+msgstr "thư rác spammodule.o"
+
+#: ../../extending/extending.rst:520
+#, fuzzy
+msgid ""
+"and rebuild the interpreter by running :program:`make` in the toplevel "
+"directory.  You can also run :program:`make` in the :file:`Modules/` "
+"subdirectory, but then you must first rebuild :file:`Makefile` there by "
+"running ':program:`make` Makefile'.  (This is necessary each time you change"
+" the :file:`Setup` file.)"
+msgstr ""
+"và xây dựng lại trình thông dịch bằng cách chạy :program:`make` trong thư "
+"mục cấp cao nhất.  Bạn cũng có thể chạy :program:`make` trong thư mục con "
+":file:`Modules/`, nhưng trước tiên bạn phải xây dựng lại :file:`Makefile` ở "
+"đó bằng cách chạy ':program:`make` Makefile'.  (Điều này là cần thiết mỗi "
+"khi bạn thay đổi tệp :file:`Setup`.)"
+
+#: ../../extending/extending.rst:526
+#, fuzzy
+msgid ""
+"If your module requires additional libraries to link with, these can be "
+"listed on the line in the configuration file as well, for instance:"
+msgstr ""
+"Ví dụ: nếu mô-đun của bạn yêu cầu các thư viện bổ sung để liên kết, thì "
+"những thư viện này cũng có thể được liệt kê trên dòng trong tệp cấu hình:"
+
+#: ../../extending/extending.rst:529
+#, fuzzy
+msgid "spam spammodule.o -lX11"
+msgstr "thư rác spammodule.o -lX11"
+
+#: ../../extending/extending.rst:537
+#, fuzzy
+msgid "Calling Python Functions from C"
+msgstr "Gọi hàm Python từ C"
+
+#: ../../extending/extending.rst:539
+#, fuzzy
+msgid ""
+"So far we have concentrated on making C functions callable from Python.  The"
+" reverse is also useful: calling Python functions from C. This is especially"
+" the case for libraries that support so-called \"callback\" functions.  If a"
+" C interface makes use of callbacks, the equivalent Python often needs to "
+"provide a callback mechanism to the Python programmer; the implementation "
+"will require calling the Python callback functions from a C callback.  Other"
+" uses are also imaginable."
+msgstr ""
+"Cho đến nay chúng ta đã tập trung vào việc tạo ra các hàm C có thể gọi được "
+"từ Python.  Điều ngược lại cũng hữu ích: gọi các hàm Python từ C. Điều này "
+"đặc biệt xảy ra đối với các thư viện hỗ trợ cái gọi là hàm \"gọi lại\".  Nếu"
+" giao diện C sử dụng lệnh gọi lại, thì Python tương đương thường cần cung "
+"cấp cơ chế gọi lại cho lập trình viên Python; việc triển khai sẽ yêu cầu gọi"
+" các hàm gọi lại Python từ lệnh gọi lại C.  Các cách sử dụng khác cũng có "
+"thể tưởng tượng được."
+
+#: ../../extending/extending.rst:547
+#, fuzzy
+msgid ""
+"Fortunately, the Python interpreter is easily called recursively, and there "
+"is a standard interface to call a Python function.  (I won't dwell on how to"
+" call the Python parser with a particular string as input --- if you're "
+"interested, have a look at the implementation of the :option:`-c` command "
+"line option in :file:`Modules/main.c` from the Python source code.)"
+msgstr ""
+"May mắn thay, trình thông dịch Python có thể dễ dàng được gọi đệ quy và có "
+"một giao diện chuẩn để gọi hàm Python.  (Tôi sẽ không tập trung vào cách gọi"
+" trình phân tích cú pháp Python bằng một chuỗi cụ thể làm đầu vào --- nếu "
+"bạn quan tâm, hãy xem cách triển khai tùy chọn dòng lệnh :option:`-c` trong "
+":file:`Modules/main.c` từ mã nguồn Python.)"
+
+#: ../../extending/extending.rst:553
+#, fuzzy
+msgid ""
+"Calling a Python function is easy.  First, the Python program must somehow "
+"pass you the Python function object.  You should provide a function (or some"
+" other interface) to do this.  When this function is called, save a pointer "
+"to the Python function object (be careful to :c:func:`Py_INCREF` it!) in a "
+"global variable --- or wherever you see fit. For example, the following "
+"function might be part of a module definition::"
+msgstr ""
+"Gọi một hàm Python thật dễ dàng.  Đầu tiên, bằng cách nào đó chương trình "
+"Python phải chuyển cho bạn đối tượng hàm Python.  Bạn nên cung cấp một chức "
+"năng (hoặc một số giao diện khác) để thực hiện việc này.  Khi hàm này được "
+"gọi, hãy lưu một con trỏ tới đối tượng hàm Python (hãy cẩn thận với "
+":c:func:`Py_INCREF` nó!) trong một biến toàn cục --- hoặc bất cứ nơi nào bạn"
+" thấy phù hợp. Ví dụ: hàm sau có thể là một phần của định nghĩa mô-đun::"
+
+#: ../../extending/extending.rst:560
+#, python-brace-format, fuzzy
+msgid ""
+"static PyObject *my_callback = NULL;\n"
+"\n"
+"static PyObject *\n"
+"my_set_callback(PyObject *dummy, PyObject *args)\n"
+"{\n"
+"    PyObject *result = NULL;\n"
+"    PyObject *temp;\n"
+"\n"
+"    if (PyArg_ParseTuple(args, \"O:set_callback\", &temp)) {\n"
+"        if (!PyCallable_Check(temp)) {\n"
+"            PyErr_SetString(PyExc_TypeError, \"parameter must be callable\");\n"
+"            return NULL;\n"
+"        }\n"
+"        Py_XINCREF(temp);         /* Add a reference to new callback */\n"
+"        Py_XDECREF(my_callback);  /* Dispose of previous callback */\n"
+"        my_callback = temp;       /* Remember new callback */\n"
+"        /* Boilerplate to return \"None\" */\n"
+"        Py_INCREF(Py_None);\n"
+"        result = Py_None;\n"
+"    }\n"
+"    return result;\n"
+"}"
+msgstr ""
+"PyObject tĩnh *my_callback = NULL;\n"
+"\n"
+"PyObject tĩnh *\n"
+"my_set_callback(PyObject *dummy, PyObject *args)\n"
+"{\n"
+"    PyObject *kết quả = NULL;\n"
+"    PyObject *temp;\n"
+"\n"
+"    if (PyArg_ParseTuple(args, \"O:set_callback\", &temp)) {\n"
+"        if (!PyCallable_Check(temp)) {\n"
+"            PyErr_SetString(PyExc_TypeError, \"tham số phải gọi được\");\n"
+"            trả về NULL;\n"
+"        }\n"
+"        Py_XINCREF(tạm thời);         /* Thêm tham chiếu đến lệnh gọi lại mới */\n"
+"        Py_XDECREF(my_callback);  /* Loại bỏ lệnh gọi lại trước đó */\n"
+"        my_callback = tạm thời;       /* Ghi nhớ lệnh gọi lại mới */\n"
+"        /* Bản soạn sẵn để trả về \"Không\" */\n"
+"        Py_INCREF(Py_None);\n"
+"        kết quả = Py_None;\n"
+"    }\n"
+"    trả về kết quả;\n"
+"}"
+
+#: ../../extending/extending.rst:583
+#, fuzzy
+msgid ""
+"This function must be registered with the interpreter using the "
+":c:macro:`METH_VARARGS` flag; this is described in section "
+":ref:`methodtable`.  The :c:func:`PyArg_ParseTuple` function and its "
+"arguments are documented in section :ref:`parsetuple`."
+msgstr ""
+"Chức năng này phải được đăng ký với trình thông dịch bằng cờ "
+":c:macro:`METH_VARARGS`; điều này được mô tả trong phần :ref:`methodtable`."
+"  Hàm :c:func:`PyArg_ParseTuple` và các đối số của nó được ghi lại trong "
+"phần :ref:`parsetuple`."
+
+#: ../../extending/extending.rst:588
+#, fuzzy
+msgid ""
+"The macros :c:func:`Py_XINCREF` and :c:func:`Py_XDECREF` increment/decrement"
+" the reference count of an object and are safe in the presence of ``NULL`` "
+"pointers (but note that *temp* will not be  ``NULL`` in this context).  More"
+" info on them in section :ref:`refcounts`."
+msgstr ""
+"Các macro :c:func:`Py_XINCREF` và :c:func:`Py_XDECREF` tăng/giảm số lượng "
+"tham chiếu của một đối tượng và an toàn khi có con trỏ ``NULL`` (nhưng lưu ý"
+" rằng *temp* sẽ không phải là ``NULL`` trong ngữ cảnh này).  Thông tin thêm "
+"về chúng trong phần :ref:`refcounts`."
+
+#: ../../extending/extending.rst:595
+#, fuzzy
+msgid ""
+"Later, when it is time to call the function, you call the C function "
+":c:func:`PyObject_CallObject`.  This function has two arguments, both "
+"pointers to arbitrary Python objects: the Python function, and the argument "
+"list.  The argument list must always be a tuple object, whose length is the "
+"number of arguments.  To call the Python function with no arguments, pass in"
+" ``NULL``, or an empty tuple; to call it with one argument, pass a singleton"
+" tuple. :c:func:`Py_BuildValue` returns a tuple when its format string "
+"consists of zero or more format codes between parentheses.  For example::"
+msgstr ""
+"Sau này khi đến lúc gọi hàm, bạn gọi hàm C là :c:func:`PyObject_CallObject`."
+"  Hàm này có hai đối số, cả hai đều trỏ tới các đối tượng Python tùy ý: hàm "
+"Python và danh sách đối số.  Danh sách đối số phải luôn là một đối tượng "
+"tuple, có độ dài bằng số lượng đối số.  Để gọi hàm Python không có đối số, "
+"hãy truyền vào ``NULL`` hoặc một bộ dữ liệu trống; để gọi nó bằng một đối "
+"số, hãy truyền một bộ dữ liệu đơn. :c:func:`Py_BuildValue` trả về một bộ dữ "
+"liệu khi chuỗi định dạng của nó bao gồm 0 hoặc nhiều mã định dạng giữa các "
+"dấu ngoặc đơn.  Ví dụ::"
+
+#: ../../extending/extending.rst:604
+#, fuzzy
+msgid ""
+"int arg;\n"
+"PyObject *arglist;\n"
+"PyObject *result;\n"
+"...\n"
+"arg = 123;\n"
+"...\n"
+"/* Time to call the callback */\n"
+"arglist = Py_BuildValue(\"(i)\", arg);\n"
+"result = PyObject_CallObject(my_callback, arglist);\n"
+"Py_DECREF(arglist);"
+msgstr ""
+"int arg;\n"
+"PyObject *arglist;\n"
+"kết quả PyObject *;\n"
+"...\n"
+"đối số = 123;\n"
+"...\n"
+"/* Đã đến lúc gọi lại */\n"
+"arglist = Py_BuildValue(\"(i)\", arg);\n"
+"kết quả = PyObject_CallObject(my_callback, arglist);\n"
+"Py_DECREF(arglist);"
+
+#: ../../extending/extending.rst:615
+#, fuzzy
+msgid ""
+":c:func:`PyObject_CallObject` returns a Python object pointer: this is the "
+"return value of the Python function.  :c:func:`PyObject_CallObject` is "
+"\"reference-count-neutral\" with respect to its arguments.  In the example a"
+" new tuple was created to serve as the argument list, which is "
+":c:func:`Py_DECREF`\\ -ed immediately after the "
+":c:func:`PyObject_CallObject` call."
+msgstr ""
+":c:func:`PyObject_CallObject` trả về một con trỏ đối tượng Python: đây là "
+"giá trị trả về của hàm Python.  :c:func:`PyObject_CallObject` là \"trung lập"
+" về số lượng tham chiếu\" đối với các đối số của nó.  Trong ví dụ này, một "
+"bộ dữ liệu mới được tạo để dùng làm danh sách đối số, đó là "
+":c:func:`Py_DECREF`\\ -ed ngay sau lệnh gọi :c:func:`PyObject_CallObject`."
+
+#: ../../extending/extending.rst:622
+#, fuzzy
+msgid ""
+"The return value of :c:func:`PyObject_CallObject` is \"new\": either it is a"
+" brand new object, or it is an existing object whose reference count has "
+"been incremented.  So, unless you want to save it in a global variable, you "
+"should somehow :c:func:`Py_DECREF` the result, even (especially!) if you are"
+" not interested in its value."
+msgstr ""
+"Giá trị trả về của :c:func:`PyObject_CallObject` là \"mới\": đó là một đối "
+"tượng hoàn toàn mới hoặc là một đối tượng hiện có có số lượng tham chiếu đã "
+"được tăng lên.  Vì vậy, trừ khi bạn muốn lưu nó trong một biến toàn cục, "
+"bằng cách nào đó bạn nên :c:func:`Py_DECREF` kết quả, thậm chí (đặc biệt!) "
+"nếu bạn không quan tâm đến giá trị của nó."
+
+#: ../../extending/extending.rst:628
+#, fuzzy
+msgid ""
+"Before you do this, however, it is important to check that the return value "
+"isn't ``NULL``.  If it is, the Python function terminated by raising an "
+"exception. If the C code that called :c:func:`PyObject_CallObject` is called"
+" from Python, it should now return an error indication to its Python caller,"
+" so the interpreter can print a stack trace, or the calling Python code can "
+"handle the exception. If this is not possible or desirable, the exception "
+"should be cleared by calling :c:func:`PyErr_Clear`.  For example::"
+msgstr ""
+"Tuy nhiên, trước khi thực hiện việc này, điều quan trọng là phải kiểm tra "
+"xem giá trị trả về có phải là ``NULL`` hay không.  Nếu đúng như vậy, hàm "
+"Python sẽ kết thúc bằng cách đưa ra một ngoại lệ. Nếu mã C có tên "
+":c:func:`PyObject_CallObject` được gọi từ Python thì giờ đây mã này sẽ trả "
+"về một dấu hiệu lỗi cho trình gọi Python của nó, để trình thông dịch có thể "
+"in dấu vết ngăn xếp hoặc mã Python đang gọi có thể xử lý ngoại lệ. Nếu điều "
+"này là không thể hoặc không mong muốn, thì nên xóa ngoại lệ bằng cách gọi "
+":c:func:`PyErr_Clear`.  Ví dụ::"
+
+#: ../../extending/extending.rst:636
+#, fuzzy
+msgid ""
+"if (result == NULL)\n"
+"    return NULL; /* Pass error back */\n"
+"...use result...\n"
+"Py_DECREF(result);"
+msgstr ""
+"nếu (kết quả == NULL)\n"
+"    trả lại NULL; /* Truyền lại lỗi */\n"
+"...sử dụng kết quả...\n"
+"Py_DECREF(kết quả);"
+
+#: ../../extending/extending.rst:641
+#, fuzzy
+msgid ""
+"Depending on the desired interface to the Python callback function, you may "
+"also have to provide an argument list to :c:func:`PyObject_CallObject`.  In "
+"some cases the argument list is also provided by the Python program, through"
+" the same interface that specified the callback function.  It can then be "
+"saved and used in the same manner as the function object.  In other cases, "
+"you may have to construct a new tuple to pass as the argument list.  The "
+"simplest way to do this is to call :c:func:`Py_BuildValue`.  For example, if"
+" you want to pass an integral event code, you might use the following code::"
+msgstr ""
+"Tùy thuộc vào giao diện mong muốn của hàm gọi lại Python, bạn cũng có thể "
+"phải cung cấp danh sách đối số cho :c:func:`PyObject_CallObject`.  Trong một"
+" số trường hợp, danh sách đối số cũng được chương trình Python cung cấp, "
+"thông qua cùng giao diện đã chỉ định hàm gọi lại.  Sau đó nó có thể được lưu"
+" và sử dụng theo cách tương tự như đối tượng hàm.  Trong các trường hợp "
+"khác, bạn có thể phải xây dựng một bộ dữ liệu mới để chuyển làm danh sách "
+"đối số.  Cách đơn giản nhất để thực hiện việc này là gọi "
+":c:func:`Py_BuildValue`.  Ví dụ: nếu bạn muốn chuyển mã sự kiện tích hợp, "
+"bạn có thể sử dụng mã sau::"
+
+#: ../../extending/extending.rst:650
+#, fuzzy
+msgid ""
+"PyObject *arglist;\n"
+"...\n"
+"arglist = Py_BuildValue(\"(l)\", eventcode);\n"
+"result = PyObject_CallObject(my_callback, arglist);\n"
+"Py_DECREF(arglist);\n"
+"if (result == NULL)\n"
+"    return NULL; /* Pass error back */\n"
+"/* Here maybe use the result */\n"
+"Py_DECREF(result);"
+msgstr ""
+"PyObject *arglist;\n"
+"...\n"
+"arglist = Py_BuildValue(\"(l)\", mã sự kiện);\n"
+"kết quả = PyObject_CallObject(my_callback, arglist);\n"
+"Py_DECREF(arglist);\n"
+"nếu (kết quả == NULL)\n"
+"    trả lại NULL; /* Truyền lại lỗi */\n"
+"/* Ở đây có thể sử dụng kết quả */\n"
+"Py_DECREF(kết quả);"
+
+#: ../../extending/extending.rst:660
+#, fuzzy
+msgid ""
+"Note the placement of ``Py_DECREF(arglist)`` immediately after the call, "
+"before the error check!  Also note that strictly speaking this code is not "
+"complete: :c:func:`Py_BuildValue` may run out of memory, and this should be "
+"checked."
+msgstr ""
+"Lưu ý vị trí của ``Py_DECREF(arglist)`` ngay sau cuộc gọi, trước khi kiểm "
+"tra lỗi nhé!  Cũng lưu ý rằng nói đúng ra thì mã này chưa hoàn chỉnh: "
+":c:func:`Py_BuildValue` có thể hết bộ nhớ và điều này cần được kiểm tra."
+
+#: ../../extending/extending.rst:664
+#, fuzzy
+msgid ""
+"You may also call a function with keyword arguments by using "
+":c:func:`PyObject_Call`, which supports arguments and keyword arguments.  As"
+" in the above example, we use :c:func:`Py_BuildValue` to construct the "
+"dictionary. ::"
+msgstr ""
+"Bạn cũng có thể gọi một hàm có đối số từ khóa bằng cách sử dụng "
+":c:func:`PyObject_Call`, hàm này hỗ trợ các đối số và đối số từ khóa.  Như "
+"trong ví dụ trên, chúng tôi sử dụng :c:func:`Py_BuildValue` để xây dựng từ "
+"điển. ::"
+
+#: ../../extending/extending.rst:668
+#, python-brace-format, fuzzy
+msgid ""
+"PyObject *dict;\n"
+"...\n"
+"dict = Py_BuildValue(\"{s:i}\", \"name\", val);\n"
+"result = PyObject_Call(my_callback, NULL, dict);\n"
+"Py_DECREF(dict);\n"
+"if (result == NULL)\n"
+"    return NULL; /* Pass error back */\n"
+"/* Here maybe use the result */\n"
+"Py_DECREF(result);"
+msgstr ""
+"PyObject *dict;\n"
+"...\n"
+"dict = Py_BuildValue(\"{s:i}\", \"name\", val);\n"
+"kết quả = PyObject_Call(my_callback, NULL, dict);\n"
+"Py_DECREF(dict);\n"
+"nếu (kết quả == NULL)\n"
+"    trả lại NULL; /* Truyền lại lỗi */\n"
+"/* Ở đây có thể sử dụng kết quả */\n"
+"Py_DECREF(kết quả);"
+
+#: ../../extending/extending.rst:682
+#, fuzzy
+msgid "Extracting Parameters in Extension Functions"
+msgstr "Trích xuất tham số trong hàm mở rộng"
+
+#: ../../extending/extending.rst:686
+#, fuzzy
+msgid "The :c:func:`PyArg_ParseTuple` function is declared as follows::"
+msgstr "Hàm :c:func:`PyArg_ParseTuple` được khai báo như sau ::"
+
+#: ../../extending/extending.rst:688
+#, fuzzy
+msgid "int PyArg_ParseTuple(PyObject *arg, const char *format, ...);"
+msgstr "int PyArg_ParseTuple(PyObject *arg, const char *format, ...);"
+
+#: ../../extending/extending.rst:690
+#, fuzzy
+msgid ""
+"The *arg* argument must be a tuple object containing an argument list passed"
+" from Python to a C function.  The *format* argument must be a format "
+"string, whose syntax is explained in :ref:`arg-parsing` in the Python/C API "
+"Reference Manual.  The remaining arguments must be addresses of variables "
+"whose type is determined by the format string."
+msgstr ""
+"Đối số *arg* phải là một đối tượng tuple chứa danh sách đối số được truyền "
+"từ Python sang hàm C.  Đối số *format* phải là một chuỗi định dạng, có cú "
+"pháp được giải thích bằng :ref:`arg-parsing` trong Hướng dẫn tham khảo API "
+"Python/C.  Các đối số còn lại phải là địa chỉ của các biến có kiểu được xác "
+"định bởi chuỗi định dạng."
+
+#: ../../extending/extending.rst:696
+#, fuzzy
+msgid ""
+"Note that while :c:func:`PyArg_ParseTuple` checks that the Python arguments "
+"have the required types, it cannot check the validity of the addresses of C "
+"variables passed to the call: if you make mistakes there, your code will "
+"probably crash or at least overwrite random bits in memory.  So be careful!"
+msgstr ""
+"Lưu ý rằng mặc dù :c:func:`PyArg_ParseTuple` kiểm tra xem các đối số Python "
+"có loại được yêu cầu hay không, nhưng nó không thể kiểm tra tính hợp lệ của "
+"địa chỉ của các biến C được truyền cho lệnh gọi: nếu bạn mắc lỗi ở đó, mã "
+"của bạn có thể sẽ bị lỗi hoặc ít nhất là ghi đè các bit ngẫu nhiên trong bộ "
+"nhớ.  Vì vậy hãy cẩn thận!"
+
+#: ../../extending/extending.rst:701
+#, fuzzy
+msgid ""
+"Note that any Python object references which are provided to the caller are "
+"*borrowed* references; do not decrement their reference count!"
+msgstr ""
+"Lưu ý rằng mọi tham chiếu đối tượng Python được cung cấp cho người gọi đều "
+"là tham chiếu *borrowed*; không giảm số lượng tham chiếu của họ!"
+
+#: ../../extending/extending.rst:704
+#, fuzzy
+msgid "Some example calls::"
+msgstr "Một số cuộc gọi ví dụ ::"
+
+#: ../../extending/extending.rst:711
+#, fuzzy
+msgid ""
+"int ok;\n"
+"int i, j;\n"
+"long k, l;\n"
+"const char *s;\n"
+"Py_ssize_t size;\n"
+"\n"
+"ok = PyArg_ParseTuple(args, \"\"); /* No arguments */\n"
+"    /* Python call: f() */"
+msgstr ""
+"int ổn;\n"
+"int tôi, j;\n"
+"dài k, l;\n"
+"const char *s;\n"
+"kích thước Py_ssize_t;\n"
+"\n"
+"được = PyArg_ParseTuple(args, \"\"); /* Không có đối số */\n"
+"    /* Lệnh gọi Python: f() */"
+
+#: ../../extending/extending.rst:722
+#, fuzzy
+msgid ""
+"ok = PyArg_ParseTuple(args, \"s\", &s); /* A string */\n"
+"    /* Possible Python call: f('whoops!') */"
+msgstr ""
+"ok = PyArg_ParseTuple(args, \"s\", &s); /* Một chuỗi */\n"
+"    /* Lệnh gọi Python có thể có: f('whoops!') */"
+
+#: ../../extending/extending.rst:727
+#, fuzzy
+msgid ""
+"ok = PyArg_ParseTuple(args, \"lls\", &k, &l, &s); /* Two longs and a string */\n"
+"    /* Possible Python call: f(1, 2, 'three') */"
+msgstr ""
+"ok = PyArg_ParseTuple(args, \"lls\", &k, &l, &s); /* Hai đoạn dài và một chuỗi */\n"
+"    /* Lệnh gọi Python có thể có: f(1, 2, 'ba') */"
+
+#: ../../extending/extending.rst:732
+#, fuzzy
+msgid ""
+"ok = PyArg_ParseTuple(args, \"(ii)s#\", &i, &j, &s, &size);\n"
+"    /* A pair of ints and a string, whose size is also returned */\n"
+"    /* Possible Python call: f((1, 2), 'three') */"
+msgstr ""
+"ok = PyArg_ParseTuple(args, \"(ii)s#\", &i, &j, &s, &size);\n"
+"    /* Một cặp số nguyên và một chuỗi, kích thước của nó cũng được trả về */\n"
+"    /* Lệnh gọi Python có thể có: f((1, 2), 'ba') */"
+
+#: ../../extending/extending.rst:738
+#, python-brace-format, fuzzy
+msgid ""
+"{\n"
+"    const char *file;\n"
+"    const char *mode = \"r\";\n"
+"    int bufsize = 0;\n"
+"    ok = PyArg_ParseTuple(args, \"s|si\", &file, &mode, &bufsize);\n"
+"    /* A string, and optionally another string and an integer */\n"
+"    /* Possible Python calls:\n"
+"       f('spam')\n"
+"       f('spam', 'w')\n"
+"       f('spam', 'wb', 100000) */\n"
+"}"
+msgstr ""
+"{\n"
+"    const char *tập tin;\n"
+"    const char *mode = \"r\";\n"
+"    int bufsize = 0;\n"
+"    ok = PyArg_ParseTuple(args, \"s|si\", &file, &mode, &bufsize);\n"
+"    /* Một chuỗi và tùy chọn một chuỗi khác và một số nguyên */\n"
+"    /* Lệnh gọi Python có thể có:\n"
+"       f('thư rác')\n"
+"       f('thư rác', 'w')\n"
+"       f('thư rác', 'wb', 100000) */\n"
+"}"
+
+#: ../../extending/extending.rst:752
+#, python-brace-format, fuzzy
+msgid ""
+"{\n"
+"    int left, top, right, bottom, h, v;\n"
+"    ok = PyArg_ParseTuple(args, \"((ii)(ii))(ii)\",\n"
+"             &left, &top, &right, &bottom, &h, &v);\n"
+"    /* A rectangle and a point */\n"
+"    /* Possible Python call:\n"
+"       f(((0, 0), (400, 300)), (10, 10)) */\n"
+"}"
+msgstr ""
+"{\n"
+"    int trái, trên, phải, dưới, h, v;\n"
+"    ok = PyArg_ParseTuple(args, \"((ii)(ii))(ii)\",\n"
+"             &trái, &trên, &phải, &dưới, &h, &v);\n"
+"    /*Một hình chữ nhật và một điểm */\n"
+"    /* Lệnh gọi Python có thể có:\n"
+"       f(((0, 0), (400, 300)), (10, 10)) */\n"
+"}"
+
+#: ../../extending/extending.rst:763
+#, python-brace-format, fuzzy
+msgid ""
+"{\n"
+"    Py_complex c;\n"
+"    ok = PyArg_ParseTuple(args, \"D:myfunction\", &c);\n"
+"    /* a complex, also providing a function name for errors */\n"
+"    /* Possible Python call: myfunction(1+2j) */\n"
+"}"
+msgstr ""
+"{\n"
+"    Py_complex c;\n"
+"    ok = PyArg_ParseTuple(args, \"D:myfunction\", &c);\n"
+"    /* một hàm phức tạp, đồng thời cung cấp tên hàm cho các lỗi */\n"
+"    /* Lệnh gọi Python có thể có: myfunction(1+2j) */\n"
+"}"
+
+#: ../../extending/extending.rst:774
+#, fuzzy
+msgid "Keyword Parameters for Extension Functions"
+msgstr "Tham số từ khóa cho các hàm mở rộng"
+
+#: ../../extending/extending.rst:778
+#, fuzzy
+msgid ""
+"The :c:func:`PyArg_ParseTupleAndKeywords` function is declared as follows::"
+msgstr "Hàm :c:func:`PyArg_ParseTupleAndKeywords` được khai báo như sau ::"
+
+#: ../../extending/extending.rst:780
+#, fuzzy
+msgid ""
+"int PyArg_ParseTupleAndKeywords(PyObject *arg, PyObject *kwdict,\n"
+"                                const char *format, char * const *kwlist, ...);"
+msgstr ""
+"int PyArg_ParseTupleAndKeywords(PyObject *arg, PyObject *kwdict,\n"
+"                                const char *format, char * const *kwlist, ...);"
+
+#: ../../extending/extending.rst:783
+#, fuzzy
+msgid ""
+"The *arg* and *format* parameters are identical to those of the "
+":c:func:`PyArg_ParseTuple` function.  The *kwdict* parameter is the "
+"dictionary of keywords received as the third parameter from the Python "
+"runtime.  The *kwlist* parameter is a ``NULL``-terminated list of strings "
+"which identify the parameters; the names are matched with the type "
+"information from *format* from left to right.  On success, "
+":c:func:`PyArg_ParseTupleAndKeywords` returns true, otherwise it returns "
+"false and raises an appropriate exception."
+msgstr ""
+"Các tham số *arg* và *format* giống hệt với các tham số của hàm "
+":c:func:`PyArg_ParseTuple`.  Tham số *kwdict* là từ điển các từ khóa được "
+"nhận làm tham số thứ ba từ thời gian chạy Python.  Tham số *kwlist* là danh "
+"sách các chuỗi được kết thúc bằng ``NULL`` để xác định các tham số; tên được"
+" khớp với thông tin loại từ *format* từ trái sang phải.  Khi thành công, "
+":c:func:`PyArg_ParseTupleAndKeywords` trả về true, nếu không nó sẽ trả về "
+"false và đưa ra một ngoại lệ thích hợp."
+
+#: ../../extending/extending.rst:793
+#, fuzzy
+msgid ""
+"Nested tuples cannot be parsed when using keyword arguments!  Keyword "
+"parameters passed in which are not present in the *kwlist* will cause "
+":exc:`TypeError` to be raised."
+msgstr ""
+"Không thể phân tích cú pháp các bộ dữ liệu lồng nhau khi sử dụng đối số từ "
+"khóa!  Các tham số từ khóa được truyền vào mà không có trong *kwlist* sẽ "
+"khiến :exc:`TypeError` được nâng lên."
+
+#: ../../extending/extending.rst:799
+#, fuzzy
+msgid ""
+"Here is an example module which uses keywords, based on an example by Geoff "
+"Philbrick (philbrick@hks.com)::"
+msgstr ""
+"Đây là mô-đun ví dụ sử dụng từ khóa, dựa trên ví dụ của Geoff Philbrick "
+"(philbrick@hks.com)::"
+
+#: ../../extending/extending.rst:802
+#, python-format, fuzzy
+msgid ""
+"#define PY_SSIZE_T_CLEAN\n"
+"#include <Python.h>\n"
+"\n"
+"static PyObject *\n"
+"keywdarg_parrot(PyObject *self, PyObject *args, PyObject *keywds)\n"
+"{\n"
+"    int voltage;\n"
+"    const char *state = \"a stiff\";\n"
+"    const char *action = \"voom\";\n"
+"    const char *type = \"Norwegian Blue\";\n"
+"\n"
+"    static char *kwlist[] = {\"voltage\", \"state\", \"action\", \"type\", NULL};\n"
+"\n"
+"    if (!PyArg_ParseTupleAndKeywords(args, keywds, \"i|sss\", kwlist,\n"
+"                                     &voltage, &state, &action, &type))\n"
+"        return NULL;\n"
+"\n"
+"    printf(\"-- This parrot wouldn't %s if you put %i Volts through it.\\n\",\n"
+"           action, voltage);\n"
+"    printf(\"-- Lovely plumage, the %s -- It's %s!\\n\", type, state);\n"
+"\n"
+"    Py_RETURN_NONE;\n"
+"}\n"
+"\n"
+"static PyMethodDef keywdarg_methods[] = {\n"
+"    /* The cast of the function is necessary since PyCFunction values\n"
+"     * only take two PyObject* parameters, and keywdarg_parrot() takes\n"
+"     * three.\n"
+"     */\n"
+"    {\"parrot\", (PyCFunction)(void(*)(void))keywdarg_parrot, METH_VARARGS | METH_KEYWORDS,\n"
+"     \"Print a lovely skit to standard output.\"},\n"
+"    {NULL, NULL, 0, NULL}   /* sentinel */\n"
+"};\n"
+"\n"
+"static struct PyModuleDef keywdarg_module = {\n"
+"    .m_base = PyModuleDef_HEAD_INIT,\n"
+"    .m_name = \"keywdarg\",\n"
+"    .m_size = 0,\n"
+"    .m_methods = keywdarg_methods,\n"
+"};\n"
+"\n"
+"PyMODINIT_FUNC\n"
+"PyInit_keywdarg(void)\n"
+"{\n"
+"    return PyModuleDef_Init(&keywdarg_module);\n"
+"}"
+msgstr ""
+"#define PY_SSIZE_T_CLEAN\n"
+"#include <Python.h>\n"
+"\n"
+"PyObject tĩnh *\n"
+"keywdarg_parrot(PyObject *self, PyObject *args, PyObject *keywds)\n"
+"{\n"
+"    điện áp int;\n"
+"    const char *state = \"cứng\";\n"
+"    const char *action = \"voom\";\n"
+"    const char *type = \"Xanh Na Uy\";\n"
+"\n"
+"    char tĩnh *kwlist[] = {\"điện áp\", \"trạng thái\", \"hành động\", \"loại\", NULL};\n"
+"\n"
+"    if (!PyArg_ParseTupleAndKeywords(args, keywds, \"i|sss\", kwlist,\n"
+"                                     &điện áp, &trạng thái, &hành động, &loại))\n"
+"        trả về NULL;\n"
+"\n"
+"    printf(\"-- Con vẹt này sẽ không hoạt động %s nếu bạn đặt %i Vôn vào nó.\\n\",\n"
+"           hành động, điện áp);\n"
+"    printf(\"-- Bộ lông đáng yêu, %s -- Đó là %s!\\n\", type, state);\n"
+"\n"
+"    Py_RETURN_NONE;\n"
+"}\n"
+"\n"
+"keywdarg_methods PyMethodDef tĩnh [] = {\n"
+"    /* Việc truyền hàm là cần thiết vì các giá trị PyCFunction\n"
+"     * chỉ lấy hai tham số PyObject* và keywdarg_parrot() nhận\n"
+"     * ba.\n"
+"     */\n"
+"    {\"con vẹt\", (PyCFunction)(void(*)(void))keywdarg_parrot, METH_VARARGS | METH_KEYWORDS,\n"
+"     \"In một tiểu phẩm đáng yêu ở đầu ra tiêu chuẩn.\"},\n"
+"    {NULL, NULL, 0, NULL} /* trọng điểm */\n"
+"};\n"
+"\n"
+"cấu trúc tĩnh PyModuleDef keywdarg_module = {\n"
+"    .m_base = PyModuleDef_HEAD_INIT,\n"
+"    .m_name = \"keywdarg\",\n"
+"    .m_size = 0,\n"
+"    .m_methods = keywdarg_methods,\n"
+"};\n"
+"\n"
+"PyMODINIT_FUNC\n"
+"PyInit_keywdarg(void)\n"
+"{\n"
+"    trả về PyModuleDef_Init(&keywdarg_module);\n"
+"}"
+
+#: ../../extending/extending.rst:853
+#, fuzzy
+msgid "Building Arbitrary Values"
+msgstr "Xây dựng giá trị tùy ý"
+
+#: ../../extending/extending.rst:855
+#, fuzzy
+msgid ""
+"This function is the counterpart to :c:func:`PyArg_ParseTuple`.  It is "
+"declared as follows::"
+msgstr ""
+"Chức năng này tương tự như :c:func:`PyArg_ParseTuple`.  Nó được khai báo như"
+" sau::"
+
+#: ../../extending/extending.rst:858
+#, fuzzy
+msgid "PyObject *Py_BuildValue(const char *format, ...);"
+msgstr "Định dạng PyObject *Py_BuildValue(const char *, ...);"
+
+#: ../../extending/extending.rst:860
+#, fuzzy
+msgid ""
+"It recognizes a set of format units similar to the ones recognized by "
+":c:func:`PyArg_ParseTuple`, but the arguments (which are input to the "
+"function, not output) must not be pointers, just values.  It returns a new "
+"Python object, suitable for returning from a C function called from Python."
+msgstr ""
+"Nó nhận dạng một tập hợp các đơn vị định dạng tương tự như các đơn vị được "
+":c:func:`PyArg_ParseTuple` nhận dạng, nhưng các đối số (là đầu vào của hàm "
+"chứ không phải đầu ra) không được là con trỏ mà chỉ là giá trị.  Nó trả về "
+"một đối tượng Python mới, phù hợp để trả về từ một hàm C được gọi từ Python."
+
+#: ../../extending/extending.rst:865
+#, fuzzy
+msgid ""
+"One difference with :c:func:`PyArg_ParseTuple`: while the latter requires "
+"its first argument to be a tuple (since Python argument lists are always "
+"represented as tuples internally), :c:func:`Py_BuildValue` does not always "
+"build a tuple.  It builds a tuple only if its format string contains two or "
+"more format units. If the format string is empty, it returns ``None``; if it"
+" contains exactly one format unit, it returns whatever object is described "
+"by that format unit.  To force it to return a tuple of size 0 or one, "
+"parenthesize the format string."
+msgstr ""
+"Một điểm khác biệt với :c:func:`PyArg_ParseTuple`: trong khi cái sau yêu cầu"
+" đối số đầu tiên của nó phải là một bộ dữ liệu (vì danh sách đối số Python "
+"luôn được biểu diễn dưới dạng bộ dữ liệu bên trong), :c:func:`Py_BuildValue`"
+" không phải lúc nào cũng tạo một bộ dữ liệu.  Nó chỉ xây dựng một bộ nếu "
+"chuỗi định dạng của nó chứa hai hoặc nhiều đơn vị định dạng. Nếu chuỗi định "
+"dạng trống, nó sẽ trả về ``None``; nếu nó chứa chính xác một đơn vị định "
+"dạng, nó sẽ trả về bất kỳ đối tượng nào được mô tả bởi đơn vị định dạng đó."
+"  Để buộc nó trả về một bộ có kích thước 0 hoặc một, hãy đặt dấu ngoặc đơn "
+"vào chuỗi định dạng."
+
+#: ../../extending/extending.rst:873
+#, fuzzy
+msgid ""
+"Examples (to the left the call, to the right the resulting Python value):"
+msgstr "Ví dụ (ở bên trái cuộc gọi, ở bên phải giá trị Python kết quả):"
+
+#: ../../extending/extending.rst:875
+#, python-brace-format, fuzzy
+msgid ""
+"Py_BuildValue(\"\")                        None\n"
+"Py_BuildValue(\"i\", 123)                  123\n"
+"Py_BuildValue(\"iii\", 123, 456, 789)      (123, 456, 789)\n"
+"Py_BuildValue(\"s\", \"hello\")              'hello'\n"
+"Py_BuildValue(\"y\", \"hello\")              b'hello'\n"
+"Py_BuildValue(\"ss\", \"hello\", \"world\")    ('hello', 'world')\n"
+"Py_BuildValue(\"s#\", \"hello\", 4)          'hell'\n"
+"Py_BuildValue(\"y#\", \"hello\", 4)          b'hell'\n"
+"Py_BuildValue(\"()\")                      ()\n"
+"Py_BuildValue(\"(i)\", 123)                (123,)\n"
+"Py_BuildValue(\"(ii)\", 123, 456)          (123, 456)\n"
+"Py_BuildValue(\"(i,i)\", 123, 456)         (123, 456)\n"
+"Py_BuildValue(\"[i,i]\", 123, 456)         [123, 456]\n"
+"Py_BuildValue(\"{s:i,s:i}\",\n"
+"              \"abc\", 123, \"def\", 456)    {'abc': 123, 'def': 456}\n"
+"Py_BuildValue(\"((ii)(ii)) (ii)\",\n"
+"              1, 2, 3, 4, 5, 6)          (((1, 2), (3, 4)), (5, 6))"
+msgstr ""
+"Py_BuildValue(\"\") Không có\n"
+"Py_BuildValue(\"i\", 123) 123\n"
+"Py_BuildValue(\"iii\", 123, 456, 789) (123, 456, 789)\n"
+"Py_BuildValue(\"s\", \"xin chào\") 'xin chào'\n"
+"Py_BuildValue(\"y\", \"hello\") b'hello'\n"
+"Py_BuildValue(\"ss\", \"xin chào\", \"thế giới\") ('xin chào', 'thế giới')\n"
+"Py_BuildValue(\"s#\", \"xin chào\", 4) 'chết tiệt'\n"
+"Py_BuildValue(\"y#\", \"hello\", 4) b'chết tiệt'\n"
+"Py_BuildValue(\"()\")() ()\n"
+"Py_BuildValue(\"(i)\", 123) (123,)\n"
+"Py_BuildValue(\"(ii)\", 123, 456) (123, 456)\n"
+"Py_BuildValue(\"(i,i)\", 123, 456) (123, 456)\n"
+"Py_BuildValue(\"[i,i]\", 123, 456) [123, 456]\n"
+"Py_BuildValue(\"{s:i,s:i}\",\n"
+"              \"abc\", 123, \"def\", 456) {'abc': 123, 'def': 456}\n"
+"Py_BuildValue(\"((ii)(ii)) (ii)\",\n"
+"              1, 2, 3, 4, 5, 6) (((1, 2), (3, 4)), (5, 6))"
+
+#: ../../extending/extending.rst:899
+#, fuzzy
+msgid "Reference Counts"
+msgstr "Số lượng tham chiếu"
+
+#: ../../extending/extending.rst:901
+#, fuzzy
+msgid ""
+"In languages like C or C++, the programmer is responsible for dynamic "
+"allocation and deallocation of memory on the heap.  In C, this is done using"
+" the functions :c:func:`malloc` and :c:func:`free`.  In C++, the operators "
+"``new`` and ``delete`` are used with essentially the same meaning and we'll "
+"restrict the following discussion to the C case."
+msgstr ""
+"Trong các ngôn ngữ như C hoặc C++, lập trình viên chịu trách nhiệm phân bổ "
+"động và phân bổ bộ nhớ trên heap.  Trong C, việc này được thực hiện bằng "
+"cách sử dụng các hàm :c:func:`malloc` và :c:func:`free`.  Trong C++, các "
+"toán tử ``new`` và ``delete`` được sử dụng với ý nghĩa cơ bản giống nhau và "
+"chúng ta sẽ hạn chế thảo luận sau đây đối với trường hợp C."
+
+#: ../../extending/extending.rst:907
+#, fuzzy
+msgid ""
+"Every block of memory allocated with :c:func:`malloc` should eventually be "
+"returned to the pool of available memory by exactly one call to "
+":c:func:`free`. It is important to call :c:func:`free` at the right time.  "
+"If a block's address is forgotten but :c:func:`free` is not called for it, "
+"the memory it occupies cannot be reused until the program terminates.  This "
+"is called a :dfn:`memory leak`.  On the other hand, if a program calls "
+":c:func:`free` for a block and then continues to use the block, it creates a"
+" conflict with reuse of the block through another :c:func:`malloc` call.  "
+"This is called :dfn:`using freed memory`. It has the same bad consequences "
+"as referencing uninitialized data --- core dumps, wrong results, mysterious "
+"crashes."
+msgstr ""
+"Mỗi khối bộ nhớ được phân bổ bằng :c:func:`malloc` cuối cùng sẽ được trả về "
+"nhóm bộ nhớ khả dụng bằng chính xác một lệnh gọi tới :c:func:`free`. Điều "
+"quan trọng là phải gọi :c:func:`free` đúng lúc.  Nếu địa chỉ của một khối bị"
+" quên nhưng :c:func:`free` không được gọi, bộ nhớ mà khối đó chiếm giữ không"
+" thể được sử dụng lại cho đến khi chương trình kết thúc.  Đây được gọi là "
+":dfn:`memory leak`.  Mặt khác, nếu một chương trình gọi :c:func:`free` cho "
+"một khối và sau đó tiếp tục sử dụng khối đó, nó sẽ tạo ra xung đột với việc "
+"sử dụng lại khối thông qua một lệnh gọi :c:func:`malloc` khác.  Cái này được"
+" gọi là :dfn:`using freed memory`. Nó có những hậu quả xấu tương tự như việc"
+" tham chiếu dữ liệu chưa được khởi tạo --- kết xuất lõi, kết quả sai, sự cố "
+"bí ẩn."
+
+#: ../../extending/extending.rst:918
+#, fuzzy
+msgid ""
+"Common causes of memory leaks are unusual paths through the code.  For "
+"instance, a function may allocate a block of memory, do some calculation, "
+"and then free the block again.  Now a change in the requirements for the "
+"function may add a test to the calculation that detects an error condition "
+"and can return prematurely from the function.  It's easy to forget to free "
+"the allocated memory block when taking this premature exit, especially when "
+"it is added later to the code.  Such leaks, once introduced, often go "
+"undetected for a long time: the error exit is taken only in a small fraction"
+" of all calls, and most modern machines have plenty of virtual memory, so "
+"the leak only becomes apparent in a long-running process that uses the "
+"leaking function frequently.  Therefore, it's important to prevent leaks "
+"from happening by having a coding convention or strategy that minimizes this"
+" kind of errors."
+msgstr ""
+"Nguyên nhân phổ biến gây rò rỉ bộ nhớ là các đường dẫn bất thường xuyên qua "
+"mã.  Ví dụ: một hàm có thể phân bổ một khối bộ nhớ, thực hiện một số phép "
+"tính và sau đó giải phóng khối đó một lần nữa.  Bây giờ, một thay đổi trong "
+"các yêu cầu đối với hàm có thể thêm một thử nghiệm vào phép tính để phát "
+"hiện tình trạng lỗi và có thể trả về sớm từ hàm.  Bạn rất dễ quên giải phóng"
+" khối bộ nhớ được phân bổ khi thoát sớm này, đặc biệt là khi nó được thêm "
+"vào mã sau.  Những rò rỉ như vậy, một khi đã xuất hiện, thường không bị phát"
+" hiện trong một thời gian dài: việc thoát lỗi chỉ được thực hiện trong một "
+"phần nhỏ của tất cả các cuộc gọi và hầu hết các máy hiện đại đều có nhiều bộ"
+" nhớ ảo, do đó, rò rỉ chỉ trở nên rõ ràng trong một quy trình chạy lâu dài "
+"sử dụng chức năng rò rỉ thường xuyên.  Do đó, điều quan trọng là phải ngăn "
+"chặn rò rỉ xảy ra bằng cách có quy ước hoặc chiến lược mã hóa nhằm giảm "
+"thiểu loại lỗi này."
+
+#: ../../extending/extending.rst:931
+#, fuzzy
+msgid ""
+"Since Python makes heavy use of :c:func:`malloc` and :c:func:`free`, it "
+"needs a strategy to avoid memory leaks as well as the use of freed memory.  "
+"The chosen method is called :dfn:`reference counting`.  The principle is "
+"simple: every object contains a counter, which is incremented when a "
+"reference to the object is stored somewhere, and which is decremented when a"
+" reference to it is deleted. When the counter reaches zero, the last "
+"reference to the object has been deleted and the object is freed."
+msgstr ""
+"Vì Python sử dụng nhiều :c:func:`malloc` và :c:func:`free` nên nó cần một "
+"chiến lược để tránh rò rỉ bộ nhớ cũng như sử dụng bộ nhớ được giải phóng.  "
+"Phương pháp được chọn được gọi là :dfn:`reference counting`.  Nguyên tắc rất"
+" đơn giản: mọi đối tượng đều chứa một bộ đếm, bộ đếm này tăng lên khi một "
+"tham chiếu đến đối tượng được lưu trữ ở đâu đó và sẽ giảm đi khi một tham "
+"chiếu đến nó bị xóa. Khi bộ đếm đạt đến 0, tham chiếu cuối cùng đến đối "
+"tượng đã bị xóa và đối tượng được giải phóng."
+
+#: ../../extending/extending.rst:939
+#, fuzzy
+msgid ""
+"An alternative strategy is called :dfn:`automatic garbage collection`. "
+"(Sometimes, reference counting is also referred to as a garbage collection "
+"strategy, hence my use of \"automatic\" to distinguish the two.)  The big "
+"advantage of automatic garbage collection is that the user doesn't need to "
+"call :c:func:`free` explicitly.  (Another claimed advantage is an "
+"improvement in speed or memory usage --- this is no hard fact however.)  The"
+" disadvantage is that for C, there is no truly portable automatic garbage "
+"collector, while reference counting can be implemented portably (as long as "
+"the functions :c:func:`malloc` and :c:func:`free` are available --- which "
+"the C Standard guarantees). Maybe some day a sufficiently portable automatic"
+" garbage collector will be available for C. Until then, we'll have to live "
+"with reference counts."
+msgstr ""
+"Một chiến lược thay thế được gọi là :dfn:`automatic garbage collection`. "
+"(Đôi khi, việc đếm tham chiếu còn được gọi là chiến lược thu gom rác, do đó "
+"tôi sử dụng \"tự động\" để phân biệt cả hai.) Ưu điểm lớn của việc thu gom "
+"rác tự động là người dùng không cần gọi :c:func:`free` một cách rõ ràng.  "
+"(Một ưu điểm khác được khẳng định là sự cải thiện về tốc độ hoặc mức sử dụng"
+" bộ nhớ --- tuy nhiên đây không phải là sự thật khó hiểu.) Nhược điểm là đối"
+" với C, không có trình thu gom rác tự động di động thực sự, trong khi việc "
+"đếm tham chiếu có thể được triển khai một cách di động (miễn là có sẵn các "
+"hàm :c:func:`malloc` và :c:func:`free` --- mà Tiêu chuẩn C đảm bảo). Có thể "
+"một ngày nào đó, một bộ thu gom rác tự động đủ di động sẽ có sẵn cho C. Cho "
+"đến lúc đó, chúng ta sẽ phải sống với số lượng tham chiếu."
+
+#: ../../extending/extending.rst:951
+#, fuzzy
+msgid ""
+"While Python uses the traditional reference counting implementation, it also"
+" offers a cycle detector that works to detect reference cycles.  This allows"
+" applications to not worry about creating direct or indirect circular "
+"references; these are the weakness of garbage collection implemented using "
+"only reference counting.  Reference cycles consist of objects which contain "
+"(possibly indirect) references to themselves, so that each object in the "
+"cycle has a reference count which is non-zero.  Typical reference counting "
+"implementations are not able to reclaim the memory belonging to any objects "
+"in a reference cycle, or referenced from the objects in the cycle, even "
+"though there are no further references to the cycle itself."
+msgstr ""
+"Mặc dù Python sử dụng cách triển khai tính tham chiếu truyền thống nhưng nó "
+"cũng cung cấp một trình phát hiện chu trình hoạt động để phát hiện các chu "
+"trình tham chiếu.  Điều này cho phép các ứng dụng không phải lo lắng về việc"
+" tạo các tham chiếu vòng tròn trực tiếp hoặc gián tiếp; đây là điểm yếu của "
+"việc thu thập rác được thực hiện chỉ bằng cách đếm tham chiếu.  Chu trình "
+"tham chiếu bao gồm các đối tượng chứa các tham chiếu (có thể gián tiếp) đến "
+"chính chúng, sao cho mỗi đối tượng trong chu trình có số lượng tham chiếu "
+"khác 0.  Việc triển khai tính tham chiếu thông thường không thể lấy lại bộ "
+"nhớ thuộc về bất kỳ đối tượng nào trong chu trình tham chiếu hoặc được tham "
+"chiếu từ các đối tượng trong chu trình, mặc dù không có thêm tham chiếu nào "
+"đến chính chu trình đó."
+
+#: ../../extending/extending.rst:962
+#, fuzzy
+msgid ""
+"The cycle detector is able to detect garbage cycles and can reclaim them. "
+"The :mod:`gc` module exposes a way to run the detector (the "
+":func:`~gc.collect` function), as well as configuration interfaces and the "
+"ability to disable the detector at runtime."
+msgstr ""
+"Trình phát hiện chu trình có thể phát hiện các chu trình rác và có thể lấy "
+"lại chúng. Mô-đun :mod:`gc` cung cấp cách chạy trình phát hiện (chức năng "
+":func:`~gc.collect`), cũng như các giao diện cấu hình và khả năng vô hiệu "
+"hóa trình phát hiện khi chạy."
+
+#: ../../extending/extending.rst:971
+#, fuzzy
+msgid "Reference Counting in Python"
+msgstr "Đếm tham chiếu trong Python"
+
+#: ../../extending/extending.rst:973
+#, fuzzy
+msgid ""
+"There are two macros, ``Py_INCREF(x)`` and ``Py_DECREF(x)``, which handle "
+"the incrementing and decrementing of the reference count. "
+":c:func:`Py_DECREF` also frees the object when the count reaches zero. For "
+"flexibility, it doesn't call :c:func:`free` directly --- rather, it makes a "
+"call through a function pointer in the object's :dfn:`type object`.  For "
+"this purpose (and others), every object also contains a pointer to its type "
+"object."
+msgstr ""
+"Có hai macro, ``Py_INCREF(x)`` và ``Py_DECREF(x)``, xử lý việc tăng và giảm "
+"số lượng tham chiếu. :c:func:`Py_DECREF` cũng giải phóng đối tượng khi số "
+"đếm về 0. Để linh hoạt, nó không gọi trực tiếp :c:func:`free` --- thay vào "
+"đó, nó thực hiện cuộc gọi thông qua một con trỏ hàm trong :dfn:`type object`"
+" của đối tượng.  Với mục đích này (và những mục đích khác), mọi đối tượng "
+"cũng chứa một con trỏ tới đối tượng kiểu của nó."
+
+#: ../../extending/extending.rst:980
+#, fuzzy
+msgid ""
+"The big question now remains: when to use ``Py_INCREF(x)`` and "
+"``Py_DECREF(x)``? Let's first introduce some terms.  Nobody \"owns\" an "
+"object; however, you can :dfn:`own a reference` to an object.  An object's "
+"reference count is now defined as the number of owned references to it.  The"
+" owner of a reference is responsible for calling :c:func:`Py_DECREF` when "
+"the reference is no longer needed.  Ownership of a reference can be "
+"transferred.  There are three ways to dispose of an owned reference: pass it"
+" on, store it, or call :c:func:`Py_DECREF`. Forgetting to dispose of an "
+"owned reference creates a memory leak."
+msgstr ""
+"Câu hỏi lớn bây giờ vẫn là: khi nào nên sử dụng ``Py_INCREF(x)`` và "
+"``Py_DECREF(x)``? Trước tiên hãy giới thiệu một số thuật ngữ.  Không ai \"sở"
+" hữu\" một đồ vật; tuy nhiên, bạn có thể :dfn:`own a reference` tới một đối "
+"tượng.  Số lượng tham chiếu của một đối tượng hiện được xác định là số lượng"
+" tham chiếu được sở hữu đối với nó.  Chủ sở hữu của một tài liệu tham khảo "
+"có trách nhiệm gọi :c:func:`Py_DECREF` khi tài liệu tham khảo không còn cần "
+"thiết nữa.  Quyền sở hữu của một tài liệu tham khảo có thể được chuyển giao."
+"  Có ba cách để loại bỏ một tham chiếu đã sở hữu: chuyển nó đi, lưu trữ nó "
+"hoặc gọi :c:func:`Py_DECREF`. Việc quên loại bỏ tham chiếu đã sở hữu sẽ tạo "
+"ra rò rỉ bộ nhớ."
+
+#: ../../extending/extending.rst:989
+#, fuzzy
+msgid ""
+"It is also possible to :dfn:`borrow` [#]_ a reference to an object.  The "
+"borrower of a reference should not call :c:func:`Py_DECREF`.  The borrower "
+"must not hold on to the object longer than the owner from which it was "
+"borrowed. Using a borrowed reference after the owner has disposed of it "
+"risks using freed memory and should be avoided completely [#]_."
+msgstr ""
+"Cũng có thể :dfn:`borrow` [#]_ một tham chiếu đến một đối tượng.  Người mượn"
+" tài liệu tham khảo không nên gọi :c:func:`Py_DECREF`.  Người mượn không "
+"được giữ đồ vật lâu hơn chủ sở hữu đồ vật đó. Việc sử dụng tham chiếu mượn "
+"sau khi chủ sở hữu đã loại bỏ nó có nguy cơ sử dụng bộ nhớ đã giải phóng và "
+"nên tránh hoàn toàn [#]_."
+
+#: ../../extending/extending.rst:995
+#, fuzzy
+msgid ""
+"The advantage of borrowing over owning a reference is that you don't need to"
+" take care of disposing of the reference on all possible paths through the "
+"code --- in other words, with a borrowed reference you don't run the risk of"
+" leaking when a premature exit is taken.  The disadvantage of borrowing over"
+" owning is that there are some subtle situations where in seemingly correct "
+"code a borrowed reference can be used after the owner from which it was "
+"borrowed has in fact disposed of it."
+msgstr ""
+"Ưu điểm của việc mượn so với việc sở hữu một tham chiếu là bạn không cần "
+"phải xử lý tham chiếu trên tất cả các đường dẫn có thể thông qua mã --- nói "
+"cách khác, với một tham chiếu được mượn, bạn không gặp rủi ro bị rò rỉ khi "
+"thực hiện thoát sớm.  Nhược điểm của việc vay mượn thay vì sở hữu là có một "
+"số tình huống tế nhị trong đó mã có vẻ chính xác có thể được sử dụng tham "
+"chiếu mượn sau khi chủ sở hữu mà nó được mượn trên thực tế đã vứt bỏ nó."
+
+#: ../../extending/extending.rst:1003
+#, fuzzy
+msgid ""
+"A borrowed reference can be changed into an owned reference by calling "
+":c:func:`Py_INCREF`.  This does not affect the status of the owner from "
+"which the reference was borrowed --- it creates a new owned reference, and "
+"gives full owner responsibilities (the new owner must dispose of the "
+"reference properly, as well as the previous owner)."
+msgstr ""
+"Một tham chiếu mượn có thể được thay đổi thành một tham chiếu sở hữu bằng "
+"cách gọi :c:func:`Py_INCREF`.  Điều này không ảnh hưởng đến trạng thái của "
+"chủ sở hữu mà tham chiếu được mượn --- nó tạo ra một tham chiếu được sở hữu "
+"mới và trao toàn bộ trách nhiệm của chủ sở hữu (chủ sở hữu mới phải loại bỏ "
+"tham chiếu một cách hợp lý cũng như chủ sở hữu trước đó)."
+
+#: ../../extending/extending.rst:1013
+#, fuzzy
+msgid "Ownership Rules"
+msgstr "Quy tắc sở hữu"
+
+#: ../../extending/extending.rst:1015
+#, fuzzy
+msgid ""
+"Whenever an object reference is passed into or out of a function, it is part"
+" of the function's interface specification whether ownership is transferred "
+"with the reference or not."
+msgstr ""
+"Bất cứ khi nào một tham chiếu đối tượng được truyền vào hoặc ra khỏi một "
+"hàm, thì đó là một phần đặc tả giao diện của hàm cho dù quyền sở hữu có được"
+" chuyển giao cùng với tham chiếu đó hay không."
+
+#: ../../extending/extending.rst:1019
+#, fuzzy
+msgid ""
+"Most functions that return a reference to an object pass on ownership with "
+"the reference.  In particular, all functions whose function it is to create "
+"a new object, such as :c:func:`PyLong_FromLong` and :c:func:`Py_BuildValue`,"
+" pass ownership to the receiver.  Even if the object is not actually new, "
+"you still receive ownership of a new reference to that object.  For "
+"instance, :c:func:`PyLong_FromLong` maintains a cache of popular values and "
+"can return a reference to a cached item."
+msgstr ""
+"Hầu hết các hàm trả về một tham chiếu đến một đối tượng sẽ chuyển quyền sở "
+"hữu với tham chiếu đó.  Đặc biệt, tất cả các hàm có chức năng tạo đối tượng "
+"mới, chẳng hạn như :c:func:`PyLong_FromLong` và :c:func:`Py_BuildValue`, đều"
+" chuyển quyền sở hữu cho người nhận.  Ngay cả khi đối tượng không thực sự "
+"mới, bạn vẫn nhận được quyền sở hữu một tham chiếu mới tới đối tượng đó.  Ví"
+" dụ: :c:func:`PyLong_FromLong` duy trì bộ nhớ đệm gồm các giá trị phổ biến "
+"và có thể trả về tham chiếu đến một mục được lưu trong bộ nhớ đệm."
+
+#: ../../extending/extending.rst:1027
+#, fuzzy
+msgid ""
+"Many functions that extract objects from other objects also transfer "
+"ownership with the reference, for instance :c:func:`PyObject_GetAttrString`."
+"  The picture is less clear, here, however, since a few common routines are "
+"exceptions: :c:func:`PyTuple_GetItem`, :c:func:`PyList_GetItem`, "
+":c:func:`PyDict_GetItem`, and :c:func:`PyDict_GetItemString` all return "
+"references that you borrow from the tuple, list or dictionary."
+msgstr ""
+"Nhiều hàm trích xuất đối tượng từ các đối tượng khác cũng chuyển quyền sở "
+"hữu bằng tham chiếu, chẳng hạn như :c:func:`PyObject_GetAttrString`.  Tuy "
+"nhiên, ở đây, hình ảnh chưa rõ ràng vì một số thủ tục phổ biến là ngoại lệ: "
+":c:func:`PyTuple_GetItem`, :c:func:`PyList_GetItem`, "
+":c:func:`PyDict_GetItem` và :c:func:`PyDict_GetItemString` đều trả về các "
+"tham chiếu mà bạn mượn từ bộ dữ liệu, danh sách hoặc từ điển."
+
+#: ../../extending/extending.rst:1034
+#, fuzzy
+msgid ""
+"The function :c:func:`PyImport_AddModule` also returns a borrowed reference,"
+" even though it may actually create the object it returns: this is possible "
+"because an owned reference to the object is stored in ``sys.modules``."
+msgstr ""
+"Hàm :c:func:`PyImport_AddModule` cũng trả về một tham chiếu mượn, mặc dù nó "
+"thực sự có thể tạo ra đối tượng mà nó trả về: điều này có thể thực hiện được"
+" vì một tham chiếu thuộc sở hữu của đối tượng được lưu trữ trong "
+"``sys.modules``."
+
+#: ../../extending/extending.rst:1038
+#, fuzzy
+msgid ""
+"When you pass an object reference into another function, in general, the "
+"function borrows the reference from you --- if it needs to store it, it will"
+" use :c:func:`Py_INCREF` to become an independent owner.  There are exactly "
+"two important exceptions to this rule: :c:func:`PyTuple_SetItem` and "
+":c:func:`PyList_SetItem`.  These functions take over ownership of the item "
+"passed to them --- even if they fail!  (Note that :c:func:`PyDict_SetItem` "
+"and friends don't take over ownership --- they are \"normal.\")"
+msgstr ""
+"Khi bạn chuyển một tham chiếu đối tượng sang một hàm khác, nói chung, hàm đó"
+" sẽ mượn tham chiếu từ bạn --- nếu cần lưu trữ, nó sẽ sử dụng "
+":c:func:`Py_INCREF` để trở thành chủ sở hữu độc lập.  Có chính xác hai "
+"trường hợp ngoại lệ quan trọng đối với quy tắc này: "
+":c:func:`PyTuple_SetItem` và :c:func:`PyList_SetItem`.  Các chức năng này "
+"tiếp quản quyền sở hữu đối tượng được chuyển cho chúng --- ngay cả khi chúng"
+" thất bại!  (Lưu ý rằng :c:func:`PyDict_SetItem` và bạn bè không chiếm quyền"
+" sở hữu --- họ \"bình thường.\")"
+
+#: ../../extending/extending.rst:1046
+#, fuzzy
+msgid ""
+"When a C function is called from Python, it borrows references to its "
+"arguments from the caller.  The caller owns a reference to the object, so "
+"the borrowed reference's lifetime is guaranteed until the function returns."
+"  Only when such a borrowed reference must be stored or passed on, it must "
+"be turned into an owned reference by calling :c:func:`Py_INCREF`."
+msgstr ""
+"Khi một hàm C được gọi từ Python, nó sẽ mượn các tham chiếu đến các đối số "
+"của nó từ người gọi.  Người gọi sở hữu một tham chiếu đến đối tượng, do đó "
+"thời gian tồn tại của tham chiếu mượn được đảm bảo cho đến khi hàm trả về.  "
+"Chỉ khi một tham chiếu mượn như vậy phải được lưu trữ hoặc chuyển đi, nó "
+"phải được chuyển thành tham chiếu sở hữu bằng cách gọi :c:func:`Py_INCREF`."
+
+#: ../../extending/extending.rst:1052
+#, fuzzy
+msgid ""
+"The object reference returned from a C function that is called from Python "
+"must be an owned reference --- ownership is transferred from the function to"
+" its caller."
+msgstr ""
+"Tham chiếu đối tượng được trả về từ hàm C được gọi từ Python phải là tham "
+"chiếu thuộc sở hữu --- quyền sở hữu được chuyển từ hàm sang người gọi nó."
+
+#: ../../extending/extending.rst:1060
+#, fuzzy
+msgid "Thin Ice"
+msgstr "Băng mỏng"
+
+#: ../../extending/extending.rst:1062
+#, fuzzy
+msgid ""
+"There are a few situations where seemingly harmless use of a borrowed "
+"reference can lead to problems.  These all have to do with implicit "
+"invocations of the interpreter, which can cause the owner of a reference to "
+"dispose of it."
+msgstr ""
+"Có một số tình huống mà việc sử dụng tài liệu tham khảo mượn dường như vô "
+"hại lại có thể dẫn đến vấn đề.  Tất cả những điều này đều liên quan đến lời "
+"gọi ngầm của trình thông dịch, điều này có thể khiến chủ sở hữu của một tham"
+" chiếu loại bỏ nó."
+
+#: ../../extending/extending.rst:1066
+#, fuzzy
+msgid ""
+"The first and most important case to know about is using :c:func:`Py_DECREF`"
+" on an unrelated object while borrowing a reference to a list item.  For "
+"instance::"
+msgstr ""
+"Trường hợp đầu tiên và quan trọng nhất cần biết là sử dụng "
+":c:func:`Py_DECREF` trên một đối tượng không liên quan trong khi mượn tham "
+"chiếu đến một mục danh sách.  Ví dụ::"
+
+#: ../../extending/extending.rst:1069
+#, fuzzy
+msgid ""
+"void\n"
+"bug(PyObject *list)\n"
+"{\n"
+"    PyObject *item = PyList_GetItem(list, 0);\n"
+"\n"
+"    PyList_SetItem(list, 1, PyLong_FromLong(0L));\n"
+"    PyObject_Print(item, stdout, 0); /* BUG! */\n"
+"}"
+msgstr ""
+"trống rỗng\n"
+"lỗi (danh sách PyObject *)\n"
+"{\n"
+"    PyObject *item = PyList_GetItem(list, 0);\n"
+"\n"
+"    PyList_SetItem(list, 1, PyLong_FromLong(0L));\n"
+"    PyObject_Print(mục, thiết bị xuất chuẩn, 0); /* BUG! */\n"
+"}"
+
+#: ../../extending/extending.rst:1078
+#, fuzzy
+msgid ""
+"This function first borrows a reference to ``list[0]``, then replaces "
+"``list[1]`` with the value ``0``, and finally prints the borrowed reference."
+" Looks harmless, right?  But it's not!"
+msgstr ""
+"Trước tiên, hàm này mượn tham chiếu đến ``list[0]``, sau đó thay thế "
+"``list[1]`` bằng giá trị ``0`` và cuối cùng in tham chiếu đã mượn. Có vẻ vô "
+"hại phải không?  Nhưng không phải vậy!"
+
+#: ../../extending/extending.rst:1082
+#, fuzzy
+msgid ""
+"Let's follow the control flow into :c:func:`PyList_SetItem`.  The list owns "
+"references to all its items, so when item 1 is replaced, it has to dispose "
+"of the original item 1.  Now let's suppose the original item 1 was an "
+"instance of a user-defined class, and let's further suppose that the class "
+"defined a :meth:`!__del__` method.  If this class instance has a reference "
+"count of 1, disposing of it will call its :meth:`!__del__` method. "
+"Internally, :c:func:`PyList_SetItem` calls :c:func:`Py_DECREF` on the "
+"replaced item, which invokes replaced item's corresponding "
+":c:member:`~PyTypeObject.tp_dealloc` function. During deallocation, "
+":c:member:`~PyTypeObject.tp_dealloc` calls "
+":c:member:`~PyTypeObject.tp_finalize`, which is mapped to the "
+":meth:`!__del__` method for class instances (see :pep:`442`). This entire "
+"sequence happens synchronously within the :c:func:`PyList_SetItem` call."
+msgstr ""
+"Hãy theo dõi luồng điều khiển vào :c:func:`PyList_SetItem`.  Danh sách sở "
+"hữu các tham chiếu đến tất cả các mục của nó, vì vậy khi mục 1 được thay "
+"thế, nó phải loại bỏ mục 1 ban đầu. Bây giờ, hãy giả sử mục 1 ban đầu là một"
+" thể hiện của một lớp do người dùng định nghĩa và hãy giả sử thêm rằng lớp "
+"đó đã xác định một phương thức :meth:`!__del__`.  Nếu phiên bản lớp này có "
+"số tham chiếu là 1, việc xử lý nó sẽ gọi phương thức :meth:`!__del__` của "
+"nó. Trong nội bộ, :c:func:`PyList_SetItem` gọi :c:func:`Py_DECREF` trên mục "
+"được thay thế, gọi hàm :c:member:`~PyTypeObject.tp_dealloc` tương ứng của "
+"mục được thay thế. Trong quá trình giải phóng, "
+":c:member:`~PyTypeObject.tp_dealloc` gọi "
+":c:member:`~PyTypeObject.tp_finalize`, được ánh xạ tới phương thức "
+":meth:`!__del__` cho các phiên bản lớp (xem :pep:`442`). Toàn bộ chuỗi này "
+"diễn ra đồng bộ trong lệnh gọi :c:func:`PyList_SetItem`."
+
+#: ../../extending/extending.rst:1096
+#, fuzzy
+msgid ""
+"Since it is written in Python, the :meth:`!__del__` method can execute "
+"arbitrary Python code.  Could it perhaps do something to invalidate the "
+"reference to ``item`` in :c:func:`!bug`?  You bet!  Assuming that the list "
+"passed into :c:func:`!bug` is accessible to the :meth:`!__del__` method, it "
+"could execute a statement to the effect of ``del list[0]``, and assuming "
+"this was the last reference to that object, it would free the memory "
+"associated with it, thereby invalidating ``item``."
+msgstr ""
+"Vì được viết bằng Python nên phương thức :meth:`!__del__` có thể thực thi mã"
+" Python tùy ý.  Có lẽ nó có thể làm gì đó để vô hiệu hóa tham chiếu đến "
+"``item`` trong :c:func:`!bug`?  Bạn đặt cược!  Giả sử rằng danh sách được "
+"chuyển vào :c:func:`!bug` có thể truy cập được bằng phương thức "
+":meth:`!__del__`, nó có thể thực thi một câu lệnh có tác dụng của ``del "
+"list[0]`` và giả sử đây là tham chiếu cuối cùng đến đối tượng đó, nó sẽ giải"
+" phóng bộ nhớ liên kết với nó, do đó làm mất hiệu lực ``item``."
+
+#: ../../extending/extending.rst:1104
+#, fuzzy
+msgid ""
+"The solution, once you know the source of the problem, is easy: temporarily "
+"increment the reference count.  The correct version of the function reads::"
+msgstr ""
+"Giải pháp, khi bạn biết nguồn gốc của vấn đề, thật dễ dàng: tạm thời tăng số"
+" lượng tham chiếu.  Phiên bản chính xác của hàm có nội dung::"
+
+#: ../../extending/extending.rst:1107
+#, python-brace-format, fuzzy
+msgid ""
+"void\n"
+"no_bug(PyObject *list)\n"
+"{\n"
+"    PyObject *item = PyList_GetItem(list, 0);\n"
+"\n"
+"    Py_INCREF(item);\n"
+"    PyList_SetItem(list, 1, PyLong_FromLong(0L));\n"
+"    PyObject_Print(item, stdout, 0);\n"
+"    Py_DECREF(item);\n"
+"}"
+msgstr ""
+"trống rỗng\n"
+"no_bug(danh sách PyObject *)\n"
+"{\n"
+"    PyObject *item = PyList_GetItem(list, 0);\n"
+"\n"
+"    Py_INCREF(vật phẩm);\n"
+"    PyList_SetItem(list, 1, PyLong_FromLong(0L));\n"
+"    PyObject_Print(mục, thiết bị xuất chuẩn, 0);\n"
+"    Py_DECREF(vật phẩm);\n"
+"}"
+
+#: ../../extending/extending.rst:1118
+#, fuzzy
+msgid ""
+"This is a true story.  An older version of Python contained variants of this"
+" bug and someone spent a considerable amount of time in a C debugger to "
+"figure out why his :meth:`!__del__` methods would fail..."
+msgstr ""
+"Đây là một câu chuyện có thật.  Một phiên bản cũ hơn của Python chứa các "
+"biến thể của lỗi này và ai đó đã dành một lượng thời gian đáng kể vào trình "
+"gỡ lỗi C để tìm ra lý do tại sao các phương thức :meth:`!__del__` của anh ta"
+" lại thất bại..."
+
+#: ../../extending/extending.rst:1122
+#, fuzzy
+msgid ""
+"The second case of problems with a borrowed reference is a variant involving"
+" threads.  Normally, multiple threads in the Python interpreter can't get in"
+" each other's way, because there is a :term:`global lock <global interpreter"
+" lock>` protecting Python's entire object space. However, it is possible to "
+"temporarily release this lock using the macro "
+":c:macro:`Py_BEGIN_ALLOW_THREADS`, and to re-acquire it using "
+":c:macro:`Py_END_ALLOW_THREADS`.  This is common around blocking I/O calls, "
+"to let other threads use the processor while waiting for the I/O to "
+"complete. Obviously, the following function has the same problem as the "
+"previous one::"
+msgstr ""
+"Trường hợp thứ hai có vấn đề với tham chiếu mượn là một biến thể liên quan "
+"đến các luồng.  Thông thường, nhiều luồng trong trình thông dịch Python "
+"không thể cản trở nhau vì có :term:`global lock <global interpreter lock>` "
+"bảo vệ toàn bộ không gian đối tượng của Python. Tuy nhiên, có thể tạm thời "
+"giải phóng khóa này bằng macro :c:macro:`Py_BEGIN_ALLOW_THREADS` và lấy lại "
+"nó bằng :c:macro:`Py_END_ALLOW_THREADS`.  Điều này thường xảy ra xung quanh "
+"việc chặn các cuộc gọi I/O, để cho phép các luồng khác sử dụng bộ xử lý "
+"trong khi chờ I/O hoàn tất. Rõ ràng, hàm sau có cùng vấn đề với hàm trước::"
+
+#: ../../extending/extending.rst:1132
+#, fuzzy
+msgid ""
+"void\n"
+"bug(PyObject *list)\n"
+"{\n"
+"    PyObject *item = PyList_GetItem(list, 0);\n"
+"    Py_BEGIN_ALLOW_THREADS\n"
+"    ...some blocking I/O call...\n"
+"    Py_END_ALLOW_THREADS\n"
+"    PyObject_Print(item, stdout, 0); /* BUG! */\n"
+"}"
+msgstr ""
+"trống rỗng\n"
+"lỗi (danh sách PyObject *)\n"
+"{\n"
+"    PyObject *item = PyList_GetItem(list, 0);\n"
+"    Py_BEGIN_ALLOW_THREADS\n"
+"    ...một số cuộc gọi I/O đang chặn...\n"
+"    Py_END_ALLOW_THREADS\n"
+"    PyObject_Print(mục, thiết bị xuất chuẩn, 0); /* BUG! */\n"
+"}"
+
+#: ../../extending/extending.rst:1146
+#, fuzzy
+msgid "NULL Pointers"
+msgstr "Con trỏ NULL"
+
+#: ../../extending/extending.rst:1148
+#, fuzzy
+msgid ""
+"In general, functions that take object references as arguments do not expect"
+" you to pass them ``NULL`` pointers, and will dump core (or cause later core"
+" dumps) if you do so.  Functions that return object references generally "
+"return ``NULL`` only to indicate that an exception occurred.  The reason for"
+" not testing for ``NULL`` arguments is that functions often pass the objects"
+" they receive on to other function --- if each function were to test for "
+"``NULL``, there would be a lot of redundant tests and the code would run "
+"more slowly."
+msgstr ""
+"Nói chung, các hàm lấy tham chiếu đối tượng làm đối số không yêu cầu bạn "
+"chuyển các con trỏ ``NULL`` cho chúng và sẽ kết xuất lõi (hoặc gây ra kết "
+"xuất lõi sau này) nếu bạn làm như vậy.  Các hàm trả về tham chiếu đối tượng "
+"thường chỉ trả về ``NULL`` để cho biết đã xảy ra ngoại lệ.  Lý do không kiểm"
+" tra đối số ``NULL`` là vì các hàm thường chuyển đối tượng mà chúng nhận "
+"được sang hàm khác --- nếu mỗi hàm kiểm tra ``NULL`` thì sẽ có rất nhiều "
+"kiểm tra dư thừa và mã sẽ chạy chậm hơn."
+
+#: ../../extending/extending.rst:1156
+#, fuzzy
+msgid ""
+"It is better to test for ``NULL`` only at the \"source:\" when a pointer "
+"that may be ``NULL`` is received, for example, from :c:func:`malloc` or from"
+" a function that may raise an exception."
+msgstr ""
+"Tốt hơn là chỉ nên kiểm tra ``NULL`` ở \"nguồn:\" khi nhận được một con trỏ "
+"có thể là ``NULL``, chẳng hạn như từ :c:func:`malloc` hoặc từ một hàm có thể"
+" đưa ra một ngoại lệ."
+
+#: ../../extending/extending.rst:1160
+#, fuzzy
+msgid ""
+"The macros :c:func:`Py_INCREF` and :c:func:`Py_DECREF` do not check for "
+"``NULL`` pointers --- however, their variants :c:func:`Py_XINCREF` and "
+":c:func:`Py_XDECREF` do."
+msgstr ""
+"Các macro :c:func:`Py_INCREF` và :c:func:`Py_DECREF` không kiểm tra con trỏ "
+"``NULL`` --- tuy nhiên, các biến thể :c:func:`Py_XINCREF` và "
+":c:func:`Py_XDECREF` của chúng lại làm như vậy."
+
+#: ../../extending/extending.rst:1164
+#, fuzzy
+msgid ""
+"The macros for checking for a particular object type (``Pytype_Check()``) "
+"don't check for ``NULL`` pointers --- again, there is much code that calls "
+"several of these in a row to test an object against various different "
+"expected types, and this would generate redundant tests.  There are no "
+"variants with ``NULL`` checking."
+msgstr ""
+"Các macro để kiểm tra một loại đối tượng cụ thể (``Pytype_Check()``) không "
+"kiểm tra các con trỏ ``NULL`` --- một lần nữa, có nhiều mã gọi một số trong "
+"số này liên tiếp để kiểm tra một đối tượng dựa trên nhiều loại dự kiến "
+"​​khác nhau và điều này sẽ tạo ra các thử nghiệm dư thừa.  Không có biến thể"
+" nào được kiểm tra ``NULL``."
+
+#: ../../extending/extending.rst:1170
+#, fuzzy
+msgid ""
+"The C function calling mechanism guarantees that the argument list passed to"
+" C functions (``args`` in the examples) is never ``NULL`` --- in fact it "
+"guarantees that it is always a tuple [#]_."
+msgstr ""
+"Cơ chế gọi hàm C đảm bảo rằng danh sách đối số được truyền cho hàm C "
+"(``args`` trong các ví dụ) không bao giờ là ``NULL`` --- trên thực tế, nó "
+"đảm bảo rằng nó luôn là một bộ [#]_."
+
+#: ../../extending/extending.rst:1174
+#, fuzzy
+msgid ""
+"It is a severe error to ever let a ``NULL`` pointer \"escape\" to the Python"
+" user."
+msgstr ""
+"Sẽ là một lỗi nghiêm trọng khi để con trỏ ``NULL`` \"thoát\" tới người dùng "
+"Python."
+
+#: ../../extending/extending.rst:1185
+#, fuzzy
+msgid "Writing Extensions in C++"
+msgstr "Viết phần mở rộng bằng C++"
+
+#: ../../extending/extending.rst:1187
+#, python-brace-format, fuzzy
+msgid ""
+"It is possible to write extension modules in C++.  Some restrictions apply."
+"  If the main program (the Python interpreter) is compiled and linked by the"
+" C compiler, global or static objects with constructors cannot be used.  "
+"This is not a problem if the main program is linked by the C++ compiler.  "
+"Functions that will be called by the Python interpreter (in particular, "
+"module initialization functions) have to be declared using ``extern \"C\"``."
+" It is unnecessary to enclose the Python header files in ``extern \"C\" "
+"{...}`` --- they use this form already if the symbol ``__cplusplus`` is "
+"defined (all recent C++ compilers define this symbol)."
+msgstr ""
+"Có thể viết các module mở rộng bằng C++.  Một số hạn chế được áp dụng.  Nếu "
+"chương trình chính (trình thông dịch Python) được biên dịch và liên kết bởi "
+"trình biên dịch C, thì không thể sử dụng các đối tượng toàn cục hoặc tĩnh có"
+" hàm tạo.  Đây không phải là vấn đề nếu chương trình chính được liên kết bởi"
+" trình biên dịch C++.  Các hàm sẽ được trình thông dịch Python gọi (đặc biệt"
+" là các hàm khởi tạo mô-đun) phải được khai báo bằng ``extern \"C\"``. Không"
+" cần thiết phải đặt các tệp tiêu đề Python trong ``extern \"C\" {...}`` --- "
+"chúng đã sử dụng biểu mẫu này nếu ký hiệu ``__cplusplus`` được xác định (tất"
+" cả các trình biên dịch C++ gần đây đều xác định ký hiệu này)."
+
+#: ../../extending/extending.rst:1201
+#, fuzzy
+msgid "Providing a C API for an Extension Module"
+msgstr "Cung cấp C API cho Mô-đun mở rộng"
+
+#: ../../extending/extending.rst:1206
+#, fuzzy
+msgid ""
+"Many extension modules just provide new functions and types to be used from "
+"Python, but sometimes the code in an extension module can be useful for "
+"other extension modules. For example, an extension module could implement a "
+"type \"collection\" which works like lists without order. Just like the "
+"standard Python list type has a C API which permits extension modules to "
+"create and manipulate lists, this new collection type should have a set of C"
+" functions for direct manipulation from other extension modules."
+msgstr ""
+"Nhiều mô-đun mở rộng chỉ cung cấp các hàm và kiểu mới để sử dụng từ Python, "
+"nhưng đôi khi mã trong mô-đun mở rộng có thể hữu ích cho các mô-đun mở rộng "
+"khác. Ví dụ: một mô-đun mở rộng có thể triển khai loại \"bộ sưu tập\" hoạt "
+"động giống như danh sách không có thứ tự. Giống như loại danh sách Python "
+"tiêu chuẩn có C API cho phép các mô-đun mở rộng tạo và thao tác danh sách, "
+"loại bộ sưu tập mới này phải có một tập hợp các hàm C để thao tác trực tiếp "
+"từ các mô-đun mở rộng khác."
+
+#: ../../extending/extending.rst:1214
+#, fuzzy
+msgid ""
+"At first sight this seems easy: just write the functions (without declaring "
+"them ``static``, of course), provide an appropriate header file, and "
+"document the C API. And in fact this would work if all extension modules "
+"were always linked statically with the Python interpreter. When modules are "
+"used as shared libraries, however, the symbols defined in one module may not"
+" be visible to another module. The details of visibility depend on the "
+"operating system; some systems use one global namespace for the Python "
+"interpreter and all extension modules (Windows, for example), whereas others"
+" require an explicit list of imported symbols at module link time (AIX is "
+"one example), or offer a choice of different strategies (most Unices). And "
+"even if symbols are globally visible, the module whose functions one wishes "
+"to call might not have been loaded yet!"
+msgstr ""
+"Thoạt nhìn, điều này có vẻ dễ dàng: chỉ cần viết các hàm (tất nhiên là không"
+" khai báo chúng ``static``), cung cấp một tệp tiêu đề thích hợp và ghi lại C"
+" API. Và trên thực tế, điều này sẽ hoạt động nếu tất cả các mô-đun mở rộng "
+"luôn được liên kết tĩnh với trình thông dịch Python. Tuy nhiên, khi các mô-"
+"đun được sử dụng làm thư viện dùng chung, các ký hiệu được xác định trong "
+"một mô-đun có thể không hiển thị đối với mô-đun khác. Chi tiết về khả năng "
+"hiển thị phụ thuộc vào hệ điều hành; một số hệ thống sử dụng một không gian "
+"tên chung cho trình thông dịch Python và tất cả các mô-đun mở rộng (ví dụ: "
+"Windows), trong khi các hệ thống khác yêu cầu danh sách rõ ràng các ký hiệu "
+"được nhập tại thời điểm liên kết mô-đun (AIX là một ví dụ) hoặc đưa ra lựa "
+"chọn các chiến lược khác nhau (hầu hết các Unices). Và ngay cả khi các ký "
+"hiệu hiển thị trên toàn cầu, mô-đun có chức năng mà người ta muốn gọi có thể"
+" chưa được tải!"
+
+#: ../../extending/extending.rst:1226
+#, fuzzy
+msgid ""
+"Portability therefore requires not to make any assumptions about symbol "
+"visibility. This means that all symbols in extension modules should be "
+"declared ``static``, except for the module's initialization function, in "
+"order to avoid name clashes with other extension modules (as discussed in "
+"section :ref:`methodtable`). And it means that symbols that *should* be "
+"accessible from other extension modules must be exported in a different way."
+msgstr ""
+"Do đó, tính di động không yêu cầu đưa ra bất kỳ giả định nào về khả năng "
+"hiển thị mã vạch. Điều này có nghĩa là tất cả các ký hiệu trong mô-đun mở "
+"rộng phải được khai báo là ``static``, ngoại trừ chức năng khởi tạo của mô-"
+"đun, để tránh xung đột tên với các mô-đun mở rộng khác (như đã thảo luận "
+"trong phần :ref:`methodtable`). Và điều đó có nghĩa là các ký hiệu mà "
+"*should* có thể truy cập được từ các mô-đun mở rộng khác phải được xuất theo"
+" một cách khác."
+
+#: ../../extending/extending.rst:1233
+#, fuzzy
+msgid ""
+"Python provides a special mechanism to pass C-level information (pointers) "
+"from one extension module to another one: Capsules. A Capsule is a Python "
+"data type which stores a pointer (:c:expr:`void \\*`).  Capsules can only be"
+" created and accessed via their C API, but they can be passed around like "
+"any other Python object. In particular,  they can be assigned to a name in "
+"an extension module's namespace. Other extension modules can then import "
+"this module, retrieve the value of this name, and then retrieve the pointer "
+"from the Capsule."
+msgstr ""
+"Python cung cấp một cơ chế đặc biệt để truyền thông tin cấp độ C (con trỏ) "
+"từ mô-đun mở rộng này sang mô-đun mở rộng khác: Capsules. Capsule là kiểu dữ"
+" liệu Python lưu trữ một con trỏ (:c:expr:`void \\*`).  Các viên nang chỉ có"
+" thể được tạo và truy cập thông qua C API của chúng, nhưng chúng có thể được"
+" truyền đi khắp nơi như bất kỳ đối tượng Python nào khác. Đặc biệt, chúng có"
+" thể được gán cho một tên trong không gian tên của mô-đun mở rộng. Sau đó, "
+"các mô-đun mở rộng khác có thể nhập mô-đun này, truy xuất giá trị của tên "
+"này và sau đó truy xuất con trỏ từ Capsule."
+
+#: ../../extending/extending.rst:1241
+#, fuzzy
+msgid ""
+"There are many ways in which Capsules can be used to export the C API of an "
+"extension module. Each function could get its own Capsule, or all C API "
+"pointers could be stored in an array whose address is published in a "
+"Capsule. And the various tasks of storing and retrieving the pointers can be"
+" distributed in different ways between the module providing the code and the"
+" client modules."
+msgstr ""
+"Có nhiều cách để sử dụng Capsule để xuất C API của mô-đun mở rộng. Mỗi hàm "
+"có thể có Capsule riêng hoặc tất cả các con trỏ C API có thể được lưu trữ "
+"trong một mảng có địa chỉ được xuất bản trong Capsule. Và các nhiệm vụ lưu "
+"trữ và truy xuất con trỏ khác nhau có thể được phân phối theo nhiều cách "
+"khác nhau giữa mô-đun cung cấp mã và mô-đun máy khách."
+
+#: ../../extending/extending.rst:1247
+#, fuzzy
+msgid ""
+"Whichever method you choose, it's important to name your Capsules properly. "
+"The function :c:func:`PyCapsule_New` takes a name parameter (:c:expr:`const "
+"char \\*`); you're permitted to pass in a ``NULL`` name, but we strongly "
+"encourage you to specify a name.  Properly named Capsules provide a degree "
+"of runtime type-safety; there is no feasible way to tell one unnamed Capsule"
+" from another."
+msgstr ""
+"Cho dù bạn chọn phương pháp nào, điều quan trọng là phải đặt tên cho Viên "
+"nang của bạn đúng cách. Hàm :c:func:`PyCapsule_New` lấy tham số tên "
+"(:c:expr:`const char \\*`); bạn được phép chuyển tên ``NULL`` nhưng chúng "
+"tôi đặc biệt khuyến khích bạn chỉ định tên.  Các Capsule được đặt tên chính "
+"xác sẽ cung cấp mức độ an toàn về kiểu thời gian chạy; không có cách nào khả"
+" thi để phân biệt một Capsule không có tên với một Capsule khác."
+
+#: ../../extending/extending.rst:1254
+#, fuzzy
+msgid ""
+"In particular, Capsules used to expose C APIs should be given a name "
+"following this convention::"
+msgstr ""
+"Đặc biệt, các Capsule được sử dụng để hiển thị API C phải được đặt tên theo "
+"quy ước sau::"
+
+#: ../../extending/extending.rst:1257
+#, fuzzy
+msgid "modulename.attributename"
+msgstr "modulename.attributename"
+
+#: ../../extending/extending.rst:1259
+#, fuzzy
+msgid ""
+"The convenience function :c:func:`PyCapsule_Import` makes it easy to load a "
+"C API provided via a Capsule, but only if the Capsule's name matches this "
+"convention.  This behavior gives C API users a high degree of certainty that"
+" the Capsule they load contains the correct C API."
+msgstr ""
+"Chức năng tiện lợi :c:func:`PyCapsule_Import` giúp bạn dễ dàng tải C API "
+"được cung cấp qua Capsule, nhưng chỉ khi tên của Capsule phù hợp với quy ước"
+" này.  Hành vi này mang lại cho người dùng C API mức độ chắc chắn cao rằng "
+"Capsule họ tải có chứa C API chính xác."
+
+#: ../../extending/extending.rst:1264
+#, fuzzy
+msgid ""
+"The following example demonstrates an approach that puts most of the burden "
+"on the writer of the exporting module, which is appropriate for commonly "
+"used library modules. It stores all C API pointers (just one in the "
+"example!) in an array of :c:expr:`void` pointers which becomes the value of "
+"a Capsule. The header file corresponding to the module provides a macro that"
+" takes care of importing the module and retrieving its C API pointers; "
+"client modules only have to call this macro before accessing the C API."
+msgstr ""
+"Ví dụ sau đây minh họa một cách tiếp cận đặt phần lớn gánh nặng lên người "
+"viết mô-đun xuất, phù hợp với các mô-đun thư viện thường được sử dụng. Nó "
+"lưu trữ tất cả các con trỏ C API (chỉ một trong ví dụ!) trong một mảng các "
+"con trỏ :c:expr:`void` trở thành giá trị của Capsule. Tệp tiêu đề tương ứng "
+"với mô-đun cung cấp một macro đảm nhiệm việc nhập mô-đun và truy xuất các "
+"con trỏ C API của nó; mô-đun máy khách chỉ phải gọi macro này trước khi truy"
+" cập C API."
+
+#: ../../extending/extending.rst:1272
+#, fuzzy
+msgid ""
+"The exporting module is a modification of the :mod:`!spam` module from "
+"section :ref:`extending-simpleexample`. The function :func:`!spam.system` "
+"does not call the C library function :c:func:`system` directly, but a "
+"function :c:func:`!PySpam_System`, which would of course do something more "
+"complicated in reality (such as adding \"spam\" to every command). This "
+"function :c:func:`!PySpam_System` is also exported to other extension "
+"modules."
+msgstr ""
+"Mô-đun xuất là bản sửa đổi của mô-đun :mod:`!spam` từ phần :ref:`extending-"
+"simpleexample`. Hàm :func:`!spam.system` không gọi trực tiếp hàm "
+":c:func:`system` trong thư viện C mà là hàm :c:func:`!PySpam_System`, tất "
+"nhiên hàm này sẽ thực hiện điều gì đó phức tạp hơn trong thực tế (chẳng hạn "
+"như thêm \"spam\" vào mỗi lệnh). Chức năng :c:func:`!PySpam_System` này cũng"
+" được xuất sang các mô-đun mở rộng khác."
+
+#: ../../extending/extending.rst:1279
+#, fuzzy
+msgid ""
+"The function :c:func:`!PySpam_System` is a plain C function, declared "
+"``static`` like everything else::"
+msgstr ""
+"Hàm :c:func:`!PySpam_System` là một hàm C đơn giản, được khai báo ``static``"
+" giống như mọi hàm khác::"
+
+#: ../../extending/extending.rst:1282
+#, python-brace-format, fuzzy
+msgid ""
+"static int\n"
+"PySpam_System(const char *command)\n"
+"{\n"
+"    return system(command);\n"
+"}"
+msgstr ""
+"int tĩnh\n"
+"PySpam_System(const char *lệnh)\n"
+"{\n"
+"    hệ thống trả về (lệnh);\n"
+"}"
+
+#: ../../extending/extending.rst:1288
+#, fuzzy
+msgid "The function :c:func:`!spam_system` is modified in a trivial way::"
+msgstr "Hàm :c:func:`!spam_system` được sửa đổi một cách tầm thường ::"
+
+#: ../../extending/extending.rst:1290
+#, fuzzy
+msgid ""
+"static PyObject *\n"
+"spam_system(PyObject *self, PyObject *args)\n"
+"{\n"
+"    const char *command;\n"
+"    int sts;\n"
+"\n"
+"    if (!PyArg_ParseTuple(args, \"s\", &command))\n"
+"        return NULL;\n"
+"    sts = PySpam_System(command);\n"
+"    return PyLong_FromLong(sts);\n"
+"}"
+msgstr ""
+"PyObject tĩnh *\n"
+"spam_system(PyObject *self, PyObject *args)\n"
+"{\n"
+"    lệnh const char *;\n"
+"    int sts;\n"
+"\n"
+"    if (!PyArg_ParseTuple(args, \"s\", &command))\n"
+"        trả lại NULL;\n"
+"    sts = PySpam_System(lệnh);\n"
+"    trả về PyLong_FromLong(sts);\n"
+"}"
+
+#: ../../extending/extending.rst:1302
+#, fuzzy
+msgid "In the beginning of the module, right after the line ::"
+msgstr "Ở phần đầu của mô-đun, ngay sau dòng ::"
+
+#: ../../extending/extending.rst:1304
+#, fuzzy
+msgid "#include <Python.h>"
+msgstr "#include <Python.h>"
+
+#: ../../extending/extending.rst:1306
+#, fuzzy
+msgid "two more lines must be added::"
+msgstr "phải thêm hai dòng nữa ::"
+
+#: ../../extending/extending.rst:1308
+#, fuzzy
+msgid ""
+"#define SPAM_MODULE\n"
+"#include \"spammodule.h\""
+msgstr ""
+"#define SPAM_MODULE\n"
+"#include \"spammodule.h\""
+
+#: ../../extending/extending.rst:1311
+#, fuzzy
+msgid ""
+"The ``#define`` is used to tell the header file that it is being included in"
+" the exporting module, not a client module. Finally, the module's "
+":c:data:`mod_exec <Py_mod_exec>` function must take care of initializing the"
+" C API pointer array::"
+msgstr ""
+"``#define`` được sử dụng để thông báo cho tệp tiêu đề rằng nó đang được đưa "
+"vào mô-đun xuất chứ không phải mô-đun máy khách. Cuối cùng, hàm "
+":c:data:`mod_exec <Py_mod_exec>` của mô-đun phải đảm nhiệm việc khởi tạo "
+"mảng con trỏ C API::"
+
+#: ../../extending/extending.rst:1315
+#, fuzzy
+msgid ""
+"static int\n"
+"spam_module_exec(PyObject *m)\n"
+"{\n"
+"    static void *PySpam_API[PySpam_API_pointers];\n"
+"    PyObject *c_api_object;\n"
+"\n"
+"    /* Initialize the C API pointer array */\n"
+"    PySpam_API[PySpam_System_NUM] = (void *)PySpam_System;\n"
+"\n"
+"    /* Create a Capsule containing the API pointer array's address */\n"
+"    c_api_object = PyCapsule_New((void *)PySpam_API, \"spam._C_API\", NULL);\n"
+"\n"
+"    if (PyModule_Add(m, \"_C_API\", c_api_object) < 0) {\n"
+"        return -1;\n"
+"    }\n"
+"\n"
+"    return 0;\n"
+"}"
+msgstr ""
+"int tĩnh\n"
+"spam_module_exec(PyObject *m)\n"
+"{\n"
+"    khoảng trống tĩnh *PySpam_API[PySpam_API_pointers];\n"
+"    PyObject *c_api_object;\n"
+"\n"
+"    /* Khởi tạo mảng con trỏ C API */\n"
+"    PySpam_API[PySpam_System_NUM] = (void *)PySpam_System;\n"
+"\n"
+"    /* Tạo một Capsule chứa địa chỉ của mảng con trỏ API */\n"
+"    c_api_object = PyCapsule_New((void *)PySpam_API, \"spam._C_API\", NULL);\n"
+"\n"
+"    if (PyModule_Add(m, \"_C_API\", c_api_object) < 0) {\n"
+"        trả về -1;\n"
+"    }\n"
+"\n"
+"    trả về 0;\n"
+"}"
+
+#: ../../extending/extending.rst:1334
+#, fuzzy
+msgid ""
+"Note that ``PySpam_API`` is declared ``static``; otherwise the pointer array"
+" would disappear when :c:func:`!PyInit_spam` terminates!"
+msgstr ""
+"Lưu ý rằng ``PySpam_API`` được khai báo là ``static``; nếu không mảng con "
+"trỏ sẽ biến mất khi :c:func:`!PyInit_spam` kết thúc!"
+
+#: ../../extending/extending.rst:1337
+#, fuzzy
+msgid ""
+"The bulk of the work is in the header file :file:`spammodule.h`, which looks"
+" like this::"
+msgstr ""
+"Phần lớn công việc nằm trong tệp tiêu đề :file:`spammodule.h`, trông giống "
+"như sau::"
+
+#: ../../extending/extending.rst:1340
+#, fuzzy
+msgid ""
+"#ifndef Py_SPAMMODULE_H\n"
+"#define Py_SPAMMODULE_H\n"
+"#ifdef __cplusplus\n"
+"extern \"C\" {\n"
+"#endif\n"
+"\n"
+"/* Header file for spammodule */\n"
+"\n"
+"/* C API functions */\n"
+"#define PySpam_System_NUM 0\n"
+"#define PySpam_System_RETURN int\n"
+"#define PySpam_System_PROTO (const char *command)\n"
+"\n"
+"/* Total number of C API pointers */\n"
+"#define PySpam_API_pointers 1\n"
+"\n"
+"\n"
+"#ifdef SPAM_MODULE\n"
+"/* This section is used when compiling spammodule.c */\n"
+"\n"
+"static PySpam_System_RETURN PySpam_System PySpam_System_PROTO;\n"
+"\n"
+"#else\n"
+"/* This section is used in modules that use spammodule's API */\n"
+"\n"
+"static void **PySpam_API;\n"
+"\n"
+"#define PySpam_System \\\n"
+" (*(PySpam_System_RETURN (*)PySpam_System_PROTO) PySpam_API[PySpam_System_NUM])\n"
+"\n"
+"/* Return -1 on error, 0 on success.\n"
+" * PyCapsule_Import will set an exception if there's an error.\n"
+" */\n"
+"static int\n"
+"import_spam(void)\n"
+"{\n"
+"    PySpam_API = (void **)PyCapsule_Import(\"spam._C_API\", 0);\n"
+"    return (PySpam_API != NULL) ? 0 : -1;\n"
+"}\n"
+"\n"
+"#endif\n"
+"\n"
+"#ifdef __cplusplus\n"
+"}\n"
+"#endif\n"
+"\n"
+"#endif /* !defined(Py_SPAMMODULE_H) */"
+msgstr ""
+"#ifndef Py_SPAMMODULE_H\n"
+"#define Py_SPAMMODULE_H\n"
+"#ifdef __cplusplus\n"
+"bên ngoài \"C\" {\n"
+"#endif\n"
+"\n"
+"/* Tệp tiêu đề cho mô-đun thư rác */\n"
+"\n"
+"/* Hàm API của C */\n"
+"#define PySpam_System_NUM 0\n"
+"#define PySpam_System_RETURN int\n"
+"#define PySpam_System_PROTO (lệnh const char *)\n"
+"\n"
+"/* Tổng số con trỏ C API */\n"
+"#define PySpam_API_pointers 1\n"
+"\n"
+"\n"
+"#ifdef SPAM_MODULE\n"
+"/* Phần này được sử dụng khi biên dịch spammodule.c */\n"
+"\n"
+"PySpam_System_RETURN PySpam_System tĩnh PySpam_System_PROTO;\n"
+"\n"
+"#else\n"
+"/* Phần này được sử dụng trong các module sử dụng API của spammodule */\n"
+"\n"
+"khoảng trống tĩnh **PySpam_API;\n"
+"\n"
+"#define PySpam_System \\\n"
+" (*(PySpam_System_RETURN (*)PySpam_System_PROTO) PySpam_API[PySpam_System_NUM])\n"
+"\n"
+"/* Trả về -1 nếu có lỗi, 0 nếu thành công.\n"
+" * PyCapsule_Import sẽ đặt ngoại lệ nếu có lỗi.\n"
+" */\n"
+"int tĩnh\n"
+"import_spam(void)\n"
+"{\n"
+"    PySpam_API = (void **)PyCapsule_Import(\"spam._C_API\", 0);\n"
+"    trả lại (PySpam_API != NULL)? 0 : -1;\n"
+"}\n"
+"\n"
+"#endif\n"
+"\n"
+"#ifdef __cplusplus\n"
+"}\n"
+"#endif\n"
+"\n"
+"#endif /* !d xác định(Py_SPAMMODULE_H) */"
+
+#: ../../extending/extending.rst:1388
+#, fuzzy
+msgid ""
+"All that a client module must do in order to have access to the function "
+":c:func:`!PySpam_System` is to call the function (or rather macro) "
+":c:func:`!import_spam` in its :c:data:`mod_exec <Py_mod_exec>` function::"
+msgstr ""
+"Tất cả những gì mô-đun máy khách phải làm để có quyền truy cập vào hàm "
+":c:func:`!PySpam_System` là gọi hàm (hay đúng hơn là macro) "
+":c:func:`!import_spam` trong hàm :c:data:`mod_exec <Py_mod_exec>` của nó::"
+
+#: ../../extending/extending.rst:1392
+#, fuzzy
+msgid ""
+"static int\n"
+"client_module_exec(PyObject *m)\n"
+"{\n"
+"    if (import_spam() < 0) {\n"
+"        return -1;\n"
+"    }\n"
+"    /* additional initialization can happen here */\n"
+"    return 0;\n"
+"}"
+msgstr ""
+"int tĩnh\n"
+"client_module_exec(PyObject *m)\n"
+"{\n"
+"    if (import_spam() < 0) {\n"
+"        trả về -1;\n"
+"    }\n"
+"    /* Việc khởi tạo bổ sung có thể xảy ra ở đây */\n"
+"    trả về 0;\n"
+"}"
+
+#: ../../extending/extending.rst:1402
+#, fuzzy
+msgid ""
+"The main disadvantage of this approach is that the file :file:`spammodule.h`"
+" is rather complicated. However, the basic structure is the same for each "
+"function that is exported, so it has to be learned only once."
+msgstr ""
+"Nhược điểm chính của phương pháp này là tệp :file:`spammodule.h` khá phức "
+"tạp. Tuy nhiên, cấu trúc cơ bản của mỗi hàm được xuất là giống nhau nên chỉ "
+"phải học một lần."
+
+#: ../../extending/extending.rst:1406
+#, fuzzy
+msgid ""
+"Finally it should be mentioned that Capsules offer additional functionality,"
+" which is especially useful for memory allocation and deallocation of the "
+"pointer stored in a Capsule. The details are described in the Python/C API "
+"Reference Manual in the section :ref:`capsules` and in the implementation of"
+" Capsules (files :file:`Include/pycapsule.h` and :file:`Objects/pycapsule.c`"
+" in the Python source code distribution)."
+msgstr ""
+"Cuối cùng, cần đề cập rằng Capsule cung cấp chức năng bổ sung, đặc biệt hữu "
+"ích cho việc cấp phát bộ nhớ và phân bổ lại con trỏ được lưu trữ trong "
+"Capsule. Chi tiết được mô tả trong Hướng dẫn tham khảo Python/C API trong "
+"phần :ref:`capsules` và trong cách triển khai Capsules (tệp "
+":file:`Include/pycapsule.h` và :file:`Objects/pycapsule.c` trong bản phân "
+"phối mã nguồn Python)."
+
+#: ../../extending/extending.rst:1414
+#, fuzzy
+msgid "Footnotes"
+msgstr "Chú thích cuối trang"
+
+#: ../../extending/extending.rst:1415
+#, fuzzy
+msgid ""
+"An interface for this function already exists in the standard module "
+":mod:`os` --- it was chosen as a simple and straightforward example."
+msgstr ""
+"Giao diện cho chức năng này đã tồn tại trong mô-đun tiêu chuẩn :mod:`os` ---"
+" nó được chọn làm ví dụ đơn giản và dễ hiểu."
+
+#: ../../extending/extending.rst:1418
+#, fuzzy
+msgid ""
+"The metaphor of \"borrowing\" a reference is not completely correct: the "
+"owner still has a copy of the reference."
+msgstr ""
+"Phép ẩn dụ “mượn” một tài liệu tham khảo không hoàn toàn đúng: chủ sở hữu "
+"vẫn có một bản sao của tài liệu tham khảo."
+
+#: ../../extending/extending.rst:1421
+#, fuzzy
+msgid ""
+"Checking that the reference count is at least 1 **does not work** --- the "
+"reference count itself could be in freed memory and may thus be reused for "
+"another object!"
+msgstr ""
+"Kiểm tra xem số lượng tham chiếu có ít nhất là 1 **does not work** --- bản "
+"thân số lượng tham chiếu có thể nằm trong bộ nhớ được giải phóng và do đó có"
+" thể được sử dụng lại cho một đối tượng khác!"
+
+#: ../../extending/extending.rst:1425
+#, fuzzy
+msgid ""
+"These guarantees don't hold when you use the \"old\" style calling "
+"convention --- this is still found in much existing code."
+msgstr ""
+"Những đảm bảo này không còn hiệu lực khi bạn sử dụng quy ước gọi kiểu \"cũ\""
+" --- điều này vẫn được tìm thấy trong nhiều mã hiện có."
+
+#: ../../extending/extending.rst:593
+#, fuzzy
+msgid "PyObject_CallObject (C function)"
+msgstr "PyObject_CallObject (hàm C)"
+
+#: ../../extending/extending.rst:684
+#, fuzzy
+msgid "PyArg_ParseTuple (C function)"
+msgstr "PyArg_ParseTuple (hàm C)"
+
+#: ../../extending/extending.rst:776
+#, fuzzy
+msgid "PyArg_ParseTupleAndKeywords (C function)"
+msgstr "PyArg_ParseTupleAndKeywords (hàm C)"
+
+#: ../../extending/extending.rst:797
+#, fuzzy
+msgid "Philbrick, Geoff"
+msgstr "Philbrick, Geoff"

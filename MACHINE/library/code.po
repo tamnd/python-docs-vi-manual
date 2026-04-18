@@ -1,0 +1,382 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/code.rst:2
+#, fuzzy
+msgid ":mod:`!code` --- Interpreter base classes"
+msgstr ":mod:`!code` --- Lớp cơ sở thông dịch viên"
+
+#: ../../library/code.rst:7
+#, fuzzy
+msgid "**Source code:** :source:`Lib/code.py`"
+msgstr "**Source code:** :source:`Lib/code.py`"
+
+#: ../../library/code.rst:11
+#, fuzzy
+msgid ""
+"The ``code`` module provides facilities to implement read-eval-print loops "
+"in Python.  Two classes and convenience functions are included which can be "
+"used to build applications which provide an interactive interpreter prompt."
+msgstr ""
+"Mô-đun ``code`` cung cấp các phương tiện để triển khai các vòng lặp đọc-đánh"
+" giá-in trong Python.  Hai lớp và chức năng tiện lợi được bao gồm có thể "
+"được sử dụng để xây dựng các ứng dụng cung cấp lời nhắc thông dịch tương "
+"tác."
+
+#: ../../library/code.rst:18
+#, fuzzy
+msgid ""
+"This class deals with parsing and interpreter state (the user's namespace); "
+"it does not deal with input buffering or prompting or input file naming (the"
+" filename is always passed in explicitly). The optional *locals* argument "
+"specifies a mapping to use as the namespace in which code will be executed; "
+"it defaults to a newly created dictionary with key ``'__name__'`` set to "
+"``'__console__'`` and key ``'__doc__'`` set to ``None``."
+msgstr ""
+"Lớp này xử lý trạng thái phân tích cú pháp và trình thông dịch (không gian "
+"tên của người dùng); nó không xử lý việc đệm đầu vào hoặc nhắc nhở hoặc đặt "
+"tên tệp đầu vào (tên tệp luôn được truyền rõ ràng). Đối số *locals* tùy chọn"
+" chỉ định ánh xạ để sử dụng làm không gian tên trong đó mã sẽ được thực thi;"
+" nó mặc định là một từ điển mới được tạo với khóa ``'__name__'`` được đặt "
+"thành ``'__console__'`` và khóa ``'__doc__'`` được đặt thành ``None``."
+
+#: ../../library/code.rst:25
+#, fuzzy
+msgid ""
+"Note that functions and classes objects created under an "
+":class:`!InteractiveInterpreter` instance will belong to the namespace "
+"specified by *locals*. They are only pickleable if *locals* is the namespace"
+" of an existing module."
+msgstr ""
+"Lưu ý rằng các đối tượng hàm và lớp được tạo trong phiên bản "
+":class:`!InteractiveInterpreter` sẽ thuộc về không gian tên được chỉ định "
+"bởi *locals*. Chúng chỉ có thể được chọn nếu *locals* là không gian tên của "
+"mô-đun hiện có."
+
+#: ../../library/code.rst:34
+#, fuzzy
+msgid ""
+"Closely emulate the behavior of the interactive Python interpreter. This "
+"class builds on :class:`InteractiveInterpreter` and adds prompting using the"
+" familiar ``sys.ps1`` and ``sys.ps2``, and input buffering. If *local_exit* "
+"is true, ``exit()`` and ``quit()`` in the console will not raise "
+":exc:`SystemExit`, but instead return to the calling code."
+msgstr ""
+"Mô phỏng chặt chẽ hành vi của trình thông dịch Python tương tác. Lớp này "
+"được xây dựng trên :class:`InteractiveInterpreter` và thêm lời nhắc bằng "
+"cách sử dụng ``sys.ps1`` và ``sys.ps2`` quen thuộc cũng như bộ đệm đầu vào. "
+"Nếu *local_exit* là đúng, ``exit()`` và ``quit()`` trong bảng điều khiển sẽ "
+"không tăng :exc:`SystemExit` mà thay vào đó quay lại mã gọi."
+
+#: ../../library/code.rst:40 ../../library/code.rst:58
+#, fuzzy
+msgid "Added *local_exit* parameter."
+msgstr "Đã thêm tham số *local_exit*."
+
+#: ../../library/code.rst:45
+#, fuzzy
+msgid ""
+"Convenience function to run a read-eval-print loop.  This creates a new "
+"instance of :class:`InteractiveConsole` and sets *readfunc* to be used as "
+"the :meth:`InteractiveConsole.raw_input` method, if provided.  If *local* is"
+" provided, it is passed to the :class:`InteractiveConsole` constructor for "
+"use as the default namespace for the interpreter loop.  If *local_exit* is "
+"provided, it is passed to the :class:`InteractiveConsole` constructor.  The "
+":meth:`~InteractiveConsole.interact` method of the instance is then run with"
+" *banner* and *exitmsg* passed as the banner and exit message to use, if "
+"provided.  The console object is discarded after use."
+msgstr ""
+"Chức năng tiện lợi để chạy vòng lặp đọc-đánh giá-in.  Điều này tạo ra một "
+"phiên bản mới của :class:`InteractiveConsole` và đặt *readfunc* được sử dụng"
+" làm phương thức :meth:`InteractiveConsole.raw_input`, nếu được cung cấp.  "
+"Nếu *local* được cung cấp, nó sẽ được chuyển tới hàm tạo "
+":class:`InteractiveConsole` để sử dụng làm vùng tên mặc định cho vòng lặp "
+"trình thông dịch.  Nếu *local_exit* được cung cấp, nó sẽ được chuyển tới hàm"
+" tạo :class:`InteractiveConsole`.  Sau đó, phương thức "
+":meth:`~InteractiveConsole.interact` của phiên bản sẽ được chạy với *banner*"
+" và *exitmsg* được chuyển dưới dạng biểu ngữ và thông báo thoát để sử dụng, "
+"nếu được cung cấp.  Đối tượng console sẽ bị loại bỏ sau khi sử dụng."
+
+#: ../../library/code.rst:55
+#, fuzzy
+msgid "Added *exitmsg* parameter."
+msgstr "Đã thêm tham số *exitmsg*."
+
+#: ../../library/code.rst:63
+#, fuzzy
+msgid ""
+"This function is useful for programs that want to emulate Python's "
+"interpreter main loop (a.k.a. the read-eval-print loop).  The tricky part is"
+" to determine when the user has entered an incomplete command that can be "
+"completed by entering more text (as opposed to a complete command or a "
+"syntax error).  This function *almost* always makes the same decision as the"
+" real interpreter main loop."
+msgstr ""
+"Hàm này hữu ích cho các chương trình muốn mô phỏng vòng lặp chính của trình "
+"thông dịch Python (còn gọi là vòng lặp đọc-eval-print).  Phần khó khăn là "
+"xác định khi nào người dùng đã nhập một lệnh chưa hoàn chỉnh, lệnh này có "
+"thể được hoàn thành bằng cách nhập thêm văn bản (trái ngược với lệnh hoàn "
+"chỉnh hoặc lỗi cú pháp).  Hàm *almost* này luôn đưa ra quyết định giống như "
+"vòng lặp chính của trình thông dịch thực."
+
+#: ../../library/code.rst:70
+#, fuzzy
+msgid ""
+"*source* is the source string; *filename* is the optional filename from "
+"which source was read, defaulting to ``'<input>'``; and *symbol* is the "
+"optional grammar start symbol, which should be ``'single'`` (the default), "
+"``'eval'`` or ``'exec'``."
+msgstr ""
+"*source* là chuỗi nguồn; *filename* là tên tệp tùy chọn mà nguồn được đọc, "
+"mặc định là ``'<input>'``; và *symbol* là ký hiệu bắt đầu ngữ pháp tùy chọn,"
+" phải là ``'single'`` (mặc định), ``'eval'`` hoặc ``'exec'``."
+
+#: ../../library/code.rst:75
+#, fuzzy
+msgid ""
+"Returns a code object (the same as ``compile(source, filename, symbol)``) if"
+" the command is complete and valid; ``None`` if the command is incomplete; "
+"raises :exc:`SyntaxError` if the command is complete and contains a syntax "
+"error, or raises :exc:`OverflowError` or :exc:`ValueError` if the command "
+"contains an invalid literal."
+msgstr ""
+"Trả về một đối tượng mã (giống như ``compile(source, filename, symbol)``) "
+"nếu lệnh hoàn chỉnh và hợp lệ; ``None`` nếu lệnh không đầy đủ; tăng "
+":exc:`SyntaxError` nếu lệnh hoàn tất và có lỗi cú pháp hoặc tăng "
+":exc:`OverflowError` hoặc :exc:`ValueError` nếu lệnh chứa chữ không hợp lệ."
+
+#: ../../library/code.rst:85
+#, fuzzy
+msgid "Interactive Interpreter Objects"
+msgstr "Đối tượng phiên dịch tương tác"
+
+#: ../../library/code.rst:90
+#, fuzzy
+msgid ""
+"Compile and run some source in the interpreter. Arguments are the same as "
+"for :func:`compile_command`; the default for *filename* is ``'<input>'``, "
+"and for *symbol* is ``'single'``.  One of several things can happen:"
+msgstr ""
+"Biên dịch và chạy một số nguồn trong trình thông dịch. Các đối số giống như "
+"đối với :func:`compile_command`; mặc định cho *filename* là ``'<input>'`` và"
+" cho *symbol* là ``'single'``.  Một trong nhiều điều có thể xảy ra:"
+
+#: ../../library/code.rst:94
+#, fuzzy
+msgid ""
+"The input is incorrect; :func:`compile_command` raised an exception "
+"(:exc:`SyntaxError` or :exc:`OverflowError`).  A syntax traceback will be "
+"printed by calling the :meth:`showsyntaxerror` method.  :meth:`runsource` "
+"returns ``False``."
+msgstr ""
+"Đầu vào không chính xác; :func:`compile_command` đưa ra một ngoại lệ "
+"(:exc:`SyntaxError` hoặc :exc:`OverflowError`).  Truy nguyên cú pháp sẽ được"
+" in bằng cách gọi phương thức :meth:`showsyntaxerror`.  :meth:`runsource` "
+"trả về ``False``."
+
+#: ../../library/code.rst:99
+#, fuzzy
+msgid ""
+"The input is incomplete, and more input is required; :func:`compile_command`"
+" returned ``None``. :meth:`runsource` returns ``True``."
+msgstr ""
+"Dữ liệu đầu vào chưa đầy đủ và cần phải nhập thêm; :func:`compile_command` "
+"trả về ``None``. :meth:`runsource` trả về ``True``."
+
+#: ../../library/code.rst:102
+#, fuzzy
+msgid ""
+"The input is complete; :func:`compile_command` returned a code object.  The "
+"code is executed by calling the :meth:`runcode` (which also handles run-time"
+" exceptions, except for :exc:`SystemExit`). :meth:`runsource` returns "
+"``False``."
+msgstr ""
+"Việc nhập liệu đã hoàn tất; :func:`compile_command` trả về một đối tượng mã."
+"  Mã được thực thi bằng cách gọi :meth:`runcode` (cũng xử lý các ngoại lệ "
+"trong thời gian chạy, ngoại trừ :exc:`SystemExit`). :meth:`runsource` trả về"
+" ``False``."
+
+#: ../../library/code.rst:106
+#, fuzzy
+msgid ""
+"The return value can be used to decide whether to use ``sys.ps1`` or "
+"``sys.ps2`` to prompt the next line."
+msgstr ""
+"Giá trị trả về có thể được sử dụng để quyết định nên sử dụng ``sys.ps1`` hay"
+" ``sys.ps2`` để nhắc dòng tiếp theo."
+
+#: ../../library/code.rst:112
+#, fuzzy
+msgid ""
+"Execute a code object. When an exception occurs, :meth:`showtraceback` is "
+"called to display a traceback.  All exceptions are caught except "
+":exc:`SystemExit`, which is allowed to propagate."
+msgstr ""
+"Thực thi một đối tượng mã. Khi một ngoại lệ xảy ra, :meth:`showtraceback` "
+"được gọi để hiển thị dấu vết.  Tất cả các ngoại lệ đều bị bắt ngoại trừ "
+":exc:`SystemExit`, được phép phổ biến."
+
+#: ../../library/code.rst:116
+#, fuzzy
+msgid ""
+"A note about :exc:`KeyboardInterrupt`: this exception may occur elsewhere in"
+" this code, and may not always be caught.  The caller should be prepared to "
+"deal with it."
+msgstr ""
+"Lưu ý về :exc:`KeyboardInterrupt`: ngoại lệ này có thể xảy ra ở nơi khác "
+"trong mã này và không phải lúc nào cũng có thể phát hiện được.  Người gọi "
+"nên chuẩn bị để đối phó với nó."
+
+#: ../../library/code.rst:123
+#, fuzzy
+msgid ""
+"Display the syntax error that just occurred.  This does not display a stack "
+"trace because there isn't one for syntax errors. If *filename* is given, it "
+"is stuffed into the exception instead of the default filename provided by "
+"Python's parser, because it always uses ``'<string>'`` when reading from a "
+"string. The output is written by the :meth:`write` method."
+msgstr ""
+"Hiển thị lỗi cú pháp vừa xảy ra.  Điều này không hiển thị dấu vết ngăn xếp "
+"vì không có lỗi cú pháp. Nếu *filename* được cung cấp, nó sẽ được đưa vào "
+"ngoại lệ thay vì tên tệp mặc định do trình phân tích cú pháp của Python cung"
+" cấp, vì nó luôn sử dụng ``'<string>'`` khi đọc từ một chuỗi. Đầu ra được "
+"viết bằng phương pháp :meth:`write`."
+
+#: ../../library/code.rst:132
+#, fuzzy
+msgid ""
+"Display the exception that just occurred.  We remove the first stack item "
+"because it is within the interpreter object implementation. The output is "
+"written by the :meth:`write` method."
+msgstr ""
+"Hiển thị ngoại lệ vừa xảy ra.  Chúng tôi xóa mục ngăn xếp đầu tiên vì nó nằm"
+" trong quá trình triển khai đối tượng trình thông dịch. Đầu ra được viết "
+"bằng phương pháp :meth:`write`."
+
+#: ../../library/code.rst:136
+#, fuzzy
+msgid ""
+"The full chained traceback is displayed instead of just the primary "
+"traceback."
+msgstr "Truy nguyên chuỗi đầy đủ được hiển thị thay vì chỉ truy nguyên chính."
+
+#: ../../library/code.rst:142
+#, fuzzy
+msgid ""
+"Write a string to the standard error stream (``sys.stderr``). Derived "
+"classes should override this to provide the appropriate output handling as "
+"needed."
+msgstr ""
+"Viết một chuỗi vào luồng lỗi tiêu chuẩn (``sys.stderr``). Các lớp dẫn xuất "
+"nên ghi đè lên điều này để cung cấp khả năng xử lý đầu ra phù hợp khi cần."
+
+#: ../../library/code.rst:149
+#, fuzzy
+msgid "Interactive Console Objects"
+msgstr "Đối tượng bảng điều khiển tương tác"
+
+#: ../../library/code.rst:151
+#, fuzzy
+msgid ""
+"The :class:`InteractiveConsole` class is a subclass of "
+":class:`InteractiveInterpreter`, and so offers all the methods of the "
+"interpreter objects as well as the following additions."
+msgstr ""
+"Lớp :class:`InteractiveConsole` là lớp con của "
+":class:`InteractiveInterpreter` và do đó cung cấp tất cả các phương thức của"
+" đối tượng trình thông dịch cũng như các tính năng bổ sung sau."
+
+#: ../../library/code.rst:158
+#, fuzzy
+msgid ""
+"Closely emulate the interactive Python console. The optional *banner* "
+"argument specify the banner to print before the first interaction; by "
+"default it prints a banner similar to the one printed by the standard Python"
+" interpreter, followed by the class name of the console object in "
+"parentheses (so as not to confuse this with the real interpreter -- since "
+"it's so close!)."
+msgstr ""
+"Mô phỏng chặt chẽ bảng điều khiển Python tương tác. Đối số *banner* tùy chọn"
+" chỉ định biểu ngữ sẽ in trước lần tương tác đầu tiên; theo mặc định, nó in "
+"một biểu ngữ tương tự như biểu ngữ được trình thông dịch Python tiêu chuẩn "
+"in, theo sau là tên lớp của đối tượng console trong ngoặc đơn (để không nhầm"
+" lẫn điều này với trình thông dịch thực sự - vì nó rất gần!)."
+
+#: ../../library/code.rst:164
+#, fuzzy
+msgid ""
+"The optional *exitmsg* argument specifies an exit message printed when "
+"exiting. Pass the empty string to suppress the exit message. If *exitmsg* is"
+" not given or ``None``, a default message is printed."
+msgstr ""
+"Đối số *exitmsg* tùy chọn chỉ định thông báo thoát được in khi thoát. Truyền"
+" chuỗi trống để chặn thông báo thoát. Nếu *exitmsg* không được cung cấp hoặc"
+" ``None``, một thông báo mặc định sẽ được in."
+
+#: ../../library/code.rst:168
+#, fuzzy
+msgid "To suppress printing any banner, pass an empty string."
+msgstr "Để ngăn việc in bất kỳ biểu ngữ nào, hãy chuyển một chuỗi trống."
+
+#: ../../library/code.rst:171
+#, fuzzy
+msgid "Print an exit message when exiting."
+msgstr "In thông báo thoát khi thoát."
+
+#: ../../library/code.rst:177
+#, fuzzy
+msgid ""
+"Push a line of source text to the interpreter. The line should not have a "
+"trailing newline; it may have internal newlines.  The line is appended to a "
+"buffer and the interpreter's :meth:`~InteractiveInterpreter.runsource` "
+"method is called with the concatenated contents of the buffer as source.  If"
+" this indicates that the command was executed or invalid, the buffer is "
+"reset; otherwise, the command is incomplete, and the buffer is left as it "
+"was after the line was appended.  The return value is ``True`` if more input"
+" is required, ``False`` if the line was dealt with in some way (this is the "
+"same as :meth:`!runsource`)."
+msgstr ""
+"Đẩy một dòng văn bản nguồn tới trình thông dịch. Dòng không được có dòng mới"
+" ở cuối; nó có thể có dòng mới nội bộ.  Dòng này được thêm vào bộ đệm và "
+"phương thức :meth:`~InteractiveInterpreter.runsource` của trình thông dịch "
+"được gọi với nội dung được nối của bộ đệm làm nguồn.  Nếu điều này cho thấy "
+"lệnh đã được thực thi hoặc không hợp lệ thì bộ đệm sẽ được đặt lại; nếu "
+"không, lệnh không đầy đủ và bộ đệm vẫn được giữ nguyên sau khi dòng được nối"
+" thêm.  Giá trị trả về là ``True`` nếu cần thêm đầu vào, ``False`` nếu dòng "
+"được xử lý theo cách nào đó (điều này giống như :meth:`!runsource`)."
+
+#: ../../library/code.rst:189
+#, fuzzy
+msgid "Remove any unhandled source text from the input buffer."
+msgstr "Xóa mọi văn bản nguồn chưa được xử lý khỏi bộ đệm đầu vào."
+
+#: ../../library/code.rst:194
+#, fuzzy
+msgid ""
+"Write a prompt and read a line.  The returned line does not include the "
+"trailing newline.  When the user enters the EOF key sequence, "
+":exc:`EOFError` is raised. The base implementation reads from ``sys.stdin``;"
+" a subclass may replace this with a different implementation."
+msgstr ""
+"Viết lời nhắc và đọc một dòng.  Dòng trả về không bao gồm dòng mới ở cuối.  "
+"Khi người dùng nhập dãy phím EOF, :exc:`EOFError` sẽ được nâng lên. Việc "
+"triển khai cơ sở đọc từ ``sys.stdin``; một lớp con có thể thay thế điều này "
+"bằng một cách triển khai khác."

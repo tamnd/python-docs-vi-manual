@@ -1,0 +1,929 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../library/sys.monitoring.rst:2
+#, fuzzy
+msgid ":mod:`!sys.monitoring` --- Execution event monitoring"
+msgstr ":mod:`!sys.monitoring` --- Giám sát sự kiện thực thi"
+
+#: ../../library/sys.monitoring.rst:13
+#, fuzzy
+msgid ""
+":mod:`!sys.monitoring` is a namespace within the :mod:`sys` module, not an "
+"independent module, and ``import sys.monitoring`` would fail with a "
+":exc:`ModuleNotFoundError`. Instead, simply ``import sys`` and then use "
+"``sys.monitoring``."
+msgstr ""
+":mod:`!sys.monitoring` là một không gian tên trong mô-đun :mod:`sys`, không "
+"phải là mô-đun độc lập và ``import sys.monitoring`` sẽ không thành công với "
+":exc:`ModuleNotFoundError`. Thay vào đó, chỉ cần ``import sys`` và sau đó sử"
+" dụng ``sys.monitoring``."
+
+#: ../../library/sys.monitoring.rst:19
+#, fuzzy
+msgid ""
+"This namespace provides access to the functions and constants necessary to "
+"activate and control event monitoring."
+msgstr ""
+"Không gian tên này cung cấp quyền truy cập vào các chức năng và hằng số cần "
+"thiết để kích hoạt và kiểm soát việc giám sát sự kiện."
+
+#: ../../library/sys.monitoring.rst:22
+#, fuzzy
+msgid ""
+"As programs execute, events occur that might be of interest to tools that "
+"monitor execution. The :mod:`!sys.monitoring` namespace provides means to "
+"receive callbacks when events of interest occur."
+msgstr ""
+"Khi chương trình thực thi, các sự kiện xảy ra có thể được các công cụ giám "
+"sát việc thực thi quan tâm. Không gian tên :mod:`!sys.monitoring` cung cấp "
+"phương tiện để nhận lệnh gọi lại khi xảy ra sự kiện quan tâm."
+
+#: ../../library/sys.monitoring.rst:26
+#, fuzzy
+msgid "The monitoring API consists of three components:"
+msgstr "Việc giám sát API bao gồm ba thành phần:"
+
+#: ../../library/sys.monitoring.rst:28
+#, fuzzy
+msgid "`Tool identifiers`_"
+msgstr "`Tool identifiers`_"
+
+#: ../../library/sys.monitoring.rst:29
+#, fuzzy
+msgid "`Events`_"
+msgstr "`Events`_"
+
+#: ../../library/sys.monitoring.rst:30
+#, fuzzy
+msgid ":ref:`Callbacks <callbacks>`"
+msgstr ":ref:`Callbacks <callbacks>`"
+
+#: ../../library/sys.monitoring.rst:33
+#, fuzzy
+msgid "Tool identifiers"
+msgstr "Mã định danh công cụ"
+
+#: ../../library/sys.monitoring.rst:35
+#, fuzzy
+msgid ""
+"A tool identifier is an integer and the associated name. Tool identifiers "
+"are used to discourage tools from interfering with each other and to allow "
+"multiple tools to operate at the same time. Currently tools are completely "
+"independent and cannot be used to monitor each other. This restriction may "
+"be lifted in the future."
+msgstr ""
+"Mã định danh công cụ là một số nguyên và tên liên quan. Mã nhận dạng công cụ"
+" được sử dụng để ngăn cản các công cụ can thiệp lẫn nhau và cho phép nhiều "
+"công cụ hoạt động cùng một lúc. Hiện tại các công cụ hoàn toàn độc lập và "
+"không thể sử dụng để giám sát lẫn nhau. Hạn chế này có thể được dỡ bỏ trong "
+"tương lai."
+
+#: ../../library/sys.monitoring.rst:41
+#, fuzzy
+msgid ""
+"Before registering or activating events, a tool should choose an identifier."
+" Identifiers are integers in the range 0 to 5 inclusive."
+msgstr ""
+"Trước khi đăng ký hoặc kích hoạt sự kiện, công cụ nên chọn một mã định danh."
+" Mã định danh là các số nguyên trong phạm vi từ 0 đến 5."
+
+#: ../../library/sys.monitoring.rst:45
+#, fuzzy
+msgid "Registering and using tools"
+msgstr "Đăng ký và sử dụng công cụ"
+
+#: ../../library/sys.monitoring.rst:49
+#, fuzzy
+msgid ""
+"Must be called before *tool_id* can be used. *tool_id* must be in the range "
+"0 to 5 inclusive. Raises a :exc:`ValueError` if *tool_id* is in use."
+msgstr ""
+"Phải được gọi trước khi *tool_id* có thể được sử dụng. *tool_id* phải nằm "
+"trong phạm vi từ 0 đến 5. Tăng :exc:`ValueError` nếu *tool_id* được sử dụng."
+
+#: ../../library/sys.monitoring.rst:55
+#, fuzzy
+msgid ""
+"Unregister all events and callback functions associated with *tool_id*."
+msgstr ""
+"Hủy đăng ký tất cả các sự kiện và chức năng gọi lại liên quan đến *tool_id*."
+
+#: ../../library/sys.monitoring.rst:59
+#, fuzzy
+msgid ""
+"Should be called once a tool no longer requires *tool_id*. Will call "
+":func:`clear_tool_id` before releasing *tool_id*."
+msgstr ""
+"Nên gọi khi công cụ không còn yêu cầu *tool_id* nữa. Sẽ gọi "
+":func:`clear_tool_id` trước khi phát hành *tool_id*."
+
+#: ../../library/sys.monitoring.rst:64
+#, fuzzy
+msgid ""
+"Returns the name of the tool if *tool_id* is in use, otherwise it returns "
+"``None``. *tool_id* must be in the range 0 to 5 inclusive."
+msgstr ""
+"Trả về tên của công cụ nếu *tool_id* được sử dụng, nếu không nó sẽ trả về "
+"``None``. *tool_id* phải nằm trong phạm vi từ 0 đến 5."
+
+#: ../../library/sys.monitoring.rst:68
+#, fuzzy
+msgid ""
+"All IDs are treated the same by the VM with regard to events, but the "
+"following IDs are pre-defined to make co-operation of tools easier::"
+msgstr ""
+"Tất cả các ID đều được VM xử lý giống nhau đối với các sự kiện, nhưng các ID"
+" sau được xác định trước để giúp các công cụ hợp tác dễ dàng hơn::"
+
+#: ../../library/sys.monitoring.rst:71
+#, fuzzy
+msgid ""
+"sys.monitoring.DEBUGGER_ID = 0\n"
+"sys.monitoring.COVERAGE_ID = 1\n"
+"sys.monitoring.PROFILER_ID = 2\n"
+"sys.monitoring.OPTIMIZER_ID = 5"
+msgstr ""
+"sys.monitoring.DEBUGGER_ID = 0\n"
+"sys.monitoring.COVERAGE_ID = 1\n"
+"sys.monitoring.PROFILER_ID = 2\n"
+"sys.monitoring.OPTIMIZER_ID = 5"
+
+#: ../../library/sys.monitoring.rst:78
+#, fuzzy
+msgid "Events"
+msgstr "Sự kiện"
+
+#: ../../library/sys.monitoring.rst:80
+#, fuzzy
+msgid "The following events are supported:"
+msgstr "Các sự kiện sau được hỗ trợ:"
+
+#: ../../library/sys.monitoring.rst:84
+#, fuzzy
+msgid "A conditional branch goes left."
+msgstr "Một nhánh có điều kiện đi sang trái."
+
+#: ../../library/sys.monitoring.rst:86
+#, fuzzy
+msgid ""
+"It is up to the tool to determine how to present \"left\" and \"right\" "
+"branches. There is no guarantee which branch is \"left\" and which is "
+"\"right\", except that it will be consistent for the duration of the "
+"program."
+msgstr ""
+"Công cụ này có quyền xác định cách trình bày các nhánh \"trái\" và \"phải\"."
+" Không có gì đảm bảo nhánh nào là \"trái\" và nhánh nào là \"phải\", ngoại "
+"trừ việc nó sẽ nhất quán trong suốt thời gian của chương trình."
+
+#: ../../library/sys.monitoring.rst:92
+#, fuzzy
+msgid "A conditional branch goes right."
+msgstr "Một nhánh có điều kiện đi sang phải."
+
+#: ../../library/sys.monitoring.rst:96
+#, fuzzy
+msgid "A call in Python code (event occurs before the call)."
+msgstr "Cuộc gọi bằng mã Python (sự kiện xảy ra trước cuộc gọi)."
+
+#: ../../library/sys.monitoring.rst:100
+#, fuzzy
+msgid ""
+"An exception raised from any callable, except for Python functions (event "
+"occurs after the exit)."
+msgstr ""
+"Một ngoại lệ được tạo ra từ bất kỳ lệnh gọi nào, ngoại trừ các hàm Python "
+"(sự kiện xảy ra sau khi thoát)."
+
+#: ../../library/sys.monitoring.rst:104
+#, fuzzy
+msgid ""
+"Return from any callable, except for Python functions (event occurs after "
+"the return)."
+msgstr ""
+"Trả về từ bất kỳ lệnh gọi nào, ngoại trừ các hàm Python (sự kiện xảy ra sau "
+"khi trả về)."
+
+#: ../../library/sys.monitoring.rst:108
+#, fuzzy
+msgid "An exception is handled."
+msgstr "Một ngoại lệ được xử lý."
+
+#: ../../library/sys.monitoring.rst:112
+#, fuzzy
+msgid "A VM instruction is about to be executed."
+msgstr "Một lệnh VM sắp được thực thi."
+
+#: ../../library/sys.monitoring.rst:116
+#, fuzzy
+msgid "An unconditional jump in the control flow graph is made."
+msgstr ""
+"Một bước nhảy vô điều kiện trong biểu đồ luồng điều khiển được thực hiện."
+
+#: ../../library/sys.monitoring.rst:120
+#, fuzzy
+msgid ""
+"An instruction is about to be executed that has a different line number from"
+" the preceding instruction."
+msgstr "Một lệnh sắp được thực thi có số dòng khác với lệnh trước đó."
+
+#: ../../library/sys.monitoring.rst:124
+#, fuzzy
+msgid ""
+"Resumption of a Python function (for generator and coroutine functions), "
+"except for ``throw()`` calls."
+msgstr ""
+"Tiếp tục hàm Python (dành cho hàm tạo và hàm coroutine), ngoại trừ lệnh gọi "
+"``throw()``."
+
+#: ../../library/sys.monitoring.rst:128
+#, fuzzy
+msgid ""
+"Return from a Python function (occurs immediately before the return, the "
+"callee's frame will be on the stack)."
+msgstr ""
+"Trả về từ hàm Python (xảy ra ngay trước khi trả về, khung của callee sẽ nằm "
+"trên ngăn xếp)."
+
+#: ../../library/sys.monitoring.rst:132
+#, fuzzy
+msgid ""
+"Start of a Python function (occurs immediately after the call, the callee's "
+"frame will be on the stack)"
+msgstr ""
+"Bắt đầu một hàm Python (xảy ra ngay sau lệnh gọi, khung của callee sẽ nằm "
+"trên ngăn xếp)"
+
+#: ../../library/sys.monitoring.rst:136
+#, fuzzy
+msgid "A Python function is resumed by a ``throw()`` call."
+msgstr "Hàm Python được tiếp tục bằng lệnh gọi ``throw()``."
+
+#: ../../library/sys.monitoring.rst:140
+#, fuzzy
+msgid ""
+"Exit from a Python function during exception unwinding. This includes "
+"exceptions raised directly within the function and that are allowed to "
+"continue to propagate."
+msgstr ""
+"Thoát khỏi hàm Python trong quá trình gỡ bỏ ngoại lệ. Điều này bao gồm các "
+"ngoại lệ được đưa ra trực tiếp trong hàm và được phép tiếp tục phổ biến."
+
+#: ../../library/sys.monitoring.rst:145
+#, fuzzy
+msgid ""
+"Yield from a Python function (occurs immediately before the yield, the "
+"callee's frame will be on the stack)."
+msgstr ""
+"Năng suất từ một hàm Python (xảy ra ngay trước năng suất, khung của callee "
+"sẽ nằm trên ngăn xếp)."
+
+#: ../../library/sys.monitoring.rst:149
+#, fuzzy
+msgid ""
+"An exception is raised, except those that cause a :monitoring-"
+"event:`STOP_ITERATION` event."
+msgstr ""
+"Một ngoại lệ được nêu ra, ngoại trừ những trường hợp gây ra sự kiện "
+":monitoring-event:`STOP_ITERATION`."
+
+#: ../../library/sys.monitoring.rst:153
+#, fuzzy
+msgid ""
+"An exception is re-raised, for example at the end of a :keyword:`finally` "
+"block."
+msgstr ""
+"Một ngoại lệ được đưa ra lại, ví dụ như ở cuối khối :keyword:`finally`."
+
+#: ../../library/sys.monitoring.rst:157
+#, fuzzy
+msgid ""
+"An artificial :exc:`StopIteration` is raised; see `the STOP_ITERATION "
+"event`_."
+msgstr ""
+"Một :exc:`StopIteration` nhân tạo được nâng lên; xem `the STOP_ITERATION "
+"event`_."
+
+#: ../../library/sys.monitoring.rst:160
+#, fuzzy
+msgid "More events may be added in the future."
+msgstr "Nhiều sự kiện có thể được thêm vào trong tương lai."
+
+#: ../../library/sys.monitoring.rst:162
+#, fuzzy
+msgid ""
+"These events are attributes of the :mod:`!sys.monitoring.events` namespace. "
+"Each event is represented as a power-of-2 integer constant. To define a set "
+"of events, simply bitwise OR the individual events together. For example, to"
+" specify both :monitoring-event:`PY_RETURN` and :monitoring-event:`PY_START`"
+" events, use the expression ``PY_RETURN | PY_START``."
+msgstr ""
+"Những sự kiện này là thuộc tính của không gian tên "
+":mod:`!sys.monitoring.events`. Mỗi sự kiện được biểu diễn dưới dạng hằng số "
+"nguyên lũy thừa 2. Để xác định một tập hợp các sự kiện, chỉ cần thực hiện "
+"theo từng bit HOẶC các sự kiện riêng lẻ cùng nhau. Ví dụ: để chỉ định cả hai"
+" sự kiện :monitoring-event:`PY_RETURN` và :monitoring-event:`PY_START`, hãy "
+"sử dụng biểu thức ``PY_RETURN | PY_START``."
+
+#: ../../library/sys.monitoring.rst:170
+#, fuzzy
+msgid "An alias for ``0`` so users can do explicit comparisons like::"
+msgstr "Bí danh cho ``0`` để người dùng có thể so sánh rõ ràng như::"
+
+#: ../../library/sys.monitoring.rst:172
+#, fuzzy
+msgid ""
+"if get_events(DEBUGGER_ID) == NO_EVENTS:\n"
+"    ..."
+msgstr ""
+"nếu get_events(DEBUGGER_ID) == NO_EVENTS:\n"
+"    ..."
+
+#: ../../library/sys.monitoring.rst:175
+#, fuzzy
+msgid "Setting this event deactivates all events."
+msgstr "Việc đặt sự kiện này sẽ hủy kích hoạt tất cả các sự kiện."
+
+#: ../../library/sys.monitoring.rst:180
+#, fuzzy
+msgid "Local events"
+msgstr "Sự kiện địa phương"
+
+#: ../../library/sys.monitoring.rst:182
+#, fuzzy
+msgid ""
+"Local events are associated with normal execution of the program and happen "
+"at clearly defined locations. All local events can be disabled. The local "
+"events are:"
+msgstr ""
+"Các sự kiện cục bộ gắn liền với việc thực thi bình thường của chương trình "
+"và xảy ra tại các vị trí được xác định rõ ràng. Tất cả các sự kiện địa "
+"phương có thể bị vô hiệu hóa. Các sự kiện địa phương là:"
+
+#: ../../library/sys.monitoring.rst:186
+#, fuzzy
+msgid ":monitoring-event:`PY_START`"
+msgstr ":monitoring-event:`PY_START`"
+
+#: ../../library/sys.monitoring.rst:187
+#, fuzzy
+msgid ":monitoring-event:`PY_RESUME`"
+msgstr ":monitoring-event:`PY_RESUME`"
+
+#: ../../library/sys.monitoring.rst:188
+#, fuzzy
+msgid ":monitoring-event:`PY_RETURN`"
+msgstr ":monitoring-event:`PY_RETURN`"
+
+#: ../../library/sys.monitoring.rst:189
+#, fuzzy
+msgid ":monitoring-event:`PY_YIELD`"
+msgstr ":monitoring-event:`PY_YIELD`"
+
+#: ../../library/sys.monitoring.rst:190
+#, fuzzy
+msgid ":monitoring-event:`CALL`"
+msgstr ":monitoring-event:`CALL`"
+
+#: ../../library/sys.monitoring.rst:191
+#, fuzzy
+msgid ":monitoring-event:`LINE`"
+msgstr ":monitoring-event:`LINE`"
+
+#: ../../library/sys.monitoring.rst:192
+#, fuzzy
+msgid ":monitoring-event:`INSTRUCTION`"
+msgstr ":monitoring-event:`INSTRUCTION`"
+
+#: ../../library/sys.monitoring.rst:193
+#, fuzzy
+msgid ":monitoring-event:`JUMP`"
+msgstr ":monitoring-event:`JUMP`"
+
+#: ../../library/sys.monitoring.rst:194
+#, fuzzy
+msgid ":monitoring-event:`BRANCH_LEFT`"
+msgstr ":monitoring-event:`BRANCH_LEFT`"
+
+#: ../../library/sys.monitoring.rst:195
+#, fuzzy
+msgid ":monitoring-event:`BRANCH_RIGHT`"
+msgstr ":monitoring-event:`BRANCH_RIGHT`"
+
+#: ../../library/sys.monitoring.rst:196
+#, fuzzy
+msgid ":monitoring-event:`STOP_ITERATION`"
+msgstr ":monitoring-event:`STOP_ITERATION`"
+
+#: ../../library/sys.monitoring.rst:199
+#, fuzzy
+msgid "Deprecated event"
+msgstr "Sự kiện không được dùng nữa"
+
+#: ../../library/sys.monitoring.rst:201
+#, fuzzy
+msgid "``BRANCH``"
+msgstr "``BRANCH``"
+
+#: ../../library/sys.monitoring.rst:203
+#, fuzzy
+msgid ""
+"The ``BRANCH`` event is deprecated in 3.14. Using :monitoring-"
+"event:`BRANCH_LEFT` and :monitoring-event:`BRANCH_RIGHT` events will give "
+"much better performance as they can be disabled independently."
+msgstr ""
+"Sự kiện ``BRANCH`` không được dùng nữa trong phiên bản 3.14. Sử dụng các sự "
+"kiện :monitoring-event:`BRANCH_LEFT` và :monitoring-event:`BRANCH_RIGHT` sẽ "
+"cho hiệu suất tốt hơn nhiều vì chúng có thể bị vô hiệu hóa một cách độc lập."
+
+#: ../../library/sys.monitoring.rst:209
+#, fuzzy
+msgid "Ancillary events"
+msgstr "Sự kiện phụ trợ"
+
+#: ../../library/sys.monitoring.rst:211
+#, fuzzy
+msgid ""
+"Ancillary events can be monitored like other events, but are controlled by "
+"another event:"
+msgstr ""
+"Các sự kiện phụ trợ có thể được theo dõi như các sự kiện khác, nhưng được "
+"kiểm soát bởi một sự kiện khác:"
+
+#: ../../library/sys.monitoring.rst:214
+#, fuzzy
+msgid ":monitoring-event:`C_RAISE`"
+msgstr ":monitoring-event:`C_RAISE`"
+
+#: ../../library/sys.monitoring.rst:215
+#, fuzzy
+msgid ":monitoring-event:`C_RETURN`"
+msgstr ":monitoring-event:`C_RETURN`"
+
+#: ../../library/sys.monitoring.rst:217
+#, fuzzy
+msgid ""
+"The :monitoring-event:`C_RETURN` and :monitoring-event:`C_RAISE` events are "
+"controlled by the :monitoring-event:`CALL` event. :monitoring-"
+"event:`C_RETURN` and :monitoring-event:`C_RAISE` events will only be seen if"
+" the corresponding :monitoring-event:`CALL` event is being monitored."
+msgstr ""
+"Các sự kiện :monitoring-event:`C_RETURN` và :monitoring-event:`C_RAISE` được"
+" kiểm soát bởi sự kiện :monitoring-event:`CALL`. :monitoring-"
+"event:`C_RETURN` và :monitoring-event:`C_RAISE` sự kiện sẽ chỉ được nhìn "
+"thấy nếu sự kiện :monitoring-event:`CALL` tương ứng đang được theo dõi."
+
+#: ../../library/sys.monitoring.rst:226
+#, fuzzy
+msgid "Other events"
+msgstr "Sự kiện khác"
+
+#: ../../library/sys.monitoring.rst:228
+#, fuzzy
+msgid ""
+"Other events are not necessarily tied to a specific location in the program "
+"and cannot be individually disabled via :data:`DISABLE`."
+msgstr ""
+"Các sự kiện khác không nhất thiết phải gắn với một vị trí cụ thể trong "
+"chương trình và không thể tắt riêng lẻ thông qua :data:`DISABLE`."
+
+#: ../../library/sys.monitoring.rst:231
+#, fuzzy
+msgid "The other events that can be monitored are:"
+msgstr "Các sự kiện khác có thể được theo dõi là:"
+
+#: ../../library/sys.monitoring.rst:233
+#, fuzzy
+msgid ":monitoring-event:`PY_THROW`"
+msgstr ":monitoring-event:`PY_THROW`"
+
+#: ../../library/sys.monitoring.rst:234
+#, fuzzy
+msgid ":monitoring-event:`PY_UNWIND`"
+msgstr ":monitoring-event:`PY_UNWIND`"
+
+#: ../../library/sys.monitoring.rst:235
+#, fuzzy
+msgid ":monitoring-event:`RAISE`"
+msgstr ":monitoring-event:`RAISE`"
+
+#: ../../library/sys.monitoring.rst:236
+#, fuzzy
+msgid ":monitoring-event:`EXCEPTION_HANDLED`"
+msgstr ":monitoring-event:`EXCEPTION_HANDLED`"
+
+#: ../../library/sys.monitoring.rst:240
+#, fuzzy
+msgid "The STOP_ITERATION event"
+msgstr "Sự kiện STOP_ITERATION"
+
+#: ../../library/sys.monitoring.rst:242
+#, fuzzy
+msgid ""
+":pep:`PEP 380 <380#use-of-stopiteration-to-return-values>` specifies that a "
+":exc:`StopIteration` exception is raised when returning a value from a "
+"generator or coroutine. However, this is a very inefficient way to return a "
+"value, so some Python implementations, notably CPython 3.12+, do not raise "
+"an exception unless it would be visible to other code."
+msgstr ""
+":pep:`PEP 380 <380#use-of-stopiteration-to-return-values>` chỉ định rằng "
+"ngoại lệ :exc:`StopIteration` được đưa ra khi trả về giá trị từ trình tạo "
+"hoặc coroutine. Tuy nhiên, đây là một cách rất kém hiệu quả để trả về một "
+"giá trị, vì vậy một số triển khai Python, đặc biệt là CPython 3.12+, không "
+"đưa ra một ngoại lệ trừ khi nó hiển thị với mã khác."
+
+#: ../../library/sys.monitoring.rst:248
+#, fuzzy
+msgid ""
+"To allow tools to monitor for real exceptions without slowing down "
+"generators and coroutines, the :monitoring-event:`STOP_ITERATION` event is "
+"provided. :monitoring-event:`STOP_ITERATION` can be locally disabled, unlike"
+" :monitoring-event:`RAISE`."
+msgstr ""
+"Để cho phép các công cụ giám sát các trường hợp ngoại lệ thực sự mà không "
+"làm chậm trình tạo và coroutine, sự kiện :monitoring-event:`STOP_ITERATION` "
+"được cung cấp. :monitoring-event:`STOP_ITERATION` có thể bị vô hiệu hóa cục "
+"bộ, không giống như :monitoring-event:`RAISE`."
+
+#: ../../library/sys.monitoring.rst:253
+#, fuzzy
+msgid ""
+"Note that the :monitoring-event:`STOP_ITERATION` event and the :monitoring-"
+"event:`RAISE` event for a :exc:`StopIteration` exception are equivalent, and"
+" are treated as interchangeable when generating events. Implementations will"
+" favor :monitoring-event:`STOP_ITERATION` for performance reasons, but may "
+"generate a :monitoring-event:`RAISE` event with a :exc:`StopIteration`."
+msgstr ""
+"Lưu ý rằng sự kiện :monitoring-event:`STOP_ITERATION` và sự kiện "
+":monitoring-event:`RAISE` cho ngoại lệ :exc:`StopIteration` là tương đương "
+"và được coi là có thể hoán đổi cho nhau khi tạo sự kiện. Việc triển khai sẽ "
+"ưu tiên :monitoring-event:`STOP_ITERATION` vì lý do hiệu suất, nhưng có thể "
+"tạo ra sự kiện :monitoring-event:`RAISE` với :exc:`StopIteration`."
+
+#: ../../library/sys.monitoring.rst:261
+#, fuzzy
+msgid "Turning events on and off"
+msgstr "Bật và tắt sự kiện"
+
+#: ../../library/sys.monitoring.rst:263
+#, fuzzy
+msgid ""
+"In order to monitor an event, it must be turned on and a corresponding "
+"callback must be registered. Events can be turned on or off by setting the "
+"events either globally and/or for a particular code object. An event will "
+"trigger only once, even if it is turned on both globally and locally."
+msgstr ""
+"Để theo dõi một sự kiện, nó phải được bật và phải đăng ký cuộc gọi lại tương"
+" ứng. Bạn có thể bật hoặc tắt các sự kiện bằng cách đặt các sự kiện trên "
+"toàn cầu và/hoặc cho một đối tượng mã cụ thể. Một sự kiện sẽ chỉ kích hoạt "
+"một lần, ngay cả khi nó được bật cả trên toàn cầu và cục bộ."
+
+#: ../../library/sys.monitoring.rst:270
+#, fuzzy
+msgid "Setting events globally"
+msgstr "Đặt sự kiện trên toàn cầu"
+
+#: ../../library/sys.monitoring.rst:272
+#, fuzzy
+msgid ""
+"Events can be controlled globally by modifying the set of events being "
+"monitored."
+msgstr ""
+"Các sự kiện có thể được kiểm soát trên toàn cầu bằng cách sửa đổi tập hợp "
+"các sự kiện đang được theo dõi."
+
+#: ../../library/sys.monitoring.rst:276
+#, fuzzy
+msgid "Returns the ``int`` representing all the active events."
+msgstr "Trả về ``int`` đại diện cho tất cả các sự kiện đang hoạt động."
+
+#: ../../library/sys.monitoring.rst:280
+#, fuzzy
+msgid ""
+"Activates all events which are set in *event_set*. Raises a "
+":exc:`ValueError` if *tool_id* is not in use."
+msgstr ""
+"Kích hoạt tất cả các sự kiện được đặt trong *event_set*. Tăng "
+":exc:`ValueError` nếu *tool_id* không được sử dụng."
+
+#: ../../library/sys.monitoring.rst:283
+#, fuzzy
+msgid "No events are active by default."
+msgstr "Không có sự kiện nào được kích hoạt theo mặc định."
+
+#: ../../library/sys.monitoring.rst:286
+#, fuzzy
+msgid "Per code object events"
+msgstr "Mỗi sự kiện đối tượng mã"
+
+#: ../../library/sys.monitoring.rst:288
+#, fuzzy
+msgid ""
+"Events can also be controlled on a per code object basis. The functions "
+"defined below which accept a :class:`types.CodeType` should be prepared to "
+"accept a look-alike object from functions which are not defined in Python "
+"(see :ref:`c-api-monitoring`)."
+msgstr ""
+"Các sự kiện cũng có thể được kiểm soát trên cơ sở từng đối tượng mã. Các hàm"
+" được xác định bên dưới chấp nhận :class:`types.CodeType` phải được chuẩn bị"
+" để chấp nhận một đối tượng trông giống nhau từ các hàm không được xác định "
+"trong Python (xem :ref:`c-api-monitoring`)."
+
+#: ../../library/sys.monitoring.rst:295
+#, fuzzy
+msgid ""
+"Returns all the :ref:`local events <monitoring-event-local>` for *code*"
+msgstr "Trả về tất cả :ref:`local events <monitoring-event-local>` cho *code*"
+
+#: ../../library/sys.monitoring.rst:299
+#, fuzzy
+msgid ""
+"Activates all the :ref:`local events <monitoring-event-local>` for *code* "
+"which are set in *event_set*. Raises a :exc:`ValueError` if *tool_id* is not"
+" in use."
+msgstr ""
+"Kích hoạt tất cả :ref:`local events <monitoring-event-local>` cho *code* "
+"được đặt trong *event_set*. Tăng :exc:`ValueError` nếu *tool_id* không được "
+"sử dụng."
+
+#: ../../library/sys.monitoring.rst:305
+#, fuzzy
+msgid "Disabling events"
+msgstr "Vô hiệu hóa sự kiện"
+
+#: ../../library/sys.monitoring.rst:309
+#, fuzzy
+msgid ""
+"A special value that can be returned from a callback function to disable "
+"events for the current code location."
+msgstr ""
+"Một giá trị đặc biệt có thể được trả về từ hàm gọi lại để tắt các sự kiện "
+"cho vị trí mã hiện tại."
+
+#: ../../library/sys.monitoring.rst:312
+#, fuzzy
+msgid ""
+":ref:`Local events <monitoring-event-local>` can be disabled for a specific "
+"code location by returning :data:`sys.monitoring.DISABLE` from a callback "
+"function. This does not change which events are set, or any other code "
+"locations for the same event."
+msgstr ""
+":ref:`Local events <monitoring-event-local>` có thể bị vô hiệu hóa đối với "
+"một vị trí mã cụ thể bằng cách trả về :data:`sys.monitoring.DISABLE` từ hàm "
+"gọi lại. Điều này không thay đổi sự kiện nào được đặt hoặc bất kỳ vị trí mã "
+"nào khác cho cùng một sự kiện."
+
+#: ../../library/sys.monitoring.rst:317
+#, fuzzy
+msgid ""
+"Disabling events for specific locations is very important for high "
+"performance monitoring. For example, a program can be run under a debugger "
+"with no overhead if the debugger disables all monitoring except for a few "
+"breakpoints."
+msgstr ""
+"Việc vô hiệu hóa các sự kiện cho các vị trí cụ thể là rất quan trọng để giám"
+" sát hiệu suất cao. Ví dụ: một chương trình có thể được chạy trong trình gỡ "
+"lỗi mà không cần chi phí hoạt động nếu trình gỡ lỗi vô hiệu hóa tất cả hoạt "
+"động giám sát ngoại trừ một số điểm dừng."
+
+#: ../../library/sys.monitoring.rst:322
+#, fuzzy
+msgid ""
+"If :data:`DISABLE` is returned by a callback for a :ref:`global event "
+"<monitoring-event-global>`, :exc:`ValueError` will be raised by the "
+"interpreter in a non-specific location (that is, no traceback will be "
+"provided)."
+msgstr ""
+"Nếu :data:`DISABLE` được trả về bằng lệnh gọi lại cho :ref:`global event "
+"<monitoring-event-global>`, thì :exc:`ValueError` sẽ được trình thông dịch "
+"đưa ra ở một vị trí không cụ thể (nghĩa là sẽ không cung cấp dấu vết)."
+
+#: ../../library/sys.monitoring.rst:329
+#, fuzzy
+msgid ""
+"Enable all the events that were disabled by :data:`sys.monitoring.DISABLE` "
+"for all tools."
+msgstr ""
+"Kích hoạt tất cả các sự kiện đã bị :data:`sys.monitoring.DISABLE` tắt cho "
+"tất cả các công cụ."
+
+#: ../../library/sys.monitoring.rst:336
+#, fuzzy
+msgid "Registering callback functions"
+msgstr "Đăng ký chức năng gọi lại"
+
+#: ../../library/sys.monitoring.rst:340
+#, fuzzy
+msgid "Registers the callable *func* for the *event* with the given *tool_id*"
+msgstr "Đăng ký *func* có thể gọi cho *event* với *tool_id* đã cho"
+
+#: ../../library/sys.monitoring.rst:342
+#, fuzzy
+msgid ""
+"If another callback was registered for the given *tool_id* and *event*, it "
+"is unregistered and returned. Otherwise :func:`register_callback` returns "
+"``None``."
+msgstr ""
+"Nếu một lệnh gọi lại khác đã được đăng ký cho *tool_id* và *event* nhất định"
+" thì lệnh gọi lại đó sẽ không được đăng ký và được trả về. Nếu không thì "
+":func:`register_callback` trả về ``None``."
+
+#: ../../library/sys.monitoring.rst:346
+#, fuzzy
+msgid ""
+"Raises an :ref:`auditing event <auditing>` "
+"``sys.monitoring.register_callback`` with argument ``func``."
+msgstr ""
+"Tăng một :ref:`auditing event <auditing>` "
+"``sys.monitoring.register_callback`` với đối số ``func``."
+
+#: ../../library/sys.monitoring.rst:348
+#, fuzzy
+msgid ""
+"Functions can be unregistered by calling "
+"``sys.monitoring.register_callback(tool_id, event, None)``."
+msgstr ""
+"Các chức năng có thể được hủy đăng ký bằng cách gọi "
+"``sys.monitoring.register_callback(tool_id, event, None)``."
+
+#: ../../library/sys.monitoring.rst:351
+#, fuzzy
+msgid "Callback functions can be registered and unregistered at any time."
+msgstr "Chức năng gọi lại có thể được đăng ký và hủy đăng ký bất cứ lúc nào."
+
+#: ../../library/sys.monitoring.rst:353
+#, fuzzy
+msgid ""
+"Callbacks are called only once regardless if the event is turned on both "
+"globally and locally. As such, if an event could be turned on for both "
+"global and local events by your code then the callback needs to be written "
+"to handle either trigger."
+msgstr ""
+"Lệnh gọi lại chỉ được gọi một lần bất kể sự kiện có được bật cả trên toàn "
+"cầu và cục bộ hay không. Do đó, nếu mã của bạn có thể bật một sự kiện cho cả"
+" sự kiện toàn cầu và cục bộ thì lệnh gọi lại cần phải được viết để xử lý một"
+" trong hai trình kích hoạt."
+
+#: ../../library/sys.monitoring.rst:360
+#, fuzzy
+msgid "Callback function arguments"
+msgstr "Đối số hàm gọi lại"
+
+#: ../../library/sys.monitoring.rst:364
+#, fuzzy
+msgid ""
+"A special value that is passed to a callback function to indicate that there"
+" are no arguments to the call."
+msgstr ""
+"Một giá trị đặc biệt được truyền cho hàm gọi lại để cho biết rằng không có "
+"đối số nào cho cuộc gọi."
+
+#: ../../library/sys.monitoring.rst:367
+#, fuzzy
+msgid ""
+"When an active event occurs, the registered callback function is called. "
+"Callback functions returning an object other than :data:`DISABLE` will have "
+"no effect. Different events will provide the callback function with "
+"different arguments, as follows:"
+msgstr ""
+"Khi một sự kiện hoạt động xảy ra, hàm gọi lại đã đăng ký sẽ được gọi. Các "
+"hàm gọi lại trả về một đối tượng không phải là :data:`DISABLE` sẽ không có "
+"hiệu lực. Các sự kiện khác nhau sẽ cung cấp cho hàm gọi lại các đối số khác "
+"nhau, như sau:"
+
+#: ../../library/sys.monitoring.rst:371
+#, fuzzy
+msgid ":monitoring-event:`PY_START` and :monitoring-event:`PY_RESUME`::"
+msgstr ":monitoring-event:`PY_START` và :monitoring-event:`PY_RESUME`::"
+
+#: ../../library/sys.monitoring.rst:373 ../../library/sys.monitoring.rst:410
+#, fuzzy
+msgid "func(code: CodeType, instruction_offset: int) -> object"
+msgstr "func(code: CodeType,guide_offset: int) -> đối tượng"
+
+#: ../../library/sys.monitoring.rst:375
+#, fuzzy
+msgid ":monitoring-event:`PY_RETURN` and :monitoring-event:`PY_YIELD`::"
+msgstr ":monitoring-event:`PY_RETURN` và :monitoring-event:`PY_YIELD`::"
+
+#: ../../library/sys.monitoring.rst:377
+#, fuzzy
+msgid ""
+"func(code: CodeType, instruction_offset: int, retval: object) -> object"
+msgstr "func(code: CodeType,guide_offset: int, retval: object) -> đối tượng"
+
+#: ../../library/sys.monitoring.rst:379
+#, fuzzy
+msgid ""
+":monitoring-event:`CALL`, :monitoring-event:`C_RAISE` and :monitoring-"
+"event:`C_RETURN` (*arg0* can be :data:`MISSING` specifically)::"
+msgstr ""
+":monitoring-event:`CALL`, :monitoring-event:`C_RAISE` và :monitoring-"
+"event:`C_RETURN` (*arg0* có thể là :data:`MISSING` cụ thể)::"
+
+#: ../../library/sys.monitoring.rst:382
+#, fuzzy
+msgid ""
+"func(code: CodeType, instruction_offset: int, callable: object, arg0: "
+"object) -> object"
+msgstr ""
+"func(code: CodeType, manual_offset: int, callable: object, arg0: object) -> "
+"object"
+
+#: ../../library/sys.monitoring.rst:384
+#, fuzzy
+msgid ""
+"*code* represents the code object where the call is being made, while "
+"*callable* is the object that is about to be called (and thus triggered the "
+"event). If there are no arguments, *arg0* is set to "
+":data:`sys.monitoring.MISSING`."
+msgstr ""
+"*code* đại diện cho đối tượng mã nơi cuộc gọi đang được thực hiện, trong khi"
+" *callable* là đối tượng sắp được gọi (và do đó đã kích hoạt sự kiện). Nếu "
+"không có đối số, *arg0* được đặt thành :data:`sys.monitoring.MISSING`."
+
+#: ../../library/sys.monitoring.rst:389
+#, fuzzy
+msgid ""
+"For instance methods, *callable* will be the function object as found on the"
+" class with *arg0* set to the instance (i.e. the ``self`` argument to the "
+"method)."
+msgstr ""
+"Đối với các phương thức phiên bản, *callable* sẽ là đối tượng hàm như được "
+"tìm thấy trên lớp với *arg0* được đặt thành phiên bản (tức là đối số "
+"``self`` cho phương thức)."
+
+#: ../../library/sys.monitoring.rst:393
+#, fuzzy
+msgid ""
+":monitoring-event:`RAISE`, :monitoring-event:`RERAISE`, :monitoring-"
+"event:`EXCEPTION_HANDLED`, :monitoring-event:`PY_UNWIND`, :monitoring-"
+"event:`PY_THROW` and :monitoring-event:`STOP_ITERATION`::"
+msgstr ""
+":monitoring-event:`RAISE`, :monitoring-event:`RERAISE`, :monitoring-"
+"event:`EXCEPTION_HANDLED`, :monitoring-event:`PY_UNWIND`, :monitoring-"
+"event:`PY_THROW` và :monitoring-event:`STOP_ITERATION`::"
+
+#: ../../library/sys.monitoring.rst:396
+#, fuzzy
+msgid ""
+"func(code: CodeType, instruction_offset: int, exception: BaseException) -> "
+"object"
+msgstr ""
+"func(code: CodeType,guide_offset: int, ngoại lệ: BaseException) -> đối tượng"
+
+#: ../../library/sys.monitoring.rst:398
+#, fuzzy
+msgid ":monitoring-event:`LINE`::"
+msgstr ":monitoring-event:`LINE`::"
+
+#: ../../library/sys.monitoring.rst:400
+#, fuzzy
+msgid "func(code: CodeType, line_number: int) -> object"
+msgstr "func(code: CodeType, line_number: int) -> đối tượng"
+
+#: ../../library/sys.monitoring.rst:402
+#, fuzzy
+msgid ""
+":monitoring-event:`BRANCH_LEFT`, :monitoring-event:`BRANCH_RIGHT` and "
+":monitoring-event:`JUMP`::"
+msgstr ""
+":monitoring-event:`BRANCH_LEFT`, :monitoring-event:`BRANCH_RIGHT` và "
+":monitoring-event:`JUMP`::"
+
+#: ../../library/sys.monitoring.rst:404
+#, fuzzy
+msgid ""
+"func(code: CodeType, instruction_offset: int, destination_offset: int) -> "
+"object"
+msgstr ""
+"func(code: CodeType,guide_offset: int, Destination_offset: int) -> đối tượng"
+
+#: ../../library/sys.monitoring.rst:406
+#, fuzzy
+msgid ""
+"Note that the *destination_offset* is where the code will next execute."
+msgstr "Lưu ý rằng *destination_offset* là nơi mã sẽ thực thi tiếp theo."
+
+#: ../../library/sys.monitoring.rst:408
+#, fuzzy
+msgid ":monitoring-event:`INSTRUCTION`::"
+msgstr ":monitoring-event:`INSTRUCTION`::"

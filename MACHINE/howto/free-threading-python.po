@@ -1,0 +1,388 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Python Software Foundation
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python 3.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-18 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: vi <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../howto/free-threading-python.rst:5
+#, fuzzy
+msgid "Python support for free threading"
+msgstr "Hỗ trợ Python cho luồng miễn phí"
+
+#: ../../howto/free-threading-python.rst:7
+#, fuzzy
+msgid ""
+"Starting with the 3.13 release, CPython has support for a build of Python "
+"called :term:`free threading` where the :term:`global interpreter lock` "
+"(GIL) is disabled.  Free-threaded execution allows for full utilization of "
+"the available processing power by running threads in parallel on available "
+"CPU cores. While not all software will benefit from this automatically, "
+"programs designed with threading in mind will run faster on multi-core "
+"hardware."
+msgstr ""
+"Bắt đầu với bản phát hành 3.13, CPython đã hỗ trợ bản dựng Python có tên "
+":term:`free threading` trong đó :term:`global interpreter lock` (GIL) bị "
+"tắt.  Thực thi luồng tự do cho phép tận dụng tối đa sức mạnh xử lý sẵn có "
+"bằng cách chạy các luồng song song trên các lõi CPU có sẵn. Mặc dù không "
+"phải tất cả phần mềm đều tự động được hưởng lợi từ điều này, nhưng các "
+"chương trình được thiết kế theo luồng sẽ chạy nhanh hơn trên phần cứng đa "
+"lõi."
+
+#: ../../howto/free-threading-python.rst:14
+#, fuzzy
+msgid ""
+"Some third-party packages, in particular ones with an :term:`extension "
+"module`, may not be ready for use in a free-threaded build, and will re-"
+"enable the :term:`GIL`."
+msgstr ""
+"Một số gói của bên thứ ba, đặc biệt là các gói có :term:`extension module`, "
+"có thể chưa sẵn sàng để sử dụng trong bản dựng luồng tự do và sẽ kích hoạt "
+"lại :term:`GIL`."
+
+#: ../../howto/free-threading-python.rst:18
+#, fuzzy
+msgid ""
+"This document describes the implications of free threading for Python code."
+"  See :ref:`freethreading-extensions-howto` for information on how to write "
+"C extensions that support the free-threaded build."
+msgstr ""
+"Tài liệu này mô tả ý nghĩa của việc phân luồng tự do cho mã Python.  Xem "
+":ref:`freethreading-extensions-howto` để biết thông tin về cách viết phần mở"
+" rộng C hỗ trợ bản dựng luồng tự do."
+
+#: ../../howto/free-threading-python.rst:24
+#, fuzzy
+msgid ""
+":pep:`703` – Making the Global Interpreter Lock Optional in CPython for an "
+"overall description of free-threaded Python."
+msgstr ""
+":pep:`703` – Tùy chọn Khóa trình thông dịch toàn cầu trong CPython để có mô "
+"tả tổng thể về Python có luồng tự do."
+
+#: ../../howto/free-threading-python.rst:29
+#, fuzzy
+msgid "Installation"
+msgstr "Cài đặt"
+
+#: ../../howto/free-threading-python.rst:31
+#, fuzzy
+msgid ""
+"Starting with Python 3.13, the official macOS and Windows installers "
+"optionally support installing free-threaded Python binaries.  The installers"
+" are available at https://www.python.org/downloads/."
+msgstr ""
+"Bắt đầu với Python 3.13, trình cài đặt macOS và Windows chính thức hỗ trợ "
+"tùy chọn cài đặt các tệp nhị phân Python có luồng miễn phí.  Các trình cài "
+"đặt có sẵn tại https://www.python.org/downloads/."
+
+#: ../../howto/free-threading-python.rst:35
+#, fuzzy
+msgid ""
+"For information on other platforms, see the `Installing a Free-Threaded "
+"Python <https://py-free-threading.github.io/installing-cpython/>`_, a "
+"community-maintained installation guide for installing free-threaded Python."
+msgstr ""
+"Để biết thông tin về các nền tảng khác, hãy xem `Installing a Free-Threaded "
+"Python <https://py-free-threading.github.io/installing-cpython/>`_, hướng "
+"dẫn cài đặt do cộng đồng duy trì để cài đặt Python có luồng miễn phí."
+
+#: ../../howto/free-threading-python.rst:39
+#, fuzzy
+msgid ""
+"When building CPython from source, the :option:`--disable-gil` configure "
+"option should be used to build a free-threaded Python interpreter."
+msgstr ""
+"Khi xây dựng CPython từ nguồn, nên sử dụng tùy chọn cấu hình "
+":option:`--disable-gil` để xây dựng trình thông dịch Python có luồng tự do."
+
+#: ../../howto/free-threading-python.rst:44
+#, fuzzy
+msgid "Identifying free-threaded Python"
+msgstr "Xác định Python có luồng tự do"
+
+#: ../../howto/free-threading-python.rst:46
+#, fuzzy
+msgid ""
+"To check if the current interpreter supports free-threading, :option:`python"
+" -VV <-V>` and :data:`sys.version` contain \"free-threading build\". The new"
+" :func:`sys._is_gil_enabled` function can be used to check whether the GIL "
+"is actually disabled in the running process."
+msgstr ""
+"Để kiểm tra xem trình thông dịch hiện tại có hỗ trợ phân luồng tự do hay "
+"không, :option:`python -VV <-V>` và :data:`sys.version` có chứa \"bản dựng "
+"phân luồng tự do\". Chức năng :func:`sys._is_gil_enabled` mới có thể được sử"
+" dụng để kiểm tra xem GIL có thực sự bị vô hiệu hóa trong quá trình chạy hay"
+" không."
+
+#: ../../howto/free-threading-python.rst:51
+#, fuzzy
+msgid ""
+"The ``sysconfig.get_config_var(\"Py_GIL_DISABLED\")`` configuration variable"
+" can be used to determine whether the build supports free threading.  If the"
+" variable is set to ``1``, then the build supports free threading.  This is "
+"the recommended mechanism for decisions related to the build configuration."
+msgstr ""
+"Biến cấu hình ``sysconfig.get_config_var(\"Py_GIL_DISABLED\")`` có thể được "
+"sử dụng để xác định xem bản dựng có hỗ trợ phân luồng miễn phí hay không.  "
+"Nếu biến được đặt thành ``1`` thì bản dựng sẽ hỗ trợ phân luồng miễn phí.  "
+"Đây là cơ chế được đề xuất cho các quyết định liên quan đến cấu hình bản "
+"dựng."
+
+#: ../../howto/free-threading-python.rst:58
+#, fuzzy
+msgid "The global interpreter lock in free-threaded Python"
+msgstr "Khóa trình thông dịch toàn cầu trong Python có luồng tự do"
+
+#: ../../howto/free-threading-python.rst:60
+#, fuzzy
+msgid ""
+"Free-threaded builds of CPython support optionally running with the GIL "
+"enabled at runtime using the environment variable :envvar:`PYTHON_GIL` or "
+"the command-line option :option:`-X gil`."
+msgstr ""
+"Các bản dựng CPython luồng tự do hỗ trợ tùy chọn chạy với GIL được bật trong"
+" thời gian chạy bằng cách sử dụng biến môi trường :envvar:`PYTHON_GIL` hoặc "
+"tùy chọn dòng lệnh :option:`-X gil`."
+
+#: ../../howto/free-threading-python.rst:64
+#, fuzzy
+msgid ""
+"The GIL may also automatically be enabled when importing a C-API extension "
+"module that is not explicitly marked as supporting free threading.  A "
+"warning will be printed in this case."
+msgstr ""
+"GIL cũng có thể được bật tự động khi nhập mô-đun mở rộng C-API không được "
+"đánh dấu rõ ràng là hỗ trợ tạo luồng tự do.  Một cảnh báo sẽ được in trong "
+"trường hợp này."
+
+#: ../../howto/free-threading-python.rst:68
+#, fuzzy
+msgid ""
+"In addition to individual package documentation, the following websites "
+"track the status of popular packages support for free threading:"
+msgstr ""
+"Ngoài tài liệu về gói riêng lẻ, các trang web sau còn theo dõi trạng thái "
+"của các gói phổ biến hỗ trợ phân luồng miễn phí:"
+
+#: ../../howto/free-threading-python.rst:71
+#, fuzzy
+msgid "https://py-free-threading.github.io/tracking/"
+msgstr "https://py-free-threading.github.io/tracking/"
+
+#: ../../howto/free-threading-python.rst:72
+#, fuzzy
+msgid "https://hugovk.github.io/free-threaded-wheels/"
+msgstr "https://hugovk.github.io/free-threaded-wheels/"
+
+#: ../../howto/free-threading-python.rst:76
+#, fuzzy
+msgid "Thread safety"
+msgstr "An toàn chủ đề"
+
+#: ../../howto/free-threading-python.rst:78
+#, fuzzy
+msgid ""
+"The free-threaded build of CPython aims to provide similar thread-safety "
+"behavior at the Python level to the default GIL-enabled build.  Built-in "
+"types like :class:`dict`, :class:`list`, and :class:`set` use internal locks"
+" to protect against concurrent modifications in ways that behave similarly "
+"to the GIL.  However, Python has not historically guaranteed specific "
+"behavior for concurrent modifications to these built-in types, so this "
+"should be treated as a description of the current implementation, not a "
+"guarantee of current or future behavior."
+msgstr ""
+"Bản dựng CPython theo luồng miễn phí nhằm mục đích cung cấp hành vi an toàn "
+"luồng tương tự ở cấp độ Python cho bản dựng hỗ trợ GIL mặc định.  Các loại "
+"tích hợp như :class:`dict`, :class:`list` và :class:`set` sử dụng khóa bên "
+"trong để bảo vệ khỏi các sửa đổi đồng thời theo cách hoạt động tương tự như "
+"GIL.  Tuy nhiên, Python trước đây không đảm bảo hành vi cụ thể cho các sửa "
+"đổi đồng thời đối với các loại dựng sẵn này, do đó, điều này phải được coi "
+"là mô tả về cách triển khai hiện tại chứ không phải là sự đảm bảo cho hành "
+"vi hiện tại hoặc tương lai."
+
+#: ../../howto/free-threading-python.rst:89
+#, fuzzy
+msgid ""
+"It's recommended to use the :class:`threading.Lock` or other synchronization"
+" primitives instead of relying on the internal locks of built-in types, when"
+" possible."
+msgstr ""
+"Bạn nên sử dụng :class:`threading.Lock` hoặc các nguyên tắc đồng bộ hóa cơ "
+"bản khác thay vì dựa vào các khóa bên trong của các loại tích hợp sẵn, khi "
+"có thể."
+
+#: ../../howto/free-threading-python.rst:95
+#, fuzzy
+msgid "Known limitations"
+msgstr "Những hạn chế đã biết"
+
+#: ../../howto/free-threading-python.rst:97
+#, fuzzy
+msgid ""
+"This section describes known limitations of the free-threaded CPython build."
+msgstr "Phần này mô tả các hạn chế đã biết của bản dựng CPython luồng tự do."
+
+#: ../../howto/free-threading-python.rst:100
+#, fuzzy
+msgid "Immortalization"
+msgstr "bất tử"
+
+#: ../../howto/free-threading-python.rst:102
+#, fuzzy
+msgid ""
+"In the free-threaded build, some objects are :term:`immortal`. Immortal "
+"objects are not deallocated and have reference counts that are never "
+"modified.  This is done to avoid reference count contention that would "
+"prevent efficient multi-threaded scaling."
+msgstr ""
+"Trong bản dựng luồng tự do, một số đối tượng là :term:`immortal`. Các đối "
+"tượng bất tử không bị hủy phân bổ và có số lượng tham chiếu không bao giờ "
+"được sửa đổi.  Điều này được thực hiện để tránh tranh chấp về số lượng tham "
+"chiếu có thể ngăn cản việc mở rộng quy mô đa luồng hiệu quả."
+
+#: ../../howto/free-threading-python.rst:107
+#, fuzzy
+msgid "As of the 3.14 release, immortalization is limited to:"
+msgstr "Kể từ bản phát hành 3.14, khả năng bất tử bị giới hạn ở:"
+
+#: ../../howto/free-threading-python.rst:109
+#, fuzzy
+msgid ""
+"Code constants: numeric literals, string literals, and tuple literals "
+"composed of other constants."
+msgstr ""
+"Các hằng mã: hằng số, chuỗi ký tự dạng chuỗi và ký tự tuple được tạo thành "
+"từ các hằng số khác."
+
+#: ../../howto/free-threading-python.rst:111
+#, fuzzy
+msgid "Strings interned by :func:`sys.intern`."
+msgstr "Chuỗi được thực hiện bởi :func:`sys.intern`."
+
+#: ../../howto/free-threading-python.rst:115
+#, fuzzy
+msgid "Frame objects"
+msgstr "Đóng khung đồ vật"
+
+#: ../../howto/free-threading-python.rst:117
+#, fuzzy
+msgid ""
+"It is not safe to access :attr:`frame.f_locals` from a :ref:`frame <frame-"
+"objects>` object if that frame is currently executing in another thread, and"
+" doing so may crash the interpreter."
+msgstr ""
+"Sẽ không an toàn khi truy cập :attr:`frame.f_locals` từ đối tượng "
+":ref:`frame <frame-objects>` nếu khung đó hiện đang thực thi trong một luồng"
+" khác và làm như vậy có thể làm hỏng trình thông dịch."
+
+#: ../../howto/free-threading-python.rst:123
+#, fuzzy
+msgid "Iterators"
+msgstr "Trình vòng lặp"
+
+#: ../../howto/free-threading-python.rst:125
+#, fuzzy
+msgid ""
+"It is generally not thread-safe to access the same iterator object from "
+"multiple threads concurrently, and threads may see duplicate or missing "
+"elements."
+msgstr ""
+"Nói chung, việc truy cập cùng một đối tượng iterator từ nhiều luồng đồng "
+"thời là không an toàn và các luồng có thể thấy các phần tử trùng lặp hoặc bị"
+" thiếu."
+
+#: ../../howto/free-threading-python.rst:131
+#, fuzzy
+msgid "Single-threaded performance"
+msgstr "Hiệu suất đơn luồng"
+
+#: ../../howto/free-threading-python.rst:133
+#, python-format, fuzzy
+msgid ""
+"The free-threaded build has additional overhead when executing Python code "
+"compared to the default GIL-enabled build.  The amount of overhead depends "
+"on the workload and hardware.  On the pyperformance benchmark suite, the "
+"average overhead ranges from about 1% on macOS aarch64 to 8% on x86-64 Linux"
+" systems."
+msgstr ""
+"Bản dựng theo luồng miễn phí có thêm chi phí khi thực thi mã Python so với "
+"bản dựng hỗ trợ GIL mặc định.  Số lượng chi phí phụ thuộc vào khối lượng "
+"công việc và phần cứng.  Trên bộ điểm chuẩn pyperformance, chi phí trung "
+"bình dao động từ khoảng 1% trên macOS aarch64 đến 8% trên hệ thống Linux "
+"x86-64."
+
+#: ../../howto/free-threading-python.rst:141
+#, fuzzy
+msgid "Behavioral changes"
+msgstr "Thay đổi hành vi"
+
+#: ../../howto/free-threading-python.rst:143
+#, fuzzy
+msgid ""
+"This section describes CPython behavioural changes with the free-threaded "
+"build."
+msgstr ""
+"Phần này mô tả các thay đổi về hành vi của CPython với bản dựng luồng tự do."
+
+#: ../../howto/free-threading-python.rst:148
+#, fuzzy
+msgid "Context variables"
+msgstr "Biến bối cảnh"
+
+#: ../../howto/free-threading-python.rst:150
+#, fuzzy
+msgid ""
+"In the free-threaded build, the flag "
+":data:`~sys.flags.thread_inherit_context` is set to true by default which "
+"causes threads created with :class:`threading.Thread` to start with a copy "
+"of the :class:`~contextvars.Context()` of the caller of "
+":meth:`~threading.Thread.start`.  In the default GIL-enabled build, the flag"
+" defaults to false so threads start with an empty "
+":class:`~contextvars.Context()`."
+msgstr ""
+"Trong bản dựng luồng tự do, cờ :data:`~sys.flags.thread_inherit_context` "
+"được đặt thành true theo mặc định, điều này khiến các luồng được tạo bằng "
+":class:`threading.Thread` bắt đầu bằng bản sao "
+":class:`~contextvars.Context()` của người gọi "
+":meth:`~threading.Thread.start`.  Trong bản dựng mặc định hỗ trợ GIL, cờ mặc"
+" định là sai nên các luồng bắt đầu bằng :class:`~contextvars.Context()` "
+"trống."
+
+#: ../../howto/free-threading-python.rst:160
+#, fuzzy
+msgid "Warning filters"
+msgstr "Bộ lọc cảnh báo"
+
+#: ../../howto/free-threading-python.rst:162
+#, fuzzy
+msgid ""
+"In the free-threaded build, the flag "
+":data:`~sys.flags.context_aware_warnings` is set to true by default.  In the"
+" default GIL-enabled build, the flag defaults to false.  If the flag is true"
+" then the :class:`warnings.catch_warnings` context manager uses a context "
+"variable for warning filters.  If the flag is false then "
+":class:`~warnings.catch_warnings` modifies the global filters list, which is"
+" not thread-safe.  See the :mod:`warnings` module for more details."
+msgstr ""
+"Trong bản dựng luồng tự do, cờ :data:`~sys.flags.context_aware_warnings` "
+"được đặt thành true theo mặc định.  Trong bản dựng mặc định hỗ trợ GIL, cờ "
+"mặc định là sai.  Nếu cờ đúng thì trình quản lý ngữ cảnh "
+":class:`warnings.catch_warnings` sẽ sử dụng biến ngữ cảnh cho các bộ lọc "
+"cảnh báo.  Nếu cờ sai thì :class:`~warnings.catch_warnings` sẽ sửa đổi danh "
+"sách bộ lọc chung, danh sách này không an toàn cho luồng.  Xem mô-đun "
+":mod:`warnings` để biết thêm chi tiết."
