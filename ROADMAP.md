@@ -203,7 +203,7 @@ Tracked per file so reviewers can see what's still fuzzy. Sizes are
 - [ ] `tutorial/datastructures.po` (1654 lines)
 - [ ] `tutorial/errors.po` (1592 lines)
 - [x] `tutorial/floatingpoint.po` (852 lines)
-- [ ] `tutorial/inputoutput.po` (1316 lines)
+- [x] `tutorial/inputoutput.po` (1316 lines)
 - [ ] `tutorial/modules.po` (1436 lines)
 - [x] `tutorial/stdlib.po` (799 lines)
 - [x] `tutorial/stdlib2.po` (941 lines)
