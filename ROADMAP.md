@@ -206,7 +206,7 @@ Tracked per file so reviewers can see what's still fuzzy. Sizes are
 - [ ] `tutorial/inputoutput.po` (1316 lines)
 - [ ] `tutorial/modules.po` (1436 lines)
 - [x] `tutorial/stdlib.po` (799 lines)
-- [ ] `tutorial/stdlib2.po` (941 lines)
+- [x] `tutorial/stdlib2.po` (941 lines)
 - [x] `tutorial/venv.po` (487 lines)
 - [x] `tutorial/whatnow.po` (201 lines)
 - [ ] Phase 1 complete.
