@@ -208,7 +208,7 @@ Tracked per file so reviewers can see what's still fuzzy. Sizes are
 - [ ] `tutorial/stdlib.po` (799 lines)
 - [ ] `tutorial/stdlib2.po` (941 lines)
 - [ ] `tutorial/venv.po` (487 lines)
-- [ ] `tutorial/whatnow.po` (201 lines)
+- [x] `tutorial/whatnow.po` (201 lines)
 - [ ] Phase 1 complete.
 - [ ] Phase 2 complete.
 - [ ] Phase 3 complete.
