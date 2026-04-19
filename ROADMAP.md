@@ -201,7 +201,7 @@ Tracked per file so reviewers can see what's still fuzzy. Sizes are
 - [ ] `tutorial/classes.po` (2141 lines)
 - [ ] `tutorial/controlflow.po` (2751 lines)
 - [ ] `tutorial/datastructures.po` (1654 lines)
-- [ ] `tutorial/errors.po` (1592 lines)
+- [x] `tutorial/errors.po` (1592 lines)
 - [x] `tutorial/floatingpoint.po` (852 lines)
 - [x] `tutorial/inputoutput.po` (1316 lines)
 - [x] `tutorial/modules.po` (1436 lines)
