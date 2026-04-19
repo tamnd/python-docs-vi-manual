@@ -184,7 +184,7 @@ Upstream CPython keeps moving. Every few months, or when 3.15 branches:
 - [x] Pronoun and heading-style policies written down in `GLOSSARY.md`.
 - [x] `bugs.po` fully unfuzzied (language-switcher dependency).
 - [x] `tutorial/*.po` fully unfuzzied (language-switcher dependency).
-- [ ] `library/functions.po` fully unfuzzied (language-switcher dependency).
+- [x] `library/functions.po` fully unfuzzied (language-switcher dependency).
 - [ ] Language-switcher milestone: request inclusion in `docsbuild-scripts`.
 
 ### `tutorial/*.po` file-level progress
