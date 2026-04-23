@@ -21,6 +21,7 @@ import argparse
 import re
 import sys
 import time
+from collections.abc import Callable
 from pathlib import Path
 
 import polib
@@ -47,6 +48,32 @@ PATTERNS = [
 
 TOKEN_FMT = "zz{:03d}zz"
 TOKEN_RE = re.compile(r"zz\d{3}zz")
+
+COMMENT_LINE_RE = re.compile(r"^((?:>>>|\.\.\.)[^\S\n]*)(#[^\S\n]*)(.+)$", re.MULTILINE)
+
+
+def is_code_block(msgid: str) -> bool:
+    for line in msgid.splitlines():
+        if line.strip():
+            return line.startswith(">>>")
+    return False
+
+
+def translate_code_block(
+    msgid: str, translate_fn: "Callable[[str], str | None]"
+) -> str:
+    """Keep all code lines verbatim; translate only inline # comment text."""
+    result = []
+    for line in msgid.splitlines():
+        m = COMMENT_LINE_RE.match(line)
+        if m:
+            prefix, hash_part, comment_text = m.group(1), m.group(2), m.group(3)
+            translated = translate_fn(comment_text)
+            if translated and translated.strip():
+                result.append(f"{prefix}{hash_part}{translated.strip()}")
+                continue
+        result.append(line)
+    return "\n".join(result)
 
 
 def protect(text: str) -> tuple[str, dict[str, str]]:
@@ -96,7 +123,12 @@ def process_file(path: Path, translator: GoogleTranslator, delay: float) -> tupl
         if entry.msgstr.strip():
             skipped += 1
             continue
-        translated = translate_one(translator, entry.msgid)
+        if is_code_block(entry.msgid):
+            translated = translate_code_block(
+                entry.msgid, lambda t: translator.translate(t)
+            )
+        else:
+            translated = translate_one(translator, entry.msgid)
         if translated is None:
             skipped += 1
             continue

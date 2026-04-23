@@ -46,6 +46,31 @@ TOKEN_RE = re.compile(r"zz\d{3}zz")
 SEP_FMT = "\n\nQQZSEP{:04d}QQZEND\n\n"
 SEP_RE = re.compile(r"\s*QQZSEP\d{4}QQZEND\s*")
 
+COMMENT_LINE_RE = re.compile(r"^((?:>>>|\.\.\.)[^\S\n]*)(#[^\S\n]*)(.+)$", re.MULTILINE)
+
+
+def is_code_block(msgid: str) -> bool:
+    for line in msgid.splitlines():
+        if line.strip():
+            return line.startswith(">>>")
+    return False
+
+
+def translate_code_block(msgid: str, delay: float) -> str:
+    """Keep all code lines verbatim; translate only inline # comment text."""
+    result = []
+    for line in msgid.splitlines():
+        m = COMMENT_LINE_RE.match(line)
+        if m:
+            prefix, hash_part, comment_text = m.group(1), m.group(2), m.group(3)
+            translated = http_translate(comment_text)
+            time.sleep(delay)
+            if translated and translated.strip():
+                result.append(f"{prefix}{hash_part}{translated.strip()}")
+                continue
+        result.append(line)
+    return "\n".join(result)
+
 
 def protect(text: str) -> tuple[str, dict[str, str]]:
     tokens: dict[str, str] = {}
@@ -188,29 +213,43 @@ def process_file(
         targets = [e for e in targets if not e.msgstr.strip()]
     if not targets:
         return 0, 0
-    msgids = [e.msgid for e in targets]
 
-    if workers > 1 and len(msgids) > workers * 4:
-        shards = chunk_list(msgids, workers)
-        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
-            shard_results = list(
-                pool.map(lambda s: batch_translate(s, max_chars, delay), shards)
-            )
-        translations: list[str | None] = []
-        for r in shard_results:
-            translations.extend(r)
-    else:
-        translations = batch_translate(msgids, max_chars, delay)
+    code_entries = [e for e in targets if is_code_block(e.msgid)]
+    normal_entries = [e for e in targets if not is_code_block(e.msgid)]
 
     done = skipped = 0
-    for entry, translated in zip(targets, translations):
-        if translated is None or not translated.strip():
-            skipped += 1
-            continue
-        entry.msgstr = translated.replace(TRACKER_FROM, TRACKER_TO)
+
+    # Code blocks: translate only inline # comments, keep code verbatim
+    for entry in code_entries:
+        entry.msgstr = translate_code_block(entry.msgid, delay)
         if "fuzzy" not in entry.flags:
             entry.flags.append("fuzzy")
         done += 1
+
+    # Normal entries: batch translate as before
+    if normal_entries:
+        msgids = [e.msgid for e in normal_entries]
+        if workers > 1 and len(msgids) > workers * 4:
+            shards = chunk_list(msgids, workers)
+            with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
+                shard_results = list(
+                    pool.map(lambda s: batch_translate(s, max_chars, delay), shards)
+                )
+            translations: list[str | None] = []
+            for r in shard_results:
+                translations.extend(r)
+        else:
+            translations = batch_translate(msgids, max_chars, delay)
+
+        for entry, translated in zip(normal_entries, translations):
+            if translated is None or not translated.strip():
+                skipped += 1
+                continue
+            entry.msgstr = translated.replace(TRACKER_FROM, TRACKER_TO)
+            if "fuzzy" not in entry.flags:
+                entry.flags.append("fuzzy")
+            done += 1
+
     po.save(str(path))
     return done, skipped
 

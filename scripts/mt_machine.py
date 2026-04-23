@@ -38,8 +38,35 @@ PATTERNS = [
 TOKEN_FMT = "zz{:03d}zz"
 TOKEN_RE = re.compile(r"zz\d{3}zz")
 
+COMMENT_LINE_RE = re.compile(r"^((?:>>>|\.\.\.)[^\S\n]*)(#[^\S\n]*)(.+)$", re.MULTILINE)
+
 _LOCAL = threading.local()
 _LOCK = threading.Lock()
+
+
+def is_code_block(msgid: str) -> bool:
+    for line in msgid.splitlines():
+        if line.strip():
+            return line.startswith(">>>")
+    return False
+
+
+def translate_code_block(msgid: str) -> str:
+    """Keep all code lines verbatim; translate only inline # comment text."""
+    result = []
+    for line in msgid.splitlines():
+        m = COMMENT_LINE_RE.match(line)
+        if m:
+            prefix, hash_part, comment_text = m.group(1), m.group(2), m.group(3)
+            try:
+                translated = get_translator().translate(comment_text)
+            except Exception:
+                translated = None
+            if translated and translated.strip():
+                result.append(f"{prefix}{hash_part}{translated.strip()}")
+                continue
+        result.append(line)
+    return "\n".join(result)
 
 
 def get_translator() -> GoogleTranslator:
@@ -105,8 +132,18 @@ def process_file(path: Path, workers: int, only_empty: bool) -> None:
     if not targets:
         return
 
+    code_targets = [e for e in targets if is_code_block(e.msgid)]
+    normal_targets = [e for e in targets if not is_code_block(e.msgid)]
+
+    for entry in code_targets:
+        entry.msgstr = translate_code_block(entry.msgid)
+        if "fuzzy" not in entry.flags:
+            entry.flags.append("fuzzy")
+        with _LOCK:
+            PROGRESS["done"] += 1
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
-        results = list(pool.map(lambda e: (e, translate_one(e.msgid)), targets))
+        results = list(pool.map(lambda e: (e, translate_one(e.msgid)), normal_targets))
 
     for entry, translated in results:
         if translated is None:
