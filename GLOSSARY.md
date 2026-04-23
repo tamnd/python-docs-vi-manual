@@ -21,8 +21,8 @@ tutorial instruction with an implied subject).
 Examples:
 
 - `msgid`: "You can create a list by..."
-  `msgstr`: "Có thể tạo list bằng..." (dropped pronoun, neutral)
-  `msgstr`: "Bạn có thể tạo list bằng..." (acceptable when the tone
+  `msgstr`: "Có thể tạo danh sách bằng..." (dropped pronoun, neutral)
+  `msgstr`: "Bạn có thể tạo danh sách bằng..." (acceptable when the tone
   is explicitly addressing the reader)
 - `msgid`: "If you find a bug..."
   `msgstr`: "Nếu bạn tìm thấy lỗi..." (keep `bạn`, it is a call to
@@ -84,7 +84,7 @@ Vietnamese developers actually use, and translating hurts clarity.
 
 | English | Notes |
 |---|---|
-| list, tuple, dict, set, frozenset | built-in container types |
+| tuple, dict, set, frozenset | built-in container types |
 | str, int, float, bool, bytes, bytearray | built-in scalar types |
 | None, True, False | literals |
 | iterator, iterable, generator | iteration protocol |
@@ -150,6 +150,7 @@ settled, widely-understood translation.
 | number | số |
 | integer | số nguyên |
 | floating-point | dấu phẩy động |
+| list | danh sách (keep `list` for the type name itself when used as code) |
 | string | chuỗi (but keep `str` for the type name) |
 | character | ký tự |
 | byte | byte (kept English) |
