@@ -2371,21 +2371,29 @@ msgstr "chế độ nhị phân"
 msgid "``'t'``"
 msgstr "``'t'``"
 
+#, fuzzy
 msgid "text mode (default)"
-msgstr ""
+msgstr "chế độ văn bản (mặc định)"
 
+#, fuzzy
 msgid "``'+'``"
-msgstr ""
+msgstr "``'+'``"
 
+#, fuzzy
 msgid "open for updating (reading and writing)"
-msgstr ""
+msgstr "mở để cập nhật (đọc và viết)"
 
+#, fuzzy
 msgid ""
 "The default mode is ``'r'`` (open for reading text, a synonym of ``'rt'``). "
 "Modes ``'w+'`` and ``'w+b'`` open and truncate the file.  Modes ``'r+'`` and"
 " ``'r+b'`` open the file with no truncation."
 msgstr ""
+"Chế độ mặc định là ``'r'`` (mở để đọc văn bản, đồng nghĩa với ``'rt'``). Chế"
+" độ ``'w+'`` và ``'w+b'`` mở và cắt bớt tập tin.  Các chế độ ``'r+'`` và "
+"``'r+b'`` mở tệp mà không cắt bớt."
 
+#, fuzzy
 msgid ""
 "As mentioned in the :ref:`io-overview`, Python distinguishes between binary "
 "and text I/O.  Files opened in binary mode (including ``'b'`` in the *mode* "
@@ -2395,13 +2403,25 @@ msgid ""
 "having been first decoded using a platform-dependent encoding or using the "
 "specified *encoding* if given."
 msgstr ""
+"Như đã đề cập trong :ref:`io-overview`, Python phân biệt giữa I/O nhị phân "
+"và văn bản.  Các tệp được mở ở chế độ nhị phân (bao gồm ``'b'`` trong đối số"
+" *mode*) trả về nội dung dưới dạng đối tượng :class:`bytes` mà không có bất "
+"kỳ giải mã nào.  Ở chế độ văn bản (mặc định hoặc khi ``'t'`` được bao gồm "
+"trong đối số *mode*), nội dung của tệp được trả về dưới dạng :class:`str`, "
+"các byte đã được giải mã lần đầu bằng cách sử dụng mã hóa phụ thuộc vào nền "
+"tảng hoặc sử dụng *encoding* được chỉ định nếu được cung cấp."
 
+#, fuzzy
 msgid ""
 "Python doesn't depend on the underlying operating system's notion of text "
 "files; all the processing is done by Python itself, and is therefore "
 "platform-independent."
 msgstr ""
+"Python không phụ thuộc vào khái niệm tệp văn bản của hệ điều hành cơ bản; "
+"tất cả quá trình xử lý đều được thực hiện bởi chính Python và do đó không "
+"phụ thuộc vào nền tảng."
 
+#, fuzzy
 msgid ""
 "*buffering* is an optional integer used to set the buffering policy.  Pass 0"
 " to switch buffering off (only allowed in binary mode), 1 to select line "
@@ -2414,20 +2434,40 @@ msgid ""
 "*buffering* argument is given, the default buffering policy works as "
 "follows:"
 msgstr ""
+"*buffering* là số nguyên tùy chọn được sử dụng để đặt chính sách lưu vào bộ "
+"đệm.  Chuyển 0 để tắt bộ đệm (chỉ được phép ở chế độ nhị phân), 1 để chọn bộ"
+" đệm dòng (chỉ có thể sử dụng khi viết ở chế độ văn bản) và số nguyên > 1 để"
+" biểu thị kích thước tính bằng byte của bộ đệm đoạn có kích thước cố định. "
+"Lưu ý rằng việc chỉ định kích thước bộ đệm theo cách này áp dụng cho I/O đệm"
+" nhị phân, nhưng ``TextIOWrapper`` (tức là các tệp được mở bằng "
+"``mode='r+'``) sẽ có bộ đệm khác. Để tắt tính năng đệm trong "
+"``TextIOWrapper``, hãy cân nhắc sử dụng cờ ``write_through`` cho "
+":func:`io.TextIOWrapper.reconfigure`. Khi không có đối số *buffering* nào "
+"được đưa ra, chính sách đệm mặc định sẽ hoạt động như sau:"
 
+#, fuzzy
 msgid ""
 "Binary files are buffered in fixed-size chunks; the size of the buffer is "
 "``max(min(blocksize, 8 MiB), DEFAULT_BUFFER_SIZE)`` when the device block "
 "size is available. On most systems, the buffer will typically be 128 "
 "kilobytes long."
 msgstr ""
+"Các tệp nhị phân được lưu vào bộ đệm theo các khối có kích thước cố định; "
+"kích thước của bộ đệm là ``max(min(blocksize, 8 MiB), DEFAULT_BUFFER_SIZE)``"
+" khi có sẵn kích thước khối thiết bị. Trên hầu hết các hệ thống, bộ đệm "
+"thường dài 128 kilobyte."
 
+#, fuzzy
 msgid ""
 "\"Interactive\" text files (files for which :meth:`~io.IOBase.isatty` "
 "returns ``True``) use line buffering.  Other text files use the policy "
 "described above for binary files."
 msgstr ""
+"Các tệp văn bản \"Tương tác\" (các tệp mà :meth:`~io.IOBase.isatty` trả về "
+"``True``) sử dụng tính năng đệm dòng.  Các tệp văn bản khác sử dụng chính "
+"sách được mô tả ở trên cho tệp nhị phân."
 
+#, fuzzy
 msgid ""
 "*encoding* is the name of the encoding used to decode or encode the file. "
 "This should only be used in text mode.  The default encoding is platform "
@@ -2435,7 +2475,13 @@ msgid ""
 " encoding` supported by Python can be used. See the :mod:`codecs` module for"
 " the list of supported encodings."
 msgstr ""
+"*encoding* là tên mã hóa dùng để giải mã hoặc mã hóa tập tin. Điều này chỉ "
+"nên được sử dụng trong chế độ văn bản.  Mã hóa mặc định phụ thuộc vào nền "
+"tảng (bất kỳ :func:`locale.getencoding` nào trả về), nhưng bất kỳ "
+":term:`text encoding` nào được Python hỗ trợ đều có thể được sử dụng. Xem "
+"mô-đun :mod:`codecs` để biết danh sách các mã hóa được hỗ trợ."
 
+#, fuzzy
 msgid ""
 "*errors* is an optional string that specifies how encoding and decoding "
 "errors are to be handled—this cannot be used in binary mode. A variety of "
@@ -2443,22 +2489,37 @@ msgid ""
 "though any error handling name that has been registered with "
 ":func:`codecs.register_error` is also valid.  The standard names include:"
 msgstr ""
+"*errors* là một chuỗi tùy chọn chỉ định cách xử lý các lỗi mã hóa và giải "
+"mã—không thể sử dụng chuỗi này ở chế độ nhị phân. Có nhiều trình xử lý lỗi "
+"tiêu chuẩn khác nhau (được liệt kê trong :ref:`error-handlers`), mặc dù bất "
+"kỳ tên xử lý lỗi nào đã được đăng ký với :func:`codecs.register_error` cũng "
+"hợp lệ.  Các tên tiêu chuẩn bao gồm:"
 
+#, fuzzy
 msgid ""
 "``'strict'`` to raise a :exc:`ValueError` exception if there is an encoding "
 "error.  The default value of ``None`` has the same effect."
 msgstr ""
+"``'strict'`` để đưa ra ngoại lệ :exc:`ValueError` nếu có lỗi mã hóa.  Giá "
+"trị mặc định của ``None`` cũng có tác dụng tương tự."
 
+#, fuzzy
 msgid ""
 "``'ignore'`` ignores errors.  Note that ignoring encoding errors can lead to"
 " data loss."
 msgstr ""
+"``'ignore'`` bỏ qua lỗi.  Lưu ý rằng việc bỏ qua lỗi mã hóa có thể dẫn đến "
+"mất dữ liệu."
 
+#, fuzzy
 msgid ""
 "``'replace'`` causes a replacement marker (such as ``'?'``) to be inserted "
 "where there is malformed data."
 msgstr ""
+"``'replace'`` khiến một điểm đánh dấu thay thế (chẳng hạn như ``'?'``) được "
+"chèn vào nơi có dữ liệu không đúng định dạng."
 
+#, fuzzy
 msgid ""
 "``'surrogateescape'`` will represent any incorrect bytes as low surrogate "
 "code units ranging from U+DC80 to U+DCFF. These surrogate code units will "
@@ -2466,29 +2527,49 @@ msgid ""
 "handler is used when writing data.  This is useful for processing files in "
 "an unknown encoding."
 msgstr ""
+"``'surrogateescape'`` sẽ biểu thị bất kỳ byte không chính xác nào dưới dạng "
+"đơn vị mã thay thế thấp, từ U+DC80 đến U+DCFF. Các đơn vị mã thay thế này "
+"sau đó sẽ được chuyển trở lại thành các byte giống nhau khi sử dụng trình xử"
+" lý lỗi ``surrogateescape`` khi ghi dữ liệu.  Điều này rất hữu ích để xử lý "
+"các tệp ở dạng mã hóa không xác định."
 
+#, fuzzy
 msgid ""
 "``'xmlcharrefreplace'`` is only supported when writing to a file. Characters"
 " not supported by the encoding are replaced with the appropriate XML "
 "character reference :samp:`&#{nnn};`."
 msgstr ""
+"``'xmlcharrefreplace'`` chỉ được hỗ trợ khi ghi vào tệp. Các ký tự không "
+"được mã hóa hỗ trợ sẽ được thay thế bằng tham chiếu ký tự XML "
+":samp:`&#{nnn};` thích hợp."
 
+#, fuzzy
 msgid ""
 "``'backslashreplace'`` replaces malformed data by Python's backslashed "
 "escape sequences."
 msgstr ""
+"``'backslashreplace'`` thay thế dữ liệu không đúng định dạng bằng chuỗi "
+"thoát bị gạch chéo ngược của Python."
 
+#, fuzzy
 msgid ""
 "``'namereplace'`` (also only supported when writing) replaces unsupported "
 "characters with ``\\N{...}`` escape sequences."
 msgstr ""
+"``'namereplace'`` (cũng chỉ được hỗ trợ khi viết) thay thế các ký tự không "
+"được hỗ trợ bằng chuỗi thoát ``\\N{...}``."
 
+#, fuzzy
 msgid ""
 "*newline* determines how to parse newline characters from the stream. It can"
 " be ``None``, ``''``, ``'\\n'``, ``'\\r'``, and ``'\\r\\n'``.  It works as "
 "follows:"
 msgstr ""
+"*newline* xác định cách phân tích các ký tự dòng mới từ luồng. Nó có thể là "
+"``None``, ``''``, ``'\\n'``, ``'\\r'`` và ``'\\r\\n'``.  Nó hoạt động như "
+"sau:"
 
+#, fuzzy
 msgid ""
 "When reading input from the stream, if *newline* is ``None``, universal "
 "newlines mode is enabled.  Lines in the input can end in ``'\\n'``, "
@@ -2498,7 +2579,15 @@ msgid ""
 "has any of the other legal values, input lines are only terminated by the "
 "given string, and the line ending is returned to the caller untranslated."
 msgstr ""
+"Khi đọc đầu vào từ luồng, nếu *newline* là ``None``, chế độ dòng mới phổ "
+"quát sẽ được bật.  Các dòng trong đầu vào có thể kết thúc bằng ``'\\n'``, "
+"``'\\r'`` hoặc ``'\\r\\n'`` và những dòng này được dịch sang ``'\\n'`` trước"
+" khi được trả lại cho người gọi.  Nếu là ``''``, chế độ dòng mới phổ quát "
+"được bật nhưng phần cuối dòng được trả về cho người gọi chưa được dịch.  Nếu"
+" nó có bất kỳ giá trị hợp pháp nào khác, các dòng đầu vào chỉ được kết thúc "
+"bởi chuỗi đã cho và kết thúc dòng được trả về cho người gọi chưa được dịch."
 
+#, fuzzy
 msgid ""
 "When writing output to the stream, if *newline* is ``None``, any ``'\\n'`` "
 "characters written are translated to the system default line separator, "
@@ -2506,14 +2595,24 @@ msgid ""
 "takes place.  If *newline* is any of the other legal values, any ``'\\n'`` "
 "characters written are translated to the given string."
 msgstr ""
+"Khi ghi đầu ra vào luồng, nếu *newline* là ``None`` thì mọi ký tự ``'\\n'`` "
+"được ghi sẽ được dịch sang dấu phân tách dòng mặc định của hệ thống, "
+":data:`os.linesep`.  Nếu *newline* là ``''`` hoặc ``'\\n'`` thì không có quá"
+" trình dịch thuật nào diễn ra.  Nếu *newline* là bất kỳ giá trị pháp lý nào "
+"khác thì mọi ký tự ``'\\n'`` được viết sẽ được dịch sang chuỗi đã cho."
 
+#, fuzzy
 msgid ""
 "If *closefd* is ``False`` and a file descriptor rather than a filename was "
 "given, the underlying file descriptor will be kept open when the file is "
 "closed.  If a filename is given *closefd* must be ``True`` (the default); "
 "otherwise, an error will be raised."
 msgstr ""
+"Nếu *closefd* là ``False`` và một bộ mô tả tệp thay vì tên tệp được cung "
+"cấp, thì bộ mô tả tệp cơ bản sẽ được giữ mở khi đóng tệp.  Nếu tên tệp được "
+"đặt là *closefd* phải là ``True`` (mặc định); nếu không sẽ xuất hiện lỗi."
 
+#, fuzzy
 msgid ""
 "A custom opener can be used by passing a callable as *opener*. The "
 "underlying file descriptor for the file object is then obtained by calling "
@@ -2521,15 +2620,25 @@ msgid ""
 "descriptor (passing :mod:`os.open` as *opener* results in functionality "
 "similar to passing ``None``)."
 msgstr ""
+"Bạn có thể sử dụng công cụ mở tùy chỉnh bằng cách chuyển một lệnh gọi có thể"
+" gọi là *opener*. Sau đó, bộ mô tả tệp cơ bản cho đối tượng tệp được lấy "
+"bằng cách gọi *opener* với (*file*, *flags*). *opener* phải trả về một bộ mô"
+" tả tệp đang mở (chuyển :mod:`os.open` vì *opener* sẽ có chức năng tương tự "
+"như truyền ``None``)."
 
+#, fuzzy
 msgid "The newly created file is :ref:`non-inheritable <fd_inheritance>`."
-msgstr ""
+msgstr "Tệp mới được tạo là :ref:`non-inheritable <fd_inheritance>`."
 
+#, fuzzy
 msgid ""
 "The following example uses the :ref:`dir_fd <dir_fd>` parameter of the "
 ":func:`os.open` function to open a file relative to a given directory::"
 msgstr ""
+"Ví dụ sau sử dụng tham số :ref:`dir_fd <dir_fd>` của hàm :func:`os.open` để "
+"mở tệp liên quan đến một thư mục nhất định::"
 
+#, fuzzy
 msgid ""
 ">>> import os\n"
 ">>> dir_fd = os.open('somedir', os.O_RDONLY)\n"
@@ -2541,7 +2650,17 @@ msgid ""
 "...\n"
 ">>> os.close(dir_fd)  # don't leak a file descriptor"
 msgstr ""
+">>> nhập hệ điều hành\n"
+">>> dir_fd = os.open('somedir', os.O_RDONLY)\n"
+">>> công cụ mở def (đường dẫn, cờ):\n"
+"... return os.open(path, flags, dir_fd=dir_fd)\n"
+"...\n"
+">>> với open('spamspam.txt', 'w', opener=opener) là f:\n"
+"... print('Điều này sẽ được ghi vào somedir/spamspam.txt', file=f)\n"
+"...\n"
+">>> os.close(dir_fd) # don không rò rỉ bộ mô tả tập tin"
 
+#, fuzzy
 msgid ""
 "The type of :term:`file object` returned by the :func:`open` function "
 "depends on the mode.  When :func:`open` is used to open a file in a text "
@@ -2555,84 +2674,140 @@ msgid ""
 "is disabled, the raw stream, a subclass of :class:`io.RawIOBase`, "
 ":class:`io.FileIO`, is returned."
 msgstr ""
+"Loại :term:`file object` được hàm :func:`open` trả về tùy thuộc vào chế độ."
+"  Khi :func:`open` được sử dụng để mở tệp ở chế độ văn bản (``'w'``, "
+"``'r'``, ``'wt'``, ``'rt'``, v.v.), nó sẽ trả về một lớp con của "
+":class:`io.TextIOBase` (cụ thể là :class:`io.TextIOWrapper`).  Khi được sử "
+"dụng để mở tệp ở chế độ nhị phân có đệm, lớp được trả về là lớp con của "
+":class:`io.BufferedIOBase`.  Lớp chính xác khác nhau: ở chế độ đọc nhị phân,"
+" nó trả về :class:`io.BufferedReader`; trong chế độ ghi nhị phân và nối thêm"
+" nhị phân, nó trả về :class:`io.BufferedWriter` và ở chế độ đọc/ghi, nó trả "
+"về :class:`io.BufferedRandom`.  Khi tính năng đệm bị vô hiệu hóa, luồng thô,"
+" một lớp con của :class:`io.RawIOBase`, :class:`io.FileIO`, sẽ được trả về."
 
+#, fuzzy
 msgid ""
 "See also the file handling modules, such as :mod:`fileinput`, :mod:`io` "
 "(where :func:`open` is declared), :mod:`os`, :mod:`os.path`, "
 ":mod:`tempfile`, and :mod:`shutil`."
 msgstr ""
+"Xem thêm các mô-đun xử lý tệp, chẳng hạn như :mod:`fileinput`, :mod:`io` "
+"(trong đó :func:`open` được khai báo), :mod:`os`, :mod:`os.path`, "
+":mod:`tempfile` và :mod:`shutil`."
 
+#, fuzzy
 msgid ""
 "Raises an :ref:`auditing event <auditing>` ``open`` with arguments ``path``,"
 " ``mode``, ``flags``."
 msgstr ""
+"Tăng một :ref:`auditing event <auditing>` ``open`` với các đối số ``path``, "
+"``mode``, ``flags``."
 
+#, fuzzy
 msgid ""
 "The ``mode`` and ``flags`` arguments may have been modified or inferred from"
 " the original call."
 msgstr ""
+"Các đối số ``mode`` và ``flags`` có thể đã được sửa đổi hoặc suy ra từ lệnh "
+"gọi ban đầu."
 
+#, fuzzy
 msgid "The *opener* parameter was added."
-msgstr ""
+msgstr "Tham số *opener* đã được thêm vào."
 
+#, fuzzy
 msgid "The ``'x'`` mode was added."
-msgstr ""
+msgstr "Chế độ ``'x'`` đã được thêm vào."
 
+#, fuzzy
 msgid ""
 ":exc:`IOError` used to be raised, it is now an alias of :exc:`OSError`."
 msgstr ""
+":exc:`IOError` trước đây được nâng lên, bây giờ nó là bí danh của "
+":exc:`OSError`."
 
+#, fuzzy
 msgid ""
 ":exc:`FileExistsError` is now raised if the file opened in exclusive "
 "creation mode (``'x'``) already exists."
 msgstr ""
+":exc:`FileExistsError` hiện được nâng lên nếu tệp được mở ở chế độ tạo độc "
+"quyền (``'x'``) đã tồn tại."
 
+#, fuzzy
 msgid "The file is now non-inheritable."
-msgstr ""
+msgstr "Các tập tin bây giờ không thể kế thừa."
 
+#, fuzzy
 msgid ""
 "If the system call is interrupted and the signal handler does not raise an "
 "exception, the function now retries the system call instead of raising an "
 ":exc:`InterruptedError` exception (see :pep:`475` for the rationale)."
 msgstr ""
+"Nếu lệnh gọi hệ thống bị gián đoạn và trình xử lý tín hiệu không đưa ra "
+"ngoại lệ thì hàm này sẽ thử lại lệnh gọi hệ thống thay vì đưa ra ngoại lệ "
+":exc:`InterruptedError` (xem :pep:`475` để biết lý do)."
 
+#, fuzzy
 msgid "The ``'namereplace'`` error handler was added."
-msgstr ""
+msgstr "Trình xử lý lỗi ``'namereplace'`` đã được thêm vào."
 
+#, fuzzy
 msgid "Support added to accept objects implementing :class:`os.PathLike`."
 msgstr ""
+"Hỗ trợ được thêm vào để chấp nhận các đối tượng triển khai "
+":class:`os.PathLike`."
 
+#, fuzzy
 msgid ""
 "On Windows, opening a console buffer may return a subclass of "
 ":class:`io.RawIOBase` other than :class:`io.FileIO`."
 msgstr ""
+"Trên Windows, việc mở bộ đệm bảng điều khiển có thể trả về một lớp con của "
+":class:`io.RawIOBase` không phải là :class:`io.FileIO`."
 
+#, fuzzy
 msgid "The ``'U'`` mode has been removed."
-msgstr ""
+msgstr "Chế độ ``'U'`` đã bị loại bỏ."
 
+#, fuzzy
 msgid "Return the ordinal value of a character."
-msgstr ""
+msgstr "Trả về giá trị thứ tự của một ký tự."
 
+#, fuzzy
 msgid ""
 "If the argument is a one-character string, return the Unicode code point of "
 "that character.  For example, ``ord('a')`` returns the integer ``97`` and "
 "``ord('€')`` (Euro sign) returns ``8364``.  This is the inverse of "
 ":func:`chr`."
 msgstr ""
+"Nếu đối số là chuỗi một ký tự, hãy trả về điểm mã Unicode của ký tự đó.  Ví "
+"dụ: ``ord('a')`` trả về số nguyên ``97`` và ``ord('€')`` (ký hiệu Euro) trả "
+"về ``8364``.  Đây là nghịch đảo của :func:`chr`."
 
+#, fuzzy
 msgid ""
 "If the argument is a :class:`bytes` or :class:`bytearray` object of length "
 "1, return its single byte value. For example, ``ord(b'a')`` returns the "
 "integer ``97``."
 msgstr ""
+"Nếu đối số là đối tượng :class:`bytes` hoặc :class:`bytearray` có độ dài 1, "
+"hãy trả về giá trị byte đơn của nó. Ví dụ: ``ord(b'a')`` trả về số nguyên "
+"``97``."
 
+#, fuzzy
 msgid ""
 "Return *base* to the power *exp*; if *mod* is present, return *base* to the "
 "power *exp*, modulo *mod* (computed more efficiently than ``pow(base, exp) %"
 " mod``). The two-argument form ``pow(base, exp)`` is equivalent to using the"
 " power operator: ``base**exp``."
 msgstr ""
+"Trả *base* về lũy thừa *exp*; nếu có *mod*, trả *base* về lũy thừa *exp*, "
+"modulo *mod* (được tính toán hiệu quả hơn ``pow(base, exp) % mod``). Dạng "
+"hai đối số ``pow(base, exp)`` tương đương với việc sử dụng toán tử lũy thừa:"
+" ``base**exp``."
 
+#, fuzzy
 msgid ""
 "When arguments are builtin numeric types with mixed operand types, the "
 "coercion rules for binary arithmetic operators apply.  For :class:`int` "
@@ -2646,7 +2821,19 @@ msgid ""
 ":class:`float` with an integral exponent, a float result is delivered. For "
 "example, ``pow(-9, 2.0)`` returns ``81.0``."
 msgstr ""
+"Khi các đối số là các kiểu số dựng sẵn với các kiểu toán hạng hỗn hợp, các "
+"quy tắc ép buộc cho các toán tử số học nhị phân sẽ được áp dụng.  Đối với "
+"toán hạng :class:`int`, kết quả có cùng loại với toán hạng (sau khi ép buộc)"
+" trừ khi đối số thứ hai là số âm; trong trường hợp đó, tất cả các đối số "
+"được chuyển đổi thành float và kết quả float được phân phối.  Ví dụ: "
+"``pow(10, 2)`` trả về ``100``, nhưng ``pow(10, -2)`` trả về ``0.01``.  Đối "
+"với cơ số âm thuộc loại :class:`int` hoặc :class:`float` và số mũ không "
+"nguyên, một kết quả phức tạp sẽ được đưa ra.  Ví dụ: ``pow(-9, 0.5)`` trả về"
+" giá trị gần với ``3j``. Trong khi đó, đối với cơ số âm thuộc loại "
+":class:`int` hoặc :class:`float` có số mũ nguyên, kết quả float sẽ được đưa "
+"ra. Ví dụ: ``pow(-9, 2.0)`` trả về ``81.0``."
 
+#, fuzzy
 msgid ""
 "For :class:`int` operands *base* and *exp*, if *mod* is present, *mod* must "
 "also be of integer type and *mod* must be nonzero. If *mod* is present and "
@@ -2654,33 +2841,54 @@ msgid ""
 "``pow(inv_base, -exp, mod)`` is returned, where *inv_base* is an inverse to "
 "*base* modulo *mod*."
 msgstr ""
+"Đối với toán hạng :class:`int` *base* và *exp*, nếu *mod* có mặt thì *mod* "
+"cũng phải thuộc loại số nguyên và *mod* phải khác 0. Nếu *mod* xuất hiện và "
+"*exp* âm thì *base* phải nguyên tố cùng nhau với *mod*. Trong trường hợp đó,"
+" ``pow(inv_base, -exp, mod)`` được trả về, trong đó *inv_base* là nghịch đảo"
+" của *base* modulo *mod*."
 
+#, fuzzy
 msgid "Here's an example of computing an inverse for ``38`` modulo ``97``::"
-msgstr ""
+msgstr "Dưới đây là ví dụ về tính toán nghịch đảo cho ``38`` modulo ``97``::"
 
+#, fuzzy
 msgid ""
 ">>> pow(38, -1, mod=97)\n"
 "23\n"
 ">>> 23 * 38 % 97 == 1\n"
 "True"
 msgstr ""
+">>> pow(38, -1, mod=97)\n"
+"23\n"
+">>> 23 * 38 % 97 == 1\n"
+"đúng"
 
+#, fuzzy
 msgid ""
 "For :class:`int` operands, the three-argument form of ``pow`` now allows the"
 " second argument to be negative, permitting computation of modular inverses."
 msgstr ""
+"Đối với toán hạng :class:`int`, dạng ba đối số của ``pow`` hiện cho phép đối"
+" số thứ hai âm, cho phép tính toán nghịch đảo mô-đun."
 
+#, fuzzy
 msgid ""
 "Allow keyword arguments.  Formerly, only positional arguments were "
 "supported."
 msgstr ""
+"Cho phép đối số từ khóa.  Trước đây, chỉ có lập luận vị trí được hỗ trợ."
 
+#, fuzzy
 msgid ""
 "Print *objects* to the text stream *file*, separated by *sep* and followed "
 "by *end*.  *sep*, *end*, *file*, and *flush*, if present, must be given as "
 "keyword arguments."
 msgstr ""
+"In *objects* vào luồng văn bản *file*, phân tách bằng *sep* và theo sau là "
+"*end*.  *sep*, *end*, *file* và *flush*, nếu có, phải được đưa ra làm đối số"
+" từ khóa."
 
+#, fuzzy
 msgid ""
 "All non-keyword arguments are converted to strings like :func:`str` does and"
 " written to the stream, separated by *sep* and followed by *end*.  Both "
@@ -2688,6 +2896,11 @@ msgid ""
 "use the default values.  If no *objects* are given, :func:`print` will just "
 "write *end*."
 msgstr ""
+"Tất cả các đối số không phải từ khóa đều được chuyển đổi thành chuỗi giống "
+"như :func:`str` và được ghi vào luồng, được phân tách bằng *sep* và theo sau"
+" là *end*.  Cả *sep* và *end* đều phải là chuỗi; chúng cũng có thể là "
+"``None``, nghĩa là sử dụng các giá trị mặc định.  Nếu không có *objects*, "
+":func:`print` sẽ chỉ viết *end*."
 
 msgid ""
 "The *file* argument must be an object with a ``write(string)`` method; if it"
